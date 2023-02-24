@@ -1,0 +1,1707 @@
+html {
+    background-color: #040605;
+    cursor: url(/aowp/UI/Cursor.png), auto;
+
+}
+
+@font-face {
+    font-family: 'Regular';
+    src: url(/highlanderdb/Style/REGULAR.ttf);
+}
+
+
+th {
+    min-width: 320px;
+    max-width: 320px;
+    height: 25px;
+    color: aliceblue;
+
+}
+
+td {
+    min-width: 320px;
+    max-width: 900px;
+    height: 90px;
+    color: aliceblue;
+
+}
+
+.endtd {
+    width: 500px;
+
+    height: 90px;
+    color: aliceblue;
+
+}
+
+.endtr {
+    min-width: 320px;
+    max-width: 4000px;
+    height: 120px;
+    color: aliceblue;
+
+}
+
+.hometd {
+    min-width: 400px;
+    max-width: 400px;
+    height: 90px;
+    color: aliceblue;
+    padding: 20px;
+    margin: 20px;
+
+
+    border: 1px solid #040605;
+}
+
+.homebullet {
+    margin-top: 5px;
+}
+
+ul {
+    padding: 0px;
+}
+
+.togglelink {
+    padding: 10px;
+}
+
+.homelink {
+    text-decoration: underline;
+    color: aqua;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: aliceblue;
+    font-family: 'Regular';
+    font-size: 14px;
+}
+
+
+a:hover {
+    color: aqua;
+    text-decoration: underline;
+}
+
+ul.egmenu {
+    background: black;
+    border: 1px solid rgba(60, 60, 90, 1);
+    height: 30px;
+    width: 100%;
+}
+
+ul.egmenu > li {
+    float: left;
+    position: relative;
+
+}
+
+ul.egmenu ul {
+    background-color: rgba(10, 10, 15, 1);
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    border: 1px solid rgba(60, 60, 90, 1);
+
+    min-width: 210px;
+}
+
+body {
+    font-family: 'Regular', sans-serif;
+}
+
+ul.egmenu a {
+    cursor: pointer;
+    color: white;
+    line-height: 30px;
+    padding: 9px 10px;
+    text-decoration: none;
+}
+
+ul.egmenu li {
+    list-style: none;
+    z-index: 1000;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-family: 'Duru Sans', sans-serif;
+
+
+}
+
+
+ul.egmenu li:hover {
+    background-color: darkslategrey;
+}
+
+ul.egmenu li:hover ul {
+    display: block;
+}
+
+@media all and (max-width: 480px) {
+    ul.egmenu {
+        height: auto;
+    }
+
+    ul.egmenu > li {
+        float: none;
+
+        font-size: 25px;
+    }
+
+    ul.egmenu li {
+        font-size: 25px;
+        ;
+    }
+
+    ul.egmenu a {
+        line-height: 40px;
+    }
+
+    ul.egmenu ul {
+        position: relative;
+    }
+
+    ul.egmenu li.tap {
+        background: #555;
+    }
+
+    ul.egmenu li.tap ul {
+        display: block;
+    }
+
+}
+
+@media all and (min-width: 481px) {
+    ul.egmenu li:hover {
+        background: #555;
+    }
+
+    ul.egmenu li:hover ul {
+        display: block;
+    }
+}
+
+#menu {
+    background: #343434;
+    color: #eee;
+    height: 35px;
+    border-bottom: 4px solid #eeeded
+}
+
+#menu ul,
+#menu li {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none
+}
+
+#menu ul {
+    height: 35px
+}
+
+#menu li {
+    float: left;
+    position: relative;
+    font: bold 12px Arial;
+    text-shadow: 0 -1px 0 #000;
+    text-transform: uppercase;
+    z-index: 1000;
+    white-space: nowrap;
+}
+
+#menu li:first-child {
+    border-left: none
+}
+
+#menu a {
+    display: block;
+    line-height: 35px;
+    padding: 0 14px;
+    text-decoration: none;
+    color: #eee;
+}
+
+#menu li:hover > a,
+#menu li a:hover {
+    background: #111
+}
+
+#menu input {
+    display: none;
+    margin: 0 0;
+    padding: 0 0;
+    width: 80px;
+    height: 35px;
+    opacity: 0;
+    cursor: pointer
+}
+
+#menu label {
+    font: bold 30px Arial;
+    display: none;
+    width: 35px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center
+}
+
+#menu label span {
+    font-size: 12px;
+    position: relative;
+    left: 35px
+}
+
+#menu ul.menus {
+    height: auto;
+    width: 180px;
+    background: #111;
+    position: absolute;
+    z-index: 10000;
+    display: none;
+    border: 0;
+}
+
+#menu ul.menus li {
+    display: block;
+    width: 100%;
+    font: 12px Arial;
+    text-transform: none;
+}
+
+#menu li:hover ul.menus {
+    display: block
+}
+
+#menu a.home {
+    background-color: dodgerblue;
+}
+
+#menu a.prett {
+    padding: 0 27px 0 14px
+}
+
+#menu a.prett::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: 6px 5px;
+    border-color: #eee transparent transparent transparent;
+    position: absolute;
+    top: 15px;
+    right: 9px
+}
+
+#menu ul.menus a:hover {
+    background: #333;
+}
+
+#menu ul.menus .submenu {
+    display: none;
+    position: absolute;
+    left: 180px;
+    background: #111;
+    top: 0;
+    width: 180px;
+}
+
+#menu ul.menus .submenu li {
+    background: #111;
+}
+
+#menu ul.menus .has-submenu:hover .submenu {
+    display: block;
+}
+
+
+.collapsible {
+    background-color: #371847;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    text-align: left;
+    outline: none;
+    box-shadow:
+        inset 0px 0px 20px 10px #4b1d63;
+    /* left magenta */
+
+    font-size: 15px;
+    margin: 10px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #4b1d63;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #040605;
+
+}
+
+p {
+    font-family: 'Regular', sans-serif;
+    font-size: 15px;
+    margin: 10px 0 0 0;
+
+}
+
+.techbackground {
+
+    position: relative;
+    display: contents;
+    width: inherit;
+}
+
+.endbackground {
+
+    position: relative;
+    display: contents;
+    width: 3000px;
+}
+
+.tabletech {
+    background-color: rgba(0, 255, 100, 0.05);
+    box-shadow: inset 1px 1px 10px #074447;
+    border: 1px solid #1f5659;
+    background: url("/aowp/UI/hex35%20-%20Copy.png");
+
+    background-repeat: repeat;
+    background-position: bottom center;
+    margin-top: -4px;
+    padding: 0px;
+}
+
+.modunlock_icon {
+    padding-top: 10px;
+
+    display: table;
+    margin: 0 auto;
+}
+
+
+.modunlock_icon2 {
+    padding-top: 15px;
+
+
+    display: table;
+    margin: 0 auto;
+    margin-left: -5px;
+}
+
+.dragscroll {
+    cursor: grab;
+    position: relative;
+    z-index: 5;
+    width: inherit;
+    height: auto;
+    overflow: auto hidden;
+    background: url("/aowp/UI/hex35.png");
+    background-color: #051221;
+}
+
+.buttons {
+    display: table;
+    margin: 0 auto;
+
+}
+
+
+
+.mod_description {
+
+    position: relative;
+    float: right;
+    padding: 20px;
+    max-width: 500px;
+    top: -20px;
+}
+
+.mod_image_holder {
+    position: relative;
+    width: 700;
+    min-width: 800px;
+    float: left;
+    background-color: rgb(0, 5, 10, 0.5);
+
+    display: table;
+    padding: 10px;
+    margin: 5px;
+}
+
+.unit_description {
+    font-family: "Custom";
+    color: #fff4ad;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    top: -20px;
+}
+
+.mod_image {
+    float: left;
+    padding: 25px;
+    padding-top: 40px;
+    max-width: 216px;
+    min-width: 216px;
+    background: url("/aowp/UI/backgroundModIcon.png");
+
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+
+
+}
+
+.corner_icon {
+    float: left;
+    position: absolute;
+    padding-top: 30px;
+    padding-left: 30px;
+    max-width: 20px;
+
+
+
+}
+
+.tech_image {
+    float: left;
+
+    max-width: 100px;
+
+    background: url("/aowp/UI/backgroundModIcon.png");
+
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+
+
+
+}
+
+.unit_image {
+    float: left;
+    padding-bottom: 10px
+}
+
+tab {
+    padding-left: 15px;
+}
+
+.unit_image_holder {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    float: left;
+
+    background-image: url("/highlanderdb/Icons/unitPreviewTest.png");
+    background-size: 400px;
+    display: table;
+    box-shadow: 0 0 8px 8px rgb(25, 49, 61, 0.5) inset;
+
+}
+
+.mod_card {
+    background-color: rgb(25, 49, 61, 0.5);
+    color: white;
+    width: 840px;
+
+    padding: 35px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tech_card {
+
+    color: white;
+    min-width: 240px;
+    min-height: 85px;
+    max-width: 900px;
+    border-radius: 30px 0px 10px 30px;
+    border: 1px solid #A5C3D3;
+    background-color: #131517;
+    background-image: url("/aowp/UI/scan.png");
+    background-size: 500px;
+    margin-left: 30px;
+    margin-right: auto;
+}
+
+
+.unit_card {
+    background-color: rgb(25, 49, 61, 0.5);
+    color: white;
+    width: 840px;
+    height: 600px;
+    padding: 35px;
+    display: table;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: auto;
+
+    margin-right: auto;
+
+}
+
+.unit_elite_skill {
+    overflow: hidden;
+    width: 328px;
+    height: 40px;
+    margin: 1px;
+    background-color: rgba(50, 50, 20, 0.8);
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.unit_passiveslot {
+    overflow: hidden;
+    width: 328px;
+    height: 40px;
+    margin: 1px;
+
+
+}
+
+.unit_resistanceslot {
+    height: 40px;
+    position: relative;
+
+    width: auto;
+
+
+
+}
+
+.unit_abilityslot {
+    overflow: hidden;
+    width: 310px;
+    height: 40px;
+    margin: 1px;
+
+}
+
+
+
+.origin_icon:hover {
+    border: 1px solid aqua;
+}
+
+/* Change the color of links on hover */
+.unit_abilityslot:hover {
+    background-color: darkslategray;
+
+}
+
+/* Change the color of links on hover */
+.unit_passiveslot:hover {
+    background-color: darkblue;
+
+}
+
+/* Change the color of links on hover */
+.unit_elite_skill:hover {
+    background-color: darkslateblue;
+
+}
+
+/* Change the color of links on hover */
+.unit_resistanceslot:hover {
+    background-color: darkolivegreen;
+
+}
+
+.unit_ability_holder {
+    width: 300px;
+    height: auto;
+    border-width: 30px;
+    border-top-width: 0px;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slice.png);
+    border-image-slice: 30 fill;
+    border-image-repeat: stretch;
+
+}
+
+.unit_stats {
+    height: 40px;
+    top: 0px;
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+    margin-top: 5px;
+
+    position: relative;
+    border-top: 1px solid rgba(47, 162, 100, 0.2);
+    border-bottom: 1px solid rgba(47, 162, 100, 0.2);
+
+    background-image: linear-gradient(to right, rgba(47, 162, 100, 0), rgba(47, 162, 100, 0.2), rgba(47, 162, 100, 0.3), rgba(47, 162, 100, 0.2), rgba(47, 162, 100, 0));
+
+}
+
+.unit_types {
+    height: 40px;
+    position: relative;
+    clear: left;
+    width: auto;
+    text-align: center
+}
+
+.unit_ability_icon {
+    float: left;
+}
+
+.unit_stat_icon {
+    position: relative;
+    align-content: left;
+    padding-right: 10px;
+    float: left;
+    height;
+    left: 10%
+}
+
+/*
+.unit_stat_icon .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+
+    border-radius: 10px 0px 10px 0px;
+    border: 1px solid #004b5e;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 40px;
+    margin-left: 40px;
+
+
+
+}
+
+*/
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.unit_stat_icon:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+
+
+.unit_prod {
+    color: bisque;
+    font-size: 14px;
+    position: absolute;
+    top: -1px;
+    background-color: #15242e;
+
+    text-align: left;
+}
+
+.ability_damage {
+    float: right;
+    font-size: 20px;
+    align-content: right;
+    margin-top: 10px;
+    display: inline-block;
+
+    min-width: 50px;
+}
+
+
+.unit_name {
+
+    border-width: 20px;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/Interface/panel_name_border.png);
+    border-image-slice: 20 fill;
+
+    border-image-repeat: round;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: beige;
+    overflow: hidden;
+    margin: -35px;
+    margin-bottom: -5px;
+    width: 325px;
+    height: 15px;
+    text-align: center;
+
+
+
+}
+
+.mod_name {
+    font-size: 18px;
+    position: relative;
+
+    text-align: left;
+    padding-left: 10px;
+
+}
+
+.togglelink2 {
+    font-family: 'Duru Sans', sans-serif;
+    padding-left: 10px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 2px 2px rgba(0, 100, 100, 0.3);
+    background-color: #051221;
+
+    padding: 5px;
+}
+
+
+.togglelink3 {
+    font-family: 'Duru Sans', sans-serif;
+    padding-left: 10px;
+
+    text-transform: uppercase;
+    margin-left: 20px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 100, 100, 0.3);
+    background-color: #030c29;
+
+    padding: 5px;
+}
+
+.togglelink {
+    font-family: 'Duru Sans', sans-serif;
+    padding-left: 10px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 2px 2px rgba(0, 100, 100, 0.3);
+    background-color: #051221;
+
+    padding: 5px;
+}
+
+.tech_name {
+    font-size: 16px;
+    position: relative;
+    color: aliceblue;
+    text-align: center;
+    padding-left: 10px;
+    font-family: 'Duru Sans', sans-serif;
+
+}
+
+.tooltip {
+    color: #b6e9a6;
+    display: inline-block;
+    padding: 10px;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 fill;
+    text-shadow: 2px 2px black;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    min-width: 200px;
+    max-width: 700px;
+    min-height: 40px;
+    margin-left: 40px;
+}
+
+
+.leftAbility {
+    display: block;
+    float: left;
+    width: 100px;
+}
+
+.rightAbility {
+    display: block;
+    float: right;
+    width: 100px;
+
+}
+
+
+
+.tooltiptext2 {
+    display: inline-block;
+}
+
+
+/* Tooltip text
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+
+    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 fill;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 40px;
+    margin-left: 40px;
+
+
+
+}
+ */
+
+/* Tooltip text */
+.researchResultBackgroundImage .tooltiptext2 {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 10px 0px 10px 0px;
+    border: 1px solid #004b5e;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    min-width: 400px;
+    max-width: 600px;
+    min-height: 40px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+
+
+}
+
+.unittype_icon {
+    position: relative;
+    background-image: url(/aowp/UI/unitTypeBackground.png);
+    background-position: right;
+    background-size: contain;
+
+    display: inline-block;
+    max-width: 40px;
+
+}
+
+/* Tooltip text 
+.unittype_icon .tooltiptext {
+    visibility: hidden;
+    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 fill;
+    text-shadow: 2px 2px black;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    min-width: 200px;
+    max-width: 700px;
+    min-height: 40px;
+    margin-left: 40px;
+
+
+
+}
+*/
+
+hyperlink {
+
+    color: beige;
+}
+
+
+
+.researchResultBackgroundImage .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+
+    border-radius: 10px 0px 10px 0px;
+    border: 1px solid #004b5e;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    font-size: 14px;
+    z-index: 1;
+    min-width: 400px;
+    max-width: 600px;
+    min-height: 40px;
+
+
+
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.researchResultBackgroundImage:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.researchResultBackgroundImage:hover .tooltiptext2 {
+    visibility: visible;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.unittype_icon:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+.researchResultImage .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: justify;
+    white-space: nowrap;
+    border-radius: 10px 0px 10px 0px;
+    border: 1px solid #004b5e;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px 10px;
+    display: block;
+    position: absolute;
+    z-index: 3;
+    min-width: 100px;
+    max-width: 500px;
+    min-height: 50px;
+
+    margin-left: 200px;
+
+
+}
+
+.researchSkillSlot {
+    color: aliceblue;
+    width: 320px;
+    height: 90px;
+    position: relative;
+    display: inline-block;
+    background-color: #002159;
+    border-radius: 10px 0px 10px 10px;
+    border: 2px solid aliceblue;
+
+
+}
+
+.researchSkillSlot:hover .researchSkillSlotIcon {
+    background-color: #8e5616;
+    box-shadow: inset 0px 0px 3px 3px rgba(255, 255, 255, 0.3);
+
+
+}
+
+.researchSkillSlot:hover {
+    background-color: #8e5616;
+    box-shadow: inset 0px 0px 3px 3px rgba(255, 255, 255, 0.3);
+
+}
+
+.researchSkillSlotIcon {
+    margin-left: -35px;
+    position: absolute;
+    margin-top: 5px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 75px;
+    height: 75px;
+
+    background-color: #131517;
+    border-radius: 40px 40px 40px 40px;
+    border: 2px solid #A5C3D3;
+
+}
+
+.img-circle {
+    border-radius: 50%;
+    border: 4px solid green;
+    margin-left: auto;
+    margin-top: 5px;
+    max-width: 60px;
+    margin-right: auto;
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.researchResultImage:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.researchResultImage:hover .researchSkillSlotIcon {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.researchResultBackgroundImage {
+
+    position: relative;
+
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url("/aowp/UI/backgroundModIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+    /* replace */
+}
+
+.researchResultImage {
+
+    position: relative;
+    margin-left: 10px;
+    margin-top: 15px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+
+
+    /* replace */
+}
+
+.researchResult {
+    margin-left: 15%;
+    margin-top: 30px;
+    height: 40px;
+    position: absolute;
+}
+
+damageblight {
+    max-height: 25px;
+    top: 4px;
+    position: relative;
+    content: url(/highlanderdb/Icons/Text/blight.png);
+}
+
+damagefire {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/fire.png);
+    position: relative;
+
+}
+
+damagespirit {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/spirit.png);
+    position: relative;
+
+}
+
+damagelightning {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/shock.png);
+    position: relative;
+}
+
+DamagePhysical {
+    max-height: 20px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/physical.png);
+    position: relative;
+
+}
+
+damagefrost {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/ice.png);
+    position: relative;
+
+}
+
+turn {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/turn.png);
+    position: relative;
+
+}
+
+resistance {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/resistance.png);
+    position: relative;
+
+
+}
+
+defense {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/armor.png);
+    position: relative;
+
+
+}
+
+happiness {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/happiness.png);
+    position: relative;
+
+}
+
+
+
+hp {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/health.png);
+    position: relative;
+
+
+}
+
+mp {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/mp.png);
+    position: relative;
+
+
+}
+
+StrengthPhysical {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_kinetic.png);
+    position: relative;
+}
+
+StrengthBio {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_bio.png);
+    position: relative;
+}
+
+
+popUpHeader2 {
+    padding: 10px;
+    font-weight: 300;
+    text-align: justify;
+
+}
+
+
+
+bullet:before {
+    content: "\25C6";
+    color: #bbcdf6;
+    padding-right: 5px;
+
+}
+
+
+bulletlist {}
+
+bullet {
+    display: list-item;
+    list-style-type: none;
+    padding-left: 12px;
+
+}
+
+accuracy {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/accuracy.png);
+    position: relative;
+
+
+}
+
+xpCol {
+    color: lawngreen;
+}
+
+spacedline {
+    display: flex;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
+
+
+range {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/range.png);
+    position: relative;
+
+}
+
+tricorium {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/cosmite.png);
+    position: relative;
+
+
+}
+
+strengthpsyche {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_psy.png);
+    position: relative;
+
+}
+
+StrengthPsyche {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_psy.png);
+    position: relative;
+
+}
+
+StrengthWave {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_arc.png);
+    position: relative;
+
+}
+
+StrengthArc {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_arc.png);
+    position: relative;
+
+}
+
+StrengthThermal {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_thermal.png);
+    position: relative;
+
+}
+
+strengthentropy {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_entropy.png);
+    position: relative;
+
+}
+
+StrengthEntropy {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_entropy.png);
+    position: relative;
+
+}
+
+strengthpsi {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/Strength_psy.png);
+    position: relative;
+
+}
+
+
+
+x-medal_novice {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/novice.png);
+    position: relative;
+
+
+}
+
+x-medal_veteran {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/veteran.png);
+    position: relative;
+
+
+}
+
+x-medal_expert {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/expert.png);
+    position: relative;
+
+
+}
+
+x-medal_prime {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/prime.png);
+    position: relative;
+
+
+}
+
+repeatingAction {
+    max-width: 80px;
+    content: url(/aowp/Icons/Text/repeating.png);
+    position: relative;
+    padding-left: 10px;
+
+}
+
+singleUseAction {
+    max-width: 80px;
+    max-height: 20px;
+    content: url(/aowp/Icons/Text/single_action.png);
+    position: relative;
+    padding-left: 10px;
+
+}
+
+singleAction {
+    max-width: 80px;
+    content: url(/aowp/Icons/Text/single_action.png);
+    position: relative;
+    padding-left: 10px;
+
+}
+
+fullAction {
+    max-width: 80px;
+    content: url(/aowp/Icons/Text/180px-AP_FullAction.png);
+    position: relative;
+    padding-left: 10px;
+
+}
+
+freeAction {
+    max-width: 80px;
+    content: url(/aowp/Icons/Text/180px-AP_Free.png);
+    position: relative;
+    padding-left: 10px;
+
+}
+
+leaveoneaction {
+    max-width: 80px;
+    content: url(/aowp/Icons/Text/180px-AP_LeaveOneActionPoint.png);
+    position: relative;
+    padding-left: 10px;
+
+}
+
+popUpHeader3 {
+    font-size: 20px;
+    font-weight: 600;
+    background-color:
+}
+
+titleBrown {
+    color: rgb(255, 255, 102);
+    font-weight: 350;
+
+}
+
+titleBrownBig {
+    color: rgb(255, 255, 102);
+    font-weight: 350;
+    font-size: 18px;
+
+}
+
+abilityred {
+    color: rgb(224, 34, 69);
+    font-weight: 400px;
+}
+
+actionblue {
+    color: rgb(102, 204, 255);
+}
+
+
+
+popUpDesc {
+    text-align: left;
+}
+
+HelpText {
+    color: grey;
+    font-size: 14px;
+}
+
+fireCol {
+    color: red;
+}
+
+silver {
+    color: lightgray;
+    font-size: 15px;
+}
+
+xp {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/xp.png);
+    position: relative;
+}
+
+EssenceCharge {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/essence.png);
+    position: relative;
+}
+
+essencechargeall {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/essenceAll.png);
+    position: relative;
+}
+
+gold {
+    max-height: 20px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/gold.png);
+    position: relative;
+}
+
+tacticalPoint {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/tac_ops.png);
+    position: relative;
+}
+
+stratPoint {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/strat_ops.png);
+    position: relative;
+}
+
+
+population {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/population.png);
+    position: relative;
+}
+
+production {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/production.png);
+    position: relative;
+}
+
+
+research {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/research.png);
+    position: relative;
+}
+
+.header-img {
+    width: 100%;
+
+    height: 150px;
+
+}
+
+.header-img::after {
+    content: "";
+    height: 150px;
+    background: url(/aowp/UI/banner.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    font-family: 'Duru Sans', sans-serif;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    text-shadow: 2px 2px 5px black;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        2px 2px 5px black,
+        -2px -2px 5px black, 1px 1px 0 #000;
+    color: whitesmoke;
+    opacity: 2;
+}
+
+influence {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/influence.png);
+    position: relative;
+}
+
+food {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/food.png);
+    position: relative;
+}
+
+operationstrength {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/op_strength.png);
+    position: relative;
+}
+
+operationDefense {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/op_defense.png);
+    position: relative;
+}
+
+raceRelation {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/racerelation.png);
+    position: relative;
+}
+
+unhappiness {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/unhappiness.png);
+    position: relative;
+}
+
+anger {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/unhappiness.png);
+    position: relative;
+}
+
+rioter {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/rioter.png);
+    position: relative;
+}
+
+casusBelli {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/casusbelli.png);
+    position: relative;
+}
+
+reputation6 {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/reputation.png);
+    position: relative;
+}
+
+diplolinks {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/diplolinks.png);
+    position: relative;
+}
+
+watersector {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/watersector.png);
+    position: relative;
+}
+
+foodSlot {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/foodslot.png);
+    position: relative;
+}
+
+researchSlot {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/researchslot.png);
+    position: relative;
+}
+
+productionSlot {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/productionslot.png);
+    position: relative;
+}
+
+energySlot {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/energyslot.png);
+    position: relative;
+}
+
+happinessSlot {
+    max-height: 25px;
+    top: 3px;
+    content: url(/aowp/Icons/Text/happinessslot.png);
+    position: relative;
+}
