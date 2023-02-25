@@ -206,19 +206,28 @@
          if (a === jsonUnitAbilities.abilities[j].slug) {
              icontext = jsonUnitAbilities.abilities[j].description;
              iconsrc = a;
-             iconName = jsonUnitAbilities.abilities[j].name.toUpperCase();
+             iconName = jsonUnitAbilities.abilities[j].name;
+
+             if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
+                 iconName === "Fighter Unit" || iconName === "Support Unit" ||
+                 iconName === "Battlemage Unit" || iconName === "Skirmisher Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit") {
+                 unitRole = document.getElementById("unit_role");
+                 unitRole.setAttribute("id", "unit_role" + a);
+                 unitRole.innerHTML = iconName;
+             }
+             iconName = iconName.toUpperCase();
              btn = document.createElement("DIV");
              btn.className = "unittype_icon";
              imag = document.createElement("IMG");
              spa = document.createElement("SPAN");
              spa.className = "tooltiptext";
-             imag.setAttribute("src", "/highlanderdb/Icons/UnitTypes/" + iconsrc + ".png");
+             imag.setAttribute("src", "/highlanderdb/Icons/Abilities/" + iconsrc + ".png");
              imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
              imag.setAttribute("width", "40");
              imag.setAttribute("height", "40");
 
 
-             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Text/mp.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + iconName + "</p>" +
+             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Abilities/" + iconsrc + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + iconName + "</p>" +
                  "</br>" + icontext;
 
 
@@ -235,7 +244,7 @@
  }
 
  function addAbilityslot(a, b) {
-     var abilityName, abilityIcon, abilityDescr, abilityDam, abilityAcc, abilityRange, abilityType, j, splitDamageString, abilityDamType, abilityReq, abilityMod = "";
+     var abilityName, abilityIcon, abilityDescr, abilityDam, abilityAcc, abilityRange, abilityType, abilityNote, j, splitDamageString, abilityDamType, abilityReq, abilityMod = "";
 
      for (j in jsonUnitAbilities.abilities) {
          if (a == jsonUnitAbilities.abilities[j].slug) {
@@ -246,7 +255,14 @@
              }
 
 
+
+
+
+
              abilityType = jsonUnitAbilities.abilities[j].actionPoints;
+
+
+
              abilityName = jsonUnitAbilities.abilities[j].name;
              abilityIcon = jsonUnitAbilities.abilities[j].icon;
 
@@ -256,7 +272,10 @@
              } else {
                  abilityReq = "(";
                  for (k in jsonUnitAbilities.abilities[j].requisites) {
-                     abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite + ",";
+                     abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
+                     if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
+                         abilityReq += ",";
+                     }
                  }
                  abilityReq += ")";
              }
@@ -273,8 +292,19 @@
 
              }
 
+             // add notes
 
 
+             abilityNote = "";
+             for (l in jsonUnitAbilities.abilities[j].notes) {
+                 if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
+
+                 } else {
+                     abilityNote += "<bullet>" + jsonUnitAbilities.abilities[j].notes[l].note + "</bullet>";
+
+                 }
+
+             }
 
              //   var n = abilityDescr.includes("Unique");
 
@@ -304,12 +334,40 @@
              spa.className = "tooltiptext";
              abilityDescr = jsonUnitAbilities.abilities[j].description;
 
+             var abilityIconType = "";
+             imag.setAttribute("src", "/highlanderdb/Icons/Abilities/" + abilityIcon + ".png");
+             if (abilityDam != undefined) {
+                 splitDamageString = abilityDam.split(">");
+                 if (splitDamageString[0].indexOf("phys") != -1) {
+                     var abilityIconType = "ability_icon_phys";
+                 } else if (splitDamageString[0].indexOf("frost") != -1) {
+                     var abilityIconType = "ability_icon_frost";
+                 } else if (splitDamageString[0].indexOf("blight") != -1) {
+                     var abilityIconType = "ability_icon_blight";
+                 } else if (splitDamageString[0].indexOf("spirit") != -1) {
+                     var abilityIconType = "ability_icon_spirit";
+                 } else if (splitDamageString[0].indexOf("fire") != -1) {
+                     var abilityIconType = "ability_icon_fire";
+                 } else {
+                     var abilityIconType = "ability_icon";
+                 }
+
+             } else {
+                 var abilityIconType = "ability_icon"
+             }
+
+             imag.setAttribute("style", "background-image: url(\"/highlanderdb/Icons/Interface/" + abilityIconType + ".png\");background-repeat: no-repeat;background-size: 40px 40px");
+
+             imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
+             imag.setAttribute("width", "40");
+             imag.setAttribute("height", "40");
+
              // block one, header
-             spa.innerHTML = "<div style\"display:block\"><img style=\"float:left; height:50px; width:50px\" src=\"/highlanderdb/Icons/Text/mp.png\">";
+             spa.innerHTML = "<div style\"display:block\"><img style=\"float:left; height:50px; width:50px; background-image:url(\'/highlanderdb/Icons/Interface/" + abilityIconType + ".png');background-repeat: no-repeat;background-size: 50px\" src=\"/highlanderdb/Icons/Abilities/" + abilityIcon + ".png\">";
 
              spa.innerHTML += "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase() + "</div>" + "<div class=\"rightAbility\">" + abilityDam + "</div><br>";
 
-             // spa.innerHTML += "<div style=\"clear:both\"> </div>";
+             spa.innerHTML += "<div style=\"clear:right\"> </div>";
              spa.innerHTML += "<div class=\"leftAbility\">" + abilityAcc + abilityRange + "</div>" + "<div class=\"rightAbility\">" + abilityType + "</div></div>";
              spa.innerHTML += "<div style=\"clear:both\"> </div>";
 
@@ -318,9 +376,17 @@
              spa.innerHTML += "<br>" + abilityDescr;
 
              // modifiers
-             spa.innerHTML += "<br>" + abilityMod;
+             if (abilityMod != "") {
+                 spa.innerHTML += "<br> <p style=\"color:#addd9e;\">" + abilityMod + "</p>";
+             }
+
 
              // block 3, req
+             //notes
+
+             spa.innerHTML += "<p style=\"color:#a4a4a6; font-size: 12px\">" + abilityNote + "</p>";
+
+
 
              spa.innerHTML += "<br>" + abilityReq;
 
@@ -328,13 +394,12 @@
                  spa.innerHTML = "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase();
                  spa.innerHTML += "<div style=\"clear:both\"> </div>" + "<br>";
                  spa.innerHTML += jsonUnitAbilities.abilities[j].description;
+                 dam.innerHTML = "";
              }
 
 
-             imag.setAttribute("src", "/aowp/Icons/Abilities/" + abilityIcon + ".png");
-             imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
-             imag.setAttribute("width", "40");
-             imag.setAttribute("height", "40");
+
+
 
              document.getElementById("unitabholder").append(btn);
              tex.appendChild(spa);
@@ -365,15 +430,18 @@
              tex.className = "tooltip";
              tex.setAttribute('onclick', '');
              tex.innerHTML = abilityName;
+
+
+
              spa.className = "tooltiptext";
 
-             imag.setAttribute("src", "/highlanderdb/Icons/UnitTypes/" + abilityIcon + ".png");
+             imag.setAttribute("src", "/highlanderdb/Icons/Abilities/" + abilityIcon + ".png");
              imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
              imag.setAttribute("width", "40");
              imag.setAttribute("height", "40");
 
 
-             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Text/mp.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
+             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
                  "</br>" + abilityDescr;
 
 
@@ -403,13 +471,10 @@
              abilityDescr = jsonUnitAbilities.abilities[j].description;
              abilityDam = jsonUnitAbilities.abilities[j].damage;
              var btn = document.createElement("DIV");
-             btn.className = "unittype_icon";
+             btn.className = "resistance_icon";
              var imag = document.createElement("IMG");
              imag.className = "unit_ability_icon";
 
-             var dam = document.createElement("DIV");
-             dam.className = "ability_damage";
-             dam.innerHTML = abilityDam;
 
              spa = document.createElement("SPAN");
              spa.className = "tooltiptext";
@@ -419,12 +484,40 @@
              imag.setAttribute("width", "25");
              imag.setAttribute("height", "25");
 
-             imag.setAttribute("src", "/aowp/Icons/Resistances/" + abilityIcon + ".png");
-             document.getElementById("resistanceholder").appendChild(btn);
+             if (a.indexOf("frost") !== -1) {
+                 imag.setAttribute("src", "/highlanderdb/Icons/Text/frost_resistance.png");
+             }
+             if (a.indexOf("blight") !== -1) {
+                 imag.setAttribute("src", "/highlanderdb/Icons/Text/blight_resistance.png");
+             }
+             if (a.indexOf("fire") !== -1) {
+                 imag.setAttribute("src", "/highlanderdb/Icons/Text/fire_resistance.png");
+             }
+             if (a.indexOf("spirit") !== -1) {
+                 imag.setAttribute("src", "/highlanderdb/Icons/Text/spirit_resistance.png");
+             }
+             if (a.indexOf("lightning") !== -1) {
+                 imag.setAttribute("src", "/highlanderdb/Icons/Text/lightning_resistance.png");
+             }
 
+             if (a.indexOf("weakness") !== -1) {
+                 var split = a.split("weakness_");
+                 abilityDam = "<p class=\"resistanceNumber\" style=\"color:red;\">-" + split[1];
+             }
+             if (a.indexOf("resistance") !== -1) {
+                 var split = a.split("resistance_");
+                 abilityDam = "<p class=\"resistanceNumber\" style=\"color:green;\">" + split[1];
+             }
+
+
+
+             document.getElementById("resistanceholder").appendChild(btn);
+             btn.innerHTML = abilityDam;
 
              btn.appendChild(imag);
+
              btn.append(spa);
+
 
 
 
@@ -542,7 +635,7 @@
  }
 
  function showUnit(a) {
-     var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, icon, imagelink, prodcost, tier, research, building, reward = "";
+     var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward = "";
      var found = false;
      for (i in jsonUnits.units) {
          if (a == jsonUnits.units[i].id) {
@@ -556,6 +649,10 @@
              unitName.setAttribute("id", "unitstring" + a);
 
              unitName.innerHTML = jsonUnits.units[i].name.toUpperCase();
+
+
+
+
              // descr = document.getElementById("description");
              //descr.setAttribute("id", "description" + a);
              //descr.innerHTML = jsonUnits.units[i].description;
@@ -601,21 +698,15 @@
              mp.innerHTML = jsonUnits.units[i].mp;
              tier = document.getElementById("tier");
              tier.setAttribute("id", "tier" + a);
-             var levelup = document.getElementById("levelup");
-             // levelup.setAttribute("id", "levelup" + a);
-             // if ((jsonUnits.units[i].elite_rewards[0]) != undefined) {
-             //     reward = jsonUnits.units[i].elite_rewards[0].slug;
 
 
-             // } else {
-             //    reward = "";
-             //}
+
              tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
 
              prodcost = document.getElementById("productioncost");
              prodcost.setAttribute("id", "productioncost" + a);
-             prodcost.innerHTML = jsonUnits.units[i].cost;
+             prodcost.innerHTML = "Cost: " + jsonUnits.units[i].cost;
 
              for (j in jsonUnits.units[i].secondary_passives) {
                  addUnitTypeIcon(jsonUnits.units[i].secondary_passives[j].slug, a);
@@ -643,7 +734,7 @@
 
              document.getElementById("resistanceholder").setAttribute("id", "resistanceholder" + a);
 
-
+             addLevelUpInfo(jsonUnits.units[i], a);
              //checkModRequirements(jsonUnits.units[i]);
              found = true;
              break;
@@ -655,6 +746,56 @@
          console.log("Couldn't find unit: " + a + i);
      }
 
+ }
+
+ function addLevelUpInfo(units, a) {
+     var levelup = document.getElementById("levelup");
+     levelup.setAttribute("id", "levelup" + a);
+
+     var levelText = "Recruit<br>";
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_soldier.png\" width='20'\"> Soldier</p>";
+     for (i in units.medal_rewards_2) {
+         levelText += "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
+
+     }
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_veteran.png\" width='20'\"> Veteran</p>";
+     for (i in units.medal_rewards_3) {
+         levelText += "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
+
+     }
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_elite.png\" width='20'\"> Elite</p>";
+     for (i in units.medal_rewards_3) {
+         for (i in units.medal_rewards_4) {
+             levelText += "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
+
+         }
+     }
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
+     for (i in units.medal_rewards_3) {
+         for (i in units.medal_rewards_5) {
+             levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
+
+         }
+     }
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
+     for (i in units.medal_rewards_6) {
+         levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+
+     }
+
+     levelup.innerHTML = levelText;
+
+
+ }
+
+ function lookupSlug(slug) {
+     for (j in jsonUnitAbilities.abilities) {
+         if (slug == jsonUnitAbilities.abilities[j].slug) {
+             return jsonUnitAbilities.abilities[j].name;
+         }
+
+     }
+     return "Couldn't find this";
  }
 
  function romanize(num) {
@@ -1139,26 +1280,7 @@
      }
  }
 
- function searchData() {
-     var input, filter, table, tr, td, i, txtValue;
-     input = document.getElementById("searchInput");
-     filter = input.value.toUpperCase();
-     searchUnits(filter);
- }
 
- function searchUnits(keyword) {
-     var i, output, textvalue, list = "";
-     output = document.getElementById("searchOutput");
-
-     for (i = 0; i < jsonUnits.units.length; i++) {
-         textvalue = jsonUnits.units[i].string;
-         if (textvalue.toUpperCase().indexOf(keyword) > -1) {
-             list += "<br>" + jsonUnits.units[i].string;
-
-         }
-     }
-     output.innerHTML = list;
- }
 
 
  var coll = document.getElementsByClassName("collapsible");

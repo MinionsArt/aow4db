@@ -617,6 +617,13 @@ tab {
 
 }
 
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
 /* Change the color of links on hover */
 .unit_resistanceslot:hover {
     background-color: darkolivegreen;
@@ -660,6 +667,7 @@ tab {
 
 .unit_ability_icon {
     float: left;
+    width: auto;
 }
 
 .unit_stat_icon {
@@ -800,9 +808,10 @@ tab {
 }
 
 .tooltip {
-    color: #b6e9a6;
+    color: #aadb9c;
     display: inline-block;
     padding: 10px;
+    text-shadow: 2px 2px black;
 }
 
 .tooltiptext {
@@ -819,23 +828,23 @@ tab {
     padding: 10px;
     position: absolute;
     z-index: 1;
-    min-width: 200px;
-    max-width: 700px;
+    min-width: 300px;
+    max-width: 400px;
     min-height: 40px;
     margin-left: 40px;
 }
 
 
 .leftAbility {
-    display: block;
+    display: inline;
     float: left;
-    width: 100px;
+
 }
 
 .rightAbility {
-    display: block;
+    display: inline;
     float: right;
-    width: 100px;
+
 
 }
 
@@ -894,14 +903,28 @@ tab {
 
 }
 
+.resistanceNumber {
+    float: right;
+    margin-top: 1px;
+    text-shadow: 2px 2px black;
+
+}
+
 .unittype_icon {
     position: relative;
-    background-image: url(/aowp/UI/unitTypeBackground.png);
-    background-position: right;
-    background-size: contain;
 
     display: inline-block;
     max-width: 40px;
+
+}
+
+.resistance_icon {
+    position: relative;
+
+
+    display: inline-block;
+    min-width: 30px;
+    padding: 2px;
 
 }
 
@@ -1151,7 +1174,7 @@ damagefrost {
 turn {
     max-height: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/turn.png);
+    content: url(/highlanderdb/Icons/Text/turn.png);
     position: relative;
 
 }
@@ -1185,7 +1208,7 @@ happiness {
 
 
 hp {
-    max-height: 25px;
+    max-height: 15px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/health.png);
     position: relative;
@@ -1196,7 +1219,7 @@ hp {
 mp {
     max-height: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/mp.png);
+    content: url(/highlanderdb/Icons/Text/mp.png);
     position: relative;
 
 
@@ -1244,9 +1267,9 @@ bullet {
 }
 
 accuracy {
-    max-height: 25px;
+    max-width: 20px;
     top: 3px;
-    content: url(/aowp/Icons/Text/accuracy.png);
+    content: url(/highlanderdb/Icons/Text/accuracy.png);
     position: relative;
 
 
@@ -1266,9 +1289,18 @@ spacedline {
 
 
 range {
-    max-height: 25px;
+    max-width: 20px;
     top: 3px;
-    content: url(/aowp/Icons/Text/range.png);
+    content: url(/highlanderdb/Icons/Text/range.png);
+    position: relative;
+
+}
+
+
+souls {
+    max-width: 20px;
+
+    content: url(/highlanderdb/Icons/Text/souls.png);
     position: relative;
 
 }
@@ -1385,41 +1417,41 @@ x-medal_prime {
 }
 
 repeatingAction {
-    max-width: 80px;
-    content: url(/aowp/Icons/Text/repeating.png);
+    max-width: 40px;
+    content: url(/highlanderdb/Icons/Text/repeating.png);
     position: relative;
     padding-left: 10px;
 
 }
 
 singleUseAction {
-    max-width: 80px;
+    max-width: 40px;
     max-height: 20px;
-    content: url(/aowp/Icons/Text/single_action.png);
+    content: url(/highlanderdb/Icons/Text/full_action_continue.png);
     position: relative;
     padding-left: 10px;
 
 }
 
 singleAction {
-    max-width: 80px;
-    content: url(/aowp/Icons/Text/single_action.png);
+    max-width: 40px;
+    content: url(/highlanderdb/Icons/Text/single_action.png);
     position: relative;
     padding-left: 10px;
 
 }
 
 fullAction {
-    max-width: 80px;
-    content: url(/aowp/Icons/Text/180px-AP_FullAction.png);
+    max-width: 40px;
+    content: url(/highlanderdb/Icons/Text/full_action.png);
     position: relative;
     padding-left: 10px;
 
 }
 
 freeAction {
-    max-width: 80px;
-    content: url(/aowp/Icons/Text/180px-AP_Free.png);
+    max-width: 40px;
+    content: url(/highlanderdb/Icons/Text/free_action.png);
     position: relative;
     padding-left: 10px;
 
@@ -1427,7 +1459,7 @@ freeAction {
 
 leaveoneaction {
     max-width: 80px;
-    content: url(/aowp/Icons/Text/180px-AP_LeaveOneActionPoint.png);
+    content: url(/highlanderdb/Icons/Text/leave_one.png);
     position: relative;
     padding-left: 10px;
 
@@ -1505,7 +1537,22 @@ essencechargeall {
 gold {
     max-height: 20px;
     top: 3px;
+    left: 3px;
     content: url(/highlanderdb/Icons/Text/gold.png);
+    position: relative;
+}
+
+mana {
+    max-height: 20px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/mana.png);
+    position: relative;
+}
+
+unitprod {
+    max-height: 20px;
+
+    content: url(/highlanderdb/Icons/Text/unitprod.png);
     position: relative;
 }
 
@@ -1556,8 +1603,8 @@ research {
 .header-img::after {
     content: "";
     height: 150px;
-    background: url(/aowp/UI/banner.png);
-    background-size: contain;
+    background: url(/highlanderdb/Icons/header.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
     opacity: 0.5;
@@ -1588,9 +1635,9 @@ research {
 }
 
 influence {
-    max-height: 25px;
+    max-width: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/influence.png);
+    content: url(/highlanderdb/Icons/Text/imperium.png);
     position: relative;
 }
 
