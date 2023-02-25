@@ -53,6 +53,10 @@
                 <input type="checkbox" id="passivesCheck" checked="checked">
                 Passives
             </label>
+            <label class="switch">
+                <input type="checkbox" id="modifiersCheck">
+                Modifiers
+            </label>
 
 
             <label class="switch">
@@ -219,10 +223,15 @@
                 if (textvalue.toUpperCase().indexOf(fields[0]) > -1) {
                     if (list.length >= 1) {
                         if (!isInArray(list, jsonUnits.units[i].id)) {
-                            list.push(jsonUnits.units[i].id);
+                            if (!depricatedCheck(jsonUnits.units[i].id)) {
+                                list.push(jsonUnits.units[i].id);
+                            }
+
                         }
                     } else {
-                        list.push(jsonUnits.units[i].id);
+                        if (!depricatedCheck(jsonUnits.units[i].id)) {
+                            list.push(jsonUnits.units[i].id);
+                        }
                     }
                 }
             }
@@ -236,9 +245,23 @@
             if (document.getElementById("resistancesCheck").checked) {
                 searchArray(fields[0], jsonUnits.units[i].resistances, list, i);
             }
-            // searchArray(fields[0], jsonUnits.units[i].unit_types, list, i);
+
+
 
         }
+        if (document.getElementById("modifiersCheck").checked) {
+            for (j = 0; j < jsonUnitAbilities.abilities.length; j++) {
+                {
+                    if (jsonUnitAbilities.abilities[j].modifiers === undefined) {
+
+                    } else {
+                        searchArrayDescrip(fields[0], jsonUnitAbilities.abilities[j].modifiers, list, j);
+                    }
+
+                }
+            }
+        }
+        // searchArray(fields[0], jsonUnits.units[i].unit_types, list, i);
 
         if (fields.length > 1) {
             var workinglist = structuredClone(list);;
@@ -271,10 +294,15 @@
                 if (textvalue.toUpperCase().indexOf(keyword) > -1) {
                     if (listToPushTo.length >= 1) {
                         if (!isInArray(listToPushTo, jsonUnits.units[index].id)) {
-                            listToPushTo.push(jsonUnits.units[index].id);
+                            if (!depricatedCheck(jsonUnits.units[index].id)) {
+                                listToPushTo.push(jsonUnits.units[index].id);
+                            }
+
                         }
                     } else {
-                        listToPushTo.push(jsonUnits.units[index].id);
+                        if (!depricatedCheck(jsonUnits.units[index].id)) {
+                            listToPushTo.push(jsonUnits.units[index].id);
+                        }
                     }
 
 
@@ -282,6 +310,48 @@
                 }
             }
 
+        }
+    }
+
+    function searchArrayDescrip(keyword, arraytosearch, listToPushTo, index) {
+        for (j in arraytosearch) {
+            if (arraytosearch[j].name != null) {
+
+                textvalue = arraytosearch[j].name;
+                if (textvalue.toUpperCase().indexOf(keyword) > -1) {
+
+                    findUnitWithAbility(jsonUnitAbilities.abilities[index].slug, listToPushTo);
+
+
+                }
+            }
+
+        }
+    }
+
+    function findUnitWithAbility(ability, listToPushTo) {
+        for (i = 0; i < jsonUnits.units.length; i++) {
+            for (j = 0; j < jsonUnits.units[i].abilities.length; j++) {
+                if (ability == jsonUnits.units[i].abilities[j].slug) {
+
+                    if (listToPushTo.length >= 1) {
+
+                        if (!isInArray(listToPushTo, jsonUnits.units[i].id)) {
+
+
+                            console.log("Found unit" + ability + jsonUnits.units[i].id);
+                            listToPushTo.push(jsonUnits.units[i].id);
+
+
+                        }
+                    } else {
+
+                        listToPushTo.push(jsonUnits.units[i].id);
+
+                    }
+                }
+
+            }
         }
     }
 
@@ -292,10 +362,14 @@
                 if (textvalue.toUpperCase() == keyword) {
                     if (listToPushTo.length >= 1) {
                         if (!isInArray(listToPushTo, jsonUnits.units[index].id)) {
-                            listToPushTo.push(jsonUnits.units[index].id);
+                            if (!depricatedCheck(jsonUnits.units[index].id)) {
+                                listToPushTo.push(jsonUnits.units[index].id);
+                            }
                         }
                     } else {
-                        listToPushTo.push(jsonUnits.units[index].id);
+                        if (!depricatedCheck(jsonUnits.units[index].id)) {
+                            listToPushTo.push(jsonUnits.units[index].id);
+                        }
                     }
 
 
@@ -306,6 +380,25 @@
         }
     }
 
+    function depricatedCheck(id) {
+        for (i = 0; i < jsonUnits.units.length; i++) {
+            if (jsonUnits.units[i].id == id) {
+                for (j = 0; j < jsonUnits.units[i].primary_passives.length; j++) {
+                    if (jsonUnits.units[i].primary_passives[j].slug.indexOf("deprecated") != -1) {
+
+                        return true;
+
+                    }
+                }
+
+            }
+
+
+        }
+        return false;
+
+    }
+
     function searchArrayMultiple(keyword, workingarray, arraytosearch, listToPush, index) {
         for (j in arraytosearch) {
             if (arraytosearch[j].slug != null) {
@@ -313,10 +406,14 @@
                 if (textvalue.toUpperCase().indexOf(keyword) > -1 && isInArray(workingarray, jsonUnits.units[index].id)) {
                     if (listToPush.length >= 1) {
                         if (!isInArray(listToPush, jsonUnits.units[index].id)) {
-                            listToPush.push(jsonUnits.units[index].id);
+                            if (!depricatedCheck(jsonUnits.units[index].id)) {
+                                listToPush.push(jsonUnits.units[index].id);
+                            }
                         }
                     } else {
-                        listToPush.push(jsonUnits.units[index].id);
+                        if (!depricatedCheck(jsonUnits.units[index].id)) {
+                            listToPush.push(jsonUnits.units[index].id);
+                        }
                     }
 
 
@@ -334,10 +431,14 @@
                 if (textvalue.toUpperCase() == keyword && isInArray(workingarray, jsonUnits.units[index].id)) {
                     if (listToPush.length >= 1) {
                         if (!isInArray(listToPush, jsonUnits.units[index].id)) {
-                            listToPush.push(jsonUnits.units[index].id);
+                            if (!depricatedCheck(jsonUnits.units[index].id)) {
+                                listToPush.push(jsonUnits.units[index].id);
+                            }
                         }
                     } else {
-                        listToPush.push(jsonUnits.units[index].id);
+                        if (!depricatedCheck(jsonUnits.units[index].id)) {
+                            listToPush.push(jsonUnits.units[index].id);
+                        }
                     }
 
 
@@ -357,10 +458,14 @@
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) > -1 && isInArray(workinglist, jsonUnits.units[i].id)) {
                     if (newlist.length >= 1) {
                         if (!isInArray(newlist, jsonUnits.units[i].id)) {
-                            newlist.push(jsonUnits.units[i].id);
+                            if (!depricatedCheck(jsonUnits.units[i].id)) {
+                                newlist.push(jsonUnits.units[i].id);
+                            }
                         }
                     } else {
-                        newlist.push(jsonUnits.units[i].id);
+                        if (!depricatedCheck(jsonUnits.units[i].id)) {
+                            newlist.push(jsonUnits.units[i].id);
+                        }
                     }
 
                 }

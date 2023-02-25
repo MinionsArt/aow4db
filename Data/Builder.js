@@ -270,22 +270,28 @@
              if (jsonUnitAbilities.abilities[j].requisites === undefined) {
                  abilityReq = "";
              } else {
-                 abilityReq = "(";
+                 abilityReq = "";
                  for (k in jsonUnitAbilities.abilities[j].requisites) {
+                     if (k == 0) {
+                         abilityReq = "(";
+                     }
                      abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
                      if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
                          abilityReq += ",";
+                     } else {
+                         abilityReq += ")";
                      }
                  }
-                 abilityReq += ")";
+
              }
 
              if (jsonUnitAbilities.abilities[j].modifiers === undefined) {
                  abilityMod = "";
              } else {
 
-                 for (l in jsonUnitAbilities.abilities[j].modifiers) {
 
+                 for (l in jsonUnitAbilities.abilities[j].modifiers) {
+                     abilityName += "*";
                      abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
                      abilityMod += jsonUnitAbilities.abilities[j].modifiers[l].description + "</bullet><br>";
                  }
@@ -377,7 +383,7 @@
 
              // modifiers
              if (abilityMod != "") {
-                 spa.innerHTML += "<br> <p style=\"color:#addd9e;\">" + abilityMod + "</p>";
+                 spa.innerHTML += "<p style=\"color:#addd9e;font-size: 13px\">" + abilityMod + "</p>";
              }
 
 
@@ -388,7 +394,7 @@
 
 
 
-             spa.innerHTML += "<br>" + abilityReq;
+             spa.innerHTML += abilityReq;
 
              if (abilityName.indexOf("Defense Mode") > -1) {
                  spa.innerHTML = "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase();
