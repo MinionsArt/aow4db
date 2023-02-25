@@ -641,7 +641,7 @@
  }
 
  function showUnit(a) {
-     var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward = "";
+     var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget = "";
      var found = false;
      for (i in jsonUnits.units) {
          if (a == jsonUnits.units[i].id) {
@@ -655,7 +655,6 @@
              unitName.setAttribute("id", "unitstring" + a);
 
              unitName.innerHTML = jsonUnits.units[i].name.toUpperCase();
-
 
 
 
@@ -757,6 +756,7 @@
  function addLevelUpInfo(units, a) {
      var levelup = document.getElementById("levelup");
      levelup.setAttribute("id", "levelup" + a);
+     evolveTarget = units.evolve_target;
 
      var levelText = "Recruit<br>";
      levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_soldier.png\" width='20'\"> Soldier</p>";
@@ -775,23 +775,40 @@
              levelText += "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
 
          }
-     }
-     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
-     for (i in units.medal_rewards_3) {
-         for (i in units.medal_rewards_5) {
-             levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
-
+         if (evolveTarget != undefined) {
+             levelText += "<bullet> Evolves into <hyperlink>" + lookupUnit(evolveTarget) + "</hyperlink></bullet>";
          }
      }
-     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
-     for (i in units.medal_rewards_6) {
-         levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+     if (evolveTarget === undefined) {
 
+
+         levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
+         for (i in units.medal_rewards_3) {
+             for (i in units.medal_rewards_5) {
+                 levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
+
+             }
+         }
+         levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
+         for (i in units.medal_rewards_6) {
+             levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+
+         }
      }
 
      levelup.innerHTML = levelText;
 
 
+ }
+
+ function lookupUnit(id) {
+     for (j in jsonUnits.units) {
+         if (id == jsonUnits.units[j].id) {
+             return jsonUnits.units[j].name;
+         }
+
+     }
+     return "Couldn't find this";
  }
 
  function lookupSlug(slug) {

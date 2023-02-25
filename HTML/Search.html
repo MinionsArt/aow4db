@@ -24,7 +24,6 @@
 
             $(this).css("color", "cyan");
         });
-
     </script>
     <title>Age of Wonders 4 - Search</title>
 </head>
@@ -288,6 +287,7 @@
     }
 
     function searchArray(keyword, arraytosearch, listToPushTo, index) {
+        var j = 0;
         for (j in arraytosearch) {
             if (arraytosearch[j].slug != null) {
                 textvalue = arraytosearch[j].slug;
@@ -314,6 +314,7 @@
     }
 
     function searchArrayDescrip(keyword, arraytosearch, listToPushTo, index) {
+        var j = 0;
         for (j in arraytosearch) {
             if (arraytosearch[j].name != null) {
 
@@ -326,6 +327,49 @@
                 }
             }
 
+        }
+    }
+
+    function searchArrayDescripMultiple(keyword, workingarray, arraytosearch, listToPush, index) {
+        var j = 0;
+        for (j in arraytosearch) {
+            if (arraytosearch[j].name != null) {
+
+                textvalue = arraytosearch[j].name;
+                if (textvalue.toUpperCase().indexOf(keyword) > -1) {
+
+                    findUnitWithAbilityMultiple(jsonUnitAbilities.abilities[index].slug, listToPush, workingarray);
+
+
+                }
+            }
+
+        }
+    }
+
+    function findUnitWithAbilityMultiple(ability, listToPushTo, workingarray) {
+        for (i = 0; i < jsonUnits.units.length; i++) {
+            for (m = 0; m < jsonUnits.units[i].abilities.length; m++) {
+                if (ability == jsonUnits.units[i].abilities[m].slug) {
+
+                    if (listToPushTo.length >= 1 && isInArray(workingarray, jsonUnits.units[i].id)) {
+
+                        if (!isInArray(listToPushTo, jsonUnits.units[i].id)) {
+
+
+                            console.log("Found unit" + ability + jsonUnits.units[i].id);
+                            listToPushTo.push(jsonUnits.units[i].id);
+
+
+                        }
+                    } else {
+
+                        listToPushTo.push(jsonUnits.units[i].id);
+
+                    }
+                }
+
+            }
         }
     }
 
@@ -356,6 +400,7 @@
     }
 
     function searchArrayWhole(keyword, arraytosearch, listToPushTo, index) {
+        var j = 0;
         for (j in arraytosearch) {
             if (arraytosearch[j].slug != null) {
                 textvalue = arraytosearch[j].slug;
@@ -400,6 +445,7 @@
     }
 
     function searchArrayMultiple(keyword, workingarray, arraytosearch, listToPush, index) {
+        var j = 0;
         for (j in arraytosearch) {
             if (arraytosearch[j].slug != null) {
                 textvalue = arraytosearch[j].slug;
@@ -424,7 +470,10 @@
         }
     }
 
+
+
     function searchArrayMultipleWhole(keyword, workingarray, arraytosearch, listToPush, index) {
+        var j = 0;
         for (j in arraytosearch) {
             if (arraytosearch[j].slug != null) {
                 textvalue = arraytosearch[j].slug;
@@ -483,6 +532,20 @@
             }
 
         }
+
+        if (document.getElementById("modifiersCheck").checked) {
+
+            for (j = 0; j < jsonUnitAbilities.abilities.length; j++) {
+                {
+                    if (jsonUnitAbilities.abilities[j].modifiers === undefined) {
+
+                    } else {
+                        searchArrayDescripMultiple(fieldToSearch, workinglist, jsonUnitAbilities.abilities[j].modifiers, newlist, j);
+                    }
+
+                }
+            }
+        }
         return newlist;
     }
 
@@ -509,7 +572,4 @@
 
 
     }
-
-</script>
-
-</html>
+</script></html>
