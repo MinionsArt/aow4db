@@ -578,8 +578,11 @@
      }
 
  }
- async function spawnCards(list) {
-     var doc = document.getElementById("units");
+ async function spawnCards(list, divID) {
+     if (divID === undefined) {
+         divID = "units";
+     }
+     var doc = document.getElementById(divID);
      for (var i = 0; i < list.length; i++) {
          var iDiv = unit_card_template.content.cloneNode(true);
          doc.appendChild(iDiv);
@@ -591,14 +594,14 @@
 
 
 
- async function showUnitsFromList(list) {
+ async function showUnitsFromList(list, divID) {
 
 
-     await spawnCards(list);
+     await spawnCards(list, divID);
 
      for (var i = 0; i < list.length; i++) {
 
-         showUnit(list[i]);
+         showUnit(list[i], divID);
 
      };
 
@@ -640,7 +643,7 @@
      };
  }
 
- function showUnit(a) {
+ function showUnit(a, divID) {
      var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget = "";
      var found = false;
      for (i in jsonUnits.units) {
