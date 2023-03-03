@@ -56,7 +56,10 @@
                 <input type="checkbox" id="modifiersCheck">
                 Modifiers
             </label>
-
+            <label class="switch">
+                <input type="checkbox" id="descriptionCheck">
+                Descriptions
+            </label>
 
             <label class="switch">
                 <input type="checkbox" id="resistancesCheck">
@@ -248,18 +251,30 @@
 
 
         }
-        if (document.getElementById("modifiersCheck").checked) {
+        if (document.getElementById("modifiersCheck").checked || document.getElementById("descriptionCheck").checked) {
             for (j = 0; j < jsonUnitAbilities.abilities.length; j++) {
                 {
-                    if (jsonUnitAbilities.abilities[j].modifiers === undefined) {
+                    if (document.getElementById("modifiersCheck").checked) {
+                        if (jsonUnitAbilities.abilities[j].modifiers === undefined) {
 
-                    } else {
-                        searchArrayDescrip(fields[0], jsonUnitAbilities.abilities[j].modifiers, list, j);
+                        } else {
+                            searchArrayDescrip(fields[0], jsonUnitAbilities.abilities[j].modifiers, list, j);
+                        }
+                    }
+                    if (document.getElementById("descriptionCheck").checked) {
+
+                        searchArrayDescription(fields[0], jsonUnitAbilities.abilities[j], list, j);
+
                     }
 
                 }
+
+
+
+
             }
         }
+
         // searchArray(fields[0], jsonUnits.units[i].unit_types, list, i);
 
         if (fields.length > 1) {
@@ -328,6 +343,20 @@
             }
 
         }
+    }
+
+    function searchArrayDescription(keyword, arraytosearch, listToPushTo, index) {
+
+        textvalue = arraytosearch.description;
+        if (textvalue.toUpperCase().indexOf(keyword) > -1) {
+
+            findUnitWithAbility(jsonUnitAbilities.abilities[index].slug, listToPushTo);
+
+
+        }
+
+
+
     }
 
     function searchArrayDescripMultiple(keyword, workingarray, arraytosearch, listToPush, index) {
