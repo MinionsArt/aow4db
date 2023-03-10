@@ -291,7 +291,7 @@
 
 
                  for (l in jsonUnitAbilities.abilities[j].modifiers) {
-                     abilityName += "*";
+                     abilityName += "&#11049";
                      abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
                      abilityMod += jsonUnitAbilities.abilities[j].modifiers[l].description + "</bullet><br>";
                  }
