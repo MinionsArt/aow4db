@@ -611,6 +611,37 @@
  }
 
 
+
+ async function spawnEquipCards(list, divID) {
+     if (divID === undefined) {
+         divID = "equip";
+     }
+     var doc = document.getElementById(divID);
+     for (var i = 0; i < list.length; i++) {
+         var iDiv = item_card_template.content.cloneNode(true);
+         doc.appendChild(iDiv);
+     }
+
+ }
+
+
+ async function showEquipmentFromList(list, divID) {
+
+
+     await spawnEquipCards(list, divID);
+
+     /* for (var i = 0; i < list.length; i++) {
+
+          showEquipment(list[i], divID);
+
+      };*/
+
+
+
+
+ }
+
+
  function checkModRequirements(unit) {
      var j, check, checksplit, checknot, checknotsplit = "";
      for (j in jsonMods.mods) {
