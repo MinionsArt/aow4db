@@ -641,6 +641,37 @@
 
  }
 
+ async function spawnTomeCards(list, divID) {
+     if (divID === undefined) {
+         divID = "tome";
+     }
+     var doc = document.getElementById(divID);
+     for (var i = 0; i < list.length; i++) {
+         var iDiv = tome_card_template.content.cloneNode(true);
+         doc.appendChild(iDiv);
+     }
+
+ }
+
+
+ async function showTomeFromList(list, divID) {
+
+
+     await spawnTomeCards(list, divID);
+
+     /* for (var i = 0; i < list.length; i++) {
+
+          showEquipment(list[i], divID);
+
+      };*/
+
+
+
+
+ }
+
+
+
 
  function checkModRequirements(unit) {
      var j, check, checksplit, checknot, checknotsplit = "";
