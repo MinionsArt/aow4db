@@ -208,13 +208,7 @@
              iconsrc = a;
              iconName = jsonUnitAbilities.abilities[j].name;
 
-             if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
-                 iconName === "Fighter Unit" || iconName === "Support Unit" ||
-                 iconName === "Battlemage Unit" || iconName === "Skirmisher Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit") {
-                 unitRole = document.getElementById("unit_role");
-                 unitRole.setAttribute("id", "unit_role" + a);
-                 unitRole.innerHTML = iconName;
-             }
+
              iconName = iconName.toUpperCase();
              btn = document.createElement("DIV");
              btn.className = "unittype_icon";
@@ -229,8 +223,14 @@
 
              spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Abilities/" + iconsrc + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + iconName + "</p>" +
                  "</br>" + icontext;
+             iconName = jsonUnitAbilities.abilities[j].name;
+             if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
+                 iconName === "Fighter Unit" || iconName === "Support Unit" ||
+                 iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft") {
+                 unitRole = document.getElementById("unit_role");
 
-
+                 unitRole.innerHTML = iconName;
+             }
              document.getElementById("unitstat").appendChild(btn);
 
              btn.appendChild(imag);
@@ -803,6 +803,8 @@
              document.getElementById("unitstat").setAttribute("id", "unitstat" + a);
 
              document.getElementById("resistanceholder").setAttribute("id", "resistanceholder" + a);
+             document.getElementById("unit_role").setAttribute("id", "unit_role" + a);
+
 
              addLevelUpInfo(jsonUnits.units[i], a);
              //checkModRequirements(jsonUnits.units[i]);
