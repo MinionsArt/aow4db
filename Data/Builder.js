@@ -726,12 +726,12 @@
              // descr = document.getElementById("description");
              //descr.setAttribute("id", "description" + a);
              //descr.innerHTML = jsonUnits.units[i].description;
-             //imagelink = document.getElementById("vid");
-             //imagelink.setAttribute("id", "vid" + a);
-             //imagelink.setAttribute('src', "/aowp/Previews/" + jsonUnits.units[i].id + ".mp4");
-             //if (imagelink.getAttribute('src') === "/aowp/Previews/undefined") {
-             //  imagelink.setAttribute('src', "/aowp/Previews/placeholder.mp4");
-             // }
+             imagelink = document.getElementById("vid");
+             imagelink.setAttribute("id", "vid" + a);
+             imagelink.setAttribute('src', "/highlanderdb/Previews/" + jsonUnits.units[i].id + ".mp4");
+             if (imagelink.getAttribute('src') === "/highlanderdb/Previews/undefined") {
+                 imagelink.setAttribute('src', "/highlanderdb/Previews/placeholder.mp4");
+             }
              // research = document.getElementById("researchorigin");
              // research.setAttribute("id", "researchorigin" + a);
              // if (jsonUnits.units[i].origin_research != "") {
