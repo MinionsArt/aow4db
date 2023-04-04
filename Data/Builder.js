@@ -226,21 +226,17 @@
              iconName = jsonUnitAbilities.abilities[j].name;
              if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
                  iconName === "Fighter Unit" || iconName === "Support Unit" ||
-                 iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft") {
+                 iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Scout Unit" || iconName === "Polearm Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft") {
                  unitRole = document.getElementById("unit_role");
 
-                 unitRole.innerHTML = iconName;
+                 unitRole.setAttribute("src", "/highlanderdb/Icons/Text/" + iconsrc + ".png");
              }
              document.getElementById("unitstat").appendChild(btn);
 
              btn.appendChild(imag);
              btn.append(spa);
-
-
          }
      }
-
-
  }
 
  function addAbilityslot(a, b) {
@@ -719,7 +715,7 @@
              unitName = document.getElementById("unitstring");
              unitName.setAttribute("id", "unitstring" + a);
 
-             unitName.innerHTML = jsonUnits.units[i].name.toUpperCase();
+             unitName.innerHTML += jsonUnits.units[i].name.toUpperCase();
 
 
 
