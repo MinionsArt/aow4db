@@ -528,6 +528,44 @@
 
  }
 
+ function addstatusResistanceSlot(a) {
+     var abilityName, abilityIcon, abilityDescr, abilityDam = "";
+
+
+
+     var btn = document.createElement("DIV");
+     btn.className = "resistance_icon";
+     var imag = document.createElement("IMG");
+     imag.className = "unit_ability_icon";
+
+
+     spa = document.createElement("SPAN");
+     spa.className = "tooltiptext";
+
+     // spa.innerHTML = "<p>" + "<span style=\"font-size=20px\">" + abilityName + "</p>" + "<hr>" + abilityDescr;
+
+     imag.setAttribute("width", "25");
+     imag.setAttribute("height", "25");
+
+
+     imag.setAttribute("src", "/highlanderdb/Icons/Text/status_resistance.png");
+
+     abilityDam = a;
+
+     document.getElementById("resistanceholder").appendChild(btn);
+     btn.innerHTML = "<p class=\"resistanceNumber\">" + abilityDam;
+
+     btn.appendChild(imag);
+
+     btn.append(spa);
+
+
+
+
+
+
+ }
+
  function EliteSkill(a) {
      var nam = "";
      for (j in jsonUnitAbilities.abilities) {
@@ -601,6 +639,22 @@
 
      };
 
+     var coll = document.getElementsByClassName("collapsibleLevelup");
+     var content = document.getElementsByClassName("contentLevelup");
+     var i;
+
+     for (i = 0; i < coll.length; i++) {
+         coll[i].addEventListener("click", function () {
+             this.classList.toggle("active");
+             var content = this.nextElementSibling;
+             if (content.style.display === "block") {
+                 content.style.display = "none";
+             } else {
+                 content.style.display = "block";
+             }
+         });
+     }
+
 
 
 
@@ -666,14 +720,43 @@
 
  }
 
+ async function spawnSpellCards(list, divID) {
+     if (divID === undefined) {
+         divID = "spell";
+     }
+     var doc = document.getElementById(divID);
+     for (var i = 0; i < list.length; i++) {
+         var iDiv = spell_card_template.content.cloneNode(true);
+         doc.appendChild(iDiv);
+     }
+
+ }
+
+
+ async function showSpellFromList(list, divID) {
+
+
+     await spawnSpellCards(list, divID);
+
+     for (var i = 0; i < list.length; i++) {
+
+         showSpell(list[i], divID);
+
+     };
+
+
+
+
+ }
+
 
 
 
  function checkModRequirements(unit) {
      var j, check, checksplit, checknot, checknotsplit = "";
-     for (j in jsonMods.mods) {
-         checksplit = jsonMods.mods[j].check.split(" ");
-         checknotsplit = jsonMods.mods[j].checknot.split(" ");
+     for (j in jsonSpells.spells) {
+         checksplit = jsonSpells.spells[j].check.split(" ");
+         checknotsplit = jsonSpells.spells[j].checknot.split(" ");
          for (k in checksplit) {
              if (divs[i].innerHTML.indexOf(checksplit[k]) !== -1) {
                  // something
@@ -681,7 +764,6 @@
          }
      }
  }
-
 
 
 
@@ -787,6 +869,10 @@
                  addResistanceSlot(jsonUnits.units[i].resistances[z].slug);
 
              }
+             if (jsonUnits.units[i].status_resistance != "0") {
+                 addstatusResistanceSlot(jsonUnits.units[i].status_resistance);
+             }
+
 
              for (x in jsonUnits.units[i].primary_passives) {
                  addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
@@ -803,9 +889,8 @@
 
 
              addLevelUpInfo(jsonUnits.units[i], a);
-             //checkModRequirements(jsonUnits.units[i]);
              found = true;
-             break;
+             // break;
          }
 
 
@@ -821,7 +906,7 @@
      levelup.setAttribute("id", "levelup" + a);
      evolveTarget = units.evolve_target;
 
-     var levelText = "Recruit<br>";
+     var levelText = "";
      levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_soldier.png\" width='20'\"> Soldier</p>";
      for (i in units.medal_rewards_2) {
          levelText += "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
@@ -833,28 +918,40 @@
 
      }
      levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_elite.png\" width='20'\"> Elite</p>";
-     for (i in units.medal_rewards_3) {
-         for (i in units.medal_rewards_4) {
-             levelText += "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
 
+     for (i in units.medal_rewards_4) {
+
+         if (units.medal_rewards_4[i].slug.indexOf("medal") != -1) {
+             levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
+             levelText += "<span class=\"tooltiptext\" style=\"font-size=20px\">" + lookupSlugDescription(units.medal_rewards_4[i].slug) + "</span>  </p> </bullet> ";
+         } else {
+             levelText += "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
          }
-         if (evolveTarget != undefined) {
-             levelText += "<bullet> Evolves into <hyperlink>" + lookupUnit(evolveTarget) + "</hyperlink></bullet>";
-         }
+
      }
+     if (evolveTarget != undefined) {
+         levelText += "<bullet> Evolves into <hyperlink>" + lookupUnit(evolveTarget) + "</hyperlink></bullet>";
+     }
+
      if (evolveTarget === undefined) {
 
 
          levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
-         for (i in units.medal_rewards_3) {
-             for (i in units.medal_rewards_5) {
-                 levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
 
-             }
+         for (i in units.medal_rewards_5) {
+             levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
+
          }
+
          levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
          for (i in units.medal_rewards_6) {
-             levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+             if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
+                 levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
+                 levelText += "<span class=\"tooltiptext\" style=\"font-size=20px\">" + lookupSlugDescription(units.medal_rewards_4[i].slug) + "</span>  </p> </bullet> ";
+             } else {
+                 levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+             }
+
 
          }
      }
@@ -868,6 +965,16 @@
      for (j in jsonUnits.units) {
          if (id == jsonUnits.units[j].id) {
              return jsonUnits.units[j].name;
+         }
+
+     }
+     return "Couldn't find this";
+ }
+
+ function lookupSlugDescription(slug) {
+     for (j in jsonUnitAbilities.abilities) {
+         if (slug == jsonUnitAbilities.abilities[j].slug) {
+             return jsonUnitAbilities.abilities[j].description;
          }
 
      }
@@ -923,46 +1030,69 @@
      }
  }
 
- function showMod(a) {
+ function showSpell(a) {
      var modName, description, cost, type, tier = "";
      var found = false;
-     for (j in jsonMods.mods) {
-         if (a == jsonMods.mods[j].slug) {
+     for (j in jsonSpells.spells) {
+         if (a == jsonSpells.spells[j].id) {
+
              modName = document.getElementById("modname");
-             modName.innerHTML = "<titlebrown>" + jsonMods.mods[j].name + "</titlebrown>";
+             modName.innerHTML = jsonSpells.spells[j].name.toUpperCase();
              modName.setAttribute("id", "modname" + a);
-             description = document.getElementById("moddescription");
-             description.innerHTML = jsonMods.mods[j].description;
-             description.setAttribute("id", "moddescription" + a);
+             descriptionDiv = document.getElementById("moddescription");
+             description = jsonSpells.spells[j].description;
+             if (jsonSpells.spells[j].enchantment_requisites != undefined) {
+                 description += "<br>Affected Unit Types: <br>";
+             }
+             for (l in jsonSpells.spells[j].enchantment_requisites) {
+
+                 description += "<bullet>" + jsonSpells.spells[j].enchantment_requisites[l].requisite + "</bullet>";
+             }
+             descriptionDiv.innerHTML = description;
+
+             descriptionDiv.setAttribute("id", "moddescription" + a);
              //type = document.getElementById("modtype");
-             //type.innerHTML = "Mod Type: " + jsonMods.mods[j].type;
+             //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
              //type.setAttribute("id", "modtype" + a);
              tier = document.getElementById("modtier");
-             tier.innerHTML = "<silver>" + "Tier " + jsonMods.mods[j].tier + ", " + jsonMods.mods[j].type + "</silver>";
+             tier.innerHTML = jsonSpells.spells[j].spellType;
              tier.setAttribute("id", "modtier" + a);
              cost = document.getElementById("modcost");
-             cost.innerHTML = "Purchase Cost : " + jsonMods.mods[j].cost;
+             cost.innerHTML = "Casting Cost : " + jsonSpells.spells[j].casting_cost;
              cost.setAttribute("id", "modcost" + a);
              imagelink = document.getElementById("modicon");
 
-             if (jsonMods.mods[j].name.includes("Vehicle")) {
-                 a = a.replace("vehicle:_", "");
-             }
-             if (jsonMods.mods[j].type.includes("Weapon")) {
-                 a = a.replace("equipment:_", "");
-             }
-             if (jsonMods.mods[j].type.includes("Hero")) {
-                 a = a.replace("equipment:_", "");
-             }
 
-             imagelink.setAttribute("src", "/aowp/Icons/Mods/" + a + ".png");
+
+             imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a + ".png");
              imagelink.setAttribute("id", "modicon" + a);
+
+             backtraceTomeOriginAndTier(jsonSpells.spells[j].id);
 
              found = true;
          }
      }
      if (found == false) {
          console.log("Couldn't find mod: " + a);
+     }
+ }
+
+ function backtraceTomeOriginAndTier(spell) {
+     for (j in jsonTomes.tomes) {
+         {
+             for (k in jsonTomes.tomes[j].skills) {
+                 if (jsonTomes.tomes[j].skills[k].spell_slug == spell) {
+                     var tomeOrigin = document.getElementById("originTome");
+                     tomeOrigin.innerHTML = jsonTomes.tomes[j].name;
+                     tomeOrigin.setAttribute("id", "originTome" + spell);
+                     var tomeOriginIcon = document.getElementById("originTomeIcon");
+                     tomeOriginIcon.setAttribute("src", "/highlanderdb/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                     tomeOriginIcon.setAttribute("id", "originTomeIcon" + spell);
+
+                     console.log(jsonTomes.tomes[j].id);
+                 }
+             }
+         }
      }
  }
 
@@ -1082,26 +1212,26 @@
  function addModUnlock(a, b) {
      var modUnlockName, modUnlockIcon, modUnlockAbility, j = "";
      var found = false;
-     for (j in jsonMods.mods) {
-         if (a == jsonMods.mods[j].slug) {
-             if (jsonMods.mods[j].type.includes("Weapon")) {
-                 modUnlockName = "Equipment: " + jsonMods.mods[j].name;
+     for (j in jsonSpells.spells) {
+         if (a == jsonSpells.spells[j].slug) {
+             if (jsonSpells.spells[j].type.includes("Weapon")) {
+                 modUnlockName = "Equipment: " + jsonSpells.spells[j].name;
              } else {
-                 modUnlockName = jsonMods.mods[j].name;
+                 modUnlockName = jsonSpells.spells[j].name;
              }
              modUnlockName = "<titlebrown>" + modUnlockName + "</titlebrown>";
-             modUnlockIcon = jsonMods.mods[j].slug;
+             modUnlockIcon = jsonSpells.spells[j].slug;
 
-             if (jsonMods.mods[j].name.includes("Vehicle")) {
+             if (jsonSpells.spells[j].name.includes("Vehicle")) {
                  modUnlockIcon = modUnlockIcon.replace("vehicle:_", "");
              }
-             if (jsonMods.mods[j].type.includes("Weapon")) {
+             if (jsonSpells.spells[j].type.includes("Weapon")) {
                  modUnlockIcon = modUnlockIcon.replace("equipment:_", "");
              }
-             modUnlockAbility = jsonMods.mods[j].description;
+             modUnlockAbility = jsonSpells.spells[j].description;
 
 
-             var tier = "<silver>" + "Tier " + jsonMods.mods[j].tier + ", " + jsonMods.mods[j].type + "</silver>";
+             var tier = "<silver>" + "Tier " + jsonSpells.spells[j].tier + ", " + jsonSpells.spells[j].type + "</silver>";
 
 
              var btn = document.createElement("DIV");
@@ -1117,15 +1247,15 @@
              spa.innerHTML += "<img src=\"/aowp/Icons/Mods/" + modUnlockIcon + ".png\" width='200'\">";
              spa.innerHTML += "<br>" + modUnlockAbility;
 
-             if (jsonMods.mods[j].type.includes("Weapon") || jsonMods.mods[j].name.includes("Vehicle")) {
-                 spa.innerHTML += "<hr> Base Cost: " + jsonMods.mods[j].cost;
+             if (jsonSpells.spells[j].type.includes("Weapon") || jsonSpells.spells[j].name.includes("Vehicle")) {
+                 spa.innerHTML += "<hr> Base Cost: " + jsonSpells.spells[j].cost;
              } else {
-                 spa.innerHTML += "<hr>" + "Base Production Cost: 10 <production></production>" + "<br>" + "Base Cosmite Cost: " + jsonMods.mods[j].cost;
+                 spa.innerHTML += "<hr>" + "Base Production Cost: 10 <production></production>" + "<br>" + "Base Cosmite Cost: " + jsonSpells.spells[j].cost;
              }
 
              imag.setAttribute("height", "30");
 
-             if (jsonMods.mods[j].name.includes("Vehicle") || jsonMods.mods[j].type.includes("Weapon")) {
+             if (jsonSpells.spells[j].name.includes("Vehicle") || jsonSpells.spells[j].type.includes("Weapon")) {
                  var imag2 = document.createElement("IMG");
                  imag2.setAttribute("src", "/aowp/Icons/Text/arsenal.png");
                  imag2.className = "corner_icon";
@@ -1369,20 +1499,7 @@
 
 
 
- var coll = document.getElementsByClassName("collapsible");
- var i;
 
- for (i = 0; i < coll.length; i++) {
-     coll[i].addEventListener("click", function () {
-         this.classList.toggle("active");
-         var content = this.nextElementSibling;
-         if (content.style.display === "block") {
-             content.style.display = "none";
-         } else {
-             content.style.display = "block";
-         }
-     });
- }
 
 
  (function (root, factory) {

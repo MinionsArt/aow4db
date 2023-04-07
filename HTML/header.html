@@ -4,6 +4,12 @@
 <link rel="shortcut icon" href="/aowp/favicon.ico">
 
 <head>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Spells.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Tomes.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70751511-1"></script>
     <script>
@@ -18,6 +24,7 @@
 
     </script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
     <script>
         $('.has-sub').click(function(e) {
@@ -52,15 +59,23 @@
         <div class="unit_card">
 
             <div class="unit_image_holder">
-                <div class="leftAbility">
+                <div class="productionCost">
 
 
                     <p id="productioncost">8 <gold></gold>
                     </p>
                 </div>
-                <div class="rightAbility">
-                    <div class="unit_stat_icon">Levels <img src="/highlanderdb/Icons/Text/xp.png" width="20 " height="20 ">
-                        <span class="tooltiptext" id="levelup">Level Up Info goes here</span>
+
+                <div class="medals">
+                    <button type="button" class="collapsibleLevelup">Medals <img src="/highlanderdb/Icons/Text/xp.png" height="20 "></button>
+                    <div class="contentLevelup">
+                        <span id="levelup">Level Up Info goes here</span>
+
+                    </div>
+
+                    <div class="unit_stat_icon">
+
+
                     </div>
 
                 </div>
@@ -69,6 +84,9 @@
                     <video class="unit_preview_vid" width="400" autoplay muted loop id="vid">
                     </video>
                     <div class="shadow"></div>
+
+
+
                 </div>
 
 
@@ -80,7 +98,7 @@
                 <p id="unitstring"> <img id="unit_role" style="margin-right:5px; position: relative; top:5px" src="/highlanderdb/Icons/Text/shield_unit.png" height="25 "> </p>
             </div>
 
-            <div class="unit_ability_holder" id="unitabholder" style=" float: left;">
+            <div class="unit_ability_holder" id="unitabholder">
 
                 <div style=" text-align: center; width: 100%; height:20px; display: inline-block">
 
@@ -137,6 +155,58 @@
 
     </template>
 
+    <template id="spell_card_template">
+        <div class="mod_card">
+
+            <div class="mod_image_holder">
+
+                <div style="display: grid;grid-template-columns: auto auto auto;justify-content: start;align-content: stretch;justify-items: stretch;align-items: stretch;">
+                    <p class="mod_name" id="modname">Grounding Harness</p>
+                    <p style="padding-left: 10px;" id="modtier">Tier: I</p>
+
+                </div>
+                <p style="padding-left: 10px" id="modcost">
+
+                    Cost: 5 <tricorium></tricorium>
+
+                </p>
+
+                <div style="width: 50px;position: absolute;right: 50px;top: 5px;">
+                    <img id="originTomeIcon" src="/highlanderdb/Icons/Tomes/tome_of_evocation.png" height="100px">
+
+
+
+
+                    <p style="padding-left: 10px" id="originTome">
+
+                        origin
+
+                    </p>
+
+
+                </div>
+                <div style="width: 150px; float:left">
+                    <img class="mod_image" id="modicon" src="Icons/Mods/Grounding_Harness.png">
+
+
+
+                </div>
+
+                <div style="float:left">
+                    <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
+                        <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
+                    </p>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </template>
+
     <template id="tome_card_template">
         <div class="mod_card">
 
@@ -147,7 +217,7 @@
 
                 <p style="padding-left: 10px" id="modtier">Tier: I</p>
 
-                <div style="width : 250px; float:left">
+                <div style="width : 150px; float:left">
                     <img class="mod_image" id="modicon" src="/highlanderdb/Icons/Tomes/tome_of_evocation.png">
 
 
@@ -161,6 +231,7 @@
 
 
                 </div>
+
 
                 <div style="float:left">
                     <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
@@ -332,6 +403,18 @@
                 <li><a href="/highlanderdb/HTML/OrderTomesUnits.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Order</a></li>
                 <li><a href="/highlanderdb/HTML/ChaosTomesUnits.html"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
                 <li><a href="/highlanderdb/HTML/MateriumTomesUnits.html"><img src="/highlanderdb/Icons/Text/materium.png" width="20px"> Materium</a></li>
+            </ul>
+
+        </li>
+
+
+        <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/TomesIcon.png" width="40px">Spells</a>
+            <ul class='menus'>
+
+                <li><a href="/highlanderdb/HTML/TransformationSpells.html"><img src="/highlanderdb/Icons/Text/astral.png" width="20px"> Transformations</a></li>
+                <li><a href="/highlanderdb/HTML/NatureTomesUnits.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Combat Spells</a></li>
+                <li><a href="/highlanderdb/HTML/ShadowTomesUnits.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Enchantments</a></li>
+                <li><a href="/highlanderdb/HTML/OrderTomesUnits.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Strategic Spells</a></li>
             </ul>
 
         </li>

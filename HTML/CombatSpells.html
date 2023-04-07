@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+
+    <script>
+        $("#body").ready(function() {
+            var spellArray1 = ["animal_kinship", "anointed_people", "astral_blood", "earthkin", "frostling_transformation", "goldtouched", "joy_siphoners", "leafskin", "magical_wards", "revelers_heart", "scion_of_flame", "spawnkin", "steel_skin", "supergrowth", "vessels_of_chaos"];
+
+            var spellArray2 = ["angelize", "astral_attunement", "demonkin", "gaias_chosen", "wightborn"];
+
+            $("#header").load("/highlanderdb/HTML/header.html", function() {
+                showSpellFromList(spellArray1, "spell1");
+                showSpellFromList(spellArray2, "spell2");
+
+            });
+
+            var coll = document.getElementsByClassName("collapsible");
+            var content = document.getElementsByClassName("content");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+
+
+        });
+    </script>
+
+
+    <title>Age of Wonders 4 - Combat Spells</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        Combat Spells
+    </div>
+
+
+    <button type="button" class="collapsible">
+        Healing Spells
+    </button>
+    <div class="content">
+        <div id="spell1"></div>
+    </div>
+
+
+
+
+    <button type="button" class="collapsible">
+        Damage Spells
+    </button>
+    <div class="content" id="spell2"></div>
+
+
+
+
+
+
+</body></html>
+<footer>
+ <br>
+ <br>
+</footer>

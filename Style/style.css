@@ -367,37 +367,110 @@ ul.egmenu li:hover ul {
     display: block;
 }
 
-
 .collapsible {
-    background-color: #371847;
-    color: white;
+    border-width: 5px;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/Interface/panel_name_border.png);
+    border-image-slice: 50 fill;
+    border-image-repeat: stretch;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: beige;
     cursor: pointer;
-    padding: 18px;
+    overflow: hidden;
+    background: transparent;
+    padding-top: 5px;
     width: 100%;
-    display: table;
+    height: auto;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    border: none;
-    text-align: left;
-    outline: none;
-    box-shadow:
-        inset 0px 0px 20px 10px #4b1d63;
-    /* left magenta */
+}
 
-    font-size: 15px;
-    margin: 10px;
+.collapsible:after {
+    content: '▼';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin: 5px;
+    margin-right: 10px;
 }
 
 .active,
 .collapsible:hover {
-    background-color: #4b1d63;
+    background-color: #555;
 }
 
 .content {
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #040605;
+
+}
+
+
+.collapsibleLevelup {
+
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    width: 150px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+
+    text-align: left;
+    outline: none;
+    /* left magenta */
+
+    font-size: 15px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.collapsibleLevelup:after {
+    content: '▼';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin: 5px;
+    margin-right: 10px;
+}
+
+.active:after {
+    content: "▲";
+}
+
+.active,
+.collapsibleLevelup:hover {
+    background-color: #4b1d63;
+}
+
+.contentLevelup {
+    padding: 0 18px;
+    z-index: 1;
+
+    display: none;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    text-shadow: 2px 2px black;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    min-width: 100px;
+    max-width: 400px;
+    min-height: 40px;
+
 
 }
 
@@ -484,7 +557,15 @@ p {
     width: 700;
     min-width: 800px;
     float: left;
-    background-color: rgb(0, 5, 10, 0.5);
+    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    text-shadow: 2px 2px black;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
 
     display: table;
     padding: 10px;
@@ -503,8 +584,11 @@ p {
 .mod_image {
     float: left;
     padding: 10px;
-    padding-top: 40px;
-    max-width: 140;
+    width: 100px;
+    background: url("/highlanderdb/Icons/Interface/spellbackground_enchantment.png");
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position: center top -55px;
 
 
 
@@ -551,6 +635,7 @@ tab {
     width: 400px;
     height: 400px;
     float: left;
+    top: -20px;
 
 
     background-size: 400px;
@@ -563,8 +648,9 @@ tab {
     color: white;
     width: 840px;
 
-    padding: 35px;
+    padding: 5px;
     display: table;
+    margin: 5px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -591,9 +677,11 @@ tab {
     color: white;
     width: 840px;
     height: auto;
-    padding: 35px;
+    padding: 15px;
     display: table;
-    border-radius: 10px;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 6 4 6;
     margin-bottom: 20px;
     margin-left: auto;
 
@@ -681,7 +769,10 @@ tab {
     width: 300px;
     height: auto;
     border-width: 30px;
+    margin: 10px;
+    margin-top: 0px;
     border-top-width: 0px;
+    float: right;
     border-style: solid;
     border-image: url(/highlanderdb/Icons/9slice.png);
     border-image-slice: 30 fill;
@@ -705,7 +796,8 @@ tab {
 }
 
 .unit_types {
-    height: 40px;
+    min-height: 40px;
+
     position: relative;
     clear: left;
     width: auto;
@@ -769,8 +861,7 @@ tab {
 
 .ability_damage {
     float: right;
-    font-size: 20px;
-    align-content: right;
+    font-size: 16px;
     margin-top: 10px;
     display: inline-block;
 
@@ -781,16 +872,18 @@ tab {
 .unit_name {
 
     border-width: 20px;
+
     border-style: solid;
     border-image: url(/highlanderdb/Icons/Interface/panel_name_border.png);
     border-image-slice: 20 fill;
-
+    float: right;
     border-image-repeat: stretch;
     text-transform: uppercase;
     font-size: 16px;
     color: beige;
     overflow: hidden;
     margin: -10px;
+    margin-right: 8px;
 
     margin-bottom: -5px;
     width: 325px;
@@ -803,8 +896,9 @@ tab {
 
 .mod_name {
     font-size: 18px;
+    width: auto;
     position: relative;
-
+    color: burlywood;
     text-align: left;
     padding-left: 10px;
 
@@ -922,7 +1016,7 @@ tab {
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 10px;
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     min-width: 300px;
     max-width: 400px;
     min-height: 40px;
@@ -938,6 +1032,25 @@ tab {
 
 .rightAbility {
 
+    float: right;
+
+
+}
+
+
+.productionCost {
+    position: relative;
+    top: 20px;
+    z-index: 1;
+    float: left;
+
+}
+
+.medals {
+    position: relative;
+    top: 15px;
+    z-index: 1;
+    right: -60px;
     float: right;
 
 
@@ -1002,6 +1115,16 @@ tab {
     float: right;
     margin-top: 1px;
     text-shadow: 2px 2px black;
+
+}
+
+.levelup_medal {
+    position: relative;
+    cursor: pointer;
+    color: beige;
+    display: inline-block;
+    max-width: auto;
+    font-size: 12px;
 
 }
 
@@ -1089,6 +1212,12 @@ hyperlink {
 .unittype_icon:hover .tooltiptext {
     visibility: visible;
 }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.levelup_medal:hover .tooltiptext {
+    visibility: visible;
+}
+
 
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -1221,14 +1350,14 @@ hyperlink {
 }
 
 damageblight {
-    max-height: 25px;
+    max-height: 20px;
     top: 4px;
     position: relative;
     content: url(/highlanderdb/Icons/Text/blight.png);
 }
 
 damagefire {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/fire.png);
     position: relative;
@@ -1236,7 +1365,7 @@ damagefire {
 }
 
 damagespirit {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/spirit.png);
     position: relative;
@@ -1244,14 +1373,14 @@ damagespirit {
 }
 
 damagelightning {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/shock.png);
     position: relative;
 }
 
 DamagePhysical {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/physical.png);
     position: relative;
@@ -1259,7 +1388,7 @@ DamagePhysical {
 }
 
 damagefrost {
-    max-height: 25px;
+    max-height: 20px;
     top: 5px;
     content: url(/highlanderdb/Icons/Text/ice.png);
     position: relative;
@@ -1290,6 +1419,48 @@ defense {
     position: relative;
 
 
+}
+
+defensefire {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/fire_resistance.png);
+    position: relative;
+}
+
+defenselightning {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/lightning_resistance.png);
+    position: relative;
+}
+
+defenseblight {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/blight_resistance.png);
+    position: relative;
+}
+
+statuseffectresistance {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/status_resistance.png);
+    position: relative;
+}
+
+defensespirit {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/spirit_resistance.png);
+    position: relative;
+}
+
+defensefrost {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/frost_resistance.png);
+    position: relative;
 }
 
 happiness {
@@ -1359,6 +1530,10 @@ bulletlist {
 }
 
 bulletlist:after {
+    text-indent: -2px;
+}
+
+.bulletlist .bulletlist {
     text-indent: -2px;
 }
 
@@ -1751,17 +1926,73 @@ food {
     position: relative;
 }
 
-operationstrength {
-    max-height: 25px;
+caststrategic {
+    max-height: 20px;
     top: 3px;
     content: url(/aowp/Icons/Text/op_strength.png);
     position: relative;
 }
 
-operationDefense {
-    max-height: 25px;
+casttactical {
+    max-height: 20px;
     top: 3px;
     content: url(/aowp/Icons/Text/op_defense.png);
+    position: relative;
+}
+
+unitSupport {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/support_unit.png);
+    position: relative;
+}
+
+unitBattleMage {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/battle_mage_unit.png);
+    position: relative;
+}
+
+unitShield {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/shield_unit.png);
+    position: relative;
+}
+
+unitPolearm {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/polearm_unit.png);
+    position: relative;
+}
+
+unitFighter {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/fighter_unit.png);
+    position: relative;
+}
+
+unitScout {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/scout_unit.png);
+    position: relative;
+}
+
+unitSkirmisher {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/skirmisher_unit.png);
+    position: relative;
+}
+
+unitShock {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/shock_unit.png);
     position: relative;
 }
 
