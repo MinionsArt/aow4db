@@ -709,11 +709,11 @@
 
      await spawnTomeCards(list, divID);
 
-     /* for (var i = 0; i < list.length; i++) {
+     for (var i = 0; i < list.length; i++) {
 
-          showEquipment(list[i], divID);
+         showTome(list[i], divID);
 
-      };*/
+     };
 
 
 
@@ -740,7 +740,7 @@
 
      for (var i = 0; i < list.length; i++) {
 
-         showSpell(list[i], divID);
+         showSpell(list[i], true);
 
      };
 
@@ -1030,7 +1030,72 @@
      }
  }
 
- function showSpell(a) {
+ function showTome(a, div) {
+     var modName, description, cost, type, tier, k, j, descriptionDiv = "";
+     var found = false;
+     for (j in jsonTomes.tomes) {
+         if (a == jsonTomes.tomes[j].id) {
+
+             modName = document.getElementById("tomename");
+             modName.innerHTML = jsonTomes.tomes[j].name.toUpperCase();
+             modName.setAttribute("id", "tomename" + a);
+             descriptionDiv = document.getElementById("tomedescription");
+             description = jsonTomes.tomes[j].gameplay_description;
+
+             descriptionDiv.innerHTML = description;
+
+             descriptionDiv.setAttribute("id", "tomedescription" + a);
+             skillHolder = document.getElementById("tome_unlocks");
+
+             for (k in jsonTomes.tomes[j].skills) {
+                 if ('spell_slug' in jsonTomes.tomes[j].skills[k]) {
+                     var iDiv = spell_card_template.content.cloneNode(true);
+                     skillHolder.appendChild(iDiv);
+                     showSpell(jsonTomes.tomes[j].skills[k].spell_slug, false);
+                 }
+                 if ('unit_slug' in jsonTomes.tomes[j].skills[k]) {
+                     var iDiv = spell_card_template.content.cloneNode(true);
+                     skillHolder.appendChild(iDiv);
+                     showSpell(jsonTomes.tomes[j].skills[k].spell_slug, false);
+                 }
+
+                 if ('upgrade_slug' in jsonTomes.tomes[j].skills[k]) {
+                     var iDiv = spell_card_template.content.cloneNode(true);
+                     skillHolder.appendChild(iDiv);
+                     showSpell(jsonTomes.tomes[j].skills[k].spell_slug, false);
+                 }
+
+             }
+             skillHolder.setAttribute("id", "tome_unlocks" + a);
+
+             //type = document.getElementById("modtype");
+             //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
+             //type.setAttribute("id", "modtype" + a);
+             /* tier = document.getElementById("modtier");
+               tier.innerHTML = jsonSpells.spells[j].spellType;
+               tier.setAttribute("id", "modtier" + a);
+               cost = document.getElementById("modcost");
+               cost.innerHTML = "Casting Cost : " + jsonSpells.spells[j].casting_cost;
+               cost.setAttribute("id", "modcost" + a);
+             
+
+             */
+             imagelink = document.getElementById("tomeicon");
+             imagelink.setAttribute("src", "/highlanderdb/Icons/TomeIcons/" + a + ".png");
+             imagelink.setAttribute("id", "tomeicon" + a);
+
+             // backtraceTomeOriginAndTier(jsonSpells.spells[j].id);
+
+
+             found = true;
+         }
+     }
+     if (found == false) {
+         console.log("Couldn't find tome: " + a);
+     }
+ }
+
+ function showSpell(a, showOrigin) {
      var modName, description, cost, type, tier = "";
      var found = false;
      for (j in jsonSpells.spells) {
@@ -1066,8 +1131,10 @@
 
              imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a + ".png");
              imagelink.setAttribute("id", "modicon" + a);
+             if (showOrigin === true) {
+                 backtraceTomeOriginAndTier(jsonSpells.spells[j].id);
+             }
 
-             backtraceTomeOriginAndTier(jsonSpells.spells[j].id);
 
              found = true;
          }

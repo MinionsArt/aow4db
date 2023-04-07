@@ -8,16 +8,12 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
-
     <script>
         $("#body").ready(function() {
-            var spellArray1 = ["lightning_focus", "fulmination", "lightning_blades", "lightning_torrent", "summon_lesser_storm_spirit", "evoker"];
+            var tomeArray = ["tome_of_evocation", "tome_of_warding", "tome_of_scrying", "tome_of_amplification", "tome_of_teleportation", "tome_of_summoning", "tome_of_the_astral_mirror", "tome_of_astral_convergence", "tome_of_the_arch_mage"];
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showSpellFromList(spellArray1, "spell1");
+                showTomeFromList(tomeArray, "tome1");
 
             });
 
@@ -35,13 +31,10 @@
     <div id="header"></div>
 
     <h2 style="text-align: center; color: aliceblue">
-        Astral Tome Units
+        Astral Tomes
     </h2>
 
-    <h2 style="text-align: center; color: aliceblue">
-        T1 -Tome of Amplification
-    </h2>
-    <div id="spell1"></div>
+    <div id="tome1"></div>
 
 
 

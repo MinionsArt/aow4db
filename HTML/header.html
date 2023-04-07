@@ -10,6 +10,8 @@
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Tomes.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/StructureUpgrades.json"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70751511-1"></script>
     <script>
@@ -160,35 +162,43 @@
 
             <div class="mod_image_holder">
 
-                <div style="display: grid;grid-template-columns: auto auto auto;justify-content: start;align-content: stretch;justify-items: stretch;align-items: stretch;">
+                <div style="
+          display: grid;
+    grid-template-columns: auto auto;
+    width: auto;
+    justify-content: space-between;
+    align-content: center;
+    align-items: stretch;
+    justify-items: center;">
                     <p class="mod_name" id="modname">Grounding Harness</p>
-                    <p style="padding-left: 10px;" id="modtier">Tier: I</p>
+                    <p style="padding-left: 10px;font-size: 13px" id="modtier">Tier: I</p>
 
                 </div>
-                <p style="padding-left: 10px" id="modcost">
 
-                    Cost: 5 <tricorium></tricorium>
 
-                </p>
-
-                <div style="width: 50px;position: absolute;right: 50px;top: 5px;">
-                    <img id="originTomeIcon" src="/highlanderdb/Icons/Tomes/tome_of_evocation.png" height="100px">
+                <div style="width: 150px;position: absolute;left: -162px;top: 35px;">
 
 
 
 
-                    <p style="padding-left: 10px" id="originTome">
 
-                        origin
+                    <p style="font-size: 13px" id="originTome">
+
+
 
                     </p>
+                    <img id="originTomeIcon" height="100px">
 
 
                 </div>
-                <div style="width: 150px; float:left">
+                <div style="width: 100px; float:left">
                     <img class="mod_image" id="modicon" src="Icons/Mods/Grounding_Harness.png">
 
+                    <p style="padding-left: 10px; font-size: 13px" id="modcost">
 
+                        Cost: 5 <tricorium></tricorium>
+
+                    </p>
 
                 </div>
 
@@ -208,110 +218,44 @@
     </template>
 
     <template id="tome_card_template">
-        <div class="mod_card">
-
-            <div class="mod_image_holder">
-
-
-                <p class="mod_name" id="modname">Tome of Evocation</p>
-
-                <p style="padding-left: 10px" id="modtier">Tier: I</p>
-
-                <div style="width : 150px; float:left">
-                    <img class="mod_image" id="modicon" src="/highlanderdb/Icons/Tomes/tome_of_evocation.png">
+        <div class="tome_card">
 
 
 
 
-                    <p style="padding-left: 10px" id="modcost">
-
-                        Cost: 5 <tricorium></tricorium>
-
-                    </p>
+            <p class="mod_name" id="tomename">Tome of Evocation</p>
 
 
-                </div>
+
+            <div style="width : 150px; float:left">
+                <img class="tome_image" id="tomeicon" src="/highlanderdb/Icons/Tomes/tome_of_evocation.png">
 
 
-                <div style="float:left">
-                    <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
-                        <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
-                    </p>
-                </div>
+
+
+                <p style="padding-left: 10px; width:100%" id="tomecost">
+
+                    Cost: 5 <tricorium></tricorium>
+
+                </p>
+
 
             </div>
-            <div style="clear: both"></div>
-            <div id="tome_unlocks" style="display: inline-grid; grid-template-columns: auto auto; width: auto">
-                <span class="tomeUnlock" style="visibility: visible">
 
-                    <div><img style="float:left; height:50px; width:50px; background-image:url('/highlanderdb/Icons/Interface/ability_icon_phys.png');background-repeat: no-repeat;background-size: 50px" src="/highlanderdb/Icons/Abilities/shoot_crossbow_arbalest.png"></div>
-                    <div class="leftAbility" style="color:#d7c297;">SHOOT CROSSBOW</div>
-                    <div class="rightAbility">12<damagephysical></damagephysical>
-                    </div><br>
-                    <div style="clear:right"> </div>
-                    <div class="leftAbility">90%<accuracy></accuracy>4<range></range>
-                    </div>
-                    <div class="rightAbility">
-                        <singleuseaction></singleuseaction>
-                    </div>
-                    <div style="clear:both"> </div><br>Fires ranged projectiles at target enemy unit.<p style="color:#a4a4a6; font-size: 12px">
-                        <bullet>Affected by <hyperlink>Line of Sight</hyperlink> rules.</bullet>
-                        <bullet>Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>.</bullet>
-                    </p>(Physical Ranged,Base)
-                </span>
-                <span class="tomeUnlock" style="visibility: visible">
 
-                    <div><img style="float:left; height:50px; width:50px; background-image:url('/highlanderdb/Icons/Interface/ability_icon_phys.png');background-repeat: no-repeat;background-size: 50px" src="/highlanderdb/Icons/Abilities/shoot_crossbow_arbalest.png"></div>
-                    <div class="leftAbility" style="color:#d7c297;">SHOOT CROSSBOW</div>
-                    <div class="rightAbility">12<damagephysical></damagephysical>
-                    </div><br>
-                    <div style="clear:right"> </div>
-                    <div class="leftAbility">90%<accuracy></accuracy>4<range></range>
-                    </div>
-                    <div class="rightAbility">
-                        <singleuseaction></singleuseaction>
-                    </div>
-                    <div style="clear:both"> </div><br>Fires ranged projectiles at target enemy unit.<p style="color:#a4a4a6; font-size: 12px">
-                        <bullet>Affected by <hyperlink>Line of Sight</hyperlink> rules.</bullet>
-                        <bullet>Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>.</bullet>
-                    </p>(Physical Ranged,Base)
-                </span>
-                <span class="tomeUnlock" style="visibility: visible">
-
-                    <div><img style="float:left; height:50px; width:50px; background-image:url('/highlanderdb/Icons/Interface/ability_icon_phys.png');background-repeat: no-repeat;background-size: 50px" src="/highlanderdb/Icons/Abilities/shoot_crossbow_arbalest.png"></div>
-                    <div class="leftAbility" style="color:#d7c297;">SHOOT CROSSBOW</div>
-                    <div class="rightAbility">12<damagephysical></damagephysical>
-                    </div><br>
-                    <div style="clear:right"> </div>
-                    <div class="leftAbility">90%<accuracy></accuracy>4<range></range>
-                    </div>
-                    <div class="rightAbility">
-                        <singleuseaction></singleuseaction>
-                    </div>
-                    <div style="clear:both"> </div><br>Fires ranged projectiles at target enemy unit.<p style="color:#a4a4a6; font-size: 12px">
-                        <bullet>Affected by <hyperlink>Line of Sight</hyperlink> rules.</bullet>
-                        <bullet>Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>.</bullet>
-                    </p>(Physical Ranged,Base)
-                </span>
-                <span class="tomeUnlock" style="visibility: visible">
-
-                    <div><img style="float:left; height:50px; width:50px; background-image:url('/highlanderdb/Icons/Interface/ability_icon_phys.png');background-repeat: no-repeat;background-size: 50px" src="/highlanderdb/Icons/Abilities/shoot_crossbow_arbalest.png"></div>
-                    <div class="leftAbility" style="color:#d7c297;">SHOOT CROSSBOW</div>
-                    <div class="rightAbility">12<damagephysical></damagephysical>
-                    </div><br>
-                    <div style="clear:right"> </div>
-                    <div class="leftAbility">90%<accuracy></accuracy>4<range></range>
-                    </div>
-                    <div class="rightAbility">
-                        <singleuseaction></singleuseaction>
-                    </div>
-                    <div style="clear:both"> </div><br>Fires ranged projectiles at target enemy unit.<p style="color:#a4a4a6; font-size: 12px">
-                        <bullet>Affected by <hyperlink>Line of Sight</hyperlink> rules.</bullet>
-                        <bullet>Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>.</bullet>
-                    </p>(Physical Ranged,Base)
-                </span>
+            <div style="float:left">
+                <p class="mod_description" id="tomedescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
+                    <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
+                </p>
             </div>
+
         </div>
+        <div style="clear: both"></div>
+        <div id="tome_unlocks" style="display: grid; grid-template-columns: auto auto;
+    justify-content: center; width: auto">
+
+        </div>
+
     </template>
 
     <template id="item_card_template">
