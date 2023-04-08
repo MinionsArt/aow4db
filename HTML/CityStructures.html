@@ -17,14 +17,17 @@
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
 
-                showSpellsWithArgument("", "spell1", "healing");
-                showSpellsWithArgument("", "spell2", "buff");
-                showSpellsWithArgument("", "spell3", "damage");
-                showSpellsWithArgument("", "spell4", "combat enchantment");
-                showSpellsWithArgument("", "spell5", "combat summon");
-                showSpellsWithArgument("", "spell6", "debuff");
+                showStructuresWithArgument("", "struc1", "wizard tower", "false");
+
+                showStructuresWithArgument("mana", "struc2", "", "false");
+                showStructuresWithArgument("gold", "struc3", "", "false");
+                showStructuresWithArgument("food", "struc4", "", "false");
 
 
+                /*,var tomeArray1 = ["tome_of_evocation"];
+                           var tomeArray2 = ["tome_of_warding"];
+
+                           "tome_of_warding", "tome_of_scrying", "tome_of_amplification", "tome_of_teleportation", "tome_of_summoning", "tome_of_the_astral_mirror", "tome_of_astral_convergence", "tome_of_the_arch_mage"];*/
             });
 
             var coll = document.getElementsByClassName("collapsible");
@@ -48,46 +51,41 @@
     </script>
 
 
-    <title>Age of Wonders 4 - Combat Spells</title>
+    <title>Age of Wonders 4 - City Structures</title>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="textblocktitle">
-        Combat Spells
+        City Structures
     </div>
 
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Healing')">Healing Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Buff')">Buff Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Damage')">Damage Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Enchant')">Combat Enchantment</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">Combat Summons</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Debuff')">Debuff Spells</button>
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Wizard')">Wizards Tower</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mana')">+Mana</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Gold')">+Gold</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Food')">+Food</button>
+
         </div>
 
-        <div id="Healing" class="w3-container w3-border city">
-            <div id="spell1"></div>
+        <div id="Wizard" class="w3-container w3-border city">
+            <div id="struc1"></div>
         </div>
 
-        <div id="Buff" class="w3-container w3-border city" style="display:none">
-            <div id="spell2"></div>
+        <div id="Mana" class="w3-container w3-border city">
+            <div id="struc2"></div>
         </div>
-        <div id="Damage" class="w3-container w3-border city" style="display:none">
-            <div id="spell3"></div>
+        <div id="Gold" class="w3-container w3-border city">
+            <div id="struc3"></div>
         </div>
-        <div id="Enchant" class="w3-container w3-border city" style="display:none">
-            <div id="spell4"></div>
+        <div id="Food" class="w3-container w3-border city">
+            <div id="struc4"></div>
         </div>
-        <div id="Summon" class="w3-container w3-border city" style="display:none">
-            <div id="spell5"></div>
-        </div>
-        <div id="Debuff" class="w3-container w3-border city" style="display:none">
-            <div id="spell6"></div>
-        </div>
+
+
 
 
 

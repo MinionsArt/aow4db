@@ -14,16 +14,19 @@
 
     <script>
         $("#body").ready(function() {
-            var spellArray1 = ["wayfinder_enchantment", "enchanted_crow_companion"];
-
-            var spellArray2 = ["primal_mark", "brand_of_wrath", "signet_of_knighthood", "dormant_enchantment", "rune_of_industry", "scroll_of_attunement"];
-
-            var spellArray3 = ["staves_of_mending", "keepers_mark", "legion_of_zeal", "mighty_meek", "rune_of_industry", "scroll_of_attunement"];
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showSpellFromList(spellArray1, "spell1");
-                showSpellFromList(spellArray2, "spell2");
-                showSpellFromList(spellArray3, "spell3");
+
+                showSpellsWithArgument("General Research", "spell1", "unit enchantment");
+                showSpellsWithArgument("Culture", "spell2", "unit enchantment");
+                showSpellsWithArgument("Order", "spell3", "unit enchantment");
+                showSpellsWithArgument("Chaos", "spell4", "unit enchantment");
+                showSpellsWithArgument("Nature", "spell5", "unit enchantment");
+                showSpellsWithArgument("matter", "spell6", "unit enchantment");
+
+                showSpellsWithArgument("arcana", "spell7", "unit enchantment");
+                showSpellsWithArgument("Shadow", "spell8", "unit enchantment");
+
 
             });
 
@@ -59,32 +62,67 @@
     </div>
 
 
-    <button type="button" class="collapsible">
-        Generic Enchantments
-    </button>
-    <div class="content">
-        <div id="spell1"></div>
+    <div class="w3-container">
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Generic Research')">Generic Research</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Cultures')">Cultures</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Order')">Order</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Chaos')">Chaos</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Nature')">Nature</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Materium')">Materium</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Astral')">Astral</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Shadow')">Shadow</button>
+        </div>
+
+        <div id="Generic Research" class="w3-container w3-border city">
+            <div id="spell1"></div>
+        </div>
+
+        <div id="Cultures" class="w3-container w3-border city" style="display:none">
+            <div id="spell2"></div>
+        </div>
+
+        <div id="Order" class="w3-container w3-border city" style="display:none">
+            <div id="spell3"></div>
+        </div>
+        <div id="Chaos" class="w3-container w3-border city" style="display:none">
+            <div id="spell4"></div>
+        </div>
+        <div id="Nature" class="w3-container w3-border city" style="display:none">
+            <div id="spell5"></div>
+        </div>
+        <div id="Materium" class="w3-container w3-border city" style="display:none">
+            <div id="spell6"></div>
+        </div>
+        <div id="Astral" class="w3-container w3-border city" style="display:none">
+            <div id="spell7"></div>
+        </div>
+        <div id="Shadow" class="w3-container w3-border city" style="display:none">
+            <div id="spell8"></div>
+        </div>
     </div>
 
 
 
 
-    <button type="button" class="collapsible">
-        Culture Enchantments
-    </button>
-    <div class="content" id="spell2"></div>
 
-    <button type="button" class="collapsible">
-        Order Enchantments
-    </button>
-    <div class="content" id="spell3"></div>
-
-
-
-
-
-</body></html>
+</body>
+<script>
+    function openCity(evt, cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+</script></html>
 <footer>
- <br>
- <br>
+    <br>
+    <br>
 </footer>

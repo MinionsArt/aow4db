@@ -14,13 +14,12 @@
 
     <script>
         $("#body").ready(function() {
-            var spellArray1 = ["animal_kinship", "anointed_people", "astral_blood", "earthkin", "frostling_transformation", "goldtouched", "joy_siphoners", "leafskin", "magical_wards", "revelers_heart", "scion_of_flame", "spawnkin", "steel_skin", "supergrowth", "vessels_of_chaos"];
-
-            var spellArray2 = ["angelize", "astral_attunement", "demonkin", "gaias_chosen", "wightborn"];
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showSpellFromList(spellArray1, "spell1");
-                showSpellFromList(spellArray2, "spell2");
+
+                showSpellsWithArgument("", "spell1", "minor race transformation");
+                showSpellsWithArgument("", "spell2", "major race transformation");
+
 
             });
 
@@ -42,7 +41,6 @@
 
 
         });
-
     </script>
 
 
@@ -57,29 +55,43 @@
     </div>
 
 
-    <button type="button" class="collapsible">
-        Minor Transformation Spells
-    </button>
-    <div class="content">
-        <div id="spell1"></div>
+    <div class="w3-container">
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Minor Transformations')">Minor Transformations</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Major Transformations')">Major Transformations</button>
+        </div>
+
+        <div id="Minor Transformations" class="w3-container w3-border city">
+            <div id="spell1"></div>
+        </div>
+
+        <div id="Major Transformations" class="w3-container w3-border city" style="display:none">
+            <div id="spell2"></div>
+        </div>
+
+
     </div>
-
-
-
-
-    <button type="button" class="collapsible">
-        Major Transformation Spells
-    </button>
-    <div class="content" id="spell2"></div>
-
 
 
 
 
 
 </body>
-
-</html>
+<script>
+    function openCity(evt, cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+</script></html>
 <footer>
     <br>
     <br>

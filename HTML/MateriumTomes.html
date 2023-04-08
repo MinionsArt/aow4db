@@ -13,15 +13,15 @@
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["tome_of_evocation"];
-        var tomeArray2 = ["tome_of_warding"];
-        var tomeArray3 = ["tome_of_scrying"];
-        var tomeArray4 = ["tome_of_amplification"];
-        var tomeArray5 = ["tome_of_teleportation"];
-        var tomeArray6 = ["tome_of_summoning"];
-        var tomeArray7 = ["tome_of_the_astral_mirror"];
-        var tomeArray8 = ["tome_of_astral_convergence"];
-        var tomeArray9 = ["tome_of_the_arch_mage"];
+        var tomeArray1 = ["tome_of_rock"];
+        var tomeArray2 = ["tome_of_enchantment"];
+        var tomeArray3 = ["tome_of_winds"];
+        var tomeArray4 = ["tome_of_artificing"];
+        var tomeArray5 = ["tome_of_transmutation"];
+        var tomeArray6 = ["tome_of_terramancy"];
+        var tomeArray7 = ["tome_of_the_crucible"];
+        var tomeArray8 = ["tome_of_the_golden_realm"];
+        var tomeArray9 = ["tome_of_the_creator"];
         $("#body").ready(function() {
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
@@ -36,7 +36,7 @@
                 showTomeFromList(tomeArray8, "tome8");
                 showTomeFromList(tomeArray9, "tome9");
 
-                openCity(event, 'Evoc');
+                openCity(event, 'I');
                 /*,var tomeArray1 = ["tome_of_evocation"];
                            var tomeArray2 = ["tome_of_warding"];
 
@@ -61,62 +61,61 @@
 
 
         });
-
     </script>
 
 
-    <title>Age of Wonders 4 - Astral Tomes</title>
+    <title>Age of Wonders 4 - Materium Tomes</title>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <empirearcana></empirearcana>Astral Tomes
+        <empirematter></empirematter>Materium Tomes
     </div>
 
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Evoc')">I: Evocation</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Ward')">I: Warding</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Scry')">II: Scrying</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Amp')">II: Amplification</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tele')">III: Teleportation</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">III: Summoning</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mirror')">IV: Astral Mirror</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Conv')">IV: Astral Convergence</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Arch')">V: Arch Mage</button>
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">I: Rock</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">I: Enchantment</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">II: Winds</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">II: Artificing</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">III: Transmutation</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">III: Terramancy</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">IV: Crucible</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV2')">IV: Golden Realm</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'V')">V: Creator</button>
 
         </div>
 
-        <div id="Evoc" class="w3-container w3-border city">
+        <div id="I" class="w3-container w3-border city">
             <div id="tome1"></div>
         </div>
 
-        <div id="Ward" class="w3-container w3-border city">
+        <div id="I2" class="w3-container w3-border city">
             <div id="tome2"></div>
         </div>
-        <div id="Amp" class="w3-container w3-border city">
+        <div id="II" class="w3-container w3-border city">
             <div id="tome3"></div>
         </div>
-        <div id="Scry" class="w3-container w3-border city">
+        <div id="II2" class="w3-container w3-border city">
             <div id="tome4"></div>
         </div>
-        <div id="Tele" class="w3-container w3-border city">
+        <div id="III" class="w3-container w3-border city">
             <div id="tome5"></div>
         </div>
 
-        <div id="Summon" class="w3-container w3-border city">
+        <div id="III2" class="w3-container w3-border city">
             <div id="tome6"></div>
         </div>
-        <div id="Mirror" class="w3-container w3-border city">
+        <div id="IV" class="w3-container w3-border city">
             <div id="tome7"></div>
         </div>
-        <div id="Conv" class="w3-container w3-border city">
+        <div id="IV2" class="w3-container w3-border city">
             <div id="tome8"></div>
         </div>
-        <div id="Arch" class="w3-container w3-border city">
+        <div id="V" class="w3-container w3-border city">
             <div id="tome9"></div>
         </div>
 
@@ -142,10 +141,7 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " w3-red";
     }
-
-</script>
-
-</html>
+</script></html>
 <footer>
     <br>
     <br>

@@ -13,72 +13,70 @@
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["scout"];
-        var tomeArray2 = ["peasant_pikeman"];
-        var tomeArray3 = ["archer"];
-        var tomeArray4 = ["bannerman"];
-        var tomeArray5 = ["defender"];
-        var tomeArray6 = ["knight"];
+        var tomeArray1 = ["general_research"];
+        var tomeArray2 = ["feudal"];
+        var tomeArray3 = ["high"];
+        var tomeArray4 = ["barbarian"];
+        var tomeArray5 = ["industrious"];
+        var tomeArray6 = ["dark"];
+        var tomeArray7 = ["mystic"];
         $("#body").ready(function() {
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
 
-                showUnitsFromList(tomeArray1, "tome1");
-                showUnitsFromList(tomeArray2, "tome2");
-                showUnitsFromList(tomeArray3, "tome3");
-                showUnitsFromList(tomeArray4, "tome4");
-                showUnitsFromList(tomeArray5, "tome5");
-                showUnitsFromList(tomeArray6, "tome6");
+                showTomeFromList(tomeArray1, "tome1");
+                showTomeFromList(tomeArray2, "tome2");
+                showTomeFromList(tomeArray3, "tome3");
+                showTomeFromList(tomeArray4, "tome4");
+                showTomeFromList(tomeArray5, "tome5");
+                showTomeFromList(tomeArray6, "tome6");
+                showTomeFromList(tomeArray7, "tome7");
 
                 openCity(event, 'I');
-                SetLevelUpStuff();
-                /*,pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker""*/
+                /*,["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"*/
             });
 
+            var coll = document.getElementsByClassName("collapsible");
+            var content = document.getElementsByClassName("content");
+            var i;
 
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
 
 
         });
     </script>
 
 
-    <title>Age of Wonders 4 - Feudal Units</title>
+    <title>Age of Wonders 4 - General & Culture Tomes</title>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <img src="/highlanderdb/Icons/Text/feudal.png" height="40px"> Feudal Culture Units <img src="/highlanderdb/Icons/Text/feudal.png" height="40px">
+        General & Culture Tomes
     </div>
 
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <unitScout></unitScout> Scout
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <unitPolearm></unitPolearm> Peasant Pikeman
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                I - <unitRanged></unitRanged> Archer
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                II - <unitSupport></unitSupport> Bannerman
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                II - <unitShield></unitShield> Defender
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                III - <unitShock></unitShock> Knight
-
-            </button>
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">General Research</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">Feudal</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">High</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">Barbarian</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">Industrious</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">Dark</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">Mystic</button>
 
         </div>
 
@@ -101,6 +99,9 @@
 
         <div id="III2" class="w3-container w3-border city">
             <div id="tome6"></div>
+        </div>
+        <div id="IV" class="w3-container w3-border city">
+            <div id="tome7"></div>
         </div>
 
 

@@ -639,6 +639,14 @@
 
      };
 
+
+
+
+
+
+ }
+
+ function SetLevelUpStuff() {
      var coll = document.getElementsByClassName("collapsibleLevelup");
      var content = document.getElementsByClassName("contentLevelup");
      var i;
@@ -654,10 +662,6 @@
              }
          });
      }
-
-
-
-
  }
 
 
@@ -748,6 +752,152 @@
 
 
  }
+ async function showStructuresWithArgument(argument, divID, argumentType, includeProvince) {
+
+     var list = new Array();
+     list = findStructuresWithArgument(argument, argumentType, includeProvince);
+
+     await spawnSpellCards(list, divID);
+
+     for (var i = 0; i < list.length; i++) {
+
+         showStructure(list[i], true);
+
+     };
+
+
+
+
+ }
+
+ async function showSpellsWithArgument(argument, divID, argumentType) {
+
+     var list = new Array();
+     list = findSpellsWithArgument(argument, argumentType);
+
+     await spawnSpellCards(list, divID);
+
+     for (var i = 0; i < list.length; i++) {
+
+         showSpell(list[i], true);
+
+     };
+
+
+
+
+ }
+
+ function findSpellsWithArgument(argumentaffinity, argumentType) {
+     var i, output, affinity, textvalue, j, l, k, x, result = "";
+
+     var finalCheckedList = new Array();
+     if (argumentaffinity == "") {
+         for (j in jsonSpells.spells) {
+
+             if (jsonSpells.spells[j].spellType.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+
+                 finalCheckedList.push(jsonSpells.spells[j].id);
+             }
+
+
+
+         }
+     } else {
+         var listMod = new Array();
+         for (i in jsonTomes.tomes) {
+             affinity = jsonTomes.tomes[i].affinities;
+
+             if (affinity != undefined) {
+                 if (affinity.toUpperCase().indexOf(argumentaffinity.toUpperCase()) !== -1) {
+                     for (k in jsonTomes.tomes[i].skills) {
+                         listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
+
+                     }
+
+                 }
+             } else {
+                 if (argumentaffinity == "General Research") {
+                     if (jsonTomes.tomes[i].name.toUpperCase().indexOf("General Research".toUpperCase()) !== -1) {
+                         for (k in jsonTomes.tomes[i].skills) {
+                             listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
+
+                         }
+
+                     }
+                 }
+
+                 if (argumentaffinity == "Culture") {
+                     if (jsonTomes.tomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1) {
+                         for (k in jsonTomes.tomes[i].skills) {
+                             listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
+
+                         }
+
+                     }
+                 }
+             }
+
+
+
+
+         }
+
+
+         for (j in jsonSpells.spells) {
+             for (x in listMod) {
+                 if (listMod[x] == jsonSpells.spells[j].id) {
+                     if (jsonSpells.spells[j].spellType.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+
+                         finalCheckedList.push(jsonSpells.spells[j].id);
+                     }
+                 }
+             }
+
+         }
+     }
+
+     return finalCheckedList;
+ }
+
+ function findStructuresWithArgument(income, argumentType, includeprovince) {
+     var i, output, affinity, textvalue, j, l, k, x, result = "";
+
+     var finalCheckedList = new Array();
+     if (argumentType != "") {
+         for (j in jsonStructureUpgrades.structures) {
+
+             if (jsonStructureUpgrades.structures[j].name.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+                 if (jsonStructureUpgrades.structures[j].is_sector_upgrade.toString() == includeprovince) {
+                     finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+                 }
+
+
+
+             }
+         }
+     }
+     if (income != "") {
+         for (j in jsonStructureUpgrades.structures) {
+
+             if (jsonStructureUpgrades.structures[j].prediction_description.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
+                 if (jsonStructureUpgrades.structures[j].is_sector_upgrade.toString() == includeprovince) {
+                     finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+                 }
+
+             }
+
+
+
+         }
+     }
+
+
+
+
+     return finalCheckedList;
+ }
+
 
 
 
@@ -1006,29 +1156,7 @@
  }
 
 
- function showBuilding(a) {
-     var buildingName, description, cost, type, prereq, j, imagelink = "";
-     for (j in jsonBuildings.buildings) {
-         if (a == jsonBuildings.buildings[j].slug) {
-             buildingName = document.getElementById("buildingname");
-             buildingName.innerHTML = jsonBuildings.buildings[j].name;
-             description = document.getElementById("buildingdescription");
-             description.innerHTML = jsonBuildings.buildings[j].description;
-             type = document.getElementById("buildingtype");
-             type.innerHTML = jsonBuildings.buildings[j].type;
 
-             cost = document.getElementById("buildingcost");
-             cost.innerHTML = "Cost : " + jsonBuildings.buildings[j].cost;
-             if (jsonBuildings.buildings.prereq != "") {
-
-                 prereq = document.getElementById("buildingprereq");
-                 prereq.innerHTML = jsonBuildings.buildings[j].prereq;
-             }
-             imagelink = document.getElementById("buildingicon");
-             imagelink.setAttribute("src", imagelink + ".png");
-         }
-     }
- }
 
  function showTome(a, div) {
      var modName, description, cost, type, tier, k, j, descriptionDiv = "";
@@ -1037,7 +1165,7 @@
          if (a == jsonTomes.tomes[j].id) {
 
              modName = document.getElementById("tomename");
-             modName.innerHTML = jsonTomes.tomes[j].name.toUpperCase();
+             modName.innerHTML = jsonTomes.tomes[j].name;
              modName.setAttribute("id", "tomename" + a);
              descriptionDiv = document.getElementById("tomedescription");
              description = jsonTomes.tomes[j].gameplay_description;
@@ -1045,6 +1173,12 @@
              descriptionDiv.innerHTML = description;
 
              descriptionDiv.setAttribute("id", "tomedescription" + a);
+             loreDescription = jsonTomes.tomes[j].lore_description;
+             loreDescription += "<br>" + jsonTomes.tomes[j].lore_author;
+             descriptionLoreDiv = document.getElementById("tomeloredescription");
+             descriptionLoreDiv.innerHTML = loreDescription;
+
+             descriptionLoreDiv.setAttribute("id", "tomeloredescription" + a);
              skillHolder = document.getElementById("tome_unlocks");
 
              for (k in jsonTomes.tomes[j].skills) {
@@ -1056,13 +1190,13 @@
                  if ('unit_slug' in jsonTomes.tomes[j].skills[k]) {
                      var iDiv = spell_card_template.content.cloneNode(true);
                      skillHolder.appendChild(iDiv);
-                     showSpell(jsonTomes.tomes[j].skills[k].spell_slug, false);
+                     showUnitUnlock(jsonTomes.tomes[j].skills[k]);
                  }
 
                  if ('upgrade_slug' in jsonTomes.tomes[j].skills[k]) {
                      var iDiv = spell_card_template.content.cloneNode(true);
                      skillHolder.appendChild(iDiv);
-                     showSpell(jsonTomes.tomes[j].skills[k].spell_slug, false);
+                     showStructure(jsonTomes.tomes[j].skills[k].upgrade_slug, false);
                  }
 
              }
@@ -1095,6 +1229,103 @@
      }
  }
 
+ function showStructure(a) {
+     var modName, description, cost, type, tier, j = "";
+     var found = false;
+     for (j in jsonStructureUpgrades.structures) {
+         if (a == jsonStructureUpgrades.structures[j].id) {
+
+             modName = document.getElementById("modname");
+             modName.innerHTML = jsonStructureUpgrades.structures[j].name.toUpperCase();
+             modName.setAttribute("id", "modname" + a);
+             descriptionDiv = document.getElementById("moddescription");
+             if (jsonStructureUpgrades.structures[j].requirement_description != "") {
+                 description = jsonStructureUpgrades.structures[j].requirement_description + "<br>";
+             }
+             description += jsonStructureUpgrades.structures[j].description;
+
+
+             if (jsonStructureUpgrades.structures[j].prediction_description != "") {
+                 description += "<br>" + jsonStructureUpgrades.structures[j].prediction_description;
+             }
+
+
+             imagelink = document.getElementById("modicon");
+
+
+
+             imagelink.setAttribute("src", "/highlanderdb/Icons/UpgradeIcons/" + a + ".png");
+             imagelink.setAttribute("id", "modicon" + a);
+             descriptionDiv.innerHTML = description;
+             descriptionDiv.setAttribute("id", "modicon" + a);
+
+             unitTypesDiv = document.getElementById("affectUnitTypes");
+             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+             tier = document.getElementById("modtier");
+             if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
+                 tier.innerHTML = "Province Improvement";
+             } else {
+                 tier.innerHTML = "Building";
+             }
+             tier.setAttribute("id", "modtier" + a);
+
+             cost = document.getElementById("modcost");
+             cost.innerHTML = "Cost : " + jsonStructureUpgrades.structures[j].cost;
+             cost.setAttribute("id", "modcost" + a);
+
+
+             found = true;
+         }
+     }
+     if (found == false) {
+         console.log("Couldn't find mod: " + a);
+     }
+ }
+
+ function showUnitUnlock(a) {
+     var modName, description, cost, type, tier, j = "";
+     var found = false;
+
+
+
+     modName = document.getElementById("modname");
+     modName.innerHTML = a.name.toUpperCase();
+     modName.setAttribute("id", "modname" + a);
+     descriptionDiv = document.getElementById("moddescription");
+     description = a.description;
+
+
+
+     imagelink = document.getElementById("modicon");
+
+     unitTypesDiv = document.getElementById("affectUnitTypes");
+     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+
+     imagelink.setAttribute("src", "/highlanderdb/Previews/" + a.unit_slug + ".mp4");
+     imagelink.setAttribute("id", "modicon" + a);
+     descriptionDiv.innerHTML = description;
+     descriptionDiv.setAttribute("id", "modicon" + a);
+
+     tier = document.getElementById("modtier");
+
+     tier.innerHTML = "Unit Unlock";
+
+     tier.setAttribute("id", "modtier" + a);
+
+     cost = document.getElementById("modcost");
+
+     cost.setAttribute("id", "modcost" + a);
+
+
+     found = true;
+
+
+ }
+
+
+
  function showSpell(a, showOrigin) {
      var modName, description, cost, type, tier = "";
      var found = false;
@@ -1106,13 +1337,17 @@
              modName.setAttribute("id", "modname" + a);
              descriptionDiv = document.getElementById("moddescription");
              description = jsonSpells.spells[j].description;
+
+             unitTypesDiv = document.getElementById("affectUnitTypes");
              if (jsonSpells.spells[j].enchantment_requisites != undefined) {
                  description += "<br>Affected Unit Types: <br>";
              }
              for (l in jsonSpells.spells[j].enchantment_requisites) {
-
-                 description += "<bullet>" + jsonSpells.spells[j].enchantment_requisites[l].requisite + "</bullet>";
+                 var div = document.createElement("DIV");
+                 div.innerHTML = "<bullet>" + jsonSpells.spells[j].enchantment_requisites[l].requisite + "</bullet>"
+                 unitTypesDiv.appendChild(div);
              }
+             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
              descriptionDiv.innerHTML = description;
 
              descriptionDiv.setAttribute("id", "moddescription" + a);
@@ -1132,8 +1367,14 @@
              imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a + ".png");
              imagelink.setAttribute("id", "modicon" + a);
              if (showOrigin === true) {
-                 backtraceTomeOriginAndTier(jsonSpells.spells[j].id);
+                 tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id));
+                 var tomeOrigin = document.getElementById("originTome");
+                 tomeOrigin.setAttribute("id", "originTome" + jsonSpells.spells[j].id);
+                 var tomeOriginIcon = document.getElementById("originTomeIcon");
+                 tomeOriginIcon.setAttribute("id", "originTomeIcon" + jsonSpells.spells[j].id);
+
              }
+
 
 
              found = true;
@@ -1150,13 +1391,14 @@
              for (k in jsonTomes.tomes[j].skills) {
                  if (jsonTomes.tomes[j].skills[k].spell_slug == spell) {
                      var tomeOrigin = document.getElementById("originTome");
-                     tomeOrigin.innerHTML = jsonTomes.tomes[j].name;
-                     tomeOrigin.setAttribute("id", "originTome" + spell);
+                     if (jsonTomes.tomes[j].affinities != undefined) {
+                         tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+                     }
+                     tomeOrigin.innerHTML += jsonTomes.tomes[j].name;
+
                      var tomeOriginIcon = document.getElementById("originTomeIcon");
                      tomeOriginIcon.setAttribute("src", "/highlanderdb/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
-                     tomeOriginIcon.setAttribute("id", "originTomeIcon" + spell);
-
-                     console.log(jsonTomes.tomes[j].id);
+                     return jsonTomes.tomes[j].skills[k].tier;
                  }
              }
          }
@@ -1458,88 +1700,7 @@
 
 
 
- function addUnitUnlock(a, b) {
-     var unitUnlockName, unitUnlockIcon, unitUnlockAbility, j = "";
-     var found = false;
-     for (j in jsonUnits.units) {
 
-
-         if (a == jsonUnits.units[j].id) {
-
-
-             if (jsonUnits.units[j].name.includes("-")) {
-                 unitNameShort = "<titleBrownBig> Unit: " + jsonUnits.units[j].name.split("-")[1] + "</titleBrownBig>";
-             } else {
-                 unitNameShort = "<titleBrownBig> Unit: " + jsonUnits.units[j].name + "</titleBrownBig>";
-             }
-
-             unitUnlockName = "<titleBrownBig>" + jsonUnits.units[j].name + "</titleBrownBig>";
-             unitUnlockIcon = jsonUnits.units[j].icon;
-             // unitUnlockAbility = jsonUnits.units[j].description;
-
-
-             var tier = "<silver>Unit Unlock</silver>";
-
-
-             var btn = document.createElement("DIV");
-             btn.className = "researchResultBackgroundImage";
-             var imag = document.createElement("IMG");
-             imag.className = "modunlock_icon";
-             var spa = document.createElement("SPAN");
-             var tex = document.createElement("DIV");
-             tex.className = "tooltip";
-             tex.setAttribute('onclick', '');
-             //tex.innerHTML = modUnlockName;
-
-             spa.innerHTML = "<p>" + unitNameShort + "</p>" + tier + "<hr>";
-             spa.innerHTML += unitUnlockName;
-             spa.innerHTML += "<br>Tier " + jsonUnits.units[j].tier;
-             spa.innerHTML += "<hr>" + jsonUnits.units[j].hp + "<hp></hp> " + jsonUnits.units[j].mp + "<mp></mp> ";
-             if (jsonUnits.units[j].shield) {
-                 spa.innerHTML += jsonUnits.units[j].shield + "<shield></shield> ";
-             }
-             if (jsonUnits.units[j].armor) {
-                 spa.innerHTML += jsonUnits.units[j].armor + "<armor></armor> ";
-             }
-             spa.innerHTML += "<hr>";
-             for (k in jsonUnits.units[j].abilities) {
-                 spa.innerHTML += "<li>" + addAbilityList(jsonUnits.units[j].abilities[k].slug) + "</li>";
-
-             }
-             for (k in jsonUnits.units[j].secondary_passives) {
-                 spa.innerHTML += "<li>" + addAbilityList(jsonUnits.units[j].secondary_passives[k].slug) + "</li>";
-
-             }
-             imag.setAttribute("src", "/aowp/Icons/UnitIcons/" + unitUnlockIcon + ".png");
-
-
-             // spa.innerHTML += "<br>" + opUnlockAbility;
-             //spa.innerHTML += "<hr>" + "Priming Cost: " + jsonOperations.operations[j].energy_cost + "<energy></energy>" + jsonOperations.operations[j].casting;
-             imag.setAttribute("height", "35");
-             document.getElementById("unlockholder").appendChild(btn);
-             btn.appendChild(imag);
-
-
-             btn.appendChild(spa);
-
-
-             if (b == "s" || b == "em" || b == "es") {
-                 spa.className = "tooltiptext2";
-             } else {
-                 spa.className = "tooltiptext";
-             }
-             // btn.appendChild(tex);
-             found = true;
-         }
-     }
-
-
-     if (found == false) {
-         console.log("Couldn't find unit: " + a);
-     }
-
-
- }
 
  function addAbilityList(a) {
      var dam = "";

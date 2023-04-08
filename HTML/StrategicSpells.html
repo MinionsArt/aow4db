@@ -11,18 +11,18 @@
     <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
-
     <script>
         $("#body").ready(function() {
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
 
-                showSpellsWithArgument("", "spell1", "healing");
-                showSpellsWithArgument("", "spell2", "buff");
-                showSpellsWithArgument("", "spell3", "damage");
-                showSpellsWithArgument("", "spell4", "combat enchantment");
-                showSpellsWithArgument("", "spell5", "combat summon");
-                showSpellsWithArgument("", "spell6", "debuff");
+                showSpellsWithArgument("", "spell1", ">summon spell");
+                showSpellsWithArgument("", "spell2", "terraforming");
+                showSpellsWithArgument("", "spell3", "enemy army");
+                showSpellsWithArgument("", "spell4", "World");
+                showSpellsWithArgument("", "spell5", "city");
+                showSpellsWithArgument("", "spell6", "victory");
+                showSpellsWithArgument("", "spell7", "strategic spell");
 
 
             });
@@ -48,45 +48,49 @@
     </script>
 
 
-    <title>Age of Wonders 4 - Combat Spells</title>
+    <title>Age of Wonders 4 - Strategic Spells</title>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="textblocktitle">
-        Combat Spells
+        Strategic Spells
     </div>
 
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Healing')">Healing Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Buff')">Buff Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Damage')">Damage Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Enchant')">Combat Enchantment</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">Combat Summons</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Debuff')">Debuff Spells</button>
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Summon')">Summon Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Terra')">Terraforming Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Army')">Enemy Army Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'World')">World Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'City')">City Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Victory')">Victory Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Strat')">Strategic Spells</button>
         </div>
 
-        <div id="Healing" class="w3-container w3-border city">
+        <div id="Summon" class="w3-container w3-border city">
             <div id="spell1"></div>
         </div>
 
-        <div id="Buff" class="w3-container w3-border city" style="display:none">
+        <div id="Terra" class="w3-container w3-border city" style="display:none">
             <div id="spell2"></div>
         </div>
-        <div id="Damage" class="w3-container w3-border city" style="display:none">
+        <div id="Army" class="w3-container w3-border city" style="display:none">
             <div id="spell3"></div>
         </div>
-        <div id="Enchant" class="w3-container w3-border city" style="display:none">
+        <div id="World" class="w3-container w3-border city" style="display:none">
             <div id="spell4"></div>
         </div>
-        <div id="Summon" class="w3-container w3-border city" style="display:none">
+        <div id="City" class="w3-container w3-border city" style="display:none">
             <div id="spell5"></div>
         </div>
-        <div id="Debuff" class="w3-container w3-border city" style="display:none">
+        <div id="Victory" class="w3-container w3-border city" style="display:none">
             <div id="spell6"></div>
+        </div>
+        <div id="Strat" class="w3-container w3-border city" style="display:none">
+            <div id="spell7"></div>
         </div>
 
 

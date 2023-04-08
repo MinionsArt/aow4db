@@ -5,6 +5,16 @@ html {
 }
 
 @font-face {
+    font-family: 'Header';
+    src: url(/highlanderdb/Style/HEADER.ttf);
+}
+
+@font-face {
+    font-family: 'Decorative';
+    src: url(/highlanderdb/Style/DECORATIVE.otf);
+}
+
+@font-face {
     font-family: 'Regular';
     src: url(/highlanderdb/Style/REGULAR.ttf);
 }
@@ -550,10 +560,22 @@ p {
     font-size: 12px;
     padding: 10px;
 
-    padding-top: 30px;
-    max-width: 380px;
-    top: -20px;
+    padding-top: 15px;
+    max-width: 360px;
+
 }
+
+.tome_description {
+    position: relative;
+    float: right;
+    font-size: 12px;
+    padding: 10px;
+
+    padding-top: 15px;
+    max-width: 600px;
+}
+
+
 
 .mod_image_holder {
     position: relative;
@@ -583,11 +605,58 @@ p {
     top: -20px;
 }
 
+.w3-bar .w3-button {
+    white-space: normal;
+}
+
+.w3-bar .w3-bar-item {
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 2 5 2 5 fill;
+    background-color: black;
+    border-image-repeat: stretch;
+}
+
+.w3-red,
+.w3-hover-red:hover {
+    color: #fff !important;
+    background-color: #4b1d63 !important;
+}
+
+
+.w3-btn,
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: 'Regular', sans-serif;
+    color: burlywood;
+
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.w3-bar {
+    width: 100%;
+    overflow: hidden;
+}
+
 .mod_image {
 
     float: left;
     padding: 10px;
-    width: 75px;
+    width: 96px;
     background: url(/highlanderdb/Icons/Interface/spellbackground_enchantment.png);
     overflow: visible;
     background-size: 156px;
@@ -919,6 +988,19 @@ tab {
 
 
 }
+
+.tome_name {
+    font-size: 28px;
+    width: auto;
+    position: relative;
+    color: white;
+    text-shadow: 1px 1px blue;
+    font-family: 'Decorative';
+    text-align: center;
+    padding-left: 10px;
+
+}
+
 
 .mod_name {
     font-size: 18px;
@@ -1508,6 +1590,15 @@ hp {
 
 }
 
+temphp {
+    max-height: 15px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/tempHitpoints.png);
+    position: relative;
+
+
+}
+
 mp {
     max-height: 25px;
     top: 3px;
@@ -1860,25 +1951,12 @@ unitprod {
     position: relative;
 }
 
-tacticalPoint {
-    max-height: 20px;
-    top: 3px;
-    content: url(/aowp/Icons/Text/tac_ops.png);
-    position: relative;
-}
-
-stratPoint {
-    max-height: 20px;
-    top: 3px;
-    content: url(/aowp/Icons/Text/strat_ops.png);
-    position: relative;
-}
 
 
 population {
     max-height: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/population.png);
+    content: url(/highlanderdb/Icons/Text/population.png);
     position: relative;
 }
 
@@ -1948,75 +2026,82 @@ influence {
 food {
     max-height: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/food.png);
+    content: url(/highlanderdb/Icons/Text/food.png);
     position: relative;
 }
 
 caststrategic {
     max-height: 20px;
     top: 3px;
-    content: url(/aowp/Icons/Text/op_strength.png);
+    content: url(/highlanderdb/Icons/Text/strategiccombatpoints.png);
     position: relative;
 }
 
 casttactical {
     max-height: 20px;
     top: 3px;
-    content: url(/aowp/Icons/Text/op_defense.png);
+    content: url(/highlanderdb/Icons/Text/tacticalcombatpoints.png);
     position: relative;
 }
 
 unitSupport {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/support_unit.png);
     position: relative;
 }
 
 unitBattleMage {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/battle_mage_unit.png);
     position: relative;
 }
 
 unitShield {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/shield_unit.png);
     position: relative;
 }
 
 unitPolearm {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/polearm_unit.png);
     position: relative;
 }
 
+unitRanged {
+    max-height: 20px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/ranged_unit.png);
+    position: relative;
+}
+
 unitFighter {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/fighter_unit.png);
     position: relative;
 }
 
 unitScout {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/scout_unit.png);
     position: relative;
 }
 
 unitSkirmisher {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/skirmisher_unit.png);
     position: relative;
 }
 
 unitShock {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/shock_unit.png);
     position: relative;
@@ -2085,10 +2170,59 @@ foodSlot {
     position: relative;
 }
 
-researchSlot {
+knowledge {
     max-height: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/researchslot.png);
+    content: url(/highlanderdb/Icons/Text/knowledge.png);
+    position: relative;
+}
+
+empirechaos {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/chaos.png);
+    position: relative;
+}
+
+empirenature {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/nature.png);
+    position: relative;
+}
+
+empirearcana {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/astral.png);
+    position: relative;
+}
+
+empireshadow {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/shadow.png);
+    position: relative;
+}
+
+empirematter {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/materium.png);
+    position: relative;
+}
+
+empireorder {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/order.png);
+    position: relative;
+}
+
+structureprod {
+    max-height: 25px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/production.png);
     position: relative;
 }
 

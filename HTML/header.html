@@ -176,7 +176,7 @@
                 </div>
 
 
-                <div style="width: 150px;position: absolute;left: -162px;top: 35px;">
+                <div style="width: 150px;position: absolute;left: -162px;top: 10px;">
 
 
 
@@ -207,6 +207,7 @@
                         <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
                     </p>
                 </div>
+                <div id="affectUnitTypes" style=" float:left; display: grid;grid-template-columns: 160px  160px;"></div>
 
 
 
@@ -223,9 +224,10 @@
 
 
 
-            <p class="mod_name" id="tomename">Tome of Evocation</p>
+            <p class="tome_name" id="tomename">Tome of Evocation</p>
 
-
+            <p style="text-align: center; font-size: 12px" id="tomedescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor>
+            </p>
 
             <div style="width : 150px; float:left">
                 <img class="tome_image" id="tomeicon" src="/highlanderdb/Icons/Tomes/tome_of_evocation.png">
@@ -235,7 +237,7 @@
 
                 <p style="padding-left: 10px; width:100%" id="tomecost">
 
-                    Cost: 5 <tricorium></tricorium>
+                    <empirearcana></empirearcana> 2
 
                 </p>
 
@@ -244,9 +246,12 @@
 
 
             <div style="float:left">
-                <p class="mod_description" id="tomedescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
-                    <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
+                <p class="tome_description" id="tomeloredescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor>
                 </p>
+            </div>
+
+            <div style="float:left">
+                Initial Bonus
             </div>
 
         </div>
@@ -342,28 +347,35 @@
             <ul class='menus'>
 
                 <li><a href="/highlanderdb/HTML/AstralTomes.html"><img src="/highlanderdb/Icons/Text/astral.png" width="20px"> Astral</a></li>
-                <li><a href="/highlanderdb/HTML/NatureTomesUnits.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Nature</a></li>
-                <li><a href="/highlanderdb/HTML/ShadowTomesUnits.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Shadow</a></li>
-                <li><a href="/highlanderdb/HTML/OrderTomesUnits.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Order</a></li>
-                <li><a href="/highlanderdb/HTML/ChaosTomesUnits.html"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
-                <li><a href="/highlanderdb/HTML/MateriumTomesUnits.html"><img src="/highlanderdb/Icons/Text/materium.png" width="20px"> Materium</a></li>
+                <li><a href="/highlanderdb/HTML/NatureTomes.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Nature</a></li>
+                <li><a href="/highlanderdb/HTML/ShadowTomes.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Shadow</a></li>
+                <li><a href="/highlanderdb/HTML/OrderTomes.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Order</a></li>
+                <li><a href="/highlanderdb/HTML/ChaosTomes.html"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
+                <li><a href="/highlanderdb/HTML/MateriumTomes.html"><img src="/highlanderdb/Icons/Text/materium.png" width="20px"> Materium</a></li>
+                <li><a href="/highlanderdb/HTML/GeneralCultureTomes.html"><img src="/highlanderdb/Icons/Text/population.png" width="20px"> General & Culture</a></li>
             </ul>
 
         </li>
 
 
-        <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/TomesIcon.png" width="40px">Spells</a>
+        <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/SpellsIcon.png" width="40px">Spells</a>
             <ul class='menus'>
 
                 <li><a href="/highlanderdb/HTML/TransformationSpells.html"><img src="/highlanderdb/Icons/Text/astral.png" width="20px"> Transformations</a></li>
-                <li><a href="/highlanderdb/HTML/NatureTomesUnits.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Combat Spells</a></li>
-                <li><a href="/highlanderdb/HTML/ShadowTomesUnits.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Enchantments</a></li>
-                <li><a href="/highlanderdb/HTML/OrderTomesUnits.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Strategic Spells</a></li>
+                <li><a href="/highlanderdb/HTML/CombatSpells.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Combat Spells</a></li>
+                <li><a href="/highlanderdb/HTML/EnchantmentSpells.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Enchantments</a></li>
+                <li><a href="/highlanderdb/HTML/StrategicSpells.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Strategic Spells</a></li>
             </ul>
 
         </li>
         <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/StructuresIcon.png" width="40px">Structures</a>
+            <ul class='menus'>
 
+                <li><a href="/highlanderdb/HTML/CityStructures.html"><img src="/highlanderdb/Icons/Text/astral.png" width="20px"> City Structures</a></li>
+                <li><a href="/highlanderdb/HTML/CombatSpells.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Magic Materials</a></li>
+                <li><a href="/highlanderdb/HTML/EnchantmentSpells.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Ancient Wonders</a></li>
+                <li><a href="/highlanderdb/HTML/StrategicSpells.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Spawners</a></li>
+            </ul>
         </li>
         <li><a class='prett' style="color:burlywood" href='/highlanderdb/HTML/Equipment.html'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/EquipmentIcon.png" width="40px">Equipment</a>
 
