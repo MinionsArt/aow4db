@@ -596,6 +596,25 @@ p {
     margin: 5px;
 }
 
+.structure_image_holder {
+    position: relative;
+    width: 800px;
+    min-width: 400px;
+    float: left;
+    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    text-shadow: 2px 2px black;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+
+    padding: 10px;
+    margin: 5px;
+}
+
 .unit_description {
     font-family: "Custom";
     color: #fff4ad;
@@ -605,6 +624,15 @@ p {
     top: -20px;
 }
 
+.w3-bar {
+    float: position;
+    width: 200px;
+    display: grid;
+    grid-auto-columns: auto;
+    position: fixed;
+    z-index: 2;
+}
+
 .w3-bar .w3-button {
     white-space: normal;
 }
@@ -612,7 +640,7 @@ p {
 .w3-bar .w3-bar-item {
     padding: 8px 16px;
     float: left;
-    width: auto;
+
     border: none;
     display: block;
     outline: 0;
@@ -629,6 +657,14 @@ p {
     background-color: #4b1d63 !important;
 }
 
+.w3-btn,
+.w3-button:hover {
+    background-color: darkslategrey;
+}
+
+
+
+
 
 .w3-btn,
 .w3-button {
@@ -638,25 +674,22 @@ p {
     vertical-align: middle;
     overflow: hidden;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 13px;
     font-family: 'Regular', sans-serif;
     color: burlywood;
 
-    text-align: center;
+    text-align: left;
     cursor: pointer;
     white-space: nowrap;
 }
 
-.w3-bar {
-    width: 100%;
-    overflow: hidden;
-}
+
 
 .mod_image {
 
     float: left;
     padding: 10px;
-    width: 96px;
+    width: 76px;
     background: url(/highlanderdb/Icons/Interface/spellbackground_enchantment.png);
     overflow: visible;
     background-size: 156px;
@@ -1684,7 +1717,7 @@ spacedline {
 
 
 range {
-    max-width: 20px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/range.png);
     position: relative;
@@ -1693,8 +1726,8 @@ range {
 
 
 souls {
-    max-width: 20px;
-
+    max-height: 20px;
+    top: 3px;
     content: url(/highlanderdb/Icons/Text/souls.png);
     position: relative;
 
@@ -2093,6 +2126,13 @@ unitScout {
     position: relative;
 }
 
+unitMythic {
+    max-height: 20px;
+    top: 3px;
+    content: url(/highlanderdb/Icons/Text/mythic_unit.png);
+    position: relative;
+}
+
 unitSkirmisher {
     max-height: 20px;
     top: 3px;
@@ -2220,7 +2260,7 @@ empireorder {
 }
 
 structureprod {
-    max-height: 25px;
+    max-height: 20px;
     top: 3px;
     content: url(/highlanderdb/Icons/Text/production.png);
     position: relative;

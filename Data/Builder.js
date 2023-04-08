@@ -736,6 +736,18 @@
 
  }
 
+ spawnStructureCards
+ async function spawnStructureCards(list, divID) {
+     if (divID === undefined) {
+         divID = "spell";
+     }
+     var doc = document.getElementById(divID);
+     for (var i = 0; i < list.length; i++) {
+         var iDiv = structure_card_template.content.cloneNode(true);
+         doc.appendChild(iDiv);
+     }
+
+ }
 
  async function showSpellFromList(list, divID) {
 
@@ -757,7 +769,7 @@
      var list = new Array();
      list = findStructuresWithArgument(argument, argumentType, includeProvince);
 
-     await spawnSpellCards(list, divID);
+     await spawnStructureCards(list, divID);
 
      for (var i = 0; i < list.length; i++) {
 
@@ -1230,15 +1242,23 @@
  }
 
  function showStructure(a) {
-     var modName, description, cost, type, tier, j = "";
+     var modName, description, cost, type, tier, j, nameString = "";
      var found = false;
      for (j in jsonStructureUpgrades.structures) {
          if (a == jsonStructureUpgrades.structures[j].id) {
 
              modName = document.getElementById("modname");
-             modName.innerHTML = jsonStructureUpgrades.structures[j].name.toUpperCase();
+             nameString = "";
+             nameString = jsonStructureUpgrades.structures[j].name.toUpperCase();
+
+             if (nameString.indexOf("<br>")) {
+                 nameString = nameString.replace("<BR>", "");
+                 nameString = nameString.replace("<BR>", "");
+             }
+             modName.innerHTML = nameString;
              modName.setAttribute("id", "modname" + a);
              descriptionDiv = document.getElementById("moddescription");
+             description = "";
              if (jsonStructureUpgrades.structures[j].requirement_description != "") {
                  description = jsonStructureUpgrades.structures[j].requirement_description + "<br>";
              }

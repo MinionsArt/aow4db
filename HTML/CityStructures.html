@@ -19,9 +19,8 @@
 
                 showStructuresWithArgument("", "struc1", "wizard tower", "false");
 
-                showStructuresWithArgument("mana", "struc2", "", "false");
-                showStructuresWithArgument("gold", "struc3", "", "false");
-                showStructuresWithArgument("food", "struc4", "", "false");
+                showStructuresWithArgument("", "struc2", "town hall", "false");
+
 
 
                 /*,var tomeArray1 = ["tome_of_evocation"];
@@ -48,6 +47,7 @@
 
 
         });
+
     </script>
 
 
@@ -65,9 +65,8 @@
     <div class="w3-container">
         <div class="w3-bar w3-black">
             <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Wizard')">Wizards Tower</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mana')">+Mana</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Gold')">+Gold</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Food')">+Food</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Town')">Town Hall</button>
+
 
         </div>
 
@@ -75,14 +74,8 @@
             <div id="struc1"></div>
         </div>
 
-        <div id="Mana" class="w3-container w3-border city">
+        <div id="Town" class="w3-container w3-border city">
             <div id="struc2"></div>
-        </div>
-        <div id="Gold" class="w3-container w3-border city">
-            <div id="struc3"></div>
-        </div>
-        <div id="Food" class="w3-container w3-border city">
-            <div id="struc4"></div>
         </div>
 
 
@@ -110,7 +103,10 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " w3-red";
     }
-</script></html>
+
+</script>
+
+</html>
 <footer>
     <br>
     <br>
