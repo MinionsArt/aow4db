@@ -48,7 +48,9 @@
 
 
         });
+
     </script>
+
 
 
     <title>Age of Wonders 4 - Enchantment Spells</title>
@@ -61,8 +63,17 @@
         Enchantment Spells
     </div>
 
-
+    <div style="
+    display: table;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;">
+        <button onclick="sortDivs('name')">Name Sorting Buttons</button>
+        <button onclick="sortDivs('tier')">Tier Sorting Buttons</button>
+        <button onclick="sortDivs('cost')">Cost Sorting Buttons</button>
+    </div>
     <div class="w3-container">
+
         <div class="w3-bar w3-black">
             <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Generic Research')">Generic Research</button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Cultures')">Cultures</button>
@@ -74,31 +85,34 @@
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Shadow')">Shadow</button>
         </div>
 
-        <div id="Generic Research" class="w3-container w3-border city">
-            <div id="spell1"></div>
-        </div>
+        <div id="list">
 
-        <div id="Cultures" class="w3-container w3-border city" style="display:none">
-            <div id="spell2"></div>
-        </div>
+            <div id="Generic Research" class="w3-container w3-border city">
+                <div id="spell1"></div>
+            </div>
 
-        <div id="Order" class="w3-container w3-border city" style="display:none">
-            <div id="spell3"></div>
-        </div>
-        <div id="Chaos" class="w3-container w3-border city" style="display:none">
-            <div id="spell4"></div>
-        </div>
-        <div id="Nature" class="w3-container w3-border city" style="display:none">
-            <div id="spell5"></div>
-        </div>
-        <div id="Materium" class="w3-container w3-border city" style="display:none">
-            <div id="spell6"></div>
-        </div>
-        <div id="Astral" class="w3-container w3-border city" style="display:none">
-            <div id="spell7"></div>
-        </div>
-        <div id="Shadow" class="w3-container w3-border city" style="display:none">
-            <div id="spell8"></div>
+            <div id="Cultures" class="w3-container w3-border city" style="display:none">
+                <div id="spell2"></div>
+            </div>
+
+            <div id="Order" class="w3-container w3-border city" style="display:none">
+                <div id="spell3"></div>
+            </div>
+            <div id="Chaos" class="w3-container w3-border city" style="display:none">
+                <div id="spell4"></div>
+            </div>
+            <div id="Nature" class="w3-container w3-border city" style="display:none">
+                <div id="spell5"></div>
+            </div>
+            <div id="Materium" class="w3-container w3-border city" style="display:none">
+                <div id="spell6"></div>
+            </div>
+            <div id="Astral" class="w3-container w3-border city" style="display:none">
+                <div id="spell7"></div>
+            </div>
+            <div id="Shadow" class="w3-container w3-border city" style="display:none">
+                <div id="spell8"></div>
+            </div>
         </div>
     </div>
 
@@ -108,20 +122,60 @@
 
 </body>
 <script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+    var ascendingOrder = true;
+    var currentView = "spell1";
+
+    function sortDivs(sortType) {
+
+
+
+        // 2 - Detemine the selector
+
+
+        // 3 - Choose the wanted order
+        ascendingOrder = !ascendingOrder;
+        const isNumeric = true;
+
+        // 4 - Select all elements
+        var container = document.getElementById(currentView);
+        var element = elements = [...container.querySelectorAll('.mod_card')]
+
+
+        var selector = "";
+        selector = element => element.querySelector('.mod_name').innerHTML;
+        if (sortType == "name") {
+
         }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        if (sortType == "tier") {
+            selector = element => element.querySelector('.spell_tier').innerHTML;
         }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
+        if (sortType == "cost") {
+            selector = element => element.querySelector('.spell_cost').innerHTML;
+        }
+
+        console.log(elements);
+        // 5 - Find their parent
+        const parentElement = container;
+
+        // 6 - Sort the elements
+        const collator = new Intl.Collator(undefined, {
+            numeric: isNumeric,
+            sensitivity: 'base'
+        });
+
+        elements
+            .sort((elementA, elementB) => {
+                const [firstElement, secondElement] = ascendingOrder ? [elementA, elementB] : [elementB, elementA];
+                const textOfFirstElement = selector(firstElement);
+                const textOfSecondElement = selector(secondElement);
+                return collator.compare(textOfFirstElement, textOfSecondElement)
+            })
+            .forEach(element => parentElement.appendChild(element));
     }
-</script></html>
+
+</script>
+
+</html>
 <footer>
     <br>
     <br>

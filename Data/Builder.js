@@ -103,6 +103,7 @@
      }
  }
 
+
  function openCity(evt, cityName) {
      if (evt != null) {
          evt.preventDefault();
@@ -110,6 +111,8 @@
 
          //currenturl + "?type=" + list[i])
      }
+
+
 
      var i, x, tablinks;
      x = document.getElementsByClassName("city");
@@ -1548,9 +1551,11 @@
              tier = document.getElementById("modtier");
              tier.innerHTML = jsonSpells.spells[j].spellType;
              tier.setAttribute("id", "modtier" + a);
+
              cost = document.getElementById("modcost");
              cost.innerHTML = "Casting Cost : " + jsonSpells.spells[j].casting_cost;
              cost.setAttribute("id", "modcost" + a);
+
              imagelink = document.getElementById("modicon");
 
 
