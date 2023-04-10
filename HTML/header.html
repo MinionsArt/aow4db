@@ -7,8 +7,10 @@
     <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Spells.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/EmpireProgression.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Tomes.json"></script>
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Search.js"></script>
 
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/StructureUpgrades.json"></script>
 
@@ -371,12 +373,12 @@
         <li><a style="color:burlywood; text-align: center" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/CultureUnitsIcon.png" width="40px">Culture</a>
             <ul>
 
-                <li><a href="/highlanderdb/HTML/FeudalUnits.html"><img src="/highlanderdb/Icons/Text/feudal.png" width="20px"> Feudal</a></li>
-                <li><a href="/highlanderdb/HTML/HighUnits.html"><img src="/highlanderdb/Icons/Text/high.png" width="20px"> High</a></li>
-                <li><a href="/highlanderdb/HTML/BarbarianUnits.html"><img src="/highlanderdb/Icons/Text/barbarian.png" width="20px"> Barbarian</a></li>
-                <li><a href="/highlanderdb/HTML/IndustriousUnits.html"><img src="/highlanderdb/Icons/Text/industrious.png" width="20px"> Industrious</a></li>
-                <li><a href="/highlanderdb/HTML/DarkUnits.html"><img src="/highlanderdb/Icons/Text/dark.png" width="20px"> Dark</a></li>
-                <li><a href="/highlanderdb/HTML/MysticUnits.html"><img src="/highlanderdb/Icons/Text/mystic.png" width="20px"> Mystic</a></li>
+                <li><a href="/highlanderdb/HTML/FeudalUnits.html?type=scout"><img src="/highlanderdb/Icons/Text/feudal.png" width="20px"> Feudal</a></li>
+                <li><a href="/highlanderdb/HTML/HighUnits.html?type=lightseeker"><img src="/highlanderdb/Icons/Text/high.png" width="20px"> High</a></li>
+                <li><a href="/highlanderdb/HTML/BarbarianUnits.html?type=pathfinder"><img src="/highlanderdb/Icons/Text/barbarian.png" width="20px"> Barbarian</a></li>
+                <li><a href="/highlanderdb/HTML/IndustriousUnits.html?type=pioneer"><img src="/highlanderdb/Icons/Text/industrious.png" width="20px"> Industrious</a></li>
+                <li><a href="/highlanderdb/HTML/DarkUnits.html?type=outrider"><img src="/highlanderdb/Icons/Text/dark.png" width="20px"> Dark</a></li>
+                <li><a href="/highlanderdb/HTML/MysticUnits.html?type=mystic_projection"><img src="/highlanderdb/Icons/Text/mystic.png" width="20px"> Mystic</a></li>
             </ul>
         </li>
         <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/TomeUnitsIcon.png" width="40px">Tomes</a>
@@ -386,7 +388,7 @@
                 <li><a href="/highlanderdb/HTML/NatureTomesUnits.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Nature</a></li>
                 <li><a href="/highlanderdb/HTML/ShadowTomesUnits.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Shadow</a></li>
                 <li><a href="/highlanderdb/HTML/OrderTomesUnits.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Order</a></li>
-                <li><a href="/highlanderdb/HTML/ChaosTomesUnits.html"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
+                <li><a href="/highlanderdb/HTML/ChaosTomesUnits.html?type=pyromancy"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
                 <li><a href="/highlanderdb/HTML/MateriumTomesUnits.html"><img src="/highlanderdb/Icons/Text/materium.png" width="20px"> Materium</a></li>
             </ul>
         </li>
@@ -413,7 +415,7 @@
                 <li><a href="/highlanderdb/HTML/NatureTomes.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Nature</a></li>
                 <li><a href="/highlanderdb/HTML/ShadowTomes.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Shadow</a></li>
                 <li><a href="/highlanderdb/HTML/OrderTomes.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Order</a></li>
-                <li><a href="/highlanderdb/HTML/ChaosTomes.html"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
+                <li><a href="/highlanderdb/HTML/ChaosTomes.html?type=pyromancy"><img src="/highlanderdb/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
                 <li><a href="/highlanderdb/HTML/MateriumTomes.html"><img src="/highlanderdb/Icons/Text/materium.png" width="20px"> Materium</a></li>
                 <li><a href="/highlanderdb/HTML/GeneralCultureTomes.html"><img src="/highlanderdb/Icons/Text/population.png" width="20px"> General & Culture</a></li>
             </ul>
@@ -425,7 +427,7 @@
             <ul class='menus'>
 
                 <li><a href="/highlanderdb/HTML/TransformationSpells.html"><img src="/highlanderdb/Icons/Text/astral.png" width="20px"> Transformations</a></li>
-                <li><a href="/highlanderdb/HTML/CombatSpells.html"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Combat Spells</a></li>
+                <li><a href="/highlanderdb/HTML/CombatSpells.html?type=healing"><img src="/highlanderdb/Icons/Text/nature.png" width="20px"> Combat Spells</a></li>
                 <li><a href="/highlanderdb/HTML/EnchantmentSpells.html"><img src="/highlanderdb/Icons/Text/shadow.png" width="20px"> Enchantments</a></li>
                 <li><a href="/highlanderdb/HTML/StrategicSpells.html"><img src="/highlanderdb/Icons/Text/order.png" width="20px"> Strategic Spells</a></li>
             </ul>
@@ -441,6 +443,9 @@
             </ul>
         </li>
         <li><a class='prett' style="color:burlywood" href='/highlanderdb/HTML/Equipment.html'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/Interface/EquipmentIcon.png" width="40px">Equipment</a>
+
+        </li>
+        <li><a class='prett' style="color:burlywood" href='/highlanderdb/HTML/EmpireTree.html'><img style="margin-top: -20px; margin-bottom: -10px" src="/highlanderdb/Icons/EmpireProgressionIcons/general.png" width="40px">Empire</a>
 
         </li>
 

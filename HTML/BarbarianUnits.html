@@ -13,30 +13,14 @@
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["pathfinder"];
-        var tomeArray2 = ["sunderer"];
-        var tomeArray3 = ["warrior"];
-        var tomeArray4 = ["war_shaman"];
-        var tomeArray5 = ["fury"];
-        var tomeArray6 = ["berserker"];
+        var unitarray = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
         $("#body").ready(function() {
 
+
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-
-                showUnitsFromList(tomeArray1, "tome1");
-                showUnitsFromList(tomeArray2, "tome2");
-                showUnitsFromList(tomeArray3, "tome3");
-                showUnitsFromList(tomeArray4, "tome4");
-                showUnitsFromList(tomeArray5, "tome5");
-                showUnitsFromList(tomeArray6, "tome6");
-
-                openCity(event, 'I');
+                SetButtonsAndDivs(unitarray);
                 SetLevelUpStuff();
-                /*,outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"*/
             });
-
-
-
 
         });
 
@@ -55,53 +39,10 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <unitScout></unitScout> Pathfinder
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <unitSkirmisher></unitSkirmisher> Sunderer
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                I - <unitShield></unitShield> Warrior
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                II - <unitSupport></unitSupport> War Shaman
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                II - <unitRanged></unitRanged> Fury
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                III - <unitShock></unitShock> Berserker
-
-            </button>
+        <div id="buttonHolder" class="w3-bar w3-black">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-
-        <div id="III2" class="w3-container w3-border city">
-            <div id="tome6"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -111,23 +52,8 @@
 
 
 
-</body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
 
-</script>
+</body>
 
 </html>
 <footer>

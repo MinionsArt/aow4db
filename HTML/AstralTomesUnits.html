@@ -37,6 +37,7 @@
 
 
         });
+
     </script>
 
 
@@ -53,58 +54,58 @@
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
+            <button id="Warding-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Warding')">
                 I - <img src="/highlanderdb/Icons/TomeIcons/tome_of_warding.png" height="20px"> Warding
 
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
+            <button id="Evoc-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Evoc')">
                 I - <img src="/highlanderdb/Icons/TomeIcons/tome_of_evocation.png" height="20px"> Evocation (2)
 
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
+            <button id="Amp-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Amp')">
                 II - <img src="/highlanderdb/Icons/TomeIcons/tome_of_amplification.png" height="20px"> Amplification
 
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
+            <button id="Scry-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Scry')">
                 II - <img src="/highlanderdb/Icons/TomeIcons/tome_of_scrying.png" height="20px"> Scrying
 
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
+            <button id="Summon-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">
                 III - <img src="/highlanderdb/Icons/TomeIcons/tome_of_summoning.png" height="20px"> Summoning (2)
 
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
+            <button id="Tele-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tele')">
                 III - <img src="/highlanderdb/Icons/TomeIcons/tome_of_teleportation.png" height="20px"> Teleportation
 
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
+            <button id="Mirror-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mirror')">
                 IV - <img src="/highlanderdb/Icons/TomeIcons/tome_of_the_astral_mirror.png" height="20px"> Astral Mirror
 
             </button>
 
         </div>
 
-        <div id="I" class="w3-container w3-border city">
+        <div id="Warding" class="w3-container w3-border city">
             <div id="units1"></div>
         </div>
 
-        <div id="I2" class="w3-container w3-border city">
+        <div id="Evoc" class="w3-container w3-border city">
             <div id="units2"></div>
         </div>
-        <div id="II" class="w3-container w3-border city">
+        <div id="Amp" class="w3-container w3-border city">
             <div id="units3"></div>
         </div>
-        <div id="II2" class="w3-container w3-border city">
+        <div id="Scry" class="w3-container w3-border city">
             <div id="units4"></div>
         </div>
-        <div id="III" class="w3-container w3-border city">
+        <div id="Summon" class="w3-container w3-border city">
             <div id="units5"></div>
         </div>
 
-        <div id="III2" class="w3-container w3-border city">
+        <div id="Tele" class="w3-container w3-border city">
             <div id="units6"></div>
         </div>
-        <div id="IV" class="w3-container w3-border city">
+        <div id="Mirror" class="w3-container w3-border city">
             <div id="units7"></div>
         </div>
 
@@ -113,21 +114,8 @@
 
 
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-</script></html>
+
+</html>
 <footer>
     <br>
     <br>

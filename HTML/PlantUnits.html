@@ -8,31 +8,20 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
     <script>
-        var unitarray = ["entwined_thrall"];
-        var unitarray2 = ["floral_stinger"];
-        var unitarray3 = ["nymph"];
-        var unitarray4 = ["entwined_protector"];
-        var unitarray5 = ["entwined_scourge"];
-        var unitarray6 = ["druid_of_the_cycle"];
-        var unitarray7 = ["horned_god"];
+        var unitarray = ["entwined_thrall", "floral_stinger", "nymph", "entwined_protector", "entwined_scourge", "druid_of_the_cycle", "horned_god"];
+
         $("#body").ready(function() {
 
-
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "tome1");
-                showUnitsFromList(unitarray2, "tome2");
-                showUnitsFromList(unitarray3, "tome3");
-                showUnitsFromList(unitarray4, "tome4");
-                showUnitsFromList(unitarray5, "tome5");
-                showUnitsFromList(unitarray6, "tome6");
-                showUnitsFromList(unitarray7, "tome7");
-
-                openCity(event, 'I');
+                SetButtonsAndDivs(unitarray);
                 SetLevelUpStuff();
-                /*,outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"*/
             });
+
 
 
 
@@ -51,61 +40,12 @@
     <div class="textblocktitle">
         <img src="/highlanderdb/Icons/Abilities/plant.png" height="40px"> Plant Wildlife Units <img src="/highlanderdb/Icons/Abilities/plant.png" height="40px">
     </div>
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <unitSkirmisher></unitSkirmisher> Entwined Thrall
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                II - <unitSkirmisher></unitSkirmisher> Floral Stinger
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                III - <unitSupport></unitSupport> Nymph
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                III - <unitShield></unitShield> Entwined Protector
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                IV - <unitBattlemage></unitBattlemage> Entwined Scourge
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                IV - <unitSupport></unitSupport> Druid of the Cycle
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
-                IV - <unitMythic></unitMythic> Horned God
-
-            </button>
+        <div id="buttonHolder" class="w3-bar w3-black">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-
-        <div id="II2" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-        <div id="III2" class="w3-container w3-border city">
-            <div id="tome6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="tome7"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -114,24 +54,7 @@
 
 
 
-
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-
-</script>
 
 </html>
 <footer>

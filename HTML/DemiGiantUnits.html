@@ -13,35 +13,18 @@
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
     <script>
-        var unitarray = ["butcher_ogre"];
-        var unitarray2 = ["brewer_ogre"];
-        var unitarray3 = ["river_troll"];
-        var unitarray4 = ["rock_giant"];
-        var unitarray5 = ["storm_giant"];
-        var unitarray6 = ["fire_giant"];
-        var unitarray7 = ["swamp_troll"];
-        var unitarray8 = ["karagh"];
+        var unitarray = ["butcher_ogre", "brewer_ogre", "river_troll", "rock_giant", "storm_giant", "fire_giant", "swamp_troll", "karagh"];
+
         $("#body").ready(function() {
 
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "tome1");
-                showUnitsFromList(unitarray2, "tome2");
-                showUnitsFromList(unitarray3, "tome3");
-                showUnitsFromList(unitarray4, "tome4");
-                showUnitsFromList(unitarray5, "tome5");
-                showUnitsFromList(unitarray6, "tome6");
-                showUnitsFromList(unitarray7, "tome7");
-                showUnitsFromList(unitarray8, "tome8");
-                openCity(event, 'I');
+                SetButtonsAndDivs(unitarray);
                 SetLevelUpStuff();
-                /*,outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"*/
             });
 
-
-
-
         });
+
     </script>
 
 
@@ -55,67 +38,10 @@
         <img src="/highlanderdb/Icons/Abilities/large_target.png" height="40px"> (Demi)Giant Wildlife Units <img src="/highlanderdb/Icons/Abilities/large_target.png" height="40px">
     </div>
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                III - <unitFighter></unitFighter> Butcher Ogre
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                III - <unitFighter></unitFighter> Brewer Ogre
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                III - <unitSkirmisher></unitSkirmisher> River Troll
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                IV - <unitMythic></unitMythic> Rock Giant
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                IV - <unitMythic></unitMythic> Storm Giant
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                IV - <unitMythic></unitMythic> Fire Giant
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
-                IV - <unitBattlemage></unitBattlemage> Swamp Troll
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV2')">
-                V - <unitMythic></unitMythic> Karagh
-
-            </button>
+        <div id="buttonHolder" class="w3-bar w3-black">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-
-        <div id="II2" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-        <div id="III2" class="w3-container w3-border city">
-            <div id="tome6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="tome7"></div>
-        </div>
-        <div id="IV2" class="w3-container w3-border city">
-            <div id="tome8"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -126,21 +52,8 @@
 
 
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-</script></html>
+
+</html>
 <footer>
     <br>
     <br>

@@ -13,23 +13,15 @@
     <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
 
     <script>
-        var unitarray = ["lightbringer"];
-        var unitarray2 = ["unicorn"];
-        var unitarray3 = ["blessed_soul"];
+        var unitarray = ["lightbringer", "unicorn", "blessed_soul", "shrine_of_smiting"];
+
         $("#body").ready(function() {
 
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "tome1");
-                showUnitsFromList(unitarray2, "tome2");
-                showUnitsFromList(unitarray3, "tome3");
-                openCity(event, 'I');
+                SetButtonsAndDivs(unitarray);
                 SetLevelUpStuff();
-                /*,outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"*/
             });
-
-
-
 
         });
     </script>
@@ -46,32 +38,12 @@
     </div>
 
 
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <unitBattlemage></unitBattlemage> Lightbringer
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <unitShock></unitShock> Unicorn
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                I - <unitShield></unitShield> Blessed Soul
-
-            </button>
+        <div id="buttonHolder" class="w3-bar w3-black">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="tome3"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -81,22 +53,7 @@
 
 
 
-</body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-</script></html>
+</body></html>
 <footer>
     <br>
     <br>

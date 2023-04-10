@@ -78,15 +78,15 @@
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Evoc')">I: Evocation</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Ward')">I: Warding</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Scry')">II: Scrying</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Amp')">II: Amplification</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tele')">III: Teleportation</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">III: Summoning</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mirror')">IV: Astral Mirror</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Conv')">IV: Astral Convergence</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Arch')">V: Arch Mage</button>
+            <button id="Evoc-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Evoc')">I: Evocation</button>
+            <button id="Ward-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Ward')">I: Warding</button>
+            <button id="Scry-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Scry')">II: Scrying</button>
+            <button id="Amp-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Amp')">II: Amplification</button>
+            <button id="Tele-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tele')">III: Teleportation</button>
+            <button id="Summon-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">III: Summoning</button>
+            <button id="Mirror-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mirror')">IV: Astral Mirror</button>
+            <button id="Conv-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Conv')">IV: Astral Convergence</button>
+            <button id="Arch-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Arch')">V: Arch Mage</button>
 
         </div>
 
@@ -128,22 +128,6 @@
 
 
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-
-</script>
 
 </html>
 <footer>

@@ -24,27 +24,13 @@
                 showSpellsWithArgument("", "spell5", "combat summon");
                 showSpellsWithArgument("", "spell6", "debuff");
 
-
+                SetLevelUpStuff();
             });
 
-            var coll = document.getElementsByClassName("collapsible");
-            var content = document.getElementsByClassName("content");
-            var i;
-
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
 
 
         });
+
     </script>
 
 
@@ -61,31 +47,31 @@
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Healing')">Healing Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Buff')">Buff Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Damage')">Damage Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Enchant')">Combat Enchantment</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">Combat Summons</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Debuff')">Debuff Spells</button>
+            <button id="healing-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'healing')">Healing Spells</button>
+            <button id="buff-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'buff')">Buff Spells</button>
+            <button id="damage-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'damage')">Damage Spells</button>
+            <button id="enchant-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'enchant')">Combat Enchantment</button>
+            <button id="summon-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'summon')">Combat Summons</button>
+            <button id="debuff-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'debuff')">Debuff Spells</button>
         </div>
 
-        <div id="Healing" class="w3-container w3-border city">
+        <div id="healing" class="w3-container w3-border city">
             <div id="spell1"></div>
         </div>
 
-        <div id="Buff" class="w3-container w3-border city" style="display:none">
+        <div id="buff" class="w3-container w3-border city" style="display:none">
             <div id="spell2"></div>
         </div>
-        <div id="Damage" class="w3-container w3-border city" style="display:none">
+        <div id="damage" class="w3-container w3-border city" style="display:none">
             <div id="spell3"></div>
         </div>
-        <div id="Enchant" class="w3-container w3-border city" style="display:none">
+        <div id="enchant" class="w3-container w3-border city" style="display:none">
             <div id="spell4"></div>
         </div>
-        <div id="Summon" class="w3-container w3-border city" style="display:none">
+        <div id="summon" class="w3-container w3-border city" style="display:none">
             <div id="spell5"></div>
         </div>
-        <div id="Debuff" class="w3-container w3-border city" style="display:none">
+        <div id="debuff" class="w3-container w3-border city" style="display:none">
             <div id="spell6"></div>
         </div>
 
@@ -99,20 +85,10 @@
 
 </body>
 <script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-</script></html>
+
+</script>
+
+</html>
 <footer>
     <br>
     <br>

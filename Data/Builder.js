@@ -1,6 +1,139 @@
  // we store the status in this object
+ const queryString = window.location.search;
+ const urlParams = new URLSearchParams(queryString);
+
+ // get parameters stuff
+ const product = urlParams.get('type');
+ if (product != undefined) {
+     openCity(event, product)
+ }
+
+ function GetTierAndName(id) {
+     for (i in jsonUnits.units) {
+         if (id == jsonUnits.units[i].id) {
+             return romanize(jsonUnits.units[i].tier) + " - " + getUnitTypeTag(jsonUnits.units[i].secondary_passives) + " " + jsonUnits.units[i].name;
+         }
+     }
+
+ }
+
+ function getUnitTypeTag(passivesList) {
+     var i = "";
+     for (i in passivesList) {
+         if (passivesList[i].slug == "fighter_unit") {
+             return "<unitFighter></unitFighter>";
+         }
+         if (passivesList[i].slug == "shock_unit") {
+             return "<unitShock></unitShock>";
+         }
+         if (passivesList[i].slug == "mythic_unit") {
+             return "<unitMythic></unitMythic>";
+         }
+         if (passivesList[i].slug == "skirmisher_unit") {
+             return "<unitSkirmisher></unitSkirmisher>";
+         }
+         if (passivesList[i].slug == "support_unit") {
+             return "<unitSupport></unitSupport>";
+         }
+         if (passivesList[i].slug == "scout_unit") {
+             return "<unitScout></unitScout>";
+         }
+         if (passivesList[i].slug == "ranged_unit") {
+             return "<unitRanged></unitRanged>";
+         }
+         if (passivesList[i].slug == "battle_mage_unit") {
+             return "<unitBattlemage></unitBattlemage>";
+         }
+         if (passivesList[i].slug == "polearm_unit") {
+             return "<unitPolearm></unitPolearm>";
+         }
+         if (passivesList[i].slug == "shield_unit") {
+             return "<unitShield></unitShield>";
+         }
+     }
+ }
+
+ function SetButtonsAndDivs(list) {
+     var modName, description, cost, type, tier, i, nameString = "";
+     for (i in list) {
+         var found = false;
 
 
+
+         var dataHolder = document.getElementById("dataHolder");
+         var div = document.createElement("DIV");
+
+         div.className = "w3-container w3-border city";
+         div.setAttribute("id", list[i]);
+
+
+         dataHolder.appendChild(div);
+
+         var divChild = document.createElement("DIV");
+         divChild.setAttribute("id", list[i] + "_card");
+
+
+         div.appendChild(divChild);
+
+         showUnitFromString(list[i], list[i]);
+
+         var buttonHolder = document.getElementById("buttonHolder");
+         var btn = document.createElement("BUTTON");
+         /// tooltipName.style.fontSize = "20px";
+
+         btn.className = "w3-bar-item w3-button tablink";
+         btn.type = "button";
+         btn.setAttribute("id", list[i] + "-button");
+
+
+
+         btn.innerHTML = GetTierAndName(list[i]);
+         buttonHolder.appendChild(btn);
+
+         btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\')');
+
+
+
+
+
+
+     }
+     if (product != undefined) {
+         openCity(event, product)
+     }
+ }
+
+ function openCity(evt, cityName) {
+     if (evt != null) {
+         evt.preventDefault();
+         console.log(evt.button);
+
+         //currenturl + "?type=" + list[i])
+     }
+
+     var i, x, tablinks;
+     x = document.getElementsByClassName("city");
+     for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+     }
+     tablinks = document.getElementsByClassName("tablink");
+     for (i = 0; i < x.length; i++) {
+         if (tablinks[i].id != cityName + "-button") {
+             tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+         }
+
+     }
+     var currentEl = document.getElementById(cityName);
+     if (currentEl != null) {
+         currentEl.style.display = "block";
+     }
+     if (evt != null) {
+         evt.currentTarget.className += " w3-red";
+     }
+     var currenturl = window.location.href.split('?')[0];
+
+     window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName);
+ }
 
  var divState = ["amazon", "assembly", "vanguard", "kirko", "dvar", "syndicate", "shakarn", "oathbound"];
  var divStateweapon1 = ["biochemical", "laser", "firearms", "arc", "psionics", "explosives", "sonic", "entropy"];
@@ -639,6 +772,31 @@
 
      };
 
+ }
+
+ async function spawnCard(string, divID) {
+     if (divID === undefined) {
+         divID = "units";
+     }
+     var doc = document.getElementById(divID);
+
+     var iDiv = unit_card_template.content.cloneNode(true);
+     doc.appendChild(iDiv);
+
+
+ }
+
+ async function showUnitFromString(string, divID) {
+
+
+     await spawnCard(string, divID);
+
+
+
+     showUnit(string, divID);
+
+
+
 
 
 
@@ -653,14 +811,27 @@
 
      for (i = 0; i < coll.length; i++) {
          coll[i].addEventListener("click", function () {
-             this.classList.toggle("active");
-             var content = this.nextElementSibling;
-             if (content.style.display === "block") {
-                 content.style.display = "none";
-             } else {
-                 content.style.display = "block";
+             //this.classList.toggle("active");
+             for (j in content) {
+                 this.classList.toggle("active");
+                 //  var content = this.nextElementSibling;
+                 if (content[j].style.display === "block") {
+                     content[j].style.display = "none";
+                 } else {
+                     content[j].style.display = "block";
+
+                 }
              }
+
          });
+     }
+
+
+     if (product != undefined) {
+
+         document.getElementById(product + "-button").className += " w3-red";
+
+
      }
  }
 

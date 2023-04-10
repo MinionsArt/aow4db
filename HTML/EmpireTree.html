@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/EmpireProgression.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+
+    <script>
+        // var unitarray = ["entwined_thrall", "floral_stinger", "nymph", "entwined_protector", "entwined_scourge", "druid_of_the_cycle", "horned_god"];
+
+        $("#body").ready(function() {
+
+            $("#header").load("/highlanderdb/HTML/header.html", function() {
+                // SetButtonsAndDivs(unitarray);
+                // SetLevelUpStuff();
+                SetUpTreeNodes("general", 3, "white");
+                SetUpTreeNodes("nature", 5, "green");
+                SetUpTreeNodes("chaos", 7, "red");
+                SetUpTreeNodes("astral", 9, "cyan");
+                SetUpTreeNodes("materium", 11, "orange");
+                SetUpTreeNodes("order", 13, "yellow");
+                SetUpTreeNodes("shadow", 15, "purple");
+                SetBreakPoints();
+            });
+
+
+
+
+
+        });
+
+        function SetUpTreeNodes(keyword, row, color) {
+            var i, offset = "";
+            var holder = document.getElementById("treeHolder");
+            var treespace = document.getElementById("treespace");
+            var offset = 0;
+            var nodeHeight = 60;
+
+            for (i in jsonEmpire.empirenodes) {
+                if (jsonEmpire.empirenodes[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
+                    if (jsonEmpire.empirenodes[i].required_level != undefined) {
+                        offset = 1;
+                        if (jsonEmpire.empirenodes[i].name === "Wizard King" || jsonEmpire.empirenodes[i].name === "Mana Extraction") {
+
+                        } else {
+                            if (jsonEmpire.empirenodes[i].required_level > 6 && keyword == "general") {
+                                offset = 1;
+                            }
+
+
+                            var name = jsonEmpire.empirenodes[i].name;
+
+                            var newNode = document.createElement("DIV");
+
+
+                            if (jsonEmpire.empirenodes[i].category.toUpperCase().indexOf("RITE") != -1) {
+
+                                var column = jsonEmpire.empirenodes[i].required_level + 2;
+
+                                // insert connection line
+                                var connectionLine = document.createElement("DIV");
+
+                                var toppos = 20 + ((row - 1) * 70);
+                                var leftpos = ((column - offset) * nodeHeight);
+
+                                connectionLine.setAttribute("style", "top:" + leftpos + "px; left:" + toppos + "px; rotate:-180deg;background-color:" + color + ";");
+                                connectionLine.className = "branch-line";
+                                connectionLine.setAttribute("id", name);
+                                treespace.appendChild(connectionLine);
+
+                                newNode.setAttribute("style", "grid-row:" + (column - offset) + "; grid-column:" + (row - 1) + ";");
+                            } else {
+                                //insert connection line
+
+                                var connectionLine = document.createElement("DIV");
+
+                                var column = jsonEmpire.empirenodes[i].required_level + 2;
+
+                                var toppos = 37 + ((row - 1) * 70);
+                                var leftpos = ((column - offset) * nodeHeight);
+
+
+                                connectionLine.setAttribute("style", "top:" + leftpos + "px; left:" + toppos + "px; rotate:180deg; background-color:" + color + ";");
+                                connectionLine.className = "branch-line";
+                                treespace.appendChild(connectionLine);
+                                connectionLine.setAttribute("id", name);
+                                newNode.setAttribute("style", "grid-row:" + (column - offset) + "; grid-column:" + row + ";");
+                            }
+
+
+                            //  newNode.innerHTML = name;
+                            newNode.className = "unittype_icon";
+
+
+                            var img = document.createElement("IMG");
+                            img.setAttribute("src", "/highlanderdb/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
+                            img.setAttribute("height", "50px");
+                            img.className = "empireNodeIcon";
+                            newNode.append(img);
+
+
+                            var spa = document.createElement("SPAN");
+                            if (jsonEmpire.empirenodes[i].required_level > 6) {
+                                spa.className = "tooltiptextUp";
+                            } else {
+                                spa.className = "tooltiptext";
+                            }
+
+
+                            spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>"
+
+                            spa.innerHTML += "<span style=\"color:  aliceblue;\">" + jsonEmpire.empirenodes[i].category + "</span>" + "<br>"
+                            spa.innerHTML += jsonEmpire.empirenodes[i].description + "<br>";
+                            spa.innerHTML += "Cost: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" + jsonEmpire.empirenodes[i].cost + "</span></bullet><br>";
+                            var affinity = jsonEmpire.empirenodes[i].required_affinity;
+                            if (affinity === undefined) {
+                                affinity = "<general></general>";
+                            }
+                            spa.innerHTML += "Requirement: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" +
+                                jsonEmpire.empirenodes[i].required_xp + " " + affinity + "</span></bullet>";
+
+
+
+                            newNode.appendChild(spa);
+
+                            holder.appendChild(newNode);
+
+                        }
+
+                    }
+                } else {
+                    if (jsonEmpire.empirenodes[i].id.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
+                        if (jsonEmpire.empirenodes[i].category === "") {
+                            var name = jsonEmpire.empirenodes[i].name;
+
+                            var newNode = document.createElement("DIV");
+
+                            var connectionLine = document.createElement("DIV");
+
+                            var toppos = 35 + ((row) * 70) - 92;
+                            var leftpos = 60;
+
+
+                            connectionLine.setAttribute("style", "top:" + leftpos + "px; left:" + toppos + "px; rotate:90deg;width: 600px; background-color:" + color + ";");
+
+
+                            connectionLine.className = "branch-line";
+                            treespace.appendChild(connectionLine);
+                            connectionLine.setAttribute("id", name);
+
+                            newNode.setAttribute("style", "grid-row: 1" + "; grid-column:" + row + ";");
+
+
+
+                            //  newNode.innerHTML = name;
+                            newNode.className = "unittype_icon";
+
+
+                            var img = document.createElement("IMG");
+                            img.setAttribute("src", "/highlanderdb/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
+                            img.setAttribute("height", "50px");
+                            img.setAttribute("style", "left:-35%");
+                            img.className = "empireNodeIcon";
+                            newNode.append(img);
+
+
+                            var spa = document.createElement("SPAN");
+                            spa.className = "tooltiptext";
+
+                            spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>";
+
+
+                            spa.innerHTML += jsonEmpire.empirenodes[i].description;
+
+
+
+                            newNode.appendChild(spa);
+
+                            holder.appendChild(newNode);
+                        }
+
+                    }
+                }
+
+
+            }
+
+        }
+
+        function SetBreakPoints() {
+            CreateDiv(2, "10");
+            CreateDiv(3, "20");
+            CreateDiv(4, "40");
+            CreateDiv(5, "80");
+            CreateDiv(6, "120");
+            CreateDiv(7, "160");
+            CreateDiv(8, "200");
+            CreateDiv(9, "300");
+            CreateDiv(10, "400");
+            CreateDiv(11, "500");
+
+        }
+
+        function CreateDiv(row, breakpoint) {
+            var holder = document.getElementById("treeHolder");
+            var treespace = document.getElementById("treespace");
+            var breakline = document.createElement("DIV");
+
+            breakline.setAttribute("style", "grid-row:" + row + "; grid-column:16; left: 30%; position: relative; color: grey; font-size:12px;top: 75%;");
+            breakline.innerHTML = breakpoint;
+            // add breaklines
+            holder.appendChild(breakline);
+
+            var breakline = document.createElement("DIV");
+
+            breakline.setAttribute("style", "grid-row:" + row + "; grid-column:1; left: 60%; position: relative; color: grey;font-size:12px;top: 75%;");
+            breakline.innerHTML = breakpoint;
+            // add breaklines
+            holder.appendChild(breakline);
+
+            var toppos = (row * 60);
+            var leftpos = 0;
+            var color = "red";
+            var connectionLine = document.createElement("DIV");
+            connectionLine.setAttribute("style", "top:" + toppos + "px; left:" + leftpos + "px; rotate:0deg;width: 1100px;");
+
+
+            connectionLine.className = "dotted-line";
+            treespace.appendChild(connectionLine);
+
+
+
+        }
+
+    </script>
+
+
+    <title>Age of Wonders 4 - Empire Tree</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        Empire Tree
+    </div>
+    <div class="tree-space" id="treespace">
+
+        <div class="tree-grid" id="treeHolder">
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<style>
+    .branch-line {
+        height: 4px;
+        margin-top: -6px;
+        position: absolute;
+
+        transform-origin: left center;
+        background-color: white;
+        background-size: 10px;
+        width: 25px;
+    }
+
+    .dotted-line {
+        height: 4px;
+        margin-top: -6px;
+        position: absolute;
+
+        transform-origin: left center;
+        background-image: url(/highlanderdb/Icons/Interface/talents-arrow-line-gray.png);
+        background-size: 10px;
+        width: 25px;
+    }
+
+    .tree-grid {
+        display: grid;
+        grid-template-columns: repeat(16, 70px);
+        grid-template-rows: repeat(11, 60px);
+        position: absolute;
+        height: 750px;
+        width: 1150px;
+        background-color: black;
+        background-image: url(/highlanderdb/Icons/Interface/panel_Background.png);
+        background-size: inherit;
+
+        border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+        border-image-slice: 4 10 4 10 fill;
+        border-style: solid;
+    }
+
+
+    .tree-space {
+        width: auto;
+        height: auto;
+        position: relative;
+    }
+
+    .entry {
+        background-color: transparent;
+        color: aliceblue;
+        text-align: center;
+    }
+
+    .empireNodeIcon {
+
+        z-index: 2;
+        position: relative;
+        top: 50%;
+        left: 50%;
+    }
+
+    .empireNodeIcon:hover {
+        filter: brightness(150%);
+    }
+
+</style>
+<footer>
+    <br>
+    <br>
+</footer>
