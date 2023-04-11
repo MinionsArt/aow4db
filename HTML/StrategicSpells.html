@@ -23,6 +23,7 @@
                 showSpellsWithArgument("", "spell5", "city");
                 showSpellsWithArgument("", "spell6", "victory");
                 showSpellsWithArgument("", "spell7", "strategic spell");
+                showSpellsWithArgument("", "spell8", "friendly army");
 
 
             });
@@ -45,6 +46,7 @@
 
 
         });
+
     </script>
 
 
@@ -68,6 +70,7 @@
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'City')">City Spells</button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Victory')">Victory Spells</button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Strat')">Strategic Spells</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Friend')">Friendly Army Spells</button>
         </div>
 
         <div id="Summon" class="w3-container w3-border city">
@@ -91,6 +94,9 @@
         </div>
         <div id="Strat" class="w3-container w3-border city" style="display:none">
             <div id="spell7"></div>
+        </div>
+        <div id="Friend" class="w3-container w3-border city" style="display:none">
+            <div id="spell8"></div>
         </div>
 
 
@@ -116,7 +122,10 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " w3-red";
     }
-</script></html>
+
+</script>
+
+</html>
 <footer>
     <br>
     <br>

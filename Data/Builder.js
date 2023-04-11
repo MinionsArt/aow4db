@@ -1342,6 +1342,47 @@
  }
 
 
+ function showSiegeProject(a) {
+
+     var modName, description, cost, type, tier, j = "";
+     var found = false;
+
+
+
+     modName = document.getElementById("modname");
+     modName.innerHTML = a.name.toUpperCase();
+     modName.setAttribute("id", "modname" + a.name);
+     descriptionDiv = document.getElementById("moddescription");
+     description = a.description;
+
+
+
+     imagelink = document.getElementById("modicon");
+
+     unitTypesDiv = document.getElementById("affectUnitTypes");
+     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.name);
+
+
+     imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a + ".png");
+     imagelink.setAttribute("id", "modicon" + a.name);
+     descriptionDiv.innerHTML = description;
+     descriptionDiv.setAttribute("id", "modicon" + a.name);
+
+     tier = document.getElementById("modtier");
+
+     tier.innerHTML = "Siege Project";
+
+     tier.setAttribute("id", "modtier" + a.name);
+
+     cost = document.getElementById("modcost");
+
+     cost.setAttribute("id", "modcost" + a.name);
+
+
+     found = true;
+
+
+ }
 
 
  function showTome(a, div) {
@@ -1383,6 +1424,11 @@
                      var iDiv = spell_card_template.content.cloneNode(true);
                      skillHolder.appendChild(iDiv);
                      showStructure(jsonTomes.tomes[j].skills[k].upgrade_slug, false);
+                 }
+                 if (jsonTomes.tomes[j].skills[k].type.indexOf("Siege") != -1) {
+                     var iDiv = spell_card_template.content.cloneNode(true);
+                     skillHolder.appendChild(iDiv);
+                     showSiegeProject(jsonTomes.tomes[j].skills[k], false);
                  }
 
              }
@@ -1497,7 +1543,7 @@
      unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
 
-     imagelink.setAttribute("src", "/highlanderdb/Previews/" + a.unit_slug + ".mp4");
+     imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a.unit_slug + ".png");
      imagelink.setAttribute("id", "modicon" + a);
      descriptionDiv.innerHTML = description;
      descriptionDiv.setAttribute("id", "modicon" + a);
