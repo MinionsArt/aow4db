@@ -2,25 +2,17 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <meta charset="UTF-8">
     <script>
         $("#body").ready(function() {
 
-            $("#header").load("/highlanderdb/HTML/header.html");
+            $("#header").load("/aow4db/HTML/header.html");
             showhide3('unitS');
 
         });
-
-
-        $(".togglelink").click(function() {
-            $(".togglelink").css("color", "white");
-
-            $(this).css("color", "cyan");
-        });
-
     </script>
     <title>Age of Wonders 4 - Search</title>
 </head>
@@ -86,6 +78,16 @@
 
     <div id="searchOutput"></div>
 
+    <div class="w3-container">
+        <div id="buttonHolder" class="w3-bar w3-black">
+
+        </div>
+        <div id="dataHolder" style="margin-top:-250px">
+        </div>
+
+
+    </div>
+
 </body>
 <script>
     $(document).ready(function() {
@@ -96,10 +98,6 @@
         /* $('#buttonMod').click(function() {
              searchDataMod();
          });*/
-    });
-
-    $(document).ready(function() {
-
     });
 
     $(function() {
@@ -115,7 +113,4 @@
             }
         })
     });
-
-</script>
-
-</html>
+</script></html>

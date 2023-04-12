@@ -4,13 +4,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         $("#body").ready(function() {
@@ -19,15 +19,17 @@
             var unitarray3 = ["stone_spirit", "snow_spirit", "tide_spirit", "storm_spirit", "ice_spider", "iron_golem"];
             var unitarray4 = ["ice_spider_matriarch", "phoenix"];
             var unitarray5 = ["golden_golem", "earth_titan"];
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "units1");
-                showUnitsFromList(unitarray2, "units2");
-                showUnitsFromList(unitarray3, "units3");
-                showUnitsFromList(unitarray4, "units4");
-                showUnitsFromList(unitarray5, "units5");
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                showUnitsFromList(unitarray, "Tier I - Elementals");
+                // add dropdown sub array
+                showUnitsFromList(unitarray2, "Tier II - Elementals");
+                showUnitsFromList(unitarray3, "Tier III - Elementals");
+                showUnitsFromList(unitarray4, "Tier IV - Elementals");
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
             });
 
-            openCity(event, 'I');
+
             SetLevelUpStuff();
         });
 
@@ -41,48 +43,13 @@
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <img src="/highlanderdb/Icons/Abilities/elemental.png" height="40px"> Elemental Wildlife Units <img src="/highlanderdb/Icons/Abilities/elemental.png" height="40px">
+        <img src="/aow4db/Icons/Abilities/elemental.png" height="40px"> Elemental Wildlife Units <img src="/aow4db/Icons/Abilities/elemental.png" height="40px">
     </div>
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <img src="/highlanderdb/Icons/Abilities/elemental.png" height="20px"> Elementals (5)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                II - <img src="/highlanderdb/Icons/Abilities/elemental.png" height="20px"> Elementals (4)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                III -<img src="/highlanderdb/Icons/Abilities/elemental.png" height="20px"> Elementals (6)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                IV -<img src="/highlanderdb/Icons/Abilities/elemental.png" height="20px"> Elementals (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                V -<img src="/highlanderdb/Icons/Abilities/elemental.png" height="20px"> Elementals (2)
-
-            </button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="units1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="units2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="units3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="units4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="units5"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -91,22 +58,6 @@
 
 
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-
-</script>
 
 </html>
 <footer>

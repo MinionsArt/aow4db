@@ -4,13 +4,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         var tomeArray1 = ["tome_of_evocation"];
@@ -24,7 +24,7 @@
         var tomeArray9 = ["tome_of_the_arch_mage"];
         $("#body").ready(function() {
 
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
+            $("#header").load("/aow4db/HTML/header.html", function() {
 
                 showTomeFromList(tomeArray1, "tome1");
                 showTomeFromList(tomeArray2, "tome2");
@@ -35,33 +35,17 @@
                 showTomeFromList(tomeArray7, "tome7");
                 showTomeFromList(tomeArray8, "tome8");
                 showTomeFromList(tomeArray9, "tome9");
+                SetLevelUpStuff();
 
-                openCity(event, 'Evoc');
+
                 /*,var tomeArray1 = ["tome_of_evocation"];
                            var tomeArray2 = ["tome_of_warding"];
 
                            "tome_of_warding", "tome_of_scrying", "tome_of_amplification", "tome_of_teleportation", "tome_of_summoning", "tome_of_the_astral_mirror", "tome_of_astral_convergence", "tome_of_the_arch_mage"];*/
             });
 
-            var coll = document.getElementsByClassName("collapsible");
-            var content = document.getElementsByClassName("content");
-            var i;
-
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
-
 
         });
-
     </script>
 
 
@@ -127,9 +111,7 @@
 
 
 
-</body>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

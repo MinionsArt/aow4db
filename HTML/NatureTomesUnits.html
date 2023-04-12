@@ -4,10 +4,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
 
     <script>
@@ -19,7 +22,7 @@
             var unitarray5 = ["druid_of_the_cycle"];
             var unitarray6 = ["totem_of_the_wild"];
             var unitarray7 = ["horned_god"];
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
+            $("#header").load("/aow4db/HTML/header.html", function() {
                 showUnitsFromList(unitarray1, "units1");
                 showUnitsFromList(unitarray2, "units2");
                 showUnitsFromList(unitarray3, "units3");
@@ -35,7 +38,6 @@
 
 
         });
-
     </script>
 
 
@@ -46,38 +48,38 @@
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <img src="/highlanderdb/Icons/Text/nature.png" height="40px"> Nature Tome Units <img src="/highlanderdb/Icons/Text/nature.png" height="40px">
+        <img src="/aow4db/Icons/Text/nature.png" height="40px"> Nature Tome Units <img src="/aow4db/Icons/Text/nature.png" height="40px">
     </div>
 
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
             <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <img src="/highlanderdb/Icons/TomeIcons/tome_of_beasts.png" height="20px"> Beasts
+                I - <img src="/aow4db/Icons/TomeIcons/tome_of_beasts.png" height="20px"> Beasts
 
             </button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <img src="/highlanderdb/Icons/TomeIcons/tome_of_roots.png" height="20px"> Roots (2)
+                I - <img src="/aow4db/Icons/TomeIcons/tome_of_roots.png" height="20px"> Roots (2)
 
             </button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                II - <img src="/highlanderdb/Icons/TomeIcons/tome_of_fertility.png" height="20px"> Fertility (2)
+                II - <img src="/aow4db/Icons/TomeIcons/tome_of_fertility.png" height="20px"> Fertility (2)
 
             </button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                II - <img src="/highlanderdb/Icons/TomeIcons/tome_of_glades.png" height="20px"> Glades (2)
+                II - <img src="/aow4db/Icons/TomeIcons/tome_of_glades.png" height="20px"> Glades (2)
 
             </button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                III - <img src="/highlanderdb/Icons/TomeIcons/tome_of_cycles.png" height="20px"> Cycles
+                III - <img src="/aow4db/Icons/TomeIcons/tome_of_cycles.png" height="20px"> Cycles
 
             </button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                III - <img src="/highlanderdb/Icons/TomeIcons/tome_of_vigor.png" height="20px"> Vigor
+                III - <img src="/aow4db/Icons/TomeIcons/tome_of_vigor.png" height="20px"> Vigor
 
             </button>
             <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
-                IV - <img src="/highlanderdb/Icons/TomeIcons/tome_of_natures_wrath.png" height="20px"> Nature's Wrath
+                IV - <img src="/aow4db/Icons/TomeIcons/tome_of_natures_wrath.png" height="20px"> Nature's Wrath
 
             </button>
 
@@ -113,25 +115,7 @@
 
 
 
-</body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-
-</script>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

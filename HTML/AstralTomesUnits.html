@@ -4,13 +4,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         $("#body").ready(function() {
@@ -21,23 +21,25 @@
             var unitarray5 = ["astral_serpent", "astral_keeper"];
             var unitarray6 = ["phase_beast"];
             var unitarray7 = ["mirror_mimic"];
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "units1");
-                showUnitsFromList(unitarray2, "units2");
-                showUnitsFromList(unitarray3, "units3");
-                showUnitsFromList(unitarray4, "units4");
-                showUnitsFromList(unitarray5, "units5");
-                showUnitsFromList(unitarray6, "units6");
-                showUnitsFromList(unitarray7, "units7");
-
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                showUnitsFromList(unitarray1, "I - Warding");
+                // add dropdown sub array
+                showUnitsFromList(unitarray2, "II - Evocation");
+                showUnitsFromList(unitarray3, "III - Amplification");
+                showUnitsFromList(unitarray4, "IV - Scrying");
+                showUnitsFromList(unitarray5, "III - Summoning");
+                showUnitsFromList(unitarray6, "IV - Teleportation");
+                showUnitsFromList(unitarray7, "III - Astral Mirror");
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
+
+
             });
 
 
 
 
         });
-
     </script>
 
 
@@ -48,74 +50,23 @@
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <img src="/highlanderdb/Icons/Text/astral.png" height="40px"> Astral Tome Units <img src="/highlanderdb/Icons/Text/astral.png" height="40px">
+        <img src="/aow4db/Icons/Text/astral.png" height="40px"> Astral Tome Units <img src="/aow4db/Icons/Text/astral.png" height="40px">
     </div>
+
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button id="Warding-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Warding')">
-                I - <img src="/highlanderdb/Icons/TomeIcons/tome_of_warding.png" height="20px"> Warding
-
-            </button>
-            <button id="Evoc-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Evoc')">
-                I - <img src="/highlanderdb/Icons/TomeIcons/tome_of_evocation.png" height="20px"> Evocation (2)
-
-            </button>
-            <button id="Amp-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Amp')">
-                II - <img src="/highlanderdb/Icons/TomeIcons/tome_of_amplification.png" height="20px"> Amplification
-
-            </button>
-            <button id="Scry-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Scry')">
-                II - <img src="/highlanderdb/Icons/TomeIcons/tome_of_scrying.png" height="20px"> Scrying
-
-            </button>
-            <button id="Summon-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">
-                III - <img src="/highlanderdb/Icons/TomeIcons/tome_of_summoning.png" height="20px"> Summoning (2)
-
-            </button>
-            <button id="Tele-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tele')">
-                III - <img src="/highlanderdb/Icons/TomeIcons/tome_of_teleportation.png" height="20px"> Teleportation
-
-            </button>
-            <button id="Mirror-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mirror')">
-                IV - <img src="/highlanderdb/Icons/TomeIcons/tome_of_the_astral_mirror.png" height="20px"> Astral Mirror
-
-            </button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="Warding" class="w3-container w3-border city">
-            <div id="units1"></div>
+        <div id="dataHolder">
         </div>
 
-        <div id="Evoc" class="w3-container w3-border city">
-            <div id="units2"></div>
-        </div>
-        <div id="Amp" class="w3-container w3-border city">
-            <div id="units3"></div>
-        </div>
-        <div id="Scry" class="w3-container w3-border city">
-            <div id="units4"></div>
-        </div>
-        <div id="Summon" class="w3-container w3-border city">
-            <div id="units5"></div>
-        </div>
-
-        <div id="Tele" class="w3-container w3-border city">
-            <div id="units6"></div>
-        </div>
-        <div id="Mirror" class="w3-container w3-border city">
-            <div id="units7"></div>
-        </div>
 
     </div>
 
 
-
-</body>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

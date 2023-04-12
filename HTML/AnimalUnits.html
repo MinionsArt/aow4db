@@ -4,13 +4,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         $("#body").ready(function() {
@@ -18,18 +18,19 @@
             var unitarray2 = ["warg", "kraken_spawn", "razorback", "stormscale_serpent", "nimu", "plague_serpent", "inferno_hound", "hunter_spider", "carrion_bird", "ice_spider", "dire_penguin", ];
             var unitarray3 = ["caustic_worm", "spirit_wolf", "unicorn", "thunderbird", "deep-sea_nimu", "goretusk_matriarch", "nightmare", "dread_spider_matriarch", "vampire_spider_matriarch"];
             var unitarray4 = ["white_wolf", "ice_spider_matriarch", "hunter_spider_matriarch", "kraken", "phoenix", "phase_beast"];
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "units1");
-                showUnitsFromList(unitarray2, "units2");
-                showUnitsFromList(unitarray3, "units3");
-                showUnitsFromList(unitarray4, "units4");
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                showUnitsFromList(unitarray, "Tier I - Animals");
+                // add dropdown sub array
+                showUnitsFromList(unitarray2, "Tier II - Animals");
+                showUnitsFromList(unitarray3, "Tier III - Animals");
+                showUnitsFromList(unitarray4, "Tier IV - Animals");
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
             });
-            SetLevelUpStuff();
 
             // get parameters stuff
 
         });
-
     </script>
 
 
@@ -40,43 +41,15 @@
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <img src="/highlanderdb/Icons/Abilities/animal.png" height="40px"> Animal Units <img src="/highlanderdb/Icons/Abilities/animal.png" height="40px">
+        <img src="/aow4db/Icons/Abilities/animal.png" height="40px"> Animal Units <img src="/aow4db/Icons/Abilities/animal.png" height="40px">
     </div>
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button id="Animalst1-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Animalst1')">
-                I - <img src="/highlanderdb/Icons/Abilities/animal.png" height="20px"> Animals (7)
-
-            </button>
-            <button id="Animalst2-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Animalst2')">
-                II - <img src="/highlanderdb/Icons/Abilities/animal.png" height="20px"> Animals (11)
-
-            </button>
-            <button id="Animalst3-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Animalst3')">
-                III -<img src="/highlanderdb/Icons/Abilities/animal.png" height="20px"> Animals (9)
-
-            </button>
-            <button id="Animalst4-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Animalst4')">
-                IV -<img src="/highlanderdb/Icons/Abilities/animal.png" height="20px"> Animals (6)
-
-            </button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="Animalst1" class="w3-container w3-border city">
-            <div id="units1"></div>
-        </div>
-
-        <div id="Animalst2" class="w3-container w3-border city">
-            <div id="units2"></div>
-        </div>
-        <div id="Animalst3" class="w3-container w3-border city">
-            <div id="units3"></div>
-        </div>
-        <div id="Animalst4" class="w3-container w3-border city">
-            <div id="units4"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -84,9 +57,7 @@
 
 
 
-</body>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

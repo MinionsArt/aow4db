@@ -4,21 +4,21 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/EmpireProgression.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/EmpireProgression.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         // var unitarray = ["entwined_thrall", "floral_stinger", "nymph", "entwined_protector", "entwined_scourge", "druid_of_the_cycle", "horned_god"];
 
         $("#body").ready(function() {
 
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
+            $("#header").load("/aow4db/HTML/header.html", function() {
                 // SetButtonsAndDivs(unitarray);
                 // SetLevelUpStuff();
                 SetUpTreeNodes("general", 3, "white");
@@ -101,7 +101,7 @@
 
 
                             var img = document.createElement("IMG");
-                            img.setAttribute("src", "/highlanderdb/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
+                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
                             img.setAttribute("height", "50px");
                             img.className = "empireNodeIcon";
                             newNode.append(img);
@@ -165,7 +165,7 @@
 
 
                             var img = document.createElement("IMG");
-                            img.setAttribute("src", "/highlanderdb/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
+                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
                             img.setAttribute("height", "50px");
                             img.setAttribute("style", "left:-35%");
                             img.className = "empireNodeIcon";
@@ -282,7 +282,7 @@
         position: absolute;
 
         transform-origin: left center;
-        background-image: url(/highlanderdb/Icons/Interface/talents-arrow-line-gray.png);
+        background-image: url(/aow4db/Icons/Interface/talents-arrow-line-gray.png);
         background-size: 10px;
         width: 25px;
     }
@@ -295,10 +295,10 @@
         height: 750px;
         width: 1150px;
         background-color: black;
-        background-image: url(/highlanderdb/Icons/Interface/panel_Background.png);
+        background-image: url(/aow4db/Icons/Interface/panel_Background.png);
         background-size: inherit;
 
-        border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
         border-image-slice: 4 10 4 10 fill;
         border-style: solid;
     }

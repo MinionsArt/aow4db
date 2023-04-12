@@ -51,14 +51,20 @@
      }
  }
 
- function SetButtonsAndDivs(list) {
+ function SetButtonsAndDivs(list, parent) {
      var modName, description, cost, type, tier, i, nameString = "";
      for (i in list) {
          var found = false;
 
-
+         if (parent === undefined) {
+             var buttonHolder = document.getElementById("buttonHolder");
+         } else {
+             var buttonHolder = document.getElementById(parent);
+         }
 
          var dataHolder = document.getElementById("dataHolder");
+         var holderHeight = buttonHolder.offsetHeight + 50;
+         dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
          var div = document.createElement("DIV");
 
          div.className = "w3-container w3-border city";
@@ -75,7 +81,7 @@
 
          showUnitFromString(list[i], list[i]);
 
-         var buttonHolder = document.getElementById("buttonHolder");
+
          var btn = document.createElement("BUTTON");
          /// tooltipName.style.fontSize = "20px";
 
@@ -98,6 +104,41 @@
      }
 
  }
+
+ function SetCollapsibleButtonsAndDivs(overwrite, listlength) {
+     var modName, description, cost, type, tier, i, nameString = "";
+
+     var buttonHolder = document.getElementById("buttonHolder");
+
+
+     var btn = document.createElement("BUTTON");
+     /// tooltipName.style.fontSize = "20px";
+
+     btn.className = "collapsibleUnits";
+     btn.type = "button";
+
+
+
+     btn.innerHTML = overwrite + " (" + listlength + ")";
+     buttonHolder.appendChild(btn);
+
+     var content = document.createElement("DIV");
+     content.setAttribute("id", overwrite + "-button");
+     content.className = "contentUnits";
+     buttonHolder.append(content);
+     // onclick open children
+     // btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\')');
+
+
+
+
+
+
+
+
+ }
+
+
 
 
  async function openCity(evt, cityName) {
@@ -359,13 +400,13 @@
              imag = document.createElement("IMG");
              spa = document.createElement("SPAN");
              spa.className = "tooltiptext";
-             imag.setAttribute("src", "/highlanderdb/Icons/Abilities/" + iconsrc + ".png");
-             imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
+             imag.setAttribute("src", "/aow4db/Icons/Abilities/" + iconsrc + ".png");
+             imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
              imag.setAttribute("width", "40");
              imag.setAttribute("height", "40");
 
 
-             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Abilities/" + iconsrc + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + iconName + "</p>" +
+             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/Abilities/" + iconsrc + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + iconName + "</p>" +
                  "</br>" + icontext;
              iconName = jsonUnitAbilities.abilities[j].name;
              if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
@@ -373,7 +414,7 @@
                  iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Scout Unit" || iconName === "Polearm Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft") {
                  unitRole = document.getElementById("unit_role");
 
-                 unitRole.setAttribute("src", "/highlanderdb/Icons/Text/" + iconsrc + ".png");
+                 unitRole.setAttribute("src", "/aow4db/Icons/Text/" + iconsrc + ".png");
              }
              document.getElementById("unitstat").appendChild(btn);
 
@@ -481,7 +522,7 @@
              abilityDescr = jsonUnitAbilities.abilities[j].description;
 
              var abilityIconType = "";
-             imag.setAttribute("src", "/highlanderdb/Icons/Abilities/" + abilityIcon + ".png");
+             imag.setAttribute("src", "/aow4db/Icons/Abilities/" + abilityIcon + ".png");
              if (abilityDam != undefined) {
                  splitDamageString = abilityDam.split(">");
                  if (splitDamageString[0].indexOf("phys") != -1) {
@@ -502,14 +543,14 @@
                  var abilityIconType = "ability_icon"
              }
 
-             imag.setAttribute("style", "background-image: url(\"/highlanderdb/Icons/Interface/" + abilityIconType + ".png\");background-repeat: no-repeat;background-size: 40px 40px");
+             imag.setAttribute("style", "background-image: url(\"/aow4db/Icons/Interface/" + abilityIconType + ".png\");background-repeat: no-repeat;background-size: 40px 40px");
 
-             imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
+             imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
              imag.setAttribute("width", "40");
              imag.setAttribute("height", "40");
 
              // block one, header
-             spa.innerHTML = "<div style\"display:block\"><img style=\"float:left; height:50px; width:50px; background-image:url(\'/highlanderdb/Icons/Interface/" + abilityIconType + ".png');background-repeat: no-repeat;background-size: 50px\" src=\"/highlanderdb/Icons/Abilities/" + abilityIcon + ".png\">";
+             spa.innerHTML = "<div style\"display:block\"><img style=\"float:left; height:50px; width:50px; background-image:url(\'/aow4db/Icons/Interface/" + abilityIconType + ".png');background-repeat: no-repeat;background-size: 50px\" src=\"/aow4db/Icons/Abilities/" + abilityIcon + ".png\">";
 
              spa.innerHTML += "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase() + "</div>" + "<div class=\"rightAbility\">" + abilityDam + "</div><br>";
 
@@ -581,13 +622,13 @@
 
              spa.className = "tooltiptext";
 
-             imag.setAttribute("src", "/highlanderdb/Icons/Abilities/" + abilityIcon + ".png");
-             imag.setAttribute('onerror', "this.setAttribute('src','/highlanderdb/Icons/Text/mp.png')");
+             imag.setAttribute("src", "/aow4db/Icons/Abilities/" + abilityIcon + ".png");
+             imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
              imag.setAttribute("width", "40");
              imag.setAttribute("height", "40");
 
 
-             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/highlanderdb/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
+             spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
                  "</br>" + abilityDescr;
 
 
@@ -631,19 +672,19 @@
              imag.setAttribute("height", "25");
 
              if (a.indexOf("frost") !== -1) {
-                 imag.setAttribute("src", "/highlanderdb/Icons/Text/frost_resistance.png");
+                 imag.setAttribute("src", "/aow4db/Icons/Text/frost_resistance.png");
              }
              if (a.indexOf("blight") !== -1) {
-                 imag.setAttribute("src", "/highlanderdb/Icons/Text/blight_resistance.png");
+                 imag.setAttribute("src", "/aow4db/Icons/Text/blight_resistance.png");
              }
              if (a.indexOf("fire") !== -1) {
-                 imag.setAttribute("src", "/highlanderdb/Icons/Text/fire_resistance.png");
+                 imag.setAttribute("src", "/aow4db/Icons/Text/fire_resistance.png");
              }
              if (a.indexOf("spirit") !== -1) {
-                 imag.setAttribute("src", "/highlanderdb/Icons/Text/spirit_resistance.png");
+                 imag.setAttribute("src", "/aow4db/Icons/Text/spirit_resistance.png");
              }
              if (a.indexOf("lightning") !== -1) {
-                 imag.setAttribute("src", "/highlanderdb/Icons/Text/lightning_resistance.png");
+                 imag.setAttribute("src", "/aow4db/Icons/Text/lightning_resistance.png");
              }
 
              if (a.indexOf("weakness") !== -1) {
@@ -692,7 +733,7 @@
      imag.setAttribute("height", "25");
 
 
-     imag.setAttribute("src", "/highlanderdb/Icons/Text/status_resistance.png");
+     imag.setAttribute("src", "/aow4db/Icons/Text/status_resistance.png");
 
      abilityDam = a;
 
@@ -772,16 +813,11 @@
 
 
 
- async function showUnitsFromList(list, divID) {
+ async function showUnitsFromList(list, overwritetext) {
 
+     SetCollapsibleButtonsAndDivs(overwritetext, list.length);
+     SetButtonsAndDivs(list, overwritetext + "-button");
 
-     await spawnCards(list, divID);
-
-     for (var i = 0; i < list.length; i++) {
-
-         showUnit(list[i], divID);
-
-     };
 
  }
 
@@ -900,6 +936,59 @@
      sorting = sortType + ":" + ascendingOrder;
  }
 
+ async function SetCollapsibleStuff() {
+     var coll = document.getElementsByClassName("collapsibleUnits");
+
+     var i = "";
+
+     for (i = 0; i < coll.length; i++) {
+         coll[i].addEventListener("click", function () {
+             var contents = document.getElementsByClassName("contentUnits");
+             var content = this.nextElementSibling;
+
+             for (j = 0; j < contents.length; j++) {
+
+
+                 if (contents[j].style != null) {
+                     if (contents[j].style.display === "grid") {
+                         if (contents[j].id === content.id) {
+
+                         } else {
+                             console.log(contents[j].id, content.id);
+                             coll[j].classList.toggle("active");
+                             contents[j].style.display = "none";
+                         }
+
+                     }
+                 }
+
+             }
+             this.classList.toggle("active");
+
+             if (content.style.display === "grid") {
+                 content.style.display = "none";
+             } else {
+                 content.style.display = "grid";
+             }
+
+
+
+
+             var buttonHolder = document.getElementById("buttonHolder");
+             var holderHeight = buttonHolder.offsetHeight;
+             var dataHolder = document.getElementById("dataHolder");
+             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+         });
+
+
+     }
+
+     var buttonHolder = document.getElementById("buttonHolder");
+     var holderHeight = buttonHolder.offsetHeight;
+     var dataHolder = document.getElementById("dataHolder");
+     dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+ }
+
  async function SetLevelUpStuff() {
      var coll = document.getElementsByClassName("collapsibleLevelup");
      var content = document.getElementsByClassName("contentLevelup");
@@ -930,8 +1019,9 @@
      const urlParams = new URLSearchParams(window.location.search);
      const product = searchParams.get('type');
 
-     var splits = product.split("&");
+
      if (product != undefined) {
+         var splits = product.split("&");
          closeTabLinks(product);
          document.getElementById(product + "-button").className += " w3-red";
 
@@ -940,6 +1030,8 @@
 
 
      }
+
+
 
      //if (sorting != undefined) {
 
@@ -1257,9 +1349,9 @@
              //descr.innerHTML = jsonUnits.units[i].description;
              imagelink = document.getElementById("vid");
              imagelink.setAttribute("id", "vid" + a);
-             imagelink.setAttribute('src', "/highlanderdb/Previews/" + jsonUnits.units[i].id + ".mp4");
-             if (imagelink.getAttribute('src') === "/highlanderdb/Previews/undefined") {
-                 imagelink.setAttribute('src', "/highlanderdb/Previews/placeholder.mp4");
+             imagelink.setAttribute('src', "/aow4db/Previews/" + jsonUnits.units[i].id + ".mp4");
+             if (imagelink.getAttribute('src') === "/aow4db/Previews/undefined") {
+                 imagelink.setAttribute('src', "/aow4db/Previews/placeholder.mp4");
              }
              // research = document.getElementById("researchorigin");
              // research.setAttribute("id", "researchorigin" + a);
@@ -1358,17 +1450,17 @@
      evolveTarget = units.evolve_target;
 
      var levelText = "";
-     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_soldier.png\" width='20'\"> Soldier</p>";
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_soldier.png\" width='20'\"> Soldier</p>";
      for (i in units.medal_rewards_2) {
          levelText += "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
 
      }
-     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_veteran.png\" width='20'\"> Veteran</p>";
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_veteran.png\" width='20'\"> Veteran</p>";
      for (i in units.medal_rewards_3) {
          levelText += "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
 
      }
-     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_elite.png\" width='20'\"> Elite</p>";
+     levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_elite.png\" width='20'\"> Elite</p>";
 
      for (i in units.medal_rewards_4) {
 
@@ -1387,14 +1479,14 @@
      if (evolveTarget === undefined) {
 
 
-         levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
+         levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
 
          for (i in units.medal_rewards_5) {
              levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
 
          }
 
-         levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/highlanderdb/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
+         levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
          for (i in units.medal_rewards_6) {
              if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
                  levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
@@ -1504,7 +1596,7 @@
      unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.name);
 
 
-     imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a + ".png");
+     imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
      imagelink.setAttribute("id", "modicon" + a.name);
      descriptionDiv.innerHTML = description;
      descriptionDiv.setAttribute("id", "modicon" + a.name);
@@ -1588,7 +1680,7 @@
 
              */
              imagelink = document.getElementById("tomeicon");
-             imagelink.setAttribute("src", "/highlanderdb/Icons/TomeIcons/" + a + ".png");
+             imagelink.setAttribute("src", "/aow4db/Icons/TomeIcons/" + a + ".png");
              imagelink.setAttribute("id", "tomeicon" + a);
 
              // backtraceTomeOriginAndTier(jsonSpells.spells[j].id);
@@ -1635,7 +1727,7 @@
 
 
 
-             imagelink.setAttribute("src", "/highlanderdb/Icons/UpgradeIcons/" + a + ".png");
+             imagelink.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + a + ".png");
              imagelink.setAttribute("id", "modicon" + a);
              descriptionDiv.innerHTML = description;
              descriptionDiv.setAttribute("id", "modicon" + a);
@@ -1684,7 +1776,7 @@
      unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
 
-     imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a.unit_slug + ".png");
+     imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a.unit_slug + ".png");
      imagelink.setAttribute("id", "modicon" + a);
      descriptionDiv.innerHTML = description;
      descriptionDiv.setAttribute("id", "modicon" + a);
@@ -1747,7 +1839,7 @@
 
 
 
-             imagelink.setAttribute("src", "/highlanderdb/Icons/SpellIcons/" + a + ".png");
+             imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
              imagelink.setAttribute("id", "modicon" + a);
              if (showOrigin === true) {
                  tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id));
@@ -1780,7 +1872,7 @@
                      tomeOrigin.innerHTML += jsonTomes.tomes[j].name;
 
                      var tomeOriginIcon = document.getElementById("originTomeIcon");
-                     tomeOriginIcon.setAttribute("src", "/highlanderdb/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                     tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
                      return jsonTomes.tomes[j].skills[k].tier;
                  }
              }

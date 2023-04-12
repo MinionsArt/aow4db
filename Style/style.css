@@ -6,17 +6,17 @@ html {
 
 @font-face {
     font-family: 'Header';
-    src: url(/highlanderdb/Style/HEADER.ttf);
+    src: url(/aow4db/Style/HEADER.ttf);
 }
 
 @font-face {
     font-family: 'Decorative';
-    src: url(/highlanderdb/Style/DECORATIVE.otf);
+    src: url(/aow4db/Style/DECORATIVE.otf);
 }
 
 @font-face {
     font-family: 'Regular';
-    src: url(/highlanderdb/Style/REGULAR.ttf);
+    src: url(/aow4db/Style/REGULAR.ttf);
 }
 
 
@@ -98,7 +98,7 @@ a:hover {
 
 ul.egmenu {
     background: black;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     border-style: solid;
     margin-top: -20px;
@@ -112,7 +112,7 @@ ul.egmenu > li {
 }
 
 .item_card {
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     width: 450px;
@@ -124,7 +124,7 @@ ul.egmenu > li {
     margin-left: auto;
     margin-right: auto;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -136,7 +136,7 @@ ul.egmenu > li {
 
     border-width: 5px;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/Interface/panel_name_border.png);
+    border-image: url(/aow4db/Icons/Interface/panel_name_border.png);
     border-image-slice: 50 fill;
     border-image-repeat: stretch;
     text-transform: uppercase;
@@ -155,7 +155,7 @@ ul.egmenu > li {
     border-width: 10px;
     border-top-width: 0px;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slice.png);
+    border-image: url(/aow4db/Icons/9slice.png);
     border-image-slice: 30 fill;
 }
 
@@ -165,7 +165,7 @@ ul.egmenu ul {
     position: absolute;
     left: 0;
     top: 100%;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-style: solid;
     border-image-slice: 4 10 4 10 fill;
     min-width: 210px;
@@ -380,7 +380,7 @@ ul.egmenu li:hover ul {
 .collapsible {
     border-width: 5px;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/Interface/panel_name_border.png);
+    border-image: url(/aow4db/Icons/Interface/panel_name_border.png);
     border-image-slice: 50 fill;
     border-image-repeat: stretch;
     text-transform: uppercase;
@@ -470,7 +470,7 @@ ul.egmenu li:hover ul {
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -582,12 +582,12 @@ p {
     width: 500px;
     min-width: 400px;
     float: left;
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -601,12 +601,12 @@ p {
     width: 800px;
     min-width: 400px;
     float: left;
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -624,12 +624,18 @@ p {
     top: -20px;
 }
 
+.w3-container {}
+
 .w3-bar {
-    float: position;
-    width: 200px;
+    max-height: calc(100vh - var(--offset) * 2);
+
+
+    width: 250px;
+    max-height: 500px;
     display: grid;
     grid-auto-columns: auto;
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 2;
 }
 
@@ -645,10 +651,49 @@ p {
     display: block;
     outline: 0;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 2 5 2 5 fill;
     background-color: black;
     border-image-repeat: stretch;
+}
+
+.collapsibleUnits {
+
+    color: white;
+    cursor: pointer;
+
+    padding: 8px 16px;
+
+    border: none;
+    outline: 0;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 2 5 2 5 fill;
+    background-color: black;
+    border-image-repeat: stretch;
+
+}
+
+.contentUnits {
+
+    z-index: 1;
+
+
+    overflow: hidden;
+    grid-auto-columns: auto;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    text-shadow: 2px 2px black;
+
+
+
+    z-index: 2;
 }
 
 .w3-red,
@@ -690,7 +735,7 @@ p {
     float: left;
     padding: 10px;
     width: 76px;
-    background: url(/highlanderdb/Icons/Interface/spellbackground_enchantment.png);
+    background: url(/aow4db/Icons/Interface/spellbackground_enchantment.png);
     overflow: visible;
     background-size: 156px;
     background-repeat: no-repeat;
@@ -808,7 +853,7 @@ tab {
     padding: 15px;
     display: table;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 6 4 6;
     margin-bottom: 20px;
     margin-left: auto;
@@ -902,7 +947,7 @@ tab {
     border-top-width: 0px;
     float: right;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slice.png);
+    border-image: url(/aow4db/Icons/9slice.png);
     border-image-slice: 30 fill;
     border-image-repeat: stretch;
 
@@ -1002,7 +1047,7 @@ tab {
     border-width: 20px;
 
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/Interface/panel_name_border.png);
+    border-image: url(/aow4db/Icons/Interface/panel_name_border.png);
     border-image-slice: 20 fill;
     float: right;
     border-image-repeat: stretch;
@@ -1114,7 +1159,7 @@ tab {
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 500 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -1132,7 +1177,7 @@ tab {
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 500 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -1146,12 +1191,12 @@ tab {
 
 .tooltiptext {
     visibility: hidden;
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -1166,12 +1211,12 @@ tab {
 
 .tooltiptextUp {
     visibility: hidden;
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 10 4 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -1231,11 +1276,11 @@ tab {
     background-color: black;
     color: #fff;
 
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 fill;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 10px;
@@ -1313,12 +1358,12 @@ tab {
 /* Tooltip text 
 .unittype_icon .tooltiptext {
     visibility: hidden;
-    background-image: url(/highlanderdb/Icons/tooltipBG.png);
+    background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 4 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -1372,7 +1417,7 @@ hyperlink {
     display: block;
     outline: 0;
     border-style: solid;
-    border-image: url(/highlanderdb/Icons/9slicetooltip.png);
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 2 5 2 5 fill;
     background-color: black;
     border-image-repeat: stretch;
@@ -1564,13 +1609,13 @@ damageblight {
     max-height: 20px;
     top: 4px;
     position: relative;
-    content: url(/highlanderdb/Icons/Text/blight.png);
+    content: url(/aow4db/Icons/Text/blight.png);
 }
 
 damagefire {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/fire.png);
+    content: url(/aow4db/Icons/Text/fire.png);
     position: relative;
 
 }
@@ -1578,7 +1623,7 @@ damagefire {
 damagespirit {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/spirit.png);
+    content: url(/aow4db/Icons/Text/spirit.png);
     position: relative;
 
 }
@@ -1586,14 +1631,14 @@ damagespirit {
 damagelightning {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/shock.png);
+    content: url(/aow4db/Icons/Text/shock.png);
     position: relative;
 }
 
 DamagePhysical {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/physical.png);
+    content: url(/aow4db/Icons/Text/physical.png);
     position: relative;
 
 }
@@ -1601,7 +1646,7 @@ DamagePhysical {
 damagefrost {
     max-height: 20px;
     top: 5px;
-    content: url(/highlanderdb/Icons/Text/ice.png);
+    content: url(/aow4db/Icons/Text/ice.png);
     position: relative;
 
 }
@@ -1609,7 +1654,7 @@ damagefrost {
 turn {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/turn.png);
+    content: url(/aow4db/Icons/Text/turn.png);
     position: relative;
 
 }
@@ -1617,7 +1662,7 @@ turn {
 resistance {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/resistance.png);
+    content: url(/aow4db/Icons/Text/resistance.png);
     position: relative;
 
 
@@ -1626,7 +1671,7 @@ resistance {
 defense {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/armor.png);
+    content: url(/aow4db/Icons/Text/armor.png);
     position: relative;
 
 
@@ -1635,49 +1680,49 @@ defense {
 defensefire {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/fire_resistance.png);
+    content: url(/aow4db/Icons/Text/fire_resistance.png);
     position: relative;
 }
 
 defenselightning {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/lightning_resistance.png);
+    content: url(/aow4db/Icons/Text/lightning_resistance.png);
     position: relative;
 }
 
 defenseblight {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/blight_resistance.png);
+    content: url(/aow4db/Icons/Text/blight_resistance.png);
     position: relative;
 }
 
 statuseffectresistance {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/status_resistance.png);
+    content: url(/aow4db/Icons/Text/status_resistance.png);
     position: relative;
 }
 
 defensespirit {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/spirit_resistance.png);
+    content: url(/aow4db/Icons/Text/spirit_resistance.png);
     position: relative;
 }
 
 defensefrost {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/frost_resistance.png);
+    content: url(/aow4db/Icons/Text/frost_resistance.png);
     position: relative;
 }
 
 happiness {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/happiness.png);
+    content: url(/aow4db/Icons/Text/happiness.png);
     position: relative;
 
 }
@@ -1687,7 +1732,7 @@ happiness {
 hp {
     max-height: 15px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/health.png);
+    content: url(/aow4db/Icons/Text/health.png);
     position: relative;
 
 
@@ -1696,7 +1741,7 @@ hp {
 temphp {
     max-height: 15px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/tempHitpoints.png);
+    content: url(/aow4db/Icons/Text/tempHitpoints.png);
     position: relative;
 
 
@@ -1705,7 +1750,7 @@ temphp {
 mp {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/mp.png);
+    content: url(/aow4db/Icons/Text/mp.png);
     position: relative;
 
 
@@ -1767,7 +1812,7 @@ bullet {
 accuracy {
     max-width: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/accuracy.png);
+    content: url(/aow4db/Icons/Text/accuracy.png);
     position: relative;
 
 
@@ -1789,7 +1834,7 @@ spacedline {
 range {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/range.png);
+    content: url(/aow4db/Icons/Text/range.png);
     position: relative;
 
 }
@@ -1798,7 +1843,7 @@ range {
 souls {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/souls.png);
+    content: url(/aow4db/Icons/Text/souls.png);
     position: relative;
 
 }
@@ -1916,7 +1961,7 @@ x-medal_prime {
 
 repeatingAction {
     max-width: 40px;
-    content: url(/highlanderdb/Icons/Text/repeating.png);
+    content: url(/aow4db/Icons/Text/repeating.png);
     position: relative;
     padding-left: 10px;
 
@@ -1925,7 +1970,7 @@ repeatingAction {
 singleUseAction {
     max-width: 40px;
     max-height: 20px;
-    content: url(/highlanderdb/Icons/Text/full_action_continue.png);
+    content: url(/aow4db/Icons/Text/full_action_continue.png);
     position: relative;
     padding-left: 10px;
 
@@ -1933,7 +1978,7 @@ singleUseAction {
 
 singleAction {
     max-width: 40px;
-    content: url(/highlanderdb/Icons/Text/single_action.png);
+    content: url(/aow4db/Icons/Text/single_action.png);
     position: relative;
     padding-left: 10px;
 
@@ -1941,7 +1986,7 @@ singleAction {
 
 fullAction {
     max-width: 40px;
-    content: url(/highlanderdb/Icons/Text/full_action.png);
+    content: url(/aow4db/Icons/Text/full_action.png);
     position: relative;
     padding-left: 10px;
 
@@ -1949,7 +1994,7 @@ fullAction {
 
 freeAction {
     max-width: 40px;
-    content: url(/highlanderdb/Icons/Text/free_action.png);
+    content: url(/aow4db/Icons/Text/free_action.png);
     position: relative;
     padding-left: 10px;
 
@@ -1957,7 +2002,7 @@ freeAction {
 
 leaveoneaction {
     max-width: 80px;
-    content: url(/highlanderdb/Icons/Text/leave_one.png);
+    content: url(/aow4db/Icons/Text/leave_one.png);
     position: relative;
     padding-left: 10px;
 
@@ -2036,21 +2081,21 @@ gold {
     max-height: 20px;
     top: 3px;
     left: 3px;
-    content: url(/highlanderdb/Icons/Text/gold.png);
+    content: url(/aow4db/Icons/Text/gold.png);
     position: relative;
 }
 
 mana {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/mana.png);
+    content: url(/aow4db/Icons/Text/mana.png);
     position: relative;
 }
 
 unitprod {
     max-height: 20px;
 
-    content: url(/highlanderdb/Icons/Text/unitprod.png);
+    content: url(/aow4db/Icons/Text/unitprod.png);
     position: relative;
 }
 
@@ -2059,7 +2104,7 @@ unitprod {
 population {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/population.png);
+    content: url(/aow4db/Icons/Text/population.png);
     position: relative;
 }
 
@@ -2088,7 +2133,7 @@ research {
 .header-img::after {
     content: "";
     height: 150px;
-    background: url(/highlanderdb/Icons/header.jpg);
+    background: url(/aow4db/Icons/header.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -2122,98 +2167,98 @@ research {
 influence {
     max-width: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/imperium.png);
+    content: url(/aow4db/Icons/Text/imperium.png);
     position: relative;
 }
 
 food {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/food.png);
+    content: url(/aow4db/Icons/Text/food.png);
     position: relative;
 }
 
 caststrategic {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/strategiccombatpoints.png);
+    content: url(/aow4db/Icons/Text/strategiccombatpoints.png);
     position: relative;
 }
 
 casttactical {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/tacticalcombatpoints.png);
+    content: url(/aow4db/Icons/Text/tacticalcombatpoints.png);
     position: relative;
 }
 
 unitSupport {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/support_unit.png);
+    content: url(/aow4db/Icons/Text/support_unit.png);
     position: relative;
 }
 
 unitBattleMage {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/battle_mage_unit.png);
+    content: url(/aow4db/Icons/Text/battle_mage_unit.png);
     position: relative;
 }
 
 unitShield {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/shield_unit.png);
+    content: url(/aow4db/Icons/Text/shield_unit.png);
     position: relative;
 }
 
 unitPolearm {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/polearm_unit.png);
+    content: url(/aow4db/Icons/Text/polearm_unit.png);
     position: relative;
 }
 
 unitRanged {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/ranged_unit.png);
+    content: url(/aow4db/Icons/Text/ranged_unit.png);
     position: relative;
 }
 
 unitFighter {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/fighter_unit.png);
+    content: url(/aow4db/Icons/Text/fighter_unit.png);
     position: relative;
 }
 
 unitScout {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/scout_unit.png);
+    content: url(/aow4db/Icons/Text/scout_unit.png);
     position: relative;
 }
 
 unitMythic {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/mythic_unit.png);
+    content: url(/aow4db/Icons/Text/mythic_unit.png);
     position: relative;
 }
 
 unitSkirmisher {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/skirmisher_unit.png);
+    content: url(/aow4db/Icons/Text/skirmisher_unit.png);
     position: relative;
 }
 
 unitShock {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/shock_unit.png);
+    content: url(/aow4db/Icons/Text/shock_unit.png);
     position: relative;
 }
 
@@ -2283,105 +2328,105 @@ foodSlot {
 knowledge {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/knowledge.png);
+    content: url(/aow4db/Icons/Text/knowledge.png);
     position: relative;
 }
 
 empirechaos {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/chaos.png);
+    content: url(/aow4db/Icons/Text/chaos.png);
     position: relative;
 }
 
 empirenature {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/nature.png);
+    content: url(/aow4db/Icons/Text/nature.png);
     position: relative;
 }
 
 empirearcana {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/astral.png);
+    content: url(/aow4db/Icons/Text/astral.png);
     position: relative;
 }
 
 empireshadow {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/shadow.png);
+    content: url(/aow4db/Icons/Text/shadow.png);
     position: relative;
 }
 
 empirematter {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/materium.png);
+    content: url(/aow4db/Icons/Text/materium.png);
     position: relative;
 }
 
 empireorder {
     max-height: 25px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/order.png);
+    content: url(/aow4db/Icons/Text/order.png);
     position: relative;
 }
 
 chaos {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/chaos.png);
+    content: url(/aow4db/Icons/Text/chaos.png);
     position: relative;
 }
 
 nature {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/nature.png);
+    content: url(/aow4db/Icons/Text/nature.png);
     position: relative;
 }
 
 arcana {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/astral.png);
+    content: url(/aow4db/Icons/Text/astral.png);
     position: relative;
 }
 
 shadow {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/shadow.png);
+    content: url(/aow4db/Icons/Text/shadow.png);
     position: relative;
 }
 
 matter {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/materium.png);
+    content: url(/aow4db/Icons/Text/materium.png);
     position: relative;
 }
 
 order {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/order.png);
+    content: url(/aow4db/Icons/Text/order.png);
     position: relative;
 }
 
 general {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/EmpireProgressionIcons/general.png);
+    content: url(/aow4db/Icons/EmpireProgressionIcons/general.png);
     position: relative;
 }
 
 structureprod {
     max-height: 20px;
     top: 3px;
-    content: url(/highlanderdb/Icons/Text/production.png);
+    content: url(/aow4db/Icons/Text/production.png);
     position: relative;
 }
 

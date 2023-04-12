@@ -4,50 +4,33 @@
 <link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/highlanderdb/Style/style.css">
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/highlanderdb/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/highlanderdb/Data/Builder.js"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         $("#body").ready(function() {
 
-            $("#header").load("/highlanderdb/HTML/header.html", function() {
+            $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showSpellsWithArgument("General Research", "spell1", "unit enchantment");
-                showSpellsWithArgument("Culture", "spell2", "unit enchantment");
-                showSpellsWithArgument("Order", "spell3", "unit enchantment");
-                showSpellsWithArgument("Chaos", "spell4", "unit enchantment");
-                showSpellsWithArgument("Nature", "spell5", "unit enchantment");
-                showSpellsWithArgument("matter", "spell6", "unit enchantment");
-                showSpellsWithArgument("arcana", "spell7", "unit enchantment");
-                showSpellsWithArgument("Shadow", "spell8", "unit enchantment");
-
+                showSpellsWithArgument("General Research", "Generic Research", "unit enchantment");
+                showSpellsWithArgument("Culture", "Cultures", "unit enchantment");
+                showSpellsWithArgument("Order", "Order", "unit enchantment");
+                showSpellsWithArgument("Chaos", "Chaos", "unit enchantment");
+                showSpellsWithArgument("Nature", "Nature", "unit enchantment");
+                showSpellsWithArgument("matter", "Materium", "unit enchantment");
+                showSpellsWithArgument("arcana", "Astral", "unit enchantment");
+                showSpellsWithArgument("Shadow", "Shadow", "unit enchantment");
+                SetLevelUpStuff();
 
             });
 
-            /*  var coll = document.getElementsByClassName("collapsible");
-            var content = document.getElementsByClassName("content");
-            var i;
 
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
-
-*/
         });
-
     </script>
 
 
@@ -67,9 +50,9 @@
     margin: 5px;
     margin-left: auto;
     margin-right: auto;">
-        <button class="sortingButton" onclick="sortDivs(event,'name')">Name</button>
-        <button class="sortingButton" onclick="sortDivs(event,'tier')">Tier</button>
-        <button class="sortingButton" onclick="sortDivs(event,'cost')">Cost</button>
+        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
     </div>
     <div class="w3-container">
 
@@ -87,30 +70,30 @@
         <div id="list">
 
             <div id="Generic Research" class="w3-container w3-border city">
-                <div id="spell1"></div>
+
             </div>
 
             <div id="Cultures" class="w3-container w3-border city" style="display:none">
-                <div id="spell2"></div>
+
             </div>
 
             <div id="Order" class="w3-container w3-border city" style="display:none">
-                <div id="spell3"></div>
+
             </div>
             <div id="Chaos" class="w3-container w3-border city" style="display:none">
-                <div id="spell4"></div>
+
             </div>
             <div id="Nature" class="w3-container w3-border city" style="display:none">
-                <div id="spell5"></div>
+
             </div>
             <div id="Materium" class="w3-container w3-border city" style="display:none">
-                <div id="spell6"></div>
+
             </div>
             <div id="Astral" class="w3-container w3-border city" style="display:none">
-                <div id="spell7"></div>
+
             </div>
             <div id="Shadow" class="w3-container w3-border city" style="display:none">
-                <div id="spell8"></div>
+
             </div>
         </div>
     </div>
@@ -122,9 +105,7 @@
 </body>
 <script>
 
-</script>
-
-</html>
+</script></html>
 <footer>
     <br>
     <br>
