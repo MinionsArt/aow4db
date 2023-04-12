@@ -1,12 +1,10 @@
  // we store the status in this object
- const queryString = window.location.search;
- const urlParams = new URLSearchParams(queryString);
-
+ //const queryString = window.location.search;
+ //const urlParams = new URLSearchParams(queryString);
  // get parameters stuff
- const product = urlParams.get('type');
- if (product != undefined) {
-     openCity(event, product)
- }
+ let searchParams = new URLSearchParams(window.location.search);
+ var sorting = searchParams.get('sort');
+ var currentView = "";
 
  function GetTierAndName(id) {
      for (i in jsonUnits.units) {
@@ -98,34 +96,22 @@
 
 
      }
-     if (product != undefined) {
-         openCity(event, product)
-     }
+
  }
 
 
- function openCity(evt, cityName) {
-     if (evt != null) {
-         evt.preventDefault();
-         console.log(evt.button);
+ async function openCity(evt, cityName) {
 
-         //currenturl + "?type=" + list[i])
-     }
-
-
+     currentView = cityName;
 
      var i, x, tablinks;
      x = document.getElementsByClassName("city");
      for (i = 0; i < x.length; i++) {
          x[i].style.display = "none";
      }
-     tablinks = document.getElementsByClassName("tablink");
-     for (i = 0; i < x.length; i++) {
-         if (tablinks[i].id != cityName + "-button") {
-             tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-         }
 
-     }
+     closeTabLinks(cityName);
+
      var currentEl = document.getElementById(cityName);
      if (currentEl != null) {
          currentEl.style.display = "block";
@@ -134,8 +120,30 @@
          evt.currentTarget.className += " w3-red";
      }
      var currenturl = window.location.href.split('?')[0];
+     var currentadditive = currenturl.split('&')[1];
+     if (currentadditive === undefined) {
+         currentadditive = "";
+     }
+     window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName + "&" + currentadditive);
 
-     window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName);
+     if (sorting != undefined) {
+         var splits = sorting.split(":");
+         setTimeout(function () {
+             sortDivs(splits[0], splits[1]);
+         }, 50);
+         // console.log(cityName);
+     }
+
+ }
+
+ function closeTabLinks(cityName) {
+     tablinks = document.getElementsByClassName("tablink");
+     for (i = 0; i < tablinks.length; i++) {
+         if (tablinks[i].id != cityName + "-button") {
+             tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+         }
+
+     }
  }
 
  var divState = ["amazon", "assembly", "vanguard", "kirko", "dvar", "syndicate", "shakarn", "oathbound"];
@@ -807,7 +815,92 @@
 
  }
 
- function SetLevelUpStuff() {
+
+ var ascendingOrder = false;
+
+ function sortDivs(sortType, savedOrder) {
+     var i = "";
+
+     // 2 - Detemine the selector
+     if (savedOrder != null) {
+         ascendingOrder = savedOrder;
+     } else {
+         ascendingOrder = !ascendingOrder;
+     }
+
+     var buttontargets = document.getElementsByClassName("sortingButton");
+
+     for (i in buttontargets) {
+         buttontargets[i].className = "sortingButton";
+     }
+     var currentbutton = document.getElementById(sortType + "-button");
+     console.log(sortType);
+     if (ascendingOrder) {
+         currentbutton.className += " activeDown";
+     } else {
+         currentbutton.className += " activeUp";
+     }
+
+
+
+
+     // 3 - Choose the wanted order
+     //  ascendingOrder = !ascendingOrder;
+     const isNumeric = true;
+
+     // 4 - Select all elements
+     var container = document.getElementById(currentView);
+     var element = elements = [...container.querySelectorAll('.mod_card')]
+
+
+
+     var selector = element => element.querySelector('.mod_name').innerHTML;
+     if (sortType == "tier") {
+         selector = element => element.querySelector('.spell_tier').innerHTML;
+
+     }
+     if (sortType == "cost") {
+         selector = element => element.querySelector('.spell_cost').innerHTML;
+     }
+
+
+     // 5 - Find their parent
+     const parentElement = container;
+
+     // 6 - Sort the elements
+     const collator = new Intl.Collator(undefined, {
+         numeric: isNumeric,
+         sensitivity: 'base'
+     });
+
+
+     elements
+         .sort((elementA, elementB) => {
+             const [firstElement, secondElement] = ascendingOrder ? [elementA, elementB] : [elementB, elementA];
+
+             var textOfFirstElement = selector(firstElement);
+
+             var textOfSecondElement = selector(secondElement);
+             if (sortType == "tier") {
+                 var fields = textOfFirstElement.split('Tier ', 3);
+                 textOfFirstElement = deromanize(fields[1]);
+                 var fields2 = textOfSecondElement.split('Tier ', 3);
+                 textOfSecondElement = deromanize(fields2[1]);
+
+             }
+
+             return collator.compare(textOfFirstElement, textOfSecondElement)
+         })
+         .forEach(element => parentElement.appendChild(element));
+
+
+     var currenturl = window.location.href.split('&')[0];
+
+     window.history.replaceState({}, 'foo', currenturl + "&sort=" + sortType + ":" + ascendingOrder);
+     sorting = sortType + ":" + ascendingOrder;
+ }
+
+ async function SetLevelUpStuff() {
      var coll = document.getElementsByClassName("collapsibleLevelup");
      var content = document.getElementsByClassName("contentLevelup");
      var i;
@@ -816,7 +909,7 @@
          coll[i].addEventListener("click", function () {
              //this.classList.toggle("active");
              for (j in content) {
-                 this.classList.toggle("active");
+                 coll[j].classList.toggle("active");
                  //  var content = this.nextElementSibling;
                  if (content[j].style.display === "block") {
                      content[j].style.display = "none";
@@ -830,12 +923,34 @@
      }
 
 
-     if (product != undefined) {
 
+
+     // console.log(product, sorting);
+
+     const urlParams = new URLSearchParams(window.location.search);
+     const product = searchParams.get('type');
+
+     var splits = product.split("&");
+     if (product != undefined) {
+         closeTabLinks(product);
          document.getElementById(product + "-button").className += " w3-red";
 
 
+         await openCity(event, product);
+
+
      }
+
+     //if (sorting != undefined) {
+
+
+     // setTimeout(function () {
+     //      sortDivs(sorting);
+     //   }, 50);
+
+     //  }
+
+
  }
 
 
@@ -1339,6 +1454,32 @@
      while (i--)
          roman = (key[+digits.pop() + (i * 10)] || "") + roman;
      return Array(+digits.join("") + 1).join("M") + roman;
+ }
+
+ function deromanize(str) {
+     var str = str.toUpperCase();
+     var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
+     var token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
+     var key = {
+         M: 1000,
+         CM: 900,
+         D: 500,
+         CD: 400,
+         C: 100,
+         XC: 90,
+         L: 50,
+         XL: 40,
+         X: 10,
+         IX: 9,
+         V: 5,
+         IV: 4,
+         I: 1
+     };
+     var num = 0,
+         m;
+     if (!(str && validator.test(str))) return false;
+     while (m = token.exec(str)) num += key[m[0]];
+     return num;
  }
 
 

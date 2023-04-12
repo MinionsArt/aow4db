@@ -1,4 +1,4 @@
-const searchKeyword = urlParams.get('search');
+const searchKeyword = searchParams.get('search');
 if (searchKeyword != undefined) {
     searchData(searchKeyword);
 }

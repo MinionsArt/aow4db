@@ -17,12 +17,12 @@
 
             $("#header").load("/highlanderdb/HTML/header.html", function() {
 
-                showSpellsWithArgument("", "spell1", "healing");
-                showSpellsWithArgument("", "spell2", "buff");
-                showSpellsWithArgument("", "spell3", "damage");
-                showSpellsWithArgument("", "spell4", "combat enchantment");
-                showSpellsWithArgument("", "spell5", "combat summon");
-                showSpellsWithArgument("", "spell6", "debuff");
+                showSpellsWithArgument("", "healing", "healing");
+                showSpellsWithArgument("", "buff", "buff");
+                showSpellsWithArgument("", "damage", "damage");
+                showSpellsWithArgument("", "enchant", "combat enchantment");
+                showSpellsWithArgument("", "summon", "combat summon");
+                showSpellsWithArgument("", "debuff", "debuff");
 
                 SetLevelUpStuff();
             });
@@ -44,6 +44,16 @@
         Combat Spells
     </div>
 
+    <div style="
+    display: table;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;">
+        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
+    </div>
+
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
@@ -56,23 +66,23 @@
         </div>
 
         <div id="healing" class="w3-container w3-border city">
-            <div id="spell1"></div>
+
         </div>
 
         <div id="buff" class="w3-container w3-border city" style="display:none">
-            <div id="spell2"></div>
+
         </div>
         <div id="damage" class="w3-container w3-border city" style="display:none">
-            <div id="spell3"></div>
+
         </div>
         <div id="enchant" class="w3-container w3-border city" style="display:none">
-            <div id="spell4"></div>
+
         </div>
         <div id="summon" class="w3-container w3-border city" style="display:none">
-            <div id="spell5"></div>
+
         </div>
         <div id="debuff" class="w3-container w3-border city" style="display:none">
-            <div id="spell6"></div>
+
         </div>
 
 

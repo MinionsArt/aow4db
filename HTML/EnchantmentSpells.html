@@ -23,14 +23,13 @@
                 showSpellsWithArgument("Chaos", "spell4", "unit enchantment");
                 showSpellsWithArgument("Nature", "spell5", "unit enchantment");
                 showSpellsWithArgument("matter", "spell6", "unit enchantment");
-
                 showSpellsWithArgument("arcana", "spell7", "unit enchantment");
                 showSpellsWithArgument("Shadow", "spell8", "unit enchantment");
 
 
             });
 
-            var coll = document.getElementsByClassName("collapsible");
+            /*  var coll = document.getElementsByClassName("collapsible");
             var content = document.getElementsByClassName("content");
             var i;
 
@@ -46,7 +45,7 @@
                 });
             }
 
-
+*/
         });
 
     </script>
@@ -68,9 +67,9 @@
     margin: 5px;
     margin-left: auto;
     margin-right: auto;">
-        <button onclick="sortDivs('name')">Name Sorting Buttons</button>
-        <button onclick="sortDivs('tier')">Tier Sorting Buttons</button>
-        <button onclick="sortDivs('cost')">Cost Sorting Buttons</button>
+        <button class="sortingButton" onclick="sortDivs(event,'name')">Name</button>
+        <button class="sortingButton" onclick="sortDivs(event,'tier')">Tier</button>
+        <button class="sortingButton" onclick="sortDivs(event,'cost')">Cost</button>
     </div>
     <div class="w3-container">
 
@@ -122,56 +121,6 @@
 
 </body>
 <script>
-    var ascendingOrder = true;
-    var currentView = "spell1";
-
-    function sortDivs(sortType) {
-
-
-
-        // 2 - Detemine the selector
-
-
-        // 3 - Choose the wanted order
-        ascendingOrder = !ascendingOrder;
-        const isNumeric = true;
-
-        // 4 - Select all elements
-        var container = document.getElementById(currentView);
-        var element = elements = [...container.querySelectorAll('.mod_card')]
-
-
-        var selector = "";
-        selector = element => element.querySelector('.mod_name').innerHTML;
-        if (sortType == "name") {
-
-        }
-        if (sortType == "tier") {
-            selector = element => element.querySelector('.spell_tier').innerHTML;
-        }
-        if (sortType == "cost") {
-            selector = element => element.querySelector('.spell_cost').innerHTML;
-        }
-
-        console.log(elements);
-        // 5 - Find their parent
-        const parentElement = container;
-
-        // 6 - Sort the elements
-        const collator = new Intl.Collator(undefined, {
-            numeric: isNumeric,
-            sensitivity: 'base'
-        });
-
-        elements
-            .sort((elementA, elementB) => {
-                const [firstElement, secondElement] = ascendingOrder ? [elementA, elementB] : [elementB, elementA];
-                const textOfFirstElement = selector(firstElement);
-                const textOfSecondElement = selector(secondElement);
-                return collator.compare(textOfFirstElement, textOfSecondElement)
-            })
-            .forEach(element => parentElement.appendChild(element));
-    }
 
 </script>
 
