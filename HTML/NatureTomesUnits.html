@@ -23,15 +23,16 @@
             var unitarray6 = ["totem_of_the_wild"];
             var unitarray7 = ["horned_god"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "units1");
-                showUnitsFromList(unitarray2, "units2");
-                showUnitsFromList(unitarray3, "units3");
-                showUnitsFromList(unitarray4, "units4");
-                showUnitsFromList(unitarray5, "units5");
-                showUnitsFromList(unitarray6, "units6");
-                showUnitsFromList(unitarray7, "units7");
-
+                showUnitsFromList(unitarray1, "I - Beasts");
+                // add dropdown sub array
+                showUnitsFromList(unitarray2, "I - Roots");
+                showUnitsFromList(unitarray3, "II - Fertility");
+                showUnitsFromList(unitarray4, "II - Glades");
+                showUnitsFromList(unitarray5, "III - Cycles");
+                showUnitsFromList(unitarray6, "III - Vigor");
+                showUnitsFromList(unitarray7, "IV - Nature's Wrath");
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
             });
 
 
@@ -53,65 +54,16 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <img src="/aow4db/Icons/TomeIcons/tome_of_beasts.png" height="20px"> Beasts
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <img src="/aow4db/Icons/TomeIcons/tome_of_roots.png" height="20px"> Roots (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                II - <img src="/aow4db/Icons/TomeIcons/tome_of_fertility.png" height="20px"> Fertility (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                II - <img src="/aow4db/Icons/TomeIcons/tome_of_glades.png" height="20px"> Glades (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                III - <img src="/aow4db/Icons/TomeIcons/tome_of_cycles.png" height="20px"> Cycles
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                III - <img src="/aow4db/Icons/TomeIcons/tome_of_vigor.png" height="20px"> Vigor
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
-                IV - <img src="/aow4db/Icons/TomeIcons/tome_of_natures_wrath.png" height="20px"> Nature's Wrath
-
-            </button>
-
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="units1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="units2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="units3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="units4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="units5"></div>
-        </div>
-
-        <div id="III2" class="w3-container w3-border city">
-            <div id="units6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="units7"></div>
+        <div id="dataHolder">
         </div>
 
 
     </div>
+
+
 
 
 

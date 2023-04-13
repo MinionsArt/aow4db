@@ -22,22 +22,22 @@
             var unitarray6 = ["shrine_of_smiting"];
             var unitarray7 = ["eagle_rider"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "units1");
-                showUnitsFromList(unitarray2, "units2");
-                showUnitsFromList(unitarray3, "units3");
-                showUnitsFromList(unitarray4, "units4");
-                showUnitsFromList(unitarray5, "units5");
-                showUnitsFromList(unitarray6, "units6");
-                showUnitsFromList(unitarray7, "units7");
-
+                showUnitsFromList(unitarray1, "I - Faith");
+                // add dropdown sub array
+                showUnitsFromList(unitarray2, "I - Zeal");
+                showUnitsFromList(unitarray3, "II - Beacon");
+                showUnitsFromList(unitarray4, "II - Inquisition");
+                showUnitsFromList(unitarray5, "III - Subjugation");
+                showUnitsFromList(unitarray6, "IV - Exaltation");
+                showUnitsFromList(unitarray7, "IV - Supremacy");
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
             });
 
 
 
 
         });
-
     </script>
 
 
@@ -53,61 +53,10 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <img src="/aow4db/Icons/TomeIcons/tome_of_faith.png" height="20px"> Faith
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <img src="/aow4db/Icons/TomeIcons/tome_of_zeal.png" height="20px"> Zeal
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                II - <img src="/aow4db/Icons/TomeIcons/tome_of_the_beacon.png" height="20px"> Beacon (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                II - <img src="/aow4db/Icons/TomeIcons/tome_of_the_inquisition.png" height="20px"> Inquisition
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                III - <img src="/aow4db/Icons/TomeIcons/tome_of_subjugation.png" height="20px"> Subjugation
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                IV - <img src="/aow4db/Icons/TomeIcons/tome_of_exaltation.png" height="20px"> Exaltation
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
-                IV - <img src="/aow4db/Icons/TomeIcons/tome_of_supremacy.png" height="20px"> Supremacy
-
-            </button>
-
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="units1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="units2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="units3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="units4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="units5"></div>
-        </div>
-
-        <div id="III2" class="w3-container w3-border city">
-            <div id="units6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="units7"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -115,25 +64,7 @@
 
 
 
-</body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-
-</script>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

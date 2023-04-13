@@ -23,6 +23,40 @@
                 SetLevelUpStuff();
             });
         });
+
+
+
+        function showEnchantments() {
+            var i, k = "";
+            var list = new Array();
+            for (j in jsonSpells.spells) {
+
+                if (jsonSpells.spells[j].spellType.toUpperCase().indexOf("unit enchantment".toUpperCase()) != -1) {
+
+                    list.push(jsonSpells.spells[j]);
+                }
+
+
+
+            }
+
+
+            var availableEnchants = new Array();
+            for (i in list) {
+                for (k in list[i].enchantment_requisites) {
+
+                    if (list[i].enchantment_requisites[k].requisite.toUpperCase().indexOf("support".toUpperCase()) != -1) {
+                        availableEnchants.push(list[i]);
+                    }
+                }
+
+            }
+            console.log(availableEnchants);
+
+
+        }
+
+        /*<button onclick="showEnchantments()">Show available enchants</button>*/
     </script>
 
 
@@ -47,6 +81,8 @@
         </div>
 
     </div>
+
+
 
 
 

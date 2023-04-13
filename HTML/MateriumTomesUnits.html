@@ -23,23 +23,21 @@
             var unitarray7 = ["golden_golem"];
             var unitarray8 = ["earth_titan"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "units1");
-                showUnitsFromList(unitarray2, "units2");
-                showUnitsFromList(unitarray3, "units3");
-                showUnitsFromList(unitarray4, "units4");
-                showUnitsFromList(unitarray5, "units5");
-                showUnitsFromList(unitarray6, "units6");
-                showUnitsFromList(unitarray7, "units7");
-                showUnitsFromList(unitarray8, "units8");
-
+                showUnitsFromList(unitarray1, "I - Enchantment");
+                showUnitsFromList(unitarray2, "I - Rock");
+                showUnitsFromList(unitarray3, "II - Winds");
+                showUnitsFromList(unitarray4, "II - Artificing");
+                showUnitsFromList(unitarray5, "III - Terramancy");
+                showUnitsFromList(unitarray6, "III - Transmutation");
+                showUnitsFromList(unitarray7, "IV - Golden Realm");
+                showUnitsFromList(unitarray8, "V - Creator");
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
             });
 
 
 
-
         });
-
     </script>
 
 
@@ -54,68 +52,12 @@
     </div>
 
 
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">
-                I - <img src="/aow4db/Icons/TomeIcons/tome_of_enchantment.png" height="20px"> Enchantment
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">
-                I - <img src="/aow4db/Icons/TomeIcons/tome_of_rock.png" height="20px"> Rock (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">
-                II - <img src="/aow4db/Icons/TomeIcons/tome_of_winds.png" height="20px"> Winds (2)
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">
-                II - <img src="/aow4db/Icons/TomeIcons/tome_of_artificing.png" height="20px"> Artificing
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">
-                III - <img src="/aow4db/Icons/TomeIcons/tome_of_terramancy.png" height="20px"> Terramancy
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">
-                III - <img src="/aow4db/Icons/TomeIcons/tome_of_transmutation.png" height="20px"> Transmutation
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">
-                IV - <img src="/aow4db/Icons/TomeIcons/tome_of_the_golden_realm.png" height="20px"> Golden Realm
-
-            </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV2')">
-                V - <img src="/aow4db/Icons/TomeIcons/tome_of_the_creator.png" height="20px"> Creator
-
-            </button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="units1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="units2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="units3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="units4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="units5"></div>
-        </div>
-
-        <div id="III2" class="w3-container w3-border city">
-            <div id="units6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="units7"></div>
-        </div>
-        <div id="IV2" class="w3-container w3-border city">
-            <div id="units8"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -124,24 +66,15 @@
 
 
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
+<div class="w3-container">
+    <div class="w3-bar w3-black" id="buttonHolder">
 
-</script>
+    </div>
+    <div id="dataHolder">
+    </div>
 
-</html>
+
+</div></html>
 <footer>
     <br>
     <br>
