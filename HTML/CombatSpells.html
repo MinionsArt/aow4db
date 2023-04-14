@@ -17,14 +17,14 @@
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showSpellsWithArgument("", "healing", "healing");
-                showSpellsWithArgument("", "buff", "buff");
-                showSpellsWithArgument("", "damage", "damage");
-                showSpellsWithArgument("", "enchant", "combat enchantment");
-                showSpellsWithArgument("", "summon", "combat summon");
-                showSpellsWithArgument("", "debuff", "debuff");
-
+                showSpellsWithArgument("", "Healing", "Healing Spells");
+                showSpellsWithArgument("", "Buff", "Buff Spells");
+                showSpellsWithArgument("", "Damage", "Damage Spells");
+                showSpellsWithArgument("", "Combat Enchantment", "Combat Enchantments");
+                showSpellsWithArgument("", "Combat Summon", "Combat Summons");
+                showSpellsWithArgument("", "Debuff", "Debuff Spells");
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
             });
 
 
@@ -56,38 +56,15 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button id="healing-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'healing')">Healing Spells</button>
-            <button id="buff-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'buff')">Buff Spells</button>
-            <button id="damage-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'damage')">Damage Spells</button>
-            <button id="enchant-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'enchant')">Combat Enchantment</button>
-            <button id="summon-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'summon')">Combat Summons</button>
-            <button id="debuff-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'debuff')">Debuff Spells</button>
-        </div>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
-        <div id="healing" class="w3-container w3-border city">
-           
         </div>
-
-        <div id="buff" class="w3-container w3-border city" style="display:none">
-           
+        <div id="dataHolder">
         </div>
-        <div id="damage" class="w3-container w3-border city" style="display:none">
-          
-        </div>
-        <div id="enchant" class="w3-container w3-border city" style="display:none">
-          
-        </div>
-        <div id="summon" class="w3-container w3-border city" style="display:none">
-            
-        </div>
-        <div id="debuff" class="w3-container w3-border city" style="display:none">
-            
-        </div>
-
 
 
     </div>
+
 
 
 

@@ -20,6 +20,7 @@
                 showStructuresWithArgument("", "struc1", "wizard tower", "false");
 
                 showStructuresWithArgument("", "struc2", "town hall", "false");
+                showStructuresWithArgument("<food>", "struc3", "", "false");
 
 
                 SetLevelUpStuff();
@@ -45,12 +46,21 @@
     <div class="textblocktitle">
         City Structures
     </div>
-
+    <div style="
+    display: table;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;">
+        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
+    </div>
 
     <div class="w3-container">
         <div class="w3-bar w3-black">
             <button id="Wizard-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Wizard')">Wizards Tower</button>
             <button id="Town-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Town')">Town Hall</button>
+            <button id="Town-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Food')">Food</button>
 
 
         </div>
@@ -61,6 +71,10 @@
 
         <div id="Town" class="w3-container w3-border city">
             <div id="struc2"></div>
+        </div>
+
+        <div id="Food" class="w3-container w3-border city">
+            <div id="struc3"></div>
         </div>
 
 
@@ -74,7 +88,6 @@
 
 
 </body>
-
 
 </html>
 <footer>

@@ -17,13 +17,15 @@
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showSpellsWithArgument("", "spell1", "minor race transformation");
-                showSpellsWithArgument("", "spell2", "major race transformation");
+                showSpellsWithArgument("", "Minor Race Transformation", "Minor Race Transformations");
+                showSpellsWithArgument("", "Major Race Transformation", "Major Race Transformations");
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
 
             });
 
         });
+
     </script>
 
 
@@ -46,29 +48,21 @@
         <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
         <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
     </div>
-
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Minor Transformations')">Minor Transformations</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Major Transformations')">Major Transformations</button>
+        <div class="w3-bar w3-black" id="buttonHolder">
+
         </div>
         <div id="dataHolder">
-            <div id="Minor Transformations" class="w3-container w3-border city">
-                <div id="spell1"></div>
-            </div>
-
-            <div id="Major Transformations" class="w3-container w3-border city" style="display:none">
-                <div id="spell2"></div>
-            </div>
-
-
         </div>
+
+
     </div>
 
 
 
+</body>
 
-</body></html>
+</html>
 <footer>
     <br>
     <br>

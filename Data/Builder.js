@@ -48,10 +48,13 @@
          if (passivesList[i].slug == "shield_unit") {
              return "<unitShield></unitShield>";
          }
+         if (passivesList[i].slug == "tower") {
+             return "<unitTower></unitTower>";
+         }
      }
  }
 
- function SetButtonsAndDivs(list, parent) {
+ function SetButtonsAndDivs(list, parent, cardType) {
      var modName, description, cost, type, tier, i, nameString = "";
      for (i in list) {
          var found = false;
@@ -79,7 +82,11 @@
 
          div.appendChild(divChild);
 
-         showUnitFromString(list[i], list[i]);
+         if (cardType == "unit") {
+             showUnitFromString(list[i], list[i]);
+         }
+
+
 
 
          var btn = document.createElement("BUTTON");
@@ -105,7 +112,7 @@
 
  }
 
- function SetCollapsibleButtonsAndDivs(overwrite, listlength) {
+ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
      var modName, description, cost, type, tier, i, nameString = "";
 
      var buttonHolder = document.getElementById("buttonHolder");
@@ -114,27 +121,45 @@
      var btn = document.createElement("BUTTON");
      /// tooltipName.style.fontSize = "20px";
 
-     btn.className = "collapsibleUnits";
+
      btn.type = "button";
 
 
 
-     btn.innerHTML = overwrite + " (" + listlength + ")";
+     btn.innerHTML = overwrite + " (" + list.length + ")";
+     btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\')');
      buttonHolder.appendChild(btn);
 
-     var content = document.createElement("DIV");
-     content.setAttribute("id", overwrite + "-button");
-     content.className = "contentUnits";
-     buttonHolder.append(content);
-     // onclick open children
-     // btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\')');
+
+     if (cardType == "spell") {
+         btn.className = "w3-bar-item w3-button tablink";
+         var dataHolder = document.getElementById("dataHolder");
+         var holderHeight = buttonHolder.offsetHeight + 50;
+         dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+         var div = document.createElement("DIV");
+
+         div.className = "w3-container w3-border city";
+         div.setAttribute("id", overwrite);
+
+
+         dataHolder.appendChild(div);
+         // for (i in list) {
+         showSpellFromList(list, overwrite);
+
+         // }
 
 
 
 
 
+     } else {
+         btn.className = "collapsibleUnits";
+         var content = document.createElement("DIV");
+         content.setAttribute("id", overwrite + "-button");
+         content.className = "contentUnits";
+         buttonHolder.append(content);
 
-
+     }
 
  }
 
@@ -815,8 +840,8 @@
 
  async function showUnitsFromList(list, overwritetext) {
 
-     SetCollapsibleButtonsAndDivs(overwritetext, list.length);
-     SetButtonsAndDivs(list, overwritetext + "-button");
+     SetCollapsibleButtonsAndDivs(overwritetext, list);
+     SetButtonsAndDivs(list, overwritetext + "-button", "unit");
 
 
  }
@@ -834,21 +859,8 @@
  }
 
  async function showUnitFromString(string, divID) {
-
-
      await spawnCard(string, divID);
-
-
-
      showUnit(string, divID);
-
-
-
-
-
-
-
-
  }
 
 
@@ -1117,7 +1129,6 @@
 
  }
 
- spawnStructureCards
  async function spawnStructureCards(list, divID) {
      if (divID === undefined) {
          divID = "spell";
@@ -1163,21 +1174,21 @@
 
  }
 
- async function showSpellsWithArgument(argument, divID, argumentType) {
+ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 
      var list = new Array();
      list = findSpellsWithArgument(argument, argumentType);
 
-     await spawnSpellCards(list, divID);
-
-     for (var i = 0; i < list.length; i++) {
-
-         showSpell(list[i], true);
-
-     };
+     SetCollapsibleButtonsAndDivs(overwritetext, list, "spell");
 
 
 
+
+ }
+
+ async function showSpellFromString(string, divID) {
+     await spawnSpellCards(string, divID);
+     showSpell(string, true);
 
  }
 
@@ -1188,7 +1199,7 @@
      if (argumentaffinity == "") {
          for (j in jsonSpells.spells) {
 
-             if (jsonSpells.spells[j].spellType.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+             if (jsonSpells.spells[j].spellType.indexOf(argumentType) !== -1) {
 
                  finalCheckedList.push(jsonSpells.spells[j].id);
              }
@@ -1489,8 +1500,8 @@
          levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
          for (i in units.medal_rewards_6) {
              if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
-                 levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
-                 levelText += "<span class=\"tooltiptext\" style=\"font-size=20px\">" + lookupSlugDescription(units.medal_rewards_4[i].slug) + "</span>  </p> </bullet> ";
+                 levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
+                 levelText += "<span class=\"tooltiptext\" style=\"font-size=20px\">" + lookupSlugDescription(units.medal_rewards_6[i].slug) + "</span>  </p> </bullet> ";
              } else {
                  levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
              }
@@ -1705,11 +1716,12 @@
              nameString = jsonStructureUpgrades.structures[j].name.toUpperCase();
 
              if (nameString.indexOf("<br>")) {
-                 nameString = nameString.replace("<BR>", "");
-                 nameString = nameString.replace("<BR>", "");
+                 nameString = nameString.replace("<br>", "");
+                 nameString = nameString.replace("<br>", "");
              }
              modName.innerHTML = nameString;
              modName.setAttribute("id", "modname" + a);
+             modName.className = "mod_name";
              descriptionDiv = document.getElementById("moddescription");
              description = "";
              if (jsonStructureUpgrades.structures[j].requirement_description != "") {
@@ -1744,6 +1756,7 @@
              tier.setAttribute("id", "modtier" + a);
 
              cost = document.getElementById("modcost");
+             cost.className = "spell_cost";
              cost.innerHTML = "Cost : " + jsonStructureUpgrades.structures[j].cost;
              cost.setAttribute("id", "modcost" + a);
 

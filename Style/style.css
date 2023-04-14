@@ -646,7 +646,7 @@ p {
 .w3-bar .w3-bar-item {
     padding: 8px 16px;
     float: left;
-
+    font-size: 12px;
     border: none;
     display: block;
     outline: 0;
@@ -665,6 +665,7 @@ p {
     padding: 8px 16px;
 
     border: none;
+    text-align: left;
     outline: 0;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
@@ -674,7 +675,19 @@ p {
 
 }
 
+.active,
+.collapsibleUnits:hover {
+    background-color: darkslategray;
+}
+
+
+
+.collapsibleUnits:after {
+    content: '▼';
+}
+
 .contentUnits {
+
 
     z-index: 1;
 
@@ -2059,7 +2072,7 @@ silver {
 xp {
     max-height: 25px;
     top: 3px;
-    content: url(/aowp/Icons/Text/xp.png);
+    content: url(/aow4db/Icons/Text/xp.png);
     position: relative;
 }
 
@@ -2259,6 +2272,13 @@ unitShock {
     max-height: 20px;
     top: 3px;
     content: url(/aow4db/Icons/Text/shock_unit.png);
+    position: relative;
+}
+
+unitTower {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Text/tower.png);
     position: relative;
 }
 

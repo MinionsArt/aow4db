@@ -16,21 +16,23 @@
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showSpellsWithArgument("", "spell1", ">summon spell");
-                showSpellsWithArgument("", "spell2", "terraforming");
-                showSpellsWithArgument("", "spell3", "enemy army");
-                showSpellsWithArgument("", "spell4", "World");
-                showSpellsWithArgument("", "spell5", "city");
-                showSpellsWithArgument("", "spell6", "victory");
-                showSpellsWithArgument("", "spell7", "strategic spell");
-                showSpellsWithArgument("", "spell8", "friendly army");
-
+                showSpellsWithArgument("", ">Summon Spell", "Summon Spells");
+                showSpellsWithArgument("", "Terraforming", "Terraforming Spells");
+                showSpellsWithArgument("", "Enemy Army", "Enemy Army Spells");
+                showSpellsWithArgument("", "World", "World Spells");
+                showSpellsWithArgument("", "City", "City Spells");
+                showSpellsWithArgument("", "Victory", "Victory Spells");
+                showSpellsWithArgument("", "Strategic Spell", "Strategic Spells");
+                showSpellsWithArgument("", "Friendly Army", "Friendly Army Spells");
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
 
             });
 
 
 
         });
+
     </script>
 
 
@@ -49,73 +51,27 @@
     margin: 5px;
     margin-left: auto;
     margin-right: auto;">
-        <button class="sortingButton" onclick="sortDivs(event,'name')">Name</button>
-        <button class="sortingButton" onclick="sortDivs(event,'tier')">Tier</button>
-        <button class="sortingButton" onclick="sortDivs(event,'cost')">Cost</button>
+        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
     </div>
 
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Summon')">Summon Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Terra')">Terraforming Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Army')">Enemy Army Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'World')">World Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'City')">City Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Victory')">Victory Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Strat')">Strategic Spells</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Friend')">Friendly Army Spells</button>
+        <div class="w3-bar w3-black" id="buttonHolder">
+
         </div>
         <div id="dataHolder">
-            <div id="Summon" class="w3-container w3-border city">
-                <div id="spell1"></div>
-            </div>
-
-            <div id="Terra" class="w3-container w3-border city" style="display:none">
-                <div id="spell2"></div>
-            </div>
-            <div id="Army" class="w3-container w3-border city" style="display:none">
-                <div id="spell3"></div>
-            </div>
-            <div id="World" class="w3-container w3-border city" style="display:none">
-                <div id="spell4"></div>
-            </div>
-            <div id="City" class="w3-container w3-border city" style="display:none">
-                <div id="spell5"></div>
-            </div>
-            <div id="Victory" class="w3-container w3-border city" style="display:none">
-                <div id="spell6"></div>
-            </div>
-            <div id="Strat" class="w3-container w3-border city" style="display:none">
-                <div id="spell7"></div>
-            </div>
-            <div id="Friend" class="w3-container w3-border city" style="display:none">
-                <div id="spell8"></div>
-            </div>
-
-
         </div>
-    </div>
 
+
+    </div>
 
 
 
 
 </body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-</script></html>
+
+</html>
 <footer>
     <br>
     <br>
