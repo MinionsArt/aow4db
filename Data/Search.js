@@ -189,8 +189,11 @@ function searchUnits(keyword) {
     }
 
     result.innerHTML = list.length.toString() + " results found";
-
-    SetButtonsAndDivs(list);
+    var buttonHolder = document.getElementById("buttonHolder");
+    buttonHolder.innerHTML = "";
+    var dataHolder = document.getElementById("dataHolder");
+    dataHolder.innerHTML = "";
+    SetButtonsAndDivs(list, "buttonHolder", "search");
     /*for (j = 0; j < list.length; j++) {
 
         addUnitCard(list[j]);

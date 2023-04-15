@@ -15,6 +15,11 @@
 
  }
 
+ function ShowUnitFromLink() {
+     var unitID = searchParams.get('unit');
+     showUnitFromString(unitID, "dataHolder");
+ }
+
  function getUnitTypeTag(passivesList) {
      var i = "";
      for (i in passivesList) {
@@ -51,6 +56,9 @@
          if (passivesList[i].slug == "tower") {
              return "<unitTower></unitTower>";
          }
+         if (passivesList[i].slug == "siegecraft") {
+             return "<unitSiegecraft></unitSiegecraft>";
+         }
      }
  }
 
@@ -83,6 +91,10 @@
          div.appendChild(divChild);
 
          if (cardType == "unit") {
+             showUnitFromString(list[i], list[i]);
+         }
+
+         if (cardType == "search") {
              showUnitFromString(list[i], list[i]);
          }
 
@@ -127,7 +139,10 @@
 
 
      btn.innerHTML = overwrite + " (" + list.length + ")";
-     btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\')');
+     if (cardType != "unit") {
+         btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\')');
+     }
+
      buttonHolder.appendChild(btn);
 
 
@@ -828,6 +843,7 @@
      }
      var doc = document.getElementById(divID);
      for (var i = 0; i < list.length; i++) {
+
          var iDiv = unit_card_template.content.cloneNode(true);
          doc.appendChild(iDiv);
      }
@@ -840,7 +856,7 @@
 
  async function showUnitsFromList(list, overwritetext) {
 
-     SetCollapsibleButtonsAndDivs(overwritetext, list);
+     SetCollapsibleButtonsAndDivs(overwritetext, list, "unit");
      SetButtonsAndDivs(list, overwritetext + "-button", "unit");
 
 
@@ -1484,7 +1500,7 @@
 
      }
      if (evolveTarget != undefined) {
-         levelText += "<bullet> Evolves into <hyperlink>" + lookupUnit(evolveTarget) + "</hyperlink></bullet>";
+         levelText += "<bullet> Evolves into <hyperlink> <a href=\"/aow4db/HTML/Units.html?unit=" + evolveTarget + "\" target=\"_blank\">" + lookupUnit(evolveTarget) + "</a></hyperlink></bullet>";
      }
 
      if (evolveTarget === undefined) {
@@ -1833,6 +1849,16 @@
                  div.innerHTML = "<bullet>" + jsonSpells.spells[j].enchantment_requisites[l].requisite + "</bullet>"
                  unitTypesDiv.appendChild(div);
              }
+
+             if ('summoned_units' in jsonSpells.spells[j]) {
+                 description += "<br>Summoned Units:<br>";
+                 for (x in jsonSpells.spells[j].summoned_units) {
+                     var div = document.createElement("DIV");
+                     div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonSpells.spells[j].summoned_units[x].slug + "\" target=\"_blank\">" + GetTierAndName(jsonSpells.spells[j].summoned_units[x].slug) + "</a>" + "</bullet>"
+                     unitTypesDiv.appendChild(div);
+                 }
+             }
+
              unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
              descriptionDiv.innerHTML = description;
 
