@@ -62,6 +62,9 @@
 
         ];
 
+
+
+
         var headerNodes = [
             "food:1:1:na",
             "production:1:2:na",
@@ -82,6 +85,7 @@
                 SetUpTreeNodes(wizardtower, "tower");
                 SetUpTreeNodes(general, "general");
                 SetHeaderNodes(headerNodes, "general");
+                SetUpProvinceImprovements();
                 //    SetUpTreeNodes("nature", 5, "green");
                 //    SetUpTreeNodes("chaos", 7, "red");
                 //    SetUpTreeNodes("astral", 9, "cyan");
@@ -89,6 +93,8 @@
                 //    SetUpTreeNodes("order", 13, "yellow");
                 //    SetUpTreeNodes("shadow", 15, "purple");
                 SetBreakPoints();
+
+                SetLevelUpStuff();
             });
 
 
@@ -136,7 +142,7 @@
 
                         if (connectTo != "na") {
 
-                            var leftPos = ((column) * nodeWidth);
+                            var leftPos = ((column) * nodeWidth) - 60;
                             var topPos = ((row + 1) * nodeHeight) - 120;
 
                             var connecto = document.getElementById(connectTo);
@@ -181,11 +187,11 @@
 
                         spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>";
 
-                        var description = jsonStructureUpgrades.structures[i].prediction_description;
-                        spa.innerHTML += description.replace("income", "");
 
                         var spa2 = document.createElement("SPAN");
                         spa2.setAttribute("style", "float:right");
+                        var description = jsonStructureUpgrades.structures[i].prediction_description;
+                        spa2.innerHTML += description.replace("income", "");
                         spa2.innerHTML += jsonStructureUpgrades.structures[i].requirement_description + "<br>";
                         spa2.innerHTML += jsonStructureUpgrades.structures[i].description + "<br>";
 
@@ -196,6 +202,7 @@
                         newNode.appendChild(newNodeBackground);
                         newNodeBackground.append(spa);
                         newNodeBackground.append(img);
+
                         newNode.appendChild(spa2);
 
                         holder.appendChild(newNode);
@@ -305,30 +312,68 @@
     </script>
 
 
-    <title>Age of Wonders 4 - Empire Tree</title>
+    <title>Age of Wonders 4 - City Tree</title>
 </head>
 
 <body>
     <div id="header"></div>
 
-    <div class="textblocktitle">
-        Empire Tree
-    </div>
-    <div class="tree-space" id="treespacetower" style="display:none">
 
-        <div class="tree-grid" id="treeHoldertower" style="grid-template-columns: repeat(3,180px); grid-template-rows: repeat(5,150px); ">
+
+    <div class="w3-bar w3-black">
+        <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'General')">General City Buildings</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Wizard')">Wizard Tower</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Town')">Town Hall</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'SPI')">Special Province Improvements</button>
+
+
+    </div>
+
+    <div id="General" class="w3-container w3-border city">>
+        <div class="textblocktitle">
+            General Tree
+        </div>
+
+
+        <div class="tree-space" id="treespacegeneral">
+
+            <div class="tree-grid" id="treeHoldergeneral" style="grid-template-columns: repeat(7,180px); grid-template-rows: repeat(6,150px); ">
+            </div>
         </div>
     </div>
 
-    <div class="tree-space" id="treespacetown" style="display:none">
+    <div id="Wizard" class="w3-container w3-border city">>
+        <div class="textblocktitle">
+            Wizard Tower Tree
+        </div>
+        <div class="tree-space" id="treespacetower">
 
-        <div class="tree-grid" id="treeHoldertown" style="grid-template-columns: repeat(3,180px); grid-template-rows: repeat(5,150px); ">
+            <div class="tree-grid" id="treeHoldertower" style="grid-template-columns: repeat(3,180px); grid-template-rows: repeat(5,150px); ">
+            </div>
         </div>
     </div>
 
-    <div class="tree-space" id="treespacegeneral">
+    <div id="Town" class="w3-container w3-border city">>
+        <div class="textblocktitle">
+            Town Hall Tree
+        </div>
 
-        <div class="tree-grid" id="treeHoldergeneral" style="grid-template-columns: repeat(7,180px); grid-template-rows: repeat(6,150px); ">
+        <div class="tree-space" id="treespacetown">
+
+            <div class="tree-grid" id="treeHoldertown" style="grid-template-columns: repeat(3,180px); grid-template-rows: repeat(5,150px); ">
+            </div>
+        </div>
+    </div>
+
+    <div id="SPI" class="w3-container w3-border city">>
+        <div class="textblocktitle">
+            Special Province Improvements
+        </div>
+
+        <div class="tree-space" id="treespacetown">
+
+            <div class="tree-grid" id="treeHoldertown" style="grid-template-columns: repeat(3,180px); grid-template-rows: repeat(5,150px); ">
+            </div>
         </div>
     </div>
 
@@ -365,7 +410,7 @@
         grid-template-rows: repeat(11, 60px);
         position: absolute;
         height: 750px;
-        width: 1150px;
+        width: auto;
         background-color: black;
         background-image: url(/aow4db/Icons/Interface/panel_Background.png);
         background-size: inherit;
@@ -399,15 +444,14 @@
         font-size: 13px;
         color: #bbcdf6;
         height: 80px;
-        text-align: left;
+        text-align: center;
         border-style: solid;
         border-image: url(/aow4db/Icons/9slicetooltip.png);
         border-image-slice: 4 10 4 10 fill;
         text-shadow: 2px 2px black;
         box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
 
-        padding: 10px;
-        margin: 5px;
+        padding: 5px;
         z-index: 2;
     }
 
@@ -421,11 +465,14 @@
 
         z-index: 2;
         position: relative;
+        margin-left: auto;
+        margin-right: auto;
 
     }
 
-    .empireNodeIcon:hover {
+    .structureNode:hover {
         filter: brightness(150%);
+
     }
 
 </style>

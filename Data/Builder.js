@@ -693,9 +693,16 @@
      var abilityName, abilityIcon, abilityDescr, abilityDam = "";
      for (j in jsonUnitAbilities.abilities) {
          if (a == jsonUnitAbilities.abilities[j].slug) {
+
              abilityName = jsonUnitAbilities.abilities[j].name;
-             var nameclean = abilityName.split(">")[1];
-             var firstPart = nameclean.split(" ")[0];
+             if (abilityName.indexOf("Immu") != -1) {
+                 var firstPart = abilityName.split(" ")[0];
+
+             } else {
+                 var nameclean = abilityName.split(">")[1];
+                 var firstPart = nameclean.split(" ")[0];
+             }
+
              abilityIcon = jsonUnitAbilities.abilities[j].icon;
              abilityDescr = jsonUnitAbilities.abilities[j].description;
              abilityDam = jsonUnitAbilities.abilities[j].damage;
@@ -723,7 +730,7 @@
 
              if (a.indexOf("immun") !== -1) {
                  var split = a.split("resistance_");
-                 num = x;
+                 num = "x";
              }
 
              spa.innerHTML += "<br><br>Damage Reduction: <br> " + firstPart + " <span style=\"color:white;\">" + GetDamageReductionPercentage(resistance, num) + "</span> ( From <span style=\"color:white;\">" + resistance + "</span> <resistance> </resistance>";
