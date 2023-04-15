@@ -689,16 +689,19 @@
 
  }
 
- function addResistanceSlot(a) {
+ function addResistanceSlot(a, resistance) {
      var abilityName, abilityIcon, abilityDescr, abilityDam = "";
      for (j in jsonUnitAbilities.abilities) {
          if (a == jsonUnitAbilities.abilities[j].slug) {
              abilityName = jsonUnitAbilities.abilities[j].name;
+             var nameclean = abilityName.split(">")[1];
+             var firstPart = nameclean.split(" ")[0];
              abilityIcon = jsonUnitAbilities.abilities[j].icon;
              abilityDescr = jsonUnitAbilities.abilities[j].description;
              abilityDam = jsonUnitAbilities.abilities[j].damage;
              var btn = document.createElement("DIV");
              btn.className = "resistance_icon";
+             btn.setAttribute("id", abilityName);
              var imag = document.createElement("IMG");
              imag.className = "unit_ability_icon";
 
@@ -706,25 +709,55 @@
              spa = document.createElement("SPAN");
              spa.className = "tooltiptext";
 
-             spa.innerHTML = "<p>" + "<span style=\"font-size=20px\">" + abilityName + "</p>" + "<hr>" + abilityDescr;
+             spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:burlywood;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calcuate damage sustained from " + firstPart + ".";
+
+             var num = "";
+             if (a.indexOf("weakness") !== -1) {
+                 var split = a.split("weakness_");
+                 num = "-" + split[1];
+             }
+             if (a.indexOf("resistance") !== -1) {
+                 var split = a.split("resistance_");
+                 num = split[1];
+             }
+
+             if (a.indexOf("immun") !== -1) {
+                 var split = a.split("resistance_");
+                 num = x;
+             }
+
+             spa.innerHTML += "<br><br>Damage Reduction: <br> " + firstPart + " <span style=\"color:white;\">" + GetDamageReductionPercentage(resistance, num) + "</span> ( From <span style=\"color:white;\">" + resistance + "</span> <resistance> </resistance>";
+             if (num != undefined) {
+                 if (num > 0) {
+                     spa.innerHTML += "+";
+                 }
+                 spa.innerHTML += num;
+             }
+
+
 
              imag.setAttribute("width", "25");
              imag.setAttribute("height", "25");
 
              if (a.indexOf("frost") !== -1) {
                  imag.setAttribute("src", "/aow4db/Icons/Text/frost_resistance.png");
+                 spa.innerHTML += "<defensefrost></defensefrost>";
              }
              if (a.indexOf("blight") !== -1) {
                  imag.setAttribute("src", "/aow4db/Icons/Text/blight_resistance.png");
+                 spa.innerHTML += "<defenseblight></defenseblight>";
              }
              if (a.indexOf("fire") !== -1) {
                  imag.setAttribute("src", "/aow4db/Icons/Text/fire_resistance.png");
+                 spa.innerHTML += "<defensefire></defensefire>";
              }
              if (a.indexOf("spirit") !== -1) {
                  imag.setAttribute("src", "/aow4db/Icons/Text/spirit_resistance.png");
+                 spa.innerHTML += "<defensespirit></defensespirit>";
              }
              if (a.indexOf("lightning") !== -1) {
                  imag.setAttribute("src", "/aow4db/Icons/Text/lightning_resistance.png");
+                 spa.innerHTML += "<defenselightning></defenselightning>";
              }
 
              if (a.indexOf("weakness") !== -1) {
@@ -733,10 +766,15 @@
              }
              if (a.indexOf("resistance") !== -1) {
                  var split = a.split("resistance_");
-                 abilityDam = "<p class=\"resistanceNumber\" style=\"color:green;\">" + split[1];
+                 abilityDam = "<p class=\"resistanceNumber\" style=\"color:lawngreen;\">" + split[1];
              }
 
+             if (a.indexOf("immun") !== -1) {
+                 var split = a.split("resistance_");
+                 abilityDam = "<p class=\"resistanceNumber\">IMM";
+             }
 
+             spa.innerHTML += ")";
 
              document.getElementById("resistanceholder").appendChild(btn);
              btn.innerHTML = abilityDam;
@@ -760,6 +798,7 @@
 
      var btn = document.createElement("DIV");
      btn.className = "resistance_icon";
+     btn.id = "statusResistance";
      var imag = document.createElement("IMG");
      imag.className = "unit_ability_icon";
 
@@ -767,7 +806,10 @@
      spa = document.createElement("SPAN");
      spa.className = "tooltiptext";
 
-     // spa.innerHTML = "<p>" + "<span style=\"font-size=20px\">" + abilityName + "</p>" + "<hr>" + abilityDescr;
+     spa.innerHTML = "<p>" + "<span style=\"color: burlywood;text-transform: uppercase\">Status Resistance</span></p>";
+
+     spa.innerHTML += "Reduces the chance that the unit will be affeted by negative status effects. <br><br>Current Chance Reduction :  <span style=\"color:white;\">" + GetDamageReductionPercentage(a, undefined) + "</span> ";
+
 
      imag.setAttribute("width", "25");
      imag.setAttribute("height", "25");
@@ -1358,54 +1400,24 @@
      var found = false;
      for (i in jsonUnits.units) {
          if (a == jsonUnits.units[i].id) {
-             // icon = document.getElementById("uniticon");
-             // icon.setAttribute("src", "/aowp/Icons/UnitIcons/" + a + "_icon.png");
-             //icon.setAttribute("id", "uniticon" + a);
-             // if (icon.getAttribute('src') === "/aowp/Icons/UnitIcons/undefined") {
-             //   icon.setAttribute('src', "/aowp/Icons/placeholder.png");
-             // }
+
              unitName = document.getElementById("unitstring");
              unitName.setAttribute("id", "unitstring" + a);
 
              unitName.innerHTML += jsonUnits.units[i].name.toUpperCase();
 
 
-
-             // descr = document.getElementById("description");
-             //descr.setAttribute("id", "description" + a);
-             //descr.innerHTML = jsonUnits.units[i].description;
              imagelink = document.getElementById("vid");
              imagelink.setAttribute("id", "vid" + a);
              imagelink.setAttribute('src', "/aow4db/Previews/" + jsonUnits.units[i].id + ".mp4");
              if (imagelink.getAttribute('src') === "/aow4db/Previews/undefined") {
                  imagelink.setAttribute('src', "/aow4db/Previews/placeholder.mp4");
              }
-             // research = document.getElementById("researchorigin");
-             // research.setAttribute("id", "researchorigin" + a);
-             // if (jsonUnits.units[i].origin_research != "") {
-             // research.setAttribute("src", "/Icons/Research/" + jsonUnits.units[i].origin_research + ".jpg");
-             // research.setAttribute("src", "/Icons/Research/" + jsonUnits.units[i].origin_research + ".jpg");
-             //     research.innerHTML = jsonUnits.units[i].origin_research;
-             // } else {
-             //    research.setAttribute("src", "/aowp/UI/empty.png");
-             //    research.setAttribute("style", "width: 0px");
 
-             // }
-
-             // building = document.getElementById("buildingorigin");
-             // building.setAttribute("id", "buildingorigin" + a);
-             // if (jsonUnits.units[i].origin_research != "") {
-             // building.setAttribute("src", "/Icons/Buildings/" + jsonUnits.units[i].origin_building + ".jpg");
-             //      building.innerHTML = jsonUnits.units[i].origin_building;
-             //  } else {
-             //     building.setAttribute("src", "/aowp/UI/empty.png");
-
-             //     building.setAttribute("style", "width: 0px");
-             // }
              hp = document.getElementById("hp")
              hp.setAttribute("id", "hp" + a);
              hp.innerHTML = jsonUnits.units[i].hp;
-             armor = document.getElementById("armor")
+             armor = document.getElementById("armor");
              armor.setAttribute("id", "armor" + a);
              armor.innerHTML = jsonUnits.units[i].armor;
              shield = document.getElementById("resistence");
@@ -1418,6 +1430,19 @@
              tier.setAttribute("id", "tier" + a);
 
 
+             //
+
+
+             var defenseDiv = document.getElementById("damageReduction");
+
+             defenseDiv.innerHTML = "Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].armor + "</span> <defense> </defense>)";
+             defenseDiv.setAttribute("id", "damageReduction" + a);
+
+
+
+
+
+
 
              tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
@@ -1426,17 +1451,57 @@
              prodcost.setAttribute("id", "productioncost" + a);
              prodcost.innerHTML = "Cost: " + jsonUnits.units[i].cost;
 
+
+             var additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
+
+             var movementDiv = document.getElementById("movement");
+
+
+
              for (j in jsonUnits.units[i].secondary_passives) {
                  addUnitTypeIcon(jsonUnits.units[i].secondary_passives[j].slug, a);
 
+                 if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("floating") != -1) {
+                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Floating</bullet></span><br>";
+                 }
+
+                 if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("flying") != -1) {
+                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Flying</bullet></span><br>";
+                 }
+
+
+
              }
+
+             movementDiv.setAttribute("id", "movement" + a);
 
              for (k in jsonUnits.units[i].abilities) {
                  addAbilityslot(jsonUnits.units[i].abilities[k].slug);
 
              }
              for (z in jsonUnits.units[i].resistances) {
-                 addResistanceSlot(jsonUnits.units[i].resistances[z].slug);
+                 addResistanceSlot(jsonUnits.units[i].resistances[z].slug, jsonUnits.units[i].resistance);
+
+
+
+                 if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
+                     additionalBlight = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                 }
+                 if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("FIRE") != -1) {
+                     additionalFire = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                 }
+                 if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("FROST") != -1) {
+                     additionalFrost = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                 }
+
+                 if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("LIGHTNING") != -1) {
+                     additionalShock = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                 }
+                 if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("SPIRIT") != -1) {
+                     additionalSpirit = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                 }
+
+
 
              }
              if (jsonUnits.units[i].status_resistance != "0") {
@@ -1446,15 +1511,78 @@
 
              for (x in jsonUnits.units[i].primary_passives) {
                  addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
-
              }
+
+             var y = "";
+
+
+             var resistanceholder = document.getElementById("resistanceholder");
+             resistanceholder.setAttribute("id", "resistanceholder" + a);
+
+
+
+
+             var resistanceDiv = document.getElementById("resistanceReduction");
+             resistanceDiv.innerHTML = "Blight :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalBlight) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+             if (additionalBlight != undefined) {
+                 if (additionalBlight > 0) {
+                     resistanceDiv.innerHTML += "+";
+                 }
+                 resistanceDiv.innerHTML += additionalBlight + "<defenseblight></defenseblight>";
+             }
+
+             resistanceDiv.innerHTML += ")<br>";
+
+             resistanceDiv.innerHTML += "Shock :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalShock) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+             if (additionalShock != undefined) {
+                 if (additionalShock > 0) {
+                     resistanceDiv.innerHTML += "+";
+                 }
+                 resistanceDiv.innerHTML += additionalShock + "<defenselightning></defenselightning>";
+             }
+
+             resistanceDiv.innerHTML += ")<br>";
+
+
+             resistanceDiv.innerHTML += "Fire :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalFire) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+             if (additionalFire != undefined) {
+                 if (additionalFire > 0) {
+                     resistanceDiv.innerHTML += "+";
+                 }
+                 resistanceDiv.innerHTML += additionalFire + "<defensefire></defensefire>";
+             }
+
+             resistanceDiv.innerHTML += ")<br>";
+
+             resistanceDiv.innerHTML += "Spirit :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalSpirit) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+             if (additionalSpirit != undefined) {
+                 if (additionalSpirit > 0) {
+                     resistanceDiv.innerHTML += "+";
+                 }
+                 resistanceDiv.innerHTML += additionalSpirit + "<defensespirit></defensespirit>";
+             }
+
+             resistanceDiv.innerHTML += ")<br>";
+
+             resistanceDiv.innerHTML += "Frost :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalFrost) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+             if (additionalFrost != undefined) {
+                 if (additionalFrost > 0) {
+                     resistanceDiv.innerHTML += "+";
+                 }
+                 resistanceDiv.innerHTML += additionalFrost + "<defensefrost></defensefrost>";
+             }
+
+             resistanceDiv.innerHTML += ")";
+
+
+             resistanceDiv.setAttribute("id", "resistanceReduction" + a);
 
 
              document.getElementById("unitabholder").setAttribute("id", "unitabholder" + a);
 
              document.getElementById("unitstat").setAttribute("id", "unitstat" + a);
 
-             document.getElementById("resistanceholder").setAttribute("id", "resistanceholder" + a);
+
              document.getElementById("unit_role").setAttribute("id", "unit_role" + a);
 
 
@@ -1469,6 +1597,40 @@
          console.log("Couldn't find unit: " + a + i);
      }
 
+ }
+
+ function ReturnWeaknessOrResistanceNumber(slug) {
+
+     if (slug.indexOf("weakness") !== -1) {
+         var split = slug.split("weakness_");
+         abilityDam = "-" + split[1];
+     }
+     if (slug.indexOf("resistance") !== -1) {
+         var split = slug.split("resistance_");
+         abilityDam = split[1];
+     }
+
+     return abilityDam;
+
+ }
+
+ function GetDamageReductionPercentage(number, additionalNumber) {
+     if (additionalNumber === undefined) {
+         additionalNumber = 0;
+     }
+     var defensePercentage = 1 - Math.pow(0.9, parseInt(number) + parseInt(additionalNumber));
+     var percentage = Math.round(defensePercentage * 100);
+     if (percentage > 0) {
+         percentage = "<span style=\"color:lawngreen\">" + percentage + "%</span>";
+     }
+     if (percentage < 0) {
+         percentage = "<span style=\"color:red\">" + percentage + "%</span>";
+     }
+
+     if (additionalNumber == "x") {
+         percentage = "Immune";
+     }
+     return percentage;
  }
 
  function addLevelUpInfo(units, a) {
