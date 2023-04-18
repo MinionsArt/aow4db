@@ -13,35 +13,19 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["tome_of_roots"];
-        var tomeArray2 = ["tome_of_beasts"];
-        var tomeArray3 = ["tome_of_glades"];
-        var tomeArray4 = ["tome_of_fertility"];
-        var tomeArray5 = ["tome_of_cycles"];
-        var tomeArray6 = ["tome_of_vigor"];
-        var tomeArray7 = ["tome_of_natures_wrath"];
-        var tomeArray8 = ["tome_of_paradise"];
-        var tomeArray9 = ["tome_of_the_goddess_of_nature"];
+        var tomeArray = ["tome_of_roots", "tome_of_beasts", "tome_of_glades", "tome_of_fertility", "tome_of_cycles", "tome_of_vigor", "tome_of_natures_wrath", "tome_of_paradise", "tome_of_the_goddess_of_nature"];
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showTomeFromList(tomeArray1, "tome1");
-                showTomeFromList(tomeArray2, "tome2");
-                showTomeFromList(tomeArray3, "tome3");
-                showTomeFromList(tomeArray4, "tome4");
-                showTomeFromList(tomeArray5, "tome5");
-                showTomeFromList(tomeArray6, "tome6");
-                showTomeFromList(tomeArray7, "tome7");
-                showTomeFromList(tomeArray8, "tome8");
-                showTomeFromList(tomeArray9, "tome9");
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
+
 
             });
 
 
         });
-
     </script>
 
 
@@ -56,48 +40,12 @@
     </div>
 
 
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">I: Roots</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">I: Beasts</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">II: Glades</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">II: Fertility</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">III: Cycles</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">III: Vigor</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">IV: Nature's Wrath</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV2')">IV: Paradise</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'V')">V: Goddess of Nature</button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-
-        <div id="III2" class="w3-container w3-border city">
-            <div id="tome6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="tome7"></div>
-        </div>
-        <div id="IV2" class="w3-container w3-border city">
-            <div id="tome8"></div>
-        </div>
-        <div id="V" class="w3-container w3-border city">
-            <div id="tome9"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -107,25 +55,8 @@
 
 
 
-</body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
 
-</script>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

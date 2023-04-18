@@ -13,48 +13,20 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["general_research"];
-        var tomeArray2 = ["feudal"];
-        var tomeArray3 = ["high"];
-        var tomeArray4 = ["barbarian"];
-        var tomeArray5 = ["industrious"];
-        var tomeArray6 = ["dark"];
-        var tomeArray7 = ["mystic"];
+        var tomeArray = ["general_research", "feudal", "high", "barbarian", "industrious", "dark", "mystic"];
+
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showTomeFromList(tomeArray1, "tome1");
-                showTomeFromList(tomeArray2, "tome2");
-                showTomeFromList(tomeArray3, "tome3");
-                showTomeFromList(tomeArray4, "tome4");
-                showTomeFromList(tomeArray5, "tome5");
-                showTomeFromList(tomeArray6, "tome6");
-                showTomeFromList(tomeArray7, "tome7");
-
-
-                /*,["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"*/
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
+                SetLevelUpStuff();
             });
 
-            var coll = document.getElementsByClassName("collapsible");
-            var content = document.getElementsByClassName("content");
-            var i;
 
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
 
 
         });
-
     </script>
 
 
@@ -69,40 +41,14 @@
     </div>
 
 
+
+
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'I')">General Research</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'I2')">Feudal</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II')">High</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'II2')">Barbarian</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III')">Industrious</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'III2')">Dark</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'IV')">Mystic</button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="I" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="I2" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="II" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-        <div id="II2" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="III" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-
-        <div id="III2" class="w3-container w3-border city">
-            <div id="tome6"></div>
-        </div>
-        <div id="IV" class="w3-container w3-border city">
-            <div id="tome7"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -112,25 +58,7 @@
 
 
 
-</body>
-<script>
-    function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-
-</script>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>

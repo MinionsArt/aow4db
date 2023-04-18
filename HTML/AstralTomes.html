@@ -13,35 +13,14 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["tome_of_evocation"];
-        var tomeArray2 = ["tome_of_warding"];
-        var tomeArray3 = ["tome_of_scrying"];
-        var tomeArray4 = ["tome_of_amplification"];
-        var tomeArray5 = ["tome_of_teleportation"];
-        var tomeArray6 = ["tome_of_summoning"];
-        var tomeArray7 = ["tome_of_the_astral_mirror"];
-        var tomeArray8 = ["tome_of_astral_convergence"];
-        var tomeArray9 = ["tome_of_the_arch_mage"];
+        var tomeArray = ["tome_of_evocation", "tome_of_warding", "tome_of_scrying", "tome_of_amplification", "tome_of_teleportation", "tome_of_summoning", "tome_of_the_astral_mirror", "tome_of_astral_convergence", "tome_of_the_arch_mage"];
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showTomeFromList(tomeArray1, "tome1");
-                showTomeFromList(tomeArray2, "tome2");
-                showTomeFromList(tomeArray3, "tome3");
-                showTomeFromList(tomeArray4, "tome4");
-                showTomeFromList(tomeArray5, "tome5");
-                showTomeFromList(tomeArray6, "tome6");
-                showTomeFromList(tomeArray7, "tome7");
-                showTomeFromList(tomeArray8, "tome8");
-                showTomeFromList(tomeArray9, "tome9");
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
 
-
-                /*,var tomeArray1 = ["tome_of_evocation"];
-                           var tomeArray2 = ["tome_of_warding"];
-
-                           "tome_of_warding", "tome_of_scrying", "tome_of_amplification", "tome_of_teleportation", "tome_of_summoning", "tome_of_the_astral_mirror", "tome_of_astral_convergence", "tome_of_the_arch_mage"];*/
             });
 
 
@@ -60,48 +39,12 @@
     </div>
 
 
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button id="Evoc-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Evoc')">I: Evocation</button>
-            <button id="Ward-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Ward')">I: Warding</button>
-            <button id="Scry-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Scry')">II: Scrying</button>
-            <button id="Amp-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Amp')">II: Amplification</button>
-            <button id="Tele-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tele')">III: Teleportation</button>
-            <button id="Summon-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Summon')">III: Summoning</button>
-            <button id="Mirror-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mirror')">IV: Astral Mirror</button>
-            <button id="Conv-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Conv')">IV: Astral Convergence</button>
-            <button id="Arch-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Arch')">V: Arch Mage</button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="Evoc" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="Ward" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="Amp" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-        <div id="Scry" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="Tele" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-
-        <div id="Summon" class="w3-container w3-border city">
-            <div id="tome6"></div>
-        </div>
-        <div id="Mirror" class="w3-container w3-border city">
-            <div id="tome7"></div>
-        </div>
-        <div id="Conv" class="w3-container w3-border city">
-            <div id="tome8"></div>
-        </div>
-        <div id="Arch" class="w3-container w3-border city">
-            <div id="tome9"></div>
+        <div id="dataHolder">
         </div>
 
 

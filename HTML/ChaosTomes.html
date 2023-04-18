@@ -13,41 +13,21 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var tomeArray1 = ["tome_of_pyromancy"];
-        var tomeArray2 = ["tome_of_the_horde"];
-        var tomeArray3 = ["tome_of_revelry"];
-        var tomeArray4 = ["tome_of_mayhem"];
-        var tomeArray5 = ["tome_of_pandemonium"];
-        var tomeArray6 = ["tome_of_devastation"];
-        var tomeArray7 = ["tome_of_the_demon_gate"];
-        var tomeArray8 = ["tome_of_chaos_channeling"];
-        var tomeArray9 = ["tome_of_the_chaos_lord"];
+        var tomeArray = ["tome_of_pyromancy", "tome_of_the_horde", "tome_of_revelry", "tome_of_mayhem", "tome_of_pandemonium", "tome_of_devastation", "tome_of_the_demon_gate", "tome_of_chaos_channeling", "tome_of_the_chaos_lord"];
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-                showTomeFromList(tomeArray1, "tome1");
-                showTomeFromList(tomeArray2, "tome2");
-                showTomeFromList(tomeArray3, "tome3");
-                showTomeFromList(tomeArray4, "tome4");
-                showTomeFromList(tomeArray5, "tome5");
-                showTomeFromList(tomeArray6, "tome6");
-                showTomeFromList(tomeArray7, "tome7");
-                showTomeFromList(tomeArray8, "tome8");
-                showTomeFromList(tomeArray9, "tome9");
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
+
                 SetLevelUpStuff();
 
-                /*,var tomeArray1 = ["tome_of_evocation"];
-                           var tomeArray2 = ["tome_of_warding"];
-
-                           "tome_of_warding", "tome_of_scrying", "tome_of_amplification", "tome_of_teleportation", "tome_of_summoning", "tome_of_the_astral_mirror", "tome_of_astral_convergence", "tome_of_the_arch_mage"];*/
             });
 
 
 
 
         });
-
     </script>
 
 
@@ -62,48 +42,15 @@
     </div>
 
 
+
+
+
+
     <div class="w3-container">
-        <div class="w3-bar w3-black">
-            <button id="pyromancy-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'pyromancy')">I: Pyromancy</button>
-            <button id="horde-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'horde')">I: Horde</button>
-            <button id="revelry-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'revelry')">II: Revelry</button>
-            <button id="mayhem-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'mayhem')">II: Mayhem</button>
-            <button id="pandemonium-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'pandemonium')">III: Pandemonium</button>
-            <button id="devastation-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'devastation')">III: Devastation</button>
-            <button id="demon_gate-buton" class="w3-bar-item w3-button tablink" onclick="openCity(event,'demon_gate')">IV: Demon Gate</button>
-            <button id="chaos_channeling-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'chaos_channeling')">IV: Chaos Channeling</button>
-            <button id="chaos_lord-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'chaos_lord')">V: Chaos Lord</button>
+        <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
-
-        <div id="pyromancy" class="w3-container w3-border city">
-            <div id="tome1"></div>
-        </div>
-
-        <div id="horde" class="w3-container w3-border city">
-            <div id="tome2"></div>
-        </div>
-        <div id="revelry" class="w3-container w3-border city">
-            <div id="tome3"></div>
-        </div>
-        <div id="mayhem" class="w3-container w3-border city">
-            <div id="tome4"></div>
-        </div>
-        <div id="pandemonium" class="w3-container w3-border city">
-            <div id="tome5"></div>
-        </div>
-
-        <div id="devastation" class="w3-container w3-border city">
-            <div id="tome6"></div>
-        </div>
-        <div id="demon_gate" class="w3-container w3-border city">
-            <div id="tome7"></div>
-        </div>
-        <div id="chaos_channeling" class="w3-container w3-border city">
-            <div id="tome8"></div>
-        </div>
-        <div id="chaos_lord" class="w3-container w3-border city">
-            <div id="tome9"></div>
+        <div id="dataHolder">
         </div>
 
 
@@ -112,10 +59,7 @@
 
 
 
-
-</body>
-
-</html>
+</body></html>
 <footer>
     <br>
     <br>
