@@ -23,6 +23,7 @@ function GetTierAndNameTome(id) {
 
 function ShowUnitFromLink() {
     var unitID = searchParams.get('unit');
+    document.title = "Age of Wonders 4 - " + GetTierAndName(unitID).split(">")[2];
     showUnitFromString(unitID, "dataHolder");
 }
 
