@@ -20,6 +20,10 @@ html {
     src: url(/aow4db/Style/REGULAR.ttf);
 }
 
+body {
+    font-family: 'Regular', sans-serif;
+}
+
 
 th {
     min-width: 320px;
@@ -83,35 +87,6 @@ ul {
     font-size: 16px;
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-    color: aquamarine;
-    font-family: 'Regular';
-    font-size: 14px;
-}
-
-
-a:hover {
-    color: aqua;
-    text-decoration: underline;
-}
-
-ul.egmenu {
-    background: black;
-    border-image: url(/aow4db/Icons/9slicetooltip.png);
-    border-image-slice: 4 10 4 10 fill;
-    border-style: solid;
-    margin-top: -20px;
-    height: 30px;
-    width: 100%;
-}
-
-ul.egmenu > li {
-    float: left;
-    position: relative;
-}
-
 .item_card {
     background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
@@ -160,119 +135,57 @@ ul.egmenu > li {
     border-image-slice: 30 fill;
 }
 
-ul.egmenu ul {
-    background-color: rgba(10, 10, 15, 1);
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    border-image: url(/aow4db/Icons/9slicetooltip.png);
-    border-style: solid;
-    border-image-slice: 4 10 4 10 fill;
-    min-width: 210px;
-}
-
-body {
-    font-family: 'Regular', sans-serif;
-}
-
-ul.egmenu a {
-    cursor: pointer;
-    color: white;
-    line-height: 30px;
-    padding: 9px 10px;
+a {
     text-decoration: none;
+    cursor: pointer;
+    color: aquamarine;
+    font-family: 'Regular';
+    font-size: 14px;
 }
 
-ul.egmenu li {
+
+a:hover {
+    color: aqua;
+    text-decoration: underline;
+}
+
+#menu {
+    background: black;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    border-style: solid;
+    height: 35px;
+    margin-top: -20px;
+
+}
+
+#menu ul,
+#menu li {
     list-style: none;
+
     z-index: 1000;
     text-transform: uppercase;
     font-size: 10px;
     font-family: 'Duru Sans', sans-serif;
 
-
-}
-
-
-ul.egmenu li:hover {
-    background-color: darkslategrey;
-}
-
-ul.egmenu li:hover ul {
-    display: block;
-}
-
-@media all and (max-width: 480px) {
-    ul.egmenu {
-        height: auto;
-    }
-
-    ul.egmenu > li {
-        float: none;
-
-        font-size: 25px;
-    }
-
-    ul.egmenu li {
-        font-size: 25px;
-        ;
-    }
-
-    ul.egmenu a {
-        line-height: 40px;
-    }
-
-    ul.egmenu ul {
-        position: relative;
-    }
-
-    ul.egmenu li.tap {
-        background: #555;
-    }
-
-    ul.egmenu li.tap ul {
-        display: block;
-    }
-
-}
-
-@media all and (min-width: 481px) {
-    ul.egmenu li:hover {
-        background: #555;
-    }
-
-    ul.egmenu li:hover ul {
-        display: block;
-    }
-}
-
-#menu {
-    background: #343434;
-    color: #eee;
-    height: 35px;
-    border-bottom: 4px solid #eeeded
-}
-
-#menu ul,
-#menu li {
-    margin: 0 0;
-    padding: 0 0;
-    list-style: none
 }
 
 #menu ul {
-    height: 35px
+    height: auto;
+    background: black;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    border-style: solid;
 }
 
 #menu li {
     float: left;
+    display: inline;
     position: relative;
     font: bold 12px Arial;
     text-shadow: 0 -1px 0 #000;
-    text-transform: uppercase;
-    z-index: 1000;
-    white-space: nowrap;
+
+    text-transform: uppercase
 }
 
 #menu li:first-child {
@@ -313,25 +226,30 @@ ul.egmenu li:hover ul {
 
 #menu label span {
     font-size: 12px;
-    position: relative;
+    position: absolute;
     left: 35px
 }
 
 #menu ul.menus {
     height: auto;
     width: 180px;
-    background: #111;
+    background: black;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    border-style: solid;
     position: absolute;
-    z-index: 10000;
+
+    z-index: 99;
     display: none;
-    border: 0;
+
 }
 
 #menu ul.menus li {
     display: block;
     width: 100%;
     font: 12px Arial;
-    text-transform: none;
+    text-transform: uppercase;
+
 }
 
 #menu li:hover ul.menus {
@@ -339,19 +257,19 @@ ul.egmenu li:hover ul {
 }
 
 #menu a.home {
-    background-color: dodgerblue;
+    background: #c00;
 }
 
 #menu a.prett {
-    padding: 0 27px 0 14px
+    padding: 0 14px 0 7px
 }
 
 #menu a.prett::after {
     content: "";
     width: 0;
     height: 0;
-    border-width: 6px 5px;
-    border-color: #eee transparent transparent transparent;
+
+
     position: absolute;
     top: 15px;
     right: 9px
@@ -831,9 +749,13 @@ tab {
 }
 
 .tome_card {
-    background-color: rgb(25, 49, 61, 0.5);
+
     color: white;
     width: 1075px;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/Interface/parchment.png);
+    border-image-slice: 4 6 4 6 fill;
+
 
     padding: 5px;
     display: table;
@@ -850,6 +772,7 @@ tab {
     max-width: 900px;
     border-radius: 30px 0px 10px 30px;
     border: 1px solid #A5C3D3;
+
     background-color: #131517;
     background-image: url("/aowp/UI/scan.png");
     background-size: 500px;
@@ -2411,42 +2334,42 @@ empireorder {
 chaos {
     max-height: 20px;
     top: 3px;
-    content: url(/aow4db/Icons/Text/chaos.png);
+    content: url(/aow4db/Icons/Text/chaosInv.png);
     position: relative;
 }
 
 nature {
     max-height: 20px;
     top: 3px;
-    content: url(/aow4db/Icons/Text/nature.png);
+    content: url(/aow4db/Icons/Text/natureInv.png);
     position: relative;
 }
 
 arcana {
     max-height: 20px;
     top: 3px;
-    content: url(/aow4db/Icons/Text/astral.png);
+    content: url(/aow4db/Icons/Text/astralInv.png);
     position: relative;
 }
 
 shadow {
     max-height: 20px;
     top: 3px;
-    content: url(/aow4db/Icons/Text/shadow.png);
+    content: url(/aow4db/Icons/Text/shadowInv.png);
     position: relative;
 }
 
 matter {
     max-height: 20px;
     top: 3px;
-    content: url(/aow4db/Icons/Text/materium.png);
+    content: url(/aow4db/Icons/Text/materiumInv.png);
     position: relative;
 }
 
 order {
     max-height: 20px;
     top: 3px;
-    content: url(/aow4db/Icons/Text/order.png);
+    content: url(/aow4db/Icons/Text/orderInv.png);
     position: relative;
 }
 

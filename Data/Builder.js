@@ -716,7 +716,7 @@
              spa = document.createElement("SPAN");
              spa.className = "tooltiptext";
 
-             spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:burlywood;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calcuate damage sustained from " + firstPart + ".";
+             spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:burlywood;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calculate damage sustained from " + firstPart + ".";
 
              var num = "";
              if (a.indexOf("weakness") !== -1) {
@@ -1243,6 +1243,11 @@
 
      var list = new Array();
      list = findSpellsWithArgument(argument, argumentType);
+
+     if (overwritetext.indexOf(">") != -1) {
+         overwritetext = overwritetext.split("/")[1];
+         overwritetext = overwritetext.split(">")[1];
+     }
 
      SetCollapsibleButtonsAndDivs(overwritetext, list, "spell");
 
