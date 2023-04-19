@@ -1547,6 +1547,11 @@ function showUnit(a, divID) {
                 addAbilityslot(jsonUnits.units[i].abilities[k].slug);
 
             }
+
+            if (jsonUnits.units[i].status_resistance != "0") {
+                addstatusResistanceSlot(jsonUnits.units[i].status_resistance);
+            }
+
             for (z in jsonUnits.units[i].resistances) {
                 addResistanceSlot(jsonUnits.units[i].resistances[z].slug, jsonUnits.units[i].resistance);
 
@@ -1572,9 +1577,7 @@ function showUnit(a, divID) {
 
 
             }
-            if (jsonUnits.units[i].status_resistance != "0") {
-                addstatusResistanceSlot(jsonUnits.units[i].status_resistance);
-            }
+
 
 
             for (x in jsonUnits.units[i].primary_passives) {
@@ -1876,13 +1879,22 @@ function showSiegeProject(a) {
 
 
 function showTome(a, div) {
-    var modName, description, cost, type, tier, k, j, descriptionDiv = "";
+    var modName, description, cost, type, tier, k, j, l, descriptionDiv = "";
     var found = false;
     for (j in jsonTomes.tomes) {
         if (a == jsonTomes.tomes[j].id) {
 
             modName = document.getElementById("tomename");
-            modName.innerHTML = jsonTomes.tomes[j].name;
+            modName.innerHTML = "";
+            if ('affinities' in jsonTomes.tomes[j]) {
+                var affinities = jsonTomes.tomes[j].affinities.split(" ");
+                modName.innerHTML = affinities[0] + " ";
+            }
+
+
+
+
+            modName.innerHTML += jsonTomes.tomes[j].name;
             modName.setAttribute("id", "tomename" + a);
             descriptionDiv = document.getElementById("tomedescription");
             description = jsonTomes.tomes[j].gameplay_description;
@@ -1891,13 +1903,42 @@ function showTome(a, div) {
 
             descriptionDiv.setAttribute("id", "tomedescription" + a);
             loreDescription = jsonTomes.tomes[j].lore_description;
-            loreDescription += "<br>" + jsonTomes.tomes[j].lore_author;
+            loreDescription = loreDescription.replace(String.fromCharCode(92), "");
+            loreDescription = loreDescription.replace(String.fromCharCode(92), "");
+
+            loreDescription += "<br> -" + jsonTomes.tomes[j].lore_author;
             descriptionLoreDiv = document.getElementById("tomeloredescription");
             descriptionLoreDiv.innerHTML = loreDescription;
 
-            tomeaffinityDiv = document.getElementById("tomecost");
-            tomeaffinityDiv.setAttribute("id", "tomecost" + a);
-            tomeaffinityDiv.innerHTML = jsonTomes.tomes[j].affinities;
+            unitTypesDiv = document.getElementById("initialBonusList");
+
+            var div = document.createElement("DIV");
+
+            if ('affinities' in jsonTomes.tomes[j]) {
+                div.innerHTML = "+" +
+                    affinities[1] + affinities[0] + " Affinity"
+                unitTypesDiv.appendChild(div);
+            }
+
+            if ('passives' in jsonTomes.tomes[j]) {
+                for (l in jsonTomes.tomes[j].passives) {
+                    var div = document.createElement("DIV");
+                    div.className = "initialBonusText";
+                    div.innerHTML = jsonTomes.tomes[j].passives[l].name;
+                    unitTypesDiv.appendChild(div);
+                    var spa = document.createElement("SPAN");
+                    spa.className = "tooltiptext";
+                    spa.innerHTML = jsonTomes.tomes[j].passives[l].type + "<br>";
+                    spa.innerHTML += jsonTomes.tomes[j].passives[l].description;
+                    div.appendChild(spa);
+
+                }
+
+            }
+
+            unitTypesDiv.setAttribute("id", "initialBonusList" + a);
+
+
 
             descriptionLoreDiv.setAttribute("id", "tomeloredescription" + a);
             skillHolder = document.getElementById("tome_unlocks");
@@ -2009,6 +2050,15 @@ function showStructure(a) {
     }
 }
 
+function GetCostUnit(id) {
+    for (i in jsonUnits.units) {
+        if (id == jsonUnits.units[i].id) {
+            return jsonUnits.units[i].cost;
+        }
+    }
+
+}
+
 function showUnitUnlock(a) {
     var modName, description, cost, type, tier, j = "";
     var found = false;
@@ -2046,6 +2096,7 @@ function showUnitUnlock(a) {
     tier.setAttribute("id", "modtier" + a);
 
     cost = document.getElementById("modcost");
+    cost.innerHTML = GetCostUnit(a.unit_slug);
 
     cost.setAttribute("id", "modcost" + a);
 
@@ -2109,8 +2160,9 @@ function showSpell(a, showOrigin) {
 
             imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
             imagelink.setAttribute("id", "modicon" + a);
+            tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id, false));
             if (showOrigin === true) {
-                tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id));
+
                 var tomeOrigin = document.getElementById("originTome");
                 tomeOrigin.setAttribute("id", "originTome" + jsonSpells.spells[j].id);
                 var tomeOriginIcon = document.getElementById("originTomeIcon");
@@ -2133,14 +2185,7 @@ function backtraceTomeOriginAndTier(spell) {
         {
             for (k in jsonTomes.tomes[j].skills) {
                 if (jsonTomes.tomes[j].skills[k].spell_slug == spell) {
-                    var tomeOrigin = document.getElementById("originTome");
-                    if (jsonTomes.tomes[j].affinities != undefined) {
-                        tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
-                    }
-                    tomeOrigin.innerHTML += jsonTomes.tomes[j].name;
 
-                    var tomeOriginIcon = document.getElementById("originTomeIcon");
-                    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
                     return jsonTomes.tomes[j].skills[k].tier;
                 }
             }

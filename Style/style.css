@@ -5,6 +5,8 @@ html {
 }
 
 
+
+
 @font-face {
     font-family: 'Header';
     src: url(/aow4db/Style/HEADER.ttf);
@@ -195,7 +197,7 @@ a:hover {
 #menu a {
     display: block;
     line-height: 35px;
-    padding: 0 14px;
+    padding: 0 6px;
     text-decoration: none;
     color: #eee;
 }
@@ -489,7 +491,8 @@ p {
     float: right;
     font-size: 12px;
     padding: 10px;
-
+    color: darkgray;
+    text-align: center;
     padding-top: 15px;
     max-width: 600px;
 }
@@ -549,7 +552,7 @@ p {
     max-height: calc(100vh - var(--offset) * 2);
 
 
-    width: 250px;
+    width: 200px;
     max-height: 500px;
     display: grid;
     grid-auto-columns: auto;
@@ -563,7 +566,7 @@ p {
 }
 
 .w3-bar .w3-bar-item {
-    padding: 8px 16px;
+    padding: 8px 8px;
     float: left;
     font-size: 12px;
     border: none;
@@ -748,15 +751,25 @@ tab {
     margin-right: auto;
 }
 
+.InitialBonus {
+    float: right;
+    padding: 10px;
+    color: #362314;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/Interface/parchment.png);
+    border-image-slice: 2 fill;
+}
+
 .tome_card {
 
     color: white;
     width: 1075px;
     border-style: solid;
-    border-image: url(/aow4db/Icons/Interface/parchment.png);
-    border-image-slice: 4 6 4 6 fill;
-
-
+    border-image: url(/aow4db/Icons/Interface/Background_Unitpanel.png);
+    border-image-slice: 2;
+    border-width: 4px;
+    background-image: url(/aow4db/Icons/Interface/Background_Unitpanel.png);
+    background-size: cover;
     padding: 5px;
     display: table;
     margin: 5px;
@@ -1401,6 +1414,12 @@ hyperlink {
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .unittype_icon:hover .tooltiptext {
+    visibility: visible;
+
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.initialBonusText:hover .tooltiptext {
     visibility: visible;
 
 }
@@ -2377,6 +2396,13 @@ general {
     max-height: 20px;
     top: 3px;
     content: url(/aow4db/Icons/EmpireProgressionIcons/general.png);
+    position: relative;
+}
+
+garrison {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Text/fortification.png);
     position: relative;
 }
 
