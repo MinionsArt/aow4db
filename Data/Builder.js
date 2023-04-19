@@ -1,4 +1,4 @@
-let searchParams = new URLSearchParams(window.location.search);
+var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get('sort');
 var currentView = "";
 
@@ -1856,7 +1856,7 @@ function showSiegeProject(a) {
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.name);
 
 
-    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a.name + ".png");
     imagelink.setAttribute("id", "modicon" + a.name);
     descriptionDiv.innerHTML = description;
     descriptionDiv.setAttribute("id", "modicon" + a.name);
@@ -2160,7 +2160,7 @@ function showSpell(a, showOrigin) {
 
             imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
             imagelink.setAttribute("id", "modicon" + a);
-            tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id, false));
+            tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id, showOrigin));
             if (showOrigin === true) {
 
                 var tomeOrigin = document.getElementById("originTome");
@@ -2180,11 +2180,20 @@ function showSpell(a, showOrigin) {
     }
 }
 
-function backtraceTomeOriginAndTier(spell) {
+function backtraceTomeOriginAndTier(spell, showorigin) {
     for (j in jsonTomes.tomes) {
         {
             for (k in jsonTomes.tomes[j].skills) {
                 if (jsonTomes.tomes[j].skills[k].spell_slug == spell) {
+                    if (showorigin) {
+                        var tomeOrigin = document.getElementById("originTome");
+                        if ('affinities' in jsonTomes.tomes[j]) {
+                            tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+                        }
+                        tomeOrigin.innerHTML += jsonTomes.tomes[j].name;
+                        var tomeOriginIcon = document.getElementById("originTomeIcon");
+                        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                    }
 
                     return jsonTomes.tomes[j].skills[k].tier;
                 }
