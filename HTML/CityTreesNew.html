@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/EmpireProgression.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+
+    <script>
+        var general = [
+            // A
+            "throne:7:1:na",
+            "throne:9:1:na",
+
+
+            // B
+
+            "palisade_walls:2:2:na",
+            "vendor:11:2:na",
+            "experimentation_chambers:12:2:na:dark",
+            "shrine:13:2:na",
+            "clergy_commons:14:2:na:feudal",
+            "library:15:2:na",
+            "battle_ritual_site:16:2:na:barbarian",
+            "store_house:17:2:na",
+            "workers_farmstead:18:2:na:industrious",
+            "workshop:20:2:na",
+            "evocators_abode:21:2:na:mystic",
+            "artisan_workshop:22:2:na:high",
+            "shipyard:23:2:na",
+
+
+            // C
+
+
+            "market:11:3:vendor",
+            "underground_laboratory:12:3:experimentation_chambers:dark",
+            "mana_obelisk:13:3:shrine",
+            "tithe_shrine:14:3:clergy_commons:feudal",
+            "arcane_institute:15:3:library",
+            "ancestral_seer_hall:16:3:battle_ritual_site:barbarian",
+            "granary:17:3:store_house",
+            "grand_mill:18:3:workers_farmstead:industrious",
+            "stonemason:19:3:workshop",
+            "stone_conjurer:20:3:evocators_abode:mystic",
+            "blacksmith:21:3:workshop",
+            "lightforge:22:3:artisan_workshop:high",
+            "fishmonger:23:3:shipyard",
+
+            // D
+
+
+            "mint:11:4:market",
+
+            "monolith:13:4:mana_obelisk",
+            "academy:15:4:arcane_institute",
+            "estate_hall:17:4:granary",
+            "masonic_hall:19:4:stonemason",
+            "armory:21:4:blacksmith",
+            "grand_warf:23:4:fishmonger",
+
+
+            // E
+
+
+            "merchants_guild:11:5:mint",
+
+            "mages_guild:13:5:monolith",
+            "scholars_guild:15:5:academy",
+            "farmers_guild:17:5:estate_hall",
+            "workers_guild:19:5:masonic_hall",
+            "smiths_guild:21:5:armory",
+            "seafarers_guild:23:5:grand_warf"
+
+
+        ];
+
+
+
+
+
+
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+
+                // wizard tower setup
+
+
+
+                SetUpTreeNodes(general, "general");
+
+
+                //    SetUpTreeNodes("nature", 5, "green");
+                //    SetUpTreeNodes("chaos", 7, "red");
+                //    SetUpTreeNodes("astral", 9, "cyan");
+                //    SetUpTreeNodes("materium", 11, "orange");
+                //    SetUpTreeNodes("order", 13, "yellow");
+                //    SetUpTreeNodes("shadow", 15, "purple");
+
+
+                SetLevelUpStuff();
+            });
+
+
+
+
+
+        });
+
+        function SetUpTreeNodes(keyword, type) {
+
+            var offset = 1;
+            var i, x = "";
+            var holder = document.getElementById("treeHolder" + type);
+            var treespace = document.getElementById("treespace" + type);
+            var nodeHeight = 100;
+            var nodeWidth = 250;
+            for (x in keyword) {
+
+                var splits = keyword[x].split(":");
+
+                var structure = splits[0];
+                var row = parseInt(splits[1]);
+                var column = parseInt(splits[2]);
+                var connectTo = splits[3];
+
+
+                for (i in jsonStructureUpgrades.structures) {
+                    if (jsonStructureUpgrades.structures[i].id === structure) {
+
+
+
+                        var name = jsonStructureUpgrades.structures[i].name;
+
+                        if (name.indexOf("<br>")) {
+                            name = name.replace("<br>", " ");
+                            name = name.replace("<br>", " ");
+                            // name = name.replace("br", " ");
+                        }
+
+                        // name = name.split(":")[1];
+
+                        var newNode = document.createElement("DIV");
+
+
+
+                        //insert connection line
+
+                        if (connectTo != "na") {
+
+                            var leftPos = ((column) * nodeWidth) - 190;
+                            var topPos = ((row) * nodeHeight) - 50;
+
+                            var connecto = document.getElementById(connectTo);
+                            var gridcolumn = connecto.style.gridRow.split(" ")[0];
+                            if (gridcolumn > row) {
+                                var angle = 145;
+                                var width = 180;
+                            }
+                            if (gridcolumn == row) {
+                                var angle = 180;
+                                var width = 130;
+                            }
+                            if (gridcolumn < row) {
+                                var angle = -135;
+                                var width = 180;
+                            }
+                            var connectionLine = document.createElement("DIV");
+                            console.log(structure);
+                            connectionLine.setAttribute("style", "top:" + topPos + "px; left:" + leftPos + "px; rotate:" + angle + "deg; background-color:" + "white" + "; width: +" + width + "px");
+                            connectionLine.className = "branch-line";
+                            treespace.appendChild(connectionLine);
+                            connectionLine.setAttribute("id", name);
+                        }
+                        newNode.setAttribute("style", "grid-row:" + (row) + "; grid-column:" + column + ";");
+
+                        //  newNode.innerHTML = name;
+                        newNode.className = "entry";
+                        var newNodeBackground = document.createElement("DIV");
+
+                        var img = document.createElement("IMG");
+                        img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + jsonStructureUpgrades.structures[i].id + ".png");
+                        img.setAttribute("height", "50px");
+                        img.className = "structureNodeIcon";
+                        newNode.setAttribute("id", jsonStructureUpgrades.structures[i].id);
+
+
+
+                        var spa = document.createElement("SPAN");
+
+
+                        newNodeBackground.className = "structureNode";
+
+
+                        spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>";
+
+                        if (splits[4]) {
+                            newNodeBackground.setAttribute("style", "left:20px");
+                            if (splits[4] == "mystic") {
+                                spa.innerHTML = "<span style=\"color:  blue;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "barbarian") {
+                                spa.innerHTML = "<span style=\"color:  red;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "high") {
+                                spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "feudal") {
+                                spa.innerHTML = "<span style=\"color:  grey;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "dark") {
+                                spa.innerHTML = "<span style=\"color:  purple;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "industrious") {
+                                spa.innerHTML = "<span style=\"color:  orange;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                        }
+
+
+                        var spa2 = document.createElement("SPAN");
+                        spa2.setAttribute("style", "float:right");
+                        var description = jsonStructureUpgrades.structures[i].prediction_description;
+                        spa2.innerHTML += description.replace("income", "");
+                        spa2.innerHTML += jsonStructureUpgrades.structures[i].requirement_description + "<br>";
+                        spa2.innerHTML += jsonStructureUpgrades.structures[i].description + "<br>";
+
+                        spa2.className = "tooltiptext";
+
+
+
+                        newNode.appendChild(newNodeBackground);
+                        newNodeBackground.append(spa);
+                        newNodeBackground.append(img);
+
+                        newNode.appendChild(spa2);
+
+                        holder.appendChild(newNode);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        function SetHeaderNodes(keyword, type) {
+
+            var offset = 1;
+            var i, x = "";
+            var holder = document.getElementById("treeHolder" + type);
+            var treespace = document.getElementById("treespace" + type);
+            var nodeHeight = 150;
+            for (x in keyword) {
+
+                var splits = keyword[x].split(":");
+
+                var structure = splits[0];
+                var row = parseInt(splits[1]);
+                var column = parseInt(splits[2]);
+                var connectTo = splits[3];
+
+
+
+
+
+
+                var newNode = document.createElement("DIV");
+
+                newNode.setAttribute("style", "grid-row:" + (row) + "; grid-column:" + column + ";");
+
+                //  newNode.innerHTML = name;
+                newNode.className = "entry";
+                var newNodeBackground = document.createElement("DIV");
+
+                var img = document.createElement("IMG");
+                img.setAttribute("src", "/aow4db/Icons/Text/" + structure + ".png");
+                img.setAttribute("height", "50px");
+                img.className = "structureNodeIcon";
+                newNode.setAttribute("id", structure);
+
+
+
+                var spa = document.createElement("SPAN");
+                spa.innerHTML = structure.toUpperCase();
+
+                //newNodeBackground.className = "structureNode";
+
+                newNode.appendChild(newNodeBackground);
+                newNodeBackground.append(spa);
+                newNodeBackground.append(img);
+
+                holder.appendChild(newNode);
+
+
+
+            }
+
+        }
+
+
+
+        function SetBreakPoints() {
+            CreateDiv(2, "1");
+            CreateDiv(3, "2");
+            CreateDiv(4, "3");
+            CreateDiv(5, "4");
+        }
+
+        function CreateDiv(row, breakpoint) {
+            var holder = document.getElementById("treeHoldergeneral");
+            var treespace = document.getElementById("treespacegeneral");
+            var breakline = document.createElement("DIV");
+
+            breakline.setAttribute("style", "grid-row:" + row + "; grid-column:16; left: 30%; position: relative; color: grey; font-size:12px;top: 75%;");
+            breakline.innerHTML = breakpoint;
+            // add breaklines
+            holder.appendChild(breakline);
+
+            var breakline = document.createElement("DIV");
+
+            breakline.setAttribute("style", "grid-row:" + row + "; grid-column:1; left: 60%; position: relative; color: grey;font-size:12px;top: 75%;");
+            breakline.innerHTML = breakpoint;
+            // add breaklines
+            holder.appendChild(breakline);
+
+            var toppos = (row * 150);
+            var leftpos = 0;
+            var color = "red";
+            var connectionLine = document.createElement("DIV");
+            connectionLine.setAttribute("style", "top:" + toppos + "px; left:" + leftpos + "px; rotate:0deg;width: 1100px;");
+
+
+            connectionLine.className = "dotted-line";
+            treespace.appendChild(connectionLine);
+
+
+
+        }
+    </script>
+
+
+    <title>Age of Wonders 4 - City Tree</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div id="General" class="w3-container w3-border city">>
+        <div class="textblocktitle">
+            General Tree
+        </div>
+
+
+        <div class="tree-space" id="treespacegeneral">
+
+            <div class="tree-grid" id="treeHoldergeneral">
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body></html>
+<style>
+    .branch-line {
+        height: 4px;
+        margin-top: -6px;
+        position: absolute;
+
+        transform-origin: left center;
+        background-color: white;
+        background-size: 10px;
+        width: 25px;
+    }
+
+    .dotted-line {
+        height: 4px;
+        margin-top: -6px;
+        position: absolute;
+
+        transform-origin: left center;
+        background-image: url(/aow4db/Icons/Interface/talents-arrow-line-gray.png);
+        background-size: 10px;
+        width: 25px;
+    }
+
+    .tree-grid {
+        display: grid;
+        grid-template-columns: repeat(14, 250px);
+        grid-template-rows: repeat(37, 100px);
+        position: absolute;
+        height: auto;
+        width: auto;
+        background-color: black;
+        background-image: url(/aow4db/Icons/Interface/panel_Background.png);
+        background-size: inherit;
+
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 4 10 4 10 fill;
+        border-style: solid;
+        padding-left: 50px;
+    }
+
+
+    .tree-space {
+        width: auto;
+        height: auto;
+
+        position: relative;
+    }
+
+    .entry {
+        background-color: transparent;
+        color: aliceblue;
+        text-align: center;
+    }
+
+    .structureNode {
+        position: relative;
+        width: 120px;
+
+
+        background-image: url(/aow4db/Icons/tooltipBG.png);
+        font-size: 12px;
+        color: #bbcdf6;
+        height: 60px;
+        width: 190px;
+        text-align: left;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 4 10 4 10 fill;
+        text-shadow: 2px 2px black;
+        box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+
+        padding: 5px;
+        z-index: 2;
+    }
+
+    .entry:hover .tooltiptext {
+        visibility: visible;
+
+    }
+
+
+    .structureNodeIcon {
+
+        z-index: 2;
+        position: relative;
+
+
+    }
+
+    .structureNode:hover {
+        filter: brightness(150%);
+
+    }
+
+</style>
+<footer>
+    <br>
+    <br>
+</footer>
