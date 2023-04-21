@@ -64,7 +64,7 @@
             "estate_hall:17:4:granary",
             "masonic_hall:19:4:stonemason",
             "armory:21:4:blacksmith",
-            "grand_warf:23:4:fishmonger",
+            "grand_wharf:23:4:fishmonger",
 
 
             // E
@@ -77,7 +77,79 @@
             "farmers_guild:17:5:estate_hall",
             "workers_guild:19:5:masonic_hall",
             "smiths_guild:21:5:armory",
-            "seafarers_guild:23:5:grand_warf"
+            "seafarers_guild:23:5:grand_wharf",
+
+
+            // F
+            "town_hall_ii_castle:5:6:na",
+            "town_hall_ii_bulwark:6:6:na",
+            "town_hall_ii_communal_tent:7:6:na",
+            "town_hall_ii_mages_plaza:8:6:na",
+            "town_hall_ii_atrium_of_light:9:6:na",
+            "town_hall_ii_dread_spire:10:6:na",
+
+
+            // G
+            "caltrop_stash:2:7:na",
+            "arcane_battlements:3:7:na",
+            "archer_battlements:4:7:na",
+
+            "tavern:11:7:na",
+            "interrogation_dungeon:12:7:na:dark",
+
+            "wizard_tower_br__foundation:18:7:na",
+
+
+            // H
+
+            "bathhouse:11:8:na",
+            "ritual_mausoleum:12:8:na:dark",
+            "wizard_tower_br__prison_cells:17:8:wizard_tower_br__foundation",
+            "wizard_tower_br__level_i:18:8:wizard_tower_br__foundation",
+            "wizard_tower_br__crypts:19:8:wizard_tower_br__foundation",
+
+            // I
+            "town_hall_iii_citadel:5:9:na",
+            "town_hall_iii_forge_tower:6:9:na",
+            "town_hall_iii_halls_of_war:7:9:na",
+            "town_hall_iii_mystic_spire:8:9:na",
+            "town_hall_iii_pantheon:9:9:na",
+            "town_hall_iii_stronghold:10:9:na",
+
+            "wizard_tower_br__level_ii:18:9:wizard_tower_br__level_i",
+            "wizard_tower_br__room_of_recall:19:9:wizard_tower_br__level_i",
+
+
+            // J
+            "stone_walls:3:10:na",
+            "wizard_tower_br__apex:18:9:wizard_tower_br__level_ii",
+            "wizard_tower_br__channeling_chamber:19:9:wizard_tower_br__level_ii",
+
+            // K
+            "ballista_towers:2:11:na",
+            "necrotic_spires:3:11:na",
+            "healing_spires:4:11:na",
+            "wizard_tower_br__arcane_observatory:18:10:wizard_tower_br__apex",
+            "wizard_tower_br__teleportation_circle:19:10:wizard_tower_br__apex",
+            //L
+            "town_hall_iv_grand_estate:5:12:na",
+            "town_hall_iv_industry_compound:6:12:na",
+            "town_hall_iv_warlords_pavilion:7:12:na",
+            "town_hall_iv_wizards_auditorium:8:12:na",
+            "town_hall_iv_solar_sanctum:9:12:na",
+            "town_hall_iv_black_palace:10:12:na",
+
+            //M
+            "catapult_towers:2:13:na",
+            "beacon_of_valor:3:13:na",
+            "lords_manor:5:13:na",
+            "bastions_barricade:6:13:na",
+            "shrine_of_the_wargod:7:13:na",
+            "altar_of_the_all-seers:8:13:na",
+            "solar_nexus:9:13:na",
+            "overlords_tower:10:13:na",
+
+
 
 
         ];
@@ -173,12 +245,10 @@
                                 var angle = -135;
                                 var width = 180;
                             }
-                            var connectionLine = document.createElement("DIV");
-                            console.log(structure);
-                            connectionLine.setAttribute("style", "top:" + topPos + "px; left:" + leftPos + "px; rotate:" + angle + "deg; background-color:" + "white" + "; width: +" + width + "px");
-                            connectionLine.className = "branch-line";
-                            treespace.appendChild(connectionLine);
-                            connectionLine.setAttribute("id", name);
+                            var lineDrawn = drawLine(topPos, leftPos, angle, width);
+
+                            treespace.appendChild(lineDrawn);
+                            lineDrawn.setAttribute("id", name);
                         }
                         newNode.setAttribute("style", "grid-row:" + (row) + "; grid-column:" + column + ";");
 
@@ -195,6 +265,7 @@
 
 
                         var spa = document.createElement("SPAN");
+                        spa.className = "structureNodeTitle";
 
 
                         newNodeBackground.className = "structureNode";
@@ -227,8 +298,20 @@
 
                         var spa2 = document.createElement("SPAN");
                         spa2.setAttribute("style", "float:right");
+                        var desc = document.createElement("SPAN");
+                        desc.className = "structureNodeDesc";
+
                         var description = jsonStructureUpgrades.structures[i].prediction_description;
+                        description = description.replaceAll("<bulletlist>", "");
+                        description = description.replaceAll("<bullet>", "");
+                        description = description.replaceAll("</bulletlist>", "");
+                        description = description.replaceAll("</bullet>", "<br>");
+
+                        desc.innerHTML = description.replaceAll("income", "");
+
+
                         spa2.innerHTML += description.replace("income", "");
+
                         spa2.innerHTML += jsonStructureUpgrades.structures[i].requirement_description + "<br>";
                         spa2.innerHTML += jsonStructureUpgrades.structures[i].description + "<br>";
 
@@ -239,6 +322,7 @@
                         newNode.appendChild(newNodeBackground);
                         newNodeBackground.append(spa);
                         newNodeBackground.append(img);
+                        newNodeBackground.append(desc);
 
                         newNode.appendChild(spa2);
 
@@ -246,10 +330,20 @@
 
                     }
 
+
+
                 }
 
             }
 
+        }
+
+        function drawLine(topPos, leftPos, angle, width) {
+            var connectionLine = document.createElement("DIV");
+
+            connectionLine.setAttribute("style", "top:" + topPos + "px; left:" + leftPos + "px; rotate:" + angle + "deg; background-color:" + "white" + "; width: +" + width + "px");
+            connectionLine.className = "branch-line";
+            return connectionLine;
         }
 
         function SetHeaderNodes(keyword, type) {
@@ -345,6 +439,7 @@
 
 
         }
+
     </script>
 
 
@@ -370,7 +465,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <style>
     .branch-line {
         height: 4px;
@@ -451,10 +548,26 @@
 
     }
 
+    .structureNodeTitle {
+        z-index: 2;
+        left: 0px;
+        position: relative;
+
+    }
+
+    .structureNodeDesc {
+        z-index: 2;
+        top: 20px;
+        left: 61px;
+        position: absolute;
+
+    }
+
 
     .structureNodeIcon {
 
         z-index: 2;
+        left: 0px;
         position: relative;
 
 
