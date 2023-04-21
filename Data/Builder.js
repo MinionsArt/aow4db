@@ -1709,18 +1709,34 @@ function addLevelUpInfo(units, a) {
     levelup.setAttribute("id", "levelup" + a);
     evolveTarget = units.evolve_target;
 
+    if (units.tier == 1) {
+        xpNeeded = 4;
+    }
+    if (units.tier == 2) {
+        xpNeeded = 6;
+    }
+    if (units.tier == 3) {
+        xpNeeded = 8;
+    }
+    if (units.tier == 4) {
+        xpNeeded = 10;
+    }
+    if (units.tier == 5) {
+        xpNeeded = 12;
+    }
+
     var levelText = "";
-    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_soldier.png\" width='20'\"> Soldier</p>";
+    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_soldier.png\" width='20'\"> Soldier - " + xpNeeded + "<xp></xp></p>";
     for (i in units.medal_rewards_2) {
         levelText += "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
 
     }
-    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_veteran.png\" width='20'\"> Veteran</p>";
+    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_veteran.png\" width='20'\"> Veteran - " + (xpNeeded * 2) + "<xp></xp></p>";
     for (i in units.medal_rewards_3) {
         levelText += "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
 
     }
-    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_elite.png\" width='20'\"> Elite</p>";
+    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_elite.png\" width='20'\"> Elite - " + (xpNeeded * 3) + "<xp></xp></p>";
 
     for (i in units.medal_rewards_4) {
 
@@ -1739,14 +1755,14 @@ function addLevelUpInfo(units, a) {
     if (evolveTarget === undefined) {
 
 
-        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_champion.png\" width='20'\"> Champion</p>";
+        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_champion.png\" width='20'\"> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
 
         for (i in units.medal_rewards_5) {
             levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
 
         }
 
-        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_legend.png\" width='20'\"> Legend</p>";
+        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_legend.png\" width='20'\"> Legend - " + (xpNeeded * 10) + "<xp></xp></p>";
         for (i in units.medal_rewards_6) {
             if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
                 levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
@@ -1851,12 +1867,13 @@ function showSiegeProject(a) {
 
 
     imagelink = document.getElementById("modicon");
+    var getslug = a.name.replaceAll(" ", "_");
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.name);
 
 
-    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a.name + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + getslug.toLowerCase() + ".png");
     imagelink.setAttribute("id", "modicon" + a.name);
     descriptionDiv.innerHTML = description;
     descriptionDiv.setAttribute("id", "modicon" + a.name);
