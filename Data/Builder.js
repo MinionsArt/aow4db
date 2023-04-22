@@ -219,7 +219,10 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
 async function openCity(evt, cityName) {
 
-    currentView = cityName;
+    if (cityName === undefined) {
+        currentView = cityName;
+    }
+
 
     var i, x, tablinks;
     x = document.getElementsByClassName("city");
@@ -1277,6 +1280,22 @@ async function showSpellFromList(list, divID) {
 
 
 }
+
+async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
+
+
+    await spawnStructureCards(list, divID);
+
+    for (var i = 0; i < list.length; i++) {
+
+        showWorldStructure(list[i]);
+
+    };
+
+
+
+
+}
 async function showStructuresWithArgument(argument, divID, argumentType, includeProvince) {
 
     var list = new Array();
@@ -1398,9 +1417,9 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
         for (j in jsonStructureUpgrades.structures) {
 
             if (jsonStructureUpgrades.structures[j].name.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
-                if (jsonStructureUpgrades.structures[j].is_sector_upgrade.toString() == includeprovince) {
-                    finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
-                }
+
+                finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+
 
 
 
@@ -1410,10 +1429,12 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
     if (income != "") {
         for (j in jsonStructureUpgrades.structures) {
 
-            if (jsonStructureUpgrades.structures[j].prediction_description.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
-                if (jsonStructureUpgrades.structures[j].is_sector_upgrade.toString() == includeprovince) {
+            if (jsonStructureUpgrades.structures[j].id.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
+                if (includeprovince == jsonStructureUpgrades.structures[j].is_sector_upgrade) {
                     finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
                 }
+
+
 
             }
 
@@ -1941,17 +1962,48 @@ function showTome(a, div) {
                 for (l in jsonTomes.tomes[j].passives) {
                     var div = document.createElement("DIV");
                     div.className = "initialBonusText";
-                    div.innerHTML = jsonTomes.tomes[j].passives[l].name;
+                    if ('structure_slug' in jsonTomes.tomes[j].passives[l]) {
+                        var name = GetStructureName(jsonTomes.tomes[j].passives[l].structure_slug);
+                        div.innerHTML = name;
+
+                        var spa = document.createElement("SPAN");
+                        spa.className = "tooltiptext";
+                        spa.innerHTML = "<span style=\"color: burlywood;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes.tomes[j].passives[l].structure_slug);
+
+                        div.appendChild(spa);
+                    } else if ('hero_skill_slug' in jsonTomes.tomes[j].passives[l]) {
+                        div.innerHTML = jsonTomes.tomes[j].passives[l].hero_skill_slug;
+                    } else {
+                        div.innerHTML = jsonTomes.tomes[j].passives[l].name;
+
+                        var spa = document.createElement("SPAN");
+                        spa.className = "tooltiptext";
+                        spa.innerHTML = jsonTomes.tomes[j].passives[l].type + "<br>";
+                        spa.innerHTML += jsonTomes.tomes[j].passives[l].description;
+                        div.appendChild(spa);
+                    }
                     unitTypesDiv.appendChild(div);
-                    var spa = document.createElement("SPAN");
-                    spa.className = "tooltiptext";
-                    spa.innerHTML = jsonTomes.tomes[j].passives[l].type + "<br>";
-                    spa.innerHTML += jsonTomes.tomes[j].passives[l].description;
-                    div.appendChild(spa);
+
+
 
                 }
 
             }
+            // casting points
+            var div = document.createElement("DIV");
+            div.className = "initialBonusText";
+            if (jsonTomes.tomes[j].tier == "1" || jsonTomes.tomes[j].tier == "2") {
+                var amount = 5;
+            }
+            if (jsonTomes.tomes[j].tier == "3" || jsonTomes.tomes[j].tier == "4") {
+                var amount = 10;
+            }
+            if (jsonTomes.tomes[j].tier == "5") {
+                var amount = 15;
+            }
+
+            div.innerHTML = "+" + amount + "<casttactical></casttactical>" + "+" + amount + "<caststrategic></caststrategic>";
+            unitTypesDiv.appendChild(div);
 
             unitTypesDiv.setAttribute("id", "initialBonusList" + a);
 
@@ -2000,6 +2052,22 @@ function showTome(a, div) {
     }
     if (found == false) {
         console.log("Couldn't find tome: " + a);
+    }
+}
+
+function GetStructureName(structureID) {
+    for (j in jsonStructureUpgrades.structures) {
+        if (jsonStructureUpgrades.structures[j].id.indexOf(structureID) != -1) {
+            return jsonStructureUpgrades.structures[j].name;
+        }
+    }
+}
+
+function GetStructureDescription(structureID) {
+    for (j in jsonStructureUpgrades.structures) {
+        if (jsonStructureUpgrades.structures[j].id.indexOf(structureID) != -1) {
+            return jsonStructureUpgrades.structures[j].description;
+        }
     }
 }
 
@@ -2066,6 +2134,65 @@ function showStructure(a) {
         console.log("Couldn't find mod: " + a);
     }
 }
+
+function showWorldStructure(a) {
+    var modName, description, cost, type, tier, j, nameString = "";
+    var found = false;
+    for (j in jsonWorldStructures.structures) {
+        if (a == jsonWorldStructures.structures[j].id) {
+
+            modName = document.getElementById("modname");
+            nameString = "";
+            nameString = jsonWorldStructures.structures[j].name.toUpperCase();
+
+            if (nameString.indexOf("<br>")) {
+                nameString = nameString.replace("<br>", "");
+                nameString = nameString.replace("<br>", "");
+            }
+            modName.innerHTML = nameString;
+            modName.setAttribute("id", "modname" + a);
+            modName.className = "mod_name";
+            descriptionDiv = document.getElementById("moddescription");
+            description = jsonWorldStructures.structures[j].type + "<br>";
+
+            description += jsonWorldStructures.structures[j].description;
+
+
+            if (jsonWorldStructures.structures[j].prediction_description != "") {
+                description += "<br>" + jsonStructureUpgrades.structures[j].prediction_description;
+            }
+
+
+            imagelink = document.getElementById("modicon");
+
+
+
+            imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
+            imagelink.setAttribute("id", "modicon" + a);
+            descriptionDiv.innerHTML = description;
+            descriptionDiv.setAttribute("id", "modicon" + a);
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+            preview = document.getElementById("structurepreview");
+            preview.setAttribute("src", "/aow4db/Icons/StructurePics/" + a + ".png");
+            preview.setAttribute("id", "structurepreview" + a);
+
+            if ('unit_unlocks' in jsonWorldStructures.structures[j]) {
+
+            }
+
+
+
+            found = true;
+        }
+    }
+    if (found == false) {
+        console.log("Couldn't find mod: " + a);
+    }
+}
+
 
 function GetCostUnit(id) {
     for (i in jsonUnits.units) {

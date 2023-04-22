@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+
+    <script>
+        var oreArray = ["arcanium_ore", "focus_crystals", "fireforge_stone"];
+        var liquidArray = ["archon_blood", "astral_dew", "tranquility_pool"];
+        var plantArray = ["haste_berries", "silvertongue_fruit", "rainbow_clover"];
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                showStructuresWithArgument("forester", "Foresters", "", true);
+                showStructuresWithArgument("conduit", "Conduits", "", true);
+                showStructuresWithArgument("farm", "Farms", "", true);
+                showStructuresWithArgument("mine", "Mines", "", true);
+                showStructuresWithArgument("research", "Research", "", true);
+                showStructuresWithArgument("quarry", "Quarry", "", true);
+                showStructuresWithArgument("teleporter_", "Teleport", "", true);
+                showStructuresWithArgument("victory", "Magic", "", true);
+                SetLevelUpStuff();
+
+            });
+
+
+        });
+    </script>
+
+
+
+    <title>Age of Wonders 4 - Magic Materials</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        Province Improvements
+    </div>
+
+
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder">
+
+            <button id="Foresters-button" class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Foresters')">
+                <forester></forester>Foresters
+            </button>
+            <button id="Conduits-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Conduits')">
+                <conduit></conduit>Conduits
+            </button>
+            <button id="Farms-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Farms')">
+                <farm></farm>Farms
+            </button>
+            <button id="Mines-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Mines')">
+                <mine></mine>Mines
+            </button>
+            <button id="Research-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Research')">
+                <researchpost></researchpost>Research Posts
+            </button>
+            <button id="Quarry-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Quarry')">
+                <quarry></quarry>Quarry
+            </button>
+            <button id="Teleport-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Teleport')">
+                <teleporter></teleporter>Teleporters
+            </button>
+            <button id="Magic-button" class="w3-bar-item w3-button tablink" onclick="openCity(event,'Magic')">
+                <magicvictory></magicvictory>Magic Victory
+            </button>
+
+
+        </div>
+        <div id="dataHolder" style="margin-top:-150px">
+            <div id="Foresters" class="w3-container w3-border city">
+
+
+            </div>
+
+
+            <div id="Conduits" class="w3-container w3-border city">
+
+
+            </div>
+
+
+            <div id="Farms" class="w3-container w3-border city">
+
+
+            </div>
+            <div id="Mines" class="w3-container w3-border city">
+
+
+            </div>
+            <div id="Research" class="w3-container w3-border city">
+
+
+            </div>
+            <div id="Quarry" class="w3-container w3-border city">
+
+
+            </div>
+            <div id="Teleport" class="w3-container w3-border city">
+
+
+            </div>
+            <div id="Magic" class="w3-container w3-border city">
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</body>
+<script>
+
+</script></html>
+<footer>
+    <br>
+    <br>
+</footer>

@@ -16,8 +16,8 @@
     <script>
         var general = [
             // A
+            "town_hall_i_town_center:5:1:na",
             "throne:7:1:na",
-            "throne:9:1:na",
 
 
             // B
@@ -213,8 +213,9 @@
                         var name = jsonStructureUpgrades.structures[i].name;
 
                         if (name.indexOf("<br>")) {
-                            name = name.replace("<br>", " ");
-                            name = name.replace("<br>", " ");
+                            name = name.replaceAll("</br>", " ");
+                            name = name.replaceAll("<br>", " ");
+
                             // name = name.replace("br", " ");
                         }
 
@@ -276,21 +277,51 @@
                         if (splits[4]) {
                             newNodeBackground.setAttribute("style", "left:20px");
                             if (splits[4] == "mystic") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/mystic.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  blue;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                             if (splits[4] == "barbarian") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/barbarian.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  red;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                             if (splits[4] == "high") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/high.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                             if (splits[4] == "feudal") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/feudal.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  grey;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                             if (splits[4] == "dark") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/dark.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  purple;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                             if (splits[4] == "industrious") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/industrious.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  orange;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                         }
@@ -439,7 +470,6 @@
 
 
         }
-
     </script>
 
 
@@ -465,9 +495,7 @@
 
 
 
-</body>
-
-</html>
+</body></html>
 <style>
     .branch-line {
         height: 4px;
@@ -493,7 +521,7 @@
 
     .tree-grid {
         display: grid;
-        grid-template-columns: repeat(14, 250px);
+        grid-template-columns: repeat(14, 280px);
         grid-template-rows: repeat(37, 100px);
         position: absolute;
         height: auto;
@@ -530,8 +558,9 @@
         background-image: url(/aow4db/Icons/tooltipBG.png);
         font-size: 12px;
         color: #bbcdf6;
-        height: 60px;
-        width: 190px;
+        min-height: 60px;
+        max-height: 130px;
+        width: 250px;
         text-align: left;
         border-style: solid;
         border-image: url(/aow4db/Icons/9slicetooltip.png);

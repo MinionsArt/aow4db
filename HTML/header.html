@@ -13,6 +13,7 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Search.js"></script>
 
     <script type="text/javascript" language="javascript" src="/aow4db/Data/StructureUpgrades.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/WorldStructures.json"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70751511-1"></script>
@@ -30,6 +31,10 @@
 
 
     <script>
+        /*   <li><a class='prett' style="color:burlywood" href='/aow4db/HTML/Equipment.html'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/EquipmentIcon.png" width="40px">Equipment</a>
+
+        </li>
+*/
         /* $('.has-sub').click(function(e) {
             e.preventDefault();
             $(this).parent().toggleClass('tap');
@@ -218,6 +223,7 @@
 
 
                 </div>
+                <img class="" id="structurepreview" src="" style="float:right">
 
                 <div style="float:left">
                     <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
@@ -270,7 +276,7 @@
 
                 </div>
                 <div style="width: 100px; float:left">
-                    <img class="mod_image" id="modicon" src="Icons/Mods/Grounding_Harness.png">
+                    <img class="mod_image" id="modicon" src="">
 
                     <p class="spell_cost" style="padding-left: 10px; font-size: 13px" id="modcost">
 
@@ -383,9 +389,9 @@
 <body>
     <ul id='menu'>
 
-        <li><a class='prett' href='#' title='Menu'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="40px">Units</a>
+        <li><a class='prett' href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="40px">Units</a>
             <ul class='menus'>
-                <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/CultureUnitsIcon.png" width="20px">Culture</a>
+                <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/CultureUnitsIcon.png" width="20px">Culture ▸</a>
                     <ul class='submenu'>
 
                         <li><a href="/aow4db/HTML/FeudalUnits.html?type=scout"><img src="/aow4db/Icons/Text/feudal.png" width="20px"> Feudal</a></li>
@@ -396,7 +402,7 @@
                         <li><a href="/aow4db/HTML/MysticUnits.html?type=mystic_projection"><img src="/aow4db/Icons/Text/mystic.png" width="20px"> Mystic</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="20px">Tomes</a>
+                <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="20px">Tomes ▸</a>
                     <ul class='submenu'>
 
                         <li><a href="/aow4db/HTML/AstralTomesUnits.html"><img src="/aow4db/Icons/Text/astral.png" width="20px"> Astral</a></li>
@@ -407,7 +413,7 @@
                         <li><a href="/aow4db/HTML/MateriumTomesUnits.html"><img src="/aow4db/Icons/Text/materium.png" width="20px"> Materium</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/WildlifeUnitsIcon.png" width="20px">WildLife</a>
+                <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/WildlifeUnitsIcon.png" width="20px">WildLife ▸</a>
                     <ul class='submenu'>
 
                         <li><a href="/aow4db/HTML/FeyUnits.html"><img src="/aow4db/Icons/Abilities/fey.png" width="20px"> Fey</a></li>
@@ -431,7 +437,7 @@
                 <li><a href="/aow4db/HTML/NatureTomes.html"><img src="/aow4db/Icons/Text/nature.png" width="20px"> Nature</a></li>
                 <li><a href="/aow4db/HTML/ShadowTomes.html"><img src="/aow4db/Icons/Text/shadow.png" width="20px"> Shadow</a></li>
                 <li><a href="/aow4db/HTML/OrderTomes.html"><img src="/aow4db/Icons/Text/order.png" width="20px"> Order</a></li>
-                <li><a href="/aow4db/HTML/ChaosTomes.html?type=pyromancy"><img src="/aow4db/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
+                <li><a href="/aow4db/HTML/ChaosTomes.html?type=tome_of_pyromancy"><img src="/aow4db/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
                 <li><a href="/aow4db/HTML/MateriumTomes.html"><img src="/aow4db/Icons/Text/materium.png" width="20px"> Materium</a></li>
                 <li><a href="/aow4db/HTML/GeneralCultureTomes.html"><img src="/aow4db/Icons/Text/population.png" width="20px"> General& Culture</a></li>
             </ul>
@@ -442,26 +448,23 @@
         <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/SpellsIcon.png" width="40px">Spells</a>
             <ul class='menus'>
 
-                <li><a href="/aow4db/HTML/TransformationSpells.html?type=Minor%20Race%20Transformations&sort=name:true"><img src="/aow4db/Icons/Text/astral.png" width="20px"> Transformations</a></li>
-                <li><a href="/aow4db/HTML/CombatSpells.html?type=healing"><img src="/aow4db/Icons/Text/nature.png" width="20px"> Combat Spells</a></li>
-                <li><a href="/aow4db/HTML/EnchantmentSpells.html?type=Generic%20Research&sort=name:true"><img src="/aow4db/Icons/Text/shadow.png" width="20px"> Enchantments</a></li>
-                <li><a href="/aow4db/HTML/StrategicSpells.html"><img src="/aow4db/Icons/Text/order.png" width="20px"> Strategic Spells</a></li>
+                <li><a href="/aow4db/HTML/TransformationSpells.html?type=Minor%20Race%20Transformations&sort=name:true"><img src="/aow4db/Icons/SpellIcons/angelize.png" width="20px"> Transformations</a></li>
+                <li><a href="/aow4db/HTML/CombatSpells.html?type=healing"><img src="/aow4db/Icons/Text/tacticalcombatpoints.png" width="20px"> Combat Spells</a></li>
+                <li><a href="/aow4db/HTML/EnchantmentSpells.html?type=Generic%20Research&sort=name:true"><img src="/aow4db/Icons/SpellIcons/adaptive_armor.png" width="20px"> Enchantments</a></li>
+                <li><a href="/aow4db/HTML/StrategicSpells.html"><img src="/aow4db/Icons/Text/strategiccombatpoints.png" width="20px"> Strategic Spells</a></li>
             </ul>
 
         </li>
         <li><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/StructuresIcon.png" width="40px">Structures</a>
             <ul class='menus'>
 
-                <li><a href="/aow4db/HTML/CityTrees.html"><img src="/aow4db/Icons/Text/astral.png" width="20px"> City Structures</a></li>
-                <li><a href="/aow4db/HTML/CombatSpells.html"><img src="/aow4db/Icons/Text/nature.png" width="20px"> Magic Materials</a></li>
-                <li><a href="/aow4db/HTML/EnchantmentSpells.html"><img src="/aow4db/Icons/Text/shadow.png" width="20px"> Ancient Wonders</a></li>
-                <li><a href="/aow4db/HTML/StrategicSpells.html"><img src="/aow4db/Icons/Text/order.png" width="20px"> Spawners</a></li>
-                <li><a href="/aow4db/HTML/StrategicSpells.html"><img src="/aow4db/Icons/Text/order.png" width="20px"> Nodes</a></li>
+                <li><a href="/aow4db/HTML/CityTreesNew.html"><img src="/aow4db/Icons/UpgradeIcons/throne.png" width="20px"> City Structures</a></li>
+                <li><a href="/aow4db/HTML/ProvinceImprovements.html"><img src="/aow4db/Icons/Text/mine.png" width="20px"> Province Improvements</a></li>
+                <li><a href="/aow4db/HTML/MagicMaterials.html"><img src="/aow4db/Icons/WorldStructures/arcanium_ore.png" width="20px"> Magic Materials</a></li>
+                <li><a href="/aow4db/HTML/AncientWonders.html"><img src="/aow4db/Icons/Text/goldWonder.png" width="20px"> Ancient Wonders</a></li>
             </ul>
         </li>
-        <li><a class='prett' style="color:burlywood" href='/aow4db/HTML/Equipment.html'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/EquipmentIcon.png" width="40px">Equipment</a>
 
-        </li>
         <li><a class='prett' style="color:burlywood" href='/aow4db/HTML/EmpireTree.html'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/EmpireProgressionIcons/general.png" width="40px">Empire</a>
 
         </li>
