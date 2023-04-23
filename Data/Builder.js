@@ -2163,25 +2163,36 @@ function showWorldStructure(a) {
             }
 
 
+
             imagelink = document.getElementById("modicon");
 
 
 
             imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
             imagelink.setAttribute("id", "modicon" + a);
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+
+
+            if ('unit_unlocks' in jsonWorldStructures.structures[j]) {
+                description += "<br>Summoned Units:<br>";
+                for (x in jsonWorldStructures.structures[j].unit_unlocks) {
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonWorldStructures.structures[j].unit_unlocks[x].slug + "\" target=\"_blank\">" + GetTierAndName(jsonWorldStructures.structures[j].unit_unlocks[x].slug) + "</a>" + "</bullet>";
+                    unitTypesDiv.appendChild(div);
+                }
+            }
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
             descriptionDiv.innerHTML = description;
             descriptionDiv.setAttribute("id", "modicon" + a);
 
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
 
             preview = document.getElementById("structurepreview");
             preview.setAttribute("src", "/aow4db/Icons/StructurePics/" + a + ".png");
             preview.setAttribute("id", "structurepreview" + a);
 
-            if ('unit_unlocks' in jsonWorldStructures.structures[j]) {
-
-            }
 
 
 
@@ -2189,7 +2200,7 @@ function showWorldStructure(a) {
         }
     }
     if (found == false) {
-        console.log("Couldn't find mod: " + a);
+        console.log("Couldn't find structure world: " + a);
     }
 }
 
