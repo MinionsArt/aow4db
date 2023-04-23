@@ -98,7 +98,7 @@ function searchMods(keyword) {
 
 
     }
-    result.innerHTML = listMod.length.toString() + " results found";
+    // result.innerHTML = listMod.length.toString() + " results found";
     for (j = 0; j < listMod.length; j++) {
 
         addModCard(listMod[j]);
@@ -188,7 +188,7 @@ function searchUnits(keyword) {
         list = structuredClone(finalworkingList);
     }
 
-    result.innerHTML = list.length.toString() + " results found";
+    //result.innerHTML = list.length.toString() + " results found";
     var buttonHolder = document.getElementById("buttonHolder");
     buttonHolder.innerHTML = "";
     var dataHolder = document.getElementById("dataHolder");

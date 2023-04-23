@@ -1139,10 +1139,11 @@ async function SetLevelUpStuff() {
     if (product != undefined) {
         var splits = product.split("&");
         closeTabLinks(product);
-        document.getElementById(product + "-button").className += " w3-red";
+
+        document.getElementById(splits[0] + "-button").className += " w3-red";
 
 
-        await openCity(event, product);
+        await openCity(event, splits[0] + "&");
 
 
     }
