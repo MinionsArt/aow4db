@@ -14,23 +14,14 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray1 = ["lesser_magma_spirit", "pyromancer"];
-            var unitarray2 = ["houndmaster", "war_hound"];
-            var unitarray3 = ["gremlin"];
-            var unitarray4 = ["skald"];
-            var unitarray5 = ["warbreed"];
-            var unitarray6 = ["chaos_eater"];
-            var unitarray7 = ["balor"];
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "I - Pyromancy");
-                showUnitsFromList(unitarray2, "I - Horde");
-                showUnitsFromList(unitarray3, "II - Mayhem");
-                showUnitsFromList(unitarray4, "II - Revelry");
-                showUnitsFromList(unitarray5, "III - Devastation");
-                showUnitsFromList(unitarray6, "III - Pandemonium");
-                showUnitsFromList(unitarray7, "V - Chaos Lord");
+
+                showSiegeProjects();
+
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
+
             });
 
         });
@@ -38,16 +29,25 @@
     </script>
 
 
-    <title>Age of Wonders 4 - Chaos Tome Units</title>
+    <title>Age of Wonders 4 - Siege Projects</title>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/chaos.png" height="40px"> Chaos Tome Units <img src="/aow4db/Icons/Text/chaos.png" height="40px">
+        Siege Projects
     </div>
 
+    <div style="
+    display: table;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;">
+        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
+    </div>
     <div class="w3-container">
         <div class="w3-bar w3-black" id="buttonHolder">
 
@@ -57,7 +57,6 @@
 
 
     </div>
-
 
 
 

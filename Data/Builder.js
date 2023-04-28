@@ -36,9 +36,7 @@ function getUnitTypeTag(passivesList) {
         if (passivesList[i].slug == "shock_unit") {
             return "<unitShock></unitShock>";
         }
-        if (passivesList[i].slug == "mythic_unit") {
-            return "<unitMythic></unitMythic>";
-        }
+
         if (passivesList[i].slug == "skirmisher_unit") {
             return "<unitSkirmisher></unitSkirmisher>";
         }
@@ -65,6 +63,9 @@ function getUnitTypeTag(passivesList) {
         }
         if (passivesList[i].slug == "siegecraft") {
             return "<unitSiegecraft></unitSiegecraft>";
+        }
+        if (passivesList[i].slug == "mythic_unit") {
+            return "<unitMythic></unitMythic>";
         }
     }
 }
@@ -157,6 +158,7 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
     btn.innerHTML = overwrite + " (" + list.length + ")";
     if (cardType != "unit") {
         btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\')');
+        btn.setAttribute("id", overwrite + "-button");
     }
 
     buttonHolder.appendChild(btn);
@@ -219,10 +221,10 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
 async function openCity(evt, cityName) {
 
-    if (cityName === undefined) {
+    if (cityName != undefined) {
         currentView = cityName;
     }
-
+    console.log(currentView);
 
     var i, x, tablinks;
     x = document.getElementsByClassName("city");
@@ -1002,6 +1004,7 @@ function sortDivs(sortType, savedOrder) {
 
     // 4 - Select all elements
     var container = document.getElementById(currentView);
+    console.log(currentView);
     var element = elements = [...container.querySelectorAll('.mod_card')]
 
 
@@ -1143,7 +1146,7 @@ async function SetLevelUpStuff() {
         document.getElementById(splits[0] + "-button").className += " w3-red";
 
 
-        await openCity(event, splits[0] + "&");
+        await openCity(event, splits[0]);
 
 
     }
@@ -1191,6 +1194,16 @@ async function showEquipmentFromList(list, divID) {
 
 
 
+}
+
+async function showSiegeProjects() {
+    var allSiegeProjects = new Array();
+
+    for (i in jsonSiegeProjects.projects) {
+        await spawnSpellCards()
+    }
+
+    await spawn
 }
 
 async function spawnTomeCards(list, divID) {
@@ -1418,8 +1431,9 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
         for (j in jsonStructureUpgrades.structures) {
 
             if (jsonStructureUpgrades.structures[j].name.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
-
-                finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+                if (includeprovince == jsonStructureUpgrades.structures[j].is_sector_upgrade) {
+                    finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+                }
 
 
 
@@ -1428,11 +1442,12 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
         }
     }
     if (income != "") {
-        for (j in jsonStructureUpgrades.structures) {
+        for (k in jsonStructureUpgrades.structures) {
 
-            if (jsonStructureUpgrades.structures[j].id.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
-                if (includeprovince == jsonStructureUpgrades.structures[j].is_sector_upgrade) {
-                    finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+            if (jsonStructureUpgrades.structures[k].id.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
+                if (includeprovince == jsonStructureUpgrades.structures[k].is_sector_upgrade) {
+                    console.log(includeprovince, jsonStructureUpgrades.structures[k].is_sector_upgrade);
+                    finalCheckedList.push(jsonStructureUpgrades.structures[k].id);
                 }
 
 
@@ -1873,47 +1888,51 @@ function deromanize(str) {
 }
 
 
-function showSiegeProject(a) {
+function showSiegeProject(id) {
 
-    var modName, description, cost, type, tier, j = "";
+    var modName, description, cost, type, tier, i = "";
     var found = false;
 
+    for (i in jsonSiegeProjects.projects) {
+        if (id == jsonSiegeProjects.projects[i].name) {
 
 
-    modName = document.getElementById("modname");
-    modName.innerHTML = a.name.toUpperCase();
-    modName.setAttribute("id", "modname" + a.name);
-    descriptionDiv = document.getElementById("moddescription");
-    description = a.description;
+            modName = document.getElementById("modname");
+            modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
+            modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
+            descriptionDiv = document.getElementById("moddescription");
+            description = jsonSiegeProjects.projects[i].description;
 
 
 
-    imagelink = document.getElementById("modicon");
-    var getslug = a.name.replaceAll(" ", "_");
-
-    unitTypesDiv = document.getElementById("affectUnitTypes");
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.name);
+            imagelink = document.getElementById("modicon");
 
 
-    imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + getslug.toLowerCase() + ".png");
-    imagelink.setAttribute("id", "modicon" + a.name);
-    descriptionDiv.innerHTML = description;
-    descriptionDiv.setAttribute("id", "modicon" + a.name);
-
-    tier = document.getElementById("modtier");
-
-    tier.innerHTML = "Siege Project";
-
-    tier.setAttribute("id", "modtier" + a.name);
-
-    cost = document.getElementById("modcost");
-
-    cost.setAttribute("id", "modcost" + a.name);
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects.projects[i].name);
 
 
-    found = true;
+            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects.projects[i].id + ".png");
+            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+            descriptionDiv.innerHTML = description;
+            descriptionDiv.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+
+            tier = document.getElementById("modtier");
+
+            tier.innerHTML = "Siege Project";
+
+            tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
+
+            cost = document.getElementById("modcost");
+
+            cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
 
 
+            found = true;
+
+
+        }
+    }
 }
 
 
@@ -2033,7 +2052,7 @@ function showTome(a, div) {
                 if (jsonTomes.tomes[j].skills[k].type.indexOf("Siege") != -1) {
                     var iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
-                    showSiegeProject(jsonTomes.tomes[j].skills[k], false);
+                    showSiegeProject(jsonTomes.tomes[j].skills[k].name, false);
                 }
 
             }
@@ -2086,6 +2105,7 @@ function showStructure(a) {
                 nameString = nameString.replace("<br>", "");
                 nameString = nameString.replace("<br>", "");
             }
+            console.log(nameString + " " + a);
             modName.innerHTML = nameString;
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
