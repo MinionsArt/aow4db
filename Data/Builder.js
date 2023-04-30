@@ -88,8 +88,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
         }
 
         var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+
         var div = document.createElement("DIV");
 
         div.className = "w3-container w3-border city";
@@ -140,7 +139,13 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
 
 
+        if (cardType != "search") {
+            var holderHeight = buttonHolder.offsetHeight;
+        } else {
+            var holderHeight = buttonHolder.offsetHeight;
+        }
 
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
 
 
     }
@@ -1931,10 +1936,6 @@ function showTome(a, div) {
 
             modName = document.getElementById("tomename");
             modName.innerHTML = "";
-            if ('affinities' in jsonTomes.tomes[j]) {
-                var affinities = jsonTomes.tomes[j].affinities.split(" ");
-                modName.innerHTML = affinities[0] + " ";
-            }
 
 
 
@@ -1943,8 +1944,15 @@ function showTome(a, div) {
             modName.setAttribute("id", "tomename" + a);
             descriptionDiv = document.getElementById("tomedescription");
             description = jsonTomes.tomes[j].gameplay_description;
+            if ('affinities' in jsonTomes.tomes[j]) {
+                var affinities = jsonTomes.tomes[j].affinities.split(" ");
 
-            descriptionDiv.innerHTML = description;
+                descriptionDiv.innerHTML = "Tier " + romanize(jsonTomes.tomes[j].tier) + " " + affinities[0] + " " + "<br>" + description;
+            } else {
+                descriptionDiv.innerHTML = description;
+            }
+
+
 
             descriptionDiv.setAttribute("id", "tomedescription" + a);
             loreDescription = jsonTomes.tomes[j].lore_description;
@@ -2161,7 +2169,14 @@ function showWorldStructure(a) {
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
             descriptionDiv = document.getElementById("moddescription");
-            description = jsonWorldStructures.structures[j].type + "<br>";
+            description = "";
+
+            if (jsonWorldStructures.structures[j].type.indexOf("wonder") != -1) {
+                description = jsonWorldStructures.structures[j].type + "<br>";
+            } else {
+
+            }
+
 
             description += jsonWorldStructures.structures[j].description;
 
@@ -2176,8 +2191,17 @@ function showWorldStructure(a) {
 
 
 
-            imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
-            imagelink.setAttribute("id", "modicon" + a);
+
+
+            if (jsonWorldStructures.structures[j].type.indexOf("wonder") != -1) {
+                imagelink.remove();
+
+            } else {
+                imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
+                imagelink.setAttribute("id", "modicon" + a);
+                imagelink.setAttribute("style", "background-image: none");
+
+            }
 
             unitTypesDiv = document.getElementById("affectUnitTypes");
 
@@ -2315,11 +2339,11 @@ function showSpell(a, showOrigin) {
 
             cost = document.getElementById("modcost");
             cost.innerHTML = "Casting Cost:<br>" + jsonSpells.spells[j].casting_cost;
-            var costSplit = jsonSpells.spells[j].casting_cost.split("<");
+
             if (jsonSpells.spells[j].tactical === true) {
-                cost.innerHTML += " " + costSplit[0] + "<casttactical></casttactical>"
+                cost.innerHTML += " " + jsonSpells.spells[j].operation_point_cost + "<casttactical></casttactical>"
             } else {
-                cost.innerHTML += " " + costSplit[0] + "<caststrategic></caststrategic>"
+                cost.innerHTML += " " + jsonSpells.spells[j].operation_point_cost + "<caststrategic></caststrategic>"
             }
             cost.setAttribute("id", "modcost" + a);
 
