@@ -2,6 +2,13 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get('sort');
 var currentView = "";
 
+var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
+var barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
+var darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
+var feudalCultureUnits = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
+var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
+var mysticCultureUnits = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellbreaker"];
+
 function GetTierAndName(id) {
     for (i in jsonUnits.units) {
         if (id == jsonUnits.units[i].id) {
@@ -19,7 +26,6 @@ function GetTierAndNameTome(id) {
     }
 
 }
-
 
 function ShowUnitFromLink() {
     var unitID = searchParams.get('unit');
@@ -213,18 +219,14 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
         // }
     }
-
 }
-
-
-
 
 async function openCity(evt, cityName) {
 
     if (cityName != undefined) {
         currentView = cityName;
     }
-    console.log(currentView);
+
 
     var i, x, tablinks;
     x = document.getElementsByClassName("city");
@@ -268,203 +270,6 @@ function closeTabLinks(cityName) {
     }
 }
 
-var divState = ["amazon", "assembly", "vanguard", "kirko", "dvar", "syndicate", "shakarn", "oathbound"];
-var divStateweapon1 = ["biochemical", "laser", "firearms", "arc", "psionics", "explosives", "sonic", "entropy"];
-var currentRace = "amazon";
-
-function showhide(id, weapon, weapon2) {
-    if (document.getElementById) {
-        if (document.getElementById) {
-            var divid = document.getElementById(id);
-            //close others
-            for (var i = 0; i < divState.length; i++) {
-
-                var e = document.getElementById(divState[i])
-                e.style.display = 'none'; // hide
-                //  divStateweapon1[div] = false; // reset status
-            }
-
-
-            divid.style.display = 'inline-block';
-        }
-        currentRace = id;
-    }
-
-    if (document.getElementById) {
-        var divid = document.getElementById(weapon);
-        var divid2 = document.getElementById(weapon2);
-        //  if (divStateweapon1[weapon] == true && divStateweapon1[weapon2] == true) {
-        //     return;
-        // }
-        // divStateweapon1[weapon] = (divStateweapon1[weapon]) ? false : true; // initialize / invert status (true is visible and false is closed)
-        // divStateweapon1[weapon2] = (divStateweapon1[weapon2]) ? false : true;
-        //  divStateweapon1[weapon] = true;
-        // divStateweapon1[weapon2] = true;
-        //close others
-        for (var i = 0; i < divStateweapon1.length; i++) {
-
-            var e = document.getElementById(divStateweapon1[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-
-        divid.style.display = 'inline-block';
-        divid2.style.display = 'inline-block';
-    }
-
-}
-var divState2 = ["promethean", "synthesis", "voidtech", "psynumbra", "celestian", "xenoplague", "heritor"];
-
-function showhide2(id) {
-    if (document.getElementById) {
-        var divid = document.getElementById(id);
-        //close others
-        for (var i = 0; i < divState2.length; i++) {
-
-            var e = document.getElementById(divState2[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-
-        divid.style.display = 'inline-block';
-    }
-}
-var divTrees = ["military", "society"];
-
-function showhideTree(id) {
-    if (document.getElementById) {
-        var divid = document.getElementById(id);
-        //close others
-        for (var i = 0; i < divTrees.length; i++) {
-
-            var e = document.getElementById(divTrees[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-
-        divid.style.display = 'contents';
-    }
-}
-
-var divTreesEndless = ["endlessMil", "endlessSoc"];
-
-function showhideEndless(id) {
-    if (document.getElementById) {
-        var divid = document.getElementById(id);
-        //close others
-        for (var i = 0; i < divTreesEndless.length; i++) {
-
-            var e = document.getElementById(divTreesEndless[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-
-        divid.style.display = 'contents';
-    }
-}
-
-var divsearch = ["unitS", "modS"];
-
-function showhide3(id) {
-    if (document.getElementById) {
-        var divid = document.getElementById(id);
-        //close others
-        for (var i = 0; i < divsearch.length; i++) {
-
-            var e = document.getElementById(divsearch[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-
-        divid.style.display = 'contents';
-    }
-}
-
-var divTreesSoc = ["amazond", "assemblyd", "dvard", "kirkod", "syndicated", "vanguardd", "shakarnd", "oathboundd"];
-var divTreesSoc2 = ["amazond5", "assemblyd5", "dvard5", "kirkod5", "syndicated5", "vanguardd5", "shakarnd5", "oathboundd5"];
-
-var divTreesSoc3 = ["amazond9", "assemblyd9", "dvard9", "kirkod9", "syndicated9", "vanguardd9", "shakarnd9", "oathboundd9"];
-
-function showhideSoc(id, id2, id3) {
-    if (document.getElementById) {
-        var divid = document.getElementById(id);
-        var divid2 = document.getElementById(id2);
-        var divid3 = document.getElementById(id3);
-        //close others
-        for (var i = 0; i < divTreesSoc.length; i++) {
-
-            var e = document.getElementById(divTreesSoc[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-        for (var i = 0; i < divTreesSoc2.length; i++) {
-
-            var e = document.getElementById(divTreesSoc2[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-        for (var i = 0; i < divTreesSoc3.length; i++) {
-
-            var e = document.getElementById(divTreesSoc3[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-        var end = id.lastIndexOf("d"); //this finds the first occurrence of "." 
-        //in string thus giving you the index of where it is in the string
-
-        // Now iend can be -1, if lets say the string had no "." at all in it i.e. no "." is found. 
-        //So check and account for it.
-
-        var subString;
-        if (end != -1) {
-            subString = id.substring(0, end); //this will give abc
-        }
-
-        currentRace = subString;
-        divid.style.display = 'contents';
-        divid2.style.display = 'contents';
-        divid3.style.display = 'contents';
-
-
-    }
-}
-
-var divTreesSocST = ["celestiand", "heritord", "prometheand", "psynumbrad", "synthesisd", "voidtechd", "xenoplagued"];
-var divTreesSocST2 = ["celestiand7", "heritord7", "prometheand7", "psynumbrad7", "synthesisd7", "voidtechd7", "xenoplagued7"];
-
-function showhideSocST(id, id2) {
-    if (document.getElementById) {
-        var divid = document.getElementById(id);
-        var divid2 = document.getElementById(id2);
-        //close others
-        for (var i = 0; i < divTreesSocST.length; i++) {
-
-            var e = document.getElementById(divTreesSocST[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-        for (var i = 0; i < divTreesSocST2.length; i++) {
-
-            var e = document.getElementById(divTreesSocST2[i])
-            e.style.display = 'none'; // hide
-            //  divStateweapon1[div] = false; // reset status
-        }
-
-
-
-        divid.style.display = 'contents';
-        divid2.style.display = 'contents';
-    }
-}
 
 function addUnitTypeIcon(a, b) {
     var icontext, iconsrc, iconName, j, btn, imag, spa = "";
@@ -574,7 +379,7 @@ function addAbilityslot(a, b) {
 
             }
 
-            //   var n = abilityDescr.includes("Unique");
+
 
 
             abilityDam = jsonUnitAbilities.abilities[j].damage;
@@ -988,7 +793,7 @@ function sortDivs(sortType, savedOrder) {
         buttontargets[i].className = "sortingButton";
     }
     var currentbutton = document.getElementById(sortType + "-button");
-    console.log(sortType);
+
     if (ascendingOrder) {
         currentbutton.className += " activeDown";
     } else {
@@ -1004,7 +809,7 @@ function sortDivs(sortType, savedOrder) {
 
     // 4 - Select all elements
     var container = document.getElementById(currentView);
-    console.log(currentView);
+
     var element = elements = [...container.querySelectorAll('.mod_card')]
 
 
@@ -1073,7 +878,7 @@ async function SetCollapsibleStuff() {
                         if (contents[j].id === content.id) {
 
                         } else {
-                            console.log(contents[j].id, content.id);
+
                             coll[j].classList.toggle("active");
                             contents[j].style.display = "none";
                         }
@@ -1446,7 +1251,7 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
 
             if (jsonStructureUpgrades.structures[k].id.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
                 if (includeprovince == jsonStructureUpgrades.structures[k].is_sector_upgrade) {
-                    console.log(includeprovince, jsonStructureUpgrades.structures[k].is_sector_upgrade);
+
                     finalCheckedList.push(jsonStructureUpgrades.structures[k].id);
                 }
 
@@ -1637,6 +1442,9 @@ function showUnit(a, divID) {
                     resistanceDiv.innerHTML += "+";
                 }
                 resistanceDiv.innerHTML += additionalBlight + "<defenseblight></defenseblight>";
+                if (additionalBlight == "immune") {
+                    resistanceDiv.innerHTML = "Blight: Immune";
+                }
             }
 
             resistanceDiv.innerHTML += ")<br>";
@@ -1692,9 +1500,15 @@ function showUnit(a, divID) {
 
 
             document.getElementById("unit_role").setAttribute("id", "unit_role" + a);
-
-
             addLevelUpInfo(jsonUnits.units[i], a);
+
+            // backtrack origin;
+            backtrackUnitOrigins(a);
+            document.getElementById("originHolder").setAttribute("id", "originHolder" + a);
+
+
+
+
             found = true;
             // break;
         }
@@ -1707,6 +1521,176 @@ function showUnit(a, divID) {
 
 }
 
+function backtrackUnitOrigins(unitID) {
+    var holder = document.getElementById("originHolder");
+    var culture = (CheckIfInCulture(unitID));
+    if (culture != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+        spa.innerHTML = "Culture Unit from " + culture;
+        imag.setAttribute("src", "/aow4db/Icons/Text/" + culture + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+    var tomes = CheckIfInTomes(unitID);
+    if (tomes != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+        var tomeName = tomes.replaceAll("_", " ");
+        spa.innerHTML = "Unit Unlocked from " + tomeName;
+        imag.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomes + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+    var spells = CheckIfInSpells(unitID);
+    if (spells != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+        var spellName = spells.replaceAll("_", " ");
+        spa.innerHTML = "Unit from Spell: " + spellName;
+        imag.setAttribute("src", "/aow4db/Icons/SpellIcons/" + spells + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+    var wonder = CheckIfInAncientWonder(unitID);
+    if (wonder != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+        var wonderName = wonder.replaceAll("_", " ");
+
+        spa.innerHTML = "Unit Unlocked from Ancient Wonder: " + wonderName;
+        imag.setAttribute("src", "/aow4db/Icons/StructurePics/" + wonder + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+}
+
+
+
+
+function CheckIfInCulture(unitID) {
+    var culture = "";
+    if (highCultureUnits.includes(unitID)) {
+        culture = "high";
+    }
+    if (mysticCultureUnits.includes(unitID)) {
+        culture = "mystic";
+    }
+    if (darkCultureUnits.includes(unitID)) {
+        culture = "dark";
+    }
+    if (feudalCultureUnits.includes(unitID)) {
+        culture = "feudal";
+    }
+    if (industriousCultureUnits.includes(unitID)) {
+        culture = "industrious";
+    }
+    if (barbarianCultureUnits.includes(unitID)) {
+        culture = "barbarian";
+    }
+    return culture;
+}
+
+function CheckIfInSpells(unitID) {
+    var spell = "";
+    for (i in jsonSpells.spells) {
+
+        if ('summoned_units' in jsonSpells.spells[i]) {
+            for (k in jsonSpells.spells[i].summoned_units) {
+                if (unitID == jsonSpells.spells[i].summoned_units[k].slug) {
+                    spell = jsonSpells.spells[i].id;
+                }
+            }
+
+        }
+
+    }
+
+
+    return spell;
+}
+
+function CheckIfInTomes(unitID) {
+    var tome = "";
+    for (i in jsonTomes.tomes) {
+        for (k in jsonTomes.tomes[i].skills) {
+            if ('unit_slug' in jsonTomes.tomes[i].skills[k]) {
+                if (unitID == jsonTomes.tomes[i].skills[k].unit_slug) {
+                    tome = jsonTomes.tomes[i].id;
+                }
+            }
+
+        }
+
+    }
+    return tome;
+}
+
+function CheckIfInAncientWonder(unitID) {
+    var wonder = "";
+    var i, k = "";
+    for (i in jsonWorldStructures.structures) {
+
+        if ('unit_unlocks' in jsonWorldStructures.structures[i]) {
+
+            for (k in jsonWorldStructures.structures[i].unit_unlocks) {
+
+                if (unitID == jsonWorldStructures.structures[i].unit_unlocks[k].slug) {
+                    wonder = jsonWorldStructures.structures[i].id;
+                }
+            }
+
+
+        }
+
+
+
+    }
+    return wonder;
+}
+
 function ReturnWeaknessOrResistanceNumber(slug) {
 
     if (slug.indexOf("weakness") !== -1) {
@@ -1716,6 +1700,9 @@ function ReturnWeaknessOrResistanceNumber(slug) {
     if (slug.indexOf("resistance") !== -1) {
         var split = slug.split("resistance_");
         abilityDam = split[1];
+    }
+    if (slug.indexOf("immunity") !== -1) {
+        abilityDam = "immune";
     }
 
     return abilityDam;
@@ -1903,7 +1890,7 @@ function showSiegeProject(id) {
             descriptionDiv = document.getElementById("moddescription");
             description = jsonSiegeProjects.projects[i].description;
 
-
+            description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
             imagelink = document.getElementById("modicon");
 
@@ -1919,12 +1906,12 @@ function showSiegeProject(id) {
 
             tier = document.getElementById("modtier");
 
-            tier.innerHTML = "Siege Project";
+            tier.innerHTML = "<garrison></garrison> Siege Project";
 
             tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
 
             cost = document.getElementById("modcost");
-
+            cost.innerHTML = "Cost:<br>" + jsonSiegeProjects.projects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
 
 
@@ -2144,7 +2131,7 @@ function showStructure(a) {
 
             cost = document.getElementById("modcost");
             cost.className = "spell_cost";
-            cost.innerHTML = "Cost : " + jsonStructureUpgrades.structures[j].cost;
+            cost.innerHTML = "Build Cost:<br>" + jsonStructureUpgrades.structures[j].cost;
             cost.setAttribute("id", "modcost" + a);
 
 
@@ -2272,7 +2259,7 @@ function showUnitUnlock(a) {
     tier.setAttribute("id", "modtier" + a);
 
     cost = document.getElementById("modcost");
-    cost.innerHTML = GetCostUnit(a.unit_slug);
+    cost.innerHTML = "Recruit Cost:<br>" + GetCostUnit(a.unit_slug);
 
     cost.setAttribute("id", "modcost" + a);
 
@@ -2327,7 +2314,13 @@ function showSpell(a, showOrigin) {
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "Casting Cost : " + jsonSpells.spells[j].casting_cost;
+            cost.innerHTML = "Casting Cost:<br>" + jsonSpells.spells[j].casting_cost;
+            var costSplit = jsonSpells.spells[j].casting_cost.split("<");
+            if (jsonSpells.spells[j].tactical === true) {
+                cost.innerHTML += " " + costSplit[0] + "<casttactical></casttactical>"
+            } else {
+                cost.innerHTML += " " + costSplit[0] + "<caststrategic></caststrategic>"
+            }
             cost.setAttribute("id", "modcost" + a);
 
             imagelink = document.getElementById("modicon");
@@ -2378,301 +2371,6 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
     }
 }
 
-function showTech(a, b) {
-    var modName, description, cost, type, tier, secret, card = "";
-    var found = false;
-    card = document.getElementById("techcard");
-    for (j in jsonTech.tech) {
-        if (a == jsonTech.tech[j].slug) {
-
-            modName = document.getElementById("techname");
-            modName.innerHTML = jsonTech.tech[j].name;
-            modName.setAttribute("id", "techname" + a);
-
-
-            cost = document.getElementById("techcost");
-            cost.innerHTML = jsonTech.tech[j].cost + "<research></research>";
-            cost.setAttribute("id", "modcost" + a);
-            imagelink = document.getElementById("techicon");
-            if (b == "em") {
-
-                imagelink.setAttribute("src", "/aowp/Icons/Tech/" + "military_future_military_tech" + ".png");
-                imagelink.setAttribute("id", "techicon" + a);
-            } else if (b == "es") {
-
-                imagelink.setAttribute("src", "/aowp/Icons/Tech/" + "society_future_society_tech" + ".png");
-                imagelink.setAttribute("id", "techicon" + a);
-            } else {
-                imagelink.setAttribute("src", "/aowp/Icons/Tech/" + a + ".png");
-                imagelink.setAttribute("id", "techicon" + a);
-            }
-
-
-
-            for (k in jsonTech.tech[j].mod_unlock) {
-                if (jsonTech.tech[j].mod_unlock[k].slug != undefined) {
-                    addModUnlock(jsonTech.tech[j].mod_unlock[k].slug, b);
-                }
-
-            }
-
-            for (k in jsonTech.tech[j].op_unlock) {
-                if (jsonTech.tech[j].op_unlock[k].slug != undefined) {
-                    if (jsonTech.tech[j].op_unlock[k].slug == "colony_district_buildings") {
-                        if (currentRace == "kirko") {
-                            addOpUnlock("breeding_grounds", b);
-                        }
-                        if (currentRace == "dvar") {
-                            addOpUnlock("urban_mining_shafts", b);
-                        }
-                        if (currentRace == "amazon") {
-                            addOpUnlock("wildlife_reserve", b);
-                        }
-                        if (currentRace == "syndicate") {
-                            addOpUnlock("ambassadors'_quarters", b);
-                        }
-                        if (currentRace == "vanguard") {
-                            addOpUnlock("cryopod_bunkers", b);
-                        }
-                        if (currentRace == "shakarn") {
-                            addOpUnlock("holo-simulation_camp", b);
-                        }
-                        if (currentRace == "oathbound") {
-                            addOpUnlock("archive_of_deeds", b);
-                        }
-                        if (currentRace == "assembly") {
-                            addOpUnlock("overdrive_reactor", b);
-                        }
-                    } else {
-                        addOpUnlock(jsonTech.tech[j].op_unlock[k].slug, b);
-                    }
-
-                }
-
-            }
-
-            for (k in jsonTech.tech[j].unit_unlock) {
-                if (jsonTech.tech[j].unit_unlock[k].slug != undefined) {
-                    secret = jsonTech.tech[j].unit_unlock[k].slug;
-                    if (jsonTech.tech[j].unit_unlock[k].slug.indexOf("secret") > -1) {
-                        if (currentRace == "syndicate" && jsonTech.tech[j].unit_unlock[k].slug == "secret_purifier") {
-                            secret = jsonTech.tech[j].unit_unlock[k].slug.replace("secret", currentRace + "_indentured");
-                        } else if (currentRace == "oathbound" && (jsonTech.tech[j].unit_unlock[k].slug == "secret_light_bringer" || jsonTech.tech[j].unit_unlock[k].slug == "secret_echo_walker")) {
-                            secret = jsonTech.tech[j].unit_unlock[k].slug.replace("secret", currentRace + "_paladin");
-                        } else {
-                            secret = jsonTech.tech[j].unit_unlock[k].slug.replace("secret", currentRace);
-                        }
-
-                    }
-                    if (secret == "phoenix_walker") {
-                        if (currentRace == "dvar" || currentRace == "kirko") {
-                            secret = currentRace + "_phoenix_walker";
-
-                        }
-
-                    }
-
-
-                    addUnitUnlock(secret, b);
-                }
-
-
-            }
-            document.getElementById("unlockholder").setAttribute("id", "unlockholder" + a);
-            found = true;
-        }
-        card.setAttribute("id", "techcard" + a);
-        card.style.display = 'inline-block';
-
-    }
-    if (found == false) {
-        console.log("Couldn't find tech: " + a);
-    }
-}
-
-
-function addModUnlock(a, b) {
-    var modUnlockName, modUnlockIcon, modUnlockAbility, j = "";
-    var found = false;
-    for (j in jsonSpells.spells) {
-        if (a == jsonSpells.spells[j].slug) {
-            if (jsonSpells.spells[j].type.includes("Weapon")) {
-                modUnlockName = "Equipment: " + jsonSpells.spells[j].name;
-            } else {
-                modUnlockName = jsonSpells.spells[j].name;
-            }
-            modUnlockName = "<titlebrown>" + modUnlockName + "</titlebrown>";
-            modUnlockIcon = jsonSpells.spells[j].slug;
-
-            if (jsonSpells.spells[j].name.includes("Vehicle")) {
-                modUnlockIcon = modUnlockIcon.replace("vehicle:_", "");
-            }
-            if (jsonSpells.spells[j].type.includes("Weapon")) {
-                modUnlockIcon = modUnlockIcon.replace("equipment:_", "");
-            }
-            modUnlockAbility = jsonSpells.spells[j].description;
-
-
-            var tier = "<silver>" + "Tier " + jsonSpells.spells[j].tier + ", " + jsonSpells.spells[j].type + "</silver>";
-
-
-            var btn = document.createElement("DIV");
-            btn.className = "researchResultBackgroundImage";
-            var imag = document.createElement("IMG");
-            imag.className = "modunlock_icon2";
-            var spa = document.createElement("SPAN");
-
-
-            spa.innerHTML = "<p>" + modUnlockName + "</p>" + tier + "<hr>"
-            imag.setAttribute("src", "/aowp/Icons/Mods/" + modUnlockIcon + ".png");
-
-            spa.innerHTML += "<img src=\"/aowp/Icons/Mods/" + modUnlockIcon + ".png\" width='200'\">";
-            spa.innerHTML += "<br>" + modUnlockAbility;
-
-            if (jsonSpells.spells[j].type.includes("Weapon") || jsonSpells.spells[j].name.includes("Vehicle")) {
-                spa.innerHTML += "<hr> Base Cost: " + jsonSpells.spells[j].cost;
-            } else {
-                spa.innerHTML += "<hr>" + "Base Production Cost: 10 <production></production>" + "<br>" + "Base Cosmite Cost: " + jsonSpells.spells[j].cost;
-            }
-
-            imag.setAttribute("height", "30");
-
-            if (jsonSpells.spells[j].name.includes("Vehicle") || jsonSpells.spells[j].type.includes("Weapon")) {
-                var imag2 = document.createElement("IMG");
-                imag2.setAttribute("src", "/aowp/Icons/Text/arsenal.png");
-                imag2.className = "corner_icon";
-                btn.appendChild(imag2);
-            }
-
-
-            var newID = document.getElementById("unlockholder");
-            newID.appendChild(btn);
-            btn.appendChild(imag);
-
-
-            btn.appendChild(spa);
-
-
-            if (b == "s" || b == "em" || b == "es") {
-                spa.className = "tooltiptext2";
-            } else {
-                spa.className = "tooltiptext";
-            }
-
-            found = true;
-
-            // btn.appendChild(tex);
-
-        }
-    }
-    if (found == false) {
-        console.log("Couldn't find mod: " + a);
-    }
-
-}
-
-
-function addOpUnlock(a, b) {
-    var opUnlockName, opUnlockIcon, opUnlockAbility, j = "";
-    var found = false;
-    for (j in jsonOperations.operations) {
-        if (a == jsonOperations.operations[j].slug) {
-
-            opUnlockName = "<titlebrown>" + jsonOperations.operations[j].name + "</titlebrown>";
-            opUnlockIcon = jsonOperations.operations[j].slug;
-            opUnlockAbility = jsonOperations.operations[j].description;
-
-
-            var tier = "<silver>" + "Tier " + jsonOperations.operations[j].tier + ", " + jsonOperations.operations[j].type + "</silver>";
-
-
-            var btn = document.createElement("DIV");
-            btn.className = "researchResultBackgroundImage";
-            var imag = document.createElement("IMG");
-            imag.className = "modunlock_icon";
-            var spa = document.createElement("SPAN");
-            var tex = document.createElement("DIV");
-            tex.className = "tooltip";
-            tex.setAttribute('onclick', '');
-            //tex.innerHTML = modUnlockName;
-
-            spa.innerHTML = "<p>" + opUnlockName + "</p>" + tier + "<hr>"
-            if (b == "em" || b == "es") {
-                imag.setAttribute("src", "/aowp/Icons/Operations/" + "unknown" + ".png");
-            } else {
-                imag.setAttribute("src", "/aowp/Icons/Operations/" + opUnlockIcon + ".png");
-            }
-
-
-
-            spa.innerHTML += "<br>" + opUnlockAbility;
-
-            if (jsonOperations.operations[j].casting != undefined) {
-                spa.innerHTML += "<hr>" + "Priming Cost: " + jsonOperations.operations[j].energy_cost + "<energy></energy>" + jsonOperations.operations[j].casting;
-            }
-
-            if (jsonOperations.operations[j].production_cost != undefined) {
-                spa.innerHTML += "<hr>" + "Cost: " + jsonOperations.operations[j].production_cost;
-            }
-
-            if (jsonOperations.operations[j].influence_cost != undefined) {
-                spa.innerHTML += "<hr>" + "Cost: " + jsonOperations.operations[j].influence_cost + "<influence></influence>";
-            }
-
-            imag.setAttribute("height", "35");
-            if (jsonOperations.operations[j].type.includes("Tactical")) {
-                var imag2 = document.createElement("IMG");
-                imag2.setAttribute("src", "/aowp/Icons/Text/tac_ops.png");
-                imag2.className = "corner_icon";
-                btn.appendChild(imag2);
-            }
-
-            if (jsonOperations.operations[j].type.includes("Doctrine")) {
-                var imag2 = document.createElement("IMG");
-                imag2.setAttribute("src", "/aowp/Icons/Text/doctrine.png");
-                imag2.className = "corner_icon";
-                btn.appendChild(imag2);
-            }
-            if (jsonOperations.operations[j].type.includes("Strategic")) {
-                var imag2 = document.createElement("IMG");
-                imag2.setAttribute("src", "/aowp/Icons/Text/strat_ops.png");
-                imag2.className = "corner_icon";
-                btn.appendChild(imag2);
-            }
-            if (jsonOperations.operations[j].type.includes("Covert")) {
-                var imag2 = document.createElement("IMG");
-                imag2.setAttribute("src", "/aowp/Icons/Text/covert.png");
-                imag2.className = "corner_icon";
-                btn.appendChild(imag2);
-            }
-
-
-            document.getElementById("unlockholder").appendChild(btn);
-            btn.appendChild(imag);
-
-
-            btn.appendChild(spa);
-
-
-            if (b == "s" || b == "em" || b == "es") {
-                spa.className = "tooltiptext2";
-            } else {
-                spa.className = "tooltiptext";
-            }
-            found = true;
-            // btn.appendChild(tex);
-
-        }
-    }
-    if (found == false) {
-        console.log("Couldn't find operation: " + a);
-    }
-}
-
-
-
-
-
 
 
 function addAbilityList(a) {
@@ -2696,154 +2394,3 @@ function addTypesList(a) {
         }
     }
 }
-
-
-
-
-
-
-
-(function (root, factory) {
-    "use strict";
-    if (typeof define === "function" && define.amd) {
-        define([], factory)
-    } else if (typeof exports === "object") {
-        module.exports = factory()
-    } else {
-        root.textFit = factory()
-    }
-})(typeof global === "object" ? global : this, function () {
-    "use strict";
-    var defaultSettings = {
-        alignVert: false,
-        alignHoriz: false,
-        multiLine: false,
-        detectMultiLine: true,
-        minFontSize: 6,
-        maxFontSize: 80,
-        reProcess: true,
-        widthOnly: false,
-        alignVertWithFlexbox: false
-    };
-    return function textFit(els, options) {
-        if (!options) options = {};
-        var settings = {};
-        for (var key in defaultSettings) {
-            if (options.hasOwnProperty(key)) {
-                settings[key] = options[key]
-            } else {
-                settings[key] = defaultSettings[key]
-            }
-        }
-        if (typeof els.toArray === "function") {
-            els = els.toArray()
-        }
-        var elType = Object.prototype.toString.call(els);
-        if (elType !== "[object Array]" && elType !== "[object NodeList]" && elType !== "[object HTMLCollection]") {
-            els = [els]
-        }
-        for (var i = 0; i < els.length; i++) {
-            processItem(els[i], settings)
-        }
-    };
-
-    function processItem(el, settings) {
-        if (!isElement(el) || !settings.reProcess && el.getAttribute("textFitted")) {
-            return false
-        }
-        if (!settings.reProcess) {
-            el.setAttribute("textFitted", 1)
-        }
-        var innerSpan, originalHeight, originalHTML, originalWidth;
-        var low, mid, high;
-        originalHTML = el.innerHTML;
-        originalWidth = innerWidth(el);
-        originalHeight = innerHeight(el);
-        if (!originalWidth || !settings.widthOnly && !originalHeight) {
-            if (!settings.widthOnly) throw new Error("Set a static height and width on the target element " + el.outerHTML + " before using textFit!");
-            else throw new Error("Set a static width on the target element " + el.outerHTML + " before using textFit!")
-        }
-        if (originalHTML.indexOf("textFitted") === -1) {
-            innerSpan = document.createElement("span");
-            innerSpan.className = "textFitted";
-            innerSpan.style["display"] = "inline-block";
-            innerSpan.innerHTML = originalHTML;
-            el.innerHTML = "";
-            el.appendChild(innerSpan)
-        } else {
-            innerSpan = el.querySelector("span.textFitted");
-            if (hasClass(innerSpan, "textFitAlignVert")) {
-                innerSpan.className = innerSpan.className.replace("textFitAlignVert", "");
-                innerSpan.style["height"] = "";
-                el.className.replace("textFitAlignVertFlex", "")
-            }
-        }
-        if (settings.alignHoriz) {
-            el.style["text-align"] = "center";
-            innerSpan.style["text-align"] = "center"
-        }
-        var multiLine = settings.multiLine;
-        if (settings.detectMultiLine && !multiLine && innerSpan.scrollHeight >= parseInt(window.getComputedStyle(innerSpan)["font-size"], 10) * 2) {
-            multiLine = true
-        }
-        if (!multiLine) {
-            el.style["white-space"] = "nowrap"
-        }
-        low = settings.minFontSize;
-        high = settings.maxFontSize;
-        var size = low;
-        while (low <= high) {
-            mid = high + low >> 1;
-            innerSpan.style.fontSize = mid + "px";
-            if (innerSpan.scrollWidth <= originalWidth && (settings.widthOnly || innerSpan.scrollHeight <= originalHeight)) {
-                size = mid;
-                low = mid + 1
-            } else {
-                high = mid - 1
-            }
-        }
-        if (innerSpan.style.fontSize != size + "px") innerSpan.style.fontSize = size + "px";
-        if (settings.alignVert) {
-            addStyleSheet();
-            var height = innerSpan.scrollHeight;
-            if (window.getComputedStyle(el)["position"] === "static") {
-                el.style["position"] = "relative"
-            }
-            if (!hasClass(innerSpan, "textFitAlignVert")) {
-                innerSpan.className = innerSpan.className + " textFitAlignVert"
-            }
-            innerSpan.style["height"] = height + "px";
-            if (settings.alignVertWithFlexbox && !hasClass(el, "textFitAlignVertFlex")) {
-                el.className = el.className + " textFitAlignVertFlex"
-            }
-        }
-    }
-
-    function innerHeight(el) {
-        var style = window.getComputedStyle(el, null);
-        return el.clientHeight - parseInt(style.getPropertyValue("padding-top"), 10) - parseInt(style.getPropertyValue("padding-bottom"), 10)
-    }
-
-    function innerWidth(el) {
-        var style = window.getComputedStyle(el, null);
-        return el.clientWidth - parseInt(style.getPropertyValue("padding-left"), 10) - parseInt(style.getPropertyValue("padding-right"), 10)
-    }
-
-    function isElement(o) {
-        return typeof HTMLElement === "object" ? o instanceof HTMLElement : o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
-    }
-
-    function hasClass(element, cls) {
-        return (" " + element.className + " ").indexOf(" " + cls + " ") > -1
-    }
-
-    function addStyleSheet() {
-        if (document.getElementById("textFitStyleSheet")) return;
-        var style = [".textFitAlignVert{", "position: absolute;", "top: 0; right: 0; bottom: 0; left: 0;", "margin: auto;", "display: flex;", "justify-content: center;", "flex-direction: column;", "}", ".textFitAlignVertFlex{", "display: flex;", "}", ".textFitAlignVertFlex .textFitAlignVert{", "position: static;", "}"].join("");
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.id = "textFitStyleSheet";
-        css.innerHTML = style;
-        document.body.appendChild(css)
-    }
-});

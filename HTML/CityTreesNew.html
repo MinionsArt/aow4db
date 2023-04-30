@@ -17,7 +17,7 @@
         var general = [
             // A
             "town_hall_i_town_center:5:1:na",
-            "throne:7:1:na",
+            "throne:7:1:na:throne",
 
 
             // B
@@ -97,16 +97,16 @@
             "tavern:11:7:na",
             "interrogation_dungeon:12:7:na:dark",
 
-            "wizard_tower_br__foundation:18:7:na",
+            "wizard_tower_br__foundation:18:7:na:throne",
 
 
             // H
 
             "bathhouse:11:8:na",
             "ritual_mausoleum:12:8:na:dark",
-            "wizard_tower_br__prison_cells:17:8:wizard_tower_br__foundation",
-            "wizard_tower_br__level_i:18:8:wizard_tower_br__foundation",
-            "wizard_tower_br__crypts:19:8:wizard_tower_br__foundation",
+            "wizard_tower_br__prison_cells:17:8:wizard_tower_br__foundation:throne",
+            "wizard_tower_br__level_i:18:8:wizard_tower_br__foundation:throne",
+            "wizard_tower_br__crypts:19:8:wizard_tower_br__foundation:throne",
 
             // I
             "town_hall_iii_citadel:5:9:na",
@@ -116,14 +116,14 @@
             "town_hall_iii_pantheon:9:9:na",
             "town_hall_iii_stronghold:10:9:na",
 
-            "wizard_tower_br__level_ii:18:9:wizard_tower_br__level_i",
-            "wizard_tower_br__room_of_recall:19:9:wizard_tower_br__level_i",
+            "wizard_tower_br__level_ii:18:9:wizard_tower_br__level_i:throne",
+            "wizard_tower_br__room_of_recall:19:9:wizard_tower_br__level_i:throne",
 
 
             // J
             "stone_walls:3:10:na",
-            "wizard_tower_br__apex:18:9:wizard_tower_br__level_ii",
-            "wizard_tower_br__channeling_chamber:19:9:wizard_tower_br__level_ii",
+            "wizard_tower_br__apex:18:9:wizard_tower_br__level_ii:throne",
+            "wizard_tower_br__channeling_chamber:19:9:wizard_tower_br__level_iiLthrone",
 
             // K
             "ballista_towers:2:11:na",
@@ -259,7 +259,7 @@
 
                         var img = document.createElement("IMG");
                         img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + jsonStructureUpgrades.structures[i].id + ".png");
-                        img.setAttribute("height", "50px");
+                        img.setAttribute("height", "60px");
                         img.className = "structureNodeIcon";
                         newNode.setAttribute("id", jsonStructureUpgrades.structures[i].id);
 
@@ -279,7 +279,7 @@
                             if (splits[4] == "mystic") {
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/mystic.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundPositionX = "100px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  blue;\">" + name.toUpperCase() + "</span>" + "<br>";
@@ -287,7 +287,7 @@
                             if (splits[4] == "barbarian") {
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/barbarian.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundPositionX = "100px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  red;\">" + name.toUpperCase() + "</span>" + "<br>";
@@ -295,7 +295,7 @@
                             if (splits[4] == "high") {
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/high.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundPositionX = "100px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
@@ -303,7 +303,7 @@
                             if (splits[4] == "feudal") {
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/feudal.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundPositionX = "100px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  grey;\">" + name.toUpperCase() + "</span>" + "<br>";
@@ -311,7 +311,7 @@
                             if (splits[4] == "dark") {
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/dark.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundPositionX = "100px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  purple;\">" + name.toUpperCase() + "</span>" + "<br>";
@@ -319,10 +319,19 @@
                             if (splits[4] == "industrious") {
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/industrious.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "200px";
+                                newNodeBackground.style.backgroundPositionX = "100px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  orange;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+
+                            if (splits[4] == "throne") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/industrious.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "100px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
+                                spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
                         }
 
@@ -348,12 +357,15 @@
 
                         spa2.className = "tooltiptext";
 
+                        // cost
 
+                        var cost = document.createElement("DIV");
 
                         newNode.appendChild(newNodeBackground);
                         newNodeBackground.append(spa);
+                        newNodeBackground.append(cost);
                         newNodeBackground.append(img);
-                        newNodeBackground.append(desc);
+                        // newNodeBackground.append(desc);
 
                         newNode.appendChild(spa2);
 
@@ -470,6 +482,7 @@
 
 
         }
+
     </script>
 
 
@@ -495,7 +508,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <style>
     .branch-line {
         height: 4px;
@@ -552,7 +567,7 @@
 
     .structureNode {
         position: relative;
-        width: 120px;
+
 
 
         background-image: url(/aow4db/Icons/tooltipBG.png);
@@ -560,7 +575,7 @@
         color: #bbcdf6;
         min-height: 60px;
         max-height: 130px;
-        width: 250px;
+        width: 200px;
         text-align: left;
         border-style: solid;
         border-image: url(/aow4db/Icons/9slicetooltip.png);
