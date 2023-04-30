@@ -813,7 +813,12 @@ function sortDivs(sortType, savedOrder) {
     const isNumeric = true;
 
     // 4 - Select all elements
-    var container = document.getElementById(currentView);
+    if (currentView === "") {
+        var container = document.getElementById("dataHolder");
+    } else {
+        var container = document.getElementById(currentView);
+    }
+
 
     var element = elements = [...container.querySelectorAll('.mod_card')]
 
@@ -1007,13 +1012,19 @@ async function showEquipmentFromList(list, divID) {
 }
 
 async function showSiegeProjects() {
-    var allSiegeProjects = new Array();
 
-    for (i in jsonSiegeProjects.projects) {
-        await spawnSpellCards()
+
+
+    await spawnSpellCards(jsonSiegeProjects.projects, "dataHolder");
+
+    for (var i = 0; i < jsonSiegeProjects.projects.length; i++) {
+        showSiegeProject(jsonSiegeProjects.projects[i].name);
     }
 
-    await spawn
+
+
+
+
 }
 
 async function spawnTomeCards(list, divID) {
