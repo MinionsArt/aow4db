@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aowp/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+
+    <script>
+        var unitarray = ["ram_warship", "ballista_warship"];
+
+
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                SetButtonsAndDivs(unitarray, undefined, "unit");
+                SetLevelUpStuff();
+            });
+        });
+
+
+
+
+
+        /*<button onclick="showEnchantments()">Show available enchants</button>*/
+    </script>
+
+
+    <title>Age of Wonders 4 - General Units</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        General Culture Units
+    </div>
+
+
+
+    <div class="w3-container">
+        <div id="buttonHolder" class="w3-bar w3-black">
+
+        </div>
+
+        <div id="dataHolder" style="margin-top:-250px">
+        </div>
+
+    </div>
+
+
+
+
+
+
+</body></html>
+<footer>
+    <br>
+    <br>
+</footer>
