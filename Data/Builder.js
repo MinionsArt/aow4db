@@ -9,6 +9,9 @@ var feudalCultureUnits = ["scout", "peasant_pikeman", "archer", "bannerman", "de
 var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
 var mysticCultureUnits = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellbreaker"];
 
+
+var MountedSpecialList = ["pioneer", "scout", "lightseeker", "bastion", "knight", "outrider", "dark_knight", "spellbreaker", "awakener", "fury", "pathfinder", "tyrant_knight"];
+
 function GetTierAndName(id) {
     for (i in jsonUnits.units) {
         if (id == jsonUnits.units[i].id) {
@@ -131,6 +134,15 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.innerHTML = GetTierAndNameTome(list[i]);
         } else {
             btn.innerHTML = GetTierAndName(list[i]);
+
+            if (MountedSpecialList.includes(list[i])) {
+                imag = document.createElement("IMG");
+                imag.setAttribute("src", "/aow4db/Icons/Abilities/cavalry.png");
+                imag.setAttribute("height", "20px");
+
+                btn.append(imag)
+                imag.setAttribute("style", "position:relative; float:right");
+            }
         }
 
         buttonHolder.appendChild(btn);
@@ -140,7 +152,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
 
         if (cardType != "search") {
-            var holderHeight = buttonHolder.offsetHeight;
+            var holderHeight = buttonHolder.offsetHeight + 0;
         } else {
             var holderHeight = buttonHolder.offsetHeight;
         }
@@ -189,6 +201,29 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         dataHolder.appendChild(div);
         // for (i in list) {
         showSpellFromList(list, overwrite);
+
+        // }
+
+
+
+
+
+    }
+    if (cardType == "skill") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight + 50;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showSkillFromList(list, overwrite);
 
         // }
 
@@ -1116,6 +1151,28 @@ async function showSpellFromList(list, divID) {
 
 }
 
+async function showSkillFromList(list, divID) {
+
+
+    await spawnSpellCards(list, divID);
+
+    for (var i = 0; i < list.length; i++) {
+
+        // check if has description
+        if ('description' in list[i]) {
+            showSkill(list[i], "", list[i].icon, list[i].category_name);
+        } else {
+            showSkill(list[i], "true", list[i].icon, list[i].category_name);
+        }
+
+
+    };
+
+
+
+
+}
+
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
 
 
@@ -1149,6 +1206,19 @@ async function showStructuresWithArgument(argument, divID, argumentType, include
 
 }
 
+async function showSkillsWithArgument(signature, argumentType, overwritetext) {
+
+    var list = new Array();
+    list = findSkillsWithArgument(signature, argumentType);
+
+
+    SetCollapsibleButtonsAndDivs(overwritetext, list, "skill");
+
+
+
+
+}
+
 async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 
     var list = new Array();
@@ -1170,6 +1240,39 @@ async function showSpellFromString(string, divID) {
     await spawnSpellCards(string, divID);
     showSpell(string, true);
 
+}
+
+
+function findSkillsWithArgument(signature, argumentType) {
+    var j = "";
+
+    var finalCheckedList = new Array();
+    if (signature == "") {
+        for (j in jsonHeroSkills.skills) {
+            if ('category_name' in jsonHeroSkills.skills[j]) {
+                if (jsonHeroSkills.skills[j].category_name.indexOf(argumentType) !== -1) {
+
+                    finalCheckedList.push(jsonHeroSkills.skills[j]);
+                }
+            }
+
+
+
+
+
+        }
+    } else {
+
+        for (j in jsonHeroSkills.skills) {
+            if ('type' in jsonHeroSkills.skills[j]) {
+                if (jsonHeroSkills.skills[j].type == 'signature') {
+                    finalCheckedList.push(jsonHeroSkills.skills[j]);
+                }
+
+            }
+        }
+    }
+    return finalCheckedList;
 }
 
 function findSpellsWithArgument(argumentaffinity, argumentType) {
@@ -1998,7 +2101,12 @@ function showTome(a, div) {
 
                         div.appendChild(spa);
                     } else if ('hero_skill_slug' in jsonTomes.tomes[j].passives[l]) {
-                        div.innerHTML = jsonTomes.tomes[j].passives[l].hero_skill_slug;
+                        var name = GetHeroSkillName(jsonTomes.tomes[j].passives[l].hero_skill_slug);
+                        div.innerHTML = "<hero></hero>" + name;
+                        var spa = document.createElement("SPAN");
+                        spa.className = "tooltiptext";
+                        spa.innerHTML = "<span style=\"color: burlywood;text-transform: uppercase\">" + name + "</span><br>" + GetHeroSkillDescription(jsonTomes.tomes[j].passives[l].hero_skill_slug);
+                        div.appendChild(spa);
                     } else {
                         div.innerHTML = jsonTomes.tomes[j].passives[l].name;
 
@@ -2088,6 +2196,32 @@ function GetStructureName(structureID) {
         }
     }
 }
+
+function GetHeroSkillName(skillID) {
+    for (j in jsonHeroSkills.skills) {
+        if (jsonHeroSkills.skills[j].id.indexOf(skillID) != -1) {
+            return jsonHeroSkills.skills[j].name;
+        }
+    }
+}
+
+function GetHeroSkillDescription(skillID) {
+    for (j in jsonHeroSkills.skills) {
+        if (jsonHeroSkills.skills[j].id.indexOf(skillID) != -1) {
+            if ('abilities' in jsonHeroSkills.skills[j]) {
+                for (k in jsonUnitAbilities.abilities) {
+                    if (jsonUnitAbilities.abilities[k].slug.indexOf(jsonHeroSkills.skills[j].abilities[0].slug) != -1) {
+                        return jsonHeroSkills.skills[j].category_name + "<br>" + jsonUnitAbilities.abilities[k].description;
+                    }
+                }
+            } else {
+                return jsonHeroSkills.skills[j].category_name + "<br>" + jsonHeroSkills.skills[j].description;
+            }
+
+        }
+    }
+}
+
 
 function GetStructureDescription(structureID) {
     for (j in jsonStructureUpgrades.structures) {
@@ -2381,6 +2515,110 @@ function showSpell(a, showOrigin) {
     }
     if (found == false) {
         console.log("Couldn't find mod: " + a);
+    }
+}
+
+
+function showSkill(a, checkInAbilities, icon_slug, category) {
+    var modName, description, cost, type, tier = "";
+    var found = false;
+
+    if (checkInAbilities != "") {
+        for (j in jsonUnitAbilities.abilities) {
+            if (jsonUnitAbilities.abilities[j].slug.indexOf(a.abilities[0].slug) != -1) {
+
+                modName = document.getElementById("modname");
+                modName.innerHTML = jsonUnitAbilities.abilities[j].name.toUpperCase();
+                modName.setAttribute("id", "modname" + a.id);
+                descriptionDiv = document.getElementById("moddescription");
+                description = category + "<br>";
+                description += jsonUnitAbilities.abilities[j].description;
+
+
+                unitTypesDiv = document.getElementById("affectUnitTypes");
+
+
+
+                unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
+                descriptionDiv.innerHTML = description;
+
+                descriptionDiv.setAttribute("id", "moddescription" + a.id);
+                //type = document.getElementById("modtype");
+                //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
+                //type.setAttribute("id", "modtype" + a);
+                tier = document.getElementById("modtier");
+                tier.innerHTML = "";
+                tier.setAttribute("id", "modtier" + a.id);
+
+                cost = document.getElementById("modcost");
+                cost.innerHTML = "";
+
+
+                cost.setAttribute("id", "modcost" + a.id);
+
+                imagelink = document.getElementById("modicon");
+
+
+                imagelink.className = "smallerIcon";
+                imagelink.setAttribute("src", "/aow4db/Icons/HeroSkillIcons/" + icon_slug + ".png");
+                imagelink.setAttribute("id", "modicon" + a.id);
+
+
+                found = true;
+                break;
+            }
+        }
+    } else {
+        for (j in jsonHeroSkills.skills) {
+            if (jsonHeroSkills.skills[j].id.indexOf(a.id) != -1) {
+
+                modName = document.getElementById("modname");
+                modName.innerHTML = jsonHeroSkills.skills[j].name.toUpperCase();
+                modName.setAttribute("id", "modname" + a.id);
+                descriptionDiv = document.getElementById("moddescription");
+                description = category + "<br>";
+                description += jsonHeroSkills.skills[j].description;
+
+                unitTypesDiv = document.getElementById("affectUnitTypes");
+
+
+
+                unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
+                descriptionDiv.innerHTML = description;
+
+                descriptionDiv.setAttribute("id", "moddescription" + a.id);
+                //type = document.getElementById("modtype");
+                //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
+                //type.setAttribute("id", "modtype" + a);
+                tier = document.getElementById("modtier");
+                tier.innerHTML = "";
+                tier.setAttribute("id", "modtier" + a.id);
+
+                cost = document.getElementById("modcost");
+                cost.innerHTML = "";
+
+
+                cost.setAttribute("id", "modcost" + a.id);
+
+                imagelink = document.getElementById("modicon");
+
+
+                imagelink.className = "smallerIcon";
+                imagelink.setAttribute("src", "/aow4db/Icons/HeroSkillIcons/" + icon_slug + ".png");
+                imagelink.setAttribute("id", "modicon" + a.id);
+
+
+
+
+
+                found = true;
+                break;
+            }
+        }
+    }
+
+    if (found == false) {
+        console.log("Couldn't find skill: " + a.id);
     }
 }
 

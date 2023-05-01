@@ -564,7 +564,7 @@ var jsonUnitAbilities = {
             "icon": "astral_torrent"
  },
         {
-            "description": "An Ethereal unit with:<bulletlist><bullet>2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>Pass Through</bullet><bullet>Immunity to:<bulletlist><bullet>Bleeding</bullet><bullet>Burning</bullet><bullet>Diseased</bullet><bullet>Frozen</bullet><bullet>Immobilized</bullet><bullet>Poisoned</bullet><bullet>Wet<bulletlist></bulletlist></bullet>",
+            "description": "An Ethereal unit with:<bulletlist><bullet>2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>Pass Through</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Bleeding</bullet><bullet>Burning</bullet><bullet>Diseased</bullet><bullet>Frozen</bullet><bullet>Immobilized</bullet><bullet>Poisoned</bullet><bullet>Wet<bulletlist></bulletlist></bullet>",
             "name": "Ethereal",
             "slug": "ethereal",
             "icon": "ethereal"
@@ -9092,6 +9092,1201 @@ var jsonUnitAbilities = {
    }
   ],
             "icon": "launch_ballista_tower"
+ },
+        {
+            "description": "Unit's base <hyperlink>Magic</hyperlink> attacks have:<bulletlist><bullet>A base 30% chance of inflicting a random negative status effect.</bullet>",
+            "name": "Havoc Magic",
+            "slug": "havoc_magic",
+            "icon": "havoc_magic"
+ },
+        {
+            "description": "Base attacks have a base 60% chance of inflicting Poisoned, Decaying, Weakened or Immobilized for {duration} <turn></turn> Turns.",
+            "name": "Avatar of Nature",
+            "slug": "avatar_of_nature",
+            "icon": "avatar_of_nature"
+ },
+        {
+            "description": "While army leader, after winning combat, units in the army regain:<bulletlist><bullet>5 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>25% <hyperlink>Move Points</hyperlink>.</bullet></bulletlist><br></br>This triggers once per <hyperlink>World Map</hyperlink> <turn></turn> <hyperlink>Turn</hyperlink><br></br><br></br>Only one Hero can be this Lord at any time.",
+            "name": "Lord of War",
+            "slug": "lord_of_war",
+            "icon": "lord_of_war"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Heals allies within a 2-hex radius +30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br>Places a <hyperlink>Dome of Protection</hyperlink> over a 2-hex radius.",
+            "name": "Conjure Dome of Protection",
+            "slug": "conjure_dome_of_protection_conjure_dome_of_protection",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "0",
+            "icon": "conjure_dome_of_protection_conjure_dome_of_protection"
+ },
+        {
+            "description": "At the end of this unit's turn, adjacent enemy units have a base 90% chance of becoming Blind.",
+            "name": "Exalted Brilliance",
+            "slug": "exalted_brilliance",
+            "icon": "exalted_brilliance"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "description": "Target friendly units gains:<bulletlist><bullet>+3 Bolstered Defense</bullet><bullet>+3 Bolstered Resistance</bullet>",
+            "name": "Sanctify",
+            "slug": "sanctify_sanctify",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "4",
+            "icon": "sanctify_sanctify"
+ },
+        {
+            "description": "Faithful units gain +20 <happiness></happiness> <hyperlink>Morale</hyperlink> at the start of battle.<br></br>Doesn't work on other Heroes.",
+            "name": "Champion of the Faithful",
+            "slug": "champion_of_the_faithful",
+            "icon": "champion_of_the_faithful"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Target enemy units becomes Condemned until the end of battle.",
+            "name": "Condemn",
+            "slug": "condemn_condemn",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Debuff"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "condemn_condemn"
+ },
+        {
+            "description": "<bulletlist><bullet>When this Hero unit is killed in battle, after 2 <turn></turn> Turns, it comes back to life with 35% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Can be used any number of times.</bullet><bullet>Does not function if all other units are dead.</bullet></bulletlist>",
+            "name": "Eternal One",
+            "slug": "eternal_one",
+            "icon": "eternal_one"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Consumes Target corpse and:<bulletlist><bullet>Heals +40 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains 3 Strengthened.</bullet></bulletlist>",
+            "name": "Greater Corpse Consumption",
+            "slug": "greater_corpse_consumption_greater_corpse_consumption",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "greater_corpse_consumption_reaper"
+ },
+        {
+            "description": "Adjacent enemies gain Weakening.",
+            "name": "Weakening Aura",
+            "slug": "weakening_aura",
+            "icon": "weakening_aura"
+ },
+        {
+            "description": "Hero gains +30% damage against units with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse.",
+            "name": "Cruel Weaponry",
+            "slug": "cruel_weaponry",
+            "icon": "cruel_weaponry"
+ },
+        {
+            "description": "Whenever a spell is cast, gain:<bulletlist><bullet>+1 Strengthened</bullet><bullet>+1 Bolstered Defense</bullet><bullet>+1 Bolstered Resistance</bullet></bulletlist>",
+            "name": "Arcane Surge",
+            "slug": "arcane_surge",
+            "icon": "arcane_surge"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Makes the caster teleport to target hex.",
+            "name": "Quick Phase",
+            "slug": "quick_phase_quick_phase",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "3",
+            "icon": "quick_phase_quick_phase"
+ },
+        {
+            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks gain:<bulletlist><bullet>+4 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet>",
+            "name": "Lightning Weapons",
+            "slug": "lightning_weapons",
+            "icon": "lightning_weapons"
+ },
+        {
+            "description": "<bulletlist><bullet>Grows in size and gains Large Target.</bullet><bullet>Heals +20 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Gains +30% damage on all attacks.</bullet><bullet>Can no longer use a mount.</bullet></bulletlist>",
+            "name": "Ancient of Earth",
+            "slug": "ancient_of_earth",
+            "icon": "ancient_of_earth"
+ },
+        {
+            "description": "Whenever this unit is hit by an attack, the attacker has a base 30% chance of being pushed back 1 hex.",
+            "name": "Avenging Winds",
+            "slug": "avenging_winds",
+            "icon": "avenging_winds"
+ },
+        {
+            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks deal 3 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to the target and all adjacent units.",
+            "name": "Meteor Strikes",
+            "slug": "meteor_strikes",
+            "icon": "meteor_strikes"
+ },
+        {
+            "description": "Once per <turn></turn> Turn whenever this unit takes non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> it gains:<bulletlist><bullet>Bolstered Resistance</bullet><bullet>Status Protection.</bullet>",
+            "name": "Adaptive Armor",
+            "slug": "adaptive_armor",
+            "icon": "adaptive_armor"
+ },
+        {
+            "description": "The city this <hyperlink>Hero</hyperlink> is <hyperlink>Governor</hyperlink> of gains +10 <happiness></happiness> <hyperlink>City Stability</hyperlink>.<br></br>Hero starts battle with +20 <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+            "name": "Inspiring Icon",
+            "slug": "inspiring_icon",
+            "icon": "inspiring_icon"
+ },
+        {
+            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks:<bulletlist><bullet>Inflict +4 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Inflict -2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Have a base 30% chance of inflicting Poisoned.</bullet>",
+            "name": "Poison Weapons",
+            "slug": "poison_weapons",
+            "icon": "poison_weapons"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Gain 2 Regeneration.</bullet><bullet>Have their negative status effects removed.</bullet>",
+            "name": "Revitalize",
+            "slug": "revitalize_revitalize",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "3",
+            "icon": "revitalize_nymph"
+ },
+        {
+            "description": "If a Hero is the army leader and units are in a Forest <hyperlink>Province</hyperlink>, all non-Hero units gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>+10% damage.</bullet>",
+            "name": "Forest Warden",
+            "slug": "forest_warden",
+            "icon": "forest_warden"
+ },
+        {
+            "description": "While army leader, units in the army gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet>",
+            "name": "Defensive Training",
+            "slug": "defensive_training",
+            "icon": "defensive_training"
+ },
+        {
+            "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>+10% damage.</bullet>",
+            "name": "Strength Training",
+            "slug": "strength_training",
+            "icon": "strength_training"
+ },
+        {
+            "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>+2 Experience each <turn></turn> Turn.</bullet>",
+            "name": "Experienced Leader",
+            "slug": "experienced_leader",
+            "icon": "experienced_leader"
+ },
+        {
+            "description": "While army leader, all non-Hero units in army have:<bulletlist><bullet>-20% <hyperlink>Unit Upkeep</hyperlink>.</bullet>",
+            "name": "Inspiring Leader",
+            "slug": "inspiring_leader",
+            "icon": "experienced_leader_2"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Target friendly unit:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains Regeneration.</bullet><bullet>Has their negative status effects removed.</bullet>",
+            "name": "Restore",
+            "slug": "restore_restore",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "4",
+            "icon": "restore_restore"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+            "description": "Add 10 <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink> to this combat.",
+            "name": "Attuned Cast",
+            "slug": "attuned_cast_combat_casting",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "0",
+            "icon": "attuned_cast_spellbreaker"
+ },
+        {
+            "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet>",
+            "name": "Resistance Training",
+            "slug": "resistance_training",
+            "icon": "resistance_training"
+ },
+        {
+            "description": "Always end your <turn></turn> Turn in <hyperlink>Defense Mode</hyperlink>.",
+            "name": "Defensive Master",
+            "slug": "defensive_master",
+            "icon": "defensive_master"
+ },
+        {
+            "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet>",
+            "name": "Defense Training",
+            "slug": "defense_training",
+            "icon": "defense_training"
+ },
+        {
+            "description": "While army leader, Battle Mage Units, Ranged Units and Skirmisher Units in the army inflict:<bulletlist><bullet>Marked with their <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> base attacks.</bullet>",
+            "name": "Coordinated Strike",
+            "slug": "coordinated_strike",
+            "icon": "coordinated_strike"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Inflict Sundered Defense for 3 <turn></turn> Turns.",
+                    "name": "Sundered Defense",
+                    "count": 1
+   },
+                {
+                    "description": "Inflict Sundered Resistance for 3 <turn></turn> Turns.",
+                    "name": "Sundered Resistance",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage in a 1-hex radius.",
+            "name": "Exposing Light",
+            "slug": "exposing_light_exposing_light",
+            "damage": "22<damagespirit></damagespirit> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "exposing_light_awakener"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "description": "Target friendly unit and another non-Awakened unit within 2 hexes become Awakened for 3 <turn></turn>.",
+            "name": "Twin Awakening",
+            "slug": "twin_awakening_twin_awaken",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "twin_awakening_awakener"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Inflict Weakened for 3 <turn></turn> Turns.",
+                    "name": "Weakened",
+                    "count": 1
+   }
+  ],
+            "description": "Target enemy unit sustains damage and gains:<bulletlist><bullet>2 Sundered Defense</bullet><bullet>2 Sundered Resistance</bullet>",
+            "name": "Sundering Curse",
+            "slug": "sundering_curse_sundering_curse",
+            "damage": "24<damagefrost></damagefrost> ",
+            "requisites": [
+                {
+                    "requisite": "Debuff"
+   },
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "sundering_curse_warlock"
+ },
+        {
+            "description": "Adjacent friendly units have:<bulletlist><bullet>+10% damage</bullet><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet></bulletlist>",
+            "name": "Feudal Ruler",
+            "slug": "feudal_ruler",
+            "icon": "feudal_ruler"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+            "description": "Target friendly unit gains Steadfast for 1 <turn></turn> Turn.",
+            "name": "Undying Loyalty",
+            "slug": "undying_loyalty_undying_loyalty",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "undying_loyalty_undying_loyalty"
+ },
+        {
+            "description": "When this unit kills:<bulletlist><bullet>Heals 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Strengthened.</bullet></bulletlist>",
+            "name": "Bloodlust",
+            "slug": "bloodlust",
+            "icon": "bloodlust"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "All friendly Animals and Plants within 2 hexes become 5 Strengthened.",
+            "name": "Nature's Avenger",
+            "slug": "natures_avenger_natures_avenger",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "0",
+            "icon": "natures_avenger_natures_avenger"
+ },
+        {
+            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks gain:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>+20% damage against Frozen units</bullet></bulletlist>",
+            "name": "Frost Weapons",
+            "slug": "frost_weapons",
+            "icon": "frost_weapons"
+ },
+        {
+            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks gain:<bulletlist><bullet>+4 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+20% damage against targets that are Burning.</bullet></bulletlist>",
+            "name": "Searing Blades",
+            "slug": "searing_blades",
+            "icon": "searing_blades"
+ },
+        {
+            "description": "While army leader, non-Hero Undead units in army have:<bulletlist><bullet>+10% damage.</bullet>",
+            "name": "Unholy Leader",
+            "slug": "unholy_leader",
+            "icon": "unholy_leader"
+ },
+        {
+            "description": "While this unit is the army leader, grants other Cavalry and Animal units:<bulletlist><bullet>Flanker.</bullet><bullet>+10% <hyperlink>Critical Hit</hyperlink> chance.</bullet>",
+            "name": "Pack Leader",
+            "slug": "pack_leader",
+            "icon": "pack_leader"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Target heals +15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+            "name": "Mending Touch",
+            "slug": "mending_touch_mending_touch",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "1",
+            "icon": "mending_touch_mending_touch"
+ },
+        {
+            "description": "While this unit is the leader of the army, Animal and Cavalry units gain:<bulletlist><bullet>Mind Control Immunity.</bullet><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet>",
+            "name": "Animal Handler",
+            "slug": "animal_handler",
+            "icon": "animal_handler"
+ },
+        {
+            "description": "This unit has:<bulletlist><bullet>+20% <hyperlink>Critical Hit</hyperlink> chance.</bullet><bullet>Whenever this unit kills another unit:<bulletlist></bullet><bullet>The killed unit explodes, dealing 20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to adjacent enemy units.</bullet></bulletlist></bulletlist>",
+            "name": "Flameburst Weapons",
+            "slug": "flameburst_weapons",
+            "icon": "flameburst_weapons"
+ },
+        {
+            "description": "Summons a random Tier I Fiend whenever this unit kills another unit. There is a small chance a Tier II Fiend will be summoned instead.",
+            "name": "Demonic Slaughter",
+            "slug": "demonic_slaughter"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 60% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful inflicts Slowed.",
+                    "name": "Frozen",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage to units in a 3-hex cone.",
+            "name": "Frost Evocation",
+            "slug": "frost_evocation_frost_evoker",
+            "damage": "15<damagefrost></damagefrost> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+            "icon": "frost_evocation_frost_evoker"
+ },
+        {
+            "description": "Start combat with an <hyperlink>Astral Wisp</hyperlink>.",
+            "name": "Wisp Familiar",
+            "slug": "wisp_familiar",
+            "icon": "wisp_familiar"
+ },
+        {
+            "description": "Start combat with an <hyperlink>Iron Golem Assistant</hyperlink>, a Tier I Fighter Unit.",
+            "name": "Golem Assistant",
+            "slug": "golem_assistant",
+            "icon": "golem_assistant"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Summons 3 random Tier I Undead units.",
+            "name": "Summon Undead",
+            "slug": "summon_undead_summon_undead",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Summoning"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "1",
+            "icon": "summon_undead_summon_undead"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Enemies in a 1-hex radius sustain damage. All corpses in a 1-hex radius turn into Zombie units.",
+            "name": "Dark Ritual",
+            "slug": "dark_ritual_dark_ritual",
+            "damage": "10<damagefrost></damagefrost> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "icon": "dark_ritual_dark_ritual"
+ },
+        {
+            "modifiers": [],
+            "description": "Deals damage to target enemy and heals you the same amount as the damage dealt.",
+            "name": "Draining Blade",
+            "slug": "draining_blade_draining_blade",
+            "damage": "25<damagefrost></damagefrost> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+            "icon": "draining_blade_draining_blade"
+ },
+        {
+            "description": "While this unit is the army leader, friendly non-Fiend and non-Hero units in the army transform into Tier I Fiends upon death in battle. They have a small chance of transforming into Tier II Fiends instead.",
+            "name": "Demonic Anthem",
+            "slug": "demonic_anthem",
+            "icon": "demonic_anthem"
+ },
+        {
+            "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>+20% <hyperlink>Critical Hit</hyperlink> damage.</bullet>",
+            "name": "Reveler's Triumph",
+            "slug": "revelers_triumph",
+            "icon": "revelers_triumph"
+ },
+        {
+            "description": "While this unit is the leader of the army, all Tier I units in the army gain:<bulletlist><bullet>+20% damage to their attacks.</bullet>",
+            "name": "Battle Seeker Training",
+            "slug": "battle_seeker_training",
+            "icon": "battle_seeker_training"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+            "description": "Deals damage to target unit, then deals 30% damage to all units in a 2-hex radius.",
+            "name": "Frostfire Detonation",
+            "slug": "frostfire_detonation_frostfire_detonation",
+            "damage": "12<damagefire></damagefire> 12<damagefrost></damagefrost> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "icon": "frostfire_detonation_frostfire_detonation"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Damage sustained by the target friendly unit is transferred to this unit with a 20% reduction.",
+            "name": "Warding Bond",
+            "slug": "warding_bond_warding_bond",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<leaveoneaction></leaveoneaction>",
+            "range": "4",
+            "icon": "warding_bond_warding_bond"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Summons a random Tier III Elemental unit.",
+            "name": "Summon Elemental",
+            "slug": "summon_elemental_summon_elemental",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Summoning"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "1",
+            "icon": "summon_elemental_summon_elemental"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Summons a random Tier III Animal unit.",
+            "name": "Summon Animal",
+            "slug": "summon_animal_summon_animal",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Summoning"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "1",
+            "icon": "summon_animal_summon_animal"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+            "description": "Friendly units in a 2-hex radius gain:<bulletlist><bullet>10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet>Regeneration</bullet>",
+            "name": "Mass Rejuvenation",
+            "slug": "mass_rejuvenation_mass_rejuvenation",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "4",
+            "icon": "mass_rejuvenation_mass_rejuvenation"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+            "description": "Enemy units in a 2-hex radius have:<bulletlist><bullet>Base 90% chance of becoming Diseased.</bullet><bullet>Base 90% chance of becoming Poisoned.</bullet>",
+            "name": "Virulent Outbreak",
+            "slug": "virulent_outbreak_virulent_outbreak",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Debuff"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "icon": "virulent_outbreak_virulent_outbreak"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Heals target friendly unit +40 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and dispels its negative status effects.<br></br>A target friendly unit that is dead can be revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.",
+            "name": "Restoration",
+            "slug": "restoration_restoration",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "4",
+            "icon": "restoration_restoration"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Friendly units in a 1 hex radius gain:<bulletlist><bullet>Rally</bullet><bullet>Bolstered Defense</bullet><bullet>Bolstered Resistance</bullet>",
+            "name": "Rallying Blessing",
+            "slug": "rallying_blessing_rallying_blessing",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "4",
+            "icon": "rallying_blessing_rallying_blessing"
+ },
+        {
+            "description": "Attacks that hit this unit from within 3 hexes deal 5 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> to the attacker.",
+            "name": "Holy Retribution",
+            "slug": "holy_retribution",
+            "icon": "holy_retribution"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Slight chance of instantly killing an injured target. This chance increases the lower the target's <hp></hp> Hit Points are.",
+            "name": "Assassinate",
+            "slug": "assassinate_assassinate",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "1",
+            "icon": "assassinate_assassinate"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Gain:<bulletlist><bullet>+30% <hyperlink>Melee</hyperlink> attack damage for 3 <turn></turn> Turn</bullet><bullet>2 Sundered Defense</bullet><bullet>2 Sundered Resistance</bullet>",
+            "name": "Reckless Rage",
+            "slug": "reckless_rage_reckless_rage",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "0",
+            "icon": "reckless_rage_reckless_rage"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Unit teleports to target hex and deals damage to adjacent units.",
+            "name": "Demon Step",
+            "slug": "demon_step_demon_step",
+            "damage": "10<damagefire></damagefire> ",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<leaveoneaction></leaveoneaction>",
+            "range": "4",
+            "icon": "demon_step_demon_step"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Makes this unit teleport to target hex and grants it 40% evasion for 1 <turn></turn> Turn.",
+            "name": "Blink",
+            "slug": "blink_blink",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<leaveoneaction></leaveoneaction>",
+            "range": "6",
+            "icon": "blink_blink"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+            "description": "Enemy units in a 1-hex radius <hyperlink>Fumble</hyperlink> their attacks for 1 <turn></turn> Turn.",
+            "name": "Visions of Woe",
+            "slug": "visions_of_woe_visions_of_woe",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Debuff"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "icon": "visions_of_woe_visions_of_woe"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+            "description": "Friendly units in a 1-hex radius gain:<bulletlist><bullet>3 Star Blades.</bullet><bullet>2 Strengthened.</bullet>",
+            "name": "Mana Unchained",
+            "slug": "mana_unchained_mana_unchained",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "4",
+            "icon": "mana_unchained_mana_unchained"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Target Friendly unit regains its <hyperlink>Action Points</hyperlink>.",
+            "name": "Spur to Action",
+            "slug": "spur_to_action_spur_to_action",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "spur_to_action_spur_to_action"
+ },
+        {
+            "description": "While army leader, units in army gain:<bulletlist><bullet>+15 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet>",
+            "name": "Endurance Training",
+            "slug": "endurance_training",
+            "icon": "endurance_training"
+ },
+        {
+            "description": "While army leader, units in army gain:<bulletlist><bullet>+10 <hyperlink>Accuracy</hyperlink>.</bullet><bullet>+10% Critical Chance.</bullet>",
+            "name": "Precision Training",
+            "slug": "precision_training",
+            "icon": "precision_training"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Refresh all your ability cooldowns and once-per-combat abilities.",
+            "name": "Weaver",
+            "slug": "weaver_weaver",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "0",
+            "icon": "weaver_weaver"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "<hyperlink>Magic</hyperlink> attacks gain +80% damage until the end of next turn.",
+            "name": "Channel Power",
+            "slug": "channel_power_channel_power",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "0",
+            "icon": "channel_power_channel_power"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
+                    "name": "Burning",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage in a 1-hex radius.",
+            "name": "Fire Evocation",
+            "slug": "fire_evocation_fire_evoker",
+            "damage": "15<damagefire></damagefire> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "fire_evocation_fire_evoker"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Sundered Resistance for 3 <turn></turn> Turns.",
+                    "name": "Sundered Resistance",
+                    "count": 1
+   },
+                {
+                    "description": "Base 60% chance of inflicting Electrified for 3 <turn></turn> Turns.",
+                    "name": "Electrified",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage to target enemy unit and 2 others within 3 hexes.",
+            "name": "Lightning Evocation",
+            "slug": "lightning_evocation_lightning_evoker",
+            "damage": "10<damagelightning></damagelightning> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "lightning_evocation_lightning_evoker"
+ },
+        {
+            "description": "Unit regains 1 <hyperlink>Action Point</hyperlink> when killing another unit. Works once per <turn></turn> Turn.",
+            "name": "Killing Momentum",
+            "slug": "killing_momentum",
+            "icon": "killing_momentum"
+ },
+        {
+            "description": "Gains:<bulletlist><bullet>First Strike.</bullet><bullet>+20% damage via <hyperlink>Retaliation Attacks</hyperlink> and <hyperlink>Opportunity Attacks</hyperlink>.</bullet>",
+            "name": "Sentinel",
+            "slug": "sentinel",
+            "icon": "sentinel"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+            "description": "For 1 <turn></turn> grants:<bulletlist><bullet>+8 <movementwalk></movementwalk> Movement.</bullet><bullet>Slippery.</bullet><bullet>Elusive.</bullet><bullet>Swift.</bullet>",
+            "name": "Sprint",
+            "slug": "sprint_sprint",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "0",
+            "icon": "sprint_sprint"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Enemy units in a 1-hex radius have a base 90% chance of receiving 2 stacks of Weakened.<br></br>This unit becomes Strengthened for each stack of Weakened that is inflicted.",
+            "name": "Sap Strength",
+            "slug": "sap_strength_sap_strength",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "icon": "sap_strength_entwined_scourge"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful inflicts Slowed.",
+                    "name": "Frozen",
+                    "count": 1
+   }
+  ],
+            "description": "Deal damage to target enemy unit.",
+            "name": "Freezing Blast",
+            "slug": "freezing_blast_freezing_blast",
+            "damage": "14<damagefrost></damagefrost> ",
+            "requisites": [
+                {
+                    "requisite": "Debuff"
+   },
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "4",
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "freezing_blast_white_witch"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet>",
+            "name": "Raise Undead",
+            "slug": "raise_undead_raise_undead",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "4",
+            "icon": "raise_undead_necromancer"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   },
+                {
+                    "description": "Base 30% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
+                    "name": "Immobilized",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage in a 2-hex radius.",
+            "name": "Quake",
+            "slug": "quake_quake",
+            "damage": "12<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "0",
+            "notes": [
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "icon": "quake_stone_spirit"
  }
 ]
 }
