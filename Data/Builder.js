@@ -2221,7 +2221,14 @@ function showTome(a, div) {
                             spa2.className = "tooltiptext";
                         }
 
+                        var title = document.createElement("SPAN");
+                        title.innerHTML = heroSkillIconAndDesc[1].name.toUpperCase();
+                        title.setAttribute("style", "color:burlywood");
 
+
+                        title.innerHTML += "<br>" + heroSkillIconAndDesc[1].category_name + " - " + heroSkillIconAndDesc[1].level_name + "<br><br>";
+
+                        spa2.prepend(title);
 
 
                         div.appendChild(spa2);
@@ -2397,19 +2404,19 @@ function GetHeroSkillDescription(skillID) {
                     if (jsonUnitAbilities.abilities[k].slug.indexOf(jsonHeroSkills.skills[j].abilities[0].slug) != -1) {
                         array[0] = jsonUnitAbilities.abilities[k];
 
-                        return array;
+
                     }
                 }
-            } else {
-                array[1] = jsonHeroSkills.skills[j];
-
-                return array;
-
             }
+            array[1] = jsonHeroSkills.skills[j];
+
+            return array;
 
         }
+
     }
 }
+
 
 
 function GetStructureDescription(structureID) {

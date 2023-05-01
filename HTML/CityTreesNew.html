@@ -34,14 +34,14 @@
             "workshop:14:2:production&unitprod",
             "evocators_abode:15:2:production&unitprod&mana:mystic",
             "artisan_workshop:16:2:production&unitprod&happiness:high",
-            "shipyard:18:2:fishery",
+            "shipyard:18:2:gold",
 
 
             // all the tome buildings
-            "luxury_markets:20:2:na",
-            "artisan_fortification:21:2:garrison",
-            "fortified_crucible:22:2:garrison",
-            "reagent_refinery:23:2:na",
+            "luxury_markets:20:2:na:materium",
+            "artisan_fortification:21:2:garrison:materium",
+            "fortified_crucible:22:2:garrison:materium",
+            "reagent_refinery:23:2:gold:materium",
 
 
             // C
@@ -49,41 +49,41 @@
             "palisade_walls:1:3:garrison",
             "market:6:3:gold",
             "underground_laboratory:7:3:gold:dark",
-            "mana_obelisk:8:3:shrine",
-            "tithe_shrine:9:3:clergy_commons:feudal",
-            "arcane_institute:10:3:library",
-            "ancestral_seer_hall:11:3:battle_ritual_site:barbarian",
-            "granary:12:3:store_house",
-            "grand_mill:13:3:workers_farmstead:industrious",
-            "stonemason:14:3:workshop",
-            "stone_conjurer:15:3:evocators_abode:mystic",
-            "blacksmith:16:3:workshop",
-            "lightforge:17:3:artisan_workshop:high",
-            "fishmonger:18:3:fishery",
+            "mana_obelisk:8:3:mana",
+            "tithe_shrine:9:3:mana&gold:feudal",
+            "arcane_institute:10:3:research",
+            "ancestral_seer_hall:11:3:unitprod&research:barbarian",
+            "granary:12:3:food",
+            "grand_mill:13:3:food&production:industrious",
+            "stonemason:14:3:production",
+            "stone_conjurer:15:3:production&mana:mystic",
+            "blacksmith:16:3:unitprod",
+            "lightforge:17:3:draft&gold:high",
+            "fishmonger:18:3:food",
 
             // all the tome buildings
-            "tower_of_true_sight:20:3:na:",
-            "astral_trade_relay:21:3:na",
-            "throne_of_mirrors:22:3:na",
-            "temple_of_fertility:23:3:na",
+            "tower_of_true_sight:20:3:na:astral",
+            "astral_trade_relay:21:3:gold:astral",
+            "throne_of_mirrors:22:3:garrison:astral",
+            "temple_of_fertility:23:3:food&unitprod:astral",
 
             // D
 
 
             "mint:6:4:gold",
 
-            "monolith:8:4:mana_obelisk",
-            "academy:10:4:arcane_institute",
-            "estate_hall:12:4:granary",
-            "masonic_hall:14:4:stonemason",
-            "armory:16:4:blacksmith",
-            "grand_wharf:18:4:fishery",
+            "monolith:8:4:mana",
+            "academy:10:4:research",
+            "estate_hall:12:4:food",
+            "masonic_hall:14:4:production",
+            "armory:16:4:unitprod",
+            "grand_wharf:18:4:production",
 
             // all the tome buildins
-            "tribunal:20:4:na:",
-            "convent:21:4:na",
-            "barons_palace:22:4:na",
-            "monument_of_supremacy:23:4:na",
+            "tribunal:20:4:happiness&research:order",
+            "convent:21:4:research&mana:order",
+            "barons_palace:22:4:gold&happiness:order",
+            "monument_of_supremacy:23:4:happiness&unitprod:order",
 
 
 
@@ -93,16 +93,16 @@
 
             "merchants_guild:6:5:gold",
 
-            "mages_guild:8:5:monolith",
-            "scholars_guild:10:5:academy",
-            "farmers_guild:12:5:estate_hall",
-            "workers_guild:14:5:masonic_hall",
-            "smiths_guild:16:5:armory",
-            "seafarers_guild:18:5:fishery",
+            "mages_guild:8:5:mana",
+            "scholars_guild:10:5:research",
+            "farmers_guild:12:5:food",
+            "workers_guild:14:5:production",
+            "smiths_guild:16:5:unitprod",
+            "seafarers_guild:18:5:food&production&unitprod&gold",
 
             // all the tome buildins
 
-            "temple_of_the_exalted:20:5:na",
+            "temple_of_the_exalted:20:5:mana&happiness:order",
 
 
 
@@ -153,8 +153,8 @@
 
             // K
             "ballista_towers:2:11:na",
-            "necrotic_spires:3:11:na:tome",
-            "healing_spires:4:11:na:tome",
+            "necrotic_spires:3:11:na:shadow",
+            "healing_spires:4:11:na:order",
             "wizard_tower_br__arcane_observatory:15:10:wizard_tower_br__apex:throne",
             "wizard_tower_br__teleportation_circle:16:10:wizard_tower_br__apex:throne",
             //L
@@ -335,15 +335,48 @@
                                 newNodeBackground.setAttribute("style", "left:0px; top:0px; width:220px");
                                 newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/throne.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "100px";
+                                newNodeBackground.style.backgroundPositionX = "140px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
-                            if (splits[4] == "tome") {
-                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/knowledge.png\")";
+                            if (splits[4] == "order") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/order.png\")";
                                 newNodeBackground.style.backgroundRepeat = "no-repeat";
-                                newNodeBackground.style.backgroundPositionX = "100px";
+                                newNodeBackground.style.backgroundPositionX = "140px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
+                                spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "shadow") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/shadow.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "140px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
+                                spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "nature") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/nature.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "140px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
+                                spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+
+                            if (splits[4] == "materium") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/materium.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "140px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
+                                spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
+                            }
+                            if (splits[4] == "astral") {
+                                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/astral.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "140px";
                                 newNodeBackground.style.backgroundSize = "80px";
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
@@ -401,6 +434,7 @@
 
                         if (type != "na") {
                             var Type = document.createElement("DIV");
+                            Type.innerHTML = "+";
                             if (type.indexOf("&") != -1) {
                                 var typeVar = type.split("&");
 
@@ -412,7 +446,7 @@
 
 
                             } else {
-                                Type.innerHTML = "<" + type + "></" + type + ">";
+                                Type.innerHTML = "+<" + type + "></" + type + ">";
                             }
 
 
@@ -508,10 +542,10 @@
         }
 
         function SetCategories() {
-            CreateCategory("Wizard Tower", 1241, 400, "#00807459", 1886, 1573);
-            CreateCategory("Tome Buildings", 1245, 520, "#4c00ff30", 287, 2267);
-            CreateCategory("Fortifications", 3470, 476, "#80808057", 622, 0);
-            CreateCategory("Basic Income Buildings", 1245, 1600, "#b48d522b", 287, 595);
+            CreateCategory("Wizard Tower", 1241, 400, "#1c645d59", 1886, 1573);
+            CreateCategory("Tome Buildings", 1245, 520, "#482e8530", 287, 2267);
+            CreateCategory("Fortifications", 3470, 476, "#4c4b4b57", 622, 0);
+            CreateCategory("Basic Income Buildings", 1245, 1600, "#8eae6f2b", 287, 595);
             CreateCategory("TII City", 260, 728, "#b48d522b", 1586, 485);
             CreateCategory("TIII City", 260, 728, "#b48d522b", 2549, 485);
             CreateCategory("TIV City", 260, 728, "#b48d522b", 3509, 485);
@@ -560,6 +594,7 @@
 
 
         }
+
     </script>
 
 
@@ -585,7 +620,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <style>
     .branch-line {
         height: 4px;
@@ -633,7 +670,7 @@
         height: auto;
 
         position: relative;
-         transform: scale(0.85);
+        transform: scale(0.85);
     }
 
     .entry {
