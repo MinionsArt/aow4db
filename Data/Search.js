@@ -383,7 +383,7 @@ function searchArrayMultiple(keyword, workingarray, arraytosearch, listToPush, i
     for (j in arraytosearch) {
         if (arraytosearch[j].slug != null) {
             textvalue = arraytosearch[j].slug;
-            if (textvalue.toUpperCase().indexOf(keyword) > -1 && isInArray(workingarray, jsonUnits.units[index].id)) {
+            if (textvalue.toUpperCase().indexOf(keyword) != -1 && isInArray(workingarray, jsonUnits.units[index].id)) {
                 if (listToPush.length >= 1) {
                     if (!isInArray(listToPush, jsonUnits.units[index].id)) {
                         if (!depricatedCheck(jsonUnits.units[index].id)) {

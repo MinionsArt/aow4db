@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
@@ -14,23 +14,13 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray1 = ["copper_golem"];
-            var unitarray2 = ["gargoyle", "lesser_stone_spirit"];
-            var unitarray3 = ["zephyr_archer", "wind_rager"];
-            var unitarray4 = ["iron_golem"];
-            var unitarray5 = ["stone_spirit"];
-            var unitarray6 = ["transmuter"];
-            var unitarray7 = ["golden_golem"];
-            var unitarray8 = ["earth_titan"];
+
+
+            var unitarray = ["copper_golem:tome_of_enchantment", "gargoyle:tome_of_rock", "lesser_stone_spirit:tome_of_rock", "zephyr_archer:tome_of_winds", "wind_rager:tome_of_winds", "iron_golem:tome_of_artificing", "stone_spirit:tome_of_terramancy", "transmuter:tome_of_transmutation", "golden_golem:tome_of_the_golden_realm", "earth_titan:tome_of_the_creator"];
+
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "I - Enchantment");
-                showUnitsFromList(unitarray2, "I - Rock");
-                showUnitsFromList(unitarray3, "II - Winds");
-                showUnitsFromList(unitarray4, "II - Artificing");
-                showUnitsFromList(unitarray5, "III - Terramancy");
-                showUnitsFromList(unitarray6, "III - Transmutation");
-                showUnitsFromList(unitarray7, "IV - Golden Realm");
-                showUnitsFromList(unitarray8, "V - Creator");
+                showUnitsWithIcon(unitarray);
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
             });
@@ -54,7 +44,7 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
+        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
 
         </div>
         <div id="dataHolder">
@@ -65,16 +55,7 @@
 
 
 
-</body>
-<div class="w3-container">
-    <div class="w3-bar w3-black" id="buttonHolder">
-
-    </div>
-    <div id="dataHolder">
-    </div>
-
-
-</div></html>
+</body></html>
 <footer>
     <br>
     <br>

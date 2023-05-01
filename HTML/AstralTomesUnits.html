@@ -21,15 +21,10 @@
             var unitarray5 = ["astral_serpent", "astral_keeper"];
             var unitarray6 = ["phase_beast"];
             var unitarray7 = ["mirror_mimic"];
+
+            var unitarray = ["phantasm_warrior:tome_of_warding", "lesser_storm_spirit:tome_of_evocation", "evoker:tome_of_evocation", "amplification_pylon:tome_of_amplification", "watcher:tome_of_scrying", "astral_serpent:tome_of_summoning", "astral_keeper:tome_of_summoning", "phase_beast:tome_of_teleportation", "mirror_mimic:tome_of_the_astral_mirror"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "I - Warding");
-                // add dropdown sub array
-                showUnitsFromList(unitarray2, "II - Evocation");
-                showUnitsFromList(unitarray3, "III - Amplification");
-                showUnitsFromList(unitarray4, "IV - Scrying");
-                showUnitsFromList(unitarray5, "III - Summoning");
-                showUnitsFromList(unitarray6, "IV - Teleportation");
-                showUnitsFromList(unitarray7, "III - Astral Mirror");
+                showUnitsWithIcon(unitarray);
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
 
@@ -56,7 +51,7 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
+        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
 
         </div>
         <div id="dataHolder">

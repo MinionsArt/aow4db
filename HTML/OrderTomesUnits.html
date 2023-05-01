@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
@@ -14,22 +14,18 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray1 = ["chaplain"];
-            var unitarray2 = ["zealot"];
-            var unitarray3 = ["lightbringer", "divine_beacon"];
-            var unitarray4 = ["inquisitor"];
-            var unitarray5 = ["tyrant_knight"];
-            var unitarray6 = ["shrine_of_smiting"];
-            var unitarray7 = ["eagle_rider"];
+            var unitarray1 = [""];
+            var unitarray2 = [""];
+            var unitarray3 = ["", ""];
+            var unitarray4 = [""];
+            var unitarray5 = [""];
+            var unitarray6 = [""];
+            var unitarray7 = [""];
+
+            var unitarray = ["chaplain:tome_of_faith", "zealot:tome_of_zeal", "lightbringer:tome_of_the_beacon", "divine_beacon:tome_of_the_beacon", "inquisitor:tome_of_the_inquisition", "tyrant_knight:tome_of_subjugation", "shrine_of_smiting:tome_of_exaltation", "eagle_rider:tome_of_supremacy"];
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "I - Faith");
-                // add dropdown sub array
-                showUnitsFromList(unitarray2, "I - Zeal");
-                showUnitsFromList(unitarray3, "II - Beacon");
-                showUnitsFromList(unitarray4, "II - Inquisition");
-                showUnitsFromList(unitarray5, "III - Subjugation");
-                showUnitsFromList(unitarray6, "IV - Exaltation");
-                showUnitsFromList(unitarray7, "IV - Supremacy");
+                showUnitsWithIcon(unitarray);
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
             });
@@ -53,7 +49,7 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
+        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
 
         </div>
         <div id="dataHolder">

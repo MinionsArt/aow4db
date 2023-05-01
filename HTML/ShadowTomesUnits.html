@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
@@ -14,21 +14,19 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray1 = ["bone_golem"];
-            var unitarray2 = ["white_witch", "lesser_snow_spirit"];
-            var unitarray3 = ["banshee"];
-            var unitarray4 = ["necromancer", "zombie"];
-            var unitarray5 = ["snow_spirit"];
-            var unitarray6 = ["living_fog"];
-            var unitarray7 = ["reaper"];
+            var unitarray1 = [""];
+            var unitarray2 = ["", ""];
+            var unitarray3 = [""];
+            var unitarray4 = ["", ""];
+            var unitarray5 = [""];
+            var unitarray6 = [""];
+            var unitarray7 = [""];
+
+            var unitarray = ["bone_golem:tome_of_souls", "white_witch:tome_of_cryomancy", "lesser_snow_spirit:tome_of_cryomancy", "banshee:tome_of_the_doomherald", "necromancer:tome_of_necromancy", "zombie:tome_of_necromancy", "snow_spirit:tome_of_the_cold_dark", "living_fog:tome_of_oblivion", "reaper:tome_of_the_reaper"];
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray1, "I - Souls");
-                showUnitsFromList(unitarray2, "I - Cryomancy");
-                showUnitsFromList(unitarray3, "II - Doomherald");
-                showUnitsFromList(unitarray4, "II - Necromancy");
-                showUnitsFromList(unitarray5, "III - Cold Dark");
-                showUnitsFromList(unitarray6, "IV - Oblivion");
-                showUnitsFromList(unitarray7, "IV - Reaper");
+                showUnitsWithIcon(unitarray);
+
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
             });
@@ -53,7 +51,7 @@
 
 
     <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
+        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
 
         </div>
         <div id="dataHolder">
