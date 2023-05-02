@@ -681,7 +681,7 @@ function addResistanceSlot(a, resistance) {
             spa = document.createElement("SPAN");
             spa.className = "tooltiptext";
 
-            spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:burlywood;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calculate damage sustained from " + firstPart + ".";
+            spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:#deb887 ;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calculate damage sustained from " + firstPart + ".";
 
             var num = "";
             if (a.indexOf("weakness") !== -1) {
@@ -778,7 +778,7 @@ function addstatusResistanceSlot(a) {
     spa = document.createElement("SPAN");
     spa.className = "tooltiptext";
 
-    spa.innerHTML = "<p>" + "<span style=\"color: burlywood;text-transform: uppercase\">Status Resistance</span></p>";
+    spa.innerHTML = "<p>" + "<span style=\"color: #deb887 ;text-transform: uppercase\">Status Resistance</span></p>";
 
     spa.innerHTML += "Reduces the chance that the unit will be affeted by negative status effects. <br><br>Current Chance Reduction :  <span style=\"color:white;\">" + GetDamageReductionPercentage(a, undefined) + "</span> ";
 
@@ -2195,7 +2195,7 @@ function showTome(a, div) {
 
                         var spa = document.createElement("SPAN");
                         spa.className = "tooltiptext";
-                        spa.innerHTML = "<span style=\"color: burlywood;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes.tomes[j].passives[l].structure_slug);
+                        spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes.tomes[j].passives[l].structure_slug);
 
                         div.appendChild(spa);
                     } else if ('hero_skill_slug' in jsonTomes.tomes[j].passives[l]) {
@@ -2224,7 +2224,7 @@ function showTome(a, div) {
 
                         var title = document.createElement("SPAN");
                         title.innerHTML = heroSkillIconAndDesc[1].name.toUpperCase();
-                        title.setAttribute("style", "color:burlywood");
+                        title.setAttribute("style", "color:#deb887 ");
 
 
                         title.innerHTML += "<br>" + heroSkillIconAndDesc[1].category_name + " - " + heroSkillIconAndDesc[1].level_name + "<br><br>";
