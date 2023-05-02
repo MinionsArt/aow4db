@@ -1033,7 +1033,7 @@ async function SetCollapsibleStuff() {
             var buttonHolder = document.getElementById("buttonHolder");
             var holderHeight = buttonHolder.offsetHeight;
             var dataHolder = document.getElementById("dataHolder");
-            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px; margin-left:200px");
         });
 
 
@@ -1042,7 +1042,7 @@ async function SetCollapsibleStuff() {
     var buttonHolder = document.getElementById("buttonHolder");
     var holderHeight = buttonHolder.offsetHeight;
     var dataHolder = document.getElementById("dataHolder");
-    dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+    dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;; margin-left:200px");
 }
 
 async function SetLevelUpStuff() {
