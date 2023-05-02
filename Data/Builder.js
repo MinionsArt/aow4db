@@ -2441,7 +2441,7 @@ function showStructure(a) {
                 nameString = nameString.replace("<br>", "");
                 nameString = nameString.replace("<br>", "");
             }
-            console.log(nameString + " " + a);
+
             modName.innerHTML = nameString;
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
