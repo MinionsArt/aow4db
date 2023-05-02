@@ -2262,7 +2262,10 @@ function showTome(a, div) {
                 var amount = 15;
             }
 
-            div.innerHTML = "+" + amount + "<casttactical></casttactical>" + "+" + amount + "<caststrategic></caststrategic>";
+            if (amount != undefined) {
+                div.innerHTML = "+" + amount + "<casttactical></casttactical>" + "+" + amount + "<caststrategic></caststrategic>";
+            }
+
             unitTypesDiv.appendChild(div);
 
             unitTypesDiv.setAttribute("id", "initialBonusList" + a);
@@ -2446,10 +2449,14 @@ function showStructure(a) {
 
 
             modName.innerHTML = nameString;
+            // backtracktome
+            var tomeNameandTier = backtraceStructureToTomeNameAndTier(a);
+
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
             descriptionDiv = document.getElementById("moddescription");
             description = "";
+
             if (jsonStructureUpgrades.structures[j].requirement_description != "") {
                 description = jsonStructureUpgrades.structures[j].requirement_description + "<br>";
             }
@@ -2477,7 +2484,11 @@ function showStructure(a) {
 
             tier = document.getElementById("modtier");
             if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
-                tier.innerHTML = "Province Improvement";
+                if (tomeNameandTier != "") {
+                    tier.innerHTML = "<br> Tier " + romanize(tomeNameandTier[1]) + " - " + tomeNameandTier[0] + "<br>";
+                }
+                tier.innerHTML += "Province Improvement";
+
             } else {
                 tier.innerHTML = "Building";
             }
@@ -2927,6 +2938,35 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
             }
         }
     }
+}
+
+
+
+function backtraceStructureToTomeNameAndTier(structure) {
+    var array = new Array();
+    console.log(structure);
+    for (j in jsonTomes.tomes) {
+        {
+            for (k in jsonTomes.tomes[j].passives) {
+                if ('structure_slug' in jsonTomes.tomes[j].passives[k]) {
+                    if (structure.indexOf(jsonTomes.tomes[j].passives[k].structure_slug) != -1) {
+
+                        array.push(jsonTomes.tomes[j].affinities + " " + jsonTomes.tomes[j].name);
+                        if (jsonTomes.tomes[j].tier != "") {
+                            array.push(jsonTomes.tomes[j].tier);
+                        } else {
+                            array.push("");
+                        }
+
+                        return array;
+
+                    }
+                }
+
+            }
+        }
+    }
+    return "";
 }
 
 function backtraceTomeNameAndTier(spell) {
