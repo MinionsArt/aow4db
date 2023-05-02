@@ -201,7 +201,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
             var holderHeight = buttonHolder.offsetHeight;
         }
 
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px; margin-left:200px");
 
 
     }
