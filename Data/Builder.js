@@ -1727,6 +1727,7 @@ function showUnit(a, divID) {
 
 }
 
+
 function backtrackUnitOrigins(unitID) {
     var holder = document.getElementById("originHolder");
     var culture = (CheckIfInCulture(unitID));
@@ -2442,6 +2443,8 @@ function showStructure(a) {
                 nameString = nameString.replace("<br>", "");
             }
 
+
+
             modName.innerHTML = nameString;
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
@@ -2460,7 +2463,9 @@ function showStructure(a) {
 
             imagelink = document.getElementById("modicon");
 
-
+            if (a.startsWith("_")) {
+                a = a.replace("_", "");
+            }
 
             imagelink.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + a + ".png");
             imagelink.setAttribute("id", "modicon" + a);
