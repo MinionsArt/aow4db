@@ -1935,7 +1935,15 @@ function GetDamageReductionPercentage(number, additionalNumber) {
     if (additionalNumber === undefined) {
         additionalNumber = 0;
     }
-    var defensePercentage = 1 - Math.pow(0.9, parseInt(number) + parseInt(additionalNumber));
+    var combinedDefense = parseInt(number) + parseInt(additionalNumber);
+
+    if (combinedDefense >= 0) {
+        var defensePercentage = 1 - Math.pow(0.9, combinedDefense);
+    } else {
+
+        var defensePercentage = -(1 - Math.pow(0.9, -combinedDefense));
+    }
+
     var percentage = Math.round(defensePercentage * 100);
     if (percentage > 0) {
         percentage = "<span style=\"color:lawngreen\">" + percentage + "%</span>";
