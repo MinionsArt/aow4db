@@ -1247,9 +1247,9 @@ async function showSkillFromList(list, divID) {
 
         // check if has description
         if ('description' in list[i]) {
-            showSkill(list[i], "", list[i].icon, list[i].category_name, list[i].level_name);
+            showSkill(list[i], "", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name);
         } else {
-            showSkill(list[i], "true", list[i].icon, list[i].category_name, list[i].level_name);
+            showSkill(list[i], "true", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name);
         }
 
 
@@ -2731,7 +2731,7 @@ function showSpell(a, showOrigin) {
 }
 
 
-function showSkill(a, checkInAbilities, icon_slug, category, level) {
+function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) {
     var modName, description, cost, type, tier = "";
     var found = false;
 
@@ -2743,6 +2743,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level) {
                 modName.innerHTML = a.name.toUpperCase();
                 if (category != undefined) {
                     modName.innerHTML += "<br>" + category + " - " + level;
+                    modName.innerHTML += "<br>" + group_name;
                 }
 
                 modName.setAttribute("id", "modname" + a.id);
@@ -2846,6 +2847,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level) {
                     spa.setAttribute("style", "width: 310px");
 
                 } else {
+
                     imagelink.remove();
                 }
 
