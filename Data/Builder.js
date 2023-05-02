@@ -1543,7 +1543,7 @@ function showUnit(a, divID) {
             mp.setAttribute("id", "mp" + a);
             mp.innerHTML = jsonUnits.units[i].mp;
             tier = document.getElementById("tier");
-            tier.setAttribute("id", "tier" + a);
+
 
 
             //
@@ -1710,6 +1710,7 @@ function showUnit(a, divID) {
 
             // backtrack origin;
             backtrackUnitOrigins(a);
+            tier.setAttribute("id", "tier" + a);
             document.getElementById("originHolder").setAttribute("id", "originHolder" + a);
 
 
@@ -1785,6 +1786,10 @@ function backtrackUnitOrigins(unitID) {
             spa.innerHTML = "Unit from Spell: " + spells.name;
         }
 
+        // var tier = document.getElementById("tier");
+        //if (spells.upkeep != "") {
+        //    tier.innerHTML += spells.upkeep;
+        //}
 
 
         imag.setAttribute("src", "/aow4db/Icons/SpellIcons/" + spells.id + ".png");
