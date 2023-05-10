@@ -2498,7 +2498,12 @@ function showStructure(a) {
             tier = document.getElementById("modtier");
             if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
                 if (tomeNameandTier != "") {
-                    tier.innerHTML = "<br> Tier " + romanize(tomeNameandTier[1]) + " - " + tomeNameandTier[0] + "<br>";
+                    if (tomeNameandTier[1] != 0) {
+                        tier.innerHTML = "<br> Tier " + romanize(tomeNameandTier[1]) + " - " + tomeNameandTier[0] + "<br>";
+                    } else {
+                        tier.innerHTML = "<br>" + tomeNameandTier[0] + "<br>";
+                    }
+
                 }
                 tier.innerHTML += "Province Improvement";
 
@@ -2965,22 +2970,38 @@ function backtraceStructureToTomeNameAndTier(structure) {
             for (k in jsonTomes.tomes[j].passives) {
                 if ('structure_slug' in jsonTomes.tomes[j].passives[k]) {
                     if (structure.indexOf(jsonTomes.tomes[j].passives[k].structure_slug) != -1) {
+                        if (structure.indexOf("wildlife_sanctuary") != -1) {
 
-                        array.push(jsonTomes.tomes[j].affinities + " " + jsonTomes.tomes[j].name);
-                        if (jsonTomes.tomes[j].tier != "") {
-                            array.push(jsonTomes.tomes[j].tier);
+                            array.push("2 <empirenature></empirenature> Tome of Beasts");
+
+
                         } else {
-                            array.push("");
+                            if ('affinities' in jsonTomes.tomes[j]) {
+                                array.push(jsonTomes.tomes[j].affinities + " " + jsonTomes.tomes[j].name);
+                            } else {
+                                array.push(jsonTomes.tomes[j].name);
+                            }
+
                         }
+
+
+                        if (structure.indexOf("wildlife_sanctuary") != -1) {
+                            array.push(1);
+                        } else {
+                            array.push(jsonTomes.tomes[j].tier);
+                        }
+
+
 
                         return array;
 
                     }
                 }
-
             }
+
         }
     }
+
     return "";
 }
 
