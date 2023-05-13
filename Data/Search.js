@@ -189,7 +189,10 @@ function searchUnits(keyword) {
     SetCollapsibleButtonsAndDivs("Siege Projects", listSiegeProj, "searchSiege");
     // SetCollapsibleButtonsAndDivs("Hero Skills", listskills, "searchSkill");
     SetLevelUpStuff();
+
+
 }
+
 
 function searchArray(keyword, arraytosearch, listToPushTo, index) {
     var j = 0;
@@ -255,7 +258,7 @@ function findUnitWithAbility(ability, listToPushTo) {
     for (i = 0; i < jsonUnits.units.length; i++) {
         if ('abilities' in jsonUnits.units[i]) {
             for (j in jsonUnits.units[i].abilities) {
-                console.log(ability);
+
                 if (ability == jsonUnits.units[i].abilities[j].slug) {
 
                     if (listToPushTo.length >= 1) {
