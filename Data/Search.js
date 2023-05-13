@@ -24,8 +24,8 @@ function searchData(keywords) {
     }
 
 
-    //var test = filter.replaceAll(' ', "_");
-    searchUnits(filter);
+    var test = filter.replaceAll(' ', "_");
+    searchUnits(test);
     var currenturl = window.location.href.split('?')[0];
 
     //window.history.replaceState({}, 'foo', currenturl + "?search=" + keywords);
