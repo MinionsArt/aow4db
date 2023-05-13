@@ -12,7 +12,7 @@ var mysticCultureUnits = ["mystic_projection", "arcane_guard", "arcanist", "soot
 
 var MountedSpecialList = ["pioneer", "scout", "lightseeker", "bastion", "knight", "outrider", "dark_knight", "spellbreaker", "awakener", "fury", "pathfinder", "tyrant_knight"];
 
-function GetTierAndName(id) {
+function GetUnitTierAndName(id) {
     for (i in jsonUnits.units) {
         if (id == jsonUnits.units[i].id) {
             return romanize(jsonUnits.units[i].tier) + " - " + getUnitTypeTag(jsonUnits.units[i].secondary_passives) + " " + jsonUnits.units[i].name;
@@ -21,7 +21,7 @@ function GetTierAndName(id) {
 
 }
 
-function GetTierAndNameTome(id) {
+function GetUnitTierAndNameTome(id) {
     for (i in jsonTomes.tomes) {
         if (id == jsonTomes.tomes[i].id) {
             return romanize(jsonTomes.tomes[i].tier) + " - " + jsonTomes.tomes[i].name;
@@ -30,9 +30,20 @@ function GetTierAndNameTome(id) {
 
 }
 
+function GetSpellTierAndName(id) {
+    for (i in jsonSpells.spells) {
+        if (id == jsonSpells.spells[i].id) {
+            return jsonSpells.spells[i].name;
+        }
+    }
+
+}
+
+
+
 function ShowUnitFromLink() {
     var unitID = searchParams.get('unit');
-    document.title = "Age of Wonders 4 Database - " + GetTierAndName(unitID).split(">")[2];
+    document.title = "Age of Wonders 4 Database - " + GetUnitTierAndName(unitID).split(">")[2];
     showUnitFromString(unitID, "dataHolder");
 }
 
@@ -81,6 +92,8 @@ function getUnitTypeTag(passivesList) {
 
 function SetButtonsAndDivs(list, parent, cardType) {
     var modName, description, cost, type, tier, i, nameString = "";
+
+
     for (i in list) {
         var found = false;
 
@@ -135,8 +148,13 @@ function SetButtonsAndDivs(list, parent, cardType) {
         }
 
 
-        if (cardType == "search") {
+        if (cardType == "searchUnit") {
             showUnitFromString(list[i], list[i]);
+        }
+
+        if (cardType == "searchSpell") {
+            showSpellFromString(list[i], list[i]);
+            console.log("spawning card");
         }
 
 
@@ -159,9 +177,9 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
 
         if (cardType == "tome") {
-            btn.innerHTML = GetTierAndNameTome(list[i]);
+            btn.innerHTML = GetUnitTierAndNameTome(list[i]);
         } else if (cardType == "unitTomeIcon") {
-            btn.innerHTML = "<img src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetTierAndName(splitIcon[0]);
+            btn.innerHTML = "<img src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetUnitTierAndName(splitIcon[0]);
 
             if (MountedSpecialList.includes(splitIcon[0])) {
                 imag = document.createElement("IMG");
@@ -172,8 +190,10 @@ function SetButtonsAndDivs(list, parent, cardType) {
                 imag.setAttribute("style", "position:relative; float:right");
             }
 
+        } else if (cardType == "searchSpell") {
+            btn.innerHTML = GetSpellTierAndName(list[i]);
         } else {
-            btn.innerHTML = GetTierAndName(list[i]);
+            btn.innerHTML = GetUnitTierAndName(list[i]);
 
             if (MountedSpecialList.includes(list[i])) {
                 imag = document.createElement("IMG");
@@ -195,7 +215,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
 
 
-        if (cardType != "search") {
+        if (cardType != "searchUnit") {
             var holderHeight = buttonHolder.offsetHeight + 0;
         } else {
             var holderHeight = buttonHolder.offsetHeight;
@@ -279,7 +299,39 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
     }
 
+    if (cardType == "searchSkill") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight + 50;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
 
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showSkillFromList(list, overwrite);
+    }
+
+    if (cardType == "searchSiege") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showSiegeProjects(list, overwrite);
+    }
 
     if (cardType == "unit") {
         btn.className = "collapsibleUnits";
@@ -287,7 +339,26 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         content.setAttribute("id", overwrite + "-button");
         content.className = "contentUnits";
         buttonHolder.append(content);
+        showSpellFromList(list, overwrite);
 
+    }
+
+    if (cardType == "searchSpell") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+        showSpellFromList(list, overwrite);
+
+        // }
     }
 
     if (cardType == "tome") {
@@ -403,16 +474,10 @@ function addAbilityslot(a, b) {
 
     for (j in jsonUnitAbilities.abilities) {
         if (a == jsonUnitAbilities.abilities[j].slug) {
-            if (jsonUnitAbilities.abilities[j].damage === undefined) {
-                abilityDam = "";
-            } else {
+            abilityDam = "";
+            if ('damage' in jsonUnitAbilities.abilities[j]) {
                 abilityDam = jsonUnitAbilities.abilities[j].damage;
             }
-
-
-
-
-
 
             abilityType = jsonUnitAbilities.abilities[j].actionPoints;
 
@@ -421,10 +486,8 @@ function addAbilityslot(a, b) {
             abilityName = jsonUnitAbilities.abilities[j].name;
             abilityIcon = jsonUnitAbilities.abilities[j].icon;
 
-
-            if (jsonUnitAbilities.abilities[j].requisites === undefined) {
-                abilityReq = "";
-            } else {
+            abilityReq = "";
+            if ('requisites' in jsonUnitAbilities.abilities[j]) {
                 abilityReq = "";
                 for (k in jsonUnitAbilities.abilities[j].requisites) {
                     if (k == 0) {
@@ -437,21 +500,18 @@ function addAbilityslot(a, b) {
                         abilityReq += ")";
                     }
                 }
-
             }
 
-            if (jsonUnitAbilities.abilities[j].modifiers === undefined) {
-                abilityMod = "";
-            } else {
-
+            abilityMod = "";
+            if ('modifiers' in jsonUnitAbilities.abilities[j]) {
 
                 for (l in jsonUnitAbilities.abilities[j].modifiers) {
                     abilityName += "&#11049";
                     abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
                     abilityMod += jsonUnitAbilities.abilities[j].modifiers[l].description + "</bullet><br>";
                 }
-
             }
+
 
             // add notes
 
@@ -1133,15 +1193,26 @@ async function showEquipmentFromList(list, divID) {
 
 }
 
-async function showSiegeProjects() {
+async function showSiegeProjects(list) {
 
 
 
-    await spawnSpellCards(jsonSiegeProjects.projects, "dataHolder");
 
-    for (var i = 0; i < jsonSiegeProjects.projects.length; i++) {
-        showSiegeProject(jsonSiegeProjects.projects[i].name);
+
+    if (list === undefined) {
+        await spawnSpellCards(jsonSiegeProjects.projects, "dataHolder");
+        for (var i = 0; i < jsonSiegeProjects.projects.length; i++) {
+            showSiegeProject(jsonSiegeProjects.projects[i].name);
+        }
+    } else {
+        await spawnSpellCards(list, "Siege Projects");
+        for (i in list) {
+
+
+            showSiegeProject(list[i]);
+        }
     }
+
 
 
 
@@ -1207,6 +1278,18 @@ async function spawnSpellCards(list, divID) {
         var iDiv = spell_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
+
+}
+
+async function spawnSpellCardSingle(list, divID) {
+    if (divID === undefined) {
+        divID = "spell";
+    }
+    var doc = document.getElementById(divID);
+
+    var iDiv = spell_card_template.content.cloneNode(true);
+    doc.appendChild(iDiv);
+
 
 }
 
@@ -1324,7 +1407,7 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 }
 
 async function showSpellFromString(string, divID) {
-    await spawnSpellCards(string, divID);
+    await spawnSpellCardSingle(string, divID);
     showSpell(string, true);
 
 }
@@ -2149,7 +2232,48 @@ function showSiegeProject(id) {
 
 
         }
+        if (id == jsonSiegeProjects.projects[i].id) {
+
+
+            modName = document.getElementById("modname");
+            modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
+            modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
+            descriptionDiv = document.getElementById("moddescription");
+            description = jsonSiegeProjects.projects[i].description;
+
+            description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
+
+            imagelink = document.getElementById("modicon");
+
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects.projects[i].name);
+
+
+            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects.projects[i].id + ".png");
+            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+            descriptionDiv.innerHTML = description;
+            descriptionDiv.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+
+            tier = document.getElementById("modtier");
+
+            tier.innerHTML = "<garrison></garrison> Siege Project";
+
+            tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
+
+            cost = document.getElementById("modcost");
+            cost.innerHTML = "Cost:<br>" + jsonSiegeProjects.projects[i].cost;
+            cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
+
+
+            found = true;
+
+
+        }
     }
+
+
+
 }
 
 
@@ -2585,7 +2709,7 @@ function showWorldStructure(a) {
                 description += "<br>Summoned Units:<br>";
                 for (x in jsonWorldStructures.structures[j].unit_unlocks) {
                     var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonWorldStructures.structures[j].unit_unlocks[x].slug + "\" target=\"_blank\">" + GetTierAndName(jsonWorldStructures.structures[j].unit_unlocks[x].slug) + "</a>" + "</bullet>";
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonWorldStructures.structures[j].unit_unlocks[x].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonWorldStructures.structures[j].unit_unlocks[x].slug) + "</a>" + "</bullet>";
                     unitTypesDiv.appendChild(div);
                 }
             }
@@ -2640,7 +2764,7 @@ function showUnitUnlock(a) {
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
     var div = document.createElement("DIV");
-    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + a.unit_slug + "\" target=\"_blank\">" + GetTierAndName(a.unit_slug) + "</a>" + "</bullet>";
+    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + a.unit_slug + "\" target=\"_blank\">" + GetUnitTierAndName(a.unit_slug) + "</a>" + "</bullet>";
     unitTypesDiv.appendChild(div);
 
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
@@ -2679,10 +2803,19 @@ function showSpell(a, showOrigin) {
             modName = document.getElementById("modname");
             modName.innerHTML = jsonSpells.spells[j].name.toUpperCase();
             modName.setAttribute("id", "modname" + a);
+            description = "";
             descriptionDiv = document.getElementById("moddescription");
-            description = jsonSpells.spells[j].description;
+
+            if ('upkeep' in jsonSpells.spells[j]) {
+                description = "<br>Upkeep: " + jsonSpells.spells[j].upkeep + "<br><br>";
+
+            }
+
+            description += jsonSpells.spells[j].description;
 
             unitTypesDiv = document.getElementById("affectUnitTypes");
+
+
             if (jsonSpells.spells[j].enchantment_requisites != undefined) {
                 description += "<br>Affected Unit Types: <br>";
             }
@@ -2696,7 +2829,7 @@ function showSpell(a, showOrigin) {
                 description += "<br>Summoned Units:<br>";
                 for (x in jsonSpells.spells[j].summoned_units) {
                     var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonSpells.spells[j].summoned_units[x].slug + "\" target=\"_blank\">" + GetTierAndName(jsonSpells.spells[j].summoned_units[x].slug) + "</a>" + "</bullet>";
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonSpells.spells[j].summoned_units[x].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonSpells.spells[j].summoned_units[x].slug) + "</a>" + "</bullet>";
                     unitTypesDiv.appendChild(div);
                 }
             }
