@@ -2205,7 +2205,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Rally Unit Unlocked from <hyperlink>" +
+        spa.innerHTML = "Unit Unlocked from <hyperlink>" +
             tree.category + " " + tree.required_level + "</<hyperlink> : <hyperlink>" + tree.name + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + tree.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
