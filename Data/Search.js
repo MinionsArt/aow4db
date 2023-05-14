@@ -4,6 +4,9 @@ if (searchKeyword != undefined) {
 }
 
 
+var excludeListStructures = ["shadow_bolstering_matrix", "nature_bolstering_matrix", "materium_bolstering_matrix", "chaos_bolstering_matrix", "order_bolstering_matrix", "astral_bolstering_matrix"];
+
+
 
 function isInArray(array, search) {
     return array.indexOf(search) >= 0;
@@ -279,7 +282,7 @@ function returnStructure(fieldToSearch) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonStructureUpgrades.structures[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonStructureUpgrades.structures[i].id)) {
+                if (!isInArray(list, jsonStructureUpgrades.structures[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades.structures[i].id)) {
                     list.push(jsonStructureUpgrades.structures[i].id);
                 }
             }
@@ -289,7 +292,7 @@ function returnStructure(fieldToSearch) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
                 textvalue = Sanitize(jsonStructureUpgrades.structures[i].description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonStructureUpgrades.structures[i].id)) {
+                    if (!isInArray(list, jsonStructureUpgrades.structures[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades.structures[i].id)) {
                         list.push(jsonStructureUpgrades.structures[i].id);
                     }
                 }
@@ -298,7 +301,7 @@ function returnStructure(fieldToSearch) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
                 textvalue = Sanitize(jsonStructureUpgrades.structures[i].prediction_description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonStructureUpgrades.structures[i].id)) {
+                    if (!isInArray(list, jsonStructureUpgrades.structures[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades.structures[i].id)) {
                         list.push(jsonStructureUpgrades.structures[i].id);
                     }
                 }
