@@ -390,6 +390,25 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         showStructures(list, overwrite);
     }
 
+    if (cardType == "searchWorldStruct") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showWorldStructures(list, overwrite);
+    }
+
+
+
     if (cardType == "unit") {
         btn.className = "collapsibleUnits";
         var content = document.createElement("DIV");
@@ -1298,6 +1317,30 @@ async function showStructures(list) {
 
 
 }
+
+async function showWorldStructures(list) {
+
+
+
+
+
+
+    await spawnStructureCards(list, "World Structures");
+    for (i in list) {
+
+
+        showWorldStructure(list[i]);
+    }
+
+
+
+
+
+
+
+}
+
+
 
 async function spawnTomeCards(list, divID) {
     if (divID === undefined) {

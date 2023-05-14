@@ -220,6 +220,35 @@ function Sanitize(string) {
     return string;
 }
 
+function returnWorldStructure(fieldToSearch) {
+    var list = new Array();
+    for (i = 0; i < jsonWorldStructures.structures.length; i++) {
+        if (document.getElementById("namesCheck").checked) {
+            textvalue = jsonWorldStructures.structures[i].id;
+            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(list, jsonWorldStructures.structures[i].id)) {
+                    list.push(jsonWorldStructures.structures[i].id);
+                }
+            }
+        }
+        if (document.getElementById("descriptionCheck").checked) {
+            if ('description' in jsonWorldStructures.structures[i]) {
+                fieldToSearch = fieldToSearch.replaceAll("_", " ");
+                textvalue = Sanitize(jsonWorldStructures.structures[i].description);
+                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    if (!isInArray(list, jsonWorldStructures.structures[i].id)) {
+                        list.push(jsonWorldStructures.structures[i].id);
+                    }
+                }
+            }
+
+
+
+        }
+    }
+
+    return list;
+}
 
 function returnStructure(fieldToSearch) {
     var list = new Array();
@@ -274,6 +303,7 @@ function searchUnits(keyword) {
     var listSiegeProj = returnSiegeProj(fields[0]);
     var listskills = returnSkillList(fields[0]);
     var listStructures = returnStructure(fields[0]);
+    var listWorldStructures = returnWorldStructure(fields[0]);
 
 
 
@@ -293,6 +323,9 @@ function searchUnits(keyword) {
 
     if (listStructures.length > 0) {
         SetCollapsibleButtonsAndDivs("Structures", listStructures, "searchStruct");
+    }
+    if (listWorldStructures.length > 0) {
+        SetCollapsibleButtonsAndDivs("World Structures", listWorldStructures, "searchWorldStruct");
     }
     if (listskills.length > 0) {
         SetCollapsibleButtonsAndDivs("Hero Skills", listskills, "searchSkill");
