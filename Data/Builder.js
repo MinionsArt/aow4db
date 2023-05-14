@@ -1646,6 +1646,8 @@ function showUnit(a, divID) {
             tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
 
+
+
             prodcost = document.getElementById("productioncost");
             prodcost.setAttribute("id", "productioncost" + a);
             prodcost.innerHTML = "Cost: " + jsonUnits.units[i].cost;
@@ -1667,6 +1669,8 @@ function showUnit(a, divID) {
                 if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("flying") != -1) {
                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Flying</bullet></span><br>";
                 }
+
+
 
 
 
@@ -1713,6 +1717,10 @@ function showUnit(a, divID) {
 
             for (x in jsonUnits.units[i].primary_passives) {
                 addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
+
+                if (jsonUnits.units[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
+                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75) + "*";
+                }
             }
 
             var y = "";
@@ -1994,6 +2002,12 @@ function CheckIfInAncientWonder(unitID) {
 
     }
     return wonder;
+}
+
+function ReduceUpkeepPercentage(value, percentage) {
+    var number = value.split("<");
+    var reducedUpkeep = Math.round(percentage * parseInt(number[0]));
+    return reducedUpkeep + "<" + number[1] + "<" + number[2];
 }
 
 function ReturnWeaknessOrResistanceNumber(slug) {
