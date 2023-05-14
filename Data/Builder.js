@@ -1994,6 +1994,8 @@ function backtrackUnitOrigins(unitID, name) {
         imag.setAttribute("width", "60");
         imag.setAttribute("height", "60");
         btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/" + capitalized + "Units.html\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
         holder.appendChild(btn);
