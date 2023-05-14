@@ -2066,7 +2066,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa = document.createElement("SPAN");
         spa.className = "tooltiptext";
 
-        spa.innerHTML = "Unit Unlocked from Tier <hyperlink>" + romanize(tomes.tier) + " - " + tomes.affinities + " " + tomes.name + "</<hyperlink>";
+        spa.innerHTML = "Unit production unlocked from Tier <hyperlink>" + romanize(tomes.tier) + " - " + tomes.affinities + " " + tomes.name + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomes.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
@@ -2094,9 +2094,9 @@ function backtrackUnitOrigins(unitID, name) {
 
         var tierandnameoftome = backtraceTomeNameAndTier(spells[x].id);
         if (tierandnameoftome != "") {
-            spa.innerHTML = "Unit from Spell: <hyperlink>" + spells[x].name + "</hyperlink><br>in Tier <hyperlink>" + romanize(tierandnameoftome[1]) + " - " + tierandnameoftome[0] + "</hyperlink>";
+            spa.innerHTML = "Unit mentioned in Spell: <hyperlink>" + spells[x].name + "</hyperlink><br>in Tier <hyperlink>" + romanize(tierandnameoftome[1]) + " - " + tierandnameoftome[0] + "</hyperlink>";
         } else {
-            spa.innerHTML = "Unit from Spell: <hyperlink>" + spells[x].name + "</<hyperlink>";
+            spa.innerHTML = "Unit mentioned in Spell: <hyperlink>" + spells[x].name + "</<hyperlink>";
         }
 
 
@@ -2128,7 +2128,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Unit Summoned by Siege Project <hyperlink> " + siege.name + "</hyperlink>";
+        spa.innerHTML = "Unit mentioned in Siege Project <hyperlink> " + siege.name + "</hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + siege.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
@@ -2153,7 +2153,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Unit From Structure <hyperlink> " + struc.name + "</hyperlink>";
+        spa.innerHTML = "Unit mentioned in Structure <hyperlink> " + struc.name + "</hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + struc.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
@@ -2180,7 +2180,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Rally Unit Unlocked from <hyperlink>" +
+        spa.innerHTML = "Rally Unit unlocked from <hyperlink>" +
             wonder.type + "</<hyperlink> : <hyperlink>" + wonder.name + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/StructurePics/" + wonder.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -2205,7 +2205,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Unit Unlocked from <hyperlink>" +
+        spa.innerHTML = "Unit mentioned in <hyperlink>" +
             tree.category + " " + tree.required_level + "</<hyperlink> : <hyperlink>" + tree.name + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + tree.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -2231,7 +2231,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Unit From Ability <hyperlink>" +
+        spa.innerHTML = "Unit mentioned in Ability <hyperlink>" +
             unitAbility[1].name + "</hyperlink> of Unit <hyperlink>" + unitAbility[0].name + "</hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/Abilities/" + unitAbility[1].slug + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -2256,7 +2256,7 @@ function backtrackUnitOrigins(unitID, name) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Unit From Hero Skill <hyperlink>" +
+        spa.innerHTML = "Unit mentioned in Hero Skill <hyperlink>" +
             heroSkill[1].name + "</hyperlink>";
         if (heroSkill[0] != "") {
             imag.setAttribute("src", "/aow4db/Icons/Abilities/" + heroSkill[0].icon + ".png");
