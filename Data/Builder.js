@@ -2478,13 +2478,16 @@ function CheckIfInSiege(unitName) {
 function CheckIfInStructure(unitName) {
     var structure = "";
     for (i in jsonStructureUpgrades.structures) {
-
-        if (jsonStructureUpgrades.structures[i].prediction_description.indexOf(">" + unitName + "<") != -1) {
+        if (unitName == "Warg") {
+            unitName = "Warg<";
+        }
+        if (jsonStructureUpgrades.structures[i].prediction_description.indexOf(">" + unitName) != -1) {
 
             structure = jsonStructureUpgrades.structures[i];
 
         }
-        if (jsonStructureUpgrades.structures[i].description.indexOf(">" + unitName + "<") != -1) {
+
+        if (jsonStructureUpgrades.structures[i].description.indexOf(">" + unitName) != -1) {
 
             structure = jsonStructureUpgrades.structures[i];
 
