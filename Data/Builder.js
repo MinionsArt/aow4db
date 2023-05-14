@@ -373,6 +373,23 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         showSiegeProjects(list, overwrite);
     }
 
+    if (cardType == "searchEmpire") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showEmpireTrees(list, overwrite);
+    }
+
     if (cardType == "searchStruct") {
         btn.className = "w3-bar-item w3-button tablink";
         var dataHolder = document.getElementById("dataHolder");
@@ -1298,23 +1315,19 @@ async function showSiegeProjects(list) {
 
 async function showStructures(list) {
 
-
-
-
-
-
     await spawnSpellCards(list, "Structures");
     for (i in list) {
-
-
         showStructure(list[i]);
     }
 
+}
 
+async function showEmpireTrees(list) {
 
-
-
-
+    await spawnSpellCards(list, "Empire Tree");
+    for (i in list) {
+        showEmpireTree(list[i]);
+    }
 
 }
 
@@ -3319,12 +3332,79 @@ function showWorldStructure(a) {
 
 
 
+            tier = document.getElementById("modtier");
+
+            tier.setAttribute("id", "modtier" + a);
+            tier.innerHTML = "";
+
+            cost = document.getElementById("modcost");
+
+            cost.setAttribute("id", "modcost" + a);
+            cost.innerHTML = "";
 
             found = true;
         }
     }
     if (found == false) {
         console.log("Couldn't find structure world: " + a);
+    }
+}
+
+function showEmpireTree(a) {
+    var modName, description, cost, type, tier, j, nameString = "";
+    var found = false;
+    for (j in jsonEmpire.empirenodes) {
+        if (a == jsonEmpire.empirenodes[j].id) {
+
+            modName = document.getElementById("modname");
+            nameString = "";
+            nameString = jsonEmpire.empirenodes[j].name.toUpperCase();
+            nameString += "<br>" + jsonEmpire.empirenodes[j].category;
+
+            modName.innerHTML = nameString;
+            // backtracktome
+
+
+            modName.setAttribute("id", "modname" + a);
+            modName.className = "mod_name";
+            descriptionDiv = document.getElementById("moddescription");
+            description = "";
+
+
+            description += jsonEmpire.empirenodes[j].description;
+
+
+            imagelink = document.getElementById("modicon");
+
+            if (a.startsWith("_")) {
+                a = a.replace("_", "");
+            }
+
+            imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + a + ".png");
+            imagelink.setAttribute("id", "modicon" + a);
+            descriptionDiv.innerHTML = description;
+            descriptionDiv.setAttribute("id", "modicon" + a);
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+            tier = document.getElementById("modtier");
+
+            tier.setAttribute("id", "modtier" + a);
+            tier.innerHTML = "XP required: " + jsonEmpire.empirenodes[j].required_xp + jsonEmpire.empirenodes[j].required_affinity;
+
+            cost = document.getElementById("modcost");
+
+            cost.setAttribute("id", "modcost" + a);
+            cost.innerHTML = "Cost: " + jsonEmpire.empirenodes[j].cost;
+
+
+
+            found = true;
+        }
+    }
+    if (found == false) {
+        console.log("Couldn't find mod: " + a);
     }
 }
 

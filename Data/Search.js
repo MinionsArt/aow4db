@@ -80,13 +80,36 @@ function returnUnitList(fieldToSearch) {
 }
 
 
+function returnEmpireTreeList(fieldToSearch) {
+    var list = new Array();
+    for (i = 0; i < jsonEmpire.empirenodes.length; i++) {
+        if (document.getElementById("namesCheck").checked) {
+            textvalue = jsonEmpire.empirenodes[i].name;
+            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(list, jsonEmpire.empirenodes[i].id)) {
+                    list.push(jsonEmpire.empirenodes[i].id);
+                }
+            }
+        }
+        if (document.getElementById("descriptionCheck").checked) {
+            textvalue = Sanitize(jsonEmpire.empirenodes[i].description);
+            fieldToSearch = fieldToSearch.replaceAll("_", " ");
+            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(list, jsonEmpire.empirenodes[i].id)) {
+                    list.push(jsonEmpire.empirenodes[i].id);
+                }
+            }
+        }
+    }
 
+    return list;
+}
 
 function returnSpellList(fieldToSearch) {
     var list = new Array();
     for (i = 0; i < jsonSpells.spells.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonSpells.spells[i].id;
+            textvalue = jsonSpells.spells[i].name;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
                 if (!isInArray(list, jsonSpells.spells[i].id)) {
                     list.push(jsonSpells.spells[i].id);
@@ -304,6 +327,7 @@ function searchUnits(keyword) {
     var listskills = returnSkillList(fields[0]);
     var listStructures = returnStructure(fields[0]);
     var listWorldStructures = returnWorldStructure(fields[0]);
+    var listEmpireTree = returnEmpireTreeList(fields[0]);
 
 
 
@@ -329,6 +353,10 @@ function searchUnits(keyword) {
     }
     if (listskills.length > 0) {
         SetCollapsibleButtonsAndDivs("Hero Skills", listskills, "searchSkill");
+    }
+
+    if (listEmpireTree.length > 0) {
+        SetCollapsibleButtonsAndDivs("Empire Tree", listEmpireTree, "searchEmpire");
     }
 
     SetLevelUpStuff();
