@@ -451,15 +451,24 @@ function depricatedCheck(id) {
     for (i = 0; i < jsonUnits.units.length; i++) {
         if (jsonUnits.units[i].id == id) {
             for (j = 0; j < jsonUnits.units[i].primary_passives.length; j++) {
+
                 if (jsonUnits.units[i].primary_passives[j].slug.indexOf("deprecated") != -1) {
 
                     return true;
 
                 }
-                if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("deprecated") != -1) {
 
-                    return true;
 
+
+            }
+
+            if ('secondary_passives' in jsonUnits.units[i]) {
+                for (j = 0; j < jsonUnits.units[i].secondary_passives.length; j++) {
+                    if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("deprecated") != -1) {
+
+                        return true;
+
+                    }
                 }
             }
 

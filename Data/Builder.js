@@ -2356,7 +2356,9 @@ function CheckIfFromAbility(unitName) {
 
     for (i in jsonUnitAbilities.abilities) {
 
-
+        if (unitName == "Fire Runestone") {
+            unitName = "Runestone";
+        }
         if (jsonUnitAbilities.abilities[i].description.indexOf(" " + unitName) != -1) {
 
 
