@@ -47,6 +47,45 @@ function ShowUnitFromLink() {
     showUnitFromString(unitID, "dataHolder");
 }
 
+function ShowSpellFromLink() {
+    var spellID = searchParams.get('spell');
+    if (spellID != undefined) {
+        document.title = "Age of Wonders 4 Database - " + GetSpellTierAndName(spellID).split(">")[2];
+        showSpellFromString(spellID, "dataHolder");
+    }
+
+    var SiegeID = searchParams.get('siege');
+    if (SiegeID != undefined) {
+        document.title = "Age of Wonders 4 Database - " + "Siege Project";
+        showSiegeProjectFromString(SiegeID, "dataHolder");
+    }
+
+    var WonderID = searchParams.get('wonder');
+    if (WonderID != undefined) {
+        document.title = "Age of Wonders 4 Database - " + "Wonder";
+        showWorldStructureFromString(WonderID, "dataHolder");
+    }
+
+    var TomeID = searchParams.get('tome');
+    if (TomeID != undefined) {
+        document.title = "Age of Wonders 4 Database - " + "Tome";
+        showTomeFromString(TomeID, "dataHolder");
+    }
+
+    var StrucID = searchParams.get('structure');
+    if (StrucID != undefined) {
+        document.title = "Age of Wonders 4 Database - " + "Structure";
+        showStructureFromString(StrucID, "dataHolder");
+    }
+
+    var SkillID = searchParams.get('skill');
+    if (SkillID != undefined) {
+        document.title = "Age of Wonders 4 Database - " + "Hero Skill";
+        showHeroSkillFromString(SkillID, "dataHolder");
+    }
+
+}
+
 function getUnitTypeTag(passivesList) {
     var i = "";
     for (i in passivesList) {
@@ -302,7 +341,7 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
     if (cardType == "searchSkill") {
         btn.className = "w3-bar-item w3-button tablink";
         var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
+        var holderHeight = buttonHolder.offsetHeight;
         dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
         var div = document.createElement("DIV");
 
@@ -314,6 +353,7 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         // for (i in list) {
 
         showSkillFromList(list, overwrite);
+
     }
 
     if (cardType == "searchSiege") {
@@ -331,6 +371,23 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         // for (i in list) {
 
         showSiegeProjects(list, overwrite);
+    }
+
+    if (cardType == "searchStruct") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showStructures(list, overwrite);
     }
 
     if (cardType == "unit") {
@@ -1220,6 +1277,28 @@ async function showSiegeProjects(list) {
 
 }
 
+async function showStructures(list) {
+
+
+
+
+
+
+    await spawnSpellCards(list, "Structures");
+    for (i in list) {
+
+
+        showStructure(list[i]);
+    }
+
+
+
+
+
+
+
+}
+
 async function spawnTomeCards(list, divID) {
     if (divID === undefined) {
         divID = "tome";
@@ -1288,6 +1367,30 @@ async function spawnSpellCardSingle(list, divID) {
     var doc = document.getElementById(divID);
 
     var iDiv = spell_card_template.content.cloneNode(true);
+    doc.appendChild(iDiv);
+
+
+}
+
+
+async function spawnTomeCardSingle(list, divID) {
+    if (divID === undefined) {
+        divID = "tome";
+    }
+    var doc = document.getElementById(divID);
+
+    var iDiv = tome_card_template.content.cloneNode(true);
+    doc.appendChild(iDiv);
+
+
+}
+async function spawnStructureCardSingle(list, divID) {
+    if (divID === undefined) {
+        divID = "spell";
+    }
+    var doc = document.getElementById(divID);
+
+    var iDiv = structure_card_template.content.cloneNode(true);
     doc.appendChild(iDiv);
 
 
@@ -1411,6 +1514,58 @@ async function showSpellFromString(string, divID) {
     showSpell(string, true);
 
 }
+
+async function showSiegeProjectFromString(string, divID) {
+    await spawnSpellCardSingle(string, divID);
+    showSiegeProject(string);
+
+}
+
+async function showWorldStructureFromString(string, divID) {
+    await spawnStructureCardSingle(string, divID);
+    showWorldStructure(string);
+
+}
+
+async function showTomeFromString(string, divID) {
+    await spawnTomeCardSingle(string, divID);
+    showTome(string);
+
+}
+
+async function showStructureFromString(string, divID) {
+    await spawnStructureCardSingle(string, divID);
+    showStructure(string);
+
+}
+
+
+async function showHeroSkillFromString(string, divID) {
+    await spawnSpellCardSingle(string, divID);
+
+    var skill = findHeroSkill(string);
+    // check if has description
+    if ('description' in skill) {
+        showSkill(skill, "", skill.icon, skill.category_name, skill.level_name, skill.group_name);
+    } else {
+        showSkill(skill, "true", skill.icon, skill.category_name, skill.level_name, skill.group_name);
+    }
+
+
+
+}
+
+function findHeroSkill(skillID) {
+
+    for (i in jsonHeroSkills.skills) {
+        if (jsonHeroSkills.skills[i].id === skillID) {
+            return jsonHeroSkills.skills[i];
+        }
+    }
+}
+
+
+
 
 
 function findSkillsWithArgument(signature, argumentType) {
@@ -1595,14 +1750,14 @@ function showModsFromList(list, divId) {
 }
 
 function showUnit(a, divID) {
-    var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget = "";
+    var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget, name = "";
     var found = false;
     for (i in jsonUnits.units) {
         if (a == jsonUnits.units[i].id) {
 
             unitName = document.getElementById("unitstring");
             unitName.setAttribute("id", "unitstring" + a);
-
+            name = jsonUnits.units[i].name;
             unitName.innerHTML += jsonUnits.units[i].name.toUpperCase();
 
 
@@ -1641,9 +1796,6 @@ function showUnit(a, divID) {
 
 
 
-
-
-            tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
 
 
@@ -1713,7 +1865,7 @@ function showUnit(a, divID) {
 
             }
 
-
+            tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
             for (x in jsonUnits.units[i].primary_passives) {
                 addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
@@ -1722,6 +1874,8 @@ function showUnit(a, divID) {
                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75) + "*";
                 }
             }
+
+
 
             var y = "";
 
@@ -1800,7 +1954,7 @@ function showUnit(a, divID) {
             addLevelUpInfo(jsonUnits.units[i], a);
 
             // backtrack origin;
-            backtrackUnitOrigins(a);
+            backtrackUnitOrigins(a, name);
             tier.setAttribute("id", "tier" + a);
             document.getElementById("originHolder").setAttribute("id", "originHolder" + a);
 
@@ -1820,7 +1974,7 @@ function showUnit(a, divID) {
 }
 
 
-function backtrackUnitOrigins(unitID) {
+function backtrackUnitOrigins(unitID, name) {
     var holder = document.getElementById("originHolder");
     var culture = (CheckIfInCulture(unitID));
     if (culture != "") {
@@ -1829,7 +1983,12 @@ function backtrackUnitOrigins(unitID) {
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
         spa.className = "tooltiptext";
-        spa.innerHTML = "Culture Unit from " + culture;
+
+        const capitalized =
+            culture.charAt(0).toUpperCase() +
+            culture.slice(1);
+
+        spa.innerHTML = "Culture Unit from <hyperlink>" + capitalized + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/Text/" + culture + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
@@ -1849,12 +2008,14 @@ function backtrackUnitOrigins(unitID) {
         spa = document.createElement("SPAN");
         spa.className = "tooltiptext";
 
-        spa.innerHTML = "Unit Unlocked from Tier " + romanize(tomes.tier) + " - " + tomes.affinities + " " + tomes.name;
+        spa.innerHTML = "Unit Unlocked from Tier <hyperlink>" + romanize(tomes.tier) + " - " + tomes.affinities + " " + tomes.name + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomes.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
         imag.setAttribute("height", "60");
         btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + tomes.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
         holder.appendChild(btn);
@@ -1862,38 +2023,96 @@ function backtrackUnitOrigins(unitID) {
 
     }
 
-    var spells = CheckIfInSpells(unitID);
-    if (spells != "") {
+    var spells = CheckIfInSpells(unitID, name);
+    var x = ""
+    for (x in spells) {
+
+
         var btn = document.createElement("DIV");
         btn.className = "unittype_icon";
         var imag = document.createElement("IMG");
         var spa = document.createElement("SPAN");
         spa.className = "tooltiptext";
 
-        var tierandnameoftome = backtraceTomeNameAndTier(spells.id);
+        var tierandnameoftome = backtraceTomeNameAndTier(spells[x].id);
         if (tierandnameoftome != "") {
-            spa.innerHTML = "Unit from Spell: " + spells.name + "<br>in Tier " + romanize(tierandnameoftome[1]) + " - " + tierandnameoftome[0];
+            spa.innerHTML = "Unit from Spell: <hyperlink>" + spells[x].name + "</hyperlink><br>in Tier <hyperlink>" + romanize(tierandnameoftome[1]) + " - " + tierandnameoftome[0] + "</hyperlink>";
         } else {
-            spa.innerHTML = "Unit from Spell: " + spells.name;
+            spa.innerHTML = "Unit from Spell: <hyperlink>" + spells[x].name + "</<hyperlink>";
         }
 
-        // var tier = document.getElementById("tier");
-        //if (spells.upkeep != "") {
-        //    tier.innerHTML += spells.upkeep;
-        //}
+
+        imag.setAttribute("src", "/aow4db/Icons/SpellIcons/" + spells[x].id + ".png");
 
 
-        imag.setAttribute("src", "/aow4db/Icons/SpellIcons/" + spells.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
         imag.setAttribute("height", "60");
+
+
+
         btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?spell=" + spells[x].id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
         holder.appendChild(btn);
         // add icon with mouseover
 
     }
+
+    var siege = CheckIfInSiege(name);
+    if (siege != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        spa.innerHTML = "Unit Summoned by Siege Project <hyperlink> " + siege.name + "</hyperlink>";
+        imag.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + siege.id + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?siege=" + siege.id + "\" target=\"_blank\">" + wrap + "</a>"
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+    var struc = CheckIfInStructure(name)
+
+    if (struc != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        spa.innerHTML = "Unit From Structure <hyperlink> " + struc.name + "</hyperlink>";
+        imag.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + struc.id + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?structure=" + struc.id + "\" target=\"_blank\">" + wrap + "</a>"
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+
+
+
     var wonder = CheckIfInAncientWonder(unitID);
     if (wonder != "") {
         btn = document.createElement("DIV");
@@ -1903,19 +2122,129 @@ function backtrackUnitOrigins(unitID) {
         spa.className = "tooltiptext";
 
 
-        spa.innerHTML = "Rally Unit Unlocked from " +
-            wonder.type + " : " + wonder.name;
+        spa.innerHTML = "Rally Unit Unlocked from <hyperlink>" +
+            wonder.type + "</<hyperlink> : <hyperlink>" + wonder.name + "</<hyperlink>";
         imag.setAttribute("src", "/aow4db/Icons/StructurePics/" + wonder.id + ".png");
         imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
         imag.setAttribute("width", "60");
         imag.setAttribute("height", "60");
         btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?wonder=" + wonder.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
         holder.appendChild(btn);
         // add icon with mouseover
 
     }
+
+    var tree = CheckIfInEmpireTree(name);
+    if (tree != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        spa.innerHTML = "Rally Unit Unlocked from <hyperlink>" +
+            tree.category + " " + tree.required_level + "</<hyperlink> : <hyperlink>" + tree.name + "</<hyperlink>";
+        imag.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + tree.id + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/EmpireTree.html \"target = \"_blank\">" + wrap + "</a>"
+        btn.appendChild(spa);
+
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+    var unitAbility = CheckIfFromAbility(name);
+    if (unitAbility != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        spa.innerHTML = "Unit From Ability <hyperlink>" +
+            unitAbility[1].name + "</hyperlink> of Unit <hyperlink>" + unitAbility[0].name + "</hyperlink>";
+        imag.setAttribute("src", "/aow4db/Icons/Abilities/" + unitAbility[1].slug + ".png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + unitAbility[0].id + "\" target=\"_blank\">" + wrap + "</a>"
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+    var heroSkill = CheckIfFromHeroSkill(name);
+    if (heroSkill != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        spa.innerHTML = "Unit From Hero Skill <hyperlink>" +
+            heroSkill[1].name + "</hyperlink>";
+        if (heroSkill[0] != "") {
+            imag.setAttribute("src", "/aow4db/Icons/Abilities/" + heroSkill[0].icon + ".png");
+        } else {
+            imag.setAttribute("src", "/aow4db/Icons/HeroSkillIcons/" + heroSkill[1].icon + ".png");
+        }
+
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?skill=" + heroSkill[1].id + "\" target=\"_blank\">" + wrap + "</a>"
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+    var evolve = CheckIfEvolveTarget(unitID)
+    if (evolve != "") {
+        btn = document.createElement("DIV");
+        btn.className = "unittype_icon";
+        imag = document.createElement("IMG");
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        spa.innerHTML = "Evolved from Unit <hyperlink>" +
+            evolve.name + "</<hyperlink>";
+        imag.setAttribute("src", "/aow4db/Icons/Abilities/evolve.png");
+        imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+        imag.setAttribute("width", "60");
+        imag.setAttribute("height", "60");
+        btn.appendChild(imag);
+        var wrap = btn.innerHTML;
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + evolve.id + "\" target=\"_blank\">" + wrap + "</a>"
+        btn.appendChild(spa);
+
+        holder.appendChild(btn);
+        // add icon with mouseover
+
+    }
+
+
 
 }
 
@@ -1945,14 +2274,130 @@ function CheckIfInCulture(unitID) {
     return culture;
 }
 
-function CheckIfInSpells(unitID) {
-    var spell = "";
+function CheckIfInSpells(unitID, unitName) {
+    var spell = new Array();
     for (i in jsonSpells.spells) {
 
         if ('summoned_units' in jsonSpells.spells[i]) {
             for (k in jsonSpells.spells[i].summoned_units) {
                 if (unitID == jsonSpells.spells[i].summoned_units[k].slug) {
-                    spell = jsonSpells.spells[i];
+                    if (!isInArray(spell, jsonSpells.spells[i])) {
+                        spell.push(jsonSpells.spells[i]);
+                    }
+
+                }
+            }
+
+        }
+        if (jsonSpells.spells[i].description.indexOf(">" + unitName) != -1) {
+            if (!isInArray(spell, jsonSpells.spells[i])) {
+
+                spell.push(jsonSpells.spells[i]);
+            }
+
+
+
+        }
+    }
+
+
+
+
+    return spell;
+}
+
+function CheckIfFromAbility(unitName) {
+    var ability = "";
+
+    for (i in jsonUnitAbilities.abilities) {
+
+
+        if (jsonUnitAbilities.abilities[i].description.indexOf(" " + unitName) != -1) {
+
+
+            ability = jsonUnitAbilities.abilities[i];
+
+
+
+
+        }
+    }
+
+    var unitslugLookup = "";
+    if (ability != "") {
+        for (j in jsonUnits.units) {
+
+            for (k in jsonUnits.units[j].abilities) {
+
+                if (jsonUnits.units[j].abilities[k].slug === ability.slug) {
+
+                    unitslugLookup = new Array();
+                    unitslugLookup.push(jsonUnits.units[j]);
+                    unitslugLookup.push(ability);
+                }
+            }
+            for (l in jsonUnits.units[j].primary_passives) {
+
+                if (jsonUnits.units[j].primary_passives[l].slug === ability.slug) {
+
+                    unitslugLookup = new Array();
+                    unitslugLookup.push(jsonUnits.units[j]);
+                    unitslugLookup.push(ability);
+                }
+            }
+        }
+    }
+
+
+
+    return unitslugLookup;
+}
+
+function CheckIfFromHeroSkill(unitName) {
+    var resultslist = "";
+    var hero = "";
+
+    for (i in jsonUnitAbilities.abilities) {
+
+
+        if (jsonUnitAbilities.abilities[i].description.indexOf(unitName) != -1) {
+
+
+            hero = jsonUnitAbilities.abilities[i];
+
+
+
+
+        }
+    }
+
+
+
+    for (j in jsonHeroSkills.skills) {
+        if (hero != "") {
+            if ('abilities' in jsonHeroSkills.skills[j]) {
+                for (k in jsonHeroSkills.skills[j].abilities) {
+
+                    if (jsonHeroSkills.skills[j].abilities[k].slug === hero.slug) {
+                        resultslist = new Array();
+                        resultslist.push(hero);
+                        resultslist.push(jsonHeroSkills.skills[j]);
+
+
+                    }
+                }
+            }
+
+
+        } else {
+            for (k in jsonHeroSkills.skills[j].description) {
+
+                if (jsonHeroSkills.skills[j].description.indexOf(unitName) != -1) {
+                    resultslist = new Array();
+                    resultslist.push(hero);
+                    resultslist.push(jsonHeroSkills.skills[j]);
+
+
                 }
             }
 
@@ -1961,7 +2406,48 @@ function CheckIfInSpells(unitID) {
     }
 
 
-    return spell;
+
+    return resultslist;
+}
+
+
+function CheckIfInSiege(unitName) {
+    var siege = "";
+    for (i in jsonSiegeProjects.projects) {
+
+        if (jsonSiegeProjects.projects[i].description.indexOf(">" + unitName) != -1) {
+
+            siege = jsonSiegeProjects.projects[i];
+
+        }
+
+
+
+
+    }
+    return siege;
+}
+
+function CheckIfInStructure(unitName) {
+    var structure = "";
+    for (i in jsonStructureUpgrades.structures) {
+
+        if (jsonStructureUpgrades.structures[i].prediction_description.indexOf(">" + unitName + "<") != -1) {
+
+            structure = jsonStructureUpgrades.structures[i];
+
+        }
+        if (jsonStructureUpgrades.structures[i].description.indexOf(">" + unitName + "<") != -1) {
+
+            structure = jsonStructureUpgrades.structures[i];
+
+        }
+
+
+
+
+    }
+    return structure;
 }
 
 function CheckIfInTomes(unitID) {
@@ -1979,6 +2465,49 @@ function CheckIfInTomes(unitID) {
 
     }
     return tome;
+}
+
+function CheckIfInEmpireTree(unitNameUnique) {
+    var tree = "";
+    var i, k = "";
+    for (i in jsonEmpire.empirenodes) {
+
+        if (jsonEmpire.empirenodes[i].description.indexOf(">" + unitNameUnique) != -1) {
+
+
+            tree = jsonEmpire.empirenodes[i];
+        }
+
+
+
+    }
+
+
+
+
+    return tree;
+}
+
+function CheckIfEvolveTarget(unitID) {
+    var evolve = "";
+    var i, k = "";
+    for (i in jsonUnits.units) {
+
+        if ('evolve_target' in jsonUnits.units[i]) {
+
+
+            if (unitID == jsonUnits.units[i].evolve_target) {
+                evolve = jsonUnits.units[i];
+
+            }
+
+
+        }
+
+
+
+    }
+    return evolve;
 }
 
 function CheckIfInAncientWonder(unitID) {
@@ -2643,7 +3172,7 @@ function showStructure(a) {
                     }
 
                 }
-                tier.innerHTML += "Province Improvement";
+                tier.innerHTML += " Province Improvement";
 
             } else {
                 tier.innerHTML = "Building";
@@ -3098,6 +3627,9 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                         tomeOrigin.innerHTML += jsonTomes.tomes[j].name;
                         var tomeOriginIcon = document.getElementById("originTomeIcon");
                         tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                        var wrap = tomeOrigin.innerHTML;
+                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+
                     }
 
                     return jsonTomes.tomes[j].skills[k].tier;
