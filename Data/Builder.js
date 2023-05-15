@@ -126,6 +126,9 @@ function getUnitTypeTag(passivesList) {
         if (passivesList[i].slug == "mythic_unit") {
             return "<unitMythic></unitMythic>";
         }
+        if (passivesList[i].slug == "civilian") {
+            return "<unitCivilian></unitCivilian>";
+        }
     }
 }
 
@@ -549,7 +552,7 @@ function addUnitTypeIcon(a, b) {
             iconName = jsonUnitAbilities.abilities[j].name;
             if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
                 iconName === "Fighter Unit" || iconName === "Support Unit" ||
-                iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Scout Unit" || iconName === "Polearm Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft") {
+                iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Scout Unit" || iconName === "Polearm Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft" || iconName === "Civilian") {
                 unitRole = document.getElementById("unit_role");
 
                 unitRole.setAttribute("src", "/aow4db/Icons/Text/" + iconsrc + ".png");
