@@ -44,15 +44,10 @@ function returnUnitList(fieldToSearch) {
             if (textvalue.toUpperCase().indexOf(fieldToSearch) > -1) {
                 if (list.length >= 1) {
                     if (!isInArray(list, jsonUnits.units[i].id)) {
-                        if (!depricatedCheck(jsonUnits.units[i])) {
-                            list.push(jsonUnits.units[i].id);
-                        }
-
-                    }
-                } else {
-                    if (!depricatedCheck(jsonUnits.units[i])) {
                         list.push(jsonUnits.units[i].id);
                     }
+                } else {
+                    list.push(jsonUnits.units[i].id);
                 }
             }
         }
@@ -322,6 +317,8 @@ function searchUnits(keyword) {
 
     var fields = keyword.split('+', 3);
     var list = returnUnitList(fields[0]);
+    var depricatedCheckList = CheckDepricated(list);
+
     output = document.getElementById("searchOutput");
     result = document.getElementById("searchResult");
 
@@ -339,7 +336,7 @@ function searchUnits(keyword) {
     buttonHolder.innerHTML = "";
     var dataHolder = document.getElementById("dataHolder");
     dataHolder.innerHTML = "";
-    SetButtonsAndDivs(list, "buttonHolder", "searchUnit");
+    SetButtonsAndDivs(depricatedCheckList, "buttonHolder", "searchUnit");
 
     if (listspells.length > 0) {
         SetCollapsibleButtonsAndDivs("Spells", listspells, "searchSpell");
@@ -367,6 +364,34 @@ function searchUnits(keyword) {
 
 }
 
+function CheckDepricated(listChecking) {
+    var newList = new Array();
+    var i = "";
+    for (i in listChecking) {
+        if (depCheck(listChecking[i]) === false) {
+            newList.push(listChecking[i]);
+        }
+    }
+    return newList;
+}
+
+function depCheck(id) {
+    var p = "";
+    for (p in jsonUnits.units) {
+        if (jsonUnits.units[p].id === id) {
+            for (l in jsonUnits.units[p].primary_passives) {
+                if (jsonUnits.units[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
+                    console.log("true");
+                    return true;
+                }
+            }
+        }
+
+
+    }
+    return false;
+}
+
 
 function searchArray(keyword, arraytosearch, listToPushTo, index) {
     var j = 0;
@@ -376,15 +401,10 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
             if (textvalue.toUpperCase().indexOf(keyword) > -1) {
                 if (listToPushTo.length >= 1) {
                     if (!isInArray(listToPushTo, jsonUnits.units[index].id)) {
-                        if (!depricatedCheck(jsonUnits.units[index])) {
-                            listToPushTo.push(jsonUnits.units[index].id);
-                        }
-
-                    }
-                } else {
-                    if (!depricatedCheck(jsonUnits.units[index])) {
                         listToPushTo.push(jsonUnits.units[index].id);
                     }
+                } else {
+                    listToPushTo.push(jsonUnits.units[index].id);
                 }
 
 
@@ -400,8 +420,15 @@ function searchArrayDescrip(keyword, arraytosearch, listToPushTo, index) {
     for (j in arraytosearch) {
         if (arraytosearch[j].name != null) {
 
+            textvalue = Sanitize(arraytosearch[j].description);
+            if (textvalue.toUpperCase().indexOf(keyword) != -1) {
+
+                findUnitWithAbility(jsonUnitAbilities.abilities[index].slug, listToPushTo);
+
+
+            }
             textvalue = arraytosearch[j].name;
-            if (textvalue.toUpperCase().indexOf(keyword) > -1) {
+            if (textvalue.toUpperCase().indexOf(keyword) != -1) {
 
                 findUnitWithAbility(jsonUnitAbilities.abilities[index].slug, listToPushTo);
 
@@ -436,17 +463,9 @@ function findUnitWithAbility(ability, listToPushTo) {
             for (j in jsonUnits.units[i].abilities) {
 
                 if (ability === jsonUnits.units[i].abilities[j].slug) {
-                    // if (!depricatedCheck(jsonUnits.units[i])) {
                     if (!isInArray(listToPushTo, jsonUnits.units[i].id)) {
-
-
-                        //console.log(i);
                         listToPushTo.push(jsonUnits.units[i].id);
                     }
-
-                    //  }
-
-
                 }
             }
         }
@@ -457,28 +476,6 @@ function findUnitWithAbility(ability, listToPushTo) {
 
 
 
-
-
-function depricatedCheck(unit) {
-    var j = "";
-    if ('primary_passives' in unit) {
-        for (j = 0; j < unit.primary_passives.length; j++) {
-
-            if (unit.primary_passives[j].slug.indexOf("deprecated") != -1) {
-
-                return true;
-
-            }
-
-
-
-        }
-
-
-    }
-    return false;
-
-}
 
 
 
