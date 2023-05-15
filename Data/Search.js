@@ -4,7 +4,7 @@ if (searchKeyword != undefined) {
 }
 
 
-var excludeListStructures = ["shadow_bolstering_matrix", "nature_bolstering_matrix", "materium_bolstering_matrix", "chaos_bolstering_matrix", "order_bolstering_matrix", "astral_bolstering_matrix"];
+var excludeListStructures = ["shadow_bolstering_matrix", "nature_bolstering_matrix", "materium_bolstering_matrix", "chaos_bolstering_matrix", "order_bolstering_matrix", "astral_bolstering_matrix", "shadow_amplifier_lens", "nature_amplifier_lens", "materium_amplifier_lens", "chaos_amplifier_lens", "order_amplifier_lens", "astral_amplifier_lens", "shadow_focus_crystal", "nature_focus_crystal", "materium_focus_crystal", "chaos_focus_crystal", "order_focus_crystal", "astral_focus_crystal"];
 
 
 
@@ -44,13 +44,13 @@ function returnUnitList(fieldToSearch) {
             if (textvalue.toUpperCase().indexOf(fieldToSearch) > -1) {
                 if (list.length >= 1) {
                     if (!isInArray(list, jsonUnits.units[i].id)) {
-                        if (!depricatedCheck(jsonUnits.units[i].id)) {
+                        if (!depricatedCheck(jsonUnits.units[i])) {
                             list.push(jsonUnits.units[i].id);
                         }
 
                     }
                 } else {
-                    if (!depricatedCheck(jsonUnits.units[i].id)) {
+                    if (!depricatedCheck(jsonUnits.units[i])) {
                         list.push(jsonUnits.units[i].id);
                     }
                 }
@@ -376,13 +376,13 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
             if (textvalue.toUpperCase().indexOf(keyword) > -1) {
                 if (listToPushTo.length >= 1) {
                     if (!isInArray(listToPushTo, jsonUnits.units[index].id)) {
-                        if (!depricatedCheck(jsonUnits.units[index].id)) {
+                        if (!depricatedCheck(jsonUnits.units[index])) {
                             listToPushTo.push(jsonUnits.units[index].id);
                         }
 
                     }
                 } else {
-                    if (!depricatedCheck(jsonUnits.units[index].id)) {
+                    if (!depricatedCheck(jsonUnits.units[index])) {
                         listToPushTo.push(jsonUnits.units[index].id);
                     }
                 }
@@ -434,74 +434,42 @@ function findUnitWithAbility(ability, listToPushTo) {
         if ('abilities' in jsonUnits.units[i]) {
             for (j in jsonUnits.units[i].abilities) {
 
-                if (ability == jsonUnits.units[i].abilities[j].slug) {
+                if (ability === jsonUnits.units[i].abilities[j].slug) {
+                    // if (!depricatedCheck(jsonUnits.units[i])) {
+                    if (!isInArray(listToPushTo, jsonUnits.units[i].id)) {
 
-                    if (listToPushTo.length >= 1) {
 
-                        if (!isInArray(listToPushTo, jsonUnits.units[i].id)) {
-                            listToPushTo.push(jsonUnits.units[i].id);
-                        }
-                    } else {
+                        //console.log(i);
                         listToPushTo.push(jsonUnits.units[i].id);
                     }
-                }
 
+                    //}
+
+
+                }
             }
         }
-
     }
+
+
 }
 
-function searchArrayWhole(keyword, arraytosearch, listToPushTo, index) {
-    var j = 0;
-    for (j in arraytosearch) {
-        if (arraytosearch[j].slug != null) {
-            textvalue = arraytosearch[j].slug;
-            if (textvalue.toUpperCase() == keyword) {
-                if (listToPushTo.length >= 1) {
-                    if (!isInArray(listToPushTo, jsonUnits.units[index].id)) {
-                        if (!depricatedCheck(jsonUnits.units[index].id)) {
-                            listToPushTo.push(jsonUnits.units[index].id);
-                        }
-                    }
-                } else {
-                    if (!depricatedCheck(jsonUnits.units[index].id)) {
-                        listToPushTo.push(jsonUnits.units[index].id);
-                    }
-                }
 
 
 
-            }
-        }
 
-    }
-}
+function depricatedCheck(unit) {
 
-function depricatedCheck(id) {
-    for (i = 0; i < jsonUnits.units.length; i++) {
-        if (jsonUnits.units[i].id == id) {
-            for (j = 0; j < jsonUnits.units[i].primary_passives.length; j++) {
+    if ('primary_passives' in unit) {
+        for (j = 0; j < unit.primary_passives.length; j++) {
 
-                if (jsonUnits.units[i].primary_passives[j].slug.indexOf("deprecated") != -1) {
+            if (unit.primary_passives[j].slug.indexOf("deprecated") != -1) {
 
-                    return true;
-
-                }
-
-
+                return true;
 
             }
 
-            if ('secondary_passives' in jsonUnits.units[i]) {
-                for (j = 0; j < jsonUnits.units[i].secondary_passives.length; j++) {
-                    if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("deprecated") != -1) {
 
-                        return true;
-
-                    }
-                }
-            }
 
         }
 
