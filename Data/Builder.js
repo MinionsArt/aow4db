@@ -1926,8 +1926,20 @@ function showUnit(a, divID) {
 
             tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
-            if (canBeSummoned(jsonUnits.units[i].id)) {
+            var summonInfo = canBeSummoned(jsonUnits.units[i].id);
+            if (summonInfo.length > 0) {
                 tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
+                var p = "";
+                for (p in summonInfo) {
+                    var castcost = "";
+                    if (summonInfo[p].tactical === true) {
+                        castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
+                    } else {
+                        castcost = summonInfo[p].operation_point_cost + "<caststrategic></caststrategic>";
+                    }
+                    prodcost.innerHTML += "<br> Spell: " + summonInfo[p].casting_cost + castcost;
+                }
+
             }
 
 
@@ -1940,21 +1952,32 @@ function showUnit(a, divID) {
                 if (jsonUnits.units[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75);
                     var lowUpkeep = true;
-                    if (canBeSummoned(jsonUnits.units[i].id)) {
+
+                    if (summonInfo.length > 0) {
                         tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
-                    };
+
+
+                    }
+
                 }
 
                 if (jsonUnits.units[i].primary_passives[x].slug.indexOf("faithful") != -1) {
                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9);
                     var faithfulUpkeep = true;
-                    if (canBeSummoned(jsonUnits.units[i].id)) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.5);
-                    };
+
+                    if (summonInfo.length > 0) {
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
+
+
+
+                    }
                 }
-
-
             }
+
+
+
+
+
             var y = "";
             for (y in jsonUnits.units[i].secondary_passives) {
                 if (jsonUnits.units[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
@@ -1966,6 +1989,22 @@ function showUnit(a, divID) {
                         tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
                     }
 
+
+                    if (summonInfo.length > 0) {
+
+                        var p = "";
+                        for (p in summonInfo) {
+                            var castcost = "";
+                            if (summonInfo[p].tactical === true) {
+                                castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
+                            } else {
+                                castcost = summonInfo[p].operation_point_cost + "<caststrategic></caststrategic>";
+                            }
+                            prodcost.innerHTML = "<br> Spell: " + summonInfo[p].casting_cost + castcost;
+                        }
+
+
+                    }
 
                 }
             }
@@ -2060,31 +2099,32 @@ function showUnit(a, divID) {
             // break;
         }
 
-
     }
     if (found == false) {
         console.log("Couldn't find unit: " + a + i);
     }
-
 }
+
+
 
 function canBeSummoned(id) {
     var i = "";
     var k = "";
+    var summonInf = new Array();
     for (i in jsonSpells.spells) {
         if ('summoned_units' in jsonSpells.spells[i]) {
 
             for (k in jsonSpells.spells[i].summoned_units) {
 
                 if (jsonSpells.spells[i].summoned_units[k].slug === id) {
+                    summonInf.push(jsonSpells.spells[i]);
 
-                    return true;
                 }
             }
         }
 
     }
-    return false;
+    return summonInf;
 }
 
 function getSummonedUpkeep(tier, lowMaintenance) {
