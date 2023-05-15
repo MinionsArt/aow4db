@@ -432,7 +432,7 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         content.setAttribute("id", overwrite + "-button");
         content.className = "contentUnits";
         buttonHolder.append(content);
-        showSpellFromList(list, overwrite);
+        // showSpellFromList(list, overwrite);
 
     }
 
@@ -1923,11 +1923,18 @@ function showUnit(a, divID) {
 
             tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
+            if (canBeSummoned(jsonUnits.units[i].id)) {
+                tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier), false;
+            }
+
             for (x in jsonUnits.units[i].primary_passives) {
                 addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
 
                 if (jsonUnits.units[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
-                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75) + "*";
+                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75);
+                    if (canBeSummoned(jsonUnits.units[i].id)) {
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, true);
+                    };
                 }
             }
 
@@ -2027,6 +2034,64 @@ function showUnit(a, divID) {
         console.log("Couldn't find unit: " + a + i);
     }
 
+}
+
+function canBeSummoned(id) {
+    var i = "";
+    var k = "";
+    for (i in jsonSpells.spells) {
+        if ('summoned_units' in jsonSpells.spells[i]) {
+
+            for (k in jsonSpells.spells[i].summoned_units) {
+
+                if (jsonSpells.spells[i].summoned_units[k].slug === id) {
+
+                    return true;
+                }
+            }
+        }
+
+    }
+    return false;
+}
+
+function getSummonedUpkeep(tier, lowMaintenance) {
+    if (tier == 1) {
+        if (lowMaintenance) {
+            return ReduceUpkeepPercentage("8<mana></mana>", 0.75);
+        } else {
+            return "8<mana></mana>";
+        }
+
+    }
+    if (tier == 2) {
+        if (lowMaintenance) {
+            return ReduceUpkeepPercentage("12<mana></mana>", 0.75);
+        } else {
+            return "12<mana></mana>";
+        }
+    }
+    if (tier == 3) {
+        if (lowMaintenance) {
+            return ReduceUpkeepPercentage("20<mana></mana>", 0.75);
+        } else {
+            return "20<mana></mana>";
+        }
+    }
+    if (tier == 4) {
+        if (lowMaintenance) {
+            return ReduceUpkeepPercentage("30<mana></mana> 3<influence></influence>", 0.75);
+        } else {
+            return "30<mana></mana> 3<influence></influence>";
+        }
+    }
+    if (tier == 5) {
+        if (lowMaintenance) {
+            return ReduceUpkeepPercentage("60<mana></mana> 7<influence></influence>", 0.75);
+        } else {
+            return "60<mana></mana> 7<influence></influence>";
+        }
+    }
 }
 
 
@@ -2599,7 +2664,11 @@ function CheckIfInAncientWonder(unitID) {
 function ReduceUpkeepPercentage(value, percentage) {
     var number = value.split("<");
     var reducedUpkeep = Math.round(percentage * parseInt(number[0]));
-    return reducedUpkeep + "<" + number[1] + "<" + number[2];
+    var comb = reducedUpkeep + "<" + number[1] + "<" + number[2];
+    if (number.length > 2) {
+        comb += "<" + number[3] + "<" + +number[4];
+    }
+    return comb;
 }
 
 function ReturnWeaknessOrResistanceNumber(slug) {

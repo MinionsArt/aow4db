@@ -429,6 +429,7 @@ function searchArrayDescription(keyword, arraytosearch, listToPushTo, index) {
 
 
 function findUnitWithAbility(ability, listToPushTo) {
+    var i = "";
     var j = "";
     for (i = 0; i < jsonUnits.units.length; i++) {
         if ('abilities' in jsonUnits.units[i]) {
@@ -443,7 +444,7 @@ function findUnitWithAbility(ability, listToPushTo) {
                         listToPushTo.push(jsonUnits.units[i].id);
                     }
 
-                    //}
+                    //  }
 
 
                 }
@@ -459,7 +460,7 @@ function findUnitWithAbility(ability, listToPushTo) {
 
 
 function depricatedCheck(unit) {
-
+    var j = "";
     if ('primary_passives' in unit) {
         for (j = 0; j < unit.primary_passives.length; j++) {
 
