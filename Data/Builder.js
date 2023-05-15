@@ -1929,6 +1929,7 @@ function showUnit(a, divID) {
 
 
             var lowUpkeep = false;
+            var faithfulUpkeep = false;
             var x = "";
             for (x in jsonUnits.units[i].primary_passives) {
                 addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
@@ -1937,19 +1938,29 @@ function showUnit(a, divID) {
                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75);
                     var lowUpkeep = true;
                     if (canBeSummoned(jsonUnits.units[i].id)) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, true);
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
+                    };
+                }
+
+                if (jsonUnits.units[i].primary_passives[x].slug.indexOf("faithful") != -1) {
+                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9);
+                    var faithfulUpkeep = true;
+                    if (canBeSummoned(jsonUnits.units[i].id)) {
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.5);
                     };
                 }
 
 
             }
-            var y = ""
+            var y = "";
             for (y in jsonUnits.units[i].secondary_passives) {
                 if (jsonUnits.units[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
                     if (lowUpkeep === true) {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, true);
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
+                    } else if (faithfulUpkeep === true) {
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
                     } else {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, false);
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
                     }
 
 
@@ -2075,37 +2086,37 @@ function canBeSummoned(id) {
 
 function getSummonedUpkeep(tier, lowMaintenance) {
     if (tier == 1) {
-        if (lowMaintenance) {
-            return ReduceUpkeepPercentage("8<mana></mana>", 0.75);
+        if (lowMaintenance != "") {
+            return ReduceUpkeepPercentage("8<mana></mana>", lowMaintenance);
         } else {
             return "8<mana></mana>";
         }
 
     }
     if (tier == 2) {
-        if (lowMaintenance) {
-            return ReduceUpkeepPercentage("12<mana></mana>", 0.75);
+        if (lowMaintenance != "") {
+            return ReduceUpkeepPercentage("12<mana></mana>", lowMaintenance);
         } else {
             return "12<mana></mana>";
         }
     }
     if (tier == 3) {
-        if (lowMaintenance) {
-            return ReduceUpkeepPercentage("20<mana></mana>", 0.75);
+        if (lowMaintenance != "") {
+            return ReduceUpkeepPercentage("20<mana></mana>", lowMaintenance);
         } else {
             return "20<mana></mana>";
         }
     }
     if (tier == 4) {
-        if (lowMaintenance) {
-            return ReduceUpkeepPercentage("30<mana></mana> 3<influence></influence>", 0.75);
+        if (lowMaintenance != "") {
+            return ReduceUpkeepPercentage("30<mana></mana> 3<influence></influence>", lowMaintenance);
         } else {
             return "30<mana></mana> 3<influence></influence>";
         }
     }
     if (tier == 5) {
-        if (lowMaintenance) {
-            return ReduceUpkeepPercentage("60<mana></mana> 7<influence></influence>", 0.75);
+        if (lowMaintenance != "") {
+            return ReduceUpkeepPercentage("60<mana></mana> 7<influence></influence>", lowMaintenance);
         } else {
             return "60<mana></mana> 7<influence></influence>";
         }
