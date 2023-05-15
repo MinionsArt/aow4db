@@ -1927,20 +1927,38 @@ function showUnit(a, divID) {
                 tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier), false;
             }
 
+
+            var lowUpkeep = false;
+            var x = "";
             for (x in jsonUnits.units[i].primary_passives) {
                 addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
 
                 if (jsonUnits.units[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75);
+                    var lowUpkeep = true;
                     if (canBeSummoned(jsonUnits.units[i].id)) {
                         tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, true);
                     };
+                }
+
+
+            }
+            var y = ""
+            for (y in jsonUnits.units[i].secondary_passives) {
+                if (jsonUnits.units[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
+                    if (lowUpkeep === true) {
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, true);
+                    } else {
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, false);
+                    }
+
+
                 }
             }
 
 
 
-            var y = "";
+            y = "";
 
 
             var resistanceholder = document.getElementById("resistanceholder");
