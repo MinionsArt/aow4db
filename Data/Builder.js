@@ -1924,7 +1924,7 @@ function showUnit(a, divID) {
             tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
 
             if (canBeSummoned(jsonUnits.units[i].id)) {
-                tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier), "";
+                tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
             }
 
 
