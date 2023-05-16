@@ -3621,7 +3621,7 @@ function showSpell(a, showOrigin) {
             descriptionDiv = document.getElementById("moddescription");
 
             if ('upkeep' in jsonSpells.spells[j]) {
-                description = "<br>Upkeep: " + jsonSpells.spells[j].upkeep + "<br><br>";
+                description = "Upkeep: " + jsonSpells.spells[j].upkeep + "<br><br>";
 
             }
 
