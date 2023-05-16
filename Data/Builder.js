@@ -250,8 +250,10 @@ function SetButtonsAndDivs(list, parent, cardType) {
         buttonHolder.appendChild(btn);
         if (cardType == "unitTomeIcon") {
             btn.setAttribute("onclick", 'openCity(event,\'' + splitIcon[0] + '\')');
-        } else {
+        } else if (cardType.indexOf("search") == -1) {
             btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\')');
+        } else {
+            btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\',true)');
         }
 
 
@@ -285,8 +287,11 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
 
     btn.innerHTML = overwrite + " (" + list.length + ")";
-    if (cardType != "unit") {
+    if (cardType != "unit" && cardType.indexOf("search") == -1) {
         btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\')');
+        btn.setAttribute("id", overwrite + "-button");
+    } else if (cardType.indexOf("search") != -1) {
+        btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\',true)');
         btn.setAttribute("id", overwrite + "-button");
     }
 
@@ -476,7 +481,7 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
     }
 }
 
-async function openCity(evt, cityName) {
+async function openCity(evt, cityName, search) {
 
     if (cityName != undefined) {
         currentView = cityName;
@@ -503,7 +508,10 @@ async function openCity(evt, cityName) {
     if (currentadditive === undefined) {
         currentadditive = "";
     }
-    window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName + "&" + currentadditive);
+    if (search === undefined) {
+        window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName + "&" + currentadditive);
+    }
+
 
     if (sorting != undefined) {
         var splits = sorting.split(":");
@@ -1243,8 +1251,6 @@ async function SetLevelUpStuff() {
 
 
     }
-
-
 
     //if (sorting != undefined) {
 

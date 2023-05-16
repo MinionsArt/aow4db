@@ -1,9 +1,3 @@
-const searchKeyword = searchParams.get('search');
-if (searchKeyword != undefined) {
-    searchData(searchKeyword);
-}
-
-
 var excludeListStructures = ["shadow_bolstering_matrix", "nature_bolstering_matrix", "materium_bolstering_matrix", "chaos_bolstering_matrix", "order_bolstering_matrix", "astral_bolstering_matrix", "shadow_amplifier_lens", "nature_amplifier_lens", "materium_amplifier_lens", "chaos_amplifier_lens", "order_amplifier_lens", "astral_amplifier_lens", "shadow_focus_crystal", "nature_focus_crystal", "materium_focus_crystal", "chaos_focus_crystal", "order_focus_crystal", "astral_focus_crystal"];
 
 
@@ -12,6 +6,16 @@ function isInArray(array, search) {
     return array.indexOf(search) >= 0;
 }
 
+function rememberSearch() {
+
+    const searchKeyword = searchParams.get('search');
+    input = document.getElementById("searchInput");
+    input.value = searchKeyword;
+    if (searchKeyword != undefined) {
+        searchData(searchKeyword);
+    }
+
+}
 
 function searchData(keywords) {
 
@@ -31,7 +35,7 @@ function searchData(keywords) {
     searchUnits(test);
     var currenturl = window.location.href.split('?')[0];
 
-    //window.history.replaceState({}, 'foo', currenturl + "?search=" + keywords);
+    window.history.replaceState({}, 'foo', currenturl + "?search=" + keywords);
 
 }
 
