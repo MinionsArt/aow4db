@@ -6,7 +6,7 @@ function isInArray(array, search) {
     return array.indexOf(search) >= 0;
 }
 
-function rememberSearch() {
+async function rememberSearch() {
 
     const searchKeyword = searchParams.get('search');
     input = document.getElementById("searchInput");

@@ -1232,10 +1232,6 @@ async function SetLevelUpStuff() {
     }
 
 
-
-
-    // console.log(product, sorting);
-
     const urlParams = new URLSearchParams(window.location.search);
     const product = searchParams.get('type');
 
@@ -1251,17 +1247,6 @@ async function SetLevelUpStuff() {
 
 
     }
-
-    //if (sorting != undefined) {
-
-
-    // setTimeout(function () {
-    //      sortDivs(sorting);
-    //   }, 50);
-
-    //  }
-
-
 }
 
 
