@@ -210,6 +210,84 @@ function returnSkillList(fieldToSearch) {
 }
 
 
+function returnEquipList(fieldToSearch) {
+    var resultslist = new Array();
+    var equip = new Array();
+
+    for (i in jsonUnitAbilities.abilities) {
+
+
+        if (jsonUnitAbilities.abilities[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+            equip.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+        }
+    }
+
+
+
+    for (j in jsonHeroItems.items) {
+        if (equip.length > 0) {
+
+            for (k in jsonHeroItems.items[j].ability_slugs) {
+                for (l in equip) {
+                    if (jsonHeroItems.items[j].ability_slugs[k].slug === equip[l].slug) {
+
+
+                        if (!isInArray(resultslist, jsonHeroItems.items[j])) {
+                            resultslist.push(jsonHeroItems.items[j]);
+                        }
+
+
+
+                    }
+                }
+
+            }
+
+
+
+        }
+        for (k in jsonHeroItems.items[j].description) {
+            fieldToSearch = fieldToSearch.replaceAll("_", " ");
+            if (Sanitize(jsonHeroItems.items[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
+
+                if (!isInArray(resultslist, jsonHeroItems.items[j])) {
+                    resultslist.push(jsonHeroItems.items[j]);
+                }
+
+
+
+            }
+        }
+
+        for (k in jsonHeroItems.items[j].name) {
+            fieldToSearch = fieldToSearch.replaceAll("_", " ");
+            if (jsonHeroItems.items[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+                if (!isInArray(resultslist, jsonHeroItems.items[j])) {
+                    resultslist.push(jsonHeroItems.items[j]);
+                }
+
+
+
+            }
+        }
+
+    }
+
+
+
+
+
+    return resultslist;
+}
+
+
 function returnSiegeProj(fieldToSearch) {
     var list = new Array();
     for (i = 0; i < jsonSiegeProjects.projects.length; i++) {
@@ -332,6 +410,7 @@ function searchUnits(keyword) {
     var listStructures = returnStructure(fields[0]);
     var listWorldStructures = returnWorldStructure(fields[0]);
     var listEmpireTree = returnEmpireTreeList(fields[0]);
+    var listEquip = returnEquipList(fields[0]);
 
 
 
@@ -357,6 +436,9 @@ function searchUnits(keyword) {
     }
     if (listskills.length > 0) {
         SetCollapsibleButtonsAndDivs("Hero Skills", listskills, "searchSkill");
+    }
+    if (listEquip.length > 0) {
+        SetCollapsibleButtonsAndDivs("Hero Equipment", listEquip, "searchItem");
     }
 
     if (listEmpireTree.length > 0) {

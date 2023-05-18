@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+
+    <script>
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                showItemsWithArgument("Primary", "Primary Weapon");
+                showItemsWithArgument("Secondary", "Secondary Weapon");
+                showItemsWithArgument("Head", "Head");
+                showItemsWithArgument("Torso", "Torso");
+                showItemsWithArgument("Legs", "Legs");
+                showItemsWithArgument("Mount", "Mounts");
+                showItemsWithArgument("Miscellaneous", "Miscellaneous");
+
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            });
+
+
+
+        });
+
+    </script>
+
+
+    <title>Age of Wonders 4 Database - Hero Equipment</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        Hero Skills
+    </div>
+
+    <div style="
+    display: table;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;">
+        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+
+    </div>
+
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder">
+
+        </div>
+        <div id="dataHolder">
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
+<footer>
+    <br>
+    <br>
+</footer>
