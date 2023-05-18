@@ -2703,6 +2703,9 @@ function CheckIfInStructure(unitName) {
         if (unitName == "Warg") {
             unitName = "Warg<";
         }
+        if (unitName == "Archer") {
+            unitName = "Archer<";
+        }
         if (jsonStructureUpgrades.structures[i].prediction_description.indexOf(">" + unitName) != -1) {
 
             structure = jsonStructureUpgrades.structures[i];
