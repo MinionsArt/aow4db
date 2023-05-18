@@ -135,6 +135,8 @@ function returnSpellList(fieldToSearch) {
 function returnSkillList(fieldToSearch) {
     var resultslist = new Array();
     var hero = new Array();
+    var i = "";
+    var j, m, k, l = "";
 
     for (i in jsonUnitAbilities.abilities) {
 
@@ -147,6 +149,38 @@ function returnSkillList(fieldToSearch) {
 
 
 
+        }
+        if (jsonUnitAbilities.abilities[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+            hero.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+        }
+
+        if ('modifiers' in jsonUnitAbilities.abilities[i]) {
+            for (m in jsonUnitAbilities.abilities[i].modifiers) {
+                if (jsonUnitAbilities.abilities[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+                    hero.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+                }
+                if (jsonUnitAbilities.abilities[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+                    hero.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+                }
+            }
         }
     }
 
@@ -213,6 +247,8 @@ function returnSkillList(fieldToSearch) {
 function returnEquipList(fieldToSearch) {
     var resultslist = new Array();
     var equip = new Array();
+    var i = "";
+    var j, m, k, l = "";
 
     for (i in jsonUnitAbilities.abilities) {
 
@@ -225,6 +261,39 @@ function returnEquipList(fieldToSearch) {
 
 
 
+        }
+
+        if (jsonUnitAbilities.abilities[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+            equip.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+        }
+
+        if ('modifiers' in jsonUnitAbilities.abilities[i]) {
+            for (m in jsonUnitAbilities.abilities[i].modifiers) {
+                if (jsonUnitAbilities.abilities[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+                    equip.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+                }
+                if (jsonUnitAbilities.abilities[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+
+
+                    equip.push(jsonUnitAbilities.abilities[i]);
+
+
+
+
+                }
+            }
         }
     }
 
