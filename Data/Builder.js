@@ -3916,6 +3916,7 @@ function showItem(a) {
     var div = document.createElement("DIV");
 
     for (i in a.disabled_slots) {
+        var div = document.createElement("DIV");
         div.innerHTML = "&#11049" + a.disabled_slots[i].slot_name;
         unitTypesDiv.appendChild(div);
     }
