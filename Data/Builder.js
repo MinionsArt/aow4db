@@ -3850,7 +3850,9 @@ function showItem(a) {
 
                         for (l in jsonUnitAbilities.abilities[j].modifiers) {
                             abilityName += "&#11049";
-                            abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
+                            var name = jsonUnitAbilities.abilities[j].modifiers[l].name.replace("^N", "");
+                            name = name.replace("^n", "");
+                            abilityMod += "<bullet>" + name + "<br>";
                             abilityMod += jsonUnitAbilities.abilities[j].modifiers[l].description + "</bullet><br>";
                         }
 
