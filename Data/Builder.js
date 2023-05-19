@@ -3764,7 +3764,11 @@ function showSpell(a, showOrigin) {
 
             imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
             imagelink.setAttribute("id", "modicon" + a);
-            tier.innerHTML += " Tier " + romanize(backtraceTomeOriginAndTier(jsonSpells.spells[j].id, showOrigin));
+            var tierSpell = backtraceTomeOriginAndTier(jsonSpells.spells[j].id, showOrigin);
+            if (tierSpell != undefined) {
+                tier.innerHTML += " Tier " + romanize(tierSpell);
+            }
+
             if (showOrigin === true) {
 
                 var tomeOrigin = document.getElementById("originTome");
