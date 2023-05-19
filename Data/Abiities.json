@@ -10403,11 +10403,11 @@ var jsonUnitAbilities = {
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [],
+            "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_godir_sword",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "7<damagephysical></damagephysical> 7<damagespirit></damagespirit> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10419,6 +10419,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
@@ -10540,11 +10541,17 @@ var jsonUnitAbilities = {
             "icon": "gilded_shield^n"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Sundered Resistance for 3 <turn></turn> Turns.",
+                    "name": "Sundered Resistance",
+                    "count": 1
+   }
+  ],
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_mystic_mace",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "20<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10564,7 +10571,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_greathammer",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "23<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10609,18 +10616,17 @@ var jsonUnitAbilities = {
             "icon": "raise_undead_wand_of_the_rising_undead"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 90% chance of inflicting 2 Weakened for 3 <turn></turn> Turns.",
+                    "name": "Weakened",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
-            "name": "Magic Blast",
+            "name": "Frost Blast",
             "slug": "magic_blast_staff_of_inioch",
-            "damage": "16<damagephysical></damagephysical> ",
+            "damage": "26<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -10632,6 +10638,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -10660,18 +10674,11 @@ var jsonUnitAbilities = {
             "icon": "gravecall"
  },
         {
-            "notes": [
-                {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+            "modifiers": [],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Bow",
             "slug": "shoot_bow_godir_bow",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "12<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -10683,6 +10690,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_bow_scout_unit"
  },
         {
@@ -10705,11 +10720,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_godir_greataxe",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "21<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10752,7 +10773,7 @@ var jsonUnitAbilities = {
             "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
             "name": "Heavy Charge Strike",
             "slug": "heavy_charge_strike_archons_deliverance",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "15<damagephysical></damagephysical> 15<damagespirit></damagespirit> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10774,11 +10795,17 @@ var jsonUnitAbilities = {
             "icon": "call_lightbringer"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Deal +40% damage against creatures with Large Target.",
+                    "name": "Giant Slayer",
+                    "count": 1
+   }
+  ],
             "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
             "name": "Heavy Charge Strike",
             "slug": "heavy_charge_strike_giants_bane",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "24<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10794,11 +10821,17 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "<bulletlist><bullet>Sets affected tiles on fire.</bullet><bullet>Affects targets in a 3-hex line for 50% effectiveness.</bullet></bulletlist>",
+                    "name": "Yaka's Fury^N",
+                    "count": 1
+   }
+  ],
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_yakas_fury",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "14<damagephysical></damagephysical> 14<damagefire></damagefire> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10814,11 +10847,17 @@ var jsonUnitAbilities = {
             "icon": "charge_strike_bone_golem"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Grants a chance of killing creatures of Magic Origin instantly. Chance increases on targets with lower <hyperlink><hp></hp> Hit Points</hyperlink>.",
+                    "name": "The Anathema^N",
+                    "count": 1
+   }
+  ],
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_the_anathema",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "15<damagephysical></damagephysical> 15<damagespirit></damagespirit> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10838,7 +10877,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_whirlwind_blade",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "25<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10878,7 +10917,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_crusaders_claymore",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "15<damagespirit></damagespirit> 10<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10894,11 +10933,17 @@ var jsonUnitAbilities = {
             "icon": "charge_strike_bone_golem"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "When killing a unit, gains +10 <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink>.",
+                    "name": "Mana Siphoner^n",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_mana_siphoner",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "16<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10910,14 +10955,21 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "+40% damage on <hyperlink>Retaliation Attacks</hyperlink>",
+                    "name": "The Avenger^N",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_the_avenger",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "14<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10929,6 +10981,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
@@ -10938,11 +10991,17 @@ var jsonUnitAbilities = {
             "icon": "the_avenger^n"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "Base 60% chance of inflicting Sundered Defense for 3 <turn></turn> Turns.",
+                    "name": "Sundered Defense",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_smoldering_axe",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "8<damagephysical></damagephysical> 8<damagefire></damagefire> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10954,6 +11013,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
@@ -10961,7 +11021,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_greatsword",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "23<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11023,18 +11083,22 @@ var jsonUnitAbilities = {
             "icon": "cloud_in_a_bottle^n_cloud_in_a_bottle"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+                    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
    },
                 {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 90% chance of inflicting Decaying for 3 <turn></turn> Turns.",
+                    "name": "Decaying",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
-            "name": "Magic Blast",
+            "name": "Death Blast",
             "slug": "magic_blast_staff_of_decay",
-            "damage": "16<damagephysical></damagephysical> ",
+            "damage": "12<damageblight></damageblight> 12<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -11046,6 +11110,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -11068,18 +11140,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 90% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
+                    "name": "Immobilized",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
             "name": "Poison Blast",
             "slug": "magic_blast_staff_of_blossoms",
-            "damage": "16<damageblight></damageblight> ",
+            "damage": "24<damageblight></damageblight> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -11091,6 +11162,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -11113,18 +11192,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 90% chance of inflicting Blind for 1 <turn></turn> Turn.",
+                    "name": "Blind",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
             "name": "Spirit Blast",
             "slug": "magic_blast_staff_of_radiance",
-            "damage": "16<damagespirit></damagespirit> ",
+            "damage": "20<damagespirit></damagespirit> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -11136,6 +11214,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -11158,12 +11244,11 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "This effect jumps to another enemy within 2 hexes and can jump 2 more times.",
+                    "name": "Storm Orb^n",
+                    "count": 1
    }
   ],
             "description": "Unleashes a magical bolt at target enemy.",
@@ -11181,6 +11266,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_bolts_elya"
  },
         {
@@ -11255,18 +11348,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 90% chance of inflicting Misfortune for 3 <turn></turn> Turns.",
+                    "name": "Misfortune",
+                    "count": 1
    }
   ],
             "description": "Unleashes a magical bolt at target enemy.",
-            "name": "Fire Bolts",
+            "name": "Death Bolts",
             "slug": "magic_bolts_corruption_orb",
-            "damage": "1<damagephysical></damagephysical> ",
+            "damage": "8<damageblight></damageblight> 8<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Magic"
@@ -11278,6 +11370,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_bolts_elya"
  },
         {
@@ -11380,7 +11480,7 @@ var jsonUnitAbilities = {
             "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
             "name": "Heavy Charge Strike",
             "slug": "heavy_charge_strike_godbreaker",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "28<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11396,11 +11496,17 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Target is pushed back by 1 hex.",
+                    "name": "Push Back",
+                    "count": 1
+   }
+  ],
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_dwarven_hammer",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "26<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11416,11 +11522,11 @@ var jsonUnitAbilities = {
             "icon": "charge_strike_bone_golem"
  },
         {
-            "notes": [],
+            "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_kingsblade",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "18<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11432,14 +11538,21 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "Heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> on hit",
+                    "name": "Life Steal",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_lifedrinker",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "8<damagephysical></damagephysical> 8<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11451,14 +11564,21 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "Deals +4 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> to Fiends and Undead.",
+                    "name": "Mace of Smiting^n",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_mace_of_smiting",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "14<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11470,14 +11590,15 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [],
+            "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_punishers_halberd",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "18<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11489,21 +11610,26 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+                    "description": "Ignore up to 5 <defense></defense> <hyperlink>Defense</hyperlink>.",
+                    "name": "Piercing",
+                    "count": 1
    },
                 {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Damages units in a 3 hex line for 50% effectiveness.",
+                    "name": "Skypiercer^N",
+                    "count": 1
    }
   ],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Crossbow",
             "slug": "shoot_crossbow_skypiercer",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "28<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -11515,6 +11641,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_crossbow_arbalest"
  },
         {
@@ -11547,7 +11681,7 @@ var jsonUnitAbilities = {
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Bow",
             "slug": "shoot_bow_trueshot",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "16<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -11582,18 +11716,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Deals +30% damage to Large Targets.",
+                    "name": "Monster Slayer^N",
+                    "count": 1
    }
   ],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Bow",
             "slug": "shoot_bow_monster_slayer",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "16<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -11605,6 +11738,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_bow_scout_unit"
  },
         {
@@ -11627,18 +11768,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Ignore up to 5 <defense></defense> <hyperlink>Defense</hyperlink>.",
+                    "name": "Piercing",
+                    "count": 1
    }
   ],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Crossbow",
             "slug": "shoot_crossbow_heavy_crossbow",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "20<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -11650,6 +11790,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_crossbow_arbalest"
  },
         {
@@ -11694,18 +11842,22 @@ var jsonUnitAbilities = {
             "icon": "phase_phase_beast"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+                    "description": "Ignore up to 5 <defense></defense> <hyperlink>Defense</hyperlink>",
+                    "name": "Armor Bypass",
+                    "count": 1
    },
                 {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Another enemy within 3 hexes also takes 50% damage.",
+                    "name": "Ricochet",
+                    "count": 1
    }
   ],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Crossbow",
             "slug": "shoot_crossbow_ricochet_crossbow",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "20<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -11717,6 +11869,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_crossbow_arbalest"
  },
         {
@@ -11781,7 +11941,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_frost_greataxe",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "13<damagephysical></damagephysical> 13<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11797,11 +11957,11 @@ var jsonUnitAbilities = {
             "icon": "charge_strike_bone_golem"
  },
         {
-            "notes": [],
+            "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_lightning_sword",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11813,6 +11973,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
@@ -11876,7 +12037,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_the_executioner",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "28<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -11892,11 +12053,17 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_greataxe",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "21<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12013,7 +12180,7 @@ var jsonUnitAbilities = {
             "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
             "name": "Charge Strike",
             "slug": "charge_strike_lance",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "21<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12029,11 +12196,17 @@ var jsonUnitAbilities = {
             "icon": "charge_strike_bone_golem"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "Base 30% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_battle_axe",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "14<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12045,6 +12218,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
@@ -12081,11 +12255,17 @@ var jsonUnitAbilities = {
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "<hyperlink>Critical Hits</hyperlink> deal +50% damage and have a +50% chance to trigger.",
+                    "name": "Bloody Edge^N",
+                    "count": 1
+   }
+  ],
             "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
             "name": "Heavy Charge Strike",
             "slug": "heavy_charge_strike_bloody_edge",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "25<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12101,11 +12281,11 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "notes": [],
+            "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_pike",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "16<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12117,21 +12297,15 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
-            "notes": [
-                {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+            "modifiers": [],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Crossbow",
             "slug": "shoot_crossbow_crossbow",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "20<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -12143,6 +12317,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_crossbow_arbalest"
  },
         {
@@ -12165,18 +12347,11 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
-                {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+            "modifiers": [],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Bow",
             "slug": "shoot_bow_bow",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "12<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -12188,6 +12363,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_bow_scout_unit"
  },
         {
@@ -12303,18 +12486,11 @@ var jsonUnitAbilities = {
             "icon": "frost_shield^n"
  },
         {
-            "notes": [
-                {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+            "modifiers": [],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Bow",
             "slug": "shoot_bow_eagle_bow",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "13<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -12326,6 +12502,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "shoot_bow_scout_unit"
  },
         {
@@ -12388,18 +12572,17 @@ var jsonUnitAbilities = {
             "icon": "spider_flute^n_spider_leg"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "2 <resistance></resistance> <hyperlink>Resistance</hyperlink> and 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> are ignored.",
+                    "name": "Staff of the Magi^n",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
             "name": "Shock",
             "slug": "magic_blast_staff_of_the_magi",
-            "damage": "24<damagelightning></damagelightning> ",
+            "damage": "29<damagelightning></damagelightning> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -12411,6 +12594,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -12523,11 +12714,17 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Base 60% chance of inflicting Poisoned for 3 <turn></turn> Turns.",
+                    "name": "Poisoned",
+                    "count": 1
+   }
+  ],
             "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
             "name": "Heavy Charge Strike",
             "slug": "heavy_charge_strike_green_lance",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "17<damageblight></damageblight> 10<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12543,11 +12740,17 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "notes": [],
+            "modifiers": [
+                {
+                    "description": "Deals 30% of the damage to another enemy within 2 hexes.",
+                    "name": "Chain Strike",
+                    "count": 1
+   }
+  ],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_lightning_spear",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "9<damagephysical></damagephysical> 9<damagelightning></damagelightning> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12559,6 +12762,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
+            "notes": [],
             "icon": "melee_strike_nimu"
  },
         {
@@ -12577,7 +12781,7 @@ var jsonUnitAbilities = {
             "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
             "name": "Heavy Charge Strike",
             "slug": "heavy_charge_strike_excessive_force",
-            "damage": "18<damagephysical></damagephysical> ",
+            "damage": "28<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12603,7 +12807,7 @@ var jsonUnitAbilities = {
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_meleniss_glaive",
-            "damage": "10<damagephysical></damagephysical> ",
+            "damage": "11<damagephysical></damagephysical> 11<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -12639,12 +12843,11 @@ var jsonUnitAbilities = {
             "icon": "heal_wand_of_healing"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 90% chance of inflicting Blind for 1 <turn></turn> Turn.",
+                    "name": "Blind",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
@@ -12662,6 +12865,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -12684,12 +12895,11 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 60% chance of inflicting Poisoned for 3 <turn></turn> Turns.",
+                    "name": "Poisoned",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
@@ -12707,6 +12917,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -12729,12 +12947,11 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
+                    "name": "Burning",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
@@ -12752,6 +12969,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -12774,12 +12999,11 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "Base 60% chance of inflicting Electrified for 3 <turn></turn> Turns.",
+                    "name": "Electrified",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
@@ -12797,6 +13021,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -12819,12 +13051,11 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "notes": [
+            "modifiers": [
                 {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+                    "description": "30% chance of inflicting Frozen. Inflicts Slowed instead if resisted.",
+                    "name": "Staff of Frost^n",
+                    "count": 1
    }
   ],
             "description": "Single magical attack at target unit.",
@@ -12842,6 +13073,14 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -13053,6 +13292,11 @@ var jsonUnitAbilities = {
                 {
                     "description": "Base 60% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
                     "name": "Immobilized",
+                    "count": 1
+   },
+                {
+                    "description": "Heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> on hit",
+                    "name": "Life Steal",
                     "count": 1
    }
   ],
