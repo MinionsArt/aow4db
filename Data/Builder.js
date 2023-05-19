@@ -4169,7 +4169,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                         if ('affinities' in jsonTomes.tomes[j]) {
                             tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
                         }
-                        tomeOrigin.innerHTML += jsonTomes.tomes[j].name;
+                        tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
                         var tomeOriginIcon = document.getElementById("originTomeIcon");
                         tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
                         var wrap = tomeOrigin.innerHTML;
