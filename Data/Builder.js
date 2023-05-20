@@ -1243,6 +1243,8 @@ async function SetCollapsibleStuff() {
     dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;; margin-left:200px");
 }
 
+
+
 async function SetLevelUpStuff() {
     var coll = document.getElementsByClassName("collapsibleLevelup");
     var content = document.getElementsByClassName("contentLevelup");
@@ -1282,6 +1284,27 @@ async function SetLevelUpStuff() {
 
     }
 }
+
+function SetUpSpawnTable() {
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var content = document.getElementsByClassName("content");
+    var j = "";
+    for (j in content) {
+
+        //  var content = this.nextElementSibling;
+        if (content[j].style.display === "grid") {
+            content[j].style.display = "none";
+        } else {
+            content[j].style.display = "grid";
+
+        }
+    }
+
+}
+
+
 
 
 
@@ -3728,6 +3751,8 @@ function showSpell(a, showOrigin) {
                 unitTypesDiv.appendChild(div);
             }
 
+
+
             if ('summoned_units' in jsonSpells.spells[j]) {
                 description += "<br>Summoned Units:<br>";
                 for (x in jsonSpells.spells[j].summoned_units) {
@@ -3739,6 +3764,66 @@ function showSpell(a, showOrigin) {
 
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
             descriptionDiv.innerHTML = description;
+            if (a == "summon_greater_animal") {
+                // extra info
+                info = document.createElement("DIV");
+
+
+                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
+                var collapsibleC = document.createElement("DIV");
+                collapsibleC.classList = "content";
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>Default: " + "<bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch </bullet><bullet>20% Spirit Wolf </bullet><bullet>20% Goretusk Matriarch</bullet><bullet>20% Unicorn</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Underground:" + "<bullet>40% Caustic Worm</bullet><bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch</bullet><bullet>20% Vampire Spider Matriarch</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>Cold:" + "<bullet>25% Ice Spider Matriarch</bullet><bullet>25% White Wolf</bullet><bullet>25% Goretusk Matriarch</bullet><bullet>25% Thunderbird</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Desert:" + "<bullet>60% Phoenix</bullet><bullet>40% Nightmare</bullet>" + "</bulletlist>";
+                collapsibleC.append(div);
+
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Water:" + "<bullet>75% Deep-sea Nimu</bullet><bullet>25% Kraken</bullet>" + "</bulletlist>";
+                collapsibleC.append(div);
+                info.append(collapsibleC);
+                descriptionDiv.append(info);
+            }
+
+            if (a == "summon_wild_animal") {
+                // extra info
+                info = document.createElement("DIV");
+
+
+                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
+                var collapsibleC = document.createElement("DIV");
+                collapsibleC.classList = "content";
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>Default: " + "<bullet>29% Grimbeak Crows</bullet><bullet>29% Goretusk Piglet </bullet><bullet>14% Vampire Spider Hatchling </bullet><bullet>14% Dread Spider Hatchlig</bullet><bullet>7% Hunter Spider</bullet><bullet>7% Warg</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Underground:" + "<bullet>40% Dread Spider Hatchling</bullet><bullet>40% Young Caustic Worm</bullet><bullet>10% Hunter Spider</bullet><bullet>10% Warg</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>Cold:" + "<bullet>43% Goretusk Piglet</bullet><bullet>43% Grimbeak Crows</bullet><bullet>14% Ice Spider</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Desert:" + "<bullet>37% Inferno Puppy</bullet><bullet>37% Grimbeak Crows</bullet><bullet>12% Carrion Bird</bullet><bullet>12% Inferno Hound</bullet>" + "</bulletlist>";
+                collapsibleC.append(div);
+
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Water:" + "<bullet>40% Nimu</bullet><bullet>40% Penguin</bullet><bullet>20% Kraken Spawn</bullet>" + "</bulletlist>";
+                collapsibleC.append(div);
+                info.append(collapsibleC);
+                descriptionDiv.append(info);
+            }
+
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
             //type = document.getElementById("modtype");
