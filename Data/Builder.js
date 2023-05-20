@@ -3501,6 +3501,40 @@ function showStructure(a) {
             var tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
+            if (a.indexOf("wildlife_sanctuary") != -1) {
+                // unlock warg, razorback, hunter spider, goretustk piglet
+                descriptionDiv.innerHTML += "<br>Unlocks Production of:";
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "goretusk_piglet" + "\" target=\"_blank\">" + GetUnitTierAndName("goretusk_piglet") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "hunter_spider" + "\" target=\"_blank\">" + GetUnitTierAndName("hunter_spider") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "razorback" + "\" target=\"_blank\">" + GetUnitTierAndName("razorback") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "warg" + "\" target=\"_blank\">" + GetUnitTierAndName("warg") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+            }
+
+            if (a.indexOf("demon_gate") != -1) {
+                // unlock warg, razorback, hunter spider, goretustk piglet
+                descriptionDiv.innerHTML += "<br>Unlocks Production of:";
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "inferno_puppy" + "\" target=\"_blank\">" + GetUnitTierAndName("inferno_puppy") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "gremlin" + "\" target=\"_blank\">" + GetUnitTierAndName("gremlin") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "inferno_hound" + "\" target=\"_blank\">" + GetUnitTierAndName("inferno_hound") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "chaos_eater" + "\" target=\"_blank\">" + GetUnitTierAndName("chaos_eater") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+            }
+
             found = true;
         }
     }
