@@ -4225,6 +4225,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
 
                 spa.className = "itemAbility";
+                spa.setAttribute("style", "width:380px");
                 unitTypesDiv = document.getElementById("affectUnitTypes");
 
 
@@ -4232,6 +4233,57 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
                 descriptionDiv.innerHTML = "";
                 descriptionDiv.append(spa);
+
+
+                if (a.id == "summon_elemental") {
+
+                    descriptionDiv.innerHTML += "<br>Summoned Units:";
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "tide_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("tide_spirit") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "storm_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("storm_spirit") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "magma_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("magma_spirit") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "snow_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("snow_spirit") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "stone_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("stone_spirit") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                }
+
+                if (a.id == "summon_animal") {
+
+                    descriptionDiv.innerHTML += "<br>Summoned Units:";
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "unicorn" + "\" target=\"_blank\">" + GetUnitTierAndName("unicorn") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "nightmare" + "\" target=\"_blank\">" + GetUnitTierAndName("nightmare") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "thunderbird" + "\" target=\"_blank\">" + GetUnitTierAndName("thunderbird") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "goretusk_matriarch" + "\" target=\"_blank\">" + GetUnitTierAndName("goretusk_matriarch") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "caustic_worm" + "\" target=\"_blank\">" + GetUnitTierAndName("caustic_worm") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                }
+
+
+                if (a.id == "summon_undead") {
+
+                    descriptionDiv.innerHTML += "<br>Summoned Units:";
+
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "zombie" + "\" target=\"_blank\">" + GetUnitTierAndName("zombie") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                }
 
                 descriptionDiv.setAttribute("id", "moddescription" + a.id);
                 //type = document.getElementById("modtype");
