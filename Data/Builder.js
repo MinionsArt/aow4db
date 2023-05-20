@@ -3971,7 +3971,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
     if (checkInAbilities != "") {
         for (j in jsonUnitAbilities.abilities) {
-            if (jsonUnitAbilities.abilities[j].slug.indexOf(a.abilities[0].slug) != -1) {
+            if (jsonUnitAbilities.abilities[j].slug === a.abilities[0].slug) {
                 var abilityName = jsonUnitAbilities.abilities[j].name;
                 modName = document.getElementById("modname");
                 modName.innerHTML = a.name.toUpperCase();
