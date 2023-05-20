@@ -3472,6 +3472,7 @@ function showStructure(a) {
 
             unitTypesDiv = document.getElementById("affectUnitTypes");
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+            unitTypesDiv.setAttribute("style", "float: left;display: grid;grid-template-columns: 200px 200px;font-size: 12px;");
 
             tier = document.getElementById("modtier");
             if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
