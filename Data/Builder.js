@@ -1292,7 +1292,7 @@ function SetUpSpawnTable() {
     var content = document.getElementsByClassName("content");
     var j = "";
     for (j in content) {
-
+        coll[j].classList.toggle("active");
         //  var content = this.nextElementSibling;
         if (content[j].style.display === "grid") {
             content[j].style.display = "none";
@@ -3819,6 +3819,62 @@ function showSpell(a, showOrigin) {
 
                 var div = document.createElement("DIV");
                 div.innerHTML = "<bulletlist>Water:" + "<bullet>40% Nimu</bullet><bullet>40% Penguin</bullet><bullet>20% Kraken Spawn</bullet>" + "</bulletlist>";
+                collapsibleC.append(div);
+                info.append(collapsibleC);
+                descriptionDiv.append(info);
+            }
+
+            if (a == "awaken_the_forest") {
+                // extra info
+                info = document.createElement("DIV");
+
+
+                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
+                var collapsibleC = document.createElement("DIV");
+                collapsibleC.classList = "content";
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>Low Tier(50%): " + "<bullet>40% Entwined Thrall</bullet><bullet>40% Warg</bullet><bullet>20% Entwined Protector </bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Mid Tier(50%):" + "<bullet>33% Entwined Protector</bullet><bullet>33% Goretusk Matriarch</bullet><bullet>33% Entwined Scourge</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                info.append(collapsibleC);
+                descriptionDiv.append(info);
+            }
+
+            if (a == "demonic_summoning") {
+                // extra info
+                info = document.createElement("DIV");
+
+
+                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
+                var collapsibleC = document.createElement("DIV");
+                collapsibleC.classList = "content";
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>" + "<bullet>42% Nightmare</bullet><bullet>29% Skald</bullet><bullet>29% Chaos Eater </bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+
+                info.append(collapsibleC);
+                descriptionDiv.append(info);
+            }
+
+
+            if (a == "raise_undead_army") {
+                // extra info
+                info = document.createElement("DIV");
+
+
+                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
+                var collapsibleC = document.createElement("DIV");
+                collapsibleC.classList = "content";
+                var div = document.createElement("DIV");
+
+                div.innerHTML = "<bulletlist>Low Tier(50%): " + "<bullet>100% Skeleton</bullet>" + "</bulletlist><br>";
+                collapsibleC.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bulletlist>Mid Tier(50%):" + "<bullet>33% Skeleton</bullet><bullet>33% Bone Golem</bullet><bullet>33% Banshee</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 info.append(collapsibleC);
                 descriptionDiv.append(info);
