@@ -4313,6 +4313,8 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     imagelink.remove();
                 }
 
+
+                FindHeroSkillOrigin(a.id);
                 var tomeOrigin = document.getElementById("originTome");
                 tomeOrigin.setAttribute("id", "originTome" + a.id);
                 var tomeOriginIcon = document.getElementById("originTomeIcon");
@@ -4367,10 +4369,13 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 cost.setAttribute("id", "modcost" + a.id);
 
                 imagelink = document.getElementById("modicon");
-
+                FindHeroSkillOrigin(a.id);
                 var tomeOrigin = document.getElementById("originTome");
-                tomeOrigin.setAttribute("id", "originTome" + a.id);
                 var tomeOriginIcon = document.getElementById("originTomeIcon");
+
+
+                tomeOrigin.setAttribute("id", "originTome" + a.id);
+
                 tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
 
@@ -4388,6 +4393,31 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
     if (found == false) {
         console.log("Couldn't find skill: " + a.id);
+    }
+}
+
+function FindHeroSkillOrigin(id) {
+    for (j in jsonTomes.tomes) {
+        {
+            for (k in jsonTomes.tomes[j].passives) {
+                if (jsonTomes.tomes[j].passives[k].hero_skill_slug == id) {
+                 
+                        var tomeOrigin = document.getElementById("originTome");
+                        if ('affinities' in jsonTomes.tomes[j]) {
+                            tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+                        }
+                        tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                        var tomeOriginIcon = document.getElementById("originTomeIcon");
+                        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                        var wrap = tomeOrigin.innerHTML;
+                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+
+                    }
+
+
+                
+            }
+        }
     }
 }
 
