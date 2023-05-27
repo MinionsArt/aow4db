@@ -3812,14 +3812,14 @@ function showSpell(a, showOrigin) {
                 div.innerHTML = "<bulletlist>Default: " + "<bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch </bullet><bullet>20% Spirit Wolf </bullet><bullet>20% Goretusk Matriarch</bullet><bullet>20% Unicorn</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Underground:" + "<bullet>40% Caustic Worm</bullet><bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch</bullet><bullet>20% Vampire Spider Matriarch</bullet>" + "</bulletlist><br>";
+                div.innerHTML = "<bulletlist>Underground/Cavern Floor:" + "<bullet>40% Caustic Worm</bullet><bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch</bullet><bullet>20% Vampire Spider Matriarch</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 var div = document.createElement("DIV");
 
-                div.innerHTML = "<bulletlist>Cold:" + "<bullet>25% Ice Spider Matriarch</bullet><bullet>25% White Wolf</bullet><bullet>25% Goretusk Matriarch</bullet><bullet>25% Thunderbird</bullet>" + "</bulletlist><br>";
+                div.innerHTML = "<bulletlist>Cold(Arctic/Snow/Frozen):" + "<bullet>25% Ice Spider Matriarch</bullet><bullet>25% White Wolf</bullet><bullet>25% Goretusk Matriarch</bullet><bullet>25% Thunderbird</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Desert:" + "<bullet>60% Phoenix</bullet><bullet>40% Nightmare</bullet>" + "</bulletlist>";
+                div.innerHTML = "<bulletlist>Desert(Desert/Desolate/Sand):" + "<bullet>60% Phoenix</bullet><bullet>40% Nightmare</bullet>" + "</bulletlist>";
                 collapsibleC.append(div);
 
                 var div = document.createElement("DIV");
@@ -3842,14 +3842,14 @@ function showSpell(a, showOrigin) {
                 div.innerHTML = "<bulletlist>Default: " + "<bullet>29% Grimbeak Crows</bullet><bullet>29% Goretusk Piglet </bullet><bullet>14% Vampire Spider Hatchling </bullet><bullet>14% Dread Spider Hatchlig</bullet><bullet>7% Hunter Spider</bullet><bullet>7% Warg</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Underground:" + "<bullet>40% Dread Spider Hatchling</bullet><bullet>40% Young Caustic Worm</bullet><bullet>10% Hunter Spider</bullet><bullet>10% Warg</bullet>" + "</bulletlist><br>";
+                div.innerHTML = "<bulletlist>Underground/Cavern Floor:" + "<bullet>40% Dread Spider Hatchling</bullet><bullet>40% Young Caustic Worm</bullet><bullet>10% Hunter Spider</bullet><bullet>10% Warg</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 var div = document.createElement("DIV");
 
-                div.innerHTML = "<bulletlist>Cold:" + "<bullet>43% Goretusk Piglet</bullet><bullet>43% Grimbeak Crows</bullet><bullet>14% Ice Spider</bullet>" + "</bulletlist><br>";
+                div.innerHTML = "<bulletlist>Cold(Arctic/Snow/Frozen):" + "<bullet>43% Goretusk Piglet</bullet><bullet>43% Grimbeak Crows</bullet><bullet>14% Ice Spider</bullet>" + "</bulletlist><br>";
                 collapsibleC.append(div);
                 var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Desert:" + "<bullet>37% Inferno Puppy</bullet><bullet>37% Grimbeak Crows</bullet><bullet>12% Carrion Bird</bullet><bullet>12% Inferno Hound</bullet>" + "</bulletlist>";
+                div.innerHTML = "<bulletlist>Desert(Desert/Desolate/Sand):" + "<bullet>37% Inferno Puppy</bullet><bullet>37% Grimbeak Crows</bullet><bullet>12% Carrion Bird</bullet><bullet>12% Inferno Hound</bullet>" + "</bulletlist>";
                 collapsibleC.append(div);
 
                 var div = document.createElement("DIV");
@@ -4401,21 +4401,21 @@ function FindHeroSkillOrigin(id) {
         {
             for (k in jsonTomes.tomes[j].passives) {
                 if (jsonTomes.tomes[j].passives[k].hero_skill_slug == id) {
-                 
-                        var tomeOrigin = document.getElementById("originTome");
-                        if ('affinities' in jsonTomes.tomes[j]) {
-                            tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
-                        }
-                        tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
-                        var tomeOriginIcon = document.getElementById("originTomeIcon");
-                        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
-                        var wrap = tomeOrigin.innerHTML;
-                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
 
+                    var tomeOrigin = document.getElementById("originTome");
+                    if ('affinities' in jsonTomes.tomes[j]) {
+                        tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
                     }
+                    tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                    var tomeOriginIcon = document.getElementById("originTomeIcon");
+                    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                    var wrap = tomeOrigin.innerHTML;
+                    tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+
+                }
 
 
-                
+
             }
         }
     }
