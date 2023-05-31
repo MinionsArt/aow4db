@@ -19,6 +19,7 @@ async function rememberSearch() {
 
 function searchData(keywords) {
 
+
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
     output = document.getElementById("searchOutput");

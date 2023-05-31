@@ -216,7 +216,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.setAttribute("id", list[i] + "-button");
         }
 
-
+        buttonHolder.appendChild(btn);
 
         if (cardType == "tome") {
             btn.innerHTML = GetUnitTierAndNameTome(list[i]);
@@ -224,12 +224,15 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.innerHTML = "<img src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetUnitTierAndName(splitIcon[0]);
 
             if (MountedSpecialList.includes(splitIcon[0])) {
-                imag = document.createElement("IMG");
-                imag.setAttribute("src", "/aow4db/Icons/Abilities/cavalry.png");
-                imag.setAttribute("height", "20px");
 
-                btn.append(imag)
+                imag = document.createElement("IMG");
+                imag.setAttribute("src", "/aow4db/Icons/Text/MountInteraction.png");
+                imag.setAttribute("height", "20px");
                 imag.setAttribute("style", "position:relative; float:right");
+
+                btn.append(imag);
+
+                //imag.setAttribute("style", "position:relative; float:right");
             }
 
         } else if (cardType == "searchSpell") {
@@ -239,15 +242,16 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
             if (MountedSpecialList.includes(list[i])) {
                 imag = document.createElement("IMG");
-                imag.setAttribute("src", "/aow4db/Icons/Abilities/cavalry.png");
+                imag.setAttribute("src", "/aow4db/Icons/Text/MountInteraction.png");
                 imag.setAttribute("height", "20px");
-
-                btn.append(imag)
                 imag.setAttribute("style", "position:relative; float:right");
+
+                btn.append(imag);
+
             }
         }
 
-        buttonHolder.appendChild(btn);
+
         if (cardType == "unitTomeIcon") {
             btn.setAttribute("onclick", 'openCity(event,\'' + splitIcon[0] + '\')');
         } else if (cardType.indexOf("search") == -1) {
@@ -1913,6 +1917,32 @@ function showUnit(a, divID) {
             unitName.setAttribute("id", "unitstring" + a);
             name = jsonUnits.units[i].name;
             unitName.innerHTML += jsonUnits.units[i].name.toUpperCase();
+
+            // if in the list of mounted, add tooltip
+            if (MountedSpecialList.includes(a)) {
+                var newDivForMount = document.createElement("DIV");
+                newDivForMount.className = "mountToolTip";
+
+                imag = document.createElement("IMG");
+                imag.setAttribute("src", "/aow4db/Icons/Text/MountInteraction.png");
+                imag.setAttribute("height", "35px");
+
+                spa = document.createElement("SPAN");
+                spa.className = "tooltiptext";
+
+                spa.innerHTML = "If a Mount <hyperlink>Body Trait</hyperlink> is chosen, this unit gains that mount, even if it was not mounted before";
+
+                newDivForMount.appendChild(imag);
+                newDivForMount.appendChild(spa);
+                newDivForMount.setAttribute("style", "text-transform: none; width:20px; height: 20px; float:left");
+                // get position of button
+
+
+
+                unitName.append(newDivForMount);
+
+
+            }
 
 
             imagelink = document.getElementById("vid");
