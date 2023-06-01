@@ -3526,6 +3526,7 @@ function showStructure(a) {
             cost.innerHTML = "Build Cost:<br>" + jsonStructureUpgrades.structures[j].cost;
             cost.setAttribute("id", "modcost" + a);
 
+            backtraceTomeOriginAndTierForStructure(a);
 
             var tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + a.id);
@@ -3656,6 +3657,11 @@ function showWorldStructure(a) {
             tier.innerHTML = "";
 
             cost = document.getElementById("modcost");
+
+            var tomeOrigin = document.getElementById("originTome");
+            var tomeOriginIcon = document.getElementById("originTomeIcon");
+            tomeOrigin.setAttribute("id", "originTome" + a);
+            tomeOriginIcon.setAttribute("id", "originTomeIcon" + a);
 
             cost.setAttribute("id", "modcost" + a);
             cost.innerHTML = "";
@@ -4477,10 +4483,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 FindHeroSkillOrigin(a.id);
                 var tomeOrigin = document.getElementById("originTome");
                 var tomeOriginIcon = document.getElementById("originTomeIcon");
-
-
                 tomeOrigin.setAttribute("id", "originTome" + a.id);
-
                 tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
 
@@ -4525,6 +4528,31 @@ function FindHeroSkillOrigin(id) {
         }
     }
 }
+
+function backtraceTomeOriginAndTierForStructure(structure, showorigin) {
+    for (j in jsonTomes.tomes) {
+
+        for (k in jsonTomes.tomes[j].skills) {
+            if (jsonTomes.tomes[j].skills[k].upgrade_slug == structure) {
+
+                var tomeOrigin = document.getElementById("originTome");
+                if ('affinities' in jsonTomes.tomes[j]) {
+                    tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+                }
+                tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                var tomeOriginIcon = document.getElementById("originTomeIcon");
+                tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                var wrap = tomeOrigin.innerHTML;
+                tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+
+            }
+
+
+        }
+    }
+}
+
+
 
 function backtraceTomeOriginAndTier(spell, showorigin) {
     for (j in jsonTomes.tomes) {
