@@ -3452,7 +3452,7 @@ function GetStructureDescription(structureID) {
     }
 }
 
-function showStructure(a) {
+function showStructure(a, showOrigin) {
     var modName, description, cost, type, tier, j, nameString = "";
     var found = false;
     for (j in jsonStructureUpgrades.structures) {
@@ -3526,7 +3526,7 @@ function showStructure(a) {
             cost.innerHTML = "Build Cost:<br>" + jsonStructureUpgrades.structures[j].cost;
             cost.setAttribute("id", "modcost" + a);
 
-            backtraceTomeOriginAndTierForStructure(a);
+            backtraceTomeOriginAndTierForStructure(a, showOrigin);
 
             var tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + a.id);
@@ -4534,17 +4534,19 @@ function backtraceTomeOriginAndTierForStructure(structure, showorigin) {
 
         for (k in jsonTomes.tomes[j].skills) {
             if (jsonTomes.tomes[j].skills[k].upgrade_slug == structure) {
+                if (showorigin) {
 
-                var tomeOrigin = document.getElementById("originTome");
-                if ('affinities' in jsonTomes.tomes[j]) {
-                    tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+
+                    var tomeOrigin = document.getElementById("originTome");
+                    if ('affinities' in jsonTomes.tomes[j]) {
+                        tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+                    }
+                    tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                    var tomeOriginIcon = document.getElementById("originTomeIcon");
+                    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                    var wrap = tomeOrigin.innerHTML;
+                    tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
                 }
-                tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
-                var tomeOriginIcon = document.getElementById("originTomeIcon");
-                tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
-                var wrap = tomeOrigin.innerHTML;
-                tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
-
             }
 
 
