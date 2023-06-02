@@ -1372,7 +1372,7 @@ async function showStructures(list) {
 
     await spawnSpellCards(list, "Structures");
     for (i in list) {
-        showStructure(list[i]);
+        showStructure(list[i], true);
     }
 
 }
