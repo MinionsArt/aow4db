@@ -366,6 +366,26 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
     }
 
+    if (cardType == "trait") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight + 50;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showTraitFromList(list, overwrite);
+
+        // }
+
+    }
+
     if (cardType == "searchSkill") {
         btn.className = "w3-bar-item w3-button tablink";
         var dataHolder = document.getElementById("dataHolder");
@@ -1576,6 +1596,19 @@ async function showSkillFromList(list, divID) {
 
 }
 
+async function showTraitFromList(list, divID) {
+    await spawnSpellCards(list, divID);
+
+    for (var i = 0; i < list.length; i++) {
+
+
+        showTrait(list[i]);
+
+
+
+    };
+}
+
 async function showItemFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
@@ -1660,6 +1693,20 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
     }
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "spell");
+
+
+
+
+}
+
+async function showTraitsWithArgument(argument, overwritetext, affinity) {
+
+    var list = new Array();
+    list = findTraitsWithArgument(argument, affinity);
+
+
+
+    SetCollapsibleButtonsAndDivs(overwritetext, list, "trait");
 
 
 
@@ -1845,6 +1892,38 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
 
         }
     }
+
+    return finalCheckedList;
+}
+
+
+function findTraitsWithArgument(argumentType, affinity) {
+    var i, output, affinity, textvalue, j, l, k, x, result = "";
+
+    var finalCheckedList = new Array();
+    if (argumentType != "") {
+        for (j in jsonFactionCreation.traits) {
+
+            if (jsonFactionCreation.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+                if (affinity != "") {
+                    if (jsonFactionCreation.traits[j].affinity.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
+                        finalCheckedList.push(jsonFactionCreation.traits[j].id);
+                    }
+                } else {
+                    finalCheckedList.push(jsonFactionCreation.traits[j].id);
+                }
+
+
+
+
+
+
+            }
+        }
+    }
+
+
+
 
     return finalCheckedList;
 }
@@ -4311,6 +4390,65 @@ function showItem(a) {
 
 
 
+
+}
+
+function showTrait(a) {
+    var modName, description, cost, type, tier = "";
+    var found = false;
+    var i = "";
+    for (i in jsonFactionCreation.traits) {
+        if (jsonFactionCreation.traits[i].id == a) {
+
+            modName = document.getElementById("modname");
+            modName.innerHTML = jsonFactionCreation.traits[i].name.toUpperCase();
+
+
+
+            modName.setAttribute("id", "modname" + a);
+            descriptionDiv = document.getElementById("moddescription");
+
+
+
+
+
+
+            descriptionDiv.innerHTML = "";
+
+
+
+
+
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+            var div = document.createElement("DIV");
+            descriptionDiv.innerHTML = jsonFactionCreation.traits[i].description;
+
+            descriptionDiv.setAttribute("id", "moddescription" + a);
+
+            tier = document.getElementById("modtier");
+            tier.innerHTML = "";
+            tier.setAttribute("id", "modtier" + a);
+
+            cost = document.getElementById("modcost");
+            cost.innerHTML = "";
+
+
+            cost.setAttribute("id", "modcost" + a);
+
+
+            imagelink = document.getElementById("modicon");
+            imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + a + ".png");
+            imagelink.setAttribute("style", "background-image:none");
+            imagelink.setAttribute("id", "modicon" + a);
+
+            var tomeOriginIcon = document.getElementById("originTomeIcon");
+
+            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+        }
+    }
 
 }
 
