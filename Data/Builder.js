@@ -3496,8 +3496,16 @@ function showStructure(a, showOrigin) {
             }
 
             imagelink.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + a + ".png");
+            if (a.indexOf("town_hall_iii_") != -1) {
+                description += "<br><br> Unlocks T3 Culture Units";
+            }
+            if (a.indexOf("town_hall_ii_") != -1) {
+                description += "<br><br> Unlocks T2 Culture Units";
+            }
             imagelink.setAttribute("id", "modicon" + a);
             descriptionDiv.innerHTML = description;
+
+
             descriptionDiv.setAttribute("id", "modicon" + a);
 
             unitTypesDiv = document.getElementById("affectUnitTypes");
