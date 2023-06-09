@@ -1308,6 +1308,25 @@ function SetUpSpawnTable() {
 
 }
 
+function SetUpCombatEnc() {
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var content = document.getElementsByClassName("combatEnchantment");
+    var j = "";
+    for (j in content) {
+        coll[j].classList.toggle("active");
+        //  var content = this.nextElementSibling;
+        if (content[j].style.display === "grid") {
+            content[j].style.display = "none";
+        } else {
+            content[j].style.display = "grid";
+
+        }
+    }
+
+}
+
 
 
 
@@ -3575,6 +3594,7 @@ function showStructure(a, showOrigin) {
                 unitTypesDiv.append(div);
             }
 
+
             found = true;
         }
     }
@@ -3601,6 +3621,7 @@ function showWorldStructure(a) {
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
             descriptionDiv = document.getElementById("moddescription");
+            descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
             description = "";
 
             if (jsonWorldStructures.structures[j].type.indexOf("wonder") != -1) {
@@ -3634,21 +3655,28 @@ function showWorldStructure(a) {
                 imagelink.setAttribute("style", "background-image: none");
 
             }
-
+            descriptionDiv.innerHTML = "";
+            if (jsonWorldStructures.structures[j].type.indexOf("Ancient") != 1) {
+                descriptionDiv.innerHTML += "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
+            }
             unitTypesDiv = document.getElementById("affectUnitTypes");
-
+            unitTypesDiv.setAttribute("style", "float:left");
+            FindCombatEnchantment(a);
 
             if ('unit_unlocks' in jsonWorldStructures.structures[j]) {
-                description += "<br>Summoned Units:<br>";
+                description += "<br>Rally Units:<br>";
                 for (x in jsonWorldStructures.structures[j].unit_unlocks) {
                     var div = document.createElement("DIV");
+
                     div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonWorldStructures.structures[j].unit_unlocks[x].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonWorldStructures.structures[j].unit_unlocks[x].slug) + "</a>" + "</bullet>";
                     unitTypesDiv.appendChild(div);
                 }
             }
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
-            descriptionDiv.innerHTML = description;
+            descriptionDiv.innerHTML += description;
+
+
             descriptionDiv.setAttribute("id", "modicon" + a);
 
 
@@ -3674,12 +3702,39 @@ function showWorldStructure(a) {
             cost.setAttribute("id", "modcost" + a);
             cost.innerHTML = "";
 
+            // find combat enchantment
             found = true;
         }
     }
     if (found == false) {
         console.log("Couldn't find structure world: " + a);
     }
+}
+
+function FindCombatEnchantment(id) {
+
+    var i = "";
+    for (i in jsonCombatEnchantments.enchantments) {
+        if (jsonCombatEnchantments.enchantments[i].origin_structure == id) {
+            info = document.createElement("DIV");
+
+
+            info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpCombatEnc()\"> Combat Enchantment - " + jsonCombatEnchantments.enchantments[i].name + "</button>";
+            var collapsibleC = document.createElement("DIV");
+            collapsibleC.className = "combatEnchantment";
+
+
+            var div = document.createElement("DIV");
+            div.innerHTML = "<img style=\"float:left; height:80px; padding:10px\" src=\"/aow4db/Icons/CombatEnchantments/" + jsonCombatEnchantments.enchantments[i].id + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + jsonCombatEnchantments.enchantments[i].name.toUpperCase() + "</p>" +
+                "</br>" + jsonCombatEnchantments.enchantments[i].description;
+
+            collapsibleC.append(div);
+            info.append(collapsibleC);
+            descriptionDiv.append(info);
+
+        }
+    }
+
 }
 
 function ShowDestinyTraits() {

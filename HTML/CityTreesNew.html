@@ -396,7 +396,17 @@
 
 
                         spa2.innerHTML += jsonStructureUpgrades.structures[i].description + "<br>";
+
+                        if (jsonStructureUpgrades.structures[i].id.indexOf("town_hall_iii_") != -1) {
+                            description += "<br><br> Unlocks T3 Culture Units";
+                        }
+                        if (jsonStructureUpgrades.structures[i].id.indexOf("town_hall_ii_") != -1) {
+                            description += "<br><br> Unlocks T2 Culture Units";
+                        }
+
                         spa2.innerHTML += description + "<br>";
+
+
                         if (jsonStructureUpgrades.structures[i].requirement_description != "") {
                             spa2.innerHTML += "<br>Requirements:<bulletlist>" +
                                 "<bullet>" + jsonStructureUpgrades.structures[i].requirement_description + "</bullet></bulletlist><br>";
