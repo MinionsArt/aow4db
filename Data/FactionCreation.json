@@ -187,7 +187,7 @@ var jsonFactionCreation = {
             "id": "imperialists",
             "affinity": "order",
             "name": "Imperialists",
-            "description": "<bulletlist>They are focused on the golory of their empire and the development fo their cities.<bullet>Your Throne City and cities that share a border with the Throne City gain +20 <happiness></happiness> City Stability and +20 <gold></gold> Gold income.</bullet><br><bullet>Capital city starts with +1 <population></population> Population</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Adept Settlers</bullet><bullet>Chosen Destroyers</bullet></bulletlist>"
+            "description": "<bulletlist>They are focused on the glory of their empire and the development fo their cities.<bullet>Your Throne City and cities that share a border with the Throne City gain +20 <happiness></happiness> City Stability and +20 <gold></gold> Gold income.</bullet><br><bullet>Capital city starts with +1 <population></population> Population</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Adept Settlers</bullet><bullet>Chosen Destroyers</bullet></bulletlist>"
  },
         {
             "type": "Society Trait",
@@ -225,13 +225,118 @@ var jsonFactionCreation = {
             "name": "Chosen Destroyers <reputation2></reputation2> <pantheon></pantheon>",
             "description": "<bulletlist>They are warmongers and destroyers, choosing violence over diplomacy any time they can.<bullet>Razing cities grand a permanent +40 <gold></gold> Gold, +20 <mana></mana> Mana, and +20 <knowledge></knowledge> Knowledge income.</bullet><bullet>Can not obtain new Cities and conqured cities can only be razed</bullet><br><bullet>Suffer -300 Relations with all Free Cities and -300 Empire Relations with all other Empires.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Chosen Uniters</bullet><bullet>Devotees of Good</bullet><bullet>Imperalists</bullet><bullet>Adept Settlers</bullet></bulletlist>"
  },
+        {
+            "type": "Society Trait",
+            "id": "adept_settlers",
+            "affinity": "nature",
+            "name": "Adept Settlers",
+            "description": "<bulletlist>They share a natural telent for cultivating the land. They thrive on fertile plains, quickly expanding their realm.<bullet>+1 City Cap.</bullet><bullet>Founding cities cost -25% less <influence></influence> Imperium</bullet><bullet>Newly founded cities gain +1 <population></population> Population.</bullet><br><bullet>Capital city starts with +1 <population></population> Population.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Imperialists</bullet><bullet>Chosen Destroyers</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "experienced_seafarers",
+            "affinity": "nature",
+            "name": "Experienced Seafarers",
+            "description": "<bulletlist>With strong sea legs, they are unrivaled on the water and know how to dredge up extra value from its depths.<bullet>Fisteries yield +2 <gold></gold> Gold, +2 <food></food> Food, and +2 <draft></draft> Draft.</bullet><bullet>Naval Units cost -25% resources to recruit and maintain</bullet><bullet>Naval Units have +2 Rank</bullet><br><bullet>Start with Basic Seafaring Empire Skill unlocked.</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "fabled_hunters",
+            "affinity": "nature",
+            "name": "Fabled Hunters",
+            "description": "<bulletlist>They are legendary hunters, sharing strong survival instincts and excelling on ranged combat and exploration.<bullet>Gain +100% resources from clearing an Infestation, Ancient Wonder, or Resource Node.</bullet><bullet>Ranged and Skirmisher Units have +1 Rank</bullet><br><bullet>Start with an extra Ranged Unit.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Mystic Culture</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "talented_collectors",
+            "affinity": "nature",
+            "name": "Talented Collectors <pantheon></pantheon>",
+            "description": "<bulletlist>They are fascinated by rare materials and spend large parts of their lives collecting and studying them.<bullet>Cities gain +5 <gold></gold> Gold, <mana></mana> Mana, <research></research> Knowledge, <food></food> Food, <production></production> Production, and <draft></draft> Draft for each Magic Material in their domain.</bullet><br><bullet>Start with a Magic Material nearby.</bullet></bulletlist>"
+ }, {
+            "type": "Society Trait",
+            "id": "devious_watchers",
+            "affinity": "shadow",
+            "name": "Devious Watchers",
+            "description": "<bulletlist>They are talented spies, sneaking past enemy lines to gain precious information<bullet>Cities and Provinces have +2 Vision Range</bullet><bullet>Scout units have Universal Camouflage</bullet><bullet>The Wayfarer Unit Enchantment is already active and costs no mana upkeep</bullet><bullet>Outposts start with the Watchtower upgrade built</bullet><br><bullet>Start with an extra Scout Unit</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ancient Wise Ones</bullet><bullet>Gifted Casters</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "powerful_evokers",
+            "affinity": "shadow",
+            "name": "Powerful Evokers",
+            "description": "<bulletlist>They eminate raw power as they release an endless barrage of destruction upon all in their path.<bullet>Battle Mage and Support Units have _1 Rank</bullet><bullet>Battle Mage Units and Support Units provide +5 <casttactical></casttactical> Combat Castping Points at the start of combat.</bullet><br><bullet>Start with an extra Battle Mage or Support Unit</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "scions_of_evil",
+            "affinity": "shadow",
+            "name": "Scions of Evil <reputation2></reputation2>",
+            "description": "<bulletlist>They share a thirst for knowledge and power, thriving in their pursout of Evil<bullet>Cities have +10 <draft></draft> Draft and your Empire gains +5 <influence><influence> Imperium per level of Evil Alignment</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><bullet>Units are recruited with +1 Rank you are at the maximum evil Alignment</bullet><bullet>Shock and Shield units have +1 Rank</bullet><br><bullet>Start with an extra Shock or Shield Unit</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Chosen Uniters</bullet><bullet>Devotees of Good</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "silver_tongued",
+            "affinity": "shadow",
+            "name": "Silver Tongued <pantheon></pantheon>",
+            "description": "<bulletlist>They know when to flatter and when to extort, elevating intrigue itself to a lucrative art.<bullet>Pronouncements cost -50% less.</bullet><bullet>Trade deals with Free Cities cost you -100% resources.</bullet><br><bullet>Start with an extra Scout Unit</bullet><bullet>Start with Diplomatic Focus unlocked</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "great_builders",
+            "affinity": "materium",
+            "name": "Great Builders",
+            "description": "<bulletlist>They form a society of builders and makers who take pride in the things they construct.<bullet>Quarries yield +2 <gold></gold> Gold.</bullet><bullet>Special Province Improvements cost -50% <production></production> Production.</bullet><br><bullet>Capital city starts with a Workshop and Stone Walls</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "runesmiths",
+            "affinity": "materium",
+            "name": "Runesmiths",
+            "description": "<bulletlist>They are legendary smiths, weaving magic into their finely crafted creations through enchantments.<bullet>Unit Enchantment Research costs -30% <knowledge></knowledge> Knowledge to unlock.</bullet><bullet>Unit Enchantment cost -30% upkeep.</bullet><bullet>Shield and Polearm Units have +1 Rank</bullet><br><bullet>Starts with an extra Shield or Polearm Unit</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "wonder_architects",
+            "affinity": "materium",
+            "name": "Wonder Architects",
+            "description": "<bulletlist>They are fascinated by unique constructions and the Ancient Wonders of old.<bullet>Ancient Wonders do not require <population></population Population in order to be annexed to a City.</bullet><bullet>Cities gain +20% <production></production> Production per annexed Ancient Wonder.</bullet><br><bullet>Starts with an 1 nearby Ancient Wonder cleared</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "perfectionist_artisans",
+            "affinity": "materium",
+            "name": "Perfectionist Artisans <pantheon></pantheon>",
+            "description": "<bulletlist>They demand perfection of their artisans, taking their time to build marvels like no other.<bullet>City Structures cost 100% more <production><production> Production but grant <happiness></happines> City Stability and +5 <gold></gold> Gold in addition to their normal effects.</bullet><bullet>Tier 3 Units have +1 Rank.</bullet><bullet>City Cap is decreased by -2.</bullet><br><bullet>Starts with an extra tier 3 unit.</bullet></bulletlist>"
+ },
+
+        {
+            "type": "Society Trait",
+            "id": "ancient_wise_ones",
+            "affinity": "astral",
+            "name": "Ancient Wise Ones",
+            "description": "<bulletlist>They have been around since the start of history, homing their minds in the pursuit of arcane knowledge.<bullet>When a Tome is unlocked, a random skill from that Tom costs -60% <research></research> Knowledge.</bullet><br><bullet>1 random research skill is already unlocked.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Gifted Casters</bullet><bullet>Devious Watchers</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "gifted_casters",
+            "affinity": "astral",
+            "name": "Gifted Casters",
+            "description": "<bulletlist>They are blessed with an innate talent for spellcasting, rarely encountering problems that can't be solved by an abundant use of magic.<bullet>+10 <casttactical></casttactical> Combat Casting Points.</bullet><bullet>+10 <caststrategic></caststrategic> World Map Casting Points.</bullet><bullet>Combat Spells cost -20% less <mana></mana> Mana to cast.<br><bullet>Start with 1 extra Combat Spell unlocked.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ancient Wise Ones</bullet><bullet>Devious Watchers</bullet></bulletlist>"
+ },
 
         {
             "type": "Society Trait",
             "id": "mana_channelers",
             "affinity": "astral",
             "name": "Mana Channelers",
-            "description": "<bulletlist>They are attuned to the Astral Flows and support their armies by channeling arcane powers.<bullet>-50% Summoning Spells Mana Cost.</bullet><bullet>+1 Rank for Magic Origin units</bullet><br><bullet>Extra Magic Origin unit.</bullet></bulletlist>"
+            "description": "<bulletlist>They are attuned to the Astral Flows and support their armies by channeling arcane powers.<bullet>Summoning Spells cost -50% <mana></mana> Mana to cast.</bullet><bullet>Magic Origin units have +1 Rank</bullet><br><bullet>Start with an extra Magic Origin unit.</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
+            "id": "mana_addicts",
+            "affinity": "astral",
+            "name": "Mana Addicts<pantheon></pantheon>",
+            "description": "<bulletlist>They have embraced magic to a degree few can match, gaining more than most from its prowess... but becoming dependant on its marvel in return.<bullet>All units gain Attunement: Mana Addicted.</bullet><bullet>Battle Mage and Support units have +1 Rank</bullet><br><bullet>Start with an extra Battle Mage or Support unit.</bullet></bulletlist>"
  },
 
 ]
