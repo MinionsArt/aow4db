@@ -4428,8 +4428,20 @@ function showTrait(a) {
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
 
+
+
             tier = document.getElementById("modtier");
             tier.innerHTML = "";
+            if ('affinity' in jsonFactionCreation.traits[i]) {
+                var splitAff = jsonFactionCreation.traits[i].affinity.split(",");
+                var j = "";
+                for (j in splitAff) {
+                    tier.innerHTML += "<empire" + splitAff[j] + "> </empire" + splitAff[j] + ">";
+                }
+
+
+
+            }
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
