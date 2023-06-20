@@ -2978,7 +2978,7 @@ function CheckIfInStructure(unitName) {
 function CheckIfInTomes(unitID) {
     var tome = "";
 
-    if (unitID == "young_frost_dragon" || unitID == "young_obsidian_dragon" || unitID == "young_obsidian_dragon") {
+    if (unitID == "young_frost_dragon" || unitID == "young_obsidian_dragon" || unitID == "young_golden_dragon") {
         unitID = "young_fire_dragon";
     }
     for (i in jsonTomes.tomes) {
