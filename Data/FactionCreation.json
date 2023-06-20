@@ -2,6 +2,12 @@ var jsonFactionCreation = {
     "traits": [
         {
             "type": "Body Trait",
+            "id": "poisonous",
+            "name": "Poisonous",
+            "description": "<bulletlist>Melee attackers have a chance of being poisoned.<bullet> +2 <defenseblight></defenseblight>.</bullet><bullet>Melee attackers have a base 30% chance of becoming <hyperlink>Poisoned</hyperlink></bulletlist>"
+ },
+        {
+            "type": "Body Trait",
             "id": "bulwark",
             "name": "Bulwark",
             "description": "<bulletlist>Encourages slow and steady playstyle.<bullet>Defense Mode grants +2 <defense></defense> and +2 <resistance></resistance> Resistance.</bullet></bulletlist>"
@@ -64,25 +70,25 @@ var jsonFactionCreation = {
             "type": "Body Trait",
             "id": "nightmare_mounts",
             "name": "Nightmare Mounts",
-            "description": "<bulletlist>A powerful boost for your mounted units, but it has no effect on your other units<bullet>+10 <hp></hp></bullet><bullet>Gains the Intimidation Aura ability</bullet><bullet>Ruler starts with the Nightmare mount</bullet></bulletlist>"
+            "description": "<bulletlist>A powerful boost for your mounted units, but it has no effect on your other units<bullet>+5 <hp></hp></bullet><bullet>Gains the Vicious Killer passive.</bullet><bullet>Gains the Intimidation Aura ability</bullet><bullet>Additional units become <hyperlink>Cavalry</hyperlink></bullet><bullet>Ruler starts with the Nightmare mount</bullet></bulletlist>"
  },
         {
             "type": "Body Trait",
             "id": "spider_mounts",
             "name": "Spider Mounts",
-            "description": "<bulletlist>Mounted units now have a Spider mount with unique abilities, does not affect non-mounted units.<bullet>+10 <hp></hp></bullet><bullet>Gains the Web ability</bullet><bullet>Ruler starts with the Spider mount</bullet></bulletlist>"
+            "description": "<bulletlist>Mounted units now have a Spider mount with unique abilities, does not affect non-mounted units.<bullet>+5 <hp></hp></bullet><bullet>Gains the Web ability</bullet><bullet>Additional units become <hyperlink>Cavalry</hyperlink></bullet><bullet>Ruler starts with a Spider mount</bullet></bulletlist>"
  },
         {
             "type": "Body Trait",
             "id": "wolf_mounts",
             "name": "Wolf Mounts",
-            "description": "<bulletlist>A powerful boost for your mounted units, but it has no effect on your other units<bullet>+10 <hp></hp></bullet><bullet>Gains the Pack Hunter ability</bullet><bullet>Gains the Enfeebling Howl ability</bullet><bullet>Ruler starts with the White Wolf mount</bullet></bulletlist>"
+            "description": "<bulletlist>A powerful boost for your mounted units, but it has no effect on your other units<bullet>+5 <hp></hp></bullet><bullet>Gains the Pack Hunter ability</bullet><bullet>Gains the Enfeebling Howl ability</bullet><bullet>Additional units become <hyperlink>Cavalry</hyperlink></bullet><bullet>Ruler starts with the White Wolf mount</bullet></bulletlist>"
  },
         {
             "type": "Body Trait",
             "id": "unicorn_mounts",
             "name": "Unicorn Mounts",
-            "description": "<bulletlist>A powerful boost for your mounted units, but it has no effect on your other units<bullet>+10 <hp></hp></bullet><bullet>Gains the Phase ability</bullet><bullet>Ruler starts with the Unicorn mount</bullet></bulletlist>"
+            "description": "<bulletlist>A powerful boost for your mounted units, but it has no effect on your other units<bullet>+5 <hp></hp></bullet><bullet>Gains the Phase ability</bullet><bullet>Additional units become <hyperlink>Cavalry</hyperlink></bullet><bullet>Ruler starts with the Unicorn mount</bullet></bulletlist>"
  },
         {
             "type": "Mind Trait",
@@ -170,6 +176,13 @@ var jsonFactionCreation = {
  },
         {
             "type": "Society Trait",
+            "id": "artifact_hoarders",
+            "affinity": "materium",
+            "name": "Artifact Hoarders",
+            "description": "<bulletlist>They pursue and covet magical artifacts, using such items as inspiration for their magical feats.<bullet>Gain a tier II - III Hero Item after clearing an Ancient Wonder or Infestation.</bullet><bullet>Gain extra <mana></mana> Mana with hero items via <hyperlink>Artifact Hoard</hyperlink>.</bullet><br> <bullet>Start with 2 random hero items.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ritual Cannibals</bullet><bullet>Ruthless Raiders</bullet><bullet>Scions of Evil</bullet></bulletlist>"
+ },
+        {
+            "type": "Society Trait",
             "id": "chosen_uniters",
             "affinity": "order",
             "name": "Chosen Uniters <reputation6></reputation6>",
@@ -187,7 +200,7 @@ var jsonFactionCreation = {
             "id": "imperialists",
             "affinity": "order",
             "name": "Imperialists",
-            "description": "<bulletlist>They are focused on the glory of their empire and the development fo their cities.<bullet>Your Throne City and cities that share a border with the Throne City gain +20 <happiness></happiness> City Stability and +20 <gold></gold> Gold income.</bullet><br><bullet>Capital city starts with +1 <population></population> Population</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Adept Settlers</bullet><bullet>Chosen Destroyers</bullet></bulletlist>"
+            "description": "<bulletlist>They are focused on the glory of their empire and the development fo their cities.<bullet>Your Throne City and cities that share a border with the Throne City gain +20 <happiness></happiness> City Stability and +20 <gold></gold> Gold income.</bullet><br><bullet>Capital city starts with +1 <population></population> Population</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Adept Settlers</bullet></bulletlist>"
  },
         {
             "type": "Society Trait",
@@ -230,7 +243,7 @@ var jsonFactionCreation = {
             "id": "adept_settlers",
             "affinity": "nature",
             "name": "Adept Settlers",
-            "description": "<bulletlist>They share a natural telent for cultivating the land. They thrive on fertile plains, quickly expanding their realm.<bullet>+1 City Cap.</bullet><bullet>Founding cities cost -25% less <influence></influence> Imperium</bullet><bullet>Newly founded cities gain +1 <population></population> Population.</bullet><br><bullet>Capital city starts with +1 <population></population> Population.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Imperialists</bullet><bullet>Chosen Destroyers</bullet></bulletlist>"
+            "description": "<bulletlist>They share a natural telent for cultivating the land. They thrive on fertile plains, quickly expanding their realm.<bullet>+1 City Cap.</bullet><bullet>Founding cities cost -25% less <influence></influence> Imperium</bullet><bullet>Newly founded cities gain +1 <population></population> Population.</bullet><br><bullet>Capital city starts with +1 <population></population> Population.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Imperialists</bullet></bulletlist>"
  },
         {
             "type": "Society Trait",
@@ -264,7 +277,7 @@ var jsonFactionCreation = {
             "id": "powerful_evokers",
             "affinity": "shadow",
             "name": "Powerful Evokers",
-            "description": "<bulletlist>They eminate raw power as they release an endless barrage of destruction upon all in their path.<bullet>Battle Mage and Support Units have _1 Rank</bullet><bullet>Battle Mage Units and Support Units provide +5 <casttactical></casttactical> Combat Castping Points at the start of combat.</bullet><br><bullet>Start with an extra Battle Mage or Support Unit</bullet></bulletlist>"
+            "description": "<bulletlist>They eminate raw power as they release an endless barrage of destruction upon all in their path.<bullet>Battle Mage and Support Units have +1 Rank</bullet><bullet>Battle Mage Units and Support Units provide +5 <casttactical></casttactical> Combat Casting Points at the start of combat.</bullet><br><bullet>Start with an extra Battle Mage or Support Unit</bullet></bulletlist>"
  },
         {
             "type": "Society Trait",
@@ -299,7 +312,7 @@ var jsonFactionCreation = {
             "id": "wonder_architects",
             "affinity": "materium",
             "name": "Wonder Architects",
-            "description": "<bulletlist>They are fascinated by unique constructions and the Ancient Wonders of old.<bullet>Ancient Wonders do not require <population></population Population in order to be annexed to a City.</bullet><bullet>Cities gain +20% <production></production> Production per annexed Ancient Wonder.</bullet><br><bullet>Starts with an 1 nearby Ancient Wonder cleared</bullet></bulletlist>"
+            "description": "<bulletlist>They are fascinated by unique constructions and the Ancient Wonders of old.<bullet>Ancient Wonders do not require <population></population> Population in order to be annexed to a City.</bullet><bullet>Cities gain +20% <production></production> Production per annexed Ancient Wonder.</bullet><br><bullet>Starts with an 1 nearby Ancient Wonder cleared</bullet></bulletlist>"
  },
         {
             "type": "Society Trait",
@@ -349,6 +362,12 @@ var jsonFactionCreation = {
             "id": "wizard_king",
             "name": "Wizard King",
             "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>All cities have +10% <mana></mana> Mana income.</bullet><bullet>+5 <caststrategic></caststrategic> World Map Casting Points and +5 <casttactical></casttactical> Combat Casting Points per level of the Wizard King</bullet><br><bullet>Wizard Kings have the Overchannel ability in combat</bullet></bulletlist>"
+ },
+        {
+            "type": "Ruler Origin",
+            "id": "dragon_lord",
+            "name": "Dragon Lord",
+            "description": "<bulletlist>A mighty dragon seeking new realms to shape in their vision.<bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Loards have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br><bullet>Dragon Lords have access to powerful Hero Skills and Transformations.</bullet></bulletlist>"
  },
         {
             "type": "Culture",

@@ -1,6 +1,17 @@
 var jsonSpells = {
     "spells": [
         {
+            "upkeep": "30<gold></gold> ",
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained World Spell</hyperlink>",
+            "id": "soul_collection",
+            "tactical": false,
+            "description": "<bulletlist><bullet>Gain +6 <souls></souls> <hyperlink>Souls</hyperlink> income.</bullet><bullet>Costs 30 <gold></gold> <hyperlink>Gold</hyperlink> upkeep.<bulletlist></bullet>",
+            "name": "Soul Collection",
+            "operation_point_cost": 45,
+            "casting_cost": "45<mana></mana> ",
+            "icon": "soul_collection"
+ },
+        {
             "spellType": "Strategic: Strategic Spell",
             "id": "recall_ruler",
             "tactical": false,
@@ -42,8 +53,6 @@ var jsonSpells = {
             "summoned_units": [
                 {
                     "slug": "nightmare"
-   }, {
-                    "slug": "skald"
    },
                 {
                     "slug": "chaos_eater"
@@ -54,7 +63,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
             "id": "destructive_regrowth",
             "tactical": false,
-            "description": "Target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Is destroyed.</bullet><bullet>Turns into a forest.</bullet><bullet>Units within sustain 10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet></bulletlist>",
+            "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Gains the Forest feature.</bullet><bullet>Enemy units within sustain 10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet></bulletlist>",
             "name": "Destructive Regrowth",
             "operation_point_cost": 120,
             "casting_cost": "120<mana></mana> ",
@@ -85,7 +94,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Spell Victory</hyperlink>",
             "id": "age_of_shadow",
             "tactical": false,
-            "description": "Channel the Age of Shadow to reach the <hyperlink>Magic Victory</hyperlink>. While channeling:<bulletlist><bullet>Your <shadow></shadow> <hyperlink>Shadow Affinity</hyperlink> <hyperlink>Spells</hyperlink> cost -50% <mana></mana> <hyperlink>Mana</hyperlink>, <caststrategic></caststrategic> <hyperlink>World Map Casting Points</hyperlink>, and <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink>.</bullet><bullet>Each turn in combat, a random corpse is reanimated as a <hyperlink>Zombie</hyperlink> until the end of combat.</bullet><bullet>Hostile armies will be spawned next to your <hyperlink>Affinity Province Improvements</hyperlink> in an attempt to destroy them.</bullet>",
+            "description": "Channel the Age of Shadow to reach the <hyperlink>Magic Victory</hyperlink>. While channeling:<bulletlist><bullet>Your <shadow></shadow> <hyperlink>Shadow Affinity</hyperlink> <hyperlink>Spells</hyperlink> cost -50% <mana></mana> <hyperlink>Mana</hyperlink>, <caststrategic></caststrategic> <hyperlink>World Map Casting Points</hyperlink>, and <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink>.</bullet><bullet>Each turn in combat, a random corpse is reanimated as a <hyperlink>Decaying Zombie</hyperlink> until the end of combat.</bullet><bullet>Hostile armies will be spawned next to your <hyperlink>Affinity Province Improvements</hyperlink> in an attempt to destroy them.</bullet>",
             "name": "Age of Shadow",
             "operation_point_cost": 0,
             "casting_cost": "",
@@ -139,7 +148,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>",
             "id": "gaias_chosen",
             "tactical": false,
-            "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet>",
+            "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>Plant unit type</bullet><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet>",
             "name": "Gaia's Chosen",
             "operation_point_cost": 600,
             "casting_cost": "600<mana></mana> ",
@@ -406,7 +415,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "battlefield_reanimation",
             "tactical": true,
-            "description": "<bulletlist><bullet>All friendly Undead units come back to life with 50% of their total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Enemy corpses come back to life as Tier I Zombies under your control until the end of battle.</bullet></bulletlist>",
+            "description": "<bulletlist><bullet>All friendly Undead units come back to life with 50% of their total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Enemy corpses come back to life as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle.</bullet></bulletlist>",
             "name": "Battlefield Reanimation",
             "operation_point_cost": 100,
             "casting_cost": "50<souls></souls> ",
@@ -488,7 +497,7 @@ var jsonSpells = {
             "description": "Gives the target race immortality beyond life, granting them:<bulletlist><bullet>The Undead unit type.</bullet><bullet>Life Steal, which restores <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> upon each attack.</bullet></bulletlist>",
             "name": "Wightborn",
             "operation_point_cost": 300,
-            "casting_cost": "200<souls></souls> ",
+            "casting_cost": "300<mana></mana> 100<souls></souls> ",
             "icon": "wightborn"
  },
         {
@@ -636,7 +645,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "explosive_manifestation",
             "tactical": true,
-            "description": "Target non-occupied hex:<bulletlist><bullet>Summons a random Tier II Astral Sea creature.</bullet><bullet>All adjacent units sustain 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, 10 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, and 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet></bulletlist>",
+            "description": "Target non-occupied hex:<bulletlist><bullet>Summon a random Tier II Astral Sea creature that lasts for 3 <turn></turn> Turns.</bullet><bullet>All adjacent units sustain 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, 10 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, and 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet></bulletlist>",
             "name": "Explosive Manifestation",
             "operation_point_cost": 50,
             "casting_cost": "100<mana></mana> ",
@@ -775,7 +784,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "conjure_amplification_pylon",
             "tactical": true,
-            "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +20%.",
+            "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +20%.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Conjure Amplification Pylon",
             "operation_point_cost": 15,
             "casting_cost": "15<mana></mana> ",
@@ -942,7 +951,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
             "id": "pyroclastic_eruption",
             "tactical": false,
-            "description": "The target <hyperlink>Province</hyperlink> is affected in the following way:<bulletlist><bullet><hyperlink>Province Improvements</hyperlink> are destroyed.</bullet><bullet>All units in the province sustain 15 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Province is transformed into Desolate terrain.</bullet></bulletlist>",
+            "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Transforms into Desolate terrain.</bullet><bullet>Enemy units in the province sustain 15 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet></bulletlist>",
             "name": "Pyroclastic Eruption",
             "operation_point_cost": 150,
             "casting_cost": "150<mana></mana> ",
@@ -1023,7 +1032,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
             "id": "lava_burst",
             "tactical": true,
-            "description": "Targets a 2-hex radius:<bulletlist><bullet>All units sustain 40 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>All units are inflicted with Burning.</bullet><bullet>All units are Slowed.</bullet><bullet>The ground is set <hyperlink>On Fire</hyperlink>.</bullet></bulletlist>",
+            "description": "Targets a 2-hex radius:<bulletlist><bullet>All units sustain 30 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>All units are inflicted with Burning.</bullet><bullet>All units are Slowed.</bullet><bullet>The ground is set <hyperlink>On Fire</hyperlink>.</bullet></bulletlist>",
             "name": "Lava Burst",
             "operation_point_cost": 50,
             "casting_cost": "100<mana></mana> ",
@@ -1196,7 +1205,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "animate_flora",
             "tactical": true,
-            "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.",
+            "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Animate Flora",
             "operation_point_cost": 15,
             "casting_cost": "15<mana></mana> ",
@@ -1255,7 +1264,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "vine_prison",
             "tactical": true,
-            "description": "Summon 5 <hyperlink>Living Vine</hyperlink> units randomly in a 2-hex radius which live for 3 <turn></turn> Turns. These don't deal damage but have a chance to Immobilized enemies.",
+            "description": "Summon 5 <hyperlink>Living Vine</hyperlink> units randomly in a 2-hex radius which live for 1 <turn></turn> Turn. These don't deal damage but have a chance to Immobilized enemies.",
             "name": "Vine Prison",
             "operation_point_cost": 20,
             "casting_cost": "30<mana></mana> ",
@@ -1316,7 +1325,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>",
             "id": "incite_revolution",
             "tactical": false,
-            "description": "Target enemy city:<bulletlist><bullet>Loses a border province and the population is lost.</bullet><bullet>Spawns a Brigand Camp.</bullet></bulletlist>",
+            "description": "Target enemy city:<bulletlist><bullet>Loses a border province and the population is lost.</bullet><bullet>Spawns a Brigand Camp on land provinces.</bullet><bullet>Spawns a Pirate Cove on coastal provinces.</bullet></bulletlist>",
             "name": "Incite Revolution",
             "operation_point_cost": 120,
             "casting_cost": "120<mana></mana> ",
@@ -1365,7 +1374,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
             "id": "fan_the_inferno",
             "tactical": true,
-            "description": "Units in a 2-hex radius:<bulletlist><bullet>Sustain 25 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Gain Burning.</bullet></bulletlist>",
+            "description": "All enemy units:<bulletlist><bullet>Sustain 5 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Are inflicted with Burning.</bullet></bulletlist>",
             "name": "Fan the Inferno",
             "operation_point_cost": 60,
             "casting_cost": "150<mana></mana> ",
@@ -1417,7 +1426,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
             "id": "mass_hysteria",
             "tactical": true,
-            "description": "Inflicts random status effects on all units in a 1-hex radius.",
+            "description": "Inflicts a random negative status effect on all units in a 1-hex radius.",
             "name": "Mass Hysteria",
             "operation_point_cost": 30,
             "casting_cost": "45<mana></mana> ",
@@ -1662,7 +1671,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "totem_of_the_wild",
             "tactical": true,
-            "description": "Spawns a <hyperlink>Totem of the Wild</hyperlink>, which spawns a random Tier I animal unit at the start of each of your <turn></turn> Turns. Lasts 5 <turn></turn> Turns.",
+            "description": "Spawns a <hyperlink>Totem of the Wild</hyperlink>, which spawns a random Tier I animal unit at the start of each of your <turn></turn> Turns. Lasts 3 <turn></turn> Turns.",
             "name": "Totem of the Wild",
             "operation_point_cost": 40,
             "casting_cost": "80<mana></mana> ",
@@ -1897,6 +1906,105 @@ var jsonSpells = {
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
+            "id": "summon_corrupt_soul",
+            "tactical": false,
+            "description": "Summons a <hyperlink>Corrupt Soul</hyperlink>, a Fighter Unit that exploits low enemy unit <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+            "name": "Summon Corrupt Soul",
+            "operation_point_cost": 90,
+            "casting_cost": "45<souls></souls> ",
+            "icon": "summon_corrupt_soul",
+            "summoned_units": [
+                {
+                    "slug": "corrupt_soul"
+   }
+  ]
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>",
+            "id": "purifying_flame",
+            "tactical": true,
+            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Heal for 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Have their negative status effects removed.</bullet>",
+            "name": "Purifying Flame",
+            "operation_point_cost": 40,
+            "casting_cost": "80<mana></mana> ",
+            "icon": "purifying_flame"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "flamer_focus",
+            "tactical": false,
+            "description": "Grants enchanted units:<bulletlist><bullet>Fire Bomb , a <hyperlink>Magic</hyperlink> attack that deals damage in an area.</bullet>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitBattleMage></unitBattleMage> Battle Mage Unit"
+   }
+  ],
+            "name": "Flamer Focus",
+            "operation_point_cost": 100,
+            "casting_cost": "100<mana></mana> ",
+            "icon": "flamer_focus"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>",
+            "id": "draconian_transformation",
+            "tactical": false,
+            "description": "Turn target race into Draconians, which grants them:<bulletlist><bullet>Dragon unit type.</bullet><bullet>Natural Regeneration, which makes the unit regain health faster.</bullet><bullet>Immunity to Burning.</bullet>",
+            "name": "Draconian Transformation",
+            "operation_point_cost": 600,
+            "casting_cost": "600<mana></mana> ",
+            "icon": "draconian_transformation"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
+            "id": "draconic_vitality",
+            "tactical": false,
+            "description": "Target race is imbued with Dragon-like vitality, granting them:<bulletlist><bullet>+3 <hyperlink><hp></hp> Hit Points</hyperlink> per Unit Rank.</bullet>",
+            "name": "Draconic Vitality",
+            "operation_point_cost": 150,
+            "casting_cost": "150<mana></mana> ",
+            "icon": "draconic_vitality"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
+            "id": "summon_wyvern_fledgling",
+            "tactical": false,
+            "description": "Summons a <hyperlink>Wyvern Fledgling</hyperlink> to target hex.",
+            "name": "Summon Wyvern Fledgling",
+            "operation_point_cost": 60,
+            "casting_cost": "60<mana></mana> ",
+            "summoned_units": [
+                {
+                    "slug": "wyvern_fledgling"
+   }
+  ]
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>",
+            "id": "youthful_rejuvenation",
+            "tactical": true,
+            "description": "Target unit:<bulletlist><bullet>Heals for 18 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains Strengthened.</bullet></bulletlist><br></br>Effect is doubled if the unit has Evolve.",
+            "name": "Youthful Rejuvenation",
+            "operation_point_cost": 10,
+            "casting_cost": "10<mana></mana> ",
+            "icon": "youthful_rejuvenation"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "rapid_evolution_enchantment",
+            "tactical": false,
+            "description": "Grants enchanted units:<bulletlist><bullet>+20% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Resurgence if they are Tier I or II, making them come back to life if they die in a combat where their army was victorious.</bullet>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "Units that Evolve"
+   }
+  ],
+            "name": "Rapid Evolution Enchantment",
+            "operation_point_cost": 80,
+            "casting_cost": "80<mana></mana> ",
+            "icon": "rapid_evolution_enchantment"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
             "id": "golden_horde",
             "tactical": false,
             "description": "Summons a full army of random non-Scout Tier I units that can be produced in a city on the target hex.",
@@ -1921,10 +2029,10 @@ var jsonSpells = {
   ]
  },
         {
-            "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
+            "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "conjure_astral_keeper",
             "tactical": true,
-            "description": "Summons an <hyperlink>Astral Keeper</hyperlink>, a Support Unit that is especially effective in helping your other Magic Origin units.",
+            "description": "Summons an <hyperlink>Astral Keeper</hyperlink>, a Support Unit that heals units even in death.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Conjure Astral Keeper",
             "operation_point_cost": 30,
             "casting_cost": "45<mana></mana> ",
@@ -1935,13 +2043,13 @@ var jsonSpells = {
   ]
  },
         {
-            "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
+            "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
             "id": "rotting_explosion",
             "tactical": true,
             "description": "Target friendly <hyperlink>Zombie</hyperlink> unit explodes dealing 15 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>, 15 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> and applying Decaying with a base 90% chance to enemy units in a 2-hex radius.",
             "name": "Rotting Explosion",
-            "operation_point_cost": 15,
-            "casting_cost": "15<mana></mana> ",
+            "operation_point_cost": 10,
+            "casting_cost": "10<mana></mana> ",
             "icon": "rotting_explosion"
  },
         {
@@ -1951,7 +2059,7 @@ var jsonSpells = {
             "description": "Target enemy unit sustains 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> and 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>. Adjacent enemy units are dealt 50% of the damage.",
             "name": "Soul Fire",
             "operation_point_cost": 10,
-            "casting_cost": "10<souls></souls> ",
+            "casting_cost": "10<mana></mana> ",
             "icon": "soul_fire"
  },
         {
@@ -2038,7 +2146,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>",
             "id": "astral_shattering",
             "tactical": false,
-            "description": "Target enemy province:<bulletlist><bullet>Is destroyed and the population is lost.</bullet><bullet>Spawns a powerful marauding army of Astral Sea creatures.</bullet></bulletlist>",
+            "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Spawns a powerful marauding army of Astral Sea creatures.</bullet></bulletlist>",
             "name": "Astral Shattering",
             "operation_point_cost": 150,
             "casting_cost": "150<mana></mana> ",
@@ -2243,7 +2351,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "conjure_divine_beacon",
             "tactical": true,
-            "description": "Summons a <hyperlink>Divine Beacon</hyperlink>. Upon casting and at the start of each turn, friendly units, in a 2-hex radius:<bulletlist><bullet>Heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain +5 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet>",
+            "description": "Summons a <hyperlink>Divine Beacon</hyperlink>. Upon casting and at the start of each turn, friendly units in a 2-hex radius:<bulletlist><bullet>Heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain +5 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet></bulletlist><br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Conjure Divine Beacon",
             "operation_point_cost": 20,
             "casting_cost": "30<mana></mana> ",
@@ -2356,7 +2464,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
             "id": "mark_for_death",
             "tactical": true,
-            "description": "Target non-Hero enemy unit becomes:<bulletlist><bullet>Despair.</bullet><bullet>Marked for Death.</bullet>",
+            "description": "Target non-Hero enemy unit becomes:<bulletlist><bullet><hyperlink>Despair</hyperlink>.</bullet><bullet><hyperlink>Marked for Death</hyperlink>.</bullet>",
             "name": "Mark for Death",
             "operation_point_cost": 50,
             "casting_cost": "35<souls></souls> ",
@@ -2398,7 +2506,7 @@ var jsonSpells = {
             "name": "Soulbind Army",
             "operation_point_cost": 45,
             "casting_cost": "45<mana></mana> ",
-            "icon": "soulbind_army"
+            "icon": "soul_collection"
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
@@ -2422,10 +2530,10 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "raise_zombies",
             "tactical": true,
-            "description": "Raises target corpses in a 1-hex radius as <hyperlink>Zombie</hyperlink> units that die at the end of combat.",
+            "description": "Raises corpses in a 1-hex radius as <hyperlink>Decaying Zombie</hyperlink> units that die at the end of combat.",
             "name": "Raise Zombies",
-            "operation_point_cost": 15,
-            "casting_cost": "15<souls></souls> ",
+            "operation_point_cost": 10,
+            "casting_cost": "10<souls></souls> ",
             "icon": "raise_zombies"
  },
         {
@@ -2883,7 +2991,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "leafskin",
             "tactical": false,
-            "description": "Makes the target race one with the forest, granting them:<bulletlist><bullet>Forest Walk, which increases movement over Forest terrain.</bullet><bullet>Forest Camouflage, which makes them hard to spot on Forest terrain.</bullet>",
+            "description": "Makes the target race one with the forest, granting them:<bulletlist><bullet>+1<resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>Forest Walk</bullet><bullet>Forest Camouflage</bullet>",
             "name": "Leafskin",
             "operation_point_cost": 250,
             "casting_cost": "250<mana></mana> ",
@@ -2893,7 +3001,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
             "id": "create_forest",
             "tactical": false,
-            "description": "Adds Forest feature to target friendly or unowned province. Turns into Mushroom Forest <hyperlink>Underground</hyperlink>.<br></br>Doesn't work on Mountains, Desolate, or Ice terrain.",
+            "description": "Adds Forest feature to target friendly or unowned province. Turns into Mushroom Forest <hyperlink>Underground</hyperlink>.<br></br>Doesn't work on Mountains, Desolate, Lava or Ice terrain.",
             "name": "Create Forest",
             "operation_point_cost": 45,
             "casting_cost": "45<mana></mana> ",
@@ -3100,7 +3208,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "brand_of_wrath",
             "tactical": false,
-            "description": "Grants non-Dark units:<bulletlist><bullet>Cull the Weak, which increases damage dealt to enemies with negative status effects.</bullet>",
+            "description": "Grants non-Dark units:<bulletlist><bullet>Cull the Weak, which increases damage dealt to enemies with the Weakened status effect.</bullet>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -3207,7 +3315,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "summon_astral_reflections",
             "tactical": true,
-            "description": "Summons 2 Astral Reflections of the target friendly unit onto unoccupied adjacent hexes.",
+            "description": "Summons 2 Astral Reflections of the target friendly unit onto unoccupied adjacent hexes.<br></br>Cannot target Heroes and Mythic Units.",
             "name": "Summon Astral Reflections",
             "operation_point_cost": 60,
             "casting_cost": "150<mana></mana> ",

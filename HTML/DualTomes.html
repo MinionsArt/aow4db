@@ -6,46 +6,61 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var tomeArray = ["tome_of_evolution", "tome_of_dragons"];
+
         $("#body").ready(function() {
-            var equipmentarray = ["animated_armor"];
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showEquipmentFromList(equipmentarray, "equip1");
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
+
+                SetLevelUpStuff();
 
             });
 
-
-
-
         });
+
     </script>
 
 
-    <title>Age of Wonders 4 Database - Equipment</title>
+    <title>Age of Wonders 4 Database - Dual Tomes</title>
 </head>
 
 <body>
     <div id="header"></div>
 
-    <h2 style="text-align: center; color: aliceblue">
-        Item Types
-    </h2>
-    <div id="equip1"></div>
+    <div class="textblocktitle">
+        Dual Affinity Tomes
+    </div>
+
+
+
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder">
+
+        </div>
+        <div id="dataHolder">
+        </div>
+
+
+    </div>
 
 
 
 
 
 
-</body></html>
+
+</body>
+
+</html>
 <footer>
- <br>
- <br>
+    <br>
+    <br>
 </footer>

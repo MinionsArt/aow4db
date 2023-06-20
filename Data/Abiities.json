@@ -1,6 +1,246 @@
 var jsonUnitAbilities = {
     "abilities": [
         {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   },
+                {
+                    "description": "+20% damage against Poisoned units.",
+                    "name": "Venom Shock",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_slither",
+            "damage": "9<damagephysical></damagephysical> 6<damageblight></damageblight> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   },
+                {
+                    "description": "Inflict Poisoned for 3 <turn></turn> Turns.",
+                    "name": "Poisoned",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage to target unit.",
+            "name": "Venomous Spit",
+            "slug": "venomous_spit_slither",
+            "damage": "14<damageblight></damageblight> 10<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Base"
+   },
+                {
+                    "requisite": "Physical Ranged"
+   }
+  ],
+            "accuracy": "90%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+            "icon": "venomous_spit_slither"
+ },
+        {
+            "description": "This unit ends its turn and goes into a defensive mode. The unit:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>Gains +2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Gains +2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Becomes immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet>",
+            "name": "Defense Mode",
+            "slug": "defense_mode",
+            "icon": "defense_mode"
+ },
+        {
+            "description": "An Animal unit.",
+            "name": "Animal",
+            "slug": "animal",
+            "icon": "animal"
+ },
+        {
+            "description": "Unaffected by the bonus effects of <hyperlink>Charge</hyperlink> attacks.<br></br><br></br>Can be counteracted by using Heavy Charge Strike.",
+            "name": "Charge Resistance",
+            "slug": "charge_resistance",
+            "icon": "charge_resistance"
+ },
+        {
+            "description": "This unit's attacks damage <hyperlink>Fortified</hyperlink> obstacles.",
+            "name": "Demolisher",
+            "slug": "demolisher",
+            "icon": "demolisher"
+ },
+        {
+            "description": "When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach 60% or lower, it deals +30% damage.",
+            "name": "Draconic Rage",
+            "slug": "draconic_rage",
+            "icon": "draconic_rage"
+ },
+        {
+            "description": "Dragon unit with:<bulletlist><bullet>Draconic Rage</bullet></bulletlist>",
+            "name": "Dragon",
+            "slug": "dragon",
+            "icon": "dragon"
+ },
+        {
+            "description": "This unit cannot be detected when standing on Forest hexes.",
+            "name": "Forest Camouflage",
+            "slug": "forest_camouflage",
+            "icon": "forest_camouflage"
+ },
+        {
+            "description": "This unit can move over land hexes.",
+            "name": "Land Movement",
+            "slug": "land_movement",
+            "icon": "land_movement"
+ },
+        {
+            "description": "A large unit that:<bulletlist><bullet>Is 20% easier to hit with <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Has Charge Resistance.</bullet><bullet>Is immune to most displacement effects.</bullet><bullet>Has Demolisher.</bullet>",
+            "name": "Large Target",
+            "slug": "large_target",
+            "icon": "large_target"
+ },
+        {
+            "description": "<hyperlink>Unit Upkeep</hyperlink> reduced by -25%",
+            "name": "Low Maintenance",
+            "slug": "low_maintenance",
+            "icon": "low_maintenance"
+ },
+        {
+            "description": "Cheap and swift units that are useful at <hyperlink><flank></flank> Flanking</hyperlink> and targeting lone enemies.<br></br>Skirmisher units gain:<bulletlist><bullet>Swift.</bullet><bullet>Slippery.</bullet></bulletlist>",
+            "name": "Skirmisher Unit",
+            "slug": "skirmisher_unit",
+            "icon": "skirmisher_unit"
+ },
+        {
+            "description": "When this unit's <hyperlink><hp></hp> Hit Points</hyperlink> are reduced to zero, it is displaced by 3 hexes and heals +15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br>Works once per battle.",
+            "name": "Slip Away",
+            "slug": "slip_away",
+            "icon": "slip_away"
+ },
+        {
+            "description": "This unit does not trigger <hyperlink>Opportunity Attack</hyperlink>.",
+            "name": "Slippery",
+            "slug": "slippery",
+            "icon": "slippery"
+ },
+        {
+            "description": "This unit ignores the effects of <GLOBAL.SlowingConcept.Hyperlink> terrain in combat.",
+            "name": "Swift",
+            "slug": "swift",
+            "icon": "swift"
+ },
+        {
+            "description": "This unit has an extra  to its maximum Hit Points.",
+            "name": "+8<hp></hp>",
+            "slug": "_8_hp__"
+ },
+        {
+            "description": "+10% damage.",
+            "name": "Elite Medal: Damage",
+            "slug": "elite_medal_damage",
+            "icon": "elite_medal_damage"
+ },
+        {
+            "description": "Unit gains the Sprint ability.",
+            "name": "Legend Medal: Sprint",
+            "slug": "legend_medal_sprint",
+            "icon": "legend_medal_sprint"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "+20% damage against Poisoned units.",
+                    "name": "Venom Shock",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_slither_hatchling",
+            "damage": "8<damagephysical></damagephysical> 4<damageblight></damageblight> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Poisoned for 3 <turn></turn> Turns.",
+                    "name": "Poisoned",
+                    "count": 1
+   }
+  ],
+            "description": "Deals damage to target unit.",
+            "name": "Venomous Spit",
+            "slug": "venomous_spit_slither_hatchling",
+            "damage": "7<damagephysical></damagephysical> 7<damageblight></damageblight> ",
+            "requisites": [
+                {
+                    "requisite": "Base"
+   },
+                {
+                    "requisite": "Physical Ranged"
+   }
+  ],
+            "accuracy": "90%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+            "icon": "venomous_spit_slither"
+ },
+        {
+            "description": "This unit will transform into a more powerful unit when it reaches Champion Rank.",
+            "name": "Evolve",
+            "slug": "evolve",
+            "icon": "evolve"
+ },
+        {
+            "description": "This unit has an extra 4 to its maximum Hit Points.",
+            "name": "+4<hp></hp>",
+            "slug": "_4_hp__"
+ },
+        {
             "notes": [
                 {
                     "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
@@ -27,12 +267,6 @@ var jsonUnitAbilities = {
             "icon": "magic_bolts_elya"
  },
         {
-            "description": "This unit ends its turn and goes into a defensive mode. The unit:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>Gains +2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Gains +2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Becomes immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet>",
-            "name": "Defense Mode",
-            "slug": "defense_mode",
-            "icon": "defense_mode"
- },
-        {
             "description": "This unit is DEPRECATED!",
             "name": "DEPRECATED UNIT!",
             "slug": "deprecated_unit!",
@@ -45,21 +279,10 @@ var jsonUnitAbilities = {
             "icon": "floating"
  },
         {
-            "description": "This unit can move over land hexes.",
-            "name": "Land Movement",
-            "slug": "land_movement",
-            "icon": "land_movement"
- },
-        {
             "description": "This unit was summoned or comes from another dimension and requires mana upkeep.",
             "name": "Magic Origin",
             "slug": "magic_origin",
             "icon": "magic_origin"
- },
-        {
-            "description": "This unit has an extra {LEVEL_UP_BONUS\\>BONUS\\>HitPoints} to its maximum Hit Points.",
-            "name": "+8<hp></hp>",
-            "slug": "_8_hp__"
  },
         {
             "modifiers": [
@@ -93,8 +316,12 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "notes": [],
-            "description": "Summons a weakened Banshee onto the target hex.<br></br><br></br>Once used, this ability cannot be reused until Spirit Beacon triggers.",
+            "notes": [
+                {
+                    "note": "Can only be used once per battle."
+   }
+  ],
+            "description": "Summons a weakened Banshee onto the target hex.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Once used, this ability cannot be reused until Spirit Beacon triggers.",
             "name": "Summon Ghost",
             "slug": "summon_ghost_ghost_ship",
             "damage": "",
@@ -146,28 +373,16 @@ var jsonUnitAbilities = {
             "icon": "wail_of_the_lost_ghost_ship"
  },
         {
-            "description": "Unaffected by the bonus effects of <hyperlink>Charge</hyperlink> attacks.<br></br><br></br>Can be counteracted by using Heavy Charge Strike.",
-            "name": "Charge Resistance",
-            "slug": "charge_resistance",
-            "icon": "charge_resistance"
- },
-        {
-            "description": "This unit's attacks damage <hyperlink>Fortified</hyperlink> obstacles.",
-            "name": "Demolisher",
-            "slug": "demolisher",
-            "icon": "demolisher"
+            "description": "An Ethereal unit with:<bulletlist><bullet>2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>Pass Through</bullet><bullet>Immunity to:<bulletlist><bullet>Bleeding</bullet><bullet>Burning</bullet><bullet>Diseased</bullet><bullet>Frozen</bullet><bullet>Immobilized</bullet><bullet>Poisoned</bullet><bullet>Wet</bullet></bulletlist></bullet></bulletlist>",
+            "name": "Ethereal",
+            "slug": "ethereal",
+            "icon": "ethereal"
  },
         {
             "description": "<bulletlist><bullet>-50% <happiness></happiness> <hyperlink>Morale</hyperlink> lost from all sources.</bullet><bullet>Unit cannot rout.</bullet>",
             "name": "Fierce",
             "slug": "fierce",
             "icon": "fierce"
- },
-        {
-            "description": "A large unit that:<bulletlist><bullet>Is 20% easier to hit with <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Has Charge Resistance.</bullet><bullet>Is immune to most displacement effects.</bullet><bullet>Has Demolisher.</bullet>",
-            "name": "Large Target",
-            "slug": "large_target",
-            "icon": "large_target"
  },
         {
             "description": "A powerful unit that doesn't conform to a particular fighting style.",
@@ -182,10 +397,28 @@ var jsonUnitAbilities = {
             "icon": "naval_unit"
  },
         {
+            "description": "This unit can move through obstacles.",
+            "name": "Pass Through",
+            "slug": "pass_through",
+            "icon": "pass_through"
+ },
+        {
             "description": "When a non-Summon non-Undead unit dies, the ability Summon Ghost can be used again.",
             "name": "Spirit Beacon",
             "slug": "spirit_beacon",
             "icon": "spirit_beacon"
+ },
+        {
+            "description": "This unit is Immune to Morale-type status effects.",
+            "name": "Status Effect Immunity: Morale",
+            "slug": "status_effect_immunity_morale",
+            "icon": "status_effect_immunity_morale"
+ },
+        {
+            "description": "An undead unit with:<bulletlist><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>-100% modifier to <happiness></happiness> <hyperlink>Morale</hyperlink> changes</bullet><bullet>Immunity to Poisoned</bullet>",
+            "name": "Undead",
+            "slug": "undead",
+            "icon": "undead"
  },
         {
             "description": "This unit has Water Movement, which allows it to traverse the water at a Movement Cost of 4.",
@@ -194,7 +427,37 @@ var jsonUnitAbilities = {
             "icon": "water_movement"
  },
         {
-            "description": "This unit has an extra {LEVEL_UP_BONUS\\>BONUS\\>HitPoints} to its maximum Hit Points.",
+            "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
+            "description": "",
+            "name": "<xpCol>Blight Resistance</xpCol>",
+            "slug": "blight_resistance_2"
+ },
+        {
+            "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
+            "description": "",
+            "name": "<xpCol>Frost Resistance</xpCol>",
+            "slug": "frost_resistance_2"
+ },
+        {
+            "damage": "<fireCol>4<damagelightning></damagelightning></fireCol>",
+            "description": "",
+            "name": "<fireCol>Lightning Weakness</fireCol>",
+            "slug": "lightning_weakness_4"
+ },
+        {
+            "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
+            "description": "",
+            "name": "<fireCol>Fire Weakness</fireCol>",
+            "slug": "fire_weakness_4"
+ },
+        {
+            "damage": "<fireCol>2<damagespirit></damagespirit></fireCol>",
+            "description": "",
+            "name": "<fireCol>Spirit Weakness</fireCol>",
+            "slug": "spirit_weakness_2"
+ },
+        {
+            "description": "This unit has an extra  to its maximum Hit Points.",
             "name": "+12<hp></hp>",
             "slug": "_12_hp__"
  },
@@ -202,13 +465,13 @@ var jsonUnitAbilities = {
             "description": "<bulletlist><bullet>+10% damage</bullet><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet>",
             "name": "Elite Medal: Mythic",
             "slug": "elite_medal_mythic",
-            "icon": "elite_medal_mythic"
+            "icon": "elite_medal_damage"
  },
         {
             "description": "Unit gains Killing Momentum.",
             "name": "Legend Medal: Killing Momentum",
             "slug": "legend_medal_killing_momentum",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [
@@ -285,19 +548,7 @@ var jsonUnitAbilities = {
             "icon": "defense_mode_warding"
  },
         {
-            "description": "An Animal unit.",
-            "name": "Animal",
-            "slug": "animal",
-            "icon": "animal"
- },
-        {
-            "description": "<hyperlink>Unit Upkeep</hyperlink> reduced by -25%",
-            "name": "Low Maintenance",
-            "slug": "low_maintenance",
-            "icon": "low_maintenance"
- },
-        {
-            "description": "Heals 10% of its maximum Hit Points as <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> at the end of its turn in combat.<br></br>Heals 10<hyperlink><hp></hp> Hit Points</hyperlink> at the start of your turn on the world map.",
+            "description": "Heals 10% of its maximum Hit Points as <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> at the end of its turn in combat, though not more than the unit started combat with.<br></br>Heals 10<hyperlink><hp></hp> Hit Points</hyperlink> at the start of your turn on the world map.",
             "name": "Natural Regeneration",
             "slug": "natural_regeneration",
             "icon": "natural_regeneration"
@@ -312,13 +563,13 @@ var jsonUnitAbilities = {
             "description": "Unit has +1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
             "name": "Elite Medal: Resistance",
             "slug": "elite_medal_resistance",
-            "icon": "elite_medal_mythic"
+            "icon": "elite_medal_damage"
  },
         {
             "description": "When this unit enters <hyperlink>Defense Mode</hyperlink>, adjacent friendly units gain Bolstered Resistance.",
             "name": "Legend Medal: Exalted Resistance",
             "slug": "legend_medal_exalted_resistance",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [],
@@ -338,7 +589,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -371,7 +622,7 @@ var jsonUnitAbilities = {
             "icon": "shield_unit"
  },
         {
-            "description": "This unit has an extra {LEVEL_UP_BONUS\\>BONUS\\>HitPoints} to its maximum Hit Points.",
+            "description": "This unit has an extra  to its maximum Hit Points.",
             "name": "+6<hp></hp>",
             "slug": "_6_hp__"
  },
@@ -379,13 +630,13 @@ var jsonUnitAbilities = {
             "description": "Unit has +1 <defense></defense> <hyperlink>Defense</hyperlink>.",
             "name": "Elite Medal: Defense",
             "slug": "elite_medal_defense",
-            "icon": "elite_medal_mythic"
+            "icon": "elite_medal_damage"
  },
         {
             "description": "When this unit enters <hyperlink>Defense Mode</hyperlink>, adjacent friendly units gain Bolstered Defense.",
             "name": "Legend Medal: Exalted Defense",
             "slug": "legend_medal_exalted_defense",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [
@@ -485,21 +736,15 @@ var jsonUnitAbilities = {
             "slug": "fire_weakness_3"
  },
         {
-            "description": "This unit has an extra {LEVEL_UP_BONUS\\>BONUS\\>HitPoints} to its maximum Hit Points.",
+            "description": "This unit has an extra  to its maximum Hit Points.",
             "name": "+10<hp></hp>",
             "slug": "_10_hp__"
  },
         {
-            "description": "+10% damage.",
-            "name": "Elite Medal: Damage",
-            "slug": "elite_medal_damage",
-            "icon": "elite_medal_mythic"
- },
-        {
-            "description": "The unit's attacks:<bulletlist><bullet>Ignore up to 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Ignore up to 2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.<bulletlist></bulletlist></bullet>",
+            "description": "The unit's attacks:<bulletlist><bullet>Ignore up to 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Ignore up to 2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet></bulletlist></bullet></bulletlist>",
             "name": "Legend Medal: Evoker",
             "slug": "legend_medal_evoker",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [
@@ -530,7 +775,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -564,22 +809,10 @@ var jsonUnitAbilities = {
             "icon": "astral_torrent"
  },
         {
-            "description": "An Ethereal unit with:<bulletlist><bullet>2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>Pass Through</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Bleeding</bullet><bullet>Burning</bullet><bullet>Diseased</bullet><bullet>Frozen</bullet><bullet>Immobilized</bullet><bullet>Poisoned</bullet><bullet>Wet<bulletlist></bulletlist></bullet>",
-            "name": "Ethereal",
-            "slug": "ethereal",
-            "icon": "ethereal"
- },
-        {
             "description": "An outright melee unit with no obvious specialization or counters.",
             "name": "Fighter Unit",
             "slug": "fighter_unit",
             "icon": "fighter_unit"
- },
-        {
-            "description": "This unit can move through obstacles.",
-            "name": "Pass Through",
-            "slug": "pass_through",
-            "icon": "pass_through"
  },
         {
             "damage": "<xpCol>2<damagespirit></damagespirit></xpCol>",
@@ -588,16 +821,10 @@ var jsonUnitAbilities = {
             "slug": "spirit_resistance_2"
  },
         {
-            "damage": "<fireCol>4<damagelightning></damagelightning></fireCol>",
-            "description": "",
-            "name": "<fireCol>Lightning Weakness</fireCol>",
-            "slug": "lightning_weakness_4"
- },
-        {
             "description": "Unit has:<bulletlist><bullet>+10 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet>",
             "name": "Legend Medal: Brawler",
             "slug": "legend_medal_brawler",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [
@@ -623,7 +850,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -702,7 +929,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -738,41 +965,17 @@ var jsonUnitAbilities = {
             "icon": "bolt_of_judgment_inquisitor"
  },
         {
-            "description": "Cheap and swift units that are useful at <hyperlink><flank></flank> Flanking</hyperlink> and targeting lone enemies.<br></br>Skirmisher units gain:<bulletlist><bullet>Swift.</bullet><bullet>Slippery.</bullet></bulletlist>",
-            "name": "Skirmisher Unit",
-            "slug": "skirmisher_unit",
-            "icon": "skirmisher_unit"
- },
-        {
-            "description": "This unit does not trigger <hyperlink>Opportunity Attack</hyperlink>.",
-            "name": "Slippery",
-            "slug": "slippery",
-            "icon": "slippery"
- },
-        {
-            "description": "This unit ignores the effects of <GLOBAL.SlowingConcept.Hyperlink> terrain in combat.",
-            "name": "Swift",
-            "slug": "swift",
-            "icon": "swift"
- },
-        {
             "description": "Unit can see invisible or camouflaged units within its vision range.",
             "name": "Truesight",
             "slug": "truesight",
             "icon": "truesight"
  },
         {
-            "description": "Unit gains the Sprint ability.",
-            "name": "Legend Medal: Sprint",
-            "slug": "legend_medal_sprint",
-            "icon": "legend_medal_killing_momentum"
- },
-        {
             "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_zealot",
-            "damage": "12<damagephysical></damagephysical> 2<damagespirit></damagespirit> ",
+            "damage": "11<damagephysical></damagephysical> 2<damagespirit></damagespirit> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -785,12 +988,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
- },
-        {
-            "description": "This unit has an extra 4 to its maximum Hit Points.",
-            "name": "+4<hp></hp>",
-            "slug": "_4_hp__"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -918,18 +1116,14 @@ var jsonUnitAbilities = {
             "description": "Unit has a +20% Critical Chance.",
             "name": "Legend Medal: Critical",
             "slug": "legend_medal_critical",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
-            "notes": [
-                {
-                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   }
-  ],
+            "modifiers": [],
             "description": "Single magical attack at target unit.",
             "name": "Lightning Blast",
             "slug": "magic_blast_amplification_pylon",
-            "damage": "16<damagelightning></damagelightning> ",
+            "damage": "20<damagelightning></damagelightning> ",
             "requisites": [
                 {
                     "requisite": "Base"
@@ -941,6 +1135,11 @@ var jsonUnitAbilities = {
             "accuracy": "90%",
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
+            "notes": [
+                {
+                    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   }
+  ],
             "icon": "magic_blast_deep-sea_nimu"
  },
         {
@@ -960,12 +1159,6 @@ var jsonUnitAbilities = {
             "name": "Spell Amplification",
             "slug": "spell_amplification",
             "icon": "spell_amplification"
- },
-        {
-            "description": "This unit is Immune to Morale-type status effects.",
-            "name": "Status Effect Immunity: Morale",
-            "slug": "status_effect_immunity_morale",
-            "icon": "status_effect_immunity_morale"
  },
         {
             "description": "A tower unit, which:<bulletlist><bullet>Is Immobilized.</bullet><bullet>Is immune to morale changes.</bullet><bullet>Immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet><bullet>Automatically uses its abilities.</bullet>",
@@ -1028,6 +1221,12 @@ var jsonUnitAbilities = {
    }
   ],
             "icon": "electrifying_arc_evoker"
+ },
+        {
+            "description": "This unit will become Cavalry if the race has a special mount trait.",
+            "name": "Optional Cavalry",
+            "slug": "optional_cavalry",
+            "icon": "optional_cavalry"
  },
         {
             "modifiers": [
@@ -1147,6 +1346,12 @@ var jsonUnitAbilities = {
             "icon": "elemental"
  },
         {
+            "description": "This unit may crush non-<hyperlink>Fortified</hyperlink> obstacles.",
+            "name": "Juggernaut",
+            "slug": "juggernaut",
+            "icon": "juggernaut"
+ },
+        {
             "description": "This unit is immune to negative status effects.",
             "name": "Status Effect Immunity",
             "slug": "status_effect_immunity",
@@ -1238,13 +1443,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
- },
-        {
-            "description": "This unit will transform into a more powerful unit when it reaches Champion Rank.",
-            "name": "Evolve",
-            "slug": "evolve",
-            "icon": "evolve"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "When attacked, a unit with First Strike will use a <hyperlink>Retaliation Attack</hyperlink> to attack first.",
@@ -1282,7 +1481,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -1354,7 +1553,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -1420,12 +1619,6 @@ var jsonUnitAbilities = {
             "description": "",
             "name": "<fireCol>Blight Weakness</fireCol>",
             "slug": "blight_weakness_2"
- },
-        {
-            "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
-            "description": "",
-            "name": "<fireCol>Fire Weakness</fireCol>",
-            "slug": "fire_weakness_4"
  },
         {
             "modifiers": [],
@@ -1728,7 +1921,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -1803,24 +1996,6 @@ var jsonUnitAbilities = {
             "name": "Disassemble",
             "slug": "disassemble",
             "icon": "disassemble"
- },
-        {
-            "description": "An undead unit with:<bulletlist><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>-100% modifier to <happiness></happiness> <hyperlink>Morale</hyperlink> changes</bullet><bullet>Immunity to Poisoned</bullet>",
-            "name": "Undead",
-            "slug": "undead",
-            "icon": "undead"
- },
-        {
-            "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
-            "description": "",
-            "name": "<xpCol>Blight Resistance</xpCol>",
-            "slug": "blight_resistance_2"
- },
-        {
-            "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
-            "description": "",
-            "name": "<xpCol>Frost Resistance</xpCol>",
-            "slug": "frost_resistance_2"
  },
         {
             "notes": [
@@ -1937,7 +2112,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet>",
+            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Decaying Zombie</hyperlink>.</bullet>",
             "name": "Raise Undead",
             "slug": "raise_undead_necromancer",
             "damage": "",
@@ -1969,7 +2144,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "<hyperlink>Melee</hyperlink> attacks deal +20% damage per friendly adjacent unit with Pack Hunter.",
@@ -1995,7 +2170,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "The unit has +1 vision range.",
@@ -2082,7 +2257,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summon a random Tier I animal unit.",
+            "description": "Summon a random Tier I animal unit.<br></br>This summon lasts for 4 <turn></turn> Turns.",
             "name": "Conjure Animal",
             "slug": "conjure_animal_wildspeaker",
             "damage": "",
@@ -2122,7 +2297,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -2143,12 +2318,6 @@ var jsonUnitAbilities = {
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "0",
             "icon": "healing_sap_entwined_protector"
- },
-        {
-            "description": "This unit cannot be detected when standing on Forest hexes.",
-            "name": "Forest Camouflage",
-            "slug": "forest_camouflage",
-            "icon": "forest_camouflage"
  },
         {
             "modifiers": [
@@ -2295,6 +2464,26 @@ var jsonUnitAbilities = {
             "icon": "launch_ballista_tower"
  },
         {
+            "modifiers": [],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_wyvern_fledgling",
+            "damage": "12<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
             "modifiers": [
                 {
                     "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
@@ -2396,7 +2585,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -2444,7 +2633,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -2496,7 +2685,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "Civilian",
@@ -2599,7 +2788,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -2663,7 +2852,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -2725,10 +2914,10 @@ var jsonUnitAbilities = {
             "icon": "poison_breath_bone_dragon"
  },
         {
-            "description": "A Dragon unit.",
-            "name": "Dragon",
-            "slug": "dragon",
-            "icon": "dragon"
+            "description": "This unit has faster Movement over Rivers and Swamps.",
+            "name": "Amphibious",
+            "slug": "amphibious",
+            "icon": "amphibious"
  },
         {
             "description": "At the end of this unit's turn, adjacent enemy units lose -5 <happiness></happiness> <hyperlink>Morale</hyperlink>.",
@@ -2826,7 +3015,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -2931,7 +3120,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -2950,7 +3139,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -2969,7 +3158,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -3026,7 +3215,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -3087,7 +3276,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -3190,7 +3379,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -3406,7 +3595,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -3495,6 +3684,12 @@ var jsonUnitAbilities = {
             "icon": "tempestuous_smash_storm_giant"
  },
         {
+            "description": "This unit can crush non-<hyperlink>Fortified</hyperlink> obstacles without slowing.",
+            "name": "Unstoppable Juggernaut",
+            "slug": "unstoppable_juggernaut",
+            "icon": "unstoppable_juggernaut"
+ },
+        {
             "modifiers": [
                 {
                     "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
@@ -3526,7 +3721,7 @@ var jsonUnitAbilities = {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-            "description": "Summons a Runestone onto target location. The stone will damage enemies from a distance.",
+            "description": "Summons a <hyperlink>Fire Runestone</hyperlink> onto target location.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Conjure Runestone",
             "slug": "conjure_runestone_fire_giant",
             "damage": "",
@@ -3854,7 +4049,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -3871,6 +4066,471 @@ var jsonUnitAbilities = {
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "1",
             "icon": "butchers_cut_butcher_ogre"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 30% chance of inflicting Decaying for 3 <turn></turn> Turns.",
+                    "name": "Decaying",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_decaying_zombie",
+            "damage": "10<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "description": "Unit sustains 10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn> and cannot regain <hyperlink><hp></hp> Hit Points</hyperlink>.",
+            "name": "Decaying",
+            "slug": "decaying",
+            "icon": "decaying"
+ },
+        {
+            "modifiers": [],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_young_obsidian_dragon",
+            "damage": "16<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_young_obsidian_dragon",
+            "damage": "26<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "tail_swipe_bone_dragon"
+ },
+        {
+            "description": "At the end of this unit's turn, adjacent enemy units have a base 90% of losing -5 <happiness></happiness> <hyperlink>Morale</hyperlink>.<br></br>Doesn't affect Tier V and hero units.",
+            "name": "Intimidating Aura",
+            "slug": "intimidating_aura",
+            "icon": "intimidating_aura"
+ },
+        {
+            "modifiers": [],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_young_golden_dragon",
+            "damage": "16<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_young_golden_dragon",
+            "damage": "26<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "tail_swipe_bone_dragon"
+ },
+        {
+            "modifiers": [],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_young_frost_dragon",
+            "damage": "16<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_young_frost_dragon",
+            "damage": "26<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "tail_swipe_bone_dragon"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   },
+                {
+                    "description": "Base 60% chance of inflicting Electrified for 3 <turn></turn> Turns.",
+                    "name": "Electrified",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_obsidian_wyvern",
+            "damage": "9<damagephysical></damagephysical> 4<damagelightning></damagelightning> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "damage": "<xpCol>4<damagelightning></damagelightning></xpCol>",
+            "description": "",
+            "name": "<xpCol>Lightning Resistance</xpCol>",
+            "slug": "lightning_resistance_4"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_gold_wyvern",
+            "damage": "9<damagephysical></damagephysical> 6<damagespirit></damagespirit> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "damage": "<xpCol>4<damagespirit></damagespirit></xpCol>",
+            "description": "",
+            "name": "<xpCol>Spirit Resistance</xpCol>",
+            "slug": "spirit_resistance_4"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   },
+                {
+                    "description": "Inflicts Electrified for 3 <turn></turn> Turns.",
+                    "name": "Electrified",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_obsidian_dragon",
+            "damage": "10<damagephysical></damagephysical> 10<damagelightning></damagelightning> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   }
+  ],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_obsidian_dragon",
+            "damage": "35<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "tail_swipe_bone_dragon"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   },
+                {
+                    "description": "Inflicts Electrified for 3 <turn></turn> Turns.",
+                    "name": "Electrified",
+                    "count": 1
+   }
+  ],
+            "description": "Attacks all units in a 3-hex cone.",
+            "name": "Lightning Breath",
+            "slug": "lightning_breath_obsidian_dragon",
+            "damage": "28<damagelightning></damagelightning> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "lightning_breath_obsidian_dragon"
+ },
+        {
+            "description": "At the start of the turn, adjacent enemy units:<bulletlist><bullet>Sustain 6 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Have a base 30% chance of becoming Stunned.</bullet></bulletlist>",
+            "name": "Lightning Aura",
+            "slug": "lightning_aura",
+            "icon": "lightning_aura"
+ },
+        {
+            "damage": "<xpCol>10<damagelightning></damagelightning></xpCol>",
+            "description": "",
+            "name": "<xpCol>Lightning Resistance</xpCol>",
+            "slug": "lightning_resistance_10"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   }
+  ],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_golden_dragon",
+            "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   }
+  ],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_golden_dragon",
+            "damage": "35<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "tail_swipe_bone_dragon"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Damages <hyperlink>Fortified</hyperlink> Obstacles.",
+                    "name": "Demolisher",
+                    "count": 1
+   }
+  ],
+            "description": "In a 3-hex cone:<bulletlist><bullet>Enemy units sustain damage.</bullet><bullet>Friendly units heal 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Friendly units have their negative status effects removed.</bullet>",
+            "name": "Purifying Breath",
+            "slug": "purifying_breath_golden_dragon",
+            "damage": "20<damagespirit></damagespirit> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "purifying_breath_golden_dragon"
+ },
+        {
+            "description": "At the start of the turn, adjacent enemy units sustain 8 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.",
+            "name": "Spirit Aura",
+            "slug": "spirit_aura",
+            "icon": "spirit_aura"
+ },
+        {
+            "damage": "<xpCol>10<damagespirit></damagespirit></xpCol>",
+            "description": "",
+            "name": "<xpCol>Spirit Resistance</xpCol>",
+            "slug": "spirit_resistance_10"
+ },
+        {
+            "modifiers": [],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_young_fire_dragon",
+            "damage": "16<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
+            "modifiers": [],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_young_fire_dragon",
+            "damage": "26<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "icon": "tail_swipe_bone_dragon"
  },
         {
             "modifiers": [],
@@ -3932,7 +4592,7 @@ var jsonUnitAbilities = {
             "description": "Unit gains:<bulletlist><bullet>+1 range on abilities.</bullet><bullet>+20% <hyperlink>Accuracy</hyperlink>.</bullet>",
             "name": "Legend Medal: Eagle Eye",
             "slug": "legend_medal_eagle_eye",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [
@@ -3963,7 +4623,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -4012,12 +4672,6 @@ var jsonUnitAbilities = {
             "icon": "celestial"
  },
         {
-            "damage": "<xpCol>4<damagespirit></damagespirit></xpCol>",
-            "description": "",
-            "name": "<xpCol>Spirit Resistance</xpCol>",
-            "slug": "spirit_resistance_4"
- },
-        {
             "damage": "<fireCol>2<damagefrost></damagefrost></fireCol>",
             "description": "",
             "name": "<fireCol>Frost Weakness</fireCol>",
@@ -4047,7 +4701,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -4076,7 +4730,7 @@ var jsonUnitAbilities = {
             "icon": "hopelessness"
  },
         {
-            "description": "A Spirit corrupted by the touch of Urrath's magic with:<bulletlist><bullet>-2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink>.</bullet><bullet>Immunity to changes in <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Slippery.</bullet><bullet>Elusive.</bullet>",
+            "description": "A Spirit corrupted by the touch of Urrath's magic with:<bulletlist><bullet>-2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>Slippery</bullet><bullet>Elusive</bullet></bulletlist>",
             "name": "Shadow",
             "slug": "shadow",
             "icon": "shadow"
@@ -4110,7 +4764,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -4179,7 +4833,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -4362,7 +5016,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -4428,13 +5082,13 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "Unit has extra Extra Retaliation.",
             "name": "Legend Medal: Retaliation",
             "slug": "legend_medal_retaliation",
-            "icon": "legend_medal_killing_momentum"
+            "icon": "legend_medal_sprint"
  },
         {
             "modifiers": [
@@ -4460,7 +5114,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -4536,12 +5190,6 @@ var jsonUnitAbilities = {
             "icon": "wail_of_the_banshee_banshee"
  },
         {
-            "damage": "<fireCol>2<damagespirit></damagespirit></fireCol>",
-            "description": "",
-            "name": "<fireCol>Spirit Weakness</fireCol>",
-            "slug": "spirit_weakness_2"
- },
-        {
             "modifiers": [
                 {
                     "description": "Heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> on hit",
@@ -4565,13 +5213,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
- },
-        {
-            "description": "This unit has faster Movement over Rivers and Swamps.",
-            "name": "Amphibious",
-            "slug": "amphibious",
-            "icon": "amphibious"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "Moving through Snow and Ice terrain costs fewer <hyperlink>Move Points</hyperlink>.",
@@ -4646,7 +5288,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -4754,7 +5396,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -4795,7 +5437,7 @@ var jsonUnitAbilities = {
                     "count": 1
    }
   ],
-            "description": "Deals damage to all Gilded units within a 3-hex radius. If any are killed, this unit heals +10 <hyperlink><hp></hp> Hit Points</hyperlink>.",
+            "description": "Deals damage to all Gilded units within a 3-hex radius. If any are killed, this unit heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
             "name": "Strike Gold",
             "slug": "strike_gold_golden_golem",
             "damage": "45<damagephysical></damagephysical> ",
@@ -4882,7 +5524,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
@@ -4902,7 +5544,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "This unit ends its turn and goes into a defensive mode:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>Gains +2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Gains +2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet><bullet>All adjacent friendly units gain +3 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>All adjacent friendly units gain +3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet>",
@@ -5071,7 +5713,7 @@ var jsonUnitAbilities = {
             "icon": "unleash_the_hounds"
  },
         {
-            "description": "At the start of each <turn></turn> <hyperlink>Turn</hyperlink>, summons a random Tier I Animal unit.",
+            "description": "At the start of each <turn></turn> <hyperlink>Turn</hyperlink>, summons a random Tier I Animal unit.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Totem of the Wild",
             "slug": "totem_of_the_wild",
             "icon": "totem_of_the_wild"
@@ -5120,13 +5762,16 @@ var jsonUnitAbilities = {
             "notes": [
                 {
                     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Can only be used once per battle."
    }
   ],
             "icon": "restart_the_cycle_druid_of_the_cycle"
  },
         {
             "modifiers": [],
-            "description": "Slight chance of instantly killing a injured target. This chance increases the lower the target's <hp></hp> Hit Points are. If unsuccessful, the target gains 3 Weakened.",
+            "description": "Slight chance of instantly killing an injured target. This chance increases the lower the target's <hp></hp> Hit Points are. If unsuccessful, the target gains 3 Weakened.",
             "name": "Cycle's End",
             "slug": "cycles_end_druid_of_the_cycle",
             "damage": "",
@@ -5215,7 +5860,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -5283,7 +5928,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -5369,7 +6014,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -5405,7 +6050,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -5618,9 +6263,9 @@ var jsonUnitAbilities = {
  },
         {
             "modifiers": [],
-            "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
-            "name": "Charge Strike",
-            "slug": "charge_strike_ram_warship",
+            "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
+            "name": "Heavy Charge Strike",
+            "slug": "heavy_charge_strike_ram_warship",
             "damage": "24<damagephysical></damagephysical> ",
             "requisites": [
                 {
@@ -5768,7 +6413,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -5876,7 +6521,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -5941,7 +6586,7 @@ var jsonUnitAbilities = {
             "description": "Unit has +20% <hyperlink>Evasion</hyperlink>.",
             "name": "Elite Medal: Evasion",
             "slug": "elite_medal_evasion",
-            "icon": "elite_medal_mythic"
+            "icon": "elite_medal_damage"
  },
         {
             "modifiers": [
@@ -6014,7 +6659,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "At the end of this unit's turn, adjacent enemy units have a base 90% chance of receiving:<bulletlist><bullet>Sundered Defense</bullet><bullet>Sundered Resistance</bullet>",
@@ -6198,7 +6843,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -6246,7 +6891,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "Reflects 40% of damage sustained from <hyperlink>Melee</hyperlink> attacks back onto attackers.",
@@ -6392,7 +7037,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -6469,6 +7114,29 @@ var jsonUnitAbilities = {
             "icon": "magic_bolts_elya"
  },
         {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "description": "Target friendly unit gains Awakened for 3 <turn></turn>.",
+            "name": "Awaken",
+            "slug": "awaken_awakener",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "awaken_awakener"
+ },
+        {
             "modifiers": [
                 {
                     "description": "Inflict Sundered Defense for 3 <turn></turn> Turns.",
@@ -6502,29 +7170,6 @@ var jsonUnitAbilities = {
    }
   ],
             "icon": "exposing_light_awakener"
- },
-        {
-            "notes": [
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-                {
-                    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-            "description": "Target friendly unit and another non-Awakened unit within 2 hexes become Awakened for 3 <turn></turn>.",
-            "name": "Twin Awakening",
-            "slug": "twin_awakening_awakener",
-            "damage": "",
-            "requisites": [
-                {
-                    "requisite": "Support"
-   }
-  ],
-            "accuracy": "Always Hits",
-            "actionPoints": "<freeaction></freeaction>",
-            "range": "4",
-            "icon": "twin_awakening_awakener"
  },
         {
             "description": "While Awakened, this unit gains Awakened: Seeking Missiles.",
@@ -6590,6 +7235,29 @@ var jsonUnitAbilities = {
                     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
                 {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "description": "Target friendly unit and another non-Awakened unit within 2 hexes become Awakened for 3 <turn></turn>.",
+            "name": "Twin Awakening",
+            "slug": "twin_awakening_sun_priest",
+            "damage": "",
+            "requisites": [
+                {
+                    "requisite": "Support"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<freeaction></freeaction>",
+            "range": "4",
+            "icon": "twin_awakening_sun_priest"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+                {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
@@ -6606,29 +7274,6 @@ var jsonUnitAbilities = {
             "actionPoints": "<singleuseaction></singleuseaction>",
             "range": "4",
             "icon": "mending_awakening_sun_priest"
- },
-        {
-            "notes": [
-                {
-                    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-                {
-                    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-            "description": "Target friendly unit gains Awakened for 3 <turn></turn>.",
-            "name": "Awaken",
-            "slug": "awaken_sun_priest",
-            "damage": "",
-            "requisites": [
-                {
-                    "requisite": "Support"
-   }
-  ],
-            "accuracy": "Always Hits",
-            "actionPoints": "<freeaction></freeaction>",
-            "range": "4",
-            "icon": "awaken_sun_priest"
  },
         {
             "description": "While Awakened, this unit gains Awakened: Radiant Light.",
@@ -6653,7 +7298,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "While Awakened, this unit gains Awakened: Shield of Light.",
@@ -6679,7 +7324,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "While Awakened, this unit gains Awakened: Guardian.",
@@ -6810,16 +7455,22 @@ var jsonUnitAbilities = {
    }
   ],
             "accuracy": "Always Hits",
-            "actionPoints": "<singleuseaction></singleuseaction>",
+            "actionPoints": "<fullaction></fullaction>",
             "range": "4",
             "icon": "invigorate_war_shaman"
  },
         {
-            "modifiers": [],
+            "modifiers": [
+                {
+                    "description": "Gains a stack of Strengthened when landing a hit.",
+                    "name": "Frenzy",
+                    "count": 1
+   }
+  ],
             "description": "Fires ranged projectiles at target enemy unit.",
             "name": "Shoot Bow",
             "slug": "shoot_bow_fury",
-            "damage": "12<damagephysical></damagephysical> ",
+            "damage": "10<damagephysical></damagephysical> ",
             "requisites": [
                 {
                     "requisite": "Physical Ranged"
@@ -6858,7 +7509,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -6898,7 +7549,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7010,7 +7661,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "+1 <defense></defense> <hyperlink>Defense</hyperlink>. Ignored by <hyperlink><flank></flank> Flanking</hyperlink> attacks.",
@@ -7080,7 +7731,7 @@ var jsonUnitAbilities = {
                     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
                 {
-                    "note": "Cooldown: 3 <turn></turn>"
+                    "note": "Cooldown: 4 <turn></turn>"
    }
   ],
             "description": "The caster and adjacent friendly units:<bulletlist><bullet>Heal +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain 10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet>",
@@ -7168,7 +7819,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "Unit gains +20% more Experience from battle and gets promoted to a Defender unit upon reaching Champion rank.",
@@ -7257,7 +7908,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7336,7 +7987,7 @@ var jsonUnitAbilities = {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-            "description": "Target <hyperlink>Flora Obstacle</hyperlink>:<bulletlist><bullet>Transforms into a Floral Stinger under your control</bullet><bullet>Lasts until the end of combat</bullet></bulletlist>",
+            "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Animate Flora",
             "slug": "animate_flora_horned_god",
             "damage": "",
@@ -7370,7 +8021,7 @@ var jsonUnitAbilities = {
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_fire_wyvern",
-            "damage": "10<damagephysical></damagephysical> 4<damagefire></damagefire> ",
+            "damage": "9<damagephysical></damagephysical> 4<damagefire></damagefire> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -7383,7 +8034,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7396,7 +8047,7 @@ var jsonUnitAbilities = {
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_frost_wyvern",
-            "damage": "10<damagephysical></damagephysical> 6<damagefrost></damagefrost> ",
+            "damage": "9<damagephysical></damagephysical> 6<damagefrost></damagefrost> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -7409,7 +8060,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "damage": "<xpCol>4<damagefrost></damagefrost></xpCol>",
@@ -7447,7 +8098,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7509,12 +8160,6 @@ var jsonUnitAbilities = {
             "icon": "frost_breath_frost_dragon"
  },
         {
-            "description": "When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach 60% or lower, it deals +30% damage.",
-            "name": "Draconic Rage",
-            "slug": "draconic_rage",
-            "icon": "draconic_rage"
- },
-        {
             "description": "At the start of the turn, adjacent enemy units:<bulletlist><bullet>Sustain 6 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 30% chance of becoming Frozen.</bullet></bulletlist>",
             "name": "Frost Aura",
             "slug": "frost_aura",
@@ -7550,7 +8195,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "This unit cannot be detected when standing on Water and River hexes.",
@@ -7588,7 +8233,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7684,7 +8329,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
@@ -7704,7 +8349,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7735,7 +8380,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7798,7 +8443,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7815,11 +8460,6 @@ var jsonUnitAbilities = {
                 {
                     "description": "Base 60% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
                     "name": "Immobilized",
-                    "count": 1
-   },
-                {
-                    "description": "Heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> on hit",
-                    "name": "Life Steal",
                     "count": 1
    }
   ],
@@ -7906,7 +8546,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -7937,7 +8577,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -8015,7 +8655,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -8051,7 +8691,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -8131,7 +8771,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -8205,7 +8845,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -8266,7 +8906,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -8546,7 +9186,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -8686,12 +9326,6 @@ var jsonUnitAbilities = {
             "icon": "maternal_rage"
  },
         {
-            "description": "This unit can crush non-<hyperlink>Fortified</hyperlink> obstacles without slowing.",
-            "name": "Unstoppable Juggernaut",
-            "slug": "unstoppable_juggernaut",
-            "icon": "unstoppable_juggernaut"
- },
-        {
             "modifiers": [
                 {
                     "description": "Base 60% chance of inflicting Electrified for 3 <turn></turn> Turns.",
@@ -8715,7 +9349,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "This unit is not stopped by enemy <hyperlink>Zone of Control</hyperlink>.",
@@ -8728,12 +9362,6 @@ var jsonUnitAbilities = {
             "name": "Statically Charged",
             "slug": "statically_charged",
             "icon": "statically_charged"
- },
-        {
-            "damage": "<xpCol>4<damagelightning></damagelightning></xpCol>",
-            "description": "",
-            "name": "<xpCol>Lightning Resistance</xpCol>",
-            "slug": "lightning_resistance_4"
  },
         {
             "modifiers": [
@@ -8759,7 +9387,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
@@ -8824,10 +9452,10 @@ var jsonUnitAbilities = {
             "icon": "charge_strike_bone_golem"
  },
         {
-            "description": "At the end of this unit's turn, adjacent enemy units have a base 90% of losing -5 <happiness></happiness> <hyperlink>Morale</hyperlink>.<br></br>Doesn't affect Tier V and hero units.",
-            "name": "Intimidating Aura",
-            "slug": "intimidating_aura",
-            "icon": "intimidating_aura"
+            "description": "This unit inflicts double morale penalties when killing an enemy.",
+            "name": "Vicious Killer",
+            "slug": "vicious_killer",
+            "icon": "vicious_killer"
  },
         {
             "modifiers": [
@@ -8858,7 +9486,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -8981,7 +9609,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -9000,7 +9628,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -9019,7 +9647,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -9100,7 +9728,7 @@ var jsonUnitAbilities = {
             "icon": "havoc_magic"
  },
         {
-            "description": "Base attacks have a base 60% chance of inflicting Poisoned, Decaying, Weakened or Immobilized for {duration} <turn></turn> Turns.",
+            "description": "Base attacks have a base 60% chance of inflicting Poisoned, Decaying, Weakened or Immobilized for 3 <turn></turn> Turns.",
             "name": "Avatar of Nature",
             "slug": "avatar_of_nature",
             "icon": "avatar_of_nature"
@@ -9165,7 +9793,7 @@ var jsonUnitAbilities = {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-            "description": "Target enemy units becomes Condemned until the end of battle.",
+            "description": "Target enemy unit becomes Condemned until the end of battle.",
             "name": "Condemn",
             "slug": "condemn_condemn",
             "damage": "",
@@ -9246,7 +9874,7 @@ var jsonUnitAbilities = {
             "icon": "lightning_weapons"
  },
         {
-            "description": "<bulletlist><bullet>Grows in size and gains Large Target.</bullet><bullet>Heals +20 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Gains +30% damage on all attacks.</bullet><bullet>Can no longer use a mount.</bullet></bulletlist>",
+            "description": "Unit grows in size and gains:<bulletlist><bullet>Large Target</bullet><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+30% damage</bullet></bulletlist><br></br>Unit can no longer use a mount.",
             "name": "Ancient of Earth",
             "slug": "ancient_of_earth",
             "icon": "ancient_of_earth"
@@ -9453,7 +10081,7 @@ var jsonUnitAbilities = {
             "accuracy": "Always Hits",
             "actionPoints": "<freeaction></freeaction>",
             "range": "4",
-            "icon": "twin_awakening_awakener"
+            "icon": "twin_awakening_sun_priest"
  },
         {
             "modifiers": [
@@ -9537,7 +10165,7 @@ var jsonUnitAbilities = {
             "icon": "natures_avenger_natures_avenger"
  },
         {
-            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks gain:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>+20% damage against Frozen units</bullet></bulletlist>",
+            "description": "Base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks gain:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>+20% damage against Frozen and Slowed units.</bullet></bulletlist>",
             "name": "Frost Weapons",
             "slug": "frost_weapons",
             "icon": "frost_weapons"
@@ -9601,6 +10229,312 @@ var jsonUnitAbilities = {
             "slug": "demonic_slaughter"
  },
         {
+            "description": "<bulletlist><bullet>Unit gains the Undead unit type.</bullet><bullet>Its breath attack:<bulletlist></bullet><bullet>Increases in size.</bullet><bullet>Becomes part <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> if not a Shadow Dragon.</bullet><bullet>Inflicts 2 Weakened.</bullet><bullet>Has a base 70% chance of infliciting Frozen.</bullet><bullet>Heals this unit by 5 <hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per unit hit.</bullet></bulletlist></bulletlist><br></br><br></br>Increases unit upkeep by 15 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Shadow Transformation",
+            "slug": "shadow_transformation",
+            "icon": "shadow_transformation"
+ },
+        {
+            "description": "<bulletlist><bullet>Unit gains the Celestial unit type.</bullet><bullet>Its breath attack:<bulletlist></bullet><bullet>Increases in size.</bullet><bullet>Becomes part <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> if not an Order Dragon.</bullet><bullet>Heals friendly units hit by 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and removes their negative status effects.</bullet><bullet>Base 90% chance of inflicting <hyperlink>Distracting</hyperlink>.</bullet></bulletlist></bulletlist><br></br><br></br>Increases unit upkeep by 15 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Order Transformation",
+            "slug": "order_transformation",
+            "icon": "order_transformation"
+ },
+        {
+            "description": "<bulletlist><bullet>Unit gains the Plant unit type.</bullet><bullet>Its breath attack:<bulletlist></bullet><bullet>Increases in size.</bullet><bullet>Becomes part <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> if not a Nature Dragon.</bullet><bullet>Grants 2 Regeneration to friendly units hit.</bullet><bullet>Always inflicts Decaying.</bullet><bullet>Always inflicts Poisoned.</bullet></bulletlist></bulletlist><br></br><br></br>Increases unit upkeep by 15 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Nature Transformation",
+            "slug": "nature_transformation",
+            "icon": "nature_transformation"
+ },
+        {
+            "description": "<bulletlist><bullet>Unit gains the Elemental unit type.</bullet><bullet>Its breath attack:<bulletlist></bullet><bullet>Increases in size.</bullet><bullet>Becomes part <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> if not a Materium Dragon.</bullet><bullet>Has a base 70% chance of inflicting Gilded.</bullet><bullet>Always inflicts Bleeding.</bullet></bulletlist></bulletlist><br></br><br></br>Increases unit upkeep by 15 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Materium Transformation",
+            "slug": "materium_transformation",
+            "icon": "materium_transformation"
+ },
+        {
+            "description": "<bulletlist><bullet>Unit gains the Demonkin unit type.</bullet><bullet>Its breath attack:<bulletlist></bullet><bullet>Increases in size.</bullet><bullet>Becomes part <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> if not a Chaos Dragon.</bullet><bullet>Has 2 separate base 60% chance of inflicting a random negative status effect.</bullet><bullet>Always inflicts Ghostfire.</bullet></bulletlist></bulletlist><br></br><br></br>Increases unit upkeep by 15 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Chaos Transformation",
+            "slug": "chaos_transformation",
+            "icon": "chaos_transformation"
+ },
+        {
+            "description": "<bulletlist><bullet>Unit gains the Ethereal unit type.</bullet><bullet>Its breath attack:<bulletlist></bullet><bullet>Increases in size.</bullet><bullet>Becomes part <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink> if not an Astral Dragon.</bullet><bullet>Has a base 70% chance of inflicting Stunned.</bullet><bullet>Always inflicts Electrified.</bullet></bulletlist></bulletlist><br></br><br></br>Increases unit upkeep by 15 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Astral Transformation",
+            "slug": "astral_transformation",
+            "icon": "astral_transformation"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Friendly units in a 2-hex radius gain:<bulletlist><bullet>Strengthened</bullet><bullet>Hastened</bullet>",
+            "name": "Exhilarating Roar",
+            "slug": "exhilarating_roar_exhilarating_roar",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "0",
+            "icon": "exhilarating_roar_exhilarating_roar"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "description": "Has a base 90% chance of consuming the target Tier I, II, or III enemy unit.<bulletlist><bullet>If successful, heals this unit +30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>If resisted, deals 30 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> instead.</bullet></bulletlist><br></br>When this unit is killed, the last unit that was consumed is brought back.",
+            "name": "Terrifying Gorging",
+            "slug": "terrifying_gorging_terrifying_gorging",
+            "damage": "",
+            "requisites": [],
+            "accuracy": "100%",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "1",
+            "icon": "terrifying_gorging_karagh"
+ },
+        {
+            "description": "This units attacks:<bulletlist><bullet>Gain Soul Drain, reducing unit <happiness></happiness> <hyperlink>Morale</hyperlink> and applying Soulbound.</bullet><bullet>Deal +30% damage against units with \\\"Low\\\" or lower morale.</bullet></bulletlist><br></br><br></br>Increases unit upkeep by 7 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Shadow Aspect",
+            "slug": "shadow_aspect",
+            "icon": "shadow_aspect"
+ },
+        {
+            "description": "This unit:<bulletlist><bullet>Gains Faithful.</bullet><bullet>Gains 5 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Inflicts Condemned with their attacks.</bullet></bulletlist><br></br><br></br>Increases unit upkeep by 7 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Order Aspect",
+            "slug": "order_aspect",
+            "icon": "order_aspect"
+ },
+        {
+            "description": "This unit gains:<bulletlist><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>Watchful</bullet></bulletlist><br></br><br></br>Increases unit upkeep by 7 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Nature Aspect",
+            "slug": "nature_aspect",
+            "icon": "nature_aspect"
+ },
+        {
+            "description": "This unit gains:<bulletlist><bullet>+30% <hyperlink>Critical Hit</hyperlink> chance.</bullet><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist><br></br><br></br>Increases unit upkeep by 7 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Materium Aspect",
+            "slug": "materium_aspect",
+            "icon": "materium_aspect"
+ },
+        {
+            "description": "This unit:<bulletlist><bullet>Deals +10% damage per negative status effect on the target. Stacks up to 3 times.</bullet><bullet>Gains +50% <happiness></happiness> <hyperlink>Morale</hyperlink> from all sources.</bullet></bulletlist><br></br><br></br>Increases unit upkeep by 7 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Chaos Aspect",
+            "slug": "chaos_aspect",
+            "icon": "chaos_aspect"
+ },
+        {
+            "description": "This unit gains:<bulletlist><bullet>Attunement: Fortune, increasing <hyperlink>Critical Hit</hyperlink> chance with each spell cast in combat.</bullet><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet></bulletlist><br></br><br></br>Increases unit upkeep by 7 <mana></mana> <hyperlink>Mana</hyperlink>.",
+            "name": "Astral Aspect",
+            "slug": "astral_aspect",
+            "icon": "astral_aspect"
+ },
+        {
+            "description": "At the end of each turn, adjacent enemy units gain Misfortune.",
+            "name": "Shadow Aura",
+            "slug": "shadow_aura",
+            "icon": "shadow_aura"
+ },
+        {
+            "description": "<bulletlist><bullet>At the end of each turn, this unit and adjacent friendly units gain 2 Bolstered Resistance.</bullet><bullet>At the end of each turn, adjacent enemy units gain 2 Sundered Resistance.</bullet>",
+            "name": "Astral Aura",
+            "slug": "astral_aura",
+            "icon": "astral_aura"
+ },
+        {
+            "description": "<bulletlist><bullet>At the end of each turn, this unit and adjacent friendly units gain 2 Bolstered Defense.</bullet><bullet>At the end of each turn, adjacent enemy units gain 2 Sundered Defense.</bullet>",
+            "name": "Materium Aura",
+            "slug": "materium_aura",
+            "icon": "materium_aura"
+ },
+        {
+            "description": "At the end of each turn, this unit and adjacent friendly units gain Regeneration.",
+            "name": "Nature Aura",
+            "slug": "nature_aura",
+            "icon": "nature_aura"
+ },
+        {
+            "description": "At the end of each turn, adjacent enemy units have a base 60% chance of being inflicted with a random negative status effect.",
+            "name": "Chaos Aura",
+            "slug": "chaos_aura",
+            "icon": "chaos_aura"
+ },
+        {
+            "description": "At the end of each turn, this unit and adjacent friendly units gain:<bulletlist><bullet>Rally</bullet><bullet>Fortune</bullet><bullet>Bolstered Resistance</bullet>",
+            "name": "Order Aura",
+            "slug": "order_aura",
+            "icon": "order_aura"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
+            "description": "Ranged breath that deals damage to all units in a 1-hex radius.",
+            "name": "Dragon Breath",
+            "slug": "dragon_breath_dragon_breath_(comet)",
+            "damage": "26<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "4",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "dragon_breath_dragon_breath_(comet)"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
+            "description": "Deal damage to all units in a 5-hex long line.",
+            "name": "Dragon Breath",
+            "slug": "dragon_breath_dragon_breath_(line)",
+            "damage": "30<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "dragon_breath_dragon_breath_(line)"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
+            "description": "Deal damage to all units in a 3-hex cone.",
+            "name": "Dragon Breath",
+            "slug": "dragon_breath_dragon_breath_(cone)",
+            "damage": "26<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "dragon_breath_dragon_breath_(cone)"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
+            "description": "Deal damage in a 2-hex cone.",
+            "name": "Lesser Dragon Breath",
+            "slug": "lesser_dragon_breath_lesser_dragon_breath",
+            "damage": "20<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "dragon_breath_dragon_breath_(cone)"
+ },
+        {
+            "notes": [
+                {
+                    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+            "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.",
+            "name": "Tail Swipe",
+            "slug": "tail_swipe_tail_swipe",
+            "damage": "35<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<singleuseaction></singleuseaction>",
+            "range": "1",
+            "icon": "tail_swipe_bone_dragon"
+ },
+        {
+            "modifiers": [
+                {
+                    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
+                    "name": "Burning",
+                    "count": 1
+   },
+                {
+                    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+                    "name": "Bleeding",
+                    "count": 1
+   }
+  ],
+            "description": "Target sustains damage. Adjacent units are dealt 50% of the damage.",
+            "name": "Fire Bomb",
+            "slug": "fire_bomb_fire_bomb",
+            "damage": "10<damagephysical></damagephysical> 10<damagefire></damagefire> ",
+            "requisites": [
+                {
+                    "requisite": "Magic"
+   }
+  ],
+            "accuracy": "Always Hits",
+            "actionPoints": "<fullaction></fullaction>",
+            "range": "6",
+            "notes": [
+                {
+                    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+            "icon": "fire_bomb_fire_bomb"
+ },
+        {
+            "description": "While army leader, all units with Evolve in army have:<bulletlist><bullet>-20% <hyperlink>Unit Upkeep</hyperlink></bullet><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+1<resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist>",
+            "name": "Shepherd",
+            "slug": "shepherd",
+            "icon": "shepherd"
+ },
+        {
             "modifiers": [
                 {
                     "description": "Base 60% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful inflicts Slowed.",
@@ -9648,7 +10582,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summons 3 random Tier I Undead units.",
+            "description": "Summons a random Tier III Undead unit.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Summon Undead",
             "slug": "summon_undead_summon_undead",
             "damage": "",
@@ -9668,7 +10602,7 @@ var jsonUnitAbilities = {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-            "description": "Enemies in a 1-hex radius sustain damage. All corpses in a 1-hex radius turn into Zombie units.",
+            "description": "Enemies in a 1-hex radius sustain damage. All corpses in a 1-hex radius turn into <hyperlink>Decaying Zombie</hyperlink> units.",
             "name": "Dark Ritual",
             "slug": "dark_ritual_dark_ritual",
             "damage": "10<damagefrost></damagefrost> ",
@@ -9772,7 +10706,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summons a random Tier III Elemental unit.",
+            "description": "Summons a random Tier III Elemental unit.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Summon Elemental",
             "slug": "summon_elemental_summon_elemental",
             "damage": "",
@@ -9795,7 +10729,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summons a random Tier III Animal unit.",
+            "description": "Summons a random Tier III Animal unit.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Summon Animal",
             "slug": "summon_animal_summon_animal",
             "damage": "",
@@ -10023,7 +10957,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Target Friendly unit regains its <hyperlink>Action Points</hyperlink>.",
+            "description": "Target friendly non-Hero unit regains its <hyperlink>Action Points</hyperlink>.",
             "name": "Spur to Action",
             "slug": "spur_to_action_spur_to_action",
             "damage": "",
@@ -10242,7 +11176,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet>",
+            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Decaying Zombie</hyperlink>.</bullet>",
             "name": "Raise Undead",
             "slug": "raise_undead_raise_undead",
             "damage": "",
@@ -10305,7 +11239,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -10324,7 +11258,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -10343,7 +11277,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -10362,7 +11296,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -10381,7 +11315,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [],
@@ -10400,14 +11334,14 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
             "slug": "melee_strike_godir_sword",
-            "damage": "7<damagephysical></damagephysical> 7<damagespirit></damagespirit> ",
+            "damage": "7<damagephysical></damagephysical> 3<damagespirit></damagespirit> ",
             "requisites": [
                 {
                     "requisite": "Melee"
@@ -10420,7 +11354,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach 30% or lower, grants this unit:<bulletlist><bullet>3 Strengthened for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Berserk for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet><bullet>Steadfast for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet>",
@@ -10601,7 +11535,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet>",
+            "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Decaying Zombie</hyperlink>.</bullet>",
             "name": "Raise Undead",
             "slug": "raise_undead_wand_of_the_rising_undead",
             "damage": "",
@@ -10668,7 +11602,7 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "description": "During the first 3 <turn></turn> <hyperlink>Turns</hyperlink> in combat, a Zombie is summoned next to the <hyperlink>Hero</hyperlink> every <turn></turn> <hyperlink>Turn</hyperlink>.",
+            "description": "During the first 3 <turn></turn> <hyperlink>Turns</hyperlink> in combat, a <hyperlink>Decaying Zombie</hyperlink> is summoned next to the <hyperlink>Hero</hyperlink> every <turn></turn> <hyperlink>Turn</hyperlink>.",
             "name": "Gravecall",
             "slug": "gravecall",
             "icon": "gravecall"
@@ -10789,7 +11723,7 @@ var jsonUnitAbilities = {
             "icon": "heavy_charge_strike_ghost_ship"
  },
         {
-            "description": "Summons a Lightbringer next to this <hyperlink>Hero</hyperlink> at the start of battle.",
+            "description": "Summons a Lightbringer next to this <hyperlink>Hero</hyperlink> at the start of battle.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Call Lightbringer",
             "slug": "call_lightbringer",
             "icon": "call_lightbringer"
@@ -10956,7 +11890,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -10982,7 +11916,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "<bulletlist><bullet>Grants +1 <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>+40% damage on <hyperlink>Retaliation Attacks</hyperlink>.</bullet></bulletlist>",
@@ -11014,7 +11948,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
@@ -11400,12 +12334,6 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
-            "description": "This unit may crush non-<hyperlink>Fortified</hyperlink> obstacles.",
-            "name": "Juggernaut",
-            "slug": "juggernaut",
-            "icon": "juggernaut"
- },
-        {
             "description": "Unit cannot lose <happiness></happiness> <hyperlink>Morale</hyperlink>.",
             "name": "Fearless",
             "slug": "fearless",
@@ -11434,18 +12362,6 @@ var jsonUnitAbilities = {
             "name": "Frost Immunity",
             "slug": "frost_immunity",
             "icon": "frost_immunity"
- },
-        {
-            "description": "This unit inflicts double morale penalties when killing an enemy.",
-            "name": "Vicious Killer",
-            "slug": "vicious_killer",
-            "icon": "vicious_killer"
- },
-        {
-            "description": "When this unit's <hyperlink><hp></hp> Hit Points</hyperlink> are reduced to zero, it is displaced by 3 hexes and heals +15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br>Works once per battle.",
-            "name": "Slip Away",
-            "slug": "slip_away",
-            "icon": "slip_away"
  },
         {
             "description": "Grants +3 <defense></defense> <hyperlink>Defense</hyperlink> and +3 <resistance></resistance> <hyperlink>Resistance</hyperlink> against <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
@@ -11539,7 +12455,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -11565,7 +12481,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -11591,7 +12507,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
@@ -11611,7 +12527,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -11910,7 +12826,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summons a random Tier I Spider.",
+            "description": "Summons a random Tier I Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Spider Egg",
             "slug": "spider_egg^n_spider_hatchling_bell",
             "damage": "",
@@ -11974,7 +12890,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -12219,7 +13135,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -12298,7 +13214,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [],
@@ -12393,6 +13309,26 @@ var jsonUnitAbilities = {
             "icon": "quick_stab_staff_of_inioch"
  },
         {
+            "modifiers": [],
+            "description": "Strikes target enemy unit.",
+            "name": "Melee Strike",
+            "slug": "melee_strike_dragon_claw",
+            "damage": "18<damagephysical></damagephysical> ",
+            "requisites": [
+                {
+                    "requisite": "Melee"
+   },
+                {
+                    "requisite": "Base"
+   }
+  ],
+            "accuracy": "100%",
+            "actionPoints": "<repeatingaction></repeatingaction>",
+            "range": "1",
+            "notes": [],
+            "icon": "melee_strike_slither"
+ },
+        {
             "notes": [],
             "description": "Strikes target enemy unit.",
             "name": "Melee Strike",
@@ -12409,7 +13345,7 @@ var jsonUnitAbilities = {
             "accuracy": "100%",
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -12471,7 +13407,7 @@ var jsonUnitAbilities = {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "description": "<hyperlink>Melee</hyperlink> attackers have a base 30% chance of becoming Bleeding.",
@@ -12537,7 +13473,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summons a random Tier III Spider.",
+            "description": "Summons a random Tier IV Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Spider Monarch's Leg",
             "slug": "spider_monarchs_leg^n_spider_monarchs_leg",
             "damage": "",
@@ -12557,7 +13493,7 @@ var jsonUnitAbilities = {
                     "note": "Can only be used once per battle."
    }
   ],
-            "description": "Summons a random Tier II Spider.",
+            "description": "Summons a random Tier II Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Spider Flute",
             "slug": "spider_flute^n_spider_leg",
             "damage": "",
@@ -12763,7 +13699,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "modifiers": [
@@ -12799,7 +13735,7 @@ var jsonUnitAbilities = {
         {
             "modifiers": [
                 {
-                    "description": "Units killed transform into Zombies until the end of battle.",
+                    "description": "Units killed with this weapon transform into a <hyperlink>Decaying Zombie</hyperlink> until the end of battle.",
                     "name": "Melenis's Glaive^N",
                     "count": 1
    }
@@ -12820,7 +13756,7 @@ var jsonUnitAbilities = {
             "actionPoints": "<repeatingaction></repeatingaction>",
             "range": "1",
             "notes": [],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  },
         {
             "notes": [
@@ -13293,11 +14229,6 @@ var jsonUnitAbilities = {
                     "description": "Base 60% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
                     "name": "Immobilized",
                     "count": 1
-   },
-                {
-                    "description": "Heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> on hit",
-                    "name": "Life Steal",
-                    "count": 1
    }
   ],
             "description": "Deals damage in a 1-hex radius.",
@@ -13352,7 +14283,7 @@ var jsonUnitAbilities = {
         {
             "modifiers": [
                 {
-                    "description": "Resurrects targets killed as Zombies under the wielder's control.",
+                    "description": "Units killed with this weapon transform into a <hyperlink>Decaying Zombie</hyperlink> until the end of battle.",
                     "name": "Cryptblade^n",
                     "count": 1
    }
@@ -13367,14 +14298,14 @@ var jsonUnitAbilities = {
    }
   ],
             "accuracy": "100%",
-            "actionPoints": "<singleuseaction></singleuseaction>",
+            "actionPoints": "<freeaction></freeaction>",
             "range": "1",
             "notes": [
                 {
                     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-            "icon": "melee_strike_nimu"
+            "icon": "melee_strike_slither"
  }
 ]
 }

@@ -42,7 +42,7 @@ var jsonStructureUpgrades = {
  },
         {
             "requirement_description": "",
-            "id": "_teleporter___telefporter",
+            "id": "_teleporter___teleporter",
             "description": "",
             "name": "<teleporter></teleporter> Teleporter",
             "icon": "_teleporter___teleporter",
@@ -288,7 +288,7 @@ var jsonStructureUpgrades = {
             "icon": "ritual_mausoleum",
             "is_sector_upgrade": false,
             "cost": "100<gold></gold> 250<structureprod></structureprod> ",
-            "prediction_description": "<bulletlist><bullet>+10 <mana></mana> <hyperlink>Mana</hyperlink> income</bullet><bullet>-5 <happiness></happiness> <hyperlink>City Stability</hyperlink> income</bullet><bullet>+2 <mana></mana> <hyperlink>Mana</hyperlink> income per hero in the <hyperlink>Crypt</hyperlink>:</bullet></bulletlist>",
+            "prediction_description": "<bulletlist><bullet>+5 <mana></mana> <hyperlink>Mana</hyperlink> income</bullet><bullet>+20 <happiness></happiness> <hyperlink>City Stability</hyperlink> income</bullet><bullet>+2 <mana></mana> <hyperlink>Mana</hyperlink> income per hero in the <hyperlink>Crypt</hyperlink>:</bullet></bulletlist>",
             "boost_requirements": "<bulletlist><bullet>Build 2 <hyperlink><farms></farms> Farm</hyperlink></bullet><bullet>Build 1 <hyperlink><quarry></quarry> Quarry</hyperlink></bullet></bulletlist>"
  },
         {
@@ -299,7 +299,7 @@ var jsonStructureUpgrades = {
             "icon": "interrogation_dungeon",
             "is_sector_upgrade": false,
             "cost": "100<gold></gold> 250<structureprod></structureprod> ",
-            "prediction_description": "<bulletlist><bullet>+10 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income</bullet><bullet>-5 <happiness></happiness> <hyperlink>City Stability</hyperlink> income</bullet><bullet>+2 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income per hero in the <hyperlink>Prison</hyperlink>:</bullet></bulletlist>",
+            "prediction_description": "<bulletlist><bullet>+5 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income</bullet><bullet>+10 <happiness></happiness> <hyperlink>City Stability</hyperlink> income</bullet><bullet>+2 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income per hero in the <hyperlink>Prison</hyperlink>:</bullet></bulletlist>",
             "boost_requirements": "Build 2 <hyperlink><farms></farms> Farm</hyperlink>"
  },
         {
@@ -545,22 +545,22 @@ var jsonStructureUpgrades = {
         {
             "requirement_description": "",
             "id": "wizard_tower_br__crypts",
-            "description": "<hyperlink>Heroes</hyperlink> in <hyperlink>Crypt</hyperlink>:<bulletlist><bullet>Grant +2 <mana></mana> <hyperlink>Mana</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink>.</bullet><bullet>Can be resurrected.</bullet></bulletlist>",
+            "description": "<bulletlist><bullet><hyperlink>Heroes</hyperlink> in the <hyperlink>Crypt</hyperlink> can be resurrected.</bullet></bulletlist>",
             "name": "Wizard Tower:<br></br>Crypts",
             "icon": "wizard_tower_br__crypts",
             "is_sector_upgrade": false,
             "cost": "100<structureprod></structureprod> 50<gold></gold> 50<mana></mana> ",
-            "prediction_description": ""
+            "prediction_description": "+2 <mana></mana> <hyperlink>Mana</hyperlink> income per hero in the <hyperlink>Crypt</hyperlink>:"
  },
         {
             "requirement_description": "",
             "id": "wizard_tower_br__prison_cells",
-            "description": "<hyperlink>Heroes</hyperlink> in <hyperlink>Prison</hyperlink>:<bulletlist><bullet>Grant +2 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink>.</bullet><bullet>Can be converted.</bullet><bullet>Can be executed.</bullet></bulletlist>",
+            "description": "<bulletlist><bullet><hyperlink>Heroes</hyperlink> in the <hyperlink>Prison</hyperlink> can be converted.</bullet><bullet><hyperlink>Heroes</hyperlink> in the <hyperlink>Prison</hyperlink> can be executed.</bullet></bulletlist>",
             "name": "Wizard Tower:<br></br>Prison Cells",
             "icon": "wizard_tower_br__prison_cells",
             "is_sector_upgrade": false,
             "cost": "100<structureprod></structureprod> 50<gold></gold> 50<mana></mana> ",
-            "prediction_description": ""
+            "prediction_description": "+2 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income per hero in the <hyperlink>Prison</hyperlink>:"
  },
         {
             "requirement_description": "Can only be built in the <hyperlink>Throne City</hyperlink>.",
@@ -1158,7 +1158,7 @@ var jsonStructureUpgrades = {
         {
             "requirement_description": "",
             "id": "bastions_barricade",
-            "description": "Grants 2 <hyperlink>Bastions</hyperlink> on the defender's side when fighting in the city's <hyperlink>Domain</hyperlink>.",
+            "description": "Grants 2 <hyperlink>Bastions</hyperlink> on the defender's side when fighting a defensive <hyperlink>Siege</hyperlink>.",
             "name": "Bastion's Barricade",
             "icon": "bastions_barricade",
             "is_sector_upgrade": false,
@@ -1383,7 +1383,7 @@ var jsonStructureUpgrades = {
         {
             "requirement_description": "",
             "id": "astral_trade_relay",
-            "description": "<bulletlist><bullet>+10 <gold></gold> <hyperlink>Gold</hyperlink> income.</bullet><bullet>+2 <gold></gold> <hyperlink>Gold</hyperlink> income for each Astral Trade Relay built in your empire.</bullet></bulletlist>",
+            "description": "<bulletlist><bulletlist><bullet>+10 <gold></gold> <hyperlink>Gold</hyperlink> income.</bullet><bullet>+2 <gold></gold> <hyperlink>Gold</hyperlink> income for each Astral Trade Relay built in your empire.</bullet></bulletlist></bulletlist>",
             "name": "Astral Trade Relay",
             "icon": "astral_trade_relay",
             "is_sector_upgrade": false,
@@ -1546,7 +1546,7 @@ var jsonStructureUpgrades = {
         {
             "requirement_description": "Requires 1: <fishery></fishery> <hyperlink>Fishery</hyperlink> to unlock",
             "id": "shipyard",
-            "description": "Unlocks the production of the <hyperlink>Ballista Warship</hyperlink> and <hyperlink>Ram Warship</hyperlink>",
+            "description": "",
             "name": "Shipyard",
             "icon": "shipyard",
             "is_sector_upgrade": false,
@@ -1587,7 +1587,16 @@ var jsonStructureUpgrades = {
             "prediction_description": "<bulletlist><bullet>+1 Province Annex Range</bullet><bullet>+10 <gold></gold> <hyperlink>Gold</hyperlink> income</bullet></bulletlist>",
             "boost_requirements": "Have 5 <population></population> <hyperlink>Population</hyperlink>"
  },
-
+        {
+            "requirement_description": "",
+            "id": "town_hall_ii_castle",
+            "description": "",
+            "name": "Town Hall II: Castle",
+            "icon": "town_hall_ii_castle_2",
+            "is_sector_upgrade": false,
+            "cost": "60<gold></gold> 130<structureprod></structureprod> ",
+            "prediction_description": "<bulletlist><bullet>+10 <garrison></garrison><hyperlink>Fortification Health</hyperlink></bullet><bullet>+10 <happiness></happiness> <hyperlink>City Stability</hyperlink> income</bullet><bullet>+40 <food></food> <hyperlink>Food</hyperlink> income</bullet><bullet>+20 <production></production> <hyperlink>Production</hyperlink> income</bullet></bulletlist>"
+ },
         {
             "requirement_description": "Requires 1: <hut></hut> <hyperlink>Hut</hyperlink> to unlock.",
             "id": "foragers_market",
@@ -1742,6 +1751,16 @@ var jsonStructureUpgrades = {
             "prediction_description": "<bulletlist><bullet>+10 <gold></gold> <hyperlink>Gold</hyperlink> income</bullet><bullet>+10 <food></food> <hyperlink>Food</hyperlink> income</bullet></bulletlist>"
  },
         {
+            "requirement_description": "Must be built on an acquired <hyperlink>Province</hyperlink>.",
+            "id": "_researchpost___wyvern_eyrie",
+            "description": "<bulletlist><bullet>+10 <knowledge></knowledge><hyperlink>Knowledge</hyperlink>.</bullet><bullet>+5 <unitprod></unitprod> <hyperlink>Draft</hyperlink> per adjacent <farm></farm> <hyperlink>Farm</hyperlink> <hyperlink>Province</hyperlink>.</bullet><bullet>Unlocks the production of various Wyvern <hyperlink>Units</hyperlink>. Alignment influences which Wyverns can be drafted.</bullet><bullet>Counts as a <researchpost></researchpost> <hyperlink>Research Post</hyperlink>.</bullet></bulletlist>",
+            "name": "<researchpost></researchpost> Wyvern Eyrie",
+            "icon": "_researchpost___wyvern_eyrie",
+            "is_sector_upgrade": true,
+            "cost": "170<gold></gold> 450<structureprod></structureprod> ",
+            "prediction_description": "+10 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income"
+ },
+        {
             "requirement_description": "",
             "id": "temple_of_the_exalted",
             "description": "Double bonus from governor income.",
@@ -1784,7 +1803,7 @@ var jsonStructureUpgrades = {
         {
             "requirement_description": "",
             "id": "reagent_refinery",
-            "description": "Gain +20<gold></gold> <hyperlink>Gold</hyperlink> for each <hyperlink>Magic Material</hyperlink> in this city's domain",
+            "description": "",
             "name": "Reagent Refinery",
             "icon": "reagent_refinery",
             "is_sector_upgrade": false,
@@ -1820,6 +1839,16 @@ var jsonStructureUpgrades = {
             "is_sector_upgrade": false,
             "cost": "170<gold></gold> 450<structureprod></structureprod> ",
             "prediction_description": "+40 <garrison></garrison><hyperlink>Fortification Health</hyperlink>"
+ },
+        {
+            "requirement_description": "",
+            "id": "town_hall_iv_grand_estate",
+            "description": "",
+            "name": "Town Hall IV: Grand Estate",
+            "is_sector_upgrade": false,
+            "cost": "800<structureprod></structureprod> 800<gold></gold> ",
+            "prediction_description": "<bulletlist><bullet>+1 Province Annex Range</bullet><bullet>+15 <food></food> <hyperlink>Food</hyperlink> income</bullet><bullet>+60 <gold></gold> <hyperlink>Gold</hyperlink> income</bullet></bulletlist>",
+            "boost_requirements": "Have 16 <population></population> <hyperlink>Population</hyperlink>"
  },
         {
             "requirement_description": "",
@@ -1895,28 +1924,26 @@ var jsonStructureUpgrades = {
             "cost": "60<gold></gold> 130<structureprod></structureprod> ",
             "prediction_description": "+10 <gold></gold> <hyperlink>Gold</hyperlink> income",
             "boost_requirements": "Build 1 <hyperlink><farms></farms> Farm</hyperlink>"
- }, {
-            "requirement_description": "",
-            "id": "town_hall_i_town_center",
-            "description": "",
-            "name": "Town Hall I: Town Center",
-            "icon": "town_hall_i_town_center",
-            "is_sector_upgrade": false,
-            "cost": "",
-            "prediction_description": "<bulletlist><bullet>+1 <hero></hero> <hyperlink>Hero Cap</hyperlink></bullet><bullet>+10 <happiness></happiness> <hyperlink>City Stability</hyperlink> </bullet><bullet>+20 <unitprod></unitprod> <hyperlink>Draft </hyperlink> income</bullet><bullet>+40 <food></food> <hyperlink>Food </hyperlink> income</bullet><bullet>+20 <production></production> <hyperlink>Production </hyperlink> income</bullet></bulletlist>",
-
  },
         {
             "requirement_description": "",
-            "id": "throne",
-            "description": "And Empire can only have one Throne. If your Ruler is defeated in Combat, they will respawn here after 3 turns. If your Ruler is defeated an your Throne is taken, your Empire is defeated",
-            "name": "Throne",
-            "icon": "throne",
+            "id": "town_hall_iii_citadel",
+            "description": "",
+            "name": "Town Hall III: Citadel",
             "is_sector_upgrade": false,
-            "cost": "",
-            "prediction_description": "<bulletlist><bullet>+20 <garrison></garrison><hyperlink>Fortification Health</hyperlink></bullet><bullet>+60 <knowledge></knowledge> <hyperlink>Knowledge </hyperlink> income</bullet><bullet>+40 <influence></influence> <hyperlink>Imperium </hyperlink> income</bullet><bullet>120 <gold></gold> <hyperlink>Gold </hyperlink> income</bullet><bullet>20 <mana></mana> <hyperlink>Mana </hyperlink> income</bullet></bulletlist>",
-
+            "cost": "400<structureprod></structureprod> 400<gold></gold> ",
+            "prediction_description": "<bulletlist><bullet>+1 Province Annex Range</bullet><bullet>+10 <food></food> <hyperlink>Food</hyperlink> income</bullet><bullet>+25 <gold></gold> <hyperlink>Gold</hyperlink> income</bullet></bulletlist>",
+            "boost_requirements": "Have 10 <population></population> <hyperlink>Population</hyperlink>"
+ },
+        {
+            "requirement_description": "",
+            "id": "town_hall_ii_castle",
+            "description": "",
+            "name": "Town Hall II: Castle",
+            "is_sector_upgrade": false,
+            "cost": "200<structureprod></structureprod> 200<gold></gold> ",
+            "prediction_description": "<bulletlist><bullet>+1 Province Annex Range</bullet><bullet>+5 <food></food> <hyperlink>Food</hyperlink> income</bullet><bullet>+15 <gold></gold> <hyperlink>Gold</hyperlink> income</bullet></bulletlist>",
+            "boost_requirements": "Have 4 <population></population> <hyperlink>Population</hyperlink>"
  }
-
 ]
 }

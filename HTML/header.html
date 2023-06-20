@@ -18,6 +18,8 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/CombatEnchantments.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/FactionCreation.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/HeroSkills.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Hyperlinks.json"></script>
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
@@ -30,6 +32,16 @@
         gtag('js', new Date());
 
         gtag('config', 'G-CC3NE8PT7K');
+
+        let savedHtmlContent;
+        fetch('EN.html')
+            .then(response => response.text())
+            .then(htmlContent => {
+                savedHtmlContent = htmlContent;
+                // Use the savedHtmlContent here or pass it to other functions
+                //InitializeLoca(savedHtmlContent);
+            })
+            .catch(error => console.error(error));
 
     </script>
 
@@ -360,10 +372,14 @@
             Age of Wonders 4
             Database
 
+
+        </div>
+        <div class="hero-text">
+            <img src="/aow4db/Icons/Interface/dragon_dawn.png" width="400px">
         </div>
         <div class="current-version">
-            Game Version: 1.002.004.78464 <br>
-            11/05 2023</div>
+            Game Version: 1.003.002.80167 <br>
+            20/06 2023</div>
     </div>
 </main>
 
@@ -393,6 +409,7 @@
                         <li><a href="/aow4db/HTML/OrderTomesUnits.html?type=chaplain&"><img src="/aow4db/Icons/Text/order.png" width="20px"> Order</a></li>
                         <li><a href="/aow4db/HTML/ChaosTomesUnits.html?type=lesser_magma_spirit&"><img src="/aow4db/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
                         <li><a href="/aow4db/HTML/MateriumTomesUnits.html?type=copper_golem&"><img src="/aow4db/Icons/Text/materium.png" width="20px"> Materium</a></li>
+                        <li><a href="/aow4db/HTML/DualTomesUnits.html?type=wyvern_fledgling&"><img src="/aow4db/Icons/Interface/dual.png" width="20px"> Dual</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/WildlifeUnitsIcon.png" width="20px">Types ▸</a>
@@ -416,7 +433,8 @@
 
 
                         <li><a href="/aow4db/HTML/SiegeCraftUnits.html?type=ballista&"><img src=" /aow4db/Icons/Abilities/siegecraft.png" width="20px"> Siegecraft</a></li>
-                        <li><a href="/aow4db/HTML/OtherUnits.html"><img src=" /aow4db/Icons/Abilities/naval_unit.png" width="20px"> Other</a></li>
+                        <li><a href="/aow4db/HTML/TowerUnits.html?type=fire_runestone&"><img src=" /aow4db/Icons/Abilities/tower.png" width="20px"> Towers</a></li>
+
                     </ul>
                 </li>
             </ul>
@@ -430,6 +448,7 @@
                 <li><a href="/aow4db/HTML/OrderTomes.html?type=tome_of_zeal&"><img src="/aow4db/Icons/Text/order.png" width="20px"> Order</a></li>
                 <li><a href="/aow4db/HTML/ChaosTomes.html?type=tome_of_pyromancy&"><img src="/aow4db/Icons/Text/chaos.png" width="20px"> Chaos</a></li>
                 <li><a href="/aow4db/HTML/MateriumTomes.html?type=tome_of_rock&.html"><img src="/aow4db/Icons/Text/materium.png" width="20px"> Materium</a></li>
+                <li><a href="/aow4db/HTML/DualTomes.html?type=tome_of_evolution&.html"><img src="/aow4db/Icons/Interface/dual.png" width="20px"> Dual</a></li>
                 <li><a href="/aow4db/HTML/GeneralCultureTomes.html?type=general_research&.html"><img src="/aow4db/Icons/Text/population.png" width="20px"> General& Culture</a></li>
             </ul>
 

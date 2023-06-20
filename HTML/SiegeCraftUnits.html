@@ -13,13 +13,25 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var unitarray = ["ballista", "bolt_repeater", "bolt_repeater_tower", "devastator_sphere", "onager", "trebuchet", "catapult_tower", "ballista_tower", "necrotic_spire", "earthshatter_engine", "shrine_of_smiting"];
         $("#body").ready(function() {
 
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                SetButtonsAndDivs(unitarray, undefined, "unit");
+                unitarray = FindUnitsWithSecondaryPassive("siegecraft");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+
+                        showUnitsFromList(unitarray[i], "Siegecraft Tier " + romanize(parseInt(parseInt(i) + 2)));
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
 
             });
 

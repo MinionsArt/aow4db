@@ -6,23 +6,29 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var unitarray = ["bone_wyvern", "fire_wyvern", "frost_wyvern", "bone_dragon", "fire_dragon", "frost_dragon"];
-
+        var unitarray = ["wyvern_fledgling", "slither_hatchling"];
+        var unitarray2 = ["bone_wyvern"];
+        var unitarray3 = ["fire_wyvern", "frost_wyvern", "gold_wyvern", "obsidian_wyvern", "slither", "young_fire_dragon", "young_frost_dragon", "young_golden_dragon", "young_obsidian_dragon"];
+        var unitarray4 = ["bone_dragon"];
+        var unitarray5 = ["fire_dragon", "frost_dragon", "golden_dragon", "obsidian_dragon"];
         $("#body").ready(function() {
-
-
             $("#header").load("/aow4db/HTML/header.html", function() {
-               SetButtonsAndDivs(unitarray, undefined, "unit");
-                SetLevelUpStuff();
-            });
+                unitarray = FindUnitsWithSecondaryPassive("dragon");
+                console.log(unitarray);
+                for (i in unitarray) {
+                    showUnitsFromList(unitarray[i], "Dragons Tier " + romanize(parseInt(parseInt(i) + 1)));
+                }
 
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            });
         });
 
     </script>

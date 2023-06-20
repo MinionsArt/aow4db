@@ -14,23 +14,28 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray = ["iron_golem_assistant", "copper_golem", "lesser_snow_spirit", "lesser_magma_spirit", "lesser_storm_spirit", "lesser_tide_spirit", "lesser_stone_spirit"];
-            var unitarray2 = ["gargoyle", "ice_spider", "wind_rager"];
-            var unitarray3 = ["stone_spirit", "snow_spirit", "magma_spirit", "tide_spirit", "storm_spirit", "iron_golem"];
-            var unitarray4 = ["ice_spider_matriarch", "phoenix"];
-            var unitarray5 = ["golden_golem", "earth_titan"];
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "Tier I - Elementals");
-                // add dropdown sub array
-                showUnitsFromList(unitarray2, "Tier II - Elementals");
-                showUnitsFromList(unitarray3, "Tier III - Elementals");
-                showUnitsFromList(unitarray4, "Tier IV - Elementals");
+
+                unitarray = FindUnitsWithSecondaryPassive("elemental");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+
+                        showUnitsFromList(unitarray[i], "Elementals Tier " + romanize(parseInt(parseInt(i) + 1)));
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
             });
 
 
-            SetLevelUpStuff();
+
         });
 
     </script>

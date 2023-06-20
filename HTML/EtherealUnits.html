@@ -14,24 +14,28 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray = ["astral_wisp", "spirit_hawk", "mystic_projection", "phantasm_warrior"];
-            var unitarray2 = ["flow_serpent", "astral_keeper"];
-            var unitarray3 = ["watcher", "spirit_wolf", "astral_siphoner", "astral_serpent", "banshee", "corrupt_soul", "blessed_soul"];
-            var unitarray4 = ["phase_beast", "living_fog", "mage_bane", ];
-            var unitarray5 = ["lost_wizard"];
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "Tier I - Ethereal");
-                // add dropdown sub array
-                showUnitsFromList(unitarray2, "Tier II - Ethereal");
-                showUnitsFromList(unitarray3, "Tier III - Ethereal");
-                showUnitsFromList(unitarray4, "Tier IV - Ethereal");
-                showUnitsFromList(unitarray5, "Tier V - Ethereal");
+                unitarray = FindUnitsWithSecondaryPassive("ethereal");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+
+                        showUnitsFromList(unitarray[i], "Ethereals Tier " + romanize(parseInt(parseInt(i) + 1)));
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
             });
 
 
         });
+
     </script>
 
 
@@ -56,7 +60,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

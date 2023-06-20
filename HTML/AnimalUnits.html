@@ -14,16 +14,21 @@
 
     <script>
         $("#body").ready(function() {
-            var unitarray = ["young_caustic_worm", "vampire_spider_hatchling", "grimbeak_crow", "goretusk_piglet", "dread_spider_hatchling", "spirit_hawk", "inferno_puppy"];
-            var unitarray2 = ["warg", "kraken_spawn", "razorback", "stormscale_serpent", "nimu", "plague_serpent", "inferno_hound", "hunter_spider", "carrion_bird", "ice_spider", "dire_penguin", ];
-            var unitarray3 = ["caustic_worm", "spirit_wolf", "unicorn", "thunderbird", "deep-sea_nimu", "goretusk_matriarch", "nightmare", "dread_spider_matriarch", "vampire_spider_matriarch"];
-            var unitarray4 = ["white_wolf", "ice_spider_matriarch", "hunter_spider_matriarch", "kraken", "phoenix", "phase_beast"];
+
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsFromList(unitarray, "Tier I - Animals");
-                // add dropdown sub array
-                showUnitsFromList(unitarray2, "Tier II - Animals");
-                showUnitsFromList(unitarray3, "Tier III - Animals");
-                showUnitsFromList(unitarray4, "Tier IV - Animals");
+                unitarray = FindUnitsWithSecondaryPassive("animal");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+
+                        showUnitsFromList(unitarray[i], "Animals Tier " + romanize(parseInt(parseInt(i) + 1)));
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
             });
@@ -31,6 +36,7 @@
             // get parameters stuff
 
         });
+
     </script>
 
 
@@ -57,7 +63,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

@@ -533,7 +533,7 @@ p {
 
     overflow-y: auto;
     width: 200px;
-    max-height: 600px;
+    max-height: 800px;
     display: grid;
     grid-auto-columns: auto;
     position: sticky;
@@ -548,6 +548,7 @@ p {
 .w3-bar .w3-bar-item {
     padding: 8px 8px;
     float: left;
+    height: 45px;
     font-size: 12px;
     border: none;
     display: block;
@@ -1155,6 +1156,26 @@ tab {
     margin-top: -200px;
 }
 
+.tooltiphyperlink {
+    visibility: hidden;
+    background-image: url(/aow4db/Icons/tooltipBG.png);
+    font-size: 13px;
+    color: #bbcdf6;
+    text-align: left;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 4 10 4 10 fill;
+    text-shadow: 2px 2px black;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    z-index: 5;
+    min-width: 300px;
+    max-width: 400px;
+    min-height: 40px;
+    margin-left: 0px;
+}
+
 
 .leftAbility {
     position: relative;
@@ -1323,26 +1344,6 @@ hyperlink {
 
 
 
-.researchResultBackgroundImage .tooltiptext {
-    visibility: hidden;
-    background-color: black;
-    color: #fff;
-
-    border-radius: 10px 0px 10px 0px;
-    border: 1px solid #004b5e;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    position: absolute;
-    font-size: 14px;
-    z-index: 1;
-    min-width: 400px;
-    max-width: 600px;
-    min-height: 40px;
-
-
-
-}
-
 .sortingButton {
     padding: 8px 16px;
     float: left;
@@ -1409,6 +1410,12 @@ hyperlink {
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .mountToolTip:hover .tooltiptext {
+    visibility: visible;
+
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.hyperlink:hover .tooltiphyperlink {
     visibility: visible;
 
 }
@@ -1839,7 +1846,7 @@ silver {
 
 xp {
     max-height: 15px;
-    top: 3px;
+    top: 5px;
     content: url(/aow4db/Icons/Text/xp.png);
     position: relative;
 }
@@ -1899,6 +1906,21 @@ research {
 
 }
 
+.triangle {
+
+    position: relative;
+    top: -68px;
+    z-index: 0;
+    right: -168px;
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: red;
+    transform: rotate(45deg);
+    background: linear-gradient(126deg, #f46733 70%, #f1ea95);
+}
+
 .header-img::after {
     content: "";
     height: 150px;
@@ -1939,7 +1961,7 @@ research {
     position: relative;
     font-family: 'Regular', sans-serif;
     font-size: 14px;
-    top: 15%;
+    top: -15%;
     left: 50%;
     transform: translate(-50%, -30%);
 
@@ -2217,7 +2239,8 @@ reputation8 {
     position: relative;
 }
 
-reputation6 {
+reputation6,
+reputation7 {
     max-height: 20px;
     top: 3px;
     content: url(/aow4db/Icons/Text/good.png);
@@ -2231,7 +2254,8 @@ reputation4 {
     position: relative;
 }
 
-reputation2 {
+reputation2,
+reputation1 {
     max-height: 20px;
     top: 3px;
     content: url(/aow4db/Icons/Text/evil.png);
@@ -2361,5 +2385,54 @@ pantheon {
     max-width: 20px;
     top: 3px;
     content: url(/aow4db/Icons/Text/pantheon.png);
+    position: relative;
+}
+
+dragondawn {
+    max-width: 15px;
+    top: 3px;
+    content: url(/aow4db/Icons/Text/DragonDawn.png);
+    position: relative;
+}
+
+mountSpecial {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/MountInteraction.png);
+    position: relative;
+}
+
+tierI {
+    max-width: 20px;
+    top: -2px;
+    content: url(/aow4db/Icons/Text/tierI.png);
+    position: relative;
+}
+
+tierII {
+    max-width: 20px;
+    top: -2px;
+    content: url(/aow4db/Icons/Text/tierII.png);
+    position: relative;
+}
+
+tierIII {
+    max-width: 20px;
+    top: -2px;
+    content: url(/aow4db/Icons/Text/tierIII.png);
+    position: relative;
+}
+
+tierIV {
+    max-width: 20px;
+    top: -2px;
+    content: url(/aow4db/Icons/Text/tierIV.png);
+    position: relative;
+}
+
+tierV {
+    max-width: 20px;
+    top: -2px;
+    content: url(/aow4db/Icons/Text/tierV.png);
     position: relative;
 }
