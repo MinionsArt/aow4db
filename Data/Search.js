@@ -128,6 +128,21 @@ function returnSpellList(fieldToSearch) {
                 }
             }
         }
+        if ('enchantment_requisites' in jsonSpells.spells[i]) {
+            for (b = 0; b < jsonSpells.spells[i].enchantment_requisites.length; b++) {
+                textvalue = Sanitize(jsonSpells.spells[i].enchantment_requisites[b].requisite);
+
+                fieldToSearch = fieldToSearch.replaceAll("_", " ");
+                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    if (!isInArray(list, jsonSpells.spells[i].id)) {
+                        list.push(jsonSpells.spells[i].id);
+                    }
+
+                }
+            }
+
+        }
+
     }
 
     return list;
