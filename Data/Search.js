@@ -238,10 +238,14 @@ function returnSkillList(fieldToSearch) {
     }
 
 
+    // Remove duplicate objects from the array
+    const uniqueArray = resultslist.filter((item, index) => {
+        return index === resultslist.findIndex(obj => obj.id === item.id && obj.name === item.name);
+    });
 
 
 
-    return resultslist;
+    return uniqueArray;
 }
 
 
