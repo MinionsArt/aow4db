@@ -5011,7 +5011,11 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     descriptionDiv.innerHTML += "<br>Summoned Units:";
 
                     var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "zombie" + "\" target=\"_blank\">" + GetUnitTierAndName("zombie") + "</a>" + "</bullet>";
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "corrupt_soul" + "\" target=\"_blank\">" + GetUnitTierAndName("corrupt_soul") + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "banshee" + "\" target=\"_blank\">" + GetUnitTierAndName("banshee") + "</a>" + "</bullet>";
                     unitTypesDiv.append(div);
                 }
 
