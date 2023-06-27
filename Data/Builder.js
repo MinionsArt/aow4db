@@ -12,7 +12,7 @@ var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshape
 var mysticCultureUnits = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellbreaker"];
 
 
-var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "bastion", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster"];
+var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "bastion", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker"];
 
 var DLCDragonDawn = ["tome_of_evolution", "tome_of_dragons", "slither_hatchling", "slither", "young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon", "golden_dragon", "obsidian_dragon", "gold_wyvern", "obsidian_wyvern", "wyvern_fledgling", "dragon_lord", "shadow_transformation", "order_transformation", "nature_transformation", "materium_transformation", "astral_transformation", "chaos_transformation", "shadow_aspect", "order_aspect", "nature_aspect", "materium_aspect", "astral_aspect", "chaos_aspect"];
 
