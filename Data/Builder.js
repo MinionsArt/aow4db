@@ -476,6 +476,39 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         showEmpireTrees(list, overwrite);
     }
 
+    if (cardType === "searchTraits") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showTraitFromList(list, overwrite);
+    }
+    if (cardType === "searchDestiny") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+
+        showDestinyTraitsFromList(list, overwrite);
+    }
+
     if (cardType === "searchStruct") {
         btn.className = "w3-bar-item w3-button tablink";
         var dataHolder = document.getElementById("dataHolder");
@@ -1652,6 +1685,20 @@ async function showTraitFromList(list, divID) {
 
     };
 }
+
+async function showDestinyTraitsFromList(list, divID) {
+    await spawnSpellCards(list, divID);
+
+    for (var i = 0; i < list.length; i++) {
+
+
+        showDestinyTrait(list[i]);
+
+
+
+    };
+}
+
 
 async function showItemFromList(list, divID) {
     await spawnSpellCards(list, divID);
@@ -4150,6 +4197,82 @@ function ShowDestinyTraits() {
 
 
         found = true;
+
+    }
+}
+
+
+function showDestinyTrait(trait) {
+    var modName, description, cost, type, tier, j, nameString = "";
+    var found = false;
+
+
+    for (j in jsonDestiny.traits) {
+        if (trait == jsonDestiny.traits[j].id) {
+
+
+            a = jsonDestiny.traits[j].id;
+
+
+
+            modName = document.getElementById("modname");
+            nameString = "";
+            nameString = jsonDestiny.traits[j].name.toUpperCase();
+            nameString += "<br>" + jsonDestiny.traits[j].category;
+
+            modName.innerHTML = nameString;
+            // backtracktome
+
+
+            modName.setAttribute("id", "modname" + a);
+            modName.className = "mod_name";
+            descriptionDiv = document.getElementById("moddescription");
+            description = "Trigger: <br>";
+
+
+            description += jsonDestiny.traits[j].trigger;
+
+
+            imagelink = document.getElementById("modicon");
+
+            if (a.startsWith("_")) {
+                a = a.replace("_", "");
+            }
+
+            imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + a + ".png");
+            imagelink.setAttribute("id", "modicon" + a);
+            imagelink.setAttribute("style", "background-image: none");
+            descriptionDiv.innerHTML = description;
+            descriptionDiv.setAttribute("id", "modicon" + a);
+            descriptionDiv.setAttribute("style", "max-width: 380px");
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+            descriptionDiv.innerHTML += "<br><br>Effect: <br>";
+
+            for (l in jsonDestiny.traits[j].gains) {
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>"
+                descriptionDiv.appendChild(div);
+            }
+
+
+            tier = document.getElementById("modtier");
+
+            tier.setAttribute("id", "modtier" + a);
+            tier.innerHTML = "";
+
+            cost = document.getElementById("modcost");
+            cost.innerHTML = "";
+
+            cost.setAttribute("id", "modcost" + a);
+
+
+
+
+            found = true;
+        }
 
     }
 }

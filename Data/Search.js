@@ -148,6 +148,68 @@ function returnSpellList(fieldToSearch) {
     return list;
 }
 
+
+function returnTraitsList(fieldToSearch) {
+    var list = new Array();
+    var i = "";
+    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
+        if (document.getElementById("namesCheck").checked) {
+            textvalue = jsonFactionCreation.traits[i].name;
+            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(list, jsonFactionCreation.traits[i].id)) {
+                    list.push(jsonFactionCreation.traits[i].id);
+                }
+            }
+        }
+        if (document.getElementById("descriptionCheck").checked) {
+            textvalue = Sanitize(jsonFactionCreation.traits[i].description);
+            fieldToSearch = fieldToSearch.replaceAll("_", " ");
+            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(list, jsonFactionCreation.traits[i].id)) {
+                    list.push(jsonFactionCreation.traits[i].id);
+                }
+            }
+        }
+
+
+    }
+
+    return list;
+
+}
+
+function returnDestinyTraitsList(fieldToSearch) {
+    var list = new Array();
+    var i, j = "";
+    for (i = 0; i < jsonDestiny.traits.length; i++) {
+        if (document.getElementById("namesCheck").checked) {
+            textvalue = jsonDestiny.traits[i].name;
+            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(list, jsonDestiny.traits[i].id)) {
+                    list.push(jsonDestiny.traits[i].id);
+                }
+            }
+        }
+        if (document.getElementById("descriptionCheck").checked) {
+            for (j = 0; j < jsonDestiny.traits[i].gains.length; j++) {
+                textvalue = Sanitize(jsonDestiny.traits[i].gains[j].description);
+                fieldToSearch = fieldToSearch.replaceAll("_", " ");
+                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    if (!isInArray(list, jsonDestiny.traits[i].id)) {
+                        list.push(jsonDestiny.traits[i].id);
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    return list;
+}
+
+
 function returnSkillList(fieldToSearch) {
     var resultslist = new Array();
     var hero = new Array();
@@ -496,10 +558,12 @@ function searchUnits(keyword) {
     var listspells = returnSpellList(fields[0]);
     var listSiegeProj = returnSiegeProj(fields[0]);
     var listskills = returnSkillList(fields[0]);
+    var listTraits = returnTraitsList(fields[0]);
     var listStructures = returnStructure(fields[0]);
     var listWorldStructures = returnWorldStructure(fields[0]);
     var listEmpireTree = returnEmpireTreeList(fields[0]);
     var listEquip = returnEquipList(fields[0]);
+    var listDestiny = returnDestinyTraitsList(fields[0]);
 
 
 
@@ -532,6 +596,12 @@ function searchUnits(keyword) {
 
     if (listEmpireTree.length > 0) {
         SetCollapsibleButtonsAndDivs("Empire Tree", listEmpireTree, "searchEmpire");
+    }
+    if (listTraits.length > 0) {
+        SetCollapsibleButtonsAndDivs("Faction Traits", listTraits, "searchTraits");
+    }
+    if (listDestiny.length > 0) {
+        SetCollapsibleButtonsAndDivs("Destiny Traits", listDestiny, "searchDestiny");
     }
 
     SetLevelUpStuff();
