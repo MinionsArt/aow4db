@@ -58,6 +58,7 @@
             HideAll();
             var list = new Array();
             var filter = document.getElementById("filterInput");
+
             var filterText = filter.value.toUpperCase();;
 
 
@@ -69,11 +70,7 @@
                             list.push(ability.slug);
                         }
                     }
-                    if (ability.slug.toUpperCase().indexOf(filterText) != -1) {
-                        if (!isInArray(list, ability.slug)) {
-                            list.push(ability.slug);
-                        }
-                    }
+
                     if ('accuracy' in ability) {
                         if (ability.accuracy.toUpperCase().indexOf(filterText) != -1) {
 
