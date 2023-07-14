@@ -1,0 +1,528 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+
+    <script>
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+
+                CreateAllPassive();
+                SetLevelUpStuff();
+                $("#filterInput").on('change input', function() {
+                    ShowAllPassivesWithFilters();
+                    SetLevelUpStuff();
+                });
+
+
+                // SetCollapsibleStuff();
+            });
+
+
+
+        });
+
+
+
+        function CreateAllPassive() {
+            for (i = 0; i < jsonUnitAbilities.abilities.length; i++) {
+                if ('actionPoints' in jsonUnitAbilities.abilities[i]) {
+
+                } else {
+                    addAbility(jsonUnitAbilities.abilities[i].slug);
+                }
+
+            }
+        }
+
+        function HideAll() {
+            const divs = document.getElementsByClassName('list_abilityslot');
+
+            for (let i = 0; i < divs.length; i++) {
+                const div = divs[i];
+                div.style.display = 'none';
+            }
+        }
+
+
+
+        function ShowAllPassivesWithFilters() {
+            HideAll();
+            var list = new Array();
+            var filter = document.getElementById("filterInput");
+            var filterText = filter.value.toUpperCase();;
+
+
+            for (i = 0; i < jsonUnitAbilities.abilities.length; i++) {
+                var ability = jsonUnitAbilities.abilities[i];
+                if (filterText != "") {
+                    if (ability.name.toUpperCase().indexOf(filterText) != -1) {
+                        if (!isInArray(list, ability.slug)) {
+                            list.push(ability.slug);
+                        }
+                    }
+                    if ('accuracy' in ability) {
+                        if (ability.accuracy.toUpperCase().indexOf(filterText) != -1) {
+
+                            if (!isInArray(list, ability.slug)) {
+                                list.push(ability.slug);
+                            }
+                        }
+                    }
+                    if ('range' in ability) {
+                        if (ability.range.toUpperCase().indexOf(filterText) != -1) {
+
+                            if (!isInArray(list, ability.slug)) {
+                                list.push(ability.slug);
+                            }
+                        }
+                    }
+
+                    if ('actionPoints' in ability) {
+                        if (ability.actionPoints.toUpperCase().indexOf(filterText) != -1) {
+
+                            if (!isInArray(list, ability.slug)) {
+                                list.push(ability.slug);
+                            }
+                        }
+                    }
+
+                    if ('damage' in ability) {
+                        if (ability.damage.toUpperCase().indexOf(filterText) != -1) {
+
+                            if (!isInArray(list, ability.slug)) {
+                                list.push(ability.slug);
+                            }
+                        }
+                    }
+
+
+
+                    if ('modifiers' in ability) {
+                        for (j = 0; j < ability.modifiers.length; j++) {
+                            if (ability.modifiers[j].description.toUpperCase().indexOf(filterText) != -1) {
+
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                            if (ability.modifiers[j].name.toUpperCase().indexOf(filterText) != -1) {
+
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+                    }
+                    if ('requisites' in ability) {
+                        for (j = 0; j < ability.requisites.length; j++) {
+                            if (ability.requisites[j].requisite.toUpperCase().indexOf(filterText) != -1) {
+
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+
+                        }
+                    }
+
+                } else {
+                    if (!isInArray(list, ability.slug)) {
+                        list.push(ability.slug);
+                    }
+                }
+
+
+            }
+
+            ProcessList(list);
+        }
+
+
+        function ProcessList(list) {
+
+            for (i = 0; i < list.length; i++) {
+
+                var abilityDiv = document.getElementById(list[i] + "btn");
+
+                if (abilityDiv != undefined) {
+                    abilityDiv.style.display = 'flex';
+                }
+
+            }
+        }
+
+        function addAbility(a, b) {
+            var abilityName, abilityIcon, abilityDescr, abilityDam, abilityAcc, abilityRange, abilityType, abilityNote, j, splitDamageString, abilityDamType, abilityReq, abilityMod = "";
+
+            for (j in jsonUnitAbilities.abilities) {
+                if (a === jsonUnitAbilities.abilities[j].slug) {
+                    abilityDam = "";
+                    if ('damage' in jsonUnitAbilities.abilities[j]) {
+                        abilityDam = jsonUnitAbilities.abilities[j].damage;
+                    }
+
+                    abilityType = jsonUnitAbilities.abilities[j].actionPoints;
+
+
+
+                    abilityName = jsonUnitAbilities.abilities[j].name;
+                    abilityIcon = jsonUnitAbilities.abilities[j].icon;
+
+                    abilityReq = "";
+                    if ('requisites' in jsonUnitAbilities.abilities[j]) {
+                        abilityReq = "";
+                        for (k in jsonUnitAbilities.abilities[j].requisites) {
+                            if (k === 0) {
+                                abilityReq = "(";
+                            }
+                            abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
+                            if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
+                                abilityReq += ",";
+                            } else {
+                                abilityReq += ")";
+                            }
+                        }
+                    }
+
+                    abilityMod = "";
+                    if ('modifiers' in jsonUnitAbilities.abilities[j]) {
+
+                        for (l in jsonUnitAbilities.abilities[j].modifiers) {
+                            abilityName += "&#11049";
+
+                            abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
+                            abilityMod += (jsonUnitAbilities.abilities[j].modifiers[l].description) + "</bullet><br>";
+                        }
+                    }
+
+
+                    // add notes
+
+
+                    abilityNote = "";
+                    for (l in jsonUnitAbilities.abilities[j].notes) {
+                        if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
+
+                        } else {
+                            abilityNote += "<bullet>" + jsonUnitAbilities.abilities[j].notes[l].note + "</bullet>";
+
+                        }
+
+                    }
+
+
+
+                    if (jsonUnitAbilities.abilities[j].damage != undefined) {
+                        abilityDam = jsonUnitAbilities.abilities[j].damage;
+                    }
+                    abilityRange = "";
+                    if (jsonUnitAbilities.abilities[j].range != undefined) {
+                        abilityRange = jsonUnitAbilities.abilities[j].range;;
+                    }
+                    abilityAcc = "";
+                    if (jsonUnitAbilities.abilities[j].accuracy != undefined) {
+                        abilityAcc = jsonUnitAbilities.abilities[j].accuracy;
+                    }
+
+
+
+
+                    var tooltipName = document.createElement("SPAN");
+                    var btn = document.createElement("DIV");
+                    btn.setAttribute("id", a + "btn");
+                    btn.className = "list_abilityslot";
+
+                    // if (n === true) {
+                    //   btn.style.backgroundColor = "rgb(73, 0, 80)";
+                    //} 
+                    var imag = document.createElement("IMG");
+                    imag.className = "unit_ability_icon";
+                    //  var spa = document.createElement("SPAN");
+
+
+                    var action = document.createElement("DIV");
+
+
+                    action.innerHTML = abilityType;
+                    action.className = "list_action";
+                    action.setAttribute("style", "color:white; width:100px");
+
+                    var accuracy = document.createElement("DIV");
+
+                    accuracy.className = "list_accuracy";
+                    accuracy.innerHTML = abilityAcc;
+                    accuracy.setAttribute("style", "color:white; width:150px");
+
+                    var range = document.createElement("DIV");
+
+
+                    range.innerHTML = abilityRange;
+                    range.className = "list_range";
+                    range.setAttribute("style", "color:white; width:70px");
+
+
+
+
+                    // tex.setAttribute('onclick', '');
+                    var dam = document.createElement("DIV");
+                    dam.className = "ability_damage";
+                    dam.innerHTML = abilityDam;
+                    dam.setAttribute("style", "color:white; width:150px");
+
+                    abilityDescr = (jsonUnitAbilities.abilities[j].description);
+
+                    var abilityIconType = "";
+                    imag.setAttribute("src", "/aow4db/Icons/Abilities/" + abilityIcon + ".png");
+
+                    var abilityIconType = GetAbilityBackground(abilityDam);
+
+                    imag.setAttribute("style", "background-image: url(\"/aow4db/Icons/Interface/" + abilityIconType + ".png\");background-repeat: no-repeat;background-size: 40px 40px");
+
+                    imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+                    imag.setAttribute("width", "40");
+                    imag.setAttribute("height", "40");
+
+
+
+                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc + "<accuracy></accuracy>", abilityRange + "<range></range>", abilityMod, abilityNote, abilityReq);
+
+
+                    var cleanName = a.replaceAll("_", " ");
+
+                    // findSource(a);
+
+                    abilityName += "<br><span style=\"font-size:10px\">" + cleanName + " </span>";
+                    var tex = document.createElement("DIV");
+                    tex.className = "tooltip";
+
+                    tex.innerHTML = abilityName;
+                    tex.setAttribute("style", "color:white; width:250px");
+
+                    spa.className = "tooltiptext";
+
+                    if (abilityName.indexOf("Defense Mode") > -1) {
+                        spa.innerHTML = "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase();
+                        spa.innerHTML += "<div style=\"clear:both\"> </div>" + "<br>";
+                        spa.innerHTML += jsonUnitAbilities.abilities[j].description;
+                        dam.innerHTML = "";
+                    }
+
+
+
+                    document.getElementById("dataHolder").append(btn);
+                    tex.appendChild(spa);
+
+                    btn.appendChild(imag);
+                    btn.append(tex);
+                    btn.append(range);
+                    btn.append(accuracy);
+                    btn.append(dam);
+                    btn.append(action);
+                    if ('requisites' in jsonUnitAbilities.abilities[j]) {
+
+                        var mods = document.createElement("DIV");
+                        if (jsonUnitAbilities.abilities[j].requisites.length > 0) {
+
+
+                            var combined = "(";
+                            for (k = 0; k < jsonUnitAbilities.abilities[j].requisites.length; k++) {
+                                // var modChild = document.createElement("DIV");
+                                // modChild.innerHTML = jsonUnitAbilities.abilities[j].requisites[k].requisite;
+                                // mods.append(modChild);
+                                combined += jsonUnitAbilities.abilities[j].requisites[k].requisite;
+                                if (k < jsonUnitAbilities.abilities[j].requisites.length - 1) {
+                                    combined += ", ";
+                                }
+
+                            }
+                            combined += ")";
+                            mods.innerHTML = combined;
+                        }
+
+                        mods.className = "list_types";
+                        mods.setAttribute("style", "color:white; width:200px; font-size: 12px");
+                        btn.append(mods);
+                    }
+
+                }
+            }
+
+        }
+
+        function findSource(slug) {
+            var result = slug.replaceAll("_", " ");
+            result = result.split(" ");
+            var combinedString = "";
+            for (i = 0; i < result.length; i++) {
+                var capitalized = result[i].charAt(0).toUpperCase() + result[i].slice(1);
+                combinedString += capitalized + " ";
+            }
+            return combinedString;
+        }
+
+
+
+        function sortDivsList(sortType) {
+            var i = "";
+
+
+            ascendingOrder = !ascendingOrder;
+
+
+            var buttontargets = document.getElementsByClassName("sortingButton");
+
+            for (i in buttontargets) {
+                buttontargets[i].className = "sortingButton";
+            }
+            var currentbutton = document.getElementById(sortType + "-button");
+
+            if (ascendingOrder) {
+                currentbutton.className += " activeDown";
+            } else {
+                currentbutton.className += " activeUp";
+            }
+
+
+
+
+            // 3 - Choose the wanted order
+            //  ascendingOrder = !ascendingOrder;
+            const isNumeric = true;
+
+            // 4 - Select all elements
+            if (currentView === "") {
+                var container = document.getElementById("dataHolder");
+            } else {
+                var container = document.getElementById(currentView);
+            }
+
+
+            var element = elements = [...container.querySelectorAll('.list_abilityslot')]
+
+
+
+            var selector = element => element.querySelector('.tooltip').innerHTML;
+            if (sortType === "range") {
+                selector = element => element.querySelector('.list_range').innerHTML;
+
+            }
+            if (sortType === "accuracy") {
+                selector = element => element.querySelector('.list_accuracy').innerHTML;
+            }
+
+            if (sortType === "damage") {
+                selector = element => element.querySelector('.ability_damage').innerHTML;
+            }
+
+            if (sortType === "action") {
+                selector = element => element.querySelector('.list_action').innerHTML;
+            }
+            if (sortType === "type") {
+                selector = element => element.querySelector('.list_types').innerHTML;
+            }
+
+
+
+            // 5 - Find their parent
+            const parentElement = container;
+
+            // 6 - Sort the elements
+            const collator = new Intl.Collator(undefined, {
+                numeric: isNumeric,
+                sensitivity: 'base'
+            });
+
+            if (sortType != "name") {
+                ascendingOrder = !ascendingOrder;
+            }
+            elements
+                .sort((elementA, elementB) => {
+                    const [firstElement, secondElement] = ascendingOrder ? [elementA, elementB] : [elementB, elementA];
+
+                    var textOfFirstElement = selector(firstElement);
+
+                    var textOfSecondElement = selector(secondElement);
+                    if (sortType === "tier") {
+                        var fields = textOfFirstElement.split('Tier ', 3);
+                        textOfFirstElement = deromanize(fields[1]);
+                        var fields2 = textOfSecondElement.split('Tier ', 3);
+                        textOfSecondElement = deromanize(fields2[1]);
+
+                    }
+
+                    return collator.compare(textOfFirstElement, textOfSecondElement)
+                })
+                .forEach(element => parentElement.appendChild(element));
+
+
+            // var currenturl = window.location.href.split('&')[0];
+
+            // window.history.replaceState({}, 'foo', currenturl + "&sort=" + sortType + ":" + ascendingOrder);
+            sorting = sortType + ":" + ascendingOrder;
+        }
+
+    </script>
+
+
+    <title>Age of Wonders 4 Database - Abilities List</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        Abilities List
+    </div>
+    <div style="height:auto; color: white;text-align: center">
+        <br>
+        Filter<br>
+        <div style="margin-right: auto; margin-left: auto; width: 500px;">
+            <input type="text" class="searchbar" id="filterInput">
+        </div>
+
+
+    </div>
+
+
+
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder">
+
+        </div>
+        <div class="list_abilityslotfilter">
+            <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">Name</button>
+            <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">Range <range></range></button>
+            <button style="width: 150px" class="sortingButton" id="accuracy-button" onclick="sortDivsList('accuracy')">Acc.<br>
+                <accuracy></accuracy>
+            </button>
+            <button style="width: 150px" class="sortingButton" id="damage-button" onclick="sortDivsList('damage')">Damage<br>
+                <damageblight></damageblight>
+            </button>
+            <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">Action <repeatingAction></repeatingAction></button>
+            <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">Type</button>
+        </div>
+        <div id="dataHolder" class="divContainer">
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
+<footer>
+    <br>
+    <br>
+</footer>
