@@ -3568,7 +3568,13 @@ function showTome(a, div) {
             }
             var l = "";
             if ('hero_skills' in jsonTomes.tomes[j]) {
+
                 for (l in jsonTomes.tomes[j].hero_skills) {
+                    if (l != 0) {
+                        if (jsonTomes.tomes[j].hero_skills[l].slug === jsonTomes.tomes[j].hero_skills[l - 1].slug) {
+                            break;
+                        }
+                    }
                     var div = document.createElement("DIV");
                     div.className = "initialBonusText";
                     var name = GetHeroSkillName(jsonTomes.tomes[j].hero_skills[l].slug);
