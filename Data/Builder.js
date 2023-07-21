@@ -3843,7 +3843,12 @@ function showStructure(a, showOrigin) {
     var found = false;
     for (j in jsonStructureUpgrades.structures) {
         if (a === jsonStructureUpgrades.structures[j].id) {
-
+            // exception
+            if (a === "_teleporter___teleporter") {
+                if (jsonStructureUpgrades.structures[j].is_sector_upgrade === false) {
+                    continue;
+                }
+            }
             modName = document.getElementById("modname");
             nameString = "";
             nameString = jsonStructureUpgrades.structures[j].name.toUpperCase();
