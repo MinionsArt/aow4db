@@ -721,18 +721,8 @@ function addAbilityslot(a, b) {
 
             abilityReq = "";
             if ('requisites' in jsonUnitAbilities.abilities[j]) {
-                abilityReq = "";
-                for (k in jsonUnitAbilities.abilities[j].requisites) {
-                    if (k === 0) {
-                        abilityReq = "(";
-                    }
-                    abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
-                    if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
-                        abilityReq += ",";
-                    } else {
-                        abilityReq += ")";
-                    }
-                }
+                abilityReq = jsonUnitAbilities.abilities[j].requisites;
+
             }
 
             abilityMod = "";
@@ -860,14 +850,56 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
         abilityDam = ability.damage;
     }
     // block one, header
+    // image
     var spa = document.createElement("SPAN");
     spa.innerHTML = "<div style\"display:block\"><img style=\"float:left; height:50px; width:50px; background-image:url(\'/aow4db/Icons/Interface/" + abilityIconType + ".png');background-repeat: no-repeat;background-size: 50px\" src=\"/aow4db/Icons/Abilities/" + ability.icon + ".png\">";
 
-    spa.innerHTML += "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase() + "</div>" + "<div class=\"rightAbility\">" + ability.damage + "</div><br>";
+    // name and damage
 
-    spa.innerHTML += "<div style=\"clear:right\"> </div>";
-    spa.innerHTML += "<div class=\"leftAbility\">" + abilityAcc + abilityRange + "</div>" + "<div class=\"rightAbility\">" + ability.actionPoints + "</div></div>";
-    spa.innerHTML += "<div style=\"clear:both\"> </div>";
+    var line1 = document.createElement("DIV");
+    line1.setAttribute("style", "display: flex;justify-content: space-between;");
+    var nameHolder = document.createElement("DIV");
+    nameHolder.className = "abilityLineSlot";
+    nameHolder.setAttribute("style", "color:#d7c297;");
+    nameHolder.innerHTML = abilityName.toUpperCase();
+
+    var damageHolder = document.createElement("DIV");
+    damageHolder.className = "abilityLineSlot";
+    damageHolder.innerHTML = ability.damage;
+
+    line1.appendChild(nameHolder);
+    line1.appendChild(damageHolder);
+    spa.append(line1);
+
+    //   spa.innerHTML += "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase() + "</div>" + "<div class=\"rightAbility\">" + ability.damage + "</div><br>";
+
+    //  spa.innerHTML += "<div style=\"clear:right\"> </div>";
+
+    // block accuracy range abilitytype
+    var line2 = document.createElement("DIV");
+    line2.setAttribute("style", "display: flex;justify-content: space-between;");
+    var accrangeHolder = document.createElement("DIV");
+
+    var accuracy = document.createElement("DIV");
+    accuracy.innerHTML = abilityAcc;
+    accuracy.className = "abilityLineSlot";
+
+    var range = document.createElement("DIV");
+    range.innerHTML = abilityRange;
+    range.className = "abilityLineSlot";
+
+    var actionPoint = document.createElement("DIV");
+    actionPoint.innerHTML = ability.actionPoints;
+    actionPoint.className = "abilityLineSlot";
+    accrangeHolder.appendChild(accuracy);
+    accrangeHolder.appendChild(range);
+    ////spa.append(accrangeHolder);
+
+    var typeHolder = document.createElement("DIV");
+    typeHolder.appendChild(actionPoint);
+    line2.appendChild(accrangeHolder)
+    line2.appendChild(typeHolder)
+    spa.append(line2);
 
 
     // block 2, descrp
@@ -886,7 +918,39 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
 
 
 
-    spa.innerHTML += abilityReq;
+
+    if (abilityReq != "") {
+        var reqs = document.createElement("DIV");
+        var i = "";
+        for (i in abilityReq) {
+
+            var newReq = document.createElement("DIV");
+            newReq.innerHTML = abilityReq[i].requisite;
+            if (abilityReq[i].requisite == "Support") {
+                newReq.setAttribute("style", "background-color:#263b38");
+            }
+            if (abilityReq[i].requisite == "Melee") {
+                newReq.setAttribute("style", "background-color:#3b2826");
+            }
+            if (abilityReq[i].requisite == "Physical Ranged") {
+                newReq.setAttribute("style", "background-color:#383125");
+            }
+            if (abilityReq[i].requisite == "Magic") {
+                newReq.setAttribute("style", "background-color:#262f42");
+            }
+            if (abilityReq[i].requisite == "Debuff") {
+                newReq.setAttribute("style", "background-color:#3c2642");
+            }
+            if (abilityReq[i].requisite == "Summoning") {
+                newReq.setAttribute("style", "background-color:#422631");
+            }
+            newReq.className = "requisiteSlot";
+            reqs.appendChild(newReq);
+        }
+
+        spa.append(reqs);
+    }
+
     return spa;
 }
 
@@ -3732,19 +3796,19 @@ function GetAbilityInfo(ability) {
         if (ability.requisites === undefined) {
             var abilityReq = "";
         } else {
-            var abilityReq = "";
-            for (k in ability.requisites) {
-                if (k === 0) {
-                    abilityReq = "(";
-                }
-                abilityReq += ability.requisites[k].requisite;
-                if (k != ability.requisites.length - 1) {
-                    abilityReq += ",";
-                } else {
-                    abilityReq += ")";
-                }
-            }
-
+            // var abilityReq = "";
+            //for (k in ability.requisites) {
+            //  if (k === 0) {
+            //    abilityReq = "(";
+            //}
+            //abilityReq += ability.requisites[k].requisite;
+            //if (k != ability.requisites.length - 1) {
+            //  abilityReq += ",";
+            //} else {
+            //  abilityReq += ")";
+            //}
+            //}
+            var abilityReq = ability.requisites;
         }
 
 
@@ -4765,18 +4829,7 @@ function showItem(a) {
                         if (jsonUnitAbilities.abilities[j].requisites === undefined) {
                             var abilityReq = "";
                         } else {
-                            var abilityReq = "";
-                            for (k in jsonUnitAbilities.abilities[j].requisites) {
-                                if (k === 0) {
-                                    abilityReq = "(";
-                                }
-                                abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
-                                if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
-                                    abilityReq += ",";
-                                } else {
-                                    abilityReq += ")";
-                                }
-                            }
+                            var abilityReq = jsonUnitAbilities.abilities[j].requisites;
 
                         }
 
@@ -5028,18 +5081,8 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     if (jsonUnitAbilities.abilities[j].requisites === undefined) {
                         var abilityReq = "";
                     } else {
-                        var abilityReq = "";
-                        for (k in jsonUnitAbilities.abilities[j].requisites) {
-                            if (k === 0) {
-                                abilityReq = "(";
-                            }
-                            abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
-                            if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
-                                abilityReq += ",";
-                            } else {
-                                abilityReq += ")";
-                            }
-                        }
+
+                        var abilityReq = jsonUnitAbilities.abilities[j].requisites;
 
                     }
 
