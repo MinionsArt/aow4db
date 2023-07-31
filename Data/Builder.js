@@ -3211,6 +3211,7 @@ function addLevelUpInfo(units, a) {
 
     }
     if (evolveTarget != undefined) {
+        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_champion.png\" width='20'\"> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
         levelText += "<bullet> Evolves into <hyperlink> <a href=\"/aow4db/HTML/Units.html?unit=" + evolveTarget + "\" target=\"_blank\">" + lookupUnit(evolveTarget) + "</a></hyperlink></bullet>";
     }
 
