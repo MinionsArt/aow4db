@@ -729,7 +729,7 @@ function addAbilityslot(a, b) {
             if ('modifiers' in jsonUnitAbilities.abilities[j]) {
 
                 for (l in jsonUnitAbilities.abilities[j].modifiers) {
-                    abilityName += "&#11049";
+                    abilityName += "<span style=\"color:#addd9e;font-size: 20px\">&#11049</span>";
                     abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
                     abilityMod += (jsonUnitAbilities.abilities[j].modifiers[l].description) + "</bullet><br>";
                 }
@@ -935,7 +935,7 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
     // block 3, req
     //notes
 
-    spa.innerHTML += "<p style=\"color:#a4a4a6; font-size: 12px\">" + abilityNote + "</p>";
+    spa.innerHTML += "<span style=\"color:#a4a4a6; font-size: 12px\">" + abilityNote + "</span>";
 
 
 
@@ -3840,18 +3840,7 @@ function GetAbilityInfo(ability) {
         if (ability.requisites === undefined) {
             var abilityReq = "";
         } else {
-            // var abilityReq = "";
-            //for (k in ability.requisites) {
-            //  if (k === 0) {
-            //    abilityReq = "(";
-            //}
-            //abilityReq += ability.requisites[k].requisite;
-            //if (k != ability.requisites.length - 1) {
-            //  abilityReq += ",";
-            //} else {
-            //  abilityReq += ")";
-            //}
-            //}
+
             var abilityReq = ability.requisites;
         }
 
