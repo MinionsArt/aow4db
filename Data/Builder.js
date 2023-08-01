@@ -941,9 +941,10 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
 
     var bottomLine = document.createElement("DIV");
     bottomLine.setAttribute("style", "display: flex;justify-content: space-between;");
+    var reqs = document.createElement("DIV");
     if (abilityReq != "") {
 
-        var reqs = document.createElement("DIV");
+
         var i = "";
         for (i in abilityReq) {
 
@@ -971,10 +972,11 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
             reqs.appendChild(newReq);
         }
 
-        bottomLine.appendChild(reqs);
+
 
 
     }
+    bottomLine.appendChild(reqs);
 
     if (cooldown != "") {
         var cooldownDiv = document.createElement("DIV");
@@ -3871,12 +3873,12 @@ function GetAbilityInfo(ability) {
         abilityNote = "";
         var Cooldown = "";
         var Once = "";
-        for (l in ability[j].notes) {
+        for (l in ability.notes) {
             if (ability.notes[l] === undefined) {
 
             } else {
 
-                if (ability[j].notes[l].note.indexOf("Cooldown") != -1) {
+                if (ability.notes[l].note.indexOf("Cooldown") != -1) {
                     Cooldown = ability.notes[l].note;
                 } else if (ability.notes[l].note.indexOf("once per") != -1) {
                     Once = ability.notes[l].note;

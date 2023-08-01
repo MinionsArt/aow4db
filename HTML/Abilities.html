@@ -209,17 +209,27 @@
 
                     // add notes
 
-
                     abilityNote = "";
+                    var Cooldown = "";
+                    var Once = "";
                     for (l in jsonUnitAbilities.abilities[j].notes) {
                         if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
 
                         } else {
-                            abilityNote += "<bullet>" + jsonUnitAbilities.abilities[j].notes[l].note + "</bullet>";
+
+                            if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("Cooldown") != -1) {
+                                Cooldown = jsonUnitAbilities.abilities[j].notes[l].note;
+                            } else if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("once per") != -1) {
+                                Once = jsonUnitAbilities.abilities[j].notes[l].note;
+                            } else {
+                                abilityNote += "<br>" + jsonUnitAbilities.abilities[j].notes[l].note;
+                            }
+
 
                         }
 
                     }
+
 
 
 
@@ -295,7 +305,9 @@
 
 
 
-                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc + "<accuracy></accuracy>", abilityRange + "<range></range>", abilityMod, abilityNote, abilityReq);
+                    var abilityReq = jsonUnitAbilities.abilities[j].requisites
+
+                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc + "<accuracy></accuracy>", abilityRange + "<range></range>", abilityMod, abilityNote, abilityReq, Cooldown, Once);
 
 
                     var cleanName = a.replaceAll("_", " ");
