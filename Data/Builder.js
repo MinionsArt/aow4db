@@ -3296,17 +3296,17 @@ function addLevelUpInfo(units, a) {
     }
 
     var levelText = "";
-    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_soldier.png\" width='20'\"> Soldier - " + xpNeeded + "<xp></xp></p>";
+    levelText += "<p style=\"  color: #aadb9c;\"> <medal_soldier></medal_soldier> Soldier - " + xpNeeded + "<xp></xp></p>";
     for (i in units.medal_rewards_2) {
         levelText += "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
 
     }
-    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_veteran.png\" width='20'\"> Veteran - " + (xpNeeded * 2) + "<xp></xp></p>";
+    levelText += "<p style=\"  color: #aadb9c;\"> <medal_veteran></medal_veteran> Veteran - " + (xpNeeded * 2) + "<xp></xp></p>";
     for (i in units.medal_rewards_3) {
         levelText += "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
 
     }
-    levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_elite.png\" width='20'\"> Elite - " + (xpNeeded * 3) + "<xp></xp></p>";
+    levelText += "<p style=\"  color: #aadb9c;\"> <medal_elite></medal_elite> Elite - " + (xpNeeded * 3) + "<xp></xp></p>";
 
     for (i in units.medal_rewards_4) {
 
@@ -3319,21 +3319,21 @@ function addLevelUpInfo(units, a) {
 
     }
     if (evolveTarget != undefined) {
-        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_champion.png\" width='20'\"> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
+        levelText += "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
         levelText += "<bullet> Evolves into <hyperlink> <a href=\"/aow4db/HTML/Units.html?unit=" + evolveTarget + "\" target=\"_blank\">" + lookupUnit(evolveTarget) + "</a></hyperlink></bullet>";
     }
 
     if (evolveTarget === undefined) {
 
 
-        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_champion.png\" width='20'\"> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
+        levelText += "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
 
         for (i in units.medal_rewards_5) {
             levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
 
         }
 
-        levelText += "<p style=\"  color: #aadb9c;\"> <img src=\"/aow4db/Icons/Text/medal_legend.png\" width='20'\"> Legend - " + (xpNeeded * 10) + "<xp></xp></p>";
+        levelText += "<p style=\"  color: #aadb9c;\"> <medal_legend></medal_legend> Legend - " + (xpNeeded * 10) + "<xp></xp></p>";
         for (i in units.medal_rewards_6) {
             if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
                 levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
