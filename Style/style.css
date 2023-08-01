@@ -482,9 +482,10 @@ p {
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
+    border-width: 10px;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
-    border-image-slice: 4 10 4 10 fill;
+    border-image-slice: 10 10 10 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
 
@@ -837,7 +838,7 @@ tab {
 
 
 .unit_abilityslot {
-    overflow: hidden;
+    position: relative;
     width: 310px;
     height: 40px;
     margin: 1px;
@@ -1133,9 +1134,10 @@ tab {
     background-color: rgb(5, 40, 60, 0.4);
     font-size: 13px;
     color: #bbcdf6;
+    border-width: 10px;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
-    border-image-slice: 4 500 4 10 fill;
+    border-image-slice: 10 10 10 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
     width: 450px;
@@ -1146,15 +1148,23 @@ tab {
 
 }
 
+hr {
+    border: 0;
+    margin: 15px;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #987e5c, rgba(0, 0, 0, 0));
+}
+
 .tooltiptext {
     visibility: hidden;
     background-image: url(/aow4db/Icons/tooltipBG.png);
     font-size: 13px;
     color: #bbcdf6;
     text-align: left;
+    border-width: 10px;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
-    border-image-slice: 4 10 4 10 fill;
+    border-image-slice: 10 10 10 10 fill;
     text-shadow: 2px 2px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 10px;
@@ -1397,6 +1407,7 @@ hyperlink {
     display: inline-block;
     max-width: 1000px;
     margin: 5px;
+    margin-bottom: 0px;
     padding: 4px;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
@@ -1409,6 +1420,8 @@ hyperlink {
     max-width: 1000px;
 
     padding: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 
 }
 
@@ -2453,6 +2466,13 @@ mountSpecial {
     max-width: 20px;
     top: 5px;
     content: url(/aow4db/Icons/Text/MountInteraction.png);
+    position: relative;
+}
+
+once {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/once.png);
     position: relative;
 }
 

@@ -740,11 +740,21 @@ function addAbilityslot(a, b) {
 
 
             abilityNote = "";
+            var Cooldown = "";
+            var Once = "";
             for (l in jsonUnitAbilities.abilities[j].notes) {
                 if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
 
                 } else {
-                    abilityNote += "<bullet>" + jsonUnitAbilities.abilities[j].notes[l].note + "</bullet>";
+
+                    if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("Cooldown") != -1) {
+                        Cooldown = jsonUnitAbilities.abilities[j].notes[l].note;
+                    } else if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("once per") != -1) {
+                        Once = jsonUnitAbilities.abilities[j].notes[l].note;
+                    } else {
+                        abilityNote += "<br>" + jsonUnitAbilities.abilities[j].notes[l].note;
+                    }
+
 
                 }
 
@@ -777,7 +787,7 @@ function addAbilityslot(a, b) {
             dam.className = "ability_damage";
             dam.innerHTML = abilityDam;
 
-            abilityDescr = (jsonUnitAbilities.abilities[j].description);
+            abilityDescr = (jsonUnitAbilities.abilities[j].description) + "<br>";
 
             var abilityIconType = "";
             imag.setAttribute("src", "/aow4db/Icons/Abilities/" + abilityIcon + ".png");
@@ -789,10 +799,23 @@ function addAbilityslot(a, b) {
             imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
             imag.setAttribute("width", "40");
             imag.setAttribute("height", "40");
+            if (Cooldown != "") {
+                var imageExtra = document.createElement("IMG");
+                imageExtra.setAttribute("src", "/aow4db/Icons/Text/turn.png");
+                imageExtra.setAttribute("style", " position: absolute; height: 18px; left: 0px;bottom: 4px;");
+                btn.append(imageExtra);
+            }
+
+            if (Once != "") {
+                var imageExtra = document.createElement("IMG");
+                imageExtra.setAttribute("src", "/aow4db/Icons/Text/once.png");
+                imageExtra.setAttribute("style", " position: absolute; height: 18px; left: 0px;bottom: 4px;");
+                btn.append(imageExtra);
+            }
 
 
 
-            var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq);
+            var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
 
             spa.className = "tooltiptext";
 
@@ -842,7 +865,7 @@ function GetAbilityBackground(abilityDam) {
     return abilityIconType;
 }
 
-function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq) {
+function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, cooldown, once) {
     var abilityDam = "";
     if (ability.damage === undefined) {
         abilityDam = "";
@@ -871,9 +894,7 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
     line1.appendChild(damageHolder);
     spa.append(line1);
 
-    //   spa.innerHTML += "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase() + "</div>" + "<div class=\"rightAbility\">" + ability.damage + "</div><br>";
 
-    //  spa.innerHTML += "<div style=\"clear:right\"> </div>";
 
     // block accuracy range abilitytype
     var line2 = document.createElement("DIV");
@@ -903,11 +924,11 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
 
 
     // block 2, descrp
-    spa.innerHTML += "<br>" + ability.description;
+    spa.innerHTML += "<hr> " + ability.description + "<br>";
 
     // modifiers
     if (abilityMod != "") {
-        spa.innerHTML += "<p style=\"color:#addd9e;font-size: 13px\">" + abilityMod + "</p>";
+        spa.innerHTML += "<span style=\"color:#addd9e;font-size: 13px\">" + abilityMod + "</span>";
     }
 
 
@@ -918,8 +939,10 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
 
 
 
-
+    var bottomLine = document.createElement("DIV");
+    bottomLine.setAttribute("style", "display: flex;justify-content: space-between;");
     if (abilityReq != "") {
+
         var reqs = document.createElement("DIV");
         var i = "";
         for (i in abilityReq) {
@@ -948,8 +971,27 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
             reqs.appendChild(newReq);
         }
 
-        spa.append(reqs);
+        bottomLine.appendChild(reqs);
+
+
     }
+
+    if (cooldown != "") {
+        var cooldownDiv = document.createElement("DIV");
+        cooldownDiv.innerHTML = cooldown;
+        cooldownDiv.setAttribute("style", "margin:5px");
+        //  cooldownDiv.setattri() = "requisiteSlot";
+        bottomLine.appendChild(cooldownDiv);
+    }
+    if (once != "") {
+        var onceDiv = document.createElement("DIV");
+        onceDiv.innerHTML = "<once></once> Once per battle";
+        onceDiv.setAttribute("style", "margin:5px");
+        //  cooldownDiv.setattri() = "requisiteSlot";
+        bottomLine.appendChild(onceDiv);
+    }
+
+    spa.append(bottomLine);
 
     return spa;
 }
@@ -1007,7 +1049,7 @@ function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
     var spa = document.createElement("SPAN");
 
     spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
-        "</br>" + abilityDescr;
+        "<hr>" + abilityDescr;
 
     return spa;
 }
@@ -3826,13 +3868,22 @@ function GetAbilityInfo(ability) {
 
         // add notes
 
-
-        var abilityNote = "";
-        for (l in ability.notes) {
+        abilityNote = "";
+        var Cooldown = "";
+        var Once = "";
+        for (l in ability[j].notes) {
             if (ability.notes[l] === undefined) {
 
             } else {
-                abilityNote += "<bullet>" + ability.notes[l].note + "</bullet>";
+
+                if (ability[j].notes[l].note.indexOf("Cooldown") != -1) {
+                    Cooldown = ability.notes[l].note;
+                } else if (ability.notes[l].note.indexOf("once per") != -1) {
+                    Once = ability.notes[l].note;
+                } else {
+                    abilityNote += "<br>" + ability.notes[l].note;
+                }
+
 
             }
 
@@ -3846,7 +3897,7 @@ function GetAbilityInfo(ability) {
         abilityAcc = ability.accuracy + "<accuracy></accuracy>";
 
         var abilityIconType = GetAbilityBackground(ability.damage);
-        var spa = GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq);
+        var spa = GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
     } else {
         var spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
     }
@@ -4851,12 +4902,22 @@ function showItem(a) {
                         // add notes
 
 
-                        var abilityNote = "";
+                        abilityNote = "";
+                        var Cooldown = "";
+                        var Once = "";
                         for (l in jsonUnitAbilities.abilities[j].notes) {
                             if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
 
                             } else {
-                                abilityNote += "<bullet>" + jsonUnitAbilities.abilities[j].notes[l].note + "</bullet>";
+
+                                if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("Cooldown") != -1) {
+                                    Cooldown = jsonUnitAbilities.abilities[j].notes[l].note;
+                                } else if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("once per") != -1) {
+                                    Once = jsonUnitAbilities.abilities[j].notes[l].note;
+                                } else {
+                                    abilityNote += "<br>" + jsonUnitAbilities.abilities[j].notes[l].note;
+                                }
+
 
                             }
 
@@ -4866,11 +4927,13 @@ function showItem(a) {
 
 
 
+
+
                         abilityRange = jsonUnitAbilities.abilities[j].range + "<range></range>";
                         abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
                         var abilityIconType = GetAbilityBackground(jsonUnitAbilities.abilities[j].damage);
-                        var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq);
+                        var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
                     } else {
                         var spa = CreatePassiveSlotToolTip(jsonUnitAbilities.abilities[j].icon, jsonUnitAbilities.abilities[j].name, jsonUnitAbilities.abilities[j].description);
                     }
@@ -5103,12 +5166,22 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     // add notes
 
 
-                    var abilityNote = "";
+                    abilityNote = "";
+                    var Cooldown = "";
+                    var Once = "";
                     for (l in jsonUnitAbilities.abilities[j].notes) {
                         if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
 
                         } else {
-                            abilityNote += "<bullet>" + jsonUnitAbilities.abilities[j].notes[l].note + "</bullet>";
+
+                            if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("Cooldown") != -1) {
+                                Cooldown = jsonUnitAbilities.abilities[j].notes[l].note;
+                            } else if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("once per") != -1) {
+                                Once = jsonUnitAbilities.abilities[j].notes[l].note;
+                            } else {
+                                abilityNote += "<br>" + jsonUnitAbilities.abilities[j].notes[l].note;
+                            }
+
 
                         }
 
@@ -5118,11 +5191,13 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
 
 
+
+
                     abilityRange = jsonUnitAbilities.abilities[j].range + "<range></range>";
                     abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
                     var abilityIconType = GetAbilityBackground(jsonUnitAbilities.abilities[j].damage);
-                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq);
+                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
                 } else {
                     var spa = CreatePassiveSlotToolTip(jsonUnitAbilities.abilities[j].icon, jsonUnitAbilities.abilities[j].name, jsonUnitAbilities.abilities[j].description);
                 }
