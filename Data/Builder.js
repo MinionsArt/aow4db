@@ -4021,10 +4021,10 @@ function showStructure(a, showOrigin) {
                     }
 
                 }
-                tier.innerHTML += " Province Improvement";
+                tier.innerHTML += " <hyperlink>Province Improvement</hyperlink>";
 
             } else {
-                tier.innerHTML = "Building";
+                tier.innerHTML = "<hyperlink>City Structure</hyperlink>";
             }
             tier.setAttribute("id", "modtier" + a);
 
@@ -4494,7 +4494,7 @@ function showUnitUnlock(a) {
         unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
     } else {
         var div = document.createElement("DIV");
-        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + a.unit_slug + "\" target=\"_blank\">" + GetUnitTierAndName(a.unit_slug) + "</a>" + "</bullet>";
+        div.innerHTML = "<a href =\"/aow4db/HTML/Units.html?unit=" + a.unit_slug + "\" target=\"_blank\">" + GetUnitTierAndName(a.unit_slug) + "</a>" + "</bullet>";
         unitTypesDiv.appendChild(div);
 
         unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
@@ -4509,7 +4509,9 @@ function showUnitUnlock(a) {
 
     tier = document.getElementById("modtier");
 
-    tier.innerHTML = "Unit Unlock";
+    tier.innerHTML = a.type;
+
+    tier.innerHTML += " Tier " + romanize(a.tier);
 
     tier.setAttribute("id", "modtier" + a);
 
