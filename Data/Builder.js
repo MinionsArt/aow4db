@@ -2088,26 +2088,25 @@ function findHeroTraitsWithArgument(argumentType) {
     var j = "";
 
     var finalCheckedList = new Array();
-    
-        if(argumentType == ""){
-            for (j in jsonHeroTraits.traits) {
-                if ('type' in jsonHeroTraits.traits[j]) {
-                    if (jsonHeroTraits.traits[j].type.indexOf("Combat") != -1) {
-                        if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
-                            finalCheckedList.push(jsonHeroTraits.traits[j]);
-                        }
-                    }
-    
-                }
-                else{
+
+    if (argumentType == "") {
+        for (j in jsonHeroTraits.traits) {
+            if ('type' in jsonHeroTraits.traits[j]) {
+                if (jsonHeroTraits.traits[j].type.indexOf("Combat") != -1) {
                     if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
                         finalCheckedList.push(jsonHeroTraits.traits[j]);
                     }
                 }
-            }
-        }else{
 
-        
+            } else {
+                if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
+                    finalCheckedList.push(jsonHeroTraits.traits[j]);
+                }
+            }
+        }
+    } else {
+
+
         for (j in jsonHeroTraits.traits) {
             if ('type' in jsonHeroTraits.traits[j]) {
                 if (jsonHeroTraits.traits[j].type.indexOf(argumentType) != -1) {
@@ -5217,19 +5216,33 @@ function showHeroTrait(a) {
 
 
 
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
-            var div = document.createElement("DIV");
             descriptionDiv.innerHTML = jsonHeroTraits.traits[i].description;
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            if ('units' in jsonHeroTraits.traits[i]) {
+                descriptionDiv.innerHTML += "<br><br>Units:";
+                for (l in jsonHeroTraits.traits[i].units) {
+
+                    var div = document.createElement("DIV");
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonHeroTraits.traits[i].units[l].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonHeroTraits.traits[i].units[l].slug) + "</a>" + "</bullet>";
+                    unitTypesDiv.append(div);
+                }
+            }
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
 
+
+            var heroTraitImage = "";
+            if ('type' in jsonHeroTraits.traits[i]) {
+                heroTraitImage = jsonHeroTraits.traits[i].type;
+            } else {
+                heroTraitImage = "Combat";
+            }
 
             tier = document.getElementById("modtier");
-            tier.innerHTML = "";
-           
+            tier.innerHTML = heroTraitImage;
+
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
@@ -5239,8 +5252,11 @@ function showHeroTrait(a) {
             cost.setAttribute("id", "modcost" + a);
 
 
+
+
+
             imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + a + ".png");
+            imagelink.setAttribute("src", "/aow4db/Icons/Abilities/" + heroTraitImage + ".png");
             imagelink.setAttribute("style", "background-image:none");
             imagelink.setAttribute("id", "modicon" + a);
 
@@ -5250,7 +5266,7 @@ function showHeroTrait(a) {
             found = true;
         }
     }
-    if(found == false){
+    if (found == false) {
         console.log("Didn't find :" + a);
     }
 
