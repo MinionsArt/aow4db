@@ -1,0 +1,390 @@
+var jsonHeroTraits = {
+    "traits": [
+        {
+            "id": "sundering_caster",
+            "description": "{GLOBAL.MagicConcept.Hyperlink} attacks inflict {GLOBAL.PROPERTIES.SUNDERED_DEFENSE.Hyperlink}",
+            "name": "Sundering Caster",
+ },
+        {
+            "id": "distracting",
+            "description": "Attacks have a base {DISTRACTED_RESISTANCE&gt;ResolvedStrength}% chance of inflicting {GLOBAL.PROPERTIES.DISTRACTED.Hyperlink}.",
+            "name": "Distracting",
+ }, {
+            "id": "cunning",
+            "description": "Placeholder.",
+            "name": "Cunning",
+ },
+        {
+            "id": "inspiring",
+            "description": "Placeholder.",
+            "name": "Inspiring",
+ },
+        {
+            "id": "brutal",
+            "description": "Placeholder.",
+            "name": "Brutal",
+ },
+        {
+            "id": "slick",
+            "description": "Placeholder.",
+            "name": "Slick",
+ },
+        {
+            "id": "lucky",
+            "description": " Unit has +{COMBAT_TRAIT_12_CRIT&gt;ResolvedCritChanceBonus}% {GLOBAL.CriticalHitConcept.Hyperlink} chance..",
+            "name": "Lucky",
+ },
+        {
+            "id": "unyielding",
+            "description": " Placeholder.",
+            "name": "Unyielding",
+ },
+        {
+            "id": "retaliator",
+            "description": " Placeholder.",
+            "name": "Retaliator",
+ },
+        {
+            "id": "ranger",
+            "description": " Placeholder.",
+            "name": "Ranger",
+ },
+        {
+            "id": "unstable",
+            "description": "  Unit has {UNSTABLE_FRAIL_PROPERTY&gt;BONUS&gt;HitPoints} &lt;&lt;m:{GLOBAL.HitPointConcept.Hyperlink}&gt;&gt;.",
+            "name": "Unstable",
+ }, {
+            "id": "sunderer",
+            "description": " {GLOBAL.MeleeConcept.Hyperlink} and {GLOBAL.RangedConcept.Hyperlink} attacks apply {GLOBAL.PROPERTIES.SUNDERED_DEFENSE.Hyperlink}.",
+            "name": "Sunderer",
+ },
+        {
+            "id": "wardbreaker",
+            "description": " {GLOBAL.MeleeConcept.Hyperlink} and {GLOBAL.RangedConcept.Hyperlink} attacks apply {GLOBAL.PROPERTIES.SUNDERED_RESISTANCE.Hyperlink}.",
+            "name": "Wardbreaker",
+ }, {
+            "id": "panache",
+            "description": "  {GLOBAL.MeleeConcept.Hyperlink} base attacks have a base {TAUNTED_RESISTANCE&gt;ResolvedStrength}% of applying {GLOBAL.PROPERTIES.TAUNTED.Hyperlink}.",
+            "name": "Panache",
+ },
+        {
+            "id": "protector",
+            "description": " Adjacent friendly units gain:[bulletlist][bullet/]+{COMBAT_TRAIT_20_DEFENSE_PROP&gt;DEF_MOD&gt;Armor} {GLOBAL.DefenseConcept.Hyperlink}[bullet/]+{COMBAT_TRAIT_20_DEFENSE_PROP&gt;DEF_MOD&gt;Resistance} {GLOBAL.ResistanceConcept.Hyperlink}",
+            "name": "Protector",
+ },
+        {
+            "id": "sniper",
+            "description": " {GLOBAL.RangedConcept.Hyperlink} attacks have:[bulletlist][bullet/]+{COMBAT_TRAIT_21_RANGE&gt;ADD&gt;MaxRange} [range/] range.[bullet/]+{COMBAT_TRAIT_21_ACC&gt;ResolvedAccuracyModifier}% {GLOBAL.AccuracyConcept.Hyperlink}.",
+            "name": "Sniper",
+ },
+        {
+            "id": "warmage",
+            "description": " {GLOBAL.MagicConcept.Hyperlink} attacks deal +{COMBAT_TRAIT_22_DMG&gt;ResolvedMultiplier}% damage.",
+            "name": "Warmage",
+ },
+        {
+            "id": "intimidating",
+            "description": " Placeholder.",
+            "name": "Intimidating",
+ },
+        {
+            "id": "feed_on_chaos",
+            "description": " Placeholder.",
+            "name": "Feed on Chaos",
+ },
+        {
+            "id": "rooted_healer",
+            "description": " Placeholder.",
+            "name": "Rooted Healer",
+ },
+        {
+            "id": "immovable",
+            "description": " Placeholder.",
+            "name": "Immovable",
+ }, {
+            "id": "beastmaster",
+            "description": " Placeholder.",
+            "name": "Beastmaster",
+ },
+        {
+            "id": "seductive",
+            "description": " Placeholder.",
+            "name": "Seductive",
+ },
+        {
+            "id": "healer",
+            "description": "  {GLOBAL.SupportConcept.Hyperlink} abilities grant +{amount} {GLOBAL.PROPERTIES.REGENERATION.Hyperlink} to affected units.",
+            "name": "Healer",
+ },
+        {
+            "id": "demolitionist",
+            "description": "   Summon a Devastator Sphere on target hex.",
+            "name": "Demolitionist",
+ },
+
+        {
+            "id": "casting_adept",
+            "description": "    At the start of a combat, add {COMBAT_TRAIT_31_OP&gt;PointsToGive} &lt;&lt;m:{GLOBAL.CombatCastingPointConcept.Hyperlink}&gt;&gt; to that battle.",
+            "name": "Casting Adept",
+ },
+        {
+            "id": "arrogant",
+            "description": "  This unit has +{COMBAT_TRAIT_32_DEFENSE&gt;DEF_MOD&gt;Armor} {GLOBAL.DefenseConcept.Hyperlink} and {GLOBAL.ResistanceConcept.Hyperlink} against the attacks of a Tier I unit.",
+            "name": "Arrogant",
+ },
+        {
+            "id": "duelist",
+            "description": "   Against &lt;&lt;m:{GLOBAL.PROPERTIES.HERO.Hyperlink}&gt;&gt;, this unit:[bulletlist][bullet/]Deals +{COMBAT_TRAIT_33_DMG&gt;ResolvedMultiplier}% damage.[bullet/]Has +{COMBAT_TRAIT_33_DEFENSE&gt;DEF_MOD&gt;Armor} {GLOBAL.DefenseConcept.Hyperlink} and {GLOBAL.ResistanceConcept.Hyperlink}.",
+            "name": "Duelist",
+ },
+        {
+            "id": "disdain_the_weak",
+            "description": "  This unit deals +{COMBAT_TRAIT_34_DMG&gt;ResolvedMultiplier}% damage against Tier I units.",
+            "name": "Disdain the Weak",
+ }, {
+            "id": "defensive_encouragement",
+            "description": "   {GLOBAL.SupportConcept.Hyperlink} abilities grant {GLOBAL.PROPERTIES.DEFENSIVE_MASTERS.Hyperlink} to affected units for {DEFENSIVE_ENCOURAGEMENT_STATUS_DESCRIPTION&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.  Apply {GLOBAL.PROPERTIES.DEFENSIVE_MASTERS.Hyperlink} for {DEFENSIVE_ENCOURAGEMENT_STATUS_DESCRIPTION&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.",
+            "name": "Defensive Encouragement",
+ }, {
+            "id": "afflictor",
+            "description": " Base attacks have a base {POISONED_RESISTANCE&gt;ResolvedStrength}% of randomly inflicting {GLOBAL.PROPERTIES.BURNING.Hyperlink}, {GLOBAL.PROPERTIES.BLEEDING.Hyperlink} or {GLOBAL.PROPERTIES.POISONED.Hyperlink}.  Base {POISONED_RESISTANCE&gt;ResolvedStrength}% chance of randomly applying {GLOBAL.PROPERTIES.BURNING.Hyperlink}, {GLOBAL.PROPERTIES.BLEEDING.Hyperlink}, or {GLOBAL.PROPERTIES.POISONED.Hyperlink} for {BLEEDING_EFFECT_DESCRIPTION&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.",
+            "name": "Afflictor",
+ },
+        {
+            "id": "plaguebearer",
+            "description": "  This unit starts combat permanently {GLOBAL.PROPERTIES.DISEASED.Hyperlink}, spreading it to nearby units..",
+            "name": "Plaguebearer",
+ },
+        {
+            "id": "jinx",
+            "description": "  At the end of this unit's turn, adjacent enemy units have a base {COMBAT_TRAIT_38_RESISTANCE&gt;ResolvedStrength}% of gaining {GLOBAL.PROPERTIES.MISFORTUNE.Hyperlink} for {MISFORTUNE_EFFECT_DESCRIPTION&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.",
+            "name": "Jinx",
+ },
+        {
+            "id": "blessed",
+            "description": "  {GLOBAL.SupportConcept.Hyperlink} abilities grant +{amount} {GLOBAL.PROPERTIES.FORTUNE.Hyperlink} to affected units.",
+            "name": "Blessed",
+ },
+        {
+            "id": "reckless",
+            "description": " Single action {GLOBAL.MeleeConcept.Hyperlink} attacks displace their target and move this unit to their hex. Doesn't apply to {GLOBAL.PROPERTIES.LARGE_TARGET.Hyperlink} targets.",
+            "name": "Reckless",
+ },
+        {
+            "id": "spellthief",
+            "description": "   Gain +{COMBAT_TRAIT_41_CAST_OP&gt;PointsToGive} &lt;&lt;m:{GLOBAL.CombatCastingPointConcept.Hyperlink}&gt;&gt; when a hostile combat spell is cast.",
+            "name": "Spellthief",
+ },
+        {
+            "id": "defensive_duelist",
+            "description": "Has {GLOBAL.PROPERTIES.BOLSTERING_STRIKE.Hyperlink}.",
+            "name": "Defensive Duelist",
+ },
+        {
+            "id": "frenzied",
+            "description": "Has {GLOBAL.PROPERTIES.FRENZY.Hyperlink}.",
+            "name": "Frenzied",
+ },
+        {
+            "id": "recruiter",
+            "description": " This Governor's City gains +{IncomeBonus} {GLOBAL.UnitProductionConcept.Hyperlink} income.",
+            "name": "Recruiter",
+            "type": "Governance",
+ },
+        {
+            "id": "builder",
+            "description": "  This Governor's City gains +{IncomeBonus} {GLOBAL.StructureProductionConcept.Hyperlink} income.",
+            "name": "Builder",
+            "type": "Governance",
+ },
+        {
+            "id": "beloved",
+            "description": "    This Governor's City gains +{IncomeBonus} {GLOBAL.CityStabilityConcept.Hyperlink}.",
+            "name": "Beloved",
+            "type": "Governance",
+ },
+        {
+            "id": "fortified",
+            "description": "     This Governor's City gains +{Bonus} {GLOBAL.FortificationHealthConcept.Hyperlink}.",
+            "name": "Fortified",
+            "type": "Governance",
+ },
+        {
+            "id": "specialist_engineer",
+            "description": "    {GLOBAL.SpecialImprovementConcept.Hyperlink} cost -{amount}% less {GLOBAL.GoldConcept.Hyperlink} and {GLOBAL.StructureProductionConcept.Hyperlink} in this Governor's City.",
+            "name": "Specialist Engineer",
+            "type": "Governance",
+ }, {
+            "id": "beast_trainer",
+            "description": "  Enables the recruitment of some {GLOBAL.PROPERTIES.ANIMAL.Hyperlink} units when governing a City.",
+            "name": "Beast Trainer",
+            "type": "Governance",
+ },
+        {
+            "id": "friend_of_ogres",
+            "description": "  Enables the recruitment of some Ogre and Troll units when governing a City.",
+            "name": "Friend of Ogres",
+            "type": "Governance",
+ },
+        {
+            "id": "materium_adept",
+            "description": "  This unit has +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city, empire gains +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.",
+            "name": "Materium Adept",
+            "type": "Governance",
+ },
+        {
+            "id": "astral_adept",
+            "description": " This unit has +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city, empire gains +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.",
+            "name": "Astral Adept",
+            "type": "Governance",
+ }, {
+            "id": "chaos_adept",
+            "description": " This unit has +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city, empire gains +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.",
+            "name": "Chaos Adept",
+            "type": "Governance",
+ },
+
+        {
+            "id": "nature_adept",
+            "description": " This unit has +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city, empire gains +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.",
+            "name": "Nature Adept",
+            "type": "Governance",
+ },
+        {
+            "id": "shadow_adept",
+            "description": " This unit has +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city, empire gains +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.",
+            "name": "shadow Adept",
+            "type": "Governance",
+ },
+        {
+            "id": "order_adept",
+            "description": " This unit has +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city, empire gains +{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_10&gt;ATTRIBUTES&gt;Hyperlink}. This unit has +{HEROTRAIT_GOVERNANCE_AFFINITY_ADEPT&gt;ATTRIBUTES&gt;Value}{HEROTRAIT_GOVERNANCE_AFFINITY_ADEPT&gt;ATTRIBUTES&gt;Hyperlink}.[br/]When governing a city the empire gains +{EmpireAffinityBonus}{HEROTRAIT_GOVERNANCE_AFFINITY_ADEPT&gt;ATTRIBUTES&gt;Hyperlink}.",
+            "name": "Order Adept",
+            "type": "Governance",
+ },
+        {
+            "id": "inspiring_defender",
+            "description": " Has {GLOBAL.PROPERTIES.INSPIRING_DEFENSE.Hyperlink}.",
+            "name": "Inspiring Defender",
+            "type": "Combat",
+ },
+        {
+            "id": "inspiring_warden",
+            "description": " Has {GLOBAL.PROPERTIES.INSPIRING_resistance.Hyperlink}.  Unit enters {GLOBAL.DefenseModeConcept}, then it and adjacent friendly units gain {GLOBAL.PROPERTIES.BOLSTERED_RESISTANCE.Hyperlink}.",
+            "name": "Inspiring Warden",
+            "type": "Combat",
+ }, {
+            "id": "field_medic",
+            "description": "   While army leader, units in the army:[bulletlist][bullet/]Heal {HEROTRAIT_LEADERSHIP_2_BATTLE_HEAL&gt;Health} &lt;&lt;m:{GLOBAL.HitPointConcept.Hyperlink}&gt;&gt; after combat.",
+            "name": "Field Medic",
+            "type": "Leadership",
+ }, {
+            "id": "provisioner",
+            "description": "  While army leader, all non-{GLOBAL.HeroConcept} units in army have:[bulletlist][bullet/]-{HEROTRAIT_LEADERSHIP_3_UPKEEP&gt;ResolvedUpkeepModifier}% {GLOBAL.UnitUpkeepConcept.Hyperlink}.",
+            "name": "Provisioner",
+            "type": "Leadership",
+ }, {
+            "id": "ambusher",
+            "description": " While army leader units in army have:[bulletlist][bullet/]{GLOBAL.PROPERTIES.UNIVERSAL_CAMOUFLAGE.Hyperlink}",
+            "name": "Ambusher",
+            "type": "Leadership",
+ }, {
+            "id": "trainer",
+            "description": " While army leader, all non-{GLOBAL.HeroConcept} units in army gain:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_5_XP_BONUS&gt;ResolvedProportion}% {GLOBAL.ExperienceConcept.Hyperlink}.",
+            "name": "Trainer",
+            "type": "Leadership",
+ },
+        {
+            "id": "hero_of_the_meek",
+            "description": " While army leader, all Tier I units in army gain:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_6_STATS&gt;BONUS&gt;HitPoints} &lt;&lt;m:{GLOBAL.HitPointConcept.Hyperlink}&gt;&gt;[bullet/]+{HEROTRAIT_LEADERSHIP_6_STATS&gt;BONUS&gt;DEFENSE&gt;Armor} {GLOBAL.DefenseConcept.Hyperlink}[bullet/]+{HEROTRAIT_LEADERSHIP_6_STATS&gt;BONUS&gt;DEFENSE&gt;Resistance} {GLOBAL.ResistanceConcept.Hyperlink}",
+            "name": "Hero of the Meek",
+            "type": "Leadership",
+ }, {
+            "id": "deathkeeper",
+            "description": " While army leader, non-{GLOBAL.PROPERTIES.HERO.Hyperlink} {GLOBAL.PROPERTIES.UNDEAD.Hyperlink} units in army have:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_7_STATS&gt;BONUS&gt;HitPoints} &lt;&lt;m:{GLOBAL.HitPointConcept.Hyperlink}&gt;&gt;[bullet/]-{HEROTRAIT_LEADERSHIP_7_UPKEEP&gt;ResolvedUpkeepModifier}% {GLOBAL.UnitUpkeepConcept.Hyperlink}",
+            "name": "Deathkeeper",
+            "type": "Leadership",
+ },
+        {
+            "id": "druid",
+            "description": "  While army leader, {GLOBAL.PROPERTIES.ANIMAL.Hyperlink} and {GLOBAL.PROPERTIES.PLANT.Hyperlink} units in army have:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_8_STATS&gt;BONUS&gt;HitPoints} &lt;&lt;m:{GLOBAL.HitPointConcept.Hyperlink}&gt;&gt;[bullet/]-{HEROTRAIT_LEADERSHIP_8_UPKEEP&gt;ResolvedUpkeepModifier}% {GLOBAL.UnitUpkeepConcept.Hyperlink}",
+            "name": "Druid",
+            "type": "Leadership",
+ }, {
+            "id": "elementalist",
+            "description": " While army leader, {GLOBAL.PROPERTIES.ELEMENTAL.Hyperlink} units in army:[bulletlist][bullet/]Gain +{HEROTRAIT_LEADERSHIP_9_XP&gt;ResolvedProportion}% {GLOBAL.ExperienceConcept.Hyperlink}[bullet/]Have -{HEROTRAIT_LEADERSHIP_9_UPKEEP&gt;ResolvedUpkeepModifier}% {GLOBAL.UnitUpkeepConcept.Hyperlink}",
+            "name": "Elementalist",
+            "type": "Leadership",
+ }, {
+            "id": "militarist",
+            "description": "  While army leader, all &lt;&lt;m:{GLOBAL.PROPERTIES.SHIELD_UNIT.Hyperlink}&gt;&gt;, &lt;&lt;m:{GLOBAL.PROPERTIES.POLEARM_UNIT.Hyperlink}&gt;&gt;, &lt;&lt;m:{GLOBAL.PROPERTIES.SHOCK_UNIT.Hyperlink}&gt;&gt;, and &lt;&lt;m:{GLOBAL.PROPERTIES.FIGHTER.Hyperlink}&gt;&gt; in army gain:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_10_STATS&gt;BONUS&gt;DEFENSE&gt;Armor} {GLOBAL.DefenseConcept.Hyperlink}.",
+            "name": "Militarist",
+            "type": "Leadership",
+ }, {
+            "id": "spellwarden",
+            "description": "   While army leader, all units in army gain:[bulletlist][bullet/]+{HEOTRAIT_LEADERSHIP_11_STATUS_RES&gt;Resistance} {GLOBAL.StatusResistanceConcept.Hyperlink}.",
+            "name": "Spellwarden",
+            "type": "Leadership",
+ }, {
+            "id": "preacher",
+            "description": "   While army leader, units in army have:[bulletlist][bullet/]{GLOBAL.PROPERTIES.FAITHFUL.Hyperlink}[bullet/]{GLOBAL.PROPERTIES.ZEAL.Hyperlink}",
+            "name": "Preacher",
+            "type": "Leadership",
+ },
+        {
+            "id": "resourceful",
+            "description": " While army leader, units in army have:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_13_STAT_BONUS&gt;BONUS&gt;Regen} {GLOBAL.HitPointConcept.Hyperlink} regeneration in the {GLOBAL.WorldMapConcept.Hyperlink}.",
+            "name": "Resourceful",
+            "type": "Leadership",
+ },
+        {
+            "id": "magical_caretaker",
+            "description": "  While army leader, {GLOBAL.PROPERTIES.MAGIC_ORIGIN.Hyperlink} units in army have:[bulletlist][bullet/]-{HEROTRAIT_LEADERSHIP_14_UPKEEP&gt;ResolvedUpkeepModifier}% {GLOBAL.UnitUpkeepConcept.Hyperlink}.",
+            "name": "Magical Caretaker",
+            "type": "Leadership",
+ }, {
+            "id": "astral_enchanter",
+            "description": "  While army leader, all {GLOBAL.PROPERTIES.MAGIC_ORIGIN.Hyperlink} units in army gain:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_15_STATS&gt;BONUS&gt;HitPoints} &lt;&lt;m:{GLOBAL.HitPointConcept.Hyperlink}&gt;&gt;[bullet/]+{HEROTRAIT_LEADERSHIP_15_STATS&gt;BONUS&gt;DEFENSE&gt;Resistance} {GLOBAL.ResistanceConcept.Hyperlink}",
+            "name": "Astral Enchanter",
+            "type": "Leadership",
+ }, {
+            "id": "senser",
+            "description": "    While army leader, all units in army gain:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_16_STATS&gt;BONUS&gt;SensorRange} {GLOBAL.SensorRangeConcept.Hyperlink}.",
+            "name": "Senser",
+            "type": "Leadership",
+ }, {
+            "id": "farsight",
+            "description": "    While army leader, all units in army gain:[bulletlist][bullet/]+{HEROTRAIT_LEADERSHIP_17_STATS&gt;BONUS&gt;SightRange} {GLOBAL.VisionRangeConcept.Hyperlink}",
+            "name": "Farsight",
+            "type": "Leadership",
+ }, {
+            "id": "aggressive_tactician",
+            "description": "  While army leader, all units in army:[bulletlist][bullet/]Start combat {GLOBAL.PROPERTIES.HASTENED.Hyperlink} for {HASTENED_EFFECT_DESCRIPTION_3&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.",
+            "name": "Aggressive Tactician",
+            "type": "Leadership",
+ },
+        {
+            "id": "aggressive_tactician",
+            "description": "  While army leader, all units in army:[bulletlist][bullet/]Start combat {GLOBAL.PROPERTIES.HASTENED.Hyperlink} for {HASTENED_EFFECT_DESCRIPTION_3&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.    This unit starts combat {GLOBAL.PROPERTIES.HASTENED.Hyperlink} for {HASTENED_EFFECT_DESCRIPTION_3&gt;NumTurns} &lt;&lt;m:{GLOBAL.TurnConcept}&gt;&gt;.",
+            "name": "Aggressive Tactician",
+            "type": "Leadership",
+ },
+        {
+            "id": "pioneer",
+            "description": "   This Governor's City gains +{IncomeBonus} {GLOBAL.FoodConcept.Hyperlink} income.",
+            "name": "Pioneer",
+            "type": "Governance",
+ }, {
+            "id": "pragmatic_leader",
+            "description": "    While army leader, units in the army gain:[bulletlist][bullet/]{GLOBAL.PROPERTIES.DUPE_COLD_BLOODED_MORALE_RESISTANCE.Hyperlink}.",
+            "name": "Pragmatic Leader",
+            "type": "Leadership",
+ },
+        {
+            "id": "resistant_duelist",
+            "description": " Has {GLOBAL.PROPERTIES.RESISTANT_STRIKE.Hyperlink}.",
+            "name": "Resistant Duelist",
+            "type": "Combat",
+ },
+]
+}
