@@ -346,6 +346,30 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
 
     }
+
+    if (cardType === "heroTrait") {
+        btn.className = "w3-bar-item w3-button tablink";
+        var dataHolder = document.getElementById("dataHolder");
+        var holderHeight = buttonHolder.offsetHeight + 50;
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        var div = document.createElement("DIV");
+
+        div.className = "w3-container w3-border city";
+        div.setAttribute("id", overwrite);
+
+
+        dataHolder.appendChild(div);
+        // for (i in list) {
+        showHeroTraitFromList(list, overwrite);
+
+        // }
+
+
+
+
+
+    }
+
     if (cardType === "skill") {
         btn.className = "w3-bar-item w3-button tablink";
         var dataHolder = document.getElementById("dataHolder");
@@ -1758,6 +1782,21 @@ async function showSpellFromList(list, divID) {
 
 
 }
+async function showHeroTraitFromList(list, divID) {
+
+
+    await spawnSpellCards(list, divID);
+
+    for (var i = 0; i < list.length; i++) {
+
+        showHeroTrait(list[i].id, true);
+
+    };
+
+
+
+
+}
 
 async function showSkillFromList(list, divID) {
 
@@ -1875,6 +1914,19 @@ async function showSkillsWithArgument(signature, argumentType, overwritetext) {
 
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "skill");
+
+
+
+
+}
+
+async function showHeroTraitsWithArgument(argumentType, overwritetext) {
+
+    var list = new Array();
+    list = findHeroTraitsWithArgument(argumentType);
+    console.log(list);
+
+    SetCollapsibleButtonsAndDivs(overwritetext, list, "heroTrait");
 
 
 
@@ -2018,6 +2070,49 @@ function findSkillsWithArgument(signature, argumentType) {
                 if (jsonHeroSkills.skills[j].type === 'signature') {
                     if (!isInArray(finalCheckedList, jsonHeroSkills.skills[j])) {
                         finalCheckedList.push(jsonHeroSkills.skills[j]);
+                    }
+                }
+
+            }
+        }
+    }
+
+    // Remove duplicate objects from the array
+    const uniqueArray = finalCheckedList.filter((item, index) => {
+        return index === finalCheckedList.findIndex(obj => obj.id === item.id && obj.name === item.name);
+    });
+    return uniqueArray;
+}
+
+function findHeroTraitsWithArgument(argumentType) {
+    var j = "";
+
+    var finalCheckedList = new Array();
+    
+        if(argumentType == ""){
+            for (j in jsonHeroTraits.traits) {
+                if ('type' in jsonHeroTraits.traits[j]) {
+                    if (jsonHeroTraits.traits[j].type.indexOf("Combat") != -1) {
+                        if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
+                            finalCheckedList.push(jsonHeroTraits.traits[j]);
+                        }
+                    }
+    
+                }
+                else{
+                    if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
+                        finalCheckedList.push(jsonHeroTraits.traits[j]);
+                    }
+                }
+            }
+        }else{
+
+        
+        for (j in jsonHeroTraits.traits) {
+            if ('type' in jsonHeroTraits.traits[j]) {
+                if (jsonHeroTraits.traits[j].type.indexOf(argumentType) != -1) {
+                    if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
+                        finalCheckedList.push(jsonHeroTraits.traits[j]);
                     }
                 }
 
@@ -5094,6 +5189,69 @@ function showTrait(a) {
 
             tomeOriginIcon.setAttribute("id", "modicon" + a.id);
         }
+    }
+
+}
+
+
+function showHeroTrait(a) {
+    var modName, description, cost, type, tier = "";
+    var found = false;
+    var i = "";
+    for (i in jsonHeroTraits.traits) {
+        if (jsonHeroTraits.traits[i].id === a) {
+
+            modName = document.getElementById("modname");
+            modName.innerHTML = jsonHeroTraits.traits[i].name.toUpperCase();
+
+
+
+            modName.setAttribute("id", "modname" + a);
+            descriptionDiv = document.getElementById("moddescription");
+
+
+            descriptionDiv.innerHTML = "";
+
+
+
+
+
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+            var div = document.createElement("DIV");
+            descriptionDiv.innerHTML = jsonHeroTraits.traits[i].description;
+
+            descriptionDiv.setAttribute("id", "moddescription" + a);
+
+
+
+            tier = document.getElementById("modtier");
+            tier.innerHTML = "";
+           
+            tier.setAttribute("id", "modtier" + a);
+
+            cost = document.getElementById("modcost");
+            cost.innerHTML = "";
+
+
+            cost.setAttribute("id", "modcost" + a);
+
+
+            imagelink = document.getElementById("modicon");
+            imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + a + ".png");
+            imagelink.setAttribute("style", "background-image:none");
+            imagelink.setAttribute("id", "modicon" + a);
+
+            var tomeOriginIcon = document.getElementById("originTomeIcon");
+
+            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+            found = true;
+        }
+    }
+    if(found == false){
+        console.log("Didn't find :" + a);
     }
 
 }
