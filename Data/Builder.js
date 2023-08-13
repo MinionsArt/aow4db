@@ -5256,7 +5256,7 @@ function showHeroTrait(a) {
 
 
             imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("src", "/aow4db/Icons/Abilities/" + heroTraitImage + ".png");
+            imagelink.setAttribute("src", "/aow4db/Icons/Abilities/" + heroTraitImage.toLowerCase() + ".png");
             imagelink.setAttribute("style", "background-image:none");
             imagelink.setAttribute("id", "modicon" + a);
 
