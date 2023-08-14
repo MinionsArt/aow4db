@@ -235,18 +235,24 @@
 
             <div class="mod_image_holder">
 
-                <div style="
-          display: grid;
-    grid-template-columns: auto auto;
-    width: auto;
-    justify-content: space-between;
-    align-content: center;
-    align-items: stretch;
-    justify-items: center;">
-                    <p class="mod_name" id="modname">Grounding Harness</p>
-                    <p class="spell_tier" style="padding-left: 10px;font-size: 13px" id="modtier">Tier: I</p>
-
+                <div class="spellStatsHighLighter">
+                    <div style="display: flex;justify-content: space-between; width:500px">
+                        <p class="mod_name" id="modname">Grounding Harness</p>
+                        <p class="spell_cost" style=" font-size: 12px" id="modcost"></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between; width:500px">
+                        <p class="abilityLineSlot" style="padding-left: 10px;font-size: 13px" id="modtier">Tier: I</p>
+                        <p class="abilityLineSlot" style="padding-left: 10px;font-size: 13px" id="modupkeep"></p>
+                    </div>
                 </div>
+
+
+
+
+
+
+
+
 
 
                 <div style="width: 150px;position: absolute;left: -162px;top: 10px;">
@@ -264,14 +270,10 @@
 
 
                 </div>
-                <div style="width: 100px; float:left">
+                <div style="width: 100px; float:left; padding-top: 15px">
                     <img class="mod_image" id="modicon" src="">
 
-                    <p class="spell_cost" style=" font-size: 12px" id="modcost">
 
-                        Cost: 5 <tricorium></tricorium>
-
-                    </p>
 
                 </div>
 
@@ -281,6 +283,71 @@
                     </p>
                 </div>
                 <div id="affectUnitTypes" style=" float:right; display: grid;grid-template-columns: 200px  200px; font-size: 12px"></div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </template>
+
+    <template id="item_card_template">
+        <div class="mod_card">
+
+            <div class="mod_image_holder">
+
+                <div class="spellStatsHighLighter">
+                    <div style="display: flex;justify-content: space-between; width:500px">
+                        <p class="mod_name" id="modname">Grounding Harness</p>
+                        <p class="spell_cost" style=" font-size: 12px" id="modcost"></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between; width:500px">
+                        <p class="abilityLineSlot" style="padding-left: 10px;font-size: 13px" id="modtier">Tier: I</p>
+                        <p class="abilityLineSlot" style="padding-left: 10px;font-size: 13px" id="modupkeep"></p>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <div style="width: 150px;position: absolute;left: -162px;top: 10px;">
+
+
+
+
+
+                    <p style="font-size: 13px" id="originTome">
+
+
+
+                    </p>
+                    <img id="originTomeIcon" height="100px">
+
+
+                </div>
+                <div style="width: 100px; float:left; padding-top: 15px">
+                    <img class="mod_image" id="modicon" src="">
+
+
+
+                </div>
+
+                <div style="position: relative; left: -98px;float: left;">
+                    <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
+                        <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
+                    </p>
+                </div>
+                <div id="affectUnitTypes" style=" float:right; display: grid;grid-template-columns: 200px  200px; font-size: 12px"></div>
+
 
 
 
@@ -337,31 +404,7 @@
 
     </template>
 
-    <template id="item_card_template">
-        <div class="item_card">
-            <img style="float:right; height:50px; width:50px;" src="/aow4db/Icons/Abilities/amphibious.png">
-            <div class="leftAbility" style="color:#d7c297;">SHOOT CROSSBOW</div><br>
-            Tier 2, primary
-            <div style="clear: both"></div>
-            <span class="itemAbility" style="visibility: visible">
 
-                <div><img style="float:left; height:50px; width:50px; background-image:url('/aow4db/Icons/Interface/ability_icon_phys.png');background-repeat: no-repeat;background-size: 50px" src="/aow4db/Icons/Abilities/shoot_crossbow_arbalest.png"></div>
-                <div class="leftAbility" style="color:#d7c297;">SHOOT CROSSBOW</div>
-                <div class="rightAbility">12<damagephysical></damagephysical>
-                </div><br>
-                <div style="clear:right"> </div>
-                <div class="leftAbility">90%<accuracy></accuracy>4<range></range>
-                </div>
-                <div class="rightAbility">
-                    <singleuseaction></singleuseaction>
-                </div>
-                <div style="clear:both"> </div><br>Fires ranged projectiles at target enemy unit.<p style="color:#a4a4a6; font-size: 12px">
-                    <bullet>Affected by <hyperlink>Line of Sight</hyperlink> rules.</bullet>
-                    <bullet>Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>.</bullet>
-                </p>(Physical Ranged,Base)
-            </span>
-        </div>
-    </template>
 
     <meta charset="UTF-8">
 

@@ -899,7 +899,9 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
     // block one, header
     // image
     var spa = document.createElement("SPAN");
-    spa.innerHTML = "<div style\"display:block\"><img style=\"float:left; height:50px; width:50px; background-image:url(\'/aow4db/Icons/Interface/" + abilityIconType + ".png');background-repeat: no-repeat;background-size: 50px\" src=\"/aow4db/Icons/Abilities/" + ability.icon + ".png\">";
+    var abilityHighlighter = document.createElement("DIV");
+    abilityHighlighter.className = "abilityHighLighter";
+    abilityHighlighter.innerHTML = "<img style=\"float:left; height:50px; width:50px; background-image:url(\'/aow4db/Icons/Interface/" + abilityIconType + ".png');background-repeat: no-repeat;background-size: 50px\" src=\"/aow4db/Icons/Abilities/" + ability.icon + ".png\">";
 
     // name and damage
 
@@ -916,7 +918,7 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
 
     line1.appendChild(nameHolder);
     line1.appendChild(damageHolder);
-    spa.append(line1);
+    abilityHighlighter.append(line1);
 
 
 
@@ -944,8 +946,9 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
     typeHolder.appendChild(actionPoint);
     line2.appendChild(accrangeHolder)
     line2.appendChild(typeHolder)
-    spa.append(line2);
+    abilityHighlighter.append(line2);
 
+    spa.append(abilityHighlighter);
 
     // block 2, descrp
     spa.innerHTML += "<hr> " + ability.description + "<br>";
@@ -1719,6 +1722,19 @@ async function spawnSpellCards(list, divID) {
 
 }
 
+
+async function spawnItemCards(list, divID) {
+    if (divID === undefined) {
+        divID = "item";
+    }
+    var doc = document.getElementById(divID);
+    for (var i = 0; i < list.length; i++) {
+        var iDiv = item_card_template.content.cloneNode(true);
+        doc.appendChild(iDiv);
+    }
+
+}
+
 async function spawnSpellCardSingle(list, divID) {
     if (divID === undefined) {
         divID = "spell";
@@ -1801,7 +1817,7 @@ async function showHeroTraitFromList(list, divID) {
 async function showSkillFromList(list, divID) {
 
 
-    await spawnSpellCards(list, divID);
+    await spawnItemCards(list, divID);
 
     for (var i = 0; i < list.length; i++) {
 
@@ -1848,7 +1864,7 @@ async function showDestinyTraitsFromList(list, divID) {
 
 
 async function showItemFromList(list, divID) {
-    await spawnSpellCards(list, divID);
+    await spawnItemCards(list, divID);
 
     for (var i = 0; i < list.length; i++) {
 
@@ -3535,7 +3551,7 @@ function showSiegeProject(id, showOrigin) {
             modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
             modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
             descriptionDiv = document.getElementById("moddescription");
-            description = jsonSiegeProjects.projects[i].description;
+            description = "<hr>" + jsonSiegeProjects.projects[i].description;
 
             description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
@@ -3558,7 +3574,7 @@ function showSiegeProject(id, showOrigin) {
             tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "Cost:<br>" + jsonSiegeProjects.projects[i].cost;
+            cost.innerHTML = "Cost:" + jsonSiegeProjects.projects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
 
 
@@ -3566,7 +3582,7 @@ function showSiegeProject(id, showOrigin) {
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
-                tier.innerHTML += " Tier " + romanize(splitspell[0]);
+                modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
                     var newDivForMount = document.createElement("DIV");
                     newDivForMount.className = "mountToolTip";
@@ -3608,7 +3624,7 @@ function showSiegeProject(id, showOrigin) {
             modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
             modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
             descriptionDiv = document.getElementById("moddescription");
-            description = jsonSiegeProjects.projects[i].description;
+            description =   "<hr>" +jsonSiegeProjects.projects[i].description;
 
             description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
@@ -3631,7 +3647,7 @@ function showSiegeProject(id, showOrigin) {
             tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "Cost:<br>" + jsonSiegeProjects.projects[i].cost;
+            cost.innerHTML = "Cost:" + jsonSiegeProjects.projects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
 
 
@@ -3640,7 +3656,7 @@ function showSiegeProject(id, showOrigin) {
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
-                tier.innerHTML += " Tier " + romanize(splitspell[0]);
+                modName.innerHTML  += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
                     var newDivForMount = document.createElement("DIV");
                     newDivForMount.className = "mountToolTip";
@@ -4069,7 +4085,7 @@ function showStructure(a, showOrigin) {
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
             descriptionDiv = document.getElementById("moddescription");
-            description = "";
+            description = "<hr>";
 
             if (jsonStructureUpgrades.structures[j].requirement_description != "") {
                 description = jsonStructureUpgrades.structures[j].requirement_description + "<br>";
@@ -4109,22 +4125,23 @@ function showStructure(a, showOrigin) {
             if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
                 if (tomeNameandTier != "") {
                     if (tomeNameandTier[1] != 0) {
+                       
                         tier.innerHTML = "<br> Tier " + romanize(tomeNameandTier[1]) + " - " + tomeNameandTier[0] + "<br>";
                     } else {
                         tier.innerHTML = "<br>" + tomeNameandTier[0] + "<br>";
                     }
 
                 }
-                tier.innerHTML += " <hyperlink>Province Improvement</hyperlink>";
+                tier.innerHTML += " <hyperlink><structure></structure>Province Improvement</hyperlink>";
 
             } else {
-                tier.innerHTML = "<hyperlink>City Structure</hyperlink>";
+                tier.innerHTML = "<hyperlink><structure></structure>City Structure</hyperlink>";
             }
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
             cost.className = "spell_cost";
-            cost.innerHTML = "Build Cost:<br>" + jsonStructureUpgrades.structures[j].cost;
+            cost.innerHTML = "Build Cost: " + jsonStructureUpgrades.structures[j].cost;
             cost.setAttribute("id", "modcost" + a);
 
             var name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
@@ -4568,7 +4585,7 @@ function showUnitUnlock(a) {
     modName.setAttribute("id", "modname" + a);
     descriptionDiv = document.getElementById("moddescription");
 
-    description = a.description;
+    description = "<hr>" + a.description;
 
 
 
@@ -4603,14 +4620,15 @@ function showUnitUnlock(a) {
 
     tier = document.getElementById("modtier");
 
-    tier.innerHTML = a.type;
+    tier.innerHTML = "<unit></unit>" + a.type;
 
-    tier.innerHTML += " Tier " + romanize(a.tier);
+
+    modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(a.tier) + "</span>";
 
     tier.setAttribute("id", "modtier" + a);
 
     cost = document.getElementById("modcost");
-    cost.innerHTML = "Recruit Cost:<br>" + GetCostUnit(a.unit_slug);
+    cost.innerHTML = "Recruit Cost: " + GetCostUnit(a.unit_slug);
 
     cost.setAttribute("id", "modcost" + a);
 
@@ -4631,13 +4649,18 @@ function showSpell(a, showOrigin) {
             modName = document.getElementById("modname");
             modName.innerHTML = jsonSpells.spells[j].name.toUpperCase();
             modName.setAttribute("id", "modname" + a);
-            description = "";
+            description = "<hr>";
             descriptionDiv = document.getElementById("moddescription");
 
+            var upkeep = document.getElementById("modupkeep");
             if ('upkeep' in jsonSpells.spells[j]) {
-                description = "Upkeep: " + jsonSpells.spells[j].upkeep + "<br><br>";
+                var upkeep = document.getElementById("modupkeep");
+                upkeep.innerHTML =  "Upkeep: " + jsonSpells.spells[j].upkeep;
+    
+                
 
             }
+            upkeep.setAttribute("id", "modupkeep" + a);
 
             description += jsonSpells.spells[j].description;
 
@@ -4795,8 +4818,9 @@ function showSpell(a, showOrigin) {
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "Casting Cost:<br>" + jsonSpells.spells[j].casting_cost;
+            cost.innerHTML =  jsonSpells.spells[j].casting_cost;
 
+        
             if (jsonSpells.spells[j].tactical === true) {
                 cost.innerHTML += " " + jsonSpells.spells[j].operation_point_cost + "<casttactical></casttactical>"
             } else {
@@ -4814,7 +4838,7 @@ function showSpell(a, showOrigin) {
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
-                tier.innerHTML += " Tier " + romanize(splitspell[0]);
+                modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
                     var newDivForMount = document.createElement("DIV");
                     newDivForMount.className = "mountToolTip";
