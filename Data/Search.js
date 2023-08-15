@@ -1,4 +1,4 @@
-var excludeListStructures = ["shadow_bolstering_matrix", "nature_bolstering_matrix", "materium_bolstering_matrix", "chaos_bolstering_matrix", "order_bolstering_matrix", "astral_bolstering_matrix", "shadow_amplifier_lens", "nature_amplifier_lens", "materium_amplifier_lens", "chaos_amplifier_lens", "order_amplifier_lens", "astral_amplifier_lens", "shadow_focus_crystal", "nature_focus_crystal", "materium_focus_crystal", "chaos_focus_crystal", "order_focus_crystal", "astral_focus_crystal"];
+var excludeListStructures = ["shadow_focus_crystal", "nature_focus_crystal", "materium_focus_crystal", "chaos_focus_crystal", "order_focus_crystal", "astral_focus_crystal"];
 
 
 

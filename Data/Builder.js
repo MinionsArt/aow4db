@@ -4132,10 +4132,10 @@ function showStructure(a, showOrigin) {
                     }
 
                 }
-                tier.innerHTML += " <hyperlink><structure></structure>Province Improvement</hyperlink>";
+                tier.innerHTML += " <hyperlink><structure></structure> Province Improvement</hyperlink>";
 
             } else {
-                tier.innerHTML = "<hyperlink><structure></structure>City Structure</hyperlink>";
+                tier.innerHTML = "<hyperlink><structure></structure> City Structure</hyperlink>";
             }
             tier.setAttribute("id", "modtier" + a);
 
@@ -4620,7 +4620,7 @@ function showUnitUnlock(a) {
 
     tier = document.getElementById("modtier");
 
-    tier.innerHTML = "<unit></unit>" + a.type;
+    tier.innerHTML = "<unit></unit> " + a.type;
 
 
     modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(a.tier) + "</span>";
@@ -4818,7 +4818,7 @@ function showSpell(a, showOrigin) {
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML =  jsonSpells.spells[j].casting_cost;
+            cost.innerHTML = "Cost: " + jsonSpells.spells[j].casting_cost;
 
         
             if (jsonSpells.spells[j].tactical === true) {
@@ -4838,7 +4838,7 @@ function showSpell(a, showOrigin) {
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
-                modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
+                modName.innerHTML += "<span class=\"spell_tier\" style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
                     var newDivForMount = document.createElement("DIV");
                     newDivForMount.className = "mountToolTip";
