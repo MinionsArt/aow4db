@@ -1,7 +1,7 @@
 var jsonTomes = {
     "tomes": [
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"In the end, we shall all be humbled before one who can fully harness the forces of nature. The giver of life and cultivator of death, the tamer of the tempest and the guardian of the glade. The beasts shall howl your name, the leaves shall whisper your blessings, and the lands shall be better for your flourishing rule.\\\"",
             "id": "tome_of_the_goddess_of_nature",
             "gameplay_description": "Become the ultimate embodiment of nature. Excel at buffs and healing, especially for Plants and Animals.",
@@ -10,11 +10,6 @@ var jsonTomes = {
             "hero_skills": [
                 {
                     "slug": "avatar_of_nature"
-   }
-  ],
-            "upgrades": [
-                {
-                    "slug": "heart_of_nature"
    }
   ],
             "tier": 5,
@@ -44,7 +39,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Those who master Materium stand above the world, razing and toppling lands at a whim, and harnessing the primordial forces of creation. The titans themselves shall walk with you, while the very essences of element and mineral take a knee. You are the Creator, a shaper of worlds.\\\"",
             "id": "tome_of_the_creator",
             "gameplay_description": "Shape the world, summon slumbering titans, and become the master of the earth.",
@@ -56,11 +51,6 @@ var jsonTomes = {
    },
                 {
                     "slug": "ancient_of_earth"
-   }
-  ],
-            "upgrades": [
-                {
-                    "slug": "heart_of_materium"
    }
   ],
             "tier": 5,
@@ -96,7 +86,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Gold! The king and queen of minerals, coveted by all mortals who greedily and deeply delve into the ground. Truly gain mastery over this most gilded aspect of earth and you will find that all that glitters actually IS gold! Thus you shall become one with the riches of the earth!\\\"",
             "id": "tome_of_the_golden_realm",
             "gameplay_description": "Become a prosperous empire and gain large amounts of gold with new infrastructure and by turning your very enemies into gold.",
@@ -107,19 +97,11 @@ var jsonTomes = {
                     "slug": "gilded_magic"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "root_of_materium"
-   },
-                {
-                    "slug": "bazaar_of_wonders"
-   }
-  ],
             "tier": 4,
             "icon": "tome_of_the_golden_realm",
             "skills": [
                 {
-                    "description": "Gain +20 <gold></gold> <hyperlink>Gold</hyperlink> for each <hyperlink>Magic Material</hyperlink> in this city’s domain.",
+                    "description": "<bulletlist><bullet>+10 <gold></gold> <hyperlink>Gold</hyperlink></bullet><bullet>+10 <food></food> <hyperlink>Food</hyperlink> per <hyperlink>Magic Material</hyperlink> in the <hyperlink>Domain</hyperlink>.</bullet><bullet>+10 <unitprod></unitprod> <hyperlink>Draft</hyperlink> per <hyperlink>Magic Material</hyperlink> in the <hyperlink>Domain</hyperlink>.</bullet></bulletlist>",
                     "name": "Reagent Refinery",
                     "tier": 8,
                     "type": "<hyperlink>City Structure</hyperlink>",
@@ -153,10 +135,15 @@ var jsonTomes = {
                     "tier": 8,
                     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___bazaar_of_wonders"
+   }
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Once mastery of the mineral realm has been achieved, one may bring about the truly wondrous. Imagine the ability to manipulate and alter the very nature of the physical. To look at a substance, and decide \\\"be not this thing, be that instead.\\\" And thus one may begin to grasp what can be achieved by harnessing the many gifts of transmutation.\\\"",
             "id": "tome_of_transmutation",
             "gameplay_description": "Change physical substances using vast amounts of mana. Specialize in debuffing enemies, buffing allies, and changing your economy.",
@@ -166,12 +153,6 @@ var jsonTomes = {
                 {
                     "slug": "adaptive_armor"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_materium"
-   },
-
   ],
             "tier": 3,
             "icon": "tome_of_transmutation",
@@ -214,7 +195,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Ignore the middling mages who seek to raise the dead or harness lightning and fire to hurl at you. These fools know not the power resting beneath their own feet! But they will... in the final moments of their insignificant existences, when you bury them beneath a mountain and rend the land beneath their cities.\\\"",
             "id": "tome_of_terramancy",
             "gameplay_description": "Manipulate the earth at will. Specialize in dealing <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> and hindering enemy Movement.",
@@ -225,17 +206,11 @@ var jsonTomes = {
                     "slug": "leaden_blows"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_materium"
-   },
-
-  ],
             "tier": 3,
             "icon": "tome_of_terramancy",
             "skills": [
                 {
-                    "description": "Summons a <hyperlink>Stone Spirit</hyperlink>, a Tier III fighter unit.",
+                    "description": "Summons a <hyperlink>Stone Spirit</hyperlink>, a Tier III Shield Unit unit.",
                     "name": "Summon Stone Spirit",
                     "spell_slug": "summon_stone_spirit",
                     "tier": 6,
@@ -248,7 +223,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "In target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Adds the Rocky feature. Can destroy Mountains.</bullet><bullet>Enemy armies sustain 10 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet>",
+                    "description": "In target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Adds the Rocky feature. Can destroy Mountains.</bullet><bullet>Enemy armies sustain 20 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet>",
                     "name": "Earth Shatter",
                     "spell_slug": "earth_shatter",
                     "tier": 5,
@@ -271,7 +246,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"High above the petty machinations of mortals lies the domain of the sky. Here, the winds flow wild and free, unfettered by the land below, uncaring, powerful. Those who manage to bend these winds to their will harness a truly powerful and liberating force. Foes are swept away, plucked from safety, and allies are buoyed, bolstered beyond their land-bound capabilities.\\\"",
             "id": "tome_of_winds",
             "gameplay_description": "Harness the powers of the wind to gain boosts of speed and disrupt enemies.",
@@ -330,7 +305,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Earth! Rock! The very foundation of the world beneath our feet. Embrace it. Harness it. Use its solidity for both protection and pain. Call forth minions of stone, and turn your own skin into the hardest rock!\\\"",
             "id": "tome_of_rock",
             "gameplay_description": "Smash your enemies with the force of stone. Specialize in increasing your defenses and dealing <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.",
@@ -340,12 +315,6 @@ var jsonTomes = {
                 {
                     "slug": "obsidian_weaponry"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "central_quarry"
-   },
-
   ],
             "tier": 1,
             "icon": "tome_of_rock",
@@ -385,10 +354,15 @@ var jsonTomes = {
                     "tier": 1,
                     "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_quarry___central_quarry"
+   }
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"Godhood is known. It is felt. One need not convince others of one's divinity, for one's very essence shall shine through. Embrace divinity. Inspire all with your presence and grant holy might to all who follow you on your righteous path. Blessed be you, shepherd, and blessed be your flock.\\\"",
             "id": "tome_of_the_god_emperor",
             "gameplay_description": "Become a god to be worshiped. Your mere presence inspires your troops and your cities. Specialize in buffing your units.",
@@ -398,12 +372,6 @@ var jsonTomes = {
                 {
                     "slug": "conjure_dome_of_protection"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "heart_of_order"
-   },
-
   ],
             "tier": 5,
             "icon": "tome_of_the_god_emperor",
@@ -439,7 +407,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"In the end, it shall be faith, not flesh, that begets eternal glory. You shall usher in a kingdom of truth and enlightenment. Those who gaze upon your people shall know divinity in its absolute form, and the unworthy shall feel but the burning flame of your wrath.\\\"",
             "id": "tome_of_exaltation",
             "gameplay_description": "Convert your people to Celestials and use their faith to smite your enemies.",
@@ -449,14 +417,6 @@ var jsonTomes = {
                 {
                     "slug": "exalted_brilliance"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "rulers_statue"
-   }, {
-                    "slug": "root_of_order"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_exaltation",
@@ -496,10 +456,15 @@ var jsonTomes = {
                     "tier": 7,
                     "type": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___rulers_statue"
+   }
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"We, who seek to shepherd and guide our people, are gifted with glorious purpose. This righteous glory surges from our very being, permeating into the flesh and spirit of our subjects, and inspiring them to greatness! Victory, for those on this divine path, is not a possibility, but a certainty.\\\"",
             "id": "tome_of_supremacy",
             "gameplay_description": "Lead your people to glorious victory. Specialize in increasing <happiness></happiness> <hyperlink>Morale</hyperlink> and managing a big empire.",
@@ -509,12 +474,6 @@ var jsonTomes = {
                 {
                     "slug": "supreme_magic"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "root_of_order"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_supremacy",
@@ -534,7 +493,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Target enemy army:<bulletlist><bullet>Takes 20 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink></bullet><bullet>Becomes Condemned for 3 <hyperlink>World Map</hyperlink> <turn></turn> Turns.</bullet></bulletlist>",
+                    "description": "Target enemy army:<bulletlist><bullet>Takes 20 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink></bullet><bullet>Becomes Condemned for 5 <hyperlink>World Map</hyperlink> <turn></turn> Turns.</bullet></bulletlist>",
                     "name": "Condemn Army",
                     "spell_slug": "condemn_army",
                     "tier": 7,
@@ -557,7 +516,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"My faith is my shield. I am armored by love. I shall envelop the world in this armor, to safeguard it and bless it with healing light! I am the bastion of the weak. I fortify the strong. The warriors of truth follow in my wake, like a wave of justice made flesh!\\\"",
             "id": "tome_of_sanctuary",
             "gameplay_description": "Create a safe haven for all believers. Specialize in healing and buffing defenses.",
@@ -567,14 +526,6 @@ var jsonTomes = {
                 {
                     "slug": "sanctify"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "sanctuary"
-   }, {
-                    "slug": "seed_of_order"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_sanctuary",
@@ -614,10 +565,15 @@ var jsonTomes = {
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___sanctuary"
+   }
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"Faith, fervor, righteous glory: such things may spread like a holy flame, bringing the light of truth even to the eyes of your enemies! A true beacon of faith shines so brightly that it binds the very wounds of the faithful and instills doubt in the unfaithful, turning them on to the true path... your path.\\\"",
             "id": "tome_of_the_beacon",
             "gameplay_description": "Brings out the inner radiance of the Faithful to smite enemies and bolster allies.",
@@ -646,7 +602,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>City Spell</hyperlink>"
    },
                 {
-                    "description": "Units recruited through <hyperlink>Rally of the Lieges</hyperlink> from the target <hyperlink>Vassal</hyperlink> have Faithful.<br></br>Target Vassal city grants the player +5 <influence></influence> <hyperlink>Imperium</hyperlink> each <turn></turn> Turn.",
+                    "description": "Units recruited through <hyperlink>Rally of the Lieges</hyperlink> from the target <hyperlink>Vassal</hyperlink> have Faithful.<br></br>Target Vassal city grants the player +10 <gold></gold> <hyperlink>Gold</hyperlink> each <turn></turn> Turn.",
                     "name": "Covenant of the Faith",
                     "spell_slug": "covenant_of_the_faith",
                     "tier": 3,
@@ -669,7 +625,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"The unrighteous shall feel the wrath of our unerring virtue. We shall strike down upon them with devout rage and furious vengeance! Their limbs shall be leaden with the weight of their wickedness, while our own subjects shall be driven by nobility of spirit!\\\"",
             "id": "tome_of_the_inquisition",
             "gameplay_description": "Hunt down those who do not agree with your authority. Inflict Condemned on enemies and restrict their Movement.",
@@ -680,26 +636,20 @@ var jsonTomes = {
                     "slug": "zeal"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "tithe_collector"
-   }
-
-  ],
             "tier": 2,
             "icon": "tome_of_the_inquisition",
             "skills": [
                 {
-                    "description": "Target enemy army:<bulletlist><bullet>Sustains 10 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Loses 50% of its Move Points on the <hyperlink>World Map</hyperlink>.</bullet></bulletlist>",
+                    "description": "Target enemy army:<bulletlist><bullet>Sustains 20 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Loses 50% of its Move Points on the <hyperlink>World Map</hyperlink>.</bullet></bulletlist>",
                     "name": "Burden of Guilt",
                     "spell_slug": "burden_of_guilt",
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Enemy Army Spell</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>+% <hyperlink>Accuracy</hyperlink> on <hyperlink>Physical Ranged</hyperlink> attacks.</bullet></bulletlist>",
-                    "name": "Inquisitor's Zeal",
-                    "spell_slug": "inquisitors_zeal",
+                    "description": "Makes base attacks of enchanted units have a:<bulletlist><bullet>Base % chance of inflicting Condemned until end of combat, reducing enemy <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Base % chance of inflicting Weakened, reducing enemy damage.</bullet><bullet>Base % chance of inflicting Slowed, reducing enemy movement and preventing retaliation attacks.</bullet></bulletlist>",
+                    "name": "Inquisitor's Mark",
+                    "spell_slug": "inquisitors_mark",
                     "tier": 4,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
@@ -724,10 +674,15 @@ var jsonTomes = {
                     "unit_slug": "inquisitor",
                     "type": "<hyperlink>Unit</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___tithe_collector"
+   }
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"The fervor of righteousness is a gift unto your subjects. When it courses through their veins, they become mightier, more valiant. They brush off their wounds and any pain, shielded by the holy knowledge that they are in the right! Those who reject your gift shall know condemnation, and it shall wither their very souls.\\\"",
             "id": "tome_of_zeal",
             "gameplay_description": "Rile up your fanatic population for a common goal. Use units with Zeal and inflict Condemned on enemies.",
@@ -737,12 +692,6 @@ var jsonTomes = {
                 {
                     "slug": "condemn"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "circle_of_zealotry"
-   },
-
   ],
             "tier": 1,
             "icon": "tome_of_zeal",
@@ -782,6 +731,11 @@ var jsonTomes = {
                     "tier": 1,
                     "type": "World Map Summon Spell"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_quarry__circle_of_zealotry"
+   }
   ]
  },
         {
@@ -792,7 +746,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Tome Passive</hyperlink>"
    }
   ],
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"A realm blanketed by glistening ice and eternal shadow is a land of endless perfection. Death comes by your will alone, and you shall harvest the very souls of those who wander in your presence. Call forth unending armies. Bring forth the Age of Shadow. Become... eternal.\\\"",
             "id": "tome_of_the_eternal_lord",
             "gameplay_description": "Become the leader of an eternal realm and command unending armies.",
@@ -802,12 +756,6 @@ var jsonTomes = {
                 {
                     "slug": "eternal_one"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "heart_of_shadow"
-   }
-
   ],
             "tier": 5,
             "icon": "tome_of_the_eternal_lord",
@@ -843,7 +791,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"Death is not truly the opposite of life. The end is part of the journey. The true opposite of life is oblivion. When you have mastered this understanding, when you can harness the essence of the void and cast your enemies into non-existence, then you will truly command life, death, and what really lies beyond.\\\"",
             "id": "tome_of_oblivion",
             "gameplay_description": "Use powerful magic capable of sending your enemies to the nothingness of oblivion. Specialize in inflicting Insanity and making parts of the world and the battlefield inhospitable.",
@@ -854,17 +802,11 @@ var jsonTomes = {
                     "slug": "mind_crush"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "root_of_shadow"
-   }
-
-  ],
             "tier": 4,
             "icon": "tome_of_oblivion",
             "skills": [
                 {
-                    "description": "Target friendly <hyperlink>City</hyperlink>. Any battle in the <hyperlink>Domain</hyperlink> of the <hyperlink>City</hyperlink> now has the Fog of Insanity battle enchantment, which causes enemies to have a base 10% chance of gaining Insanity every <turn></turn> <hyperlink>Turn</hyperlink>.",
+                    "description": "Target friendly <hyperlink>City</hyperlink>. Any battle in the <hyperlink>Domain</hyperlink> of the <hyperlink>City</hyperlink> now has the Fog of Insanity battle enchantment, which causes enemies to have a base 20% chance of gaining Insanity every <turn></turn> <hyperlink>Turn</hyperlink>.",
                     "name": "Fog of Insanity",
                     "spell_slug": "fog_of_insanity",
                     "tier": 8,
@@ -908,7 +850,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Tome Passive</hyperlink>"
    }
   ],
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"So many waste the divine gift of their souls, merely attempting to bring some semblance of hope to their petty lives. They truly lack vision. What wasted potential! They are unworthy of such an effective source of power. Reapers correct this oversight by rending the spirit, using it to fuel the darkest of arts, and bringing delightful undeath unto the land!\\\"",
             "id": "tome_of_the_reaper",
             "gameplay_description": "Extract <souls></souls> <hyperlink>Souls</hyperlink> in brutal fashion and use them to bring Undead terrors into the world. Use instant kill effects and ultimate Undead synergy.",
@@ -918,12 +860,6 @@ var jsonTomes = {
                 {
                     "slug": "greater_corpse_consumption"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "root_of_shadow"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_the_reaper",
@@ -965,7 +901,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"Light brings both warmth and hope. Snuff it out and you plunge your foes into cold, everlasting night! Rob them of comfort, shatter their hope, leave them with numb limbs and blinded eyes. Darkness will sap your enemies' will to fight, to win, to live!\\\"",
             "id": "tome_of_the_cold_dark",
             "gameplay_description": "Cause enemies to become Blind and spread Arctic terrain throughout the world.",
@@ -976,19 +912,11 @@ var jsonTomes = {
                     "slug": "blinding_magic"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "frostspire"
-   }, {
-                    "slug": "seed_of_shadow"
-   }
-
-  ],
             "tier": 3,
             "icon": "tome_of_the_cold_dark",
             "skills": [
                 {
-                    "description": "Target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Is altered to Arctic terrain.</bullet><bullet>Enemies sustain 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Enemies have -2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 1 <hyperlink>World Map</hyperlink> <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
+                    "description": "Target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Is altered to Arctic terrain.</bullet><bullet>Enemies sustain 20 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Enemies have -5 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 1 <hyperlink>World Map</hyperlink> <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
                     "name": "Flash Freeze",
                     "spell_slug": "flash_freeze",
                     "tier": 5,
@@ -1022,6 +950,11 @@ var jsonTomes = {
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___frostspire"
+   }
   ]
  },
         {
@@ -1032,7 +965,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Tome Passive</hyperlink>"
    }
   ],
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"Once you have felt the power of necromancy, you begin to grasp a greater truth. An empire does not really require life to truly live. Life is untidy. It is unpredictable and inefficient. Grant your people the gift of everlasting undeath and they shall repay you with eternal, ordered obedience.\\\"",
             "id": "tome_of_the_great_transformation",
             "gameplay_description": "Turn your people into the Undead and transform your empire into a paradise for them to thrive in.",
@@ -1042,12 +975,6 @@ var jsonTomes = {
                 {
                     "slug": "weakening_aura"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_shadow"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_the_great_transformation",
@@ -1097,7 +1024,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Tome Passive</hyperlink>"
    }
   ],
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"Bodies are frail, yet strong is the will of all souls to cling to life. Grant them their desire! Craft them vessels of rotten flesh and bone! Even the fiercest foe shall serve your wishes when raised from the battlefield. For death reaches all, and, in death, you will dwell.\\\"",
             "id": "tome_of_souls",
             "gameplay_description": "Harvest <souls></souls> Souls from your enemies and create Undead creatures. Specialize in expendable units and starting your <souls></souls> Soul economy.",
@@ -1130,7 +1057,6 @@ var jsonTomes = {
                     "name": "Bone Golem",
                     "tier": 1,
                     "unit_slug": "bone_golem",
-
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
@@ -1150,7 +1076,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"The darkness that creeps from shadow to shadow not only brings disquiet, but also carries the promise of your arrival. Dim the light of your enemies' spirits. Shroud them in despair, so that their weapons clatter onto the ground and spells do not issue from their lips.\\\"",
             "id": "tome_of_the_doomherald",
             "gameplay_description": "Torment your enemies with a Morale-reducing effect and by exploiting enemies with Low Morale.",
@@ -1160,12 +1086,6 @@ var jsonTomes = {
                 {
                     "slug": "cruel_weaponry"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "doomdepth_trenc"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_the_doomherald",
@@ -1178,7 +1098,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    },
                 {
-                    "description": "Target enemy army gains 2 Demoralized for 1 <turn></turn> Turn.",
+                    "description": "Target enemy army gains 3 Demoralized for 1 <turn></turn> Turn.",
                     "name": "Prelude of Doom",
                     "spell_slug": "prelude_of_doom",
                     "tier": 3,
@@ -1205,10 +1125,15 @@ var jsonTomes = {
                     "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___doomdepth_trench"
+   }
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"When your capacity to command the arcane reaches its pinnacle, you will find that your connection to the Astral Sea starts to seep through into this realm and affects your own reality. Distance, for example, is a problem for lesser beings. For you, the farthest corner of the world is but a thought away.\\\"",
             "id": "tome_of_the_arch_mage",
             "gameplay_description": "Reach the pinnacle of the arcane arts by bending space and time to your will.",
@@ -1218,12 +1143,6 @@ var jsonTomes = {
                 {
                     "slug": "maximized_magic"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "heart_of_astral"
-   }
-
   ],
             "tier": 5,
             "icon": "tome_of_the_arch_mage",
@@ -1259,7 +1178,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"The ability to conjure an exact likeness of one's own body in its present circumstance is a feat in itself. But additionally infusing these likenesses with reflection magic that sends destructive energy back at one's foes... sheer genius, truly!\\\"",
             "id": "tome_of_the_astral_mirror",
             "gameplay_description": "Create Astral Reflections of your units and leader and reflect damage back onto attackers.",
@@ -1269,12 +1188,6 @@ var jsonTomes = {
                 {
                     "slug": "magic_deflection"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "root_of_astral"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_the_astral_mirror",
@@ -1317,7 +1230,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"When you alter the currents of the Astral Sea, the currents alter you as well. True masters of the arcane will become conduits of the magical energy they command, letting it flow through their very being. This energy can be used to infuse their subjects, enhancing them in a number of ways.\\\"",
             "id": "tome_of_astral_convergence",
             "gameplay_description": "Become stronger the more spells you cast and summon creatures from the Astral Sea.",
@@ -1327,12 +1240,6 @@ var jsonTomes = {
                 {
                     "slug": "arcane_surge"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "root_of_astral"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_astral_convergence",
@@ -1375,7 +1282,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"Through the art of summoning, one may become a master in every sense of the word. Call forth arcane minions and bend them to your will. Strengthen their connection to the world and watch as they lay down their existence for you, the one who willed them into being.\\\"",
             "id": "tome_of_summoning",
             "gameplay_description": "Call forth, control, and enhance Magic Origin units.",
@@ -1385,14 +1292,6 @@ var jsonTomes = {
                 {
                     "slug": "wisp_familiar"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "summoning_well"
-   }, {
-                    "slug": "seed_of_astral"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_summoning",
@@ -1432,10 +1331,15 @@ var jsonTomes = {
                     "tier": 5,
                     "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___summoning_well"
+   }
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"The mage who fully utilizes the potential of magic to expand their tactical options on the field of battle... that is a cunning mage. Imagine a hapless commander, all prepared for an oncoming assault, only to suddenly find themselves facing a pincer attack. The art of teleportation provides endless possibilities for the truly creative tactician.\\\"",
             "id": "tome_of_teleportation",
             "gameplay_description": "Exploit spatial magic to its full potential. Strategically reposition your units in battle in a mere instant.",
@@ -1445,14 +1349,6 @@ var jsonTomes = {
                 {
                     "slug": "quick_phase"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "chrono_gate"
-   }, {
-                    "slug": "seed_of_astral"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_teleportation",
@@ -1492,10 +1388,15 @@ var jsonTomes = {
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_teleporter___chrono_gate"
+   }
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"Awaken your mind's eye to gaze beyond the physical realm. Secrets near and far will reveal themselves, and the truly observant will even be able to peer into the immediate future! Your enemy's look of shock when you deftly sidestep their attack before they have even launched it is truly a sight to behold.\\\"",
             "id": "tome_of_scrying",
             "gameplay_description": "Keep an eye on your enemies and let nothing pass you by. Specialize in gaining more vision and Truesight and inflicting Marked.",
@@ -1547,7 +1448,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"One of the more fascinating aspects of the arcane is that it can be turned back on itself, augmenting and amplifying its own essence. Any wizard can cast a spell, but a true master seeks to perfect it and elevate themselves and their magic beyond what mere practitioners think possible.\\\"",
             "id": "tome_of_amplification",
             "gameplay_description": "Enhance your mages and your spellcasting with more advanced arcane magic.",
@@ -1557,12 +1458,6 @@ var jsonTomes = {
                 {
                     "slug": "spell_amplification"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "resonance_fields"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_amplification",
@@ -1596,7 +1491,7 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
    },
                 {
-                    "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +20%.<br></br>This summon lasts for <turn></turn> Turns.",
+                    "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +50%.<br></br>This summon lasts for <turn></turn> Turns.",
                     "name": "Conjure Amplification Pylon",
                     "spell_slug": "conjure_amplification_pylon",
                     "tier": 3,
@@ -1609,10 +1504,15 @@ var jsonTomes = {
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___resonance_fields"
+   }
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"Just as you may effectively utilize the protective potential of magic, it follows that you can employ it in a more devastating fashion in order to visit harm unto your foes. The thunder and the fury of the skies is at your disposal if you prove yourself worthy. Its tempestuous, destructive force is a perfect tool for blasting apart your enemies!\\\"",
             "id": "tome_of_evocation",
             "gameplay_description": "Grants excellent and cheap attack spells to any aspiring wizard.",
@@ -1623,17 +1523,11 @@ var jsonTomes = {
                     "slug": "lightning_weapons"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "channeling_tower"
-   }
-
-  ],
             "tier": 1,
             "icon": "tome_of_evocation",
             "skills": [
                 {
-                    "description": "In target enemy army:<bulletlist><bullet>All units sustain 20 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>All units suffer -2 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink> for 1 <hyperlink>World Map</hyperlink> <turn></turn> Turns.</bullet></bulletlist>",
+                    "description": "In target enemy army:<bulletlist><bullet>All units sustain 20 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>All units suffer -3 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink> for 1 <hyperlink>World Map</hyperlink> <turn></turn> Turns.</bullet></bulletlist>",
                     "name": "Lightning Torrent",
                     "spell_slug": "lightning_torrent",
                     "tier": 3,
@@ -1661,7 +1555,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Deal <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Electrified, dealing damage over time.</bullet>",
+                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+% damage against Electrified units.</bullet></bulletlist> ",
                     "name": "Lightning Blades",
                     "spell_slug": "lightning_blades",
                     "tier": 2,
@@ -1674,10 +1568,15 @@ var jsonTomes = {
                     "tier": 1,
                     "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___channeling_tower"
+   }
   ]
  },
         {
-            "affinities": "<empirearcana></empirearcana> 2",
+            "affinities": "2 <empirearcana></empirearcana> Empire Astral Affinity",
             "lore_description": "\\\"Those who master the arcane are as a soothing breeze upon their allies, cushioning them in a protective blanket of air, buffeting away blows, and harnessing the lightning to smite those who dare to come too close! A master of warding will find a myriad of ways to keep their subjects safe.\\\"",
             "id": "tome_of_warding",
             "gameplay_description": "Specialize in magic that protects your units from damage and retaliates against enemies that attack you.",
@@ -1729,7 +1628,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"Give me a blanket of forest to spread across the world. Unfurl its emerald embrace over all regions, cast a lush and leafy shadow over every land. This! This will be my paradise. When the music of birdsong and the bellow of beasts accompany the breeze wafting through the eternal woods, then I shall be contented!\\\"",
             "id": "tome_of_paradise",
             "gameplay_description": "Create a lush green paradise for your people. Focus on economy, healing, and buffs.",
@@ -1740,19 +1639,11 @@ var jsonTomes = {
                     "slug": "inspiring_icon"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "root_of_nature"
-   }, {
-                    "slug": "garden_of_bliss"
-   }
-
-  ],
             "tier": 4,
             "icon": "tome_of_paradise",
             "skills": [
                 {
-                    "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+ <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet>",
+                    "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>The Plant unit type.</bullet><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+ <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet>",
                     "name": "Gaia's Chosen",
                     "spell_slug": "gaias_chosen",
                     "tier": 8,
@@ -1793,10 +1684,15 @@ var jsonTomes = {
                     "tier": 7,
                     "type": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_farm___garden_of_bliss"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"To unravel the secrets of nature, you must be of one mind with the trees and their spreading roots. Become rooted yourself. Feel the healing force replenishing you from below, and seal away those who could cut you down in a cage of entangling vines.\\\"",
             "id": "tome_of_roots",
             "gameplay_description": "Discover the power of the natural world and specialize in immobilizing enemies and healing allies.",
@@ -1807,19 +1703,13 @@ var jsonTomes = {
                     "slug": "poison_weapons"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "herbalist"
-   }
-
-  ],
             "tier": 1,
             "icon": "tome_of_roots",
             "skills": [
                 {
-                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Deal <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Poisoned, a damage-over-time effect.</bullet>",
-                    "name": "Poison Blades",
-                    "spell_slug": "poison_blades",
+                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+% damage against Poisoned or Decaying units.</bullet></bulletlist>",
+                    "name": "Blight Blades",
+                    "spell_slug": "blight_blades",
                     "tier": 1,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
@@ -1851,10 +1741,15 @@ var jsonTomes = {
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___herbalist"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"Life, I would say, always finds a way. From the depths of the deepest ocean to the crags of the highest mountain, nature's fertile blessing flourishes and grows. The truly wise will harness this power and sow seeds of growth and healing throughout their lands.\\\"",
             "id": "tome_of_fertility",
             "gameplay_description": "Thrive on the bountiful spoils of nature. Provide your empire with ample <food></food> <hyperlink>Food</hyperlink> and heal your units in battle.",
@@ -1864,12 +1759,6 @@ var jsonTomes = {
                 {
                     "slug": "revitalize"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "bountiful_fields"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_fertility",
@@ -1909,10 +1798,15 @@ var jsonTomes = {
                     "tier": 4,
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_farm___bountiful_fields"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"There is a cycle to all things. The beast feeds upon its prey, gaining strength. The corpse rots, nourishing the land. Life gives way to death, which, in turn, gives way to more life. Master this ebb and flow, and you will find you can manipulate both its gifts as well as the toll it demands!\\\"",
             "id": "tome_of_cycles",
             "gameplay_description": "Master the natural cycles of life and death and specialize in debuffing enemies and healing allies.",
@@ -1922,12 +1816,6 @@ var jsonTomes = {
                 {
                     "slug": "withering_decay"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_nature"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_cycles",
@@ -1970,7 +1858,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"There is vigor in the verdant leaf, might in the branch of the yew. Blessed are those who tend to the forests and let this verdant, emerald blanket unfurl over the lands. Such guardians of the glade will find that the land repays its protectors in natural power!\\\"",
             "id": "tome_of_glades",
             "gameplay_description": "Create and protect forests. Specialize in healing and making use of forests.",
@@ -1980,12 +1868,6 @@ var jsonTomes = {
                 {
                     "slug": "forest_warden"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "sacred_meadow"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_glades",
@@ -2025,6 +1907,11 @@ var jsonTomes = {
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_farm___sacred_meadow"
+   }
   ]
  },
         {
@@ -2035,7 +1922,7 @@ var jsonTomes = {
             "name": ""
  },
         {
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"When all the world has turned to ice, I see a pure, Frostling paradise! Frost their limbs and make their bones brittle, entombed in icy blood! Summon the blizzard to freeze flesh and inspire fear that hearkens back to a time when mortals huddled in caves, fearing the cold would claim them...\\\"",
             "id": "tome_of_cryomancy",
             "gameplay_description": "Specialize in dealing <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> and inflicting Frozen.",
@@ -2046,17 +1933,11 @@ var jsonTomes = {
                     "slug": "frost_weapons"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "school_of_cryomancy"
-   }
-
-  ],
             "tier": 1,
             "icon": "tome_of_cryomancy",
             "skills": [
                 {
-                    "description": "All units in target enemy army:<bulletlist><bullet>Sustain 20 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Suffer -2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 1 World Map <turn></turn> Turns.</bullet></bulletlist>",
+                    "description": "All units in target enemy army:<bulletlist><bullet>Sustain 20 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Suffer -3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 1 World Map <turn></turn> Turns.</bullet></bulletlist>",
                     "name": "Blizzard",
                     "spell_slug": "blizzard",
                     "tier": 3,
@@ -2091,11 +1972,16 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+% damage against Frozen or Slowed units.</bullet></bulletlist>",
+                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units gain:<bulletlist><bullet>+ <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>A base % chance of inflicting Slowed.</bullet></bulletlist>",
                     "name": "Frost Arrows",
                     "spell_slug": "frost_arrows",
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___school_of_cryomancy"
    }
   ]
  },
@@ -2107,7 +1993,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Tome Passive</hyperlink>"
    }
   ],
-            "affinities": "<empireshadow></empireshadow> 2",
+            "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
             "lore_description": "\\\"Necromancers are the greatest healers of all, as they have the power to cure the greatest ailment itself: death! Some will fear such an existence, but what healing ritual doesn't have its side effects? There is also a grim, yet satisfying efficiency in recycling your fallen. When your army succumbs, raise them again!\\\"",
             "id": "tome_of_necromancy",
             "gameplay_description": "Create advanced Undead creatures and gain ways to collect more <souls></souls> Souls. Specialize in buffs and healing for Undead units.",
@@ -2117,12 +2003,6 @@ var jsonTomes = {
                 {
                     "slug": "unholy_leader"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "soulwell"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_necromancy",
@@ -2169,10 +2049,15 @@ var jsonTomes = {
                     "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___soulwell"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"It is the beasts that shall inherit the world. Their paws will tread on our graves long after their fangs have ground our bones to dust. Call upon their might, if you dare. Command their ferocity and nourish it, so that you may reap the benefits of this primal power.\\\"",
             "id": "tome_of_beasts",
             "gameplay_description": "Walk beside the Animals of nature. Specialize in summoning and buffing Animals and become stronger when standing next to them.",
@@ -2182,12 +2067,6 @@ var jsonTomes = {
                 {
                     "slug": "pack_leader"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "wildlife_sanctuary"
-   }
-
   ],
             "tier": 1,
             "icon": "tome_of_beasts",
@@ -2227,6 +2106,11 @@ var jsonTomes = {
                     "tier": 1,
                     "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_forester___wildlife_sanctuary"
+   }
   ]
  },
         {
@@ -2253,12 +2137,6 @@ var jsonTomes = {
                     "slug": "bolstering"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "builders_quarters"
-   }
-
-  ],
             "tier": 0,
             "icon": "industrious",
             "skills": [
@@ -2282,6 +2160,11 @@ var jsonTomes = {
                     "spell_slug": "bolstering_chant",
                     "tier": 1,
                     "type": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_quarry___builders_quarters"
    }
   ]
  },
@@ -2309,12 +2192,6 @@ var jsonTomes = {
                     "slug": "bloodlust"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "forest_of_stakes"
-   }
-
-  ],
             "tier": 0,
             "icon": "barbarian",
             "skills": [
@@ -2338,6 +2215,11 @@ var jsonTomes = {
                     "spell_slug": "primal_mark",
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_forester___forest_of_stakes"
    }
   ]
  },
@@ -2365,12 +2247,6 @@ var jsonTomes = {
                     "slug": "twin_awaken"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "sunshrine"
-   }
-
-  ],
             "tier": 0,
             "icon": "high",
             "skills": [
@@ -2389,11 +2265,16 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>"
    },
                 {
-                    "description": "Grants non-High units:<bulletlist><bullet>Dormant: Guardian if a Polearm Unit.</bullet><bullet>Dormant: Shield of Light if a Shield Unit.</bullet><bullet>Dormant: Seeking Missiles if a Ranged Unit or Battle Mage Unit.</bullet><bullet>The Awaken ability and Dormant: Radiant Light if a Support Unit.</bullet>",
+                    "description": "Grants non-High units:<bulletlist><bullet>Dormant: Guardian if a Polearm Unit.</bullet><bullet>Dormant: Shield of Light if a Shield Unit.</bullet><bullet>Dormant: Seeking Arrows if a Ranged Unit.</bullet><bullet>Dormant: Radiant Light if a Battle Mage Unit.</bullet><bullet>The Awaken ability and Dormant: Radiant Light if a Support Unit.</bullet>",
                     "name": "Dormant Enchantment",
                     "spell_slug": "dormant_enchantment",
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___sunshrine"
    }
   ]
  },
@@ -2421,12 +2302,6 @@ var jsonTomes = {
                     "slug": "stand_together"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "levy_camp"
-   }
-
-  ],
             "tier": 0,
             "icon": "feudal",
             "skills": [
@@ -2438,7 +2313,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Friendly units in a 1-hex radius gain Steadfast.",
+                    "description": "Friendly units in a 1-hex radius gain Steadfast.<br></br><br></br>A unit can only be affected by this once per battle.",
                     "name": "Hold the Line",
                     "spell_slug": "hold_the_line",
                     "tier": 3,
@@ -2451,27 +2326,24 @@ var jsonTomes = {
                     "tier": 1,
                     "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_farm___levy_camp"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 1, <empirechaos></empirechaos> 1",
+            "affinities": "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Few things invoke fear like the mighty dragon does. Channel this primal power, roost and brood it. Mold your people to the likeness of these mighty worldshapers and breed dragonkin in your grand image. See how your enemies bow to your might, or perish in flame at your command.\\\"",
             "id": "tome_of_dragons",
             "gameplay_description": "Revel in the power of Dragons and let their flames empower your people.",
+            "DLC": "DRAGONLORDS ",
             "lore_author": "Tempest, Master of Storms",
             "name": "Tome of Dragons",
             "hero_skills": [
                 {
                     "slug": "fire_bomb"
-   }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_chaos"
-   }, {
-                    "slug": "seed_of_nature"
-   }, {
-                    "slug": "wyvern_eyrie"
    }
   ],
             "tier": 3,
@@ -2512,13 +2384,19 @@ var jsonTomes = {
                     "unit_slug": "young_fire_dragon",
                     "type": "<hyperlink>Unit</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___wyvern_eyrie"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 1, <empirechaos></empirechaos> 1",
+            "affinities": "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"The concept of evolution is a curious one. Take the lowly Slither Hatchling, whose pathetic form can barely survive even the kindest environment. Yet, when thrown into the fray, this creature adapts and changes into something more. Claim this power for yourself, force inherent growth onto your people. After all: those who persist may survive. Those who evolve... will reign.\\\"",
             "id": "tome_of_evolution",
             "gameplay_description": "Take young primal forces and nurture them into formidable allies.",
+            "DLC": "DRAGONLORDS ",
             "lore_author": "Nimue, Siren Goddess",
             "name": "Tome of Evolution",
             "hero_skills": [
@@ -2544,14 +2422,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Target unit:<bulletlist><bullet>Heals for <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains Strengthened.</bullet></bulletlist><br></br>Effect is doubled if the unit has Evolve.",
+                    "description": "Target unit:<bulletlist><bullet>Heals for <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains Strengthened.</bullet></bulletlist><br></br>Units with Evolve:<bulletlist><bullet>Have the effect doubled.</bullet><bullet>Gain Resurgence until the end of combat.</bullet></bulletlist>",
                     "name": "Youthful Rejuvenation",
                     "spell_slug": "youthful_rejuvenation",
                     "tier": 1,
                     "type": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>+% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Resurgence if they are Tier I or II, making them come back to life if they die in a combat where their army was victorious.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>+% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Slip Away if Tier I or II, healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduce to zero.</bullet>",
                     "name": "Rapid Evolution Enchantment",
                     "spell_slug": "rapid_evolution_enchantment",
                     "tier": 2,
@@ -2567,7 +2445,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Delight in disorder! Thrive on turmoil! Your aura of chaos is like an insidious mist that warps reality and incites madness. The very land seems to tremble as you arrive, with beings from demonic realms taking notice. Be birthed in fire and blood, o Godir, and bring forth the Age of Chaos!\\\"",
             "id": "tome_of_the_chaos_lord",
             "gameplay_description": "Unleash chaos forces upon the world. Specialize in offensive buffs.",
@@ -2577,12 +2455,6 @@ var jsonTomes = {
                 {
                     "slug": "demonic_slaughter"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "heart_of_chaos"
-   }
-
   ],
             "tier": 5,
             "icon": "tome_of_the_chaos_lord",
@@ -2617,7 +2489,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Those who master the art of summoning will always have ready allies, though perhaps not entirely willing ones. Demons may be terrifying to some, but, if properly summoned, they are the most valuable minion a Godir can find. Of course, they would rather rend the flesh from your face if they could... but they can not, so the point is moot!\\\"",
             "id": "tome_of_the_demon_gate",
             "gameplay_description": "Open rifts to summon Fiends and burn the world in your wake.",
@@ -2628,19 +2500,11 @@ var jsonTomes = {
                     "slug": "demonic_anthem"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "root_of_chaos"
-   }, {
-                    "slug": "demon_gate"
-   }
-
-  ],
             "tier": 4,
             "icon": "tome_of_the_demon_gate",
             "skills": [
                 {
-                    "description": "In target <hyperlink>Province</hyperlink> and adjacent <hyperlink>Provinces</hyperlink>:<bulletlist><bullet>Transforms terrain into Desolate terrain, except Mountain and Ocean terrain.</bullet><bullet>Deals 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to enemies.</bullet></bulletlist>",
+                    "description": "In target <hyperlink>Province</hyperlink> and adjacent <hyperlink>Provinces</hyperlink>:<bulletlist><bullet>Transforms terrain into Desolate terrain, except Mountain and Ocean terrain.</bullet><bullet>Deals 20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to enemies.</bullet></bulletlist>",
                     "name": "Abyssal Flames",
                     "spell_slug": "abyssal_flames",
                     "tier": 8,
@@ -2674,10 +2538,15 @@ var jsonTomes = {
                     "tier": 9,
                     "type": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_teleporter___demon_gate"
+   }
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Embrace the chaos, and it will embrace you, too, and spread fervor to all you touch! A true agent of bedlam will see order and logic warped into madness and turmoil, twisted ever in their favor!\\\"",
             "id": "tome_of_chaos_channeling",
             "gameplay_description": "Become the master of chaos by exploiting your accumulated chaotic powers from previous <chaos></chaos> <hyperlink>Chaos Affinity</hyperlink> <hyperlink>Tomes</hyperlink>.",
@@ -2687,12 +2556,6 @@ var jsonTomes = {
                 {
                     "slug": "chaotic_rebuke"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "root_of_chaos"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_chaos_channeling",
@@ -2735,7 +2598,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"There is a subtle artistry to true chaos. There is nothing as delightful as watching the seeds of discord grow into mass hysteria, spreading panic and disorder throughout entire populations! To me, it is simply... bliss!\\\"",
             "id": "tome_of_pandemonium",
             "gameplay_description": "Thrive in the chaos of battle and specialize in inflicting random negative status effects on your enemies and dealing more damage to enemies that are already inflicted.",
@@ -2745,12 +2608,6 @@ var jsonTomes = {
                 {
                     "slug": "havoc_magic"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_chaos"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_pandemonium",
@@ -2793,7 +2650,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Nothing instills more doubt in an enemy than a foe who revels in battle! The warriors who feast upon the carnage, they are the ultimate victors of war, no matter the outcome. Take glory in the fray and care not who wins!\\\"",
             "id": "tome_of_revelry",
             "gameplay_description": "Follow the path of debauchery that rewards those who take chances and specialize in gaining Morale and Experience.",
@@ -2803,12 +2660,6 @@ var jsonTomes = {
                 {
                     "slug": "revelers_triumph"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "carnival_of_flesh"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_revelry",
@@ -2847,10 +2698,15 @@ var jsonTomes = {
                     "unit_slug": "skald",
                     "type": "<hyperlink>Unit</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_farms___carnival_of_flesh"
+   }
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Be the fog that seeps into the mind, bringing confusion, making fingers numbed by uncertainty lose their grip. Be the malaise that creeps into thoughts, sowing the seeds of madness, of insanity in those who oppose you! Be the victor, standing over the gibbering mess that was once your enemy!\\\"",
             "id": "tome_of_mayhem",
             "gameplay_description": "Cause chaos on the battlefield by randomly displacing enemies and inflicting Misfortune.",
@@ -2902,7 +2758,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Masters of the Horde understand the power of large numbers, of masses riled up into a frenzy. Ultimately, our hounds of war will tear apart the strongest knights and most cunning warlocks. Our enemies' biggest mistake is to underestimate how many thralls we command, and how little we care about their lives.\\\"",
             "id": "tome_of_the_horde",
             "gameplay_description": "Turn your cheapest units into large, deadly armies. Specialize in summoning and buffing Tier I units.",
@@ -2913,17 +2769,11 @@ var jsonTomes = {
                     "slug": "battle_seeker_training"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "mob_camp"
-   }
-
-  ],
             "tier": 1,
             "icon": "tome_of_the_horde",
             "skills": [
                 {
-                    "description": "Target enemy unit suffers:<bulletlist><bullet> <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each friendly Tier I unit.</bullet><bullet> <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each friendly non-Tier I unit.</bullet></bulletlist><br></br>Adjacent enemy units suffer % of the damage.",
+                    "description": "Target enemy unit suffers:<bulletlist><bullet> <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>+ <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each adjacent friendly unit</bullet></bulletlist>",
                     "name": "Blaze of the Horde",
                     "spell_slug": "blaze_of_the_horde",
                     "tier": 2,
@@ -2937,7 +2787,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes the target race smaller and more numerous, granting them:<bulletlist><bullet>Increased number of units in formation.</bullet><bullet>+% damage. Incompatible with Supergrowth.</bullet>",
+                    "description": "Makes the target race smaller and more numerous, granting them:<bulletlist><bullet>Increased number of units in formation.</bullet><bullet>+% damage for non-hero units.</bullet><bullet>+% <hyperlink>Evasion</hyperlink> for hero units. </bullet><bullet>Incompatible with Supergrowth.</bullet></bulletlist>",
                     "name": "Spawnkin",
                     "spell_slug": "spawnkin",
                     "tier": 2,
@@ -2956,6 +2806,11 @@ var jsonTomes = {
                     "tier": 1,
                     "unit_slug": "houndmaster",
                     "type": "Unit Unlock"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_forester___mob_camp"
    }
   ]
  },
@@ -2983,12 +2838,6 @@ var jsonTomes = {
                     "slug": "attunement_star_blades"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "mystic_abbey"
-   }
-
-  ],
             "tier": 0,
             "icon": "mystic",
             "skills": [
@@ -3013,10 +2862,15 @@ var jsonTomes = {
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_conduit___mystic_abbey"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"Nature is the leaf upon the wind, the nestling, newborn lamb. It is also the furious tempest rending the land asunder, the mighty maelstrom tearing apart stone and flesh alike. Nature can be cruel, unforgiving... powerful! Harness it and you will command the primal energies that leave lesser beings quaking in terror.\\\"",
             "id": "tome_of_natures_wrath",
             "gameplay_description": "Grants powerful spells that unleash the uncontrollable power of nature.",
@@ -3026,12 +2880,6 @@ var jsonTomes = {
                 {
                     "slug": "natures_avenger"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "root_of_nature"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_natures_wrath",
@@ -3058,7 +2906,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Gains the Forest feature.</bullet><bullet>Enemy units within sustain 10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet></bulletlist>",
+                    "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Gains the Forest feature.</bullet><bullet>Enemy units within sustain 20 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet></bulletlist>",
                     "name": "Destructive Regrowth",
                     "spell_slug": "destructive_regrowth",
                     "tier": 7,
@@ -3090,12 +2938,6 @@ var jsonTomes = {
                     "slug": "sundering_curse"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "dark_forge"
-   }
-
-  ],
             "tier": 0,
             "icon": "dark",
             "skills": [
@@ -3120,10 +2962,15 @@ var jsonTomes = {
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___dark_forge"
+   }
   ]
  },
         {
-            "affinities": "<empirenature></empirenature> 2",
+            "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"The unbridled power of the herd thundering over the plain, the sheer strength of the mighty bear as it closes in upon its prey. Hear the primal music that beats in the sinews and bones of beasts! Then you will be able to harness it and strengthen your pack with the force of nature itself.\\\"",
             "id": "tome_of_vigor",
             "gameplay_description": "Strengthen your units and armies with the brute power of wild beasts. Specialize in buffing Animals and increasing <hp></hp> Hit Points.",
@@ -3133,12 +2980,6 @@ var jsonTomes = {
                 {
                     "slug": "animal_handler"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_nature"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_vigor",
@@ -3181,7 +3022,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"To the righteous is given the duty of bringing light unto those still in the dark. Whoever takes on this duty shall be granted the right of might. The errant seed must be ground beneath the heel of virtue before it can grow! Your enemies may cower at first, but your armies shall be ever emboldened by their glorious purpose.\\\"",
             "id": "tome_of_subjugation",
             "gameplay_description": "Expands and subjugates cities from other races. Specializes in lowering enemy <happiness></happiness> <hyperlink>Morale</hyperlink> and conquering cities.",
@@ -3191,12 +3032,6 @@ var jsonTomes = {
                 {
                     "slug": "terrifying_aura"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_order"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_subjugation",
@@ -3213,7 +3048,7 @@ var jsonTomes = {
                     "name": "Final Ultimatum",
                     "spell_slug": "final_ultimatum",
                     "tier": 5,
-                    "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
+                    "type": "Combat Spell"
    },
                 {
                     "description": "<bulletlist><bullet>Besieged <hyperlink>City</hyperlink> loses -1 <population></population> <hyperlink>Population</hyperlink>.</bullet><bullet>Closest owned <hyperlink>City</hyperlink> gains +1 <population></population> <hyperlink>Population</hyperlink>.</bullet><bullet>At the start of the battle, all enemy units have -10<happiness></happiness> <hyperlink>Morale</hyperlink> until the end of battle.</bullet></bulletlist>",
@@ -3239,7 +3074,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Artifice, I like to think, is the ultimate expression of genius made physical. To translate something as intangible as an idea into a working, walking automaton is truly a magnificent thing. When one can turn such creations into behemoths, marrying machine with magic that can level or raise a city... they may veritably claim the title of artificer!\\\"",
             "id": "tome_of_artificing",
             "gameplay_description": "Specialize in siegecraft, expertly crafted weapons, and Golems.",
@@ -3249,12 +3084,6 @@ var jsonTomes = {
                 {
                     "slug": "golem_assistant"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "golem_mine"
-   }
-
   ],
             "tier": 2,
             "icon": "tome_of_artificing",
@@ -3288,15 +3117,20 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "<bulletlist>At the start of the battle, gain 2 <hyperlink>Bolt Repeater</hyperlink> units on the attacker's side until the end of battle.<bullet> <hyperlink>Bolt Repeaters</hyperlink> are immobile Siegecraft <hyperlink>Units</hyperlink> with long range, area of effect attacks and do not have a cooldown, unlike <hyperlink>Onagers</hyperlink>.</bullet><bullet>Only one type of Siegecraft unit can be brought into <hyperlink>Combat</hyperlink>. If multiple <hyperlink>Siege Projects</hyperlink> would bring them, only the strongest of them will appear.</bullet></bulletlist>",
+                    "description": "<bulletlist>At the start of the battle, gain 2 <hyperlink>Bolt Repeater</hyperlink> units on the attacker's side until the end of battle.<bullet> <hyperlink>Bolt Repeaters</hyperlink> are immobile Siegecraft <hyperlink>Units</hyperlink> with long range area of effect attacks that are repeating, unlike <hyperlink>Onagers</hyperlink>.</bullet><bullet>Only one type of Siegecraft unit can be brought into <hyperlink>Combat</hyperlink>. If multiple <hyperlink>Siege Projects</hyperlink> would bring them, only the strongest of them will appear.</bullet></bulletlist>",
                     "name": "Construct Bolt Repeaters",
                     "tier": 3,
                     "type": "<hyperlink>Siege Project</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___golem_mine"
+   }
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Fire is sacred. It is the beginning and the end, it is passion and destruction, it is life and death. Harness the essence of the flame, watch it bring your enemies to smoldering ruin, behold the beauty in the ashes. As the inferno burns the land, so does it give soil vitality, bringing life from destruction wherever it spreads.\\\"",
             "id": "tome_of_pyromancy",
             "gameplay_description": "Specialize in high <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> by inflicting and exploiting Burning.",
@@ -3307,17 +3141,11 @@ var jsonTomes = {
                     "slug": "searing_weapons"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "ritual_pyre"
-   }
-
-  ],
             "tier": 1,
             "icon": "tome_of_pyromancy",
             "skills": [
                 {
-                    "description": "Grants base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>+ <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>A base % chance of inflicting Burning, a damage-over-time effect.</bullet></bulletlist>",
+                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units gain:<bulletlist><bullet>+ <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>A base % chance of inflicting Burning.</bullet></bulletlist>",
                     "name": "Fiery Arrows",
                     "spell_slug": "fiery_arrows",
                     "tier": 2,
@@ -3358,10 +3186,15 @@ var jsonTomes = {
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_forester___ritual_pyre"
+   }
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Enchantment is truly a union of the worldly and the arcane, as it requires both a steady smithing hand and magical prowess. Enhance weaponry, tools of labor, and even your people, to see your empire rise above any other.\\\"",
             "id": "tome_of_enchantment",
             "gameplay_description": "Improve your units with <caststrategic></caststrategic> <hyperlink>Unit Enchantments</hyperlink> and specialize in <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.",
@@ -3371,12 +3204,6 @@ var jsonTomes = {
                 {
                     "slug": "sundering_strikes"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "runecarvers_camp"
-   }
-
   ],
             "tier": 1,
             "icon": "tome_of_enchantment",
@@ -3416,10 +3243,15 @@ var jsonTomes = {
                     "tier": 1,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_quarry___runecarvers_camp"
+   }
   ]
  },
         {
-            "affinities": "<empireorder></empireorder> 2",
+            "affinities": "2 <empireorder></empireorder> Empire Order Affinity",
             "lore_description": "\\\"When faith fuels the embers of one's spirit, it is like a soothing balm upon soul and sinew. It binds wounds, it strengthens limbs, it spreads like the light of a blazing sun from one deserving body to the next. Keep the faith, stoke it, and it shall bolster your believers for all time!\\\"",
             "id": "tome_of_faith",
             "gameplay_description": "Heal and support your units through the power of the Faithful.",
@@ -3430,17 +3262,11 @@ var jsonTomes = {
                     "slug": "mending_touch"
    }
   ],
-            "upgrades": [
-                {
-                    "slug": "abbey"
-   }
-
-  ],
             "tier": 1,
             "icon": "tome_of_faith",
             "skills": [
                 {
-                    "description": "Units in target army heal 20<hyperlink><hp></hp> Hit Points</hyperlink>.",
+                    "description": "Units in target army heal 25<hyperlink><hp></hp> Hit Points</hyperlink>.",
                     "name": "Army Heal",
                     "spell_slug": "army_heal",
                     "tier": 2,
@@ -3481,10 +3307,15 @@ var jsonTomes = {
                     "tier": 2,
                     "type": "Combat Spell"
    }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___abbey"
+   }
   ]
  },
         {
-            "affinities": "<empirechaos></empirechaos> 2",
+            "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Above all, the fray! Those who live and breathe war will always grapple for victory, even after their blades have broken, their bones have shattered and their brains have been turned to pulp. Build the mightiest war machines and impart your army with a hunger for victory. Then... Then you will be unstoppable!\\\"",
             "id": "tome_of_devastation",
             "gameplay_description": "Gain the means to take cities with overwhelming force. Specialize in <hyperlink>Sieges</hyperlink> and dealing damage.",
@@ -3494,12 +3325,6 @@ var jsonTomes = {
                 {
                     "slug": "flameburst_weapons"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "seed_of_chaos"
-   }
-
   ],
             "tier": 3,
             "icon": "tome_of_devastation",
@@ -3567,7 +3392,7 @@ var jsonTomes = {
   ]
  },
         {
-            "affinities": "<empirematter></empirematter> 2",
+            "affinities": "2 <empirematter></empirematter> Empire Materium Affinity",
             "lore_description": "\\\"Is not magma a glorious spectacle to behold? A union of fire and earth streaming inexorably toward your enemies, swallowing them, bringing fiery death! The landscape itself is reshaped when it flows, with beautiful scars traced over the realm.\\\"",
             "id": "tome_of_the_crucible",
             "gameplay_description": "Bury your enemies in lava and shape the land using the destructive forces of both earth and fire.",
@@ -3577,14 +3402,6 @@ var jsonTomes = {
                 {
                     "slug": "meteor_strikes"
    }
-  ],
-            "upgrades": [
-                {
-                    "slug": "great_foundry"
-   }, {
-                    "slug": "root_of_materium"
-   }
-
   ],
             "tier": 4,
             "icon": "tome_of_the_crucible",
@@ -3618,11 +3435,16 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
    },
                 {
-                    "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Transforms into Desolate terrain.</bullet><bullet>Enemy units in the province sustain 15 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet></bulletlist>",
+                    "description": "Target enemy <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink>:<bulletlist><bullet>Has its <hyperlink>Province Improvement</hyperlink> razed.</bullet><bullet>Transforms into Desolate terrain.</bullet><bullet>Enemy units in the province sustain 20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet></bulletlist>",
                     "name": "Pyroclastic Eruption",
                     "spell_slug": "pyroclastic_eruption",
                     "tier": 7,
                     "type": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___great_foundry"
    }
   ]
  }

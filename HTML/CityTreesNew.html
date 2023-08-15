@@ -14,12 +14,34 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var townHall1 = {
+            "requirement_description": "",
+            "id": "town_hall_i_town_center",
+            "description": "",
+            "name": "Town Hall I: Town Center",
+            "icon": "town_hall_i_town_center",
+            "is_sector_upgrade": false,
+            "cost": "",
+            "prediction_description": "<bulletlist><bullet>+1 <hero></hero> Hero Cap</bullet><bullet>+20 <draft></draft> Draft income</bullet><bullet>+40 <food></food> Food income</bullet><bullet>+20 <production></production> Production income</bullet></bulletlist>",
+        };
+        var throne = {
+            "requirement_description": "",
+            "id": "throne",
+            "description": "An Empire can only have one Throne. If your Ruler is defeated in Combat, they will respawn here after 3<turn></turn> Turns. If your Ruler is defeated and your Throne is taken, your Empire is defeated.",
+            "name": "Throne",
+            "icon": "throne",
+            "is_sector_upgrade": false,
+            "cost": "",
+            "prediction_description": "<bulletlist><bullet>Unlock Fortification</bullet><bullet>+20 <garrison></garrison> Fortification Health</bullet><bullet>+60 <knowledge></knowledge> Knowledge income</bullet><bullet>+40 <influence></influence> Imperium income</bullet><bullet>+120 <gold></gold> Gold income</bullet><bullet>+20 <mana></mana> Mana income</bullet></bulletlist>",
+        };
+
+
         var general = [
             // A
             "town_hall_i_town_center:5:1:hero&happiness&unitprod&food&production",
             "throne:6:1:garrison&research&influence&gold&mana:throne",
 
-
+            "heros_lodge:13:1:hero:chosen_destroyers",
             // B
 
 
@@ -123,6 +145,8 @@
             "tavern:11:7:happiness",
             "interrogation_dungeon:12:7:research:dark",
 
+            "heros_forum:13:7:hero:chosen_destroyers",
+
             "wizard_tower_br__foundation:15:7:influence:throne",
 
 
@@ -146,13 +170,25 @@
             "wizard_tower_br__level_ii:15:9:influence:throne",
             "wizard_tower_br__room_of_recall:16:9:na:throne",
 
-
             // J
 
             "stone_walls:1:10:garrison",
-            // "wizard_tower_br__level_ii:14:10:influence:throne", // affinity amplifier lens
+
+            "heros_inn:13:10:hero:chosen_destroyers",
+
             "wizard_tower_br__apex:15:10:influence:throne",
             "wizard_tower_br__channeling_chamber:16:10:caststrategic&optactical:throne",
+
+            // affinity bolstering matrix
+
+            "materium_bolstering_matrix:18:10:na:throne",
+            "astral_bolstering_matrix:19:10:na:throne",
+            "nature_bolstering_matrix:20:10:na:throne",
+            "chaos_bolstering_matrix:21:10:na:throne",
+            "order_bolstering_matrix:22:10:na:throne",
+            "shadow_bolstering_matrix:23:10:na:throne",
+
+
 
             // K
             "ballista_towers:2:11:garrison",
@@ -170,6 +206,14 @@
 
             "wizard_tower_br__arcane_observatory:15:11:na:throne",
             "wizard_tower_br__teleportation_circle:16:11:na:throne",
+
+            // affinity lens amp
+            "materium_amplifier_lens:18:11:na:throne",
+            "astral_amplifier_lens:19:11:na:throne",
+            "nature_amplifier_lens:20:11:na:throne",
+            "chaos_amplifier_lens:21:11:na:throne",
+            "order_amplifier_lens:22:11:na:throne",
+            "shadow_amplifier_lens:23:11:na:throne",
             //L
             "town_hall_iv_grand_estate:5:12:gold&happiness",
             "town_hall_iv_industry_compound:6:12:gold&happiness",
@@ -181,7 +225,7 @@
             //M
             "catapult_towers:2:13:garrison",
             "beacon_of_valor:3:13:garrison",
-
+            "heros_quarters:13:13:hero:chosen_destroyers",
 
 
 
@@ -380,6 +424,16 @@
                                 newNodeBackground.style.backgroundColor = "#111";
                                 spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
                             }
+                            if (splits[4] == "chosen_destroyers") {
+
+                                //  newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/mystic.png\")";
+                                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                                newNodeBackground.style.backgroundPositionX = "140px";
+                                newNodeBackground.style.backgroundSize = "80px";
+                                newNodeBackground.style.backgroundColor = "#111";
+                                spa.innerHTML = "<span style=\"color:  #9bc6ff;\">" + name.toUpperCase() + "</span>" + "<br>";
+                                spa.innerHTML += "(Chosen Destroyers, Megacities)<br>";
+                            }
                         }
 
 
@@ -551,8 +605,9 @@
         }
 
         function SetCategories() {
+            CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2035);
             CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1573);
-            CreateCategory("Tome Buildings", 1245, 520, "#482e8530", 287, 2267);
+            CreateCategory("Tome Buildings", 1245, 520, "#482e8530", 287, 2235);
             CreateCategory("Fortifications", 3470, 476, "#4c4b4b57", 622, 0);
             CreateCategory("Basic Income Buildings", 1245, 1600, "#8eae6f2b", 287, 595);
             CreateCategory("TII City", 260, 728, "#b48d522b", 1586, 485);
@@ -565,7 +620,7 @@
             var treespace = document.getElementById("treespacegeneral");
             var category = document.createElement("DIV");
 
-            category.setAttribute("style", "width:" + width + "px; height:" + height + "px; position:absolute; top:" + positionTop + "px; left:" + positionLeft + "px; background-color:" + color + ";      border-style: solid;border-image: url(/aow4db/Icons/9slicetooltip.png);border-image-slice: 4 10 4 10 fill;");
+            category.setAttribute("style", "width:" + width + "px; height:" + height + "px; position:absolute; top:" + positionTop + "px; left:" + positionLeft + "px; background-color:" + color + ";   border-width:5px;   border-style: solid;border-image: url(/aow4db/Icons/9slicetooltip.png);border-image-slice: 10 10 10 10 ;");
             var categoryname = document.createElement("DIV");
             categoryname.innerHTML = name.toUpperCase();
             categoryname.setAttribute("Style", "position:absolute; top:2px; left:5px; color:white");
@@ -603,7 +658,6 @@
 
 
         }
-
     </script>
 
 
@@ -629,9 +683,7 @@
 
 
 
-</body>
-
-</html>
+</body></html>
 <style>
     .branch-line {
         height: 4px;
@@ -666,9 +718,9 @@
         background-image: url(/aow4db/Icons/Interface/citytree.png);
         background-size: 5584px;
         background-repeat: no-repeat;
-
+        border-width: 5px;
         border-image: url(/aow4db/Icons/9slicetooltip.png);
-        border-image-slice: 4 10 4 10 fill;
+        border-image-slice: 10 10 10 10 fill;
         border-style: solid;
         padding-top: 30px;
     }

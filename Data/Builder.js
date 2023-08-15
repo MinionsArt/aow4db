@@ -16,6 +16,7 @@ var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "bast
 
 var DLCDragonDawn = ["tome_of_evolution", "tome_of_dragons", "slither_hatchling", "slither", "young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon", "golden_dragon", "obsidian_dragon", "gold_wyvern", "obsidian_wyvern", "wyvern_fledgling", "dragon_lord", "shadow_transformation", "order_transformation", "nature_transformation", "materium_transformation", "astral_transformation", "chaos_transformation", "shadow_aspect", "order_aspect", "nature_aspect", "materium_aspect", "astral_aspect", "chaos_aspect"];
 
+
 function GetUnitTierAndName(id) {
     for (i in jsonUnits.units) {
         if (id === jsonUnits.units[i].id) {
@@ -241,16 +242,10 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.innerHTML = GetUnitTierAndNameTome(list[i]);
         } else if (cardType === "unitTomeIcon") {
             btn.innerHTML = "<img style=\"float:left;\" src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetUnitTierAndName(splitIcon[0]);
-            if (DLCDragonDawn.indexOf(splitIcon[0]) != -1) {
-                // DLC Dragon Dawn Tome
-                var triangle = document.createElement("DIV");
-                triangle.className = "triangle";
-                triangle.setAttribute("style", "top: -65px;right: -214px;");
 
-                btn.appendChild(triangle);
-            }
-
-
+            AddTriangleForDLCUnits("Unit", splitIcon[0], btn);
+          
+          
 
         } else if (cardType === "searchSpell") {
             btn.innerHTML = GetSpellTierAndName(list[i]);
@@ -268,17 +263,17 @@ function SetButtonsAndDivs(list, parent, cardType) {
         } else {
             btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\',true)');
         }
+        AddTriangleForDLCUnits(cardType, list[i], btn)
+        // if (DLCDragonDawn.indexOf(list[i]) != -1) {
+        //     // DLC Dragon Dawn Tome
+        //     var triangle = document.createElement("DIV");
+        //     triangle.className = "triangle";
 
-        if (DLCDragonDawn.indexOf(list[i]) != -1) {
-            // DLC Dragon Dawn Tome
-            var triangle = document.createElement("DIV");
-            triangle.className = "triangle";
-
-            if (cardType === "tome") {
-                triangle.setAttribute("style", "top: -44px;right: -174px;");
-            }
-            btn.appendChild(triangle);
-        }
+        //     if (cardType === "tome") {
+        //         triangle.setAttribute("style", "top: -44px;right: -174px;");
+        //     }
+        //     btn.appendChild(triangle);
+        // }
 
 
         if (cardType != "searchUnit") {
@@ -294,6 +289,43 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
     }
 
+}
+
+function AddTriangleForDLCUnits(type, string, div){
+    var DLCCheck = CheckForDLCContent(type, string);
+    //console.log(DLCCheck);
+    if(DLCCheck != null){
+     var triangle = document.createElement("DIV");
+     triangle.className =  DLCCheck.replace(" ","") +"triangle";
+     triangle.setAttribute("style", "top: -19px;right: -18px;");
+    // triangle.setAttribute("style", "top: -65px;right: -214px;");
+
+     div.appendChild(triangle);
+    }
+}
+
+function CheckForDLCContent(type, string){
+    if(type.toLowerCase().indexOf("unit") != -1){
+       for (let index = 0; index < jsonUnits.units.length; index++) {
+        if(jsonUnits.units[index].id == string){
+            if('DLC' in jsonUnits.units[index]){
+                return jsonUnits.units[index].DLC;
+            }
+        }
+        
+       }
+    }
+    if(type.toLowerCase() == "tome"){
+        for (let index = 0; index < jsonTomes.tomes.length; index++) {
+            if(jsonTomes.tomes[index].id == string){
+                if('DLC' in jsonTomes.tomes[index]){
+                    return jsonTomes.tomes[index].DLC;
+                }
+            }
+            
+           }
+    }
+    return null;
 }
 
 function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
@@ -1787,7 +1819,7 @@ async function showSpellFromList(list, divID) {
 
 
     await spawnSpellCards(list, divID);
-
+   
     for (var i = 0; i < list.length; i++) {
 
         showSpell(list[i], true);
@@ -1953,6 +1985,7 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 
     var list = new Array();
     list = findSpellsWithArgument(argument, argumentType);
+   
 
     if (overwritetext.indexOf(">") != -1) {
         overwritetext = overwritetext.split("/")[1];
@@ -2210,9 +2243,22 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
 
         }
     }
-
-    return finalCheckedList;
+// Remove duplicate objects from the array
+const uniqueArray = removeDuplicatesFromArray(finalCheckedList);
+console.log(uniqueArray);
+return uniqueArray;
 }
+
+function removeDuplicatesFromArray(arr) {
+    let unique = {};
+    return arr.filter(item => {
+      if (!unique[item]) {
+        unique[item] = true;
+        return true;
+      }
+      return false;
+    });
+  }
 
 
 function findTraitsWithArgument(argumentType, affinity) {
@@ -3835,17 +3881,17 @@ function showTome(a, div) {
 
             }
             var l = "";
-            if ('upgrades' in jsonTomes.tomes[j]) {
-                for (l in jsonTomes.tomes[j].upgrades) {
+            if ('initial_upgrades' in jsonTomes.tomes[j]) {
+                for (l in jsonTomes.tomes[j].initial_upgrades) {
 
                     var div = document.createElement("DIV");
                     div.className = "initialBonusText";
-                    var name = GetStructureName(jsonTomes.tomes[j].upgrades[l].slug);
+                    var name = GetStructureName(jsonTomes.tomes[j].initial_upgrades[l].upgrade_slug);
                     div.innerHTML = name;
 
                     var spa = document.createElement("SPAN");
                     spa.className = "tooltiptext";
-                    spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes.tomes[j].upgrades[l].slug);
+                    spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes.tomes[j].initial_upgrades[l].upgrade_slug);
 
                     div.appendChild(spa);
                     unitTypesDiv.appendChild(div);
@@ -3877,19 +3923,15 @@ function showTome(a, div) {
             // casting points
             var div = document.createElement("DIV");
             div.className = "initialBonusText";
-            if (jsonTomes.tomes[j].tier === "1" || jsonTomes.tomes[j].tier === "2") {
-                var amount = 5;
+            var amount = "";
+            if (jsonTomes.tomes[j].tier === 1 || jsonTomes.tomes[j].tier === 2 || jsonTomes.tomes[j].tier === 3 || jsonTomes.tomes[j].tier === 4 || jsonTomes.tomes[j].tier === 5) {
+                amount = 5;
             }
-            if (jsonTomes.tomes[j].tier === "3" || jsonTomes.tomes[j].tier === "4") {
-                var amount = 10;
-            }
-            if (jsonTomes.tomes[j].tier === "5") {
-                var amount = 15;
-            }
+          
 
-            if (amount != undefined) {
+            if (amount != "") {
                 div.innerHTML = "+" + amount + "<casttactical></casttactical>" + "+" + amount + "<caststrategic></caststrategic>";
-            }
+           }
 
             unitTypesDiv.appendChild(div);
 
@@ -4049,7 +4091,7 @@ function GetHeroSkillDescription(skillID) {
 
 function GetStructureDescription(structureID) {
     for (j in jsonStructureUpgrades.structures) {
-        if (jsonStructureUpgrades.structures[j].id.indexOf(structureID) != -1) {
+        if (jsonStructureUpgrades.structures[j].id === structureID) {
             return jsonStructureUpgrades.structures[j].description;
         }
     }
@@ -4643,7 +4685,7 @@ function showUnitUnlock(a) {
 function showSpell(a, showOrigin) {
     var modName, description, cost, type, tier = "";
     var found = false;
-    for (j in jsonSpells.spells) {
+    for (let j = jsonSpells.spells.length - 1; j >= 0; j--) {
         if (a === jsonSpells.spells[j].id) {
 
             modName = document.getElementById("modname");
@@ -4879,6 +4921,7 @@ function showSpell(a, showOrigin) {
 
 
             found = true;
+            break;
         }
     }
     if (found === false) {
@@ -5882,9 +5925,9 @@ function backtraceStructureToTomeNameAndTier(structure) {
     for (j in jsonTomes.tomes) {
 
 
-        if ('upgrades' in jsonTomes.tomes[j]) {
-            for (k in jsonTomes.tomes[j].upgrades)
-                if (structure.indexOf(jsonTomes.tomes[j].upgrades[k].slug) != -1) {
+        if ('initial_upgrades' in jsonTomes.tomes[j]) {
+            for (k in jsonTomes.tomes[j].initial_upgrades)
+                if (structure.indexOf(jsonTomes.tomes[j].initial_upgrades[k].upgrade_slug) != -1) {
                     if (structure.indexOf("wildlife_sanctuary") != -1) {
 
                         array.push("2 <empirenature></empirenature> Tome of Beasts");
