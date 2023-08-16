@@ -4129,7 +4129,7 @@ function showStructure(a, showOrigin) {
             description = "<hr>";
 
             if (jsonStructureUpgrades.structures[j].requirement_description != "") {
-                description = jsonStructureUpgrades.structures[j].requirement_description + "<br>";
+                description += jsonStructureUpgrades.structures[j].requirement_description + "<br>";
             }
             description += jsonStructureUpgrades.structures[j].description;
 
@@ -4566,7 +4566,7 @@ function showEmpireTree(a) {
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
             descriptionDiv = document.getElementById("moddescription");
-            description = "";
+            description = "<hr>";
 
 
             description += jsonEmpire.empirenodes[j].description;
