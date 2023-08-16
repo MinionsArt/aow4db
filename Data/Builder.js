@@ -1560,7 +1560,7 @@ function SetUpSpawnTable() {
     var content = document.getElementsByClassName("content");
     var j = "";
     for (j in content) {
-        coll[j].classList.toggle("active");
+       coll[j].classList.toggle("active");
         //  var content = this.nextElementSibling;
         if (content[j].style.display === "grid") {
             content[j].style.display = "none";
@@ -2245,7 +2245,6 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
     }
 // Remove duplicate objects from the array
 const uniqueArray = removeDuplicatesFromArray(finalCheckedList);
-console.log(uniqueArray);
 return uniqueArray;
 }
 
@@ -4734,118 +4733,27 @@ function showSpell(a, showOrigin) {
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
             descriptionDiv.innerHTML = (description);
-            if (a === "summon_greater_animal") {
+            if (a === "summon_wild_animal" || a === "summon_greater_animal" || a === "awaken_the_forest" || a === "demonic_summoning" || a === "raise_undead_army") {
                 // extra info
-                info = document.createElement("DIV");
 
 
+                 info = document.createElement("DIV");
                 info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
                 var collapsibleC = document.createElement("DIV");
                 collapsibleC.classList = "content";
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>Default: " + "<bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch </bullet><bullet>20% Spirit Wolf </bullet><bullet>20% Goretusk Matriarch</bullet><bullet>20% Unicorn</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Underground/Cavern Floor:" + "<bullet>40% Caustic Worm</bullet><bullet>20% Hunter Spider Matriarch</bullet><bullet>20% Dread Spider Matriarch</bullet><bullet>20% Vampire Spider Matriarch</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>Cold(Arctic/Snow/Frozen):" + "<bullet>25% Ice Spider Matriarch</bullet><bullet>25% White Wolf</bullet><bullet>25% Goretusk Matriarch</bullet><bullet>25% Thunderbird</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Desert(Desert/Desolate/Sand):" + "<bullet>60% Phoenix</bullet><bullet>40% Nightmare</bullet>" + "</bulletlist>";
-                collapsibleC.append(div);
-
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Water:" + "<bullet>75% Deep-sea Nimu</bullet><bullet>25% Kraken</bullet>" + "</bulletlist>";
-                collapsibleC.append(div);
-                info.append(collapsibleC);
-                descriptionDiv.append(info);
-            }
-
-            if (a === "summon_wild_animal") {
-                // extra info
-                info = document.createElement("DIV");
-
-
-                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
-                var collapsibleC = document.createElement("DIV");
-                collapsibleC.classList = "content";
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>Default: " + "<bullet>29% Grimbeak Crows</bullet><bullet>29% Goretusk Piglet </bullet><bullet>14% Vampire Spider Hatchling </bullet><bullet>14% Dread Spider Hatchlig</bullet><bullet>7% Hunter Spider</bullet><bullet>7% Warg</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Underground/Cavern Floor:" + "<bullet>40% Dread Spider Hatchling</bullet><bullet>40% Young Caustic Worm</bullet><bullet>10% Hunter Spider</bullet><bullet>10% Warg</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>Cold(Arctic/Snow/Frozen):" + "<bullet>43% Goretusk Piglet</bullet><bullet>43% Grimbeak Crows</bullet><bullet>14% Ice Spider</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Desert(Desert/Desolate/Sand):" + "<bullet>37% Inferno Puppy</bullet><bullet>37% Grimbeak Crows</bullet><bullet>12% Carrion Bird</bullet><bullet>12% Inferno Hound</bullet>" + "</bulletlist>";
-                collapsibleC.append(div);
-
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Water:" + "<bullet>40% Nimu</bullet><bullet>40% Penguin</bullet><bullet>20% Kraken Spawn</bullet>" + "</bulletlist>";
-                collapsibleC.append(div);
-                info.append(collapsibleC);
-                descriptionDiv.append(info);
-            }
-
-            if (a === "awaken_the_forest") {
-                // extra info
-                info = document.createElement("DIV");
-
-
-                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
-                var collapsibleC = document.createElement("DIV");
-                collapsibleC.classList = "content";
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>Low Tier(50%): " + "<bullet>40% Entwined Thrall</bullet><bullet>40% Warg</bullet><bullet>20% Entwined Protector </bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Mid Tier(50%):" + "<bullet>33% Entwined Protector</bullet><bullet>33% Goretusk Matriarch</bullet><bullet>33% Entwined Scourge</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                info.append(collapsibleC);
-                descriptionDiv.append(info);
-            }
-
-            if (a === "demonic_summoning") {
-                // extra info
-                info = document.createElement("DIV");
-
-
-                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
-                var collapsibleC = document.createElement("DIV");
-                collapsibleC.classList = "content";
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>" + "<bullet>42% Nightmare</bullet><bullet>29% Skald</bullet><bullet>29% Chaos Eater </bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-
-                info.append(collapsibleC);
-                descriptionDiv.append(info);
-            }
-
-
-            if (a === "raise_undead_army") {
-                // extra info
-                info = document.createElement("DIV");
-
-
-                info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
-                var collapsibleC = document.createElement("DIV");
-                collapsibleC.classList = "content";
-                var div = document.createElement("DIV");
-
-                div.innerHTML = "<bulletlist>Low Tier(50%): " + "<bullet>100% Skeleton</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML = "<bulletlist>Mid Tier(50%):" + "<bullet>33% Skeleton</bullet><bullet>33% Bone Golem</bullet><bullet>33% Banshee</bullet>" + "</bulletlist><br>";
-                collapsibleC.append(div);
+               
+                 for (let index = 0; index < jsonSpawnTables.spawnTable.length; index++) {
+                    if(jsonSpawnTables.spawnTable[index].id == a){
+                        for (let j = 0; j < jsonSpawnTables.spawnTable[index].categories.length; j++) {
+                            var div = ConvertSpawnTable(jsonSpawnTables.spawnTable[index].categories[j].table);
+                
+                            collapsibleC.append(div);
+                            
+                        }
+                    }
+                    
+                 }
+               
                 info.append(collapsibleC);
                 descriptionDiv.append(info);
             }
@@ -4928,6 +4836,44 @@ function showSpell(a, showOrigin) {
         console.log("Couldn't find mod: " + a);
     }
 }
+
+function ConvertSpawnTable(input) {
+    const entries = input.split(",");
+  
+    const bulletListName = entries.shift(); // Get the first entry as the bullet list name
+  
+    // Calculate the percentages for each entry
+    const entryCounts = {};
+    for (const entry of entries) {
+      entryCounts[entry] = (entryCounts[entry] || 0) + 1;
+    }
+  
+    const percentages = entries.map((entry) => {
+      const percentage = (entryCounts[entry] / entries.length) * 100;
+      return { entry, percentage };
+    });
+  
+    // Sort the percentages in descending order
+    percentages.sort((a, b) => b.percentage - a.percentage);
+  
+    // Create a bullet list for the unique entries
+    const uniqueEntries = [];
+    const bulletList = document.createElement("DIV");
+   
+    bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
+  
+    for (const { entry, percentage } of percentages) {
+      const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
+  
+      if (!uniqueEntries.includes(itemText)) {
+        uniqueEntries.push(itemText); 
+        bulletList.innerHTML +=
+          "<bullet>" + `${percentage.toFixed(0)}% - ${itemText}` + "</bullet>";
+      }
+    }
+    bulletList.innerHTML += "</bulletList>";
+    return bulletList;
+  }
 
 function FindUnitsWithSecondaryPassive(trait) {
     var unitsList = new Array();
