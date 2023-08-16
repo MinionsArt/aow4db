@@ -4413,7 +4413,7 @@ function ShowDestinyTraits() {
         modName = document.getElementById("modname");
         nameString = "";
         nameString = jsonDestiny.traits[j].name.toUpperCase();
-        nameString += "<br>" + jsonDestiny.traits[j].category;
+      
 
         modName.innerHTML = nameString;
         // backtracktome
@@ -4422,7 +4422,7 @@ function ShowDestinyTraits() {
         modName.setAttribute("id", "modname" + a);
         modName.className = "mod_name";
         descriptionDiv = document.getElementById("moddescription");
-        description = "Trigger: <br>";
+        description = "<hr> Trigger: <br>";
 
 
         description += jsonDestiny.traits[j].trigger;
@@ -4459,7 +4459,8 @@ function ShowDestinyTraits() {
         tier.innerHTML = "";
 
         cost = document.getElementById("modcost");
-        cost.innerHTML = "";
+       
+        cost.innerHTML = jsonDestiny.traits[j].category;
 
         cost.setAttribute("id", "modcost" + a);
 
@@ -4948,7 +4949,7 @@ function showItem(a) {
 
     modName = document.getElementById("modname");
     modName.innerHTML = a.name.toUpperCase();
-    modName.innerHTML += "<br>" + a.slot;
+    
 
 
     modName.setAttribute("id", "modname" + a.id);
@@ -4959,9 +4960,9 @@ function showItem(a) {
 
 
 
-    descriptionDiv.innerHTML = "";
+    descriptionDiv.innerHTML = "<hr>";
     if ('description' in a) {
-        descriptionDiv.innerHTML = a.description + "<br>";
+        descriptionDiv.innerHTML += a.description + "<br>";
     }
 
     var lookup;
@@ -5091,7 +5092,7 @@ function showItem(a) {
     tier.setAttribute("id", "modtier" + a.id);
 
     cost = document.getElementById("modcost");
-    cost.innerHTML = "";
+    cost.innerHTML = a.slot;
 
 
     cost.setAttribute("id", "modcost" + a.id);
@@ -5165,7 +5166,7 @@ function showTrait(a) {
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
             var div = document.createElement("DIV");
-            descriptionDiv.innerHTML = jsonFactionCreation.traits[i].description;
+            descriptionDiv.innerHTML ="<hr>" + jsonFactionCreation.traits[i].description;
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
 
@@ -5187,7 +5188,7 @@ function showTrait(a) {
 
             cost = document.getElementById("modcost");
             cost.innerHTML = "";
-
+            cost.innerHTML = jsonFactionCreation.traits[i].type;
 
             cost.setAttribute("id", "modcost" + a);
 
@@ -5229,7 +5230,7 @@ function showHeroTrait(a) {
 
 
 
-            descriptionDiv.innerHTML = jsonHeroTraits.traits[i].description;
+            descriptionDiv.innerHTML ="<hr>" + jsonHeroTraits.traits[i].description;
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
             unitTypesDiv = document.getElementById("affectUnitTypes");
@@ -5254,12 +5255,12 @@ function showHeroTrait(a) {
             }
 
             tier = document.getElementById("modtier");
-            tier.innerHTML = heroTraitImage;
+            tier.innerHTML = "";
 
             tier.setAttribute("id", "modtier" + a);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "";
+            cost.innerHTML = heroTraitImage;
 
 
             cost.setAttribute("id", "modcost" + a);
