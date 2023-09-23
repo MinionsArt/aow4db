@@ -23,11 +23,13 @@
                 SetupButtons("Origin", GetAllOrigins());
                 SetupButtons("Tome", GetAllStartingTomes());
                 SetupButtons("Culture", GetAllCultures());
+
                 SetupButtons("Form", GetAllForms());
                 SetupButtons("Body", GetAllBodyTraits());
                 SetupButtons("Mind", GetAllMindTraits());
                 SetupButtons("Society1", GetAllSocietyTraits());
                 SetupButtons("Society2", GetAllSocietyTraits());
+                SetupButtons("Loadout", GetAllLoadouts());
                 SetRandomStart();
 
             });
@@ -44,8 +46,9 @@
 
 <body>
     <div id="header"></div>
-
+    <div class="tome_name"> WIP Faction creator</div>
     <div class="factioncreator">
+
 
         <div class="container">
             <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
@@ -62,6 +65,11 @@
 
                 <div id="buttonContainer">
                     <button class="button-inset" id="originButtonTome"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonLoadout"></button>
 
                 </div>
 
@@ -108,6 +116,9 @@
             </div>
             <div id="originWrapperTome" class="wrappers" style="display: none;">
             </div>
+
+            <div id="originWrapperLoadout" class="wrappers" style="display: none;">
+            </div>
             <div id="originWrapperForm" class="wrappers" style="display: none;">
 
             </div>
@@ -134,12 +145,14 @@
 <script>
     var currentOrigin = "";
     var currentTome = "";
+
     var currentForm = "";
     var currentBody = "";
     var currentMind = "";
     var currentCulture = "";
     var currentSociety1 = "";
     var currentSociety2 = "";
+    var currentLoadout = "";
 
     function SetRandomStart() {
 
@@ -147,12 +160,14 @@
         var listofChoice = new Array();
         listofChoice.push("Tome");
         listofChoice.push("Origin");
+
         listofChoice.push("Form");
         listofChoice.push("Body");
         listofChoice.push("Mind");
         listofChoice.push("Culture");
         listofChoice.push("Society1");
         listofChoice.push("Society2");
+        listofChoice.push("Loadout");
 
 
         var j = "";
@@ -169,6 +184,7 @@
                 case "Origin":
                     currentOrigin = randomEntry;
                     break;
+
                 case "Form":
                     currentForm = randomEntry;
                     break;
@@ -187,6 +203,9 @@
                 case "Society2":
                     currentSociety2 = randomEntry;
                     break;
+                case "Loadout":
+                    currentLoadout = randomEntry;
+                    break;
             }
 
 
@@ -196,9 +215,6 @@
 
             SetButtonInfo(originButton, randomEntry, currentChoice);
         }
-
-
-
         RecalculateStats();
 
     }
@@ -232,6 +248,7 @@
                 case "Origin":
                     currentOrigin = origin;
                     break;
+
                 case "Body":
                     currentBody = origin;
                     break;
@@ -249,6 +266,9 @@
                     break;
                 case "Society2":
                     currentSociety2 = origin;
+                    break;
+                case "Loadout":
+                    currentLoadout = origin;
                     break;
             }
 
@@ -271,6 +291,10 @@
             originButtonNew.addEventListener("click", () => selectOrigin(origin));
 
             originWrapper.appendChild(originButtonNew);
+            /* if (incompatibleCheck(type, origin)) {
+
+                 originButton.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+             }*/
             SetButtonInfo(originButtonNew, origin, type);
 
         }
@@ -284,12 +308,14 @@
 
         listOfAllChoices.push(currentOrigin);
         listOfAllChoices.push(currentTome);
+
         listOfAllChoices.push(currentForm);
         listOfAllChoices.push(currentBody);
         listOfAllChoices.push(currentMind);
         listOfAllChoices.push(currentCulture);
         listOfAllChoices.push(currentSociety1);
         listOfAllChoices.push(currentSociety2);
+        listOfAllChoices.push(currentLoadout);
         return listOfAllChoices;
     }
 
@@ -397,6 +423,8 @@
             image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
         } else if (type == "Culture" || type == "Origin" || type == "Body" || type == "Mind" || type == "Society1" || type == "Society2" || type == "Form") {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
+        } else if (type == "Loadout") {
+            image.src = "/aow4db/Icons/Abilities/" + origin.id + ".png"; // Set the image source to your image file
         }
 
 

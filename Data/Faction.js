@@ -82,6 +82,18 @@ function GetAllBodyTraits() {
     return listOfAllOrigins;
 }
 
+function GetAllLoadouts() {
+    var listOfAllOrigins = new Array();
+
+    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
+        if (jsonFactionCreation.traits[i].type == "Loadout") {
+            listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+        }
+    }
+
+    return listOfAllOrigins;
+}
+
 function GetRandomEntry(type) {
     const originButton = document.getElementById("originButton" + type);
     const originWrapper = document.getElementById("originWrapper" + type);
@@ -97,6 +109,7 @@ function GetRandomEntry(type) {
             var list = GetAllOrigins();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
             break;
+
         case "Form":
             var list = GetAllForms();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
@@ -113,13 +126,16 @@ function GetRandomEntry(type) {
             var list = GetAllCultures();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
             while (incompatibleCheck("Culture", randomOrigin)) {
+
                 randomOrigin = list[Math.floor(Math.random() * list.length)];
             }
             break;
         case "Society1":
+
             var list = GetAllSocietyTraits();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
             while (incompatibleCheck("Society1", randomOrigin)) {
+
                 randomOrigin = list[Math.floor(Math.random() * list.length)];
             }
             break;
@@ -127,6 +143,16 @@ function GetRandomEntry(type) {
             var list = GetAllSocietyTraits();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
             while (incompatibleCheck("Society2", randomOrigin)) {
+
+                randomOrigin = list[Math.floor(Math.random() * list.length)];
+            }
+            break;
+        case "Loadout":
+            var list = GetAllLoadouts();
+
+            randomOrigin = list[Math.floor(Math.random() * list.length)];
+            while (incompatibleCheck("Loadout", randomOrigin) === true) {
+
                 randomOrigin = list[Math.floor(Math.random() * list.length)];
             }
             break;
@@ -139,7 +165,7 @@ function GetRandomEntry(type) {
 }
 
 function incompatibleCheck(type, origin) {
-    var incompatible = false;
+    var incompatibleWithSetup = false;
     if ('incompatible' in origin) {
 
         if (type == "Culture") {
@@ -148,7 +174,7 @@ function incompatibleCheck(type, origin) {
             for (i in origin.incompatible) {
 
                 if (origin.incompatible[i].name == currentSociety1.name || origin.incompatible[i].name == currentSociety2.name) {
-                    incompatible = true;
+                    incompatibleWithSetup = true;
                 }
             }
 
@@ -159,12 +185,12 @@ function incompatibleCheck(type, origin) {
             for (i in origin.incompatible) {
                 if (currentSociety2 != "") {
                     if (currentSociety2.name.indexOf(origin.incompatible[i].name) != -1) {
-                        incompatible = true;
+                        incompatibleWithSetup = true;
                     }
                 }
                 if (currentCulture != "") {
                     if (currentCulture.name.indexOf(origin.incompatible[i].name) != -1) {
-                        incompatible = true;
+                        incompatibleWithSetup = true;
                     }
                 }
             }
@@ -175,12 +201,12 @@ function incompatibleCheck(type, origin) {
             for (i in origin.incompatible) {
                 if (currentSociety1 != "") {
                     if (currentSociety1.name.indexOf(origin.incompatible[i].name) != -1) {
-                        incompatible = true;
+                        incompatibleWithSetup = true;
                     }
                 }
                 if (currentCulture != "") {
                     if (currentCulture.name.indexOf(origin.incompatible[i].name) != -1) {
-                        incompatible = true;
+                        incompatibleWithSetup = true;
                     }
                 }
 
@@ -188,9 +214,32 @@ function incompatibleCheck(type, origin) {
 
         }
     }
-    if (incompatible == true) {
-        console.log("found");
+
+    if (type == "Loadout") {
+
+        var splitOrigins = origin.requirement.split(",");
+
+        if (splitOrigins.length > 1) {
+
+            var multiSetup = splitOrigins[1].split(":");
+            if (!multiSetup.includes(currentCulture.name)) {
+                incompatibleWithSetup = true;
+            }
+
+            if (splitOrigins[0].indexOf(currentOrigin.name) == -1) {
+                // console.log(splitOrigins);
+                // console.log(currentCulture.name + " " + splitOrigins[1]);
+                incompatibleWithSetup = true;
+            }
+        } else {
+            // console.log(currentOrigin.name + " " + splitOrigins[0]);
+
+            if (splitOrigins[0].indexOf(currentOrigin.name) == -1) {
+                console.log(splitOrigins);
+                incompatibleWithSetup = true;
+            }
+        }
     }
 
-    return incompatible;
+    return incompatibleWithSetup;
 }
