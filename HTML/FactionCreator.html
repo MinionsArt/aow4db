@@ -51,7 +51,7 @@
             <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
             <div style="height:110px">Name
                 <img src="/aow4db/Icons/Interface/Sigil.png" width="100px" height="100px" style="float:left">
-                <input style="top: 0px;position: absolute;" type="text" id="fname" name="fname">
+                <input type="text" value="Ruler Name" class="inputfield" id="fname" name="fname">
                 <div id="currentAffinity" class="affinityText"> </div>
             </div>
             <div> Godir
@@ -67,7 +67,9 @@
 
             </div>
             <div> Race
+                <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
                 <div id="buttonContainer">
+
                     <button class="button" id="originButtonForm"></button>
 
                 </div>
@@ -513,6 +515,17 @@
         border-image: url(/aow4db/Icons/9slicetooltip.png);
         border-image-slice: 10 10 10 10;
         text-shadow: 2px 2px black;
+    }
+
+    .inputfield {
+        border-width: 6px;
+        /* width: 300px; */
+        border-style: solid;
+        border-width: 10px;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        background-color: black;
+        color: #F0F8FF;
     }
 
     .affinityText {
