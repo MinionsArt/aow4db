@@ -162,6 +162,11 @@ function incompatibleCheck(type, origin) {
                         incompatible = true;
                     }
                 }
+                if (currentCulture != "") {
+                    if (currentCulture.name.indexOf(origin.incompatible[i].name) != -1) {
+                        incompatible = true;
+                    }
+                }
             }
 
         }
@@ -170,6 +175,11 @@ function incompatibleCheck(type, origin) {
             for (i in origin.incompatible) {
                 if (currentSociety1 != "") {
                     if (currentSociety1.name.indexOf(origin.incompatible[i].name) != -1) {
+                        incompatible = true;
+                    }
+                }
+                if (currentCulture != "") {
+                    if (currentCulture.name.indexOf(origin.incompatible[i].name) != -1) {
                         incompatible = true;
                     }
                 }
