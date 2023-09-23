@@ -10,13 +10,25 @@
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Tomes.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Faction.js"></script>
+
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/FactionCreation.json"></script>
     <script>
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
 
-
+                SetupButtons("Origin", GetAllOrigins());
+                SetupButtons("Tome", GetAllStartingTomes());
+                SetupButtons("Culture", GetAllCultures());
+                SetupButtons("Form", GetAllForms());
+                SetupButtons("Body", GetAllBodyTraits());
+                SetupButtons("Mind", GetAllMindTraits());
+                SetupButtons("Society1", GetAllSocietyTraits());
+                SetupButtons("Society2", GetAllSocietyTraits());
+                SetRandomStart();
 
             });
 
@@ -27,48 +39,508 @@
     </script>
 
 
-    <title>Age of Wonders 4 Database - Strategic Spells</title>
+    <title>Age of Wonders 4 Database - Faction Creator</title>
 </head>
 
 <body>
     <div id="header"></div>
 
-    <div class="textblocktitle">
-        Faction Creator by EricDB
+    <div class="factioncreator">
 
+        <div class="container">
+            <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
+            <div style="height:110px">Name
+                <img src="/aow4db/Icons/Interface/Sigil.png" width="100px" height="100px" style="float:left">
+                <input style="top: 0px;position: absolute;" type="text" id="fname" name="fname">
+                <div id="currentAffinity" class="affinityText"> </div>
+            </div>
+            <div> Godir
+                <div id="buttonContainer">
+                    <button class="button" id="originButtonOrigin"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonTome"></button>
+
+                </div>
+
+            </div>
+            <div> Race
+                <div id="buttonContainer">
+                    <button class="button" id="originButtonForm"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonBody"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonMind"></button>
+
+                </div>
+            </div>
+            <div> Culture
+                <div id="buttonContainer">
+                    <button class="button" id="originButtonCulture"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonSociety1"></button>
+
+                </div>
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonSociety2"></button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="selections">Selections
+
+            <div id="originWrapperOrigin" class="wrappers" style="display: none;">
+
+            </div>
+            <div id="originWrapperTome" class="wrappers" style="display: none;">
+            </div>
+            <div id="originWrapperForm" class="wrappers" style="display: none;">
+
+            </div>
+            <div id="originWrapperBody" class="wrappers" style="display: none;">
+
+            </div>
+            <div id="originWrapperMind" class="wrappers" style="display: none;">
+
+            </div>
+            <div id="originWrapperCulture" class="wrappers" style="display: none;">
+
+            </div>
+            <div id="originWrapperSociety1" class="wrappers" style="display: none;">
+
+            </div>
+            <div id="originWrapperSociety2" class="wrappers" style="display: none;">
+
+            </div>
+        </div>
     </div>
-
-    <div class="wrap">
-        <iframe frameborder="0" src="https://itch.io/embed-upload/7830637?color=00bdc9" allowfullscreen="" width="1920" height="1160"><a href="https://ericdb.itch.io/wonderapp">Play WonderApp on itch.io</a></iframe>
-    </div>
-
-
-
 
 
 </body>
+<script>
+    var currentOrigin = "";
+    var currentTome = "";
+    var currentForm = "";
+    var currentBody = "";
+    var currentMind = "";
+    var currentCulture = "";
+    var currentSociety1 = "";
+    var currentSociety2 = "";
 
-<style>
-    .wrap {
-        width: 1920px;
-        height: 1160px;
-        overflow: hidden;
-        margin-left: auto;
-        position: relative;
-        margin-right: auto;
+    function SetRandomStart() {
+
+
+        var listofChoice = new Array();
+        listofChoice.push("Tome");
+        listofChoice.push("Origin");
+        listofChoice.push("Form");
+        listofChoice.push("Body");
+        listofChoice.push("Mind");
+        listofChoice.push("Culture");
+        listofChoice.push("Society1");
+        listofChoice.push("Society2");
+
+
+        var j = "";
+        for (j = 0; j < listofChoice.length; j++) {
+            var randomEntry = GetRandomEntry(listofChoice[j]);
+
+            var currentChoice = listofChoice[j];
+
+            switch (currentChoice) {
+                case "Tome":
+
+                    currentTome = randomEntry;
+                    break;
+                case "Origin":
+                    currentOrigin = randomEntry;
+                    break;
+                case "Form":
+                    currentForm = randomEntry;
+                    break;
+                case "Body":
+                    currentBody = randomEntry;
+                    break;
+                case "Mind":
+                    currentMind = randomEntry;
+                    break;
+                case "Culture":
+                    currentCulture = randomEntry;
+                    break;
+                case "Society1":
+                    currentSociety1 = randomEntry;
+                    break;
+                case "Society2":
+                    currentSociety2 = randomEntry;
+                    break;
+            }
+
+
+
+            var originButton = document.getElementById("originButton" + currentChoice);
+            originButton.innerHTML = "";
+
+            SetButtonInfo(originButton, randomEntry, currentChoice);
+        }
+
+
+
+        RecalculateStats();
+
     }
 
-    iframe {
-        width: 100%;
-        height: 100%;
-        transform: scale(0.75);
-        transform-origin: 0 0;
+    function SetupButtons(type, options) {
+        var originButton = document.getElementById("originButton" + type);
+        var originWrapper = document.getElementById("originWrapper" + type);
+
+        // List of origin options
+
+
+        // Function to toggle the origin selection buttons
+        function toggleOriginButtons() {
+            if (originWrapper.style.display === "none" || originWrapper.style.display === "") {
+                originWrapper.style.display = "block";
+            } else {
+                originWrapper.style.display = "none";
+            }
+        }
+
+        // Function to handle the selection of an origin
+        function selectOrigin(origin) {
+            originButton.textContent = "";
+
+            SetButtonInfo(originButton, origin, type);
+            // assign current selection
+            switch (type) {
+                case "Tome":
+                    currentTome = origin;
+                    break;
+                case "Origin":
+                    currentOrigin = origin;
+                    break;
+                case "Body":
+                    currentBody = origin;
+                    break;
+                case "Culture":
+                    currentCulture = origin;
+                    break;
+                case "Form":
+                    currentForm = origin;
+                    break;
+                case "Mind":
+                    currentMind = origin;
+                    break;
+                case "Society1":
+                    currentSociety1 = origin;
+                    break;
+                case "Society2":
+                    currentSociety2 = origin;
+                    break;
+            }
+
+            if (incompatibleCheck(type, origin)) {
+
+                originButton.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+            }
+
+
+            // set affinity  stats
+            RecalculateStats();
+            // swap current known origin
+            toggleOriginButtons();
+        }
+
+        // Create origin buttons dynamically from the list
+        for (const origin of options) {
+            const originButtonNew = document.createElement("button");
+            originButtonNew.className = "button";
+            originButtonNew.addEventListener("click", () => selectOrigin(origin));
+
+            originWrapper.appendChild(originButtonNew);
+            SetButtonInfo(originButtonNew, origin, type);
+
+        }
+
+        // Add click event listener to the "Select Origin" button
+        originButton.addEventListener("click", toggleOriginButtons);
+    }
+
+    function GetCurrentChoiceList() {
+        var listOfAllChoices = new Array();
+
+        listOfAllChoices.push(currentOrigin);
+        listOfAllChoices.push(currentTome);
+        listOfAllChoices.push(currentForm);
+        listOfAllChoices.push(currentBody);
+        listOfAllChoices.push(currentMind);
+        listOfAllChoices.push(currentCulture);
+        listOfAllChoices.push(currentSociety1);
+        listOfAllChoices.push(currentSociety2);
+        return listOfAllChoices;
+    }
+
+    function RecalculateStats() {
+
+        var list = GetCurrentChoiceList();
+
+        var input = "";
+
+
+
+        for (i = 0; i < list.length; i++) {
+            if (list[i] != "") {
+
+                if ('affinity' in list[i]) {
+
+                    input += list[i].affinity + ",";
+                }
+                if ('affinities' in list[i]) {
+                    var bittoadd = duplicateTags(list[i].affinities);
+                    input += bittoadd + ",";
+
+                    input = input.replace(" Empire Astral Affinity", "");
+                    input = input.replace(" Empire Nature Affinity", "");
+                    input = input.replace(" Empire Order Affinity", "");
+                    input = input.replace(" Empire Materium Affinity", "");
+                    input = input.replace(" Empire Chaos Affinity", "");
+                    input = input.replace(" Empire Shadow Affinity", "");
+                }
+            }
+
+        }
+        input = input.slice(0, -1);
+
+
+        // Split the input string into an array of words
+        const words = input.split(',').map(word => word.trim());
+
+        // Create an object to store word counts
+        const wordCounts = {};
+
+        // Count the occurrences of each word
+        words.forEach(word => {
+            if (wordCounts[word]) {
+                wordCounts[word]++;
+            } else {
+                wordCounts[word] = 1;
+            }
+        });
+
+        // Sort the words by count in descending order
+        const sortedWords = Object.keys(wordCounts).sort((a, b) => wordCounts[b] - wordCounts[a]);
+
+        // Format the result
+        var result = sortedWords.map(word => {
+            const count = wordCounts[word];
+
+            return ` ${word} ${count}`;
+        }).join(', ');
+
+        const affinitySummary = document.getElementById("currentAffinity");
+
+        result = result.replaceAll(",", "");
+
+
+        affinitySummary.innerHTML = result;
+
+    }
+
+
+
+    function duplicateTags(inputString) {
+        const tagPattern = /(\d+)\s+<([^>]+)>/g;
+
+        // Find all matches of the pattern
+        const matches = inputString.matchAll(tagPattern);
+
+        let result = '';
+
+        for (const match of matches) {
+            const count = parseInt(match[1]);
+            const tagName = match[2];
+
+            // Create a repeated tag string
+            const repeatedTags = Array(count).fill(`<${tagName}></${tagName}>`).join(', ');
+
+            // Append the repeated tags to the result
+            if (result !== '') {
+                result += ', ';
+            }
+            result += repeatedTags;
+        }
+
+        return result;
+    }
+
+
+
+    function SetButtonInfo(button, origin, type) {
+        const image = document.createElement("img");
+        image.setAttribute("width", "40");
+        image.setAttribute("height", "40");
+
+        if (type == "Tome") {
+            image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
+        } else if (type == "Culture" || type == "Origin" || type == "Body" || type == "Mind" || type == "Society1" || type == "Society2" || type == "Form") {
+            image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
+        }
+
+
+        // Create a span element to hold the button text
+        const buttonText = document.createElement("span");
+
+        buttonText.innerHTML = origin.name;
+
+        // Append the image and button text to the button element
+        button.appendChild(image);
+        button.appendChild(buttonText);
+
+
+
+        // create mouseover
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+        spa.setAttribute("style", "margin-left:113px");
+
+
+        if (type == "Origin" || type == "Culture" || type == "Form" || type == "Society1" || type == "Society2" || type == "Mind" || type == "Body") {
+            spa.innerHTML = origin.description;
+        } else if (type == "Tome") {
+            SetTomePreview(spa, origin);
+
+        }
+
+        button.append(spa);
+    }
+
+    function SetTomePreview(span, origin) {
+        span.innerHTML = origin.gameplay_description;
+    }
+
+</script>
+<style>
+    /* CSS styles for buttons */
+    .button {
+
+        background-color: #007bff00;
+        color: #fff;
+        border: none;
+
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    /* CSS styles for origin buttons */
+    .origin-button {
+        padding: 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 5px;
+
+    }
+
+    .button-inset {
+        background-color: #007bff00;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        left: 30px;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-random {
+
+        background-color: #9a0f96e8;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        left: 30px;
+        height: 30px;
+        /* display: flex; */
+        /* justify-content: space-between; */
+
+    }
+
+    .wrappers {
+        position: relative;
+
+    }
+
+    .selections {
+        width: 300px;
+
+
+        display: inline-block;
+        position: relative;
+    }
+
+    .container {
+
+        display: inline-block;
+        position: relative;
+
+        width: 358px;
+
+        left: 102px;
+        top: 30px;
+
+        background-image: url(/aow4db/Icons/tooltipBG.png);
+        font-size: 13px;
+        color: #bbcdf6;
+        text-align: left;
+        border-width: 10px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        text-shadow: 2px 2px black;
+    }
+
+    .affinityText {
+
+        font-size: 20px;
+
+        position: relative;
+        left: 20px;
+        padding: 15px;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .button:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .button-inset:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .factioncreator {
+        width: 800px;
+        display: flex;
+        justify-content: space-between;
     }
 
 </style>
 
 </html>
-<footer>
-    <br>
-    <br>
-</footer>
+<footer><br><br></footer>

@@ -244,8 +244,8 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.innerHTML = "<img style=\"float:left;\" src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetUnitTierAndName(splitIcon[0]);
 
             AddTriangleForDLCUnits("Unit", splitIcon[0], btn);
-          
-          
+
+
 
         } else if (cardType === "searchSpell") {
             btn.innerHTML = GetSpellTierAndName(list[i]);
@@ -291,39 +291,39 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
 }
 
-function AddTriangleForDLCUnits(type, string, div){
+function AddTriangleForDLCUnits(type, string, div) {
     var DLCCheck = CheckForDLCContent(type, string);
     //console.log(DLCCheck);
-    if(DLCCheck != null){
-     var triangle = document.createElement("DIV");
-     triangle.className =  DLCCheck.replace(" ","") +"triangle";
-     triangle.setAttribute("style", "top: -19px;right: -18px;");
-    // triangle.setAttribute("style", "top: -65px;right: -214px;");
+    if (DLCCheck != null) {
+        var triangle = document.createElement("DIV");
+        triangle.className = DLCCheck.replace(" ", "") + "triangle";
+        triangle.setAttribute("style", "top: -19px;right: -18px;");
+        // triangle.setAttribute("style", "top: -65px;right: -214px;");
 
-     div.appendChild(triangle);
+        div.appendChild(triangle);
     }
 }
 
-function CheckForDLCContent(type, string){
-    if(type.toLowerCase().indexOf("unit") != -1){
-       for (let index = 0; index < jsonUnits.units.length; index++) {
-        if(jsonUnits.units[index].id == string){
-            if('DLC' in jsonUnits.units[index]){
-                return jsonUnits.units[index].DLC;
+function CheckForDLCContent(type, string) {
+    if (type.toLowerCase().indexOf("unit") != -1) {
+        for (let index = 0; index < jsonUnits.units.length; index++) {
+            if (jsonUnits.units[index].id == string) {
+                if ('DLC' in jsonUnits.units[index]) {
+                    return jsonUnits.units[index].DLC;
+                }
             }
+
         }
-        
-       }
     }
-    if(type.toLowerCase() == "tome"){
+    if (type.toLowerCase() == "tome") {
         for (let index = 0; index < jsonTomes.tomes.length; index++) {
-            if(jsonTomes.tomes[index].id == string){
-                if('DLC' in jsonTomes.tomes[index]){
+            if (jsonTomes.tomes[index].id == string) {
+                if ('DLC' in jsonTomes.tomes[index]) {
                     return jsonTomes.tomes[index].DLC;
                 }
             }
-            
-           }
+
+        }
     }
     return null;
 }
@@ -1560,7 +1560,7 @@ function SetUpSpawnTable() {
     var content = document.getElementsByClassName("content");
     var j = "";
     for (j in content) {
-       coll[j].classList.toggle("active");
+        coll[j].classList.toggle("active");
         //  var content = this.nextElementSibling;
         if (content[j].style.display === "grid") {
             content[j].style.display = "none";
@@ -1819,7 +1819,7 @@ async function showSpellFromList(list, divID) {
 
 
     await spawnSpellCards(list, divID);
-   
+
     for (var i = 0; i < list.length; i++) {
 
         showSpell(list[i], true);
@@ -1985,7 +1985,7 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 
     var list = new Array();
     list = findSpellsWithArgument(argument, argumentType);
-   
+
 
     if (overwritetext.indexOf(">") != -1) {
         overwritetext = overwritetext.split("/")[1];
@@ -2243,21 +2243,21 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
 
         }
     }
-// Remove duplicate objects from the array
-const uniqueArray = removeDuplicatesFromArray(finalCheckedList);
-return uniqueArray;
+    // Remove duplicate objects from the array
+    const uniqueArray = removeDuplicatesFromArray(finalCheckedList);
+    return uniqueArray;
 }
 
 function removeDuplicatesFromArray(arr) {
     let unique = {};
     return arr.filter(item => {
-      if (!unique[item]) {
-        unique[item] = true;
-        return true;
-      }
-      return false;
+        if (!unique[item]) {
+            unique[item] = true;
+            return true;
+        }
+        return false;
     });
-  }
+}
 
 
 function findTraitsWithArgument(argumentType, affinity) {
@@ -3669,7 +3669,7 @@ function showSiegeProject(id, showOrigin) {
             modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
             modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
             descriptionDiv = document.getElementById("moddescription");
-            description =   "<hr>" +jsonSiegeProjects.projects[i].description;
+            description = "<hr>" + jsonSiegeProjects.projects[i].description;
 
             description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
@@ -3701,7 +3701,7 @@ function showSiegeProject(id, showOrigin) {
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
-                modName.innerHTML  += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
+                modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
                     var newDivForMount = document.createElement("DIV");
                     newDivForMount.className = "mountToolTip";
@@ -3926,11 +3926,11 @@ function showTome(a, div) {
             if (jsonTomes.tomes[j].tier === 1 || jsonTomes.tomes[j].tier === 2 || jsonTomes.tomes[j].tier === 3 || jsonTomes.tomes[j].tier === 4 || jsonTomes.tomes[j].tier === 5) {
                 amount = 5;
             }
-          
+
 
             if (amount != "") {
                 div.innerHTML = "+" + amount + "<casttactical></casttactical>" + "+" + amount + "<caststrategic></caststrategic>";
-           }
+            }
 
             unitTypesDiv.appendChild(div);
 
@@ -4166,7 +4166,7 @@ function showStructure(a, showOrigin) {
             if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
                 if (tomeNameandTier != "") {
                     if (tomeNameandTier[1] != 0) {
-                       
+
                         tier.innerHTML = "<br> Tier " + romanize(tomeNameandTier[1]) + " - " + tomeNameandTier[0] + "<br>";
                     } else {
                         tier.innerHTML = "<br>" + tomeNameandTier[0] + "<br>";
@@ -4413,7 +4413,7 @@ function ShowDestinyTraits() {
         modName = document.getElementById("modname");
         nameString = "";
         nameString = jsonDestiny.traits[j].name.toUpperCase();
-      
+
 
         modName.innerHTML = nameString;
         // backtracktome
@@ -4459,7 +4459,7 @@ function ShowDestinyTraits() {
         tier.innerHTML = "";
 
         cost = document.getElementById("modcost");
-       
+
         cost.innerHTML = jsonDestiny.traits[j].category;
 
         cost.setAttribute("id", "modcost" + a);
@@ -4697,9 +4697,9 @@ function showSpell(a, showOrigin) {
             var upkeep = document.getElementById("modupkeep");
             if ('upkeep' in jsonSpells.spells[j]) {
                 var upkeep = document.getElementById("modupkeep");
-                upkeep.innerHTML =  "Upkeep: " + jsonSpells.spells[j].upkeep;
-    
-                
+                upkeep.innerHTML = "Upkeep: " + jsonSpells.spells[j].upkeep;
+
+
 
             }
             upkeep.setAttribute("id", "modupkeep" + a);
@@ -4738,23 +4738,23 @@ function showSpell(a, showOrigin) {
                 // extra info
 
 
-                 info = document.createElement("DIV");
+                info = document.createElement("DIV");
                 info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpSpawnTable()\">Spawn Chances</button>";
                 var collapsibleC = document.createElement("DIV");
                 collapsibleC.classList = "content";
-               
-                 for (let index = 0; index < jsonSpawnTables.spawnTable.length; index++) {
-                    if(jsonSpawnTables.spawnTable[index].id == a){
+
+                for (let index = 0; index < jsonSpawnTables.spawnTable.length; index++) {
+                    if (jsonSpawnTables.spawnTable[index].id == a) {
                         for (let j = 0; j < jsonSpawnTables.spawnTable[index].categories.length; j++) {
                             var div = ConvertSpawnTable(jsonSpawnTables.spawnTable[index].categories[j].table);
-                
+
                             collapsibleC.append(div);
-                            
+
                         }
                     }
-                    
-                 }
-               
+
+                }
+
                 info.append(collapsibleC);
                 descriptionDiv.append(info);
             }
@@ -4771,7 +4771,7 @@ function showSpell(a, showOrigin) {
             cost = document.getElementById("modcost");
             cost.innerHTML = "Cost: " + jsonSpells.spells[j].casting_cost;
 
-        
+
             if (jsonSpells.spells[j].tactical === true) {
                 cost.innerHTML += " " + jsonSpells.spells[j].operation_point_cost + "<casttactical></casttactical>"
             } else {
@@ -4840,41 +4840,47 @@ function showSpell(a, showOrigin) {
 
 function ConvertSpawnTable(input) {
     const entries = input.split(",");
-  
+
     const bulletListName = entries.shift(); // Get the first entry as the bullet list name
-  
+
     // Calculate the percentages for each entry
     const entryCounts = {};
     for (const entry of entries) {
-      entryCounts[entry] = (entryCounts[entry] || 0) + 1;
+        entryCounts[entry] = (entryCounts[entry] || 0) + 1;
     }
-  
+
     const percentages = entries.map((entry) => {
-      const percentage = (entryCounts[entry] / entries.length) * 100;
-      return { entry, percentage };
+        const percentage = (entryCounts[entry] / entries.length) * 100;
+        return {
+            entry,
+            percentage
+        };
     });
-  
+
     // Sort the percentages in descending order
     percentages.sort((a, b) => b.percentage - a.percentage);
-  
+
     // Create a bullet list for the unique entries
     const uniqueEntries = [];
     const bulletList = document.createElement("DIV");
-   
+
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
-  
-    for (const { entry, percentage } of percentages) {
-      const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
-  
-      if (!uniqueEntries.includes(itemText)) {
-        uniqueEntries.push(itemText); 
-        bulletList.innerHTML +=
-          "<bullet>" + `${percentage.toFixed(0)}% - ${itemText}` + "</bullet>";
-      }
+
+    for (const {
+            entry,
+            percentage
+        } of percentages) {
+        const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
+
+        if (!uniqueEntries.includes(itemText)) {
+            uniqueEntries.push(itemText);
+            bulletList.innerHTML +=
+                "<bullet>" + `${percentage.toFixed(0)}% - ${itemText}` + "</bullet>";
+        }
     }
     bulletList.innerHTML += "</bulletList>";
     return bulletList;
-  }
+}
 
 function FindUnitsWithSecondaryPassive(trait) {
     var unitsList = new Array();
@@ -4949,7 +4955,7 @@ function showItem(a) {
 
     modName = document.getElementById("modname");
     modName.innerHTML = a.name.toUpperCase();
-    
+
 
 
     modName.setAttribute("id", "modname" + a.id);
@@ -5166,7 +5172,17 @@ function showTrait(a) {
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
             var div = document.createElement("DIV");
-            descriptionDiv.innerHTML ="<hr>" + jsonFactionCreation.traits[i].description;
+            descriptionDiv.innerHTML = "<hr>" + jsonFactionCreation.traits[i].description;
+
+            if ('incompatible' in jsonFactionCreation.traits[i]) {
+                descriptionDiv.innerHTML += "Incompatible with: <bulletlist>";
+                var k = "";
+                for (k in jsonFactionCreation.traits[i].incompatible) {
+
+                    descriptionDiv.innerHTML += "<bullet>" + jsonFactionCreation.traits[i].incompatible[k].name + "</bullet>";
+                }
+                descriptionDiv.innerHTML += "</bulletlist>";
+            }
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
 
@@ -5178,7 +5194,7 @@ function showTrait(a) {
                 var splitAff = jsonFactionCreation.traits[i].affinity.split(",");
                 var j = "";
                 for (j in splitAff) {
-                    tier.innerHTML += "<empire" + splitAff[j] + "> </empire" + splitAff[j] + ">";
+                    tier.innerHTML += splitAff[j];
                 }
 
 
@@ -5230,7 +5246,7 @@ function showHeroTrait(a) {
 
 
 
-            descriptionDiv.innerHTML ="<hr>" + jsonHeroTraits.traits[i].description;
+            descriptionDiv.innerHTML = "<hr>" + jsonHeroTraits.traits[i].description;
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
             unitTypesDiv = document.getElementById("affectUnitTypes");

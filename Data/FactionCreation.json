@@ -177,240 +177,438 @@ var jsonFactionCreation = {
         {
             "type": "Society Trait",
             "id": "artifact_hoarders",
-            "affinity": "materium",
+            "affinity": "<empirematter></empirematter>",
             "name": "Artifact Hoarders",
-            "description": "<bulletlist>They pursue and covet magical artifacts, using such items as inspiration for their magical feats.<bullet>Gain a tier II - III Hero Item after clearing an Ancient Wonder or Infestation.</bullet><bullet>Gain extra <mana></mana> Mana with hero items via <hyperlink>Artifact Hoard</hyperlink>.</bullet><br> <bullet>Start with 2 random hero items.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ritual Cannibals</bullet><bullet>Ruthless Raiders</bullet><bullet>Scions of Evil</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They pursue and covet magical artifacts, using such items as inspiration for their magical feats.<bullet>Gain a tier II - III Hero Item after clearing an Ancient Wonder or Infestation.</bullet><bullet>Gain extra <mana></mana> Mana with hero items via <hyperlink>Artifact Hoard</hyperlink>.</bullet><br> <bullet>Start with 2 random hero items.</bullet></bulletlist>",
+
+
+                },
         {
             "type": "Society Trait",
             "id": "chosen_uniters",
-            "affinity": "order",
+            "affinity": "<empireorder></empireorder>",
             "name": "Chosen Uniters <reputation6></reputation6>",
-            "description": "<bulletlist>They strive to build a realm based on cooperation, but will not hesitate to defend it.<bullet>Gain +20% income from Vassals.</bullet><bullet>+10 <reputation6></reputation6> Alignment</bullet><bullet>Gain +1 <whisperingstone></whisperingstone> Whispering Stone.</bullet><bullet>Shield units and Polearm units have +1 Rank.</bullet><br> <bullet>Start with an extra Shield Unit or Polearm Unit.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ritual Cannibals</bullet><bullet>Ruthless Raiders</bullet><bullet>Scions of Evil</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They strive to build a realm based on cooperation, but will not hesitate to defend it.<bullet>Gain +20% income from Vassals.</bullet><bullet>+10 <reputation6></reputation6> Alignment</bullet><bullet>Gain +1 <whisperingstone></whisperingstone> Whispering Stone.</bullet><bullet>Shield units and Polearm units have +1 Rank.</bullet><br> <bullet>Start with an extra Shield Unit or Polearm Unit.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Ritual Cannibals",
+   },
+                {
+
+                    "name": "Scions of Evil",
+   },
+                {
+
+                    "name": "Ruthless Raiders",
+   }],
+                },
         {
             "type": "Society Trait",
             "id": "devotees_of_good",
-            "affinity": "order",
+            "affinity": "<empireorder></empireorder>",
             "name": "Devotees of Good <reputation6></reputation6>",
-            "description": "<bulletlist>They share pure intentions, compassion and an unerring devotion to the cause of Good.<bullet>Gain +10 <happiness></happiness> City Stability and your Empire gains +5 <influence></influence> Imperium per level of Good Alignment.</bullet><bullet>+10 <reputation6></reputation6> Alignment</bullet><bullet>Support units and Polearm units have +1 Rank.</bullet><br> <bullet>Start with an extra Support Unit or Polearm Unit.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ritual Cannibals</bullet><bullet>Ruthless Raiders</bullet><bullet>Scions of Evil</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They share pure intentions, compassion and an unerring devotion to the cause of Good.<bullet>Gain +10 <happiness></happiness> City Stability and your Empire gains +5 <influence></influence> Imperium per level of Good Alignment.</bullet><bullet>+10 <reputation6></reputation6> Alignment</bullet><bullet>Support units and Polearm units have +1 Rank.</bullet><br> <bullet>Start with an extra Support Unit or Polearm Unit.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Ritual Cannibals",
+   },
+                {
+
+                    "name": "Scions of Evil",
+   },
+                {
+
+                    "name": "Ruthless Raiders",
+   }],
+                },
         {
             "type": "Society Trait",
             "id": "imperialists",
-            "affinity": "order",
+            "affinity": "<empireorder></empireorder>",
             "name": "Imperialists",
-            "description": "<bulletlist>They are focused on the glory of their empire and the development fo their cities.<bullet>Your Throne City and cities that share a border with the Throne City gain +20 <happiness></happiness> City Stability and +20 <gold></gold> Gold income.</bullet><br><bullet>Capital city starts with +1 <population></population> Population</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Adept Settlers</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They are focused on the glory of their empire and the development fo their cities.<bullet>Your Throne City and cities that share a border with the Throne City gain +20 <happiness></happiness> City Stability and +20 <gold></gold> Gold income.</bullet><br><bullet>Capital city starts with +1 <population></population> Population</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Adept Settlers",
+   }],
+                },
         {
             "type": "Society Trait",
             "id": "bannerlords",
-            "affinity": "order",
+            "affinity": "<empireorder></empireorder>",
             "name": "Bannerlords <pantheon></pantheon>",
             "description": "<bulletlist>They value and cultivate good relationships with their vassals, raising their banners in times of war.<bullet>Rally of the Lieges occur twice as often.</bullet><br><bullet>Start with the nearest Free City revealed and gain +25 Allegiance with them.</bullet></bulletlist>"
- },
+                },
 
         {
             "type": "Society Trait",
             "id": "prolific_swarmers",
-            "affinity": "chaos",
+            "affinity": "<empirechaos></empirechaos>",
             "name": "Prolific Swarmers",
             "description": "<bulletlist>They find their strength in fast population growth and overwhelming numbers.<bullet>Cities require -10% <food></food> Food for gaining a new <population></population> Population.</bullet><bullet>Tier 1 units have +1 Rank.</bullet><bullet>Non-Magic Origin units require -20% Unit Upkeep</bullet><br><bullet>Start with an extra Tier 1 unit</bullet></bulletlist>"
- },
+                },
         {
             "type": "Society Trait",
             "id": "ritual_cannibals",
-            "affinity": "chaos",
+            "affinity": "<empirechaos></empirechaos>",
             "name": "Ritual Cannibals <reputation2></reputation2>",
-            "description": "<bulletlist>They believe both in the spiritual power of life.. and in the value of a good banquet.<bullet>Units gain the Corpse Eating ability</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><bullet>The nearest City owned gains +3 <mana></mana> Mana and +3 <food></food> Food per tier of non-Magic Origin units killed or lost after succesful combat.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Chosen Uniters</bullet><bullet>Devotees of Good</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They believe both in the spiritual power of life.. and in the value of a good banquet.<bullet>Units gain the Corpse Eating ability</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><bullet>The nearest City owned gains +3 <mana></mana> Mana and +3 <food></food> Food per tier of non-Magic Origin units killed or lost after succesful combat.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Chosen Uniters",
+   },
+                {
+
+                    "name": "Devotees of Good",
+   }],
+                },
+
         {
             "type": "Society Trait",
             "id": "ruthless_raiders",
-            "affinity": "chaos",
+            "affinity": "<empirechaos></empirechaos>",
             "name": "Ruthless Raiders <reputation2></reputation2>",
-            "description": "<bulletlist>They murder without remorse, more interested in loot and plunder than right or wrong.<bullet>The nearest City owned gains +3<gold></gold> Gold and +3 <draft></draft> Draft per tier of non-Magic Origin units killed or laster after succesful combat.</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><br><bullet>Get 2 random Hero Items.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Chosen Uniters</bullet><bullet>Devotees of Good</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They murder without remorse, more interested in loot and plunder than right or wrong.<bullet>The nearest City owned gains +3<gold></gold> Gold and +3 <draft></draft> Draft per tier of non-Magic Origin units killed or laster after succesful combat.</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><br><bullet>Get 2 random Hero Items.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Chosen Uniters",
+   },
+                {
+
+                    "name": "Devotees of Good",
+   }],
+
+    },
         {
             "type": "Society Trait",
             "id": "chosen_destroyers",
-            "affinity": "chaos",
+            "affinity": "<empirechaos></empirechaos>",
             "name": "Chosen Destroyers <reputation2></reputation2> <pantheon></pantheon>",
-            "description": "<bulletlist>They are warmongers and destroyers, choosing violence over diplomacy any time they can.<bullet>Razing cities grand a permanent +40 <gold></gold> Gold, +20 <mana></mana> Mana, and +20 <knowledge></knowledge> Knowledge income.</bullet><bullet>Can not obtain new Cities and conqured cities can only be razed</bullet><br><bullet>Suffer -300 Relations with all Free Cities and -300 Empire Relations with all other Empires.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Chosen Uniters</bullet><bullet>Devotees of Good</bullet><bullet>Imperalists</bullet><bullet>Adept Settlers</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They are warmongers and destroyers, choosing violence over diplomacy any time they can.<bullet>Razing cities grand a permanent +40 <gold></gold> Gold, +20 <mana></mana> Mana, and +20 <knowledge></knowledge> Knowledge income.</bullet><bullet>Can not obtain new Cities and conqured cities can only be razed</bullet><br><bullet>Suffer -300 Relations with all Free Cities and -300 Empire Relations with all other Empires.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Adept Settlers",
+   },
+                {
+
+                    "name": "Imperialists",
+   },
+                {
+
+                    "name": "Chosen Uniters",
+   }, {
+                    "name": "Devotees of Good"
+                }],
+                },
         {
             "type": "Society Trait",
             "id": "adept_settlers",
-            "affinity": "nature",
+            "affinity": "<empirenature></empirenature>",
             "name": "Adept Settlers",
-            "description": "<bulletlist>They share a natural telent for cultivating the land. They thrive on fertile plains, quickly expanding their realm.<bullet>+1 City Cap.</bullet><bullet>Founding cities cost -25% less <influence></influence> Imperium</bullet><bullet>Newly founded cities gain +1 <population></population> Population.</bullet><br><bullet>Capital city starts with +1 <population></population> Population.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Imperialists</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They share a natural telent for cultivating the land. They thrive on fertile plains, quickly expanding their realm.<bullet>+1 City Cap.</bullet><bullet>Founding cities cost -25% less <influence></influence> Imperium</bullet><bullet>Newly founded cities gain +1 <population></population> Population.</bullet><br><bullet>Capital city starts with +1 <population></population> Population.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Imperialists",
+   }],
+
+    },
         {
             "type": "Society Trait",
             "id": "experienced_seafarers",
-            "affinity": "nature",
+            "affinity": "<empirenature></empirenature>",
             "name": "Experienced Seafarers",
             "description": "<bulletlist>With strong sea legs, they are unrivaled on the water and know how to dredge up extra value from its depths.<bullet>Fisheries yield +2 <gold></gold> Gold, +2 <food></food> Food, and +2 <draft></draft> Draft.</bullet><bullet>Naval Units cost -25% resources to recruit and maintain</bullet><bullet>Naval Units have +2 Rank</bullet><br><bullet>Start with Basic Seafaring Empire Skill unlocked.</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "fabled_hunters",
-            "affinity": "nature",
+            "affinity": "<empirenature></empirenature>",
             "name": "Fabled Hunters",
-            "description": "<bulletlist>They are legendary hunters, sharing strong survival instincts and excelling on ranged combat and exploration.<bullet>Gain +100% resources from clearing an Infestation, Ancient Wonder, or Resource Node.</bullet><bullet>Ranged and Skirmisher Units have +1 Rank</bullet><br><bullet>Start with an extra Ranged Unit.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Mystic Culture</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They are legendary hunters, sharing strong survival instincts and excelling on ranged combat and exploration.<bullet>Gain +100% resources from clearing an Infestation, Ancient Wonder, or Resource Node.</bullet><bullet>Ranged and Skirmisher Units have +1 Rank</bullet><br><bullet>Start with an extra Ranged Unit.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Mystic",
+   }],
+
+    },
         {
             "type": "Society Trait",
             "id": "talented_collectors",
-            "affinity": "nature",
+            "affinity": "<empirenature></empirenature>",
             "name": "Talented Collectors <pantheon></pantheon>",
             "description": "<bulletlist>They are fascinated by rare materials and spend large parts of their lives collecting and studying them.<bullet>Cities gain +5 <gold></gold> Gold, <mana></mana> Mana, <research></research> Knowledge, <food></food> Food, <production></production> Production, and <draft></draft> Draft for each Magic Material in their domain.</bullet><br><bullet>Start with a Magic Material nearby.</bullet></bulletlist>"
- }, {
+    },
+        {
             "type": "Society Trait",
             "id": "devious_watchers",
-            "affinity": "shadow",
+            "affinity": "<empireshadow></empireshadow>",
             "name": "Devious Watchers",
-            "description": "<bulletlist>They are talented spies, sneaking past enemy lines to gain precious information<bullet>Cities and Provinces have +2 Vision Range</bullet><bullet>Scout units have Universal Camouflage</bullet><bullet>The Wayfarer Unit Enchantment is already active and costs no mana upkeep</bullet><bullet>Outposts start with the Watchtower upgrade built</bullet><br><bullet>Start with an extra Scout Unit</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ancient Wise Ones</bullet><bullet>Gifted Casters</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They are talented spies, sneaking past enemy lines to gain precious information<bullet>Cities and Provinces have +2 Vision Range</bullet><bullet>Scout units have Universal Camouflage</bullet><bullet>The Wayfarer Unit Enchantment is already active and costs no mana upkeep</bullet><bullet>Outposts start with the Watchtower upgrade built</bullet><br><bullet>Start with an extra Scout Unit</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Ancient Wise Ones",
+   }, {
+
+                    "name": "Gifted Casters",
+   }],
+
+    },
         {
             "type": "Society Trait",
             "id": "powerful_evokers",
-            "affinity": "shadow",
+            "affinity": "<empireshadow></empireshadow>",
             "name": "Powerful Evokers",
             "description": "<bulletlist>They eminate raw power as they release an endless barrage of destruction upon all in their path.<bullet>Battle Mage and Support Units have +1 Rank</bullet><bullet>Battle Mage Units and Support Units provide +5 <casttactical></casttactical> Combat Casting Points at the start of combat.</bullet><br><bullet>Start with an extra Battle Mage or Support Unit</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "scions_of_evil",
-            "affinity": "shadow",
+            "affinity": "<empireshadow></empireshadow>",
             "name": "Scions of Evil <reputation2></reputation2>",
-            "description": "<bulletlist>They share a thirst for knowledge and power, thriving in their pursout of Evil<bullet>Cities have +10 <draft></draft> Draft and your Empire gains +5 <influence><influence> Imperium per level of Evil Alignment</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><bullet>Units are recruited with +1 Rank you are at the maximum evil Alignment</bullet><bullet>Shock and Shield units have +1 Rank</bullet><br><bullet>Start with an extra Shock or Shield Unit</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Chosen Uniters</bullet><bullet>Devotees of Good</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They share a thirst for knowledge and power, thriving in their pursout of Evil<bullet>Cities have +10 <draft></draft> Draft and your Empire gains +5 <influence><influence> Imperium per level of Evil Alignment</bullet><bullet>-10 <reputation2></reputation2> Alignment</bullet><bullet>Units are recruited with +1 Rank you are at the maximum evil Alignment</bullet><bullet>Shock and Shield units have +1 Rank</bullet><br><bullet>Start with an extra Shock or Shield Unit</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Chosen Uniters",
+   },
+                {
+
+                    "name": "Devotees of Good",
+   }
+    ],
+
+    },
         {
             "type": "Society Trait",
             "id": "silver_tongued",
-            "affinity": "shadow",
+            "affinity": "<empireshadow></empireshadow>",
             "name": "Silver Tongued <pantheon></pantheon>",
             "description": "<bulletlist>They know when to flatter and when to extort, elevating intrigue itself to a lucrative art.<bullet>Pronouncements cost -50% less.</bullet><bullet>Trade deals with Free Cities cost you -100% resources.</bullet><br><bullet>Start with an extra Scout Unit</bullet><bullet>Start with Diplomatic Focus unlocked</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "great_builders",
-            "affinity": "materium",
+            "affinity": "<empirematter></empirematter>",
             "name": "Great Builders",
             "description": "<bulletlist>They form a society of builders and makers who take pride in the things they construct.<bullet>Quarries yield +2 <gold></gold> Gold.</bullet><bullet>Special Province Improvements cost -50% <production></production> Production.</bullet><br><bullet>Capital city starts with a Workshop and Stone Walls</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "runesmiths",
-            "affinity": "materium",
+            "affinity": "<empirematter></empirematter>",
             "name": "Runesmiths",
             "description": "<bulletlist>They are legendary smiths, weaving magic into their finely crafted creations through enchantments.<bullet>Unit Enchantment Research costs -30% <knowledge></knowledge> Knowledge to unlock.</bullet><bullet>Unit Enchantment cost -30% upkeep.</bullet><bullet>Shield and Polearm Units have +1 Rank</bullet><br><bullet>Starts with an extra Shield or Polearm Unit</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "wonder_architects",
-            "affinity": "materium",
+            "affinity": "<empirematter></empirematter>",
             "name": "Wonder Architects",
             "description": "<bulletlist>They are fascinated by unique constructions and the Ancient Wonders of old.<bullet>Ancient Wonders do not require <population></population> Population in order to be annexed to a City.</bullet><bullet>Cities gain +20% <production></production> Production per annexed Ancient Wonder.</bullet><br><bullet>Starts with an 1 nearby Ancient Wonder cleared</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "perfectionist_artisans",
-            "affinity": "materium",
+            "affinity": "<empirematter></empirematter>",
             "name": "Perfectionist Artisans <pantheon></pantheon>",
             "description": "<bulletlist>They demand perfection of their artisans, taking their time to build marvels like no other.<bullet>City Structures cost 100% more <production></production> Production but grant <happiness></happiness> City Stability and +5 <gold></gold> Gold in addition to their normal effects.</bullet><bullet>Tier 3 Units have +1 Rank.</bullet><bullet>City Cap is decreased by -2.</bullet><br><bullet>Starts with an extra tier 3 unit.</bullet></bulletlist>"
- },
+    },
 
         {
             "type": "Society Trait",
             "id": "ancient_wise_ones",
-            "affinity": "astral",
+            "affinity": "<empirearcana></empirearcana>",
             "name": "Ancient Wise Ones",
-            "description": "<bulletlist>They have been around since the start of history, homing their minds in the pursuit of arcane knowledge.<bullet>When a Tome is unlocked, a random skill from that Tom costs -60% <research></research> Knowledge.</bullet><br><bullet>1 random research skill is already unlocked.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Gifted Casters</bullet><bullet>Devious Watchers</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They have been around since the start of history, homing their minds in the pursuit of arcane knowledge.<bullet>When a Tome is unlocked, a random skill from that Tom costs -60% <research></research> Knowledge.</bullet><br><bullet>1 random research skill is already unlocked.</bullet></bulletlist>",
+            "incompatible": [
+                {
+
+                    "name": "Gifted Casters",
+   },
+                {
+
+                    "name": "Devious Watchers",
+   }
+    ],
+
+    },
         {
             "type": "Society Trait",
             "id": "gifted_casters",
-            "affinity": "astral",
+            "affinity": "<empirearcana></empirearcana>",
             "name": "Gifted Casters",
-            "description": "<bulletlist>They are blessed with an innate talent for spellcasting, rarely encountering problems that can't be solved by an abundant use of magic.<bullet>+10 <casttactical></casttactical> Combat Casting Points.</bullet><bullet>+10 <caststrategic></caststrategic> World Map Casting Points.</bullet><bullet>Combat Spells cost -20% less <mana></mana> Mana to cast.<br><bullet>Start with 1 extra Combat Spell unlocked.</bullet></bulletlist><bulletlist>Incompatible with:<bullet>Ancient Wise Ones</bullet><bullet>Devious Watchers</bullet></bulletlist>"
- },
+            "description": "<bulletlist>They are blessed with an innate talent for spellcasting, rarely encountering problems that can't be solved by an abundant use of magic.<bullet>+10 <casttactical></casttactical> Combat Casting Points.</bullet><bullet>+10 <caststrategic></caststrategic> World Map Casting Points.</bullet><bullet>Combat Spells cost -20% less <mana></mana> Mana to cast.<br><bullet>Start with 1 extra Combat Spell unlocked.</bullet></bulletlist",
+            "incompatible": [
+                {
+
+                    "name": "Ancient Wise Ones",
+   },
+                {
+
+                    "name": "Devious Watchers",
+   }
+    ],
+
+    },
+
 
         {
             "type": "Society Trait",
             "id": "mana_channelers",
-            "affinity": "astral",
+            "affinity": "<empirearcana></empirearcana>",
             "name": "Mana Channelers",
             "description": "<bulletlist>They are attuned to the Astral Flows and support their armies by channeling arcane powers.<bullet>Summoning Spells cost -50% <mana></mana> Mana to cast.</bullet><bullet>Magic Origin units have +1 Rank</bullet><br><bullet>Start with an extra Magic Origin unit.</bullet></bulletlist>"
- },
+    },
         {
             "type": "Society Trait",
             "id": "mana_addicts",
-            "affinity": "astral",
+            "affinity": "<empirearcana></empirearcana>",
             "name": "Mana Addicts<pantheon></pantheon>",
             "description": "<bulletlist>They have embraced magic to a degree few can match, gaining more than most from its prowess... but becoming dependant on its marvel in return.<bullet>All units gain Attunement: Mana Addicted.</bullet><bullet>Battle Mage and Support units have +1 Rank</bullet><br><bullet>Start with an extra Battle Mage or Support unit.</bullet></bulletlist>"
- },
+    },
         {
             "type": "Ruler Origin",
             "id": "champion",
             "name": "Champion",
             "description": "<bulletlist>A Ruler risen from the ranks of their people.<bullet>All cities have +10% <gold></gold> Gold income and +20 <happiness></happiness> City Stability.</bullet><bullet>All non-Hero Units gain +20% <xp></xp> Experience</bullet><br><bullet>Start with +100 Relations with Free Cities.</bullet></bulletlist>"
- },
+    },
         {
             "type": "Ruler Origin",
             "id": "wizard_king",
             "name": "Wizard King",
             "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>All cities have +10% <mana></mana> Mana income.</bullet><bullet>+5 <caststrategic></caststrategic> World Map Casting Points and +5 <casttactical></casttactical> Combat Casting Points per level of the Wizard King</bullet><br><bullet>Wizard Kings have the Overchannel ability in combat</bullet></bulletlist>"
- },
+    },
         {
             "type": "Ruler Origin",
             "id": "dragon_lord",
             "name": "Dragon Lord",
             "description": "<bulletlist>A mighty dragon seeking new realms to shape in their vision.<bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Loards have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br><bullet>Dragon Lords have access to powerful Hero Skills and Transformations.</bullet></bulletlist>"
- },
+    },
         {
             "type": "Culture",
             "id": "feudal",
-            "affinity": "nature,order",
+            "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
             "name": "Feudal",
             "description": "<bulletlist>A hierarchic society wherin lords, ladies, and knights reign over peasants. All stand togetherin in battle when their fertile realm in threatened.<bullet>Structures with <food></food> Food income.</bullet><bullet>Units benefit from close formations with Stand Together</bullet>Feudal Lords passive</bullet></bulletlist>"
- },
+    },
         {
             "type": "Culture",
             "id": "barbarian",
-            "affinity": "chaos,nature",
+            "affinity": "<empirechaos></empirechaos>,<empirenature></empirenature>",
             "name": "Barbarian",
             "description": "<bulletlist>A people who thrive on war and aggression. They value strength and prefer to charge head-on into bloody battles.<bullet>Structures with <food></food> Food and <draft></draft> Draft income.</bullet><bullet>Melee units have Primal Strike, dealing extra damage ontheir first strike in combat.</bullet><bullet>Ritual of Alacrity passive</bullet></bulletlist>"
- },
+    },
         {
             "type": "Culture",
             "id": "industrious",
-            "affinity": "materium,materium",
+            "affinity": "<empirematter></empirematter>,<empirematter></empirematter>",
             "name": "Industrious",
             "description": "<bulletlist>Master builders who value grand cities and strong armor, preferring a defensive attitude over an aggressive one.<bullet>Structures with <production></production> Production income.</bullet><bullet>Through Bolstering, units get sturdier as they get hit in battle.</bullet><bullet>Scout Prospecting passive</bullet></bulletlist>"
- },
+    },
         {
             "type": "Culture",
             "id": "high",
-            "affinity": "order,order",
+            "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
             "name": "High",
             "description": "<bulletlist>A highly developed society whose members strive for harmony. When threatened, however, they wield their guiding light as a weapon.<bullet>Structures have <happiness></happiness> City Stability and <knowledge></knowledge> Knowledge income.</bullet><bullet>Units are strengthened with Awakened, revealing their hidden potential</bullet><bullet>+10 <reputation6></reputation6> Alignment.<bullet>Alignment Agenda passive</bullet></bulletlist>"
- },
+    },
         {
             "type": "Culture",
             "id": "dark",
-            "affinity": "shadow,shadow",
+            "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
             "name": "Dark",
             "description": "<bulletlist>A dictatorial civilization where the strong and ruthless dominate the weak. They use forbidden magics to maintain control and weaken their enemies.<bullet>Cities can negate <happiness></happiness> City Stability income penalties.</bullet><bullet>Unique City Structures granting <research></research> Knowledge and extra income from Prisons and Crypts.</bullet><bullet>Units specialize in inflicting negative status effects and exploiting them with Cull the Weak.</bullet><bullet>-10 <reputation2></reputation2> Alignment.</bulletlist>"
- },
+    },
         {
             "type": "Culture",
             "id": "mystic",
-            "affinity": "astral,astral",
+            "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
             "name": "Mystic",
-            "description": "<bulletlist>A culture of scholars, driven to study every corner of the Astral Sea. They prefer to find answers through research and arcane prowess.<bullet>Structures with <mana></mana> Mana income.</bullet><bullet>Untis have Attunement: Star Blades, making them stronger whenever a spell is cast in battle.</bullet><bullet>Astral Echoes passive.</bulletlist><bulletlist>Incompatible with:<bullet>Fabled Hunters</bullet></bulletlist>"
- },
+            "description": "<bulletlist>A culture of scholars, driven to study every corner of the Astral Sea. They prefer to find answers through research and arcane prowess.<bullet>Structures with <mana></mana> Mana income.</bullet><bullet>Untis have Attunement: Star Blades, making them stronger whenever a spell is cast in battle.</bullet><bullet>Astral Echoes passive.</bulletlist>",
+            "incompatible": [
+                {
 
+                    "name": "Fabled Hunters",
+   },
+
+    ],
+
+    },
+        {
+            "type": "Form",
+            "id": "dwarfkin",
+            "name": "Dwarfkin",
+            "description": "Stout, hardy and stubborn beings who are used to living in the most rugged regions of their world.",
+    },
+        {
+            "type": "Form",
+            "id": "elfkin",
+            "name": "Elfkin",
+            "description": "Slender, pointy-eared beings whose kin were the first to inhabit the realms.",
+    },
+        {
+            "type": "Form",
+            "id": "feline",
+            "name": "Feline",
+            "description": "Cat-like beings who move with feline grace.",
+    },
+        {
+            "type": "Form",
+            "id": "goblinoid",
+            "name": "Goblinoid",
+            "description": "Small, hunched beings who love to rampage around in groups. Some are strangely fascinated by sheep.",
+    },
+        {
+            "type": "Form",
+            "id": "halfling",
+            "name": "Halfling",
+            "description": "Stocky, happy-go-lucky beings who enjoy wild adventures just as much as a well-deserved nap.",
+    },
+        {
+            "type": "Form",
+            "id": "human",
+            "name": "Human",
+            "description": "Humanoid beings who are organized and entrepreneurial, albeit impatient at times.",
+
+    },
+        {
+            "type": "Form",
+            "id": "molekin",
+            "name": "Molekin",
+            "description": "Beings who have evolved from underground dwellers and retain their heightened sense of touch.",
+    },
+        {
+            "type": "Form",
+            "id": "orcoid",
+            "name": "Orcoid",
+            "description": "Passionate and strong beings who have faced great prejudice as a result of their kin's history.",
+    },
+        {
+            "type": "Form",
+            "id": "ratkin",
+            "name": "Ratkin",
+            "description": "Rodent-like beings whose groups are often referred to as mischiefs.",
+    },
+        {
+            "type": "Form",
+            "id": "toadkin",
+            "name": "Toadkin",
+            "description": "Stout amphibian-like beings, born with vocal sacs that allow them to communicate through loud croaking.",
+    },
+        {
+            "type": "Form",
+            "id": "lizardfolk",
+            "name": "Lizardfolk",
+            "description": "Slender, scaled creatures who use their tongues to get a sense of their surroundings.",
+    },
 ]
 }
