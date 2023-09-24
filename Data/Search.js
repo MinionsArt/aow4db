@@ -162,13 +162,16 @@ function returnTraitsList(fieldToSearch) {
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            textvalue = Sanitize(jsonFactionCreation.traits[i].description);
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonFactionCreation.traits[i].id)) {
-                    list.push(jsonFactionCreation.traits[i].id);
+            if ('description' in jsonFactionCreation.traits[i]) {
+                textvalue = Sanitize(jsonFactionCreation.traits[i].description);
+                fieldToSearch = fieldToSearch.replaceAll("_", " ");
+                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    if (!isInArray(list, jsonFactionCreation.traits[i].id)) {
+                        list.push(jsonFactionCreation.traits[i].id);
+                    }
                 }
             }
+
         }
 
 
