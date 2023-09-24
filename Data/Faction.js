@@ -235,7 +235,7 @@ function incompatibleCheck(type, origin) {
             // console.log(currentOrigin.name + " " + splitOrigins[0]);
 
             if (splitOrigins[0].indexOf(currentOrigin.name) == -1) {
-                console.log(splitOrigins);
+
                 incompatibleWithSetup = true;
             }
         }

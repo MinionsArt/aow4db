@@ -19,18 +19,18 @@
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-                SetupButtons("Origin", GetAllOrigins());
-                SetupButtons("Tome", GetAllStartingTomes());
-                SetupButtons("Culture", GetAllCultures());
-
-                SetupButtons("Form", GetAllForms());
-                SetupButtons("Body", GetAllBodyTraits());
-                SetupButtons("Mind", GetAllMindTraits());
-                SetupButtons("Society1", GetAllSocietyTraits());
-                SetupButtons("Society2", GetAllSocietyTraits());
-                SetupButtons("Loadout", GetAllLoadouts());
                 SetRandomStart();
+                /*  SetupButtons("Origin");
+                  SetupButtons("Tome");
+                  SetupButtons("Culture");
+
+                  SetupButtons("Form");
+                  SetupButtons("Body");
+                  SetupButtons("Mind");
+                  SetupButtons("Society1");
+                  SetupButtons("Society2");
+                  SetupButtons("Loadout");*/
+
 
             });
 
@@ -54,22 +54,22 @@
             <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
             <div style="height:110px">Name
                 <img src="/aow4db/Icons/Interface/Sigil.png" width="100px" height="100px" style="float:left">
-                <input type="text" value="Ruler Name" class="inputfield" id="fname" name="fname">
+                <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
                 <div id="currentAffinity" class="affinityText"> </div>
             </div>
             <div> Godir
                 <div id="buttonContainer">
-                    <button class="button" id="originButtonOrigin"></button>
+                    <button class="button" id="originButtonOrigin" onclick="SetupButtons('Origin')"></button>
 
                 </div>
 
                 <div id="buttonContainer">
-                    <button class="button-inset" id="originButtonTome"></button>
+                    <button class="button-inset" id="originButtonTome" onclick="SetupButtons('Tome')"></button>
 
                 </div>
 
                 <div id="buttonContainer">
-                    <button class="button-inset" id="originButtonLoadout"></button>
+                    <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons('Loadout')"></button>
 
                 </div>
 
@@ -78,32 +78,32 @@
                 <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
                 <div id="buttonContainer">
 
-                    <button class="button" id="originButtonForm"></button>
+                    <button class="button" id="originButtonForm" onclick="SetupButtons('Form')"></button>
 
                 </div>
 
                 <div id="buttonContainer">
-                    <button class="button-inset" id="originButtonBody"></button>
+                    <button class="button-inset" id="originButtonBody" onclick="SetupButtons('Body')"></button>
 
                 </div>
 
                 <div id="buttonContainer">
-                    <button class="button-inset" id="originButtonMind"></button>
+                    <button class="button-inset" id="originButtonMind" onclick="SetupButtons('Mind')"></button>
 
                 </div>
             </div>
             <div> Culture
                 <div id="buttonContainer">
-                    <button class="button" id="originButtonCulture"></button>
+                    <button class="button" id="originButtonCulture" onclick="SetupButtons('Culture')"></button>
 
                 </div>
 
                 <div id="buttonContainer">
-                    <button class="button-inset" id="originButtonSociety1"></button>
+                    <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons('Society1')"></button>
 
                 </div>
                 <div id="buttonContainer">
-                    <button class="button-inset" id="originButtonSociety2"></button>
+                    <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons('Society2')"></button>
 
                 </div>
             </div>
@@ -111,32 +111,10 @@
 
         <div class="selections">Selections
 
-            <div id="originWrapperOrigin" class="wrappers" style="display: none;">
+            <div id="originWrapperOptions" class=" wrappers" style="display: block;">
 
             </div>
-            <div id="originWrapperTome" class="wrappers" style="display: none;">
-            </div>
 
-            <div id="originWrapperLoadout" class="wrappers" style="display: none;">
-            </div>
-            <div id="originWrapperForm" class="wrappers" style="display: none;">
-
-            </div>
-            <div id="originWrapperBody" class="wrappers" style="display: none;">
-
-            </div>
-            <div id="originWrapperMind" class="wrappers" style="display: none;">
-
-            </div>
-            <div id="originWrapperCulture" class="wrappers" style="display: none;">
-
-            </div>
-            <div id="originWrapperSociety1" class="wrappers" style="display: none;">
-
-            </div>
-            <div id="originWrapperSociety2" class="wrappers" style="display: none;">
-
-            </div>
         </div>
     </div>
 
@@ -210,97 +188,170 @@
 
 
 
-            var originButton = document.getElementById("originButton" + currentChoice);
-            originButton.innerHTML = "";
+            var originButton2 = document.getElementById("originButton" + currentChoice);
+            originButton2.innerHTML = "";
 
-            SetButtonInfo(originButton, randomEntry, currentChoice);
+            // Add click event listener to the "Select Origin" button
+
+            //  originButton2.addEventListener("click", toggleOriginButtons());
+
+
+            //  originButton2.addEventListener("click", () => SetupButtons(currentChoice));
+
+            SetButtonInfo(originButton2, randomEntry, currentChoice);
+
         }
         RecalculateStats();
 
     }
 
-    function SetupButtons(type, options) {
-        var originButton = document.getElementById("originButton" + type);
-        var originWrapper = document.getElementById("originWrapper" + type);
+    // Function to toggle the origin selection buttons
+    function toggleOriginButtons() {
+        console.log("clicked");
+        var originWrapper = document.getElementById("originWrapperOptions");
+        originWrapper.innerHTML = "";
+        /* 
+         if (originWrapper.style.display === "none" || originWrapper.style.display === "") {
+             originWrapper.style.display = "block";
+         } else {
+             originWrapper.style.display = "none";
+         }*/
+    }
 
+    // Function to handle the selection of an origin
+    function selectOrigin(origin, type) {
+
+        var originButton = document.getElementById("originButton" + type);
+        originButton.textContent = "";
+
+        SetButtonInfo(originButton, origin, type);
+
+
+        // assign current selection
+        switch (type) {
+            case "Tome":
+
+                currentTome = origin;
+                break;
+            case "Origin":
+
+                currentOrigin = origin;
+                if (incompatibleCheck("Loadout", currentLoadout)) {
+                    var loadoutButton = document.getElementById("originButtonLoadout");
+                    loadoutButton.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+                }
+                break;
+
+            case "Body":
+
+                currentBody = origin;
+                break;
+            case "Culture":
+
+                currentCulture = origin;
+                break;
+            case "Form":
+
+                currentForm = origin;
+                break;
+            case "Mind":
+                currentMind = origin;
+                break;
+            case "Society1":
+
+                currentSociety1 = origin;
+                break;
+            case "Society2":
+
+                currentSociety2 = origin;
+                break;
+            case "Loadout":
+
+                currentLoadout = origin;
+                break;
+        }
+
+
+
+        //  SetupButtons(type)
+        // set affinity  stats
+        RecalculateStats();
+        // swap current known origin
+
+        toggleOriginButtons();
+    }
+
+
+    function SetupButtons(type) {
+
+        var originWrapper = document.getElementById("originWrapperOptions");
+        originWrapper.innerHTML = "";
+        var originButton = document.getElementById("originButton" + type);
+        console.log(type);
+        var list = new Array();
+
+        // assign current selection
+        switch (type) {
+            case "Tome":
+
+                list = GetAllStartingTomes();
+
+                break;
+            case "Origin":
+                list = GetAllOrigins();
+
+                break;
+
+            case "Body":
+                list = GetAllBodyTraits();
+
+                break;
+            case "Culture":
+                list = GetAllCultures();
+
+                break;
+            case "Form":
+                list = GetAllForms();
+
+                break;
+            case "Mind":
+                list = GetAllMindTraits();
+
+                break;
+            case "Society1":
+                list = GetAllSocietyTraits();
+
+                break;
+
+            case "Loadout":
+                list = GetAllLoadouts();
+
+                break;
+            case "Society2":
+                list = GetAllSocietyTraits();
+
+                break;
+        }
+
+        // console.log(currentChoice);
         // List of origin options
 
-
-        // Function to toggle the origin selection buttons
-        function toggleOriginButtons() {
-            if (originWrapper.style.display === "none" || originWrapper.style.display === "") {
-                originWrapper.style.display = "block";
-            } else {
-                originWrapper.style.display = "none";
-            }
-        }
-
-        // Function to handle the selection of an origin
-        function selectOrigin(origin) {
-            originButton.textContent = "";
-
-            SetButtonInfo(originButton, origin, type);
-            // assign current selection
-            switch (type) {
-                case "Tome":
-                    currentTome = origin;
-                    break;
-                case "Origin":
-                    currentOrigin = origin;
-                    break;
-
-                case "Body":
-                    currentBody = origin;
-                    break;
-                case "Culture":
-                    currentCulture = origin;
-                    break;
-                case "Form":
-                    currentForm = origin;
-                    break;
-                case "Mind":
-                    currentMind = origin;
-                    break;
-                case "Society1":
-                    currentSociety1 = origin;
-                    break;
-                case "Society2":
-                    currentSociety2 = origin;
-                    break;
-                case "Loadout":
-                    currentLoadout = origin;
-                    break;
-            }
-
-            if (incompatibleCheck(type, origin)) {
-
-                originButton.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
-            }
-
-
-            // set affinity  stats
-            RecalculateStats();
-            // swap current known origin
-            toggleOriginButtons();
-        }
-
         // Create origin buttons dynamically from the list
-        for (const origin of options) {
-            const originButtonNew = document.createElement("button");
-            originButtonNew.className = "button";
-            originButtonNew.addEventListener("click", () => selectOrigin(origin));
+        for (const origin of list) {
+            if (!incompatibleCheck(type, origin)) {
+                const originButtonNew = document.createElement("button");
+                originButtonNew.className = "button";
+                originButtonNew.addEventListener("click", () => selectOrigin(origin, type));
 
-            originWrapper.appendChild(originButtonNew);
-            /* if (incompatibleCheck(type, origin)) {
+                originWrapper.appendChild(originButtonNew);
 
-                 originButton.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
-             }*/
-            SetButtonInfo(originButtonNew, origin, type);
+                SetButtonInfo(originButtonNew, origin, type);
+                // originButtonNew.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+            }
+
 
         }
 
-        // Add click event listener to the "Select Origin" button
-        originButton.addEventListener("click", toggleOriginButtons);
     }
 
     function GetCurrentChoiceList() {
