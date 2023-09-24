@@ -193,6 +193,12 @@ function incompatibleCheck(type, origin) {
                         incompatibleWithSetup = true;
                     }
                 }
+
+            }
+            if (currentSociety2.name == origin.name) {
+
+                incompatibleWithSetup = true;
+
             }
 
         }
@@ -209,6 +215,13 @@ function incompatibleCheck(type, origin) {
                         incompatibleWithSetup = true;
                     }
                 }
+
+
+
+            }
+            if (currentSociety1.name == origin.name) {
+
+                incompatibleWithSetup = true;
 
             }
 

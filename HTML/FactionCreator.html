@@ -109,7 +109,8 @@
             </div>
         </div>
 
-        <div class="selections">Selections
+        <div class="selections">
+            <p id="selections"></p>
 
             <div id="originWrapperOptions" class=" wrappers" style="display: block;">
 
@@ -210,12 +211,8 @@
         console.log("clicked");
         var originWrapper = document.getElementById("originWrapperOptions");
         originWrapper.innerHTML = "";
-        /* 
-         if (originWrapper.style.display === "none" || originWrapper.style.display === "") {
-             originWrapper.style.display = "block";
-         } else {
-             originWrapper.style.display = "none";
-         }*/
+        var selectionsText = document.getElementById("selections");
+        selectionsText.textContent = "";
     }
 
     // Function to handle the selection of an origin
@@ -337,10 +334,12 @@
         // List of origin options
 
         // Create origin buttons dynamically from the list
+        var selectionsText = document.getElementById("selections");
+        selectionsText.textContent = "Select " + type;
         for (const origin of list) {
             if (!incompatibleCheck(type, origin)) {
                 const originButtonNew = document.createElement("button");
-                originButtonNew.className = "button";
+                originButtonNew.className = "list-button";
                 originButtonNew.addEventListener("click", () => selectOrigin(origin, type));
 
                 originWrapper.appendChild(originButtonNew);
@@ -388,13 +387,8 @@
                 if ('affinities' in list[i]) {
                     var bittoadd = duplicateTags(list[i].affinities);
                     input += bittoadd + ",";
+                    input = ClearAffinityExtraTags(input);
 
-                    input = input.replace(" Empire Astral Affinity", "");
-                    input = input.replace(" Empire Nature Affinity", "");
-                    input = input.replace(" Empire Order Affinity", "");
-                    input = input.replace(" Empire Materium Affinity", "");
-                    input = input.replace(" Empire Chaos Affinity", "");
-                    input = input.replace(" Empire Shadow Affinity", "");
                 }
             }
 
@@ -434,6 +428,16 @@
 
         affinitySummary.innerHTML = result;
 
+    }
+
+    function ClearAffinityExtraTags(input) {
+        input = input.replace(" Empire Astral Affinity", "");
+        input = input.replace(" Empire Nature Affinity", "");
+        input = input.replace(" Empire Order Affinity", "");
+        input = input.replace(" Empire Materium Affinity", "");
+        input = input.replace(" Empire Chaos Affinity", "");
+        input = input.replace(" Empire Shadow Affinity", "");
+        return input;
     }
 
 
@@ -483,7 +487,20 @@
         const buttonText = document.createElement("span");
 
         buttonText.innerHTML = origin.name;
+        var affinity = "";
+        if ('affinity' in origin) {
+            affinity = ClearAffinityExtraTags(origin.affinity);
+            affinity = affinity.replaceAll(",", "");
+            buttonText.innerHTML += " " + affinity;
+        }
 
+        if ('affinities' in origin) {
+
+            affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
+            affinity = affinity.replaceAll(",", "");
+            buttonText.innerHTML += " " + affinity;
+
+        }
         // Append the image and button text to the button element
         button.appendChild(image);
         button.appendChild(buttonText);
@@ -495,9 +512,9 @@
         spa.className = "tooltiptext";
         spa.setAttribute("style", "margin-left:113px");
 
-
+        spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
         if (type == "Origin" || type == "Culture" || type == "Form" || type == "Society1" || type == "Society2" || type == "Mind" || type == "Body") {
-            spa.innerHTML = origin.description;
+            spa.innerHTML += origin.description;
         } else if (type == "Tome") {
             SetTomePreview(spa, origin);
 
@@ -507,11 +524,19 @@
     }
 
     function SetTomePreview(span, origin) {
-        span.innerHTML = origin.gameplay_description;
+        span.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
+        span.innerHTML += origin.gameplay_description;
+
+
+
     }
 
 </script>
 <style>
+    button {
+        font-family: 'Regular', sans-serif;
+    }
+
     /* CSS styles for buttons */
     .button {
 
@@ -548,6 +573,31 @@
         justify-content: space-between;
     }
 
+    .list-button {
+
+
+        border-width: 3px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        border-image-repeat: stretch;
+        width: 100%;
+        background-color: #111;
+        color: #fff;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
+
+        display: flex;
+        justify-content: normal;
+    }
+
+    .list-button:hover {
+
+        background-color: dimgrey;
+
+    }
+
     .button-random {
 
         background-color: #9a0f96e8;
@@ -570,7 +620,7 @@
     .selections {
         width: 300px;
 
-
+        color: white;
         display: inline-block;
         position: relative;
     }
@@ -583,7 +633,7 @@
         width: 358px;
 
         left: 102px;
-        top: 30px;
+
 
         background-image: url(/aow4db/Icons/tooltipBG.png);
         font-size: 13px;
@@ -620,6 +670,11 @@
     .button:hover .tooltiptext {
         visibility: visible;
     }
+
+    .list-button:hover .tooltiptext {
+        visibility: visible;
+    }
+
 
     /* Show the tooltip text when you mouse over the tooltip container */
     .button-inset:hover .tooltiptext {
