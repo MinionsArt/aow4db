@@ -53,7 +53,12 @@
         <div class="container">
             <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
             <div style="height:110px">
-                <img src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px" style="float:left">
+                <div class="playerSigil" onclick="SetupButtons('Symbol')">
+                    <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="80px" height="80px" style="float:left">
+                    <img class="symbol" id="symbol" src="/aow4db/Icons/Symbols/SigilIcons_01.png" height="50px" style="float:left">
+                </div>
+                <button class="test" id="shieldColor" onclick="ChangeShieldCol()">Color 1</button>
+                <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>
                 <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
                 <div id="currentAffinity" class="affinityText"> </div>
             </div>
@@ -133,8 +138,42 @@
     var currentSociety2 = "";
     var currentLoadout = "";
 
+    function ChangeShieldCol() {
+
+        var shieldElement = document.getElementById("shield");
+        degrees = Math.random() * 360;
+        shieldElement.setAttribute("style", "filter: hue-rotate(" + degrees + "deg)");
+    }
+
+    function ChangeSymbolCol() {
+
+        var symbolElement = document.getElementById("symbol");
+        degrees = Math.random() * 360;
+        symbolElement.setAttribute("style", "filter: hue-rotate(" + degrees + "deg)")
+    }
+
+    function GetRandomSymbol() {
+        var symbolElement = document.getElementById("symbol");
+        var numb = Math.floor(Math.random() * 138);
+        if (numb < 10 && numb > 0) {
+
+            numb = "0" + numb.toString();
+        }
+        if (numb == 0) {
+            numb += 1;
+            numb = "0" + numb.toString();
+        }
+        symbolElement.setAttribute("src", "/aow4db/Icons/Symbols/SigilIcons_" + numb + ".gif");
+
+    }
+
+
+
     function SetRandomStart() {
 
+        GetRandomSymbol();
+        ChangeShieldCol();
+        ChangeSymbolCol();
 
         var listofChoice = new Array();
         listofChoice.push("Tome");
@@ -279,6 +318,29 @@
     }
 
 
+    // Function to handle the selection of an origin
+    function SelectSymbol(origin) {
+
+
+
+        var symbolElement = document.getElementById("symbol");
+
+        if (origin < 10 && origin > 0) {
+
+            origin = "0" + origin.toString();
+        }
+        if (origin == 0) {
+            origin = 138;
+
+        }
+        symbolElement.setAttribute("src", "/aow4db/Icons/Symbols/SigilIcons_" + origin + ".gif");
+
+
+
+        toggleOriginButtons();
+    }
+
+
     function SetupButtons(type) {
 
         var originWrapper = document.getElementById("originWrapperOptions");
@@ -328,6 +390,14 @@
                 list = GetAllSocietyTraits();
 
                 break;
+
+            case "Symbol":
+                list = Array.from({
+                    length: 138
+                }, (_, index) => index);
+                // list = new Array(138);
+
+                break;
         }
 
         // console.log(currentChoice);
@@ -337,15 +407,25 @@
         var selectionsText = document.getElementById("selections");
         selectionsText.textContent = "Select " + type;
         for (const origin of list) {
-            if (!incompatibleCheck(type, origin)) {
+            if (type == "Symbol") {
                 const originButtonNew = document.createElement("button");
-                originButtonNew.className = "list-button";
-                originButtonNew.addEventListener("click", () => selectOrigin(origin, type));
-
+                originButtonNew.addEventListener("click", () => SelectSymbol(origin));
+                originButtonNew.className = "list-button-small";
                 originWrapper.appendChild(originButtonNew);
-
                 SetButtonInfo(originButtonNew, origin, type);
-                // originButtonNew.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+
+            } else {
+                if (!incompatibleCheck(type, origin)) {
+                    const originButtonNew = document.createElement("button");
+                    originButtonNew.className = "list-button";
+                    originButtonNew.addEventListener("click", () => selectOrigin(origin, type));
+
+                    originWrapper.appendChild(originButtonNew);
+
+                    SetButtonInfo(originButtonNew, origin, type);
+                    // originButtonNew.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+                }
+
             }
 
 
@@ -480,30 +560,48 @@
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         } else if (type == "Loadout") {
             image.src = "/aow4db/Icons/Abilities/" + origin.id + ".png"; // Set the image source to your image file
+        } else if (type == "Symbol") {
+            if (origin < 10 && origin > 0) {
+
+                origin = "0" + origin.toString();
+            }
+            if (origin == 0) {
+                origin += 138;
+
+            }
+            image.src = "/aow4db/Icons/Symbols/SigilIcons_" + origin + ".gif"; // Set the image source to your image file
+        }
+        if (type != "Symbol") {
+
+
+
+            // Create a span element to hold the button text
+            const buttonText = document.createElement("span");
+
+            buttonText.innerHTML = origin.name;
+            var affinity = "";
+            if ('affinity' in origin) {
+                affinity = ClearAffinityExtraTags(origin.affinity);
+                affinity = affinity.replaceAll(",", "");
+                buttonText.innerHTML += " " + affinity;
+            }
+
+            if ('affinities' in origin) {
+
+                affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
+                affinity = affinity.replaceAll(",", "");
+                buttonText.innerHTML += " " + affinity;
+
+            }
+            // Append the image and button text to the button element
+            button.appendChild(image);
+            button.appendChild(buttonText);
+        } else {
+            button.appendChild(image);
+            return;
+
         }
 
-
-        // Create a span element to hold the button text
-        const buttonText = document.createElement("span");
-
-        buttonText.innerHTML = origin.name;
-        var affinity = "";
-        if ('affinity' in origin) {
-            affinity = ClearAffinityExtraTags(origin.affinity);
-            affinity = affinity.replaceAll(",", "");
-            buttonText.innerHTML += " " + affinity;
-        }
-
-        if ('affinities' in origin) {
-
-            affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
-            affinity = affinity.replaceAll(",", "");
-            buttonText.innerHTML += " " + affinity;
-
-        }
-        // Append the image and button text to the button element
-        button.appendChild(image);
-        button.appendChild(buttonText);
 
 
 
@@ -592,6 +690,30 @@
         justify-content: normal;
     }
 
+    .list-button-small {
+
+
+        border-width: 3px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        border-image-repeat: stretch;
+        width: 50px;
+        background-color: #111;
+        color: #fff;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
+
+
+    }
+
+    .list-button-small:hover {
+
+        background-color: dimgrey;
+
+    }
+
     .list-button:hover {
 
         background-color: dimgrey;
@@ -617,6 +739,19 @@
 
     }
 
+    .shield {
+        float: left;
+    }
+
+    .symbol {
+
+        position: absolute;
+        /* float: left; */
+        top: 42px;
+
+        left: 16px;
+    }
+
     .selections {
         width: 300px;
 
@@ -624,6 +759,7 @@
         display: inline-block;
         position: relative;
     }
+
 
     .container {
 
@@ -682,6 +818,7 @@
     }
 
     .factioncreator {
+        margin: auto;
         width: 800px;
         display: flex;
         justify-content: space-between;
