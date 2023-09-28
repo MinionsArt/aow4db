@@ -2691,6 +2691,7 @@ function showUnit(a) {
             enchantButton.param = unitType;
             enchantButton.activeListHolder = activeEnchant;
             enchantButton.unit = a;
+            enchantButton.unitData = jsonUnits.units[i];
             enchantButton.originDiv = unitCard;
 
             enchantButton.activeEnchantList = activeEnchantList;
@@ -2801,7 +2802,7 @@ function showUnit(a) {
 
                         if ('active' in jsonEnchantments.enchantments[k]) {
 
-                            for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
+                            for (t = 0; t < jsonEnchantments.enchantments[k].active.length; t++) {
                                 addAbilityslot(jsonEnchantments.enchantments[k].active[t].slug, unitTabHolder, activeEnchantList, true);
 
                             }
@@ -4265,28 +4266,41 @@ function ShowPossibleEnchantments(evt) {
                     if (!isInArray(activeEnchantList, list[i]))
                         compatibleList.push(list[i]);
                 }
+            } else {
+                if (requisite === "Units that Evolve") {
+
+                    var passives = "";
+                    for (passives in evt.currentTarget.unitData.secondary_passives) {
+
+                        if (evt.currentTarget.unitData.secondary_passives[passives].slug === "evolve") {
+
+                            if (!isInArray(activeEnchantList, list[i]))
+                                compatibleList.push(list[i]);
+                        }
+
+                    }
+
+                } else if (requisite === "Tier I") {
+                    if (evt.currentTarget.unitData.tier == 1) {
+                        if (!isInArray(activeEnchantList, list[i]))
+                            compatibleList.push(list[i]);
+                    }
+                } else {
+                    requisite = requisite.replaceAll(" ", "_");
+                    var passives = "";
+                    for (passives in evt.currentTarget.unitData.secondary_passives) {
+                        console.log(requisite);
+                        if (evt.currentTarget.unitData.secondary_passives[passives].slug === requisite.toLowerCase()) {
+
+                            if (!isInArray(activeEnchantList, list[i]))
+                                compatibleList.push(list[i]);
+                        }
+
+                    }
+                }
             }
-            if (requisite === "Animal") {
-                //if()
-                console.log(list[i].id);
-                // if (!isInArray(activeEnchantList, list[i]))
-                //   compatibleList.push(list[i]);
-            }
-            if (requisite === "Tier 1") {
-                console.log(list[i].id);
-                // if (!isInArray(activeEnchantList, list[i]))
-                //   compatibleList.push(list[i]);
-            }
-            if (requisite === "Elemental") {
-                console.log(list[i].id);
-                // if (!isInArray(activeEnchantList, list[i]))
-                //   compatibleList.push(list[i]);
-            }
-            if (requisite === "Units that Evolve") {
-                console.log(list[i].id);
-                // if (!isInArray(activeEnchantList, list[i]))
-                //   compatibleList.push(list[i]);
-            }
+
+
 
 
         }
