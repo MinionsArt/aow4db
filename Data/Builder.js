@@ -718,12 +718,13 @@ function CheckIfOptionalCavalry(name) {
 }
 
 
-function addUnitTypeIcon(a, b) {
+function addUnitTypeIcon(a, holder, origin) {
     var icontext, iconsrc, iconName, j, btn, imag, spa = "";
     for (j in jsonUnitAbilities.abilities) {
         if (a === jsonUnitAbilities.abilities[j].slug) {
             icontext = (jsonUnitAbilities.abilities[j].description);
 
+            var unitType = "";
             iconsrc = a;
             iconName = jsonUnitAbilities.abilities[j].name;
 
@@ -746,20 +747,21 @@ function addUnitTypeIcon(a, b) {
             if (iconName === "Shock Unit" || iconName === "Shield Unit" ||
                 iconName === "Fighter Unit" || iconName === "Support Unit" ||
                 iconName === "Battle Mage Unit" || iconName === "Skirmisher Unit" || iconName === "Scout Unit" || iconName === "Polearm Unit" || iconName === "Ranged Unit" || iconName === "Mythic Unit" || iconName === "Tower" || iconName === "Siegecraft" || iconName === "Civilian") {
-                unitRole = document.getElementById("unit_role");
-
+                unitRole = origin.querySelectorAll('img#unit_role')[0];
+                unitType = iconsrc;
                 unitRole.setAttribute("src", "/aow4db/Icons/Text/" + iconsrc + ".png");
             }
-            document.getElementById("unitstat").appendChild(btn);
+            holder.appendChild(btn);
 
             btn.appendChild(imag);
             btn.append(spa);
+            return unitType;
         }
     }
 }
 
-function addAbilityslot(a, b) {
-    var abilityName, abilityIcon, abilityDescr, abilityDam, abilityAcc, abilityRange, abilityType, abilityNote, j, splitDamageString, abilityDamType, abilityReq, abilityMod = "";
+function addAbilityslot(a, holder, list, enchant) {
+    var abilityName, abilityIcon, abilityDescr, abilityDam, abilityEncht, abilityAcc, abilityRange, abilityType, abilityNote, j, splitDamageString, abilityDamType, abilityReq, abilityMod = "";
 
     for (j in jsonUnitAbilities.abilities) {
         if (a === jsonUnitAbilities.abilities[j].slug) {
@@ -782,6 +784,7 @@ function addAbilityslot(a, b) {
             }
 
             abilityMod = "";
+
             if ('modifiers' in jsonUnitAbilities.abilities[j]) {
 
                 for (l in jsonUnitAbilities.abilities[j].modifiers) {
@@ -789,7 +792,62 @@ function addAbilityslot(a, b) {
                     abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
                     abilityMod += (jsonUnitAbilities.abilities[j].modifiers[l].description) + "</bullet><br>";
                 }
+
+
             }
+
+            var combinedReq = "";
+            var k = "";
+            for (k in abilityReq) {
+                combinedReq += abilityReq[k].requisite + ",";
+            }
+
+            abilityEncht = "";
+            var k = "";
+            var p = "";
+            var t = "";
+            for (p = 0; p < list.length; p++) {
+
+
+                for (k = 0; k < jsonEnchantments.enchantments.length; k++) {
+
+                    if (jsonEnchantments.enchantments[k].id === list[p].id) {
+
+                        if ('attack' in jsonEnchantments.enchantments[k]) {
+
+                            for (t = 0; t < jsonEnchantments.enchantments[k].attack.length; t++) {
+
+                                if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1) {
+
+                                    abilityName += "<span style=\"color:#8332a8;font-size: 20px\">*</span>";
+                                    abilityEncht += "<bullet>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                    abilityEncht += "</bullet><br>";
+                                }
+                            }
+                        }
+                        if ('damage_change' in jsonEnchantments.enchantments[k]) {
+
+                            for (t = 0; t < jsonEnchantments.enchantments[k].requisites.length; t++) {
+
+                                if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[t].type) != -1) {
+                                    if (abilityDam != "") {
+
+                                        abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
+                                    }
+
+
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+
+
+            }
+
+
 
 
             // add notes
@@ -819,7 +877,7 @@ function addAbilityslot(a, b) {
 
 
 
-            abilityDam = jsonUnitAbilities.abilities[j].damage;
+            //  abilityDam = jsonUnitAbilities.abilities[j].damage;
             abilityRange = jsonUnitAbilities.abilities[j].range + "<range></range>";
             abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
@@ -871,7 +929,7 @@ function addAbilityslot(a, b) {
 
 
 
-            var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
+            var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
 
             spa.className = "tooltiptext";
 
@@ -882,13 +940,15 @@ function addAbilityslot(a, b) {
                 dam.innerHTML = "";
             }
 
+            if (enchant) {
+                btn.setAttribute("style", "background-color: #8332a8");
+            }
 
 
 
-
-            document.getElementById("unitabholder").append(btn);
+            holder.append(btn);
             tex.appendChild(spa);
-
+            btn.ability = jsonUnitAbilities.abilities[j];
             btn.appendChild(imag);
             btn.append(tex);
             btn.append(dam);
@@ -921,7 +981,7 @@ function GetAbilityBackground(abilityDam) {
     return abilityIconType;
 }
 
-function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, cooldown, once) {
+function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, cooldown, once) {
     var abilityDam = "";
     if (ability.damage === undefined) {
         abilityDam = "";
@@ -988,6 +1048,9 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
     // modifiers
     if (abilityMod != "") {
         spa.innerHTML += "<span style=\"color:#addd9e;font-size: 13px\">" + abilityMod + "</span>";
+    }
+    if (abilityEncht != "") {
+        spa.innerHTML += "<span style=\"color:#8332a8;font-size: 13px\">" + abilityEncht + "</span>";
     }
 
 
@@ -1057,7 +1120,7 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
     return spa;
 }
 
-function addPassiveslot(a) {
+function addPassiveslot(a, div, enchant) {
     var abilityName, abilityIcon, abilityDescr, j = "";
     for (j in jsonUnitAbilities.abilities) {
         if (a === jsonUnitAbilities.abilities[j].slug) {
@@ -1084,12 +1147,14 @@ function addPassiveslot(a) {
             imag.setAttribute("width", "40");
             imag.setAttribute("height", "40");
 
-
+            if (enchant) {
+                btn.setAttribute("style", "background-color: #8332a8");
+            }
 
 
             var spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
             spa.className = "tooltiptext";
-            document.getElementById("unitabholder").appendChild(btn);
+            div.appendChild(btn);
 
             btn.appendChild(imag);
 
@@ -1106,6 +1171,64 @@ function addPassiveslot(a) {
 
 }
 
+
+function addUniquePassiveSlot(enchantment, descr, div) {
+    var abilityName, abilityIcon, abilityDescr, j = "";
+
+    abilityName = enchantment.name;
+    abilityIcon = enchantment.id;
+    abilityDescr = descr;
+
+    var btn = document.createElement("DIV");
+    btn.className = "unit_passiveslot";
+    var imag = document.createElement("IMG");
+    imag.className = "unit_ability_icon";
+
+    var tex = document.createElement("DIV");
+    tex.className = "tooltip";
+    tex.setAttribute('onclick', '');
+    tex.innerHTML = abilityName;
+
+
+
+
+
+    imag.setAttribute("src", "/aow4db/Icons/SpellIcons/" + abilityIcon + ".png");
+    imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+    imag.setAttribute("width", "40");
+    imag.setAttribute("height", "40");
+
+
+    btn.setAttribute("style", "background-color: #8332a8");
+
+
+
+    var spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
+    spa.className = "tooltiptext";
+    div.appendChild(btn);
+
+    btn.appendChild(imag);
+
+
+
+
+    tex.appendChild(spa);
+
+
+    btn.append(tex);
+
+
+}
+
+function CreateUniquePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
+    var spa = document.createElement("SPAN");
+
+    spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/SpellIcons/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
+        "<hr>" + abilityDescr;
+
+    return spa;
+}
+
 function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
     var spa = document.createElement("SPAN");
 
@@ -1115,7 +1238,50 @@ function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
     return spa;
 }
 
-function addResistanceSlot(a, resistance) {
+function combineDamageStrings(str1, str2) {
+    // Split both input strings into arrays of words and numbers
+    const arr1 = str1.match(/[+-]?\d+<\w+><\/\w+>/g) || [];
+    const arr2 = str2.match(/[+-]?\d+<\w+><\/\w+>/g) || [];
+
+    // Create a dictionary to store tag counts
+    const tagCounts = {};
+
+    // Loop through the first array
+    for (const item of arr1) {
+        const parts = item.trim().match(/([+-]?\d+)<(\w+)><\/\2>/);
+        if (parts && parts.length === 3) {
+            const count = parseInt(parts[1], 10);
+            const tag = parts[2];
+
+            // Add to or subtract from the dictionary
+            tagCounts[tag] = (tagCounts[tag] || 0) + count;
+        }
+    }
+
+    // Loop through the second array
+    for (const item of arr2) {
+        const parts = item.trim().match(/([+-]?\d+)<(\w+)><\/\2>/);
+        if (parts && parts.length === 3) {
+            const count = parseInt(parts[1], 10);
+            const tag = parts[2];
+
+            // Add to or subtract from the dictionary
+            tagCounts[tag] = (tagCounts[tag] || 0) + count;
+        }
+    }
+
+    // Construct the result string
+    const result = [];
+    for (const tag in tagCounts) {
+        if (tagCounts[tag] !== 0) {
+            result.push(`${tagCounts[tag]}<${tag}></${tag}>`);
+        }
+    }
+
+    return result.join(" ");
+}
+
+function addResistanceSlot(a, resistance, holder) {
     var abilityName, abilityIcon, abilityDescr, abilityDam = "";
     for (j in jsonUnitAbilities.abilities) {
         if (a === jsonUnitAbilities.abilities[j].slug) {
@@ -1209,7 +1375,7 @@ function addResistanceSlot(a, resistance) {
 
             spa.innerHTML += ")";
 
-            document.getElementById("resistanceholder").appendChild(btn);
+            holder.appendChild(btn);
             btn.innerHTML = abilityDam;
 
             btn.appendChild(imag);
@@ -1224,7 +1390,7 @@ function addResistanceSlot(a, resistance) {
 
 }
 
-function addstatusResistanceSlot(a) {
+function addstatusResistanceSlot(a, holder) {
     var abilityName, abilityIcon, abilityDescr, abilityDam = "";
 
 
@@ -1252,7 +1418,7 @@ function addstatusResistanceSlot(a) {
 
     abilityDam = a;
 
-    document.getElementById("resistanceholder").appendChild(btn);
+    holder.appendChild(btn);
     btn.innerHTML = "<p class=\"resistanceNumber\">" + abilityDam;
 
     btn.appendChild(imag);
@@ -1511,21 +1677,24 @@ async function SetCollapsibleStuff() {
 async function SetLevelUpStuff() {
     var coll = document.getElementsByClassName("collapsibleLevelup");
     var content = document.getElementsByClassName("contentLevelup");
-    var i;
+    var i = "";
 
     for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function () {
             //this.classList.toggle("active");
-            for (j in content) {
-                coll[j].classList.toggle("active");
-                //  var content = this.nextElementSibling;
-                if (content[j].style.display === "block") {
-                    content[j].style.display = "none";
-                } else {
-                    content[j].style.display = "block";
 
-                }
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+
             }
+            //  var j = "";
+            // for (j = 0; j < content.length; j++) {
+            //   coll[j].classList.toggle("active");
+
+            //}
 
         });
     }
@@ -1972,7 +2141,7 @@ async function showHeroTraitsWithArgument(argumentType, overwritetext) {
 
     var list = new Array();
     list = findHeroTraitsWithArgument(argumentType);
-    console.log(list);
+
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "heroTrait");
 
@@ -2175,6 +2344,17 @@ function findHeroTraitsWithArgument(argumentType) {
     return uniqueArray;
 }
 
+function findEnchantmentsSpells() {
+    var enchantmentList = new Array()
+    for (j in jsonSpells.spells) {
+        if (jsonSpells.spells[j].spellType.indexOf("Unit Enchantment") != -1) {
+            enchantmentList.push(jsonSpells.spells[j]);
+        }
+    }
+    return enchantmentList;
+
+}
+
 function findSpellsWithArgument(argumentaffinity, argumentType) {
     var i, output, affinity, textvalue, j, l, k, x, result = "";
 
@@ -2368,18 +2548,40 @@ function showModsFromList(list, divId) {
     };
 }
 
-function showUnit(a, divID) {
-    var hp, mp, shield, armor, descr, j, k, x, y, z, unitName, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget, name = "";
+function showUnit(a) {
+    var hp, mp, shield, armor, descr, j, k, x, y, z, unitNameDiv, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget, name = "";
     var found = false;
     for (i in jsonUnits.units) {
         if (a === jsonUnits.units[i].id) {
+            var unitCard = document.getElementById("unitCard");
+            if (unitCard == undefined) {
+                unitCard = document.getElementById("unitCard" + a);
 
-            unitName = document.getElementById("unitstring");
-            unitName.setAttribute("id", "unitstring" + a);
+            } else {
+                imagelink = unitCard.querySelectorAll('video#vid')[0];
+                imagelink.setAttribute('src', "/aow4db/Previews/" + jsonUnits.units[i].id + ".mp4");
+                if (imagelink.getAttribute('src') === "/aow4db/Previews/undefined") {
+                    imagelink.setAttribute('src', "/aow4db/Previews/placeholder.mp4");
+                }
+
+            }
+            unitCard.setAttribute("id", "unitCard" + a);
+
+            var activeEnchantList;
+            if (!unitCard.hasOwnProperty('activeEnchantList')) {
+                activeEnchantList = new Array();
+                unitCard.activeEnchantList = activeEnchantList;
+            } else {
+                activeEnchantList = unitCard.activeEnchantList;
+            }
+
+
+
+            unitNameDiv = unitCard.querySelectorAll('span#unitstring')[0];
+            // clear
+            unitNameDiv.innerHTML = "";
             name = jsonUnits.units[i].name;
-            unitName.innerHTML += jsonUnits.units[i].name.toUpperCase();
-
-
+            unitNameDiv.innerHTML += name.toUpperCase();
 
             if (DLCDragonDawn.indexOf(a) != -1) {
                 var newDivForMount = document.createElement("DIV");
@@ -2401,7 +2603,7 @@ function showUnit(a, divID) {
 
 
 
-                unitName.append(newDivForMount);
+                unitNameDiv.append(newDivForMount);
             }
 
             // if in the list of mounted, add tooltip
@@ -2423,66 +2625,46 @@ function showUnit(a, divID) {
                 newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
                 // get position of button
 
-
-
-                unitName.append(newDivForMount);
-
-
+                unitNameDiv.append(newDivForMount);
             }
 
 
-            imagelink = document.getElementById("vid");
-            imagelink.setAttribute("id", "vid" + a);
-            imagelink.setAttribute('src', "/aow4db/Previews/" + jsonUnits.units[i].id + ".mp4");
-            if (imagelink.getAttribute('src') === "/aow4db/Previews/undefined") {
-                imagelink.setAttribute('src', "/aow4db/Previews/placeholder.mp4");
-            }
-
-            hp = document.getElementById("hp")
-            hp.setAttribute("id", "hp" + a);
+            hp = unitCard.querySelectorAll('p#hp')[0];
             hp.innerHTML = jsonUnits.units[i].hp;
-            armor = document.getElementById("armor");
-            armor.setAttribute("id", "armor" + a);
+
+            armor = unitCard.querySelectorAll('p#armor')[0];
             armor.innerHTML = jsonUnits.units[i].armor;
-            shield = document.getElementById("resistence");
-            shield.setAttribute("id", "shield" + a);
+
+            shield = unitCard.querySelectorAll('p#resistence')[0];
             shield.innerHTML = jsonUnits.units[i].resistance;
-            mp = document.getElementById("mp");
-            mp.setAttribute("id", "mp" + a);
+
+            mp = unitCard.querySelectorAll('p#mp')[0];
             mp.innerHTML = jsonUnits.units[i].mp;
-            tier = document.getElementById("tier");
 
-
-
+            tier = unitCard.querySelectorAll('p#tier')[0];
             //
 
-
-            var defenseDiv = document.getElementById("damageReduction");
-
+            defenseDiv = unitCard.querySelectorAll('p#damageReduction')[0];
             defenseDiv.innerHTML = "Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].armor + "</span> <defense> </defense>)";
-            defenseDiv.setAttribute("id", "damageReduction" + a);
 
-
-
-
-
-
-
-
-
-            prodcost = document.getElementById("productioncost");
-            prodcost.setAttribute("id", "productioncost" + a);
+            prodcost = unitCard.querySelectorAll('p#productioncost')[0];
             prodcost.innerHTML = "Cost: " + jsonUnits.units[i].cost;
-
-
             var additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
+            movementDiv = unitCard.querySelectorAll('p#movement')[0];
 
-            var movementDiv = document.getElementById("movement");
+            unitStat = unitCard.querySelectorAll('div#unitstat')[0];
+            unitStat.innerHTML = "";
 
+            var resistanceHolder = unitCard.querySelectorAll('div#resistanceholder')[0];
+            resistanceHolder.innerHTML = "";
 
-
+            var unitType = "";
             for (j in jsonUnits.units[i].secondary_passives) {
-                addUnitTypeIcon(jsonUnits.units[i].secondary_passives[j].slug, a);
+                var unitTypeTest = addUnitTypeIcon(jsonUnits.units[i].secondary_passives[j].slug, unitStat, unitCard);
+
+                if (unitTypeTest != "") {
+                    unitType = unitTypeTest;
+                }
 
                 if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("floating") != -1) {
                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Floating</bullet></span><br>";
@@ -2498,19 +2680,40 @@ function showUnit(a, divID) {
 
             }
 
-            movementDiv.setAttribute("id", "movement" + a);
+
+
+            // find enchant button, give it unit data
+
+            var enchantButton = unitCard.querySelectorAll('button#enchantButton')[0];
+            var enchantHolder = unitCard.querySelectorAll('div#enchantHolder')[0];
+            var activeEnchant = unitCard.querySelectorAll('div#activeEnchants')[0];
+
+            enchantButton.param = unitType;
+            enchantButton.activeListHolder = activeEnchant;
+            enchantButton.unit = a;
+            enchantButton.originDiv = unitCard;
+
+            enchantButton.activeEnchantList = activeEnchantList;
+            enchantButton.addEventListener('click', ShowPossibleEnchantments);
+            // make a list on the unit, not on the buttons
+
+
+            var unitTabHolder = unitCard.querySelectorAll('div#unitabholder')[0];
+            unitTabHolder.innerHTML = "";
+
+
 
             for (k in jsonUnits.units[i].abilities) {
-                addAbilityslot(jsonUnits.units[i].abilities[k].slug);
+                addAbilityslot(jsonUnits.units[i].abilities[k].slug, unitTabHolder, activeEnchantList);
 
             }
 
             if (jsonUnits.units[i].status_resistance != "0") {
-                addstatusResistanceSlot(jsonUnits.units[i].status_resistance);
+                addstatusResistanceSlot(jsonUnits.units[i].status_resistance, resistanceHolder);
             }
 
             for (z in jsonUnits.units[i].resistances) {
-                addResistanceSlot(jsonUnits.units[i].resistances[z].slug, jsonUnits.units[i].resistance);
+                addResistanceSlot(jsonUnits.units[i].resistances[z].slug, jsonUnits.units[i].resistance, resistanceHolder);
 
 
 
@@ -2557,8 +2760,68 @@ function showUnit(a, divID) {
             var lowUpkeep = false;
             var faithfulUpkeep = false;
             var x = "";
+
+            var k = "";
+
+            var t = "";
+            for (x in activeEnchantList) {
+
+
+
+
+                for (k = 0; k < jsonEnchantments.enchantments.length; k++) {
+
+                    if (jsonEnchantments.enchantments[k].id === activeEnchantList[x].id) {
+
+                        if ('passive' in jsonEnchantments.enchantments[k]) {
+                            console.log("Test");
+                            for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
+                                addPassiveslot(jsonEnchantments.enchantments[k].passive[t].slug, unitTabHolder, true);
+                                if (jsonEnchantments.enchantments[k].passive[t].slug.indexOf("faithful") != -1) {
+                                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9);
+                                    var faithfulUpkeep = true;
+
+                                    if (summonInfo.length > 0) {
+                                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
+
+
+
+                                    }
+                                }
+                            }
+
+
+                        }
+
+                        if ('passive_unique' in jsonEnchantments.enchantments[k]) {
+                            for (t = 0; t < jsonEnchantments.enchantments[k].passive_unique.length; t++) {
+                                addUniquePassiveSlot(activeEnchantList[x], jsonEnchantments.enchantments[k].passive_unique[t].description, unitTabHolder);
+                            }
+                        }
+
+                        if ('active' in jsonEnchantments.enchantments[k]) {
+
+                            for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
+                                addAbilityslot(jsonEnchantments.enchantments[k].active[t].slug, unitTabHolder, activeEnchantList, true);
+
+                            }
+
+
+                        }
+                    }
+
+
+
+
+
+
+
+                }
+            }
+
+            var x = "";
             for (x in jsonUnits.units[i].primary_passives) {
-                addPassiveslot(jsonUnits.units[i].primary_passives[x].slug);
+                addPassiveslot(jsonUnits.units[i].primary_passives[x].slug, unitTabHolder);
 
                 if (jsonUnits.units[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75);
@@ -2624,14 +2887,7 @@ function showUnit(a, divID) {
 
             y = "";
 
-
-            var resistanceholder = document.getElementById("resistanceholder");
-            resistanceholder.setAttribute("id", "resistanceholder" + a);
-
-
-
-
-            var resistanceDiv = document.getElementById("resistanceReduction");
+            var resistanceDiv = unitCard.querySelectorAll('p#resistanceReduction')[0];
             resistanceDiv.innerHTML = "Blight :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalBlight) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
             if (additionalBlight != undefined) {
                 if (additionalBlight > 0) {
@@ -2687,25 +2943,10 @@ function showUnit(a, divID) {
             resistanceDiv.innerHTML += ")";
 
 
-            resistanceDiv.setAttribute("id", "resistanceReduction" + a);
-
-
-            document.getElementById("unitabholder").setAttribute("id", "unitabholder" + a);
-
-            document.getElementById("unitstat").setAttribute("id", "unitstat" + a);
-
-
-            document.getElementById("unit_role").setAttribute("id", "unit_role" + a);
-            addLevelUpInfo(jsonUnits.units[i], a);
+            addLevelUpInfo(jsonUnits.units[i], a, unitCard);
 
             // backtrack origin;
-            backtrackUnitOrigins(a, name);
-            tier.setAttribute("id", "tier" + a);
-            document.getElementById("originHolder").setAttribute("id", "originHolder" + a);
-
-
-
-
+            backtrackUnitOrigins(a, name, unitCard);
             found = true;
             // break;
         }
@@ -2778,8 +3019,9 @@ function getSummonedUpkeep(tier, lowMaintenance) {
 }
 
 
-function backtrackUnitOrigins(unitID, name) {
-    var holder = document.getElementById("originHolder");
+function backtrackUnitOrigins(unitID, name, holder) {
+    var holderOrigin = holder.querySelectorAll('div#originHolder')[0];
+    holderOrigin.innerHTML = "";
     var culture = (CheckIfInCulture(unitID));
     if (culture != "") {
         btn = document.createElement("DIV");
@@ -2802,7 +3044,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/" + capitalized + "Units.html\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2826,7 +3068,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + tomes.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2864,7 +3106,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?spell=" + spells[x].id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2888,7 +3130,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?siege=" + siege.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2913,7 +3155,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?structure=" + struc.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2941,7 +3183,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?wonder=" + wonder.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2967,7 +3209,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.appendChild(spa);
 
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -2992,7 +3234,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + unitAbility[0].id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -3022,7 +3264,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?skill=" + heroSkill[1].id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -3047,7 +3289,7 @@ function backtrackUnitOrigins(unitID, name) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + evolve.id + "\" target=\"_blank\">" + wrap + "</a>"
         btn.appendChild(spa);
 
-        holder.appendChild(btn);
+        holderOrigin.appendChild(btn);
         // add icon with mouseover
 
     }
@@ -3429,9 +3671,9 @@ function GetDamageReductionPercentage(number, additionalNumber) {
     return percentage;
 }
 
-function addLevelUpInfo(units, a) {
-    var levelup = document.getElementById("levelup");
-    levelup.setAttribute("id", "levelup" + a);
+function addLevelUpInfo(units, a, holder) {
+    var levelup = holder.querySelectorAll('div#levelup');
+
     evolveTarget = units.evolve_target;
 
     if (units.tier === 1) {
@@ -3985,6 +4227,169 @@ function showTome(a, div) {
     }
 }
 
+function ShowPossibleEnchantments(evt) {
+
+
+    var unitType = evt.currentTarget.param;
+    var activeEnchantList;
+    var holder = evt.currentTarget.originDiv.querySelectorAll('div#enchantHolder')[0];
+    // var holder = document.getElementById("enchantHolder" + evt.currentTarget.holder);
+    if (!evt.currentTarget.originDiv.hasOwnProperty("activeEnchantList")) {
+        activeEnchantList = evt.currentTarget.activeEnchantList;
+        holder.activeEnchantList = activeEnchantList;
+    } else {
+        console.log("already has list");
+        activeEnchantList = evt.currentTarget.originDiv.activeEnchantList;
+    }
+
+
+
+
+
+
+    unitType = unitType.replaceAll("_", " ");
+    var list = findEnchantmentsSpells();
+
+    var compatibleList = new Array();
+    var i = "";
+
+    for (i = 0; i < list.length; i++) {
+        var j = "";
+        for (j = 0; j < list[i].enchantment_requisites.length; j++) {
+            var requisite = list[i].enchantment_requisites[j].requisite;
+            var type = list[i].enchantment_requisites[j].requisite.toLowerCase().split("> ");
+
+            if (type[1] != undefined) {
+
+                if (type[1] === unitType) {
+                    if (!isInArray(activeEnchantList, list[i]))
+                        compatibleList.push(list[i]);
+                }
+            }
+            if (requisite === "Animal") {
+                //if()
+                console.log(list[i].id);
+                // if (!isInArray(activeEnchantList, list[i]))
+                //   compatibleList.push(list[i]);
+            }
+            if (requisite === "Tier 1") {
+                console.log(list[i].id);
+                // if (!isInArray(activeEnchantList, list[i]))
+                //   compatibleList.push(list[i]);
+            }
+            if (requisite === "Elemental") {
+                console.log(list[i].id);
+                // if (!isInArray(activeEnchantList, list[i]))
+                //   compatibleList.push(list[i]);
+            }
+            if (requisite === "Units that Evolve") {
+                console.log(list[i].id);
+                // if (!isInArray(activeEnchantList, list[i]))
+                //   compatibleList.push(list[i]);
+            }
+
+
+        }
+    }
+    i = "";
+
+    holder.innerHTML = "";
+
+
+    var activeHolder = evt.currentTarget.activeListHolder;
+
+    for (i = 0; i < compatibleList.length; i++) {
+
+        var enchantEntry = document.createElement("Button");
+        enchantEntry.className = "enchantButton";
+        const image = document.createElement("img");
+        var text = document.createElement("div");
+        image.setAttribute("width", "20");
+        image.setAttribute("height", "20");
+        image.setAttribute("src", "/aow4db/Icons/SpellIcons/" + compatibleList[i].icon + ".png");
+        text.textContent = compatibleList[i].name;
+        text.className = "tooltip";
+        text.setAttribute("style", "padding:0px");
+        var span = document.createElement("span");
+        span.innerHTML = compatibleList[i].description;
+        span.className = "tooltiptext";
+        text.appendChild(span);
+        enchantEntry.appendChild(image);
+        enchantEntry.appendChild(text);
+
+        enchantEntry.addEventListener("click", SetEnchantment);
+        enchantEntry.enchant = compatibleList[i];
+        enchantEntry.activeHolder = activeHolder;
+        enchantEntry.activeEnchantList = activeEnchantList;
+        enchantEntry.originDiv = evt.currentTarget.originDiv;
+        enchantEntry.unit = evt.currentTarget.unit;
+
+        holder.appendChild(enchantEntry)
+    }
+
+
+
+
+}
+
+function SetEnchantment(evt) {
+
+    if (!isInArray(evt.currentTarget.activeEnchantList, evt.currentTarget.enchant)) {
+
+
+        evt.currentTarget.originDiv.activeEnchantList.push(evt.currentTarget.enchant);
+        evt.currentTarget.remove();
+        var activeEnch = document.createElement("Div");
+        activeEnch.className = "enchantButton";
+        const image = document.createElement("img");
+
+        image.setAttribute("width", "40");
+        image.setAttribute("height", "40");
+        image.setAttribute("src", "/aow4db/Icons/SpellIcons/" + evt.currentTarget.enchant.icon + ".png");
+
+        activeEnch.className = "tooltip";
+        activeEnch.setAttribute("style", "padding: 0px");
+        var span = document.createElement("span");
+        span.innerHTML = evt.currentTarget.enchant.name + "<hr>" + evt.currentTarget.enchant.description;
+        span.className = "tooltiptext";
+        activeEnch.appendChild(span);
+        activeEnch.appendChild(image);
+        // activeEnch.activeEnchantList = evt.currentTarget.activeEnchantList;
+        activeEnch.thisEnchant = evt.currentTarget.enchant;
+
+
+        activeEnch.unit = evt.currentTarget.unit;
+        activeEnch.originDiv = evt.currentTarget.originDiv;
+        activeEnch.activeHolder = evt.currentTarget.activeHolder;
+
+        activeEnch.addEventListener("click", RemoveActiveEnchant);
+
+        var holder = evt.currentTarget.activeHolder;
+        var unit = evt.currentTarget.unit;
+        holder.appendChild(activeEnch)
+
+
+
+    }
+    showUnit(evt.currentTarget.unit);
+
+}
+
+
+
+function RemoveActiveEnchant(evt) {
+    var origin = evt.currentTarget.originDiv;
+
+
+    origin.activeEnchantList = origin.activeEnchantList.filter(item => item !== evt.currentTarget.thisEnchant);
+
+    showUnit(evt.currentTarget.unit);
+    evt.currentTarget.remove();
+
+
+}
+
+
 function GetAbilityInfo(ability) {
     if ('accuracy' in ability) {
         var abilityName = ability.name.toUpperCase();
@@ -4033,13 +4438,13 @@ function GetAbilityInfo(ability) {
 
 
 
-
+        var abilityEncht = "";
 
         abilityRange = ability.range + "<range></range>";
         abilityAcc = ability.accuracy + "<accuracy></accuracy>";
 
         var abilityIconType = GetAbilityBackground(ability.damage);
-        var spa = GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
+        var spa = GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
     } else {
         var spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
     }
@@ -4479,7 +4884,7 @@ function showDestinyTrait(trait) {
 
 
     for (j in jsonDestiny.traits) {
-        if (trait == jsonDestiny.traits[j].id) {
+        if (trait === jsonDestiny.traits[j].id) {
 
 
             a = jsonDestiny.traits[j].id;
@@ -4635,7 +5040,7 @@ function showUnitUnlock(a) {
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
 
-    if (a.name == "Young Dragon") {
+    if (a.name === "Young Dragon") {
         var alldragons = ["young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon"];
         var i = "";
         for (i in alldragons) {
@@ -5035,12 +5440,12 @@ function showItem(a) {
 
 
 
-
+                        var abilityEncht = "";
                         abilityRange = jsonUnitAbilities.abilities[j].range + "<range></range>";
                         abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
                         var abilityIconType = GetAbilityBackground(jsonUnitAbilities.abilities[j].damage);
-                        var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
+                        var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
                     } else {
                         var spa = CreatePassiveSlotToolTip(jsonUnitAbilities.abilities[j].icon, jsonUnitAbilities.abilities[j].name, jsonUnitAbilities.abilities[j].description);
                     }
@@ -5387,14 +5792,14 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
 
 
-
+                    var abilityEncht = "";
 
 
                     abilityRange = jsonUnitAbilities.abilities[j].range + "<range></range>";
                     abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
                     var abilityIconType = GetAbilityBackground(jsonUnitAbilities.abilities[j].damage);
-                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityNote, abilityReq, Cooldown, Once);
+                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
                 } else {
                     var spa = CreatePassiveSlotToolTip(jsonUnitAbilities.abilities[j].icon, jsonUnitAbilities.abilities[j].name, jsonUnitAbilities.abilities[j].description);
                 }

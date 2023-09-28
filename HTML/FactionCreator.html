@@ -47,11 +47,88 @@
 <body>
     <div id="header"></div>
     <div class="tome_name"> WIP Faction creator</div>
-    <div class="factioncreator">
+    <!--  <div class="factioncreator">
+
+
+     <div class="container">
+            <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
+            <div style="height:110px">
+                <div class="playerSigil" onclick="SetupButtons('Symbol')">
+                    <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="80px" height="80px" style="float:left">
+                    <img class="symbol" id="symbol" src="/aow4db/Icons/Symbols/SigilIcons_01.png" height="50px" style="float:left">
+                </div>
+                <button class="test" id="shieldColor" onclick="ChangeShieldCol()">Color 1</button>
+                <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>
+                <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
+                <div id="currentAffinity" class="affinityText"> </div>
+            </div>
+            <div> Godir
+                <div id="buttonContainer">
+                    <button class="button" id="originButtonOrigin" onclick="SetupButtons('Origin')"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonTome" onclick="SetupButtons('Tome')"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons('Loadout')"></button>
+
+                </div>
+
+            </div>
+            <div> Race
+                <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
+                <div id="buttonContainer">
+
+                    <button class="button" id="originButtonForm" onclick="SetupButtons('Form')"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonBody" onclick="SetupButtons('Body')"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonMind" onclick="SetupButtons('Mind')"></button>
+
+                </div>
+            </div>
+            <div> Culture
+                <div id="buttonContainer">
+                    <button class="button" id="originButtonCulture" onclick="SetupButtons('Culture')"></button>
+
+                </div>
+
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons('Society1')"></button>
+
+                </div>
+                <div id="buttonContainer">
+                    <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons('Society2')"></button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="selections">
+            <p id="selections"></p>
+
+            <div id="originWrapperOptions" class=" wrappers" style="display: block;">
+
+            </div>
+
+        </div>
+    </div> -->
+
+    <div class="factioncreator" id="tomepath">
 
 
         <div class="container">
-            <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
+
             <div style="height:110px">
                 <div class="playerSigil" onclick="SetupButtons('Symbol')">
                     <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="80px" height="80px" style="float:left">
@@ -125,6 +202,7 @@
     </div>
 
 
+
 </body>
 <script>
     var currentOrigin = "";
@@ -137,6 +215,8 @@
     var currentSociety1 = "";
     var currentSociety2 = "";
     var currentLoadout = "";
+
+    var currentAffinityTotal = "";
 
     function ChangeShieldCol() {
 
@@ -215,6 +295,7 @@
                 case "Culture":
                     currentCulture = randomEntry;
                     break;
+                    f
                 case "Society1":
                     currentSociety1 = randomEntry;
                     break;
@@ -504,7 +585,7 @@
         const affinitySummary = document.getElementById("currentAffinity");
 
         result = result.replaceAll(",", "");
-
+        currentAffinityTotal = result;
 
         affinitySummary.innerHTML = result;
 

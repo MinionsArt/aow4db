@@ -21,6 +21,7 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Hyperlinks.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/HeroTraits.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/SpawnTables.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/EnchantmentTables.json"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
@@ -48,7 +49,7 @@
 
 
     <template id="unit_card_template">
-        <div class="unit_card">
+        <div class="unit_card" id="unitCard">
 
             <div class="unit_image_holder">
                 <div class="productionCost">
@@ -80,6 +81,44 @@
                     <div class="unit_types" id="originHolder" style="position: absolute; top:150px; width:10px; height: auto;left:-5px;">
                     </div>
 
+                    <button type="button" id="enchantButton" class="collapsibleLevelup" style=" position: absolute;
+    top: -3px;
+    left: 133px;
+    right: 131px;
+    max-height: 400px;
+    width:150px;">Enchant</button>
+                    <div class="contentLevelup" style=" position: absolute;
+    top: 37px;
+    left: 133px;
+    right: 131px;
+    max-height: 400px;
+                                                       padding:0px;
+                                                       border-width: 0px;
+    width:150px;">
+                        <div id="enchantHolder"></div>
+
+                    </div>
+                    <!-- <div class="unit_types" style="
+    position: absolute;
+    top: -3px;
+    left: 133px;
+    right: 131px;
+    max-height: 400px;
+    width:150px;">
+                        <button id="enchantButton">Enchant</button>
+                        <div id="enchantHolder"></div>
+                    </div> -->
+                    <div class="unit_types" id="activeEnchants" style="
+    
+    position: absolute;
+    top: 67px;
+    width: 80px;
+    height: auto;
+    right: -54px;">
+
+                    </div>
+
+
                 </div>
 
 
@@ -88,10 +127,10 @@
             </div>
             <div class="unit_name">
 
-                <p id="unitstring"> <img id="unit_role" style="margin-right:5px; position: relative; top:5px; text-transform: uppercase" src="/aow4db/Icons/Text/shield_unit.png" height="25 "> </p>
+                <p> <img id="unit_role" style="margin-right:5px; position: relative; top:5px; text-transform: uppercase" src="/aow4db/Icons/Text/shield_unit.png" height="25 "> <span id="unitstring"> </span></p>
             </div>
 
-            <div class="unit_ability_holder" id="unitabholder">
+            <div class="unit_ability_holder">
 
                 <div style=" text-align: center; width: 100%; height:20px; display: inline-block">
 
@@ -155,6 +194,8 @@
 
 
                 </div>
+
+                <div id="unitabholder"></div>
 
             </div>
 
