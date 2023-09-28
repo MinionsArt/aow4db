@@ -813,6 +813,10 @@ function addAbilityslot(a, holder, list, enchant) {
 
                     if (jsonEnchantments.enchantments[k].id === list[p].id) {
 
+                        if ('damage' in jsonEnchantments.enchantments[k]) {
+                            console.log("damage increase");
+                            abilityDam = IncreaseDamageValue(abilityDam, 1.2);
+                        }
                         if ('attack' in jsonEnchantments.enchantments[k]) {
 
                             for (t = 0; t < jsonEnchantments.enchantments[k].attack.length; t++) {
@@ -929,7 +933,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
 
 
-            var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
+            var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityDam, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
 
             spa.className = "tooltiptext";
 
@@ -981,13 +985,43 @@ function GetAbilityBackground(abilityDam) {
     return abilityIconType;
 }
 
-function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, cooldown, once) {
-    var abilityDam = "";
-    if (ability.damage === undefined) {
-        abilityDam = "";
-    } else {
-        abilityDam = ability.damage;
-    }
+
+function IncreaseDamageValue(input, percentage) {
+    // Extract the number value and tag
+    // Split the input string into individual entries
+    const entries = input.split(/\s+/);
+
+    // Initialize an array to store the updated entries
+    const updatedEntries = [];
+
+    // Process each entry
+    entries.forEach(entry => {
+        // Extract the number value and tag
+        const match = entry.match(/(\d+)<(\w+)><\/\2>/);
+        if (match && match.length === 3) {
+            const originalValue = parseInt(match[1], 10);
+            const tag = match[2];
+
+            // Increase the value by 20%
+            const increasedValue = originalValue * percentage;
+
+            // Construct the updated entry
+            const updatedEntry = `${increasedValue.toFixed(0)}<${tag}></${tag}>`;
+
+            updatedEntries.push(updatedEntry);
+        } else {
+            // If the entry doesn't match the expected format, add it as is
+            updatedEntries.push(entry);
+        }
+    });
+
+    // Join the updated entries back together
+    const newString = updatedEntries.join(" ");
+    return newString;
+}
+
+function GetAbilityToolTip(ability, abilityDam, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, cooldown, once) {
+
     // block one, header
     // image
     var spa = document.createElement("SPAN");
@@ -1006,7 +1040,7 @@ function GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, ab
 
     var damageHolder = document.createElement("DIV");
     damageHolder.className = "abilityLineSlot";
-    damageHolder.innerHTML = ability.damage;
+    damageHolder.innerHTML = abilityDam;
 
     line1.appendChild(nameHolder);
     line1.appendChild(damageHolder);
@@ -2630,6 +2664,7 @@ function showUnit(a) {
 
 
             hp = unitCard.querySelectorAll('p#hp')[0];
+            var hpvalue = jsonUnits.units[i].hp;
             hp.innerHTML = jsonUnits.units[i].hp;
 
             armor = unitCard.querySelectorAll('p#armor')[0];
@@ -2773,17 +2808,25 @@ function showUnit(a) {
                 for (k = 0; k < jsonEnchantments.enchantments.length; k++) {
 
                     if (jsonEnchantments.enchantments[k].id === activeEnchantList[x].id) {
+                        if ('hp' in jsonEnchantments.enchantments[k]) {
+                            hpvalue += jsonEnchantments.enchantments[k].hp;
+                            hp.innerHTML = hpvalue + "*";
+                        }
+                        if ('mp' in jsonEnchantments.enchantments[k]) {
 
+                            mp.innerHTML = jsonEnchantments.enchantments[k].mp + "*";
+
+                        }
                         if ('passive' in jsonEnchantments.enchantments[k]) {
                             console.log("Test");
                             for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
                                 addPassiveslot(jsonEnchantments.enchantments[k].passive[t].slug, unitTabHolder, true);
                                 if (jsonEnchantments.enchantments[k].passive[t].slug.indexOf("faithful") != -1) {
-                                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9);
+                                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9) + "*";
                                     var faithfulUpkeep = true;
 
                                     if (summonInfo.length > 0) {
-                                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
+                                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9) + "*";
 
 
 
@@ -2837,11 +2880,11 @@ function showUnit(a) {
                 }
 
                 if (jsonUnits.units[i].primary_passives[x].slug.indexOf("faithful") != -1) {
-                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9);
+                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9) + "*";
                     var faithfulUpkeep = true;
 
                     if (summonInfo.length > 0) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9) + "*";
 
 
 
@@ -3673,7 +3716,7 @@ function GetDamageReductionPercentage(number, additionalNumber) {
 }
 
 function addLevelUpInfo(units, a, holder) {
-    var levelup = holder.querySelectorAll('div#levelup');
+    var levelup = holder.querySelectorAll('span#levelup')[0];
 
     evolveTarget = units.evolve_target;
 
@@ -3745,6 +3788,7 @@ function addLevelUpInfo(units, a, holder) {
     }
 
     levelup.innerHTML = levelText;
+    console.log(levelup.innerHTML);
 
 
 }
