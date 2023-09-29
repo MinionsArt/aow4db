@@ -822,21 +822,38 @@ function addAbilityslot(a, holder, list, enchant) {
                             for (t = 0; t < jsonEnchantments.enchantments[k].attack.length; t++) {
 
                                 if ('type2' in jsonEnchantments.enchantments[k].attack[t]) {
-                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1 && combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type2) != -1) {
+                                    if (jsonEnchantments.enchantments[k].attack[t].type2.indexOf("*") != -1) {
+                                        if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1 || combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type2.split("*")[1]) != -1) {
 
-                                        abilityName += "<span style=\"color:#8332a8;font-size: 20px\">*</span>";
-                                        abilityEncht += "<bullet>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
-                                        abilityEncht += "</bullet><br>";
+                                            abilityName += "<span style=\"color:#aa84f6;font-size: 20px\">*</span>";
+                                            abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments.enchantments[k].id + ".png\" height='20px'>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                            abilityEncht += "</bullet><br>";
 
-                                        if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
-                                            abilityRange += jsonEnchantments.enchantments[k].attack[t].range + "*";
+                                            if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
+                                                abilityRange += jsonEnchantments.enchantments[k].attack[t].range + "*";
+                                            }
+                                        }
+                                    }
+                                    // or check, not and
+                                    else {
+
+
+                                        if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1 && combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type2) != -1) {
+
+                                            abilityName += "<span style=\"color:#aa84f6;font-size: 20px\">*</span>";
+                                            abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments.enchantments[k].id + ".png\" height='20px'>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                            abilityEncht += "</bullet><br>";
+
+                                            if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
+                                                abilityRange += jsonEnchantments.enchantments[k].attack[t].range + "*";
+                                            }
                                         }
                                     }
                                 } else {
                                     if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1) {
 
-                                        abilityName += "<span style=\"color:#8332a8;font-size: 20px\">*</span>";
-                                        abilityEncht += "<bullet>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                        abilityName += "<span style=\"color:#aa84f6;font-size: 20px\">*</span>";
+                                        abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments.enchantments[k].id + ".png\" height='20px'>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
                                         abilityEncht += "</bullet><br>";
 
                                         if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
@@ -844,6 +861,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                         }
                                     }
                                 }
+
 
 
 
@@ -855,7 +873,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
                             if (jsonEnchantments.enchantments[k].requisites.length > 1) {
                                 if (jsonEnchantments.enchantments[k].requisites[1].type.indexOf("*") != -1) {
-                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1 || combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[1].type) != -1) {
+                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1 || combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[1].type.split("*")[1]) != -1) {
                                         if (abilityDam != "") {
 
                                             abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
@@ -991,8 +1009,9 @@ function addAbilityslot(a, holder, list, enchant) {
             }
 
             if (enchant) {
-                btn.setAttribute("style", "background-color: #8332a8");
+                btn.setAttribute("style", "background-image: linear-gradient(to right, rgb(95 47 162 / 0%), rgb(146 47 162 / 25%), rgb(222 88 228 / 50%), rgb(138 47 162 / 26%), rgb(151 47 162 / 0%));");
             }
+
 
 
 
@@ -1000,8 +1019,11 @@ function addAbilityslot(a, holder, list, enchant) {
             tex.appendChild(spa);
             btn.ability = jsonUnitAbilities.abilities[j];
             btn.appendChild(imag);
-            btn.append(tex);
-            btn.append(dam);
+            var divider = document.createElement("div");
+            divider.setAttribute("style", "display: flex;justify-content: space-between;width: 100%;");
+            divider.append(tex);
+            divider.append(dam);
+            btn.append(divider);
 
         }
     }
@@ -1130,7 +1152,7 @@ function GetAbilityToolTip(ability, abilityDam, abilityName, abilityIconType, ab
         spa.innerHTML += "<span style=\"color:#addd9e;font-size: 13px\">" + abilityMod + "</span>";
     }
     if (abilityEncht != "") {
-        spa.innerHTML += "<span style=\"color:#8332a8;font-size: 13px\">" + abilityEncht + "</span>";
+        spa.innerHTML += "<span style=\"color:#aa84f6;font-size: 13px\">" + abilityEncht + "</span>";
     }
 
 
@@ -1228,7 +1250,7 @@ function addPassiveslot(a, div, enchant) {
             imag.setAttribute("height", "40");
 
             if (enchant) {
-                btn.setAttribute("style", "background-color: #8332a8");
+                btn.setAttribute("style", "background-image: linear-gradient(to right, rgb(95 47 162 / 0%), rgb(146 47 162 / 25%), rgb(222 88 228 / 50%), rgb(138 47 162 / 26%), rgb(151 47 162 / 0%));");
             }
 
 
@@ -1284,7 +1306,10 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
     imag.setAttribute("height", "40");
 
 
-    btn.setAttribute("style", "background-color: #8332a8");
+
+    btn.setAttribute("style", "background-image: linear-gradient(to right, rgb(95 47 162 / 0%), rgb(146 47 162 / 25%), rgb(222 88 228 / 50%), rgb(138 47 162 / 26%), rgb(151 47 162 / 0%));");
+
+
 
 
 
@@ -2787,6 +2812,7 @@ function showUnit(a) {
 
             enchantButton.activeEnchantList = activeEnchantList;
             enchantButton.addEventListener('click', ShowPossibleEnchantments);
+
             // make a list on the unit, not on the buttons
 
 
@@ -2918,15 +2944,17 @@ function showUnit(a) {
 
                         }
                         if ('passive' in jsonEnchantments.enchantments[k]) {
-                            console.log("Test");
+
                             for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
                                 addPassiveslot(jsonEnchantments.enchantments[k].passive[t].slug, unitTabHolder, true);
+
                                 if (jsonEnchantments.enchantments[k].passive[t].slug.indexOf("faithful") != -1) {
                                     console.log("faithful found");
                                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9) + "*";
                                     var faithfulUpkeep = true;
 
                                 }
+
                             }
 
 
@@ -3858,7 +3886,6 @@ function addLevelUpInfo(units, a, holder) {
     }
 
     levelup.innerHTML = levelText;
-    console.log(levelup.innerHTML);
 
 
 }
@@ -4368,8 +4395,42 @@ function ShowPossibleEnchantments(evt) {
     var compatibleList = new Array();
     var i = "";
 
+    // check if culture
+    var culture = CheckIfInCulture(evt.currentTarget.unitData.id);
+    console.log(culture);
     for (i = 0; i < list.length; i++) {
         var j = "";
+
+        if (list[i].id === "primal_mark") {
+            if (culture == "barbarian") {
+                break;
+            }
+        }
+        if (list[i].id === "signet_of_knighthood") {
+            if (culture == "feudal") {
+                break;
+            }
+        }
+        if (list[i].id === "scroll_of_attunement") {
+            if (culture == "mystic") {
+                break;
+            }
+        }
+        if (list[i].id === "brand_of_wrath") {
+            if (culture == "dark") {
+                break;
+            }
+        }
+        if (list[i].id === "dormant_enchantment") {
+            if (culture == "high") {
+                break;
+            }
+        }
+        if (list[i].id === "rune_of_industry") {
+            if (culture == "industrious") {
+                break;
+            }
+        }
         for (j = 0; j < list[i].enchantment_requisites.length; j++) {
             var requisite = list[i].enchantment_requisites[j].requisite;
             var type = list[i].enchantment_requisites[j].requisite.toLowerCase().split("> ");
@@ -4403,7 +4464,7 @@ function ShowPossibleEnchantments(evt) {
                     requisite = requisite.replaceAll(" ", "_");
                     var passives = "";
                     for (passives in evt.currentTarget.unitData.secondary_passives) {
-                        console.log(requisite);
+
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === requisite.toLowerCase()) {
 
                             if (!isInArray(activeEnchantList, list[i]))
@@ -4419,6 +4480,22 @@ function ShowPossibleEnchantments(evt) {
 
         }
     }
+
+
+    // sort list alphabetically
+    compatibleList = compatibleList.sort((a, b) => {
+        const nameA = a.name.toUpperCase(); // Convert names to uppercase for case-insensitive comparison
+        const nameB = b.name.toUpperCase();
+
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        return 0; // Names are equal
+    });
     i = "";
 
     holder.innerHTML = "";
@@ -4503,6 +4580,7 @@ function SetEnchantment(evt) {
     }
     showUnit(evt.currentTarget.unit);
 
+
 }
 
 
@@ -4514,6 +4592,7 @@ function RemoveActiveEnchant(evt) {
     origin.activeEnchantList = origin.activeEnchantList.filter(item => item !== evt.currentTarget.thisEnchant);
 
     showUnit(evt.currentTarget.unit);
+
     evt.currentTarget.remove();
 
 
@@ -4921,7 +5000,7 @@ function FindCombatEnchantment(id) {
 
 
             var div = document.createElement("DIV");
-            div.innerHTML = "<img style=\"float:left; height:80px; padding:10px\" src=\"/aow4db/Icons/CombatEnchantments/" + jsonCombatEnchantments.enchantments[i].id + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + jsonCombatEnchantments.enchantments[i].name.toUpperCase() + "</p>" +
+            div.innerHTML = "<img style=\"float:left; height:80px; padding:10px\" src=\"/aow4db/Icons/CombatEnchantments/" + jsonCombatEnchantments.enchantments[i].id + ".png\"><p style=\"color: #aa84f6;>" + "<span style=\"font-size=20px;\">" + jsonCombatEnchantments.enchantments[i].name.toUpperCase() + "</p>" +
                 "</br>" + jsonCombatEnchantments.enchantments[i].description;
 
             collapsibleC.append(div);
@@ -5630,9 +5709,9 @@ function showItem(a) {
     //type = document.getElementById("modtype");
     //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
     //type.setAttribute("id", "modtype" + a);
-    tier = document.getElementById("modtier");
+    tier = document.getElementById("spell_tier");
     tier.innerHTML = a.tier;
-    tier.setAttribute("id", "modtier" + a.id);
+    tier.setAttribute("id", "spell_tier" + a.id);
 
     cost = document.getElementById("modcost");
     cost.innerHTML = a.slot;
