@@ -24,6 +24,7 @@ var jsonEnchantments = {
                 {
 
                     "description": "Very Fast Movement.",
+                    "overwriteName": "Very Fast Movement"
    },
 
     ],
@@ -41,12 +42,6 @@ var jsonEnchantments = {
                     "slug": "cull_the_weak",
    },
 
-    ],
-            "incompatible": [
-                {
-
-                    "name": "Dark",
-   },
     ],
 
     },
@@ -225,7 +220,7 @@ var jsonEnchantments = {
    },
                 {
 
-                    "type": "Ranged Physical",
+                    "type": "*Ranged Physical",
    },
     ],
 
@@ -261,6 +256,7 @@ var jsonEnchantments = {
 
                     "description": "+20% damage against targets that are Burning.",
                     "type": "Melee",
+                    "type2": "Base",
    },
 
     ],
@@ -279,6 +275,10 @@ var jsonEnchantments = {
 
                     "type": "Physical Ranged",
    },
+                {
+
+                    "type": "Base",
+   },
     ],
 
             "attack": [
@@ -286,6 +286,7 @@ var jsonEnchantments = {
 
                     "description": "A base 30% chance of inflicting Burning.",
                     "type": "Physical Ranged",
+                    "type2": "Base",
    },
     ],
 
@@ -336,6 +337,7 @@ var jsonEnchantments = {
 
                     "description": "Base 30% chance of inflicting a random negative status effect.",
                     "type": "Magic",
+                    "type2": "Base",
    },
     ],
 
@@ -346,7 +348,7 @@ var jsonEnchantments = {
             "name": "Flameburst Weapons",
 
 
-
+            "crit": 20,
             "passive": [
                 {
 
@@ -385,10 +387,12 @@ var jsonEnchantments = {
                 {
 
                     "description": "+20%  Experience from combat. ",
+                    "overwriteName": "+20% Experience"
    },
                 {
 
                     "description": "Slip Away if Tier I or II, healing them once per battle if their  Hit Points would be reduce to zero.",
+                    "overwriteName": "Slip Away"
    },
 
     ],
@@ -483,6 +487,7 @@ var jsonEnchantments = {
                 {
 
                     "description": "The Aspect of the Root ability, which allows units to heal themselves in battle.",
+                    "overwriteName": "Aspect of the Root"
    },
 
     ],
@@ -540,6 +545,7 @@ var jsonEnchantments = {
                 {
 
                     "description": "Decreased number of units in formation.",
+                    "overwriteName": "Less Units in Formation"
 
    },
 
@@ -551,22 +557,15 @@ var jsonEnchantments = {
 
             "name": "Force of Nature",
 
-
+            "crit": 20,
             "damage_change": "4<damageblight></damageblight>",
             "requisites": [
                 {
-                    "slug": "Base",
+                    "type": "Base",
             },
         ],
 
-            "passive_unique": [
-                {
 
-                    "description": "+20% Critical Hit chance.",
-
-   },
-
-    ],
 
     }, {
 
@@ -581,6 +580,9 @@ var jsonEnchantments = {
                 {
 
                     "type": "Physical Ranged",
+   }, {
+
+                    "type": "Base",
    },
     ],
 
@@ -589,6 +591,7 @@ var jsonEnchantments = {
 
                     "description": "Gain base 30% chance of inflicting Poisoned, a damage-over-time effect.",
                     "type": "Physical Ranged",
+                    "type2": "Base",
    },
     ],
 
@@ -621,5 +624,536 @@ var jsonEnchantments = {
 
     },
 
+        {
+
+            "id": "adaptive_armor",
+
+            "name": "Adaptive Armor",
+
+
+
+            "passive": [
+                {
+
+                    "slug": "adaptive_armor",
+
+   },
+    ],
+
+    },
+        {
+
+            "id": "artisan_armaments",
+
+            "name": "Artisan Armaments",
+
+
+            "crit": "30",
+
+
+    },
+        {
+
+            "id": "eternal_earth",
+
+            "name": "Eternal Earth",
+
+
+
+            "passive_unique": [
+                {
+
+                    "description": "Restores unit to life once upon death.",
+                    "overwriteName": "Undying",
+
+   },
+    ],
+
+    },
+
+        {
+
+            "id": "meteor_arrows",
+
+            "name": "Meteor Arrows",
+
+            "damage_change": " 4<damagefire></damagefire>",
+
+            "requisites": [
+
+                {
+
+                    "type": "Physical Ranged",
+   }, {
+
+                    "type": "Base",
+   },
+    ],
+
+            "attack": [
+                {
+
+                    "description": "Demolisher, making them able to destroy reinforced obstacles.</bullet><bullet>Deal +4  Fire Damage to the target and adjacent units.",
+                    "type": "Physical Ranged",
+                    "type2": "Base",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "seeker_arrows",
+
+            "name": "Seeker Arrows",
+
+
+
+            "attack": [
+                {
+                    "range": 1,
+                    "description": "+1 Range",
+                    "type": "Physical Ranged",
+
+   },
+
+    ],
+
+    },
+
+        {
+
+            "id": "siege_magic",
+
+            "name": "Siege Magic",
+            "damage": 10,
+
+            "passive": [
+                {
+
+                    "slug": "siege_breaker",
+   }, {
+
+                    "slug": "demolisher",
+   },
+
+    ],
+
+
+    },
+        {
+
+            "id": "spell-tempered_shields",
+
+            "name": "Spell-Tempered Shields",
+            "resistance": 1,
+
+            "passive_unique": [
+                {
+
+                    "description": "When entering Defense Mode, this unit and all adjacent allies receive +1  Resistance until the start of the next turn.",
+   },
+
+    ],
+
+
+    }, {
+
+            "id": "sundering_blades",
+
+            "name": "Sundering Blades",
+
+
+
+            "attack": [
+                {
+
+                    "description": "Base 90% chance of inflicting Sundered Defense, reducing enemy  Defense.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.",
+                    "type": "Melee",
+                    "type2": "Base",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "windborne_scouts",
+
+            "name": "Windborne Scouts",
+
+
+
+            "passive_unique": [
+                {
+
+                    "description": "Flying mounts.",
+
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "amplified_arrows",
+
+            "name": "Amplified Arrows",
+
+            "damage_change": "-1<damagephysical></damagephysical> 2<damagelightning></damagelightning>",
+
+            "requisites": [
+
+                {
+
+                    "type": "Physical Ranged",
+   },
+                {
+
+                    "type": "Base",
+   },
+    ],
+
+            "attack": [
+                {
+
+                    "description": "30% of their damage to another target within 3 hexes.",
+                    "type": "Physical Ranged",
+                    "type2": "Base",
+   },
+    ],
+
+    },
+        {
+
+            "id": "cosmic_overdrive",
+
+            "name": "Cosmic Overdrive",
+            "damage": 30,
+            "mp": 48,
+
+            "passive_unique": [
+                {
+
+                    "description": "Very Fast Movement.",
+                    "overwriteName": "Very Fast Movement"
+   },
+
+    ],
+
+ },
+        {
+
+            "id": "frenzying_focus",
+
+            "name": "Frenzying Focus",
+
+
+            "passive": [
+                {
+
+                    "slug": "frenzy",
+   },
+    ],
+
+
+    },
+        {
+
+            "id": "guiding_projectiles",
+
+            "name": "Guiding Projectiles",
+
+
+
+            "attack": [
+                {
+
+                    "description": "Ignore accuracy penalties from the Obscuring condition caused by units that are in the way and certain terrain.",
+                    "type": "Base",
+
+   },
+    ],
+
+    },
+        {
+
+            "id": "lightning_blades",
+
+            "name": "Lightning Blades",
+
+            "damage_change": "-2<damagephysical></damagephysical> 4<damagelightning></damagelightning>",
+
+            "requisites": [
+                {
+
+                    "type": "Melee",
+   },
+                {
+
+                    "type": "Base",
+   },
+    ],
+
+            "attack": [
+                {
+
+                    "description": "20% damage against Electrified units.",
+
+                    "type": "Melee",
+                    "type2": "Base",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "lightning_focus",
+
+            "name": "Lightning Focus",
+
+            "damage_change": "2<damagelightning></damagefire>",
+
+            "requisites": [
+                {
+
+                    "type": "Magic",
+   },
+                {
+
+                    "type": "Base",
+   },
+    ],
+
+            "attack": [
+                {
+
+                    "description": "Gain base 30% chance of inflicting Electrified, a damage-over-time effect.",
+
+                    "type": "Magic",
+                    "type2": "Base",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "mirror_veil",
+
+            "name": "Mirror Veil",
+
+
+
+            "passive_unique": [
+                {
+
+                    "description": "Reflect 50% of non- Physical Damage sustained back onto attackers.",
+
+
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "phasing_enchantment",
+
+            "name": "Phasing Enchantment",
+
+
+
+            "active": [
+                {
+
+                    "slug": "phase_unicorn",
+
+
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "staves_of_warding",
+
+            "name": "Staves of Warding",
+
+
+            "attack": [
+                {
+
+                    "description": "Grant +2 Bolstered Resistance to affected units.",
+
+                    "type": "Support",
+
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "cruel_weaponry",
+
+            "name": "Cruel Weaponry",
+
+
+            "passive": [
+                {
+
+                    "slug": "cruel_weaponry",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "fetid_legion",
+
+            "name": "Fetid Legion",
+
+            "hp": 10,
+
+
+
+
+            "passive": [
+                {
+
+                    "slug": "weakening_aura",
+   },
+
+    ],
+
+
+    },
+        {
+
+            "id": "frost_arrows",
+
+            "name": "Frost Arrows",
+
+            "damage_change": "-1<damagephysical></damagephysical> 2<damagefrost></damagefrost>",
+
+            "requisites": [
+
+                {
+
+                    "type": "Physical Ranged",
+   },
+                {
+
+                    "type": "Base",
+   },
+    ],
+
+            "attack": [
+                {
+
+                    "description": "A base 60% chance of inflicting Slowed.",
+                    "type": "Physical Ranged",
+                    "type2": "Base",
+   },
+    ],
+
+    }, {
+
+            "id": "frost_blades",
+
+            "name": "Frost Blades",
+
+            "damage_change": "-2<damagephysical></damagephysical> 4<damagefrost></damagefrost>",
+
+            "requisites": [
+                {
+
+                    "type": "Melee",
+   },
+                {
+
+                    "type": "Base",
+   },
+    ],
+
+            "attack": [
+                {
+
+                    "description": "+20% damage against Frozen or Slowed units.",
+                    "type": "Melee",
+                    "type2": "Base",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "necrotic_magic",
+
+            "name": "Necrotic Magic",
+
+
+
+            "attack": [
+                {
+
+                    "description": "A base 60% chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health.",
+                    "type": "Magic",
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "soulbinders",
+
+            "name": "Soulbinders",
+
+
+
+            "attack": [
+                {
+
+                    "description": "Base 90% chance of inflicting Soulbound on Base attacks, increasing the <soul></soul>Soul gain when the target is killed.",
+                    "type": "Base",
+   },
+
+    ],
+            "passive_unique": [
+                {
+
+                    "description": "+10% damage against units with Soulbound.",
+
+
+   },
+
+    ],
+
+    },
+        {
+
+            "id": "true_death_magic",
+
+            "name": "True Death Magic",
+
+
+
+            "attack": [
+                {
+
+                    "description": "A base 30% chance of inflicting Marked for Death, which kills the affected unit at the end of the effect's duration.",
+                    "type": "Magic",
+                    "type2": "Base",
+   },
+
+    ],
+
+    },
 ]
 }

@@ -772,7 +772,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
             abilityType = jsonUnitAbilities.abilities[j].actionPoints;
 
-
+            abilityRange = jsonUnitAbilities.abilities[j].range;
 
             abilityName = jsonUnitAbilities.abilities[j].name;
             abilityIcon = jsonUnitAbilities.abilities[j].icon;
@@ -821,19 +821,65 @@ function addAbilityslot(a, holder, list, enchant) {
 
                             for (t = 0; t < jsonEnchantments.enchantments[k].attack.length; t++) {
 
-                                if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1) {
+                                if ('type2' in jsonEnchantments.enchantments[k].attack[t]) {
+                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1 && combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type2) != -1) {
 
-                                    abilityName += "<span style=\"color:#8332a8;font-size: 20px\">*</span>";
-                                    abilityEncht += "<bullet>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
-                                    abilityEncht += "</bullet><br>";
+                                        abilityName += "<span style=\"color:#8332a8;font-size: 20px\">*</span>";
+                                        abilityEncht += "<bullet>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                        abilityEncht += "</bullet><br>";
+
+                                        if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
+                                            abilityRange += jsonEnchantments.enchantments[k].attack[t].range + "*";
+                                        }
+                                    }
+                                } else {
+                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1) {
+
+                                        abilityName += "<span style=\"color:#8332a8;font-size: 20px\">*</span>";
+                                        abilityEncht += "<bullet>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                        abilityEncht += "</bullet><br>";
+
+                                        if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
+                                            abilityRange = parseInt(parseInt(jsonEnchantments.enchantments[k].attack[t].range) + parseInt(abilityRange)) + "*";
+                                        }
+                                    }
                                 }
+
+
+
                             }
                         }
                         if ('damage_change' in jsonEnchantments.enchantments[k]) {
 
-                            for (t = 0; t < jsonEnchantments.enchantments[k].requisites.length; t++) {
 
-                                if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[t].type) != -1) {
+
+                            if (jsonEnchantments.enchantments[k].requisites.length > 1) {
+                                if (jsonEnchantments.enchantments[k].requisites[1].type.indexOf("*") != -1) {
+                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1 || combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[1].type) != -1) {
+                                        if (abilityDam != "") {
+
+                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
+                                        }
+
+
+                                    }
+                                    // or check, not and
+                                } else {
+                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1 && combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[1].type) != -1) {
+                                        if (abilityDam != "") {
+
+                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
+                                        }
+
+
+                                    }
+                                }
+
+
+
+
+                            } else {
+                                if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1) {
                                     if (abilityDam != "") {
 
                                         abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
@@ -882,7 +928,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
 
             //  abilityDam = jsonUnitAbilities.abilities[j].damage;
-            abilityRange = jsonUnitAbilities.abilities[j].range + "<range></range>";
+            abilityRange = abilityRange + "<range></range>";
             abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
             var tooltipName = document.createElement("SPAN");
@@ -1206,10 +1252,15 @@ function addPassiveslot(a, div, enchant) {
 }
 
 
-function addUniquePassiveSlot(enchantment, descr, div) {
+function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
     var abilityName, abilityIcon, abilityDescr, j = "";
 
-    abilityName = enchantment.name;
+    if (overwrite != "") {
+        abilityName = overwrite;
+    } else {
+        abilityName = enchantment.name;
+    }
+
     abilityIcon = enchantment.id;
     abilityDescr = descr;
 
@@ -2667,11 +2718,16 @@ function showUnit(a) {
             var hpvalue = jsonUnits.units[i].hp;
             hp.innerHTML = jsonUnits.units[i].hp;
 
+            var crit = unitCard.querySelectorAll('p#crit')[0];
+            crit.innerHTML = "+" + 0 + "%";
+
+
             armor = unitCard.querySelectorAll('p#armor')[0];
             armor.innerHTML = jsonUnits.units[i].armor;
 
             shield = unitCard.querySelectorAll('p#resistence')[0];
-            shield.innerHTML = jsonUnits.units[i].resistance;
+            var shieldValue = jsonUnits.units[i].resistance;
+            shield.innerHTML = shieldValue;
 
             mp = unitCard.querySelectorAll('p#mp')[0];
             mp.innerHTML = jsonUnits.units[i].mp;
@@ -2792,7 +2848,7 @@ function showUnit(a) {
 
             }
 
-
+            var critChance = 0;
             var lowUpkeep = false;
             var faithfulUpkeep = false;
             var x = "";
@@ -2800,6 +2856,38 @@ function showUnit(a) {
             var k = "";
 
             var t = "";
+
+            var y = "";
+            for (y in jsonUnits.units[i].secondary_passives) {
+                if (jsonUnits.units[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
+                    if (lowUpkeep === true) {
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
+                    } else if (faithfulUpkeep === true) {
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
+                    } else {
+                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
+                    }
+
+
+                    if (summonInfo.length > 0) {
+
+                        var p = "";
+                        for (p in summonInfo) {
+                            var castcost = "";
+                            if (summonInfo[p].tactical === true) {
+                                castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
+                            } else {
+                                castcost = summonInfo[p].operation_point_cost + "<caststrategic></caststrategic>";
+                            }
+                            prodcost.innerHTML = "<br> Spell: " + summonInfo[p].casting_cost + castcost;
+                        }
+
+
+                    }
+
+                }
+            }
+
             for (x in activeEnchantList) {
 
 
@@ -2817,20 +2905,27 @@ function showUnit(a) {
                             mp.innerHTML = jsonEnchantments.enchantments[k].mp + "*";
 
                         }
+
+                        if ('resistance' in jsonEnchantments.enchantments[k]) {
+                            shieldValue += jsonEnchantments.enchantments[k].resistance;
+                            shield.innerHTML = shieldValue + "*";
+
+                        }
+                        if ('crit' in jsonEnchantments.enchantments[k]) {
+                            critChance += parseInt(jsonEnchantments.enchantments[k].crit);
+                            crit.setAttribute("style", "display:block");
+                            crit.innerHTML = "+" + critChance + "%";
+
+                        }
                         if ('passive' in jsonEnchantments.enchantments[k]) {
                             console.log("Test");
                             for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
                                 addPassiveslot(jsonEnchantments.enchantments[k].passive[t].slug, unitTabHolder, true);
                                 if (jsonEnchantments.enchantments[k].passive[t].slug.indexOf("faithful") != -1) {
+                                    console.log("faithful found");
                                     tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9) + "*";
                                     var faithfulUpkeep = true;
 
-                                    if (summonInfo.length > 0) {
-                                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9) + "*";
-
-
-
-                                    }
                                 }
                             }
 
@@ -2839,7 +2934,11 @@ function showUnit(a) {
 
                         if ('passive_unique' in jsonEnchantments.enchantments[k]) {
                             for (t = 0; t < jsonEnchantments.enchantments[k].passive_unique.length; t++) {
-                                addUniquePassiveSlot(activeEnchantList[x], jsonEnchantments.enchantments[k].passive_unique[t].description, unitTabHolder);
+                                var overwrite = "";
+                                if ('overwriteName' in jsonEnchantments.enchantments[k].passive_unique[t]) {
+                                    overwrite = jsonEnchantments.enchantments[k].passive_unique[t].overwriteName;
+                                }
+                                addUniquePassiveSlot(activeEnchantList[x], jsonEnchantments.enchantments[k].passive_unique[t].description, unitTabHolder, overwrite);
                             }
                         }
 
@@ -2896,36 +2995,7 @@ function showUnit(a) {
 
 
 
-            var y = "";
-            for (y in jsonUnits.units[i].secondary_passives) {
-                if (jsonUnits.units[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
-                    if (lowUpkeep === true) {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
-                    } else if (faithfulUpkeep === true) {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
-                    } else {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
-                    }
 
-
-                    if (summonInfo.length > 0) {
-
-                        var p = "";
-                        for (p in summonInfo) {
-                            var castcost = "";
-                            if (summonInfo[p].tactical === true) {
-                                castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
-                            } else {
-                                castcost = summonInfo[p].operation_point_cost + "<caststrategic></caststrategic>";
-                            }
-                            prodcost.innerHTML = "<br> Spell: " + summonInfo[p].casting_cost + castcost;
-                        }
-
-
-                    }
-
-                }
-            }
 
 
 
@@ -4371,6 +4441,7 @@ function ShowPossibleEnchantments(evt) {
         var span = document.createElement("span");
         span.innerHTML = compatibleList[i].description;
         span.className = "tooltiptext";
+        span.setAttribute("style", "left: 150px;");
         text.appendChild(span);
         enchantEntry.appendChild(image);
         enchantEntry.appendChild(text);
@@ -4410,6 +4481,7 @@ function SetEnchantment(evt) {
         var span = document.createElement("span");
         span.innerHTML = evt.currentTarget.enchant.name + "<hr>" + evt.currentTarget.enchant.description;
         span.className = "tooltiptext";
+        span.setAttribute("style", "left: 50px;");
         activeEnch.appendChild(span);
         activeEnch.appendChild(image);
         // activeEnch.activeEnchantList = evt.currentTarget.activeEnchantList;
@@ -4501,8 +4573,10 @@ function GetAbilityInfo(ability) {
         abilityRange = ability.range + "<range></range>";
         abilityAcc = ability.accuracy + "<accuracy></accuracy>";
 
+
+
         var abilityIconType = GetAbilityBackground(ability.damage);
-        var spa = GetAbilityToolTip(ability, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
+        var spa = GetAbilityToolTip(ability, ability.damage, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
     } else {
         var spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
     }
@@ -5503,7 +5577,7 @@ function showItem(a) {
                         abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
                         var abilityIconType = GetAbilityBackground(jsonUnitAbilities.abilities[j].damage);
-                        var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
+                        var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], jsonUnitAbilities.abilities[j].damage, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
                     } else {
                         var spa = CreatePassiveSlotToolTip(jsonUnitAbilities.abilities[j].icon, jsonUnitAbilities.abilities[j].name, jsonUnitAbilities.abilities[j].description);
                     }
@@ -5857,7 +5931,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     abilityAcc = jsonUnitAbilities.abilities[j].accuracy + "<accuracy></accuracy>";
 
                     var abilityIconType = GetAbilityBackground(jsonUnitAbilities.abilities[j].damage);
-                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
+                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], jsonUnitAbilities.abilities[j].damage, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
                 } else {
                     var spa = CreatePassiveSlotToolTip(jsonUnitAbilities.abilities[j].icon, jsonUnitAbilities.abilities[j].name, jsonUnitAbilities.abilities[j].description);
                 }
