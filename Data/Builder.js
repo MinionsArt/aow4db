@@ -6089,13 +6089,13 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 //type = document.getElementById("modtype");
                 //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
                 //type.setAttribute("id", "modtype" + a);
-                tier = document.getElementById("modtier");
+                tier = document.getElementById("spell_tier");
                 tier.innerHTML = "";
                 if (category != undefined) {
                     tier.innerHTML += "<br>" + category + " - " + level;
                     tier.innerHTML += "<br>" + group_name;
                 }
-                tier.setAttribute("id", "modtier" + a.id);
+                tier.setAttribute("id", "spell_tier" + a.id);
 
                 cost = document.getElementById("modcost");
                 cost.innerHTML = "";
@@ -6163,12 +6163,12 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 //type = document.getElementById("modtype");
                 //type.innerHTML = "Mod Type: " + jsonSpells.spells[j].type;
                 //type.setAttribute("id", "modtype" + a);
-                tier = document.getElementById("modtier");
+                tier = document.getElementById("spell_tier");
                 tier.innerHTML = "";
                 if (category != undefined) {
                     tier.innerHTML += "<br>" + category + " - " + level;
                 }
-                tier.setAttribute("id", "modtier" + a.id);
+                tier.setAttribute("id", "spell_tier" + a.id);
 
                 cost = document.getElementById("modcost");
                 cost.innerHTML = "";
