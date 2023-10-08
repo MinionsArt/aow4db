@@ -423,7 +423,7 @@
      var listOfAllChoices = new Array();
 
      listOfAllChoices.push(currentOrigin);
-     listOfAllChoices.push(currentTome);
+     //  listOfAllChoices.push(currentTome);
 
      listOfAllChoices.push(currentForm);
      listOfAllChoices.push(currentBody);
