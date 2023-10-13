@@ -3931,8 +3931,8 @@ function romanize(num) {
         return NaN;
     var digits = String(+num).split(""),
         key = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
-               "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
-               "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+            "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
+            "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
         roman = "",
         i = 3;
     while (i--)
@@ -4218,6 +4218,7 @@ function showTome(a, div) {
             if ('hero_skills' in jsonTomes.tomes[j]) {
 
                 for (l in jsonTomes.tomes[j].hero_skills) {
+                    // remove duplicates
                     if (l != 0) {
                         if (jsonTomes.tomes[j].hero_skills[l].slug === jsonTomes.tomes[j].hero_skills[l - 1].slug) {
                             break;
@@ -4674,7 +4675,7 @@ function GetStructureName(structureID) {
 
 function GetHeroSkillName(skillID) {
     for (j in jsonHeroSkills.skills) {
-        if (jsonHeroSkills.skills[j].id.indexOf(skillID) != -1) {
+        if (jsonHeroSkills.skills[j].id == (skillID)) {
             return jsonHeroSkills.skills[j].name;
         }
     }
@@ -4683,7 +4684,7 @@ function GetHeroSkillName(skillID) {
 function GetHeroSkillDescription(skillID) {
     var array = ["", ""];
     for (j in jsonHeroSkills.skills) {
-        if (jsonHeroSkills.skills[j].id.indexOf(skillID) != -1) {
+        if (jsonHeroSkills.skills[j].id == skillID) {
             if ('abilities' in jsonHeroSkills.skills[j]) {
                 for (k in jsonUnitAbilities.abilities) {
                     if (jsonUnitAbilities.abilities[k].slug.indexOf(jsonHeroSkills.skills[j].abilities[0].slug) != -1) {
@@ -5483,9 +5484,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-            entry,
-            percentage
-        } of percentages) {
+        entry,
+        percentage
+    } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
