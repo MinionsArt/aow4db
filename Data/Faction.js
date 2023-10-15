@@ -155,6 +155,7 @@
          case "Tome":
 
              currentTome = origin;
+             currentTomeList[0] = origin;
              break;
          case "Origin":
 
