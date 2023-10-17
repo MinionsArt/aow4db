@@ -1129,18 +1129,33 @@ function GetAbilityToolTip(ability, abilityDam, abilityName, abilityIconType, ab
     range.innerHTML = abilityRange;
     range.className = "abilityLineSlot";
 
+
+    // action point type
     var actionPoint = document.createElement("DIV");
     actionPoint.innerHTML = ability.actionPoints;
     actionPoint.className = "abilityLineSlot";
+
+    // action point name
+
+    var actionPointName = LookUpActionPointsName(ability.actionPoints);
+    if (actionPointName != undefined) {
+        actionPoint.innerHTML += "<br>" + "<span style=\"color: lightskyblue; font-size:12px\">" + (actionPointName) + "</span>";
+    }
+
+
+
     accrangeHolder.appendChild(accuracy);
     accrangeHolder.appendChild(range);
     ////spa.append(accrangeHolder);
 
     var typeHolder = document.createElement("DIV");
     typeHolder.appendChild(actionPoint);
+
     line2.appendChild(accrangeHolder)
     line2.appendChild(typeHolder)
     abilityHighlighter.append(line2);
+
+
 
     spa.append(abilityHighlighter);
 
@@ -1220,6 +1235,29 @@ function GetAbilityToolTip(ability, abilityDam, abilityName, abilityIconType, ab
     spa.append(bottomLine);
 
     return spa;
+}
+
+function LookUpActionPointsName(string) {
+    if (string != undefined) {
+        if (string.indexOf("repeatingaction") != -1) {
+            return "Repeating";
+        }
+        if (string.indexOf("fullaction") != -1) {
+            return "Full Action";
+        }
+        if (string.indexOf("fullactioncontinue") != -1) {
+            return "Full Action Continue";
+        }
+        if (string.indexOf("freeaction") != -1) {
+            return "Free Action";
+        }
+        if (string.indexOf("leaveoneaction") != -1) {
+            return "Leave One";
+        }
+        if (string.indexOf("singleuseaction") != -1) {
+            return "Single Action";
+        }
+    }
 }
 
 function addPassiveslot(a, div, enchant) {
@@ -5484,9 +5522,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-        entry,
-        percentage
-    } of percentages) {
+            entry,
+            percentage
+        } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
