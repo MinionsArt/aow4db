@@ -553,10 +553,12 @@ function searchUnits(keyword) {
 
     var fields = keyword.split('+', 3);
     var list = returnUnitList(fields[0]);
+    list = returnAbilitiesUnits(fields[0], list);
     var depricatedCheckList = CheckDepricated(list);
 
     output = document.getElementById("searchOutput");
     result = document.getElementById("searchResult");
+
 
     var listspells = returnSpellList(fields[0]);
     var listSiegeProj = returnSiegeProj(fields[0]);
@@ -612,6 +614,55 @@ function searchUnits(keyword) {
 
 }
 
+
+function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
+    var p = "";
+    var abilitiesList = new Array();
+    for (j in jsonUnitAbilities.abilities) {
+        if ('name' in jsonUnitAbilities.abilities[j]) {
+
+            textvalue = jsonUnitAbilities.abilities[j].name;
+            fieldToSearch = fieldToSearch.replaceAll("_", " ");
+            if (textvalue.toUpperCase().indexOf(fieldToSearch.toUpperCase()) != -1) {
+
+                if (!isInArray(abilitiesList, jsonUnitAbilities.abilities[j].slug)) {
+                    abilitiesList.push(jsonUnitAbilities.abilities[j].slug);
+                }
+
+
+
+            }
+        }
+
+
+    }
+    var returnList = new Array();
+    for (var i = 0; i < abilitiesList.length; i++) {
+
+        findUnitWithAbility(abilitiesList[i], returnList);
+    }
+
+
+    for (var i = 0; i < returnList.length; i++) {
+
+        if (!isInArray(unitListToCheckTo, returnList[i])) {
+            console.log(returnList);
+            unitListToCheckTo.push(returnList[i]);
+
+
+
+        }
+    }
+
+    return unitListToCheckTo;
+
+
+
+
+
+
+}
+
 function CheckDepricated(listChecking) {
     var newList = new Array();
     var i = "";
@@ -644,7 +695,7 @@ function depCheck(id) {
 function searchArray(keyword, arraytosearch, listToPushTo, index) {
     var j = 0;
     for (j in arraytosearch) {
-        if (arraytosearch[j].slug != null) {
+        if ('slug' in arraytosearch[j]) {
             textvalue = arraytosearch[j].slug;
             if (textvalue.toUpperCase().indexOf(keyword) > -1) {
                 if (listToPushTo.length >= 1) {
@@ -659,6 +710,7 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
 
             }
         }
+
 
     }
 }
