@@ -1,11 +1,258 @@
 var jsonTomes = {
     "tomes": [
         {
+            "affinities": "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
+            "lore_description": "\\\"Slaying a wizard is similar to slaying any other monster: it necessitates preparation. If your mark is prone to conjuring astral creatures, it is vital to sever their connection and remove their arcane crutch. This is achieved through a complex incantation, by administering minor astral siphoning pests, or—should the opportunity arise—by simply slitting their throat.\\\"",
+            "id": "tome_of_severing",
+            "gameplay_description": "Wield powerful nullification magic to sever the very essence of summoned creatures.",
+            "DLC": "EMPIRESANDASHES ",
+            "lore_author": "Nocturne, Greyblood Assassin",
+            "name": "Tome of Severing",
+            "hero_skills": [
+                {
+                    "slug": "master_of_disruption"
+   }
+  ],
+            "tier": 4,
+            "icon": "tome_of_severing",
+            "skills": [
+                {
+                    "description": "A caster Mythic Unit based on ancient designs that can remove friendly negative status effects and enemy enchantments.",
+                    "name": "Severing Golem",
+                    "tier": 8,
+                    "unit_slug": "severing_golem",
+                    "type": "<hyperlink>Unit</hyperlink>"
+   },
+                {
+                    "description": "All non-hero corpses on the map are destroyed. For each corpse destroyed, friendly units:<bulletlist><bullet>Gain + Bolstered Resistance</bullet><bullet>Heals + <temphp></temphp> Temporary Hit Points</bullet></bulletlist>",
+                    "name": "Final Banishment",
+                    "spell_slug": "final_banishment",
+                    "tier": 7,
+                    "type": "Combat Spell"
+   },
+                {
+                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units gain:<bulletlist><bullet>A base % chance of inflicting Disrupted for <turn></turn> <hyperlink>Turns</hyperlink>.</bullet>",
+                    "name": "Disrupting Blades",
+                    "spell_slug": "disrupting_blades",
+                    "tier": 8,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   },
+                {
+                    "description": "Makes it so when enchanted unit enters <hyperlink>Defense Mode</hyperlink>, it and adjacent friendly units gain:<bulletlist><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink></bullet></bulletlist>",
+                    "name": "Null Shield",
+                    "spell_slug": "null_shield",
+                    "tier": 7,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   },
+                {
+                    "description": "Target empty <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink> conjures a Spellward. This structure:<bulletlist><bullet>Functions as a <spelljammer></spelljammer> <hyperlink>Spell Jammer</hyperlink> for this and adjacent provinces.</bullet><bullet>Provides vision in 4-hex radius.</bullet></bulletlist>",
+                    "name": "Conjure Spellward",
+                    "spell_slug": "conjure_spellward",
+                    "tier": 8,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
+   },
+                {
+                    "description": "Target Magic Origin <hyperlink>Unit</hyperlink>:<bulletlist><bullet>Has a base % chance of being killed.</bullet><bullet>If unsuccessful, inflicts Disrupted and Decaying.</bullet></bulletlist>",
+                    "name": "Astral Severance",
+                    "spell_slug": "astral_severance",
+                    "tier": 7,
+                    "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
+   }
+  ]
+ },
+        {
+            "affinities": "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empireorder></empireorder> Empire Order Affinity",
+            "lore_description": "\\\"Are constructs 'alive'? For this I have only one answer: Does it matter? Constructs are obedient war machines created for one purpose: To crush everything in their path. In my opinion, the true question anyone should ask is: 'How do I escape their deadly march?'\\\"",
+            "id": "tome_of_the_construct",
+            "gameplay_description": "Master legions of constructs, fighting in uncannily synchronized formations, commanding them perfectly and crushing your foes beneath the march of their boots.",
+            "DLC": "EMPIRESANDASHES ",
+            "lore_author": "Alikana Krom, War Puppeteer",
+            "name": "Tome of the Construct",
+            "hero_skills": [
+                {
+                    "slug": "experienced_warsmith"
+   }
+  ],
+            "tier": 2,
+            "icon": "tome_of_the_construct",
+            "skills": [
+                {
+                    "description": "Units of this race gain the ability to share senses, granting them:<bulletlist><bullet>Hyper-Awareness when standing next to a Construct or another unit with Linked Minds.</bullet></bulletlist>",
+                    "name": "Linked Minds",
+                    "spell_slug": "linked_minds",
+                    "tier": 4,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
+   },
+                {
+                    "description": "Target friendly Construct or Linked Minds unit gains:<bulletlist><bullet>Hastened</bullet><bullet>Strengthened</bullet><bullet>This effect then cascades to adjacent friendly Constructs and is repeated.</bullet></bulletlist>",
+                    "name": "Cascading Command: Reposition",
+                    "spell_slug": "cascading_command_reposition",
+                    "tier": 3,
+                    "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
+   },
+                {
+                    "description": "When adjacent to another unit with Compounding Defense this unit gains:<bulletlist><bullet>+ <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+ <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist>",
+                    "name": "Compounding Defense",
+                    "spell_slug": "compounding_defense",
+                    "tier": 4,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   },
+                {
+                    "description": "Target friendly Construct or Linked Minds unit: <bulletlist><bullet>Gains Watchful for <turn></turn> Turns.</bullet><bullet>Enters <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>This effect then applies to adjacent friendly Constructs and is repeated.</bullet></bulletlist>",
+                    "name": "Cascading Command: Defend",
+                    "spell_slug": "cascading_command_defend",
+                    "tier": 3,
+                    "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
+   },
+                {
+                    "description": "A Polearm Unit capable of inflicting Weakened.",
+                    "name": "Bronze Golem",
+                    "tier": 4,
+                    "unit_slug": "bronze_golem",
+                    "type": "<hyperlink>Unit</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_quarry___worker_construct_nexus"
+   }
+  ]
+ },
+        {
+            "affinities": "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirenature></empirenature> Empire Nature Affinity",
+            "lore_description": "\\\"The perfect alchemical formula requires an equal measure of both time and fortune. Who else but the alchemist spends years of meticulous research into understanding the very essence of nature... Only to find the solution through sheer happenstance! Alchemy truly is a gamble with nature, entailing the power to both create, or destroy.\\\"",
+            "id": "tome_of_alchemy",
+            "gameplay_description": "Inflict your enemies with debuffs and mitigate them on your own units. Tinctures and a powerful ranged unit will help you manipulate the tides of battle.",
+            "DLC": "EMPIRESANDASHES ",
+            "lore_author": "Fauster, the Meticulous",
+            "name": "Tome of Alchemy",
+            "hero_skills": [
+                {
+                    "slug": "mysterious_tonic"
+   }
+  ],
+            "tier": 1,
+            "icon": "tome_of_alchemy",
+            "skills": [
+                {
+                    "description": "<bulletlist><bullet>+5<knowledge></knowledge><hyperlink>Knowledge</hyperlink> income.</bullet><bullet>+5<gold></gold> <hyperlink>Gold</hyperlink> income.</bullet><bullet>+5<knowledge></knowledge><hyperlink>Knowledge</hyperlink> income per <hyperlink>Magic Material</hyperlink> in this city's <hyperlink>Domain</hyperlink>.</bullet><bullet>+5<gold></gold> <hyperlink>Gold</hyperlink> income per <hyperlink>Magic Material</hyperlink> in this city's <hyperlink>Domain</hyperlink>.</bullet></bulletlist>",
+                    "name": "Material Refinery",
+                    "tier": 2,
+                    "type": "<hyperlink>City Structure</hyperlink>",
+                    "upgrade_slug": "material_refinery"
+   },
+                {
+                    "description": "At the start of combat units defending the city:<bulletlist><bullet>Suffer 16 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Suffer 2x Poisoned.</bullet></bulletlist>",
+                    "name": "Fumigation",
+                    "siege_project_slug": "fumigation",
+                    "tier": 2,
+                    "type": "<hyperlink>Siege Project</hyperlink>"
+   },
+                {
+                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Have their negative status effects dispelled.</bullet><bullet>Gain 2 Status Protection.</bullet></bulletlist>",
+                    "name": "Antimagic Tincture",
+                    "spell_slug": "antimagic_tincture",
+                    "tier": 2,
+                    "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
+   },
+                {
+                    "description": "Ranged Unit that can create Miasmas to debilitate enemies.",
+                    "name": "Afflictor",
+                    "tier": 2,
+                    "unit_slug": "afflictor",
+                    "type": "<hyperlink>Unit</hyperlink>"
+   },
+                {
+                    "description": "Create <hyperlink>Afflicting Miasma</hyperlink> in a 1-radius.",
+                    "name": "Disperse Afflicting Miasma",
+                    "spell_slug": "disperse_afflicting_miasma",
+                    "tier": 1,
+                    "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
+   },
+                {
+                    "description": "Grants enchanted units:<bulletlist><bullet>Distribute Tonic, granting positive Status Effects while removing a negative one.</bullet></bulletlist>",
+                    "name": "Mysterious Tonic",
+                    "spell_slug": "mysterious_tonic",
+                    "tier": 1,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_researchpost___alchemists_lab"
+   }
+  ]
+ },
+        {
+            "affinities": "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
+            "lore_description": "\\\"Dreadnought technologies are unmatched on the battlefield. Envision a fusion of steel and craftsmanship, dominating everything in its path. Explosions shatter the earth and rain down fire on your foes. An astounding sight to behold. Truly, when an Ironclad rolls into battle, the fight is already over.\\\"",
+            "id": "tome_of_the_dreadnought",
+            "gameplay_description": "Call upon the power of mighty machines and obliterate your enemies with powerful barrages.",
+            "DLC": "EMPIRESANDASHES ",
+            "lore_author": "Edward Portsmith, Last Dreadnought of the Commonwealth",
+            "name": "Tome of the Dreadnought",
+            "hero_skills": [
+                {
+                    "slug": "artillerist"
+   }
+  ],
+            "tier": 3,
+            "icon": "tome_of_the_dreadnought",
+            "skills": [
+                {
+                    "description": "Units in -hex radius are Marked. After 1 <turn></turn> <hyperlink>Turn</hyperlink> the Mana Core explodes inflicting:<bulletlist><bullet>24 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>24 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>60% base chance of receiving Disrupted.</bullet></bulletlist>",
+                    "name": "Destabilized Mana Core",
+                    "spell_slug": "destabilized_mana_core",
+                    "tier": 4,
+                    "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
+   },
+                {
+                    "description": "Grants enchanted units:<bulletlist><bullet>Warded increasing their <resistance></resistance> <hyperlink>Resistance</hyperlink> against magic attacks.</bullet></bulletlist>",
+                    "name": "Warding Metals",
+                    "spell_slug": "warding_metals",
+                    "tier": 4,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   },
+                {
+                    "description": "At the start of the battle, gain <hyperlink>Great Bombard</hyperlink> on the attacker's side until the end of battle. <bulletlist><bullet>Great Bombard is an immobile Siegecraft <hyperlink>Unit</hyperlink>.</bullet><bullet> Only one type of Siegecraft unit can be brought into <hyperlink>Combat</hyperlink>. If multiple <hyperlink>Siege Projects</hyperlink> would bring them, only the strongest of them will appear.</bullet></bulletlist>",
+                    "name": "Construct Great Bombard",
+                    "tier": 5,
+                    "type": "<hyperlink>Siege Project</hyperlink>"
+   },
+                {
+                    "description": "Grants enchanted units:<bulletlist><bullet>Overcharge, granting a Construct unit Overcharged.</bullet>",
+                    "name": "Tuning Kits",
+                    "spell_slug": "tuning_kits",
+                    "tier": 5,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   },
+                {
+                    "description": "Units in a -hex radius:<bulletlist><bullet>Suffer <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Become Marked.</bullet><bullet>Have a base % chance of becoming Immobilized.</bullet></bulletlist>",
+                    "name": "Pinning Barrage",
+                    "spell_slug": "pinning_barrage",
+                    "tier": 4,
+                    "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
+   },
+                {
+                    "description": "An armored Mythic Unit with a powerful tri-barreled cannon able to load and fire specialized shells at significant range.",
+                    "name": "Ironclad",
+                    "tier": 6,
+                    "unit_slug": "ironclad",
+                    "type": "<hyperlink>Unit</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_quarry___war_foundry"
+   }
+  ]
+ },
+        {
             "affinities": "2 <empirenature></empirenature> Empire Nature Affinity",
             "lore_description": "\\\"In the end, we shall all be humbled before one who can fully harness the forces of nature. The giver of life and cultivator of death, the tamer of the tempest and the guardian of the glade. The beasts shall howl your name, the leaves shall whisper your blessings, and the lands shall be better for your flourishing rule.\\\"",
             "id": "tome_of_the_goddess_of_nature",
             "gameplay_description": "Become the ultimate embodiment of nature. Excel at buffs and healing, especially for Plants and Animals.",
-            "lore_author": "Serena, Elven Mage of Life",
+            "lore_author": "Serena, Elven Wizard of Life",
             "name": "Tome of the Goddess of Nature",
             "hero_skills": [
                 {
@@ -63,7 +310,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Undying, which restores them to life once upon death.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Undying, which restores them to life once upon death.</bullet></bulletlist>",
                     "name": "Eternal Earth",
                     "spell_slug": "eternal_earth",
                     "tier": 10,
@@ -77,7 +324,7 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
    },
                 {
-                    "description": "<bulletlist><bullet>Summons an <hyperlink>Earth Titan</hyperlink> onto the target unoccupied hex.</bullet><bullet>All adjacent enemies lose their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+                    "description": "<bulletlist><bullet>Summons an <hyperlink>Earth Titan</hyperlink> onto the target unoccupied hex.</bullet><bullet>All adjacent enemies lose their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
                     "name": "Call the Titan of the Earth",
                     "spell_slug": "call_the_titan_of_the_earth",
                     "tier": 9,
@@ -179,18 +426,23 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
    },
                 {
-                    "description": "Target friendly city converts their <mana></mana> Mana income, gaining <gold></gold> Gold, <structureprod></structureprod> Production, and <food></food> Food income equal to 75% of the <mana></mana> Mana income.",
+                    "description": "Target owned city converts their <mana></mana> Mana income, gaining <gold></gold> Gold, <structureprod></structureprod> Production, and <food></food> Food income equal to 75% of the <mana></mana> Mana income.",
                     "name": "Transmute Resources",
                     "spell_slug": "transmute_resources",
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>"
    },
                 {
-                    "description": "Once per <turn></turn> Turn whenever enchanted units sustain non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>, they gain:<bulletlist><bullet>Bolstered Resistance, increasing their resistance to magical damage.</bullet><bullet>Status Protection, reducing the chance that the unit will be affected by negative status effects.</bullet>",
+                    "description": "Once per <turn></turn> Turn, whenever enchanted units sustain non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>, they gain:<bulletlist><bullet>Bolstered Resistance, increasing their resistance to magical damage.</bullet><bullet>Status Protection, reducing the chance that the unit will be affected by negative status effects.</bullet></bulletlist>",
                     "name": "Adaptive Armor",
                     "spell_slug": "adaptive_armor",
                     "tier": 6,
                     "type": "<caststrategic></caststrategic> Unit Enchantment"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___transmutation_circle"
    }
   ]
  },
@@ -223,7 +475,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "In target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Adds the Rocky feature. Can destroy Mountains.</bullet><bullet>Enemy armies sustain 20 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet>",
+                    "description": "In target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Reform and flatten the terrain.</bullet><bullet>Can remove Mountains.</bullet><bullet>Enemy armies sustain 20 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Does not work in the Water or Underground.</bullet></bulletlist>",
                     "name": "Earth Shatter",
                     "spell_slug": "earth_shatter",
                     "tier": 5,
@@ -234,7 +486,7 @@ var jsonTomes = {
                     "name": "Seismic Shock",
                     "spell_slug": "seismic_shock",
                     "tier": 5,
-                    "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
+                    "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
    },
                 {
                     "description": "Target enemy unit that is Tier 3 or lower:<bulletlist><bullet>Has a base % chance of instantly dying.</bullet><bullet>If unit resists, it is Stunned and sustains <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> instead.</bullet></bulletlist>",
@@ -268,28 +520,28 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Targets friendly army on the water. They regain their Movement points.<br></br>A unit cannot benefit from this spell more than once per turn.",
+                    "description": "Target friendly army regains all their Movement points if they are on water. Half if they are on land.<br></br>A unit cannot benefit from this spell more than once per turn.",
                     "name": "Favorable Winds",
                     "spell_slug": "favorable_winds",
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>"
    },
                 {
-                    "description": "Enemy units in a -hex radius have a base % chance of becoming Blind.",
+                    "description": "Enemy units in a -hex radius:<bulletlist><bullet>Sustain <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Have a base % chance of becoming Blind for <turn></turn> Turns.</bullet>",
                     "name": "Dust Storm",
                     "spell_slug": "dust_storm",
                     "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Flying mounts.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Flying mounts.</bullet></bulletlist>",
                     "name": "Windborne Scouts",
                     "spell_slug": "windborne_scouts",
                     "tier": 3,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Targets an empty hex and pulls the closest enemy to within  hexes of that location.",
+                    "description": "Pulls the closest enemy within hexes to target empty hex. They have a base % chance of becoming Stunned for <turn></turn> Turns.",
                     "name": "Abducting Cyclone",
                     "spell_slug": "abducting_cyclone",
                     "tier": 3,
@@ -309,7 +561,7 @@ var jsonTomes = {
             "lore_description": "\\\"Earth! Rock! The very foundation of the world beneath our feet. Embrace it. Harness it. Use its solidity for both protection and pain. Call forth minions of stone, and turn your own skin into the hardest rock!\\\"",
             "id": "tome_of_rock",
             "gameplay_description": "Smash your enemies with the force of stone. Specialize in increasing your defenses and dealing <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.",
-            "lore_author": "Blint the Underdelver, First Protector of the Molemen",
+            "lore_author": "Blint the Underminer, First Protector of the Molemen",
             "name": "Tome of Rock",
             "hero_skills": [
                 {
@@ -320,7 +572,7 @@ var jsonTomes = {
             "icon": "tome_of_rock",
             "skills": [
                 {
-                    "description": "Makes rock growths develop on the target race, granting them:<bulletlist><bullet>+ <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Rock Camouflage, which allows them to hide on Rocky terrain.</bullet><bullet>Rock Walk, which allows them to traverse Rocky terrain faster.</bullet></bulletlist>",
+                    "description": "Makes rock growths develop on the target race, granting them:<bulletlist><bullet>+ <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Mountain Camouflage, which allows them to hide on Mountain terrain.</bullet><bullet>Mountain Walk, which allows them to traverse Mountain terrain faster.</bullet></bulletlist>",
                     "name": "Earthkin",
                     "spell_slug": "earthkin",
                     "tier": 2,
@@ -377,7 +629,7 @@ var jsonTomes = {
             "icon": "tome_of_the_god_emperor",
             "skills": [
                 {
-                    "description": "Targets all friendly dead units with Faithful or Zeal. They come back to life with % of their total <hyperlink><hp></hp> Hit Points</hyperlink>.",
+                    "description": "Targets all friendly dead units with Faithful or Zeal. They come back to life with % of their total <hyperlink><hp></hp> Hit Points</hyperlink>.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Mass Revive",
                     "spell_slug": "mass_revive",
                     "tier": 10,
@@ -422,7 +674,7 @@ var jsonTomes = {
             "icon": "tome_of_exaltation",
             "skills": [
                 {
-                    "description": "Returns target dead friendly unit to full <temphp></temphp> Temporary Hit Points.",
+                    "description": "Returns target dead friendly unit to full <temphp></temphp> Temporary Hit Points.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Resurrect Unit",
                     "spell_slug": "resurrect_unit",
                     "tier": 7,
@@ -443,7 +695,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
-                    "description": "Turns the target race into angelic beings, granting them:<bulletlist><bullet>The Celestial unit type.</bullet><bullet>Flying Movement, which increases mobility.</bullet><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet>",
+                    "description": "Turns the target race into angelic beings, granting them:<bulletlist><bullet>The Celestial unit type.</bullet><bullet>Flying Movement, which increases mobility.</bullet><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet></bulletlist>",
                     "name": "Angelize",
                     "spell_slug": "angelize",
                     "tier": 7,
@@ -486,7 +738,7 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
    },
                 {
-                    "description": "For enchanted units:<bulletlist><bullet>Grants Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Makes killing a unit cause it to explode, dealing <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> to adjacent enemy units.</bullet>",
+                    "description": "For enchanted units:<bulletlist><bullet>Grants Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Makes killing a unit cause it to explode, dealing <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> to adjacent enemy units.</bullet></bulletlist>",
                     "name": "Supreme Magic",
                     "spell_slug": "supreme_magic",
                     "tier": 8,
@@ -538,28 +790,28 @@ var jsonTomes = {
                     "upgrade_slug": "healing_spires"
    },
                 {
-                    "description": "For enchanted units:<bulletlist><bullet>Grants Faithful, reducing <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>When taking fatal damage for the first time, makes them unable to die or use offensive abilities for <turn></turn> <hyperlink>Turns</hyperlink>.</bullet>",
+                    "description": "For enchanted units:<bulletlist><bullet>Grants Faithful, reducing <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>When taking fatal damage for the first time, makes them unable to die or use offensive abilities for <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
                     "name": "Keeper's Mark",
                     "spell_slug": "keepers_mark",
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Target friendly unit:<bulletlist><bullet>Heals all of its <hyperlink><hp></hp> Hit Points</hyperlink> as <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Dispels its negative status effects.</bullet><bullet>Gains 3 Bolstered Resistance.</bullet>",
+                    "description": "Target friendly unit:<bulletlist><bullet>Heals all of its <hyperlink><hp></hp> Hit Points</hyperlink> as <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Dispels its negative status effects.</bullet><bullet>Gains 3 Bolstered Resistance.</bullet></bulletlist>",
                     "name": "Salvation",
                     "spell_slug": "salvation",
                     "tier": 6,
                     "type": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>"
    },
                 {
-                    "description": "Target friendly City, friendly units in the Domain gain:<bulletlist><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>+20 <happiness></happiness> <hyperlink>Morale</hyperlink> at the start of battle.</bullet>",
+                    "description": "Target friendly City, friendly units in the Domain gain:<bulletlist><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>+20 <happiness></happiness> <hyperlink>Morale</hyperlink> at the start of battle.</bullet></bulletlist>",
                     "name": "Consecrated Domain",
                     "spell_slug": "consecrated_domain",
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>"
    },
                 {
-                    "description": "Gives the target race divine protection, granting them:<bulletlist><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+ <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink>.</bullet>",
+                    "description": "Gives the target race divine protection, granting them:<bulletlist><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink></bullet><bullet>+ <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet></bulletlist>",
                     "name": "Anointed People",
                     "spell_slug": "anointed_people",
                     "tier": 5,
@@ -588,7 +840,7 @@ var jsonTomes = {
             "icon": "tome_of_the_beacon",
             "skills": [
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>+ <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> on attacks for each Unit Tier of the target.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>+ <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> on attacks for each Unit Tier of the target.</bullet></bulletlist>",
                     "name": "Mighty Meek",
                     "spell_slug": "mighty_meek",
                     "tier": 4,
@@ -609,14 +861,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>"
    },
                 {
-                    "description": "Summons a <hyperlink>Lightbringer</hyperlink> Battle Mage Unit that can temporarily convert other units to your cause.",
+                    "description": "Summons a <hyperlink>Lightbringer</hyperlink> Battle Mage Unit that can convert other units to your cause.",
                     "name": "Summon Lightbringer",
                     "spell_slug": "summon_lightbringer",
                     "tier": 4,
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
-                    "description": "Summons a <hyperlink>Divine Beacon</hyperlink>. Upon casting and at the start of each turn, friendly units in a -hex radius:<bulletlist><bullet>Heal + <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain + <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet></bulletlist><br></br>This summon lasts for <turn></turn> Turns.",
+                    "description": "Summons a <hyperlink>Divine Beacon</hyperlink>. Upon casting and at the start of each turn, friendly units in a -hex radius:<bulletlist><bullet>Heal + <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain + <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet></bulletlist><br></br>This summon lasts for <turn></turn> Turns.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Conjure Divine Beacon",
                     "spell_slug": "conjure_divine_beacon",
                     "tier": 2,
@@ -697,21 +949,21 @@ var jsonTomes = {
             "icon": "tome_of_zeal",
             "skills": [
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet></bulletlist>",
                     "name": "Legion of Zeal",
                     "spell_slug": "legion_of_zeal",
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Gain + <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Become 2 Strengthened if they have Zeal.</bullet>",
+                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Gain + <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Become 2 Strengthened if they have Zeal.</bullet></bulletlist>",
                     "name": "Inspiring Chant",
                     "spell_slug": "inspiring_chant",
                     "tier": 2,
                     "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
    },
                 {
-                    "description": "For 3 <turn></turn> Turns, target friendly city:<bulletlist><bullet>Gains +60 <structureprod></structureprod> <hyperlink>Production</hyperlink> income.</bullet><bullet>Loses -20 <food></food> <hyperlink>Food</hyperlink> income.</bullet>",
+                    "description": "For 3 <turn></turn> Turns, target owned city:<bulletlist><bullet>Gains +60 <structureprod></structureprod> <hyperlink>Production</hyperlink> income.</bullet><bullet>Loses -20 <food></food> <hyperlink>Food</hyperlink> income.</bullet></bulletlist>",
                     "name": "Fanatical Workforce",
                     "spell_slug": "fanatical_workforce",
                     "tier": 2,
@@ -734,7 +986,7 @@ var jsonTomes = {
   ],
             "initial_upgrades": [
                 {
-                    "upgrade_slug": "_quarry__circle_of_zealotry"
+                    "upgrade_slug": "_quarry___circle_of_zealotry"
    }
   ]
  },
@@ -761,14 +1013,14 @@ var jsonTomes = {
             "icon": "tome_of_the_eternal_lord",
             "skills": [
                 {
-                    "description": "<bulletlist><bullet>All friendly Undead units come back to life with % of their total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Enemy corpses come back to life as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle.</bullet></bulletlist>",
+                    "description": "<bulletlist><bullet>All friendly Undead units come back to life with % of their total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Enemy corpses come back to life as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
                     "name": "Battlefield Reanimation",
                     "spell_slug": "battlefield_reanimation",
                     "tier": 10,
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>A base % chance of inflicting Marked for Death, which kills the affected unit at the end of the effect's duration.</bullet>",
+                    "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>A base % chance of inflicting Marked for Death, which kills the affected unit at the end of the effect's duration.</bullet></bulletlist>",
                     "name": "True Death Magic",
                     "spell_slug": "true_death_magic",
                     "tier": 9,
@@ -865,21 +1117,21 @@ var jsonTomes = {
             "icon": "tome_of_the_reaper",
             "skills": [
                 {
-                    "description": "Target friendly City loses 1 <population></population> <hyperlink>Population</hyperlink> and you gain +60 <souls></souls> Souls.<br></br>If the City does not have a Hero, it also loses 20 <happiness></happiness> <hyperlink>City Stability</hyperlink> for 5 <turn></turn>.",
+                    "description": "Target friendly City:<bulletlist><bullet>No longer gains any <food></food> Food income.</bullet><bullet>Gains +10 <souls></souls> Souls income.</bullet><bullet>Has -20 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
                     "name": "Harvest Population",
                     "spell_slug": "harvest_population",
                     "tier": 7,
                     "type": "<caststrategic></caststrategic> <hyperlink>City Spell</hyperlink>"
    },
                 {
-                    "description": "Summons a <hyperlink>Reaper</hyperlink>, a Tier IV Mythic Unit unit that can instantly kill units and that empowers your Undead.",
+                    "description": "Summons a <hyperlink>Reaper</hyperlink>, a Tier V Mythic Unit unit that can instantly kill units and that empowers your Undead.",
                     "name": "Summon Reaper",
                     "spell_slug": "summon_reaper",
                     "tier": 8,
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Resurrects target non-Hero unit:<bulletlist><bullet>Recovers % of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Becomes Undead.</bullet><bullet>Dies at the end of battle.</bullet>",
+                    "description": "Resurrects target non-Hero unit:<bulletlist><bullet>Recovers % of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Becomes Undead.</bullet><bullet>Dies at the end of battle.</bullet></bulletlist>",
                     "name": "Greater Reanimation",
                     "spell_slug": "greater_reanimation",
                     "tier": 7,
@@ -892,7 +1144,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "Target non-Hero enemy unit becomes:<bulletlist><bullet>Despair.</bullet><bullet>Marked for Death.</bullet>",
+                    "description": "Target non-Hero enemy unit becomes:<bulletlist><bullet>Despair.</bullet><bullet>Marked for Death.</bullet></bulletlist>",
                     "name": "Mark for Death",
                     "spell_slug": "mark_for_death",
                     "tier": 7,
@@ -1001,7 +1253,7 @@ var jsonTomes = {
                     "upgrade_slug": "necrotic_spires"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>+ <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Weakening Aura, which weakens nearby enemy's attacks.</bullet></bulletlist>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>+ <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Weakening Aura, which inflicts Weakened to adjacent enemies at the end of the turn.</bullet></bulletlist>",
                     "name": "Fetid Legion",
                     "spell_slug": "fetid_legion",
                     "tier": 6,
@@ -1039,7 +1291,7 @@ var jsonTomes = {
             "icon": "tome_of_souls",
             "skills": [
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Base % chance of inflicting Soulbound on Base attacks, increasing the <souls></souls> <hyperlink>Soul</hyperlink> gain when the target is killed.</bullet><bullet>+% damage against units with Soulbound.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Base % chance of inflicting Soulbound on Base attacks, increasing the <souls></souls> <hyperlink>Soul</hyperlink> gain when the target is killed.</bullet><bullet>+% damage against units with Soulbound.</bullet></bulletlist>",
                     "name": "Soulbinders",
                     "spell_slug": "soulbinders",
                     "tier": 2,
@@ -1053,14 +1305,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained World Spell</hyperlink>"
    },
                 {
-                    "description": "Advanced rites allow the creation of <hyperlink>Bone Golem</hyperlink>. These can be created in a City by using <souls></souls> Souls or by fusing two <hyperlink>Skeleton</hyperlink> units.",
-                    "name": "Bone Golem",
+                    "description": "Advanced rites allow the creation of <hyperlink>Bone Horror</hyperlink>. These can be created in a City by using <souls></souls> Souls or by fusing two <hyperlink>Skeleton</hyperlink> units.",
+                    "name": "Bone Horror",
                     "tier": 1,
-                    "unit_slug": "bone_golem",
+                    "unit_slug": "bone_horror",
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
-                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Gain 1 Strengthened.</bullet><bullet>Gain + maximum <hyperlink><hp></hp> Hit Points</hyperlink> until the end of battle.</bullet><bullet>Have their negative status effects removed.</bullet>",
+                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Gain 1 Strengthened.</bullet><bullet>Gain + maximum <hyperlink><hp></hp> Hit Points</hyperlink> until the end of battle.</bullet><bullet>Have their negative status effects removed.</bullet></bulletlist>",
                     "name": "Soul Overflow",
                     "spell_slug": "soul_overflow",
                     "tier": 2,
@@ -1091,7 +1343,7 @@ var jsonTomes = {
             "icon": "tome_of_the_doomherald",
             "skills": [
                 {
-                    "description": "Makes the target race become living morale siphons, making their attacks:<bulletlist><bullet>Steal <happiness></happiness> <hyperlink>Morale</hyperlink> per hit.</bullet>",
+                    "description": "Makes the target race become living morale siphons, making their attacks:<bulletlist><bullet>Steal <happiness></happiness> <hyperlink>Morale</hyperlink> per hit.</bullet></bulletlist>",
                     "name": "Joy Siphoners",
                     "spell_slug": "joy_siphoners",
                     "tier": 4,
@@ -1105,7 +1357,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Enemy Army Spell</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>+% damage against units with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>+% damage against units with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse.</bullet></bulletlist>",
                     "name": "Cruel Weaponry",
                     "spell_slug": "cruel_weaponry",
                     "tier": 4,
@@ -1200,14 +1452,14 @@ var jsonTomes = {
                     "upgrade_slug": "throne_of_mirrors"
    },
                 {
-                    "description": "Makes enchanted units:<bulletlist><bullet>Reflect % of non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> sustained back onto attackers.</bullet>",
+                    "description": "Makes enchanted units:<bulletlist><bullet>Reflect % of non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> sustained back onto attackers.</bullet></bulletlist>",
                     "name": "Mirror Veil",
                     "spell_slug": "mirror_veil",
                     "tier": 8,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Summons 2 Astral Reflections of the target friendly unit onto unoccupied adjacent hexes.<br></br>Cannot target Heroes and Mythic Units.",
+                    "description": "Summons 2 Astral Reflections of the target friendly unit onto unoccupied adjacent hexes.<br></br>Cannot target Heroes, Combat Summons, and Mythic Units.",
                     "name": "Summon Astral Reflections",
                     "spell_slug": "summon_astral_reflections",
                     "tier": 7,
@@ -1259,14 +1511,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>"
    },
                 {
-                    "description": "<bulletlist><bullet>No towers will be present to aid the defender in battle.</bullet><bullet>During combat, 3 random enemies sustain either 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, 10 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, or 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> each turn.</bullet>",
+                    "description": "<bulletlist><bullet>No towers will be present to aid the defender in battle.</bullet><bullet>During combat, 3 random enemies sustain either 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, 10 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, or 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> each turn.</bullet></bulletlist>",
                     "name": "Arcane Maelstrom",
                     "siege_project_slug": "arcane_maelstrom",
                     "tier": 7,
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "Target non-occupied hex:<bulletlist><bullet>Summon a random Tier II Astral Sea creature that lasts for <turn></turn> Turns.</bullet><bullet>All adjacent units sustain <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, and <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet></bulletlist>",
+                    "description": "Target non-occupied hex:<bulletlist><bullet>Summon a random Tier II Astral Sea creature that lasts for <turn></turn> Turns.</bullet><bullet>All adjacent units sustain <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, and <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
                     "name": "Explosive Manifestation",
                     "spell_slug": "explosive_manifestation",
                     "tier": 7,
@@ -1293,42 +1545,42 @@ var jsonTomes = {
                     "slug": "wisp_familiar"
    }
   ],
-            "tier": 3,
+            "tier": 2,
             "icon": "tome_of_summoning",
             "skills": [
                 {
                     "description": "Summons an <hyperlink>Astral Serpent</hyperlink>, a Fighter Unit that can teleport into the front lines in an explosive manner.",
                     "name": "Summon Astral Serpent",
                     "spell_slug": "summon_astral_serpent",
-                    "tier": 6,
+                    "tier": 4,
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Target friendly Magic Origin unit gains:<bulletlist><bullet>5 Strengthened.</bullet><bullet>3 Bolstered Defense.</bullet><bullet>3 Bolstered Resistance.</bullet><bullet>Static Charge for <turn></turn> Turns.</bullet>",
+                    "description": "Target friendly Magic Origin unit gains:<bulletlist><bullet>5 Strengthened.</bullet><bullet>3 Bolstered Defense.</bullet><bullet>3 Bolstered Resistance.</bullet><bullet>Static Charge for <turn></turn> Turns.</bullet></bulletlist>",
                     "name": "Arcane Supercharge",
                     "spell_slug": "arcane_supercharge",
-                    "tier": 5,
+                    "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
    },
                 {
                     "description": "Summons an <hyperlink>Astral Keeper</hyperlink>, a Support Unit that heals units even in death.<br></br>This summon lasts for <turn></turn> Turns.",
                     "name": "Conjure Astral Keeper",
                     "spell_slug": "conjure_astral_keeper",
-                    "tier": 6,
+                    "tier": 4,
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
                     "description": "Heals all friendly Magic Origin units + <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
                     "name": "Arcane Restoration",
                     "spell_slug": "arcane_restoration",
-                    "tier": 5,
+                    "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>"
    },
                 {
                     "description": "Target enemy Magic Origin unit has a base % chance of becoming Mind-Controlled for <turn></turn> Turns. If unsuccessful, deals <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink> instead.",
                     "name": "Arcane Bond",
                     "spell_slug": "arcane_bond",
-                    "tier": 5,
+                    "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
    }
   ],
@@ -1361,7 +1613,7 @@ var jsonTomes = {
                     "upgrade_slug": "astral_trade_relay"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>The Phase ability, which allows them to teleport in battle.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>The Phase ability, which allows them to teleport in battle.</bullet></bulletlist>",
                     "name": "Phasing Enchantment",
                     "spell_slug": "phasing_enchantment",
                     "tier": 6,
@@ -1418,7 +1670,7 @@ var jsonTomes = {
                     "upgrade_slug": "tower_of_true_sight"
    },
                 {
-                    "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Ignore accuracy penalties from the <hyperlink>Obscuring</hyperlink> condition caused by units that are in the way and certain terrain.</bullet>",
+                    "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Ignore accuracy penalties from the <hyperlink>Obscuring</hyperlink> condition caused by units that are in the way and certain terrain.</bullet></bulletlist>",
                     "name": "Guided Projectiles",
                     "spell_slug": "guided_projectiles",
                     "tier": 4,
@@ -1459,49 +1711,49 @@ var jsonTomes = {
                     "slug": "spell_amplification"
    }
   ],
-            "tier": 2,
+            "tier": 3,
             "icon": "tome_of_amplification",
             "skills": [
                 {
-                    "description": "Target friendly city gains:<bulletlist><bullet>+20 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income</bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
+                    "description": "Target owned city gains:<bulletlist><bullet>+20 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income</bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
                     "name": "Amplify Minds",
                     "spell_slug": "amplify_minds",
-                    "tier": 4,
+                    "tier": 6,
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>"
    },
                 {
-                    "description": "Makes magic begin to flow through the veins of the target race, granting them:<bulletlist><bullet>Attunement: Fortune, which increases <hyperlink>Critical Hit</hyperlink> chance when spells are cast.</bullet>",
+                    "description": "Makes magic begin to flow through the veins of the target race, granting them:<bulletlist><bullet>Attunement: Fortune, which increases <hyperlink>Critical Hit</hyperlink> chance when spells are cast.</bullet></bulletlist>",
                     "name": "Astral Blood",
                     "spell_slug": "astral_blood",
-                    "tier": 4,
+                    "tier": 6,
                     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Frenzy, which increases damage dealt when they attack.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Frenzy, which increases damage dealt when they attack.</bullet></bulletlist>",
                     "name": "Frenzying Focus",
                     "spell_slug": "frenzying_focus",
-                    "tier": 3,
+                    "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
                     "description": "Target enemy unit:<bulletlist><bullet>Sustains <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>This effect passes on to another enemy within hexes.</bullet><bullet>Passes on up to times.</bullet></bulletlist>",
                     "name": "Chain Lightning",
                     "spell_slug": "chain_lightning",
-                    "tier": 4,
+                    "tier": 6,
                     "type": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>"
    },
                 {
-                    "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +50%.<br></br>This summon lasts for <turn></turn> Turns.",
+                    "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +50%.<br></br>This summon lasts for <turn></turn> Turns.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Conjure Amplification Pylon",
                     "spell_slug": "conjure_amplification_pylon",
-                    "tier": 3,
+                    "tier": 5,
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>% of their damage to another target within hexes.</bullet>",
+                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>% of their damage to another target within hexes.</bullet></bulletlist>",
                     "name": "Amplified Arrows",
                     "spell_slug": "amplified_arrows",
-                    "tier": 2,
+                    "tier": 4,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    }
   ],
@@ -1541,7 +1793,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Electrified, a damage-over-time effect.</bullet>",
+                    "description": "Makes base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Electrified, a damage-over-time effect.</bullet></bulletlist>",
                     "name": "Lightning Focus",
                     "spell_slug": "lightning_focus",
                     "tier": 1,
@@ -1555,14 +1807,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+% damage against Electrified units.</bullet></bulletlist> ",
+                    "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+ <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet> <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+% damage against Electrified units.</bullet></bulletlist>",
                     "name": "Lightning Blades",
                     "spell_slug": "lightning_blades",
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Enemy units in a -hex radius:<bulletlist><bullet>Sustain <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Have a % chance of becoming Electrified.</bullet>",
+                    "description": "Enemy units in a -hex radius:<bulletlist><bullet>Sustain <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Have a % chance of becoming Electrified.</bullet></bulletlist>",
                     "name": "Fulmination",
                     "spell_slug": "fulmination",
                     "tier": 1,
@@ -1591,7 +1843,7 @@ var jsonTomes = {
             "icon": "tome_of_warding",
             "skills": [
                 {
-                    "description": "Inscribes magical wards onto the target race, granting:<bulletlist><bullet>+ <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>+ <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>+ <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet>",
+                    "description": "Inscribes magical wards onto the target race, granting:<bulletlist><bullet>+ <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>+ <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>+ <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet></bulletlist>",
                     "name": "Magical Wards",
                     "spell_slug": "magical_wards",
                     "tier": 3,
@@ -1612,7 +1864,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes <hyperlink>Support</hyperlink> abilities of enchanted units:<bulletlist><bullet>Grant +2 Bolstered Resistance to affected units.</bullet>",
+                    "description": "Makes <hyperlink>Support</hyperlink> abilities of enchanted units:<bulletlist><bullet>Grant +2 Bolstered Resistance to affected units.</bullet></bulletlist>",
                     "name": "Staves of Warding",
                     "spell_slug": "staves_of_warding",
                     "tier": 1,
@@ -1643,21 +1895,21 @@ var jsonTomes = {
             "icon": "tome_of_paradise",
             "skills": [
                 {
-                    "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>The Plant unit type.</bullet><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+ <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet>",
+                    "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>The Plant unit type.</bullet><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+ <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+ <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet></bulletlist>",
                     "name": "Gaia's Chosen",
                     "spell_slug": "gaias_chosen",
                     "tier": 8,
                     "type": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>"
    },
                 {
-                    "description": "Target City gains:<bulletlist><bullet>+40 <happiness></happiness> <hyperlink>City Stability</hyperlink>.</bullet><bullet>Income bonus from Positive City Stability are doubled.</bullet>",
+                    "description": "Target friendly city gains:<bulletlist><bullet>+40 <happiness></happiness> <hyperlink>City Stability</hyperlink>.</bullet><bullet>Income bonuses from Positive City Stability are doubled.</bullet></bulletlist>",
                     "name": "Blessing of Paradise",
                     "spell_slug": "blessing_of_paradise",
                     "tier": 8,
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>"
    },
                 {
-                    "description": "Target city gains:<bulletlist><bullet>+10 <garrison></garrison><hyperlink>Fortification Health</hyperlink>.</bullet><bullet>+2 <garrison></garrison><hyperlink>Fortification Health</hyperlink> per Forest or Mushroom Feature in the domain.</bullet><bullet>Spawns a Living Vine next to an enemy each turn during battle in the domain.</bullet></bulletlist>",
+                    "description": "Target friendly city gains:<bulletlist><bullet>+10 <garrison></garrison><hyperlink>Fortification Health</hyperlink>.</bullet><bullet>+2 <garrison></garrison><hyperlink>Fortification Health</hyperlink> per Forest or Mushroom Feature in the domain.</bullet><bullet>Spawns a Living Vine next to an enemy each turn during battle in the domain.</bullet></bulletlist>",
                     "name": "Fortress of Vines",
                     "spell_slug": "fortress_of_vines",
                     "tier": 8,
@@ -1714,14 +1966,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Summon <hyperlink>Living Vine</hyperlink> units randomly in a -hex radius which live for <turn></turn> Turns. These don't deal damage but have a chance to Immobilized enemies.",
+                    "description": "Summon <hyperlink>Living Vine</hyperlink> units randomly in a -hex radius which live for <turn></turn> Turns. These don't deal damage but have a chance of inflicting Immobilized on enemies.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Vine Prison",
                     "spell_slug": "vine_prison",
                     "tier": 2,
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Deal <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Poisoned, a damage-over-time effect.</bullet>",
+                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Deal <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Poisoned, a damage-over-time effect.</bullet></bulletlist>",
                     "name": "Poison Arrows",
                     "spell_slug": "poison_arrows",
                     "tier": 2,
@@ -1771,7 +2023,7 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Adds grasslands feature to target friendly province. Works on Desolate terrain. Turns into Fungus Fields <hyperlink>Underground</hyperlink>.<br></br>Doesn't work on Mountains or Ice terrain.",
+                    "description": "Adds grasslands feature to target friendly or unowned province. Works on Desolate terrain. Turns into Fungus Fields <hyperlink>Underground</hyperlink>.<br></br>Doesn't work on Mountains and Ice terrain.",
                     "name": "Restore the Land",
                     "spell_slug": "restore_the_land",
                     "tier": 3,
@@ -1821,7 +2073,7 @@ var jsonTomes = {
             "icon": "tome_of_cycles",
             "skills": [
                 {
-                    "description": "Is cast on a friendly city. All battles that take place in this city's domain gain <abilityblue>Cycle of Seasons</abilityblue>, granting a different effect each battle turn in the following order:<bulletlist><bullet>Winter: All enemies sustain 5 <damageFrost></damageFrost>.</bullet><bullet>Spring: All friendly units become 1 Strengthened.</bullet><bullet>Summer: All friendly units heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Autumn: All enemies become 1 Weakened.</bullet>",
+                    "description": "Is cast on a friendly city. All battles that take place in this city's domain gain <abilityblue>Cycle of Seasons</abilityblue>, granting a different effect each battle turn in the following order:<bulletlist><bullet>Winter: All enemies sustain 5 <damageFrost></damageFrost>.</bullet><bullet>Spring: All friendly units become 1 Strengthened.</bullet><bullet>Summer: All friendly units heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Autumn: All enemies become 1 Weakened.</bullet></bulletlist>",
                     "name": "Cycle of Seasons",
                     "spell_slug": "cycle_of_seasons",
                     "tier": 6,
@@ -1832,7 +2084,7 @@ var jsonTomes = {
                     "name": "Parting Gifts",
                     "spell_slug": "parting_gifts",
                     "tier": 5,
-                    "type": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>"
+                    "type": "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>"
    },
                 {
                     "description": "Target enemy unit sustains <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>. Friendly units in a -hex range are healed + <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
@@ -1849,7 +2101,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
-                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Decaying, a damage-over-time effect that prevents enemies from healing.</bullet>",
+                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Gain base % chance of inflicting Decaying, a damage-over-time effect that prevents enemies from healing.</bullet></bulletlist>",
                     "name": "Projectiles of Decay",
                     "spell_slug": "projectiles_of_decay",
                     "tier": 6,
@@ -1873,7 +2125,7 @@ var jsonTomes = {
             "icon": "tome_of_glades",
             "skills": [
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>The Aspect of the Root ability, which allows units to heal themselves in battle.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>The Aspect of the Root ability, which allows units to heal themselves in battle.</bullet></bulletlist>",
                     "name": "Aspect of the Root",
                     "spell_slug": "aspect_of_the_root",
                     "tier": 4,
@@ -1887,7 +2139,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes the target race one with the forest, granting them:<bulletlist><bullet>+1<resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>Forest Walk</bullet><bullet>Forest Camouflage</bullet>",
+                    "description": "Makes the target race one with the forest, granting them:<bulletlist><bullet>+1<resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>Forest Walk</bullet><bullet>Forest Camouflage</bullet></bulletlist>",
                     "name": "Leafskin",
                     "spell_slug": "leafskin",
                     "tier": 3,
@@ -1919,7 +2171,8 @@ var jsonTomes = {
             "id": "",
             "gameplay_description": "",
             "lore_author": "",
-            "name": ""
+            "name": "",
+            "icon": ""
  },
         {
             "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
@@ -2008,14 +2261,14 @@ var jsonTomes = {
             "icon": "tome_of_necromancy",
             "skills": [
                 {
-                    "description": "Raises corpses in a -hex radius as <hyperlink>Decaying Zombie</hyperlink> units that die at the end of combat.",
+                    "description": "Raises corpses in a -hex radius as <hyperlink>Decaying Zombie</hyperlink> units that die at the end of combat.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Raise Zombies",
                     "spell_slug": "raise_zombies",
                     "tier": 3,
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Grants attacks of enchanted units:<bulletlist><bullet>A base % chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health.</bullet>",
+                    "description": "Grants attacks of enchanted units:<bulletlist><bullet>A base % chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health.</bullet></bulletlist>",
                     "name": "Necrotic Magic",
                     "spell_slug": "necrotic_magic",
                     "tier": 3,
@@ -2072,7 +2325,7 @@ var jsonTomes = {
             "icon": "tome_of_beasts",
             "skills": [
                 {
-                    "description": "All friendly Animals and Cavalries gain:<bulletlist><bullet>+2 Bolstered Defense</bullet><bullet>+1 Strengthened</bullet></bulletlist>",
+                    "description": "Friendly Animal and Cavalry units in a -hex radius gain:<bulletlist><bullet>2 Bolstered Defense</bullet><bullet>2 Strengthened</bullet></bulletlist>",
                     "name": "Call of the Wild",
                     "spell_slug": "call_of_the_wild",
                     "tier": 2,
@@ -2093,7 +2346,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes the target race more bestial and connected to animals. When adjacent to a friendly Animal or Cavalry unit, they are granted:<bulletlist><bullet>+10% damage.</bullet><bullet>+10% Critical Hit chance.</bullet>",
+                    "description": "Makes the target race more bestial and connected to animals. When adjacent to a friendly Animal, both units are granted:<bulletlist><bullet>+10% damage.</bullet><bullet>+10% Critical Hit chance.</bullet></bulletlist>",
                     "name": "Animal Kinship",
                     "spell_slug": "animal_kinship",
                     "tier": 2,
@@ -2171,7 +2424,7 @@ var jsonTomes = {
         {
             "passives": [
                 {
-                    "description": "Units standing on the center of this city or outpost restore 50% <hyperlink><hp></hp> Hit Points</hyperlink>, 100% <hyperlink>Move Points</hyperlink>, and remove Exhausted from <hyperlink>Forced March</hyperlink>. The city or outpost has a <turn></turn> <hyperlink>Turn</hyperlink> cooldown before it can use this again.",
+                    "description": "Units standing on the center of this city or outpost restore 50% <hyperlink><hp></hp> Hit Points</hyperlink>, 100% <hyperlink>Move Points</hyperlink>, and remove Exhausted from <hyperlink>Forced March</hyperlink>. The city or outpost has a 3 <turn></turn> <hyperlink>Turn</hyperlink> cooldown before it can use this again.",
                     "name": "Ritual of Alacrity",
                     "type": ""
    }
@@ -2226,7 +2479,7 @@ var jsonTomes = {
         {
             "passives": [
                 {
-                    "description": "The <hyperlink>High</hyperlink> Culture has an <hyperlink>Alignment</hyperlink> Agenda, which grants bonuses for the following alignment levels:<bulletlist><bullet><reputation8></reputation8> Pure Good: 25 <happiness></happiness> <hyperlink>City Stability</hyperlink> in all <hyperlink>Cities</hyperlink>.</bullet><bullet><reputation4></reputation4> Neutral: 10 <food></food> <hyperlink>Food</hyperlink> and 10 <structureprod></structureprod> <hyperlink>Production</hyperlink> per <happiness></happiness> <hyperlink>City Stability</hyperlink> level above Neutral in all <hyperlink>Cities</hyperlink>.</bullet><bullet><reputation0></reputation0> Pure Evil: <hyperlink>Units</hyperlink> start <hyperlink>Combat</hyperlink> in anAwakened state.</bullet></bulletlist>",
+                    "description": "The <hyperlink>High</hyperlink> Culture has an <hyperlink>Alignment</hyperlink> Agenda, which grants bonuses for the following alignment levels:<bulletlist><bullet><reputation8></reputation8> Pure Good: 25 <happiness></happiness> <hyperlink>City Stability</hyperlink> in all <hyperlink>Cities</hyperlink>.</bullet><bullet><reputation4></reputation4> Neutral: 10 <food></food> <hyperlink>Food</hyperlink> and 10 <structureprod></structureprod> <hyperlink>Production</hyperlink> per <happiness></happiness> <hyperlink>City Stability</hyperlink> level above Neutral in all <hyperlink>Cities</hyperlink>.</bullet><bullet><reputation0></reputation0> Pure Evil: <hyperlink>Units</hyperlink> start <hyperlink>Combat</hyperlink> in an Awakened state.</bullet></bulletlist>",
                     "name": "Alignment Agenda",
                     "type": ""
    }
@@ -2334,6 +2587,55 @@ var jsonTomes = {
   ]
  },
         {
+            "lore_description": "",
+            "id": "reaver",
+            "gameplay_description": "This research is available to rulers with the <hyperlink>Reaver</hyperlink> culture. They use Magelock technology.",
+            "DLC": "EMPIRESANDASHES ",
+            "lore_author": "",
+            "name": "Reaver",
+            "hero_skills": [
+                {
+                    "slug": "mark_target"
+   },
+                {
+                    "slug": "skirmisher_discipline"
+   },
+                {
+                    "slug": "focused_aggression"
+   }
+  ],
+            "tier": 0,
+            "icon": "reaver",
+            "skills": [
+                {
+                    "description": "Grants non-Reaver units:<bulletlist><bullet>Focused Aggression, which increases damage dealt to Marked units.</bullet>",
+                    "name": "Engraving of Focus",
+                    "spell_slug": "engraving_of_focus",
+                    "tier": 3,
+                    "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
+   },
+                {
+                    "description": "Units in a -hex radius:<bulletlist><bullet>Suffer <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Have a base % chance of becoming Immobilized.</bullet>",
+                    "name": "Suppressing Barrage",
+                    "spell_slug": "suppressing_barrage",
+                    "tier": 1,
+                    "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
+   },
+                {
+                    "description": "Target enemy gains:<bulletlist><bullet>2 Marked.</bullet><bullet>Distracted.</bullet></bulletlist>",
+                    "name": "Designate Target",
+                    "spell_slug": "designate_target",
+                    "tier": 2,
+                    "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
+   }
+  ],
+            "initial_upgrades": [
+                {
+                    "upgrade_slug": "_mine___reaver_manufactorum"
+   }
+  ]
+ },
+        {
             "affinities": "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
             "lore_description": "\\\"Few things invoke fear like the mighty dragon does. Channel this primal power, roost and brood it. Mold your people to the likeness of these mighty worldshapers and breed dragonkin in your grand image. See how your enemies bow to your might, or perish in flame at your command.\\\"",
             "id": "tome_of_dragons",
@@ -2350,28 +2652,28 @@ var jsonTomes = {
             "icon": "tome_of_dragons",
             "skills": [
                 {
-                    "description": "Turn target race into Draconians, which grants them:<bulletlist><bullet>Dragon unit type.</bullet><bullet>Natural Regeneration, which makes the unit regain health faster.</bullet><bullet>Immunity to Burning.</bullet>",
+                    "description": "Turn target race into Draconians, which grants them:<bulletlist><bullet>Dragon unit type.</bullet><bullet>Natural Regeneration, which makes the unit regain health faster.</bullet><bullet>Immunity to Burning.</bullet></bulletlist>",
                     "name": "Draconian Transformation",
                     "spell_slug": "draconian_transformation",
                     "tier": 5,
                     "type": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>"
    },
                 {
-                    "description": "At the start of combat:<bulletlist><bullet>Units defending the city take 26 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Units defending the city have a base 90% of becoming Burning.</bullet><bullet>Fires are randomly added.</bullet>",
+                    "description": "At the start of combat:<bulletlist><bullet>Units defending the city take 26 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Units defending the city have a base 90% of becoming Burning.</bullet><bullet>Fires are randomly added.</bullet></bulletlist>",
                     "name": "Dragon Attack",
                     "siege_project_slug": "dragon_attack",
                     "tier": 5,
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Heal for <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Have their negative status effects removed.</bullet>",
+                    "description": "Friendly units in a -hex radius:<bulletlist><bullet>Heal for <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Have their negative status effects removed.</bullet></bulletlist>",
                     "name": "Purifying Flame",
                     "spell_slug": "purifying_flame",
                     "tier": 5,
                     "type": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Fire Bomb , a <hyperlink>Magic</hyperlink> attack that deals damage in an area.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Fire Bomb , a <hyperlink>Magic</hyperlink> attack that deals damage in an area.</bullet></bulletlist>",
                     "name": "Flamer Focus",
                     "spell_slug": "flamer_focus",
                     "tier": 4,
@@ -2429,7 +2731,7 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>+% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Slip Away if Tier I or II, healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduce to zero.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>+% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Slip Away if Tier I or II, healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduce to zero.</bullet></bulletlist>",
                     "name": "Rapid Evolution Enchantment",
                     "spell_slug": "rapid_evolution_enchantment",
                     "tier": 2,
@@ -2460,7 +2762,7 @@ var jsonTomes = {
             "icon": "tome_of_the_chaos_lord",
             "skills": [
                 {
-                    "description": "Summons an avatar of your <hyperlink>Ruler</hyperlink> in battle. The avatar has the same abilities as your leader and spawns with full <hyperlink>Action Points</hyperlink>. All Fiends and Demonkin gain + <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+                    "description": "Summons an avatar of your <hyperlink>Ruler</hyperlink> in battle. The avatar has the same abilities as your leader and spawns with full <hyperlink>Action Points</hyperlink>. All Fiends and Demonkin gain + <happiness></happiness> <hyperlink>Morale</hyperlink>.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Call Forth Avatar of Chaos",
                     "spell_slug": "call_forth_avatar_of_chaos",
                     "tier": 10,
@@ -2627,7 +2929,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    },
                 {
-                    "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 30% chance of inflicting a random negative status effect.</bullet>",
+                    "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 30% chance of inflicting a random negative status effect.</bullet></bulletlist>",
                     "name": "Havoc Magic",
                     "spell_slug": "havoc_magic",
                     "tier": 5,
@@ -2665,7 +2967,7 @@ var jsonTomes = {
             "icon": "tome_of_revelry",
             "skills": [
                 {
-                    "description": "Overwhelms the target race with an intense fervor, granting them:<bulletlist><bullet>+% <happiness></happiness> <hyperlink>Morale</hyperlink> from all sources.</bullet>",
+                    "description": "Overwhelms the target race with an intense fervor, granting them:<bulletlist><bullet>+% <happiness></happiness> <hyperlink>Morale</hyperlink> from all sources.</bullet></bulletlist>",
                     "name": "Reveler's Heart",
                     "spell_slug": "revelers_heart",
                     "tier": 4,
@@ -2728,7 +3030,7 @@ var jsonTomes = {
                     "type": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>"
    },
                 {
-                    "description": "At the start of the battle, enemy units:<bulletlist><bullet>Are displaced by 4 hexes.</bullet><bullet>Gain Misfortune.</bullet>",
+                    "description": "At the start of the battle, enemy units:<bulletlist><bullet>Are displaced by 4 hexes.</bullet><bullet>Gain Misfortune.</bullet></bulletlist>",
                     "name": "Sow Confusion",
                     "siege_project_slug": "sow_confusion",
                     "tier": 4,
@@ -2749,7 +3051,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Inflict Misfortune.</bullet>",
+                    "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Inflict Misfortune.</bullet></bulletlist>",
                     "name": "Mark of Misfortune",
                     "spell_slug": "mark_of_misfortune",
                     "tier": 3,
@@ -2885,14 +3187,14 @@ var jsonTomes = {
             "icon": "tome_of_natures_wrath",
             "skills": [
                 {
-                    "description": "Target a province with forest:<bulletlist><bullet>The forest is removed.</bullet><bullet>An army of Animals and Plants under your control is summoned.</bullet>",
+                    "description": "Target a province with forest:<bulletlist><bullet>The forest is removed.</bullet><bullet>An army of Animals and Plants under your control is summoned.</bullet></bulletlist>",
                     "name": "Awaken the Forest",
                     "spell_slug": "awaken_the_forest",
                     "tier": 8,
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "All your units:<bulletlist><bullet>Heal + <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Regain all <hyperlink>Action Points</hyperlink>.</bullet><bullet>Become Berserk for <turn></turn> Turns.</bullet></bulletlist>",
+                    "description": "All friendly units in a -hex radius:<bulletlist><bullet>Heal + <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Regain all <hyperlink>Action Points</hyperlink>.</bullet><bullet>Become Berserk for <turn></turn> Turns.</bullet></bulletlist>",
                     "name": "Awaken Instincts",
                     "spell_slug": "awaken_instincts",
                     "tier": 7,
@@ -2913,7 +3215,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>"
    },
                 {
-                    "description": "Target non-Hero enemy:<bulletlist><bullet>Has a base % chance of being transformed into a random Tier I animal until the end of battle.</bullet><bullet>If resisted, inflicts Stunned instead.</bullet></bulletlist>",
+                    "description": "Target non-Hero enemy:<bulletlist><bullet>Has a base % chance of being transformed into a random Tier I animal until the end of battle.</bullet><bullet>If resisted, inflicts Stunned instead.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
                     "name": "Devolve",
                     "spell_slug": "devolve",
                     "tier": 7,
@@ -2985,14 +3287,14 @@ var jsonTomes = {
             "icon": "tome_of_vigor",
             "skills": [
                 {
-                    "description": "Spawns a <hyperlink>Totem of the Wild</hyperlink>, which spawns a random Tier I animal unit at the start of each of your <turn></turn> Turns. Lasts <turn></turn> Turns.",
+                    "description": "Spawns a <hyperlink>Totem of the Wild</hyperlink>, which spawns a random Tier I animal unit at the start of each of your <turn></turn> Turns. Lasts <turn></turn> Turns.<br></br><br></br>Cannot be used in Water battles.",
                     "name": "Totem of the Wild",
                     "spell_slug": "totem_of_the_wild",
                     "tier": 5,
                     "type": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Makes enchanted units:<bulletlist><bullet>Deal +% damage.</bullet><bullet>Gain + <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet><bullet>Decreased number of units in formation.</bullet>",
+                    "description": "Makes enchanted units:<bulletlist><bullet>Deal +% damage.</bullet><bullet>Gain + <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet><bullet>Decreased number of units in formation.</bullet></bulletlist>",
                     "name": "Empowered Beasts",
                     "spell_slug": "empowered_beasts",
                     "tier": 6,
@@ -3013,7 +3315,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
                 {
-                    "description": "Target Animal or Cavalry unit gains, for <turn></turn> Turns:<bulletlist><bullet>5 Strengthened</bullet><bullet>5 Bolstered Defense</bullet><bullet>Berserk.</bullet>",
+                    "description": "Target Animal or Cavalry unit gains, for <turn></turn> Turns:<bulletlist><bullet>5 Strengthened</bullet><bullet>5 Bolstered Defense</bullet><bullet>Berserk.</bullet></bulletlist>",
                     "name": "Unleash Beast",
                     "spell_slug": "unleash_beast",
                     "tier": 6,
@@ -3044,7 +3346,7 @@ var jsonTomes = {
                     "upgrade_slug": "barons_palace"
    },
                 {
-                    "description": "On a target enemy <hyperlink>Routing</hyperlink> unit:<bulletlist><bullet>Inflicts base % chance of becoming permanently Mind-Controlled.</bullet><bullet>If successful, it gains + <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>If resisted, the unit dies instead.</bullet></bulletlist>",
+                    "description": "On a target enemy <hyperlink>Routing</hyperlink> unit:<bulletlist><bullet>Inflicts base % chance of becoming permanently mind controlled.</bullet><bullet>If successful, it gains + <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>If resisted, the unit dies instead.</bullet></bulletlist>",
                     "name": "Final Ultimatum",
                     "spell_slug": "final_ultimatum",
                     "tier": 5,
@@ -3058,7 +3360,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Siege Project</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Intimidating Aura, which reduces <happiness></happiness> <hyperlink>Morale</hyperlink> of nearby enemies.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Intimidating Aura, which reduces <happiness></happiness> <hyperlink>Morale</hyperlink> of nearby enemies.</bullet></bulletlist>",
                     "name": "Intimidating Aura",
                     "spell_slug": "intimidation_aura",
                     "tier": 6,
@@ -3096,7 +3398,7 @@ var jsonTomes = {
                     "upgrade_slug": "artisan_fortification"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>+% damage</bullet><bullet>Siege Breaker, dealing extra fortification damage during a siege.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>+% damage</bullet><bullet>Siege Breaker, dealing extra fortification damage during a siege.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist>",
                     "name": "Siege Magic",
                     "spell_slug": "siege_magic",
                     "tier": 4,
@@ -3110,7 +3412,7 @@ var jsonTomes = {
                     "type": "<hyperlink>Unit</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>+% <hyperlink>Critical Hit</hyperlink> chance.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>+% <hyperlink>Critical Hit</hyperlink> chance.</bullet></bulletlist>",
                     "name": "Artisan Armaments",
                     "spell_slug": "artisan_armaments",
                     "tier": 3,
@@ -3209,21 +3511,21 @@ var jsonTomes = {
             "icon": "tome_of_enchantment",
             "skills": [
                 {
-                    "description": "Target friendly city has:<bulletlist><bullet>+20 <structureprod></structureprod> <hyperlink>Production</hyperlink>.</bullet><bullet>+20 <unitprod></unitprod> <hyperlink>Draft</hyperlink>.</bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink>.</bullet></bulletlist>",
+                    "description": "Target owned city has:<bulletlist><bullet>+20 <structureprod></structureprod> <hyperlink>Production</hyperlink></bullet><bullet>+20 <unitprod></unitprod> <hyperlink>Draft</hyperlink></bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
                     "name": "Awakened Tools",
                     "spell_slug": "awakened_tools",
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>City Spell</hyperlink>"
    },
                 {
-                    "description": "Grants base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base % chance of inflicting Sundered Defense, reducing enemy <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet>",
+                    "description": "Grants base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base % chance of inflicting Sundered Defense, reducing enemy <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist>",
                     "name": "Sundering Blades",
                     "spell_slug": "sundering_blades",
                     "tier": 2,
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Grants <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>+<range></range> range.</bullet>",
+                    "description": "Grants <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>+<range></range> range.</bullet></bulletlist>",
                     "name": "Seeker Arrows",
                     "spell_slug": "seeker_arrows",
                     "tier": 2,
@@ -3280,14 +3582,14 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>"
    },
                 {
-                    "description": "For each <happiness></happiness> <hyperlink>City Stability</hyperlink> level above <hyperlink>Unstable</hyperlink> the city gains:<bulletlist><bullet>+5 <knowledge></knowledge><hyperlink>Knowledge</hyperlink>.</bullet><bullet>+5 <mana></mana> <hyperlink>Mana</hyperlink>.</bullet>",
+                    "description": "For each <happiness></happiness> <hyperlink>City Stability</hyperlink> level above <hyperlink>Unstable</hyperlink> the city gains:<bulletlist><bullet>+5 <knowledge></knowledge><hyperlink>Knowledge</hyperlink>.</bullet><bullet>+5 <mana></mana> <hyperlink>Mana</hyperlink>.</bullet></bulletlist>",
                     "name": "Convent",
                     "tier": 2,
                     "type": "<hyperlink>City Structure</hyperlink>",
                     "upgrade_slug": "convent"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>Mending Touch, a healing ability for use in battle.</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>Mending Touch, a healing ability for use in battle.</bullet></bulletlist>",
                     "name": "Staves of Mending",
                     "spell_slug": "staves_of_mending",
                     "tier": 2,
@@ -3330,7 +3632,7 @@ var jsonTomes = {
             "icon": "tome_of_devastation",
             "skills": [
                 {
-                    "description": "Grants <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Demolisher, which allows them to destroy <hyperlink>Fortified</hyperlink> obstacles.</bullet><bullet>A base % chance of canceling <hyperlink>Defense Modes</hyperlink>.</bullet>",
+                    "description": "Grants <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Demolisher, which allows them to destroy <hyperlink>Fortified</hyperlink> obstacles.</bullet><bullet>A base % chance of canceling <hyperlink>Defense Modes</hyperlink>.</bullet></bulletlist>",
                     "name": "Focus of Devastation",
                     "spell_slug": "focus_of_devastation",
                     "tier": 6,
@@ -3383,7 +3685,7 @@ var jsonTomes = {
                     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
                 {
-                    "description": "Grants enchanted units:<bulletlist><bullet>Very Fast Movement</bullet>",
+                    "description": "Grants enchanted units:<bulletlist><bullet>Very Fast Movement</bullet></bulletlist>",
                     "name": "Wayfinder Enchantment",
                     "spell_slug": "wayfinder_enchantment",
                     "tier": 1,
@@ -3407,7 +3709,7 @@ var jsonTomes = {
             "icon": "tome_of_the_crucible",
             "skills": [
                 {
-                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to the target and adjacent units.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet>",
+                    "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal + <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to the target and adjacent units.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist>",
                     "name": "Meteor Arrows",
                     "spell_slug": "meteor_arrows",
                     "tier": 8,

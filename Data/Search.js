@@ -152,22 +152,22 @@ function returnSpellList(fieldToSearch) {
 function returnTraitsList(fieldToSearch) {
     var list = new Array();
     var i = "";
-    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
+    for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonFactionCreation.traits[i].name;
+            textvalue = jsonFactionCreation2.traits[i].name;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonFactionCreation.traits[i].id)) {
-                    list.push(jsonFactionCreation.traits[i].id);
+                if (!isInArray(list, jsonFactionCreation2.traits[i].id)) {
+                    list.push(jsonFactionCreation2.traits[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            if ('description' in jsonFactionCreation.traits[i]) {
-                textvalue = Sanitize(jsonFactionCreation.traits[i].description);
+            if ('description' in jsonFactionCreation2.traits[i]) {
+                textvalue = Sanitize(jsonFactionCreation2.traits[i].description);
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonFactionCreation.traits[i].id)) {
-                        list.push(jsonFactionCreation.traits[i].id);
+                    if (!isInArray(list, jsonFactionCreation2.traits[i].id)) {
+                        list.push(jsonFactionCreation2.traits[i].id);
                     }
                 }
             }

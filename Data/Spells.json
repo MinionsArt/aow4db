@@ -1,6 +1,30 @@
 var jsonSpells = {
     "spells": [
         {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
+            "id": "forced_evolution",
+            "tactical": false,
+            "description": "Target a friendly <hyperlink>Army</hyperlink>, a random <hyperlink>Unit</hyperlink> in the army with Evolve immediately gains enough ranks to evolve.",
+            "name": "Forced Evolution",
+            "operation_point_cost": 80,
+            "casting_cost": "80<mana></mana> ",
+            "icon": "forced_evolution"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
+            "id": "summon_progenitor_golem",
+            "tactical": true,
+            "description": "Summon a friendly <hyperlink>Progenitor Golem</hyperlink> on the target hex, which lasts for 3 <turn></turn>",
+            "name": "Summon Progenitor Golem",
+            "operation_point_cost": 65,
+            "casting_cost": "200<mana></mana> ",
+            "summoned_units": [
+                {
+                    "slug": "progenitor_golem"
+   }
+  ]
+ },
+        {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained World Spell</hyperlink>",
             "id": "bind_gold_ancient_wonder",
             "tactical": false,
@@ -9,6 +33,33 @@ var jsonSpells = {
             "operation_point_cost": 300,
             "casting_cost": "400<mana></mana> ",
             "icon": "bind_gold_ancient_wonder"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>",
+            "id": "conjure_spellward",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Target empty <hyperlink>Province</hyperlink> that doesn't contain an <hyperlink>Ancient Wonder</hyperlink> conjures a Spellward. This structure:<bulletlist><bullet>Functions as a <spelljammer></spelljammer> <hyperlink>Spell Jammer</hyperlink> for this and adjacent provinces.</bullet><bullet>Provides vision in 3-hex radius.</bullet></bulletlist>",
+            "name": "Conjure Spellward",
+            "operation_point_cost": 200,
+            "casting_cost": "200<mana></mana> ",
+            "icon": "conjure_spellward"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "tuning_kits",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Grants enchanted units:<bulletlist><bullet>Overcharge, granting a Construct unit Overcharged.</bullet>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitSupport></unitSupport> Support Unit"
+   }
+  ],
+            "name": "Tuning Kits",
+            "operation_point_cost": 90,
+            "casting_cost": "90<mana></mana> ",
+            "icon": "tuning_kits"
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
@@ -30,6 +81,9 @@ var jsonSpells = {
                     "slug": "grimbeak_crow"
    },
                 {
+                    "slug": "polar_bear"
+   },
+                {
                     "slug": "razorback"
    },
                 {
@@ -43,6 +97,9 @@ var jsonSpells = {
    },
                 {
                     "slug": "dread_spider_hatchling"
+   },
+                {
+                    "slug": "brown_bear"
    },
                 {
                     "slug": "inferno_hound"
@@ -93,6 +150,9 @@ var jsonSpells = {
                     "slug": "frost_wyvern"
    },
                 {
+                    "slug": "dire_bear"
+   },
+                {
                     "slug": "hunter_spider_matriarch"
    },
                 {
@@ -136,6 +196,203 @@ var jsonSpells = {
             "operation_point_cost": 150,
             "casting_cost": "150<mana></mana> ",
             "icon": "_pantheon___mana_addicts"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>",
+            "id": "destabilized_mana_core",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Units in 2-hex radius are Marked. After 1 <turn></turn> <hyperlink>Turn</hyperlink> the Mana Core explodes inflicting:<bulletlist><bullet>24 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>24 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>60% base chance of receiving Disrupted.</bullet></bulletlist>",
+            "name": "Destabilized Mana Core",
+            "operation_point_cost": 25,
+            "casting_cost": "30<mana></mana> ",
+            "icon": "destabilized_mana_core"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "disrupting_blades",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units gain:<bulletlist><bullet>A base 60% chance of inflicting Disrupted for 2 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitPolearm></unitPolearm> Polearm Unit"
+   },
+                {
+                    "requisite": "<unitShock></unitShock> Shock Unit"
+   },
+                {
+                    "requisite": "<unitFighter></unitFighter> Fighter Unit"
+   },
+                {
+                    "requisite": "<unitSkirmisher></unitSkirmisher> Skirmisher Unit"
+   }
+  ],
+            "name": "Disrupting Blades",
+            "operation_point_cost": 180,
+            "casting_cost": "180<mana></mana> ",
+            "icon": "disrupting_blades"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "null_shield",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Makes it so when enchanted unit enters <hyperlink>Defense Mode</hyperlink>, it and adjacent friendly units gain:<bulletlist><bullet>+5 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink></bullet></bulletlist>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitShield></unitShield> Shield Unit"
+   }
+  ],
+            "name": "Null Shield",
+            "operation_point_cost": 160,
+            "casting_cost": "160<mana></mana> ",
+            "icon": "null_shield"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>",
+            "id": "final_banishment",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "All non-hero corpses on the map are destroyed. For each corpse destroyed, friendly units:<bulletlist><bullet>Gain +1 Bolstered Resistance</bullet><bullet>Heals +5 <temphp></temphp> Temporary Hit Points</bullet></bulletlist>",
+            "name": "Final Banishment",
+            "operation_point_cost": 50,
+            "casting_cost": "150<mana></mana> ",
+            "icon": "final_banishment"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>",
+            "id": "astral_severance",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Target Magic Origin <hyperlink>Unit</hyperlink>:<bulletlist><bullet>Has a base 60% chance of being killed.</bullet><bullet>If unsuccessful, inflicts Disrupted and Decaying.</bullet></bulletlist>",
+            "name": "Astral Severance",
+            "operation_point_cost": 50,
+            "casting_cost": "150<mana></mana> ",
+            "icon": "astral_severance"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "compounding_defense",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "When adjacent to another unit with Compounding Defense this unit gains:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitShield></unitShield> Shield Unit"
+   },
+                {
+                    "requisite": "<unitPolearm></unitPolearm> Polearm Unit"
+   }
+  ],
+            "name": "Compounding Defense",
+            "operation_point_cost": 100,
+            "casting_cost": "100<mana></mana> ",
+            "icon": "compounding_defense"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
+            "id": "linked_minds",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Units of this race gain the ability to share senses, granting them:<bulletlist><bullet>Hyper-Awareness when standing next to a Construct or another unit with Linked Minds.</bullet></bulletlist>",
+            "name": "Linked Minds",
+            "operation_point_cost": 250,
+            "casting_cost": "250<mana></mana> ",
+            "icon": "linked_minds"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
+            "id": "cascading_command_reposition",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Target friendly Construct or Linked Minds unit gains:<bulletlist><bullet>Hastened</bullet><bullet>Strengthened</bullet><bullet>This effect then cascades to adjacent friendly Constructs and is repeated.</bullet></bulletlist>",
+            "name": "Cascading Command: Reposition",
+            "operation_point_cost": 25,
+            "casting_cost": "30<mana></mana> ",
+            "icon": "cascading_command_reposition"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
+            "id": "cascading_command_defend",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Target friendly Construct or Linked Minds unit: <bulletlist><bullet>Gains Watchful for 1 <turn></turn> Turn.</bullet><bullet>Enters <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>This effect then applies to adjacent friendly Constructs and is repeated.</bullet></bulletlist>",
+            "name": "Cascading Command: Defend",
+            "operation_point_cost": 25,
+            "casting_cost": "30<mana></mana> ",
+            "icon": "cascading_command_defend"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
+            "id": "construct_population",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Target friendly city gains +40 <food></food> <hyperlink>Food</hyperlink>.<br></br>This spell costs Binding Essence.",
+            "name": "Construct Population",
+            "operation_point_cost": 45,
+            "casting_cost": "45<mana></mana> ",
+            "icon": "construct_population"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "warding_metals",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Grants enchanted units:<bulletlist><bullet>Warded increasing their <resistance></resistance> <hyperlink>Resistance</hyperlink> against magic attacks.</bullet></bulletlist>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitShield></unitShield> Shield Unit"
+   },
+                {
+                    "requisite": "<unitConstruct></unitConstruct> Construct"
+   }
+  ],
+            "name": "Warding Metals",
+            "operation_point_cost": 90,
+            "casting_cost": "90<mana></mana> ",
+            "icon": "warding_metals"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>",
+            "id": "pinning_barrage",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Units in a 2-hex radius:<bulletlist><bullet>Suffer 20 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Become Marked.</bullet><bullet>Have a base 60% chance of becoming Immobilized.</bullet></bulletlist>",
+            "name": "Pinning Barrage",
+            "operation_point_cost": 35,
+            "casting_cost": "80<mana></mana> ",
+            "icon": "pinning_barrage"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
+            "id": "scorch_the_land",
+            "tactical": false,
+            "description": "Target friendly or unowned province becomes Desert.<br></br>Does not work on Uninhabitable or Underground provinces.",
+            "name": "Scorch the Land",
+            "operation_point_cost": 60,
+            "casting_cost": "60<mana></mana> ",
+            "icon": "scorch_the_land"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
+            "id": "flood_the_land",
+            "tactical": false,
+            "description": "Target friendly or unowned province becomes Swampland.<br></br>Does not work on Uninhabitable or Underground provinces.",
+            "name": "Flood the Land",
+            "operation_point_cost": 60,
+            "casting_cost": "60<mana></mana> ",
+            "icon": "flood_the_land"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
+            "id": "freeze_the_land",
+            "tactical": false,
+            "description": "Target friendly or unowned province becomes Arctic.<br></br>Does not work on Uninhabitable provinces.",
+            "name": "Freeze the Land",
+            "operation_point_cost": 60,
+            "casting_cost": "60<mana></mana> ",
+            "icon": "freeze_the_land"
  },
         {
             "upkeep": "30<gold></gold> ",
@@ -210,7 +467,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "magical_wards",
             "tactical": false,
-            "description": "Inscribes magical wards onto the target race, granting:<bulletlist><bullet>+2 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>+2 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet>",
+            "description": "Inscribes magical wards onto the target race, granting:<bulletlist><bullet>+2 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>+2 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet></bulletlist>",
             "name": "Magical Wards",
             "operation_point_cost": 150,
             "casting_cost": "150<mana></mana> ",
@@ -220,7 +477,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "earthkin",
             "tactical": false,
-            "description": "Makes rock growths develop on the target race, granting them:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Rock Camouflage, which allows them to hide on Rocky terrain.</bullet><bullet>Rock Walk, which allows them to traverse Rocky terrain faster.</bullet></bulletlist>",
+            "description": "Makes rock growths develop on the target race, granting them:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Mountain Camouflage, which allows them to hide on Mountain terrain.</bullet><bullet>Mountain Walk, which allows them to traverse Mountain terrain faster.</bullet></bulletlist>",
             "name": "Earthkin",
             "operation_point_cost": 150,
             "casting_cost": "150<mana></mana> ",
@@ -285,7 +542,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>",
             "id": "gaias_chosen",
             "tactical": false,
-            "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>The Plant unit type.</bullet><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet>",
+            "description": "Infuse the target race with the blessing of nature. They gain:<bulletlist><bullet>The Plant unit type.</bullet><bullet>Charge Resistance, making them strong against Shock Units.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet></bulletlist>",
             "name": "Gaia's Chosen",
             "operation_point_cost": 600,
             "casting_cost": "600<mana></mana> ",
@@ -316,7 +573,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "call_forth_avatar_of_chaos",
             "tactical": true,
-            "description": "Summons an avatar of your <hyperlink>Ruler</hyperlink> in battle. The avatar has the same abilities as your leader and spawns with full <hyperlink>Action Points</hyperlink>. All Fiends and Demonkin gain +10 <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+            "description": "Summons an avatar of your <hyperlink>Ruler</hyperlink> in battle. The avatar has the same abilities as your leader and spawns with full <hyperlink>Action Points</hyperlink>. All Fiends and Demonkin gain +10 <happiness></happiness> <hyperlink>Morale</hyperlink>.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Call Forth Avatar of Chaos",
             "operation_point_cost": 50,
             "casting_cost": "150<mana></mana> ",
@@ -344,13 +601,13 @@ var jsonSpells = {
  },
         {
             "spellType": "Strategic: Strategic Spell",
-            "id": "wizard_tower_br__teleportation_circle",
+            "id": "wizard_tower_teleportation_circle",
             "tactical": false,
             "description": "Return target <hyperlink>Army</hyperlink> to <hyperlink>Throne City</hyperlink>",
-            "name": "Wizard Tower:<br></br>Teleportation Circle",
+            "name": "Wizard Tower: Teleportation Circle",
             "operation_point_cost": 120,
             "casting_cost": "120<mana></mana> ",
-            "icon": "wizard_tower_br__teleportation_circle"
+            "icon": "wizard_tower_teleportation_circle"
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Enemy Army Spell</hyperlink>",
@@ -376,7 +633,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Healing/Buff Spell</hyperlink>",
             "id": "mass_revive",
             "tactical": true,
-            "description": "Targets all friendly dead units with Faithful or Zeal. They come back to life with 50% of their total <hyperlink><hp></hp> Hit Points</hyperlink>.",
+            "description": "Targets all friendly dead units with Faithful or Zeal. They come back to life with 50% of their total <hyperlink><hp></hp> Hit Points</hyperlink>.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Mass Revive",
             "operation_point_cost": 65,
             "casting_cost": "200<mana></mana> ",
@@ -396,7 +653,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "supreme_magic",
             "tactical": false,
-            "description": "For enchanted units:<bulletlist><bullet>Grants Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Makes killing a unit cause it to explode, dealing 20 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> to adjacent enemy units.</bullet>",
+            "description": "For enchanted units:<bulletlist><bullet>Grants Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Makes killing a unit cause it to explode, dealing 20 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> to adjacent enemy units.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -477,7 +734,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "fanatical_workforce",
             "tactical": false,
-            "description": "For 3 <turn></turn> Turns, target friendly city:<bulletlist><bullet>Gains +60 <structureprod></structureprod> <hyperlink>Production</hyperlink> income.</bullet><bullet>Loses -20 <food></food> <hyperlink>Food</hyperlink> income.</bullet>",
+            "description": "For 3 <turn></turn> Turns, target owned city:<bulletlist><bullet>Gains +60 <structureprod></structureprod> <hyperlink>Production</hyperlink> income.</bullet><bullet>Loses -20 <food></food> <hyperlink>Food</hyperlink> income.</bullet></bulletlist>",
             "name": "Fanatical Workforce",
             "operation_point_cost": 45,
             "casting_cost": "45<mana></mana> ",
@@ -487,7 +744,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "legion_of_zeal",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Zeal, which makes base attacks deal extra <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -517,7 +774,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "inspiring_chant",
             "tactical": true,
-            "description": "Friendly units in a 2-hex radius:<bulletlist><bullet>Gain +10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Become 2 Strengthened if they have Zeal.</bullet>",
+            "description": "Friendly units in a 2-hex radius:<bulletlist><bullet>Gain +10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Become 2 Strengthened if they have Zeal.</bullet></bulletlist>",
             "name": "Inspiring Chant",
             "operation_point_cost": 20,
             "casting_cost": "15<mana></mana> ",
@@ -537,7 +794,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "true_death_magic",
             "tactical": false,
-            "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>A base 30% chance of inflicting Marked for Death, which kills the affected unit at the end of the effect's duration.</bullet>",
+            "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>A base 30% chance of inflicting Marked for Death, which kills the affected unit at the end of the effect's duration.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -555,7 +812,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "battlefield_reanimation",
             "tactical": true,
-            "description": "<bulletlist><bullet>All friendly Undead units come back to life with 50% of their total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Enemy corpses come back to life as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle.</bullet></bulletlist>",
+            "description": "<bulletlist><bullet>All friendly Undead units come back to life with 50% of their total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Enemy corpses come back to life as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
             "name": "Battlefield Reanimation",
             "operation_point_cost": 80,
             "casting_cost": "50<souls></souls> ",
@@ -578,7 +835,7 @@ var jsonSpells = {
                     "slug": "banshee"
    },
                 {
-                    "slug": "bone_golem"
+                    "slug": "bone_horror"
    }
   ]
  },
@@ -607,7 +864,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "fetid_legion",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>+10 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Weakening Aura, which weakens nearby enemy's attacks.</bullet></bulletlist>",
+            "description": "Grants enchanted units:<bulletlist><bullet>+10 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Weakening Aura, which inflicts Weakened to adjacent enemies at the end of the turn.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -652,7 +909,7 @@ var jsonSpells = {
             "icon": "fog_of_insanity"
  },
         {
-            "spellType": "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>",
+            "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
             "id": "devouring_void",
             "tactical": true,
             "description": "<bulletlist><bullet>Conjures a <hyperlink>Devouring Void</hyperlink> in a 1-hex radius.</bullet><bullet>Each turn, the radius increases by 1 hex.</bullet><bullet>Lasts for 2 <turn></turn> Turns.</bullet></bulletlist>",
@@ -785,7 +1042,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "explosive_manifestation",
             "tactical": true,
-            "description": "Target non-occupied hex:<bulletlist><bullet>Summon a random Tier II Astral Sea creature that lasts for 3 <turn></turn> Turns.</bullet><bullet>All adjacent units sustain 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, 10 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, and 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet></bulletlist>",
+            "description": "Target non-occupied hex:<bulletlist><bullet>Summon a random Tier II Astral Sea creature that lasts for 3 <turn></turn> Turns.</bullet><bullet>All adjacent units sustain 10 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>, 10 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>, and 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
             "name": "Explosive Manifestation",
             "operation_point_cost": 40,
             "casting_cost": "100<mana></mana> ",
@@ -862,7 +1119,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "phasing_enchantment",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>The Phase ability, which allows them to teleport in battle.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>The Phase ability, which allows them to teleport in battle.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -901,7 +1158,7 @@ var jsonSpells = {
   ]
  },
         {
-            "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
+            "spellType": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>",
             "id": "emergency_teleportation",
             "tactical": true,
             "description": "Makes closest allied unit teleport to within 4 hexes of the target hex and heals this allied unit +30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
@@ -914,7 +1171,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "astral_blood",
             "tactical": false,
-            "description": "Makes magic begin to flow through the veins of the target race, granting them:<bulletlist><bullet>Attunement: Fortune, which increases <hyperlink>Critical Hit</hyperlink> chance when spells are cast.</bullet>",
+            "description": "Makes magic begin to flow through the veins of the target race, granting them:<bulletlist><bullet>Attunement: Fortune, which increases <hyperlink>Critical Hit</hyperlink> chance when spells are cast.</bullet></bulletlist>",
             "name": "Astral Blood",
             "operation_point_cost": 250,
             "casting_cost": "250<mana></mana> ",
@@ -924,10 +1181,10 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "conjure_amplification_pylon",
             "tactical": true,
-            "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +20%.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+            "description": "Conjures an <hyperlink>Amplification Pylon</hyperlink>, a stationary structure that deals damage and increases the damage of your spells by +50%.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Conjure Amplification Pylon",
-            "operation_point_cost": 20,
-            "casting_cost": "15<mana></mana> ",
+            "operation_point_cost": 30,
+            "casting_cost": "45<mana></mana> ",
             "summoned_units": [
                 {
                     "slug": "amplification_pylon"
@@ -935,31 +1192,31 @@ var jsonSpells = {
   ]
  },
         {
-            "upkeep": "6<mana></mana> ",
+            "upkeep": "8<mana></mana> ",
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "amplify_minds",
             "tactical": false,
-            "description": "Target friendly city gains:<bulletlist><bullet>+20 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income</bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
+            "description": "Target owned city gains:<bulletlist><bullet>+20 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income</bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
             "name": "Amplify Minds",
-            "operation_point_cost": 60,
-            "casting_cost": "60<mana></mana> ",
+            "operation_point_cost": 80,
+            "casting_cost": "80<mana></mana> ",
             "icon": "amplify_minds"
  },
         {
             "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
             "id": "chain_lightning",
             "tactical": true,
-            "description": "Target enemy unit:<bulletlist><bullet>Sustains 20 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>This effect passes on to another enemy within 3 hexes.</bullet><bullet>Passes on up to 2 times.</bullet></bulletlist>",
+            "description": "Target enemy unit:<bulletlist><bullet>Sustains 30 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>This effect passes on to another enemy within 3 hexes.</bullet><bullet>Passes on up to 2 times.</bullet></bulletlist>",
             "name": "Chain Lightning",
-            "operation_point_cost": 25,
-            "casting_cost": "30<mana></mana> ",
+            "operation_point_cost": 30,
+            "casting_cost": "45<mana></mana> ",
             "icon": "chain_lightning"
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "frenzying_focus",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Frenzy, which increases damage dealt when they attack.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Frenzy, which increases damage dealt when they attack.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -969,15 +1226,15 @@ var jsonSpells = {
    }
   ],
             "name": "Frenzying Focus",
-            "operation_point_cost": 80,
-            "casting_cost": "80<mana></mana> ",
+            "operation_point_cost": 90,
+            "casting_cost": "90<mana></mana> ",
             "icon": "frenzying_focus"
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "lightning_blades",
             "tactical": false,
-            "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+4 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+20% damage against Electrified units.</bullet></bulletlist> ",
+            "description": "Makes base <hyperlink>Melee</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+4 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>+20% damage against Electrified units.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -1014,7 +1271,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>",
             "id": "fulmination",
             "tactical": true,
-            "description": "Enemy units in a 1-hex radius:<bulletlist><bullet>Sustain 15 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Have a 60% chance of becoming Electrified.</bullet>",
+            "description": "Enemy units in a 1-hex radius:<bulletlist><bullet>Sustain 15 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Have a 60% chance of becoming Electrified.</bullet></bulletlist>",
             "name": "Fulmination",
             "operation_point_cost": 15,
             "casting_cost": "10<mana></mana> ",
@@ -1024,10 +1281,10 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "eternal_earth",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Undying, which restores them to life once upon death.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Undying, which restores them to life once upon death.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
-                    "requisite": "Elemental"
+                    "requisite": "<unitElemental></unitElemental> Elemental"
    }
   ],
             "name": "Eternal Earth",
@@ -1049,7 +1306,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "call_the_titan_of_the_earth",
             "tactical": true,
-            "description": "<bulletlist><bullet>Summons an <hyperlink>Earth Titan</hyperlink> onto the target unoccupied hex.</bullet><bullet>All adjacent enemies lose their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+            "description": "<bulletlist><bullet>Summons an <hyperlink>Earth Titan</hyperlink> onto the target unoccupied hex.</bullet><bullet>All adjacent enemies lose their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
             "name": "Call the Titan of the Earth",
             "operation_point_cost": 65,
             "casting_cost": "200<mana></mana> ",
@@ -1063,7 +1320,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "transmute_resources",
             "tactical": false,
-            "description": "Target friendly city converts their <mana></mana> Mana income, gaining <gold></gold> Gold, <structureprod></structureprod> Production, and <food></food> Food income equal to 75% of the <mana></mana> Mana income.",
+            "description": "Target owned city converts their <mana></mana> Mana income, gaining <gold></gold> Gold, <structureprod></structureprod> Production, and <food></food> Food income equal to 75% of the <mana></mana> Mana income.",
             "name": "Transmute Resources",
             "operation_point_cost": 100,
             "casting_cost": "100<mana></mana> ",
@@ -1073,7 +1330,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "meteor_arrows",
             "tactical": false,
-            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +4 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to the target and adjacent units.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet>",
+            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +4 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> to the target and adjacent units.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -1102,7 +1359,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "awakened_tools",
             "tactical": false,
-            "description": "Target friendly city has:<bulletlist><bullet>+20 <structureprod></structureprod> <hyperlink>Production</hyperlink>.</bullet><bullet>+20 <unitprod></unitprod> <hyperlink>Draft</hyperlink>.</bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink>.</bullet></bulletlist>",
+            "description": "Target owned city has:<bulletlist><bullet>+20 <structureprod></structureprod> <hyperlink>Production</hyperlink></bullet><bullet>+20 <unitprod></unitprod> <hyperlink>Draft</hyperlink></bullet><bullet>-10 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
             "name": "Awakened Tools",
             "operation_point_cost": 60,
             "casting_cost": "60<mana></mana> ",
@@ -1112,7 +1369,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "sundering_blades",
             "tactical": false,
-            "description": "Grants base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 90% chance of inflicting Sundered Defense, reducing enemy <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet>",
+            "description": "Grants base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 90% chance of inflicting Sundered Defense, reducing enemy <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -1139,7 +1396,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "seeker_arrows",
             "tactical": false,
-            "description": "Grants <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>+1<range></range> range.</bullet>",
+            "description": "Grants <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>+1<range></range> range.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -1192,10 +1449,10 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
             "id": "favorable_winds",
             "tactical": false,
-            "description": "Targets friendly army on the water. They regain their Movement points.<br></br>A unit cannot benefit from this spell more than once per turn.",
+            "description": "Target friendly army regains all their Movement points if they are on water. Half if they are on land.<br></br>A unit cannot benefit from this spell more than once per turn.",
             "name": "Favorable Winds",
-            "operation_point_cost": 60,
-            "casting_cost": "60<mana></mana> ",
+            "operation_point_cost": 80,
+            "casting_cost": "80<mana></mana> ",
             "icon": "favorable_winds"
  },
         {
@@ -1206,6 +1463,7 @@ var jsonSpells = {
             "name": "Summon Wind Rager",
             "operation_point_cost": 100,
             "casting_cost": "100<mana></mana> ",
+            "icon": "summon_wind_rager",
             "summoned_units": [
                 {
                     "slug": "wind_rager"
@@ -1216,7 +1474,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "windborne_scouts",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Flying mounts.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Flying mounts.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitScout></unitScout> Scout Unit"
@@ -1228,10 +1486,10 @@ var jsonSpells = {
             "icon": "windborne_scouts"
  },
         {
-            "spellType": "Combat Spell",
+            "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
             "id": "abducting_cyclone",
             "tactical": true,
-            "description": "Targets an empty hex and pulls the closest enemy to within 3 hexes of that location.",
+            "description": "Pulls the closest enemy within 3 hexes to target empty hex. They have a base 90% chance of becoming Stunned for 1 <turn></turn> Turn.",
             "name": "Abducting Cyclone",
             "operation_point_cost": 20,
             "casting_cost": "15<mana></mana> ",
@@ -1241,7 +1499,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
             "id": "dust_storm",
             "tactical": true,
-            "description": "Enemy units in a 2-hex radius have a base 90% chance of becoming Blind.",
+            "description": "Enemy units in a 2-hex radius:<bulletlist><bullet>Sustain 10 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Blind for 1 <turn></turn> Turn.</bullet>",
             "name": "Dust Storm",
             "operation_point_cost": 20,
             "casting_cost": "15<mana></mana> ",
@@ -1261,7 +1519,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "adaptive_armor",
             "tactical": false,
-            "description": "Once per <turn></turn> Turn whenever enchanted units sustain non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>, they gain:<bulletlist><bullet>Bolstered Resistance, increasing their resistance to magical damage.</bullet><bullet>Status Protection, reducing the chance that the unit will be affected by negative status effects.</bullet>",
+            "description": "Once per <turn></turn> Turn, whenever enchanted units sustain non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>, they gain:<bulletlist><bullet>Bolstered Resistance, increasing their resistance to magical damage.</bullet><bullet>Status Protection, reducing the chance that the unit will be affected by negative status effects.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -1298,7 +1556,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
             "id": "awaken_the_forest",
             "tactical": false,
-            "description": "Target a province with forest:<bulletlist><bullet>The forest is removed.</bullet><bullet>An army of Animals and Plants under your control is summoned.</bullet>",
+            "description": "Target a province with forest:<bulletlist><bullet>The forest is removed.</bullet><bullet>An army of Animals and Plants under your control is summoned.</bullet></bulletlist>",
             "name": "Awaken the Forest",
             "operation_point_cost": 400,
             "casting_cost": "400<mana></mana> ",
@@ -1322,10 +1580,10 @@ var jsonSpells = {
   ]
  },
         {
-            "spellType": "Combat Spell",
+            "spellType": "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>",
             "id": "devolve",
             "tactical": true,
-            "description": "Target non-Hero enemy:<bulletlist><bullet>Has a base 90% chance of being transformed into a random Tier I animal until the end of battle.</bullet><bullet>If resisted, inflicts Stunned instead.</bullet></bulletlist>",
+            "description": "Target non-Hero enemy:<bulletlist><bullet>Has a base 90% chance of being transformed into a random Tier I animal until the end of battle.</bullet><bullet>If resisted, inflicts Stunned instead.</bullet></bulletlist><br></br><br></br>Cannot be used in Water battles.",
             "name": "Devolve",
             "operation_point_cost": 40,
             "casting_cost": "100<mana></mana> ",
@@ -1335,7 +1593,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "awaken_instincts",
             "tactical": true,
-            "description": "All your units:<bulletlist><bullet>Heal +15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Regain all <hyperlink>Action Points</hyperlink>.</bullet><bullet>Become Berserk for 2 <turn></turn> Turns.</bullet></bulletlist>",
+            "description": "All friendly units in a 2-hex radius:<bulletlist><bullet>Heal +25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Regain all <hyperlink>Action Points</hyperlink>.</bullet><bullet>Become Berserk for 2 <turn></turn> Turns.</bullet></bulletlist>",
             "name": "Awaken Instincts",
             "operation_point_cost": 50,
             "casting_cost": "150<mana></mana> ",
@@ -1360,7 +1618,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
             "id": "restore_the_land",
             "tactical": false,
-            "description": "Adds grasslands feature to target friendly province. Works on Desolate terrain. Turns into Fungus Fields <hyperlink>Underground</hyperlink>.<br></br>Doesn't work on Mountains or Ice terrain.",
+            "description": "Adds grasslands feature to target friendly or unowned province. Works on Desolate terrain. Turns into Fungus Fields <hyperlink>Underground</hyperlink>.<br></br>Doesn't work on Mountains and Ice terrain.",
             "name": "Restore the Land",
             "operation_point_cost": 30,
             "casting_cost": "30<mana></mana> ",
@@ -1404,7 +1662,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "vine_prison",
             "tactical": true,
-            "description": "Summon 5 <hyperlink>Living Vine</hyperlink> units randomly in a 2-hex radius which live for 2 <turn></turn> Turns. These don't deal damage but have a chance to Immobilized enemies.",
+            "description": "Summon 5 <hyperlink>Living Vine</hyperlink> units randomly in a 2-hex radius which live for 2 <turn></turn> Turns. These don't deal damage but have a chance of inflicting Immobilized on enemies.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Vine Prison",
             "operation_point_cost": 25,
             "casting_cost": "30<mana></mana> ",
@@ -1419,7 +1677,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "aspect_of_the_root",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>The Aspect of the Root ability, which allows units to heal themselves in battle.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>The Aspect of the Root ability, which allows units to heal themselves in battle.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -1437,7 +1695,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "poison_arrows",
             "tactical": false,
-            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +2 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Deal -1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gain base 30% chance of inflicting Poisoned, a damage-over-time effect.</bullet>",
+            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +2 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Deal -1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gain base 30% chance of inflicting Poisoned, a damage-over-time effect.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -1534,7 +1792,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "havoc_magic",
             "tactical": false,
-            "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 30% chance of inflicting a random negative status effect.</bullet>",
+            "description": "Grants base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 30% chance of inflicting a random negative status effect.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -1610,7 +1868,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "mark_of_misfortune",
             "tactical": false,
-            "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Inflict Misfortune.</bullet>",
+            "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Inflict Misfortune.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -1634,7 +1892,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "staves_of_mending",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>Mending Touch, a healing ability for use in battle.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>Mending Touch, a healing ability for use in battle.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -1657,15 +1915,15 @@ var jsonSpells = {
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
-            "id": "create_bone_golem",
+            "id": "create_bone_horror",
             "tactical": false,
-            "description": "Creates a <hyperlink>Bone Golem</hyperlink> by combining two <hyperlink>Skeleton</hyperlink> units.",
-            "name": "Create Bone Golem",
+            "description": "Creates a <hyperlink>Bone Horror</hyperlink> by combining two <hyperlink>Skeleton</hyperlink> units.",
+            "name": "Create Bone Horror",
             "operation_point_cost": 30,
             "casting_cost": "10<souls></souls> ",
             "summoned_units": [
                 {
-                    "slug": "bone_golem"
+                    "slug": "bone_horror"
    }
   ]
  },
@@ -1737,7 +1995,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "soul_overflow",
             "tactical": true,
-            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Gain 1 Strengthened.</bullet><bullet>Gain +20 maximum <hyperlink><hp></hp> Hit Points</hyperlink> until the end of battle.</bullet><bullet>Have their negative status effects removed.</bullet>",
+            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Gain 1 Strengthened.</bullet><bullet>Gain +20 maximum <hyperlink><hp></hp> Hit Points</hyperlink> until the end of battle.</bullet><bullet>Have their negative status effects removed.</bullet></bulletlist>",
             "name": "Soul Overflow",
             "operation_point_cost": 20,
             "casting_cost": "15<souls></souls> ",
@@ -1767,6 +2025,9 @@ var jsonSpells = {
    },
                 {
                     "slug": "frost_wyvern"
+   },
+                {
+                    "slug": "dire_bear"
    },
                 {
                     "slug": "slither"
@@ -1826,7 +2087,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "totem_of_the_wild",
             "tactical": true,
-            "description": "Spawns a <hyperlink>Totem of the Wild</hyperlink>, which spawns a random Tier I animal unit at the start of each of your <turn></turn> Turns. Lasts 3 <turn></turn> Turns.",
+            "description": "Spawns a <hyperlink>Totem of the Wild</hyperlink>, which spawns a random Tier I animal unit at the start of each of your <turn></turn> Turns. Lasts 3 <turn></turn> Turns.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Totem of the Wild",
             "operation_point_cost": 35,
             "casting_cost": "80<mana></mana> ",
@@ -1840,7 +2101,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "call_of_the_wild",
             "tactical": true,
-            "description": "All friendly Animals and Cavalries gain:<bulletlist><bullet>+2 Bolstered Defense</bullet><bullet>+1 Strengthened</bullet></bulletlist>",
+            "description": "Friendly Animal and Cavalry units in a 1-hex radius gain:<bulletlist><bullet>2 Bolstered Defense</bullet><bullet>2 Strengthened</bullet></bulletlist>",
             "name": "Call of the Wild",
             "operation_point_cost": 20,
             "casting_cost": "15<mana></mana> ",
@@ -1866,6 +2127,9 @@ var jsonSpells = {
                     "slug": "grimbeak_crow"
    },
                 {
+                    "slug": "polar_bear"
+   },
+                {
                     "slug": "inferno_hound"
    },
                 {
@@ -1873,6 +2137,9 @@ var jsonSpells = {
    },
                 {
                     "slug": "inferno_puppy"
+   },
+                {
+                    "slug": "scrap_hermit"
    },
                 {
                     "slug": "warg"
@@ -1885,6 +2152,9 @@ var jsonSpells = {
    },
                 {
                     "slug": "young_caustic_worm"
+   },
+                {
+                    "slug": "brown_bear"
    },
                 {
                     "slug": "slither_hatchling"
@@ -1973,7 +2243,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "harvest_population",
             "tactical": false,
-            "description": "Target friendly City loses +10 <population></population> <hyperlink>Population</hyperlink> and you gain + <souls></souls> Souls.<br></br>If the City does not have a Hero, it also loses 20 <happiness></happiness> <hyperlink>City Stability</hyperlink> for <turn></turn>.",
+            "description": "Target friendly City:<bulletlist><bullet>No longer gains any <food></food> Food income.</bullet><bullet>Gains +10 <souls></souls> Souls income.</bullet><bullet>Has -20 <happiness></happiness> <hyperlink>City Stability</hyperlink></bullet></bulletlist>",
             "name": "Harvest Population",
             "operation_point_cost": 45,
             "casting_cost": "45<mana></mana> ",
@@ -1989,10 +2259,10 @@ var jsonSpells = {
                     "requisite": "Cavalry"
    },
                 {
-                    "requisite": "Plant"
+                    "requisite": "<unitPlant></unitPlant> Plant"
    },
                 {
-                    "requisite": "Animal"
+                    "requisite": "<unitAnimal></unitAnimal> Animal"
    }
   ],
             "name": "Force of Nature",
@@ -2018,7 +2288,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "animal_kinship",
             "tactical": false,
-            "description": "Makes the target race more bestial and connected to animals. When adjacent to a friendly Animal or Cavalry unit, they are granted:<bulletlist><bullet>+10% damage.</bullet><bullet>+10% Critical Hit chance.</bullet>",
+            "description": "Makes the target race more bestial and connected to animals. When adjacent to a friendly Animal, both units are granted:<bulletlist><bullet>+10% damage.</bullet><bullet>+10% Critical Hit chance.</bullet></bulletlist>",
             "name": "Animal Kinship",
             "operation_point_cost": 150,
             "casting_cost": "150<mana></mana> ",
@@ -2076,6 +2346,115 @@ var jsonSpells = {
             "icon": "ignite"
  },
         {
+            "upkeep": "10<mana></mana> ",
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
+            "id": "elemental_bane",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Targets a city, and whenever you fight in that domain, a <hyperlink>Gremlin</hyperlink> is summoned next to one of your units every <turn></turn> <hyperlink>Turn</hyperlink>.<br></br>Up to 5 <hyperlink>Gremlins</hyperlink> can be summoned per battle.",
+            "name": "Elemental Bane",
+            "operation_point_cost": 100,
+            "casting_cost": "100<mana></mana> ",
+            "icon": "gremlin_ambushers"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "engraving_of_focus",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Grants non-Reaver units:<bulletlist><bullet>Focused Aggression, which increases damage dealt to Marked units.</bullet>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitShield></unitShield> Shield Unit"
+   },
+                {
+                    "requisite": "<unitRanged></unitRanged> Ranged Unit"
+   },
+                {
+                    "requisite": "<unitPolearm></unitPolearm> Polearm Unit"
+   },
+                {
+                    "requisite": "<unitSupport></unitSupport> Support Unit"
+   },
+                {
+                    "requisite": "<unitShock></unitShock> Shock Unit"
+   },
+                {
+                    "requisite": "<unitBattleMage></unitBattleMage> Battle Mage Unit"
+   },
+                {
+                    "requisite": "<unitFighter></unitFighter> Fighter Unit"
+   },
+                {
+                    "requisite": "<unitSkirmisher></unitSkirmisher> Skirmisher Unit"
+   }
+  ],
+            "name": "Engraving of Focus",
+            "operation_point_cost": 90,
+            "casting_cost": "90<mana></mana> ",
+            "icon": "engraving_of_focus"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>",
+            "id": "suppressing_barrage",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Units in a 1-hex radius:<bulletlist><bullet>Suffer 10 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Have a base 30% chance of becoming Immobilized.</bullet>",
+            "name": "Suppressing Barrage",
+            "operation_point_cost": 20,
+            "casting_cost": "15<mana></mana> ",
+            "icon": "suppressing_barrage"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
+            "id": "designate_target",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Target enemy gains:<bulletlist><bullet>2 Marked.</bullet><bullet>Distracted.</bullet></bulletlist>",
+            "name": "Designate Target",
+            "operation_point_cost": 20,
+            "casting_cost": "15<mana></mana> ",
+            "icon": "designate_target"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
+            "id": "antimagic_tincture",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Have their negative status effects dispelled.</bullet><bullet>Gain 2 Status Protection.</bullet></bulletlist>",
+            "name": "Antimagic Tincture",
+            "operation_point_cost": 15,
+            "casting_cost": "10<mana></mana> ",
+            "icon": "antimagic_tincture"
+ },
+        {
+            "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
+            "id": "disperse_afflicting_miasma",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": true,
+            "description": "Create <hyperlink>Afflicting Miasma</hyperlink> in a 1-radius.",
+            "name": "Disperse Afflicting Miasma",
+            "operation_point_cost": 20,
+            "casting_cost": "15<mana></mana> ",
+            "icon": "disperse_afflicting_miasma"
+ },
+        {
+            "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
+            "id": "mysterious_tonic",
+            "DLC": "EMPIRESANDASHES ",
+            "tactical": false,
+            "description": "Grants enchanted units:<bulletlist><bullet>Distribute Tonic, granting positive Status Effects while removing a negative one.</bullet></bulletlist>",
+            "enchantment_requisites": [
+                {
+                    "requisite": "<unitSupport></unitSupport> Support Unit"
+   }
+  ],
+            "name": "Mysterious Tonic",
+            "operation_point_cost": 70,
+            "casting_cost": "70<mana></mana> ",
+            "icon": "mysterious_tonic"
+ },
+        {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
             "id": "summon_corrupt_soul",
             "tactical": false,
@@ -2095,7 +2474,7 @@ var jsonSpells = {
             "id": "purifying_flame",
             "DLC": "DRAGONLORDS ",
             "tactical": true,
-            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Heal for 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Have their negative status effects removed.</bullet>",
+            "description": "Friendly units in a 1-hex radius:<bulletlist><bullet>Heal for 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Have their negative status effects removed.</bullet></bulletlist>",
             "name": "Purifying Flame",
             "operation_point_cost": 35,
             "casting_cost": "80<mana></mana> ",
@@ -2106,7 +2485,7 @@ var jsonSpells = {
             "id": "flamer_focus",
             "DLC": "DRAGONLORDS ",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Fire Bomb , a <hyperlink>Magic</hyperlink> attack that deals damage in an area.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Fire Bomb , a <hyperlink>Magic</hyperlink> attack that deals damage in an area.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitBattleMage></unitBattleMage> Battle Mage Unit"
@@ -2122,7 +2501,7 @@ var jsonSpells = {
             "id": "draconian_transformation",
             "DLC": "DRAGONLORDS ",
             "tactical": false,
-            "description": "Turn target race into Draconians, which grants them:<bulletlist><bullet>Dragon unit type.</bullet><bullet>Natural Regeneration, which makes the unit regain health faster.</bullet><bullet>Immunity to Burning.</bullet>",
+            "description": "Turn target race into Draconians, which grants them:<bulletlist><bullet>Dragon unit type.</bullet><bullet>Natural Regeneration, which makes the unit regain health faster.</bullet><bullet>Immunity to Burning.</bullet></bulletlist>",
             "name": "Draconian Transformation",
             "operation_point_cost": 600,
             "casting_cost": "600<mana></mana> ",
@@ -2170,7 +2549,7 @@ var jsonSpells = {
             "id": "rapid_evolution_enchantment",
             "DLC": "DRAGONLORDS ",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>+20% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Slip Away if Tier I or II, healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduce to zero.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>+20% <hyperlink><xp></xp> Experience</hyperlink> from combat.</bullet><bullet>Slip Away if Tier I or II, healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduce to zero.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "Units that Evolve"
@@ -2212,8 +2591,8 @@ var jsonSpells = {
             "tactical": true,
             "description": "Summons an <hyperlink>Astral Keeper</hyperlink>, a Support Unit that heals units even in death.<br></br>This summon lasts for 3 <turn></turn> Turns.",
             "name": "Conjure Astral Keeper",
-            "operation_point_cost": 30,
-            "casting_cost": "45<mana></mana> ",
+            "operation_point_cost": 25,
+            "casting_cost": "20<mana></mana> ",
             "summoned_units": [
                 {
                     "slug": "astral_keeper"
@@ -2280,7 +2659,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "guided_projectiles",
             "tactical": false,
-            "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Ignore accuracy penalties from the <hyperlink>Obscuring</hyperlink> condition caused by units that are in the way and certain terrain.</bullet>",
+            "description": "Makes base attacks of enchanted units:<bulletlist><bullet>Ignore accuracy penalties from the <hyperlink>Obscuring</hyperlink> condition caused by units that are in the way and certain terrain.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -2334,7 +2713,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "lightning_focus",
             "tactical": false,
-            "description": "Makes base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Gain base 30% chance of inflicting Electrified, a damage-over-time effect.</bullet>",
+            "description": "Makes base <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Gain base 30% chance of inflicting Electrified, a damage-over-time effect.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -2370,7 +2749,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "amplified_arrows",
             "tactical": false,
-            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>-1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>30% of their damage to another target within 3 hexes.</bullet>",
+            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units deal:<bulletlist><bullet>+2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>-1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>30% of their damage to another target within 3 hexes.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -2380,8 +2759,8 @@ var jsonSpells = {
    }
   ],
             "name": "Amplified Arrows",
-            "operation_point_cost": 90,
-            "casting_cost": "90<mana></mana> ",
+            "operation_point_cost": 100,
+            "casting_cost": "100<mana></mana> ",
             "icon": "amplified_arrows"
  },
         {
@@ -2441,7 +2820,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>",
             "id": "resurrect_unit",
             "tactical": true,
-            "description": "Returns target dead friendly unit to full <temphp></temphp> Temporary Hit Points.",
+            "description": "Returns target dead friendly unit to full <temphp></temphp> Temporary Hit Points.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Resurrect Unit",
             "operation_point_cost": 50,
             "casting_cost": "150<mana></mana> ",
@@ -2461,7 +2840,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Major Race Transformation</hyperlink>",
             "id": "angelize",
             "tactical": false,
-            "description": "Turns the target race into angelic beings, granting them:<bulletlist><bullet>The Celestial unit type.</bullet><bullet>Flying Movement, which increases mobility.</bullet><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet>",
+            "description": "Turns the target race into angelic beings, granting them:<bulletlist><bullet>The Celestial unit type.</bullet><bullet>Flying Movement, which increases mobility.</bullet><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet></bulletlist>",
             "name": "Angelize",
             "operation_point_cost": 600,
             "casting_cost": "600<mana></mana> ",
@@ -2471,7 +2850,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "salvation",
             "tactical": true,
-            "description": "Target friendly unit:<bulletlist><bullet>Heals all of its <hyperlink><hp></hp> Hit Points</hyperlink> as <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Dispels its negative status effects.</bullet><bullet>Gains 3 Bolstered Resistance.</bullet>",
+            "description": "Target friendly unit:<bulletlist><bullet>Heals all of its <hyperlink><hp></hp> Hit Points</hyperlink> as <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Dispels its negative status effects.</bullet><bullet>Gains 3 Bolstered Resistance.</bullet></bulletlist>",
             "name": "Salvation",
             "operation_point_cost": 35,
             "casting_cost": "80<mana></mana> ",
@@ -2481,7 +2860,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "keepers_mark",
             "tactical": false,
-            "description": "For enchanted units:<bulletlist><bullet>Grants Faithful, reducing <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>When taking fatal damage for the first time, makes them unable to die or use offensive abilities for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet>",
+            "description": "For enchanted units:<bulletlist><bullet>Grants Faithful, reducing <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>When taking fatal damage for the first time, makes them unable to die or use offensive abilities for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -2508,7 +2887,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "anointed_people",
             "tactical": false,
-            "description": "Gives the target race divine protection, granting them:<bulletlist><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>+3 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink>.</bullet>",
+            "description": "Gives the target race divine protection, granting them:<bulletlist><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink></bullet><bullet>+3 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet></bulletlist>",
             "name": "Anointed People",
             "operation_point_cost": 450,
             "casting_cost": "450<mana></mana> ",
@@ -2519,7 +2898,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "consecrated_domain",
             "tactical": false,
-            "description": "Target friendly City, friendly units in the Domain gain:<bulletlist><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>+20 <happiness></happiness> <hyperlink>Morale</hyperlink> at the start of battle.</bullet>",
+            "description": "Target friendly City, friendly units in the Domain gain:<bulletlist><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>+20 <happiness></happiness> <hyperlink>Morale</hyperlink> at the start of battle.</bullet></bulletlist>",
             "name": "Consecrated Domain",
             "operation_point_cost": 80,
             "casting_cost": "80<mana></mana> ",
@@ -2529,7 +2908,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "conjure_divine_beacon",
             "tactical": true,
-            "description": "Summons a <hyperlink>Divine Beacon</hyperlink>. Upon casting and at the start of each turn, friendly units in a 2-hex radius:<bulletlist><bullet>Heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain +5 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet></bulletlist><br></br>This summon lasts for 3 <turn></turn> Turns.",
+            "description": "Summons a <hyperlink>Divine Beacon</hyperlink>. Upon casting and at the start of each turn, friendly units in a 2-hex radius:<bulletlist><bullet>Heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gain +5 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet></bulletlist><br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Conjure Divine Beacon",
             "operation_point_cost": 25,
             "casting_cost": "30<mana></mana> ",
@@ -2544,7 +2923,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
             "id": "summon_lightbringer",
             "tactical": false,
-            "description": "Summons a <hyperlink>Lightbringer</hyperlink> Battle Mage Unit that can temporarily convert other units to your cause.",
+            "description": "Summons a <hyperlink>Lightbringer</hyperlink> Battle Mage Unit that can convert other units to your cause.",
             "name": "Summon Lightbringer",
             "operation_point_cost": 100,
             "casting_cost": "100<mana></mana> ",
@@ -2559,7 +2938,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "mighty_meek",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>+1 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> on attacks for each Unit Tier of the target.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Faithful, which reduces <hyperlink>Unit Upkeep</hyperlink>.</bullet><bullet>+1 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> on attacks for each Unit Tier of the target.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "Tier I"
@@ -2622,7 +3001,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>",
             "id": "greater_reanimation",
             "tactical": true,
-            "description": "Resurrects target non-Hero unit:<bulletlist><bullet>Recovers 80% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Becomes Undead.</bullet><bullet>Dies at the end of battle.</bullet>",
+            "description": "Resurrects target non-Hero unit:<bulletlist><bullet>Recovers 80% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Becomes Undead.</bullet><bullet>Dies at the end of battle.</bullet></bulletlist>",
             "name": "Greater Reanimation",
             "operation_point_cost": 40,
             "casting_cost": "35<souls></souls> ",
@@ -2632,7 +3011,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
             "id": "mark_for_death",
             "tactical": true,
-            "description": "Target non-Hero enemy unit becomes:<bulletlist><bullet>Despair.</bullet><bullet>Marked for Death.</bullet>",
+            "description": "Target non-Hero enemy unit becomes:<bulletlist><bullet>Despair.</bullet><bullet>Marked for Death.</bullet></bulletlist>",
             "name": "Mark for Death",
             "operation_point_cost": 40,
             "casting_cost": "35<souls></souls> ",
@@ -2642,7 +3021,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "necrotic_magic",
             "tactical": false,
-            "description": "Grants attacks of enchanted units:<bulletlist><bullet>A base 60% chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health.</bullet>",
+            "description": "Grants attacks of enchanted units:<bulletlist><bullet>A base 60% chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -2680,7 +3059,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "soulbinders",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Base 90% chance of inflicting Soulbound on Base attacks, increasing the <souls></souls> <hyperlink>Soul</hyperlink> gain when the target is killed.</bullet><bullet>+10% damage against units with Soulbound.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Base 90% chance of inflicting Soulbound on Base attacks, increasing the <souls></souls> <hyperlink>Soul</hyperlink> gain when the target is killed.</bullet><bullet>+10% damage against units with Soulbound.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -2698,7 +3077,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "raise_zombies",
             "tactical": true,
-            "description": "Raises corpses in a 1-hex radius as <hyperlink>Decaying Zombie</hyperlink> units that die at the end of combat.",
+            "description": "Raises corpses in a 1-hex radius as <hyperlink>Decaying Zombie</hyperlink> units that die at the end of combat.<br></br><br></br>Cannot be used in Water battles.",
             "name": "Raise Zombies",
             "operation_point_cost": 15,
             "casting_cost": "10<souls></souls> ",
@@ -2742,7 +3121,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "cruel_weaponry",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>+30% damage against units with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>+30% damage against units with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -2769,7 +3148,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "joy_siphoners",
             "tactical": false,
-            "description": "Makes the target race become living morale siphons, making their attacks:<bulletlist><bullet>Steal 3 <happiness></happiness> <hyperlink>Morale</hyperlink> per hit.</bullet>",
+            "description": "Makes the target race become living morale siphons, making their attacks:<bulletlist><bullet>Steal 3 <happiness></happiness> <hyperlink>Morale</hyperlink> per hit.</bullet></bulletlist>",
             "name": "Joy Siphoners",
             "operation_point_cost": 250,
             "casting_cost": "250<mana></mana> ",
@@ -2807,20 +3186,20 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "arcane_supercharge",
             "tactical": true,
-            "description": "Target friendly Magic Origin unit gains:<bulletlist><bullet>5 Strengthened.</bullet><bullet>3 Bolstered Defense.</bullet><bullet>3 Bolstered Resistance.</bullet><bullet>Static Charge for 3 <turn></turn> Turns.</bullet>",
+            "description": "Target friendly Magic Origin unit gains:<bulletlist><bullet>5 Strengthened.</bullet><bullet>3 Bolstered Defense.</bullet><bullet>3 Bolstered Resistance.</bullet><bullet>Static Charge for 3 <turn></turn> Turns.</bullet></bulletlist>",
             "name": "Arcane Supercharge",
-            "operation_point_cost": 40,
-            "casting_cost": "100<mana></mana> ",
+            "operation_point_cost": 35,
+            "casting_cost": "80<mana></mana> ",
             "icon": "arcane_supercharge"
  },
         {
             "spellType": "<casttactical></casttactical> <hyperlink>Healing Spell</hyperlink>",
             "id": "arcane_restoration",
             "tactical": true,
-            "description": "Heals all friendly Magic Origin units +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+            "description": "Heals all friendly Magic Origin units +25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
             "name": "Arcane Restoration",
-            "operation_point_cost": 30,
-            "casting_cost": "45<mana></mana> ",
+            "operation_point_cost": 25,
+            "casting_cost": "30<mana></mana> ",
             "icon": "arcane_restoration"
  },
         {
@@ -2899,7 +3278,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "staves_of_warding",
             "tactical": false,
-            "description": "Makes <hyperlink>Support</hyperlink> abilities of enchanted units:<bulletlist><bullet>Grant +2 Bolstered Resistance to affected units.</bullet>",
+            "description": "Makes <hyperlink>Support</hyperlink> abilities of enchanted units:<bulletlist><bullet>Grant +2 Bolstered Resistance to affected units.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -2954,7 +3333,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "siege_magic",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>+10% damage</bullet><bullet>Siege Breaker, dealing extra fortification damage during a siege.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>+10% damage</bullet><bullet>Siege Breaker, dealing extra fortification damage during a siege.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -2972,7 +3351,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "artisan_armaments",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>+30% <hyperlink>Critical Hit</hyperlink> chance.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>+30% <hyperlink>Critical Hit</hyperlink> chance.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -3019,7 +3398,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
             "id": "earth_shatter",
             "tactical": false,
-            "description": "In target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Adds the Rocky feature. Can destroy Mountains.</bullet><bullet>Enemy armies sustain 20 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet>",
+            "description": "In target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Reform and flatten the terrain.</bullet><bullet>Can remove Mountains.</bullet><bullet>Enemy armies sustain 20 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Does not work in the Water or Underground.</bullet></bulletlist>",
             "name": "Earth Shatter",
             "operation_point_cost": 100,
             "casting_cost": "100<mana></mana> ",
@@ -3050,7 +3429,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "fortress_of_vines",
             "tactical": false,
-            "description": "Target city gains:<bulletlist><bullet>+10 <garrison></garrison><hyperlink>Fortification Health</hyperlink>.</bullet><bullet>+2 <garrison></garrison><hyperlink>Fortification Health</hyperlink> per Forest or Mushroom Feature in the domain.</bullet><bullet>Spawns a Living Vine next to an enemy each turn during battle in the domain.</bullet></bulletlist>",
+            "description": "Target friendly city gains:<bulletlist><bullet>+10 <garrison></garrison><hyperlink>Fortification Health</hyperlink>.</bullet><bullet>+2 <garrison></garrison><hyperlink>Fortification Health</hyperlink> per Forest or Mushroom Feature in the domain.</bullet><bullet>Spawns a Living Vine next to an enemy each turn during battle in the domain.</bullet></bulletlist>",
             "name": "Fortress of Vines",
             "operation_point_cost": 200,
             "casting_cost": "200<mana></mana> ",
@@ -3061,7 +3440,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "blessing_of_paradise",
             "tactical": false,
-            "description": "Target City gains:<bulletlist><bullet>+40 <happiness></happiness> <hyperlink>City Stability</hyperlink>.</bullet><bullet>Income bonus from Positive City Stability are doubled.</bullet>",
+            "description": "Target friendly city gains:<bulletlist><bullet>+40 <happiness></happiness> <hyperlink>City Stability</hyperlink>.</bullet><bullet>Income bonuses from Positive City Stability are doubled.</bullet></bulletlist>",
             "name": "Blessing of Paradise",
             "operation_point_cost": 200,
             "casting_cost": "200<mana></mana> ",
@@ -3101,7 +3480,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "projectiles_of_decay",
             "tactical": false,
-            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +2 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Gain base 60% chance of inflicting Decaying, a damage-over-time effect that prevents enemies from healing.</bullet>",
+            "description": "Makes base <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Deal +2 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Gain base 60% chance of inflicting Decaying, a damage-over-time effect that prevents enemies from healing.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -3126,7 +3505,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Sustained City Spell</hyperlink>",
             "id": "cycle_of_seasons",
             "tactical": false,
-            "description": "Is cast on a friendly city. All battles that take place in this city's domain gain <abilityblue>Cycle of Seasons</abilityblue>, granting a different effect each battle turn in the following order:<bulletlist><bullet>Winter: All enemies sustain 5 <damageFrost></damageFrost>.</bullet><bullet>Spring: All friendly units become 1 Strengthened.</bullet><bullet>Summer: All friendly units heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Autumn: All enemies become 1 Weakened.</bullet>",
+            "description": "Is cast on a friendly city. All battles that take place in this city's domain gain <abilityblue>Cycle of Seasons</abilityblue>, granting a different effect each battle turn in the following order:<bulletlist><bullet>Winter: All enemies sustain 5 <damageFrost></damageFrost>.</bullet><bullet>Spring: All friendly units become 1 Strengthened.</bullet><bullet>Summer: All friendly units heal +5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Autumn: All enemies become 1 Weakened.</bullet></bulletlist>",
             "name": "Cycle of Seasons",
             "operation_point_cost": 120,
             "casting_cost": "120<mana></mana> ",
@@ -3156,7 +3535,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "leafskin",
             "tactical": false,
-            "description": "Makes the target race one with the forest, granting them:<bulletlist><bullet>+1<resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>Forest Walk</bullet><bullet>Forest Camouflage</bullet>",
+            "description": "Makes the target race one with the forest, granting them:<bulletlist><bullet>+1<resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>Forest Walk</bullet><bullet>Forest Camouflage</bullet></bulletlist>",
             "name": "Leafskin",
             "operation_point_cost": 250,
             "casting_cost": "250<mana></mana> ",
@@ -3210,24 +3589,7 @@ var jsonSpells = {
             "name": "Fight for Power",
             "operation_point_cost": 60,
             "casting_cost": "60<mana></mana> ",
-            "icon": "fight_for_power",
-            "summoned_units": [
-                {
-                    "slug": "inferno_hound"
-   },
-                {
-                    "slug": "gremlin"
-   },
-                {
-                    "slug": "nightmare"
-   },
-                {
-                    "slug": "chaos_eater"
-   },
-                {
-                    "slug": "balor"
-   }
-  ]
+            "icon": "fight_for_power"
  },
         {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
@@ -3275,7 +3637,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>",
             "id": "revelers_heart",
             "tactical": false,
-            "description": "Overwhelms the target race with an intense fervor, granting them:<bulletlist><bullet>+50% <happiness></happiness> <hyperlink>Morale</hyperlink> from all sources.</bullet>",
+            "description": "Overwhelms the target race with an intense fervor, granting them:<bulletlist><bullet>+50% <happiness></happiness> <hyperlink>Morale</hyperlink> from all sources.</bullet></bulletlist>",
             "name": "Reveler's Heart",
             "operation_point_cost": 250,
             "casting_cost": "250<mana></mana> ",
@@ -3285,10 +3647,10 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Damage Spell</hyperlink>",
             "id": "blaze_of_the_horde",
             "tactical": true,
-            "description": "Target enemy unit suffers:<bulletlist><bullet>20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>+4 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each adjacent friendly unit</bullet></bulletlist>",
+            "description": "Target enemy unit suffers:<bulletlist><bullet>20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>+5 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each adjacent friendly unit</bullet></bulletlist>",
             "name": "Blaze of the Horde",
-            "operation_point_cost": 20,
-            "casting_cost": "15<mana></mana> ",
+            "operation_point_cost": 15,
+            "casting_cost": "10<mana></mana> ",
             "icon": "blaze_of_the_horde"
  },
         {
@@ -3420,7 +3782,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
             "id": "unleash_beast",
             "tactical": true,
-            "description": "Target Animal or Cavalry unit gains, for 3 <turn></turn> Turns:<bulletlist><bullet>5 Strengthened</bullet><bullet>5 Bolstered Defense</bullet><bullet>Berserk.</bullet>",
+            "description": "Target Animal or Cavalry unit gains, for 3 <turn></turn> Turns:<bulletlist><bullet>5 Strengthened</bullet><bullet>5 Bolstered Defense</bullet><bullet>Berserk.</bullet></bulletlist>",
             "name": "Unleash Beast",
             "operation_point_cost": 40,
             "casting_cost": "100<mana></mana> ",
@@ -3430,7 +3792,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "focus_of_devastation",
             "tactical": false,
-            "description": "Grants <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Demolisher, which allows them to destroy <hyperlink>Fortified</hyperlink> obstacles.</bullet><bullet>A base 60% chance of canceling <hyperlink>Defense Modes</hyperlink>.</bullet>",
+            "description": "Grants <hyperlink>Magic</hyperlink> attacks of enchanted units:<bulletlist><bullet>Demolisher, which allows them to destroy <hyperlink>Fortified</hyperlink> obstacles.</bullet><bullet>A base 60% chance of canceling <hyperlink>Defense Modes</hyperlink>.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -3462,7 +3824,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "mirror_veil",
             "tactical": false,
-            "description": "Makes enchanted units:<bulletlist><bullet>Reflect 50% of non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> sustained back onto attackers.</bullet>",
+            "description": "Makes enchanted units:<bulletlist><bullet>Reflect 50% of non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> sustained back onto attackers.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -3480,7 +3842,7 @@ var jsonSpells = {
             "spellType": "<casttactical></casttactical> <hyperlink>Combat Summon Spell</hyperlink>",
             "id": "summon_astral_reflections",
             "tactical": true,
-            "description": "Summons 2 Astral Reflections of the target friendly unit onto unoccupied adjacent hexes.<br></br>Cannot target Heroes and Mythic Units.",
+            "description": "Summons 2 Astral Reflections of the target friendly unit onto unoccupied adjacent hexes.<br></br>Cannot target Heroes, Combat Summons, and Mythic Units.",
             "name": "Summon Astral Reflections",
             "operation_point_cost": 50,
             "casting_cost": "150<mana></mana> ",
@@ -3490,7 +3852,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "wayfinder_enchantment",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Very Fast Movement</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Very Fast Movement</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitScout></unitScout> Scout Unit"
@@ -3520,7 +3882,7 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "intimidation_aura",
             "tactical": false,
-            "description": "Grants enchanted units:<bulletlist><bullet>Intimidating Aura, which reduces <happiness></happiness> <hyperlink>Morale</hyperlink> of nearby enemies.</bullet>",
+            "description": "Grants enchanted units:<bulletlist><bullet>Intimidating Aura, which reduces <happiness></happiness> <hyperlink>Morale</hyperlink> of nearby enemies.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
                     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -3574,10 +3936,10 @@ var jsonSpells = {
             "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
             "id": "empowered_beasts",
             "tactical": false,
-            "description": "Makes enchanted units:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Gain +10 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet><bullet>Decreased number of units in formation.</bullet>",
+            "description": "Makes enchanted units:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Gain +10 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Gain Demolisher, making them able to destroy reinforced obstacles.</bullet><bullet>Decreased number of units in formation.</bullet></bulletlist>",
             "enchantment_requisites": [
                 {
-                    "requisite": "Animal"
+                    "requisite": "<unitAnimal></unitAnimal> Animal"
    }
   ],
             "name": "Empowered Beasts",
@@ -3723,10 +4085,10 @@ var jsonSpells = {
             "icon": "bolstering_chant"
  },
         {
-            "spellType": "Combat Spell",
+            "spellType": "<casttactical></casttactical> <hyperlink>Debuff Spell</hyperlink>",
             "id": "final_ultimatum",
             "tactical": true,
-            "description": "On a target enemy <hyperlink>Routing</hyperlink> unit:<bulletlist><bullet>Inflicts base 90% chance of becoming permanently Mind-Controlled.</bullet><bullet>If successful, it gains +60 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>If resisted, the unit dies instead.</bullet></bulletlist>",
+            "description": "On a target enemy <hyperlink>Routing</hyperlink> unit:<bulletlist><bullet>Inflicts base 90% chance of becoming permanently mind controlled.</bullet><bullet>If successful, it gains +60 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>If resisted, the unit dies instead.</bullet></bulletlist>",
             "name": "Final Ultimatum",
             "operation_point_cost": 30,
             "casting_cost": "45<mana></mana> ",

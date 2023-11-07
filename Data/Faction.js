@@ -17,8 +17,7 @@
  var currentTome = "";
 
  var currentForm = "";
- var currentBody = "";
- var currentMind = "";
+ var currentFormTrait = "";
  var currentCulture = "";
  var currentSociety1 = "";
  var currentSociety2 = "";
@@ -70,8 +69,7 @@
      listofChoice.push("Origin");
 
      listofChoice.push("Form");
-     listofChoice.push("Body");
-     listofChoice.push("Mind");
+     listofChoice.push("FormTrait");
      listofChoice.push("Culture");
      listofChoice.push("Society1");
      listofChoice.push("Society2");
@@ -99,16 +97,14 @@
              case "Form":
                  currentForm = randomEntry;
                  break;
-             case "Body":
-                 currentBody = randomEntry;
-                 break;
-             case "Mind":
-                 currentMind = randomEntry;
+             case "FormTrait":
+                 currentFormTrait = randomEntry;
+
                  break;
              case "Culture":
                  currentCulture = randomEntry;
                  break;
-                 f
+
              case "Society1":
                  currentSociety1 = randomEntry;
                  break;
@@ -166,9 +162,9 @@
              }
              break;
 
-         case "Body":
+         case "FormTrait":
 
-             currentBody = origin;
+             currentFormTrait = origin;
              break;
          case "Culture":
 
@@ -177,9 +173,6 @@
          case "Form":
 
              currentForm = origin;
-             break;
-         case "Mind":
-             currentMind = origin;
              break;
          case "Society1":
 
@@ -344,8 +337,8 @@
 
              break;
 
-         case "Body":
-             list = GetAllBodyTraits();
+         case "FormTrait":
+             list = GetAllFormTraitsList();
 
              break;
          case "Culture":
@@ -354,10 +347,6 @@
              break;
          case "Form":
              list = GetAllForms();
-
-             break;
-         case "Mind":
-             list = GetAllMindTraits();
 
              break;
          case "Society1":
@@ -427,8 +416,7 @@
      //  listOfAllChoices.push(currentTome);
 
      listOfAllChoices.push(currentForm);
-     listOfAllChoices.push(currentBody);
-     listOfAllChoices.push(currentMind);
+     listOfAllChoices.push(currentFormTrait);
      listOfAllChoices.push(currentCulture);
      listOfAllChoices.push(currentSociety1);
      listOfAllChoices.push(currentSociety2);
@@ -559,10 +547,11 @@
      const image = document.createElement("img");
      image.setAttribute("width", "40");
      image.setAttribute("height", "40");
+     console.log(origin);
 
      if (type == "Tome") {
          image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
-     } else if (type == "Culture" || type == "Origin" || type == "Body" || type == "Mind" || type == "Society1" || type == "Society2" || type == "Form") {
+     } else if (type == "Culture" || type == "Origin" || type == "FormTrait" || type == "Society1" || type == "Society2" || type == "Form") {
          image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
      } else if (type == "Loadout") {
          image.src = "/aow4db/Icons/Abilities/" + origin.id + ".png"; // Set the image source to your image file
@@ -617,10 +606,13 @@
      spa.setAttribute("style", "margin-left:113px");
 
      spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
-     if (type == "Origin" || type == "Culture" || type == "Form" || type == "Society1" || type == "Society2" || type == "Mind" || type == "Body") {
+     if (type == "Origin" || type == "Culture" || type == "Form" || type == "Society1" || type == "Society2") {
          spa.innerHTML += origin.description;
      } else if (type == "Tome") {
          SetTomePreview(spa, origin);
+
+     } else if (type == "FormTrait") {
+         SetFullPreview(spa, origin);
 
      }
 
@@ -630,6 +622,19 @@
  function SetTomePreview(span, origin) {
      span.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
      span.innerHTML += origin.gameplay_description;
+
+
+
+ }
+
+ function SetFullPreview(span, origin) {
+     span.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
+
+
+     for (i = 0; i < origin.effect_descriptions.length; i++) {
+         span.innerHTML += origin.effect_descriptions[i].name;
+     }
+
 
 
 
@@ -783,14 +788,15 @@
      return listOfAllOrigins;
  }
 
- function GetAllMindTraits() {
+ function GetAllFormTraitsList() {
      var listOfAllOrigins = new Array();
 
-     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-         if (jsonFactionCreation.traits[i].type == "Mind Trait") {
-             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+     for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
+         if (jsonFactionCreation2.traits[i].type == "form") {
+             listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
          }
      }
+     console.log(listOfAllOrigins);
 
      return listOfAllOrigins;
  }
@@ -798,26 +804,16 @@
  function GetAllSocietyTraits() {
      var listOfAllOrigins = new Array();
 
-     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-         if (jsonFactionCreation.traits[i].type == "Society Trait") {
-             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+     for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
+         if (jsonFactionCreation2.traits[i].type == "society") {
+             listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
          }
      }
 
      return listOfAllOrigins;
  }
 
- function GetAllBodyTraits() {
-     var listOfAllOrigins = new Array();
 
-     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-         if (jsonFactionCreation.traits[i].type == "Body Trait") {
-             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
-         }
-     }
-
-     return listOfAllOrigins;
- }
 
  function GetAllLoadouts() {
      var listOfAllOrigins = new Array();
@@ -851,14 +847,11 @@
              var list = GetAllForms();
              randomOrigin = list[Math.floor(Math.random() * list.length)];
              break;
-         case "Body":
-             var list = GetAllBodyTraits();
+         case "FormTrait":
+             var list = GetAllFormTraitsList();
              randomOrigin = list[Math.floor(Math.random() * list.length)];
              break;
-         case "Mind":
-             var list = GetAllMindTraits();
-             randomOrigin = list[Math.floor(Math.random() * list.length)];
-             break;
+
          case "Culture":
              var list = GetAllCultures();
              randomOrigin = list[Math.floor(Math.random() * list.length)];

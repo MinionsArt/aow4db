@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
+    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+
+    <script>
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+
+                unitarray = FindUnitsWithSecondaryPassive("construct");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+
+                        showUnitsFromList(unitarray[i], "Constructs Tier " + romanize(parseInt(parseInt(i) + 1)));
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            });
+
+
+
+        });
+
+    </script>
+
+
+    <title>Age of Wonders 4 Database - Construct</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        <img src="/aow4db/Icons/Abilities/elemental.png" height="40px"> Construct Wildlife Units <img src="/aow4db/Icons/Abilities/elemental.png" height="40px">
+    </div>
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder">
+
+        </div>
+        <div id="dataHolder">
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>
+<footer>
+    <br>
+    <br>
+</footer>

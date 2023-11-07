@@ -10,11 +10,9 @@ var darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night
 var feudalCultureUnits = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
 var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
 var mysticCultureUnits = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellbreaker"];
+var reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magelock", "dragoon", "magelock_cannon"];
 
-
-var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "bastion", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker"];
-
-var DLCDragonDawn = ["tome_of_evolution", "tome_of_dragons", "slither_hatchling", "slither", "young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon", "golden_dragon", "obsidian_dragon", "gold_wyvern", "obsidian_wyvern", "wyvern_fledgling", "dragon_lord", "shadow_transformation", "order_transformation", "nature_transformation", "materium_transformation", "astral_transformation", "chaos_transformation", "shadow_aspect", "order_aspect", "nature_aspect", "materium_aspect", "astral_aspect", "chaos_aspect"];
+var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker", "dragoon"];
 
 
 function GetUnitTierAndName(id) {
@@ -264,18 +262,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\',true)');
         }
         AddTriangleForDLCUnits(cardType, list[i], btn)
-        // if (DLCDragonDawn.indexOf(list[i]) != -1) {
-        //     // DLC Dragon Dawn Tome
-        //     var triangle = document.createElement("DIV");
-        //     triangle.className = "triangle";
-
-        //     if (cardType === "tome") {
-        //         triangle.setAttribute("style", "top: -44px;right: -174px;");
-        //     }
-        //     btn.appendChild(triangle);
-        // }
-
-
+      
         if (cardType != "searchUnit") {
             var holderHeight = buttonHolder.offsetHeight + 0;
         } else {
@@ -295,6 +282,7 @@ function AddTriangleForDLCUnits(type, string, div) {
     var DLCCheck = CheckForDLCContent(type, string);
     //console.log(DLCCheck);
     if (DLCCheck != null) {
+
         var triangle = document.createElement("DIV");
         triangle.className = DLCCheck.replace(" ", "") + "triangle";
         triangle.setAttribute("style", "top: -19px;right: -18px;");
@@ -2394,7 +2382,7 @@ function findItemsWithArgument(argumentType) {
 
     for (j in jsonHeroItems.items) {
 
-        if (jsonHeroItems.items[j].slot.indexOf(argumentType) !== -1) {
+        if (jsonHeroItems.items[j].slot.indexOf(argumentType) !== -1 && jsonHeroItems.items[j].tier != undefined) {
 
             finalCheckedList.push(jsonHeroItems.items[j]);
         }
@@ -2543,7 +2531,7 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
                 }
 
                 if (argumentaffinity === "Culture") {
-                    if (jsonTomes.tomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1) {
+                    if (jsonTomes.tomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Reaver".toUpperCase()) !== -1) {
                         for (k in jsonTomes.tomes[i].skills) {
                             listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
 
@@ -2587,21 +2575,41 @@ function removeDuplicatesFromArray(arr) {
     });
 }
 
+function ClearAffinityExtraTags(input) {
+    input = input.replace(" Empire Astral Affinity", "<empireastral></empireastral>");
+    input = input.replace(" Empire Nature Affinity", "");
+    input = input.replace(" Empire Order Affinity", "");
+    input = input.replace(" Empire Materium Affinity", "");
+    input = input.replace(" Empire Chaos Affinity", "");
+    input = input.replace(" Empire Shadow Affinity", "");
+    return input;
+}
+
 
 function findTraitsWithArgument(argumentType, affinity) {
     var i, output, affinity, textvalue, j, l, k, x, result = "";
 
     var finalCheckedList = new Array();
     if (argumentType != "") {
-        for (j in jsonFactionCreation.traits) {
+        for (j in jsonFactionCreation2.traits) {
 
-            if (jsonFactionCreation.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+            if (jsonFactionCreation2.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
                 if (affinity != "") {
-                    if (jsonFactionCreation.traits[j].affinity.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
-                        finalCheckedList.push(jsonFactionCreation.traits[j].id);
-                    }
+                    if ('affinities' in jsonFactionCreation2.traits[j])
+                        for (let index = 0; index < jsonFactionCreation2.traits[j].affinities.length; index++) {
+                            if (jsonFactionCreation2.traits[j].affinities[index].name.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
+                                if (jsonFactionCreation2.traits[j].enabled == true) {
+
+                                    finalCheckedList.push(jsonFactionCreation2.traits[j].id);
+                                }
+                            }
+
+                        }
+
                 } else {
-                    finalCheckedList.push(jsonFactionCreation.traits[j].id);
+                    if (jsonFactionCreation2.traits[j].enabled == true) {
+                    finalCheckedList.push(jsonFactionCreation2.traits[j].id);
+                }
                 }
 
 
@@ -2731,29 +2739,13 @@ function showUnit(a) {
             name = jsonUnits.units[i].name;
             unitNameDiv.innerHTML += name.toUpperCase();
 
-            if (DLCDragonDawn.indexOf(a) != -1) {
-                var newDivForMount = document.createElement("DIV");
-                newDivForMount.className = "mountToolTip";
+            if('DLC' in jsonUnits.units[i]){
 
-                imag = document.createElement("IMG");
-                imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
-                imag.setAttribute("height", "30px");
-
-                spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
-
-                spa.innerHTML = "Part of the Dragon Dawn DLC";
-
-                newDivForMount.appendChild(imag);
-                newDivForMount.appendChild(spa);
-                newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
-                // get position of button
-
-
-
+                var newDivForMount = AddDLCTag(jsonUnits.units[i].DLC);
+                
                 unitNameDiv.append(newDivForMount);
             }
-
+           
             // if in the list of mounted, add tooltip
             if (MountedSpecialList.includes(a) || CheckIfOptionalCavalry(a)) {
                 var newDivForMount = document.createElement("DIV");
@@ -3501,6 +3493,9 @@ function CheckIfInCulture(unitID) {
     if (barbarianCultureUnits.includes(unitID)) {
         culture = "barbarian";
     }
+    if (reaverCultureUnits.includes(unitID)) {
+        culture = "reaver";
+    }
     return culture;
 }
 
@@ -3511,15 +3506,14 @@ function showAffinitySymbols(tomes) {
     var allAffinity = "";
     var i = "";
     for (i in affinitiesdual) {
-        var affinities = affinitiesdual[i].split(" ");
+        var affinities = affinitiesdual[i];
 
-        if (affinities[1] === "2") {
 
-            allAffinity += affinities[0];
-        }
-        allAffinity += affinities[0];
+        allAffinity += affinities;
 
     }
+    allAffinity = ClearAffinityExtraTags(allAffinity);
+
     return allAffinity;
 }
 
@@ -4050,25 +4044,9 @@ function showSiegeProject(id, showOrigin) {
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
-                if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
-                    var newDivForMount = document.createElement("DIV");
-                    newDivForMount.className = "mountToolTip";
-                    newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
-                    imag = document.createElement("IMG");
-                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
-                    imag.setAttribute("height", "30px");
-
-                    spa = document.createElement("SPAN");
-                    spa.className = "tooltiptext";
-
-                    spa.innerHTML = "Part of the Dragon Dawn DLC";
-
-                    newDivForMount.appendChild(imag);
-                    newDivForMount.appendChild(spa);
-                    //newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
-                    // get position of button
-
-
+                if ('DLC' in jsonSiegeProjects.projects[i] && showOrigin) {
+                   
+                    var newDivForMount = AddDLCTag(jsonSiegeProjects.projects[i].DLC);
 
                     modName.append(newDivForMount);
 
@@ -4124,25 +4102,9 @@ function showSiegeProject(id, showOrigin) {
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
-                if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
-                    var newDivForMount = document.createElement("DIV");
-                    newDivForMount.className = "mountToolTip";
-                    newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
-                    imag = document.createElement("IMG");
-                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
-                    imag.setAttribute("height", "30px");
-
-                    spa = document.createElement("SPAN");
-                    spa.className = "tooltiptext";
-
-                    spa.innerHTML = "Part of the Dragon Dawn DLC";
-
-                    newDivForMount.appendChild(imag);
-                    newDivForMount.appendChild(spa);
-                    //newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
-                    // get position of button
-
-
+                if ('DLC' in jsonSiegeProjects.projects[i] && showOrigin) {
+                   
+                    var newDivForMount = AddDLCTag(jsonSiegeProjects.projects[i].DLC);
 
                     modName.append(newDivForMount);
 
@@ -4182,28 +4144,13 @@ function showTome(a, div) {
 
 
             modName.innerHTML += jsonTomes.tomes[j].name;
-
-            if (DLCDragonDawn.indexOf(a) != -1) {
-                var newDivForMount = document.createElement("DIV");
-                newDivForMount.className = "mountToolTip";
-
-                imag = document.createElement("IMG");
-                imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
-                imag.setAttribute("height", "30px");
-
-                spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
-
-                spa.innerHTML = "Part of the Dragon Dawn DLC";
-
-                newDivForMount.appendChild(imag);
-                newDivForMount.appendChild(spa);
-                newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
-                // get position of button
-
-
+            if ('DLC' in jsonTomes.tomes[j]) {
+                   
+                var newDivForMount = AddDLCTag(jsonTomes.tomes[j].DLC);
 
                 modName.append(newDivForMount);
+
+
             }
 
             modName.setAttribute("id", "tomename" + a);
@@ -4429,6 +4376,9 @@ function ShowPossibleEnchantments(evt) {
 
 
     unitType = unitType.replaceAll("_", " ");
+
+
+
     var list = findEnchantmentsSpells();
 
     var compatibleList = new Array();
@@ -4470,6 +4420,11 @@ function ShowPossibleEnchantments(evt) {
                 break;
             }
         }
+        if (list[i].id === "engraving_of_focus") {
+            if (culture == "reaver") {
+                break;
+            }
+        }
         for (j = 0; j < list[i].enchantment_requisites.length; j++) {
             var requisite = list[i].enchantment_requisites[j].requisite;
             var type = list[i].enchantment_requisites[j].requisite.toLowerCase().split("> ");
@@ -4479,6 +4434,17 @@ function ShowPossibleEnchantments(evt) {
                 if (type[1] === unitType) {
                     if (!isInArray(activeEnchantList, list[i]))
                         compatibleList.push(list[i]);
+                } else {
+                    var passives = "";
+                    for (passives in evt.currentTarget.unitData.secondary_passives) {
+
+                        if (evt.currentTarget.unitData.secondary_passives[passives].slug === type[1].toLowerCase()) {
+
+                            if (!isInArray(activeEnchantList, list[i]))
+                                compatibleList.push(list[i]);
+                        }
+
+                    }
                 }
             } else {
                 if (requisite === "Units that Evolve") {
@@ -4501,6 +4467,13 @@ function ShowPossibleEnchantments(evt) {
                     }
                 } else {
                     requisite = requisite.replaceAll(" ", "_");
+
+                    var type = requisite.split("> ");
+
+                    if (type[1] != undefined) {
+                        requisite = type[1];
+
+                    }
                     var passives = "";
                     for (passives in evt.currentTarget.unitData.secondary_passives) {
 
@@ -4842,30 +4815,11 @@ function showStructure(a, showOrigin) {
 
             var name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
 
-            if (DLCDragonDawn.indexOf(tomeNameandTier[2]) != -1) {
-                var newDivForMount = document.createElement("DIV");
-                newDivForMount.className = "mountToolTip";
-                newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
-                imag = document.createElement("IMG");
-                imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
-                imag.setAttribute("height", "30px");
-
-                spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
-
-                spa.innerHTML = "Part of the Dragon Dawn DLC";
-
-                newDivForMount.appendChild(imag);
-                newDivForMount.appendChild(spa);
-                //newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
-                // get position of button
-
-
-
+            if('DLC' in jsonStructureUpgrades.structures[j]){
+                var newDivForMount = AddDLCTag(jsonStructureUpgrades.structures[j].DLC);
                 modName.append(newDivForMount);
-
-
             }
+           
 
             var tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + a.id);
@@ -5445,26 +5399,8 @@ function showSpell(a, showOrigin) {
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span class=\"spell_tier\" style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
-                if (DLCDragonDawn.indexOf(splitspell[1]) != -1 && showOrigin) {
-                    var newDivForMount = document.createElement("DIV");
-                    newDivForMount.className = "mountToolTip";
-                    newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
-                    imag = document.createElement("IMG");
-                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
-                    imag.setAttribute("height", "30px");
-
-                    spa = document.createElement("SPAN");
-                    spa.className = "tooltiptext";
-
-                    spa.innerHTML = "Part of the Dragon Dawn DLC";
-
-                    newDivForMount.appendChild(imag);
-                    newDivForMount.appendChild(spa);
-                    //newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
-                    // get position of button
-
-
-
+                if ('DLC' in jsonSpells.spells[j] && showOrigin) {
+                    var newDivForMount = AddDLCTag(jsonSpells.spells[j].DLC);
                     modName.append(newDivForMount);
 
 
@@ -5728,7 +5664,10 @@ function showItem(a) {
     }
 
 
-
+    if('DLC' in a){
+        var dlctag = AddDLCTag(a.DLC);
+        modName.append(dlctag);
+    }
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
@@ -5779,11 +5718,11 @@ function showTrait(a) {
     var modName, description, cost, type, tier = "";
     var found = false;
     var i = "";
-    for (i in jsonFactionCreation.traits) {
-        if (jsonFactionCreation.traits[i].id === a) {
-
+    for (i in jsonFactionCreation2.traits) {
+        if (jsonFactionCreation2.traits[i].id === a) {
+            var currentTrait = jsonFactionCreation2.traits[i];
             modName = document.getElementById("modname");
-            modName.innerHTML = jsonFactionCreation.traits[i].name.toUpperCase();
+            modName.innerHTML = currentTrait.name.toUpperCase();
 
 
 
@@ -5792,18 +5731,26 @@ function showTrait(a) {
 
 
 
-            if (DLCDragonDawn.indexOf(a) != -1) {
+            if ('DLC' in currentTrait) {
                 var newDivForMount = document.createElement("DIV");
                 newDivForMount.className = "mountToolTip";
 
                 imag = document.createElement("IMG");
-                imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
                 imag.setAttribute("height", "30px");
 
                 spa = document.createElement("SPAN");
                 spa.className = "tooltiptext";
 
-                spa.innerHTML = "Part of the Dragon Dawn DLC";
+
+                if (currentTrait.DLC == "EMPIRESANDASHES ") {
+                    imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
+                    spa.innerHTML = "Part of the Empires & Ashes DLC";
+
+                } else if (currentTrait.DLC == "DRAGONLORDS ") {
+                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
+                    spa.innerHTML = "Part of the Dragon Dawn DLC";
+                }
+
 
                 newDivForMount.appendChild(imag);
                 newDivForMount.appendChild(spa);
@@ -5827,14 +5774,47 @@ function showTrait(a) {
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
             var div = document.createElement("DIV");
-            descriptionDiv.innerHTML = "<hr>" + jsonFactionCreation.traits[i].description;
 
-            if ('incompatible' in jsonFactionCreation.traits[i]) {
-                descriptionDiv.innerHTML += "Incompatible with: <bulletlist>";
+            // build up description:
+
+
+            descriptionDiv.innerHTML += "<hr>" + currentTrait.lore_description;
+
+            if ('effect_descriptions' in currentTrait) {
+                descriptionDiv.innerHTML += "<br>Effects: <bulletlist>";
                 var k = "";
-                for (k in jsonFactionCreation.traits[i].incompatible) {
+                for (k in currentTrait.effect_descriptions) {
 
-                    descriptionDiv.innerHTML += "<bullet>" + jsonFactionCreation.traits[i].incompatible[k].name + "</bullet>";
+                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
+                }
+                descriptionDiv.innerHTML += "</bulletlist>";
+            }
+
+            if ('starting_bonuses' in currentTrait) {
+                descriptionDiv.innerHTML += "<br>Starting Bonus: <bulletlist>";
+                var k = "";
+                for (k in currentTrait.starting_bonuses) {
+
+                    if('structure_upgrade_slug' in currentTrait.starting_bonuses[k]){
+                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug+ "</bullet>";
+                    }
+                    if('empire_progression_slug' in currentTrait.starting_bonuses[k]){
+                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].empire_progression_slug + "</bullet>";
+                        }
+                    if('description' in currentTrait.starting_bonuses[k]){
+                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
+                    }
+                   
+                }
+                descriptionDiv.innerHTML += "</bulletlist>";
+            }
+
+            if ('incompatible_society_traits' in currentTrait) {
+                descriptionDiv.innerHTML += "<br>Incompatible with: <bulletlist>";
+                var k = "";
+                for (k in currentTrait.incompatible_society_traits) {
+
+                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
                 }
                 descriptionDiv.innerHTML += "</bulletlist>";
             }
@@ -5845,8 +5825,8 @@ function showTrait(a) {
 
             tier = document.getElementById("modtier");
             tier.innerHTML = "";
-            if ('affinity' in jsonFactionCreation.traits[i]) {
-                var splitAff = jsonFactionCreation.traits[i].affinity.split(",");
+            if ('affinity' in currentTrait) {
+                var splitAff = currentTrait.affinity.split(",");
                 var j = "";
                 for (j in splitAff) {
                     tier.innerHTML += splitAff[j];
@@ -5859,7 +5839,157 @@ function showTrait(a) {
 
             cost = document.getElementById("modcost");
             cost.innerHTML = "";
-            cost.innerHTML = jsonFactionCreation.traits[i].type;
+            if (currentTrait.type == "form") {
+
+                cost.innerHTML = "Form- " + currentTrait.point_cost + " Points";
+
+            } else if (currentTrait.type == "society") {
+                cost.innerHTML = "Society";
+            }
+
+
+            cost.setAttribute("id", "modcost" + a);
+
+
+            imagelink = document.getElementById("modicon");
+            imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + a + ".png");
+            imagelink.setAttribute("style", "background-image:none");
+            imagelink.setAttribute("id", "modicon" + a);
+
+            var tomeOriginIcon = document.getElementById("originTomeIcon");
+
+            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+        }
+    }
+    for (i in jsonFactionCreation.traits) {
+        if (jsonFactionCreation.traits[i].id === a) {
+            var currentTrait = jsonFactionCreation.traits[i];
+            modName = document.getElementById("modname");
+            modName.innerHTML = currentTrait.name.toUpperCase();
+
+
+
+            modName.setAttribute("id", "modname" + a);
+            descriptionDiv = document.getElementById("moddescription");
+
+
+
+            if ('DLC' in currentTrait) {
+                var newDivForMount = document.createElement("DIV");
+                newDivForMount.className = "mountToolTip";
+
+                imag = document.createElement("IMG");
+                imag.setAttribute("height", "30px");
+
+                spa = document.createElement("SPAN");
+                spa.className = "tooltiptext";
+
+
+                if (currentTrait.DLC == "EMPIRESANDASHES ") {
+                    imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
+                    spa.innerHTML = "Part of the Empires & Ashes DLC";
+
+                } else if (currentTrait.DLC == "DRAGONLORDS ") {
+                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
+                    spa.innerHTML = "Part of the Dragon Dawn DLC";
+                }
+
+
+                newDivForMount.appendChild(imag);
+                newDivForMount.appendChild(spa);
+                newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
+                // get position of button
+
+
+
+                modName.append(newDivForMount);
+            }
+
+
+            descriptionDiv.innerHTML = "";
+
+
+
+
+
+
+            unitTypesDiv = document.getElementById("affectUnitTypes");
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+            var div = document.createElement("DIV");
+
+            // build up description:
+
+
+            descriptionDiv.innerHTML += "<hr>" + currentTrait.lore_description;
+
+            if ('effect_descriptions' in currentTrait) {
+                descriptionDiv.innerHTML += "<br>Effects: <bulletlist>";
+                var k = "";
+                for (k in currentTrait.effect_descriptions) {
+
+                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
+                }
+                descriptionDiv.innerHTML += "</bulletlist>";
+            }
+
+            if ('starting_bonuses' in currentTrait) {
+                descriptionDiv.innerHTML += "<br>Starting Bonus: <bulletlist>";
+                var k = "";
+                for (k in currentTrait.starting_bonuses) {
+
+                    if('structure_upgrade_slug' in currentTrait.starting_bonuses[k]){
+                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug+ "</bullet>";
+                    }
+                    if('empire_progression_slug' in currentTrait.starting_bonuses[k]){
+                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].empire_progression_slug + "</bullet>";
+                        }
+                    if('description' in currentTrait.starting_bonuses[k]){
+                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
+                    }
+                   
+                }
+                descriptionDiv.innerHTML += "</bulletlist>";
+            }
+
+            if ('incompatible_society_traits' in currentTrait) {
+                descriptionDiv.innerHTML += "<br>Incompatible with: <bulletlist>";
+                var k = "";
+                for (k in currentTrait.incompatible_society_traits) {
+
+                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
+                }
+                descriptionDiv.innerHTML += "</bulletlist>";
+            }
+
+            descriptionDiv.setAttribute("id", "moddescription" + a);
+
+
+
+            tier = document.getElementById("modtier");
+            tier.innerHTML = "";
+            if ('affinity' in currentTrait) {
+                var splitAff = currentTrait.affinity.split(",");
+                var j = "";
+                for (j in splitAff) {
+                    tier.innerHTML += splitAff[j];
+                }
+
+
+
+            }
+            tier.setAttribute("id", "modtier" + a);
+
+            cost = document.getElementById("modcost");
+            cost.innerHTML = "";
+            if (currentTrait.type == "form") {
+
+                cost.innerHTML = "Form- " + currentTrait.point_cost + " Points";
+
+            } else if (currentTrait.type == "society") {
+                cost.innerHTML = "Society";
+            }
+
 
             cost.setAttribute("id", "modcost" + a);
 
@@ -6157,10 +6287,12 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
 
                 var id = FindHeroSkillOrigin(a.id);
-                if (DLCDragonDawn.indexOf(id) != -1) {
-                    var newDivForMount = AddDLCTag();
+
+                if('DLC' in a){
+                    var newDivForMount = AddDLCTag(a.DLC);
                     modName.append(newDivForMount);
                 }
+              
                 var tomeOrigin = document.getElementById("originTome");
                 tomeOrigin.setAttribute("id", "originTome" + a.id);
                 var tomeOriginIcon = document.getElementById("originTomeIcon");
@@ -6232,20 +6364,12 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                         modName.append(newDivForMount);
                     }
                 }
-                if (a.id.indexOf("_transformation") != -1 || a.id.indexOf("_aspect") != -1) {
 
-                    // get position of button
-
-
-                    var newDivForMount = AddDLCTag();
+                if('DLC' in a){
+                    var newDivForMount = AddDLCTag(a.DLC);
                     modName.append(newDivForMount);
                 }
-
-                if (DLCDragonDawn.indexOf(id) != -1) {
-                    var newDivForMount = AddDLCTag();
-                    modName.append(newDivForMount);
-                }
-
+              
 
                 found = true;
                 return;
@@ -6258,18 +6382,23 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     }
 }
 
-function AddDLCTag() {
+function AddDLCTag(dlcname) {
     var newDivForMount = document.createElement("DIV");
     newDivForMount.className = "mountToolTip";
 
     imag = document.createElement("IMG");
-    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn2.png");
     imag.setAttribute("height", "30px");
 
     spa = document.createElement("SPAN");
     spa.className = "tooltiptext";
-
-    spa.innerHTML = "Part of the Dragon Dawn DLC";
+    if (dlcname == "DRAGONLORDS ") {
+        imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
+        spa.innerHTML = "Part of the Dragon Dawn DLC";
+    }
+    if (dlcname == "EMPIRESANDASHES ") {
+        imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
+        spa.innerHTML = "Part of the Empires & Ashes DLC";
+    }
 
     newDivForMount.appendChild(imag);
     newDivForMount.appendChild(spa);
@@ -6286,7 +6415,7 @@ function FindHeroSkillOrigin(id) {
 
                         var tomeOrigin = document.getElementById("originTome");
                         if ('affinities' in jsonTomes.tomes[j]) {
-                            tomeOrigin.innerHTML = jsonTomes.tomes[j].affinities + "<br>";
+                            tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes.tomes[j]) + "<br>";
                         }
                         tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
                         var tomeOriginIcon = document.getElementById("originTomeIcon");
