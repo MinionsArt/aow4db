@@ -5869,7 +5869,7 @@ function showTraitSetup(currentTrait){
 
 
     imagelink = document.getElementById("modicon");
-    imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + currentTrait.id + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + currentTrait.icon + ".png");
     imagelink.setAttribute("style", "background-image:none");
     imagelink.setAttribute("id", "modicon" + currentTrait.id);
 
