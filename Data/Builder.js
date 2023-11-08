@@ -2619,10 +2619,27 @@ function findTraitsWithArgument(argumentType, affinity) {
 
             }
         }
+
+        for (j in jsonFactionCreation.traits) {
+
+            if (jsonFactionCreation.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+                
+                   
+                    finalCheckedList.push(jsonFactionCreation.traits[j].id);
+                
+                
+
+
+
+
+
+
+            }
+        }
     }
 
 
-
+   
 
     return finalCheckedList;
 }
@@ -5714,6 +5731,153 @@ function showItem(a) {
 
 }
 
+function showTraitSetup(currentTrait){
+    modName = document.getElementById("modname");
+    modName.innerHTML = currentTrait.name.toUpperCase();
+
+
+
+    modName.setAttribute("id", "modname" + currentTrait.id);
+    descriptionDiv = document.getElementById("moddescription");
+
+
+
+    if ('DLC' in currentTrait) {
+        var newDivForMount = document.createElement("DIV");
+        newDivForMount.className = "mountToolTip";
+
+        imag = document.createElement("IMG");
+        imag.setAttribute("height", "30px");
+
+        spa = document.createElement("SPAN");
+        spa.className = "tooltiptext";
+
+
+        if (currentTrait.DLC == "EMPIRESANDASHES ") {
+            imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
+            spa.innerHTML = "Part of the Empires & Ashes DLC";
+
+        } else if (currentTrait.DLC == "DRAGONLORDS ") {
+            imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
+            spa.innerHTML = "Part of the Dragon Dawn DLC";
+        }
+
+
+        newDivForMount.appendChild(imag);
+        newDivForMount.appendChild(spa);
+        newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
+        // get position of button
+
+
+
+        modName.append(newDivForMount);
+    }
+
+
+    descriptionDiv.innerHTML = "";
+
+
+
+
+
+
+    unitTypesDiv = document.getElementById("affectUnitTypes");
+    unitTypesDiv.setAttribute("id", "affectUnitTypes" + currentTrait.id);
+
+    var div = document.createElement("DIV");
+
+    // build up description:
+
+    if ('lore_description' in currentTrait) {
+    descriptionDiv.innerHTML += "<hr> <span class=\"loreText\">" + currentTrait.lore_description + "</span>";
+    }
+
+    if ('effect_descriptions' in currentTrait) {
+        descriptionDiv.innerHTML += "<br><br><span class=\"mod_name\">EFFECTS: </span><bulletlist>";
+        var k = "";
+        for (k in currentTrait.effect_descriptions) {
+
+            descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
+        }
+        descriptionDiv.innerHTML += "</bulletlist>";
+    }
+
+    if ('description' in currentTrait) {
+      
+        descriptionDiv.innerHTML += currentTrait.description;
+    }
+
+    if ('starting_bonuses' in currentTrait) {
+        descriptionDiv.innerHTML += "<br><br><span class=\"mod_name\">STARTING BONUS: </span><bulletlist>";
+        var k = "";
+        for (k in currentTrait.starting_bonuses) {
+
+            if('structure_upgrade_slug' in currentTrait.starting_bonuses[k]){
+                descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug+ "</bullet>";
+            }
+            if('empire_progression_slug' in currentTrait.starting_bonuses[k]){
+                descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].empire_progression_slug + "</bullet>";
+                }
+            if('description' in currentTrait.starting_bonuses[k]){
+            descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
+            }
+           
+        }
+        descriptionDiv.innerHTML += "</bulletlist>";
+    }
+
+    if ('incompatible_society_traits' in currentTrait) {
+        descriptionDiv.innerHTML += "<br><br><span class=\"mod_name\">INCOMPATIBLE WITH: </span><bulletlist>";
+        var k = "";
+        for (k in currentTrait.incompatible_society_traits) {
+
+            descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
+        }
+        descriptionDiv.innerHTML += "</bulletlist>";
+    }
+
+    descriptionDiv.setAttribute("id", "moddescription" + currentTrait.id);
+
+
+
+    tier = document.getElementById("modtier");
+    tier.innerHTML = "";
+    if ('affinity' in currentTrait) {
+        var splitAff = currentTrait.affinity.split(",");
+        var j = "";
+        for (j in splitAff) {
+            tier.innerHTML += splitAff[j];
+        }
+
+
+
+    }
+    tier.setAttribute("id", "modtier" + currentTrait.id);
+
+    cost = document.getElementById("modcost");
+    cost.innerHTML = "";
+    if (currentTrait.type == "form") {
+
+        cost.innerHTML = "Form- " + currentTrait.point_cost + " Points";
+
+    } else if (currentTrait.type == "society") {
+        cost.innerHTML = "Society";
+    }
+
+
+    cost.setAttribute("id", "modcost" + currentTrait.id);
+
+
+    imagelink = document.getElementById("modicon");
+    imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + currentTrait.id + ".png");
+    imagelink.setAttribute("style", "background-image:none");
+    imagelink.setAttribute("id", "modicon" + currentTrait.id);
+
+    var tomeOriginIcon = document.getElementById("originTomeIcon");
+
+    tomeOriginIcon.setAttribute("id", "modicon" + currentTrait.id);
+}
+
 function showTrait(a) {
     var modName, description, cost, type, tier = "";
     var found = false;
@@ -5721,290 +5885,18 @@ function showTrait(a) {
     for (i in jsonFactionCreation2.traits) {
         if (jsonFactionCreation2.traits[i].id === a) {
             var currentTrait = jsonFactionCreation2.traits[i];
-            modName = document.getElementById("modname");
-            modName.innerHTML = currentTrait.name.toUpperCase();
 
-
-
-            modName.setAttribute("id", "modname" + a);
-            descriptionDiv = document.getElementById("moddescription");
-
-
-
-            if ('DLC' in currentTrait) {
-                var newDivForMount = document.createElement("DIV");
-                newDivForMount.className = "mountToolTip";
-
-                imag = document.createElement("IMG");
-                imag.setAttribute("height", "30px");
-
-                spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
-
-
-                if (currentTrait.DLC == "EMPIRESANDASHES ") {
-                    imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
-                    spa.innerHTML = "Part of the Empires & Ashes DLC";
-
-                } else if (currentTrait.DLC == "DRAGONLORDS ") {
-                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
-                    spa.innerHTML = "Part of the Dragon Dawn DLC";
-                }
-
-
-                newDivForMount.appendChild(imag);
-                newDivForMount.appendChild(spa);
-                newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
-                // get position of button
-
-
-
-                modName.append(newDivForMount);
-            }
-
-
-            descriptionDiv.innerHTML = "";
-
-
-
-
-
-
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
-            var div = document.createElement("DIV");
-
-            // build up description:
-
-
-            descriptionDiv.innerHTML += "<hr>" + currentTrait.lore_description;
-
-            if ('effect_descriptions' in currentTrait) {
-                descriptionDiv.innerHTML += "<br>Effects: <bulletlist>";
-                var k = "";
-                for (k in currentTrait.effect_descriptions) {
-
-                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
-                }
-                descriptionDiv.innerHTML += "</bulletlist>";
-            }
-
-            if ('starting_bonuses' in currentTrait) {
-                descriptionDiv.innerHTML += "<br>Starting Bonus: <bulletlist>";
-                var k = "";
-                for (k in currentTrait.starting_bonuses) {
-
-                    if('structure_upgrade_slug' in currentTrait.starting_bonuses[k]){
-                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug+ "</bullet>";
-                    }
-                    if('empire_progression_slug' in currentTrait.starting_bonuses[k]){
-                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].empire_progression_slug + "</bullet>";
-                        }
-                    if('description' in currentTrait.starting_bonuses[k]){
-                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
-                    }
-                   
-                }
-                descriptionDiv.innerHTML += "</bulletlist>";
-            }
-
-            if ('incompatible_society_traits' in currentTrait) {
-                descriptionDiv.innerHTML += "<br>Incompatible with: <bulletlist>";
-                var k = "";
-                for (k in currentTrait.incompatible_society_traits) {
-
-                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
-                }
-                descriptionDiv.innerHTML += "</bulletlist>";
-            }
-
-            descriptionDiv.setAttribute("id", "moddescription" + a);
-
-
-
-            tier = document.getElementById("modtier");
-            tier.innerHTML = "";
-            if ('affinity' in currentTrait) {
-                var splitAff = currentTrait.affinity.split(",");
-                var j = "";
-                for (j in splitAff) {
-                    tier.innerHTML += splitAff[j];
-                }
-
-
-
-            }
-            tier.setAttribute("id", "modtier" + a);
-
-            cost = document.getElementById("modcost");
-            cost.innerHTML = "";
-            if (currentTrait.type == "form") {
-
-                cost.innerHTML = "Form- " + currentTrait.point_cost + " Points";
-
-            } else if (currentTrait.type == "society") {
-                cost.innerHTML = "Society";
-            }
-
-
-            cost.setAttribute("id", "modcost" + a);
-
-
-            imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + a + ".png");
-            imagelink.setAttribute("style", "background-image:none");
-            imagelink.setAttribute("id", "modicon" + a);
-
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
-
-            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+            showTraitSetup(currentTrait);
+            
         }
     }
     for (i in jsonFactionCreation.traits) {
         if (jsonFactionCreation.traits[i].id === a) {
             var currentTrait = jsonFactionCreation.traits[i];
-            modName = document.getElementById("modname");
-            modName.innerHTML = currentTrait.name.toUpperCase();
-
-
-
-            modName.setAttribute("id", "modname" + a);
-            descriptionDiv = document.getElementById("moddescription");
-
-
-
-            if ('DLC' in currentTrait) {
-                var newDivForMount = document.createElement("DIV");
-                newDivForMount.className = "mountToolTip";
-
-                imag = document.createElement("IMG");
-                imag.setAttribute("height", "30px");
-
-                spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
-
-
-                if (currentTrait.DLC == "EMPIRESANDASHES ") {
-                    imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
-                    spa.innerHTML = "Part of the Empires & Ashes DLC";
-
-                } else if (currentTrait.DLC == "DRAGONLORDS ") {
-                    imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
-                    spa.innerHTML = "Part of the Dragon Dawn DLC";
-                }
-
-
-                newDivForMount.appendChild(imag);
-                newDivForMount.appendChild(spa);
-                newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
-                // get position of button
-
-
-
-                modName.append(newDivForMount);
-            }
-
-
-            descriptionDiv.innerHTML = "";
-
-
-
-
-
-
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
-            var div = document.createElement("DIV");
-
-            // build up description:
-
-
-            descriptionDiv.innerHTML += "<hr>" + currentTrait.lore_description;
-
-            if ('effect_descriptions' in currentTrait) {
-                descriptionDiv.innerHTML += "<br>Effects: <bulletlist>";
-                var k = "";
-                for (k in currentTrait.effect_descriptions) {
-
-                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
-                }
-                descriptionDiv.innerHTML += "</bulletlist>";
-            }
-
-            if ('starting_bonuses' in currentTrait) {
-                descriptionDiv.innerHTML += "<br>Starting Bonus: <bulletlist>";
-                var k = "";
-                for (k in currentTrait.starting_bonuses) {
-
-                    if('structure_upgrade_slug' in currentTrait.starting_bonuses[k]){
-                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug+ "</bullet>";
-                    }
-                    if('empire_progression_slug' in currentTrait.starting_bonuses[k]){
-                        descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].empire_progression_slug + "</bullet>";
-                        }
-                    if('description' in currentTrait.starting_bonuses[k]){
-                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
-                    }
-                   
-                }
-                descriptionDiv.innerHTML += "</bulletlist>";
-            }
-
-            if ('incompatible_society_traits' in currentTrait) {
-                descriptionDiv.innerHTML += "<br>Incompatible with: <bulletlist>";
-                var k = "";
-                for (k in currentTrait.incompatible_society_traits) {
-
-                    descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
-                }
-                descriptionDiv.innerHTML += "</bulletlist>";
-            }
-
-            descriptionDiv.setAttribute("id", "moddescription" + a);
-
-
-
-            tier = document.getElementById("modtier");
-            tier.innerHTML = "";
-            if ('affinity' in currentTrait) {
-                var splitAff = currentTrait.affinity.split(",");
-                var j = "";
-                for (j in splitAff) {
-                    tier.innerHTML += splitAff[j];
-                }
-
-
-
-            }
-            tier.setAttribute("id", "modtier" + a);
-
-            cost = document.getElementById("modcost");
-            cost.innerHTML = "";
-            if (currentTrait.type == "form") {
-
-                cost.innerHTML = "Form- " + currentTrait.point_cost + " Points";
-
-            } else if (currentTrait.type == "society") {
-                cost.innerHTML = "Society";
-            }
-
-
-            cost.setAttribute("id", "modcost" + a);
-
-
-            imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + a + ".png");
-            imagelink.setAttribute("style", "background-image:none");
-            imagelink.setAttribute("id", "modicon" + a);
-
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
-
-            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
-        }
+            showTraitSetup(currentTrait);
     }
 
+}
 }
 
 
