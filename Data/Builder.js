@@ -262,7 +262,7 @@ function SetButtonsAndDivs(list, parent, cardType) {
             btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\',true)');
         }
         AddTriangleForDLCUnits(cardType, list[i], btn)
-      
+
         if (cardType != "searchUnit") {
             var holderHeight = buttonHolder.offsetHeight + 0;
         } else {
@@ -2608,8 +2608,8 @@ function findTraitsWithArgument(argumentType, affinity) {
 
                 } else {
                     if (jsonFactionCreation2.traits[j].enabled == true) {
-                    finalCheckedList.push(jsonFactionCreation2.traits[j].id);
-                }
+                        finalCheckedList.push(jsonFactionCreation2.traits[j].id);
+                    }
                 }
 
 
@@ -2623,11 +2623,11 @@ function findTraitsWithArgument(argumentType, affinity) {
         for (j in jsonFactionCreation.traits) {
 
             if (jsonFactionCreation.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
-                
-                   
-                    finalCheckedList.push(jsonFactionCreation.traits[j].id);
-                
-                
+
+
+                finalCheckedList.push(jsonFactionCreation.traits[j].id);
+
+
 
 
 
@@ -2639,7 +2639,7 @@ function findTraitsWithArgument(argumentType, affinity) {
     }
 
 
-   
+
 
     return finalCheckedList;
 }
@@ -2756,13 +2756,13 @@ function showUnit(a) {
             name = jsonUnits.units[i].name;
             unitNameDiv.innerHTML += name.toUpperCase();
 
-            if('DLC' in jsonUnits.units[i]){
+            if ('DLC' in jsonUnits.units[i]) {
 
                 var newDivForMount = AddDLCTag(jsonUnits.units[i].DLC);
-                
+
                 unitNameDiv.append(newDivForMount);
             }
-           
+
             // if in the list of mounted, add tooltip
             if (MountedSpecialList.includes(a) || CheckIfOptionalCavalry(a)) {
                 var newDivForMount = document.createElement("DIV");
@@ -4062,7 +4062,7 @@ function showSiegeProject(id, showOrigin) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if ('DLC' in jsonSiegeProjects.projects[i] && showOrigin) {
-                   
+
                     var newDivForMount = AddDLCTag(jsonSiegeProjects.projects[i].DLC);
 
                     modName.append(newDivForMount);
@@ -4120,7 +4120,7 @@ function showSiegeProject(id, showOrigin) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
                 if ('DLC' in jsonSiegeProjects.projects[i] && showOrigin) {
-                   
+
                     var newDivForMount = AddDLCTag(jsonSiegeProjects.projects[i].DLC);
 
                     modName.append(newDivForMount);
@@ -4162,7 +4162,7 @@ function showTome(a, div) {
 
             modName.innerHTML += jsonTomes.tomes[j].name;
             if ('DLC' in jsonTomes.tomes[j]) {
-                   
+
                 var newDivForMount = AddDLCTag(jsonTomes.tomes[j].DLC);
 
                 modName.append(newDivForMount);
@@ -4832,11 +4832,11 @@ function showStructure(a, showOrigin) {
 
             var name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
 
-            if('DLC' in jsonStructureUpgrades.structures[j]){
+            if ('DLC' in jsonStructureUpgrades.structures[j]) {
                 var newDivForMount = AddDLCTag(jsonStructureUpgrades.structures[j].DLC);
                 modName.append(newDivForMount);
             }
-           
+
 
             var tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + a.id);
@@ -5681,7 +5681,7 @@ function showItem(a) {
     }
 
 
-    if('DLC' in a){
+    if ('DLC' in a) {
         var dlctag = AddDLCTag(a.DLC);
         modName.append(dlctag);
     }
@@ -5731,7 +5731,7 @@ function showItem(a) {
 
 }
 
-function showTraitSetup(currentTrait){
+function showTraitSetup(currentTrait) {
     modName = document.getElementById("modname");
     modName.innerHTML = currentTrait.name.toUpperCase();
 
@@ -5789,7 +5789,7 @@ function showTraitSetup(currentTrait){
     // build up description:
 
     if ('lore_description' in currentTrait) {
-    descriptionDiv.innerHTML += "<hr> <span class=\"loreText\">" + currentTrait.lore_description + "</span>";
+        descriptionDiv.innerHTML += "<hr> <span class=\"loreText\">" + currentTrait.lore_description + "</span>";
     }
 
     if ('effect_descriptions' in currentTrait) {
@@ -5803,7 +5803,7 @@ function showTraitSetup(currentTrait){
     }
 
     if ('description' in currentTrait) {
-      
+
         descriptionDiv.innerHTML += currentTrait.description;
     }
 
@@ -5812,16 +5812,16 @@ function showTraitSetup(currentTrait){
         var k = "";
         for (k in currentTrait.starting_bonuses) {
 
-            if('structure_upgrade_slug' in currentTrait.starting_bonuses[k]){
-                descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug+ "</bullet>";
+            if ('structure_upgrade_slug' in currentTrait.starting_bonuses[k]) {
+                descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug + "</bullet>";
             }
-            if('empire_progression_slug' in currentTrait.starting_bonuses[k]){
+            if ('empire_progression_slug' in currentTrait.starting_bonuses[k]) {
                 descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].empire_progression_slug + "</bullet>";
-                }
-            if('description' in currentTrait.starting_bonuses[k]){
-            descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
             }
-           
+            if ('description' in currentTrait.starting_bonuses[k]) {
+                descriptionDiv.innerHTML += "<bullet>" + currentTrait.starting_bonuses[k].description + "</bullet>";
+            }
+
         }
         descriptionDiv.innerHTML += "</bulletlist>";
     }
@@ -5869,7 +5869,13 @@ function showTraitSetup(currentTrait){
 
 
     imagelink = document.getElementById("modicon");
-    imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + currentTrait.icon + ".png");
+    var iconLink = currentTrait.icon;
+    if (iconLink.startsWith("_")) {
+        iconLink = iconLink.split('_').slice(1).join('_');
+
+    }
+
+    imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + iconLink + ".png");
     imagelink.setAttribute("style", "background-image:none");
     imagelink.setAttribute("id", "modicon" + currentTrait.id);
 
@@ -5877,6 +5883,7 @@ function showTraitSetup(currentTrait){
 
     tomeOriginIcon.setAttribute("id", "modicon" + currentTrait.id);
 }
+
 
 function showTrait(a) {
     var modName, description, cost, type, tier = "";
@@ -5887,16 +5894,16 @@ function showTrait(a) {
             var currentTrait = jsonFactionCreation2.traits[i];
 
             showTraitSetup(currentTrait);
-            
+
         }
     }
     for (i in jsonFactionCreation.traits) {
         if (jsonFactionCreation.traits[i].id === a) {
             var currentTrait = jsonFactionCreation.traits[i];
             showTraitSetup(currentTrait);
-    }
+        }
 
-}
+    }
 }
 
 
@@ -6180,11 +6187,11 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
                 var id = FindHeroSkillOrigin(a.id);
 
-                if('DLC' in a){
+                if ('DLC' in a) {
                     var newDivForMount = AddDLCTag(a.DLC);
                     modName.append(newDivForMount);
                 }
-              
+
                 var tomeOrigin = document.getElementById("originTome");
                 tomeOrigin.setAttribute("id", "originTome" + a.id);
                 var tomeOriginIcon = document.getElementById("originTomeIcon");
@@ -6257,11 +6264,11 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     }
                 }
 
-                if('DLC' in a){
+                if ('DLC' in a) {
                     var newDivForMount = AddDLCTag(a.DLC);
                     modName.append(newDivForMount);
                 }
-              
+
 
                 found = true;
                 return;
