@@ -2598,8 +2598,8 @@ function findTraitsWithArgument(argumentType, affinity) {
                     if ('affinities' in jsonFactionCreation2.traits[j])
                         for (let index = 0; index < jsonFactionCreation2.traits[j].affinities.length; index++) {
                             if (jsonFactionCreation2.traits[j].affinities[index].name.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
-                                if (jsonFactionCreation2.traits[j].enabled == true) {
-
+                                if (jsonFactionCreation2.traits[j].enabled == true && jsonFactionCreation2.traits[j].id != "guardians_of_nature__goodact__") {
+                                    
                                     finalCheckedList.push(jsonFactionCreation2.traits[j].id);
                                 }
                             }
@@ -2607,7 +2607,7 @@ function findTraitsWithArgument(argumentType, affinity) {
                         }
 
                 } else {
-                    if (jsonFactionCreation2.traits[j].enabled == true) {
+                    if (jsonFactionCreation2.traits[j].enabled == true && jsonFactionCreation2.traits[j].id != "guardians_of_nature__goodact__") {
                         finalCheckedList.push(jsonFactionCreation2.traits[j].id);
                     }
                 }
