@@ -17,7 +17,7 @@
  var currentTome = "";
 
  var currentForm = "";
- var currentFormTrait = "";
+ var currentFormTraitList = new Array();
  var currentCulture = "";
  var currentSociety1 = "";
  var currentSociety2 = "";
@@ -68,7 +68,7 @@
      listofChoice.push("Tome");
      listofChoice.push("Origin");
 
-     listofChoice.push("Form");
+    // listofChoice.push("Form");
      listofChoice.push("FormTrait");
      listofChoice.push("Culture");
      listofChoice.push("Society1");
@@ -98,7 +98,16 @@
                  currentForm = randomEntry;
                  break;
              case "FormTrait":
-                 currentFormTrait = randomEntry;
+                currentFormTraitList = new Array();
+                currentFormTraitList.push(randomEntry);
+
+
+                 while(getPoints(currentFormTraitList) < 5){
+                    var randomEntry = GetRandomEntry(listofChoice[j]);
+                    currentFormTraitList.push(randomEntry);
+                 }
+
+                 console.log(currentFormTraitList);
 
                  break;
              case "Culture":
@@ -126,6 +135,15 @@
      }
      RecalculateStats();
 
+ }
+
+ function getPoints(formTraitList){
+    var totalPoints = 0;
+    // check if points are used
+    for (i = 0; i <formTraitList.length; i++){
+       totalPoints+= formTraitList[i].point_cost;
+    } 
+    return totalPoints;
  }
 
  // Function to toggle the origin selection buttons
@@ -164,7 +182,7 @@
 
          case "FormTrait":
 
-             currentFormTrait = origin;
+             currentFormTraitList = origin;
              break;
          case "Culture":
 
@@ -231,7 +249,7 @@
 
      list = GetNextSetOfTomes();
 
-     console.log("Clicked");
+    // console.log("Clicked");
      // List of origin options
 
      // Create origin buttons dynamically from the list
@@ -322,7 +340,7 @@
      var originWrapper = document.getElementById("originWrapperOptions");
      originWrapper.innerHTML = "";
      var originButton = document.getElementById("originButton" + type);
-     console.log(type);
+    // console.log(type);
      var list = new Array();
 
      // assign current selection
@@ -547,7 +565,7 @@
      const image = document.createElement("img");
      image.setAttribute("width", "40");
      image.setAttribute("height", "40");
-     console.log(origin);
+    // console.log(origin);
 
      if (type == "Tome") {
          image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
@@ -719,7 +737,7 @@
      }
 
 
-     console.log(listOfNextTomes);
+    // console.log(listOfNextTomes);
      return listOfNextTomes;
  }
 
@@ -731,7 +749,7 @@
          var empireType = substringToCount.split(" ")[1];
 
          inputString = inputString.replaceAll("  ", " ");
-         console.log(empireType + " input :" + inputString);
+      //   console.log(empireType + " input :" + inputString);
 
          // Use a regular expression to find the tag and extract the number
          const match = inputString.match(new RegExp(`${empireType}\\s*(\\d+)`));
@@ -796,7 +814,8 @@
              listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
          }
      }
-     console.log(listOfAllOrigins);
+     //console.log(listOfAllOrigins);
+   
 
      return listOfAllOrigins;
  }
