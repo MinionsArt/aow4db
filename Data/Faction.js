@@ -104,10 +104,13 @@
 
                  while(getPoints(currentFormTraitList) < 5){
                     var randomEntry = GetRandomEntry(listofChoice[j]);
-                    currentFormTraitList.push(randomEntry);
+                    if(getPoints(currentFormTraitList) + randomEntry.point_cost < 6){
+                        currentFormTraitList.push(randomEntry);
+                    }
+                  
                  }
 
-                 console.log(currentFormTraitList);
+                // console.log(currentFormTraitList);
 
                  break;
              case "Culture":
@@ -401,17 +404,33 @@
      var selectionsText = document.getElementById("selections");
      selectionsText.textContent = "Select " + type;
      for (const origin of list) {
+        const originButtonNew = document.createElement("button");
          if (type == "Symbol") {
-             const originButtonNew = document.createElement("button");
+          
              originButtonNew.addEventListener("click", () => SelectSymbol(origin));
              originButtonNew.className = "list-button-small";
              originWrapper.appendChild(originButtonNew);
              SetButtonInfo(originButtonNew, origin, type);
 
-         } else {
+         } else if(type == "FormTrait") {
+            originButtonNew.className = "list-button";
+           
+            if(isInArray(currentFormTraitList, origin)){
+                //console.log(currentFormTraitList + " " + origin);
+               originButtonNew.style = "color:red";
+            }
+            originButtonNew.addEventListener("click", () => selectOrigin(origin, type));
+
+            originWrapper.appendChild(originButtonNew);
+
+            SetButtonInfo(originButtonNew, origin, type);
+
+         }
+            else{
+
              if (!incompatibleCheck(type, origin)) {
-                 const originButtonNew = document.createElement("button");
                  originButtonNew.className = "list-button";
+                
                  originButtonNew.addEventListener("click", () => selectOrigin(origin, type));
 
                  originWrapper.appendChild(originButtonNew);
@@ -430,11 +449,11 @@
  function GetCurrentChoiceList() {
      var listOfAllChoices = new Array();
 
-     listOfAllChoices.push(currentOrigin);
+     //listOfAllChoices.push(currentOrigin);
      //  listOfAllChoices.push(currentTome);
 
-     listOfAllChoices.push(currentForm);
-     listOfAllChoices.push(currentFormTrait);
+  //   listOfAllChoices.push(currentForm);
+    // listOfAllChoices.push(currentFormTraitList);
      listOfAllChoices.push(currentCulture);
      listOfAllChoices.push(currentSociety1);
      listOfAllChoices.push(currentSociety2);
@@ -458,9 +477,16 @@
                  input += list[i].affinity + ",";
              }
              if ('affinities' in list[i]) {
-                 var bittoadd = duplicateTags(list[i].affinities);
-                 input += bittoadd + ",";
-                 input = ClearAffinityExtraTags(input);
+                if(list[i].affinities.length > 0){
+                    var bittoadd = duplicateTags(list[i].affinities[0].name);
+                    input += bittoadd + ",";
+                    input = ClearAffinityExtraTags(input);
+                }else{
+                    var bittoadd = duplicateTags(list[i].affinities);
+                    input += bittoadd + ",";
+                    input = ClearAffinityExtraTags(input);
+                }
+               
 
              }
          }
@@ -535,29 +561,29 @@
 
 
  function duplicateTags(inputString) {
-     const tagPattern = /(\d+)\s+<([^>]+)>/g;
+    const tagPattern = /(\d+)\s+<([^>]+)>/g;
 
-     // Find all matches of the pattern
-     const matches = inputString.matchAll(tagPattern);
+    console.log(inputString);
+    
+    let result = '';
+    let match;
 
-     let result = '';
+    while ((match = tagPattern.exec(inputString)) !== null) {
+        const count = parseInt(match[1]);
+        const tagName = match[2];
 
-     for (const match of matches) {
-         const count = parseInt(match[1]);
-         const tagName = match[2];
+        // Create a repeated tag string
+        const repeatedTags = Array(count).fill(`<${tagName}></${tagName}>`).join(', ');
 
-         // Create a repeated tag string
-         const repeatedTags = Array(count).fill(`<${tagName}></${tagName}>`).join(', ');
+        // Append the repeated tags to the result
+        if (result !== '') {
+            result += ', ';
+        }
+        result += repeatedTags;
+    }
 
-         // Append the repeated tags to the result
-         if (result !== '') {
-             result += ', ';
-         }
-         result += repeatedTags;
-     }
-
-     return result;
- }
+    return result;
+}
 
 
 
