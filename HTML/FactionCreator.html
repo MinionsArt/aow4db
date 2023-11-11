@@ -98,7 +98,10 @@
                     </div>
 
                     <div id="buttonContainer">
-                        <button class="button-inset" id="originButtonFormTrait" onclick="SetupButtons('FormTrait')"></button>
+                        <button style="background-color: transparent;     border: none;" id="originButtonFormTrait" onclick="SetupButtons('FormTrait')">
+                            <div id="selected-options-container"></div>
+                        </button>
+
 
                     </div>
 
@@ -161,8 +164,6 @@
 
         </div>
     </div>
-
-
 
 
 </body>
@@ -228,6 +229,13 @@
 
         display: flex;
         justify-content: normal;
+    }
+
+    .list-button.selected {
+
+        background-color: #4CAF50;
+        color: white;
+
     }
 
     .list-button-small {

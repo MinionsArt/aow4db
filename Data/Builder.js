@@ -2599,7 +2599,7 @@ function findTraitsWithArgument(argumentType, affinity) {
                         for (let index = 0; index < jsonFactionCreation2.traits[j].affinities.length; index++) {
                             if (jsonFactionCreation2.traits[j].affinities[index].name.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
                                 if (jsonFactionCreation2.traits[j].enabled == true && jsonFactionCreation2.traits[j].id != "guardians_of_nature__goodact__") {
-                                    
+
                                     finalCheckedList.push(jsonFactionCreation2.traits[j].id);
                                 }
                             }
@@ -5475,9 +5475,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-            entry,
-            percentage
-        } of percentages) {
+        entry,
+        percentage
+    } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
@@ -5577,6 +5577,8 @@ function showItem(a) {
     descriptionDiv.innerHTML = "<hr>";
     if ('description' in a) {
         descriptionDiv.innerHTML += a.description + "<br>";
+
+
     }
 
     var lookup;
