@@ -1032,36 +1032,36 @@ function GetRandomEntry(type) {
         case "Culture":
             var list = GetAllCultures();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            while (incompatibleCheck("Culture", randomOrigin)) {
+            // while (incompatibleCheck("Culture", randomOrigin)) {
 
-                randomOrigin = list[Math.floor(Math.random() * list.length)];
-            }
+            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
+            // }
             break;
         case "Society1":
 
             var list = GetAllSocietyTraits();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            while (incompatibleCheck("Society1", randomOrigin)) {
+            // while (incompatibleCheck("Society1", randomOrigin)) {
 
-                randomOrigin = list[Math.floor(Math.random() * list.length)];
-            }
+            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
+            // }
             break;
         case "Society2":
             var list = GetAllSocietyTraits();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            while (incompatibleCheck("Society2", randomOrigin)) {
+            // while (incompatibleCheck("Society2", randomOrigin)) {
 
-                randomOrigin = list[Math.floor(Math.random() * list.length)];
-            }
+            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
+            // }
             break;
         case "Loadout":
             var list = GetAllLoadouts();
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
 
-                randomOrigin = list[Math.floor(Math.random() * list.length)];
-            }
+            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
+            // }
             break;
 
     }
