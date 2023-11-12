@@ -1,18 +1,4 @@
-function showDiv(name) {
-    x = document.getElementsByClassName("typeHolder");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    if (name === "faction") {
-        var visible = document.getElementById("factioncreator");
-        visible.style.display = "block";
-        // show faction
-    } else if (name === "tome") {
-        var visible = document.getElementById("tomepath");
-        visible.style.display = "block";
-        // show tome path
-    }
-}
+
 var currentOrigin = "";
 var currentTome = "";
 
@@ -143,7 +129,18 @@ function SetRandomStart() {
                 while (getPoints() < 5) {
                     var randomEntry = GetRandomEntry(listofChoice[j]);
                     if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
-                        currentFormTraitList.push(randomEntry);
+                        if (randomEntry.group_name == "ADAPTION") {
+                            hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTION');
+                            if (!hasAdaptionGroup) {
+                                currentFormTraitList.push(randomEntry);
+                            }
+                        } else {
+                            currentFormTraitList.push(randomEntry);
+                        }
+
+
+
+
                     }
 
                 }
@@ -1240,36 +1237,36 @@ function GetRandomEntry(type) {
         case "Culture":
             var list = GetAllCultures();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // while (incompatibleCheck("Culture", randomOrigin)) {
+            while (incompatibleCheck("Culture", randomOrigin)) {
 
-            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // }
+                randomOrigin = list[Math.floor(Math.random() * list.length)];
+            }
             break;
         case "Society1":
 
             var list = GetAllSocietyTraits();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // while (incompatibleCheck("Society1", randomOrigin)) {
+            while (incompatibleCheck("Society1", randomOrigin)) {
 
-            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // }
+                randomOrigin = list[Math.floor(Math.random() * list.length)];
+            }
             break;
         case "Society2":
             var list = GetAllSocietyTraits();
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // while (incompatibleCheck("Society2", randomOrigin)) {
+            while (incompatibleCheck("Society2", randomOrigin)) {
 
-            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // }
+                randomOrigin = list[Math.floor(Math.random() * list.length)];
+            }
             break;
         case "Loadout":
             var list = GetAllLoadouts();
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            while (incompatibleCheck("Loadout", randomOrigin) === true) {
 
-            //     randomOrigin = list[Math.floor(Math.random() * list.length)];
-            // }
+                randomOrigin = list[Math.floor(Math.random() * list.length)];
+            }
             break;
 
     }
@@ -1294,54 +1291,51 @@ function incompatibleCheck(type, origin) {
             }
 
         }
+    }
+    if ('incompatible_society_traits' in origin) {
         if (type == "Society1") {
 
             var i = "";
-            for (i in origin.incompatible) {
+            for (i in origin.incompatible_society_traits) {
                 if (currentSociety2 != "") {
-                    if (currentSociety2.name.indexOf(origin.incompatible[i].name) != -1) {
-                        incompatibleWithSetup = true;
-                    }
-                }
-                if (currentCulture != "") {
-                    if (currentCulture.name.indexOf(origin.incompatible[i].name) != -1) {
+                    if ((origin.incompatible_society_traits[i].name.toLowerCase()).indexOf(currentSociety2.name.toLowerCase()) != -1) {
                         incompatibleWithSetup = true;
                     }
                 }
 
-            }
-            if (currentSociety2.name == origin.name) {
-
-                incompatibleWithSetup = true;
 
             }
+
 
         }
         if (type == "Society2") {
             var i = "";
             for (i in origin.incompatible) {
                 if (currentSociety1 != "") {
-                    if (currentSociety1.name.indexOf(origin.incompatible[i].name) != -1) {
-                        incompatibleWithSetup = true;
-                    }
-                }
-                if (currentCulture != "") {
-                    if (currentCulture.name.indexOf(origin.incompatible[i].name) != -1) {
+                    if (origin.incompatible_society_traits[i].name.toLowerCase().indexOf(currentSociety1.name.toLowerCase()) != -1) {
                         incompatibleWithSetup = true;
                     }
                 }
 
 
 
-            }
-            if (currentSociety1.name == origin.name) {
-
-                incompatibleWithSetup = true;
 
             }
+
 
         }
     }
+    if (currentSociety1.name == origin.name) {
+
+        incompatibleWithSetup = true;
+
+    }
+    if (currentSociety2.name == origin.name) {
+
+        incompatibleWithSetup = true;
+
+    }
+
 
     if (type == "Loadout") {
 
@@ -1410,9 +1404,20 @@ function updateSelectedOptions(origin) {
     if (origin != undefined) {
 
         toggleArrayEntry(currentFormTraitList, origin);
-        if (getPoints() > 5) {
-            currentFormTraitList.pop();
+        if (origin.group_name == "ADAPTION") {
+            hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTION');
+            if (hasAdaptionGroup) {
+                currentFormTraitList.pop();
+            }
+            if (getPoints() > 5) {
+                currentFormTraitList.pop();
+            }
+        } else {
+            if (getPoints() > 5) {
+                currentFormTraitList.pop();
+            }
         }
+
 
     }
 
