@@ -25,6 +25,8 @@ var currentLoadout = "";
 
 var currentAffinityTotal = "";
 
+var extraOrder, extraChaos, extraNature, extraMaterium, extraShadow, extraAstral;
+
 var currentTomeList = new Array();
 
 function ChangeShieldCol() {
@@ -36,24 +38,60 @@ function ChangeShieldCol() {
 
 function ChangeSymbolCol() {
 
-    var symbolElement = document.getElementById("symbol");
-    degrees = Math.random() * 360;
-    symbolElement.setAttribute("style", "filter: hue-rotate(" + degrees + "deg)")
+    // var symbolElement = document.getElementById("symbol");
+    // degrees = Math.random() * 360;
+    // symbolElement.setAttribute("style", "filter: hue-rotate(" + degrees + "deg)")
 }
 
 function GetRandomSymbol() {
-    var symbolElement = document.getElementById("symbol");
-    var numb = Math.floor(Math.random() * 138);
-    if (numb < 10 && numb > 0) {
+    // var symbolElement = document.getElementById("symbol");
+    // var numb = Math.floor(Math.random() * 138);
+    // if (numb < 10 && numb > 0) {
 
-        numb = "0" + numb.toString();
-    }
-    if (numb == 0) {
-        numb += 1;
-        numb = "0" + numb.toString();
-    }
-    symbolElement.setAttribute("src", "/aow4db/Icons/Symbols/SigilIcons_" + numb + ".gif");
+    //     numb = "0" + numb.toString();
+    // }
+    // if (numb == 0) {
+    //     numb += 1;
+    //     numb = "0" + numb.toString();
+    // }
+    // symbolElement.setAttribute("src", "/aow4db/Icons/Symbols/SigilIcons_" + numb + ".gif");
 
+}
+
+function AddExtra(type, add) {
+    if (type == "order") {
+
+        extraOrder = addOrSubtract(extraOrder, add);
+    }
+    if (type == "chaos") {
+        extraChaos = addOrSubtract(extraChaos, add);
+    }
+    if (type == "nature") {
+        extraNature = addOrSubtract(extraNature, add);
+    }
+    if (type == "shadow") {
+        extraShadow = addOrSubtract(extraShadow, add);
+    }
+    if (type == "materium") {
+        extraMaterium = addOrSubtract(extraMaterium, add);
+    }
+    if (type == "astral") {
+        extraAstral = addOrSubtract(extraAstral, add);
+    }
+
+    RecalculateStats();
+}
+
+function addOrSubtract(extraAffinity, add) {
+    if (add == "-") {
+        if (extraAffinity > 0) {
+            extraAffinity--;
+        }
+
+    } else {
+        extraAffinity++;
+    }
+    return extraAffinity;
 }
 
 
@@ -144,6 +182,14 @@ function SetRandomStart() {
 
 
     }
+
+    extraOrder = 0;
+    extraChaos = 0;
+    extraAstral = 0;
+    extraMaterium = 0;
+    extraNature = 0;
+    extraShadow = 0;
+    selectTomePath();
     RecalculateStats();
     updateSelectedOptions();
 
@@ -185,6 +231,8 @@ function selectOrigin(origin, type) {
 
             currentTome = origin;
             currentTomeList[0] = origin;
+            // update tome path
+            selectTomePath();
             break;
         case "Origin":
 
@@ -288,19 +336,50 @@ function SetTomePathOptions() {
 function selectTomePath(origin) {
 
     var originButton = document.getElementById("tomePathButton");
-    //originButton.textContent = "";
+    originButton.textContent = "";
 
-    SetTomePathInfo(originButton, origin);
+    if (origin != undefined) {
+        currentTomeList.push(origin);
+    }
+
+    for (var i = 0; i < currentTomeList.length; i++) {
+        SetTomePathInfo(originButton, currentTomeList[i]);
+    }
 
 
-    currentTomeList.push(origin);
+
+
     RecalculateStats();
     // swap current known origin
+    // draw all tomes
+
+    toggleOriginButtons();
+}
+
+function ClearTomePath() {
+    var originButton = document.getElementById("tomePathButton");
+    originButton.textContent = "";
+
+    currentTomeList = new Array();
+    currentTomeList.push(currentTome);
+
+    for (var i = 0; i < currentTomeList.length; i++) {
+        SetTomePathInfo(originButton, currentTomeList[i]);
+    }
+
+
+
+
+    RecalculateStats();
+    // swap current known origin
+    // draw all tomes
 
     toggleOriginButtons();
 }
 
 function SetTomePathInfo(button, origin) {
+
+
     const image = document.createElement("img");
     image.setAttribute("width", "40");
     image.setAttribute("height", "40");
@@ -344,7 +423,9 @@ function SetTomePathInfo(button, origin) {
 
     SetTomePreview(spa, origin);
 
+    newDivButton.className = "list-button-small";
 
+    newDivButton.addEventListener("click", () => SetTomePathOptions());
 
     newDivButton.append(spa);
 }
@@ -541,6 +622,41 @@ function RecalculateStats() {
 
     }
 
+
+
+    // add all extra input tags
+    document.getElementById("extraOrder").innerHTML = "<empireorder></empireorder>" + extraOrder;
+    document.getElementById("extraChaos").innerHTML = "<empirechaos></empirechaos>" + extraChaos;
+    document.getElementById("extraNature").innerHTML = "<empirenature></empirenature>" + extraNature;
+    document.getElementById("extraMaterium").innerHTML = "<empirematter></empirematter>" + extraMaterium;
+    document.getElementById("extraShadow").innerHTML = "<empireshadow></empireshadow>" + extraShadow;
+    document.getElementById("extraAstral").innerHTML = "<empirearcana></empirearcana>" + extraAstral;
+    for (let i = 0; i < extraOrder; i++) {
+
+        input += "<empireorder></empireorder>,";
+    }
+    for (let i = 0; i < extraChaos; i++) {
+        input += "<empirechaos></empirechaos>,";
+    }
+    for (let i = 0; i < extraNature; i++) {
+        input += "<empirenature></empirenature>,";
+    }
+    for (let i = 0; i < extraMaterium; i++) {
+        input += "<empirematter></empirematter>,";
+    }
+
+    for (let i = 0; i < extraShadow; i++) {
+        input += "<empireshadow></empireshadow>,";
+    }
+
+    for (let i = 0; i < extraAstral; i++) {
+        input += "<empirearcana></empirearcana>,";
+    }
+
+
+
+
+
     input = input.slice(0, -1);
 
     // console.log(input);
@@ -572,13 +688,11 @@ function RecalculateStats() {
     }).join(', ');
 
     const affinitySummary = document.getElementById("currentAffinity");
-    const affinitySummary2 = document.getElementById("currentAffinity2");
 
     result = result.replaceAll(",", "");
     currentAffinityTotal = result;
 
     affinitySummary.innerHTML = result;
-    affinitySummary2.innerHTML = result;
 
 
 }
@@ -689,7 +803,11 @@ function SetButtonInfo(button, origin, type) {
         // Create a span element to hold the button text
         const buttonText = document.createElement("span");
 
-        buttonText.innerHTML = origin.name;
+        if ('point_cost' in origin && type == "FormTrait") {
+            buttonText.innerHTML += origin.point_cost + ": ";
+        }
+
+        buttonText.innerHTML += origin.name;
         var affinity = "";
         if ('affinity' in origin) {
             affinity = ClearAffinityExtraTags(origin.affinity);
@@ -705,9 +823,7 @@ function SetButtonInfo(button, origin, type) {
 
         }
 
-        if ('point_cost' in origin && type == "FormTrait") {
-            buttonText.innerHTML += " Cost: " + origin.point_cost;
-        }
+
 
 
         // Append the image and button text to the button element
@@ -891,22 +1007,21 @@ function GetNextSetOfTomes() {
     }
 
 
-    // console.log(listOfNextTomes);
     return listOfNextTomes;
 }
 
 
-function GetAffinityMatches(inputString, substringToCount, number) {
+function GetAffinityMatches(affinityTotal, substringToCount, number) {
     // if not mixed affinity
     var moreThanNumber = false;
     if (substringToCount.indexOf("2") != -1) {
         var empireType = substringToCount.split(" ")[1];
 
-        inputString = inputString.replaceAll("  ", " ");
+        affinityTotal = affinityTotal.replaceAll("  ", " ");
         //   console.log(empireType + " input :" + inputString);
 
         // Use a regular expression to find the tag and extract the number
-        const match = inputString.match(new RegExp(`${empireType}\\s*(\\d+)`));
+        const match = affinityTotal.match(new RegExp(`${empireType}\\s*(\\d+)`));
 
         // Extract the number from the match result
         const numberMatch = match ? parseInt(match[1]) : null;
@@ -916,7 +1031,36 @@ function GetAffinityMatches(inputString, substringToCount, number) {
         // Check if the number of occurrences is greater than 4
         moreThanNumber = numberMatch > number;
     } else {
-        moreThanNumber = true;
+        // mixed affinity
+        // split to both type
+        subSubtStringToCount = substringToCount.split(", ");
+
+        numberMatches = new Array();
+
+        for (let index = 0; index < subSubtStringToCount.length; index++) {
+            var empireType = subSubtStringToCount[index].split(" ")[1];
+            console.log(empireType);
+
+            affinityTotal = affinityTotal.replaceAll("  ", " ");
+
+
+            // Use a regular expression to find the tag and extract the number
+            const match = affinityTotal.match(new RegExp(`${empireType}\\s*(\\d+)`));
+            numberMatches.push(match ? parseInt(match[1]) : 0);
+            // console.log(match);
+        }
+
+        var finalNumber = 0;
+        for (let index = 0; index < numberMatches.length; index++) {
+            finalNumber += numberMatches[index];
+
+        }
+
+
+
+
+
+        moreThanNumber = finalNumber > number;
     }
 
 

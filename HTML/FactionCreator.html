@@ -47,123 +47,185 @@
 <body>
     <div id="header"></div>
 
-    <div class="tome_name">Faction creator, WIP Golem/E&A Update</div>
-    <div style="
+    <div class="tome_name">Faction creator</div>
+
+    <div style="color:white;
     display: table;
     margin: 5px;
     margin-left: auto;
     margin-right: auto;">
-        <button class="sortingButton" id="name-button" onclick="showDiv('faction')">Faction Creator</button>
-        <button class="sortingButton" id="tier-button" onclick="showDiv('tome')">Tome Path</button>
+        <div style="font-size: 10px">Functional, missing incompatibility checks, will make it prettier</div>
+
+        <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
     </div>
 
     <div class="factioncreator">
         <div class="typeHolder" id="factioncreator">
 
             <div class="container">
-                <button class="button-random" onclick="SetRandomStart()">Randomise</button><br>
-                <div style="height:110px">
+
+                <div style="height:100px">
                     <div class="playerSigil" onclick="SetupButtons('Symbol')">
-                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="80px" height="80px" style="float:left">
-                        <img class="symbol" id="symbol" src="/aow4db/Icons/Symbols/SigilIcons_01.png" height="50px" style="float:left">
+                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px" style="float:left">
+                        <!--<img class="symbol" id="symbol" src="/aow4db/Icons/Symbols/SigilIcons_01.png" height="50px" style="float:left">-->
                     </div>
-                    <button class="test" id="shieldColor" onclick="ChangeShieldCol()">Color 1</button>
-                    <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>
-                    <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
+                    <!--<button class="test" id="shieldColor" onclick="ChangeShieldCol()">Color 1</button>
+                    <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>-->
+
                     <div id="currentAffinity" class="affinityText"> </div>
+                    <div id="extraAffinity" style="width: 400px;display: flex;justify-content: space-evenly;">
+                        <div style="display: flex;height: 20px;">
+                            <button class="AddSubtract" onclick="AddExtra('order','-')">
+                                -
+                            </button>
+
+                            <div id="extraOrder"></div>
+                            <button class="AddSubtract" onclick="AddExtra('order','+')">
+                                +
+                            </button>
+                        </div>
+
+                        <div style="display: flex;height: 20px;">
+                            <button class="AddSubtract" onclick="AddExtra('chaos','-')">
+                                -
+                            </button>
+                            <div id="extraChaos"></div>
+                            <button class="AddSubtract" onclick="AddExtra('chaos','+')">
+                                +
+                            </button>
+                        </div>
+
+                        <div style="display: flex;height: 20px;">
+                            <button class="AddSubtract" onclick="AddExtra('nature','-')">
+                                -
+                            </button>
+                            <div id="extraNature"></div>
+                            <button class="AddSubtract" onclick="AddExtra('nature','+')">
+                                +
+                            </button>
+                        </div>
+                        <div style="display: flex;height: 20px;">
+                            <button class="AddSubtract" onclick="AddExtra('shadow','-')">
+                                -
+                            </button>
+                            <div id="extraShadow"></div>
+                            <button class="AddSubtract" onclick="AddExtra('shadow','+')">
+                                +
+                            </button>
+                        </div>
+                        <div style="display: flex;height: 20px;">
+                            <button class="AddSubtract" onclick="AddExtra('materium','-')">
+                                -
+                            </button>
+                            <div id="extraMaterium"></div>
+                            <button class="AddSubtract" onclick="AddExtra('materium','+')">
+                                +
+                            </button>
+                        </div>
+                        <div style="display: flex;height: 20px;">
+                            <button class="AddSubtract" onclick="AddExtra('astral','-')">
+                                -
+                            </button>
+                            <div id="extraAstral"></div>
+                            <button class="AddSubtract" onclick="AddExtra('astral','+')">
+                                +
+                            </button>
+                        </div>
+
+                    </div>
+                    <br><br><br>
                 </div>
-                <div> Godir
-                    <div id="buttonContainer">
-                        <button class="button" id="originButtonOrigin" onclick="SetupButtons('Origin')"></button>
+                <div class="subDivider">
 
-                    </div>
-
-                    <div id="buttonContainer">
-                        <button class="button-inset" id="originButtonTome" onclick="SetupButtons('Tome')"></button>
-
-                    </div>
-
-                    <div id="buttonContainer">
-                        <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons('Loadout')"></button>
-
-                    </div>
-
-                </div>
-                <div> Race
-                    <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
-                    <div id="buttonContainer">
-
-                        <button class="button" id="originButtonForm" onclick="SetupButtons('Form')"></button>
-
-                    </div>
-
-                    <div id="buttonContainer">
-                        <button style="background-color: transparent;     border: none;" id="originButtonFormTrait" onclick="SetupButtons('FormTrait')">
-                            <div id="selected-options-container"></div>
-                        </button>
-
-
-                    </div>
-
-
-                </div>
-                <div> Culture
-                    <div id="buttonContainer">
-                        <button class="button" id="originButtonCulture" onclick="SetupButtons('Culture')"></button>
-
-                    </div>
-
-                    <div id="buttonContainer">
-                        <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons('Society1')"></button>
-
-                    </div>
-                    <div id="buttonContainer">
-                        <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons('Society2')"></button>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-
-
-        <div class="typeHolder" id="tomepath" style="display:none">
-
-
-            <div class="container">
-
-                <div style="height:110px">
-
-                    <div id="currentAffinity2" class="affinityText"> </div>
-                </div>
-                <div>
-                    <div id="buttonContainer">
+                    <div style="width:250px"> Godir<br>
+                        <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
+                        <br>
+                        <input type="text" value="Title" class="inputfield" id="fname2" name="fname">
                         <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonTome2"></button>
+                            <button class="button" id="originButtonOrigin" onclick="SetupButtons('Origin')"></button>
 
                         </div>
-                        <button class="button" onclick="SetTomePathOptions()"> Select Next Tome</button>
-                        <div id="tomePathButton"></div>
+
+                        <div id="buttonContainer">
+                            <button class="button-inset" id="originButtonTome" onclick="SetupButtons('Tome')"></button>
+
+                        </div>
+
+                        <div id="buttonContainer">
+                            <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons('Loadout')"></button>
+
+                        </div>
+
                     </div>
 
+                    <div style="width:250px"> Race<br>
+                        <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
+                        <div id="buttonContainer">
+
+                            <button class="button" id="originButtonForm" onclick="SetupButtons('Form')"></button>
+
+                        </div>
+
+                        <div id="buttonContainer">
+                            <button style="background-color: transparent;     border: none;" id="originButtonFormTrait" onclick="SetupButtons('FormTrait')">
+                                <div id="selected-options-container"></div>
+                            </button>
+
+
+                        </div>
+
+                        <div id="buttonContainer">
+                            <button class="button" id="originButtonCulture" onclick="SetupButtons('Culture')"></button>
+
+                        </div>
+
+                        <div id="buttonContainer">
+                            <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons('Society1')"></button>
+
+                        </div>
+                        <div id="buttonContainer">
+                            <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons('Society2')"></button>
+
+                        </div>
+                    </div>
 
                 </div>
 
+                <div>
 
+
+                    <button class="button-inset" id="originButtonTome2"></button>
+
+                    Tome Path<br>
+
+                    <button style="float:right; color:red" class="button" onclick="ClearTomePath()"> Clear Tome Path</button>
+                    <br>
+                    <div style="display:grid;grid-template-columns: repeat(8, 2fr);" id="tomePathButton"></div>
+
+                </div>
             </div>
+
+
+
+
         </div>
+
         <div class="selections">
             <p id="selections"></p>
 
-            <div id="originWrapperOptions" class="wrappers" style="display: block;">
+            <div id="originWrapperOptions" class="wrappers" style="display: grid;grid-template-columns: repeat(4, 2fr);">
 
             </div>
 
         </div>
     </div>
+
+
+
+
+
+
+
 
 
 </body>
@@ -256,6 +318,12 @@
 
     }
 
+    .subDivider {
+
+        display: flex;
+        justify-content: space-between;
+    }
+
     .list-button-small:hover {
 
         background-color: dimgrey;
@@ -303,6 +371,7 @@
     .selections {
         width: 300px;
 
+        height: fit-content;
         color: white;
         display: inline-block;
         position: relative;
@@ -314,7 +383,7 @@
         display: inline-block;
         position: relative;
 
-        width: 358px;
+        width: 550px;
 
         left: 102px;
 
@@ -366,10 +435,32 @@
     }
 
     .factioncreator {
+
         margin: auto;
+        left: -127px;
         width: 800px;
+        position: relative;
         display: flex;
         justify-content: space-between;
+
+    }
+
+    .AddSubtract {
+
+        margin: -2px;
+        font-weight: 900;
+        color: white;
+        background-color: transparent;
+        border: none;
+    }
+
+    .AddSubtract:hover {
+
+        margin: -2px;
+        font-weight: 1900;
+        color: aqua;
+        background-color: transparent;
+        border: none;
     }
 
     .sortingButton:hover {
