@@ -343,7 +343,7 @@ function selectTomePath(origin) {
     }
 
     for (var i = 0; i < currentTomeList.length; i++) {
-        SetTomePathInfo(originButton, currentTomeList[i]);
+        SetTomePathInfoSmall(originButton, currentTomeList[i]);
     }
 
 
@@ -354,6 +354,61 @@ function selectTomePath(origin) {
     // draw all tomes
 
     toggleOriginButtons();
+}
+
+function SetTomePathInfoSmall(buttonHolder, origin) {
+
+    const image = document.createElement("img");
+    image.setAttribute("width", "60");
+    image.setAttribute("height", "60");
+    image.style = "position: relative; top: 10px;";
+
+    image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
+
+
+
+
+    // Create a span element to hold the button text
+    const buttonText = document.createElement("span");
+    const newDivButton = document.createElement("div");
+    buttonText.innerHTML = romanize(origin.tier);
+    buttonText.style = "display: block;width: 100%;text-align: right;";
+    // buttonText.innerHTML += origin.name;
+    var affinity = "";
+    const affinityText = document.createElement("div");
+    affinityText.style = "position: relative;left: -3px;top: -80px;";
+    if ('affinities' in origin) {
+
+        affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
+        affinity = affinity.replaceAll(",", "");
+        affinityText.innerHTML += affinity;
+
+    }
+    // Append the image and button text to the button element
+    newDivButton.appendChild(image);
+    newDivButton.appendChild(buttonText);
+    newDivButton.appendChild(affinityText);
+
+    buttonHolder.append(newDivButton);
+
+
+
+
+
+    // create mouseover
+    spa = document.createElement("SPAN");
+    spa.className = "tooltiptext";
+    spa.setAttribute("style", "margin-left:113px");
+
+    spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
+
+    SetTomePreview(spa, origin);
+
+    newDivButton.className = "list-button-small";
+
+    newDivButton.addEventListener("click", () => SetTomePathOptions());
+
+    newDivButton.append(spa);
 }
 
 function ClearTomePath() {
@@ -774,7 +829,20 @@ function SetButtonInfo(button, origin, type) {
 
     if (type == "Tome") {
         image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
-    } else if (type == "Culture" || type == "Origin" || type == "FormTrait" || type == "Society1" || type == "Society2" || type == "Form") {
+    }
+    else if (type === "FormTrait") {
+        image.setAttribute("width", "20");
+        image.setAttribute("height", "20");
+        if (origin.id.startsWith("_")) {
+            var iconLink = origin.id;
+
+            iconLink = iconLink.split('_').slice(1).join('_');
+            image.src = "/aow4db/Icons/FactionCreation/" + iconLink + ".png";
+        } else {
+            image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
+        }
+    }
+    else if (type == "Culture" || type == "Origin" || type == "Society1" || type == "Society2" || type == "Form") {
         if (origin.id.startsWith("_")) {
             var iconLink = origin.id;
             iconLink = iconLink.split('_').slice(1).join('_');
