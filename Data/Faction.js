@@ -417,11 +417,7 @@ function ClearTomePath() {
 
     currentTomeList = new Array();
     currentTomeList.push(currentTome);
-
-    for (var i = 0; i < currentTomeList.length; i++) {
-        SetTomePathInfo(originButton, currentTomeList[i]);
-    }
-
+    selectTomePath();
 
 
 
