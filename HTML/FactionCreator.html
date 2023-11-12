@@ -73,7 +73,7 @@
                     <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>-->
 
                     <div id="currentAffinity" class="affinityText"> </div>
-                    <div id="extraAffinity" style="width: 400px;display: flex;justify-content: space-evenly;">
+                    <div id="extraAffinity" style="width: 400px;display: flex;justify-content: space-evenly;background-color: #f0f8ff2b">
                         <div style="display: flex;height: 20px;">
                             <button class="AddSubtract" onclick="AddExtra('order','-')">
                                 -
@@ -133,11 +133,11 @@
                         </div>
 
                     </div>
-                    <br><br><br>
+                    <hr>
                 </div>
                 <div class="subDivider">
 
-                    <div style="width:250px"> Godir <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
+                    <div style="width:250px"><span class="small_title"> Ruler</span> <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
 
                         <br>
                         <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
@@ -158,7 +158,7 @@
 
                     </div>
 
-                    <div style="width:250px"> Race <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
+                    <div style="width:250px"><span class="small_title"> Race</span> <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
 
                         <div id="buttonContainer">
 
@@ -192,15 +192,15 @@
                 </div>
 
                 <div>
-
+                    <hr>
 
                     <button class="button-inset" id="originButtonTome2"></button>
 
-                    Tome Path<br>
+                    <span class="small_title"> Tome Path</span>
 
                     <button style="float:right; color:red" class="button" onclick="ClearTomePath()"> Clear Tome Path</button>
                     <br>
-                    <div style="display:grid;grid-template-columns: repeat(8, 2fr);" id="tomePathButton"></div>
+                    <div style="display:grid;grid-template-columns: repeat(8, 2fr); margin: 15px;" id="tomePathButton"></div>
 
                 </div>
             </div>
@@ -236,6 +236,12 @@
 <style>
     button {
         font-family: 'Regular', sans-serif;
+    }
+
+    .small_title {
+        font-family: 'Decorative';
+        color: burlywood;
+        font-size: 14px;
     }
 
     /* CSS styles for buttons */
@@ -309,6 +315,7 @@
         border-image-slice: 10 10 10 10;
         border-image-repeat: stretch;
         width: 60px;
+
         background-color: #111;
         color: #fff;
         /* border: none; */
@@ -316,6 +323,17 @@
         position: relative;
 
 
+    }
+
+    .tome-button-small {
+
+        width: 60px;
+        height: 80px;
+
+        color: #fff;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
     }
 
     .subDivider {
@@ -440,7 +458,7 @@
     }
 
     /* Show the tooltip text when you mouse over the tooltip container */
-    .list-button-small:hover .tooltiptext {
+    .tome-button-small:hover .tooltiptext {
         visibility: visible;
     }
 

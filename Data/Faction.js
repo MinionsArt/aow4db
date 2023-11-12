@@ -372,7 +372,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     const buttonText = document.createElement("span");
     const newDivButton = document.createElement("div");
     buttonText.innerHTML = romanize(origin.tier);
-    buttonText.style = "display: block;width: 100%;text-align: right;";
+    buttonText.style = "display: block;font-size: 15px;position: relative;text-align: right; top: -10px;";
     // buttonText.innerHTML += origin.name;
     var affinity = "";
     const affinityText = document.createElement("div");
@@ -404,7 +404,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     SetTomePreview(spa, origin);
 
-    newDivButton.className = "list-button-small";
+    newDivButton.className = "tome-button-small";
 
     newDivButton.addEventListener("click", () => SetTomePathOptions());
 
@@ -1103,7 +1103,7 @@ function GetAffinityMatches(affinityTotal, substringToCount, number) {
 
         for (let index = 0; index < subSubtStringToCount.length; index++) {
             var empireType = subSubtStringToCount[index].split(" ")[1];
-            console.log(empireType);
+
 
             affinityTotal = affinityTotal.replaceAll("  ", " ");
 
