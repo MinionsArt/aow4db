@@ -91,7 +91,6 @@ function SetRandomStart() {
     var listofChoice = new Array();
     listofChoice.push("Tome");
     listofChoice.push("Origin");
-
     listofChoice.push("Form");
     listofChoice.push("FormTrait");
     listofChoice.push("Culture");
@@ -129,8 +128,8 @@ function SetRandomStart() {
                 while (getPoints() < 5) {
                     var randomEntry = GetRandomEntry(listofChoice[j]);
                     if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
-                        if (randomEntry.group_name == "ADAPTION") {
-                            hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTION');
+                        if (randomEntry.group_name == "ADAPTATION") {
+                            hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
                             if (!hasAdaptionGroup) {
                                 currentFormTraitList.push(randomEntry);
                             }
@@ -1404,19 +1403,15 @@ function updateSelectedOptions(origin) {
     if (origin != undefined) {
 
         toggleArrayEntry(currentFormTraitList, origin);
-        if (origin.group_name == "ADAPTION") {
-            hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTION');
-            if (hasAdaptionGroup) {
-                currentFormTraitList.pop();
-            }
+      
+        //     if (getPoints() > 5) {
+        //         currentFormTraitList.pop();
+        //     }
+        // } else {
             if (getPoints() > 5) {
                 currentFormTraitList.pop();
             }
-        } else {
-            if (getPoints() > 5) {
-                currentFormTraitList.pop();
-            }
-        }
+       // }
 
 
     }
@@ -1456,6 +1451,20 @@ function toggleArrayEntry(array, entry) {
         array.splice(index, 1);
     } else {
         // Entry doesn't exist, add it
-        array.push(entry);
-    }
+
+          if (entry.group_name == "ADAPTATION") {
+           var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
+           console.log(hasAdaptionGroup);
+            if (hasAdaptionGroup) {
+                
+              
+            } else{
+                array.push(entry);
+            }
+            }
+            else{
+                array.push(entry);
+            }
+        }
+       
 }
