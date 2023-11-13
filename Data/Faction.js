@@ -1025,12 +1025,12 @@ function GetNextSetOfTomes() {
             }
         }
     }
-    if (currentTomeList.length > 3) {
+    if (currentTomeList.length >= 3) {
         // allow tier 3 tomes
         for (i = 0; i < jsonTomes.tomes.length; i++) {
             if (jsonTomes.tomes[i].tier == 3) {
                 // 3 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 3)) {
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 2)) {
                     if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
                         listOfNextTomes.push(jsonTomes.tomes[i]);
                     }
@@ -1045,7 +1045,7 @@ function GetNextSetOfTomes() {
         for (i = 0; i < jsonTomes.tomes.length; i++) {
             if (jsonTomes.tomes[i].tier == 4) {
                 // 6 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 6)) {
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 5)) {
                     if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
                         listOfNextTomes.push(jsonTomes.tomes[i]);
                     }
@@ -1058,7 +1058,7 @@ function GetNextSetOfTomes() {
         for (i = 0; i < jsonTomes.tomes.length; i++) {
             if (jsonTomes.tomes[i].tier == 5) {
                 // 8 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 8)) {
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 7)) {
                     if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
                         listOfNextTomes.push(jsonTomes.tomes[i]);
                     }
