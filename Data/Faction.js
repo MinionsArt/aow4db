@@ -1,4 +1,3 @@
-
 var currentOrigin = "";
 var currentTome = "";
 
@@ -570,8 +569,7 @@ function SetupButtons(type) {
 
             SetButtonInfo(originButtonNew, origin, type);
 
-        }
-        else {
+        } else {
 
             if (!incompatibleCheck(type, origin)) {
                 originButtonNew.className = "list-button";
@@ -821,8 +819,7 @@ function SetButtonInfo(button, origin, type) {
 
     if (type == "Tome") {
         image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
-    }
-    else if (type === "FormTrait") {
+    } else if (type === "FormTrait") {
         image.setAttribute("width", "20");
         image.setAttribute("height", "20");
         if (origin.id.startsWith("_")) {
@@ -833,8 +830,7 @@ function SetButtonInfo(button, origin, type) {
         } else {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
-    }
-    else if (type == "Culture" || type == "Origin" || type == "Society1" || type == "Society2" || type == "Form") {
+    } else if (type == "Culture" || type == "Origin" || type == "Society1" || type == "Society2" || type == "Form") {
         if (origin.id.startsWith("_")) {
             var iconLink = origin.id;
             iconLink = iconLink.split('_').slice(1).join('_');
@@ -1024,7 +1020,7 @@ function GetNextSetOfTomes() {
             }
         }
     }
-    if (currentTomeList.length >= 3) {
+    if (currentTomeList.length > 3) {
         // allow tier 3 tomes
         for (i = 0; i < jsonTomes.tomes.length; i++) {
             if (jsonTomes.tomes[i].tier == 3) {
@@ -1403,15 +1399,15 @@ function updateSelectedOptions(origin) {
     if (origin != undefined) {
 
         toggleArrayEntry(currentFormTraitList, origin);
-      
+
         //     if (getPoints() > 5) {
         //         currentFormTraitList.pop();
         //     }
         // } else {
-            if (getPoints() > 5) {
-                currentFormTraitList.pop();
-            }
-       // }
+        if (getPoints() > 5) {
+            currentFormTraitList.pop();
+        }
+        // }
 
 
     }
@@ -1452,19 +1448,18 @@ function toggleArrayEntry(array, entry) {
     } else {
         // Entry doesn't exist, add it
 
-          if (entry.group_name == "ADAPTATION") {
-           var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
-           console.log(hasAdaptionGroup);
+        if (entry.group_name == "ADAPTATION") {
+            var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
+            console.log(hasAdaptionGroup);
             if (hasAdaptionGroup) {
-                
-              
-            } else{
+
+
+            } else {
                 array.push(entry);
             }
-            }
-            else{
-                array.push(entry);
-            }
+        } else {
+            array.push(entry);
         }
-       
+    }
+
 }
