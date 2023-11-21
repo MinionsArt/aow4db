@@ -14,6 +14,7 @@ var reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magel
 
 var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker", "dragoon"];
 
+var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer"];
 
 function GetUnitTierAndName(id) {
     for (i in jsonUnits.units) {
@@ -29,6 +30,16 @@ function GetUnitTierAndName(id) {
         }
     }
 
+}
+
+function CheckIfFormUnit(id) {
+    if (MountedSpecialList.includes(id) || highCultureUnits.includes(id) || barbarianCultureUnits.includes(id) || darkCultureUnits.includes(id) || feudalCultureUnits.includes(id) || industriousCultureUnits.includes(id) || mysticCultureUnits.includes(id) || reaverCultureUnits.includes(id) || extraFormUnitsList.includes(id)) {
+        if (id !== "observer" && id != "magelock_cannon") {
+            return true;
+        }
+    } else {
+        return false;
+    }
 }
 
 
@@ -294,17 +305,17 @@ function AddTriangleForDLCUnits(type, string, div) {
 
 function CheckForDLCContent(type, string) {
     if (type.toLowerCase().indexOf("unit") != -1) {
-        for (let index = 0; index < jsonUnits.units.length; index++) {
-            if (jsonUnits.units[index].id == string) {
-                if ('DLC' in jsonUnits.units[index]) {
-                    return jsonUnits.units[index].DLC;
+        for (var i = 0; i < jsonUnits.units.length; i++) {
+            if (jsonUnits.units[i].id == string) {
+                if ('DLC' in jsonUnits.units[i]) {
+                    return jsonUnits.units[i].DLC;
                 }
             }
 
         }
     }
     if (type.toLowerCase() == "tome") {
-        for (let index = 0; index < jsonTomes.tomes.length; index++) {
+        for (var index = 0; index < jsonTomes.tomes.length; index++) {
             if (jsonTomes.tomes[index].id == string) {
                 if ('DLC' in jsonTomes.tomes[index]) {
                     return jsonTomes.tomes[index].DLC;
@@ -2740,6 +2751,7 @@ function showUnit(a) {
             }
             unitCard.setAttribute("id", "unitCard" + a);
 
+
             var activeEnchantList;
             if (!unitCard.hasOwnProperty('activeEnchantList')) {
                 activeEnchantList = new Array();
@@ -2784,6 +2796,7 @@ function showUnit(a) {
 
                 unitNameDiv.append(newDivForMount);
             }
+
 
 
             hp = unitCard.querySelectorAll('p#hp')[0];
@@ -2843,6 +2856,35 @@ function showUnit(a) {
 
             }
 
+            if (CheckIfFormUnit(a)) {
+
+
+
+
+                iconName = "Form Unit";
+
+
+                iconName = iconName.toUpperCase();
+                btn = document.createElement("DIV");
+                btn.className = "unittype_icon";
+                imag = document.createElement("IMG");
+                spa = document.createElement("SPAN");
+                spa.className = "tooltiptext";
+                imag.setAttribute("src", "/aow4db/Icons/FactionCreation/human.png");
+
+                imag.setAttribute("width", "40");
+                imag.setAttribute("height", "40");
+
+
+                spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/FactionCreation/human.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">Form Unit</p>" +
+                    "<br> This unit will use a Form and Form Traits";
+
+                unitStat.appendChild(btn);
+
+                btn.appendChild(imag);
+                btn.append(spa);
+
+            }
 
 
             // find enchant button, give it unit data

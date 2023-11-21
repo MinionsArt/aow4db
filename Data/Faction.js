@@ -2,7 +2,7 @@ var currentOrigin = "";
 var currentTome = "";
 
 var currentForm = "";
-var currentFormTraitList = new Array();
+var currentFormTraitList = [];
 var currentCulture = "";
 var currentSociety1 = "";
 var currentSociety2 = "";
@@ -12,7 +12,7 @@ var currentAffinityTotal = "";
 
 var extraOrder, extraChaos, extraNature, extraMaterium, extraShadow, extraAstral;
 
-var currentTomeList = new Array();
+var currentTomeList = [];
 
 function ChangeShieldCol() {
 
@@ -35,7 +35,7 @@ function GetRandomSymbol() {
 
     //     numb = "0" + numb.toString();
     // }
-    // if (numb == 0) {
+    // if (numb === 0) {
     //     numb += 1;
     //     numb = "0" + numb.toString();
     // }
@@ -44,23 +44,23 @@ function GetRandomSymbol() {
 }
 
 function AddExtra(type, add) {
-    if (type == "order") {
+    if (type === "order") {
 
         extraOrder = addOrSubtract(extraOrder, add);
     }
-    if (type == "chaos") {
+    if (type === "chaos") {
         extraChaos = addOrSubtract(extraChaos, add);
     }
-    if (type == "nature") {
+    if (type === "nature") {
         extraNature = addOrSubtract(extraNature, add);
     }
-    if (type == "shadow") {
+    if (type === "shadow") {
         extraShadow = addOrSubtract(extraShadow, add);
     }
-    if (type == "materium") {
+    if (type === "materium") {
         extraMaterium = addOrSubtract(extraMaterium, add);
     }
-    if (type == "astral") {
+    if (type === "astral") {
         extraAstral = addOrSubtract(extraAstral, add);
     }
 
@@ -68,7 +68,7 @@ function AddExtra(type, add) {
 }
 
 function addOrSubtract(extraAffinity, add) {
-    if (add == "-") {
+    if (add === "-") {
         if (extraAffinity > 0) {
             extraAffinity--;
         }
@@ -87,7 +87,7 @@ function SetRandomStart() {
     ChangeShieldCol();
     ChangeSymbolCol();
 
-    var listofChoice = new Array();
+    var listofChoice = [];
     listofChoice.push("Tome");
     listofChoice.push("Origin");
     listofChoice.push("Form");
@@ -108,7 +108,7 @@ function SetRandomStart() {
             case "Tome":
 
                 currentTome = randomEntry;
-                currentTomeList = new Array();
+                currentTomeList = [];
                 currentTomeList.push(currentTome);
 
                 break;
@@ -120,14 +120,14 @@ function SetRandomStart() {
                 currentForm = randomEntry;
                 break;
             case "FormTrait":
-                currentFormTraitList = new Array();
+                currentFormTraitList = [];
                 currentFormTraitList.push(randomEntry);
 
 
                 while (getPoints() < 5) {
                     var randomEntry = GetRandomEntry(listofChoice[j]);
                     if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
-                        if (randomEntry.group_name == "ADAPTATION") {
+                        if (randomEntry.group_name === "ADAPTATION") {
                             hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
                             if (!hasAdaptionGroup) {
                                 currentFormTraitList.push(randomEntry);
@@ -154,7 +154,7 @@ function SetRandomStart() {
                 currentSociety1 = randomEntry;
                 break;
             case "Society2":
-                while (currentSociety1 == randomEntry) {
+                while (currentSociety1 === randomEntry) {
                     var randomEntry = GetRandomEntry(listofChoice[j]);
                 }
                 currentSociety2 = randomEntry;
@@ -286,7 +286,7 @@ function SelectSymbol(origin) {
 
         origin = "0" + origin.toString();
     }
-    if (origin == 0) {
+    if (origin === 0) {
         origin = 138;
 
     }
@@ -301,7 +301,7 @@ function SetTomePathOptions() {
 
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
-    var list = new Array();
+    var list = [];
 
     // assign current selection
 
@@ -410,7 +410,7 @@ function ClearTomePath() {
     var originButton = document.getElementById("tomePathButton");
     originButton.textContent = "";
 
-    currentTomeList = new Array();
+    currentTomeList = [];
     currentTomeList.push(currentTome);
     selectTomePath();
 
@@ -483,7 +483,7 @@ function SetupButtons(type) {
     originWrapper.innerHTML = "";
     var originButton = document.getElementById("originButton" + type);
     // console.log(type);
-    var list = new Array();
+    var list = [];
 
     // assign current selection
     switch (type) {
@@ -544,14 +544,14 @@ function SetupButtons(type) {
     selectionsText.textContent = "Select " + type;
     for (const origin of list) {
         const originButtonNew = document.createElement("button");
-        if (type == "Symbol") {
+        if (type === "Symbol") {
 
             originButtonNew.addEventListener("click", () => SelectSymbol(origin));
             originButtonNew.className = "list-button-small";
             originWrapper.appendChild(originButtonNew);
             SetButtonInfo(originButtonNew, origin, type);
 
-        } else if (type == "FormTrait") {
+        } else if (type === "FormTrait") {
 
             // hook into options thingie
             originButtonNew.className = "list-button";
@@ -590,7 +590,7 @@ function SetupButtons(type) {
 }
 
 function GetCurrentChoiceList() {
-    var listOfAllChoices = new Array();
+    var listOfAllChoices = [];
 
     //listOfAllChoices.push(currentOrigin);
     //  listOfAllChoices.push(currentTome);
@@ -817,7 +817,7 @@ function SetButtonInfo(button, origin, type) {
     image.setAttribute("height", "40");
     // console.log(origin);
 
-    if (type == "Tome") {
+    if (type === "Tome") {
         image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
     } else if (type === "FormTrait") {
         image.setAttribute("width", "20");
@@ -830,7 +830,7 @@ function SetButtonInfo(button, origin, type) {
         } else {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
-    } else if (type == "Culture" || type == "Origin" || type == "Society1" || type == "Society2" || type == "Form") {
+    } else if (type === "Culture" || type === "Origin" || type === "Society1" || type === "Society2" || type === "Form") {
         if (origin.id.startsWith("_")) {
             var iconLink = origin.id;
             iconLink = iconLink.split('_').slice(1).join('_');
@@ -839,14 +839,14 @@ function SetButtonInfo(button, origin, type) {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
 
-    } else if (type == "Loadout") {
+    } else if (type === "Loadout") {
         image.src = "/aow4db/Icons/Abilities/" + origin.id + ".png"; // Set the image source to your image file
-    } else if (type == "Symbol") {
+    } else if (type === "Symbol") {
         if (origin < 10 && origin > 0) {
 
             origin = "0" + origin.toString();
         }
-        if (origin == 0) {
+        if (origin === 0) {
             origin += 138;
 
         }
@@ -859,7 +859,7 @@ function SetButtonInfo(button, origin, type) {
         // Create a span element to hold the button text
         const buttonText = document.createElement("span");
 
-        if ('point_cost' in origin && type == "FormTrait") {
+        if ('point_cost' in origin && type === "FormTrait") {
             buttonText.innerHTML += origin.point_cost + ": ";
         }
 
@@ -900,7 +900,7 @@ function SetButtonInfo(button, origin, type) {
     spa.setAttribute("style", "margin-left:113px");
 
     spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
-    if (type == "Origin" || type == "Culture" || type == "Form" || type == "Society1" || type == "Society2") {
+    if (type === "Origin" || type === "Culture" || type === "Form" || type === "Society1" || type === "Society2") {
         //spa.innerHTML += origin.description;
 
 
@@ -950,10 +950,10 @@ function SetButtonInfo(button, origin, type) {
         }
 
 
-    } else if (type == "Tome") {
+    } else if (type === "Tome") {
         SetTomePreview(spa, origin);
 
-    } else if (type == "FormTrait") {
+    } else if (type === "FormTrait") {
         SetFullPreview(spa, origin);
 
     }
@@ -985,10 +985,10 @@ function SetFullPreview(span, origin) {
 }
 
 function GetAllStartingTomes() {
-    var listOfAllTier1Tomes = new Array();
+    var listOfAllTier1Tomes = [];
 
     for (i = 0; i < jsonTomes.tomes.length; i++) {
-        if (jsonTomes.tomes[i].tier == 1) {
+        if (jsonTomes.tomes[i].tier === 1) {
             listOfAllTier1Tomes.push(jsonTomes.tomes[i]);
         }
     }
@@ -998,11 +998,11 @@ function GetAllStartingTomes() {
 
 function GetNextSetOfTomes() {
 
-    var listOfNextTomes = new Array();
+    var listOfNextTomes = [];
 
     for (i = 0; i < jsonTomes.tomes.length; i++) {
         // all tier 1
-        if (jsonTomes.tomes[i].tier == 1) {
+        if (jsonTomes.tomes[i].tier === 1) {
             if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
                 listOfNextTomes.push(jsonTomes.tomes[i]);
             }
@@ -1013,7 +1013,7 @@ function GetNextSetOfTomes() {
         // allow tier 2 tomes
         for (i = 0; i < jsonTomes.tomes.length; i++) {
 
-            if (jsonTomes.tomes[i].tier == 2) {
+            if (jsonTomes.tomes[i].tier === 2) {
                 if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
                     listOfNextTomes.push(jsonTomes.tomes[i]);
                 }
@@ -1023,7 +1023,7 @@ function GetNextSetOfTomes() {
     if (currentTomeList.length > 3) {
         // allow tier 3 tomes
         for (i = 0; i < jsonTomes.tomes.length; i++) {
-            if (jsonTomes.tomes[i].tier == 3) {
+            if (jsonTomes.tomes[i].tier === 3) {
                 // 3 affinity
                 if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 2)) {
                     if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
@@ -1038,7 +1038,7 @@ function GetNextSetOfTomes() {
     if (currentTomeList.length > 5) {
         // allow tier 4 tomes
         for (i = 0; i < jsonTomes.tomes.length; i++) {
-            if (jsonTomes.tomes[i].tier == 4) {
+            if (jsonTomes.tomes[i].tier === 4) {
                 // 6 affinity
                 if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 5)) {
                     if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
@@ -1051,7 +1051,7 @@ function GetNextSetOfTomes() {
     if (currentTomeList.length > 7) {
         // allow tier 5 tomes
         for (i = 0; i < jsonTomes.tomes.length; i++) {
-            if (jsonTomes.tomes[i].tier == 5) {
+            if (jsonTomes.tomes[i].tier === 5) {
                 // 8 affinity
                 if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 7)) {
                     if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
@@ -1091,7 +1091,7 @@ function GetAffinityMatches(affinityTotal, substringToCount, number) {
         // split to both type
         subSubtStringToCount = substringToCount.split(", ");
 
-        numberMatches = new Array();
+        numberMatches = [];
 
         for (let index = 0; index < subSubtStringToCount.length; index++) {
             var empireType = subSubtStringToCount[index].split(" ")[1];
@@ -1125,10 +1125,10 @@ function GetAffinityMatches(affinityTotal, substringToCount, number) {
 }
 
 function GetAllOrigins() {
-    var listOfAllOrigins = new Array();
+    var listOfAllOrigins = [];
 
     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type == "Ruler Origin") {
+        if (jsonFactionCreation.traits[i].type === "Ruler Origin") {
             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
         }
     }
@@ -1137,10 +1137,10 @@ function GetAllOrigins() {
 }
 
 function GetAllCultures() {
-    var listOfAllOrigins = new Array();
+    var listOfAllOrigins = [];
 
     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type == "Culture") {
+        if (jsonFactionCreation.traits[i].type === "Culture") {
             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
         }
     }
@@ -1149,10 +1149,10 @@ function GetAllCultures() {
 }
 
 function GetAllForms() {
-    var listOfAllOrigins = new Array();
+    var listOfAllOrigins = [];
 
     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type == "Skin") {
+        if (jsonFactionCreation.traits[i].type === "Skin") {
             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
         }
     }
@@ -1161,10 +1161,10 @@ function GetAllForms() {
 }
 
 function GetAllFormTraitsList() {
-    var listOfAllOrigins = new Array();
+    var listOfAllOrigins = [];
 
     for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
-        if (jsonFactionCreation2.traits[i].type == "form") {
+        if (jsonFactionCreation2.traits[i].type === "form") {
             listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
         }
     }
@@ -1175,11 +1175,11 @@ function GetAllFormTraitsList() {
 }
 
 function GetAllSocietyTraits() {
-    var listOfAllOrigins = new Array();
+    var listOfAllOrigins = [];
 
     for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
-        if (jsonFactionCreation2.traits[i].type == "society") {
-            if (jsonFactionCreation2.traits[i].enabled == true) {
+        if (jsonFactionCreation2.traits[i].type === "society") {
+            if (jsonFactionCreation2.traits[i].enabled === true) {
                 if (jsonFactionCreation2.traits[i].id != "guardians_of_nature__goodact__") {
                     listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
                 }
@@ -1194,10 +1194,10 @@ function GetAllSocietyTraits() {
 
 
 function GetAllLoadouts() {
-    var listOfAllOrigins = new Array();
+    var listOfAllOrigins = [];
 
     for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type == "Loadout") {
+        if (jsonFactionCreation.traits[i].type === "Loadout") {
             listOfAllOrigins.push(jsonFactionCreation.traits[i]);
         }
     }
@@ -1275,12 +1275,12 @@ function incompatibleCheck(type, origin) {
     var incompatibleWithSetup = false;
     if ('incompatible' in origin) {
 
-        if (type == "Culture") {
+        if (type === "Culture") {
 
             var i = "";
             for (i in origin.incompatible) {
 
-                if (origin.incompatible[i].name == currentSociety1.name || origin.incompatible[i].name == currentSociety2.name) {
+                if (origin.incompatible[i].name === currentSociety1.name || origin.incompatible[i].name === currentSociety2.name) {
                     incompatibleWithSetup = true;
                 }
             }
@@ -1288,7 +1288,7 @@ function incompatibleCheck(type, origin) {
         }
     }
     if ('incompatible_society_traits' in origin) {
-        if (type == "Society1") {
+        if (type === "Society1") {
 
             var i = "";
             for (i in origin.incompatible_society_traits) {
@@ -1303,7 +1303,7 @@ function incompatibleCheck(type, origin) {
 
 
         }
-        if (type == "Society2") {
+        if (type === "Society2") {
             var i = "";
             for (i in origin.incompatible) {
                 if (currentSociety1 != "") {
@@ -1320,19 +1320,19 @@ function incompatibleCheck(type, origin) {
 
         }
     }
-    if (currentSociety1.name == origin.name) {
+    if (currentSociety1.name === origin.name) {
 
         incompatibleWithSetup = true;
 
     }
-    if (currentSociety2.name == origin.name) {
+    if (currentSociety2.name === origin.name) {
 
         incompatibleWithSetup = true;
 
     }
 
 
-    if (type == "Loadout") {
+    if (type === "Loadout") {
 
         var splitOrigins = origin.requirement.split(",");
 
@@ -1343,7 +1343,7 @@ function incompatibleCheck(type, origin) {
                 incompatibleWithSetup = true;
             }
 
-            if (splitOrigins[0].indexOf(currentOrigin.name) == -1) {
+            if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
                 // console.log(splitOrigins);
                 // console.log(currentCulture.name + " " + splitOrigins[1]);
                 incompatibleWithSetup = true;
@@ -1351,7 +1351,7 @@ function incompatibleCheck(type, origin) {
         } else {
             // console.log(currentOrigin.name + " " + splitOrigins[0]);
 
-            if (splitOrigins[0].indexOf(currentOrigin.name) == -1) {
+            if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
 
                 incompatibleWithSetup = true;
             }
@@ -1448,7 +1448,7 @@ function toggleArrayEntry(array, entry) {
     } else {
         // Entry doesn't exist, add it
 
-        if (entry.group_name == "ADAPTATION") {
+        if (entry.group_name === "ADAPTATION") {
             var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
             console.log(hasAdaptionGroup);
             if (hasAdaptionGroup) {
