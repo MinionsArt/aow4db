@@ -14,7 +14,7 @@ var reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magel
 
 var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker", "dragoon"];
 
-var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer"];
+var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer", "great_bombard", "afflictor"];
 
 function GetUnitTierAndName(id) {
     for (i in jsonUnits.units) {
@@ -5517,9 +5517,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-        entry,
-        percentage
-    } of percentages) {
+            entry,
+            percentage
+        } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
