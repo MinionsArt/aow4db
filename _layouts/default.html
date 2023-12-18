@@ -8,22 +8,22 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
-
     <script>
         var unitarray = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
+
+
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                SetButtonsAndDivs(unitarray, undefined, "unit");
-                SetLevelUpStuff();
+                CheckData();
             });
-
-
-
         });
+
+        function HandlePage() {
+            SetButtonsAndDivs(unitarray, undefined, "unit");
+            SetLevelUpStuff();
+        }
+
     </script>
 
 
@@ -54,7 +54,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>
