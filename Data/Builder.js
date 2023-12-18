@@ -15,13 +15,14 @@ function fetchJsonFiles(filePaths) {
         )
     );
 }
-var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2;
+var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes;
 
 async function GetAllData() {
     // Example usage:
 
 
-    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json'];
+    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
+        '/aow4db/Data/Tomes.json'];
 
 
     await fetchJsonFiles(jsonFilePaths)
@@ -39,6 +40,9 @@ async function GetAllData() {
                     jsonUnits = data;
                 } else if (index == 4) {
                     jsonFactionCreation2 = data;
+                }
+                else if (index == 5) {
+                    jsonTomes = data;
                 }
             });
         })
@@ -100,9 +104,9 @@ function CheckIfFormUnit(id) {
 
 
 function GetUnitTierAndNameTome(id) {
-    for (i in jsonTomes.tomes) {
-        if (id === jsonTomes.tomes[i].id) {
-            return romanize(jsonTomes.tomes[i].tier) + " - " + jsonTomes.tomes[i].name;
+    for (i in jsonTomes) {
+        if (id === jsonTomes[i].id) {
+            return romanize(jsonTomes[i].tier) + " - " + jsonTomes[i].name;
         }
     }
 
@@ -369,10 +373,10 @@ function CheckForDLCContent(type, string) {
         }
     }
     if (type.toLowerCase() == "tome") {
-        for (var index = 0; index < jsonTomes.tomes.length; index++) {
-            if (jsonTomes.tomes[index].id == string) {
-                if ('DLC' in jsonTomes.tomes[index]) {
-                    return jsonTomes.tomes[index].DLC;
+        for (var index = 0; index < jsonTomes.length; index++) {
+            if (jsonTomes[index].id == string) {
+                if ('DLC' in jsonTomes[index]) {
+                    return jsonTomes[index].DLC;
                 }
             }
 
@@ -2566,22 +2570,22 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
         }
     } else {
         var listMod = new Array();
-        for (i in jsonTomes.tomes) {
-            affinity = jsonTomes.tomes[i].affinities;
+        for (i in jsonTomes) {
+            affinity = jsonTomes[i].affinities;
 
             if (affinity != undefined) {
                 if (affinity.toUpperCase().indexOf(argumentaffinity.toUpperCase()) !== -1) {
-                    for (k in jsonTomes.tomes[i].skills) {
-                        listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
+                    for (k in jsonTomes[i].skills) {
+                        listMod.push(jsonTomes[i].skills[k].spell_slug);
 
                     }
 
                 }
             } else {
                 if (argumentaffinity === "General Research") {
-                    if (jsonTomes.tomes[i].name.toUpperCase().indexOf("General Research".toUpperCase()) !== -1) {
-                        for (k in jsonTomes.tomes[i].skills) {
-                            listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
+                    if (jsonTomes[i].name.toUpperCase().indexOf("General Research".toUpperCase()) !== -1) {
+                        for (k in jsonTomes[i].skills) {
+                            listMod.push(jsonTomes[i].skills[k].spell_slug);
 
                         }
 
@@ -2589,9 +2593,9 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
                 }
 
                 if (argumentaffinity === "Culture") {
-                    if (jsonTomes.tomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1 || jsonTomes.tomes[i].name.toUpperCase().indexOf("Reaver".toUpperCase()) !== -1) {
-                        for (k in jsonTomes.tomes[i].skills) {
-                            listMod.push(jsonTomes.tomes[i].skills[k].spell_slug);
+                    if (jsonTomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Reaver".toUpperCase()) !== -1) {
+                        for (k in jsonTomes[i].skills) {
+                            listMod.push(jsonTomes[i].skills[k].spell_slug);
 
                         }
 
@@ -3813,13 +3817,13 @@ function CheckIfInTomes(unitID) {
     if (unitID == "young_frost_dragon" || unitID == "young_obsidian_dragon" || unitID == "young_golden_dragon") {
         unitID = "young_fire_dragon";
     }
-    for (i in jsonTomes.tomes) {
-        for (k in jsonTomes.tomes[i].skills) {
-            if ('unit_slug' in jsonTomes.tomes[i].skills[k]) {
-                if (unitID === jsonTomes.tomes[i].skills[k].unit_slug) {
+    for (i in jsonTomes) {
+        for (k in jsonTomes[i].skills) {
+            if ('unit_slug' in jsonTomes[i].skills[k]) {
+                if (unitID === jsonTomes[i].skills[k].unit_slug) {
 
 
-                    tome = jsonTomes.tomes[i];
+                    tome = jsonTomes[i];
                 }
             }
 
@@ -4239,8 +4243,8 @@ function showSiegeProject(id, showOrigin) {
 function showTome(a, div) {
     var modName, description, cost, type, tier, k, j, l, descriptionDiv = "";
     var found = false;
-    for (j in jsonTomes.tomes) {
-        if (a === jsonTomes.tomes[j].id) {
+    for (j in jsonTomes) {
+        if (a === jsonTomes[j].id) {
 
 
             modName = document.getElementById("tomename");
@@ -4249,10 +4253,10 @@ function showTome(a, div) {
 
 
 
-            modName.innerHTML += jsonTomes.tomes[j].name;
-            if ('DLC' in jsonTomes.tomes[j]) {
+            modName.innerHTML += jsonTomes[j].name;
+            if ('DLC' in jsonTomes[j]) {
 
-                var newDivForMount = AddDLCTag(jsonTomes.tomes[j].DLC);
+                var newDivForMount = AddDLCTag(jsonTomes[j].DLC);
 
                 modName.append(newDivForMount);
 
@@ -4261,9 +4265,9 @@ function showTome(a, div) {
 
             modName.setAttribute("id", "tomename" + a);
             descriptionDiv = document.getElementById("tomedescription");
-            description = jsonTomes.tomes[j].gameplay_description;
-            if ('affinities' in jsonTomes.tomes[j]) {
-                var affinitiesdual = jsonTomes.tomes[j].affinities.split(", ");
+            description = jsonTomes[j].gameplay_description;
+            if ('affinities' in jsonTomes[j]) {
+                var affinitiesdual = jsonTomes[j].affinities.split(", ");
 
                 var allAffinity = "";
                 for (i in affinitiesdual) {
@@ -4273,7 +4277,7 @@ function showTome(a, div) {
                 }
 
 
-                descriptionDiv.innerHTML = "Tier " + romanize(jsonTomes.tomes[j].tier) + " " + allAffinity + " " + "<br>" + description;
+                descriptionDiv.innerHTML = "Tier " + romanize(jsonTomes[j].tier) + " " + allAffinity + " " + "<br>" + description;
             } else {
                 descriptionDiv.innerHTML = description;
             }
@@ -4281,11 +4285,11 @@ function showTome(a, div) {
 
 
             descriptionDiv.setAttribute("id", "tomedescription" + a);
-            loreDescription = jsonTomes.tomes[j].lore_description;
+            loreDescription = jsonTomes[j].lore_description;
             loreDescription = loreDescription.replace(String.fromCharCode(92), "");
             loreDescription = loreDescription.replace(String.fromCharCode(92), "");
 
-            loreDescription += "<br> -" + jsonTomes.tomes[j].lore_author;
+            loreDescription += "<br> -" + jsonTomes[j].lore_author;
             descriptionLoreDiv = document.getElementById("tomeloredescription");
             descriptionLoreDiv.innerHTML = loreDescription;
 
@@ -4293,8 +4297,8 @@ function showTome(a, div) {
 
             var div = document.createElement("DIV");
 
-            if ('affinities' in jsonTomes.tomes[j]) {
-                var affinitiesdual = jsonTomes.tomes[j].affinities.split(", ");
+            if ('affinities' in jsonTomes[j]) {
+                var affinitiesdual = jsonTomes[j].affinities.split(", ");
 
                 var allAffinity = "";
                 for (i in affinitiesdual) {
@@ -4306,18 +4310,18 @@ function showTome(a, div) {
                 unitTypesDiv.appendChild(div);
             }
             var l = "";
-            if ('hero_skills' in jsonTomes.tomes[j]) {
+            if ('hero_skills' in jsonTomes[j]) {
 
-                for (l in jsonTomes.tomes[j].hero_skills) {
+                for (l in jsonTomes[j].hero_skills) {
                     // remove duplicates
                     if (l != 0) {
-                        if (jsonTomes.tomes[j].hero_skills[l].slug === jsonTomes.tomes[j].hero_skills[l - 1].slug) {
+                        if (jsonTomes[j].hero_skills[l].slug === jsonTomes[j].hero_skills[l - 1].slug) {
                             break;
                         }
                     }
                     var div = document.createElement("DIV");
                     div.className = "initialBonusText";
-                    var name = GetHeroSkillName(jsonTomes.tomes[j].hero_skills[l].slug);
+                    var name = GetHeroSkillName(jsonTomes[j].hero_skills[l].slug);
                     div.innerHTML = "<hero></hero>" + name;
 
 
@@ -4325,12 +4329,8 @@ function showTome(a, div) {
 
 
 
-                    var heroSkillIconAndDesc = GetHeroSkillDescription(jsonTomes.tomes[j].hero_skills[l].slug);
+                    var heroSkillIconAndDesc = GetHeroSkillDescription(jsonTomes[j].hero_skills[l].slug);
 
-
-
-
-                    console.log("here2");
                     // its a ability
                     if (heroSkillIconAndDesc[0] != "") {
 
@@ -4362,17 +4362,17 @@ function showTome(a, div) {
 
             }
             var l = "";
-            if ('initial_upgrades' in jsonTomes.tomes[j]) {
-                for (l in jsonTomes.tomes[j].initial_upgrades) {
+            if ('initial_upgrades' in jsonTomes[j]) {
+                for (l in jsonTomes[j].initial_upgrades) {
 
                     var div = document.createElement("DIV");
                     div.className = "initialBonusText";
-                    var name = GetStructureName(jsonTomes.tomes[j].initial_upgrades[l].upgrade_slug);
+                    var name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
                     div.innerHTML = name;
 
                     var spa = document.createElement("SPAN");
                     spa.className = "tooltiptext";
-                    spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes.tomes[j].initial_upgrades[l].upgrade_slug);
+                    spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
 
                     div.appendChild(spa);
                     unitTypesDiv.appendChild(div);
@@ -4381,17 +4381,17 @@ function showTome(a, div) {
 
             }
             var l = "";
-            if ('passives' in jsonTomes.tomes[j]) {
-                for (l in jsonTomes.tomes[j].passives) {
+            if ('passives' in jsonTomes[j]) {
+                for (l in jsonTomes[j].passives) {
                     var div = document.createElement("DIV");
                     div.className = "initialBonusText";
 
-                    div.innerHTML = jsonTomes.tomes[j].passives[l].name;
+                    div.innerHTML = jsonTomes[j].passives[l].name;
 
                     var spa = document.createElement("SPAN");
                     spa.className = "tooltiptext";
-                    spa.innerHTML = jsonTomes.tomes[j].passives[l].type + "<br>";
-                    spa.innerHTML += jsonTomes.tomes[j].passives[l].description;
+                    spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
+                    spa.innerHTML += jsonTomes[j].passives[l].description;
                     div.appendChild(spa);
 
                     unitTypesDiv.appendChild(div);
@@ -4405,7 +4405,7 @@ function showTome(a, div) {
             var div = document.createElement("DIV");
             div.className = "initialBonusText";
             var amount = "";
-            if (jsonTomes.tomes[j].tier === 1 || jsonTomes.tomes[j].tier === 2 || jsonTomes.tomes[j].tier === 3 || jsonTomes.tomes[j].tier === 4 || jsonTomes.tomes[j].tier === 5) {
+            if (jsonTomes[j].tier === 1 || jsonTomes[j].tier === 2 || jsonTomes[j].tier === 3 || jsonTomes[j].tier === 4 || jsonTomes[j].tier === 5) {
                 amount = 5;
             }
 
@@ -4423,28 +4423,28 @@ function showTome(a, div) {
             descriptionLoreDiv.setAttribute("id", "tomeloredescription" + a);
             skillHolder = document.getElementById("tome_unlocks");
 
-            for (k in jsonTomes.tomes[j].skills) {
-                if ('spell_slug' in jsonTomes.tomes[j].skills[k]) {
+            for (k in jsonTomes[j].skills) {
+                if ('spell_slug' in jsonTomes[j].skills[k]) {
                     var iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
-                    showSpell(jsonTomes.tomes[j].skills[k].spell_slug, false);
+                    showSpell(jsonTomes[j].skills[k].spell_slug, false);
                 }
-                if ('unit_slug' in jsonTomes.tomes[j].skills[k]) {
+                if ('unit_slug' in jsonTomes[j].skills[k]) {
                     var iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
 
-                    showUnitUnlock(jsonTomes.tomes[j].skills[k]);
+                    showUnitUnlock(jsonTomes[j].skills[k]);
                 }
 
-                if ('upgrade_slug' in jsonTomes.tomes[j].skills[k]) {
+                if ('upgrade_slug' in jsonTomes[j].skills[k]) {
                     var iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
-                    showStructure(jsonTomes.tomes[j].skills[k].upgrade_slug, false);
+                    showStructure(jsonTomes[j].skills[k].upgrade_slug, false);
                 }
-                if (jsonTomes.tomes[j].skills[k].type.indexOf("Siege") != -1) {
+                if (jsonTomes[j].skills[k].type.indexOf("Siege") != -1) {
                     var iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
-                    showSiegeProject(jsonTomes.tomes[j].skills[k].name, false);
+                    showSiegeProject(jsonTomes[j].skills[k].name, false);
                 }
 
             }
@@ -6404,22 +6404,22 @@ function AddDLCTag(dlcname) {
 }
 
 function FindHeroSkillOrigin(id) {
-    for (j in jsonTomes.tomes) {
+    for (j in jsonTomes) {
         {
-            if ('hero_skills' in jsonTomes.tomes[j]) {
-                for (k in jsonTomes.tomes[j].hero_skills) {
-                    if (jsonTomes.tomes[j].hero_skills[k].slug === id) {
+            if ('hero_skills' in jsonTomes[j]) {
+                for (k in jsonTomes[j].hero_skills) {
+                    if (jsonTomes[j].hero_skills[k].slug === id) {
 
                         var tomeOrigin = document.getElementById("originTome");
-                        if ('affinities' in jsonTomes.tomes[j]) {
-                            tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes.tomes[j]) + "<br>";
+                        if ('affinities' in jsonTomes[j]) {
+                            tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]) + "<br>";
                         }
-                        tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                        tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
                         var tomeOriginIcon = document.getElementById("originTomeIcon");
-                        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                         var wrap = tomeOrigin.innerHTML;
-                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
-                        return jsonTomes.tomes[j].id;
+                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+                        return jsonTomes[j].id;
                     }
 
 
@@ -6433,31 +6433,31 @@ function FindHeroSkillOrigin(id) {
 
 function backtraceTomeOriginAndTierForStructure(structure, showorigin) {
     var returning = "";
-    for (j in jsonTomes.tomes) {
+    for (j in jsonTomes) {
 
-        for (k in jsonTomes.tomes[j].skills) {
-            if (jsonTomes.tomes[j].skills[k].upgrade_slug === structure) {
+        for (k in jsonTomes[j].skills) {
+            if (jsonTomes[j].skills[k].upgrade_slug === structure) {
                 if (showorigin) {
 
 
 
                     var tomeOrigin = document.getElementById("originTome");
-                    if ('affinities' in jsonTomes.tomes[j]) {
+                    if ('affinities' in jsonTomes[j]) {
 
 
-                        tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes.tomes[j]);
+                        tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]);
 
                         tomeOrigin.innerHTML += "<br>";
 
 
                     }
-                    tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                    tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
                     var tomeOriginIcon = document.getElementById("originTomeIcon");
-                    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                     var wrap = tomeOrigin.innerHTML;
-                    tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>";
+                    tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>";
 
-                    returning = jsonTomes.tomes[j].id;
+                    returning = jsonTomes[j].id;
                 }
             }
 
@@ -6590,43 +6590,43 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
         var wrap = tomeOrigin.innerHTML;
         tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=tome_of_souls\" target=\"_blank\">" + wrap + "</a>"
     } else {
-        for (j in jsonTomes.tomes) {
+        for (j in jsonTomes) {
             {
-                for (k in jsonTomes.tomes[j].skills) {
-                    if (jsonTomes.tomes[j].skills[k].spell_slug === spell) {
+                for (k in jsonTomes[j].skills) {
+                    if (jsonTomes[j].skills[k].spell_slug === spell) {
                         if (showorigin) {
 
 
 
 
                             var tomeOrigin = document.getElementById("originTome");
-                            if ('affinities' in jsonTomes.tomes[j]) {
+                            if ('affinities' in jsonTomes[j]) {
 
 
-                                tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes.tomes[j]);
+                                tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]);
 
                                 tomeOrigin.innerHTML += "<br>";
                             }
 
-                            tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                            tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
 
                             var tomeOriginIcon = document.getElementById("originTomeIcon");
-                            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                             var wrap = tomeOrigin.innerHTML;
-                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
 
 
 
                         }
 
-                        return jsonTomes.tomes[j].skills[k].tier + "," + jsonTomes.tomes[j].id;
+                        return jsonTomes[j].skills[k].tier + "," + jsonTomes[j].id;
                     }
 
-                    if (jsonTomes.tomes[j].skills[k].siege_project_slug === spell || jsonTomes.tomes[j].skills[k].name === spell) {
+                    if (jsonTomes[j].skills[k].siege_project_slug === spell || jsonTomes[j].skills[k].name === spell) {
                         if (showorigin) {
                             var tomeOrigin = document.getElementById("originTome");
-                            if ('affinities' in jsonTomes.tomes[j]) {
-                                var affinitiesdual = jsonTomes.tomes[j].affinities.split(", ");
+                            if ('affinities' in jsonTomes[j]) {
+                                var affinitiesdual = jsonTomes[j].affinities.split(", ");
 
                                 var allAffinity = "";
                                 for (i in affinitiesdual) {
@@ -6643,17 +6643,17 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                                 tomeOrigin.innerHTML += "<br>";
                             }
 
-                            tomeOrigin.innerHTML += romanize(jsonTomes.tomes[j].tier) + " - " + jsonTomes.tomes[j].name;
+                            tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
                             var tomeOriginIcon = document.getElementById("originTomeIcon");
-                            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes.tomes[j].id + ".png");
+                            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                             var wrap = tomeOrigin.innerHTML;
-                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes.tomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
 
 
 
                         }
 
-                        return jsonTomes.tomes[j].skills[k].tier + "," + jsonTomes.tomes[j].id;
+                        return jsonTomes[j].skills[k].tier + "," + jsonTomes[j].id;
                     }
                 }
             }
@@ -6666,29 +6666,29 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 function backtraceStructureToTomeNameAndTier(structure) {
     var array = new Array();
 
-    for (j in jsonTomes.tomes) {
+    for (j in jsonTomes) {
 
 
-        if ('initial_upgrades' in jsonTomes.tomes[j]) {
-            for (k in jsonTomes.tomes[j].initial_upgrades)
-                if (structure.indexOf(jsonTomes.tomes[j].initial_upgrades[k].upgrade_slug) != -1) {
+        if ('initial_upgrades' in jsonTomes[j]) {
+            for (k in jsonTomes[j].initial_upgrades)
+                if (structure.indexOf(jsonTomes[j].initial_upgrades[k].upgrade_slug) != -1) {
                     if (structure.indexOf("wildlife_sanctuary") != -1) {
 
                         array.push("2 <empirenature></empirenature> Tome of Beasts");
                     } else {
-                        if ('affinities' in jsonTomes.tomes[j]) {
-                            array.push(jsonTomes.tomes[j].affinities + " " + jsonTomes.tomes[j].name);
+                        if ('affinities' in jsonTomes[j]) {
+                            array.push(jsonTomes[j].affinities + " " + jsonTomes[j].name);
                         } else {
-                            array.push(jsonTomes.tomes[j].name);
+                            array.push(jsonTomes[j].name);
                         }
                     }
                     if (structure.indexOf("wildlife_sanctuary") != -1) {
                         array.push(1);
                     } else {
-                        array.push(jsonTomes.tomes[j].tier);
+                        array.push(jsonTomes[j].tier);
                     }
 
-                    array.push(jsonTomes.tomes[j].id);
+                    array.push(jsonTomes[j].id);
                     return array;
                 }
         }
@@ -6699,13 +6699,13 @@ function backtraceStructureToTomeNameAndTier(structure) {
 
 function backtraceTomeNameAndTier(spell) {
 
-    for (j in jsonTomes.tomes) {
+    for (j in jsonTomes) {
         {
-            for (k in jsonTomes.tomes[j].skills) {
-                if (jsonTomes.tomes[j].skills[k].spell_slug === spell) {
+            for (k in jsonTomes[j].skills) {
+                if (jsonTomes[j].skills[k].spell_slug === spell) {
 
 
-                    return jsonTomes.tomes[j];
+                    return jsonTomes[j];
 
 
                 }

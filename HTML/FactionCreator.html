@@ -8,10 +8,7 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Tomes.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Faction.js"></script>
 
     <script type="text/javascript" language="javascript" src="/aow4db/Data/FactionCreation.json"></script>
@@ -19,24 +16,13 @@
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                SetRandomStart();
-                /*  SetupButtons("Origin");
-                  SetupButtons("Tome");
-                  SetupButtons("Culture");
-
-                  SetupButtons("Form");
-                  SetupButtons("Body");
-                  SetupButtons("Mind");
-                  SetupButtons("Society1");
-                  SetupButtons("Society2");
-                  SetupButtons("Loadout");*/
-
-
+                CheckData();
             });
-
-
-
         });
+
+        function HandlePage() {
+            SetRandomStart();
+        }
 
     </script>
 

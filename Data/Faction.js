@@ -1035,9 +1035,9 @@ function SetFullPreview(span, origin) {
 function GetAllStartingTomes() {
     var listOfAllTier1Tomes = [];
 
-    for (i = 0; i < jsonTomes.tomes.length; i++) {
-        if (jsonTomes.tomes[i].tier === 1) {
-            listOfAllTier1Tomes.push(jsonTomes.tomes[i]);
+    for (i = 0; i < jsonTomes.length; i++) {
+        if (jsonTomes[i].tier === 1) {
+            listOfAllTier1Tomes.push(jsonTomes[i]);
         }
     }
     // alert(listOfAllTier1Tomes);
@@ -1048,34 +1048,34 @@ function GetNextSetOfTomes() {
 
     var listOfNextTomes = [];
 
-    for (i = 0; i < jsonTomes.tomes.length; i++) {
+    for (i = 0; i < jsonTomes.length; i++) {
         // all tier 1
-        if (jsonTomes.tomes[i].tier === 1) {
-            if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
-                listOfNextTomes.push(jsonTomes.tomes[i]);
+        if (jsonTomes[i].tier === 1) {
+            if (!isInArray(currentTomeList, jsonTomes[i])) {
+                listOfNextTomes.push(jsonTomes[i]);
             }
         }
     }
 
     if (currentTomeList.length > 1) {
         // allow tier 2 tomes
-        for (i = 0; i < jsonTomes.tomes.length; i++) {
+        for (i = 0; i < jsonTomes.length; i++) {
 
-            if (jsonTomes.tomes[i].tier === 2) {
-                if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
-                    listOfNextTomes.push(jsonTomes.tomes[i]);
+            if (jsonTomes[i].tier === 2) {
+                if (!isInArray(currentTomeList, jsonTomes[i])) {
+                    listOfNextTomes.push(jsonTomes[i]);
                 }
             }
         }
     }
     if (currentTomeList.length > 3) {
         // allow tier 3 tomes
-        for (i = 0; i < jsonTomes.tomes.length; i++) {
-            if (jsonTomes.tomes[i].tier === 3) {
+        for (i = 0; i < jsonTomes.length; i++) {
+            if (jsonTomes[i].tier === 3) {
                 // 3 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 2)) {
-                    if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
-                        listOfNextTomes.push(jsonTomes.tomes[i]);
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 2)) {
+                    if (!isInArray(currentTomeList, jsonTomes[i])) {
+                        listOfNextTomes.push(jsonTomes[i]);
                     }
                 }
 
@@ -1085,12 +1085,12 @@ function GetNextSetOfTomes() {
     }
     if (currentTomeList.length > 5) {
         // allow tier 4 tomes
-        for (i = 0; i < jsonTomes.tomes.length; i++) {
-            if (jsonTomes.tomes[i].tier === 4) {
+        for (i = 0; i < jsonTomes.length; i++) {
+            if (jsonTomes[i].tier === 4) {
                 // 6 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 5)) {
-                    if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
-                        listOfNextTomes.push(jsonTomes.tomes[i]);
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 5)) {
+                    if (!isInArray(currentTomeList, jsonTomes[i])) {
+                        listOfNextTomes.push(jsonTomes[i]);
                     }
                 }
             }
@@ -1098,12 +1098,12 @@ function GetNextSetOfTomes() {
     }
     if (currentTomeList.length > 7) {
         // allow tier 5 tomes
-        for (i = 0; i < jsonTomes.tomes.length; i++) {
-            if (jsonTomes.tomes[i].tier === 5) {
+        for (i = 0; i < jsonTomes.length; i++) {
+            if (jsonTomes[i].tier === 5) {
                 // 8 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes.tomes[i].affinities, 7)) {
-                    if (!isInArray(currentTomeList, jsonTomes.tomes[i])) {
-                        listOfNextTomes.push(jsonTomes.tomes[i]);
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 7)) {
+                    if (!isInArray(currentTomeList, jsonTomes[i])) {
+                        listOfNextTomes.push(jsonTomes[i]);
                     }
                 }
             }
@@ -1211,9 +1211,9 @@ function GetAllForms() {
 function GetAllFormTraitsList() {
     var listOfAllOrigins = [];
 
-    for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
-        if (jsonFactionCreation2.traits[i].type === "form") {
-            listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
+    for (i = 0; i < jsonFactionCreation2.length; i++) {
+        if (jsonFactionCreation2[i].type === "form") {
+            listOfAllOrigins.push(jsonFactionCreation2[i]);
         }
     }
     //console.log(listOfAllOrigins);
@@ -1225,11 +1225,11 @@ function GetAllFormTraitsList() {
 function GetAllSocietyTraits() {
     var listOfAllOrigins = [];
 
-    for (i = 0; i < jsonFactionCreation2.traits.length; i++) {
-        if (jsonFactionCreation2.traits[i].type === "society") {
-            if (jsonFactionCreation2.traits[i].enabled === true) {
-                if (jsonFactionCreation2.traits[i].id != "guardians_of_nature__goodact__") {
-                    listOfAllOrigins.push(jsonFactionCreation2.traits[i]);
+    for (i = 0; i < jsonFactionCreation2.length; i++) {
+        if (jsonFactionCreation2[i].type === "society") {
+            if (jsonFactionCreation2[i].enabled === true) {
+                if (jsonFactionCreation2[i].id != "guardians_of_nature__goodact__") {
+                    listOfAllOrigins.push(jsonFactionCreation2[i]);
                 }
 
             }
