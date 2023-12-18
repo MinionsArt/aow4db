@@ -92,7 +92,7 @@ function SetRandomStart(overwriteParameter) {
         //  console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
     } else {
-
+        document.getElementById("shareLink").value = "";
 
         GetRandomSymbol();
         ChangeShieldCol();
