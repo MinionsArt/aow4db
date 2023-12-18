@@ -8,36 +8,30 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-                CreateAllAbility();
-                SetLevelUpStuff();
-                $("#filterInput").on('change input', function() {
-                    ShowAllAbilitiesWithFilters();
-                    SetLevelUpStuff();
-                });
-
-
-                // SetCollapsibleStuff();
+                CheckData();
             });
-
-
-
         });
+
+        function HandlePage() {
+            CreateAllAbility();
+            SetLevelUpStuff();
+            $("#filterInput").on('change input', function() {
+                ShowAllAbilitiesWithFilters();
+                SetLevelUpStuff();
+            });
+        }
 
 
 
         function CreateAllAbility() {
-            for (i = 0; i < jsonUnitAbilities.abilities.length; i++) {
-                if ('actionPoints' in jsonUnitAbilities.abilities[i]) {
-                    addAbility(jsonUnitAbilities.abilities[i].slug);
+            for (i = 0; i < jsonUnitAbilities.length; i++) {
+                if ('actionPoints' in jsonUnitAbilities[i]) {
+                    addAbility(jsonUnitAbilities[i].slug);
                 }
 
             }
@@ -62,8 +56,8 @@
             var filterText = filter.value.toUpperCase();;
 
 
-            for (i = 0; i < jsonUnitAbilities.abilities.length; i++) {
-                var ability = jsonUnitAbilities.abilities[i];
+            for (i = 0; i < jsonUnitAbilities.length; i++) {
+                var ability = jsonUnitAbilities[i];
                 if (filterText != "") {
                     if (ability.name.toUpperCase().indexOf(filterText) != -1) {
                         if (!isInArray(list, ability.slug)) {
@@ -165,29 +159,29 @@
         function addAbility(a, b) {
             var abilityName, abilityIcon, abilityDescr, abilityDam, abilityAcc, abilityRange, abilityType, abilityNote, j, splitDamageString, abilityDamType, abilityReq, abilityMod = "";
 
-            for (j in jsonUnitAbilities.abilities) {
-                if (a === jsonUnitAbilities.abilities[j].slug) {
+            for (j in jsonUnitAbilities) {
+                if (a === jsonUnitAbilities[j].slug) {
                     abilityDam = "";
-                    if ('damage' in jsonUnitAbilities.abilities[j]) {
-                        abilityDam = jsonUnitAbilities.abilities[j].damage;
+                    if ('damage' in jsonUnitAbilities[j]) {
+                        abilityDam = jsonUnitAbilities[j].damage;
                     }
 
-                    abilityType = jsonUnitAbilities.abilities[j].actionPoints;
+                    abilityType = jsonUnitAbilities[j].actionPoints;
 
 
 
-                    abilityName = jsonUnitAbilities.abilities[j].name;
-                    abilityIcon = jsonUnitAbilities.abilities[j].icon;
+                    abilityName = jsonUnitAbilities[j].name;
+                    abilityIcon = jsonUnitAbilities[j].icon;
 
                     abilityReq = "";
-                    if ('requisites' in jsonUnitAbilities.abilities[j]) {
+                    if ('requisites' in jsonUnitAbilities[j]) {
                         abilityReq = "";
-                        for (k in jsonUnitAbilities.abilities[j].requisites) {
+                        for (k in jsonUnitAbilities[j].requisites) {
                             if (k === 0) {
                                 abilityReq = "(";
                             }
-                            abilityReq += jsonUnitAbilities.abilities[j].requisites[k].requisite;
-                            if (k != jsonUnitAbilities.abilities[j].requisites.length - 1) {
+                            abilityReq += jsonUnitAbilities[j].requisites[k].requisite;
+                            if (k != jsonUnitAbilities[j].requisites.length - 1) {
                                 abilityReq += ",";
                             } else {
                                 abilityReq += ")";
@@ -196,13 +190,13 @@
                     }
 
                     abilityMod = "";
-                    if ('modifiers' in jsonUnitAbilities.abilities[j]) {
+                    if ('modifiers' in jsonUnitAbilities[j]) {
 
-                        for (l in jsonUnitAbilities.abilities[j].modifiers) {
+                        for (l in jsonUnitAbilities[j].modifiers) {
                             abilityName += "&#11049";
 
-                            abilityMod += "<bullet>" + jsonUnitAbilities.abilities[j].modifiers[l].name + "<br>";
-                            abilityMod += (jsonUnitAbilities.abilities[j].modifiers[l].description) + "</bullet><br>";
+                            abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
+                            abilityMod += (jsonUnitAbilities[j].modifiers[l].description) + "</bullet><br>";
                         }
                     }
 
@@ -212,17 +206,17 @@
                     abilityNote = "";
                     var Cooldown = "";
                     var Once = "";
-                    for (l in jsonUnitAbilities.abilities[j].notes) {
-                        if (jsonUnitAbilities.abilities[j].notes[l] === undefined) {
+                    for (l in jsonUnitAbilities[j].notes) {
+                        if (jsonUnitAbilities[j].notes[l] === undefined) {
 
                         } else {
 
-                            if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("Cooldown") != -1) {
-                                Cooldown = jsonUnitAbilities.abilities[j].notes[l].note;
-                            } else if (jsonUnitAbilities.abilities[j].notes[l].note.indexOf("once per") != -1) {
-                                Once = jsonUnitAbilities.abilities[j].notes[l].note;
+                            if (jsonUnitAbilities[j].notes[l].note.indexOf("Cooldown") != -1) {
+                                Cooldown = jsonUnitAbilities[j].notes[l].note;
+                            } else if (jsonUnitAbilities[j].notes[l].note.indexOf("once per") != -1) {
+                                Once = jsonUnitAbilities[j].notes[l].note;
                             } else {
-                                abilityNote += "<br>" + jsonUnitAbilities.abilities[j].notes[l].note;
+                                abilityNote += "<br>" + jsonUnitAbilities[j].notes[l].note;
                             }
 
 
@@ -233,16 +227,16 @@
 
 
 
-                    if (jsonUnitAbilities.abilities[j].damage != undefined) {
-                        abilityDam = jsonUnitAbilities.abilities[j].damage;
+                    if (jsonUnitAbilities[j].damage != undefined) {
+                        abilityDam = jsonUnitAbilities[j].damage;
                     }
                     abilityRange = "";
-                    if (jsonUnitAbilities.abilities[j].range != undefined) {
-                        abilityRange = jsonUnitAbilities.abilities[j].range;;
+                    if (jsonUnitAbilities[j].range != undefined) {
+                        abilityRange = jsonUnitAbilities[j].range;;
                     }
                     abilityAcc = "";
-                    if (jsonUnitAbilities.abilities[j].accuracy != undefined) {
-                        abilityAcc = jsonUnitAbilities.abilities[j].accuracy;
+                    if (jsonUnitAbilities[j].accuracy != undefined) {
+                        abilityAcc = jsonUnitAbilities[j].accuracy;
                     }
 
 
@@ -290,7 +284,7 @@
                     dam.innerHTML = abilityDam;
                     dam.setAttribute("style", "color:white; width:150px");
 
-                    abilityDescr = (jsonUnitAbilities.abilities[j].description);
+                    abilityDescr = (jsonUnitAbilities[j].description);
 
                     var abilityIconType = "";
                     imag.setAttribute("src", "/aow4db/Icons/Abilities/" + abilityIcon + ".png");
@@ -305,9 +299,9 @@
 
 
                     var abilityEncht = "";
-                    var abilityReq = jsonUnitAbilities.abilities[j].requisites
+                    var abilityReq = jsonUnitAbilities[j].requisites
 
-                    var spa = GetAbilityToolTip(jsonUnitAbilities.abilities[j], jsonUnitAbilities.abilities[j].damage, abilityName, abilityIconType, abilityAcc + "<accuracy></accuracy>", abilityRange + "<range></range>", abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
+                    var spa = GetAbilityToolTip(jsonUnitAbilities[j], jsonUnitAbilities[j].damage, abilityName, abilityIconType, abilityAcc + "<accuracy></accuracy>", abilityRange + "<range></range>", abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
 
 
                     var cleanName = a.replaceAll("_", " ");
@@ -326,7 +320,7 @@
                     if (abilityName.indexOf("Defense Mode") > -1) {
                         spa.innerHTML = "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase();
                         spa.innerHTML += "<div style=\"clear:both\"> </div>" + "<br>";
-                        spa.innerHTML += jsonUnitAbilities.abilities[j].description;
+                        spa.innerHTML += jsonUnitAbilities[j].description;
                         dam.innerHTML = "";
                     }
 
@@ -341,19 +335,19 @@
                     btn.append(accuracy);
                     btn.append(dam);
                     btn.append(action);
-                    if ('requisites' in jsonUnitAbilities.abilities[j]) {
+                    if ('requisites' in jsonUnitAbilities[j]) {
 
                         var mods = document.createElement("DIV");
-                        if (jsonUnitAbilities.abilities[j].requisites.length > 0) {
+                        if (jsonUnitAbilities[j].requisites.length > 0) {
 
 
                             var combined = "(";
-                            for (k = 0; k < jsonUnitAbilities.abilities[j].requisites.length; k++) {
+                            for (k = 0; k < jsonUnitAbilities[j].requisites.length; k++) {
                                 // var modChild = document.createElement("DIV");
-                                // modChild.innerHTML = jsonUnitAbilities.abilities[j].requisites[k].requisite;
+                                // modChild.innerHTML = jsonUnitAbilities[j].requisites[k].requisite;
                                 // mods.append(modChild);
-                                combined += jsonUnitAbilities.abilities[j].requisites[k].requisite;
-                                if (k < jsonUnitAbilities.abilities[j].requisites.length - 1) {
+                                combined += jsonUnitAbilities[j].requisites[k].requisite;
+                                if (k < jsonUnitAbilities[j].requisites.length - 1) {
                                     combined += ", ";
                                 }
 

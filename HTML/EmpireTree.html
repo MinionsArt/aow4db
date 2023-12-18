@@ -8,34 +8,26 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/EmpireProgression.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
-
     <script>
-        // var unitarray = ["entwined_thrall", "floral_stinger", "nymph", "entwined_protector", "entwined_scourge", "druid_of_the_cycle", "horned_god"];
-
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                // SetButtonsAndDivs(unitarray);
-                // SetLevelUpStuff();
-                SetUpTreeNodes("general", 3, "white");
-                SetUpTreeNodes("nature", 5, "green");
-                SetUpTreeNodes("chaos", 7, "red");
-                SetUpTreeNodes("astral", 9, "cyan");
-                SetUpTreeNodes("materium", 11, "orange");
-                SetUpTreeNodes("order", 13, "yellow");
-                SetUpTreeNodes("shadow", 15, "purple");
-                SetBreakPoints();
+                CheckData();
             });
-
-
-
-
-
         });
+
+        function HandlePage() {
+
+            SetUpTreeNodes("general", 3, "white");
+            SetUpTreeNodes("nature", 5, "green");
+            SetUpTreeNodes("chaos", 7, "red");
+            SetUpTreeNodes("astral", 9, "cyan");
+            SetUpTreeNodes("materium", 11, "orange");
+            SetUpTreeNodes("order", 13, "yellow");
+            SetUpTreeNodes("shadow", 15, "purple");
+            SetBreakPoints();
+
+        }
 
         function SetUpTreeNodes(keyword, row, color) {
             var i, offset = "";
@@ -44,26 +36,26 @@
             var offset = 0;
             var nodeHeight = 60;
 
-            for (i in jsonEmpire.empirenodes) {
-                if (jsonEmpire.empirenodes[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
-                    if (jsonEmpire.empirenodes[i].required_level != undefined) {
+            for (i in jsonEmpire) {
+                if (jsonEmpire[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
+                    if (jsonEmpire[i].required_level != undefined) {
                         offset = 1;
-                        if (jsonEmpire.empirenodes[i].name === "Wizard King" || jsonEmpire.empirenodes[i].name === "Mana Extraction" || jsonEmpire.empirenodes[i].name === "Indomitable Defenders") {
+                        if (jsonEmpire[i].name === "Wizard King" || jsonEmpire[i].name === "Mana Extraction" || jsonEmpire[i].name === "Indomitable Defenders") {
 
                         } else {
-                            if (jsonEmpire.empirenodes[i].required_level > 6 && keyword == "general") {
+                            if (jsonEmpire[i].required_level > 6 && keyword == "general") {
                                 offset = 1;
                             }
 
 
-                            var name = jsonEmpire.empirenodes[i].name;
+                            var name = jsonEmpire[i].name;
 
                             var newNode = document.createElement("DIV");
 
 
-                            if (jsonEmpire.empirenodes[i].category.toUpperCase().indexOf("RITE") != -1) {
+                            if (jsonEmpire[i].category.toUpperCase().indexOf("RITE") != -1) {
 
-                                var column = jsonEmpire.empirenodes[i].required_level + 2;
+                                var column = jsonEmpire[i].required_level + 2;
 
                                 // insert connection line
                                 var connectionLine = document.createElement("DIV");
@@ -82,7 +74,7 @@
 
                                 var connectionLine = document.createElement("DIV");
 
-                                var column = jsonEmpire.empirenodes[i].required_level + 2;
+                                var column = jsonEmpire[i].required_level + 2;
 
                                 var toppos = 37 + ((row - 1) * 70);
                                 var leftpos = ((column - offset) * nodeHeight);
@@ -101,14 +93,14 @@
 
 
                             var img = document.createElement("IMG");
-                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
+                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[i].id + ".png");
                             img.setAttribute("height", "50px");
                             img.className = "empireNodeIcon";
                             newNode.append(img);
 
 
                             var spa = document.createElement("SPAN");
-                            if (jsonEmpire.empirenodes[i].required_level > 6) {
+                            if (jsonEmpire[i].required_level > 6) {
                                 spa.className = "tooltiptextUp";
                             } else {
                                 spa.className = "tooltiptext";
@@ -118,15 +110,15 @@
 
                             spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>"
 
-                            spa.innerHTML += "<span style=\"color:  aliceblue;\">" + jsonEmpire.empirenodes[i].category + "</span>" + "<br>"
-                            spa.innerHTML += jsonEmpire.empirenodes[i].description + "<br>";
-                            spa.innerHTML += "Cost: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" + jsonEmpire.empirenodes[i].cost + "</span></bullet><br>";
-                            var affinity = jsonEmpire.empirenodes[i].required_affinity;
+                            spa.innerHTML += "<span style=\"color:  aliceblue;\">" + jsonEmpire[i].category + "</span>" + "<br>"
+                            spa.innerHTML += jsonEmpire[i].description + "<br>";
+                            spa.innerHTML += "Cost: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" + jsonEmpire[i].cost + "</span></bullet><br>";
+                            var affinity = jsonEmpire[i].required_affinity;
                             if (affinity === undefined) {
                                 affinity = "<general></general>";
                             }
                             spa.innerHTML += "Requirement: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" +
-                                jsonEmpire.empirenodes[i].required_xp + " " + affinity + "</span></bullet>";
+                                jsonEmpire[i].required_xp + " " + affinity + "</span></bullet>";
 
 
 
@@ -138,9 +130,9 @@
 
                     }
                 } else {
-                    if (jsonEmpire.empirenodes[i].id.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
-                        if (jsonEmpire.empirenodes[i].category === "") {
-                            var name = jsonEmpire.empirenodes[i].name;
+                    if (jsonEmpire[i].id.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
+                        if (jsonEmpire[i].category === "") {
+                            var name = jsonEmpire[i].name;
 
                             var newNode = document.createElement("DIV");
 
@@ -166,7 +158,7 @@
 
 
                             var img = document.createElement("IMG");
-                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire.empirenodes[i].id + ".png");
+                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[i].id + ".png");
                             img.setAttribute("height", "50px");
                             img.setAttribute("style", "left:-35%");
                             img.className = "empireNodeIcon";
@@ -179,7 +171,7 @@
                             spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>";
 
 
-                            spa.innerHTML += jsonEmpire.empirenodes[i].description;
+                            spa.innerHTML += jsonEmpire[i].description;
 
 
 

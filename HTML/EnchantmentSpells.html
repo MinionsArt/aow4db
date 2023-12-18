@@ -6,32 +6,28 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script>
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-                showSpellsWithArgument("General Research", "unit enchantment", "Generic Research");
-                showSpellsWithArgument("Culture", "unit enchantment", "Cultures");
-                showSpellsWithArgument("Order", "unit enchantment", "<order></order> Order");
-                showSpellsWithArgument("Chaos", "unit enchantment", "<chaos></chaos> Chaos");
-                showSpellsWithArgument("Nature", "unit enchantment", "<nature></nature> Nature");
-                showSpellsWithArgument("matter", "unit enchantment", "<matter></matter> Materium");
-                showSpellsWithArgument("arcana", "unit enchantment", "<arcana></arcana> Astral");
-                showSpellsWithArgument("Shadow", "unit enchantment", "<shadow></shadow> Shadow");
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
-
+                CheckData();
             });
-
-
         });
+
+        function HandlePage() {
+            showSpellsWithArgument("General Research", "unit enchantment", "Generic Research");
+            showSpellsWithArgument("Culture", "unit enchantment", "Cultures");
+            showSpellsWithArgument("Order", "unit enchantment", "<order></order> Order");
+            showSpellsWithArgument("Chaos", "unit enchantment", "<chaos></chaos> Chaos");
+            showSpellsWithArgument("Nature", "unit enchantment", "<nature></nature> Nature");
+            showSpellsWithArgument("matter", "unit enchantment", "<matter></matter> Materium");
+            showSpellsWithArgument("arcana", "unit enchantment", "<arcana></arcana> Astral");
+            showSpellsWithArgument("Shadow", "unit enchantment", "<shadow></shadow> Shadow");
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
 
     </script>
 
