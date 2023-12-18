@@ -16,19 +16,20 @@
         var bronzeArray = ["ancient_cave", "castle_ruins", "crystal_forest", "hidden_wellspring"];
         var silverArray = ["lost_tomb", "magma_forge", "secret_temple"];
         var goldArray = ["golden_ziggurat", "lost_wizard_tower", "world_tree"];
+
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showWorldStructuresWithArgument("Bronze", "ore", bronzeArray, "Bronze");
-                showWorldStructuresWithArgument("Silver", "liquid", silverArray, "Silver");
-                showWorldStructuresWithArgument("Gold", "plant", goldArray, "Gold");
-                SetLevelUpStuff();
-
+                CheckData();
             });
-
-
-
         });
+
+        function HandlePage() {
+            showWorldStructuresWithArgument("Bronze", "ore", bronzeArray, "Bronze");
+            showWorldStructuresWithArgument("Silver", "liquid", silverArray, "Silver");
+            showWorldStructuresWithArgument("Gold", "plant", goldArray, "Gold");
+            SetLevelUpStuff();
+        }
 
     </script>
 

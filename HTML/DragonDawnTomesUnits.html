@@ -13,16 +13,22 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var unitarray = ["wyvern_fledgling:tome_of_evolution", "slither_hatchling:tome_of_evolution", "young_fire_dragon:tome_of_dragons", "young_frost_dragon:tome_of_dragons", "young_obsidian_dragon:tome_of_dragons", "young_golden_dragon:tome_of_dragons"];
+
+
         $("#body").ready(function() {
 
-            var unitarray = ["wyvern_fledgling:tome_of_evolution", "slither_hatchling:tome_of_evolution", "young_fire_dragon:tome_of_dragons", "young_frost_dragon:tome_of_dragons", "young_obsidian_dragon:tome_of_dragons", "young_golden_dragon:tome_of_dragons"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+
+        }
 
     </script>
 

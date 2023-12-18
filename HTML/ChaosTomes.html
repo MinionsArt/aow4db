@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
@@ -14,20 +14,20 @@
 
     <script>
         var tomeArray = ["tome_of_pyromancy", "tome_of_the_horde", "tome_of_revelry", "tome_of_mayhem", "tome_of_pandemonium", "tome_of_devastation", "tome_of_the_demon_gate", "tome_of_chaos_channeling", "tome_of_the_chaos_lord"];
+
+
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-                SetButtonsAndDivs(tomeArray, undefined, "tome");
-
-                SetLevelUpStuff();
-
+                CheckData();
             });
-
-
-
-
         });
+
+        function HandlePage() {
+            SetButtonsAndDivs(tomeArray, undefined, "tome");
+            SetLevelUpStuff();
+        }
+
     </script>
 
 
@@ -59,7 +59,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

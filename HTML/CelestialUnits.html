@@ -13,30 +13,31 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        var unitarray = ["lightbringer", "unicorn", "blessed_soul", "shrine_of_smiting"];
-
         $("#body").ready(function() {
 
-
             $("#header").load("/aow4db/HTML/header.html", function() {
-                unitarray = FindUnitsWithSecondaryPassive("celestial");
-                console.log(unitarray);
-
-                if (unitarray.length > 1) {
-                    for (i in unitarray) {
-
-                        showUnitsFromList(unitarray[i], "Celestial Tier " + romanize(parseInt(parseInt(i) + 1)));
-                    }
-                } else {
-                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
-                }
-
-
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
         });
+
+        function HandlePage() {
+            unitarray = FindUnitsWithSecondaryPassive("celestial");
+            console.log(unitarray);
+
+            if (unitarray.length > 1) {
+                for (i in unitarray) {
+
+                    showUnitsFromList(unitarray[i], "Celestial Tier " + romanize(parseInt(parseInt(i) + 1)));
+                }
+            } else {
+                SetButtonsAndDivs(unitarray[0], undefined, "unit");
+            }
+
+
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+
+        }
 
     </script>
 

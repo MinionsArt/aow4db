@@ -21,7 +21,7 @@ async function GetAllData() {
     // Example usage:
 
 
-    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json'];
+    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json'];
 
 
     await fetchJsonFiles(jsonFilePaths)
@@ -35,6 +35,9 @@ async function GetAllData() {
                 } else if (index == 2) {
                     jsonSiegeProjects = data;
                 }
+                else if (index == 3) {
+                    jsonUnits = data;
+                }
             });
         })
         .catch(error => {
@@ -43,7 +46,12 @@ async function GetAllData() {
 
 }
 
-
+async function CheckData() {
+    if (jsonSiegeProjects === undefined) {
+        await GetAllData();
+        HandlePage();
+    }
+}
 
 
 var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
@@ -58,17 +66,19 @@ var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knig
 
 var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer", "afflictor"];
 
+
+
 function GetUnitTierAndName(id) {
-    for (i in jsonUnits.units) {
-        if (id === jsonUnits.units[i].id) {
-            var name = jsonUnits.units[i].name;
+    for (i in jsonUnits) {
+        if (id === jsonUnits[i].id) {
+            var name = jsonUnits[i].name;
             if (MountedSpecialList.includes(id) || CheckIfOptionalCavalry(id)) {
 
 
-                name = jsonUnits.units[i].name + " <mountSpecial></mountSpecial>";
+                name = jsonUnits[i].name + " <mountSpecial></mountSpecial>";
                 //imag.setAttribute("style", "position:relative; float:right");
             }
-            return "<p style=\"width: 160px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;text-transform: none;\">" + getUnitTypeTag(jsonUnits.units[i].secondary_passives) + " " + name + "</p>" + "<p style=\"text-align:right; color:white;top:-16px; position:relative; \">" + romanize(jsonUnits.units[i].tier) + "</p>";
+            return "<p style=\"width: 160px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;text-transform: none;\">" + getUnitTypeTag(jsonUnits[i].secondary_passives) + " " + name + "</p>" + "<p style=\"text-align:right; color:white;top:-16px; position:relative; \">" + romanize(jsonUnits[i].tier) + "</p>";
         }
     }
 
@@ -347,10 +357,10 @@ function AddTriangleForDLCUnits(type, string, div) {
 
 function CheckForDLCContent(type, string) {
     if (type.toLowerCase().indexOf("unit") != -1) {
-        for (var i = 0; i < jsonUnits.units.length; i++) {
-            if (jsonUnits.units[i].id == string) {
-                if ('DLC' in jsonUnits.units[i]) {
-                    return jsonUnits.units[i].DLC;
+        for (var i = 0; i < jsonUnits.length; i++) {
+            if (jsonUnits[i].id == string) {
+                if ('DLC' in jsonUnits[i]) {
+                    return jsonUnits[i].DLC;
                 }
             }
 
@@ -745,10 +755,10 @@ function CheckIfOptionalCavalry(name) {
     var optional = false;
     var i = "";
     var j = "";
-    for (i in jsonUnits.units) {
-        if (name === jsonUnits.units[i].id) {
-            for (j in jsonUnits.units[i].secondary_passives) {
-                if (jsonUnits.units[i].secondary_passives[j].slug === ("optional_cavalry")) {
+    for (i in jsonUnits) {
+        if (name === jsonUnits[i].id) {
+            for (j in jsonUnits[i].secondary_passives) {
+                if (jsonUnits[i].secondary_passives[j].slug === ("optional_cavalry")) {
                     optional = true;
                 }
             }
@@ -2770,15 +2780,15 @@ function showModsFromList(list, divId) {
 function showUnit(a) {
     var hp, mp, shield, armor, descr, j, k, x, y, z, unitNameDiv, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget, name = "";
     var found = false;
-    for (i in jsonUnits.units) {
-        if (a === jsonUnits.units[i].id) {
+    for (i in jsonUnits) {
+        if (a === jsonUnits[i].id) {
             var unitCard = document.getElementById("unitCard");
             if (unitCard == undefined) {
                 unitCard = document.getElementById("unitCard" + a);
 
             } else {
                 imagelink = unitCard.querySelectorAll('video#vid')[0];
-                imagelink.setAttribute('src', "/aow4db/Previews/" + jsonUnits.units[i].id + ".mp4");
+                imagelink.setAttribute('src', "/aow4db/Previews/" + jsonUnits[i].id + ".mp4");
                 if (imagelink.getAttribute('src') === "/aow4db/Previews/undefined") {
                     imagelink.setAttribute('src', "/aow4db/Previews/placeholder.mp4");
                 }
@@ -2800,12 +2810,12 @@ function showUnit(a) {
             unitNameDiv = unitCard.querySelectorAll('span#unitstring')[0];
             // clear
             unitNameDiv.innerHTML = "";
-            name = jsonUnits.units[i].name;
+            name = jsonUnits[i].name;
             unitNameDiv.innerHTML += name.toUpperCase();
 
-            if ('DLC' in jsonUnits.units[i]) {
+            if ('DLC' in jsonUnits[i]) {
 
-                var newDivForMount = AddDLCTag(jsonUnits.units[i].DLC);
+                var newDivForMount = AddDLCTag(jsonUnits[i].DLC);
 
                 unitNameDiv.append(newDivForMount);
             }
@@ -2835,31 +2845,31 @@ function showUnit(a) {
 
 
             hp = unitCard.querySelectorAll('p#hp')[0];
-            var hpvalue = jsonUnits.units[i].hp;
-            hp.innerHTML = jsonUnits.units[i].hp;
+            var hpvalue = jsonUnits[i].hp;
+            hp.innerHTML = jsonUnits[i].hp;
 
             var crit = unitCard.querySelectorAll('p#crit')[0];
             crit.innerHTML = "+" + 0 + "%";
 
 
             armor = unitCard.querySelectorAll('p#armor')[0];
-            armor.innerHTML = jsonUnits.units[i].armor;
+            armor.innerHTML = jsonUnits[i].armor;
 
             shield = unitCard.querySelectorAll('p#resistence')[0];
-            var shieldValue = jsonUnits.units[i].resistance;
+            var shieldValue = jsonUnits[i].resistance;
             shield.innerHTML = shieldValue;
 
             mp = unitCard.querySelectorAll('p#mp')[0];
-            mp.innerHTML = jsonUnits.units[i].mp;
+            mp.innerHTML = jsonUnits[i].mp;
 
             tier = unitCard.querySelectorAll('p#tier')[0];
             //
 
             defenseDiv = unitCard.querySelectorAll('p#damageReduction')[0];
-            defenseDiv.innerHTML = "Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].armor + "</span> <defense> </defense>)";
+            defenseDiv.innerHTML = "Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].armor + "</span> <defense> </defense>)";
 
             prodcost = unitCard.querySelectorAll('p#productioncost')[0];
-            prodcost.innerHTML = "Cost: " + jsonUnits.units[i].cost;
+            prodcost.innerHTML = "Cost: " + jsonUnits[i].cost;
             var additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
             movementDiv = unitCard.querySelectorAll('p#movement')[0];
 
@@ -2870,18 +2880,18 @@ function showUnit(a) {
             resistanceHolder.innerHTML = "";
 
             var unitType = "";
-            for (j in jsonUnits.units[i].secondary_passives) {
-                var unitTypeTest = addUnitTypeIcon(jsonUnits.units[i].secondary_passives[j].slug, unitStat, unitCard);
+            for (j in jsonUnits[i].secondary_passives) {
+                var unitTypeTest = addUnitTypeIcon(jsonUnits[i].secondary_passives[j].slug, unitStat, unitCard);
 
                 if (unitTypeTest != "") {
                     unitType = unitTypeTest;
                 }
 
-                if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("floating") != -1) {
+                if (jsonUnits[i].secondary_passives[j].slug.indexOf("floating") != -1) {
                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Floating</bullet></span><br>";
                 }
 
-                if (jsonUnits.units[i].secondary_passives[j].slug.indexOf("flying") != -1) {
+                if (jsonUnits[i].secondary_passives[j].slug.indexOf("flying") != -1) {
                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Flying</bullet></span><br>";
                 }
 
@@ -2931,7 +2941,7 @@ function showUnit(a) {
             enchantButton.param = unitType;
             enchantButton.activeListHolder = activeEnchant;
             enchantButton.unit = a;
-            enchantButton.unitData = jsonUnits.units[i];
+            enchantButton.unitData = jsonUnits[i];
             enchantButton.originDiv = unitCard;
 
             enchantButton.activeEnchantList = activeEnchantList;
@@ -2945,46 +2955,46 @@ function showUnit(a) {
 
 
 
-            for (k in jsonUnits.units[i].abilities) {
-                addAbilityslot(jsonUnits.units[i].abilities[k].slug, unitTabHolder, activeEnchantList);
+            for (k in jsonUnits[i].abilities) {
+                addAbilityslot(jsonUnits[i].abilities[k].slug, unitTabHolder, activeEnchantList);
 
             }
 
-            if (jsonUnits.units[i].status_resistance != "0") {
-                addstatusResistanceSlot(jsonUnits.units[i].status_resistance, resistanceHolder);
+            if (jsonUnits[i].status_resistance != "0") {
+                addstatusResistanceSlot(jsonUnits[i].status_resistance, resistanceHolder);
             }
 
-            for (z in jsonUnits.units[i].resistances) {
-                addResistanceSlot(jsonUnits.units[i].resistances[z].slug, jsonUnits.units[i].resistance, resistanceHolder);
+            for (z in jsonUnits[i].resistances) {
+                addResistanceSlot(jsonUnits[i].resistances[z].slug, jsonUnits[i].resistance, resistanceHolder);
 
 
 
-                if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
-                    additionalBlight = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
+                    additionalBlight = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
-                if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("FIRE") != -1) {
-                    additionalFire = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("FIRE") != -1) {
+                    additionalFire = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
-                if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("FROST") != -1) {
-                    additionalFrost = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("FROST") != -1) {
+                    additionalFrost = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
 
-                if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("LIGHTNING") != -1) {
-                    additionalShock = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("LIGHTNING") != -1) {
+                    additionalShock = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
-                if (jsonUnits.units[i].resistances[z].slug.toUpperCase().indexOf("SPIRIT") != -1) {
-                    additionalSpirit = ReturnWeaknessOrResistanceNumber(jsonUnits.units[i].resistances[z].slug);
+                if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("SPIRIT") != -1) {
+                    additionalSpirit = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
 
 
 
             }
 
-            tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + jsonUnits.units[i].upkeep;
+            tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + jsonUnits[i].upkeep;
 
-            var summonInfo = canBeSummoned(jsonUnits.units[i].id);
+            var summonInfo = canBeSummoned(jsonUnits[i].id);
             if (summonInfo.length > 0) {
-                tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
+                tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, "");
                 var p = "";
                 for (p in summonInfo) {
                     var castcost = "";
@@ -3008,14 +3018,14 @@ function showUnit(a) {
             var t = "";
 
             var y = "";
-            for (y in jsonUnits.units[i].secondary_passives) {
-                if (jsonUnits.units[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
+            for (y in jsonUnits[i].secondary_passives) {
+                if (jsonUnits[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
                     if (lowUpkeep === true) {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + getSummonedUpkeep(jsonUnits[i].tier, 0.75);
                     } else if (faithfulUpkeep === true) {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9);
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + getSummonedUpkeep(jsonUnits[i].tier, 0.9);
                     } else {
-                        tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + getSummonedUpkeep(jsonUnits.units[i].tier, "");
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + getSummonedUpkeep(jsonUnits[i].tier, "");
                     }
 
 
@@ -3074,7 +3084,7 @@ function showUnit(a) {
 
                                 if (jsonEnchantments.enchantments[k].passive[t].slug.indexOf("faithful") != -1) {
                                     console.log("faithful found");
-                                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9) + "*";
+                                    tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + "*";
                                     var faithfulUpkeep = true;
 
                                 }
@@ -3115,27 +3125,27 @@ function showUnit(a) {
             }
 
             var x = "";
-            for (x in jsonUnits.units[i].primary_passives) {
-                addPassiveslot(jsonUnits.units[i].primary_passives[x].slug, unitTabHolder);
+            for (x in jsonUnits[i].primary_passives) {
+                addPassiveslot(jsonUnits[i].primary_passives[x].slug, unitTabHolder);
 
-                if (jsonUnits.units[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
-                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.75);
+                if (jsonUnits[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
+                    tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75);
                     var lowUpkeep = true;
 
                     if (summonInfo.length > 0) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.75);
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.75);
 
 
                     }
 
                 }
 
-                if (jsonUnits.units[i].primary_passives[x].slug.indexOf("faithful") != -1) {
-                    tier.innerHTML = "Tier " + romanize(jsonUnits.units[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits.units[i].upkeep, 0.9) + "*";
+                if (jsonUnits[i].primary_passives[x].slug.indexOf("faithful") != -1) {
+                    tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + "*";
                     var faithfulUpkeep = true;
 
                     if (summonInfo.length > 0) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits.units[i].tier, 0.9) + "*";
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.9) + "*";
 
 
 
@@ -3154,7 +3164,7 @@ function showUnit(a) {
             y = "";
 
             var resistanceDiv = unitCard.querySelectorAll('p#resistanceReduction')[0];
-            resistanceDiv.innerHTML = "Blight :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalBlight) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+            resistanceDiv.innerHTML = "Blight :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].resistance, additionalBlight) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].resistance + "</span> <resistance> </resistance>";
             if (additionalBlight != undefined) {
                 if (additionalBlight > 0) {
                     resistanceDiv.innerHTML += "+";
@@ -3167,7 +3177,7 @@ function showUnit(a) {
 
             resistanceDiv.innerHTML += ")<br>";
 
-            resistanceDiv.innerHTML += "Shock :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalShock) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+            resistanceDiv.innerHTML += "Shock :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].resistance, additionalShock) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].resistance + "</span> <resistance> </resistance>";
             if (additionalShock != undefined) {
                 if (additionalShock > 0) {
                     resistanceDiv.innerHTML += "+";
@@ -3178,7 +3188,7 @@ function showUnit(a) {
             resistanceDiv.innerHTML += ")<br>";
 
 
-            resistanceDiv.innerHTML += "Fire :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalFire) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+            resistanceDiv.innerHTML += "Fire :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].resistance, additionalFire) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].resistance + "</span> <resistance> </resistance>";
             if (additionalFire != undefined) {
                 if (additionalFire > 0) {
                     resistanceDiv.innerHTML += "+";
@@ -3188,7 +3198,7 @@ function showUnit(a) {
 
             resistanceDiv.innerHTML += ")<br>";
 
-            resistanceDiv.innerHTML += "Spirit :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalSpirit) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+            resistanceDiv.innerHTML += "Spirit :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].resistance, additionalSpirit) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].resistance + "</span> <resistance> </resistance>";
             if (additionalSpirit != undefined) {
                 if (additionalSpirit > 0) {
                     resistanceDiv.innerHTML += "+";
@@ -3198,7 +3208,7 @@ function showUnit(a) {
 
             resistanceDiv.innerHTML += ")<br>";
 
-            resistanceDiv.innerHTML += "Frost :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits.units[i].resistance, additionalFrost) + "</span> ( From <span style=\"color:white;\">" + jsonUnits.units[i].resistance + "</span> <resistance> </resistance>";
+            resistanceDiv.innerHTML += "Frost :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].resistance, additionalFrost) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].resistance + "</span> <resistance> </resistance>";
             if (additionalFrost != undefined) {
                 if (additionalFrost > 0) {
                     resistanceDiv.innerHTML += "+";
@@ -3209,7 +3219,7 @@ function showUnit(a) {
             resistanceDiv.innerHTML += ")";
 
 
-            addLevelUpInfo(jsonUnits.units[i], a, unitCard);
+            addLevelUpInfo(jsonUnits[i], a, unitCard);
 
             // backtrack origin;
             backtrackUnitOrigins(a, name, unitCard);
@@ -3664,23 +3674,23 @@ function CheckIfFromAbility(unitName) {
 
     var unitslugLookup = "";
     if (ability != "") {
-        for (j in jsonUnits.units) {
+        for (j in jsonUnits) {
 
-            for (k in jsonUnits.units[j].abilities) {
+            for (k in jsonUnits[j].abilities) {
 
-                if (jsonUnits.units[j].abilities[k].slug === ability.slug) {
+                if (jsonUnits[j].abilities[k].slug === ability.slug) {
 
                     unitslugLookup = new Array();
-                    unitslugLookup.push(jsonUnits.units[j]);
+                    unitslugLookup.push(jsonUnits[j]);
                     unitslugLookup.push(ability);
                 }
             }
-            for (l in jsonUnits.units[j].primary_passives) {
+            for (l in jsonUnits[j].primary_passives) {
 
-                if (jsonUnits.units[j].primary_passives[l].slug === ability.slug) {
+                if (jsonUnits[j].primary_passives[l].slug === ability.slug) {
 
                     unitslugLookup = new Array();
-                    unitslugLookup.push(jsonUnits.units[j]);
+                    unitslugLookup.push(jsonUnits[j]);
                     unitslugLookup.push(ability);
                 }
             }
@@ -3842,13 +3852,13 @@ function CheckIfInEmpireTree(unitNameUnique) {
 function CheckIfEvolveTarget(unitID) {
     var evolve = "";
     var i, k = "";
-    for (i in jsonUnits.units) {
+    for (i in jsonUnits) {
 
-        if ('evolve_target' in jsonUnits.units[i]) {
+        if ('evolve_target' in jsonUnits[i]) {
 
 
-            if (unitID === jsonUnits.units[i].evolve_target) {
-                evolve = jsonUnits.units[i];
+            if (unitID === jsonUnits[i].evolve_target) {
+                evolve = jsonUnits[i];
 
             }
 
@@ -4017,9 +4027,9 @@ function addLevelUpInfo(units, a, holder) {
 }
 
 function lookupUnit(id) {
-    for (j in jsonUnits.units) {
-        if (id === jsonUnits.units[j].id) {
-            return jsonUnits.units[j].name;
+    for (j in jsonUnits) {
+        if (id === jsonUnits[j].id) {
+            return jsonUnits[j].name;
         }
 
     }
@@ -4315,6 +4325,10 @@ function showTome(a, div) {
 
                     var heroSkillIconAndDesc = GetHeroSkillDescription(jsonTomes.tomes[j].hero_skills[l].slug);
 
+
+
+
+                    console.log("here2");
                     // its a ability
                     if (heroSkillIconAndDesc[0] != "") {
 
@@ -4328,6 +4342,7 @@ function showTome(a, div) {
                         spa2.className = "tooltiptext";
                     }
 
+
                     var title = document.createElement("SPAN");
                     title.innerHTML = heroSkillIconAndDesc[1].name.toUpperCase();
                     title.setAttribute("style", "color:#deb887 ");
@@ -4339,6 +4354,7 @@ function showTome(a, div) {
 
 
                     div.appendChild(spa2);
+
                     unitTypesDiv.appendChild(div);
                 }
 
@@ -4789,6 +4805,7 @@ function GetHeroSkillName(skillID) {
 function GetHeroSkillDescription(skillID) {
     var array = ["", ""];
     for (j in jsonHeroSkills) {
+
         if (jsonHeroSkills[j].id == skillID) {
             if ('abilities' in jsonHeroSkills[j]) {
                 for (k in jsonUnitAbilities.abilities) {
@@ -5311,9 +5328,9 @@ function showEmpireTree(a) {
 
 
 function GetCostUnit(id) {
-    for (i in jsonUnits.units) {
-        if (id === jsonUnits.units[i].id) {
-            return jsonUnits.units[i].cost;
+    for (i in jsonUnits) {
+        if (id === jsonUnits[i].id) {
+            return jsonUnits[i].cost;
         }
     }
 
@@ -5569,11 +5586,11 @@ function ConvertSpawnTable(input) {
 
 function FindUnitsWithSecondaryPassive(trait) {
     var unitsList = new Array();
-    for (i in jsonUnits.units) {
-        for (j in jsonUnits.units[i].secondary_passives) {
-            if (jsonUnits.units[i].secondary_passives[j].slug === trait) {
-                if (!isInArray(unitsList, jsonUnits.units[i].id)) {
-                    unitsList.push(jsonUnits.units[i]);
+    for (i in jsonUnits) {
+        for (j in jsonUnits[i].secondary_passives) {
+            if (jsonUnits[i].secondary_passives[j].slug === trait) {
+                if (!isInArray(unitsList, jsonUnits[i].id)) {
+                    unitsList.push(jsonUnits[i]);
                 }
 
             }

@@ -43,28 +43,28 @@ function searchData(keywords) {
 function returnUnitList(fieldToSearch) {
     var i = "";
     var list = new Array();
-    for (i = 0; i < jsonUnits.units.length; i++) {
+    for (i = 0; i < jsonUnits.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonUnits.units[i].id;
+            textvalue = jsonUnits[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) > -1) {
                 if (list.length >= 1) {
-                    if (!isInArray(list, jsonUnits.units[i].id)) {
-                        list.push(jsonUnits.units[i].id);
+                    if (!isInArray(list, jsonUnits[i].id)) {
+                        list.push(jsonUnits[i].id);
                     }
                 } else {
-                    list.push(jsonUnits.units[i].id);
+                    list.push(jsonUnits[i].id);
                 }
             }
         }
         if (document.getElementById("abilitiesCheck").checked) {
-            searchArray(fieldToSearch, jsonUnits.units[i].abilities, list, i);
+            searchArray(fieldToSearch, jsonUnits[i].abilities, list, i);
         }
         if (document.getElementById("passivesCheck").checked) {
-            searchArray(fieldToSearch, jsonUnits.units[i].primary_passives, list, i);
-            searchArray(fieldToSearch, jsonUnits.units[i].secondary_passives, list, i);
+            searchArray(fieldToSearch, jsonUnits[i].primary_passives, list, i);
+            searchArray(fieldToSearch, jsonUnits[i].secondary_passives, list, i);
         }
         if (document.getElementById("resistancesCheck").checked) {
-            searchArray(fieldToSearch, jsonUnits.units[i].resistances, list, i);
+            searchArray(fieldToSearch, jsonUnits[i].resistances, list, i);
         }
 
 
@@ -676,10 +676,10 @@ function CheckDepricated(listChecking) {
 
 function depCheck(id) {
     var p = "";
-    for (p in jsonUnits.units) {
-        if (jsonUnits.units[p].id === id) {
-            for (l in jsonUnits.units[p].primary_passives) {
-                if (jsonUnits.units[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
+    for (p in jsonUnits) {
+        if (jsonUnits[p].id === id) {
+            for (l in jsonUnits[p].primary_passives) {
+                if (jsonUnits[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
                     console.log("true");
                     return true;
                 }
@@ -699,11 +699,11 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
             textvalue = arraytosearch[j].slug;
             if (textvalue.toUpperCase().indexOf(keyword) > -1) {
                 if (listToPushTo.length >= 1) {
-                    if (!isInArray(listToPushTo, jsonUnits.units[index].id)) {
-                        listToPushTo.push(jsonUnits.units[index].id);
+                    if (!isInArray(listToPushTo, jsonUnits[index].id)) {
+                        listToPushTo.push(jsonUnits[index].id);
                     }
                 } else {
-                    listToPushTo.push(jsonUnits.units[index].id);
+                    listToPushTo.push(jsonUnits[index].id);
                 }
 
 
@@ -758,13 +758,13 @@ function searchArrayDescription(keyword, arraytosearch, listToPushTo, index) {
 function findUnitWithAbility(ability, listToPushTo) {
     var i = "";
     var j = "";
-    for (i = 0; i < jsonUnits.units.length; i++) {
-        if ('abilities' in jsonUnits.units[i]) {
-            for (j in jsonUnits.units[i].abilities) {
+    for (i = 0; i < jsonUnits.length; i++) {
+        if ('abilities' in jsonUnits[i]) {
+            for (j in jsonUnits[i].abilities) {
 
-                if (ability === jsonUnits.units[i].abilities[j].slug) {
-                    if (!isInArray(listToPushTo, jsonUnits.units[i].id)) {
-                        listToPushTo.push(jsonUnits.units[i].id);
+                if (ability === jsonUnits[i].abilities[j].slug) {
+                    if (!isInArray(listToPushTo, jsonUnits[i].id)) {
+                        listToPushTo.push(jsonUnits[i].id);
                     }
                 }
             }

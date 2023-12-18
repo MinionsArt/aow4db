@@ -18,15 +18,14 @@
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-                SetButtonsAndDivs(tomeArray, undefined, "tome");
-                SetLevelUpStuff();
+                CheckData();
             });
-
-
-
-
         });
+
+        function HandlePage() {
+            SetButtonsAndDivs(tomeArray, undefined, "tome");
+            SetLevelUpStuff();
+        }
 
     </script>
 

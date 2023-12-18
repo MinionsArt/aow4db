@@ -13,19 +13,13 @@
 
             $("#header").load("/aow4db/HTML/header.html", function() {
                 CheckData();
-
             });
-
         });
 
-        async function CheckData() {
-            if (jsonSiegeProjects === undefined) {
-                await GetAllData();
-                showSiegeProjects();
-
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
-            }
+        function HandlePage() {
+            showSiegeProjects();
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
         }
 
     </script>

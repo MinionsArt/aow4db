@@ -16,29 +16,21 @@
 
             $("#header").load("/aow4db/HTML/header.html", function() {
                 CheckData();
-
-
             });
-
-
-
         });
 
-        async function CheckData() {
-            if (jsonSiegeProjects === undefined) {
-                await GetAllData();
-                showItemsWithArgument("Primary", "Primary Weapon");
-                showItemsWithArgument("Secondary", "Secondary Weapon");
-                showItemsWithArgument("Head", "Head");
-                showItemsWithArgument("Torso", "Torso");
-                showItemsWithArgument("Legs", "Legs");
-                showItemsWithArgument("Mount", "Mounts");
-                showItemsWithArgument("Ring", "Rings");
-                showItemsWithArgument("Miscellaneous", "Miscellaneous");
+        function HandlePage() {
+            showItemsWithArgument("Primary", "Primary Weapon");
+            showItemsWithArgument("Secondary", "Secondary Weapon");
+            showItemsWithArgument("Head", "Head");
+            showItemsWithArgument("Torso", "Torso");
+            showItemsWithArgument("Legs", "Legs");
+            showItemsWithArgument("Mount", "Mounts");
+            showItemsWithArgument("Ring", "Rings");
+            showItemsWithArgument("Miscellaneous", "Miscellaneous");
 
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
-            }
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
         }
 
     </script>

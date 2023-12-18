@@ -16,28 +16,27 @@
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                unitarray = FindUnitsWithSecondaryPassive("fey");
-                console.log(unitarray);
-
-                if (unitarray.length > 1) {
-                    for (i in unitarray) {
-
-                        showUnitsFromList(unitarray[i], "Fey Tier " + romanize(parseInt(parseInt(i) + 1)));
-                    }
-                } else {
-                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
-                }
-
-
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
-
-
-
-
         });
+
+        function HandlePage() {
+            unitarray = FindUnitsWithSecondaryPassive("fey");
+            console.log(unitarray);
+
+            if (unitarray.length > 1) {
+                for (i in unitarray) {
+
+                    showUnitsFromList(unitarray[i], "Fey Tier " + romanize(parseInt(parseInt(i) + 1)));
+                }
+            } else {
+                SetButtonsAndDivs(unitarray[0], undefined, "unit");
+            }
+
+
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
 
     </script>
 

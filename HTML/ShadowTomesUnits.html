@@ -13,22 +13,23 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var unitarray = ["bone_horror:tome_of_souls", "white_witch:tome_of_cryomancy", "lesser_snow_spirit:tome_of_cryomancy", "banshee:tome_of_the_doomherald", "necromancer:tome_of_necromancy",
+            "corrupt_soul:tome_of_necromancy", "zombie:tome_of_necromancy", "snow_spirit:tome_of_the_cold_dark", "living_fog:tome_of_oblivion", "reaper:tome_of_the_reaper"
+        ];
+
         $("#body").ready(function() {
-            var unitarray = ["bone_horror:tome_of_souls", "white_witch:tome_of_cryomancy", "lesser_snow_spirit:tome_of_cryomancy", "banshee:tome_of_the_doomherald", "necromancer:tome_of_necromancy",
-                "corrupt_soul:tome_of_necromancy", "zombie:tome_of_necromancy", "snow_spirit:tome_of_the_cold_dark", "living_fog:tome_of_oblivion", "reaper:tome_of_the_reaper"
-            ];
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
-
-
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
 
     </script>
 

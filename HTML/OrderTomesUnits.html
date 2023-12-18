@@ -13,27 +13,21 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
-        $("#body").ready(function() {
-            var unitarray1 = [""];
-            var unitarray2 = [""];
-            var unitarray3 = ["", ""];
-            var unitarray4 = [""];
-            var unitarray5 = [""];
-            var unitarray6 = [""];
-            var unitarray7 = [""];
+        var unitarray = ["chaplain:tome_of_faith", "zealot:tome_of_zeal", "lightbringer:tome_of_the_beacon", "divine_beacon:tome_of_the_beacon", "inquisitor:tome_of_the_inquisition", "tyrant_knight:tome_of_subjugation", "shrine_of_smiting:tome_of_exaltation", "eagle_rider:tome_of_supremacy"];
 
-            var unitarray = ["chaplain:tome_of_faith", "zealot:tome_of_zeal", "lightbringer:tome_of_the_beacon", "divine_beacon:tome_of_the_beacon", "inquisitor:tome_of_the_inquisition", "tyrant_knight:tome_of_subjugation", "shrine_of_smiting:tome_of_exaltation", "eagle_rider:tome_of_supremacy"];
+        $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
-
-
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
+
     </script>
 
 
@@ -60,7 +54,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

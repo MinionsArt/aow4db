@@ -13,21 +13,21 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var unitarray = ["copper_golem:tome_of_enchantment", "gargoyle:tome_of_rock", "lesser_stone_spirit:tome_of_rock", "zephyr_archer:tome_of_winds", "wind_rager:tome_of_winds", "iron_golem:tome_of_artificing", "stone_spirit:tome_of_terramancy", "transmuter:tome_of_transmutation", "golden_golem:tome_of_the_golden_realm", "earth_titan:tome_of_the_creator"];
+
         $("#body").ready(function() {
 
-
-            var unitarray = ["copper_golem:tome_of_enchantment", "gargoyle:tome_of_rock", "lesser_stone_spirit:tome_of_rock", "zephyr_archer:tome_of_winds", "wind_rager:tome_of_winds", "iron_golem:tome_of_artificing", "stone_spirit:tome_of_terramancy", "transmuter:tome_of_transmutation", "golden_golem:tome_of_the_golden_realm", "earth_titan:tome_of_the_creator"];
-
-
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
-
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
+
     </script>
 
 
@@ -55,7 +55,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

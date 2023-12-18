@@ -16,14 +16,15 @@
         var unitarray = ["observer", "mercenary", "harrier", "overseer", "magelock", "dragoon", "magelock_cannon"];
         $("#body").ready(function() {
 
-
             $("#header").load("/aow4db/HTML/header.html", function() {
-                SetButtonsAndDivs(unitarray, undefined, "unit");
-                SetLevelUpStuff();
-
+                CheckData();
             });
-
         });
+
+        function HandlePage() {
+            SetButtonsAndDivs(unitarray, undefined, "unit");
+            SetLevelUpStuff();
+        }
 
     </script>
 

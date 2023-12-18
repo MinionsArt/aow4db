@@ -16,26 +16,19 @@
 
             $("#header").load("/aow4db/HTML/header.html", function() {
                 CheckData();
-
             });
-
-
-
         });
 
-        async function CheckData() {
-            if (jsonSiegeProjects === undefined) {
-                await GetAllData();
-                showSkillsWithArgument("sig", "", "Hero Signature Skills");
-                showSkillsWithArgument("", "Support", "Hero Skills - Support");
-                showSkillsWithArgument("", "Warfare", "Hero Skills - Warfare");
-                showSkillsWithArgument("", "Battle", "Hero Skills - Battle Magic");
-                showSkillsWithArgument("", "Feudal Lord", "Hero Skills - Feudal Lord");
-                showSkillsWithArgument("", "Dragon Lord", "Hero Skills - Dragon Lord");
+        function HandlePage() {
+            showSkillsWithArgument("sig", "", "Hero Signature Skills");
+            showSkillsWithArgument("", "Support", "Hero Skills - Support");
+            showSkillsWithArgument("", "Warfare", "Hero Skills - Warfare");
+            showSkillsWithArgument("", "Battle", "Hero Skills - Battle Magic");
+            showSkillsWithArgument("", "Feudal Lord", "Hero Skills - Feudal Lord");
+            showSkillsWithArgument("", "Dragon Lord", "Hero Skills - Dragon Lord");
 
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
-            }
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
         }
 
     </script>

@@ -13,28 +13,23 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var unitarray = ["phantasm_warrior:tome_of_warding", "lesser_storm_spirit:tome_of_evocation", "evoker:tome_of_evocation", "amplification_pylon:tome_of_amplification", "watcher:tome_of_scrying", "astral_serpent:tome_of_summoning", "astral_keeper:tome_of_summoning", "phase_beast:tome_of_teleportation", "mirror_mimic:tome_of_the_astral_mirror"];
         $("#body").ready(function() {
-            var unitarray1 = ["phantasm_warrior"];
-            var unitarray2 = ["lesser_storm_spirit", "evoker"];
-            var unitarray3 = ["amplification_pylon"];
-            var unitarray4 = ["watcher"];
-            var unitarray5 = ["astral_serpent", "astral_keeper"];
-            var unitarray6 = ["phase_beast"];
-            var unitarray7 = ["mirror_mimic"];
 
-            var unitarray = ["phantasm_warrior:tome_of_warding", "lesser_storm_spirit:tome_of_evocation", "evoker:tome_of_evocation", "amplification_pylon:tome_of_amplification", "watcher:tome_of_scrying", "astral_serpent:tome_of_summoning", "astral_keeper:tome_of_summoning", "phase_beast:tome_of_teleportation", "mirror_mimic:tome_of_the_astral_mirror"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
-
-
+                CheckData();
             });
-
-
-
-
         });
+
+        function HandlePage() {
+
+
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+
+        }
+
     </script>
 
 
@@ -61,7 +56,9 @@
     </div>
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

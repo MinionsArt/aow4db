@@ -13,16 +13,22 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var unitarray = ["afflictor:tome_of_alchemy", "bronze_golem:tome_of_the_construct", "great_bombard:tome_of_the_dreadnought", "ironclad:tome_of_the_dreadnought", "severing_golem:tome_of_severing"];
+
+
         $("#body").ready(function() {
 
-            var unitarray = ["afflictor:tome_of_alchemy", "bronze_golem:tome_of_the_construct", "great_bombard:tome_of_the_dreadnought", "ironclad:tome_of_the_dreadnought", "severing_golem:tome_of_severing"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
+
     </script>
 
 
@@ -49,7 +55,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

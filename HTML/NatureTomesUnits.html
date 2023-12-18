@@ -14,19 +14,21 @@
 
 
     <script>
+        var unitarray = ["wildspeaker:tome_of_beasts", "living_vine:tome_of_roots", "entwined_thrall:tome_of_roots", "floral_stinger:tome_of_fertility", "nymph:tome_of_fertility", "glade_runner:tome_of_glades", "entwined_protector:tome_of_glades", "druid_of_the_cycle:tome_of_cycles", "totem_of_the_wild:tome_of_vigor", "horned_god:tome_of_natures_wrath"];
+
         $("#body").ready(function() {
 
-            var unitarray = ["wildspeaker:tome_of_beasts", "living_vine:tome_of_roots", "entwined_thrall:tome_of_roots", "floral_stinger:tome_of_fertility", "nymph:tome_of_fertility", "glade_runner:tome_of_glades", "entwined_protector:tome_of_glades", "druid_of_the_cycle:tome_of_cycles", "totem_of_the_wild:tome_of_vigor", "horned_god:tome_of_natures_wrath"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
-
-
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
+
     </script>
 
 
@@ -55,7 +57,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>

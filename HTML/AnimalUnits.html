@@ -16,26 +16,27 @@
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                unitarray = FindUnitsWithSecondaryPassive("animal");
-                console.log(unitarray);
-
-                if (unitarray.length > 1) {
-                    for (i in unitarray) {
-
-                        showUnitsFromList(unitarray[i], "Animals Tier " + romanize(parseInt(parseInt(i) + 1)));
-                    }
-                } else {
-                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
-                }
-
-
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
-            // get parameters stuff
-
         });
+
+        function HandlePage() {
+            unitarray = FindUnitsWithSecondaryPassive("animal");
+            console.log(unitarray);
+
+            if (unitarray.length > 1) {
+                for (i in unitarray) {
+
+                    showUnitsFromList(unitarray[i], "Animals Tier " + romanize(parseInt(parseInt(i) + 1)));
+                }
+            } else {
+                SetButtonsAndDivs(unitarray[0], undefined, "unit");
+            }
+
+
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
 
     </script>
 

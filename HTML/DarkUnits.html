@@ -15,18 +15,18 @@
     <script>
         var unitarray = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
 
+
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                SetButtonsAndDivs(unitarray, undefined, "unit");
-                SetLevelUpStuff();
+                CheckData();
             });
-
-
-
-
-
         });
+
+        function HandlePage() {
+            SetButtonsAndDivs(unitarray, undefined, "unit");
+            SetLevelUpStuff();
+        }
 
     </script>
 

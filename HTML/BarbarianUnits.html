@@ -16,14 +16,16 @@
         var unitarray = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
         $("#body").ready(function() {
 
-
             $("#header").load("/aow4db/HTML/header.html", function() {
-                SetButtonsAndDivs(unitarray, undefined, "unit");
-                SetLevelUpStuff();
-
+                CheckData();
             });
-
         });
+
+        function HandlePage() {
+            SetButtonsAndDivs(unitarray, undefined, "unit");
+            SetLevelUpStuff();
+
+        }
 
     </script>
 

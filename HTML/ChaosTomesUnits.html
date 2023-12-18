@@ -13,16 +13,21 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
+        var unitarray = ["lesser_magma_spirit:tome_of_pyromancy", "pyromancer:tome_of_pyromancy", "houndmaster:tome_of_the_horde", "war_hound:tome_of_the_horde", "gremlin:tome_of_mayhem", "skald:tome_of_revelry", "warbreed:tome_of_devastation", "chaos_eater:tome_of_pandemonium", "balor:tome_of_the_chaos_lord"];
         $("#body").ready(function() {
 
-            var unitarray = ["lesser_magma_spirit:tome_of_pyromancy", "pyromancer:tome_of_pyromancy", "houndmaster:tome_of_the_horde", "war_hound:tome_of_the_horde", "gremlin:tome_of_mayhem", "skald:tome_of_revelry", "warbreed:tome_of_devastation", "chaos_eater:tome_of_pandemonium", "balor:tome_of_the_chaos_lord"];
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showUnitsWithIcon(unitarray);
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
+                CheckData();
             });
-
         });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+
+        }
+
     </script>
 
 
@@ -49,7 +54,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <footer>
     <br>
     <br>
