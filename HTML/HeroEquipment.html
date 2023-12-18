@@ -10,12 +10,23 @@
 
     <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
+                CheckData();
+
+
+            });
+
+
+
+        });
+
+        async function CheckData() {
+            if (jsonSiegeProjects === undefined) {
+                await GetAllData();
                 showItemsWithArgument("Primary", "Primary Weapon");
                 showItemsWithArgument("Secondary", "Secondary Weapon");
                 showItemsWithArgument("Head", "Head");
@@ -27,11 +38,8 @@
 
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
-            });
-
-
-
-        });
+            }
+        }
 
     </script>
 

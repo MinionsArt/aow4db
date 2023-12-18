@@ -1,3 +1,6 @@
+var searchParams = new URLSearchParams(window.location.search);
+var dataParam = searchParams.get('data');
+
 var currentOrigin = "";
 var currentTome = "";
 
@@ -175,7 +178,52 @@ function SetRandomStart() {
             SetButtonInfo(originButton, randomEntry, currentChoice);
         }
 
+        GetURLData();
+        TestSTringS();
+        // if (dataParam != undefined) {
+        //     var splits = dataParam.split(":");
 
+        //     console.log(splits);
+        // }
+
+
+    }
+
+    function TestSTringS() {
+        // Example usage
+        const originalString = 'barbarian:toadkin:tome_of_souls';
+        const bitBuffer = stringToBitBuffer(originalString);
+
+
+        console.log('BitBuffer:', bitBuffer);
+        console.log('Converted Back to String:', bitBufferToString(bitBuffer));
+    }
+
+    // Function to create a BitBuffer from a string
+    function stringToBitBuffer(input) {
+        const bytes = new Uint8Array(input.length);
+        for (let i = 0; i < input.length; i++) {
+            bytes[i] = input.charCodeAt(i);
+        }
+        return bytes;
+    }
+
+    // Function to convert a BitBuffer back to a string
+    function bitBufferToString(buffer) {
+        let result = '';
+        buffer.forEach(byte => {
+            result += String.fromCharCode(byte);
+        });
+        return result;
+    }
+
+
+
+    function GetURLData() {
+        var currenturl = window.location.href.split('?')[0];
+        // if (dataParam === undefined) {
+        window.history.replaceState({}, 'foo', currenturl + "?data=" + currentCulture + "&" + currentForm);
+        // }
     }
 
     extraOrder = 0;

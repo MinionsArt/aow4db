@@ -2,6 +2,48 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get('sort');
 var currentView = "";
 
+function fetchJsonFiles(filePaths) {
+    return Promise.all(
+        filePaths.map(filePath =>
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+        )
+    );
+}
+var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems;
+
+async function GetAllData() {
+    // Example usage:
+
+
+    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json'];
+
+
+    await fetchJsonFiles(jsonFilePaths)
+        .then(dataArray => {
+            dataArray.forEach((data, index) => {
+                // console.log(`Data from ${jsonFilePaths[index]}:`, data);
+                if (index == 0) {
+                    jsonHeroItems = data;
+                } else if (index == 1) {
+                    jsonHeroSkills = data;
+                } else if (index == 2) {
+                    jsonSiegeProjects = data;
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching JSON files:', error.message);
+        });
+
+}
+
+
 
 
 var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
@@ -1940,32 +1982,25 @@ async function showEquipmentFromList(list, divID) {
 
 }
 
+
+
 async function showSiegeProjects(list) {
-
-
-
-
-
     if (list === undefined) {
-        await spawnSpellCards(jsonSiegeProjects.projects, "dataHolder");
-        for (var i = 0; i < jsonSiegeProjects.projects.length; i++) {
-            showSiegeProject(jsonSiegeProjects.projects[i].name, true);
+        await spawnSpellCards(jsonSiegeProjects, "dataHolder");
+        for (var i = 0; i < jsonSiegeProjects.length; i++) {
+            showSiegeProject(jsonSiegeProjects[i].name, true);
         }
     } else {
         await spawnSpellCards(list, "Siege Projects");
         for (i in list) {
-
-
             showSiegeProject(list[i], true);
         }
     }
-
-
-
-
-
-
 }
+
+
+
+
 
 async function showStructures(list) {
 
@@ -2377,9 +2412,9 @@ async function showHeroSkillFromString(string, divID) {
 
 function findHeroSkill(skillID) {
 
-    for (i in jsonHeroSkills.skills) {
-        if (jsonHeroSkills.skills[i].id === skillID) {
-            return jsonHeroSkills.skills[i];
+    for (i in jsonHeroSkills) {
+        if (jsonHeroSkills[i].id === skillID) {
+            return jsonHeroSkills[i];
         }
     }
 }
@@ -2391,11 +2426,11 @@ function findItemsWithArgument(argumentType) {
 
     var finalCheckedList = new Array();
 
-    for (j in jsonHeroItems.items) {
+    for (j in jsonHeroItems) {
 
-        if (jsonHeroItems.items[j].slot.indexOf(argumentType) !== -1 && jsonHeroItems.items[j].tier != undefined) {
+        if (jsonHeroItems[j].slot.indexOf(argumentType) !== -1 && jsonHeroItems[j].tier != undefined) {
 
-            finalCheckedList.push(jsonHeroItems.items[j]);
+            finalCheckedList.push(jsonHeroItems[j]);
         }
     }
 
@@ -2413,11 +2448,11 @@ function findSkillsWithArgument(signature, argumentType) {
 
     var finalCheckedList = new Array();
     if (signature === "") {
-        for (j in jsonHeroSkills.skills) {
-            if ('category_name' in jsonHeroSkills.skills[j]) {
-                if (jsonHeroSkills.skills[j].category_name.indexOf(argumentType) !== -1) {
-                    if (!isInArray(finalCheckedList, jsonHeroSkills.skills[j])) {
-                        finalCheckedList.push(jsonHeroSkills.skills[j]);
+        for (j in jsonHeroSkills) {
+            if ('category_name' in jsonHeroSkills[j]) {
+                if (jsonHeroSkills[j].category_name.indexOf(argumentType) !== -1) {
+                    if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
+                        finalCheckedList.push(jsonHeroSkills[j]);
                     }
 
                 }
@@ -2430,11 +2465,11 @@ function findSkillsWithArgument(signature, argumentType) {
         }
     } else {
 
-        for (j in jsonHeroSkills.skills) {
-            if ('type' in jsonHeroSkills.skills[j]) {
-                if (jsonHeroSkills.skills[j].type === 'signature') {
-                    if (!isInArray(finalCheckedList, jsonHeroSkills.skills[j])) {
-                        finalCheckedList.push(jsonHeroSkills.skills[j]);
+        for (j in jsonHeroSkills) {
+            if ('type' in jsonHeroSkills[j]) {
+                if (jsonHeroSkills[j].type === 'signature') {
+                    if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
+                        finalCheckedList.push(jsonHeroSkills[j]);
                     }
                 }
 
@@ -3677,15 +3712,15 @@ function CheckIfFromHeroSkill(unitName) {
 
 
 
-    for (j in jsonHeroSkills.skills) {
+    for (j in jsonHeroSkills) {
         if (hero != "") {
-            if ('abilities' in jsonHeroSkills.skills[j]) {
-                for (k in jsonHeroSkills.skills[j].abilities) {
+            if ('abilities' in jsonHeroSkills[j]) {
+                for (k in jsonHeroSkills[j].abilities) {
 
-                    if (jsonHeroSkills.skills[j].abilities[k].slug === hero.slug) {
+                    if (jsonHeroSkills[j].abilities[k].slug === hero.slug) {
                         resultslist = new Array();
                         resultslist.push(hero);
-                        resultslist.push(jsonHeroSkills.skills[j]);
+                        resultslist.push(jsonHeroSkills[j]);
 
 
                     }
@@ -3694,12 +3729,12 @@ function CheckIfFromHeroSkill(unitName) {
 
 
         } else {
-            for (k in jsonHeroSkills.skills[j].description) {
+            for (k in jsonHeroSkills[j].description) {
 
-                if (jsonHeroSkills.skills[j].description.indexOf(unitName) != -1) {
+                if (jsonHeroSkills[j].description.indexOf(unitName) != -1) {
                     resultslist = new Array();
                     resultslist.push(hero);
-                    resultslist.push(jsonHeroSkills.skills[j]);
+                    resultslist.push(jsonHeroSkills[j]);
 
 
                 }
@@ -3717,11 +3752,11 @@ function CheckIfFromHeroSkill(unitName) {
 
 function CheckIfInSiege(unitName) {
     var siege = "";
-    for (i in jsonSiegeProjects.projects) {
+    for (i in jsonSiegeProjects) {
 
-        if (jsonSiegeProjects.projects[i].description.indexOf(">" + unitName) != -1) {
+        if (jsonSiegeProjects[i].description.indexOf(">" + unitName) != -1) {
 
-            siege = jsonSiegeProjects.projects[i];
+            siege = jsonSiegeProjects[i];
 
         }
 
@@ -4063,49 +4098,49 @@ function showSiegeProject(id, showOrigin) {
     var modName, description, cost, type, tier, i = "";
     var found = false;
 
-    for (i in jsonSiegeProjects.projects) {
-        if (id === jsonSiegeProjects.projects[i].name) {
+    for (i in jsonSiegeProjects) {
+        if (id === jsonSiegeProjects[i].name) {
 
 
             modName = document.getElementById("modname");
-            modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
-            modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
+            modName.innerHTML = jsonSiegeProjects[i].name.toUpperCase();
+            modName.setAttribute("id", "modname" + jsonSiegeProjects[i].name);
             descriptionDiv = document.getElementById("moddescription");
-            description = "<hr>" + jsonSiegeProjects.projects[i].description;
+            description = "<hr>" + jsonSiegeProjects[i].description;
 
-            description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
+            description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
             imagelink = document.getElementById("modicon");
 
 
             unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects.projects[i].name);
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects[i].name);
 
 
-            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects.projects[i].id + ".png");
-            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects[i].id + ".png");
+            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
             descriptionDiv.innerHTML = description;
-            descriptionDiv.setAttribute("id", "moddescription" + jsonSiegeProjects.projects[i].name);
+            descriptionDiv.setAttribute("id", "moddescription" + jsonSiegeProjects[i].name);
 
             tier = document.getElementById("modtier");
 
             tier.innerHTML = "<garrison></garrison> Siege Project";
 
-            tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
+            tier.setAttribute("id", "modtier" + jsonSiegeProjects[i].name);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "Cost:" + jsonSiegeProjects.projects[i].cost;
-            cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
+            cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
+            cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
 
 
-            var tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects.projects[i].name, showOrigin);
+            var tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].name, showOrigin);
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
-                if ('DLC' in jsonSiegeProjects.projects[i] && showOrigin) {
+                if ('DLC' in jsonSiegeProjects[i] && showOrigin) {
 
-                    var newDivForMount = AddDLCTag(jsonSiegeProjects.projects[i].DLC);
+                    var newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
 
                     modName.append(newDivForMount);
 
@@ -4121,49 +4156,49 @@ function showSiegeProject(id, showOrigin) {
 
 
         }
-        if (id === jsonSiegeProjects.projects[i].id) {
+        if (id === jsonSiegeProjects[i].id) {
 
 
             modName = document.getElementById("modname");
-            modName.innerHTML = jsonSiegeProjects.projects[i].name.toUpperCase();
-            modName.setAttribute("id", "modname" + jsonSiegeProjects.projects[i].name);
+            modName.innerHTML = jsonSiegeProjects[i].name.toUpperCase();
+            modName.setAttribute("id", "modname" + jsonSiegeProjects[i].name);
             descriptionDiv = document.getElementById("moddescription");
-            description = "<hr>" + jsonSiegeProjects.projects[i].description;
+            description = "<hr>" + jsonSiegeProjects[i].description;
 
-            description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects.projects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
+            description += "<br>Fortification Damage:<br> +" + jsonSiegeProjects[i].siege_health_damage + " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
             imagelink = document.getElementById("modicon");
 
 
             unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects.projects[i].name);
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects[i].name);
 
 
-            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects.projects[i].id + ".png");
-            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects[i].id + ".png");
+            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
             descriptionDiv.innerHTML = description;
-            descriptionDiv.setAttribute("id", "modicon" + jsonSiegeProjects.projects[i].name);
+            descriptionDiv.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
 
             tier = document.getElementById("modtier");
 
             tier.innerHTML = "<garrison></garrison> Siege Project";
 
-            tier.setAttribute("id", "modtier" + jsonSiegeProjects.projects[i].name);
+            tier.setAttribute("id", "modtier" + jsonSiegeProjects[i].name);
 
             cost = document.getElementById("modcost");
-            cost.innerHTML = "Cost:" + jsonSiegeProjects.projects[i].cost;
-            cost.setAttribute("id", "modcost" + jsonSiegeProjects.projects[i].name);
+            cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
+            cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
 
 
 
-            var tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects.projects[i].id, showOrigin);
+            var tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].id, showOrigin);
 
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML += "<span style=\"color:white;font-size:12px\">  Tier " + romanize(splitspell[0]) + "</span>";
-                if ('DLC' in jsonSiegeProjects.projects[i] && showOrigin) {
+                if ('DLC' in jsonSiegeProjects[i] && showOrigin) {
 
-                    var newDivForMount = AddDLCTag(jsonSiegeProjects.projects[i].DLC);
+                    var newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
 
                     modName.append(newDivForMount);
 
@@ -4744,27 +4779,27 @@ function GetStructureName(structureID) {
 }
 
 function GetHeroSkillName(skillID) {
-    for (j in jsonHeroSkills.skills) {
-        if (jsonHeroSkills.skills[j].id == (skillID)) {
-            return jsonHeroSkills.skills[j].name;
+    for (j in jsonHeroSkills) {
+        if (jsonHeroSkills[j].id == (skillID)) {
+            return jsonHeroSkills[j].name;
         }
     }
 }
 
 function GetHeroSkillDescription(skillID) {
     var array = ["", ""];
-    for (j in jsonHeroSkills.skills) {
-        if (jsonHeroSkills.skills[j].id == skillID) {
-            if ('abilities' in jsonHeroSkills.skills[j]) {
+    for (j in jsonHeroSkills) {
+        if (jsonHeroSkills[j].id == skillID) {
+            if ('abilities' in jsonHeroSkills[j]) {
                 for (k in jsonUnitAbilities.abilities) {
-                    if (jsonUnitAbilities.abilities[k].slug.indexOf(jsonHeroSkills.skills[j].abilities[0].slug) != -1) {
+                    if (jsonUnitAbilities.abilities[k].slug.indexOf(jsonHeroSkills[j].abilities[0].slug) != -1) {
                         array[0] = jsonUnitAbilities.abilities[k];
 
 
                     }
                 }
             }
-            array[1] = jsonHeroSkills.skills[j];
+            array[1] = jsonHeroSkills[j];
 
             return array;
 
@@ -5517,9 +5552,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-            entry,
-            percentage
-        } of percentages) {
+        entry,
+        percentage
+    } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
@@ -6248,18 +6283,18 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
             }
         }
     } else {
-        for (j in jsonHeroSkills.skills) {
-            if (jsonHeroSkills.skills[j].id === a.id) {
+        for (j in jsonHeroSkills) {
+            if (jsonHeroSkills[j].id === a.id) {
 
                 modName = document.getElementById("modname");
 
-                modName.innerHTML = jsonHeroSkills.skills[j].name.toUpperCase();
+                modName.innerHTML = jsonHeroSkills[j].name.toUpperCase();
 
 
                 modName.setAttribute("id", "modname" + a.id);
                 descriptionDiv = document.getElementById("moddescription");
 
-                description = jsonHeroSkills.skills[j].description;
+                description = jsonHeroSkills[j].description;
 
                 unitTypesDiv = document.getElementById("affectUnitTypes");
 
@@ -6267,7 +6302,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
                 unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
 
-                var spa = CreatePassiveSlotToolTip(jsonHeroSkills.skills[j].icon, jsonHeroSkills.skills[j].name, jsonHeroSkills.skills[j].description);
+                var spa = CreatePassiveSlotToolTip(jsonHeroSkills[j].icon, jsonHeroSkills[j].name, jsonHeroSkills[j].description);
                 spa.className = "itemAbility";
                 descriptionDiv.innerHTML = "";
 

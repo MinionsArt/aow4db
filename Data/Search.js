@@ -267,16 +267,16 @@ function returnSkillList(fieldToSearch) {
 
 
 
-    for (j in jsonHeroSkills.skills) {
+    for (j in jsonHeroSkills) {
         if (hero.length > 0) {
-            if ('abilities' in jsonHeroSkills.skills[j]) {
-                for (k in jsonHeroSkills.skills[j].abilities) {
+            if ('abilities' in jsonHeroSkills[j]) {
+                for (k in jsonHeroSkills[j].abilities) {
                     for (l in hero) {
-                        if (jsonHeroSkills.skills[j].abilities[k].slug === hero[l].slug) {
+                        if (jsonHeroSkills[j].abilities[k].slug === hero[l].slug) {
 
 
-                            if (!isInArray(resultslist, jsonHeroSkills.skills[j])) {
-                                resultslist.push(jsonHeroSkills.skills[j]);
+                            if (!isInArray(resultslist, jsonHeroSkills[j])) {
+                                resultslist.push(jsonHeroSkills[j]);
                             }
 
 
@@ -289,12 +289,12 @@ function returnSkillList(fieldToSearch) {
 
 
         }
-        for (k in jsonHeroSkills.skills[j].description) {
+        for (k in jsonHeroSkills[j].description) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (Sanitize(jsonHeroSkills.skills[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
+            if (Sanitize(jsonHeroSkills[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
 
-                if (!isInArray(resultslist, jsonHeroSkills.skills[j])) {
-                    resultslist.push(jsonHeroSkills.skills[j]);
+                if (!isInArray(resultslist, jsonHeroSkills[j])) {
+                    resultslist.push(jsonHeroSkills[j]);
                 }
 
 
@@ -302,12 +302,12 @@ function returnSkillList(fieldToSearch) {
             }
         }
 
-        for (k in jsonHeroSkills.skills[j].name) {
+        for (k in jsonHeroSkills[j].name) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (jsonHeroSkills.skills[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+            if (jsonHeroSkills[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
 
-                if (!isInArray(resultslist, jsonHeroSkills.skills[j])) {
-                    resultslist.push(jsonHeroSkills.skills[j]);
+                if (!isInArray(resultslist, jsonHeroSkills[j])) {
+                    resultslist.push(jsonHeroSkills[j]);
                 }
 
 
@@ -384,16 +384,16 @@ function returnEquipList(fieldToSearch) {
 
 
 
-    for (j in jsonHeroItems.items) {
+    for (j in jsonHeroItems) {
         if (equip.length > 0) {
 
-            for (k in jsonHeroItems.items[j].ability_slugs) {
+            for (k in jsonHeroItems[j].ability_slugs) {
                 for (l in equip) {
-                    if (jsonHeroItems.items[j].ability_slugs[k].slug === equip[l].slug) {
+                    if (jsonHeroItems[j].ability_slugs[k].slug === equip[l].slug) {
 
 
-                        if (!isInArray(resultslist, jsonHeroItems.items[j])) {
-                            resultslist.push(jsonHeroItems.items[j]);
+                        if (!isInArray(resultslist, jsonHeroItems[j])) {
+                            resultslist.push(jsonHeroItems[j]);
                         }
 
 
@@ -406,12 +406,12 @@ function returnEquipList(fieldToSearch) {
 
 
         }
-        for (k in jsonHeroItems.items[j].description) {
+        for (k in jsonHeroItems[j].description) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (Sanitize(jsonHeroItems.items[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
+            if (Sanitize(jsonHeroItems[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
 
-                if (!isInArray(resultslist, jsonHeroItems.items[j])) {
-                    resultslist.push(jsonHeroItems.items[j]);
+                if (!isInArray(resultslist, jsonHeroItems[j])) {
+                    resultslist.push(jsonHeroItems[j]);
                 }
 
 
@@ -419,12 +419,12 @@ function returnEquipList(fieldToSearch) {
             }
         }
 
-        for (k in jsonHeroItems.items[j].name) {
+        for (k in jsonHeroItems[j].name) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (jsonHeroItems.items[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+            if (jsonHeroItems[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
 
-                if (!isInArray(resultslist, jsonHeroItems.items[j])) {
-                    resultslist.push(jsonHeroItems.items[j]);
+                if (!isInArray(resultslist, jsonHeroItems[j])) {
+                    resultslist.push(jsonHeroItems[j]);
                 }
 
 
@@ -444,23 +444,23 @@ function returnEquipList(fieldToSearch) {
 
 function returnSiegeProj(fieldToSearch) {
     var list = new Array();
-    for (i = 0; i < jsonSiegeProjects.projects.length; i++) {
+    for (i = 0; i < jsonSiegeProjects.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonSiegeProjects.projects[i].id;
+            textvalue = jsonSiegeProjects[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSiegeProjects.projects[i].id)) {
-                    list.push(jsonSiegeProjects.projects[i].id);
+                if (!isInArray(list, jsonSiegeProjects[i].id)) {
+                    list.push(jsonSiegeProjects[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            if ('description' in jsonSiegeProjects.projects[i]) {
+            if ('description' in jsonSiegeProjects[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonSiegeProjects.projects[i].description);
+                textvalue = Sanitize(jsonSiegeProjects[i].description);
 
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonSiegeProjects.projects[i].id)) {
-                        list.push(jsonSiegeProjects.projects[i].id);
+                    if (!isInArray(list, jsonSiegeProjects[i].id)) {
+                        list.push(jsonSiegeProjects[i].id);
                     }
                 }
             }
