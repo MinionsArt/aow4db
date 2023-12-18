@@ -73,7 +73,7 @@ function AddExtra(type, add) {
 }
 
 function addOrSubtract(extraAffinity, add) {
-    if (add === "-") {
+    if (add === "⮟") {
         if (extraAffinity > 0) {
             extraAffinity--;
         }
@@ -682,12 +682,18 @@ function RecalculateStats() {
 
 
     // add all extra input tags
-    document.getElementById("extraOrder").innerHTML = "<empireorder></empireorder>" + extraOrder;
-    document.getElementById("extraChaos").innerHTML = "<empirechaos></empirechaos>" + extraChaos;
-    document.getElementById("extraNature").innerHTML = "<empirenature></empirenature>" + extraNature;
-    document.getElementById("extraMaterium").innerHTML = "<empirematter></empirematter>" + extraMaterium;
-    document.getElementById("extraShadow").innerHTML = "<empireshadow></empireshadow>" + extraShadow;
-    document.getElementById("extraAstral").innerHTML = "<empirearcana></empirearcana>" + extraAstral;
+    document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
+    document.getElementById("extraOrder").style = "text-align:center";
+    document.getElementById("extraChaos").innerHTML = "<empirechaosBig></empirechaosBig>" + extraChaos;
+    document.getElementById("extraChaos").style = "text-align:center";
+    document.getElementById("extraNature").innerHTML = "<empirenatureBig></empirenatureBig>" + extraNature;
+    document.getElementById("extraNature").style = "text-align:center";
+    document.getElementById("extraMaterium").innerHTML = "<empirematterBig></empirematterBig>" + extraMaterium;
+    document.getElementById("extraMaterium").style = "text-align:center";
+    document.getElementById("extraShadow").innerHTML = "<empireshadowBig></empireshadowBig>" + extraShadow;
+    document.getElementById("extraShadow").style = "text-align:center";
+    document.getElementById("extraAstral").innerHTML = "<empirearcanaBig></empirearcanaBig>" + extraAstral;
+    document.getElementById("extraAstral").style = "text-align:center";
     for (let i = 0; i < extraOrder; i++) {
 
         input += "<empireorder></empireorder>,";
@@ -747,8 +753,16 @@ function RecalculateStats() {
     const affinitySummary = document.getElementById("currentAffinity");
 
     result = result.replaceAll(",", "");
+
+
     currentAffinityTotal = result;
 
+    result = result.replace("<empireshadow></empireshadow> ", "<empireshadowBig></empireshadowBig>");
+    result = result.replace("<empirechaos></empirechaos> ", "<empirechaosBig></empirechaosBig>");
+    result = result.replace("<empirenature></empirenature> ", "<empirenatureBig></empirenatureBig>");
+    result = result.replace("<empirearcana></empirearcana> ", "<empirearcanaBig></empirearcanaBig>");
+    result = result.replace("<empirematter></empirematter> ", "<empirematterBig></empirematterBig>");
+    result = result.replace("<empireorder></empireorder> ", "<empireorderBig></empireorderBig>");
     affinitySummary.innerHTML = result;
 
 

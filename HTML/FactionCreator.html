@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <script>
         $("#body").ready(function() {
 
@@ -52,68 +53,111 @@
                     </div>
                     <!--<button class="test" id="shieldColor" onclick="ChangeShieldCol()">Color 1</button>
                     <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>-->
+                    <div style="  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;">
+                        <div id="currentAffinity" class="affinityText"> </div>
+                        <div>
+                            Extra Affinity Points
+                            <div id="extraAffinity" style="
+    max-width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f0f8ff2b;
+    position: relative;">
 
-                    <div id="currentAffinity" class="affinityText"> </div>
-                    <div id="extraAffinity" style="width: 400px;display: flex;justify-content: space-evenly;background-color: #f0f8ff2b">
-                        <div style="display: flex;height: 20px;">
-                            <button class="AddSubtract" onclick="AddExtra('order','-')">
-                                -
-                            </button>
+                                <div style="display: flex;height: 50px;">
 
-                            <div id="extraOrder"></div>
-                            <button class="AddSubtract" onclick="AddExtra('order','+')">
-                                +
-                            </button>
-                        </div>
 
-                        <div style="display: flex;height: 20px;">
-                            <button class="AddSubtract" onclick="AddExtra('chaos','-')">
-                                -
-                            </button>
-                            <div id="extraChaos"></div>
-                            <button class="AddSubtract" onclick="AddExtra('chaos','+')">
-                                +
-                            </button>
-                        </div>
+                                    <div id="extraOrder"></div>
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('order','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('order','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
 
-                        <div style="display: flex;height: 20px;">
-                            <button class="AddSubtract" onclick="AddExtra('nature','-')">
-                                -
-                            </button>
-                            <div id="extraNature"></div>
-                            <button class="AddSubtract" onclick="AddExtra('nature','+')">
-                                +
-                            </button>
-                        </div>
-                        <div style="display: flex;height: 20px;">
-                            <button class="AddSubtract" onclick="AddExtra('shadow','-')">
-                                -
-                            </button>
-                            <div id="extraShadow"></div>
-                            <button class="AddSubtract" onclick="AddExtra('shadow','+')">
-                                +
-                            </button>
-                        </div>
-                        <div style="display: flex;height: 20px;">
-                            <button class="AddSubtract" onclick="AddExtra('materium','-')">
-                                -
-                            </button>
-                            <div id="extraMaterium"></div>
-                            <button class="AddSubtract" onclick="AddExtra('materium','+')">
-                                +
-                            </button>
-                        </div>
-                        <div style="display: flex;height: 20px;">
-                            <button class="AddSubtract" onclick="AddExtra('astral','-')">
-                                -
-                            </button>
-                            <div id="extraAstral"></div>
-                            <button class="AddSubtract" onclick="AddExtra('astral','+')">
-                                +
-                            </button>
-                        </div>
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraChaos"></div>
 
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraNature"></div>
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('nature','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('nature','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="display: flex;height: 50px;">
+
+                                    <div id="extraShadow"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraMaterium"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('materium','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('materium','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraAstral"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('astral','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('astral','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <hr>
                 </div>
                 <div class="subDivider">
@@ -387,7 +431,7 @@
         display: inline-block;
         position: relative;
 
-        width: 550px;
+        width: 650px;
 
         left: 102px;
 
@@ -417,11 +461,10 @@
 
     .affinityText {
 
-        font-size: 20px;
-
+        top: 20px;
+        max-width: 300px;
+        font-size: 15px;
         position: relative;
-        left: 20px;
-        padding: 15px;
     }
 
     /* Show the tooltip text when you mouse over the tooltip container */
