@@ -16,18 +16,21 @@
         var oreArray = ["arcanium_ore", "focus_crystals", "fireforge_stone"];
         var liquidArray = ["archon_blood", "astral_dew", "tranquility_pool"];
         var plantArray = ["haste_berries", "silvertongue_fruit", "rainbow_clover"];
+
+
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                showWorldStructuresWithArgument("Ores", "ore", oreArray, "Ores");
-                showWorldStructuresWithArgument("Liquids", "liquid", liquidArray, "Liquids");
-                showWorldStructuresWithArgument("Plants", "plant", plantArray, "Plants");
-                SetLevelUpStuff();
-
+                CheckData();
             });
-
-
         });
+
+        function HandlePage() {
+            showWorldStructuresWithArgument("Ores", "ore", oreArray, "Ores");
+            showWorldStructuresWithArgument("Liquids", "liquid", liquidArray, "Liquids");
+            showWorldStructuresWithArgument("Plants", "plant", plantArray, "Plants");
+            SetLevelUpStuff();
+        }
 
     </script>
 

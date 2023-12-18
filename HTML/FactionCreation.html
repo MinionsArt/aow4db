@@ -8,32 +8,28 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
-
     <script>
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-
-                showTraitsWithArgument("Form", "Form Trait", "");
-                showTraitsWithArgument("society", "Order Society Traits", "order");
-                showTraitsWithArgument("society", "Chaos Society Traits", "chaos");
-                showTraitsWithArgument("society", "Nature Society Traits", "nature");
-                showTraitsWithArgument("society", "Shadow Society Traits", "shadow");
-                showTraitsWithArgument("society", "Materium Society Traits", "matter");
-                showTraitsWithArgument("society", "Astral Society Traits", "arcana");
-                showTraitsWithArgument("Ruler Origin", "Ruler Origins", "");
-                showTraitsWithArgument("Culture", "Cultures", "");
-                SetLevelUpStuff();
-                SetCollapsibleStuff();
-
+                CheckData();
             });
-
-
         });
+
+        function HandlePage() {
+            showTraitsWithArgument("Form", "Form Trait", "");
+            showTraitsWithArgument("society", "Order Society Traits", "order");
+            showTraitsWithArgument("society", "Chaos Society Traits", "chaos");
+            showTraitsWithArgument("society", "Nature Society Traits", "nature");
+            showTraitsWithArgument("society", "Shadow Society Traits", "shadow");
+            showTraitsWithArgument("society", "Materium Society Traits", "matter");
+            showTraitsWithArgument("society", "Astral Society Traits", "arcana");
+            showTraitsWithArgument("Ruler Origin", "Ruler Origins", "");
+            showTraitsWithArgument("Culture", "Cultures", "");
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+        }
+
     </script>
 
 
@@ -72,7 +68,9 @@
 </body>
 <script>
 
-</script></html>
+</script>
+
+</html>
 <footer>
     <br>
     <br>

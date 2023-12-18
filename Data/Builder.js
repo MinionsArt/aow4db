@@ -15,13 +15,13 @@ function fetchJsonFiles(filePaths) {
         )
     );
 }
-var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems;
+var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2;
 
 async function GetAllData() {
     // Example usage:
 
 
-    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json'];
+    const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json'];
 
 
     await fetchJsonFiles(jsonFilePaths)
@@ -37,6 +37,8 @@ async function GetAllData() {
                 }
                 else if (index == 3) {
                     jsonUnits = data;
+                } else if (index == 4) {
+                    jsonFactionCreation2 = data;
                 }
             });
         })
@@ -2647,24 +2649,24 @@ function findTraitsWithArgument(argumentType, affinity) {
 
     var finalCheckedList = new Array();
     if (argumentType != "") {
-        for (j in jsonFactionCreation2.traits) {
+        for (j in jsonFactionCreation2) {
 
-            if (jsonFactionCreation2.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+            if (jsonFactionCreation2[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
                 if (affinity != "") {
-                    if ('affinities' in jsonFactionCreation2.traits[j])
-                        for (let index = 0; index < jsonFactionCreation2.traits[j].affinities.length; index++) {
-                            if (jsonFactionCreation2.traits[j].affinities[index].name.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
-                                if (jsonFactionCreation2.traits[j].enabled == true && jsonFactionCreation2.traits[j].id != "guardians_of_nature__goodact__") {
+                    if ('affinities' in jsonFactionCreation2[j])
+                        for (let index = 0; index < jsonFactionCreation2[j].affinities.length; index++) {
+                            if (jsonFactionCreation2[j].affinities[index].name.toUpperCase().indexOf(affinity.toUpperCase()) != -1) {
+                                if (jsonFactionCreation2[j].enabled == true && jsonFactionCreation2[j].id != "guardians_of_nature__goodact__") {
 
-                                    finalCheckedList.push(jsonFactionCreation2.traits[j].id);
+                                    finalCheckedList.push(jsonFactionCreation2[j].id);
                                 }
                             }
 
                         }
 
                 } else {
-                    if (jsonFactionCreation2.traits[j].enabled == true && jsonFactionCreation2.traits[j].id != "guardians_of_nature__goodact__") {
-                        finalCheckedList.push(jsonFactionCreation2.traits[j].id);
+                    if (jsonFactionCreation2[j].enabled == true && jsonFactionCreation2[j].id != "guardians_of_nature__goodact__") {
+                        finalCheckedList.push(jsonFactionCreation2[j].id);
                     }
                 }
 
@@ -5985,9 +5987,9 @@ function showTrait(a) {
     var modName, description, cost, type, tier = "";
     var found = false;
     var i = "";
-    for (i in jsonFactionCreation2.traits) {
-        if (jsonFactionCreation2.traits[i].id === a) {
-            var currentTrait = jsonFactionCreation2.traits[i];
+    for (i in jsonFactionCreation2) {
+        if (jsonFactionCreation2[i].id === a) {
+            var currentTrait = jsonFactionCreation2[i];
 
             showTraitSetup(currentTrait);
 
