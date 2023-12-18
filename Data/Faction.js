@@ -178,8 +178,8 @@ function SetRandomStart() {
             SetButtonInfo(originButton, randomEntry, currentChoice);
         }
 
-        GetURLData();
-        TestSTringS();
+        // GetURLData();
+        // TestSTringS();
         // if (dataParam != undefined) {
         //     var splits = dataParam.split(":");
 
@@ -1175,9 +1175,9 @@ function GetAffinityMatches(affinityTotal, substringToCount, number) {
 function GetAllOrigins() {
     var listOfAllOrigins = [];
 
-    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type === "Ruler Origin") {
-            listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+    for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "Ruler Origin") {
+            listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
     listOfAllOrigins.sort((a, b) => a.id - b.id);
@@ -1187,9 +1187,9 @@ function GetAllOrigins() {
 function GetAllCultures() {
     var listOfAllOrigins = [];
 
-    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type === "Culture") {
-            listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+    for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "Culture") {
+            listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
     listOfAllOrigins.sort((a, b) => a.id - b.id);
@@ -1199,9 +1199,9 @@ function GetAllCultures() {
 function GetAllForms() {
     var listOfAllOrigins = [];
 
-    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type === "Skin") {
-            listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+    for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "Skin") {
+            listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
     listOfAllOrigins.sort((a, b) => a.id - b.id);
@@ -1244,9 +1244,9 @@ function GetAllSocietyTraits() {
 function GetAllLoadouts() {
     var listOfAllOrigins = [];
 
-    for (i = 0; i < jsonFactionCreation.traits.length; i++) {
-        if (jsonFactionCreation.traits[i].type === "Loadout") {
-            listOfAllOrigins.push(jsonFactionCreation.traits[i]);
+    for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "Loadout") {
+            listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
     listOfAllOrigins.sort((a, b) => a.id - b.id);

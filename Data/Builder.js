@@ -15,14 +15,17 @@ function fetchJsonFiles(filePaths) {
         )
     );
 }
-var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes, jsonUnitAbilities, jsonEmpire, jsonSpells, jsonStructureUpgrades;
+var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes, jsonUnitAbilities, jsonEmpire, jsonSpells, jsonStructureUpgrades, jsonCombatEnchantments,
+    jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits;
 
 async function GetAllData() {
     // Example usage:
 
 
     const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
-        '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json'];
+        '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json',
+        '/aow4db/Data/CombatEnchantments.json', '/aow4db/Data/WorldStructures.json', '/aow4db/Data/EnchantmentTables.json', '/aow4db/Data/SpawnTables.json',
+        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json'];
 
 
     await fetchJsonFiles(jsonFilePaths)
@@ -56,6 +59,24 @@ async function GetAllData() {
                 }
                 else if (index == 9) {
                     jsonStructureUpgrades = data;
+                }
+                else if (index == 10) {
+                    jsonCombatEnchantments = data;
+                }
+                else if (index == 11) {
+                    jsonWorldStructures = data;
+                }
+                else if (index == 12) {
+                    jsonEnchantments = data;
+                }
+                else if (index == 13) {
+                    jsonSpawnTables = data;
+                }
+                else if (index == 14) {
+                    jsonFactionCreation = data;
+                }
+                else if (index == 15) {
+                    jsonHeroTraits = data;
                 }
             });
         })
@@ -879,28 +900,28 @@ function addAbilityslot(a, holder, list, enchant) {
             for (p = 0; p < list.length; p++) {
 
 
-                for (k = 0; k < jsonEnchantments.enchantments.length; k++) {
+                for (k = 0; k < jsonEnchantments.length; k++) {
 
-                    if (jsonEnchantments.enchantments[k].id === list[p].id) {
+                    if (jsonEnchantments[k].id === list[p].id) {
 
-                        if ('damage' in jsonEnchantments.enchantments[k]) {
+                        if ('damage' in jsonEnchantments[k]) {
                             console.log("damage increase");
                             abilityDam = IncreaseDamageValue(abilityDam, 1.2);
                         }
-                        if ('attack' in jsonEnchantments.enchantments[k]) {
+                        if ('attack' in jsonEnchantments[k]) {
 
-                            for (t = 0; t < jsonEnchantments.enchantments[k].attack.length; t++) {
+                            for (t = 0; t < jsonEnchantments[k].attack.length; t++) {
 
-                                if ('type2' in jsonEnchantments.enchantments[k].attack[t]) {
-                                    if (jsonEnchantments.enchantments[k].attack[t].type2.indexOf("*") != -1) {
-                                        if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1 || combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type2.split("*")[1]) != -1) {
+                                if ('type2' in jsonEnchantments[k].attack[t]) {
+                                    if (jsonEnchantments[k].attack[t].type2.indexOf("*") != -1) {
+                                        if (combinedReq.indexOf(jsonEnchantments[k].attack[t].type) != -1 || combinedReq.indexOf(jsonEnchantments[k].attack[t].type2.split("*")[1]) != -1) {
 
                                             abilityName += "<span style=\"color:#aa84f6;font-size: 20px\">*</span>";
-                                            abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments.enchantments[k].id + ".png\" height='20px'>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                            abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments[k].id + ".png\" height='20px'>" + jsonEnchantments[k].attack[t].description + "<br>";
                                             abilityEncht += "</bullet><br>";
 
-                                            if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
-                                                abilityRange += jsonEnchantments.enchantments[k].attack[t].range + "*";
+                                            if ('range' in jsonEnchantments[k].attack[t]) {
+                                                abilityRange += jsonEnchantments[k].attack[t].range + "*";
                                             }
                                         }
                                     }
@@ -908,26 +929,26 @@ function addAbilityslot(a, holder, list, enchant) {
                                     else {
 
 
-                                        if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1 && combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type2) != -1) {
+                                        if (combinedReq.indexOf(jsonEnchantments[k].attack[t].type) != -1 && combinedReq.indexOf(jsonEnchantments[k].attack[t].type2) != -1) {
 
                                             abilityName += "<span style=\"color:#aa84f6;font-size: 20px\">*</span>";
-                                            abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments.enchantments[k].id + ".png\" height='20px'>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                            abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments[k].id + ".png\" height='20px'>" + jsonEnchantments[k].attack[t].description + "<br>";
                                             abilityEncht += "</bullet><br>";
 
-                                            if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
-                                                abilityRange += jsonEnchantments.enchantments[k].attack[t].range + "*";
+                                            if ('range' in jsonEnchantments[k].attack[t]) {
+                                                abilityRange += jsonEnchantments[k].attack[t].range + "*";
                                             }
                                         }
                                     }
                                 } else {
-                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].attack[t].type) != -1) {
+                                    if (combinedReq.indexOf(jsonEnchantments[k].attack[t].type) != -1) {
 
                                         abilityName += "<span style=\"color:#aa84f6;font-size: 20px\">*</span>";
-                                        abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments.enchantments[k].id + ".png\" height='20px'>" + jsonEnchantments.enchantments[k].attack[t].description + "<br>";
+                                        abilityEncht += "<bullet><img src=\"/aow4db/Icons/SpellIcons/" + jsonEnchantments[k].id + ".png\" height='20px'>" + jsonEnchantments[k].attack[t].description + "<br>";
                                         abilityEncht += "</bullet><br>";
 
-                                        if ('range' in jsonEnchantments.enchantments[k].attack[t]) {
-                                            abilityRange = parseInt(parseInt(jsonEnchantments.enchantments[k].attack[t].range) + parseInt(abilityRange)) + "*";
+                                        if ('range' in jsonEnchantments[k].attack[t]) {
+                                            abilityRange = parseInt(parseInt(jsonEnchantments[k].attack[t].range) + parseInt(abilityRange)) + "*";
                                         }
                                     }
                                 }
@@ -937,26 +958,26 @@ function addAbilityslot(a, holder, list, enchant) {
 
                             }
                         }
-                        if ('damage_change' in jsonEnchantments.enchantments[k]) {
+                        if ('damage_change' in jsonEnchantments[k]) {
 
 
 
-                            if (jsonEnchantments.enchantments[k].requisites.length > 1) {
-                                if (jsonEnchantments.enchantments[k].requisites[1].type.indexOf("*") != -1) {
-                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1 || combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[1].type.split("*")[1]) != -1) {
+                            if (jsonEnchantments[k].requisites.length > 1) {
+                                if (jsonEnchantments[k].requisites[1].type.indexOf("*") != -1) {
+                                    if (combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1 || combinedReq.indexOf(jsonEnchantments[k].requisites[1].type.split("*")[1]) != -1) {
                                         if (abilityDam != "") {
 
-                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
+                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
                                         }
 
 
                                     }
                                     // or check, not and
                                 } else {
-                                    if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1 && combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[1].type) != -1) {
+                                    if (combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1 && combinedReq.indexOf(jsonEnchantments[k].requisites[1].type) != -1) {
                                         if (abilityDam != "") {
 
-                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
+                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
                                         }
 
 
@@ -967,10 +988,10 @@ function addAbilityslot(a, holder, list, enchant) {
 
 
                             } else {
-                                if (combinedReq.indexOf(jsonEnchantments.enchantments[k].requisites[0].type) != -1) {
+                                if (combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1) {
                                     if (abilityDam != "") {
 
-                                        abilityDam = combineDamageStrings(abilityDam, jsonEnchantments.enchantments[k].damage_change);
+                                        abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
                                     }
 
 
@@ -2519,28 +2540,28 @@ function findHeroTraitsWithArgument(argumentType) {
     var finalCheckedList = new Array();
 
     if (argumentType == "") {
-        for (j in jsonHeroTraits.traits) {
-            if ('type' in jsonHeroTraits.traits[j]) {
-                if (jsonHeroTraits.traits[j].type.indexOf("Combat") != -1) {
-                    if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
-                        finalCheckedList.push(jsonHeroTraits.traits[j]);
+        for (j in jsonHeroTraits) {
+            if ('type' in jsonHeroTraits[j]) {
+                if (jsonHeroTraits[j].type.indexOf("Combat") != -1) {
+                    if (!isInArray(finalCheckedList, jsonHeroTraits[j])) {
+                        finalCheckedList.push(jsonHeroTraits[j]);
                     }
                 }
 
             } else {
-                if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
-                    finalCheckedList.push(jsonHeroTraits.traits[j]);
+                if (!isInArray(finalCheckedList, jsonHeroTraits[j])) {
+                    finalCheckedList.push(jsonHeroTraits[j]);
                 }
             }
         }
     } else {
 
 
-        for (j in jsonHeroTraits.traits) {
-            if ('type' in jsonHeroTraits.traits[j]) {
-                if (jsonHeroTraits.traits[j].type.indexOf(argumentType) != -1) {
-                    if (!isInArray(finalCheckedList, jsonHeroTraits.traits[j])) {
-                        finalCheckedList.push(jsonHeroTraits.traits[j]);
+        for (j in jsonHeroTraits) {
+            if ('type' in jsonHeroTraits[j]) {
+                if (jsonHeroTraits[j].type.indexOf(argumentType) != -1) {
+                    if (!isInArray(finalCheckedList, jsonHeroTraits[j])) {
+                        finalCheckedList.push(jsonHeroTraits[j]);
                     }
                 }
 
@@ -2695,12 +2716,12 @@ function findTraitsWithArgument(argumentType, affinity) {
             }
         }
 
-        for (j in jsonFactionCreation.traits) {
+        for (j in jsonFactionCreation) {
 
-            if (jsonFactionCreation.traits[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+            if (jsonFactionCreation[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
 
 
-                finalCheckedList.push(jsonFactionCreation.traits[j].id);
+                finalCheckedList.push(jsonFactionCreation[j].id);
 
 
 
@@ -3072,36 +3093,36 @@ function showUnit(a) {
 
 
 
-                for (k = 0; k < jsonEnchantments.enchantments.length; k++) {
+                for (k = 0; k < jsonEnchantments.length; k++) {
 
-                    if (jsonEnchantments.enchantments[k].id === activeEnchantList[x].id) {
-                        if ('hp' in jsonEnchantments.enchantments[k]) {
-                            hpvalue += jsonEnchantments.enchantments[k].hp;
+                    if (jsonEnchantments[k].id === activeEnchantList[x].id) {
+                        if ('hp' in jsonEnchantments[k]) {
+                            hpvalue += jsonEnchantments[k].hp;
                             hp.innerHTML = hpvalue + "*";
                         }
-                        if ('mp' in jsonEnchantments.enchantments[k]) {
+                        if ('mp' in jsonEnchantments[k]) {
 
-                            mp.innerHTML = jsonEnchantments.enchantments[k].mp + "*";
+                            mp.innerHTML = jsonEnchantments[k].mp + "*";
 
                         }
 
-                        if ('resistance' in jsonEnchantments.enchantments[k]) {
-                            shieldValue += jsonEnchantments.enchantments[k].resistance;
+                        if ('resistance' in jsonEnchantments[k]) {
+                            shieldValue += jsonEnchantments[k].resistance;
                             shield.innerHTML = shieldValue + "*";
 
                         }
-                        if ('crit' in jsonEnchantments.enchantments[k]) {
-                            critChance += parseInt(jsonEnchantments.enchantments[k].crit);
+                        if ('crit' in jsonEnchantments[k]) {
+                            critChance += parseInt(jsonEnchantments[k].crit);
                             crit.setAttribute("style", "display:block");
                             crit.innerHTML = "+" + critChance + "%";
 
                         }
-                        if ('passive' in jsonEnchantments.enchantments[k]) {
+                        if ('passive' in jsonEnchantments[k]) {
 
-                            for (t = 0; t < jsonEnchantments.enchantments[k].passive.length; t++) {
-                                addPassiveslot(jsonEnchantments.enchantments[k].passive[t].slug, unitTabHolder, true);
+                            for (t = 0; t < jsonEnchantments[k].passive.length; t++) {
+                                addPassiveslot(jsonEnchantments[k].passive[t].slug, unitTabHolder, true);
 
-                                if (jsonEnchantments.enchantments[k].passive[t].slug.indexOf("faithful") != -1) {
+                                if (jsonEnchantments[k].passive[t].slug.indexOf("faithful") != -1) {
                                     console.log("faithful found");
                                     tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + "*";
                                     var faithfulUpkeep = true;
@@ -3113,20 +3134,20 @@ function showUnit(a) {
 
                         }
 
-                        if ('passive_unique' in jsonEnchantments.enchantments[k]) {
-                            for (t = 0; t < jsonEnchantments.enchantments[k].passive_unique.length; t++) {
+                        if ('passive_unique' in jsonEnchantments[k]) {
+                            for (t = 0; t < jsonEnchantments[k].passive_unique.length; t++) {
                                 var overwrite = "";
-                                if ('overwriteName' in jsonEnchantments.enchantments[k].passive_unique[t]) {
-                                    overwrite = jsonEnchantments.enchantments[k].passive_unique[t].overwriteName;
+                                if ('overwriteName' in jsonEnchantments[k].passive_unique[t]) {
+                                    overwrite = jsonEnchantments[k].passive_unique[t].overwriteName;
                                 }
-                                addUniquePassiveSlot(activeEnchantList[x], jsonEnchantments.enchantments[k].passive_unique[t].description, unitTabHolder, overwrite);
+                                addUniquePassiveSlot(activeEnchantList[x], jsonEnchantments[k].passive_unique[t].description, unitTabHolder, overwrite);
                             }
                         }
 
-                        if ('active' in jsonEnchantments.enchantments[k]) {
+                        if ('active' in jsonEnchantments[k]) {
 
-                            for (t = 0; t < jsonEnchantments.enchantments[k].active.length; t++) {
-                                addAbilityslot(jsonEnchantments.enchantments[k].active[t].slug, unitTabHolder, activeEnchantList, true);
+                            for (t = 0; t < jsonEnchantments[k].active.length; t++) {
+                                addAbilityslot(jsonEnchantments[k].active[t].slug, unitTabHolder, activeEnchantList, true);
 
                             }
 
@@ -3893,14 +3914,14 @@ function CheckIfEvolveTarget(unitID) {
 function CheckIfInAncientWonder(unitID) {
     var wonder = "";
     var i, k = "";
-    for (i in jsonWorldStructures.structures) {
+    for (i in jsonWorldStructures) {
 
-        if ('unit_unlocks' in jsonWorldStructures.structures[i]) {
+        if ('unit_unlocks' in jsonWorldStructures[i]) {
 
-            for (k in jsonWorldStructures.structures[i].unit_unlocks) {
+            for (k in jsonWorldStructures[i].unit_unlocks) {
 
-                if (unitID === jsonWorldStructures.structures[i].unit_unlocks[k].slug) {
-                    wonder = jsonWorldStructures.structures[i];
+                if (unitID === jsonWorldStructures[i].unit_unlocks[k].slug) {
+                    wonder = jsonWorldStructures[i];
                 }
             }
 
@@ -4998,12 +5019,12 @@ function showStructure(a, showOrigin) {
 function showWorldStructure(a) {
     var modName, description, cost, type, tier, j, nameString = "";
     var found = false;
-    for (j in jsonWorldStructures.structures) {
-        if (a === jsonWorldStructures.structures[j].id) {
+    for (j in jsonWorldStructures) {
+        if (a === jsonWorldStructures[j].id) {
 
             modName = document.getElementById("modname");
             nameString = "";
-            nameString = jsonWorldStructures.structures[j].name.toUpperCase();
+            nameString = jsonWorldStructures[j].name.toUpperCase();
 
             if (nameString.indexOf("<br>")) {
                 nameString = nameString.replace("<br>", "");
@@ -5016,17 +5037,17 @@ function showWorldStructure(a) {
             descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
             description = "";
 
-            if (jsonWorldStructures.structures[j].type.indexOf("wonder") != -1) {
-                description = jsonWorldStructures.structures[j].type + "<br>";
+            if (jsonWorldStructures[j].type.indexOf("wonder") != -1) {
+                description = jsonWorldStructures[j].type + "<br>";
             } else {
 
             }
 
 
-            description += jsonWorldStructures.structures[j].description;
+            description += jsonWorldStructures[j].description;
 
 
-            if (jsonWorldStructures.structures[j].prediction_description != "") {
+            if (jsonWorldStructures[j].prediction_description != "") {
                 description += "<br>" + jsonStructureUpgrades[j].prediction_description;
             }
 
@@ -5038,7 +5059,7 @@ function showWorldStructure(a) {
 
 
 
-            if (jsonWorldStructures.structures[j].type.indexOf("wonder") != -1) {
+            if (jsonWorldStructures[j].type.indexOf("wonder") != -1) {
                 imagelink.remove();
 
             } else {
@@ -5048,7 +5069,7 @@ function showWorldStructure(a) {
 
             }
             descriptionDiv.innerHTML = "";
-            if (jsonWorldStructures.structures[j].type.indexOf("Ancient") != 1) {
+            if (jsonWorldStructures[j].type.indexOf("Ancient") != 1) {
                 descriptionDiv.innerHTML += "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
             }
             unitTypesDiv = document.getElementById("affectUnitTypes");
@@ -5056,13 +5077,13 @@ function showWorldStructure(a) {
             unitTypesDiv.setAttribute("style", "float: left;display: grid;grid-template-columns: 200px 200px;font-size: 12px;");
             FindCombatEnchantment(a);
 
-            if ('unit_unlocks' in jsonWorldStructures.structures[j]) {
+            if ('unit_unlocks' in jsonWorldStructures[j]) {
                 description += "<br>Rally Units:<br>";
-                for (x in jsonWorldStructures.structures[j].unit_unlocks) {
+                for (x in jsonWorldStructures[j].unit_unlocks) {
 
                     var div = document.createElement("DIV");
                     div.setAttribute("style", "margin-right: 20px;");
-                    div.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonWorldStructures.structures[j].unit_unlocks[x].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonWorldStructures.structures[j].unit_unlocks[x].slug) + "</a>" + "</bullet>";
+                    div.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonWorldStructures[j].unit_unlocks[x].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonWorldStructures[j].unit_unlocks[x].slug) + "</a>" + "</bullet>";
                     unitTypesDiv.appendChild(div);
                 }
             }
@@ -5108,19 +5129,19 @@ function showWorldStructure(a) {
 function FindCombatEnchantment(id) {
 
     var i = "";
-    for (i in jsonCombatEnchantments.enchantments) {
-        if (jsonCombatEnchantments.enchantments[i].origin_structure === id) {
+    for (i in jsonCombatEnchantments) {
+        if (jsonCombatEnchantments[i].origin_structure === id) {
             info = document.createElement("DIV");
 
 
-            info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpCombatEnc()\"> Combat Enchantment - " + jsonCombatEnchantments.enchantments[i].name + "</button>";
+            info.innerHTML = "<button type=\"button\" class=\"collapsible\"  onclick=\"SetUpCombatEnc()\"> Combat Enchantment - " + jsonCombatEnchantments[i].name + "</button>";
             var collapsibleC = document.createElement("DIV");
             collapsibleC.className = "combatEnchantment";
 
 
             var div = document.createElement("DIV");
-            div.innerHTML = "<img style=\"float:left; height:80px; padding:10px\" src=\"/aow4db/Icons/CombatEnchantments/" + jsonCombatEnchantments.enchantments[i].id + ".png\"><p style=\"color: #aa84f6;>" + "<span style=\"font-size=20px;\">" + jsonCombatEnchantments.enchantments[i].name.toUpperCase() + "</p>" +
-                "</br>" + jsonCombatEnchantments.enchantments[i].description;
+            div.innerHTML = "<img style=\"float:left; height:80px; padding:10px\" src=\"/aow4db/Icons/CombatEnchantments/" + jsonCombatEnchantments[i].id + ".png\"><p style=\"color: #aa84f6;>" + "<span style=\"font-size=20px;\">" + jsonCombatEnchantments[i].name.toUpperCase() + "</p>" +
+                "</br>" + jsonCombatEnchantments[i].description;
 
             collapsibleC.append(div);
             info.append(collapsibleC);
@@ -5478,16 +5499,13 @@ function showSpell(a, showOrigin) {
                 var collapsibleC = document.createElement("DIV");
                 collapsibleC.classList = "content";
 
-                for (let index = 0; index < jsonSpawnTables.spawnTable.length; index++) {
-                    if (jsonSpawnTables.spawnTable[index].id == a) {
-                        for (let j = 0; j < jsonSpawnTables.spawnTable[index].categories.length; j++) {
-                            var div = ConvertSpawnTable(jsonSpawnTables.spawnTable[index].categories[j].table);
-
+                for (let index = 0; index < jsonSpawnTables.length; index++) {
+                    if (jsonSpawnTables[index].id == a) {
+                        for (let j = 0; j < jsonSpawnTables[index].categories.length; j++) {
+                            var div = ConvertSpawnTable(jsonSpawnTables[index].categories[j].table);
                             collapsibleC.append(div);
-
                         }
                     }
-
                 }
 
                 info.append(collapsibleC);
@@ -6008,9 +6026,9 @@ function showTrait(a) {
 
         }
     }
-    for (i in jsonFactionCreation.traits) {
-        if (jsonFactionCreation.traits[i].id === a) {
-            var currentTrait = jsonFactionCreation.traits[i];
+    for (i in jsonFactionCreation) {
+        if (jsonFactionCreation[i].id === a) {
+            var currentTrait = jsonFactionCreation[i];
             showTraitSetup(currentTrait);
         }
 
@@ -6022,11 +6040,11 @@ function showHeroTrait(a) {
     var modName, description, cost, type, tier = "";
     var found = false;
     var i = "";
-    for (i in jsonHeroTraits.traits) {
-        if (jsonHeroTraits.traits[i].id === a) {
+    for (i in jsonHeroTraits) {
+        if (jsonHeroTraits[i].id === a) {
 
             modName = document.getElementById("modname");
-            modName.innerHTML = jsonHeroTraits.traits[i].name.toUpperCase();
+            modName.innerHTML = jsonHeroTraits[i].name.toUpperCase();
 
 
 
@@ -6041,16 +6059,16 @@ function showHeroTrait(a) {
 
 
 
-            descriptionDiv.innerHTML = "<hr>" + jsonHeroTraits.traits[i].description;
+            descriptionDiv.innerHTML = "<hr>" + jsonHeroTraits[i].description;
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
             unitTypesDiv = document.getElementById("affectUnitTypes");
-            if ('units' in jsonHeroTraits.traits[i]) {
+            if ('units' in jsonHeroTraits[i]) {
                 descriptionDiv.innerHTML += "<br><br>Units:";
-                for (l in jsonHeroTraits.traits[i].units) {
+                for (l in jsonHeroTraits[i].units) {
 
                     var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonHeroTraits.traits[i].units[l].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonHeroTraits.traits[i].units[l].slug) + "</a>" + "</bullet>";
+                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + jsonHeroTraits[i].units[l].slug + "\" target=\"_blank\">" + GetUnitTierAndName(jsonHeroTraits[i].units[l].slug) + "</a>" + "</bullet>";
                     unitTypesDiv.append(div);
                 }
             }
@@ -6059,8 +6077,8 @@ function showHeroTrait(a) {
 
 
             var heroTraitImage = "";
-            if ('type' in jsonHeroTraits.traits[i]) {
-                heroTraitImage = jsonHeroTraits.traits[i].type;
+            if ('type' in jsonHeroTraits[i]) {
+                heroTraitImage = jsonHeroTraits[i].type;
             } else {
                 heroTraitImage = "Combat";
             }

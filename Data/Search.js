@@ -181,36 +181,6 @@ function returnTraitsList(fieldToSearch) {
 
 }
 
-function returnDestinyTraitsList(fieldToSearch) {
-    var list = new Array();
-    var i, j = "";
-    for (i = 0; i < jsonDestiny.traits.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonDestiny.traits[i].name;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonDestiny.traits[i].id)) {
-                    list.push(jsonDestiny.traits[i].id);
-                }
-            }
-        }
-        if (document.getElementById("descriptionCheck").checked) {
-            for (j = 0; j < jsonDestiny.traits[i].gains.length; j++) {
-                textvalue = Sanitize(jsonDestiny.traits[i].gains[j].description);
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonDestiny.traits[i].id)) {
-                        list.push(jsonDestiny.traits[i].id);
-                    }
-                }
-            }
-
-        }
-
-
-    }
-
-    return list;
-}
 
 
 function returnSkillList(fieldToSearch) {
@@ -479,22 +449,22 @@ function Sanitize(string) {
 
 function returnWorldStructure(fieldToSearch) {
     var list = new Array();
-    for (i = 0; i < jsonWorldStructures.structures.length; i++) {
+    for (i = 0; i < jsonWorldStructures.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonWorldStructures.structures[i].id;
+            textvalue = jsonWorldStructures[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonWorldStructures.structures[i].id)) {
-                    list.push(jsonWorldStructures.structures[i].id);
+                if (!isInArray(list, jsonWorldStructures[i].id)) {
+                    list.push(jsonWorldStructures[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            if ('description' in jsonWorldStructures.structures[i]) {
+            if ('description' in jsonWorldStructures[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonWorldStructures.structures[i].description);
+                textvalue = Sanitize(jsonWorldStructures[i].description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonWorldStructures.structures[i].id)) {
-                        list.push(jsonWorldStructures.structures[i].id);
+                    if (!isInArray(list, jsonWorldStructures[i].id)) {
+                        list.push(jsonWorldStructures[i].id);
                     }
                 }
             }
@@ -568,7 +538,7 @@ function searchUnits(keyword) {
     var listWorldStructures = returnWorldStructure(fields[0]);
     var listEmpireTree = returnEmpireTreeList(fields[0]);
     var listEquip = returnEquipList(fields[0]);
-    var listDestiny = returnDestinyTraitsList(fields[0]);
+
 
 
 
@@ -605,9 +575,7 @@ function searchUnits(keyword) {
     if (listTraits.length > 0) {
         SetCollapsibleButtonsAndDivs("Faction Traits", listTraits, "searchTraits");
     }
-    if (listDestiny.length > 0) {
-        SetCollapsibleButtonsAndDivs("Destiny Traits", listDestiny, "searchDestiny");
-    }
+
 
     SetLevelUpStuff();
 

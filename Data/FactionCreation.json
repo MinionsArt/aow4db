@@ -1,410 +1,363 @@
-var jsonFactionCreation = {
-    "traits": [
-
-        {
-            "type": "Ruler Origin",
-            "id": "champion",
-            "name": "Champion",
-            "icon": "champion",
-            "description": "<bulletlist>A Ruler risen from the ranks of their people.<bullet>All cities have +10% <gold></gold> Gold income and +20 <happiness></happiness> City Stability.</bullet><bullet>The Throne City gains +20 <draft></draft> Draft</bullet><bullet>All non-Hero Units gain +20% <xp></xp> Experience</bullet><br><bullet>Start with +100 Relations with Free Cities.</bullet></bulletlist>"
+[
+    {
+        "type": "Ruler Origin",
+        "id": "champion",
+        "name": "Champion",
+        "icon": "champion",
+        "description": "<bulletlist>A Ruler risen from the ranks of their people.<bullet>All cities have +10% <gold></gold> Gold income and +20 <happiness></happiness> City Stability.</bullet><bullet>The Throne City gains +20 <draft></draft> Draft</bullet><bullet>All non-Hero Units gain +20% <xp></xp> Experience</bullet><br><bullet>Start with +100 Relations with Free Cities.</bullet></bulletlist>"
     },
-        {
-            "type": "Ruler Origin",
-            "id": "wizard_king",
-            "name": "Wizard King",
-            "icon": "wizard_king",
-            "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>All cities have +10% <mana></mana> Mana income.</bullet><bullet>+5 <caststrategic></caststrategic> World Map Casting Points and +5 <casttactical></casttactical> Combat Casting Points for every 2 levels the Wizard King has.</bullet><br><bullet>Wizard Kings have the Overchannel ability in combat</bullet></bulletlist>"
+    {
+        "type": "Ruler Origin",
+        "id": "wizard_king",
+        "name": "Wizard King",
+        "icon": "wizard_king",
+        "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>All cities have +10% <mana></mana> Mana income.</bullet><bullet>+5 <caststrategic></caststrategic> World Map Casting Points and +5 <casttactical></casttactical> Combat Casting Points for every 2 levels the Wizard King has.</bullet><br><bullet>Wizard Kings have the Overchannel ability in combat</bullet></bulletlist>"
     },
-        {
-            "type": "Ruler Origin",
-            "id": "dragon_lord",
-            "name": "Dragon Lord",
-            "icon": "dragon_lord",
-            "description": "<bulletlist>A mighty dragon seeking new realms to shape in their vision.<bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Loards have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br><bullet>Dragon Lords have access to powerful Hero Skills and Transformations.</bullet></bulletlist>"
+    {
+        "type": "Ruler Origin",
+        "id": "dragon_lord",
+        "name": "Dragon Lord",
+        "icon": "dragon_lord",
+        "description": "<bulletlist>A mighty dragon seeking new realms to shape in their vision.<bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Loards have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br><bullet>Dragon Lords have access to powerful Hero Skills and Transformations.</bullet></bulletlist>"
     },
-        {
-            "type": "Culture",
-            "id": "feudal",
-            "icon": "feudal",
-            "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
-            "name": "Feudal",
-            "description": "<bulletlist>A hierarchic society wherin lords, ladies, and knights reign over peasants. All stand togetherin in battle when their fertile realm in threatened.<bullet>Structures with <food></food> Food income.</bullet><bullet>Units benefit from close formations with Stand Together</bullet>Feudal Lords passive</bullet></bulletlist>"
+    {
+        "type": "Culture",
+        "id": "feudal",
+        "icon": "feudal",
+        "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
+        "name": "Feudal",
+        "description": "<bulletlist>A hierarchic society wherin lords, ladies, and knights reign over peasants. All stand togetherin in battle when their fertile realm in threatened.<bullet>Structures with <food></food> Food income.</bullet><bullet>Units benefit from close formations with Stand Together</bullet>Feudal Lords passive</bullet></bulletlist>"
     },
-        {
-            "type": "Culture",
-            "id": "barbarian",
-            "icon": "barbarian",
-            "affinity": "<empirechaos></empirechaos>,<empirenature></empirenature>",
-            "name": "Barbarian",
-            "description": "<bulletlist>A people who thrive on war and aggression. They value strength and prefer to charge head-on into bloody battles.<bullet>Structures with <food></food> Food and <draft></draft> Draft income.</bullet><bullet>Melee units have Primal Strike, dealing extra damage ontheir first strike in combat.</bullet><bullet>Ritual of Alacrity passive</bullet></bulletlist>"
+    {
+        "type": "Culture",
+        "id": "barbarian",
+        "icon": "barbarian",
+        "affinity": "<empirechaos></empirechaos>,<empirenature></empirenature>",
+        "name": "Barbarian",
+        "description": "<bulletlist>A people who thrive on war and aggression. They value strength and prefer to charge head-on into bloody battles.<bullet>Structures with <food></food> Food and <draft></draft> Draft income.</bullet><bullet>Melee units have Primal Strike, dealing extra damage ontheir first strike in combat.</bullet><bullet>Ritual of Alacrity passive</bullet></bulletlist>"
     },
-        {
-            "type": "Culture",
-            "id": "industrious",
-            "icon": "industrious",
-            "affinity": "<empirematter></empirematter>,<empirematter></empirematter>",
-            "name": "Industrious",
-            "description": "<bulletlist>Master builders who value grand cities and strong armor, preferring a defensive attitude over an aggressive one.<bullet>Structures with <production></production> Production income.</bullet><bullet>Through Bolstering, units get sturdier as they get hit in battle.</bullet><bullet>Scout Prospecting passive</bullet></bulletlist>"
+    {
+        "type": "Culture",
+        "id": "industrious",
+        "icon": "industrious",
+        "affinity": "<empirematter></empirematter>,<empirematter></empirematter>",
+        "name": "Industrious",
+        "description": "<bulletlist>Master builders who value grand cities and strong armor, preferring a defensive attitude over an aggressive one.<bullet>Structures with <production></production> Production income.</bullet><bullet>Through Bolstering, units get sturdier as they get hit in battle.</bullet><bullet>Scout Prospecting passive</bullet></bulletlist>"
     },
-        {
-            "type": "Culture",
-            "id": "high",
-            "icon": "high",
-            "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
-            "name": "High",
-            "description": "<bulletlist>A highly developed society whose members strive for harmony. When threatened, however, they wield their guiding light as a weapon.<bullet>Structures have <happiness></happiness> City Stability and <knowledge></knowledge> Knowledge income.</bullet><bullet>Units are strengthened with Awakened, revealing their hidden potential</bullet><bullet>+10 <reputation6></reputation6> Alignment.<bullet>Alignment Agenda passive</bullet></bulletlist>"
+    {
+        "type": "Culture",
+        "id": "high",
+        "icon": "high",
+        "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
+        "name": "High",
+        "description": "<bulletlist>A highly developed society whose members strive for harmony. When threatened, however, they wield their guiding light as a weapon.<bullet>Structures have <happiness></happiness> City Stability and <knowledge></knowledge> Knowledge income.</bullet><bullet>Units are strengthened with Awakened, revealing their hidden potential</bullet><bullet>+10 <reputation6></reputation6> Alignment.<bullet>Alignment Agenda passive</bullet></bulletlist>"
     },
-        {
-            "type": "Culture",
-            "id": "dark",
-            "icon": "dark",
-            "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
-            "name": "Dark",
-            "description": "<bulletlist>A dictatorial civilization where the strong and ruthless dominate the weak. They use forbidden magics to maintain control and weaken their enemies.<bullet>Cities can negate <happiness></happiness> City Stability income penalties.</bullet><bullet>Unique City Structures granting <research></research> Knowledge and extra income from Prisons and Crypts.</bullet><bullet>Units specialize in inflicting negative status effects and exploiting them with Cull the Weak.</bullet><bullet>-10 <reputation2></reputation2> Alignment.</bulletlist>"
+    {
+        "type": "Culture",
+        "id": "dark",
+        "icon": "dark",
+        "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
+        "name": "Dark",
+        "description": "<bulletlist>A dictatorial civilization where the strong and ruthless dominate the weak. They use forbidden magics to maintain control and weaken their enemies.<bullet>Cities can negate <happiness></happiness> City Stability income penalties.</bullet><bullet>Unique City Structures granting <research></research> Knowledge and extra income from Prisons and Crypts.</bullet><bullet>Units specialize in inflicting negative status effects and exploiting them with Cull the Weak.</bullet><bullet>-10 <reputation2></reputation2> Alignment.</bulletlist>"
     },
-        {
-            "type": "Culture",
-            "id": "mystic",
-            "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
-            "name": "Mystic",
-            "icon": "mystic",
-            "description": "<bulletlist>A culture of scholars, driven to study every corner of the Astral Sea. They prefer to find answers through research and arcane prowess.<bullet>Structures with <mana></mana> Mana income.</bullet><bullet>Units have Attunement: Star Blades, making them stronger whenever a spell is cast in battle.</bullet><bullet>Astral Echoes passive.</bulletlist>",
-            "incompatible": [
-                {
-
-                    "name": "Fabled Hunters",
-   },
-
-    ],
-
+    {
+        "type": "Culture",
+        "id": "mystic",
+        "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
+        "name": "Mystic",
+        "icon": "mystic",
+        "description": "<bulletlist>A culture of scholars, driven to study every corner of the Astral Sea. They prefer to find answers through research and arcane prowess.<bullet>Structures with <mana></mana> Mana income.</bullet><bullet>Units have Attunement: Star Blades, making them stronger whenever a spell is cast in battle.</bullet><bullet>Astral Echoes passive.</bulletlist>",
+        "incompatible": [
+            {
+                "name": "Fabled Hunters"
+            }
+        ]
     },
-        {
-            "type": "Culture",
-            "id": "reaver",
-            "affinity": "<empirematter></empirematter>,<empirechaos></empirechaos>",
-            "name": "Reaver",
-            "DLC": "EMPIRESANDASHES ",
-            "icon": "reaver",
-            "description": "<bulletlist>A society of industrial opportunists. Pragmatic and brutal, they combine the material and the arcane, expanding their dominion through conquests and hunts. <bullet>Structures have <production></production> Production and <mana></mana> Mana income.</bullet><bullet>Units are specialized in focusing down Marked targets with Focused Aggression.</bullet><bullet>-1 <whisperingstone></whisperingstone> Whispering Stone.</bullet><bullet>Total War</bullet><bullet>War Spoils</bullet></bulletlist>",
-
-
-
-
+    {
+        "type": "Culture",
+        "id": "reaver",
+        "affinity": "<empirematter></empirematter>,<empirechaos></empirechaos>",
+        "name": "Reaver",
+        "DLC": "EMPIRESANDASHES ",
+        "icon": "reaver",
+        "description": "<bulletlist>A society of industrial opportunists. Pragmatic and brutal, they combine the material and the arcane, expanding their dominion through conquests and hunts. <bullet>Structures have <production></production> Production and <mana></mana> Mana income.</bullet><bullet>Units are specialized in focusing down Marked targets with Focused Aggression.</bullet><bullet>-1 <whisperingstone></whisperingstone> Whispering Stone.</bullet><bullet>Total War</bullet><bullet>War Spoils</bullet></bulletlist>"
     },
-        {
-            "type": "Skin",
-            "id": "dwarfkin",
-            "name": "Dwarfkin",
-            "description": "Stout, hardy and stubborn beings who are used to living in the most rugged regions of their world.",
+    {
+        "type": "Skin",
+        "id": "dwarfkin",
+        "name": "Dwarfkin",
+        "description": "Stout, hardy and stubborn beings who are used to living in the most rugged regions of their world."
     },
-        {
-            "type": "Skin",
-            "id": "elfkin",
-            "name": "Elfkin",
-            "description": "Slender, pointy-eared beings whose kin were the first to inhabit the realms.",
+    {
+        "type": "Skin",
+        "id": "elfkin",
+        "name": "Elfkin",
+        "description": "Slender, pointy-eared beings whose kin were the first to inhabit the realms."
     },
-        {
-            "type": "Skin",
-            "id": "feline",
-            "name": "Feline",
-            "description": "Cat-like beings who move with feline grace.",
+    {
+        "type": "Skin",
+        "id": "feline",
+        "name": "Feline",
+        "description": "Cat-like beings who move with feline grace."
     },
-        {
-            "type": "Skin",
-            "id": "goblinoid",
-            "name": "Goblinoid",
-            "description": "Small, hunched beings who love to rampage around in groups. Some are strangely fascinated by sheep.",
+    {
+        "type": "Skin",
+        "id": "goblinoid",
+        "name": "Goblinoid",
+        "description": "Small, hunched beings who love to rampage around in groups. Some are strangely fascinated by sheep."
     },
-        {
-            "type": "Skin",
-            "id": "avian",
-            "name": "Avian",
-            "DLC": " EMPIRESANDASHES",
-            "description": "....",
+    {
+        "type": "Skin",
+        "id": "avian",
+        "name": "Avian",
+        "DLC": " EMPIRESANDASHES",
+        "description": "...."
     },
-        {
-            "type": "Skin",
-            "id": "halfling",
-            "name": "Halfling",
-            "description": "Stocky, happy-go-lucky beings who enjoy wild adventures just as much as a well-deserved nap.",
+    {
+        "type": "Skin",
+        "id": "halfling",
+        "name": "Halfling",
+        "description": "Stocky, happy-go-lucky beings who enjoy wild adventures just as much as a well-deserved nap."
     },
-        {
-            "type": "Skin",
-            "id": "human",
-            "name": "Human",
-            "description": "Humanoid beings who are organized and entrepreneurial, albeit impatient at times.",
-
+    {
+        "type": "Skin",
+        "id": "human",
+        "name": "Human",
+        "description": "Humanoid beings who are organized and entrepreneurial, albeit impatient at times."
     },
-        {
-            "type": "Skin",
-            "id": "molekin",
-            "name": "Molekin",
-            "description": "Beings who have evolved from underground dwellers and retain their heightened sense of touch.",
+    {
+        "type": "Skin",
+        "id": "molekin",
+        "name": "Molekin",
+        "description": "Beings who have evolved from underground dwellers and retain their heightened sense of touch."
     },
-        {
-            "type": "Skin",
-            "id": "orcoid",
-            "name": "Orcoid",
-            "description": "Passionate and strong beings who have faced great prejudice as a result of their kin's history.",
+    {
+        "type": "Skin",
+        "id": "orcoid",
+        "name": "Orcoid",
+        "description": "Passionate and strong beings who have faced great prejudice as a result of their kin's history."
     },
-        {
-            "type": "Skin",
-            "id": "ratkin",
-            "name": "Ratkin",
-            "description": "Rodent-like beings whose groups are often referred to as mischiefs.",
+    {
+        "type": "Skin",
+        "id": "ratkin",
+        "name": "Ratkin",
+        "description": "Rodent-like beings whose groups are often referred to as mischiefs."
     },
-        {
-            "type": "Skin",
-            "id": "toadkin",
-            "name": "Toadkin",
-            "description": "Stout amphibian-like beings, born with vocal sacs that allow them to communicate through loud croaking.",
+    {
+        "type": "Skin",
+        "id": "toadkin",
+        "name": "Toadkin",
+        "description": "Stout amphibian-like beings, born with vocal sacs that allow them to communicate through loud croaking."
     },
-        {
-            "type": "Skin",
-            "id": "lizardfolk",
-            "name": "Lizardfolk",
-            "DLC": " DRAGONLORDS",
-            "description": "Slender, scaled creatures who use their tongues to get a sense of their surroundings.",
+    {
+        "type": "Skin",
+        "id": "lizardfolk",
+        "name": "Lizardfolk",
+        "DLC": " DRAGONLORDS",
+        "description": "Slender, scaled creatures who use their tongues to get a sense of their surroundings."
     },
-
-        {
-            "type": "Loadout",
-            "id": "barbarian_axe",
-            "name": "Axe and Shield",
-            "requirement": "Champion,Barbarian",
-
+    {
+        "type": "Loadout",
+        "id": "barbarian_axe",
+        "name": "Axe and Shield",
+        "requirement": "Champion,Barbarian"
     },
-        {
-            "type": "Loadout",
-            "id": "greataxe",
-            "name": "Greataxe",
-            "requirement": "Champion,Barbarian",
-
+    {
+        "type": "Loadout",
+        "id": "greataxe",
+        "name": "Greataxe",
+        "requirement": "Champion,Barbarian"
     },
-        {
-            "type": "Loadout",
-            "id": "bow",
-            "name": "Bow",
-            "requirement": "Champion,Barbarian:Feudal:High:Mystic",
-
+    {
+        "type": "Loadout",
+        "id": "bow",
+        "name": "Bow",
+        "requirement": "Champion,Barbarian:Feudal:High:Mystic"
     },
-        {
-            "type": "Loadout",
-            "id": "staff_of_blight",
-            "name": "Blight Staff",
-            "requirement": "Champion,Barbarian",
-
+    {
+        "type": "Loadout",
+        "id": "staff_of_blight",
+        "name": "Blight Staff",
+        "requirement": "Champion,Barbarian"
     },
-        {
-            "type": "Loadout",
-            "id": "poison_orb",
-            "name": "Blight Orb",
-            "requirement": "Champion,Barbarian",
-
+    {
+        "type": "Loadout",
+        "id": "poison_orb",
+        "name": "Blight Orb",
+        "requirement": "Champion,Barbarian"
     },
-        {
-            "type": "Loadout",
-            "id": "lance",
-            "name": "Lance",
-            "requirement": "Champion,Feudal:Dark:High",
-
+    {
+        "type": "Loadout",
+        "id": "lance",
+        "name": "Lance",
+        "requirement": "Champion,Feudal:Dark:High"
     },
-        {
-            "type": "Loadout",
-            "id": "feudal_longsword",
-            "name": "Sword and Shield",
-            "requirement": "Champion,Feudal:High:Dark",
-
+    {
+        "type": "Loadout",
+        "id": "feudal_longsword",
+        "name": "Sword and Shield",
+        "requirement": "Champion,Feudal:High:Dark"
     },
-        {
-            "type": "Loadout",
-            "id": "greatsword",
-            "name": "Greatsword",
-            "requirement": "Champion,Feudal",
-
+    {
+        "type": "Loadout",
+        "id": "greatsword",
+        "name": "Greatsword",
+        "requirement": "Champion,Feudal"
     },
-        {
-            "type": "Loadout",
-            "id": "staff_of_spirit",
-            "name": "Spirit Staff",
-            "requirement": "Champion,High:Feudal",
-
+    {
+        "type": "Loadout",
+        "id": "staff_of_spirit",
+        "name": "Spirit Staff",
+        "requirement": "Champion,High:Feudal"
     },
-
-        {
-            "type": "Loadout",
-            "id": "spirit_orb",
-            "name": "Spirit Orb",
-            "requirement": "Champion,High:Feudal",
-
+    {
+        "type": "Loadout",
+        "id": "spirit_orb",
+        "name": "Spirit Orb",
+        "requirement": "Champion,High:Feudal"
     },
-        {
-            "type": "Loadout",
-            "id": "lightning_orb",
-            "name": "Lightning Orb",
-            "requirement": "Champion,Mystic",
-
+    {
+        "type": "Loadout",
+        "id": "lightning_orb",
+        "name": "Lightning Orb",
+        "requirement": "Champion,Mystic"
     },
-        {
-            "type": "Loadout",
-            "id": "greathammer",
-            "name": "Greathammer",
-            "requirement": "Champion,Industrious",
-
+    {
+        "type": "Loadout",
+        "id": "greathammer",
+        "name": "Greathammer",
+        "requirement": "Champion,Industrious"
     },
-        {
-            "type": "Loadout",
-            "id": "industrious_hammer",
-            "name": "Shield and Hammer",
-            "requirement": "Champion,Industrious",
-
+    {
+        "type": "Loadout",
+        "id": "industrious_hammer",
+        "name": "Shield and Hammer",
+        "requirement": "Champion,Industrious"
     },
-        {
-            "type": "Loadout",
-            "id": "mystic_mace",
-            "name": "Mace and Shield",
-            "requirement": "Champion,Mystic",
-
+    {
+        "type": "Loadout",
+        "id": "mystic_mace",
+        "name": "Mace and Shield",
+        "requirement": "Champion,Mystic"
     },
-        {
-            "type": "Loadout",
-            "id": "mystic_mace",
-            "name": "Bladed Mace",
-            "requirement": "Champion,Mystic",
-
+    {
+        "type": "Loadout",
+        "id": "mystic_mace",
+        "name": "Bladed Mace",
+        "requirement": "Champion,Mystic"
     },
-        {
-            "type": "Loadout",
-            "id": "staff_of_lightning",
-            "name": "Lightning Staff",
-            "requirement": "Champion,Mystic",
-
+    {
+        "type": "Loadout",
+        "id": "staff_of_lightning",
+        "name": "Lightning Staff",
+        "requirement": "Champion,Mystic"
     },
-        {
-            "type": "Loadout",
-            "id": "crossbow",
-            "name": "Crossbow",
-            "requirement": "Champion,Industrious",
-
+    {
+        "type": "Loadout",
+        "id": "crossbow",
+        "name": "Crossbow",
+        "requirement": "Champion,Industrious"
     },
-        {
-            "type": "Loadout",
-            "id": "staff_of_fire",
-            "name": "Fire Staff",
-            "requirement": "Champion,Industrious",
-
+    {
+        "type": "Loadout",
+        "id": "staff_of_fire",
+        "name": "Fire Staff",
+        "requirement": "Champion,Industrious"
     },
-        {
-            "type": "Loadout",
-            "id": "fire_orb",
-            "name": "Fire Orb",
-            "requirement": "Champion,Industrious",
-
+    {
+        "type": "Loadout",
+        "id": "fire_orb",
+        "name": "Fire Orb",
+        "requirement": "Champion,Industrious"
     },
-        {
-            "type": "Loadout",
-            "id": "staff_of_frost",
-            "name": "Frost Staff",
-            "requirement": "Champion,Dark",
-
+    {
+        "type": "Loadout",
+        "id": "staff_of_frost",
+        "name": "Frost Staff",
+        "requirement": "Champion,Dark"
     },
-        {
-            "type": "Loadout",
-            "id": "pistol_and_sword",
-            "name": "Pistol and Sword",
-            "requirement": "Champion,Reaver",
-
+    {
+        "type": "Loadout",
+        "id": "pistol_and_sword",
+        "name": "Pistol and Sword",
+        "requirement": "Champion,Reaver"
     },
-        {
-            "type": "Loadout",
-            "id": "frost_orb",
-            "name": "Frost Orb",
-            "requirement": "Champion,Dark",
-
+    {
+        "type": "Loadout",
+        "id": "frost_orb",
+        "name": "Frost Orb",
+        "requirement": "Champion,Dark"
     },
-
-        {
-            "type": "Loadout",
-            "id": "dragon_claw_2",
-            "name": "Astral Dragon",
-            "requirement": "Dragon Lord",
-            "affinity": "<empirearcana></empirearcana>",
-
+    {
+        "type": "Loadout",
+        "id": "dragon_claw_2",
+        "name": "Astral Dragon",
+        "requirement": "Dragon Lord",
+        "affinity": "<empirearcana></empirearcana>"
     },
-        {
-            "type": "Loadout",
-            "id": "dragon_claw_6",
-            "name": "Chaos Dragon",
-            "requirement": "Dragon Lord",
-            "affinity": "<empirechaos></empirechaos>",
-
+    {
+        "type": "Loadout",
+        "id": "dragon_claw_6",
+        "name": "Chaos Dragon",
+        "requirement": "Dragon Lord",
+        "affinity": "<empirechaos></empirechaos>"
     },
-        {
-            "type": "Loadout",
-            "id": "dragon_claw",
-            "name": "Materium Dragon",
-            "requirement": "Dragon Lord",
-            "affinity": "<empirematter></empirematter>",
-
+    {
+        "type": "Loadout",
+        "id": "dragon_claw",
+        "name": "Materium Dragon",
+        "requirement": "Dragon Lord",
+        "affinity": "<empirematter></empirematter>"
     },
-        {
-            "type": "Loadout",
-            "id": "dragon_claw_4",
-            "name": "Nature Dragon",
-            "requirement": "Dragon Lord",
-            "affinity": "<empirenature></empirenature>",
-
+    {
+        "type": "Loadout",
+        "id": "dragon_claw_4",
+        "name": "Nature Dragon",
+        "requirement": "Dragon Lord",
+        "affinity": "<empirenature></empirenature>"
     },
-        {
-            "type": "Loadout",
-            "id": "dragon_claw_5",
-            "name": "Order Dragon",
-            "requirement": "Dragon Lord",
-            "affinity": "<empireorder></empireorder>",
-
+    {
+        "type": "Loadout",
+        "id": "dragon_claw_5",
+        "name": "Order Dragon",
+        "requirement": "Dragon Lord",
+        "affinity": "<empireorder></empireorder>"
     },
-        {
-            "type": "Loadout",
-            "id": "dragon_claw_3",
-            "name": "Shadow Dragon",
-            "requirement": "Dragon Lord",
-            "affinity": "<empireshadow></empireshadow>",
-
+    {
+        "type": "Loadout",
+        "id": "dragon_claw_3",
+        "name": "Shadow Dragon",
+        "requirement": "Dragon Lord",
+        "affinity": "<empireshadow></empireshadow>"
     },
-        {
-            "type": "Loadout",
-            "id": "godir_sword",
-            "name": "Godir Sword and Shield",
-            "requirement": "Wizard King",
-
+    {
+        "type": "Loadout",
+        "id": "godir_sword",
+        "name": "Godir Sword and Shield",
+        "requirement": "Wizard King"
     },
-        {
-            "type": "Loadout",
-            "id": "godir_bow",
-            "name": "Godir Bow",
-            "requirement": "Wizard King",
-
+    {
+        "type": "Loadout",
+        "id": "godir_bow",
+        "name": "Godir Bow",
+        "requirement": "Wizard King"
     },
-        {
-            "type": "Loadout",
-            "id": "godir_greataxe",
-            "name": "Godir Greataxe",
-            "requirement": "Wizard King",
-
+    {
+        "type": "Loadout",
+        "id": "godir_greataxe",
+        "name": "Godir Greataxe",
+        "requirement": "Wizard King"
     },
-        {
-            "type": "Loadout",
-            "id": "staff_of_spirit",
-            "name": "(Wizard King)Spirit Staff",
-            "requirement": "Wizard King",
-
+    {
+        "type": "Loadout",
+        "id": "staff_of_spirit",
+        "name": "(Wizard King)Spirit Staff",
+        "requirement": "Wizard King"
     },
-        {
-            "type": "Loadout",
-            "id": "lightning_orb",
-            "name": "(Wizard King)Lightning Orb",
-            "requirement": "Wizard King",
-
-    },
+    {
+        "type": "Loadout",
+        "id": "lightning_orb",
+        "name": "(Wizard King)Lightning Orb",
+        "requirement": "Wizard King"
+    }
 ]
-}
