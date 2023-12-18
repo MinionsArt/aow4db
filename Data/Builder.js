@@ -15,14 +15,14 @@ function fetchJsonFiles(filePaths) {
         )
     );
 }
-var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes, jsonUnitAbilities, jsonEmpire, jsonSpells;
+var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes, jsonUnitAbilities, jsonEmpire, jsonSpells, jsonStructureUpgrades;
 
 async function GetAllData() {
     // Example usage:
 
 
     const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
-        '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json'];
+        '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json'];
 
 
     await fetchJsonFiles(jsonFilePaths)
@@ -53,6 +53,9 @@ async function GetAllData() {
                 }
                 else if (index == 8) {
                     jsonSpells = data;
+                }
+                else if (index == 9) {
+                    jsonStructureUpgrades = data;
                 }
             });
         })
@@ -2721,11 +2724,11 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
 
     var finalCheckedList = new Array();
     if (argumentType != "") {
-        for (j in jsonStructureUpgrades.structures) {
+        for (j in jsonStructureUpgrades) {
 
-            if (jsonStructureUpgrades.structures[j].name.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
-                if (includeprovince === jsonStructureUpgrades.structures[j].is_sector_upgrade) {
-                    finalCheckedList.push(jsonStructureUpgrades.structures[j].id);
+            if (jsonStructureUpgrades[j].name.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+                if (includeprovince === jsonStructureUpgrades[j].is_sector_upgrade) {
+                    finalCheckedList.push(jsonStructureUpgrades[j].id);
                 }
 
 
@@ -2735,12 +2738,12 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
         }
     }
     if (income != "") {
-        for (k in jsonStructureUpgrades.structures) {
+        for (k in jsonStructureUpgrades) {
 
-            if (jsonStructureUpgrades.structures[k].id.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
-                if (includeprovince === jsonStructureUpgrades.structures[k].is_sector_upgrade) {
+            if (jsonStructureUpgrades[k].id.toUpperCase().indexOf(income.toUpperCase()) !== -1) {
+                if (includeprovince === jsonStructureUpgrades[k].is_sector_upgrade) {
 
-                    finalCheckedList.push(jsonStructureUpgrades.structures[k].id);
+                    finalCheckedList.push(jsonStructureUpgrades[k].id);
                 }
 
 
@@ -3795,22 +3798,22 @@ function CheckIfInSiege(unitName) {
 
 function CheckIfInStructure(unitName) {
     var structure = "";
-    for (i in jsonStructureUpgrades.structures) {
+    for (i in jsonStructureUpgrades) {
         if (unitName === "Warg") {
             unitName = "Warg<";
         }
         if (unitName === "Archer") {
             unitName = "Archer<";
         }
-        if (jsonStructureUpgrades.structures[i].prediction_description.indexOf(">" + unitName) != -1) {
+        if (jsonStructureUpgrades[i].prediction_description.indexOf(">" + unitName) != -1) {
 
-            structure = jsonStructureUpgrades.structures[i];
+            structure = jsonStructureUpgrades[i];
 
         }
 
-        if (jsonStructureUpgrades.structures[i].description.indexOf(">" + unitName) != -1) {
+        if (jsonStructureUpgrades[i].description.indexOf(">" + unitName) != -1) {
 
-            structure = jsonStructureUpgrades.structures[i];
+            structure = jsonStructureUpgrades[i];
 
         }
 
@@ -4799,9 +4802,9 @@ function GetAbilityInfo(ability) {
 
 
 function GetStructureName(structureID) {
-    for (j in jsonStructureUpgrades.structures) {
-        if (jsonStructureUpgrades.structures[j].id.indexOf(structureID) != -1) {
-            return jsonStructureUpgrades.structures[j].name;
+    for (j in jsonStructureUpgrades) {
+        if (jsonStructureUpgrades[j].id.indexOf(structureID) != -1) {
+            return jsonStructureUpgrades[j].name;
         }
     }
 }
@@ -4840,9 +4843,9 @@ function GetHeroSkillDescription(skillID) {
 
 
 function GetStructureDescription(structureID) {
-    for (j in jsonStructureUpgrades.structures) {
-        if (jsonStructureUpgrades.structures[j].id === structureID) {
-            return jsonStructureUpgrades.structures[j].description;
+    for (j in jsonStructureUpgrades) {
+        if (jsonStructureUpgrades[j].id === structureID) {
+            return jsonStructureUpgrades[j].description;
         }
     }
 }
@@ -4850,17 +4853,17 @@ function GetStructureDescription(structureID) {
 function showStructure(a, showOrigin) {
     var modName, description, cost, type, tier, j, nameString = "";
     var found = false;
-    for (j in jsonStructureUpgrades.structures) {
-        if (a === jsonStructureUpgrades.structures[j].id) {
+    for (j in jsonStructureUpgrades) {
+        if (a === jsonStructureUpgrades[j].id) {
             // exception
             if (a === "_teleporter___teleporter") {
-                if (jsonStructureUpgrades.structures[j].is_sector_upgrade === false) {
+                if (jsonStructureUpgrades[j].is_sector_upgrade === false) {
                     continue;
                 }
             }
             modName = document.getElementById("modname");
             nameString = "";
-            nameString = jsonStructureUpgrades.structures[j].name.toUpperCase();
+            nameString = jsonStructureUpgrades[j].name.toUpperCase();
 
             if (nameString.indexOf("<br>")) {
                 nameString = nameString.replace("<br>", "");
@@ -4879,14 +4882,14 @@ function showStructure(a, showOrigin) {
             descriptionDiv = document.getElementById("moddescription");
             description = "<hr>";
 
-            if (jsonStructureUpgrades.structures[j].requirement_description != "") {
-                description += jsonStructureUpgrades.structures[j].requirement_description + "<br>";
+            if (jsonStructureUpgrades[j].requirement_description != "") {
+                description += jsonStructureUpgrades[j].requirement_description + "<br>";
             }
-            description += jsonStructureUpgrades.structures[j].description;
+            description += jsonStructureUpgrades[j].description;
 
 
-            if (jsonStructureUpgrades.structures[j].prediction_description != "") {
-                description += "<br>" + jsonStructureUpgrades.structures[j].prediction_description;
+            if (jsonStructureUpgrades[j].prediction_description != "") {
+                description += "<br>" + jsonStructureUpgrades[j].prediction_description;
             }
 
 
@@ -4914,7 +4917,7 @@ function showStructure(a, showOrigin) {
             unitTypesDiv.setAttribute("style", "float: left;display: grid;grid-template-columns: 200px 200px;font-size: 12px;");
 
             tier = document.getElementById("modtier");
-            if (jsonStructureUpgrades.structures[j].is_sector_upgrade) {
+            if (jsonStructureUpgrades[j].is_sector_upgrade) {
                 if (tomeNameandTier != "") {
                     if (tomeNameandTier[1] != 0) {
 
@@ -4933,13 +4936,13 @@ function showStructure(a, showOrigin) {
 
             cost = document.getElementById("modcost");
             cost.className = "spell_cost";
-            cost.innerHTML = "Build Cost: " + jsonStructureUpgrades.structures[j].cost;
+            cost.innerHTML = "Build Cost: " + jsonStructureUpgrades[j].cost;
             cost.setAttribute("id", "modcost" + a);
 
             var name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
 
-            if ('DLC' in jsonStructureUpgrades.structures[j]) {
-                var newDivForMount = AddDLCTag(jsonStructureUpgrades.structures[j].DLC);
+            if ('DLC' in jsonStructureUpgrades[j]) {
+                var newDivForMount = AddDLCTag(jsonStructureUpgrades[j].DLC);
                 modName.append(newDivForMount);
             }
 
@@ -5024,7 +5027,7 @@ function showWorldStructure(a) {
 
 
             if (jsonWorldStructures.structures[j].prediction_description != "") {
-                description += "<br>" + jsonStructureUpgrades.structures[j].prediction_description;
+                description += "<br>" + jsonStructureUpgrades[j].prediction_description;
             }
 
 

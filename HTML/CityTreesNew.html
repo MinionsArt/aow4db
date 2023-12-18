@@ -8,10 +8,6 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/Units.json"></script>
-    <script id="unitsScript" type="text/javascript" language="javascript" src="/aow4db/Data/EmpireProgression.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Abiities.json"></script>
-    <script type="text/javascript" language="javascript" src="/aow4db/Data/Builder.js"></script>
 
     <script>
         var townHall1 = {
@@ -235,28 +231,23 @@
 
 
 
-
-
-
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-
-                // wizard tower setup
-
-
-
-                SetUpTreeNodes(general, "general");
-
-                SetCategories();
-                SetLevelUpStuff();
+                CheckData();
             });
-
-
-
-
-
         });
+
+        function HandlePage() {
+            SetUpTreeNodes(general, "general");
+
+            SetCategories();
+            SetLevelUpStuff();
+
+        }
+
+
+
 
         function SetUpStructureNode(structureInfo, splits, type) {
 
@@ -547,9 +538,9 @@
                     overwrite = townHall1;
                     SetUpStructureNode(overwrite, splits, type);
                 }
-                for (i in jsonStructureUpgrades.structures) {
-                    if (jsonStructureUpgrades.structures[i].id === structure) {
-                        SetUpStructureNode(jsonStructureUpgrades.structures[i], splits, type);
+                for (i in jsonStructureUpgrades) {
+                    if (jsonStructureUpgrades[i].id === structure) {
+                        SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
 
 
 
@@ -687,6 +678,7 @@
 
 
         }
+
     </script>
 
 
@@ -712,7 +704,9 @@
 
 
 
-</body></html>
+</body>
+
+</html>
 <style>
     .branch-line {
         height: 4px;

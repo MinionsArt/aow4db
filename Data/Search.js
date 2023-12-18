@@ -509,31 +509,31 @@ function returnWorldStructure(fieldToSearch) {
 
 function returnStructure(fieldToSearch) {
     var list = new Array();
-    for (i = 0; i < jsonStructureUpgrades.structures.length; i++) {
+    for (i = 0; i < jsonStructureUpgrades.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonStructureUpgrades.structures[i].id;
+            textvalue = jsonStructureUpgrades[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonStructureUpgrades.structures[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades.structures[i].id)) {
-                    list.push(jsonStructureUpgrades.structures[i].id);
+                if (!isInArray(list, jsonStructureUpgrades[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades[i].id)) {
+                    list.push(jsonStructureUpgrades[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            if ('description' in jsonStructureUpgrades.structures[i]) {
+            if ('description' in jsonStructureUpgrades[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonStructureUpgrades.structures[i].description);
+                textvalue = Sanitize(jsonStructureUpgrades[i].description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonStructureUpgrades.structures[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades.structures[i].id)) {
-                        list.push(jsonStructureUpgrades.structures[i].id);
+                    if (!isInArray(list, jsonStructureUpgrades[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades[i].id)) {
+                        list.push(jsonStructureUpgrades[i].id);
                     }
                 }
             }
-            if ('prediction_description' in jsonStructureUpgrades.structures[i]) {
+            if ('prediction_description' in jsonStructureUpgrades[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonStructureUpgrades.structures[i].prediction_description);
+                textvalue = Sanitize(jsonStructureUpgrades[i].prediction_description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonStructureUpgrades.structures[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades.structures[i].id)) {
-                        list.push(jsonStructureUpgrades.structures[i].id);
+                    if (!isInArray(list, jsonStructureUpgrades[i].id) && !isInArray(excludeListStructures, jsonStructureUpgrades[i].id)) {
+                        list.push(jsonStructureUpgrades[i].id);
                     }
                 }
             }
