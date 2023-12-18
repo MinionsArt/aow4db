@@ -16,7 +16,7 @@ function fetchJsonFiles(filePaths) {
     );
 }
 var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes, jsonUnitAbilities, jsonEmpire, jsonSpells, jsonStructureUpgrades, jsonCombatEnchantments,
-    jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits;
+    jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits, jsonBuilderLookUp;
 
 async function GetAllData() {
     // Example usage:
@@ -25,7 +25,7 @@ async function GetAllData() {
     const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
         '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json',
         '/aow4db/Data/CombatEnchantments.json', '/aow4db/Data/WorldStructures.json', '/aow4db/Data/EnchantmentTables.json', '/aow4db/Data/SpawnTables.json',
-        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json'];
+        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json', '/aow4db/Data/BuilderLookup.json'];
 
 
     await fetchJsonFiles(jsonFilePaths)
@@ -77,6 +77,9 @@ async function GetAllData() {
                 }
                 else if (index == 15) {
                     jsonHeroTraits = data;
+                }
+                else if (index == 16) {
+                    jsonBuilderLookUp = data;
                 }
             });
         })

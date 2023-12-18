@@ -1,5 +1,5 @@
 var searchParams = new URLSearchParams(window.location.search);
-var dataParam = searchParams.get('data');
+const searchKeyword = searchParams.get('u');
 
 var currentOrigin = "";
 var currentTome = "";
@@ -23,6 +23,8 @@ function ChangeShieldCol() {
     degrees = Math.random() * 360;
     shieldElement.setAttribute("style", "filter: hue-rotate(" + degrees + "deg)");
 }
+
+
 
 function ChangeSymbolCol() {
 
@@ -84,154 +86,113 @@ function addOrSubtract(extraAffinity, add) {
 
 
 
-function SetRandomStart() {
+function SetRandomStart(overwriteParameter) {
 
-    GetRandomSymbol();
-    ChangeShieldCol();
-    ChangeSymbolCol();
-
-    var listofChoice = [];
-    listofChoice.push("Tome");
-    listofChoice.push("Origin");
-    listofChoice.push("Form");
-    listofChoice.push("FormTrait");
-    listofChoice.push("Culture");
-    listofChoice.push("Society1");
-    listofChoice.push("Society2");
-    listofChoice.push("Loadout");
+    if (searchKeyword != undefined && !overwriteParameter) {
+        //  console.log("Found" + searchKeyword);
+        RebuildFromParam(searchKeyword);
+    } else {
 
 
-    var j = "";
-    for (j = 0; j < listofChoice.length; j++) {
-        var randomEntry = GetRandomEntry(listofChoice[j]);
+        GetRandomSymbol();
+        ChangeShieldCol();
+        ChangeSymbolCol();
 
-        var currentChoice = listofChoice[j];
-
-        switch (currentChoice) {
-            case "Tome":
-
-                currentTome = randomEntry;
-                currentTomeList = [];
-                currentTomeList.push(currentTome);
-
-                break;
-            case "Origin":
-                currentOrigin = randomEntry;
-                break;
-
-            case "Form":
-                currentForm = randomEntry;
-                break;
-            case "FormTrait":
-                currentFormTraitList = [];
-                currentFormTraitList.push(randomEntry);
+        var listofChoice = [];
+        listofChoice.push("Tome");
+        listofChoice.push("Origin");
+        listofChoice.push("Form");
+        listofChoice.push("FormTrait");
+        listofChoice.push("Culture");
+        listofChoice.push("Society1");
+        listofChoice.push("Society2");
+        listofChoice.push("Loadout");
 
 
-                while (getPoints() < 5) {
-                    var randomEntry = GetRandomEntry(listofChoice[j]);
-                    if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
-                        if (randomEntry.group_name === "ADAPTATION") {
-                            hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
-                            if (!hasAdaptionGroup) {
+        var j = "";
+        for (j = 0; j < listofChoice.length; j++) {
+            var randomEntry = GetRandomEntry(listofChoice[j]);
+
+            var currentChoice = listofChoice[j];
+
+            switch (currentChoice) {
+                case "Tome":
+
+                    currentTome = randomEntry;
+                    currentTomeList = [];
+                    currentTomeList.push(currentTome);
+
+                    break;
+                case "Origin":
+                    currentOrigin = randomEntry;
+                    break;
+
+                case "Form":
+                    currentForm = randomEntry;
+                    break;
+                case "FormTrait":
+                    currentFormTraitList = [];
+                    currentFormTraitList.push(randomEntry);
+
+
+                    while (getPoints() < 5) {
+                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                        if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
+                            if (randomEntry.group_name === "ADAPTATION") {
+                                hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
+                                if (!hasAdaptionGroup) {
+                                    currentFormTraitList.push(randomEntry);
+                                }
+                            } else {
                                 currentFormTraitList.push(randomEntry);
                             }
-                        } else {
-                            currentFormTraitList.push(randomEntry);
+
+
+
+
                         }
-
-
-
 
                     }
 
-                }
 
 
+                    break;
+                case "Culture":
+                    currentCulture = randomEntry;
+                    break;
 
-                break;
-            case "Culture":
-                currentCulture = randomEntry;
-                break;
+                case "Society1":
+                    currentSociety1 = randomEntry;
+                    break;
+                case "Society2":
+                    while (currentSociety1 === randomEntry) {
+                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                    }
+                    currentSociety2 = randomEntry;
+                    break;
+                case "Loadout":
+                    currentLoadout = randomEntry;
+                    break;
+            }
 
-            case "Society1":
-                currentSociety1 = randomEntry;
-                break;
-            case "Society2":
-                while (currentSociety1 === randomEntry) {
-                    var randomEntry = GetRandomEntry(listofChoice[j]);
-                }
-                currentSociety2 = randomEntry;
-                break;
-            case "Loadout":
-                currentLoadout = randomEntry;
-                break;
+
+            var originButton = document.getElementById("originButton" + currentChoice);
+            if (currentChoice != "FormTrait") {
+                SetButtonInfo(originButton, randomEntry, currentChoice);
+            }
+
+
         }
 
 
 
-        var originButton = document.getElementById("originButton" + currentChoice);
-
-
-
-        if (currentChoice != "FormTrait") {
-            originButton.innerHTML = "";
-            SetButtonInfo(originButton, randomEntry, currentChoice);
-        }
-
-        // GetURLData();
-        // TestSTringS();
-        // if (dataParam != undefined) {
-        //     var splits = dataParam.split(":");
-
-        //     console.log(splits);
-        // }
-
-
+        extraOrder = 0;
+        extraChaos = 0;
+        extraAstral = 0;
+        extraMaterium = 0;
+        extraNature = 0;
+        extraShadow = 0;
     }
-
-    function TestSTringS() {
-        // Example usage
-        const originalString = 'barbarian:toadkin:tome_of_souls';
-        const bitBuffer = stringToBitBuffer(originalString);
-
-
-        console.log('BitBuffer:', bitBuffer);
-        console.log('Converted Back to String:', bitBufferToString(bitBuffer));
-    }
-
-    // Function to create a BitBuffer from a string
-    function stringToBitBuffer(input) {
-        const bytes = new Uint8Array(input.length);
-        for (let i = 0; i < input.length; i++) {
-            bytes[i] = input.charCodeAt(i);
-        }
-        return bytes;
-    }
-
-    // Function to convert a BitBuffer back to a string
-    function bitBufferToString(buffer) {
-        let result = '';
-        buffer.forEach(byte => {
-            result += String.fromCharCode(byte);
-        });
-        return result;
-    }
-
-
-
-    function GetURLData() {
-        var currenturl = window.location.href.split('?')[0];
-        // if (dataParam === undefined) {
-        window.history.replaceState({}, 'foo', currenturl + "?data=" + currentCulture + "&" + currentForm);
-        // }
-    }
-
-    extraOrder = 0;
-    extraChaos = 0;
-    extraAstral = 0;
-    extraMaterium = 0;
-    extraNature = 0;
-    extraShadow = 0;
     selectTomePath();
     RecalculateStats();
     updateSelectedOptions();
@@ -320,6 +281,7 @@ function selectOrigin(origin, type) {
     // swap current known origin
 
     toggleOriginButtons();
+    document.getElementById("shareLink").value = "";
 }
 
 
@@ -420,6 +382,8 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     var affinity = "";
     const affinityText = document.createElement("div");
     affinityText.style = "position: relative;left: -3px;top: -80px;";
+
+    console.log(origin);
     if ('affinities' in origin) {
 
         affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
@@ -860,10 +824,10 @@ function duplicateTags(inputString) {
 
 
 function SetButtonInfo(button, origin, type) {
+    button.innerHTML = "";
     const image = document.createElement("img");
     image.setAttribute("width", "40");
     image.setAttribute("height", "40");
-    // console.log(origin);
 
     if (type === "Tome") {
         image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
@@ -1256,6 +1220,7 @@ function GetAllLoadouts() {
 function GetRandomEntry(type) {
 
 
+
     var randomOrigin;
     switch (type) {
         case "Tome":
@@ -1498,7 +1463,7 @@ function toggleArrayEntry(array, entry) {
 
         if (entry.group_name === "ADAPTATION") {
             var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
-            console.log(hasAdaptionGroup);
+            //console.log(hasAdaptionGroup);
             if (hasAdaptionGroup) {
 
 
@@ -1511,3 +1476,248 @@ function toggleArrayEntry(array, entry) {
     }
 
 }
+
+function LookUpTableData(lookUpId) {
+    for (let index = 0; index < jsonBuilderLookUp.length; index++) {
+        if (jsonBuilderLookUp[index].id == lookUpId) {
+            return index;
+        }
+    }
+
+
+}
+
+function GetQuickLink() {
+    var code = "";
+    // 0
+    for (let index = 0; index < currentFormTraitList.length; index++) {
+        var number = decimalToHex(LookUpTableData(currentFormTraitList[index].id));
+        if (index == 0) {
+            code += number;
+        } else {
+            code += ":" + number;
+        }
+
+
+    }
+    // 1
+    var number = decimalToHex(LookUpTableData(currentSociety1.id));
+    code += "," + number;
+    //2
+    var number = decimalToHex(LookUpTableData(currentSociety2.id));
+    code += "," + number;
+    //3
+    var number = decimalToHex(LookUpTableData(currentForm.id));
+    code += "," + number;
+    //4
+    var number = decimalToHex(LookUpTableData(currentCulture.id));
+    code += "," + number;
+    //5
+    var number = decimalToHex(LookUpTableData(currentOrigin.id));
+    code += "," + number;
+    //6
+    var number = decimalToHex(LookUpTableData(currentLoadout.id));
+    code += "," + number;
+    //7
+    for (let index = 0; index < currentTomeList.length; index++) {
+
+        var number = decimalToHex(LookUpTableData(currentTomeList[index].id));
+        //console.log(number);
+        if (index == 0) {
+            code += "," + number;
+        } else {
+            code += ":" + number;
+        }
+
+
+    }
+
+    code += "," + extraAstral + ":" + extraChaos + ":" + extraMaterium + ":" + extraNature + ":" + extraOrder + ":" + extraShadow;
+
+    // console.log("hex code: " + code);
+
+    var linkField = document.getElementById("shareLink");
+
+    var currenturl = window.location.href.split('?')[0];
+
+    // window.history.replaceState({}, 'foo', currenturl + "?u=" + code);
+    linkField.value = currenturl + "?u=" + code;
+    // var splitCodes = code.split(":");
+    // for (let index = 0; index < splitCodes.length; index++) {
+    //     console.log("number code: " + hexToDecimal(splitCodes[index]));
+    // }
+
+    reversLookUp(code);
+
+}
+
+function reversLookUp(code) {
+    var splitcode = code.split(",");
+    // console.log("Splitcode" + splitcode);
+    var newList = new Array();
+
+    // 0 = currentformtraits
+    var list = splitcode[0];
+    var currentFormTraitsLoad = list.split(":");
+    for (let i = 0; i < currentFormTraitsLoad.length; i++) {
+        var numbernew = jsonBuilderLookUp[hexToDecimal(currentFormTraitsLoad[i])].id;
+
+        for (let index = 0; index < jsonFactionCreation2.length; index++) {
+            if (jsonFactionCreation2[index].id === numbernew) {
+                newList.push(jsonFactionCreation2[index]);
+            }
+
+        }
+
+
+
+    }
+    currentFormTraitList = newList;
+
+    // 1 = currentsociety1
+    var lookUp = splitcode[1];
+    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+
+
+    for (let index = 0; index < jsonFactionCreation2.length; index++) {
+        if (jsonFactionCreation2[index].id === numbernew) {
+            var newBit = jsonFactionCreation2[index];
+        }
+    }
+    currentSociety1 = newBit;
+    var originButton = document.getElementById("originButtonSociety1");
+    SetButtonInfo(originButton, currentSociety1, "Society1");
+
+
+    // 2 = currentsociety2
+    var lookUp2 = splitcode[2];
+
+    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp2)].id;
+
+    for (let index = 0; index < jsonFactionCreation2.length; index++) {
+        if (jsonFactionCreation2[index].id === numbernew) {
+            var newBit = jsonFactionCreation2[index];
+        }
+    }
+    currentSociety2 = newBit;
+    var originButton = document.getElementById("originButtonSociety2");
+    SetButtonInfo(originButton, currentSociety2, "Society2");
+
+    // 3 = form
+    var lookUp = splitcode[3];
+
+    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+
+    for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === numbernew) {
+            var newBit = jsonFactionCreation[index];
+        }
+    }
+    currentForm = newBit;
+    var originButton = document.getElementById("originButtonForm");
+    SetButtonInfo(originButton, currentForm, "Form");
+
+    // 4 = culture
+    var lookUp = splitcode[4];
+
+    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+
+    for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === numbernew) {
+            var newBit = jsonFactionCreation[index];
+        }
+    }
+    currentCulture = newBit;
+    var originButton = document.getElementById("originButtonCulture");
+    SetButtonInfo(originButton, currentCulture, "Culture");
+
+    // 5 = origin
+    var lookUp = splitcode[5];
+
+    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+
+    for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === numbernew) {
+            var newBit = jsonFactionCreation[index];
+        }
+    }
+    currentOrigin = newBit;
+    var originButton = document.getElementById("originButtonOrigin");
+    SetButtonInfo(originButton, currentOrigin, "Origin");
+
+    // 5 = loadout
+    var lookUp = splitcode[6];
+
+    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+
+    for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === numbernew) {
+            var newBit = jsonFactionCreation[index];
+
+
+        }
+    }
+    currentLoadout = newBit;
+    var originButton = document.getElementById("originButtonLoadout");
+    SetButtonInfo(originButton, currentLoadout, "Loadout");
+
+
+
+
+
+    var newList = new Array();
+    // 7 = tomes
+    var list = splitcode[7];
+    var currentTomeListLoad = list.split(":");
+    for (let i = 0; i < currentTomeListLoad.length; i++) {
+        var numbernew = jsonBuilderLookUp[hexToDecimal(currentTomeListLoad[i])].id;
+
+        for (let index = 0; index < jsonTomes.length; index++) {
+            if (jsonTomes[index].id === numbernew) {
+                newList.push(jsonTomes[index]);
+            }
+
+        }
+
+
+
+    }
+    currentTome = newList[0];
+
+
+    var originButton = document.getElementById("originButtonTome");
+    SetButtonInfo(originButton, currentTome, "Tome");
+    currentTomeList = newList;
+
+    var newList = new Array();
+    // 7 = extraaffinity
+    var list = splitcode[8];
+    var currentExtraAffinityLoad = list.split(":");
+    extraAstral = currentExtraAffinityLoad[0];
+    extraChaos = currentExtraAffinityLoad[1];
+    extraMaterium = currentExtraAffinityLoad[2];
+    extraNature = currentExtraAffinityLoad[3];
+    extraOrder = currentExtraAffinityLoad[4];
+    extraShadow = currentExtraAffinityLoad[5];
+
+
+
+
+
+}
+
+// Function to convert a number to hexadecimal
+function decimalToHex(decimal) {
+    return decimal.toString(16);
+}
+
+// Function to convert a hexadecimal string to a number
+function hexToDecimal(hex) {
+    return parseInt(hex, 16);
+}
+
+function RebuildFromParam(code) {
+    reversLookUp(code);
+}
+
+
