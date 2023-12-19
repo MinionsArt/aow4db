@@ -848,7 +848,22 @@ function addUnitTypeIcon(a, holder, origin) {
             holder.appendChild(btn);
 
             btn.appendChild(imag);
-            btn.append(spa);
+            // btn.append(spa);
+
+            btn.addEventListener('mouseenter', function (event) {
+                TurnOnTooltip(spa);
+                updateHoverDivPosition(event);
+            });
+
+            btn.addEventListener('mouseleave', function () {
+                TurnOffTooltip();
+            });
+
+            btn.addEventListener('mousemove', function (event) {
+                //updateHoverDivPosition(event);
+            });
+
+
             return unitType;
         }
     }
@@ -1110,7 +1125,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
 
             holder.append(btn);
-            tex.appendChild(spa);
+            // tex.appendChild(spa);
             btn.ability = jsonUnitAbilities[j];
             btn.appendChild(imag);
             var divider = document.createElement("div");
@@ -1119,8 +1134,80 @@ function addAbilityslot(a, holder, list, enchant) {
             divider.append(dam);
             btn.append(divider);
 
+            //btn.tooltipData = span;
+
+            tex.addEventListener('mouseenter', function (event) {
+                TurnOnTooltip(spa);
+                updateHoverDivPosition(event);
+            });
+
+            tex.addEventListener('mouseleave', function () {
+                TurnOffTooltip();
+            });
+
+            tex.addEventListener('mousemove', function (event) {
+                //updateHoverDivPosition(event);
+            });
+
         }
     }
+
+}
+
+function SetupEvents() {
+
+}
+
+function TurnOnTooltip(spa) {
+    hoverDiv = document.getElementById("hoverDiv");
+    // console.log('Mouse entered the div');
+    hoverDiv.style.display = 'block';
+    hoverDiv.innerHTML = spa.innerHTML;
+}
+
+function TurnOffTooltip() {
+    hoverDiv = document.getElementById("hoverDiv");
+    //console.log('Mouse left the div');
+    hoverDiv.style.display = 'none';
+}
+
+
+function getNormalizedPosition(event) {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // event.clientX and event.clientY give the position of the mouse
+    const xPosition = event.clientX;
+    const yPosition = event.clientY;
+
+    // Normalize to a range of 0 to 1
+    const normalizedX = xPosition / screenWidth;
+    const normalizedY = yPosition / screenHeight;
+
+    return { x: normalizedX, y: normalizedY };
+}
+
+function updateHoverDivPosition(event) {
+
+    var normalizedPos = getNormalizedPosition(event);
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+
+    if (normalizedPos.x > 0.8) {
+        hoverDiv.style.left = (mouseX - hoverDiv.getBoundingClientRect().width - 10) + 'px';
+    } else {
+        hoverDiv.style.left = mouseX + 10 + 'px';
+    }
+
+    if (normalizedPos.y > 0.8) {
+        hoverDiv.style.top = (mouseY - hoverDiv.getBoundingClientRect().height - 10 + scrollTop) + 'px';
+    } else {
+        hoverDiv.style.top = (mouseY + 10 + scrollTop) + 'px';
+    }
+
 
 }
 
@@ -1395,10 +1482,23 @@ function addPassiveslot(a, div, enchant) {
 
 
 
-            tex.appendChild(spa);
+            //tex.appendChild(spa);
 
 
             btn.append(tex);
+
+            tex.addEventListener('mouseenter', function (event) {
+                TurnOnTooltip(spa);
+                updateHoverDivPosition(event);
+            });
+
+            tex.addEventListener('mouseleave', function () {
+                TurnOffTooltip();
+            });
+
+            tex.addEventListener('mousemove', function (event) {
+                //updateHoverDivPosition(event);
+            });
 
         }
     }
@@ -1454,10 +1554,25 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
 
 
 
-    tex.appendChild(spa);
+    //tex.appendChild(spa);
 
 
     btn.append(tex);
+
+    tex.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(spa);
+        updateHoverDivPosition(event);
+    });
+
+    tex.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
+
+    tex.addEventListener('mousemove', function (event) {
+        //updateHoverDivPosition(event);
+    });
+
+
 
 
 }
@@ -1622,10 +1737,21 @@ function addResistanceSlot(a, resistance, holder) {
 
             btn.appendChild(imag);
 
-            btn.append(spa);
+            // btn.append(spa);
 
 
+            btn.addEventListener('mouseenter', function (event) {
+                TurnOnTooltip(spa);
+                updateHoverDivPosition(event);
+            });
 
+            btn.addEventListener('mouseleave', function () {
+                TurnOffTooltip();
+            });
+
+            btn.addEventListener('mousemove', function (event) {
+                //updateHoverDivPosition(event);
+            });
 
         }
     }
@@ -1665,10 +1791,22 @@ function addstatusResistanceSlot(a, holder) {
 
     btn.appendChild(imag);
 
-    btn.append(spa);
+    // btn.append(spa);
 
 
 
+    btn.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(spa);
+        updateHoverDivPosition(event);
+    });
+
+    btn.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
+
+    btn.addEventListener('mousemove', function (event) {
+        //updateHoverDivPosition(event);
+    });
 
 
 
@@ -1711,10 +1849,24 @@ function addEliteSkill(a) {
             document.getElementById("unitabholder").appendChild(btn);
             // document.getElementById("unitabholder").setAttribute("id", "unitabholder" + b);
 
-            tex.appendChild(spa);
+            // tex.appendChild(spa);
 
             btn.appendChild(imag);
             btn.append(tex);
+
+
+            tex.addEventListener('mouseenter', function (event) {
+                TurnOnTooltip(spa);
+                updateHoverDivPosition(event);
+            });
+
+            tex.addEventListener('mouseleave', function () {
+                TurnOffTooltip();
+            });
+
+            tex.addEventListener('mousemove', function (event) {
+                //updateHoverDivPosition(event);
+            });
 
         }
     }
@@ -2956,21 +3108,34 @@ function showUnit(a) {
                 btn = document.createElement("DIV");
                 btn.className = "unittype_icon";
                 imag = document.createElement("IMG");
-                spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
+                span = document.createElement("SPAN");
+                span.className = "tooltiptext";
                 imag.setAttribute("src", "/aow4db/Icons/FactionCreation/human.png");
 
                 imag.setAttribute("width", "40");
                 imag.setAttribute("height", "40");
 
 
-                spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/FactionCreation/human.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">Form Unit</p>" +
+                span.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/FactionCreation/human.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">Form Unit</p>" +
                     "<br> This unit will use a Form and Form Traits";
 
                 unitStat.appendChild(btn);
 
                 btn.appendChild(imag);
-                btn.append(spa);
+                //btn.append(spa);
+
+                btn.addEventListener('mouseenter', function (event) {
+                    TurnOnTooltip(span);
+                    updateHoverDivPosition(event);
+                });
+
+                btn.addEventListener('mouseleave', function () {
+                    TurnOffTooltip();
+                });
+
+                btn.addEventListener('mousemove', function (event) {
+                    //updateHoverDivPosition(event);
+                });
 
             }
 
@@ -3361,7 +3526,20 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/" + capitalized + "Units.html\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
+        //btn.appendChild(spa);
+
+        btn.addEventListener('mouseenter', function (event) {
+            TurnOnTooltip(spa);
+            updateHoverDivPosition(event);
+        });
+
+        btn.addEventListener('mouseleave', function () {
+            TurnOffTooltip();
+        });
+
+        btn.addEventListener('mousemove', function (event) {
+            //updateHoverDivPosition(event);
+        });
 
         holderOrigin.appendChild(btn);
         // add icon with mouseover
@@ -3423,10 +3601,23 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?spell=" + spells[x].id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
+        //  btn.appendChild(spa);
 
         holderOrigin.appendChild(btn);
         // add icon with mouseover
+
+        btn.addEventListener('mouseenter', function (event) {
+            TurnOnTooltip(spa);
+            updateHoverDivPosition(event);
+        });
+
+        btn.addEventListener('mouseleave', function () {
+            TurnOffTooltip();
+        });
+
+        btn.addEventListener('mousemove', function (event) {
+            //updateHoverDivPosition(event);
+        });
 
     }
 
@@ -3475,6 +3666,8 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(spa);
 
         holderOrigin.appendChild(btn);
+
+
         // add icon with mouseover
 
     }
@@ -3606,10 +3799,23 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + evolve.id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
+        // btn.appendChild(spa);
 
         holderOrigin.appendChild(btn);
         // add icon with mouseover
+
+        btn.addEventListener('mouseenter', function (event) {
+            TurnOnTooltip(spa);
+            updateHoverDivPosition(event);
+        });
+
+        btn.addEventListener('mouseleave', function () {
+            TurnOffTooltip();
+        });
+
+        btn.addEventListener('mousemove', function (event) {
+            //updateHoverDivPosition(event);
+        });
 
     }
 
@@ -4392,7 +4598,20 @@ function showTome(a, div) {
                     spa2.prepend(title);
 
 
-                    div.appendChild(spa2);
+                    //div.appendChild(spa2);
+
+                    div.addEventListener('mouseenter', function (event) {
+                        TurnOnTooltip(spa2);
+                        updateHoverDivPosition(event);
+                    });
+
+                    div.addEventListener('mouseleave', function () {
+                        TurnOffTooltip();
+                    });
+
+                    div.addEventListener('mousemove', function (event) {
+                        //updateHoverDivPosition(event);
+                    });
 
                     unitTypesDiv.appendChild(div);
                 }
@@ -4411,7 +4630,22 @@ function showTome(a, div) {
                     spa.className = "tooltiptext";
                     spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
 
-                    div.appendChild(spa);
+                    //  div.appendChild(spa);
+                    unitTypesDiv.appendChild(div);
+
+                    div.addEventListener('mouseenter', function (event) {
+                        TurnOnTooltip(spa);
+                        updateHoverDivPosition(event);
+                    });
+
+                    div.addEventListener('mouseleave', function () {
+                        TurnOffTooltip();
+                    });
+
+                    div.addEventListener('mousemove', function (event) {
+                        //updateHoverDivPosition(event);
+                    });
+
                     unitTypesDiv.appendChild(div);
 
                 }
@@ -4429,7 +4663,22 @@ function showTome(a, div) {
                     spa.className = "tooltiptext";
                     spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
                     spa.innerHTML += jsonTomes[j].passives[l].description;
-                    div.appendChild(spa);
+                    //  div.appendChild(spa);
+
+                    // unitTypesDiv.appendChild(div);
+
+                    div.addEventListener('mouseenter', function (event) {
+                        TurnOnTooltip(spa);
+                        updateHoverDivPosition(event);
+                    });
+
+                    div.addEventListener('mouseleave', function () {
+                        TurnOffTooltip();
+                    });
+
+                    div.addEventListener('mousemove', function (event) {
+                        //updateHoverDivPosition(event);
+                    });
 
                     unitTypesDiv.appendChild(div);
 
@@ -4657,32 +4906,17 @@ function ShowPossibleEnchantments(evt) {
 
         return 0; // Names are equal
     });
-    i = "";
+
 
     holder.innerHTML = "";
 
 
     var activeHolder = evt.currentTarget.activeListHolder;
 
-    for (i = 0; i < compatibleList.length; i++) {
+    for (let i = 0; i < compatibleList.length; i++) {
 
-        var enchantEntry = document.createElement("Button");
-        enchantEntry.className = "enchantButton";
-        const image = document.createElement("img");
-        var text = document.createElement("div");
-        image.setAttribute("width", "20");
-        image.setAttribute("height", "20");
-        image.setAttribute("src", "/aow4db/Icons/SpellIcons/" + compatibleList[i].icon + ".png");
-        text.textContent = compatibleList[i].name;
-        text.className = "tooltip";
-        text.setAttribute("style", "padding:0px");
-        var span = document.createElement("span");
-        span.innerHTML = compatibleList[i].description;
-        span.className = "tooltiptext";
-        span.setAttribute("style", "left: 150px;");
-        text.appendChild(span);
-        enchantEntry.appendChild(image);
-        enchantEntry.appendChild(text);
+        var enchantEntry = createTooltipForEnchant(compatibleList[i]);
+
 
         enchantEntry.addEventListener("click", SetEnchantment);
         enchantEntry.enchant = compatibleList[i];
@@ -4697,6 +4931,41 @@ function ShowPossibleEnchantments(evt) {
 
 
 
+}
+
+function createTooltipForEnchant(item) {
+    var span = document.createElement("span");
+    var enchantEntry = document.createElement("Button");
+    enchantEntry.className = "enchantButton";
+    const image = document.createElement("img");
+    var text = document.createElement("div");
+    image.setAttribute("width", "20");
+    image.setAttribute("height", "20");
+    image.setAttribute("src", "/aow4db/Icons/SpellIcons/" + item.icon + ".png");
+    text.textContent = item.name;
+    text.className = "tooltip";
+    text.setAttribute("style", "padding:0px");
+
+    span.innerHTML = item.description;
+    //  span.className = "tooltiptext";
+
+
+
+    enchantEntry.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(span);
+        updateHoverDivPosition(event);
+    });
+
+    enchantEntry.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
+
+
+    //   unitTypesDiv.appendChild(div);
+    enchantEntry.appendChild(image);
+    enchantEntry.appendChild(text);
+
+    return enchantEntry;
 }
 
 function SetEnchantment(evt) {
@@ -4720,7 +4989,20 @@ function SetEnchantment(evt) {
         span.innerHTML = evt.currentTarget.enchant.name + "<hr>" + evt.currentTarget.enchant.description;
         span.className = "tooltiptext";
         span.setAttribute("style", "left: 50px;");
-        activeEnch.appendChild(span);
+
+        activeEnch.addEventListener('mouseenter', function (event) {
+            TurnOnTooltip(span);
+            updateHoverDivPosition(event);
+        });
+
+        activeEnch.addEventListener('mouseleave', function () {
+            TurnOffTooltip();
+        });
+
+        activeEnch.addEventListener('mousemove', function (event) {
+            //updateHoverDivPosition(event);
+        });
+        //activeEnch.appendChild(span);
         activeEnch.appendChild(image);
         // activeEnch.activeEnchantList = evt.currentTarget.activeEnchantList;
         activeEnch.thisEnchant = evt.currentTarget.enchant;
@@ -4742,8 +5024,9 @@ function SetEnchantment(evt) {
     showUnit(evt.currentTarget.unit);
 
 
-}
 
+
+}
 
 
 function RemoveActiveEnchant(evt) {
@@ -4753,7 +5036,6 @@ function RemoveActiveEnchant(evt) {
     origin.activeEnchantList = origin.activeEnchantList.filter(item => item !== evt.currentTarget.thisEnchant);
 
     showUnit(evt.currentTarget.unit);
-
     evt.currentTarget.remove();
 
 

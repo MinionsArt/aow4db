@@ -606,8 +606,17 @@ function SetupButtons(evt, type) {
             // hook into options thingie
             originButtonNew.className = "list-button";
 
+
+            // if (origin.point_cost > (getPoints() - 5)) {
+            //     originButtonNew.style.color = 'grey';
+            // } else {
+            //     originButtonNew.style.color = 'white';
+            // }
+
+
             if (isInArray(currentFormTraitList, origin)) {
                 originButtonNew.classList.toggle('selected');
+
                 //console.log(currentFormTraitList + " " + origin);
 
             }
@@ -1428,7 +1437,7 @@ function incompatibleCheck(type, origin) {
 
 
 function toggleSelection(origin, button) {
-    const selectedButtons = document.querySelectorAll('#options-container list-button.selected');
+    const selectedButtons = document.querySelectorAll('#options-container list-button');
     for (let index = 0; index < selectedButtons.length; index++) {
         selectedButtons[index].classList.remove('selected');
 
@@ -1439,10 +1448,12 @@ function toggleSelection(origin, button) {
 
 
 
+
     // Uncomment the line below if you want to limit the selection to a specific number (e.g., 2)
     // updateSelectionLimit(origin);
 
     updateSelectedOptions(origin);
+
 
     if (isInArray(currentFormTraitList, origin)) {
         button.classList.remove('selected');
