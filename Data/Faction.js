@@ -317,16 +317,16 @@ function SelectSymbol(origin) {
 
 function SetTomePathOptions(evt) {
 
-    const rect = evt.currentTarget.getBoundingClientRect();
+    const rect = evt.target.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
+
+    const mouseX = evt.clientX;
+    const mouseY = evt.clientY;
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-
-    var selectionsHolder = document.getElementById("selectionsHolder");
-
-    selectionsHolder.setAttribute("style", "display:block; left:30px; top:" + (rect.top + scrollTop - 300) + "px;");
+    selectionsHolder.setAttribute("style", "display:block; left:" + (mouseX + 10) + "px; top:" + (mouseY + scrollTop + -200) + "px;");
 
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.setAttribute("style", "grid-template-columns: repeat(7, 2fr);");
@@ -516,13 +516,16 @@ function SetTomePathInfo(button, origin) {
 
 
 function SetupButtons(evt, type) {
-    const rect = evt.currentTarget.getBoundingClientRect();
+    const rect = evt.target.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
+
+    const mouseX = evt.clientX;
+    const mouseY = evt.clientY;
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    selectionsHolder.setAttribute("style", "display:block; left:" + rect.left + scrollLeft + "px; top:" + (rect.top + scrollTop + 50) + "px;");
+    selectionsHolder.setAttribute("style", "display:block; left:" + (mouseX + 10) + "px; top:" + (mouseY + scrollTop + 10) + "px;");
 
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
