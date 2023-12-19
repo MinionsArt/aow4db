@@ -242,7 +242,9 @@ function selectOrigin(origin, type) {
             currentTome = origin;
             currentTomeList[0] = origin;
             // update tome path
+            ClearTomePath();
             selectTomePath();
+
             break;
         case "Origin":
 
@@ -313,11 +315,21 @@ function SelectSymbol(origin) {
     toggleOriginButtons();
 }
 
-function SetTomePathOptions() {
+function SetTomePathOptions(evt) {
+
+    const rect = evt.currentTarget.getBoundingClientRect();
+    var selectionsHolder = document.getElementById("selectionsHolder");
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
 
     var selectionsHolder = document.getElementById("selectionsHolder");
-    selectionsHolder.setAttribute("style", "display:block");
+
+    selectionsHolder.setAttribute("style", "display:block; left:30px; top:" + (rect.top + scrollTop - 300) + "px;");
+
     var originWrapper = document.getElementById("originWrapperOptions");
+    originWrapper.setAttribute("style", "grid-template-columns: repeat(7, 2fr);");
     originWrapper.innerHTML = "";
     var list = [];
 
@@ -421,7 +433,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     newDivButton.className = "tome-button-small";
 
-    newDivButton.addEventListener("click", () => SetTomePathOptions());
+    newDivButton.addEventListener("click", () => SetTomePathOptions(event));
 
     newDivButton.append(spa);
 }
@@ -447,8 +459,8 @@ function SetTomePathInfo(button, origin) {
 
 
     const image = document.createElement("img");
-    image.setAttribute("width", "40");
-    image.setAttribute("height", "40");
+    image.setAttribute("width", "50");
+    image.setAttribute("height", "50");
 
 
     image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
@@ -459,19 +471,25 @@ function SetTomePathInfo(button, origin) {
     // Create a span element to hold the button text
     const buttonText = document.createElement("span");
     const newDivButton = document.createElement("div");
-    buttonText.innerHTML = "Tier " + origin.tier;
-    buttonText.innerHTML += origin.name;
-    var affinity = "";
+    buttonText.innerHTML = romanize(origin.tier) + ": ";
+    var clearname = origin.name.replace("Tome of the", "");
+    buttonText.innerHTML += clearname.replace("Tome of", "");
+    buttonText.style = "display: block;font-size: 15px;position: relative;text-align: center; top: -40px;";
 
+
+    var affinity = "";
+    const affinityText = document.createElement("div");
+    affinityText.style = "position: relative;left: -20px;top: -50px;";
     if ('affinities' in origin) {
 
         affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
         affinity = affinity.replaceAll(",", "");
-        buttonText.innerHTML += " " + affinity;
+        affinityText.innerHTML += " " + affinity;
 
     }
     // Append the image and button text to the button element
     newDivButton.appendChild(image);
+    newDivButton.appendChild(affinityText);
     newDivButton.appendChild(buttonText);
 
     button.append(newDivButton);
@@ -489,19 +507,26 @@ function SetTomePathInfo(button, origin) {
 
     SetTomePreview(spa, origin);
 
-    newDivButton.className = "list-button-small";
+    newDivButton.className = "list-button-long";
 
-    newDivButton.addEventListener("click", () => SetTomePathOptions());
+    newDivButton.addEventListener("click", () => SetTomePathOptions(event));
 
     newDivButton.append(spa);
 }
 
 
-function SetupButtons(type) {
+function SetupButtons(evt, type) {
+    const rect = evt.currentTarget.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
-    selectionsHolder.setAttribute("style", "display:block");
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    selectionsHolder.setAttribute("style", "display:block; left:" + rect.left + scrollLeft + "px; top:" + (rect.top + scrollTop + 50) + "px;");
+
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
+    originWrapper.setAttribute("style", " grid-template-columns: repeat(3, 2fr);");
 
     var originButton = document.getElementById("originButton" + type);
     // console.log(type);

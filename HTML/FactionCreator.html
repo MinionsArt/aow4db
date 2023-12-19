@@ -47,7 +47,7 @@
             <div class="container">
 
                 <div style="height:90px">
-                    <div class="playerSigil" onclick="SetupButtons('Symbol')">
+                    <div class="playerSigil" onclick="SetupButtons(event,'Symbol')">
                         <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px" style="float:left">
                         <!--<img class="symbol" id="symbol" src="/aow4db/Icons/Symbols/SigilIcons_01.png" height="50px" style="float:left">-->
                     </div>
@@ -167,17 +167,17 @@
                         <br>
                         <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
                         <div id="buttonContainer">
-                            <button class="button" id="originButtonOrigin" onclick="SetupButtons('Origin')"></button>
+                            <button class="button" id="originButtonOrigin" onclick="SetupButtons(event,'Origin')"></button>
 
                         </div>
 
                         <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonTome" onclick="SetupButtons('Tome')"></button>
+                            <button class="button-inset" id="originButtonTome" onclick="SetupButtons(event,'Tome')"></button>
 
                         </div>
 
                         <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons('Loadout')"></button>
+                            <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons(event,'Loadout')"></button>
 
                         </div>
 
@@ -187,12 +187,12 @@
 
                         <div id="buttonContainer">
 
-                            <button class="button" id="originButtonForm" onclick="SetupButtons('Form')"></button>
+                            <button class="button" id="originButtonForm" onclick="SetupButtons(event,'Form')"></button>
 
                         </div>
 
                         <div id="buttonContainer">
-                            <button style="background-color: transparent;     border: none;" id="originButtonFormTrait" onclick="SetupButtons('FormTrait')">
+                            <button style="background-color: transparent;     border: none;" id="originButtonFormTrait" onclick="SetupButtons(event,'FormTrait')">
                                 <div id="selected-options-container"></div>
                             </button>
 
@@ -200,16 +200,16 @@
                         </div>
                         <br>
                         <div id="buttonContainer">
-                            <button class="button" id="originButtonCulture" onclick="SetupButtons('Culture')"></button>
+                            <button class="button" id="originButtonCulture" onclick="SetupButtons(event,'Culture')"></button>
 
                         </div>
 
                         <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons('Society1')"></button>
+                            <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons(event,'Society1')"></button>
 
                         </div>
                         <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons('Society2')"></button>
+                            <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons(event,'Society2')"></button>
 
                         </div>
                     </div>
@@ -235,18 +235,18 @@
 
         </div>
 
-        <div class="selections" id="selectionsHolder">
-            <p id="selections"></p> <button style="float: right;position: relative;top: -20px;color: red;" class="button" onclick="toggleOriginButtons()"> Close</button>
 
-            <div id="originWrapperOptions" class="wrappers" style="display: grid;grid-template-columns: repeat(4, 2fr);">
-
-            </div>
-
-        </div>
     </div>
 
 
+    <div class="selections" id="selectionsHolder">
+        <p id="selections" style="text-align: center"></p> <button style="float: right;position: relative;top: -20px;color: red;" class="button" onclick="toggleOriginButtons()">X</button>
 
+        <div id="originWrapperOptions" class="wrappers">
+
+        </div>
+
+    </div>
 
 
 
@@ -275,7 +275,7 @@
         background-color: #007bff00;
         color: #fff;
         border: none;
-
+        position: relative;
         display: flex;
         justify-content: space-between;
         cursor: pointer;
@@ -350,6 +350,23 @@
 
     }
 
+    .list-button-long {
+
+        /* border-width: 3px; */
+        /* border-style: solid; */
+        /* border-image: url(/aow4db/Icons/9slicetooltip.png); */
+        /* border-image-slice: 10 10 10 10; */
+        /* border-image-repeat: stretch; */
+        width: 100px;
+        height: 30px;
+        background-color: #111;
+        color: #fff;
+        height: 60px;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
+    }
+
     .tome-button-small {
 
         width: 60px;
@@ -396,6 +413,11 @@
     .wrappers {
         position: relative;
 
+        display: grid;
+        grid-template-columns: repeat(7, 2fr);
+        overflow-y: visible;
+        height: fit-content;
+
     }
 
     .shield {
@@ -417,7 +439,7 @@
         height: fit-content;
         color: white;
         display: inline-block;
-        position: relative;
+        position: absolute;
         border-width: 10px;
         border-style: solid;
         border-image: url(/aow4db/Icons/9slicetooltip.png);
