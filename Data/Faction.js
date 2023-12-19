@@ -79,7 +79,10 @@ function addOrSubtract(extraAffinity, add) {
         }
 
     } else {
-        extraAffinity++;
+        if (extraAffinity < 9) {
+            extraAffinity++;
+        }
+
     }
     return extraAffinity;
 }
@@ -1546,7 +1549,10 @@ function GetQuickLink() {
 
     }
 
-    code += "," + extraAstral + ":" + extraChaos + ":" + extraMaterium + ":" + extraNature + ":" + extraOrder + ":" + extraShadow;
+    var extraAffinityCode = extraAstral.toString() + extraChaos.toString() + extraMaterium.toString() + extraNature.toString() + extraOrder.toString() + extraShadow.toString();
+
+
+    code += "," + extraAffinityCode;
 
     // console.log("hex code: " + code);
 
@@ -1703,10 +1709,11 @@ function reversLookUp(code) {
     SetButtonInfo(originButton, currentTome, "Tome");
     currentTomeList = newList;
 
-    var newList = new Array();
     // 7 = extraaffinity
     var list = splitcode[8];
-    var currentExtraAffinityLoad = list.split(":");
+    console.log(list);
+    var currentExtraAffinityLoad = list;
+    console.log(currentExtraAffinityLoad);
     extraAstral = currentExtraAffinityLoad[0];
     extraChaos = currentExtraAffinityLoad[1];
     extraMaterium = currentExtraAffinityLoad[2];
