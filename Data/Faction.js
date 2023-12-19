@@ -213,11 +213,14 @@ function getPoints() {
 
 // Function to toggle the origin selection buttons
 function toggleOriginButtons() {
-
+    var selectionsHolder = document.getElementById("selectionsHolder");
+    selectionsHolder.setAttribute("style", "display:none");
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
+    // originWrapper.setAttribute("style", "display:none");
     var selectionsText = document.getElementById("selections");
     selectionsText.textContent = "";
+
 }
 
 // Function to handle the selection of an origin
@@ -493,9 +496,11 @@ function SetTomePathInfo(button, origin) {
 
 
 function SetupButtons(type) {
-
+    var selectionsHolder = document.getElementById("selectionsHolder");
+    selectionsHolder.setAttribute("style", "display:block");
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
+
     var originButton = document.getElementById("originButton" + type);
     // console.log(type);
     var list = [];
