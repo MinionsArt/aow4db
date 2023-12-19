@@ -315,6 +315,8 @@ function SelectSymbol(origin) {
 
 function SetTomePathOptions() {
 
+    var selectionsHolder = document.getElementById("selectionsHolder");
+    selectionsHolder.setAttribute("style", "display:block");
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
     var list = [];
