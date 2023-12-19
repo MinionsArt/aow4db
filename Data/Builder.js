@@ -1662,7 +1662,7 @@ function addResistanceSlot(a, resistance, holder) {
             imag.className = "unit_ability_icon";
 
 
-            spa = document.createElement("SPAN");
+            var spa = document.createElement("SPAN");
             spa.className = "tooltiptext";
 
             spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:#deb887 ;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calculate damage sustained from " + firstPart + ".";
