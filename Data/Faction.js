@@ -435,7 +435,17 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     newDivButton.addEventListener("click", () => SetTomePathOptions(event));
 
-    newDivButton.append(spa);
+    // newDivButton.append(spa);
+
+    newDivButton.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(span);
+        updateHoverDivPosition(event);
+    });
+
+    newDivButton.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
+
 }
 
 function ClearTomePath() {
@@ -511,7 +521,18 @@ function SetTomePathInfo(button, origin) {
 
     newDivButton.addEventListener("click", () => SetTomePathOptions(event));
 
-    newDivButton.append(spa);
+    //  newDivButton.append(spa);
+
+    newDivButton.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(spa);
+        updateHoverDivPosition(event);
+    });
+
+    newDivButton.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
+
+
 }
 
 
@@ -1031,7 +1052,16 @@ function SetButtonInfo(button, origin, type) {
 
     }
 
-    button.append(spa);
+    button.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(spa);
+        updateHoverDivPosition(event);
+    });
+
+    button.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
+
+    // button.append(spa);
 }
 
 function SetTomePreview(span, origin) {

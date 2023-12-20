@@ -100,12 +100,6 @@
 
 
                             var spa = document.createElement("SPAN");
-                            if (jsonEmpire[i].required_level > 6) {
-                                spa.className = "tooltiptextUp";
-                            } else {
-                                spa.className = "tooltiptext";
-                                spa.setAttribute("style", "margin-left:60px")
-                            }
 
 
                             spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>"
@@ -122,7 +116,8 @@
 
 
 
-                            newNode.appendChild(spa);
+                            // newNode.appendChild(spa);
+                            addTooltipListeners(newNode, spa);
 
                             holder.appendChild(newNode);
 
@@ -166,7 +161,7 @@
 
 
                             var spa = document.createElement("SPAN");
-                            spa.className = "tooltiptext";
+                            //spa.className = "tooltiptext";
 
                             spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>";
 
@@ -175,7 +170,9 @@
 
 
 
-                            newNode.appendChild(spa);
+                            //newNode.appendChild(spa);
+
+                            addTooltipListeners(newNode, spa);
 
                             holder.appendChild(newNode);
                         }

@@ -6,12 +6,12 @@ function fetchJsonFiles(filePaths) {
     return Promise.all(
         filePaths.map(filePath =>
             fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Network response was not ok: ${response.statusText}`);
-                    }
-                    return response.json();
-                })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
         )
     );
 }
@@ -19,15 +19,12 @@ var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, json
     jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits, jsonBuilderLookUp;
 
 async function GetAllData() {
-    // Example usage:
-
-
+ 
     const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
         '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json',
         '/aow4db/Data/CombatEnchantments.json', '/aow4db/Data/WorldStructures.json', '/aow4db/Data/EnchantmentTables.json', '/aow4db/Data/SpawnTables.json',
-        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json', '/aow4db/Data/BuilderLookup.json'];
-
-
+        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json', '/aow4db/Data/BuilderLookup.json'
+    ];
     await fetchJsonFiles(jsonFilePaths)
         .then(dataArray => {
             dataArray.forEach((data, index) => {
@@ -38,47 +35,33 @@ async function GetAllData() {
                     jsonHeroSkills = data;
                 } else if (index == 2) {
                     jsonSiegeProjects = data;
-                }
-                else if (index == 3) {
+                } else if (index == 3) {
                     jsonUnits = data;
                 } else if (index == 4) {
                     jsonFactionCreation2 = data;
-                }
-                else if (index == 5) {
+                } else if (index == 5) {
                     jsonTomes = data;
-                }
-                else if (index == 6) {
+                } else if (index == 6) {
                     jsonUnitAbilities = data;
-                }
-
-                else if (index == 7) {
+                } else if (index == 7) {
                     jsonEmpire = data;
-                }
-                else if (index == 8) {
+                } else if (index == 8) {
                     jsonSpells = data;
-                }
-                else if (index == 9) {
+                } else if (index == 9) {
                     jsonStructureUpgrades = data;
-                }
-                else if (index == 10) {
+                } else if (index == 10) {
                     jsonCombatEnchantments = data;
-                }
-                else if (index == 11) {
+                } else if (index == 11) {
                     jsonWorldStructures = data;
-                }
-                else if (index == 12) {
+                } else if (index == 12) {
                     jsonEnchantments = data;
-                }
-                else if (index == 13) {
+                } else if (index == 13) {
                     jsonSpawnTables = data;
-                }
-                else if (index == 14) {
+                } else if (index == 14) {
                     jsonFactionCreation = data;
-                }
-                else if (index == 15) {
+                } else if (index == 15) {
                     jsonHeroTraits = data;
-                }
-                else if (index == 16) {
+                } else if (index == 16) {
                     jsonBuilderLookUp = data;
                 }
             });
@@ -88,14 +71,12 @@ async function GetAllData() {
         });
 
 }
-
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
         await GetAllData();
         HandlePage();
     }
 }
-
 
 var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
 var barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
@@ -116,15 +97,11 @@ function GetUnitTierAndName(id) {
         if (id === jsonUnits[i].id) {
             var name = jsonUnits[i].name;
             if (MountedSpecialList.includes(id) || CheckIfOptionalCavalry(id)) {
-
-
                 name = jsonUnits[i].name + " <mountSpecial></mountSpecial>";
-                //imag.setAttribute("style", "position:relative; float:right");
             }
             return "<p style=\"width: 160px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;text-transform: none;\">" + getUnitTypeTag(jsonUnits[i].secondary_passives) + " " + name + "</p>" + "<p style=\"text-align:right; color:white;top:-16px; position:relative; \">" + romanize(jsonUnits[i].tier) + "</p>";
         }
     }
-
 }
 
 function CheckIfFormUnit(id) {
@@ -136,9 +113,6 @@ function CheckIfFormUnit(id) {
         return false;
     }
 }
-
-
-
 
 function GetUnitTierAndNameTome(id) {
     for (i in jsonTomes) {
@@ -828,7 +802,6 @@ function addUnitTypeIcon(a, holder, origin) {
             btn.className = "unittype_icon";
             imag = document.createElement("IMG");
             spa = document.createElement("SPAN");
-            spa.className = "tooltiptext";
             imag.setAttribute("src", "/aow4db/Icons/Abilities/" + iconsrc + ".png");
             imag.setAttribute('onerror', "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
             imag.setAttribute("width", "40");
@@ -850,18 +823,7 @@ function addUnitTypeIcon(a, holder, origin) {
             btn.appendChild(imag);
             // btn.append(spa);
 
-            btn.addEventListener('mouseenter', function (event) {
-                TurnOnTooltip(spa);
-                updateHoverDivPosition(event);
-            });
-
-            btn.addEventListener('mouseleave', function () {
-                TurnOffTooltip();
-            });
-
-            btn.addEventListener('mousemove', function (event) {
-                //updateHoverDivPosition(event);
-            });
+            addTooltipListeners(btn, spa);
 
 
             return unitType;
@@ -1108,8 +1070,6 @@ function addAbilityslot(a, holder, list, enchant) {
 
             var spa = GetAbilityToolTip(jsonUnitAbilities[j], abilityDam, abilityName, abilityIconType, abilityAcc, abilityRange, abilityMod, abilityEncht, abilityNote, abilityReq, Cooldown, Once);
 
-            spa.className = "tooltiptext";
-
             if (abilityName.indexOf("Defense Mode") > -1) {
                 spa.innerHTML = "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase();
                 spa.innerHTML += "<div style=\"clear:both\"> </div>" + "<br>";
@@ -1136,18 +1096,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
             //btn.tooltipData = span;
 
-            tex.addEventListener('mouseenter', function (event) {
-                TurnOnTooltip(spa);
-                updateHoverDivPosition(event);
-            });
-
-            tex.addEventListener('mouseleave', function () {
-                TurnOffTooltip();
-            });
-
-            tex.addEventListener('mousemove', function (event) {
-                //updateHoverDivPosition(event);
-            });
+            addTooltipListeners(tex, spa);
 
         }
     }
@@ -1184,7 +1133,10 @@ function getNormalizedPosition(event) {
     const normalizedX = xPosition / screenWidth;
     const normalizedY = yPosition / screenHeight;
 
-    return { x: normalizedX, y: normalizedY };
+    return {
+        x: normalizedX,
+        y: normalizedY
+    };
 }
 
 function updateHoverDivPosition(event) {
@@ -1194,12 +1146,12 @@ function updateHoverDivPosition(event) {
     const mouseY = event.clientY;
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
     if (normalizedPos.x > 0.8) {
-        hoverDiv.style.left = (mouseX - hoverDiv.getBoundingClientRect().width - 10) + 'px';
+        hoverDiv.style.left = (mouseX - hoverDiv.getBoundingClientRect().width - 10 + scrollLeft) + 'px';
     } else {
-        hoverDiv.style.left = mouseX + 10 + 'px';
+        hoverDiv.style.left = (mouseX + 10 + scrollLeft) + 'px';
     }
 
     if (normalizedPos.y > 0.8) {
@@ -1474,7 +1426,6 @@ function addPassiveslot(a, div, enchant) {
 
 
             var spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
-            spa.className = "tooltiptext";
             div.appendChild(btn);
 
             btn.appendChild(imag);
@@ -1486,19 +1437,7 @@ function addPassiveslot(a, div, enchant) {
 
 
             btn.append(tex);
-
-            tex.addEventListener('mouseenter', function (event) {
-                TurnOnTooltip(spa);
-                updateHoverDivPosition(event);
-            });
-
-            tex.addEventListener('mouseleave', function () {
-                TurnOffTooltip();
-            });
-
-            tex.addEventListener('mousemove', function (event) {
-                //updateHoverDivPosition(event);
-            });
+            addTooltipListeners(tex, spa);
 
         }
     }
@@ -1546,7 +1485,6 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
 
 
     var spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
-    spa.className = "tooltiptext";
     div.appendChild(btn);
 
     btn.appendChild(imag);
@@ -1558,19 +1496,8 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
 
 
     btn.append(tex);
+    addTooltipListeners(btn, spa);
 
-    tex.addEventListener('mouseenter', function (event) {
-        TurnOnTooltip(spa);
-        updateHoverDivPosition(event);
-    });
-
-    tex.addEventListener('mouseleave', function () {
-        TurnOffTooltip();
-    });
-
-    tex.addEventListener('mousemove', function (event) {
-        //updateHoverDivPosition(event);
-    });
 
 
 
@@ -1663,7 +1590,6 @@ function addResistanceSlot(a, resistance, holder) {
 
 
             var spa = document.createElement("SPAN");
-            spa.className = "tooltiptext";
 
             spa.innerHTML = "<p>" + "<span style=\"font-size=20px; text-transform:uppercase; color:#deb887 ;\">" + abilityName + "</p>" + "Added to Resistance <resistance></resistance> to calculate damage sustained from " + firstPart + ".";
 
@@ -1739,19 +1665,7 @@ function addResistanceSlot(a, resistance, holder) {
 
             // btn.append(spa);
 
-
-            btn.addEventListener('mouseenter', function (event) {
-                TurnOnTooltip(spa);
-                updateHoverDivPosition(event);
-            });
-
-            btn.addEventListener('mouseleave', function () {
-                TurnOffTooltip();
-            });
-
-            btn.addEventListener('mousemove', function (event) {
-                //updateHoverDivPosition(event);
-            });
+            addTooltipListeners(btn, spa);
 
             return;
 
@@ -1773,7 +1687,6 @@ function addstatusResistanceSlot(a, holder) {
 
 
     spa = document.createElement("SPAN");
-    spa.className = "tooltiptext";
 
     spa.innerHTML = "<p>" + "<span style=\"color: #deb887 ;text-transform: uppercase\">Status Resistance</span></p>";
 
@@ -1796,20 +1709,7 @@ function addstatusResistanceSlot(a, holder) {
     // btn.append(spa);
 
 
-
-    btn.addEventListener('mouseenter', function (event) {
-        TurnOnTooltip(spa);
-        updateHoverDivPosition(event);
-    });
-
-    btn.addEventListener('mouseleave', function () {
-        TurnOffTooltip();
-    });
-
-    btn.addEventListener('mousemove', function (event) {
-        //updateHoverDivPosition(event);
-    });
-
+    addTooltipListeners(btn, spa);
 
 
 }
@@ -1842,7 +1742,6 @@ function addEliteSkill(a) {
             tex.className = "tooltip";
             tex.setAttribute('onclick', '');
             tex.innerHTML = abilityName;
-            spa.className = "tooltiptext";
             spa.innerHTML = "<p>" + "<span style=\"font-size=20px\">" + abilityName + "</p>" + "<hr>" + abilityDescr;
             imag.setAttribute("src", "/aowp/UI/elite_rank.png");
             imag.setAttribute("width", "40");
@@ -1856,19 +1755,8 @@ function addEliteSkill(a) {
             btn.appendChild(imag);
             btn.append(tex);
 
+            addTooltipListeners(tex, spa);
 
-            tex.addEventListener('mouseenter', function (event) {
-                TurnOnTooltip(spa);
-                updateHoverDivPosition(event);
-            });
-
-            tex.addEventListener('mouseleave', function () {
-                TurnOffTooltip();
-            });
-
-            tex.addEventListener('mousemove', function (event) {
-                //updateHoverDivPosition(event);
-            });
 
         }
     }
@@ -3027,7 +2915,6 @@ function showUnit(a) {
                 imag.setAttribute("height", "35px");
 
                 spa = document.createElement("SPAN");
-                spa.className = "tooltiptext";
 
                 spa.innerHTML = "If a Mount <hyperlink>Body Trait</hyperlink> is chosen, this unit gains that mount, even if it was not mounted before";
 
@@ -3035,26 +2922,48 @@ function showUnit(a) {
                 newDivForMount.appendChild(spa);
                 newDivForMount.setAttribute("style", "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;");
                 // get position of button
-
+                addTooltipListeners(newDivForMount, spa);
                 unitNameDiv.append(newDivForMount);
             }
 
+            var hpspan = document.createElement("span");
+            hpspan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase \">Hit Points</span><br><span style=\"font-size: 14px;\"><bullet>Hit Points represent the amount of damage a unit can take before being defeated</bullet> <bullet>Most units will take Casualties as their Hit Points drop.</bullet></span>";
+            var hpTooltip = unitCard.querySelectorAll('div#hp_tt')[0];
 
+            addTooltipListeners(hpTooltip, hpspan);
 
             hp = unitCard.querySelectorAll('p#hp')[0];
+
             var hpvalue = jsonUnits[i].hp;
             hp.innerHTML = jsonUnits[i].hp;
+
+            var critspan = document.createElement("span");
+            critspan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase;\">Critical Hit Chance</span><br><span style=\"font-size: 14px;\">Chance to deliver a critical hit for increased damage</span>";
+            var critTooltip = unitCard.querySelectorAll('div#crit_tt')[0];
+
+            addTooltipListeners(critTooltip, critspan);
+
 
             var crit = unitCard.querySelectorAll('p#crit')[0];
             crit.innerHTML = "+" + 0 + "%";
 
+            var armorspan = document.createElement("span");
+            armorspan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase \">Defense</span><br><span style=\"font-size: 14px;\">Defense reduces physical damage.Damage Reduction: "+
+            "<br>Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].armor + "</span> <defense> </defense>)" + "</p></span>";
+            var armorTooltip = unitCard.querySelectorAll('div#armor_tt')[0];
+
+            addTooltipListeners(armorTooltip, armorspan);
 
             armor = unitCard.querySelectorAll('p#armor')[0];
             armor.innerHTML = jsonUnits[i].armor;
 
+          
+
             shield = unitCard.querySelectorAll('p#resistence')[0];
             var shieldValue = jsonUnits[i].resistance;
             shield.innerHTML = shieldValue;
+
+          
 
             mp = unitCard.querySelectorAll('p#mp')[0];
             mp.innerHTML = jsonUnits[i].mp;
@@ -3062,13 +2971,11 @@ function showUnit(a) {
             tier = unitCard.querySelectorAll('p#tier')[0];
             //
 
-            defenseDiv = unitCard.querySelectorAll('p#damageReduction')[0];
-            defenseDiv.innerHTML = "Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].armor + "</span> <defense> </defense>)";
-
+           
             prodcost = unitCard.querySelectorAll('p#productioncost')[0];
             prodcost.innerHTML = "Cost: " + jsonUnits[i].cost;
             var additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
-            movementDiv = unitCard.querySelectorAll('p#movement')[0];
+            movementDiv = document.createElement("div");
 
             unitStat = unitCard.querySelectorAll('div#unitstat')[0];
             unitStat.innerHTML = "";
@@ -3091,53 +2998,34 @@ function showUnit(a) {
                 if (jsonUnits[i].secondary_passives[j].slug.indexOf("flying") != -1) {
                     movementDiv.innerHTML = "Movement Abilities :  <span style=\"color:white;\"> <bullet>Flying</bullet></span><br>";
                 }
-
-
-
-
-
             }
+
+            var mpspan = document.createElement("span");
+            mpspan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase;\">Move Points</span><br>" + movementDiv.innerHTML + "</p><span style=\"font-size: 14px;\">Move points represent how far a unit can move in one turn on the world map and in combat</span>";
+            var mpTooltip = unitCard.querySelectorAll('div#mp_tt')[0];
+
+            addTooltipListeners(mpTooltip, mpspan);
 
             if (CheckIfFormUnit(a)) {
 
-
-
-
-                iconName = "Form Unit";
-
-
-                iconName = iconName.toUpperCase();
                 btn = document.createElement("DIV");
                 btn.className = "unittype_icon";
                 imag = document.createElement("IMG");
                 span = document.createElement("SPAN");
-                span.className = "tooltiptext";
                 imag.setAttribute("src", "/aow4db/Icons/FactionCreation/human.png");
 
                 imag.setAttribute("width", "40");
                 imag.setAttribute("height", "40");
 
 
-                span.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/FactionCreation/human.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">Form Unit</p>" +
+                span.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/FactionCreation/human.png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">FORM UNIT</p>" +
                     "<br> This unit will use a Form and Form Traits";
 
                 unitStat.appendChild(btn);
 
+                addTooltipListeners(btn, span);
+
                 btn.appendChild(imag);
-                //btn.append(spa);
-
-                btn.addEventListener('mouseenter', function (event) {
-                    TurnOnTooltip(span);
-                    updateHoverDivPosition(event);
-                });
-
-                btn.addEventListener('mouseleave', function () {
-                    TurnOffTooltip();
-                });
-
-                btn.addEventListener('mousemove', function (event) {
-                    //updateHoverDivPosition(event);
-                });
 
             }
 
@@ -3163,8 +3051,6 @@ function showUnit(a) {
             var unitTabHolder = unitCard.querySelectorAll('div#unitabholder')[0];
             unitTabHolder.innerHTML = "";
 
-
-
             for (k in jsonUnits[i].abilities) {
                 addAbilityslot(jsonUnits[i].abilities[k].slug, unitTabHolder, activeEnchantList);
 
@@ -3176,9 +3062,6 @@ function showUnit(a) {
 
             for (z in jsonUnits[i].resistances) {
                 addResistanceSlot(jsonUnits[i].resistances[z].slug, jsonUnits[i].resistance, resistanceHolder);
-
-
-
                 if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
                     additionalBlight = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
@@ -3195,9 +3078,6 @@ function showUnit(a) {
                 if (jsonUnits[i].resistances[z].slug.toUpperCase().indexOf("SPIRIT") != -1) {
                     additionalSpirit = ReturnWeaknessOrResistanceNumber(jsonUnits[i].resistances[z].slug);
                 }
-
-
-
             }
 
             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + jsonUnits[i].upkeep;
@@ -3251,18 +3131,10 @@ function showUnit(a) {
                             }
                             prodcost.innerHTML = "<br> Spell: " + summonInfo[p].casting_cost + castcost;
                         }
-
-
                     }
-
                 }
             }
-
             for (x in activeEnchantList) {
-
-
-
-
                 for (k = 0; k < jsonEnchantments.length; k++) {
 
                     if (jsonEnchantments[k].id === activeEnchantList[x].id) {
@@ -3373,7 +3245,7 @@ function showUnit(a) {
 
             y = "";
 
-            var resistanceDiv = unitCard.querySelectorAll('p#resistanceReduction')[0];
+            var resistanceDiv = document.createElement("div");
             resistanceDiv.innerHTML = "Blight :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].resistance, additionalBlight) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].resistance + "</span> <resistance> </resistance>";
             if (additionalBlight != undefined) {
                 if (additionalBlight > 0) {
@@ -3428,6 +3300,12 @@ function showUnit(a) {
 
             resistanceDiv.innerHTML += ")";
 
+            var resistencespan = document.createElement("span");
+            resistencespan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase \">Resistance</span><br><span style=\"font-size: 14px;\">Resistance reduces all non-physical damage.<br><br>Damage Reduction:" + resistanceDiv.innerHTML + "</p> </span>";
+            var resistenceTooltip = unitCard.querySelectorAll('div#resistence_tt')[0];
+
+            addTooltipListeners(resistenceTooltip, resistencespan);
+
 
             addLevelUpInfo(jsonUnits[i], a, unitCard);
 
@@ -3441,6 +3319,19 @@ function showUnit(a) {
     if (found === false) {
         console.log("Couldn't find unit: " + a + i);
     }
+}
+
+
+function addTooltipListeners(tooltip, span) {
+    tooltip.addEventListener('mouseenter', function (event) {
+        TurnOnTooltip(span);
+        console.log("setup");
+        updateHoverDivPosition(event);
+    });
+
+    tooltip.addEventListener('mouseleave', function () {
+        TurnOffTooltip();
+    });
 }
 
 
@@ -3514,7 +3405,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
         const capitalized =
             culture.charAt(0).toUpperCase() +
@@ -3530,18 +3420,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.innerHTML = "<a href=\"/aow4db/HTML/" + capitalized + "Units.html\" target=\"_blank\">" + wrap + "</a>"
         //btn.appendChild(spa);
 
-        btn.addEventListener('mouseenter', function (event) {
-            TurnOnTooltip(spa);
-            updateHoverDivPosition(event);
-        });
-
-        btn.addEventListener('mouseleave', function () {
-            TurnOffTooltip();
-        });
-
-        btn.addEventListener('mousemove', function (event) {
-            //updateHoverDivPosition(event);
-        });
+        addTooltipListeners(btn, spa);
 
         holderOrigin.appendChild(btn);
         // add icon with mouseover
@@ -3553,7 +3432,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
 
@@ -3565,8 +3443,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + tomes.id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
-
+        addTooltipListeners(btn, spa);
         holderOrigin.appendChild(btn);
         // add icon with mouseover
 
@@ -3581,7 +3458,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         var imag = document.createElement("IMG");
         var spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
         var tierandnameoftome = backtraceTomeNameAndTier(spells[x].id);
         if (tierandnameoftome != "") {
@@ -3608,18 +3484,8 @@ function backtrackUnitOrigins(unitID, name, holder) {
         holderOrigin.appendChild(btn);
         // add icon with mouseover
 
-        btn.addEventListener('mouseenter', function (event) {
-            TurnOnTooltip(spa);
-            updateHoverDivPosition(event);
-        });
+        addTooltipListeners(btn, spa);
 
-        btn.addEventListener('mouseleave', function () {
-            TurnOffTooltip();
-        });
-
-        btn.addEventListener('mousemove', function (event) {
-            //updateHoverDivPosition(event);
-        });
 
     }
 
@@ -3629,7 +3495,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Unit mentioned in Siege Project <hyperlink> " + siege.name + "</hyperlink>";
@@ -3639,10 +3504,11 @@ function backtrackUnitOrigins(unitID, name, holder) {
         imag.setAttribute("height", "60");
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
-        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?siege=" + siege.id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
+        btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?siege=" + siege.id + "\" target=\"_blank\">" + wrap + "</a>";
 
         holderOrigin.appendChild(btn);
+
+        addTooltipListeners(btn, spa);
         // add icon with mouseover
 
     }
@@ -3654,7 +3520,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Unit mentioned in Structure <hyperlink> " + struc.name + "</hyperlink>";
@@ -3665,8 +3530,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?structure=" + struc.id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
-
+        addTooltipListeners(btn, spa);
         holderOrigin.appendChild(btn);
 
 
@@ -3683,7 +3547,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Rally Unit unlocked from <hyperlink>" +
@@ -3695,8 +3558,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?wonder=" + wonder.id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
-
+        addTooltipListeners(btn, spa);
         holderOrigin.appendChild(btn);
         // add icon with mouseover
 
@@ -3708,7 +3570,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Unit mentioned in <hyperlink>" +
@@ -3720,7 +3581,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/EmpireTree.html \"target = \"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
+        addTooltipListeners(btn, spa);
 
 
         holderOrigin.appendChild(btn);
@@ -3734,7 +3595,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Unit mentioned in Ability <hyperlink>" +
@@ -3746,8 +3606,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Units.html?unit=" + unitAbility[0].id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
-
+        addTooltipListeners(btn, spa);
         holderOrigin.appendChild(btn);
         // add icon with mouseover
 
@@ -3759,7 +3618,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Unit mentioned in Hero Skill <hyperlink>" +
@@ -3776,8 +3634,7 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.appendChild(imag);
         var wrap = btn.innerHTML;
         btn.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?skill=" + heroSkill[1].id + "\" target=\"_blank\">" + wrap + "</a>"
-        btn.appendChild(spa);
-
+        addTooltipListeners(btn, spa);
         holderOrigin.appendChild(btn);
         // add icon with mouseover
 
@@ -3789,7 +3646,6 @@ function backtrackUnitOrigins(unitID, name, holder) {
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         spa.innerHTML = "Evolved from Unit <hyperlink>" +
@@ -3805,19 +3661,8 @@ function backtrackUnitOrigins(unitID, name, holder) {
 
         holderOrigin.appendChild(btn);
         // add icon with mouseover
+        addTooltipListeners(btn, spa);
 
-        btn.addEventListener('mouseenter', function (event) {
-            TurnOnTooltip(spa);
-            updateHoverDivPosition(event);
-        });
-
-        btn.addEventListener('mouseleave', function () {
-            TurnOffTooltip();
-        });
-
-        btn.addEventListener('mousemove', function (event) {
-            //updateHoverDivPosition(event);
-        });
 
     }
 
@@ -4201,7 +4046,7 @@ function GetDamageReductionPercentage(number, additionalNumber) {
 }
 
 function addLevelUpInfo(units, a, holder) {
-    var levelup = holder.querySelectorAll('span#levelup')[0];
+    var levelup = holder.querySelectorAll('div#levelup')[0];
 
     evolveTarget = units.evolve_target;
 
@@ -4222,59 +4067,96 @@ function addLevelUpInfo(units, a, holder) {
     }
 
     var levelText = "";
-    levelText += "<p style=\"  color: #aadb9c;\"> <medal_soldier></medal_soldier> Soldier - " + xpNeeded + "<xp></xp></p>";
+    levelText = "<p style=\"  color: #aadb9c;\"> <medal_soldier></medal_soldier> Soldier - " + xpNeeded + "<xp></xp></p>";
+    levelup.append(NewLevelUpEntry(levelText));
+
+    //levelText += 
     for (i in units.medal_rewards_2) {
-        levelText += "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
+        levelText = "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
+        levelup.append(NewLevelUpEntry(levelText));
 
     }
-    levelText += "<p style=\"  color: #aadb9c;\"> <medal_veteran></medal_veteran> Veteran - " + (xpNeeded * 2) + "<xp></xp></p>";
+    levelText = "<p style=\"  color: #aadb9c;\"> <medal_veteran></medal_veteran> Veteran - " + (xpNeeded * 2) + "<xp></xp></p>";
+    levelup.append(NewLevelUpEntry(levelText));
     for (i in units.medal_rewards_3) {
-        levelText += "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
+        levelText = "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
+        levelup.append(NewLevelUpEntry(levelText));
 
     }
-    levelText += "<p style=\"  color: #aadb9c;\"> <medal_elite></medal_elite> Elite - " + (xpNeeded * 3) + "<xp></xp></p>";
+    levelText = "<p style=\"  color: #aadb9c;\"> <medal_elite></medal_elite> Elite - " + (xpNeeded * 3) + "<xp></xp></p>";
+    levelup.append(NewLevelUpEntry(levelText));
 
+  
+    
+   
+  
     for (i in units.medal_rewards_4) {
 
         if (units.medal_rewards_4[i].slug.indexOf("medal") != -1) {
-            levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
-            levelText += "<span class=\"tooltiptext\" style=\"font-size=20px\">" + lookupSlugDescription(units.medal_rewards_4[i].slug) + "</span>  </p> </bullet> ";
+           levelText = "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
+
+           var test = NewLevelUpEntry(levelText);
+           var spanText = document.createElement("span");
+           spanText.innerHTML = lookupSlugDescription(units.medal_rewards_4[i].slug);
+           addTooltipListeners(test, spanText);
+           levelup.append(test);
         } else {
-            levelText += "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
+            levelText = "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
+            levelup.append(NewLevelUpEntry(levelText));
+            
         }
 
     }
     if (evolveTarget != undefined) {
-        levelText += "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
-        levelText += "<bullet> Evolves into <hyperlink> <a href=\"/aow4db/HTML/Units.html?unit=" + evolveTarget + "\" target=\"_blank\">" + lookupUnit(evolveTarget) + "</a></hyperlink></bullet>";
+        levelText = "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
+        levelup.append(NewLevelUpEntry(levelText));
+       
+      
+        levelText = "<bullet> Evolves into <hyperlink> <a href=\"/aow4db/HTML/Units.html?unit=" + evolveTarget + "\" target=\"_blank\">" + lookupUnit(evolveTarget) + "</a></hyperlink></bullet>";
+        levelup.append(NewLevelUpEntry(levelText));
     }
 
     if (evolveTarget === undefined) {
 
 
-        levelText += "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
-
+        levelText = "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
+        levelup.append(NewLevelUpEntry(levelText));
         for (i in units.medal_rewards_5) {
-            levelText += "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
-
+            levelText = "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug) + "</bullet>";
+            levelup.append(NewLevelUpEntry(levelText));
         }
 
-        levelText += "<p style=\"  color: #aadb9c;\"> <medal_legend></medal_legend> Legend - " + (xpNeeded * 10) + "<xp></xp></p>";
-        for (i in units.medal_rewards_6) {
+        levelText = "<p style=\"  color: #aadb9c;\"> <medal_legend></medal_legend> Legend - " + (xpNeeded * 10) + "<xp></xp></p>";
+        levelup.append(NewLevelUpEntry(levelText));
+        for (let i = 0; i < units.medal_rewards_6.length; i++) {
             if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
-                levelText += "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
-                levelText += "<span class=\"tooltiptext\" style=\"font-size=20px\">" + lookupSlugDescription(units.medal_rewards_6[i].slug) + "</span>  </p> </bullet> ";
+                
+                levelText = "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
+               
+
+                var test = NewLevelUpEntry(levelText);
+                var spanText = document.createElement("span");
+                spanText.innerHTML = lookupSlugDescription(units.medal_rewards_6[i].slug);
+                addTooltipListeners(test, spanText);
+                levelup.append(test);
             } else {
-                levelText += "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+                levelText = "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug) + "</bullet>";
+                levelup.append(NewLevelUpEntry(levelText));
             }
 
 
         }
     }
 
-    levelup.innerHTML = levelText;
+    //levelup.innerHTML += levelText;
 
 
+}
+
+function NewLevelUpEntry(spanEntry){
+    var newEntryDiv = document.createElement("div");
+    newEntryDiv.innerHTML = spanEntry;
+    return newEntryDiv;
 }
 
 function lookupUnit(id) {
@@ -4319,7 +4201,8 @@ function romanize(num) {
     var digits = String(+num).split(""),
         key = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
             "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
-            "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+            "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
+        ],
         roman = "",
         i = 3;
     while (i--)
@@ -4580,13 +4463,9 @@ function showTome(a, div) {
                     if (heroSkillIconAndDesc[0] != "") {
 
                         var spa2 = GetAbilityInfo(heroSkillIconAndDesc[0]);
-
-
-                        spa2.className = "tooltiptext";
                     } else {
                         // its a passive
                         var spa2 = CreatePassiveSlotToolTip(heroSkillIconAndDesc[1].icon, heroSkillIconAndDesc[1].name, heroSkillIconAndDesc[1].description);
-                        spa2.className = "tooltiptext";
                     }
 
 
@@ -4601,19 +4480,7 @@ function showTome(a, div) {
 
 
                     //div.appendChild(spa2);
-
-                    div.addEventListener('mouseenter', function (event) {
-                        TurnOnTooltip(spa2);
-                        updateHoverDivPosition(event);
-                    });
-
-                    div.addEventListener('mouseleave', function () {
-                        TurnOffTooltip();
-                    });
-
-                    div.addEventListener('mousemove', function (event) {
-                        //updateHoverDivPosition(event);
-                    });
+                    addTooltipListeners(div, spa2);
 
                     unitTypesDiv.appendChild(div);
                 }
@@ -4629,24 +4496,12 @@ function showTome(a, div) {
                     div.innerHTML = name;
 
                     var spa = document.createElement("SPAN");
-                    spa.className = "tooltiptext";
                     spa.innerHTML = "<span style=\"color: #deb887 ;text-transform: uppercase\">" + name + "</span>" + GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
 
                     //  div.appendChild(spa);
                     unitTypesDiv.appendChild(div);
 
-                    div.addEventListener('mouseenter', function (event) {
-                        TurnOnTooltip(spa);
-                        updateHoverDivPosition(event);
-                    });
-
-                    div.addEventListener('mouseleave', function () {
-                        TurnOffTooltip();
-                    });
-
-                    div.addEventListener('mousemove', function (event) {
-                        //updateHoverDivPosition(event);
-                    });
+                    addTooltipListeners(div, spa);
 
                     unitTypesDiv.appendChild(div);
 
@@ -4662,25 +4517,11 @@ function showTome(a, div) {
                     div.innerHTML = jsonTomes[j].passives[l].name;
 
                     var spa = document.createElement("SPAN");
-                    spa.className = "tooltiptext";
                     spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
                     spa.innerHTML += jsonTomes[j].passives[l].description;
-                    //  div.appendChild(spa);
 
-                    // unitTypesDiv.appendChild(div);
+                    addTooltipListeners(div, spa);
 
-                    div.addEventListener('mouseenter', function (event) {
-                        TurnOnTooltip(spa);
-                        updateHoverDivPosition(event);
-                    });
-
-                    div.addEventListener('mouseleave', function () {
-                        TurnOffTooltip();
-                    });
-
-                    div.addEventListener('mousemove', function (event) {
-                        //updateHoverDivPosition(event);
-                    });
 
                     unitTypesDiv.appendChild(div);
 
@@ -4949,18 +4790,8 @@ function createTooltipForEnchant(item) {
     text.setAttribute("style", "padding:0px");
 
     span.innerHTML = item.description;
-    //  span.className = "tooltiptext";
 
-
-
-    enchantEntry.addEventListener('mouseenter', function (event) {
-        TurnOnTooltip(span);
-        updateHoverDivPosition(event);
-    });
-
-    enchantEntry.addEventListener('mouseleave', function () {
-        TurnOffTooltip();
-    });
+    addTooltipListeners(enchantEntry, span);
 
 
     //   unitTypesDiv.appendChild(div);
@@ -4989,21 +4820,10 @@ function SetEnchantment(evt) {
         activeEnch.setAttribute("style", "padding: 0px");
         var span = document.createElement("span");
         span.innerHTML = evt.currentTarget.enchant.name + "<hr>" + evt.currentTarget.enchant.description;
-        span.className = "tooltiptext";
         span.setAttribute("style", "left: 50px;");
 
-        activeEnch.addEventListener('mouseenter', function (event) {
-            TurnOnTooltip(span);
-            updateHoverDivPosition(event);
-        });
+        addTooltipListeners(activeEnch, span);
 
-        activeEnch.addEventListener('mouseleave', function () {
-            TurnOffTooltip();
-        });
-
-        activeEnch.addEventListener('mousemove', function (event) {
-            //updateHoverDivPosition(event);
-        });
         //activeEnch.appendChild(span);
         activeEnch.appendChild(image);
         // activeEnch.activeEnchantList = evt.currentTarget.activeEnchantList;
@@ -5889,9 +5709,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-        entry,
-        percentage
-    } of percentages) {
+            entry,
+            percentage
+        } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
@@ -6166,7 +5986,6 @@ function showTraitSetup(currentTrait) {
         imag.setAttribute("height", "30px");
 
         spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
 
 
         if (currentTrait.DLC == "EMPIRESANDASHES ") {
@@ -6180,7 +5999,8 @@ function showTraitSetup(currentTrait) {
 
 
         newDivForMount.appendChild(imag);
-        newDivForMount.appendChild(spa);
+
+        addTooltipListeners(newDivForMount, spa);
         newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
         // get position of button
 
@@ -6705,7 +6525,6 @@ function AddDLCTag(dlcname) {
     imag.setAttribute("height", "30px");
 
     spa = document.createElement("SPAN");
-    spa.className = "tooltiptext";
     if (dlcname == "DRAGONLORDS ") {
         imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
         spa.innerHTML = "Part of the Dragon Dawn DLC";
@@ -6716,7 +6535,8 @@ function AddDLCTag(dlcname) {
     }
 
     newDivForMount.appendChild(imag);
-    newDivForMount.appendChild(spa);
+
+    addTooltipListeners(newDivForMount, spa);
     newDivForMount.setAttribute("style", "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;");
     return newDivForMount;
 }

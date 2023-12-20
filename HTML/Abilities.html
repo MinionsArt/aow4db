@@ -315,7 +315,7 @@
                     tex.innerHTML = abilityName;
                     tex.setAttribute("style", "color:white; width:250px");
 
-                    spa.className = "tooltiptext";
+
 
                     if (abilityName.indexOf("Defense Mode") > -1) {
                         spa.innerHTML = "<div class=\"leftAbility\" style=\"color:#d7c297;\">" + abilityName.toUpperCase();
@@ -327,7 +327,9 @@
 
 
                     document.getElementById("dataHolder").append(btn);
-                    tex.appendChild(spa);
+                    // tex.appendChild(spa);
+
+                    addTooltipListeners(tex, spa);
 
                     btn.appendChild(imag);
                     btn.append(tex);
