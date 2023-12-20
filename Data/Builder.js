@@ -1515,9 +1515,11 @@ function CreateUniquePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) 
 
 function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
     var spa = document.createElement("SPAN");
-
-    spa.innerHTML = "<img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
-        "<hr>" + abilityDescr;
+  
+    spa.innerHTML = "<div class=\"abilityHighLighter\"><img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
+      "</div>"+  "<hr>" + abilityDescr;
+    
+       // abilityHighlighter.appendChild(spa);
 
     return spa;
 }
@@ -3325,7 +3327,6 @@ function showUnit(a) {
 function addTooltipListeners(tooltip, span) {
     tooltip.addEventListener('mouseenter', function (event) {
         TurnOnTooltip(span);
-        console.log("setup");
         updateHoverDivPosition(event);
     });
 
