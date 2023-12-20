@@ -436,7 +436,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     // newDivButton.append(spa);
 
-    addTooltipListeners(newDivButton, span);
+    addTooltipListeners(newDivButton, spa);
    
 
 }
