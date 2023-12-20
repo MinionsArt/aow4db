@@ -424,7 +424,6 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     // create mouseover
     spa = document.createElement("SPAN");
-    spa.className = "tooltiptext";
     spa.setAttribute("style", "margin-left:113px");
 
     spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
@@ -437,14 +436,8 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     // newDivButton.append(spa);
 
-    newDivButton.addEventListener('mouseenter', function (event) {
-        TurnOnTooltip(span);
-        updateHoverDivPosition(event);
-    });
-
-    newDivButton.addEventListener('mouseleave', function () {
-        TurnOffTooltip();
-    });
+    addTooltipListeners(newDivButton, span);
+   
 
 }
 
@@ -510,7 +503,7 @@ function SetTomePathInfo(button, origin) {
 
     // create mouseover
     spa = document.createElement("SPAN");
-    spa.className = "tooltiptext";
+  
     spa.setAttribute("style", "margin-left:113px");
 
     spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
@@ -523,15 +516,7 @@ function SetTomePathInfo(button, origin) {
 
     //  newDivButton.append(spa);
 
-    newDivButton.addEventListener('mouseenter', function (event) {
-        TurnOnTooltip(spa);
-        updateHoverDivPosition(event);
-    });
-
-    newDivButton.addEventListener('mouseleave', function () {
-        TurnOffTooltip();
-    });
-
+    addTooltipListeners(newDivButton, spa);
 
 }
 
@@ -990,7 +975,6 @@ function SetButtonInfo(button, origin, type) {
 
     // create mouseover
     spa = document.createElement("SPAN");
-    spa.className = "tooltiptext";
     spa.setAttribute("style", "margin-left:113px");
 
     spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
@@ -1051,15 +1035,8 @@ function SetButtonInfo(button, origin, type) {
         SetFullPreview(spa, origin);
 
     }
-
-    button.addEventListener('mouseenter', function (event) {
-        TurnOnTooltip(spa);
-        updateHoverDivPosition(event);
-    });
-
-    button.addEventListener('mouseleave', function () {
-        TurnOffTooltip();
-    });
+    addTooltipListeners(button, spa);
+  
 
     // button.append(spa);
 }
