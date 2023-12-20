@@ -1753,6 +1753,8 @@ function addResistanceSlot(a, resistance, holder) {
                 //updateHoverDivPosition(event);
             });
 
+            return;
+
         }
     }
 
