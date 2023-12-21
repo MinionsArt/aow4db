@@ -2,6 +2,43 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get('sort');
 var currentView = "";
 
+function CheckBoxTooltips(){
+    var checkboxTooltip = document.getElementById("tooltipCheckbox");
+
+    if(checkboxTooltip.checked === true){
+        addTooltipListeners(hoverDiv, null);
+    }else{
+        removeToolTipListeners(hoverDiv);
+    }
+    updateUserSettings({tooltipselectable : checkboxTooltip.checked});
+}
+
+// Set user settings
+function setUserSettings(settings) {
+   
+        localStorage.setItem('userSettings', JSON.stringify(settings));
+   
+}
+
+
+
+// Update user settings
+function updateUserSettings(updatedSettings) {
+    const currentSettings = getUserSettings();
+    if (currentSettings) {
+
+        const newSettings = { ...currentSettings, ...updatedSettings };
+        setUserSettings(newSettings);
+    }
+}
+// Get user settings
+function getUserSettings() {
+    const storedSettings = localStorage.getItem('userSettings');
+    return storedSettings ? JSON.parse(storedSettings) : null;
+}
+
+
+
 function fetchJsonFiles(filePaths) {
     return Promise.all(
         filePaths.map(filePath =>
@@ -74,6 +111,24 @@ async function GetAllData() {
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
         await GetAllData();
+       // Example usage
+
+const storedSettings = getUserSettings();
+if(storedSettings === undefined){
+
+    setUserSettings({ tooltipselectable: false, fontSize: '16px' });
+} else{
+    var checkboxTooltip = document.getElementById("tooltipCheckbox");
+    console.log(storedSettings.tooltipselectable);
+    checkboxTooltip.checked = storedSettings.tooltipselectable;
+
+    if(checkboxTooltip.checked === true){
+        addTooltipListeners(hoverDiv, null);
+    }else{
+        removeToolTipListeners(hoverDiv);
+    }
+}
+
         HandlePage();
     }
 }
@@ -1103,19 +1158,20 @@ function addAbilityslot(a, holder, list, enchant) {
 
 }
 
-function SetupEvents() {
-
-}
-
 function TurnOnTooltip(spa) {
     hoverDiv = document.getElementById("hoverDiv");
     // console.log('Mouse entered the div');
     hoverDiv.style.display = 'block';
-    hoverDiv.innerHTML = spa.innerHTML;
+    if(spa != null){
+        hoverDiv.innerHTML = spa.innerHTML;
+    }
+ 
 }
 
 function TurnOffTooltip() {
     hoverDiv = document.getElementById("hoverDiv");
+
+    
     //console.log('Mouse left the div');
     hoverDiv.style.display = 'none';
 }
@@ -1141,6 +1197,18 @@ function getNormalizedPosition(event) {
 
 function updateHoverDivPosition(event) {
 
+   const settings = getUserSettings();
+
+   var offset = 0;
+   if(settings.tooltipselectable){
+   hoverDiv.setAttribute("Style", "pointer-events: all;");
+
+  
+   }else{
+    hoverDiv.setAttribute("Style", "pointer-events: none;");
+    offset = 10;
+   }
+  
     var normalizedPos = getNormalizedPosition(event);
     const mouseX = event.clientX;
     const mouseY = event.clientY;
@@ -1149,15 +1217,15 @@ function updateHoverDivPosition(event) {
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
     if (normalizedPos.x > 0.8) {
-        hoverDiv.style.left = (mouseX - hoverDiv.getBoundingClientRect().width - 10 + scrollLeft) + 'px';
+        hoverDiv.style.left = (mouseX - hoverDiv.getBoundingClientRect().width - offset + scrollLeft) + 'px';
     } else {
-        hoverDiv.style.left = (mouseX + 10 + scrollLeft) + 'px';
+        hoverDiv.style.left = (mouseX + offset + scrollLeft) + 'px';
     }
 
     if (normalizedPos.y > 0.8) {
-        hoverDiv.style.top = (mouseY - hoverDiv.getBoundingClientRect().height - 10 + scrollTop) + 'px';
+        hoverDiv.style.top = (mouseY - hoverDiv.getBoundingClientRect().height - offset + scrollTop) + 'px';
     } else {
-        hoverDiv.style.top = (mouseY + 10 + scrollTop) + 'px';
+        hoverDiv.style.top = (mouseY + offset + scrollTop) + 'px';
     }
 
 
@@ -3333,6 +3401,13 @@ function addTooltipListeners(tooltip, span) {
     tooltip.addEventListener('mouseleave', function () {
         TurnOffTooltip();
     });
+}
+
+function removeToolTipListeners(tooltip){
+    tooltip.removeEventListener('mouseenter', tooltip);
+
+    tooltip.removeEventListener('mouseleave', tooltip);
+
 }
 
 

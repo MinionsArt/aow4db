@@ -8,8 +8,6 @@
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Faction.js"></script>
     <script type="text/javascript" language="javascript" src="/aow4db/Data/Search.js"></script>
 
-
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
     <script>
@@ -19,9 +17,7 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'G-CC3NE8PT7K');
-
         /* let savedHtmlContent;
          fetch('EN.html')
              .then(response => response.text())
@@ -33,31 +29,20 @@
              .catch(error => console.error(error));*/
 
     </script>
-
-
     <template id="unit_card_template">
         <div class="unit_card" id="unitCard">
-
             <div class="unit_image_holder">
                 <div class="productionCost">
-
-
                     <p id="productioncost">8 <gold></gold>
                     </p>
                 </div>
-
                 <div class="medals">
                     <button type="button" class="collapsibleLevelup"><img src="/aow4db/Icons/Text/xp.png" height="20 " style="top:4px ; position:relative"> MEDALS</button>
                     <div class="contentLevelup">
                         <div id="levelup">Level Up Info goes here</div>
-
                     </div>
-
                     <div class="unit_stat_icon">
-
-
                     </div>
-
                 </div>
 
                 <div class="unit_image_holder">
@@ -81,38 +66,18 @@
     max-height: 400px;
                                                        padding:0px;
                                                        border-width: 0px;
-                                                       
-    overflow-y: scroll;
+                                                       overflow-y: scroll;
     width:150px;">
                         <div id="enchantHolder"></div>
-
                     </div>
-                    <!-- <div class="unit_types" style="
-    position: absolute;
-    top: -3px;
-    left: 133px;
-    right: 131px;
-    max-height: 400px;
-    width:150px;">
-                        <button id="enchantButton">Enchant</button>
-                        <div id="enchantHolder"></div>
-                    </div> -->
-                    <div class="unit_types" id="activeEnchants" style="
-    
+                    <div class="unit_types" id="activeEnchants" style="  
     position: absolute;
     top: 67px;
     width: 80px;
     height: auto;
     right: -54px;">
-
                     </div>
-
-
                 </div>
-
-
-
-
             </div>
             <div class="unit_name">
 
@@ -154,16 +119,12 @@
                 </div>
                 <div id="unitabholder"></div>
             </div>
-
         </div>
-
     </template>
 
     <template id="structure_card_template">
         <div class="mod_card">
-
             <div class="structure_image_holder">
-
                 <div style="
           display: grid;
     grid-template-columns: auto auto;
@@ -173,43 +134,18 @@
     align-items: stretch;
     justify-items: center;">
                     <p class="mod_name" id="modname"></p>
-
                     <p style="padding-left: 10px;font-size: 13px" id="modtier"></p>
-
-
                 </div>
-                <p style="position:absolute;bottom:5px; right:5px;" id="modcost">
-
-
-
-                </p>
-
+                <p style="position:absolute;bottom:5px; right:5px;" id="modcost"></p>
                 <div style="width: 150px;position: absolute;left: -162px;top: 10px;">
-
-
-
-
-
                     <p style="font-size: 13px" id="originTome">
-
-
-
                     </p>
                     <img id="originTomeIcon" height="100px">
-
-
                 </div>
                 <div style="width: 100px; float:left">
                     <img class="mod_image" id="modicon" src="/aow4db/Icons/Text/accuracy.png">
-
-
-
                 </div>
-
                 <img class="preview_image" id="structurepreview" src="">
-
-
-
                 <div style="float:left">
                     <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
                         <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
@@ -217,12 +153,6 @@
                 </div>
                 <div style="clear:both"></div>
                 <div id="affectUnitTypes" style=" float:right; display: grid;grid-template-columns: 200px  200px; font-size: 12px"></div>
-
-
-
-
-
-
             </div>
         </div>
     </template>
@@ -242,36 +172,13 @@
                         <p class="abilityLineSlot" style="padding-left: 10px;font-size: 13px" id="modupkeep"></p>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
                 <div style="width: 150px;position: absolute;left: -162px;top: 10px;">
-
-
-
-
-
-                    <p style="font-size: 13px" id="originTome">
-
-
-
-                    </p>
+                    <p style="font-size: 13px" id="originTome"></p>
                     <img id="originTomeIcon" height="100px">
-
 
                 </div>
                 <div style="width: 100px; float:left; padding-top: 15px">
                     <img class="mod_image" id="modicon" src="">
-
-
-
                 </div>
 
                 <div style="float:left">
@@ -280,13 +187,6 @@
                     </p>
                 </div>
                 <div id="affectUnitTypes" style=" float:right; display: grid;grid-template-columns: 200px  200px; font-size: 12px"></div>
-
-
-
-
-
-
-
             </div>
         </div>
     </template>
@@ -306,72 +206,31 @@
                         <p class="abilityLineSlot" style="padding-left: 10px;font-size: 13px" id="modupkeep"></p>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
                 <div style="width: 150px;position: absolute;left: -162px;top: 10px;">
-
-
-
-
-
-                    <p style="font-size: 13px" id="originTome">
-
-
-
-                    </p>
+                    <p style="font-size: 13px" id="originTome"></p>
                     <img id="originTomeIcon" height="100px">
-
-
                 </div>
                 <div style="width: 100px; float:left; padding-top: 15px">
                     <img class="mod_image" id="modicon" src="">
-
-
-
                 </div>
-
                 <div style="position: relative; left: -98px;float: left;">
                     <p class="mod_description" id="moddescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor> <br><br>
                         <abilityred>This Mod can only be applied to non-Mechanical units that have Land Movement. </abilityred>
                     </p>
                 </div>
                 <div id="affectUnitTypes" style=" float:right; display: grid;grid-template-columns: 200px  200px; font-size: 12px"></div>
-
-
-
-
-
-
-
             </div>
         </div>
     </template>
 
     <template id="tome_card_template">
         <div class="tome_card">
-
-
-
-
             <p class="tome_name" id="tomename">Tome of Evocation</p>
-
             <p style="text-align: center; font-size: 12px; max-width: 900px" id="tomedescription">By grounding itself, the unit gains Stagger Resistance and +5 <arcResistance></arcResistance> resistance <br> Additionally, this mod grants the unit +1 <armor></armor>
             </p>
-
             <div style="width : 150px; float:left">
                 <img class="tome_image" id="tomeicon" src="/aow4db/Icons/TomeIcons/barbarian.png">
-
-
             </div>
-
             <div style="
     display: grid;
     grid-template-columns: 500px 500px;
@@ -388,7 +247,6 @@
                 <div class="InitialBonus">
                     INITIAL BONUS
                     <div id="initialBonusList" style="display: grid;grid-template-columns: 200px; font-size: 15px"></div>
-
                 </div>
 
             </div>
@@ -396,24 +254,20 @@
         <div style="clear: both"></div>
         <div id="tome_unlocks" style="display: grid; grid-template-columns: auto auto;
     justify-content: center; width: auto">
-
         </div>
-
     </template>
-
-
 
     <meta charset="UTF-8">
 
 </head>
 <title>Age of Wonders 4 Database</title>
 <main>
+    <div style="color:white; font-size: 12px">Settings<br>
+        Selectable Tooltips: <input type="checkbox" id="tooltipCheckbox" onclick="CheckBoxTooltips()"></div>
     <div class="header-img">
         <div class="hero-text">
             Age of Wonders 4
             Database
-
-
         </div>
         <div class="hero-text">
             <img src="/aow4db/Icons/Interface/empireAshesfull.png" width="400px">
@@ -426,7 +280,6 @@
 
 <body>
     <ul id='menu'>
-
         <li><a class='prett' href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="40px">Units</a>
             <ul class='menus'>
                 <li class="has-submenu"><a class='prett' style="color:burlywood" href='#'><img style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/CultureUnitsIcon.png" width="20px">Culture ▸</a>
