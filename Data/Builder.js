@@ -1199,7 +1199,7 @@ function updateHoverDivPosition(event) {
 
    const settings = getUserSettings();
 
-   var offset = 0;
+   var offset = 2;
    if(settings.tooltipselectable){
    hoverDiv.setAttribute("Style", "pointer-events: all;");
 
@@ -3395,7 +3395,10 @@ function showUnit(a) {
 function addTooltipListeners(tooltip, span) {
     tooltip.addEventListener('mouseenter', function (event) {
         TurnOnTooltip(span);
-        updateHoverDivPosition(event);
+        if(tooltip != hoverDiv){
+            updateHoverDivPosition(event);
+        }
+        
     });
 
     tooltip.addEventListener('mouseleave', function () {
