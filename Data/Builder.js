@@ -114,7 +114,7 @@ async function CheckData() {
        // Example usage
 
 const storedSettings = getUserSettings();
-if(storedSettings === undefined){
+if(storedSettings === null){
 
     setUserSettings({ tooltipselectable: false, fontSize: '16px' });
 } else{
