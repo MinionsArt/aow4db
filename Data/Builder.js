@@ -1170,9 +1170,6 @@ function TurnOnTooltip(spa) {
 
 function TurnOffTooltip() {
     hoverDiv = document.getElementById("hoverDiv");
-
-    
-    //console.log('Mouse left the div');
     hoverDiv.style.display = 'none';
 }
 
