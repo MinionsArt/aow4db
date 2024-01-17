@@ -4123,7 +4123,7 @@ function GetDamageReductionPercentage(number, additionalNumber) {
 
 function addLevelUpInfo(units, a, holder) {
     var levelup = holder.querySelectorAll('div#levelup')[0];
-
+    levelup.innerHTML = "";
     evolveTarget = units.evolve_target;
 
     if (units.tier === 1) {
