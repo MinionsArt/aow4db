@@ -10,17 +10,15 @@
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
-                GetAllData();
+                CheckData();
             });
 
 
         });
 
-        async function CheckData() {
-            if (jsonSiegeProjects === undefined) {
-                await GetAllData();
-                rememberSearch();
-            }
+        function HandlePage() {
+            console.log("handling");
+            rememberSearch();
         }
 
     </script>
