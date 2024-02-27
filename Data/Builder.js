@@ -4631,12 +4631,12 @@ function showTome(a, div) {
                 var allAffinity = "";
                 for (i in affinitiesdual) {
                     var affinities = affinitiesdual[i].split(" ");
-                    allAffinity += affinities[0];
+                    allAffinity += affinities[0] + affinities[1];
 
                 }
+               
 
-
-                descriptionDiv.innerHTML = "Tier " + romanize(jsonTomes[j].tier) + " " + allAffinity + " " + "<br>" + description;
+                descriptionDiv.innerHTML = "Tier " + romanize(jsonTomes[j].tier) + " - " + allAffinity + " " + "<br>" + description;
             } else {
                 descriptionDiv.innerHTML = description;
             }
