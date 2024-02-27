@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        var unitarray = ["spirit_tracker", "protector", "primal_darter", "primal_charger", "animist", "ancestral_warden"];
+
+
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                CheckData();
+            });
+        });
+
+        function HandlePage() {
+            SetButtonsAndDivs(unitarray, undefined, "unit");
+            SetLevelUpStuff();
+            SetUpCombatEnc();
+        }
+    </script>
+
+
+    <title>Age of Wonders 4 Database - Primal Units</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+
+
+    <div class="textblocktitle">
+        <img src="/aow4db/Icons/Text/primal.png" height="40px"> Primal Culture Units <img src="/aow4db/Icons/Text/primal.png" height="40px">
+
+    </div>
+    <div style="display:flex; justify-content: space-evenly;">
+        <div style="
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    position: relative;
+    font-size: 12px;
+    padding: 10px;
+    padding-top: 15px;
+    max-width: 360px;"> Note: Primal units did not export correctly because of the subcultures, looking for a solution
+            <br><br>
+            In the meantime, here is the missing information:<br><br>
+            All units gain their respective primal spirit communion, and the Animist will gain Summon (Primal Spirit) and it's main attack will have a different damage type<br><br>
+        </div>
+        <div style="
+    color: white;
+    text-align: center;
+    margin-right: auto;
+    position: relative;
+    font-size: 12px;
+    padding: 10px;
+    padding-top: 15px;
+    max-width: 360px;">
+            <button type="button" class="collapsible"> Mire Crocodile:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/mire_crocodile2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/mire_crocodile.png"></div>
+            <br>
+            <button type="button" class="collapsible"> Storm Crow:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/storm_crow2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/storm_crow.png"></div>
+
+            <br>
+            <button type="button" class="collapsible"> Glacial Mammoth:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/glacial_mammoth2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/glacial_mammoth.png"></div>
+            <br>
+            <button type="button" class="collapsible"> Ash Sabertooth:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/ash_sabertooth2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/ash_sabertooth.png"></div>
+            <br>
+            <button type="button" class="collapsible"> Dune Serpent:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/dune_serpent2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/dune_serpent.png"></div>
+            <br>
+            <button type="button" class="collapsible"> Sylvan Wolf:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/sylvan_wolf2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/sylvan_wolf.png"></div>
+            <br>
+            <button type="button" class="collapsible"> Tunneling Spider:</button>
+            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/tunneling_spider2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/tunneling_spider.png"></div>
+
+        </div>
+    </div>
+
+    <div class="w3-container">
+        <div id="buttonHolder" class="w3-bar w3-black">
+
+        </div>
+        <div id="dataHolder" style="margin-top:-250px">
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+</body></html>
+<footer>
+    <br>
+    <br>
+</footer>

@@ -143,6 +143,7 @@ function SetRandomStart(overwriteParameter) {
                         if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
                             if (randomEntry.group_name === "ADAPTATION") {
                                 hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
+
                                 if (!hasAdaptionGroup) {
                                     currentFormTraitList.push(randomEntry);
                                 }
@@ -161,6 +162,10 @@ function SetRandomStart(overwriteParameter) {
 
                     break;
                 case "Culture":
+                    hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION')
+                    while (hasAdaptionGroup && randomEntry.name.indexOf("Primal") != -1) {
+                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                    }
                     currentCulture = randomEntry;
                     break;
 
@@ -437,7 +442,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     // newDivButton.append(spa);
 
     addTooltipListeners(newDivButton, spa);
-   
+
 
 }
 
@@ -503,7 +508,7 @@ function SetTomePathInfo(button, origin) {
 
     // create mouseover
     spa = document.createElement("SPAN");
-  
+
     spa.setAttribute("style", "margin-left:113px");
 
     spa.innerHTML = "<p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + origin.name.toUpperCase() + "</p>";
@@ -1036,7 +1041,7 @@ function SetButtonInfo(button, origin, type) {
 
     }
     addTooltipListeners(button, spa);
-  
+
 
     // button.append(spa);
 }
@@ -1359,11 +1364,19 @@ function incompatibleCheck(type, origin) {
         if (type === "Culture") {
 
             var i = "";
+            var j = "";
             for (i in origin.incompatible) {
 
                 if (origin.incompatible[i].name === currentSociety1.name || origin.incompatible[i].name === currentSociety2.name) {
                     incompatibleWithSetup = true;
                 }
+                for(j in currentFormTraitList){
+                    if(currentFormTraitList[j].name.indexOf(origin.incompatible[i].name) != -1)
+                  
+                        incompatibleWithSetup = true;
+                   
+                }
+               
             }
 
         }
@@ -1424,6 +1437,14 @@ function incompatibleCheck(type, origin) {
                 incompatibleWithSetup = true;
             }
 
+            // check if its primal culture
+            if (currentCulture.name.indexOf("Primal") != -1) {
+                if (multiSetup.includes("Primal")) {
+                    incompatibleWithSetup = false;
+                }
+            }
+
+
             if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
                 // console.log(splitOrigins);
                 // console.log(currentCulture.name + " " + splitOrigins[1]);
@@ -1435,6 +1456,13 @@ function incompatibleCheck(type, origin) {
             if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
 
                 incompatibleWithSetup = true;
+            }
+
+            if (currentCulture.name.indexOf("Primal") != -1) {
+                if (splitOrigins[0].includes("Primal")) {
+                    incompatibleWithSetup = false;
+                }
+
             }
         }
     }
@@ -1534,7 +1562,8 @@ function toggleArrayEntry(array, entry) {
         if (entry.group_name === "ADAPTATION") {
             var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
             //console.log(hasAdaptionGroup);
-            if (hasAdaptionGroup) {
+            // already has adaption or already has primal culture
+            if (hasAdaptionGroup || currentCulture.name.indexOf("Primal") != -1) {
 
 
             } else {
@@ -1793,5 +1822,3 @@ function hexToDecimal(hex) {
 function RebuildFromParam(code) {
     reversLookUp(code);
 }
-
-

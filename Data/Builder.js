@@ -2,22 +2,24 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get('sort');
 var currentView = "";
 
-function CheckBoxTooltips(){
+function CheckBoxTooltips() {
     var checkboxTooltip = document.getElementById("tooltipCheckbox");
 
-    if(checkboxTooltip.checked === true){
+    if (checkboxTooltip.checked === true) {
         addTooltipListeners(hoverDiv, null);
-    }else{
+    } else {
         removeToolTipListeners(hoverDiv);
     }
-    updateUserSettings({tooltipselectable : checkboxTooltip.checked});
+    updateUserSettings({
+        tooltipselectable: checkboxTooltip.checked
+    });
 }
 
 // Set user settings
 function setUserSettings(settings) {
-   
-        localStorage.setItem('userSettings', JSON.stringify(settings));
-   
+
+    localStorage.setItem('userSettings', JSON.stringify(settings));
+
 }
 
 
@@ -27,7 +29,10 @@ function updateUserSettings(updatedSettings) {
     const currentSettings = getUserSettings();
     if (currentSettings) {
 
-        const newSettings = { ...currentSettings, ...updatedSettings };
+        const newSettings = {
+            ...currentSettings,
+            ...updatedSettings
+        };
         setUserSettings(newSettings);
     }
 }
@@ -56,7 +61,7 @@ var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, json
     jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits, jsonBuilderLookUp;
 
 async function GetAllData() {
- 
+
     const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
         '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json',
         '/aow4db/Data/CombatEnchantments.json', '/aow4db/Data/WorldStructures.json', '/aow4db/Data/EnchantmentTables.json', '/aow4db/Data/SpawnTables.json',
@@ -111,23 +116,26 @@ async function GetAllData() {
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
         await GetAllData();
-       // Example usage
+        // Example usage
 
-const storedSettings = getUserSettings();
-if(storedSettings === null){
+        const storedSettings = getUserSettings();
+        if (storedSettings === null) {
 
-    setUserSettings({ tooltipselectable: false, fontSize: '16px' });
-} else{
-    var checkboxTooltip = document.getElementById("tooltipCheckbox");
-    console.log(storedSettings.tooltipselectable);
-    checkboxTooltip.checked = storedSettings.tooltipselectable;
+            setUserSettings({
+                tooltipselectable: false,
+                fontSize: '16px'
+            });
+        } else {
+            var checkboxTooltip = document.getElementById("tooltipCheckbox");
+            console.log(storedSettings.tooltipselectable);
+            checkboxTooltip.checked = storedSettings.tooltipselectable;
 
-    if(checkboxTooltip.checked === true){
-        addTooltipListeners(hoverDiv, null);
-    }else{
-        removeToolTipListeners(hoverDiv);
-    }
-}
+            if (checkboxTooltip.checked === true) {
+                addTooltipListeners(hoverDiv, null);
+            } else {
+                removeToolTipListeners(hoverDiv);
+            }
+        }
 
         HandlePage();
     }
@@ -140,10 +148,11 @@ var feudalCultureUnits = ["scout", "peasant_pikeman", "archer", "bannerman", "de
 var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
 var mysticCultureUnits = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellbreaker"];
 var reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magelock", "dragoon", "magelock_cannon"];
+var primalCultureUnits = ["spirit_tracker", "protector", "primal_darter", "primal_charger", "animist", "ancestral_warden"];
 
-var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker", "dragoon"];
+var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker", "dragoon", "spirit_tracker"];
 
-var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer", "afflictor"];
+var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer", "afflictor", "stormbringer"];
 
 
 
@@ -160,7 +169,7 @@ function GetUnitTierAndName(id) {
 }
 
 function CheckIfFormUnit(id) {
-    if (MountedSpecialList.includes(id) || highCultureUnits.includes(id) || barbarianCultureUnits.includes(id) || darkCultureUnits.includes(id) || feudalCultureUnits.includes(id) || industriousCultureUnits.includes(id) || mysticCultureUnits.includes(id) || reaverCultureUnits.includes(id) || extraFormUnitsList.includes(id)) {
+    if (MountedSpecialList.includes(id) || highCultureUnits.includes(id) || barbarianCultureUnits.includes(id) || darkCultureUnits.includes(id) || feudalCultureUnits.includes(id) || industriousCultureUnits.includes(id) || mysticCultureUnits.includes(id) || reaverCultureUnits.includes(id) || primalCultureUnits.includes(id) || extraFormUnitsList.includes(id)) {
         if (id !== "observer" && id != "magelock_cannon") {
             return true;
         }
@@ -932,6 +941,8 @@ function addAbilityslot(a, holder, list, enchant) {
             var k = "";
             var p = "";
             var t = "";
+
+           
             for (p = 0; p < list.length; p++) {
 
 
@@ -1001,8 +1012,14 @@ function addAbilityslot(a, holder, list, enchant) {
                                 if (jsonEnchantments[k].requisites[1].type.indexOf("*") != -1) {
                                     if (combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1 || combinedReq.indexOf(jsonEnchantments[k].requisites[1].type.split("*")[1]) != -1) {
                                         if (abilityDam != "") {
-
-                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
+                                            if(abilityType != "<repeatingaction></repeatingaction>"){
+                                                // double damage
+                                                var doubled = doubleNumbers(jsonEnchantments[k].damage_change);
+                                                abilityDam = combineDamageStrings(abilityDam, doubled);
+                                            } else{
+abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
+                                            }
+                                            
                                         }
 
 
@@ -1012,7 +1029,13 @@ function addAbilityslot(a, holder, list, enchant) {
                                     if (combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1 && combinedReq.indexOf(jsonEnchantments[k].requisites[1].type) != -1) {
                                         if (abilityDam != "") {
 
-                                            abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
+                                            if(abilityType != "<repeatingaction></repeatingaction>"){
+                                                // double damage
+                                                var doubled = doubleNumbers(jsonEnchantments[k].damage_change);
+                                                abilityDam = combineDamageStrings(abilityDam, doubled);
+                                            } else{
+abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
+                                            }
                                         }
 
 
@@ -1026,7 +1049,13 @@ function addAbilityslot(a, holder, list, enchant) {
                                 if (combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1) {
                                     if (abilityDam != "") {
 
-                                        abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
+                                        if(abilityType != "<repeatingaction></repeatingaction>"){
+                                            // double damage
+                                            var doubled = doubleNumbers(jsonEnchantments[k].damage_change);
+                                                abilityDam = combineDamageStrings(abilityDam, doubled);
+                                        } else{
+abilityDam = combineDamageStrings(abilityDam, jsonEnchantments[k].damage_change);
+                                        }
                                     }
 
 
@@ -1158,14 +1187,29 @@ function addAbilityslot(a, holder, list, enchant) {
 
 }
 
+function doubleNumbers(inputString) {
+    // Regular expression to match numbers
+    var regex = /\b\d+\b/g;
+
+    // Replace each matched number with its double
+    var result = inputString.replace(regex, function(match) {
+        // Convert the matched number to an integer and double it
+        var doubledNumber = parseInt(match) * 2;
+        // Return the doubled number as a string
+        return doubledNumber.toString();
+    });
+
+    return result;
+}
+
 function TurnOnTooltip(spa) {
     hoverDiv = document.getElementById("hoverDiv");
     // console.log('Mouse entered the div');
     hoverDiv.style.display = 'block';
-    if(spa != null){
+    if (spa != null) {
         hoverDiv.innerHTML = spa.innerHTML;
     }
- 
+
 }
 
 function TurnOffTooltip() {
@@ -1194,18 +1238,18 @@ function getNormalizedPosition(event) {
 
 function updateHoverDivPosition(event) {
 
-   const settings = getUserSettings();
+    const settings = getUserSettings();
 
-   var offset = 2;
-   if(settings.tooltipselectable){
-   hoverDiv.setAttribute("Style", "pointer-events: all;");
+    var offset = 2;
+    if (settings.tooltipselectable) {
+        hoverDiv.setAttribute("Style", "pointer-events: all;");
 
-  
-   }else{
-    hoverDiv.setAttribute("Style", "pointer-events: none;");
-    offset = 10;
-   }
-  
+
+    } else {
+        hoverDiv.setAttribute("Style", "pointer-events: none;");
+        offset = 10;
+    }
+
     var normalizedPos = getNormalizedPosition(event);
     const mouseX = event.clientX;
     const mouseY = event.clientY;
@@ -1580,11 +1624,11 @@ function CreateUniquePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) 
 
 function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
     var spa = document.createElement("SPAN");
-  
+
     spa.innerHTML = "<div class=\"abilityHighLighter\"><img style=\"float:left; height:30px; width:30px\" src=\"/aow4db/Icons/Abilities/" + abilityIcon + ".png\"><p style=\"color: #d7c297;>" + "<span style=\"font-size=20px;\">" + abilityName.toUpperCase() + "</p>" +
-      "</div>"+  "<hr>" + abilityDescr;
-    
-       // abilityHighlighter.appendChild(spa);
+        "</div>" + "<hr>" + abilityDescr;
+
+    // abilityHighlighter.appendChild(spa);
 
     return spa;
 }
@@ -2093,22 +2137,27 @@ function SetUpSpawnTable() {
 }
 
 function SetUpCombatEnc() {
+    // Get all collapsible elements
+    var collapsibles = document.getElementsByClassName("collapsible");
 
+    // Iterate over each collapsible element
+    for (const collapsible of collapsibles) {
+        // Attach event listener to each collapsible
+        collapsible.addEventListener("click", function() {
+            // Toggle the "active" class on the current collapsible
+            this.classList.toggle("active");
 
-    var coll = document.getElementsByClassName("collapsible");
-    var content = document.getElementsByClassName("combatEnchantment");
-    var j = "";
-    for (j in content) {
-        coll[j].classList.toggle("active");
-        //  var content = this.nextElementSibling;
-        if (content[j].style.display === "grid") {
-            content[j].style.display = "none";
-        } else {
-            content[j].style.display = "grid";
+            // Get the next sibling element (which should be the content)
+            var contentElement = this.nextElementSibling;
 
-        }
+            // Toggle the display style of the content element
+            if (contentElement.style.display === "grid") {
+                contentElement.style.display = "none";
+            } else {
+                contentElement.style.display = "grid";
+            }
+        });
     }
-
 }
 
 
@@ -2612,7 +2661,7 @@ function findSkillsWithArgument(signature, argumentType) {
     if (signature === "") {
         for (j in jsonHeroSkills) {
             if ('category_name' in jsonHeroSkills[j]) {
-                if (jsonHeroSkills[j].category_name.indexOf(argumentType) !== -1) {
+                if (jsonHeroSkills[j].category_name.indexOf(argumentType) !== -1 && jsonHeroSkills[j].group_name != 'Pantheon Hero Skills') {
                     if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
                         finalCheckedList.push(jsonHeroSkills[j]);
                     }
@@ -2625,11 +2674,33 @@ function findSkillsWithArgument(signature, argumentType) {
 
 
         }
-    } else {
+    } else if (signature === "sig") {
 
         for (j in jsonHeroSkills) {
             if ('type' in jsonHeroSkills[j]) {
                 if (jsonHeroSkills[j].type === 'signature') {
+                    if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
+                        finalCheckedList.push(jsonHeroSkills[j]);
+                    }
+                }
+
+            }
+        }
+    } else if (signature === "pantheon") {
+        for (j in jsonHeroSkills) {
+            if ('type' in jsonHeroSkills[j]) {
+                if (jsonHeroSkills[j].group_name === 'Pantheon Hero Skills' && jsonHeroSkills[j].name.indexOf("Ascension") != -1) {
+                    if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
+                        finalCheckedList.push(jsonHeroSkills[j]);
+                    }
+                }
+
+            }
+        }
+    } else if (signature === "pantheon_weapon") {
+        for (j in jsonHeroSkills) {
+            if ('type' in jsonHeroSkills[j]) {
+                if (jsonHeroSkills[j].group_name === 'Pantheon Hero Skills' && jsonHeroSkills[j].name.indexOf("Ascension") == -1) {
                     if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
                         finalCheckedList.push(jsonHeroSkills[j]);
                     }
@@ -2739,7 +2810,7 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
                 }
 
                 if (argumentaffinity === "Culture") {
-                    if (jsonTomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Reaver".toUpperCase()) !== -1) {
+                    if (jsonTomes[i].name.toUpperCase().indexOf("Mystic".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Primal".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Feudal".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Barbarian".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Dark".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1 || jsonTomes[i].name.toUpperCase().indexOf("Reaver".toUpperCase()) !== -1) {
                         for (k in jsonTomes[i].skills) {
                             listMod.push(jsonTomes[i].skills[k].spell_slug);
 
@@ -3015,8 +3086,8 @@ function showUnit(a) {
             crit.innerHTML = "+" + 0 + "%";
 
             var armorspan = document.createElement("span");
-            armorspan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase \">Defense</span><br><span style=\"font-size: 14px;\">Defense reduces physical damage.Damage Reduction: "+
-            "<br>Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].armor + "</span> <defense> </defense>)" + "</p></span>";
+            armorspan.innerHTML = "<span style=\"color:burlywood;text-transform: uppercase \">Defense</span><br><span style=\"font-size: 14px;\">Defense reduces physical damage.Damage Reduction: " +
+                "<br>Physical :  <span style=\"color:white;\">" + GetDamageReductionPercentage(jsonUnits[i].armor) + "</span> ( From <span style=\"color:white;\">" + jsonUnits[i].armor + "</span> <defense> </defense>)" + "</p></span>";
             var armorTooltip = unitCard.querySelectorAll('div#armor_tt')[0];
 
             addTooltipListeners(armorTooltip, armorspan);
@@ -3024,13 +3095,13 @@ function showUnit(a) {
             armor = unitCard.querySelectorAll('p#armor')[0];
             armor.innerHTML = jsonUnits[i].armor;
 
-          
+
 
             shield = unitCard.querySelectorAll('p#resistence')[0];
             var shieldValue = jsonUnits[i].resistance;
             shield.innerHTML = shieldValue;
 
-          
+
 
             mp = unitCard.querySelectorAll('p#mp')[0];
             mp.innerHTML = jsonUnits[i].mp;
@@ -3038,7 +3109,7 @@ function showUnit(a) {
             tier = unitCard.querySelectorAll('p#tier')[0];
             //
 
-           
+
             prodcost = unitCard.querySelectorAll('p#productioncost')[0];
             prodcost.innerHTML = "Cost: " + jsonUnits[i].cost;
             var additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
@@ -3392,10 +3463,10 @@ function showUnit(a) {
 function addTooltipListeners(tooltip, span) {
     tooltip.addEventListener('mouseenter', function (event) {
         TurnOnTooltip(span);
-        if(tooltip != hoverDiv){
+        if (tooltip != hoverDiv) {
             updateHoverDivPosition(event);
         }
-        
+
     });
 
     tooltip.addEventListener('mouseleave', function () {
@@ -3403,7 +3474,7 @@ function addTooltipListeners(tooltip, span) {
     });
 }
 
-function removeToolTipListeners(tooltip){
+function removeToolTipListeners(tooltip) {
     tooltip.removeEventListener('mouseenter', tooltip);
 
     tooltip.removeEventListener('mouseleave', tooltip);
@@ -3416,13 +3487,20 @@ function canBeSummoned(id) {
     var i = "";
     var k = "";
     var summonInf = new Array();
+    // check for duplicates
+    var spellIDChecker = new Array();
     for (i in jsonSpells) {
         if ('summoned_units' in jsonSpells[i]) {
 
             for (k in jsonSpells[i].summoned_units) {
 
                 if (jsonSpells[i].summoned_units[k].slug === id) {
-                    summonInf.push(jsonSpells[i]);
+
+                    if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
+                        summonInf.push(jsonSpells[i]);
+                        spellIDChecker.push(jsonSpells[i].id)
+                    }
+
 
                 }
             }
@@ -3772,11 +3850,18 @@ function CheckIfInCulture(unitID) {
     if (reaverCultureUnits.includes(unitID)) {
         culture = "reaver";
     }
+    if (primalCultureUnits.includes(unitID)) {
+        culture = "primal";
+    }
     return culture;
 }
 
 
 function showAffinitySymbols(tomes) {
+
+    if (tomes.affinities === undefined) {
+        return "";
+    }
     var affinitiesdual = tomes.affinities.split(", ");
 
     var allAffinity = "";
@@ -3795,13 +3880,16 @@ function showAffinitySymbols(tomes) {
 
 function CheckIfInSpells(unitID, unitName) {
     var spell = new Array();
+    // check for duplicates
+    var spellIDChecker = new Array();
     for (i in jsonSpells) {
 
         if ('summoned_units' in jsonSpells[i]) {
             for (k in jsonSpells[i].summoned_units) {
                 if (unitID === jsonSpells[i].summoned_units[k].slug) {
-                    if (!isInArray(spell, jsonSpells[i])) {
+                    if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
                         spell.push(jsonSpells[i]);
+                        spellIDChecker.push(jsonSpells[i].id)
                     }
 
                 }
@@ -3809,9 +3897,10 @@ function CheckIfInSpells(unitID, unitName) {
 
         }
         if (jsonSpells[i].description.indexOf(">" + unitName) != -1) {
-            if (!isInArray(spell, jsonSpells[i])) {
+            if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
 
                 spell.push(jsonSpells[i]);
+                spellIDChecker.push(jsonSpells[i].id)
             }
 
 
@@ -4162,32 +4251,32 @@ function addLevelUpInfo(units, a, holder) {
     levelText = "<p style=\"  color: #aadb9c;\"> <medal_elite></medal_elite> Elite - " + (xpNeeded * 3) + "<xp></xp></p>";
     levelup.append(NewLevelUpEntry(levelText));
 
-  
-    
-   
-  
+
+
+
+
     for (i in units.medal_rewards_4) {
 
         if (units.medal_rewards_4[i].slug.indexOf("medal") != -1) {
-           levelText = "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
+            levelText = "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
 
-           var test = NewLevelUpEntry(levelText);
-           var spanText = document.createElement("span");
-           spanText.innerHTML = lookupSlugDescription(units.medal_rewards_4[i].slug);
-           addTooltipListeners(test, spanText);
-           levelup.append(test);
+            var test = NewLevelUpEntry(levelText);
+            var spanText = document.createElement("span");
+            spanText.innerHTML = lookupSlugDescription(units.medal_rewards_4[i].slug);
+            addTooltipListeners(test, spanText);
+            levelup.append(test);
         } else {
             levelText = "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug) + "</bullet>";
             levelup.append(NewLevelUpEntry(levelText));
-            
+
         }
 
     }
     if (evolveTarget != undefined) {
         levelText = "<p style=\"  color: #aadb9c;\"> <medal_champion></medal_champion> Champion - " + (xpNeeded * 4) + "<xp></xp></p>";
         levelup.append(NewLevelUpEntry(levelText));
-       
-      
+
+
         levelText = "<bullet> Evolves into <hyperlink> <a href=\"/aow4db/HTML/Units.html?unit=" + evolveTarget + "\" target=\"_blank\">" + lookupUnit(evolveTarget) + "</a></hyperlink></bullet>";
         levelup.append(NewLevelUpEntry(levelText));
     }
@@ -4206,9 +4295,9 @@ function addLevelUpInfo(units, a, holder) {
         levelup.append(NewLevelUpEntry(levelText));
         for (let i = 0; i < units.medal_rewards_6.length; i++) {
             if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
-                
+
                 levelText = "<p class=\"levelup_medal\">" + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
-               
+
 
                 var test = NewLevelUpEntry(levelText);
                 var spanText = document.createElement("span");
@@ -4229,7 +4318,7 @@ function addLevelUpInfo(units, a, holder) {
 
 }
 
-function NewLevelUpEntry(spanEntry){
+function NewLevelUpEntry(spanEntry) {
     var newEntryDiv = document.createElement("div");
     newEntryDiv.innerHTML = spanEntry;
     return newEntryDiv;
@@ -4372,6 +4461,12 @@ function showSiegeProject(id, showOrigin) {
             tomeOrigin.setAttribute("id", "originTome" + id);
             var tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + id);
+
+            var upkeep = document.getElementById("modupkeep");
+
+            upkeep.innerHTML = "";
+            upkeep.setAttribute("id", "modupkeep" + id);
+
             found = true;
 
 
@@ -4431,6 +4526,10 @@ function showSiegeProject(id, showOrigin) {
             var tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + id);
 
+            var upkeep = document.getElementById("modupkeep");
+
+            upkeep.innerHTML = "";
+            upkeep.setAttribute("id", "modupkeep" + id);
 
             found = true;
 
@@ -4440,6 +4539,62 @@ function showSiegeProject(id, showOrigin) {
     }
 
 
+
+}
+
+function showEmpireUpgrade(skill, showOrigin) {
+
+    var modName, description, cost, type, tier, i = "";
+
+
+
+
+    var upkeep = document.getElementById("modupkeep");
+
+    upkeep.innerHTML = "";
+    upkeep.setAttribute("id", "modupkeep" + skill.name);
+
+
+
+
+
+    modName = document.getElementById("modname");
+    modName.innerHTML = skill.name.toUpperCase();
+    modName.setAttribute("id", "modname" + skill.name);
+    descriptionDiv = document.getElementById("moddescription");
+    description = "<hr>" + skill.description;
+
+
+
+    imagelink = document.getElementById("modicon");
+
+
+    unitTypesDiv = document.getElementById("affectUnitTypes");
+    unitTypesDiv.setAttribute("id", "affectUnitTypes" + skill.name);
+
+    var imageLinkName = skill.name.replaceAll(" ", "_").toLowerCase();
+    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
+    imagelink.setAttribute("id", "modicon" + skill.name);
+    descriptionDiv.innerHTML = description;
+    descriptionDiv.setAttribute("id", "modicon" + skill.name);
+
+    tier = document.getElementById("modtier");
+
+    tier.innerHTML = "<empire></empire> Empire Upgrade";
+
+    tier.setAttribute("id", "modtier" + skill.name);
+
+    cost = document.getElementById("modcost");
+    cost.innerHTML = "";
+    cost.setAttribute("id", "modcost" + skill.name);
+
+
+
+
+    var tomeOrigin = document.getElementById("originTome");
+    tomeOrigin.setAttribute("id", "originTome" + skill.name);
+    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    tomeOriginIcon.setAttribute("id", "originTomeIcon" + skill.name);
 
 }
 
@@ -4535,16 +4690,17 @@ function showTome(a, div) {
 
                     var heroSkillIconAndDesc = GetHeroSkillDescription(jsonTomes[j].hero_skills[l].slug);
 
+                    if(heroSkillIconAndDesc != undefined){
+
+                  var spa2;
                     // its a ability
                     if (heroSkillIconAndDesc[0] != "") {
 
-                        var spa2 = GetAbilityInfo(heroSkillIconAndDesc[0]);
+                         spa2 = GetAbilityInfo(heroSkillIconAndDesc[0]);
                     } else {
                         // its a passive
-                        var spa2 = CreatePassiveSlotToolTip(heroSkillIconAndDesc[1].icon, heroSkillIconAndDesc[1].name, heroSkillIconAndDesc[1].description);
+                         spa2 = CreatePassiveSlotToolTip(heroSkillIconAndDesc[1].icon, heroSkillIconAndDesc[1].name, heroSkillIconAndDesc[1].description);
                     }
-
-
                     var title = document.createElement("SPAN");
                     title.innerHTML = heroSkillIconAndDesc[1].name.toUpperCase();
                     title.setAttribute("style", "color:#deb887 ");
@@ -4553,12 +4709,16 @@ function showTome(a, div) {
                     title.innerHTML += "<br>" + heroSkillIconAndDesc[1].category_name + " - " + heroSkillIconAndDesc[1].level_name + "<br><br>";
 
                     spa2.prepend(title);
+                       //div.appendChild(spa2);
+                       addTooltipListeners(div, spa2);
+                       unitTypesDiv.appendChild(div);
+                }
+                  
 
 
-                    //div.appendChild(spa2);
-                    addTooltipListeners(div, spa2);
+                 
 
-                    unitTypesDiv.appendChild(div);
+                 
                 }
 
             }
@@ -4646,6 +4806,14 @@ function showTome(a, div) {
                     skillHolder.appendChild(iDiv);
                     showStructure(jsonTomes[j].skills[k].upgrade_slug, false);
                 }
+                if ('type' in jsonTomes[j].skills[k]) {
+                    if (jsonTomes[j].skills[k].type == "<hyperlink>Empire Bonus</hyperlink>") {
+                        var iDiv = spell_card_template.content.cloneNode(true);
+                        skillHolder.appendChild(iDiv);
+                        showEmpireUpgrade(jsonTomes[j].skills[k], false);
+                    }
+
+                }
                 if (jsonTomes[j].skills[k].type.indexOf("Siege") != -1) {
                     var iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
@@ -4699,6 +4867,7 @@ function ShowPossibleEnchantments(evt) {
     var list = findEnchantmentsSpells();
 
     var compatibleList = new Array();
+    var exclusionList = new Array();
     var i = "";
 
     // check if culture
@@ -4707,39 +4876,46 @@ function ShowPossibleEnchantments(evt) {
     for (i = 0; i < list.length; i++) {
         var j = "";
 
-        if (list[i].id === "primal_mark") {
+        if (list[i].id === "brutal_mark") {
             if (culture == "barbarian") {
-                break;
+                exclusionList.push(list[i]);
+
             }
         }
         if (list[i].id === "signet_of_knighthood") {
             if (culture == "feudal") {
-                break;
+                exclusionList.push(list[i]);
             }
         }
         if (list[i].id === "scroll_of_attunement") {
             if (culture == "mystic") {
-                break;
+                exclusionList.push(list[i]);
             }
         }
         if (list[i].id === "brand_of_wrath") {
             if (culture == "dark") {
-                break;
+                exclusionList.push(list[i]);
             }
         }
         if (list[i].id === "dormant_enchantment") {
             if (culture == "high") {
-                break;
+                exclusionList.push(list[i]);
             }
         }
         if (list[i].id === "rune_of_industry") {
             if (culture == "industrious") {
-                break;
+                exclusionList.push(list[i]);
             }
         }
         if (list[i].id === "engraving_of_focus") {
             if (culture == "reaver") {
-                break;
+                exclusionList.push(list[i]);
+            }
+        }
+        if (culture == "primal") {
+            if (list[i].id === "crocodile_primal_communion" || list[i].id === "wolf_primal_communion" || list[i].id === "sabertooth_primal_communion" || list[i].id === "crow_primal_communion" || list[i].id === "mammoth_primal_communion" || list[i].id === "spider_primal_communion" || list[i].id === "serpent_primal_communion") {
+
+                exclusionList.push(list[i]);
             }
         }
         for (j = 0; j < list[i].enchantment_requisites.length; j++) {
@@ -4749,7 +4925,7 @@ function ShowPossibleEnchantments(evt) {
             if (type[1] != undefined) {
 
                 if (type[1] === unitType) {
-                    if (!isInArray(activeEnchantList, list[i]))
+                    if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
                         compatibleList.push(list[i]);
                 } else {
                     var passives = "";
@@ -4757,7 +4933,7 @@ function ShowPossibleEnchantments(evt) {
 
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === type[1].toLowerCase()) {
 
-                            if (!isInArray(activeEnchantList, list[i]))
+                            if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
                                 compatibleList.push(list[i]);
                         }
 
@@ -4771,7 +4947,7 @@ function ShowPossibleEnchantments(evt) {
 
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === "evolve") {
 
-                            if (!isInArray(activeEnchantList, list[i]))
+                            if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
                                 compatibleList.push(list[i]);
                         }
 
@@ -4779,7 +4955,7 @@ function ShowPossibleEnchantments(evt) {
 
                 } else if (requisite === "Tier I") {
                     if (evt.currentTarget.unitData.tier == 1) {
-                        if (!isInArray(activeEnchantList, list[i]))
+                        if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
                             compatibleList.push(list[i]);
                     }
                 } else {
@@ -4796,7 +4972,7 @@ function ShowPossibleEnchantments(evt) {
 
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === requisite.toLowerCase()) {
 
-                            if (!isInArray(activeEnchantList, list[i]))
+                            if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
                                 compatibleList.push(list[i]);
                         }
 
@@ -5082,6 +5258,8 @@ function showStructure(a, showOrigin) {
 
 
             modName.setAttribute("id", "modname" + a);
+
+            
             modName.className = "mod_name";
             descriptionDiv = document.getElementById("moddescription");
             description = "<hr>";
@@ -5190,12 +5368,17 @@ function showStructure(a, showOrigin) {
                 unitTypesDiv.append(div);
             }
 
+            var upkeep = document.getElementById("modupkeep");
+
+            // upkeep.innerHTML = "";
+            // upkeep.setAttribute("id", "modupkeep" + a.id);
+
 
             found = true;
         }
     }
     if (found === false) {
-        console.log("Couldn't find mod: " + a);
+        console.log("Couldn't find structure: " + a);
     }
 }
 
@@ -5214,8 +5397,17 @@ function showWorldStructure(a) {
                 nameString = nameString.replace("<br>", "");
             }
             modName.innerHTML = nameString;
+            if ('DLC' in jsonWorldStructures[j]) {
+                var newDivForMount = AddDLCTag(jsonWorldStructures[j].DLC);
+                modName.append(newDivForMount);
+
+
+            }
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
+
+           
+
             descriptionDiv = document.getElementById("moddescription");
             descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
             description = "";
@@ -5613,6 +5805,12 @@ function showUnitUnlock(a) {
 
     cost.setAttribute("id", "modcost" + a);
 
+    var upkeep = document.getElementById("modupkeep");
+
+    upkeep.innerHTML = "";
+    upkeep.setAttribute("id", "modupkeep" + a.unit_slug);
+
+
 
     found = true;
 
@@ -5718,8 +5916,13 @@ function showSpell(a, showOrigin) {
             imagelink = document.getElementById("modicon");
 
 
-
-            imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a + ".png");
+            var imageLinkName = "";
+            if(jsonSpells[j].icon != undefined){
+                imageLinkName = jsonSpells[j].icon;
+            }else{
+                imageLinkName = jsonSpells[j].id;
+            }
+            imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
             imagelink.setAttribute("id", "modicon" + a);
             var tierSpell = backtraceTomeOriginAndTier(jsonSpells[j].id, showOrigin);
 
@@ -5801,6 +6004,8 @@ function ConvertSpawnTable(input) {
 }
 
 function FindUnitsWithSecondaryPassive(trait) {
+
+    // need to find a way to check tiers as well
     var unitsList = new Array();
     for (i in jsonUnits) {
         for (j in jsonUnits[i].secondary_passives) {
@@ -5814,27 +6019,35 @@ function FindUnitsWithSecondaryPassive(trait) {
         }
     }
 
-
+    // Sort the units list by tier
     unitsList.sort((a, b) => a.tier - b.tier);
 
     // Define the maximum length of each subarray
     const maxLength = 10;
 
-    // Split the array into smaller arrays by age
-    var splitArrays = new Array();
-    var currentArray = new Array();
+    // Split the array into smaller arrays by tier
+    var splitArrays = [];
+    var currentArray = [];
 
+    var skip = false;
     if (unitsList.length > maxLength) {
-
-
         unitsList.forEach((item, index) => {
             currentArray.push(item);
 
-            // Check if it's the last item or the age changes
-            if (
-                index === unitsList.length - 1 ||
-                unitsList[index + 1].tier !== item.tier
-            ) {
+            // Check if it's the last item or the tier changes
+            if (index === unitsList.length - 1 || unitsList[index + 1].tier !== item.tier) {
+                // Check if there's a gap of more than 1 in the tier
+                if (index < unitsList.length - 1 && unitsList[index + 1].tier - item.tier > 1) {
+                    // Insert "empty" entry
+                    const gap = unitsList[index + 1].tier - item.tier;
+                    for (let i = 1; i < gap; i++) {
+
+                        // currentArray.push("empty");
+                        splitArrays.push(currentArray);
+                        currentArray = [];
+                    }
+                }
+
                 splitArrays.push(currentArray);
                 currentArray = [];
             }
@@ -6071,6 +6284,9 @@ function showTraitSetup(currentTrait) {
         } else if (currentTrait.DLC == "DRAGONLORDS ") {
             imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
             spa.innerHTML = "Part of the Dragon Dawn DLC";
+        } else if (currentTrait.DLC == "PRIMALFURY ") {
+            imag.setAttribute("src", "/aow4db/Icons/Text/PrimalFury.png");
+            spa.innerHTML = "Part of the Primal Fury DLC";
         }
 
 
@@ -6609,7 +6825,10 @@ function AddDLCTag(dlcname) {
         imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
         spa.innerHTML = "Part of the Empires & Ashes DLC";
     }
-
+    if (dlcname == "PRIMALFURY ") {
+        imag.setAttribute("src", "/aow4db/Icons/Text/PrimalFury.png");
+        spa.innerHTML = "Part of the Primal Fury DLC";
+    }
     newDivForMount.appendChild(imag);
 
     addTooltipListeners(newDivForMount, spa);

@@ -37,7 +37,7 @@
             "town_hall_i_town_center:5:1:hero&happiness&unitprod&food&production",
             "throne:6:1:garrison&research&influence&gold&mana:throne",
 
-            "heros_lodge:13:1:hero:chosen_destroyers",
+            // "heros_lodge:13:1:hero:chosen_destroyers",
             // B
 
 
@@ -52,15 +52,17 @@
             "workers_farmstead:14:2:food&production:industrious",
             "workshop:15:2:production&unitprod",
             "evocators_abode:16:2:production&unitprod&mana:mystic",
-            "artisan_workshop:17:2:production&unitprod&happiness:high",
-            "shipyard:19:2:gold",
+            "woodcarvers_workshop:17:2:draft&production&food:primal",
+            "artisan_workshop:18:2:production&unitprod&happiness:high",
+
+            "shipyard:20:2:gold",
 
 
             // all the tome buildings
-            "luxury_markets:21:2:na:materium",
-            "artisan_fortification:22:2:garrison:materium",
-            "fortified_crucible:23:2:garrison:materium",
-            "reagent_refinery:24:2:gold:materium",
+            "luxury_markets:22:2:na:materium",
+            "artisan_fortification:23:2:garrison:materium",
+            "fortified_crucible:24:2:garrison:materium",
+            "reagent_refinery:25:2:gold:materium",
 
 
             // C
@@ -77,15 +79,16 @@
             "grand_mill:14:3:food&production:industrious",
             "stonemason:15:3:production",
             "stone_conjurer:16:3:production&mana:mystic",
-            "blacksmith:17:3:unitprod",
-            "lightforge:18:3:draft&gold:high",
-            "fishmonger:19:3:food",
+            "stonestele:17:3:production&food:primal",
+            "blacksmith:18:3:unitprod",
+            "lightforge:19:3:draft&gold:high",
+            "fishmonger:20:3:food",
 
             // all the tome buildings
-            "tower_of_true_sight:21:3:na:astral",
-            "astral_trade_relay:22:3:gold:astral",
-            "throne_of_mirrors:23:3:garrison:astral",
-            "temple_of_fertility:24:3:food&unitprod:nature",
+            "tower_of_true_sight:22:3:na:astral",
+            "astral_trade_relay:23:3:gold:astral",
+            "throne_of_mirrors:24:3:garrison:astral",
+            "temple_of_fertility:25:3:food&unitprod:nature",
 
             // D
 
@@ -96,14 +99,14 @@
             "academy:11:4:research",
             "estate_hall:13:4:food",
             "masonic_hall:15:4:production",
-            "armory:17:4:unitprod",
-            "grand_wharf:19:4:production",
+            "armory:18:4:unitprod",
+            "grand_wharf:20:4:production",
 
             // all the tome buildins
-            "tribunal:21:4:happiness&research:order",
-            "convent:22:4:research&mana:order",
-            "barons_palace:23:4:gold&happiness:order",
-            "monument_of_supremacy:24:4:happiness&unitprod:order",
+            "tribunal:22:4:happiness&research:order",
+            "convent:23:4:research&mana:order",
+            "barons_palace:24:4:gold&happiness:order",
+            "monument_of_supremacy:25:4:happiness&unitprod:order",
 
 
 
@@ -117,13 +120,13 @@
             "scholars_guild:11:5:research",
             "farmers_guild:13:5:food",
             "workers_guild:15:5:production",
-            "smiths_guild:17:5:unitprod",
-            "seafarers_guild:19:5:food&production&unitprod&gold",
+            "smiths_guild:18:5:unitprod",
+            "seafarers_guild:20:5:food&production&unitprod&gold",
 
             // all the tome buildins
 
-            "temple_of_the_exalted:21:5:mana&happiness:order",
-            "material_refinery:22:5:gold&knowledge:nature",
+            "temple_of_the_exalted:22:5:mana&happiness:order",
+            "material_refinery:23:5:gold&knowledge:nature",
 
 
             // F
@@ -143,7 +146,7 @@
             "tavern:11:7:happiness",
             "interrogation_dungeon:12:7:research:dark",
 
-            "heros_forum:13:7:hero:chosen_destroyers",
+            // "heros_forum:13:7:hero:chosen_destroyers",
 
             "wizard_tower_foundation:15:7:influence:throne",
 
@@ -172,7 +175,7 @@
 
             "stone_walls:1:10:garrison",
 
-            "heros_inn:13:10:hero:chosen_destroyers",
+            // "heros_inn:13:10:hero:chosen_destroyers",
 
             "wizard_tower_apex:15:10:influence:throne",
             "wizard_tower_channeling_chamber:16:10:caststrategic&optactical:throne",
@@ -200,6 +203,7 @@
             "solar_nexus:9:10:happiness:high",
             "overlords_tower:10:10:unitprod&mana:dark",
             "extraction_nexus:11:10:gold&mana:reaver",
+            "shrine_to_the_spirits:12:10:gold&mana:primal",
 
 
             "wizard_tower_arcane_observatory:15:11:na:throne",
@@ -223,7 +227,7 @@
             //M
             "catapult_towers:2:13:garrison",
             "beacon_of_valor:3:13:garrison",
-            "heros_quarters:13:13:hero:chosen_destroyers",
+            //"heros_quarters:13:13:hero:chosen_destroyers",
 
 
 
@@ -363,6 +367,14 @@
                     newNodeBackground.style.backgroundSize = "80px";
                     newNodeBackground.style.backgroundColor = "#111";
                     spa.innerHTML = "<span style=\"color:  yellow;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                }
+                if (splits[4] == "primal") {
+                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/primal.png\")";
+                    newNodeBackground.style.backgroundRepeat = "no-repeat";
+                    newNodeBackground.style.backgroundPositionX = "140px";
+                    newNodeBackground.style.backgroundSize = "80px";
+                    newNodeBackground.style.backgroundColor = "#111";
+                    spa.innerHTML = "<span style=\"color:  green;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
                 }
 
                 if (splits[4] == "throne") {
@@ -629,9 +641,9 @@
         function SetCategories() {
             CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2035);
             CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1573);
-            CreateCategory("Tome Buildings", 1245, 520, "#482e8530", 287, 2365);
+            CreateCategory("Tome Buildings", 1245, 520, "#482e8530", 287, 2485);
             CreateCategory("Fortifications", 3470, 476, "#4c4b4b57", 622, 0);
-            CreateCategory("Basic Income Buildings", 1245, 1700, "#8eae6f2b", 287, 595);
+            CreateCategory("Basic Income Buildings", 1245, 1825, "#8eae6f2b", 287, 595);
             CreateCategory("TII City", 260, 728, "#b48d522b", 1586, 485);
             CreateCategory("TIII City", 260, 728, "#b48d522b", 2549, 485);
             CreateCategory("TIV City", 260, 728, "#b48d522b", 3509, 485);
@@ -680,7 +692,6 @@
 
 
         }
-
     </script>
 
 
@@ -706,9 +717,7 @@
 
 
 
-</body>
-
-</html>
+</body></html>
 <style>
     .branch-line {
         height: 4px;

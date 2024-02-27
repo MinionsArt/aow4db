@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        var unitarray = ["mistling:tome_of_fey_mists", "stormbringer:tome_of_the_stormborne"];
+
+
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                CheckData();
+            });
+        });
+
+        function HandlePage() {
+            showUnitsWithIcon(unitarray);
+            SetLevelUpStuff();
+            SetCollapsibleStuff();
+
+        }
+    </script>
+
+
+    <title>Age of Wonders 4 Database - Primal Fury Tome Units</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        <img src="/aow4db/Icons/Interface/dual2.png" height="40px"> Primal Fury Tome Units <img src="/aow4db/Icons/Interface/dual2.png" height="40px">
+    </div>
+
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
+
+        </div>
+        <div id="dataHolder">
+        </div>
+
+
+    </div>
+
+
+
+
+</body></html>
+<footer>
+    <br>
+    <br>
+</footer>

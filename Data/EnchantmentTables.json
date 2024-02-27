@@ -29,11 +29,11 @@
         ]
     },
     {
-        "id": "primal_mark",
-        "name": "Primal Mark",
+        "id": "brutal_mark",
+        "name": "Brutal Mark",
         "passive": [
             {
-                "slug": "primal_strike"
+                "slug": "savage_strike"
             }
         ]
     },
@@ -171,7 +171,7 @@
         "name": "Disrupting Blades",
         "attack": [
             {
-                "description": "A base 60% chance of inflicting Disrupted for 2 <turn></turn> <hyperlink>Turns</hyperlink>.",
+                "description": "A base 60% chance of inflicting Disrupted for 2 <turn></turn> <hyperlink>Turns</hyperlink>. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Melee",
                 "type2": "Base"
             }
@@ -191,7 +191,7 @@
         ],
         "attack": [
             {
-                "description": "A base 30% chance of inflicting Burning.",
+                "description": "A base 30% chance of inflicting Burning. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Physical Ranged",
                 "type2": "Base"
             }
@@ -202,7 +202,7 @@
         "name": "Focus of Devastation ",
         "attack": [
             {
-                "description": "Demolisher, which allows them to destroy Fortified obstacles.</bullet><bullet>A base 60% chance of canceling Defense Modes.",
+                "description": "Demolisher, which allows them to destroy Fortified obstacles.</bullet><bullet>A base 60% chance of canceling Defense Modes. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Magic"
             }
         ]
@@ -222,7 +222,7 @@
         "name": "Havoc Magic",
         "attack": [
             {
-                "description": "Base 30% chance of inflicting a random negative status effect.",
+                "description": "Base 30% chance of inflicting a random negative status effect. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Magic",
                 "type2": "Base"
             }
@@ -303,7 +303,7 @@
         "name": "Inquisitor's Mark ",
         "attack": [
             {
-                "description": "Base 30% chance of inflicting Condemned until end of combat, reducing enemy Status Resistance.</bullet><bullet>Base 30% chance of inflicting Weakened, reducing enemy damage.</bullet><bullet>Base 30% chance of inflicting Slowed, reducing enemy movement and preventing retaliation attacks.",
+                "description": "Base 30% chance of inflicting Condemned until end of combat, reducing enemy Status Resistance.</bullet><bullet>Base 30% chance of inflicting Weakened, reducing enemy damage.</bullet><bullet>Base 30% chance of inflicting Slowed, reducing enemy movement and preventing retaliation attacks. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Base"
             }
         ]
@@ -332,7 +332,7 @@
         ],
         "attack": [
             {
-                "description": "+20% damage against Poisoned or Decaying units..",
+                "description": "+20% damage against Poisoned or Decaying units.",
                 "type": "Melee",
                 "type2": "Base"
             }
@@ -380,7 +380,7 @@
         ],
         "attack": [
             {
-                "description": "Gain base 30% chance of inflicting Poisoned, a damage-over-time effect.",
+                "description": "Gain base 30% chance of inflicting Poisoned, a damage-over-time effect. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Physical Ranged",
                 "type2": "Base"
             }
@@ -400,7 +400,7 @@
         ],
         "attack": [
             {
-                "description": "Gain base 60% chance of inflicting Decaying, a damage-over-time effect that prevents enemies from healing.",
+                "description": "Gain base 60% chance of inflicting Decaying, a damage-over-time effect that prevents enemies from healing. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Physical Ranged",
                 "type2": "*Magic"
             }
@@ -458,6 +458,22 @@
                 "range": 1,
                 "description": "+1 Range",
                 "type": "Physical Ranged"
+            }
+        ]
+    },
+    {
+        "id": "purging_arrows",
+        "name": "Purging Arrows",
+        "attack": [
+            {
+                "description": "+10% damage against Magic Origin units.",
+                "type": "Physical Ranged",
+                "type2": "Base"
+            },
+            {
+                "description": "60% chance to remove 1 buff. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
+                "type": "Physical Ranged",
+                "type2": "Base"
             }
         ]
     },
@@ -589,7 +605,7 @@
         ],
         "attack": [
             {
-                "description": "Gain base 30% chance of inflicting Electrified, a damage-over-time effect.",
+                "description": "Gain base 30% chance of inflicting Electrified, a damage-over-time effect. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Magic",
                 "type2": "Base"
             }
@@ -656,7 +672,7 @@
         ],
         "attack": [
             {
-                "description": "A base 60% chance of inflicting Slowed.",
+                "description": "A base 60% chance of inflicting Slowed. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Physical Ranged",
                 "type2": "Base"
             }
@@ -687,7 +703,7 @@
         "name": "Necrotic Magic",
         "attack": [
             {
-                "description": "A base 60% chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health.",
+                "description": "A base 60% chance of inflicting Decaying, a damage-over-time effect that prevents the unit from gaining health. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
                 "type": "Magic"
             }
         ]
@@ -697,24 +713,24 @@
         "name": "Soulbinders",
         "attack": [
             {
-                "description": "Base 90% chance of inflicting Soulbound on Base attacks, increasing the <soul></soul>Soul gain when the target is killed.",
+                "description": "Base 90% chance of inflicting Soulbound on Base attacks, increasing the <soul></soul>Soul gain when the target is killed. ",
                 "type": "Base"
             }
         ],
         "passive_unique": [
             {
-                "description": "+10% damage against units with Soulbound."
+                "description": "+20% damage against units with Soulbound."
             }
         ]
     },
     {
         "id": "true_death_magic",
         "name": "True Death Magic",
-        "attack": [
+
+        "passive_unique": [
             {
-                "description": "A base 30% chance of inflicting Marked for Death, which kills the affected unit at the end of the effect's duration.",
-                "type": "Magic",
-                "type2": "Base"
+                "description": "The Curse of the Reaper ability, which has a chance to instantly kill the target.",
+                "overwriteName": "Curse of the Reaper"
             }
         ]
     },
@@ -760,6 +776,78 @@
         "passive_unique": [
             {
                 "description": "Overcharge, granting a Construct unit Overcharged."
+            }
+        ]
+    },
+    {
+        "id": "staves_of_mist",
+        "name": "Staves of Mist",
+        "passive": [
+            {
+                "slug": "fey_blessing_fey_blessing"
+            }
+        ]
+    },
+    {
+        "id": "crocodile_primal_communion",
+        "name": "Crocodile Primal Communion",
+        "passive": [
+            {
+                "slug": "crocodile_primal_communion"
+            }
+        ]
+    },
+    {
+        "id": "sabertooth_primal_communion",
+        "name": "Sabertooth Primal Communion",
+        "passive": [
+            {
+                "slug": "sabertooth_primal_communion"
+            }
+        ]
+    },
+    {
+        "id": "spider_primal_communion",
+        "name": "Spider Primal Communion",
+        "passive": [
+            {
+                "slug": "spider_primal_communion"
+            }
+        ]
+    },
+    {
+        "id": "crow_primal_communion",
+        "name": "Crow Primal Communion",
+        "passive": [
+            {
+                "slug": "crow_primal_communion"
+            }
+        ]
+    },
+    {
+        "id": "serpent_primal_communion",
+        "name": "Serpent Primal Communion",
+        "passive": [
+            {
+                "slug": "serpent_primal_communion"
+            }
+        ]
+    },
+    {
+        "id": "wolf_primal_communion",
+        "name": "Wolf Primal Communion",
+        "passive": [
+            {
+                "slug": "wolf_primal_communion"
+            }
+        ]
+    },
+    {
+        "id": "mammoth_primal_communion",
+        "name": "Mammoth Primal Communion",
+        "passive": [
+            {
+                "slug": "mammoth_primal_communion"
             }
         ]
     }
