@@ -157,14 +157,32 @@ var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necroman
 
 
 function GetUnitTierAndName(id) {
+
+    var keepgoing = false;
     for (i in jsonUnits) {
         if (id === jsonUnits[i].id) {
+            if(jsonUnits[i].primary_passives.length > 0){
+                if(jsonUnits[i].primary_passives[0].slug == "deprecated_unit!"){
+                    // skip if deprecated
+                    keepgoing = false;
+                    
+                } else{
+                    keepgoing = true;
+                }
+            }  else{
+                keepgoing = true;
+            }
+           if(keepgoing){
+
+           
+            
             var name = jsonUnits[i].name;
             if (MountedSpecialList.includes(id) || CheckIfOptionalCavalry(id)) {
                 name = jsonUnits[i].name + " <mountSpecial></mountSpecial>";
             }
             return "<p style=\"width: 160px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;text-transform: none;\">" + getUnitTypeTag(jsonUnits[i].secondary_passives) + " " + name + "</p>" + "<p style=\"text-align:right; color:white;top:-16px; position:relative; \">" + romanize(jsonUnits[i].tier) + "</p>";
         }
+    }
     }
 }
 
@@ -3009,8 +3027,23 @@ function showModsFromList(list, divId) {
 function showUnit(a) {
     var hp, mp, shield, armor, descr, j, k, x, y, z, unitNameDiv, unitRole, icon, imagelink, prodcost, tier, research, building, reward, evolveTarget, name = "";
     var found = false;
+    var keepgoing = true;
     for (i in jsonUnits) {
         if (a === jsonUnits[i].id) {
+            if(jsonUnits[i].primary_passives.length > 0){
+            if(jsonUnits[i].primary_passives[0].slug == "deprecated_unit!"){
+                // skip if deprecated
+                keepgoing = false;
+                
+            } else{
+                keepgoing = true;
+            }
+        }  else{
+            keepgoing = true;
+        }
+        if(keepgoing){
+
+       
             var unitCard = document.getElementById("unitCard");
             if (unitCard == undefined) {
                 unitCard = document.getElementById("unitCard" + a);
@@ -3457,6 +3490,7 @@ function showUnit(a) {
             backtrackUnitOrigins(a, name, unitCard);
             found = true;
             // break;
+        }
         }
 
     }
