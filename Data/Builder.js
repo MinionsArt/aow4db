@@ -58,14 +58,14 @@ function fetchJsonFiles(filePaths) {
     );
 }
 var jsonSiegeProjects, jsonHeroSkills, jsonHeroItems, jsonFactionCreation2, jsonTomes, jsonUnitAbilities, jsonEmpire, jsonSpells, jsonStructureUpgrades, jsonCombatEnchantments,
-    jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits, jsonBuilderLookUp;
+    jsonWorldStructures, jsonEnchantments, jsonSpawnTables, jsonFactionCreation, jsonHeroTraits, jsonBuilderLookUp, jsonExtraAscendedInfo;
 
 async function GetAllData() {
 
     const jsonFilePaths = ['/aow4db/Data/HeroItems.json', '/aow4db/Data/HeroSkills.json', '/aow4db/Data/SiegeProjects.json', '/aow4db/Data/Units.json', '/aow4db/Data/Traits.json',
         '/aow4db/Data/Tomes.json', '/aow4db/Data/Abilities.json', '/aow4db/Data/EmpireProgression.json', '/aow4db/Data/Spells.json', '/aow4db/Data/StructureUpgrades.json',
         '/aow4db/Data/CombatEnchantments.json', '/aow4db/Data/WorldStructures.json', '/aow4db/Data/EnchantmentTables.json', '/aow4db/Data/SpawnTables.json',
-        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json', '/aow4db/Data/BuilderLookup.json'
+        '/aow4db/Data/FactionCreation.json', '/aow4db/Data/HeroTraits.json', '/aow4db/Data/BuilderLookup.json', '/aow4db/Data/AscendedInfo.json'
     ];
     await fetchJsonFiles(jsonFilePaths)
         .then(dataArray => {
@@ -105,6 +105,8 @@ async function GetAllData() {
                     jsonHeroTraits = data;
                 } else if (index == 16) {
                     jsonBuilderLookUp = data;
+                } else if(index == 17){
+                    jsonExtraAscendedInfo = data;
                 }
             });
         })
@@ -6572,9 +6574,12 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
 
-
+    descriptionDiv.setAttribute("id", "moddescription" + a.id);
+    descriptionDiv.innerHTML = "";
 
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
+   
+   
 
     if (a.id === "summon_elemental") {
 
@@ -6630,8 +6635,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
         unitTypesDiv.append(div);
     }
 
-    descriptionDiv.setAttribute("id", "moddescription" + a.id);
-    descriptionDiv.innerHTML = "";
+   
     //type = document.getElementById("modtype");
     //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
     //type.setAttribute("id", "modtype" + a);
@@ -6676,7 +6680,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
 
-
+    
 
     if (a.id.indexOf("_transformation") != -1 || a.id.indexOf("_aspect") != -1) {
 
@@ -6856,11 +6860,23 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
 
                 found = true;
+
+                
                 return;
             }
+
+            
         }
     }
+    for (var j = 0; j < jsonExtraAscendedInfo.length; j++) {
+        
+        if(jsonExtraAscendedInfo[j].id == a.id){
 
+            descriptionDiv.innerHTML += "Tome(s) Researched : " +jsonExtraAscendedInfo[j].description;
+
+        }
+        
+    }
     if (found === false) {
         console.log("Couldn't find skill: " + a.id);
     }
