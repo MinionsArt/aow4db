@@ -2321,10 +2321,14 @@ async function spawnItemCards(list, divID) {
     if (divID === undefined) {
         divID = "item";
     }
+    var j = "";
     var doc = document.getElementById(divID);
     for (var i = 0; i < list.length; i++) {
-        var iDiv = item_card_template.content.cloneNode(true);
-        doc.appendChild(iDiv);
+        
+            var iDiv = item_card_template.content.cloneNode(true);
+            doc.appendChild(iDiv);
+        
+       
     }
 
 }
@@ -2607,9 +2611,11 @@ async function showStructureFromString(string, divID) {
 
 
 async function showHeroSkillFromString(string, divID) {
+  
     await spawnSpellCardSingle(string, divID);
-
     var skill = findHeroSkill(string);
+   
+   
     // check if has description
     if ('description' in skill) {
         showSkill(skill, "", skill.icon, skill.category_name, skill.level_name, skill.group_name);
@@ -6518,34 +6524,153 @@ function showHeroTrait(a) {
 function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) {
     var modName, description, cost, type, tier = "";
     var found = false;
+    var k = "";
+    var j = "";
+
+    modName = document.getElementById("modname");
+                
+    modName.innerHTML = a.name.toUpperCase();
+
+
+    modName.setAttribute("id", "modname" + a.id);
+
+    descriptionDiv = document.getElementById("moddescription");
+
+    unitTypesDiv = document.getElementById("affectUnitTypes");
+
+
+
+    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
+
+    if (a.id === "summon_elemental") {
+
+        descriptionDiv.innerHTML += "<br>Summoned Units:";
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "tide_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("tide_spirit") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "storm_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("storm_spirit") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "magma_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("magma_spirit") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "snow_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("snow_spirit") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "stone_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("stone_spirit") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+    }
+
+    if (a.id === "summon_animal") {
+
+        descriptionDiv.innerHTML += "<br>Summoned Units:";
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "unicorn" + "\" target=\"_blank\">" + GetUnitTierAndName("unicorn") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "nightmare" + "\" target=\"_blank\">" + GetUnitTierAndName("nightmare") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "thunderbird" + "\" target=\"_blank\">" + GetUnitTierAndName("thunderbird") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "goretusk_matriarch" + "\" target=\"_blank\">" + GetUnitTierAndName("goretusk_matriarch") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "caustic_worm" + "\" target=\"_blank\">" + GetUnitTierAndName("caustic_worm") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+    }
+
+
+    if (a.id === "summon_undead") {
+
+        descriptionDiv.innerHTML += "<br>Summoned Units:";
+
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "corrupt_soul" + "\" target=\"_blank\">" + GetUnitTierAndName("corrupt_soul") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+
+        var div = document.createElement("DIV");
+        div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "banshee" + "\" target=\"_blank\">" + GetUnitTierAndName("banshee") + "</a>" + "</bullet>";
+        unitTypesDiv.append(div);
+    }
+
+    descriptionDiv.setAttribute("id", "moddescription" + a.id);
+    descriptionDiv.innerHTML = "";
+    //type = document.getElementById("modtype");
+    //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
+    //type.setAttribute("id", "modtype" + a);
+    tier = document.getElementById("spell_tier");
+    tier.innerHTML = "";
+    if (category != undefined) {
+        tier.innerHTML += "<br>" + category + " - " + level;
+        tier.innerHTML += "<br>" + group_name;
+    }
+    tier.setAttribute("id", "spell_tier" + a.id);
+
+    cost = document.getElementById("modcost");
+    cost.innerHTML = "";
+
+
+    cost.setAttribute("id", "modcost" + a.id);
+
+
+    imagelink = document.getElementById("modicon");
+    if (a.type === "signature") {
+        imagelink.className = "smallerIcon";
+        imagelink.setAttribute("src", "/aow4db/Icons/Abilities/" + icon_slug + ".png");
+        imagelink.setAttribute("id", "modicon" + a.id);
+       // spa.setAttribute("style", "width: 360px");
+
+    } else {
+
+        imagelink.remove();
+    }
+
+
+    var id = FindHeroSkillOrigin(a.id);
+
+    if ('DLC' in a) {
+        var newDivForMount = AddDLCTag(a.DLC);
+        modName.append(newDivForMount);
+    }
+
+    var tomeOrigin = document.getElementById("originTome");
+    tomeOrigin.setAttribute("id", "originTome" + a.id);
+    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
+
+
+
+
+    if (a.id.indexOf("_transformation") != -1 || a.id.indexOf("_aspect") != -1) {
+
+        // get position of button
+
+
+        var newDivForMount = AddDLCTag();
+        modName.append(newDivForMount);
+    }
 
     if (checkInAbilities != "") {
         for (j in jsonUnitAbilities) {
-            if (jsonUnitAbilities[j].slug === a.abilities[0].slug) {
+            for(k in a.abilities){         
+            if (jsonUnitAbilities[j].slug === a.abilities[k].slug) {
                 var abilityName = jsonUnitAbilities[j].name;
-                modName = document.getElementById("modname");
-                modName.innerHTML = a.name.toUpperCase();
+                
+               
 
+                // if (category != undefined) {
+                //     if (category.indexOf("Dragon") != -1) {
 
-                modName.setAttribute("id", "modname" + a.id);
+                //         var newDivForMount = AddDLCTag();
+                //         modName.append(newDivForMount);
+                //     }
+                // }
+               
 
-                if (category != undefined) {
-                    if (category.indexOf("Dragon") != -1) {
-
-                        var newDivForMount = AddDLCTag();
-                        modName.append(newDivForMount);
-                    }
-                }
-                if (a.id.indexOf("_transformation") != -1 || a.id.indexOf("_aspect") != -1) {
-
-                    // get position of button
-
-
-                    var newDivForMount = AddDLCTag();
-                    modName.append(newDivForMount);
-                }
-
-                descriptionDiv = document.getElementById("moddescription");
+                
 
                 //   description = jsonUnitAbilities[j].description;
 
@@ -6618,184 +6743,82 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
                 spa.className = "itemAbility";
                 spa.setAttribute("style", "width:380px");
-                unitTypesDiv = document.getElementById("affectUnitTypes");
+                // unitTypesDiv = document.getElementById("affectUnitTypes");
 
 
 
-                unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
-                descriptionDiv.innerHTML = "";
+                // unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
+                //
                 descriptionDiv.append(spa);
 
 
-                if (a.id === "summon_elemental") {
-
-                    descriptionDiv.innerHTML += "<br>Summoned Units:";
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "tide_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("tide_spirit") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "storm_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("storm_spirit") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "magma_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("magma_spirit") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "snow_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("snow_spirit") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "stone_spirit" + "\" target=\"_blank\">" + GetUnitTierAndName("stone_spirit") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                }
-
-                if (a.id === "summon_animal") {
-
-                    descriptionDiv.innerHTML += "<br>Summoned Units:";
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "unicorn" + "\" target=\"_blank\">" + GetUnitTierAndName("unicorn") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "nightmare" + "\" target=\"_blank\">" + GetUnitTierAndName("nightmare") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "thunderbird" + "\" target=\"_blank\">" + GetUnitTierAndName("thunderbird") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "goretusk_matriarch" + "\" target=\"_blank\">" + GetUnitTierAndName("goretusk_matriarch") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "caustic_worm" + "\" target=\"_blank\">" + GetUnitTierAndName("caustic_worm") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                }
-
-
-                if (a.id === "summon_undead") {
-
-                    descriptionDiv.innerHTML += "<br>Summoned Units:";
-
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "corrupt_soul" + "\" target=\"_blank\">" + GetUnitTierAndName("corrupt_soul") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-
-                    var div = document.createElement("DIV");
-                    div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "banshee" + "\" target=\"_blank\">" + GetUnitTierAndName("banshee") + "</a>" + "</bullet>";
-                    unitTypesDiv.append(div);
-                }
-
-                descriptionDiv.setAttribute("id", "moddescription" + a.id);
-                //type = document.getElementById("modtype");
-                //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
-                //type.setAttribute("id", "modtype" + a);
-                tier = document.getElementById("spell_tier");
-                tier.innerHTML = "";
-                if (category != undefined) {
-                    tier.innerHTML += "<br>" + category + " - " + level;
-                    tier.innerHTML += "<br>" + group_name;
-                }
-                tier.setAttribute("id", "spell_tier" + a.id);
-
-                cost = document.getElementById("modcost");
-                cost.innerHTML = "";
-
-
-                cost.setAttribute("id", "modcost" + a.id);
-
-
-                imagelink = document.getElementById("modicon");
-                if (a.type === "signature") {
-                    imagelink.className = "smallerIcon";
-                    imagelink.setAttribute("src", "/aow4db/Icons/Abilities/" + icon_slug + ".png");
-                    imagelink.setAttribute("id", "modicon" + a.id);
-                    spa.setAttribute("style", "width: 360px");
-
-                } else {
-
-                    imagelink.remove();
-                }
-
-
-                var id = FindHeroSkillOrigin(a.id);
-
-                if ('DLC' in a) {
-                    var newDivForMount = AddDLCTag(a.DLC);
-                    modName.append(newDivForMount);
-                }
-
-                var tomeOrigin = document.getElementById("originTome");
-                tomeOrigin.setAttribute("id", "originTome" + a.id);
-                var tomeOriginIcon = document.getElementById("originTomeIcon");
-                tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
-
-
-
+              
                 found = true;
-                return;
+                
             }
+        }
         }
     } else {
         for (j in jsonHeroSkills) {
             if (jsonHeroSkills[j].id === a.id) {
 
-                modName = document.getElementById("modname");
+                // modName = document.getElementById("modname");
 
-                modName.innerHTML = jsonHeroSkills[j].name.toUpperCase();
-
-
-                modName.setAttribute("id", "modname" + a.id);
-                descriptionDiv = document.getElementById("moddescription");
-
-                description = jsonHeroSkills[j].description;
-
-                unitTypesDiv = document.getElementById("affectUnitTypes");
+                // modName.innerHTML = jsonHeroSkills[j].name.toUpperCase();
 
 
+                // modName.setAttribute("id", "modname" + a.id);
+                // descriptionDiv = document.getElementById("moddescription");
 
-                unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
+                // description = jsonHeroSkills[j].description;
+
+               
 
                 var spa = CreatePassiveSlotToolTip(jsonHeroSkills[j].icon, jsonHeroSkills[j].name, jsonHeroSkills[j].description);
                 spa.className = "itemAbility";
-                descriptionDiv.innerHTML = "";
+                // descriptionDiv.innerHTML = "";
 
                 descriptionDiv.append(spa);
 
-                descriptionDiv.setAttribute("id", "moddescription" + a.id);
+               // descriptionDiv.setAttribute("id", "moddescription" + a.id);
                 //type = document.getElementById("modtype");
                 //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
                 //type.setAttribute("id", "modtype" + a);
-                tier = document.getElementById("spell_tier");
-                tier.innerHTML = "";
-                if (category != undefined) {
-                    tier.innerHTML += "<br>" + category + " - " + level;
-                }
-                tier.setAttribute("id", "spell_tier" + a.id);
+                // tier = document.getElementById("spell_tier");
+                // tier.innerHTML = "";
+                // if (category != undefined) {
+                //     tier.innerHTML += "<br>" + category + " - " + level;
+                // }
+                // tier.setAttribute("id", "spell_tier" + a.id);
 
-                cost = document.getElementById("modcost");
-                cost.innerHTML = "";
-
-
-                cost.setAttribute("id", "modcost" + a.id);
-
-                imagelink = document.getElementById("modicon");
-                var id = FindHeroSkillOrigin(a.id);
-                var tomeOrigin = document.getElementById("originTome");
-                var tomeOriginIcon = document.getElementById("originTomeIcon");
-                tomeOrigin.setAttribute("id", "originTome" + a.id);
-                tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
+                // cost = document.getElementById("modcost");
+                // cost.innerHTML = "";
 
 
-                imagelink.remove();
+             //   cost.setAttribute("id", "modcost" + a.id);
 
-                if (category != undefined) {
-                    if (category.indexOf("Dragon") != -1) {
+                // imagelink = document.getElementById("modicon");
+                // var id = FindHeroSkillOrigin(a.id);
+                // var tomeOrigin = document.getElementById("originTome");
+                // var tomeOriginIcon = document.getElementById("originTomeIcon");
+                // tomeOrigin.setAttribute("id", "originTome" + a.id);
+                // tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
-                        var newDivForMount = AddDLCTag();
-                        modName.append(newDivForMount);
-                    }
-                }
 
-                if ('DLC' in a) {
-                    var newDivForMount = AddDLCTag(a.DLC);
-                    modName.append(newDivForMount);
-                }
+                // imagelink.remove();
+
+                // if (category != undefined) {
+                //     if (category.indexOf("Dragon") != -1) {
+
+                //         var newDivForMount = AddDLCTag();
+                //         modName.append(newDivForMount);
+                //     }
+                // }
+
+                // if ('DLC' in a) {
+                //     var newDivForMount = AddDLCTag(a.DLC);
+                //     modName.append(newDivForMount);
+                // }
 
 
                 found = true;
