@@ -3390,11 +3390,40 @@ function showUnit(a) {
                 addPassiveslot(jsonUnits[i].primary_passives[x].slug, unitTabHolder);
 
                 if (jsonUnits[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
-                    tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75);
+                    if(jsonUnits[i].upkeep.indexOf("influence") != -1){
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75) + "*";
+                    }
+                    else{
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75) + ">*";
+                    }
                     var lowUpkeep = true;
 
                     if (summonInfo.length > 0) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.75);
+                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.75) + ">*";
+
+
+                    }
+
+                }
+
+                if (jsonUnits[i].primary_passives[x].slug.indexOf("high_maintenance") != -1) {
+
+                    if(jsonUnits[i].upkeep.indexOf("influence") != -1){
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 1.5) + "*";
+                    }
+                    else{
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 1.5) + ">*";
+                    }
+                   
+                    var lowUpkeep = true;
+
+                    if (summonInfo.length > 0) {
+                        if(jsonUnits[i].upkeep.indexOf("influence") != -1){
+                            tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 1.5) + "*";
+                        } else{
+                            tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 1.5) + ">*";
+                        }
+                       
 
 
                     }
@@ -3402,11 +3431,21 @@ function showUnit(a) {
                 }
 
                 if (jsonUnits[i].primary_passives[x].slug.indexOf("faithful") != -1) {
-                    tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + "*";
+                    if(jsonUnits[i].upkeep.indexOf("influence") != -1){
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + "*";
+                    }
+                    else{
+                        tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + ">*";
+                    }
+                   
                     var faithfulUpkeep = true;
 
                     if (summonInfo.length > 0) {
-                        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.9) + "*";
+                        if(jsonUnits[i].upkeep.indexOf("influence") != -1){
+                            tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.9) + "*";
+                        } else{
+                            tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.9) + ">*";
+                        }
 
 
 
@@ -4202,8 +4241,9 @@ function ReduceUpkeepPercentage(value, percentage) {
     var reducedUpkeep = Math.round(percentage * parseInt(number[0]));
     var comb = reducedUpkeep + "<" + number[1] + "<" + number[2];
     if (number.length > 2) {
-        comb += "<" + number[3] + "<" + +number[4];
+        comb += "<" + number[3] + "<" + number[4];
     }
+   
     return comb;
 }
 
