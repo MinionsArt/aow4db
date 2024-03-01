@@ -643,7 +643,22 @@ function CheckDepricated(listChecking) {
 }
 
 function depCheck(id) {
-   
+    var p = "";
+    for (p in jsonUnits) {
+        if (jsonUnits[p].id === id) {
+            for (l in jsonUnits[p].primary_passives) {
+                if (jsonUnits[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
+                    if (jsonUnits[p].id != "magma_spirit") {
+                        console.log("true");
+                        return true;
+                    }
+
+                }
+            }
+        }
+
+
+    }
     return false;
 }
 
