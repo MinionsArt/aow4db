@@ -5423,7 +5423,10 @@ function showStructure(a, showOrigin) {
                 div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "goretusk_piglet" + "\" target=\"_blank\">" + GetUnitTierAndName("goretusk_piglet") + "</a>" + "</bullet>";
                 unitTypesDiv.append(div);
                 var div = document.createElement("DIV");
-                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "hunter_spider" + "\" target=\"_blank\">" + GetUnitTierAndName("hunter_spider") + "</a>" + "</bullet>";
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "dread_spider_hatchling" + "\" target=\"_blank\">" + GetUnitTierAndName("dread_spider_hatchling") + "</a>" + "</bullet>";
+                unitTypesDiv.append(div);
+                var div = document.createElement("DIV");
+                div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "vampire_spider_hatchling" + "\" target=\"_blank\">" + GetUnitTierAndName("vampire_spider_hatchling") + "</a>" + "</bullet>";
                 unitTypesDiv.append(div);
                 var div = document.createElement("DIV");
                 div.innerHTML = "<bullet>" + "<a href=\"/aow4db/HTML/Units.html?unit=" + "razorback" + "\" target=\"_blank\">" + GetUnitTierAndName("razorback") + "</a>" + "</bullet>";
