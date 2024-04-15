@@ -552,9 +552,33 @@
                     overwrite = townHall1;
                     SetUpStructureNode(overwrite, splits, type);
                 }
+
+
                 for (i in jsonStructureUpgrades) {
-                    if (jsonStructureUpgrades[i].id === structure) {
-                        SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
+
+                    if (structure == "town_hall_ii_castle") {
+                        if (jsonStructureUpgrades[i].resid == '4282082401405') {
+                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
+
+                        }
+
+                    } else if (structure == "town_hall_iii_citadel") {
+                        if (jsonStructureUpgrades[i].resid == '4282082401410') {
+                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
+
+                        }
+
+                    } else if (structure == "town_hall_iv_grand_estate") {
+                        if (jsonStructureUpgrades[i].resid == '4282082401414') {
+                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
+
+                        }
+
+                    } else {
+                        if (jsonStructureUpgrades[i].id === structure) {
+                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
+                        }
+
 
 
 
