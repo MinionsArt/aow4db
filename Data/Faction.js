@@ -105,8 +105,9 @@ function SetRandomStart(overwriteParameter) {
         listofChoice.push("Tome");
         listofChoice.push("Origin");
         listofChoice.push("Form");
-        listofChoice.push("FormTrait");
+       
         listofChoice.push("Culture");
+        listofChoice.push("FormTrait");
         listofChoice.push("Society1");
         listofChoice.push("Society2");
         listofChoice.push("Loadout");
@@ -133,34 +134,7 @@ function SetRandomStart(overwriteParameter) {
                 case "Form":
                     currentForm = randomEntry;
                     break;
-                case "FormTrait":
-                    currentFormTraitList = [];
-                    currentFormTraitList.push(randomEntry);
-
-
-                    while (getPoints() < 5) {
-                        var randomEntry = GetRandomEntry(listofChoice[j]);
-                        if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
-                            if (randomEntry.group_name === "ADAPTATION") {
-                                hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
-
-                                if (!hasAdaptionGroup) {
-                                    currentFormTraitList.push(randomEntry);
-                                }
-                            } else {
-                                currentFormTraitList.push(randomEntry);
-                            }
-
-
-
-
-                        }
-
-                    }
-
-
-
-                    break;
+               
                 case "Culture":
                     hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION')
                     while (hasAdaptionGroup && randomEntry.name.indexOf("Primal") != -1) {
@@ -168,7 +142,25 @@ function SetRandomStart(overwriteParameter) {
                     }
                     currentCulture = randomEntry;
                     break;
-
+                    case "FormTrait":
+                        currentFormTraitList = [];
+                        currentFormTraitList.push(randomEntry);
+    
+    
+                        while (getPoints() < 5) {
+                            var randomEntry = GetRandomEntry(listofChoice[j]);
+                            if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
+                                if(checkCompatibilityTraits(randomEntry) == true){
+                                    currentFormTraitList.push(randomEntry);
+                                }
+                            
+                            }
+    
+                        }
+    
+    
+    
+                        break;
                 case "Society1":
                     currentSociety1 = randomEntry;
                     break;
@@ -408,7 +400,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     const affinityText = document.createElement("div");
     affinityText.style = "position: relative;left: -3px;top: -80px;";
 
-    console.log(origin);
+    //console.log(origin);
     if ('affinities' in origin) {
 
         affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
@@ -527,23 +519,29 @@ function SetTomePathInfo(button, origin) {
 
 
 function SetupButtons(evt, type) {
-    const rect = evt.target.getBoundingClientRect();
+   // const rect = evt.target.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
 
-    const mouseX = evt.clientX;
-    const mouseY = evt.clientY;
 
+    if(evt != null){
+        const mouseX = evt.clientX;
+        const mouseY = evt.clientY;
+
+        
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
     selectionsHolder.setAttribute("style", "display:block; left:" + (mouseX + 10) + "px; top:" + (mouseY + scrollTop + 10) + "px;");
+    }
+  
+
 
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
     originWrapper.setAttribute("style", " grid-template-columns: repeat(3, 2fr);");
 
-    var originButton = document.getElementById("originButton" + type);
-    // console.log(type);
+   // var originButton = document.getElementById("originButton" + type);
+    //console.log(type);
     var list = [];
 
     // assign current selection
@@ -604,7 +602,8 @@ function SetupButtons(evt, type) {
     var selectionsText = document.getElementById("selections");
     selectionsText.textContent = "Select " + type;
     for (const origin of list) {
-        const originButtonNew = document.createElement("button");
+        var originButtonNew = document.createElement("button");
+      
         if (type === "Symbol") {
 
             originButtonNew.addEventListener("click", () => SelectSymbol(origin));
@@ -617,12 +616,8 @@ function SetupButtons(evt, type) {
             // hook into options thingie
             originButtonNew.className = "list-button";
 
-
-            // if (origin.point_cost > (getPoints() - 5)) {
-            //     originButtonNew.style.color = 'grey';
-            // } else {
-            //     originButtonNew.style.color = 'white';
-            // }
+           // console.log(origin.point_cost + " " + getPoints());
+           
 
 
             if (isInArray(currentFormTraitList, origin)) {
@@ -632,8 +627,14 @@ function SetupButtons(evt, type) {
 
             }
 
+            if (origin.point_cost + (getPoints()) > 5 || checkCompatibilityTraits(origin) == false) {
+                originButtonNew.style.color = 'grey';
+            } else{
+                originButtonNew.style.color = 'white';
+            }
+
             // new button script
-            originButtonNew.addEventListener("click", () => toggleSelection(origin, originButtonNew));
+            originButtonNew.addEventListener("click", () => toggleSelection(origin, originButtonNew, type));
 
             originWrapper.appendChild(originButtonNew);
 
@@ -895,7 +896,7 @@ function duplicateTags(inputString) {
 
 
 
-function SetButtonInfo(button, origin, type) {
+function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
     const image = document.createElement("img");
     image.setAttribute("width", "40");
@@ -914,6 +915,7 @@ function SetButtonInfo(button, origin, type) {
         } else {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
+       
     } else if (type === "Culture" || type === "Origin" || type === "Society1" || type === "Society2" || type === "Form") {
         if (origin.id.startsWith("_")) {
             var iconLink = origin.id;
@@ -964,7 +966,7 @@ function SetButtonInfo(button, origin, type) {
         }
 
 
-
+      
 
         // Append the image and button text to the button element
         button.appendChild(image);
@@ -1471,7 +1473,9 @@ function incompatibleCheck(type, origin) {
 }
 
 
-function toggleSelection(origin, button) {
+function toggleSelection(origin, button, type) {
+ //   console.log("test"+ origin);
+   
     const selectedButtons = document.querySelectorAll('#options-container list-button');
     for (let index = 0; index < selectedButtons.length; index++) {
         selectedButtons[index].classList.remove('selected');
@@ -1486,8 +1490,8 @@ function toggleSelection(origin, button) {
 
     // Uncomment the line below if you want to limit the selection to a specific number (e.g., 2)
     // updateSelectionLimit(origin);
-
-    updateSelectedOptions(origin);
+var exclusionList = new Array();
+    exclusionList = updateSelectedOptions(origin);
 
 
     if (isInArray(currentFormTraitList, origin)) {
@@ -1496,6 +1500,8 @@ function toggleSelection(origin, button) {
     } else {
         button.classList.remove('selected');
     }
+
+    SetupButtons(null, type, exclusionList);
 
 }
 
@@ -1536,6 +1542,8 @@ function updateSelectedOptions(origin) {
 
     }
 
+  
+
 }
 
 // // Uncomment the function below if you want to limit the selection to a specific number (e.g., 2)
@@ -1549,6 +1557,37 @@ function updateSelectedOptions(origin) {
 
 // }
 
+function checkCompatibilityTraits(entry){
+    var canBeAdded = true;
+    if (entry.group_name === "ADAPTATION") {
+        var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
+        //console.log(hasAdaptionGroup);
+        // already has adaption or already has primal culture
+        if (hasAdaptionGroup || currentCulture.name.indexOf("Primal") != -1) {
+
+            canBeAdded = false;
+        } 
+    }
+    else if (entry.group_name === "MOUNT") {
+        var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'MOUNT');
+        //console.log(hasAdaptionGroup);
+        // already has adaption or already has primal culture
+        if (hasAdaptionGroup) {
+            canBeAdded = false;
+
+        }
+    }else if (entry.group_name === "TACTICS") {
+        var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'TACTICS');
+        //console.log(hasAdaptionGroup);
+        // already has adaption or already has primal culture
+        if (hasAdaptionGroup) {
+            canBeAdded = false;
+
+        } 
+    }
+    return canBeAdded;
+}
+
 
 function toggleArrayEntry(array, entry) {
     const index = array.indexOf(entry);
@@ -1558,20 +1597,9 @@ function toggleArrayEntry(array, entry) {
         array.splice(index, 1);
     } else {
         // Entry doesn't exist, add it
-
-        if (entry.group_name === "ADAPTATION") {
-            var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
-            //console.log(hasAdaptionGroup);
-            // already has adaption or already has primal culture
-            if (hasAdaptionGroup || currentCulture.name.indexOf("Primal") != -1) {
-
-
-            } else {
-                array.push(entry);
-            }
-        } else {
-            array.push(entry);
-        }
+if(checkCompatibilityTraits(entry) == true){
+    array.push(entry);
+}
     }
 
 }
