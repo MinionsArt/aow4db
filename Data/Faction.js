@@ -92,7 +92,7 @@ function addOrSubtract(extraAffinity, add) {
 function SetRandomStart(overwriteParameter) {
 
     if (searchKeyword != undefined && !overwriteParameter) {
-        //  console.log("Found" + searchKeyword);
+        console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
     } else {
         document.getElementById("shareLink").value = "";
@@ -105,7 +105,7 @@ function SetRandomStart(overwriteParameter) {
         listofChoice.push("Tome");
         listofChoice.push("Origin");
         listofChoice.push("Form");
-       
+
         listofChoice.push("Culture");
         listofChoice.push("FormTrait");
         listofChoice.push("Society1");
@@ -134,7 +134,7 @@ function SetRandomStart(overwriteParameter) {
                 case "Form":
                     currentForm = randomEntry;
                     break;
-               
+
                 case "Culture":
                     hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION')
                     while (hasAdaptionGroup && randomEntry.name.indexOf("Primal") != -1) {
@@ -142,25 +142,25 @@ function SetRandomStart(overwriteParameter) {
                     }
                     currentCulture = randomEntry;
                     break;
-                    case "FormTrait":
-                        currentFormTraitList = [];
-                        currentFormTraitList.push(randomEntry);
-    
-    
-                        while (getPoints() < 5) {
-                            var randomEntry = GetRandomEntry(listofChoice[j]);
-                            if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
-                                if(checkCompatibilityTraits(randomEntry) == true){
-                                    currentFormTraitList.push(randomEntry);
-                                }
-                            
+                case "FormTrait":
+                    currentFormTraitList = [];
+                    currentFormTraitList.push(randomEntry);
+
+
+                    while (getPoints() < 5) {
+                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                        if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
+                            if (checkCompatibilityTraits(randomEntry) == true) {
+                                currentFormTraitList.push(randomEntry);
                             }
-    
+
                         }
-    
-    
-    
-                        break;
+
+                    }
+
+
+
+                    break;
                 case "Society1":
                     currentSociety1 = randomEntry;
                     break;
@@ -519,28 +519,28 @@ function SetTomePathInfo(button, origin) {
 
 
 function SetupButtons(evt, type) {
-   // const rect = evt.target.getBoundingClientRect();
+    // const rect = evt.target.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
 
 
-    if(evt != null){
+    if (evt != null) {
         const mouseX = evt.clientX;
         const mouseY = evt.clientY;
 
-        
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    selectionsHolder.setAttribute("style", "display:block; left:" + (mouseX + 10) + "px; top:" + (mouseY + scrollTop + 10) + "px;");
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        selectionsHolder.setAttribute("style", "display:block; left:" + (mouseX + 10) + "px; top:" + (mouseY + scrollTop + 10) + "px;");
     }
-  
+
 
 
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
     originWrapper.setAttribute("style", " grid-template-columns: repeat(3, 2fr);");
 
-   // var originButton = document.getElementById("originButton" + type);
+    // var originButton = document.getElementById("originButton" + type);
     //console.log(type);
     var list = [];
 
@@ -603,7 +603,7 @@ function SetupButtons(evt, type) {
     selectionsText.textContent = "Select " + type;
     for (const origin of list) {
         var originButtonNew = document.createElement("button");
-      
+
         if (type === "Symbol") {
 
             originButtonNew.addEventListener("click", () => SelectSymbol(origin));
@@ -616,8 +616,8 @@ function SetupButtons(evt, type) {
             // hook into options thingie
             originButtonNew.className = "list-button";
 
-           // console.log(origin.point_cost + " " + getPoints());
-           
+            // console.log(origin.point_cost + " " + getPoints());
+
 
 
             if (isInArray(currentFormTraitList, origin)) {
@@ -629,7 +629,7 @@ function SetupButtons(evt, type) {
 
             if (origin.point_cost + (getPoints()) > 5 || checkCompatibilityTraits(origin) == false) {
                 originButtonNew.style.color = 'grey';
-            } else{
+            } else {
                 originButtonNew.style.color = 'white';
             }
 
@@ -915,7 +915,7 @@ function SetButtonInfo(button, origin, type, color) {
         } else {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
-       
+
     } else if (type === "Culture" || type === "Origin" || type === "Society1" || type === "Society2" || type === "Form") {
         if (origin.id.startsWith("_")) {
             var iconLink = origin.id;
@@ -966,7 +966,7 @@ function SetButtonInfo(button, origin, type, color) {
         }
 
 
-      
+
 
         // Append the image and button text to the button element
         button.appendChild(image);
@@ -1372,13 +1372,13 @@ function incompatibleCheck(type, origin) {
                 if (origin.incompatible[i].name === currentSociety1.name || origin.incompatible[i].name === currentSociety2.name) {
                     incompatibleWithSetup = true;
                 }
-                for(j in currentFormTraitList){
-                    if(currentFormTraitList[j].name.indexOf(origin.incompatible[i].name) != -1)
-                  
+                for (j in currentFormTraitList) {
+                    if (currentFormTraitList[j].name.indexOf(origin.incompatible[i].name) != -1)
+
                         incompatibleWithSetup = true;
-                   
+
                 }
-               
+
             }
 
         }
@@ -1474,8 +1474,8 @@ function incompatibleCheck(type, origin) {
 
 
 function toggleSelection(origin, button, type) {
- //   console.log("test"+ origin);
-   
+    //   console.log("test"+ origin);
+
     const selectedButtons = document.querySelectorAll('#options-container list-button');
     for (let index = 0; index < selectedButtons.length; index++) {
         selectedButtons[index].classList.remove('selected');
@@ -1490,7 +1490,7 @@ function toggleSelection(origin, button, type) {
 
     // Uncomment the line below if you want to limit the selection to a specific number (e.g., 2)
     // updateSelectionLimit(origin);
-var exclusionList = new Array();
+    var exclusionList = new Array();
     exclusionList = updateSelectedOptions(origin);
 
 
@@ -1542,7 +1542,7 @@ function updateSelectedOptions(origin) {
 
     }
 
-  
+
 
 }
 
@@ -1557,7 +1557,7 @@ function updateSelectedOptions(origin) {
 
 // }
 
-function checkCompatibilityTraits(entry){
+function checkCompatibilityTraits(entry) {
     var canBeAdded = true;
     if (entry.group_name === "ADAPTATION") {
         var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
@@ -1566,7 +1566,7 @@ function checkCompatibilityTraits(entry){
         if (hasAdaptionGroup || currentCulture.name.indexOf("Primal") != -1) {
 
             canBeAdded = false;
-        } 
+        }
     }
     else if (entry.group_name === "MOUNT") {
         var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'MOUNT');
@@ -1576,14 +1576,14 @@ function checkCompatibilityTraits(entry){
             canBeAdded = false;
 
         }
-    }else if (entry.group_name === "TACTICS") {
+    } else if (entry.group_name === "TACTICS") {
         var hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'TACTICS');
         //console.log(hasAdaptionGroup);
         // already has adaption or already has primal culture
         if (hasAdaptionGroup) {
             canBeAdded = false;
 
-        } 
+        }
     }
     return canBeAdded;
 }
@@ -1597,9 +1597,9 @@ function toggleArrayEntry(array, entry) {
         array.splice(index, 1);
     } else {
         // Entry doesn't exist, add it
-if(checkCompatibilityTraits(entry) == true){
-    array.push(entry);
-}
+        if (checkCompatibilityTraits(entry) == true) {
+            array.push(entry);
+        }
     }
 
 }
