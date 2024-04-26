@@ -32,7 +32,8 @@ function searchData(keywords) {
     }
 
 
-    var test = filter.replaceAll(' ', "_");
+    //var test = filter.replaceAll(' ', "_");
+    var test = filter;
     searchUnits(test);
     var currenturl = window.location.href.split('?')[0];
 
@@ -46,7 +47,7 @@ function returnUnitList(fieldToSearch) {
     for (i = 0; i < jsonUnits.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonUnits[i].id;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) > -1) {
+            if (textvalue.toUpperCase().indexOf(fieldToSearch.replaceAll(" ", "_")) > -1) {
                 if (list.length >= 1) {
                     if (!isInArray(list, jsonUnits[i].id)) {
                         list.push(jsonUnits[i].id);
