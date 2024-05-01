@@ -310,8 +310,39 @@ function getUnitTypeTag(passivesList) {
     }
 }
 
+function AddListView(list, parent) {
+    // add list view first
+    if (parent != undefined) {  // but only if its a non-tiered one, if tiered only do the first one
+        if (parent.indexOf("Tier") != -1) {
+            // tiered
+            if (parent.indexOf("Tier I ") != -1) {
+                // do nothing;
+                console.log("parent has tier1");
+            } else {
+                console.log("parent has no tier1");
+                return;
+            }
+        }
+    }
+
+
+    var buttonHolder = document.getElementById("buttonHolder");
+    var btn = document.createElement("BUTTON");
+
+
+    btn.className = "w3-bar-item w3-button tablink";
+    btn.type = "button";
+    btn.innerHTML = "<i class=\"fa fa-solid fa-list\"></i>";
+    btn.setAttribute("onclick", 'openDiv(event, "' + list + '")');
+
+    var firstChild = buttonHolder.firstChild;
+    buttonHolder.insertBefore(btn, firstChild);
+}
+
 function SetButtonsAndDivs(list, parent, cardType) {
     var modName, description, cost, type, tier, i, nameString, found = "";
+
+    AddListView(list, parent);
 
 
     for (i in list) {
@@ -420,11 +451,11 @@ function SetButtonsAndDivs(list, parent, cardType) {
 
 
         if (cardType === "unitTomeIcon") {
-            btn.setAttribute("onclick", 'openCity(event,\'' + splitIcon[0] + '\')');
+            btn.setAttribute("onclick", 'openDiv(event,\'' + splitIcon[0] + '\')');
         } else if (cardType.indexOf("search") === -1) {
-            btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\')');
+            btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\')');
         } else {
-            btn.setAttribute("onclick", 'openCity(event,\'' + list[i] + '\',true)');
+            btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
         }
         AddTriangleForDLCUnits(cardType, list[i], btn)
 
@@ -497,10 +528,10 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
     btn.innerHTML = overwrite + " (" + list.length + ")";
     if (cardType != "unit" && cardType.indexOf("search") === -1) {
-        btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\')');
+        btn.setAttribute("onclick", 'openDiv(event,\'' + overwrite + '\')');
         btn.setAttribute("id", overwrite + "-button");
     } else if (cardType.indexOf("search") != -1) {
-        btn.setAttribute("onclick", 'openCity(event,\'' + overwrite + '\',true)');
+        btn.setAttribute("onclick", 'openDiv(event,\'' + overwrite + '\',true)');
         btn.setAttribute("id", overwrite + "-button");
     }
 
@@ -801,12 +832,11 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
     }
 }
 
-async function openCity(evt, cityName, search) {
+async function openDiv(evt, cityName, search) {
 
     if (cityName != undefined) {
         currentView = cityName;
     }
-
 
     var i, x, tablinks;
     x = document.getElementsByClassName("city");
@@ -816,31 +846,51 @@ async function openCity(evt, cityName, search) {
 
     closeTabLinks(cityName);
 
-    var currentEl = document.getElementById(cityName);
-    if (currentEl != null) {
-        currentEl.style.display = "block";
-    }
     if (evt != null) {
         evt.currentTarget.className += " w3-red";
     }
-    var currenturl = window.location.href.split('?')[0];
-    var currentadditive = currenturl.split('&')[1];
-    if (currentadditive === undefined) {
-        currentadditive = "";
-    }
-    if (search === undefined) {
-        window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName + "&" + currentadditive);
-    }
+    if (cityName.indexOf(",") != -1) {
+        console.log("is array");
+        var parentDiv = document.getElementById("dataHolder");
+
+        // Get all direct children of the parent div
+        var children = parentDiv.children;
+
+        // Loop through each child and set its display to "block"
+        for (var i = 0; i < children.length; i++) {
+            children[i].style.display = "block";
+        }
+
+    } else {
 
 
-    if (sorting != undefined) {
-        var splits = sorting.split(":");
-        setTimeout(function () {
-            sortDivs(splits[0], splits[1]);
-        }, 50);
-        // console.log(cityName);
-    }
 
+
+
+
+        var currentEl = document.getElementById(cityName);
+        if (currentEl != null) {
+            currentEl.style.display = "block";
+        }
+
+        var currenturl = window.location.href.split('?')[0];
+        var currentadditive = currenturl.split('&')[1];
+        if (currentadditive === undefined) {
+            currentadditive = "";
+        }
+        if (search === undefined) {
+            window.history.replaceState({}, 'foo', currenturl + "?type=" + cityName + "&" + currentadditive);
+        }
+
+
+        if (sorting != undefined) {
+            var splits = sorting.split(":");
+            setTimeout(function () {
+                sortDivs(splits[0], splits[1]);
+            }, 50);
+            // console.log(cityName);
+        }
+    }
 }
 
 function closeTabLinks(cityName) {
@@ -2127,7 +2177,7 @@ async function SetLevelUpStuff() {
         document.getElementById(splits[0] + "-button").className += " w3-red";
 
 
-        await openCity(event, splits[0]);
+        await openDiv(event, splits[0]);
 
 
     }
