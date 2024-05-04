@@ -48,12 +48,12 @@ function fetchJsonFiles(filePaths) {
     return Promise.all(
         filePaths.map(filePath =>
             fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Network response was not ok: ${response.statusText}`);
-                    }
-                    return response.json();
-                })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
         )
     );
 }
@@ -156,7 +156,7 @@ var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knig
 
 var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer", "afflictor", "stormbringer"];
 
-var incorrectIconOverrideList = ["summon_zealot", "summon_lightbringer", "conjure_divine_beacon", "summon_lesser_snow_spirit", "summon_wind_rager"];
+var incorrectIconOverrideList = ["summon_zealot", "summon_lightbringer", "conjure_divine_beacon", "summon_lesser_snow_spirit", "summon_wind_rager", "summon_balor", "summon_lesser_magma_spirit", "summon_horned_god", "summon_corrupt_soul"];
 
 
 function GetUnitTierAndName(id) {
@@ -312,7 +312,7 @@ function getUnitTypeTag(passivesList) {
 
 function AddListView(list, parent) {
     // add list view first
-    if (parent != undefined) {  // but only if its a non-tiered one, if tiered only do the first one
+    if (parent != undefined) { // but only if its a non-tiered one, if tiered only do the first one
         if (parent.indexOf("Tier") != -1) {
             // tiered
             if (parent.indexOf("Tier I ") != -1) {
@@ -3443,8 +3443,7 @@ function showUnit(a) {
                     if (jsonUnits[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
                         if (jsonUnits[i].upkeep.indexOf("influence") != -1) {
                             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75) + "*";
-                        }
-                        else {
+                        } else {
                             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75) + ">*";
                         }
                         var lowUpkeep = true;
@@ -3461,8 +3460,7 @@ function showUnit(a) {
 
                         if (jsonUnits[i].upkeep.indexOf("influence") != -1) {
                             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 1.5) + "*";
-                        }
-                        else {
+                        } else {
                             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 1.5) + ">*";
                         }
 
@@ -3484,8 +3482,7 @@ function showUnit(a) {
                     if (jsonUnits[i].primary_passives[x].slug.indexOf("faithful") != -1) {
                         if (jsonUnits[i].upkeep.indexOf("influence") != -1) {
                             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + "*";
-                        }
-                        else {
+                        } else {
                             tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) + ">*";
                         }
 
@@ -6128,9 +6125,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-        entry,
-        percentage
-    } of percentages) {
+            entry,
+            percentage
+        } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
