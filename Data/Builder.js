@@ -17,9 +17,7 @@ function CheckBoxTooltips() {
 
 // Set user settings
 function setUserSettings(settings) {
-
     localStorage.setItem('userSettings', JSON.stringify(settings));
-
 }
 
 
@@ -28,7 +26,6 @@ function setUserSettings(settings) {
 function updateUserSettings(updatedSettings) {
     const currentSettings = getUserSettings();
     if (currentSettings) {
-
         const newSettings = {
             ...currentSettings,
             ...updatedSettings
@@ -48,12 +45,12 @@ function fetchJsonFiles(filePaths) {
     return Promise.all(
         filePaths.map(filePath =>
             fetch(filePath)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
-                }
-                return response.json();
-            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
         )
     );
 }
@@ -340,13 +337,10 @@ function AddListView(list, parent) {
 }
 
 function SetButtonsAndDivs(list, parent, cardType) {
-    var modName, description, cost, type, tier, i, nameString, found = "";
 
     AddListView(list, parent);
 
-
-    for (i in list) {
-
+    for (let i = 0; i < list.length; i++) {
 
         if (parent === undefined) {
             var buttonHolder = document.getElementById("buttonHolder");
@@ -355,120 +349,59 @@ function SetButtonsAndDivs(list, parent, cardType) {
         }
 
         var dataHolder = document.getElementById("dataHolder");
-
         var div = document.createElement("DIV");
-
         div.className = "w3-container w3-border city";
-        if (cardType === "unitTomeIcon") {
-            var splitIcon = list[i].split(":");
-            div.setAttribute("id", splitIcon[0]);
-        } else {
-            div.setAttribute("id", list[i]);
-        }
-
-
-
+        div.setAttribute("id", list[i]);
         dataHolder.appendChild(div);
 
         var divChild = document.createElement("DIV");
-        if (cardType === "unitTomeIcon") {
-            var splitIcon = list[i].split(":");
-            divChild.setAttribute("id", splitIcon[0] + "_card");
-
-
-
-        } else {
-            divChild.setAttribute("id", list[i] + "_card");
-        }
-
-
 
         div.appendChild(divChild);
-
-
-
-        if (cardType === "unitTomeIcon") {
-            var splitIcon = list[i].split(":");
-            showUnitFromString(splitIcon[0], splitIcon[0]);
-        }
-
-        if (cardType === "unit") {
-            showUnitFromString(list[i], list[i]);
-        }
-
-        if (cardType === "tome") {
-            showTomeFromList2(list[i], list[i]);
-        }
-
-
-        if (cardType === "searchUnit") {
-            showUnitFromString(list[i], list[i]);
-        }
-
-        if (cardType === "searchSpell") {
-            showSpellFromString(list[i], list[i]);
-            console.log("spawning card");
-        }
-
-
-
-
+        divChild.setAttribute("id", list[i] + "_card");
         var btn = document.createElement("BUTTON");
-        /// tooltipName.style.fontSize = "20px";
-
         btn.className = "w3-bar-item w3-button tablink";
         btn.type = "button";
+        btn.setAttribute("id", list[i] + "-button");
+        switch (cardType) {
 
+            case "unitTomeIcon":
+                var splitIcon = list[i].split(":");
+                divChild.setAttribute("id", splitIcon[0] + "_card");
+                div.setAttribute("id", splitIcon[0]);
+                btn.setAttribute("id", splitIcon[0] + "-button");
+                btn.innerHTML = "<img style=\"float:left;\" src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetUnitTierAndName(splitIcon[0]);
+                AddTriangleForDLCUnits("Unit", splitIcon[0], btn);
+                showUnitFromString(splitIcon[0], splitIcon[0]);
+                btn.setAttribute("onclick", 'openDiv(event,\'' + splitIcon[0] + '\')');
+                break;
+            case "unit":
+                showUnitFromString(list[i], list[i]);
+                btn.innerHTML = GetUnitTierAndName(list[i]);
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
+                break;
+            case "tome":
+                showTomeFromList2(list[i], list[i]);
+                btn.innerHTML = GetUnitTierAndNameTome(list[i]);
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
+                break;
+            case "searchUnit":
+                showUnitFromString(list[i], list[i]);
+                btn.innerHTML = GetUnitTierAndName(list[i]);
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\')');
+                break;
+            case "searchSpell":
+                showSpellFromString(list[i], list[i]);
+                btn.innerHTML = GetSpellTierAndName(list[i]);
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\')');
+                break;
 
-        if (cardType === "unitTomeIcon") {
-            var splitIcon = list[i].split(":");
-            btn.setAttribute("id", splitIcon[0] + "-button");
-
-
-
-        } else {
-            btn.setAttribute("id", list[i] + "-button");
         }
 
         buttonHolder.appendChild(btn);
 
-        if (cardType === "tome") {
-            btn.innerHTML = GetUnitTierAndNameTome(list[i]);
-        } else if (cardType === "unitTomeIcon") {
-            btn.innerHTML = "<img style=\"float:left;\" src=\"/aow4db/Icons/TomeIcons/" + splitIcon[1] + ".png\" width='25px'\">" + GetUnitTierAndName(splitIcon[0]);
-
-            AddTriangleForDLCUnits("Unit", splitIcon[0], btn);
-
-
-
-        } else if (cardType === "searchSpell") {
-            btn.innerHTML = GetSpellTierAndName(list[i]);
-        } else {
-            btn.innerHTML = GetUnitTierAndName(list[i]);
-        }
-
-
-
-
-        if (cardType === "unitTomeIcon") {
-            btn.setAttribute("onclick", 'openDiv(event,\'' + splitIcon[0] + '\')');
-        } else if (cardType.indexOf("search") === -1) {
-            btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\')');
-        } else {
-            btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
-        }
         AddTriangleForDLCUnits(cardType, list[i], btn)
-
-        if (cardType != "searchUnit") {
-            var holderHeight = buttonHolder.offsetHeight + 0;
-        } else {
-            var holderHeight = buttonHolder.offsetHeight;
-        }
-
-
-
+        var holderHeight = buttonHolder.offsetHeight;
         dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px; margin-left:200px");
-
 
     }
 
@@ -514,17 +447,9 @@ function CheckForDLCContent(type, string) {
 
 function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
     var modName, description, cost, type, tier, i, nameString = "";
-
     var buttonHolder = document.getElementById("buttonHolder");
-
-
     var btn = document.createElement("BUTTON");
-    /// tooltipName.style.fontSize = "20px";
-
-
     btn.type = "button";
-
-
 
     btn.innerHTML = overwrite + " (" + list.length + ")";
     if (cardType != "unit" && cardType.indexOf("search") === -1) {
@@ -535,12 +460,9 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         btn.setAttribute("id", overwrite + "-button");
     }
 
-
-
     buttonHolder.appendChild(btn);
 
-
-    if (cardType === "spell") {
+    if (cardType != "unit") {
         btn.className = "w3-bar-item w3-button tablink";
         var dataHolder = document.getElementById("dataHolder");
         var holderHeight = buttonHolder.offsetHeight + 50;
@@ -552,284 +474,87 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
 
         dataHolder.appendChild(div);
-        // for (i in list) {
-        showSpellFromList(list, overwrite);
-
-        // }
-
-
-
-
-
-    }
-
-    if (cardType === "heroTrait") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-        showHeroTraitFromList(list, overwrite);
-
-        // }
-
-
-
-
-
-    }
-
-    if (cardType === "skill") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showSkillFromList(list, overwrite);
-
-        // }
-
-    }
-
-    if (cardType === "item") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showItemFromList(list, overwrite);
-
-        // }
-
-    }
-
-    if (cardType === "trait") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showTraitFromList(list, overwrite);
-
-        // }
-
-    }
-
-    if (cardType === "searchSkill") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showSkillFromList(list, overwrite);
-
-    }
-
-    if (cardType === "searchItem") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showItemFromList(list, overwrite);
-
-    }
-
-    if (cardType === "searchSiege") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showSiegeProjects(list, overwrite);
-    }
-
-    if (cardType === "searchEmpire") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showEmpireTrees(list, overwrite);
-    }
-
-    if (cardType === "searchTraits") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showTraitFromList(list, overwrite);
-    }
-    if (cardType === "searchDestiny") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showDestinyTraitsFromList(list, overwrite);
-    }
-
-    if (cardType === "searchStruct") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showStructures(list, overwrite);
-    }
-
-    if (cardType === "searchWorldStruct") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-
-        showWorldStructures(list, overwrite);
     }
 
 
-
-    if (cardType === "unit") {
-        btn.className = "collapsibleUnits";
-        var content = document.createElement("DIV");
-        content.setAttribute("id", overwrite + "-button");
-        content.className = "contentUnits";
-        buttonHolder.append(content);
-        // showSpellFromList(list, overwrite);
-
+    switch (cardType) {
+        case "spell":
+            showSpellFromList(list, overwrite);
+            break;
+        case "heroTrait":
+            showHeroTraitFromList(list, overwrite);
+            break;
+        case "skill":
+            showSkillFromList(list, overwrite);
+            break;
+        case "item":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showItemFromList(list, overwrite);
+            break;
+        case "trait":
+            showTraitFromList(list, overwrite);
+            break;
+        case "searchSkill":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showSkillFromList(list, overwrite);
+            break;
+        case "searchItem":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showItemFromList(list, overwrite);
+            break;
+        case "searchSiege":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showSiegeProjects(list, overwrite);
+            break;
+        case "searchEmpire":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showEmpireTrees(list, overwrite);
+            break;
+        case "searchTraits":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showTraitFromList(list, overwrite);
+            break;
+        case "searchDestiny":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showDestinyTraitsFromList(list, overwrite);
+            break;
+        case "searchStruct":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showStructures(list, overwrite);
+            break;
+        case "searchWorldStruct":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showWorldStructures(list, overwrite);
+            break;
+        case "searchSpell":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showSpellFromList(list, overwrite);
+            break;
+        case "tome":
+            var holderHeight = buttonHolder.offsetHeight;
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+            showTomeFromList2(list, overwrite);
+            break;
+        case "unit":
+            btn.className = "collapsibleUnits";
+            var content = document.createElement("DIV");
+            content.setAttribute("id", overwrite + "-button");
+            content.className = "contentUnits";
+            buttonHolder.append(content);
+            break;
     }
 
-    if (cardType === "searchSpell") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
 
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-        showSpellFromList(list, overwrite);
-
-        // }
-    }
-
-    if (cardType === "tome") {
-        btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
-
-        div.className = "w3-container w3-border city";
-        div.setAttribute("id", overwrite);
-
-
-        dataHolder.appendChild(div);
-        // for (i in list) {
-        showTomeFromList2(list, overwrite);
-
-        // }
-    }
 }
 
 async function openDiv(evt, cityName, search) {
@@ -2359,20 +2084,7 @@ async function showTomeFromList2(string, divID) {
 async function showTomeFromList(list, divID, overwritetext) {
 
 
-    /* await spawnTomeCards(list, divID);
-
-     for (var i = 0; i < list.length; i++) {
-
-         showTome(list[i], divID);
-
-     };*/
-    // SetCollapsibleButtonsAndDivs(overwritetext, list, "tome");
     SetButtonsAndDivs(list, undefined, "tome");
-    //  SetCollapsibleButtonsAndDivs(overwritetext, list, "tome");
-
-
-
-
 }
 
 async function spawnSpellCards(list, divID) {
@@ -6125,9 +5837,9 @@ function ConvertSpawnTable(input) {
     bulletList.innerHTML = "<bulletList><span class=\"Test\">" + bulletListName + "</span>";
 
     for (const {
-            entry,
-            percentage
-        } of percentages) {
+        entry,
+        percentage
+    } of percentages) {
         const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
 
         if (!uniqueEntries.includes(itemText)) {
@@ -6792,21 +6504,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 if (jsonUnitAbilities[j].slug === a.abilities[k].slug) {
                     var abilityName = jsonUnitAbilities[j].name;
 
-
-
-                    // if (category != undefined) {
-                    //     if (category.indexOf("Dragon") != -1) {
-
-                    //         var newDivForMount = AddDLCTag();
-                    //         modName.append(newDivForMount);
-                    //     }
-                    // }
-
-
-
-
-                    //   description = jsonUnitAbilities[j].description;
-
                     if ('accuracy' in jsonUnitAbilities[j]) {
                         if (jsonUnitAbilities[j].requisites === undefined) {
                             var abilityReq = "";
@@ -6869,19 +6566,8 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                         var spa = CreatePassiveSlotToolTip(jsonUnitAbilities[j].icon, jsonUnitAbilities[j].name, jsonUnitAbilities[j].description);
                     }
 
-
-
-
-
-
                     spa.className = "itemAbility";
                     spa.setAttribute("style", "width:380px");
-                    // unitTypesDiv = document.getElementById("affectUnitTypes");
-
-
-
-                    // unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
-                    //
                     descriptionDiv.append(spa);
 
 
@@ -6894,65 +6580,9 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     } else {
         for (j in jsonHeroSkills) {
             if (jsonHeroSkills[j].id === a.id) {
-
-                // modName = document.getElementById("modname");
-
-                // modName.innerHTML = jsonHeroSkills[j].name.toUpperCase();
-
-
-                // modName.setAttribute("id", "modname" + a.id);
-                // descriptionDiv = document.getElementById("moddescription");
-
-                // description = jsonHeroSkills[j].description;
-
-
-
                 var spa = CreatePassiveSlotToolTip(jsonHeroSkills[j].icon, jsonHeroSkills[j].name, jsonHeroSkills[j].description);
                 spa.className = "itemAbility";
-                // descriptionDiv.innerHTML = "";
-
                 descriptionDiv.append(spa);
-
-                // descriptionDiv.setAttribute("id", "moddescription" + a.id);
-                //type = document.getElementById("modtype");
-                //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
-                //type.setAttribute("id", "modtype" + a);
-                // tier = document.getElementById("spell_tier");
-                // tier.innerHTML = "";
-                // if (category != undefined) {
-                //     tier.innerHTML += "<br>" + category + " - " + level;
-                // }
-                // tier.setAttribute("id", "spell_tier" + a.id);
-
-                // cost = document.getElementById("modcost");
-                // cost.innerHTML = "";
-
-
-                //   cost.setAttribute("id", "modcost" + a.id);
-
-                // imagelink = document.getElementById("modicon");
-                // var id = FindHeroSkillOrigin(a.id);
-                // var tomeOrigin = document.getElementById("originTome");
-                // var tomeOriginIcon = document.getElementById("originTomeIcon");
-                // tomeOrigin.setAttribute("id", "originTome" + a.id);
-                // tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
-
-
-                // imagelink.remove();
-
-                // if (category != undefined) {
-                //     if (category.indexOf("Dragon") != -1) {
-
-                //         var newDivForMount = AddDLCTag();
-                //         modName.append(newDivForMount);
-                //     }
-                // }
-
-                // if ('DLC' in a) {
-                //     var newDivForMount = AddDLCTag(a.DLC);
-                //     modName.append(newDivForMount);
-                // }
-
 
                 found = true;
 
