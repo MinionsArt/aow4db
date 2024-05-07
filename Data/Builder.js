@@ -377,17 +377,17 @@ function SetButtonsAndDivs(list, parent, cardType) {
             case "unit":
                 showUnitFromString(list[i], list[i]);
                 btn.innerHTML = GetUnitTierAndName(list[i]);
-                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',)');
                 break;
             case "tome":
                 showTomeFromList2(list[i], list[i]);
                 btn.innerHTML = GetUnitTierAndNameTome(list[i]);
-                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',)');
                 break;
             case "searchUnit":
                 showUnitFromString(list[i], list[i]);
                 btn.innerHTML = GetUnitTierAndName(list[i]);
-                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\')');
+                btn.setAttribute("onclick", 'openDiv(event,\'' + list[i] + '\',true)');
                 break;
             case "searchSpell":
                 showSpellFromString(list[i], list[i]);
