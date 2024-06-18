@@ -20,7 +20,9 @@
             unitarray = FindUnitsWithSecondaryPassive("dragon");
             console.log(unitarray);
             for (i in unitarray) {
-                showUnitsFromList(unitarray[i], "Dragons Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                if (unitarray[i].length > 0) {
+                    showUnitsFromList(unitarray[i], "Dragons Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                }
             }
 
             SetLevelUpStuff();

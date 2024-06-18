@@ -25,7 +25,7 @@
         "id": "eldritch_sovereign",
         "name": "Eldritch Sovereign",
         "icon": "eldritch_sovereign",
-        "description": "<bulletlist>WIP</bulletlist>"
+        "description": "<bulletlist>An eldritch Ruler with powers beyond mortal comprehension.<bullet>Use <thralls></thralls> Thralls to cast powerful retual Spells.</bullet><bullet>Start with Clairvoyance Ritual and Enthrall Population</bullet><bullet>Eldritch Sovereigns have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Leg and Mount items</bullet><bullet>Eldritch Sovereigns have access to powerful Hero and Signature Skills</bullet></bulletlist>"
     },
     {
         "type": "Culture",
@@ -73,7 +73,7 @@
         "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
         "name": "Mystic - School of Attunement",
         "icon": "mystic_school_of_attunement",
-        "description": "<bulletlist>WIP</bulletlist>",
+        "description": "<bulletlist>Your people are versatile spellcasters, attuned to the arcane:<bullet>Units gain Attunement: Star Blades.</bullet><bullet>Collect Astracl Echoes through exploration and research</bullet><bullet>Use Echo Casting to cast spells beyond normal limits</bullet></bulletlist>",
         "incompatible": [
             {
                 "name": "Fabled Hunters"
@@ -86,7 +86,7 @@
         "affinity": "<empirearcana></empirearcana>,<empireshadow></empireshadow>",
         "name": "Mystic - School of Potential",
         "icon": "mystic_school_of_potential",
-        "description": "<bulletlist>WIP</bulletlist>",
+        "description": "<bulletlist>Your people are experimental spellcasters, seekeing knowledge in the arcane:<bullet>Combat Spells are always Overcharged the first time they are cast each combat</bullet><bullet>Use spells to exploit Arcane Inspiration and gain an exonomic edge.</bullet><bullet>This cultur's units inflict Dissonance with their attacks</bullet></bulletlist>",
         "incompatible": [
             {
                 "name": "Fabled Hunters"
@@ -99,7 +99,7 @@
         "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
         "name": "Mystic - School of Summoning",
         "icon": "mystic_school_of_summoning",
-        "description": "<bulletlist>WIP</bulletlist>",
+        "description": "<bulletlist>Your people are powerful summoners, specializing in magical creatures:<bullet>Magic Origin units gain Attunement: Astral Resonance</bullet><bullet>Collect Astral Echos through exploration and research.</bullet><bullet>Use Echo Infusion to rank up your Magic Origin units rapidly.</bullet><bullet>This culture's units gain Astral Connection.</bullet></bulletlist>",
         "incompatible": [
             {
                 "name": "Fabled Hunters"
@@ -242,21 +242,21 @@
         "id": "avian",
         "name": "Avian",
         "DLC": " EMPIRESANDASHES",
-        "description": "...."
+        "description": "Feathered, beaked beings whose families are usually referred to as 'Nests'. Their sing-song calls can carry over entire forests."
     },
     {
         "type": "Skin",
         "id": "syron",
         "name": "Syron",
         "DLC": " ELDRITCHREALMS",
-        "description": "...."
+        "description": "Slender, pale beings whose origins lie within the deep dark of the Astral Sea."
     },
     {
         "type": "Skin",
         "id": "insectoid",
         "name": "Insectoid",
         "DLC": " ELDRITCHREALMS",
-        "description": "...."
+        "description": "Carapaced beings who communicate through a combination of sound and subtle chemical odors."
     },
     {
         "type": "Skin",
@@ -313,331 +313,959 @@
         "id": "goatkin",
         "name": "Goatkin",
         "DLC": "PRIMALFURY",
-        "description": "."
+        "description": "Goat-like beings who take pride in their elaborate horns."
     },
     {
         "type": "Loadout",
         "id": "barbarian_axe",
         "name": "Axe and Shield",
-        "requirement": "Champion,Barbarian"
+        "requirement": "Champion,Barbarian",
+        "abilities": [
+            {
+                "slug": "vigor_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "barbarian_axe"
+            }, {
+                "slug": "wooden_shield"
+            }, {
+                "slug": "helmet"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "greataxe",
         "name": "Greataxe",
-        "requirement": "Champion,Barbarian:Primal"
+        "requirement": "Champion,Barbarian:Primal",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "greataxe"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "bow",
         "name": "Bow",
-        "requirement": "Champion,Barbarian:Feudal:High:Mystic"
+        "requirement": "Champion,Barbarian:Feudal:High:Mystic - School of Attunement:Mystic - School of Potential:Mystic - School of Summoning",
+        "abilities": [
+            {
+                "slug": "archery_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "bow"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_blight",
         "name": "Blight Staff",
-        "requirement": "Champion,Barbarian"
+        "requirement": "Champion,Barbarian",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_blight"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "poison_orb",
         "name": "Blight Orb",
-        "requirement": "Champion,Barbarian:Primal"
+        "requirement": "Champion,Barbarian:Primal",
+        "abilities": [
+            {
+                "slug": "magecraft_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "poison_orb"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "lance",
         "name": "Lance",
-        "requirement": "Champion,Feudal:Dark:High"
+        "requirement": "Champion,Feudal:Dark:High",
+        "abilities": [
+            {
+                "slug": "archery_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "lance"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "feudal_longsword",
         "name": "Sword and Shield",
-        "requirement": "Champion,Feudal:High:Dark:Reaver"
+        "requirement": "Champion,Feudal:High:Dark:Reaver",
+        "abilities": [
+            {
+                "slug": "vigor_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "feudal_longsword"
+            }, {
+                "slug": "feudal_shield"
+            }, {
+                "slug": "helmet"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "greatsword",
         "name": "Greatsword",
-        "requirement": "Champion,Feudal"
+        "requirement": "Champion,Feudal",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "greatsword"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_spirit",
         "name": "Spirit Staff",
-        "requirement": "Champion,High:Feudal"
+        "requirement": "Champion,High:Feudal",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_spirit"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "spirit_orb",
         "name": "Spirit Orb",
-        "requirement": "Champion,High:Feudal"
+        "requirement": "Champion,High:Feudal",
+        "abilities": [
+            {
+                "slug": "magecraft_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "spirit_orb"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "lightning_orb",
         "name": "Lightning Orb",
-        "requirement": "Champion,Mystic"
+        "requirement": "Champion,Mystic - School of Attunement:Mystic - School of Potential:Mystic - School of Summoning",
+        "abilities": [
+            {
+                "slug": "magecraft_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "lightning_orb"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "greathammer",
         "name": "Greathammer",
-        "requirement": "Champion,Industrious"
+        "requirement": "Champion,Industrious",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "greathammer"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "industrious_hammer",
         "name": "Shield and Hammer",
-        "requirement": "Champion,Industrious"
+        "requirement": "Champion,Industrious",
+        "abilities": [
+            {
+                "slug": "vigor_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "industrious_hammer"
+            }, {
+                "slug": "wooden_shield"
+            }, {
+                "slug": "helmet"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "mystic_mace",
         "name": "Mace and Shield",
-        "requirement": "Champion,Mystic"
+        "requirement": "Champion,Mystic - School of Attunement:Mystic - School of Potential:Mystic - School of Summoning",
+        "abilities": [
+            {
+                "slug": "vigor_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "mystic_mace"
+            }, {
+                "slug": "wooden_shield"
+            }, {
+                "slug": "helmet"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "mystic_mace",
         "name": "Bladed Mace",
-        "requirement": "Champion,Mystic"
+        "requirement": "Champion,Mystic - School of Attunement:Mystic - School of Potential:Mystic - School of Summoning",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "mystic_mace"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_lightning",
         "name": "Lightning Staff",
-        "requirement": "Champion,Mystic"
+        "requirement": "Champion,Mystic - School of Attunement:Mystic - School of Potential:Mystic - School of Summoning",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_lightning"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "crossbow",
         "name": "Crossbow",
-        "requirement": "Champion,Industrious"
+        "requirement": "Champion,Industrious",
+        "abilities": [
+            {
+                "slug": "archery_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "crossbow"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_fire",
         "name": "Fire Staff",
-        "requirement": "Champion,Industrious"
+        "requirement": "Champion,Industrious",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_fire"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "fire_orb",
         "name": "Fire Orb",
-        "requirement": "Champion,Industrious"
+        "requirement": "Champion,Industrious",
+        "abilities": [
+            {
+                "slug": "magecraft_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "fire_orb"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_frost",
         "name": "Frost Staff",
-        "requirement": "Champion,Dark"
+        "requirement": "Champion,Dark",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_frost"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "pistol_and_sword",
         "name": "Pistol and Sword",
-        "requirement": "Champion,Reaver"
+        "requirement": "Champion,Reaver",
+        "abilities": [
+            {
+                "slug": "sprint_sprint"
+   }
+            ],
+        "items": [
+            {
+                "slug": "pistol_and_sword"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "reaver_halberd",
         "name": "Reaver Halberd",
-        "requirement": "Champion,Reaver"
+        "requirement": "Champion,Reaver",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "reaver_halberd"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "heavy_magelock_rifle",
         "name": "Heavy Magelock Rifle",
-        "requirement": "Champion,Reaver"
+        "requirement": "Champion,Reaver",
+        "abilities": [
+            {
+                "slug": "archery_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "magelock_rifle"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "frost_orb",
         "name": "Frost Orb",
-        "requirement": "Champion,Dark"
+        "requirement": "Champion,Dark",
+        "abilities": [
+            {
+                "slug": "magecraft_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "frost_orb"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "dragon_claw_2",
         "name": "Astral Dragon",
         "requirement": "Dragon Lord",
-        "affinity": "<empirearcana></empirearcana>"
+        "affinity": "<empirearcana></empirearcana>",
+        "description": "Breath and Claws deals <damagelightning></damagelightning> Lightning Damage<br><br>Gain 1 <empirearcana></empirearcana> Affinity"
     },
     {
         "type": "Loadout",
         "id": "dragon_claw_6",
         "name": "Chaos Dragon",
         "requirement": "Dragon Lord",
-        "affinity": "<empirechaos></empirechaos>"
+        "affinity": "<empirechaos></empirechaos>",
+        "description": "Breath and Claws deals <damagefire></damagefire> Fire Damage<br><br>Gain 1 <empirechaos></empirechaos> Affinity"
     },
     {
         "type": "Loadout",
         "id": "dragon_claw",
         "name": "Materium Dragon",
         "requirement": "Dragon Lord",
-        "affinity": "<empirematter></empirematter>"
+        "affinity": "<empirematter></empirematter>",
+        "description": "Breath and Claws deals <damagephysical></damagephysical> Physical Damage<br><br>Gain 1 <empirematter></empirematter> Affinity"
     },
     {
         "type": "Loadout",
         "id": "dragon_claw_4",
         "name": "Nature Dragon",
         "requirement": "Dragon Lord",
-        "affinity": "<empirenature></empirenature>"
+        "affinity": "<empirenature></empirenature>",
+        "description": "Breath and Claws deals <damageblight></damageblight> Blight Damage<br><br>Gain 1 <empirenature></empirenature> Affinity"
     },
     {
         "type": "Loadout",
         "id": "dragon_claw_5",
         "name": "Order Dragon",
         "requirement": "Dragon Lord",
-        "affinity": "<empireorder></empireorder>"
+        "affinity": "<empireorder></empireorder>",
+        "description": "Breath and Claws deals <damagespirit></damagespirit> Spirit Damage<br><br>Gain 1 <empireorder></empireorder> Affinity"
     },
     {
         "type": "Loadout",
         "id": "dragon_claw_3",
         "name": "Shadow Dragon",
         "requirement": "Dragon Lord",
-        "affinity": "<empireshadow></empireshadow>"
+        "affinity": "<empireshadow></empireshadow>",
+        "description": "Breath and Claws deals <damagefrost></damagefrost> Frost Damage<br><br>Gain 1 <empireshadow></empireshadow> Affinity"
     },
     {
         "type": "Loadout",
         "id": "godir_sword",
         "name": "Godir Sword and Shield",
-        "requirement": "Wizard King"
+        "requirement": "Wizard King",
+        "abilities": [
+            {
+                "slug": "vigor_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "godir_sword"
+            }, {
+                "slug": "godir_shield"
+            }, {
+                "slug": "helmet"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "godir_bow",
         "name": "Godir Bow",
-        "requirement": "Wizard King"
+        "requirement": "Wizard King",
+        "abilities": [
+            {
+                "slug": "archery_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "godir_bow"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "godir_greataxe",
         "name": "Godir Greataxe",
-        "requirement": "Wizard King"
+        "requirement": "Wizard King",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "godir_greataxe"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_spirit",
         "name": "(Wizard King)Spirit Staff",
-        "requirement": "Wizard King"
+        "requirement": "Wizard King",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_spirit"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "lightning_orb",
         "name": "(Wizard King)Lightning Orb",
-        "requirement": "Wizard King"
+        "requirement": "Wizard King",
+        "abilities": [
+            {
+                "slug": "magecraft_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "lightning_orb"
+            }, {
+                "slug": "hero_mount"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "handaxe_and_shield",
         "name": "Handaxe and Shield",
-        "requirement": "Champion,Primal"
+        "requirement": "Champion,Primal",
+        "abilities": [
+            {
+                "slug": "vigor_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "handaxe"
+            }, {
+                "slug": "primal_shield"
+            }, {
+                "slug": "helmet"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "spear",
         "name": "Spear",
-        "requirement": "Champion,Primal"
+        "requirement": "Champion,Primal",
+        "abilities": [
+            {
+                "slug": "fighting_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "spear"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "blowgun",
         "name": "Blowgun",
-        "requirement": "Champion,Primal"
+        "requirement": "Champion,Primal",
+        "abilities": [
+            {
+                "slug": "archery_i"
+   }
+            ],
+        "items": [
+            {
+                "slug": "blowgun"
+            }, {
+                "slug": "hero_mount"
+   }
+        ]
     },
     {
         "type": "Loadout",
         "id": "staff_of_the_primal_spirit",
         "name": "Staff of the Primal Spirit",
-        "requirement": "Champion,Primal"
+        "requirement": "Champion,Primal",
+        "abilities": [
+            {
+                "slug": "restore_restore"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_the_mire_crocodile"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "pantheon_berserkers_axe",
         "name": "<pantheon></pantheon> Berserker's Axe",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "berserkers_rage"
+   }
+            ],
+        "items": [
+            {
+                "slug": "greataxe"
+            }
+        ]
+
     },
     {
         "type": "Loadout",
         "id": "pantheon_cryomancers_staff",
         "name": "<pantheon></pantheon> Cryomancer's Staff",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "freezing_blast_freezing_blast"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_frost"
+            }
+        ]
+
     },
     {
         "type": "Loadout",
         "id": "pantheon_druids_staff",
         "name": "<pantheon></pantheon> Druid's Staff",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "sap_strength_sap_strength"
+   }
+            ],
+        "items": [
+            {
+                "slug": "staff_of_blight"
+            }
+        ]
+
     },
     {
         "type": "Loadout",
         "id": "pantheon_earthshakers_hammer",
         "name": "<pantheon></pantheon> Earthshaker's Hammer",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "quake_quake"
+   }
+            ],
+        "items": [
+            {
+                "slug": "greathammer"
+            }
+        ]
+
     },
     {
         "type": "Loadout",
         "id": "pantheon_orb_of_necromancy",
         "name": "<pantheon></pantheon> Orb of Necromancy",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "raise_undead_raise_undead"
+   }
+            ],
+        "items": [
+            {
+                "slug": "poison_orb"
+            }
+        ]
+
     },
     {
         "type": "Loadout",
         "id": "pantheon_tyrants_sword_and_shield",
         "name": "<pantheon></pantheon> Tyrant's Sword and Shield",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "intimidating_aura"
+   }
+            ],
+        "items": [
+            {
+                "slug": "feudal_longsword"
+            }, {
+                "slug": "feudal_shield"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "pantheon_veterans_pike",
         "name": "<pantheon></pantheon> Vetaran's Pike",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "watchful"
+   }
+            ],
+        "items": [
+            {
+                "slug": "pike"
+            }
+        ]
+
     },
     {
         "type": "Loadout",
         "id": "pantheon_captains_axe_and_shield",
         "name": "<pantheon></pantheon> Captains's Axe and Shield",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "inspiring_presence"
+   }
+            ],
+        "items": [
+            {
+                "slug": "battleaxe"
+            }, {
+                "slug": "industrious_shield"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "pantheon_crowmasters_bow",
         "name": "<pantheon></pantheon> Crowmaster's Bow",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "crowmaster"
+   }
+            ],
+        "items": [
+            {
+                "slug": "bow"
+            }
+        ]
     },
     {
         "type": "Loadout",
         "id": "pantheon_hunters_crossbow",
         "name": "<pantheon></pantheon> Hunters's Crossbow",
-        "requirement": "Champion:Wizard King"
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "giant_slayer"
+   }
+            ],
+        "items": [
+            {
+                "slug": "crossbow"
+            }
+        ]
+
     }, {
         "type": "Loadout",
         "id": "relic_of_flesh",
         "name": "Relic of Flesh",
-        "requirement": "Eldritch Sovereign"
+        "requirement": "Eldritch Sovereign",
+        "abilities": [
+            {
+                "slug": "delirium_delirium"
+   }
+            ],
+        "items": [{
+                "slug": "relic_of_flesh"
+            }
+        ]
+
 
     },
     {
         "type": "Loadout",
         "id": "relic_of_mind",
         "name": "Relic of Mind",
-        "requirement": "Eldritch Sovereign"
+        "requirement": "Eldritch Sovereign",
+        "spells": [
+            {
+                "slug": "eldritch_rituals"
+   }
+            ],
+        "abilities": [
+            {
+                "slug": "eldritch_rituals"
+   }
+            ],
+        "items": [{
+                "slug": "relic_of_mind"
+            }
+        ]
+
 
     }, {
         "type": "Loadout",
         "id": "relic_of_havoc",
         "name": "Relic of Havoc",
-        "requirement": "Eldritch Sovereign"
+        "requirement": "Eldritch Sovereign",
+        "abilities": [
+            {
+                "slug": "eldritch_phase_eldritch_phase_i"
+   }
+            ],
+        "items": [{
+                "slug": "relic_of_havoc"
+            }
+        ]
+
 
     }, {
         "type": "Loadout",
         "id": "relic_of_the_cosmos",
         "name": "Relic of the Cosmos",
-        "requirement": "Eldritch Sovereign"
+        "requirement": "Eldritch Sovereign",
+
+        "abilities": [
+            {
+                "slug": "astral_wisp_ritual"
+   }
+            ],
+        "spells": [
+            {
+                "slug": "astral_wisp_ritual"
+   }
+            ],
+        "items": [{
+                "slug": "relic_of_the_cosmos"
+            }
+        ]
+
+    }, {
+        "type": "Loadout",
+        "id": "pantheon_umbral_warriors_greataxe",
+        "name": "<pantheon></pantheon> Umbral Warrior's Greataxe",
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "umbral_wake"
+   }, {
+                "slug": "umbral_malady_immunity"
+   }
+            ],
+        "items": [{
+                "slug": "umbral_greataxe"
+            }
+        ]
+
+    }, {
+        "type": "Loadout",
+        "id": "pantheon_umbral_direcasters_staff",
+        "name": "<pantheon></pantheon> Umbral Direcaster's Staff",
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "hysteria_storm_hysteria_storm"
+   }
+            ],
+        "items": [
+            {
+                "slug": "umbral_staff"
+            }
+        ]
+
+    },
+    {
+        "type": "Loadout",
+        "id": "pantheon_umbral_demonslayers_bow",
+        "name": "<pantheon></pantheon> Umbral Demonslayer's Bow",
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "demonslayer"
+   }
+            ],
+
+        "items": [
+            {
+                "slug": "umbral_bow"
+            }
+        ]
+
+    }, {
+        "type": "Loadout",
+        "id": "pantheon_lashers_sword_and_shield",
+        "name": "<pantheon></pantheon> Lasher's Sword and Shield",
+        "requirement": "Champion:Wizard King",
+        "abilities": [
+            {
+                "slug": "pull_pull"
+   }
+            ],
+        "items": [
+            {
+                "slug": "umbral_shield"
+            }, {
+                "slug": "umbral_sword"
+            }
+        ]
 
     }
 ]

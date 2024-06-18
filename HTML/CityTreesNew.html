@@ -32,209 +32,86 @@
         };
 
 
-        var general = [
-            // A
-            "town_hall_i_town_center:5:1:hero&happiness&unitprod&food&production",
-            "throne:6:1:garrison&research&influence&gold&mana:throne",
 
-            // "heros_lodge:13:1:hero:chosen_destroyers",
-            // B
-
-
-            "vendor:6:2:gold",
-            "experimentation_chambers:7:2:gold&knowledge:dark",
-            "shrine:8:2:mana",
-            "clergy_commons:9:2:mana&gold:feudal",
-            "mana_forge:10:2:mana&production:reaver",
-            "library:11:2:research",
-            "battle_ritual_site:12:2:unitprod&research:barbarian",
-            "store_house:13:2:food",
-            "workers_farmstead:14:2:food&production:industrious",
-            "workshop:15:2:production&unitprod",
-            "evocators_abode:16:2:production&unitprod&mana:mystic",
-            "woodcarvers_workshop:17:2:draft&production&food:primal",
-            "artisan_workshop:18:2:production&unitprod&happiness:high",
-
-            "shipyard:20:2:gold",
-
-
-            // all the tome buildings
-            "luxury_markets:22:2:na:materium",
-            "artisan_fortification:23:2:garrison:materium",
-            "fortified_crucible:24:2:garrison:materium",
-            "reagent_refinery:25:2:gold:materium",
-
-
-            // C
-
-            "palisade_walls:1:3:garrison",
-            "market:6:3:gold",
-            "underground_laboratory:7:3:gold:dark",
-            "mana_obelisk:8:3:mana",
-            "tithe_shrine:9:3:mana&gold:feudal",
-            "lodestone_foundry:10:3:mana&production:reaver",
-            "arcane_institute:11:3:research",
-            "ancestral_seer_hall:12:3:unitprod&research:barbarian",
-            "granary:13:3:food",
-            "grand_mill:14:3:food&production:industrious",
-            "stonemason:15:3:production",
-            "stone_conjurer:16:3:production&mana:mystic",
-            "stonestele:17:3:production&food:primal",
-            "blacksmith:18:3:unitprod",
-            "lightforge:19:3:draft&gold:high",
-            "fishmonger:20:3:food",
-
-            // all the tome buildings
-            "tower_of_true_sight:22:3:na:astral",
-            "astral_trade_relay:23:3:gold:astral",
-            "throne_of_mirrors:24:3:garrison:astral",
-            "temple_of_fertility:25:3:food&unitprod:nature",
-
-            // D
-
-
-            "mint:6:4:gold",
-
-            "monolith:8:4:mana",
-            "academy:11:4:research",
-            "estate_hall:13:4:food",
-            "masonic_hall:15:4:production",
-            "armory:18:4:unitprod",
-            "grand_wharf:20:4:production",
-
-            // all the tome buildins
-            "tribunal:22:4:happiness&research:order",
-            "convent:23:4:research&mana:order",
-            "barons_palace:24:4:gold&happiness:order",
-            "monument_of_supremacy:25:4:happiness&unitprod:order",
+        // set up chunks instead of a full list
 
 
 
+        const townHallsGrid = [
+            ["town_hall_ii_castle", null, "town_hall_iii_citadel", "lords_manor:feual", null, null, "town_hall_iv_grand_estate"],
+            ["town_hall_ii_bulwark", null, "town_hall_iii_forge_tower", "bastions_barricade:industrious", null, null, "town_hall_iv_industry_compound"],
+            ["town_hall_ii_communal_tent", null, "town_hall_iii_halls_of_war", "shrine_of_the_wargod:barbarian", null, null, "town_hall_iv_warlords_pavilion"],
+            ["town_hall_ii_mages_plaza", null, "town_hall_iii_mystic_spire", "altar_of_the_all-seers:mysticAttunement", "academy_of_potential:mysticPotential", "summoners_cistern:mysticSummoning", "town_hall_iv_wizards_auditorium"],
+            ["town_hall_ii_atrium_of_light", null, "town_hall_iii_pantheon", "solar_nexus:high", null, null, "town_hall_iv_solar_sanctum"],
+            ["town_hall_ii_dread_spire", null, "town_hall_iii_stronghold", "overlords_tower:dark", null, null, "town_hall_iv_black_palace"],
+            ["town_hall_ii_steel_hall", null, "town_hall_iii_chained_spire", "extraction_nexus:reaver", null, null, "town_hall_iv_ironclad_citadel"],
+            ["town_hall_ii_clan_lodge", null, "town_hall_iii_spirit_hall", "shrine_to_the_spirits:primal", null, null, "town_hall_iv_primeval_palace"],
+            [null, "tavern", "bathhouse"],
+            [null, "interrogation_dungeon:dark", "ritual_mausoleum:dark"],
 
-            // E
+        ];
 
+        const basicIncomeGrid = [
+            ["vendor", "market", "mint", "merchants_guild"],
+            ["experimentation_chambers:dark", "underground_laboratory:dark", null, null],
+            ["shrine", "mana_obelisk", "monolith", "mages_guild"],
+            ["clergy_commons:feudal", "tithe_shrine:feudal", null, null],
+            ["mana_forge:reaver", "lodestone_foundry:reaver", null, null],
+            ["library", "arcane_institute", "academy", "scholars_guild"],
+            ["battle_ritual_site:barbarian", "ancestral_seer_hall:barbarian", null, null],
+            ["store_house", "granary", "estate_hall", "farmers_guild"],
+            ["workers_farmstead:industrious", "grand_mill:industrious", null, null],
+            ["workshop", "stonemason", "masonic_hall", "workers_guild"],
+            ["evocators_abode:mystic", "stone_conjurer:mystic", null, null],
+            ["woodcarvers_workshop:primal", "stonestele:primal", null, null],
+            ["artisan_workshop:high", "blacksmith", "armory", "smiths_guild"],
+            [null, "lightforge:high", null, null],
+            ["shipyard", "fishmonger", "grand_wharf", "seafarers_guild"],
 
-            "merchants_guild:6:5:gold",
+        ];
 
-            "mages_guild:8:5:mana",
-            "scholars_guild:11:5:research",
-            "farmers_guild:13:5:food",
-            "workers_guild:15:5:production",
-            "smiths_guild:18:5:unitprod",
-            "seafarers_guild:20:5:food&production&unitprod&gold",
-
-            // all the tome buildins
-
-            "temple_of_the_exalted:22:5:mana&happiness:order",
-            "material_refinery:23:5:gold&knowledge:nature",
-
-
-            // F
-            "town_hall_ii_castle:5:6:gold",
-            "town_hall_ii_bulwark:6:6:gold",
-            "town_hall_ii_communal_tent:7:6:gold",
-            "town_hall_ii_mages_plaza:8:6:gold",
-            "town_hall_ii_atrium_of_light:9:6:gold",
-            "town_hall_ii_dread_spire:10:6:gold",
-
-
-            // G
-            "caltrop_stash:2:7:garrison",
-            "arcane_battlements:3:7:garrison",
-            "archer_battlements:4:7:garrison",
-
-            "tavern:11:7:happiness",
-            "interrogation_dungeon:12:7:research:dark",
-
-            // "heros_forum:13:7:hero:chosen_destroyers",
-
-            "wizard_tower_foundation:15:7:influence:throne",
-
-
-            // H
-
-            "bathhouse:11:8:happiness",
-            "ritual_mausoleum:12:8:mana:dark",
-            "wizard_tower_prison_cells:14:8:research:throne",
-            "wizard_tower_level_i:15:8:influence:throne",
-            "wizard_tower_crypts:16:8:mana:throne",
-
-            // I
-            "town_hall_iii_citadel:5:9:gold",
-            "town_hall_iii_forge_tower:6:9:gold",
-            "town_hall_iii_halls_of_war:7:9:gold",
-            "town_hall_iii_mystic_spire:8:9:gold",
-            "town_hall_iii_pantheon:9:9:gold",
-            "town_hall_iii_stronghold:10:9:gold",
-
-            "wizard_tower_item_forge:14:9::throne", // affinity bolstering matrix
-            "wizard_tower_level_ii:15:9:influence:throne",
-            "wizard_tower_room_of_recall:16:9:na:throne",
-
-            // J
-
-            "stone_walls:1:10:garrison",
-
-            // "heros_inn:13:10:hero:chosen_destroyers",
-
-            "wizard_tower_apex:15:10:influence:throne",
-            "wizard_tower_channeling_chamber:16:10:caststrategic&optactical:throne",
-
-            // affinity bolstering matrix
-
-            "materium_bolstering_matrix:18:10:na:throne",
-            "astral_bolstering_matrix:19:10:na:throne",
-            "nature_bolstering_matrix:20:10:na:throne",
-            "chaos_bolstering_matrix:21:10:na:throne",
-            "order_bolstering_matrix:22:10:na:throne",
-            "shadow_bolstering_matrix:23:10:na:throne",
+        const fortificationsGrid = [
+            ["palisade_walls", null, null, null, null, null, null, "stone_walls"],
+            [null, null, null, null, "caltrop_stash", null, null, null, "ballista_towers", null, "catapult_towers"],
+            [null, null, null, null, "arcane_battlements", null, null, null, "necrotic_spires:shadow", null, "beacon_of_valor"],
+            [null, null, null, null, "archer_battlements", null, null, null, "healing_spires:order", null, null],
 
 
+        ];
 
-            // K
-            "ballista_towers:2:11:garrison",
-            "necrotic_spires:3:11:garrison:shadow",
-            "healing_spires:4:11:na:order",
+        const tomeBuildingsGrid = [
+            ["luxury_markets:materium", "tower_of_true_sight:astral", "tribunal:order", "temple_of_fertility:nature", "material_refinery:nature"],
+            ["artisan_fortification:materium", "astral_trade_relay:astral", "convent:order", null, "stormport:astral"],
+            ["fortified_crucible:materium", "throne_of_mirrors:astral", "barons_palace:order", null, "tendril_labyrinth"],
+            ["reagent_refinery:materium", null, "monument_of_supremacy:order", null, "throne_of_insidious_whispers"],
+            [null, null, "temple_of_the_exalted:order", null, "temple_of_the_pyre"],
 
-            "lords_manor:5:10:gold&food:feudal",
-            "bastions_barricade:6:10:garrison&happiness:industrious",
-            "shrine_of_the_wargod:7:10:na:barbarian",
-            "altar_of_the_all-seers:8:10:na:mystic",
-            "solar_nexus:9:10:happiness:high",
-            "overlords_tower:10:10:unitprod&mana:dark",
-            "extraction_nexus:11:10:gold&mana:reaver",
-            "shrine_to_the_spirits:12:10:food:primal",
+        ];
 
-
-            "wizard_tower_arcane_observatory:15:11:na:throne",
-            "wizard_tower_teleportation_circle:16:11:na:throne",
-
-            // affinity lens amp
-            "materium_amplifier_lens:18:11:na:throne",
-            "astral_amplifier_lens:19:11:na:throne",
-            "nature_amplifier_lens:20:11:na:throne",
-            "chaos_amplifier_lens:21:11:na:throne",
-            "order_amplifier_lens:22:11:na:throne",
-            "shadow_amplifier_lens:23:11:na:throne",
-            //L
-            "town_hall_iv_grand_estate:5:12:gold&happiness",
-            "town_hall_iv_industry_compound:6:12:gold&happiness",
-            "town_hall_iv_warlords_pavilion:7:12:gold&happiness",
-            "town_hall_iv_wizards_auditorium:8:12:gold&happiness&caststrategic&casttactical",
-            "town_hall_iv_solar_sanctum:9:12:gold&happiness",
-            "town_hall_iv_black_palace:10:12:gold&happiness",
-
-            //M
-            "catapult_towers:2:13:garrison",
-            "beacon_of_valor:3:13:garrison",
-            //"heros_quarters:13:13:hero:chosen_destroyers",
+        const wizardTowerGrid = [
+            [null, "wizard_tower_prison_cells", "wizard_tower_item_forge", null, null],
+            ["wizard_tower_foundation:throne", "wizard_tower_level_i", "wizard_tower_level_ii", "wizard_tower_apex", "wizard_tower_arcane_observatory"],
+            [null, "wizard_tower_crypts", "wizard_tower_room_of_recall", "wizard_tower_channeling_chamber", "wizard_tower_teleportation_circle"],
 
 
 
         ];
 
+        const affinityGrid = [
+            ["materium_bolstering_matrix:throne", "materium_amplifier_lens:throne"],
+            ["astral_bolstering_matrix:throne", "astral_amplifier_lens:throne"],
+            ["nature_bolstering_matrix:throne", "nature_amplifier_lens:throne"],
+            ["chaos_bolstering_matrix:throne", "chaos_amplifier_lens:throne"],
+            ["order_bolstering_matrix:throne", "order_amplifier_lens:throne"],
+            ["shadow_bolstering_matrix:throne", "shadow_amplifier_lens:throne"],
 
+        ];
 
+        const baseGrid = [
+            ["town_hall_i_town_center"],
+            ["throne:throne"],
+
+        ];
         $("#body").ready(function() {
 
             $("#header").load("/aow4db/HTML/header.html", function() {
@@ -243,39 +120,191 @@
         });
 
         function HandlePage() {
-            SetUpTreeNodes(general, "general");
+            SetUpTreeDivChunks(fortificationsGrid, 622, 0);
+            SetUpTreeDivChunks(basicIncomeGrid, 287, 595);
+
+            SetUpTreeDivChunks(townHallsGrid, 1586, 485);
+            SetUpTreeDivChunks(tomeBuildingsGrid, 287, 2485);
+            SetUpTreeDivChunks(wizardTowerGrid, 1886, 1675);
+            SetUpTreeDivChunks(affinityGrid, 2850, 2108);
+            SetUpTreeDivChunks(baseGrid, 0, 485);
+            //SetUpTreeNodes(general, "general");
 
             SetCategories();
             SetLevelUpStuff();
 
         }
 
+        function SetUpTreeDivChunks(list, positionLeft, positionTop) {
+            var Holder = document.createElement("DIV");
+            Holder.className = "tree-grid2";
 
 
+            var columns = 0;
+            var rows = 0;
+            var maxcolumn = 0;
+            list.forEach((row, rowIndex) => {
+                rows++;
 
-        function SetUpStructureNode(structureInfo, splits, type) {
+                row.forEach((cell, colIndex) => {
+                    if (colIndex > maxcolumn) {
+                        columns = colIndex;
+                        maxcolumn = colIndex;
+                    }
 
-            var offset = 1;
+                });
+
+            });
+
+            Holder.setAttribute("style", "  grid-template-columns: repeat(" + columns + ", 320px);grid-template-rows: repeat(" + rows + ", 120px); top:" + positionTop + "px; left:" + positionLeft + "px")
+
+            var treespace = document.getElementById("treespacegeneral");
+            treespace.appendChild(Holder);
+
+            var rowIndex2 = "";
+
+            list.forEach((row, rowIndex) => {
+                rowIndex2 = rowIndex + 1;
+                row.forEach((cell, colIndex) => {
+                    handleStructure(cell, rowIndex2, colIndex + 1, Holder);
+                });
+
+            });
+
+
+        }
+
+
+        function backtrackTome(structure) {
+            var returning = "";
+            var j = 0;
+            for (j in jsonTomes) {
+                var k = 0;
+                for (k in jsonTomes[j].skills) {
+                    if (jsonTomes[j].skills[k].upgrade_slug === structure) {
+
+
+                        returning = jsonTomes[j];
+
+                    }
+
+
+                }
+            }
+            return returning;
+        }
+
+        function handleStructure(entry, rowIndex, columnIndex, Holder) {
+
+            if (entry == null) {
+                return;
+            }
+            var splits = entry.split(":");
+            var structure = splits[0];
+            var affinity = splits[1];
+
+
+            var overwrite = ""
+
+            if (structure == "throne") {
+                overwrite = throne;
+                SetUpStructureNodeNew(overwrite, rowIndex, columnIndex, Holder, affinity);
+            }
+            if (structure == "town_hall_i_town_center") {
+                overwrite = townHall1;
+                SetUpStructureNodeNew(overwrite, rowIndex, columnIndex, Holder, affinity);
+            }
+
+
+            for (i in jsonStructureUpgrades) {
+
+                if (structure == "town_hall_ii_castle") {
+                    console.log(rowIndex, columnIndex);
+                    if (jsonStructureUpgrades[i].resid == '4282082401405') {
+                        SetUpStructureNodeNew(jsonStructureUpgrades[i], rowIndex, columnIndex, Holder, affinity, backtrackTome(jsonStructureUpgrades[i].id));
+
+                    }
+
+                } else if (structure == "town_hall_iii_citadel") {
+                    if (jsonStructureUpgrades[i].resid == '4282082401410') {
+                        SetUpStructureNodeNew(jsonStructureUpgrades[i], rowIndex, columnIndex, Holder, affinity, backtrackTome(jsonStructureUpgrades[i].id));
+
+                    }
+
+                } else if (structure == "town_hall_iv_grand_estate") {
+                    if (jsonStructureUpgrades[i].resid == '4282082401414') {
+                        SetUpStructureNodeNew(jsonStructureUpgrades[i], rowIndex, columnIndex, Holder, affinity, backtrackTome(jsonStructureUpgrades[i].id));
+
+                    }
+
+                } else {
+                    if (jsonStructureUpgrades[i].id === structure) {
+                        SetUpStructureNodeNew(jsonStructureUpgrades[i], rowIndex, columnIndex, Holder, affinity, backtrackTome(jsonStructureUpgrades[i].id));
+                    }
+
+                }
+
+            }
+        }
+
+        function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, affinity, tome) {
             var i, x = "";
-            var holder = document.getElementById("treeHolder" + type);
-            var treespace = document.getElementById("treespace" + type);
+
+
             var nodeHeight = 100;
             var nodeWidth = 250;
 
-            var row = parseInt(splits[1]);
-            var column = parseInt(splits[2]);
-            var type = splits[3];
+            var tomeInfo = null;
+            if (tome != "") {
+                // add tome ID
+                tomeInfo = tome;
 
+            }
             var name = structureInfo.name;
 
             if (name.indexOf("<br>")) {
                 name = name.replaceAll("</br>", " ");
                 name = name.replaceAll("<br>", " ");
 
-                // name = name.replace("br", " ");
             }
 
-            // name = name.split(":")[1];
+
+            var newNode = CreateStructureNode(structureInfo, affinity, tomeInfo);
+
+
+
+            //insert connection line
+
+            newNode.setAttribute("style", "grid-row:" + (rowIndex) + "; grid-column:" + columnIndex + ";");
+            holder.append(newNode);
+
+
+        }
+
+        function findResources(text) {
+            const regex = /\+\d+\s*<([^>]+)>/g;
+            let match;
+            const resources = new Set();
+
+            while ((match = regex.exec(text)) !== null) {
+                resources.add(`<${match[1]}></${match[1]}>`);
+            }
+
+            return Array.from(resources);
+        }
+
+
+
+        function CreateStructureNode(structureInfo, affinity, tomeInfo) {
+
+            var i, x = "";
+            var name = structureInfo.name;
+
+            if (name.indexOf("<br>")) {
+                name = name.replaceAll("</br>", " ");
+                name = name.replaceAll("<br>", " ");
+
+            }
 
             var newNode = document.createElement("DIV");
 
@@ -283,9 +312,7 @@
 
             //insert connection line
 
-            newNode.setAttribute("style", "grid-row:" + (row) + "; grid-column:" + column + ";");
 
-            //  newNode.innerHTML = name;
             newNode.className = "entry";
             var newNodeBackground = document.createElement("DIV");
 
@@ -307,135 +334,126 @@
 
 
             spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>";
-
-            if (splits[4]) {
+            if (tomeInfo) {
                 newNodeBackground.setAttribute("style", "left:15px; top:-30px; width:190px");
+                spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + ClearAffinityExtraTags(duplicateTags(tomeInfo.affinities)).replaceAll(",", "") + "</span>" + "<br>";
 
-                if (splits[4] == "mystic") {
+                newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/TomeIcons/" + tomeInfo.id + ".png\")";
+                newNodeBackground.style.backgroundRepeat = "no-repeat";
+                newNodeBackground.style.backgroundPositionX = "140px";
+                newNodeBackground.style.backgroundSize = "80px";
+                newNodeBackground.style.backgroundColor = "#111";
 
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/mystic.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  #9bc6ff;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "barbarian") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/barbarian.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  red;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "high") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/high.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  yellow;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "feudal") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/feudal.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  grey;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "dark") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/dark.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  #e92fe9;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "industrious") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/industrious.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  orange;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "reaver") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/reaver.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  yellow;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "primal") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/primal.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  green;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
-                }
+            } else {
 
-                if (splits[4] == "throne") {
-                    newNodeBackground.setAttribute("style", "left:0px; top:0px; width:220px");
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/throne.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "order") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/order.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "shadow") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/shadow.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "nature") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/nature.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
-                }
 
-                if (splits[4] == "materium") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/materium.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "astral") {
-                    newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/astral.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  white;\">" + name.toUpperCase() + "</span>" + "<br>";
-                }
-                if (splits[4] == "chosen_destroyers") {
 
-                    //  newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/mystic.png\")";
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                    spa.innerHTML = "<span style=\"color:  #9bc6ff;\">" + name.toUpperCase() + "</span>" + "<br>";
-                    spa.innerHTML += "(Chosen Destroyers, Megacities)<br>";
+                if (affinity) {
+                    newNodeBackground.setAttribute("style", "left:15px; top:-30px; width:190px");
+
+                    if (affinity == "mystic") {
+
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/mystic.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  #9bc6ff;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "mysticAttunement") {
+
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/Attunement.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  #9bc6ff;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "mysticPotential") {
+
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/Potential.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  #9bc6ff;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "mysticSummoning") {
+
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/Summoning.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  #9bc6ff;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "barbarian") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/barbarian.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  red;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "high") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/high.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  yellow;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "feudal") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/feudal.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  grey;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "dark") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/dark.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  #e92fe9;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "industrious") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/industrious.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  orange;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "reaver") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/reaver.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  yellow;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+                    if (affinity == "primal") {
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/primal.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  green;\">⤷" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+
+                    if (affinity == "throne") {
+                        newNodeBackground.setAttribute("style", "left:0px; top:0px; width:220px");
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/throne.png\")";
+                        newNodeBackground.style.backgroundRepeat = "no-repeat";
+                        newNodeBackground.style.backgroundPositionX = "140px";
+                        newNodeBackground.style.backgroundSize = "80px";
+                        newNodeBackground.style.backgroundColor = "#111";
+                        spa.innerHTML = "<span style=\"color:  yellow;\">" + name.toUpperCase() + "</span>" + "<br>";
+                    }
+
                 }
             }
 
@@ -498,23 +516,12 @@
 
             newNodeBackground.append(img);
 
-            if (type != "na") {
+            var type = findResources(structureInfo.prediction_description + structureInfo.description);
+
+
+            if (type != "") {
                 var Type = document.createElement("DIV");
-                Type.innerHTML = "+";
-                if (type.indexOf("&") != -1) {
-                    var typeVar = type.split("&");
-
-                    for (i = 0; i < typeVar.length; i++) {
-                        Type.innerHTML += "<" + typeVar[i] + "></" + typeVar[i] + "> ";
-
-                    }
-
-
-
-                } else {
-                    Type.innerHTML = "+<" + type + "></" + type + ">";
-                }
-
+                Type.innerHTML += "+" + type;
 
                 Type.setAttribute("style", "position:absolute; bottom:40px; left:75px; z-index:3;");
                 //Type.setAttribute("style", "float:left; z-index:3");
@@ -525,71 +532,10 @@
             //newNode.appendChild(spa2);
 
             addTooltipListeners(newNode, spa2);
-
-            holder.appendChild(newNode);
-
+            return newNode;
         }
 
 
-        function SetUpTreeNodes(keyword, type) {
-
-
-
-            for (x in keyword) {
-
-                var splits = keyword[x].split(":");
-
-                var structure = splits[0];
-
-
-                var overwrite = ""
-
-                if (structure == "throne") {
-                    overwrite = throne;
-                    SetUpStructureNode(overwrite, splits, type);
-                }
-                if (structure == "town_hall_i_town_center") {
-                    overwrite = townHall1;
-                    SetUpStructureNode(overwrite, splits, type);
-                }
-
-
-                for (i in jsonStructureUpgrades) {
-
-                    if (structure == "town_hall_ii_castle") {
-                        if (jsonStructureUpgrades[i].resid == '4282082401405') {
-                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
-
-                        }
-
-                    } else if (structure == "town_hall_iii_citadel") {
-                        if (jsonStructureUpgrades[i].resid == '4282082401410') {
-                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
-
-                        }
-
-                    } else if (structure == "town_hall_iv_grand_estate") {
-                        if (jsonStructureUpgrades[i].resid == '4282082401414') {
-                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
-
-                        }
-
-                    } else {
-                        if (jsonStructureUpgrades[i].id === structure) {
-                            SetUpStructureNode(jsonStructureUpgrades[i], splits, type);
-                        }
-
-
-
-
-
-
-                    }
-
-                }
-            }
-
-        }
 
         function drawLine(topPos, leftPos, angle, width) {
             var connectionLine = document.createElement("DIV");
@@ -663,14 +609,16 @@
         }
 
         function SetCategories() {
-            CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2035);
-            CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1573);
-            CreateCategory("Tome Buildings", 1245, 520, "#482e8530", 287, 2485);
+
+            // name of category , width, height, color, left, top
+            CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2108);
+            CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1675);
+            CreateCategory("Tome Buildings", 1545, 620, "#482e8530", 287, 2430);
             CreateCategory("Fortifications", 3470, 476, "#4c4b4b57", 622, 0);
             CreateCategory("Basic Income Buildings", 1245, 1825, "#8eae6f2b", 287, 595);
-            CreateCategory("TII City", 260, 728, "#b48d522b", 1586, 485);
-            CreateCategory("TIII City", 260, 728, "#b48d522b", 2549, 485);
-            CreateCategory("TIV City", 260, 728, "#b48d522b", 3509, 485);
+            CreateCategory("TII City", 280, 950, "#b48d522b", 1586, 485);
+            CreateCategory("TIII City", 280, 950, "#b48d522b", 2249, 485);
+            CreateCategory("TIV City", 280, 950, "#b48d522b", 3509, 485);
         }
 
         function CreateCategory(name, width, height, color, positionLeft, positionTop) {
@@ -678,7 +626,7 @@
             var treespace = document.getElementById("treespacegeneral");
             var category = document.createElement("DIV");
 
-            category.setAttribute("style", "width:" + width + "px; height:" + height + "px; position:absolute; top:" + positionTop + "px; left:" + positionLeft + "px; background-color:" + color + ";   border-width:5px;   border-style: solid;border-image: url(/aow4db/Icons/9slicetooltip.png);border-image-slice: 10 10 10 10 ;");
+            category.setAttribute("style", "width:" + width + "px; height:" + height + "px; position:absolute; top:" + positionTop + "px; left:" + positionLeft + "px; background-color:" + color + ";   border-width:5px;   border-style: solid;border-image: url(/aow4db/Icons/9slicetooltip.png);border-image-slice: 10 10 10 10 ; margin-left:-40px");
             var categoryname = document.createElement("DIV");
             categoryname.innerHTML = name.toUpperCase();
             categoryname.setAttribute("Style", "position:absolute; top:2px; left:5px; color:white");
@@ -771,7 +719,7 @@
     .tree-grid {
         display: grid;
         grid-template-columns: repeat(14, 320px);
-        grid-template-rows: repeat(23, 120px);
+        grid-template-rows: repeat(26, 120px);
         position: absolute;
         height: auto;
         width: auto;
@@ -783,6 +731,18 @@
         border-image: url(/aow4db/Icons/9slicetooltip.png);
         border-image-slice: 10 10 10 10 fill;
         border-style: solid;
+        padding-top: 30px;
+    }
+
+    .tree-grid2 {
+        display: grid;
+        grid-template-columns: repeat(14, 320px);
+        grid-template-rows: repeat(26, 120px);
+        position: absolute;
+        height: auto;
+        width: auto;
+
+
         padding-top: 30px;
     }
 

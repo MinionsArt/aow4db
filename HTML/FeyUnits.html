@@ -22,8 +22,10 @@
 
             if (unitarray.length > 1) {
                 for (i in unitarray) {
+                    if (unitarray[i].length > 1) {
+                        showUnitsFromList(unitarray[i], "Fey Tier " + romanize(parseInt(parseInt(i) + 3)) + " ");
+                    }
 
-                    showUnitsFromList(unitarray[i], "Fey Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
                 }
             } else {
                 SetButtonsAndDivs(unitarray[0], undefined, "unit");

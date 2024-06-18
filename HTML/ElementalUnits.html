@@ -23,8 +23,9 @@
 
             if (unitarray.length > 1) {
                 for (i in unitarray) {
-
-                    showUnitsFromList(unitarray[i], "Elementals Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                    if (unitarray[i].length > 0) {
+                        showUnitsFromList(unitarray[i], "Elementals Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                    }
                 }
             } else {
                 SetButtonsAndDivs(unitarray[0], undefined, "unit");

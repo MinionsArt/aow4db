@@ -2,6 +2,7 @@ var excludeListStructures = ["shadow_focus_crystal", "nature_focus_crystal", "ma
 
 
 
+
 function isInArray(array, search) {
     return array.indexOf(search) >= 0;
 }
@@ -48,13 +49,25 @@ function returnUnitList(fieldToSearch) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonUnits[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch.replaceAll(" ", "_")) > -1) {
-                if (list.length >= 1) {
-                    if (!isInArray(list, jsonUnits[i].id)) {
-                        list.push(jsonUnits[i].id);
-                    }
+
+                // if (list.length >= 1) {
+
+                var newEntry = "";
+                if ('sub_culture_name' in jsonUnits[i]) {
+                    newEntry = jsonUnits[i].id + "," + jsonUnits[i].sub_culture_name;
+
                 } else {
-                    list.push(jsonUnits[i].id);
+                    newEntry = jsonUnits[i].id;
+
                 }
+                if (!isInArray(list, newEntry)) {
+                    list.push(newEntry);
+                }
+                //}
+                // } else {
+                //     list.push(jsonUnits[i].id);
+
+                // }
             }
         }
         if (document.getElementById("abilitiesCheck").checked) {
@@ -90,6 +103,7 @@ function returnEmpireTreeList(fieldToSearch) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonEmpire[i].name;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
+
                 if (!isInArray(list, jsonEmpire[i].id)) {
                     list.push(jsonEmpire[i].id);
                 }
@@ -291,7 +305,7 @@ function returnSkillList(fieldToSearch) {
 
     // Remove duplicate objects from the array
     const uniqueArray = resultslist.filter((item, index) => {
-        return index === resultslist.findIndex(obj => obj.id === item.id && obj.name === item.name);
+        return index === resultslist.findIndex(obj => obj.resid === item.resid && obj.name === item.name);
     });
 
 
@@ -415,12 +429,14 @@ function returnEquipList(fieldToSearch) {
 
 function returnSiegeProj(fieldToSearch) {
     var list = new Array();
+    var resIDList = new Array();
     for (i = 0; i < jsonSiegeProjects.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonSiegeProjects[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
                 if (!isInArray(list, jsonSiegeProjects[i].id)) {
                     list.push(jsonSiegeProjects[i].id);
+                    resIDList.push(jsonSiegeProjects[i].resid);
                 }
             }
         }
@@ -548,7 +564,12 @@ function searchUnits(keyword) {
     buttonHolder.innerHTML = "";
     var dataHolder = document.getElementById("dataHolder");
     dataHolder.innerHTML = "";
-    SetButtonsAndDivs(depricatedCheckList, "buttonHolder", "searchUnit");
+    depricatedCheckList.sort((a, b) => {
+        if (a.toLowerCase() < b.toLowerCase()) return -1;
+        if (a.toLowerCase() > b.toLowerCase()) return 1;
+        return 0;
+    });
+    SetButtonsAndDivs(depricatedCheckList, "buttonHolder", "searchUnit", undefined, undefined, undefined);
 
     if (listspells.length > 0) {
         SetCollapsibleButtonsAndDivs("Spells", listspells, "searchSpell");
@@ -674,13 +695,21 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
         if ('slug' in arraytosearch[j]) {
             textvalue = arraytosearch[j].slug;
             if (textvalue.toUpperCase().indexOf(keyword) > -1) {
-                if (listToPushTo.length >= 1) {
-                    if (!isInArray(listToPushTo, jsonUnits[index].id)) {
-                        listToPushTo.push(jsonUnits[index].id);
-                    }
+                // if (listToPushTo.length >= 1) {
+
+                if ('sub_culture_name' in jsonUnits[index]) {
+                    newEntry = jsonUnits[index].id + "," + jsonUnits[index].sub_culture_name;
+
                 } else {
-                    listToPushTo.push(jsonUnits[index].id);
+                    newEntry = jsonUnits[index].id;
+
                 }
+                if (!isInArray(listToPushTo, newEntry)) {
+                    listToPushTo.push(newEntry);
+                }
+                // } else {
+                //     listToPushTo.push(arraytosearch[index].id);
+                // }
 
 
 
@@ -740,8 +769,15 @@ function findUnitWithAbility(ability, listToPushTo) {
 
                 if (jsonUnits[i].abilities[j].slug.indexOf(ability) != -1) {
 
-                    if (!isInArray(listToPushTo, jsonUnits[i].id)) {
-                        listToPushTo.push(jsonUnits[i].id);
+                    if ('sub_culture_name' in jsonUnits[i]) {
+                        newEntry = jsonUnits[i].id + "," + jsonUnits[i].sub_culture_name;
+
+                    } else {
+                        newEntry = jsonUnits[i].id;
+
+                    }
+                    if (!isInArray(listToPushTo, newEntry)) {
+                        listToPushTo.push(newEntry);
                     }
                 }
             }

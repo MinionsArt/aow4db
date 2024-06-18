@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+
+
     <script>
         $("#body").ready(function() {
 
@@ -19,8 +21,8 @@
         function HandlePage() {
             SetRandomStart();
         }
-    </script>
 
+    </script>
 
     <title>Age of Wonders 4 Database - Faction Creator</title>
 </head>
@@ -35,23 +37,35 @@
     margin: 5px;
     margin-left: auto;
     margin-right: auto;">
-        <button class="button-random" onclick="GetQuickLink()">Get Share Link</button>
-        <input type="text" value="" class="inputfield" id="shareLink" style="width:600px"><br>
-        <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br>
+
+        <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
+        <input type="text" value="" class="inputfield" id="shareLink" style="width:600px">
+
+        <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br>
+        <div style=" display: flex;
+    flex-direction: row;
+    justify-content: space-around;">
+            <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br>
+            <button class="button-random" id="toggleButton">Show/Hide Overview</button>
+
+        </div>
     </div>
 
-    <div class="factioncreator">
+    <div class="factioncreator" id="capture">
         <div class="typeHolder" id="factioncreator">
 
             <div class="container">
 
                 <div style="height:90px">
-                    <div class="playerSigil" onclick="SetupButtons(event,'Symbol')">
-                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px" style="float:left">
-                        <!--<img class="symbol" id="symbol" src="/aow4db/Icons/Symbols/SigilIcons_01.png" height="50px" style="float:left">-->
+
+                    <div class="playerSigil">
+                        <!-- <canvas id="myCanvas" class="shield" width="70" height="70" style="float:left"></canvas>
+                        <canvas class="symbol" id="myCanvas2" width="50" height="50" style="float:left"></canvas>-->
+                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px" style="">
+                        <img class="symbol" id="symbol" src="/aow4db/Icons/Interface/symbol.png" height="45px" style="">
                     </div>
-                    <!--<button class="test" id="shieldColor" onclick="ChangeShieldCol()">Color 1</button>
-                    <button class="test" id="shieldColor2" onclick="ChangeSymbolCol()">Color 2</button>-->
+                    <!--  <button class="test" id="shieldColor" onclick="ChangeShieldCol()"> </button>
+                    <button class="test" id="symbolColor" onclick="ChangeSymbolCol()"> </button>-->
                     <div style="  
     display: flex;
     flex-direction: row;
@@ -159,59 +173,81 @@
 
                     <hr>
                 </div>
+
+
                 <div class="subDivider">
+                    <div style="width:280px">
+                        <div class="subSubDiv">
+                            <div style="min-height: 200px"><span class="small_title"> Ruler</span> <input type="text" value="Ruler Name" class="inputfield" id="fname1" maxlength="35" name="fname">
 
-                    <div style="width:250px"><span class="small_title"> Ruler</span> <input type="text" value="Ruler Name" class="inputfield" id="fname1" name="fname">
 
-                        <br>
-                        <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
-                        <div id="buttonContainer">
-                            <button class="button" id="originButtonOrigin" onclick="SetupButtons(event,'Origin')"></button>
+                                <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
+                                <div id="buttonContainer">
+                                    <button class="button" id="originButtonOrigin" onclick="SetupButtons(event,'Origin')"></button>
 
+                                </div>
+
+                                <div id="buttonContainer">
+                                    <button class="button-inset" id="originButtonTome" onclick="SetupButtons(event,'Tome')"></button>
+
+                                </div>
+
+                                <div id="buttonContainer">
+                                    <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons(event,'Loadout')"></button>
+
+                                </div>
+                                <div id="buttonContainer"><span class="small_title"> Ascension</span>
+                                    <button style="float:right; color:red" class="button" onclick="ClearAscensionSkill()"> X</button>
+                                    <button class="button-inset" id="originButtonAscension" onclick="SetupButtons(event,'Ascension')">+</button>
+
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonTome" onclick="SetupButtons(event,'Tome')"></button>
+                        <div class="subSubDiv2"><span class="small_title">Signature Skills</span>
+                            <button style="float:right; color:red" class="button" onclick="ClearSkillPath('something')"> X</button>
+                            <div id="buttonContainer" style="height:100px">
+                                <button class="button2" id="originButtonSignature" onclick="SetupButtons(event,'Signature')">+</button>
 
-                        </div>
-
-                        <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons(event,'Loadout')"></button>
-
-                        </div>
-
-                    </div>
-
-                    <div style="width:250px"><span class="small_title"> Race</span> <input type="text" class="inputfield" value="Race Name" id="fname" name="fname">
-
-                        <div id="buttonContainer">
-
-                            <button class="button" id="originButtonForm" onclick="SetupButtons(event,'Form')"></button>
-
-                        </div>
-
-                        <div id="buttonContainer">
-                            <button style="background-color: transparent;  min-height: 40px; min-width: 200px;  border: none;" id="originButtonFormTrait" onclick="SetupButtons(event,'FormTrait')">
-                                <div id="selected-options-container"></div>
-                            </button>
-
-
-                        </div>
-                        <br>
-                        <div id="buttonContainer">
-                            <button class="button" id="originButtonCulture" onclick="SetupButtons(event,'Culture')"></button>
-
-                        </div>
-
-                        <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons(event,'Society1')"></button>
-
-                        </div>
-                        <div id="buttonContainer">
-                            <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons(event,'Society2')"></button>
-
+                            </div>
                         </div>
                     </div>
+
+                    <div style="width:300px">
+                        <div class="subSubDiv" style="min-height: 200px"><span class="small_title"> Race</span> <input type="text" class="inputfield" value="Race Name" id="fname" maxlength="35" name="fname">
+
+                            <div id="buttonContainer">
+
+                                <button class="button" id="originButtonForm" onclick="SetupButtons(event,'Form')"></button>
+
+                            </div>
+
+                            <div id="buttonContainer">
+                                <button style="background-color: transparent;  min-height: 40px; min-width: 200px;  border: none;" id="originButtonFormTrait" onclick="SetupButtons(event,'FormTrait')">
+                                    <div id="selected-options-container" style="color:white"></div>
+                                </button>
+
+
+                            </div>
+                        </div>
+                        <div class="subSubDiv2">
+                            <div id="buttonContainer"> <span class="small_title"> Culture & Society</span>
+                                <button class="button" id="originButtonCulture" onclick="SetupButtons(event,'Culture')"></button>
+
+                            </div>
+
+                            <div id="buttonContainer">
+                                <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons(event,'Society1')"></button>
+
+                            </div>
+                            <div id="buttonContainer">
+                                <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons(event,'Society2')"></button>
+
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </div>
 
@@ -230,12 +266,38 @@
             </div>
 
 
+        </div>
+        <div style="color:white;display:none" id="overviewPanel">
+            <button class="button-random" onclick="ResetHighlights()" id="toggleButton">Reset <favourite></favourite></button>
+            <button class="button-random" onclick="ShowHideUnFavs()" id="toggleButton">Show/Hide non-<favourite></favourite></button>
+            <p><span id="active-indices"></span></p>
+            <div class="overview" id="mainoverview">
 
+                <div class="column" id="overviewHeroSkillsHolder"></div>
+                <div class="column" id="overviewPassivesHolder"></div>
+                <div class="column" id="overviewSummonHolder"></div>
+                <div class="column" id="overviewCombatSpellsHolder"></div>
+                <div class="column" id="overviewTransformationsHolder"></div>
+                <div class="column" id="overviewEnchantmentsHolder"></div>
+                <div class="column" id="overviewOtherSpellHolder"></div>
 
+                <div class="column" id="overviewUnitsHolder"></div>
+                <div class="column" id="overviewUpgradesHolder"></div>
+                <div class="column" id="overviewSPIHolder"></div>
+                <div class="column" id="overviewSiegeHolder"></div>
+                <div class="column" id="overviewEmpireHolder"></div>
+            </div>
         </div>
 
 
     </div>
+
+    <div id="hiddentooltips" style="display: none"></div>
+
+
+
+
+
 
 
     <div class="selections" id="selectionsHolder">
@@ -246,10 +308,6 @@
         </div>
 
     </div>
-
-
-
-
 
 
 </body>
@@ -277,6 +335,24 @@
         position: relative;
         display: flex;
         justify-content: space-between;
+
+        align-items: center;
+
+        cursor: pointer;
+    }
+
+    /* CSS styles for buttons */
+    .button2 {
+
+        background-color: #007bff00;
+        color: #fff;
+        border: none;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+
+        align-items: center;
+
         cursor: pointer;
     }
 
@@ -299,6 +375,8 @@
         cursor: pointer;
         position: relative;
         left: 30px;
+
+        align-items: center;
 
         display: flex;
         justify-content: space-between;
@@ -369,6 +447,17 @@
     .tome-button-small {
 
         width: 60px;
+        height: 70px;
+
+        color: #fff;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
+    }
+
+    .skill-button-small {
+
+        width: 80px;
         height: 80px;
 
         color: #fff;
@@ -383,30 +472,28 @@
         justify-content: space-between;
     }
 
-    .list-button-small:hover {
+    .list-button-small:hover,
+    .list-button:hover,
+    .button:hover,
+    .button-inset:hover,
+    .skill-button-small:hover,
+    .tome-button-small:hover,
+    .button-random:hover {
 
-        background-color: dimgrey;
+        filter: brightness(200%);
 
     }
 
-    .list-button:hover {
 
-        background-color: dimgrey;
 
-    }
 
-    .button-random {
-
-        background-color: #9a0f96e8;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        position: relative;
-
-        height: 30px;
-        /* display: flex; */
-        /* justify-content: space-between; */
-
+    .test {
+        width: 20px;
+        height: 20px;
+        border-width: 5px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
     }
 
     .wrappers {
@@ -414,9 +501,21 @@
 
         display: grid;
         grid-template-columns: repeat(7, 2fr);
-        overflow-y: visible;
+        overflow-y: auto;
+        max-height: 300px;
         height: fit-content;
 
+
+    }
+
+    .subSubDiv {
+        min-height: 240px;
+        width: 350px;
+    }
+
+    .subSubDiv2 {
+        min-height: 130px;
+        width: 350px;
     }
 
     .shield {
@@ -425,17 +524,18 @@
 
     .symbol {
 
+
         position: absolute;
         /* float: left; */
-        top: 42px;
-
-        left: 16px;
+        top: 12px;
+        left: 14px;
     }
 
     .selections {
         width: fit-content;
 
         height: fit-content;
+        max-height: 300px;
         color: white;
         display: inline-block;
         position: absolute;
@@ -452,12 +552,13 @@
         display: inline-block;
         position: relative;
 
-        width: 650px;
+        width: 700px;
 
-        left: 102px;
 
 
         background-image: url(/aow4db/Icons/tooltipBG.png);
+
+        background-size: cover;
         font-size: 13px;
         color: #bbcdf6;
         text-align: left;
@@ -468,17 +569,7 @@
         text-shadow: 2px 2px black;
     }
 
-    .inputfield {
-        border-width: 6px;
-        /* width: 300px; */
-        width: auto;
-        border-style: solid;
-        border-width: 10px;
-        border-image: url(/aow4db/Icons/9slicetooltip.png);
-        border-image-slice: 10 10 10 10;
-        background-color: black;
-        color: #F0F8FF;
-    }
+
 
     .affinityText {
 
@@ -491,13 +582,11 @@
 
     .factioncreator {
 
-        margin: auto;
-        left: -127px;
-        width: 800px;
+
         position: relative;
         display: flex;
-        justify-content: space-between;
 
+        justify-content: center;
     }
 
     .AddSubtract {
@@ -507,6 +596,61 @@
         color: white;
         background-color: transparent;
         border: none;
+    }
+
+    .overview {
+        max-height: 650px;
+        display: flex;
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .column {
+        padding: 6px;
+        font-size: 14px;
+        font-family: 'Decorative';
+        color: burlywood;
+
+
+
+    }
+
+
+    .overview_list_entry {
+        display: flex;
+        box-sizing: border-box;
+        min-width: 180px;
+        min-height: 30px;
+        max-width: 180px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-width: 3px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        border-image-repeat: stretch;
+        overflow: hidden;
+        background-color: rgb(17, 17, 17);
+
+        font-size: 12px;
+        color: white;
+
+    }
+
+    .overview_list_entry.highlighted {
+
+        background-image: url(/aow4db/Icons/Interface/fav.png);
+        background-repeat: no-repeat;
+        background-position-x: 156px;
+        background-size: 20px;
+        background-color: rgb(24 42 64);
+    }
+
+    .overview_list_entry:hover {
+
+        filter: brightness(200%)
     }
 
     .AddSubtract:hover {
@@ -521,5 +665,35 @@
     .sortingButton:hover {
         background-color: dimgrey;
     }
-</style></html>
+
+</style>
+
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("shareLink");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        // alert("Copied the text: " + copyText.value);
+    }
+
+    document.getElementById('toggleButton').addEventListener('click', function() {
+        const panel = document.getElementById('overviewPanel');
+        if (panel.style.display === 'none' || panel.style.display === '') {
+            panel.style.display = 'block'; // Show the panel
+        } else {
+            panel.style.display = 'none'; // Hide the panel
+        }
+    });
+
+</script>
+
+</html>
 <footer><br><br></footer>

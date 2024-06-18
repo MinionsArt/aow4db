@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
         var unitarray = ["spirit_tracker", "protector", "primal_darter", "primal_charger", "animist", "ancestral_warden"];
+        // var unitarray2 = ["lesser_stone_spirit"];
 
 
         $("#body").ready(function() {
@@ -19,10 +20,18 @@
         });
 
         function HandlePage() {
-            SetButtonsAndDivs(unitarray, undefined, "unit");
+
+            SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Ash Sabertooth");
+            SetButtonsAndDivs(unitarray, "buttonHolder2", "unit", "dataHolder2", "Dune Serpent");
+            SetButtonsAndDivs(unitarray, "buttonHolder3", "unit", "dataHolder3", "Glacial Mammoth");
+            SetButtonsAndDivs(unitarray, "buttonHolder4", "unit", "dataHolder4", "Mire Crocodile");
+            SetButtonsAndDivs(unitarray, "buttonHolder5", "unit", "dataHolder5", "Storm Crow");
+            SetButtonsAndDivs(unitarray, "buttonHolder6", "unit", "dataHolder6", "Sylvan Wolf");
+            SetButtonsAndDivs(unitarray, "buttonHolder7", "unit", "dataHolder7", "Tunneling Spider");
             SetLevelUpStuff();
             SetUpCombatEnc();
         }
+
     </script>
 
 
@@ -38,70 +47,119 @@
         <img src="/aow4db/Icons/Text/primal.png" height="40px"> Primal Culture Units <img src="/aow4db/Icons/Text/primal.png" height="40px">
 
     </div>
-    <div style="display:flex; justify-content: space-evenly;">
-        <div style="
-    color: white;
-    text-align: center;
-    margin-left: auto;
-    position: relative;
-    font-size: 12px;
-    padding: 10px;
-    padding-top: 15px;
-    max-width: 360px;"> Note: Primal units did not export correctly because of the subcultures, looking for a solution
-            <br><br>
-            In the meantime, here is the missing information:<br><br>
-            All units gain their respective primal spirit communion, and the Animist will gain Summon (Primal Spirit) and it's main attack will have a different damage type<br><br>
-        </div>
-        <div style="
-    color: white;
-    text-align: center;
-    margin-right: auto;
-    position: relative;
-    font-size: 12px;
-    padding: 10px;
-    padding-top: 15px;
-    max-width: 360px;">
-            <button type="button" class="collapsible"> Mire Crocodile:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/mire_crocodile2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/mire_crocodile.png"></div>
-            <br>
-            <button type="button" class="collapsible"> Storm Crow:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/storm_crow2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/storm_crow.png"></div>
 
-            <br>
-            <button type="button" class="collapsible"> Glacial Mammoth:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/glacial_mammoth2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/glacial_mammoth.png"></div>
-            <br>
-            <button type="button" class="collapsible"> Ash Sabertooth:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/ash_sabertooth2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/ash_sabertooth.png"></div>
-            <br>
-            <button type="button" class="collapsible"> Dune Serpent:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/dune_serpent2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/dune_serpent.png"></div>
-            <br>
-            <button type="button" class="collapsible"> Sylvan Wolf:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/sylvan_wolf2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/sylvan_wolf.png"></div>
-            <br>
-            <button type="button" class="collapsible"> Tunneling Spider:</button>
-            <div class="combatEnchantment" style="display: none;"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/tunneling_spider2.png"><img style="float:left;  width:100% ;padding:10px" src="/aow4db/Icons/Interface/tunneling_spider.png"></div>
+    <div class="subcultureHolder">
+        <button onclick="showSubDiv(event,'Ash Sabertooth')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_ash_sabertooth.png width="50px">
+            <p class="subCultureName" id="subCultureNameAsh Sabertooth">Ash Sabertooth</p>
+        </button>
+        <button onclick="showSubDiv(event,'Dune Serpent')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_dune_serpent.png width="50px">
+            <p class="subCultureName" id="subCultureNameDune Serpent">Dune Serpent</p>
+        </button>
+        <button onclick="showSubDiv(event,'Glacial Mammoth')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_glacial_mammoth.png width="50px">
+            <p class="subCultureName" id="subCultureNameGlacial Mammoth">Glacial Mammoth</p>
+        </button>
+        <button onclick="showSubDiv(event,'Mire Crocodile')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_mire_crocodile.png width="50px">
+            <p class="subCultureName" id="subCultureNameMire Crocodile">Mire Crocodile</p>
+        </button>
+        <button onclick="showSubDiv(event,'Storm Crow')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_storm_crow.png width="50px">
+            <p class="subCultureName" id="subCultureNameStorm Crow">Storm Crow</p>
+        </button>
+        <button onclick="showSubDiv(event,'Sylvan Wolf')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_sylvan_wolf.png width="50px">
+            <p class="subCultureName" id="subCultureNameSylvan Wolf">Sylvan Wolf</p>
+        </button>
+        <button onclick="showSubDiv(event,'Tunneling Spider')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/primal_tunneling_spider.png width="50px">
+            <p class="subCultureName" id="subCultureNameTunneling Spider">Tunneling Spider</p>
+        </button>
+
+    </div>
+
+    <div class="subDiv" id="Ash Sabertooth">
+        <div class="w3-container">
+            <div id="buttonHolder1" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder1" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="subDiv" id="Dune Serpent">
+        <div class="w3-container">
+            <div id="buttonHolder2" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder2" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="subDiv" id="Glacial Mammoth">
+        <div class="w3-container">
+            <div id="buttonHolder3" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder3" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="subDiv" id="Mire Crocodile">
+        <div class="w3-container">
+            <div id="buttonHolder4" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder4" class="dataholder" style="margin-top:-250px">
+            </div>
+
 
         </div>
     </div>
 
-    <div class="w3-container">
-        <div id="buttonHolder" class="w3-bar w3-black">
+    <div class="subDiv" id="Storm Crow">
+        <div class="w3-container">
+            <div id="buttonHolder5" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder5" class="dataholder" style="margin-top:-250px">
+            </div>
+
 
         </div>
-        <div id="dataHolder" style="margin-top:-250px">
+    </div>
+    <div class="subDiv" id="Sylvan Wolf">
+        <div class="w3-container">
+            <div id="buttonHolder6" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder6" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
         </div>
+    </div>
+    <div class="subDiv" id="Tunneling Spider">
+        <div class="w3-container">
+            <div id="buttonHolder7" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder7" class="dataholder" style="margin-top:-250px">
+            </div>
 
 
+        </div>
     </div>
 
 
 
+</body>
+<script>
 
+</script>
 
-
-</body></html>
+</html>
 <footer>
     <br>
     <br>

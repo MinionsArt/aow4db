@@ -13,13 +13,18 @@ html {
 }
 
 @font-face {
+    font-family: 'Number';
+    src: url(/aow4db/Style/NUMBER.ttf);
+}
+
+@font-face {
     font-family: 'Decorative';
     src: url(/aow4db/Style/DECORATIVE.otf);
 }
 
 @font-face {
     font-family: 'Regular';
-    src: url(/aow4db/Style/REGULAR.ttf);
+    src: url(/aow4db/Style/MinionPro/MINIONPRO-MEDIUM.otf);
 }
 
 body {
@@ -395,10 +400,13 @@ a:hover {
     ;
 }
 
+
+
 p {
     font-family: 'Regular', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0px;
+    font-weight: lighter;
 
 }
 
@@ -414,6 +422,12 @@ p {
     position: relative;
     display: contents;
     width: 3000px;
+}
+
+.subCultureName {
+    text-align: center;
+    color: white;
+    font-size: 11px;
 }
 
 
@@ -446,7 +460,7 @@ p {
 
     position: relative;
     float: right;
-    font-size: 12px;
+    font-size: 15px;
     padding: 10px;
 
     padding-top: 15px;
@@ -457,7 +471,7 @@ p {
 .tome_description {
     position: relative;
     float: right;
-    font-size: 12px;
+    font-size: 13px;
     padding: 10px;
     color: darkgray;
     text-align: center;
@@ -472,7 +486,8 @@ p {
     min-width: 400px;
     float: left;
     background-image: url(/aow4db/Icons/tooltipBG.png);
-    font-size: 13px;
+    background-size: cover;
+    font-size: 15px;
     color: #bbcdf6;
     text-align: left;
     border-width: 10px;
@@ -846,14 +861,17 @@ tab {
 }
 
 .unit_stats {
+
     height: 40px;
     top: 0px;
-    width: 340px;
+    left: -16px;
+    width: 318px;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
     margin-bottom: -20px;
     margin-top: 5px;
+    padding-left: 25px;
     position: relative;
     border-top: 1px solid rgba(47, 162, 100, 0.2);
     border-bottom: 1px solid rgba(47, 162, 100, 0.2);
@@ -902,6 +920,29 @@ tab {
     display: inline-block;
     text-shadow: 2px 2px 3px black;
     min-width: 50px;
+}
+
+.subcultureHolder {
+
+    display: flex;
+    justify-content: center;
+    /* Center the buttons horizontally */
+    align-items: center;
+    /* Center the buttons vertically */
+    gap: 10px;
+    /* Space between buttons */
+    padding: 10px;
+    color: white;
+
+}
+
+.subscultureButton {
+    background-color: transparent;
+    border: none;
+}
+
+.subscultureButton:hover {
+    filter: brightness(150%);
 }
 
 .unit_name {
@@ -976,6 +1017,7 @@ tab {
 
 .loreText {
     color: #ffe6c6;
+    font-size: 14px;
 }
 
 .togglelink2 {
@@ -1058,15 +1100,14 @@ tab {
 }
 
 .itemAbility {
-    background-color: rgb(5, 40, 60, 0.4);
-    font-size: 13px;
+    background-color: rgb(5, 5, 5, 0.4);
+    font-size: 15px;
     color: #bbcdf6;
     border-width: 10px;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 10 10 10 10 fill;
     text-shadow: 2px 2px 3px black;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
     width: 450px;
     display: block;
     padding: 10px;
@@ -1119,6 +1160,7 @@ hr {
 .resistanceNumber {
     float: right;
     margin-top: 1px;
+    font-family: 'Number';
     text-shadow: 2px 2px 3px black;
 }
 
@@ -1135,6 +1177,7 @@ hr {
     position: relative;
     display: inline-block;
     max-width: 40px;
+    z-index: 2;
 }
 
 .unittype_icon:hover {
@@ -1153,34 +1196,74 @@ hr {
     filter: brightness(150%);
 }
 
+.button-random {
+
+
+    background-color: #4b1d63;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    height: 30px;
+    border-width: 5px;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 10 10 10 10;
+
+}
+
+.button-random:active {
+    background-color: black;
+}
+
+.inputfield {
+    border-width: 6px;
+    /* width: 300px; */
+    width: auto;
+    border-style: solid;
+    border-width: 10px;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 10 10 10 10;
+    background-color: black;
+    color: #F0F8FF;
+}
+
 .tooltiptextnew {
+
     background-image: url(/aow4db/Icons/tooltipBG.png);
     background-size: auto;
-    font-size: 13px;
+    font-size: 15px;
     color: #bbcdf6;
     text-align: left;
-    border-width: 5px;
+    padding: 5px;
+    border-width: 10px;
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 10 10 10 10 fill;
     text-shadow: 2px 2px 3px black;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
-    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
     position: absolute;
     z-index: 10000;
     min-width: 300px;
     max-width: 400px;
     min-height: 40px;
     margin-left: 0px;
-    pointer-events: none;
+    font-weight: lighter;
 }
 
 hyperlink {
     color: beige;
 }
 
+helpcolor {
+    color: lightgrey;
+}
+
 .stat_num {
     font-size: 18px;
+    font-family: 'Number';
     text-shadow: 2px 2px 3px black;
     position: relative;
     float: left;
@@ -1420,6 +1503,12 @@ bulletlist:after {
     text-indent: -2px;
 }
 
+bulletlist bulletlist bullet::before {
+    content: '⬦';
+    /* Different bullet icon for nested bullets */
+
+}
+
 bullet {
     display: list-item;
     list-style-type: none;
@@ -1543,6 +1632,17 @@ HelpText {
     font-size: 14px;
 }
 
+greenText {
+    color: palegreen;
+    font-size: 16px;
+
+}
+
+highlight {
+    background-color: aqua;
+    color: bisque;
+}
+
 fireCol {
     color: red;
 }
@@ -1556,6 +1656,13 @@ xp {
     max-height: 15px;
     top: 2px;
     content: url(/aow4db/Icons/Text/xp.png);
+    position: relative;
+}
+
+favourite {
+    max-height: 15px;
+    top: 2px;
+    content: url(/aow4db/Icons/Interface/fav.png);
     position: relative;
 }
 
@@ -1648,6 +1755,22 @@ research {
     border-color: #3dff00;
     transform: rotate(45deg);
     background: linear-gradient(126deg, #7ff433 70%, #f1ea95);
+}
+
+.ELDRITCHREALMStriangle {
+
+
+    position: absolute;
+    top: -68px;
+    z-index: 0;
+    right: -168px;
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #490d82;
+    transform: rotate(45deg);
+    background: linear-gradient(126deg, purple 50%, #65aadf);
 }
 
 .header-img::after {
@@ -1839,6 +1962,41 @@ unitCivilian {
     max-height: 20px;
     top: 3px;
     content: url(/aow4db/Icons/Abilities/civilian.png);
+    position: relative;
+}
+
+unitCavalry {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Abilities/cavalry.png);
+    position: relative;
+}
+
+unitPlant {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Abilities/plant.png);
+    position: relative;
+}
+
+unitConstruct {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Abilities/construct.png);
+    position: relative;
+}
+
+unitFey {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Abilities/fey.png);
+    position: relative;
+}
+
+unitAnimal {
+    max-height: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Abilities/animal.png);
     position: relative;
 }
 
@@ -2173,6 +2331,83 @@ mountSpecial {
     position: relative;
 }
 
+ash_sabertooth {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_ash_sabertooth.png);
+    position: relative;
+}
+
+dune_serpent {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_dune_serpent.png);
+    position: relative;
+}
+
+glacial_mammoth {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_glacial_mammoth.png);
+    position: relative;
+}
+
+mire_crocodile {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_mire_crocodile.png);
+    position: relative;
+}
+
+storm_crow {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_storm_crow.png);
+    position: relative;
+}
+
+sylvan_wolf {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_sylvan_wolf.png);
+    position: relative;
+}
+
+tunneling_spider {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/primal_tunneling_spider.png);
+    position: relative;
+}
+
+attunement {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/attunement.png);
+    position: relative;
+}
+
+potential {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/potential.png);
+    position: relative;
+}
+
+summoning {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/summoning.png);
+    position: relative;
+}
+
+thralls {
+    max-width: 20px;
+    top: 5px;
+    content: url(/aow4db/Icons/Text/thrall.png);
+    position: relative;
+}
+
 once {
     max-width: 20px;
     top: 5px;
@@ -2250,12 +2485,15 @@ medal_elite {
     position: relative;
 }
 
-medal_champion {
+medal_champion,
+medalgold {
     max-width: 20px;
     top: 8px;
     content: url(/aow4db/Icons/Text/medal_champion.png);
     position: relative;
 }
+
+
 
 medal_legend {
     max-width: 20px;
@@ -2268,5 +2506,12 @@ bindingessence {
     max-width: 20px;
     top: 3px;
     content: url(/aow4db/Icons/Text/bindingEssence.png);
+    position: relative;
+}
+
+astralechoes {
+    max-width: 20px;
+    top: 3px;
+    content: url(/aow4db/Icons/Text/astral_echoes.png);
     position: relative;
 }

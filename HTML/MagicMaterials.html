@@ -12,6 +12,7 @@
         var oreArray = ["arcanium_ore", "focus_crystals", "fireforge_stone"];
         var liquidArray = ["archon_blood", "astral_dew", "tranquility_pool"];
         var plantArray = ["haste_berries", "silvertongue_fruit", "rainbow_clover"];
+        var voidArray = ["void_stones"];
 
 
         $("#body").ready(function() {
@@ -22,11 +23,13 @@
         });
 
         function HandlePage() {
+            showWorldStructuresWithArgument("Void Stones", "void_stones", voidArray, "Void Stones");
             showWorldStructuresWithArgument("Ores", "ore", oreArray, "Ores");
             showWorldStructuresWithArgument("Liquids", "liquid", liquidArray, "Liquids");
             showWorldStructuresWithArgument("Plants", "plant", plantArray, "Plants");
             SetLevelUpStuff();
         }
+
     </script>
 
 
@@ -46,6 +49,33 @@
         <div class="w3-bar w3-black" id="buttonHolder">
 
         </div>
+
+        <div class="mod_card">
+            <div class="structure_image_holder" style="align-content: center">
+                <div class="mod_name">
+                    VOID STONES (Needs 3)</div>
+                <div class="mod_description" style="float:left">
+
+                    Collection Effect:<br>
+                    <div class="mod_name">
+                        Void Ink:
+                    </div>
+                    <br>
+
+                    <bulletlist>
+
+                        <bullet>Umbral Dwellings with an Eldritch Pact grant +30 <knowledge></knowledge> Knowledge.
+                        </bullet>
+                        <bullet>Vassals grant +30 <knowledge></knowledge> Knowledge.
+                        </bullet>
+                    </bulletlist>
+                </div>
+            </div>
+        </div>
+        <div id="Void Stones">
+
+        </div>
+
         <div class="mod_card">
             <div class="structure_image_holder" style="align-content: center">
                 <div class="mod_name">
@@ -129,7 +159,9 @@
 </body>
 <script>
 
-</script></html>
+</script>
+
+</html>
 <footer>
     <br>
     <br>

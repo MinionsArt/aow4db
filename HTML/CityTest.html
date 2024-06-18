@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    <script>
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                //   CheckData();
+            });
+        });
+
+    </script>
+    <style>
+        .tree-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .tree-node {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 120px;
+            text-align: center;
+        }
+
+        .tree-node.hidden {
+            display: none;
+        }
+
+        .tree-connector {
+            width: 2px;
+            height: 40px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+
+        .tree-horizontal-connector {
+            width: 40px;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+    </style>
+
+    <script>
+        function unlockBuilding(buildingId) {
+            var building = document.getElementById(buildingId);
+            if (building) {
+                building.classList.remove('hidden');
+            }
+        }
+
+    </script>
+
+    <title>Age of Wonders 4 Database - Abilities List</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+
+    <div class="tree-container">
+        <div class="tree-node" id="building1">
+            Building 1
+            <div class="tree-connector"></div>
+        </div>
+        <div class="tree-horizontal-connector"></div>
+        <div class="tree-node" id="building2">
+            Building 2
+            <div class="tree-connector"></div>
+        </div>
+        <div class="tree-horizontal-connector"></div>
+        <div class="tree-node hidden" id="building3">
+            Building 3
+            <div class="tree-connector"></div>
+        </div>
+        <div class="tree-horizontal-connector"></div>
+        <div class="tree-node hidden" id="building4">
+            Building 4
+            <div class="tree-connector"></div>
+        </div>
+    </div>
+
+    <button onclick="unlockBuilding('building3')">Unlock Building 3</button>
+    <button onclick="unlockBuilding('building4')">Unlock Building 4</button>
+
+
+
+
+
+
+</body>
+
+</html>
+<footer>
+    <br>
+    <br>
+</footer>
