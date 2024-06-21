@@ -761,11 +761,48 @@ function ClearSkillPath(test) {
 
 
     if (test != undefined) {
+
         currentSignatureSkills = [];
     }
 
     //currentTomeList.push(currentTome);
     // selectSkillPath();
+
+
+
+    RecalculateStats(false);
+    // swap current known origin
+    // draw all tomes
+
+    toggleOriginButtons();
+}
+
+
+function RemoveLastSkill() {
+
+
+    currentSignatureSkills.pop();
+
+
+    //currentTomeList.push(currentTome);
+    selectSkillPath();
+
+
+
+    RecalculateStats(false);
+    // swap current known origin
+    // draw all tomes
+
+    toggleOriginButtons();
+}
+
+function RemoveLastTomePath() {
+
+    if (currentTomeList.length > 1) {
+        currentTomeList.pop();
+    }
+
+    selectTomePath();
 
 
 

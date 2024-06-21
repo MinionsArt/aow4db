@@ -205,7 +205,7 @@
                         </div>
 
                         <div class="subSubDiv2"><span class="small_title">Signature Skills</span>
-                            <button style="float:right; color:red" class="button" onclick="ClearSkillPath('something')"> X</button>
+                            <button style="float:right; color:red" class="button" onclick="RemoveLastSkill()"> X</button>
                             <div id="buttonContainer" style="height:100px">
                                 <button class="button2" id="originButtonSignature" onclick="SetupButtons(event,'Signature')">+</button>
 
@@ -258,7 +258,9 @@
 
                     <span class="small_title"> Tome Path</span>
 
-                    <button style="float:right; color:red" class="button" onclick="ClearTomePath()"> Clear Tome Path</button>
+
+                    <button style="float:right;  color:red" class="button" onclick="ClearTomePath()"> Clear All </button>
+                    <button style="float:right; margin-right:100px;color:red" class="button" onclick="RemoveLastTomePath()"> Clear Last</button>
                     <br>
                     <div style="display:grid;grid-template-columns: repeat(8, 2fr); margin: 15px;" id="tomePathButton"></div>
 
