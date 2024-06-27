@@ -2249,6 +2249,21 @@ async function spawnItemCards(list, divID) {
 
 }
 
+async function spawnSkillCards(list, divID) {
+    if (divID === undefined) {
+        divID = "item";
+    }
+    var j = "";
+    var doc = document.getElementById(divID);
+    for (var i = 0; i < list.length; i++) {
+
+        var iDiv = skill_card_template.content.cloneNode(true);
+        doc.appendChild(iDiv);
+
+
+    }
+}
+
 async function spawnSpellCardSingle(list, divID) {
     if (divID === undefined) {
         divID = "spell";
@@ -2331,7 +2346,7 @@ async function showHeroTraitFromList(list, divID) {
 async function showSkillFromList(list, divID) {
 
 
-    await spawnItemCards(list, divID);
+    await spawnSkillCards(list, divID);
 
     for (var i = 0; i < list.length; i++) {
 
@@ -6230,8 +6245,8 @@ function showItem(a) {
 
     var tomeOriginIcon = document.getElementById("originTomeIcon");
     tomeOriginIcon.setAttribute("src", "/aow4db/Icons/Abilities/" + a.icon + ".png");
-    tomeOriginIcon.setAttribute("height", "130px");
-    tomeOriginIcon.setAttribute("style", "margin-left:40px");
+    // tomeOriginIcon.setAttribute("height", "130px");
+    //  tomeOriginIcon.setAttribute("style", "margin-left:40px");
     tomeOriginIcon.setAttribute("id", "modicon" + a.id);
 
 
@@ -6785,7 +6800,7 @@ function AddDLCTag(dlcname) {
     newDivForMount.className = "mountToolTip";
 
     imag = document.createElement("IMG");
-    imag.setAttribute("height", "30px");
+    imag.setAttribute("height", "25px");
 
     spa = document.createElement("SPAN");
     if (dlcname == "DRAGONLORDS ") {
