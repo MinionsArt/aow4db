@@ -150,7 +150,7 @@ var primalCultureUnits = ["spirit_tracker", "protector", "primal_darter", "prima
 
 var MountedSpecialList = ["pioneer", "pathfinder", "scout", "lightseeker", "knight", "outrider", "dark_knight", "tyrant_knight", "wildspeaker", "houndmaster", "spellbreaker", "dragoon", "spirit_tracker", "spellshield"];
 
-var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "eagle_rider", "transmuter", "zephyr_archer", "afflictor", "stormbringer", "constrictor", "pyre_templar"];
+var extraFormUnitsList = ["phantasm_warrior", "evoker", "white_witch", "necromancer", "zombie", "decaying_zombie", "skeleton", "chaplain", "zealot", "inquisitor", "glade_runner", "pyromancer", "warbreed", "exemplar", "transmuter", "zephyr_archer", "afflictor", "stormbringer", "constrictor", "pyre_templar"];
 
 var incorrectIconOverrideList = ["summon_zealot", "summon_lightbringer", "conjure_divine_beacon", "summon_lesser_snow_spirit", "summon_wind_rager", "summon_balor", "summon_lesser_magma_spirit", "summon_horned_god", "summon_corrupt_soul"];
 
