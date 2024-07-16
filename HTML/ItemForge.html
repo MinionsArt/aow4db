@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        var CurrentType = "";
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                CheckData();
+            });
+        });
+
+        function HandlePage() {
+
+        }
+
+
+        function showItemType(event, type) {
+            CurrentType = type.toLowerCase();
+            SetIcons(type);
+            ClearSelections();
+
+        }
+
+        function showInfusionType(event, infusionType) {
+            var list = new Array();
+            for (i in jsonItemForge) {
+                for (j in jsonItemForge[i].allowed_types) {
+                    if (jsonItemForge[i].allowed_types[j].type == CurrentType && jsonItemForge[i].category == infusionType) {
+                        list.push(jsonItemForge[i]);
+                    }
+                }
+            }
+
+            ShowItemForgeResults(list);
+        }
+
+        function ShowItemForgeResults(list) {
+            // get the selectionsholder
+            var selectionsHolder = document.getElementById("SelectionsHolder");
+            ClearSelections();
+            for (i in list) {
+                var newEntry = document.createElement("BUTTON");
+                newEntry.className = "list-button";
+                newEntry.innerHTML = list[i].name + " Cost: " + list[i].point_cost;
+                newEntry.addEventListener('click', TryToAddToItem(list[i]));
+                selectionsHolder.append(newEntry);
+            }
+        }
+
+        function TryToAddToItem(item) {
+            // check if points works
+            ClearResults();
+            var resultsHolder = document.getElementById("ResultsHolder");
+            var newEntry = document.createElement("BUTTON");
+            newEntry.className = "list-button";
+            newEntry.innerHTML = item.name + " Cost: " + item.point_cost;
+
+            resultsHolder.append(newEntry);
+
+
+        }
+
+        function ClearResults() {
+            var resultsHolder = document.getElementById("ResultsHolder");
+            resultsHolder.innerHTML = "";
+        }
+
+        function ClearSelections() {
+
+            var selectionsHolder = document.getElementById("SelectionsHolder");
+            selectionsHolder.innerHTML = "";
+        }
+
+        function SetIcons(id) {
+            var thisNameAll = document.querySelectorAll('.subCultureName');
+
+            for (let index = 0; index < thisNameAll.length; index++) {
+                thisNameAll[index].style.color = "grey";
+
+            }
+            var thisName = document.getElementById('subCultureName' + id);
+            if (thisName == null) {
+                return;
+            }
+            thisName.style.color = "white";
+
+        }
+
+    </script>
+
+
+    <title>Age of Wonders 4 Database - Item Forge</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="textblocktitle">
+        Item Forge
+    </div>
+
+
+    <div class="w3-container">
+        <div class="subcultureHolder">
+            <button onclick="showItemType(event,'Primary')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
+                <p class="subCultureName" id="subCultureNamePrimary">Primary</p>
+            </button>
+            <button onclick="showItemType(event,'Trinket')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
+                <p class="subCultureName" id="subCultureNameTrinket">Trinket</p>
+            </button>
+
+
+        </div>
+        <div style="display: flex">
+            <div id="Selections" class="backdrop">Options
+                <div id="SelectionsHolder" class="selections"></div>
+            </div>
+
+            <div>Infusions
+                <div class="infusionsHolder">
+                    <button onclick="showInfusionType(event,'damage')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="100px">
+                        <p class="subCultureName" id="subCultureNameAttunement">Damage</p>
+                    </button>
+                    <div>Points 0/5</div>
+                    <button onclick="showInfusionType(event,'ability')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="100px">
+                        <p class="subCultureName" id="subCultureNamePotential">Ability</p>
+                    </button>
+                </div>
+                <div class="infusionsHolder">
+                    <button onclick="showInfusionType(event,'passive1')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
+                        <p class="subCultureName" id="subCultureNameAttunement">Passive</p>
+                    </button>
+                    <button onclick="showInfusionType(event,'passive2')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
+                        <p class="subCultureName" id="subCultureNamePotential">Passive</p>
+                    </button>
+                    <button onclick="showInfusionType(event,'passive3')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
+                        <p class="subCultureName" id="subCultureNameAttunement">Passive</p>
+                    </button>
+                    <button onclick="showInfusionType(event,'passive4')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
+                        <p class="subCultureName" id="subCultureNamePotential">Passive</p>
+                    </button>
+                    <button onclick="showInfusionType(event,'passive5')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
+                        <p class="subCultureName" id="subCultureNamePotential">Passive</p>
+                    </button>
+
+                </div>
+            </div>
+
+            <div id="Selections" class="backdrop">Results
+                <div id="ResultsHolder" class="selections"></div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+<style>
+    .backdrop {
+        color: white;
+        background-color: darkgreen;
+    }
+
+    .infusionsHolder {
+        color: white;
+        display: flex;
+
+        justify-content: space-between;
+
+    }
+
+    .selections {
+        color: white;
+        width: 400px;
+        min-width: 400px;
+        min-height: 1000px;
+    }
+
+    .list-button {
+        border-width: 3px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        border-image-repeat: stretch;
+        width: 100%;
+        background-color: #111;
+        color: #fff;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: normal;
+
+</style>
+<footer>
+    <br>
+    <br>
+</footer>

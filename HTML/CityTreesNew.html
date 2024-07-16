@@ -13,12 +13,12 @@
         var townHall1 = {
             "requirement_description": "",
             "id": "town_hall_i_town_center",
-            "description": "",
+            "description": "Expand your City further and unlock more specialized City Structures",
             "name": "Town Hall I: Town Center",
             "icon": "town_hall_i_town_center",
             "is_sector_upgrade": false,
             "cost": "",
-            "prediction_description": "<bulletlist><bullet>+1 <hero></hero> Hero Cap</bullet><bullet>+20 <draft></draft> Draft income</bullet><bullet>+40 <food></food> Food income</bullet><bullet>+20 <production></production> Production income</bullet></bulletlist>",
+            "prediction_description": "<bulletlist><bullet>+20% <unitprod></unitprod> Draft</bullet><bullet>+10 <happiness></happiness> City Stability income</bullet><bullet>+30 <food></food> Food income</bullet><bullet>+20 <production></production> Production income</bullet></bulletlist>",
         };
         var throne = {
             "requirement_description": "",
@@ -28,7 +28,7 @@
             "icon": "throne",
             "is_sector_upgrade": false,
             "cost": "",
-            "prediction_description": "<bulletlist><bullet>Unlock Fortification</bullet><bullet>+20 <garrison></garrison> Fortification Health</bullet><bullet>+60 <knowledge></knowledge> Knowledge income</bullet><bullet>+40 <influence></influence> Imperium income</bullet><bullet>+120 <gold></gold> Gold income</bullet><bullet>+20 <mana></mana> Mana income</bullet></bulletlist>",
+            "prediction_description": "<bulletlist><bullet>Unlock Fortification</bullet><bullet>+20 <garrison></garrison> Fortification Health</bullet><bullet>+60 <knowledge></knowledge> Knowledge income</bullet><bullet>+120 <gold></gold> Gold income</bullet><bullet>+20 <mana></mana> Mana income</bullet></bulletlist>",
         };
 
 
@@ -38,7 +38,7 @@
 
 
         const townHallsGrid = [
-            ["town_hall_ii_castle", null, "town_hall_iii_citadel", "lords_manor:feual", null, null, "town_hall_iv_grand_estate"],
+            ["town_hall_ii_castle", null, "town_hall_iii_citadel", "lords_manor:feudal", null, null, "town_hall_iv_grand_estate"],
             ["town_hall_ii_bulwark", null, "town_hall_iii_forge_tower", "bastions_barricade:industrious", null, null, "town_hall_iv_industry_compound"],
             ["town_hall_ii_communal_tent", null, "town_hall_iii_halls_of_war", "shrine_of_the_wargod:barbarian", null, null, "town_hall_iv_warlords_pavilion"],
             ["town_hall_ii_mages_plaza", null, "town_hall_iii_mystic_spire", "altar_of_the_all-seers:mysticAttunement", "academy_of_potential:mysticPotential", "summoners_cistern:mysticSummoning", "town_hall_iv_wizards_auditorium"],
@@ -282,7 +282,7 @@
         }
 
         function findResources(text) {
-            const regex = /\+\d+\s*<([^>]+)>/g;
+            const regex = /\+\d+%?\s*<([^>]+)>/g;
             let match;
             const resources = new Set();
 
@@ -362,7 +362,7 @@
                     }
                     if (affinity == "mysticAttunement") {
 
-                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/Attunement.png\")";
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/attunement.png\")";
                         newNodeBackground.style.backgroundRepeat = "no-repeat";
                         newNodeBackground.style.backgroundPositionX = "140px";
                         newNodeBackground.style.backgroundSize = "80px";
@@ -371,7 +371,7 @@
                     }
                     if (affinity == "mysticPotential") {
 
-                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/Potential.png\")";
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/potential.png\")";
                         newNodeBackground.style.backgroundRepeat = "no-repeat";
                         newNodeBackground.style.backgroundPositionX = "140px";
                         newNodeBackground.style.backgroundSize = "80px";
@@ -380,7 +380,7 @@
                     }
                     if (affinity == "mysticSummoning") {
 
-                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/Summoning.png\")";
+                        newNodeBackground.style.backgroundImage = "url(\"/aow4db/Icons/Text/summoning.png\")";
                         newNodeBackground.style.backgroundRepeat = "no-repeat";
                         newNodeBackground.style.backgroundPositionX = "140px";
                         newNodeBackground.style.backgroundSize = "80px";
