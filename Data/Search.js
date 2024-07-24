@@ -44,7 +44,7 @@ function searchData(keywords) {
 
 function returnUnitList(fieldToSearch) {
     var i = "";
-    var list = new Array();
+    var list = [];
     for (i = 0; i < jsonUnits.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonUnits[i].id;
@@ -98,7 +98,7 @@ function returnUnitList(fieldToSearch) {
 
 
 function returnEmpireTreeList(fieldToSearch) {
-    var list = new Array();
+    var list = [];
     for (i = 0; i < jsonEmpire.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonEmpire[i].name;
@@ -124,7 +124,7 @@ function returnEmpireTreeList(fieldToSearch) {
 }
 
 function returnSpellList(fieldToSearch) {
-    var list = new Array();
+    var list = [];
     for (i = 0; i < jsonSpells.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonSpells[i].name;
@@ -165,7 +165,7 @@ function returnSpellList(fieldToSearch) {
 
 
 function returnTraitsList(fieldToSearch) {
-    var list = new Array();
+    var list = [];
     var i = "";
     for (i = 0; i < jsonFactionCreation2.length; i++) {
         if (document.getElementById("namesCheck").checked) {
@@ -199,8 +199,8 @@ function returnTraitsList(fieldToSearch) {
 
 
 function returnSkillList(fieldToSearch) {
-    var resultslist = new Array();
-    var hero = new Array();
+    var resultslist = [];
+    var hero = [];
     var i = "";
     var j, m, k, l = "";
 
@@ -315,8 +315,8 @@ function returnSkillList(fieldToSearch) {
 
 
 function returnEquipList(fieldToSearch) {
-    var resultslist = new Array();
-    var equip = new Array();
+    var resultslist = [];
+    var equip = [];
     var i = "";
     var j, m, k, l = "";
 
@@ -428,8 +428,8 @@ function returnEquipList(fieldToSearch) {
 
 
 function returnSiegeProj(fieldToSearch) {
-    var list = new Array();
-    var resIDList = new Array();
+    var list = [];
+    var resIDList = [];
     for (i = 0; i < jsonSiegeProjects.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonSiegeProjects[i].id;
@@ -465,7 +465,7 @@ function Sanitize(string) {
 }
 
 function returnWorldStructure(fieldToSearch) {
-    var list = new Array();
+    var list = [];
     for (i = 0; i < jsonWorldStructures.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonWorldStructures[i].id;
@@ -495,7 +495,7 @@ function returnWorldStructure(fieldToSearch) {
 }
 
 function returnStructure(fieldToSearch) {
-    var list = new Array();
+    var list = [];
     for (i = 0; i < jsonStructureUpgrades.length; i++) {
         if (document.getElementById("namesCheck").checked) {
             textvalue = jsonStructureUpgrades[i].id;
@@ -607,8 +607,8 @@ function searchUnits(keyword) {
 
 function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
     var p = "";
-    var abilitiesList = new Array();
-    for (j in jsonUnitAbilities) {
+    var abilitiesList = [];
+    for (var j = 0; j < jsonUnitAbilities.length; j++) {
         if ('name' in jsonUnitAbilities[j]) {
 
             textvalue = jsonUnitAbilities[j].name;
@@ -626,7 +626,7 @@ function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
 
 
     }
-    var returnList = new Array();
+    var returnList = [];
 
 
     for (var i = 0; i < abilitiesList.length; i++) {
@@ -637,11 +637,11 @@ function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
 
 
 
-    for (var i = 0; i < returnList.length; i++) {
+    for (var k = 0; k < returnList.length; k++) {
 
-        if (!isInArray(unitListToCheckTo, returnList[i])) {
+        if (!isInArray(unitListToCheckTo, returnList[k])) {
 
-            unitListToCheckTo.push(returnList[i]);
+            unitListToCheckTo.push(returnList[k]);
 
 
 
@@ -658,7 +658,7 @@ function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
 }
 
 function CheckDepricated(listChecking) {
-    var newList = new Array();
+    var newList = [];
     var i = "";
     for (i in listChecking) {
         if (depCheck(listChecking[i]) === false) {
@@ -672,7 +672,7 @@ function depCheck(id) {
     var p = "";
     for (p in jsonUnits) {
         if (jsonUnits[p].id === id) {
-            for (l in jsonUnits[p].primary_passives) {
+            for (var l = 0; l < jsonUnits[p].primary_passives.length; l++) {
                 if (jsonUnits[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
                     if (jsonUnits[p].id != "magma_spirit") {
 

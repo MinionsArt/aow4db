@@ -160,7 +160,7 @@ var incorrectIconOverrideList = ["summon_zealot", "summon_lightbringer", "conjur
 function GetUnitTierAndName(id, subcultureCheck) {
 
     var keepgoing = false;
-    for (i in jsonUnits) {
+    for (var i = 0; i < jsonUnits.length; i++) {
         if (id === jsonUnits[i].id) {
 
             if (jsonUnits[i].primary_passives.length > 0) {
@@ -213,7 +213,7 @@ function CheckIfFormUnit(id) {
 }
 
 function GetUnitTierAndNameTome(id) {
-    for (i in jsonTomes) {
+    for (var i = 0; i < jsonTomes.length; i++) {
         if (id === jsonTomes[i].id) {
             return romanize(jsonTomes[i].tier) + " - " + jsonTomes[i].name;
         }
@@ -222,7 +222,7 @@ function GetUnitTierAndNameTome(id) {
 }
 
 function GetSiegeProjectName(id) {
-    for (i in jsonSiegeProjects) {
+    for (var i = 0; i < jsonSiegeProjects.length; i++) {
         if (id === jsonSiegeProjects[i].id) {
             return jsonSiegeProjects[i].name;
         }
@@ -232,7 +232,7 @@ function GetSiegeProjectName(id) {
 
 
 function GetUnitNamePlain(id) {
-    for (i in jsonUnits) {
+    for (var i = 0; i < jsonUnits.length; i++) {
         if (id === jsonUnits[i].id) {
             return jsonUnits[i].name;
         }
@@ -241,7 +241,7 @@ function GetUnitNamePlain(id) {
 }
 
 function GetSpellTierAndName(id) {
-    for (i in jsonSpells) {
+    for (var i = 0; i < jsonSpells.length; i++) {
         if (id === jsonSpells[i].id) {
             return jsonSpells[i].name;
         }
@@ -676,8 +676,8 @@ async function openDiv(evt, cityName, search) {
         var children = parentDiv.children;
 
         // Loop through each child and set its display to "block"
-        for (var i = 0; i < children.length; i++) {
-            children[i].style.display = "block";
+        for (var j = 0; j < children.length; j++) {
+            children[j].style.display = "block";
         }
 
     } else {
@@ -814,7 +814,7 @@ function addAbilityslot(a, holder, list, enchant) {
 
             if ('modifiers' in jsonUnitAbilities[j]) {
 
-                for (l in jsonUnitAbilities[j].modifiers) {
+                for (var l = 0; l < jsonUnitAbilities[j].modifiers.length; l++) {
                     abilityName += "<span style=\"color:#addd9e;font-size: 20px\">&#11049</span>";
                     abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
                     abilityMod += (jsonUnitAbilities[j].modifiers[l].description) + "</bullet><br>";
@@ -824,9 +824,9 @@ function addAbilityslot(a, holder, list, enchant) {
             }
 
             var combinedReq = "";
-            var k = "";
-            for (k in abilityReq) {
-                combinedReq += abilityReq[k].requisite + ",";
+            var m = "";
+            for (m in abilityReq) {
+                combinedReq += abilityReq[m].requisite + ",";
             }
 
             abilityEncht = "";
@@ -1203,7 +1203,7 @@ function GetAbilityBackground(abilityDam) {
         }
 
     } else {
-        var abilityIconType = "ability_icon"
+        var abilityIconType = "ability_icon";
     }
     return abilityIconType;
 }
@@ -1306,8 +1306,8 @@ function GetAbilityToolTip(ability, abilityDam, abilityName, abilityIconType, ab
     var typeHolder = document.createElement("DIV");
     typeHolder.appendChild(actionPoint);
 
-    line2.appendChild(accrangeHolder)
-    line2.appendChild(typeHolder)
+    line2.appendChild(accrangeHolder);
+    line2.appendChild(typeHolder);
     abilityHighlighter.append(line2);
 
 
@@ -1596,7 +1596,7 @@ function combineDamageStrings(str1, str2) {
 
 function addResistanceSlot(a, resistance, holder) {
     var abilityName, abilityIcon, abilityDescr, abilityDam = "";
-    for (j in jsonUnitAbilities) {
+    for (var j = 0; j < jsonUnitAbilities.length; j++) {
         if (a === jsonUnitAbilities[j].slug) {
 
             abilityName = jsonUnitAbilities[j].name;
@@ -1745,7 +1745,7 @@ function addstatusResistanceSlot(a, holder) {
 
 function EliteSkill(a) {
     var nam = "";
-    for (j in jsonUnitAbilities) {
+    for (var j = 0; j < jsonUnitAbilities.length; j++) {
         if (a === jsonUnitAbilities[j].slug) {
             nam = jsonUnitAbilities[j].name;
         }
@@ -1756,7 +1756,7 @@ function EliteSkill(a) {
 
 function addEliteSkill(a) {
     var abilityName, abilityIcon, abilityDescr = "";
-    for (j in jsonUnitAbilities) {
+    for (var j = 0; j < jsonUnitAbilities.length; j++) {
         if (a === jsonUnitAbilities[j].slug) {
             abilityName = jsonUnitAbilities[j].name;
             abilityIcon = jsonUnitAbilities[j].slug;
@@ -1886,7 +1886,7 @@ function sortDivs(sortType, savedOrder) {
     }
 
 
-    var element = elements = [...container.querySelectorAll('.mod_card')]
+    var element = [...container.querySelectorAll('.mod_card')];
 
 
 
@@ -1925,7 +1925,7 @@ function sortDivs(sortType, savedOrder) {
 
             }
 
-            return collator.compare(textOfFirstElement, textOfSecondElement)
+            return collator.compare(textOfFirstElement, textOfSecondElement);
         })
         .forEach(element => parentElement.appendChild(element));
 
@@ -2148,7 +2148,7 @@ async function showSiegeProjects(list) {
 async function showStructures(list) {
 
     await spawnSpellCards(list, "Structures");
-    for (i in list) {
+    for (var i = 0; i < list.length; i++) {
         showStructure(list[i], true);
     }
 
@@ -2157,7 +2157,7 @@ async function showStructures(list) {
 async function showEmpireTrees(list) {
 
     await spawnSpellCards(list, "Empire Tree");
-    for (i in list) {
+  for (var i = 0; i < list.length; i++) {
         showEmpireTree(list[i]);
     }
 
@@ -2171,7 +2171,7 @@ async function showWorldStructures(list) {
 
 
     await spawnStructureCards(list, "World Structures");
-    for (i in list) {
+     for (var i = 0; i < list.length; i++) {
 
 
         showWorldStructure(list[i]);
@@ -2324,7 +2324,7 @@ async function showSpellFromList(list, divID) {
 
         showSpell(list[i], true);
 
-    };
+    }
 
 
 
@@ -2339,7 +2339,7 @@ async function showHeroTraitFromList(list, divID) {
 
         showHeroTrait(list[i].id, true);
 
-    };
+    }
 
 
 
@@ -2361,7 +2361,7 @@ async function showSkillFromList(list, divID) {
         }
 
 
-    };
+    }
 
 
 
@@ -2378,7 +2378,7 @@ async function showTraitFromList(list, divID) {
 
 
 
-    };
+    }
 }
 
 async function showDestinyTraitsFromList(list, divID) {
@@ -2391,7 +2391,7 @@ async function showDestinyTraitsFromList(list, divID) {
 
 
 
-    };
+    }
 }
 
 
@@ -2405,7 +2405,7 @@ async function showItemFromList(list, divID) {
 
 
 
-    };
+    }
 }
 
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
@@ -2417,7 +2417,7 @@ async function showWorldStructuresWithArgument(overwrite, argumentType, list, di
 
         showWorldStructure(list[i]);
 
-    };
+    }
 
 
 
@@ -2425,7 +2425,7 @@ async function showWorldStructuresWithArgument(overwrite, argumentType, list, di
 }
 async function showStructuresWithArgument(argument, divID, argumentType, includeProvince) {
 
-    var list = new Array();
+    var list = [];
     list = findStructuresWithArgument(argument, argumentType, includeProvince);
 
     await spawnStructureCards(list, divID);
@@ -2443,7 +2443,7 @@ async function showStructuresWithArgument(argument, divID, argumentType, include
 
 async function showItemsWithArgument(argumentType, overwritetext) {
 
-    var list = new Array();
+    var list = [];
     list = findItemsWithArgument(argumentType);
 
 
@@ -2457,7 +2457,7 @@ async function showItemsWithArgument(argumentType, overwritetext) {
 
 async function showSkillsWithArgument(signature, argumentType, overwritetext) {
 
-    var list = new Array();
+    var list = [];
     list = findSkillsWithArgument(signature, argumentType);
 
 
@@ -2470,7 +2470,7 @@ async function showSkillsWithArgument(signature, argumentType, overwritetext) {
 
 async function showHeroTraitsWithArgument(argumentType, overwritetext) {
 
-    var list = new Array();
+    var list = [];
     list = findHeroTraitsWithArgument(argumentType);
 
 
@@ -2483,7 +2483,7 @@ async function showHeroTraitsWithArgument(argumentType, overwritetext) {
 
 async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 
-    var list = new Array();
+    var list = [];
     list = findSpellsWithArgument(argument, argumentType);
 
 
@@ -2501,7 +2501,7 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 
 async function showTraitsWithArgument(argument, overwritetext, affinity) {
 
-    var list = new Array();
+    var list = [];
     list = findTraitsWithArgument(argument, affinity);
 
 
@@ -2564,7 +2564,7 @@ async function showHeroSkillFromString(string, divID) {
 
 function findHeroSkill(skillID) {
 
-    for (i in jsonHeroSkills) {
+    for (var i = 0; i < jsonHeroSkills.length; i++) {
         if (jsonHeroSkills[i].id === skillID) {
             return jsonHeroSkills[i];
         }
@@ -2576,7 +2576,7 @@ function findHeroSkill(skillID) {
 function findItemsWithArgument(argumentType) {
     var j = "";
 
-    var finalCheckedList = new Array();
+    var finalCheckedList = [];
 
     for (j in jsonHeroItems) {
 
@@ -2598,7 +2598,7 @@ function findItemsWithArgument(argumentType) {
 function findSkillsWithArgument(signature, argumentType) {
     var j = "";
 
-    var finalCheckedList = new Array();
+    var finalCheckedList = [];
     if (signature === "") {
         for (j in jsonHeroSkills) {
             if ('category_name' in jsonHeroSkills[j]) {
@@ -2661,7 +2661,7 @@ function findSkillsWithArgument(signature, argumentType) {
 function findHeroTraitsWithArgument(argumentType) {
     var j = "";
 
-    var finalCheckedList = new Array();
+    var finalCheckedList = [];
 
     if (argumentType == "") {
         for (j in jsonHeroTraits) {
@@ -2701,8 +2701,8 @@ function findHeroTraitsWithArgument(argumentType) {
 }
 
 function findEnchantmentsSpells() {
-    var enchantmentList = new Array()
-    for (j in jsonSpells) {
+    var enchantmentList = [];
+    for (var j = 0; j < jsonSpells.length; j++) {
         if (jsonSpells[j].spellType.indexOf("Unit Enchantment") != -1) {
             enchantmentList.push(jsonSpells[j]);
         }
@@ -2714,7 +2714,7 @@ function findEnchantmentsSpells() {
 function findSpellsWithArgument(argumentaffinity, argumentType) {
     var i, output, affinity, textvalue, j, l, k, x, result = "";
 
-    var finalCheckedList = new Array();
+    var finalCheckedList = [];
     if (argumentaffinity === "") {
         for (j in jsonSpells) {
 
@@ -2727,7 +2727,7 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
 
         }
     } else {
-        var listMod = new Array();
+        var listMod = [];
         for (i in jsonTomes) {
             affinity = jsonTomes[i].affinities;
 
@@ -2809,7 +2809,7 @@ function ClearAffinityExtraTags(input) {
 function findTraitsWithArgument(argumentType, affinity) {
     var i, output, affinity, textvalue, j, l, k, x, result = "";
 
-    var finalCheckedList = new Array();
+    var finalCheckedList = [];
     if (argumentType != "") {
         for (j in jsonFactionCreation2) {
 
@@ -2867,7 +2867,7 @@ function findTraitsWithArgument(argumentType, affinity) {
 function findStructuresWithArgument(income, argumentType, includeprovince) {
     var i, output, affinity, textvalue, j, l, k, x, result = "";
 
-    var finalCheckedList = new Array();
+    var finalCheckedList = [];
     if (argumentType != "") {
         for (j in jsonStructureUpgrades) {
 
@@ -2915,7 +2915,7 @@ function checkModRequirements(unit) {
     for (j in jsonSpells) {
         checksplit = jsonSpells[j].check.split(" ");
         checknotsplit = jsonSpells[j].checknot.split(" ");
-        for (k in checksplit) {
+        for (var k = 0; k < checksplit.length; k++) {
             if (divs[i].innerHTML.indexOf(checksplit[k]) !== -1) {
                 // something
             }
@@ -2938,7 +2938,7 @@ function showModsFromList(list, divId) {
         }
         showMod(list[i]);
 
-    };
+    }
 }
 
 function showSubDiv(event, id) {
@@ -3047,7 +3047,7 @@ function showUnit(a, divid, subcultureCheck, resID) {
 
                 var activeEnchantList;
                 if (!unitCard.hasOwnProperty('activeEnchantList')) {
-                    activeEnchantList = new Array();
+                    activeEnchantList = [];
                     unitCard.activeEnchantList = activeEnchantList;
                 } else {
                     activeEnchantList = unitCard.activeEnchantList;
@@ -3549,9 +3549,9 @@ function removeToolTipListeners(tooltip) {
 function canBeSummoned(id) {
     var i = "";
     var k = "";
-    var summonInf = new Array();
+    var summonInf = [];
     // check for duplicates
-    var spellIDChecker = new Array();
+    var spellIDChecker = [];
     for (i in jsonSpells) {
         if ('summoned_units' in jsonSpells[i]) {
 
@@ -3783,9 +3783,9 @@ function showAffinitySymbols(tomes) {
 }
 
 function CheckIfInSpells(unitID, unitName) {
-    var spell = new Array();
+    var spell = [];
     // check for duplicates
-    var spellIDChecker = new Array();
+    var spellIDChecker = [];
     var i = 0;
     for (i in jsonSpells) {
 
@@ -3848,7 +3848,7 @@ function CheckIfFromAbility(unitName) {
 
                 if (jsonUnits[j].abilities[k].slug === ability.slug) {
 
-                    unitslugLookup = new Array();
+                    unitslugLookup = [];
                     unitslugLookup.push(jsonUnits[j]);
                     unitslugLookup.push(ability);
                 }
@@ -3858,7 +3858,7 @@ function CheckIfFromAbility(unitName) {
 
                 if (jsonUnits[j].primary_passives[l].slug === ability.slug) {
 
-                    unitslugLookup = new Array();
+                    unitslugLookup = [];
                     unitslugLookup.push(jsonUnits[j]);
                     unitslugLookup.push(ability);
                 }
@@ -3898,7 +3898,7 @@ function CheckIfFromHeroSkill(unitName) {
                 for (k in jsonHeroSkills[j].abilities) {
 
                     if (jsonHeroSkills[j].abilities[k].slug === hero.slug) {
-                        resultslist = new Array();
+                        resultslist = [];
                         resultslist.push(hero);
                         resultslist.push(jsonHeroSkills[j]);
 
@@ -3913,7 +3913,7 @@ function CheckIfFromHeroSkill(unitName) {
             for (k in jsonHeroSkills[j].description) {
 
                 if (jsonHeroSkills[j].description.indexOf(unitName) != -1) {
-                    resultslist = new Array();
+                    resultslist = [];
                     resultslist.push(hero);
                     resultslist.push(jsonHeroSkills[j]);
 
@@ -4315,7 +4315,7 @@ function romanize(num) {
 }
 
 function deromanize(str) {
-    var str = str.toUpperCase();
+  str = str.toUpperCase();
     var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
     var token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
     var key = {
@@ -4336,7 +4336,7 @@ function deromanize(str) {
     var num = 0,
         m;
     if (!(str && validator.test(str))) return false;
-    while (m = token.exec(str)) num += key[m[0]];
+    while (m == token.exec(str)) num += key[m[0]];
     return num;
 }
 
@@ -4568,7 +4568,7 @@ function showTome(a, div) {
                 var affinitiesdual = jsonTomes[j].affinities.split(", ");
 
                 var allAffinity = "";
-                for (i in affinitiesdual) {
+                for (var i = 0; i < affinitiesdual.length; i++) {
                     var affinities = affinitiesdual[i].split(" ");
                     allAffinity += affinities[0] + affinities[1];
                     console.log(allAffinity);
@@ -4603,7 +4603,7 @@ function showTome(a, div) {
                 var affinitiesdual = jsonTomes[j].affinities.split(", ");
 
                 var allAffinity = "";
-                for (i in affinitiesdual) {
+                for (var i = 0; i < affinitiesdual.length; i++) {
                     var affinities = affinitiesdual[i].split(" ");
                     allAffinity += affinities[1] + affinities[0];
 
@@ -4824,8 +4824,8 @@ function ShowPossibleEnchantments(evt) {
 
     var list = findEnchantmentsSpells();
 
-    var compatibleList = new Array();
-    var exclusionList = new Array();
+    var compatibleList = [];
+    var exclusionList = [];
     var i = "";
 
     // check if culture
@@ -5175,7 +5175,7 @@ function GetHeroSkillDescription(skillID) {
 
         if (jsonHeroSkills[j].id == skillID) {
             if ('abilities' in jsonHeroSkills[j]) {
-                for (k in jsonUnitAbilities) {
+                for (var k = 0; k < jsonUnitAbilities.length; k++) {
                     if (jsonUnitAbilities[k].slug.indexOf(jsonHeroSkills[j].abilities[0].slug) != -1) {
                         array[0] = jsonUnitAbilities[k];
 
@@ -5392,7 +5392,7 @@ function showWorldStructure(a) {
             loreDiv.setAttribute("id", "loreText" + a);
             if ('lore' in jsonWorldStructures[j]) {
                 loreDiv.innerHTML = jsonWorldStructures[j].lore;
-                loreDiv.innerHTML += "<br><br>" + jsonWorldStructures[j].author
+                loreDiv.innerHTML += "<br><br>" + jsonWorldStructures[j].author;
             }
 
 
@@ -5443,7 +5443,7 @@ function showWorldStructure(a) {
 
             if ('unit_unlocks' in jsonWorldStructures[j]) {
                 description += "<br>Rally Units:<br>";
-                for (x in jsonWorldStructures[j].unit_unlocks) {
+                for (var x = 0; x < jsonWorldStructures[j].unit_unlocks.length; x++) {
 
                     var div = document.createElement("DIV");
                     div.setAttribute("style", "margin-right: 20px;");
@@ -5568,7 +5568,7 @@ function ShowDestinyTraits() {
         var l = 0;
         for (l in jsonDestiny.traits[j].gains) {
             var div = document.createElement("DIV");
-            div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>"
+            div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>";
             descriptionDiv.appendChild(div);
         }
 
@@ -5644,7 +5644,7 @@ function showDestinyTrait(trait) {
             var l = 0;
             for (l in jsonDestiny.traits[j].gains) {
                 var div = document.createElement("DIV");
-                div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>"
+                div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>";
                 descriptionDiv.appendChild(div);
             }
 
@@ -5849,7 +5849,7 @@ function showSpell(a, showOrigin) {
             for (l in jsonSpells[j].enchantment_requisites) {
                 var div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
-                div.innerHTML = "<bullet>" + jsonSpells[j].enchantment_requisites[l].requisite + "</bullet>"
+                div.innerHTML = "<bullet>" + jsonSpells[j].enchantment_requisites[l].requisite + "</bullet>";
                 unitTypesDiv.appendChild(div);
             }
 
@@ -5905,9 +5905,9 @@ function showSpell(a, showOrigin) {
 
 
             if (jsonSpells[j].tactical === true) {
-                cost.innerHTML += " " + jsonSpells[j].operation_point_cost + "<casttactical></casttactical>"
+                cost.innerHTML += " " + jsonSpells[j].operation_point_cost + "<casttactical></casttactical>";
             } else {
-                cost.innerHTML += " " + jsonSpells[j].operation_point_cost + "<caststrategic></caststrategic>"
+                cost.innerHTML += " " + jsonSpells[j].operation_point_cost + "<caststrategic></caststrategic>";
             }
             cost.setAttribute("id", "modcost" + a);
 
@@ -5954,7 +5954,7 @@ function showSpell(a, showOrigin) {
 
             found = true;
             return modCard;
-            break;
+            //break;
         }
     }
     if (found === false) {
@@ -6009,7 +6009,7 @@ function ConvertSpawnTable(input) {
 function FindUnitsWithSecondaryPassive(trait) {
 
     // need to find a way to check tiers as well
-    var unitsList = new Array();
+    var unitsList = [];
     var i = 0;
     for (i in jsonUnits) {
         var j = 0;
@@ -6061,15 +6061,15 @@ function FindUnitsWithSecondaryPassive(trait) {
         splitArrays.push(unitsList);
     }
 
-    var sortedUnitListArray = new Array();
+    var sortedUnitListArray = [];
 
     var z = 0;
     for (z in splitArrays) {
 
-        var unitsSorted = new Array();
+        var unitsSorted = [];
         var x = 0;
         for (x in splitArrays[z]) {
-            unitsSorted.push(splitArrays[z][x].id)
+            unitsSorted.push(splitArrays[z][x].id);
         }
         sortedUnitListArray.push(unitsSorted);
     }
@@ -6852,7 +6852,7 @@ function FindHeroSkillOrigin(id) {
                         var tomeOriginIcon = document.getElementById("originTomeIcon");
                         tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                         var wrap = tomeOrigin.innerHTML;
-                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+                        tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>";
                         return jsonTomes[j].id;
                     }
 
@@ -7050,7 +7050,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                             var tomeOriginIcon = document.getElementById("originTomeIcon");
                             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                             var wrap = tomeOrigin.innerHTML;
-                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>";
 
 
 
@@ -7066,7 +7066,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                                 var affinitiesdual = jsonTomes[j].affinities.split(", ");
 
                                 var allAffinity = "";
-                                for (i in affinitiesdual) {
+                                for (var i = 0; i < affinitiesdual.length; i++) {
                                     var affinities = affinitiesdual[i].split(" ");
                                     if (affinities[1] === 2) {
                                         allAffinity += affinities[0];
@@ -7084,7 +7084,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                             var tomeOriginIcon = document.getElementById("originTomeIcon");
                             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
                             var wrap = tomeOrigin.innerHTML;
-                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>"
+                            tomeOrigin.innerHTML = "<a href=\"/aow4db/HTML/Spells.html?tome=" + jsonTomes[j].id + "\" target=\"_blank\">" + wrap + "</a>";
 
 
 
@@ -7101,7 +7101,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 
 
 function backtraceStructureToTomeNameAndTier(structure) {
-    var array = new Array();
+    var array = [];
     var j = 0;
     for (j in jsonTomes) {
 
@@ -7164,7 +7164,7 @@ function addAbilityList(a) {
             if (jsonUnitAbilities[j].damage) {
                 dam = jsonUnitAbilities[j].damage;
             }
-            return jsonUnitAbilities[j].name + dam + "<br>"
+            return jsonUnitAbilities[j].name + dam + "<br>";
         }
     }
 }
@@ -7175,7 +7175,7 @@ function addTypesList(a) {
     for (j in jsonUnitAbilities) {
         if (a === jsonUnitAbilities[j].slug) {
 
-            return jsonUnitAbilities[j].name + "<br>"
+            return jsonUnitAbilities[j].name + "<br>";
         }
     }
 }

@@ -1,323 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="en">
 
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
 
 <head>
+    
+<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 
-
-    <script>
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-            SetRandomStart();
-        }
-
-    </script>
-
-    <title>Age of Wonders 4 Database - Faction Creator</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="tome_name">Faction creator</div>
-
-    <div style="color:white;
-    display: table;
-    margin: 5px;
-    margin-left: auto;
-    margin-right: auto;">
-
-        <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
-        <input type="text" value="" class="inputfield" id="shareLink" style="width:600px">
-
-        <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br>
-        <div style=" display: flex;
-    flex-direction: row;
-    justify-content: space-around;">
-            <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br>
-            <button class="button-random" id="toggleButton">Show/Hide Overview</button>
-
-        </div>
-    </div>
-
-    <div class="factioncreator" id="capture">
-        <div class="typeHolder" id="factioncreator">
-
-            <div class="container">
-
-                <div style="height:90px">
-
-                    <div class="playerSigil">
-                        <!-- <canvas id="myCanvas" class="shield" width="70" height="70" style="float:left"></canvas>
-                        <canvas class="symbol" id="myCanvas2" width="50" height="50" style="float:left"></canvas>-->
-                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px">
-                        <img class="symbol" id="symbol" src="/aow4db/Icons/Interface/symbol.png" height="45px">
-                    </div>
-                    <!--  <button class="test" id="shieldColor" onclick="ChangeShieldCol()"> </button>
-                    <button class="test" id="symbolColor" onclick="ChangeSymbolCol()"> </button>-->
-                    <div style="  
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;">
-                        <div id="currentAffinity" class="affinityText"> </div>
-                        <div>
-                            Extra Affinity Points
-                            <div id="extraAffinity" style="
-    max-width: 300px;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #f0f8ff2b;
-    position: relative;">
-
-                                <div style="display: flex;height: 50px;">
-
-
-                                    <div id="extraOrder"></div>
-                                    <div style="
-    display: flex;
-    flex-direction: column;">
-                                        <button class="AddSubtract" onclick="AddExtra('order','⮝')">
-                                            ⮝
-                                        </button>
-                                        <button class="AddSubtract" onclick="AddExtra('order','⮟')">
-                                            ⮟
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div style="display: flex;height: 50px;">
-                                    <div id="extraChaos"></div>
-
-                                    <div style="
-    display: flex;
-    flex-direction: column;">
-                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮝')">
-                                            ⮝
-                                        </button>
-                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮟')">
-                                            ⮟
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div style="display: flex;height: 50px;">
-                                    <div id="extraNature"></div>
-                                    <div style="
-    display: flex;
-    flex-direction: column;">
-                                        <button class="AddSubtract" onclick="AddExtra('nature','⮝')">
-                                            ⮝
-                                        </button>
-                                        <button class="AddSubtract" onclick="AddExtra('nature','⮟')">
-                                            ⮟
-                                        </button>
-                                    </div>
-                                </div>
-                                <div style="display: flex;height: 50px;">
-
-                                    <div id="extraShadow"></div>
-
-                                    <div style="
-    display: flex;
-    flex-direction: column;">
-                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮝')">
-                                            ⮝
-                                        </button>
-                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮟')">
-                                            ⮟
-                                        </button>
-                                    </div>
-                                </div>
-                                <div style="display: flex;height: 50px;">
-                                    <div id="extraMaterium"></div>
-
-                                    <div style="
-    display: flex;
-    flex-direction: column;">
-                                        <button class="AddSubtract" onclick="AddExtra('materium','⮝')">
-                                            ⮝
-                                        </button>
-                                        <button class="AddSubtract" onclick="AddExtra('materium','⮟')">
-                                            ⮟
-                                        </button>
-                                    </div>
-                                </div>
-                                <div style="display: flex;height: 50px;">
-                                    <div id="extraAstral"></div>
-
-                                    <div style="
-    display: flex;
-    flex-direction: column;">
-                                        <button class="AddSubtract" onclick="AddExtra('astral','⮝')">
-                                            ⮝
-                                        </button>
-                                        <button class="AddSubtract" onclick="AddExtra('astral','⮟')">
-                                            ⮟
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-                </div>
-
-
-                <div class="subDivider">
-                    <div style="width:280px">
-                        <div class="subSubDiv">
-                            <div style="min-height: 200px"><span class="small_title"> Ruler</span> <input type="text" value="Ruler Name" class="inputfield" id="fname1" maxlength="35" name="fname">
-
-
-                                <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
-                                <div id="buttonContainer">
-                                    <button class="button" id="originButtonOrigin" onclick="SetupButtons(event,'Origin')"></button>
-
-                                </div>
-
-                                <div id="buttonContainer">
-                                    <button class="button-inset" id="originButtonTome" onclick="SetupButtons(event,'Tome')"></button>
-
-                                </div>
-
-                                <div id="buttonContainer">
-                                    <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons(event,'Loadout')"></button>
-
-                                </div>
-                                <div id="buttonContainer"><span class="small_title"> Ascension</span>
-                                    <button style="float:right; color:red" class="button" onclick="ClearAscensionSkill()"> X</button>
-                                    <button class="button-inset" id="originButtonAscension" onclick="SetupButtons(event,'Ascension')">+</button>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="subSubDiv2"><span class="small_title">Signature Skills</span>
-                            <button style="float:right; color:red" class="button" onclick="RemoveLastSkill()"> X</button>
-                            <div id="buttonContainer" style="height:100px">
-                                <button class="button2" id="originButtonSignature" onclick="SetupButtons(event,'Signature')">+</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="width:300px">
-                        <div class="subSubDiv" style="min-height: 200px"><span class="small_title"> Race</span> <input type="text" class="inputfield" value="Race Name" id="fname" maxlength="35" name="fname">
-
-                            <div id="buttonContainer">
-
-                                <button class="button" id="originButtonForm" onclick="SetupButtons(event,'Form')"></button>
-
-                            </div>
-
-                            <div id="buttonContainer">
-                                <button style="background-color: transparent;  min-height: 40px; min-width: 200px;  border: none;" id="originButtonFormTrait" onclick="SetupButtons(event,'FormTrait')">
-                                    <div id="selected-options-container" style="color:white"></div>
-                                </button>
-
-
-                            </div>
-                        </div>
-                        <div class="subSubDiv2">
-                            <div id="buttonContainer"> <span class="small_title"> Culture & Society</span>
-                                <button class="button" id="originButtonCulture" onclick="SetupButtons(event,'Culture')"></button>
-
-                            </div>
-
-                            <div id="buttonContainer">
-                                <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons(event,'Society1')"></button>
-
-                            </div>
-                            <div id="buttonContainer">
-                                <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons(event,'Society2')"></button>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-                <div>
-                    <hr>
-
-                    <button class="button-inset" id="originButtonTome2"></button>
-
-                    <span class="small_title"> Tome Path</span>
-
-
-                    <button style="float:right;  color:red" class="button" onclick="ClearTomePath()"> Clear All </button>
-                    <button style="float:right; margin-right:100px;color:red" class="button" onclick="RemoveLastTomePath()"> Clear Last</button>
-                    <br>
-                    <div style="display:grid;grid-template-columns: repeat(8, 2fr); margin: 15px;" id="tomePathButton"></div>
-
-                </div>
-            </div>
-
-
-        </div>
-        <div style="color:white;display:none" id="overviewPanel">
-            <button class="button-random" onclick="ResetHighlights()" id="toggleButton">Reset <favourite></favourite></button>
-            <button class="button-random" onclick="ShowHideUnFavs()" id="toggleButton">Show/Hide non-<favourite></favourite></button>
-            <p><span id="active-indices"></span></p>
-            <div class="overview" id="mainoverview">
-
-                <div class="column" id="overviewHeroSkillsHolder"></div>
-                <div class="column" id="overviewPassivesHolder"></div>
-                <div class="column" id="overviewSummonHolder"></div>
-                <div class="column" id="overviewCombatSpellsHolder"></div>
-                <div class="column" id="overviewTransformationsHolder"></div>
-                <div class="column" id="overviewEnchantmentsHolder"></div>
-                <div class="column" id="overviewOtherSpellHolder"></div>
-
-                <div class="column" id="overviewUnitsHolder"></div>
-                <div class="column" id="overviewUpgradesHolder"></div>
-                <div class="column" id="overviewSPIHolder"></div>
-                <div class="column" id="overviewSiegeHolder"></div>
-                <div class="column" id="overviewEmpireHolder"></div>
-            </div>
-        </div>
-
-
-    </div>
-
-    <div id="hiddentooltips" style="display: none"></div>
-
-
-
-
-
-
-
-    <div class="selections" id="selectionsHolder">
-        <p id="selections" style="text-align: center"></p> <button style="float: right;position: relative;top: -20px;color: red;" class="button" onclick="toggleOriginButtons()">X</button>
-
-        <div id="originWrapperOptions" class="wrappers">
-
-        </div>
-
-    </div>
-
-
-</body>
-<script>
-
-
-</script>
-<style>
+    <style>
     button {
         font-family: 'Regular', sans-serif;
     }
@@ -670,6 +363,311 @@
 
 </style>
 
+    <script>
+        $("#body").ready(function() {
+
+            $("#header").load("/aow4db/HTML/header.html", function() {
+                CheckData();
+            });
+        });
+
+        function HandlePage() {
+            SetRandomStart();
+        }
+
+    </script>
+
+    <title>Age of Wonders 4 Database - Faction Creator</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="tome_name">Faction creator</div>
+
+    <div style="color:white;
+    display: table;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;">
+
+        <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
+        <input type="text" value="" class="inputfield" id="shareLink" style="width:600px">
+
+        <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br>
+        <div style=" display: flex;
+    flex-direction: row;
+    justify-content: space-around;">
+            <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br>
+            <button class="button-random" id="toggleButton">Show/Hide Overview</button>
+
+        </div>
+    </div>
+
+    <div class="factioncreator" id="capture">
+        <div class="typeHolder" id="factioncreator">
+
+            <div class="container">
+
+                <div style="height:90px">
+
+                    <div class="playerSigil">
+                        <!-- <canvas id="myCanvas" class="shield" width="70" height="70" style="float:left"></canvas>
+                        <canvas class="symbol" id="myCanvas2" width="50" height="50" style="float:left"></canvas>-->
+                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px" height="70px">
+                        <img class="symbol" id="symbol" src="/aow4db/Icons/Interface/symbol.png" height="45px">
+                    </div>
+                    <!--  <button class="test" id="shieldColor" onclick="ChangeShieldCol()"> </button>
+                    <button class="test" id="symbolColor" onclick="ChangeSymbolCol()"> </button>-->
+                    <div style="  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;">
+                        <div id="currentAffinity" class="affinityText"> </div>
+                        <div>
+                            Extra Affinity Points
+                            <div id="extraAffinity" style="
+    max-width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f0f8ff2b;
+    position: relative;">
+
+                                <div style="display: flex;height: 50px;">
+
+
+                                    <div id="extraOrder"></div>
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('order','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('order','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraChaos"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraNature"></div>
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('nature','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('nature','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="display: flex;height: 50px;">
+
+                                    <div id="extraShadow"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraMaterium"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('materium','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('materium','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="display: flex;height: 50px;">
+                                    <div id="extraAstral"></div>
+
+                                    <div style="
+    display: flex;
+    flex-direction: column;">
+                                        <button class="AddSubtract" onclick="AddExtra('astral','⮝')">
+                                            ⮝
+                                        </button>
+                                        <button class="AddSubtract" onclick="AddExtra('astral','⮟')">
+                                            ⮟
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                </div>
+
+
+                <div class="subDivider">
+                    <div style="width:280px">
+                        <div class="subSubDiv">
+                            <div style="min-height: 200px"><span class="small_title"> Ruler</span> <input type="text" value="Ruler Name" class="inputfield" id="fname1" maxlength="35" name="fname">
+
+
+                                <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
+                                <div id="buttonContainer">
+                                    <button class="button" id="originButtonOrigin" onclick="SetupButtons(event,'Origin')"></button>
+
+                                </div>
+
+                                <div id="buttonContainer9">
+                                    <button class="button-inset" id="originButtonTome" onclick="SetupButtons(event,'Tome')"></button>
+
+                                </div>
+
+                                <div id="buttonContainer8">
+                                    <button class="button-inset" id="originButtonLoadout" onclick="SetupButtons(event,'Loadout')"></button>
+
+                                </div>
+                                <div id="buttonContainer7"><span class="small_title"> Ascension</span>
+                                    <button style="float:right; color:red" class="button" onclick="ClearAscensionSkill()"> X</button>
+                                    <button class="button-inset" id="originButtonAscension" onclick="SetupButtons(event,'Ascension')">+</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="subSubDiv2"><span class="small_title">Signature Skills</span>
+                            <button style="float:right; color:red" class="button" onclick="RemoveLastSkill()"> X</button>
+                            <div id="buttonContainer6" style="height:100px">
+                                <button class="button2" id="originButtonSignature" onclick="SetupButtons(event,'Signature')">+</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width:300px">
+                        <div class="subSubDiv" style="min-height: 200px"><span class="small_title"> Race</span> <input type="text" class="inputfield" value="Race Name" id="fname" maxlength="35" name="fname">
+
+                            <div id="buttonContainer5">
+
+                                <button class="button" id="originButtonForm" onclick="SetupButtons(event,'Form')"></button>
+
+                            </div>
+
+                            <div id="buttonContainer4">
+                                <button style="background-color: transparent;  min-height: 40px; min-width: 200px;  border: none;" id="originButtonFormTrait" onclick="SetupButtons(event,'FormTrait')">
+                                    <span id="selected-options-container" style="color:white"></span>
+                                </button>
+
+
+                            </div>
+                        </div>
+                        <div class="subSubDiv2">
+                            <div id="buttonContainer3"> <span class="small_title"> Culture & Society</span>
+                                <button class="button" id="originButtonCulture" onclick="SetupButtons(event,'Culture')"></button>
+
+                            </div>
+
+                            <div id="buttonContainer2">
+                                <button class="button-inset" id="originButtonSociety1" onclick="SetupButtons(event,'Society1')"></button>
+
+                            </div>
+                            <div id="buttonContainer1">
+                                <button class="button-inset" id="originButtonSociety2" onclick="SetupButtons(event,'Society2')"></button>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div>
+                    <hr>
+
+                    <button class="button-inset" id="originButtonTome2"></button>
+
+                    <span class="small_title"> Tome Path</span>
+
+
+                    <button style="float:right;  color:red" class="button" onclick="ClearTomePath()"> Clear All </button>
+                    <button style="float:right; margin-right:100px;color:red" class="button" onclick="RemoveLastTomePath()"> Clear Last</button>
+                    <br>
+                    <div style="display:grid;grid-template-columns: repeat(8, 2fr); margin: 15px;" id="tomePathButton"></div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div style="color:white;display:none" id="overviewPanel">
+            <button class="button-random" onclick="ResetHighlights()" id="toggleButton1">Reset <favourite></favourite></button>
+            <button class="button-random" onclick="ShowHideUnFavs()" id="toggleButton2">Show/Hide non-<favourite></favourite></button>
+            <p><span id="active-indices"></span></p>
+            <div class="overview" id="mainoverview">
+
+                <div class="column" id="overviewHeroSkillsHolder"></div>
+                <div class="column" id="overviewPassivesHolder"></div>
+                <div class="column" id="overviewSummonHolder"></div>
+                <div class="column" id="overviewCombatSpellsHolder"></div>
+                <div class="column" id="overviewTransformationsHolder"></div>
+                <div class="column" id="overviewEnchantmentsHolder"></div>
+                <div class="column" id="overviewOtherSpellHolder"></div>
+
+                <div class="column" id="overviewUnitsHolder"></div>
+                <div class="column" id="overviewUpgradesHolder"></div>
+                <div class="column" id="overviewSPIHolder"></div>
+                <div class="column" id="overviewSiegeHolder"></div>
+                <div class="column" id="overviewEmpireHolder"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="hiddentooltips" style="display: none"></div>
+
+
+
+
+
+
+
+    <div class="selections" id="selectionsHolder">
+        <p id="selections" style="text-align: center"></p> <button style="float: right;position: relative;top: -20px;color: red;" class="button" onclick="toggleOriginButtons()">X</button>
+
+        <div id="originWrapperOptions" class="wrappers">
+
+        </div>
+
+    </div>
+
+
+
+
+
 <script>
     function myFunction() {
         // Get the text field
@@ -696,6 +694,6 @@
     });
 
 </script>
-
+</body>
 </html>
 <footer><br><br></footer>

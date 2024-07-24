@@ -195,9 +195,9 @@ function SetRandomStart(overwriteParameter) {
                     break;
 
                 case "Culture":
-                    hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION')
+                    hasAdaptionGroup = currentFormTraitList.some(item => item.group_name === 'ADAPTATION');
                     while (hasAdaptionGroup && randomEntry.name.indexOf("Primal") != -1) {
-                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                         randomEntry = GetRandomEntry(listofChoice[j]);
                     }
                     currentCulture = randomEntry;
                     break;
@@ -207,7 +207,7 @@ function SetRandomStart(overwriteParameter) {
 
 
                     while (getPoints() < 5) {
-                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                         randomEntry = GetRandomEntry(listofChoice[j]);
                         if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
                             if (checkCompatibilityTraits(randomEntry) == true) {
                                 currentFormTraitList.push(randomEntry);
@@ -225,7 +225,7 @@ function SetRandomStart(overwriteParameter) {
                     break;
                 case "Society2":
                     while (currentSociety1 === randomEntry) {
-                        var randomEntry = GetRandomEntry(listofChoice[j]);
+                         randomEntry = GetRandomEntry(listofChoice[j]);
                     }
                     currentSociety2 = randomEntry;
                     break;
@@ -2967,7 +2967,7 @@ function GetRandomEntry(type) {
             }
             break;
         // case "Signature":
-        //     currentSignatureSkills = new Array();
+        //     currentSignatureSkills = [];
         //     var list = GetAllSignatureSkills();
         //     randomOrigin = list[Math.floor(Math.random() * list.length)];
         //     currentSignatureSkills[0] = randomOrigin;
@@ -3112,7 +3112,7 @@ function toggleSelection(origin, button, type, event) {
 
     // Uncomment the line below if you want to limit the selection to a specific number (e.g., 2)
     // updateSelectionLimit(origin);
-    var exclusionList = new Array();
+    var exclusionList = [];
     exclusionList = updateSelectedOptions(origin);
 
 
@@ -3357,7 +3357,7 @@ function GetQuickLink() {
 function reversLookUp(code) {
     var splitcode = code.split(",");
     // console.log("Splitcode" + splitcode);
-    var newList = new Array();
+    var newList = [];
 
     // 0 = currentformtraits
     var list = splitcode[0];
@@ -3468,7 +3468,7 @@ function reversLookUp(code) {
 
 
 
-    var newList = new Array();
+    var newList = [];
     // 7 = tomes
     var list = splitcode[7];
     var currentTomeListLoad = list.split(":");
@@ -3509,7 +3509,7 @@ function reversLookUp(code) {
     var list = splitcode[9];
     if (list != "s" && list != undefined) {
         var currentSignatureLoad = list.split(":");
-        var newList2 = new Array();
+        var newList2 = [];
         for (let i = 0; i < currentSignatureLoad.length; i++) {
             var numbernew = jsonBuilderLookUp[hexToDecimal(currentSignatureLoad[i])].id;
 
