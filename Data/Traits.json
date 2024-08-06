@@ -329,23 +329,40 @@
   "display_order": 1
  },
  {
+  "biography_description": "It is said that the Umbral Thralls were once a free civilization governed by a benevolent hivemind. Yet through <hyperlink>Urrath's eldritch lashes</hyperlink>, the minds of the Umbral Thralls became enchained, and their hive was twisted into an instrument of enslavement. As will-less drones they serve as unceasing warriors, laborers, or as a harvest of souls to satiate the hunger of the <hyperlink>Umbral Demons</hyperlink>. Their swarm carries the gloom to other realms, so that other free peoples across the <hyperlink>Astral Sea</hyperlink> might share the same terrible fate.",
+  "lore_description": "It is said that the Umbral Thralls were once a free civilization governed by a benevolent hivemind. Yet through <hyperlink>Urrath's eldritch lashes</hyperlink>, the minds of the Umbral Thralls became enchained, and their hive was twisted into an instrument of enslavement. As will-less drones they serve as unceasing warriors, laborers, or as a harvest of souls to satiate the hunger of the <hyperlink>Umbral Demons</hyperlink>. Their swarm carries the gloom to other realms, so that other free peoples across the <hyperlink>Astral Sea</hyperlink> might share the same terrible fate.",
+  "DLC": "ELDRITCHREALMS ",
+  "point_cost": 1,
+  "id": "umbral_thralls",
+  "name": "Umbral Thralls",
+  "incompatible_society_traits": [
+   {
+    "name": "Chosen Uniters <goodact></goodact>"
+   },
+   {
+    "name": "Devotees of Good <goodact></goodact>"
+   },
+   {
+    "name": "Keepers of Knowledge <goodact></goodact>"
+   }
+  ],
+  "screen_description": "These are the Initiates of the Umbral Abyss, who use otherworldly magic that mutates them with extra limbs. Their pact with the abyss makes their flesh twisted and immune to the Umbral Malady.",
+  "effect_descriptions": [
+   {
+    "name": "This race are designated thralls for all <hyperlink>Umbral Dwellings</hyperlink> in the realm and will primarily appear in the <hyperlink>Umbral Abyss</hyperlink>."
+   }
+  ],
+  "enabled": false,
+  "type": "society",
+  "group_name": "",
+  "front_end": false,
+  "display_order": -1,
   "affinities": [
    {
     "name": "-100<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
    }
   ],
-  "lore_description": "",
-  "biography_description": "",
-  "point_cost": 0,
-  "id": "umbral_thralls",
-  "name": "Umbral Thralls",
-  "screen_description": "The <hyperlink>Umbral Dwelling</hyperlink> tolerates you. <br></br>Grants the same benefits as <hyperlink>Neutral</hyperlink> and <hyperlink>Open Borders</hyperlink>. <br></br><br></br>If you assign a  and make more sacrifices you may reach an <rs_vassalage></rs_vassalage> <hyperlink>Eldritch Pact</hyperlink>.",
-  "enabled": false,
-  "group_name": "",
-  "front_end": false,
-  "type": "society",
-  "display_order": -1,
-  "DLC": "ELDRITCHREALMS "
+  "icon": "umbral_thralls"
  },
  {
   "biography_description": "They have tamed the tunneling Death Beetles.",
@@ -377,19 +394,16 @@
   "display_order": 0
  },
  {
-  "affinities": [
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   },
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   }
-  ],
   "biography_description": "Their vast knowledge earns them power and respect throughout the realms.",
   "lore_description": "They know knowledge is power, and power demands respect.",
   "point_cost": 1,
   "id": "keepers_of_knowledge__goodact__",
   "name": "Keepers of Knowledge <goodact></goodact>",
+  "incompatible_society_traits": [
+   {
+    "name": "Scions of Evil <evilact></evilact>"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -410,6 +424,14 @@
   "group_name": "",
   "front_end": true,
   "display_order": 1,
+  "affinities": [
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   },
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   }
+  ],
   "starting_bonuses": [
    {
     "empire_progression_slug": "all-seeing"
@@ -507,13 +529,7 @@
   "name": "<Pantheon></Pantheon> Merciless Slavers <evilact></evilact>",
   "incompatible_society_traits": [
    {
-    "name": "Chosen Uniters <goodact></goodact>"
-   },
-   {
     "name": "Devotees of Good <goodact></goodact>"
-   },
-   {
-    "name": "<Pantheon></Pantheon> Relentless Crusaders <goodact></goodact>"
    }
   ],
   "screen_description": "",
@@ -554,15 +570,6 @@
   "incompatible_society_traits": [
    {
     "name": "<Pantheon></Pantheon> Chosen Destroyers <evilact></evilact>"
-   },
-   {
-    "name": "<Pantheon></Pantheon> Merciless Slavers <evilact></evilact>"
-   },
-   {
-    "name": "Ritual Cannibals <evilact></evilact>"
-   },
-   {
-    "name": "Ruthless Raiders <evilact></evilact>"
    },
    {
     "name": "Scions of Evil <evilact></evilact>"
@@ -742,7 +749,7 @@
     "name": "All <hyperlink>Units</hyperlink> gain Attunement: Mana Addicted."
    },
    {
-    "name": "Racial Battle Mage Units and Support Units have +1 Rank."
+    "name": "Racial Support Units and Battle Mage Units have +1 Rank."
    }
   ],
   "enabled": true,
@@ -775,9 +782,6 @@
    },
    {
     "name": "Racial <hyperlink>Unit tier</hyperlink> 3 Units have +1 Rank"
-   },
-   {
-    "name": "<hyperlink>City Cap</hyperlink> is decreased by -1<citytier></citytier>."
    }
   ],
   "enabled": true,
@@ -829,25 +833,19 @@
   "name": "<Pantheon></Pantheon> Chosen Destroyers <evilact></evilact>",
   "incompatible_society_traits": [
    {
+    "name": "Imperialists"
+   },
+   {
     "name": "Chosen Uniters <goodact></goodact>"
    },
    {
     "name": "Devotees of Good <goodact></goodact>"
    },
    {
+    "name": "Keepers of Knowledge <goodact></goodact>"
+   },
+   {
     "name": "Adept Settlers"
-   },
-   {
-    "name": "<Pantheon></Pantheon> Bannerlords"
-   },
-   {
-    "name": "Imperialists"
-   },
-   {
-    "name": "<Pantheon></Pantheon> Silver Tongued"
-   },
-   {
-    "name": "<Pantheon></Pantheon> Relentless Crusaders <goodact></goodact>"
    }
   ],
   "screen_description": "",
@@ -928,13 +926,7 @@
   "name": "Chosen Uniters <goodact></goodact>",
   "incompatible_society_traits": [
    {
-    "name": "Ruthless Raiders <evilact></evilact>"
-   },
-   {
     "name": "Scions of Evil <evilact></evilact>"
-   },
-   {
-    "name": "Ritual Cannibals <evilact></evilact>"
    }
   ],
   "screen_description": "",
@@ -946,7 +938,7 @@
     "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
    },
    {
-    "name": "Racial Shield Units and Polearm Units have +1 Rank."
+    "name": "<hyperlink>Units</hyperlink> recruited through <hyperlink>Rally of the Lieges</hyperlink> gain +1 Rank upon recruitment."
    },
    {
     "name": "Gain +1 <whisperingStone></whisperingStone> <hyperlink>Whispering Stone</hyperlink>."
@@ -1394,19 +1386,16 @@
   "display_order": 5
  },
  {
+  "affinities": [
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   }
+  ],
   "biography_description": "They are talented spies, sneaking past enemy lines to gain precious information.",
   "lore_description": "They are talented spies, sneaking past enemy lines to gain precious information.",
   "point_cost": 1,
   "id": "devious_watchers",
   "name": "Devious Watchers",
-  "incompatible_society_traits": [
-   {
-    "name": "Ancient Wise Ones"
-   },
-   {
-    "name": "Gifted Casters"
-   }
-  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1424,11 +1413,6 @@
   "group_name": "",
   "front_end": true,
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Wayfinder Enchantment is already active and costs no upkeep."
@@ -1453,7 +1437,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Racial Battle Mage Units and Support Units have +1 Rank."
+    "name": "<casttactical></casttactical> <hyperlink>Damage Spells</hyperlink> gain +10% damage."
    },
    {
     "name": "Battle Mage Units and Support Units provide +5 <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink> at the start of combat."
@@ -1472,19 +1456,22 @@
   "icon": "powerful_evokers"
  },
  {
-  "affinities": [
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
   "biography_description": "They dismiss silly ideas of morals and compassion, knowing that knowledge and power are the true virtues worth striving for.",
   "lore_description": "They share a thirst for knowledge and power, thriving in their pursuit of Evil.",
   "point_cost": 1,
   "id": "scions_of_evil__evilact__",
   "name": "Scions of Evil <evilact></evilact>",
+  "incompatible_society_traits": [
+   {
+    "name": "Devotees of Good <goodact></goodact>"
+   },
+   {
+    "name": "Chosen Uniters <goodact></goodact>"
+   },
+   {
+    "name": "Keepers of Knowledge <goodact></goodact>"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1494,10 +1481,7 @@
     "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
    },
    {
-    "name": "Units are recruited with +1 Rank when you are at the maximum evil <hyperlink>Alignment</hyperlink>."
-   },
-   {
-    "name": "Racial Shock Units and Shield Units have +1 Rank."
+    "name": "Units are recruited with +1 Rank when you are at the maximum evil <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
@@ -1505,6 +1489,14 @@
   "group_name": "",
   "front_end": true,
   "display_order": 1,
+  "affinities": [
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "starting_bonuses": [
    {
     "description": "Start with an extra Shock Unit or Shield Unit."
@@ -1558,13 +1550,10 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<caststrategic></caststrategic> Unit Enchantment Research cost -30% <knowledge></knowledge> Knowledge to unlock."
+    "name": "<caststrategic></caststrategic> Unit Enchantment Research cost -40% <knowledge></knowledge> Knowledge to unlock."
    },
    {
     "name": "<caststrategic></caststrategic> <hyperlink>Unit Enchantments</hyperlink> cost -30% upkeep."
-   },
-   {
-    "name": "Racial Shield Units and Polearm Units have +1 Rank."
    }
   ],
   "enabled": true,
@@ -1647,16 +1636,16 @@
   "icon": "experienced_seafarers"
  },
  {
+  "affinities": [
+   {
+    "name": "1<nature></nature> Nature Affinity"
+   }
+  ],
   "biography_description": "They are pioneers and settlers, founding cities wherever they go.",
   "lore_description": "They are pioneers and settlers, founding cities wherever they go.",
   "point_cost": 1,
   "id": "adept_settlers",
   "name": "Adept Settlers",
-  "incompatible_society_traits": [
-   {
-    "name": "Imperialists"
-   }
-  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1671,63 +1660,12 @@
   "group_name": "",
   "front_end": true,
   "display_order": 3,
-  "affinities": [
-   {
-    "name": "1<nature></nature> Nature Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "empire_progression_slug": "expanded_governance"
    }
   ],
   "icon": "adept_settlers"
- },
- {
-  "biography_description": "Placeholder",
-  "lore_description": "A society of people that worship the sanctity of Nature and would do anything to protect it.",
-  "point_cost": 1,
-  "id": "guardians_of_nature__goodact__",
-  "name": "Guardians of Nature <goodact></goodact>",
-  "incompatible_society_traits": [
-   {
-    "name": "Imperialists"
-   },
-   {
-    "name": "Scions of Evil <evilact></evilact>"
-   }
-  ],
-  "screen_description": "",
-  "effect_descriptions": [
-   {
-    "name": "Conduit province improvements yield +3 <food></food> Food"
-   },
-   {
-    "name": "Animals have +1 Rank"
-   },
-   {
-    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
-  "enabled": true,
-  "type": "society",
-  "group_name": "",
-  "front_end": false,
-  "display_order": 3,
-  "affinities": [
-   {
-    "name": "1<nature></nature> Nature Affinity"
-   },
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
-  "starting_bonuses": [
-   {
-    "description": "Start with extra Animal units"
-   }
-  ],
-  "icon": "guardians_of_nature__goodact__"
  },
  {
   "biography_description": "They are legendary hunters, excelling in ranged combat and exploration.",
@@ -1741,7 +1679,7 @@
     "name": "Gain +75% resources from clearing an <hyperlink>Infestation</hyperlink>, <hyperlink>Ancient Wonder</hyperlink>, or <hyperlink>Resource Node</hyperlink>."
    },
    {
-    "name": "Racial Ranged Units and Skirmisher Units have +1 Rank."
+    "name": "Units regenerate an additional +5 <hyperlink><hp></hp> Hit Points</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink>."
    }
   ],
   "enabled": true,
@@ -1799,19 +1737,16 @@
   "icon": "mana_channelers"
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astral Affinity"
+   }
+  ],
   "biography_description": "They are blessed with an innate talent for spellcasting.",
   "lore_description": "They are blessed with an innate talent for spellcasting, rarely encountering problems that can't be solved by an abundant use of magic.",
   "point_cost": 1,
   "id": "gifted_casters",
   "name": "Gifted Casters",
-  "incompatible_society_traits": [
-   {
-    "name": "Ancient Wise Ones"
-   },
-   {
-    "name": "Devious Watchers"
-   }
-  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1829,11 +1764,6 @@
   "group_name": "",
   "front_end": true,
   "display_order": 4,
-  "affinities": [
-   {
-    "name": "1<arcana></arcana> Astral Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with 1 extra Combat Spell unlocked."
@@ -1910,16 +1840,16 @@
   "icon": "ruthless_raiders__evilact__"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Order Affinity"
+   }
+  ],
   "biography_description": "They are known imperialists, proud of their people and their developed culture.",
   "lore_description": "They are focused on the glory of their empire and the development of their cities.",
   "point_cost": 1,
   "id": "imperialists",
   "name": "Imperialists",
-  "incompatible_society_traits": [
-   {
-    "name": "Adept Settlers"
-   }
-  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1931,11 +1861,6 @@
   "group_name": "",
   "front_end": true,
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Order Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Capital city starts with +1 <population></population> Population."
@@ -1951,25 +1876,25 @@
   "name": "Devotees of Good <goodact></goodact>",
   "incompatible_society_traits": [
    {
-    "name": "Ruthless Raiders <evilact></evilact>"
-   },
-   {
     "name": "Scions of Evil <evilact></evilact>"
    },
    {
     "name": "Ritual Cannibals <evilact></evilact>"
+   },
+   {
+    "name": "Ruthless Raiders <evilact></evilact>"
    }
   ],
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Cities gain +10 <happiness></happiness> <hyperlink>City Stability</hyperlink> and your empire gains +5 <influence></influence> Imperium per level of Good Alignment."
+    "name": "Cities gain +10 <gold></gold> <hyperlink>Gold</hyperlink> and your empire gains +5 <influence></influence> Imperium per level of Good Alignment."
    },
    {
     "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
    },
    {
-    "name": "Racial Support Units and Polearm Units have +1 Rank."
+    "name": "Units are recruited with +1 Rank when you are at the maximum good <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
@@ -2147,19 +2072,16 @@
   "display_order": 4
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astral Affinity"
+   }
+  ],
   "biography_description": "They harbor knowledge dating back to the beginning of time.",
   "lore_description": "They have been around since the start of history, honing their minds in the pursuit of arcane knowledge.",
   "point_cost": 1,
   "id": "ancient_wise_ones",
   "name": "Ancient Wise Ones",
-  "incompatible_society_traits": [
-   {
-    "name": "Gifted Casters"
-   },
-   {
-    "name": "Devious Watchers"
-   }
-  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2171,11 +2093,6 @@
   "group_name": "",
   "front_end": true,
   "display_order": 4,
-  "affinities": [
-   {
-    "name": "1<arcana></arcana> Astral Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "1 random research skill is already unlocked."

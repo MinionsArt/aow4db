@@ -501,7 +501,7 @@
     "note": "Cooldown: 1 <turn></turn>"
    }
   ],
-  "description": "Target linked unit is inflicted with Insanity for 3 <turn></turn> Turns.<br></br><br></br>Disables Gratitude and Surrender for this turn.",
+  "description": "Target linked unit is inflicted with Insanity for 1 <turn></turn> Turn.<br></br><br></br>Disables Gratitude and Surrender for this turn.",
   "name": "Fury",
   "slug": "fury_umbral_mistress",
   "damage": "",
@@ -564,7 +564,7 @@
   "icon": "enchain_mind_umbral_mistress"
  },
  {
-  "description": "At the start of each turn:<bulletlist><bullet>Unit loses one random Negative Status Effect and heals 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> from it.</bullet></bulletlist>",
+  "description": "At the start of each turn:<bulletlist><bullet>Unit loses one random Negative Status Effect and heals 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> from it.</bullet></bulletlist><br></br>Disabled if the unit is Burning.",
   "name": "Curse Eater",
   "slug": "curse_eater",
   "icon": "curse_eater"
@@ -1149,6 +1149,12 @@
   "name": "Aura of Disease",
   "slug": "aura_of_disease",
   "icon": "aura_of_disease"
+ },
+ {
+  "description": "The unit has a -50% modifier to <happiness></happiness> <hyperlink>Morale</hyperlink> changes",
+  "name": "Heartless",
+  "slug": "heartless",
+  "icon": "heartless"
  },
  {
   "description": "An undead unit with:<bulletlist><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>Heartless</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Poisoned</bullet><bullet>Bleeding</bullet><bullet>Diseased</bullet></bulletlist></bulletlist></bulletlist>",
@@ -4696,6 +4702,9 @@
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 0 <turn></turn>"
    }
   ],
   "description": "Link with the target friendly Magic Origin, while active:<bulletlist><bullet>Target gains +2 <hyperlink>Retaliation Attacks</hyperlink>, +30 <hyperlink>Accuracy</hyperlink>, and Frenzy.</bullet></bulletlist>",
@@ -8139,7 +8148,13 @@
   "icon": "terrifying_aura"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
+    "name": "Burning",
+    "count": 1
+   }
+  ],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "charge_strike_phoenix",
@@ -8161,7 +8176,7 @@
  {
   "modifiers": [
    {
-    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
+    "description": "Inflicts Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
     "count": 1
    }
@@ -8169,7 +8184,7 @@
   "description": "Deals damage in a 2-hex radius.",
   "name": "Overheat",
   "slug": "overheat_phoenix",
-  "damage": "20<damagefire></damagefire> ",
+  "damage": "22<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "Magic"
@@ -10886,7 +10901,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_phantasm_warrior",
-  "damage": "6<damagephysical></damagephysical> 6<damagelightning></damagelightning> ",
+  "damage": "6<damagephysical></damagephysical> 4<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "Melee"

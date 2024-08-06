@@ -220,10 +220,21 @@
   "id": "umbral_rift",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Create an Umbral Rift on the target location within the Umbral Abyss, and another nearby on the Surface layer.",
+  "description": "Create an Umbral Rift in the target Umbral Abyss province, and another nearby on the Surface layer.",
   "name": "Umbral Rift",
   "operation_point_cost": 100,
   "icon": "umbral_rift"
+ },
+ {
+  "casting_cost": "200<mana></mana> ",
+  "resid": 5046586577587,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>",
+  "id": "astral_travel",
+  "tactical": false,
+  "description": "Makes your leader teleport to the target world hex.",
+  "name": "Astral Travel",
+  "operation_point_cost": 200,
+  "icon": "astral_travel"
  },
  {
   "casting_cost": "45<mana></mana> ",
@@ -242,7 +253,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
   "id": "obsidian_weapons",
   "tactical": false,
-  "description": "Makes base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units gain:<bulletlist><bullet>A base 60% chance of applying Bleeding.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
+  "description": "Makes base <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks of enchanted units gain:<bulletlist><bullet>+1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>A base 60% chance of applying Bleeding.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -280,7 +291,7 @@
   "icon": "clairvoyance_ritual"
  },
  {
-  "casting_cost": "2<thralls></thralls> ",
+  "casting_cost": "1<thralls></thralls> ",
   "resid": 5046586576378,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
   "id": "astral_wisp_ritual",
@@ -288,7 +299,7 @@
   "tactical": false,
   "description": "Summons an <hyperlink>Astral Wisp</hyperlink> on target hex.",
   "name": "Astral Wisp Ritual",
-  "operation_point_cost": 80,
+  "operation_point_cost": 45,
   "summoned_units": [
    {
     "slug": "astral_wisp"
@@ -296,7 +307,7 @@
   ]
  },
  {
-  "casting_cost": "4<thralls></thralls> ",
+  "casting_cost": "6<thralls></thralls> ",
   "resid": 5046586576371,
   "spellType": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>",
   "id": "dark_knowledge_ritual",
@@ -346,7 +357,7 @@
   ]
  },
  {
-  "casting_cost": "5<thralls></thralls> ",
+  "casting_cost": "4<thralls></thralls> ",
   "resid": 5046586575941,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
   "id": "astral_siphoner_ritual",
@@ -354,7 +365,7 @@
   "tactical": false,
   "description": "Summons an <hyperlink>Astral Siphoner</hyperlink> on target hex.",
   "name": "Astral Siphoner Ritual",
-  "operation_point_cost": 200,
+  "operation_point_cost": 150,
   "summoned_units": [
    {
     "slug": "astral_siphoner"
@@ -362,7 +373,7 @@
   ]
  },
  {
-  "casting_cost": "3<thralls></thralls> ",
+  "casting_cost": "4<thralls></thralls> ",
   "resid": 5046586575940,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Enemy Army Spell</hyperlink>",
   "id": "mass_phantasmal_ritual",
@@ -370,23 +381,23 @@
   "tactical": false,
   "description": "Enemy units in target and adjacent <hyperlink>Provinces</hyperlink>:<bulletlist><bullet>Sustain damage equal to 15% of their maximum <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Lose 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> until the end of their next combat.</bullet></bulletlist>",
   "name": "Mass Phantasmal Ritual",
-  "operation_point_cost": 100,
+  "operation_point_cost": 150,
   "icon": "mass_phantasmal_ritual"
  },
  {
-  "casting_cost": "2<thralls></thralls> ",
+  "casting_cost": "3<thralls></thralls> ",
   "resid": 5046586575939,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Enemy Army Spell</hyperlink>",
   "id": "phantasmal_ritual",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Target enemy army:<bulletlist><bullet>Sustains damage equal to 20% of its maximum <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>Loses 3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> until the end of its next combat</bullet></bulletlist>",
+  "description": "Target enemy army:<bulletlist><bullet>Sustains damage equal to 20% of its maximum <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>Loses 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> until the end of its next combat</bullet></bulletlist>",
   "name": "Phantasmal Ritual",
-  "operation_point_cost": 80,
+  "operation_point_cost": 100,
   "icon": "phantasmal_ritual"
  },
  {
-  "casting_cost": "2<thralls></thralls> ",
+  "casting_cost": "4<thralls></thralls> ",
   "resid": 5046586575938,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
   "id": "quickening_ritual",
@@ -394,7 +405,7 @@
   "tactical": false,
   "description": "Units in target friendly army gain Very Fast Movement for 2 <hyperlink>World Map</hyperlink> <turn></turn> Turns",
   "name": "Quickening Ritual",
-  "operation_point_cost": 80,
+  "operation_point_cost": 150,
   "icon": "quickening_ritual"
  },
  {
@@ -2461,17 +2472,6 @@
   "name": "Blizzard",
   "operation_point_cost": 80,
   "icon": "blizzard"
- },
- {
-  "casting_cost": "200<mana></mana> ",
-  "resid": 4514010633785,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>World Spell</hyperlink>",
-  "id": "astral_travel",
-  "tactical": false,
-  "description": "Makes your leader teleport to the target world hex.",
-  "name": "Astral Travel",
-  "operation_point_cost": 200,
-  "icon": "astral_travel"
  },
  {
   "casting_cost": "120<mana></mana> ",
