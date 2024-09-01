@@ -5149,7 +5149,9 @@ function showCosmicHappening(a) {
             var imagelink = document.getElementById("modicon");
             imagelink.setAttribute("id", "img" + a);
             var categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
+            categoryLink = categoryLink.replaceAll("of", "Of");
             imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
+
 
             var preview = document.getElementById("structurepreview");
             var imagePos = jsonCosmicHappenings[j].image;
@@ -5168,7 +5170,13 @@ function showCosmicHappening(a) {
             modtier.setAttribute("id", "img" + a);
 
             var modcost = document.getElementById("modcost");
-            modcost.innerHTML = "Duration: " + jsonCosmicHappenings[j].duration + "<turn></turn>";
+            var duration = jsonCosmicHappenings[j].duration;
+            if (duration == -1) {
+                duration = "Variable";
+            } else {
+                duration += "<turn></turn>";
+            }
+            modcost.innerHTML = "Duration: " + duration;
             modcost.setAttribute("id", "img" + a);
             //imagelink.insertBefore(extraImage);
             // find combat enchantment
