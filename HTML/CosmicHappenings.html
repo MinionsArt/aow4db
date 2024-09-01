@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <script>
+            var MinorArray = ["ancient_cave", "castle_ruins", "crystal_forest", "hidden_wellspring"];
+            var MajorArray = ["lost_tomb", "magma_forge", "secret_temple"];
+            var goldArray = ["golden_ziggurat", "lost_wizard_tower", "world_tree", "vaultsphere"];
+
+            $("#body").ready(function () {
+                $("#header").load("/aow4db/HTML/header.html", function () {
+                    CheckData();
+                });
+            });
+
+            function HandlePage() {
+                showCosmicHappeningsWithArgument("Minor", "Minor");
+                showCosmicHappeningsWithArgument("Major", "Major");
+
+                SetLevelUpStuff();
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Cosmic Happenings</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">Cosmic Happenings</div>
+
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder">
+                <button id="Minor-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Minor')">
+                    Minor Happenings
+                </button>
+                <button id="Major-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Major')">
+                    Major Happenings
+                </button>
+            </div>
+            <div id="dataHolder" style="margin-top: -150px">
+                <div id="Minor" class="w3-container w3-border city"></div>
+
+                <div id="Major" class="w3-container w3-border city"></div>
+            </div>
+        </div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>
