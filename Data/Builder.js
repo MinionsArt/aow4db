@@ -5153,7 +5153,7 @@ function showCosmicHappening(a) {
             preview.className = "cosmicHappeningPic";
             preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
 
-            preview.setAttribute("src", "/aow4db/Icons/Interface/RuneCircle.png");
+            preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
 
             var modtier = document.getElementById("modtier");
             modtier.innerHTML = "Category: " + jsonCosmicHappenings[j].category;
