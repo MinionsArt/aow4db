@@ -1292,6 +1292,8 @@ function GetAbilityBackground(abilityDam) {
             var abilityIconType = "ability_icon_spirit";
         } else if (splitDamageString[0].indexOf("fire") != -1) {
             var abilityIconType = "ability_icon_fire";
+        } else if (splitDamageString[0].indexOf("lightning") != -1) {
+            var abilityIconType = "ability_icon_light";
         } else {
             var abilityIconType = "ability_icon";
         }
