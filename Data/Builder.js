@@ -993,7 +993,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                             abilityRange =
                                                 parseInt(
                                                     parseInt(jsonEnchantments[k].attack[t].range) +
-                                                    parseInt(abilityRange)
+                                                        parseInt(abilityRange)
                                                 ) + "*";
                                         }
                                     }
@@ -1117,8 +1117,8 @@ function addAbilityslot(a, holder, list, enchant) {
             imag.setAttribute(
                 "style",
                 'background-image: url("/aow4db/Icons/Interface/' +
-                abilityIconType +
-                '.png");background-repeat: no-repeat;background-size: 40px 40px'
+                    abilityIconType +
+                    '.png");background-repeat: no-repeat;background-size: 40px 40px'
             );
 
             imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -1292,6 +1292,8 @@ function GetAbilityBackground(abilityDam) {
             var abilityIconType = "ability_icon_spirit";
         } else if (splitDamageString[0].indexOf("fire") != -1) {
             var abilityIconType = "ability_icon_fire";
+        } else if (splitDamageString[0].indexOf("lightning") != -1) {
+            var abilityIconType = "ability_icon_light";
         } else {
             var abilityIconType = "ability_icon";
         }
@@ -2752,11 +2754,9 @@ function findCosmicHappeningsWithArgument(argumentType) {
 
     for (j in jsonCosmicHappenings) {
         if (jsonCosmicHappenings[j].type == argumentType) {
-
             finalCheckedList.push(jsonCosmicHappenings[j].id);
         }
     }
-
 
     return finalCheckedList;
 }
@@ -2844,7 +2844,6 @@ function showUnit(a, subcultureCheck, resID) {
     var found = false;
     var keepgoing = true;
     var stopHere = false;
-
 
     for (let i = 0; i < jsonUnits.length; i++) {
         if (a === jsonUnits[i].id) {
@@ -5120,7 +5119,6 @@ function showStructure(a, showOrigin) {
 function showCosmicHappening(a) {
     var modName,
         description,
-
         j,
         nameString = "";
     var found = false;
@@ -5132,10 +5130,8 @@ function showCosmicHappening(a) {
             nameString = jsonCosmicHappenings[j].name.toUpperCase();
 
             if (modName == undefined) {
-
             }
             modName.innerHTML = nameString;
-
 
             modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
@@ -5152,18 +5148,14 @@ function showCosmicHappening(a) {
             categoryLink = categoryLink.replaceAll("of", "Of");
             imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
 
-
             var preview = document.getElementById("structurepreview");
             var imagePos = jsonCosmicHappenings[j].image;
-
 
             preview.setAttribute("id", "img" + a);
             preview.className = "cosmicHappeningPic";
             preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
 
-            var extraImage = document.createElement("IMG");
-            extraImage.setAttribute("src", "/aow4db/Icons/Interface/RuneCircle.png");
-            extraImage.setAttribute("style", "width:250px; z-index:2");
+            preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
 
             var modtier = document.getElementById("modtier");
             modtier.innerHTML = "Category: " + jsonCosmicHappenings[j].category;
@@ -5178,7 +5170,7 @@ function showCosmicHappening(a) {
             }
             modcost.innerHTML = "Duration: " + duration;
             modcost.setAttribute("id", "img" + a);
-            //imagelink.insertBefore(extraImage);
+
             // find combat enchantment
             found = true;
         }
@@ -6884,8 +6876,8 @@ function backtraceStructureToTomeNameAndTier(structure) {
                         if ("affinities" in jsonTomes[j]) {
                             array.push(
                                 ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                "<br> " +
-                                jsonTomes[j].name
+                                    "<br> " +
+                                    jsonTomes[j].name
                             );
                         } else {
                             array.push(jsonTomes[j].name);
