@@ -4366,9 +4366,14 @@ function showTome(a, div) {
                 var allAffinity = "";
                 for (var i = 0; i < affinitiesdual.length; i++) {
                     var affinities = affinitiesdual[i].split(" ");
-                    allAffinity += affinities[1] + affinities[0];
+                    // add a new line for each additional affinity
+                    if (i !== 0) {
+                        allAffinity += "<br>"
+                    }
+                    // example output: +1 <empirenature></empirenature> Nature Affinity 
+                    allAffinity += `+${affinities[0]} ${affinities[1]} ${affinities[3]} ${affinities[4]}`;
                 }
-                div.innerHTML = "+" + allAffinity + " Affinity";
+                div.innerHTML = allAffinity;
                 unitTypesDiv.appendChild(div);
             }
             // tome passives
