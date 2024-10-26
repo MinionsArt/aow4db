@@ -6045,6 +6045,9 @@ function showTraitSetup(currentTrait) {
         } else if (currentTrait.DLC == "ELDRITCHREALMS ") {
             imag.setAttribute("src", "/aow4db/Icons/Text/EldritchRealms.png");
             spa.innerHTML = "Part of the Eldritch Realms DLC";
+        } else if (currentTrait.DLC == "HERALDOFGLORY ") {
+            imag.setAttribute("src", "/aow4db/Icons/Text/herald_of_glory.png");
+            spa.innerHTML = "Part of the Herald of Glory DLC";
         }
 
         newDivForMount.appendChild(imag);
@@ -6610,6 +6613,10 @@ function AddDLCTag(dlcname) {
     if (dlcname == "ELDRITCHREALMS ") {
         imag.setAttribute("src", "/aow4db/Icons/Text/EldritchRealms.png");
         spa.innerHTML = "Part of the Eldritch Realms DLC";
+    }
+    if (dlcname == "HERALDOFGLORY ") {
+        imag.setAttribute("src", "/aow4db/Icons/Text/herald_of_glory.png");
+        spa.innerHTML = "Part of the Herald of Glory DLC";
     }
     newDivForMount.appendChild(imag);
 
