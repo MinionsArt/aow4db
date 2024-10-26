@@ -4371,6 +4371,48 @@ function showTome(a, div) {
                 div.innerHTML = "+" + allAffinity + " Affinity";
                 unitTypesDiv.appendChild(div);
             }
+            // tome passives
+            var l = "";
+            if ("passives" in jsonTomes[j]) {
+                for (l in jsonTomes[j].passives) {
+                    var div = document.createElement("DIV");
+                    div.className = "initialBonusText";
+
+                    div.innerHTML = "<unit></unit>" + jsonTomes[j].passives[l].name;
+
+                    var spa = document.createElement("SPAN");
+                    spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
+                    spa.innerHTML += jsonTomes[j].passives[l].description;
+
+                    addTooltipListeners(div, spa);
+
+                    unitTypesDiv.appendChild(div);
+                }
+            }
+            //  special province improvements
+            var l = "";
+            if ("initial_upgrades" in jsonTomes[j]) {
+                for (l in jsonTomes[j].initial_upgrades) {
+                    var div = document.createElement("DIV");
+                    div.className = "initialBonusText";
+                    var name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
+                    div.innerHTML = name;
+
+                    var spa = document.createElement("SPAN");
+                    spa.innerHTML =
+                        '<span style="color: #deb887 ;text-transform: uppercase">' +
+                        name +
+                        "</span>" +
+                        GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
+
+                    //  div.appendChild(spa);
+                    unitTypesDiv.appendChild(div);
+
+                    addTooltipListeners(div, spa);
+
+                    unitTypesDiv.appendChild(div);
+                }
+            }
             var l = "";
             if ("hero_skills" in jsonTomes[j]) {
                 for (l in jsonTomes[j].hero_skills) {
@@ -4416,46 +4458,6 @@ function showTome(a, div) {
                         addTooltipListeners(div, spa2);
                         unitTypesDiv.appendChild(div);
                     }
-                }
-            }
-            var l = "";
-            if ("initial_upgrades" in jsonTomes[j]) {
-                for (l in jsonTomes[j].initial_upgrades) {
-                    var div = document.createElement("DIV");
-                    div.className = "initialBonusText";
-                    var name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
-                    div.innerHTML = name;
-
-                    var spa = document.createElement("SPAN");
-                    spa.innerHTML =
-                        '<span style="color: #deb887 ;text-transform: uppercase">' +
-                        name +
-                        "</span>" +
-                        GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
-
-                    //  div.appendChild(spa);
-                    unitTypesDiv.appendChild(div);
-
-                    addTooltipListeners(div, spa);
-
-                    unitTypesDiv.appendChild(div);
-                }
-            }
-            var l = "";
-            if ("passives" in jsonTomes[j]) {
-                for (l in jsonTomes[j].passives) {
-                    var div = document.createElement("DIV");
-                    div.className = "initialBonusText";
-
-                    div.innerHTML = jsonTomes[j].passives[l].name;
-
-                    var spa = document.createElement("SPAN");
-                    spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
-                    spa.innerHTML += jsonTomes[j].passives[l].description;
-
-                    addTooltipListeners(div, spa);
-
-                    unitTypesDiv.appendChild(div);
                 }
             }
             // casting points
