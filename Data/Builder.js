@@ -4467,7 +4467,7 @@ function showTome(a, div) {
             }
             // casting points
             var div = document.createElement("DIV");
-            div.className = "initialBonusText";
+            div.className = "initialBonusText initialBonusCastingPoints";
             var amount = "";
             if (
                 jsonTomes[j].tier === 1 ||
