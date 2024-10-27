@@ -4366,10 +4366,57 @@ function showTome(a, div) {
                 var allAffinity = "";
                 for (var i = 0; i < affinitiesdual.length; i++) {
                     var affinities = affinitiesdual[i].split(" ");
-                    allAffinity += affinities[1] + affinities[0];
+                    // add a new line for each additional affinity
+                    if (i !== 0) {
+                        allAffinity += "<br>"
+                    }
+                    // example output: +1 <empirenature></empirenature> Nature Affinity 
+                    allAffinity += `+${affinities[0]} ${affinities[1]} ${affinities[3]} ${affinities[4]}`;
                 }
-                div.innerHTML = "+" + allAffinity + " Affinity";
+                div.innerHTML = allAffinity;
                 unitTypesDiv.appendChild(div);
+            }
+            // tome passives
+            var l = "";
+            if ("passives" in jsonTomes[j]) {
+                for (l in jsonTomes[j].passives) {
+                    var div = document.createElement("DIV");
+                    div.className = "initialBonusText";
+
+                    div.innerHTML = "<unit></unit>" + jsonTomes[j].passives[l].name;
+
+                    var spa = document.createElement("SPAN");
+                    spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
+                    spa.innerHTML += jsonTomes[j].passives[l].description;
+
+                    addTooltipListeners(div, spa);
+
+                    unitTypesDiv.appendChild(div);
+                }
+            }
+            //  special province improvements
+            var l = "";
+            if ("initial_upgrades" in jsonTomes[j]) {
+                for (l in jsonTomes[j].initial_upgrades) {
+                    var div = document.createElement("DIV");
+                    div.className = "initialBonusText";
+                    var name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
+                    div.innerHTML = name;
+
+                    var spa = document.createElement("SPAN");
+                    spa.innerHTML =
+                        '<span style="color: #deb887 ;text-transform: uppercase">' +
+                        name +
+                        "</span>" +
+                        GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
+
+                    //  div.appendChild(spa);
+                    unitTypesDiv.appendChild(div);
+
+                    addTooltipListeners(div, spa);
+
+                    unitTypesDiv.appendChild(div);
+                }
             }
             var l = "";
             if ("hero_skills" in jsonTomes[j]) {
@@ -4418,49 +4465,9 @@ function showTome(a, div) {
                     }
                 }
             }
-            var l = "";
-            if ("initial_upgrades" in jsonTomes[j]) {
-                for (l in jsonTomes[j].initial_upgrades) {
-                    var div = document.createElement("DIV");
-                    div.className = "initialBonusText";
-                    var name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
-                    div.innerHTML = name;
-
-                    var spa = document.createElement("SPAN");
-                    spa.innerHTML =
-                        '<span style="color: #deb887 ;text-transform: uppercase">' +
-                        name +
-                        "</span>" +
-                        GetStructureDescription(jsonTomes[j].initial_upgrades[l].upgrade_slug);
-
-                    //  div.appendChild(spa);
-                    unitTypesDiv.appendChild(div);
-
-                    addTooltipListeners(div, spa);
-
-                    unitTypesDiv.appendChild(div);
-                }
-            }
-            var l = "";
-            if ("passives" in jsonTomes[j]) {
-                for (l in jsonTomes[j].passives) {
-                    var div = document.createElement("DIV");
-                    div.className = "initialBonusText";
-
-                    div.innerHTML = jsonTomes[j].passives[l].name;
-
-                    var spa = document.createElement("SPAN");
-                    spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
-                    spa.innerHTML += jsonTomes[j].passives[l].description;
-
-                    addTooltipListeners(div, spa);
-
-                    unitTypesDiv.appendChild(div);
-                }
-            }
             // casting points
             var div = document.createElement("DIV");
-            div.className = "initialBonusText";
+            div.className = "initialBonusText initialBonusCastingPoints";
             var amount = "";
             if (
                 jsonTomes[j].tier === 1 ||
