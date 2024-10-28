@@ -67,7 +67,10 @@ var jsonSiegeProjects,
     jsonBuilderLookUp,
     jsonExtraAscendedInfo,
     jsonItemForge,
-    jsonCosmicHappenings;
+    jsonCosmicHappenings,
+    jsonHeroSkillsBeta,
+    jsonAbilitiesBeta,
+    jsonBuilderHeroLookUp;
 
 async function GetAllData() {
     const jsonFilePaths = [
@@ -90,7 +93,10 @@ async function GetAllData() {
         "/aow4db/Data/BuilderLookup.json",
         "/aow4db/Data/AscendedInfo.json",
         "/aow4db/Data/ItemForge.json",
-        "/aow4db/Data/CosmicHappenings.json"
+        "/aow4db/Data/CosmicHappenings.json",
+        "/aow4db/Data/BuilderLookupHero.json",
+        "/aow4db/OpenBetaDeleteLater/HeroSkills.json",
+        "/aow4db/OpenBetaDeleteLater/Abilities.json"
     ];
     await fetchJsonFiles(jsonFilePaths)
         .then((dataArray) => {
@@ -136,6 +142,12 @@ async function GetAllData() {
                     jsonItemForge = data;
                 } else if (index == 19) {
                     jsonCosmicHappenings = data;
+                } else if (index == 20) {
+                    jsonBuilderHeroLookUp = data;
+                } else if (index == 21) {
+                    jsonHeroSkillsBeta = data;
+                } else if (index == 22) {
+                    jsonAbilitiesBeta = data;
                 }
             });
         })
@@ -4368,9 +4380,9 @@ function showTome(a, div) {
                     var affinities = affinitiesdual[i].split(" ");
                     // add a new line for each additional affinity
                     if (i !== 0) {
-                        allAffinity += "<br>"
+                        allAffinity += "<br>";
                     }
-                    // example output: +1 <empirenature></empirenature> Nature Affinity 
+                    // example output: +1 <empirenature></empirenature> Nature Affinity
                     allAffinity += `+${affinities[0]} ${affinities[1]} ${affinities[3]} ${affinities[4]}`;
                 }
                 div.innerHTML = allAffinity;
