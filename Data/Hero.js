@@ -450,6 +450,14 @@ function GetAllAvailableSignatureSkills(slot) {
     var listOfFirstChoice = ["mindbreaker", "fleshweaver", "madcaster"];
     var listOfSecondChoiceMindbreaker = ["enthraller", "mind_devourer"];
     var listOfSecondChoiceFleshweaver = ["puppeteer", "fleshsculptor"];
+    var dragonBreathIDList = [
+        "4273492487959",
+        "4273492488409",
+        "4273492488425",
+        "4273492488436",
+        "4273492488449",
+        "4273492488460"
+    ];
 
     var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
     var listOfSkills = [];
@@ -510,7 +518,9 @@ function GetAllAvailableSignatureSkills(slot) {
                     }
                     // third slot : breath
                     if (slot === 3 && jsonHeroSkillsBeta[s].name.indexOf("breath") != -1) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                        if (dragonBreathIDList.includes(jsonHeroSkillsBeta[s].resid.toString())) {
+                            listOfSkills.push(jsonHeroSkillsBeta[s]);
+                        }
                     }
                     // fourth slot: elder
                     if (slot === 4 && jsonHeroSkillsBeta[s].name.indexOf("Elder") != -1) {
