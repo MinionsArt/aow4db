@@ -2763,31 +2763,80 @@ function incompatibleCheck(type, origin) {
     }
 
     if (type === "Loadout") {
+        // example: Champion:Wizard, Primal-sylvan_wolf:Dark
         var splitOrigins = origin.requirement.split(",");
 
         if (splitOrigins.length > 1) {
+            // this has cultures and maybe champion + wizard
+
             // check first split
             let multiSetupOrigin = splitOrigins[0].split(":");
+
+            // this is champion or wizard
             if (multiSetupOrigin.length > 1) {
+                // wizard
                 if (multiSetupOrigin[1].indexOf(currentOrigin.name) != -1) {
                     incompatibleWithSetup = false;
                 }
             } else {
+                // culture checks
                 var multiSetup = splitOrigins[1].split(":");
+                console.log(multiSetup);
                 if (!multiSetup.includes(currentCulture.name)) {
                     incompatibleWithSetup = true;
                 }
 
-                // check if its primal culture
-                if (currentCulture.name.indexOf("Primal") != -1) {
-                    if (multiSetup.includes("Primal")) {
-                        incompatibleWithSetup = false;
+                if (currentCulture.name.indexOf("Mystic") != -1) {
+                    for (let index = 0; index < multiSetup.length; index++) {
+                        if (multiSetup[index].indexOf("Mystic") != -1) {
+                            // get sub culture
+                            incompatibleWithSetup = false;
+                        }
                     }
                 }
 
-                if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
-                    // if its wizard king the culture check doesnt matter
+                if (currentCulture.name.indexOf("Oathsworn") != -1) {
+                    for (let index = 0; index < multiSetup.length; index++) {
+                        // check subs
+                        var subculture = multiSetup[index].split("-");
+                        if (subculture.length > 1) {
+                            if (subculture[1].indexOf("strife") != -1 || currentCulture.name.indexOf("Strife") != -1) {
+                                // get sub culture
+                                incompatibleWithSetup = false;
+                            } else if (
+                                subculture[1].indexOf("harmony") != -1 ||
+                                currentCulture.name.indexOf("Harmony") != -1
+                            ) {
+                                // get sub culture
+                                incompatibleWithSetup = false;
+                            } else if (
+                                subculture[1].indexOf("righteousness") != -1 ||
+                                currentCulture.name.indexOf("Righteousness") != -1
+                            ) {
+                                // get sub culture
+                                incompatibleWithSetup = false;
+                            }
+                        } else {
+                            if (multiSetup[index].indexOf("Oathsworn") != -1) {
+                                // get sub culture
+                                incompatibleWithSetup = false;
+                            }
+                        }
+                    }
+                }
 
+                // check if its primal culture
+                if (currentCulture.name.indexOf("Primal") != -1) {
+                    for (let index = 0; index < multiSetup.length; index++) {
+                        if (multiSetup[index].indexOf("Primal") != -1) {
+                            // get sub culture
+                            incompatibleWithSetup = false;
+                        }
+                    }
+                }
+
+                // if not champion
+                if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
                     // console.log(splitOrigins);
                     // console.log(currentCulture.name + " " + splitOrigins[1]);
                     incompatibleWithSetup = true;
@@ -2795,15 +2844,15 @@ function incompatibleCheck(type, origin) {
             }
         } else {
             // console.log(currentOrigin.name + " " + splitOrigins[0]);
+            //if only 1 split here, its dragon or  eldritch
 
-            if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
+            // else its dragon, eldritch, if not same as currentorigin, return
+            //console.log(currentOrigin.name + " " + splitOrigins[0] + " " + origin.name);
+
+            if (splitOrigins[0].indexOf(currentOrigin.name) != -1) {
+                incompatibleWithSetup = false;
+            } else {
                 incompatibleWithSetup = true;
-            }
-
-            if (currentCulture.name.indexOf("Primal") != -1) {
-                if (splitOrigins[0].includes("Primal")) {
-                    incompatibleWithSetup = false;
-                }
             }
         }
     }
@@ -2812,7 +2861,9 @@ function incompatibleCheck(type, origin) {
 }
 
 function toggleSelection(origin, button, type, event) {
-    //   console.log("test"+ origin);
+    // console.log("test" + origin);
+
+    // dont let turn off the starting skills
 
     const selectedButtons = document.querySelectorAll("#options-container list-button");
     for (let index = 0; index < selectedButtons.length; index++) {
