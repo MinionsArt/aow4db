@@ -1,75 +1,54 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
+        <script>
+            $("#body").ready(function () {
+                $("#header").load("/aow4db/HTML/header.html", function () {
+                    CheckData();
+                });
             });
-        });
 
-        function HandlePage() {
-            showSkillsWithArgument("sig", "", "Hero Signature Skills");
+            function HandlePage() {
+                //  showSkillsWithArgument("sig", "", "Hero Signature Skills");
 
-            showSkillsWithArgument("pantheon", "", "Pantheon Ascended Hero Skills");
-            showSkillsWithArgument("pantheon_weapon", "", "Pantheon Origin Weapon Skills");
-            showSkillsWithArgument("", "Support", "Hero Skills - Support");
-            showSkillsWithArgument("", "Warfare", "Hero Skills - Warfare");
-            showSkillsWithArgument("", "Battle", "Hero Skills - Battle Magic");
-            showSkillsWithArgument("", "Feudal Lord", "Hero Skills - Feudal Lord");
-            showSkillsWithArgument("", "Dragon Lord", "Hero Skills - Dragon Lord");
-            showSkillsWithArgument("", "Eldritch Sovereign", "Hero Skills - Eldritch Sovereign");
+                showSkillsWithArgument("pantheon", "", "Pantheon Ascended Hero Skills");
+                //showSkillsWithArgument("pantheon_weapon", "", "Pantheon Origin Weapon Skills");
+                //  showSkillsWithArgument("", "Support", "Hero Skills - Support");
+                //showSkillsWithArgument("", "Warfare", "Hero Skills - Warfare");
+                //showSkillsWithArgument("", "Battle", "Hero Skills - Battle Magic");
+                //showSkillsWithArgument("", "Feudal Lord", "Hero Skills - Feudal Lord");
+                //showSkillsWithArgument("", "Dragon Lord", "Hero Skills - Dragon Lord");
+                //showSkillsWithArgument("", "Eldritch Sovereign", "Hero Skills - Eldritch Sovereign");
 
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-        }
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-    </script>
+        <title>Age of Wonders 4 Database - Hero Ascended Skills</title>
+    </head>
 
+    <body>
+        <div id="header"></div>
 
-    <title>Age of Wonders 4 Database - Hero Skills</title>
-</head>
+        <div class="textblocktitle">Hero Ascended Skills</div>
 
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Hero Skills
-    </div>
-
-    <div style="
-    display: table;
-    margin: 5px;
-    margin-left: auto;
-    margin-right: auto;">
-        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
-
-    </div>
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
-        </div>
-        <div id="dataHolder">
+        <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
+            <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
         </div>
 
-
-    </div>
-
-
-</body>
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
