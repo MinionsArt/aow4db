@@ -74,7 +74,7 @@ function GetQuickLinkHero() {
     //4 sigskills
     for (let index = 0; index < currentsignatureSelectionsArray.length; index++) {
         let number = decimalToHex(LookUpHeroTableData(currentsignatureSelectionsArray[index]));
-        console.log(currentsignatureSelectionsArray);
+        // console.log(currentsignatureSelectionsArray);
         if (index == 0) {
             code += number;
         } else {
@@ -110,11 +110,41 @@ function ResetAll() {
     ResetSignatures();
     currentSkillPoints = 20;
     UpdatePage();
+
+    SetStartingSkillsSelection();
+}
+
+function SetStartingSkillsSelection() {
+    // set base skills
+    let nodeWithId = document.getElementById(currentSelectedSkillsArray[0]);
+
+    let findSkill = ReturnHeroSkillItself(null, currentSelectedSkillsArray[0]);
+
+    toggleNodeSelection(findSkill, nodeWithId, false);
 }
 
 function ResetSkills() {
     currentSkillPoints += currentSelectedSkillsArray.length;
-    currentSelectedSkillsArray = [];
+
+    if (rulerOrigin == "Champion") {
+        //command
+
+        currentSelectedSkillsArray = [4273492481388];
+        currentSkillPoints--;
+    } else if (rulerOrigin == "Wizard") {
+        // channeling ritual
+        currentSelectedSkillsArray = [5111011084976];
+        currentSkillPoints--;
+    } else if (rulerOrigin == "Dragon") {
+        // lesser dragon breath
+        currentSelectedSkillsArray = [4273492487240];
+        currentSkillPoints--;
+    }
+    if (rulerOrigin == "Eldritch") {
+        // enthralling presence
+        currentSelectedSkillsArray = [5046586576674];
+        currentSkillPoints--;
+    }
 }
 
 function ResetSignatures() {
@@ -155,7 +185,7 @@ function LookupCode(code) {
             let number = skilllist[index];
 
             var numbernew = jsonBuilderHeroLookUp[hexToDecimal(number)].resid;
-            console.log(numbernew);
+            // console.log(numbernew);
             newArray.push(numbernew);
         }
     }
@@ -187,7 +217,7 @@ function LookupCode(code) {
     var sigchoises = splitcode[4];
     var skilllistSig = sigchoises.split(":");
     var siggyarray = [];
-    console.log(skilllistSig);
+    //  console.log(skilllistSig);
     if (skilllistSig[0] != "") {
         for (let index = 0; index < skilllistSig.length; index++) {
             let number = skilllistSig[index];
@@ -217,7 +247,7 @@ function LookupCode(code) {
         let findSkill = ReturnHeroSkillItself(null, newArray[i]);
 
         toggleNodeSelection(findSkill, nodeWithId, false);
-        console.log(nodeWithId + " " + findSkill);
+        console.log(newArray[0]);
     }
 
     currentSelectedSkillsArray = newArray;
@@ -232,6 +262,7 @@ function UpdatePage() {
     SetUpTreeNodes(rulerClass, 3, "white", holder, treespace);
     SetUpSignatures(7);
     UpdateSkillPoints();
+    console.log(currentSelectedSkillsArray);
 
     // add a summary
     // CreateSummary();
@@ -302,7 +333,7 @@ function SetSummaryBaseStats(list, holder) {
     for (let i = 0; i < list.length; i++) {
         baseStats.innerHTML += list[i].description + "<br>";
     }
-    console.log(baseStats.innerHTML);
+    // console.log(baseStats.innerHTML);
     baseStats.innerHTML = cleanUpMergeStatsText(baseStats.innerHTML);
     holder.appendChild(baseStats);
 }
@@ -779,7 +810,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
 
         if ("range" in skill) {
             form = "diamond";
-            console.log("found a diamond");
+
             overwriteIcon = skill.icon;
             abilityIconType = "";
             topPosition -= 10;
@@ -921,11 +952,16 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
 function toggleNodeSelection(nodeData, nodeElement, isSig) {
     // `nodeData` is the data object for the skill
     // `nodeElement` is the HTML element representing the skill
+    //
+    //
+    //
+    //
+
     console.log("toggling");
 
     // Check if the node is already active
     const isActive = nodeElement.classList.contains("activated");
-    console.log(nodeData);
+    // console.log(nodeData);
     // If the node is not active, activate it
     if (!isActive) {
         // Check if its blue or if its got no skills required and theres enough points left
@@ -940,7 +976,7 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
                 for (let i = 0; i < nodeData.excluded_skills.length; i++) {
                     const requiredNodeElement = document.getElementById(nodeData.excluded_skills[i].resid);
                     if (requiredNodeElement.classList.contains("activated")) {
-                        console.log("excluded");
+                        // console.log("excluded");
                         return;
                     }
                 }
@@ -985,7 +1021,7 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
 
                     if (relatedNode) {
                         if (relatedNode.classList.contains("activated")) {
-                            console.log("found existing activated node " + otherNode.id);
+                            // console.log("found existing activated node " + otherNode.id);
                             allowedToDisable = false;
                             return;
                         }
@@ -994,6 +1030,15 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
             }
         });
         if (allowedToDisable) {
+            // dont turn off skill if its the starting ones
+            if (
+                nodeData.resid == 4273492481388 ||
+                nodeData.resid == 5111011084976 ||
+                nodeData.resid == 4273492487240 ||
+                nodeData.resid == 5046586576674
+            ) {
+                return;
+            }
             deactivateNode(nodeElement, nodeData, isSig);
         }
     }
@@ -1004,7 +1049,7 @@ function UpdateSkillPoints() {
     var skillPointDiv = document.getElementById("currentSkillPoints");
     skillPointDiv.innerHTML = currentSkillPoints.toString();
 
-    var selectedSkillsDiv = document.getElementById("selectedSkills");
+    // var selectedSkillsDiv = document.getElementById("selectedSkills");
     //selectedSkillsDiv.innerHTML = currentSelectedSkillsArray.toString();
 }
 
@@ -1021,7 +1066,7 @@ function activateNode(newNode3, nodeData, isSig) {
             line.style.backgroundColor = "white"; // Revert line color
         } else if (line.dataset.target === nodeData.resid.toString()) {
             let targetS = document.getElementById(line.dataset.source);
-            console.log(line.dataset.target);
+            //console.log(line.dataset.target);
             if (targetS != undefined) {
                 if (targetS.classList.contains("activated")) {
                     line.style.backgroundColor = "green"; // Revert line color
@@ -1032,7 +1077,7 @@ function activateNode(newNode3, nodeData, isSig) {
     let idNumber = nodeData.resid;
     currentSkillPoints--;
     if (isSig == true) {
-        console.log("here sig");
+        // console.log("here sig");
         currentsignatureSelectionsArray.push(idNumber);
     } else {
         currentSelectedSkillsArray.push(idNumber);
