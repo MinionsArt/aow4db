@@ -29,6 +29,33 @@
         ]
     },
     {
+        "id": "pledge_of_strife",
+        "name": "Pledge of Strife",
+        "passive": [
+            {
+                "slug": "warriors_soul"
+            }
+        ]
+    },
+    {
+        "id": "pledge_of_harmony",
+        "name": "Pledge of Harmony",
+        "passive": [
+            {
+                "slug": "harmonize"
+            }
+        ]
+    },
+    {
+        "id": "pledge_of_righteousness",
+        "name": "Pledge of Righteousness",
+        "passive": [
+            {
+                "slug": "nobility"
+            }
+        ]
+    },
+    {
         "id": "brutal_mark",
         "name": "Brutal Mark",
         "passive": [
@@ -537,7 +564,8 @@
                 "description": "Deal 3 <damagelightning></damagelightning> Lightning Damage to 2 other targets within 2 hexes.",
                 "type": "Physical Ranged",
                 "type2": "Base"
-            }, {
+            },
+            {
                 "description": "Have a base 30% chance of inflicting Sundered Resistance on each target hit for 3  Turns.",
                 "type": "Physical Ranged",
                 "type2": "Base"
@@ -730,7 +758,6 @@
     {
         "id": "true_death_magic",
         "name": "True Death Magic",
-
         "passive_unique": [
             {
                 "description": "The Curse of the Reaper ability, which has a chance to instantly kill the target.",
@@ -854,11 +881,65 @@
                 "slug": "mammoth_primal_communion"
             }
         ]
-    }, {
+    },
+    {
+        "id": "accursed_armor",
+        "name": "Accursed Armor",
+        "armor": 2,
+        "passive_unique": [
+            {
+                "description": "<bulletlist>When a Melee attack hits, the attacker has a:<bullet>30% chance of being inflicted with Ghostfire for 3  Turns.</bullet><bullet>30% chance of being inflicted with Misfortune for 3  Turns</bullet></bulletlist>"
+            }
+        ]
+    },
+    {
+        "id": "blessed_armor",
+        "name": "Blessed Armor",
+        "resistance": 2,
+        "passive": [
+            {
+                "slug": "inner_grace"
+            }
+        ]
+    },
+    {
+        "id": "empowered_strikes",
+        "name": "Empowered Strikes",
+        "damage_change": "1<damagephysical></damagephysical> ",
+        "requisites": [
+            {
+                "type": "Melee"
+            },
+            {
+                "type": "Base"
+            }
+        ],
+        "attack": [
+            {
+                "description": "Third attack in a turn has a 60% base chance of inflicting Stunned for 1 <turn></turn>Turn",
+                "type": "Melee",
+                "type2": "Base"
+            }
+        ],
+        "passive": [
+            {
+                "slug": "inner_grace"
+            }
+        ]
+    },
+    {
+        "id": "accursed_projectiles",
+        "name": "Accursed Projectiles",
+        "damage_change": "2<damagefire></damagefire> 2<damagefrost></damagefrost>",
+        "passive_unique": [
+            {
+                "description": "Have a base 60% of applying Ghostfire for 3  Turns.<br>Effects are increased for non-repeating attacks."
+            }
+        ]
+    },
+    {
         "id": "constricting_focus",
         "name": "Constricting Focus",
-
-
         "attack": [
             {
                 "description": "Gain base 30% chance of inflicting Constricted for 1  Turn.",
@@ -866,11 +947,10 @@
                 "type2": "Base"
             }
         ]
-    }, {
+    },
+    {
         "id": "flame_blessed_champions",
         "name": "Flame Blessed Champions",
-
-
         "attack": [
             {
                 "description": "Gain base 60% chance of inflicting Burning. If the target has 5 stacks of Burning: Create Cleansing Flames on the target hex for 3 <turn></turn> Turns.",
@@ -878,11 +958,10 @@
                 "type2": "Base"
             }
         ]
-    }, {
+    },
+    {
         "id": "pureflame_staves",
         "name": "Pureflame Staves",
-
-
         "attack": [
             {
                 "description": "Gain base 60% chance of inflicting Condemned. ",
@@ -895,11 +974,10 @@
                 "type2": "Base"
             }
         ]
-    }, {
+    },
+    {
         "id": "obsidian_weapons",
         "name": "Obsidian Weapons",
-
-
         "attack": [
             {
                 "description": "A base 60% chance of applying Bleeding. ",
@@ -912,12 +990,39 @@
                 "type2": "Base"
             }
         ]
-    }, {
+    },
+    {
         "id": "ciphers_of_dissonance",
         "name": "Ciphers of Dissonance",
         "passive_unique": [
             {
                 "description": "Ciphers of Dissonance, which inflicts Dissonance on enemy units."
+            }
+        ]
+    },
+    {
+        "id": "focus_aim",
+        "name": "Focus Aim",
+        "passive_unique": [
+            {
+                "description": "The Focus Aim ability, which allows the unit to make an attack that cannot miss"
+            }
+        ]
+    },
+    {
+        "id": "staves_of_grace",
+        "name": "Staves of Grace",
+        "passive_unique": [
+            {
+                "description": "Their Support abilities grant 1 Grace."
+            }
+        ],
+        "passive": [
+            {
+                "slug": "cleaning_rain"
+            },
+            {
+                "slug": "inner_grace"
             }
         ]
     }

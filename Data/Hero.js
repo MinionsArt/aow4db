@@ -85,6 +85,7 @@ function GetQuickLinkHero() {
 
     //5 build name
     var Bname = document.getElementById("buildNameInput").value;
+    Bname = Bname.replaceAll(" ", "%20");
     code += Bname + ",";
 
     // console.log("hex code: " + code);
@@ -405,7 +406,7 @@ function SetSkillData(nodeElement, skill) {
         img.setAttribute("height", "80px");
         return;
     } else {
-        img.setAttribute("src", "/aow4db/Icons/Abilities/" + skill.icon + ".png");
+        img.setAttribute("src", "/aow4db/Icons/UnitIcons/" + skill.icon + ".png");
     }
 
     if (skill.type == "signature") {
@@ -461,106 +462,105 @@ function GetAllAvailableSignatureSkills(slot) {
 
     var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
     var listOfSkills = [];
-    for (var s = 0; s < jsonHeroSkillsBeta.length; s++) {
-        if (jsonHeroSkillsBeta[s].type == "signature") {
+    for (var s = 0; s < jsonHeroSkills.length; s++) {
+        if (jsonHeroSkills[s].type == "signature") {
             if (rulerOrigin == "Champion" || rulerOrigin == "Wizard") {
-                if (slot === 1 && jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1) {
-                    listOfSkills.push(jsonHeroSkillsBeta[s]);
+                if (slot === 1 && jsonHeroSkills[s].id.indexOf("initiate") != -1) {
+                    listOfSkills.push(jsonHeroSkills[s]);
                 }
 
                 if (
                     slot === 2 &&
-                    (jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("adept") != -1)
+                    (jsonHeroSkills[s].id.indexOf("initiate") != -1 || jsonHeroSkills[s].id.indexOf("adept") != -1)
                 ) {
-                    if (jsonHeroSkillsBeta[s].resid != signature1) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                    if (jsonHeroSkills[s].resid != signature1) {
+                        listOfSkills.push(jsonHeroSkills[s]);
                     }
                 }
                 if (
                     slot === 3 &&
-                    (jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("adept") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("master") != -1)
+                    (jsonHeroSkills[s].id.indexOf("initiate") != -1 ||
+                        jsonHeroSkills[s].id.indexOf("adept") != -1 ||
+                        jsonHeroSkills[s].id.indexOf("master") != -1)
                 ) {
-                    if (jsonHeroSkillsBeta[s].resid != signature1 && jsonHeroSkillsBeta[s].resid != signature2) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                    if (jsonHeroSkills[s].resid != signature1 && jsonHeroSkills[s].resid != signature2) {
+                        listOfSkills.push(jsonHeroSkills[s]);
                     }
                 }
                 if (
                     slot === 4 &&
-                    (jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("adept") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("master") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("paragon") != -1)
+                    (jsonHeroSkills[s].id.indexOf("initiate") != -1 ||
+                        jsonHeroSkills[s].id.indexOf("adept") != -1 ||
+                        jsonHeroSkills[s].id.indexOf("master") != -1 ||
+                        jsonHeroSkills[s].id.indexOf("paragon") != -1)
                 ) {
                     if (
-                        jsonHeroSkillsBeta[s].resid != signature1 &&
-                        jsonHeroSkillsBeta[s].resid != signature2 &&
-                        jsonHeroSkillsBeta[s].resid != signature3
+                        jsonHeroSkills[s].resid != signature1 &&
+                        jsonHeroSkills[s].resid != signature2 &&
+                        jsonHeroSkills[s].resid != signature3
                     ) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                        listOfSkills.push(jsonHeroSkills[s]);
                     }
                 }
             } else if (rulerOrigin == "Dragon") {
-                if (jsonHeroSkillsBeta[s].DLC == "DRAGONLORDS ") {
+                if (jsonHeroSkills[s].DLC == "DRAGONLORDS ") {
                     // first slot : aspect
-                    if (slot === 1 && jsonHeroSkillsBeta[s].name.indexOf("Aspect") != -1) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                    if (slot === 1 && jsonHeroSkills[s].name.indexOf("Aspect") != -1) {
+                        listOfSkills.push(jsonHeroSkills[s]);
                     }
                     // second slot : transfomration
                     if (
                         slot === 2 &&
-                        (jsonHeroSkillsBeta[s].name.indexOf("Transformation") != -1 ||
-                            jsonHeroSkillsBeta[s].name.indexOf("Primal") != -1)
+                        (jsonHeroSkills[s].name.indexOf("Transformation") != -1 ||
+                            jsonHeroSkills[s].name.indexOf("Primal") != -1)
                     ) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                        listOfSkills.push(jsonHeroSkills[s]);
                     }
                     // third slot : breath
-                    if (slot === 3 && jsonHeroSkillsBeta[s].name.indexOf("breath") != -1) {
-                        if (dragonBreathIDList.includes(jsonHeroSkillsBeta[s].resid.toString())) {
-                            listOfSkills.push(jsonHeroSkillsBeta[s]);
+                    if (slot === 3 && jsonHeroSkills[s].name.indexOf("breath") != -1) {
+                        if (dragonBreathIDList.includes(jsonHeroSkills[s].resid.toString())) {
+                            listOfSkills.push(jsonHeroSkills[s]);
                         }
                     }
                     // fourth slot: elder
-                    if (slot === 4 && jsonHeroSkillsBeta[s].name.indexOf("Elder") != -1) {
-                        listOfSkills.push(jsonHeroSkillsBeta[s]);
+                    if (slot === 4 && jsonHeroSkills[s].name.indexOf("Elder") != -1) {
+                        listOfSkills.push(jsonHeroSkills[s]);
                     }
                 }
             } else if (rulerOrigin == "Eldritch") {
-                if ("DLC" in jsonHeroSkillsBeta[s]) {
-                    if (jsonHeroSkillsBeta[s].DLC.indexOf("ELDRITCHREALMS") != -1) {
+                if ("DLC" in jsonHeroSkills[s]) {
+                    if (jsonHeroSkills[s].DLC.indexOf("ELDRITCHREALMS") != -1) {
                         if (slot == 1) {
-                            if (listOfFirstChoice.includes(jsonHeroSkillsBeta[s].id)) {
-                                listOfSkills.push(jsonHeroSkillsBeta[s]);
+                            if (listOfFirstChoice.includes(jsonHeroSkills[s].id)) {
+                                listOfSkills.push(jsonHeroSkills[s]);
                             }
                         } else if (slot == 2) {
-                            if (jsonHeroSkillsBeta[s].name.indexOf("Forgotten Tome") != -1) {
-                                listOfSkills.push(jsonHeroSkillsBeta[s]);
+                            if (jsonHeroSkills[s].name.indexOf("Forgotten Tome") != -1) {
+                                listOfSkills.push(jsonHeroSkills[s]);
                             }
                         } else if (slot == 3) {
                             // fleshweaver
                             if (signature1 == "5046586575299") {
-                                if (listOfSecondChoiceFleshweaver.includes(jsonHeroSkillsBeta[s].id)) {
-                                    listOfSkills.push(jsonHeroSkillsBeta[s]);
+                                if (listOfSecondChoiceFleshweaver.includes(jsonHeroSkills[s].id)) {
+                                    listOfSkills.push(jsonHeroSkills[s]);
                                 }
                             }
                             // madcaster
                             if (signature1 == "5046586575303") {
-                                if (listOfSecondChoiceMadcaster.includes(jsonHeroSkillsBeta[s].id)) {
-                                    listOfSkills.push(jsonHeroSkillsBeta[s]);
+                                if (listOfSecondChoiceMadcaster.includes(jsonHeroSkills[s].id)) {
+                                    listOfSkills.push(jsonHeroSkills[s]);
                                 }
                             }
                             // mindbreaker
                             if (signature1 == "5046586575294") {
-                                if (listOfSecondChoiceMindbreaker.includes(jsonHeroSkillsBeta[s].id)) {
-                                    listOfSkills.push(jsonHeroSkillsBeta[s]);
+                                if (listOfSecondChoiceMindbreaker.includes(jsonHeroSkills[s].id)) {
+                                    listOfSkills.push(jsonHeroSkills[s]);
                                 }
                             }
                         } else if (slot == 4) {
-                            if (jsonHeroSkillsBeta[s].name.indexOf("Forgotten Tome") != -1) {
-                                if (signature2 != jsonHeroSkillsBeta[s].resid) {
-                                    listOfSkills.push(jsonHeroSkillsBeta[s]);
+                            if (jsonHeroSkills[s].name.indexOf("Forgotten Tome") != -1) {
+                                if (signature2 != jsonHeroSkills[s].resid) {
+                                    listOfSkills.push(jsonHeroSkills[s]);
                                 }
                             }
                         }
@@ -692,11 +692,11 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
 
 function GetSignatureSkillUnlocks(currentSig) {
     var unlockedSigs = [];
-    for (let i = 0; i < jsonHeroSkillsBeta.length; i++) {
-        if ("required_skills" in jsonHeroSkillsBeta[i]) {
-            for (let j = 0; j < jsonHeroSkillsBeta[i].required_skills.length; j++) {
-                if (jsonHeroSkillsBeta[i].required_skills[j].resid == currentSig.resid) {
-                    unlockedSigs.push(jsonHeroSkillsBeta[i]);
+    for (let i = 0; i < jsonHeroSkills.length; i++) {
+        if ("required_skills" in jsonHeroSkills[i]) {
+            for (let j = 0; j < jsonHeroSkills[i].required_skills.length; j++) {
+                if (jsonHeroSkills[i].required_skills[j].resid == currentSig.resid) {
+                    unlockedSigs.push(jsonHeroSkills[i]);
                 }
             }
         }
@@ -740,8 +740,8 @@ function BuildLine(offset, targetnode, treespace) {
 }
 
 function SetUpTreeNodes(keyword, row, color, holder, treespace) {
-    for (var s = 0; s < jsonHeroSkillsBeta.length; s++) {
-        let currentSkill = jsonHeroSkillsBeta[s];
+    for (var s = 0; s < jsonHeroSkills.length; s++) {
+        let currentSkill = jsonHeroSkills[s];
         // Check if the current skill is of the right class
         if ("tree_name" in currentSkill) {
             if (currentSkill.tree_name.indexOf(keyword) != -1) {
@@ -839,7 +839,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
     if ("required_skills" in currentSkill) {
         currentSkill.required_skills.forEach((link) => {
             // Find the prerequisite node based on the name
-            let targetNode = jsonHeroSkillsBeta.find((node) => node.resid === link.resid);
+            let targetNode = jsonHeroSkills.find((node) => node.resid === link.resid);
 
             if (targetNode) {
                 let connectionLine = document.createElement("DIV");
@@ -879,7 +879,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
     if ("excluded_skills" in currentSkill) {
         currentSkill.excluded_skills.forEach((link) => {
             // Find the prerequisite node based on the name
-            var targetNode = jsonHeroSkillsBeta.find((node) => node.resid === link.resid);
+            var targetNode = jsonHeroSkills.find((node) => node.resid === link.resid);
 
             if (targetNode) {
                 var connectionLine = document.createElement("DIV");
@@ -949,7 +949,7 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
             activateNode(nodeElement, nodeData, isSig);
 
             // Check other nodes to see if they require this skill
-            jsonHeroSkillsBeta.forEach((otherNode) => {
+            jsonHeroSkills.forEach((otherNode) => {
                 // Skip the current node itself
                 if (otherNode.resid !== nodeData.resid) {
                     if (
@@ -973,7 +973,7 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
     } else {
         let allowedToDisable = true;
         // check if any below the node have been activated
-        jsonHeroSkillsBeta.forEach((otherNode) => {
+        jsonHeroSkills.forEach((otherNode) => {
             // Skip the current node itself
             if (otherNode.resid !== nodeData.resid) {
                 if (
@@ -1088,7 +1088,7 @@ function deactivateNode(newNode, nodeData, isSig) {
     }
 
     // Find all nodes that list this node in their required_skills
-    jsonHeroSkillsBeta.forEach((otherNode) => {
+    jsonHeroSkills.forEach((otherNode) => {
         if (otherNode.required_skills && otherNode.required_skills.some((req) => req.resid === nodeData.resid)) {
             // Check if any of the required skills for this node are still active
             const anyRequiredActive = otherNode.required_skills.some((req) => {
@@ -1138,34 +1138,34 @@ function deactivateNode(newNode, nodeData, isSig) {
 
 function ReturnSkillItself(lookup) {
     var j = 0;
-    for (j in jsonAbilitiesBeta) {
-        if (jsonAbilitiesBeta[j].slug == lookup) {
-            return jsonAbilitiesBeta[j];
+    for (j in jsonUnitAbilities) {
+        if (jsonUnitAbilities[j].slug.indexOf(lookup) != -1) {
+            return jsonUnitAbilities[j];
         }
     }
 }
 
 function TestSignatureUnlocksRandom(id) {
     var list = [];
-    for (let j = 0; j < jsonHeroSkillsBeta.length; j++) {
-        if (jsonHeroSkillsBeta[j].group_name == "Affinity Hero Skill Group") {
-            list.push(jsonHeroSkillsBeta[j]);
+    for (let j = 0; j < jsonHeroSkills.length; j++) {
+        if (jsonHeroSkills[j].group_name == "Affinity Hero Skill Group") {
+            list.push(jsonHeroSkills[j]);
         }
     }
     return list[id];
 }
 
 function ReturnHeroSkillItself(lookup, resid) {
-    for (let j = 0; j < jsonHeroSkillsBeta.length; j++) {
+    for (let j = 0; j < jsonHeroSkills.length; j++) {
         if (lookup != null) {
-            if (jsonHeroSkillsBeta[j].id == lookup) {
-                return jsonHeroSkillsBeta[j];
+            if (jsonHeroSkills[j].id.indexOf(lookup) != -1) {
+                return jsonHeroSkills[j];
             }
         }
 
         if (resid != undefined) {
-            if (jsonHeroSkillsBeta[j].resid === resid) {
-                return jsonHeroSkillsBeta[j];
+            if (jsonHeroSkills[j].resid === resid) {
+                return jsonHeroSkills[j];
             }
         }
     }

@@ -18,6 +18,12 @@ var currentHighlights = "";
 
 var extraOrder, extraChaos, extraNature, extraMaterium, extraShadow, extraAstral;
 
+var listOfFirstChoice = ["mindbreaker", "fleshweaver", "madcaster"];
+var listOfSecondChoiceMindbreaker = ["enthraller", "mind_devourer"];
+var listOfSecondChoiceFleshweaver = ["puppeteer", "fleshsculptor"];
+
+var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
+
 var currentTomeList = [];
 var currentSignatureSkills = [];
 
@@ -137,7 +143,7 @@ function SetRandomStart(overwriteParameter) {
     if (searchKeyword != undefined && !overwriteParameter) {
         // console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
-        selectSkillPath();
+        //  selectSkillPath();
         RecalculateStats(true);
         selectTomePath(undefined, true);
         // SetHighLightToggle();
@@ -225,13 +231,13 @@ function SetRandomStart(overwriteParameter) {
             }
         }
 
-        extraOrder = 0;
+        /* extraOrder = 0;
         extraChaos = 0;
         extraAstral = 0;
         extraMaterium = 0;
         extraNature = 0;
         extraShadow = 0;
-        ClearSkillPath("t");
+        ClearSkillPath("t");*/
         ClearAscensionSkill();
 
         // SetHighLightToggle();
@@ -322,7 +328,7 @@ function selectOrigin(origin, type) {
             break;
         case "Origin":
             currentOrigin = origin;
-            ClearSkillPath("o");
+            // ClearSkillPath("o");
             if (incompatibleCheck("Loadout", currentLoadout)) {
                 var loadoutButton = document.getElementById("originButtonLoadout");
                 loadoutButton.innerHTML += '<span style="color:red"> Incompatible </span>';
@@ -353,8 +359,8 @@ function selectOrigin(origin, type) {
         case "Signature":
             // only if its the first
 
-            ClearSkillPath();
-            selectSkillPath(origin);
+            //  ClearSkillPath();
+            // selectSkillPath(origin);
             break;
     }
 
@@ -528,7 +534,7 @@ function selectTomePath(origin, fromLoad) {
 }
 
 // Function to handle the selection of an origin
-function selectSkillPath(origin) {
+/*function selectSkillPath(origin) {
     TurnOffTooltip();
     var originButton = document.getElementById("originButtonSignature");
 
@@ -551,7 +557,7 @@ function selectSkillPath(origin) {
     // draw all tomes
 
     toggleOriginButtons();
-}
+}*/
 
 function SetSkillPathInfoSmall(buttonHolder, origin) {
     const image = document.createElement("img");
@@ -559,7 +565,7 @@ function SetSkillPathInfoSmall(buttonHolder, origin) {
     image.setAttribute("height", "60");
     image.style = "position: relative; top: 10px;";
 
-    image.src = "/aow4db/Icons/Abilities/" + origin.icon + ".png"; // Set the image source to your image file
+    image.src = "/aow4db/Icons/UnitIcons/" + origin.icon + ".png"; // Set the image source to your image file
 
     // Create a span element to hold the button text
     const buttonText = document.createElement("span");
@@ -650,7 +656,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     addTooltipListeners(newDivButton, spa);
 }
 
-function ClearSkillPath(test) {
+/*function ClearSkillPath(test) {
     var originButton = document.getElementById("originButtonSignature");
     originButton.textContent = "+";
 
@@ -666,13 +672,13 @@ function ClearSkillPath(test) {
     // draw all tomes
 
     toggleOriginButtons();
-}
+}*/
 
 function RemoveLastSkill() {
     currentSignatureSkills.pop();
 
     //currentTomeList.push(currentTome);
-    selectSkillPath();
+    //  selectSkillPath();
 
     RecalculateStats(false);
     // swap current known origin
@@ -764,7 +770,7 @@ function SetSkillPathInfo(button, origin) {
     image.setAttribute("width", "50");
     image.setAttribute("height", "50");
 
-    image.src = "/aow4db/Icons/Abilities/" + origin.icon + ".png"; // Set the image source to your image file
+    image.src = "/aow4db/Icons/UnitIcons/" + origin.icon + ".png"; // Set the image source to your image file
 
     // Create a span element to hold the button text
     const buttonText = document.createElement("span");
@@ -1042,7 +1048,7 @@ function RecalculateStats(fromload) {
     }
 
     // add all extra input tags
-    document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
+    /* document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
     document.getElementById("extraOrder").style = "text-align:center";
     document.getElementById("extraChaos").innerHTML = "<empirechaosBig></empirechaosBig>" + extraChaos;
     document.getElementById("extraChaos").style = "text-align:center";
@@ -1054,6 +1060,7 @@ function RecalculateStats(fromload) {
     document.getElementById("extraShadow").style = "text-align:center";
     document.getElementById("extraAstral").innerHTML = "<empirearcanaBig></empirearcanaBig>" + extraAstral;
     document.getElementById("extraAstral").style = "text-align:center";
+    */
     for (let i = 0; i < extraOrder; i++) {
         input += "<empireorder></empireorder>,";
     }
@@ -1221,9 +1228,9 @@ function SetButtonInfo(button, origin, type, color) {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
     } else if (type === "Loadout") {
-        image.src = "/aow4db/Icons/Abilities/" + origin.id + ".png"; // Set the image source to your image file
+        image.src = "/aow4db/Icons/UnitIcons/" + origin.id + ".png"; // Set the image source to your image file
     } else if (type === "Signature" || type == "Ascension") {
-        image.src = "/aow4db/Icons/Abilities/" + origin.icon + ".png";
+        image.src = "/aow4db/Icons/UnitIcons/" + origin.icon + ".png";
     } else if (type === "Symbol") {
         if (origin < 10 && origin > 0) {
             origin = "0" + origin.toString();
@@ -1241,7 +1248,13 @@ function SetButtonInfo(button, origin, type, color) {
             buttonText.innerHTML += origin.point_cost + ": ";
         }
 
-        buttonText.innerHTML += " " + origin.name;
+        // add class check here
+        if (type == "Loadout") {
+            buttonText.innerHTML += GetClassFromWeaponId(origin.id) + origin.name;
+        } else {
+            buttonText.innerHTML += " " + origin.name;
+        }
+
         var affinity = "";
         if ("affinity" in origin) {
             affinity = ClearAffinityExtraTags(origin.affinity);
@@ -1390,7 +1403,7 @@ function SetLoadoutPreview(span, origin) {
                 if (origin.items[index].slug == test.id) {
                     span.innerHTML +=
                         '<p class ="abilityHighLighter" style="color: #97d7a2;>' +
-                        '<span style="font-size=20px;"> ITEM: <img style="margin-top:-10px" src="/aow4db/Icons/Abilities/' +
+                        '<span style="font-size=20px;"> ITEM: <img style="margin-top:-10px" src="/aow4db/Icons/UnitIcons/' +
                         test.icon +
                         ".png\" height='30px'>" +
                         test.name.toUpperCase() +
@@ -1402,7 +1415,7 @@ function SetLoadoutPreview(span, origin) {
             if (origin.items[index].slug == "hero_mount") {
                 span.innerHTML +=
                     '<p class ="abilityHighLighter" style="color: #97d7a2;>' +
-                    '<span style="font-size=20px;"> ITEM: <img style="margin-top:-10px" src="/aow4db/Icons/Abilities/white_horse.png" height=\'30px\'>HERO MOUNT</p>' +
+                    '<span style="font-size=20px;"> ITEM: <img style="margin-top:-10px" src="/aow4db/Icons/UnitIcons/white_horse.png" height=\'30px\'>HERO MOUNT</p>' +
                     "<br>";
             }
         }
@@ -1462,17 +1475,101 @@ function SetLoadoutPreview(span, origin) {
     }
 }
 
+var RangerClassList = [
+    "blowgun",
+    "bow",
+    "crossbow",
+    "heavy_magelock_rifle",
+    "sword_and_crossbow",
+    "pantheon_crowmasters_bow",
+    "pantheon_hunters_crossbow",
+    "pantheon_umbral_demonslayers_bow"
+];
+var DefenderClassList = [
+    "axe_and_shield",
+    "glaive",
+    "handaxe_and_shield",
+    "mace_and_shield",
+    "reaver_halberd",
+    "hammer_and_shield",
+    "spear",
+    "sword_and_shield",
+    "materium_dragon",
+    "order_dragon",
+    "pantheon_lashers_sword_and_shield",
+    "pantheon_captains_axe_and_shield"
+];
+var MageClassList = [
+    "blight_orb",
+    "fire_orb",
+    "frost_orb",
+    "lightning_orb",
+    "spirit_orb",
+    "pantheon_orb_of_necromancy",
+    "relic_of_mind",
+    "relic_of_havoc",
+    "relic_of_the_cosmos",
+    "astral_dragon"
+];
+var WarriorClassList = [
+    "bladed_mace",
+    "cestus",
+    "flaming_greatclub",
+    "greataxe",
+    "greatsword",
+    "lance",
+    "lance_of_glory",
+    "pantheon_martial_cestus",
+    "chaos_dragon",
+    "shadow_dragon",
+    "pantheon_umbral_warriors_greataxe",
+    "pantheon_berserkers_axe",
+    "pantheon_earthshakers_hammer",
+    "pantheon_slayer_sword"
+];
+var RitualistClassList = [
+    "blight_staff",
+    "fire_staff",
+    "lightning_staff",
+    "purging_staff",
+    "spirit_staff",
+    "staff_of_the_primal_spirit",
+    "druids_staff",
+    "relic_of_flesh",
+    "nature_dragon",
+    "pantheon_cryomancers_staff",
+    "pantheon_umbral_direcasters_staff",
+    "pantheon_druids_staff"
+];
+
+function GetClassFromWeaponId(id) {
+    if (RangerClassList.includes(id)) {
+        return "<unitRanged></unitRanged> Ranger: ";
+    } else if (DefenderClassList.includes(id)) {
+        return "<unitShield></unitShield> Defender: ";
+    } else if (MageClassList.includes(id)) {
+        return "<unitBattleMage></unitBattleMage> Mage: ";
+    } else if (WarriorClassList.includes(id)) {
+        return "<unitFighter></unitFighter> Warrior: ";
+    } else if (RitualistClassList.includes(id)) {
+        return "<unitSupport></unitSupport> Ritualist: ";
+    }
+    {
+        return "?";
+    }
+}
+
 function SetTomePreview(span, origin) {
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
     span.innerHTML += origin.gameplay_description + "<br>";
-    if ("hero_skills" in origin) {
-        span.innerHTML += '<p style="color: #97d7a2;>' + '<span style="font-size=20px;">Hero Skills:<br></p>';
+    // if ("hero_skills" in origin) {
+    //   span.innerHTML += '<p style="color: #97d7a2;>' + '<span style="font-size=20px;">Hero Skills:<br></p>';
 
-        for (let index = 0; index < origin.hero_skills.length; index++) {
-            span.innerHTML += "<bullet> " + GetHeroSkillName(origin.hero_skills[index].slug) + "</bullet>";
-        }
-    }
+    // for (let index = 0; index < origin.hero_skills.length; index++) {
+    //   span.innerHTML += "<bullet> " + GetHeroSkillName(origin.hero_skills[index].slug) + "</bullet>";
+    //}
+    //}
     if ("passives" in origin) {
         span.innerHTML += '<p style="color: #97d7a2;>' + '<span style="font-size=20px;">Passives:<br></p>';
         for (let index = 0; index < origin.passives.length; index++) {
@@ -1664,7 +1761,7 @@ function CollectAllPartsForOverview(fromload) {
 
     ShowUpgradesOverview(listOfAllCurrentUpgradeSlugs);
     ShowSPIOverview(listOfAllCurrentSPISlugs);
-    ShowHeroSkillsOverview(listOfAllCurrentHeroSkillsSlugs);
+    // ShowHeroSkillsOverview(listOfAllCurrentHeroSkillsSlugs);
     ShowPassivesOverview(listOfAllCurrentPassivesSlugs);
     ShowSiegeProjectsOverview(listOfAllCurrentSiegeProjectsSlugs);
     var parentDiv = document.getElementById("mainoverview");
@@ -1993,7 +2090,7 @@ function ShowHeroSkillsOverview(list) {
                 var text = document.createElement("div");
                 text.innerHTML = jsonHeroSkills[i].name;
                 var smallIcon = document.createElement("img");
-                smallIcon.setAttribute("src", "/aow4db/Icons/Abilities/" + jsonHeroSkills[i].icon + ".png");
+                smallIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + jsonHeroSkills[i].icon + ".png");
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
@@ -2059,7 +2156,7 @@ function ShowPassivesOverview(list) {
         var text = document.createElement("div");
         text.innerHTML = list[index].name;
         // var smallIcon = document.createElement("img");
-        // smallIcon.setAttribute("src", "/aow4db/Icons/Abilities/" + jsonHeroSkills[index].icon + ".png");
+        // smallIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + jsonHeroSkills[index].icon + ".png");
         // smallIcon.setAttribute("width", "20px");
         //    spell.appendChild(smallIcon);
         spell.appendChild(text);
@@ -2182,12 +2279,6 @@ function ShowSiegeProjectsOverview(list) {
 
 function GetAllSignatureSkills() {
     var listOfNextSignatures = [];
-
-    var listOfFirstChoice = ["mindbreaker", "fleshweaver", "madcaster"];
-    var listOfSecondChoiceMindbreaker = ["enthraller", "mind_devourer"];
-    var listOfSecondChoiceFleshweaver = ["puppeteer", "fleshsculptor"];
-
-    var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
 
     for (i = 0; i < jsonHeroSkills.length; i++) {
         // all signature skills
@@ -2675,22 +2766,32 @@ function incompatibleCheck(type, origin) {
         var splitOrigins = origin.requirement.split(",");
 
         if (splitOrigins.length > 1) {
-            var multiSetup = splitOrigins[1].split(":");
-            if (!multiSetup.includes(currentCulture.name)) {
-                incompatibleWithSetup = true;
-            }
-
-            // check if its primal culture
-            if (currentCulture.name.indexOf("Primal") != -1) {
-                if (multiSetup.includes("Primal")) {
+            // check first split
+            let multiSetupOrigin = splitOrigins[0].split(":");
+            if (multiSetupOrigin.length > 1) {
+                if (multiSetupOrigin[1].indexOf(currentOrigin.name) != -1) {
                     incompatibleWithSetup = false;
                 }
-            }
+            } else {
+                var multiSetup = splitOrigins[1].split(":");
+                if (!multiSetup.includes(currentCulture.name)) {
+                    incompatibleWithSetup = true;
+                }
 
-            if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
-                // console.log(splitOrigins);
-                // console.log(currentCulture.name + " " + splitOrigins[1]);
-                incompatibleWithSetup = true;
+                // check if its primal culture
+                if (currentCulture.name.indexOf("Primal") != -1) {
+                    if (multiSetup.includes("Primal")) {
+                        incompatibleWithSetup = false;
+                    }
+                }
+
+                if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
+                    // if its wizard king the culture check doesnt matter
+
+                    // console.log(splitOrigins);
+                    // console.log(currentCulture.name + " " + splitOrigins[1]);
+                    incompatibleWithSetup = true;
+                }
             }
         } else {
             // console.log(currentOrigin.name + " " + splitOrigins[0]);
@@ -2791,6 +2892,13 @@ function checkCompatibilityTraits(entry) {
         if (hasAdaptionGroup) {
             canBeAdded = false;
         }
+    } else if (entry.group_name === "DAMAGE_RETALIATION") {
+        var hasAdaptionGroup = currentFormTraitList.some((item) => item.group_name === "DAMAGE_RETALIATION");
+        //console.log(hasAdaptionGroup);
+        // already has adaption or already has primal culture
+        if (hasAdaptionGroup) {
+            canBeAdded = false;
+        }
     } else if (entry.group_name === "TACTICS") {
         var hasAdaptionGroup = currentFormTraitList.some((item) => item.group_name === "TACTICS");
         //console.log(hasAdaptionGroup);
@@ -2870,15 +2978,15 @@ function GetQuickLink() {
         }
     }
     // 8
-    var extraAffinityCode =
+    /*var extraAffinityCode =
         extraAstral.toString() +
         extraChaos.toString() +
         extraMaterium.toString() +
         extraNature.toString() +
         extraOrder.toString() +
         extraShadow.toString();
-
-    code += "," + extraAffinityCode;
+*/
+    code += ",";
 
     // 9 hero skills
     if (currentSignatureSkills.length == 0) {
@@ -3072,15 +3180,22 @@ function reversLookUp(code) {
 
     var currentExtraAffinityLoad = list;
 
-    extraAstral = currentExtraAffinityLoad[0];
+    /*  extraAstral = currentExtraAffinityLoad[0];
     extraChaos = currentExtraAffinityLoad[1];
     extraMaterium = currentExtraAffinityLoad[2];
     extraNature = currentExtraAffinityLoad[3];
     extraOrder = currentExtraAffinityLoad[4];
-    extraShadow = currentExtraAffinityLoad[5];
+    extraShadow = currentExtraAffinityLoad[5];*/
 
     // 9 = signatures if available, else placeholder "s" is added
     var list = splitcode[9];
+
+    if (list != "s") {
+        // old Signature skills setup
+        var Note = document.getElementById("note");
+        console.log(list);
+        Note.innerHTML = '<span style="color:red"> !Pre-Hero Rework build, might not have enough affinity!</span>';
+    }
     if (list != "s" && list != undefined) {
         var currentSignatureLoad = list.split(":");
         var newList2 = [];
