@@ -4972,12 +4972,21 @@ function showStructure(a, showOrigin) {
             description = "<hr>";
 
             if (jsonStructureUpgrades[j].requirement_description != "") {
-                description += jsonStructureUpgrades[j].requirement_description + "<br>";
+                description += "<yellowText>Requirement: </yellowText><br>";
+                description += jsonStructureUpgrades[j].requirement_description + "<br><br>";
+            }
+
+            if (jsonStructureUpgrades[j].prediction_description != "") {
+                description += "<yellowText>Full Description: </yellowText><br>";
+            } else{
+                 description += "<yellowText> Description: </yellowText><br>";
             }
             description += jsonStructureUpgrades[j].description;
 
             if (jsonStructureUpgrades[j].prediction_description != "") {
-                description += "<br>" + jsonStructureUpgrades[j].prediction_description;
+                description +=
+                    "<br><br><yellowText> Base Income Description:</yellowText><br>" +
+                    jsonStructureUpgrades[j].prediction_description;
             }
 
             imagelink = document.getElementById("modicon");
