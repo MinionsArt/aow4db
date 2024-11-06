@@ -330,6 +330,8 @@ function selectOrigin(origin, type) {
             currentOrigin = origin;
             // ClearSkillPath("o");
             if (incompatibleCheck("Loadout", currentLoadout)) {
+                // add message about it being incompatible
+
                 var loadoutButton = document.getElementById("originButtonLoadout");
                 loadoutButton.innerHTML += '<span style="color:red"> Incompatible </span>';
             }
@@ -1387,6 +1389,7 @@ function SetLoadoutPreview(span, origin) {
     span.className = "abilityHighLighter";
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>  <br>";
+
     if ("description" in origin) {
         span.innerHTML +=
             '<p <p class ="abilityHighLighter" style="color: #d797b2;>' +
@@ -1419,60 +1422,32 @@ function SetLoadoutPreview(span, origin) {
                     "<br>";
             }
         }
-
-        // span.innerHTML += GetAbilityToolTip()
     }
 
-    if ("spells" in origin) {
-        for (let index = 0; index < origin.spells.length; index++) {
-            for (let i = 0; i < jsonSpells.length; i++) {
-                const test = jsonSpells[i];
-                if (origin.spells[index].slug == test.id) {
-                    span.innerHTML +=
-                        '<p class ="abilityHighLighter" style="color: #82a3eb;>' +
-                        '<span style="font-size=20px;"> SPELL: <img style="margin-top:-10px" src="/aow4db/Icons/SpellIcons/' +
-                        test.id +
-                        ".png\" height='30px'>" +
-                        test.name.toUpperCase() +
-                        "</p>" +
-                        "<br>";
-                    span.innerHTML += test.description + "<br><br><br>";
-                    break;
-                }
-            }
-        }
+    span.innerHTML += labelAndTransformString(origin.requirement);
+   
+}
 
-        // span.innerHTML += GetAbilityToolTip()
+function labelAndTransformString(input) {
+    // Split the input string by comma to separate "Origin" and "Culture"
+    const parts = input.split(",");
+
+    // Initialize labeled output
+    let labeledString = "";
+
+    // Handle the "Origin" part (first part before the comma)
+    if (parts[0]) {
+        labeledString += "Origin:<br>";
+        labeledString += parts[0].split(":").join("<br>") + "<br>";
     }
 
-    if ("abilities" in origin) {
-        for (let index = 0; index < origin.abilities.length; index++) {
-            for (let i = 0; i < jsonUnitAbilities.length; i++) {
-                const test = jsonUnitAbilities[i];
-
-                if (origin.abilities[index].slug == test.slug) {
-                    span.innerHTML += "<br>" + GetAbilityInfo(test).innerHTML + "<br>";
-                }
-            }
-            for (let j = 0; j < jsonHeroSkills.length; j++) {
-                const test = jsonHeroSkills[j];
-                if (origin.abilities[index].slug == test.id) {
-                    if ("description" in test) {
-                        span.innerHTML +=
-                            ' <p class ="abilityHighLighter" style="color: #d797b2;>' +
-                            '<span style="font-size=20px;">' +
-                            test.name.toUpperCase() +
-                            "</p>" +
-                            "<br><br>";
-
-                        span.innerHTML += test.description;
-                    }
-                }
-            }
-        }
-
-        // span.innerHTML += GetAbilityToolTip()
+    // Handle the "Culture" part (second part after the comma)
+    if (parts[1]) {
+        labeledString += "Culture:<br>";
+        labeledString += parts[1].split(":").join("<br>");
     }
+
+    return labeledString;
 }
 
 var RangerClassList = [
@@ -2775,13 +2750,16 @@ function incompatibleCheck(type, origin) {
             // this is champion or wizard
             if (multiSetupOrigin.length > 1) {
                 // wizard
+                // console.log(splitOrigins + " " + origin.name);
                 if (multiSetupOrigin[1].indexOf(currentOrigin.name) != -1) {
                     incompatibleWithSetup = false;
+                } else {
+                    incompatibleWithSetup = true;
                 }
             } else {
                 // culture checks
                 var multiSetup = splitOrigins[1].split(":");
-                console.log(multiSetup);
+
                 if (!multiSetup.includes(currentCulture.name)) {
                     incompatibleWithSetup = true;
                 }
