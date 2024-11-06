@@ -1425,7 +1425,6 @@ function SetLoadoutPreview(span, origin) {
     }
 
     span.innerHTML += labelAndTransformString(origin.requirement);
-   
 }
 
 function labelAndTransformString(input) {
@@ -1458,7 +1457,8 @@ var RangerClassList = [
     "sword_and_crossbow",
     "pantheon_crowmasters_bow",
     "pantheon_hunters_crossbow",
-    "pantheon_umbral_demonslayers_bow"
+    "pantheon_umbral_demonslayers_bow",
+    "godir_bow"
 ];
 var DefenderClassList = [
     "axe_and_shield",
@@ -1472,7 +1472,10 @@ var DefenderClassList = [
     "materium_dragon",
     "order_dragon",
     "pantheon_lashers_sword_and_shield",
-    "pantheon_captains_axe_and_shield"
+    "pantheon_captains_axe_and_shield",
+    "godir_sword_and_shield",
+    "pantheon_tyrants_sword_and_shield",
+    "pantheon_veterans_pike"
 ];
 var MageClassList = [
     "blight_orb",
@@ -1500,7 +1503,8 @@ var WarriorClassList = [
     "pantheon_umbral_warriors_greataxe",
     "pantheon_berserkers_axe",
     "pantheon_earthshakers_hammer",
-    "pantheon_slayer_sword"
+    "pantheon_slayer_sword",
+    "godir_greataxe"
 ];
 var RitualistClassList = [
     "blight_staff",
