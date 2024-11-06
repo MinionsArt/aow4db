@@ -1529,7 +1529,7 @@ function GetClassFromWeaponId(id) {
     } else if (MageClassList.includes(id)) {
         return "<unitBattleMage></unitBattleMage> Mage: ";
     } else if (WarriorClassList.includes(id)) {
-        return "<unitFighter></unitFighter> Warrior: ";
+        return "<unitShock></unitShock> Warrior: ";
     } else if (RitualistClassList.includes(id)) {
         return "<unitSupport></unitSupport> Ritualist: ";
     }

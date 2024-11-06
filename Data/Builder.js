@@ -4978,8 +4978,8 @@ function showStructure(a, showOrigin) {
 
             if (jsonStructureUpgrades[j].prediction_description != "") {
                 description += "<yellowText>Full Description: </yellowText><br>";
-            } else{
-                 description += "<yellowText> Description: </yellowText><br>";
+            } else {
+                description += "<yellowText> Description: </yellowText><br>";
             }
             description += jsonStructureUpgrades[j].description;
 

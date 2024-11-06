@@ -12,6 +12,12 @@ var signature2 = "";
 var signature3 = "";
 var signature4 = "";
 
+var listOfWarriorWeaponTypes = ["Great Weapon", "One Handed Weapon", "Shield", "Fist Weapon", "Polearm Weapon"];
+var listOfDefenderWeaponTypes = ["One Handed Weapon", "Shield", "Fist Weapon", "Polearm Weapon"];
+var listOfMageWeaponTypes = ["Magic Orb Weapon", "Magic Staff Weapon", "Eldritch Relic Weapon"];
+var listOfRitualistWeaponTypes = ["Magic Orb Weapon", "Magic Staff Weapon", "Eldritch Relic Weapon"];
+var listOfRangerWeaponTypes = ["Ranged Weapon", "Skirmisher Weapon"];
+
 // Function to convert a number to hexadecimal
 function decimalToHex(decimal) {
     return decimal.toString(16);
