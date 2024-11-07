@@ -28,6 +28,28 @@
   "DLC": "WAYSOFWAR "
  },
  {
+  "group_name": "Ritualist - Hero Skill Group",
+  "icon": "hostile_wildgrowth",
+  "type": "normal",
+  "name": "Hostile Wildgrowth",
+  "tree_pos_x": 450,
+  "id": "hostile_wildgrowth",
+  "excluded_skills": [
+   {
+    "resid": 4995046966126
+   }
+  ],
+  "resid": 4995046966126,
+  "tree_name": "Class: Ritualist",
+  "tree_pos_y": 150,
+  "description": "Enemy units in the area of effect of Conjure Wildgrowth:<bulletlist><bullet>Have a base 90% chance of gaining Poisoned</bullet><bullet>Have a base 90% chance of gaining Bleeding</bullet><bullet>Suffer 15 Physical Damage</bullet></bulletlist>",
+  "required_skills": [
+   {
+    "resid": 4995046966100
+   }
+  ]
+ },
+ {
   "abilities": [
    {
     "slug": "ascended_assassin"
@@ -113,7 +135,7 @@
   "icon": "hysteria_storm",
   "type": "normal",
   "name": "Hysteria Storm",
-  "description": "Enemy unit in a {HYSTERIA_STORM_TARGETER\\>AREA\\>Radius}-hex radius have a base {HYSTERIA_STORM_RESISTANCE_CHECK\\>ResolvedStrength}% chance of being:<bulletlist><bullet>Displaced up to {HYSTERIA_STORM_DISPLACEMENT\\>MaxDistance} hexes.</bullet><bullet>Inflicted with Insanity for {duration} <turn></turn> Turn.</bullet></bulletlist>"
+  "description": "Enemy unit in a -hex radius have a base % chance of being:<bulletlist><bullet>Displaced up to  hexes.</bullet><bullet>Inflicted with Insanity for  <turn></turn> Turn.</bullet></bulletlist>"
  },
  {
   "resid": 5003636902378,
@@ -131,7 +153,7 @@
   "icon": "pull",
   "type": "normal",
   "name": "Pull",
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base {CONSTRICTOR_PULL_RESISTANCE_CHECK\\>ResolvedStrength}% chance to:<bulletlist></bullet><bullet>Be pulled to an adjacent space.</bullet><bullet>Become Constricted for {duration} <turn></turn> Turn.</bullet></bulletlist>"
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base % chance to:<bulletlist></bullet><bullet>Be pulled to an adjacent space.</bullet><bullet>Become Constricted for  <turn></turn> Turn.</bullet></bulletlist>"
  },
  {
   "abilities": [
@@ -495,7 +517,7 @@
   "icon": "watchful_2",
   "type": "normal",
   "name": "Watchful",
-  "description": "Unit has +{WATCHFUL_NUM_OVERWATCH\\>NumTriggersToAdd} <hyperlink>Retaliation Attack</hyperlink>."
+  "description": "Unit has + <hyperlink>Retaliation Attack</hyperlink>."
  },
  {
   "resid": 5003636900354,
@@ -504,7 +526,7 @@
   "icon": "inspiring_presence_2",
   "type": "normal",
   "name": "Inspiring Presence",
-  "description": "Gains <happiness></happiness> <hyperlink>Morale</hyperlink> {INSPIRING_PRESENCE_MORALE_RESISTANCE\\>ResolvedMoraleRiseModifier}% faster."
+  "description": "Gains <happiness></happiness> <hyperlink>Morale</hyperlink> % faster."
  },
  {
   "resid": 5003636900344,
@@ -513,7 +535,7 @@
   "icon": "giant_slayer",
   "type": "normal",
   "name": "Giant Slayer",
-  "description": "This unit deals +{GIANT_SLAYER_DAMAGE\\>ResolvedMultiplier}% damage to Large Target units."
+  "description": "This unit deals +% damage to Large Target units."
  },
  {
   "resid": 5003636900334,
@@ -522,7 +544,7 @@
   "icon": "watchful_3",
   "type": "normal",
   "name": "Watchful",
-  "description": "Unit has +{WATCHFUL_NUM_OVERWATCH\\>NumTriggersToAdd} <hyperlink>Retaliation Attack</hyperlink>."
+  "description": "Unit has + <hyperlink>Retaliation Attack</hyperlink>."
  },
  {
   "resid": 4264902531966,
@@ -531,7 +553,7 @@
   "icon": "intimidating_aura_2",
   "type": "normal",
   "name": "Intimidating Aura",
-  "description": "At the end of this unit's turn, adjacent enemy units have a base {INTIMIDATING_AURA_RESISTANCE\\>ResolvedStrength}% chance of losing {INTIMIDATING_AURA_MORALE_CHANGE\\>Morale Change} <happiness></happiness> <hyperlink>Morale</hyperlink>.<br></br><br></br>Doesn't work on units with this ability or Terrifying Aura."
+  "description": "At the end of this unit's turn, adjacent enemy units have a base % chance of losing  <happiness></happiness> <hyperlink>Morale</hyperlink>.<br></br><br></br>Doesn't work on units with this ability or Terrifying Aura."
  },
  {
   "resid": 4264902531965,
@@ -540,7 +562,7 @@
   "icon": "berserkers_rage_2",
   "type": "normal",
   "name": "Berserker's Rage",
-  "description": "When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach {BERSERKERS_RAGE_THRESHOLD_EVENT\\>ResolvedTriggerProportion}% or lower, it becomes Berserk (for {BERSERK_DESCRIPTION\\>NumTurns} <turn></turn>):<bulletlist><bullet>Berserk</bullet><bullet>Steadfast</bullet></bulletlist>"
+  "description": "When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach % or lower, it becomes Berserk (for <turn></turn>):<bulletlist><bullet>Berserk</bullet><bullet>Steadfast</bullet></bulletlist>"
  },
  {
   "resid": 4264902531963,
@@ -549,7 +571,7 @@
   "icon": "sap_strength",
   "type": "normal",
   "name": "Sap Strength",
-  "description": "Enemy units in a {SAP_STRENGTH_TARGETER\\>AREA\\>Radius}-hex radius:<bulletlist><bullet>Have a base {SAP_STRENGTH_RESISTANCE\\>ResolvedStrength}% chance of receiving 2 stacks of Weakened for {WEAKENED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn> Turns.</bullet><bullet>Gain Strengthened for {STRENGTHENED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn> Turns for each unit Weakened this way.</bullet></bulletlist>"
+  "description": "Enemy units in a -hex radius:<bulletlist><bullet>Have a base % chance of receiving 2 stacks of Weakened for <turn></turn> Turns.</bullet><bullet>Gain Strengthened for <turn></turn> Turns for each unit Weakened this way.</bullet></bulletlist>"
  },
  {
   "resid": 4264902531962,
@@ -567,7 +589,7 @@
   "icon": "raise_undead",
   "type": "normal",
   "name": "Raise Undead",
-  "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with {RAISE_UNDEAD_RESURRECT\\>ResolvedHitPoints}% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet></bulletlist>"
+  "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with % of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet></bulletlist>"
  },
  {
   "resid": 4264902531958,
@@ -576,7 +598,7 @@
   "icon": "quake",
   "type": "normal",
   "name": "Quake",
-  "description": "Enemy units in a {QUAKE_ABILITY_TARGETER\\>AREA\\>Radius}-hex radius sustain damage. Enter <hyperlink>Defense Mode</hyperlink>."
+  "description": "Enemy units in a -hex radius sustain damage. Enter <hyperlink>Defense Mode</hyperlink>."
  },
  {
   "group_name": "Dragon Lord - Hero Skill Group",
@@ -3784,28 +3806,6 @@
    },
    {
     "resid": 4995046966560
-   }
-  ]
- },
- {
-  "group_name": "Ritualist - Hero Skill Group",
-  "icon": "hostile_wildgrowth",
-  "type": "normal",
-  "name": "Hostile Wildgrowth",
-  "tree_pos_x": 450,
-  "id": "hostile_wildgrowth",
-  "excluded_skills": [
-   {
-    "resid": 4995046966126
-   }
-  ],
-  "resid": 4995046966126,
-  "tree_name": "Class: Ritualist",
-  "tree_pos_y": 150,
-  "description": "Enemy units in the area of effect of Conjure Wildgrowth:<bulletlist><bullet>Have a base 90% chance of gaining Poisoned</bullet><bullet>Have a base 90% chance of gaining Bleeding</bullet><bullet>Suffer 15 Physical Damage</bullet></bulletlist>",
-  "required_skills": [
-   {
-    "resid": 4995046966100
    }
   ]
  },
