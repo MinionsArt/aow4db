@@ -241,7 +241,9 @@ var extraFormUnitsList = [
     "afflictor",
     "stormbringer",
     "constrictor",
-    "pyre_templar"
+    "pyre_templar",
+    "monk",
+    "shade"
 ];
 
 var incorrectIconOverrideList = [
@@ -5842,6 +5844,72 @@ function ConvertSpawnTable(input) {
     }
     bulletList.innerHTML += "</bulletList>";
     return bulletList;
+}
+
+function FindFormUnits() {
+    var unitsList = [];
+    var i = 0;
+    for (i in jsonUnits) {
+        /* if (jsonUnits[i].culture_name != undefined) {
+            if (!isInArray(unitsList, jsonUnits[i].id)) {
+                unitsList.push(jsonUnits[i]);
+            }
+        }*/
+        if (extraFormUnitsList.includes(jsonUnits[i].id)) {
+            if (!isInArray(unitsList, jsonUnits[i].id)) {
+                unitsList.push(jsonUnits[i]);
+            }
+        }
+    }
+
+    // Sort the units list by tier
+    unitsList.sort((a, b) => a.tier - b.tier);
+
+    // Define the maximum length of each subarray
+    const maxLength = 10;
+
+    // Split the array into smaller arrays by tier
+    var splitArrays = [];
+    var currentArray = [];
+
+    var skip = false;
+    if (unitsList.length > maxLength) {
+        unitsList.forEach((item, index) => {
+            currentArray.push(item);
+
+            // Check if it's the last item or the tier changes
+            if (index === unitsList.length - 1 || unitsList[index + 1].tier !== item.tier) {
+                // Check if there's a gap of more than 1 in the tier
+                if (index < unitsList.length - 1 && unitsList[index + 1].tier - item.tier > 1) {
+                    // Insert "empty" entry
+                    const gap = unitsList[index + 1].tier - item.tier;
+                    for (let i = 1; i < gap; i++) {
+                        splitArrays.push(currentArray);
+                        currentArray = [];
+                    }
+                }
+
+                splitArrays.push(currentArray);
+                currentArray = [];
+            }
+        });
+    } else {
+        splitArrays.push(unitsList);
+    }
+
+    var sortedUnitListArray = [];
+
+    var z = 0;
+    for (z in splitArrays) {
+        var unitsSorted = [];
+        var x = 0;
+        for (x in splitArrays[z]) {
+            unitsSorted.push(splitArrays[z][x].id);
+        }
+        sortedUnitListArray.push(unitsSorted);
+    }
+
+    return sortedUnitListArray;
 }
 
 function FindUnitsWithSecondaryPassive(trait) {
