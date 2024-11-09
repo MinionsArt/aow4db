@@ -243,7 +243,10 @@ var extraFormUnitsList = [
     "constrictor",
     "pyre_templar",
     "monk",
-    "shade", "tyrant_knight", "wildspeaker", "houndmaster"
+    "shade",
+    "tyrant_knight",
+    "wildspeaker",
+    "houndmaster"
 ];
 
 var incorrectIconOverrideList = [
@@ -990,7 +993,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                             abilityRange =
                                                 parseInt(
                                                     parseInt(jsonEnchantments[k].attack[t].range) +
-                                                    parseInt(abilityRange)
+                                                        parseInt(abilityRange)
                                                 ) + "*";
                                         }
                                     }
@@ -1114,8 +1117,8 @@ function addAbilityslot(a, holder, list, enchant) {
             imag.setAttribute(
                 "style",
                 'background-image: url("/aow4db/Icons/Interface/' +
-                abilityIconType +
-                '.png");background-repeat: no-repeat;background-size: 40px 40px'
+                    abilityIconType +
+                    '.png");background-repeat: no-repeat;background-size: 40px 40px'
             );
 
             imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -6779,6 +6782,19 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     }
     for (var j = 0; j < jsonExtraAscendedInfo.length; j++) {
         if (jsonExtraAscendedInfo[j].id == a.id) {
+            if ("extraspell" in jsonExtraAscendedInfo[j]) {
+                var iDiv = spell_card_template.content.cloneNode(true);
+                // Access the root element in the DocumentFragment
+                var rootElement = iDiv.querySelector("*");
+
+                // Apply the style to the root element
+                if (rootElement) {
+                    rootElement.style.left = "-40px";
+                    rootElement.style.position = "relative";
+                }
+                descriptionDiv.appendChild(iDiv);
+                showSpell(jsonExtraAscendedInfo[j].extraspell, false);
+            }
             descriptionDiv.innerHTML += "Tome(s) Researched : " + jsonExtraAscendedInfo[j].description;
         }
     }
@@ -7084,8 +7100,8 @@ function backtraceStructureToTomeNameAndTier(structure) {
                         if ("affinities" in jsonTomes[j]) {
                             array.push(
                                 ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                "<br> " +
-                                jsonTomes[j].name
+                                    "<br> " +
+                                    jsonTomes[j].name
                             );
                         } else {
                             array.push(jsonTomes[j].name);
