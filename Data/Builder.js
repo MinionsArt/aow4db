@@ -243,7 +243,7 @@ var extraFormUnitsList = [
     "constrictor",
     "pyre_templar",
     "monk",
-    "shade"
+    "shade", "tyrant_knight", "wildspeaker", "houndmaster"
 ];
 
 var incorrectIconOverrideList = [
@@ -990,7 +990,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                             abilityRange =
                                                 parseInt(
                                                     parseInt(jsonEnchantments[k].attack[t].range) +
-                                                        parseInt(abilityRange)
+                                                    parseInt(abilityRange)
                                                 ) + "*";
                                         }
                                     }
@@ -1114,8 +1114,8 @@ function addAbilityslot(a, holder, list, enchant) {
             imag.setAttribute(
                 "style",
                 'background-image: url("/aow4db/Icons/Interface/' +
-                    abilityIconType +
-                    '.png");background-repeat: no-repeat;background-size: 40px 40px'
+                abilityIconType +
+                '.png");background-repeat: no-repeat;background-size: 40px 40px'
             );
 
             imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -7084,8 +7084,8 @@ function backtraceStructureToTomeNameAndTier(structure) {
                         if ("affinities" in jsonTomes[j]) {
                             array.push(
                                 ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                    "<br> " +
-                                    jsonTomes[j].name
+                                "<br> " +
+                                jsonTomes[j].name
                             );
                         } else {
                             array.push(jsonTomes[j].name);
