@@ -231,13 +231,13 @@ function SetRandomStart(overwriteParameter) {
             }
         }
 
-        /* extraOrder = 0;
+        extraOrder = 0;
         extraChaos = 0;
         extraAstral = 0;
         extraMaterium = 0;
         extraNature = 0;
         extraShadow = 0;
-        ClearSkillPath("t");*/
+        //ClearSkillPath("t");
         ClearAscensionSkill();
 
         // SetHighLightToggle();
@@ -1050,7 +1050,7 @@ function RecalculateStats(fromload) {
     }
 
     // add all extra input tags
-    /* document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
+    document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
     document.getElementById("extraOrder").style = "text-align:center";
     document.getElementById("extraChaos").innerHTML = "<empirechaosBig></empirechaosBig>" + extraChaos;
     document.getElementById("extraChaos").style = "text-align:center";
@@ -1062,7 +1062,7 @@ function RecalculateStats(fromload) {
     document.getElementById("extraShadow").style = "text-align:center";
     document.getElementById("extraAstral").innerHTML = "<empirearcanaBig></empirearcanaBig>" + extraAstral;
     document.getElementById("extraAstral").style = "text-align:center";
-    */
+
     for (let i = 0; i < extraOrder; i++) {
         input += "<empireorder></empireorder>,";
     }
@@ -3011,15 +3011,15 @@ function GetQuickLink() {
         }
     }
     // 8
-    /*var extraAffinityCode =
+    var extraAffinityCode =
         extraAstral.toString() +
         extraChaos.toString() +
         extraMaterium.toString() +
         extraNature.toString() +
         extraOrder.toString() +
         extraShadow.toString();
-*/
-    code += ",";
+
+    code += "," + extraAffinityCode;
 
     // 9 hero skills
     if (currentSignatureSkills.length == 0) {
@@ -3212,13 +3212,21 @@ function reversLookUp(code) {
     var list = splitcode[8];
 
     var currentExtraAffinityLoad = list;
-
-    /*  extraAstral = currentExtraAffinityLoad[0];
-    extraChaos = currentExtraAffinityLoad[1];
-    extraMaterium = currentExtraAffinityLoad[2];
-    extraNature = currentExtraAffinityLoad[3];
-    extraOrder = currentExtraAffinityLoad[4];
-    extraShadow = currentExtraAffinityLoad[5];*/
+    if (currentExtraAffinityLoad[0] != undefined) {
+        extraAstral = currentExtraAffinityLoad[0];
+        extraChaos = currentExtraAffinityLoad[1];
+        extraMaterium = currentExtraAffinityLoad[2];
+        extraNature = currentExtraAffinityLoad[3];
+        extraOrder = currentExtraAffinityLoad[4];
+        extraShadow = currentExtraAffinityLoad[5];
+    } else{
+         extraAstral = 0;
+        extraChaos = 0;
+        extraMaterium = 0;
+        extraNature = 0;
+        extraOrder = 0;
+        extraShadow = 0;
+    }
 
     // 9 = signatures if available, else placeholder "s" is added
     var list = splitcode[9];
