@@ -154,7 +154,8 @@
             .button-inset:hover,
             .skill-button-small:hover,
             .tome-button-small:hover,
-            .button-random:hover {
+            .button-random:hover,
+            .button-overview:hover {
                 filter: brightness(200%);
             }
 
@@ -344,7 +345,7 @@
             <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
             <div style="display: flex; flex-direction: row; justify-content: space-around">
                 <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br />
-                <button class="button-random" id="toggleButton">Show/Hide Overview</button>
+                <button class="button-overview" style="left: 200px" id="toggleButton">▶ Show Overview</button>
             </div>
         </div>
 
@@ -638,11 +639,14 @@
                 // alert("Copied the text: " + copyText.value);
             }
 
-            document.getElementById("toggleButton").addEventListener("click", function () {
+            document.getElementById("toggleButton").addEventListener("click", function (event) {
                 const panel = document.getElementById("overviewPanel");
+
                 if (panel.style.display === "none" || panel.style.display === "") {
+                    event.target.innerHTML = "◀ Hide Overview";
                     panel.style.display = "block"; // Show the panel
                 } else {
+                    event.target.innerHTML = "▶ Show Overview";
                     panel.style.display = "none"; // Hide the panel
                 }
             });

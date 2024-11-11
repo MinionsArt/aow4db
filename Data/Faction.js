@@ -3219,8 +3219,8 @@ function reversLookUp(code) {
         extraNature = currentExtraAffinityLoad[3];
         extraOrder = currentExtraAffinityLoad[4];
         extraShadow = currentExtraAffinityLoad[5];
-    } else{
-         extraAstral = 0;
+    } else {
+        extraAstral = 0;
         extraChaos = 0;
         extraMaterium = 0;
         extraNature = 0;
