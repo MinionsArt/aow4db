@@ -1,60 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        var unitarray = ["lesser_magma_spirit:tome_of_pyromancy", "pyromancer:tome_of_pyromancy", "houndmaster:tome_of_the_horde", "war_hound:tome_of_the_horde", "gremlin:tome_of_mayhem", "skald:tome_of_revelry", "warbreed:tome_of_devastation", "chaos_eater:tome_of_pandemonium", "balor:tome_of_the_chaos_lord"];
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
+        <script>
+            var unitarray = [
+                "lesser_magma_spirit:tome_of_pyromancy",
+                "pyromancer:tome_of_pyromancy",
+                "houndmaster:tome_of_the_horde",
+                "war_hound:tome_of_the_horde",
+                "gremlin:tome_of_mayhem",
+                "skald:tome_of_revelry",
+                "magma_spirit:tome_of_chaos_channeling",
+                "warbreed:tome_of_devastation",
+                "chaos_eater:tome_of_pandemonium",
+                "balor:tome_of_the_chaos_lord"
+            ];
+            $("#body").ready(function () {
+                $("#header").load("/aow4db/HTML/header.html", function () {
+                    CheckData();
+                });
             });
-        });
 
-        function HandlePage() {
-            showUnitsWithIcon(unitarray);
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
+            function HandlePage() {
+                showUnitsWithIcon(unitarray);
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-        }
+        <title>Age of Wonders 4 Database - Chaos Tome Units</title>
+    </head>
 
-    </script>
+    <body>
+        <div id="header"></div>
 
-
-    <title>Age of Wonders 4 Database - Chaos Tome Units</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/chaos.png" height="40px"> Chaos Tome Units <img src="/aow4db/Icons/Text/chaos.png" height="40px">
-    </div>
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
-
-        </div>
-        <div id="dataHolder">
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/chaos.png" height="40px" /> Chaos Tome Units
+            <img src="/aow4db/Icons/Text/chaos.png" height="40px" />
         </div>
 
-
-    </div>
-
-
-
-
-</body>
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder" style="width: 240px"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
