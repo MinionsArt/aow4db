@@ -2565,7 +2565,7 @@ function findHeroAmbition() {
 
     for (j in jsonHeroAmbitions) {
         if (!isInArray(finalCheckedList, jsonHeroAmbitions[j])) {
-            if (jsonHeroAmbitions[j].available_to_rulers == true) {
+            if (jsonHeroAmbitions[j].screen_description.indexOf("WIP") == -1) {
                 finalCheckedList.push(jsonHeroAmbitions[j]);
             }
         }
@@ -6319,8 +6319,12 @@ function showHeroTrait(a) {
             descriptionDiv = document.getElementById("moddescription");
 
             descriptionDiv.innerHTML = "";
-
-            descriptionDiv.innerHTML = "<hr>" + thisAmbition.screen_description;
+            if (thisAmbition.available_to_rulers == false) {
+                descriptionDiv.innerHTML =
+                    "<hr>" + "<helpText>Only Available to Heroes</helpText><br><br>" + thisAmbition.screen_description;
+            } else {
+                descriptionDiv.innerHTML = "<hr>" + thisAmbition.screen_description;
+            }
 
             descriptionDiv.setAttribute("id", "moddescription" + a);
             unitTypesDiv = document.getElementById("affectUnitTypes");
