@@ -1190,7 +1190,7 @@ function deactivateNode(newNode, nodeData, isSig) {
 function ReturnSkillItself(lookup) {
     var j = 0;
     for (j in jsonUnitAbilities) {
-        if (jsonUnitAbilities[j].slug.indexOf(lookup) != -1) {
+        if (jsonUnitAbilities[j].slug == lookup) {
             return jsonUnitAbilities[j];
         }
     }
@@ -1209,7 +1209,7 @@ function TestSignatureUnlocksRandom(id) {
 function ReturnHeroSkillItself(lookup, resid) {
     for (let j = 0; j < jsonHeroSkills.length; j++) {
         if (lookup != null) {
-            if (jsonHeroSkills[j].id.indexOf(lookup) != -1) {
+            if (jsonHeroSkills[j].id == lookup) {
                 return jsonHeroSkills[j];
             }
         }
