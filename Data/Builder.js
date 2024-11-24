@@ -4013,7 +4013,8 @@ function addLevelUpInfo(units, a, holder) {
         }
     }
     if (evolveTarget != undefined) {
-        levelText = '<p style="  color: #aadb9c;"> <medal_legend></medal_legend> Legend - ' +  xpNeeded * 4 + "<xp></xp></p>";
+        levelText =
+            '<p style="  color: #aadb9c;"> <medal_legend></medal_legend> Legend - ' + xpNeeded * 4 + "<xp></xp></p>";
         levelup.append(NewLevelUpEntry(levelText));
 
         levelText =
