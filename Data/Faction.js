@@ -925,9 +925,9 @@ function SetupButtons(evt, type) {
                 console.log(currentFormTraitList + " " + origin);
             }
 
-            if (origin.point_cost + getPoints() > 5 || checkCompatibilityTraits(origin) == false) {
+            if (origin.point_cost + getPoints() > 5 ) {
                 originButtonNew.style.color = "grey";
-            } else {
+            } else if (checkCompatibilityTraits(origin) == false) {   originButtonNew.style.color = "red";}else {
                 originButtonNew.style.color = "white";
             }
 
@@ -948,6 +948,34 @@ function SetupButtons(evt, type) {
 
                 SetButtonInfo(originButtonNew, origin, type);
                 // originButtonNew.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+            } 
+            // show option but with compatible thingie
+            else{
+                // dont show everything for loadouts, too many options
+                if(type != "Loadout"){
+                  
+                
+                // check if its not just already equipped instead
+
+               
+                originButtonNew.className = "list-button-disabled";
+
+               // originButtonNew.addEventListener("click", (event) => selectOrigin(origin, type));
+
+                originWrapper.appendChild(originButtonNew);
+
+                SetButtonInfo(originButtonNew, origin, type);
+
+                if (currentSociety1.name === origin.name) {
+                    originButtonNew.className = "list-button-currentequipped";
+                }
+               else if (currentSociety2.name === origin.name) {
+                originButtonNew.className = "list-button-currentequipped";
+                } else{
+                    originButtonNew.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
+                }
+            }
+                
             }
         }
     }
@@ -1348,6 +1376,15 @@ function SetButtonInfo(button, origin, type, color) {
             var k = "";
             for (k in origin.incompatible_society_traits) {
                 spa.innerHTML += "<bullet>" + origin.incompatible_society_traits[k].name + "</bullet>";
+            }
+            spa.innerHTML += "</bulletlist>";
+        }
+
+        if ("incompatible" in origin) {
+            spa.innerHTML += '<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>';
+            var k = "";
+            for (k in origin.incompatible) {
+                spa.innerHTML += "<bullet>" + origin.incompatible[k].name + "</bullet>";
             }
             spa.innerHTML += "</bulletlist>";
         }
@@ -2684,8 +2721,22 @@ function GetRandomEntry(type) {
     return randomOrigin;
 }
 
+function GetCultureFromID(id){
+    for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if(jsonFactionCreation[index].id == id){
+            return jsonFactionCreation[index];
+        }
+        
+        
+    }
+}
+
 function incompatibleCheck(type, origin) {
     var incompatibleWithSetup = false;
+
+    // check from culture too
+
+    
     if ("incompatible" in origin) {
         if (type === "Culture") {
             var i = "";
@@ -2704,9 +2755,30 @@ function incompatibleCheck(type, origin) {
             }
         }
     }
+
+    if(currentCulture != ""){
+        if('incompatible' in currentCulture){
+              
+            for (let index = 0; index < currentCulture.incompatible.length; index++) {
+              //  console.log(currentCulture.incompatible[index].name + " " + origin.name );
+               if(origin.name == currentCulture.incompatible[index].name){
+                {
+                    incompatibleWithSetup = true;
+                }
+               }
+                
+            }
+           
+        }
+    }
+   
     if ("incompatible_society_traits" in origin) {
         if (type === "Society1") {
             var i = "";
+            // also check from culture here
+          //  currentCul = GetCultureFromID(currentCulture);
+          
+          
             for (i in origin.incompatible_society_traits) {
                 if (currentSociety2 != "") {
                     if (
@@ -2734,12 +2806,14 @@ function incompatibleCheck(type, origin) {
             }
         }
     }
+
     if (currentSociety1.name === origin.name) {
         incompatibleWithSetup = true;
     }
-    if (currentSociety2.name === origin.name) {
-        incompatibleWithSetup = true;
+   else if (currentSociety2.name === origin.name) {
+    incompatibleWithSetup = true;
     }
+    
 
     if (type === "Loadout") {
         // example: Champion:Wizard, Primal-sylvan_wolf:Dark
