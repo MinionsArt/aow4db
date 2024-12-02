@@ -16,9 +16,14 @@
                     // Get the dropdown element
                     const dropdownOrigin = document.getElementById("actionDropdownOrigin");
                     const dropdownOriginDragon = document.getElementById("actionDropdownOriginDragon");
+
+                    // hide dragon type
+                    document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
+
                     const dropdown = document.getElementById("actionDropdownClass");
                     // Add an event listener for when the value changes
                     dropdownOrigin.addEventListener("change", function () {
+                           document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
                         // Get the selected value
                         const selectedValue = dropdownOrigin.value;
                         rulerOrigin = selectedValue;
@@ -29,6 +34,8 @@
                         document.getElementById("Ritualist").disabled = false;
                         document.getElementById("Mage").disabled = false;
                         if (selectedValue == "Dragon") {
+                            // show the dragon selection
+                            document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
                             // dont leave ranger
                             document.getElementById("Ranger").disabled = true;
                             if (rulerClass == "Ranger") {
@@ -150,10 +157,10 @@
                     <option id="Eldritch" value="Eldritch">Eldritch Sovereign</option>
                 </select>
             </div>
-            <div class="choices" style="left: 100px; top: 0px">
+            <div class="choices" id="actionDropdownOriginDragonHolder" style="left: 100px; top: -20px">
                 <label style="color: white">Dragon Type:</label>
                 <select id="actionDropdownOriginDragon">
-                    <option id="orderDragon" value="OrderDragon"><empireorder></empireorder>Order Dragon</option>
+                    <option id="orderDragon" value="OrderDragon">Order Dragon</option>
                     <option id="astralDragon" value="AstralDragon">Astral Dragon</option>
                     <option id="natureDragon" value="NatureDragon">Nature Dragon</option>
                     <option id="chaosDragon" value="ChaosDragon">Chaos Dragon</option>

@@ -185,6 +185,7 @@ function LookupCode(code) {
     if (originSplitForDragon[0] != undefined) {
         // we have a dragon
         rulerOrigin = originSplitForDragon[0];
+        document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
         if (originSplitForDragon[1] != undefined) {
             // a saved splitorigin
             rulerDragonOrigin = originSplitForDragon[1];
