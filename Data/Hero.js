@@ -3,7 +3,7 @@ searchKeyword = searchParams.get("u");
 
 var rulerOrigin = "Champion";
 var rulerClass = "Warrior";
-var rulerDragonOrigin = "";
+var rulerDragonOrigin = "OrderDragon";
 let currentSelectedSkillsArray = [];
 var currentsignatureSelectionsArray = [];
 var currentSkillPoints = 20;
