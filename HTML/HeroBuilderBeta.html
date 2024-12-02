@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="/aow4db/Data/Hero.js"></script>
+        <script src="/aow4db/Data/HeroBeta.js"></script>
 
         <script>
             $("#body").ready(function () {
@@ -16,9 +16,14 @@
                     // Get the dropdown element
                     const dropdownOrigin = document.getElementById("actionDropdownOrigin");
                     const dropdownOriginDragon = document.getElementById("actionDropdownOriginDragon");
+
+                    // hide dragon type
+                    document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
+
                     const dropdown = document.getElementById("actionDropdownClass");
                     // Add an event listener for when the value changes
                     dropdownOrigin.addEventListener("change", function () {
+                        document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
                         // Get the selected value
                         const selectedValue = dropdownOrigin.value;
                         rulerOrigin = selectedValue;
@@ -29,6 +34,8 @@
                         document.getElementById("Ritualist").disabled = false;
                         document.getElementById("Mage").disabled = false;
                         if (selectedValue == "Dragon") {
+                            // show the dragon selection
+                            document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
                             // dont leave ranger
                             document.getElementById("Ranger").disabled = true;
                             if (rulerClass == "Ranger") {
@@ -39,6 +46,8 @@
                             document.getElementById("Defender").disabled = true;
                             document.getElementById("Warrior").disabled = true;
                             document.getElementById("Ranger").disabled = true;
+                            document.getElementById("DeathKnight").disabled = true;
+                            document.getElementById("Spellblade").disabled = true;
                             // no defender, ranger, or warrior?
                             if (rulerClass == "Ranger" || rulerClass == "Warrior" || rulerClass == "Defender") {
                                 rulerClass = "Mage";
@@ -100,20 +109,21 @@
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Hero Skill Tree Builder</title>
+        <title>Age of Wonders 4 Database - Hero Skill Tree Builder Beta</title>
     </head>
 
     <body>
         <div id="header"></div>
         <div style="color: white; display: block; margin: 5px; margin-left: auto; margin-right: auto">
             WIP, no Dragon Breath Affinity support yet, always showing Materium breath
-            <div style="display: flex; flex-direction: row; justify-content: center">
+            <!--<div style="display: flex; flex-direction: row; justify-content: center">
                 <button class="button-random" onclick="GetQuickLinkHero()">Make Share Link</button>
                 <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
                 <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
-            </div>
+            </div>-->
             <div style="display: flex; flex-direction: row; justify-content: center">
+                TIGER 1.3 BETA STUFF, NO SHARING LINKS TILL ITS LIVE
                 <button class="button-random" id="reset" onclick="ResetAll()">Reset All</button><br />
             </div>
         </div>
@@ -147,10 +157,10 @@
                     <option id="Eldritch" value="Eldritch">Eldritch Sovereign</option>
                 </select>
             </div>
-            <div class="choices" style="left: 100px; top: 0px">
+            <div class="choices" id="actionDropdownOriginDragonHolder" style="left: 100px; top: -20px">
                 <label style="color: white">Dragon Type:</label>
                 <select id="actionDropdownOriginDragon">
-                    <option id="orderDragon" value="OrderDragon"><empireorder></empireorder>Order Dragon</option>
+                    <option id="orderDragon" value="OrderDragon">Order Dragon</option>
                     <option id="astralDragon" value="AstralDragon">Astral Dragon</option>
                     <option id="natureDragon" value="NatureDragon">Nature Dragon</option>
                     <option id="chaosDragon" value="ChaosDragon">Chaos Dragon</option>
