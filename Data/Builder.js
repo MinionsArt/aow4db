@@ -96,7 +96,9 @@ async function GetAllData() {
         "/aow4db/Data/ItemForge.json",
         "/aow4db/Data/CosmicHappenings.json",
         "/aow4db/Data/BuilderLookupHero.json",
-        "/aow4db/Data/Governance.json"
+        "/aow4db/Data/Governance.json",
+        "/aow4db/BetaStuff/HeroSkills.json",
+        "/aow4db/BetaStuff/Abilities.json"
     ];
     await fetchJsonFiles(jsonFilePaths)
         .then((dataArray) => {
@@ -146,6 +148,10 @@ async function GetAllData() {
                     jsonBuilderHeroLookUp = data;
                 } else if (index == 21) {
                     jsonHeroGovernance = data;
+                } else if (index == 22) {
+                    jsonHeroSkillsBeta = data;
+                } else if (index == 23) {
+                    jsonAbilitiesBeta = data;
                 }
             });
         })
