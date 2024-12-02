@@ -15,7 +15,7 @@
 
                     // Get the dropdown element
                     const dropdownOrigin = document.getElementById("actionDropdownOrigin");
-
+                    const dropdownOriginDragon = document.getElementById("actionDropdownOriginDragon");
                     const dropdown = document.getElementById("actionDropdownClass");
                     // Add an event listener for when the value changes
                     dropdownOrigin.addEventListener("change", function () {
@@ -49,6 +49,16 @@
                         ResetAll();
 
                         //UpdatePage();
+
+                        // Trigger functions based on the selected value
+                    });
+
+                    // Add an event listener for when the value changes
+                    dropdownOriginDragon.addEventListener("change", function () {
+                        // Get the selected value
+                        const selectedValue = dropdownOriginDragon.value;
+                        rulerDragonOrigin = selectedValue;
+                        ResetAll();
 
                         // Trigger functions based on the selected value
                     });
@@ -96,7 +106,7 @@
     <body>
         <div id="header"></div>
         <div style="color: white; display: block; margin: 5px; margin-left: auto; margin-right: auto">
-            WIP, no Dragon Affinity support yet, always showing Materium breath
+            WIP, no Dragon Breath Affinity support yet, always showing Materium breath
             <div style="display: flex; flex-direction: row; justify-content: center">
                 <button class="button-random" onclick="GetQuickLinkHero()">Make Share Link</button>
                 <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
@@ -137,6 +147,17 @@
                     <option id="Eldritch" value="Eldritch">Eldritch Sovereign</option>
                 </select>
             </div>
+            <div class="choices" style="left: 100px; top: 0px">
+                <label style="color: white">Dragon Type:</label>
+                <select id="actionDropdownOriginDragon">
+                    <option id="orderDragon" value="OrderDragon"><empireorder></empireorder>Order Dragon</option>
+                    <option id="astralDragon" value="AstralDragon">Astral Dragon</option>
+                    <option id="natureDragon" value="NatureDragon">Nature Dragon</option>
+                    <option id="chaosDragon" value="ChaosDragon">Chaos Dragon</option>
+                    <option id="materiumDragon" value="MateriumDragon">Materium Dragon</option>
+                    <option id="shadowDragon" value="ShadowDragon">Shadow Dragon</option>
+                </select>
+            </div>
             <div class="choices" style="left: 900px; top: 20px">
                 <label style="color: white">Class:</label>
                 <select id="actionDropdownClass">
@@ -145,21 +166,35 @@
                     <option id="Mage" value="Mage">Mage</option>
                     <option id="Defender" value="Defender">Defender</option>
                     <option id="Ritualist" value="Ritualist">Ritualist</option>
+                    <!--<option id="DeathKnight" value="Death Knight">Death Knight</option>
+                    <option id="Spellblade" value="Spellblade">Spellblade</option>-->
                 </select>
             </div>
-            <div class="tree-grid" id="treeHolder"></div>
-            <div class="" id="treeLineHolder"></div>
+            <div style="position: relative; display: flex; justify-content: flex-start">
+                <div style="position: relative">
+                    <div class="tree-grid" id="treeHolder"></div>
+                    <div class="" id="treeLineHolder"></div>
+                </div>
+
+                <div style="position: relative">
+                    <div class="tree-grid" id="treeHolderClass"></div>
+                    <div class="" id="treeLineHolderClass"></div>
+                </div>
+                <div>
+                    <div class="tree-grid" id="treeHolderSignature1"></div>
+                    <div class="" style="position: relative" id="treeLineHolderSignature1"></div>
+                    <div class="tree-grid" id="treeHolderSignature2"></div>
+                    <div class="" style="position: relative" id="treeLineHolderSignature2"></div>
+                    <div class="tree-grid" id="treeHolderSignature3"></div>
+                    <div class="" style="position: relative" id="treeLineHolderSignature3"></div>
+                    <div class="tree-grid" id="treeHolderSignature4"></div>
+                    <div class="" style="position: relative" id="treeLineHolderSignature4"></div>
+                </div>
+            </div>
+
             <div class="choices" style="left: 1400px; top: 20px">
                 <label style="color: white">Affinity Skills:</label>
             </div>
-            <div class="tree-grid" id="treeHolderSignature1"></div>
-            <div class="" id="treeLineHolderSignature1"></div>
-            <div class="tree-grid" id="treeHolderSignature2"></div>
-            <div class="" id="treeLineHolderSignature2"></div>
-            <div class="tree-grid" id="treeHolderSignature3"></div>
-            <div class="" id="treeLineHolderSignature3"></div>
-            <div class="tree-grid" id="treeHolderSignature4"></div>
-            <div class="" id="treeLineHolderSignature4"></div>
         </div>
         <div id="summaryHolder" style="position: absolute; top: 718px; width: 400px; left: 70px; color: white"></div>
         <div class="selections" id="selectionsHolder">
@@ -235,16 +270,16 @@
     }
 
     .tree-grid {
-        display: block;
-        /*  width: 1880px;
-        height: 900px;
+        position: relative; /* Required for children to be positioned relative to the parent */
+        display: inline-block;
 
-        position: absolute;*/
+        position: relative;
     }
 
     .tree-space {
         width: auto;
         height: 1920px;
+        min-width: min-content;
         position: relative;
         background-size: cover;
         background-image: url(/aow4db/Icons/Interface/panel_Background2.png);

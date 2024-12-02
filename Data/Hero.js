@@ -3,6 +3,7 @@ searchKeyword = searchParams.get("u");
 
 var rulerOrigin = "Champion";
 var rulerClass = "Warrior";
+var rulerDragonOrigin = "";
 let currentSelectedSkillsArray = [];
 var currentsignatureSelectionsArray = [];
 var currentSkillPoints = 20;
@@ -17,6 +18,13 @@ var listOfDefenderWeaponTypes = ["One Handed Weapon", "Shield", "Fist Weapon", "
 var listOfMageWeaponTypes = ["Magic Orb Weapon", "Magic Staff Weapon", "Eldritch Relic Weapon"];
 var listOfRitualistWeaponTypes = ["Magic Orb Weapon", "Magic Staff Weapon", "Eldritch Relic Weapon"];
 var listOfRangerWeaponTypes = ["Ranged Weapon", "Skirmisher Weapon"];
+
+var astralDragon = 4995046967543;
+var chaosDragon = 4995046967544;
+var materiumDragon = 4995046967545;
+var natureDragon = 4995046967546;
+var orderDragon = 4995046967547;
+var shadowDragon = 4995046967548;
 
 // Function to convert a number to hexadecimal
 function decimalToHex(decimal) {
@@ -45,8 +53,11 @@ function GetQuickLinkHero() {
     // 0 origin
 
     // if no formtraits
-
-    code += rulerOrigin + ",";
+    if (rulerOrigin == "Dragon") {
+        code += rulerOrigin + ":" + rulerDragonOrigin + ",";
+    } else {
+        code += rulerOrigin + ",";
+    }
 
     // 1 class
 
@@ -169,7 +180,23 @@ function LookupCode(code) {
 
     // 0 = currentOrigin
     var origin = splitcode[0];
-    rulerOrigin = origin;
+    // check for dragon type
+    var originSplitForDragon = origin.split(":");
+    if (originSplitForDragon[0] != undefined) {
+        // we have a dragon
+        rulerOrigin = originSplitForDragon[0];
+        if (originSplitForDragon[1] != undefined) {
+            // a saved splitorigin
+            rulerDragonOrigin = originSplitForDragon[1];
+            var dropdownOriginDragon = (document.getElementById("actionDropdownOriginDragon").value =
+                rulerDragonOrigin);
+        } else {
+            rulerDragonOrigin = "OrderDragon";
+        }
+    } else {
+        rulerOrigin = origin;
+    }
+
     var dropdownOrigin = (document.getElementById("actionDropdownOrigin").value = rulerOrigin);
 
     // 1 = currentClass
@@ -261,15 +288,22 @@ function LookupCode(code) {
 
 function UpdatePage() {
     var holder = document.getElementById("treeHolder");
+    var holder2 = document.getElementById("treeHolderClass");
     var treespace = document.getElementById("treeLineHolder");
+    var treespace2 = document.getElementById("treeLineHolderClass");
+
     holder.innerHTML = "";
     treespace.innerHTML = "";
+    holder2.innerHTML = "";
+    treespace2.innerHTML = "";
     SetUpTreeNodes(rulerOrigin, 0, "white", holder, treespace);
-    SetUpTreeNodes(rulerClass, 3, "white", holder, treespace);
-    SetUpSignatures(7);
+    SetUpTreeNodes(rulerClass, 0, "white", holder2, treespace2);
+    SetUpSignatures(0);
     UpdateSkillPoints();
     console.log(currentSelectedSkillsArray);
 
+    resizeParentToFitChildren(holder);
+    resizeParentToFitChildren(holder2);
     // add a summary
     // CreateSummary();
 }
@@ -397,6 +431,28 @@ function SetUpSignatures(row) {
     SetBaseSignatureChoices(200, 700, row, signature4, 4);
 }
 
+function resizeParentToFitChildren(parent) {
+    const children = Array.from(parent.children); // Get all child elements
+    let maxWidth = 0;
+    let maxHeight = 0;
+
+    children.forEach((child) => {
+        const childRect = child.getBoundingClientRect(); // Get the child's position and size relative to the viewport
+        const parentRect = parent.getBoundingClientRect(); // Get the parent's position and size
+
+        // Calculate the child's position relative to the parent
+        const childRight = childRect.right - parentRect.left;
+        const childBottom = childRect.bottom - parentRect.top;
+
+        maxWidth = Math.max(maxWidth, childRight);
+        maxHeight = Math.max(maxHeight, childBottom);
+    });
+
+    // Apply the calculated dimensions to the parent
+    parent.style.width = maxWidth + "px";
+    parent.style.height = maxHeight + "px";
+}
+
 function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     let holder = document.getElementById("treeHolderSignature" + slot);
     let treespace = document.getElementById("treeLineHolderSignature" + slot);
@@ -410,7 +466,7 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     let newNode = document.createElement("DIV");
 
     // Convert the x and y coordinates to pixel positions
-    const leftPosition = leftPos + row * 190; // x-coordinate scaled to grid size
+    const leftPosition = leftPos; // x-coordinate scaled to grid size
     const topPosition = topPost; // y-coordinate scaled to grid size
 
     // Set the style to position the node based on x and y coordinates
@@ -459,6 +515,11 @@ function SetSkillData(nodeElement, skill) {
     } else {
         img.setAttribute("height", "50px");
     }
+
+    // add number for order
+    var numberHolder = document.createElement("DIV");
+    numberHolder.className = "numberOrder";
+    nodeElement.appendChild(numberHolder);
 
     // create description span
     var spa = document.createElement("SPAN");
@@ -543,6 +604,8 @@ function GetAllAvailableSignatureSkills(slot) {
                 if (jsonHeroSkills[s].DLC == "DRAGONLORDS ") {
                     // first slot : aspect
                     if (slot === 1 && jsonHeroSkills[s].name.indexOf("Aspect") != -1) {
+                        // check required
+
                         listOfSkills.push(jsonHeroSkills[s]);
                     }
                     // second slot : transfomration
@@ -551,11 +614,19 @@ function GetAllAvailableSignatureSkills(slot) {
                         (jsonHeroSkills[s].name.indexOf("Transformation") != -1 ||
                             jsonHeroSkills[s].name.indexOf("Primal") != -1)
                     ) {
-                        listOfSkills.push(jsonHeroSkills[s]);
+                        if (jsonHeroSkills[s].name.indexOf("Primal") != -1) {
+                            if (
+                                jsonHeroSkills[s].required_skills[0].resid === lookupDragonAffinity(rulerDragonOrigin)
+                            ) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        } else {
+                            listOfSkills.push(jsonHeroSkills[s]);
+                        }
                     }
                     // third slot : breath
                     if (slot === 3 && jsonHeroSkills[s].name.indexOf("breath") != -1) {
-                        if (dragonBreathIDList.includes(jsonHeroSkills[s].resid.toString())) {
+                        if (jsonHeroSkills[s].required_skills[0].resid === lookupDragonAffinity(rulerDragonOrigin)) {
                             listOfSkills.push(jsonHeroSkills[s]);
                         }
                     }
@@ -611,6 +682,21 @@ function GetAllAvailableSignatureSkills(slot) {
 
     return listOfSkills;
 }
+function lookupDragonAffinity(type) {
+    if (type == "AstralDragon") {
+        return astralDragon;
+    } else if (type == "OrderDragon") {
+        return orderDragon;
+    } else if (type == "ChaosDragon") {
+        return chaosDragon;
+    } else if (type == "NatureDragon") {
+        return natureDragon;
+    } else if (type == "MateriumDragon") {
+        return materiumDragon;
+    } else if (type == "ShadowDragon") {
+        return shadowDragon;
+    }
+}
 
 function BuildChoicesPanel(choiceslist, originButton, slot, evt) {
     var selectionsHolder = document.getElementById("selectionsHolder");
@@ -654,18 +740,18 @@ function ClearAndSetSignature(chosenSkill, origin, slot) {
     if (slot == 1) {
         signature1 = chosenSkill.resid;
 
-        SetBaseSignatureChoices(200, 100, 7, signature1, 1);
+        SetBaseSignatureChoices(200, 100, 0, signature1, 1);
     } else if (slot == 2) {
         signature2 = chosenSkill.resid;
 
-        SetBaseSignatureChoices(200, 300, 7, signature2, 2);
+        SetBaseSignatureChoices(200, 300, 0, signature2, 2);
     } else if (slot == 3) {
         signature3 = chosenSkill.resid;
 
-        SetBaseSignatureChoices(200, 500, 7, signature3, 3);
+        SetBaseSignatureChoices(200, 500, 0, signature3, 3);
     } else if (slot == 4) {
         signature4 = chosenSkill.resid;
-        SetBaseSignatureChoices(200, 700, 7, signature4, 4);
+        SetBaseSignatureChoices(200, 700, 0, signature4, 4);
         //  console.log("signature4 " + signature4 + " " + chosenSkill.resid + " " + slot);
     }
 }
@@ -706,9 +792,9 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     let skill2 = skills[1];
     var row = 0;
 
-    var extraOffset = [1400, -150];
+    var extraOffset = [100, -150];
     extraOffset[1] = extraOffset[1] + slot * 200;
-    var extraOffset2 = [1400, -60];
+    var extraOffset2 = [100, -60];
     extraOffset2[1] = extraOffset2[1] + slot * 200;
 
     if (listOfFirstChoice.includes(chosenSkill.id)) {
@@ -813,6 +899,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
 
     if ("abilities" in currentSkill) {
         var skill = ReturnSkillItself(currentSkill.abilities[0].slug);
+        console.log(currentSkill.abilities[0].slug);
 
         if ("range" in skill) {
             form = "diamond";
