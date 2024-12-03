@@ -427,9 +427,9 @@ function SetUpSignatures(row) {
     // clear existing
 
     SetBaseSignatureChoices(200, 100, row, signature1, 1);
-    SetBaseSignatureChoices(200, 300, row, signature2, 2);
-    SetBaseSignatureChoices(200, 500, row, signature3, 3);
-    SetBaseSignatureChoices(200, 700, row, signature4, 4);
+    SetBaseSignatureChoices(200, 270, row, signature2, 2);
+    SetBaseSignatureChoices(200, 440, row, signature3, 3);
+    SetBaseSignatureChoices(200, 610, row, signature4, 4);
 }
 
 function resizeParentToFitChildren(parent) {
@@ -753,14 +753,14 @@ function ClearAndSetSignature(chosenSkill, origin, slot) {
     } else if (slot == 2) {
         signature2 = chosenSkill.resid;
 
-        SetBaseSignatureChoices(200, 300, 0, signature2, 2);
+        SetBaseSignatureChoices(200, 270, 0, signature2, 2);
     } else if (slot == 3) {
         signature3 = chosenSkill.resid;
 
-        SetBaseSignatureChoices(200, 500, 0, signature3, 3);
+        SetBaseSignatureChoices(200, 440, 0, signature3, 3);
     } else if (slot == 4) {
         signature4 = chosenSkill.resid;
-        SetBaseSignatureChoices(200, 700, 0, signature4, 4);
+        SetBaseSignatureChoices(200, 610, 0, signature4, 4);
         //  console.log("signature4 " + signature4 + " " + chosenSkill.resid + " " + slot);
     }
 }
@@ -801,10 +801,10 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     let skill2 = skills[1];
     var row = 0;
 
-    var extraOffset = [100, -150];
-    extraOffset[1] = extraOffset[1] + slot * 200;
-    var extraOffset2 = [100, -60];
-    extraOffset2[1] = extraOffset2[1] + slot * 200;
+    var extraOffset = [100, -130];
+    extraOffset[1] = extraOffset[1] + slot * 170;
+    var extraOffset2 = [100, -20];
+    extraOffset2[1] = extraOffset2[1] + slot * 170;
 
     if (listOfFirstChoice.includes(chosenSkill.id)) {
         // dont draw the lines if its a sovereign
