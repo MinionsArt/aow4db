@@ -6,7 +6,7 @@ var rulerClass = "Warrior";
 var rulerDragonOrigin = "OrderDragon";
 let currentSelectedSkillsArray = [];
 var currentsignatureSelectionsArray = [];
-var currentSkillPoints = 20;
+var currentSkillPoints = 24;
 
 var signature1 = "";
 var signature2 = "";
