@@ -125,7 +125,7 @@ function ResetAll() {
     ResetSkills();
 
     ResetSignatures();
-    currentSkillPoints = 20;
+    currentSkillPoints = 24;
     UpdatePage();
 
     SetStartingSkillsSelection();
@@ -174,7 +174,7 @@ function ResetSignatures() {
 }
 
 function LookupCode(code) {
-    currentSkillPoints = 20;
+    currentSkillPoints = 24;
     var splitcode = code.split(",");
     // console.log("Splitcode" + splitcode);
 
