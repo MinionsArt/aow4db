@@ -532,7 +532,11 @@ function SetSkillData(nodeElement, skill) {
     if (skill.description == undefined) {
         spa.innerHTML += GetSkillData(skill).innerHTML;
     } else {
-        spa.innerHTML += skill.description + "<br>";
+        var description = skill.description;
+        description = description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
+        description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
+        description = description.replaceAll("<br></br>", "<br>");
+        spa.innerHTML += description + "<br>";
     }
 
     // newNode.appendChild(spa);
