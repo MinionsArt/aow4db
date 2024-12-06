@@ -568,14 +568,14 @@ function GetAllAvailableSignatureSkills(slot) {
     for (var s = 0; s < jsonHeroSkillsBeta.length; s++) {
         if (jsonHeroSkillsBeta[s].type == "signature") {
             if (rulerOrigin == "Champion" || rulerOrigin == "Wizard") {
-                if (slot === 1 && jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1) {
+                if (slot === 1 && jsonHeroSkillsBeta[s].name.indexOf("Initiate") != -1) {
                     listOfSkills.push(jsonHeroSkillsBeta[s]);
                 }
 
                 if (
                     slot === 2 &&
-                    (jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("adept") != -1)
+                    (jsonHeroSkillsBeta[s].name.indexOf("Initiate") != -1 ||
+                        jsonHeroSkillsBeta[s].name.indexOf("Ddept") != -1)
                 ) {
                     if (jsonHeroSkillsBeta[s].resid != signature1) {
                         listOfSkills.push(jsonHeroSkillsBeta[s]);
@@ -583,9 +583,9 @@ function GetAllAvailableSignatureSkills(slot) {
                 }
                 if (
                     slot === 3 &&
-                    (jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("adept") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("master") != -1)
+                    (jsonHeroSkillsBeta[s].name.indexOf("Initiate") != -1 ||
+                        jsonHeroSkillsBeta[s].name.indexOf("Adept") != -1 ||
+                        jsonHeroSkillsBeta[s].name.indexOf("Master") != -1)
                 ) {
                     if (jsonHeroSkillsBeta[s].resid != signature1 && jsonHeroSkillsBeta[s].resid != signature2) {
                         listOfSkills.push(jsonHeroSkillsBeta[s]);
@@ -593,10 +593,10 @@ function GetAllAvailableSignatureSkills(slot) {
                 }
                 if (
                     slot === 4 &&
-                    (jsonHeroSkillsBeta[s].id.indexOf("initiate") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("adept") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("master") != -1 ||
-                        jsonHeroSkillsBeta[s].id.indexOf("paragon") != -1)
+                    (jsonHeroSkillsBeta[s].name.indexOf("Initiate") != -1 ||
+                        jsonHeroSkillsBeta[s].name.indexOf("Adept") != -1 ||
+                        jsonHeroSkillsBeta[s].name.indexOf("Master") != -1 ||
+                        jsonHeroSkillsBeta[s].name.indexOf("Paragon") != -1)
                 ) {
                     if (
                         jsonHeroSkillsBeta[s].resid != signature1 &&
