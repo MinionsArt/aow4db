@@ -551,9 +551,9 @@ function ChooseSignatures(slot, nodeElement, evt) {
 }
 
 function GetAllAvailableSignatureSkills(slot) {
-    var listOfFirstChoice = ["mindbreaker", "fleshweaver", "madcaster"];
-    var listOfSecondChoiceMindbreaker = ["enthraller", "mind_devourer"];
-    var listOfSecondChoiceFleshweaver = ["puppeteer", "fleshsculptor"];
+    var listOfFirstChoice = ["Mindbreaker", "Fleshweaver", "Madcaster"];
+    var listOfSecondChoiceMindbreaker = ["Enthraller", "Mind Devourer"];
+    var listOfSecondChoiceFleshweaver = ["Puppeteer", "Fleshsculptor"];
     var dragonBreathIDList = [
         "4273492487959",
         "4273492488409",
@@ -563,7 +563,7 @@ function GetAllAvailableSignatureSkills(slot) {
         "4273492488460"
     ];
 
-    var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
+    var listOfSecondChoiceMadcaster = ["Cosmic Caster", "Havoc Caster"];
     var listOfSkills = [];
     for (var s = 0; s < jsonHeroSkillsBeta.length; s++) {
         if (jsonHeroSkillsBeta[s].type == "signature") {
@@ -648,7 +648,7 @@ function GetAllAvailableSignatureSkills(slot) {
                 if ("DLC" in jsonHeroSkillsBeta[s]) {
                     if (jsonHeroSkillsBeta[s].DLC.indexOf("ELDRITCHREALMS") != -1) {
                         if (slot == 1) {
-                            if (listOfFirstChoice.includes(jsonHeroSkillsBeta[s].id)) {
+                            if (listOfFirstChoice.includes(jsonHeroSkillsBeta[s].name)) {
                                 listOfSkills.push(jsonHeroSkillsBeta[s]);
                             }
                         } else if (slot == 2) {
@@ -658,19 +658,19 @@ function GetAllAvailableSignatureSkills(slot) {
                         } else if (slot == 3) {
                             // fleshweaver
                             if (signature1 == "5046586575299") {
-                                if (listOfSecondChoiceFleshweaver.includes(jsonHeroSkillsBeta[s].id)) {
+                                if (listOfSecondChoiceFleshweaver.includes(jsonHeroSkillsBeta[s].name)) {
                                     listOfSkills.push(jsonHeroSkillsBeta[s]);
                                 }
                             }
                             // madcaster
                             if (signature1 == "5046586575303") {
-                                if (listOfSecondChoiceMadcaster.includes(jsonHeroSkillsBeta[s].id)) {
+                                if (listOfSecondChoiceMadcaster.includes(jsonHeroSkillsBeta[s].name)) {
                                     listOfSkills.push(jsonHeroSkillsBeta[s]);
                                 }
                             }
                             // mindbreaker
                             if (signature1 == "5046586575294") {
-                                if (listOfSecondChoiceMindbreaker.includes(jsonHeroSkillsBeta[s].id)) {
+                                if (listOfSecondChoiceMindbreaker.includes(jsonHeroSkillsBeta[s].name)) {
                                     listOfSkills.push(jsonHeroSkillsBeta[s]);
                                 }
                             }
@@ -777,7 +777,7 @@ function closePanel() {
 
 function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     closePanel();
-    var listOfFirstChoice = ["mindbreaker", "fleshweaver", "madcaster"];
+    var listOfFirstChoice = ["Mindbreaker", "Fleshweaver", "Madcaster"];
 
     SetSkillData(origin, chosenSkill);
 
@@ -806,7 +806,7 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     var extraOffset2 = [100, -20];
     extraOffset2[1] = extraOffset2[1] + slot * 170;
 
-    if (listOfFirstChoice.includes(chosenSkill.id)) {
+    if (listOfFirstChoice.includes(chosenSkill.name)) {
         // dont draw the lines if its a sovereign
 
         return;
