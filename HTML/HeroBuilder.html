@@ -33,6 +33,8 @@
                         document.getElementById("Ranger").disabled = false;
                         document.getElementById("Ritualist").disabled = false;
                         document.getElementById("Mage").disabled = false;
+                        document.getElementById("Spellblade").disabled = false;
+                        document.getElementById("DeathKnight").disabled = false;
                         if (selectedValue == "Dragon") {
                             // show the dragon selection
                             document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
@@ -46,8 +48,16 @@
                             document.getElementById("Defender").disabled = true;
                             document.getElementById("Warrior").disabled = true;
                             document.getElementById("Ranger").disabled = true;
+                            document.getElementById("DeathKnight").disabled = true;
+                            document.getElementById("Spellblade").disabled = true;
                             // no defender, ranger, or warrior?
-                            if (rulerClass == "Ranger" || rulerClass == "Warrior" || rulerClass == "Defender") {
+                            if (
+                                rulerClass == "Ranger" ||
+                                rulerClass == "Warrior" ||
+                                rulerClass == "Defender" ||
+                                rulerClass == "Spellblade" ||
+                                rulerClass == "Death Knight"
+                            ) {
                                 rulerClass = "Mage";
                                 document.getElementById("actionDropdownClass").value = "Mage";
                             }
@@ -107,7 +117,7 @@
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Hero Skill Tree Builder</title>
+        <title>Age of Wonders 4 Database - Hero Skill Tree Builder Beta</title>
     </head>
 
     <body>
@@ -173,8 +183,8 @@
                     <option id="Mage" value="Mage">Mage</option>
                     <option id="Defender" value="Defender">Defender</option>
                     <option id="Ritualist" value="Ritualist">Ritualist</option>
-                    <!--<option id="DeathKnight" value="Death Knight">Death Knight</option>
-                    <option id="Spellblade" value="Spellblade">Spellblade</option>-->
+                    <option id="DeathKnight" value="Death Knight">Death Knight</option>
+                    <option id="Spellblade" value="Spellblade">Spellblade</option>
                 </select>
             </div>
             <div style="position: relative; display: flex; justify-content: flex-start">

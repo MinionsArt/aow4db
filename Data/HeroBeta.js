@@ -554,6 +554,7 @@ function GetAllAvailableSignatureSkills(slot) {
     var listOfFirstChoice = ["Mindbreaker", "Fleshweaver", "Madcaster"];
     var listOfSecondChoiceMindbreaker = ["Enthraller", "Mind Devourer"];
     var listOfSecondChoiceFleshweaver = ["Puppeteer", "Fleshsculptor"];
+    var listOfSecondChoiceMadcaster = ["Cosmic Caster", "Havoc Caster"];
     var dragonBreathIDList = [
         "4273492487959",
         "4273492488409",
@@ -563,7 +564,6 @@ function GetAllAvailableSignatureSkills(slot) {
         "4273492488460"
     ];
 
-    var listOfSecondChoiceMadcaster = ["Cosmic Caster", "Havoc Caster"];
     var listOfSkills = [];
     for (var s = 0; s < jsonHeroSkillsBeta.length; s++) {
         if (jsonHeroSkillsBeta[s].type == "signature") {
