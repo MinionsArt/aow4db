@@ -112,6 +112,7 @@ function GetQuickLinkHero() {
     var currenturl = window.location.href.split("?")[0];
 
     // window.history.replaceState({}, 'foo', currenturl + "?u=" + code);
+    code = code.replaceAll(" ", "%20");
     linkField.value = currenturl + "?u=" + code;
     // var splitCodes = code.split(":");
     // for (let index = 0; index < splitCodes.length; index++) {
@@ -175,6 +176,7 @@ function ResetSignatures() {
 
 function LookupCode(code) {
     currentSkillPoints = 24;
+    code = code.replaceAll("%20", " ");
     var splitcode = code.split(",");
     // console.log("Splitcode" + splitcode);
 
@@ -203,6 +205,7 @@ function LookupCode(code) {
 
     // 1 = currentClass
     var rclass = splitcode[1];
+
     rulerClass = rclass;
     var dropdownClass = (document.getElementById("actionDropdownClass").value = rulerClass);
 
