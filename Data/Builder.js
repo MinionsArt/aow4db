@@ -6792,6 +6792,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     }
     for (var j = 0; j < jsonExtraAscendedInfo.length; j++) {
         if (jsonExtraAscendedInfo[j].id == a.id) {
+            descriptionDiv.innerHTML += "Tome(s) Researched : " + jsonExtraAscendedInfo[j].description;
             if ("extraspell" in jsonExtraAscendedInfo[j]) {
                 var iDiv = spell_card_template.content.cloneNode(true);
                 // Access the root element in the DocumentFragment
@@ -6805,7 +6806,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                 descriptionDiv.appendChild(iDiv);
                 showSpell(jsonExtraAscendedInfo[j].extraspell, false);
             }
-            descriptionDiv.innerHTML += "Tome(s) Researched : " + jsonExtraAscendedInfo[j].description;
         }
     }
     if (found === false) {
