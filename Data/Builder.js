@@ -1971,8 +1971,7 @@ function sortDivs(sortType, savedOrder) {
     var selector = (element) => element.querySelector(".mod_name").innerHTML;
     if (sortType === "tier") {
         selector = (element) => element.querySelector(".spell_tier").innerHTML;
-    }
-    if (sortType === "cost") {
+    } else if (sortType === "cost") {
         selector = (element) => element.querySelector(".spell_cost").innerHTML;
     }
 
@@ -1992,11 +1991,14 @@ function sortDivs(sortType, savedOrder) {
             var textOfFirstElement = selector(firstElement);
 
             var textOfSecondElement = selector(secondElement);
+
             if (sortType === "tier") {
-                var fields = textOfFirstElement.split("Tier ", 3);
+                var fields = textOfFirstElement.split("Tier ");
+
                 textOfFirstElement = deromanize(fields[1]);
-                var fields2 = textOfSecondElement.split("Tier ", 3);
+                var fields2 = textOfSecondElement.split("Tier ");
                 textOfSecondElement = deromanize(fields2[1]);
+                //console.log("first: " + fields2[1]);
             }
 
             return collator.compare(textOfFirstElement, textOfSecondElement);
@@ -4154,10 +4156,15 @@ function deromanize(str) {
         IV: 4,
         I: 1
     };
-    var num = 0,
-        m;
+    var num = -1;
+    var m;
+
     if (!(str && validator.test(str))) return false;
-    while (m == token.exec(str)) num += key[m[0]];
+
+    while ((m = token.exec(str)) !== null) {
+        num += key[m[0]];
+    }
+
     return num;
 }
 
@@ -4208,12 +4215,16 @@ function showSiegeProject(id, showOrigin) {
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML +=
-                    '<span style="color:white;font-size:15px">  Tier ' + romanize(splitspell[0]) + "</span>";
+                    '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
+                    romanize(splitspell[0]) +
+                    "</span>";
                 if ("DLC" in jsonSiegeProjects[i] && showOrigin) {
                     var newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
 
                     modName.append(newDivForMount);
                 }
+            } else {
+                modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
             }
 
             var tomeOrigin = document.getElementById("originTome");
@@ -4265,12 +4276,16 @@ function showSiegeProject(id, showOrigin) {
             if (tierSpell != undefined) {
                 var splitspell = tierSpell.split(",");
                 modName.innerHTML +=
-                    '<span style="color:white;font-size:15px">  Tier ' + romanize(splitspell[0]) + "</span>";
+                    '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
+                    romanize(splitspell[0]) +
+                    "</span>";
                 if ("DLC" in jsonSiegeProjects[i] && showOrigin) {
                     var newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
 
                     modName.append(newDivForMount);
                 }
+            } else {
+                modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
             }
 
             var tomeOrigin = document.getElementById("originTome");
@@ -5683,7 +5698,7 @@ function showSpell(a, showOrigin) {
 
             var upkeep = document.getElementById("modupkeep");
             if ("upkeep" in jsonSpells[j]) {
-                var upkeep = document.getElementById("modupkeep");
+                upkeep = document.getElementById("modupkeep");
                 upkeep.innerHTML = "Upkeep: " + jsonSpells[j].upkeep;
             }
             upkeep.setAttribute("id", "modupkeep" + a);
@@ -5796,6 +5811,8 @@ function showSpell(a, showOrigin) {
                     var newDivForMount = AddDLCTag(jsonSpells[j].DLC);
                     modName.append(newDivForMount);
                 }
+            } else {
+                modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px"> Tier - </span>';
             }
 
             if (showOrigin === true) {
@@ -6126,6 +6143,7 @@ function showItem(a) {
     //type.setAttribute("id", "modtype" + a);
     tier = document.getElementById("spell_tier");
     tier.innerHTML = a.tier;
+
     tier.setAttribute("id", "spell_tier" + a.id);
 
     cost = document.getElementById("modcost");

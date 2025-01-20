@@ -1,66 +1,45 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
+        <script>
+            $("#body").ready(function () {
+                $("#header").load("/aow4db/HTML/header.html", function () {
+                    CheckData();
+                });
             });
-        });
 
-        function HandlePage() {
-            showSiegeProjects();
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-        }
+            function HandlePage() {
+                showSiegeProjects();
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-    </script>
+        <title>Age of Wonders 4 Database - Siege Projects</title>
+    </head>
 
+    <body>
+        <div id="header"></div>
 
-    <title>Age of Wonders 4 Database - Siege Projects</title>
-</head>
+        <div class="textblocktitle">Siege Projects</div>
 
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Siege Projects
-    </div>
-
-    <div style="
-    display: table;
-    margin: 5px;
-    margin-left: auto;
-    margin-right: auto;">
-        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
-
-        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
-    </div>
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
+        <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
+            <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+            <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+            <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
         </div>
-        <div id="dataHolder">
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
         </div>
-
-
-    </div>
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
