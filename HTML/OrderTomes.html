@@ -1,65 +1,47 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var tomeArray = [
+                "tome_of_zeal",
+                "tome_of_faith",
+                "tome_of_the_beacon",
+                "tome_of_the_inquisition",
+                "tome_of_sanctuary",
+                "tome_of_subjugation",
+                "tome_of_exaltation",
+                "tome_of_supremacy",
+                "tome_of_the_god_emperor"
+            ];
 
+            function HandlePage() {
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
+                SetLevelUpStuff();
+            }
+        </script>
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Age of Wonders 4 Database - Order Tomes</title>
+    </head>
 
-    <script>
-        var tomeArray = ["tome_of_zeal", "tome_of_faith", "tome_of_the_beacon", "tome_of_the_inquisition", "tome_of_sanctuary", "tome_of_subjugation", "tome_of_exaltation", "tome_of_supremacy", "tome_of_the_god_emperor"];
+    <body>
+        <div id="header"></div>
 
-        $("#body").ready(function() {
+        <div class="textblocktitle"><empireorder></empireorder>Order Tomes</div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-            SetButtonsAndDivs(tomeArray, undefined, "tome");
-            SetLevelUpStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Order Tomes</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <empireorder></empireorder>Order Tomes
-    </div>
-
-
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
         </div>
-        <div id="dataHolder">
-        </div>
-
-
-    </div>
-
-
-
-
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

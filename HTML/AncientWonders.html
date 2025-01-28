@@ -1,93 +1,60 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var bronzeArray = ["ancient_cave", "castle_ruins", "crystal_forest", "hidden_wellspring"];
+            var silverArray = ["lost_tomb", "magma_forge", "secret_temple"];
+            var goldArray = ["golden_ziggurat", "lost_wizard_tower", "world_tree", "vaultsphere"];
 
+            function HandlePage() {
+                showWorldStructuresWithArgument("Bronze", "ore", bronzeArray, "Bronze");
+                showWorldStructuresWithArgument("Silver", "liquid", silverArray, "Silver");
+                showWorldStructuresWithArgument("Gold", "plant", goldArray, "Gold");
+                SetLevelUpStuff();
+            }
+        </script>
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Age of Wonders 4 Database - Ancient Wonders</title>
+    </head>
 
-    <script>
-        var bronzeArray = ["ancient_cave", "castle_ruins", "crystal_forest", "hidden_wellspring"];
-        var silverArray = ["lost_tomb", "magma_forge", "secret_temple"];
-        var goldArray = ["golden_ziggurat", "lost_wizard_tower", "world_tree", "vaultsphere"];
+    <body>
+        <div id="header"></div>
 
-        $("#body").ready(function() {
+        <div class="textblocktitle">Ancient Wonders</div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder">
+                <button
+                    id="Bronze-button"
+                    class="w3-bar-item w3-button tablink w3-red"
+                    onclick="openDiv(event,'Bronze')">
+                    <bronzewonder></bronzewonder>Bronze
+                </button>
+                <button id="Silver-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Silver')">
+                    <silverwonder></silverwonder>Silver
+                </button>
+                <button id="Gold-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Gold')">
+                    <goldwonder></goldwonder>Gold
+                </button>
+            </div>
+            <div id="dataHolder" style="margin-top: -150px">
+                <div id="Bronze" class="w3-container w3-border city"></div>
 
-        function HandlePage() {
-            showWorldStructuresWithArgument("Bronze", "ore", bronzeArray, "Bronze");
-            showWorldStructuresWithArgument("Silver", "liquid", silverArray, "Silver");
-            showWorldStructuresWithArgument("Gold", "plant", goldArray, "Gold");
-            SetLevelUpStuff();
-        }
+                <div id="Silver" class="w3-container w3-border city"></div>
 
-    </script>
-
-
-
-    <title>Age of Wonders 4 Database - Ancient Wonders</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Ancient Wonders
-    </div>
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
-            <button id="Bronze-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Bronze')">
-                <bronzewonder></bronzewonder>Bronze
-            </button>
-            <button id="Silver-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Silver')">
-                <silverwonder></silverwonder>Silver
-            </button>
-            <button id="Gold-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Gold')">
-                <goldwonder></goldwonder>Gold
-            </button>
-
-
+                <div id="Gold" class="w3-container w3-border city"></div>
+            </div>
         </div>
-        <div id="dataHolder" style="margin-top:-150px">
-            <div id="Bronze" class="w3-container w3-border city">
-
-
-            </div>
-
-
-            <div id="Silver" class="w3-container w3-border city">
-
-
-            </div>
-
-
-            <div id="Gold" class="w3-container w3-border city">
-
-
-            </div>
-
-        </div>
-
-
-
-
-    </div>
-
-</body>
-
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

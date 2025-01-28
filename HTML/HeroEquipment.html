@@ -1,74 +1,50 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                showItemsWithArgument("Primary", "Primary Weapon");
+                showItemsWithArgument("Secondary", "Secondary Weapon");
+                showItemsWithArgument("Head", "Head");
+                showItemsWithArgument("Torso", "Torso");
+                showItemsWithArgument("Legs", "Legs");
+                showItemsWithArgument("Mount", "Mounts");
+                showItemsWithArgument("Ring", "Rings");
+                showItemsWithArgument("Miscellaneous", "Miscellaneous");
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-    <script>
-        $("#body").ready(function() {
+        <title>Age of Wonders 4 Database - Hero Equipment</title>
+    </head>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+    <body>
+        <div id="header"></div>
 
-        function HandlePage() {
-            showItemsWithArgument("Primary", "Primary Weapon");
-            showItemsWithArgument("Secondary", "Secondary Weapon");
-            showItemsWithArgument("Head", "Head");
-            showItemsWithArgument("Torso", "Torso");
-            showItemsWithArgument("Legs", "Legs");
-            showItemsWithArgument("Mount", "Mounts");
-            showItemsWithArgument("Ring", "Rings");
-            showItemsWithArgument("Miscellaneous", "Miscellaneous");
+        <div class="textblocktitle">Hero Equipment</div>
 
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Hero Equipment</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Hero Equipment
-    </div>
-
-    <div style="
-    display: table;
-    margin: 5px;
-    margin-left: auto;
-    margin-right: auto;">
-        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
-        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
-
-    </div>
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
-        </div>
-        <div id="dataHolder">
+        <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
+            <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+            <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
         </div>
 
-
-    </div>
-
-
-</body>
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

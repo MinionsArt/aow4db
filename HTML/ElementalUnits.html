@@ -1,71 +1,54 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                unitarray = FindUnitsWithSecondaryPassive("elemental");
+                console.log(unitarray);
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-
-            unitarray = FindUnitsWithSecondaryPassive("elemental");
-            console.log(unitarray);
-
-            if (unitarray.length > 1) {
-                for (i in unitarray) {
-                    if (unitarray[i].length > 0) {
-                        showUnitsFromList(unitarray[i], "Elementals Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+                        if (unitarray[i].length > 0) {
+                            showUnitsFromList(
+                                unitarray[i],
+                                "Elementals Tier " + romanize(parseInt(parseInt(i) + 1)) + " "
+                            );
+                        }
                     }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
                 }
-            } else {
-                SetButtonsAndDivs(unitarray[0], undefined, "unit");
+
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
             }
+        </script>
 
+        <title>Age of Wonders 4 Database - Elementals</title>
+    </head>
 
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
+    <body>
+        <div id="header"></div>
 
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Elementals</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/UnitIcons/elemental.png" height="40px"> Elemental Wildlife Units <img src="/aow4db/Icons/UnitIcons/elemental.png" height="40px">
-    </div>
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/UnitIcons/elemental.png" height="40px" /> Elemental Wildlife Units
+            <img src="/aow4db/Icons/UnitIcons/elemental.png" height="40px" />
         </div>
-        <div id="dataHolder">
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
         </div>
-
-
-    </div>
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

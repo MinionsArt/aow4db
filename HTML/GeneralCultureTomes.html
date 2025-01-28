@@ -6,6 +6,9 @@
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
         <script>
             var tomeArray = [
                 "general_research",
@@ -30,12 +33,6 @@
                 "oathsworn_righteousness",
                 "oathsworn_strife"
             ];
-
-            $("#body").ready(function () {
-                $("#header").load("/aow4db/HTML/header.html", function () {
-                    CheckData();
-                });
-            });
 
             function HandlePage() {
                 SetButtonsAndDivs(tomeArray, undefined, "tome");

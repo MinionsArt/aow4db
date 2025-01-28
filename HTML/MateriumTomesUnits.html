@@ -1,61 +1,53 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var unitarray = [
+                "copper_golem:tome_of_enchantment",
+                "gargoyle:tome_of_rock",
+                "lesser_stone_spirit:tome_of_rock",
+                "zephyr_archer:tome_of_winds",
+                "wind_rager:tome_of_winds",
+                "iron_golem:tome_of_artificing",
+                "stone_spirit:tome_of_terramancy",
+                "transmuter:tome_of_transmutation",
+                "golden_golem:tome_of_the_golden_realm",
+                "earth_titan:tome_of_the_creator"
+            ];
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            function HandlePage() {
+                showUnitsWithIcon(unitarray);
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-    <script>
-        var unitarray = ["copper_golem:tome_of_enchantment", "gargoyle:tome_of_rock", "lesser_stone_spirit:tome_of_rock", "zephyr_archer:tome_of_winds", "wind_rager:tome_of_winds", "iron_golem:tome_of_artificing", "stone_spirit:tome_of_terramancy", "transmuter:tome_of_transmutation", "golden_golem:tome_of_the_golden_realm", "earth_titan:tome_of_the_creator"];
+        <title>Age of Wonders 4 Database - Materium Tome Units</title>
+    </head>
 
-        $("#body").ready(function() {
+    <body>
+        <div id="header"></div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-            showUnitsWithIcon(unitarray);
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Materium Tome Units</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/materium.png" height="40px"> Materium Tome Units <img src="/aow4db/Icons/Text/materium.png" height="40px">
-    </div>
-
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
-
-        </div>
-        <div id="dataHolder">
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/materium.png" height="40px" /> Materium Tome Units
+            <img src="/aow4db/Icons/Text/materium.png" height="40px" />
         </div>
 
-
-    </div>
-
-
-
-</body>
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder" style="width: 240px"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

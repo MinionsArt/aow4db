@@ -1,68 +1,43 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                showSpellsWithArgument("", "Minor Race Transformation", "Minor Race Transformations");
+                showSpellsWithArgument("", "Major Race Transformation", "Major Race Transformations");
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Age of Wonders 4 Database - Transformation Spells</title>
+    </head>
 
-    <script>
-        $("#body").ready(function() {
+    <body>
+        <div id="header"></div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+        <div class="textblocktitle">Transformation Spells</div>
 
-        function HandlePage() {
-            showSpellsWithArgument("", "Minor Race Transformation", "Minor Race Transformations");
-            showSpellsWithArgument("", "Major Race Transformation", "Major Race Transformations");
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Transformation Spells</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Transformation Spells
-    </div>
-
-    <div style="
-    display: table;
-    margin: 5px;
-    margin-left: auto;
-    margin-right: auto;">
-        <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
-        <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
-        <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
-    </div>
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
+        <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
+            <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+            <button class="sortingButton" id="tier-button" onclick="sortDivs('tier')">Tier</button>
+            <button class="sortingButton" id="cost-button" onclick="sortDivs('cost')">Cost</button>
         </div>
-        <div id="dataHolder">
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
         </div>
-
-
-    </div>
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

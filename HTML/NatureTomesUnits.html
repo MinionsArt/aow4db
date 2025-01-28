@@ -1,63 +1,52 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var unitarray = [
+                "wildspeaker:tome_of_beasts",
+                "living_vine:tome_of_roots",
+                "entwined_thrall:tome_of_roots",
+                "floral_stinger:tome_of_fertility",
+                "nymph:tome_of_fertility",
+                "glade_runner:tome_of_glades",
+                "entwined_protector:tome_of_glades",
+                "druid_of_the_cycle:tome_of_cycles",
+                "totem_of_the_wild:tome_of_vigor",
+                "horned_god:tome_of_natures_wrath"
+            ];
 
+            function HandlePage() {
+                showUnitsWithIcon(unitarray);
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Age of Wonders 4 Database - Nature Tome Units</title>
+    </head>
 
+    <body>
+        <div id="header"></div>
 
-    <script>
-        var unitarray = ["wildspeaker:tome_of_beasts", "living_vine:tome_of_roots", "entwined_thrall:tome_of_roots", "floral_stinger:tome_of_fertility", "nymph:tome_of_fertility", "glade_runner:tome_of_glades", "entwined_protector:tome_of_glades", "druid_of_the_cycle:tome_of_cycles", "totem_of_the_wild:tome_of_vigor", "horned_god:tome_of_natures_wrath"];
-
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-            showUnitsWithIcon(unitarray);
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Nature Tome Units</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/nature.png" height="40px"> Nature Tome Units <img src="/aow4db/Icons/Text/nature.png" height="40px">
-    </div>
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
-
-        </div>
-        <div id="dataHolder">
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/nature.png" height="40px" /> Nature Tome Units
+            <img src="/aow4db/Icons/Text/nature.png" height="40px" />
         </div>
 
-
-    </div>
-
-
-
-
-
-</body>
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder" style="width: 240px"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

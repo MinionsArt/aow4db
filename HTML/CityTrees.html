@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
@@ -6,6 +6,9 @@
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
         <script>
             var townHall1 = {
                 requirement_description: "",
@@ -204,11 +207,6 @@
             ];
 
             const baseGrid = [["town_hall_i_town_center"], ["throne:throne"]];
-            $("#body").ready(function () {
-                $("#header").load("/aow4db/HTML/header.html", function () {
-                    CheckData();
-                });
-            });
 
             function HandlePage() {
                 SetUpTreeDivChunks(fortificationsGrid, 622, 0);

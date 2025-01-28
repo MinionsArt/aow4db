@@ -5,13 +5,10 @@
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
         <script>
-            $("#body").ready(function () {
-                $("#header").load("/aow4db/HTML/header.html", function () {
-                    CheckData();
-                });
-            });
-
             function HandlePage() {
                 unitarray = FindUnitsWithSecondaryPassive("accursed_fiend");
                 console.log(unitarray);

@@ -1,124 +1,79 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                showStructuresWithArgument("forester", "Foresters", "", true);
+                showStructuresWithArgument("conduit", "Conduits", "", true);
+                showStructuresWithArgument("farm", "Farms", "", true);
+                showStructuresWithArgument("mine", "Mines", "", true);
+                showStructuresWithArgument("research", "Research", "", true);
+                showStructuresWithArgument("quarry", "Quarry", "", true);
+                showStructuresWithArgument("teleporter_", "Teleport", "", true);
+                //showStructuresWithArgument("victory", "Magic", "", true);
+                SetLevelUpStuff();
+            }
+        </script>
 
+        <title>Age of Wonders 4 Database - Magic Materials</title>
+    </head>
 
-    <script>
-        $("#body").ready(function() {
+    <body>
+        <div id="header"></div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+        <div class="textblocktitle">Province Improvements</div>
 
-        function HandlePage() {
-            showStructuresWithArgument("forester", "Foresters", "", true);
-            showStructuresWithArgument("conduit", "Conduits", "", true);
-            showStructuresWithArgument("farm", "Farms", "", true);
-            showStructuresWithArgument("mine", "Mines", "", true);
-            showStructuresWithArgument("research", "Research", "", true);
-            showStructuresWithArgument("quarry", "Quarry", "", true);
-            showStructuresWithArgument("teleporter_", "Teleport", "", true);
-            //showStructuresWithArgument("victory", "Magic", "", true);
-            SetLevelUpStuff();
-        }
-
-    </script>
-
-
-
-    <title>Age of Wonders 4 Database - Magic Materials</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Province Improvements
-    </div>
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
-            <button id="Foresters-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Foresters')">
-                <forester></forester>Foresters
-            </button>
-            <button id="Conduits-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Conduits')">
-                <conduit></conduit>Conduits
-            </button>
-            <button id="Farms-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Farms')">
-                <farm></farm>Farms
-            </button>
-            <button id="Mines-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Mines')">
-                <mine></mine>Mines
-            </button>
-            <button id="Research-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Research')">
-                <researchpost></researchpost>Research Posts
-            </button>
-            <button id="Quarry-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Quarry')">
-                <quarry></quarry>Quarry
-            </button>
-            <button id="Teleport-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Teleport')">
-                <teleporter></teleporter>Teleporters
-            </button>
-
-
-        </div>
-        <div id="dataHolder" style="margin-top:-300px">
-            <div id="Foresters" class="w3-container w3-border city">
-
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder">
+                <button
+                    id="Foresters-button"
+                    class="w3-bar-item w3-button tablink w3-red"
+                    onclick="openDiv(event,'Foresters')">
+                    <forester></forester>Foresters
+                </button>
+                <button id="Conduits-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Conduits')">
+                    <conduit></conduit>Conduits
+                </button>
+                <button id="Farms-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Farms')">
+                    <farm></farm>Farms
+                </button>
+                <button id="Mines-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Mines')">
+                    <mine></mine>Mines
+                </button>
+                <button id="Research-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Research')">
+                    <researchpost></researchpost>Research Posts
+                </button>
+                <button id="Quarry-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Quarry')">
+                    <quarry></quarry>Quarry
+                </button>
+                <button id="Teleport-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Teleport')">
+                    <teleporter></teleporter>Teleporters
+                </button>
             </div>
+            <div id="dataHolder" style="margin-top: -300px">
+                <div id="Foresters" class="w3-container w3-border city"></div>
 
+                <div id="Conduits" class="w3-container w3-border city"></div>
 
-            <div id="Conduits" class="w3-container w3-border city">
-
-
-            </div>
-
-
-            <div id="Farms" class="w3-container w3-border city">
-
-
-            </div>
-            <div id="Mines" class="w3-container w3-border city">
-
-
-            </div>
-            <div id="Research" class="w3-container w3-border city">
-
-
-            </div>
-            <div id="Quarry" class="w3-container w3-border city">
-
-
-            </div>
-            <div id="Teleport" class="w3-container w3-border city">
-
-
-            </div>
-            <div id="Magic" class="w3-container w3-border city">
-
-
+                <div id="Farms" class="w3-container w3-border city"></div>
+                <div id="Mines" class="w3-container w3-border city"></div>
+                <div id="Research" class="w3-container w3-border city"></div>
+                <div id="Quarry" class="w3-container w3-border city"></div>
+                <div id="Teleport" class="w3-container w3-border city"></div>
+                <div id="Magic" class="w3-container w3-border city"></div>
             </div>
         </div>
-
-
-
-
-    </div>
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

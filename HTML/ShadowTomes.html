@@ -1,62 +1,48 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var tomeArray = [
+                "tome_of_necromancy",
+                "tome_of_cryomancy",
+                "tome_of_the_doomherald",
+                "tome_of_souls",
+                "tome_of_the_great_transformation",
+                "tome_of_the_cold_dark",
+                "tome_of_oblivion",
+                "tome_of_the_reaper",
+                "tome_of_the_eternal_lord"
+            ];
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            function HandlePage() {
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
+                SetLevelUpStuff();
+            }
+        </script>
 
+        <title>Age of Wonders 4 Database - Shadow Tomes</title>
+    </head>
 
-    <script>
-        var tomeArray = ["tome_of_necromancy", "tome_of_cryomancy", "tome_of_the_doomherald", "tome_of_souls", "tome_of_the_great_transformation", "tome_of_the_cold_dark", "tome_of_oblivion", "tome_of_the_reaper", "tome_of_the_eternal_lord"];
-        $("#body").ready(function() {
+    <body>
+        <div id="header"></div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+        <div class="textblocktitle"><empireshadow></empireshadow>Shadow Tomes</div>
 
-        function HandlePage() {
-            SetButtonsAndDivs(tomeArray, undefined, "tome");
-            SetLevelUpStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Shadow Tomes</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <empireshadow></empireshadow>Shadow Tomes
-    </div>
-
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
         </div>
-        <div id="dataHolder">
-        </div>
-
-
-    </div>
-
-
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

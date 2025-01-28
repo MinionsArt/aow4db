@@ -8,20 +8,16 @@
     <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
+ <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
         var unitarray = ["wayfarer", "honor_blade", "sworn_guard", "sealbearer", "vowkeeper", "peacebringer"];
         var unitarray2 =  ["wayfarer", "honor_blade", "sworn_guard", "sealbearer", "vowkeeper", "avenger"];
         var unitarray3 = ["wayfarer", "honor_blade", "sworn_guard", "sealbearer", "vowkeeper", "warbound"];
 
 
 
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
 
         function HandlePage() {
             SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Harmony");

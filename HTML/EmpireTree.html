@@ -1,259 +1,276 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
-
-
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-
-            SetUpTreeNodes("general", 3, "white");
-            SetUpTreeNodes("nature", 5, "green");
-            SetUpTreeNodes("chaos", 7, "red");
-            SetUpTreeNodes("astral", 9, "cyan");
-            SetUpTreeNodes("materium", 11, "orange");
-            SetUpTreeNodes("order", 13, "yellow");
-            SetUpTreeNodes("shadow", 15, "purple");
-            SetBreakPoints();
-
-        }
-
-        function SetUpTreeNodes(keyword, row, color) {
-            var i, offset = "";
-            var holder = document.getElementById("treeHolder");
-            var treespace = document.getElementById("treespace");
-            var offset = 0;
-            var nodeHeight = 60;
-
-            for (i in jsonEmpire) {
-                if (jsonEmpire[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
-                    if (jsonEmpire[i].required_level != undefined) {
-                        offset = 1;
-                        if (jsonEmpire[i].name === "Wizard King" || jsonEmpire[i].name === "Mana Extraction" || jsonEmpire[i].name === "Indomitable Defenders") {
-
-                        } else {
-                            if (jsonEmpire[i].required_level > 6 && keyword == "general") {
-                                offset = 1;
-                            }
-
-
-                            var name = jsonEmpire[i].name;
-
-                            var newNode = document.createElement("DIV");
-
-
-                            if (jsonEmpire[i].category.toUpperCase().indexOf("RITE") != -1) {
-
-                                var column = jsonEmpire[i].required_level + 2;
-
-                                // insert connection line
-                                var connectionLine = document.createElement("DIV");
-
-                                var toppos = 20 + ((row - 1) * 70);
-                                var leftpos = ((column - offset) * nodeHeight);
-
-                                connectionLine.setAttribute("style", "top:" + leftpos + "px; left:" + toppos + "px; rotate:-180deg;background-color:" + color + ";");
-                                connectionLine.className = "branch-line";
-                                connectionLine.setAttribute("id", name);
-                                treespace.appendChild(connectionLine);
-
-                                newNode.setAttribute("style", "grid-row:" + (column - offset) + "; grid-column:" + (row - 1) + ";");
-                            } else {
-                                //insert connection line
-
-                                var connectionLine = document.createElement("DIV");
-
-                                var column = jsonEmpire[i].required_level + 2;
-
-                                var toppos = 37 + ((row - 1) * 70);
-                                var leftpos = ((column - offset) * nodeHeight);
-
-
-                                connectionLine.setAttribute("style", "top:" + leftpos + "px; left:" + toppos + "px; rotate:180deg; background-color:" + color + ";");
-                                connectionLine.className = "branch-line";
-                                treespace.appendChild(connectionLine);
-                                connectionLine.setAttribute("id", name);
-                                newNode.setAttribute("style", "grid-row:" + (column - offset) + "; grid-column:" + row + ";");
-                            }
-
-
-                            //  newNode.innerHTML = name;
-                            newNode.className = "unittype_icon";
-
-
-                            var img = document.createElement("IMG");
-                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[i].id + ".png");
-                            img.setAttribute("height", "50px");
-                            img.className = "empireNodeIcon";
-                            newNode.append(img);
-
-
-                            var spa = document.createElement("SPAN");
-
-
-                            spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>" + "<br>"
-
-                            spa.innerHTML += "<span style=\"color:  aliceblue;\">" + jsonEmpire[i].category + "</span>" + "<br>"
-                            spa.innerHTML += jsonEmpire[i].description + "<br>";
-                            spa.innerHTML += "Cost: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" + jsonEmpire[i].cost + "</span></bullet><br>";
-                            var affinity = jsonEmpire[i].required_affinity;
-                            if (affinity === undefined) {
-                                affinity = "<general></general>";
-                            }
-                            spa.innerHTML += "Requirement: <br>" + "<span style=\"color:  aquamarine;\"> <bullet>" +
-                                jsonEmpire[i].required_xp + " " + affinity + "</span></bullet>";
-
-
-
-                            // newNode.appendChild(spa);
-                            addTooltipListeners(newNode, spa);
-
-                            holder.appendChild(newNode);
-
-                        }
-
-                    }
-                } else {
-                    if (jsonEmpire[i].id.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
-                        if (jsonEmpire[i].category === "") {
-                            var name = jsonEmpire[i].name;
-
-                            var newNode = document.createElement("DIV");
-
-                            var connectionLine = document.createElement("DIV");
-
-                            var toppos = 35 + ((row) * 70) - 92;
-                            var leftpos = 60;
-
-
-                            connectionLine.setAttribute("style", "top:" + leftpos + "px; left:" + toppos + "px; rotate:90deg;width: 600px; background-color:" + color + ";");
-
-
-                            connectionLine.className = "branch-line";
-                            treespace.appendChild(connectionLine);
-                            connectionLine.setAttribute("id", name);
-
-                            newNode.setAttribute("style", "grid-row: 1" + "; grid-column:" + row + ";");
-
-
-
-                            //  newNode.innerHTML = name;
-                            newNode.className = "unittype_icon";
-
-
-                            var img = document.createElement("IMG");
-                            img.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[i].id + ".png");
-                            img.setAttribute("height", "50px");
-                            img.setAttribute("style", "left:-35%");
-                            img.className = "empireNodeIcon";
-                            newNode.append(img);
-
-
-                            var spa = document.createElement("SPAN");
-                            //spa.className = "tooltiptext";
-
-                            spa.innerHTML = "<span style=\"color:  #d7c297;\">" + name.toUpperCase() + "</span>";
-
-
-                            spa.innerHTML += jsonEmpire[i].description;
-
-
-
-                            //newNode.appendChild(spa);
-
-                            addTooltipListeners(newNode, spa);
-
-                            holder.appendChild(newNode);
-                        }
-
-                    }
-                }
-
-
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                SetUpTreeNodes("general", 3, "white");
+                SetUpTreeNodes("nature", 5, "green");
+                SetUpTreeNodes("chaos", 7, "red");
+                SetUpTreeNodes("astral", 9, "cyan");
+                SetUpTreeNodes("materium", 11, "orange");
+                SetUpTreeNodes("order", 13, "yellow");
+                SetUpTreeNodes("shadow", 15, "purple");
+                SetBreakPoints();
             }
 
-        }
+            function SetUpTreeNodes(keyword, row, color) {
+                var i,
+                    offset = "";
+                var holder = document.getElementById("treeHolder");
+                var treespace = document.getElementById("treespace");
+                var offset = 0;
+                var nodeHeight = 60;
 
-        function SetBreakPoints() {
-            CreateDiv(2, "15");
-            CreateDiv(3, "40");
-            CreateDiv(4, "60");
-            CreateDiv(5, "100");
-            CreateDiv(6, "120");
-            CreateDiv(7, "160");
-            CreateDiv(8, "200");
-            CreateDiv(9, "300");
-            CreateDiv(10, "400");
-            CreateDiv(11, "500");
+                for (i in jsonEmpire) {
+                    if (jsonEmpire[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
+                        if (jsonEmpire[i].required_level != undefined) {
+                            offset = 1;
+                            if (
+                                jsonEmpire[i].name === "Wizard King" ||
+                                jsonEmpire[i].name === "Mana Extraction" ||
+                                jsonEmpire[i].name === "Indomitable Defenders"
+                            ) {
+                            } else {
+                                if (jsonEmpire[i].required_level > 6 && keyword == "general") {
+                                    offset = 1;
+                                }
 
-        }
+                                var name = jsonEmpire[i].name;
 
-        function CreateDiv(row, breakpoint) {
-            var holder = document.getElementById("treeHolder");
-            var treespace = document.getElementById("treespace");
-            var breakline = document.createElement("DIV");
+                                var newNode = document.createElement("DIV");
 
-            breakline.setAttribute("style", "grid-row:" + row + "; grid-column:16; left: 30%; position: relative; color: grey; font-size:12px;top: 75%;");
-            breakline.innerHTML = breakpoint;
-            // add breaklines
-            holder.appendChild(breakline);
+                                if (jsonEmpire[i].category.toUpperCase().indexOf("RITE") != -1) {
+                                    var column = jsonEmpire[i].required_level + 2;
 
-            var breakline = document.createElement("DIV");
+                                    // insert connection line
+                                    var connectionLine = document.createElement("DIV");
 
-            breakline.setAttribute("style", "grid-row:" + row + "; grid-column:1; left: 60%; position: relative; color: grey;font-size:12px;top: 75%;");
-            breakline.innerHTML = breakpoint;
-            // add breaklines
-            holder.appendChild(breakline);
+                                    var toppos = 20 + (row - 1) * 70;
+                                    var leftpos = (column - offset) * nodeHeight;
 
-            var toppos = (row * 60);
-            var leftpos = 0;
-            var color = "red";
-            var connectionLine = document.createElement("DIV");
-            connectionLine.setAttribute("style", "top:" + toppos + "px; left:" + leftpos + "px; rotate:0deg;width: 1100px;");
+                                    connectionLine.setAttribute(
+                                        "style",
+                                        "top:" +
+                                            leftpos +
+                                            "px; left:" +
+                                            toppos +
+                                            "px; rotate:-180deg;background-color:" +
+                                            color +
+                                            ";"
+                                    );
+                                    connectionLine.className = "branch-line";
+                                    connectionLine.setAttribute("id", name);
+                                    treespace.appendChild(connectionLine);
 
+                                    newNode.setAttribute(
+                                        "style",
+                                        "grid-row:" + (column - offset) + "; grid-column:" + (row - 1) + ";"
+                                    );
+                                } else {
+                                    //insert connection line
 
-            connectionLine.className = "dotted-line";
-            treespace.appendChild(connectionLine);
+                                    var connectionLine = document.createElement("DIV");
 
+                                    var column = jsonEmpire[i].required_level + 2;
 
+                                    var toppos = 37 + (row - 1) * 70;
+                                    var leftpos = (column - offset) * nodeHeight;
 
-        }
+                                    connectionLine.setAttribute(
+                                        "style",
+                                        "top:" +
+                                            leftpos +
+                                            "px; left:" +
+                                            toppos +
+                                            "px; rotate:180deg; background-color:" +
+                                            color +
+                                            ";"
+                                    );
+                                    connectionLine.className = "branch-line";
+                                    treespace.appendChild(connectionLine);
+                                    connectionLine.setAttribute("id", name);
+                                    newNode.setAttribute(
+                                        "style",
+                                        "grid-row:" + (column - offset) + "; grid-column:" + row + ";"
+                                    );
+                                }
 
-    </script>
+                                //  newNode.innerHTML = name;
+                                newNode.className = "unittype_icon";
 
+                                var img = document.createElement("IMG");
+                                img.setAttribute(
+                                    "src",
+                                    "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[i].id + ".png"
+                                );
+                                img.setAttribute("height", "50px");
+                                img.className = "empireNodeIcon";
+                                newNode.append(img);
 
-    <title>Age of Wonders 4 Database - Empire Tree</title>
-</head>
+                                var spa = document.createElement("SPAN");
 
-<body>
-    <div id="header"></div>
+                                spa.innerHTML =
+                                    '<span style="color:  #d7c297;">' + name.toUpperCase() + "</span>" + "<br>";
 
-    <div class="textblocktitle">
-        Empire Tree
-    </div>
-    <div class="tree-space" id="treespace">
+                                spa.innerHTML +=
+                                    '<span style="color:  aliceblue;">' + jsonEmpire[i].category + "</span>" + "<br>";
+                                spa.innerHTML += jsonEmpire[i].description + "<br>";
+                                spa.innerHTML +=
+                                    "Cost: <br>" +
+                                    '<span style="color:  aquamarine;"> <bullet>' +
+                                    jsonEmpire[i].cost +
+                                    "</span></bullet><br>";
+                                var affinity = jsonEmpire[i].required_affinity;
+                                if (affinity === undefined) {
+                                    affinity = "<general></general>";
+                                }
+                                spa.innerHTML +=
+                                    "Requirement: <br>" +
+                                    '<span style="color:  aquamarine;"> <bullet>' +
+                                    jsonEmpire[i].required_xp +
+                                    " " +
+                                    affinity +
+                                    "</span></bullet>";
 
-        <div class="tree-grid" id="treeHolder">
+                                // newNode.appendChild(spa);
+                                addTooltipListeners(newNode, spa);
 
+                                holder.appendChild(newNode);
+                            }
+                        }
+                    } else {
+                        if (jsonEmpire[i].id.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
+                            if (jsonEmpire[i].category === "") {
+                                var name = jsonEmpire[i].name;
 
+                                var newNode = document.createElement("DIV");
+
+                                var connectionLine = document.createElement("DIV");
+
+                                var toppos = 35 + row * 70 - 92;
+                                var leftpos = 60;
+
+                                connectionLine.setAttribute(
+                                    "style",
+                                    "top:" +
+                                        leftpos +
+                                        "px; left:" +
+                                        toppos +
+                                        "px; rotate:90deg;width: 600px; background-color:" +
+                                        color +
+                                        ";"
+                                );
+
+                                connectionLine.className = "branch-line";
+                                treespace.appendChild(connectionLine);
+                                connectionLine.setAttribute("id", name);
+
+                                newNode.setAttribute("style", "grid-row: 1" + "; grid-column:" + row + ";");
+
+                                //  newNode.innerHTML = name;
+                                newNode.className = "unittype_icon";
+
+                                var img = document.createElement("IMG");
+                                img.setAttribute(
+                                    "src",
+                                    "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[i].id + ".png"
+                                );
+                                img.setAttribute("height", "50px");
+                                img.setAttribute("style", "left:-35%");
+                                img.className = "empireNodeIcon";
+                                newNode.append(img);
+
+                                var spa = document.createElement("SPAN");
+                                //spa.className = "tooltiptext";
+
+                                spa.innerHTML = '<span style="color:  #d7c297;">' + name.toUpperCase() + "</span>";
+
+                                spa.innerHTML += jsonEmpire[i].description;
+
+                                //newNode.appendChild(spa);
+
+                                addTooltipListeners(newNode, spa);
+
+                                holder.appendChild(newNode);
+                            }
+                        }
+                    }
+                }
+            }
+
+            function SetBreakPoints() {
+                CreateDiv(2, "15");
+                CreateDiv(3, "40");
+                CreateDiv(4, "60");
+                CreateDiv(5, "100");
+                CreateDiv(6, "120");
+                CreateDiv(7, "160");
+                CreateDiv(8, "200");
+                CreateDiv(9, "300");
+                CreateDiv(10, "400");
+                CreateDiv(11, "500");
+            }
+
+            function CreateDiv(row, breakpoint) {
+                var holder = document.getElementById("treeHolder");
+                var treespace = document.getElementById("treespace");
+                var breakline = document.createElement("DIV");
+
+                breakline.setAttribute(
+                    "style",
+                    "grid-row:" +
+                        row +
+                        "; grid-column:16; left: 30%; position: relative; color: grey; font-size:12px;top: 75%;"
+                );
+                breakline.innerHTML = breakpoint;
+                // add breaklines
+                holder.appendChild(breakline);
+
+                var breakline = document.createElement("DIV");
+
+                breakline.setAttribute(
+                    "style",
+                    "grid-row:" +
+                        row +
+                        "; grid-column:1; left: 60%; position: relative; color: grey;font-size:12px;top: 75%;"
+                );
+                breakline.innerHTML = breakpoint;
+                // add breaklines
+                holder.appendChild(breakline);
+
+                var toppos = row * 60;
+                var leftpos = 0;
+                var color = "red";
+                var connectionLine = document.createElement("DIV");
+                connectionLine.setAttribute(
+                    "style",
+                    "top:" + toppos + "px; left:" + leftpos + "px; rotate:0deg;width: 1100px;"
+                );
+
+                connectionLine.className = "dotted-line";
+                treespace.appendChild(connectionLine);
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Empire Tree</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">Empire Tree</div>
+        <div class="tree-space" id="treespace">
+            <div class="tree-grid" id="treeHolder"></div>
         </div>
-
-    </div>
-
-</body>
-
+    </body>
 </html>
 <style>
     .branch-line {
@@ -294,7 +311,6 @@
         border-style: solid;
     }
 
-
     .tree-space {
         width: auto;
         height: auto;
@@ -308,7 +324,6 @@
     }
 
     .empireNodeIcon {
-
         z-index: 10;
         position: relative;
         top: 50%;
@@ -318,9 +333,8 @@
     .empireNodeIcon:hover {
         filter: brightness(150%);
     }
-
 </style>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

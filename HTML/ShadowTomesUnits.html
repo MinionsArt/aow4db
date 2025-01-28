@@ -1,64 +1,59 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var unitarray = [
+                "skeleton_archer:tome_of_necromancy",
+                "skeleton_mage:tome_of_necromancy",
+                "skeleton_polearm:tome_of_necromancy",
+                "skeleton_warrior:tome_of_necromancy",
+                "white_witch:tome_of_cryomancy",
+                "lesser_snow_spirit:tome_of_cryomancy",
+                "bone_horror:tome_of_souls",
+                "banshee:tome_of_the_doomherald",
+                "necromancer:tome_of_necromancy",
+                "corrupt_soul:tome_of_necromancy",
+                "zombie:tome_of_necromancy",
+                "snow_spirit:tome_of_the_cold_dark",
+                "bone_dragon:tome_of_the_great_transformation",
+                "living_fog:tome_of_oblivion",
+                "reaper:tome_of_the_reaper"
+            ];
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            function HandlePage() {
+                showUnitsWithIcon(unitarray);
 
-    <script>
-        var unitarray = ["skeleton_archer:tome_of_necromancy","skeleton_mage:tome_of_necromancy","skeleton_polearm:tome_of_necromancy","skeleton_warrior:tome_of_necromancy", "white_witch:tome_of_cryomancy", "lesser_snow_spirit:tome_of_cryomancy","bone_horror:tome_of_souls",  "banshee:tome_of_the_doomherald", "necromancer:tome_of_necromancy",
-            "corrupt_soul:tome_of_necromancy", "zombie:tome_of_necromancy", "snow_spirit:tome_of_the_cold_dark","bone_dragon:tome_of_the_great_transformation", "living_fog:tome_of_oblivion", "reaper:tome_of_the_reaper"
-        ];
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
 
-        $("#body").ready(function() {
+        <title>Age of Wonders 4 Database - Shadow Tome Units</title>
+    </head>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+    <body>
+        <div id="header"></div>
 
-        function HandlePage() {
-            showUnitsWithIcon(unitarray);
-
-            SetLevelUpStuff();
-            SetCollapsibleStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Shadow Tome Units</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/shadow.png" height="40px"> Shadow Tome Units <img src="/aow4db/Icons/Text/shadow.png" height="40px">
-    </div>
-
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder" style="width:240px">
-
-        </div>
-        <div id="dataHolder">
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/shadow.png" height="40px" /> Shadow Tome Units
+            <img src="/aow4db/Icons/Text/shadow.png" height="40px" />
         </div>
 
-
-    </div>
-
-
-
-</body>
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder" style="width: 240px"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

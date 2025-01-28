@@ -1,62 +1,48 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            var tomeArray = [
+                "tome_of_roots",
+                "tome_of_beasts",
+                "tome_of_glades",
+                "tome_of_fertility",
+                "tome_of_cycles",
+                "tome_of_vigor",
+                "tome_of_natures_wrath",
+                "tome_of_paradise",
+                "tome_of_the_goddess_of_nature"
+            ];
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            function HandlePage() {
+                SetButtonsAndDivs(tomeArray, undefined, "tome");
+                SetLevelUpStuff();
+            }
+        </script>
 
-    <script>
-        var tomeArray = ["tome_of_roots", "tome_of_beasts", "tome_of_glades", "tome_of_fertility", "tome_of_cycles", "tome_of_vigor", "tome_of_natures_wrath", "tome_of_paradise", "tome_of_the_goddess_of_nature"];
-        $("#body").ready(function() {
+        <title>Age of Wonders 4 Database - Nature Tomes</title>
+    </head>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+    <body>
+        <div id="header"></div>
 
-        function HandlePage() {
-            SetButtonsAndDivs(tomeArray, undefined, "tome");
-            SetLevelUpStuff();
-        }
+        <div class="textblocktitle"><empirenature></empirenature>Nature Tomes</div>
 
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Nature Tomes</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <empirenature></empirenature>Nature Tomes
-    </div>
-
-
-
-    <div class="w3-container">
-        <div class="w3-bar w3-black" id="buttonHolder">
-
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
         </div>
-        <div id="dataHolder">
-        </div>
-
-
-    </div>
-
-
-
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

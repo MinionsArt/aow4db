@@ -1,58 +1,34 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                ShowUnitFromLink();
+                SetLevelUpStuff();
+            }
+        </script>
 
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Age of Wonders 4 Database - Unit</title>
+    </head>
 
-    <script>
-        $("#body").ready(function() {
+    <body>
+        <div id="header"></div>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-            ShowUnitFromLink();
-            SetLevelUpStuff();
-        }
-
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Unit</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-
-
-
-    <div class="w3-container">
-        <div id="buttonHolder" class="w3-bar w3-black">
-
+        <div class="w3-container">
+            <div id="buttonHolder" class="w3-bar w3-black"></div>
+            <div id="dataHolder"></div>
         </div>
-        <div id="dataHolder">
-        </div>
-
-
-    </div>
-
-
-
-
-
-
-</body>
-
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
