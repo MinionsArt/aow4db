@@ -2,6 +2,15 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get("sort");
 var currentView = "";
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/aow4db/HTML/header.html")
+        .then((response) => response.text())
+        .then((headerHTML) => {
+            document.body.insertAdjacentHTML("afterbegin", headerHTML);
+            CheckData();
+        });
+});
+
 function CheckBoxTooltips() {
     var checkboxTooltip = document.getElementById("tooltipCheckbox");
 

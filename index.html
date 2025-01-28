@@ -1,63 +1,47 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
 
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+    <head>
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="Data/Builder.js"></script>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            var unitarray = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
 
-    <script>
-        var unitarray = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
+            // $("#body").ready(function() {
 
+            //  $("#header").load("/aow4db/HTML/header.html", function() {
+            //      CheckData();
+            //  });
+            // });
 
-        $("#body").ready(function() {
+            function HandlePage() {
+                SetButtonsAndDivs(unitarray, undefined, "unit");
+                SetLevelUpStuff();
+            }
+        </script>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                CheckData();
-            });
-        });
+        <title>Age of Wonders 4 Database - Feudal Units</title>
+    </head>
 
-        function HandlePage() {
-            SetButtonsAndDivs(unitarray, undefined, "unit");
-            SetLevelUpStuff();
-        }
+    <body>
+        <div id="header"></div>
 
-    </script>
-
-
-    <title>Age of Wonders 4 Database - Feudal Units</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/feudal.png" height="40px"> Feudal Culture Units <img src="/aow4db/Icons/Text/feudal.png" height="40px">
-    </div>
-
-
-
-    <div class="w3-container">
-        <div id="buttonHolder" class="w3-bar w3-black">
-
-        </div>
-        <div id="dataHolder" style="margin-top:-250px">
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/feudal.png" height="40px" /> Feudal Culture Units
+            <img src="/aow4db/Icons/Text/feudal.png" height="40px" />
         </div>
 
-
-    </div>
-
-
-
-
-
-
-</body>
-
+        <div class="w3-container">
+            <div id="buttonHolder" class="w3-bar w3-black"></div>
+            <div id="dataHolder" style="margin-top: -250px"></div>
+        </div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
