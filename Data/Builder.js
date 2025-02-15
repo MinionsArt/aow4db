@@ -276,6 +276,19 @@ var incorrectIconOverrideList = [
     "summon_corrupt_soul"
 ];
 
+function AddTagIconsForStatusEffects(name) {
+    // if(name == "")
+    var underline = "<span style=\"text-decoration:underline;color:beige;\">";
+    var endtag = "</span>";
+    name = name.replace("Poisoned", "<poisoned></poisoned>" + underline + "Poisoned" + endtag);
+    name = name.replace("Bleeding", "<bleeding></bleeding>" + underline + "Bleeding" + endtag);
+    name = name.replace("Burning", "<burning></burning>" + underline + "Burning" + endtag);
+    name = name.replace("Frozen", "<frozen></frozen>" + underline + "Frozen" + endtag);
+    name = name.replace("Berserk", "<berserked></berserked>" + underline + "Berserk" + endtag);
+    name = name.replace("Ghostfire", "<ghostfire></ghostfire>" + underline + "Ghostfire" + endtag);
+    return name;
+}
+
 function GetUnitTierAndName(id, subcultureCheck) {
     for (var i = 0; i < jsonUnits.length; i++) {
         var unit = jsonUnits[i];
@@ -888,7 +901,6 @@ function addUnitTypeIcon(a, holder, origin) {
 function addAbilityslot(a, holder, list, enchant) {
     var abilityName,
         abilityIcon,
-        abilityDescr,
         abilityDam,
         abilityEncht,
         abilityAcc,
@@ -896,8 +908,6 @@ function addAbilityslot(a, holder, list, enchant) {
         abilityType,
         abilityNote,
         j,
-        splitDamageString,
-        abilityDamType,
         abilityReq,
         abilityMod = "";
 
@@ -925,10 +935,11 @@ function addAbilityslot(a, holder, list, enchant) {
             if ("modifiers" in jsonUnitAbilities[j]) {
                 for (var l = 0; l < jsonUnitAbilities[j].modifiers.length; l++) {
                     abilityName += '<span style="color:#addd9e;font-size: 20px">&#11049</span>';
-                    abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
+                    abilityMod += "<bullet>" + AddTagIconsForStatusEffects(jsonUnitAbilities[j].modifiers[l].name) + "<br>";
                     abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
                 }
             }
+
 
             var combinedReq = "";
             var m = "";
@@ -1008,7 +1019,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                             abilityRange =
                                                 parseInt(
                                                     parseInt(jsonEnchantments[k].attack[t].range) +
-                                                        parseInt(abilityRange)
+                                                    parseInt(abilityRange)
                                                 ) + "*";
                                         }
                                     }
@@ -1121,8 +1132,7 @@ function addAbilityslot(a, holder, list, enchant) {
             dam.className = "ability_damage";
             dam.innerHTML = abilityDam;
 
-            abilityDescr = jsonUnitAbilities[j].description + "<br>";
-            abilityDescr = abilityDescr.replaceAll("</br>", "");
+
 
             var abilityIconType = "";
             imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
@@ -1132,8 +1142,8 @@ function addAbilityslot(a, holder, list, enchant) {
             imag.setAttribute(
                 "style",
                 'background-image: url("/aow4db/Icons/Interface/' +
-                    abilityIconType +
-                    '.png");background-repeat: no-repeat;background-size: 40px 40px'
+                abilityIconType +
+                '.png");background-repeat: no-repeat;background-size: 40px 40px'
             );
 
             imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -1196,6 +1206,7 @@ function addAbilityslot(a, holder, list, enchant) {
             btn.append(divider);
 
             //btn.tooltipData = span;
+
 
             addTooltipListeners(tex, spa);
         }
@@ -1435,7 +1446,11 @@ function GetAbilityToolTip(
     spa.append(abilityHighlighter);
 
     // block 2, descrp
-    spa.innerHTML += "<hr> " + ability.description + "<br>";
+    var abilityDescr = ability.description;
+
+    abilityDescr = abilityDescr.replaceAll("</br>", "");
+    abilityDescr = AddTagIconsForStatusEffects(abilityDescr);
+    spa.innerHTML += "<hr> " + abilityDescr;// + "<br>";
 
     // modifiers
     if (abilityMod != "") {
@@ -1475,6 +1490,9 @@ function GetAbilityToolTip(
             }
             if (abilityReq[i].requisite == "Summoning") {
                 newReq.setAttribute("style", "background-color:#422631");
+            }
+            if (abilityReq[i].requisite == "Base") {
+                newReq.setAttribute("style", "background-color:#5d5d5c");
             }
             newReq.className = "requisiteSlot";
             reqs.appendChild(newReq);
@@ -1641,7 +1659,7 @@ function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
     abilityDescr = abilityDescr.replaceAll("<br></br>", "<br>");
 
     spa.innerHTML =
-        '<div class="abilityHighLighter"><img style="float:left; height:30px; width:30px" src="/aow4db/Icons/UnitIcons/' +
+        '<div class="abilityHighLighter"><img style="float:left; position:relative; top:-7px; height:30px; width:30px" src="/aow4db/Icons/UnitIcons/' +
         abilityIcon +
         '.png"><p style="color: #d7c297;>' +
         '<span style="font-size=20px;">' +
@@ -7137,8 +7155,8 @@ function backtraceStructureToTomeNameAndTier(structure) {
                         if ("affinities" in jsonTomes[j]) {
                             array.push(
                                 ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                    "<br> " +
-                                    jsonTomes[j].name
+                                "<br> " +
+                                jsonTomes[j].name
                             );
                         } else {
                             array.push(jsonTomes[j].name);
