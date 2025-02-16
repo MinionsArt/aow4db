@@ -294,7 +294,15 @@ function AddTagIconsForStatusEffects(name) {
         Wet: "wet",
         Strengthened: "strengthened",
         Weakened: "weakened",
-        Decaying: "decaying"
+        Decaying: "decaying",
+        Slowed: "slowed",
+        Immobilized: "immobilized",
+        Blind: "blinded",
+        Diseased: "diseased",
+        Marked: "marked",
+        Stunned: "stunned",
+        Condemned: "condemned",
+        Electrified: "electrified"
     };
 
     for (const [effect, tag] of Object.entries(statusEffects)) {
