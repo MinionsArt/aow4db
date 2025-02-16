@@ -302,7 +302,9 @@ function AddTagIconsForStatusEffects(name) {
         Marked: "marked",
         Stunned: "stunned",
         Condemned: "condemned",
-        Electrified: "electrified"
+        Electrified: "electrified",
+        Regeneration: "regeneration",
+        Distracted: "distracted"
     };
 
     for (const [effect, tag] of Object.entries(statusEffects)) {
