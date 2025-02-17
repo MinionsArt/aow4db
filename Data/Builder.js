@@ -1363,24 +1363,36 @@ function doubleNumbers(inputString) {
 function addTooltipListeners(tooltip, span, secondary) {
     let hoverDiv2 = document.getElementById("hoverDiv2");
     let hoverDiv = document.getElementById("hoverDiv");
-    tooltip.addEventListener("mouseenter", function (event) {
-        if (secondary != undefined) {
-            if (tooltip != hoverDiv2) {
-                console.log("update");
-                updateHoverDivPosition(event, secondary);
+
+    console.log(secondary);
+    if (secondary != undefined) {
+        tooltip.addEventListener("mouseenter", function (event) {
+            if (secondary != undefined) {
+                if (tooltip != hoverDiv2) {
+                    console.log("update");
+                    updateHoverDivPosition(event, secondary);
+                }
             }
-        } else {
+
+            TurnOnTooltip(span, secondary);
+        });
+
+        tooltip.addEventListener("mouseleave", function () {
+            TurnOffTooltip(secondary);
+        });
+    } else {
+        tooltip.addEventListener("mouseenter", function (event) {
             if (tooltip != hoverDiv) {
                 updateHoverDivPosition(event, secondary);
             }
-        }
 
-        TurnOnTooltip(span, secondary);
-    });
+            TurnOnTooltip(span, secondary);
+        });
 
-    tooltip.addEventListener("mouseleave", function () {
-        TurnOffTooltip(secondary);
-    });
+        tooltip.addEventListener("mouseleave", function () {
+            TurnOffTooltip(secondary);
+        });
+    }
 }
 
 function removeToolTipListeners(tooltip) {
@@ -1445,7 +1457,7 @@ function getNormalizedPosition(event) {
 function updateHoverDivPosition(event, secondary) {
     const settings = getUserSettings();
 
-    var offset = 0;
+    var offset = 2;
     let hoverDiv = null;
     if (secondary != undefined) {
         hoverDiv = document.getElementById("hoverDiv2");
