@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.insertAdjacentHTML("afterbegin", headerHTML);
             CheckData();
         });
+    // wait for a while and then  HandleExtraTooltips();
+    setTimeout(function () {
+        HandleExtraTooltips();
+    }, 2000);
 });
 
 function CheckBoxTooltips() {
@@ -278,8 +282,8 @@ var incorrectIconOverrideList = [
 
 function AddTagIconsForStatusEffects(name) {
     // if(name == "")
-    var underline = '<span style="text-decoration:underline;color:beige;">';
-    var endtag = "</span>";
+    var underline = '<span style="text-decoration:underline;color:white;">';
+    var endtag = "</span></span>";
     const statusEffects = {
         Poisoned: "poisoned",
         Bleeding: "bleeding",
@@ -304,13 +308,120 @@ function AddTagIconsForStatusEffects(name) {
         Condemned: "condemned",
         Electrified: "electrified",
         Regeneration: "regeneration",
-        Distracted: "distracted"
+        Distracted: "distracted",
+        Dominated: "dominated",
+        Misfortune: "misfortune",
+        " Fortune": "fortune",
+        " Infectious Insanity": "infectiousinsanity",
+        " Insanity": "insanity",
+        " Gilded": "gilded",
+        " Disrupted": "disrupted",
+        " Demoralized": "demoralized",
+        " Status Protection": "statusprotection",
+        "Static Charge": "staticcharge",
+        Awakened: "awakened",
+        "Hastened ": "hastened",
+        Steadfast: "steadfast",
+        Grace: "grace",
+        "Hyper-Awareness": "hyperawareness"
     };
 
     for (const [effect, tag] of Object.entries(statusEffects)) {
-        name = name.replace(effect, `<${tag}></${tag}>${underline}${effect}${endtag}`);
+        var tooltipspan = document.createElement("span");
+        tooltipspan.className = "statusEffectHandler";
+        tooltipspan.innerHTML = `${underline}${effect}${endtag}`;
+
+        name = name.replace(effect, `<${tag}></${tag}>${tooltipspan.outerHTML}`);
     }
+
     return name;
+}
+
+function lookupStatusEffect(status) {
+    const statusEffectsExp = {
+        Poisoned:
+            "<poisoned></poisoned> Unit sustains 4 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn> ",
+        Bleeding:
+            "<bleeding></bleeding> Unit sustains 4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> each <turn></turn>",
+        Burning:
+            "<burning></burning> Unit sustains 4 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> each <turn></turn>",
+        Frozen: "<frozen></frozen> Unit is unable to act. Countered by <burning></burning> burning",
+        Berserk:
+            "<berserk></berserk><bulletlist>The unit:<bullet>Is uncontrollable and always attacks the closest enemy target.</bullet><bullet> If no enemy is in range, it will attack its allies.</bullet><bullet>Is immune to Morale effects</bullet><bullet>Damage penalties from Casualty are negated.</bullet></bulletlist>",
+        Ghostfire:
+            "<ghostfire></ghostfire> <bullet>Unit sustains 2 Fire Damage and 2 Frost damage each Turn.</bullet><bullet>Replaces and counts as Burning but isn't removed by Frozen or Wet.</bullet><bullet>Stacks up to 5 times</bullet>",
+        "Sundered Resistance":
+            "<sunderedresistance></sunderedresistance> -1 <resistance></resistance> Resistance.-1 status resistance.",
+        "Sundered Defense": "<sundereddefense></sundereddefense>  -1 <defense></defense> Defense.-1 status resistance.",
+        "Bolstered Resistance": "<bolsteredresistance></bolsteredresistance>  +1 <resistance></resistance> resistance.",
+        "Bolstered Defense": "<bolstereddefense></bolstereddefense>  +1 <defense></defense> Defense.",
+        Wet: "<wet></wet> Unit has:<bulletlist><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>-4 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>2 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet></bulletlist>Wet <hyperlink>counters</hyperlink> burning",
+        Strengthened:
+            "<strengthened></strengthened> Unit gains +10% damage. <br> Strengthened counters <weakened></weakened> weakened",
+        Weakened:
+            "<weakened></weakened> Unit has -10% damage.<br> Weakened counters <strengthened></strengthened> strengthened",
+        Decaying:
+            "<decaying></decaying> Unit sustains 10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn> and cannot regain <hyperlink><hp></hp> Hit Points</hyperlink>.<br>Decaying counters <regeneration></regeneration> regeneration.",
+        Slowed: "<slowed></slowed> Unit has Slow Movement and one less Retaliation Attack.",
+        Immobilized: "<immobilized></immobilized> This unit cannot move or use Movement abilities.",
+        Blind: "<blind></blind> −50% accuracy for ranged attacks. Cannot make opportunity attacks.",
+        Diseased:
+            "<diseased></diseased> −4 <resistance></resistance> resistance. Has a base 60% chance of spreading to adjacent units at end of turn.",
+        Marked: "<marked></marked> -10% evasion.",
+        Stunned: "<stunned></stunned> Unit is unable to act.",
+        Condemned: "<condemned></condemned> -3 Status Resistance",
+        Electrified:
+            "<electrified></electrified> Unit sustains 4 <damageShock></damageShock> <hyperlink>Shock Damage</hyperlink> each <turn></turn>",
+        Regeneration:
+            "<regeneration></regeneration> +6 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> at the end of the unit's turn.",
+        Distracted:
+            "<distracted></distracted> All attacks targeting this unit are <flank></flank> Flanking attacks. <br> Distracted counters <hyperawareness></hyperawareness> hyper-awareness.",
+        Dominated:
+            "<dominated></dominated> This unit is controlled by the opponent. <br> If the effect lasts until the end of combat, the controller will have the option to spend Mana to keep the unit permanently.",
+        Misfortune: "<misfortune></misfortune> 	+10% fumble chance.",
+        " Fortune": "<fortune></fortune> 	+10% critical chance.",
+        " Infectious Insanity":
+            "<infectiousinsanity></infectiousinsanity> <bullet>Unit is inflicted with Insanity</bullet>. <bullet>Attacks have a base 50% chance of infliction Infectious Insanity.</bullet>",
+        " Insanity":
+            "<insanity></insanity> <bulletlist>This unit: <bullet>Is uncontrollable and always attacks the closest allied target.</bullet><bullet>If no ally is in range, it will atack its enemies</bullet></bulletlist> ",
+        " Gilded":
+            "<gilded></gilded> 	Unit is unable to act. If killed Victor obtains 20 <gold></gold> gold per unit tier.",
+        " Disrupted": "<disrupted></disrupted> This unit's Unit Enchantments are temporarily disabled",
+        " Demoralized":
+            "<demoralized></demoralized> <bullet>-5 <morale></morale>Morale per stack</bullet> <bullet>Stacks up to 5 times</bullet>",
+        " Status Protection": "<statusprotection></statusprotection>+2 status resistance.",
+        "Static Charge":
+            "<staticcharge></staticcharge> Unit's attack gain: <bulletlist><bullet>+2 Lightning Damage</bullet><bullet>Base 30% change of inflicting Electrified for 3 <turn></turn> turns</bullet></bulletlist>",
+        Awakened: "<awakened></awakened> Activates any <hyperlink>Dormant</hyperlink> traits.",
+        "Hastened ": "<hastened></hastened> Unit has Very Fast Movement and one additional Retaliation Attack.",
+        Steadfast: "<steadfast></steadfast> Unit cannot have less than 1 <hp></hp> Hit points.",
+        "Hyper-Awareness":
+            "<hyperawareness></hyperawareness> Unit is immune to <flank></flank> Flanking. <br> Hyper-Awareness counters <distracted></distracted> distracted",
+        Grace: "<grace></grace> <bulletlist>When this unit is attacked: <bullet>Heal for 10 <temphp></temphp> Temporary Hit Points.</bullet> <bullet> Remove one stack of grace</bullet><bulletlist> Stacks up to 3 times."
+    };
+
+    for (const [effect, tag] of Object.entries(statusEffectsExp)) {
+        status = status.replace(effect, tag);
+    }
+
+    return status;
+}
+
+function HandleExtraTooltips(specificDiv) {
+    // Add event listeners after elements exist in the DOM
+    if (specificDiv != undefined) {
+        specificDiv.querySelectorAll(".statusEffectHandler").forEach((el) => {
+            var spantest = document.createElement("span");
+            spantest.innerHTML = lookupStatusEffect(el.innerHTML);
+            addTooltipListeners(el, spantest, "something");
+        });
+    } else {
+        document.querySelectorAll(".statusEffectHandler").forEach((el) => {
+            var spantest = document.createElement("span");
+            spantest.innerHTML = lookupStatusEffect(el.innerHTML);
+            addTooltipListeners(el, spantest, "something");
+        });
+    }
 }
 
 function GetUnitTierAndName(id, subcultureCheck) {
@@ -1249,20 +1360,38 @@ function doubleNumbers(inputString) {
     return result;
 }
 
-function TurnOnTooltip(spa) {
+function TurnOnTooltip(spa, secondary) {
     // Configuration of the observer: observe changes to child nodes
+    if (secondary != undefined) {
+        hoverDiv2 = document.getElementById("hoverDiv2");
+        // console.log('Mouse entered the div');
+        hoverDiv2.style.display = "block";
+        hoverDiv2.style.zIndex = 11111;
+        // grab links inside of here
 
-    hoverDiv = document.getElementById("hoverDiv");
-    // console.log('Mouse entered the div');
-    hoverDiv.style.display = "block";
-    if (spa != null) {
-        hoverDiv.innerHTML = spa.innerHTML;
+        if (spa != null) {
+            hoverDiv2.innerHTML = spa.innerHTML;
+        }
+    } else {
+        hoverDiv = document.getElementById("hoverDiv");
+        // console.log('Mouse entered the div');
+
+        hoverDiv.style.display = "block";
+        if (spa != null) {
+            hoverDiv.innerHTML = spa.innerHTML;
+            HandleExtraTooltips(hoverDiv);
+        }
     }
 }
 
-function TurnOffTooltip() {
-    hoverDiv = document.getElementById("hoverDiv");
-    hoverDiv.style.display = "none";
+function TurnOffTooltip(secondary) {
+    if (secondary != undefined) {
+        hoverDiv2 = document.getElementById("hoverDiv2");
+        hoverDiv2.style.display = "none";
+    } else {
+        hoverDiv = document.getElementById("hoverDiv");
+        hoverDiv.style.display = "none";
+    }
 }
 
 function getNormalizedPosition(event) {
@@ -1283,10 +1412,15 @@ function getNormalizedPosition(event) {
     };
 }
 
-function updateHoverDivPosition(event) {
+function updateHoverDivPosition(event, secondary) {
     const settings = getUserSettings();
 
     var offset = 2;
+    if (secondary != undefined) {
+        hoverDiv = document.getElementById("hoverDiv2");
+    } else {
+        hoverDiv = document.getElementById("hoverDiv");
+    }
     if (settings.tooltipselectable) {
         hoverDiv.setAttribute("Style", "pointer-events: all;");
     } else {
@@ -3494,16 +3628,17 @@ function showUnit(a, subcultureCheck, resID) {
     }
 }
 
-function addTooltipListeners(tooltip, span) {
+function addTooltipListeners(tooltip, span, secondary) {
     tooltip.addEventListener("mouseenter", function (event) {
-        TurnOnTooltip(span);
+        TurnOnTooltip(span, secondary);
+
         if (tooltip != hoverDiv) {
-            updateHoverDivPosition(event);
+            updateHoverDivPosition(event, secondary);
         }
     });
 
     tooltip.addEventListener("mouseleave", function () {
-        TurnOffTooltip();
+        TurnOffTooltip(secondary);
     });
 }
 
@@ -5752,6 +5887,7 @@ function showSpell(a, showOrigin) {
             upkeep.setAttribute("id", "modupkeep" + a);
 
             description += jsonSpells[j].description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
+            description = AddTagIconsForStatusEffects(description);
             description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
             description = description.replaceAll("<br></br>", "<br>");
 
