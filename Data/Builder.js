@@ -1485,10 +1485,11 @@ function getNormalizedPosition(event) {
 function updateHoverDivPosition(event, secondary) {
     const settings = getUserSettings();
 
-    var offset = -5;
+    var offset = 2;
     let hoverDiv = null;
     if (secondary != undefined) {
         hoverDiv = document.getElementById("hoverDiv2");
+        offset = -5;
     } else {
         hoverDiv = document.getElementById("hoverDiv");
     }
