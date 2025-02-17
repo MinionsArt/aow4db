@@ -1365,32 +1365,41 @@ function TurnOnTooltip(spa, secondary) {
     if (secondary != undefined) {
         hoverDiv2 = document.getElementById("hoverDiv2");
         // console.log('Mouse entered the div');
-        hoverDiv2.style.display = "block";
-        hoverDiv2.style.zIndex = 11111;
+
+        //hoverDiv2.style.zIndex = 11111;
         // grab links inside of here
 
         if (spa != null) {
             hoverDiv2.innerHTML = spa.innerHTML;
         }
+        hoverDiv2.show();
     } else {
         hoverDiv = document.getElementById("hoverDiv");
+
         // console.log('Mouse entered the div');
 
-        hoverDiv.style.display = "block";
+        //hoverDiv.style.display = "block";
         if (spa != null) {
             hoverDiv.innerHTML = spa.innerHTML;
             HandleExtraTooltips(hoverDiv);
         }
+        hoverDiv.show();
     }
 }
 
 function TurnOffTooltip(secondary) {
+    hoverDiv2 = document.getElementById("hoverDiv2");
+    hoverDiv = document.getElementById("hoverDiv");
     if (secondary != undefined) {
-        hoverDiv2 = document.getElementById("hoverDiv2");
-        hoverDiv2.style.display = "none";
+        // hoverDiv2.style.display = "none";
+        hoverDiv2.close();
     } else {
-        hoverDiv = document.getElementById("hoverDiv");
-        hoverDiv.style.display = "none";
+        if (hoverDiv2.open) {
+        } else {
+            hoverDiv.close();
+        }
+
+        //hoverDiv.style.display = "none";
     }
 }
 
@@ -3630,11 +3639,10 @@ function showUnit(a, subcultureCheck, resID) {
 
 function addTooltipListeners(tooltip, span, secondary) {
     tooltip.addEventListener("mouseenter", function (event) {
-        TurnOnTooltip(span, secondary);
-
         if (tooltip != hoverDiv) {
             updateHoverDivPosition(event, secondary);
         }
+        TurnOnTooltip(span, secondary);
     });
 
     tooltip.addEventListener("mouseleave", function () {
