@@ -349,7 +349,7 @@ function lookupStatusEffect(status) {
         Berserk:
             "<berserk></berserk><bulletlist>The unit:<bullet>Is uncontrollable and always attacks the closest enemy target.</bullet><bullet> If no enemy is in range, it will attack its allies.</bullet><bullet>Is immune to Morale effects</bullet><bullet>Damage penalties from Casualty are negated.</bullet></bulletlist>",
         Ghostfire:
-            "<ghostfire></ghostfire> <bullet>Unit sustains 2 Fire Damage and 2 Frost damage each Turn.</bullet><bullet>Replaces and counts as Burning but isn't removed by Frozen or Wet.</bullet><bullet>Stacks up to 5 times</bullet>",
+            "<ghostfire></ghostfire> <bullet>Unit sustains 2 Fire Damage and 2 Frost damage each Turn.</bullet><bullet>Replaces and counts as Burning but isn't removed by frozen or wet.</bullet><bullet>Stacks up to 5 times</bullet>",
         "Sundered Resistance":
             "<sunderedresistance></sunderedresistance> -1 <resistance></resistance> Resistance.-1 status resistance.",
         "Sundered Defense": "<sundereddefense></sundereddefense>  -1 <defense></defense> Defense.-1 status resistance.",
