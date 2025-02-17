@@ -2,6 +2,15 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get("sort");
 var currentView = "";
 
+var altHeld = false;
+
+// Toggle ALT mode on each key press
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Alt") {
+        event.preventDefault(); // Prevent default browser behavior
+        altHeld = !altHeld; // Toggle state
+    }
+});
 document.addEventListener("DOMContentLoaded", function () {
     fetch("/aow4db/HTML/header.html")
         .then((response) => response.text())
@@ -17,11 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function CheckBoxTooltips() {
     var checkboxTooltip = document.getElementById("tooltipCheckbox");
-
+    let hoverDiv = document.getElementById("hoverDiv");
+    let hoverDiv2 = document.getElementById("hoverDiv2");
     if (checkboxTooltip.checked === true) {
         addTooltipListeners(hoverDiv, null);
+        addTooltipListeners(hoverDiv2, null, "something");
     } else {
         removeToolTipListeners(hoverDiv);
+        removeToolTipListeners(hoverDiv2);
     }
     updateUserSettings({
         tooltipselectable: checkboxTooltip.checked
@@ -184,14 +196,26 @@ async function CheckData() {
                 fontSize: "16px"
             });
         } else {
+            // CheckBoxTooltips();
             var checkboxTooltip = document.getElementById("tooltipCheckbox");
+            checkboxTooltip.checked = storedSettings.tooltipselectable;
+            let hoverDiv = document.getElementById("hoverDiv");
+            let hoverDiv2 = document.getElementById("hoverDiv2");
+            if (checkboxTooltip.checked === true) {
+                addTooltipListeners(hoverDiv, null);
+                addTooltipListeners(hoverDiv2, null, "something");
+            } else {
+                removeToolTipListeners(hoverDiv);
+                removeToolTipListeners(hoverDiv2);
+            }
+            /*  var checkboxTooltip = document.getElementById("tooltipCheckbox");
             checkboxTooltip.checked = storedSettings.tooltipselectable;
 
             if (checkboxTooltip.checked === true) {
                 addTooltipListeners(hoverDiv, null);
             } else {
                 removeToolTipListeners(hoverDiv);
-            }
+            }*/
         }
 
         HandlePage();
@@ -1364,12 +1388,10 @@ function addTooltipListeners(tooltip, span, secondary) {
     let hoverDiv2 = document.getElementById("hoverDiv2");
     let hoverDiv = document.getElementById("hoverDiv");
 
-    console.log(secondary);
     if (secondary != undefined) {
         tooltip.addEventListener("mouseenter", function (event) {
             if (secondary != undefined) {
-                if (tooltip != hoverDiv2) {
-                    console.log("update");
+                if (tooltip != hoverDiv2 && !hoverDiv2.open) {
                     updateHoverDivPosition(event, secondary);
                 }
             }
@@ -1378,11 +1400,14 @@ function addTooltipListeners(tooltip, span, secondary) {
         });
 
         tooltip.addEventListener("mouseleave", function () {
-            TurnOffTooltip(secondary);
+            if (altHeld == false) {
+                // Only hide if ALT is NOT active
+                TurnOffTooltip(secondary, tooltip);
+            }
         });
     } else {
         tooltip.addEventListener("mouseenter", function (event) {
-            if (tooltip != hoverDiv) {
+            if (tooltip != hoverDiv && !hoverDiv.open) {
                 updateHoverDivPosition(event, secondary);
             }
 
@@ -1390,7 +1415,10 @@ function addTooltipListeners(tooltip, span, secondary) {
         });
 
         tooltip.addEventListener("mouseleave", function () {
-            TurnOffTooltip(secondary);
+            if (altHeld == false) {
+                // Only hide if ALT is NOT active
+                TurnOffTooltip(secondary);
+            }
         });
     }
 }
@@ -1419,20 +1447,20 @@ function TurnOnTooltip(spa, secondary) {
     }
 }
 
-function TurnOffTooltip(secondary) {
+function TurnOffTooltip(secondary, origin) {
     hoverDiv2 = document.getElementById("hoverDiv2");
     hoverDiv = document.getElementById("hoverDiv");
-    if (secondary != undefined) {
-        // hoverDiv2.style.display = "none";
+    console.log("dialog 2 is open? " + hoverDiv2.open);
+    if (secondary != undefined && origin == hoverDiv2) {
         hoverDiv2.close();
+        console.log("closed dialog 2");
     } else {
         if (hoverDiv2.open) {
             console.log("dialog is open ");
         } else {
             hoverDiv.close();
+            console.log("closed dialog 1");
         }
-
-        //hoverDiv.style.display = "none";
     }
 }
 
@@ -1457,7 +1485,7 @@ function getNormalizedPosition(event) {
 function updateHoverDivPosition(event, secondary) {
     const settings = getUserSettings();
 
-    var offset = 2;
+    var offset = -5;
     let hoverDiv = null;
     if (secondary != undefined) {
         hoverDiv = document.getElementById("hoverDiv2");
