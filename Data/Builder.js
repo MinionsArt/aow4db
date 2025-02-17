@@ -380,8 +380,8 @@ function lookupStatusEffect(status) {
             "<dominated></dominated> This unit is controlled by the opponent. <br> If the effect lasts until the end of combat, the controller will have the option to spend Mana to keep the unit permanently.",
         Misfortune: "<misfortune></misfortune> 	+10% fumble chance.",
         " Fortune": "<fortune></fortune> 	+10% critical chance.",
-        " Infectious Insanity":
-            "<infectiousinsanity></infectiousinsanity> <bullet>Unit is inflicted with Insanity</bullet>. <bullet>Attacks have a base 50% chance of infliction Infectious Insanity.</bullet>",
+        " Infectious Insanity ":
+            "<infectiousinsanity></infectiousinsanity> <bullet>Unit is inflicted with insanity</bullet>. <bullet>Attacks have a base 50% chance of infliction Infectious Insanity.</bullet>",
         " Insanity":
             "<insanity></insanity> <bulletlist>This unit: <bullet>Is uncontrollable and always attacks the closest allied target.</bullet><bullet>If no ally is in range, it will atack its enemies</bullet></bulletlist> ",
         " Gilded":
