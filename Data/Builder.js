@@ -5092,7 +5092,7 @@ function GetAbilityInfo(ability) {
         let l = 0;
         for (l in ability.modifiers) {
             abilityName += "&#11049";
-            abilityMod += "<bullet>" + ability.modifiers[l].name + "<br>";
+            abilityMod += "<bullet>" + AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
             abilityMod += ability.modifiers[l].description + "</bullet><br>";
         }
 

@@ -173,7 +173,7 @@
                             for (l in jsonUnitAbilities[j].modifiers) {
                                 abilityName += "&#11049";
 
-                                abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
+                                abilityMod += "<bullet>" + AddTagIconsForStatusEffects(jsonUnitAbilities[j].modifiers[l].name) + "<br>";
                                 abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
                             }
                         }
@@ -280,7 +280,16 @@
                             Once
                         );
 
+                        if (abilityName.indexOf("Defense Mode") > -1) {
+                            spa.innerHTML =
+                                '<div class="leftAbility" style="color:#d7c297;">' + abilityName.toUpperCase();
+                            spa.innerHTML += '<div style="clear:both"> </div>' + "<br>";
+                            spa.innerHTML += jsonUnitAbilities[j].description;
+                            dam.innerHTML = "";
+                        }
+
                         var cleanName = a.replaceAll("_", " ");
+                        cleanName = cleanName.split("ability")[1];
 
                         // findSource(a);
 
@@ -290,14 +299,6 @@
 
                         tex.innerHTML = abilityName;
                         tex.setAttribute("style", "color:white; width:250px");
-
-                        if (abilityName.indexOf("Defense Mode") > -1) {
-                            spa.innerHTML =
-                                '<div class="leftAbility" style="color:#d7c297;">' + abilityName.toUpperCase();
-                            spa.innerHTML += '<div style="clear:both"> </div>' + "<br>";
-                            spa.innerHTML += jsonUnitAbilities[j].description;
-                            dam.innerHTML = "";
-                        }
 
                         document.getElementById("dataHolder").append(btn);
                         // tex.appendChild(spa);
