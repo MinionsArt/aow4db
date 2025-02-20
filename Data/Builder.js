@@ -6208,75 +6208,11 @@ function showItem(a) {
             j = 0;
             for (j in jsonUnitAbilities) {
                 if (jsonUnitAbilities[j].slug.indexOf(lookup) != -1) {
-                    let abilityName = jsonUnitAbilities[j].name;
+                    //let abilityName = jsonUnitAbilities[j].name;
 
                     //   description = jsonUnitAbilities[j].description;
 
-                    if ("accuracy" in jsonUnitAbilities[j]) {
-                        let abilityReq = "";
-                        if (jsonUnitAbilities[j].requisites === undefined) {
-                            abilityReq = "";
-                        } else {
-                            abilityReq = jsonUnitAbilities[j].requisites;
-                        }
-
-                        let abilityMod = "";
-
-                        let k = 0;
-                        for (k in jsonUnitAbilities[j].modifiers) {
-                            abilityName += "&#11049";
-                            let name = jsonUnitAbilities[j].modifiers[k].name.replace("^N", "");
-                            name = name.replace("^n", "");
-                            abilityMod += "<bullet>" + name + "<br>";
-                            abilityMod += jsonUnitAbilities[j].modifiers[k].description + "</bullet><br>";
-                        }
-
-                        // add notes
-
-                        abilityNote = "";
-                        let Cooldown = "";
-                        let Once = "";
-                        k = 0;
-                        for (k in jsonUnitAbilities[j].notes) {
-                            if (jsonUnitAbilities[j].notes[k] === undefined) {
-                            } else {
-                                if (jsonUnitAbilities[j].notes[k].note.indexOf("Cooldown") != -1) {
-                                    Cooldown = jsonUnitAbilities[j].notes[k].note;
-                                } else if (jsonUnitAbilities[j].notes[k].note.indexOf("once per") != -1) {
-                                    Once = jsonUnitAbilities[j].notes[k].note;
-                                } else {
-                                    abilityNote += "<br>" + jsonUnitAbilities[j].notes[k].note;
-                                }
-                            }
-                        }
-
-                        let abilityEncht = "";
-                        abilityRange = jsonUnitAbilities[j].range + "<range></range>";
-                        abilityAcc = jsonUnitAbilities[j].accuracy + "<accuracy></accuracy>";
-
-                        let abilityIconType = GetAbilityBackground(jsonUnitAbilities[j].damage);
-                        spa = GetAbilityToolTip(
-                            jsonUnitAbilities[j],
-                            jsonUnitAbilities[j].damage,
-                            abilityName,
-                            abilityIconType,
-                            abilityAcc,
-                            abilityRange,
-                            abilityMod,
-                            abilityEncht,
-                            abilityNote,
-                            abilityReq,
-                            Cooldown,
-                            Once
-                        );
-                    } else {
-                        spa = CreatePassiveSlotToolTip(
-                            jsonUnitAbilities[j].icon,
-                            jsonUnitAbilities[j].name,
-                            jsonUnitAbilities[j].description
-                        );
-                    }
-
+                    let spa = GetAbilityInfo(jsonUnitAbilities[j]);
                     spa.className = "itemAbility";
 
                     spa.setAttribute("style", "width: 450px");
@@ -6760,68 +6696,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                     let abilityName = jsonUnitAbilities[j].name;
                     let abilityReq = "";
 
-                    if ("accuracy" in jsonUnitAbilities[j]) {
-                        if (jsonUnitAbilities[j].requisites === undefined) {
-                            abilityReq = "";
-                        } else {
-                            abilityReq = jsonUnitAbilities[j].requisites;
-                        }
-
-                        let abilityMod = "";
-                        if ("modifiers" in jsonUnitAbilities[j]) {
-                            for (let l = 0; l < jsonUnitAbilities[j].modifiers.length; l++) {
-                                abilityName += "&#11049";
-                                abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
-                                abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
-                            }
-                        }
-
-                        // add notes
-
-                        abilityNote = "";
-                        let Cooldown = "";
-                        let Once = "";
-
-                        for (let l = 0; l < jsonUnitAbilities[j].notes.length; l++) {
-                            if (jsonUnitAbilities[j].notes[l] === undefined) {
-                            } else {
-                                if (jsonUnitAbilities[j].notes[l].note.indexOf("Cooldown") != -1) {
-                                    Cooldown = jsonUnitAbilities[j].notes[l].note;
-                                } else if (jsonUnitAbilities[j].notes[l].note.indexOf("once per") != -1) {
-                                    Once = jsonUnitAbilities[j].notes[l].note;
-                                } else {
-                                    abilityNote += "<br>" + jsonUnitAbilities[j].notes[l].note;
-                                }
-                            }
-                        }
-
-                        let abilityEncht = "";
-
-                        abilityRange = jsonUnitAbilities[j].range + "<range></range>";
-                        abilityAcc = jsonUnitAbilities[j].accuracy + "<accuracy></accuracy>";
-
-                        let abilityIconType = GetAbilityBackground(jsonUnitAbilities[j].damage);
-                        spa = GetAbilityToolTip(
-                            jsonUnitAbilities[j],
-                            jsonUnitAbilities[j].damage,
-                            abilityName,
-                            abilityIconType,
-                            abilityAcc,
-                            abilityRange,
-                            abilityMod,
-                            abilityEncht,
-                            abilityNote,
-                            abilityReq,
-                            Cooldown,
-                            Once
-                        );
-                    } else {
-                        spa = CreatePassiveSlotToolTip(
-                            jsonUnitAbilities[j].icon,
-                            jsonUnitAbilities[j].name,
-                            jsonUnitAbilities[j].description
-                        );
-                    }
+                    spa = GetAbilityInfo(jsonUnitAbilities[j]);
 
                     spa.className = "itemAbility";
                     spa.setAttribute("style", "width:380px");
