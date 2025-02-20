@@ -1384,35 +1384,33 @@ function addTooltipListeners(tooltip, span, secondary) {
 
     if (secondary != undefined) {
         tooltip.addEventListener("mouseenter", function (event) {
+            TurnOnTooltip(span, secondary);
             if (secondary != undefined) {
-                if (tooltip != hoverDiv2 && !hoverDiv2.open) {
+                if (tooltip != hoverDiv2 && hoverDiv2.open) {
                     updateHoverDivPosition(event, secondary);
                 }
             }
-
-            TurnOnTooltip(span, secondary);
         });
 
         tooltip.addEventListener("mouseleave", function () {
-            if (altHeld == false) {
-                // Only hide if ALT is NOT active
-                TurnOffTooltip(secondary, tooltip);
-            }
+            // if (altHeld == false) {
+            // Only hide if ALT is NOT active
+            TurnOffTooltip(secondary, tooltip);
+            //}
         });
     } else {
         tooltip.addEventListener("mouseenter", function (event) {
-            if (tooltip != hoverDiv && !hoverDiv.open) {
+            TurnOnTooltip(span, secondary);
+            if (tooltip != hoverDiv && hoverDiv.open) {
                 updateHoverDivPosition(event, secondary);
             }
-
-            TurnOnTooltip(span, secondary);
         });
 
         tooltip.addEventListener("mouseleave", function () {
-            if (altHeld == false) {
+          //  if (altHeld == false) {
                 // Only hide if ALT is NOT active
                 TurnOffTooltip(secondary);
-            }
+          //  }
         });
     }
 }
