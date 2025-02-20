@@ -1328,70 +1328,7 @@ function GetSkillData(a) {
             let abilityName = thisSkill.name;
 
             //   description = jsonUnit[j].description;
-
-            if ("accuracy" in thisSkill) {
-                let abilityReq = "";
-                if (thisSkill.requisites === undefined) {
-                } else {
-                    abilityReq = thisSkill.requisites;
-                }
-
-                let abilityMod = "";
-
-                var k = 0;
-                for (k in thisSkill.modifiers) {
-                    abilityName += "&#11049";
-                    var name = thisSkill.modifiers[k].name.replace("^N", "");
-                    name = name.replace("^n", "");
-                    abilityMod += "<bullet>" + name + "<br>";
-                    abilityMod += thisSkill.modifiers[k].description + "</bullet><br>";
-                }
-
-                // add notes
-
-                abilityNote = "";
-                var Cooldown = "";
-                var Once = "";
-
-                for (let k = 0; k < thisSkill.notes.length; k++) {
-                    if (thisSkill.notes[k] === undefined) {
-                    } else {
-                        if (thisSkill.notes[k].note.indexOf("Cooldown") != -1) {
-                            Cooldown = thisSkill.notes[k].note;
-                        } else if (thisSkill.notes[k].note.indexOf("once per") != -1) {
-                            Once = thisSkill.notes[k].note;
-                        } else {
-                            abilityNote += "<br>" + thisSkill.notes[k].note;
-                        }
-                    }
-                }
-
-                var abilityEncht = "";
-                abilityRange = thisSkill.range + "<range></range>";
-                abilityAcc = thisSkill.accuracy + "<accuracy></accuracy>";
-
-                var abilityIconType = GetAbilityBackground(thisSkill.damage);
-                spa = GetAbilityToolTip(
-                    thisSkill,
-                    thisSkill.damage,
-                    abilityName,
-                    abilityIconType,
-                    abilityAcc,
-                    abilityRange,
-                    abilityMod,
-                    abilityEncht,
-                    abilityNote,
-                    abilityReq,
-                    Cooldown,
-                    Once
-                );
-            } else {
-                spa = CreatePassiveSlotToolTip(thisSkill.icon, thisSkill.name, thisSkill.description);
-            }
-
-            spa.className = "itemAbility";
-
-            spa.setAttribute("style", "width: 450px");
+            spa = GetAbilityInfo(thisSkill);
 
             return spa;
         }
