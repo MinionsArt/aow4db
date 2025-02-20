@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function CheckBoxTooltips() {
-    var checkboxTooltip = document.getElementById("tooltipCheckbox");
+    let checkboxTooltip = document.getElementById("tooltipCheckbox");
     let hoverDiv = document.getElementById("hoverDiv");
     let hoverDiv2 = document.getElementById("hoverDiv2");
     if (checkboxTooltip.checked === true) {
@@ -197,7 +197,7 @@ async function CheckData() {
             });
         } else {
             // CheckBoxTooltips();
-            var checkboxTooltip = document.getElementById("tooltipCheckbox");
+            let checkboxTooltip = document.getElementById("tooltipCheckbox");
             checkboxTooltip.checked = storedSettings.tooltipselectable;
             let hoverDiv = document.getElementById("hoverDiv");
             let hoverDiv2 = document.getElementById("hoverDiv2");
@@ -208,7 +208,7 @@ async function CheckData() {
                 removeToolTipListeners(hoverDiv);
                 removeToolTipListeners(hoverDiv2);
             }
-            /*  var checkboxTooltip = document.getElementById("tooltipCheckbox");
+            /*  let checkboxTooltip = document.getElementById("tooltipCheckbox");
             checkboxTooltip.checked = storedSettings.tooltipselectable;
 
             if (checkboxTooltip.checked === true) {
@@ -306,8 +306,8 @@ var incorrectIconOverrideList = [
 
 function AddTagIconsForStatusEffects(name) {
     // if(name == "")
-    var underline = '<span style="text-decoration:underline;color:white;">';
-    var endtag = "</span></span>";
+    let underline = '<span style="text-decoration:underline;color:white;">';
+    let endtag = "</span></span>";
     const statusEffects = {
         Poisoned: "poisoned",
         Bleeding: "bleeding",
@@ -351,7 +351,7 @@ function AddTagIconsForStatusEffects(name) {
     };
 
     for (const [effect, tag] of Object.entries(statusEffects)) {
-        var tooltipspan = document.createElement("span");
+        let tooltipspan = document.createElement("span");
         tooltipspan.className = "statusEffectHandler";
         tooltipspan.innerHTML = `${underline}${effect}${endtag}`;
 
@@ -403,21 +403,20 @@ function lookupStatusEffect(status) {
         Dominated:
             "<dominated></dominated> This unit is controlled by the opponent. <br> If the effect lasts until the end of combat, the controller will have the option to spend Mana to keep the unit permanently.",
         Misfortune: "<misfortune></misfortune> 	+10% fumble chance.",
-        " Fortune": "<fortune></fortune> 	+10% critical chance.",
-        " Infectious Insanity ":
+        Fortune: "<fortune></fortune> 	+10% critical chance.",
+        "Infectious Insanity ":
             "<infectiousinsanity></infectiousinsanity> <bullet>Unit is inflicted with insanity</bullet>. <bullet>Attacks have a base 50% chance of infliction Infectious Insanity.</bullet>",
-        " Insanity":
+        Insanity:
             "<insanity></insanity> <bulletlist>This unit: <bullet>Is uncontrollable and always attacks the closest allied target.</bullet><bullet>If no ally is in range, it will atack its enemies</bullet></bulletlist> ",
-        " Gilded":
-            "<gilded></gilded> 	Unit is unable to act. If killed Victor obtains 20 <gold></gold> gold per unit tier.",
-        " Disrupted": "<disrupted></disrupted> This unit's Unit Enchantments are temporarily disabled",
-        " Demoralized":
+        Gilded: "<gilded></gilded> 	Unit is unable to act. If killed Victor obtains 20 <gold></gold> gold per unit tier.",
+        Disrupted: "<disrupted></disrupted> This unit's Unit Enchantments are temporarily disabled",
+        Demoralized:
             "<demoralized></demoralized> <bullet>-5 <morale></morale>Morale per stack</bullet> <bullet>Stacks up to 5 times</bullet>",
-        " Status Protection": "<statusprotection></statusprotection>+2 status resistance.",
+        "Status Protection": "<statusprotection></statusprotection>+2 status resistance.",
         "Static Charge":
             "<staticcharge></staticcharge> Unit's attack gain: <bulletlist><bullet>+2 Lightning Damage</bullet><bullet>Base 30% change of inflicting Electrified for 3 <turn></turn> turns</bullet></bulletlist>",
         Awakened: "<awakened></awakened> Activates any <hyperlink>Dormant</hyperlink> traits.",
-        "Hastened ": "<hastened></hastened> Unit has Very Fast Movement and one additional Retaliation Attack.",
+        Hastened: "<hastened></hastened> Unit has Very Fast Movement and one additional Retaliation Attack.",
         Steadfast: "<steadfast></steadfast> Unit cannot have less than 1 <hp></hp> Hit points.",
         "Hyper-Awareness":
             "<hyperawareness></hyperawareness> Unit is immune to <flank></flank> Flanking. <br> Hyper-Awareness counters <distracted></distracted> distracted",
@@ -435,13 +434,13 @@ function HandleExtraTooltips(specificDiv) {
     // Add event listeners after elements exist in the DOM
     if (specificDiv != undefined) {
         specificDiv.querySelectorAll(".statusEffectHandler").forEach((el) => {
-            var spantest = document.createElement("span");
+            let spantest = document.createElement("span");
             spantest.innerHTML = lookupStatusEffect(el.innerHTML);
             addTooltipListeners(el, spantest, "something");
         });
     } else {
         document.querySelectorAll(".statusEffectHandler").forEach((el) => {
-            var spantest = document.createElement("span");
+            let spantest = document.createElement("span");
             spantest.innerHTML = lookupStatusEffect(el.innerHTML);
             addTooltipListeners(el, spantest, "something");
         });
@@ -449,8 +448,8 @@ function HandleExtraTooltips(specificDiv) {
 }
 
 function GetUnitTierAndName(id, subcultureCheck) {
-    for (var i = 0; i < jsonUnits.length; i++) {
-        var unit = jsonUnits[i];
+    for (let i = 0; i < jsonUnits.length; i++) {
+        let unit = jsonUnits[i];
 
         // Check if the ID matches
         if (id !== unit.id) {
@@ -468,7 +467,7 @@ function GetUnitTierAndName(id, subcultureCheck) {
         }
 
         // Prepare the unit's name
-        var name = unit.name;
+        let name = unit.name;
 
         // Add mount special tags if applicable
         if (MountedSpecialList.includes(id) || CheckIfOptionalCavalry(id)) {
@@ -477,7 +476,7 @@ function GetUnitTierAndName(id, subcultureCheck) {
 
         // Add subculture tags if available
         if ("sub_culture_name" in unit) {
-            var subculture = unit.sub_culture_name.toLowerCase().replaceAll(" ", "_");
+            let subculture = unit.sub_culture_name.toLowerCase().replaceAll(" ", "_");
             name += `<${subculture}></${subculture}>`;
         }
 
@@ -514,7 +513,7 @@ function CheckIfFormUnit(id) {
 }
 
 function GetUnitTierAndNameTome(id) {
-    for (var i = 0; i < jsonTomes.length; i++) {
+    for (let i = 0; i < jsonTomes.length; i++) {
         if (id === jsonTomes[i].id) {
             return romanize(jsonTomes[i].tier) + " - " + jsonTomes[i].name;
         }
@@ -522,7 +521,7 @@ function GetUnitTierAndNameTome(id) {
 }
 
 function GetSiegeProjectName(id) {
-    for (var i = 0; i < jsonSiegeProjects.length; i++) {
+    for (let i = 0; i < jsonSiegeProjects.length; i++) {
         if (id === jsonSiegeProjects[i].id) {
             return jsonSiegeProjects[i].name;
         }
@@ -530,7 +529,7 @@ function GetSiegeProjectName(id) {
 }
 
 function GetUnitNamePlain(id) {
-    for (var i = 0; i < jsonUnits.length; i++) {
+    for (let i = 0; i < jsonUnits.length; i++) {
         if (id === jsonUnits[i].id) {
             return jsonUnits[i].name;
         }
@@ -538,7 +537,7 @@ function GetUnitNamePlain(id) {
 }
 
 function GetSpellTierAndName(id) {
-    for (var i = 0; i < jsonSpells.length; i++) {
+    for (let i = 0; i < jsonSpells.length; i++) {
         if (id === jsonSpells[i].id) {
             return jsonSpells[i].name;
         }
@@ -546,43 +545,43 @@ function GetSpellTierAndName(id) {
 }
 
 function ShowUnitFromLink() {
-    var unitID = searchParams.get("unit");
+    let unitID = searchParams.get("unit");
     document.title = "Age of Wonders 4 Database - " + GetUnitTierAndName(unitID).split(">")[2];
     showUnitFromString(unitID, "dataHolder");
 }
 
 function ShowSpellFromLink() {
-    var spellID = searchParams.get("spell");
+    let spellID = searchParams.get("spell");
     if (spellID != undefined) {
         document.title = "Age of Wonders 4 Database - " + GetSpellTierAndName(spellID).split(">")[2];
         showSpellFromString(spellID, "dataHolder");
     }
 
-    var SiegeID = searchParams.get("siege");
+    let SiegeID = searchParams.get("siege");
     if (SiegeID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Siege Project";
         showSiegeProjectFromString(SiegeID, "dataHolder");
     }
 
-    var WonderID = searchParams.get("wonder");
+    let WonderID = searchParams.get("wonder");
     if (WonderID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Wonder";
         showWorldStructureFromString(WonderID, "dataHolder");
     }
 
-    var TomeID = searchParams.get("tome");
+    let TomeID = searchParams.get("tome");
     if (TomeID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Tome";
         showTomeFromString(TomeID, "dataHolder");
     }
 
-    var StrucID = searchParams.get("structure");
+    let StrucID = searchParams.get("structure");
     if (StrucID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Structure";
         showStructureFromString(StrucID, "dataHolder");
     }
 
-    var SkillID = searchParams.get("skill");
+    let SkillID = searchParams.get("skill");
     if (SkillID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Hero Skill";
         showHeroSkillFromString(SkillID, "dataHolder");
@@ -634,45 +633,46 @@ function AddListView(list, parent) {
             }
         }
     }
-
+    let buttonHolder;
     if (parent === undefined) {
-        var buttonHolder = document.getElementById("buttonHolder");
+        buttonHolder = document.getElementById("buttonHolder");
     } else {
-        var buttonHolder = document.getElementById(parent);
+        buttonHolder = document.getElementById(parent);
     }
-    var btn = document.createElement("BUTTON");
+    let btn = document.createElement("BUTTON");
 
     btn.className = "w3-bar-item w3-button tablink";
     btn.type = "button";
     btn.innerHTML = '<i class="fa fa-solid fa-list"></i>';
     btn.setAttribute("onclick", 'openDiv(event, "' + list + '")');
 
-    var firstChild = buttonHolder.firstChild;
+    let firstChild = buttonHolder.firstChild;
     buttonHolder.insertBefore(btn, firstChild);
 }
 
 function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck) {
     AddListView(list, parent);
     //console.log(list);
+    let buttonHolder;
     for (let i = 0; i < list.length; i++) {
         if (list[i].includes(",")) {
-            var test = list[i].split(",");
+            let test = list[i].split(",");
 
             subcultureCheck = test[1];
             list[i] = test[0];
         }
         if (parent === undefined) {
-            var buttonHolder = document.getElementById("buttonHolder");
+            buttonHolder = document.getElementById("buttonHolder");
         } else {
-            var buttonHolder = document.getElementById(parent);
+            buttonHolder = document.getElementById(parent);
         }
-
+        let dataHolder;
         if (otherParent === undefined) {
-            var dataHolder = document.getElementById("dataHolder");
+            dataHolder = document.getElementById("dataHolder");
         } else {
-            var dataHolder = document.getElementById(otherParent);
+            dataHolder = document.getElementById(otherParent);
         }
-        var div = document.createElement("DIV");
+        let div = document.createElement("DIV");
         div.className = "w3-container w3-border city";
         if (subcultureCheck == undefined) {
             div.setAttribute("id", list[i]);
@@ -681,7 +681,7 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
         }
         dataHolder.appendChild(div);
 
-        var btn = document.createElement("BUTTON");
+        let btn = document.createElement("BUTTON");
         btn.className = "w3-bar-item w3-button tablink";
         btn.type = "button";
         if (subcultureCheck == undefined) {
@@ -692,7 +692,7 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
 
         switch (cardType) {
             case "unitTomeIcon":
-                var splitIcon = list[i].split(":");
+                let splitIcon = list[i].split(":");
                 div.setAttribute("id", splitIcon[0]);
                 btn.setAttribute("id", splitIcon[0] + "-button");
                 btn.innerHTML =
@@ -750,16 +750,16 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
         buttonHolder.appendChild(btn);
 
         AddTriangleForDLCUnits(cardType, list[i], btn);
-        var holderHeight = buttonHolder.offsetHeight;
+        let holderHeight = buttonHolder.offsetHeight;
         dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px; margin-left:200px");
     }
 }
 
 function AddTriangleForDLCUnits(type, string, div) {
-    var DLCCheck = CheckForDLCContent(type, string);
+    let DLCCheck = CheckForDLCContent(type, string);
     //console.log(DLCCheck);
     if (DLCCheck != null) {
-        var triangle = document.createElement("DIV");
+        let triangle = document.createElement("DIV");
         triangle.className = DLCCheck.replace(" ", "") + "triangle";
 
         // triangle.setAttribute("style", "top: -19px;right: -18px;");
@@ -771,7 +771,7 @@ function AddTriangleForDLCUnits(type, string, div) {
 
 function CheckForDLCContent(type, string) {
     if (type.toLowerCase().indexOf("unit") != -1) {
-        for (var i = 0; i < jsonUnits.length; i++) {
+        for (let i = 0; i < jsonUnits.length; i++) {
             if (jsonUnits[i].id == string) {
                 if ("DLC" in jsonUnits[i]) {
                     return jsonUnits[i].DLC;
@@ -780,7 +780,7 @@ function CheckForDLCContent(type, string) {
         }
     }
     if (type.toLowerCase() == "tome") {
-        for (var index = 0; index < jsonTomes.length; index++) {
+        for (let index = 0; index < jsonTomes.length; index++) {
             if (jsonTomes[index].id == string) {
                 if ("DLC" in jsonTomes[index]) {
                     return jsonTomes[index].DLC;
@@ -792,15 +792,15 @@ function CheckForDLCContent(type, string) {
 }
 
 function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         i,
         nameString = "";
-    var buttonHolder = document.getElementById("buttonHolder");
-    var btn = document.createElement("BUTTON");
+    let buttonHolder = document.getElementById("buttonHolder");
+    let btn = document.createElement("BUTTON");
     btn.type = "button";
 
     btn.innerHTML = overwrite + " (" + list.length + ")";
@@ -813,13 +813,14 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
     }
 
     buttonHolder.appendChild(btn);
-
+    let dataHolder;
+    let holderHeight = buttonHolder.offsetHeight;
     if (cardType != "unit" && cardType != "searchUnit") {
         btn.className = "w3-bar-item w3-button tablink";
-        var dataHolder = document.getElementById("dataHolder");
-        var holderHeight = buttonHolder.offsetHeight + 50;
+        dataHolder = document.getElementById("dataHolder");
+        holderHeight = buttonHolder.offsetHeight;
         dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        var div = document.createElement("DIV");
+        let div = document.createElement("DIV");
 
         div.className = "w3-container w3-border city";
         div.setAttribute("id", overwrite);
@@ -841,7 +842,6 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             showSkillFromList(list, overwrite);
             break;
         case "item":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showItemFromList(list, overwrite);
             break;
@@ -849,58 +849,48 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             showTraitFromList(list, overwrite);
             break;
         case "searchSkill":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showSkillFromList(list, overwrite);
             break;
         case "searchItem":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showItemFromList(list, overwrite);
             break;
         case "searchSiege":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showSiegeProjects(list, overwrite);
             break;
         case "searchEmpire":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showEmpireTrees(list, overwrite);
             break;
         case "searchTraits":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showTraitFromList(list, overwrite);
             break;
         case "searchDestiny":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showDestinyTraitsFromList(list, overwrite);
             break;
         case "searchStruct":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showStructures(list, overwrite);
             break;
         case "searchWorldStruct":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showWorldStructures(list, overwrite);
             break;
         case "searchSpell":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showSpellFromList(list, overwrite);
             break;
         case "tome":
-            var holderHeight = buttonHolder.offsetHeight;
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showTomeFromList2(list, overwrite);
             break;
         case "unit":
             btn.className = "collapsibleUnits";
-            var content = document.createElement("DIV");
+            let content = document.createElement("DIV");
             content.setAttribute("id", overwrite + "-button");
             content.className = "contentUnits";
             buttonHolder.append(content);
@@ -913,7 +903,7 @@ async function openDiv(evt, cityName, search) {
         currentView = cityName;
     }
 
-    var i, x, tablinks;
+    let i, x, tablinks;
     x = document.getElementsByClassName("city");
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
@@ -926,23 +916,23 @@ async function openDiv(evt, cityName, search) {
     }
     if (cityName.indexOf(",") != -1) {
         console.log("is array");
-        var parentDiv = document.getElementById("dataHolder");
+        let parentDiv = document.getElementById("dataHolder");
 
         // Get all direct children of the parent div
-        var children = parentDiv.children;
+        let children = parentDiv.children;
 
         // Loop through each child and set its display to "block"
-        for (var j = 0; j < children.length; j++) {
+        for (let j = 0; j < children.length; j++) {
             children[j].style.display = "block";
         }
     } else {
-        var currentEl = document.getElementById(cityName);
+        let currentEl = document.getElementById(cityName);
         if (currentEl != null) {
             currentEl.style.display = "block";
         }
 
-        var currenturl = window.location.href.split("?")[0];
-        var currentadditive = currenturl.split("&")[1];
+        let currenturl = window.location.href.split("?")[0];
+        let currentadditive = currenturl.split("&")[1];
         if (currentadditive === undefined) {
             currentadditive = "";
         }
@@ -951,7 +941,7 @@ async function openDiv(evt, cityName, search) {
         }
 
         if (sorting != undefined) {
-            var splits = sorting.split(":");
+            let splits = sorting.split(":");
             setTimeout(function () {
                 sortDivs(splits[0], splits[1]);
             }, 50);
@@ -970,9 +960,9 @@ function closeTabLinks(cityName) {
 }
 
 function CheckIfOptionalCavalry(name) {
-    var optional = false;
-    var i = "";
-    var j = "";
+    let optional = false;
+    let i = "";
+    let j = "";
     for (i in jsonUnits) {
         if (name === jsonUnits[i].id) {
             for (j in jsonUnits[i].secondary_passives) {
@@ -986,7 +976,7 @@ function CheckIfOptionalCavalry(name) {
 }
 
 function addUnitTypeIcon(a, holder, origin) {
-    var icontext,
+    let icontext,
         iconsrc,
         iconName,
         j,
@@ -999,7 +989,7 @@ function addUnitTypeIcon(a, holder, origin) {
             icontext = icontext.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
             icontext = icontext.replaceAll("<br></br>", "<br>");
 
-            var unitType = "";
+            let unitType = "";
             iconsrc = a;
             iconName = jsonUnitAbilities[j].name;
 
@@ -1058,7 +1048,7 @@ function addUnitTypeIcon(a, holder, origin) {
 }
 
 function addAbilityslot(a, holder, list, enchant) {
-    var abilityName,
+    let abilityName,
         abilityIcon,
         abilityDam,
         abilityEncht,
@@ -1092,7 +1082,7 @@ function addAbilityslot(a, holder, list, enchant) {
             abilityMod = "";
 
             if ("modifiers" in jsonUnitAbilities[j]) {
-                for (var l = 0; l < jsonUnitAbilities[j].modifiers.length; l++) {
+                for (let l = 0; l < jsonUnitAbilities[j].modifiers.length; l++) {
                     abilityName += '<span style="color:#addd9e;font-size: 20px">&#11049</span>';
                     abilityMod +=
                         "<bullet>" + AddTagIconsForStatusEffects(jsonUnitAbilities[j].modifiers[l].name) + "<br>";
@@ -1100,19 +1090,19 @@ function addAbilityslot(a, holder, list, enchant) {
                 }
             }
 
-            var combinedReq = "";
-            var m = "";
+            let combinedReq = "";
+            let m = "";
             for (m in abilityReq) {
                 combinedReq += abilityReq[m].requisite + ",";
             }
 
             abilityEncht = "";
-            var k = "";
-            var p = "";
-            var t = "";
+            let k = "";
+            let p = "";
+            let t = "";
 
             for (p = 0; p < list.length; p++) {
-                var foundEnchantment = false;
+                let foundEnchantment = false;
 
                 for (k = 0; k < jsonEnchantments.length; k++) {
                     if (jsonEnchantments[k].id === list[p].id) {
@@ -1185,6 +1175,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                 }
                             }
                         }
+                        let doubled;
                         if ("damage_change" in jsonEnchantments[k]) {
                             if (jsonEnchantments[k].requisites.length > 1) {
                                 if (jsonEnchantments[k].requisites[1].type.indexOf("*") != -1) {
@@ -1195,7 +1186,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                         if (abilityDam != "") {
                                             if (abilityType != "<repeatingaction></repeatingaction>") {
                                                 // double damage
-                                                var doubled = doubleNumbers(jsonEnchantments[k].damage_change);
+                                                doubled = doubleNumbers(jsonEnchantments[k].damage_change);
                                                 abilityDam = combineDamageStrings(abilityDam, doubled);
                                             } else {
                                                 abilityDam = combineDamageStrings(
@@ -1214,7 +1205,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                         if (abilityDam != "") {
                                             if (abilityType != "<repeatingaction></repeatingaction>") {
                                                 // double damage
-                                                var doubled = doubleNumbers(jsonEnchantments[k].damage_change);
+                                                doubled = doubleNumbers(jsonEnchantments[k].damage_change);
                                                 abilityDam = combineDamageStrings(abilityDam, doubled);
                                             } else {
                                                 abilityDam = combineDamageStrings(
@@ -1230,7 +1221,7 @@ function addAbilityslot(a, holder, list, enchant) {
                                     if (abilityDam != "") {
                                         if (abilityType != "<repeatingaction></repeatingaction>") {
                                             // double damage
-                                            var doubled = doubleNumbers(jsonEnchantments[k].damage_change);
+                                            doubled = doubleNumbers(jsonEnchantments[k].damage_change);
                                             abilityDam = combineDamageStrings(abilityDam, doubled);
                                         } else {
                                             abilityDam = combineDamageStrings(
@@ -1252,17 +1243,19 @@ function addAbilityslot(a, holder, list, enchant) {
             // add notes
 
             abilityNote = "";
-            var Cooldown = "";
-            var Once = "";
-            for (l in jsonUnitAbilities[j].notes) {
-                if (jsonUnitAbilities[j].notes[l] === undefined) {
-                } else {
-                    if (jsonUnitAbilities[j].notes[l].note.indexOf("Cooldown") != -1) {
-                        Cooldown = jsonUnitAbilities[j].notes[l].note;
-                    } else if (jsonUnitAbilities[j].notes[l].note.indexOf("once per") != -1) {
-                        Once = jsonUnitAbilities[j].notes[l].note;
+            let Cooldown = "";
+            let Once = "";
+            if ("notes" in jsonUnitAbilities[j]) {
+                for (let l = 0; l < jsonUnitAbilities[j].notes.length; l++) {
+                    if (jsonUnitAbilities[j].notes[l] === undefined) {
                     } else {
-                        abilityNote += "<br>" + jsonUnitAbilities[j].notes[l].note;
+                        if (jsonUnitAbilities[j].notes[l].note.indexOf("Cooldown") != -1) {
+                            Cooldown = jsonUnitAbilities[j].notes[l].note;
+                        } else if (jsonUnitAbilities[j].notes[l].note.indexOf("once per") != -1) {
+                            Once = jsonUnitAbilities[j].notes[l].note;
+                        } else {
+                            abilityNote += "<br>" + jsonUnitAbilities[j].notes[l].note;
+                        }
                     }
                 }
             }
@@ -1271,27 +1264,27 @@ function addAbilityslot(a, holder, list, enchant) {
             abilityRange = abilityRange + "<range></range>";
             abilityAcc = jsonUnitAbilities[j].accuracy + "<accuracy></accuracy>";
 
-            var tooltipName = document.createElement("SPAN");
-            var btn = document.createElement("DIV");
+            let tooltipName = document.createElement("SPAN");
+            let btn = document.createElement("DIV");
             /// tooltipName.style.fontSize = "20px";
             tooltipName.innerHTML = "test";
             btn.className = "unit_abilityslot";
             // if (n === true) {
             //   btn.style.backgroundColor = "rgb(73, 0, 80)";
             //}
-            var imag = document.createElement("IMG");
+            let imag = document.createElement("IMG");
             imag.className = "unit_ability_icon";
-            //  var spa = document.createElement("SPAN");
-            var tex = document.createElement("DIV");
+            //  let spa = document.createElement("SPAN");
+            let tex = document.createElement("DIV");
             tex.className = "tooltip";
             tex.innerHTML = abilityName;
             tex.setAttribute("style", "color:white");
             // tex.setAttribute('onclick', '');
-            var dam = document.createElement("DIV");
+            let dam = document.createElement("DIV");
             dam.className = "ability_damage";
             dam.innerHTML = abilityDam;
 
-            var abilityIconType = "";
+            let abilityIconType = "";
             imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
 
             abilityIconType = GetAbilityBackground(abilityDam);
@@ -1306,21 +1299,22 @@ function addAbilityslot(a, holder, list, enchant) {
             imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
             imag.setAttribute("width", "40");
             imag.setAttribute("height", "40");
+            let imageExtra;
             if (Cooldown != "") {
-                var imageExtra = document.createElement("IMG");
+                imageExtra = document.createElement("IMG");
                 imageExtra.setAttribute("src", "/aow4db/Icons/Text/turn.png");
                 imageExtra.setAttribute("style", " position: absolute; height: 18px; left: 0px;bottom: 4px;");
                 btn.append(imageExtra);
             }
 
             if (Once != "") {
-                var imageExtra = document.createElement("IMG");
+                imageExtra = document.createElement("IMG");
                 imageExtra.setAttribute("src", "/aow4db/Icons/Text/once.png");
                 imageExtra.setAttribute("style", " position: absolute; height: 18px; left: 0px;bottom: 4px;");
                 btn.append(imageExtra);
             }
 
-            var spa = GetAbilityToolTip(
+            let spa = GetAbilityToolTip(
                 jsonUnitAbilities[j],
                 abilityDam,
                 abilityName,
@@ -1356,7 +1350,7 @@ function addAbilityslot(a, holder, list, enchant) {
             // tex.appendChild(spa);
             btn.ability = jsonUnitAbilities[j];
             btn.appendChild(imag);
-            var divider = document.createElement("div");
+            let divider = document.createElement("div");
             divider.setAttribute("style", "display: flex;justify-content: space-between;width: 100%;");
             divider.append(tex);
             divider.append(dam);
@@ -1371,12 +1365,12 @@ function addAbilityslot(a, holder, list, enchant) {
 
 function doubleNumbers(inputString) {
     // Regular expression to match numbers
-    var regex = /\b\d+\b/g;
+    let regex = /\b\d+\b/g;
 
     // Replace each matched number with its double
-    var result = inputString.replace(regex, function (match) {
+    let result = inputString.replace(regex, function (match) {
         // Convert the matched number to an integer and double it
-        var doubledNumber = parseInt(match) * 2;
+        let doubledNumber = parseInt(match) * 2;
         // Return the doubled number as a string
         return doubledNumber.toString();
     });
@@ -1485,7 +1479,7 @@ function getNormalizedPosition(event) {
 function updateHoverDivPosition(event, secondary) {
     const settings = getUserSettings();
 
-    var offset = 2;
+    let offset = 2;
     let hoverDiv = null;
     if (secondary != undefined) {
         hoverDiv = document.getElementById("hoverDiv2");
@@ -1500,7 +1494,7 @@ function updateHoverDivPosition(event, secondary) {
         offset = 10;
     }
 
-    var normalizedPos = getNormalizedPosition(event);
+    let normalizedPos = getNormalizedPosition(event);
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
@@ -1533,25 +1527,26 @@ function getNormalizedWidth(element) {
 }
 
 function GetAbilityBackground(abilityDam) {
+    let abilityIconType;
     if (abilityDam != undefined) {
         splitDamageString = abilityDam.split(">");
         if (splitDamageString[0].indexOf("phys") != -1) {
-            var abilityIconType = "ability_icon_phys";
+            abilityIconType = "ability_icon_phys";
         } else if (splitDamageString[0].indexOf("frost") != -1) {
-            var abilityIconType = "ability_icon_frost";
+            abilityIconType = "ability_icon_frost";
         } else if (splitDamageString[0].indexOf("blight") != -1) {
-            var abilityIconType = "ability_icon_blight";
+            abilityIconType = "ability_icon_blight";
         } else if (splitDamageString[0].indexOf("spirit") != -1) {
-            var abilityIconType = "ability_icon_spirit";
+            abilityIconType = "ability_icon_spirit";
         } else if (splitDamageString[0].indexOf("fire") != -1) {
-            var abilityIconType = "ability_icon_fire";
+            abilityIconType = "ability_icon_fire";
         } else if (splitDamageString[0].indexOf("lightning") != -1) {
-            var abilityIconType = "ability_icon_light";
+            abilityIconType = "ability_icon_light";
         } else {
-            var abilityIconType = "ability_icon";
+            abilityIconType = "ability_icon";
         }
     } else {
-        var abilityIconType = "ability_icon";
+        abilityIconType = "ability_icon";
     }
     return abilityIconType;
 }
@@ -1606,8 +1601,8 @@ function GetAbilityToolTip(
 ) {
     // block one, header
     // image
-    var spa = document.createElement("SPAN");
-    var abilityHighlighter = document.createElement("DIV");
+    let spa = document.createElement("SPAN");
+    let abilityHighlighter = document.createElement("DIV");
     abilityHighlighter.className = "abilityHighLighter";
     abilityHighlighter.innerHTML =
         "<img style=\"float:left; height:50px; width:50px; background-image:url('/aow4db/Icons/Interface/" +
@@ -1618,14 +1613,14 @@ function GetAbilityToolTip(
 
     // name and damage
 
-    var line1 = document.createElement("DIV");
+    let line1 = document.createElement("DIV");
     line1.setAttribute("style", "display: flex;justify-content: space-between;");
-    var nameHolder = document.createElement("DIV");
+    let nameHolder = document.createElement("DIV");
     nameHolder.className = "abilityLineSlot";
     nameHolder.setAttribute("style", "color:#d7c297;");
     nameHolder.innerHTML = abilityName.toUpperCase();
 
-    var damageHolder = document.createElement("DIV");
+    let damageHolder = document.createElement("DIV");
     damageHolder.className = "abilityLineSlot";
     damageHolder.innerHTML = abilityDam;
 
@@ -1634,26 +1629,26 @@ function GetAbilityToolTip(
     abilityHighlighter.append(line1);
 
     // block accuracy range abilitytype
-    var line2 = document.createElement("DIV");
+    let line2 = document.createElement("DIV");
     line2.setAttribute("style", "display: flex;justify-content: space-between;");
-    var accrangeHolder = document.createElement("DIV");
+    let accrangeHolder = document.createElement("DIV");
 
-    var accuracy = document.createElement("DIV");
+    let accuracy = document.createElement("DIV");
     accuracy.innerHTML = abilityAcc;
     accuracy.className = "abilityLineSlot";
 
-    var range = document.createElement("DIV");
+    let range = document.createElement("DIV");
     range.innerHTML = abilityRange;
     range.className = "abilityLineSlot";
 
     // action point type
-    var actionPoint = document.createElement("DIV");
+    let actionPoint = document.createElement("DIV");
     actionPoint.innerHTML = ability.actionPoints;
     actionPoint.className = "abilityLineSlot";
 
     // action point name
 
-    var actionPointName = LookUpActionPointsName(ability.actionPoints);
+    let actionPointName = LookUpActionPointsName(ability.actionPoints);
     if (actionPointName != undefined) {
         actionPoint.innerHTML +=
             "<br>" + '<span style="color: lightskyblue; font-size:14px">' + actionPointName + "</span>";
@@ -1663,7 +1658,7 @@ function GetAbilityToolTip(
     accrangeHolder.appendChild(range);
     ////spa.append(accrangeHolder);
 
-    var typeHolder = document.createElement("DIV");
+    let typeHolder = document.createElement("DIV");
     typeHolder.appendChild(actionPoint);
 
     line2.appendChild(accrangeHolder);
@@ -1673,7 +1668,7 @@ function GetAbilityToolTip(
     spa.append(abilityHighlighter);
 
     // block 2, descrp
-    var abilityDescr = ability.description;
+    let abilityDescr = ability.description;
 
     abilityDescr = abilityDescr.replaceAll("</br>", "");
     abilityDescr = AddTagIconsForStatusEffects(abilityDescr);
@@ -1692,14 +1687,15 @@ function GetAbilityToolTip(
 
     spa.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
 
-    var bottomLine = document.createElement("DIV");
+    let bottomLine = document.createElement("DIV");
     bottomLine.setAttribute("style", "display: flex;justify-content: space-between;");
-    var reqs = document.createElement("DIV");
+    let reqs = document.createElement("DIV");
     if (abilityReq != "") {
-        var i = "";
+        let i = "";
         for (i in abilityReq) {
-            var newReq = document.createElement("DIV");
+            let newReq = document.createElement("DIV");
             newReq.innerHTML = abilityReq[i].requisite;
+            newReq.setAttribute("style", "background-color:#2e2e28");
             if (abilityReq[i].requisite == "Support") {
                 newReq.setAttribute("style", "background-color:#263b38");
             }
@@ -1728,14 +1724,14 @@ function GetAbilityToolTip(
     bottomLine.appendChild(reqs);
 
     if (cooldown != "") {
-        var cooldownDiv = document.createElement("DIV");
+        let cooldownDiv = document.createElement("DIV");
         cooldownDiv.innerHTML = cooldown;
         cooldownDiv.setAttribute("style", "margin:5px");
         //  cooldownDiv.setattri() = "requisiteSlot";
         bottomLine.appendChild(cooldownDiv);
     }
     if (once != "") {
-        var onceDiv = document.createElement("DIV");
+        let onceDiv = document.createElement("DIV");
         onceDiv.innerHTML = "<once></once> Once per battle";
         onceDiv.setAttribute("style", "margin:5px");
         //  cooldownDiv.setattri() = "requisiteSlot";
@@ -1771,7 +1767,7 @@ function LookUpActionPointsName(string) {
 }
 
 function addPassiveslot(a, div, enchant) {
-    var abilityName,
+    let abilityName,
         abilityIcon,
         abilityDescr,
         j = "";
@@ -1781,12 +1777,12 @@ function addPassiveslot(a, div, enchant) {
             abilityIcon = jsonUnitAbilities[j].slug;
             abilityDescr = jsonUnitAbilities[j].description;
 
-            var btn = document.createElement("DIV");
+            let btn = document.createElement("DIV");
             btn.className = "unit_passiveslot";
-            var imag = document.createElement("IMG");
+            let imag = document.createElement("IMG");
             imag.className = "unit_ability_icon";
 
-            var tex = document.createElement("DIV");
+            let tex = document.createElement("DIV");
             tex.className = "tooltip";
             tex.setAttribute("onclick", "");
             tex.innerHTML = abilityName;
@@ -1803,7 +1799,7 @@ function addPassiveslot(a, div, enchant) {
                 );
             }
 
-            var spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
+            let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
             div.appendChild(btn);
 
             btn.appendChild(imag);
@@ -1817,7 +1813,7 @@ function addPassiveslot(a, div, enchant) {
 }
 
 function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
-    var abilityName,
+    let abilityName,
         abilityIcon,
         abilityDescr,
         j = "";
@@ -1831,12 +1827,12 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
     abilityIcon = enchantment.id;
     abilityDescr = descr;
 
-    var btn = document.createElement("DIV");
+    let btn = document.createElement("DIV");
     btn.className = "unit_passiveslot";
-    var imag = document.createElement("IMG");
+    let imag = document.createElement("IMG");
     imag.className = "unit_ability_icon";
 
-    var tex = document.createElement("DIV");
+    let tex = document.createElement("DIV");
     tex.className = "tooltip";
     tex.setAttribute("onclick", "");
     tex.innerHTML = abilityName;
@@ -1851,7 +1847,7 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
         "background-image: linear-gradient(to right, rgb(95 47 162 / 0%), rgb(146 47 162 / 25%), rgb(222 88 228 / 50%), rgb(138 47 162 / 26%), rgb(151 47 162 / 0%));"
     );
 
-    var spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
+    let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
     div.appendChild(btn);
 
     btn.appendChild(imag);
@@ -1863,7 +1859,7 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
 }
 
 function CreateUniquePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
-    var spa = document.createElement("SPAN");
+    let spa = document.createElement("SPAN");
 
     spa.innerHTML =
         '<img style="float:left; height:30px; width:30px" src="/aow4db/Icons/SpellIcons/' +
@@ -1879,7 +1875,7 @@ function CreateUniquePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) 
 }
 
 function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
-    var spa = document.createElement("SPAN");
+    let spa = document.createElement("SPAN");
 
     abilityDescr = abilityDescr.replaceAll("<bulletlist></bullet>", "<bulletlist>");
     abilityDescr = abilityDescr.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
@@ -1945,30 +1941,31 @@ function combineDamageStrings(str1, str2) {
 }
 
 function addResistanceSlot(a, resistance, holder) {
-    var abilityName,
+    let abilityName,
         abilityIcon,
         abilityDescr,
         abilityDam = "";
-    for (var j = 0; j < jsonUnitAbilities.length; j++) {
+    for (let j = 0; j < jsonUnitAbilities.length; j++) {
         if (a === jsonUnitAbilities[j].slug) {
             abilityName = jsonUnitAbilities[j].name;
+            let firstPart;
             if (abilityName.indexOf("Immu") != -1) {
-                var firstPart = abilityName.split(" ")[0];
+                firstPart = abilityName.split(" ")[0];
             } else {
-                var nameclean = abilityName.split(">")[1];
-                var firstPart = nameclean.split(" ")[0];
+                let nameclean = abilityName.split(">")[1];
+                firstPart = nameclean.split(" ")[0];
             }
 
             abilityIcon = jsonUnitAbilities[j].icon;
             abilityDescr = jsonUnitAbilities[j].description;
             abilityDam = jsonUnitAbilities[j].damage;
-            var btn = document.createElement("DIV");
+            let btn = document.createElement("DIV");
             btn.className = "resistance_icon";
             btn.setAttribute("id", abilityName);
-            var imag = document.createElement("IMG");
+            let imag = document.createElement("IMG");
             imag.className = "unit_ability_icon";
 
-            var spa = document.createElement("SPAN");
+            let spa = document.createElement("SPAN");
 
             spa.innerHTML =
                 "<p>" +
@@ -1979,18 +1976,19 @@ function addResistanceSlot(a, resistance, holder) {
                 firstPart +
                 ".";
 
-            var num = "";
+            let num = "";
+            let split;
             if (a.indexOf("weakness") !== -1) {
-                var split = a.split("weakness_");
+                split = a.split("weakness_");
                 num = "-" + split[1];
             }
             if (a.indexOf("resistance") !== -1) {
-                var split = a.split("resistance_");
+                split = a.split("resistance_");
                 num = split[1];
             }
 
             if (a.indexOf("immun") !== -1) {
-                var split = a.split("resistance_");
+                split = a.split("resistance_");
                 num = "x";
             }
 
@@ -2034,16 +2032,16 @@ function addResistanceSlot(a, resistance, holder) {
             }
 
             if (a.indexOf("weakness") !== -1) {
-                var split = a.split("weakness_");
+                split = a.split("weakness_");
                 abilityDam = '<p class="resistanceNumber" style="color:red;">-' + split[1];
             }
             if (a.indexOf("resistance") !== -1) {
-                var split = a.split("resistance_");
+                split = a.split("resistance_");
                 abilityDam = '<p class="resistanceNumber" style="color:lawngreen;">' + split[1];
             }
 
             if (a.indexOf("immun") !== -1) {
-                var split = a.split("resistance_");
+                split = a.split("resistance_");
                 abilityDam = '<p class="resistanceNumber">IMM';
             }
 
@@ -2064,15 +2062,15 @@ function addResistanceSlot(a, resistance, holder) {
 }
 
 function addstatusResistanceSlot(a, holder) {
-    var abilityName,
+    let abilityName,
         abilityIcon,
         abilityDescr,
         abilityDam = "";
 
-    var btn = document.createElement("DIV");
+    let btn = document.createElement("DIV");
     btn.className = "resistance_icon";
     btn.id = "statusResistance";
-    var imag = document.createElement("IMG");
+    let imag = document.createElement("IMG");
     imag.className = "unit_ability_icon";
 
     spa = document.createElement("SPAN");
@@ -2102,8 +2100,8 @@ function addstatusResistanceSlot(a, holder) {
 }
 
 function EliteSkill(a) {
-    var nam = "";
-    for (var j = 0; j < jsonUnitAbilities.length; j++) {
+    let nam = "";
+    for (let j = 0; j < jsonUnitAbilities.length; j++) {
         if (a === jsonUnitAbilities[j].slug) {
             nam = jsonUnitAbilities[j].name;
         }
@@ -2112,21 +2110,21 @@ function EliteSkill(a) {
 }
 
 function addEliteSkill(a) {
-    var abilityName,
+    let abilityName,
         abilityIcon,
         abilityDescr = "";
-    for (var j = 0; j < jsonUnitAbilities.length; j++) {
+    for (let j = 0; j < jsonUnitAbilities.length; j++) {
         if (a === jsonUnitAbilities[j].slug) {
             abilityName = jsonUnitAbilities[j].name;
             abilityIcon = jsonUnitAbilities[j].slug;
             abilityDescr = jsonUnitAbilities[j].description;
 
-            var btn = document.createElement("DIV");
+            let btn = document.createElement("DIV");
             btn.className = "unit_elite_skill";
-            var imag = document.createElement("IMG");
+            let imag = document.createElement("IMG");
             imag.className = "unit_ability_icon";
-            var spa = document.createElement("SPAN");
-            var tex = document.createElement("DIV");
+            let spa = document.createElement("SPAN");
+            let tex = document.createElement("DIV");
             tex.className = "tooltip";
             tex.setAttribute("onclick", "");
             tex.innerHTML = abilityName;
@@ -2151,9 +2149,9 @@ async function spawnCards(list, divID) {
     if (divID === undefined) {
         divID = "units";
     }
-    var doc = document.getElementById(divID);
-    for (var i = 0; i < list.length; i++) {
-        var iDiv = unit_card_template.content.cloneNode(true);
+    let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        let iDiv = unit_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
 }
@@ -2172,9 +2170,9 @@ async function spawnCard(string, divID) {
         divID = "units";
     }
 
-    var doc = document.getElementById(divID);
+    let doc = document.getElementById(divID);
 
-    var iDiv = unit_card_template.content.cloneNode(true);
+    let iDiv = unit_card_template.content.cloneNode(true);
     doc.appendChild(iDiv);
 }
 
@@ -2183,10 +2181,10 @@ async function showUnitFromString(string, divID, subcultureCheck, resID) {
     showUnit(string, subcultureCheck, resID);
 }
 
-var ascendingOrder = false;
+let ascendingOrder = false;
 
 function sortDivs(sortType, savedOrder) {
-    var i = "";
+    let i = "";
 
     // 2 - Detemine the selector
     if (savedOrder != null) {
@@ -2195,12 +2193,12 @@ function sortDivs(sortType, savedOrder) {
         ascendingOrder = !ascendingOrder;
     }
 
-    var buttontargets = document.getElementsByClassName("sortingButton");
+    let buttontargets = document.getElementsByClassName("sortingButton");
 
     for (i in buttontargets) {
         buttontargets[i].className = "sortingButton";
     }
-    var currentbutton = document.getElementById(sortType + "-button");
+    let currentbutton = document.getElementById(sortType + "-button");
 
     if (ascendingOrder) {
         currentbutton.className += " activeDown";
@@ -2213,16 +2211,16 @@ function sortDivs(sortType, savedOrder) {
     const isNumeric = true;
 
     // 4 - Select all elements
-    var container;
+    let container;
     if (currentView === "") {
         container = document.getElementById("dataHolder");
     } else {
         container = document.getElementById(currentView);
     }
 
-    var element = [...container.querySelectorAll(".mod_card")];
+    let element = [...container.querySelectorAll(".mod_card")];
 
-    var selector = (element) => element.querySelector(".mod_name").innerHTML;
+    let selector = (element) => element.querySelector(".mod_name").innerHTML;
     if (sortType === "tier") {
         selector = (element) => element.querySelector(".spell_tier").innerHTML;
     } else if (sortType === "cost") {
@@ -2242,15 +2240,15 @@ function sortDivs(sortType, savedOrder) {
         .sort((elementA, elementB) => {
             const [firstElement, secondElement] = ascendingOrder ? [elementA, elementB] : [elementB, elementA];
 
-            var textOfFirstElement = selector(firstElement);
+            let textOfFirstElement = selector(firstElement);
 
-            var textOfSecondElement = selector(secondElement);
+            let textOfSecondElement = selector(secondElement);
 
             if (sortType === "tier") {
-                var fields = textOfFirstElement.split("Tier ");
+                let fields = textOfFirstElement.split("Tier ");
 
                 textOfFirstElement = deromanize(fields[1]);
-                var fields2 = textOfSecondElement.split("Tier ");
+                let fields2 = textOfSecondElement.split("Tier ");
                 textOfSecondElement = deromanize(fields2[1]);
                 //console.log("first: " + fields2[1]);
             }
@@ -2259,19 +2257,19 @@ function sortDivs(sortType, savedOrder) {
         })
         .forEach((element) => parentElement.appendChild(element));
 
-    var currenturl = window.location.href.split("&")[0];
+    let currenturl = window.location.href.split("&")[0];
 
     window.history.replaceState({}, "foo", currenturl + "&sort=" + sortType + ":" + ascendingOrder);
     sorting = sortType + ":" + ascendingOrder;
 }
 
 async function SetCollapsibleStuff() {
-    var coll = document.getElementsByClassName("collapsibleUnits");
+    let coll = document.getElementsByClassName("collapsibleUnits");
 
-    for (i = 0; i < coll.length; i++) {
+    for (let i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function () {
-            var contents = document.getElementsByClassName("contentUnits");
-            var content = this.nextElementSibling;
+            let contents = document.getElementsByClassName("contentUnits");
+            let content = this.nextElementSibling;
 
             for (j = 0; j < contents.length; j++) {
                 if (contents[j].style != null) {
@@ -2292,35 +2290,34 @@ async function SetCollapsibleStuff() {
                 content.style.display = "grid";
             }
 
-            var buttonHolder = document.getElementById("buttonHolder");
-            var holderHeight = buttonHolder.offsetHeight;
-            var dataHolder = document.getElementById("dataHolder");
+            let buttonHolder = document.getElementById("buttonHolder");
+            let holderHeight = buttonHolder.offsetHeight;
+            let dataHolder = document.getElementById("dataHolder");
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px; margin-left:200px");
         });
     }
 
-    var buttonHolder = document.getElementById("buttonHolder");
-    var holderHeight = buttonHolder.offsetHeight;
-    var dataHolder = document.getElementById("dataHolder");
+    let buttonHolder = document.getElementById("buttonHolder");
+    let holderHeight = buttonHolder.offsetHeight;
+    let dataHolder = document.getElementById("dataHolder");
     dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;; margin-left:200px");
 }
 
 async function SetLevelUpStuff() {
-    var coll = document.getElementsByClassName("collapsibleLevelup");
-    var content = document.getElementsByClassName("contentLevelup");
-    var i = "";
+    let coll = document.getElementsByClassName("collapsibleLevelup");
+    let content = document.getElementsByClassName("contentLevelup");
 
-    for (i = 0; i < coll.length; i++) {
+    for (let i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function () {
             //this.classList.toggle("active");
 
-            var content = this.nextElementSibling;
+            let content = this.nextElementSibling;
             if (content.style.display === "block") {
                 content.style.display = "none";
             } else {
                 content.style.display = "block";
             }
-            //  var j = "";
+            //  let j = "";
             // for (j = 0; j < content.length; j++) {
             //   coll[j].classList.toggle("active");
 
@@ -2332,16 +2329,16 @@ async function SetLevelUpStuff() {
     const product = searchParams.get("type");
 
     if (product != undefined) {
-        var splits = product.split("&");
+        let splits = product.split("&");
         closeTabLinks(product);
 
         document.getElementById(splits[0] + "-button").className += " w3-red";
 
         // grab the subculture if available
 
-        var subCulture = splits[0].split(/(?=[A-Z])/);
+        let subCulture = splits[0].split(/(?=[A-Z])/);
         if (subCulture.length > 1) {
-            var test = subCulture.slice(1).join("");
+            let test = subCulture.slice(1).join("");
             await showSubDiv(null, test);
         }
 
@@ -2351,12 +2348,12 @@ async function SetLevelUpStuff() {
 }
 
 function SetUpSpawnTable() {
-    var coll = document.getElementsByClassName("collapsible");
-    var content = document.getElementsByClassName("content");
-    var j = "";
+    let coll = document.getElementsByClassName("collapsible");
+    let content = document.getElementsByClassName("content");
+    let j = "";
     for (j in content) {
         coll[j].classList.toggle("active");
-        //  var content = this.nextElementSibling;
+        //  let content = this.nextElementSibling;
         if (content[j].style.display === "grid") {
             content[j].style.display = "none";
         } else {
@@ -2367,7 +2364,7 @@ function SetUpSpawnTable() {
 
 function SetUpCombatEnc() {
     // Get all collapsible elements
-    var collapsibles = document.getElementsByClassName("collapsible");
+    let collapsibles = document.getElementsByClassName("collapsible");
 
     // Iterate over each collapsible element
     for (const collapsible of collapsibles) {
@@ -2377,7 +2374,7 @@ function SetUpCombatEnc() {
             this.classList.toggle("active");
 
             // Get the next sibling element (which should be the content)
-            var contentElement = this.nextElementSibling;
+            let contentElement = this.nextElementSibling;
 
             // Toggle the display style of the content element
             if (contentElement.style.display === "grid") {
@@ -2393,9 +2390,9 @@ async function spawnEquipCards(list, divID) {
     if (divID === undefined) {
         divID = "equip";
     }
-    var doc = document.getElementById(divID);
-    for (var i = 0; i < list.length; i++) {
-        var iDiv = item_card_template.content.cloneNode(true);
+    let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        let iDiv = item_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
 }
@@ -2403,7 +2400,7 @@ async function spawnEquipCards(list, divID) {
 async function showEquipmentFromList(list, divID) {
     await spawnEquipCards(list, divID);
 
-    /* for (var i = 0; i < list.length; i++) {
+    /* for (let i = 0; i < list.length; i++) {
 
          showEquipment(list[i], divID);
 
@@ -2413,12 +2410,12 @@ async function showEquipmentFromList(list, divID) {
 async function showSiegeProjects(list) {
     if (list === undefined) {
         await spawnSpellCards(jsonSiegeProjects, "dataHolder");
-        for (var i = 0; i < jsonSiegeProjects.length; i++) {
+        for (let i = 0; i < jsonSiegeProjects.length; i++) {
             showSiegeProject(jsonSiegeProjects[i].name, true);
         }
     } else {
         await spawnSpellCards(list, "Siege Projects");
-        for (i in list) {
+        for (let i = 0; i < list.length; i++) {
             showSiegeProject(list[i], true);
         }
     }
@@ -2426,21 +2423,21 @@ async function showSiegeProjects(list) {
 
 async function showStructures(list) {
     await spawnSpellCards(list, "Structures");
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showStructure(list[i], true);
     }
 }
 
 async function showEmpireTrees(list) {
     await spawnSpellCards(list, "Empire Tree");
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showEmpireTree(list[i]);
     }
 }
 
 async function showWorldStructures(list) {
     await spawnStructureCards(list, "World Structures");
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showWorldStructure(list[i]);
     }
 }
@@ -2449,9 +2446,9 @@ async function spawnTomeCards(list, divID) {
     if (divID === undefined) {
         divID = "tome";
     }
-    var doc = document.getElementById(divID);
+    let doc = document.getElementById(divID);
 
-    var iDiv = tome_card_template.content.cloneNode(true);
+    let iDiv = tome_card_template.content.cloneNode(true);
     doc.appendChild(iDiv);
 }
 
@@ -2469,9 +2466,9 @@ async function spawnSpellCards(list, divID) {
     if (divID === undefined) {
         divID = "spell";
     }
-    var doc = document.getElementById(divID);
-    for (var i = 0; i < list.length; i++) {
-        var iDiv = spell_card_template.content.cloneNode(true);
+    let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        let iDiv = spell_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
 }
@@ -2480,10 +2477,10 @@ async function spawnItemCards(list, divID) {
     if (divID === undefined) {
         divID = "item";
     }
-    var j = "";
-    var doc = document.getElementById(divID);
-    for (var i = 0; i < list.length; i++) {
-        var iDiv = item_card_template.content.cloneNode(true);
+    let j = "";
+    let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        let iDiv = item_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
 }
@@ -2492,10 +2489,10 @@ async function spawnSkillCards(list, divID) {
     if (divID === undefined) {
         divID = "item";
     }
-    var j = "";
-    var doc = document.getElementById(divID);
-    for (var i = 0; i < list.length; i++) {
-        var iDiv = skill_card_template.content.cloneNode(true);
+    let j = "";
+    let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        let iDiv = skill_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
 }
@@ -2504,9 +2501,9 @@ async function spawnSpellCardSingle(list, divID) {
     if (divID === undefined) {
         divID = "spell";
     }
-    var doc = document.getElementById(divID);
+    let doc = document.getElementById(divID);
 
-    var iDiv = spell_card_template.content.cloneNode(true);
+    let iDiv = spell_card_template.content.cloneNode(true);
     doc.appendChild(iDiv);
 }
 
@@ -2514,18 +2511,18 @@ async function spawnTomeCardSingle(list, divID) {
     if (divID === undefined) {
         divID = "tome";
     }
-    var doc = document.getElementById(divID);
+    let doc = document.getElementById(divID);
 
-    var iDiv = tome_card_template.content.cloneNode(true);
+    let iDiv = tome_card_template.content.cloneNode(true);
     doc.appendChild(iDiv);
 }
 async function spawnStructureCardSingle(list, divID) {
     if (divID === undefined) {
         divID = "spell";
     }
-    var doc = document.getElementById(divID);
+    let doc = document.getElementById(divID);
 
-    var iDiv = structure_card_template.content.cloneNode(true);
+    let iDiv = structure_card_template.content.cloneNode(true);
     doc.appendChild(iDiv);
 }
 
@@ -2533,9 +2530,9 @@ async function spawnStructureCards(list, divID) {
     if (divID === undefined) {
         divID = "spell";
     }
-    var doc = document.getElementById(divID);
-    for (var i = 0; i < list.length; i++) {
-        var iDiv = structure_card_template.content.cloneNode(true);
+    let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        let iDiv = structure_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
     }
 }
@@ -2543,14 +2540,14 @@ async function spawnStructureCards(list, divID) {
 async function showSpellFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showSpell(list[i], true);
     }
 }
 async function showHeroTraitFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showHeroTrait(list[i].id, true);
     }
 }
@@ -2558,7 +2555,7 @@ async function showHeroTraitFromList(list, divID) {
 async function showHeroGovFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showHeroGov(list[i].id, true);
     }
 }
@@ -2566,7 +2563,7 @@ async function showHeroGovFromList(list, divID) {
 async function showSkillFromList(list, divID) {
     await spawnSkillCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         // check if has description
         if ("description" in list[i]) {
             showSkill(list[i], "", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name);
@@ -2579,7 +2576,7 @@ async function showSkillFromList(list, divID) {
 async function showTraitFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showTrait(list[i]);
     }
 }
@@ -2587,7 +2584,7 @@ async function showTraitFromList(list, divID) {
 async function showDestinyTraitsFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showDestinyTrait(list[i]);
     }
 }
@@ -2595,16 +2592,16 @@ async function showDestinyTraitsFromList(list, divID) {
 async function showItemFromList(list, divID) {
     await spawnItemCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showItem(list[i]);
     }
 }
 
 async function showCosmicHappeningsWithArgument(argumentType, divID) {
-    var list = [];
+    let list = [];
     list = findCosmicHappeningsWithArgument(argumentType);
     await spawnStructureCards(list, divID);
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showCosmicHappening(list[i]);
     }
 }
@@ -2612,51 +2609,51 @@ async function showCosmicHappeningsWithArgument(argumentType, divID) {
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
     await spawnStructureCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showWorldStructure(list[i]);
     }
 }
 async function showStructuresWithArgument(argument, divID, argumentType, includeProvince) {
-    var list = [];
+    let list = [];
     list = findStructuresWithArgument(argument, argumentType, includeProvince);
 
     await spawnStructureCards(list, divID);
 
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         showStructure(list[i], true);
     }
 }
 
 async function showItemsWithArgument(argumentType, overwritetext) {
-    var list = [];
+    let list = [];
     list = findItemsWithArgument(argumentType);
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "item");
 }
 
 async function showSkillsWithArgument(signature, argumentType, overwritetext) {
-    var list = [];
+    let list = [];
     list = findSkillsWithArgument(signature, argumentType);
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "skill");
 }
 
 async function showHeroAmbitions() {
-    var list = [];
+    let list = [];
     list = findHeroAmbition();
 
     SetCollapsibleButtonsAndDivs("Hero Ambitions", list, "heroTrait");
 }
 
 async function showHeroGovernance() {
-    var list = [];
+    let list = [];
     list = findHeroGovernance();
 
     SetCollapsibleButtonsAndDivs("Hero Governance", list, "heroGov");
 }
 
 async function showSpellsWithArgument(argument, argumentType, overwritetext) {
-    var list = [];
+    let list = [];
     list = findSpellsWithArgument(argument, argumentType);
 
     if (overwritetext.indexOf(">") != -1) {
@@ -2668,7 +2665,7 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
 }
 
 async function showTraitsWithArgument(argument, overwritetext, affinity) {
-    var list = [];
+    let list = [];
     list = findTraitsWithArgument(argument, affinity);
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "trait");
@@ -2676,7 +2673,7 @@ async function showTraitsWithArgument(argument, overwritetext, affinity) {
 
 async function showSpellFromString(string, divID) {
     await spawnSpellCardSingle(string, divID);
-    var spellCard = showSpell(string, true);
+    let spellCard = showSpell(string, true);
     return spellCard;
 }
 
@@ -2702,7 +2699,7 @@ async function showStructureFromString(string, divID) {
 
 async function showHeroSkillFromString(string, divID) {
     await spawnSpellCardSingle(string, divID);
-    var skill = findHeroSkill(string);
+    let skill = findHeroSkill(string);
 
     // check if has description
     if ("description" in skill) {
@@ -2713,7 +2710,7 @@ async function showHeroSkillFromString(string, divID) {
 }
 
 function findHeroSkill(skillID) {
-    for (var i = 0; i < jsonHeroSkills.length; i++) {
+    for (let i = 0; i < jsonHeroSkills.length; i++) {
         if (jsonHeroSkills[i].id === skillID) {
             return jsonHeroSkills[i];
         }
@@ -2721,9 +2718,9 @@ function findHeroSkill(skillID) {
 }
 
 function findItemsWithArgument(argumentType) {
-    var j = "";
+    let j = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
 
     for (j in jsonHeroItems) {
         if (jsonHeroItems[j].slot.indexOf(argumentType) !== -1 && jsonHeroItems[j].tier != undefined) {
@@ -2735,9 +2732,9 @@ function findItemsWithArgument(argumentType) {
 }
 
 function findSkillsWithArgument(signature, argumentType) {
-    var j = "";
+    let j = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
     if (signature === "") {
         for (j in jsonHeroSkills) {
             if ("category_name" in jsonHeroSkills[j]) {
@@ -2797,9 +2794,9 @@ function findSkillsWithArgument(signature, argumentType) {
 }
 
 function findHeroGovernance() {
-    var j = "";
+    let j = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
 
     for (j in jsonHeroGovernance) {
         if ("type" in jsonHeroGovernance[j]) {
@@ -2821,9 +2818,9 @@ function findHeroGovernance() {
 }
 
 function findHeroAmbition() {
-    var j = "";
+    let j = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
 
     for (j in jsonHeroAmbitions) {
         if (!isInArray(finalCheckedList, jsonHeroAmbitions[j])) {
@@ -2841,8 +2838,8 @@ function findHeroAmbition() {
 }
 
 function findEnchantmentsSpells() {
-    var enchantmentList = [];
-    for (var j = 0; j < jsonSpells.length; j++) {
+    let enchantmentList = [];
+    for (let j = 0; j < jsonSpells.length; j++) {
         if (jsonSpells[j].spellType.indexOf("Unit Enchantment") != -1) {
             enchantmentList.push(jsonSpells[j]);
         }
@@ -2851,7 +2848,7 @@ function findEnchantmentsSpells() {
 }
 
 function findSpellsWithArgument(argumentaffinity, argumentType) {
-    var i,
+    let i,
         output,
         affinity,
         textvalue,
@@ -2861,7 +2858,7 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
         x,
         result = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
     if (argumentaffinity === "") {
         for (j in jsonSpells) {
             if (jsonSpells[j].spellType.indexOf(argumentType) !== -1) {
@@ -2869,7 +2866,7 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
             }
         }
     } else {
-        var listMod = [];
+        let listMod = [];
         for (i in jsonTomes) {
             affinity = jsonTomes[i].affinities;
 
@@ -2945,9 +2942,8 @@ function ClearAffinityExtraTags(input) {
 }
 
 function findTraitsWithArgument(argumentType, affinity) {
-    var i,
+    let i,
         output,
-        affinity,
         textvalue,
         j,
         l,
@@ -2955,7 +2951,7 @@ function findTraitsWithArgument(argumentType, affinity) {
         x,
         result = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
     if (argumentType != "") {
         for (j in jsonFactionCreation2) {
             if (jsonFactionCreation2[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
@@ -2997,7 +2993,7 @@ function findTraitsWithArgument(argumentType, affinity) {
 }
 
 function findStructuresWithArgument(income, argumentType, includeprovince) {
-    var i,
+    let i,
         output,
         affinity,
         textvalue,
@@ -3007,7 +3003,7 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
         x,
         result = "";
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
     if (argumentType != "") {
         for (j in jsonStructureUpgrades) {
             if (jsonStructureUpgrades[j].name.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
@@ -3031,9 +3027,9 @@ function findStructuresWithArgument(income, argumentType, includeprovince) {
 }
 
 function findCosmicHappeningsWithArgument(argumentType) {
-    var j = 0;
+    let j = 0;
 
-    var finalCheckedList = [];
+    let finalCheckedList = [];
 
     for (j in jsonCosmicHappenings) {
         if (jsonCosmicHappenings[j].type == argumentType) {
@@ -3045,7 +3041,7 @@ function findCosmicHappeningsWithArgument(argumentType) {
 }
 
 function checkModRequirements(unit) {
-    var j,
+    let j,
         check,
         checksplit,
         checknot,
@@ -3053,7 +3049,7 @@ function checkModRequirements(unit) {
     for (j in jsonSpells) {
         checksplit = jsonSpells[j].check.split(" ");
         checknotsplit = jsonSpells[j].checknot.split(" ");
-        for (var k = 0; k < checksplit.length; k++) {
+        for (let k = 0; k < checksplit.length; k++) {
             if (divs[i].innerHTML.indexOf(checksplit[k]) !== -1) {
                 // something
             }
@@ -3063,7 +3059,7 @@ function checkModRequirements(unit) {
 
 function showModsFromList(list, divId) {
     for (let i = 0; i < list.length; i++) {
-        var iDiv = mod_card_template.content.cloneNode(true);
+        let iDiv = mod_card_template.content.cloneNode(true);
         if (divId === undefined) {
             document.getElementById("mods").appendChild(iDiv);
         } else {
@@ -3076,18 +3072,18 @@ function showModsFromList(list, divId) {
 function showSubDiv(event, id) {
     // Get all divs with the class 'my-div'
 
-    var thisNameAll = document.querySelectorAll(".subCultureName");
+    let thisNameAll = document.querySelectorAll(".subCultureName");
 
     for (let index = 0; index < thisNameAll.length; index++) {
         thisNameAll[index].style.color = "grey";
     }
-    var thisName = document.getElementById("subCultureName" + id);
+    let thisName = document.getElementById("subCultureName" + id);
     if (thisName == null) {
         return;
     }
     thisName.style.color = "white";
 
-    var divs = document.querySelectorAll(".subDiv");
+    let divs = document.querySelectorAll(".subDiv");
 
     // Hide all divs
     divs.forEach(function (div) {
@@ -3095,14 +3091,14 @@ function showSubDiv(event, id) {
     });
 
     // Show the specific div with the given id
-    var specificDiv = document.getElementById(id);
+    let specificDiv = document.getElementById(id);
     if (specificDiv) {
         specificDiv.style.display = "block";
 
         // Find the first div with the class "targetClass" within the parent div
-        var targetDiv = specificDiv.querySelector(".dataholder");
+        let targetDiv = specificDiv.querySelector(".dataholder");
         // Get the first child element of the parent div
-        var firstChild = targetDiv.firstElementChild;
+        let firstChild = targetDiv.firstElementChild;
 
         // Set the display property of the first child to block
         openDiv(null, firstChild.id);
@@ -3110,7 +3106,7 @@ function showSubDiv(event, id) {
 }
 
 function showUnit(a, subcultureCheck, resID) {
-    var hp,
+    let hp,
         mp,
         shield,
         armor,
@@ -3124,9 +3120,9 @@ function showUnit(a, subcultureCheck, resID) {
         prodcost,
         tier,
         name = "";
-    var found = false;
-    var keepgoing = true;
-    var stopHere = false;
+    let found = false;
+    let keepgoing = true;
+    let stopHere = false;
 
     for (let i = 0; i < jsonUnits.length; i++) {
         if (a === jsonUnits[i].id) {
@@ -3159,7 +3155,7 @@ function showUnit(a, subcultureCheck, resID) {
                 keepgoing = true;
             }
             if (keepgoing && !stopHere) {
-                var unitCard = document.getElementById("unitCard");
+                let unitCard = document.getElementById("unitCard");
                 if (unitCard == undefined) {
                     unitCard = document.getElementById("unitCard" + a);
                 } else {
@@ -3180,7 +3176,7 @@ function showUnit(a, subcultureCheck, resID) {
                     unitCard.setAttribute("id", "unitCard" + a + subcultureCheck);
                 }
 
-                var activeEnchantList;
+                let activeEnchantList;
                 if (!unitCard.hasOwnProperty("activeEnchantList")) {
                     activeEnchantList = [];
                     unitCard.activeEnchantList = activeEnchantList;
@@ -3194,13 +3190,13 @@ function showUnit(a, subcultureCheck, resID) {
                 unitNameDiv.innerHTML += name.toUpperCase();
 
                 if ("DLC" in jsonUnits[i]) {
-                    var newDivForMount = AddDLCTag(jsonUnits[i].DLC);
+                    let newDivForMount = AddDLCTag(jsonUnits[i].DLC);
                     unitNameDiv.append(newDivForMount);
                 }
 
                 // if in the list of mounted, add tooltip
                 if (MountedSpecialList.includes(a) || CheckIfOptionalCavalry(a)) {
-                    var newDivForMount = document.createElement("DIV");
+                    let newDivForMount = document.createElement("DIV");
                     newDivForMount.className = "mountToolTip";
 
                     imag = document.createElement("IMG");
@@ -3223,29 +3219,29 @@ function showUnit(a, subcultureCheck, resID) {
                     unitNameDiv.append(newDivForMount);
                 }
 
-                var hpspan = document.createElement("span");
+                let hpspan = document.createElement("span");
                 hpspan.innerHTML =
                     '<span style="color:burlywood;text-transform: uppercase ">Hit Points</span><br><span style="font-size: 14px;"><bullet>Hit Points represent the amount of damage a unit can take before being defeated</bullet> <bullet>Most units will take Casualties as their Hit Points drop.</bullet></span>';
-                var hpTooltip = unitCard.querySelectorAll("div#hp_tt")[0];
+                let hpTooltip = unitCard.querySelectorAll("div#hp_tt")[0];
 
                 addTooltipListeners(hpTooltip, hpspan);
 
                 hp = unitCard.querySelectorAll("p#hp")[0];
 
-                var hpvalue = jsonUnits[i].hp;
+                let hpvalue = jsonUnits[i].hp;
                 hp.innerHTML = jsonUnits[i].hp;
 
-                var critspan = document.createElement("span");
+                let critspan = document.createElement("span");
                 critspan.innerHTML =
                     '<span style="color:burlywood;text-transform: uppercase;">Critical Hit Chance</span><br><span style="font-size: 14px;">Chance to deliver a critical hit for increased damage</span>';
-                var critTooltip = unitCard.querySelectorAll("div#crit_tt")[0];
+                let critTooltip = unitCard.querySelectorAll("div#crit_tt")[0];
 
                 addTooltipListeners(critTooltip, critspan);
 
-                var crit = unitCard.querySelectorAll("p#crit")[0];
+                let crit = unitCard.querySelectorAll("p#crit")[0];
                 crit.innerHTML = "+" + 0 + "%";
 
-                var armorspan = document.createElement("span");
+                let armorspan = document.createElement("span");
                 armorspan.innerHTML =
                     '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">Defense reduces physical damage.Damage Reduction: ' +
                     '<br>Physical :  <span style="color:white;">' +
@@ -3254,16 +3250,16 @@ function showUnit(a, subcultureCheck, resID) {
                     jsonUnits[i].armor +
                     "</span> <defense> </defense>)" +
                     "</p></span>";
-                var armorTooltip = unitCard.querySelectorAll("div#armor_tt")[0];
+                let armorTooltip = unitCard.querySelectorAll("div#armor_tt")[0];
 
                 addTooltipListeners(armorTooltip, armorspan);
 
                 armor = unitCard.querySelectorAll("p#armor")[0];
-                var armorValue = jsonUnits[i].armor;
+                let armorValue = jsonUnits[i].armor;
                 armor.innerHTML = armorValue;
 
                 shield = unitCard.querySelectorAll("p#resistence")[0];
-                var shieldValue = jsonUnits[i].resistance;
+                let shieldValue = jsonUnits[i].resistance;
                 shield.innerHTML = shieldValue;
 
                 mp = unitCard.querySelectorAll("p#mp")[0];
@@ -3274,18 +3270,18 @@ function showUnit(a, subcultureCheck, resID) {
 
                 prodcost = unitCard.querySelectorAll("p#productioncost")[0];
                 prodcost.innerHTML = "Cost: " + jsonUnits[i].cost;
-                var additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
+                let additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
                 movementDiv = document.createElement("div");
 
                 unitStat = unitCard.querySelectorAll("div#unitstat")[0];
                 unitStat.innerHTML = "";
 
-                var resistanceHolder = unitCard.querySelectorAll("div#resistanceholder")[0];
+                let resistanceHolder = unitCard.querySelectorAll("div#resistanceholder")[0];
                 resistanceHolder.innerHTML = "";
 
-                var unitType = "";
+                let unitType = "";
                 for (j in jsonUnits[i].secondary_passives) {
-                    var unitTypeTest = addUnitTypeIcon(jsonUnits[i].secondary_passives[j].slug, unitStat, unitCard);
+                    let unitTypeTest = addUnitTypeIcon(jsonUnits[i].secondary_passives[j].slug, unitStat, unitCard);
 
                     if (unitTypeTest != "") {
                         unitType = unitTypeTest;
@@ -3302,12 +3298,12 @@ function showUnit(a, subcultureCheck, resID) {
                     }
                 }
 
-                var mpspan = document.createElement("span");
+                let mpspan = document.createElement("span");
                 mpspan.innerHTML =
                     '<span style="color:burlywood;text-transform: uppercase;">Move Points</span><br>' +
                     movementDiv.innerHTML +
                     '</p><span style="font-size: 14px;">Move points represent how far a unit can move in one turn on the world map and in combat</span>';
-                var mpTooltip = unitCard.querySelectorAll("div#mp_tt")[0];
+                let mpTooltip = unitCard.querySelectorAll("div#mp_tt")[0];
 
                 addTooltipListeners(mpTooltip, mpspan);
 
@@ -3335,9 +3331,9 @@ function showUnit(a, subcultureCheck, resID) {
 
                 // find enchant button, give it unit data
 
-                var enchantButton = unitCard.querySelectorAll("button#enchantButton")[0];
-                var enchantHolder = unitCard.querySelectorAll("div#enchantHolder")[0];
-                var activeEnchant = unitCard.querySelectorAll("div#activeEnchants")[0];
+                let enchantButton = unitCard.querySelectorAll("button#enchantButton")[0];
+                let enchantHolder = unitCard.querySelectorAll("div#enchantHolder")[0];
+                let activeEnchant = unitCard.querySelectorAll("div#activeEnchants")[0];
 
                 enchantButton.param = unitType;
                 enchantButton.activeListHolder = activeEnchant;
@@ -3350,7 +3346,7 @@ function showUnit(a, subcultureCheck, resID) {
 
                 // make a list on the unit, not on the buttons
 
-                var unitTabHolder = unitCard.querySelectorAll("div#unitabholder")[0];
+                let unitTabHolder = unitCard.querySelectorAll("div#unitabholder")[0];
                 unitTabHolder.innerHTML = "";
 
                 for (k in jsonUnits[i].abilities) {
@@ -3383,12 +3379,12 @@ function showUnit(a, subcultureCheck, resID) {
 
                 tier.innerHTML = "Tier " + romanize(jsonUnits[i].tier) + ": " + jsonUnits[i].upkeep;
 
-                var summonInfo = canBeSummoned(jsonUnits[i].id);
+                let summonInfo = canBeSummoned(jsonUnits[i].id);
                 if (summonInfo.length > 0) {
                     tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, "");
-                    var p = "";
+                    let p = "";
                     for (p in summonInfo) {
-                        var castcost = "";
+                        let castcost = "";
                         if (summonInfo[p].tactical === true) {
                             castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
                         } else {
@@ -3398,16 +3394,14 @@ function showUnit(a, subcultureCheck, resID) {
                     }
                 }
 
-                var critChance = 0;
-                var lowUpkeep = false;
-                var faithfulUpkeep = false;
-                var x = "";
+                let critChance = 0;
+                let lowUpkeep = false;
+                let faithfulUpkeep = false;
+                let x = "";
 
-                var k = "";
+                let t = "";
 
-                var t = "";
-
-                var y = "";
+                let y = "";
                 for (y in jsonUnits[i].secondary_passives) {
                     if (jsonUnits[i].secondary_passives[y].slug.indexOf("magic_origin") != -1) {
                         if (lowUpkeep === true) {
@@ -3428,9 +3422,9 @@ function showUnit(a, subcultureCheck, resID) {
                         }
 
                         if (summonInfo.length > 0) {
-                            var p = "";
+                            let p = "";
                             for (p in summonInfo) {
-                                var castcost = "";
+                                let castcost = "";
                                 if (summonInfo[p].tactical === true) {
                                     castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
                                 } else {
@@ -3477,14 +3471,14 @@ function showUnit(a, subcultureCheck, resID) {
                                             ": " +
                                             ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.9) +
                                             "*";
-                                        var faithfulUpkeep = true;
+                                        let faithfulUpkeep = true;
                                     }
                                 }
                             }
 
                             if ("passive_unique" in jsonEnchantments[k]) {
                                 for (t = 0; t < jsonEnchantments[k].passive_unique.length; t++) {
-                                    var overwrite = "";
+                                    let overwrite = "";
                                     if ("overwriteName" in jsonEnchantments[k].passive_unique[t]) {
                                         overwrite = jsonEnchantments[k].passive_unique[t].overwriteName;
                                     }
@@ -3511,8 +3505,7 @@ function showUnit(a, subcultureCheck, resID) {
                     }
                 }
 
-                var x = "";
-                for (x in jsonUnits[i].primary_passives) {
+                for (let x = 0; x < jsonUnits[i].primary_passives.length; x++) {
                     addPassiveslot(jsonUnits[i].primary_passives[x].slug, unitTabHolder);
 
                     if (jsonUnits[i].primary_passives[x].slug.indexOf("low_maintenance") != -1) {
@@ -3531,7 +3524,7 @@ function showUnit(a, subcultureCheck, resID) {
                                 ReduceUpkeepPercentage(jsonUnits[i].upkeep, 0.75) +
                                 ">*";
                         }
-                        var lowUpkeep = true;
+                        let lowUpkeep = true;
 
                         if (summonInfo.length > 0) {
                             tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(jsonUnits[i].tier, 0.75) + "*";
@@ -3555,7 +3548,7 @@ function showUnit(a, subcultureCheck, resID) {
                                 ">*";
                         }
 
-                        var lowUpkeep = true;
+                        let lowUpkeep = true;
 
                         if (summonInfo.length > 0) {
                             if (jsonUnits[i].upkeep.indexOf("influence") != -1) {
@@ -3583,7 +3576,7 @@ function showUnit(a, subcultureCheck, resID) {
                                 ">*";
                         }
 
-                        var faithfulUpkeep = true;
+                        let faithfulUpkeep = true;
 
                         if (summonInfo.length > 0) {
                             if (jsonUnits[i].upkeep.indexOf("influence") != -1) {
@@ -3597,7 +3590,7 @@ function showUnit(a, subcultureCheck, resID) {
 
                 y = "";
 
-                var resistanceDiv = document.createElement("div");
+                let resistanceDiv = document.createElement("div");
                 resistanceDiv.innerHTML =
                     'Blight :  <span style="color:white;">' +
                     GetDamageReductionPercentage(jsonUnits[i].resistance, additionalBlight) +
@@ -3676,12 +3669,12 @@ function showUnit(a, subcultureCheck, resID) {
 
                 resistanceDiv.innerHTML += ")";
 
-                var resistencespan = document.createElement("span");
+                let resistencespan = document.createElement("span");
                 resistencespan.innerHTML =
                     '<span style="color:burlywood;text-transform: uppercase ">Resistance</span><br><span style="font-size: 14px;">Resistance reduces all non-physical damage.<br><br>Damage Reduction:' +
                     resistanceDiv.innerHTML +
                     "</p> </span>";
-                var resistenceTooltip = unitCard.querySelectorAll("div#resistence_tt")[0];
+                let resistenceTooltip = unitCard.querySelectorAll("div#resistence_tt")[0];
 
                 addTooltipListeners(resistenceTooltip, resistencespan);
 
@@ -3701,11 +3694,11 @@ function showUnit(a, subcultureCheck, resID) {
 }
 
 function canBeSummoned(id) {
-    var i = "";
-    var k = "";
-    var summonInf = [];
+    let i = "";
+    let k = "";
+    let summonInf = [];
     // check for duplicates
-    var spellIDChecker = [];
+    let spellIDChecker = [];
     for (i in jsonSpells) {
         if ("summoned_units" in jsonSpells[i]) {
             for (k in jsonSpells[i].summoned_units) {
@@ -3760,10 +3753,10 @@ function getSummonedUpkeep(tier, lowMaintenance) {
 }
 
 function createUnitTypeIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText) {
-    var btn = document.createElement("DIV");
+    let btn = document.createElement("DIV");
     btn.className = "unittype_icon";
-    var imag = document.createElement("IMG");
-    var spa = document.createElement("SPAN");
+    let imag = document.createElement("IMG");
+    let spa = document.createElement("SPAN");
 
     spa.innerHTML = tooltipText;
     imag.setAttribute("src", imgSrc);
@@ -3772,7 +3765,7 @@ function createUnitTypeIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText) {
     imag.setAttribute("height", "60");
 
     btn.appendChild(imag);
-    var wrap = btn.innerHTML;
+    let wrap = btn.innerHTML;
     btn.innerHTML = `<a href="${link}" target="_blank">${wrap}</a>`;
 
     addTooltipListeners(btn, spa);
@@ -3780,9 +3773,9 @@ function createUnitTypeIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText) {
 }
 
 function backtrackUnitOrigins(unitData, name, holder) {
-    var holderOrigin = holder.querySelectorAll("div#originHolder")[0];
+    let holderOrigin = holder.querySelectorAll("div#originHolder")[0];
     holderOrigin.innerHTML = "";
-    var culture = "thing";
+    let culture = "thing";
     if ("culture_name" in unitData) {
         culture = unitData.culture_name.toLowerCase();
     }
@@ -3796,7 +3789,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var subculture = "";
+    let subculture = "";
     if ("sub_culture_name" in unitData) {
         subculture = unitData.sub_culture_name.toLowerCase().replaceAll(" ", "_");
         if (culture == "primal") {
@@ -3812,7 +3805,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, null, tooltipText);
     }
 
-    var tomes = CheckIfInTomes(unitData.id);
+    let tomes = CheckIfInTomes(unitData.id);
     if (tomes != "") {
         const tooltipText = `Unit production unlocked from Tier <hyperlink>${romanize(tomes.tier)} - ${showAffinitySymbols(tomes)} ${tomes.name}</<hyperlink>`;
         const imgSrc = `/aow4db/Icons/TomeIcons/${tomes.id}.png`;
@@ -3821,11 +3814,11 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var spells = CheckIfInSpells(unitData.id, name);
-    var x = "";
-    for (var x in spells) {
-        var tierandnameoftome = backtraceTomeNameAndTier(spells[x].id);
-        var tooltipText =
+    let spells = CheckIfInSpells(unitData.id, name);
+
+    for (let x = 0; x < spells.length; x++) {
+        let tierandnameoftome = backtraceTomeNameAndTier(spells[x].id);
+        let tooltipText =
             tierandnameoftome != ""
                 ? `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink> <br>in Tier <hyperlink>${romanize(tierandnameoftome.tier)} - ${showAffinitySymbols(tierandnameoftome)} ${tierandnameoftome.name}</hyperlink>`
                 : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</<hyperlink>`;
@@ -3835,7 +3828,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var siege = CheckIfInSiege(name);
+    let siege = CheckIfInSiege(name);
     if (siege != "") {
         const tooltipText = `Unit mentioned in Siege Project <hyperlink>${siege.name}</hyperlink>`;
         const imgSrc = `/aow4db/Icons/SiegeIcons/${siege.id}.png`;
@@ -3844,7 +3837,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var struc = CheckIfInStructure(name);
+    let struc = CheckIfInStructure(name);
     if (struc != "") {
         const tooltipText = `Unit mentioned in Structure <hyperlink>${struc.name}</hyperlink>`;
         const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc.id}.png`;
@@ -3853,7 +3846,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var wonder = CheckIfInAncientWonder(unitData.id);
+    let wonder = CheckIfInAncientWonder(unitData.id);
     if (wonder != "") {
         const tooltipText = `Rally Unit unlocked from <hyperlink>${wonder.type}</<hyperlink> : <hyperlink>${wonder.name}</<hyperlink>`;
         const imgSrc = `/aow4db/Icons/StructurePics/${wonder.id}.png`;
@@ -3862,7 +3855,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var tree = CheckIfInEmpireTree(name);
+    let tree = CheckIfInEmpireTree(name);
     if (tree != "") {
         const tooltipText = `Unit mentioned in <hyperlink>${tree.category} ${tree.required_level}</<hyperlink> : <hyperlink>${tree.name}</<hyperlink>`;
         const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree.id}.png`;
@@ -3871,7 +3864,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var unitAbility = CheckIfFromAbility(name);
+    let unitAbility = CheckIfFromAbility(name);
     if (unitAbility != "") {
         const tooltipText = `Unit mentioned in Ability <hyperlink>${unitAbility[1].name}</hyperlink> of Unit <hyperlink>${unitAbility[0].name}</hyperlink>`;
         const imgSrc =
@@ -3883,7 +3876,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var heroSkill = CheckIfFromHeroSkill(name);
+    let heroSkill = CheckIfFromHeroSkill(name);
     if (heroSkill != "") {
         const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[1].name}</hyperlink>`;
         const imgSrc =
@@ -3895,7 +3888,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    var evolve = CheckIfEvolveTarget(unitData.id);
+    let evolve = CheckIfEvolveTarget(unitData.id);
     if (evolve != "") {
         const tooltipText = `Evolved from Unit <hyperlink>${evolve.name}</<hyperlink>`;
         const imgSrc = `/aow4db/Icons/UnitIcons/evolve.png`;
@@ -3909,12 +3902,12 @@ function showAffinitySymbols(tomes) {
     if (tomes.affinities === undefined) {
         return "";
     }
-    var affinitiesdual = tomes.affinities.split(", ");
+    let affinitiesdual = tomes.affinities.split(", ");
 
-    var allAffinity = "";
-    var i = "";
+    let allAffinity = "";
+    let i = "";
     for (i in affinitiesdual) {
-        var affinities = affinitiesdual[i];
+        let affinities = affinitiesdual[i];
 
         allAffinity += affinities;
     }
@@ -3925,13 +3918,13 @@ function showAffinitySymbols(tomes) {
 }
 
 function CheckIfInSpells(unitID, unitName) {
-    var spell = [];
+    let spell = [];
     // check for duplicates
-    var spellIDChecker = [];
-    var i = 0;
+    let spellIDChecker = [];
+    let i = 0;
     for (i in jsonSpells) {
         if ("summoned_units" in jsonSpells[i]) {
-            var k = 0;
+            let k = 0;
             for (k in jsonSpells[i].summoned_units) {
                 if (unitID === jsonSpells[i].summoned_units[k].slug) {
                     if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
@@ -3953,8 +3946,8 @@ function CheckIfInSpells(unitID, unitName) {
 }
 
 function CheckIfFromAbility(unitName) {
-    var ability = "";
-    var i = 0;
+    let ability = "";
+    let i = 0;
     for (i in jsonUnitAbilities) {
         if (unitName === "Fire Runestone") {
             unitName = "Runestone";
@@ -3964,11 +3957,11 @@ function CheckIfFromAbility(unitName) {
         }
     }
 
-    var unitslugLookup = "";
+    let unitslugLookup = "";
     if (ability != "") {
-        var j = 0;
+        let j = 0;
         for (j in jsonUnits) {
-            var k = 0;
+            let k = 0;
             for (k in jsonUnits[j].abilities) {
                 if (jsonUnits[j].abilities[k].slug === ability.slug) {
                     unitslugLookup = [];
@@ -3976,7 +3969,7 @@ function CheckIfFromAbility(unitName) {
                     unitslugLookup.push(ability);
                 }
             }
-            var l = 0;
+            let l = 0;
             for (l in jsonUnits[j].primary_passives) {
                 if (jsonUnits[j].primary_passives[l].slug === ability.slug) {
                     unitslugLookup = [];
@@ -3991,20 +3984,20 @@ function CheckIfFromAbility(unitName) {
 }
 
 function CheckIfFromHeroSkill(unitName) {
-    var resultslist = "";
-    var hero = "";
-    var i = 0;
+    let resultslist = "";
+    let hero = "";
+    let i = 0;
     for (i in jsonUnitAbilities) {
         if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
             hero = jsonUnitAbilities[i];
         }
     }
 
-    var j = 0;
+    let j = 0;
     for (j in jsonHeroSkills) {
         if (hero != "") {
             if ("abilities" in jsonHeroSkills[j]) {
-                var k = 0;
+                let k = 0;
                 for (k in jsonHeroSkills[j].abilities) {
                     if (jsonHeroSkills[j].abilities[k].slug === hero.slug) {
                         resultslist = [];
@@ -4014,7 +4007,7 @@ function CheckIfFromHeroSkill(unitName) {
                 }
             }
         } else {
-            var k = 0;
+            let k = 0;
             for (k in jsonHeroSkills[j].description) {
                 if (jsonHeroSkills[j].description.indexOf(unitName) != -1) {
                     resultslist = [];
@@ -4029,8 +4022,8 @@ function CheckIfFromHeroSkill(unitName) {
 }
 
 function CheckIfInSiege(unitName) {
-    var siege = "";
-    var i = 0;
+    let siege = "";
+    let i = 0;
     for (i in jsonSiegeProjects) {
         if (jsonSiegeProjects[i].description.indexOf(">" + unitName) != -1) {
             siege = jsonSiegeProjects[i];
@@ -4040,8 +4033,8 @@ function CheckIfInSiege(unitName) {
 }
 
 function CheckIfInStructure(unitName) {
-    var structure = "";
-    var i = 0;
+    let structure = "";
+    let i = 0;
     for (i in jsonStructureUpgrades) {
         if (unitName === "Warg") {
             unitName = "Warg<";
@@ -4061,15 +4054,15 @@ function CheckIfInStructure(unitName) {
 }
 
 function CheckIfInTomes(unitID) {
-    var tome = "";
+    let tome = "";
 
     if (unitID == "young_frost_dragon" || unitID == "young_obsidian_dragon" || unitID == "young_golden_dragon") {
         unitID = "young_fire_dragon";
     }
-    var i = 0;
+    let i = 0;
 
     for (i in jsonTomes) {
-        var k = 0;
+        let k = 0;
         for (k in jsonTomes[i].skills) {
             if ("unit_slug" in jsonTomes[i].skills[k]) {
                 if (unitID === jsonTomes[i].skills[k].unit_slug) {
@@ -4082,8 +4075,8 @@ function CheckIfInTomes(unitID) {
 }
 
 function CheckIfInEmpireTree(unitNameUnique) {
-    var tree = "";
-    var i,
+    let tree = "";
+    let i,
         k = "";
     for (i in jsonEmpire) {
         if (jsonEmpire[i].description.indexOf(">" + unitNameUnique) != -1) {
@@ -4095,8 +4088,8 @@ function CheckIfInEmpireTree(unitNameUnique) {
 }
 
 function CheckIfEvolveTarget(unitID) {
-    var evolve = "";
-    var i,
+    let evolve = "";
+    let i,
         k = "";
     for (i in jsonUnits) {
         if ("evolve_target" in jsonUnits[i]) {
@@ -4109,8 +4102,8 @@ function CheckIfEvolveTarget(unitID) {
 }
 
 function CheckIfInAncientWonder(unitID) {
-    var wonder = "";
-    var i,
+    let wonder = "";
+    let i,
         k = "";
     for (i in jsonWorldStructures) {
         if ("unit_unlocks" in jsonWorldStructures[i]) {
@@ -4125,9 +4118,9 @@ function CheckIfInAncientWonder(unitID) {
 }
 
 function ReduceUpkeepPercentage(value, percentage) {
-    var number = value.split("<");
-    var reducedUpkeep = Math.round(percentage * parseInt(number[0]));
-    var comb = reducedUpkeep + "<" + number[1] + "<" + number[2];
+    let number = value.split("<");
+    let reducedUpkeep = Math.round(percentage * parseInt(number[0]));
+    let comb = reducedUpkeep + "<" + number[1] + "<" + number[2];
     if (number.length > 2) {
         comb += "<" + number[3] + "<" + number[4];
     }
@@ -4137,11 +4130,11 @@ function ReduceUpkeepPercentage(value, percentage) {
 
 function ReturnWeaknessOrResistanceNumber(slug) {
     if (slug.indexOf("weakness") !== -1) {
-        var split = slug.split("weakness_");
+        let split = slug.split("weakness_");
         abilityDam = "-" + split[1];
     }
     if (slug.indexOf("resistance") !== -1) {
-        var split = slug.split("resistance_");
+        let split = slug.split("resistance_");
         abilityDam = split[1];
     }
     if (slug.indexOf("immunity") !== -1) {
@@ -4155,15 +4148,15 @@ function GetDamageReductionPercentage(number, additionalNumber) {
     if (additionalNumber === undefined) {
         additionalNumber = 0;
     }
-    var combinedDefense = parseInt(number) + parseInt(additionalNumber);
-
+    let combinedDefense = parseInt(number) + parseInt(additionalNumber);
+    let defensePercentage = 0;
     if (combinedDefense >= 0) {
-        var defensePercentage = 1 - Math.pow(0.9, combinedDefense);
+        defensePercentage = 1 - Math.pow(0.9, combinedDefense);
     } else {
-        var defensePercentage = -(1 - Math.pow(0.9, -combinedDefense));
+        defensePercentage = -(1 - Math.pow(0.9, -combinedDefense));
     }
 
-    var percentage = Math.round(defensePercentage * 100);
+    let percentage = Math.round(defensePercentage * 100);
     if (percentage > 0) {
         percentage = '<span style="color:lawngreen">' + percentage + "%</span>";
     }
@@ -4178,9 +4171,9 @@ function GetDamageReductionPercentage(number, additionalNumber) {
 }
 
 function addLevelUpInfo(units, a, holder) {
-    var levelup = holder.querySelectorAll("div#levelup")[0];
+    let levelup = holder.querySelectorAll("div#levelup")[0];
     levelup.innerHTML = "";
-    evolveTarget = units.evolve_target;
+    let evolveTarget = units.evolve_target;
 
     if (units.tier === 1) {
         xpNeeded = 4;
@@ -4198,34 +4191,33 @@ function addLevelUpInfo(units, a, holder) {
         xpNeeded = 12;
     }
 
-    var levelText = "";
+    let levelText = "";
     levelText = '<p style="  color: #aadb9c;"> <medal_soldier></medal_soldier> Soldier - ' + xpNeeded + "<xp></xp></p>";
     levelup.append(NewLevelUpEntry(levelText));
 
     //levelText +=
-    var i = 0;
-    for (i in units.medal_rewards_2) {
+
+    for (let i = 0; i < units.medal_rewards_2.length; i++) {
         levelText = "<bullet>" + lookupSlug(units.medal_rewards_2[i].slug) + "</bullet>";
         levelup.append(NewLevelUpEntry(levelText));
     }
     levelText =
         '<p style="  color: #aadb9c;"> <medal_veteran></medal_veteran> Veteran - ' + xpNeeded * 2 + "<xp></xp></p>";
     levelup.append(NewLevelUpEntry(levelText));
-    var i = 0;
-    for (i in units.medal_rewards_3) {
+
+    for (let i = 0; i < units.medal_rewards_3.length; i++) {
         levelText = "<bullet>" + lookupSlug(units.medal_rewards_3[i].slug) + "</bullet>";
         levelup.append(NewLevelUpEntry(levelText));
     }
     levelText = '<p style="  color: #aadb9c;"> <medal_elite></medal_elite> Elite - ' + xpNeeded * 3 + "<xp></xp></p>";
     levelup.append(NewLevelUpEntry(levelText));
 
-    var i = 0;
-    for (i in units.medal_rewards_4) {
+    for (let i = 0; i < units.medal_rewards_4.length; i++) {
         if (units.medal_rewards_4[i].slug.indexOf("medal") != -1) {
             levelText = '<p class="levelup_medal">' + "<bullet>" + lookupSlug(units.medal_rewards_4[i].slug);
 
-            var test = NewLevelUpEntry(levelText);
-            var spanText = document.createElement("span");
+            let test = NewLevelUpEntry(levelText);
+            let spanText = document.createElement("span");
 
             spanText.innerHTML = lookupSlugDescription(units.medal_rewards_4[i].slug);
             addTooltipListeners(test, spanText);
@@ -4239,13 +4231,14 @@ function addLevelUpInfo(units, a, holder) {
     levelText =
         '<p style="  color: #aadb9c;"> <medal_champion></medal_champion> Champion - ' + xpNeeded * 4 + "<xp></xp></p>";
     levelup.append(NewLevelUpEntry(levelText));
-    var i = 0;
-    for (i in units.medal_rewards_5) {
+
+    for (let i = 0; i < units.medal_rewards_5.length; i++) {
+        console.log("here");
         if (units.medal_rewards_5[i].slug.indexOf("medal") != -1) {
             levelText = '<p class="levelup_medal">' + "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug);
 
-            var test = NewLevelUpEntry(levelText);
-            var spanText = document.createElement("span");
+            let test = NewLevelUpEntry(levelText);
+            let spanText = document.createElement("span");
 
             spanText.innerHTML = lookupSlugDescription(units.medal_rewards_5[i].slug);
             addTooltipListeners(test, spanText);
@@ -4276,8 +4269,8 @@ function addLevelUpInfo(units, a, holder) {
             if (units.medal_rewards_6[i].slug.indexOf("medal") != -1) {
                 levelText = '<p class="levelup_medal">' + "<bullet>" + lookupSlug(units.medal_rewards_6[i].slug);
 
-                var test = NewLevelUpEntry(levelText);
-                var spanText = document.createElement("span");
+                let test = NewLevelUpEntry(levelText);
+                let spanText = document.createElement("span");
                 spanText.innerHTML = lookupSlugDescription(units.medal_rewards_6[i].slug);
                 addTooltipListeners(test, spanText);
                 levelup.append(test);
@@ -4292,13 +4285,13 @@ function addLevelUpInfo(units, a, holder) {
 }
 
 function NewLevelUpEntry(spanEntry) {
-    var newEntryDiv = document.createElement("div");
+    let newEntryDiv = document.createElement("div");
     newEntryDiv.innerHTML = spanEntry;
     return newEntryDiv;
 }
 
 function lookupUnit(id) {
-    var j = 0;
+    let j = 0;
     for (j in jsonUnits) {
         if (id === jsonUnits[j].id) {
             return jsonUnits[j].name;
@@ -4308,7 +4301,7 @@ function lookupUnit(id) {
 }
 
 function lookupSlugDescription(slug) {
-    var j = 0;
+    let j = 0;
     for (j in jsonUnitAbilities) {
         if (slug === jsonUnitAbilities[j].slug) {
             if (slug === "legend_medal_killing_momentum") {
@@ -4322,7 +4315,7 @@ function lookupSlugDescription(slug) {
 }
 
 function lookupSlug(slug) {
-    var j = 0;
+    let j = 0;
     for (j in jsonUnitAbilities) {
         if (slug === jsonUnitAbilities[j].slug) {
             return jsonUnitAbilities[j].name.replaceAll("<br></br>", "<br>");
@@ -4333,7 +4326,7 @@ function lookupSlug(slug) {
 
 function romanize(num) {
     if (isNaN(num)) return NaN;
-    var digits = String(+num).split(""),
+    let digits = String(+num).split(""),
         key = [
             "",
             "C",
@@ -4374,9 +4367,9 @@ function romanize(num) {
 
 function deromanize(str) {
     str = str.toUpperCase();
-    var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
-    var token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
-    var key = {
+    let validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
+    let token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
+    let key = {
         M: 1000,
         CM: 900,
         D: 500,
@@ -4391,8 +4384,8 @@ function deromanize(str) {
         IV: 4,
         I: 1
     };
-    var num = -1;
-    var m;
+    let num = -1;
+    let m;
 
     if (!(str && validator.test(str))) return false;
 
@@ -4404,13 +4397,13 @@ function deromanize(str) {
 }
 
 function showSiegeProject(id, showOrigin) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         i = "";
-    var found = false;
+    let found = false;
 
     for (i in jsonSiegeProjects) {
         if (id === jsonSiegeProjects[i].name) {
@@ -4445,16 +4438,16 @@ function showSiegeProject(id, showOrigin) {
             cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
 
-            var tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].name, showOrigin);
+            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].name, showOrigin);
 
             if (tierSpell != undefined) {
-                var splitspell = tierSpell.split(",");
+                let splitspell = tierSpell.split(",");
                 modName.innerHTML +=
                     '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
                     romanize(splitspell[0]) +
                     "</span>";
                 if ("DLC" in jsonSiegeProjects[i] && showOrigin) {
-                    var newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
+                    let newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
 
                     modName.append(newDivForMount);
                 }
@@ -4462,12 +4455,12 @@ function showSiegeProject(id, showOrigin) {
                 modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
             }
 
-            var tomeOrigin = document.getElementById("originTome");
+            let tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + id);
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
+            let tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + id);
 
-            var upkeep = document.getElementById("modupkeep");
+            let upkeep = document.getElementById("modupkeep");
 
             upkeep.innerHTML = "";
             upkeep.setAttribute("id", "modupkeep" + id);
@@ -4506,16 +4499,16 @@ function showSiegeProject(id, showOrigin) {
             cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
 
-            var tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].id, showOrigin);
+            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].id, showOrigin);
 
             if (tierSpell != undefined) {
-                var splitspell = tierSpell.split(",");
+                let splitspell = tierSpell.split(",");
                 modName.innerHTML +=
                     '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
                     romanize(splitspell[0]) +
                     "</span>";
                 if ("DLC" in jsonSiegeProjects[i] && showOrigin) {
-                    var newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
+                    let newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
 
                     modName.append(newDivForMount);
                 }
@@ -4523,12 +4516,12 @@ function showSiegeProject(id, showOrigin) {
                 modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
             }
 
-            var tomeOrigin = document.getElementById("originTome");
+            let tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + id);
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
+            let tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + id);
 
-            var upkeep = document.getElementById("modupkeep");
+            let upkeep = document.getElementById("modupkeep");
 
             upkeep.innerHTML = "";
             upkeep.setAttribute("id", "modupkeep" + id);
@@ -4539,14 +4532,14 @@ function showSiegeProject(id, showOrigin) {
 }
 
 function showEmpireUpgrade(skill, showOrigin) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         i = "";
 
-    var upkeep = document.getElementById("modupkeep");
+    let upkeep = document.getElementById("modupkeep");
 
     upkeep.innerHTML = "";
     upkeep.setAttribute("id", "modupkeep" + skill.name);
@@ -4562,7 +4555,7 @@ function showEmpireUpgrade(skill, showOrigin) {
     unitTypesDiv = document.getElementById("affectUnitTypes");
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + skill.name);
 
-    var imageLinkName = skill.name.replaceAll(" ", "_").toLowerCase();
+    let imageLinkName = skill.name.replaceAll(" ", "_").toLowerCase();
     imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
     imagelink.setAttribute("id", "modicon" + skill.name);
     descriptionDiv.innerHTML = description;
@@ -4578,14 +4571,14 @@ function showEmpireUpgrade(skill, showOrigin) {
     cost.innerHTML = "";
     cost.setAttribute("id", "modcost" + skill.name);
 
-    var tomeOrigin = document.getElementById("originTome");
+    let tomeOrigin = document.getElementById("originTome");
     tomeOrigin.setAttribute("id", "originTome" + skill.name);
-    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    let tomeOriginIcon = document.getElementById("originTomeIcon");
     tomeOriginIcon.setAttribute("id", "originTomeIcon" + skill.name);
 }
 
 function showTome(a, div) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
@@ -4594,7 +4587,7 @@ function showTome(a, div) {
         j,
         l,
         descriptionDiv = "";
-    var found = false;
+    let found = false;
     for (j in jsonTomes) {
         if (a === jsonTomes[j].id) {
             modName = document.getElementById("tomename");
@@ -4602,7 +4595,7 @@ function showTome(a, div) {
 
             modName.innerHTML += jsonTomes[j].name;
             if ("DLC" in jsonTomes[j]) {
-                var newDivForMount = AddDLCTag(jsonTomes[j].DLC);
+                let newDivForMount = AddDLCTag(jsonTomes[j].DLC);
 
                 modName.append(newDivForMount);
             }
@@ -4611,11 +4604,11 @@ function showTome(a, div) {
             descriptionDiv = document.getElementById("tomedescription");
             description = jsonTomes[j].gameplay_description;
             if ("affinities" in jsonTomes[j]) {
-                var affinitiesdual = jsonTomes[j].affinities.split(", ");
+                let affinitiesdual = jsonTomes[j].affinities.split(", ");
 
-                var allAffinity = "";
-                for (var i = 0; i < affinitiesdual.length; i++) {
-                    var affinities = affinitiesdual[i].split(" ");
+                let allAffinity = "";
+                for (let i = 0; i < affinitiesdual.length; i++) {
+                    let affinities = affinitiesdual[i].split(" ");
                     allAffinity += affinities[0] + affinities[1];
                     console.log(allAffinity);
                     allAffinity = expandTags(allAffinity);
@@ -4640,14 +4633,14 @@ function showTome(a, div) {
 
             unitTypesDiv = document.getElementById("initialBonusList");
 
-            var div = document.createElement("DIV");
+            let div = document.createElement("DIV");
 
             if ("affinities" in jsonTomes[j]) {
-                var affinitiesdual = jsonTomes[j].affinities.split(", ");
+                let affinitiesdual = jsonTomes[j].affinities.split(", ");
 
-                var allAffinity = "";
-                for (var i = 0; i < affinitiesdual.length; i++) {
-                    var affinities = affinitiesdual[i].split(" ");
+                let allAffinity = "";
+                for (let i = 0; i < affinitiesdual.length; i++) {
+                    let affinities = affinitiesdual[i].split(" ");
                     // add a new line for each additional affinity
                     if (i !== 0) {
                         allAffinity += "<br>";
@@ -4659,15 +4652,15 @@ function showTome(a, div) {
                 unitTypesDiv.appendChild(div);
             }
             // tome passives
-            var l = "";
+            let l = "";
             if ("passives" in jsonTomes[j]) {
                 for (l in jsonTomes[j].passives) {
-                    var div = document.createElement("DIV");
+                    let div = document.createElement("DIV");
                     div.className = "initialBonusText";
 
                     div.innerHTML = "<unit></unit>" + jsonTomes[j].passives[l].name;
 
-                    var spa = document.createElement("SPAN");
+                    let spa = document.createElement("SPAN");
                     spa.innerHTML = jsonTomes[j].passives[l].type + "<br>";
                     spa.innerHTML += jsonTomes[j].passives[l].description;
 
@@ -4677,15 +4670,15 @@ function showTome(a, div) {
                 }
             }
             //  special province improvements
-            var l = "";
+
             if ("initial_upgrades" in jsonTomes[j]) {
-                for (l in jsonTomes[j].initial_upgrades) {
-                    var div = document.createElement("DIV");
+                for (let l = 0; l < jsonTomes[j].initial_upgrades.length; l++) {
+                    let div = document.createElement("DIV");
                     div.className = "initialBonusText";
-                    var name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
+                    let name = GetStructureName(jsonTomes[j].initial_upgrades[l].upgrade_slug);
                     div.innerHTML = name;
 
-                    var spa = document.createElement("SPAN");
+                    let spa = document.createElement("SPAN");
                     spa.innerHTML =
                         '<span style="color: #deb887 ;text-transform: uppercase">' +
                         name +
@@ -4700,24 +4693,24 @@ function showTome(a, div) {
                     unitTypesDiv.appendChild(div);
                 }
             }
-            var l = "";
+
             if ("hero_skills" in jsonTomes[j]) {
-                for (l in jsonTomes[j].hero_skills) {
+                for (let l = 0; l < jsonTomes[j].hero_skills; l++) {
                     // remove duplicates
                     if (l != 0) {
                         if (jsonTomes[j].hero_skills[l].slug === jsonTomes[j].hero_skills[l - 1].slug) {
                             break;
                         }
                     }
-                    var div = document.createElement("DIV");
+                    let div = document.createElement("DIV");
                     div.className = "initialBonusText";
-                    var name = GetHeroSkillName(jsonTomes[j].hero_skills[l].slug);
+                    let name = GetHeroSkillName(jsonTomes[j].hero_skills[l].slug);
                     div.innerHTML = "<hero></hero>" + name;
 
-                    var heroSkillIconAndDesc = GetHeroSkillDescription(jsonTomes[j].hero_skills[l].slug);
+                    let heroSkillIconAndDesc = GetHeroSkillDescription(jsonTomes[j].hero_skills[l].slug);
 
                     if (heroSkillIconAndDesc != undefined) {
-                        var spa2;
+                        let spa2;
                         // its a ability
                         if (heroSkillIconAndDesc[0] != "") {
                             spa2 = GetAbilityInfo(heroSkillIconAndDesc[0]);
@@ -4729,7 +4722,7 @@ function showTome(a, div) {
                                 heroSkillIconAndDesc[1].description
                             );
                         }
-                        var title = document.createElement("SPAN");
+                        let title = document.createElement("SPAN");
                         title.innerHTML = heroSkillIconAndDesc[1].name.toUpperCase();
                         title.setAttribute("style", "color:#deb887 ");
 
@@ -4748,9 +4741,9 @@ function showTome(a, div) {
                 }
             }
             // casting points
-            var div = document.createElement("DIV");
+            div = document.createElement("DIV");
             div.className = "initialBonusText initialBonusCastingPoints";
-            var amount = "";
+            let amount = "";
             if (
                 jsonTomes[j].tier === 1 ||
                 jsonTomes[j].tier === 2 ||
@@ -4775,12 +4768,12 @@ function showTome(a, div) {
 
             for (k in jsonTomes[j].skills) {
                 if ("spell_slug" in jsonTomes[j].skills[k]) {
-                    var iDiv = spell_card_template.content.cloneNode(true);
+                    let iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
                     showSpell(jsonTomes[j].skills[k].spell_slug, false);
                 }
                 if ("unit_slug" in jsonTomes[j].skills[k]) {
-                    var iDiv = spell_card_template.content.cloneNode(true);
+                    let iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
 
                     showUnitUnlock(jsonTomes[j].skills[k]);
@@ -4788,19 +4781,19 @@ function showTome(a, div) {
 
                 // stormport for some reason doesnt have an upgrade slug
                 if ("upgrade_slug" in jsonTomes[j].skills[k]) {
-                    var iDiv = spell_card_template.content.cloneNode(true);
+                    let iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
                     showStructure(jsonTomes[j].skills[k].upgrade_slug, false);
                 }
                 if ("type" in jsonTomes[j].skills[k]) {
                     if (jsonTomes[j].skills[k].type == "<hyperlink>Empire Bonus</hyperlink>") {
-                        var iDiv = spell_card_template.content.cloneNode(true);
+                        let iDiv = spell_card_template.content.cloneNode(true);
                         skillHolder.appendChild(iDiv);
                         showEmpireUpgrade(jsonTomes[j].skills[k], false);
                     }
                 }
                 if (jsonTomes[j].skills[k].type.indexOf("Siege") != -1) {
-                    var iDiv = spell_card_template.content.cloneNode(true);
+                    let iDiv = spell_card_template.content.cloneNode(true);
                     skillHolder.appendChild(iDiv);
                     showSiegeProject(jsonTomes[j].skills[k].name, false);
                 }
@@ -4835,10 +4828,10 @@ function expandTags(input) {
 }
 
 function ShowPossibleEnchantments(evt) {
-    var unitType = evt.currentTarget.param;
-    var activeEnchantList;
-    var holder = evt.currentTarget.originDiv.querySelectorAll("div#enchantHolder")[0];
-    // var holder = document.getElementById("enchantHolder" + evt.currentTarget.holder);
+    let unitType = evt.currentTarget.param;
+    let activeEnchantList;
+    let holder = evt.currentTarget.originDiv.querySelectorAll("div#enchantHolder")[0];
+    // let holder = document.getElementById("enchantHolder" + evt.currentTarget.holder);
     if (!evt.currentTarget.originDiv.hasOwnProperty("activeEnchantList")) {
         activeEnchantList = evt.currentTarget.activeEnchantList;
         holder.activeEnchantList = activeEnchantList;
@@ -4849,11 +4842,11 @@ function ShowPossibleEnchantments(evt) {
 
     unitType = unitType.replaceAll("_", " ");
 
-    var list = findEnchantmentsSpells();
+    let list = findEnchantmentsSpells();
 
-    var compatibleList = [];
-    var exclusionList = [];
-    var i = "";
+    let compatibleList = [];
+    let exclusionList = [];
+    let i = "";
 
     // check if culture
     if ("culture_name" in evt.currentTarget.unitData) {
@@ -4864,7 +4857,7 @@ function ShowPossibleEnchantments(evt) {
 
     // console.log(culture);
     for (i = 0; i < list.length; i++) {
-        var j = "";
+        let j = "";
 
         if (list[i].id === "brutal_mark") {
             if (culture == "barbarian") {
@@ -4929,15 +4922,15 @@ function ShowPossibleEnchantments(evt) {
             }
         }
         for (j = 0; j < list[i].enchantment_requisites.length; j++) {
-            var requisite = list[i].enchantment_requisites[j].requisite;
-            var type = list[i].enchantment_requisites[j].requisite.toLowerCase().split("> ");
+            let requisite = list[i].enchantment_requisites[j].requisite;
+            let type = list[i].enchantment_requisites[j].requisite.toLowerCase().split("> ");
 
             if (type[1] != undefined) {
                 if (type[1] === unitType) {
                     if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
                         compatibleList.push(list[i]);
                 } else {
-                    var passives = "";
+                    let passives = "";
                     for (passives in evt.currentTarget.unitData.secondary_passives) {
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === type[1].toLowerCase()) {
                             if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
@@ -4947,7 +4940,7 @@ function ShowPossibleEnchantments(evt) {
                 }
             } else {
                 if (requisite === "Units that Evolve") {
-                    var passives = "";
+                    let passives = "";
                     for (passives in evt.currentTarget.unitData.secondary_passives) {
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === "evolve") {
                             if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
@@ -4962,12 +4955,12 @@ function ShowPossibleEnchantments(evt) {
                 } else {
                     requisite = requisite.replaceAll(" ", "_");
 
-                    var type = requisite.split("> ");
+                    let type = requisite.split("> ");
 
                     if (type[1] != undefined) {
                         requisite = type[1];
                     }
-                    var passives = "";
+                    let passives = "";
                     for (passives in evt.currentTarget.unitData.secondary_passives) {
                         if (evt.currentTarget.unitData.secondary_passives[passives].slug === requisite.toLowerCase()) {
                             if (!isInArray(activeEnchantList, list[i]) && !isInArray(exclusionList, list[i]))
@@ -4996,10 +4989,10 @@ function ShowPossibleEnchantments(evt) {
 
     holder.innerHTML = "";
 
-    var activeHolder = evt.currentTarget.activeListHolder;
+    let activeHolder = evt.currentTarget.activeListHolder;
 
     for (let i = 0; i < compatibleList.length; i++) {
-        var enchantEntry = createTooltipForEnchant(compatibleList[i]);
+        let enchantEntry = createTooltipForEnchant(compatibleList[i]);
 
         enchantEntry.addEventListener("click", SetEnchantment);
         enchantEntry.enchant = compatibleList[i];
@@ -5013,11 +5006,11 @@ function ShowPossibleEnchantments(evt) {
 }
 
 function createTooltipForEnchant(item) {
-    var span = document.createElement("span");
-    var enchantEntry = document.createElement("Button");
+    let span = document.createElement("span");
+    let enchantEntry = document.createElement("Button");
     enchantEntry.className = "enchantButton";
     const image = document.createElement("img");
-    var text = document.createElement("div");
+    let text = document.createElement("div");
     image.setAttribute("width", "20");
     image.setAttribute("height", "20");
     image.setAttribute("src", "/aow4db/Icons/SpellIcons/" + item.icon + ".png");
@@ -5040,7 +5033,7 @@ function SetEnchantment(evt) {
     if (!isInArray(evt.currentTarget.activeEnchantList, evt.currentTarget.enchant)) {
         evt.currentTarget.originDiv.activeEnchantList.push(evt.currentTarget.enchant);
         evt.currentTarget.remove();
-        var activeEnch = document.createElement("Div");
+        let activeEnch = document.createElement("Div");
         activeEnch.className = "enchantButton";
         const image = document.createElement("img");
 
@@ -5050,7 +5043,7 @@ function SetEnchantment(evt) {
 
         activeEnch.className = "tooltip";
         activeEnch.setAttribute("style", "padding: 0px");
-        var span = document.createElement("span");
+        let span = document.createElement("span");
         span.innerHTML = evt.currentTarget.enchant.name + "<hr>" + evt.currentTarget.enchant.description;
         span.setAttribute("style", "left: 50px;");
 
@@ -5067,15 +5060,15 @@ function SetEnchantment(evt) {
 
         activeEnch.addEventListener("click", RemoveActiveEnchant);
 
-        var holder = evt.currentTarget.activeHolder;
-        var unit = evt.currentTarget.unit;
+        let holder = evt.currentTarget.activeHolder;
+        let unit = evt.currentTarget.unit;
         holder.appendChild(activeEnch);
     }
     showUnit(evt.currentTarget.unit);
 }
 
 function RemoveActiveEnchant(evt) {
-    var origin = evt.currentTarget.originDiv;
+    let origin = evt.currentTarget.originDiv;
 
     origin.activeEnchantList = origin.activeEnchantList.filter((item) => item !== evt.currentTarget.thisEnchant);
 
@@ -5084,17 +5077,19 @@ function RemoveActiveEnchant(evt) {
 }
 
 function GetAbilityInfo(ability) {
+    let spa;
     if ("accuracy" in ability) {
-        var abilityName = ability.name.toUpperCase();
+        let abilityReq = "";
+        let abilityName = ability.name.toUpperCase();
         if (ability.requisites === undefined) {
-            var abilityReq = "";
+            abilityReq = "";
         } else {
-            var abilityReq = ability.requisites;
+            abilityReq = ability.requisites;
         }
 
-        var abilityMod = "";
+        let abilityMod = "";
 
-        var l = 0;
+        let l = 0;
         for (l in ability.modifiers) {
             abilityName += "&#11049";
             abilityMod += "<bullet>" + ability.modifiers[l].name + "<br>";
@@ -5104,10 +5099,10 @@ function GetAbilityInfo(ability) {
         // add notes
 
         abilityNote = "";
-        var Cooldown = "";
-        var Once = "";
-        var l = 0;
-        for (l in ability.notes) {
+        let Cooldown = "";
+        let Once = "";
+
+        for (let l = 0; l < ability.notes.length; l++) {
             if (ability.notes[l] === undefined) {
             } else {
                 if (ability.notes[l].note.indexOf("Cooldown") != -1) {
@@ -5120,13 +5115,13 @@ function GetAbilityInfo(ability) {
             }
         }
 
-        var abilityEncht = "";
+        let abilityEncht = "";
 
         abilityRange = ability.range + "<range></range>";
         abilityAcc = ability.accuracy + "<accuracy></accuracy>";
 
-        var abilityIconType = GetAbilityBackground(ability.damage);
-        var spa = GetAbilityToolTip(
+        let abilityIconType = GetAbilityBackground(ability.damage);
+        spa = GetAbilityToolTip(
             ability,
             ability.damage,
             abilityName,
@@ -5141,13 +5136,13 @@ function GetAbilityInfo(ability) {
             Once
         );
     } else {
-        var spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
+        spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
     }
     return spa;
 }
 
 function GetStructureName(structureID) {
-    var j = 0;
+    let j = 0;
     for (j in jsonStructureUpgrades) {
         if (jsonStructureUpgrades[j].id.indexOf(structureID) != -1) {
             return jsonStructureUpgrades[j].name;
@@ -5156,7 +5151,7 @@ function GetStructureName(structureID) {
 }
 
 function GetHeroSkillName(skillID) {
-    var j = 0;
+    let j = 0;
     for (j in jsonHeroSkills) {
         if (jsonHeroSkills[j].id == skillID) {
             return jsonHeroSkills[j].name;
@@ -5165,12 +5160,12 @@ function GetHeroSkillName(skillID) {
 }
 
 function GetHeroSkillDescription(skillID) {
-    var array = ["", ""];
-    var j = 0;
+    let array = ["", ""];
+    let j = 0;
     for (j in jsonHeroSkills) {
         if (jsonHeroSkills[j].id == skillID) {
             if ("abilities" in jsonHeroSkills[j]) {
-                for (var k = 0; k < jsonUnitAbilities.length; k++) {
+                for (let k = 0; k < jsonUnitAbilities.length; k++) {
                     if (jsonUnitAbilities[k].slug.indexOf(jsonHeroSkills[j].abilities[0].slug) != -1) {
                         array[0] = jsonUnitAbilities[k];
                     }
@@ -5184,7 +5179,7 @@ function GetHeroSkillDescription(skillID) {
 }
 
 function GetStructureDescription(structureID) {
-    var j = 0;
+    let j = 0;
     for (j in jsonStructureUpgrades) {
         if (jsonStructureUpgrades[j].id === structureID) {
             return jsonStructureUpgrades[j].description;
@@ -5193,7 +5188,7 @@ function GetStructureDescription(structureID) {
 }
 
 function showStructure(a, showOrigin) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
@@ -5201,7 +5196,7 @@ function showStructure(a, showOrigin) {
         j,
         nameString,
         modCard = "";
-    var found = false;
+    let found = false;
     for (j in jsonStructureUpgrades) {
         if (a === jsonStructureUpgrades[j].id) {
             // exception
@@ -5224,7 +5219,7 @@ function showStructure(a, showOrigin) {
 
             modName.innerHTML = nameString;
             // backtracktome
-            var tomeNameandTier = backtraceStructureToTomeNameAndTier(a);
+            let tomeNameandTier = backtraceStructureToTomeNameAndTier(a);
 
             modName.setAttribute("id", "modname" + a);
 
@@ -5296,119 +5291,61 @@ function showStructure(a, showOrigin) {
             cost.innerHTML = "Build Cost: " + jsonStructureUpgrades[j].cost;
             cost.setAttribute("id", "modcost" + a);
 
-            var name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
+            let name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
 
             if ("DLC" in jsonStructureUpgrades[j]) {
-                var newDivForMount = AddDLCTag(jsonStructureUpgrades[j].DLC);
+                let newDivForMount = AddDLCTag(jsonStructureUpgrades[j].DLC);
                 modName.append(newDivForMount);
             }
 
-            var tomeOrigin = document.getElementById("originTome");
+            let tomeOrigin = document.getElementById("originTome");
             tomeOrigin.setAttribute("id", "originTome" + a.id);
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
+            let tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
             if (a.indexOf("wildlife_sanctuary") != -1) {
+                let listOfWildlife = [
+                    "goretusk_piglet",
+                    "dread_spider_hatchling",
+                    "vampire_spider_hatchling",
+                    "razorback",
+                    "warg"
+                ];
                 // unlock warg, razorback, hunter spider, goretustk piglet
                 descriptionDiv.innerHTML += "<br>Unlocks Production of:";
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "goretusk_piglet" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("goretusk_piglet") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "dread_spider_hatchling" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("dread_spider_hatchling") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "vampire_spider_hatchling" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("vampire_spider_hatchling") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "razorback" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("razorback") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "warg" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("warg") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
+                for (let i = 0; i < listOfWildlife.length; i++) {
+                    let div = document.createElement("DIV");
+                    div.innerHTML =
+                        "<bullet>" +
+                        '<a href="/aow4db/HTML/Units.html?unit=' +
+                        listOfWildlife[i] +
+                        '" target="_blank">' +
+                        GetUnitTierAndName(listOfWildlife[i]) +
+                        "</a>" +
+                        "</bullet>";
+                    unitTypesDiv.append(div);
+                }
             }
 
             if (a.indexOf("demon_gate") != -1) {
+                let listOfWildlife = ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"];
                 // unlock warg, razorback, hunter spider, goretustk piglet
                 descriptionDiv.innerHTML += "<br>Unlocks Production of:";
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "inferno_puppy" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("inferno_puppy") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "gremlin" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("gremlin") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "inferno_hound" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("inferno_hound") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
-                var div = document.createElement("DIV");
-                div.innerHTML =
-                    "<bullet>" +
-                    '<a href="/aow4db/HTML/Units.html?unit=' +
-                    "chaos_eater" +
-                    '" target="_blank">' +
-                    GetUnitTierAndName("chaos_eater") +
-                    "</a>" +
-                    "</bullet>";
-                unitTypesDiv.append(div);
+                for (let i = 0; i < listOfWildlife.length; i++) {
+                    let div = document.createElement("DIV");
+                    div.innerHTML =
+                        "<bullet>" +
+                        '<a href="/aow4db/HTML/Units.html?unit=' +
+                        listOfWildlife[i] +
+                        '" target="_blank">' +
+                        GetUnitTierAndName(listOfWildlife[i]) +
+                        "</a>" +
+                        "</bullet>";
+                    unitTypesDiv.append(div);
+                }
             }
 
-            var upkeep = document.getElementById("modupkeep");
+            let upkeep = document.getElementById("modupkeep");
 
             // upkeep.innerHTML = "";
             // upkeep.setAttribute("id", "modupkeep" + a.id);
@@ -5424,11 +5361,11 @@ function showStructure(a, showOrigin) {
 }
 
 function showCosmicHappening(a) {
-    var modName,
+    let modName,
         description,
         j,
         nameString = "";
-    var found = false;
+    let found = false;
 
     for (j in jsonCosmicHappenings) {
         if (a === jsonCosmicHappenings[j].id) {
@@ -5449,14 +5386,14 @@ function showCosmicHappening(a) {
             descriptionDiv.innerHTML = description;
             descriptionDiv.setAttribute("id", "description" + a);
 
-            var imagelink = document.getElementById("modicon");
+            let imagelink = document.getElementById("modicon");
             imagelink.setAttribute("id", "img" + a);
-            var categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
+            let categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
             categoryLink = categoryLink.replaceAll("of", "Of");
             imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
 
-            var preview = document.getElementById("structurepreview");
-            var imagePos = jsonCosmicHappenings[j].image;
+            let preview = document.getElementById("structurepreview");
+            let imagePos = jsonCosmicHappenings[j].image;
 
             preview.setAttribute("id", "img" + a);
             preview.className = "cosmicHappeningPic";
@@ -5464,12 +5401,12 @@ function showCosmicHappening(a) {
 
             preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
 
-            var modtier = document.getElementById("modtier");
+            let modtier = document.getElementById("modtier");
             modtier.innerHTML = "Category: " + jsonCosmicHappenings[j].category;
             modtier.setAttribute("id", "img" + a);
 
-            var modcost = document.getElementById("modcost");
-            var duration = jsonCosmicHappenings[j].duration;
+            let modcost = document.getElementById("modcost");
+            let duration = jsonCosmicHappenings[j].duration;
             if (duration == -1) {
                 duration = "Variable";
             } else {
@@ -5488,13 +5425,13 @@ function showCosmicHappening(a) {
 }
 
 function showWorldStructure(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         nameString = "";
-    var found = false;
+    let found = false;
     const structure = jsonWorldStructures.find((structure) => structure.id === a);
     if (!structure) {
         console.log("Couldn't find structure world: " + a);
@@ -5511,7 +5448,7 @@ function showWorldStructure(a) {
     }
     modName.innerHTML = nameString;
     if ("DLC" in structure) {
-        var newDivForMount = AddDLCTag(structure.DLC);
+        let newDivForMount = AddDLCTag(structure.DLC);
         modName.append(newDivForMount);
     }
     modName.setAttribute("id", "modname" + a);
@@ -5560,8 +5497,8 @@ function showWorldStructure(a) {
 
     if ("unit_unlocks" in structure) {
         description += "<br>Rally Units:<br>";
-        for (var x = 0; x < structure.unit_unlocks.length; x++) {
-            var div = document.createElement("DIV");
+        for (let x = 0; x < structure.unit_unlocks.length; x++) {
+            let div = document.createElement("DIV");
             div.setAttribute("style", "margin-right: 20px;");
             div.innerHTML =
                 '<a href="/aow4db/HTML/Units.html?unit=' +
@@ -5590,8 +5527,8 @@ function showWorldStructure(a) {
 
     cost = document.getElementById("modcost");
 
-    var tomeOrigin = document.getElementById("originTome");
-    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    let tomeOrigin = document.getElementById("originTome");
+    let tomeOriginIcon = document.getElementById("originTomeIcon");
     tomeOrigin.setAttribute("id", "originTome" + a);
     tomeOriginIcon.setAttribute("id", "originTomeIcon" + a);
 
@@ -5600,7 +5537,7 @@ function showWorldStructure(a) {
 }
 
 function FindCombatEnchantment(id) {
-    var i = "";
+    let i = "";
     for (i in jsonCombatEnchantments) {
         if (jsonCombatEnchantments[i].origin_structure === id) {
             info = document.createElement("DIV");
@@ -5609,10 +5546,10 @@ function FindCombatEnchantment(id) {
                 '<button type="button" class="collapsible"  onclick="SetUpCombatEnc()"> Combat Enchantment - ' +
                 jsonCombatEnchantments[i].name +
                 "</button>";
-            var collapsibleC = document.createElement("DIV");
+            let collapsibleC = document.createElement("DIV");
             collapsibleC.className = "combatEnchantment";
 
-            var div = document.createElement("DIV");
+            let div = document.createElement("DIV");
             div.innerHTML =
                 '<img style="float:left; height:80px; padding:10px" src="/aow4db/Icons/CombatEnchantments/' +
                 jsonCombatEnchantments[i].id +
@@ -5631,20 +5568,20 @@ function FindCombatEnchantment(id) {
 }
 
 function ShowDestinyTraits() {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         j,
         nameString = "";
-    var found = false;
+    let found = false;
 
     for (j in jsonDestiny.traits) {
         a = jsonDestiny.traits[j].id;
-        var doc = document.getElementById("dataHolder");
+        let doc = document.getElementById("dataHolder");
 
-        var iDiv = spell_card_template.content.cloneNode(true);
+        let iDiv = spell_card_template.content.cloneNode(true);
         doc.appendChild(iDiv);
 
         modName = document.getElementById("modname");
@@ -5678,9 +5615,9 @@ function ShowDestinyTraits() {
         unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
         descriptionDiv.innerHTML += "<br><br>Effect: <br>";
-        var l = 0;
+        let l = 0;
         for (l in jsonDestiny.traits[j].gains) {
-            var div = document.createElement("DIV");
+            let div = document.createElement("DIV");
             div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>";
             descriptionDiv.appendChild(div);
         }
@@ -5701,14 +5638,14 @@ function ShowDestinyTraits() {
 }
 
 function showDestinyTrait(trait) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         j,
         nameString = "";
-    var found = false;
+    let found = false;
 
     for (j in jsonDestiny.traits) {
         if (trait === jsonDestiny.traits[j].id) {
@@ -5746,9 +5683,9 @@ function showDestinyTrait(trait) {
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
             descriptionDiv.innerHTML += "<br><br>Effect: <br>";
-            var l = 0;
+            let l = 0;
             for (l in jsonDestiny.traits[j].gains) {
-                var div = document.createElement("DIV");
+                let div = document.createElement("DIV");
                 div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>";
                 descriptionDiv.appendChild(div);
             }
@@ -5769,14 +5706,14 @@ function showDestinyTrait(trait) {
 }
 
 function showEmpireTree(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         j,
         nameString = "";
-    var found = false;
+    let found = false;
 
     for (j in jsonEmpire) {
         if (a === jsonEmpire[j].id) {
@@ -5828,7 +5765,7 @@ function showEmpireTree(a) {
 }
 
 function GetCostUnit(id) {
-    var i = 0;
+    let i = 0;
     for (i in jsonUnits) {
         if (id === jsonUnits[i].id) {
             return jsonUnits[i].cost;
@@ -5837,13 +5774,13 @@ function GetCostUnit(id) {
 }
 
 function showUnitUnlock(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         j = "";
-    var found = false;
+    let found = false;
 
     modName = document.getElementById("modname");
     modName.innerHTML = a.name.toUpperCase();
@@ -5857,10 +5794,10 @@ function showUnitUnlock(a) {
     unitTypesDiv = document.getElementById("affectUnitTypes");
 
     if (a.name === "Young Dragon") {
-        var alldragons = ["young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon"];
-        var i = "";
+        let alldragons = ["young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon"];
+        let i = "";
         for (i in alldragons) {
-            var div = document.createElement("DIV");
+            let div = document.createElement("DIV");
             div.innerHTML =
                 "<bullet>" +
                 '<a href="/aow4db/HTML/Units.html?unit=' +
@@ -5874,7 +5811,7 @@ function showUnitUnlock(a) {
 
         unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
     } else {
-        var div = document.createElement("DIV");
+        let div = document.createElement("DIV");
         div.innerHTML =
             '<a href ="/aow4db/HTML/Units.html?unit=' +
             a.unit_slug +
@@ -5905,7 +5842,7 @@ function showUnitUnlock(a) {
 
     cost.setAttribute("id", "modcost" + a);
 
-    var upkeep = document.getElementById("modupkeep");
+    let upkeep = document.getElementById("modupkeep");
 
     upkeep.innerHTML = "";
     upkeep.setAttribute("id", "modupkeep" + a.unit_slug);
@@ -5914,13 +5851,13 @@ function showUnitUnlock(a) {
 }
 
 function showSpell(a, showOrigin) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier,
         modCard = "";
-    var found = false;
+    let found = false;
     for (let j = jsonSpells.length - 1; j >= 0; j--) {
         if (a === jsonSpells[j].id) {
             modCard = document.getElementById("spell_card");
@@ -5931,7 +5868,7 @@ function showSpell(a, showOrigin) {
             description = "<hr>";
             descriptionDiv = document.getElementById("moddescription");
 
-            var upkeep = document.getElementById("modupkeep");
+            let upkeep = document.getElementById("modupkeep");
             if ("upkeep" in jsonSpells[j]) {
                 upkeep = document.getElementById("modupkeep");
                 upkeep.innerHTML = "Upkeep: " + jsonSpells[j].upkeep;
@@ -5948,9 +5885,9 @@ function showSpell(a, showOrigin) {
             if (jsonSpells[j].enchantment_requisites != undefined) {
                 description += "<br><greenText>Affected Unit Types: </greenText><br>";
             }
-            var l = 0;
+            let l = 0;
             for (l in jsonSpells[j].enchantment_requisites) {
-                var div = document.createElement("DIV");
+                let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML = "<bullet>" + jsonSpells[j].enchantment_requisites[l].requisite + "</bullet>";
                 unitTypesDiv.appendChild(div);
@@ -5958,9 +5895,9 @@ function showSpell(a, showOrigin) {
 
             if ("summoned_units" in jsonSpells[j]) {
                 description += "<br>Summoned Units:<br>";
-                var x = 0;
+                let x = 0;
                 for (x in jsonSpells[j].summoned_units) {
-                    var div = document.createElement("DIV");
+                    let div = document.createElement("DIV");
                     div.setAttribute("style", "margin-right: 20px;");
                     div.innerHTML =
                         '<a href="/aow4db/HTML/Units.html?unit=' +
@@ -5987,13 +5924,13 @@ function showSpell(a, showOrigin) {
                 info = document.createElement("DIV");
                 info.innerHTML =
                     '<button type="button" class="collapsible"  onclick="SetUpSpawnTable()">Spawn Chances</button>';
-                var collapsibleC = document.createElement("DIV");
+                let collapsibleC = document.createElement("DIV");
                 collapsibleC.classList = "content";
 
                 for (let index = 0; index < jsonSpawnTables.length; index++) {
                     if (jsonSpawnTables[index].id == a) {
                         for (let j = 0; j < jsonSpawnTables[index].categories.length; j++) {
-                            var div = ConvertSpawnTable(jsonSpawnTables[index].categories[j].table);
+                            let div = ConvertSpawnTable(jsonSpawnTables[index].categories[j].table);
                             collapsibleC.append(div);
                         }
                     }
@@ -6023,7 +5960,7 @@ function showSpell(a, showOrigin) {
 
             imagelink = document.getElementById("modicon");
 
-            var imageLinkName = "";
+            let imageLinkName = "";
             if (jsonSpells[j].icon != undefined) {
                 imageLinkName = jsonSpells[j].icon;
             } else {
@@ -6035,16 +5972,16 @@ function showSpell(a, showOrigin) {
             }
             imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
             imagelink.setAttribute("id", "modicon" + a);
-            var tierSpell = backtraceTomeOriginAndTier(jsonSpells[j].id, showOrigin);
+            let tierSpell = backtraceTomeOriginAndTier(jsonSpells[j].id, showOrigin);
 
             if (tierSpell != undefined) {
-                var splitspell = tierSpell.split(",");
+                let splitspell = tierSpell.split(",");
                 modName.innerHTML +=
                     '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
                     romanize(splitspell[0]) +
                     "</span>";
                 if ("DLC" in jsonSpells[j] && showOrigin) {
-                    var newDivForMount = AddDLCTag(jsonSpells[j].DLC);
+                    let newDivForMount = AddDLCTag(jsonSpells[j].DLC);
                     modName.append(newDivForMount);
                 }
             } else {
@@ -6052,9 +5989,9 @@ function showSpell(a, showOrigin) {
             }
 
             if (showOrigin === true) {
-                var tomeOrigin = document.getElementById("originTome");
+                let tomeOrigin = document.getElementById("originTome");
                 tomeOrigin.setAttribute("id", "originTome" + jsonSpells[j].id);
-                var tomeOriginIcon = document.getElementById("originTomeIcon");
+                let tomeOriginIcon = document.getElementById("originTomeIcon");
                 tomeOriginIcon.setAttribute("id", "originTomeIcon" + jsonSpells[j].id);
             }
 
@@ -6109,8 +6046,8 @@ function ConvertSpawnTable(input) {
 }
 
 function FindFormUnits() {
-    var unitsList = [];
-    var i = 0;
+    let unitsList = [];
+    let i = 0;
     for (i in jsonUnits) {
         /* if (jsonUnits[i].culture_name != undefined) {
             if (!isInArray(unitsList, jsonUnits[i].id)) {
@@ -6131,10 +6068,10 @@ function FindFormUnits() {
     const maxLength = 10;
 
     // Split the array into smaller arrays by tier
-    var splitArrays = [];
-    var currentArray = [];
+    let splitArrays = [];
+    let currentArray = [];
 
-    var skip = false;
+    let skip = false;
     if (unitsList.length > maxLength) {
         unitsList.forEach((item, index) => {
             currentArray.push(item);
@@ -6159,12 +6096,12 @@ function FindFormUnits() {
         splitArrays.push(unitsList);
     }
 
-    var sortedUnitListArray = [];
+    let sortedUnitListArray = [];
 
-    var z = 0;
+    let z = 0;
     for (z in splitArrays) {
-        var unitsSorted = [];
-        var x = 0;
+        let unitsSorted = [];
+        let x = 0;
         for (x in splitArrays[z]) {
             unitsSorted.push(splitArrays[z][x].id);
         }
@@ -6176,10 +6113,10 @@ function FindFormUnits() {
 
 function FindUnitsWithSecondaryPassive(trait) {
     // need to find a way to check tiers as well
-    var unitsList = [];
-    var i = 0;
+    let unitsList = [];
+    let i = 0;
     for (i in jsonUnits) {
-        var j = 0;
+        let j = 0;
         for (j in jsonUnits[i].secondary_passives) {
             if (jsonUnits[i].secondary_passives[j].slug === trait) {
                 if (!isInArray(unitsList, jsonUnits[i].id)) {
@@ -6196,10 +6133,10 @@ function FindUnitsWithSecondaryPassive(trait) {
     const maxLength = 10;
 
     // Split the array into smaller arrays by tier
-    var splitArrays = [];
-    var currentArray = [];
+    let splitArrays = [];
+    let currentArray = [];
 
-    var skip = false;
+    let skip = false;
     if (unitsList.length > maxLength) {
         unitsList.forEach((item, index) => {
             currentArray.push(item);
@@ -6224,12 +6161,12 @@ function FindUnitsWithSecondaryPassive(trait) {
         splitArrays.push(unitsList);
     }
 
-    var sortedUnitListArray = [];
+    let sortedUnitListArray = [];
 
-    var z = 0;
+    let z = 0;
     for (z in splitArrays) {
-        var unitsSorted = [];
-        var x = 0;
+        let unitsSorted = [];
+        let x = 0;
         for (x in splitArrays[z]) {
             unitsSorted.push(splitArrays[z][x].id);
         }
@@ -6240,15 +6177,15 @@ function FindUnitsWithSecondaryPassive(trait) {
 }
 
 function showItem(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier = "";
-    var found = false;
-    var l = "";
-    var j = "";
-    var i = "";
+    let found = false;
+    let l = "";
+    let j = "";
+    let i = "";
 
     modName = document.getElementById("modname");
     modName.innerHTML = a.name.toUpperCase();
@@ -6271,7 +6208,7 @@ function showItem(a) {
             j = 0;
             for (j in jsonUnitAbilities) {
                 if (jsonUnitAbilities[j].slug.indexOf(lookup) != -1) {
-                    var abilityName = jsonUnitAbilities[j].name;
+                    let abilityName = jsonUnitAbilities[j].name;
 
                     //   description = jsonUnitAbilities[j].description;
 
@@ -6288,7 +6225,7 @@ function showItem(a) {
                         let k = 0;
                         for (k in jsonUnitAbilities[j].modifiers) {
                             abilityName += "&#11049";
-                            var name = jsonUnitAbilities[j].modifiers[k].name.replace("^N", "");
+                            let name = jsonUnitAbilities[j].modifiers[k].name.replace("^N", "");
                             name = name.replace("^n", "");
                             abilityMod += "<bullet>" + name + "<br>";
                             abilityMod += jsonUnitAbilities[j].modifiers[k].description + "</bullet><br>";
@@ -6313,11 +6250,11 @@ function showItem(a) {
                             }
                         }
 
-                        var abilityEncht = "";
+                        let abilityEncht = "";
                         abilityRange = jsonUnitAbilities[j].range + "<range></range>";
                         abilityAcc = jsonUnitAbilities[j].accuracy + "<accuracy></accuracy>";
 
-                        var abilityIconType = GetAbilityBackground(jsonUnitAbilities[j].damage);
+                        let abilityIconType = GetAbilityBackground(jsonUnitAbilities[j].damage);
                         spa = GetAbilityToolTip(
                             jsonUnitAbilities[j],
                             jsonUnitAbilities[j].damage,
@@ -6355,17 +6292,17 @@ function showItem(a) {
     }
 
     if ("DLC" in a) {
-        var dlctag = AddDLCTag(a.DLC);
+        let dlctag = AddDLCTag(a.DLC);
         modName.append(dlctag);
     }
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
 
-    var div = document.createElement("DIV");
+    let div = document.createElement("DIV");
     i = 0;
     for (i in a.disabled_slots) {
-        var div = document.createElement("DIV");
+        let div = document.createElement("DIV");
         div.innerHTML = "&#11049" + a.disabled_slots[i].slot_name;
         unitTypesDiv.appendChild(div);
     }
@@ -6390,7 +6327,7 @@ function showItem(a) {
     imagelink = document.getElementById("modicon");
     imagelink.remove();
 
-    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    let tomeOriginIcon = document.getElementById("originTomeIcon");
     tomeOriginIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + a.icon + ".png");
     // tomeOriginIcon.setAttribute("height", "130px");
     //  tomeOriginIcon.setAttribute("style", "margin-left:40px");
@@ -6405,7 +6342,7 @@ function showTraitSetup(currentTrait) {
     descriptionDiv = document.getElementById("moddescription");
 
     if ("DLC" in currentTrait) {
-        var newDivForMount = document.createElement("DIV");
+        let newDivForMount = document.createElement("DIV");
         newDivForMount.className = "mountToolTip";
 
         imag = document.createElement("IMG");
@@ -6450,7 +6387,7 @@ function showTraitSetup(currentTrait) {
     unitTypesDiv = document.getElementById("affectUnitTypes");
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + currentTrait.id);
 
-    var div = document.createElement("DIV");
+    let div = document.createElement("DIV");
 
     // build up description:
 
@@ -6460,7 +6397,7 @@ function showTraitSetup(currentTrait) {
 
     if ("effect_descriptions" in currentTrait) {
         descriptionDiv.innerHTML += '<br><br><span class="mod_name">EFFECTS: </span><bulletlist>';
-        var k = "";
+        let k = "";
         for (k in currentTrait.effect_descriptions) {
             descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
         }
@@ -6473,7 +6410,7 @@ function showTraitSetup(currentTrait) {
 
     if ("starting_bonuses" in currentTrait) {
         descriptionDiv.innerHTML += '<br><br><span class="mod_name">STARTING BONUS: </span><bulletlist>';
-        var k = "";
+        let k = "";
         for (k in currentTrait.starting_bonuses) {
             if ("structure_upgrade_slug" in currentTrait.starting_bonuses[k]) {
                 descriptionDiv.innerHTML +=
@@ -6492,7 +6429,7 @@ function showTraitSetup(currentTrait) {
 
     if ("incompatible_society_traits" in currentTrait) {
         descriptionDiv.innerHTML += '<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>';
-        var k = "";
+        let k = "";
         for (k in currentTrait.incompatible_society_traits) {
             descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
         }
@@ -6504,8 +6441,8 @@ function showTraitSetup(currentTrait) {
     tier = document.getElementById("modtier");
     tier.innerHTML = "";
     if ("affinity" in currentTrait) {
-        var splitAff = currentTrait.affinity.split(",");
-        var j = "";
+        let splitAff = currentTrait.affinity.split(",");
+        let j = "";
         for (j in splitAff) {
             tier.innerHTML += splitAff[j];
         }
@@ -6523,7 +6460,7 @@ function showTraitSetup(currentTrait) {
     cost.setAttribute("id", "modcost" + currentTrait.id);
 
     imagelink = document.getElementById("modicon");
-    var iconLink = currentTrait.icon;
+    let iconLink = currentTrait.icon;
     if (iconLink.startsWith("_")) {
         iconLink = iconLink.split("_").slice(1).join("_");
     }
@@ -6532,42 +6469,42 @@ function showTraitSetup(currentTrait) {
     imagelink.setAttribute("style", "background-image:none");
     imagelink.setAttribute("id", "modicon" + currentTrait.id);
 
-    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    let tomeOriginIcon = document.getElementById("originTomeIcon");
 
     tomeOriginIcon.setAttribute("id", "modicon" + currentTrait.id);
 }
 
 function showTrait(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier = "";
-    var found = false;
-    var i = "";
+    let found = false;
+    let i = "";
     for (i in jsonFactionCreation2) {
         if (jsonFactionCreation2[i].id === a) {
-            var currentTrait = jsonFactionCreation2[i];
+            let currentTrait = jsonFactionCreation2[i];
 
             showTraitSetup(currentTrait);
         }
     }
     for (i in jsonFactionCreation) {
         if (jsonFactionCreation[i].id === a) {
-            var currentTrait = jsonFactionCreation[i];
+            let currentTrait = jsonFactionCreation[i];
             showTraitSetup(currentTrait);
         }
     }
 }
 
 function showHeroTrait(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier = "";
-    var found = false;
-    var i = "";
+    let found = false;
+    let i = "";
     for (i in jsonHeroAmbitions) {
         if (jsonHeroAmbitions[i].id === a) {
             let thisAmbition = jsonHeroAmbitions[i];
@@ -6649,7 +6586,7 @@ function showHeroTrait(a) {
                 }
             }
 
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
+            let tomeOriginIcon = document.getElementById("originTomeIcon");
 
             tomeOriginIcon.setAttribute("id", "modicon" + a.id);
             found = true;
@@ -6661,13 +6598,13 @@ function showHeroTrait(a) {
 }
 
 function showHeroGov(a) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier = "";
-    var found = false;
-    var i = "";
+    let found = false;
+    let i = "";
     for (i in jsonHeroGovernance) {
         if (jsonHeroGovernance[i].id === a) {
             let thisGovernance = jsonHeroGovernance[i];
@@ -6703,7 +6640,7 @@ function showHeroGov(a) {
             imagelink.setAttribute("style", "background-image:none");
             imagelink.setAttribute("id", "modicon" + a);
 
-            var tomeOriginIcon = document.getElementById("originTomeIcon");
+            let tomeOriginIcon = document.getElementById("originTomeIcon");
 
             tomeOriginIcon.setAttribute("id", "modicon" + a.id);
             found = true;
@@ -6742,14 +6679,14 @@ function transformString(inputString) {
 }
 
 function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) {
-    var modName,
+    let modName,
         description,
         cost,
         type,
         tier = "";
-    var found = false;
-    var k = "";
-    var j = "";
+    let found = false;
+    let k = "";
+    let j = "";
 
     modName = document.getElementById("modname");
 
@@ -6765,140 +6702,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     descriptionDiv.innerHTML = "";
 
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
-
-    if (a.id === "summon_elemental") {
-        descriptionDiv.innerHTML += "<br>Summoned Units:";
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "tide_spirit" +
-            '" target="_blank">' +
-            GetUnitTierAndName("tide_spirit") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "storm_spirit" +
-            '" target="_blank">' +
-            GetUnitTierAndName("storm_spirit") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "magma_spirit" +
-            '" target="_blank">' +
-            GetUnitTierAndName("magma_spirit") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "snow_spirit" +
-            '" target="_blank">' +
-            GetUnitTierAndName("snow_spirit") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "stone_spirit" +
-            '" target="_blank">' +
-            GetUnitTierAndName("stone_spirit") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-    }
-
-    if (a.id === "summon_animal") {
-        descriptionDiv.innerHTML += "<br>Summoned Units:";
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "unicorn" +
-            '" target="_blank">' +
-            GetUnitTierAndName("unicorn") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "nightmare" +
-            '" target="_blank">' +
-            GetUnitTierAndName("nightmare") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "thunderbird" +
-            '" target="_blank">' +
-            GetUnitTierAndName("thunderbird") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "goretusk_matriarch" +
-            '" target="_blank">' +
-            GetUnitTierAndName("goretusk_matriarch") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "caustic_worm" +
-            '" target="_blank">' +
-            GetUnitTierAndName("caustic_worm") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-    }
-
-    if (a.id === "summon_undead") {
-        descriptionDiv.innerHTML += "<br>Summoned Units:";
-
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "corrupt_soul" +
-            '" target="_blank">' +
-            GetUnitTierAndName("corrupt_soul") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-
-        var div = document.createElement("DIV");
-        div.innerHTML =
-            "<bullet>" +
-            '<a href="/aow4db/HTML/Units.html?unit=' +
-            "banshee" +
-            '" target="_blank">' +
-            GetUnitTierAndName("banshee") +
-            "</a>" +
-            "</bullet>";
-        unitTypesDiv.append(div);
-    }
 
     //type = document.getElementById("modtype");
     //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
@@ -6928,56 +6731,58 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
         imagelink.remove();
     }
 
-    var id = FindHeroSkillOrigin(a.id);
+    let id = FindHeroSkillOrigin(a.id);
 
     if ("DLC" in a) {
-        var newDivForMount = AddDLCTag(a.DLC);
+        let newDivForMount = AddDLCTag(a.DLC);
         modName.append(newDivForMount);
     }
 
-    var tomeOrigin = document.getElementById("originTome");
+    let tomeOrigin = document.getElementById("originTome");
     tomeOrigin.setAttribute("id", "originTome" + a.id);
-    var tomeOriginIcon = document.getElementById("originTomeIcon");
+    let tomeOriginIcon = document.getElementById("originTomeIcon");
     tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
     if (a.id.indexOf("_transformation") != -1 || a.id.indexOf("_aspect") != -1) {
         // get position of button
 
-        var newDivForMount = AddDLCTag();
+        let newDivForMount = AddDLCTag();
         modName.append(newDivForMount);
     }
 
     if (checkInAbilities != "") {
-        var j = 0;
+        let j = 0;
+        let spa;
         for (j in jsonUnitAbilities) {
-            var k = 0;
+            let k = 0;
             for (k in a.abilities) {
                 if (jsonUnitAbilities[j].slug === a.abilities[k].slug) {
-                    var abilityName = jsonUnitAbilities[j].name;
+                    let abilityName = jsonUnitAbilities[j].name;
+                    let abilityReq = "";
 
                     if ("accuracy" in jsonUnitAbilities[j]) {
                         if (jsonUnitAbilities[j].requisites === undefined) {
-                            var abilityReq = "";
+                            abilityReq = "";
                         } else {
-                            var abilityReq = jsonUnitAbilities[j].requisites;
+                            abilityReq = jsonUnitAbilities[j].requisites;
                         }
 
-                        var abilityMod = "";
-
-                        var l = 0;
-                        for (l in jsonUnitAbilities[j].modifiers) {
-                            abilityName += "&#11049";
-                            abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
-                            abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
+                        let abilityMod = "";
+                        if ("modifiers" in jsonUnitAbilities[j]) {
+                            for (let l = 0; l < jsonUnitAbilities[j].modifiers.length; l++) {
+                                abilityName += "&#11049";
+                                abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
+                                abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
+                            }
                         }
 
                         // add notes
 
                         abilityNote = "";
-                        var Cooldown = "";
-                        var Once = "";
-                        var l = 0;
-                        for (l in jsonUnitAbilities[j].notes) {
+                        let Cooldown = "";
+                        let Once = "";
+
+                        for (let l = 0; l < jsonUnitAbilities[j].notes.length; l++) {
                             if (jsonUnitAbilities[j].notes[l] === undefined) {
                             } else {
                                 if (jsonUnitAbilities[j].notes[l].note.indexOf("Cooldown") != -1) {
@@ -6990,13 +6795,13 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                             }
                         }
 
-                        var abilityEncht = "";
+                        let abilityEncht = "";
 
                         abilityRange = jsonUnitAbilities[j].range + "<range></range>";
                         abilityAcc = jsonUnitAbilities[j].accuracy + "<accuracy></accuracy>";
 
-                        var abilityIconType = GetAbilityBackground(jsonUnitAbilities[j].damage);
-                        var spa = GetAbilityToolTip(
+                        let abilityIconType = GetAbilityBackground(jsonUnitAbilities[j].damage);
+                        spa = GetAbilityToolTip(
                             jsonUnitAbilities[j],
                             jsonUnitAbilities[j].damage,
                             abilityName,
@@ -7011,7 +6816,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
                             Once
                         );
                     } else {
-                        var spa = CreatePassiveSlotToolTip(
+                        spa = CreatePassiveSlotToolTip(
                             jsonUnitAbilities[j].icon,
                             jsonUnitAbilities[j].name,
                             jsonUnitAbilities[j].description
@@ -7027,10 +6832,10 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
             }
         }
     } else {
-        var j = 0;
+        let j = 0;
         for (j in jsonHeroSkills) {
             if (jsonHeroSkills[j].id === a.id) {
-                var spa = CreatePassiveSlotToolTip(
+                let spa = CreatePassiveSlotToolTip(
                     jsonHeroSkills[j].icon,
                     jsonHeroSkills[j].name,
                     jsonHeroSkills[j].description
@@ -7044,13 +6849,13 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
             }
         }
     }
-    for (var j = 0; j < jsonExtraAscendedInfo.length; j++) {
+    for (let j = 0; j < jsonExtraAscendedInfo.length; j++) {
         if (jsonExtraAscendedInfo[j].id == a.id) {
             descriptionDiv.innerHTML += "Tome(s) Researched : " + jsonExtraAscendedInfo[j].description;
             if ("extraspell" in jsonExtraAscendedInfo[j]) {
-                var iDiv = spell_card_template.content.cloneNode(true);
+                let iDiv = spell_card_template.content.cloneNode(true);
                 // Access the root element in the DocumentFragment
-                var rootElement = iDiv.querySelector("*");
+                let rootElement = iDiv.querySelector("*");
 
                 // Apply the style to the root element
                 if (rootElement) {
@@ -7068,7 +6873,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 }
 
 function AddDLCTag(dlcname) {
-    var newDivForMount = document.createElement("DIV");
+    let newDivForMount = document.createElement("DIV");
     newDivForMount.className = "mountToolTip";
 
     imag = document.createElement("IMG");
@@ -7110,21 +6915,21 @@ function AddDLCTag(dlcname) {
 }
 
 function FindHeroSkillOrigin(id) {
-    var j = 0;
+    let j = 0;
     for (j in jsonTomes) {
         {
             if ("hero_skills" in jsonTomes[j]) {
-                var k = 0;
+                let k = 0;
                 for (k in jsonTomes[j].hero_skills) {
                     if (jsonTomes[j].hero_skills[k].slug === id) {
-                        var tomeOrigin = document.getElementById("originTome");
+                        let tomeOrigin = document.getElementById("originTome");
                         if ("affinities" in jsonTomes[j]) {
                             tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]) + "<br>";
                         }
                         tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
-                        var tomeOriginIcon = document.getElementById("originTomeIcon");
+                        let tomeOriginIcon = document.getElementById("originTomeIcon");
                         tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                        var wrap = tomeOrigin.innerHTML;
+                        let wrap = tomeOrigin.innerHTML;
                         tomeOrigin.innerHTML =
                             '<a href="/aow4db/HTML/Spells.html?tome=' +
                             jsonTomes[j].id +
@@ -7140,23 +6945,23 @@ function FindHeroSkillOrigin(id) {
 }
 
 function backtraceTomeOriginAndTierForStructure(structure, showorigin) {
-    var returning = "";
-    var j = 0;
+    let returning = "";
+    let j = 0;
     for (j in jsonTomes) {
-        var k = 0;
+        let k = 0;
         for (k in jsonTomes[j].skills) {
             if (jsonTomes[j].skills[k].upgrade_slug === structure) {
                 if (showorigin) {
-                    var tomeOrigin = document.getElementById("originTome");
+                    let tomeOrigin = document.getElementById("originTome");
                     if ("affinities" in jsonTomes[j]) {
                         tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]);
 
                         tomeOrigin.innerHTML += "<br>";
                     }
                     tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
-                    var tomeOriginIcon = document.getElementById("originTomeIcon");
+                    let tomeOriginIcon = document.getElementById("originTomeIcon");
                     tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                    var wrap = tomeOrigin.innerHTML;
+                    let wrap = tomeOrigin.innerHTML;
                     tomeOrigin.innerHTML =
                         '<a href="/aow4db/HTML/Spells.html?tome=' +
                         jsonTomes[j].id +
@@ -7205,7 +7010,7 @@ function findDescriptionByName(name, nameElements) {
 }
 
 function parseDescriptionWithHyperlink(string, elements) {
-    var replacedText = string;
+    let replacedText = string;
 
     replacedText = uppercaseTextBetweenHyperlinks(string, elements);
 
@@ -7240,8 +7045,8 @@ function InitializeLoca() {
 }
 
 function LookUpHyperLink(str, elements, elementsLength) {
-    var hyperlinkSpan = str;
-    var description = "";
+    let hyperlinkSpan = str;
+    let description = "";
     // Example usage in a browser environment
 
     const noTagsName = replaceTagsWithString(str);
@@ -7271,23 +7076,23 @@ function LookUpHyperLink(str, elements, elementsLength) {
 }
 
 function backtraceTomeOriginAndTier(spell, showorigin) {
-    if (spell === "create_bone_golem" && showorigin) {
-        var tomeOrigin = document.getElementById("originTome");
+    if (spell === "create_bone_horror" && showorigin) {
+        let tomeOrigin = document.getElementById("originTome");
         tomeOrigin.innerHTML = "<empireshadow></empireshadow><empireshadow></empireshadow> <br> II - Tome of Souls";
 
-        var tomeOriginIcon = document.getElementById("originTomeIcon");
+        let tomeOriginIcon = document.getElementById("originTomeIcon");
         tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/tome_of_souls.png");
-        var wrap = tomeOrigin.innerHTML;
+        let wrap = tomeOrigin.innerHTML;
         tomeOrigin.innerHTML = '<a href="/aow4db/HTML/Spells.html?tome=tome_of_souls" target="_blank">' + wrap + "</a>";
     } else {
-        var j = 0;
+        let j = 0;
         for (j in jsonTomes) {
             {
-                var k = 0;
+                let k = 0;
                 for (k in jsonTomes[j].skills) {
                     if (jsonTomes[j].skills[k].spell_slug === spell) {
                         if (showorigin) {
-                            var tomeOrigin = document.getElementById("originTome");
+                            let tomeOrigin = document.getElementById("originTome");
                             if ("affinities" in jsonTomes[j]) {
                                 tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]);
 
@@ -7296,9 +7101,9 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 
                             tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
 
-                            var tomeOriginIcon = document.getElementById("originTomeIcon");
+                            let tomeOriginIcon = document.getElementById("originTomeIcon");
                             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                            var wrap = tomeOrigin.innerHTML;
+                            let wrap = tomeOrigin.innerHTML;
                             tomeOrigin.innerHTML =
                                 '<a href="/aow4db/HTML/Spells.html?tome=' +
                                 jsonTomes[j].id +
@@ -7312,13 +7117,13 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 
                     if (jsonTomes[j].skills[k].siege_project_slug === spell || jsonTomes[j].skills[k].name === spell) {
                         if (showorigin) {
-                            var tomeOrigin = document.getElementById("originTome");
+                            let tomeOrigin = document.getElementById("originTome");
                             if ("affinities" in jsonTomes[j]) {
-                                var affinitiesdual = jsonTomes[j].affinities.split(", ");
+                                let affinitiesdual = jsonTomes[j].affinities.split(", ");
 
-                                var allAffinity = "";
-                                for (var i = 0; i < affinitiesdual.length; i++) {
-                                    var affinities = affinitiesdual[i].split(" ");
+                                let allAffinity = "";
+                                for (let i = 0; i < affinitiesdual.length; i++) {
+                                    let affinities = affinitiesdual[i].split(" ");
                                     if (affinities[1] === 2) {
                                         allAffinity += affinities[0];
                                     }
@@ -7331,9 +7136,9 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
                             }
 
                             tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
-                            var tomeOriginIcon = document.getElementById("originTomeIcon");
+                            let tomeOriginIcon = document.getElementById("originTomeIcon");
                             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                            var wrap = tomeOrigin.innerHTML;
+                            let wrap = tomeOrigin.innerHTML;
                             tomeOrigin.innerHTML =
                                 '<a href="/aow4db/HTML/Spells.html?tome=' +
                                 jsonTomes[j].id +
@@ -7351,11 +7156,11 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 }
 
 function backtraceStructureToTomeNameAndTier(structure) {
-    var array = [];
-    var j = 0;
+    let array = [];
+    let j = 0;
     for (j in jsonTomes) {
         if ("initial_upgrades" in jsonTomes[j]) {
-            var k = 0;
+            let k = 0;
             for (k in jsonTomes[j].initial_upgrades)
                 if (structure.indexOf(jsonTomes[j].initial_upgrades[k].upgrade_slug) != -1) {
                     if (structure.indexOf("wildlife_sanctuary") != -1) {
@@ -7387,10 +7192,10 @@ function backtraceStructureToTomeNameAndTier(structure) {
 }
 
 function backtraceTomeNameAndTier(spell) {
-    var j = 0;
+    let j = 0;
     for (j in jsonTomes) {
         {
-            var k = 0;
+            let k = 0;
             for (k in jsonTomes[j].skills) {
                 if (jsonTomes[j].skills[k].spell_slug === spell) {
                     return jsonTomes[j];
@@ -7402,8 +7207,8 @@ function backtraceTomeNameAndTier(spell) {
 }
 
 function addAbilityList(a) {
-    var dam = "";
-    var j = 0;
+    let dam = "";
+    let j = 0;
     for (j in jsonUnitAbilities) {
         if (a === jsonUnitAbilities[j].slug) {
             if (jsonUnitAbilities[j].damage) {
@@ -7415,8 +7220,7 @@ function addAbilityList(a) {
 }
 
 function addTypesList(a) {
-    var dam = "";
-    var j = 0;
+    let j = 0;
     for (j in jsonUnitAbilities) {
         if (a === jsonUnitAbilities[j].slug) {
             return jsonUnitAbilities[j].name + "<br>";

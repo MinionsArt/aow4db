@@ -733,16 +733,19 @@ function BuildChoicesPanel(choiceslist, originButton, slot, evt) {
 
     var panel = document.getElementById("choicesPanel");
     panel.innerHTML = "";
-    for (i = 0; i < choiceslist.length; i++) {
-        let choiceNode = document.createElement("BUTTON");
-        let thisSkill = ReturnHeroSkillItself(null, choiceslist[i].resid);
+    choiceslist.forEach((choice) => {
+        const choiceNode = document.createElement("BUTTON");
+        const thisSkill = ReturnHeroSkillItself(null, choice.resid);
+
         choiceNode.innerHTML = thisSkill.name;
         SetSkillData(choiceNode, thisSkill);
-        choiceNode.addEventListener("click", function () {
+
+        choiceNode.addEventListener("click", () => {
             ClearAndSetSignature(thisSkill, originButton, slot);
         });
+
         panel.appendChild(choiceNode);
-    }
+    });
 }
 
 function ClearAndSetSignature(chosenSkill, origin, slot) {
@@ -1190,20 +1193,19 @@ function activateNode(newNode3, nodeData, isSig) {
 
     // block the excluded skill visually
     if ("excluded_skills" in nodeData) {
-        for (let i = 0; i < nodeData.excluded_skills.length; i++) {
-            const requiredNodeElement = document.getElementById(nodeData.excluded_skills[i].resid);
+        nodeData.excluded_skills.forEach((skill) => {
+            const requiredNodeElement = document.getElementById(skill.resid);
             requiredNodeElement.classList.add("blocked");
 
-            // Revert the connection lines color
-            document.querySelectorAll(`.dotted-line`).forEach((line) => {
+            document.querySelectorAll(".dotted-line").forEach((line) => {
                 if (
                     line.dataset.source === nodeData.resid.toString() ||
                     line.dataset.target === nodeData.resid.toString()
                 ) {
-                    line.style.backgroundColor = "red"; // Revert line color
+                    line.style.backgroundColor = "red";
                 }
             });
-        }
+        });
     }
 }
 
