@@ -1407,10 +1407,10 @@ function addTooltipListeners(tooltip, span, secondary) {
         });
 
         tooltip.addEventListener("mouseleave", function () {
-          //  if (altHeld == false) {
-                // Only hide if ALT is NOT active
-                TurnOffTooltip(secondary);
-          //  }
+            //  if (altHeld == false) {
+            // Only hide if ALT is NOT active
+            TurnOffTooltip(secondary);
+            //  }
         });
     }
 }
@@ -1442,16 +1442,16 @@ function TurnOnTooltip(spa, secondary) {
 function TurnOffTooltip(secondary, origin) {
     hoverDiv2 = document.getElementById("hoverDiv2");
     hoverDiv = document.getElementById("hoverDiv");
-    console.log("dialog 2 is open? " + hoverDiv2.open);
+    // console.log("dialog 2 is open? " + hoverDiv2.open);
     if (secondary != undefined && origin == hoverDiv2) {
         hoverDiv2.close();
-        console.log("closed dialog 2");
+        // console.log("closed dialog 2");
     } else {
         if (hoverDiv2.open) {
-            console.log("dialog is open ");
+            //   console.log("dialog is open ");
         } else {
             hoverDiv.close();
-            console.log("closed dialog 1");
+            //  console.log("closed dialog 1");
         }
     }
 }

@@ -9,7 +9,8 @@ var currentFormTraitList = [];
 var currentCulture = "";
 var currentSociety1 = "";
 var currentSociety2 = "";
-var currentLoadout = "";
+var currentSubType = "";
+var currentClass = "";
 var currentAscension = "";
 
 var currentAffinityTotal = "";
@@ -161,7 +162,8 @@ function SetRandomStart(overwriteParameter) {
         listofChoice.push("FormTrait");
         listofChoice.push("Society1");
         listofChoice.push("Society2");
-        listofChoice.push("Loadout");
+        listofChoice.push("Class");
+        listofChoice.push("SubType");
 
         var j = "";
         for (j = 0; j < listofChoice.length; j++) {
@@ -214,8 +216,15 @@ function SetRandomStart(overwriteParameter) {
                     }
                     currentSociety2 = randomEntry;
                     break;
-                case "Loadout":
-                    currentLoadout = randomEntry;
+                case "SubType":
+                    if (origin != "") {
+                        currentSubType = randomEntry;
+                    }
+
+                    break;
+                case "Class":
+                    currentClass = randomEntry;
+
                     break;
                 case "Signature":
                     currentSig = randomEntry;
@@ -328,13 +337,45 @@ function selectOrigin(origin, type) {
             break;
         case "Origin":
             currentOrigin = origin;
-            // ClearSkillPath("o");
-            if (incompatibleCheck("Loadout", currentLoadout)) {
-                // add message about it being incompatible
-
-                var loadoutButton = document.getElementById("originButtonLoadout");
-                loadoutButton.innerHTML += '<span style="color:red"> Incompatible </span>';
+            if (origin.name != "Dragon Lord") {
+                currentSubType = "";
+            } else {
+                let newBit;
+                // load default class
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if (jsonFactionCreation[index].id === "astral_dragon") {
+                        newBit = jsonFactionCreation[index];
+                    }
+                }
+                console.log(newBit.name);
+                currentSubType = newBit;
             }
+            selectOrigin(currentSubType, "SubType");
+
+            if (origin.name == "Eldritch Sovereign" && currentClass.id != "mage" && currentClass.id != "ritualist") {
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if (jsonFactionCreation[index].id === "mage") {
+                        newBit = jsonFactionCreation[index];
+                    }
+                }
+                currentClass = newBit;
+            }
+            if (origin.name == "Dragon Lord" && currentClass.id == "ranger") {
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if (jsonFactionCreation[index].id === "warrior") {
+                        newBit = jsonFactionCreation[index];
+                    }
+                }
+                currentClass = newBit;
+            }
+            selectOrigin(currentClass, "Class");
+            // ClearSkillPath("o");
+            // if (incompatibleCheck("SubType", currentLoadout)) {
+            // add message about it being incompatible
+
+            //  var loadoutButton = document.getElementById("originButtonLoadout");
+            //  loadoutButton.innerHTML += '<span style="color:red"> Incompatible </span>';
+            // }
             break;
 
         case "FormTrait":
@@ -352,13 +393,14 @@ function selectOrigin(origin, type) {
         case "Society2":
             currentSociety2 = origin;
             break;
-        case "Loadout":
-            currentLoadout = origin;
+        case "SubType":
+            currentSubType = origin;
             break;
         case "Ascension":
             currentAscension = origin;
             break;
-        case "Signature":
+        case "Class":
+            currentClass = origin;
             // only if its the first
 
             //  ClearSkillPath();
@@ -864,8 +906,12 @@ function SetupButtons(evt, type) {
 
             break;
 
-        case "Loadout":
-            list = GetAllLoadouts();
+        case "SubType":
+            list = GetAllSubTypes();
+
+            break;
+        case "Class":
+            list = GetAllClasses();
 
             break;
         case "Ascension":
@@ -1006,6 +1052,7 @@ function SetupButtons(evt, type) {
 }
 
 function GetCurrentChoiceList() {
+    // whatever is getting affinity?
     var listOfAllChoices = [];
 
     //listOfAllChoices.push(currentOrigin);
@@ -1016,7 +1063,8 @@ function GetCurrentChoiceList() {
     listOfAllChoices.push(currentCulture);
     listOfAllChoices.push(currentSociety1);
     listOfAllChoices.push(currentSociety2);
-    listOfAllChoices.push(currentLoadout);
+    // listOfAllChoices.push(currentSubType);
+    //listOfAllChoices.push(currentClass);
     return listOfAllChoices;
 }
 
@@ -1063,8 +1111,13 @@ function RecalculateStats(fromload) {
             }
         }
     }
+    if (currentSubType != "") {
+        if ("affinity" in currentSubType) {
+            input += currentSubType.affinity + ",";
+        }
+    }
 
-    for (i = 0; i < currentSignatureSkills.length; i++) {
+    /*  for (i = 0; i < currentSignatureSkills.length; i++) {
         if (list[i] != "") {
             if ("hero_property" in currentSignatureSkills[i]) {
                 var bittoadd = transformString(currentSignatureSkills[i].hero_property);
@@ -1072,7 +1125,7 @@ function RecalculateStats(fromload) {
                 input = ClearAffinityExtraTags(input);
             }
         }
-    }
+    }*/
 
     // add all extra input tags
     document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
@@ -1223,6 +1276,10 @@ function duplicateTags(inputString) {
 
 function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
+    if (type == "SubType" && currentOrigin.name != "Dragon Lord") {
+        // console.log("setting button for non-dragonlord");
+        return;
+    }
     const image = document.createElement("img");
     image.setAttribute("width", "40");
     image.setAttribute("height", "40");
@@ -1254,8 +1311,10 @@ function SetButtonInfo(button, origin, type, color) {
         } else {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
-    } else if (type === "Loadout") {
+    } else if (type === "SubType") {
         image.src = "/aow4db/Icons/UnitIcons/" + origin.id + ".png"; // Set the image source to your image file
+    } else if (type === "Class") {
+        image.src = "/aow4db/Icons/Text/" + origin.icon + ".png"; // Set the image source to your image file
     } else if (type === "Signature" || type == "Ascension") {
         image.src = "/aow4db/Icons/UnitIcons/" + origin.icon + ".png";
     } else if (type === "Symbol") {
@@ -1277,7 +1336,7 @@ function SetButtonInfo(button, origin, type, color) {
 
         // add class check here
         if (type == "Loadout") {
-            buttonText.innerHTML += GetClassFromWeaponId(origin.id) + origin.name;
+            buttonText.innerHTML += origin.name;
         } else {
             buttonText.innerHTML += " " + origin.name;
         }
@@ -1560,18 +1619,18 @@ var RitualistClassList = [
 
 function GetClassFromWeaponId(id) {
     if (RangerClassList.includes(id)) {
-        return "<unitRanged></unitRanged> Ranger: ";
+        return "Ranger";
     } else if (DefenderClassList.includes(id)) {
-        return "<unitShield></unitShield> Defender: ";
+        return "Defender";
     } else if (MageClassList.includes(id)) {
-        return "<unitBattleMage></unitBattleMage> Mage: ";
+        return "Mage";
     } else if (WarriorClassList.includes(id)) {
-        return "<unitShock></unitShock> Warrior: ";
+        return "Warrior";
     } else if (RitualistClassList.includes(id)) {
-        return "<unitSupport></unitSupport> Ritualist: ";
+        return "Ritualist";
     }
     {
-        return "?";
+        return "Mage";
     }
 }
 
@@ -2647,16 +2706,27 @@ function GetAllAscensions() {
     return listOfAllOrigins;
 }
 
-function GetAllLoadouts() {
-    var listOfAllOrigins = [];
+function GetAllSubTypes() {
+    var listOfAllSubTypes = [];
 
     for (i = 0; i < jsonFactionCreation.length; i++) {
-        if (jsonFactionCreation[i].type === "Loadout") {
-            listOfAllOrigins.push(jsonFactionCreation[i]);
+        if (jsonFactionCreation[i].type === "SubType") {
+            listOfAllSubTypes.push(jsonFactionCreation[i]);
         }
     }
-    listOfAllOrigins.sort((a, b) => a.id - b.id);
-    return listOfAllOrigins;
+    listOfAllSubTypes.sort((a, b) => a.id - b.id);
+    return listOfAllSubTypes;
+}
+function GetAllClasses() {
+    var listofallClasses = [];
+
+    for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "Class") {
+            listofallClasses.push(jsonFactionCreation[i]);
+        }
+    }
+    listofallClasses.sort((a, b) => a.id - b.id);
+    return listofallClasses;
 }
 
 function GetRandomEntry(type) {
@@ -2702,11 +2772,22 @@ function GetRandomEntry(type) {
                 randomOrigin = list[Math.floor(Math.random() * list.length)];
             }
             break;
-        case "Loadout":
-            var list = GetAllLoadouts();
+        case "SubType":
+            var list = GetAllSubTypes(currentOrigin);
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            if (currentOrigin.name != "Dragon Lord") {
+                randomOrigin = "";
+            }
+            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            //   randomOrigin = list[Math.floor(Math.random() * list.length)];
+            //}
+            break;
+        case "Class":
+            var list = GetAllClasses();
+
+            randomOrigin = list[Math.floor(Math.random() * list.length)];
+            while (incompatibleCheck("Class", randomOrigin) === true) {
                 randomOrigin = list[Math.floor(Math.random() * list.length)];
             }
             break;
@@ -2806,7 +2887,7 @@ function incompatibleCheck(type, origin) {
         incompatibleWithSetup = true;
     }
 
-    if (type === "Loadout") {
+    /**if (type === "Loadout") {
         // example: Champion:Wizard, Primal-sylvan_wolf:Dark
         var splitOrigins = origin.requirement.split(",");
 
@@ -2899,6 +2980,24 @@ function incompatibleCheck(type, origin) {
             if (splitOrigins[0].indexOf(currentOrigin.name) != -1) {
                 incompatibleWithSetup = false;
             } else {
+                incompatibleWithSetup = true;
+            }
+        }
+    }*/
+    // add class incompatiblity?
+    if (type === "Class") {
+        if (origin.name == "Ranger") {
+            if (currentOrigin.name == "Dragon Lord" || currentOrigin.name == "Eldritch Sovereign") {
+                incompatibleWithSetup = true;
+            }
+        }
+        if (
+            origin.name == "Defender" ||
+            origin.name == "Warrior" ||
+            origin.name == "Spellblade" ||
+            origin.name == "Death Knight"
+        ) {
+            if (currentOrigin.name == "Eldritch Sovereign") {
                 incompatibleWithSetup = true;
             }
         }
@@ -3063,8 +3162,14 @@ function GetQuickLink() {
     var number = decimalToHex(LookUpTableData(currentOrigin.id));
     code += "," + number;
     //6
-    var number = decimalToHex(LookUpTableData(currentLoadout.id));
-    code += "," + number;
+    // if no subtype, add blank
+    if (currentSubType == "") {
+        code += "," + "s";
+    } else {
+        var number = decimalToHex(LookUpTableData(currentSubType.id));
+        code += "," + number;
+    }
+
     //7
     for (let index = 0; index < currentTomeList.length; index++) {
         var number = decimalToHex(LookUpTableData(currentTomeList[index].id));
@@ -3086,19 +3191,10 @@ function GetQuickLink() {
 
     code += "," + extraAffinityCode;
 
-    // 9 hero skills
-    if (currentSignatureSkills.length == 0) {
-        code += "," + "s";
-    }
-    for (let index2 = 0; index2 < currentSignatureSkills.length; index2++) {
-        var number2 = decimalToHex(LookUpTableData(currentSignatureSkills[index2].id));
-        //console.log(number);
-        if (index2 == 0) {
-            code += "," + number2;
-        } else {
-            code += ":" + number2;
-        }
-    }
+    // 9 class
+    var number = decimalToHex(LookUpTableData(currentClass.id));
+    code += "," + number;
+
     // 10 ascension
     if (currentAscension == "") {
         code += "," + "a";
@@ -3147,6 +3243,7 @@ function GetQuickLink() {
 }
 
 function reversLookUp(code) {
+    // load classes
     var splitcode = code.split(",");
     // console.log("Splitcode" + splitcode);
     var newList = [];
@@ -3241,21 +3338,28 @@ function reversLookUp(code) {
     SetButtonInfo(originButton, currentOrigin, "Origin");
 
     // 6 = loadout
+    // old loadout, new subtype
     var lookUp = splitcode[6];
+    var TempReplacementForClass = "";
+    if (lookUp != "s") {
+        var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
 
-    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
-
-    for (let index = 0; index < jsonFactionCreation.length; index++) {
-        if (jsonFactionCreation[index].id === numbernew) {
-            var newBit = jsonFactionCreation[index];
+        for (let index = 0; index < jsonFactionCreation.length; index++) {
+            if (jsonFactionCreation[index].id === numbernew) {
+                var newBit = jsonFactionCreation[index];
+            }
         }
+        if (newBit.name.indexOf("Dragon") != -1) {
+            currentSubType = newBit;
+            var originButton = document.getElementById("originButtonSubType");
+            SetButtonInfo(originButton, currentSubType, "SubType");
+        }
+        // ctry to find equivalent for class later one
+        // console.log("found an old loadout : " + GetClassFromWeaponId(newBit.id));
+        TempReplacementForClass = GetClassFromWeaponId(newBit.id);
     }
-    currentLoadout = newBit;
-    var originButton = document.getElementById("originButtonLoadout");
-    SetButtonInfo(originButton, currentLoadout, "Loadout");
-
-    var newList = [];
     // 7 = tomes
+    var newList = [];
     var list = splitcode[7];
     var currentTomeListLoad = list.split(":");
     for (let i = 0; i < currentTomeListLoad.length; i++) {
@@ -3294,30 +3398,29 @@ function reversLookUp(code) {
     }
 
     // 9 = signatures if available, else placeholder "s" is added
-    var list = splitcode[9];
+    // overwrite with class, signatures have been gone for a while
+    var classType = splitcode[9];
 
-    if (list != "s") {
-        // old Signature skills setup
-        var Note = document.getElementById("note");
-        console.log(list);
-        Note.innerHTML = '<span style="color:red"> !Pre-Hero Rework build, might not have enough affinity!</span>';
-    }
-    if (list != "s" && list != undefined) {
-        var currentSignatureLoad = list.split(":");
-        var newList2 = [];
-        for (let i = 0; i < currentSignatureLoad.length; i++) {
-            var numbernew = jsonBuilderLookUp[hexToDecimal(currentSignatureLoad[i])].id;
+    if (classType != "s") {
+        var numbernew = jsonBuilderLookUp[hexToDecimal(classType)].id;
 
-            for (let index = 0; index < jsonHeroSkills.length; index++) {
-                if (jsonHeroSkills[index].id === numbernew) {
-                    newList2.push(jsonHeroSkills[index]);
-                    break;
-                }
+        for (let index = 0; index < jsonFactionCreation.length; index++) {
+            if (jsonFactionCreation[index].id === numbernew) {
+                var newBit = jsonFactionCreation[index];
             }
         }
-        // currentTome = newList[0];
-        var originButton = document.getElementById("originButtonSignature");
-        currentSignatureSkills = newList2;
+        currentClass = newBit;
+        var originButton = document.getElementById("originButtonClass");
+        SetButtonInfo(originButton, currentClass, "Class");
+    } else if (TempReplacementForClass != "") {
+        for (let index = 0; index < jsonFactionCreation.length; index++) {
+            if (jsonFactionCreation[index].name === TempReplacementForClass) {
+                var newBit = jsonFactionCreation[index];
+            }
+        }
+        currentClass = newBit;
+        var originButton = document.getElementById("originButtonClass");
+        SetButtonInfo(originButton, currentClass, "Class");
     }
 
     // 10 = assension if available, else placeholder "a" is added
