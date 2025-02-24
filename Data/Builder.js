@@ -1385,11 +1385,16 @@ function addTooltipListeners(tooltip, span, secondary) {
     if (secondary != undefined) {
         tooltip.addEventListener("mouseenter", function (event) {
             TurnOnTooltip(span, secondary);
-            if (secondary != undefined) {
-                if (tooltip != hoverDiv2 && hoverDiv2.open) {
-                    updateHoverDivPosition(event, secondary);
-                }
+            //  FillToolTip(span, secondary);
+
+            hoverDiv2.style.visibility = "hidden"; // make it invisible
+            hoverDiv2.show();
+            if (tooltip != hoverDiv2) {
+                updateHoverDivPosition(event, secondary);
             }
+            hoverDiv2.close(); // close and reset visiblity
+            hoverDiv2.style.visibility = "";
+            hoverDiv2.show();
         });
 
         tooltip.addEventListener("mouseleave", function () {
@@ -1401,14 +1406,19 @@ function addTooltipListeners(tooltip, span, secondary) {
     } else {
         tooltip.addEventListener("mouseenter", function (event) {
             TurnOnTooltip(span, secondary);
-            if (tooltip != hoverDiv && hoverDiv.open) {
+            // hoverDiv.show();
+             hoverDiv.style.visibility = "hidden";
+        hoverDiv.show();
+            if (tooltip != hoverDiv) {
                 updateHoverDivPosition(event, secondary);
             }
+              hoverDiv.close();
+        hoverDiv.style.visibility = "";
+        hoverDiv.show();
         });
 
         tooltip.addEventListener("mouseleave", function () {
             //  if (altHeld == false) {
-            // Only hide if ALT is NOT active
             TurnOffTooltip(secondary);
             //  }
         });
@@ -1429,13 +1439,13 @@ function TurnOnTooltip(spa, secondary) {
         if (spa != null) {
             hoverDiv2.innerHTML = spa.innerHTML;
         }
-        hoverDiv2.show();
     } else {
+       
         if (spa != null) {
             hoverDiv.innerHTML = spa.innerHTML;
             HandleExtraTooltips(hoverDiv);
         }
-        hoverDiv.show();
+     
     }
 }
 
