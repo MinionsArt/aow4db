@@ -1407,14 +1407,14 @@ function addTooltipListeners(tooltip, span, secondary) {
         tooltip.addEventListener("mouseenter", function (event) {
             TurnOnTooltip(span, secondary);
             // hoverDiv.show();
-             hoverDiv.style.visibility = "hidden";
-        hoverDiv.show();
+            hoverDiv.style.visibility = "hidden";
+            hoverDiv.show();
             if (tooltip != hoverDiv) {
                 updateHoverDivPosition(event, secondary);
             }
-              hoverDiv.close();
-        hoverDiv.style.visibility = "";
-        hoverDiv.show();
+            hoverDiv.close();
+            hoverDiv.style.visibility = "";
+            hoverDiv.show();
         });
 
         tooltip.addEventListener("mouseleave", function () {
@@ -1440,12 +1440,10 @@ function TurnOnTooltip(spa, secondary) {
             hoverDiv2.innerHTML = spa.innerHTML;
         }
     } else {
-       
         if (spa != null) {
             hoverDiv.innerHTML = spa.innerHTML;
             HandleExtraTooltips(hoverDiv);
         }
-     
     }
 }
 
@@ -1453,8 +1451,15 @@ function TurnOffTooltip(secondary, origin) {
     hoverDiv2 = document.getElementById("hoverDiv2");
     hoverDiv = document.getElementById("hoverDiv");
     // console.log("dialog 2 is open? " + hoverDiv2.open);
-    if (secondary != undefined && origin == hoverDiv2) {
-        hoverDiv2.close();
+    if (secondary != undefined) {
+        if (settings.tooltipselectable) {
+            if (origin == hoverDiv2) {
+                hoverDiv2.close();
+            }
+        } else {
+            hoverDiv2.close();
+        }
+
         // console.log("closed dialog 2");
     } else {
         if (hoverDiv2.open) {
