@@ -2,6 +2,8 @@ var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get("sort");
 var currentView = "";
 
+var checkboxTooltip = document.getElementById("tooltipCheckbox");
+
 var altHeld = false;
 
 // Toggle ALT mode on each key press
@@ -23,9 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         HandleExtraTooltips();
     }, 2000);
 });
-
 function CheckBoxTooltips() {
-    let checkboxTooltip = document.getElementById("tooltipCheckbox");
+    //checkboxTooltip = document.getElementById("tooltipCheckbox");
     let hoverDiv = document.getElementById("hoverDiv");
     let hoverDiv2 = document.getElementById("hoverDiv2");
     if (checkboxTooltip.checked === true) {
@@ -196,8 +197,8 @@ async function CheckData() {
                 fontSize: "16px"
             });
         } else {
-            // CheckBoxTooltips();
-            let checkboxTooltip = document.getElementById("tooltipCheckbox");
+          
+             checkboxTooltip = document.getElementById("tooltipCheckbox");
             checkboxTooltip.checked = storedSettings.tooltipselectable;
             let hoverDiv = document.getElementById("hoverDiv");
             let hoverDiv2 = document.getElementById("hoverDiv2");
@@ -208,6 +209,7 @@ async function CheckData() {
                 removeToolTipListeners(hoverDiv);
                 removeToolTipListeners(hoverDiv2);
             }
+              CheckBoxTooltips();
             /*  let checkboxTooltip = document.getElementById("tooltipCheckbox");
             checkboxTooltip.checked = storedSettings.tooltipselectable;
 
@@ -1452,7 +1454,7 @@ function TurnOffTooltip(secondary, origin) {
     hoverDiv = document.getElementById("hoverDiv");
     // console.log("dialog 2 is open? " + hoverDiv2.open);
     if (secondary != undefined) {
-        if (settings.tooltipselectable) {
+        if (checkboxTooltip.checked) {
             if (origin == hoverDiv2) {
                 hoverDiv2.close();
             }
