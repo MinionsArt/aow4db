@@ -5991,6 +5991,11 @@
  {
   "modifiers": [
    {
+    "description": "Base 30% chance of inflicting Sundered Defense for 3 <turn></turn> Turns.",
+    "name": "Sundered Defense",
+    "count": 1
+   },
+   {
     "description": "+1 Range",
     "name": "Longbow",
     "count": 1
@@ -6023,6 +6028,11 @@
  },
  {
   "modifiers": [
+   {
+    "description": "Base 30% chance of inflicting Sundered Defense for 3 <turn></turn> Turns.",
+    "name": "Sundered Defense",
+    "count": 1
+   },
    {
     "description": "+1 Range",
     "name": "Longbow",
@@ -6091,12 +6101,6 @@
   "name": "Aspirant: Knight",
   "slug": "aspirant_knight",
   "icon": "aspirant_knight"
- },
- {
-  "description": "This unit will transform into a more powerful unit when it reaches Legendary rank. Evolving units can not be recruited at Legendary rank.",
-  "name": "Evolve",
-  "slug": "evolve",
-  "icon": "evolve"
  },
  {
   "description": "This unit deals -6 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> damage if another enemy is adjacent to the target.",
@@ -6333,7 +6337,7 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    }
   ],
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance to:<bulletlist></bullet><bullet>Be pulled to an adjacent space.</bullet><bullet>Become Constricted for 1 <turn></turn> Turn.</bullet></bulletlist>",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Pull",
   "slug": "constrictor_pull_ability_constrictor",
   "damage": "20<damagephysical></damagephysical> ",
@@ -7815,6 +7819,12 @@
    }
   ],
   "icon": "venomous_spit_ability_slither"
+ },
+ {
+  "description": "This unit will transform into a more powerful unit when it reaches Legendary rank. Evolving units can not be recruited at Legendary rank.",
+  "name": "Evolve",
+  "slug": "evolve",
+  "icon": "evolve"
  },
  {
   "modifiers": [
@@ -9539,13 +9549,13 @@
   ],
   "description": "Consumes target corpse and heals +30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
   "name": "Consume Corpse",
-  "slug": "consume_corpse_ability_bone_horror",
+  "slug": "consume_corpse_ability_(monster_version)_bone_horror",
   "damage": "",
   "requisites": [],
   "accuracy": "Always Hits",
   "actionPoints": "<freeaction></freeaction>",
   "range": "1",
-  "icon": "consume_corpse_ability_bone_horror"
+  "icon": "consume_corpse_ability_(monster_version)_bone_horror"
  },
  {
   "description": "The first time this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reaches 50% or lower, it summons a <hyperlink>Decaying Zombie</hyperlink>.<br></br>Does not function in water battles.",
@@ -11656,7 +11666,7 @@
     "note": "Cooldown: 1 <turn></turn>"
    }
   ],
-  "description": "Deal damage to target unit. Based on missing health the target has an increased chance to:<bulletlist><bullet>Gain 3 Bleeding for 3 <turn></turn> Turns.</bullet><bullet>Gain 3 Sundered Defense for 3 <turn></turn> Turns.</bullet><bullet>On a success the ogre heals for 15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+  "description": "Deal damage to target unit. Based on missing health the target has an increased chance to:<bulletlist><bullet>Gain 3 Bleeding for 3 <turn></turn> Turns.</bullet><bullet>Gain 3 Sundered Defense for 3 <turn></turn> Turns.</bullet><bullet>On a success, the ogre heals for 15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
   "name": "Butcher's Cut",
   "slug": "butchers_cut_ability_butcher_ogre",
   "damage": "25<damagephysical></damagephysical> ",
@@ -12605,6 +12615,22 @@
   "icon": "shoot_bow_ability_peacebringer_harmony"
  },
  {
+  "modifiers": [],
+  "description": "Deals damage to target unit. Adjacent enemy units sustain 50% of the damage.",
+  "name": "Zephyr Shot",
+  "slug": "zephyr_shot_ability_zephyr_archer",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -12613,18 +12639,6 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Deals damage to target unit. Adjacent enemy units sustain 50% of the damage.",
-  "name": "Zephyr Shot",
-  "slug": "zephyr_shot_ability_zephyr_archer",
-  "damage": "34<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Physical Ranged"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "6",
   "icon": "zephyr_shot_ability_zephyr_archer"
  },
  {
@@ -16586,7 +16600,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_militia_monarchy",
-  "damage": "11<damagephysical></damagephysical> ",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -16612,7 +16626,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_militia_aristocracy",
-  "damage": "11<damagephysical></damagephysical> ",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -18893,8 +18907,8 @@
     "note": "Cooldown: 3 <turn></turn>"
    }
   ],
-  "description": "Friendly units in a 2-hex radius gain:<bulletlist><bullet>Strengthened</bullet><bullet>Hastened</bullet></bulletlist>",
-  "name": "Exhilarating Roar",
+  "description": "Each unit in a 2-hex radius gains:<bulletlist><bullet>Strengthened if an ally.</bullet><bullet>Weakened if an enemy.</bullet></bulletlist>",
+  "name": "Dragon's Roar",
   "slug": "dragon_roar_ability_hs_dragon_roar",
   "damage": "",
   "requisites": [
@@ -26044,7 +26058,7 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    }
   ],
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance to:<bulletlist></bullet><bullet>Be pulled to an adjacent space.</bullet><bullet>Become Constricted for 1 <turn></turn> Turn.</bullet></bulletlist>",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Pull",
   "slug": "constrictor_pull_ability_lashers_sword_1h_item_tier_i",
   "damage": "20<damagephysical></damagephysical> ",
