@@ -4261,7 +4261,7 @@ function addLevelUpInfo(units, a, holder) {
         levelup.append(NewLevelUpEntry(levelText));
 
         levelText =
-            '<bullet> Evolves into <hyperlink> <a href="/aow4db/HTML/Units.html?unit=' +
+            '<bullet> Evolves/Promotes into <hyperlink> <a href="/aow4db/HTML/Units.html?unit=' +
             evolveTarget +
             '" target="_blank">' +
             lookupUnit(evolveTarget) +
