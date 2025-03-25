@@ -1875,7 +1875,7 @@ function CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr) {
         "</p>" +
         "</div>" +
         "<hr>" +
-        abilityDescr;
+        AddTagIconsForStatusEffects(abilityDescr);
 
     // abilityHighlighter.appendChild(spa);
 
@@ -3897,7 +3897,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
 
     let evolve = CheckIfEvolveTarget(unitData.id);
     if (evolve != "") {
-        const tooltipText = `Evolved from Unit <hyperlink>${evolve.name}</<hyperlink>`;
+        const tooltipText = `Evolved/Promoted from Unit <hyperlink>${evolve.name}</<hyperlink>`;
         const imgSrc = `/aow4db/Icons/UnitIcons/evolve.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${evolve.id}`;
