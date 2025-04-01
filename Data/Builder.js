@@ -524,40 +524,46 @@ function ShowUnitFromLink() {
 }
 
 function ShowSpellFromLink() {
+    let SkillID = searchParams.get("skill");
+    if (SkillID != undefined) {
+        console.log("here");
+        document.title = "Age of Wonders 4 Database - " + "Hero Skill";
+        showHeroSkillFromString(SkillID, "dataHolder");
+        return;
+    }
     let spellID = searchParams.get("spell");
     if (spellID != undefined) {
         document.title = "Age of Wonders 4 Database - " + GetSpellTierAndName(spellID).split(">")[2];
         showSpellFromString(spellID, "dataHolder");
+        return;
     }
 
     let SiegeID = searchParams.get("siege");
     if (SiegeID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Siege Project";
         showSiegeProjectFromString(SiegeID, "dataHolder");
+        return;
     }
 
     let WonderID = searchParams.get("wonder");
     if (WonderID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Wonder";
         showWorldStructureFromString(WonderID, "dataHolder");
+        return;
     }
 
     let TomeID = searchParams.get("tome");
     if (TomeID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Tome";
         showTomeFromString(TomeID, "dataHolder");
+        return;
     }
 
     let StrucID = searchParams.get("structure");
     if (StrucID != undefined) {
         document.title = "Age of Wonders 4 Database - " + "Structure";
         showStructureFromString(StrucID, "dataHolder");
-    }
-
-    let SkillID = searchParams.get("skill");
-    if (SkillID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + "Hero Skill";
-        showHeroSkillFromString(SkillID, "dataHolder");
+        return;
     }
 }
 
@@ -6693,7 +6699,11 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
     //type.setAttribute("id", "modtype" + a);
     tier = document.getElementById("spell_tier");
+    if (tier == undefined) {
+        tier = document.getElementById("modtier");
+    }
     tier.innerHTML = "";
+
     if (category != undefined) {
         tier.innerHTML += "<br>" + category + " - " + level;
         tier.innerHTML += "<br>" + group_name;
