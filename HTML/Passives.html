@@ -19,14 +19,35 @@
             }
 
             function CreateAllPassive() {
-                for (i = 0; i < jsonUnitAbilities.length; i++) {
-                    if ("actionPoints" in jsonUnitAbilities[i]) {
-                    } else {
-                        addAbility(jsonUnitAbilities[i].slug);
+                let ListCheck = [];
+
+                // Create a Set for quick lookup of status effect slugs
+                const statusEffectSlugs = new Set(jsonStatusEffects.map((effect) => effect.slug));
+
+                for (let i = 0; i < jsonUnitAbilities.length; i++) {
+                    if (!("actionPoints" in jsonUnitAbilities[i])) {
+                        // Only passive abilities
+                        let slug = jsonUnitAbilities[i].slug;
+
+                        if (
+                            !slug.includes("weakness") &&
+                            !slug.includes("resistance") &&
+                            !slug.includes("medal") &&
+                            !slug.includes("champion") &&
+                            !slug.includes("deprecated") &&
+                            !slug.includes("_hp") &&
+                            !slug.includes("defense_mode") &&
+                            !statusEffectSlugs.has(slug) // Ensure it's NOT in status effects
+                        ) {
+                            ListCheck.push(slug);
+                        }
                     }
                 }
-            }
 
+                for (let slug of ListCheck) {
+                    addAbility(slug);
+                }
+            }
             function HideAll() {
                 const divs = document.getElementsByClassName("list_abilityslot");
 
@@ -52,6 +73,13 @@
                         }
                         if ("accuracy" in ability) {
                             if (ability.accuracy.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+                        if ("description" in ability) {
+                            if (ability.description.toUpperCase().indexOf(filterText) != -1) {
                                 if (!isInArray(list, ability.slug)) {
                                     list.push(ability.slug);
                                 }
@@ -141,61 +169,8 @@
 
                 for (j in jsonUnitAbilities) {
                     if (a === jsonUnitAbilities[j].slug) {
-                        abilityDam = "";
-                        if ("damage" in jsonUnitAbilities[j]) {
-                            abilityDam = jsonUnitAbilities[j].damage;
-                        }
-                        abilityType = jsonUnitAbilities[j].actionPoints;
                         abilityName = jsonUnitAbilities[j].name;
                         abilityIcon = jsonUnitAbilities[j].icon;
-
-                        abilityReq = "";
-                        if ("requisites" in jsonUnitAbilities[j]) {
-                            abilityReq = "";
-                            for (k in jsonUnitAbilities[j].requisites) {
-                                if (k === 0) {
-                                    abilityReq = "(";
-                                }
-                                abilityReq += jsonUnitAbilities[j].requisites[k].requisite;
-                                if (k != jsonUnitAbilities[j].requisites.length - 1) {
-                                    abilityReq += ",";
-                                } else {
-                                    abilityReq += ")";
-                                }
-                            }
-                        }
-
-                        abilityMod = "";
-                        if ("modifiers" in jsonUnitAbilities[j]) {
-                            for (l in jsonUnitAbilities[j].modifiers) {
-                                abilityName += "&#11049";
-
-                                abilityMod += "<bullet>" + jsonUnitAbilities[j].modifiers[l].name + "<br>";
-                                abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
-                            }
-                        }
-
-                        // add notes
-
-                        abilityNote = "";
-                        for (l in jsonUnitAbilities[j].notes) {
-                            if (jsonUnitAbilities[j].notes[l] === undefined) {
-                            } else {
-                                abilityNote += "<bullet>" + jsonUnitAbilities[j].notes[l].note + "</bullet>";
-                            }
-                        }
-
-                        if (jsonUnitAbilities[j].damage != undefined) {
-                            abilityDam = jsonUnitAbilities[j].damage;
-                        }
-                        abilityRange = "";
-                        if (jsonUnitAbilities[j].range != undefined) {
-                            abilityRange = jsonUnitAbilities[j].range;
-                        }
-                        abilityAcc = "";
-                        if (jsonUnitAbilities[j].accuracy != undefined) {
-                            abilityAcc = jsonUnitAbilities[j].accuracy;
-                        }
 
                         var tooltipName = document.createElement("SPAN");
                         var btn = document.createElement("DIV");
@@ -208,30 +183,6 @@
                         var imag = document.createElement("IMG");
                         imag.className = "unit_ability_icon";
                         //  var spa = document.createElement("SPAN");
-
-                        var action = document.createElement("DIV");
-
-                        action.innerHTML = abilityType;
-                        action.className = "list_action";
-                        action.setAttribute("style", "color:white; width:100px");
-
-                        var accuracy = document.createElement("DIV");
-
-                        accuracy.className = "list_accuracy";
-                        accuracy.innerHTML = abilityAcc;
-                        accuracy.setAttribute("style", "color:white; width:150px");
-
-                        var range = document.createElement("DIV");
-
-                        range.innerHTML = abilityRange;
-                        range.className = "list_range";
-                        range.setAttribute("style", "color:white; width:70px");
-
-                        // tex.setAttribute('onclick', '');
-                        var dam = document.createElement("DIV");
-                        dam.className = "ability_damage";
-                        dam.innerHTML = abilityDam;
-                        dam.setAttribute("style", "color:white; width:150px");
 
                         abilityDescr = jsonUnitAbilities[j].description;
 
@@ -251,16 +202,13 @@
                         imag.setAttribute("width", "40");
                         imag.setAttribute("height", "40");
 
-                        var spa = GetAbilityToolTip(
-                            jsonUnitAbilities[j],
-                            abilityName,
-                            abilityIconType,
-                            abilityAcc + "<accuracy></accuracy>",
-                            abilityRange + "<range></range>",
-                            abilityMod,
-                            abilityNote,
-                            abilityReq
-                        );
+                        var action = document.createElement("DIV");
+
+                        action.innerHTML = abilityDescr;
+                        action.className = "list_types";
+                        action.setAttribute("style", "color:white; width:1000px");
+
+                        // let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
 
                         var cleanName = a.replaceAll("_", " ");
 
@@ -273,46 +221,17 @@
                         tex.innerHTML = abilityName;
                         tex.setAttribute("style", "color:white; width:250px");
 
-                        spa.className = "tooltiptext";
+                        action.innerHTML = AddTagIconsForStatusEffects(action.innerHTML);
 
-                        if (abilityName.indexOf("Defense Mode") > -1) {
-                            spa.innerHTML =
-                                '<div class="leftAbility" style="color:#d7c297;">' + abilityName.toUpperCase();
-                            spa.innerHTML += '<div style="clear:both"> </div>' + "<br>";
-                            spa.innerHTML += jsonUnitAbilities[j].description;
-                            dam.innerHTML = "";
-                        }
+                        // spa.className = "tooltiptext";
 
                         document.getElementById("dataHolder").append(btn);
-                        tex.appendChild(spa);
+                        //  tex.appendChild(spa);
 
                         btn.appendChild(imag);
                         btn.append(tex);
-                        btn.append(range);
-                        btn.append(accuracy);
-                        btn.append(dam);
                         btn.append(action);
-                        if ("requisites" in jsonUnitAbilities[j]) {
-                            var mods = document.createElement("DIV");
-                            if (jsonUnitAbilities[j].requisites.length > 0) {
-                                var combined = "(";
-                                for (k = 0; k < jsonUnitAbilities[j].requisites.length; k++) {
-                                    // var modChild = document.createElement("DIV");
-                                    // modChild.innerHTML = jsonUnitAbilities[j].requisites[k].requisite;
-                                    // mods.append(modChild);
-                                    combined += jsonUnitAbilities[j].requisites[k].requisite;
-                                    if (k < jsonUnitAbilities[j].requisites.length - 1) {
-                                        combined += ", ";
-                                    }
-                                }
-                                combined += ")";
-                                mods.innerHTML = combined;
-                            }
-
-                            mods.className = "list_types";
-                            mods.setAttribute("style", "color:white; width:200px; font-size: 12px");
-                            btn.append(mods);
-                        }
+                        //addTooltipListeners(tex, spa);
                     }
                 }
             }
@@ -331,15 +250,21 @@
             function sortDivsList(sortType) {
                 var i = "";
 
-                ascendingOrder = !ascendingOrder;
+                // ascendingOrder = !ascendingOrder;
 
                 var buttontargets = document.getElementsByClassName("sortingButton");
+
+                var currentbutton = document.getElementById(sortType + "-button");
+
+                if (currentbutton.className.indexOf(" activeDown") != -1) {
+                    ascendingOrder = false;
+                } else {
+                    ascendingOrder = true;
+                }
 
                 for (i in buttontargets) {
                     buttontargets[i].className = "sortingButton";
                 }
-                var currentbutton = document.getElementById(sortType + "-button");
-
                 if (ascendingOrder) {
                     currentbutton.className += " activeDown";
                 } else {
@@ -417,13 +342,13 @@
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Abilities List</title>
+        <title>Age of Wonders 4 Database - Passives List</title>
     </head>
 
     <body>
         <div id="header"></div>
 
-        <div class="textblocktitle">Abilities List</div>
+        <div class="textblocktitle">Passives List</div>
         <div style="height: auto; color: white; text-align: center">
             <br />
             Filter<br />
@@ -435,29 +360,12 @@
         <div class="w3-container">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
             <div class="list_abilityslotfilter">
-                <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
+                <button style="width: 250px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
                     Name
                 </button>
-                <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">
-                    Range <range></range>
-                </button>
-                <button
-                    style="width: 150px"
-                    class="sortingButton"
-                    id="accuracy-button"
-                    onclick="sortDivsList('accuracy')">
-                    Acc.<br />
-                    <accuracy></accuracy>
-                </button>
-                <button style="width: 150px" class="sortingButton" id="damage-button" onclick="sortDivsList('damage')">
-                    Damage<br />
-                    <damageblight></damageblight>
-                </button>
-                <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">
-                    Action <repeatingAction></repeatingAction>
-                </button>
-                <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
-                    Type
+
+                <button style="width: 1000px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
+                    Description
                 </button>
             </div>
             <div id="dataHolder" class="divContainer"></div>

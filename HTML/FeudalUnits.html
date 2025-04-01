@@ -10,10 +10,13 @@
         <script src="/aow4db/Data/Faction.js"></script>
         <script src="/aow4db/Data/Search.js"></script>
         <script>
-            var unitarray = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
+            var unitarray = ["scout", "militia", "archer", "defender", "aspirant_knight", "bannerman", "longbow", "knight"];
+              var unitarray2 = ["scout", "militia", "archer", "defender", "aspirant_knight", "bannerman", "liege_guard", "knight"];
 
             function HandlePage() {
-                SetButtonsAndDivs(unitarray, undefined, "unit");
+                SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Monarchy");
+                SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Aristocracy");
+
                 SetLevelUpStuff();
             }
         </script>
@@ -28,11 +31,43 @@
             <img src="/aow4db/Icons/Text/feudal.png" height="40px" /> Feudal Culture Units
             <img src="/aow4db/Icons/Text/feudal.png" height="40px" />
         </div>
+        
+        
+    <div class="subcultureHolder">
+        <button onclick="showSubDiv(event,'Monarchy')" class="subscultureButton"><img src=/aow4db/Icons/Text/monarchy.png width="50px">
+            <span class="subCultureName" id="subCultureNameMonarchy">Monarchy</span>
+        </button>
+        <button onclick="showSubDiv(event,'Aristocracy')" class="subscultureButton"><img src=/aow4db/Icons/Text/aristocracy.png width="50px">
+            <span class="subCultureName" id="subCultureNameAristocracy">Aristocracy</span>
+        </button>
+      
 
+    </div>
+
+    <div class="subDiv" id="Monarchy">
         <div class="w3-container">
-            <div id="buttonHolder" class="w3-bar w3-black"></div>
-            <div id="dataHolder" style="margin-top: -250px"></div>
+            <div id="buttonHolder1" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder1" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
         </div>
+    </div>
+    <div class="subDiv" id="Aristocracy">
+        <div class="w3-container">
+            <div id="buttonHolder2" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder2" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
+        </div>
+    </div>
+
+    
     </body>
 </html>
 <footer>

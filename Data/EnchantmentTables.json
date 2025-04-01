@@ -199,8 +199,7 @@
         "attack": [
             {
                 "description": "A base 60% chance of inflicting Disrupted for 2 <turn></turn> <hyperlink>Turns</hyperlink>. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
-                "type": "Melee",
-                "type2": "Base"
+                "type": "Melee"
             }
         ]
     },
@@ -386,12 +385,7 @@
         "id": "force_of_nature",
         "name": "Force of Nature",
         "crit": 20,
-        "damage_change": "4<damageblight></damageblight>",
-        "requisites": [
-            {
-                "type": "Base"
-            }
-        ]
+        "damage_change": "4<damageblight></damageblight>"
     },
     {
         "id": "poison_arrows",
@@ -626,20 +620,11 @@
     {
         "id": "lightning_focus",
         "name": "Lightning Focus",
-        "damage_change": "2<damagelightning></damagefire>",
-        "requisites": [
-            {
-                "type": "Magic"
-            },
-            {
-                "type": "Base"
-            }
-        ],
+        "damage_change": "2<damagelightning></damagelightning>",
         "attack": [
             {
                 "description": "Gain base 30% chance of inflicting Electrified, a damage-over-time effect. Effects <hyperlink>are increased</hyperlink> for non-repeating attacks.",
-                "type": "Magic",
-                "type2": "Base"
+                "type": "Magic"
             }
         ]
     },
@@ -906,14 +891,6 @@
         "id": "empowered_strikes",
         "name": "Empowered Strikes",
         "damage_change": "1<damagephysical></damagephysical> ",
-        "requisites": [
-            {
-                "type": "Melee"
-            },
-            {
-                "type": "Base"
-            }
-        ],
         "attack": [
             {
                 "description": "Third attack in a turn has a 60% base chance of inflicting Stunned for 1 <turn></turn>Turn",
@@ -931,6 +908,14 @@
         "id": "accursed_projectiles",
         "name": "Accursed Projectiles",
         "damage_change": "2<damagefire></damagefire> 2<damagefrost></damagefrost>",
+        "requisites": [
+            {
+                "type": "Magic"
+            },
+            {
+                "type": "Physical Ranged"
+            }
+        ],
         "passive_unique": [
             {
                 "description": "Have a base 60% of applying Ghostfire for 3  Turns.<br>Effects are increased for non-repeating attacks."
@@ -1019,10 +1004,55 @@
         ],
         "passive": [
             {
-                "slug": "cleaning_rain"
+                "slug": "cleansing_rain"
             },
             {
                 "slug": "inner_grace"
+            }
+        ]
+    },
+    {
+        "id": "raiders_of_the_deep",
+        "name": "Raiders of the Deep",
+        "passive_unique": [
+            {
+                "description": "While in the Underground : +1 Defense + 1 Resistance. <br>While above ground +10% damage"
+            }
+        ],
+        "passive": [
+            {
+                "slug": "cave_walk"
+            }
+        ]
+    },
+    {
+        "id": "resonant_blades",
+        "name": "Resonant Blades",
+        "attack": [
+            {
+                "description": "Apply a Negative Status Effect based on the terrain ",
+                "type": "Melee",
+                "type2": "Base"
+            }
+        ]
+    },
+    {
+        "id": "crystal_focus",
+        "name": "Crystal Focus",
+        "attack": [
+            {
+                "description": "A base 60% chance to apply Volatile Charge ",
+                "type": "Magic",
+                "type2": "Base"
+            }
+        ]
+    },
+    {
+        "id": "ley_line_focus",
+        "name": "Ley Line Focus",
+        "passive_unique": [
+            {
+                "description": "At the start of the turn and until the unit moves this unit has: <bullet>+30% damage</bullet><bullet>+2 Resistance</bullet>"
             }
         ]
     }

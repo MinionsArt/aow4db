@@ -162,9 +162,9 @@ async function GetAllData(beta) {
     ];
 
     var filesToFetch = jsonFilePaths;
-    if (beta) {
-        filesToFetch = jsonFilePathsBeta;
-    }
+    //if (beta) {
+    //    filesToFetch = jsonFilePathsBeta;
+    //}
     await fetchJsonFiles(filesToFetch)
         .then((dataArray) => {
             dataArray.forEach((data, index) => {
@@ -264,7 +264,7 @@ async function CheckData() {
 var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
 var barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
 var darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
-var feudalCultureUnits = ["scout", "peasant_pikeman", "archer", "bannerman", "defender", "knight"];
+var feudalCultureUnits = ["scout", "militia", "archer", "bannerman", "defender", "knight", "longbow", "liege_guard"];
 var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
 var mysticCultureUnits = [
     "mystic_projection",
@@ -355,6 +355,10 @@ function AddTagIconsForStatusEffects(name) {
             // double check if its a status effect
             for (let j = 0; j < jsonStatusEffects.length; j++) {
                 if (jsonUnitAbilities[i].slug == jsonStatusEffects[j].slug) {
+                    // ignore +1 retaliation attack cause its not usefule
+                    if (jsonStatusEffects[j].slug == "_1_<<m{global.retaliationconcept.hyperlink}>>") {
+                        return name;
+                    }
                     // found the right status effect.
                     let tooltipspan = document.createElement("span");
                     tooltipspan.className = "statusEffectHandler";
@@ -1230,7 +1234,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
                 // add note about the levelup change
                 var levelUp = lookupSlugDescription(uniqueMedal);
                 abilityMod +=
-                    '<span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
+                    '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
                     levelUp +
                     "</span><br>";
             }
@@ -2592,6 +2596,16 @@ async function showCosmicHappeningsWithArgument(argumentType, divID) {
 }
 
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
+    if (argumentType != undefined) {
+        let newList = [];
+        for (let i = 0; i < jsonWorldStructures.length; i++) {
+            if (jsonWorldStructures[i].type == argumentType) {
+                newList.push(jsonWorldStructures[i].id);
+            }
+        }
+        list = newList;
+    }
+
     await spawnStructureCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
@@ -2703,11 +2717,9 @@ function findHeroSkill(skillID) {
 }
 
 function findItemsWithArgument(argumentType) {
-    let j = "";
-
     let finalCheckedList = [];
 
-    for (j in jsonHeroItems) {
+    for (let j = 0; j < jsonHeroItems.length; j++) {
         if (jsonHeroItems[j].slot.indexOf(argumentType) !== -1 && jsonHeroItems[j].tier != undefined) {
             finalCheckedList.push(jsonHeroItems[j]);
         }
@@ -3712,10 +3724,14 @@ function uniqueMedalInUnit(unitdata, currentability) {
         // there is a champion upgrade
         if (unitdata.medal_rewards_5[i].slug.indexOf("champion") != -1) {
             var splitName = unitdata.medal_rewards_5[i].slug.replace("champion_", "");
-            console.log(splitName);
-            if (currentability.slug.indexOf(splitName) != -1) {
-                return unitdata.medal_rewards_5[i].slug;
-            }
+            // split ability slug before ability to prevent errors with same unitname e.g. transmute/transmuter
+
+            var splitAbility = currentability.slug.split("ability");
+
+            if (splitAbility)
+                if (splitAbility[0].indexOf(splitName) != -1) {
+                    return unitdata.medal_rewards_5[i].slug;
+                }
         }
     }
     return null;
@@ -3838,7 +3854,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let siege = CheckIfInSiege(name);
     if (siege != "") {
         const tooltipText = `Unit mentioned in Siege Project <hyperlink>${siege.name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/SiegeIcons/${siege.id}.png`;
+        const imgSrc = `/aow4db/Icons/SiegeProjectIcons/${siege.icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?siege=${siege.id}`;
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -4240,7 +4256,6 @@ function addLevelUpInfo(units, a, holder) {
     levelup.append(NewLevelUpEntry(levelText));
 
     for (let i = 0; i < units.medal_rewards_5.length; i++) {
-        console.log("here");
         if (units.medal_rewards_5[i].slug.indexOf("champion_") != -1) {
             levelText = '<p class="levelup_medal">' + "<bullet>" + lookupSlug(units.medal_rewards_5[i].slug);
 
@@ -4430,7 +4445,7 @@ function showSiegeProject(id, showOrigin) {
             unitTypesDiv = document.getElementById("affectUnitTypes");
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects[i].name);
 
-            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects[i].id + ".png");
+            imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + jsonSiegeProjects[i].icon + ".png");
             imagelink.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
             descriptionDiv.innerHTML = description;
             descriptionDiv.setAttribute("id", "moddescription" + jsonSiegeProjects[i].name);
@@ -4491,7 +4506,7 @@ function showSiegeProject(id, showOrigin) {
             unitTypesDiv = document.getElementById("affectUnitTypes");
             unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects[i].name);
 
-            imagelink.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects[i].id + ".png");
+            imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + jsonSiegeProjects[i].icon + ".png");
             imagelink.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
             descriptionDiv.innerHTML = description;
             descriptionDiv.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
@@ -5439,7 +5454,8 @@ function showWorldStructure(a) {
         tier,
         nameString = "";
     let found = false;
-    const structure = jsonWorldStructures.find((structure) => structure.id === a);
+
+    let structure = jsonWorldStructures.find((structure) => structure.id === a);
     if (!structure) {
         console.log("Couldn't find structure world: " + a);
         return;
@@ -5487,15 +5503,21 @@ function showWorldStructure(a) {
 
     if (structure.type.indexOf("wonder") != -1) {
         imagelink.remove();
+    } else if (structure.type.indexOf("Landmark") != -1) {
+        imagelink.setAttribute("src", "/aow4db/Icons/Text/landmark.png");
+        imagelink.setAttribute("id", "modicon" + a);
+        imagelink.setAttribute("style", "background-image: none");
     } else {
         imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
         imagelink.setAttribute("id", "modicon" + a);
         imagelink.setAttribute("style", "background-image: none");
     }
     descriptionDiv.innerHTML = "";
+
     if (structure.type.indexOf("Ancient") != 1) {
-        descriptionDiv.innerHTML +=
-            "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
+        console.log(structure.type);
+        //descriptionDiv.innerHTML +=
+        //   "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
     }
     unitTypesDiv = document.getElementById("affectUnitTypes");
 
@@ -6195,7 +6217,12 @@ function showItem(a) {
     let i = "";
 
     modName = document.getElementById("modname");
-    modName.innerHTML = a.name.toUpperCase();
+    console.log(a.id);
+    if (a.id.indexOf("pantheon") != -1) {
+        modName.innerHTML = "<pantheon></pantheon>" + a.name.toUpperCase();
+    } else {
+        modName.innerHTML = a.name.toUpperCase();
+    }
 
     modName.setAttribute("id", "modname" + a.id);
     descriptionDiv = document.getElementById("moddescription");
@@ -6240,6 +6267,7 @@ function showItem(a) {
     }
 
     unitTypesDiv = document.getElementById("affectUnitTypes");
+
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
 
     let div = document.createElement("DIV");
@@ -6263,7 +6291,19 @@ function showItem(a) {
     tier.setAttribute("id", "spell_tier" + a.id);
 
     cost = document.getElementById("modcost");
-    cost.innerHTML = a.slot;
+    cost.innerHTML = a.slot + "<br>";
+    // add classes
+    if ("hero_classes" in a) {
+        for (let i = 0; i < a.hero_classes.length; i++) {
+            cost.innerHTML += a.hero_classes[i].name + " , ";
+        }
+    }
+    cost.innerHTML += "<br>";
+    if ("hero_types" in a) {
+        for (let i = 0; i < a.hero_types.length; i++) {
+            cost.innerHTML += a.hero_types[i].name + " , ";
+        }
+    }
 
     cost.setAttribute("id", "modcost" + a.id);
 
@@ -6736,7 +6776,8 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     }
     for (let j = 0; j < jsonExtraAscendedInfo.length; j++) {
         if (jsonExtraAscendedInfo[j].id == a.id) {
-            descriptionDiv.innerHTML += "Tome(s) Researched : " + jsonExtraAscendedInfo[j].description;
+            descriptionDiv.innerHTML +=
+                "One of Following Tomes Researched : <br>" + jsonExtraAscendedInfo[j].description;
             if ("extraspell" in jsonExtraAscendedInfo[j]) {
                 let iDiv = spell_card_template.content.cloneNode(true);
                 // Access the root element in the DocumentFragment

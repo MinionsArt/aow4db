@@ -53,36 +53,53 @@
         "id": "champion",
         "name": "Champion",
         "icon": "champion",
-        "description": "<bulletlist>A Ruler risen from the ranks of their people.<bullet>Mortal Champions have access to unique army leadership hero skills.</bullet><bullet>Mortal Champion rulers gain +20% <xp></xp> Experience</bullet><br><bullet>Start with +100 Relations with Free Cities.</bullet><bullet>Mortal Champion rulers start with the Command ability in Combat</bullet></bulletlist>"
+        "description": "<bulletlist>A Ruler risen from the ranks of their people.<bullet>Mortal Champions have access to unique army leadership hero skills.</bullet><bullet>Mortal Champion rulers gain +20% <xp></xp> Experience</bullet><br><bullet>Start with +100 Relations with Free Cities.</bullet><bullet>Mortal Champion rulers start with the Command ability in Combat</bullet><bullet>Mortal Champions are CHampion Governors.</bullet></bulletlist>"
     },
     {
         "type": "Ruler Origin",
         "id": "wizard_king",
         "name": "Wizard King",
         "icon": "wizard_king",
-        "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>Wizard Kings have access to unique Combat Spell enhancing hero skills.</bullet><bullet>All <conduit></conduit> Conduits grant +2<mana></mana> Mana.</bullet><br><bullet>Wizard Kings start with the Channeling Ritual ability in combat</bullet></bulletlist>"
+        "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>Wizard Kings have access to unique Combat Spell enhancing hero skills.</bullet><bullet>All <conduit></conduit> Conduits grant +2<mana></mana> Mana.</bullet><bullet>Start with +10 Combat Casting points and +10 World Map Casting Points</bullet><bullet>Wizard Kings start with the Channeling Ritual ability in combat</bullet><bullet>Wizard Kings are Wizard Governors.</bullet></bulletlist>"
     },
     {
         "type": "Ruler Origin",
         "id": "dragon_lord",
         "name": "Dragon Lord",
         "icon": "dragon_lord",
-        "description": "<bulletlist>A mighty dragon seeking new realms to shape in their vision.<bullet>Dragon Lords have access to unique combat Hero Skills.</bullet><bullet>Dragon Lords gain powerful Transformation Hero Signature Skills based on empire Affinities.</bullet><bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Lords have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br></bulletlist>"
+        "DLC": "DRAGONLORDS ",
+        "description": "<bulletlist>A mighty Dragon seeking new realms to shape in their vision.<bullet>Dragon Lords have access to unique combat Hero Skills.</bullet><bullet>Dragon Lords gain powerful Transformation Hero Signature Skills based on empire Affinities.</bullet><bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Lords are Dragon Governors.</bullet><bullet>Dragon Lords have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br></bulletlist>"
     },
     {
         "type": "Ruler Origin",
         "id": "eldritch_sovereign",
         "name": "Eldritch Sovereign",
         "icon": "eldritch_sovereign",
+        "DLC": "ELDRITCHREALMS ",
         "description": "<bulletlist>An eldritch Ruler with powers beyond mortal comprehension.<bullet>Eldritch Sovereigns have access to powerful control Hero.</bullet><bullet>Eldritch Sovereigns gain powerful unique Hero Signature Skills.</bullet><bullet>Use <thralls></thralls> Thralls to cast powerful ritual Spells.</bullet><bullet>Start with Clairvoyance Ritual and Enthrall Population</bullet><bullet>Eldritch Sovereigns have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Leg and Mount items</bullet></bulletlist>"
     },
     {
+        "type": "Ruler Origin",
+        "id": "giant_king",
+        "name": "Giant King",
+        "icon": "giant_king",
+        "description": "<bulletlist>A formidable Giant refashioning realms with the elemental force of the Clan of Fire, Rock, Storm, or Frost</bulletlist>"
+    },
+    {
         "type": "Culture",
-        "id": "feudal",
-        "icon": "feudal",
+        "id": "feudal_monarchy",
+        "icon": "feudal_monarchy",
+        "affinity": "<empireorder></empireorder>,<empirematter></empirematter>",
+        "name": "Feudal - Monarchy",
+        "description": "<bulletlist>Your people are loyal to the absolute rule of their Monarch, gaining power from the presence of their ruler:<bullet>Units gain For the Monarch.</bullet><bullet>Certain units can promote to higher Tier units on attaining Legendary Rank.</bullet></bulletlist>"
+    },
+    {
+        "type": "Culture",
+        "id": "feudal_aristocracy",
+        "icon": "feudal_aristocracy",
         "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
-        "name": "Feudal",
-        "description": "<bulletlist>A hierarchic society wherein lords, ladies, and knights reign over peasants. All stand togetherin in battle when their fertile realm in threatened.<bullet>Structures with <food></food> Food income.</bullet><bullet>Units benefit from close formations with Stand Together</bullet>Feudal Lords passive</bullet></bulletlist>"
+        "name": "Feudal - Aristocracy",
+        "description": "<bulletlist>Your cities form powerful Houses, able to field efficient armies when led by their Liege Lords:<bullet>Each city has a Feudal House led by its governor, who becomes the House's Liege Lord.</bullet><bullet>Units produced in Feudal cities become part of that city's Fedual House, gaining<xp></xp> Expierience as their Liege Lord gains <renown></renown> Renown.</bullet>Certain units can promote to higher Tier units on attaining Legendary Rank.</bullet></bulletlist>"
     },
     {
         "type": "Culture",
@@ -917,6 +934,38 @@
         "requirement": "Dragon Lord",
         "affinity": "<empireshadow></empireshadow>",
         "description": "Breath and Claws deals <damagefrost></damagefrost> Frost Damage<br><br>Gain 1 <empireshadow></empireshadow> Affinity"
+    },
+    {
+        "type": "SubType",
+        "id": "rock_giant_king",
+        "name": "Rock Giant King",
+        "requirement": "Giant King",
+        "DLC": "GIANTKINGS ",
+        "description": "An adament Giant who sculpts realms raising mountains.<bulletlist><bullet>Capital city starts with Wizard Tower: Item Forge</bullet><bullet>Has the Summon Rock Runestele spell.</bullet><bullet>Provinces with Mountains or Stalagmites provide +3 <production></production> Production.</bullet><bullet>Giant Kings are Giant King Governors.</bullet><bullet>Giant Kings have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Mount items.</bullet></bulletlist>"
+    },
+    {
+        "type": "SubType",
+        "id": "fire_giant_king",
+        "name": "Fire Giant King",
+        "requirement": "Giant King",
+        "DLC": "GIANTKINGS ",
+        "description": "A searing Giant who cleaves realms by molding lava.<bulletlist><bullet>Capital city starts with Wizard Tower: Item Forge</bullet><bullet>Has the Summon Lava Runestele spell.</bullet><bullet>Can build <farm></farm> Farms on Ashlands.</bullet><bullet>Provinces with Lava or Lava Chasms provide +2 <production></production> Production and don't apply the extra <happiness></happiness> City Stability penalty normally found in these.</bullet><bullet>Giant Kings are Giant King Governors.</bullet><bullet>Giant Kings have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Mount items.</bullet></bulletlist>"
+    },
+    {
+        "type": "SubType",
+        "id": "storm_giant_king",
+        "name": "Storm Giant King",
+        "requirement": "Giant King",
+        "DLC": "GIANTKINGS ",
+        "description": "A thunderous Giant who evens out realms by flattening peaks<bulletlist><bullet>Capital city starts with Wizard Tower: Item Forge</bullet><bullet>Has the Summon Storm Runestele spell.</bullet><bullet>Provinces with Rivers of Water provide +1 <food></food> Food and +1 <mana></mana> Mana.</bullet><bullet>Giant Kings are Giant King Governors.</bullet><bullet>Giant Kings have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Mount items.</bullet></bulletlist>"
+    },
+    {
+        "type": "SubType",
+        "id": "frost_giant_king",
+        "name": "Frost Giant King",
+        "requirement": "Giant King",
+        "DLC": "GIANTKINGS ",
+        "description": "A glacial Giant who reshapes realms by driving snow.<bulletlist><bullet>Capital city starts with Wizard Tower: Item Forge</bullet><bullet>Has the Summon Ice Runestele spell.</bullet><bullet>Can build <farm></farm> Farms on Snow.</bullet><bullet>Provinces with Snow or Ice +2 <mana></mana> Mana.</bullet><bullet>Giant Kings are Giant King Governors.</bullet><bullet>Giant Kings have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Mount items.</bullet></bulletlist>"
     },
     {
         "type": "Loadout",

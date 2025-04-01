@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                CreateAllPassive();
+                SetLevelUpStuff();
+                $("#filterInput").on("change input", function () {
+                    ShowAllPassivesWithFilters();
+                    SetLevelUpStuff();
+                });
+            }
+
+            function CreateAllPassive() {
+                let ListCheck = [];
+
+                // Create a Set for quick lookup of status effect slugs
+                const statusEffectSlugs = new Set(jsonStatusEffects.map((effect) => effect.slug));
+
+                for (let i = 0; i < jsonUnitAbilities.length; i++) {
+                    // Only passive abilities
+                    let slug = jsonUnitAbilities[i].slug;
+
+                    if (
+                        statusEffectSlugs.has(slug) // Ensure it's NOT in status effects
+                    ) {
+                        ListCheck.push(slug);
+                    }
+                }
+
+                for (let slug of ListCheck) {
+                    addAbility(slug);
+                }
+            }
+            function HideAll() {
+                const divs = document.getElementsByClassName("list_abilityslot");
+
+                for (let i = 0; i < divs.length; i++) {
+                    const div = divs[i];
+                    div.style.display = "none";
+                }
+            }
+
+            function ShowAllPassivesWithFilters() {
+                HideAll();
+                var list = new Array();
+                var filter = document.getElementById("filterInput");
+                var filterText = filter.value.toUpperCase();
+
+                for (i = 0; i < jsonUnitAbilities.length; i++) {
+                    var ability = jsonUnitAbilities[i];
+                    if (filterText != "") {
+                        if (ability.name.toUpperCase().indexOf(filterText) != -1) {
+                            if (!isInArray(list, ability.slug)) {
+                                list.push(ability.slug);
+                            }
+                        }
+                        if ("accuracy" in ability) {
+                            if (ability.accuracy.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+                        if ("description" in ability) {
+                            if (ability.description.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+                        if ("range" in ability) {
+                            if (ability.range.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+
+                        if ("actionPoints" in ability) {
+                            if (ability.actionPoints.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+
+                        if ("damage" in ability) {
+                            if (ability.damage.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+
+                        if ("modifiers" in ability) {
+                            for (j = 0; j < ability.modifiers.length; j++) {
+                                if (ability.modifiers[j].description.toUpperCase().indexOf(filterText) != -1) {
+                                    if (!isInArray(list, ability.slug)) {
+                                        list.push(ability.slug);
+                                    }
+                                }
+                                if (ability.modifiers[j].name.toUpperCase().indexOf(filterText) != -1) {
+                                    if (!isInArray(list, ability.slug)) {
+                                        list.push(ability.slug);
+                                    }
+                                }
+                            }
+                        }
+                        if ("requisites" in ability) {
+                            for (j = 0; j < ability.requisites.length; j++) {
+                                if (ability.requisites[j].requisite.toUpperCase().indexOf(filterText) != -1) {
+                                    if (!isInArray(list, ability.slug)) {
+                                        list.push(ability.slug);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if (!isInArray(list, ability.slug)) {
+                            list.push(ability.slug);
+                        }
+                    }
+                }
+
+                ProcessList(list);
+            }
+
+            function ProcessList(list) {
+                for (i = 0; i < list.length; i++) {
+                    var abilityDiv = document.getElementById(list[i] + "btn");
+
+                    if (abilityDiv != undefined) {
+                        abilityDiv.style.display = "flex";
+                    }
+                }
+            }
+
+            function addAbility(a, b) {
+                var abilityName,
+                    abilityIcon,
+                    abilityDescr,
+                    abilityDam,
+                    abilityAcc,
+                    abilityRange,
+                    abilityType,
+                    abilityNote,
+                    j,
+                    splitDamageString,
+                    abilityDamType,
+                    abilityReq,
+                    abilityMod = "";
+
+                for (j in jsonUnitAbilities) {
+                    if (a === jsonUnitAbilities[j].slug) {
+                        abilityName = jsonUnitAbilities[j].name;
+                        abilityIcon = jsonUnitAbilities[j].icon;
+
+                        var tooltipName = document.createElement("SPAN");
+                        var btn = document.createElement("DIV");
+                        btn.setAttribute("id", a + "btn");
+                        btn.className = "list_abilityslot";
+
+                        // if (n === true) {
+                        //   btn.style.backgroundColor = "rgb(73, 0, 80)";
+                        //}
+                        var imag = document.createElement("IMG");
+                        imag.className = "unit_ability_icon";
+                        //  var spa = document.createElement("SPAN");
+
+                        abilityDescr = jsonUnitAbilities[j].description;
+
+                        var abilityIconType = "";
+                        imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
+
+                        var abilityIconType = GetAbilityBackground(abilityDam);
+
+                        imag.setAttribute(
+                            "style",
+                            'background-image: url("/aow4db/Icons/Interface/' +
+                                abilityIconType +
+                                '.png");background-repeat: no-repeat;background-size: 40px 40px'
+                        );
+
+                        imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+                        imag.setAttribute("width", "40");
+                        imag.setAttribute("height", "40");
+
+                        var action = document.createElement("DIV");
+
+                        action.innerHTML = abilityDescr;
+                        // check if it mentions stacks
+
+                        action.className = "list_types";
+                        action.setAttribute("style", "color:white; width:1000px");
+
+                        var stacks = document.createElement("DIV");
+
+                        stacks.innerHTML = "";
+                        stacks.className = "list_stacks";
+
+                        if (abilityDescr.indexOf("tacks up to")) {
+                            let splitStacks = abilityDescr.split("tacks up to ");
+                            if (splitStacks.length > 1) {
+                                let nextTwoChars = splitStacks[1].trim().match(/^\d+/)?.[0] || "";
+                                stacks.innerHTML = nextTwoChars;
+                            }
+                        }
+                        stacks.setAttribute("style", "color:white; width:100px");
+
+                        var counter = document.createElement("DIV");
+
+                        counter.innerHTML = "";
+                        counter.className = "list_counter";
+
+                        if (abilityDescr.indexOf("counters")) {
+                            let splitcounter = abilityDescr.split("counters");
+                            if (splitcounter.length > 1) {
+                                // let nextTwoChars = splitStacks[1].trim().match(/^\d+/)?.[0] || "";
+                                counter.innerHTML = splitcounter[1];
+                            }
+                        }
+                        counter.setAttribute("style", "color:white; width:100px");
+
+                        // let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
+
+                        var cleanName = a.replaceAll("_", " ");
+
+                        // findSource(a);
+
+                        abilityName += '<br><span style="font-size:10px">' + cleanName + " </span>";
+                        var tex = document.createElement("DIV");
+                        tex.className = "tooltip";
+
+                        tex.innerHTML = abilityName;
+                        tex.setAttribute("style", "color:white; width:250px");
+
+                        // spa.className = "tooltiptext";
+                        action.innerHTML = AddTagIconsForStatusEffects(action.innerHTML);
+                        counter.innerHTML = AddTagIconsForStatusEffects(counter.innerHTML);
+                        document.getElementById("dataHolder").append(btn);
+                        //  tex.appendChild(spa);
+
+                        btn.appendChild(imag);
+                        btn.append(tex);
+                        btn.append(action);
+                        btn.append(stacks);
+                        btn.append(counter);
+                        //addTooltipListeners(tex, spa);
+                    }
+                }
+            }
+
+            function findSource(slug) {
+                var result = slug.replaceAll("_", " ");
+                result = result.split(" ");
+                var combinedString = "";
+                for (i = 0; i < result.length; i++) {
+                    var capitalized = result[i].charAt(0).toUpperCase() + result[i].slice(1);
+                    combinedString += capitalized + " ";
+                }
+                return combinedString;
+            }
+
+            function sortDivsList(sortType) {
+                var i = "";
+
+                // ascendingOrder = !ascendingOrder;
+
+                var buttontargets = document.getElementsByClassName("sortingButton");
+
+                var currentbutton = document.getElementById(sortType + "-button");
+
+                if (currentbutton.className.indexOf(" activeDown") != -1) {
+                    ascendingOrder = false;
+                } else {
+                    ascendingOrder = true;
+                }
+
+                for (i in buttontargets) {
+                    buttontargets[i].className = "sortingButton";
+                }
+                if (ascendingOrder) {
+                    currentbutton.className += " activeDown";
+                } else {
+                    currentbutton.className += " activeUp";
+                }
+
+                // 3 - Choose the wanted order
+                //  ascendingOrder = !ascendingOrder;
+                const isNumeric = true;
+
+                // 4 - Select all elements
+                if (currentView === "") {
+                    var container = document.getElementById("dataHolder");
+                } else {
+                    var container = document.getElementById(currentView);
+                }
+
+                var element = (elements = [...container.querySelectorAll(".list_abilityslot")]);
+
+                var selector = (element) => element.querySelector(".tooltip").innerHTML;
+                if (sortType === "range") {
+                    selector = (element) => element.querySelector(".list_range").innerHTML;
+                }
+                if (sortType === "accuracy") {
+                    selector = (element) => element.querySelector(".list_accuracy").innerHTML;
+                }
+
+                if (sortType === "damage") {
+                    selector = (element) => element.querySelector(".ability_damage").innerHTML;
+                }
+
+                if (sortType === "action") {
+                    selector = (element) => element.querySelector(".list_action").innerHTML;
+                }
+                if (sortType === "type") {
+                    selector = (element) => element.querySelector(".list_types").innerHTML;
+                }
+                if (sortType === "stacks") {
+                    selector = (element) => element.querySelector(".list_stacks").innerHTML;
+                }
+                if (sortType === "counter") {
+                    selector = (element) => element.querySelector(".list_counter").innerHTML;
+                }
+
+                // 5 - Find their parent
+                const parentElement = container;
+
+                // 6 - Sort the elements
+                const collator = new Intl.Collator(undefined, {
+                    numeric: isNumeric,
+                    sensitivity: "base"
+                });
+
+                if (sortType != "name") {
+                    ascendingOrder = !ascendingOrder;
+                }
+                elements
+                    .sort((elementA, elementB) => {
+                        const [firstElement, secondElement] = ascendingOrder
+                            ? [elementA, elementB]
+                            : [elementB, elementA];
+
+                        var textOfFirstElement = selector(firstElement);
+
+                        var textOfSecondElement = selector(secondElement);
+                        if (sortType === "tier") {
+                            var fields = textOfFirstElement.split("Tier ", 3);
+                            textOfFirstElement = deromanize(fields[1]);
+                            var fields2 = textOfSecondElement.split("Tier ", 3);
+                            textOfSecondElement = deromanize(fields2[1]);
+                        }
+
+                        return collator.compare(textOfFirstElement, textOfSecondElement);
+                    })
+                    .forEach((element) => parentElement.appendChild(element));
+
+                // var currenturl = window.location.href.split('&')[0];
+
+                // window.history.replaceState({}, 'foo', currenturl + "&sort=" + sortType + ":" + ascendingOrder);
+                sorting = sortType + ":" + ascendingOrder;
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Status Effects List</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">Status Effects List</div>
+        <div style="height: auto; color: white; text-align: center">
+            <br />
+            Filter<br />
+            <div style="margin-right: auto; margin-left: auto; width: 500px">
+                <input type="text" class="searchbar" id="filterInput" />
+            </div>
+        </div>
+
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div class="list_abilityslotfilter">
+                <button style="width: 250px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
+                    Name
+                </button>
+
+                <button style="width: 1000px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
+                    Description
+                </button>
+                <button style="width: 100px" class="sortingButton" id="stacks-button" onclick="sortDivsList('stacks')">
+                    Stacks
+                </button>
+                <button
+                    style="width: 100px"
+                    class="sortingButton"
+                    id="counter-button"
+                    onclick="sortDivsList('counter')">
+                    Counter
+                </button>
+            </div>
+            <div id="dataHolder" class="divContainer"></div>
+        </div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>

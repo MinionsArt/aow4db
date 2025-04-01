@@ -66,6 +66,14 @@
                             }
                         }
 
+                        if ("description" in ability) {
+                            if (ability.description.toUpperCase().indexOf(filterText) != -1) {
+                                if (!isInArray(list, ability.slug)) {
+                                    list.push(ability.slug);
+                                }
+                            }
+                        }
+
                         if ("actionPoints" in ability) {
                             if (ability.actionPoints.toUpperCase().indexOf(filterText) != -1) {
                                 if (!isInArray(list, ability.slug)) {
@@ -353,15 +361,21 @@
             function sortDivsList(sortType) {
                 var i = "";
 
-                ascendingOrder = !ascendingOrder;
+                // ascendingOrder = !ascendingOrder;
 
                 var buttontargets = document.getElementsByClassName("sortingButton");
+
+                var currentbutton = document.getElementById(sortType + "-button");
+
+                if (currentbutton.className.indexOf(" activeDown") != -1) {
+                    ascendingOrder = false;
+                } else {
+                    ascendingOrder = true;
+                }
 
                 for (i in buttontargets) {
                     buttontargets[i].className = "sortingButton";
                 }
-                var currentbutton = document.getElementById(sortType + "-button");
-
                 if (ascendingOrder) {
                     currentbutton.className += " activeDown";
                 } else {

@@ -337,14 +337,20 @@ function selectOrigin(origin, type) {
             break;
         case "Origin":
             currentOrigin = origin;
-            if (origin.name != "Dragon Lord") {
+            if (origin.name != "Dragon Lord" && origin.name != "Giant King") {
                 currentSubType = "";
             } else {
                 let newBit;
                 // load default class
                 for (let index = 0; index < jsonFactionCreation.length; index++) {
-                    if (jsonFactionCreation[index].id === "astral_dragon") {
-                        newBit = jsonFactionCreation[index];
+                    if (origin.name == "Dragon Lord") {
+                        if (jsonFactionCreation[index].id === "astral_dragon") {
+                            newBit = jsonFactionCreation[index];
+                        }
+                    } else if (origin.name == "Giant King") {
+                        if (jsonFactionCreation[index].id === "rock_giant_king") {
+                            newBit = jsonFactionCreation[index];
+                        }
                     }
                 }
                 console.log(newBit.name);
@@ -360,7 +366,16 @@ function selectOrigin(origin, type) {
                 }
                 currentClass = newBit;
             }
+            // change ranger to warrior for dragon lord
             if (origin.name == "Dragon Lord" && currentClass.id == "ranger") {
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if (jsonFactionCreation[index].id === "warrior") {
+                        newBit = jsonFactionCreation[index];
+                    }
+                }
+                currentClass = newBit;
+            }
+            if (origin.name == "Giant King" && currentClass.id == "ranger") {
                 for (let index = 0; index < jsonFactionCreation.length; index++) {
                     if (jsonFactionCreation[index].id === "warrior") {
                         newBit = jsonFactionCreation[index];
@@ -872,7 +887,7 @@ function SetupButtons(evt, type) {
 
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
-    originWrapper.setAttribute("style", " grid-template-columns: repeat(3, 2fr);");
+    originWrapper.setAttribute("style", " grid-template-columns: repeat(2, 2fr);");
 
     // var originButton = document.getElementById("originButton" + type);
     //console.log(type);
@@ -1276,7 +1291,7 @@ function duplicateTags(inputString) {
 
 function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
-    if (type == "SubType" && currentOrigin.name != "Dragon Lord") {
+    if (type == "SubType" && currentOrigin.name != "Dragon Lord" && currentOrigin.name != "Giant King") {
         // console.log("setting button for non-dragonlord");
         return;
     }
@@ -1312,7 +1327,7 @@ function SetButtonInfo(button, origin, type, color) {
             image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
         }
     } else if (type === "SubType") {
-        image.src = "/aow4db/Icons/UnitIcons/" + origin.id + ".png"; // Set the image source to your image file
+        image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
     } else if (type === "Class") {
         image.src = "/aow4db/Icons/Text/" + origin.icon + ".png"; // Set the image source to your image file
     } else if (type === "Signature" || type == "Ascension") {
@@ -1698,7 +1713,7 @@ function SetTomePreview(span, origin) {
                     slug = origin.skills[index].name.replaceAll(" ", "_").toLowerCase();
                 }
                 span.innerHTML +=
-                    '<bullet> <img width="20px" src="/aow4db/Icons/SiegeIcons/' +
+                    '<bullet> <img width="20px" src="/aow4db/Icons/SiegeProjectIcons/' +
                     slug +
                     '.png">' +
                     GetSiegeProjectName(slug) +
@@ -2711,7 +2726,9 @@ function GetAllSubTypes() {
 
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "SubType") {
-            listOfAllSubTypes.push(jsonFactionCreation[i]);
+            if (jsonFactionCreation[i].requirement == currentOrigin.name) {
+                listOfAllSubTypes.push(jsonFactionCreation[i]);
+            }
         }
     }
     listOfAllSubTypes.sort((a, b) => a.id - b.id);
@@ -2776,7 +2793,7 @@ function GetRandomEntry(type) {
             var list = GetAllSubTypes(currentOrigin);
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            if (currentOrigin.name != "Dragon Lord") {
+            if (currentOrigin.name != "Dragon Lord" && currentOrigin.name != "Giant King") {
                 randomOrigin = "";
             }
             // while (incompatibleCheck("Loadout", randomOrigin) === true) {
@@ -2987,7 +3004,11 @@ function incompatibleCheck(type, origin) {
     // add class incompatiblity?
     if (type === "Class") {
         if (origin.name == "Ranger") {
-            if (currentOrigin.name == "Dragon Lord" || currentOrigin.name == "Eldritch Sovereign") {
+            if (
+                currentOrigin.name == "Dragon Lord" ||
+                currentOrigin.name == "Eldritch Sovereign" ||
+                currentOrigin.name == "Giant King"
+            ) {
                 incompatibleWithSetup = true;
             }
         }
@@ -3349,7 +3370,7 @@ function reversLookUp(code) {
                 var newBit = jsonFactionCreation[index];
             }
         }
-        if (newBit.name.indexOf("Dragon") != -1) {
+        if (newBit.name.indexOf("Dragon") != -1 || newBit.name.indexOf("Giant") != -1) {
             currentSubType = newBit;
             var originButton = document.getElementById("originButtonSubType");
             SetButtonInfo(originButton, currentSubType, "SubType");

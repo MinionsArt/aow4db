@@ -3,7 +3,7 @@ searchKeyword = searchParams.get("u");
 
 var rulerOrigin = "Champion";
 var rulerClass = "Warrior";
-var rulerDragonOrigin = "OrderDragon";
+var rulerSubType = "OrderDragon";
 let currentSelectedSkillsArray = [];
 var currentsignatureSelectionsArray = [];
 var currentSkillPoints = 24;
@@ -53,8 +53,8 @@ function GetQuickLinkHero() {
     // 0 origin
 
     // if no formtraits
-    if (rulerOrigin == "Dragon") {
-        code += rulerOrigin + ":" + rulerDragonOrigin + ",";
+    if (rulerOrigin == "Dragon" || rulerOrigin == "Giant") {
+        code += rulerOrigin + ":" + rulerSubType + ",";
     } else {
         code += rulerOrigin + ",";
     }
@@ -163,6 +163,25 @@ function ResetSkills() {
         currentSelectedSkillsArray = [5046586576674];
         currentSkillPoints--;
     }
+    if (rulerOrigin == "Giant") {
+        if (rulerSubType == "GiantFire") {
+            // fire summon
+            currentSelectedSkillsArray = [5046586578740];
+        }
+        if (rulerSubType == "GiantFrost") {
+            // fire summon
+            currentSelectedSkillsArray = [5046586582508];
+        }
+        if (rulerSubType == "GiantStorm") {
+            // fire summon
+            currentSelectedSkillsArray = [5046586578726];
+        }
+        if (rulerSubType == "GiantRock") {
+            // fire summon
+            currentSelectedSkillsArray = [5046586578733];
+        }
+        currentSkillPoints--;
+    }
 }
 
 function ResetSignatures() {
@@ -187,15 +206,27 @@ function LookupCode(code) {
     if (originSplitForDragon[0] != undefined) {
         // we have a dragon
         rulerOrigin = originSplitForDragon[0];
-        document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
+
         if (originSplitForDragon[1] != undefined) {
             // a saved splitorigin
-            rulerDragonOrigin = originSplitForDragon[1];
-
-            var dropdownOriginDragon = (document.getElementById("actionDropdownOriginDragon").value =
-                rulerDragonOrigin);
+            rulerSubType = originSplitForDragon[1];
+            if (rulerOrigin == "Dragon") {
+                document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
+                document.getElementById("actionDropdownOriginDragon").value = rulerSubType;
+            } else if (rulerOrigin == "Giant") {
+                document.getElementById("actionDropdownOriginGiantHolder").style.display = "block";
+                document.getElementById("actionDropdownOriginGiant").value = rulerSubType;
+            }
         } else {
-            rulerDragonOrigin = "OrderDragon";
+            if (rulerOrigin == "Dragon") {
+                rulerSubType = "OrderDragon";
+                document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
+                document.getElementById("actionDropdownOriginDragon").value = rulerSubType;
+            } else if (rulerOrigin == "Giant") {
+                rulerSubType = "GiantFire";
+                document.getElementById("actionDropdownOriginGiantHolder").style.display = "block";
+                document.getElementById("actionDropdownOriginGiant").value = rulerSubType;
+            }
         }
     } else {
         rulerOrigin = origin;
@@ -301,8 +332,8 @@ function UpdatePage() {
     treespace.innerHTML = "";
     holder2.innerHTML = "";
     treespace2.innerHTML = "";
-    SetUpTreeNodes(rulerOrigin, 0, "white", holder, treespace);
-    SetUpTreeNodes(rulerClass, 0, "white", holder2, treespace2);
+    SetUpTreeNodes(rulerOrigin, rulerSubType, 0, "white", holder, treespace);
+    SetUpTreeNodes(rulerClass, null, 0, "white", holder2, treespace2);
     SetUpSignatures(0);
     UpdateSkillPoints();
     console.log(currentSelectedSkillsArray);
@@ -531,7 +562,9 @@ function SetSkillData(nodeElement, skill) {
 
     spa.innerHTML = '<span style="color:  #d7c297;">' + skill.name.toUpperCase() + "</span>" + "<br>";
 
-    spa.innerHTML += '<span style="color:  aliceblue;">' + skill.group_name + "</span>" + "<br>";
+    if ("group_name" in skill) {
+        spa.innerHTML += '<span style="color:  aliceblue;">' + skill.group_name + "</span>" + "<br>";
+    }
 
     if (skill.description == undefined) {
         spa.innerHTML += GetSkillData(skill).innerHTML;
@@ -566,6 +599,23 @@ function GetAllAvailableSignatureSkills(slot) {
         "4273492488436",
         "4273492488449",
         "4273492488460"
+    ];
+    var GiantFirstRuneList = [
+        "Reflecting Rune",
+        "Critical Rune",
+        "Damage Rune",
+        "Vitality Rune",
+        "Guard Rune",
+        "Dispelling Rune"
+    ];
+
+    var GiantSecondRuneList = [
+        "Cascading Rune",
+        "Fury Rune",
+        "Brawn Rune",
+        "Life Rune",
+        "Safeguard Rune",
+        "Disruption Rune"
     ];
 
     var listOfSkills = [];
@@ -624,9 +674,7 @@ function GetAllAvailableSignatureSkills(slot) {
                             jsonHeroSkills[s].name.indexOf("Primal") != -1)
                     ) {
                         if (jsonHeroSkills[s].name.indexOf("Primal") != -1) {
-                            if (
-                                jsonHeroSkills[s].required_skills[0].resid === lookupDragonAffinity(rulerDragonOrigin)
-                            ) {
+                            if (jsonHeroSkills[s].required_skills[0].resid === lookupDragonAffinity(rulerSubType)) {
                                 listOfSkills.push(jsonHeroSkills[s]);
                             }
                         } else {
@@ -635,7 +683,7 @@ function GetAllAvailableSignatureSkills(slot) {
                     }
                     // third slot : breath
                     if (slot === 3 && jsonHeroSkills[s].name.indexOf("breath") != -1) {
-                        if (jsonHeroSkills[s].required_skills[0].resid === lookupDragonAffinity(rulerDragonOrigin)) {
+                        if (jsonHeroSkills[s].required_skills[0].resid === lookupDragonAffinity(rulerSubType)) {
                             listOfSkills.push(jsonHeroSkills[s]);
                         }
                     }
@@ -677,6 +725,68 @@ function GetAllAvailableSignatureSkills(slot) {
                         } else if (slot == 4) {
                             if (jsonHeroSkills[s].name.indexOf("Forgotten Tome") != -1) {
                                 if (signature2 != jsonHeroSkills[s].resid) {
+                                    listOfSkills.push(jsonHeroSkills[s]);
+                                }
+                            }
+                        }
+
+                        // forgotten tome
+                    }
+                }
+            } else if (rulerOrigin.indexOf("Giant") != -1) {
+                // one of the giants
+                if ("DLC" in jsonHeroSkills[s]) {
+                    if (jsonHeroSkills[s].DLC.indexOf("GIANTKINGS") != -1) {
+                        if (slot == 1) {
+                            if (
+                                GiantFirstRuneList.includes(jsonHeroSkills[s].name) &&
+                                jsonHeroSkills[s].id.indexOf("1") != -1
+                            ) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        }
+                        if (slot == 2) {
+                            if (
+                                GiantSecondRuneList.includes(jsonHeroSkills[s].name) &&
+                                jsonHeroSkills[s].id.indexOf("2") != -1
+                            ) {
+                                // check type
+                                if (jsonHeroSkills[s].name == "Cascading Rune") {
+                                    let listTocheck = ["fire", "frost", "storm", "rock"];
+                                    for (let k = 0; k < listTocheck.length; k++) {
+                                        if (
+                                            rulerSubType.toLowerCase().indexOf(listTocheck[k]) != -1 &&
+                                            jsonHeroSkills[s].id.indexOf(listTocheck[k]) != -1
+                                        ) {
+                                            listOfSkills.push(jsonHeroSkills[s]);
+                                        }
+                                    }
+                                } else {
+                                    listOfSkills.push(jsonHeroSkills[s]);
+                                }
+                            }
+                        }
+                        if (slot == 3) {
+                            if (
+                                GiantFirstRuneList.includes(jsonHeroSkills[s].name) &&
+                                jsonHeroSkills[s].id.indexOf("3") != -1
+                            ) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        }
+                        if (slot == 4) {
+                            if (jsonHeroSkills[s].name.indexOf("Grand ") != -1) {
+                                if (jsonHeroSkills[s].name == "Grand Cascading Rune") {
+                                    let listTocheck = ["fire", "frost", "storm", "rock"];
+                                    for (let k = 0; k < listTocheck.length; k++) {
+                                        if (
+                                            rulerSubType.toLowerCase().indexOf(listTocheck[k]) != -1 &&
+                                            jsonHeroSkills[s].id.indexOf(listTocheck[k]) != -1
+                                        ) {
+                                            listOfSkills.push(jsonHeroSkills[s]);
+                                        }
+                                    }
+                                } else {
                                     listOfSkills.push(jsonHeroSkills[s]);
                                 }
                             }
@@ -809,11 +919,6 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     var extraOffset2 = [100, -60];
     extraOffset2[1] = extraOffset2[1] + slot * 200;
 
-    if (listOfFirstChoice.includes(chosenSkill.name)) {
-        // dont draw the lines if its a sovereign
-
-        return;
-    }
     if (skills[0] != undefined) {
         BuildLine(extraOffset, origin, treespace);
         BuildSkillTreeEntry(skill1, row, holder, treespace, extraOffset);
@@ -874,13 +979,38 @@ function BuildLine(offset, targetnode, treespace) {
     treespace.appendChild(connectionLine);
 }
 
-function SetUpTreeNodes(keyword, row, color, holder, treespace) {
+function SetUpTreeNodes(keyword, subtype, row, color, holder, treespace) {
+    let overrideKeyword = keyword;
     for (var s = 0; s < jsonHeroSkills.length; s++) {
         let currentSkill = jsonHeroSkills[s];
         // Check if the current skill is of the right class
-        if ("tree_name" in currentSkill) {
-            if (currentSkill.tree_name.indexOf(keyword) != -1) {
-                BuildSkillTreeEntry(currentSkill, row, holder, treespace);
+        if ("group_name" in currentSkill) {
+            // check type
+
+            // manually add in the 2 mission giant kings parts
+            if (keyword == "Giant") {
+                if (currentSkill.resid == 5046586578724 || currentSkill.resid == 5046586579832) {
+                    BuildSkillTreeEntry(currentSkill, row, holder, treespace);
+                }
+            }
+
+            if (subtype == "GiantFrost") {
+                overrideKeyword = "Kings - Frost";
+            }
+            if (subtype == "GiantStorm") {
+                overrideKeyword = "Kings - Storm";
+            }
+            if (subtype == "GiantFire") {
+                overrideKeyword = "Kings - Fire";
+            }
+            if (subtype == "GiantRock") {
+                overrideKeyword = "Kings - Rock";
+            }
+
+            if (currentSkill.group_name.indexOf(overrideKeyword) != -1) {
+                if (currentSkill.id.indexOf("unlinked") == -1) {
+                    BuildSkillTreeEntry(currentSkill, row, holder, treespace);
+                }
             }
         }
     }
@@ -911,7 +1041,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
 
     if ("abilities" in currentSkill) {
         var skill = ReturnSkillItself(currentSkill.abilities[0].slug);
-        console.log(currentSkill.abilities[0].slug);
+        // console.log(currentSkill.abilities[0].slug);
 
         if ("range" in skill) {
             form = "diamond";
@@ -1140,7 +1270,12 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
                 nodeData.resid == 4273492481388 ||
                 nodeData.resid == 5111011084976 ||
                 nodeData.resid == 4273492487240 ||
-                nodeData.resid == 5046586576674
+                nodeData.resid == 5046586576674 ||
+                // giant skills
+                nodeData.resid == 5046586578740 ||
+                nodeData.resid == 5046586582508 ||
+                nodeData.resid == 5046586578726 ||
+                nodeData.resid == 5046586578733
             ) {
                 return;
             }

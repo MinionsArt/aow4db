@@ -16,14 +16,19 @@
                     // Get the dropdown element
                     const dropdownOrigin = document.getElementById("actionDropdownOrigin");
                     const dropdownOriginDragon = document.getElementById("actionDropdownOriginDragon");
+                    const dropdownOriginGiant = document.getElementById("actionDropdownOriginGiant");
 
                     // hide dragon type
                     document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
+                    // hide giant type
+                    document.getElementById("actionDropdownOriginGiantHolder").style.display = "none";
 
                     const dropdown = document.getElementById("actionDropdownClass");
                     // Add an event listener for when the value changes
                     dropdownOrigin.addEventListener("change", function () {
+                        rulerSubType = "";
                         document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
+                        document.getElementById("actionDropdownOriginGiantHolder").style.display = "none";
                         // Get the selected value
                         const selectedValue = dropdownOrigin.value;
                         rulerOrigin = selectedValue;
@@ -36,8 +41,21 @@
                         document.getElementById("Spellblade").disabled = false;
                         document.getElementById("DeathKnight").disabled = false;
                         if (selectedValue == "Dragon") {
+                            rulerSubType = "OrderDragon";
                             // show the dragon selection
                             document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
+                            // dont leave ranger
+                            document.getElementById("Ranger").disabled = true;
+                            if (rulerClass == "Ranger") {
+                                rulerClass = "Warrior";
+                            }
+                        }
+                        if (selectedValue.indexOf("Giant") != -1) {
+                            // show the dragon selection
+                            document.getElementById("actionDropdownOriginGiantHolder").style.display = "block";
+
+                            rulerSubType = "GiantFire";
+                            //document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
                             // dont leave ranger
                             document.getElementById("Ranger").disabled = true;
                             if (rulerClass == "Ranger") {
@@ -74,7 +92,16 @@
                     dropdownOriginDragon.addEventListener("change", function () {
                         // Get the selected value
                         const selectedValue = dropdownOriginDragon.value;
-                        rulerDragonOrigin = selectedValue;
+                        rulerSubType = selectedValue;
+                        ResetAll();
+
+                        // Trigger functions based on the selected value
+                    });
+
+                    dropdownOriginGiant.addEventListener("change", function () {
+                        // Get the selected value
+                        const selectedValue = dropdownOriginGiant.value;
+                        rulerSubType = selectedValue;
                         ResetAll();
 
                         // Trigger functions based on the selected value
@@ -162,6 +189,7 @@
                     <option id="Wizard" value="Wizard">Wizard King</option>
                     <option id="Dragon" value="Dragon">Dragon Lord</option>
                     <option id="Eldritch" value="Eldritch">Eldritch Sovereign</option>
+                    <option id="Giant" value="Giant">Giant King</option>
                 </select>
             </div>
             <div class="choices" id="actionDropdownOriginDragonHolder" style="left: 100px; top: -20px">
@@ -173,6 +201,15 @@
                     <option id="chaosDragon" value="ChaosDragon">Chaos Dragon</option>
                     <option id="materiumDragon" value="MateriumDragon">Materium Dragon</option>
                     <option id="shadowDragon" value="ShadowDragon">Shadow Dragon</option>
+                </select>
+            </div>
+            <div class="choices" id="actionDropdownOriginGiantHolder" style="left: 100px; top: -20px">
+                <label style="color: white">Giant Type:</label>
+                <select id="actionDropdownOriginGiant">
+                    <option id="GiantFire" value="GiantFire">Fire Giant King</option>
+                    <option id="GiantFrost" value="GiantFrost">Frost Giant King</option>
+                    <option id="GiantStorm" value="GiantStorm">Storm Giant King</option>
+                    <option id="GiantRock" value="GiantRock">Rock Giant King</option>
                 </select>
             </div>
             <div class="choices" style="left: 900px; top: 20px">

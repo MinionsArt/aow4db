@@ -321,6 +321,9 @@
    },
    {
     "name": "Unlock the Earthshape: Ashland spell."
+   },
+   {
+    "name": "Cities ignore the <happiness></happiness> <hyperlink>City Stability</hyperlink> penalty from Lava and Chasm terrain in their <hyperlink>Domain</hyperlink>."
    }
   ],
   "enabled": true,
@@ -577,6 +580,41 @@
  {
   "affinities": [
    {
+    "name": "1<matter></matter> Materium Affinity"
+   }
+  ],
+  "biography_description": "Beneath the earth, they can be found, prospering and digging deeper still.",
+  "lore_description": "They know the earth like no other, favoring the depths of the realms to the turbulent surface.",
+  "point_cost": 1,
+  "id": "subterranean_society",
+  "name": "Subterranean Society",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Underground Passages grant +2 <influence></influence> <hyperlink>Imperium</hyperlink>."
+   },
+   {
+    "name": "<hyperlink>Underground</hyperlink> Cities gain +20% <food></food> <hyperlink>Food</hyperlink> income."
+   },
+   {
+    "name": "<hyperlink>Excavation</hyperlink> of Underground provinces has a chance of uncovering an additional <hyperlink>Resource Node</hyperlink>."
+   }
+  ],
+  "enabled": true,
+  "type": "society",
+  "group_name": "",
+  "front_end": false,
+  "display_order": 2,
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "excavation"
+   }
+  ],
+  "icon": "subterranean_society"
+ },
+ {
+  "affinities": [
+   {
     "name": "1<chaos></chaos> Chaos Affinity"
    }
   ],
@@ -720,7 +758,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<hyperlink>Cities</hyperlink> gain <bulletlist><bullet>+20% <food></food> <hyperlink>Food</hyperlink> if the city core province contains Grasslands or Fungus Fields.</bullet><bullet>+20% <structureprod></structureprod> <hyperlink>Production</hyperlink> if the city core province contains Forest, Rocky or Mountains.</bullet><bullet>+10% <gold></gold> <hyperlink>Gold</hyperlink> if the city core province contains Ashlands.</bullet><bullet>+10% <mana></mana> <hyperlink>Mana</hyperlink> if the city core province contains Snow, Ice or Sand.</bullet></bulletlist>"
+    "name": "<hyperlink>Cities</hyperlink> gain <bulletlist><bullet>+20% <food></food> <hyperlink>Food</hyperlink> if the city core province contains Grasslands, Fungus Fields or Swamp.</bullet><bullet>+20% <structureprod></structureprod> <hyperlink>Production</hyperlink> if the city core province contains Forest, Rocky or Mountains.</bullet><bullet>+10% <gold></gold> <hyperlink>Gold</hyperlink> if the city core province contains Ashlands.</bullet><bullet>+10% <mana></mana> <hyperlink>Mana</hyperlink> if the city core province contains Snow, Ice or Sand.</bullet></bulletlist>"
    },
    {
     "name": "Terraforming spells cost -25% less <mana></mana> <hyperlink>Mana</hyperlink> and <caststrategic></caststrategic> <hyperlink>World Map Casting Point</hyperlink> to cast."
@@ -868,7 +906,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Gain <bindingessence></bindingessence> <hyperlink>Binding Essence</hyperlink> for clearing <hyperlink>Infestation Spawners</hyperlink>, clearing <hyperlink>Ancient Wonders</hyperlink>, <hyperlink>Razing</hyperlink> <hyperlink>Cities</hyperlink>, and <hyperlink>Pillaging</hyperlink> <hyperlink>Provinces</hyperlink>."
+    "name": "Gain <hyperlink><bindingessence></bindingessence> Binding Essence and <bindingfragments></bindingfragments> Fragments</hyperlink> for clearing <hyperlink>Infestation Spawners</hyperlink>, clearing <hyperlink>Ancient Wonders</hyperlink>, <hyperlink>Razing</hyperlink> <hyperlink>Cities</hyperlink>, and <hyperlink>Pillaging</hyperlink> <hyperlink>Provinces</hyperlink>."
    }
   ],
   "enabled": true,
@@ -947,18 +985,18 @@
     "name": "1<matter></matter> Materium Affinity"
    }
   ],
-  "biography_description": "They pursue and covet magical artifacts, using such items as inspiration for their magical feats.",
-  "lore_description": "They pursue and covet magical artifacts, using such items as inspiration for their magical feats.",
+  "biography_description": "They pursue and covet magical equipment, using such items as inspiration for their magical feats.",
+  "lore_description": "They pursue and covet magical equipment, using such items as inspiration for their magical feats.",
   "point_cost": 1,
-  "id": "artifact_hoarders",
-  "name": "Artifact Hoarders",
+  "id": "equipment_hoarders",
+  "name": "Equipment Hoarders",
   "screen_description": "",
   "effect_descriptions": [
    {
     "name": "Gain a tier II-III Hero Item after clearing an <hyperlink>Ancient Wonder</hyperlink> or an <hyperlink>Infestation</hyperlink>."
    },
    {
-    "name": "Gain extra <mana></mana> <hyperlink>Mana</hyperlink> with Hero Items via the <hyperlink>Artifact Hoard</hyperlink>."
+    "name": "Gain extra <mana></mana> <hyperlink>Mana</hyperlink> with Hero Items via the <hyperlink>Equipment Hoard</hyperlink>."
    }
   ],
   "enabled": true,
@@ -971,7 +1009,7 @@
     "description": "Get 2 random hero items."
    }
   ],
-  "icon": "artifact_hoarders"
+  "icon": "equipment_hoarders"
  },
  {
   "biography_description": "They value and cultivate good relationships with their vassals.",
@@ -1024,7 +1062,7 @@
     "name": "All <hyperlink>Units</hyperlink> gain Attunement: Mana Addicted."
    },
    {
-    "name": "Racial Support Units and Battle Mage Units have +1 Rank."
+    "name": "Provinces with Mana <hyperlink>Resource Nodes</hyperlink> grant +10 <happiness></happiness> <hyperlink>City Stability</hyperlink>."
    }
   ],
   "enabled": true,
@@ -1126,7 +1164,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Razing cities grant a permanent +40 <gold></gold> <hyperlink>Gold</hyperlink>, +40 <mana></mana> <hyperlink>Mana</hyperlink>, and +40 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income."
+    "name": "Razing cities grant a permanent +40 <gold></gold> <hyperlink>Gold</hyperlink>, +40 <mana></mana> <hyperlink>Mana</hyperlink>, and +40 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income for every 3 <population></population> <hyperlink>Population</hyperlink> of the city that was razed."
    },
    {
     "name": "Can not obtain new <hyperlink>Cities</hyperlink> and conquered cities can only be razed."
@@ -1470,13 +1508,16 @@
     "name": "Gain Cave Walk, increasing world map movement speed in most underground terrain."
    },
    {
-    "name": "Ignore the -2 <food></food> <hyperlink>Food</hyperlink> penalty from <farm></farm> <hyperlink>Farms</hyperlink> in Fungus Fields."
+    "name": "Can build<farm></farm> <hyperlink>Farms</hyperlink> instead of <hut></hut> <hyperlink>Huts</hyperlink> in Fungus Fields, Underground Ashlands, and Underground Snow."
    },
    {
     "name": "Start in the underground."
    },
    {
     "name": "<hyperlink>Underground</hyperlink> Cities gain +1 Province Annex Range."
+   },
+   {
+    "name": "Cities ignore the <happiness></happiness> <hyperlink>City Stability</hyperlink> penalty from Lava and Chasm terrain in their <hyperlink>Domain</hyperlink>."
    }
   ],
   "enabled": true,
@@ -1756,7 +1797,7 @@
     "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
    },
    {
-    "name": "Units are recruited with +1 Rank when you are at the maximum evil <evilact></evilact> <hyperlink>Alignment</hyperlink>."
+    "name": "Units cost -20% less <gold></gold> <hyperlink>Gold</hyperlink> and <unitprod></unitprod> <hyperlink>Draft</hyperlink> to recruit while you are at the maximum evil <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
@@ -1873,7 +1914,7 @@
     "structure_upgrade_slug": "workshop"
    },
    {
-    "structure_upgrade_slug": "stone_walls"
+    "structure_upgrade_slug": "vendor"
    }
   ],
   "icon": "great_builders"
@@ -1892,7 +1933,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<hyperlink>Cities</hyperlink> gain +2 <gold></gold> Gold, +2 <food></food> Food, and +2 <unitprod></unitprod> Draft for each province with a Coast, River, and Underground Lake in their <hyperlink>Domain</hyperlink>."
+    "name": "<hyperlink>Cities</hyperlink> gain +2 <gold></gold> Gold, +2 <food></food> Food, and +2 <unitprod></unitprod> Draft for each province with a Coast, River, and Water in their <hyperlink>Domain</hyperlink>."
    },
    {
     "name": "Embarked units:<bulletlist><bullet>Deal +20% damage</bullet><bullet>Gain +20% <hyperlink><xp></xp> Experience</hyperlink></bullet></bulletlist>"
@@ -1991,7 +2032,7 @@
     "name": "Summoning Spells cost -50% <mana></mana> Mana to cast."
    },
    {
-    "name": "Summoned Magic Origin units have +1 Rank."
+    "name": "Magic Origin gain +20% more <hyperlink><xp></xp> Experience</hyperlink>."
    }
   ],
   "enabled": true,
@@ -2169,7 +2210,7 @@
     "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
    },
    {
-    "name": "Units are recruited with +1 Rank when you are at the maximum good <goodact></goodact> <hyperlink>Alignment</hyperlink>."
+    "name": "Units gain +2 <hyperlink><xp></xp> Experience</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink> while you are at the maximum good <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
@@ -2317,10 +2358,10 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Repeating <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks deal +2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>."
+    "name": "<hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks deal +2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>."
    },
    {
-    "name": "Non-repeating <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks deal +4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>."
+    "name": "Single Shot <hyperlink>Melee</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks deal +4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>."
    }
   ],
   "enabled": true,
@@ -2331,7 +2372,7 @@
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Reduce damage from magical attacks.</helpcolor>",
+  "lore_description": "<helpcolor>Reduce damage from magical attacks and spells.</helpcolor>",
   "biography_description": "They have a natural armor against magical damage.",
   "point_cost": 2,
   "id": "resistant",
@@ -2339,7 +2380,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>."
+    "name": "+1 <defense></defense> <hyperlink>Defense</hyperlink> and +1 <resistance></resistance> <hyperlink>Resistance</hyperlink> against <hyperlink>Magic</hyperlink> attacks, <hyperlink>Spells</hyperlink> and other effects."
    }
   ],
   "enabled": true,
@@ -2578,6 +2619,9 @@
     "name": "Gains the Web ability."
    },
    {
+    "name": "Gains Swift."
+   },
+   {
     "name": "Additional units become Cavalry"
    },
    {
@@ -2712,7 +2756,7 @@
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Units take less damage from physical attacks.</helpcolor>",
+  "lore_description": "<helpcolor>Units take less damage from melee attacks.</helpcolor>",
   "biography_description": "They are tough and used to taking a few hits in battle.",
   "point_cost": 2,
   "id": "tough",
@@ -2720,7 +2764,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+2 <defense></defense> <hyperlink>Defense</hyperlink>."
+    "name": "+1 <defense></defense> <hyperlink>Defense</hyperlink> and +1 <resistance></resistance> <hyperlink>Resistance</hyperlink> against <hyperlink>Melee</hyperlink> attacks."
    }
   ],
   "enabled": true,
