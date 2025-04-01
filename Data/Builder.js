@@ -285,6 +285,16 @@ var primalCultureUnits = [
     "animist",
     "ancestral_warden"
 ];
+var oathswornCultureUnits = [
+    "honor_guard",
+    "wayfarer",
+    "sworn_guard",
+    "sealbearer",
+    "vowkeeper",
+    "peacebringer",
+    "avenger",
+    "warbound"
+];
 
 var MountedSpecialList = [
     "pioneer",
@@ -475,7 +485,8 @@ function CheckIfFormUnit(id) {
         mysticCultureUnits.includes(id) ||
         reaverCultureUnits.includes(id) ||
         primalCultureUnits.includes(id) ||
-        extraFormUnitsList.includes(id)
+        extraFormUnitsList.includes(id) ||
+        oathswornCultureUnits.includes(id)
     ) {
         if (id !== "observer" && id != "magelock_cannon") {
             return true;
@@ -6203,7 +6214,12 @@ function FindUnitsWithSecondaryPassive(trait) {
         let unitsSorted = [];
         let x = 0;
         for (x in splitArrays[z]) {
-            unitsSorted.push(splitArrays[z][x].id);
+            if ("sub_culture_name" in splitArrays[z][x]) {
+                var newEntry = splitArrays[z][x].id + "," + splitArrays[z][x].sub_culture_name;
+                unitsSorted.push(newEntry);
+            } else {
+                unitsSorted.push(splitArrays[z][x].id);
+            }
         }
         sortedUnitListArray.push(unitsSorted);
     }

@@ -5,42 +5,37 @@
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
         <script src="/aow4db/Data/Builder.js"></script>
         <script src="/aow4db/Data/Faction.js"></script>
         <script src="/aow4db/Data/Search.js"></script>
         <script>
-            var tomeArray = [
-                "tome_of_necromancy",
-                "tome_of_cryomancy",
-                "tome_of_the_doomherald",
-                "tome_of_souls",
-                "tome_of_the_great_transformation",
-                "tome_of_the_cold_dark",
-                "tome_of_oblivion",
-                "tome_of_the_reaper",
-                "tome_of_the_eternal_lord",
-                "tome_of_the_tentacle",
-                "tome_of_shades",
-                "tome_of_corruption",
-                "tome_of_severing",
-                "tome_of_calamity"
-            ];
-
             function HandlePage() {
-                SetButtonsAndDivs(tomeArray, undefined, "tome");
+                unitarray = FindUnitsWithSecondaryPassive("skirmisher_unit");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+                        showUnitsFromList(unitarray[i], "Skirmisher Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
                 SetLevelUpStuff();
+                SetCollapsibleStuff();
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Shadow Tomes</title>
+        <title>Age of Wonders 4 Database - Skirmisher Units</title>
     </head>
 
     <body>
         <div id="header"></div>
 
-        <div class="textblocktitle"><empireshadow></empireshadow>Shadow Tomes</div>
-
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/UnitIcons/skirmisher_unit.png" height="40px" /> Skirmisher Units
+            <img src="/aow4db/Icons/UnitIcons/skirmisher_unit.png" height="40px" />
+        </div>
         <div class="w3-container">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
             <div id="dataHolder"></div>
