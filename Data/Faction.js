@@ -2337,7 +2337,7 @@ function ShowSiegeProjectsOverview(list) {
                 var text = document.createElement("div");
                 text.innerHTML = jsonSiegeProjects[i].name;
                 var smallIcon = document.createElement("img");
-                smallIcon.setAttribute("src", "/aow4db/Icons/SiegeIcons/" + jsonSiegeProjects[i].id + ".png");
+                smallIcon.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + jsonSiegeProjects[i].id + ".png");
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
