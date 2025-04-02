@@ -6000,6 +6000,7 @@ function showSpell(a, showOrigin) {
                 a === "summon_greater_animal" ||
                 a === "awaken_the_forest" ||
                 a === "demonic_summoning" ||
+                  a === "summon_elemental" ||
                 a === "raise_undead_army"
             ) {
                 // extra info
