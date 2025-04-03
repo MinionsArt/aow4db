@@ -681,7 +681,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     buttonText.style = "display: block;font-size: 15px;position: relative;text-align: right; top: -10px;";
     // buttonText.innerHTML += origin.name;
     var affinity = "";
-    const affinityText = document.createElement("div");
+    let affinityText = document.createElement("div");
     affinityText.style = "position: relative;left: -3px;top: -80px;";
 
     //console.log(origin);
@@ -694,6 +694,13 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     newDivButton.appendChild(image);
     newDivButton.appendChild(buttonText);
     newDivButton.appendChild(affinityText);
+    if ("DLC" in origin) {
+        let DLCTAG = document.createElement("div");
+        DLCTAG.style = "    position: absolute;right: 39px;top: 54px;";
+        let dlcTag = origin.DLC.replaceAll(" ", "");
+        DLCTAG.innerHTML = "<" + dlcTag + "></" + dlcTag + ">";
+        newDivButton.appendChild(DLCTAG);
+    }
 
     buttonHolder.append(newDivButton);
 
@@ -802,6 +809,13 @@ function SetTomePathInfo(button, origin) {
     newDivButton.appendChild(image);
     newDivButton.appendChild(affinityText);
     newDivButton.appendChild(buttonText);
+    if ("DLC" in origin) {
+        let DLCTAG = document.createElement("div");
+        DLCTAG.style = "    position: absolute;right: 0;top: 4px;";
+        let dlcTag = origin.DLC.replaceAll(" ", "");
+        DLCTAG.innerHTML = "<" + dlcTag + "></" + dlcTag + ">";
+        newDivButton.appendChild(DLCTAG);
+    }
 
     button.append(newDivButton);
 
@@ -1031,7 +1045,7 @@ function SetupButtons(evt, type) {
                     } else if (currentSociety2.name === origin.name) {
                         originButtonNew.className = "list-button-currentequipped";
                     } else {
-                        originButtonNew.innerHTML += '<span style="color:red"> Incompatible </span>';
+                        //originButtonNew.className = "list-button-incompatible";
                     }
                 }
             }
@@ -1381,6 +1395,14 @@ function SetButtonInfo(button, origin, type, color) {
                     }
                 }
             }
+        }
+
+        if ("DLC" in origin) {
+            // let DLCTAG = document.createElement("div");
+            // DLCTAG.style = "    position: absolute;right: 39px;top: 54px;";
+            let dlcTag = origin.DLC.replaceAll(" ", "");
+            buttonText.innerHTML += " <" + dlcTag + "></" + dlcTag + ">";
+            // button.appendChild(DLCTAG);
         }
 
         if (type == "Signature") {

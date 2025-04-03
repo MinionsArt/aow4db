@@ -1387,13 +1387,17 @@ function addTooltipListeners(tooltip, span, secondary) {
             //  FillToolTip(span, secondary);
 
             hoverDiv2.style.visibility = "hidden"; // make it invisible
+            hoverDiv2.inert = true;
             hoverDiv2.show();
+            hoverDiv2.inert = false;
             if (tooltip != hoverDiv2) {
                 updateHoverDivPosition(event, secondary);
             }
             hoverDiv2.close(); // close and reset visiblity
             hoverDiv2.style.visibility = "";
+            hoverDiv2.inert = true;
             hoverDiv2.show();
+            hoverDiv2.inert = false;
         });
 
         tooltip.addEventListener("mouseleave", function () {
@@ -1407,13 +1411,17 @@ function addTooltipListeners(tooltip, span, secondary) {
             TurnOnTooltip(span, secondary);
             // hoverDiv.show();
             hoverDiv.style.visibility = "hidden";
+            hoverDiv.inert = true;
             hoverDiv.show();
+            hoverDiv.inert = false;
             if (tooltip != hoverDiv) {
                 updateHoverDivPosition(event, secondary);
             }
             hoverDiv.close();
             hoverDiv.style.visibility = "";
+            hoverDiv.inert = true;
             hoverDiv.show();
+            hoverDiv.inert = false;
         });
 
         tooltip.addEventListener("mouseleave", function () {
@@ -6000,7 +6008,7 @@ function showSpell(a, showOrigin) {
                 a === "summon_greater_animal" ||
                 a === "awaken_the_forest" ||
                 a === "demonic_summoning" ||
-                  a === "summon_elemental" ||
+                a === "summon_elemental" ||
                 a === "raise_undead_army"
             ) {
                 // extra info
