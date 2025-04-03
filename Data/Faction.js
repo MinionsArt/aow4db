@@ -25,6 +25,21 @@ var listOfSecondChoiceFleshweaver = ["puppeteer", "fleshsculptor"];
 
 var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
 
+var listOfPantheonTraits = [
+    "talented_collectors",
+    "subterranean_society",
+    "mana_addicts",
+    "bannerlords",
+    "chosen_destroyers",
+    "cult_of_personality",
+    "vigilante_knights",
+    "druidic_terraformers",
+    "merciless_slavers__evilact__",
+    "relentless_crusaders__goodact__",
+    "silver_tongued",
+    "perfectionist_artisans"
+];
+
 var currentTomeList = [];
 var currentSignatureSkills = [];
 
@@ -1403,6 +1418,10 @@ function SetButtonInfo(button, origin, type, color) {
             let dlcTag = origin.DLC.replaceAll(" ", "");
             buttonText.innerHTML += " <" + dlcTag + "></" + dlcTag + ">";
             // button.appendChild(DLCTAG);
+        }
+
+        if (listOfPantheonTraits.includes(origin.id)) {
+            buttonText.innerHTML += " <pantheon></pantheon>";
         }
 
         if (type == "Signature") {
