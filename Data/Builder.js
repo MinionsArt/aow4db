@@ -3914,6 +3914,9 @@ function backtrackUnitOrigins(unitData, name, holder) {
         } else {
             tooltipText = `Rally Unit unlocked from <hyperlink>${wonder.type}</<hyperlink> : <hyperlink>${wonder.name}</<hyperlink>`;
         }
+        if ("other_unlock" in wonder) {
+            tooltipText = `Unit available in <hyperlink>${wonder.type}</<hyperlink> : <hyperlink>${wonder.name}</<hyperlink>`;
+        }
         const imgSrc = `/aow4db/Icons/StructurePics/${wonder.id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?wonder=${wonder.id}`;
