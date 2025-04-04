@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Faction.js"></script>
+        <script src="/aow4db/Data/Search.js"></script>
+        <script>
+            function HandlePage() {
+                unitarray = FindUnitsWithSecondaryPassive("fighter_unit");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+                        showUnitsFromList(unitarray[i], "Fighter Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Fighter Units</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/UnitIcons/fighter_unit.png" height="40px" /> Fighter Units
+            <img src="/aow4db/Icons/UnitIcons/fighter_unit.png" height="40px" />
+        </div>
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>
