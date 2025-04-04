@@ -6018,7 +6018,7 @@ function showSpell(a, showOrigin) {
 
                 info = document.createElement("DIV");
                 info.innerHTML =
-                    '<button type="button" class="collapsible"  onclick="SetUpSpawnTable()">Spawn Chances</button>';
+                    '<button type="button" class="collapsible"  onclick="SetUpSpawnTable()">SPAWN CHANCES (manually added data, error prone)</button>';
                 let collapsibleC = document.createElement("DIV");
                 collapsibleC.classList = "content";
 
