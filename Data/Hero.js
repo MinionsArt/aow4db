@@ -933,6 +933,19 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
 function GetSignatureSkillUnlocks(currentSig) {
     var unlockedSigs = [];
     for (let i = 0; i < jsonHeroSkills.length; i++) {
+        // hardcode some of these because theyre not hooked up properly
+        // mind devourer - eternal one
+        if (currentSig.resid == 5046586575333) {
+            if (jsonHeroSkills[i].resid == 4514010634081) {
+                unlockedSigs.push(jsonHeroSkills[i]);
+            }
+        }
+        // grand brawn rune - ancient of earth
+        if (currentSig.resid == 5046586579058) {
+            if (jsonHeroSkills[i].resid == 4514010632504) {
+                unlockedSigs.push(jsonHeroSkills[i]);
+            }
+        }
         if ("required_skills" in jsonHeroSkills[i]) {
             for (let j = 0; j < jsonHeroSkills[i].required_skills.length; j++) {
                 if (jsonHeroSkills[i].required_skills[j].resid == currentSig.resid) {
