@@ -1769,6 +1769,15 @@ function SetTomePreview(span, origin) {
                     GetStructureName(origin.skills[index].upgrade_slug) +
                     "</bullet>";
             }
+            // province Improvement
+            else if (origin.skills[index].type.indexOf("Province") != -1) {
+                span.innerHTML +=
+                    '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
+                    origin.skills[index].upgrade_slug +
+                    '.png">' +
+                    GetStructureName(origin.skills[index].upgrade_slug) +
+                    "</bullet>";
+            }
             // empire upgrades
             else if (origin.skills[index].type.indexOf("Empire") != -1) {
                 var imageLinkName = origin.skills[index].name.replaceAll(" ", "_").toLowerCase();
