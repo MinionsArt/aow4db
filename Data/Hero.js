@@ -934,11 +934,11 @@ function GetSignatureSkillUnlocks(currentSig) {
     var unlockedSigs = [];
     for (let i = 0; i < jsonHeroSkills.length; i++) {
         // hardcode some of these because theyre not hooked up properly
-        // mind devourer - eternal one
+        // mind devourer - ancient one not exported
         if (currentSig.resid == 5046586575333) {
-            if (jsonHeroSkills[i].resid == 4514010634081) {
-                unlockedSigs.push(jsonHeroSkills[i]);
-            }
+            //if (jsonHeroSkills[i].resid == 4514010634081) {
+            //    unlockedSigs.push(jsonHeroSkills[i]);
+            //}
         }
         // grand brawn rune - ancient of earth
         if (currentSig.resid == 5046586579058) {
