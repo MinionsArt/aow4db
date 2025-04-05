@@ -418,13 +418,13 @@ function HandleExtraTooltips(specificDiv) {
     if (specificDiv != undefined) {
         specificDiv.querySelectorAll(".statusEffectHandler").forEach((el) => {
             let spantest = document.createElement("span");
-            spantest.innerHTML = lookupStatusEffect(el.innerHTML);
+            spantest.innerHTML = lookupStatusEffect(el.innerText);
             addTooltipListeners(el, spantest, "something");
         });
     } else {
         document.querySelectorAll(".statusEffectHandler").forEach((el) => {
             let spantest = document.createElement("span");
-            spantest.innerHTML = lookupStatusEffect(el.innerHTML);
+            spantest.innerHTML = lookupStatusEffect(el.innerText);
             addTooltipListeners(el, spantest, "something");
         });
     }
@@ -6104,6 +6104,30 @@ function showSpell(a, showOrigin) {
     }
     if (found === false) {
         console.log("Couldn't find mod: " + a);
+    }
+}
+
+function HideAll(cardClassName) {
+    let divs = document.getElementsByClassName(cardClassName);
+
+    for (let i = 0; i < divs.length; i++) {
+        let div = divs[i];
+        div.style.display = "none";
+    }
+    return divs;
+}
+
+function ShowAllDivsWithFilters(cardClassName) {
+    let listOfDivs = HideAll(cardClassName);
+    //   var list = new Array();
+    let filter = document.getElementById("filterInput");
+
+    let filterText = filter.value.toUpperCase();
+
+    for (let j = 0; j < listOfDivs.length; j++) {
+        if (listOfDivs[j].innerText.toUpperCase().indexOf(filterText) != -1) {
+            listOfDivs[j].style.display = "table";
+        }
     }
 }
 
