@@ -6295,7 +6295,7 @@ function showItem(a) {
     let i = "";
 
     modName = document.getElementById("modname");
-    console.log(a.id);
+    // console.log(a.id);
     if (a.id.indexOf("pantheon") != -1) {
         modName.innerHTML = "<pantheon></pantheon>" + a.name.toUpperCase();
     } else {

@@ -22,6 +22,34 @@
 
                 SetLevelUpStuff();
                 SetCollapsibleStuff();
+                $("#filterInput").on("change input", function () {
+                    ShowAllAbilitiesWithFilters("mod_card");
+                    SetLevelUpStuff();
+                });
+            }
+
+            function HideAll(cardClassName) {
+                const divs = document.getElementsByClassName(cardClassName);
+
+                for (let i = 0; i < divs.length; i++) {
+                    const div = divs[i];
+                    div.style.display = "none";
+                }
+                return divs;
+            }
+
+            function ShowAllAbilitiesWithFilters(cardClassName) {
+                var listOfDivs = HideAll(cardClassName);
+                var list = new Array();
+                var filter = document.getElementById("filterInput");
+
+                var filterText = filter.value.toUpperCase();
+
+                for (let i = 0; i < listOfDivs.length; i++) {
+                    if (listOfDivs[i].innerHTML.toUpperCase().indexOf(filterText) != -1) {
+                        listOfDivs[i].style.display = "table";
+                    }
+                }
             }
         </script>
 
@@ -32,6 +60,14 @@
         <div id="header"></div>
 
         <div class="textblocktitle">Hero Equipment</div>
+
+        <div style="height: auto; color: white; text-align: center">
+            <br />
+            Filter<br />
+            <div style="margin-right: auto; margin-left: auto; width: 500px">
+                <input type="text" class="searchbar" id="filterInput" />
+            </div>
+        </div>
 
         <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
             <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
