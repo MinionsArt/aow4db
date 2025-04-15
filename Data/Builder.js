@@ -2576,7 +2576,7 @@ async function showHeroGovFromList(list, divID) {
     await spawnSpellCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showHeroGov(list[i].id, true);
+        showHeroGov(list[i].id, undefined);
     }
 }
 
@@ -2832,22 +2832,10 @@ function findHeroGovernance() {
     let finalCheckedList = [];
 
     for (j in jsonHeroGovernance) {
-        if ("type" in jsonHeroGovernance[j]) {
-            if (!isInArray(finalCheckedList, jsonHeroGovernance[j])) {
-                finalCheckedList.push(jsonHeroGovernance[j]);
-            }
-        } else {
-            if (!isInArray(finalCheckedList, jsonHeroGovernance[j])) {
-                finalCheckedList.push(jsonHeroGovernance[j]);
-            }
-        }
+        finalCheckedList.push(jsonHeroGovernance[j]);
     }
-
-    // Remove duplicate objects from the array
-    const uniqueArray = finalCheckedList.filter((item, index) => {
-        return index === finalCheckedList.findIndex((obj) => obj.id === item.id && obj.name === item.name);
-    });
-    return uniqueArray;
+    console.log(finalCheckedList);
+    return finalCheckedList;
 }
 
 function findHeroAmbition() {
@@ -6685,40 +6673,83 @@ function showHeroTrait(a) {
     }
 }
 
-function showHeroGov(a) {
+function showHeroGov(a, check) {
     let modName,
         description,
         cost,
         type,
         tier = "";
     let found = false;
-    let i = "";
-    for (i in jsonHeroGovernance) {
-        if (jsonHeroGovernance[i].id === a) {
+    for (let i = 0; i < jsonHeroGovernance.length; i++) {
+        if (check != undefined) {
+            if (jsonHeroGovernance[i].id === a) {
+                let newID = a + i;
+
+                let thisGovernance = jsonHeroGovernance[i];
+                modName = document.getElementById("modname");
+                modName.innerHTML = thisGovernance.name.toUpperCase();
+
+                modName.setAttribute("id", "modname" + newID);
+                descriptionDiv = document.getElementById("moddescription");
+
+                descriptionDiv.innerHTML = "";
+
+                descriptionDiv.innerHTML = "<hr>" + thisGovernance.screen_description;
+
+                descriptionDiv.setAttribute("id", "moddescription" + newID);
+                unitTypesDiv = document.getElementById("affectUnitTypes");
+
+                unitTypesDiv.setAttribute("id", "affectUnitTypes" + newID);
+
+                tier = document.getElementById("modtier");
+                tier.innerHTML = "";
+
+                tier.setAttribute("id", "modtier" + newID);
+
+                cost = document.getElementById("modcost");
+
+                cost.setAttribute("id", "modcost" + newID);
+
+                imagelink = document.getElementById("modicon");
+                imagelink.setAttribute(
+                    "src",
+                    "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon.toLowerCase() + ".png"
+                );
+                imagelink.setAttribute("style", "background-image:none");
+                imagelink.setAttribute("id", "modicon" + newID);
+
+                let tomeOriginIcon = document.getElementById("originTomeIcon");
+
+                tomeOriginIcon.setAttribute("id", "modicon" + newID);
+                found = true;
+            }
+        } else {
+            let newID = a + i;
+
             let thisGovernance = jsonHeroGovernance[i];
             modName = document.getElementById("modname");
             modName.innerHTML = thisGovernance.name.toUpperCase();
 
-            modName.setAttribute("id", "modname" + a);
+            modName.setAttribute("id", "modname" + newID);
             descriptionDiv = document.getElementById("moddescription");
 
             descriptionDiv.innerHTML = "";
 
             descriptionDiv.innerHTML = "<hr>" + thisGovernance.screen_description;
 
-            descriptionDiv.setAttribute("id", "moddescription" + a);
+            descriptionDiv.setAttribute("id", "moddescription" + newID);
             unitTypesDiv = document.getElementById("affectUnitTypes");
 
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+            unitTypesDiv.setAttribute("id", "affectUnitTypes" + newID);
 
             tier = document.getElementById("modtier");
             tier.innerHTML = "";
 
-            tier.setAttribute("id", "modtier" + a);
+            tier.setAttribute("id", "modtier" + newID);
 
             cost = document.getElementById("modcost");
 
-            cost.setAttribute("id", "modcost" + a);
+            cost.setAttribute("id", "modcost" + newID);
 
             imagelink = document.getElementById("modicon");
             imagelink.setAttribute(
@@ -6726,11 +6757,11 @@ function showHeroGov(a) {
                 "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon.toLowerCase() + ".png"
             );
             imagelink.setAttribute("style", "background-image:none");
-            imagelink.setAttribute("id", "modicon" + a);
+            imagelink.setAttribute("id", "modicon" + newID);
 
             let tomeOriginIcon = document.getElementById("originTomeIcon");
 
-            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+            tomeOriginIcon.setAttribute("id", "modicon" + newID);
             found = true;
         }
     }
