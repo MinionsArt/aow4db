@@ -106,7 +106,7 @@ var jsonSiegeProjects,
     jsonCosmicHappenings,
     jsonBuilderHeroLookUp,
     jsonHeroGovernance,
-    jsonStatusEffects;
+    jsonStatusEffects, jsonExtraTooltips;
 
 async function GetAllData(beta) {
     const jsonFilePaths = [
@@ -132,7 +132,8 @@ async function GetAllData(beta) {
         "/aow4db/Data/CosmicHappenings.json",
         "/aow4db/Data/BuilderLookupHero.json",
         "/aow4db/Data/Governance.json",
-        "/aow4db/Data/StatusEffects.json"
+        "/aow4db/Data/StatusEffects.json",
+        "/aow4db/Data/ExtraToolTips.json"
     ];
 
     const jsonFilePathsBeta = [
@@ -215,6 +216,8 @@ async function GetAllData(beta) {
                     jsonHeroGovernance = data;
                 } else if (index == 22) {
                     jsonStatusEffects = data;
+                } else if (index == 23){
+                    jsonExtraTooltips = data;
                 }
             });
         })
@@ -358,7 +361,6 @@ function AddTagIconsForStatusEffects(name) {
     // if(name == "")
     let underline = '<span style="color:white; text-decoration:underline">';
     let endtag = "</span>";
-
     for (let i = 0; i < jsonUnitAbilities.length; i++) {
         if (name.indexOf(jsonUnitAbilities[i].name) != -1) {
             // found a mention of an ability
@@ -378,14 +380,28 @@ function AddTagIconsForStatusEffects(name) {
                     name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
                 }
             }
+            
+           
         }
     }
+      for(let k = 0; k < jsonExtraTooltips.length; k++ ){
+         if (name.indexOf(jsonExtraTooltips[k].name) != -1) { 
+             let tooltipspan = document.createElement("span");
+                    tooltipspan.className = "statusEffectHandler";
+                     let effect = jsonExtraTooltips[k].name;
+                     let tag = jsonExtraTooltips[k].name;
+                    tooltipspan.innerHTML = `${effect}`;
+                    name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
+         }
+     }
 
     return name;
 }
 
 function lookupStatusEffect(status) {
+    
     for (let i = 0; i < jsonUnitAbilities.length; i++) {
+       
         if (status.indexOf(jsonUnitAbilities[i].name) != -1) {
             // found a mention of an ability
             // double check if its a status effect
@@ -408,8 +424,34 @@ function lookupStatusEffect(status) {
                     return status;
                 }
             }
+           
         }
     }
+    
+     for(let k = 0; k < jsonExtraTooltips.length; k++ ){
+         if (status.indexOf(jsonExtraTooltips[k].name) != -1) { 
+             let effect = jsonExtraTooltips[k].name;
+             // check if itss an ability or just a small description
+              let tag = "";
+             if("range" in jsonExtraTooltips[k]){
+               tag =  GetAbilityInfo(jsonExtraTooltips[k]).innerHTML;
+               //  tag = "testing";
+             } else{
+                 
+            
+                     tag = jsonExtraTooltips[k].description;
+                   }
+                    
+                    tag.replaceAll("<br><br>", "<br>");
+
+                    let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
+
+                    status = status.replace(effect,  effectplusColor + "<br>" + tag);
+                    return status;
+           
+         }
+     }
+   
     return status;
 }
 
