@@ -7,6 +7,12 @@ var showBetaTooltip = document.getElementById("showBetaCheckbox");
 
 var altHeld = false;
 
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CC3NE8PT7K');
+
 // Toggle ALT mode on each key press
 document.addEventListener("keydown", function (event) {
     if (event.key === "Alt") {
