@@ -106,7 +106,8 @@ var jsonSiegeProjects,
     jsonCosmicHappenings,
     jsonBuilderHeroLookUp,
     jsonHeroGovernance,
-    jsonStatusEffects, jsonExtraTooltips;
+    jsonStatusEffects,
+    jsonExtraTooltips;
 
 async function GetAllData(beta) {
     const jsonFilePaths = [
@@ -216,7 +217,7 @@ async function GetAllData(beta) {
                     jsonHeroGovernance = data;
                 } else if (index == 22) {
                     jsonStatusEffects = data;
-                } else if (index == 23){
+                } else if (index == 23) {
                     jsonExtraTooltips = data;
                 }
             });
@@ -380,28 +381,24 @@ function AddTagIconsForStatusEffects(name) {
                     name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
                 }
             }
-            
-           
         }
     }
-      for(let k = 0; k < jsonExtraTooltips.length; k++ ){
-         if (name.indexOf(jsonExtraTooltips[k].name) != -1) { 
-             let tooltipspan = document.createElement("span");
-                    tooltipspan.className = "statusEffectHandler";
-                     let effect = jsonExtraTooltips[k].name;
-                     let tag = jsonExtraTooltips[k].name;
-                    tooltipspan.innerHTML = `${effect}`;
-                    name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-         }
-     }
+    for (let k = 0; k < jsonExtraTooltips.length; k++) {
+        if (name.indexOf(jsonExtraTooltips[k].name) != -1) {
+            let tooltipspan = document.createElement("span");
+            tooltipspan.className = "statusEffectHandler";
+            let effect = jsonExtraTooltips[k].name;
+            let tag = jsonExtraTooltips[k].name;
+            tooltipspan.innerHTML = `${effect}`;
+            name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
+        }
+    }
 
     return name;
 }
 
 function lookupStatusEffect(status) {
-    
     for (let i = 0; i < jsonUnitAbilities.length; i++) {
-       
         if (status.indexOf(jsonUnitAbilities[i].name) != -1) {
             // found a mention of an ability
             // double check if its a status effect
@@ -424,34 +421,30 @@ function lookupStatusEffect(status) {
                     return status;
                 }
             }
-           
         }
     }
-    
-     for(let k = 0; k < jsonExtraTooltips.length; k++ ){
-         if (status.indexOf(jsonExtraTooltips[k].name) != -1) { 
-             let effect = jsonExtraTooltips[k].name;
-             // check if itss an ability or just a small description
-              let tag = "";
-             if("range" in jsonExtraTooltips[k]){
-               tag =  GetAbilityInfo(jsonExtraTooltips[k]).innerHTML;
-               //  tag = "testing";
-             } else{
-                 
-            
-                     tag = jsonExtraTooltips[k].description;
-                   }
-                    
-                    tag.replaceAll("<br><br>", "<br>");
 
-                    let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
+    for (let k = 0; k < jsonExtraTooltips.length; k++) {
+        if (status.indexOf(jsonExtraTooltips[k].name) != -1) {
+            let effect = jsonExtraTooltips[k].name;
+            // check if itss an ability or just a small description
+            let tag = "";
+            if ("range" in jsonExtraTooltips[k]) {
+                tag = GetAbilityInfo(jsonExtraTooltips[k]).innerHTML;
+                //  tag = "testing";
+            } else {
+                tag = jsonExtraTooltips[k].description;
+            }
 
-                    status = status.replace(effect,  effectplusColor + "<br>" + tag);
-                    return status;
-           
-         }
-     }
-   
+            tag.replaceAll("<br><br>", "<br>");
+
+            let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
+
+            status = status.replace(effect, effectplusColor + "<br>" + tag);
+            return status;
+        }
+    }
+
     return status;
 }
 
@@ -5420,46 +5413,8 @@ function showStructure(a, showOrigin) {
             let tomeOriginIcon = document.getElementById("originTomeIcon");
             tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
-            if (a.indexOf("wildlife_sanctuary") != -1) {
-                let listOfWildlife = [
-                    "goretusk_piglet",
-                    "dread_spider_hatchling",
-                    "vampire_spider_hatchling",
-                    "razorback",
-                    "warg"
-                ];
-                // unlock warg, razorback, hunter spider, goretustk piglet
-                descriptionDiv.innerHTML += "<br>Unlocks Production of:";
-                for (let i = 0; i < listOfWildlife.length; i++) {
-                    let div = document.createElement("DIV");
-                    div.innerHTML =
-                        "<bullet>" +
-                        '<a href="/aow4db/HTML/Units.html?unit=' +
-                        listOfWildlife[i] +
-                        '" target="_blank">' +
-                        GetUnitTierAndName(listOfWildlife[i]) +
-                        "</a>" +
-                        "</bullet>";
-                    unitTypesDiv.append(div);
-                }
-            }
-
-            if (a.indexOf("demon_gate") != -1) {
-                let listOfWildlife = ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"];
-                // unlock warg, razorback, hunter spider, goretustk piglet
-                descriptionDiv.innerHTML += "<br>Unlocks Production of:";
-                for (let i = 0; i < listOfWildlife.length; i++) {
-                    let div = document.createElement("DIV");
-                    div.innerHTML =
-                        "<bullet>" +
-                        '<a href="/aow4db/HTML/Units.html?unit=' +
-                        listOfWildlife[i] +
-                        '" target="_blank">' +
-                        GetUnitTierAndName(listOfWildlife[i]) +
-                        "</a>" +
-                        "</bullet>";
-                    unitTypesDiv.append(div);
-                }
+            for (const [keyword, units] of Object.entries(unlockableUnitsMapStructures)) {
+                addUnlockableUnitsToStructure(a, keyword, units, descriptionDiv, unitTypesDiv);
             }
 
             let upkeep = document.getElementById("modupkeep");
@@ -5474,6 +5429,33 @@ function showStructure(a, showOrigin) {
     }
     if (found === false) {
         console.log("Couldn't find structure: " + a);
+    }
+}
+
+const unlockableUnitsMapStructures = {
+    wildlife_sanctuary: ["goretusk_piglet", "dread_spider_hatchling", "vampire_spider_hatchling", "razorback", "warg"],
+    demon_gate: ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"],
+    wyvern_eyrie: ["fire_wyvern", "frost_wyvern", "gold_wyvern", "obsidian_wyvern"],
+    accursed_shrine: ["accursed_ogre", "accursed_blade", "accursed_trickster"],
+    shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
+};
+
+function addUnlockableUnitsToStructure(a, keyword, unitList, descriptionDiv, unitTypesDiv) {
+    if (a.indexOf(keyword) !== -1) {
+        descriptionDiv.innerHTML += "<br>Unlocks Production of:";
+
+        for (let i = 0; i < unitList.length; i++) {
+            let div = document.createElement("DIV");
+            div.innerHTML =
+                "<bullet>" +
+                '<a href="/aow4db/HTML/Units.html?unit=' +
+                unitList[i] +
+                '" target="_blank">' +
+                GetUnitTierAndName(unitList[i]) +
+                "</a>" +
+                "</bullet>";
+            unitTypesDiv.append(div);
+        }
     }
 }
 
