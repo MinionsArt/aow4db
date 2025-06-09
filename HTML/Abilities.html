@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
-    <head> <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script> <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());    gtag('config', 'G-CC3NE8PT7K'); </script>
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
@@ -8,7 +18,7 @@
         <script src="/aow4db/Data/Builder.js"></script>
         <script src="/aow4db/Data/Faction.js"></script>
         <script src="/aow4db/Data/Search.js"></script>
-        
+
         <script>
             function HandlePage() {
                 CreateAllAbility();
@@ -20,9 +30,9 @@
             }
 
             function CreateAllAbility() {
-                for (i = 0; i < jsonUnitAbilities.length; i++) {
-                    if ("actionPoints" in jsonUnitAbilities[i]) {
-                        addAbility(jsonUnitAbilities[i].slug);
+                for (i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
+                    if ("actionPoints" in jsonUnitAbilitiesLocalized[i]) {
+                        addAbility(jsonUnitAbilitiesLocalized[i].slug);
                     }
                 }
             }
@@ -43,8 +53,8 @@
 
                 var filterText = filter.value.toUpperCase();
 
-                for (i = 0; i < jsonUnitAbilities.length; i++) {
-                    var ability = jsonUnitAbilities[i];
+                for (i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
+                    var ability = jsonUnitAbilitiesLocalized[i];
                     if (filterText != "") {
                         if (ability.name.toUpperCase().indexOf(filterText) != -1) {
                             if (!isInArray(list, ability.slug)) {
@@ -135,228 +145,143 @@
             }
 
             function addAbility(a, b) {
-                var abilityName,
-                    abilityIcon,
-                    abilityDescr,
-                    abilityDam,
-                    abilityAcc,
-                    abilityRange,
-                    abilityType,
-                    abilityNote,
-                    j,
-                    splitDamageString,
-                    abilityDamType,
-                    abilityReq,
-                    abilityMod = "";
+                const holder = document.getElementById("dataHolder");
 
-                for (j in jsonUnitAbilities) {
-                    if (a === jsonUnitAbilities[j].slug) {
-                        abilityDam = "";
-                        if ("damage" in jsonUnitAbilities[j]) {
-                            abilityDam = jsonUnitAbilities[j].damage;
-                        }
+                const abilityData = jsonUnitAbilitiesLocalized.find((item) => item.slug === a);
+                if (!abilityData) return;
 
-                        abilityType = jsonUnitAbilities[j].actionPoints;
+                // Extract and default
+                const {
+                    name = "",
+                    icon = "",
+                    description = "",
+                    damage = "",
+                    accuracy = "",
+                    range = "",
+                    actionPoints = "",
+                    modifiers = [],
+                    requisites = [],
+                    notes = []
+                } = abilityData;
 
-                        abilityName = jsonUnitAbilities[j].name;
-                        abilityIcon = jsonUnitAbilities[j].icon;
+                let abilityMod = "";
+                let abilityName = name;
 
-                        abilityReq = "";
-                        if ("requisites" in jsonUnitAbilities[j]) {
-                            abilityReq = "";
-                            for (k in jsonUnitAbilities[j].requisites) {
-                                if (k === 0) {
-                                    abilityReq = "(";
-                                }
-                                abilityReq += jsonUnitAbilities[j].requisites[k].requisite;
-                                if (k != jsonUnitAbilities[j].requisites.length - 1) {
-                                    abilityReq += ",";
-                                } else {
-                                    abilityReq += ")";
-                                }
-                            }
-                        }
-
-                        abilityMod = "";
-                        if ("modifiers" in jsonUnitAbilities[j]) {
-                            for (l in jsonUnitAbilities[j].modifiers) {
-                                abilityName += "&#11049";
-
-                                abilityMod +=
-                                    "<bullet>" +
-                                    AddTagIconsForStatusEffects(jsonUnitAbilities[j].modifiers[l].name) +
-                                    "<br>";
-                                abilityMod += jsonUnitAbilities[j].modifiers[l].description + "</bullet><br>";
-                            }
-                        }
-
-                        // add notes
-
-                        abilityNote = "";
-                        var Cooldown = "";
-                        var Once = "";
-                        for (l in jsonUnitAbilities[j].notes) {
-                            if (jsonUnitAbilities[j].notes[l] === undefined) {
-                            } else {
-                                if (jsonUnitAbilities[j].notes[l].note.indexOf("Cooldown") != -1) {
-                                    Cooldown = jsonUnitAbilities[j].notes[l].note;
-                                } else if (jsonUnitAbilities[j].notes[l].note.indexOf("once per") != -1) {
-                                    Once = jsonUnitAbilities[j].notes[l].note;
-                                } else {
-                                    abilityNote += "<br>" + jsonUnitAbilities[j].notes[l].note;
-                                }
-                            }
-                        }
-
-                        if (jsonUnitAbilities[j].damage != undefined) {
-                            abilityDam = jsonUnitAbilities[j].damage;
-                        }
-                        abilityRange = "";
-                        if (jsonUnitAbilities[j].range != undefined) {
-                            abilityRange = jsonUnitAbilities[j].range;
-                        }
-                        abilityAcc = "";
-                        if (jsonUnitAbilities[j].accuracy != undefined) {
-                            abilityAcc = jsonUnitAbilities[j].accuracy;
-                        }
-
-                        var tooltipName = document.createElement("SPAN");
-                        var btn = document.createElement("DIV");
-                        btn.setAttribute("id", a + "btn");
-                        btn.className = "list_abilityslot";
-
-                        // if (n === true) {
-                        //   btn.style.backgroundColor = "rgb(73, 0, 80)";
-                        //}
-                        var imag = document.createElement("IMG");
-                        imag.className = "unit_ability_icon";
-                        //  var spa = document.createElement("SPAN");
-
-                        var action = document.createElement("DIV");
-
-                        action.innerHTML = abilityType;
-                        action.className = "list_action";
-                        action.setAttribute("style", "color:white; width:100px");
-
-                        var accuracy = document.createElement("DIV");
-
-                        accuracy.className = "list_accuracy";
-                        accuracy.innerHTML = abilityAcc;
-                        accuracy.setAttribute("style", "color:white; width:150px");
-
-                        var range = document.createElement("DIV");
-
-                        range.innerHTML = abilityRange;
-                        range.className = "list_range";
-                        range.setAttribute("style", "color:white; width:70px");
-
-                        // tex.setAttribute('onclick', '');
-                        var dam = document.createElement("DIV");
-                        dam.className = "ability_damage";
-                        dam.innerHTML = abilityDam;
-                        dam.setAttribute("style", "color:white; width:150px");
-
-                        abilityDescr = jsonUnitAbilities[j].description;
-
-                        var abilityIconType = "";
-                        imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
-
-                        var abilityIconType = GetAbilityBackground(abilityDam);
-
-                        imag.setAttribute(
-                            "style",
-                            'background-image: url("/aow4db/Icons/Interface/' +
-                                abilityIconType +
-                                '.png");background-repeat: no-repeat;background-size: 40px 40px'
-                        );
-
-                        imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
-                        imag.setAttribute("width", "40");
-                        imag.setAttribute("height", "40");
-
-                        var abilityEncht = "";
-                        var abilityReq = jsonUnitAbilities[j].requisites;
-
-                        var spa = GetAbilityToolTip(
-                            jsonUnitAbilities[j],
-                            jsonUnitAbilities[j].damage,
-                            abilityName,
-                            abilityIconType,
-                            abilityAcc + "<accuracy></accuracy>",
-                            abilityRange + "<range></range>",
-                            abilityMod,
-                            abilityEncht,
-                            abilityNote,
-                            abilityReq,
-                            Cooldown,
-                            Once
-                        );
-
-                        if (abilityName.indexOf("Defense Mode") > -1) {
-                            spa.innerHTML =
-                                '<div class="leftAbility" style="color:#d7c297;">' + abilityName.toUpperCase();
-                            spa.innerHTML += '<div style="clear:both"> </div>' + "<br>";
-                            spa.innerHTML += jsonUnitAbilities[j].description;
-                            dam.innerHTML = "";
-                        }
-
-                        var cleanName = a.replaceAll("_", " ");
-                        cleanName = cleanName.split("ability")[1];
-
-                        // findSource(a);
-
-                        abilityName += '<br><span style="font-size:10px">' + cleanName + " </span>";
-                        var tex = document.createElement("DIV");
-                        tex.className = "tooltip";
-
-                        tex.innerHTML = abilityName;
-                        tex.setAttribute("style", "color:white; width:250px");
-
-                        document.getElementById("dataHolder").append(btn);
-                        // tex.appendChild(spa);
-
-                        addTooltipListeners(tex, spa);
-
-                        btn.appendChild(imag);
-                        btn.append(tex);
-                        btn.append(range);
-                        btn.append(accuracy);
-                        btn.append(dam);
-                        btn.append(action);
-                        if ("requisites" in jsonUnitAbilities[j]) {
-                            var mods = document.createElement("DIV");
-                            if (jsonUnitAbilities[j].requisites.length > 0) {
-                                var combined = "(";
-                                for (k = 0; k < jsonUnitAbilities[j].requisites.length; k++) {
-                                    // var modChild = document.createElement("DIV");
-                                    // modChild.innerHTML = jsonUnitAbilities[j].requisites[k].requisite;
-                                    // mods.append(modChild);
-                                    combined += jsonUnitAbilities[j].requisites[k].requisite;
-                                    if (k < jsonUnitAbilities[j].requisites.length - 1) {
-                                        combined += ", ";
-                                    }
-                                }
-                                combined += ")";
-                                mods.innerHTML = combined;
-                            }
-
-                            mods.className = "list_types";
-                            mods.setAttribute("style", "color:white; width:200px; font-size: 12px");
-                            btn.append(mods);
-                        }
-                    }
+                // Handle modifiers
+                if (modifiers.length > 0) {
+                    modifiers.forEach((mod) => {
+                        abilityName += "&#11049";
+                        abilityMod += `<bullet>${AddTagIconsForStatusEffects(mod.name)}<br>${mod.description}</bullet><br>`;
+                    });
                 }
+
+                // Handle notes
+                let abilityNote = "";
+                let Cooldown = "";
+                let Once = "";
+
+                notes.forEach(({ note }) => {
+                    if (!note) return;
+                    if (note.includes("Cooldown")) Cooldown = note;
+                    else if (note.includes("once per")) Once = note;
+                    else abilityNote += "<br>" + note;
+                });
+
+                // Requisites
+                let requisitesDisplay = "";
+                if (requisites.length > 0) {
+                    requisitesDisplay = "(" + requisites.map((r) => r.requisite).join(", ") + ")";
+                }
+
+                // Build button
+                const btn = createElement("div", "list_abilityslot", { id: `${a}btn` });
+
+                // Icon
+                const img = createElement("img", "unit_ability_icon");
+                const iconType = GetAbilityBackground(damage);
+                img.src = `/aow4db/Icons/UnitIcons/${icon}.png`;
+                img.onerror = function () {
+                    this.src = "/aow4db/Icons/Text/mp.png";
+                };
+                img.width = 40;
+                img.height = 40;
+                img.style.backgroundImage = `url("/aow4db/Icons/Interface/${iconType}.png")`;
+                img.style.backgroundRepeat = "no-repeat";
+                img.style.backgroundSize = "40px 40px";
+
+                // Tooltip text
+                const tooltipText = createElement("div", "tooltip");
+                tooltipText.innerHTML = abilityName;
+                tooltipText.style.color = "white";
+                tooltipText.style.width = "250px";
+
+                // Tooltip content
+                let spa = GetAbilityToolTip(
+                    abilityData,
+                    damage,
+                    abilityName,
+                    iconType,
+                    `${accuracy}<accuracy></accuracy>`,
+                    `${range}<range></range>`,
+                    abilityMod,
+                    "", // enchantments (unused)
+                    abilityNote,
+                    requisites,
+                    Cooldown,
+                    Once
+                );
+
+                // Special formatting
+                if (abilityName.includes("Defense Mode")) {
+                    spa.innerHTML = `<div class="leftAbility" style="color:#d7c297;">${abilityName.toUpperCase()}</div><div style="clear:both"></div><br>${description}`;
+                }
+
+                // Apply tooltip listeners
+                addTooltipListeners(tooltipText, spa);
+
+                // Info columns
+                const colStyle = "color:white;";
+                const appendCol = (text, className, width) => {
+                    const col = createElement("div", className);
+                    col.innerHTML = text;
+                    col.style = `${colStyle} width:${width}`;
+                    btn.append(col);
+                };
+
+                btn.append(img);
+                btn.append(tooltipText);
+                appendCol(range, "list_range", "70px");
+                appendCol(accuracy, "list_accuracy", "150px");
+                appendCol(damage, "ability_damage", "150px");
+                appendCol(actionPoints, "list_action", "100px");
+
+                if (requisites.length > 0) {
+                    const reqDiv = createElement("div", "list_types");
+                    reqDiv.innerHTML = requisitesDisplay;
+                    reqDiv.style = `${colStyle} width:200px; font-size:12px`;
+                    btn.append(reqDiv);
+                }
+
+                holder.append(btn);
+            }
+
+            // 🔧 Helper: createElement
+            function createElement(tag, className, attrs = {}) {
+                const el = document.createElement(tag);
+                if (className) el.className = className;
+                Object.entries(attrs).forEach(([key, value]) => {
+                    el.setAttribute(key, value);
+                });
+                return el;
             }
 
             function findSource(slug) {
-                var result = slug.replaceAll("_", " ");
-                result = result.split(" ");
-                var combinedString = "";
-                for (i = 0; i < result.length; i++) {
-                    var capitalized = result[i].charAt(0).toUpperCase() + result[i].slice(1);
-                    combinedString += capitalized + " ";
+                for (var i = 0; i < jsonUnitsLocalized[i].abilities.length; i++) {
+                    if (jsonUnitsLocalized[i].abilities[0].slug == slug) {
+                        return jsonUnitsLocalized[i].name;
+                    }
                 }
-                return combinedString;
+                return slug;
             }
 
             function sortDivsList(sortType) {
@@ -455,8 +380,6 @@
     </head>
 
     <body>
-      
-
         <div class="textblocktitle">Abilities List</div>
         <div style="height: auto; color: white; text-align: center">
             <br />

@@ -52,7 +52,7 @@
                                     offset = 1;
                                 }
 
-                                var name = jsonEmpire[i].name;
+                                var name = jsonEmpireLocalized[i].name;
 
                                 var newNode = document.createElement("DIV");
 
@@ -130,8 +130,11 @@
                                     '<span style="color:  #d7c297;">' + name.toUpperCase() + "</span>" + "<br>";
 
                                 spa.innerHTML +=
-                                    '<span style="color:  aliceblue;">' + jsonEmpire[i].category + "</span>" + "<br>";
-                                spa.innerHTML += jsonEmpire[i].description + "<br>";
+                                    '<span style="color:  aliceblue;">' +
+                                    jsonEmpireLocalized[i].category +
+                                    "</span>" +
+                                    "<br>";
+                                spa.innerHTML += jsonEmpireLocalized[i].description + "<br>";
                                 spa.innerHTML +=
                                     "Cost: <br>" +
                                     '<span style="color:  aquamarine;"> <bullet>' +
@@ -202,7 +205,7 @@
 
                                 spa.innerHTML = '<span style="color:  #d7c297;">' + name.toUpperCase() + "</span>";
 
-                                spa.innerHTML += jsonEmpire[i].description;
+                                spa.innerHTML += jsonEmpireLocalized[i].description;
 
                                 //newNode.appendChild(spa);
 

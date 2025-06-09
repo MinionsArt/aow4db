@@ -46,45 +46,45 @@ function searchData(keywords) {
 function returnUnitList(fieldToSearch) {
     var i = "";
     var list = [];
-    for (i = 0; i < jsonUnits.length; i++) {
+    for (i = 0; i < jsonUnitsLocalized.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonUnits[i].id;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch.replaceAll(" ", "_")) > -1) {
+            textvalue = jsonUnitsLocalized[i].name;
+            if (textvalue.toLowerCase().indexOf(fieldToSearch.toLowerCase()) > -1) {
                 // if (list.length >= 1) {
 
                 var newEntry = "";
-                if ("sub_culture_name" in jsonUnits[i]) {
-                    newEntry = jsonUnits[i].id + "," + jsonUnits[i].sub_culture_name;
+                if ("sub_culture_name" in jsonUnitsLocalized[i]) {
+                    newEntry = jsonUnitsLocalized[i].id + "," + jsonUnitsLocalized[i].sub_culture_name;
                 } else {
-                    newEntry = jsonUnits[i].id;
+                    newEntry = jsonUnitsLocalized[i].id;
                 }
                 if (!isInArray(list, newEntry)) {
                     list.push(newEntry);
                 }
                 //}
                 // } else {
-                //     list.push(jsonUnits[i].id);
+                //     list.push(jsonUnitsLocalized[i].id);
 
                 // }
             }
         }
         if (document.getElementById("abilitiesCheck").checked) {
-            searchArray(fieldToSearch, jsonUnits[i].abilities, list, i);
+            //  searchArray(fieldToSearch, jsonUnitsLocalized[i].abilities, list, i);
         }
         if (document.getElementById("passivesCheck").checked) {
-            searchArray(fieldToSearch.replaceAll(" ", "_"), jsonUnits[i].primary_passives, list, i);
-            searchArray(fieldToSearch.replaceAll(" ", "_"), jsonUnits[i].secondary_passives, list, i);
+            //  searchArray(fieldToSearch.replaceAll(" ", "_"), jsonUnitsLocalized[i].primary_passives, list, i);
+            //  searchArray(fieldToSearch.replaceAll(" ", "_"), jsonUnitsLocalized[i].secondary_passives, list, i);
         }
         if (document.getElementById("resistancesCheck").checked) {
-            searchArray(fieldToSearch, jsonUnits[i].resistances, list, i);
+            searchArray(fieldToSearch, jsonUnitsLocalized[i].resistances, list, i);
         }
     }
     if (document.getElementById("descriptionCheck").checked) {
-        for (j = 0; j < jsonUnitAbilities.length; j++) {
-            if ("modifiers" in jsonUnitAbilities[j]) {
-                searchArrayDescrip(fieldToSearch, jsonUnitAbilities[j].modifiers, list, j);
+        for (j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
+            if ("modifiers" in jsonUnitAbilitiesLocalized[j]) {
+                searchArrayDescrip(fieldToSearch, jsonUnitAbilitiesLocalized[j].modifiers, list, j);
             }
-            searchArrayDescription(fieldToSearch, jsonUnitAbilities[j], list, j);
+            searchArrayDescription(fieldToSearch, jsonUnitAbilitiesLocalized[j], list, j);
         }
     }
     return list;
@@ -92,21 +92,21 @@ function returnUnitList(fieldToSearch) {
 
 function returnEmpireTreeList(fieldToSearch) {
     var list = [];
-    for (i = 0; i < jsonEmpire.length; i++) {
+    for (i = 0; i < jsonEmpireLocalized.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonEmpire[i].name;
+            textvalue = jsonEmpireLocalized[i].name;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonEmpire[i].id)) {
-                    list.push(jsonEmpire[i].id);
+                if (!isInArray(list, jsonEmpireLocalized[i].id)) {
+                    list.push(jsonEmpireLocalized[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            textvalue = Sanitize(jsonEmpire[i].description);
+            textvalue = Sanitize(jsonEmpireLocalized[i].description);
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonEmpire[i].id)) {
-                    list.push(jsonEmpire[i].id);
+                if (!isInArray(list, jsonEmpireLocalized[i].id)) {
+                    list.push(jsonEmpireLocalized[i].id);
                 }
             }
         }
@@ -117,32 +117,32 @@ function returnEmpireTreeList(fieldToSearch) {
 
 function returnSpellList(fieldToSearch) {
     var list = [];
-    for (i = 0; i < jsonSpells.length; i++) {
+    for (i = 0; i < jsonSpellsLocalized.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonSpells[i].name;
+            textvalue = jsonSpellsLocalized[i].name;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSpells[i].id)) {
-                    list.push(jsonSpells[i].id);
+                if (!isInArray(list, jsonSpellsLocalized[i].id)) {
+                    list.push(jsonSpellsLocalized[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            textvalue = Sanitize(jsonSpells[i].description);
+            textvalue = Sanitize(jsonSpellsLocalized[i].description);
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSpells[i].id)) {
-                    list.push(jsonSpells[i].id);
+                if (!isInArray(list, jsonSpellsLocalized[i].id)) {
+                    list.push(jsonSpellsLocalized[i].id);
                 }
             }
         }
-        if ("enchantment_requisites" in jsonSpells[i]) {
-            for (b = 0; b < jsonSpells[i].enchantment_requisites.length; b++) {
-                textvalue = Sanitize(jsonSpells[i].enchantment_requisites[b].requisite);
+        if ("enchantment_requisites" in jsonSpellsLocalized[i]) {
+            for (b = 0; b < jsonSpellsLocalized[i].enchantment_requisites.length; b++) {
+                textvalue = Sanitize(jsonSpellsLocalized[i].enchantment_requisites[b].requisite);
 
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonSpells[i].id)) {
-                        list.push(jsonSpells[i].id);
+                    if (!isInArray(list, jsonSpellsLocalized[i].id)) {
+                        list.push(jsonSpellsLocalized[i].id);
                     }
                 }
             }
@@ -189,54 +189,54 @@ function returnSkillList(fieldToSearch) {
         k,
         l = "";
 
-    for (i in jsonUnitAbilities) {
-        if (jsonUnitAbilities[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-            hero.push(jsonUnitAbilities[i]);
+    for (i in jsonUnitAbilitiesLocalized) {
+        if (jsonUnitAbilitiesLocalized[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+            hero.push(jsonUnitAbilitiesLocalized[i]);
         }
-        if (jsonUnitAbilities[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-            hero.push(jsonUnitAbilities[i]);
+        if (jsonUnitAbilitiesLocalized[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+            hero.push(jsonUnitAbilitiesLocalized[i]);
         }
 
-        if ("modifiers" in jsonUnitAbilities[i]) {
-            for (m in jsonUnitAbilities[i].modifiers) {
-                if (jsonUnitAbilities[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    hero.push(jsonUnitAbilities[i]);
+        if ("modifiers" in jsonUnitAbilitiesLocalized[i]) {
+            for (m in jsonUnitAbilitiesLocalized[i].modifiers) {
+                if (jsonUnitAbilitiesLocalized[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    hero.push(jsonUnitAbilitiesLocalized[i]);
                 }
-                if (jsonUnitAbilities[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    hero.push(jsonUnitAbilities[i]);
+                if (jsonUnitAbilitiesLocalized[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    hero.push(jsonUnitAbilitiesLocalized[i]);
                 }
             }
         }
     }
 
-    for (j in jsonHeroSkills) {
+    for (j in jsonHeroSkillsLocalized) {
         if (hero.length > 0) {
-            if ("abilities" in jsonHeroSkills[j]) {
-                for (k in jsonHeroSkills[j].abilities) {
+            if ("abilities" in jsonHeroSkillsLocalized[j]) {
+                for (k in jsonHeroSkillsLocalized[j].abilities) {
                     for (l in hero) {
-                        if (jsonHeroSkills[j].abilities[k].slug === hero[l].slug) {
-                            if (!isInArray(resultslist, jsonHeroSkills[j])) {
-                                resultslist.push(jsonHeroSkills[j]);
+                        if (jsonHeroSkillsLocalized[j].abilities[k].slug === hero[l].slug) {
+                            if (!isInArray(resultslist, jsonHeroSkillsLocalized[j])) {
+                                resultslist.push(jsonHeroSkillsLocalized[j]);
                             }
                         }
                     }
                 }
             }
         }
-        for (k in jsonHeroSkills[j].description) {
+        for (k in jsonHeroSkillsLocalized[j].description) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (Sanitize(jsonHeroSkills[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroSkills[j])) {
-                    resultslist.push(jsonHeroSkills[j]);
+            if (Sanitize(jsonHeroSkillsLocalized[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(resultslist, jsonHeroSkillsLocalized[j])) {
+                    resultslist.push(jsonHeroSkillsLocalized[j]);
                 }
             }
         }
 
-        for (k in jsonHeroSkills[j].name) {
+        for (k in jsonHeroSkillsLocalized[j].name) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (jsonHeroSkills[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroSkills[j])) {
-                    resultslist.push(jsonHeroSkills[j]);
+            if (jsonHeroSkillsLocalized[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(resultslist, jsonHeroSkillsLocalized[j])) {
+                    resultslist.push(jsonHeroSkillsLocalized[j]);
                 }
             }
         }
@@ -259,53 +259,53 @@ function returnEquipList(fieldToSearch) {
         k,
         l = "";
 
-    for (i in jsonUnitAbilities) {
-        if (jsonUnitAbilities[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-            equip.push(jsonUnitAbilities[i]);
+    for (i in jsonUnitAbilitiesLocalized) {
+        if (jsonUnitAbilitiesLocalized[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+            equip.push(jsonUnitAbilitiesLocalized[i]);
         }
 
-        if (jsonUnitAbilities[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-            equip.push(jsonUnitAbilities[i]);
+        if (jsonUnitAbilitiesLocalized[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+            equip.push(jsonUnitAbilitiesLocalized[i]);
         }
 
-        if ("modifiers" in jsonUnitAbilities[i]) {
-            for (m in jsonUnitAbilities[i].modifiers) {
-                if (jsonUnitAbilities[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    equip.push(jsonUnitAbilities[i]);
+        if ("modifiers" in jsonUnitAbilitiesLocalized[i]) {
+            for (m in jsonUnitAbilitiesLocalized[i].modifiers) {
+                if (jsonUnitAbilitiesLocalized[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    equip.push(jsonUnitAbilitiesLocalized[i]);
                 }
-                if (jsonUnitAbilities[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    equip.push(jsonUnitAbilities[i]);
+                if (jsonUnitAbilitiesLocalized[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+                    equip.push(jsonUnitAbilitiesLocalized[i]);
                 }
             }
         }
     }
 
-    for (j in jsonHeroItems) {
+    for (j in jsonHeroItemsLocalized) {
         if (equip.length > 0) {
-            for (k in jsonHeroItems[j].ability_slugs) {
+            for (k in jsonHeroItemsLocalized[j].ability_slugs) {
                 for (l in equip) {
-                    if (jsonHeroItems[j].ability_slugs[k].slug === equip[l].slug) {
-                        if (!isInArray(resultslist, jsonHeroItems[j])) {
-                            resultslist.push(jsonHeroItems[j]);
+                    if (jsonHeroItemsLocalized[j].ability_slugs[k].slug === equip[l].slug) {
+                        if (!isInArray(resultslist, jsonHeroItemsLocalized[j])) {
+                            resultslist.push(jsonHeroItemsLocalized[j]);
                         }
                     }
                 }
             }
         }
-        for (k in jsonHeroItems[j].description) {
+        for (k in jsonHeroItemsLocalized[j].description) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (Sanitize(jsonHeroItems[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroItems[j])) {
-                    resultslist.push(jsonHeroItems[j]);
+            if (Sanitize(jsonHeroItemsLocalized[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(resultslist, jsonHeroItemsLocalized[j])) {
+                    resultslist.push(jsonHeroItemsLocalized[j]);
                 }
             }
         }
 
-        for (k in jsonHeroItems[j].name) {
+        for (k in jsonHeroItemsLocalized[j].name) {
             fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (jsonHeroItems[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroItems[j])) {
-                    resultslist.push(jsonHeroItems[j]);
+            if (jsonHeroItemsLocalized[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
+                if (!isInArray(resultslist, jsonHeroItemsLocalized[j])) {
+                    resultslist.push(jsonHeroItemsLocalized[j]);
                 }
             }
         }
@@ -317,24 +317,24 @@ function returnEquipList(fieldToSearch) {
 function returnSiegeProj(fieldToSearch) {
     var list = [];
     var resIDList = [];
-    for (i = 0; i < jsonSiegeProjects.length; i++) {
+    for (i = 0; i < jsonSiegeProjectsLocalized.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonSiegeProjects[i].id;
+            textvalue = jsonSiegeProjectsLocalized[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSiegeProjects[i].id)) {
-                    list.push(jsonSiegeProjects[i].id);
-                    resIDList.push(jsonSiegeProjects[i].resid);
+                if (!isInArray(list, jsonSiegeProjectsLocalized[i].id)) {
+                    list.push(jsonSiegeProjectsLocalized[i].id);
+                    resIDList.push(jsonSiegeProjectsLocalized[i].resid);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            if ("description" in jsonSiegeProjects[i]) {
+            if ("description" in jsonSiegeProjectsLocalized[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonSiegeProjects[i].description);
+                textvalue = Sanitize(jsonSiegeProjectsLocalized[i].description);
 
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonSiegeProjects[i].id)) {
-                        list.push(jsonSiegeProjects[i].id);
+                    if (!isInArray(list, jsonSiegeProjectsLocalized[i].id)) {
+                        list.push(jsonSiegeProjectsLocalized[i].id);
                     }
                 }
             }
@@ -379,40 +379,40 @@ function returnWorldStructure(fieldToSearch) {
 
 function returnStructure(fieldToSearch) {
     var list = [];
-    for (i = 0; i < jsonStructureUpgrades.length; i++) {
+    for (i = 0; i < jsonStructureUpgradesLocalized.length; i++) {
         if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonStructureUpgrades[i].id;
+            textvalue = jsonStructureUpgradesLocalized[i].id;
             if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
                 if (
-                    !isInArray(list, jsonStructureUpgrades[i].id) &&
-                    !isInArray(excludeListStructures, jsonStructureUpgrades[i].id)
+                    !isInArray(list, jsonStructureUpgradesLocalized[i].id) &&
+                    !isInArray(excludeListStructures, jsonStructureUpgradesLocalized[i].id)
                 ) {
-                    list.push(jsonStructureUpgrades[i].id);
+                    list.push(jsonStructureUpgradesLocalized[i].id);
                 }
             }
         }
         if (document.getElementById("descriptionCheck").checked) {
-            if ("description" in jsonStructureUpgrades[i]) {
+            if ("description" in jsonStructureUpgradesLocalized[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonStructureUpgrades[i].description);
+                textvalue = Sanitize(jsonStructureUpgradesLocalized[i].description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
                     if (
-                        !isInArray(list, jsonStructureUpgrades[i].id) &&
-                        !isInArray(excludeListStructures, jsonStructureUpgrades[i].id)
+                        !isInArray(list, jsonStructureUpgradesLocalized[i].id) &&
+                        !isInArray(excludeListStructures, jsonStructureUpgradesLocalized[i].id)
                     ) {
-                        list.push(jsonStructureUpgrades[i].id);
+                        list.push(jsonStructureUpgradesLocalized[i].id);
                     }
                 }
             }
-            if ("prediction_description" in jsonStructureUpgrades[i]) {
+            if ("prediction_description" in jsonStructureUpgradesLocalized[i]) {
                 fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonStructureUpgrades[i].prediction_description);
+                textvalue = Sanitize(jsonStructureUpgradesLocalized[i].prediction_description);
                 if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
                     if (
-                        !isInArray(list, jsonStructureUpgrades[i].id) &&
-                        !isInArray(excludeListStructures, jsonStructureUpgrades[i].id)
+                        !isInArray(list, jsonStructureUpgradesLocalized[i].id) &&
+                        !isInArray(excludeListStructures, jsonStructureUpgradesLocalized[i].id)
                     ) {
-                        list.push(jsonStructureUpgrades[i].id);
+                        list.push(jsonStructureUpgradesLocalized[i].id);
                     }
                 }
             }
@@ -457,6 +457,16 @@ function searchUnits(keyword) {
         if (a.toLowerCase() > b.toLowerCase()) return 1;
         return 0;
     });
+    // get list to english
+    for (i in depricatedCheckList) {
+        var unitNew = jsonUnitsLocalized.find((entry) => entry.id === depricatedCheckList[i]);
+        if (unitNew == undefined) {
+            console.log("Test unit is undefined: " + depricatedCheckList[i]);
+        } else {
+            let unit = jsonUnits.find((entry) => entry.resid === unitNew.resid).id;
+            depricatedCheckList[i] = unit;
+        }
+    }
     SetButtonsAndDivs(depricatedCheckList, "buttonHolder", "searchUnit", undefined, undefined, undefined);
 
     if (listspells.length > 0) {
@@ -492,12 +502,14 @@ function searchUnits(keyword) {
 function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
     var p = "";
     var abilitiesList = [];
-    for (var j = 0; j < jsonUnitAbilities.length; j++) {
-        if ("name" in jsonUnitAbilities[j]) {
-            textvalue = jsonUnitAbilities[j].name;
+    for (var j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
+        if ("name" in jsonUnitAbilitiesLocalized[j]) {
+            textvalue = jsonUnitAbilitiesLocalized[j].name;
+
             if (textvalue.toLowerCase().indexOf(fieldToSearch.toLowerCase()) != -1) {
-                if (!isInArray(abilitiesList, jsonUnitAbilities[j].slug)) {
-                    abilitiesList.push(jsonUnitAbilities[j].slug);
+                //  console.log(textvalue.toLowerCase() + " " + fieldToSearch.toLowerCase());
+                if (!isInArray(abilitiesList, jsonUnitAbilitiesLocalized[j].slug)) {
+                    abilitiesList.push(jsonUnitAbilitiesLocalized[j].slug);
                 }
             }
         }
@@ -530,11 +542,11 @@ function CheckDepricated(listChecking) {
 
 function depCheck(id) {
     var p = "";
-    for (p in jsonUnits) {
-        if (jsonUnits[p].id === id) {
-            for (var l = 0; l < jsonUnits[p].primary_passives.length; l++) {
-                if (jsonUnits[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
-                    if (jsonUnits[p].id != "magma_spirit") {
+    for (p in jsonUnitsLocalized) {
+        if (jsonUnitsLocalized[p].id === id) {
+            for (var l = 0; l < jsonUnitsLocalized[p].primary_passives.length; l++) {
+                if (jsonUnitsLocalized[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
+                    if (jsonUnitsLocalized[p].id != "magma_spirit") {
                         return true;
                     }
                 }
@@ -552,10 +564,10 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
             if (textvalue.toUpperCase().indexOf(keyword) > -1) {
                 // if (listToPushTo.length >= 1) {
 
-                if ("sub_culture_name" in jsonUnits[index]) {
-                    newEntry = jsonUnits[index].id + "," + jsonUnits[index].sub_culture_name;
+                if ("sub_culture_name" in jsonUnitsLocalized[index]) {
+                    newEntry = jsonUnitsLocalized[index].id + "," + jsonUnitsLocalized[index].sub_culture_name;
                 } else {
-                    newEntry = jsonUnits[index].id;
+                    newEntry = jsonUnitsLocalized[index].id;
                 }
                 if (!isInArray(listToPushTo, newEntry)) {
                     listToPushTo.push(newEntry);
@@ -574,11 +586,11 @@ function searchArrayDescrip(keyword, arraytosearch, listToPushTo, index) {
         if (arraytosearch[j].name != null) {
             textvalue = Sanitize(arraytosearch[j].description);
             if (textvalue.toUpperCase().indexOf(keyword) != -1) {
-                findUnitWithAbility(jsonUnitAbilities[index].slug, listToPushTo);
+                findUnitWithAbility(jsonUnitAbilitiesLocalized[index].slug, listToPushTo);
             }
             textvalue = arraytosearch[j].name;
             if (textvalue.toUpperCase().indexOf(keyword) != -1) {
-                findUnitWithAbility(jsonUnitAbilities[index].slug, listToPushTo);
+                findUnitWithAbility(jsonUnitAbilitiesLocalized[index].slug, listToPushTo);
             }
         }
     }
@@ -588,41 +600,30 @@ function searchArrayDescription(keyword, arraytosearch, listToPushTo, index) {
     textvalue = Sanitize(arraytosearch.description);
     keyword = keyword.replaceAll("_", " ");
     if (textvalue.toUpperCase().indexOf(keyword) != -1) {
-        findUnitWithAbility(jsonUnitAbilities[index].slug, listToPushTo);
+        findUnitWithAbility(jsonUnitAbilitiesLocalized[index].slug, listToPushTo);
     }
 }
 
 function findUnitWithAbility(ability, listToPushTo) {
-    var i = "";
-    var j = "";
-    for (i = 0; i < jsonUnits.length; i++) {
-        if ("abilities" in jsonUnits[i]) {
-            for (j in jsonUnits[i].abilities) {
-                if (jsonUnits[i].abilities[j].slug.indexOf(ability) != -1) {
-                    if ("sub_culture_name" in jsonUnits[i]) {
-                        newEntry = jsonUnits[i].id + "," + jsonUnits[i].sub_culture_name;
-                    } else {
-                        newEntry = jsonUnits[i].id;
-                    }
-                    if (!isInArray(listToPushTo, newEntry)) {
-                        listToPushTo.push(newEntry);
-                    }
+    const includePassives = document.getElementById("passivesCheck").checked;
+
+    for (const unit of jsonUnitsLocalized) {
+        const checkSources = [
+            ...(unit.abilities || []),
+            ...(includePassives ? unit.primary_passives || [] : []),
+            ...(includePassives ? unit.secondary_passives || [] : [])
+        ];
+
+        for (const source of checkSources) {
+            if (source.slug === ability) {
+                const newEntry = unit.sub_culture_name ? `${unit.id},${unit.sub_culture_name}` : unit.id;
+
+                if (!isInArray(listToPushTo, newEntry)) {
+                    listToPushTo.push(newEntry);
                 }
+
+                break; // No need to keep checking if already matched
             }
         }
     }
-}
-
-function addUnitCard(unit) {
-    var iDiv = unit_card_template.content.cloneNode(true);
-    document.getElementById("searchOutput").appendChild(iDiv);
-    // setUnitIds(unit);
-    showUnit(unit);
-}
-
-function addModCard(mod) {
-    var iDiv = mod_card_template.content.cloneNode(true);
-    document.getElementById("searchOutputMod").appendChild(iDiv);
-
-    showMod(mod);
 }

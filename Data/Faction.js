@@ -19,12 +19,6 @@ var currentHighlights = "";
 
 var extraOrder, extraChaos, extraNature, extraMaterium, extraShadow, extraAstral;
 
-var listOfFirstChoice = ["mindbreaker", "fleshweaver", "madcaster"];
-var listOfSecondChoiceMindbreaker = ["enthraller", "mind_devourer"];
-var listOfSecondChoiceFleshweaver = ["puppeteer", "fleshsculptor"];
-
-var listOfSecondChoiceMadcaster = ["cosmic_caster", "havoc_caster"];
-
 var listOfPantheonTraits = [
     "talented_collectors",
     "subterranean_society",
@@ -42,82 +36,6 @@ var listOfPantheonTraits = [
 
 var currentTomeList = [];
 var currentSignatureSkills = [];
-
-function ChangeShieldCol() {
-    var shieldElement = document.getElementById("shield");
-    tintImage(shieldElement, getRandomColor(), "myCanvas");
-    //degrees = Math.random() * 360;
-    //shieldElement.setAttribute("style", "filter: hue-rotate(" + degrees + "deg)");
-}
-
-function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-// Function to tint a greyscale image with a given color
-function tintImage(image, color, canvasID) {
-    const canvas = document.getElementById(canvasID);
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-
-    // Draw the greyscale image on the canvas
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-    // Get the image data from the canvas
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-
-    // Extract the RGB components of the color
-    const r = parseInt(color.slice(1, 3), 16);
-    const g = parseInt(color.slice(3, 5), 16);
-    const b = parseInt(color.slice(5, 7), 16);
-
-    // Loop through each pixel and apply the color tint
-    for (let i = 0; i < data.length; i += 4) {
-        // The greyscale value is the same for R, G, and B
-        const greyscaleValue = data[i];
-
-        // Apply the color tint
-        data[i] = r * (greyscaleValue / 255);
-        data[i + 1] = g * (greyscaleValue / 255);
-        data[i + 2] = b * (greyscaleValue / 255);
-    }
-
-    // Put the tinted image data back on the canvas
-    ctx.putImageData(imageData, 0, 0);
-
-    if (canvasID == "myCanvas") {
-        const canvas = document.getElementById("shieldColor");
-        canvas.style.backgroundColor = color;
-    } else {
-        const canvas = document.getElementById("symbolColor");
-        canvas.style.backgroundColor = color;
-    }
-}
-
-function ChangeSymbolCol() {
-    var shieldElement = document.getElementById("symbol");
-    tintImage(shieldElement, getRandomColor(), "myCanvas2");
-}
-
-function GetRandomSymbol() {
-    // var symbolElement = document.getElementById("symbol");
-    // var numb = Math.floor(Math.random() * 138);
-    // if (numb < 10 && numb > 0) {
-    //     numb = "0" + numb.toString();
-    // }
-    // if (numb === 0) {
-    //     numb += 1;
-    //     numb = "0" + numb.toString();
-    // }
-    // symbolElement.setAttribute("src", "/aow4db/Icons/Symbols/SigilIcons_" + numb + ".gif");
-}
 
 function AddExtra(type, add) {
     if (type === "order") {
@@ -1320,199 +1238,209 @@ function duplicateTags(inputString) {
 
 function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
-    if (type == "SubType" && currentOrigin.name != "Dragon Lord" && currentOrigin.name != "Giant King") {
-        // console.log("setting button for non-dragonlord");
-        return;
-    }
-    const image = document.createElement("img");
-    image.setAttribute("width", "40");
-    image.setAttribute("height", "40");
 
-    if (type === "Tome") {
-        image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
-    } else if (type === "FormTrait") {
-        image.setAttribute("width", "22");
-        image.setAttribute("height", "22");
-        if (origin.id.startsWith("_")) {
-            var iconLink = origin.id;
+    if (type === "SubType" && !["Dragon Lord", "Giant King"].includes(currentOrigin.name)) return;
 
-            iconLink = iconLink.split("_").slice(1).join("_");
-            image.src = "/aow4db/Icons/FactionCreation/" + iconLink + ".png";
-        } else {
-            image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
-        }
-    } else if (
-        type === "Culture" ||
-        type === "Origin" ||
-        type === "Society1" ||
-        type === "Society2" ||
-        type === "Form"
-    ) {
-        if (origin.id.startsWith("_")) {
-            var iconLink = origin.id;
-            iconLink = iconLink.split("_").slice(1).join("_");
-            image.src = "/aow4db/Icons/FactionCreation/" + iconLink + ".png";
-        } else {
-            image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
-        }
-    } else if (type === "SubType") {
-        image.src = "/aow4db/Icons/FactionCreation/" + origin.id + ".png"; // Set the image source to your image file
-    } else if (type === "Class") {
-        image.src = "/aow4db/Icons/Text/" + origin.icon + ".png"; // Set the image source to your image file
-    } else if (type === "Signature" || type == "Ascension") {
-        image.src = "/aow4db/Icons/UnitIcons/" + origin.icon + ".png";
-    } else if (type === "Symbol") {
-        if (origin < 10 && origin > 0) {
-            origin = "0" + origin.toString();
-        }
-        if (origin === 0) {
-            origin += 138;
-        }
-        image.src = "/aow4db/Icons/Symbols/SigilIcons_" + origin + ".gif"; // Set the image source to your image file
-    }
-    if (type != "Symbol") {
-        // Create a span element to hold the button text
-        const buttonText = document.createElement("span");
+    const image = createImage(type, origin);
+    const isSymbol = type === "Symbol";
 
-        if ("point_cost" in origin && type === "FormTrait") {
-            buttonText.innerHTML += origin.point_cost + ": ";
-        }
-
-        // add class check here
-        if (type == "Loadout") {
-            buttonText.innerHTML += origin.name;
-        } else {
-            buttonText.innerHTML += " " + origin.name;
-        }
-
-        var affinity = "";
-        if ("affinity" in origin) {
-            affinity = ClearAffinityExtraTags(origin.affinity);
-            affinity = affinity.replaceAll(",", "");
-            buttonText.innerHTML += " " + affinity;
-        }
-
-        if ("affinities" in origin) {
-            if (type == "Tome") {
-                affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
-                affinity = affinity.replaceAll(",", "");
-                buttonText.innerHTML += " " + affinity;
-            }
-            if (type.indexOf("Society") != -1) {
-                for (let index = 0; index < origin.affinities.length; index++) {
-                    if (origin.affinities[index].name.indexOf("Affinity") != -1) {
-                        var newaffinity = origin.affinities[index].name;
-
-                        newaffinity = clearSocietyAffinities(newaffinity);
-
-                        //  affinity = newaffinity.replaceAll(",", "");
-                        buttonText.innerHTML += " " + newaffinity;
-                    }
-                }
-            }
-        }
-
-        if ("DLC" in origin) {
-            // let DLCTAG = document.createElement("div");
-            // DLCTAG.style = "    position: absolute;right: 39px;top: 54px;";
-            let dlcTag = origin.DLC.replaceAll(" ", "");
-            buttonText.innerHTML += " <" + dlcTag + "></" + dlcTag + ">";
-            // button.appendChild(DLCTAG);
-        }
-
-        if (listOfPantheonTraits.includes(origin.id)) {
-            buttonText.innerHTML += " <pantheon></pantheon>";
-        }
-
-        if (type == "Signature") {
-            if ("hero_property" in origin) {
-                const affinityText = document.createElement("div");
-                affinityText.style = " position: absolute;left: 0;";
-
-                affinity = transformString(origin.hero_property);
-                affinity = affinity.replaceAll(",", "");
-                affinityText.innerHTML += affinity;
-                button.append(affinityText);
-            }
-        }
-
-        // Append the image and button text to the button element
-        button.appendChild(image);
-        button.appendChild(buttonText);
+    if (!isSymbol) {
+        const buttonText = createButtonText(origin, type);
+        button.append(image, buttonText);
     } else {
         button.appendChild(image);
         return;
     }
 
-    // create mouseover
-    spa = document.createElement("SPAN");
-    spa.setAttribute("style", "margin-left:113px");
-
-    spa.innerHTML =
-        '<p style="color: #d7c297;>' + '<span style="font-size=20px;"> ' + origin.name.toUpperCase() + "</p>";
-    if (type === "Origin" || type === "Culture" || type === "Form" || type === "Society1" || type === "Society2") {
-        //spa.innerHTML += origin.description;
-
-        if ("effect_descriptions" in origin) {
-            spa.innerHTML += '<br><br><span class="mod_name">EFFECTS: </span><bulletlist>';
-            var k = "";
-            for (k in origin.effect_descriptions) {
-                spa.innerHTML += "<bullet>" + origin.effect_descriptions[k].name + "</bullet>";
-            }
-            spa.innerHTML += "</bulletlist>";
-        }
-
-        if ("description" in origin) {
-            spa.innerHTML += origin.description;
-        }
-
-        if ("starting_bonuses" in origin) {
-            spa.innerHTML += '<br><br><span class="mod_name">STARTING BONUS: </span><bulletlist>';
-            var k = "";
-            for (k in origin.starting_bonuses) {
-                if ("structure_upgrade_slug" in origin.starting_bonuses[k]) {
-                    spa.innerHTML += "<bullet>" + origin.starting_bonuses[k].structure_upgrade_slug + "</bullet>";
-                }
-                if ("empire_progression_slug" in origin.starting_bonuses[k]) {
-                    spa.innerHTML += "<bullet>" + origin.starting_bonuses[k].empire_progression_slug + "</bullet>";
-                }
-                if ("description" in origin.starting_bonuses[k]) {
-                    spa.innerHTML += "<bullet>" + origin.starting_bonuses[k].description + "</bullet>";
-                }
-            }
-            spa.innerHTML += "</bulletlist>";
-        }
-
-        if ("incompatible_society_traits" in origin) {
-            spa.innerHTML += '<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>';
-            var k = "";
-            for (k in origin.incompatible_society_traits) {
-                spa.innerHTML += "<bullet>" + origin.incompatible_society_traits[k].name + "</bullet>";
-            }
-            spa.innerHTML += "</bulletlist>";
-        }
-
-        if ("incompatible" in origin) {
-            spa.innerHTML += '<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>';
-            var k = "";
-            for (k in origin.incompatible) {
-                spa.innerHTML += "<bullet>" + origin.incompatible[k].name + "</bullet>";
-            }
-            spa.innerHTML += "</bulletlist>";
-        }
-    } else if (type === "Tome") {
-        SetTomePreview(spa, origin);
-    } else if (type === "FormTrait") {
-        SetFullPreview(spa, origin);
-    } else if (type === "Signature" || type == "Ascension") {
-        SetSkillPreview(spa, origin);
-    } else if ((type = "Loadout")) {
-        SetLoadoutPreview(spa, origin);
-    }
-    addTooltipListeners(button, spa);
-
-    // button.append(spa);
+    const tooltip = createTooltip(origin, type);
+    addTooltipListeners(button, tooltip);
 }
+
+function createImage(type, origin) {
+    const image = document.createElement("img");
+
+    const setImage = (src, width = 40, height = 40) => {
+        image.setAttribute("src", src);
+        image.setAttribute("width", width);
+        image.setAttribute("height", height);
+    };
+
+    switch (type) {
+        case "Tome":
+            setImage(`/aow4db/Icons/TomeIcons/${origin.id}.png`);
+            break;
+        case "FormTrait":
+            setImage(getFactionIconPath(origin.id), 22, 22);
+            break;
+        case "Culture":
+        case "Origin":
+        case "Society1":
+        case "Society2":
+        case "Form":
+        case "SubType":
+            setImage(getFactionIconPath(origin.id));
+            break;
+        case "Class":
+            setImage(`/aow4db/Icons/Text/${origin.icon}.png`);
+            break;
+        case "Signature":
+        case "Ascension":
+            setImage(`/aow4db/Icons/UnitIcons/${origin.icon}.png`);
+            break;
+        case "Symbol":
+            let symbolId = parseInt(origin, 10);
+            if (symbolId < 10 && symbolId > 0) symbolId = "0" + symbolId;
+            if (symbolId === 0) symbolId = 138;
+            setImage(`/aow4db/Icons/Symbols/SigilIcons_${symbolId}.gif`);
+            break;
+    }
+
+    return image;
+}
+
+function getFactionIconPath(id) {
+    const cleanId = id.startsWith("_") ? id.split("_").slice(1).join("_") : id;
+    return `/aow4db/Icons/FactionCreation/${cleanId}.png`;
+}
+
+function findOriginLoc(origin, type) {
+    var newOrigin = origin;
+    switch (type) {
+        case "Origin":
+        case "Culture":
+        case "Form":
+            // not translated
+            newOrigin = jsonFactionCreationLocalized.find((entry) => entry.id === origin.id);
+            break;
+
+        case "Tome":
+            newOrigin = jsonTomesLocalized.find((entry) => entry.resid === origin.resid);
+            break;
+
+        case "FormTrait":
+        case "Society1":
+        case "Society2":
+            newOrigin = jsonFactionCreation2Localized.find((entry) => entry.icon === origin.icon);
+
+            break;
+
+        case "Ascension":
+            newOrigin = jsonHeroSkillsLocalized.find((entry) => entry.resid === origin.resid);
+            break;
+        case "Signature":
+        case "Loadout":
+            break;
+    }
+    return newOrigin;
+}
+function createButtonText(origin, type) {
+    const span = document.createElement("span");
+
+    var originLoc = findOriginLoc(origin, type);
+
+    if ("point_cost" in origin && type === "FormTrait") {
+        span.innerHTML += `${origin.point_cost}: `;
+    }
+
+    span.innerHTML += type === "Loadout" ? origin.name : ` ${originLoc.name}`;
+
+    if ("affinity" in origin) {
+        span.innerHTML += ` ${ClearAffinityExtraTags(origin.affinity).replaceAll(",", "")}`;
+    }
+
+    if ("affinities" in origin) {
+        if (type === "Tome") {
+            span.innerHTML += ` ${ClearAffinityExtraTags(duplicateTags(origin.affinities)).replaceAll(",", "")}`;
+        } else if (type.includes("Society")) {
+            for (const affinity of origin.affinities) {
+                if (affinity.name.includes("Affinity")) {
+                    span.innerHTML += ` ${clearSocietyAffinities(affinity.name)}`;
+                }
+            }
+        }
+    }
+
+    if ("DLC" in origin) {
+        const tag = origin.DLC.replaceAll(" ", "");
+        span.innerHTML += ` <${tag}></${tag}>`;
+    }
+
+    if (listOfPantheonTraits.includes(origin.id)) {
+        span.innerHTML += " <pantheon></pantheon>";
+    }
+
+    if (type === "Signature" && "hero_property" in origin) {
+        const affinityText = document.createElement("div");
+        affinityText.style = "position: absolute; left: 0;";
+        affinityText.innerHTML = transformString(origin.hero_property).replaceAll(",", "");
+        span.appendChild(affinityText);
+    }
+
+    return span;
+}
+function createTooltip(origin, type) {
+    const tooltip = document.createElement("span");
+    tooltip.style = "margin-left:113px";
+    tooltip.innerHTML = `<p style="color: #d7c297;"><span style="font-size:20px;"> ${origin.name.toUpperCase()}</p>`;
+
+    var originLoc = findOriginLoc(origin, type);
+    switch (type) {
+        case "Origin":
+        case "Culture":
+        case "Form":
+        case "Society1":
+        case "Society2":
+            if (origin.effect_descriptions) {
+                tooltip.innerHTML += `<br><br><span class="mod_name">EFFECTS: </span><bulletlist>`;
+                for (const e of originLoc.effect_descriptions) {
+                    tooltip.innerHTML += `<bullet>${e.name}</bullet>`;
+                }
+                tooltip.innerHTML += "</bulletlist>";
+            }
+
+            if (origin.description) tooltip.innerHTML += originLoc.description;
+
+            if (originLoc.starting_bonuses) {
+                tooltip.innerHTML += `<br><br><span class="mod_name">STARTING BONUS: </span><bulletlist>`;
+                for (const b of originLoc.starting_bonuses) {
+                    if (b.structure_upgrade_slug) tooltip.innerHTML += `<bullet>${b.structure_upgrade_slug}</bullet>`;
+                    if (b.empire_progression_slug) tooltip.innerHTML += `<bullet>${b.empire_progression_slug}</bullet>`;
+                    if (b.description) tooltip.innerHTML += `<bullet>${b.description}</bullet>`;
+                }
+                tooltip.innerHTML += "</bulletlist>";
+            }
+
+            if (origin.incompatible_society_traits || origin.incompatible) {
+                tooltip.innerHTML += `<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>`;
+                const incompatibles = originLoc.incompatible_society_traits || originLoc.incompatible;
+                for (const i of incompatibles) {
+                    tooltip.innerHTML += `<bullet>${i.name}</bullet>`;
+                }
+                tooltip.innerHTML += "</bulletlist>";
+            }
+            break;
+
+        case "Tome":
+            SetTomePreview(tooltip, originLoc);
+            break;
+
+        case "FormTrait":
+            SetFullPreview(tooltip, originLoc);
+            break;
+
+        case "Signature":
+        case "Ascension":
+            SetSkillPreview(tooltip, originLoc);
+            break;
+
+        case "Loadout":
+            SetLoadoutPreview(tooltip, originLoc);
+            break;
+    }
+
+    return tooltip;
+}
+
 function SetSkillPreview(span, origin) {
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
@@ -1827,6 +1755,7 @@ function GetAllStartingTomes() {
 
 function CollectAllPartsForOverview(fromload) {
     document.getElementById("hiddentooltips").innerHTML = "";
+    document.getElementById("mainoverview").innerHTML = "";
     // get all spells
 
     var listOfAllCurrentSpellsSlugs = [];
@@ -1881,28 +1810,27 @@ function CollectAllPartsForOverview(fromload) {
                 );
             }
         }
-        if ("hero_skills" in ExtraTomelist[index]) {
+        /*if ("hero_skills" in ExtraTomelist[index]) {
             for (let l = 0; l < ExtraTomelist[index].hero_skills.length; l++) {
                 if (!isInArray(listOfAllCurrentHeroSkillsSlugs, ExtraTomelist[index].hero_skills[l])) {
                     listOfAllCurrentHeroSkillsSlugs.push(ExtraTomelist[index].hero_skills[l], ExtraTomelist[index]);
                 }
             }
-        }
+        }*/
         if ("passives" in ExtraTomelist[index]) {
             for (let q = 0; q < ExtraTomelist[index].passives.length; q++) {
                 listOfAllCurrentPassivesSlugs.push(ExtraTomelist[index].passives[q], ExtraTomelist[index]);
             }
         }
     }
-
-    ShowCombatSpellsOverview(listOfAllCurrentSpellsSlugs);
-
+    ShowPassivesOverview(listOfAllCurrentPassivesSlugs);
     ShowUnitsOverview(listOfAllCurrentUnitSlugs);
+    ShowCombatSpellsOverview(listOfAllCurrentSpellsSlugs);
 
     ShowUpgradesOverview(listOfAllCurrentUpgradeSlugs);
     ShowSPIOverview(listOfAllCurrentSPISlugs);
     // ShowHeroSkillsOverview(listOfAllCurrentHeroSkillsSlugs);
-    ShowPassivesOverview(listOfAllCurrentPassivesSlugs);
+
     ShowSiegeProjectsOverview(listOfAllCurrentSiegeProjectsSlugs);
     var parentDiv = document.getElementById("mainoverview");
 
@@ -1980,33 +1908,39 @@ function CreateHolders(string) {
     return subtHolder;
 }
 function ShowCombatSpellsOverview(list) {
-    var combatSpellHolder = document.getElementById("overviewCombatSpellsHolder");
-    var transformHolder = document.getElementById("overviewTransformationsHolder");
+    const container = document.getElementById("mainoverview");
+    //==container.innerHTML = ""; // clear existing content
 
-    var enchantHolder = document.getElementById("overviewEnchantmentsHolder");
-    var summonHolder = document.getElementById("overviewSummonHolder");
-    var otherHolder = document.getElementById("overviewOtherSpellHolder");
-    summonHolder.innerHTML = "Summons:<br>";
-    enchantHolder.innerHTML = "Enchantments:<br>";
-    combatSpellHolder.innerHTML = "Combat Spells:<br>";
-    transformHolder.innerHTML = "Transformations:<br>";
-    otherHolder.innerHTML = "Misc Spells:<br>";
+    const spellGroups = {};
 
-    for (let index = 0; index < list.length; index += 2) {
-        // combat spells:
-        if (list[index].type.indexOf("casttactical") != -1) {
-            combatSpellHolder.append(CreateSpellIcon(list[index], list[index + 1]));
-        } else if (list[index].type.indexOf("Enchantment") != -1) {
-            enchantHolder.append(CreateSpellIcon(list[index], list[index + 1]));
-        } else if (list[index].type.indexOf("Transformation") != -1) {
-            transformHolder.append(CreateSpellIcon(list[index], list[index + 1]));
-        } else if (list[index].type.indexOf("Summon Spell") != -1) {
-            summonHolder.append(CreateSpellIcon(list[index], list[index + 1]));
-        } else {
-            otherHolder.append(CreateSpellIcon(list[index], list[index + 1]));
+    // Group spells by type
+    for (let i = 0; i < list.length; i += 2) {
+        const spell = list[i];
+        const description = list[i + 1];
+        const type = spell.type;
+
+        if (!spellGroups[type]) {
+            spellGroups[type] = [];
         }
+        spellGroups[type].push([spell, description]);
+    }
 
-        // strategic spells:
+    // Create sections dynamically
+    for (const [type, spells] of Object.entries(spellGroups)) {
+        const section = document.createElement("div");
+        section.classList.add("column");
+
+        // Create a human-friendly section title
+        const heading = document.createElement("div");
+        heading.innerHTML = type.replaceAll("<hyperlink>", ""); // helper function
+        section.appendChild(heading);
+
+        // Add each spell icon
+        spells.forEach(([spell, description]) => {
+            section.appendChild(CreateSpellIcon(spell, description));
+        });
+
+        container.appendChild(section);
     }
 }
 
@@ -2147,39 +2081,53 @@ function CreateUnitIcon(listEntry, colorEntry) {
 }
 
 function ShowUnitsOverview(list) {
-    var unitsoverviewHolder = document.getElementById("overviewUnitsHolder");
-    // clear the div
-    unitsoverviewHolder.innerHTML = "";
+    var container = document.getElementById("mainoverview");
 
-    unitsoverviewHolder.innerHTML = "Units:<br>";
+    const section = document.createElement("div");
+    section.classList.add("column");
 
+    // Create a human-friendly section title
+    const heading = document.createElement("div");
+    heading.innerHTML = "<br>" + "Units:<br>"; // helper function
+    section.appendChild(heading);
     for (let i = 0; i < jsonUnits.length; i++) {
         if (currentCulture.name.indexOf(jsonUnits[i].culture_name) != -1 && jsonUnits[i].id != "") {
             if ("sub_culture_name" in jsonUnits[i]) {
                 if (currentCulture.name.indexOf(jsonUnits[i].sub_culture_name) != -1) {
-                    unitsoverviewHolder.append(CreateUnitIcon(jsonUnits[i], null));
+                    section.append(CreateUnitIcon(jsonUnits[i], null));
                 }
             } else {
-                unitsoverviewHolder.append(CreateUnitIcon(jsonUnits[i], null));
+                section.append(CreateUnitIcon(jsonUnits[i], null));
             }
         }
         //     CreateUnitIcon()
         for (let index = 0; index < list.length; index += 2) {
             if (jsonUnits[i].id == list[index].unit_slug) {
-                unitsoverviewHolder.append(CreateUnitIcon(jsonUnits[i], list[index + 1]));
+                section.append(CreateUnitIcon(jsonUnits[i], list[index + 1]));
             }
         }
     }
+
+    container.appendChild(section);
+    // clear the div
+    //  unitsoverviewHolder.innerHTML = "";
+
+    //   unitsoverviewHolder.innerHTML += "Units:<br>";
 }
 
 function ShowUpgradesOverview(list) {
-    var upradesoverviewHolder = document.getElementById("overviewUpgradesHolder");
-    // clear the div
+    var container = document.getElementById("mainoverview");
 
-    upradesoverviewHolder.innerHTML = "";
+    const section = document.createElement("div");
+    section.classList.add("column");
+
+    // Create a human-friendly section title
+    const heading = document.createElement("div");
     if (list.length > 0) {
-        upradesoverviewHolder.innerHTML = "City Structures:<br>";
+        heading.innerHTML = "City Structures:<br>"; // helper function
     }
+
+    section.appendChild(heading);
     for (let index = 0; index < list.length; index += 2) {
         for (let i = 0; i < jsonStructureUpgrades.length; i++) {
             if (jsonStructureUpgrades[i].id == list[index].upgrade_slug) {
@@ -2194,7 +2142,7 @@ function ShowUpgradesOverview(list) {
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
-                upradesoverviewHolder.append(spell);
+                section.append(spell);
                 var iDiv = structure_card_template.content.cloneNode(true);
 
                 document.getElementById("hiddentooltips").appendChild(iDiv);
@@ -2209,6 +2157,8 @@ function ShowUpgradesOverview(list) {
             }
         }
     }
+
+    container.appendChild(section);
 }
 
 function ShowHeroSkillsOverview(list) {
@@ -2280,14 +2230,18 @@ function ShowHeroSkillsOverview(list) {
 }
 
 function ShowPassivesOverview(list) {
-    var upradesoverviewHolder = document.getElementById("overviewPassivesHolder");
-    // clear the div
+    var container = document.getElementById("mainoverview");
 
-    upradesoverviewHolder.innerHTML = "";
+    const section = document.createElement("div");
+    section.classList.add("column");
+
+    // Create a human-friendly section title
+    const heading = document.createElement("div");
     if (list.length > 0) {
-        upradesoverviewHolder.innerHTML = "Passives:<br>";
+        heading.innerHTML = "Passives:<br>";
     }
 
+    section.appendChild(heading);
     for (let index = 0; index < list.length; index += 2) {
         var spell = document.createElement("button");
         var Color = GetColors(list[index + 1].affinities);
@@ -2300,7 +2254,7 @@ function ShowPassivesOverview(list) {
         // smallIcon.setAttribute("width", "20px");
         //    spell.appendChild(smallIcon);
         spell.appendChild(text);
-        upradesoverviewHolder.append(spell);
+        section.append(spell);
         var spa = document.createElement("SPAN");
         spa.innerHTML = list[index].type + "<br>";
         spa.innerHTML += list[index].description;
@@ -2312,16 +2266,23 @@ function ShowPassivesOverview(list) {
         }
         addTooltipListeners(spell, spa);
     }
+
+    container.appendChild(section);
 }
 
 function ShowSPIOverview(list) {
-    var upradesoverviewHolder = document.getElementById("overviewSPIHolder");
-    // clear the div
-    upradesoverviewHolder.innerHTML = "";
+    var container = document.getElementById("mainoverview");
+
+    const section = document.createElement("div");
+    section.classList.add("column");
+
+    // Create a human-friendly section title
+    const heading = document.createElement("div");
     if (list.length > 0) {
-        upradesoverviewHolder.innerHTML = "Special Province Impr.:<br>";
+        heading.innerHTML = "Special Province Impr.:<br>"; // helper function
     }
 
+    section.appendChild(heading);
     for (let index = 0; index < list.length; index += 2) {
         for (let i = 0; i < jsonStructureUpgrades.length; i++) {
             if (jsonStructureUpgrades[i].id == list[index]) {
@@ -2337,7 +2298,7 @@ function ShowSPIOverview(list) {
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
-                upradesoverviewHolder.append(spell);
+                section.append(spell);
 
                 var name = GetStructureName(list[index]);
 
@@ -2359,16 +2320,23 @@ function ShowSPIOverview(list) {
             }
         }
     }
+
+    container.appendChild(section);
 }
 
 function ShowSiegeProjectsOverview(list) {
-    var upradesoverviewHolder = document.getElementById("overviewSiegeHolder");
-    // clear the div
-    upradesoverviewHolder.innerHTML = "";
+    var container = document.getElementById("mainoverview");
+
+    const section = document.createElement("div");
+    section.classList.add("column");
+
+    // Create a human-friendly section title
+    const heading = document.createElement("div");
     if (list.length > 0) {
-        upradesoverviewHolder.innerHTML = "Siege Projects:<br>";
+        heading.innerHTML = "Siege Projects:<br>";
     }
 
+    section.appendChild(heading);
     for (let index = 0; index < list.length; index += 2) {
         var slug = "";
         for (let i = 0; i < jsonSiegeProjects.length; i++) {
@@ -2391,7 +2359,7 @@ function ShowSiegeProjectsOverview(list) {
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
-                upradesoverviewHolder.append(spell);
+                section.append(spell);
 
                 var name = GetSiegeProjectName(slug);
 
@@ -2415,149 +2383,8 @@ function ShowSiegeProjectsOverview(list) {
             }
         }
     }
-}
 
-function GetAllSignatureSkills() {
-    var listOfNextSignatures = [];
-
-    for (i = 0; i < jsonHeroSkills.length; i++) {
-        // all signature skills
-        if (jsonHeroSkills[i].type === "signature") {
-            switch (currentOrigin.id) {
-                case "eldritch_sovereign":
-                    // starting type
-                    if (currentSignatureSkills.length == 0) {
-                        if ("DLC" in jsonHeroSkills[i]) {
-                            if (
-                                jsonHeroSkills[i].DLC.indexOf("ELDRITCHREALMS") != -1 &&
-                                listOfFirstChoice.includes(jsonHeroSkills[i].id)
-                            ) {
-                                if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                    listOfNextSignatures.push(jsonHeroSkills[i]);
-                                }
-                            }
-                        }
-                    }
-                    // forgotten tome
-                    if (currentSignatureSkills.length == 1) {
-                        if ("DLC" in jsonHeroSkills[i]) {
-                            if (
-                                jsonHeroSkills[i].DLC.indexOf("ELDRITCHREALMS") != -1 &&
-                                jsonHeroSkills[i].name.indexOf("Forgotten Tome") != -1
-                            ) {
-                                if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                    listOfNextSignatures.push(jsonHeroSkills[i]);
-                                }
-                            }
-                        }
-                    }
-                    // major type
-                    if (currentSignatureSkills.length == 2) {
-                        if ("DLC" in jsonHeroSkills[i]) {
-                            if (jsonHeroSkills[i].DLC.indexOf("ELDRITCHREALMS") != -1) {
-                                if (currentSignatureSkills[0].id == "fleshweaver") {
-                                    if (listOfSecondChoiceFleshweaver.includes(jsonHeroSkills[i].id)) {
-                                        if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                            listOfNextSignatures.push(jsonHeroSkills[i]);
-                                        }
-                                    }
-                                }
-                                if (currentSignatureSkills[0].id == "madcaster") {
-                                    if (listOfSecondChoiceMadcaster.includes(jsonHeroSkills[i].id)) {
-                                        if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                            listOfNextSignatures.push(jsonHeroSkills[i]);
-                                        }
-                                    }
-                                }
-                                if (currentSignatureSkills[0].id == "mindbreaker") {
-                                    if (listOfSecondChoiceMindbreaker.includes(jsonHeroSkills[i].id)) {
-                                        if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                            listOfNextSignatures.push(jsonHeroSkills[i]);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    // forgotten tome
-                    if (currentSignatureSkills.length == 3) {
-                        if ("DLC" in jsonHeroSkills[i]) {
-                            if (
-                                jsonHeroSkills[i].DLC.indexOf("ELDRITCHREALMS") != -1 &&
-                                jsonHeroSkills[i].name.indexOf("Forgotten Tome") != -1
-                            ) {
-                                if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                    listOfNextSignatures.push(jsonHeroSkills[i]);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "dragon_lord":
-                    // choose normal skill first
-                    if (currentSignatureSkills.length == 1) {
-                        if (!("DLC" in jsonHeroSkills[i])) {
-                            if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                listOfNextSignatures.push(jsonHeroSkills[i]);
-                            }
-                        }
-                    }
-                    // choose aspect next
-                    if (currentSignatureSkills.length == 0) {
-                        if ("DLC" in jsonHeroSkills[i]) {
-                            if (
-                                jsonHeroSkills[i].DLC.indexOf("DRAGONLORDS") != -1 &&
-                                jsonHeroSkills[i].name.indexOf("Aspect") != -1
-                            ) {
-                                if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                    addUniqueEntry(currentSignatureSkills, listOfNextSignatures, jsonHeroSkills[i]);
-                                    //listOfNextSignatures.push(jsonHeroSkills[i]);
-                                }
-                            }
-                        }
-                    }
-                    // choose normal skill
-                    if (currentSignatureSkills.length == 3) {
-                        if (!("DLC" in jsonHeroSkills[i])) {
-                            if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                listOfNextSignatures.push(jsonHeroSkills[i]);
-                            }
-                        }
-                    }
-                    // choose transformation
-                    if (currentSignatureSkills.length == 2) {
-                        if ("DLC" in jsonHeroSkills[i]) {
-                            if (
-                                jsonHeroSkills[i].DLC.indexOf("DRAGONLORDS") != -1 &&
-                                jsonHeroSkills[i].name.indexOf("Transformation") != -1
-                            ) {
-                                if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                                    addUniqueEntry(currentSignatureSkills, listOfNextSignatures, jsonHeroSkills[i]);
-                                    //listOfNextSignatures.push(jsonHeroSkills[i]);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "wizard_king":
-                    if (!("DLC" in jsonHeroSkills[i])) {
-                        if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                            listOfNextSignatures.push(jsonHeroSkills[i]);
-                        }
-                    }
-                    break;
-                case "champion":
-                    if (!("DLC" in jsonHeroSkills[i])) {
-                        if (!isInArray(currentSignatureSkills, jsonHeroSkills[i])) {
-                            listOfNextSignatures.push(jsonHeroSkills[i]);
-                        }
-                    }
-
-                    break;
-            }
-        }
-    }
-    return listOfNextSignatures;
+    container.appendChild(section);
 }
 
 function checkIfT5(jsonEntries) {

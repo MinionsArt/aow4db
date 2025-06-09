@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
-         <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
@@ -389,14 +391,22 @@
                     // add tome ID
                     tomeInfo = tome;
                 }
-                var name = structureInfo.name;
+
+                var structureInfoLoc = jsonStructureUpgradesLocalized.find(
+                    (entry) => entry.resid == structureInfo.resid
+                );
+                if (structureInfoLoc == undefined) {
+                    console.log("couldn't find " + structureInfo.name + " in loca");
+                    structureInfoLoc = structureInfo;
+                }
+                var name = structureInfoLoc.name;
 
                 if (name.indexOf("<br>")) {
                     name = name.replaceAll("</br>", " ");
                     name = name.replaceAll("<br>", " ");
                 }
 
-                var newNode = CreateStructureNode(structureInfo, affinity, tomeInfo);
+                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, affinity, tomeInfo);
 
                 //insert connection line
 
@@ -416,10 +426,10 @@
                 return Array.from(resources);
             }
 
-            function CreateStructureNode(structureInfo, affinity, tomeInfo) {
+            function CreateStructureNode(structureInfo, structureInfoLoc, affinity, tomeInfo) {
                 var i,
                     x = "";
-                var name = structureInfo.name;
+                var name = structureInfoLoc.name;
 
                 if (name.indexOf("<br>")) {
                     name = name.replaceAll("</br>", " ");
@@ -591,15 +601,16 @@
                 var desc = document.createElement("SPAN");
                 desc.className = "structureNodeDesc";
 
-                var description = structureInfo.prediction_description;
+                var description = structureInfoLoc.prediction_description;
                 description = description.replaceAll("<bulletlist>", "");
                 description = description.replaceAll("<bullet>", "");
                 description = description.replaceAll("</bulletlist>", "");
                 description = description.replaceAll("</bullet>", "<br>");
 
-                spa2.innerHTML = '<span style="color:  #d7c297;">' + name.toUpperCase() + "</span>" + "<br>";
+                spa2.innerHTML =
+                    '<span style="color:  #d7c297;">' + structureInfoLoc.name.toUpperCase() + "</span>" + "<br>";
 
-                spa2.innerHTML += structureInfo.description + "<br>";
+                spa2.innerHTML += structureInfoLoc.description + "<br>";
 
                 if (structureInfo.id.indexOf("town_hall_iii_") != -1) {
                     description += "<br><br> Unlocks T3 Culture Units";
@@ -614,7 +625,7 @@
                     spa2.innerHTML +=
                         "<br>Requirements:<bulletlist>" +
                         "<bullet>" +
-                        structureInfo.requirement_description +
+                        structureInfoLoc.requirement_description +
                         "</bullet></bulletlist><br>";
                 }
 
@@ -622,7 +633,7 @@
                     spa2.innerHTML +=
                         "<br>Boost Requirements:<bulletlist>" +
                         "<bullet>" +
-                        structureInfo.boost_requirements +
+                        structureInfoLoc.boost_requirements +
                         "</bullet></bulletlist>";
                 }
 

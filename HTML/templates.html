@@ -1,0 +1,294 @@
+<template id="unit_card_template">
+    <div class="unit_card" id="unitCard">
+        <div class="unit_image_holder">
+            <div class="productionCost">
+                <p id="productioncost">8 Gold</p>
+            </div>
+            <div class="medals">
+                <button type="button" class="collapsibleLevelup">
+                    <img src="/aow4db/Icons/Text/xp.png" height="20 " style="top: 4px; position: relative" />
+                    MEDALS
+                </button>
+                <div class="contentLevelup">
+                    <div id="levelup">Level Up Info goes here</div>
+                </div>
+                <div class="unit_stat_icon"></div>
+            </div>
+
+            <div class="unit_image_holder">
+                <img class="unit_preview_vid" width="400" height="516" id="vid" src="/aow4db/Icons/Text/empty.png" />
+                <div class="shadow"></div>
+
+                <div
+                    class="unit_types"
+                    id="originHolder"
+                    style="position: absolute; top: 150px; width: 10px; height: auto; left: -5px"></div>
+
+                <button
+                    type="button"
+                    id="enchantButton"
+                    class="collapsibleLevelup"
+                    style="position: absolute; top: -3px; left: 133px; right: 131px; max-height: 400px; width: 150px">
+                    <img
+                        src="/aow4db/Icons/Text/strategiccombatpoints.png"
+                        height="20 "
+                        style="top: 4px; position: relative" />ENCHANT
+                </button>
+                <div
+                    class="contentLevelup"
+                    style="
+                        position: absolute;
+                        top: 37px;
+                        left: 133px;
+                        right: 131px;
+                        max-height: 400px;
+                        padding: 0px;
+                        border-width: 0px;
+                        overflow-y: scroll;
+                        width: 150px;
+                    ">
+                    <div id="enchantHolder"></div>
+                </div>
+                <div
+                    class="unit_types"
+                    id="activeEnchants"
+                    style="position: absolute; top: 67px; width: 80px; height: auto; right: -54px"></div>
+            </div>
+        </div>
+        <div class="unit_name">
+            <p>
+                <img
+                    id="unit_role"
+                    style="margin-right: 5px; position: relative; top: 5px; text-transform: uppercase"
+                    src="/aow4db/Icons/Text/shield_unit.png"
+                    height="25 " />
+                <span id="unitstring"> </span>
+            </p>
+        </div>
+
+        <div class="unit_ability_holder">
+            <div style="text-align: center; width: 100%; height: 20px; display: inline-block">
+                <div style="position: relative; height: 20px; display: inline-block">
+                    <p id="tier">Tier I</p>
+                </div>
+            </div>
+            <div class="unit_stats">
+                <br />
+                <p class="stat_num" id="hp">60</p>
+                <div class="unit_stat_icon" id="hp_tt">
+                    <img class="unit_stat_icon" src="/aow4db/Icons/Text/health.png" width="25 " height="25 " />
+                </div>
+                <p class="stat_num" id="armor">3</p>
+                <div class="unit_stat_icon" id="armor_tt">
+                    <img class="unit_stat_icon" src="/aow4db/Icons/Text/armor.png" width="20 " height="25 " />
+                </div>
+                <p class="stat_num" id="resistence">2</p>
+                <div class="unit_stat_icon" id="resistence_tt">
+                    <img class="unit_stat_icon" src="/aow4db/Icons/Text/resistance.png" width="20 " height="25 " />
+                </div>
+
+                <p class="stat_num" id="mp">MP</p>
+                <div class="unit_stat_icon" id="mp_tt">
+                    <img class="unit_stat_icon" src="/aow4db/Icons/Text/mp.png" width="25 " height="25 " />
+                </div>
+
+                <p class="stat_num" id="crit">Crit</p>
+                <div class="unit_stat_icon" id="crit_tt">
+                    <img class="unit_stat_icon" src="/aow4db/Icons/Text/critical.png" width="25 " height="25 " />
+                </div>
+                <br />
+            </div>
+            <div class="unit_types" id="resistanceholder"></div>
+            <div class="unit_types" id="unitstat"></div>
+            <div id="unitabholder"></div>
+        </div>
+    </div>
+</template>
+
+<template id="structure_card_template">
+    <div class="mod_card" id="spell_card">
+        <div class="structure_image_holder">
+            <div
+                style="
+                    display: flex;
+
+                    width: auto;
+                    justify-content: space-between;
+                    align-content: start;
+                    align-items: stretch;
+                    justify-items: center;
+                ">
+                <p class="mod_name" id="modname"></p>
+
+                <p style="padding-left: 10px; font-size: 15px" id="modtier"></p>
+
+                <div style="width: 150px; position: absolute; left: -162px; top: 10px">
+                    <p style="font-size: 15px" id="originTome"></p>
+                    <img id="originTomeIcon" height="100px" src="/aow4db/Icons/Interface/empty.png" />
+                </div>
+            </div>
+            <p style="position: absolute; bottom: 5px; right: 5px" id="modcost"></p>
+            <div
+                style="
+                    display: flex;
+                    grid-template-columns: auto auto;
+                    width: auto;
+                    justify-content: start;
+                    align-content: start;
+                    align-items: stretch;
+                    justify-items: center;
+                ">
+                <div style="width: 100px">
+                    <img class="mod_image" id="modicon" src="/aow4db/Icons/Text/accuracy.png" />
+                </div>
+                <p id="loreText" style="color: darkgrey; font-size: 14px; max-width: 400px; margin-left: 20px"></p>
+                <div>
+                    <div>
+                        <p class="mod_description" id="moddescription">TestText</p>
+                    </div>
+                    <img class="preview_image" id="structurepreview" src="/aow4db/Icons/Interface/empty.png" />
+                </div>
+            </div>
+
+            <div style="clear: both"></div>
+            <div
+                id="affectUnitTypes"
+                style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 12px"></div>
+        </div>
+    </div>
+</template>
+
+<template id="spell_card_template">
+    <div class="mod_card" id="spell_card">
+        <div class="mod_image_holder">
+            <div class="spellStatsHighLighter">
+                <div style="display: flex; justify-content: space-between; width: 500px">
+                    <p class="mod_name" id="modname">NameTest</p>
+                    <p class="spell_cost" style="font-size: 12px" id="modcost"></p>
+                </div>
+                <div style="display: flex; justify-content: space-between; width: 500px">
+                    <p class="abilityLineSlot" style="padding-left: 10px; font-size: 15px" id="modtier">Tier: I</p>
+                    <p class="abilityLineSlot" style="padding-left: 10px; font-size: 15px" id="modupkeep"></p>
+                </div>
+            </div>
+            <div style="width: 150px; position: absolute; left: -162px; top: 10px">
+                <p style="font-size: 15px" id="originTome"></p>
+                <img id="originTomeIcon" height="100px" src="/aow4db/Icons/Interface/empty.png" />
+            </div>
+            <div style="display: flex; justify-content: flex-start">
+                <div style="width: 100px; padding-top: 15px">
+                    <img class="mod_image" id="modicon" src="/aow4db/Icons/Interface/empty.png" />
+                </div>
+
+                <div>
+                    <p class="mod_description" id="moddescription">Mod Description</p>
+                </div>
+            </div>
+            <div
+                id="affectUnitTypes"
+                style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 15px"></div>
+        </div>
+    </div>
+</template>
+
+<template id="skill_card_template">
+    <div class="mod_card">
+        <div class="mod_image_holder">
+            <div class="spellStatsHighLighter">
+                <div style="display: flex; justify-content: space-between; width: 500px">
+                    <p class="mod_name" id="modname">Grounding Harness</p>
+                    <p class="spell_cost" style="font-size: 12px" id="modcost"></p>
+                </div>
+                <div style="display: flex; justify-content: space-between; width: 500px">
+                    <p class="spell_tier" style="padding-left: 10px; font-size: 13px" id="spell_tier">Tier: I</p>
+                    <p class="abilityLineSlot" style="padding-left: 10px; font-size: 13px" id="modupkeep"></p>
+                </div>
+            </div>
+            <div style="width: 150px; position: absolute; left: -162px; top: 10px">
+                <p style="font-size: 13px" id="originTome"></p>
+                <img id="originTomeIcon" height="100px" src="/aow4db/Icons/Interface/empty.png" />
+            </div>
+            <div style="width: 100px; float: left; padding-top: 15px">
+                <img class="mod_image" id="modicon" src="/aow4db/Icons/Interface/empty.png" />
+            </div>
+            <div style="position: relative; left: -98px; float: left">
+                <p class="mod_description" id="moddescription">Mod Description</p>
+            </div>
+            <div
+                id="affectUnitTypes"
+                style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 12px"></div>
+        </div>
+    </div>
+</template>
+
+<template id="item_card_template">
+    <div class="mod_card">
+        <div class="mod_image_holder">
+            <div class="spellStatsHighLighter">
+                <div style="display: flex; justify-content: space-between; width: 500px">
+                    <p class="mod_name" id="modname" style="padding-left: 0px">Grounding Harness</p>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; width: 500px">
+                    <p class="spell_tier" style="font-size: 15px" id="spell_tier">Tier: I</p>
+                    <p class="spell_cost" style="font-size: 15px" id="modcost"></p>
+                    <p class="abilityLineSlot" style="padding-left: 10px; font-size: 15px" id="modupkeep"></p>
+                </div>
+            </div>
+            <div style="width: 150px; position: absolute; left: 428px; top: -39px">
+                <p style="font-size: 15px" id="originTome"></p>
+                <img
+                    id="originTomeIcon"
+                    src="/aow4db/Icons/Interface/empty.png"
+                    height="130px"
+                    style="
+                        background-image: url(/aow4db/Icons/Interface/ItemBG.png);
+                        background-size: 95px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    " />
+            </div>
+            <div style="width: 100px; float: left; padding-top: 15px">
+                <img class="mod_image" id="modicon" src="/aow4db/Icons/Interface/empty.png" />
+            </div>
+            <div style="position: relative; left: -98px; float: left">
+                <p class="mod_description" id="moddescription">Mod Description</p>
+            </div>
+            <div
+                id="affectUnitTypes"
+                style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 15px"></div>
+        </div>
+    </div>
+</template>
+
+<template id="tome_card_template">
+    <div class="tome_card">
+        <p class="tome_name" id="tomename">Tome of Evocation</p>
+        <p style="text-align: center; font-size: 15px; max-width: 900px" id="tomedescription">Mod Descripiton</p>
+        <div style="width: 150px; float: left">
+            <img class="tome_image" id="tomeicon" src="/aow4db/Icons/TomeIcons/barbarian.png" />
+        </div>
+        <div
+            style="
+                display: grid;
+                grid-template-columns: 500px 500px;
+                width: auto;
+                justify-content: start;
+                align-content: center;
+                align-items: stretch;
+                justify-items: center;
+            ">
+            <div style="float: left">
+                <p class="tome_description" id="tomeloredescription">Lore Description</p>
+            </div>
+
+            <div class="InitialBonus">
+                <span class="initialBonusHeaderText">INITIAL BONUS</span>
+                <div id="initialBonusList" style="display: grid; grid-template-columns: 200px; font-size: 15px"></div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    <div
+        id="tome_unlocks"
+        style="display: grid; grid-template-columns: auto auto; justify-content: center; width: auto"></div>
+</template>

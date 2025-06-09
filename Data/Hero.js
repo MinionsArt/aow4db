@@ -498,7 +498,7 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     //BuildLine()
 
     let skill = ReturnHeroSkillItself(null, sig);
-
+    console.log("skill " + skill);
     let newNode = document.createElement("DIV");
 
     // Convert the x and y coordinates to pixel positions
@@ -537,11 +537,13 @@ function SetSkillData(nodeElement, skill) {
     } else {
         img.setAttribute("src", "/aow4db/Icons/UnitIcons/" + skill.icon + ".png");
     }
+    // lookup localized
+    var skillLoc = jsonHeroSkillsLocalized.find((entry) => entry.resid === skill.resid);
 
     if (skill.type == "signature") {
         img.setAttribute("height", "100px");
     } else if ("abilities" in skill) {
-        var skill3 = ReturnSkillItself(skill.abilities[0].slug);
+        var skill3 = ReturnSkillItself(skillLoc.abilities[0].slug);
 
         if ("range" in skill3) {
             img.setAttribute("height", "65px");
@@ -560,24 +562,21 @@ function SetSkillData(nodeElement, skill) {
     // create description span
     var spa = document.createElement("SPAN");
 
-    spa.innerHTML = '<span style="color:  #d7c297;">' + skill.name.toUpperCase() + "</span>" + "<br>";
+    spa.innerHTML = '<span style="color:  #d7c297;">' + skillLoc.name.toUpperCase() + "</span>" + "<br>";
 
     if ("group_name" in skill) {
-        spa.innerHTML += '<span style="color:  aliceblue;">' + skill.group_name + "</span>" + "<br>";
+        spa.innerHTML += '<span style="color:  aliceblue;">' + skillLoc.group_name + "</span>" + "<br>";
     }
 
-    if (skill.description == undefined) {
-        spa.innerHTML += GetSkillData(skill).innerHTML;
-        
+    if (skillLoc.description == undefined) {
+        spa.innerHTML += GetSkillData(skillLoc).innerHTML;
     } else {
-        var description = skill.description;
+        var description = skillLoc.description;
         description = description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
         description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
         description = description.replaceAll("<br></br>", "<br>");
         description = AddTagIconsForStatusEffects(description);
         spa.innerHTML += description + "<br>";
-    
-       
     }
 
     // newNode.appendChild(spa);
@@ -586,9 +585,8 @@ function SetSkillData(nodeElement, skill) {
 
 function ChooseSignatures(slot, nodeElement, evt) {
     var listOfSkills = GetAllAvailableSignatureSkills(slot);
-
+    console.log("skills " + listOfSkills);
     BuildChoicesPanel(listOfSkills, nodeElement, slot, evt);
-    // SetSkillData(nodeElement, listOfSkills[0]);
 }
 
 function GetAllAvailableSignatureSkills(slot) {
@@ -1034,6 +1032,7 @@ function SetUpTreeNodes(keyword, subtype, row, color, holder, treespace) {
 }
 
 function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) {
+    // var currentSkillLoc = json;
     var nodeHeight = 50;
 
     var left = 1;
@@ -1439,9 +1438,9 @@ function deactivateNode(newNode, nodeData, isSig) {
 
 function ReturnSkillItself(lookup) {
     var j = 0;
-    for (j in jsonUnitAbilities) {
-        if (jsonUnitAbilities[j].slug == lookup) {
-            return jsonUnitAbilities[j];
+    for (j in jsonUnitAbilitiesLocalized) {
+        if (jsonUnitAbilitiesLocalized[j].slug == lookup) {
+            return jsonUnitAbilitiesLocalized[j];
         }
     }
 }
