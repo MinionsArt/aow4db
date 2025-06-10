@@ -2068,23 +2068,24 @@ function addResistanceSlot(a, resistance, holder) {
             imag.setAttribute("width", "25");
             imag.setAttribute("height", "25");
 
-            if (a.indexOf("frost") !== -1) {
+            if (a.indexOf("Frost") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/frost_resistance.png");
                 spa.innerHTML += "<defensefrost></defensefrost>";
             }
-            if (a.indexOf("blight") !== -1) {
+            if (a.indexOf("Blight") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/blight_resistance.png");
                 spa.innerHTML += "<defenseblight></defenseblight>";
             }
-            if (a.indexOf("fire") !== -1) {
+            if (a.indexOf("Fire") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/fire_resistance.png");
                 spa.innerHTML += "<defensefire></defensefire>";
             }
-            if (a.indexOf("spirit") !== -1) {
+            if (a.indexOf("Spirit") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/spirit_resistance.png");
                 spa.innerHTML += "<defensespirit></defensespirit>";
             }
-            if (a.indexOf("lightning") !== -1) {
+           
+            if (a.indexOf("Shock") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/lightning_resistance.png");
                 spa.innerHTML += "<defenselightning></defenselightning>";
             }
