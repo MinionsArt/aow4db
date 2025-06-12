@@ -2084,7 +2084,7 @@ function addResistanceSlot(a, resistance, holder) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/spirit_resistance.png");
                 spa.innerHTML += "<defensespirit></defensespirit>";
             }
-           
+
             if (a.indexOf("Shock") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/lightning_resistance.png");
                 spa.innerHTML += "<defenselightning></defenselightning>";
@@ -2894,6 +2894,7 @@ function findHeroAmbition() {
     const uniqueArray = finalCheckedList.filter((item, index) => {
         return index === finalCheckedList.findIndex((obj) => obj.id === item.id && obj.name === item.name);
     });
+
     return uniqueArray;
 }
 
@@ -6420,99 +6421,91 @@ function showHeroTrait(a) {
         tier = "";
     let found = false;
     let i = "";
-    for (i in jsonHeroAmbitions) {
-        if (jsonHeroAmbitions[i].id === a) {
-            let thisAmbition = jsonHeroAmbitions[i];
-            let thisAmbitionLoc = jsonHeroAmbitionsLocalized.find((entry) => entry.resid === a.resid);
 
-            modName = document.getElementById("modname");
-            modName.innerHTML = thisAmbitionLoc.name.toUpperCase();
+    let thisAmbition = jsonHeroAmbitions.find((entry) => entry.id === a);
+    let thisAmbitionLoc = jsonHeroAmbitionsLocalized.find((entry) => entry.icon === thisAmbition.icon);
 
-            modName.setAttribute("id", "modname" + a);
-            descriptionDiv = document.getElementById("moddescription");
+    modName = document.getElementById("modname");
+    modName.innerHTML = thisAmbitionLoc.name.toUpperCase();
 
-            descriptionDiv.innerHTML = "";
-            if (thisAmbition.available_to_rulers == false) {
-                descriptionDiv.innerHTML =
-                    "<hr>" +
-                    "<helpText>Only Available to Heroes</helpText><br><br>" +
-                    thisAmbitionLoc.screen_description;
-            } else {
-                descriptionDiv.innerHTML = "<hr>" + thisAmbitionLoc.screen_description;
+    modName.setAttribute("id", "modname" + a);
+    descriptionDiv = document.getElementById("moddescription");
+
+    descriptionDiv.innerHTML = "";
+    if (thisAmbition.available_to_rulers == false) {
+        descriptionDiv.innerHTML =
+            "<hr>" + "<helpText>Only Available to Heroes</helpText><br><br>" + thisAmbitionLoc.screen_description;
+    } else {
+        descriptionDiv.innerHTML = "<hr>" + thisAmbitionLoc.screen_description;
+    }
+
+    descriptionDiv.setAttribute("id", "moddescription" + a);
+    unitTypesDiv = document.getElementById("affectUnitTypes");
+
+    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+
+    tier = document.getElementById("modtier");
+    tier.innerHTML = "";
+
+    tier.setAttribute("id", "modtier" + a);
+
+    cost = document.getElementById("modcost");
+
+    cost.setAttribute("id", "modcost" + a);
+
+    imagelink = document.getElementById("modicon");
+    imagelink.setAttribute("src", "/aow4db/Icons/AmbitionIcons/" + thisAmbition.icon + ".png");
+    imagelink.setAttribute("style", "background-image:none");
+    imagelink.setAttribute("id", "modicon" + a);
+
+    unitTypesDiv.setAttribute("style", "position: relative;display: block");
+    // get ambitions
+    for (let j = 0; j < thisAmbition.ambitions.length; j++) {
+        // major ambition:
+        if (thisAmbition.ambitions[j].type == "major") {
+            let dis = document.createElement("div");
+
+            let rewardProperty = "";
+
+            for (let f = 0; f < thisAmbition.ambitions[j].reward_properties.length; f++) {
+                rewardProperty =
+                    '<span style="color:#deb887" >' +
+                    thisAmbitionLoc.ambitions[j].reward_properties[f].name.toUpperCase() +
+                    "</span><hr><span>" +
+                    thisAmbitionLoc.ambitions[j].reward_properties[f].screen_description +
+                    "</span>";
             }
 
-            descriptionDiv.setAttribute("id", "moddescription" + a);
-            unitTypesDiv = document.getElementById("affectUnitTypes");
+            dis.innerHTML +=
+                "<bulletlist><yellowText>Major Ambition</yellowText><bullet>" +
+                thisAmbitionLoc.ambitions[j].screen_description +
+                "</bullet><bullet>Reward: " +
+                thisAmbitionLoc.ambitions[j].reward_renown +
+                "<renown></renown> Renown</bullet><br>" +
+                "<greenText>Skill reward</greenText><br>" +
+                rewardProperty +
+                "</bullet></bulletlist><br><br>";
+            unitTypesDiv.appendChild(dis);
+        }
 
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+        // Minor Ambition
+        if (thisAmbition.ambitions[j].type == "minor") {
+            let dis = document.createElement("div");
 
-            tier = document.getElementById("modtier");
-            tier.innerHTML = "";
-
-            tier.setAttribute("id", "modtier" + a);
-
-            cost = document.getElementById("modcost");
-
-            cost.setAttribute("id", "modcost" + a);
-
-            imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("src", "/aow4db/Icons/AmbitionIcons/" + thisAmbition.icon + ".png");
-            imagelink.setAttribute("style", "background-image:none");
-            imagelink.setAttribute("id", "modicon" + a);
-
-            unitTypesDiv.setAttribute("style", "position: relative;display: block");
-            // get ambitions
-            for (let j = 0; j < thisAmbition.ambitions.length; j++) {
-                // major ambition:
-                if (thisAmbition.ambitions[j].type == "major") {
-                    let dis = document.createElement("div");
-
-                    let rewardProperty = "";
-
-                    for (let f = 0; f < thisAmbition.ambitions[j].reward_properties.length; f++) {
-                        rewardProperty =
-                            '<span style="color:#deb887" >' +
-                            thisAmbitionLoc.ambitions[j].reward_properties[f].name.toUpperCase() +
-                            "</span><hr><span>" +
-                            thisAmbitionLoc.ambitions[j].reward_properties[f].screen_description +
-                            "</span>";
-                    }
-
-                    dis.innerHTML +=
-                        "<bulletlist><yellowText>Major Ambition</yellowText><bullet>" +
-                        thisAmbitionLoc.ambitions[j].screen_description +
-                        "</bullet><bullet>Reward: " +
-                        thisAmbitionLoc.ambitions[j].reward_renown +
-                        "<renown></renown> Renown</bullet><br>" +
-                        "<greenText>Skill reward</greenText><br>" +
-                        rewardProperty +
-                        "</bullet></bulletlist><br><br>";
-                    unitTypesDiv.appendChild(dis);
-                }
-
-                // Minor Ambition
-                if (thisAmbition.ambitions[j].type == "minor") {
-                    let dis = document.createElement("div");
-
-                    dis.innerHTML +=
-                        "<bulletlist><yellowText>Minor Ambition</yellowText><bullet>" +
-                        thisAmbitionLoc.ambitions[j].screen_description +
-                        "<br></bullet><bullet>Reward: " +
-                        thisAmbitionLoc.ambitions[j].reward_renown +
-                        "<renown></renown> Renown(repeatable)</bullet></bulletlist>";
-                    unitTypesDiv.appendChild(dis);
-                }
-            }
-
-            let tomeOriginIcon = document.getElementById("originTomeIcon");
-
-            tomeOriginIcon.setAttribute("id", "modicon" + a.id);
-            found = true;
+            dis.innerHTML +=
+                "<bulletlist><yellowText>Minor Ambition</yellowText><bullet>" +
+                thisAmbitionLoc.ambitions[j].screen_description +
+                "<br></bullet><bullet>Reward: " +
+                thisAmbitionLoc.ambitions[j].reward_renown +
+                "<renown></renown> Renown(repeatable)</bullet></bulletlist>";
+            unitTypesDiv.appendChild(dis);
         }
     }
-    if (found == false) {
-        console.log("Didn't find :" + a);
-    }
+
+    let tomeOriginIcon = document.getElementById("originTomeIcon");
+
+    tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+    found = true;
 }
 
 function showHeroGov(a, check) {
