@@ -337,10 +337,10 @@ function AddTagIconsForStatusEffects(name) {
         if (name.indexOf(jsonUnitAbilitiesLocalized[i].name) != -1) {
             // found a mention of an ability
             // double check if its a status effect
-            for (let j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
-                if (jsonUnitAbilitiesLocalized[i].slug == jsonUnitAbilitiesLocalized[j].slug) {
+            for (let j = 0; j < jsonStatusEffectsLocalized.length; j++) {
+                if (jsonUnitAbilitiesLocalized[i].slug == jsonStatusEffectsLocalized[j].slug) {
                     // ignore +1 retaliation attack cause its not usefule
-                    if (jsonUnitAbilitiesLocalized[j].slug == "_1_<<m{global.retaliationconcept.hyperlink}>>") {
+                    if (jsonStatusEffectsLocalized[j].slug == "0000041b000013b4") {
                         return name;
                     }
                     // found the right status effect.
