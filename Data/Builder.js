@@ -337,22 +337,24 @@ function AddTagIconsForStatusEffects(name) {
         if (name.indexOf(jsonUnitAbilitiesLocalized[i].name) != -1) {
             // found a mention of an ability
             // double check if its a status effect
-            for (let j = 0; j < jsonStatusEffectsLocalized.length; j++) {
-                if (jsonUnitAbilitiesLocalized[i].slug == jsonStatusEffectsLocalized[j].slug) {
-                    // ignore +1 retaliation attack cause its not usefule
-                    if (jsonStatusEffectsLocalized[j].slug == "0000041b000013b4") {
-                        return name;
-                    }
-                    // found the right status effect.
-                    let tooltipspan = document.createElement("span");
-                    tooltipspan.className = "statusEffectHandler";
-                    let effect = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
-                    let tag = jsonUnitAbilities[i].name.replaceAll(" ", "_").toLowerCase();
+            // maybe it can be all abilities
 
-                    tooltipspan.innerHTML = `${effect}`;
-                    name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-                }
+            //  for (let j = 0; j < jsonStatusEffectsLocalized.length; j++) {
+            // if (jsonUnitAbilitiesLocalized[i].slug == jsonStatusEffectsLocalized[j].slug) {
+            // ignore +1 retaliation attack cause its not usefule
+            if (jsonUnitAbilitiesLocalized[i].slug == "0000041b000013b4") {
+                return name;
             }
+            // found the right status effect.
+            let tooltipspan = document.createElement("span");
+            tooltipspan.className = "statusEffectHandler";
+            let effect = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
+            let tag = jsonUnitAbilities[i].name.replaceAll(" ", "_").toLowerCase();
+
+            tooltipspan.innerHTML = `${effect}`;
+            name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
+            // }
+            // }
         }
     }
     for (let k = 0; k < jsonExtraTooltips.length; k++) {
