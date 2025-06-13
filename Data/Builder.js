@@ -4269,6 +4269,16 @@ function lookupSlug(slug) {
     return "Couldn't find this";
 }
 
+function lookupSlugFull(slug) {
+    let j = 0;
+    for (j in jsonUnitAbilitiesLocalized) {
+        if (slug === jsonUnitAbilitiesLocalized[j].slug) {
+            return jsonUnitAbilitiesLocalized[j];
+        }
+    }
+    return "Couldn't find this";
+}
+
 function romanize(num) {
     if (isNaN(num)) return NaN;
     let digits = String(+num).split(""),
