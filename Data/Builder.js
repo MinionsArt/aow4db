@@ -403,7 +403,11 @@ function lookupStatusEffect(status) {
                     // found the right status effect.
 
                     let effect = jsonUnitAbilitiesLocalized[i].name;
+                    
                     let tag = jsonUnitAbilitiesLocalized[i].description;
+                    if(getUserSettings().isolateNumber){
+        tag = highlightNumbersInDiv(tag);
+    }
                     let image = document.createElement("IMG");
                     image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + jsonUnitAbilitiesLocalized[i].icon + ".png");
                     image.setAttribute("width", "30");
