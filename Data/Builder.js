@@ -3,6 +3,7 @@ var sorting = searchParams.get("sort");
 var currentView = "";
 
 var checkboxTooltip = document.getElementById("tooltipCheckbox");
+var checkboxNumbers = document.getElementById("numbersCheckbox");
 var showBetaTooltip = document.getElementById("showBetaCheckbox");
 var languageSelect = document.getElementById("languageSelect");
 
@@ -15,6 +16,17 @@ document.addEventListener("keydown", function (event) {
         altHeld = !altHeld; // Toggle state
     }
 });
+
+  function highlightNumbersInDiv(text) {
+    if (!text) return;
+
+   text = text.replace(
+    /(?<!\d)([+-]?\d+(?:\.\d+)?%?|%\d+(?:\.\d+)?)(?!-)/g,
+    '<span class="number-highlight">[$1]</span>'
+      
+);
+       return text;
+} 
 
 fetch("/aow4db/HTML/templates.html")
     .then((res) => res.text())
@@ -47,7 +59,7 @@ function SwitchToBeta() {
     location.reload();
 }
 function CheckBoxTooltips() {
-    //checkboxTooltip = document.getElementById("tooltipCheckbox");
+    
     let hoverDiv = document.getElementById("hoverDiv");
     let hoverDiv2 = document.getElementById("hoverDiv2");
     if (checkboxTooltip.checked === true) {
@@ -59,6 +71,7 @@ function CheckBoxTooltips() {
     }
     updateUserSettings({
         tooltipselectable: checkboxTooltip.checked,
+        isolateNumber : checkboxNumbers.checked,
         showBeta: showBetaTooltip.checked,
         language: languageSelect.value
     });
@@ -208,6 +221,10 @@ async function CheckData() {
         }
         checkboxTooltip = document.getElementById("tooltipCheckbox");
         checkboxTooltip.checked = storedSettings.tooltipselectable;
+        
+        checkboxNumbers = document.getElementById("numbersCheckbox");
+                 checkboxNumbers = document.getElementById("numbersCheckbox");
+checkboxNumbers.checked = storedSettings.isolateNumber;
 
         showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
@@ -331,41 +348,46 @@ var incorrectIconOverrideList = [
 
 function AddTagIconsForStatusEffects(name) {
     // if(name == "")
-    let underline = '<span style="color:white; text-decoration:underline">';
-    let endtag = "</span>";
-    for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
-        if (name.indexOf(jsonUnitAbilitiesLocalized[i].name) != -1) {
-            // found a mention of an ability
-            // double check if its a status effect
-            // maybe it can be all abilities
+   let underline = '<span style="color:white; text-decoration:underline">';
+let endtag = "</span>";
 
-            //  for (let j = 0; j < jsonStatusEffectsLocalized.length; j++) {
-            // if (jsonUnitAbilitiesLocalized[i].slug == jsonStatusEffectsLocalized[j].slug) {
-            // ignore +1 retaliation attack cause its not usefule
-            if (jsonUnitAbilitiesLocalized[i].slug == "0000041b000013b4") {
-                return name;
-            }
-            // found the right status effect.
-            let tooltipspan = document.createElement("span");
-            tooltipspan.className = "statusEffectHandler";
-            let effect = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
-            let tag = jsonUnitAbilities[i].name.replaceAll(" ", "_").toLowerCase();
 
-            tooltipspan.innerHTML = `${effect}`;
-            name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-            // }
-            // }
-        }
+
+for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
+    const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
+
+    if (
+        name.includes(abilityName) &&
+        jsonUnitAbilitiesLocalized[i].slug !== "0000041b000013b4" // skip that specific one
+    ) {
+        let tooltipspan = document.createElement("span");
+        tooltipspan.className = "statusEffectHandler";
+        let tag = jsonUnitAbilities[i].name.replaceAll(" ", "_").toLowerCase();
+        tooltipspan.innerHTML = abilityName;
+
+        // Use a regex with word boundaries to avoid partial matches (optional)
+        let pattern = new RegExp(`\\b${abilityName}\\b`);
+        name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
     }
-    for (let k = 0; k < jsonExtraTooltips.length; k++) {
-        if (name.indexOf(jsonExtraTooltips[k].name) != -1) {
-            let tooltipspan = document.createElement("span");
-            tooltipspan.className = "statusEffectHandler";
-            let effect = jsonExtraTooltips[k].name;
-            let tag = jsonExtraTooltips[k].name;
-            tooltipspan.innerHTML = `${effect}`;
-            name = name.replace(effect, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-        }
+}
+
+for (let k = 0; k < jsonExtraTooltips.length; k++) {
+    const effect = jsonExtraTooltips[k].name;
+    if (name.includes(effect)) {
+        let tooltipspan = document.createElement("span");
+        tooltipspan.className = "statusEffectHandler";
+        let tag = effect.replaceAll(" ", "_");
+        tooltipspan.innerHTML = effect;
+
+        let pattern = new RegExp(`\\b${effect}\\b`);
+        name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
+    }
+}
+    
+    // also check for numbers isolate settings
+    
+    if(getUserSettings().isolateNumber){
+        name = highlightNumbersInDiv(name);
     }
 
     return name;
@@ -373,7 +395,7 @@ function AddTagIconsForStatusEffects(name) {
 
 function lookupStatusEffect(status) {
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
-        if (status.indexOf(jsonUnitAbilitiesLocalized[i].name) != -1) {
+        if (status == (jsonUnitAbilitiesLocalized[i].name)) {
             // found a mention of an ability
             // double check if its a status effect
             for (let j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
@@ -1003,7 +1025,7 @@ function addUnitTypeIcon(a, holder, origin) {
     }*/
     let unitAbilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === a);
     let unitAbilityEN = jsonUnitAbilities.find((entry) => entry.slug === a);
-    iconText = unitAbilityLoc.description;
+    iconText = AddTagIconsForStatusEffects(unitAbilityLoc.description);
     icontext = iconText.replaceAll("<bulletlist></bullet>", "<bulletlist>");
     icontext = icontext.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
     icontext = icontext.replaceAll("<br></br>", "<br>");
@@ -1122,7 +1144,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
 
             let modDesc = abilityLoc.modifiers[l].description;
             abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modName) + "<br>";
-            abilityMod += modDesc + "</bullet><br>";
+            abilityMod += AddTagIconsForStatusEffects(modDesc) + "</bullet><br>";
         }
     }
 
@@ -1373,7 +1395,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
             abilityName.toUpperCase() +
             "</p>";
         spa.innerHTML += '<div style="clear:both"> </div>' + "<br>";
-        spa.innerHTML += abilityLoc.description;
+        spa.innerHTML +=  AddTagIconsForStatusEffects(abilityLoc.description);
         dam.innerHTML = "";
     }
 
@@ -5415,6 +5437,8 @@ function showWorldStructure(a) {
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
     descriptionDiv.innerHTML += description;
+    
+    //descriptionDiv.innerHTML = AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
     descriptionDiv.setAttribute("id", "modicon" + a);
 

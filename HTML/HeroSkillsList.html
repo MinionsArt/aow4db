@@ -21,6 +21,7 @@
 
         <script>
             let selectedTreeFilter = "all";
+            let selectedSubTreeFilter = "all";
 
             function HandlePage() {
                 CreateAllHeroSkills();
@@ -41,6 +42,18 @@
                         CreateAllHeroSkills();
                     });
                 });
+
+                document.querySelectorAll(".treeFilterButtonSub").forEach((button) => {
+                    button.addEventListener("click", () => {
+                        document
+                            .querySelectorAll(".treeFilterButtonSub")
+                            .forEach((btn) => btn.classList.remove("active"));
+                        button.classList.add("active");
+
+                        selectedSubTreeFilter = button.dataset.tree;
+                        CreateAllHeroSkills(); // refresh on subfilter change
+                    });
+                });
             }
 
             // Utility function to create elements
@@ -55,18 +68,41 @@
                 document.getElementById("dataHolder").innerHTML = ""; // Clear existing
 
                 jsonHeroSkills.forEach((skill) => {
-                    const treeName = skill.tree_name?.toLowerCase() || "";
+                  //  if (!("tree_pos_y" in skill || skill.type === "signature")  || skill.type === "signature")) return;
 
-                    // Filter logic: allow partial matches using indexOf
+                    var treeName = skill.tree_name?.toLowerCase() || "";
+                    
+                    // check if its actually passive or not
+                             
+                    var skillType = Array.isArray(skill.abilities) ? "active" : "passive";
+                    if(skillType == "active"){
+                         var skillFound = jsonUnitAbilities.find((entry)=> entry.slug == skill.abilities[0].slug);
+                      
+                     skillType = ("actionPoints" in skillFound) ? "active" : "passive";
+                    }
+                   
+                    if(selectedTreeFilter == "Signature"){
+                        treeName = skill.type == "signature" ? "signature" : "";
+                        
+                    } 
+                    if( selectedTreeFilter == "Affinity" && ("group_name" in skill)){
+                        console.log(skill.group_name.indexOf("Affinity"));
+                         treeName = (skill.group_name.indexOf("Affinity") != -1) ? "affinity" : "";
+                    }
+                   // skillType = skill.type === "signature" ? "signature" : skillType;
+
+                    // Main tree filter
                     if (selectedTreeFilter !== "all" && !treeName.includes(selectedTreeFilter.toLowerCase())) return;
 
-                    // If the skill has associated ability slugs
+                    // Sub-type filter
+                    if (selectedSubTreeFilter !== "all" && skillType !== selectedSubTreeFilter.toLowerCase()) return;
+
+                    // Add skill: either with abilities or standalone
                     if (Array.isArray(skill.abilities) && skill.abilities.length > 0) {
                         skill.abilities.forEach(({ slug }) => {
                             addHeroSkillAbility(slug, skill);
                         });
                     } else {
-                        // If it's a standalone skill without abilities
                         addStandaloneHeroSkill(skill);
                     }
                 });
@@ -148,6 +184,7 @@
                     damage: (el) => el.querySelector(".ability_damage")?.innerHTML,
                     action: (el) => el.querySelector(".list_action")?.innerHTML,
                     type: (el) => el.querySelector(".list_types")?.innerHTML,
+                     depth: (el) => el.querySelector(".list_depth")?.innerHTML,
                     default: (el) => el.querySelector(".tooltip")?.innerHTML
                 };
 
@@ -178,6 +215,7 @@
                 if (!abilityData) return;
 
                 const {
+                  
                     name = "",
                     icon = "",
                     description = "",
@@ -219,31 +257,23 @@
 
                 const img = createElement("img", "unit_ability_icon");
                 const iconType = GetAbilityBackground(damage);
-                img.src = `/aow4db/Icons/UnitIcons/${icon}.png`;
+                img.src = `/aow4db/Icons/UnitIcons/${skillMeta.icon}.png`;
                 img.onerror = function () {
                     this.src = "/aow4db/Icons/Text/mp.png";
                 };
-                img.width = 40;
-                img.height = 40;
+                img.width = 64;
+                img.height = 64;
                 img.style.backgroundImage = `url("/aow4db/Icons/Interface/${iconType}.png")`;
                 img.style.backgroundRepeat = "no-repeat";
-                img.style.backgroundSize = "40px 40px";
+                img.style.backgroundSize = "64px 64px";
 
                 const tooltipText = createElement("div", "tooltip");
                 tooltipText.innerHTML = abilityName;
                 tooltipText.style.color = "white";
-                tooltipText.style.width = "250px";
+                tooltipText.style.width = "500px";
 
-                const descr = createElement("div", "tooltip");
-                descr.innerHTML = description;
-                descr.style.color = "white";
-                descr.style.fontSize = "12px";
-                descr.style.width = "250px";
-
-                // add small description
-                tooltipText.append(descr);
-
-                /* let spa = GetAbilityToolTip(
+                    if("actionPoints" in abilityData){
+                          let spa = GetAbilityToolTip(
                     abilityData,
                     damage,
                     abilityName,
@@ -256,9 +286,22 @@
                     requisites,
                     Cooldown,
                     Once
-                );*/
+                );
 
-                // addTooltipListeners(tooltipText, spa);
+                addTooltipListeners(tooltipText, spa);
+                    } else{
+                            const descr = document.createElement("Div");
+                descr.innerHTML = AddTagIconsForStatusEffects(description);
+                descr.style.color = "#bbcdf6";
+                descr.style.fontSize = "12px";
+                descr.style.width = "500px";
+
+                // add small description
+                tooltipText.append(descr);
+                    }
+            
+
+               
 
                 const colStyle = "color:white;";
                 const appendCol = (text, className, width) => {
@@ -267,6 +310,15 @@
                     col.style = `${colStyle} width:${width}`;
                     btn.append(col);
                 };
+
+                // Add Hero Skill Info
+                  const DepthDiv = createElement("div", "list_depth");
+                if ("tree_pos_y" in skillMeta) {
+                    DepthDiv.innerHTML = `<span style="font-size:12px; color:lightgray;">[${skillMeta.tree_pos_y / 50}]</span>`;
+                      
+                    }
+                DepthDiv.style.width = "50px";
+                    btn.append(DepthDiv);
 
                 btn.append(img);
                 btn.append(tooltipText);
@@ -301,39 +353,62 @@
                 img.onerror = function () {
                     this.src = "/aow4db/Icons/Text/mp.png";
                 };
-                img.width = 40;
-                img.height = 40;
+                img.width = 64;
+                img.height = 64;
                 img.style.backgroundImage = `url("/aow4db/Icons/Interface/hero_skill.png")`;
                 img.style.backgroundRepeat = "no-repeat";
-                img.style.backgroundSize = "40px 40px";
+                img.style.backgroundSize = "64px 64px";
 
                 const tooltipText = createElement("div", "tooltip");
                 tooltipText.innerHTML = name;
                 tooltipText.style.color = "white";
-                tooltipText.style.width = "250px";
+                tooltipText.style.width = "500px";
 
-                const descr = createElement("div", "tooltip");
-                descr.innerHTML = description;
-                descr.style.color = "white";
+                const descr = document.createElement("Div");
+
+                descr.innerHTML = AddTagIconsForStatusEffects(description);
+                descr.style.color = "#bbcdf6";
                 descr.style.fontSize = "12px";
-                descr.style.width = "250px";
+                descr.style.width = "500px";
 
                 tooltipText.append(descr);
                 //  const tooltipContent = GetSimpleHeroSkillTooltip(name, description); // You can define this function or inline it.
                 //   addTooltipListeners(tooltipText, tooltipContent);
 
+                // Add Hero Skill Info
+                
+                   const DepthDiv = createElement("div", "list_depth");
+                if ("tree_pos_y" in skill) {
+                    DepthDiv.innerHTML = `<span style="font-size:12px; color:lightgray;">[${skill.tree_pos_y / 50}]</span>`;
+                      
+                    }
+                DepthDiv.style.width = "50px";
+                    btn.append(DepthDiv);
+                   
+                
+
                 btn.append(img);
                 btn.append(tooltipText);
+                // add filler
+                // 
+                  const filler = document.createElement("Div");
+               // descr.innerHTML = AddTagIconsForStatusEffects(description);
+                filler.style.width = "669px";
+               btn.append(filler);
+                    // Add Hero Skill Info
+                const skillMetaDiv = createElement("div", "skill_metadata");
+                skillMetaDiv.innerHTML = `<span style="font-size:12px; color:lightgray;"> ${skill.name}</span>`;
+                btn.append(skillMetaDiv);
 
                 holder.append(btn);
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Abilities List</title>
+        <title>Age of Wonders 4 Database - Hero Skills List</title>
     </head>
 
     <body>
-        <div class="textblocktitle">Abilities List</div>
+        <div class="textblocktitle">Hero Skills List</div>
         <div style="height: auto; color: white; text-align: center">
             <br />
             Filter<br />
@@ -342,20 +417,55 @@
             </div>
         </div>
 
-        <div id="treeFilterGroup" style="margin-bottom: 20px">
+        <div id="treeFilterGroup" style="margin: 20px; display: flex; justify-content: center; align-items: start">
             <button class="treeFilterButton active" data-tree="all">All</button>
             <button class="treeFilterButton" data-tree="Champion">Champion</button>
             <button class="treeFilterButton" data-tree="Wizard King">Wizard King</button>
             <button class="treeFilterButton" data-tree="Dragon Lord">Dragon Lord</button>
             <button class="treeFilterButton" data-tree="Eldritch Sovereign">Eldritch Sovereign</button>
-            <button class="treeFilterButton" data-tree="Death Knight">Death Knight</button>
+            <button class="treeFilterButton" data-tree="Giant King">Giant King</button>
+            <div>Spacer</div>
+            <button class="treeFilterButton" data-tree="Warrior"><classWarrior></classWarrior>Warrior</button>
+            <button class="treeFilterButton" data-tree="Defender"><classDefender></classDefender>Defender</button>
+            <button class="treeFilterButton" data-tree="Mage"><classMage></classMage>Mage</button>
+               <button class="treeFilterButton" data-tree="Ranger"><classRanger></classRanger>Ranger</button>
+            <button class="treeFilterButton" data-tree="Ritualist"><classRitualist></classRitualist>Ritualist</button>
+            <button class="treeFilterButton" data-tree="Spellblade">
+                <classSpellblade></classSpellblade>Spellblade
+            </button>
+            <button class="treeFilterButton" data-tree="Death Knight">
+                <classDeathKnight></classDeathKnight>Death Knight
+            </button>
+              <div>Spacer</div>
+            <button class="treeFilterButton" data-tree="Signature">Signature</button>
+              <button class="treeFilterButton" data-tree="Affinity">Affinity</button>
+          
             <!-- Add more as needed -->
         </div>
 
-        <div class="w3-container">
+        <div id="treeFilterGroupSub" style="margin: 20px; display: flex; justify-content: center; align-items: start">
+            <button class="treeFilterButtonSub active" data-tree="all">All</button>
+            <button class="treeFilterButtonSub" data-tree="Active">Active</button>
+            <button class="treeFilterButtonSub" data-tree="Passive">Passive</button>
+            <!-- Add more as needed -->
+        </div>
+        
+           <!--<div id="treeFilterGroupSub2" style="margin: 20px; display: flex; justify-content: center; align-items: start">
+            <button class="treeFilterButtonSub active" data-tree="all">Champion/Wizard King</button>
+               <button class="treeFilterButtonSub" data-tree="Passive">Dragon Lord</button>
+               
+            <button class="treeFilterButtonSub" data-tree="Passive">Eldritch</button>
+            <button class="treeFilterButtonSub" data-tree="Active">Giant King</button>
+            <!-- Add more as needed 
+        </div> -->
+
+        <div class="w3-container" style="justify-content: center">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
             <div class="list_abilityslotfilter">
-                <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
+                <button style="width: 50px" class="sortingButton" id="depth-button" onclick="sortDivsList('depth')">
+                    Depth
+                </button>
+                <button style="width: 565px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
                     Name
                 </button>
                 <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">
@@ -376,7 +486,7 @@
                 <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">
                     Action <repeatingAction></repeatingAction>
                 </button>
-                <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
+                <button style="width: 500px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
                     Type
                 </button>
             </div>
