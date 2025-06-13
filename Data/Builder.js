@@ -2378,11 +2378,6 @@ async function SetLevelUpStuff() {
             } else {
                 content.style.display = "block";
             }
-            //  let j = "";
-            // for (j = 0; j < content.length; j++) {
-            //   coll[j].classList.toggle("active");
-
-            //}
         });
     }
 
@@ -2392,9 +2387,7 @@ async function SetLevelUpStuff() {
     if (product != undefined) {
         let splits = product.split("&");
         closeTabLinks(product);
-
         document.getElementById(splits[0] + "-button").className += " w3-red";
-
         // grab the subculture if available
 
         let subCulture = splits[0].split(/(?=[A-Z])/);
@@ -2402,7 +2395,6 @@ async function SetLevelUpStuff() {
             let test = subCulture.slice(1).join("");
             await showSubDiv(null, test);
         }
-
         // open div with type
         await openDiv(event, splits[0]);
     }
@@ -2811,11 +2803,8 @@ function findSkillsWithArgument(signature, argumentType) {
     let finalCheckedList = [];
     if (signature === "") {
         for (j in jsonHeroSkills) {
-            if ("category_name" in jsonHeroSkills[j]) {
-                if (
-                    jsonHeroSkills[j].category_name.indexOf(argumentType) !== -1 &&
-                    jsonHeroSkills[j].group_name != "Pantheon Hero Skills"
-                ) {
+            if ("tree_name" in jsonHeroSkills[j]) {
+                if (jsonHeroSkills[j].tree_name.indexOf(argumentType) !== -1) {
                     if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
                         finalCheckedList.push(jsonHeroSkills[j]);
                     }
@@ -2841,19 +2830,6 @@ function findSkillsWithArgument(signature, argumentType) {
                 ) {
                     if (!isInArray(finalCheckedList, jsonHeroSkillsLocalized[j])) {
                         finalCheckedList.push(jsonHeroSkillsLocalized[j]);
-                    }
-                }
-            }
-        }
-    } else if (signature === "pantheon_weapon") {
-        for (j in jsonHeroSkills) {
-            if ("type" in jsonHeroSkills[j]) {
-                if (
-                    jsonHeroSkills[j].group_name === "Pantheon Hero Skills" &&
-                    jsonHeroSkills[j].name.indexOf("Ascension") == -1
-                ) {
-                    if (!isInArray(finalCheckedList, jsonHeroSkills[j])) {
-                        finalCheckedList.push(jsonHeroSkills[j]);
                     }
                 }
             }

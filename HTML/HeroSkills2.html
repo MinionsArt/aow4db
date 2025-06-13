@@ -20,12 +20,26 @@
         <script src="/aow4db/Data/Search.js"></script>
 
         <script>
+            let selectedTreeFilter = "all";
+
             function HandlePage() {
-                CreateAllAbility();
+                CreateAllHeroSkills();
                 SetLevelUpStuff();
                 $("#filterInput").on("change input", function () {
                     ShowAllAbilitiesWithFilters();
                     SetLevelUpStuff();
+                });
+
+                document.querySelectorAll(".treeFilterButton").forEach((button) => {
+                    button.addEventListener("click", () => {
+                        // Remove active state from all buttons
+                        document.querySelectorAll(".treeFilterButton").forEach((btn) => btn.classList.remove("active"));
+                        button.classList.add("active");
+
+                        // Update selected filter and refresh view
+                        selectedTreeFilter = button.dataset.tree;
+                        CreateAllHeroSkills();
+                    });
                 });
             }
 
@@ -37,10 +51,30 @@
                 return el;
             }
 
-            function CreateAllAbility() {
-                jsonUnitAbilitiesLocalized.forEach((ability) => {
-                    if ("actionPoints" in ability) addAbility(ability.slug);
+            function CreateAllHeroSkills() {
+                document.getElementById("dataHolder").innerHTML = ""; // Clear existing
+
+                jsonHeroSkills.forEach((skill) => {
+                    const treeName = skill.tree_name?.toLowerCase() || "";
+
+                    // Filter logic: allow partial matches using indexOf
+                    if (selectedTreeFilter !== "all" && !treeName.includes(selectedTreeFilter.toLowerCase())) return;
+
+                    // If the skill has associated ability slugs
+                    if (Array.isArray(skill.abilities) && skill.abilities.length > 0) {
+                        skill.abilities.forEach(({ slug }) => {
+                            addHeroSkillAbility(slug, skill);
+                        });
+                    } else {
+                        // If it's a standalone skill without abilities
+                        addStandaloneHeroSkill(skill);
+                    }
                 });
+            }
+            function GetSimpleHeroSkillTooltip(name, description) {
+                const wrapper = document.createElement("div");
+                wrapper.innerHTML = `<h3>${name}</h3><p>${description}</p>`;
+                return wrapper;
             }
 
             function HideAll() {
@@ -137,13 +171,12 @@
                 sorting = `${sortType}:${ascendingOrder}`;
             }
 
-            function addAbility(a, b) {
+            function addHeroSkillAbility(slug, skillMeta) {
                 const holder = document.getElementById("dataHolder");
 
-                const abilityData = jsonUnitAbilitiesLocalized.find((item) => item.slug === a);
+                const abilityData = jsonUnitAbilities.find((item) => item.slug === slug);
                 if (!abilityData) return;
 
-                // Extract and default
                 const {
                     name = "",
                     icon = "",
@@ -160,7 +193,6 @@
                 let abilityMod = "";
                 let abilityName = name;
 
-                // Handle modifiers
                 if (modifiers.length > 0) {
                     modifiers.forEach((mod) => {
                         abilityName += "&#11049";
@@ -168,11 +200,9 @@
                     });
                 }
 
-                // Handle notes
-                let abilityNote = "";
-                let Cooldown = "";
-                let Once = "";
-
+                let abilityNote = "",
+                    Cooldown = "",
+                    Once = "";
                 notes.forEach(({ note }) => {
                     if (!note) return;
                     if (note.includes("Cooldown")) Cooldown = note;
@@ -180,16 +210,13 @@
                     else abilityNote += "<br>" + note;
                 });
 
-                // Requisites
                 let requisitesDisplay = "";
                 if (requisites.length > 0) {
                     requisitesDisplay = "(" + requisites.map((r) => r.requisite).join(", ") + ")";
                 }
 
-                // Build button
-                const btn = createElement("div", "list_abilityslot", { id: `${a}btn` });
+                const btn = createElement("div", "list_abilityslot", { id: `${slug}btn` });
 
-                // Icon
                 const img = createElement("img", "unit_ability_icon");
                 const iconType = GetAbilityBackground(damage);
                 img.src = `/aow4db/Icons/UnitIcons/${icon}.png`;
@@ -202,14 +229,21 @@
                 img.style.backgroundRepeat = "no-repeat";
                 img.style.backgroundSize = "40px 40px";
 
-                // Tooltip text
                 const tooltipText = createElement("div", "tooltip");
                 tooltipText.innerHTML = abilityName;
                 tooltipText.style.color = "white";
                 tooltipText.style.width = "250px";
 
-                // Tooltip content
-                let spa = GetAbilityToolTip(
+                const descr = createElement("div", "tooltip");
+                descr.innerHTML = description;
+                descr.style.color = "white";
+                descr.style.fontSize = "12px";
+                descr.style.width = "250px";
+
+                // add small description
+                tooltipText.append(descr);
+
+                /* let spa = GetAbilityToolTip(
                     abilityData,
                     damage,
                     abilityName,
@@ -217,17 +251,15 @@
                     `${accuracy}<accuracy></accuracy>`,
                     `${range}<range></range>`,
                     abilityMod,
-                    "", // enchantments (unused)
+                    "", // enchantments
                     abilityNote,
                     requisites,
                     Cooldown,
                     Once
-                );
+                );*/
 
-                // Apply tooltip listeners
-                addTooltipListeners(tooltipText, spa);
+                // addTooltipListeners(tooltipText, spa);
 
-                // Info columns
                 const colStyle = "color:white;";
                 const appendCol = (text, className, width) => {
                     const col = createElement("div", className);
@@ -250,6 +282,49 @@
                     btn.append(reqDiv);
                 }
 
+                // Add Hero Skill Info
+                const skillMetaDiv = createElement("div", "skill_metadata");
+                skillMetaDiv.innerHTML = `<span style="font-size:12px; color:lightgray;">[${skillMeta.tree_name}] ${skillMeta.name}</span>`;
+                btn.append(skillMetaDiv);
+
+                holder.append(btn);
+            }
+
+            function addStandaloneHeroSkill(skill) {
+                const { name = "Unknown Skill", icon = "mp", description = "No description available." } = skill;
+
+                const holder = document.getElementById("dataHolder");
+                const btn = createElement("div", "list_abilityslot");
+
+                const img = createElement("img", "unit_ability_icon");
+                img.src = `/aow4db/Icons/UnitIcons/${icon}.png`;
+                img.onerror = function () {
+                    this.src = "/aow4db/Icons/Text/mp.png";
+                };
+                img.width = 40;
+                img.height = 40;
+                img.style.backgroundImage = `url("/aow4db/Icons/Interface/hero_skill.png")`;
+                img.style.backgroundRepeat = "no-repeat";
+                img.style.backgroundSize = "40px 40px";
+
+                const tooltipText = createElement("div", "tooltip");
+                tooltipText.innerHTML = name;
+                tooltipText.style.color = "white";
+                tooltipText.style.width = "250px";
+
+                const descr = createElement("div", "tooltip");
+                descr.innerHTML = description;
+                descr.style.color = "white";
+                descr.style.fontSize = "12px";
+                descr.style.width = "250px";
+
+                tooltipText.append(descr);
+                //  const tooltipContent = GetSimpleHeroSkillTooltip(name, description); // You can define this function or inline it.
+                //   addTooltipListeners(tooltipText, tooltipContent);
+
+                btn.append(img);
+                btn.append(tooltipText);
+
                 holder.append(btn);
             }
         </script>
@@ -265,6 +340,16 @@
             <div style="margin-right: auto; margin-left: auto; width: 500px">
                 <input type="text" class="searchbar" id="filterInput" />
             </div>
+        </div>
+
+        <div id="treeFilterGroup" style="margin-bottom: 20px">
+            <button class="treeFilterButton active" data-tree="all">All</button>
+            <button class="treeFilterButton" data-tree="Champion">Champion</button>
+            <button class="treeFilterButton" data-tree="Wizard King">Wizard King</button>
+            <button class="treeFilterButton" data-tree="Dragon Lord">Dragon Lord</button>
+            <button class="treeFilterButton" data-tree="Eldritch Sovereign">Eldritch Sovereign</button>
+            <button class="treeFilterButton" data-tree="Death Knight">Death Knight</button>
+            <!-- Add more as needed -->
         </div>
 
         <div class="w3-container">
