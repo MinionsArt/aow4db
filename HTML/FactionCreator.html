@@ -12,6 +12,7 @@
 
             gtag("config", "G-CC3NE8PT7K");
         </script>
+
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
@@ -387,6 +388,7 @@
             <div></div>
             <div id="note"></div>
             <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
+            <button class="button-random" onclick="submitBuild()">Submit Build</button>
             <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
             <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
@@ -675,6 +677,13 @@
             <div id="originWrapperOptions" class="wrappers"></div>
         </div>
 
+        <form id="buildForm" style="display: none">
+            <input name="buildName" placeholder="Build Name" required />
+            <input name="author" placeholder="Author" />
+            <input name="notes" placeholder="Notes" />
+            <button type="submit">Submit Build</button>
+        </form>
+
         <script>
             function myFunction() {
                 // Get the text field
@@ -701,6 +710,27 @@
                     event.target.innerHTML = "▶ Show Overview";
                     panel.style.display = "none"; // Hide the panel
                 }
+            });
+
+            document.getElementById("buildForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(e.target);
+
+                // Append current page URL
+                formData.append("url", window.location.href);
+
+                fetch(
+                    "https://script.google.com/macros/s/AKfycby8xesn2rMAEqqz8YcuHQt_QbqsnCVjNqXaMsYTMuJHZOi8H9Bn_INCniGG2jp3IOJbDg/exec",
+                    {
+                        method: "POST",
+                        body: formData
+                        // ⚠️ Do NOT set any custom headers like Content-Type
+                    }
+                )
+                    .then((res) => res.text())
+                    .then((msg) => alert("Build submitted: " + msg))
+                    .catch((err) => console.error("Error submitting:", err));
             });
         </script>
     </body>
