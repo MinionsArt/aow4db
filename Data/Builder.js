@@ -1,3 +1,11 @@
+fetch("/aow4db/HTML/templates.html")
+    .then((res) => res.text())
+    .then((html) => {
+        const templateContainer = document.createElement("div");
+        templateContainer.innerHTML = html;
+        document.body.appendChild(templateContainer); // Or append to a hidden div
+    });
+
 var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get("sort");
 var currentView = "";
@@ -35,13 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.text())
         .then((headerHTML) => {
             document.body.insertAdjacentHTML("afterbegin", headerHTML);
-fetch("/aow4db/HTML/templates.html")
-    .then((res) => res.text())
-    .then((html) => {
-        const templateContainer = document.createElement("div");
-        templateContainer.innerHTML = html;
-        document.body.appendChild(templateContainer); // Or append to a hidden div
-    });
+
             CheckData();
         });
     // wait for a while and then  HandleExtraTooltips();
