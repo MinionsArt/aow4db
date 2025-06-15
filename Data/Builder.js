@@ -28,6 +28,13 @@ document.addEventListener("keydown", function (event) {
        return text;
 } 
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/aow4db/HTML/header.html")
+        .then((response) => response.text())
+        .then((headerHTML) => {
+            document.body.insertAdjacentHTML("afterbegin", headerHTML);
 fetch("/aow4db/HTML/templates.html")
     .then((res) => res.text())
     .then((html) => {
@@ -35,13 +42,6 @@ fetch("/aow4db/HTML/templates.html")
         templateContainer.innerHTML = html;
         document.body.appendChild(templateContainer); // Or append to a hidden div
     });
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("/aow4db/HTML/header.html")
-        .then((response) => response.text())
-        .then((headerHTML) => {
-            document.body.insertAdjacentHTML("afterbegin", headerHTML);
-
             CheckData();
         });
     // wait for a while and then  HandleExtraTooltips();
