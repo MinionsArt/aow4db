@@ -201,7 +201,7 @@
                 const filtered = allBuilds.filter((build) => {
                     const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
                     const data = parseBuildCode(code);
-                    const tags = build.tags || "Roleplay, Theme";
+                    const tags = build.Tags || "Roleplay, Theme";
 
                     return (
                         (culture === "all" || data.culture?.name === culture) &&
@@ -228,14 +228,14 @@
                 const listDiv = document.getElementById("list");
 
                 const linkUrl = build.BuildURL || "LinkError";
-                const buildName = build.buildName || "Unnamed";
+                const buildName = build.BuildName || "Unnamed";
                 const author = build.author || "Anonymous";
 
-                const tags = build.tags || "Roleplay, Theme";
+                const tags = build.Tags || "Roleplay, Theme";
                 const parsedLink = linkUrl?.split("=")[1] || "Error";
 
                 // Use ReadBackBuildData to get a display DOM element
-                const entryContent = ReadBackBuildData(parsedLink, tags);
+                const entryContent = ReadBackBuildData(parsedLink, tags, buildName);
 
                 // Wrap it in a clickable link
                 const linkWrapper = document.createElement("a");
@@ -248,7 +248,7 @@
                 listDiv.appendChild(linkWrapper);
             }
 
-            function ReadBackBuildData(code, tags) {
+            function ReadBackBuildData(code, tags, buildName) {
                 const splitTags = tags.split(",");
                 const splitcode = code.split(",");
                 const newDiv = document.createElement("div");
@@ -370,7 +370,7 @@
                     newDivMain.appendChild(createEntry(currentOrigin.name, currentOrigin.id, "FactionCreation", 60));
                 if (currentClass) newDivMain.appendChild(createEntry(currentClass.name, currentClass.id, "Text", 40));
 
-                newDivMain.appendChild(createName("Testing Names"));
+                newDivMain.appendChild(createName(buildName));
 
                 if (currentCulture)
                     newDivMain.appendChild(createEntry(currentCulture.name, currentCulture.id, "FactionCreation", 60));
