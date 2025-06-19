@@ -3027,7 +3027,7 @@ function LookUpTableData(lookUpId) {
     }
 }
 
-function GetQuickLink() {
+function GenerateQuickLink() {
     var code = "";
     // 0
 
@@ -3125,6 +3125,12 @@ function GetQuickLink() {
     }
 
     // console.log("hex code: " + code);
+
+    return code;
+}
+
+function GetQuickLink() {
+    var code = GenerateQuickLink();
 
     var linkField = document.getElementById("shareLink");
 

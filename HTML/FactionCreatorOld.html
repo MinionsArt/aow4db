@@ -1,71 +1,227 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
 
-    <script>
-        $("#body").ready(function() {
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                GetAllStartingTomes();
+        <style>
+            .list-entry {
+                width: fit-content;
 
+                height: fit-content;
+                max-height: 300px;
+                color: white;
+                display: flex;
 
+                border-width: 10px;
+                border-style: solid;
+                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                border-image-slice: 10 10 10 10;
+                background-color: black;
+            }
+
+            .subEntry {
+                display: grid;
+                padding: 15px;
+            }
+        </style>
+
+        <script>
+            const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
+            const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
+
+            $("#body").ready(function () {
+                $("#header").load("/aow4db/HTML/header.html", function () {
+                    CheckData();
+                });
             });
 
+            function HandlePage() {
+                readBuilds();
+            }
+        </script>
 
+        <title>Age of Wonders 4 Database - Faction Creator</title>
+    </head>
 
-        });
+    <body>
+        <div id="header"></div>
 
-    </script>
+        <div class="tome_name">Faction Builds List</div>
 
+        <div style="height: auto; color: white; text-align: center" id="list">List:</div>
 
-    <title>Age of Wonders 4 Database - Faction Creator</title>
-</head>
+        <div id="hiddentooltips" style="display: none"></div>
 
-<body>
-    <div id="header"></div>
+        <script>
+            function readBuilds() {
+                fetch(
+                    "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec?action=read"
+                )
+                    .then((res) => res.json())
+                    .then((builds) => {
+                        const listDiv = document.getElementById("list");
+                        listDiv.innerHTML = ""; // Clear old entries if needed
+                        builds.forEach((build) => {
+                            console.log(build);
+                            CreateListEntry(build);
+                        });
+                    });
+            }
 
-    <div class="textblocktitle">
-        Faction Creator by EricDB
+            function CreateListEntry(build) {
+                const listDiv = document.getElementById("list");
 
-    </div>
+                const entry = document.createElement("div");
+                entry.className = "build-entry";
 
-    <div class="wrap">
-        <iframe frameborder="0" src="https://itch.io/embed-upload/7830637?color=00bdc9" allowfullscreen="" width="1920" height="1160"><a href="https://ericdb.itch.io/wonderapp">Play WonderApp on itch.io</a></iframe>
-    </div>
+                const linkUrl = build.url || build.URL || build.BuildURL;
+                const buildName = build.buildName || build.buildname || "Unnamed";
+                const author = build.author || "Anonymous";
 
+                const tags = build.tags || "Roleplay, Theme";
+                // Read URL build code if needed (optional parsing)
+                const parsedLink = linkUrl?.split("=")[1] || "Error";
 
+                var data = ReadBackBuildData(parsedLink, tags);
 
+                listDiv.append(data);
+            }
 
+            function ReadBackBuildData(code, tags) {
+                const splitTags = tags.split(",");
+                const splitcode = code.split(",");
+                const newDiv = document.createElement("div");
+                newDiv.className = "list-entry";
 
-</body>
+                // Helpers
+                const findById = (id, arr) => arr.find((item) => item.id === id);
+                const findByName = (name, arr) => arr.find((item) => item.name === name);
+                const getIdFromCode = (hex) => jsonBuilderLookUp[hexToDecimal(hex)]?.id;
 
-<style>
-    .wrap {
-        width: 1920px;
-        height: 1160px;
-        overflow: hidden;
-        margin-left: auto;
-        position: relative;
-        margin-right: auto;
-    }
+                // Form traits
+                let currentFormTraitList = [];
+                if (splitcode[0] !== "F") {
+                    const traitCodes = splitcode[0].split(":");
+                    currentFormTraitList = traitCodes
+                        .map((hex) => getIdFromCode(hex))
+                        .map((id) => findById(id, jsonFactionCreation2))
+                        .filter(Boolean);
+                }
 
-    iframe {
-        width: 100%;
-        height: 100%;
-        transform: scale(0.75);
-        transform-origin: 0 0;
-    }
+                // Society 1 & 2
+                const currentSociety1 = findById(getIdFromCode(splitcode[1]), jsonFactionCreation2);
+                const currentSociety2 = findById(getIdFromCode(splitcode[2]), jsonFactionCreation2);
 
-</style>
+                // Form, Culture, Origin
+                const currentForm = findById(getIdFromCode(splitcode[3]), jsonFactionCreation);
+                const currentCulture = findById(getIdFromCode(splitcode[4]), jsonFactionCreation);
+                const currentOrigin = findById(getIdFromCode(splitcode[5]), jsonFactionCreation);
 
+                // Loadout / Class (legacy fallback)
+                let TempReplacementForClass = "";
+                let currentSubType = null;
+                if (splitcode[6] !== "s") {
+                    const subtype = findById(getIdFromCode(splitcode[6]), jsonFactionCreation);
+                    if (subtype?.name.includes("Dragon") || subtype?.name.includes("Giant")) {
+                        currentSubType = subtype;
+                    }
+                    TempReplacementForClass = GetClassFromWeaponId(subtype?.id);
+                }
+
+                // Tomes
+                const tomeCodes = splitcode[7]?.split(":") || [];
+                const currentTomeList = tomeCodes
+                    .map((hex) => getIdFromCode(hex))
+                    .map((id) => findById(id, jsonTomes))
+                    .filter(Boolean);
+                const currentTome = currentTomeList[0];
+
+                // Class
+                let currentClass = null;
+                if (splitcode[9] !== "s") {
+                    currentClass = findById(getIdFromCode(splitcode[9]), jsonFactionCreation);
+                } else if (TempReplacementForClass) {
+                    currentClass = findByName(TempReplacementForClass, jsonFactionCreation);
+                }
+
+                // Ascension
+                let currentAscension = null;
+                const ascenCode = splitcode[10];
+                if (ascenCode && ascenCode !== "a") {
+                    currentAscension = findById(getIdFromCode(ascenCode), jsonHeroSkills);
+                }
+
+                // Helpers to create UI components
+                const createEntry = (name, id, path) => {
+                    if (!name || !id) return null;
+                    const div = document.createElement("div");
+                    div.className = "subEntry";
+                    div.innerHTML = name;
+                    const img = document.createElement("img");
+                    img.src = `/aow4db/Icons/${path}/${id}.png`;
+                    img.width = 60;
+                    img.height = 60;
+                    img.style.position = "relative";
+                    img.style.top = "10px";
+                    div.appendChild(img);
+                    return div;
+                };
+
+                const createTomeList = (tomes) => {
+                    const container = document.createElement("div");
+                    container.className = "subEntry";
+                    tomes.forEach((tome) => {
+                        container.appendChild(createEntry(tome.name, tome.id, "TomeIcons"));
+                    });
+                    return container;
+                };
+
+                const createTagsList = (tags) => {
+                    const container = document.createElement("div");
+                    container.className = "subEntry";
+                    tags.forEach((tag) => {
+                        const div = document.createElement("div");
+                        div.innerHTML = tag;
+                        container.appendChild(div);
+                    });
+                    return container;
+                };
+
+                // Assemble display
+                if (currentOrigin)
+                    newDiv.appendChild(createEntry(currentOrigin.name, currentOrigin.id, "FactionCreation"));
+                if (currentClass) newDiv.appendChild(createEntry(currentClass.name, currentClass.id, "Text"));
+                if (currentCulture)
+                    newDiv.appendChild(createEntry(currentCulture.name, currentCulture.id, "FactionCreation"));
+                if (currentTomeList.length) newDiv.appendChild(createTomeList(currentTomeList));
+                if (splitTags.length) newDiv.appendChild(createTagsList(splitTags));
+                if (currentAscension) {
+                    const ascDiv = document.createElement("div");
+                    ascDiv.className = "subEntry";
+                    ascDiv.innerHTML = currentAscension.name;
+                    newDiv.appendChild(ascDiv);
+                }
+
+                return newDiv;
+            }
+        </script>
+    </body>
 </html>
-<footer>
-    <br>
-    <br>
-</footer>
+<footer><br /><br /></footer>

@@ -365,6 +365,9 @@
         </style>
 
         <script>
+            const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
+            const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
+
             $("#body").ready(function () {
                 $("#header").load("/aow4db/HTML/header.html", function () {
                     CheckData();
@@ -388,7 +391,7 @@
             <div></div>
             <div id="note"></div>
             <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
-           
+
             <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
             <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
@@ -677,12 +680,24 @@
             <div id="originWrapperOptions" class="wrappers"></div>
         </div>
 
-        <form id="buildForm" style="display: none">
-            <input name="buildName" placeholder="Build Name" required />
-            <input name="author" placeholder="Author" />
-            <input name="notes" placeholder="Notes" />
-            <button type="submit">Submit Build</button>
-        </form>
+        <div style="display: none">
+            <!-- Prefix Dropdown -->
+            <label for="namePrefixSelect">Prefix:</label>
+            <select id="namePrefixSelect"></select>
+
+            <!-- Type Dropdown -->
+            <label for="nameTypeSelect">Type:</label>
+            <select id="nameTypeSelect"></select>
+
+            <!-- Icon Selector -->
+            <label for="iconSelect">Icon:</label>
+            <select id="iconSelect"></select>
+
+            <div id="buildNamePreview"></div>
+
+            <button class="button-random" onclick="submitBuild()">Submit</button>
+          
+        </div>
 
         <script>
             function myFunction() {
@@ -712,26 +727,85 @@
                 }
             });
 
-            document.getElementById("buildForm").addEventListener("submit", function (e) {
-                e.preventDefault();
+            function submitBuild2(buildName, icon, notes) {
+                var getLink = GenerateQuickLink();
+                var currenturl = window.location.href.split("?")[0];
+                getLink = currenturl + "?u=" + getLink;
+                const url = new URL(
+                    "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
+                );
+                url.searchParams.set("action", "save");
+                // actual build settings
+                url.searchParams.set("buildName", buildName);
+                url.searchParams.set("author", icon);
+                url.searchParams.set("notes", notes);
+                url.searchParams.set("url", getLink);
 
-                const formData = new FormData(e.target);
-
-                // Append current page URL
-                formData.append("url", window.location.href);
-
-                fetch(
-                    "https://script.google.com/macros/s/AKfycby8xesn2rMAEqqz8YcuHQt_QbqsnCVjNqXaMsYTMuJHZOi8H9Bn_INCniGG2jp3IOJbDg/exec",
-                    {
-                        method: "POST",
-                        body: formData
-                        // ⚠️ Do NOT set any custom headers like Content-Type
-                    }
-                )
+                fetch(url)
                     .then((res) => res.text())
-                    .then((msg) => alert("Build submitted: " + msg))
-                    .catch((err) => console.error("Error submitting:", err));
-            });
+                    .then((msg) => alert("Submitted: " + msg))
+                    .catch((err) => console.error("Submission failed:", err));
+            }
+
+            function getBuildNameAndIcon() {
+                const prefix = document.getElementById("namePrefixSelect").value;
+                const type = document.getElementById("nameTypeSelect").value;
+                var name = `${prefix} ${type}`;
+                var icon = iconSelect.value;
+                return { name, icon };
+            }
+
+            const prefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic", "Ethereal", "Ancient"];
+            const types = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian", "Seer", "Invoker"];
+
+            const unitIcons = [
+                { filename: "icon_wolf.png", label: "Wolf 🐺" },
+                { filename: "icon_dragon.png", label: "Dragon 🐉" },
+                { filename: "icon_star.png", label: "Star ⭐" },
+                { filename: "icon_skull.png", label: "Skull 💀" },
+                { filename: "icon_phoenix.png", label: "Phoenix 🔥" }
+            ];
+
+            function populateDropdown(id, options, valueKey = null, labelKey = null) {
+                const select = document.getElementById(id);
+                select.innerHTML = ""; // Clear any existing options
+
+                options.forEach((opt) => {
+                    const option = document.createElement("option");
+                    if (valueKey && labelKey) {
+                        option.value = opt[valueKey];
+                        option.textContent = opt[labelKey];
+                    } else {
+                        option.value = opt;
+                        option.textContent = opt;
+                    }
+                    select.appendChild(option);
+                });
+            }
+
+            populateDropdown("namePrefixSelect", prefixes);
+            populateDropdown("nameTypeSelect", types);
+            populateDropdown("iconSelect", unitIcons, "filename", "label");
+
+            function updatePreview() {
+                const { fullHTML } = getBuildNameAndIcon();
+                document.getElementById("buildNamePreview").innerHTML = fullHTML;
+            }
+
+            ["namePrefixSelect", "nameTypeSelect", "iconSelect"].forEach((id) =>
+                document.getElementById(id).addEventListener("change", updatePreview)
+            );
+
+            updatePreview(); // Run on load
+
+            // Example usage
+            function submitBuild() {
+                var buildName = getBuildNameAndIcon();
+                var icon = "";
+                var notes = "Test";
+
+                submitBuild2(buildName, icon, notes);
+            }
         </script>
     </body>
 </html>
