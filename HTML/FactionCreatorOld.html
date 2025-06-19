@@ -21,14 +21,25 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
         <style>
+            .build-link {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                margin-bottom: 10px;
+            }
+            .list-entry:hover {
+                text-decoration: none;
+                background-color: #1f1f1f;
+            }
+            .list-main {
+                display: flex;
+            }
             .list-entry {
-                width: fit-content;
-
-                height: fit-content;
+                height: 100px;
                 max-height: 300px;
                 color: white;
                 display: flex;
-
+                justify-content: space-between;
                 border-width: 10px;
                 border-style: solid;
                 border-image: url(/aow4db/Icons/9slicetooltip.png);
@@ -36,16 +47,27 @@
                 background-color: black;
             }
 
+            .sideList {
+                display: contents;
+            }
+
             .subEntry {
                 display: grid;
                 padding: 15px;
             }
+
+            .tagEntry {
+                display: grid;
+                padding: 15px;
+            }
+            *,
+            ::after,
+            ::before {
+                box-sizing: border-box;
+            }
         </style>
 
         <script>
-            const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
-            const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
-
             $("#body").ready(function () {
                 $("#header").load("/aow4db/HTML/header.html", function () {
                     CheckData();
@@ -65,11 +87,37 @@
 
         <div class="tome_name">Faction Builds List</div>
 
+        <div id="filters">
+            <label for="cultureFilter">Culture:</label>
+            <select id="cultureFilter">
+                <option value="all">All</option>
+                <!-- Filled dynamically -->
+            </select>
+
+            <label for="originFilter">Ruler Origin:</label>
+            <select id="originFilter">
+                <option value="all">All</option>
+                <!-- Filled dynamically -->
+            </select>
+            <label for="classFilter">Class:</label>
+            <select id="classFilter">
+                <option value="all">All</option>
+                <!-- Filled dynamically -->
+            </select>
+
+            <label for="tagFilter">Tag:</label>
+            <select id="tagFilter">
+                <option value="all">All</option>
+                <!-- Filled dynamically -->
+            </select>
+        </div>
+
         <div style="height: auto; color: white; text-align: center" id="list">List:</div>
 
         <div id="hiddentooltips" style="display: none"></div>
 
         <script>
+            let allBuilds = [];
             function readBuilds() {
                 fetch(
                     "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec?action=read"
@@ -78,30 +126,126 @@
                     .then((builds) => {
                         const listDiv = document.getElementById("list");
                         listDiv.innerHTML = ""; // Clear old entries if needed
-                        builds.forEach((build) => {
-                            console.log(build);
-                            CreateListEntry(build);
-                        });
+
+                        allBuilds = builds;
+                        populateFilters(builds); // Build the dropdowns
+                        renderBuilds(builds);
                     });
+            }
+
+            function renderBuilds(builds) {
+                const listDiv = document.getElementById("list");
+                listDiv.innerHTML = ""; // Clear existing
+                builds.forEach(CreateListEntry);
+            }
+
+            function parseBuildCode(code) {
+                // Parse only what's needed for filtering
+                let culture, origin, classO;
+                try {
+                    const split = code.split(",");
+                    culture = getItemFromCode(split[4]); // culture
+                    origin = getItemFromCode(split[5]); // origin
+                    classO = getItemFromCode(split[9]); // origin
+                } catch (e) {}
+
+                return {
+                    culture,
+                    origin,
+                    classO
+                };
+            }
+
+            function getItemFromCode(codeSegment) {
+                const id = jsonBuilderLookUp[hexToDecimal(codeSegment)]?.id;
+                return jsonFactionCreation.find((x) => x.id === id);
+            }
+
+            function populateFilters(builds) {
+                const cultureSet = new Set();
+                const originSet = new Set();
+                const classSet = new Set();
+                const tagSet = new Set();
+                tagSet.add("Roleplay");
+                tagSet.add("Theme");
+                tagSet.add("PVP");
+                tagSet.add("Casual");
+
+                builds.forEach((build) => {
+                    const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
+
+                    const data = parseBuildCode(code); // You’ll need to expose `currentCulture`, etc.
+
+                    if (data.culture) cultureSet.add(data.culture.name);
+                    if (data.origin) originSet.add(data.origin.name);
+                    if (data.classO) classSet.add(data.classO.name);
+                });
+
+                populateSelect("cultureFilter", cultureSet);
+                populateSelect("originFilter", originSet);
+                populateSelect("tagFilter", tagSet);
+                populateSelect("classFilter", classSet);
+            }
+
+            document.getElementById("cultureFilter").addEventListener("change", filterBuilds);
+            document.getElementById("originFilter").addEventListener("change", filterBuilds);
+            document.getElementById("tagFilter").addEventListener("change", filterBuilds);
+            document.getElementById("classFilter").addEventListener("change", filterBuilds);
+
+            function filterBuilds() {
+                const culture = document.getElementById("cultureFilter").value;
+                const origin = document.getElementById("originFilter").value;
+                const tag = document.getElementById("tagFilter").value;
+                const classO = document.getElementById("classFilter").value;
+
+                const filtered = allBuilds.filter((build) => {
+                    const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
+                    const data = parseBuildCode(code);
+                    const tags = build.tags || "Roleplay, Theme";
+
+                    return (
+                        (culture === "all" || data.culture?.name === culture) &&
+                        (origin === "all" || data.origin?.name === origin) &&
+                        (classO === "all" || data.classO?.name === classO) &&
+                        (tag === "all" || tags?.indexOf(tag) != -1)
+                    );
+                });
+
+                renderBuilds(filtered);
+            }
+
+            function populateSelect(id, items) {
+                const select = document.getElementById(id);
+                items.forEach((item) => {
+                    const option = document.createElement("option");
+                    option.value = item;
+                    option.textContent = item;
+                    select.appendChild(option);
+                });
             }
 
             function CreateListEntry(build) {
                 const listDiv = document.getElementById("list");
 
-                const entry = document.createElement("div");
-                entry.className = "build-entry";
-
-                const linkUrl = build.url || build.URL || build.BuildURL;
-                const buildName = build.buildName || build.buildname || "Unnamed";
+                const linkUrl = build.BuildURL || "LinkError";
+                const buildName = build.buildName || "Unnamed";
                 const author = build.author || "Anonymous";
 
                 const tags = build.tags || "Roleplay, Theme";
-                // Read URL build code if needed (optional parsing)
                 const parsedLink = linkUrl?.split("=")[1] || "Error";
 
-                var data = ReadBackBuildData(parsedLink, tags);
+                // Use ReadBackBuildData to get a display DOM element
+                const entryContent = ReadBackBuildData(parsedLink, tags);
 
-                listDiv.append(data);
+                // Wrap it in a clickable link
+                const linkWrapper = document.createElement("a");
+                linkWrapper.href = linkUrl;
+
+                linkWrapper.rel = "noopener noreferrer"; // Security best practice
+                linkWrapper.className = "build-link";
+
+                linkWrapper.appendChild(entryContent);
+                listDiv.appendChild(linkWrapper);
             }
 
             function ReadBackBuildData(code, tags) {
@@ -110,6 +254,10 @@
                 const newDiv = document.createElement("div");
                 newDiv.className = "list-entry";
 
+                const newDivMain = document.createElement("div");
+                newDivMain.className = "list-main";
+
+                newDiv.appendChild(newDivMain);
                 // Helpers
                 const findById = (id, arr) => arr.find((item) => item.id === id);
                 const findByName = (name, arr) => arr.find((item) => item.name === name);
@@ -169,33 +317,46 @@
                 }
 
                 // Helpers to create UI components
-                const createEntry = (name, id, path) => {
+                const createEntry = (name, id, path, size) => {
                     if (!name || !id) return null;
                     const div = document.createElement("div");
                     div.className = "subEntry";
-                    div.innerHTML = name;
+
                     const img = document.createElement("img");
                     img.src = `/aow4db/Icons/${path}/${id}.png`;
-                    img.width = 60;
-                    img.height = 60;
+                    img.width = size;
+                    img.height = size;
                     img.style.position = "relative";
                     img.style.top = "10px";
+                    const nameSpan = document.createElement("span");
+                    nameSpan.innerHTML = name;
+                    addTooltipListeners(div, nameSpan);
                     div.appendChild(img);
+                    return div;
+                };
+
+                // Helpers to create UI components
+                const createName = (name) => {
+                    if (!name) return null;
+                    const div = document.createElement("div");
+                    div.className = "subEntry";
+
+                    div.innerHTML = name;
                     return div;
                 };
 
                 const createTomeList = (tomes) => {
                     const container = document.createElement("div");
-                    container.className = "subEntry";
+                    container.className = "sideList";
                     tomes.forEach((tome) => {
-                        container.appendChild(createEntry(tome.name, tome.id, "TomeIcons"));
+                        container.appendChild(createEntry(tome.name, tome.id, "TomeIcons", 40));
                     });
                     return container;
                 };
 
                 const createTagsList = (tags) => {
                     const container = document.createElement("div");
-                    container.className = "subEntry";
+                    container.className = "tagEntry";
                     tags.forEach((tag) => {
                         const div = document.createElement("div");
                         div.innerHTML = tag;
@@ -206,18 +367,23 @@
 
                 // Assemble display
                 if (currentOrigin)
-                    newDiv.appendChild(createEntry(currentOrigin.name, currentOrigin.id, "FactionCreation"));
-                if (currentClass) newDiv.appendChild(createEntry(currentClass.name, currentClass.id, "Text"));
+                    newDivMain.appendChild(createEntry(currentOrigin.name, currentOrigin.id, "FactionCreation", 60));
+                if (currentClass) newDivMain.appendChild(createEntry(currentClass.name, currentClass.id, "Text", 40));
+
+                newDivMain.appendChild(createName("Testing Names"));
+
                 if (currentCulture)
-                    newDiv.appendChild(createEntry(currentCulture.name, currentCulture.id, "FactionCreation"));
-                if (currentTomeList.length) newDiv.appendChild(createTomeList(currentTomeList));
-                if (splitTags.length) newDiv.appendChild(createTagsList(splitTags));
+                    newDivMain.appendChild(createEntry(currentCulture.name, currentCulture.id, "FactionCreation", 60));
+                if (currentTomeList.length) newDivMain.appendChild(createTomeList(currentTomeList));
+
                 if (currentAscension) {
                     const ascDiv = document.createElement("div");
                     ascDiv.className = "subEntry";
                     ascDiv.innerHTML = currentAscension.name;
-                    newDiv.appendChild(ascDiv);
+                    newDivMain.appendChild(ascDiv);
                 }
+
+                if (splitTags.length) newDiv.appendChild(createTagsList(splitTags));
 
                 return newDiv;
             }
