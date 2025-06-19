@@ -33,9 +33,10 @@
             }
             .list-main {
                 display: flex;
+                align-items: center;
             }
             .list-entry {
-                height: 100px;
+                height: 90px;
                 max-height: 300px;
                 color: white;
                 display: flex;
@@ -53,7 +54,6 @@
 
             .subEntry {
                 display: grid;
-                padding: 15px;
             }
 
             .tagEntry {
@@ -112,7 +112,7 @@
             </select>
         </div>
 
-        <div style="height: auto; color: white; text-align: center" id="list">List:</div>
+        <div style="height: auto; color: white; text-align: center" id="list">Loading...</div>
 
         <div id="hiddentooltips" style="display: none"></div>
 
@@ -254,10 +254,6 @@
                 const newDiv = document.createElement("div");
                 newDiv.className = "list-entry";
 
-                const newDivMain = document.createElement("div");
-                newDivMain.className = "list-main";
-
-                newDiv.appendChild(newDivMain);
                 // Helpers
                 const findById = (id, arr) => arr.find((item) => item.id === id);
                 const findByName = (name, arr) => arr.find((item) => item.name === name);
@@ -327,7 +323,7 @@
                     img.width = size;
                     img.height = size;
                     img.style.position = "relative";
-                    img.style.top = "10px";
+
                     const nameSpan = document.createElement("span");
                     nameSpan.innerHTML = name;
                     addTooltipListeners(div, nameSpan);
@@ -345,11 +341,11 @@
                     return div;
                 };
 
-                const createTomeList = (tomes) => {
+                const createTomeList = (tomes, source, size) => {
                     const container = document.createElement("div");
                     container.className = "sideList";
                     tomes.forEach((tome) => {
-                        container.appendChild(createEntry(tome.name, tome.id, "TomeIcons", 40));
+                        container.appendChild(createEntry(tome.name, tome.id, source, size));
                     });
                     return container;
                 };
@@ -365,16 +361,58 @@
                     return container;
                 };
 
+                const newDivMain = document.createElement("div");
+                newDivMain.className = "list-main";
+                newDivMain.style.width = "200px";
+                newDiv.appendChild(newDivMain);
+
                 // Assemble display
                 if (currentOrigin)
                     newDivMain.appendChild(createEntry(currentOrigin.name, currentOrigin.id, "FactionCreation", 60));
+                if (currentSubType)
+                    newDivMain.appendChild(createEntry(currentSubType.name, currentSubType.id, "FactionCreation", 40));
                 if (currentClass) newDivMain.appendChild(createEntry(currentClass.name, currentClass.id, "Text", 40));
 
-                newDivMain.appendChild(createName(buildName));
+                const newDivForm = document.createElement("div");
+                newDivForm.className = "list-main";
+                newDivForm.style.width = "200px";
+                newDiv.appendChild(newDivForm);
+                if (currentForm)
+                    newDivForm.appendChild(createEntry(currentForm.name, currentForm.id, "FactionCreation", 40));
+                if (currentFormTraitList.length)
+                    newDivForm.appendChild(createTomeList(currentFormTraitList, "FactionCreation", 30));
+                const newDivName = document.createElement("div");
+                newDivName.className = "list-main";
 
+                newDiv.appendChild(newDivName);
+                const generatedName = `${currentCulture.name || "Unknown"} ${currentClass.name || "Adventurer"} of ${currentOrigin.name || "Unknown"}`;
+
+                newDivName.appendChild(createName(generatedName));
+                newDivName.style.width = "400px";
+
+                const newDivCult = document.createElement("div");
+                newDivCult.className = "list-main";
+                newDivCult.style.width = "200px";
+
+                newDiv.appendChild(newDivCult);
                 if (currentCulture)
-                    newDivMain.appendChild(createEntry(currentCulture.name, currentCulture.id, "FactionCreation", 60));
-                if (currentTomeList.length) newDivMain.appendChild(createTomeList(currentTomeList));
+                    newDivCult.appendChild(createEntry(currentCulture.name, currentCulture.id, "FactionCreation", 40));
+                if (currentSociety1)
+                    newDivCult.appendChild(
+                        createEntry(currentSociety1.name, currentSociety1.id, "FactionCreation", 30)
+                    );
+                if (currentSociety2)
+                    newDivCult.appendChild(
+                        createEntry(currentSociety2.name, currentSociety2.id, "FactionCreation", 30)
+                    );
+
+                // tomes part
+
+                const newDivTomes = document.createElement("div");
+                newDivTomes.className = "list-main";
+
+                newDiv.appendChild(newDivTomes);
+                if (currentTomeList.length) newDivTomes.appendChild(createTomeList(currentTomeList, "TomeIcons", 30));
 
                 if (currentAscension) {
                     const ascDiv = document.createElement("div");
@@ -382,6 +420,7 @@
                     ascDiv.innerHTML = currentAscension.name;
                     newDivMain.appendChild(ascDiv);
                 }
+                newDivTomes.style.width = "500px";
 
                 if (splitTags.length) newDiv.appendChild(createTagsList(splitTags));
 
