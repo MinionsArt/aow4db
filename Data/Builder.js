@@ -340,6 +340,20 @@ function AddTagIconsForStatusEffects(name) {
     // if(name == "")
     let underline = '<span style="color:white; text-decoration:underline">';
     let endtag = "</span>";
+    
+    for (let k = 0; k < jsonExtraTooltips.length; k++) {
+        const effect = jsonExtraTooltips[k].name;
+        if (name.includes(effect)) {
+            let tooltipspan = document.createElement("span");
+            tooltipspan.className = "statusEffectHandler";
+            let tag = effect.replaceAll(" ", "_");
+            tooltipspan.innerHTML = effect;
+
+            let pattern = new RegExp(`\\b${effect}\\b`);
+            name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
+        }
+    }
+
 
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
@@ -359,19 +373,7 @@ function AddTagIconsForStatusEffects(name) {
         }
     }
 
-    for (let k = 0; k < jsonExtraTooltips.length; k++) {
-        const effect = jsonExtraTooltips[k].name;
-        if (name.includes(effect)) {
-            let tooltipspan = document.createElement("span");
-            tooltipspan.className = "statusEffectHandler";
-            let tag = effect.replaceAll(" ", "_");
-            tooltipspan.innerHTML = effect;
-
-            let pattern = new RegExp(`\\b${effect}\\b`);
-            name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-        }
-    }
-
+    
     // also check for numbers isolate settings
 
     if (getUserSettings().isolateNumber) {
@@ -382,38 +384,8 @@ function AddTagIconsForStatusEffects(name) {
 }
 
 function lookupStatusEffect(status) {
-    for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
-        if (status == jsonUnitAbilitiesLocalized[i].name) {
-            // found a mention of an ability
-            // double check if its a status effect
-            for (let j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
-                if (jsonUnitAbilitiesLocalized[i].slug == jsonUnitAbilitiesLocalized[j].slug) {
-                    // found the right status effect.
-
-                    let effect = jsonUnitAbilitiesLocalized[i].name;
-
-                    let tag = jsonUnitAbilitiesLocalized[i].description;
-                    if (getUserSettings().isolateNumber) {
-                        tag = highlightNumbersInDiv(tag);
-                    }
-                    let image = document.createElement("IMG");
-                    image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + jsonUnitAbilitiesLocalized[i].icon + ".png");
-                    image.setAttribute("width", "30");
-                    image.setAttribute("height", "30");
-
-                    tag.replaceAll("<br><br>", "<br>");
-
-                    let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
-
-                    status = status.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
-                    return status;
-                }
-            }
-        }
-    }
-
     for (let k = 0; k < jsonExtraTooltips.length; k++) {
-        if (status.indexOf(jsonExtraTooltips[k].name) != -1) {
+        if (status == jsonExtraTooltips[k].name) {
             let effect = jsonExtraTooltips[k].name;
             // check if itss an ability or just a small description
             let tag = "";
@@ -430,6 +402,36 @@ function lookupStatusEffect(status) {
 
             status = status.replace(effect, effectplusColor + "<br>" + tag);
             return status;
+        }
+    }
+
+    for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
+        if (status == jsonUnitAbilitiesLocalized[i].name) {
+            // found a mention of an ability
+            // double check if its a status effect
+            // for (let j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
+            //if (jsonUnitAbilitiesLocalized[i].slug == jsonUnitAbilitiesLocalized[j].slug) {
+            // found the right status effect.
+
+            let effect = jsonUnitAbilitiesLocalized[i].name;
+
+            let tag = jsonUnitAbilitiesLocalized[i].description;
+            if (getUserSettings().isolateNumber) {
+                tag = highlightNumbersInDiv(tag);
+            }
+            let image = document.createElement("IMG");
+            image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + jsonUnitAbilitiesLocalized[i].icon + ".png");
+            image.setAttribute("width", "30");
+            image.setAttribute("height", "30");
+
+            tag.replaceAll("<br><br>", "<br>");
+
+            let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
+
+            status = status.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
+            return status;
+            //}
+            // }
         }
     }
 
