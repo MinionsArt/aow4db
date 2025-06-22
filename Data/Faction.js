@@ -1030,11 +1030,8 @@ function GetCurrentChoiceList() {
     return listOfAllChoices;
 }
 
-function RecalculateStats(fromload) {
-    var list = GetCurrentChoiceList();
-
+function GetAffinityTotalFromList(list, tomeList, subType) {
     var input = "";
-
     for (i = 0; i < list.length; i++) {
         if (list[i] != "") {
             if ("affinity" in list[i]) {
@@ -1045,7 +1042,6 @@ function RecalculateStats(fromload) {
                     for (let index = 0; index < list[i].affinities.length; index++) {
                         if (list[i].affinities[index].name.indexOf("Affinity") != -1) {
                             var bittoadd = clearSocietyAffinities(list[i].affinities[index].name);
-                            //  console.log(list[i].affinities[0].name);
                             input += bittoadd + ",";
 
                             input = ClearAffinityExtraTags(input);
@@ -1061,47 +1057,23 @@ function RecalculateStats(fromload) {
         }
     }
 
-    for (i = 0; i < currentTomeList.length; i++) {
-        if (list[i] != "") {
-            if ("affinity" in currentTomeList[i]) {
-                input += currentTomeList[i].affinity + ",";
+    for (i = 0; i < tomeList.length; i++) {
+        if (tomeList[i] != "") {
+            if ("affinity" in tomeList[i]) {
+                input += tomeList[i].affinity + ",";
             }
-            if ("affinities" in currentTomeList[i]) {
-                var bittoadd = duplicateTags(currentTomeList[i].affinities);
+            if ("affinities" in tomeList[i]) {
+                var bittoadd = duplicateTags(tomeList[i].affinities);
                 input += bittoadd + ",";
                 input = ClearAffinityExtraTags(input);
             }
         }
     }
-    if (currentSubType != "") {
-        if ("affinity" in currentSubType) {
-            input += currentSubType.affinity + ",";
+    if (subType && subType != "") {
+        if ("affinity" in subType) {
+            input += subType.affinity + ",";
         }
     }
-
-    /*  for (i = 0; i < currentSignatureSkills.length; i++) {
-        if (list[i] != "") {
-            if ("hero_property" in currentSignatureSkills[i]) {
-                var bittoadd = transformString(currentSignatureSkills[i].hero_property);
-                input += bittoadd + ",";
-                input = ClearAffinityExtraTags(input);
-            }
-        }
-    }*/
-
-    // add all extra input tags
-    document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
-    document.getElementById("extraOrder").style = "text-align:center";
-    document.getElementById("extraChaos").innerHTML = "<empirechaosBig></empirechaosBig>" + extraChaos;
-    document.getElementById("extraChaos").style = "text-align:center";
-    document.getElementById("extraNature").innerHTML = "<empirenatureBig></empirenatureBig>" + extraNature;
-    document.getElementById("extraNature").style = "text-align:center";
-    document.getElementById("extraMaterium").innerHTML = "<empirematterBig></empirematterBig>" + extraMaterium;
-    document.getElementById("extraMaterium").style = "text-align:center";
-    document.getElementById("extraShadow").innerHTML = "<empireshadowBig></empireshadowBig>" + extraShadow;
-    document.getElementById("extraShadow").style = "text-align:center";
-    document.getElementById("extraAstral").innerHTML = "<empirearcanaBig></empirearcanaBig>" + extraAstral;
-    document.getElementById("extraAstral").style = "text-align:center";
 
     for (let i = 0; i < extraOrder; i++) {
         input += "<empireorder></empireorder>,";
@@ -1125,8 +1097,6 @@ function RecalculateStats(fromload) {
     }
 
     input = input.slice(0, -1);
-
-    // console.log(input);
 
     // Split the input string into an array of words
     const words = input.split(",").map((word) => word.trim());
@@ -1155,9 +1125,36 @@ function RecalculateStats(fromload) {
         })
         .join(", ");
 
+    result = result.replaceAll(",", "");
+    return result;
+}
+
+function RecalculateStats(fromload) {
+    var list = GetCurrentChoiceList();
+
+    var result = GetAffinityTotalFromList(list, currentTomeList, currentSubType);
+
+
+
+    // add all extra input tags
+    document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
+    document.getElementById("extraOrder").style = "text-align:center";
+    document.getElementById("extraChaos").innerHTML = "<empirechaosBig></empirechaosBig>" + extraChaos;
+    document.getElementById("extraChaos").style = "text-align:center";
+    document.getElementById("extraNature").innerHTML = "<empirenatureBig></empirenatureBig>" + extraNature;
+    document.getElementById("extraNature").style = "text-align:center";
+    document.getElementById("extraMaterium").innerHTML = "<empirematterBig></empirematterBig>" + extraMaterium;
+    document.getElementById("extraMaterium").style = "text-align:center";
+    document.getElementById("extraShadow").innerHTML = "<empireshadowBig></empireshadowBig>" + extraShadow;
+    document.getElementById("extraShadow").style = "text-align:center";
+    document.getElementById("extraAstral").innerHTML = "<empirearcanaBig></empirearcanaBig>" + extraAstral;
+    document.getElementById("extraAstral").style = "text-align:center";
+
+
+
     const affinitySummary = document.getElementById("currentAffinity");
 
-    result = result.replaceAll(",", "");
+
 
     currentAffinityTotal = result;
 

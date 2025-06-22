@@ -340,7 +340,7 @@ function AddTagIconsForStatusEffects(name) {
     // if(name == "")
     let underline = '<span style="color:white; text-decoration:underline">';
     let endtag = "</span>";
-    
+
     for (let k = 0; k < jsonExtraTooltips.length; k++) {
         const effect = jsonExtraTooltips[k].name;
         if (name.includes(effect)) {
@@ -353,7 +353,6 @@ function AddTagIconsForStatusEffects(name) {
             name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
         }
     }
-
 
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
@@ -373,7 +372,6 @@ function AddTagIconsForStatusEffects(name) {
         }
     }
 
-    
     // also check for numbers isolate settings
 
     if (getUserSettings().isolateNumber) {
