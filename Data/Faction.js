@@ -3369,5 +3369,17 @@ function hexToDecimal(hex) {
 }
 
 function RebuildFromParam(code) {
+
+
+
     reversLookUp(code);
+
+    fetch("https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec", {
+        method: "POST",
+        body: new URLSearchParams({
+            action: "incrementView",
+            buildId: window.location.href.split("?")[0] + "?u=" + code
+        })
+    })
+        .then((msg) => console.log(msg));
 }

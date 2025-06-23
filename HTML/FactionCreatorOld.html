@@ -347,15 +347,17 @@
 
             const linkUrl = build.BuildURL || "LinkError";
             const buildName = build.BuildName || "Unnamed";
-            const author = build.author || "Anonymous";
+            const editKey = build.editkey || "";
 
             const date = build.Timestamp || "N/A";
+
+            const views = build.Views || 0;
 
             const tags = build.Tags || "Roleplay, Theme";
             const parsedLink = linkUrl?.split("=")[1] || "Error";
 
             // Use ReadBackBuildData to get a display DOM element
-            const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date);
+            const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date, views);
 
             // Wrap it in a clickable link
             const linkWrapper = document.createElement("a");
@@ -381,7 +383,7 @@
 
 
 
-        function ReadBackBuildData(code, tags, buildName, date) {
+        function ReadBackBuildData(code, tags, buildName, date, views) {
             var build = getBaseBuildDate(code);
             const splitTags = tags.split(",");
 
@@ -643,7 +645,7 @@
             newDiv.appendChild(newDivExtra);
             newDivPop = document.createElement("div");
             newDivPop.setAttribute("style", "padding-top:20px");
-            newDivPop.append(renderViewCount(100));
+            newDivPop.append(renderViewCount(views));
             newDivExtra.appendChild(newDivPop);
             newDivDate = document.createElement("div");
             newDivDate.innerHTML = getPatchForDate(date);

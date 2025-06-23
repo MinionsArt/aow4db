@@ -1,550 +1,528 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
 
-            gtag("config", "G-CC3NE8PT7K");
-        </script>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
-        <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
-        <meta charset="UTF-8" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        gtag("config", "G-CC3NE8PT7K");
+    </script>
 
-        <style>
-            button {
-                font-family: "Regular", sans-serif;
-            }
+    <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-            .small_title {
-                font-family: "Decorative";
-                color: burlywood;
-                font-size: 14px;
-            }
+    <style>
+        button {
+            font-family: "Regular", sans-serif;
+        }
 
-            /* CSS styles for buttons */
-            .button {
-                background-color: #007bff00;
-                color: #fff;
-                border: none;
-                position: relative;
-                display: flex;
-                justify-content: space-between;
+        .small_title {
+            font-family: "Decorative";
+            color: burlywood;
+            font-size: 14px;
+        }
 
-                align-items: center;
+        /* CSS styles for buttons */
+        .button {
+            background-color: #007bff00;
+            color: #fff;
+            border: none;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
 
-                cursor: pointer;
-            }
+            align-items: center;
 
-            /* CSS styles for buttons */
-            .button2 {
-                background-color: #007bff00;
-                color: #fff;
-                border: none;
-                position: relative;
-                display: flex;
-                justify-content: space-between;
+            cursor: pointer;
+        }
 
-                align-items: center;
+        /* CSS styles for buttons */
+        .button2 {
+            background-color: #007bff00;
+            color: #fff;
+            border: none;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
 
-                cursor: pointer;
-            }
+            align-items: center;
 
-            /* CSS styles for origin buttons */
-            .origin-button {
-                padding: 5px;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                cursor: pointer;
-                margin: 5px;
-                border-radius: 5px;
-            }
+            cursor: pointer;
+        }
 
-            .button-inset {
-                background-color: #007bff00;
-                color: #fff;
-                border: none;
-                cursor: pointer;
-                position: relative;
-                left: 30px;
+        /* CSS styles for origin buttons */
+        .origin-button {
+            padding: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+        }
 
-                align-items: center;
+        .button-inset {
+            background-color: #007bff00;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            left: 30px;
 
-                display: flex;
-                justify-content: space-between;
-            }
+            align-items: center;
 
-            .list-button {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 100%;
-                background-color: #111;
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
 
-                display: flex;
-                justify-content: normal;
-            }
+        .list-button {
+            border-width: 3px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            border-image-repeat: stretch;
+            width: 100%;
+            background-color: #111;
+            color: #fff;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
 
-            .list-button.selected {
-                background-color: #4caf50;
-                color: white;
-            }
+            display: flex;
+            justify-content: normal;
+        }
 
-            .list-button-small {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 60px;
+        .list-button.selected {
+            background-color: #4caf50;
+            color: white;
+        }
 
-                background-color: #111;
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+        .list-button-small {
+            border-width: 3px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            border-image-repeat: stretch;
+            width: 60px;
 
-            .list-button-disabled {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 100%;
-                background-color: #111;
-                color: #ff1111;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
+            background-color: #111;
+            color: #fff;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
+        }
 
-                display: flex;
-                filter: brightness(0.5);
-                justify-content: normal;
-            }
+        .list-button-disabled {
+            border-width: 3px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            border-image-repeat: stretch;
+            width: 100%;
+            background-color: #111;
+            color: #ff1111;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
 
-            .list-button-currentequipped {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 100%;
-                background-color: #347634;
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
+            display: flex;
+            filter: brightness(0.5);
+            justify-content: normal;
+        }
 
-                display: flex;
-                justify-content: normal;
-            }
+        .list-button-currentequipped {
+            border-width: 3px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            border-image-repeat: stretch;
+            width: 100%;
+            background-color: #347634;
+            color: #fff;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
 
-            .list-button-long {
-                /* border-width: 3px; */
-                /* border-style: solid; */
-                /* border-image: url(/aow4db/Icons/9slicetooltip.png); */
-                /* border-image-slice: 10 10 10 10; */
-                /* border-image-repeat: stretch; */
-                width: 100px;
-                height: 30px;
-                background-color: #111;
-                color: #fff;
-                height: 60px;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+            display: flex;
+            justify-content: normal;
+        }
 
-            .tome-button-small {
-                width: 60px;
-                height: 70px;
+        .list-button-long {
+            /* border-width: 3px; */
+            /* border-style: solid; */
+            /* border-image: url(/aow4db/Icons/9slicetooltip.png); */
+            /* border-image-slice: 10 10 10 10; */
+            /* border-image-repeat: stretch; */
+            width: 100px;
+            height: 30px;
+            background-color: #111;
+            color: #fff;
+            height: 60px;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
+        }
 
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+        .tome-button-small {
+            width: 60px;
+            height: 70px;
 
-            .skill-button-small {
-                width: 80px;
-                height: 80px;
+            color: #fff;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
+        }
 
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+        .skill-button-small {
+            width: 80px;
+            height: 80px;
 
-            .subDivider {
-                display: flex;
-                justify-content: space-between;
-            }
+            color: #fff;
+            /* border: none; */
+            cursor: pointer;
+            position: relative;
+        }
 
-            .list-button-small:hover,
-            .list-button:hover,
-            .button:hover,
-            .button-inset:hover,
-            .skill-button-small:hover,
-            .tome-button-small:hover,
-            .button-random:hover,
-            .button-overview:hover {
-                filter: brightness(200%);
-            }
+        .subDivider {
+            display: flex;
+            justify-content: space-between;
+        }
 
-            .test {
-                width: 20px;
-                height: 20px;
-                border-width: 5px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-            }
+        .list-button-small:hover,
+        .list-button:hover,
+        .button:hover,
+        .button-inset:hover,
+        .skill-button-small:hover,
+        .tome-button-small:hover,
+        .button-random:hover,
+        .button-overview:hover {
+            filter: brightness(200%);
+        }
 
-            .wrappers {
-                position: relative;
+        .test {
+            width: 20px;
+            height: 20px;
+            border-width: 5px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+        }
 
-                display: grid;
-                grid-template-columns: repeat(7, 2fr);
-                overflow-y: auto;
-                max-height: 300px;
-                height: fit-content;
-            }
+        .wrappers {
+            position: relative;
 
-            .subSubDiv {
-                min-height: 240px;
-                width: 350px;
-            }
+            display: grid;
+            grid-template-columns: repeat(7, 2fr);
+            overflow-y: auto;
+            max-height: 300px;
+            height: fit-content;
+        }
 
-            .subSubDiv2 {
-                min-height: 130px;
-                width: 350px;
-            }
+        .subSubDiv {
+            min-height: 240px;
+            width: 350px;
+        }
 
-            .shield {
-                float: left;
-            }
+        .subSubDiv2 {
+            min-height: 130px;
+            width: 350px;
+        }
 
-            .symbol {
-                position: absolute;
-                /* float: left; */
-                top: 12px;
-                left: 14px;
-            }
+        .shield {
+            float: left;
+        }
 
-            .selections {
-                width: fit-content;
+        .symbol {
+            position: absolute;
+            /* float: left; */
+            top: 12px;
+            left: 14px;
+        }
 
-                height: fit-content;
-                max-height: 300px;
-                color: white;
-                display: inline-block;
-                position: absolute;
-                border-width: 10px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                background-color: black;
-            }
+        .selections {
+            width: fit-content;
 
-            .container {
-                display: inline-block;
-                position: relative;
+            height: fit-content;
+            max-height: 300px;
+            color: white;
+            display: inline-block;
+            position: absolute;
+            border-width: 10px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            background-color: black;
+        }
 
-                width: 700px;
+        .container {
+            display: inline-block;
+            position: relative;
 
-                background-image: url(/aow4db/Icons/tooltipBG.png);
+            width: 700px;
 
-                background-size: cover;
-                font-size: 13px;
-                color: #bbcdf6;
-                text-align: left;
-                border-width: 10px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                text-shadow: 2px 2px black;
-            }
+            background-image: url(/aow4db/Icons/tooltipBG.png);
 
-            .affinityText {
-                top: 20px;
-                max-width: 300px;
-                font-size: 15px;
-                position: relative;
-            }
+            background-size: cover;
+            font-size: 13px;
+            color: #bbcdf6;
+            text-align: left;
+            border-width: 10px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            text-shadow: 2px 2px black;
+        }
 
-            .factioncreator {
-                position: relative;
-                display: flex;
+        .affinityText {
+            top: 20px;
+            max-width: 300px;
+            font-size: 15px;
+            position: relative;
+        }
 
-                justify-content: center;
-            }
+        .factioncreator {
+            position: relative;
+            display: flex;
 
-            .AddSubtract {
-                margin: -2px;
-                font-weight: 900;
-                color: white;
-                background-color: transparent;
-                border: none;
-            }
+            justify-content: center;
+        }
 
-            .overview {
-                max-height: 650px;
-                display: flex;
-                align-content: flex-start;
-                align-items: flex-start;
-                flex-wrap: wrap;
-                flex-direction: column;
-            }
+        .AddSubtract {
+            margin: -2px;
+            font-weight: 900;
+            color: white;
+            background-color: transparent;
+            border: none;
+        }
 
-            .column {
-                padding: 6px;
-                font-size: 14px;
-                font-family: "Decorative";
-                color: burlywood;
-            }
+        .overview {
+            max-height: 650px;
+            display: flex;
+            align-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
 
-            .overview_list_entry {
-                display: flex;
-                box-sizing: border-box;
-                min-width: 180px;
-                min-height: 30px;
-                max-width: 180px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                overflow: hidden;
-                background-color: rgb(17, 17, 17);
+        .column {
+            padding: 6px;
+            font-size: 14px;
+            font-family: "Decorative";
+            color: burlywood;
+        }
 
-                font-size: 12px;
-                color: white;
-            }
+        .overview_list_entry {
+            display: flex;
+            box-sizing: border-box;
+            min-width: 180px;
+            min-height: 30px;
+            max-width: 180px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-width: 3px;
+            border-style: solid;
+            border-image: url(/aow4db/Icons/9slicetooltip.png);
+            border-image-slice: 10 10 10 10;
+            border-image-repeat: stretch;
+            overflow: hidden;
+            background-color: rgb(17, 17, 17);
 
-            .overview_list_entry.highlighted {
-                background-image: url(/aow4db/Icons/Interface/fav.png);
-                background-repeat: no-repeat;
-                background-position-x: 156px;
-                background-size: 20px;
-                background-color: rgb(24 42 64);
-            }
+            font-size: 12px;
+            color: white;
+        }
 
-            .overview_list_entry:hover {
-                filter: brightness(200%);
-            }
+        .overview_list_entry.highlighted {
+            background-image: url(/aow4db/Icons/Interface/fav.png);
+            background-repeat: no-repeat;
+            background-position-x: 156px;
+            background-size: 20px;
+            background-color: rgb(24 42 64);
+        }
 
-            .AddSubtract:hover {
-                margin: -2px;
-                font-weight: 1900;
-                color: aqua;
-                background-color: transparent;
-                border: none;
-            }
+        .overview_list_entry:hover {
+            filter: brightness(200%);
+        }
 
-            .sortingButton:hover {
-                background-color: dimgrey;
-            }
-        </style>
+        .AddSubtract:hover {
+            margin: -2px;
+            font-weight: 1900;
+            color: aqua;
+            background-color: transparent;
+            border: none;
+        }
 
-        <script>
-            const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
-            const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
+        .sortingButton:hover {
+            background-color: dimgrey;
+        }
+    </style>
 
-            $("#body").ready(function () {
-                $("#header").load("/aow4db/HTML/header.html", function () {
-                    CheckData();
-                });
+    <script>
+        const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
+        const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
+
+        $("#body").ready(function () {
+            $("#header").load("/aow4db/HTML/header.html", function () {
+                CheckData();
             });
+        });
 
-            function HandlePage() {
-                SetRandomStart();
-            }
-        </script>
+        function HandlePage() {
+            SetRandomStart();
+        }
+    </script>
 
-        <title>Age of Wonders 4 Database - Faction Creator</title>
-    </head>
+    <title>Age of Wonders 4 Database - Faction Creator</title>
+</head>
 
-    <body>
-        <div id="header"></div>
+<body>
+    <div id="header"></div>
 
-        <div class="tome_name">Faction creator</div>
+    <div class="tome_name">Faction creator</div>
 
-        <div style="color: white; display: table; margin: 5px; margin-left: auto; margin-right: auto">
-            <div></div>
-            <div id="note"></div>
-            <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
+    <div style="color: white; display: table; margin: 5px; margin-left: auto; margin-right: auto">
+        <div></div>
+        <div id="note"></div>
+        <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
 
-            <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
+        <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
-            <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
-            <div style="display: flex; flex-direction: row; justify-content: space-around">
-                <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br />
-                <button class="button-overview" style="left: 200px" id="toggleButton">◀ Hide Overview</button>
-            </div>
+        <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
+        <div style="display: flex; flex-direction: row; justify-content: space-around">
+            <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br />
+            <button class="button-overview" style="left: 200px" id="toggleButton">◀ Hide Overview</button>
         </div>
+    </div>
 
-        <div class="factioncreator" id="capture">
-            <div class="typeHolder" id="factioncreator">
-                <div class="container">
-                    <div style="height: 90px">
-                        <div class="playerSigil">
-                            <!-- <canvas id="myCanvas" class="shield" width="70" height="70" style="float:left"></canvas>
+    <div class="factioncreator" id="capture">
+        <div class="typeHolder" id="factioncreator">
+            <div class="container">
+                <div style="height: 90px">
+                    <div class="playerSigil">
+                        <!-- <canvas id="myCanvas" class="shield" width="70" height="70" style="float:left"></canvas>
                         <canvas class="symbol" id="myCanvas2" width="50" height="50" style="float:left"></canvas>-->
-                            <img
-                                class="shield"
-                                id="shield"
-                                src="/aow4db/Icons/Interface/Sigil.png"
-                                width="70px"
-                                height="70px" />
-                            <img class="symbol" id="symbol" src="/aow4db/Icons/Interface/symbol.png" height="45px" />
-                        </div>
-                        <!--  <button class="test" id="shieldColor" onclick="ChangeShieldCol()"> </button>
+                        <img class="shield" id="shield" src="/aow4db/Icons/Interface/Sigil.png" width="70px"
+                            height="70px" />
+                        <img class="symbol" id="symbol" src="/aow4db/Icons/Interface/symbol.png" height="45px" />
+                    </div>
+                    <!--  <button class="test" id="shieldColor" onclick="ChangeShieldCol()"> </button>
                     <button class="test" id="symbolColor" onclick="ChangeSymbolCol()"> </button>-->
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <div id="currentAffinity" class="affinityText"></div>
-                            <div>
-                                Extra Affinity Points
-                                <div
-                                    id="extraAffinity"
-                                    style="
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <div id="currentAffinity" class="affinityText"></div>
+                        <div>
+                            Extra Affinity Points
+                            <div id="extraAffinity" style="
                                         max-width: 300px;
                                         display: flex;
                                         justify-content: space-evenly;
                                         background-color: #f0f8ff2b;
                                         position: relative;
                                     ">
-                                    <div style="display: flex; height: 50px">
-                                        <div id="extraOrder"></div>
-                                        <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('order','⮝')">⮝</button>
-                                            <button class="AddSubtract" onclick="AddExtra('order','⮟')">⮟</button>
-                                        </div>
+                                <div style="display: flex; height: 50px">
+                                    <div id="extraOrder"></div>
+                                    <div style="display: flex; flex-direction: column">
+                                        <button class="AddSubtract" onclick="AddExtra('order','⮝')">⮝</button>
+                                        <button class="AddSubtract" onclick="AddExtra('order','⮟')">⮟</button>
                                     </div>
+                                </div>
 
-                                    <div style="display: flex; height: 50px">
-                                        <div id="extraChaos"></div>
+                                <div style="display: flex; height: 50px">
+                                    <div id="extraChaos"></div>
 
-                                        <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('chaos','⮝')">⮝</button>
-                                            <button class="AddSubtract" onclick="AddExtra('chaos','⮟')">⮟</button>
-                                        </div>
+                                    <div style="display: flex; flex-direction: column">
+                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮝')">⮝</button>
+                                        <button class="AddSubtract" onclick="AddExtra('chaos','⮟')">⮟</button>
                                     </div>
+                                </div>
 
-                                    <div style="display: flex; height: 50px">
-                                        <div id="extraNature"></div>
-                                        <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('nature','⮝')">⮝</button>
-                                            <button class="AddSubtract" onclick="AddExtra('nature','⮟')">⮟</button>
-                                        </div>
+                                <div style="display: flex; height: 50px">
+                                    <div id="extraNature"></div>
+                                    <div style="display: flex; flex-direction: column">
+                                        <button class="AddSubtract" onclick="AddExtra('nature','⮝')">⮝</button>
+                                        <button class="AddSubtract" onclick="AddExtra('nature','⮟')">⮟</button>
                                     </div>
-                                    <div style="display: flex; height: 50px">
-                                        <div id="extraShadow"></div>
+                                </div>
+                                <div style="display: flex; height: 50px">
+                                    <div id="extraShadow"></div>
 
-                                        <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('shadow','⮝')">⮝</button>
-                                            <button class="AddSubtract" onclick="AddExtra('shadow','⮟')">⮟</button>
-                                        </div>
+                                    <div style="display: flex; flex-direction: column">
+                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮝')">⮝</button>
+                                        <button class="AddSubtract" onclick="AddExtra('shadow','⮟')">⮟</button>
                                     </div>
-                                    <div style="display: flex; height: 50px">
-                                        <div id="extraMaterium"></div>
+                                </div>
+                                <div style="display: flex; height: 50px">
+                                    <div id="extraMaterium"></div>
 
-                                        <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('materium','⮝')">⮝</button>
-                                            <button class="AddSubtract" onclick="AddExtra('materium','⮟')">⮟</button>
-                                        </div>
+                                    <div style="display: flex; flex-direction: column">
+                                        <button class="AddSubtract" onclick="AddExtra('materium','⮝')">⮝</button>
+                                        <button class="AddSubtract" onclick="AddExtra('materium','⮟')">⮟</button>
                                     </div>
-                                    <div style="display: flex; height: 50px">
-                                        <div id="extraAstral"></div>
+                                </div>
+                                <div style="display: flex; height: 50px">
+                                    <div id="extraAstral"></div>
 
-                                        <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('astral','⮝')">⮝</button>
-                                            <button class="AddSubtract" onclick="AddExtra('astral','⮟')">⮟</button>
-                                        </div>
+                                    <div style="display: flex; flex-direction: column">
+                                        <button class="AddSubtract" onclick="AddExtra('astral','⮝')">⮝</button>
+                                        <button class="AddSubtract" onclick="AddExtra('astral','⮟')">⮟</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <br />
-                        <hr />
                     </div>
+                    <br />
+                    <hr />
+                </div>
 
-                    <div class="subDivider">
-                        <div style="width: 280px">
-                            <div class="subSubDiv">
-                                <div style="min-height: 200px">
-                                    <span class="small_title"> Ruler</span>
-                                    <input
-                                        type="text"
-                                        value="Ruler Name"
-                                        class="inputfield"
-                                        id="fname1"
-                                        maxlength="35"
-                                        name="fname" />
+                <div class="subDivider">
+                    <div style="width: 280px">
+                        <div class="subSubDiv">
+                            <div style="min-height: 200px">
+                                <span class="small_title"> Ruler</span>
+                                <input type="text" value="Ruler Name" class="inputfield" id="fname1" maxlength="35"
+                                    name="fname" />
 
-                                    <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
-                                    <div id="buttonContainer">
-                                        <button
-                                            class="button"
-                                            id="originButtonOrigin"
-                                            onclick="SetupButtons(event,'Origin')"></button>
-                                    </div>
+                                <!--<input type="text" value="Title" class="inputfield" id="fname2" name="fname">-->
+                                <div id="buttonContainer">
+                                    <button class="button" id="originButtonOrigin"
+                                        onclick="SetupButtons(event,'Origin')"></button>
+                                </div>
 
-                                    <div id="buttonContainer10">
-                                        <button
-                                            class="button-inset"
-                                            id="originButtonSubType"
-                                            onclick="SetupButtons(event,'SubType')"></button>
-                                    </div>
-                                    <div id="buttonContainer8">
-                                        <button
-                                            class="button-inset"
-                                            id="originButtonClass"
-                                            onclick="SetupButtons(event,'Class')"></button>
-                                    </div>
-                                    <div id="buttonContainer9">
-                                        <button
-                                            class="button-inset"
-                                            id="originButtonTome"
-                                            onclick="SetupButtons(event,'Tome')"></button>
-                                    </div>
-                                    <br /><br />
-                                    <div id="buttonContainer7">
-                                        <span class="small_title"> Ascension</span>
-                                        <button
-                                            style="float: right; color: red"
-                                            class="button"
-                                            onclick="ClearAscensionSkill()">
-                                            X
-                                        </button>
-                                        <button
-                                            class="button-inset"
-                                            id="originButtonAscension"
-                                            onclick="SetupButtons(event,'Ascension')">
-                                            +
-                                        </button>
-                                    </div>
+                                <div id="buttonContainer10">
+                                    <button class="button-inset" id="originButtonSubType"
+                                        onclick="SetupButtons(event,'SubType')"></button>
+                                </div>
+                                <div id="buttonContainer8">
+                                    <button class="button-inset" id="originButtonClass"
+                                        onclick="SetupButtons(event,'Class')"></button>
+                                </div>
+                                <div id="buttonContainer9">
+                                    <button class="button-inset" id="originButtonTome"
+                                        onclick="SetupButtons(event,'Tome')"></button>
+                                </div>
+                                <br /><br />
+                                <div id="buttonContainer7">
+                                    <span class="small_title"> Ascension</span>
+                                    <button style="float: right; color: red" class="button"
+                                        onclick="ClearAscensionSkill()">
+                                        X
+                                    </button>
+                                    <button class="button-inset" id="originButtonAscension"
+                                        onclick="SetupButtons(event,'Ascension')">
+                                        +
+                                    </button>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- <div class="subSubDiv2">
+                        <!-- <div class="subSubDiv2">
                                 <span class="small_title">Signature Skills</span>
                                 <button style="float: right; color: red" class="button" onclick="RemoveLastSkill()">
                                     X
@@ -558,254 +536,235 @@
                                     </button>
                                 </div>
                             </div>-->
-                        </div>
+                    </div>
 
-                        <div style="width: 300px">
-                            <div class="subSubDiv" style="min-height: 200px">
-                                <span class="small_title"> Race</span>
-                                <input
-                                    type="text"
-                                    class="inputfield"
-                                    value="Race Name"
-                                    id="fname"
-                                    maxlength="35"
-                                    name="fname" />
+                    <div style="width: 300px">
+                        <div class="subSubDiv" style="min-height: 200px">
+                            <span class="small_title"> Race</span>
+                            <input type="text" class="inputfield" value="Race Name" id="fname" maxlength="35"
+                                name="fname" />
 
-                                <div id="buttonContainer5">
-                                    <button
-                                        class="button"
-                                        id="originButtonForm"
-                                        onclick="SetupButtons(event,'Form')"></button>
-                                </div>
+                            <div id="buttonContainer5">
+                                <button class="button" id="originButtonForm"
+                                    onclick="SetupButtons(event,'Form')"></button>
+                            </div>
 
-                                <div id="buttonContainer4">
-                                    <button
-                                        style="
+                            <div id="buttonContainer4">
+                                <button style="
                                             background-color: transparent;
                                             min-height: 40px;
                                             min-width: 200px;
                                             border: none;
-                                        "
-                                        id="originButtonFormTrait"
-                                        onclick="SetupButtons(event,'FormTrait')">
-                                        <span id="selected-options-container" style="color: white"></span>
-                                    </button>
-                                </div>
+                                        " id="originButtonFormTrait" onclick="SetupButtons(event,'FormTrait')">
+                                    <span id="selected-options-container" style="color: white"></span>
+                                </button>
                             </div>
-                            <div class="subSubDiv2">
-                                <div id="buttonContainer3">
-                                    <span class="small_title"> Culture & Society</span>
-                                    <button
-                                        class="button"
-                                        id="originButtonCulture"
-                                        onclick="SetupButtons(event,'Culture')"></button>
-                                </div>
+                        </div>
+                        <div class="subSubDiv2">
+                            <div id="buttonContainer3">
+                                <span class="small_title"> Culture & Society</span>
+                                <button class="button" id="originButtonCulture"
+                                    onclick="SetupButtons(event,'Culture')"></button>
+                            </div>
 
-                                <div id="buttonContainer2">
-                                    <button
-                                        class="button-inset"
-                                        id="originButtonSociety1"
-                                        onclick="SetupButtons(event,'Society1')"></button>
-                                </div>
-                                <div id="buttonContainer1">
-                                    <button
-                                        class="button-inset"
-                                        id="originButtonSociety2"
-                                        onclick="SetupButtons(event,'Society2')"></button>
-                                </div>
+                            <div id="buttonContainer2">
+                                <button class="button-inset" id="originButtonSociety1"
+                                    onclick="SetupButtons(event,'Society1')"></button>
+                            </div>
+                            <div id="buttonContainer1">
+                                <button class="button-inset" id="originButtonSociety2"
+                                    onclick="SetupButtons(event,'Society2')"></button>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div>
-                        <hr />
+                <div>
+                    <hr />
 
-                        <button class="button-inset" id="originButtonTome2"></button>
+                    <button class="button-inset" id="originButtonTome2"></button>
 
-                        <span class="small_title"> Tome Path</span>
+                    <span class="small_title"> Tome Path</span>
 
-                        <button style="float: right; color: red" class="button" onclick="ClearTomePath()">
-                            Clear All
-                        </button>
-                        <button
-                            style="float: right; margin-right: 100px; color: red"
-                            class="button"
-                            onclick="RemoveLastTomePath()">
-                            Clear Last
-                        </button>
-                        <br />
-                        <div
-                            style="display: grid; grid-template-columns: repeat(8, 2fr); margin: 15px"
-                            id="tomePathButton"></div>
+                    <button style="float: right; color: red" class="button" onclick="ClearTomePath()">
+                        Clear All
+                    </button>
+                    <button style="float: right; margin-right: 100px; color: red" class="button"
+                        onclick="RemoveLastTomePath()">
+                        Clear Last
+                    </button>
+                    <br />
+                    <div style="display: grid; grid-template-columns: repeat(8, 2fr); margin: 15px" id="tomePathButton">
                     </div>
                 </div>
             </div>
-            <div style="color: white; display: block" id="overviewPanel">
-                <button class="button-random" onclick="ResetHighlights()" id="toggleButton1">
-                    Reset <favourite></favourite>
-                </button>
-                <button class="button-random" onclick="ShowHideUnFavs()" id="toggleButton2">
-                    Show/Hide non-<favourite></favourite>
-                </button>
-                <p><span id="active-indices"></span></p>
-                <div class="overview" id="mainoverview">
-                    <div class="column" id="overviewHeroSkillsHolder"></div>
-                    <div class="column" id="overviewPassivesHolder"></div>
-                    <div class="column" id="overviewSummonHolder"></div>
-                    <div class="column" id="overviewCombatSpellsHolder"></div>
-                    <div class="column" id="overviewTransformationsHolder"></div>
-                    <div class="column" id="overviewEnchantmentsHolder"></div>
-                    <div class="column" id="overviewOtherSpellHolder"></div>
+        </div>
+        <div style="color: white; display: block" id="overviewPanel">
+            <button class="button-random" onclick="ResetHighlights()" id="toggleButton1">
+                Reset <favourite></favourite>
+            </button>
+            <button class="button-random" onclick="ShowHideUnFavs()" id="toggleButton2">
+                Show/Hide non-<favourite></favourite>
+            </button>
+            <p><span id="active-indices"></span></p>
+            <div class="overview" id="mainoverview">
+                <div class="column" id="overviewHeroSkillsHolder"></div>
+                <div class="column" id="overviewPassivesHolder"></div>
+                <div class="column" id="overviewSummonHolder"></div>
+                <div class="column" id="overviewCombatSpellsHolder"></div>
+                <div class="column" id="overviewTransformationsHolder"></div>
+                <div class="column" id="overviewEnchantmentsHolder"></div>
+                <div class="column" id="overviewOtherSpellHolder"></div>
 
-                    <div class="column" id="overviewUnitsHolder"></div>
-                    <div class="column" id="overviewUpgradesHolder"></div>
-                    <div class="column" id="overviewSPIHolder"></div>
-                    <div class="column" id="overviewSiegeHolder"></div>
-                    <div class="column" id="overviewEmpireHolder"></div>
-                </div>
+                <div class="column" id="overviewUnitsHolder"></div>
+                <div class="column" id="overviewUpgradesHolder"></div>
+                <div class="column" id="overviewSPIHolder"></div>
+                <div class="column" id="overviewSiegeHolder"></div>
+                <div class="column" id="overviewEmpireHolder"></div>
             </div>
         </div>
+    </div>
 
-        <div id="hiddentooltips" style="display: none"></div>
+    <div id="hiddentooltips" style="display: none"></div>
 
-        <div class="selections" id="selectionsHolder">
-            <p id="selections" style="text-align: center"></p>
-            <button
-                style="float: right; position: relative; top: -20px; color: red"
-                class="button"
-                onclick="toggleOriginButtons()">
-                X
-            </button>
+    <div class="selections" id="selectionsHolder">
+        <p id="selections" style="text-align: center"></p>
+        <button style="float: right; position: relative; top: -20px; color: red" class="button"
+            onclick="toggleOriginButtons()">
+            X
+        </button>
 
-            <div id="originWrapperOptions" class="wrappers"></div>
-        </div>
+        <div id="originWrapperOptions" class="wrappers"></div>
+    </div>
 
-        <div style="display: none">
-            <!-- Prefix Dropdown -->
-            <label for="namePrefixSelect">Prefix:</label>
-            <select id="namePrefixSelect"></select>
+    <div style="display: none">
+        <!-- Prefix Dropdown -->
+        <label for="namePrefixSelect">Prefix:</label>
+        <select id="namePrefixSelect"></select>
 
-            <!-- Type Dropdown -->
-            <label for="nameTypeSelect">Type:</label>
-            <select id="nameTypeSelect"></select>
+        <!-- Type Dropdown -->
+        <label for="nameTypeSelect">Type:</label>
+        <select id="nameTypeSelect"></select>
 
-            <!-- Icon Selector -->
-            <label for="iconSelect">Icon:</label>
-            <select id="iconSelect"></select>
+        <!-- Icon Selector -->
+        <label for="iconSelect">Icon:</label>
+        <select id="iconSelect"></select>
 
-            <div id="buildNamePreview"></div>
+        <div id="buildNamePreview"></div>
 
-            <button class="button-random" onclick="submitBuild()">Submit</button>
-        </div>
+        <button class="button-random" onclick="submitBuild()">Submit</button>
+    </div>
 
-        <script>
-            function myFunction() {
-                // Get the text field
-                var copyText = document.getElementById("shareLink");
+    <script>
+        function myFunction() {
+            // Get the text field
+            var copyText = document.getElementById("shareLink");
 
-                // Select the text field
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); // For mobile devices
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
 
-                // Copy the text inside the text field
-                navigator.clipboard.writeText(copyText.value);
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
 
-                // Alert the copied text
-                // alert("Copied the text: " + copyText.value);
+            // Alert the copied text
+            // alert("Copied the text: " + copyText.value);
+        }
+
+        document.getElementById("toggleButton").addEventListener("click", function (event) {
+            const panel = document.getElementById("overviewPanel");
+
+            if (panel.style.display === "none" || panel.style.display === "") {
+                event.target.innerHTML = "◀ Hide Overview";
+                panel.style.display = "block"; // Show the panel
+            } else {
+                event.target.innerHTML = "▶ Show Overview";
+                panel.style.display = "none"; // Hide the panel
             }
+        });
 
-            document.getElementById("toggleButton").addEventListener("click", function (event) {
-                const panel = document.getElementById("overviewPanel");
-
-                if (panel.style.display === "none" || panel.style.display === "") {
-                    event.target.innerHTML = "◀ Hide Overview";
-                    panel.style.display = "block"; // Show the panel
-                } else {
-                    event.target.innerHTML = "▶ Show Overview";
-                    panel.style.display = "none"; // Hide the panel
-                }
-            });
-
-            function submitBuild2(buildName, icon, notes) {
-                var getLink = GenerateQuickLink();
-                var currenturl = window.location.href.split("?")[0];
-                getLink = currenturl + "?u=" + getLink;
-                const url = new URL(
-                    "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
-                );
-                url.searchParams.set("action", "save");
-                // actual build settings
-                url.searchParams.set("buildName", buildName);
-                url.searchParams.set("author", icon);
-                url.searchParams.set("notes", notes);
-                url.searchParams.set("url", getLink);
-
-                fetch(url)
-                    .then((res) => res.text())
-                    .then((msg) => alert("Submitted: " + msg))
-                    .catch((err) => console.error("Submission failed:", err));
-            }
-
-            function getBuildNameAndIcon() {
-                const prefix = document.getElementById("namePrefixSelect").value;
-                const type = document.getElementById("nameTypeSelect").value;
-                var name = `${prefix} ${type}`;
-                var icon = iconSelect.value;
-                return { name, icon };
-            }
-
-            const prefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic", "Ethereal", "Ancient"];
-            const types = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian", "Seer", "Invoker"];
-
-            const unitIcons = [
-                { filename: "icon_wolf.png", label: "Wolf 🐺" },
-                { filename: "icon_dragon.png", label: "Dragon 🐉" },
-                { filename: "icon_star.png", label: "Star ⭐" },
-                { filename: "icon_skull.png", label: "Skull 💀" },
-                { filename: "icon_phoenix.png", label: "Phoenix 🔥" }
-            ];
-
-            function populateDropdown(id, options, valueKey = null, labelKey = null) {
-                const select = document.getElementById(id);
-                select.innerHTML = ""; // Clear any existing options
-
-                options.forEach((opt) => {
-                    const option = document.createElement("option");
-                    if (valueKey && labelKey) {
-                        option.value = opt[valueKey];
-                        option.textContent = opt[labelKey];
-                    } else {
-                        option.value = opt;
-                        option.textContent = opt;
-                    }
-                    select.appendChild(option);
-                });
-            }
-
-            populateDropdown("namePrefixSelect", prefixes);
-            populateDropdown("nameTypeSelect", types);
-            populateDropdown("iconSelect", unitIcons, "filename", "label");
-
-            function updatePreview() {
-                const { fullHTML } = getBuildNameAndIcon();
-                document.getElementById("buildNamePreview").innerHTML = fullHTML;
-            }
-
-            ["namePrefixSelect", "nameTypeSelect", "iconSelect"].forEach((id) =>
-                document.getElementById(id).addEventListener("change", updatePreview)
+        function submitBuild2(buildName, icon, notes) {
+            var getLink = GenerateQuickLink();
+            var currenturl = window.location.href.split("?")[0];
+            getLink = currenturl + "?u=" + getLink;
+            const url = new URL(
+                "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
             );
+            url.searchParams.set("action", "save");
+            // actual build settings
+            url.searchParams.set("buildName", buildName);
+            url.searchParams.set("author", icon);
+            url.searchParams.set("notes", notes);
+            url.searchParams.set("url", getLink);
+            url.searchParams.set("views", 0);
 
-            updatePreview(); // Run on load
+            fetch(url)
+                .then((res) => res.text())
+                .then((msg) => alert("Submitted: " + msg))
+                .catch((err) => console.error("Submission failed:", err));
+        }
 
-            // Example usage
-            function submitBuild() {
-                var buildName = getBuildNameAndIcon();
-                var icon = "";
-                var notes = "Test";
+        function getBuildNameAndIcon() {
+            const prefix = document.getElementById("namePrefixSelect").value;
+            const type = document.getElementById("nameTypeSelect").value;
+            var name = `${prefix} ${type}`;
+            var icon = iconSelect.value;
+            return { name, icon };
+        }
 
-                submitBuild2(buildName, icon, notes);
-            }
-        </script>
-    </body>
+        const prefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic", "Ethereal", "Ancient"];
+        const types = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian", "Seer", "Invoker"];
+
+        const unitIcons = [
+            { filename: "icon_wolf.png", label: "Wolf 🐺" },
+            { filename: "icon_dragon.png", label: "Dragon 🐉" },
+            { filename: "icon_star.png", label: "Star ⭐" },
+            { filename: "icon_skull.png", label: "Skull 💀" },
+            { filename: "icon_phoenix.png", label: "Phoenix 🔥" }
+        ];
+
+        function populateDropdown(id, options, valueKey = null, labelKey = null) {
+            const select = document.getElementById(id);
+            select.innerHTML = ""; // Clear any existing options
+
+            options.forEach((opt) => {
+                const option = document.createElement("option");
+                if (valueKey && labelKey) {
+                    option.value = opt[valueKey];
+                    option.textContent = opt[labelKey];
+                } else {
+                    option.value = opt;
+                    option.textContent = opt;
+                }
+                select.appendChild(option);
+            });
+        }
+
+        populateDropdown("namePrefixSelect", prefixes);
+        populateDropdown("nameTypeSelect", types);
+        populateDropdown("iconSelect", unitIcons, "filename", "label");
+
+        function updatePreview() {
+            const { fullHTML } = getBuildNameAndIcon();
+            document.getElementById("buildNamePreview").innerHTML = fullHTML;
+        }
+
+        ["namePrefixSelect", "nameTypeSelect", "iconSelect"].forEach((id) =>
+            document.getElementById(id).addEventListener("change", updatePreview)
+        );
+
+        updatePreview(); // Run on load
+
+        // Example usage
+        function submitBuild() {
+            var buildName = getBuildNameAndIcon();
+            var icon = "";
+            var notes = "Test";
+
+            submitBuild2(buildName, icon, notes);
+        }
+    </script>
+</body>
+
 </html>
 <footer><br /><br /></footer>
