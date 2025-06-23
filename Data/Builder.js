@@ -9,6 +9,12 @@ var languageSelect = document.getElementById("languageSelect");
 
 var altHeld = false;
 
+const patchDates = [
+    // date ranges of patches
+    { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-01") },
+    { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
+];
+
 // Toggle ALT mode on each key press
 document.addEventListener("keydown", function (event) {
     if (event.key === "Alt") {
@@ -1344,8 +1350,8 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     imag.setAttribute(
         "style",
         'background-image: url("/aow4db/Icons/Interface/' +
-            abilityIconType +
-            '.png");background-repeat: no-repeat;background-size: 40px 40px'
+        abilityIconType +
+        '.png");background-repeat: no-repeat;background-size: 40px 40px'
     );
 
     imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -6776,37 +6782,38 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
 
 function AddDLCTag(dlcname) {
     let newDivForMount = document.createElement("DIV");
+    dlcname = dlcname.replaceAll(" ", "");
     newDivForMount.className = "mountToolTip";
 
     imag = document.createElement("IMG");
     imag.setAttribute("height", "25px");
 
     spa = document.createElement("SPAN");
-    if (dlcname == "DRAGONLORDS ") {
+    if (dlcname == "DRAGONLORDS") {
         imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
         spa.innerHTML = "Part of the Dragon Dawn DLC";
     }
-    if (dlcname == "EMPIRESANDASHES ") {
+    if (dlcname == "EMPIRESANDASHES") {
         imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
         spa.innerHTML = "Part of the Empires & Ashes DLC";
     }
-    if (dlcname == "PRIMALFURY ") {
+    if (dlcname == "PRIMALFURY") {
         imag.setAttribute("src", "/aow4db/Icons/Text/PrimalFury.png");
         spa.innerHTML = "Part of the Primal Fury DLC";
     }
-    if (dlcname == "ELDRITCHREALMS ") {
+    if (dlcname == "ELDRITCHREALMS") {
         imag.setAttribute("src", "/aow4db/Icons/Text/EldritchRealms.png");
         spa.innerHTML = "Part of the Eldritch Realms DLC";
     }
-    if (dlcname == "WAYSOFWAR ") {
+    if (dlcname == "WAYSOFWAR") {
         imag.setAttribute("src", "/aow4db/Icons/Text/waysofwar.png");
         spa.innerHTML = "Part of the Ways of War DLC";
     }
-    if (dlcname == "HERALDOFGLORY ") {
+    if (dlcname == "HERALDOFGLORY") {
         imag.setAttribute("src", "/aow4db/Icons/Text/heraldofglory.png");
         spa.innerHTML = "Part of the Herald of Glory DLC";
     }
-    if (dlcname == "GIANTKINGS ") {
+    if (dlcname == "GIANTKINGS") {
         imag.setAttribute("src", "/aow4db/Icons/Text/GKLogo.png");
 
         spa.innerHTML = "Part of the Giant Kings DLC";
@@ -7076,8 +7083,8 @@ function backtraceStructureToTomeNameAndTier(structure) {
                         if ("affinities" in jsonTomes[j]) {
                             array.push(
                                 ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                    "<br> " +
-                                    jsonTomes[j].name
+                                "<br> " +
+                                jsonTomes[j].name
                             );
                         } else {
                             array.push(jsonTomes[j].name);

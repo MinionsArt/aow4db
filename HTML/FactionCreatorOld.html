@@ -68,14 +68,7 @@
         }
 
         .tagEntry {
-            display: grid;
-            padding: 15px;
-        }
-
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box;
+            display: flex;
         }
     </style>
 
@@ -323,13 +316,13 @@
         function createDlcFilters() {
             const filterDiv = document.getElementById("dlcFilters");
             const allDLCs = new Set();
-            allDLCs.add("DRAGONLORDS ");
-            allDLCs.add("EMPIRESANDASHES ");
-            allDLCs.add("PRIMALFURY ");
-            allDLCs.add("ELDRITCHREALMS ");
-            allDLCs.add("WAYSOFWAR ");
-            allDLCs.add("HERALDOFGLORY ");
-            allDLCs.add("GIANTKINGS ");
+            allDLCs.add("DRAGONLORDS");
+            allDLCs.add("EMPIRESANDASHES");
+            allDLCs.add("PRIMALFURY");
+            allDLCs.add("ELDRITCHREALMS");
+            allDLCs.add("WAYSOFWAR");
+            allDLCs.add("HERALDOFGLORY");
+            allDLCs.add("GIANTKINGS");
 
             allDLCs.forEach((dlc) => {
                 const btn = document.createElement("button");
@@ -356,11 +349,13 @@
             const buildName = build.BuildName || "Unnamed";
             const author = build.author || "Anonymous";
 
+            const date = build.Timestamp || "N/A";
+
             const tags = build.Tags || "Roleplay, Theme";
             const parsedLink = linkUrl?.split("=")[1] || "Error";
 
             // Use ReadBackBuildData to get a display DOM element
-            const entryContent = ReadBackBuildData(parsedLink, tags, buildName);
+            const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date);
 
             // Wrap it in a clickable link
             const linkWrapper = document.createElement("a");
@@ -386,7 +381,7 @@
 
 
 
-        function ReadBackBuildData(code, tags, buildName) {
+        function ReadBackBuildData(code, tags, buildName, date) {
             var build = getBaseBuildDate(code);
             const splitTags = tags.split(",");
 
@@ -442,6 +437,7 @@
                 const container = document.createElement("div");
                 container.className = "sideList";
                 dlcs.forEach((dlc) => {
+                    console.log(build.currentOrigin.name + " " + dlc);
                     container.appendChild(AddDLCTag(dlc));
                     // container.appendChild(createEntry(dlc, dlc, source, size));
                 });
@@ -451,12 +447,23 @@
             const createTagsList = (tags) => {
                 const container = document.createElement("div");
                 container.className = "tagEntry";
+
                 tags.forEach((tag) => {
-                    const div = document.createElement("div");
-                    div.innerHTML = tag;
-                    container.appendChild(div);
+
+
+                    let newReq = document.createElement("DIV");
+                    newReq.innerHTML = tag;
+                    newReq.setAttribute("style", "background-color:#2e2e28");
+
+                    newReq.className = "requisiteSlot";
+                    container.appendChild(newReq);
+
                 });
                 return container;
+
+
+
+
             };
 
             const newDivMain = document.createElement("div");
@@ -466,18 +473,21 @@
 
 
 
+
+
             // Extra info Div for dlc, tags, rating
             const newDivOriginsAndClass = document.createElement("div");
+
             //  newDivOriginsAndClass.className = "list-subHolder";
 
             newDivMain.appendChild(newDivOriginsAndClass);
-            newDivMain.setAttribute("style", " display:flex;flex-direction:column;");
+            newDivMain.setAttribute("style", " display:flex;flex-direction:column;  align-items: flex-start;");
 
             const newDivOriginSubType = document.createElement("div");
 
             newDivOriginSubType.setAttribute("style", "min-width:100px; display:flex");
             newDivOriginsAndClass.appendChild(newDivOriginSubType);
-            newDivOriginsAndClass.setAttribute("style", "display:flex");
+            newDivOriginsAndClass.setAttribute("style", "min-width:180px; display:flex");
             if (splitTags.length) newDivMain.appendChild(createTagsList(splitTags));
 
             // Assemble display
@@ -490,12 +500,17 @@
                     createEntry(build.currentSubType.name, build.currentSubType.id, "FactionCreation", 40)
                 );
             if (build.currentClass)
-                newDivOriginsAndClass.appendChild(createEntry(build.currentClass.name, build.currentClass.id, "Text", 40));
+                newDivOriginsAndClass.appendChild(createEntry(build.currentClass.name, build.currentClass.id, "Text", 30));
 
-
+            // ascensions
+            if (build.currentAscension) {
+                newDivOriginsAndClass.appendChild(
+                    createEntry(build.currentAscension.name, build.currentAscension.id.split("_hero")[0], "UnitIcons", 30)
+                );
+            }
             // affinity, name, dlc
             const newDivAffinityNameDlc = document.createElement("div");
-            newDivAffinityNameDlc.setAttribute("Style", "display:flex;flex-direction:column;justify-content: center;");
+            newDivAffinityNameDlc.setAttribute("Style", "display:flex;flex-direction:column;justify-content: flex-start;");
 
             newDiv.appendChild(newDivAffinityNameDlc);
 
@@ -507,7 +522,14 @@
                 build.currentSociety2
             ];
 
-            const affinityTotals = GetAffinityTotalFromList(affinitySources, build.currentTomeList, build.currentSubType);
+            var affinityTotals = GetAffinityTotalFromList(affinitySources, build.currentTomeList, build.currentSubType);
+
+            affinityTotals = affinityTotals.replace("<empireshadow></empireshadow> ", "<empireshadowBig></empireshadowBig>");
+            affinityTotals = affinityTotals.replace("<empirechaos></empirechaos> ", "<empirechaosBig></empirechaosBig>");
+            affinityTotals = affinityTotals.replace("<empirenature></empirenature> ", "<empirenatureBig></empirenatureBig>");
+            affinityTotals = affinityTotals.replace("<empirearcana></empirearcana> ", "<empirearcanaBig></empirearcanaBig>");
+            affinityTotals = affinityTotals.replace("<empirematter></empirematter> ", "<empirematterBig></empirematterBig>");
+            affinityTotals = affinityTotals.replace("<empireorder></empireorder> ", "<empireorderBig></empireorderBig>");
             console.log(affinityTotals);
 
             // add name
@@ -536,7 +558,7 @@
             let usedDLCs = [];
 
             function addIfDLC(item) {
-                if (item?.DLC && !isInArray(usedDLCs, item.DLC)) usedDLCs.push(item.DLC);
+                if (item?.DLC && !isInArray(usedDLCs, item.DLC.replaceAll(" ", ""))) usedDLCs.push(item.DLC.replaceAll(" ", ""));
             }
 
             // After each component is assigned:
@@ -565,12 +587,7 @@
             newDivFormCult.setAttribute("style", "justify-content: flex-end; display:flex; width:500px");
             newDivSubFormCultTomes.appendChild(newDivFormCult);
 
-            // ascensions
-            if (build.currentAscension) {
-                newDivFormCult.appendChild(
-                    createEntry(build.currentAscension.name, build.currentAscension.id.split("_hero")[0], "UnitIcons", 40)
-                );
-            }
+
 
             // just form
             const newDivForm = document.createElement("div");
@@ -620,12 +637,53 @@
             newDivTomes.style.width = "500px";
 
 
+            const newDivExtra = document.createElement("div");
+            newDivExtra.className = "list-main";
+            newDivExtra.setAttribute("style", " width:100px; display:flex; flex-direction: column;justify-content: space-between ");
+            newDiv.appendChild(newDivExtra);
+            newDivPop = document.createElement("div");
+            newDivPop.setAttribute("style", "padding-top:20px");
+            newDivPop.append(renderViewCount(100));
+            newDivExtra.appendChild(newDivPop);
+            newDivDate = document.createElement("div");
+            newDivDate.innerHTML = getPatchForDate(date);
+            newDivExtra.appendChild(newDivDate);
+
 
 
 
             mainDiv.dataset.dlcs = usedDLCs;
             return mainDiv;
         }
+
+        function getPatchForDate(uploadDateStr) {
+            const uploadDate = new Date(uploadDateStr);
+
+            for (let patch of patchDates) {
+                if (uploadDate >= patch.from && uploadDate <= patch.to) {
+                    return patch.name;
+                }
+            }
+            return "Unknown Patch";
+        }
+
+        function getViewIcon(viewCount) {
+            if (viewCount > 5000) return "<reputation8></reputation8>";   // hot
+            if (viewCount > 1000) return "<reputation7></reputation7>";   // hot
+            if (viewCount > 500) return "<reputation6></reputation6>";
+            if (viewCount > 100) return "<reputation5></reputation5>";    // warm
+            return "<reputation4></reputation4>";                        // low
+        }
+
+        function renderViewCount(viewCount) {
+            const span = document.createElement("span");
+            span.textContent = "___";
+            span.innerHTML = getViewIcon(viewCount);
+            // span.style.backgroundColor = getViewColor(viewCount);
+            return span;
+        }
+
+
     </script>
 </body>
 

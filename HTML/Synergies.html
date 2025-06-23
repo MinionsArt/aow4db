@@ -1,116 +1,112 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
-<head>
-    
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-         <script src="/aow4db/Data/Builder.js"></script>
+        <script src="/aow4db/Data/Builder.js"></script>
         <script src="/aow4db/Data/Faction.js"></script>
         <script src="/aow4db/Data/Search.js"></script>
         <script>
-        var CurrentType = "";
-       
+            var CurrentType = "";
 
-        function HandlePage() {
-            const select = document.getElementById("statusEffectSelect");
-    jsonStatusEffects.forEach((ability) => {
-       var ab = lookupSlugFull(ability.slug);
-        const option = document.createElement("option");
-        option.value = ab.name;
-        let tag = ab.name.replaceAll(" ", "_").toLowerCase();
-        option.innerHTML = `<${tag}></${tag}>` + ab.name;
-        select.appendChild(option);
-    });
-            searchStatusEffect();
-        }
-            
-         
+            function HandlePage() {
+                const select = document.getElementById("statusEffectSelect");
+                jsonStatusEffects.forEach((ability) => {
+                    var ab = lookupSlugFull(ability.slug);
+                    const option = document.createElement("option");
+                    option.value = ab.name;
+                    let tag = ab.name.replaceAll(" ", "_").toLowerCase();
+                    option.innerHTML = ab.name;
+                    select.appendChild(option);
+                });
+                searchStatusEffect();
+            }
 
+            // Search all relevant sources for mentions of the selected status effect
+            function searchStatusEffect() {
+                const selected = document.getElementById("statusEffectSelect").value.toLowerCase();
+                const resultsDiv = document.getElementById("results");
+                resultsDiv.innerHTML = "";
 
-// Search all relevant sources for mentions of the selected status effect
-function searchStatusEffect() {
-    const selected = document.getElementById("statusEffectSelect").value.toLowerCase();
-    const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = "";
+                let matches = [];
 
-    let matches = [];
+                // Check jsonHeroSkills
+                jsonHeroSkills.forEach((skill) => {
+                    if (skill.description && skill.description.toLowerCase().includes(selected)) {
+                        matches.push({ source: "Hero Skill", name: skill.name, description: skill.description });
+                    }
+                });
 
-    // Check jsonHeroSkills
-    jsonHeroSkills.forEach((skill) => {
-        if (skill.description && skill.description.toLowerCase().includes(selected)) {
-            matches.push({ source: "Hero Skill", name: skill.name, description: skill.description });
-        }
-    });
+                // Check jsonUnits
+                jsonUnits.forEach((unit) => {
+                    if (unit.description && unit.description.toLowerCase().includes(selected)) {
+                        matches.push({ source: "Unit", name: unit.name, description: unit.description });
+                    }
+                });
 
-    // Check jsonUnits
-    jsonUnits.forEach((unit) => {
-        if (unit.description && unit.description.toLowerCase().includes(selected)) {
-            matches.push({ source: "Unit", name: unit.name, description: unit.description });
-        }
-    });
+                // Check abilities list
+                jsonUnitAbilities.forEach((ability) => {
+                    if (ability.description && ability.description.toLowerCase().includes(selected)) {
+                        matches.push({ source: "Ability", name: ability.name, description: ability.description });
+                    }
+                });
 
-    // Check abilities list
-    jsonUnitAbilities.forEach((ability) => {
-        if (ability.description && ability.description.toLowerCase().includes(selected)) {
-            matches.push({ source: "Ability", name: ability.name, description: ability.description });
-        }
-    });
+                if (matches.length === 0) {
+                    resultsDiv.textContent = "No matches found.";
+                    return;
+                }
 
-    if (matches.length === 0) {
-        resultsDiv.textContent = "No matches found.";
-        return;
-    }
+                matches.forEach((match) => {
+                    const div = document.createElement("div");
+                    div.className = "match-entry";
+                    div.innerHTML = `<strong>${match.source}</strong>: <em>${match.name}</em><br>${match.description}`;
+                    resultsDiv.appendChild(div);
+                });
+            }
+        </script>
 
-    matches.forEach(match => {
-        const div = document.createElement("div");
-        div.className = "match-entry";
-        div.innerHTML = `<strong>${match.source}</strong>: <em>${match.name}</em><br>${match.description}`;
-        resultsDiv.appendChild(div);
-    });
-}
+        <title>Age of Wonders 4 Database - Synergies</title>
+    </head>
 
-      
-    </script>
+    <body>
+        <div id="header"></div>
 
+        <div class="textblocktitle">Synergies</div>
 
-    <title>Age of Wonders 4 Database - Synergies</title>
-</head>
+        <label for="statusEffectSelect">Choose a status effect:</label>
+        <select id="statusEffectSelect">
+            <!-- Options populated by JS -->
+        </select>
+        <button onclick="searchStatusEffect()">Search</button>
 
-<body>
-    <div id="header"></div>
-
-    <div class="textblocktitle">
-        Synergies
-    </div>
-
-
-    
- <label for="statusEffectSelect">Choose a status effect:</label>
-    <select id="statusEffectSelect">
-        <!-- Options populated by JS -->
-    </select>
-    <button onclick="searchStatusEffect()">Search</button>
-
-    <div id="results"></div>
-
-
-
-
-</body>
-
+        <div id="results"></div>
+    </body>
 </html>
-  <style>
-        body { font-family: sans-serif; padding: 20px;  color:white}
-        select, button { padding: 8px; margin: 10px 0; }
-        #results { margin-top: 20px; }
-        .match-entry { margin-bottom: 10px; border-bottom: 1px solid #ccc; padding: 5px 0; }
-    </style>
+<style>
+    body {
+        font-family: sans-serif;
+        padding: 20px;
+        color: white;
+    }
+    select,
+    button {
+        padding: 8px;
+        margin: 10px 0;
+    }
+    #results {
+        margin-top: 20px;
+    }
+    .match-entry {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding: 5px 0;
+    }
+</style>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
