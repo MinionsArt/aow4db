@@ -89,9 +89,19 @@ function updateUserSettings(updatedSettings) {
         setUserSettings(newSettings);
     }
 }
+
+function getOrCreateUserEditKey() {
+    let editKey = localStorage.getItem("editKey");
+    if (!editKey) {
+        editKey = crypto.randomUUID(); // Or custom hash if you want
+        localStorage.setItem("editKey", editKey);
+    }
+    return editKey;
+}
 // Get user settings
 function getUserSettings() {
     const storedSettings = localStorage.getItem("userSettings");
+
     return storedSettings ? JSON.parse(storedSettings) : null;
 }
 

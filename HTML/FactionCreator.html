@@ -377,6 +377,8 @@
 
         function HandlePage() {
             SetRandomStart();
+
+            document.getElementById("userKeyDisplay").textContent = getOrCreateUserEditKey();
         }
     </script>
 
@@ -638,6 +640,8 @@
     </div>
 
     <div style="display: none">
+
+        <div style="color:wheat" id="userKeyDisplay"></div>
         <!-- Prefix Dropdown -->
         <label for="namePrefixSelect">Prefix:</label>
         <select id="namePrefixSelect"></select>
@@ -656,6 +660,9 @@
     </div>
 
     <script>
+
+
+
         function myFunction() {
             // Get the text field
             var copyText = document.getElementById("shareLink");
@@ -687,6 +694,8 @@
             var getLink = GenerateQuickLink();
             var currenturl = window.location.href.split("?")[0];
             getLink = currenturl + "?u=" + getLink;
+
+            const userEditKey = getOrCreateUserEditKey();
             const url = new URL(
                 "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
             );
@@ -697,6 +706,7 @@
             url.searchParams.set("notes", notes);
             url.searchParams.set("url", getLink);
             url.searchParams.set("views", 0);
+            url.searchParams.set("editKey", userEditKey);
 
             fetch(url)
                 .then((res) => res.text())

@@ -92,6 +92,11 @@
 
     <div class="tome_name">Faction Builds List</div>
 
+    <button id="showMyBuildsBtn"
+        style="position: relative; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;">
+        Show My Builds
+    </button>
+
     <div id="filters">
         <label for="cultureFilter">Culture:</label>
         <select id="cultureFilter">
@@ -141,6 +146,24 @@
                     populateFilters(builds); // Build the dropdowns
                     renderBuilds(builds);
                 });
+        }
+
+        document.getElementById("showMyBuildsBtn").addEventListener("click", () => {
+            const onlyMine = document.body.classList.toggle("showing-mine");
+            document.getElementById("showMyBuildsBtn").textContent = onlyMine ? "Show All Builds" : "Show My Builds";
+            applyMyBuildsFilter();
+        });
+
+        function applyMyBuildsFilter() {
+            const userKey = getOrCreateUserEditKey();
+            const onlyMine = document.body.classList.contains("showing-mine");
+
+            document.querySelectorAll(".build-link").forEach(link => {
+
+                const linkKey = link.dataset.editKey || "";
+                console.log(linkKey + " " + userKey);
+                link.style.display = (!onlyMine || linkKey === userKey) ? "" : "none";
+            });
         }
 
         function renderBuilds(builds) {
@@ -347,7 +370,7 @@
 
             const linkUrl = build.BuildURL || "LinkError";
             const buildName = build.BuildName || "Unnamed";
-            const editKey = build.editkey || "";
+            const editKey = build.editKey || "";
 
             const date = build.Timestamp || "N/A";
 
@@ -363,14 +386,56 @@
             const linkWrapper = document.createElement("a");
             linkWrapper.href = linkUrl;
 
+            linkWrapper.dataset.editKey = editKey;
+
             linkWrapper.rel = "noopener noreferrer"; // Security best practice
             linkWrapper.className = "build-link";
 
             //  console.log(entryContent.dataset.dlcs);
             linkWrapper.dataset.dlcs = entryContent.dataset.dlcs;
 
+
+
+            const userEditKey = getOrCreateUserEditKey();
+
+
+
+            const isOwner = build.editKey === userEditKey;
+
+            // Add build preview content here...
+
+            if (isOwner) {
+                const editBtn = document.createElement("button");
+                editBtn.textContent = "Edit";
+                editBtn.onclick = () => startEditBuild(build);
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.onclick = () => deleteBuild(build);
+
+                listDiv.appendChild(editBtn);
+                listDiv.appendChild(deleteBtn);
+            }
+
             linkWrapper.appendChild(entryContent);
             listDiv.appendChild(linkWrapper);
+        }
+
+        function deleteBuild(build) {
+            if (!confirm("Are you sure you want to delete this build?")) return;
+
+            fetch("https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec" + "?action=delete", {
+                method: "POST",
+                body: new URLSearchParams({
+                    editKey: getOrCreateUserEditKey(),
+                    url: build.url, // or some other identifier like timestamp
+                }),
+            })
+                .then((res) => res.text())
+                .then((text) => {
+                    alert("Build deleted!");
+                    location.reload();
+                });
         }
 
         function applyDlcFilter() {
@@ -439,7 +504,7 @@
                 const container = document.createElement("div");
                 container.className = "sideList";
                 dlcs.forEach((dlc) => {
-                    console.log(build.currentOrigin.name + " " + dlc);
+                    // console.log(build.currentOrigin.name + " " + dlc);
                     container.appendChild(AddDLCTag(dlc));
                     // container.appendChild(createEntry(dlc, dlc, source, size));
                 });
