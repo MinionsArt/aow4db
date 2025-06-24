@@ -3382,4 +3382,15 @@ function RebuildFromParam(code) {
         })
     })
         .then((msg) => console.log(msg));
+
+    if (window.location.href.indexOf("&edit")) {
+        // save current url for overwriting
+        document.getElementById("oldURL").innerHTML = window.location.href.split("?")[0] + "?u=" + code;
+        //   alert("Editing");
+    }
+
+    // check if build code is here
+
+    // if (build.editKey === getOrCreateUserEditKey()) {
+
 }

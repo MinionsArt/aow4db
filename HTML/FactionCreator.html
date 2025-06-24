@@ -642,6 +642,7 @@
     <div style="display: none">
 
         <div style="color:wheat" id="userKeyDisplay"></div>
+        <div style="color:white" id="oldURL"></div>
         <!-- Prefix Dropdown -->
         <label for="namePrefixSelect">Prefix:</label>
         <select id="namePrefixSelect"></select>
@@ -656,7 +657,9 @@
 
         <div id="buildNamePreview"></div>
 
-        <button class="button-random" onclick="submitBuild()">Submit</button>
+        <button class="button-random" onclick="submitBuild()">Submit New</button>
+
+        <button class="button-random" onclick="overwriteBuild()">Overwrite Existing</button>
     </div>
 
     <script>
@@ -695,8 +698,8 @@
             var currenturl = window.location.href.split("?")[0];
             getLink = currenturl + "?u=" + getLink;
 
-            const userEditKey = getOrCreateUserEditKey();
-            const url = new URL(
+            var userEditKey = getOrCreateUserEditKey();
+            var url = new URL(
                 "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
             );
             url.searchParams.set("action", "save");
@@ -714,12 +717,36 @@
                 .catch((err) => console.error("Submission failed:", err));
         }
 
+        function updateBuild(buildName, notes, oldURL) {
+            var getLink = GenerateQuickLink();
+            var currenturl = window.location.href.split("?")[0];
+            getLink = currenturl + "?u=" + getLink;
+
+            var userEditKey = getOrCreateUserEditKey();
+            var url = new URL(
+                "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
+            );
+            url.searchParams.set("action", "edit");
+            // actual build settings
+            url.searchParams.set("buildName", buildName);
+
+            url.searchParams.set("notes", notes);
+            url.searchParams.set("oldURL", oldURL);
+            url.searchParams.set("newURL", getLink);
+            url.searchParams.set("editKey", userEditKey);
+
+            fetch(url)
+                .then((res) => res.text())
+                .then((msg) => alert("Submitted: " + msg))
+                .catch((err) => console.error("Submission failed:", err));
+        }
+
         function getBuildNameAndIcon() {
             const prefix = document.getElementById("namePrefixSelect").value;
             const type = document.getElementById("nameTypeSelect").value;
             var name = `${prefix} ${type}`;
             var icon = iconSelect.value;
-            return { name, icon };
+            return { name };
         }
 
         const prefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic", "Ethereal", "Ancient"];
@@ -764,6 +791,11 @@
         );
 
         updatePreview(); // Run on load
+
+        function overwriteBuild() {
+            var oldURLName = document.getElementById("oldURL").innerText;
+            updateBuild("OVerwritten", "OVerrite notes", oldURLName);
+        }
 
         // Example usage
         function submitBuild() {
