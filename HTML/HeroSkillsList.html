@@ -119,7 +119,7 @@
 
             function ShowAllAbilitiesWithFilters() {
                 HideAll();
-                const filterText = document.getElementById("filterInput").value.toUpperCase();
+                const filterText = document.getElementById("filterInput").value.toLowerCase();
                 const list = [];
 
                 jsonUnitAbilitiesLocalized.forEach((ability) => {
@@ -127,20 +127,29 @@
                         if (!list.includes(ability.slug)) list.push(ability.slug);
                     }
                 });
+                
+                 const listHero = [];
 
-                ProcessList(list);
+                
+                 jsonHeroSkillsLocalized.forEach((ability) => {
+                    if (!filterText || matchesFilter(ability, filterText)) {
+                        if (!listHero.includes(ability.id)) listHero.push(ability.id);
+                    }
+                });
+
+                ProcessList(list, listHero);
             }
 
             function matchesFilter(ability, filterText) {
                 const fieldsToCheck = ["name", "accuracy", "range", "description", "actionPoints", "damage"];
                 for (const field of fieldsToCheck) {
-                    if (field in ability && ability[field].toUpperCase().includes(filterText)) return true;
+                    if (field in ability && ability[field].toLowerCase().includes(filterText)) return true;
                 }
                 if ("modifiers" in ability) {
                     for (const mod of ability.modifiers) {
                         if (
-                            mod.description.toUpperCase().includes(filterText) ||
-                            mod.name.toUpperCase().includes(filterText)
+                            mod.description.toLowerCase().includes(filterText) ||
+                            mod.name.toLowerCase().includes(filterText)
                         ) {
                             return true;
                         }
@@ -148,15 +157,20 @@
                 }
                 if ("requisites" in ability) {
                     for (const req of ability.requisites) {
-                        if (req.requisite.toUpperCase().includes(filterText)) return true;
+                        if (req.requisite.toLowerCase().includes(filterText)) return true;
                     }
                 }
                 return false;
             }
 
-            function ProcessList(list) {
+            function ProcessList(list, listHero) {
                 list.forEach((slug) => {
                     const abilityDiv = document.getElementById(`${slug}btn`);
+                    if (abilityDiv) abilityDiv.style.display = "flex";
+                });
+                
+                 listHero.forEach((id) => {
+                    const abilityDiv = document.getElementById(`${id}btn`);
                     if (abilityDiv) abilityDiv.style.display = "flex";
                 });
             }
@@ -346,7 +360,9 @@
                 const { name = "Unknown Skill", icon = "mp", description = "No description available." } = skill;
 
                 const holder = document.getElementById("dataHolder");
-                const btn = createElement("div", "list_abilityslot");
+                const btn = createElement("div", "list_abilityslot", { id: `${skill.id}btn` });
+                
+              
 
                 const img = createElement("img", "unit_ability_icon");
                 img.src = `/aow4db/Icons/UnitIcons/${icon}.png`;
