@@ -1,768 +1,760 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
 
-        gtag("config", "G-CC3NE8PT7K");
-    </script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <meta charset="UTF-8" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <style>
+            .build-link {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                margin-bottom: 10px;
+            }
 
-    <style>
-        .build-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            margin-bottom: 10px;
-        }
+            .list-holder:hover {
+                text-decoration: none;
+                background-color: #1f1f1f;
+            }
 
-        .list-holder:hover {
-            text-decoration: none;
-            background-color: #1f1f1f;
-        }
+            .list-main {
+                display: flex;
+                align-items: center;
+            }
 
-        .list-main {
-            display: flex;
-            align-items: center;
-        }
+            .list-holder {
+                height: 100px;
+                max-height: 300px;
+                color: white;
+                display: flex;
+                flex-direction: column;
 
-        .list-holder {
-            height: 100px;
-            max-height: 300px;
-            color: white;
-            display: flex;
-            flex-direction: column;
+                justify-content: space-between;
+                border-width: 10px;
+                border-style: solid;
+                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                border-image-slice: 10 10 10 10;
+                background-color: black;
+            }
 
-            justify-content: space-between;
-            border-width: 10px;
-            border-style: solid;
-            border-image: url(/aow4db/Icons/9slicetooltip.png);
-            border-image-slice: 10 10 10 10;
-            background-color: black;
-        }
+            .list-subHolder {
+                display: flex;
+                justify-content: space-between;
+            }
 
-        .list-subHolder {
-            display: flex;
-            justify-content: space-between;
-        }
+            .sideList {
+                display: contents;
+            }
 
-        .sideList {
-            display: contents;
-        }
+            .subEntry {
+                display: grid;
+            }
 
-        .subEntry {
-            display: grid;
-        }
+            .tagEntry {
+                display: flex;
+            }
+        </style>
 
-        .tagEntry {
-            display: flex;
-        }
-    </style>
-
-    <script>
-        $("#body").ready(function () {
-            $("#header").load("/aow4db/HTML/header.html", function () {
-                CheckData();
-            });
-        });
-
-        function HandlePage() {
-            readBuilds();
-        }
-    </script>
-
-    <title>Age of Wonders 4 Database - Faction Creator</title>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <div class="tome_name">Faction Builds List</div>
-
-    <button id="showMyBuildsBtn"
-        style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000;">
-        Show My Builds
-    </button>
-
-    <div id="filters">
-        <label for="cultureFilter">Culture:</label>
-        <select id="cultureFilter">
-            <option value="all">All</option>
-            <!-- Filled dynamically -->
-        </select>
-
-        <label for="originFilter">Ruler Origin:</label>
-        <select id="originFilter">
-            <option value="all">All</option>
-            <!-- Filled dynamically -->
-        </select>
-        <label for="classFilter">Class:</label>
-        <select id="classFilter">
-            <option value="all">All</option>
-            <!-- Filled dynamically -->
-        </select>
-
-        <label for="tagFilter">Tag:</label>
-        <select id="tagFilter">
-            <option value="all">All</option>
-            <!-- Filled dynamically -->
-        </select>
-
-        <div id="dlcFilters"></div>
-    </div>
-
-    <div style="height: auto; color: white; text-align: center; margin: auto; width:fit-content" id="list">
-        Loading...
-    </div>
-
-    <div id="hiddentooltips" style="display: none"></div>
-
-    <script>
-        let allBuilds = [];
-        const activeDLCFilters = new Set();
-        function readBuilds() {
-            fetch(
-                "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec?action=read"
-            )
-                .then((res) => res.json())
-                .then((builds) => {
-                    const listDiv = document.getElementById("list");
-                    listDiv.innerHTML = ""; // Clear old entries if needed
-
-                    allBuilds = builds;
-                    populateFilters(builds); // Build the dropdowns
-                    renderBuilds(builds);
+        <script>
+            $("#body").ready(function () {
+                $("#header").load("/aow4db/HTML/header.html", function () {
+                    CheckData();
                 });
-        }
-
-        document.getElementById("showMyBuildsBtn").addEventListener("click", () => {
-            const onlyMine = document.body.classList.toggle("showing-mine");
-            document.getElementById("showMyBuildsBtn").textContent = onlyMine ? "Show All Builds" : "Show My Builds";
-            applyMyBuildsFilter();
-        });
-
-        function applyMyBuildsFilter() {
-
-            const onlyMine = document.body.classList.contains("showing-mine");
-
-            document.querySelectorAll(".build-link").forEach(link => {
-
-                const linkKey = link.dataset.isOwner;
-
-                link.style.display = (!onlyMine || link.dataset.isOwner == "true") ? "block" : "none";
             });
-        }
 
-        function renderBuilds(builds) {
-            const listDiv = document.getElementById("list");
-            listDiv.innerHTML = ""; // Clear existing
-            builds.forEach(CreateListEntry);
-        }
+            function HandlePage() {
+                readBuilds();
+            }
+        </script>
 
-        function parseBuildCode(code) {
-            // Parse only what's needed for filtering
-            let culture, origin, classO;
-            try {
-                const split = code.split(",");
-                culture = getItemFromCode(split[4]); // culture
-                origin = getItemFromCode(split[5]); // origin
-                classO = getItemFromCode(split[9]); // origin
-            } catch (e) { }
+        <title>Age of Wonders 4 Database - Faction Creator</title>
+    </head>
 
-            return {
-                culture,
-                origin,
-                classO
-            };
-        }
+    <body>
+        <div id="header"></div>
 
-        function getItemFromCode(codeSegment) {
-            const id = jsonBuilderLookUp[hexToDecimal(codeSegment)]?.id;
-            return jsonFactionCreation.find((x) => x.id === id);
-        }
+        <div class="tome_name">Faction Builds List</div>
 
-        function populateFilters(builds) {
-            const cultureSet = new Set();
-            const originSet = new Set();
-            const classSet = new Set();
-            const tagSet = new Set();
+        <button
+            id="showMyBuildsBtn"
+            style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000">
+            Show My Builds
+        </button>
+
+        <div style="height: auto; color: white; text-align: center; margin: auto; width: fit-content">
+            <div id="filters">
+                <label for="cultureFilter">Culture:</label>
+                <select id="cultureFilter">
+                    <option value="all">All</option>
+                    <!-- Filled dynamically -->
+                </select>
+
+                <label for="originFilter">Ruler Origin:</label>
+                <select id="originFilter">
+                    <option value="all">All</option>
+                    <!-- Filled dynamically -->
+                </select>
+                <label for="classFilter">Class:</label>
+                <select id="classFilter">
+                    <option value="all">All</option>
+                    <!-- Filled dynamically -->
+                </select>
+
+                <label for="tagFilter">Tag:</label>
+                <select id="tagFilter">
+                    <option value="all">All</option>
+                    <!-- Filled dynamically -->
+                </select>
+
+                <div id="dlcFilters"></div>
+            </div>
+        </div>
+
+        <div style="height: auto; color: white; text-align: center; margin: auto; width: fit-content" id="list">
+            Loading...
+        </div>
+
+        <div id="hiddentooltips" style="display: none"></div>
+
+        <script>
+            let allBuilds = [];
             const activeDLCFilters = new Set();
-            tagSet.add("Roleplay");
-            tagSet.add("Theme");
-            tagSet.add("PVP");
-            tagSet.add("Casual");
+            function readBuilds() {
+                fetch(
+                    "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec?action=read"
+                )
+                    .then((res) => res.json())
+                    .then((builds) => {
+                        const listDiv = document.getElementById("list");
+                        listDiv.innerHTML = ""; // Clear old entries if needed
 
-            builds.forEach((build) => {
-                const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
+                        allBuilds = builds;
+                        populateFilters(builds); // Build the dropdowns
+                        renderBuilds(builds);
+                    });
+            }
 
-                const data = getBaseBuildDate(code); // You’ll need to expose `currentCulture`, etc.
-
-                if (data.currentCulture) cultureSet.add(data.currentCulture.name);
-                if (data.currentOrigin) originSet.add(data.currentOrigin.name);
-                if (data.currentClass) classSet.add(data.currentClass.name);
+            document.getElementById("showMyBuildsBtn").addEventListener("click", () => {
+                const onlyMine = document.body.classList.toggle("showing-mine");
+                document.getElementById("showMyBuildsBtn").textContent = onlyMine
+                    ? "Show All Builds"
+                    : "Show My Builds";
+                applyMyBuildsFilter();
             });
 
-            createDlcFilters();
+            function applyMyBuildsFilter() {
+                const onlyMine = document.body.classList.contains("showing-mine");
 
-            populateSelect("cultureFilter", cultureSet);
-            populateSelect("originFilter", originSet);
-            populateSelect("tagFilter", tagSet);
-            populateSelect("classFilter", classSet);
-        }
+                document.querySelectorAll(".build-link").forEach((link) => {
+                    const linkKey = link.dataset.isOwner;
 
-        document.getElementById("cultureFilter").addEventListener("change", filterBuilds);
-        document.getElementById("originFilter").addEventListener("change", filterBuilds);
-        document.getElementById("tagFilter").addEventListener("change", filterBuilds);
-        document.getElementById("classFilter").addEventListener("change", filterBuilds);
-
-        function getBaseBuildDate(code) {
-            const splitcode = code.split(",");
-            // Helpers
-            const findById = (id, arr) => arr.find((item) => item.id === id);
-            const findByName = (name, arr) => arr.find((item) => item.name === name);
-            const getIdFromCode = (hex) => jsonBuilderLookUp[hexToDecimal(hex)]?.id;
-
-            // Form traits
-            let currentFormTraitList = [];
-            if (splitcode[0] !== "F") {
-                const traitCodes = splitcode[0].split(":");
-                currentFormTraitList = traitCodes
-                    .map((hex) => getIdFromCode(hex))
-                    .map((id) => findById(id, jsonFactionCreation2))
-                    .filter(Boolean);
+                    link.style.display = !onlyMine || link.dataset.isOwner == "true" ? "block" : "none";
+                });
             }
 
-            // Society 1 & 2
-            const currentSociety1 = findById(getIdFromCode(splitcode[1]), jsonFactionCreation2);
-            const currentSociety2 = findById(getIdFromCode(splitcode[2]), jsonFactionCreation2);
-
-            // Form, Culture, Origin
-            const currentForm = findById(getIdFromCode(splitcode[3]), jsonFactionCreation);
-            const currentCulture = findById(getIdFromCode(splitcode[4]), jsonFactionCreation);
-            const currentOrigin = findById(getIdFromCode(splitcode[5]), jsonFactionCreation);
-
-            // Loadout / Class (legacy fallback)
-            let TempReplacementForClass = "";
-            let currentSubType = null;
-            if (splitcode[6] !== "s") {
-                const subtype = findById(getIdFromCode(splitcode[6]), jsonFactionCreation);
-                if (subtype?.name.includes("Dragon") || subtype?.name.includes("Giant")) {
-                    currentSubType = subtype;
-                }
-                TempReplacementForClass = GetClassFromWeaponId(subtype?.id);
+            function renderBuilds(builds) {
+                const listDiv = document.getElementById("list");
+                listDiv.innerHTML = ""; // Clear existing
+                builds.forEach(CreateListEntry);
             }
 
-            // Tomes
-            const tomeCodes = splitcode[7]?.split(":") || [];
-            const currentTomeList = tomeCodes
-                .map((hex) => getIdFromCode(hex))
-                .map((id) => findById(id, jsonTomes))
-                .filter(Boolean);
-            const currentTome = currentTomeList[0];
+            function parseBuildCode(code) {
+                // Parse only what's needed for filtering
+                let culture, origin, classO;
+                try {
+                    const split = code.split(",");
+                    culture = getItemFromCode(split[4]); // culture
+                    origin = getItemFromCode(split[5]); // origin
+                    classO = getItemFromCode(split[9]); // origin
+                } catch (e) {}
 
-            // Class
-            let currentClass = null;
-            if (splitcode[9] !== "s") {
-                currentClass = findById(getIdFromCode(splitcode[9]), jsonFactionCreation);
-            } else if (TempReplacementForClass) {
-                currentClass = findByName(TempReplacementForClass, jsonFactionCreation);
-            }
-
-            // Ascension
-            let currentAscension = null;
-            const ascenCode = splitcode[10];
-            if (ascenCode && ascenCode !== "a") {
-                currentAscension = findById(getIdFromCode(ascenCode), jsonHeroSkills);
-            }
-
-            return {
-                currentFormTraitList,
-                currentSociety1,
-                currentSociety2,
-                currentForm,
-                currentCulture,
-                currentOrigin,
-                currentTomeList,
-                currentClass,
-                currentAscension,
-                currentSubType
-            };
-        }
-
-        function filterBuilds() {
-            const culture = document.getElementById("cultureFilter").value;
-            const origin = document.getElementById("originFilter").value;
-            const tag = document.getElementById("tagFilter").value;
-            const classO = document.getElementById("classFilter").value;
-
-            const filtered = allBuilds.filter((build) => {
-                const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
-                const data = getBaseBuildDate(code);
-                const tags = build.Tags || "Roleplay, Theme";
-
-                return (
-                    (culture === "all" || data.currentCulture?.name === culture) &&
-                    (origin === "all" || data.currentOrigin?.name === origin) &&
-                    (classO === "all" || data.currentClass?.name === classO) &&
-                    (tag === "all" || tags?.indexOf(tag) != -1)
-                );
-            });
-
-            renderBuilds(filtered);
-        }
-
-        function populateSelect(id, items) {
-            const select = document.getElementById(id);
-            items.forEach((item) => {
-                const option = document.createElement("option");
-                option.value = item;
-                option.textContent = item;
-                select.appendChild(option);
-            });
-        }
-
-
-
-        function createDlcFilters() {
-            const filterDiv = document.getElementById("dlcFilters");
-            const allDLCs = new Set();
-            allDLCs.add("DRAGONLORDS");
-            allDLCs.add("EMPIRESANDASHES");
-            allDLCs.add("PRIMALFURY");
-            allDLCs.add("ELDRITCHREALMS");
-            allDLCs.add("WAYSOFWAR");
-            allDLCs.add("HERALDOFGLORY");
-            allDLCs.add("GIANTKINGS");
-
-            allDLCs.forEach((dlc) => {
-                const btn = document.createElement("button");
-                btn.textContent = dlc;
-                btn.className = "dlc-toggle";
-                btn.onclick = () => {
-                    if (activeDLCFilters.has(dlc)) {
-                        activeDLCFilters.delete(dlc);
-                        btn.classList.remove("active");
-                    } else {
-                        activeDLCFilters.add(dlc);
-                        btn.classList.add("active");
-                    }
-                    applyDlcFilter();
+                return {
+                    culture,
+                    origin,
+                    classO
                 };
-                filterDiv.appendChild(btn);
-            });
-        }
-
-        function CreateListEntry(build) {
-            const listDiv = document.getElementById("list");
-
-            const linkUrl = build.BuildURL || "LinkError";
-            const buildName = build.BuildName || "Unnamed";
-            const editKey = build.editKey || "";
-
-            const date = build.Timestamp || "N/A";
-
-            const views = build.Views || 0;
-
-            const tags = build.Tags || "Roleplay, Theme";
-            const parsedLink = linkUrl?.split("=")[1] || "Error";
-
-            // Use ReadBackBuildData to get a display DOM element
-            const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date, views);
-
-            // Wrap it in a clickable link
-            const linkWrapper = document.createElement("a");
-            linkWrapper.href = linkUrl;
-
-
-
-            linkWrapper.rel = "noopener noreferrer"; // Security best practice
-            linkWrapper.className = "build-link";
-
-            //  console.log(entryContent.dataset.dlcs);
-            linkWrapper.dataset.dlcs = entryContent.dataset.dlcs;
-
-
-
-            const userEditKey = getOrCreateUserEditKey();
-
-
-
-            const isOwner = build.editKey === userEditKey;
-
-            linkWrapper.dataset.isOwner = isOwner;
-
-
-            // Add build preview content here...
-
-            if (isOwner) {
-                const editBtn = document.createElement("button");
-                editBtn.textContent = "Edit";
-                editBtn.onclick = () => startEditBuild(build);
-
-                const deleteBtn = document.createElement("button");
-                deleteBtn.textContent = "Delete";
-                deleteBtn.onclick = () => deleteBuild(build);
-
-                listDiv.appendChild(editBtn);
-                listDiv.appendChild(deleteBtn);
             }
 
-            linkWrapper.appendChild(entryContent);
-            listDiv.appendChild(linkWrapper);
-        }
-
-        function startEditBuild(build) {
-            window.location.href = build.BuildURL + "&edit";
-        }
-
-        function deleteBuild(build) {
-            if (!confirm("Are you sure you want to delete this build?")) return;
-
-            const url = new URL(
-                "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
-            );
-            url.searchParams.set("action", "delete");
-            // actual build settings
-
-            url.searchParams.set("url", build.BuildURL);
-            url.searchParams.set("editKey", getOrCreateUserEditKey());
-
-            fetch(url)
-                .then((res) => res.text())
-                .then((msg) => alert("Delete: " + msg))
-                .catch((err) => console.error("Delete failed:", err));
-
-
-        }
-
-        function applyDlcFilter() {
-            document.querySelectorAll(".build-link").forEach((link) => {
-                const dlcs = link.dataset.dlcs?.split(",") || [];
-                const show = activeDLCFilters.size === 0 || dlcs.some((dlc) => activeDLCFilters.has(dlc));
-                link.style.display = show ? "" : "none";
-            });
-        }
-
-
-
-        function ReadBackBuildData(code, tags, buildName, date, views) {
-            var build = getBaseBuildDate(code);
-            const splitTags = tags.split(",");
-
-            const mainDiv = document.createElement("div");
-            mainDiv.className = "list-holder";
-
-            // main div for build
-            const newDiv = document.createElement("div");
-            newDiv.className = "list-subHolder";
-            mainDiv.appendChild(newDiv);
-
-
-
-            // Helpers to create UI components
-            const createEntry = (name, id, path, size) => {
-                if (!name || !id) return null;
-                const div = document.createElement("div");
-                div.className = "subEntry";
-
-                const img = document.createElement("img");
-                img.src = `/aow4db/Icons/${path}/${id}.png`;
-                img.width = size;
-                img.height = size;
-                img.style.position = "relative";
-
-                const nameSpan = document.createElement("span");
-                nameSpan.innerHTML = name;
-                addTooltipListeners(div, nameSpan);
-                div.appendChild(img);
-                return div;
-            };
-
-            // Helpers to create UI components
-            const createName = (name) => {
-                if (!name) return null;
-                const div = document.createElement("div");
-                div.className = "subEntry";
-
-                div.innerHTML = name;
-                return div;
-            };
-
-            const createTomeList = (tomes, source, size) => {
-                const container = document.createElement("div");
-                container.className = "sideList";
-                tomes.forEach((tome) => {
-                    container.appendChild(createEntry(tome.name, tome.id, source, size));
-                });
-                return container;
-            };
-
-            const createDLCList = (dlcs, source, size) => {
-                const container = document.createElement("div");
-                container.className = "sideList";
-                dlcs.forEach((dlc) => {
-                    // console.log(build.currentOrigin.name + " " + dlc);
-                    container.appendChild(AddDLCTag(dlc));
-                    // container.appendChild(createEntry(dlc, dlc, source, size));
-                });
-                return container;
-            };
-
-            const createTagsList = (tags) => {
-                const container = document.createElement("div");
-                container.className = "tagEntry";
-
-                tags.forEach((tag) => {
-
-
-                    let newReq = document.createElement("DIV");
-                    newReq.innerHTML = tag;
-                    newReq.setAttribute("style", "background-color:#2e2e28");
-
-                    newReq.className = "requisiteSlot";
-                    container.appendChild(newReq);
-
-                });
-                return container;
-
-
-
-
-            };
-
-            const newDivMain = document.createElement("div");
-            newDivMain.className = "list-main";
-            newDivMain.style.width = "200px";
-            newDiv.appendChild(newDivMain);
-
-
-
-
-
-            // Extra info Div for dlc, tags, rating
-            const newDivOriginsAndClass = document.createElement("div");
-
-            //  newDivOriginsAndClass.className = "list-subHolder";
-
-            newDivMain.appendChild(newDivOriginsAndClass);
-            newDivMain.setAttribute("style", " display:flex;flex-direction:column;  align-items: flex-start;");
-
-            const newDivOriginSubType = document.createElement("div");
-
-            newDivOriginSubType.setAttribute("style", "min-width:100px; display:flex");
-            newDivOriginsAndClass.appendChild(newDivOriginSubType);
-            newDivOriginsAndClass.setAttribute("style", "min-width:180px; display:flex");
-            if (splitTags.length) newDivMain.appendChild(createTagsList(splitTags));
-
-            // Assemble display
-            if (build.currentOrigin)
-                newDivOriginSubType.appendChild(
-                    createEntry(build.currentOrigin.name, build.currentOrigin.id, "FactionCreation", 60)
-                );
-            if (build.currentSubType)
-                newDivOriginSubType.appendChild(
-                    createEntry(build.currentSubType.name, build.currentSubType.id, "FactionCreation", 40)
-                );
-            if (build.currentClass)
-                newDivOriginsAndClass.appendChild(createEntry(build.currentClass.name, build.currentClass.id, "Text", 30));
-
-            // ascensions
-            if (build.currentAscension) {
-                newDivOriginsAndClass.appendChild(
-                    createEntry(build.currentAscension.name, build.currentAscension.id.split("_hero")[0], "UnitIcons", 30)
-                );
-            }
-            // affinity, name, dlc
-            const newDivAffinityNameDlc = document.createElement("div");
-            newDivAffinityNameDlc.setAttribute("Style", "display:flex;flex-direction:column;justify-content: flex-start;");
-
-            newDiv.appendChild(newDivAffinityNameDlc);
-
-            // affinity
-
-            var affinitySources = [
-                build.currentCulture,
-                build.currentSociety1,
-                build.currentSociety2
-            ];
-
-            var affinityTotals = GetAffinityTotalFromList(affinitySources, build.currentTomeList, build.currentSubType);
-
-            affinityTotals = affinityTotals.replace("<empireshadow></empireshadow> ", "<empireshadowBig></empireshadowBig>");
-            affinityTotals = affinityTotals.replace("<empirechaos></empirechaos> ", "<empirechaosBig></empirechaosBig>");
-            affinityTotals = affinityTotals.replace("<empirenature></empirenature> ", "<empirenatureBig></empirenatureBig>");
-            affinityTotals = affinityTotals.replace("<empirearcana></empirearcana> ", "<empirearcanaBig></empirearcanaBig>");
-            affinityTotals = affinityTotals.replace("<empirematter></empirematter> ", "<empirematterBig></empirematterBig>");
-            affinityTotals = affinityTotals.replace("<empireorder></empireorder> ", "<empireorderBig></empireorderBig>");
-            console.log(affinityTotals);
-
-            // add name
-            const newDivAffinities = document.createElement("div");
-            newDivAffinities.setAttribute("style", "display:flex;padding-bottom:10px");
-            newDivAffinities.innerHTML = affinityTotals.replace(/\d+/g, "");;
-
-            newDivAffinityNameDlc.appendChild(newDivAffinities);
-
-
-            // add name
-            const newDivName = document.createElement("div");
-            newDivName.className = "list-main";
-
-            newDivAffinityNameDlc.appendChild(newDivName);
-            const generatedName = `${build.currentCulture.name || "Unknown"} ${build.currentClass.name || "Adventurer"} of ${build.currentOrigin.name || "Unknown"}`;
-
-            newDivName.appendChild(createName(generatedName));
-            newDivName.style.width = "400px";
-
-            // add dlc
-            // dlc tags
-            const newDivDLC = document.createElement("div");
-            newDivDLC.className = "list-main";
-            newDivAffinityNameDlc.appendChild(newDivDLC);
-            let usedDLCs = [];
-
-            function addIfDLC(item) {
-                if (item?.DLC && !isInArray(usedDLCs, item.DLC.replaceAll(" ", ""))) usedDLCs.push(item.DLC.replaceAll(" ", ""));
+            function getItemFromCode(codeSegment) {
+                const id = jsonBuilderLookUp[hexToDecimal(codeSegment)]?.id;
+                return jsonFactionCreation.find((x) => x.id === id);
             }
 
-            // After each component is assigned:
-            addIfDLC(build.currentOrigin);
-            addIfDLC(build.currentCulture);
-            addIfDLC(build.currentClass);
-            addIfDLC(build.currentTome);
-            build.currentTomeList?.forEach((t) => addIfDLC(t));
-            //  console.log(usedDLCs);
+            function populateFilters(builds) {
+                const cultureSet = new Set();
+                const originSet = new Set();
+                const classSet = new Set();
+                const tagSet = new Set(buildTags);
+                const activeDLCFilters = new Set();
 
-            if (usedDLCs.length) newDivDLC.appendChild(createDLCList(usedDLCs, "Text", 25));
+                builds.forEach((build) => {
+                    const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
 
+                    const data = getBaseBuildDate(code); // You’ll need to expose `currentCulture`, etc.
 
-            //----------------------------------------------------------------------------------------------------------
+                    if (data.currentCulture) cultureSet.add(data.currentCulture.name);
+                    if (data.currentOrigin) originSet.add(data.currentOrigin.name);
+                    if (data.currentClass) classSet.add(data.currentClass.name);
+                });
 
-            // subentry form + cult and tomes beneath
+                createDlcFilters();
 
-            const newDivSubFormCultTomes = document.createElement("div");
-            // newDivSubFormCultTomes.className = "list-main";
-            // newDivSubFormCultTomes.style.width = "500px";
-            newDiv.appendChild(newDivSubFormCultTomes);
+                populateSelect("cultureFilter", cultureSet);
+                populateSelect("originFilter", originSet);
+                populateSelect("tagFilter", tagSet);
+                populateSelect("classFilter", classSet);
+            }
 
-            // sub div form cult
-            const newDivFormCult = document.createElement("div");
-            newDivFormCult.className = "list-main";
-            newDivFormCult.setAttribute("style", "justify-content: flex-end; display:flex; width:500px");
-            newDivSubFormCultTomes.appendChild(newDivFormCult);
+            document.getElementById("cultureFilter").addEventListener("change", filterBuilds);
+            document.getElementById("originFilter").addEventListener("change", filterBuilds);
+            document.getElementById("tagFilter").addEventListener("change", filterBuilds);
+            document.getElementById("classFilter").addEventListener("change", filterBuilds);
 
+            function getBaseBuildDate(code) {
+                const splitcode = code.split(",");
+                // Helpers
+                const findById = (id, arr) => arr.find((item) => item.id === id);
+                const findByName = (name, arr) => arr.find((item) => item.name === name);
+                const getIdFromCode = (hex) => jsonBuilderLookUp[hexToDecimal(hex)]?.id;
 
-
-            // just form
-            const newDivForm = document.createElement("div");
-
-            newDivForm.setAttribute("style", "display:flex;min-width:200px");
-            newDivFormCult.appendChild(newDivForm);
-
-            // form + formtraits
-            if (build.currentForm)
-                newDivForm.appendChild(
-                    createEntry(build.currentForm.name, build.currentForm.id, "FactionCreation", 40)
-                );
-            if (build.currentFormTraitList.length)
-                newDivForm.appendChild(createTomeList(build.currentFormTraitList, "FactionCreation", 30));
-
-            // culture
-
-            const newDivCult = document.createElement("div");
-            newDivCult.className = "list-main";
-            newDivCult.setAttribute("style", "display: flex;justify-content: flex-end; width: 100px");
-            newDivFormCult.appendChild(newDivCult);
-            if (build.currentCulture)
-                newDivCult.appendChild(
-                    createEntry(build.currentCulture.name, build.currentCulture.id, "FactionCreation", 40)
-                );
-            if (build.currentSociety1)
-                newDivCult.appendChild(
-                    createEntry(build.currentSociety1.name, build.currentSociety1.id, "FactionCreation", 30)
-                );
-            if (build.currentSociety2)
-                newDivCult.appendChild(
-                    createEntry(build.currentSociety2.name, build.currentSociety2.id, "FactionCreation", 30)
-                );
-
-            //--------------------------------------------------------------------------------------------------------------
-            // tomes part
-
-            const newDivTomes = document.createElement("div");
-            newDivTomes.className = "list-main";
-            newDivTomes.style.justifyContent = "flex-end";
-
-            newDivSubFormCultTomes.appendChild(newDivTomes);
-            if (build.currentTomeList.length)
-                newDivTomes.appendChild(createTomeList(build.currentTomeList, "TomeIcons", 40));
-
-
-            newDivTomes.style.width = "500px";
-
-
-            const newDivExtra = document.createElement("div");
-            newDivExtra.className = "list-main";
-            newDivExtra.setAttribute("style", " width:100px; display:flex; flex-direction: column;justify-content: space-between ");
-            newDiv.appendChild(newDivExtra);
-            newDivPop = document.createElement("div");
-            newDivPop.setAttribute("style", "padding-top:20px");
-            newDivPop.append(renderViewCount(views));
-            newDivExtra.appendChild(newDivPop);
-            newDivDate = document.createElement("div");
-            newDivDate.innerHTML = getPatchForDate(date);
-            newDivExtra.appendChild(newDivDate);
-
-
-
-
-            mainDiv.dataset.dlcs = usedDLCs;
-            return mainDiv;
-        }
-
-        function getPatchForDate(uploadDateStr) {
-            const uploadDate = new Date(uploadDateStr);
-
-            for (let patch of patchDates) {
-                if (uploadDate >= patch.from && uploadDate <= patch.to) {
-                    return patch.name;
+                // Form traits
+                let currentFormTraitList = [];
+                if (splitcode[0] !== "F") {
+                    const traitCodes = splitcode[0].split(":");
+                    currentFormTraitList = traitCodes
+                        .map((hex) => getIdFromCode(hex))
+                        .map((id) => findById(id, jsonFactionCreation2))
+                        .filter(Boolean);
                 }
+
+                // Society 1 & 2
+                const currentSociety1 = findById(getIdFromCode(splitcode[1]), jsonFactionCreation2);
+                const currentSociety2 = findById(getIdFromCode(splitcode[2]), jsonFactionCreation2);
+
+                // Form, Culture, Origin
+                const currentForm = findById(getIdFromCode(splitcode[3]), jsonFactionCreation);
+                const currentCulture = findById(getIdFromCode(splitcode[4]), jsonFactionCreation);
+                const currentOrigin = findById(getIdFromCode(splitcode[5]), jsonFactionCreation);
+
+                // Loadout / Class (legacy fallback)
+                let TempReplacementForClass = "";
+                let currentSubType = null;
+                if (splitcode[6] !== "s") {
+                    const subtype = findById(getIdFromCode(splitcode[6]), jsonFactionCreation);
+                    if (subtype?.name.includes("Dragon") || subtype?.name.includes("Giant")) {
+                        currentSubType = subtype;
+                    }
+                    TempReplacementForClass = GetClassFromWeaponId(subtype?.id);
+                }
+
+                // Tomes
+                const tomeCodes = splitcode[7]?.split(":") || [];
+                const currentTomeList = tomeCodes
+                    .map((hex) => getIdFromCode(hex))
+                    .map((id) => findById(id, jsonTomes))
+                    .filter(Boolean);
+                const currentTome = currentTomeList[0];
+
+                // Class
+                let currentClass = null;
+                if (splitcode[9] !== "s") {
+                    currentClass = findById(getIdFromCode(splitcode[9]), jsonFactionCreation);
+                } else if (TempReplacementForClass) {
+                    currentClass = findByName(TempReplacementForClass, jsonFactionCreation);
+                }
+
+                // Ascension
+                let currentAscension = null;
+                const ascenCode = splitcode[10];
+                if (ascenCode && ascenCode !== "a") {
+                    currentAscension = findById(getIdFromCode(ascenCode), jsonHeroSkills);
+                }
+
+                return {
+                    currentFormTraitList,
+                    currentSociety1,
+                    currentSociety2,
+                    currentForm,
+                    currentCulture,
+                    currentOrigin,
+                    currentTomeList,
+                    currentClass,
+                    currentAscension,
+                    currentSubType
+                };
             }
-            return "Unknown Patch";
-        }
 
-        function getViewIcon(viewCount) {
-            if (viewCount > 5000) return "<reputation8></reputation8>";   // hot
-            if (viewCount > 1000) return "<reputation7></reputation7>";   // hot
-            if (viewCount > 500) return "<reputation6></reputation6>";
-            if (viewCount > 100) return "<reputation5></reputation5>";    // warm
-            return "<reputation4></reputation4>";                        // low
-        }
+            function filterBuilds() {
+                const culture = document.getElementById("cultureFilter").value;
+                const origin = document.getElementById("originFilter").value;
+                const tag = document.getElementById("tagFilter").value;
+                const classO = document.getElementById("classFilter").value;
 
-        function renderViewCount(viewCount) {
-            const span = document.createElement("span");
-            span.textContent = "___";
-            span.innerHTML = getViewIcon(viewCount);
-            // span.style.backgroundColor = getViewColor(viewCount);
-            return span;
-        }
+                const filtered = allBuilds.filter((build) => {
+                    const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
+                    const data = getBaseBuildDate(code);
+                    const tags = build.Tags || "Roleplay, Theme";
 
+                    return (
+                        (culture === "all" || data.currentCulture?.name === culture) &&
+                        (origin === "all" || data.currentOrigin?.name === origin) &&
+                        (classO === "all" || data.currentClass?.name === classO) &&
+                        (tag === "all" || tags?.indexOf(tag) != -1)
+                    );
+                });
 
-    </script>
-</body>
+                renderBuilds(filtered);
+            }
 
+            function populateSelect(id, items) {
+                const select = document.getElementById(id);
+                items.forEach((item) => {
+                    const option = document.createElement("option");
+                    option.value = item;
+                    option.textContent = item;
+                    select.appendChild(option);
+                });
+            }
+
+            function createDlcFilters() {
+                const filterDiv = document.getElementById("dlcFilters");
+                const allDLCs = new Set();
+                allDLCs.add("DRAGONLORDS");
+                allDLCs.add("EMPIRESANDASHES");
+                allDLCs.add("PRIMALFURY");
+                allDLCs.add("ELDRITCHREALMS");
+                allDLCs.add("WAYSOFWAR");
+                allDLCs.add("HERALDOFGLORY");
+                allDLCs.add("GIANTKINGS");
+
+                allDLCs.forEach((dlc) => {
+                    const btn = document.createElement("button");
+                    btn.textContent = dlc;
+                    btn.className = "dlc-toggle";
+                    btn.onclick = () => {
+                        if (activeDLCFilters.has(dlc)) {
+                            activeDLCFilters.delete(dlc);
+                            btn.classList.remove("active");
+                        } else {
+                            activeDLCFilters.add(dlc);
+                            btn.classList.add("active");
+                        }
+                        applyDlcFilter();
+                    };
+                    filterDiv.appendChild(btn);
+                });
+            }
+
+            function CreateListEntry(build) {
+                const listDiv = document.getElementById("list");
+
+                const linkUrl = build.BuildURL || "LinkError";
+                const buildName = build.BuildName || "Unnamed";
+                const editKey = build.editKey || "";
+
+                const date = build.Timestamp || "N/A";
+
+                const views = build.Views || 0;
+
+                const tags = build.Tags || "Roleplay, Theme";
+                const parsedLink = linkUrl?.split("=")[1] || "Error";
+
+                // Use ReadBackBuildData to get a display DOM element
+                const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date, views);
+
+                // Wrap it in a clickable link
+                const linkWrapper = document.createElement("a");
+                linkWrapper.href = linkUrl;
+
+                linkWrapper.rel = "noopener noreferrer"; // Security best practice
+                linkWrapper.className = "build-link";
+
+                //  console.log(entryContent.dataset.dlcs);
+                linkWrapper.dataset.dlcs = entryContent.dataset.dlcs;
+
+                const userEditKey = getOrCreateUserEditKey();
+
+                const isOwner = build.editKey === userEditKey;
+
+                linkWrapper.dataset.isOwner = isOwner;
+
+                // Add build preview content here...
+
+                if (isOwner) {
+                    const editBtn = document.createElement("button");
+                    editBtn.textContent = "Edit";
+                    editBtn.onclick = () => startEditBuild(build);
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "Delete";
+                    deleteBtn.onclick = () => deleteBuild(build);
+
+                    listDiv.appendChild(editBtn);
+                    listDiv.appendChild(deleteBtn);
+                }
+
+                linkWrapper.appendChild(entryContent);
+                listDiv.appendChild(linkWrapper);
+            }
+
+            function startEditBuild(build) {
+                window.location.href = build.BuildURL + "&edit";
+            }
+
+            function deleteBuild(build) {
+                if (!confirm("Are you sure you want to delete this build?")) return;
+
+                const url = new URL(
+                    "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
+                );
+                url.searchParams.set("action", "delete");
+                // actual build settings
+
+                url.searchParams.set("url", build.BuildURL);
+                url.searchParams.set("editKey", getOrCreateUserEditKey());
+
+                fetch(url)
+                    .then((res) => res.text())
+                    .then((msg) => alert("Delete: " + msg))
+                    .catch((err) => console.error("Delete failed:", err));
+            }
+
+            function applyDlcFilter() {
+                document.querySelectorAll(".build-link").forEach((link) => {
+                    const dlcs = link.dataset.dlcs?.split(",") || [];
+                    const show = activeDLCFilters.size === 0 || dlcs.some((dlc) => activeDLCFilters.has(dlc));
+                    link.style.display = show ? "" : "none";
+                });
+            }
+
+            function ReadBackBuildData(code, tags, buildName, date, views) {
+                var build = getBaseBuildDate(code);
+                const splitTags = tags.split(",");
+
+                const mainDiv = document.createElement("div");
+                mainDiv.className = "list-holder";
+
+                // main div for build
+                const newDiv = document.createElement("div");
+                newDiv.className = "list-subHolder";
+                mainDiv.appendChild(newDiv);
+
+                // Helpers to create UI components
+                const createEntry = (name, id, path, size) => {
+                    if (!name || !id) return null;
+                    const div = document.createElement("div");
+                    div.className = "subEntry";
+
+                    const img = document.createElement("img");
+                    img.src = `/aow4db/Icons/${path}/${id}.png`;
+                    img.width = size;
+                    img.height = size;
+                    img.style.position = "relative";
+
+                    const nameSpan = document.createElement("span");
+                    nameSpan.innerHTML = name;
+                    addTooltipListeners(div, nameSpan);
+                    div.appendChild(img);
+                    return div;
+                };
+
+                // Helpers to create UI components
+                const createName = (name) => {
+                    if (!name) return null;
+                    const div = document.createElement("div");
+                    div.className = "subEntry";
+
+                    div.innerHTML = name;
+                    return div;
+                };
+
+                const createTomeList = (tomes, source, size) => {
+                    const container = document.createElement("div");
+                    container.className = "sideList";
+                    tomes.forEach((tome) => {
+                        container.appendChild(createEntry(tome.name, tome.id, source, size));
+                    });
+                    return container;
+                };
+
+                const createDLCList = (dlcs, source, size) => {
+                    const container = document.createElement("div");
+                    container.className = "sideList";
+                    dlcs.forEach((dlc) => {
+                        // console.log(build.currentOrigin.name + " " + dlc);
+                        container.appendChild(AddDLCTag(dlc));
+                        // container.appendChild(createEntry(dlc, dlc, source, size));
+                    });
+                    return container;
+                };
+
+                const createTagsList = (tags) => {
+                    const container = document.createElement("div");
+                    container.className = "tagEntry";
+
+                    tags.forEach((tag) => {
+                        let newReq = document.createElement("DIV");
+                        newReq.innerHTML = tag;
+                        newReq.setAttribute("style", "background-color:#2e2e28");
+
+                        newReq.className = "requisiteSlot";
+                        container.appendChild(newReq);
+                    });
+                    return container;
+                };
+
+                const newDivMain = document.createElement("div");
+                newDivMain.className = "list-main";
+                newDivMain.style.width = "200px";
+                newDiv.appendChild(newDivMain);
+
+                // Extra info Div for dlc, tags, rating
+                const newDivOriginsAndClass = document.createElement("div");
+
+                //  newDivOriginsAndClass.className = "list-subHolder";
+
+                newDivMain.appendChild(newDivOriginsAndClass);
+                newDivMain.setAttribute("style", " display:flex;flex-direction:column;  align-items: flex-start;");
+
+                const newDivOriginSubType = document.createElement("div");
+
+                newDivOriginSubType.setAttribute("style", "min-width:100px; display:flex");
+                newDivOriginsAndClass.appendChild(newDivOriginSubType);
+                newDivOriginsAndClass.setAttribute("style", "min-width:180px; display:flex");
+                if (splitTags.length) newDivMain.appendChild(createTagsList(splitTags));
+
+                // Assemble display
+                if (build.currentOrigin)
+                    newDivOriginSubType.appendChild(
+                        createEntry(build.currentOrigin.name, build.currentOrigin.id, "FactionCreation", 60)
+                    );
+                if (build.currentSubType)
+                    newDivOriginSubType.appendChild(
+                        createEntry(build.currentSubType.name, build.currentSubType.id, "FactionCreation", 40)
+                    );
+                if (build.currentClass)
+                    newDivOriginsAndClass.appendChild(
+                        createEntry(build.currentClass.name, build.currentClass.id, "Text", 30)
+                    );
+
+                // ascensions
+                if (build.currentAscension) {
+                    newDivOriginsAndClass.appendChild(
+                        createEntry(
+                            build.currentAscension.name,
+                            build.currentAscension.id.split("_hero")[0],
+                            "UnitIcons",
+                            30
+                        )
+                    );
+                }
+                // affinity, name, dlc
+                const newDivAffinityNameDlc = document.createElement("div");
+                newDivAffinityNameDlc.setAttribute(
+                    "Style",
+                    "display:flex;flex-direction:column;justify-content: flex-start;"
+                );
+
+                newDiv.appendChild(newDivAffinityNameDlc);
+
+                // affinity
+
+                var affinitySources = [build.currentCulture, build.currentSociety1, build.currentSociety2];
+
+                var affinityTotals = GetAffinityTotalFromList(
+                    affinitySources,
+                    build.currentTomeList,
+                    build.currentSubType
+                );
+
+                affinityTotals = affinityTotals.replace(
+                    "<empireshadow></empireshadow> ",
+                    "<empireshadowBig></empireshadowBig>"
+                );
+                affinityTotals = affinityTotals.replace(
+                    "<empirechaos></empirechaos> ",
+                    "<empirechaosBig></empirechaosBig>"
+                );
+                affinityTotals = affinityTotals.replace(
+                    "<empirenature></empirenature> ",
+                    "<empirenatureBig></empirenatureBig>"
+                );
+                affinityTotals = affinityTotals.replace(
+                    "<empirearcana></empirearcana> ",
+                    "<empirearcanaBig></empirearcanaBig>"
+                );
+                affinityTotals = affinityTotals.replace(
+                    "<empirematter></empirematter> ",
+                    "<empirematterBig></empirematterBig>"
+                );
+                affinityTotals = affinityTotals.replace(
+                    "<empireorder></empireorder> ",
+                    "<empireorderBig></empireorderBig>"
+                );
+                console.log(affinityTotals);
+
+                // add name
+                const newDivAffinities = document.createElement("div");
+                newDivAffinities.setAttribute("style", "display:flex;padding-bottom:10px");
+                newDivAffinities.innerHTML = affinityTotals.replace(/\d+/g, "");
+
+                newDivAffinityNameDlc.appendChild(newDivAffinities);
+
+                // add name
+                const newDivName = document.createElement("div");
+                newDivName.className = "list-main";
+
+                newDivAffinityNameDlc.appendChild(newDivName);
+                const generatedName = `${build.currentCulture.name || "Unknown"} ${build.currentClass.name || "Adventurer"} of ${build.currentOrigin.name || "Unknown"}`;
+
+                newDivName.appendChild(createName(generatedName));
+                newDivName.style.width = "400px";
+
+                // add dlc
+                // dlc tags
+                const newDivDLC = document.createElement("div");
+                newDivDLC.className = "list-main";
+                newDivAffinityNameDlc.appendChild(newDivDLC);
+                let usedDLCs = [];
+
+                function addIfDLC(item) {
+                    if (item?.DLC && !isInArray(usedDLCs, item.DLC.replaceAll(" ", "")))
+                        usedDLCs.push(item.DLC.replaceAll(" ", ""));
+                }
+
+                // After each component is assigned:
+                addIfDLC(build.currentOrigin);
+                addIfDLC(build.currentCulture);
+                addIfDLC(build.currentClass);
+                addIfDLC(build.currentTome);
+                build.currentTomeList?.forEach((t) => addIfDLC(t));
+                //  console.log(usedDLCs);
+
+                if (usedDLCs.length) newDivDLC.appendChild(createDLCList(usedDLCs, "Text", 25));
+
+                //----------------------------------------------------------------------------------------------------------
+
+                // subentry form + cult and tomes beneath
+
+                const newDivSubFormCultTomes = document.createElement("div");
+                // newDivSubFormCultTomes.className = "list-main";
+                // newDivSubFormCultTomes.style.width = "500px";
+                newDiv.appendChild(newDivSubFormCultTomes);
+
+                // sub div form cult
+                const newDivFormCult = document.createElement("div");
+                newDivFormCult.className = "list-main";
+                newDivFormCult.setAttribute("style", "justify-content: flex-end; display:flex; width:500px");
+                newDivSubFormCultTomes.appendChild(newDivFormCult);
+
+                // just form
+                const newDivForm = document.createElement("div");
+
+                newDivForm.setAttribute("style", "display:flex;min-width:200px");
+                newDivFormCult.appendChild(newDivForm);
+
+                // form + formtraits
+                if (build.currentForm)
+                    newDivForm.appendChild(
+                        createEntry(build.currentForm.name, build.currentForm.id, "FactionCreation", 40)
+                    );
+                if (build.currentFormTraitList.length)
+                    newDivForm.appendChild(createTomeList(build.currentFormTraitList, "FactionCreation", 30));
+
+                // culture
+
+                const newDivCult = document.createElement("div");
+                newDivCult.className = "list-main";
+                newDivCult.setAttribute("style", "display: flex;justify-content: flex-end; width: 100px");
+                newDivFormCult.appendChild(newDivCult);
+                if (build.currentCulture)
+                    newDivCult.appendChild(
+                        createEntry(build.currentCulture.name, build.currentCulture.id, "FactionCreation", 40)
+                    );
+                if (build.currentSociety1)
+                    newDivCult.appendChild(
+                        createEntry(build.currentSociety1.name, build.currentSociety1.id, "FactionCreation", 30)
+                    );
+                if (build.currentSociety2)
+                    newDivCult.appendChild(
+                        createEntry(build.currentSociety2.name, build.currentSociety2.id, "FactionCreation", 30)
+                    );
+
+                //--------------------------------------------------------------------------------------------------------------
+                // tomes part
+
+                const newDivTomes = document.createElement("div");
+                newDivTomes.className = "list-main";
+                newDivTomes.style.justifyContent = "flex-end";
+
+                newDivSubFormCultTomes.appendChild(newDivTomes);
+                if (build.currentTomeList.length)
+                    newDivTomes.appendChild(createTomeList(build.currentTomeList, "TomeIcons", 40));
+
+                newDivTomes.style.width = "500px";
+
+                const newDivExtra = document.createElement("div");
+                newDivExtra.className = "list-main";
+                newDivExtra.setAttribute(
+                    "style",
+                    " width:100px; display:flex; flex-direction: column;justify-content: space-between "
+                );
+                newDiv.appendChild(newDivExtra);
+                newDivPop = document.createElement("div");
+                newDivPop.setAttribute("style", "padding-top:20px");
+                newDivPop.append(renderViewCount(views));
+                newDivExtra.appendChild(newDivPop);
+                newDivDate = document.createElement("div");
+                newDivDate.innerHTML = getPatchForDate(date);
+                newDivExtra.appendChild(newDivDate);
+
+                mainDiv.dataset.dlcs = usedDLCs;
+                return mainDiv;
+            }
+
+            function getPatchForDate(uploadDateStr) {
+                const uploadDate = new Date(uploadDateStr);
+
+                for (let patch of patchDates) {
+                    if (uploadDate >= patch.from && uploadDate <= patch.to) {
+                        return patch.name;
+                    }
+                }
+                return "Unknown Patch";
+            }
+
+            function getViewIcon(viewCount) {
+                if (viewCount > 5000) return "<reputation8></reputation8>"; // hot
+                if (viewCount > 1000) return "<reputation7></reputation7>"; // hot
+                if (viewCount > 500) return "<reputation6></reputation6>";
+                if (viewCount > 100) return "<reputation5></reputation5>"; // warm
+                return "<reputation4></reputation4>"; // low
+            }
+
+            function renderViewCount(viewCount) {
+                const span = document.createElement("span");
+                span.textContent = "___";
+                span.innerHTML = getViewIcon(viewCount);
+                // span.style.backgroundColor = getViewColor(viewCount);
+                return span;
+            }
+        </script>
+    </body>
 </html>
 <footer><br /><br /></footer>

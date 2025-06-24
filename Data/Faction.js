@@ -19,6 +19,8 @@ var currentHighlights = "";
 
 var extraOrder, extraChaos, extraNature, extraMaterium, extraShadow, extraAstral;
 
+var buildTags = ["Roleplay", "Theme", "PVP", "Casual"];
+
 var listOfPantheonTraits = [
     "talented_collectors",
     "subterranean_society",
@@ -1134,8 +1136,6 @@ function RecalculateStats(fromload) {
 
     var result = GetAffinityTotalFromList(list, currentTomeList, currentSubType);
 
-
-
     // add all extra input tags
     document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
     document.getElementById("extraOrder").style = "text-align:center";
@@ -1150,11 +1150,7 @@ function RecalculateStats(fromload) {
     document.getElementById("extraAstral").innerHTML = "<empirearcanaBig></empirearcanaBig>" + extraAstral;
     document.getElementById("extraAstral").style = "text-align:center";
 
-
-
     const affinitySummary = document.getElementById("currentAffinity");
-
-
 
     currentAffinityTotal = result;
 
@@ -3369,28 +3365,38 @@ function hexToDecimal(hex) {
 }
 
 function RebuildFromParam(code) {
-
-
-
     reversLookUp(code);
 
-    fetch("https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec", {
-        method: "POST",
-        body: new URLSearchParams({
-            action: "incrementView",
-            buildId: window.location.href.split("?")[0] + "?u=" + code
-        })
-    })
-        .then((msg) => console.log(msg));
+    fetch(
+        "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec",
+        {
+            method: "POST",
+            body: new URLSearchParams({
+                action: "incrementView",
+                buildId: window.location.href.split("?")[0] + "?u=" + code
+            })
+        }
+    )
+        .then((res) => res.json()) // Parse the JSON from response
+        .then((builds) => {
+            FillInBuildDetails(builds[0]);
+        });
 
     if (window.location.href.indexOf("&edit")) {
         // save current url for overwriting
         document.getElementById("oldURL").innerHTML = window.location.href.split("?")[0] + "?u=" + code;
+        // show edit button
         //   alert("Editing");
     }
 
     // check if build code is here
 
     // if (build.editKey === getOrCreateUserEditKey()) {
+}
 
+function FillInBuildDetails(build) {
+    console.log(build);
+    var notesBlock = document.getElementById("NotesInput");
+    notesBlock.value = build.Notes;
+    console.log(build.Notes);
 }
