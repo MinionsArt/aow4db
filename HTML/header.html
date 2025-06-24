@@ -1,657 +1,609 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <link rel="shortcut icon" href="/aow4db/favicon.ico" />
-        <script src="/aow4db/Data/Builder.js"></script>
-        <script src="/aow4db/Data/Faction.js"></script>
-        <script src="/aow4db/Data/Search.js"></script>
-        <link rel="stylesheet" href="/aow4db/Style/icons.css" />
-        <meta charset="UTF-8" />
-        <title>Age of Wonders 4 Database</title>
-    </head>
-    <body>
-        <div style="color: white; font-size: 14px; z-index: 10; position: relative; width: fit-content">
-            Settings<br />
-            Selectable Tooltips: <input type="checkbox" id="tooltipCheckbox" onclick="CheckBoxTooltips()" /><br />
-            Highlight Numbers: <input type="checkbox" id="numbersCheckbox" onclick="CheckBoxTooltips()" />
-            <select id="languageSelect" onchange="SwitchToBeta()" style="display: none">
-                <option value="EN">English</option>
-                <option value="DE">Deutsch</option>
-                <option value="JA">Japanese</option>
-                <option value="KO">Korean</option>
-                <option value="PL">Polish</option>
-                <option value="ES">Spanish</option>
-                <option value="RU">Russian</option>
-                <option value="CN">Chinese</option>
-                <option value="FR">French</option>
-            </select>
-        </div>
-        <div style="color: white; font-size: 15px; position: absolute; right: 10px; top: 5px; z-index: 1">
-            Other Database:<br /><br />
-            <a class="prett" href="https://minionsart.github.io/aow3db/" target="_blank"
-                ><img
-                    style="margin-top: -20px; margin-bottom: -10px"
-                    src="/aow4db/Icons/Interface/aow3icon.png"
-                    width="35px" />AOW3</a
-            >
-            <br /><br />
-            <a class="prett" href="https://minionsart.github.io/aowp/" target="_blank"
-                ><img
-                    style="margin-top: -20px; margin-bottom: -10px"
-                    src="/aow4db/Icons/Interface/aowpficon.png"
-                    width="35px" />AOW-Planetfall</a
-            >
-        </div>
-        <div class="header-img">
-            <div id="topButtonContainer" style="display: none">
-                <div id="myCenteredButton"><a href="/aow4db/HTML/Donate.html">Donate</a></div>
-            </div>
 
-            <div class="hero-text">Age of Wonders 4 Database</div>
+<head>
+    <link rel="shortcut icon" href="/aow4db/favicon.ico" />
+    <script src="/aow4db/Data/Builder.js"></script>
+    <script src="/aow4db/Data/Faction.js"></script>
+    <script src="/aow4db/Data/Search.js"></script>
+    <link rel="stylesheet" href="/aow4db/Style/icons.css" />
+    <meta charset="UTF-8" />
+    <title>Age of Wonders 4 Database</title>
+</head>
 
-            <div class="mid-text">
-                <img src="/aow4db/Icons/Interface/giant_kings.png" width="400px" />
-
-                <div class="mid-text" style="display: none">
-                    Switch To Ogre Beta Dataset:<input type="checkbox" id="showBetaCheckbox" onclick="SwitchToBeta()" />
-                    <br />(may have page/image issues)(only changes exported data)
+<body>
+    <div class="topbar">
+        <div style="display: flex">
+            <div class="dropdown">
+                <div class="dropdown-title">Settings ▼</div>
+                <div class="dropdown-content">
+                    <label>
+                        Selectable Tooltips:
+                        <input type="checkbox" id="tooltipCheckbox" onclick="CheckBoxTooltips()" />
+                    </label>
+                    <br />
+                    <label>
+                        Highlight Numbers:
+                        <input type="checkbox" id="numbersCheckbox" onclick="CheckBoxTooltips()" />
+                    </label>
+                    <br />
+                    <label style="display: none;">
+                        Language:
+                        <select id="languageSelect" onchange="SwitchToBeta()">
+                            <option value="EN">English</option>
+                            <option value="DE">Deutsch</option>
+                            <option value="JA">Japanese</option>
+                            <option value="KO">Korean</option>
+                            <option value="PL">Polish</option>
+                            <option value="ES">Spanish</option>
+                            <option value="RU">Russian</option>
+                            <option value="CN">Chinese</option>
+                            <option value="FR">French</option>
+                        </select>
+                    </label>
                 </div>
-                <div class="current-version">Updated: 15 APRIL 2025</div>
             </div>
-            <ul id="menu">
-                <li>
-                    <a class="prett" id="menu-units"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/TomeUnitsIcon.png"
-                            width="40px" />Units
-                    </a>
-                    <ul class="menus">
-                        <li class="has-submenu">
-                            <a class="prett" style="color: burlywood" id="submenu-culture"
-                                ><img
-                                    style="margin-top: -20px; margin-bottom: -10px"
-                                    src="/aow4db/Icons/Interface/CultureUnitsIcon.png"
-                                    width="20px" />Culture ▸
-                            </a>
-                            <ul class="submenu">
-                                <li>
-                                    <a id="culture-feudal" href="/aow4db/HTML/FeudalUnits.html?type=scoutMonarchy"
-                                        ><img src="/aow4db/Icons/Text/feudal.png" width="20px" /> Feudal
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="culture-high" href="/aow4db/HTML/HighUnits.html?type=lightseeker"
-                                        ><img src="/aow4db/Icons/Text/high.png" width="20px" /> High
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="culture-barbarian" href="/aow4db/HTML/BarbarianUnits.html?type=pathfinder"
-                                        ><img src="/aow4db/Icons/Text/barbarian.png" width="20px" /> Barbarian
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="culture-industrious" href="/aow4db/HTML/IndustriousUnits.html?type=pioneer"
-                                        ><img src="/aow4db/Icons/Text/industrious.png" width="20px" /> Industrious</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="culture-dark" href="/aow4db/HTML/DarkUnits.html?type=outrider"
-                                        ><img src="/aow4db/Icons/Text/dark.png" width="20px" /> Dark</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="culture-mystic"
-                                        href="/aow4db/HTML/MysticUnits.html?type=mystic_projectionAttunement&"
-                                        ><img src="/aow4db/Icons/Text/mystic.png" width="20px" /> Mystic</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="culture-reaver" href="/aow4db/HTML/ReaverUnits.html?type=observer&"
-                                        ><img src="/aow4db/Icons/Text/reaver.png" width="20px" /> Reaver</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="culture-primal"
-                                        href="/aow4db/HTML/PrimalUnits.html?type=spirit_trackerAsh%20Sabertooth&"
-                                        ><img src="/aow4db/Icons/Text/primal.png" width="20px" /> Primal</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="culture-oathsworn"
-                                        href="/aow4db/HTML/OathswornUnits.html?type=wayfarerHarmony"
-                                        ><img src="/aow4db/Icons/Text/oathsworn.png" width="20px" /> Oathsworn</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu">
-                            <a class="prett" style="color: burlywood" id="submenu-tomesU"
-                                ><img
-                                    style="margin-top: -20px; margin-bottom: -10px"
-                                    src="/aow4db/Icons/Interface/TomeUnitsIcon.png"
-                                    width="20px" />Tomes ▸</a
-                            >
-                            <ul class="submenu">
-                                <li>
-                                    <a
-                                        id="tomesU-astral"
-                                        href="/aow4db/HTML/AstralTomesUnits.html?type=phantasm_warrior&"
-                                        ><img src="/aow4db/Icons/Text/astral.png" width="20px" /> Astral</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-nature" href="/aow4db/HTML/NatureTomesUnits.html?type=wildspeaker&"
-                                        ><img src="/aow4db/Icons/Text/nature.png" width="20px" /> Nature</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-shadow" href="/aow4db/HTML/ShadowTomesUnits.html?type=bone_horror&"
-                                        ><img src="/aow4db/Icons/Text/shadow.png" width="20px" /> Shadow</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-order" href="/aow4db/HTML/OrderTomesUnits.html?type=chaplain&"
-                                        ><img src="/aow4db/Icons/Text/order.png" width="20px" /> Order</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="tomesU-chaos"
-                                        href="/aow4db/HTML/ChaosTomesUnits.html?type=lesser_magma_spirit&"
-                                        ><img src="/aow4db/Icons/Text/chaos.png" width="20px" /> Chaos</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="tomesU-materium"
-                                        href="/aow4db/HTML/MateriumTomesUnits.html?type=copper_golem&"
-                                        ><img src="/aow4db/Icons/Text/materium.png" width="20px" /> Materium</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="tomesU-dd"
-                                        href="/aow4db/HTML/DragonDawnTomesUnits.html?type=wyvern_fledgling"
-                                        ><img src="/aow4db/Icons/Text/DragonDawn.png" width="20px" /> Dragon Dawn</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-ea" href="/aow4db/HTML/EmpiresAshesTomeUnits.html?type=afflictor"
-                                        ><img src="/aow4db/Icons/Text/empireAshes.png" width="20px" /> Empires& Ashes</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-pf" href="/aow4db/HTML/PrimalFuryTomesUnits.html?type=mistling"
-                                        ><img src="/aow4db/Icons/Text/PrimalFury.png" width="20px" /> Primal Fury</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-er" href="/aow4db/HTML/EldritchRealmsTomesUnits.html?type=tentacle"
-                                        ><img src="/aow4db/Icons/Text/EldritchRealms.png" width="20px" /> Eldritch
-                                        Realms</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-ww" href="/aow4db/HTML/WaysOfWarTomeUnits.html?type=monk&"
-                                        ><img src="/aow4db/Icons/Text/waysofwar.png" width="20px" /> Ways of War</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="tomesU-gk" href="/aow4db/HTML/GiantKingsTomeUnits.html?type=clay_charger&"
-                                        ><img src="/aow4db/Icons/Text/GKLogo.png" width="20px" /> Giant Kings</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu">
-                            <a id="submenu-types" class="prett" style="color: burlywood"
-                                ><img
-                                    style="margin-top: -20px; margin-bottom: -10px"
-                                    src="/aow4db/Icons/Interface/WildlifeUnitsIcon.png"
-                                    width="20px" />Types ▸</a
-                            >
-                            <ul class="submenu">
-                                <li>
-                                    <a id="types-fey" href="/aow4db/HTML/FeyUnits.html?type=spring_fairy"
-                                        ><img src="/aow4db/Icons/UnitIcons/fey.png" width="20px" /> Fey</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-animal" href="/aow4db/HTML/AnimalUnits.html?type=young_caustic_worm&"
-                                        ><img src="/aow4db/Icons/UnitIcons/animal.png" width="20px" /> Animal</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-infernal-fiend" href="/aow4db/HTML/FiendUnits.html?type=inferno_puppy&"
-                                        ><img src="/aow4db/Icons/UnitIcons/fiend.png" width="20px" /> Infernal Fiend</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-dragons" href="/aow4db/HTML/DragonUnits.html?type=bone_wyvern&"
-                                        ><img src="/aow4db/Icons/UnitIcons/dragon.png" width="20px" /> Dragons</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-demi" href="/aow4db/HTML/DemiGiantUnits.html?type=butcher_ogre&"
-                                        ><img src="/aow4db/Icons/UnitIcons/large_target.png" width="20px" />
-                                        Demi/Giants</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="types-elemental"
-                                        href="/aow4db/HTML/ElementalUnits.html?type=lesser_snow_spirit&"
-                                        ><img src="/aow4db/Icons/UnitIcons/elemental.png" width="20px" /> Elemental</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-undead" href="/aow4db/HTML/UndeadUnits.html?type=skeleton_mage&"
-                                        ><img src="/aow4db/Icons/UnitIcons/undead.png" width="20px" /> Undead</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-ethereal" href="/aow4db/HTML/EtherealUnits.html?type=astral_wisp&"
-                                        ><img src="/aow4db/Icons/UnitIcons/ethereal.png" width="20px" /> Ethereal</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-plant" href="/aow4db/HTML/PlantUnits.html?type=entwined_thrall&"
-                                        ><img src="/aow4db/Icons/UnitIcons/plant.png" width="20px" /> Plant</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-celestial" href="/aow4db/HTML/CelestialUnits.html?type=lightbringer&"
-                                        ><img src="/aow4db/Icons/UnitIcons/celestial.png" width="20px" /> Celestial</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-construct" href="/aow4db/HTML/ConstructUnits.html?type=observer&"
-                                        ><img src="/aow4db/Icons/UnitIcons/construct.png" width="20px" /> Construct</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="types-umbral"
-                                        href="/aow4db/HTML/UmbralDemonsUnits.html?type=mature_splitterling"
-                                        ><img src="/aow4db/Icons/UnitIcons/umbral_demon.png" width="20px" /> Umbral
-                                        Demon</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-accursed" href="/aow4db/HTML/AccursedFiends.html"
-                                        ><img src="/aow4db/Icons/UnitIcons/accursed_fiend.png" width="20px" /> Accursed
-                                        Fiend</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="types-tome" href="/aow4db/HTML/TomeFormUnits.html"
-                                        ><img src="/aow4db/Icons/FactionCreation/elfkin.png" width="20px" /> Tome
-                                        Form</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu">
-                            <a id="submenu-class" class="prett" style="color: burlywood"
-                                ><img
-                                    style="margin-top: -20px; margin-bottom: -10px"
-                                    src="/aow4db/Icons/UnitIcons/shock_unit.png"
-                                    width="20px" />Classes
-                            </a>
-                            <ul class="submenu">
-                                <li>
-                                    <a id="class-scout" href="/aow4db/HTML/ScoutUnits.html?type=wayfarerHarmony&"
-                                        ><img src="/aow4db/Icons/UnitIcons/scout_unit.png" width="20px" /> Scout</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-skirmisher" href="/aow4db/HTML/SkirmisherUnits.html?type=harrier&"
-                                        ><img src="/aow4db/Icons/UnitIcons/skirmisher_unit.png" width="20px" />
-                                        Skirmisher</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="class-fighter"
-                                        href="/aow4db/HTML/FighterUnits.html?type=animated_frost_sword&"
-                                        ><img src="/aow4db/Icons/UnitIcons/fighter_unit.png" width="20px" /> Fighter</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-ranged" href="/aow4db/HTML/RangedUnits.html?type=skeleton_archer&"
-                                        ><img src="/aow4db/Icons/UnitIcons/ranged_unit.png" width="20px" /> Ranged</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-polearm" href="/aow4db/HTML/PolearmUnits.html?type=sworn_guardHarmony&"
-                                        ><img src="/aow4db/Icons/UnitIcons/polearm_unit.png" width="20px" /> Polearm</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-shock" href="/aow4db/HTML/ShockUnits.html?type=lesser_storm_spirit&"
-                                        ><img src="/aow4db/Icons/UnitIcons/shock_unit.png" width="20px" /> Shock</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-shield" href="/aow4db/HTML/ShieldUnits.html?type=skeleton_warrior&"
-                                        ><img src="/aow4db/Icons/UnitIcons/shield_unit.png" width="20px" /> Shield</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        id="class-battlemage"
-                                        href="/aow4db/HTML/BattleMageUnits.html?type=skeleton_mage&"
-                                        ><img src="/aow4db/Icons/UnitIcons/battle_mage_unit.png" width="20px" />
-                                        Battlemage</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-support" href="/aow4db/HTML/SupportUnits.html?type=lithorine_core&"
-                                        ><img src="/aow4db/Icons/UnitIcons/support_unit.png" width="20px" /> Support</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="class-mythic" href="/aow4db/HTML/MythicUnits.html?type=primal_crocodile&"
-                                        ><img src="/aow4db/Icons/UnitIcons/mythic_unit.png" width="20px" /> Mythic</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu">
-                            <a id="submenu-other" class="prett" style="color: burlywood"
-                                ><img
-                                    style="margin-top: -20px; margin-bottom: -10px"
-                                    src="/aow4db/Icons/UnitIcons/tower.png"
-                                    width="20px" />Other ▸</a
-                            >
-                            <ul class="submenu">
-                                <li>
-                                    <a id="other-siegecraft" href="/aow4db/HTML/SiegeCraftUnits.html?type=ballista&"
-                                        ><img src=" /aow4db/Icons/UnitIcons/siegecraft.png" width="20px" />
-                                        Siegecraft</a
-                                    >
-                                </li>
-                                <li>
-                                    <a id="other-towers" href="/aow4db/HTML/TowerUnits.html?type=fire_runestone&"
-                                        ><img src=" /aow4db/Icons/UnitIcons/tower.png" width="20px" /> Towers</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="menu-tomes" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/TomesIcon.png"
-                            width="40px" />Tomes</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a id="tomes-astral" href="/aow4db/HTML/AstralTomes.html?type=tome_of_evocation&"
-                                ><img src="/aow4db/Icons/Text/astral.png" width="20px" /> Astral</a
-                            >
-                        </li>
-                        <li>
-                            <a id="tomes-nature" href="/aow4db/HTML/NatureTomes.html?type=tome_of_roots&"
-                                ><img src="/aow4db/Icons/Text/nature.png" width="20px" /> Nature</a
-                            >
-                        </li>
-                        <li>
-                            <a id="tomes-shadow" href="/aow4db/HTML/ShadowTomes.html?type=tome_of_necromancy&"
-                                ><img src="/aow4db/Icons/Text/shadow.png" width="20px" /> Shadow</a
-                            >
-                        </li>
-                        <li>
-                            <a id="tomes-order" href="/aow4db/HTML/OrderTomes.html?type=tome_of_zeal&"
-                                ><img src="/aow4db/Icons/Text/order.png" width="20px" /> Order</a
-                            >
-                        </li>
-                        <li>
-                            <a id="tomes-chaos" href="/aow4db/HTML/ChaosTomes.html?type=tome_of_pyromancy&"
-                                ><img src="/aow4db/Icons/Text/chaos.png" width="20px" /> Chaos</a
-                            >
-                        </li>
-                        <li>
-                            <a id="tomes-materium" href="/aow4db/HTML/MateriumTomes.html?type=tome_of_rock&.html"
-                                ><img src="/aow4db/Icons/Text/materium.png" width="20px" /> Materium</a
-                            >
-                        </li>
-                        <li>
-                            <a id="tomes-dual" href="/aow4db/HTML/DualTomes.html?type=tome_of_evolution&.html"
-                                ><img src="/aow4db/Icons/Interface/dual.png" width="20px" /> Dual</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                id="tomes-general"
-                                href="/aow4db/HTML/GeneralCultureTomes.html?type=general_research&.html"
-                                ><img src="/aow4db/Icons/Text/population.png" width="20px" /> General& Culture</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a id="menu-spells" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/SpellsIcon.png"
-                            width="40px" />Spells</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a
-                                id="spells-transform"
-                                href="/aow4db/HTML/TransformationSpells.html?type=Minor%20Race%20Transformations&sort=name:true"
-                                ><img src="/aow4db/Icons/SpellIcons/angelic_transformation.png" width="20px" />
-                                Transformations</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                id="spells-combat"
-                                href="/aow4db/HTML/CombatSpells.html?type=Healing%20Spells&sort=name:true"
-                                ><img src="/aow4db/Icons/Text/tacticalcombatpoints.png" width="20px" /> Combat Spells</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                id="spells-enchant"
-                                href="/aow4db/HTML/EnchantmentSpells.html?type=Generic%20Research&sort=name:true"
-                                ><img src="/aow4db/Icons/SpellIcons/adaptive_armor.png" width="20px" /> Enchantments</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                id="spells-strategic"
-                                href="/aow4db/HTML/StrategicSpells.html?type=Summon%20Spells&sort=name:true"
-                                ><img src="/aow4db/Icons/Text/strategiccombatpoints.png" width="20px" /> Strategic
-                                Spells</a
-                            >
-                        </li>
-                        <li>
-                            <a id="spells-siege" href="/aow4db/HTML/SiegeProjects.html?&sort=name:true"
-                                ><img src="/aow4db/Icons/Text/siegehealth.png" width="20px" /> Siege Projects</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="menu-world" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/StructuresIcon.png"
-                            width="40px" />World Map</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a id="world-city" href="/aow4db/HTML/CityTreesNew.html"
-                                ><img src="/aow4db/Icons/UpgradeIcons/throne.png" width="20px" /> City Tree</a
-                            >
-                        </li>
-                        <li>
-                            <a id="world-province" href="/aow4db/HTML/ProvinceImprovements.html?type=Foresters&"
-                                ><img src="/aow4db/Icons/Text/mine.png" width="15px" /> Province Impr.</a
-                            >
-                        </li>
-                        <li>
-                            <a id="world-magic" href="/aow4db/HTML/MagicMaterials.html"
-                                ><img src="/aow4db/Icons/WorldStructures/arcanium_ore.png" width="20px" /> Magic
-                                Materials</a
-                            >
-                        </li>
-                        <li>
-                            <a id="world-ancient" href="/aow4db/HTML/AncientWonders.html?type=Bronze&"
-                                ><img src="/aow4db/Icons/Text/goldWonder.png" width="20px" /> Ancient Wonders</a
-                            >
-                        </li>
-                        <li>
-                            <a id="world-landmarks" href="/aow4db/HTML/Landmarks.html"
-                                ><img src="/aow4db/Icons/Text/landmark.png" width="20px" /> Landmarks</a
-                            >
-                        </li>
-                        <li>
-                            <a id="world-cosmic" href="/aow4db/HTML/CosmicHappenings.html?type=Minor&"
-                                ><img src="/aow4db/Icons/CosmicHappenings/category_icon_Asteroid.png" width="20px" />
-                                Cosmic Happenings</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="menu-hero" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/HeroIcon.png"
-                            width="40px" />Heroes</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a
-                                id="hero-equipment"
-                                href="/aow4db/HTML/HeroEquipment.html?type=Primary%20Weapon&sort=tier:true"
-                                ><img src="/aow4db/Icons/Interface/EquipmentIcon.png" width="20px" />Equipment</a
-                            >
-                        </li>
-                        <li>
-                            <a id="hero-ascension" href="/aow4db/HTML/HeroSkills.html"
-                                ><img src="/aow4db/Icons/UnitIcons/ascended_alchemist.png" width="20px" /> Ascension
-                                Skills</a
-                            >
-                        </li>
-                        <li>
-                            <a id="hero-ambition" href="/aow4db/HTML/HeroAmbitions.html"
-                                ><img src="/aow4db/Icons/AmbitionIcons/challenger.png" width="20px" /> Ambitions</a
-                            >
-                        </li>
-                        <li>
-                            <a id="hero-governance" href="/aow4db/HTML/HeroGovernance.html"
-                                ><img src="/aow4db/Icons/GovernanceIcons/agricultural_governor.png" width="20px" />
-                                Governance</a
-                            >
-                        </li>
-                        <li>
-                            <a id="hero-skill" href="/aow4db/HTML/HeroSkillsList.html"
-                                ><img src="/aow4db/Icons/UnitIcons/adaptive_armor.png" width="20px" />Skill List</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a id="menu-empire" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/EmpireIcon.png"
-                            width="40px" />Empire</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a id="empire-tree" href="/aow4db/HTML/EmpireTree.html"
-                                ><img src="/aow4db/Icons/Interface/EmpireIcon.png" width="20px" /> Empire Tree</a
-                            >
-                        </li>
-                        <li>
-                            <a id="empire-destiny" href="/aow4db/HTML/DestinyTraits.html"
-                                ><img src="/aow4db/Icons/EmpireProgressionIcons/mark_of_the_butcher.png" width="20px" />
-                                Destiny Traits</a
-                            >
-                        </li>
-                        <li>
-                            <a id="empire-faction" href="/aow4db/HTML/FactionCreation.html"
-                                ><img src="/aow4db/Icons/FactionCreation/adaptable.png" width="20px" />Faction Traits</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a id="menu-abilities" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/ability_icon_fire.png"
-                            width="40px" />Abilities</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a id="abilities-active" href="/aow4db/HTML/Abilities.html"
-                                ><img src="/aow4db/Icons/UnitIcons/acid_spray_scrap_hermit.png" width="20px" />Active
-                                Abilities</a
-                            >
-                        </li>
-                        <li>
-                            <a id="abilities-passive" href="/aow4db/HTML/Passives.html"
-                                ><img src="/aow4db/Icons/UnitIcons/accursed_body.png" width="20px" />Passives</a
-                            >
-                        </li>
-                        <li>
-                            <a id="abilities-status" href="/aow4db/HTML/StatusEffects.html"
-                                ><img src="/aow4db/Icons/UnitIcons/wet.png" width="20px" />Status Effects</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a id="menu-builder" class="prett" style="color: burlywood"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/Info.png"
-                            width="40px" />Faction/Hero Planners</a
-                    >
-                    <ul class="menus">
-                        <li>
-                            <a id="builder-faction" href="/aow4db/HTML/FactionCreator.html"
-                                ><img src="/aow4db/Icons/FactionCreation/fabled_hunters.png" width="20px" />Faction
-                                Builder</a
-                            >
-                        </li>
-                        <li>
-                            <a id="builder-hero" href="/aow4db/HTML/HeroBuilder.html"
-                                ><img src="/aow4db/Icons/UnitIcons/adaptive_armor.png" width="20px" />Hero Builder</a
-                            >
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a id="menu-search" class="prett" style="color: coral" href="/aow4db/HTML/Search.html"
-                        ><img
-                            style="margin-top: -20px; margin-bottom: -10px"
-                            src="/aow4db/Icons/Interface/search.png"
-                            width="40px" />Search</a
-                    >
-                </li>
-            </ul>
+            <div class="donate"> <a class="prett" href="/aow4db/HTML/Donate.html">
+                    Donate<img src="/aow4db/Icons/Text/health.png" width="20px" />
+                </a></div>
         </div>
 
-        <dialog id="hoverDiv" class="tooltiptextnew"></dialog>
-        <dialog id="hoverDiv2" class="tooltiptextnew"></dialog>
-    </body>
+        <div class="dropdown">
+            <div class="dropdown-title">Other Database ▼</div>
+            <div class="dropdown-content">
+                <a class="prett" href="https://minionsart.github.io/aow3db/" target="_blank">
+                    <img src="/aow4db/Icons/Interface/aow3icon.png" width="20px" /> AOW3
+                </a>
+                <a class="prett" href="https://minionsart.github.io/aowp/" target="_blank">
+                    <img src="/aow4db/Icons/Interface/aowpficon.png" width="20px" /> AOW Planetfall
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="header-img">
+        <div id="topButtonContainer" style="display: none">
+            <div id="myCenteredButton"><a href="/aow4db/HTML/Donate.html">Donate</a></div>
+        </div>
+
+        <div class="hero-text">Age of Wonders 4 Database</div>
+        <div class="mid-text" style="display: none">
+            Switch To Ogre Beta Dataset:<input type="checkbox" id="showBetaCheckbox" onclick="SwitchToBeta()" />
+            <br />(may have page/image issues)(only changes exported data)
+        </div>
+        <div class="current-version">Updated: 15 APRIL 2025</div>
+
+        <div class="hero-text">
+            <img src="/aow4db/Icons/Interface/giant_kings.png" width="400px" />
+
+
+        </div>
+        <ul id="menu">
+            <li>
+                <a class="prett" id="menu-units"><img style="margin-top: -20px; margin-bottom: -10px"
+                        src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="40px" />Units
+                </a>
+                <ul class="menus">
+                    <li class="has-submenu">
+                        <a class="prett" style="color: burlywood" id="submenu-culture"><img
+                                style="margin-top: -20px; margin-bottom: -10px"
+                                src="/aow4db/Icons/Interface/CultureUnitsIcon.png" width="20px" />Culture ▸
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a id="culture-feudal" href="/aow4db/HTML/FeudalUnits.html?type=scoutMonarchy"><img
+                                        src="/aow4db/Icons/Text/feudal.png" width="20px" /> Feudal
+                                </a>
+                            </li>
+                            <li>
+                                <a id="culture-high" href="/aow4db/HTML/HighUnits.html?type=lightseeker"><img
+                                        src="/aow4db/Icons/Text/high.png" width="20px" /> High
+                                </a>
+                            </li>
+                            <li>
+                                <a id="culture-barbarian" href="/aow4db/HTML/BarbarianUnits.html?type=pathfinder"><img
+                                        src="/aow4db/Icons/Text/barbarian.png" width="20px" /> Barbarian
+                                </a>
+                            </li>
+                            <li>
+                                <a id="culture-industrious" href="/aow4db/HTML/IndustriousUnits.html?type=pioneer"><img
+                                        src="/aow4db/Icons/Text/industrious.png" width="20px" /> Industrious</a>
+                            </li>
+                            <li>
+                                <a id="culture-dark" href="/aow4db/HTML/DarkUnits.html?type=outrider"><img
+                                        src="/aow4db/Icons/Text/dark.png" width="20px" /> Dark</a>
+                            </li>
+                            <li>
+                                <a id="culture-mystic"
+                                    href="/aow4db/HTML/MysticUnits.html?type=mystic_projectionAttunement&"><img
+                                        src="/aow4db/Icons/Text/mystic.png" width="20px" /> Mystic</a>
+                            </li>
+                            <li>
+                                <a id="culture-reaver" href="/aow4db/HTML/ReaverUnits.html?type=observer&"><img
+                                        src="/aow4db/Icons/Text/reaver.png" width="20px" /> Reaver</a>
+                            </li>
+                            <li>
+                                <a id="culture-primal"
+                                    href="/aow4db/HTML/PrimalUnits.html?type=spirit_trackerAsh%20Sabertooth&"><img
+                                        src="/aow4db/Icons/Text/primal.png" width="20px" /> Primal</a>
+                            </li>
+                            <li>
+                                <a id="culture-oathsworn"
+                                    href="/aow4db/HTML/OathswornUnits.html?type=wayfarerHarmony"><img
+                                        src="/aow4db/Icons/Text/oathsworn.png" width="20px" /> Oathsworn</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a class="prett" style="color: burlywood" id="submenu-tomesU"><img
+                                style="margin-top: -20px; margin-bottom: -10px"
+                                src="/aow4db/Icons/Interface/TomeUnitsIcon.png" width="20px" />Tomes ▸</a>
+                        <ul class="submenu">
+                            <li>
+                                <a id="tomesU-astral"
+                                    href="/aow4db/HTML/AstralTomesUnits.html?type=phantasm_warrior&"><img
+                                        src="/aow4db/Icons/Text/astral.png" width="20px" /> Astral</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-nature" href="/aow4db/HTML/NatureTomesUnits.html?type=wildspeaker&"><img
+                                        src="/aow4db/Icons/Text/nature.png" width="20px" /> Nature</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-shadow" href="/aow4db/HTML/ShadowTomesUnits.html?type=bone_horror&"><img
+                                        src="/aow4db/Icons/Text/shadow.png" width="20px" /> Shadow</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-order" href="/aow4db/HTML/OrderTomesUnits.html?type=chaplain&"><img
+                                        src="/aow4db/Icons/Text/order.png" width="20px" /> Order</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-chaos"
+                                    href="/aow4db/HTML/ChaosTomesUnits.html?type=lesser_magma_spirit&"><img
+                                        src="/aow4db/Icons/Text/chaos.png" width="20px" /> Chaos</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-materium"
+                                    href="/aow4db/HTML/MateriumTomesUnits.html?type=copper_golem&"><img
+                                        src="/aow4db/Icons/Text/materium.png" width="20px" /> Materium</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-dd"
+                                    href="/aow4db/HTML/DragonDawnTomesUnits.html?type=wyvern_fledgling"><img
+                                        src="/aow4db/Icons/Text/DragonDawn.png" width="20px" /> Dragon Dawn</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-ea" href="/aow4db/HTML/EmpiresAshesTomeUnits.html?type=afflictor"><img
+                                        src="/aow4db/Icons/Text/empireAshes.png" width="20px" /> Empires& Ashes</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-pf" href="/aow4db/HTML/PrimalFuryTomesUnits.html?type=mistling"><img
+                                        src="/aow4db/Icons/Text/PrimalFury.png" width="20px" /> Primal Fury</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-er" href="/aow4db/HTML/EldritchRealmsTomesUnits.html?type=tentacle"><img
+                                        src="/aow4db/Icons/Text/EldritchRealms.png" width="20px" /> Eldritch
+                                    Realms</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-ww" href="/aow4db/HTML/WaysOfWarTomeUnits.html?type=monk&"><img
+                                        src="/aow4db/Icons/Text/waysofwar.png" width="20px" /> Ways of War</a>
+                            </li>
+                            <li>
+                                <a id="tomesU-gk" href="/aow4db/HTML/GiantKingsTomeUnits.html?type=clay_charger&"><img
+                                        src="/aow4db/Icons/Text/GKLogo.png" width="20px" /> Giant Kings</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a id="submenu-types" class="prett" style="color: burlywood"><img
+                                style="margin-top: -20px; margin-bottom: -10px"
+                                src="/aow4db/Icons/Interface/WildlifeUnitsIcon.png" width="20px" />Types ▸</a>
+                        <ul class="submenu">
+                            <li>
+                                <a id="types-fey" href="/aow4db/HTML/FeyUnits.html?type=spring_fairy"><img
+                                        src="/aow4db/Icons/UnitIcons/fey.png" width="20px" /> Fey</a>
+                            </li>
+                            <li>
+                                <a id="types-animal" href="/aow4db/HTML/AnimalUnits.html?type=young_caustic_worm&"><img
+                                        src="/aow4db/Icons/UnitIcons/animal.png" width="20px" /> Animal</a>
+                            </li>
+                            <li>
+                                <a id="types-infernal-fiend"
+                                    href="/aow4db/HTML/FiendUnits.html?type=inferno_puppy&"><img
+                                        src="/aow4db/Icons/UnitIcons/fiend.png" width="20px" /> Infernal Fiend</a>
+                            </li>
+                            <li>
+                                <a id="types-dragons" href="/aow4db/HTML/DragonUnits.html?type=bone_wyvern&"><img
+                                        src="/aow4db/Icons/UnitIcons/dragon.png" width="20px" /> Dragons</a>
+                            </li>
+                            <li>
+                                <a id="types-demi" href="/aow4db/HTML/DemiGiantUnits.html?type=butcher_ogre&"><img
+                                        src="/aow4db/Icons/UnitIcons/large_target.png" width="20px" />
+                                    Demi/Giants</a>
+                            </li>
+                            <li>
+                                <a id="types-elemental"
+                                    href="/aow4db/HTML/ElementalUnits.html?type=lesser_snow_spirit&"><img
+                                        src="/aow4db/Icons/UnitIcons/elemental.png" width="20px" /> Elemental</a>
+                            </li>
+                            <li>
+                                <a id="types-undead" href="/aow4db/HTML/UndeadUnits.html?type=skeleton_mage&"><img
+                                        src="/aow4db/Icons/UnitIcons/undead.png" width="20px" /> Undead</a>
+                            </li>
+                            <li>
+                                <a id="types-ethereal" href="/aow4db/HTML/EtherealUnits.html?type=astral_wisp&"><img
+                                        src="/aow4db/Icons/UnitIcons/ethereal.png" width="20px" /> Ethereal</a>
+                            </li>
+                            <li>
+                                <a id="types-plant" href="/aow4db/HTML/PlantUnits.html?type=entwined_thrall&"><img
+                                        src="/aow4db/Icons/UnitIcons/plant.png" width="20px" /> Plant</a>
+                            </li>
+                            <li>
+                                <a id="types-celestial" href="/aow4db/HTML/CelestialUnits.html?type=lightbringer&"><img
+                                        src="/aow4db/Icons/UnitIcons/celestial.png" width="20px" /> Celestial</a>
+                            </li>
+                            <li>
+                                <a id="types-construct" href="/aow4db/HTML/ConstructUnits.html?type=observer&"><img
+                                        src="/aow4db/Icons/UnitIcons/construct.png" width="20px" /> Construct</a>
+                            </li>
+                            <li>
+                                <a id="types-umbral"
+                                    href="/aow4db/HTML/UmbralDemonsUnits.html?type=mature_splitterling"><img
+                                        src="/aow4db/Icons/UnitIcons/umbral_demon.png" width="20px" /> Umbral
+                                    Demon</a>
+                            </li>
+                            <li>
+                                <a id="types-accursed" href="/aow4db/HTML/AccursedFiends.html"><img
+                                        src="/aow4db/Icons/UnitIcons/accursed_fiend.png" width="20px" /> Accursed
+                                    Fiend</a>
+                            </li>
+                            <li>
+                                <a id="types-tome" href="/aow4db/HTML/TomeFormUnits.html"><img
+                                        src="/aow4db/Icons/FactionCreation/elfkin.png" width="20px" /> Tome
+                                    Form</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a id="submenu-class" class="prett" style="color: burlywood"><img
+                                style="margin-top: -20px; margin-bottom: -10px"
+                                src="/aow4db/Icons/UnitIcons/shock_unit.png" width="20px" />Classes
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a id="class-scout" href="/aow4db/HTML/ScoutUnits.html?type=wayfarerHarmony&"><img
+                                        src="/aow4db/Icons/UnitIcons/scout_unit.png" width="20px" /> Scout</a>
+                            </li>
+                            <li>
+                                <a id="class-skirmisher" href="/aow4db/HTML/SkirmisherUnits.html?type=harrier&"><img
+                                        src="/aow4db/Icons/UnitIcons/skirmisher_unit.png" width="20px" />
+                                    Skirmisher</a>
+                            </li>
+                            <li>
+                                <a id="class-fighter"
+                                    href="/aow4db/HTML/FighterUnits.html?type=animated_frost_sword&"><img
+                                        src="/aow4db/Icons/UnitIcons/fighter_unit.png" width="20px" /> Fighter</a>
+                            </li>
+                            <li>
+                                <a id="class-ranged" href="/aow4db/HTML/RangedUnits.html?type=skeleton_archer&"><img
+                                        src="/aow4db/Icons/UnitIcons/ranged_unit.png" width="20px" /> Ranged</a>
+                            </li>
+                            <li>
+                                <a id="class-polearm"
+                                    href="/aow4db/HTML/PolearmUnits.html?type=sworn_guardHarmony&"><img
+                                        src="/aow4db/Icons/UnitIcons/polearm_unit.png" width="20px" /> Polearm</a>
+                            </li>
+                            <li>
+                                <a id="class-shock" href="/aow4db/HTML/ShockUnits.html?type=lesser_storm_spirit&"><img
+                                        src="/aow4db/Icons/UnitIcons/shock_unit.png" width="20px" /> Shock</a>
+                            </li>
+                            <li>
+                                <a id="class-shield" href="/aow4db/HTML/ShieldUnits.html?type=skeleton_warrior&"><img
+                                        src="/aow4db/Icons/UnitIcons/shield_unit.png" width="20px" /> Shield</a>
+                            </li>
+                            <li>
+                                <a id="class-battlemage"
+                                    href="/aow4db/HTML/BattleMageUnits.html?type=skeleton_mage&"><img
+                                        src="/aow4db/Icons/UnitIcons/battle_mage_unit.png" width="20px" />
+                                    Battlemage</a>
+                            </li>
+                            <li>
+                                <a id="class-support" href="/aow4db/HTML/SupportUnits.html?type=lithorine_core&"><img
+                                        src="/aow4db/Icons/UnitIcons/support_unit.png" width="20px" /> Support</a>
+                            </li>
+                            <li>
+                                <a id="class-mythic" href="/aow4db/HTML/MythicUnits.html?type=primal_crocodile&"><img
+                                        src="/aow4db/Icons/UnitIcons/mythic_unit.png" width="20px" /> Mythic</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a id="submenu-other" class="prett" style="color: burlywood"><img
+                                style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/UnitIcons/tower.png"
+                                width="20px" />Other ▸</a>
+                        <ul class="submenu">
+                            <li>
+                                <a id="other-siegecraft" href="/aow4db/HTML/SiegeCraftUnits.html?type=ballista&"><img
+                                        src=" /aow4db/Icons/UnitIcons/siegecraft.png" width="20px" />
+                                    Siegecraft</a>
+                            </li>
+                            <li>
+                                <a id="other-towers" href="/aow4db/HTML/TowerUnits.html?type=fire_runestone&"><img
+                                        src=" /aow4db/Icons/UnitIcons/tower.png" width="20px" /> Towers</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a id="menu-tomes" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/TomesIcon.png"
+                        width="40px" />Tomes</a>
+                <ul class="menus">
+                    <li>
+                        <a id="tomes-astral" href="/aow4db/HTML/AstralTomes.html?type=tome_of_evocation&"><img
+                                src="/aow4db/Icons/Text/astral.png" width="20px" /> Astral</a>
+                    </li>
+                    <li>
+                        <a id="tomes-nature" href="/aow4db/HTML/NatureTomes.html?type=tome_of_roots&"><img
+                                src="/aow4db/Icons/Text/nature.png" width="20px" /> Nature</a>
+                    </li>
+                    <li>
+                        <a id="tomes-shadow" href="/aow4db/HTML/ShadowTomes.html?type=tome_of_necromancy&"><img
+                                src="/aow4db/Icons/Text/shadow.png" width="20px" /> Shadow</a>
+                    </li>
+                    <li>
+                        <a id="tomes-order" href="/aow4db/HTML/OrderTomes.html?type=tome_of_zeal&"><img
+                                src="/aow4db/Icons/Text/order.png" width="20px" /> Order</a>
+                    </li>
+                    <li>
+                        <a id="tomes-chaos" href="/aow4db/HTML/ChaosTomes.html?type=tome_of_pyromancy&"><img
+                                src="/aow4db/Icons/Text/chaos.png" width="20px" /> Chaos</a>
+                    </li>
+                    <li>
+                        <a id="tomes-materium" href="/aow4db/HTML/MateriumTomes.html?type=tome_of_rock&.html"><img
+                                src="/aow4db/Icons/Text/materium.png" width="20px" /> Materium</a>
+                    </li>
+                    <li>
+                        <a id="tomes-dual" href="/aow4db/HTML/DualTomes.html?type=tome_of_evolution&.html"><img
+                                src="/aow4db/Icons/Interface/dual.png" width="20px" /> Dual</a>
+                    </li>
+                    <li>
+                        <a id="tomes-general"
+                            href="/aow4db/HTML/GeneralCultureTomes.html?type=general_research&.html"><img
+                                src="/aow4db/Icons/Text/population.png" width="20px" /> General& Culture</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a id="menu-spells" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/SpellsIcon.png"
+                        width="40px" />Spells</a>
+                <ul class="menus">
+                    <li>
+                        <a id="spells-transform"
+                            href="/aow4db/HTML/TransformationSpells.html?type=Minor%20Race%20Transformations&sort=name:true"><img
+                                src="/aow4db/Icons/SpellIcons/angelic_transformation.png" width="20px" />
+                            Transformations</a>
+                    </li>
+                    <li>
+                        <a id="spells-combat"
+                            href="/aow4db/HTML/CombatSpells.html?type=Healing%20Spells&sort=name:true"><img
+                                src="/aow4db/Icons/Text/tacticalcombatpoints.png" width="20px" /> Combat Spells</a>
+                    </li>
+                    <li>
+                        <a id="spells-enchant"
+                            href="/aow4db/HTML/EnchantmentSpells.html?type=Generic%20Research&sort=name:true"><img
+                                src="/aow4db/Icons/SpellIcons/adaptive_armor.png" width="20px" /> Enchantments</a>
+                    </li>
+                    <li>
+                        <a id="spells-strategic"
+                            href="/aow4db/HTML/StrategicSpells.html?type=Summon%20Spells&sort=name:true"><img
+                                src="/aow4db/Icons/Text/strategiccombatpoints.png" width="20px" /> Strategic
+                            Spells</a>
+                    </li>
+                    <li>
+                        <a id="spells-siege" href="/aow4db/HTML/SiegeProjects.html?&sort=name:true"><img
+                                src="/aow4db/Icons/Text/siegehealth.png" width="20px" /> Siege Projects</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a id="menu-world" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/StructuresIcon.png"
+                        width="40px" />World Map</a>
+                <ul class="menus">
+                    <li>
+                        <a id="world-city" href="/aow4db/HTML/CityTreesNew.html"><img
+                                src="/aow4db/Icons/UpgradeIcons/throne.png" width="20px" /> City Tree</a>
+                    </li>
+                    <li>
+                        <a id="world-province" href="/aow4db/HTML/ProvinceImprovements.html?type=Foresters&"><img
+                                src="/aow4db/Icons/Text/mine.png" width="15px" /> Province Impr.</a>
+                    </li>
+                    <li>
+                        <a id="world-magic" href="/aow4db/HTML/MagicMaterials.html"><img
+                                src="/aow4db/Icons/WorldStructures/arcanium_ore.png" width="20px" /> Magic
+                            Materials</a>
+                    </li>
+                    <li>
+                        <a id="world-ancient" href="/aow4db/HTML/AncientWonders.html?type=Bronze&"><img
+                                src="/aow4db/Icons/Text/goldWonder.png" width="20px" /> Ancient Wonders</a>
+                    </li>
+                    <li>
+                        <a id="world-landmarks" href="/aow4db/HTML/Landmarks.html"><img
+                                src="/aow4db/Icons/Text/landmark.png" width="20px" /> Landmarks</a>
+                    </li>
+                    <li>
+                        <a id="world-cosmic" href="/aow4db/HTML/CosmicHappenings.html?type=Minor&"><img
+                                src="/aow4db/Icons/CosmicHappenings/category_icon_Asteroid.png" width="20px" />
+                            Cosmic Happenings</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a id="menu-hero" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/HeroIcon.png"
+                        width="40px" />Heroes</a>
+                <ul class="menus">
+                    <li>
+                        <a id="hero-equipment"
+                            href="/aow4db/HTML/HeroEquipment.html?type=Primary%20Weapon&sort=tier:true"><img
+                                src="/aow4db/Icons/Interface/EquipmentIcon.png" width="20px" />Equipment</a>
+                    </li>
+                    <li>
+                        <a id="hero-ascension" href="/aow4db/HTML/HeroSkills.html"><img
+                                src="/aow4db/Icons/UnitIcons/ascended_alchemist.png" width="20px" /> Ascension
+                            Skills</a>
+                    </li>
+                    <li>
+                        <a id="hero-ambition" href="/aow4db/HTML/HeroAmbitions.html"><img
+                                src="/aow4db/Icons/AmbitionIcons/challenger.png" width="20px" /> Ambitions</a>
+                    </li>
+                    <li>
+                        <a id="hero-governance" href="/aow4db/HTML/HeroGovernance.html"><img
+                                src="/aow4db/Icons/GovernanceIcons/agricultural_governor.png" width="20px" />
+                            Governance</a>
+                    </li>
+                    <li>
+                        <a id="hero-skill" href="/aow4db/HTML/HeroSkillsList.html"><img
+                                src="/aow4db/Icons/UnitIcons/adaptive_armor.png" width="20px" />Skill List</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a id="menu-empire" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/EmpireIcon.png"
+                        width="40px" />Empire</a>
+                <ul class="menus">
+                    <li>
+                        <a id="empire-tree" href="/aow4db/HTML/EmpireTree.html"><img
+                                src="/aow4db/Icons/Interface/EmpireIcon.png" width="20px" /> Empire Tree</a>
+                    </li>
+                    <li>
+                        <a id="empire-destiny" href="/aow4db/HTML/DestinyTraits.html"><img
+                                src="/aow4db/Icons/EmpireProgressionIcons/mark_of_the_butcher.png" width="20px" />
+                            Destiny Traits</a>
+                    </li>
+                    <li>
+                        <a id="empire-faction" href="/aow4db/HTML/FactionCreation.html"><img
+                                src="/aow4db/Icons/FactionCreation/adaptable.png" width="20px" />Faction Traits</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a id="menu-abilities" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px"
+                        src="/aow4db/Icons/Interface/ability_icon_fire.png" width="40px" />Abilities</a>
+                <ul class="menus">
+                    <li>
+                        <a id="abilities-active" href="/aow4db/HTML/Abilities.html"><img
+                                src="/aow4db/Icons/UnitIcons/acid_spray_scrap_hermit.png" width="20px" />Active
+                            Abilities</a>
+                    </li>
+                    <li>
+                        <a id="abilities-passive" href="/aow4db/HTML/Passives.html"><img
+                                src="/aow4db/Icons/UnitIcons/accursed_body.png" width="20px" />Passives</a>
+                    </li>
+                    <li>
+                        <a id="abilities-status" href="/aow4db/HTML/StatusEffects.html"><img
+                                src="/aow4db/Icons/UnitIcons/wet.png" width="20px" />Status Effects</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a id="menu-builder" class="prett" style="color: burlywood"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/Info.png"
+                        width="40px" />Faction/Hero Planners</a>
+                <ul class="menus">
+                    <li>
+                        <a id="builder-faction" href="/aow4db/HTML/FactionCreator.html"><img
+                                src="/aow4db/Icons/FactionCreation/fabled_hunters.png" width="20px" />Faction
+                            Builder</a>
+                    </li>
+                    <li>
+                        <a id="builder-hero" href="/aow4db/HTML/HeroBuilder.html"><img
+                                src="/aow4db/Icons/UnitIcons/adaptive_armor.png" width="20px" />Hero Builder</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a id="menu-search" class="prett" style="color: coral" href="/aow4db/HTML/Search.html"><img
+                        style="margin-top: -20px; margin-bottom: -10px" src="/aow4db/Icons/Interface/search.png"
+                        width="40px" />Search</a>
+            </li>
+        </ul>
+    </div>
+
+    <dialog id="hoverDiv" class="tooltiptextnew"></dialog>
+    <dialog id="hoverDiv2" class="tooltiptextnew"></dialog>
+</body>
+
+<style>
+    .topbar {
+
+        color: white;
+        padding: 10px 20px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .donate {
+        margin-left: 20px;
+        position: relative;
+        display: inline-block;
+
+
+    }
+
+    .dropdown-title {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        color: white;
+        min-width: 150px;
+        padding: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin: 8px 0;
+    }
+
+    .dropdown-content img {
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+
+    .dropdown-content select,
+    .dropdown-content input {
+        margin: 4px 0;
+    }
+</style>
+
 </html>
