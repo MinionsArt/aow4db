@@ -80,7 +80,11 @@
 
             function HandlePage() {
                 readBuilds();
+                document.getElementById("YourKey").innerText = getOrCreateUserEditKey();
             }
+            
+         
+
         </script>
 
         <title>Age of Wonders 4 Database - Faction Creator</title>
@@ -90,17 +94,17 @@
         <div id="header"></div>
 
         <div class="tome_name">Community Builds List</div>
-
-        <div>YourEditKey:</div>
-        <div>OVerwrite key:</div>
-
+        <div style ="color:white">
+        <div>YourEditKey: <span id="YourKey"></span></div><button onclick="downloadEditKeyFile()">Save Key</button>
+        <div>Load key: <input type="text" id="overwriteKey" name="lname"><button onclick="OverwriteEditKey()">Submit</button></div>
+</div>
         <button
             id="showMyBuildsBtn"
             style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000">
             Show My Builds
         </button>
 
-        <div style="height: auto; color: white; text-align: center; margin: auto; width: fit-content">
+        <div class="generic-center">
             <div id="filters">
                 <label for="cultureFilter">Culture:</label>
                 <select id="cultureFilter">
@@ -368,7 +372,7 @@
                 const listDiv = document.getElementById("list");
 
                 const linkUrl = build.BuildURL || "LinkError";
-                const buildName = build.BuildName || "Unnamed";
+                const buildName = build.BuildName || "";
                 const editKey = build.editKey || "";
 
                 const date = build.Timestamp || "N/A";
@@ -625,8 +629,13 @@
 
                 newDivAffinityNameDlc.appendChild(newDivName);
                 const generatedName = `${build.currentCulture.name || "Unknown"} ${build.currentClass.name || "Adventurer"} of ${build.currentOrigin.name || "Unknown"}`;
-
-                newDivName.appendChild(createName(generatedName));
+                
+                if(buildName == ""){
+                     newDivName.appendChild(createName(generatedName));
+                }else{
+                     newDivName.appendChild(createName(buildName));
+                }
+               
                 newDivName.style.width = "400px";
 
                 // add dlc

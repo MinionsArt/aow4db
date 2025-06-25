@@ -47,8 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
 });
 
-function OverwriteEditKey(key) {
-    localStorage.setItem("editKey", key);
+function OverwriteEditKey() {
+  
+    localStorage.setItem("editKey",   document.getElementById("overwriteKey").value);
 }
 
 function SwitchToBeta() {
@@ -81,6 +82,23 @@ function CheckBoxTooltips() {
 function setUserSettings(settings) {
     localStorage.setItem("userSettings", JSON.stringify(settings));
 }
+
+   function downloadEditKeyFile() {
+    const text = "Age of Wonders 4 Database (minionsart.github.io/aow4db)\nYour Build Edit Key : "+ getOrCreateUserEditKey(); // Replace with your dynamic content
+    const filename = "Aow4db_EditKey.txt";
+
+    const blob = new Blob([text], { type: "text/plain" });
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+   }
 
 // Update user settings
 function updateUserSettings(updatedSettings) {

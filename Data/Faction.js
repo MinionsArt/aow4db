@@ -3396,7 +3396,14 @@ function RebuildFromParam(code) {
 
 function FillInBuildDetails(build) {
     console.log(build);
+     var nameBuild = document.getElementById("buildName");
+          nameBuild.value = build.BuildName;
     var notesBlock = document.getElementById("NotesInput");
     notesBlock.value = build.Notes;
-    console.log(build.Notes);
+    console.log(build.Tags);
+ const tagArray = new Set(build.Tags.split(",").map(tag => tag.trim()));
+    console.log(tagArray);
+    updateTagList(tagArray);
+      // const tagArray = Array.from(selectedTags);
+ 
 }
