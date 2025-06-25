@@ -377,7 +377,7 @@
             function HandlePage() {
                 SetRandomStart();
 
-                document.getElementById("userKeyDisplay").textContent = getOrCreateUserEditKey();
+                document.getElementById("YourKey").textContent = getOrCreateUserEditKey();
             }
         </script>
 
@@ -388,6 +388,7 @@
         <div id="header"></div>
 
         <div class="tome_name">Faction creator</div>
+      
 
         <div style="color: white; display: table; margin: 5px; margin-left: auto; margin-right: auto">
             <div></div>
@@ -682,33 +683,32 @@
             <div id="originWrapperOptions" class="wrappers"></div>
         </div>
 
-        <div style="display: none">
-            <div style="color: wheat" id="userKeyDisplay"></div>
-            <div style="color: white" id="oldURL"></div>
-            <!-- Prefix Dropdown -->
-            <label for="namePrefixSelect">Prefix:</label>
-            <select id="namePrefixSelect"></select>
+        <div class="generic-center" style="display: none">
+            <div style ="color:white">
+        <div>YourEditKey: <span id="YourKey"></span></div><button onclick="downloadEditKeyFile()">Save Key</button>
+        <div>Load key: <input type="text" id="overwriteKey" name="lname"><button onclick="OverwriteEditKey()">Submit</button></div>
+</div>
+            <div style="color: white; display: none" id="oldURL"></div>
+           
 
-            <!-- Type Dropdown -->
-            <label for="nameTypeSelect">Type:</label>
-            <select id="nameTypeSelect"></select>
+          <!-- Dropdown to choose a tag -->
+<label for="tagDropdown">Select a Tag:</label>
+<select id="tagDropdown">
+  <option value="">-- Choose a tag --</option>
+  <option value="Roleplay">Roleplay</option>
+  <option value="Theme">Theme</option>
+  <option value="PVP">PVP</option>
+  <option value="Casual">Casual</option>
+  <option value="Hardcore">Hardcore</option>
+</select>
 
-            <!-- Icon Selector -->
-            <label for="iconSelect">Icon:</label>
-            <select id="iconSelect"></select>
+<button onclick="addTag()">Add Tag</button>
 
-            <div id="buildNamePreview"></div>
-
-            <label for="tagSelect">Select Tags:</label><br />
-            <select id="tagSelect" name="tags" multiple size="5">
-                <option value="Roleplay">Roleplay</option>
-                <option value="Theme">Theme</option>
-                <option value="PVP">PVP</option>
-                <option value="Casual">Casual</option>
-                <option value="Hardcore">Hardcore</option>
-            </select>
-
-            <label for="userNotes">Your Notes:</label><br />
+<!-- Where tags will be listed -->
+<div id="tagList" style="margin-top: 10px;"></div>
+               <label for="userNotes">Build Name:</label>
+              <input type="text" id="buildName" name="lname">
+            <label for="userNotes">Your Notes:</label>
             <textarea
                 id="NotesInput"
                 name="userNotes"
@@ -722,6 +722,49 @@
         </div>
 
         <script>
+            
+            const selectedTags = new Set();
+
+  function addTag() {
+    const dropdown = document.getElementById("tagDropdown");
+    const tag = dropdown.value;
+
+    if (tag && !selectedTags.has(tag)) {
+      selectedTags.add(tag);
+      updateTagList(selectedTags);
+    }
+  }
+
+  function removeTag(tag) {
+    selectedTags.delete(tag);
+    updateTagList(selectedTags);
+  }
+
+  function updateTagList(tagsSet) {
+    const tagListDiv = document.getElementById("tagList");
+    tagListDiv.innerHTML = ""; // Clear previous tags
+
+    tagsSet.forEach(tag => {
+      const tagDiv = document.createElement("div");
+      tagDiv.textContent = tag;
+      tagDiv.style.display = "inline-block";
+      tagDiv.style.margin = "5px";
+      tagDiv.style.padding = "5px 10px";
+      tagDiv.style.backgroundColor = "#444";
+      tagDiv.style.color = "#fff";
+      tagDiv.style.borderRadius = "4px";
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "x";
+      removeBtn.style.marginLeft = "8px";
+      removeBtn.style.cursor = "pointer";
+      removeBtn.onclick = () => removeTag(tag);
+
+      tagDiv.appendChild(removeBtn);
+      tagListDiv.appendChild(tagDiv);
+    });
+  }
+            
             function myFunction() {
                 // Get the text field
                 var copyText = document.getElementById("shareLink");
@@ -798,61 +841,24 @@
             }
 
             function getBuildNameAndIcon() {
-                const prefix = document.getElementById("namePrefixSelect").value;
-                const type = document.getElementById("nameTypeSelect").value;
-                var name = `${prefix} ${type}`;
-                var icon = iconSelect.value;
-                return { name };
+               var name = document.getElementById("buildName").value;
+               
+                return name ;
+            }
+            
+            function GenerateGenericName(){
+               return currentTomeList[0].name;
             }
 
-            const prefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic", "Ethereal", "Ancient"];
-            const types = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian", "Seer", "Invoker"];
-
-            const unitIcons = [
-                { filename: "icon_wolf.png", label: "Wolf 🐺" },
-                { filename: "icon_dragon.png", label: "Dragon 🐉" },
-                { filename: "icon_star.png", label: "Star ⭐" },
-                { filename: "icon_skull.png", label: "Skull 💀" },
-                { filename: "icon_phoenix.png", label: "Phoenix 🔥" }
-            ];
-
-            function populateDropdown(id, options, valueKey = null, labelKey = null) {
-                const select = document.getElementById(id);
-                select.innerHTML = ""; // Clear any existing options
-
-                options.forEach((opt) => {
-                    const option = document.createElement("option");
-                    if (valueKey && labelKey) {
-                        option.value = opt[valueKey];
-                        option.textContent = opt[labelKey];
-                    } else {
-                        option.value = opt;
-                        option.textContent = opt;
-                    }
-                    select.appendChild(option);
-                });
-            }
-
-            populateDropdown("namePrefixSelect", prefixes);
-            populateDropdown("nameTypeSelect", types);
-            populateDropdown("iconSelect", unitIcons, "filename", "label");
-
-            function updatePreview() {
-                const { fullHTML } = getBuildNameAndIcon();
-                document.getElementById("buildNamePreview").innerHTML = fullHTML;
-            }
-
-            ["namePrefixSelect", "nameTypeSelect", "iconSelect"].forEach((id) =>
-                document.getElementById(id).addEventListener("change", updatePreview)
-            );
-
-            updatePreview(); // Run on load
+        
 
             function overwriteBuild() {
                 var oldURLName = document.getElementById("oldURL").innerText;
                 // get notes
                 var notes = document.getElementById("NotesInput");
-                updateBuild("OVerwritten", notes.value, oldURLName);
+                 const tagArray = Array.from(selectedTags);
+                
+                updateBuild(getBuildNameAndIcon(), notes.value, oldURLName, tagArray);
             }
 
             // Example usage
@@ -861,9 +867,10 @@
 
                 var notes = document.getElementById("NotesInput");
                 console.log(notes + " " + notes.value);
-                var tags = "Casual";
+                const tagArray = Array.from(selectedTags);
+                
 
-                submitBuild2(buildName, tags, notes.value);
+                submitBuild2(buildName, tagArray, notes.value);
             }
         </script>
     </body>
