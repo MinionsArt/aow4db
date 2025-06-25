@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
 });
 
+function OverwriteEditKey(key) {
+    localStorage.setItem("editKey", key);
+}
+
 function SwitchToBeta() {
     updateUserSettings({
         tooltipselectable: checkboxTooltip.checked,
@@ -1360,8 +1364,8 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     imag.setAttribute(
         "style",
         'background-image: url("/aow4db/Icons/Interface/' +
-        abilityIconType +
-        '.png");background-repeat: no-repeat;background-size: 40px 40px'
+            abilityIconType +
+            '.png");background-repeat: no-repeat;background-size: 40px 40px'
     );
 
     imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
@@ -7093,8 +7097,8 @@ function backtraceStructureToTomeNameAndTier(structure) {
                         if ("affinities" in jsonTomes[j]) {
                             array.push(
                                 ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                "<br> " +
-                                jsonTomes[j].name
+                                    "<br> " +
+                                    jsonTomes[j].name
                             );
                         } else {
                             array.push(jsonTomes[j].name);
