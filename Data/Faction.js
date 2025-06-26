@@ -3406,11 +3406,12 @@ function FillInBuildDetails(build) {
     var nameBuild = document.getElementById("buildName");
     nameBuild.value = build.BuildName;
     var notesBlock = document.getElementById("notesDisplay");
-
+ console.log(build.Notes);
     var convertedNotes = convertBracketsToHTML(build.Notes);
+    console.log(convertedNotes);
     convertedNotes = convertNamesToHTML(convertedNotes);
+    console.log(convertedNotes);
     notesBlock.innerHTML = convertedNotes;
-    console.log(build.Notes);
     if (build.Tags != "") {
         const tagArray = new Set(build.Tags.split(",").map((tag) => tag.trim()));
         updateTagList(tagArray);
