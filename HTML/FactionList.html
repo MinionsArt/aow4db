@@ -395,7 +395,7 @@
                 const filtered = allBuilds.filter((build) => {
                     const code = (build.url || build.URL || build.BuildURL)?.split("=")[1];
                     const data = getBaseBuildDate(code);
-                    const tags = build.Tags || "Roleplay, Theme";
+                    const tags = build.Tags || "";
 
                     return (
                         (culture === "all" || data.currentCulture?.name === culture) &&
@@ -483,7 +483,7 @@
                 const views = build.Views || 0;
                 const notes = build.Notes || "";
 
-                const tags = build.Tags || "Roleplay, Theme";
+                const tags = build.Tags || "";
                 const parsedLink = linkUrl?.split("=")[1] || "Error";
 
                 // Use ReadBackBuildData to get a display DOM element
