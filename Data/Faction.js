@@ -3406,7 +3406,7 @@ function FillInBuildDetails(build) {
     var nameBuild = document.getElementById("buildName");
     nameBuild.value = build.BuildName;
     var notesBlock = document.getElementById("notesDisplay");
- console.log(build.Notes);
+    console.log(build.Notes);
     var convertedNotes = convertBracketsToHTML(build.Notes);
     console.log(convertedNotes);
     convertedNotes = convertNamesToHTML(convertedNotes);
