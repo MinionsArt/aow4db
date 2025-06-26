@@ -3366,7 +3366,7 @@ function hexToDecimal(hex) {
 
 function RebuildFromParam(code) {
     reversLookUp(code);
-
+    spinner.style.display = "block"; // Show the spinner
     fetch(
         "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec",
         {
@@ -3379,13 +3379,20 @@ function RebuildFromParam(code) {
     )
         .then((res) => res.json()) // Parse the JSON from response
         .then((builds) => {
-            FillInBuildDetails(builds[0]);
+            if (builds[0] != undefined) {
+                FillInBuildDetails(builds[0]);
+            }
+        })
+        .finally(() => {
+            spinner.style.display = "none"; // Hide spinner after fetch is done
         });
 
     if (window.location.href.indexOf("&edit")) {
         // save current url for overwriting
         document.getElementById("oldURL").innerHTML = window.location.href.split("?")[0] + "?u=" + code;
         // show edit button
+        var editButton = document.getElementById("overwriteButton");
+        editButton.style.display = "block";
         //   alert("Editing");
     }
 
@@ -3396,14 +3403,20 @@ function RebuildFromParam(code) {
 
 function FillInBuildDetails(build) {
     console.log(build);
-     var nameBuild = document.getElementById("buildName");
-          nameBuild.value = build.BuildName;
-    var notesBlock = document.getElementById("NotesInput");
-    notesBlock.value = build.Notes;
-    console.log(build.Tags);
- const tagArray = new Set(build.Tags.split(",").map(tag => tag.trim()));
-    console.log(tagArray);
-    updateTagList(tagArray);
-      // const tagArray = Array.from(selectedTags);
- 
+    var nameBuild = document.getElementById("buildName");
+    nameBuild.value = build.BuildName;
+    var notesBlock = document.getElementById("notesDisplay");
+
+    var convertedNotes = convertBracketsToHTML(build.Notes);
+    convertedNotes = convertNamesToHTML(convertedNotes);
+    notesBlock.innerHTML = convertedNotes;
+    console.log(build.Notes);
+    if (build.Tags != "") {
+        const tagArray = new Set(build.Tags.split(",").map((tag) => tag.trim()));
+        updateTagList(tagArray);
+    }
+
+    rawNotes = build.Notes;
+
+    // const tagArray = Array.from(selectedTags);
 }

@@ -153,6 +153,23 @@ a:hover {
     /* keeps it above other elements */
 }
 
+.spinner {
+    border: 6px solid #00f5cf;
+    border-top: 6px solid #0a363f;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 #myCenteredButton {
     padding: 10px 20px;
     font-size: 16px;
@@ -210,7 +227,7 @@ a:hover {
     color: #eee;
 }
 
-#menu li:hover>a,
+#menu li:hover > a,
 #menu li a:hover {
     background: #111;
 }
@@ -750,8 +767,12 @@ tab {
     margin-right: auto;
 }
 
-.generic-center{
-    height: auto; color: white; text-align: center; margin: auto; width: fit-content
+.generic-center {
+    height: auto;
+    color: white;
+    text-align: center;
+    margin: auto;
+    width: fit-content;
 }
 
 .unit_elite_skill {
@@ -825,23 +846,27 @@ tab {
 
 /* Change the color of links on hover */
 .unit_abilityslot:hover {
-    background-image: linear-gradient(to right,
-            rgba(47, 162, 100, 0),
-            rgba(47, 162, 100, 0.2),
-            rgb(57 255 148 / 30%),
-            rgba(47, 162, 100, 0.2),
-            rgba(47, 162, 100, 0));
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 162, 100, 0),
+        rgba(47, 162, 100, 0.2),
+        rgb(57 255 148 / 30%),
+        rgba(47, 162, 100, 0.2),
+        rgba(47, 162, 100, 0)
+    );
     filter: brightness(150%);
 }
 
 /* Change the color of links on hover */
 .unit_passiveslot:hover {
-    background-image: linear-gradient(to right,
-            rgba(47, 162, 100, 0),
-            rgba(47, 162, 100, 0.2),
-            rgb(57 255 148 / 30%),
-            rgba(47, 162, 100, 0.2),
-            rgba(47, 162, 100, 0));
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 162, 100, 0),
+        rgba(47, 162, 100, 0.2),
+        rgb(57 255 148 / 30%),
+        rgba(47, 162, 100, 0.2),
+        rgba(47, 162, 100, 0)
+    );
     filter: brightness(150%);
 }
 
@@ -891,12 +916,14 @@ tab {
     position: relative;
     border-top: 1px solid rgba(47, 162, 100, 0.2);
     border-bottom: 1px solid rgba(47, 162, 100, 0.2);
-    background-image: linear-gradient(to right,
-            rgba(47, 162, 100, 0),
-            rgba(47, 162, 100, 0.2),
-            rgba(47, 162, 100, 0.3),
-            rgba(47, 162, 100, 0.2),
-            rgba(47, 162, 100, 0));
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 162, 100, 0),
+        rgba(47, 162, 100, 0.2),
+        rgba(47, 162, 100, 0.3),
+        rgba(47, 162, 100, 0.2),
+        rgba(47, 162, 100, 0)
+    );
 }
 
 .unit_types {
@@ -1002,12 +1029,14 @@ tab {
     position: relative;
     border-top: 1px solid rgb(47 134 162 / 20%);
     border-bottom: 1px solid rgb(11 13 2 / 20%);
-    background-image: linear-gradient(to right,
-            rgb(72 67 238 / 0%),
-            rgb(77 65 149 / 20%),
-            rgb(47 102 162 / 30%),
-            rgb(40 42 162 / 20%),
-            rgba(47, 162, 100, 0));
+    background-image: linear-gradient(
+        to right,
+        rgb(72 67 238 / 0%),
+        rgb(77 65 149 / 20%),
+        rgb(47 102 162 / 30%),
+        rgb(40 42 162 / 20%),
+        rgba(47, 162, 100, 0)
+    );
 }
 
 .spellStatsHighLighter {
@@ -1018,12 +1047,14 @@ tab {
     position: relative;
     border-top: 1px solid rgb(47 134 162 / 20%);
     border-bottom: 1px solid rgb(11 13 2 / 20%);
-    background-image: linear-gradient(to right,
-            rgb(72 67 238 / 0%),
-            rgb(77 65 149 / 20%),
-            rgb(47 102 162 / 30%),
-            rgb(40 42 162 / 20%),
-            rgba(47, 162, 100, 0));
+    background-image: linear-gradient(
+        to right,
+        rgb(72 67 238 / 0%),
+        rgb(77 65 149 / 20%),
+        rgb(47 102 162 / 30%),
+        rgb(40 42 162 / 20%),
+        rgba(47, 162, 100, 0)
+    );
     width: auto;
     justify-content: space-between;
     align-content: center;
@@ -1239,6 +1270,23 @@ hr {
     border-style: solid;
     border-image: url(/aow4db/Icons/9slicetooltip.png);
     border-image-slice: 10 10 10 10;
+}
+
+.dlc-toggle {
+    background-color: #4b1d63;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    height: 30px;
+    border-width: 5px;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 10 10 10 10;
+}
+.dlc-toggle.enabled {
+    background-color: #210a2a;
+    color: #dd69fc;
 }
 
 .button-random:active {

@@ -48,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function OverwriteEditKey() {
-  
-    localStorage.setItem("editKey",   document.getElementById("overwriteKey").value);
+    localStorage.setItem("editKey", document.getElementById("overwriteKey").value);
 }
 
 function SwitchToBeta() {
@@ -83,8 +82,9 @@ function setUserSettings(settings) {
     localStorage.setItem("userSettings", JSON.stringify(settings));
 }
 
-   function downloadEditKeyFile() {
-    const text = "Age of Wonders 4 Database (minionsart.github.io/aow4db)\nYour Build Edit Key : "+ getOrCreateUserEditKey(); // Replace with your dynamic content
+function downloadEditKeyFile() {
+    const text =
+        "Age of Wonders 4 Database (minionsart.github.io/aow4db)\nYour Build Edit Key : " + getOrCreateUserEditKey(); // Replace with your dynamic content
     const filename = "Aow4db_EditKey.txt";
 
     const blob = new Blob([text], { type: "text/plain" });
@@ -98,7 +98,7 @@ function setUserSettings(settings) {
     // Clean up
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
-   }
+}
 
 // Update user settings
 function updateUserSettings(updatedSettings) {
@@ -7172,6 +7172,29 @@ function addTypesList(a) {
             return jsonUnitAbilities[j].name + "<br>";
         }
     }
+}
+
+function CopyField() {
+    var copyText = document.getElementById("YourKey");
+
+    // Select the text field
+    // For mobile devices
+    console.log("Key  " + copyText);
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.innerText);
+}
+
+function ShowLoad() {
+    var loadButtons = document.getElementById("loadkey");
+    loadButtons.style.display = "block";
+}
+
+function HideKey() {
+    document.getElementById("YourKey").style.display = "none";
+}
+function RevealKey() {
+    document.getElementById("YourKey").style.display = "block";
 }
 
 function Localize() {

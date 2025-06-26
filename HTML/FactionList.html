@@ -80,11 +80,33 @@
 
             function HandlePage() {
                 readBuilds();
+                document.getElementById("YourKey").style.display = "none";
                 document.getElementById("YourKey").innerText = getOrCreateUserEditKey();
-            }
-            
-         
 
+                var tooltip = document.getElementById("tooltipKey");
+                var span = document.createElement("span");
+                span.innerHTML =
+                    "Important! <br>This key is used to load and delete your builds, it is stored in your browser data, please save it in case it gets wiped!. You can overwrite it using Load Key";
+                addTooltipListeners(tooltip, span);
+            }
+
+            $("#filterInput").on("change input", function () {
+                ShowAllBuildsWithFilters();
+            });
+
+            function ShowAllBuildsWithFilters() {
+                HideAll();
+                const filterText = document.getElementById("filterInput").value.toUpperCase();
+                const list = [];
+
+                jsonUnitAbilitiesLocalized.forEach((ability) => {
+                    if (!filterText || matchesFilter(ability, filterText)) {
+                        if (!list.includes(ability.slug)) list.push(ability.slug);
+                    }
+                });
+
+                ProcessList(list);
+            }
         </script>
 
         <title>Age of Wonders 4 Database - Faction Creator</title>
@@ -93,56 +115,110 @@
     <body>
         <div id="header"></div>
 
-        <div class="tome_name">Community Builds List</div>
-        <div style ="color:white">
-        <div>YourEditKey: <span id="YourKey"></span></div><button onclick="downloadEditKeyFile()">Save Key</button>
-        <div>Load key: <input type="text" id="overwriteKey" name="lname"><button onclick="OverwriteEditKey()">Submit</button></div>
-</div>
+        <div class="tome_name">Community Builds List (TEST)</div>
+        <div class="generic-center">
+            Testing if this is possible, it might be too slow in the current setup. If not, I might have to redo this
+        </div>
+        <div style="color: white">
+            <div style="width: fit-content">
+                <div id="tooltipKey">
+                    YourEditKey: <img src="/aow4db/Icons/Text/exclamationpoint.png" height="20px" />
+                </div>
+                <button class="button-random" onmousedown="RevealKey()" onmouseup="HideKey()">👁️Show</button>
+                <span style="display: none" id="YourKey"></span>
+            </div>
+            <button class="button-random" onclick="CopyField()">📄Copy Key</button>
+            <button class="button-random" onclick="downloadEditKeyFile()">💾Save Key</button>
+
+            <button class="button-random" onmousedown="RevealKey()" onmouseup="ShowLoad()">📂Load Key</button>
+            <div id="loadkey" style="display: none">
+                Overwrite key: <input type="text" id="overwriteKey" name="lname" /><button
+                    class="button-random"
+                    onclick="OverwriteEditKey()">
+                    Submit
+                </button>
+            </div>
+        </div>
+
         <button
+            class="button-random"
+            style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 2">
+            <a href="/aow4db/HTML/FactionCreator.html"> CREATE NEW BUILD</a>
+        </button>
+        <button
+            class="button-random"
             id="showMyBuildsBtn"
-            style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000">
+            style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 2">
             Show My Builds
         </button>
-
+        <br />
+        <hr />
+        <br />
         <div class="generic-center">
             <div id="filters">
                 <label for="cultureFilter">Culture:</label>
-                <select id="cultureFilter">
+                <select class="button-random" id="cultureFilter">
                     <option value="all">All</option>
                     <!-- Filled dynamically -->
                 </select>
 
                 <label for="originFilter">Ruler Origin:</label>
-                <select id="originFilter">
+                <select class="button-random" id="originFilter">
                     <option value="all">All</option>
                     <!-- Filled dynamically -->
                 </select>
                 <label for="classFilter">Class:</label>
-                <select id="classFilter">
+                <select class="button-random" id="classFilter">
                     <option value="all">All</option>
                     <!-- Filled dynamically -->
                 </select>
 
                 <label for="tagFilter">Tag:</label>
-                <select id="tagFilter">
+                <select class="button-random" id="tagFilter">
                     <option value="all">All</option>
                     <!-- Filled dynamically -->
                 </select>
 
-                <div id="dlcFilters"></div>
+                <div style="display: none" id="dlcFilters"></div>
             </div>
         </div>
 
+        <!-- <div style="height: auto; color: white; text-align: center">
+            <br />
+            Filter<br />
+            <div style="margin-right: auto; margin-left: auto; width: 500px">
+                <input type="text" class="searchbar" id="filterInput" />
+            </div>
+        </div>
+        <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
+            <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        </div>
+-->
+
+        <div
+            id="loading-spinner"
+            style="
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+            ">
+            <div class="spinner"></div>
+        </div>
         <div style="height: auto; color: white; text-align: center; margin: auto; width: fit-content" id="list">
-            Loading...
+            <br />
         </div>
 
         <div id="hiddentooltips" style="display: none"></div>
 
         <script>
             let allBuilds = [];
+            const spinner = document.getElementById("loading-spinner");
             const activeDLCFilters = new Set();
             function readBuilds() {
+                spinner.style.display = "block"; // Show the spinner
                 fetch(
                     "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec?action=read"
                 )
@@ -154,6 +230,9 @@
                         allBuilds = builds;
                         populateFilters(builds); // Build the dropdowns
                         renderBuilds(builds);
+                    })
+                    .finally(() => {
+                        spinner.style.display = "none"; // Hide spinner after fetch is done
                     });
             }
 
@@ -339,6 +418,30 @@
                 });
             }
 
+            function LookupDLCName(dlc) {
+                if (dlc == "DRAGONLORDS") {
+                    return "Dragon Dawn";
+                }
+                if (dlc == "EMPIRESANDASHES") {
+                    return "Empires & Ashes";
+                }
+                if (dlc == "PRIMALFURY") {
+                    return "Primal Fury";
+                }
+                if (dlc == "ELDRITCHREALMS") {
+                    return "Eldritch Realms";
+                }
+                if (dlc == "WAYSOFWAR") {
+                    return "Ways of War";
+                }
+                if (dlc == "HERALDOFGLORY") {
+                    return "Herald of Glory";
+                }
+                if (dlc == "GIANTKINGS") {
+                    return "Giant Kings";
+                }
+            }
+
             function createDlcFilters() {
                 const filterDiv = document.getElementById("dlcFilters");
                 const allDLCs = new Set();
@@ -352,15 +455,15 @@
 
                 allDLCs.forEach((dlc) => {
                     const btn = document.createElement("button");
-                    btn.textContent = dlc;
+                    btn.textContent = LookupDLCName(dlc.replaceAll(" ", ""));
                     btn.className = "dlc-toggle";
                     btn.onclick = () => {
                         if (activeDLCFilters.has(dlc)) {
                             activeDLCFilters.delete(dlc);
-                            btn.classList.remove("active");
+                            btn.classList.remove("enabled");
                         } else {
                             activeDLCFilters.add(dlc);
-                            btn.classList.add("active");
+                            btn.classList.add("enabled");
                         }
                         applyDlcFilter();
                     };
@@ -378,12 +481,13 @@
                 const date = build.Timestamp || "N/A";
 
                 const views = build.Views || 0;
+                const notes = build.Notes || "";
 
                 const tags = build.Tags || "Roleplay, Theme";
                 const parsedLink = linkUrl?.split("=")[1] || "Error";
 
                 // Use ReadBackBuildData to get a display DOM element
-                const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date, views);
+                const entryContent = ReadBackBuildData(parsedLink, tags, buildName, date, views, notes);
 
                 // Wrap it in a clickable link
                 const linkWrapper = document.createElement("a");
@@ -403,21 +507,25 @@
 
                 // Add build preview content here...
 
+                linkWrapper.appendChild(entryContent);
+                listDiv.appendChild(linkWrapper);
+
                 if (isOwner) {
                     const editBtn = document.createElement("button");
-                    editBtn.textContent = "Edit";
+                    editBtn.className = "button-random";
+                    editBtn.setAttribute("style", "position: relative;top: -50px;");
+                    editBtn.textContent = "✎ Edit";
                     editBtn.onclick = () => startEditBuild(build);
 
                     const deleteBtn = document.createElement("button");
-                    deleteBtn.textContent = "Delete";
+                    deleteBtn.textContent = "❌ Delete";
+                    deleteBtn.className = "button-random";
+                    deleteBtn.setAttribute("style", "position: relative;top: -50px;");
                     deleteBtn.onclick = () => deleteBuild(build);
 
                     listDiv.appendChild(editBtn);
                     listDiv.appendChild(deleteBtn);
                 }
-
-                linkWrapper.appendChild(entryContent);
-                listDiv.appendChild(linkWrapper);
             }
 
             function startEditBuild(build) {
@@ -436,10 +544,15 @@
                 url.searchParams.set("url", build.BuildURL);
                 url.searchParams.set("editKey", getOrCreateUserEditKey());
 
+                spinner.style.display = "block"; // Show the spinner
+
                 fetch(url)
                     .then((res) => res.text())
                     .then((msg) => alert("Delete: " + msg))
-                    .catch((err) => console.error("Delete failed:", err));
+                    .catch((err) => console.error("Delete failed:", err))
+                    .finally(() => {
+                        spinner.style.display = "none"; // Hide spinner after fetch is done
+                    });
             }
 
             function applyDlcFilter() {
@@ -450,7 +563,7 @@
                 });
             }
 
-            function ReadBackBuildData(code, tags, buildName, date, views) {
+            function ReadBackBuildData(code, tags, buildName, date, views, notes) {
                 var build = getBaseBuildDate(code);
                 const splitTags = tags.split(",");
 
@@ -629,13 +742,13 @@
 
                 newDivAffinityNameDlc.appendChild(newDivName);
                 const generatedName = `${build.currentCulture.name || "Unknown"} ${build.currentClass.name || "Adventurer"} of ${build.currentOrigin.name || "Unknown"}`;
-                
-                if(buildName == ""){
-                     newDivName.appendChild(createName(generatedName));
-                }else{
-                     newDivName.appendChild(createName(buildName));
+
+                if (buildName == "") {
+                    newDivName.appendChild(createName(generatedName));
+                } else {
+                    newDivName.appendChild(createName(buildName));
                 }
-               
+
                 newDivName.style.width = "400px";
 
                 // add dlc
@@ -728,13 +841,23 @@
                     " width:100px; display:flex; flex-direction: column;justify-content: space-between "
                 );
                 newDiv.appendChild(newDivExtra);
-                newDivPop = document.createElement("div");
+                var newDivPop = document.createElement("div");
                 newDivPop.setAttribute("style", "padding-top:20px");
                 newDivPop.append(renderViewCount(views));
                 newDivExtra.appendChild(newDivPop);
-                newDivDate = document.createElement("div");
+                var newDivDate = document.createElement("div");
                 newDivDate.innerHTML = getPatchForDate(date);
                 newDivExtra.appendChild(newDivDate);
+
+                if (notes != "") {
+                    var newDivHasNotes = document.createElement("div");
+                    newDivHasNotes.innerHTML = "🗒️";
+                    newDivExtra.appendChild(newDivHasNotes);
+                    var span = document.createElement("span");
+                    span.innerHTML = "Has Notes";
+
+                    addTooltipListeners(newDivHasNotes, span);
+                }
 
                 mainDiv.dataset.dlcs = usedDLCs;
                 return mainDiv;
@@ -760,11 +883,16 @@
             }
 
             function renderViewCount(viewCount) {
-                const span = document.createElement("span");
-                span.textContent = "___";
-                span.innerHTML = getViewIcon(viewCount);
+                const div = document.createElement("div");
+
+                div.innerHTML = getViewIcon(viewCount);
+
+                var span = document.createElement("span");
+                span.innerHTML = "View Count: " + viewCount;
+
+                addTooltipListeners(div, span);
                 // span.style.backgroundColor = getViewColor(viewCount);
-                return span;
+                return div;
             }
         </script>
     </body>

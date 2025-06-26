@@ -58,6 +58,13 @@
                 cursor: pointer;
             }
 
+            #notesDisplay {
+                border: 1px solid #ccc;
+                padding: 6px;
+                min-height: 100px;
+                width: 100%;
+            }
+
             /* CSS styles for origin buttons */
             .origin-button {
                 padding: 5px;
@@ -378,6 +385,12 @@
                 SetRandomStart();
 
                 document.getElementById("YourKey").textContent = getOrCreateUserEditKey();
+
+                var tooltip = document.getElementById("tooltipKey");
+                var span = document.createElement("span");
+                span.innerHTML =
+                    "Important! <br>This key is used to load and delete your builds, it is stored in your browser data, please save it in case it gets wiped!. You can overwrite it using Load Key";
+                addTooltipListeners(tooltip, span);
             }
         </script>
 
@@ -388,7 +401,6 @@
         <div id="header"></div>
 
         <div class="tome_name">Faction creator</div>
-      
 
         <div style="color: white; display: table; margin: 5px; margin-left: auto; margin-right: auto">
             <div></div>
@@ -682,89 +694,182 @@
 
             <div id="originWrapperOptions" class="wrappers"></div>
         </div>
+        <br /><br />
+        <div id="notesContainer" style="color: white">
+            <div>
+                Testing User Submitted Builds, might be too slow to be viable this way, please test if it works
+                <button
+                    class="button-random"
+                    style="position: relative; top: 0; left: 50%; transform: translateX(-50%); z-index: 2">
+                    <a href="/aow4db/HTML/FactionList.html"> BUILDS LIST</a>
+                </button>
+            </div>
+            <label for="notesEditor">Build Notes:</label>
+            <div id="notesDisplay"></div>
+            <div id="NotesEditInput" style="display: none">
+                <div style="margin-bottom: 5px; display: flex">
+                    <button onclick="format('bold')"><b>Bold</b></button>
+                    <button onclick="formatHeader('h1')">Header</button>
+                    <div>Use [] for tags I.E. [hp] for <hp></hp></div>
+                    <!-- <div>Use {} for highlights of abilities/spells/etc I.E. {Ancient Wise Ones}</div>-->
+                </div>
 
-        <div class="generic-center" style="display: none">
-            <div style ="color:white">
-        <div>YourEditKey: <span id="YourKey"></span></div><button onclick="downloadEditKeyFile()">Save Key</button>
-        <div>Load key: <input type="text" id="overwriteKey" name="lname"><button onclick="OverwriteEditKey()">Submit</button></div>
-</div>
+                <div
+                    id="NotesInput"
+                    contenteditable="true"
+                    style="
+                        border: 1px solid gray;
+                        padding: 10px;
+                        min-height: 100px;
+                        background: #454545;
+                        color: white;
+                        white-space: pre-wrap;
+                    "></div>
+            </div>
+            <button id="editNotesBtn" onclick="toggleEditNotes()">Edit</button>
+            <button style="display: none" id="saveNotesBtn" onclick="saveNotes()">Save</button>
+        </div>
+        <div style="display: flex; justify-content: space-around; color: white">
+            <div style="color: white">
+                <div style="width: fit-content">
+                    <div id="tooltipKey">
+                        YourEditKey: <img src="/aow4db/Icons/Text/exclamationpoint.png" height="20px" />
+                    </div>
+                    <button class="button-random" onmousedown="RevealKey()" onmouseup="HideKey()">👁️Show</button>
+                    <span style="display: none" id="YourKey"></span>
+                </div>
+                <button class="button-random" onclick="CopyField()">📄Copy Key</button>
+                <button class="button-random" onclick="downloadEditKeyFile()">💾Save Key</button>
+
+                <button class="button-random" onmousedown="RevealKey()" onmouseup="ShowLoad()">📂Load Key</button>
+                <div id="loadkey" style="display: none">
+                    Overwrite key: <input type="text" id="overwriteKey" name="lname" /><button
+                        class="button-random"
+                        onclick="OverwriteEditKey()">
+                        Submit
+                    </button>
+                </div>
+            </div>
+
+            <div
+                id="loading-spinner"
+                style="
+                    display: none;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 9999;
+                ">
+                <div class="spinner"></div>
+            </div>
+
             <div style="color: white; display: none" id="oldURL"></div>
-           
 
-          <!-- Dropdown to choose a tag -->
-<label for="tagDropdown">Select a Tag:</label>
-<select id="tagDropdown">
-  <option value="">-- Choose a tag --</option>
-  <option value="Roleplay">Roleplay</option>
-  <option value="Theme">Theme</option>
-  <option value="PVP">PVP</option>
-  <option value="Casual">Casual</option>
-  <option value="Hardcore">Hardcore</option>
-</select>
+            <!-- Dropdown to choose a tag -->
+            <div>
+                <!-- Extra holder -->
+                <label for="tagDropdown">Select a Tag:</label>
+                <select id="tagDropdown">
+                    <option value="">-- Choose a tag --</option>
+                    <option value="Roleplay">Roleplay</option>
+                    <option value="Theme">Theme</option>
+                    <option value="PVP">PVP</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Hardcore">Hardcore</option>
+                </select>
 
-<button onclick="addTag()">Add Tag</button>
+                <button onclick="addTag()">Add Tag</button>
 
-<!-- Where tags will be listed -->
-<div id="tagList" style="margin-top: 10px;"></div>
-               <label for="userNotes">Build Name:</label>
-              <input type="text" id="buildName" name="lname">
-            <label for="userNotes">Your Notes:</label>
-            <textarea
-                id="NotesInput"
-                name="userNotes"
-                rows="6"
-                cols="40"
-                placeholder="Write your notes here..."></textarea>
+                <!-- Where tags will be listed -->
+                <div id="tagList" style="margin-top: 10px"></div>
+                <label for="userNotes">Build Name:</label>
+                <input type="text" id="buildName" name="lname" />
 
-            <button class="button-random" onclick="submitBuild()">Submit New</button>
+                <button class="button-random" onclick="submitBuild()">Submit New</button>
 
-            <button class="button-random" onclick="overwriteBuild()">Overwrite Existing</button>
+                <button class="button-random" id="overwriteButton" style="display: none" onclick="overwriteBuild()">
+                    Overwrite Existing
+                </button>
+            </div>
         </div>
 
         <script>
-            
+            var rawNotes = "";
             const selectedTags = new Set();
+            const spinner = document.getElementById("loading-spinner");
+            function addTag() {
+                const dropdown = document.getElementById("tagDropdown");
+                const tag = dropdown.value;
 
-  function addTag() {
-    const dropdown = document.getElementById("tagDropdown");
-    const tag = dropdown.value;
+                if (tag && !selectedTags.has(tag)) {
+                    selectedTags.add(tag);
+                    updateTagList(selectedTags);
+                }
+            }
 
-    if (tag && !selectedTags.has(tag)) {
-      selectedTags.add(tag);
-      updateTagList(selectedTags);
-    }
-  }
+            function removeTag(tag) {
+                selectedTags.delete(tag);
+                updateTagList(selectedTags);
+            }
 
-  function removeTag(tag) {
-    selectedTags.delete(tag);
-    updateTagList(selectedTags);
-  }
+            function updateTagList(tagsSet) {
+                const tagListDiv = document.getElementById("tagList");
+                tagListDiv.innerHTML = ""; // Clear previous tags
 
-  function updateTagList(tagsSet) {
-    const tagListDiv = document.getElementById("tagList");
-    tagListDiv.innerHTML = ""; // Clear previous tags
+                tagsSet.forEach((tag) => {
+                    const tagDiv = document.createElement("div");
+                    tagDiv.textContent = tag;
+                    tagDiv.style.display = "inline-block";
+                    tagDiv.style.margin = "5px";
+                    tagDiv.style.padding = "5px 10px";
+                    tagDiv.style.backgroundColor = "#444";
+                    tagDiv.style.color = "#fff";
+                    tagDiv.style.borderRadius = "4px";
 
-    tagsSet.forEach(tag => {
-      const tagDiv = document.createElement("div");
-      tagDiv.textContent = tag;
-      tagDiv.style.display = "inline-block";
-      tagDiv.style.margin = "5px";
-      tagDiv.style.padding = "5px 10px";
-      tagDiv.style.backgroundColor = "#444";
-      tagDiv.style.color = "#fff";
-      tagDiv.style.borderRadius = "4px";
+                    const removeBtn = document.createElement("button");
+                    removeBtn.textContent = "x";
+                    removeBtn.style.marginLeft = "8px";
+                    removeBtn.style.cursor = "pointer";
+                    removeBtn.onclick = () => removeTag(tag);
 
-      const removeBtn = document.createElement("button");
-      removeBtn.textContent = "x";
-      removeBtn.style.marginLeft = "8px";
-      removeBtn.style.cursor = "pointer";
-      removeBtn.onclick = () => removeTag(tag);
+                    tagDiv.appendChild(removeBtn);
+                    tagListDiv.appendChild(tagDiv);
+                });
+            }
 
-      tagDiv.appendChild(removeBtn);
-      tagListDiv.appendChild(tagDiv);
-    });
-  }
-            
+            function formatHeader(command) {
+                document.execCommand("formatBlock", false, command);
+            }
+            function format(command) {
+                document.execCommand(command, false, null);
+            }
+
+            function insertTag(tag) {
+                const editor = document.getElementById("NotesInput");
+                const selection = window.getSelection();
+                const range = selection.getRangeAt(0);
+
+                const tagEl = document.createElement(tag);
+                tagEl.innerHTML = " ";
+                range.insertNode(tagEl);
+                range.collapse(false);
+            }
+
+            function insertTooltip() {
+                const tooltipText = prompt("Enter tooltip text:");
+                if (!tooltipText) return;
+
+                const span = document.createElement("span");
+                span.className = "tooltip";
+                span.setAttribute("data-tooltip", tooltipText);
+                span.textContent = "[?]";
+
+                const selection = window.getSelection();
+                const range = selection.getRangeAt(0);
+                range.insertNode(span);
+                range.collapse(false);
+            }
             function myFunction() {
                 // Get the text field
                 var copyText = document.getElementById("shareLink");
@@ -792,6 +897,78 @@
                 }
             });
 
+            function toggleEditNotes() {
+                const notesDisplay = document.getElementById("notesDisplay");
+                const notesInput = document.getElementById("NotesInput");
+                const notesEditor = document.getElementById("NotesEditInput");
+                const editBtn = document.getElementById("editNotesBtn");
+                const saveBtn = document.getElementById("saveNotesBtn");
+                // console.log(convertHTMLToBrackets(notesDisplay.innerHTML.trim()));
+                notesInput.innerHTML = convertHTMLToBrackets(notesDisplay.innerHTML);
+
+                notesInput.innerHTML = convertHTMLToNames(notesInput.innerHTML);
+                notesDisplay.style.display = "none";
+                notesEditor.style.display = "block";
+                editBtn.style.display = "none";
+                saveBtn.style.display = "inline-block";
+            }
+
+            const excludedTags = ["p", "span", "div", "strong", "em"]; // excluded tags to stop breaking
+
+            function convertHTMLToBrackets(text) {
+                return text.replace(/<([a-z0-9]+)><\/\1>/gi, (match, tag) => {
+                    return excludedTags.includes(tag.toLowerCase()) ? match : `[${tag}]`;
+                });
+            }
+
+            function convertNamesToHTML(text) {
+                return text.replace(/\{([^}]+)\}/g, (match, name) => {
+                    const data = LookUpName(name);
+                    if (!data) return match; // Leave unchanged if not found
+
+                    return `<span class="named-tag" style="color: burlywood; display: inline-flex; align-items: center; gap: 4px;">
+                    <img src="/aow4db/Icons/TraitIcons/${data.icon}.png" alt="${name}" style="width: 16px; height: 16px;" />
+                    ${name}
+                </span>`;
+                });
+            }
+
+            function LookUpName(name) {
+                var data = GetCurrentChoiceList().find((entry) => entry.name.indexOf(name) != -1);
+
+                return data;
+            }
+
+            function convertHTMLToNames(text) {
+                return text.replace(
+                    /<span class="named-tag"[^>]*>[\s\S]*?<img[^>]*>\s*([^<]+?)\s*<\/span>/g,
+                    (match, name) => `{${name.trim()}}`
+                );
+            }
+
+            function convertBracketsToHTML(text) {
+                return text.replace(/\[([a-z0-9]+)\]/gi, (match, tag) => {
+                    return excludedTags.includes(tag.toLowerCase()) ? match : `<${tag}></${tag}>`;
+                });
+            }
+
+            function saveNotes() {
+                const notesDisplay = document.getElementById("notesDisplay");
+                const notesInput = document.getElementById("NotesInput");
+                const notesEditor = document.getElementById("NotesEditInput");
+                const editBtn = document.getElementById("editNotesBtn");
+                const saveBtn = document.getElementById("saveNotesBtn");
+                notesDisplay.innerHTML = convertBracketsToHTML(notesInput.innerHTML);
+                notesDisplay.innerHTML = convertNamesToHTML(notesDisplay.innerHTML);
+                rawNotes = notesInput.innerHTML;
+                notesDisplay.style.display = "block";
+                notesEditor.style.display = "none";
+                editBtn.style.display = "inline-block";
+                saveBtn.style.display = "none";
+
+                // console.log("Saved HTML:", notesInput.innerHTML);
+            }
+
             function submitBuild2(buildName, tags, notes) {
                 var getLink = GenerateQuickLink();
                 var currenturl = window.location.href.split("?")[0];
@@ -810,17 +987,21 @@
                 url.searchParams.set("views", 0);
                 url.searchParams.set("editKey", userEditKey);
 
+                spinner.style.display = "block"; // Show the spinner
                 fetch(url)
                     .then((res) => res.text())
                     .then((msg) => alert("Submitted: " + msg))
-                    .catch((err) => console.error("Submission failed:", err));
+                    .catch((err) => console.error("Submission failed:", err))
+                    .finally(() => {
+                        spinner.style.display = "none"; // Hide spinner after fetch is done
+                    });
             }
 
             function updateBuild(buildName, notes, oldURL, tags) {
                 var getLink = GenerateQuickLink();
                 var currenturl = window.location.href.split("?")[0];
                 getLink = currenturl + "?u=" + getLink;
-
+                spinner.style.display = "block"; // Show the spinner
                 var userEditKey = getOrCreateUserEditKey();
                 var url = new URL(
                     "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
@@ -837,40 +1018,40 @@
                 fetch(url)
                     .then((res) => res.text())
                     .then((msg) => alert("Submitted: " + msg))
-                    .catch((err) => console.error("Submission failed:", err));
+                    .catch((err) => console.error("Submission failed:", err))
+                    .finally(() => {
+                        spinner.style.display = "none"; // Hide spinner after fetch is done
+                    });
             }
 
             function getBuildNameAndIcon() {
-               var name = document.getElementById("buildName").value;
-               
-                return name ;
-            }
-            
-            function GenerateGenericName(){
-               return currentTomeList[0].name;
+                var name = document.getElementById("buildName").value;
+
+                return name;
             }
 
-        
+            function GenerateGenericName() {
+                return currentTomeList[0].name;
+            }
 
             function overwriteBuild() {
                 var oldURLName = document.getElementById("oldURL").innerText;
                 // get notes
-                var notes = document.getElementById("NotesInput");
-                 const tagArray = Array.from(selectedTags);
-                
-                updateBuild(getBuildNameAndIcon(), notes.value, oldURLName, tagArray);
+                var notes = rawNotes;
+                const tagArray = Array.from(selectedTags);
+
+                updateBuild(getBuildNameAndIcon(), rawNotes, oldURLName, tagArray);
             }
 
             // Example usage
             function submitBuild() {
                 var buildName = getBuildNameAndIcon();
 
-                var notes = document.getElementById("NotesInput");
-                console.log(notes + " " + notes.value);
+                //var notes = document.getElementById("NotesInput");
+                // console.log(notes + " " + notes.value);
                 const tagArray = Array.from(selectedTags);
-                
 
-                submitBuild2(buildName, tagArray, notes.value);
+                submitBuild2(buildName, tagArray, rawNotes);
             }
         </script>
     </body>
