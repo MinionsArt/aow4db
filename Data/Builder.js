@@ -4208,7 +4208,7 @@ function addLevelUpInfo(units, a, holder) {
     const evolveTarget = units.evolve_target;
 
     const medals = [
-        { name: "Soldier", icon: "medal_soldier", xp: 1, rewards: [] },
+        { name: "Soldier", icon: "medal_soldier", xp: 1, rewards: units.medal_rewards_2 },
         { name: "Veteran", icon: "medal_veteran", xp: 2, rewards: units.medal_rewards_2 },
         { name: "Elite", icon: "medal_elite", xp: 3, rewards: units.medal_rewards_3 },
         { name: "Champion", icon: "medal_champion", xp: 4, rewards: units.medal_rewards_5 },
