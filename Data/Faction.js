@@ -3365,6 +3365,7 @@ function hexToDecimal(hex) {
 }
 
 function RebuildFromParam(code) {
+    console.log(code);
     reversLookUp(code);
     spinner.style.display = "block"; // Show the spinner
     fetch(
@@ -3373,7 +3374,7 @@ function RebuildFromParam(code) {
             method: "POST",
             body: new URLSearchParams({
                 action: "incrementView",
-                buildId: window.location.href.split("?")[0] + "?u=" + code
+                buildId: window.location.href.split("?")[0] + "?u=" + code.replaceAll(" ", "%20")
             })
         }
     )
