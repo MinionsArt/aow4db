@@ -3107,13 +3107,13 @@ function GenerateQuickLink() {
     if (name == "Ruler Name") {
         code += "," + "n";
     } else {
-        var modName = name.replace(" ", "%20");
+        var modName = name.replaceAll(" ", "%20");
         code += "," + modName;
     }
     if (raceName == "Race Name") {
         code += ":" + "r";
     } else {
-        var modRaceName = raceName.replace(" ", "%20");
+        var modRaceName = raceName.replaceAll(" ", "%20");
         code += ":" + modRaceName;
     }
 
