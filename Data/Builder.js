@@ -6629,10 +6629,7 @@ function showHeroGov(a, check) {
             cost.setAttribute("id", "modcost" + newID);
 
             imagelink = document.getElementById("modicon");
-            imagelink.setAttribute(
-                "src",
-                "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon.toLowerCase() + ".png"
-            );
+            imagelink.setAttribute("src", "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon + ".png");
             imagelink.setAttribute("style", "background-image:none");
             imagelink.setAttribute("id", "modicon" + newID);
 
