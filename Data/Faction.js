@@ -599,7 +599,7 @@ function SetSkillPathInfoSmall(buttonHolder, origin) {
 
     // newDivButton.append(spa);
 
-    addTooltipListeners(newDivButton, spa);
+    addTooltipListeners(image, spa);
 }
 function SetTomePathInfoSmall(buttonHolder, origin) {
     const image = document.createElement("img");
@@ -827,7 +827,7 @@ function SetSkillPathInfo(button, origin) {
 
     //  newDivButton.append(spa);
 
-    addTooltipListeners(newDivButton, spa);
+    addTooltipListeners(image, spa);
 }
 
 function SetupButtons(evt, type) {
@@ -1246,7 +1246,7 @@ function SetButtonInfo(button, origin, type, color) {
     }
 
     const tooltip = createTooltip(origin, type);
-    addTooltipListeners(button, tooltip);
+    addTooltipListeners(image, tooltip);
 }
 
 function createImage(type, origin) {
@@ -1985,7 +1985,7 @@ function CreateSpellIcon(listEntry, colorEntry) {
 
     newSpan.innerHTML = "<p>From: " + colorEntry.name + "<br></p>";
     span.prepend(newSpan);
-    addTooltipListeners(spell, span);
+    addTooltipListeners(smallIcon, span);
     return spell;
 }
 
