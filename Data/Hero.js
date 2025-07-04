@@ -316,7 +316,7 @@ function LookupCode(code) {
         let findSkill = ReturnHeroSkillItself(null, newArray[i]);
 
         toggleNodeSelection(findSkill, nodeWithId, false);
-        console.log(newArray[0]);
+        // console.log(newArray[0]);
     }
 
     currentSelectedSkillsArray = newArray;
@@ -336,7 +336,7 @@ function UpdatePage() {
     SetUpTreeNodes(rulerClass, null, 0, "white", holder2, treespace2);
     SetUpSignatures(0);
     UpdateSkillPoints();
-    console.log(currentSelectedSkillsArray);
+    // console.log(currentSelectedSkillsArray);
 
     resizeParentToFitChildren(holder);
     resizeParentToFitChildren(holder2);
@@ -498,7 +498,7 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     //BuildLine()
 
     let skill = ReturnHeroSkillItself(null, sig);
-    console.log("skill " + skill);
+    // console.log("skill " + skill);
     let newNode = document.createElement("DIV");
 
     // Convert the x and y coordinates to pixel positions
@@ -525,7 +525,7 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     setSignatureSelection(skill, newNode, slot, holder, treespace);
 }
 
-function SetSkillData(nodeElement, skill) {
+function SetSkillData(nodeElement, skill, rulerSubType) {
     nodeElement.innerHTML = "";
     var img = document.createElement("IMG");
     img.className = "empireNodeIcon";
@@ -543,7 +543,7 @@ function SetSkillData(nodeElement, skill) {
     if (skill.type == "signature") {
         img.setAttribute("height", "100px");
     } else if ("abilities" in skill) {
-        var skill3 = ReturnSkillItself(skillLoc.abilities[0].slug);
+        var skill3 = ReturnSkillItself(skillLoc.abilities[0].slug, rulerSubType);
 
         if ("range" in skill3) {
             img.setAttribute("height", "65px");
@@ -569,7 +569,7 @@ function SetSkillData(nodeElement, skill) {
     }
 
     if (skillLoc.description == undefined) {
-        spa.innerHTML += GetSkillData(skillLoc).innerHTML;
+        spa.innerHTML += GetSkillData(skillLoc, rulerSubType).innerHTML;
     } else {
         var description = skillLoc.description;
         description = description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
@@ -585,7 +585,7 @@ function SetSkillData(nodeElement, skill) {
 
 function ChooseSignatures(slot, nodeElement, evt) {
     var listOfSkills = GetAllAvailableSignatureSkills(slot);
-    console.log("skills " + listOfSkills);
+    //console.log("skills " + listOfSkills);
     BuildChoicesPanel(listOfSkills, nodeElement, slot, evt);
 }
 
@@ -1024,14 +1024,14 @@ function SetUpTreeNodes(keyword, subtype, row, color, holder, treespace) {
 
             if (currentSkill.group_name.indexOf(overrideKeyword) != -1) {
                 if (currentSkill.id.indexOf("unlinked") == -1) {
-                    BuildSkillTreeEntry(currentSkill, row, holder, treespace);
+                    BuildSkillTreeEntry(currentSkill, row, holder, treespace, undefined, subtype);
                 }
             }
         }
     }
 }
 
-function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) {
+function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, rulerSubType) {
     // var currentSkillLoc = json;
     var nodeHeight = 50;
 
@@ -1056,8 +1056,8 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
     }
 
     if ("abilities" in currentSkill) {
-        var skill = ReturnSkillItself(currentSkill.abilities[0].slug);
-        // console.log(currentSkill.abilities[0].slug);
+        let skill = ReturnSkillItself(currentSkill.abilities[0].slug, rulerSubType);
+        // console.log(skill.damage);
 
         if ("range" in skill) {
             form = "diamond";
@@ -1096,7 +1096,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset) 
         newNode.style.backgroundImage = "url('/aow4db/Icons/Interface/" + abilityIconType + ".png";
     }
 
-    SetSkillData(newNode, currentSkill);
+    SetSkillData(newNode, currentSkill, rulerSubType);
 
     newNode.setAttribute("id", currentSkill.resid);
 
@@ -1436,11 +1436,76 @@ function deactivateNode(newNode, nodeData, isSig) {
     });
 }
 
-function ReturnSkillItself(lookup) {
-    var j = 0;
-    for (j in jsonUnitAbilitiesLocalized) {
-        if (jsonUnitAbilitiesLocalized[j].slug == lookup) {
-            return jsonUnitAbilitiesLocalized[j];
+function ReturnSkillItself(lookup, subTypeOverride) {
+    for (let j in jsonUnitAbilitiesLocalized) {
+        if (jsonUnitAbilitiesLocalized[j].slug === lookup) {
+            let originalSkill = jsonUnitAbilitiesLocalized[j];
+
+            if (subTypeOverride !== undefined) {
+                // Shallow clone of skill — safe for top-level edits
+                //let skill = { ...originalSkill };
+                let skill = {
+                    ...originalSkill,
+                    modifiers: originalSkill.modifiers ? originalSkill.modifiers.map((mod) => ({ ...mod })) : undefined
+                };
+
+                const dragonBreath = [
+                    "limited_breath_ability_000003BD00002895",
+                    "cone_breath_ability_000003BD00002895",
+                    "line_breath_ability_000003BD00002895",
+                    "comet_breath_ability_000003BD00002895"
+                ];
+
+                if (dragonBreath.includes(skill.slug)) {
+                    console.log(skill.modifiers[0]);
+                    switch (subTypeOverride) {
+                        case "AstralDragon":
+                            skill.damage = skill.damage.replaceAll("physical", "lightning");
+                            skill.modifiers[0].name = skill.modifiers[0].name.replaceAll("Bleeding", "Electrified");
+                            skill.modifiers[0].description = skill.modifiers[0].description.replaceAll(
+                                "Bleeding",
+                                "Electrified"
+                            );
+                            break;
+                        case "OrderDragon":
+                            skill.damage = skill.damage.replaceAll("physical", "spirit");
+                            skill.modifiers[0].name = skill.modifiers[0].name.replaceAll("Bleeding", "Distracted");
+                            skill.modifiers[0].description = skill.modifiers[0].description.replaceAll(
+                                "Bleeding",
+                                "Distracted"
+                            );
+                            break;
+                        case "ChaosDragon":
+                            skill.damage = skill.damage.replaceAll("physical", "fire");
+                            skill.modifiers[0].name = skill.modifiers[0].name.replaceAll("Bleeding", "Burning");
+                            skill.modifiers[0].description = skill.modifiers[0].description.replaceAll(
+                                "Bleeding",
+                                "Burning"
+                            );
+                            break;
+                        case "ShadowDragon":
+                            skill.damage = skill.damage.replaceAll("physical", "frost");
+                            skill.modifiers[0].name = skill.modifiers[0].name.replaceAll("Bleeding", "Slowed");
+                            skill.modifiers[0].description = skill.modifiers[0].description.replaceAll(
+                                "Bleeding",
+                                "Slowed"
+                            );
+                            break;
+                        case "NatureDragon":
+                            skill.damage = skill.damage.replaceAll("physical", "blight");
+                            skill.modifiers[0].name = skill.modifiers[0].name.replaceAll("Bleeding", "Poisoned");
+                            skill.modifiers[0].description = skill.modifiers[0].description.replaceAll(
+                                "Bleeding",
+                                "Poisoned"
+                            );
+                            break;
+                    }
+                }
+
+                return skill; // ✅ Return modified copy
+            }
+
+            return originalSkill; // No subtype override, return original
         }
     }
 }
@@ -1471,13 +1536,13 @@ function ReturnHeroSkillItself(lookup, resid) {
     }
 }
 
-function GetSkillData(a) {
+function GetSkillData(a, subtype) {
     if ("abilities" in a) {
         var l = 0;
         var spa = "";
         for (l in a.abilities) {
             let lookup = a.abilities[l].slug;
-            let thisSkill = ReturnSkillItself(lookup);
+            let thisSkill = ReturnSkillItself(lookup, subtype);
             let abilityName = thisSkill.name;
 
             //   description = jsonUnit[j].description;
