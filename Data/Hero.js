@@ -955,10 +955,12 @@ function GetSignatureSkillUnlocks(currentSig) {
         // mind devourer - ancient one not exported
 
         if (currentSig.resid == 5046586575333) {
-            // ancient one : +30% damage +20 hp
-            //if (jsonHeroSkills[i].resid == 4514010634081) {
-            //    unlockedSigs.push(jsonHeroSkills[i]);
-            //}
+            // ancient one : +30% damage +20 hp, same as ancient of earth but different name
+            if (jsonHeroSkills[i].resid == 4514010632504) {
+                // change name to Ancient One
+
+                unlockedSigs.push(jsonHeroSkills[i]);
+            }
         }
         // grand brawn rune - ancient of earth
         if (currentSig.resid == 5046586579058) {
@@ -1460,14 +1462,21 @@ function ReturnSkillItself(lookup, subTypeOverride) {
     for (let j in jsonUnitAbilitiesLocalized) {
         if (jsonUnitAbilitiesLocalized[j].slug === lookup) {
             let originalSkill = jsonUnitAbilitiesLocalized[j];
+            let skill = {
+                ...originalSkill,
+                modifiers: originalSkill.modifiers ? originalSkill.modifiers.map((mod) => ({ ...mod })) : undefined
+            };
+            const eldritchAncientOne = ["0000041b0000113a"];
+            if (eldritchAncientOne.includes(skill.slug)) {
+                console.log("here");
+                skill.name = "Ancient One";
+                skill.description =
+                    skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
+            }
 
             if (subTypeOverride !== undefined) {
                 // Shallow clone of skill — safe for top-level edits
                 //let skill = { ...originalSkill };
-                let skill = {
-                    ...originalSkill,
-                    modifiers: originalSkill.modifiers ? originalSkill.modifiers.map((mod) => ({ ...mod })) : undefined
-                };
 
                 const dragonBreath = [
                     "limited_breath_ability_000003BD00002895",
@@ -1476,8 +1485,9 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                     "comet_breath_ability_000003BD00002895"
                 ];
 
+                console.log(skill.name);
+
                 if (dragonBreath.includes(skill.slug)) {
-                    console.log(skill.modifiers[0]);
                     switch (subTypeOverride) {
                         case "AstralDragon":
                             skill.damage = skill.damage.replaceAll("physical", "lightning");
@@ -1525,7 +1535,7 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                 return skill; // ✅ Return modified copy
             }
 
-            return originalSkill; // No subtype override, return original
+            return skill; // No subtype override, return original
         }
     }
 }
