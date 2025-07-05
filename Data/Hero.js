@@ -937,7 +937,9 @@ function GetSignatureSkillUnlocks(currentSig) {
     for (let i = 0; i < jsonHeroSkills.length; i++) {
         // hardcode some of these because theyre not hooked up properly
         // mind devourer - ancient one not exported
+
         if (currentSig.resid == 5046586575333) {
+            // ancient one : +30% damage +20 hp
             //if (jsonHeroSkills[i].resid == 4514010634081) {
             //    unlockedSigs.push(jsonHeroSkills[i]);
             //}

@@ -195,7 +195,7 @@
         <div class="tree-space" id="treespace">
             <div class="choices" style="left: 100px; top: 20px">
                 <label style="color: white">Ruler Type:</label>
-                <select id="actionDropdownOrigin">
+                <select class="button-random" id="actionDropdownOrigin">
                     <option id="Champion" value="Champion">Champion</option>
                     <option id="Wizard" value="Wizard">Wizard King</option>
                     <option id="Dragon" value="Dragon">Dragon Lord</option>
@@ -203,9 +203,9 @@
                     <option id="Giant" value="Giant">Giant King</option>
                 </select>
             </div>
-            <div class="choices" id="actionDropdownOriginDragonHolder" style="left: 100px; top: -20px">
+            <div class="choices" id="actionDropdownOriginDragonHolder" style="left: 450px; top: 20px">
                 <label style="color: white">Dragon Type:</label>
-                <select id="actionDropdownOriginDragon">
+                <select class="button-random" id="actionDropdownOriginDragon">
                     <option id="orderDragon" value="OrderDragon">Order Dragon</option>
                     <option id="astralDragon" value="AstralDragon">Astral Dragon</option>
                     <option id="natureDragon" value="NatureDragon">Nature Dragon</option>
@@ -214,9 +214,9 @@
                     <option id="shadowDragon" value="ShadowDragon">Shadow Dragon</option>
                 </select>
             </div>
-            <div class="choices" id="actionDropdownOriginGiantHolder" style="left: 100px; top: -20px">
+            <div class="choices" id="actionDropdownOriginGiantHolder" style="left: 450px; top: 20px">
                 <label style="color: white">Giant Type:</label>
-                <select id="actionDropdownOriginGiant">
+                <select class="button-random" id="actionDropdownOriginGiant">
                     <option id="GiantFire" value="GiantFire">Fire Giant King</option>
                     <option id="GiantFrost" value="GiantFrost">Frost Giant King</option>
                     <option id="GiantStorm" value="GiantStorm">Storm Giant King</option>
@@ -225,7 +225,7 @@
             </div>
             <div class="choices" style="left: 900px; top: 20px">
                 <label style="color: white">Class:</label>
-                <select id="actionDropdownClass">
+                <select class="button-random" id="actionDropdownClass">
                     <option class="dropdownOption" id="Warrior" value="Warrior">Warrior</option>
                     <option id="Ranger" value="Ranger">Ranger</option>
                     <option id="Mage" value="Mage">Mage</option>
@@ -236,17 +236,17 @@
                 </select>
             </div>
             <div style="position: relative; display: flex; justify-content: flex-start">
-                <div style="position: relative">
+                <div style="position: relative; top: 20px">
                     <div class="tree-grid" id="treeHolder"></div>
                     <div class="" id="treeLineHolder"></div>
                 </div>
 
-                <div style="position: relative">
+                <div style="position: relative; top: 20px">
                     <div class="tree-grid" id="treeHolderClass"></div>
                     <div class="" id="treeLineHolderClass"></div>
                 </div>
-                <div>
-                    <div class="tree-grid" id="treeHolderSignature1"></div>
+                <div style="postion: relative; top: 20px">
+                    <div class="tree-grid" style="width: 350px" id="treeHolderSignature1"></div>
                     <div class="" style="position: relative" id="treeLineHolderSignature1"></div>
                     <div class="tree-grid" id="treeHolderSignature2"></div>
                     <div class="" style="position: relative" id="treeLineHolderSignature2"></div>
@@ -342,12 +342,12 @@
     }
 
     .tree-space {
-        width: auto;
-        height: 1920px;
+        width: fit-content;
+        height: fit-content;
         min-width: min-content;
         position: relative;
-        background-size: cover;
-        background-image: url(/aow4db/Icons/Interface/panel_Background2.png);
+        background-size: contain;
+        background-image: url(/aow4db/Icons/Interface/background_Hero.png);
     }
 
     .entry {
