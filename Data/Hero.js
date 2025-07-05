@@ -495,14 +495,12 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     holder.innerHTML = "";
     treespace.innerHTML = "";
 
-    //BuildLine()
-
     let skill = ReturnHeroSkillItself(null, sig);
     // console.log("skill " + skill);
     let newNode = document.createElement("DIV");
 
     // Convert the x and y coordinates to pixel positions
-    const leftPosition = leftPos; // x-coordinate scaled to grid size
+    const leftPosition = leftPos + 5; // x-coordinate scaled to grid size
     const topPosition = topPost; // y-coordinate scaled to grid size
 
     // Set the style to position the node based on x and y coordinates
@@ -518,18 +516,23 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     //newNode.addEventListener("click", function () {
     //  ChooseSignatures(slot, newNode);
     //});
+    // first slot doesnt get a line
 
     // Set the button functionality
-
     holder.appendChild(newNode);
+
+    if (slot != 1) {
+        BuildLine([leftPos, topPost - 250], newNode, treespace, -15);
+    }
     setSignatureSelection(skill, newNode, slot, holder, treespace);
 }
 
-function SetSkillData(nodeElement, skill, rulerSubType) {
+function SetSkillData(nodeElement, skill, rulerSubType, choice) {
     nodeElement.innerHTML = "";
     var img = document.createElement("IMG");
     img.className = "empireNodeIcon";
     nodeElement.append(img);
+
     if (skill == undefined) {
         img.setAttribute("src", "/aow4db/Icons/Interface/skill_unassigned.png");
         img.setAttribute("height", "80px");
@@ -541,7 +544,16 @@ function SetSkillData(nodeElement, skill, rulerSubType) {
     var skillLoc = jsonHeroSkillsLocalized.find((entry) => entry.resid === skill.resid);
 
     if (skill.type == "signature") {
-        img.setAttribute("height", "100px");
+        if (choice != undefined) {
+            var name = document.createElement("Div");
+            name.innerHTML = skill.name;
+            name.className = "list-name";
+            nodeElement.append(name);
+            nodeElement.className = "list-button";
+            img.setAttribute("height", "50px");
+        } else {
+            img.setAttribute("height", "100px");
+        }
     } else if ("abilities" in skill) {
         var skill3 = ReturnSkillItself(skillLoc.abilities[0].slug, rulerSubType);
 
@@ -580,7 +592,7 @@ function SetSkillData(nodeElement, skill, rulerSubType) {
     }
 
     // newNode.appendChild(spa);
-    addTooltipListeners(nodeElement, spa);
+    addTooltipListeners(img, spa);
 }
 
 function ChooseSignatures(slot, nodeElement, evt) {
@@ -820,43 +832,47 @@ function lookupDragonAffinity(type) {
 }
 
 function BuildChoicesPanel(choiceslist, originButton, slot, evt) {
-    var selectionsHolder = document.getElementById("selectionsHolder");
-    selectionsHolder.setAttribute("style", "display:block");
+    const selectionsHolder = document.getElementById("selectionsHolder");
+    selectionsHolder.style.display = "block";
 
-    var normalizedPos = getNormalizedPosition(evt);
-
-    const mouseX = evt.clientX;
-    const mouseY = evt.clientY;
-
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-    if (normalizedPos.x + getNormalizedWidth(selectionsHolder) > 0.95) {
-        selectionsHolder.style.left = mouseX - selectionsHolder.getBoundingClientRect().width + scrollLeft + "px";
-    } else {
-        selectionsHolder.style.left = mouseX + scrollLeft + "px";
-    }
-
-    if (normalizedPos.y + getNormalizedHeight(selectionsHolder) > 0.95) {
-        selectionsHolder.style.top = mouseY - selectionsHolder.getBoundingClientRect().height + scrollTop + "px";
-    } else {
-        selectionsHolder.style.top = mouseY + scrollTop + "px";
-    }
-
-    var panel = document.getElementById("choicesPanel");
+    const panel = document.getElementById("choicesPanel");
     panel.innerHTML = "";
+
     choiceslist.forEach((choice) => {
         const choiceNode = document.createElement("BUTTON");
         const thisSkill = ReturnHeroSkillItself(null, choice.resid);
 
         choiceNode.innerHTML = thisSkill.name;
-        SetSkillData(choiceNode, thisSkill);
+        SetSkillData(choiceNode, thisSkill, undefined, choice);
 
         choiceNode.addEventListener("click", () => {
             ClearAndSetSignature(thisSkill, originButton, slot);
         });
 
         panel.appendChild(choiceNode);
+    });
+
+    // Defer positioning until after the layout is calculated
+    requestAnimationFrame(() => {
+        const normalizedPos = getNormalizedPosition(evt);
+
+        const mouseX = evt.clientX;
+        const mouseY = evt.clientY;
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        if (normalizedPos.x + getNormalizedWidth(selectionsHolder) > 0.95) {
+            selectionsHolder.style.left = mouseX - selectionsHolder.getBoundingClientRect().width + scrollLeft + "px";
+        } else {
+            selectionsHolder.style.left = mouseX + scrollLeft + "px";
+        }
+
+        if (normalizedPos.y + getNormalizedHeight(selectionsHolder) > 0.95) {
+            selectionsHolder.style.top = mouseY - selectionsHolder.getBoundingClientRect().height + scrollTop + "px";
+        } else {
+            selectionsHolder.style.top = mouseY + scrollTop + "px";
+        }
     });
 }
 
@@ -922,11 +938,11 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     extraOffset2[1] = extraOffset2[1] + slot * 200;
 
     if (skills[0] != undefined) {
-        BuildLine(extraOffset, origin, treespace);
+        BuildLine(extraOffset, origin, treespace, 0);
         BuildSkillTreeEntry(skill1, row, holder, treespace, extraOffset);
     }
     if (skills[1] != undefined) {
-        BuildLine(extraOffset2, origin, treespace);
+        BuildLine(extraOffset2, origin, treespace, 0);
 
         BuildSkillTreeEntry(skill2, row, holder, treespace, extraOffset2);
     }
@@ -961,11 +977,11 @@ function GetSignatureSkillUnlocks(currentSig) {
     return unlockedSigs;
 }
 
-function BuildLine(offset, targetnode, treespace) {
+function BuildLine(offset, targetnode, treespace, extraOffsetLeft) {
     // signature skil lines
     let connectionLine = document.createElement("DIV");
 
-    var leftPosition = targetnode.offsetLeft; // Element's left position relative to the nearest positioned ancestor
+    var leftPosition = targetnode.offsetLeft + extraOffsetLeft; // Element's left position relative to the nearest positioned ancestor
     var topPosition = targetnode.offsetTop;
     // Calculate the difference in x and y positions between the target and current node
     var dx = offset[0] - leftPosition; // Switched to work backwards
@@ -1143,18 +1159,20 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, 
                 // Calculate the length of the line
                 var lineLength = Math.sqrt(dx * dx + dy * dy); // Dynamic length based on distance
 
-                connectionLine.setAttribute(
-                    "style",
-                    `position: absolute; top: ${toppos}px; left: ${leftpos}px; width: ${lineLength}px; transform: rotate(${angle}deg); background-color: ${color};`
-                );
+                if (targetNode.tree_pos_y != undefined) {
+                    connectionLine.setAttribute(
+                        "style",
+                        `position: absolute; top: ${toppos}px; left: ${leftpos}px; width: ${lineLength}px; transform: rotate(${angle}deg); background-color: ${color};`
+                    );
 
-                // Set class and data attributes for the line
-                connectionLine.className = "branch-line";
-                connectionLine.dataset.source = targetNode.resid.toString(); // Source is the prerequisite
-                connectionLine.dataset.target = currentSkill.resid.toString(); // Target is the current skill
+                    // Set class and data attributes for the line
+                    connectionLine.className = "branch-line";
+                    connectionLine.dataset.source = targetNode.resid.toString(); // Source is the prerequisite
+                    connectionLine.dataset.target = currentSkill.resid.toString(); // Target is the current skill
 
-                // Append the connection line to the tree space
-                treespace.appendChild(connectionLine);
+                    // Append the connection line to the tree space
+                    treespace.appendChild(connectionLine);
+                }
                 return;
             }
         });

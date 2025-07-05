@@ -160,6 +160,7 @@
 
     <body>
         <div id="header"></div>
+        <div class="tome_name">Hero creator</div>
         <div style="height: auto; color: white; text-align: center">
             <a href="/aow4db/HTML/HeroSkillsList.html">Skill List View</a><br /><br />
             <div style="display: flex; flex-direction: row; justify-content: center">
@@ -283,25 +284,47 @@
     }
     .wrappers {
         position: relative;
-
         display: grid;
-        grid-template-columns: repeat(7, 2fr);
-        overflow-y: auto;
-        max-height: 300px;
+        grid-template-columns: repeat(3, 2fr);
+        /* overflow-y: auto; */
+        width: fit-content;
         height: fit-content;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .choices {
         position: absolute;
         font-size: 30px;
-        z-index: 20;
+        z-index: 2;
+    }
+
+    .list-name {
+        width: max-content;
+        padding: 10px;
+    }
+    .list-button {
+        border-width: 3px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+        border-image-repeat: stretch;
+        width: 100%;
+        background-color: #111;
+        color: #fff;
+        /* border: none; */
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: normal;
     }
 
     .selections {
         width: fit-content;
 
         height: fit-content;
-        max-height: 300px;
+
         color: white;
         display: inline-block;
         position: absolute;
@@ -345,8 +368,9 @@
         width: fit-content;
         height: fit-content;
         min-width: min-content;
+        padding-bottom: 200px;
         position: relative;
-        background-size: contain;
+        background-size:cover;
         background-image: url(/aow4db/Icons/Interface/background_Hero.png);
     }
 
