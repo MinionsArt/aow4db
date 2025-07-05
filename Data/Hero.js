@@ -522,7 +522,7 @@ function SetBaseSignatureChoices(leftPos, topPost, row, sig, slot) {
     holder.appendChild(newNode);
 
     if (slot != 1) {
-        BuildLine([leftPos, topPost - 250], newNode, treespace, -15);
+        BuildLine([leftPos, topPost - 250], newNode, treespace, -15, 0);
     }
     setSignatureSelection(skill, newNode, slot, holder, treespace);
 }
@@ -938,11 +938,11 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
     extraOffset2[1] = extraOffset2[1] + slot * 200;
 
     if (skills[0] != undefined) {
-        BuildLine(extraOffset, origin, treespace, 0);
+        BuildLine(extraOffset, origin, treespace, 0, -12);
         BuildSkillTreeEntry(skill1, row, holder, treespace, extraOffset);
     }
     if (skills[1] != undefined) {
-        BuildLine(extraOffset2, origin, treespace, 0);
+        BuildLine(extraOffset2, origin, treespace, 0, -10);
 
         BuildSkillTreeEntry(skill2, row, holder, treespace, extraOffset2);
     }
@@ -977,12 +977,12 @@ function GetSignatureSkillUnlocks(currentSig) {
     return unlockedSigs;
 }
 
-function BuildLine(offset, targetnode, treespace, extraOffsetLeft) {
+function BuildLine(offset, targetnode, treespace, extraOffsetLeft, extraOffsetTop) {
     // signature skil lines
     let connectionLine = document.createElement("DIV");
 
     var leftPosition = targetnode.offsetLeft + extraOffsetLeft; // Element's left position relative to the nearest positioned ancestor
-    var topPosition = targetnode.offsetTop;
+    var topPosition = targetnode.offsetTop + extraOffsetTop;
     // Calculate the difference in x and y positions between the target and current node
     var dx = offset[0] - leftPosition; // Switched to work backwards
     var dy = offset[1] - topPosition;
