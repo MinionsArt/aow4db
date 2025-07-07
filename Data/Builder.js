@@ -141,8 +141,12 @@ function fetchJsonFiles(filePaths) {
 }
 var jsonSiegeProjects;
 
-async function GetAllData(selectedLang = "EN") {
-    const basePathEN = `/aow4db/Data/EN/`;
+async function GetAllData(selectedLang) {
+    var basePathEN = `/aow4db/Data/EN/`;
+    if(selectedLang == "Beta"){
+          basePathEN = `/aow4db/Data/Beta/`;
+    } 
+   
     const basePathLocal = `/aow4db/Data/${selectedLang}/`;
 
     const fileNamesGeneric = [
@@ -270,11 +274,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-        // if (storedSettings.showBeta) {
-        //     await GetAllData("Beta");
-        // } else {
-        await GetAllData(storedSettings.language);
-        //}
+        if (storedSettings.showBeta == true) {
+             await GetAllData("Beta");
+         } else {
+        await GetAllData("EN"); //storedSettings.language
+        }
 
         HandlePage();
         Localize();
