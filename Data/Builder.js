@@ -150,7 +150,8 @@ async function GetAllData(selectedLang = "EN") {
         "SpawnTables.json",
         "BuilderLookup.json",
         "AscendedInfo.json",
-        "BuilderLookupHero.json"
+        "BuilderLookupHero.json",
+        "ItemForge.json"
     ];
     const fileNames = [
         "HeroItems.json",
@@ -192,7 +193,8 @@ async function GetAllData(selectedLang = "EN") {
             "jsonSpawnTables",
             "jsonBuilderLookUp",
             "jsonExtraAscendedInfo",
-            "jsonBuilderHeroLookUp"
+            "jsonBuilderHeroLookUp",
+            "jsonItemForge"
         ];
         const targets = [
             "jsonHeroItems",

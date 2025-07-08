@@ -31,11 +31,20 @@
         function showInfusionType(event, infusionType) {
             var list = new Array();
             for (i in jsonItemForge) {
-                for (j in jsonItemForge[i].allowed_types) {
-                    if (jsonItemForge[i].allowed_types[j].type == CurrentType && jsonItemForge[i].category == infusionType) {
+                let key = CurrentType; // your dynamic variable
+                let value = jsonItemForge[i][key];  
+                if(value != "") {
+                    // check type
+                    if(infusionType == "damage" && jsonItemForge[i].Type == "D"){
                         list.push(jsonItemForge[i]);
+                        }
+                     if(infusionType == "ability" && jsonItemForge[i].Type == "A"){
+                        list.push(jsonItemForge[i]);
+                        }
+                     if(infusionType == "passive1" && jsonItemForge[i].Type == "P"){
+                        list.push(jsonItemForge[i]);
+                        }
                     }
-                }
             }
 
             ShowItemForgeResults(list);
@@ -45,11 +54,21 @@
             // get the selectionsholder
             var selectionsHolder = document.getElementById("SelectionsHolder");
             ClearSelections();
-            for (i in list) {
-                var newEntry = document.createElement("BUTTON");
+            for (let i = 0; i < list.length; i++) {
+                let newEntry = document.createElement("BUTTON");
                 newEntry.className = "list-button";
-                newEntry.innerHTML = list[i].name + " Cost: " + list[i].point_cost;
-                newEntry.addEventListener('click', TryToAddToItem(list[i]));
+                
+                let Icon = document.createElement("IMG");
+                Icon.setAttribute("src", list[i]["Icon link"]);
+                Icon.setAttribute("style", "width: 40px; height:40px");
+                let NameEntry = document.createElement("div");
+                NameEntry.innerHTML = list[i]["Infusion name"];
+                  let descrEntry = document.createElement("div");
+                descrEntry.innerHTML = AddTagIconsForStatusEffects(list[i]["Description"]);
+                newEntry.appendChild(Icon);
+                newEntry.append(NameEntry);
+                NameEntry.appendChild(descrEntry);
+                   newEntry.addEventListener("click", () => TryToAddToItem(list[i]));
                 selectionsHolder.append(newEntry);
             }
         }
@@ -60,7 +79,7 @@
             var resultsHolder = document.getElementById("ResultsHolder");
             var newEntry = document.createElement("BUTTON");
             newEntry.className = "list-button";
-            newEntry.innerHTML = item.name + " Cost: " + item.point_cost;
+            newEntry.innerHTML = item["Infusion name"];
 
             resultsHolder.append(newEntry);
 
@@ -109,7 +128,7 @@
 
     <div class="w3-container">
         <div class="subcultureHolder">
-            <button onclick="showItemType(event,'Primary')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
+            <button onclick="showItemType(event,'One-handed weapon')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
                 <span class="subCultureName" id="subCultureNamePrimary">Primary</span>
             </button>
             <button onclick="showItemType(event,'Trinket')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">

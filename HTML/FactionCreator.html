@@ -102,7 +102,7 @@
                 /* border: none; */
                 cursor: pointer;
                 position: relative;
-z-index: 2;
+                z-index: 2;
                 display: flex;
                 justify-content: normal;
             }
@@ -509,7 +509,7 @@ z-index: 2;
                                     <input
                                         type="text"
                                         value="Ruler Name"
-                                           pattern="[a-zA-Z0-9\s]+"
+                                        pattern="[a-zA-Z0-9\s]+"
                                         class="inputfield"
                                         id="fname1"
                                         maxlength="35"
@@ -702,7 +702,7 @@ z-index: 2;
                 User Submitted Builds are in testing now.
                 <button
                     class="button-random"
-                    style="position: relative; top: 0; left: 50%; transform: translateX(-50%);">
+                    style="position: relative; top: 0; left: 50%; transform: translateX(-50%)">
                     <a href="/aow4db/HTML/FactionList.html"> BUILDS LIST</a>
                 </button>
             </div>
@@ -960,9 +960,11 @@ z-index: 2;
                 const notesEditor = document.getElementById("NotesEditInput");
                 const editBtn = document.getElementById("editNotesBtn");
                 const saveBtn = document.getElementById("saveNotesBtn");
+
                 notesDisplay.innerHTML = convertBracketsToHTML(notesInput.innerHTML);
                 notesDisplay.innerHTML = convertNamesToHTML(notesDisplay.innerHTML);
                 rawNotes = notesInput.innerHTML;
+                console.log(rawNotes);
                 notesDisplay.style.display = "block";
                 notesEditor.style.display = "none";
                 editBtn.style.display = "inline-block";
