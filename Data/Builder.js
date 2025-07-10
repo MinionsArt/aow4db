@@ -503,9 +503,13 @@ function GetUnitTierAndName(id, subcultureCheck) {
         }
 
         // Skip deprecated units
-        if (unit.primary_passives.length > 0 && unit.primary_passives[0].slug === "000003e300005fe2") {
-            continue;
-        }
+         // Skip deprecated units
+    if(depCheckResID(unit.resid) == true){
+        continue;
+    }
+        //if (unit.primary_passives.length > 0 && unit.primary_passives[0].slug === "000003e300005fe2") {
+       //     continue;
+       // }
 
         // Check if subculture matches if provided
         if (subcultureCheck !== undefined && "sub_culture_name" in unit && unit.sub_culture_name !== subcultureCheck) {
@@ -3200,13 +3204,15 @@ function showSubDiv(event, id) {
 
 function showUnit(unitID, subcultureCheck, resID) {
     let unitEN = jsonUnits.find(
-        (entry) => entry.id === unitID && (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck)
+        (entry) => entry.id === unitID && (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck) && depCheckResID(entry.resid) == false
     );
 
     if (!unitEN) {
         console.warn(`Couldn't find unit: ${unitID}`);
         return;
     }
+    
+   
 
     // Exit if subcultureCheck is provided and doesn't match
     if (subcultureCheck && unitEN.sub_culture_name !== subcultureCheck) {
@@ -3219,12 +3225,12 @@ function showUnit(unitID, subcultureCheck, resID) {
         return;
     }
 
-    // Skip deprecated units
-    const isDeprecated = unitEN.primary_passives?.length > 0 && unitEN.primary_passives[0].slug === "deprecated_unit!";
+  
+   // const isDeprecated = unitEN.primary_passives?.length > 0 && unitEN.primary_passives[0].slug === "deprecated_unit!";
 
-    if (isDeprecated) {
-        return;
-    }
+   // if (isDeprecated) {
+   //     return;
+   // }
 
     let unitLoc = jsonUnitsLocalized.find((entry) => entry.resid === unitEN.resid);
     // console.log(unitLoc.name);

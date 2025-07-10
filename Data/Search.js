@@ -7,6 +7,8 @@ var excludeListStructures = [
     "astral_focus_crystal"
 ];
 
+var deprecatedCheckList= ["000003e300005fe2", "000003e300005fe5", "000003e300005fe7", "000003e300005fe6"];
+
 function isInArray(array, search) {
     return array.indexOf(search) >= 0;
 }
@@ -540,18 +542,47 @@ function CheckDepricated(listChecking) {
     return newList;
 }
 
+//const magmaSpiritList= [""]
+
 function depCheck(id) {
     var p = "";
+      console.log("depUnit " + id);
     for (p in jsonUnitsLocalized) {
         if (jsonUnitsLocalized[p].id === id) {
             for (var l = 0; l < jsonUnitsLocalized[p].primary_passives.length; l++) {
-                if (jsonUnitsLocalized[p].primary_passives[l].slug.indexOf("deprecated") != -1) {
+                if (deprecatedCheckList.includes(jsonUnitsLocalized[p].primary_passives[l].slug)) {
+                  
                     if (jsonUnitsLocalized[p].id != "magma_spirit") {
                         return true;
                     }
+                    
+                   // if (jsonUnitsLocalized[p].id != "magma_spirit") {
+                      
+                        
+                   // } else{
+                   //       return true;
+                   // }
                 }
             }
         }
+    }
+    return false;
+}
+
+function depCheckResID(resid) {
+    var p = "";
+   
+    for (p in jsonUnitsLocalized) {
+        if (jsonUnitsLocalized[p].resid === resid) {
+            for (var l = 0; l < jsonUnitsLocalized[p].primary_passives.length; l++) {
+                if (deprecatedCheckList.includes(jsonUnitsLocalized[p].primary_passives[l].slug)) {
+                   
+                        return true;
+                    }
+                  
+                }
+            }
+      
     }
     return false;
 }
