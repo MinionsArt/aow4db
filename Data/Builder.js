@@ -503,13 +503,13 @@ function GetUnitTierAndName(id, subcultureCheck) {
         }
 
         // Skip deprecated units
-         // Skip deprecated units
-    if(depCheckResID(unit.resid) == true){
-        continue;
-    }
+        // Skip deprecated units
+        if (depCheckResID(unit.resid) == true) {
+            continue;
+        }
         //if (unit.primary_passives.length > 0 && unit.primary_passives[0].slug === "000003e300005fe2") {
-       //     continue;
-       // }
+        //     continue;
+        // }
 
         // Check if subculture matches if provided
         if (subcultureCheck !== undefined && "sub_culture_name" in unit && unit.sub_culture_name !== subcultureCheck) {
@@ -3204,15 +3204,16 @@ function showSubDiv(event, id) {
 
 function showUnit(unitID, subcultureCheck, resID) {
     let unitEN = jsonUnits.find(
-        (entry) => entry.id === unitID && (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck) && depCheckResID(entry.resid) == false
+        (entry) =>
+            entry.id === unitID &&
+            (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck) &&
+            depCheckResID(entry.resid) == false
     );
 
     if (!unitEN) {
         console.warn(`Couldn't find unit: ${unitID}`);
         return;
     }
-    
-   
 
     // Exit if subcultureCheck is provided and doesn't match
     if (subcultureCheck && unitEN.sub_culture_name !== subcultureCheck) {
@@ -3225,12 +3226,11 @@ function showUnit(unitID, subcultureCheck, resID) {
         return;
     }
 
-  
-   // const isDeprecated = unitEN.primary_passives?.length > 0 && unitEN.primary_passives[0].slug === "deprecated_unit!";
+    // const isDeprecated = unitEN.primary_passives?.length > 0 && unitEN.primary_passives[0].slug === "deprecated_unit!";
 
-   // if (isDeprecated) {
-   //     return;
-   // }
+    // if (isDeprecated) {
+    //     return;
+    // }
 
     let unitLoc = jsonUnitsLocalized.find((entry) => entry.resid === unitEN.resid);
     // console.log(unitLoc.name);
@@ -6212,6 +6212,9 @@ function showItem(a) {
         descriptionDiv.innerHTML += itemLoc.description + "<br>";
     }
 
+    const abilityMap = {};
+    jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
+
     let lookup;
     if ("ability_slugs" in itemLoc) {
         l = 0;
@@ -6220,23 +6223,23 @@ function showItem(a) {
 
             let spa = document.createElement("SPA");
             j = 0;
-            for (j in jsonUnitAbilitiesLocalized) {
-                if (jsonUnitAbilitiesLocalized[j].slug.indexOf(lookup) != -1) {
-                    //let abilityName = jsonUnitAbilities[j].name;
 
-                    //   description = jsonUnitAbilities[j].description;
+            const ability = abilityMap[lookup];
+            if (ability) {
+                //let abilityName = jsonUnitAbilities[j].name;
 
-                    let spa = GetAbilityInfo(jsonUnitAbilitiesLocalized[j]);
-                    spa.className = "itemAbility";
+                //   description = jsonUnitAbilities[j].description;
 
-                    spa.setAttribute("style", "width: 450px");
+                let spa = GetAbilityInfo(jsonUnitAbilitiesLocalized[j]);
+                spa.className = "itemAbility";
 
-                    found = true;
+                spa.setAttribute("style", "width: 450px");
 
-                    descriptionDiv.append(spa);
+                found = true;
 
-                    break;
-                }
+                descriptionDiv.append(spa);
+
+                break;
             }
         }
     }
@@ -6251,8 +6254,8 @@ function showItem(a) {
     unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
 
     let div = document.createElement("DIV");
-    i = 0;
-    for (i in itemLoc.disabled_slots) {
+
+    for (let i = 0; i < itemLoc.disabled_slots.length; i++) {
         let div = document.createElement("DIV");
         div.innerHTML = "&#11049" + itemLoc.disabled_slots[i].slot_name;
         unitTypesDiv.appendChild(div);
