@@ -577,7 +577,7 @@ function SetSkillData(nodeElement, skill, rulerSubType, choice) {
     spa.innerHTML = '<span style="display:block;color:  #d7c297;">' + skillLoc.name.toUpperCase() + "</span>" + "<br>";
 
     if ("group_name" in skill) {
-        spa.innerHTML += '<span style=" display:block;color:  aliceblue; margin-top:5px">' + skillLoc.group_name + "</span>" + "<br>";
+        spa.innerHTML += '<span style=" display:block;color:  aliceblue;">' + skillLoc.group_name + "</span>" + "<br>";
     }
 
     if (skillLoc.description == undefined) {

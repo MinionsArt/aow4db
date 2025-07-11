@@ -14,26 +14,71 @@
         <script src="/aow4db/Data/Search.js"></script>
         <script>
         var CurrentType = "";
-       
+       var currentDam = "";
+            var currentAb = "";
+            var currentPassives = [];
 
         function HandlePage() {
-
+GenerateAllIconTypes();
         }
 
 
-        function showItemType(event, type) {
-            CurrentType = type.toLowerCase();
+        function showItemType(type) {
+            CurrentType = type;
             SetIcons(type);
             ClearSelections();
 
         }
+            
+        function GenerateAllIconTypes(){
+            var holder = document.getElementById("itemTypeHolder");
+            var itemTypes= [ "One-handed weapon",
+        "Double-handed weapon","Polearm",
+        "Light ranged",
+        "Heavy ranged",
+        "Magical Orb",
+        "Staff",
+        "Dual weapon",
+        "Dragon Claw",
+        "Dragon Claw: Warclaw",
+        "Dragon Claw: Armored claw",
+        "Giant Axe",
+        "Warhammer",
+        "Obelisk",
+        "Eldritch relic",
+        "Head",
+        "Torso",
+        "Leg",
+        "Shield",
+        "Ring",
+        "Wand (misc.)",
+        "Trinket (misc.)"];
+            for(let i = 0; i < itemTypes.length; i++){
+                
+                // generate buttons
+                var newButton = document.createElement("button");
+                var newSpan = document.createElement("Span");
+                
+                newSpan.innerHTML = itemTypes[i];
+                newSpan.setAttribute("id", "subCultureName" + itemTypes[i]);
+                newSpan.className = "subCultureName";
+                newButton.appendChild(newSpan);
+                 newButton.addEventListener("click", () => showItemType(itemTypes[i]));
+                newButton.className = "subscultureButton";
+                
+                holder.appendChild(newButton);
+                
+            }
+        }
 
-        function showInfusionType(event, infusionType) {
+        function showInfusionType(infusionType) {
             var list = new Array();
-            for (i in jsonItemForge) {
+            for (let i = 0 ; i < jsonItemForge.length; i++) {
                 let key = CurrentType; // your dynamic variable
                 let value = jsonItemForge[i][key];  
+               
                 if(value != "") {
+                     console.log("value : " + value + " infusiontype");
                     // check type
                     if(infusionType == "damage" && jsonItemForge[i].Type == "D"){
                         list.push(jsonItemForge[i]);
@@ -62,26 +107,60 @@
                 Icon.setAttribute("src", list[i]["Icon link"]);
                 Icon.setAttribute("style", "width: 40px; height:40px");
                 let NameEntry = document.createElement("div");
-                NameEntry.innerHTML = list[i]["Infusion name"];
+                NameEntry.innerHTML = list[i]["Infusion name"] + " " + list[i].PTS;
+                
                   let descrEntry = document.createElement("div");
                 descrEntry.innerHTML = AddTagIconsForStatusEffects(list[i]["Description"]);
                 newEntry.appendChild(Icon);
                 newEntry.append(NameEntry);
+                NameEntry.setAttribute("style", "  width: 300px;  display: flex; flex-direction: column; align-items: flex-start;")
                 NameEntry.appendChild(descrEntry);
                    newEntry.addEventListener("click", () => TryToAddToItem(list[i]));
                 selectionsHolder.append(newEntry);
             }
         }
+        function    TryToAddToItem(entry){
+            if(entry.Type == "D"){
+                currentDam = entry;
+            }
+            if(entry.Type == "A"){
+                currentAb = entry;
+            }
+            if(entry.Type == "P"){
+                currentPassives.push(entry);
+            }
+            ShowResults();
+        }
 
-        function TryToAddToItem(item) {
+        function ShowResults() {
             // check if points works
             ClearResults();
+            
+            
             var resultsHolder = document.getElementById("ResultsHolder");
-            var newEntry = document.createElement("BUTTON");
+            if(currentDam != ""){
+                 var newEntry = document.createElement("BUTTON");
             newEntry.className = "list-button";
-            newEntry.innerHTML = item["Infusion name"];
+            newEntry.innerHTML = currentDam["Infusion name"];
+                 resultsHolder.append(newEntry);
+            }
+             if(currentAb != ""){
+                 var newEntry = document.createElement("BUTTON");
+            newEntry.className = "list-button";
+            newEntry.innerHTML = currentAb["Infusion name"];
+                  resultsHolder.append(newEntry);
+            }
+            
+            for(let i = 0; i < currentPassives.length; i++){
+                   var newEntry = document.createElement("BUTTON");
+            newEntry.className = "list-button";
+            newEntry.innerHTML = currentPassives[i]["Infusion name"];
+                 resultsHolder.append(newEntry);
+                
+            }
+           
 
-            resultsHolder.append(newEntry);
+           
 
 
         }
@@ -127,13 +206,8 @@
 
 
     <div class="w3-container">
-        <div class="subcultureHolder">
-            <button onclick="showItemType(event,'One-handed weapon')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
-                <span class="subCultureName" id="subCultureNamePrimary">Primary</span>
-            </button>
-            <button onclick="showItemType(event,'Trinket')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
-                <span class="subCultureName" id="subCultureNameTrinket">Trinket</span>
-            </button>
+        <div class="subcultureHolder" id="itemTypeHolder">
+           
 
 
         </div>
@@ -144,16 +218,16 @@
 
             <div>Infusions
                 <div class="infusionsHolder">
-                    <button onclick="showInfusionType(event,'damage')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="100px">
+                    <button onclick="showInfusionType('damage')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="100px">
                         <span class="subCultureName" id="subCultureNameAttunement">Damage</span>
                     </button>
-                    <div>Points 0/5</div>
-                    <button onclick="showInfusionType(event,'ability')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="100px">
+                    <div id="points">Points 0/5</div>
+                    <button onclick="showInfusionType('ability')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="100px">
                         <span class="subCultureName" id="subCultureNamePotential">Ability</span>
                     </button>
                 </div>
                 <div class="infusionsHolder">
-                    <button onclick="showInfusionType(event,'passive1')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
+                    <button onclick="showInfusionType('passive1')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
                         <span class="subCultureName" id="subCultureNameAttunement1">Passive</span>
                     </button>
                     <button onclick="showInfusionType(event,'passive2')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
