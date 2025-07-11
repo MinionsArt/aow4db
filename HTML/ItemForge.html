@@ -12,184 +12,15 @@
          <script src="/aow4db/Data/Builder.js"></script>
         <script src="/aow4db/Data/Faction.js"></script>
         <script src="/aow4db/Data/Search.js"></script>
+      <script src="/aow4db/Data/Forge.js"></script>
         <script>
-        var CurrentType = "";
-       var currentDam = "";
-            var currentAb = "";
-            var currentPassives = [];
+      
 
         function HandlePage() {
-GenerateAllIconTypes();
+            GenerateAllIconTypes();
         }
 
 
-        function showItemType(type) {
-            CurrentType = type;
-            SetIcons(type);
-            ClearSelections();
-
-        }
-            
-        function GenerateAllIconTypes(){
-            var holder = document.getElementById("itemTypeHolder");
-            var itemTypes= [ "One-handed weapon",
-        "Double-handed weapon","Polearm",
-        "Light ranged",
-        "Heavy ranged",
-        "Magical Orb",
-        "Staff",
-        "Dual weapon",
-        "Dragon Claw",
-        "Dragon Claw: Warclaw",
-        "Dragon Claw: Armored claw",
-        "Giant Axe",
-        "Warhammer",
-        "Obelisk",
-        "Eldritch relic",
-        "Head",
-        "Torso",
-        "Leg",
-        "Shield",
-        "Ring",
-        "Wand (misc.)",
-        "Trinket (misc.)"];
-            for(let i = 0; i < itemTypes.length; i++){
-                
-                // generate buttons
-                var newButton = document.createElement("button");
-                var newSpan = document.createElement("Span");
-                
-                newSpan.innerHTML = itemTypes[i];
-                newSpan.setAttribute("id", "subCultureName" + itemTypes[i]);
-                newSpan.className = "subCultureName";
-                newButton.appendChild(newSpan);
-                 newButton.addEventListener("click", () => showItemType(itemTypes[i]));
-                newButton.className = "subscultureButton";
-                
-                holder.appendChild(newButton);
-                
-            }
-        }
-
-        function showInfusionType(infusionType) {
-            var list = new Array();
-            for (let i = 0 ; i < jsonItemForge.length; i++) {
-                let key = CurrentType; // your dynamic variable
-                let value = jsonItemForge[i][key];  
-               
-                if(value != "") {
-                     console.log("value : " + value + " infusiontype");
-                    // check type
-                    if(infusionType == "damage" && jsonItemForge[i].Type == "D"){
-                        list.push(jsonItemForge[i]);
-                        }
-                     if(infusionType == "ability" && jsonItemForge[i].Type == "A"){
-                        list.push(jsonItemForge[i]);
-                        }
-                     if(infusionType == "passive1" && jsonItemForge[i].Type == "P"){
-                        list.push(jsonItemForge[i]);
-                        }
-                    }
-            }
-
-            ShowItemForgeResults(list);
-        }
-
-        function ShowItemForgeResults(list) {
-            // get the selectionsholder
-            var selectionsHolder = document.getElementById("SelectionsHolder");
-            ClearSelections();
-            for (let i = 0; i < list.length; i++) {
-                let newEntry = document.createElement("BUTTON");
-                newEntry.className = "list-button";
-                
-                let Icon = document.createElement("IMG");
-                Icon.setAttribute("src", list[i]["Icon link"]);
-                Icon.setAttribute("style", "width: 40px; height:40px");
-                let NameEntry = document.createElement("div");
-                NameEntry.innerHTML = list[i]["Infusion name"] + " " + list[i].PTS;
-                
-                  let descrEntry = document.createElement("div");
-                descrEntry.innerHTML = AddTagIconsForStatusEffects(list[i]["Description"]);
-                newEntry.appendChild(Icon);
-                newEntry.append(NameEntry);
-                NameEntry.setAttribute("style", "  width: 300px;  display: flex; flex-direction: column; align-items: flex-start;")
-                NameEntry.appendChild(descrEntry);
-                   newEntry.addEventListener("click", () => TryToAddToItem(list[i]));
-                selectionsHolder.append(newEntry);
-            }
-        }
-        function    TryToAddToItem(entry){
-            if(entry.Type == "D"){
-                currentDam = entry;
-            }
-            if(entry.Type == "A"){
-                currentAb = entry;
-            }
-            if(entry.Type == "P"){
-                currentPassives.push(entry);
-            }
-            ShowResults();
-        }
-
-        function ShowResults() {
-            // check if points works
-            ClearResults();
-            
-            
-            var resultsHolder = document.getElementById("ResultsHolder");
-            if(currentDam != ""){
-                 var newEntry = document.createElement("BUTTON");
-            newEntry.className = "list-button";
-            newEntry.innerHTML = currentDam["Infusion name"];
-                 resultsHolder.append(newEntry);
-            }
-             if(currentAb != ""){
-                 var newEntry = document.createElement("BUTTON");
-            newEntry.className = "list-button";
-            newEntry.innerHTML = currentAb["Infusion name"];
-                  resultsHolder.append(newEntry);
-            }
-            
-            for(let i = 0; i < currentPassives.length; i++){
-                   var newEntry = document.createElement("BUTTON");
-            newEntry.className = "list-button";
-            newEntry.innerHTML = currentPassives[i]["Infusion name"];
-                 resultsHolder.append(newEntry);
-                
-            }
-           
-
-           
-
-
-        }
-
-        function ClearResults() {
-            var resultsHolder = document.getElementById("ResultsHolder");
-            resultsHolder.innerHTML = "";
-        }
-
-        function ClearSelections() {
-
-            var selectionsHolder = document.getElementById("SelectionsHolder");
-            selectionsHolder.innerHTML = "";
-        }
-
-        function SetIcons(id) {
-            var thisNameAll = document.querySelectorAll('.subCultureName');
-
-            for (let index = 0; index < thisNameAll.length; index++) {
-                thisNameAll[index].style.color = "grey";
-
-            }
-            var thisName = document.getElementById('subCultureName' + id);
-            if (thisName == null) {
-                return;
-            }
-            thisName.style.color = "white";
-
-        }
 
     </script>
 
@@ -206,7 +37,7 @@ GenerateAllIconTypes();
 
 
     <div class="w3-container">
-        <div class="subcultureHolder" id="itemTypeHolder">
+      
            
 
 
@@ -217,31 +48,21 @@ GenerateAllIconTypes();
             </div>
 
             <div>Infusions
+                <div class="grid" id="itemTypeHolder"></div>
                 <div class="infusionsHolder">
                     <button onclick="showInfusionType('damage')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="100px">
                         <span class="subCultureName" id="subCultureNameAttunement">Damage</span>
                     </button>
-                    <div id="points">Points 0/5</div>
+                    <div id="points">Points 0/5</div><div><input type="checkbox" onchange="swapPointMax(this)">+1 Giant</div> 
                     <button onclick="showInfusionType('ability')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="100px">
                         <span class="subCultureName" id="subCultureNamePotential">Ability</span>
                     </button>
                 </div>
                 <div class="infusionsHolder">
-                    <button onclick="showInfusionType('passive1')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
+                    <button onclick="showInfusionType('passive')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
                         <span class="subCultureName" id="subCultureNameAttunement1">Passive</span>
                     </button>
-                    <button onclick="showInfusionType(event,'passive2')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
-                        <span class="subCultureName" id="subCultureNamePotential1">Passive</span>
-                    </button>
-                    <button onclick="showInfusionType(event,'passive3')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
-                        <span class="subCultureName" id="subCultureNameAttunement2">Passive</span>
-                    </button>
-                    <button onclick="showInfusionType(event,'passive4')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
-                        <span class="subCultureName" id="subCultureNamePotential3">Passive</span>
-                    </button>
-                    <button onclick="showInfusionType(event,'passive5')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
-                        <span class="subCultureName" id="subCultureNamePotential4">Passive</span>
-                    </button>
+                  
 
                 </div>
             </div>
@@ -252,8 +73,7 @@ GenerateAllIconTypes();
 
 
 
-        </div>
-
+        
     </div>
 
 
@@ -264,6 +84,14 @@ GenerateAllIconTypes();
 
 </html>
 <style>
+    
+    .grid{
+         display: grid;
+  grid: 50px / auto auto auto;
+  grid-gap: 10px;
+  background-color: #000000;
+  padding: 10px;
+    }
     .backdrop {
         color: white;
         background-color: darkgreen;
@@ -275,6 +103,12 @@ GenerateAllIconTypes();
 
         justify-content: space-between;
 
+    }
+    .itemSelectionButton{
+        
+    background-color: transparent;
+    border: none;
+    width: 30px;
     }
 
     .selections {
@@ -298,6 +132,10 @@ GenerateAllIconTypes();
         position: relative;
         display: flex;
         justify-content: normal;
+    }
+    .list-button:disabled{
+        color:red;
+    }
 
 </style>
 <footer>
