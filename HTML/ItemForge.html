@@ -42,7 +42,7 @@
 
 
         </div>
-        <div style="display: flex">
+        <div class="itemforgeBG" >
             <div id="Selections" class="backdrop">Options
                 <div id="SelectionsHolder" class="selections"></div>
             </div>
@@ -86,15 +86,20 @@
 <style>
     
     .grid{
-         display: grid;
-  grid: 50px / auto auto auto;
-  grid-gap: 10px;
-  background-color: #000000;
-  padding: 10px;
+       
+    display: grid
+;
+    grid: 80px / 80px 80px 80px 80px 80px 80px;
+    grid-gap: 10px;
+    padding: 10px;
     }
     .backdrop {
         color: white;
-        background-color: darkgreen;
+      
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slice.png);
+    border-image-slice: 30 fill;
+    border-image-repeat: stretch;
     }
 
     .infusionsHolder {
@@ -104,11 +109,20 @@
         justify-content: space-between;
 
     }
+    
+    .itemforgeBG{
+        display: flex;
+        background-image: url(/aow4db/Icons/ItemForge/ItemForgeBG.png);
+    }
     .itemSelectionButton{
         
     background-color: transparent;
     border: none;
-    width: 30px;
+    width: fit-content;
+    }
+    
+    .itemSelectionButton:hover{
+        filter: brightness(2);
     }
 
     .selections {
@@ -116,6 +130,11 @@
         width: 400px;
         min-width: 400px;
         min-height: 1000px;
+    }
+    .itemSlotName{
+        position: relative;
+        top: -40px;
+        color: white;
     }
 
     .list-button {

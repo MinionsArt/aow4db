@@ -65,14 +65,16 @@ function AddNewItemIconType(entry){
         const newButton = document.createElement("button");
         newButton.className = "itemSelectionButton";
         const newImage = document.createElement("img");
-        newImage.setAttribute("src", "/aow4db/Icons/Interface/skill_unassigned.png");
-        newImage.style.width = "40px";
+    var entryNameFixed = entry.replaceAll(":", "");
+    entryNameFixed = entryNameFixed.split(".")[0];
+        newImage.setAttribute("src", "/aow4db/Icons/ItemForge/" + entryNameFixed + ".png");
+        newImage.style.width = "70px";
         newButton.append(newImage);
         const newSpan = document.createElement("Span");
 
         newSpan.innerHTML = entry;
         newSpan.setAttribute("id", "subCultureName" + entry);
-        newSpan.className = "subCultureName";
+        newSpan.className = "itemSlotName";
         newButton.appendChild(newSpan);
 
         newButton.addEventListener("click", () => showItemType(entry));
@@ -262,7 +264,7 @@ function ClearSelections() {
 }
 
 function SetIcons(id) {
-    var thisNameAll = document.querySelectorAll(".subCultureName");
+    var thisNameAll = document.querySelectorAll(".itemSelectionButton");
 
     for (let index = 0; index < thisNameAll.length; index++) {
         thisNameAll[index].style.color = "grey";
