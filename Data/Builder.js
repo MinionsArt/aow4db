@@ -6217,20 +6217,17 @@ function showItem(a) {
 
     let lookup;
     if ("ability_slugs" in itemLoc) {
-        l = 0;
-        for (l in itemLoc.ability_slugs) {
+       
+        for (let l = 0; l < itemLoc.ability_slugs.length; l++) {
             lookup = itemLoc.ability_slugs[l].slug;
 
             let spa = document.createElement("SPA");
-            j = 0;
+          
 
             const ability = abilityMap[lookup];
             if (ability) {
-                //let abilityName = jsonUnitAbilities[j].name;
-
-                //   description = jsonUnitAbilities[j].description;
-
-                let spa = GetAbilityInfo(jsonUnitAbilitiesLocalized[j]);
+               
+                let spa = GetAbilityInfo(ability);
                 spa.className = "itemAbility";
 
                 spa.setAttribute("style", "width: 450px");
