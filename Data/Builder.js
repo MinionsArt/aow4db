@@ -2856,7 +2856,7 @@ function findItemsWithArgument(argumentType) {
     let finalCheckedList = [];
 
     for (let j = 0; j < jsonHeroItems.length; j++) {
-        if (jsonHeroItems[j].slot.indexOf(argumentType) !== -1 && jsonHeroItems[j].tier != undefined) {
+        if (jsonHeroItems[j].slot.indexOf(argumentType) !== -1 && "tier" in jsonHeroItems[j]) {
             finalCheckedList.push(jsonHeroItems[j]);
         }
     }
