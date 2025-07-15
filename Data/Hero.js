@@ -1019,7 +1019,7 @@ function SetUpTreeNodes(keyword, subtype, row, color, holder, treespace) {
     for (var s = 0; s < jsonHeroSkills.length; s++) {
         let currentSkill = jsonHeroSkills[s];
         // Check if the current skill is of the right class
-        if ("group_name" in currentSkill) {
+        if ("tree_name" in currentSkill) {
             // check type
 
             // manually add in the 2 mission giant kings parts
@@ -1042,7 +1042,7 @@ function SetUpTreeNodes(keyword, subtype, row, color, holder, treespace) {
                 overrideKeyword = "Kings - Rock";
             }
 
-            if (currentSkill.group_name.indexOf(overrideKeyword) != -1) {
+            if (currentSkill.tree_name.indexOf(overrideKeyword) != -1) {
                 if (currentSkill.id.indexOf("unlinked") == -1) {
                     BuildSkillTreeEntry(currentSkill, row, holder, treespace, undefined, subtype);
                 }

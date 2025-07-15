@@ -382,6 +382,13 @@
             });
 
             function HandlePage() {
+                
+                // hide build submitter
+                if (showBetaTooltip.checked) {
+                    // get build section
+                        document.getElementById("shareSection").style.display= "none";
+                    document.getElementById("buildsSubmitHolder").style.display = "none";
+                }
                 SetRandomStart();
 
                 document.getElementById("YourKey").textContent = getOrCreateUserEditKey();
@@ -405,11 +412,13 @@
         <div style="color: white; display: table; margin: 5px; margin-left: auto; margin-right: auto">
             <div></div>
             <div id="note"></div>
+            <div id="shareSection">
             <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
 
             <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
             <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
+            </div>
             <div style="display: flex; flex-direction: row; justify-content: space-around">
                 <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br />
                 <button class="button-overview" style="left: 200px" id="toggleButton">◀ Hide Overview</button>
@@ -697,6 +706,7 @@
             <div id="originWrapperOptions" class="wrappers"></div>
         </div>
         <br /><br />
+        <div id="buildsSubmitHolder">
         <div id="notesContainer" style="color: white">
             <div>
                 User Submitted Builds are in testing now.
@@ -795,6 +805,7 @@
                 </button>
             </div>
         </div>
+            </div>
 
         <script>
             var rawNotes = "";

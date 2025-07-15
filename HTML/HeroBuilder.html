@@ -19,6 +19,9 @@
         <script src="/aow4db/Data/Hero.js"></script>
 
         <script>
+            var dragonDisableList = ["Ranger"];
+            var giantDisableList = ["Ranger"];
+            var eldritchDisableList = ["Warrior", "Defender", "Spellblade", "DeathKnight", "Ranger"];
             $("#body").ready(function () {
                 $("#header").load("/aow4db/HTML/header.html", function () {
                     CheckData();
@@ -44,19 +47,22 @@
                         const selectedValue = dropdownOrigin.value;
                         rulerOrigin = selectedValue;
 
-                        document.getElementById("Warrior").disabled = false;
-                        document.getElementById("Defender").disabled = false;
-                        document.getElementById("Ranger").disabled = false;
-                        document.getElementById("Ritualist").disabled = false;
-                        document.getElementById("Mage").disabled = false;
-                        document.getElementById("Spellblade").disabled = false;
-                        document.getElementById("DeathKnight").disabled = false;
+                        // disable all class bits and t hen turn on the right ones
+                        document.querySelectorAll(".ClassSelector").forEach((el) => {
+                            el.disabled = false;
+                        });
+
                         if (selectedValue == "Dragon") {
                             rulerSubType = "OrderDragon";
                             // show the dragon selection
                             document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
                             // dont leave ranger
-                            document.getElementById("Ranger").disabled = true;
+                            document.querySelectorAll(".ClassSelector").forEach((el) => {
+                                if (dragonDisableList.includes(el.id)) {
+                                    el.disabled = true;
+                                }
+                            });
+                            //   document.getElementById("Ranger").disabled = true;
                             if (rulerClass == "Ranger") {
                                 rulerClass = "Warrior";
                             }
@@ -66,19 +72,24 @@
                             document.getElementById("actionDropdownOriginGiantHolder").style.display = "block";
 
                             rulerSubType = "GiantFire";
-                            //document.getElementById("actionDropdownOriginDragonHolder").style.display = "block";
                             // dont leave ranger
-                            document.getElementById("Ranger").disabled = true;
+
+                            document.querySelectorAll(".ClassSelector").forEach((el) => {
+                                if (giantDisableList.includes(el.id)) {
+                                    el.disabled = true;
+                                }
+                            });
+
                             if (rulerClass == "Ranger") {
                                 rulerClass = "Warrior";
                             }
                         }
                         if (selectedValue == "Eldritch") {
-                            document.getElementById("Defender").disabled = true;
-                            document.getElementById("Warrior").disabled = true;
-                            document.getElementById("Ranger").disabled = true;
-                            document.getElementById("DeathKnight").disabled = true;
-                            document.getElementById("Spellblade").disabled = true;
+                            document.querySelectorAll(".ClassSelector").forEach((el) => {
+                                if (eldritchDisableList.includes(el.id)) {
+                                    el.disabled = true;
+                                }
+                            });
                             // no defender, ranger, or warrior?
                             if (
                                 rulerClass == "Ranger" ||
@@ -87,8 +98,8 @@
                                 rulerClass == "Spellblade" ||
                                 rulerClass == "Death Knight"
                             ) {
-                                rulerClass = "Mage";
-                                document.getElementById("actionDropdownClass").value = "Mage";
+                                rulerClass = "Ritualist";
+                                document.getElementById("actionDropdownClass").value = "Ritualist";
                             }
                         }
 
@@ -130,7 +141,38 @@
                 });
             });
 
+            function populateSelect(id, items) {
+                const select = document.getElementById(id);
+                items.forEach((item) => {
+                    const option = document.createElement("option");
+                    option.value = item;
+                    option.textContent = item;
+                    option.classList = "ClassSelector";
+                    option.setAttribute("id", item.replaceAll(" ", ""));
+                    select.appendChild(option);
+                });
+            }
+
             function HandlePage() {
+                // dynamic load classes
+                var classesList = [];
+                if (showBetaTooltip.checked) {
+                    document.getElementById("shareSection").style.display= "none";
+                    shareSection
+                    classesList = [
+                        "Warrior",
+                        "Defender",
+                        "Ranger",
+                        "Elementalist",
+                        "Ritualist",
+                        "Warlock",
+                        "Spellblade",
+                        "Death Knight"
+                    ];
+                } else {
+                    classesList = ["Warrior", "Defender", "Ranger", "Mage", "Ritualist", "Spellblade", "Death Knight"];
+                }
+                populateSelect("actionDropdownClass", classesList);
                 if (searchKeyword) {
                     TestLoad(searchKeyword);
                 } else {
@@ -163,11 +205,13 @@
         <div class="tome_name">Hero creator</div>
         <div style="height: auto; color: white; text-align: center">
             <a href="/aow4db/HTML/HeroSkillsList.html">Skill List View</a><br /><br />
-            <div style="display: flex; flex-direction: row; justify-content: center">
-                <button class="button-random" onclick="GetQuickLinkHero()">Make Share Link</button>
-                <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
+            <div id="shareSection">
+                <div style="display: flex; flex-direction: row; justify-content: center">
+                    <button class="button-random" onclick="GetQuickLinkHero()">Make Share Link</button>
+                    <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
-                <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
+                    <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
+                </div>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: center">
                 <button class="button-random" id="reset" onclick="ResetAll()">Reset All</button><br />
@@ -226,15 +270,7 @@
             </div>
             <div class="choices" style="left: 900px; top: 20px">
                 <label style="color: white">Class:</label>
-                <select class="button-random" id="actionDropdownClass">
-                    <option class="dropdownOption" id="Warrior" value="Warrior">Warrior</option>
-                    <option id="Ranger" value="Ranger">Ranger</option>
-                    <option id="Mage" value="Mage">Mage</option>
-                    <option id="Defender" value="Defender">Defender</option>
-                    <option id="Ritualist" value="Ritualist">Ritualist</option>
-                    <option id="DeathKnight" value="Death Knight">Death Knight</option>
-                    <option id="Spellblade" value="Spellblade">Spellblade</option>
-                </select>
+                <select class="button-random" id="actionDropdownClass"></select>
             </div>
             <div style="position: relative; display: flex; justify-content: flex-start">
                 <div style="position: relative; top: 20px">

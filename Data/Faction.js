@@ -1263,7 +1263,7 @@ function createImage(type, origin) {
             setImage(`/aow4db/Icons/TomeIcons/${origin.id}.png`);
             break;
         case "FormTrait":
-            setImage(getFactionIconPath(origin.id), 22, 22);
+            setImage('/aow4db/Icons/TraitIcons/' + origin.icon + '.png');
             break;
         case "Culture":
         case "Origin":
@@ -1290,6 +1290,8 @@ function createImage(type, origin) {
 
     return image;
 }
+
+
 
 function getFactionIconPath(id) {
     const cleanId = id.startsWith("_") ? id.split("_").slice(1).join("_") : id;
@@ -1726,10 +1728,28 @@ function SetTomePreview(span, origin) {
 function SetFullPreview(span, origin) {
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
+    
+    // if("biography_description" in origin){
+       
+    //     span.innerHTML += "<br>" + origin.biography_description + "<br>";
+       
+   // }
+     if("lore_description" in origin){
+       
+         span.innerHTML += "" + origin.lore_description + "<br>";
+       
+    }
 
-    span.innerHTML += "<bulletlist>";
+    span.innerHTML +=  '<br><p style="color: #d7c297;>' + '<span style="font-size=20px;">' + "<bulletlist>EFFECTS: " + "</span></p>";
     for (i = 0; i < origin.effect_descriptions.length; i++) {
         span.innerHTML += "<bullet>" + origin.effect_descriptions[i].name + "</bullet>";
+    }
+   
+    if("incompatible_society_traits" in origin){
+        span.innerHTML += "<br>Incompatible with:" ;
+         for (i = 0; i < origin.incompatible_society_traits.length; i++) {
+         span.innerHTML += "<bullet>" + origin.incompatible_society_traits[i].name + "</bullet>";
+         }
     }
     span.innerHTML += "</bulletlist>";
 }
@@ -2965,37 +2985,48 @@ function updateSelectedOptions(origin) {
 // }
 
 function checkCompatibilityTraits(entry) {
-    var canBeAdded = true;
-    if (entry.group_name === "ADAPTATION") {
-        var hasAdaptionGroup = currentFormTraitList.some((item) => item.group_name === "ADAPTATION");
-        //console.log(hasAdaptionGroup);
-        // already has adaption or already has primal culture
-        if (hasAdaptionGroup || currentCulture.name.indexOf("Primal") != -1) {
-            canBeAdded = false;
-        }
-    } else if (entry.group_name === "MOUNT") {
-        var hasAdaptionGroup = currentFormTraitList.some((item) => item.group_name === "MOUNT");
-        //console.log(hasAdaptionGroup);
-        // already has adaption or already has primal culture
-        if (hasAdaptionGroup) {
-            canBeAdded = false;
-        }
-    } else if (entry.group_name === "DAMAGE_RETALIATION") {
-        var hasAdaptionGroup = currentFormTraitList.some((item) => item.group_name === "DAMAGE_RETALIATION");
-        //console.log(hasAdaptionGroup);
-        // already has adaption or already has primal culture
-        if (hasAdaptionGroup) {
-            canBeAdded = false;
-        }
-    } else if (entry.group_name === "TACTICS") {
-        var hasAdaptionGroup = currentFormTraitList.some((item) => item.group_name === "TACTICS");
-        //console.log(hasAdaptionGroup);
-        // already has adaption or already has primal culture
-        if (hasAdaptionGroup) {
-            canBeAdded = false;
+    const exclusiveGroups = ["Adaptations", "Mounts", "DAMAGE_RETALIATION", "TACTICS", "Flaws"];
+
+    // Check if only one of each exclusive group can exist
+    if (exclusiveGroups.includes(entry.group_name)) {
+        const hasSameGroup = currentFormTraitList.some(item => item.group_name === entry.group_name);
+
+        const isBlockedByPrimal = entry.group_name === "Adaptations" && currentCulture.name.includes("Primal");
+
+        if (hasSameGroup || isBlockedByPrimal) {
+            return false;
         }
     }
-    return canBeAdded;
+
+    // Normalize to array of names
+    const currentTraitNames = currentFormTraitList.map(item => item.name);
+
+    // --- Forward check: entry conflicts with something already selected
+    if (Array.isArray(entry.incompatible_society_traits)) {
+        const incompatibleNames = entry.incompatible_society_traits.map(i => 
+            typeof i === "string" ? i : i.name
+        );
+
+        const hasIncompatible = incompatibleNames.some(name => currentTraitNames.includes(name));
+        if (hasIncompatible) {
+            return false;
+        }
+    }
+
+    // --- Reverse check: something already selected conflicts with entry
+    for (const trait of currentFormTraitList) {
+        if (Array.isArray(trait.incompatible_society_traits)) {
+            const incompatibleNames = trait.incompatible_society_traits.map(i =>
+                typeof i === "string" ? i : i.name
+            );
+
+            if (incompatibleNames.includes(entry.name)) {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 function toggleArrayEntry(array, entry) {

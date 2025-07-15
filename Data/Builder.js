@@ -141,8 +141,14 @@ function fetchJsonFiles(filePaths) {
 }
 var jsonSiegeProjects;
 
-async function GetAllData(selectedLang = "EN") {
-    const basePathEN = `/aow4db/Data/EN/`;
+async function GetAllData(selectedLang) {
+    var basePathEN;
+    if(selectedLang == "Beta"){
+            basePathEN = `/aow4db/Data/Beta/`;
+    }else{
+            basePathEN = `/aow4db/Data/EN/`;
+    }
+  //  const basePathEN = `/aow4db/Data/EN/`;
     const basePathLocal = `/aow4db/Data/${selectedLang}/`;
 
     const fileNamesGeneric = [
@@ -272,11 +278,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-        // if (storedSettings.showBeta) {
-        //     await GetAllData("Beta");
-        // } else {
+         if (storedSettings.showBeta) {
+             await GetAllData("Beta");
+         } else {
         await GetAllData(storedSettings.language);
-        //}
+        }
 
         HandlePage();
         Localize();
@@ -407,9 +413,12 @@ function AddTagIconsForStatusEffects(name) {
             tooltipspan.innerHTML = abilityName;
 
             // Use a regex with word boundaries to avoid partial matches (optional)
-            let pattern = new RegExp(`\\b${abilityName}\\b`);
+            if(abilityName.indexOf("%")== -1 && abilityName.indexOf("+")== -1){
+                  let pattern = new RegExp(`\\b${abilityName}\\b`);
             name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-        }
+      
+            }
+            }
     }
 
     // also check for numbers isolate settings
