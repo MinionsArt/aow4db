@@ -1046,6 +1046,14 @@ function SetUpTreeNodes(keyword, subtype, row, color, holder, treespace) {
                 if (currentSkill.id.indexOf("unlinked") == -1) {
                     BuildSkillTreeEntry(currentSkill, row, holder, treespace, undefined, subtype);
                 }
+            } else {
+                if ("group_name" in currentSkill) {
+                    if (currentSkill.group_name.indexOf(overrideKeyword) != -1) {
+                        if (currentSkill.id.indexOf("unlinked") == -1) {
+                            BuildSkillTreeEntry(currentSkill, row, holder, treespace, undefined, subtype);
+                        }
+                    }
+                }
             }
         }
     }
