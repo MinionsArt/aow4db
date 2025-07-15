@@ -702,7 +702,7 @@
   "description": "Deal damage to enemies in a 3-hex line.",
   "name": "Throw Storm Trident",
   "slug": "throw_storm_trident_ability_000004A200000019",
-  "damage": "10<damagephysical></damagephysical> 10<damagelightning></damagelightning> ",
+  "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "Physical Ranged"
@@ -1327,7 +1327,7 @@
   "icon": "000003570000018A"
  },
  {
-  "description": "Enemy units within 2 hexes:<bulletlist><bullet>Sustain 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 30% chance of becoming Frozen for 1 <turn></turn> Turn. If unsuccessful inflicts Slowed for {SLOWED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn> Turns.</bullet></bulletlist>",
+  "description": "Enemy units within 2 hexes:<bulletlist><bullet>Sustain 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 30% chance of becoming Frozen for 1 <turn></turn> Turn. If unsuccessful inflicts Slowed for <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Freezing Mist",
   "slug": "0000049700002668",
   "icon": "00000497000025DE"
@@ -7636,7 +7636,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.</bullet><bullet>{strongerChance}% chance against Marked or Slowed units.</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.</bullet><bullet>% chance against Marked or Slowed units.</bullet></bulletlist>",
     "name": "Constricting",
     "count": 1
    }
@@ -8409,7 +8409,7 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 1 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
   "description": "All friendly units:<bulletlist><bullet>Gain Grace</bullet><bullet>Loses one random <hyperlink>Negative Status Effect</hyperlink></bullet></bulletlist>",
@@ -10559,7 +10559,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_0000041B00001A56",
-  "damage": "14<damagephysical></damagephysical> 2<damagespirit></damagespirit> ",
+  "damage": "16<damagephysical></damagephysical> 2<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -10573,6 +10573,36 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Shoot Crossbow",
+  "slug": "shoot_crossbow_ability_0000041B00001A56",
+  "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD00002EA7"
  },
  {
   "modifiers": [
@@ -10912,9 +10942,9 @@
     "count": 1
    }
   ],
-  "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
-  "name": "Charge Strike",
-  "slug": "melee_charge_strike_(base)_ability_0000041B00001131",
+  "description": "A Heavy Charge attack:<bulletlist><bullet>Gains 30% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Heavy Charges ignore Charge Resistance.</bullet></bulletlist>",
+  "name": "Heavy Charge Strike",
+  "slug": "heavy_melee_charge_strike_(giants)_ability_0000041B00001131",
   "damage": "33<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -10931,7 +10961,7 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003EB0000040D"
+  "icon": "000003EB00000542"
  },
  {
   "modifiers": [
@@ -11155,7 +11185,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.</bullet><bullet>{strongerChance}% chance against Marked or Slowed units.</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.</bullet><bullet>% chance against Marked or Slowed units.</bullet></bulletlist>",
     "name": "Constricting",
     "count": 1
    }
@@ -11848,7 +11878,7 @@
     "note": "Cooldown: 4 <turn></turn>"
    }
   ],
-  "description": "Summon a random Tier I animal unit.<br></br>This summon lasts for 4 <turn></turn> Turns.<br></br><br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
+  "description": "Summon a random Tier I animal unit.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
   "name": "Conjure Animal",
   "slug": "conjure_animal_ability_0000041B000003A5",
   "damage": "",
@@ -15809,7 +15839,7 @@
     "count": 1
    }
   ],
-  "description": "A Charge attack:<bulletlist><bullet>Gains {CHARGE_DAMAGE_MULTIPLIER\\>ResolvedDamageMultiplier}% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "description": "A Charge attack:<bulletlist><bullet>Gains % damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_(caustic_worm_only)_000003E300005C57",
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
@@ -16546,7 +16576,7 @@
  },
  {
   "modifiers": [],
-  "description": "A Charge attack:<bulletlist><bullet>Gains {CHARGE_DAMAGE_MULTIPLIER\\>ResolvedDamageMultiplier}% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "description": "A Charge attack:<bulletlist><bullet>Gains % damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_(ram_warship_only)_000003E300005880",
   "damage": "24<damagephysical></damagephysical> ",
@@ -21912,7 +21942,7 @@
     "count": 1
    }
   ],
-  "description": "Targets take 20 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.",
+  "description": "Deals damage to enemy units in a 1-hex radius.",
   "name": "Frostwind Evocation",
   "slug": "hs_mage_frostwind_evocation_ability_000003BD00002895",
   "damage": "20<damagefrost></damagefrost> ",
@@ -21942,7 +21972,7 @@
     "count": 1
    }
   ],
-  "description": "Deals damage to target enemy units.",
+  "description": "Deals damage to enemy units in a 1-hex radius.",
   "name": "Cloudburst Evocation",
   "slug": "hs_mage_cloudburst_evocation_ability_000003BD00002895",
   "damage": "20<damagelightning></damagelightning> ",
@@ -22361,7 +22391,7 @@
   "icon": "000004C000000ACD"
  },
  {
-  "description": "Attacks have a 60% chance of inflicting Life Seed for 3<turn></turn> <hyperlink>Turns</hyperlink>.<br></br><hyperlink>Debuff</hyperlink> abilities inflict Life Seed for 3<turn></turn> <hyperlink>Turns</hyperlink>.<br></br>Effects are increased for Single Shot attacks.",
+  "description": "Attacks gain:<bulletlist><bullet>60% chance to inflict Life Seed for 3<turn></turn> <hyperlink>Turns</hyperlink></bullet></bulletlist><br></br><hyperlink>Debuff</hyperlink> abilities gain:<bulletlist><bullet>Inflict Life Seed for 3<turn></turn> <hyperlink>Turns</hyperlink></bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Lifeseeder",
   "slug": "000004c0000006fd",
   "icon": "000004C000000AD4"
@@ -22441,7 +22471,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly units are healed for 15<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and have 1 <hyperlink>Negative Status Effect</hyperlink> removed.",
+  "description": "Target friendly units in a 1-hex radius:<bulletlist><bullet>Heal for 15<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet>have 1 <hyperlink>Negative Status Effect</hyperlink> removed</bullet></bulletlist>",
   "name": "Rejuvenate",
   "slug": "hs_ritualist_rejuvinate_ability_000003BD00002895",
   "damage": "",
@@ -22454,26 +22484,6 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "000004C000000756"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 3 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly unit:<bulletlist><bullet>Gains Heroic Stand for 1 <turn></turn> Turn.</bullet></bulletlist>",
-  "name": "Deathward",
-  "slug": "hs_ritualist_deathward_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "4",
-  "icon": "0000048D000018CB"
  },
  {
   "notes": [
@@ -22567,7 +22577,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit is healed for 30<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and has all <hyperlink>Negative Status Effects</hyperlink> removed.",
+  "description": "Target friendly unit:<bulletlist><bullet>Heals for 30<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet>Has their <hyperlink>Negative Status Effects</hyperlink> removed</bullet></bulletlist>",
   "name": "Restore",
   "slug": "hs_ritualist_restore_ability_000003BD00002895",
   "damage": "",
@@ -23587,7 +23597,7 @@
   "icon": "000003E300006D12"
  },
  {
-  "description": "<bulletlist><bullet>At the end of each turn, adjacent friendly units gain a random <hyperlink>Positive Status Effect</hyperlink>.</bullet><bullet>At the end of each turn, adjacent enemy units gain Burning and have a base {BERSERK_RESISTANCE\\>ResolvedStrength}% chance of being inflicted with a random <hyperlink>Negative Status Effect</hyperlink>.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>At the end of each turn, adjacent friendly units gain a random <hyperlink>Positive Status Effect</hyperlink>.</bullet><bullet>At the end of each turn, adjacent enemy units gain Burning and have a base % chance of being inflicted with a random <hyperlink>Negative Status Effect</hyperlink>.</bullet></bulletlist>",
   "name": "Chaos Aura",
   "slug": "000003e300006d0c",
   "icon": "000003E300006D0E"
@@ -24247,280 +24257,6 @@
   "icon": "000004C000000789"
  },
  {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Lose all stacks of Fervor.<br></br>Target enemy unit suffers 10<damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> per stack of Fervor consumed.<br></br>Does not generate Fervor.",
-  "name": "Smite",
-  "slug": "hs_battlesaint_smite_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Melee"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "1",
-  "icon": "000004C000000AC7"
- },
- {
-  "description": "1 <turn></turn> <hyperlink>Turn</hyperlink> after this unit dies, it:<bulletlist><bullet>Comes back to life with 40% Hit Points.</bullet><bullet>Gains +5 Fervor.</bullet>",
-  "name": "Immortal Saint",
-  "slug": "000004c0000009d7",
-  "icon": "000004C0000009DA"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 3 <turn></turn>"
-   }
-  ],
-  "description": "All friendly units gain:<bulletlist><bullet>+1 Regeneration per stack of Fervor consumed.</bullet></bulletlist><br></br>Enter <hyperlink>Defense Mode</hyperlink>.",
-  "name": "Battlefield Restoration",
-  "slug": "hs_battlesaint_battlefield_restoration_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "0",
-  "icon": "000004C000000AC3"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 2 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly unit:<bulletlist><bullet>Has all <hyperlink>Negative Status Effects</hyperlink> removed.</bullet><bullet>Gains +3<statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
-  "name": "Cleanse",
-  "slug": "hs_battlesaint_cleanse_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000004C000000AC2"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 2 <turn></turn>"
-   }
-  ],
-  "description": "Target enemy unit:<bulletlist><bullet>Base 90% chance of suffering Condemned until the end of combat.</bullet><bullet>Base 90% chance of suffering 2 Weakened for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
-  "name": "Condemnation",
-  "slug": "hs_battlesaint_condemnation_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Debuff"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "1",
-  "icon": "000004C000000AC6"
- },
- {
-  "description": "When this unit's total Hit Points reach 33% or lower:<bulletlist><bullet>This unit gains Steadfast.</bullet><bullet>All friendly units gain Grace and Fortune.</bullet></bulletlist>",
-  "name": "Martyr's Blood",
-  "slug": "000004c0000009b0",
-  "icon": "000004C0000009B3"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 3 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly corpse is revived with 60% of its max Hit Points.",
-  "name": "Revive",
-  "slug": "hs_battlesaint_revive_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
-  "icon": "000004C000000AC1"
- },
- {
-  "description": "This and adjacent friendly units gain 10% <hyperlink><crit></crit>Critical Hit Chance</hyperlink>.",
-  "name": "Herald of Portents",
-  "slug": "000004c0000009a2",
-  "icon": "000004C0000009A6"
- },
- {
-  "description": "When this unit takes damage, adjacent enemies:<bulletlist><bullet>Suffer 5<damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink></bullet></bulletlist>",
-  "name": "Radiant Retribution",
-  "slug": "000004c00000099e",
-  "icon": "000004C00000099C"
- },
- {
-  "description": "This unit is healed for +10<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> whenever it uses a support ability.",
-  "name": "Blessed Body",
-  "slug": "000004c000000991",
-  "icon": "000004C000000994"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 2 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly unit gains +1 Fortune.",
-  "name": "Bless",
-  "slug": "hs_battlesaint_bless_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "4",
-  "icon": "000004C000000AC0"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Caster loses all stacks of Fervor and gains:<bulletlist><bullet>+1 Strengthened per stack of Fervor consumed.</bullet><bullet>+5<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per stack of Fervor consumed.</bullet><bullet>Dispels 1 <hyperlink>Negative Status Effect</hyperlink> per stack of Fervor consumed.</bullet></bulletlist>",
-  "name": "Warrior's Fervor",
-  "slug": "hs_battlesaint_purifying_fervor_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "0",
-  "icon": "000004C000000AC4"
- },
- {
-  "description": "Gain +1 Fervor whenever this unit takes damage.",
-  "name": "Fervorous Martyr",
-  "slug": "000004c00000097b",
-  "icon": "000004C00000097D"
- },
- {
-  "description": "<hyperlink>Support</hyperlink> abilities grant +1 Fervor.<br></br>Entering <hyperlink>Defense Mode</hyperlink> grants +3 Fervor.",
-  "name": "Fervorous Disciple",
-  "slug": "000004c00000093f",
-  "icon": "000004C000000978"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Caster loses all stacks of Fervor and the target unit gains:<bulletlist><bullet>+10<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per stack of Fervor consumed.</bullet><bullet>+1 Rally per stack of Fervor consumed.</bullet></bulletlist><br></br>Does not generate Fervor.",
-  "name": "Cleric's Fervor",
-  "slug": "hs_battlesaint_rallying_fervor_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000004C000000ABE"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Caster loses all stacks of Fervor and the target unit gains:<bulletlist><bullet>+5<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per stack of Fervor consumed.</bullet></bulletlist><br></br>Does not generate Fervor.",
-  "name": "Saint's Fervor",
-  "slug": "hs_battlesaint_saints_fervor_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "1",
-  "icon": "000004C000000AC8"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Caster loses all stacks of Fervor and the target unit gains:<bulletlist><bullet>+10<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per stack of Fervor consumed.</bullet></bulletlist><br></br>Does not generate Fervor.",
-  "name": "Cleric's Fervor",
-  "slug": "hs_battlesaint_clerics_fervor_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000004C000000ABE"
- },
- {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Caster loses all stacks of Fervor and gains:<bulletlist><bullet>+1 Strengthened per stack of Fervor consumed.</bullet><bullet>+5<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per stack of Fervor consumed.</bullet></bulletlist>",
-  "name": "Warrior's Fervor",
-  "slug": "hs_battlesaint_warriors_fervor_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "0",
-  "icon": "000004C000000AC4"
- },
- {
-  "description": "Landing attacks grants +1 Fervor.<br></br>Effect is doubled for non repeating attacks.",
-  "name": "Paladin",
-  "slug": "000004c000000940",
-  "icon": "000004C000000942"
- },
- {
-  "description": "At the end of its turn, this unit gains +1 Fervor.",
-  "name": "Cleric",
-  "slug": "000004c000000979",
-  "icon": "000004C000000978"
- },
- {
   "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet>Killing a unit deals 10 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> to up to 2 other enemy units within 2 hexes.</bullet></bulletlist>",
   "name": "Grand Cascading Rune",
   "slug": "00000497000027b5",
@@ -24668,10 +24404,10 @@
   "icon": "0000049700001887"
  },
  {
-  "description": "Unit gains +15 <hyperlink><hp></hp> Hit Points</hyperlink>.<br></br><br></br>Increases unit upkeep by {GIANT_RUNE_UPKEEP\\>FlatUpkeep} <mana></mana> <hyperlink>Mana</hyperlink>.",
+  "description": "Unit gains +15 <hyperlink><hp></hp> Hit Points</hyperlink>.",
   "name": "Vitality Rune",
   "slug": "0000049700001889",
-  "icon": "0000048D00000B41"
+  "icon": "000004970000187F"
  },
  {
   "description": "This unit will revive with 50% of its total <hyperlink><hp></hp> Hit Points</hyperlink> after 2<turn></turn>. Can only be triggered once per battle.",
@@ -24740,7 +24476,7 @@
   "icon": "00000497000018AC"
  },
  {
-  "description": "At the start of the turn, dispel 1 <hyperlink>Negative Status Effect</hyperlink>.<br></br><br></br>Increases unit upkeep by {GIANT_RUNE_UPKEEP\\>FlatUpkeep} <mana></mana> <hyperlink>Mana</hyperlink>.",
+  "description": "At the start of the turn, dispel 1 <hyperlink>Negative Status Effect</hyperlink>.",
   "name": "Dispelling Rune",
   "slug": "00000497000018af",
   "icon": "00000497000018A0"
@@ -26511,7 +26247,7 @@
     "note": "Can only be used once per battle."
    }
   ],
-  "description": "Enemy units in a 1-hex radius have a base 60% chance of being:<bulletlist><bullet>Teleported up to {HYSTERIA_STORM_DISPLACEMENT\\>MaxDistance} hexes.</bullet><bullet>Inflicted with Insanity for {INSANITY_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn> Turn.</bullet></bulletlist>",
+  "description": "Enemy units in a 1-hex radius have a base 60% chance of being:<bulletlist><bullet>Teleported up to hexes.</bullet><bullet>Inflicted with Insanity for <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Hysteria Storm",
   "slug": "hysteria_storm_ability_(weakened)_000003BD00002895",
   "damage": "",
@@ -27828,24 +27564,6 @@
   "icon": "0000049700002600"
  },
  {
-  "description": "Until the end of this <turn></turn> <hyperlink>Turn</hyperlink>, all attacks and abilities ignore {INEXORABLE_CAST_RESISTANCE_CHECK\\>ResistanceBypass} <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.",
-  "name": "Inexorable Cast",
-  "slug": "000004c000000c4c",
-  "icon": "0000048D00000CB0"
- },
- {
-  "description": "When this unit dies, it turns into a Tier I Infernal Fiend unit under enemy control.",
-  "name": "Chaos Brand",
-  "slug": "0000041b00001b98",
-  "icon": "0000041B00001B99"
- },
- {
-  "description": "At the end of the turn, this unit:<bulletlist><bullet>Sustains 15 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Loses -10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Has a <hyperlink>Decaying Zombie</hyperlink> spawn adjacent to them.</bullet></bulletlist>",
-  "name": "Visions of Death",
-  "slug": "000003e300005fea",
-  "icon": "000003E300005FEE"
- },
- {
   "description": "Unit has Hastened.",
   "name": "Tyrant's Mark",
   "slug": "0000049700000d12",
@@ -27858,58 +27576,34 @@
   "icon": "0000048D0000191F"
  },
  {
-  "description": "Unit has:<bulletlist><bullet>Steadfast</bullet><bullet>Ignores the penalties from <hyperlink>Casualties</hyperlink>.</bullet></bulletlist>",
-  "name": "Heroic Stand",
-  "slug": "0000049700002ac7",
-  "icon": "0000048D000018CE"
+  "description": "Until the end of this <turn></turn> <hyperlink>Turn</hyperlink>, all attacks and abilities ignore <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.",
+  "name": "Inexorable Cast",
+  "slug": "000004c000000c4c",
+  "icon": "0000048D00000CB0"
+ },
+ {
+  "description": "Gain:<bulletlist><bullet>+3 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>Adjacent enemy units suffer -3 <defense></defense> <hyperlink>Defense</hyperlink></bullet></bulletlist>",
+  "name": "Elemental Infusion",
+  "slug": "000004c000000834",
+  "icon": "000004C0000007FC"
+ },
+ {
+  "description": "Unit is immune to Slowed.",
+  "name": "Status Effect Immunity: Slowed",
+  "slug": "0000048b000005dd",
+  "icon": "0000048B000005DB"
+ },
+ {
+  "description": "Gain:<bulletlist><bullet>+3 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>Adjacent enemy units suffer -3 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet></bulletlist>",
+  "name": "Elemental Infusion",
+  "slug": "000004c00000083a",
+  "icon": "000004C0000007FC"
  },
  {
   "description": "+1<hyperlink><range></range>Range</hyperlink> until unit moves.",
   "name": "Sniper's Focus",
   "slug": "000004c000000b8b",
   "icon": "000004C000000B85"
- },
- {
-  "description": "This unit:<bulletlist><bullet>Has -4 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>At the end of its turn, there is a base 60% chance of this <hyperlink>Negative Status Effect</hyperlink> spreading to adjacent units.</bullet></bulletlist>",
-  "name": "Diseased",
-  "slug": "000003e100001303",
-  "icon": "000003E100001300"
- },
- {
-  "description": "<bulletlist><bullet>Adjacent friendly units have 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Adjacent enemy units sustain 4 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> at the end of the turn.</bullet></bulletlist>",
-  "name": "Holy Aura",
-  "slug": "000004c000000489",
-  "icon": "000004C00000048B"
- },
- {
-  "description": "<bulletlist><bullet>Unit sustains 4<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Burning <hyperlink>counters</hyperlink> Wet and Frozen.",
-  "name": "Burning",
-  "slug": "0000041b00000baa",
-  "icon": "000003E300004314"
- },
- {
-  "description": "Attacks gain +2<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> per stack.<br></br>Stacks up to 5 times.<br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
-  "name": "Fires of War",
-  "slug": "0000048d00000e86",
-  "icon": "0000048D00000E87"
- },
- {
-  "description": "Unit gains:<bulletlist><bullet>+1 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> per stack.</bullet></bulletlist><br></br>Stacks up to 5 times.",
-  "name": "Fervor",
-  "slug": "000004c00000092c",
-  "icon": "000004C000000934"
- },
- {
-  "description": "Unit has -2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> until the end of the next combat.",
-  "name": "Phantasmal Ritual",
-  "slug": "0000049700000c53",
-  "icon": "0000049700000C16"
- },
- {
-  "description": "Unit has:<bulletlist><bullet>A base 90% chance of inflicting Soulbound on attacks.</bullet><bullet>+10% damage against units that are Soulbound.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
-  "name": "Soulbinders",
-  "slug": "0000048b000000e5",
-  "icon": "0000041B000016F3"
  },
  {
   "description": "This unit has +10 <happiness></happiness> <hyperlink>Morale</hyperlink> because of recent events.",
@@ -27960,22 +27654,10 @@
   "icon": "000004CF0000004B"
  },
  {
-  "description": "Gain:<bulletlist><bullet>+3 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>Adjacent enemy units suffer -3 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet></bulletlist>",
-  "name": "Elemental Infusion",
-  "slug": "000004c00000083a",
-  "icon": "000004C0000007FC"
- },
- {
-  "description": "Gain:<bulletlist><bullet>+3 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>Adjacent enemy units suffer -3 <defense></defense> <hyperlink>Defense</hyperlink></bullet></bulletlist>",
-  "name": "Elemental Infusion",
-  "slug": "000004c000000834",
-  "icon": "000004C0000007FC"
- },
- {
-  "description": "Unit is immune to Slowed.",
-  "name": "Status Effect Immunity: Slowed",
-  "slug": "0000048b000005dd",
-  "icon": "0000048B000005DB"
+  "description": "<bulletlist><bullet>Deals +80% damage.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Has Resurgence.</bullet></bulletlist><br></br>Unit dies when this effect's time expires.",
+  "name": "Greater Empower",
+  "slug": "0000049700000a85",
+  "icon": "0000049700000A7F"
  },
  {
   "description": "This unit is controlled by the opponent.<br></br>If the effect lasts until the end of combat, the controller will have the option to spend <mana></mana> to keep the unit permanently.",
@@ -28049,10 +27731,28 @@
   "icon": "000003E300007216"
  },
  {
+  "description": "When this unit dies, it turns into a <hyperlink>Gremlin</hyperlink> under the control of the caster of this effect.",
+  "name": "Infernal Rebirth",
+  "slug": "0000049700000af2",
+  "icon": "000003E300005AC7"
+ },
+ {
   "description": "<bulletlist><bullet>-50% <hyperlink><accuracy></accuracy> Accuracy</hyperlink> on <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Cannot perform <hyperlink>Retaliation Attack</hyperlink> attacks.</bullet></bulletlist><br></br><br></br>Blind <hyperlink>counters</hyperlink> True Strike.",
   "name": "Blind",
   "slug": "000003e3000049ef",
   "icon": "000003E3000049ED"
+ },
+ {
+  "description": "<bulletlist><bullet>Deals +40% damage.</bullet><bullet>Has Resurgence.</bullet></bulletlist><br></br>Unit dies when the timer expires.",
+  "name": "Empower",
+  "slug": "0000049700000a7c",
+  "icon": "0000049700000A7F"
+ },
+ {
+  "description": "This unit:<bulletlist><bullet>Has -4 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>At the end of its turn, there is a base 60% chance of this <hyperlink>Negative Status Effect</hyperlink> spreading to adjacent units.</bullet></bulletlist>",
+  "name": "Diseased",
+  "slug": "000003e100001303",
+  "icon": "000003E100001300"
  },
  {
   "description": "<bulletlist><bullet>Unit sustains 4 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br>Cannot affect Ethereal or Undead units.<br></br><br></br>Poison <hyperlink>counters</hyperlink> Regeneration.</bulletlist>",
@@ -28145,16 +27845,16 @@
   "icon": "0000042B00000008"
  },
  {
-  "description": "Attacks gain:<bulletlist><bullet>+3 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Life Steal.</bullet><bullet>Each attack removes a stack of this buff.</bullet></bulletlist>",
-  "name": "Fury of the Tunneling Spider",
-  "slug": "0000049700000219",
-  "icon": "000004970000021A"
- },
- {
   "description": "The unit:<bulletlist><bullet>Is uncontrollable and always attacks the closest allied target.</bullet><bullet>If no ally is in range, it will attack its enemies.</bullet></bulletlist>",
   "name": "Insanity",
   "slug": "0000041b00000b17",
   "icon": "0000041B00000B1A"
+ },
+ {
+  "description": "Attacks gain:<bulletlist><bullet>+3 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Life Steal.</bullet><bullet>Each attack removes a stack of this buff.</bullet></bulletlist>",
+  "name": "Fury of the Tunneling Spider",
+  "slug": "0000049700000219",
+  "icon": "000004970000021A"
  },
  {
   "description": "When this unit dies, it becomes a <hyperlink>Decaying Zombie</hyperlink> under the opponent's control until the end of combat.<br></br><br></br>Doesn't trigger in water combat.",
@@ -28223,6 +27923,24 @@
   "icon": "000003E1000013AA"
  },
  {
+  "description": "<bulletlist><bullet>Unit sustains 4<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Burning <hyperlink>counters</hyperlink> Wet and Frozen.",
+  "name": "Burning",
+  "slug": "0000041b00000baa",
+  "icon": "000003E300004314"
+ },
+ {
+  "description": "Attacks gain +2<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> per stack.<br></br>Stacks up to 5 times.<br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "name": "Fires of War",
+  "slug": "0000048d00000e86",
+  "icon": "0000048D00000E87"
+ },
+ {
+  "description": "Unit has -2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> until the end of the next combat.",
+  "name": "Phantasmal Ritual",
+  "slug": "0000049700000c53",
+  "icon": "0000049700000C16"
+ },
+ {
   "description": "Unit's base attacks have:<bulletlist><bullet>+2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>+2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>A base 50% chance of inflicting Burning for 3 <turn></turn> Turns.</bullet><bullet>A base 50% chance of inflicting Electrified for 3 <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Arcfire Weapons",
   "slug": "0000049700000b77",
@@ -28233,24 +27951,6 @@
   "name": "Quickening Ritual",
   "slug": "0000049700000c54",
   "icon": "0000049700000C0C"
- },
- {
-  "description": "When this unit dies, it turns into a <hyperlink>Gremlin</hyperlink> under the control of the caster of this effect.",
-  "name": "Infernal Rebirth",
-  "slug": "0000049700000af2",
-  "icon": "000003E300005AC7"
- },
- {
-  "description": "<bulletlist><bullet>Deals +80% damage.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Has Resurgence.</bullet></bulletlist><br></br>Unit dies when this effect's time expires.",
-  "name": "Greater Empower",
-  "slug": "0000049700000a85",
-  "icon": "0000049700000A7F"
- },
- {
-  "description": "<bulletlist><bullet>Deals +40% damage.</bullet><bullet>Has Resurgence.</bullet></bulletlist><br></br>Unit dies when the timer expires.",
-  "name": "Empower",
-  "slug": "0000049700000a7c",
-  "icon": "0000049700000A7F"
  },
  {
   "description": "This unit has visited a Scrying Sanctum and temporarily gained:<bulletlist><bullet>Farsight</bullet><bullet>+1<range></range> on <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks in <hyperlink>Combat</hyperlink></bullet></bulletlist>",
@@ -28719,6 +28419,18 @@
   "name": "Bulwark",
   "slug": "0000041b00001cdd",
   "icon": "0000041B00001CD0"
+ },
+ {
+  "description": "At the end of the turn, this unit:<bulletlist><bullet>Sustains 15 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Loses -10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Has a <hyperlink>Decaying Zombie</hyperlink> spawn adjacent to them.</bullet></bulletlist>",
+  "name": "Visions of Death",
+  "slug": "000003e300005fea",
+  "icon": "000003E300005FEE"
+ },
+ {
+  "description": "When this unit dies, it turns into a Tier I Infernal Fiend unit under enemy control.",
+  "name": "Chaos Brand",
+  "slug": "0000041b00001b98",
+  "icon": "0000041B00001B99"
  },
  {
   "description": "Unit has:<bulletlist><bullet>+3 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+3 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>-3 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet></bulletlist>",
