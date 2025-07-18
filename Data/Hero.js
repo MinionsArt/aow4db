@@ -8,6 +8,8 @@ let currentSelectedSkillsArray = [];
 var currentsignatureSelectionsArray = [];
 var currentSkillPoints = 24;
 
+
+
 var signature1 = "";
 var signature2 = "";
 var signature3 = "";
