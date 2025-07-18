@@ -10,7 +10,7 @@
   "description": "Single magical attack at target unit.",
   "name": "Condemning Blast",
   "slug": "magic_blast_(single)_ability_000004C0000004F3",
-  "damage": "30<damagespirit></damagespirit> ",
+  "damage": "20<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "Base"
@@ -234,7 +234,7 @@
   "description": "Single magical attack at target unit.",
   "name": "Condemning Blast",
   "slug": "magic_blast_(single)_ability_000004C0000004EB",
-  "damage": "16<damagespirit></damagespirit> ",
+  "damage": "12<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "Base"
@@ -20577,7 +20577,7 @@
  {
   "modifiers": [
    {
-    "description": "Inflicts Burning for 3 <turn></turn> Turns.",
+    "description": "Inflicts 3 stacks of Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
     "count": 1
    }
@@ -21608,7 +21608,7 @@
   "icon": "000004C00000065E"
  },
  {
-  "description": "Summon a <hyperlink>Bone Wyvern</hyperlink> at the start of battle. Doesn't work in water combat.<br></br><br></br>This replaces the skill from Soul Keeper.",
+  "description": "Summon a <hyperlink>Bone Wyvern</hyperlink> at the start of battle. Doesn't work in water combat.",
   "name": "Bone Wyvern",
   "slug": "000004c000000653",
   "icon": "000004C000000652"
@@ -22134,7 +22134,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "0",
   "icon": "000004C000000870"
  },
@@ -22557,7 +22557,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Create <hyperlink>Obscuring</hyperlink> flora in a 1-hex radius.<br></br>Create Mist in a 1-hex radius for 3 <turn></turn> <hyperlink>Turns</hyperlink>.",
+  "description": "Create <hyperlink>Obscuring</hyperlink> flora in a 1-hex radius.<br></br>Create Mist in a 1-hex radius for 3 <turn></turn> <hyperlink>Turns</hyperlink>.<br></br>Enter <hyperlink>Defense Mode</hyperlink> after use",
   "name": "Protective Wildgrowth",
   "slug": "hs_ritualist_protective_wildgrowth_ability_000003BD00002895",
   "damage": "",
@@ -22672,7 +22672,7 @@
   "modifiers": [],
   "description": "Fire a ranged attack at an enemy that cannot miss.",
   "name": "True Shot",
-  "slug": "hs_ranger_power_shot_ability_000003BD00002895",
+  "slug": "hs_ranger_sniper_shot_ability_000003BD00002895",
   "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -22685,10 +22685,13 @@
     "requisite": "Single Shot"
    }
   ],
-  "accuracy": "Always Hits",
+  "accuracy": "90%",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6",
   "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
@@ -22953,7 +22956,7 @@
     "note": "Cooldown: 1 <turn></turn>"
    }
   ],
-  "description": "Target all adjacent enemies:<bulletlist><bullet>Remove all <hyperlink>Negative Status Effects</hyperlink>.</bullet><bullet>Deals 12 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each <hyperlink>Negative Status Effect</hyperlink> removed, up to 5 times.</bullet></bulletlist>",
+  "description": "Target all adjacent enemies:<bulletlist><bullet>Deals 12 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> for each <hyperlink>Negative Status Effect</hyperlink> on each target, up to 5 times.</bullet></bulletlist><br></br>Enter <hyperlink>Defense Mode</hyperlink> after use",
   "name": "Amplify Chaos",
   "slug": "hs_amplify_chaos_ability_000003BD00002895",
   "damage": "",
@@ -24174,7 +24177,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "3",
   "icon": "000004C000000BB4"
  },
@@ -24223,7 +24226,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "3",
   "icon": "000004C000000B54"
  },
@@ -24234,15 +24237,14 @@
   "icon": "0000049700000704"
  },
  {
-  "notes": [
+  "modifiers": [
    {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
-    "note": "Cooldown: 1 <turn></turn>"
+    "description": "Inflicts 2 stacks of Decaying for 3 <turn></turn>.",
+    "name": "Decaying",
+    "count": 1
    }
   ],
-  "description": "Target enemy units in a 1-hex radius suffer:<bulletlist><bullet>10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Base 90% chance of suffering 1 Decaying.</bullet></bulletlist>",
+  "description": "Target enemy units in a 1-hex radius suffer:<bulletlist><bullet>10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Base % chance of suffering 1 Decaying.</bullet></bulletlist>",
   "name": "Curse",
   "slug": "hs_warlock_curse_ability_000003BD00002895",
   "damage": "",
@@ -24254,6 +24256,14 @@
   "accuracy": "Always Hits",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
   "icon": "000004C000000789"
  },
  {
@@ -27570,7 +27580,7 @@
   "icon": "0000049700000D14"
  },
  {
-  "description": "When this unit dies, adjacent enemy units suffer 10 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> and 1x Decaying.",
+  "description": "When this unit dies, adjacent enemy units suffer 15 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> and 2x Decaying.",
   "name": "Decaying Dissolution",
   "slug": "000004c000000be2",
   "icon": "0000048D0000191F"
