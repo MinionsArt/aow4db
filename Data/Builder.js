@@ -6342,7 +6342,10 @@ function showTraitSetup(currentTrait) {
             spa.innerHTML = "Part of the Ways of War DLC";
         } else if (currentTrait.DLC == "GIANTKINGS ") {
             imag.setAttribute("src", "/aow4db/Icons/Text/GKLogo.png");
-            spa.innerHTML = "Part of the Ways of War DLC";
+            spa.innerHTML = "Part of the Giant Kings DLC";
+        } else if (currentTrait.DLC == "ARCHONPROPHECY ") {
+            imag.setAttribute("src", "/aow4db/Icons/Text/ArchonProphecy.png");
+            spa.innerHTML = "Part of the Archon Prophecy DLC";
         }
 
         newDivForMount.appendChild(imag);
@@ -6863,6 +6866,10 @@ function AddDLCTag(dlcname) {
         imag.setAttribute("src", "/aow4db/Icons/Text/GKLogo.png");
 
         spa.innerHTML = "Part of the Giant Kings DLC";
+    }    if (dlcname == "ARCHONPROPHECY") {
+        imag.setAttribute("src", "/aow4db/Icons/Text/ArchonProphecy.png");
+
+        spa.innerHTML = "Part of the Archon Prophecy DLC";
     }
     newDivForMount.appendChild(imag);
 

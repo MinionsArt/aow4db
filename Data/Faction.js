@@ -1,6 +1,52 @@
 var searchParams = new URLSearchParams(window.location.search);
 const searchKeyword = searchParams.get("u");
 
+var placeHolders= [{
+  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empireorder></empireorder> Empire Order Affinity",
+  "gameplay_description": "Placeholder.",
+  "resid": 4001,
+  "id": "tome_of_the_archon",
+  "DLC": "ARCHONPROPHECY",
+  "name": "Tome of the Archon",
+  "tier": 4,
+  "icon": "tome_of_the_archon",
+  "skills": [
+  ]
+ },{
+  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empireorder></empireorder> Empire Order Affinity",
+  "gameplay_description": "Placeholder.",
+  "resid": 4002,
+  "id": "tome_of_virtue",
+  "DLC": "ARCHONPROPHECY",
+  "name": "Tome of Virtue",
+  "tier": 2,
+  "icon": "tome_of_virtue",
+  "skills": [
+  ]
+ },{
+  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empirearcana></empirearcana> Empire Astral Affinity",
+  "gameplay_description": "Placeholder.",
+  "resid": 4003,
+  "id": "tome_of_prophecies",
+  "DLC": "ARCHONPROPHECY",
+  "name": "Tome of Prophecies",
+  "tier": 3,
+  "icon": "tome_of_prophecies",
+  "skills": [
+  ]
+ },{
+  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
+  "gameplay_description": "Placeholder.",
+  "resid": 4004,
+  "id": "tome_of_the_revenant",
+  "DLC": "ARCHONPROPHECY",
+  "name": "Tome of the Revenant",
+  "tier": 4,
+  "icon": "tome_of_the_revenant",
+  "skills": [
+  ]
+ }];
+
 var currentOrigin = "";
 var currentTome = "";
 
@@ -76,6 +122,12 @@ function addOrSubtract(extraAffinity, add) {
 }
 
 function SetRandomStart(overwriteParameter) {
+    
+    if (showBetaTooltip.checked) {
+    // Combine the original jsonData with the beta entries
+    jsonTomes = [...jsonTomes, ...placeHolders];
+        jsonTomesLocalized = [...jsonTomesLocalized, ...placeHolders];
+}
     if (searchKeyword != undefined && !overwriteParameter) {
         // console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
@@ -1310,6 +1362,7 @@ function findOriginLoc(origin, type) {
 
         case "Tome":
             newOrigin = jsonTomesLocalized.find((entry) => entry.resid === origin.resid);
+            newOrigin = jsonTomesLocalized.find((entry) => entry.resid === origin.resid);
             break;
 
         case "FormTrait":
@@ -1757,11 +1810,16 @@ function SetFullPreview(span, origin) {
 function GetAllStartingTomes() {
     var listOfAllTier1Tomes = [];
 
-    for (i = 0; i < jsonTomes.length; i++) {
+    for (let i = 0; i < jsonTomes.length; i++) {
         if (jsonTomes[i].tier === 1) {
             listOfAllTier1Tomes.push(jsonTomes[i]);
         }
     }
+     
+    // if beta, add new tomes just for now
+    
+   
+   
     // alert(listOfAllTier1Tomes);
     return listOfAllTier1Tomes;
 }
