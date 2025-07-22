@@ -1299,6 +1299,19 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
                                 console.log("found special");
                                 return;
                             }
+                            // check if final skills have the right node 5222680234186 = elemental mastery
+                            const  elemental_Mastery = 5222680234186;
+                             if(nodeData.resid == elemental_Mastery && exclusionListElementalistFinalSkills.includes(otherNode.resid) ){
+                                console.log("found special");
+                                 // get the required node data
+                                
+                                   const secondRelatedNode = document.getElementById( otherNode.required_skills[1].resid);
+                                 if(!secondRelatedNode.classList.contains("activated")){
+                                       return;
+                                 }
+                              
+                            }
+                            // 
                             // chec kif its not already activated
                             if (!relatedNode.classList.contains("activated")) {
                                 // Change the color of the related node to blue
