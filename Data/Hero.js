@@ -1155,13 +1155,15 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, 
             let targetNode = jsonHeroSkills.find((node) => node.resid === link.resid);
             // elementalist skills withering blizzard and the other elemental end points, incorrect lines
             // discipline lines to exclude array
+            
           
-            if(exclusionListElementalistDisplines.includes(targetNode.resid) && exclusionListElementalistFinalSkills.includes(currentSkill.resid)){
-                targetNode = null;
-                console.log("here");
-            }
 
             if (targetNode) {
+                  if(exclusionListElementalistDisplines.includes(targetNode.resid) && exclusionListElementalistFinalSkills.includes(currentSkill.resid)){
+                targetNode = null;
+                console.log("here");
+                      return;
+            }
                 let connectionLine = document.createElement("DIV");
                 var extra = row * 200;
                 // Calculate the difference in x and y positions between the target and current node
