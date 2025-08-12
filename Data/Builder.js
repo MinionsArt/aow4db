@@ -31,6 +31,26 @@ var altHeld = false;
  },];
             
             var extraSkills=[
+                {
+                    "group_name": "Battlesaint - Hero Skill Group",
+  "icon": "0000048D000018CC",
+  "type": "normal",
+  "description": "This and adjecient friendly units gain 50% Morale Resistance",
+ 
+  "resid": 5222680234436,
+  "tree_name": "<classBattlesaint></classBattlesaint> Battlesaint",
+  "name": "Spiritual Guide",
+ "tree_pos_x": 350.0,
+  "tree_pos_y": 650.0,
+  "id": "hs_battlesaint_spiritual_guide",
+  "required_skills": [
+   {
+    "resid": 5222680234415
+   },
+   {
+    "resid": 5222680234413
+   }
+  ]},
  {
   "group_name": "Ritualist - Hero Skill Group",
   "icon": "0000048D000018CC",
