@@ -384,11 +384,11 @@
             function HandlePage() {
                 
                 // hide build submitter
-                if (showBetaTooltip.checked) {
+             //   if (showBetaTooltip.checked) {
                     // get build section
-                        document.getElementById("shareSection").style.display= "none";
-                    document.getElementById("buildsSubmitHolder").style.display = "none";
-                }
+               //         document.getElementById("shareSection").style.display= "none";
+               //     document.getElementById("buildsSubmitHolder").style.display = "none";
+               // }
                 SetRandomStart();
 
                 document.getElementById("YourKey").textContent = getOrCreateUserEditKey();
@@ -625,6 +625,10 @@
                                         class="button"
                                         id="originButtonCulture"
                                         onclick="SetupButtons(event,'Culture')"></button>
+                                        <button
+                                            class="button-inset"
+                                            id="originButtonSubCulture"
+                                            onclick="SetupButtons(event,'SubCulture')"></button>
                                 </div>
 
                                 <div id="buttonContainer2">
@@ -632,12 +636,20 @@
                                         class="button-inset"
                                         id="originButtonSociety1"
                                         onclick="SetupButtons(event,'Society1')"></button>
+                                     <button
+                                            class="button-inset"
+                                            id="originButtonSubSociety1"
+                                            onclick="SetupButtons(event,'SubSociety1')"></button>
                                 </div>
                                 <div id="buttonContainer1">
                                     <button
                                         class="button-inset"
                                         id="originButtonSociety2"
                                         onclick="SetupButtons(event,'Society2')"></button>
+                                     <button
+                                            class="button-inset"
+                                            id="originButtonSubSociety2"
+                                            onclick="SetupButtons(event,'SubSociety2')"></button>
                                 </div>
                             </div>
                         </div>

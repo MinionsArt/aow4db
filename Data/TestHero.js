@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const filePath = "BuilderLookupHero.json";
+const filePath = "EN/BuilderLookupHero.json";
 
 // Read the existing JSON file
 let existingData;
@@ -21,7 +21,7 @@ try {
 
 
 // get the traits, tomes, etc
-const testFilePathTraits4 = "HeroSkills.json";
+const testFilePathTraits4 = "EN/HeroSkills.json";
 // read the source data list to check if theres anything new to add
 let dataToCheck4;
 try {

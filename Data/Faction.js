@@ -1,51 +1,10 @@
 var searchParams = new URLSearchParams(window.location.search);
 const searchKeyword = searchParams.get("u");
 
-var placeHolders= [{
-  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empireorder></empireorder> Empire Order Affinity",
-  "gameplay_description": "Placeholder.",
-  "resid": 4001,
-  "id": "tome_of_the_archon",
-  "DLC": "ARCHONPROPHECY",
-  "name": "Tome of the Archon",
-  "tier": 4,
-  "icon": "tome_of_the_archon",
-  "skills": [
-  ]
- },{
-  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empireorder></empireorder> Empire Order Affinity",
-  "gameplay_description": "Placeholder.",
-  "resid": 4002,
-  "id": "tome_of_virtue",
-  "DLC": "ARCHONPROPHECY",
-  "name": "Tome of Virtue",
-  "tier": 2,
-  "icon": "tome_of_virtue",
-  "skills": [
-  ]
- },{
-  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empirearcana></empirearcana> Empire Astral Affinity",
-  "gameplay_description": "Placeholder.",
-  "resid": 4003,
-  "id": "tome_of_prophecies",
-  "DLC": "ARCHONPROPHECY",
-  "name": "Tome of Prophecies",
-  "tier": 3,
-  "icon": "tome_of_prophecies",
-  "skills": [
-  ]
- },{
-  "affinities": "1 <empireorder></empireorder> Empire Order Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
-  "gameplay_description": "Placeholder.",
-  "resid": 4004,
-  "id": "tome_of_the_revenant",
-  "DLC": "ARCHONPROPHECY",
-  "name": "Tome of the Revenant",
-  "tier": 4,
-  "icon": "tome_of_the_revenant",
-  "skills": [
-  ]
- }];
+var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal"];
+
+var ListOfSubsocietyHolders = ["Vision of Promise", "Vision of Ruin", "Vision of Destiny"];
+
 
 var currentOrigin = "";
 var currentTome = "";
@@ -53,11 +12,19 @@ var currentTome = "";
 var currentForm = "";
 var currentFormTraitList = [];
 var currentCulture = "";
+
+// society
 var currentSociety1 = "";
 var currentSociety2 = "";
+var currentSubSociety1 = "";
+var currentSubSociety2 = "";
+
 var currentSubType = "";
 var currentClass = "";
 var currentAscension = "";
+
+// sub culture
+var currentSubCulture = "";
 
 var currentAffinityTotal = "";
 
@@ -123,11 +90,7 @@ function addOrSubtract(extraAffinity, add) {
 
 function SetRandomStart(overwriteParameter) {
     
-    if (showBetaTooltip.checked) {
-    // Combine the original jsonData with the beta entries
-    jsonTomes = [...jsonTomes, ...placeHolders];
-        jsonTomesLocalized = [...jsonTomesLocalized, ...placeHolders];
-}
+  
     if (searchKeyword != undefined && !overwriteParameter) {
         // console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
@@ -151,6 +114,9 @@ function SetRandomStart(overwriteParameter) {
         listofChoice.push("Society2");
         listofChoice.push("Class");
         listofChoice.push("SubType");
+          listofChoice.push("SubCulture");
+          listofChoice.push("SubSociety1");
+          listofChoice.push("SubSociety2");
 
         var j = "";
         for (j = 0; j < listofChoice.length; j++) {
@@ -218,6 +184,22 @@ function SetRandomStart(overwriteParameter) {
                     currentSignatureSkills = [];
                     currentSignatureSkills.push(currentSig);
 
+                    break;
+                    
+                case "SubCulture":
+                    if(origin != ""){
+                        currentSubCulture = randomEntry;
+                    }
+                    break;
+                case "SubSociety1":
+                     if(origin != ""){
+                        currentSubSociety1 = randomEntry;
+                    }
+                    break;
+                     case "SubSociety2":
+                     if(origin != ""){
+                        currentSubSociety2 = randomEntry;
+                    }
                     break;
             }
 
@@ -385,15 +367,74 @@ function selectOrigin(origin, type) {
             break;
         case "Culture":
             currentCulture = origin;
+               if (!ListOfSubcultureHolders.includes(origin.name)) {
+                currentSubCulture = "";
+            } else {
+                let newBit;
+                // load default class
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if(jsonFactionCreation[index].type == "SubCulture" && jsonFactionCreation[index].requirement == origin.name){
+                           newBit = jsonFactionCreation[index];
+                            continue;
+                        }
+                    }
+                   
+                         
+                    
+                
+                console.log(newBit.name);
+                currentSubCulture = newBit;
+            }
+             selectOrigin(currentSubCulture, "SubCulture");
+            // subculture
             break;
         case "Form":
             currentForm = origin;
             break;
         case "Society1":
             currentSociety1 = origin;
+         
+            if (!ListOfSubsocietyHolders.includes(origin.name)) {
+                currentSubSociety1 = "";
+            } else {
+                let newBit;
+                // load default class
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if(jsonFactionCreation[index].type == "SubSociety" && jsonFactionCreation[index].requirement == origin.name){
+                           newBit = jsonFactionCreation[index];
+                            continue;
+                        }
+                    }
+                   
+                         
+                    
+                
+                console.log(newBit.name);
+                 currentSubSociety1 = newBit;
+            }
+               selectOrigin(currentSubSociety1, "SubSociety1");
             break;
         case "Society2":
             currentSociety2 = origin;
+             if (!ListOfSubsocietyHolders.includes(origin.name)) {
+                currentSubSociety2 = "";
+            } else {
+                let newBit;
+                // load default class
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if(jsonFactionCreation[index].type == "SubSociety" && jsonFactionCreation[index].requirement == origin.name){
+                           newBit = jsonFactionCreation[index];
+                            continue;
+                        }
+                    }
+                   
+                         
+                    
+                
+                console.log(newBit.name);
+                 currentSubSociety2 = newBit;
+            }
+              selectOrigin(currentSubSociety2, "SubSociety2");
             break;
         case "SubType":
             currentSubType = origin;
@@ -407,6 +448,16 @@ function selectOrigin(origin, type) {
 
             //  ClearSkillPath();
             // selectSkillPath(origin);
+            break;
+        case "SubCulture":
+currentSubCulture = origin;
+            break;
+            
+        case "SubSociety1":
+            currentSubSociety1 = origin;
+            break;
+                case "SubSociety2":
+            currentSubSociety2 = origin;
             break;
     }
 
@@ -446,6 +497,7 @@ function ClearAscensionSkill() {
     currentAscension = "";
 }
 
+/*
 function SetSkillPathOptions(evt) {
     // if there are 4 already selected, return;
 
@@ -503,7 +555,7 @@ function SetSkillPathOptions(evt) {
 
         SetSkillPathInfo(originButtonNew, origin);
     }
-}
+}*/
 
 function SetTomePathOptions(evt) {
     const rect = evt.target.getBoundingClientRect();
@@ -579,31 +631,6 @@ function selectTomePath(origin, fromLoad) {
     toggleOriginButtons();
 }
 
-// Function to handle the selection of an origin
-/*function selectSkillPath(origin) {
-    TurnOffTooltip();
-    var originButton = document.getElementById("originButtonSignature");
-
-    originButton.textContent = "";
-    if (origin != undefined) {
-        currentSignatureSkills.push(origin);
-    }
-
-    if (currentSignatureSkills.length == 0) {
-        originButton.textContent = "+";
-    }
-    // console.log(currentSignatureSkills + " origin " + origin);
-
-    for (var i = 0; i < currentSignatureSkills.length; i++) {
-        SetSkillPathInfoSmall(originButton, currentSignatureSkills[i]);
-    }
-
-    RecalculateStats(true);
-    // swap current known origin
-    // draw all tomes
-
-    toggleOriginButtons();
-}*/
 
 function SetSkillPathInfoSmall(buttonHolder, origin) {
     const image = document.createElement("img");
@@ -708,24 +735,6 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
 
     addTooltipListeners(newDivButton, spa);
 }
-
-/*function ClearSkillPath(test) {
-    var originButton = document.getElementById("originButtonSignature");
-    originButton.textContent = "+";
-
-    if (test != undefined) {
-        currentSignatureSkills = [];
-    }
-
-    //currentTomeList.push(currentTome);
-    // selectSkillPath();
-
-    RecalculateStats(false);
-    // swap current known origin
-    // draw all tomes
-
-    toggleOriginButtons();
-}*/
 
 function RemoveLastSkill() {
     currentSignatureSkills.pop();
@@ -926,6 +935,18 @@ function SetupButtons(evt, type) {
             list = GetAllSubTypes();
 
             break;
+              case "SubCulture":
+            list = GetAllSubCultureSetups();
+
+            break;
+              case "SubSociety1":
+            list = GetAllSubProphecySetups(1);
+
+            break;
+              case "SubSociety2":
+            list = GetAllSubProphecySetups(2);
+
+            break;
         case "Class":
             list = GetAllClasses();
 
@@ -952,13 +973,13 @@ function SetupButtons(evt, type) {
         case "TomePath":
             list = GetNextSetOfTomes();
             break;
-        case "Signature":
+      /*  case "Signature":
             list = GetAllSignatureSkills();
             if (currentSignatureSkills.length == 4) {
                 console.log("more than 4");
                 return;
             }
-            break;
+            break;*/
     }
 
     // console.log(currentChoice);
@@ -1084,7 +1105,7 @@ function GetCurrentChoiceList() {
     return listOfAllChoices;
 }
 
-function GetAffinityTotalFromList(list, tomeList, subType) {
+function GetAffinityTotalFromList(list, tomeList, subType, subCulture, subSociety1, subSociety2) {
     var input = "";
     for (i = 0; i < list.length; i++) {
         if (list[i] != "") {
@@ -1126,6 +1147,22 @@ function GetAffinityTotalFromList(list, tomeList, subType) {
     if (subType && subType != "") {
         if ("affinity" in subType) {
             input += subType.affinity + ",";
+        }
+    }
+    
+    if (subCulture && subCulture != "") {
+        if ("affinity" in subCulture) {
+            input += subCulture.affinity + ",";
+        }
+    }
+      if (subSociety1 && subSociety1 != "") {
+        if ("affinity" in subSociety1) {
+            input += subSociety1.affinity + ",";
+        }
+    }
+      if (subSociety2 && subSociety2 != "") {
+        if ("affinity" in subSociety2) {
+            input += subSociety2.affinity + ",";
         }
     }
 
@@ -1186,7 +1223,7 @@ function GetAffinityTotalFromList(list, tomeList, subType) {
 function RecalculateStats(fromload) {
     var list = GetCurrentChoiceList();
 
-    var result = GetAffinityTotalFromList(list, currentTomeList, currentSubType);
+    var result = GetAffinityTotalFromList(list, currentTomeList, currentSubType, currentSubCulture, currentSubSociety1, currentSubSociety2);
 
     // add all extra input tags
     document.getElementById("extraOrder").innerHTML = "<empireorderBig></empireorderBig>" + extraOrder;
@@ -1285,6 +1322,14 @@ function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
 
     if (type === "SubType" && !["Dragon Lord", "Giant King"].includes(currentOrigin.name)) return;
+    
+     if (type === "SubCulture" && !ListOfSubcultureHolders.includes(currentCulture.name)) return;
+    
+      if (type === "SubSociety1" && !ListOfSubsocietyHolders.includes(currentSociety1.name)) return;
+    
+      if (type === "SubSociety2" && !ListOfSubsocietyHolders.includes(currentSociety2.name)) return;
+    
+   
 
     const image = createImage(type, origin);
     const isSymbol = type === "Symbol";
@@ -1314,14 +1359,17 @@ function createImage(type, origin) {
         case "Tome":
             setImage(`/aow4db/Icons/TomeIcons/${origin.id}.png`);
             break;
+               case "Society1":
+        case "Society2":
         case "FormTrait":
+            
             setImage('/aow4db/Icons/TraitIcons/' + origin.icon + '.png');
             break;
         case "Culture":
         case "Origin":
-        case "Society1":
-        case "Society2":
         case "Form":
+              case "SubCulture":
+               
         case "SubType":
             setImage(getFactionIconPath(origin.id));
             break;
@@ -1347,7 +1395,7 @@ function createImage(type, origin) {
 
 function getFactionIconPath(id) {
     const cleanId = id.startsWith("_") ? id.split("_").slice(1).join("_") : id;
-    return `/aow4db/Icons/FactionCreation/${cleanId}.png`;
+    return `/aow4db/Icons/TraitIcons/${cleanId}.png`;
 }
 
 function findOriginLoc(origin, type) {
@@ -1870,17 +1918,33 @@ function CollectAllPartsForOverview(fromload) {
 
                 if (ExtraTomelist[index].skills[i].type == "<hyperlink>Empire Bonus</hyperlink>") {
                     listOfAllCurrentPassivesSlugs.push(ExtraTomelist[index].skills[i], ExtraTomelist[index]);
+                  
                 }
             }
         }
         if ("initial_upgrades" in ExtraTomelist[index]) {
-            for (let j = 0; j < ExtraTomelist[index].initial_upgrades.length; j++) {
-                listOfAllCurrentSPISlugs.push(
-                    ExtraTomelist[index].initial_upgrades[j].upgrade_slug,
-                    ExtraTomelist[index]
-                );
-            }
+    // Deduplicate by 'upgrade_slug'
+    const uniqueUpgrades = [];
+
+    const seenSlugs = new Set();
+
+    for (let j = 0; j < ExtraTomelist[index].initial_upgrades.length; j++) {
+        const upgrade = ExtraTomelist[index].initial_upgrades[j];
+        if (!seenSlugs.has(upgrade.upgrade_slug)) {
+            seenSlugs.add(upgrade.upgrade_slug);
+            uniqueUpgrades.push(upgrade);
         }
+    }
+
+    // Now push only upgrades not already in the list
+    for (let i = 0; i < uniqueUpgrades.length; i++) {
+        const upgrade = uniqueUpgrades[i];
+
+        if (!isInArray(listOfAllCurrentSPISlugs, upgrade.upgrade_slug, ExtraTomelist[index])) {
+            listOfAllCurrentSPISlugs.push(upgrade.upgrade_slug, ExtraTomelist[index]);
+        }
+    }
+}
         /*if ("hero_skills" in ExtraTomelist[index]) {
             for (let l = 0; l < ExtraTomelist[index].hero_skills.length; l++) {
                 if (!isInArray(listOfAllCurrentHeroSkillsSlugs, ExtraTomelist[index].hero_skills[l])) {
@@ -1893,6 +1957,7 @@ function CollectAllPartsForOverview(fromload) {
                 listOfAllCurrentPassivesSlugs.push(ExtraTomelist[index].passives[q], ExtraTomelist[index]);
             }
         }
+          console.log(listOfAllCurrentPassivesSlugs);
     }
     ShowPassivesOverview(listOfAllCurrentPassivesSlugs);
     ShowUnitsOverview(listOfAllCurrentUnitSlugs);
@@ -2047,9 +2112,13 @@ function CreateSpellIcon(listEntry, colorEntry) {
     text.innerHTML = " " + listEntry.name;
     tier.innerHTML = romanize(listEntry.tier) + " ";
     //tier.setAttribute("style", " top: 50%;left: 50%;");
+    
+    // get spell already
+     var spellData = jsonSpellsLocalized.find((entry) => entry.id == listEntry.spell_slug);
+    
 
     var smallIcon = document.createElement("img");
-    smallIcon.setAttribute("src", "/aow4db/Icons/SpellIcons/" + listEntry.spell_slug + ".png");
+    smallIcon.setAttribute("src", "/aow4db/Icons/SpellIcons/" + spellData.icon + ".png");
     smallIcon.setAttribute("width", "20px");
     spell.appendChild(tier);
     spell.appendChild(smallIcon);
@@ -2103,11 +2172,7 @@ function CreateUnitIcon(listEntry, colorEntry) {
     var text = document.createElement("div");
     text.innerHTML =
         romanize(listEntry.tier) + " " + getUnitTypeTag(listEntry.secondary_passives) + " " + listEntry.name;
-    //var smallIcon = document.createElement("img");
-    // smallIcon.setAttribute("src", "/aow4db/Icons/SpellIcons/" + listEntry.id + ".png");
-    // smallIcon.setAttribute("width", "20px");
-    // spell.appendChild(smallIcon);
-    // var iDiv = spell_card_template.content.cloneNode(true);
+   
 
     // document.getElementById("hiddentooltips").appendChild(iDiv);
     var allAbilities = document.createElement("span");
@@ -2164,7 +2229,7 @@ function ShowUnitsOverview(list) {
     for (let i = 0; i < jsonUnits.length; i++) {
         if (currentCulture.name.indexOf(jsonUnits[i].culture_name) != -1 && jsonUnits[i].id != "") {
             if ("sub_culture_name" in jsonUnits[i]) {
-                if (currentCulture.name.indexOf(jsonUnits[i].sub_culture_name) != -1) {
+                if (currentSubCulture.name.indexOf(jsonUnits[i].sub_culture_name) != -1) {
                     section.append(CreateUnitIcon(jsonUnits[i], null));
                 }
             } else {
@@ -2347,53 +2412,68 @@ function ShowSPIOverview(list) {
     const section = document.createElement("div");
     section.classList.add("column");
 
-    // Create a human-friendly section title
     const heading = document.createElement("div");
     if (list.length > 0) {
-        heading.innerHTML = "Special Province Impr.:<br>"; // helper function
+        heading.innerHTML = "Special Province Impr.:<br>";
     }
 
     section.appendChild(heading);
-    for (let index = 0; index < list.length; index += 2) {
-        for (let i = 0; i < jsonStructureUpgrades.length; i++) {
-            if (jsonStructureUpgrades[i].id == list[index]) {
-                var spell = document.createElement("button");
 
-                var Color = GetColors(list[index + 1].affinities);
+    const seenStructureIds = new Set();
+
+    for (let index = 0; index < list.length; index += 2) {
+        const structureId = list[index];
+
+        // Skip if already added
+        if (seenStructureIds.has(structureId)) {
+            continue;
+        }
+
+        seenStructureIds.add(structureId);
+
+        for (let i = 0; i < jsonStructureUpgrades.length; i++) {
+            if (jsonStructureUpgrades[i].id == structureId) {
+                const spell = document.createElement("button");
+
+                const Color = GetColors(list[index + 1].affinities);
                 applyTextColor(spell, Color);
                 spell.className = "overview_list_entry";
-                var text = document.createElement("div");
+
+                const text = document.createElement("div");
                 text.innerHTML = jsonStructureUpgrades[i].name;
-                var smallIcon = document.createElement("img");
-                smallIcon.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + jsonStructureUpgrades[i].id + ".png");
+
+                const smallIcon = document.createElement("img");
+                smallIcon.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + jsonStructureUpgrades[i].icon + ".png");
                 smallIcon.setAttribute("width", "20px");
+
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
                 section.append(spell);
 
-                var name = GetStructureName(list[index]);
+                const name = GetStructureName(structureId);
+                const spa = document.createElement("SPAN");
 
-                var spa = document.createElement("SPAN");
                 spa.innerHTML =
                     '<span style="color: #deb887 ;text-transform: uppercase">' +
                     name +
                     "</span>" +
-                    GetStructureDescription(list[index]);
+                    GetStructureDescription(structureId);
 
-                //  div.appendChild(spa);
-
-                var newSpan = document.createElement("span");
+                const newSpan = document.createElement("span");
                 if (list[index + 1] != null) {
                     newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
                     spa.prepend(newSpan);
                 }
+
                 addTooltipListeners(spell, spa);
+                break; // Done with this structureId
             }
         }
     }
 
     container.appendChild(section);
 }
+
 
 function ShowSiegeProjectsOverview(list) {
     var container = document.getElementById("mainoverview");
@@ -2682,6 +2762,49 @@ function GetAllSubTypes() {
     listOfAllSubTypes.sort((a, b) => a.id - b.id);
     return listOfAllSubTypes;
 }
+
+function GetAllSubCultureSetups(){
+     var listOfAllSubCultTypes = [];
+
+    // list of subcultures for architect
+    
+       for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "SubCulture") {
+            if (jsonFactionCreation[i].requirement == currentCulture.name) {
+                listOfAllSubCultTypes.push(jsonFactionCreation[i]);
+            }
+        }
+    }
+  
+    listOfAllSubCultTypes.sort((a, b) => a.id - b.id);
+    return listOfAllSubCultTypes;
+    
+}
+
+function GetAllSubProphecySetups(entry){
+     var listOfAllSubTypes = [];
+
+    // list of subcultures for architect
+    
+       for (i = 0; i < jsonFactionCreation.length; i++) {
+        if (jsonFactionCreation[i].type === "SubSociety") {
+            if(entry == 1){
+                 if (jsonFactionCreation[i].requirement == currentSociety1.name ) {
+                listOfAllSubTypes.push(jsonFactionCreation[i]);
+            }
+            }
+           if(entry == 2){
+                   if (jsonFactionCreation[i].requirement == currentSociety2.name ) {
+                listOfAllSubTypes.push(jsonFactionCreation[i]);
+            }
+           
+        }
+    }
+        }
+    listOfAllSubTypes.sort((a, b) => a.id - b.id);
+    return listOfAllSubTypes;
+    
+}
 function GetAllClasses() {
     var listofallClasses = [];
 
@@ -2742,6 +2865,40 @@ function GetRandomEntry(type) {
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
             if (currentOrigin.name != "Dragon Lord" && currentOrigin.name != "Giant King") {
+                randomOrigin = "";
+            }
+            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            //   randomOrigin = list[Math.floor(Math.random() * list.length)];
+            //}
+            break;
+             case "SubCulture":
+            var list = GetAllSubCultureSetups(currentOrigin);
+
+            randomOrigin = list[Math.floor(Math.random() * list.length)];
+            if (!ListOfSubcultureHolders.includes(currentCulture.name)) {
+                randomOrigin = "";
+            }
+            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            //   randomOrigin = list[Math.floor(Math.random() * list.length)];
+            //}
+            break;
+            
+                case "SubSociety1":
+            var list = GetAllSubProphecySetups(1);
+
+            randomOrigin = list[Math.floor(Math.random() * list.length)];
+            if (!ListOfSubsocietyHolders.includes(currentSociety1.name)) {
+                randomOrigin = "";
+            }
+            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
+            //   randomOrigin = list[Math.floor(Math.random() * list.length)];
+            //}
+            break;
+                 case "SubSociety2":
+            var list = GetAllSubProphecySetups(2);
+
+            randomOrigin = list[Math.floor(Math.random() * list.length)];
+            if (!ListOfSubsocietyHolders.includes(currentSociety2.name)) {
                 randomOrigin = "";
             }
             // while (incompatibleCheck("Loadout", randomOrigin) === true) {
@@ -2814,10 +2971,10 @@ function incompatibleCheck(type, origin) {
 
     if ("incompatible_society_traits" in origin) {
         if (type === "Society1") {
-            var i = "";
+            let i = "";
             // also check from culture here
             //  currentCul = GetCultureFromID(currentCulture);
-
+           
             for (i in origin.incompatible_society_traits) {
                 if (currentSociety2 != "") {
                     if (
@@ -2832,6 +2989,7 @@ function incompatibleCheck(type, origin) {
         }
         if (type === "Society2") {
             var i = "";
+          
             for (i in origin.incompatible) {
                 if (currentSociety1 != "") {
                     if (
@@ -2845,6 +3003,21 @@ function incompatibleCheck(type, origin) {
             }
         }
     }
+    
+     if(currentSociety1 != ""){
+             // only one vision
+            if(currentSociety1.name.indexOf("Vision of") != -1 && origin.name.indexOf("Vision of") != -1){
+                incompatibleWithSetup = true;
+            }
+     }
+    
+     if(currentSociety2 != ""){
+             // only one vision
+            if(currentSociety2.name.indexOf("Vision of") != -1 && origin.name.indexOf("Vision of") != -1){
+                incompatibleWithSetup = true;
+            }
+     }
+        
 
     if (currentSociety1.name === origin.name) {
         incompatibleWithSetup = true;
@@ -2852,103 +3025,6 @@ function incompatibleCheck(type, origin) {
         incompatibleWithSetup = true;
     }
 
-    /**if (type === "Loadout") {
-        // example: Champion:Wizard, Primal-sylvan_wolf:Dark
-        var splitOrigins = origin.requirement.split(",");
-
-        if (splitOrigins.length > 1) {
-            // this has cultures and maybe champion + wizard
-
-            // check first split
-            let multiSetupOrigin = splitOrigins[0].split(":");
-
-            // this is champion or wizard
-            if (multiSetupOrigin.length > 1) {
-                // wizard
-                // console.log(splitOrigins + " " + origin.name);
-                if (multiSetupOrigin[1].indexOf(currentOrigin.name) != -1) {
-                    incompatibleWithSetup = false;
-                } else {
-                    incompatibleWithSetup = true;
-                }
-            } else {
-                // culture checks
-                var multiSetup = splitOrigins[1].split(":");
-
-                if (!multiSetup.includes(currentCulture.name)) {
-                    incompatibleWithSetup = true;
-                }
-
-                if (currentCulture.name.indexOf("Mystic") != -1) {
-                    for (let index = 0; index < multiSetup.length; index++) {
-                        if (multiSetup[index].indexOf("Mystic") != -1) {
-                            // get sub culture
-                            incompatibleWithSetup = false;
-                        }
-                    }
-                }
-
-                if (currentCulture.name.indexOf("Oathsworn") != -1) {
-                    for (let index = 0; index < multiSetup.length; index++) {
-                        // check subs
-                        var subculture = multiSetup[index].split("-");
-                        if (subculture.length > 1) {
-                            if (subculture[1].indexOf("strife") != -1 || currentCulture.name.indexOf("Strife") != -1) {
-                                // get sub culture
-                                incompatibleWithSetup = false;
-                            } else if (
-                                subculture[1].indexOf("harmony") != -1 ||
-                                currentCulture.name.indexOf("Harmony") != -1
-                            ) {
-                                // get sub culture
-                                incompatibleWithSetup = false;
-                            } else if (
-                                subculture[1].indexOf("righteousness") != -1 ||
-                                currentCulture.name.indexOf("Righteousness") != -1
-                            ) {
-                                // get sub culture
-                                incompatibleWithSetup = false;
-                            }
-                        } else {
-                            if (multiSetup[index].indexOf("Oathsworn") != -1) {
-                                // get sub culture
-                                incompatibleWithSetup = false;
-                            }
-                        }
-                    }
-                }
-
-                // check if its primal culture
-                if (currentCulture.name.indexOf("Primal") != -1) {
-                    for (let index = 0; index < multiSetup.length; index++) {
-                        if (multiSetup[index].indexOf("Primal") != -1) {
-                            // get sub culture
-                            incompatibleWithSetup = false;
-                        }
-                    }
-                }
-
-                // if not champion
-                if (splitOrigins[0].indexOf(currentOrigin.name) === -1) {
-                    // console.log(splitOrigins);
-                    // console.log(currentCulture.name + " " + splitOrigins[1]);
-                    incompatibleWithSetup = true;
-                }
-            }
-        } else {
-            // console.log(currentOrigin.name + " " + splitOrigins[0]);
-            //if only 1 split here, its dragon or  eldritch
-
-            // else its dragon, eldritch, if not same as currentorigin, return
-            //console.log(currentOrigin.name + " " + splitOrigins[0] + " " + origin.name);
-
-            if (splitOrigins[0].indexOf(currentOrigin.name) != -1) {
-                incompatibleWithSetup = false;
-            } else {
-                incompatibleWithSetup = true;
-            }
-        }
-    }*/
     // add class incompatiblity?
     if (type === "Class") {
         if (origin.name == "Ranger") {
@@ -3129,15 +3205,34 @@ function GenerateQuickLink() {
     // 1
     var number = decimalToHex(LookUpTableData(currentSociety1.id));
     code += "," + number;
+    
+    // attach subsociety1 to it
+      if(currentSubSociety1 != ""){
+         var extraNummer = decimalToHex(LookUpTableData(currentSubSociety1.id));
+         code += ":" + extraNummer;
+    }
+    
+    
     //2
     var number = decimalToHex(LookUpTableData(currentSociety2.id));
     code += "," + number;
+    
+     // attach subsociety2 to it
+      if(currentSubSociety2 != ""){
+         var extraNummer = decimalToHex(LookUpTableData(currentSubSociety2.id));
+         code += ":" + extraNummer;
+    }
     //3
     var number = decimalToHex(LookUpTableData(currentForm.id));
     code += "," + number;
     //4
     var number = decimalToHex(LookUpTableData(currentCulture.id));
     code += "," + number;
+    // attach subculture to it
+    if(currentSubCulture != ""){
+         var extraNummer = decimalToHex(LookUpTableData(currentSubCulture.id));
+         code += ":" + extraNummer;
+    }
     //5
     var number = decimalToHex(LookUpTableData(currentOrigin.id));
     code += "," + number;
@@ -3256,7 +3351,8 @@ function reversLookUp(code) {
 
     // 1 = currentsociety1
     var lookUp = splitcode[1];
-    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+     var currentSocietySplit = lookUp.split(":");
+    var numbernew = jsonBuilderLookUp[hexToDecimal(currentSocietySplit[0])].id;
 
     for (let index = 0; index < jsonFactionCreation2.length; index++) {
         if (jsonFactionCreation2[index].id === numbernew) {
@@ -3266,11 +3362,29 @@ function reversLookUp(code) {
     currentSociety1 = newBit;
     var originButton = document.getElementById("originButtonSociety1");
     SetButtonInfo(originButton, currentSociety1, "Society1");
+    
+    // sub society1
+    if(currentSocietySplit[1] != undefined){
+        // sub society here
+       
+         var subsoc1 = jsonBuilderLookUp[hexToDecimal(currentSocietySplit[1])].id;
+        
+         for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === subsoc1) {
+            var newBit = jsonFactionCreation[index];
+        }
+              currentSubSociety1 = newBit;
+    var originButton = document.getElementById("originButtonSubSociety1");
+    SetButtonInfo(originButton, currentSubSociety1, "SubSociety1");
+    }
+   
+        
+    }
 
     // 2 = currentsociety2
     var lookUp2 = splitcode[2];
-
-    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp2)].id;
+  var currentSocietySplit2 = lookUp2.split(":");
+    var numbernew = jsonBuilderLookUp[hexToDecimal(currentSocietySplit2[0])].id;
 
     for (let index = 0; index < jsonFactionCreation2.length; index++) {
         if (jsonFactionCreation2[index].id === numbernew) {
@@ -3280,6 +3394,24 @@ function reversLookUp(code) {
     currentSociety2 = newBit;
     var originButton = document.getElementById("originButtonSociety2");
     SetButtonInfo(originButton, currentSociety2, "Society2");
+    
+     // sub society
+    if(currentSocietySplit[1] != undefined){
+        // sub society here
+       
+         var subsoc1 = jsonBuilderLookUp[hexToDecimal(currentSocietySplit[1])].id;
+        
+         for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === subsoc1) {
+            var newBit = jsonFactionCreation[index];
+        }
+              currentSubSociety2 = newBit;
+    var originButton = document.getElementById("originButtonSubSociety2");
+    SetButtonInfo(originButton, currentSubSociety2, "SubSociety2");
+    }
+   
+        
+    }
 
     // 3 = form
     var lookUp = splitcode[3];
@@ -3297,17 +3429,57 @@ function reversLookUp(code) {
 
     // 4 = culture
     var lookUp = splitcode[4];
-
-    var numbernew = jsonBuilderLookUp[hexToDecimal(lookUp)].id;
+    // check for subculture 
+    var currentCultureSplit = lookUp.split(":");
+    var numbernew = jsonBuilderLookUp[hexToDecimal(currentCultureSplit[0])].id;
 
     for (let index = 0; index < jsonFactionCreation.length; index++) {
         if (jsonFactionCreation[index].id === numbernew) {
             var newBit = jsonFactionCreation[index];
         }
     }
+    
+   
     currentCulture = newBit;
+    
+     // backwards compatible
+    if(newBit.type == "SubCulture"){
+       
+        currentSubCulture = newBit;
+       
+        
+        
+        for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].name === currentSubCulture.requirement) {
+            var newBit = jsonFactionCreation[index];
+        }
+    }
+        currentCulture = newBit;
+        
+          var originButton = document.getElementById("originButtonSubCulture");
+    SetButtonInfo(originButton, currentSubCulture, "SubCulture");
+    }
+    
     var originButton = document.getElementById("originButtonCulture");
     SetButtonInfo(originButton, currentCulture, "Culture");
+    
+    // subculture
+    if(currentCultureSplit[1] != undefined){
+        // subculture here
+       console.log("here");
+         var subcultureNo = jsonBuilderLookUp[hexToDecimal(currentCultureSplit[1])].id;
+        
+         for (let index = 0; index < jsonFactionCreation.length; index++) {
+        if (jsonFactionCreation[index].id === subcultureNo) {
+            var newBit = jsonFactionCreation[index];
+        }
+              currentSubCulture = newBit;
+    var originButton = document.getElementById("originButtonSubCulture");
+    SetButtonInfo(originButton, currentSubCulture, "SubCulture");
+    }
+   
+        
+    }
 
     // 5 = origin
     var lookUp = splitcode[5];

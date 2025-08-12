@@ -128,6 +128,15 @@
                     null,
                     "town_hall_iv_palace_of_vows"
                 ],
+                 [
+                    "town_hall_ii_great_ziggurat",
+                    null,
+                    "town_hall_iii_ascended_gardens",
+                    "affinity_obelisks:architect",
+                    null,
+                    null,
+                    "town_hall_iv_pinnacle_of_the_incarnate"
+                ],
                 [null, "tavern", "bathhouse"],
                 [null, "interrogation_dungeon:dark", "ritual_mausoleum:dark"]
             ];
@@ -141,6 +150,7 @@
                 ["mana_forge:reaver", "lodestone_foundry:reaver", null, null],
                 ["library", "arcane_institute", "academy", "scholars_guild"],
                 ["battle_ritual_site:barbarian", "ancestral_seer_hall:barbarian", null, null],
+                 ["magitectural_archive:architect", "architect_institute:architect", null, null],
                 ["store_house", "granary", "estate_hall", "farmers_guild"],
                 ["workers_farmstead:industrious", "grand_mill:industrious", null, null],
                 ["house_hunting_grounds:feudalAristocracy", "serf_quarters:feudalAristocracy", null, null],
@@ -203,9 +213,9 @@
                     null,
                     "monument_of_supremacy:order",
                     null,
-                    "throne_of_insidious_whispers"
+                    "throne_of_insidious_whispers", "house_of_charity"
                 ],
-                [null, null, "temple_of_the_exalted:order", null, "temple_of_the_pyre"]
+                [null, null, "temple_of_the_exalted:order", null, "temple_of_the_pyre", "chamber_of_the_rite"]
             ];
 
             const wizardTowerGrid = [
@@ -242,9 +252,9 @@
                 SetUpTreeDivChunks(basicIncomeGrid, 287, 595);
 
                 SetUpTreeDivChunks(townHallsGrid, 1586, 485);
-                SetUpTreeDivChunks(tomeBuildingsGrid, 287, 2815);
-                SetUpTreeDivChunks(wizardTowerGrid, 1886, 1875);
-                SetUpTreeDivChunks(affinityGrid, 2850, 2308);
+                SetUpTreeDivChunks(tomeBuildingsGrid, 287, 2959);
+                SetUpTreeDivChunks(wizardTowerGrid, 1886, 1975);
+                SetUpTreeDivChunks(affinityGrid, 2850, 2408);
                 SetUpTreeDivChunks(baseGrid, 0, 485);
                 //SetUpTreeNodes(general, "general");
 
@@ -444,7 +454,7 @@
                 var newNodeBackground = document.createElement("DIV");
 
                 var img = document.createElement("IMG");
-                img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureInfo.id + ".png");
+                img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureInfo.icon + ".png");
                 img.setAttribute("height", "60px");
                 img.className = "structureNodeIcon";
                 newNode.setAttribute("id", structureInfo.id);
@@ -506,6 +516,15 @@
                             newNodeBackground.style.backgroundPositionX = "140px";
                             newNodeBackground.style.backgroundSize = "80px";
                             newNodeBackground.style.backgroundColor = "#111";
+                            spa.innerHTML =
+                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
+                        }
+                         if (affinity == "architect") {
+                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/architect.png")';
+                            newNodeBackground.style.backgroundRepeat = "no-repeat";
+                            newNodeBackground.style.backgroundPositionX = "140px";
+                            newNodeBackground.style.backgroundSize = "80px";
+                            newNodeBackground.style.backgroundColor = "#282711";
                             spa.innerHTML =
                                 '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
                         }
@@ -732,9 +751,9 @@
 
             function SetCategories() {
                 // name of category , width, height, color, left, top
-                CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2308);
-                CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1875);
-                CreateCategory("Tome Buildings", 1945, 660, "#482e8530", 287, 2780);
+                CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2408);
+                CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1975);
+                CreateCategory("Tome Buildings", 1945, 660, "#482e8530", 287, 2900);
                 CreateCategory("Fortifications", 3470, 476, "#4c4b4b57", 622, 0);
                 CreateCategory("Basic Income Buildings", 1245, 2150, "#8eae6f2b", 287, 595);
                 CreateCategory("TII City", 280, 1110, "#b48d522b", 1586, 485);

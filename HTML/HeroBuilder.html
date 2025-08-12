@@ -153,84 +153,15 @@
                 });
             }
             
-            var extraAbilities = [{
-  "notes": [
-   {
-    "note": "Cooldown: 3 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly unit:<bulletlist><bullet>Gains Heroic Stand for 1 <turn></turn> Turn.</bullet></bulletlist>",
-  "name": "Deathward",
-  "slug": "hs_ritualist_deathward_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "4",
-  "icon": "0000048D000018CB"
- },];
-            
-            var extraSkills=[
- {
-  "group_name": "Ritualist - Hero Skill Group",
-  "icon": "0000048D000018CC",
-  "type": "normal",
-  "abilities": [
-   {
-    "slug": "hs_ritualist_deathward_ability_000003BD00002895"
-   }
-  ],
-  "resid": 5003636906185,
-  "tree_name": "<classRitualist></classRitualist> Ritualist",
-  "name": "Deathward",
-  "tree_pos_x": 600.0,
-  "tree_pos_y": 550.0,
-  "id": "hs_ritualist_deathward",
-  "required_skills": [
-   {
-    "resid": 5222680235172
-   },
-   {
-    "resid": 4995046966069
-   }
-  ]
- },{
-  "group_name": "Ritualist - Hero Skill Group",
-  "icon": "0000048B00000336",
-  "type": "normal",
-  "name": "Fortifying Support",
-  "tree_pos_x": 600.0,
-  "id": "hs_ritualist_fortifying_support",
-  "excluded_skills": [
-   {
-    "resid": 4995046966069
-   }
-  ],
-  "resid": 5222680235172,
-  "tree_name": "<classRitualist></classRitualist> Ritualist",
-  "tree_pos_y": 450.0,
-  "description": "<bulletlist><hyperlink>Support</hyperlink> abilities now grant:<bullet> +3 Status Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
-  "required_skills": [
-   {
-    "resid": 5222680233603
-   },
-       {
-    "resid": 5222680233749
-   }
-  ]
- }];
+          
 
             function HandlePage() {
                 // dynamic load classes
                 var classesList = [];
-                if (showBetaTooltip.checked) {
+               // if (showBetaTooltip.checked) {
                    // document.getElementById("Notes").innerHTML = "Elementalist unlock lines have errors, read the skills";
-                    document.getElementById("shareSection").style.display= "none";
-                    shareSection
+                  //  document.getElementById("shareSection").style.display= "none";
+                  //  shareSection
                     classesList = [
                         "Warrior",
                         "Defender",
@@ -239,11 +170,12 @@
                         "Ritualist",
                         "Warlock",
                         "Spellblade",
-                        "Death Knight"
+                        "Death Knight",
+                        "Battlesaint"
                     ];
-                } else {
-                    classesList = ["Warrior", "Defender", "Ranger", "Mage", "Ritualist", "Spellblade", "Death Knight"];
-                }
+               // } else {
+                //    classesList = ["Warrior", "Defender", "Ranger", "Mage", "Ritualist", "Spellblade", "Death Knight"];
+                //}
                 populateSelect("actionDropdownClass", classesList);
                 if (searchKeyword) {
                     TestLoad(searchKeyword);
@@ -254,13 +186,13 @@
                 
                 
                 
-                 if (showBetaTooltip.checked) {
+                // if (showBetaTooltip.checked) {
     // Combine the original jsonData with the beta entries
-    jsonHeroSkills = [...jsonHeroSkills, ...extraSkills];
-        jsonHeroSkillsLocalized = [...jsonHeroSkillsLocalized, ...extraSkills];
-}   
-                jsonUnitAbilities = [...jsonUnitAbilities,...extraAbilities];
-                jsonUnitAbilitiesLocalized = [...jsonUnitAbilitiesLocalized,...extraAbilities];
+   // jsonHeroSkills = [...jsonHeroSkills, ...extraSkills];
+      //  jsonHeroSkillsLocalized = [...jsonHeroSkillsLocalized, ...extraSkills];
+//}   
+        //        jsonUnitAbilities = [...jsonUnitAbilities,...extraAbilities];
+        //        jsonUnitAbilitiesLocalized = [...jsonUnitAbilitiesLocalized,...extraAbilities];
             }
 
             function myFunction() {

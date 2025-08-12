@@ -1,10 +1,233 @@
 [
  {
-  "lore_description": "<helpcolor>Units more likely to critically hit.</helpcolor>",
+  "biography_description": "To some, they are cowards; to themselves, survivors.",
+  "lore_description": "<helpcolor>Easier to rout in combat.</helpcolor>",
+  "point_cost": -1,
+  "id": "coward",
+  "name": "Coward",
+  "incompatible_society_traits": [
+   {
+    "name": "Cheerful"
+   },
+   {
+    "name": "Cold Blooded"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Morale loss is increased by 25%, and morale gain is reduced by 25%."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Flaws",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002D42"
+ },
+ {
+  "biography_description": "They are bound by pride, and know little of fighting as one.",
+  "lore_description": "<helpcolor>Chance to deal reduced or no damage when adjacent to a friendly unit.</helpcolor>",
+  "point_cost": -1,
+  "id": "uncooperative",
+  "name": "Uncooperative",
+  "incompatible_society_traits": [
+   {
+    "name": "Defensive Tactics"
+   },
+   {
+    "name": "Overwhelm Tactics"
+   },
+   {
+    "name": "Pack Tactics"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "10% <hyperlink>Fumble</hyperlink> chance when adjacent to another friendly unit."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Flaws",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002D2D"
+ },
+ {
+  "biography_description": "They soar through the skies on the noble griffons.",
+  "lore_description": "<helpcolor>Mounted units are more common and gain a Griffon mount.</helpcolor>",
+  "DLC": "ARCHONPROPHECY ",
+  "point_cost": 3,
+  "id": "griffon_mounts",
+  "name": "Griffon Mounts",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Gain Flying movement."
+   },
+   {
+    "name": "Additional units become Cavalry"
+   },
+   {
+    "name": "Ruler starts with a Griffon Mount."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mounts",
+  "front_end": true,
+  "icon": "0000049700002D23",
+  "display_order": 0
+ },
+ {
+  "biography_description": "They are vulnerable to damage from physical attacks.",
+  "lore_description": "<helpcolor>Take more physical damage.</helpcolor>",
+  "point_cost": -1,
+  "id": "vulnerable_to_physical",
+  "name": "Vulnerable to Physical",
+  "incompatible_society_traits": [
+   {
+    "name": "Tough"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "-1 <defense></defense> <hyperlink>Defense</hyperlink>"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Flaws",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C84"
+ },
+ {
+  "biography_description": "They have a natural weakness to magic.",
+  "lore_description": "<helpcolor>Take more magical damage.</helpcolor>",
+  "point_cost": -1,
+  "id": "vulnerable_to_magic",
+  "name": "Vulnerable to Magic",
+  "incompatible_society_traits": [
+   {
+    "name": "Resistant"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "-1 <resistance></resistance> <hyperlink>Resistance</hyperlink>"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Flaws",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C82"
+ },
+ {
+  "biography_description": "Legends say their bloodline was cursed with a weak constitution.",
+  "lore_description": "<helpcolor>Units recover their health slowly.</helpcolor>",
+  "point_cost": -1,
+  "id": "weak_constitution",
+  "name": "Weak Constitution",
+  "incompatible_society_traits": [
+   {
+    "name": "Fast Recuperation"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Health Regeneration in the <hyperlink>World Map</hyperlink> is reduced by 50%"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Flaws",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C7D"
+ },
+ {
+  "biography_description": "They lose themselves in the heat of battle, blind to their own peril.",
+  "lore_description": "<helpcolor>Defense mode is less effective.</helpcolor>",
+  "point_cost": -1,
+  "id": "careless",
+  "name": "Careless",
+  "incompatible_society_traits": [
+   {
+    "name": "Bulwark"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Defense Mode gives -1 <defense></defense> <hyperlink>Defense</hyperlink> and -1 <resistance></resistance> <hyperlink>Resistance</hyperlink>."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Flaws",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C79"
+ },
+ {
+  "biography_description": "Their bodies can barely contain their divine origin, sacred light radiates from within them like a purifying flame.",
+  "lore_description": "<helpcolor>Melee attackers sustain <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</helpcolor>",
+  "point_cost": 2,
+  "id": "inner_radiance",
+  "name": "Inner Radiance",
+  "incompatible_society_traits": [
+   {
+    "name": "Inner Fire"
+   },
+   {
+    "name": "Inner Frost"
+   },
+   {
+    "name": "Inner Lightning"
+   },
+   {
+    "name": "Poisonous"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "+3 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink>."
+   },
+   {
+    "name": "Melee attackers sustain 3 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "0000049700002C73"
+ },
+ {
   "biography_description": "Their happy demeanor makes them fearsome combatants.",
+  "lore_description": "<helpcolor>Units more likely to critically hit.</helpcolor>",
   "point_cost": 1,
   "id": "cheerful",
   "name": "Cheerful",
+  "incompatible_society_traits": [
+   {
+    "name": "Cold Blooded"
+   },
+   {
+    "name": "Coward"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -12,18 +235,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "MORALE",
-  "front_end": true,
-  "icon": "000004970000120D",
   "type": "form",
-  "display_order": 5
+  "group_name": "Utility",
+  "front_end": true,
+  "display_order": 5,
+  "icon": "000004970000120D"
  },
  {
-  "lore_description": "<helpcolor>Melee attackers sustain <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</helpcolor>",
   "biography_description": "Lightning runs through their veins, zapping those who dare to harm them.",
+  "lore_description": "<helpcolor>Melee attackers sustain <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</helpcolor>",
   "point_cost": 2,
   "id": "inner_lightning",
   "name": "Inner Lightning",
+  "incompatible_society_traits": [
+   {
+    "name": "Inner Fire"
+   },
+   {
+    "name": "Inner Frost"
+   },
+   {
+    "name": "Inner Radiance"
+   },
+   {
+    "name": "Poisonous"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -34,18 +271,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "00000497000011FC",
   "type": "form",
-  "display_order": 4
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "00000497000011FC"
  },
  {
-  "lore_description": "<helpcolor>Melee attackers sustain <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</helpcolor>",
   "biography_description": "Their skin is cold to the touch, causing frostbite to those who get too close.",
+  "lore_description": "<helpcolor>Melee attackers sustain <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</helpcolor>",
   "point_cost": 2,
   "id": "inner_frost",
   "name": "Inner Frost",
+  "incompatible_society_traits": [
+   {
+    "name": "Inner Fire"
+   },
+   {
+    "name": "Inner Lightning"
+   },
+   {
+    "name": "Inner Radiance"
+   },
+   {
+    "name": "Poisonous"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -56,18 +307,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "00000497000011FA",
   "type": "form",
-  "display_order": 4
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "00000497000011FA"
  },
  {
-  "lore_description": "<helpcolor>Melee attackers sustain <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</helpcolor>",
   "biography_description": "Their boiling blood scorches anyone who dares to wound them.",
+  "lore_description": "<helpcolor>Melee attackers sustain <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</helpcolor>",
   "point_cost": 2,
   "id": "inner_fire",
   "name": "Inner Fire",
+  "incompatible_society_traits": [
+   {
+    "name": "Inner Frost"
+   },
+   {
+    "name": "Inner Lightning"
+   },
+   {
+    "name": "Inner Radiance"
+   },
+   {
+    "name": "Poisonous"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -78,11 +343,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "00000497000011F8",
   "type": "form",
-  "display_order": 4
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "00000497000011F8"
  },
  {
   "lore_description": "<helpcolor>Mounted units are more common and gain a Raptor mount.</helpcolor>",
@@ -109,7 +374,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "0000049700000D4D",
   "type": "form",
@@ -128,7 +393,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000049700000C93",
   "type": "form",
@@ -147,7 +412,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000049700000C8A",
   "type": "form",
@@ -172,7 +437,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000004970000086B",
   "type": "form",
@@ -191,7 +456,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "00000497000007E7",
   "type": "form",
@@ -224,7 +489,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000004970000069E",
   "display_order": 0
@@ -259,7 +524,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "0000049700000697",
   "display_order": 0
@@ -277,18 +542,29 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "0000049700000688",
   "type": "form",
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Deal more damage to enemies surrounded by your units.</helpcolor>",
   "biography_description": "They surround and overrun their enemies.",
+  "lore_description": "<helpcolor>Deal more damage to enemies surrounded by your units.</helpcolor>",
   "point_cost": 2,
   "id": "pack_tactics",
   "name": "Pack Tactics",
+  "incompatible_society_traits": [
+   {
+    "name": "Defensive Tactics"
+   },
+   {
+    "name": "Overwhelm Tactics"
+   },
+   {
+    "name": "Uncooperative"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -296,11 +572,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "TACTICS",
-  "front_end": true,
-  "icon": "000004970000067E",
   "type": "form",
-  "display_order": 3
+  "group_name": "Offense",
+  "front_end": true,
+  "display_order": 3,
+  "icon": "000004970000067E"
  },
  {
   "lore_description": "<helpcolor>Moving around and settling in Ashland areas becomes easier.</helpcolor>",
@@ -327,7 +603,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Adaptations",
   "front_end": true,
   "icon": "000004970000066B",
   "type": "form",
@@ -338,8 +614,8 @@
   "lore_description": "<helpcolor>Mounted units are more common and gain a Dire Bear mount </helpcolor>",
   "DLC": "EMPIRESANDASHES ",
   "point_cost": 3,
-  "id": "dire_bear_mounts",
-  "name": "Dire Bear Mounts",
+  "id": "dire_bear_mount",
+  "name": "Dire Bear Mount",
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -357,7 +633,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000004970000007D",
   "display_order": 0
@@ -375,7 +651,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Utility",
   "front_end": true,
   "icon": "0000049700000075",
   "type": "form",
@@ -394,7 +670,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Utility",
   "front_end": true,
   "icon": "0000049700000072",
   "type": "form",
@@ -413,13 +689,41 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000049700000066",
   "type": "form",
   "display_order": 1
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astral Affinity"
+   }
+  ],
+  "lore_description": "They study the stars, channeling their blessings when they act under their guidance.",
+  "biography_description": "Always gazing at the stars, they act under their guidance.",
+  "point_cost": 1,
+  "id": "astrological_diviners",
+  "name": "Astrological Diviners",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Every 10th <turn></turn> <hyperlink>Turn</hyperlink>:<bulletlist><bullet>Your <hyperlink>Units</hyperlink> gain Aligned Stars.</bullet><bullet>Non-Hero Units drafted, raised, or summoned during a 10th Turn permanently gain Born Under the Stars.</bullet><bullet><hyperlink>City Structures</hyperlink> and <hyperlink>Special Province Improvements</hyperlink> completed during a 10th Turn grant 100 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink>.</bullet></bulletlist>"
+   }
+  ],
+  "enabled": true,
+  "front_end": false,
+  "icon": "0000049300000DA0",
+  "type": "society",
+  "display_order": 4
+ },
+ {
+  "starting_bonuses": [
+   {
+    "description": "Starting <hyperlink>Units</hyperlink> gain +1 rank."
+   }
+  ],
   "affinities": [
    {
     "name": "1<order></order> Order Affinity"
@@ -440,18 +744,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 6,
-  "starting_bonuses": [
-   {
-    "description": "Starting <hyperlink>Units</hyperlink> gain +1 rank."
-   }
-  ],
   "icon": "00000493000008F8"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with +1 <unitHero></unitHero> <hyperlink>Hero Cap</hyperlink> and +3 Hero Cap for Pantheon heroes."
+   }
+  ],
   "affinities": [
    {
     "name": "1<shadow></shadow> Shadow Affinity"
@@ -475,18 +778,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 1,
-  "starting_bonuses": [
-   {
-    "description": "Start with +1 <unitHero></unitHero> <hyperlink>Hero Cap</hyperlink> and +3 Hero Cap for Pantheon heroes."
-   }
-  ],
   "icon": "00000493000008F4"
  },
  {
+  "affinities": [
+   {
+    "name": "-100<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "biography_description": "It is said that the Umbral Thralls were once a free civilization governed by a benevolent hivemind. Yet through <hyperlink>Urrath's eldritch lashes</hyperlink>, the minds of the Umbral Thralls became enchained, and their hive was twisted into an instrument of enslavement. As will-less drones they serve as unceasing warriors, laborers, or as a harvest of souls to satiate the hunger of the <hyperlink>Umbral Demons</hyperlink>. Their swarm carries the gloom to other realms, so that other free peoples across the <hyperlink>Astral Sea</hyperlink> might share the same terrible fate.",
   "lore_description": "It is said that the Umbral Thralls were once a free civilization governed by a benevolent hivemind. Yet through <hyperlink>Urrath's eldritch lashes</hyperlink>, the minds of the Umbral Thralls became enchained, and their hive was twisted into an instrument of enslavement. As will-less drones they serve as unceasing warriors, laborers, or as a harvest of souls to satiate the hunger of the <hyperlink>Umbral Demons</hyperlink>. Their swarm carries the gloom to other realms, so that other free peoples across the <hyperlink>Astral Sea</hyperlink> might share the same terrible fate.",
   "DLC": "ELDRITCHREALMS ",
@@ -511,16 +813,65 @@
    }
   ],
   "enabled": false,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": -1,
-  "affinities": [
+  "icon": "0000049300000774"
+ },
+ {
+  "biography_description": "They soar through the skies on Celestial griffons.",
+  "lore_description": "<helpcolor>Mounted units are more common and gain a Celestial Griffon mount.</helpcolor>",
+  "DLC": "ARCHONPROPHECY ",
+  "point_cost": 3,
+  "id": "celestial_griffon_mounts",
+  "name": "Celestial Griffon Mounts",
+  "screen_description": "",
+  "effect_descriptions": [
    {
-    "name": "-100<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+    "name": "Gain Flying movement."
+   },
+   {
+    "name": "Additional units become Cavalry"
+   },
+   {
+    "name": "Ruler starts with a Celestial Griffon Mount."
    }
   ],
-  "icon": "0000049300000774"
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mounts",
+  "front_end": true,
+  "icon": "0000049000002980",
+  "display_order": 0
+ },
+ {
+  "biography_description": "Their beasts and troops have been trained in the art of chariot warfare.",
+  "lore_description": "<helpcolor>Mounted units are more common and gain a Chariot mount.</helpcolor>",
+  "DLC": "ARCHONPROPHECY ",
+  "point_cost": 3,
+  "id": "chariot_mounts",
+  "name": "Chariot Mounts",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "+5 <hyperlink><hp></hp> Hit Points</hyperlink>."
+   },
+   {
+    "name": "Reduces members in the unit to one, granting immunity to <hyperlink>Casualties</hyperlink>."
+   },
+   {
+    "name": "Additional units become Cavalry"
+   },
+   {
+    "name": "Ruler starts with a Chariot mount."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mounts",
+  "front_end": true,
+  "icon": "000004900000292D",
+  "display_order": 0
  },
  {
   "biography_description": "They soar through the sky on majestic Pegasi.",
@@ -543,7 +894,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000004900000095F",
   "display_order": 0
@@ -572,12 +923,92 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "0000049000000917",
   "display_order": 0
  },
  {
+  "lore_description": "Fated to bring about great change to the Realm.",
+  "biography_description": "Destined to bring about a ruinous change to the Realm.",
+  "point_cost": 1,
+  "id": "vision_of_ruin",
+  "name": "Vision of Ruin",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "On arrival in the Realm, you must interpret a vision of Ruin:<bulletlist><bullet><chaos></chaos> <hyperlink>Chaos Affinity</hyperlink>: War shall engulf the Realm.</bullet><bullet><arcana></arcana> <hyperlink>Astral Affinity</hyperlink>: The Arcane shall dominate.</bullet><bullet><shadow></shadow> <hyperlink>Shadow Affinity</hyperlink>: Death will reign.</bullet></bulletlist>"
+   },
+   {
+    "name": "Trigger a powerful global effect upon completion."
+   },
+   {
+    "name": "+1 <hyperlink>Affinity</hyperlink> based on the chosen interpretation."
+   }
+  ],
+  "enabled": true,
+  "front_end": true,
+  "icon": "0000048D000017DC",
+  "type": "society",
+  "display_order": 1,
+  "DLC": "ARCHONPROPHECY "
+ },
+ {
+  "lore_description": "Bearing the mark of an affinity, they are destined for greatness.",
+  "biography_description": "Marked by an affinity, they are set upon a path they do not yet see.",
+  "point_cost": 1,
+  "id": "vision_of_destiny",
+  "name": "Vision of Destiny",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "On arrival in the Realm, you must interpret a vision of what your people are destined to become:<bulletlist><bullet><order></order> <hyperlink>Order Affinity</hyperlink>: Peacemakers.</bullet><bullet><chaos></chaos> <hyperlink>Chaos Affinity</hyperlink>: Conquerors.</bullet><bullet><arcana></arcana> <hyperlink>Astral Affinity</hyperlink>: Scholars.</bullet><bullet><matter></matter> <hyperlink>Materium Affinity</hyperlink>: Artisans.</bullet><bullet><nature></nature> <hyperlink>Nature Affinity</hyperlink>: Cultivators.</bullet><bullet><shadow></shadow> <hyperlink>Shadow Affinity</hyperlink>: Deathbringers.</bullet></bulletlist>"
+   },
+   {
+    "name": "Permanently empower your units upon completion."
+   },
+   {
+    "name": "+2 <hyperlink>Affinity</hyperlink> based on the chosen interpretation."
+   }
+  ],
+  "enabled": true,
+  "front_end": true,
+  "icon": "0000048D000017D8",
+  "type": "society",
+  "display_order": 1,
+  "DLC": "ARCHONPROPHECY "
+ },
+ {
+  "lore_description": "Prophecy will bring them to a new home.",
+  "biography_description": "They are destined to settle in a land of promise.",
+  "point_cost": 1,
+  "id": "vision_of_promise",
+  "name": "Vision of Promise",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "On arrival in the Realm, you must interpret a vision of Promise:<bulletlist><bullet><order></order> <hyperlink>Order Affinity</hyperlink>: The promise is a land that must be conquered.</bullet><bullet><matter></matter> <hyperlink>Materium Affinity</hyperlink>: The promise is a home that must be built.</bullet><bullet><nature></nature> <hyperlink>Nature Affinity</hyperlink>: The promised land is occupied by a monster we must defeat.</bullet></bulletlist>"
+   },
+   {
+    "name": "Gain a powerful Throne City upon completion."
+   },
+   {
+    "name": "+1 <hyperlink>Affinity</hyperlink> based on the chosen interpretation."
+   }
+  ],
+  "enabled": true,
+  "front_end": true,
+  "icon": "0000048D0000149B",
+  "type": "society",
+  "display_order": 1,
+  "DLC": "ARCHONPROPHECY "
+ },
+ {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "excavation"
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -601,18 +1032,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "excavation"
-   }
-  ],
   "icon": "0000048D00001282"
  },
  {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "forced_march"
+   },
+   {
+    "description": "Start with an extra Scout Unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<chaos></chaos> Chaos Affinity"
@@ -637,21 +1070,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 5,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "forced_march"
-   },
-   {
-    "description": "Start with an extra Scout Unit."
-   }
-  ],
   "icon": "0000048D00000ED9"
  },
  {
+  "affinities": [
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   },
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   }
+  ],
   "biography_description": "Their vast knowledge earns them power and respect throughout the realms.",
   "lore_description": "They know knowledge is power, and power demands respect.",
   "point_cost": 1,
@@ -671,25 +1103,16 @@
     "name": "Unlocking a new <hyperlink>Tome</hyperlink> grants +100 Relation with all <hyperlink>Empires</hyperlink>."
    },
    {
-    "name": "Gain +10 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income for each empire you have <hyperlink>Open Borders</hyperlink> with."
+    "name": "Gain +10 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income for each empire you have <hyperlink>Open Borders</hyperlink> with."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   },
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "empire_progression_slug": "all-seeing"
@@ -698,6 +1121,14 @@
   "icon": "0000048D000009BB"
  },
  {
+  "affinities": [
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   },
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   }
+  ],
   "biography_description": "They know the shadows are not to be feared, but to be studied and used.",
   "lore_description": "The shadows whisper, and the disciples listen.",
   "DLC": "ELDRITCHREALMS ",
@@ -721,22 +1152,13 @@
     "name": "Your Ruler gains Tyrant's Retinue."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   },
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with Umbral Flesh active."
@@ -745,6 +1167,11 @@
   "icon": "0000048D000009B4"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Elemental unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Nature Affinity"
@@ -768,18 +1195,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Elemental unit."
-   }
-  ],
   "icon": "0000048D00000320"
  },
  {
+  "affinities": [
+   {
+    "name": "1<chaos></chaos> Chaos Affinity"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "biography_description": "They are merciless, viewing life as another prize to be claimed.",
   "lore_description": "They are merciless; to them, life is a commodity that may be taken by blade or chain.",
   "point_cost": 1,
@@ -796,22 +1225,13 @@
     "name": "<hyperlink>Routing</hyperlink> <hyperlink>Units</hyperlink> are <hyperlink>Captured</hyperlink> if your side is victorious in <hyperlink>Combat</hyperlink>."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 5,
-  "affinities": [
-   {
-    "name": "1<chaos></chaos> Chaos Affinity"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
   "starting_bonuses": [
    {
     "empire_progression_slug": "war_slaves"
@@ -820,6 +1240,14 @@
   "icon": "0000048D000001D7"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Order Affinity"
+   },
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "biography_description": "They are absolute in their crusade to root out evil.",
   "lore_description": "They are absolute in their dedication to rooting out evil, sparing no mercy for the wicked.",
   "point_cost": 1,
@@ -842,25 +1270,21 @@
     "name": "Gain +30 <casusBelli></casusBelli> <hyperlink>Grievances</hyperlink> against players with an <evilact></evilact>evil <hyperlink>Alignment</hyperlink>."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Order Affinity"
-   },
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
   "icon": "0000048D00000196"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "100<influence></influence> "
+   }
+  ],
   "affinities": [
    {
     "name": "1<arcana></arcana> Astral Affinity"
@@ -874,25 +1298,27 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<hyperlink>Cities</hyperlink> gain +15% <knowledge></knowledge><hyperlink>Knowledge</hyperlink>, +15% <food></food> <hyperlink>Food</hyperlink>, +15% <structureprod></structureprod> <hyperlink>Production</hyperlink>, and +20 <happiness></happiness> <hyperlink>City Stability</hyperlink> income when their <hyperlink>Domain</hyperlink> does not border the <hyperlink>Domain</hyperlink> of any other <hyperlink>City</hyperlink> or <hyperlink>Outpost</hyperlink>."
+    "name": "<hyperlink>Cities</hyperlink> gain +15% <knowledge></knowledge> <hyperlink>Knowledge</hyperlink>, +15% <food></food> <hyperlink>Food</hyperlink>, +15% <structureprod></structureprod> <hyperlink>Production</hyperlink>, and +20 <happiness></happiness> <hyperlink>City Stability</hyperlink> income when their <hyperlink>Domain</hyperlink> does not border the <hyperlink>Domain</hyperlink> of any other <hyperlink>City</hyperlink> or <hyperlink>Outpost</hyperlink>."
    },
    {
     "name": "Grievances inflicted by other empires encroaching on your territory are increased by +100%."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "starting_bonuses": [
-   {
-    "description": "100<influence></influence> "
-   }
-  ],
   "icon": "0000048D0000018E"
  },
  {
+  "starting_bonuses": [
+   {
+    "structure_upgrade_slug": "wizard_tower_item_forge"
+   },
+   {
+    "description": "200<bindingessence></bindingessence> "
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -910,18 +1336,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "structure_upgrade_slug": "wizard_tower_item_forge"
-   },
-   {
-    "description": "200<bindingessence></bindingessence> "
-   }
-  ],
   "icon": "0000048D00000179"
  },
  {
@@ -948,7 +1365,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "0000048900001153",
   "display_order": 0
@@ -974,12 +1391,17 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000004890000110B",
   "display_order": 0
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Get 2 random hero items."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -1000,18 +1422,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "Get 2 random hero items."
-   }
-  ],
   "icon": "0000045E00000910"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Order Affinity"
+   }
+  ],
   "biography_description": "They value and cultivate good relationships with their vassals.",
   "lore_description": "They value and cultivate good relationships with their vassals, raising their banners in times of war.",
   "point_cost": 1,
@@ -1029,15 +1450,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Order Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with the nearest <minorcity></minorcity><hyperlink>Free City</hyperlink> revealed and gain +25 <hyperlink><allegiance></allegiance>Allegiance</hyperlink> with them."
@@ -1046,6 +1461,11 @@
   "icon": "0000045A0000048C"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Battle Mage Unit or Support Unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<arcana></arcana> Astral Affinity"
@@ -1066,18 +1486,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 4,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Battle Mage Unit or Support Unit."
-   }
-  ],
   "icon": "0000045A00000481"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra tier 3 <hyperlink>Unit</hyperlink>."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -1098,18 +1517,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra tier 3 <hyperlink>Unit</hyperlink>."
-   }
-  ],
   "icon": "0000045A0000047B"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with a <hyperlink>Magic Material</hyperlink> nearby."
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Nature Affinity"
@@ -1123,22 +1541,24 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<hyperlink>Cities</hyperlink> gain +5 <gold></gold> <hyperlink>Gold</hyperlink>, <mana></mana> <hyperlink>Mana</hyperlink>, <knowledge></knowledge><hyperlink>Knowledge</hyperlink>, <food></food> <hyperlink>Food</hyperlink>, <structureprod></structureprod> <hyperlink>Production</hyperlink>, and <unitprod></unitprod> <hyperlink>Draft</hyperlink> for each <hyperlink>Magic Material</hyperlink> in their <hyperlink>Domain</hyperlink>."
+    "name": "<hyperlink>Cities</hyperlink> gain +5 <gold></gold> <hyperlink>Gold</hyperlink>, <mana></mana> <hyperlink>Mana</hyperlink>, <knowledge></knowledge> <hyperlink>Knowledge</hyperlink>, <food></food> <hyperlink>Food</hyperlink>, <structureprod></structureprod> <hyperlink>Production</hyperlink>, and <unitprod></unitprod> <hyperlink>Draft</hyperlink> for each <hyperlink>Magic Material</hyperlink> in their <hyperlink>Domain</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "description": "Start with a <hyperlink>Magic Material</hyperlink> nearby."
-   }
-  ],
   "icon": "0000045A00000474"
  },
  {
+  "affinities": [
+   {
+    "name": "1<chaos></chaos> Chaos Affinity"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "biography_description": "They are warmongers and destroyers, choosing violence over diplomacy any time they can.",
   "lore_description": "They are warmongers and destroyers, choosing violence over diplomacy any time they can.",
   "point_cost": 1,
@@ -1164,7 +1584,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Razing cities grant a permanent +40 <gold></gold> <hyperlink>Gold</hyperlink>, +40 <mana></mana> <hyperlink>Mana</hyperlink>, and +40 <knowledge></knowledge><hyperlink>Knowledge</hyperlink> income for every 3 <population></population> <hyperlink>Population</hyperlink> of the city that was razed."
+    "name": "Razing cities grant a permanent +40 <gold></gold> <hyperlink>Gold</hyperlink>, +40 <mana></mana> <hyperlink>Mana</hyperlink>, and +40 <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> income for every 3 <population></population> <hyperlink>Population</hyperlink> of the city that was razed."
    },
    {
     "name": "Can not obtain new <hyperlink>Cities</hyperlink> and conquered cities can only be razed."
@@ -1173,25 +1593,21 @@
     "name": "Suffer -300 <hyperlink>Relations</hyperlink> with all <minorcity></minorcity><hyperlink>Free Cities</hyperlink> and -300 <hyperlink>Empire Relations</hyperlink> with all other <hyperlink>Empires</hyperlink>"
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 5,
-  "affinities": [
-   {
-    "name": "1<chaos></chaos> Chaos Affinity"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
   "icon": "0000045A00000454"
  },
  {
+  "affinities": [
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   }
+  ],
   "biography_description": "They know when to flatter and when to extort, elevating intrigue itself to a lucrative art.",
   "lore_description": "They know when to flatter and when to extort, elevating intrigue itself to a lucrative art.",
   "point_cost": 1,
@@ -1212,15 +1628,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with an extra Scout Unit."
@@ -1232,6 +1642,14 @@
   "icon": "0000045A00000451"
  },
  {
+  "affinities": [
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   },
+   {
+    "name": "1<order></order> Order Affinity"
+   }
+  ],
   "biography_description": "They believe it is their calling to unite all societies.",
   "lore_description": "They strive to build a realm based on cooperation, but will not hesitate to defend it.",
   "point_cost": 1,
@@ -1248,7 +1666,7 @@
     "name": "Gain +30% income from <hyperlink>Vassals</hyperlink>."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    },
    {
     "name": "<hyperlink>Units</hyperlink> recruited through <hyperlink>Rally of the Lieges</hyperlink> gain +1 Rank upon recruitment."
@@ -1258,18 +1676,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   },
-   {
-    "name": "1<order></order> Order Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with an extra Shield Unit or Polearm Unit."
@@ -1283,19 +1692,18 @@
     "name": "1<nature></nature> Nature Affinity"
    }
   ],
-  "biography_description": "",
   "lore_description": "",
+  "biography_description": "",
   "point_cost": 1,
   "id": "",
   "name": "",
   "screen_description": "",
   "effect_descriptions": [],
   "enabled": false,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003FE000002B1"
+  "icon": "000003FE000002B1",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1303,19 +1711,18 @@
     "name": "1<order></order> Order Affinity"
    }
   ],
-  "biography_description": "",
   "lore_description": "",
+  "biography_description": "",
   "point_cost": 1,
   "id": "",
   "name": "",
   "screen_description": "",
   "effect_descriptions": [],
   "enabled": false,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003FE000002B1"
+  "icon": "000003FE000002B1",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1323,8 +1730,8 @@
     "name": "2<shadow></shadow> Shadow Affinity"
    }
   ],
-  "biography_description": "Their society is dedicated to unraveling the secrets of the past. This makes them keen scholars of ancient sites, but also restless when bound to their ordinary lives.",
   "lore_description": "This race is dedicated to unraveling the secrets of the past. They make for keen scholars of ancient sites, but become restless when bound to their ordinary lives.",
+  "biography_description": "Their society is dedicated to unraveling the secrets of the past. This makes them keen scholars of ancient sites, but also restless when bound to their ordinary lives.",
   "point_cost": 1,
   "id": "mark_of_the_owl",
   "name": "Mark of the Owl",
@@ -1334,18 +1741,17 @@
     "name": "<xpCol>+2</xpCol> <shadow></shadow> <hyperlink>Shadow Affinity</hyperlink>"
    },
    {
-    "name": "<hyperlink>Cities</hyperlink> of this race gain <xpCol>+15</xpCol> <knowledge></knowledge><hyperlink>Knowledge</hyperlink> from cleared <hyperlink>Ancient Wonders</hyperlink> in their <hyperlink>Domain</hyperlink>."
+    "name": "<hyperlink>Cities</hyperlink> of this race gain <xpCol>+15</xpCol> <knowledge></knowledge> <hyperlink>Knowledge</hyperlink> from cleared <hyperlink>Ancient Wonders</hyperlink> in their <hyperlink>Domain</hyperlink>."
    },
    {
     "name": "<hyperlink>Cities</hyperlink> of this race have <fireCol>-20</fireCol> <happiness></happiness> <hyperlink>City Stability</hyperlink> when there is no cleared <hyperlink>Ancient Wonder</hyperlink> in their <hyperlink>Domain</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001362"
+  "icon": "000003DF00001362",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1353,8 +1759,8 @@
     "name": "2<matter></matter> Materium Affinity"
    }
   ],
-  "biography_description": "Driven by the desire to possess material wealth, they value gold above anything else.",
   "lore_description": "Driven by the desire to possess material wealth, this race values gold above anything else.",
+  "biography_description": "Driven by the desire to possess material wealth, they value gold above anything else.",
   "point_cost": 1,
   "id": "mark_of_the_hoard",
   "name": "Mark of the Hoard",
@@ -1371,11 +1777,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001361"
+  "icon": "000003DF00001361",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1383,8 +1788,8 @@
     "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
    }
   ],
-  "biography_description": "Their society thrives in peacefulness and pacifism.",
   "lore_description": "The people thrive in peacefulness and pacifism.",
+  "biography_description": "Their society thrives in peacefulness and pacifism.",
   "point_cost": 1,
   "id": "mark_of_the_dove",
   "name": "Mark of the Dove",
@@ -1401,11 +1806,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001360"
+  "icon": "000003DF00001360",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "lore_description": "<helpcolor>Moving around and settling in swamp areas becomes easier.</helpcolor>",
@@ -1429,7 +1833,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Adaptations",
   "front_end": true,
   "icon": "0000041B00001D31",
   "type": "form",
@@ -1457,7 +1861,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Adaptations",
   "front_end": true,
   "icon": "0000041B00001D2E",
   "type": "form",
@@ -1485,7 +1889,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Adaptations",
   "front_end": true,
   "icon": "0000041B00001D2B",
   "type": "form",
@@ -1522,7 +1926,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "ADAPTATION",
+  "group_name": "Adaptations",
   "front_end": true,
   "display_order": 6,
   "icon": "0000041B00001D27"
@@ -1540,7 +1944,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "0000041B00001D02",
   "type": "form",
@@ -1559,7 +1963,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "0000041B00001CFF",
   "type": "form",
@@ -1578,18 +1982,29 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Utility",
   "front_end": true,
   "icon": "0000041B00001CF4",
   "type": "form",
   "display_order": 1
  },
  {
-  "lore_description": "<helpcolor>Units become tougher when standing next to allies.</helpcolor>",
   "biography_description": "They have trained to cover any gaps in their defensive formations.",
+  "lore_description": "<helpcolor>Units become tougher when standing next to allies.</helpcolor>",
   "point_cost": 2,
   "id": "defensive_tactics",
   "name": "Defensive Tactics",
+  "incompatible_society_traits": [
+   {
+    "name": "Overwhelm Tactics"
+   },
+   {
+    "name": "Pack Tactics"
+   },
+   {
+    "name": "Uncooperative"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1597,37 +2012,53 @@
    }
   ],
   "enabled": true,
-  "group_name": "TACTICS",
-  "front_end": true,
-  "icon": "0000041B00001CEE",
   "type": "form",
-  "display_order": 3
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 3,
+  "icon": "0000041B00001CEE"
  },
  {
-  "lore_description": "<helpcolor>Units deal more damage when fighting in groups.</helpcolor>",
   "biography_description": "They work together to bring down even the largest of foes.",
+  "lore_description": "<helpcolor>Units deal more damage when fighting in groups.</helpcolor>",
   "point_cost": 2,
   "id": "overwhelm_tactics",
   "name": "Overwhelm Tactics",
+  "incompatible_society_traits": [
+   {
+    "name": "Defensive Tactics"
+   },
+   {
+    "name": "Pack Tactics"
+   },
+   {
+    "name": "Uncooperative"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+20% Critical Hit chance when standing next to a friendly unit with Overwhelm Tactics. This does not stack."
+    "name": "+20% <crit></crit>Critical Hit Chance when standing next to a friendly unit with Overwhelm Tactics. This does not stack."
    }
   ],
   "enabled": true,
-  "group_name": "TACTICS",
-  "front_end": true,
-  "icon": "0000041B00001CE7",
   "type": "form",
-  "display_order": 3
+  "group_name": "Offense",
+  "front_end": true,
+  "display_order": 3,
+  "icon": "0000041B00001CE7"
  },
  {
-  "lore_description": "<helpcolor>Encourages a slow and steady play style.</helpcolor>",
   "biography_description": "To them, the best defense are their shields and their patience in battle.",
+  "lore_description": "<helpcolor>Encourages a slow and steady play style.</helpcolor>",
   "point_cost": 2,
   "id": "bulwark",
   "name": "Bulwark",
+  "incompatible_society_traits": [
+   {
+    "name": "Careless"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1635,11 +2066,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
-  "front_end": true,
-  "icon": "0000041B00001CD0",
   "type": "form",
-  "display_order": 4
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "0000041B00001CD0"
  },
  {
   "lore_description": "<helpcolor>Useful for armies focusing on battle mages.</helpcolor>",
@@ -1654,14 +2085,14 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000041B00001CC8",
   "type": "form",
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Units are less likely to be affected by negative status effects and shrug them off faster.</helpcolor>",
+  "lore_description": "<helpcolor>Units are less likely to be affected by <hyperlink>Negative Status Effects</hyperlink> and shrug them off faster.</helpcolor>",
   "biography_description": "Their natural resilience makes them less likely to be affected by magic.",
   "point_cost": 2,
   "id": "resilient",
@@ -1672,11 +2103,11 @@
     "name": "+2 Status Resistance."
    },
    {
-    "name": "Negative status effects last -1 <turn></turn> Turn, with a minimum of 1."
+    "name": "<hyperlink>Negative Status Effects</hyperlink> last -1 <turn></turn> Turn, with a minimum of 1."
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "0000041B00001D3B",
   "type": "form",
@@ -1695,13 +2126,21 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "0000041B00001CBF",
   "type": "form",
   "display_order": 5
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Wayfinder Enchantment is already active and costs no upkeep."
+   },
+   {
+    "description": "Start with an extra Scout Unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<shadow></shadow> Shadow Affinity"
@@ -1725,21 +2164,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "starting_bonuses": [
-   {
-    "description": "Wayfinder Enchantment is already active and costs no upkeep."
-   },
-   {
-    "description": "Start with an extra Scout Unit."
-   }
-  ],
   "icon": "000003FC000004C5"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Battle Mage Unit or Support Unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<shadow></shadow> Shadow Affinity"
@@ -1760,18 +2195,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Battle Mage Unit or Support Unit."
-   }
-  ],
   "icon": "000003FC000004BE"
  },
  {
+  "affinities": [
+   {
+    "name": "1<shadow></shadow> Shadow Affinity"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "biography_description": "They dismiss silly ideas of morals and compassion, knowing that knowledge and power are the true virtues worth striving for.",
   "lore_description": "They share a thirst for knowledge and power, thriving in their pursuit of Evil.",
   "point_cost": 1,
@@ -1794,25 +2231,16 @@
     "name": "Cities gain +10 <unitprod></unitprod> Draft and your empire gains +5 <influence></influence> Imperium per level of Evil Alignment."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    },
    {
     "name": "Units cost -20% less <gold></gold> <hyperlink>Gold</hyperlink> and <unitprod></unitprod> <hyperlink>Draft</hyperlink> to recruit while you are at the maximum evil <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "1<shadow></shadow> Shadow Affinity"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with an extra Shock Unit or Shield Unit."
@@ -1821,6 +2249,11 @@
   "icon": "000003FC000004C0"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "1 nearby ancient wonders cleared."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -1841,18 +2274,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "1 nearby ancient wonders cleared."
-   }
-  ],
   "icon": "000003FC000004C6"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Shield Unit or Polearm Unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -1873,18 +2305,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Shield Unit or Polearm Unit."
-   }
-  ],
   "icon": "000003FC000004C2"
  },
  {
+  "starting_bonuses": [
+   {
+    "structure_upgrade_slug": "workshop"
+   },
+   {
+    "structure_upgrade_slug": "vendor"
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materium Affinity"
@@ -1905,21 +2339,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "structure_upgrade_slug": "workshop"
-   },
-   {
-    "structure_upgrade_slug": "vendor"
-   }
-  ],
   "icon": "000003FC000004BA"
  },
  {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "basic_seafaring"
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Nature Affinity"
@@ -1940,18 +2370,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "basic_seafaring"
-   }
-  ],
   "icon": "000003FC000004B7"
  },
  {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "expanded_governance"
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Nature Affinity"
@@ -1972,18 +2401,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "expanded_governance"
-   }
-  ],
   "icon": "000003FC000004BB"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Ranged Unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Nature Affinity"
@@ -2004,18 +2432,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Ranged Unit."
-   }
-  ],
   "icon": "000003FC000004B8"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Magic Origin unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<arcana></arcana> Astral Affinity"
@@ -2036,18 +2463,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Magic Origin unit."
-   }
-  ],
   "icon": "000003FC000004BC"
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astral Affinity"
+   }
+  ],
   "biography_description": "They are blessed with an innate talent for spellcasting.",
   "lore_description": "They are blessed with an innate talent for spellcasting, rarely encountering problems that can't be solved by an abundant use of magic.",
   "point_cost": 1,
@@ -2071,15 +2497,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "affinities": [
-   {
-    "name": "1<arcana></arcana> Astral Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with 1 extra Spell unlocked."
@@ -2096,8 +2516,8 @@
     "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
    }
   ],
-  "biography_description": "They sacrifice their people to gain favor from their gods.",
   "lore_description": "They believe both in the spiritual power of life... and in the value of a good banquet.",
+  "biography_description": "They sacrifice their people to gain favor from their gods.",
   "point_cost": 1,
   "id": "ritual_cannibals__evilact__",
   "name": "Ritual Cannibals <evilact></evilact>",
@@ -2107,20 +2527,24 @@
     "name": "Units gain the Corpse Eating ability."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    },
    {
     "name": "The nearest City owned gains +3 <mana></mana> <hyperlink>Mana</hyperlink> and +3 <food></food> <hyperlink>Food</hyperlink> per tier of non-Magic Origin units killed or lost after successful combat."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
-  "display_order": 5,
-  "icon": "000003FC000004C1"
+  "icon": "000003FC000004C1",
+  "type": "society",
+  "display_order": 5
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Get 2 random hero items."
+   }
+  ],
   "affinities": [
    {
     "name": "1<chaos></chaos> Chaos Affinity"
@@ -2140,22 +2564,21 @@
     "name": "The nearest City owned gains +3 <gold></gold> <hyperlink>Gold</hyperlink> and +3 <unitprod></unitprod> <hyperlink>Draft</hyperlink> per tier of units killed after successful combat."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 5,
-  "starting_bonuses": [
-   {
-    "description": "Get 2 random hero items."
-   }
-  ],
   "icon": "000003FC000004C4"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Capital city starts with +1 <population></population> Population."
+   }
+  ],
   "affinities": [
    {
     "name": "1<order></order> Order Affinity"
@@ -2173,18 +2596,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 6,
-  "starting_bonuses": [
-   {
-    "description": "Capital city starts with +1 <population></population> Population."
-   }
-  ],
   "icon": "000003FC000004B6"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Order Affinity"
+   },
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
+   }
+  ],
   "biography_description": "They share pure intentions, compassion and an unerring devotion to the good cause.",
   "lore_description": "They share pure intentions, compassion and an unerring devotion to the cause of Good.",
   "point_cost": 1,
@@ -2207,25 +2632,16 @@
     "name": "Cities gain +10 <gold></gold> <hyperlink>Gold</hyperlink> and your empire gains +5 <influence></influence> Imperium per level of Good Alignment."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    },
    {
     "name": "Units gain +2 <hyperlink><xp></xp> Experience</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink> while you are at the maximum good <goodact></goodact> <hyperlink>Alignment</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Order Affinity"
-   },
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Start with an extra Support Unit or Polearm Unit."
@@ -2234,6 +2650,11 @@
   "icon": "000003FC000004B5"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Start with an extra Tier I unit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<chaos></chaos> Chaos Affinity"
@@ -2253,19 +2674,13 @@
     "name": "Racial Tier I units have +1 Rank."
    },
    {
-    "name": "Non-Magic Origin units require -20% <hyperlink>Unit Upkeep</hyperlink>."
+    "name": "Non-Magic Origin units require -20% base <hyperlink>Unit Upkeep</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 5,
-  "starting_bonuses": [
-   {
-    "description": "Start with an extra Tier I unit."
-   }
-  ],
   "icon": "000003FC000004BF"
  },
  {
@@ -2293,7 +2708,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "0000041B00001637",
   "type": "form",
@@ -2324,7 +2739,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "0000041B0000162E",
   "type": "form",
@@ -2343,7 +2758,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000041B0000074C",
   "type": "form",
@@ -2365,7 +2780,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000041B0000073C",
   "type": "form",
@@ -2384,13 +2799,18 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "0000041B0000072D",
   "type": "form",
   "display_order": 4
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astral Affinity"
+   }
+  ],
   "biography_description": "They harbor knowledge dating back to the beginning of time.",
   "lore_description": "They have been around since the start of history, honing their minds in the pursuit of arcane knowledge.",
   "point_cost": 1,
@@ -2408,15 +2828,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "affinities": [
-   {
-    "name": "1<arcana></arcana> Astral Affinity"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "1 random research skill is already unlocked."
@@ -2437,7 +2851,6 @@
   "name": "Cannibals",
   "screen_description": "- Small Food <food></food> reward after tactical combat.<abilityred>Non-Functional</abilityred><br></br>- -1 <order></order> <abilityblue>Order</abilityblue>.",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2456,7 +2869,6 @@
   "name": "Malformed",
   "screen_description": "- Units have <abilityblue>Cause Fear</abiliytblue> <br></br>- -2 <abilityblue>Charisma</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2475,7 +2887,6 @@
   "name": "Regenerating",
   "screen_description": "- Units gain <abilityblue>Regeneration</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2494,7 +2905,6 @@
   "name": "Spider Worshippers",
   "screen_description": "- Unlocks the <abilityblue>Spider mount</abilityblue><br></br>- Unlocks the <abilityblue>Spider Riders</abilityblue> unit",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2513,7 +2923,6 @@
   "name": "Doomed",
   "screen_description": "- No happiness events in cities.<abilityred>Non-Functional</abilityred><br></br>- Other races have -100 Relation with Doomed races.<br></br>- +1 <chaos></chaos> <abilityblue>Chaos</abilityblue>.",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2532,7 +2941,6 @@
   "name": "Lucky Ones",
   "screen_description": "- +5% <abilityblue>Crit chance</abiliytblue><br></br>+5% rewards from clearing <abilityblue>Exploration Sites</abilityblue> and <abilityblue>pick-ups</abilityblue><br></br>- <abilityblue>Cities</abilityblue> have an increased chance of <abilityblue>Happiness events</abilitytblue><br></br>- +1 <chaos></chaos> <abilityblue>Chaos</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2551,7 +2959,6 @@
   "name": "Verminous",
   "screen_description": "- +20% Food <food></food> income<br></br>- <abilityblue>Cities</abilityblue> have an increased chance of <abilityred>Unhappiness events</abilityred><br></br>- -1 <abilityblue>Courage</abilityblue><br></br>- -1 <abilityblue>Charisma</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2570,7 +2977,6 @@
   "name": "Chosen",
   "screen_description": "- +1 <order></order> <abilityblue>Order</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2598,7 +3004,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000003EB00000599",
   "type": "form",
@@ -2629,18 +3035,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Mounts",
   "front_end": true,
   "icon": "000003EB00000597",
   "type": "form",
   "display_order": 0
  },
  {
-  "lore_description": "<helpcolor>Melee attackers have a chance of being poisoned.</helpcolor>",
   "biography_description": "They have poison glands which they use to ward off attackers.",
+  "lore_description": "<helpcolor>Melee attackers have a chance of being poisoned.</helpcolor>",
   "point_cost": 2,
   "id": "poisonous",
   "name": "Poisonous",
+  "incompatible_society_traits": [
+   {
+    "name": "Inner Fire"
+   },
+   {
+    "name": "Inner Frost"
+   },
+   {
+    "name": "Inner Lightning"
+   },
+   {
+    "name": "Inner Radiance"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2654,18 +3074,26 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "000003E300007147",
   "type": "form",
-  "display_order": 4
+  "group_name": "Defense",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "000003E300007147"
  },
  {
-  "lore_description": "<helpcolor>Units are less likely to rout.</helpcolor>",
   "biography_description": "Some call them cold-hearted. They prefer the term \\\"practical\\\".",
+  "lore_description": "<helpcolor>Units are less likely to rout.</helpcolor>",
   "point_cost": 1,
   "id": "cold_blooded",
   "name": "Cold Blooded",
+  "incompatible_society_traits": [
+   {
+    "name": "Cheerful"
+   },
+   {
+    "name": "Coward"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2673,11 +3101,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "MORALE",
-  "front_end": true,
-  "icon": "000003E100001497",
   "type": "form",
-  "display_order": 5
+  "group_name": "Utility",
+  "front_end": true,
+  "display_order": 5,
+  "icon": "000003E100001497"
  },
  {
   "lore_description": "<helpcolor>Units grow strong at a faster rate from winning fights.</helpcolor>",
@@ -2692,7 +3120,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Utility",
   "front_end": true,
   "icon": "000003E10000148A",
   "type": "form",
@@ -2711,7 +3139,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "000003E10000146F",
   "type": "form",
@@ -2730,7 +3158,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "000003E100001469",
   "type": "form",
@@ -2745,11 +3173,11 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+20% <hyperlink>Accuracy</hyperlink> on <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks."
+    "name": "+20% <hyperlink><accuracy></accuracy> Accuracy</hyperlink> on <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks."
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Offense",
   "front_end": true,
   "icon": "0000041B00001CBE",
   "type": "form",
@@ -2768,18 +3196,23 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Defense",
   "front_end": true,
   "icon": "000003E10000145F",
   "type": "form",
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Armies can fight longer on the world map.</helpcolor>",
   "biography_description": "Their blood is strong, which allows them to recuperate from wounds faster than others.",
+  "lore_description": "<helpcolor>Armies can fight longer on the world map.</helpcolor>",
   "point_cost": 2,
   "id": "fast_recuperation",
   "name": "Fast Recuperation",
+  "incompatible_society_traits": [
+   {
+    "name": "Weak Constitution"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2787,11 +3220,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
-  "front_end": true,
-  "icon": "000003E100001454",
   "type": "form",
-  "display_order": 4
+  "group_name": "Utility",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "000003E100001454"
  },
  {
   "affinities": [
@@ -2799,8 +3232,8 @@
     "name": "-10<reputation4></reputation4> <hyperlink>Alignment</hyperlink>"
    }
   ],
-  "biography_description": "Brutalized by constant battles, they turn any conflict into carnage.",
   "lore_description": "Brutalized by constant battles, these people turn any conflict into carnage.",
+  "biography_description": "Brutalized by constant battles, they turn any conflict into carnage.",
   "point_cost": 1,
   "id": "mark_of_the_butcher",
   "name": "Mark of the Butcher",
@@ -2817,11 +3250,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001367"
+  "icon": "000003DF00001367",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2829,8 +3261,8 @@
     "name": "2<nature></nature> Nature Affinity"
    }
   ],
-  "biography_description": "Their society has fostered an intimate bond with the native animals of the realm.",
   "lore_description": "This race has fostered an intimate bond with the native animals of the realm.",
+  "biography_description": "Their society has fostered an intimate bond with the native animals of the realm.",
   "point_cost": 1,
   "id": "mark_of_the_otter",
   "name": "Mark of the Otter",
@@ -2847,11 +3279,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001366"
+  "icon": "000003DF00001366",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2859,8 +3290,8 @@
     "name": "2<chaos></chaos> Chaos Affinity"
    }
   ],
-  "biography_description": "Their society thrives during times of war, and see in foreign empires only opportunities of conquest.",
   "lore_description": "This race thrives during times of war and sees in foreign empires only opportunities of conquest.",
+  "biography_description": "Their society thrives during times of war, and see in foreign empires only opportunities of conquest.",
   "point_cost": 1,
   "id": "mark_of_the_sword",
   "name": "Mark of the Sword",
@@ -2877,11 +3308,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001364"
+  "icon": "000003DF00001364",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2889,8 +3319,8 @@
     "name": "2<order></order> Order Affinity"
    }
   ],
-  "biography_description": "Residing in their high halls, they look down on all less developed dwellings.",
   "lore_description": "Residing in their high halls the members of this race look down on all less developed dwellings.",
+  "biography_description": "Residing in their high halls, they look down on all less developed dwellings.",
   "point_cost": 1,
   "id": "mark_of_the_tower",
   "name": "Mark of the Tower",
@@ -2907,11 +3337,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001365"
+  "icon": "000003DF00001365",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2919,8 +3348,8 @@
     "name": "2<arcana></arcana> Astral Affinity"
    }
   ],
-  "biography_description": "With spellcraft as a part of their daily lives, these people have integrated the application of mana deep into their society.",
   "lore_description": "With daily life spellcraft, these people have integrated the application of mana deep into their society.",
+  "biography_description": "With spellcraft as a part of their daily lives, these people have integrated the application of mana deep into their society.",
   "point_cost": 1,
   "id": "mark_of_the_conflux",
   "name": "Mark of the Conflux",
@@ -2937,10 +3366,9 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001363"
+  "icon": "000003DF00001363",
+  "type": "destiny",
+  "display_order": -1
  }
 ]

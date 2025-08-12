@@ -284,6 +284,7 @@
                 const cultureSet = new Set();
                 const originSet = new Set();
                 const classSet = new Set();
+
                 const tagSet = new Set(buildTags);
                 const activeDLCFilters = new Set();
 
@@ -293,6 +294,7 @@
                     const data = getBaseBuildDate(code); // You’ll need to expose `currentCulture`, etc.
 
                     if (data.currentCulture) cultureSet.add(data.currentCulture.name);
+
                     if (data.currentOrigin) originSet.add(data.currentOrigin.name);
                     if (data.currentClass) classSet.add(data.currentClass.name);
                 });
@@ -333,7 +335,40 @@
 
                 // Form, Culture, Origin
                 const currentForm = findById(getIdFromCode(splitcode[3]), jsonFactionCreation);
-                const currentCulture = findById(getIdFromCode(splitcode[4]), jsonFactionCreation);
+
+                // handle culture and subculture
+                // 4 = culture
+                var lookUp = splitcode[4];
+                // check for subculture
+
+                var currentCultureSplit = lookUp.split(":");
+                var numbernew = findById(getIdFromCode(currentCultureSplit[0]), jsonFactionCreation);
+                let currentSubCulture = null;
+                var currentCulture = numbernew;
+
+                // backwards compatible
+                if (numbernew.type == "SubCulture") {
+                    currentSubCulture = numbernew;
+
+                    for (let index = 0; index < jsonFactionCreation.length; index++) {
+                        if (jsonFactionCreation[index].name === currentSubCulture.requirement) {
+                            var newBit = jsonFactionCreation[index];
+                        }
+                    }
+                    currentCulture = newBit;
+                }
+
+                // subculture
+                if (currentCultureSplit[1] != undefined) {
+                    // subculture here
+
+                    var subcultureNo = findById(getIdFromCode(currentCultureSplit[1]), jsonFactionCreation);
+
+                    currentSubCulture = subcultureNo;
+                }
+
+                // origin
+
                 const currentOrigin = findById(getIdFromCode(splitcode[5]), jsonFactionCreation);
 
                 // Loadout / Class (legacy fallback)
@@ -380,7 +415,8 @@
                     currentTomeList,
                     currentClass,
                     currentAscension,
-                    currentSubType
+                    currentSubType,
+                    currentSubCulture
                 };
             }
 
@@ -804,6 +840,10 @@
                 if (build.currentCulture)
                     newDivCult.appendChild(
                         createEntry(build.currentCulture.name, build.currentCulture.id, "FactionCreation", 40)
+                    );
+                  if (build.currentSubCulture)
+                    newDivCult.appendChild(
+                        createEntry(build.currentSubCulture.name, build.currentSubCulture.id, "FactionCreation", 40)
                     );
                 if (build.currentSociety1)
                     newDivCult.appendChild(

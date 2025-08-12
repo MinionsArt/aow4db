@@ -9,9 +9,81 @@ var languageSelect = document.getElementById("languageSelect");
 
 var altHeld = false;
 
+  var extraAbilities = [{
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>Gains Heroic Stand for 1 <turn></turn> Turn.</bullet></bulletlist>",
+  "name": "Deathward",
+  "slug": "hs_ritualist_deathward_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "0000048D000018CB"
+ },];
+            
+            var extraSkills=[
+ {
+  "group_name": "Ritualist - Hero Skill Group",
+  "icon": "0000048D000018CC",
+  "type": "normal",
+  "abilities": [
+   {
+    "slug": "hs_ritualist_deathward_ability_000003BD00002895"
+   }
+  ],
+  "resid": 5003636906185,
+  "tree_name": "<classRitualist></classRitualist> Ritualist",
+  "name": "Deathward",
+  "tree_pos_x": 600.0,
+  "tree_pos_y": 550.0,
+  "id": "hs_ritualist_deathward",
+  "required_skills": [
+   {
+    "resid": 5222680235172
+   },
+   {
+    "resid": 4995046966069
+   }
+  ]
+ },{
+  "group_name": "Ritualist - Hero Skill Group",
+  "icon": "0000048B00000336",
+  "type": "normal",
+  "name": "Fortifying Support",
+  "tree_pos_x": 600.0,
+  "id": "hs_ritualist_fortifying_support",
+  "excluded_skills": [
+   {
+    "resid": 4995046966069
+   }
+  ],
+  "resid": 5222680235172,
+  "tree_name": "<classRitualist></classRitualist> Ritualist",
+  "tree_pos_y": 450.0,
+  "description": "<bulletlist><hyperlink>Support</hyperlink> abilities now grant:<bullet> +3 Status Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "required_skills": [
+   {
+    "resid": 5222680233603
+   },
+       {
+    "resid": 5222680233749
+   }
+  ]
+ }];
+
 const patchDates = [
     // date ranges of patches
-    { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-01") },
+      { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-29") },
+    { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-12") },
     { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
 ];
 
@@ -143,11 +215,11 @@ var jsonSiegeProjects;
 
 async function GetAllData(selectedLang) {
     var basePathEN;
-    if(selectedLang == "Beta"){
-            basePathEN = `/aow4db/Data/Beta/`;
-    }else{
+    //if(selectedLang == "Beta"){
+   //         basePathEN = `/aow4db/Data/Beta/`;
+  //  }else{
             basePathEN = `/aow4db/Data/EN/`;
-    }
+   // }
   //  const basePathEN = `/aow4db/Data/EN/`;
     const basePathLocal = `/aow4db/Data/${selectedLang}/`;
 
@@ -243,6 +315,20 @@ async function GetAllData(selectedLang) {
     }
 }
 
+function AddExtraData(){
+    // add extra data to the main data set
+    jsonHeroSkills = [...jsonHeroSkills, ...extraSkills];
+    jsonHeroSkillsLocalized = [...jsonHeroSkillsLocalized, ...extraSkills];
+    
+     jsonUnitAbilities = [...jsonUnitAbilities,...extraAbilities];
+    jsonUnitAbilitiesLocalized = [...jsonUnitAbilitiesLocalized,...extraAbilities];
+    
+        jsonUnitAbilities = [...jsonUnitAbilities,...jsonExtraTooltips];
+    jsonUnitAbilitiesLocalized = [...jsonUnitAbilitiesLocalized,...jsonExtraTooltips];
+}
+
+  const abilityMap = {};
+
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
         var storedSettings = getUserSettings();
@@ -278,12 +364,17 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-         if (storedSettings.showBeta) {
-             await GetAllData("Beta");
-         } else {
+       //  if (storedSettings.showBeta) {
+       //      await GetAllData("Beta");
+       //  } else {
         await GetAllData(storedSettings.language);
-        }
-
+       //}
+        
+        
+        AddExtraData();
+        
+       
+    jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
         HandlePage();
         Localize();
     }
@@ -322,6 +413,11 @@ var oathswornCultureUnits = [
     "peacebringer",
     "avenger",
     "warbound"
+];
+
+var architectCultureUnits = [
+    "surveyor",
+    "cultivator","earthbreaker","guardian","shademaker","architect"
 ];
 
 var MountedSpecialList = [
@@ -367,7 +463,8 @@ var extraFormUnitsList = [
     "tyrant_knight",
     "wildspeaker",
     "houndmaster",
-    "geomancer"
+    "geomancer",
+    "paladin", "oracle"
 ];
 
 var incorrectIconOverrideList = [
@@ -387,7 +484,7 @@ function AddTagIconsForStatusEffects(name) {
     let underline = '<span style="color:white; text-decoration:underline">';
     let endtag = "</span>";
 
-    for (let k = 0; k < jsonExtraTooltips.length; k++) {
+    /*for (let k = 0; k < jsonExtraTooltips.length; k++) {
         const effect = jsonExtraTooltips[k].name;
         if (name.includes(effect)) {
             let tooltipspan = document.createElement("span");
@@ -398,7 +495,7 @@ function AddTagIconsForStatusEffects(name) {
             let pattern = new RegExp(`\\b${effect}\\b`);
             name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
         }
-    }
+    } */
 
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
@@ -431,7 +528,7 @@ function AddTagIconsForStatusEffects(name) {
 }
 
 function lookupStatusEffect(status) {
-    for (let k = 0; k < jsonExtraTooltips.length; k++) {
+   /* for (let k = 0; k < jsonExtraTooltips.length; k++) {
         if (status == jsonExtraTooltips[k].name) {
             let effect = jsonExtraTooltips[k].name;
             // check if itss an ability or just a small description
@@ -450,7 +547,7 @@ function lookupStatusEffect(status) {
             status = status.replace(effect, effectplusColor + "<br>" + tag);
             return status;
         }
-    }
+    } */
 
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         if (status == jsonUnitAbilitiesLocalized[i].name) {
@@ -520,7 +617,7 @@ function GetUnitTierAndName(id, subcultureCheck) {
         //     continue;
         // }
 
-        // Check if subculture matches if provided
+        // Check if subculture matches if provided, 
         if (subcultureCheck !== undefined && "sub_culture_name" in unit && unit.sub_culture_name !== subcultureCheck) {
             continue;
         }
@@ -562,7 +659,8 @@ function CheckIfFormUnit(id) {
         reaverCultureUnits.includes(id) ||
         primalCultureUnits.includes(id) ||
         extraFormUnitsList.includes(id) ||
-        oathswornCultureUnits.includes(id)
+        oathswornCultureUnits.includes(id) ||
+        architectCultureUnits.includes(id)
     ) {
         if (id !== "observer" && id != "magelock_cannon") {
             return true;
@@ -804,6 +902,8 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
             case "searchUnit":
                 if (subcultureCheck2 != undefined) {
                     // div.setAttribute("id", list[i] + subcultureCheck);
+                    //ignore if architect cause its not true subcultures
+                  
                     showUnitFromString(list[i], list[i] + subcultureCheck2, subcultureCheck2);
                     btn.innerHTML = GetUnitTierAndName(list[i], subcultureCheck2);
                     btn.setAttribute("onclick", "openDiv(event,'" + list[i] + subcultureCheck2 + "',true)");
@@ -1047,7 +1147,7 @@ function CheckIfOptionalCavalry(name) {
     for (i in jsonUnits) {
         if (name === jsonUnits[i].id) {
             for (j in jsonUnits[i].secondary_passives) {
-                if (jsonUnits[i].secondary_passives[j].slug === "optional_cavalry") {
+                if (jsonUnits[i].secondary_passives[j].slug === "000003eb0000073f") {
                     optional = true;
                 }
             }
@@ -3802,7 +3902,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     }
 
     let subculture = "";
-    if ("sub_culture_name" in unitData) {
+    if ("sub_culture_name" in unitData && !architectCultureUnits.includes(unitData.id)) {
         subculture = unitData.sub_culture_name.toLowerCase().replaceAll(" ", "_");
         if (culture == "primal") {
             subculture = "primal_" + subculture;
@@ -3834,7 +3934,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
             tierandnameoftome != ""
                 ? `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink> <br>in Tier <hyperlink>${romanize(tierandnameoftome.tier)} - ${showAffinitySymbols(tierandnameoftome)} ${tierandnameoftome.name}</hyperlink>`
                 : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].id}.png`;
+        const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
         createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3950,6 +4050,12 @@ function showAffinitySymbols(tomes) {
 function CheckIfInSpells(unitID, unitName) {
     let spell = [];
     // check for duplicates
+    
+  const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+
+    
     let spellIDChecker = [];
     let i = 0;
     for (i in jsonSpells) {
@@ -3964,7 +4070,8 @@ function CheckIfInSpells(unitID, unitName) {
                 }
             }
         }
-        if (jsonSpells[i].description.indexOf(">" + unitName) != -1) {
+        
+         if (regex.test(jsonSpells[i].description)) {
             if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
                 spell.push(jsonSpells[i]);
                 spellIDChecker.push(jsonSpells[i].id);
@@ -3978,11 +4085,15 @@ function CheckIfInSpells(unitID, unitName) {
 function CheckIfFromAbility(unitName) {
     let ability = "";
     let i = 0;
+      const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+    
     for (i in jsonUnitAbilities) {
         if (unitName === "Fire Runestone") {
             unitName = "Runestone";
         }
-        if (jsonUnitAbilities[i].description.indexOf(" " + unitName) != -1) {
+        if (regex.test(jsonUnitAbilities[i].description)) {
             ability = jsonUnitAbilities[i];
         }
     }
@@ -4012,16 +4123,24 @@ function CheckIfFromAbility(unitName) {
 
     return unitslugLookup;
 }
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 function CheckIfFromHeroSkill(unitName) {
     let resultslist = "";
     let hero = "";
-    let i = 0;
-    for (i in jsonUnitAbilities) {
-        if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
-            hero = jsonUnitAbilities[i];
-        }
+    const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+
+for (let i in jsonUnitAbilities) {
+  
+
+    if (regex.test(jsonUnitAbilities[i].description)) {
+        hero = jsonUnitAbilities[i];
     }
+}
 
     let j = 0;
     for (j in jsonHeroSkills) {
@@ -4039,7 +4158,8 @@ function CheckIfFromHeroSkill(unitName) {
         } else {
             let k = 0;
             for (k in jsonHeroSkills[j].description) {
-                if (jsonHeroSkills[j].description.indexOf(unitName) != -1) {
+                if (regex.test(jsonHeroSkills[j].description)) {
+      
                     resultslist = [];
                     resultslist.push(hero);
                     resultslist.push(jsonHeroSkills[j]);
@@ -4053,9 +4173,14 @@ function CheckIfFromHeroSkill(unitName) {
 
 function CheckIfFromGovernance(unitName) {
     let governance = "";
+    
+     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+    
     let i = 0;
     for (i in jsonHeroGovernance) {
-        if (jsonHeroGovernance[i].screen_description.indexOf(">" + unitName) != -1) {
+         if (regex.test(jsonHeroGovernance[i].screen_description)) {
             governance = jsonHeroGovernance[i];
         }
     }
@@ -4065,8 +4190,13 @@ function CheckIfFromGovernance(unitName) {
 function CheckIfInSiege(unitName) {
     let siege = "";
     let i = 0;
+    
+     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+    
     for (i in jsonSiegeProjects) {
-        if (jsonSiegeProjects[i].description.indexOf(">" + unitName) != -1) {
+        if (regex.test(jsonSiegeProjects[i].description)) {
             siege = jsonSiegeProjects[i];
         }
     }
@@ -4076,18 +4206,18 @@ function CheckIfInSiege(unitName) {
 function CheckIfInStructure(unitName) {
     let structure = "";
     let i = 0;
+    
+      const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+    
     for (i in jsonStructureUpgrades) {
-        if (unitName === "Warg") {
-            unitName = "Warg<";
-        }
-        if (unitName === "Archer") {
-            unitName = "Archer<";
-        }
-        if (jsonStructureUpgrades[i].prediction_description.indexOf(">" + unitName) != -1) {
+      
+        if (regex.test(jsonStructureUpgrades[i].prediction_description)) {
             structure = jsonStructureUpgrades[i];
         }
 
-        if (jsonStructureUpgrades[i].description.indexOf(">" + unitName) != -1) {
+        if (regex.test(jsonStructureUpgrades[i].description)) {
             structure = jsonStructureUpgrades[i];
         }
     }
@@ -4115,12 +4245,15 @@ function CheckIfInTomes(unitID) {
     return tome;
 }
 
-function CheckIfInEmpireTree(unitNameUnique) {
+function CheckIfInEmpireTree(unitName) {
     let tree = "";
-    let i,
-        k = "";
+    
+      const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
+    // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
+    const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+    let i = "";
     for (i in jsonEmpire) {
-        if (jsonEmpire[i].description.indexOf(">" + unitNameUnique) != -1) {
+        if (regex.test(jsonEmpire[i].description)) {
             tree = jsonEmpire[i];
         }
     }
@@ -5071,6 +5204,8 @@ function GetAbilityInfo(ability) {
         }
 
         let abilityMod = "";
+        
+        
 
         let l = 0;
         for (l in ability.modifiers) {
@@ -5238,7 +5373,7 @@ function showStructure(a, showOrigin) {
         a = a.replace("_", "");
     }
 
-    imagelink.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + a + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureLoc.icon + ".png");
     if (a.indexOf("town_hall_iii_") != -1) {
         description += "<br><br> Unlocks T3 Culture Units";
     }
@@ -5833,6 +5968,8 @@ function showUnitUnlock(a) {
     found = true;
 }
 
+const SpellDuplicateExclusionList = [4514010629343, 4514010628856];
+
 function showSpell(a, showOrigin) {
     let modName,
         description,
@@ -5842,7 +5979,7 @@ function showSpell(a, showOrigin) {
         modCard = "";
     let found = false;
     for (let j = jsonSpells.length - 1; j >= 0; j--) {
-        if (a === jsonSpells[j].id) {
+        if (a === jsonSpells[j].id && !SpellDuplicateExclusionList.includes(jsonSpells[j].resid)) {
             modCard = document.getElementById("spell_card");
             modCard.setAttribute("id", "spell_card" + a);
             modName = document.getElementById("modname");
@@ -5875,9 +6012,9 @@ function showSpell(a, showOrigin) {
                 div.innerHTML = "<bullet>" + jsonSpellsLocalized[j].enchantment_requisites[l].requisite + "</bullet>";
                 unitTypesDiv.appendChild(div);
             }
-
             if ("summoned_units" in jsonSpells[j]) {
                 description += "<br>Summoned Units:<br>";
+              
                 let x = 0;
                 for (x in jsonSpells[j].summoned_units) {
                     let div = document.createElement("DIV");
@@ -5896,8 +6033,8 @@ function showSpell(a, showOrigin) {
 
             descriptionDiv.innerHTML = description;
             if (
-                a === "summon_wild_animal" ||
-                a === "summon_greater_animal" ||
+                a === "call_wild_animal" ||
+                a === "call_greater_animal" ||
                 a === "awaken_the_forest" ||
                 a === "demonic_summoning" ||
                 a === "summon_elemental" ||
@@ -6130,6 +6267,7 @@ function FindUnitsWithSecondaryPassive(trait) {
         for (j in jsonUnits[i].secondary_passives) {
             if (jsonUnits[i].secondary_passives[j].slug === ability.slug) {
                 //  if (!isInArray(unitsList, jsonUnits[i])) {
+                
                 unitsList.push(jsonUnits[i]);
                 //  }
             }
@@ -6178,12 +6316,17 @@ function FindUnitsWithSecondaryPassive(trait) {
         let unitsSorted = [];
         let x = 0;
         for (x in splitArrays[z]) {
-            if ("sub_culture_name" in splitArrays[z][x]) {
+            if ("sub_culture_name" in splitArrays[z][x] && !architectCultureUnits.includes(splitArrays[z][x].id)) {
                 let newEntry = splitArrays[z][x].id + "," + splitArrays[z][x].sub_culture_name;
-
-                unitsSorted.push(newEntry);
+                
+                if(!isInArray(unitsSorted, newEntry)){
+                      unitsSorted.push(newEntry);
+                }
+              
             } else {
+                 if(!isInArray(unitsSorted, splitArrays[z][x].id)){
                 unitsSorted.push(splitArrays[z][x].id);
+                 }
             }
         }
         sortedUnitListArray.push(unitsSorted);
@@ -6191,6 +6334,8 @@ function FindUnitsWithSecondaryPassive(trait) {
 
     return sortedUnitListArray;
 }
+
+
 
 function showItem(a) {
     let modName,
@@ -6221,33 +6366,26 @@ function showItem(a) {
         descriptionDiv.innerHTML += itemLoc.description + "<br>";
     }
 
-    const abilityMap = {};
-    jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
+   
 
     let lookup;
     if ("ability_slugs" in itemLoc) {
        
-        for (let l = 0; l < itemLoc.ability_slugs.length; l++) {
-            lookup = itemLoc.ability_slugs[l].slug;
+       const fragment = document.createDocumentFragment();
 
-            let spa = document.createElement("SPA");
-          
+for (let slugObj of itemLoc.ability_slugs) {
+    const ability = abilityMap[slugObj.slug];
+    if (!ability) continue;
 
-            const ability = abilityMap[lookup];
-            if (ability) {
-               
-                let spa = GetAbilityInfo(ability);
-                spa.className = "itemAbility";
+    const abilityElement =  GetAbilityInfo(ability); //
+    abilityElement.className = "itemAbility";
+    abilityElement.style.width = "450px";
 
-                spa.setAttribute("style", "width: 450px");
+    fragment.appendChild(abilityElement);
+    break;
+}
 
-                found = true;
-
-                descriptionDiv.append(spa);
-
-                break;
-            }
-        }
+descriptionDiv.appendChild(fragment);
     }
 
     if ("DLC" in a) {
@@ -6439,6 +6577,10 @@ function showTraitSetup(currentTrait) {
 
     imagelink = document.getElementById("modicon");
     let iconLink = currentTrait.icon;
+    if(iconLink == undefined){
+        // fallback
+        iconLink = currentTrait.id;
+    }
     if (iconLink.startsWith("_")) {
         iconLink = iconLink.split("_").slice(1).join("_");
     }

@@ -55,7 +55,7 @@ function returnUnitList(fieldToSearch) {
                 // if (list.length >= 1) {
 
                 var newEntry = "";
-                if ("sub_culture_name" in jsonUnitsLocalized[i]) {
+                if ("sub_culture_name" in jsonUnitsLocalized[i] && !architectCultureUnits.includes(jsonUnitsLocalized[i].id)) {
                     newEntry = jsonUnitsLocalized[i].id + "," + jsonUnitsLocalized[i].sub_culture_name;
                 } else {
                     newEntry = jsonUnitsLocalized[i].id;
@@ -596,7 +596,14 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
                 // if (listToPushTo.length >= 1) {
 
                 if ("sub_culture_name" in jsonUnitsLocalized[index]) {
-                    newEntry = jsonUnitsLocalized[index].id + "," + jsonUnitsLocalized[index].sub_culture_name;
+                    // not architects
+                    if(jsonUnitsLocalized[index].culture_name == "Architect" ){
+                        // skip
+                          newEntry = jsonUnitsLocalized[index].id;
+                    } else{
+                         newEntry = jsonUnitsLocalized[index].id + "," + jsonUnitsLocalized[index].sub_culture_name;
+                    }
+                   
                 } else {
                     newEntry = jsonUnitsLocalized[index].id;
                 }
@@ -647,8 +654,8 @@ function findUnitWithAbility(ability, listToPushTo) {
 
         for (const source of checkSources) {
             if (source.slug === ability) {
-                const newEntry = unit.sub_culture_name ? `${unit.id},${unit.sub_culture_name}` : unit.id;
-
+                const newEntry = unit.sub_culture_name && !architectCultureUnits.includes(unit.id) ? `${unit.id},${unit.sub_culture_name}` : unit.id;
+                
                 if (!isInArray(listToPushTo, newEntry)) {
                     listToPushTo.push(newEntry);
                 }
