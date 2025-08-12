@@ -3206,12 +3206,20 @@ function findTraitsWithArgument(argumentType, affinity) {
                     }
                 }
             }
+            
+              if(argumentType == "Visions"){
+                 if (jsonFactionCreation2[j].name.indexOf("Vision of") != -1) {
+                finalCheckedList.push(jsonFactionCreation2[j].id);
+            }
+            }
         }
 
         for (j in jsonFactionCreation) {
-            if (jsonFactionCreation[j].type.toUpperCase().indexOf(argumentType.toUpperCase()) !== -1) {
+            if (jsonFactionCreation[j].type.toUpperCase() == (argumentType.toUpperCase())) {
                 finalCheckedList.push(jsonFactionCreation[j].id);
             }
+          
+            
         }
     }
 
