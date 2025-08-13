@@ -3211,6 +3211,7 @@ function findTraitsWithArgument(argumentType, affinity) {
                  if (jsonFactionCreation2[j].name.indexOf("Vision of") != -1) {
                 finalCheckedList.push(jsonFactionCreation2[j].id);
             }
+                
             }
         }
 
@@ -3218,6 +3219,12 @@ function findTraitsWithArgument(argumentType, affinity) {
             if (jsonFactionCreation[j].type.toUpperCase() == (argumentType.toUpperCase())) {
                 finalCheckedList.push(jsonFactionCreation[j].id);
             }
+            
+              if(argumentType == "Visions"){
+                 if (jsonFactionCreation[j].type == "SubSociety") {
+                finalCheckedList.push(jsonFactionCreation[j].id);
+            }
+              }
           
             
         }
@@ -6218,6 +6225,14 @@ function ConvertSpawnTable(input) {
     return bulletList;
 }
 
+function addSpoiler(text) {
+  const span = document.createElement("span");
+  span.className = "spoiler";
+  span.innerHTML = text;
+  span.addEventListener("click", () => span.classList.toggle("revealed"));
+  return span;
+}
+
 function FindFormUnits() {
     let unitsList = [];
     let i = 0;
@@ -6549,6 +6564,13 @@ function showTraitSetup(currentTrait) {
     }
 
     if ("description" in currentTrait) {
+        if("requirement" in currentTrait){
+        
+              if(currentTrait.requirement == "Vision of Destiny"){
+             descriptionDiv.innerHTML += "Earn 500 points by:<br>";
+        }
+        }
+      
         descriptionDiv.innerHTML += currentTrait.description;
     }
 
@@ -6578,6 +6600,11 @@ function showTraitSetup(currentTrait) {
             descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
         }
         descriptionDiv.innerHTML += "</bulletlist>";
+    }
+    
+    if("rewards" in currentTrait){
+        descriptionDiv.innerHTML+= "<br><br>Rewards: <br>";
+        descriptionDiv.append(addSpoiler(currentTrait.rewards));
     }
 
     descriptionDiv.setAttribute("id", "moddescription" + currentTrait.id);
@@ -6613,9 +6640,13 @@ function showTraitSetup(currentTrait) {
         iconLink = iconLink.split("_").slice(1).join("_");
     }
 
-    imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
-    imagelink.setAttribute("style", "background-image:none");
+  
+          imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
+    imagelink.setAttribute("style", "background-image:none"); 
+     imagelink.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/empty.png')");
     imagelink.setAttribute("id", "modicon" + currentTrait.id);
+    
+  
 
     let tomeOriginIcon = document.getElementById("originTomeIcon");
 

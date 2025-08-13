@@ -1437,8 +1437,15 @@ function createButtonText(origin, type) {
     if ("point_cost" in origin && type === "FormTrait") {
         span.innerHTML += `${origin.point_cost}: `;
     }
+    
+    if(type == "SubSociety1" || type == "SubSociety2"){
+          span.innerHTML +=  origin.name.split(":")[1];
+    } else{
+          span.innerHTML += type === "Loadout" ? origin.name : ` ${originLoc.name}`;
+    }
 
-    span.innerHTML += type === "Loadout" ? origin.name : ` ${originLoc.name}`;
+  
+    
 
     if ("affinity" in origin) {
         span.innerHTML += ` ${ClearAffinityExtraTags(origin.affinity).replaceAll(",", "")}`;
