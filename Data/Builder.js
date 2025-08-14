@@ -102,7 +102,8 @@ var altHeld = false;
 
 const patchDates = [
     // date ranges of patches
-      { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-29") },
+       { name: "Griffon 1.1", from: new Date("2025-08-114"), to: new Date("2025-11-29") },
+      { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-14") },
     { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-12") },
     { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
 ];
