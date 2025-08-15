@@ -9,26 +9,7 @@ var languageSelect = document.getElementById("languageSelect");
 
 var altHeld = false;
 
-  var extraAbilities = [{
-  "notes": [
-   {
-    "note": "Cooldown: 3 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly unit:<bulletlist><bullet>Gains Heroic Stand for 1 <turn></turn> Turn.</bullet></bulletlist>",
-  "name": "Deathward",
-  "slug": "hs_ritualist_deathward_ability_000003BD00002895",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
-  "range": "4",
-  "icon": "0000048D000018CB"
- },];
+  var extraAbilities = [];
             
             var extraSkills=[
                 {
@@ -52,29 +33,6 @@ var altHeld = false;
    }
   ]},
  {
-  "group_name": "Ritualist - Hero Skill Group",
-  "icon": "0000048D000018CC",
-  "type": "normal",
-  "abilities": [
-   {
-    "slug": "hs_ritualist_deathward_ability_000003BD00002895"
-   }
-  ],
-  "resid": 5003636906185,
-  "tree_name": "<classRitualist></classRitualist> Ritualist",
-  "name": "Deathward",
-  "tree_pos_x": 600.0,
-  "tree_pos_y": 550.0,
-  "id": "hs_ritualist_deathward",
-  "required_skills": [
-   {
-    "resid": 5222680235172
-   },
-   {
-    "resid": 4995046966069
-   }
-  ]
- },{
   "group_name": "Ritualist - Hero Skill Group",
   "icon": "0000048B00000336",
   "type": "normal",
