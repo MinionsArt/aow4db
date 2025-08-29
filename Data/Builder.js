@@ -4053,7 +4053,7 @@ function CheckIfInSpells(unitID, unitName) {
     let spellIDChecker = [];
     let i = 0;
     for (i in jsonSpells) {
-        if ("summoned_units" in jsonSpells[i]) {
+        if ("summoned_units" in jsonSpells[i] && jsonSpells[i].id != "invalid") {
             let k = 0;
             for (k in jsonSpells[i].summoned_units) {
                 if (unitID === jsonSpells[i].summoned_units[k].slug) {
@@ -5962,7 +5962,7 @@ function showUnitUnlock(a) {
     found = true;
 }
 
-const SpellDuplicateExclusionList = [4514010629343, 4514010628856];
+const SpellDuplicateExclusionList = [];// [4514010629343, 4514010628856];
 
 function showSpell(a, showOrigin) {
     let modName,
@@ -5973,7 +5973,7 @@ function showSpell(a, showOrigin) {
         modCard = "";
     let found = false;
     for (let j = jsonSpells.length - 1; j >= 0; j--) {
-        if (a === jsonSpells[j].id && !SpellDuplicateExclusionList.includes(jsonSpells[j].resid)) {
+        if (a === jsonSpells[j].id ) {
             modCard = document.getElementById("spell_card");
             modCard.setAttribute("id", "spell_card" + a);
             modName = document.getElementById("modname");
