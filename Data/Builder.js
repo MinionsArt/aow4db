@@ -4824,20 +4824,17 @@ function showTome(a, div) {
         }
     }
 
-    if ("hero_skills" in tomeEN) {
-        for (let l = 0; l < tomeEN.hero_skills; l++) {
+   
+        for (let l = 0; l < jsonExtraAscendedInfo.length; l++) {
             // remove duplicates
-            if (l != 0) {
-                if (tomeEN.hero_skills[l].slug === tomeEN.hero_skills[l - 1].slug) {
-                    break;
-                }
-            }
+            
+           if(jsonExtraAscendedInfo[l].description.indexOf(tomeEN.name) != -1){
             let div = document.createElement("DIV");
             div.className = "initialBonusText";
-            let name = GetHeroSkillName(tomeEN.hero_skills[l].slug);
+            let name = GetHeroSkillName(jsonExtraAscendedInfo[l].id);
             div.innerHTML = "<hero></hero>" + name;
 
-            let heroSkillIconAndDesc = GetHeroSkillDescription(tomeEN.hero_skills[l].slug);
+            let heroSkillIconAndDesc = GetHeroSkillDescription(jsonExtraAscendedInfo[l].id);
 
             if (heroSkillIconAndDesc != undefined) {
                 let spa2;
@@ -4857,10 +4854,7 @@ function showTome(a, div) {
                 title.setAttribute("style", "color:#deb887 ");
 
                 title.innerHTML +=
-                    "<br>" +
-                    heroSkillIconAndDesc[1].category_name +
-                    " - " +
-                    heroSkillIconAndDesc[1].level_name +
+                    "<br>" + "Ascension Skill" +
                     "<br><br>";
 
                 spa2.prepend(title);
@@ -4868,8 +4862,9 @@ function showTome(a, div) {
                 addTooltipListeners(div, spa2);
                 unitTypesDiv.appendChild(div);
             }
+               }
         }
-    }
+    
     // casting points
     div = document.createElement("DIV");
     div.className = "initialBonusText initialBonusCastingPoints";
