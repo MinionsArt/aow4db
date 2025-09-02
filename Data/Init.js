@@ -24,11 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
       requireAjax("/aow4db/Data/Builder.js", function () {
    
            CheckData();
-  });
-        // wait for a while and then  HandleExtraTooltips();
+            // wait for a while and then  HandleExtraTooltips();
     setTimeout(function () {
         HandleExtraTooltips();
     }, 2000);
+  });
+      
     
     });
 
