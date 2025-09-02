@@ -69,12 +69,12 @@ const patchDates = [
 ];
 
 // Toggle ALT mode on each key press
-document.addEventListener("keydown", function (event) {
+/*document.addEventListener("keydown", function (event) {
     if (event.key === "Alt") {
         event.preventDefault(); // Prevent default browser behavior
         altHeld = !altHeld; // Toggle state
     }
-});
+});*/
 
 function highlightNumbersInDiv(text) {
     if (!text) return;
