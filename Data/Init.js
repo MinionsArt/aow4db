@@ -2,15 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    requireAjax("/aow4db/Data/src/settings.js", function () {
-         requireAjax("/aow4db/Data/Search.js", function () {
-              requireAjax("/aow4db/Data/Faction.js", function () {
-          
-      });
-          
-      });
-          
-      });
+   
       
        
   
@@ -20,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((html) => {
        document.body.insertAdjacentHTML("afterbegin", html);
       
-      
-      requireAjax("/aow4db/Data/Builder.js", function () {
+       requireAjax("/aow4db/Data/src/settings.js", function () {
+         requireAjax("/aow4db/Data/Search.js", function () {
+              requireAjax("/aow4db/Data/Faction.js", function () {
+                   requireAjax("/aow4db/Data/Builder.js", function () {
    
            CheckData();
             // wait for a while and then  HandleExtraTooltips();
@@ -29,6 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
         HandleExtraTooltips();
     }, 2000);
   });
+          
+      });
+          
+      });
+          
+      });
+      
+      
+     
       
     
     });
