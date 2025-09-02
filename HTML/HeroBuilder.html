@@ -17,17 +17,39 @@
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Hero.js"></script>
+      
+         <script src="/aow4db/Data/Init.js"></script>
+      
 
         <script>
+            
+            
             var dragonDisableList = ["Ranger"];
             var giantDisableList = ["Ranger"];
             var eldritchDisableList = ["Warrior", "Defender", "Spellblade", "DeathKnight", "Ranger"];
-            $("#body").ready(function () {
-                $("#header").load("/aow4db/HTML/header.html", function () {
-                    CheckData();
+          
                     // GetLocalData();
 
-                    // Get the dropdown element
+                    
+                
+
+            function populateSelect(id, items) {
+                const select = document.getElementById(id);
+                items.forEach((item) => {
+                    const option = document.createElement("option");
+                    option.value = item;
+                    option.textContent = item;
+                    option.classList = "ClassSelector";
+                    option.setAttribute("id", item.replaceAll(" ", ""));
+                    select.appendChild(option);
+                });
+            }
+            
+          
+
+            function HandlePage() {
+                
+                // Get the dropdown element
                     const dropdownOrigin = document.getElementById("actionDropdownOrigin");
                     const dropdownOriginDragon = document.getElementById("actionDropdownOriginDragon");
                     const dropdownOriginGiant = document.getElementById("actionDropdownOriginGiant");
@@ -138,24 +160,6 @@
 
                         // Trigger functions based on the selected value
                     });
-                });
-            });
-
-            function populateSelect(id, items) {
-                const select = document.getElementById(id);
-                items.forEach((item) => {
-                    const option = document.createElement("option");
-                    option.value = item;
-                    option.textContent = item;
-                    option.classList = "ClassSelector";
-                    option.setAttribute("id", item.replaceAll(" ", ""));
-                    select.appendChild(option);
-                });
-            }
-            
-          
-
-            function HandlePage() {
                 // dynamic load classes
                 var classesList = [];
                // if (showBetaTooltip.checked) {
@@ -215,7 +219,10 @@
     </head>
 
     <body>
+         <div id="scripts"></div>
         <div id="header"></div>
+        
+ 
         <div class="tome_name">Hero creator</div>
         <div style="height: auto; color: white; text-align: center">
             <a href="/aow4db/HTML/HeroSkillsList.html">Skill List View</a><br /><br />

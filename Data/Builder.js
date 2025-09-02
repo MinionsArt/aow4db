@@ -1,3 +1,5 @@
+
+
 var searchParams = new URLSearchParams(window.location.search);
 var sorting = searchParams.get("sort");
 var currentView = "";
@@ -84,19 +86,19 @@ function highlightNumbersInDiv(text) {
     return text;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
     fetch("/aow4db/HTML/header.html")
         .then((response) => response.text())
         .then((headerHTML) => {
             document.body.insertAdjacentHTML("afterbegin", headerHTML);
-
+            
             CheckData();
         });
     // wait for a while and then  HandleExtraTooltips();
     setTimeout(function () {
         HandleExtraTooltips();
     }, 2000);
-});
+});*/
 
 function OverwriteEditKey() {
     localStorage.setItem("editKey", document.getElementById("overwriteKey").value);
@@ -128,10 +130,7 @@ function CheckBoxTooltips() {
     });
 }
 
-// Set user settings
-function setUserSettings(settings) {
-    localStorage.setItem("userSettings", JSON.stringify(settings));
-}
+
 
 function downloadEditKeyFile() {
     const text =
@@ -151,32 +150,8 @@ function downloadEditKeyFile() {
     URL.revokeObjectURL(link.href);
 }
 
-// Update user settings
-function updateUserSettings(updatedSettings) {
-    const currentSettings = getUserSettings();
-    if (currentSettings) {
-        const newSettings = {
-            ...currentSettings,
-            ...updatedSettings
-        };
-        setUserSettings(newSettings);
-    }
-}
 
-function getOrCreateUserEditKey() {
-    let editKey = localStorage.getItem("editKey");
-    if (!editKey) {
-        editKey = crypto.randomUUID(); // Or custom hash if you want
-        localStorage.setItem("editKey", editKey);
-    }
-    return editKey;
-}
-// Get user settings
-function getUserSettings() {
-    const storedSettings = localStorage.getItem("userSettings");
 
-    return storedSettings ? JSON.parse(storedSettings) : null;
-}
 
 function fetchJsonFiles(filePaths) {
     return Promise.all(
@@ -358,6 +333,8 @@ async function CheckData() {
         Localize();
     }
 }
+
+
 
 var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
 var barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];

@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+         <script src="/aow4db/Data/Init.js"></script>
 
         <style>
             button {
@@ -375,12 +376,7 @@
             const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
             const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
 
-            $("#body").ready(function () {
-                $("#header").load("/aow4db/HTML/header.html", function () {
-                    CheckData();
-                });
-            });
-
+          
             function HandlePage() {
                 
                 // hide build submitter
