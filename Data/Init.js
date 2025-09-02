@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
    
            CheckData();
   });
+        // wait for a while and then  HandleExtraTooltips();
+    setTimeout(function () {
+        HandleExtraTooltips();
+    }, 2000);
     
     });
 
