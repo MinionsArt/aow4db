@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             requireAjax("/aow4db/Data/src/settings.js", function () {
                 requireAjax("/aow4db/Data/src/dataloader.js", function () {
+                      requireAjax("/aow4db/Data/src/lookuputils.js", function () {
                     requireAjax("/aow4db/Data/Search.js", function () {
                         requireAjax("/aow4db/Data/Faction.js", function () {
                             requireAjax("/aow4db/Data/Builder.js", function () {
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 }, 2000);
                             });
                         });
-                    });
+                    }); });
                 });
             });
         });
