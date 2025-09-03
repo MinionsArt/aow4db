@@ -9,65 +9,8 @@ var languageSelect = document.getElementById("languageSelect");
 
 var altHeld = false;
 
-var extraAbilities = [];
 
-var extraSkills = [
-    {
-        group_name: "Battlesaint - Hero Skill Group",
-        icon: "0000048D000018CC",
-        type: "normal",
-        description: "This and adjecient friendly units gain 50% Morale Resistance",
 
-        resid: 5222680234436,
-        tree_name: "<classBattlesaint></classBattlesaint> Battlesaint",
-        name: "Spiritual Guide",
-        tree_pos_x: 350.0,
-        tree_pos_y: 650.0,
-        id: "hs_battlesaint_spiritual_guide",
-        required_skills: [
-            {
-                resid: 5222680234415
-            },
-            {
-                resid: 5222680234413
-            }
-        ]
-    },
-    {
-        group_name: "Ritualist - Hero Skill Group",
-        icon: "0000048B00000336",
-        type: "normal",
-        name: "Fortifying Support",
-        tree_pos_x: 600.0,
-        id: "hs_ritualist_fortifying_support",
-        excluded_skills: [
-            {
-                resid: 4995046966069
-            }
-        ],
-        resid: 5222680235172,
-        tree_name: "<classRitualist></classRitualist> Ritualist",
-        tree_pos_y: 450.0,
-        description:
-            "<bulletlist><hyperlink>Support</hyperlink> abilities now grant:<bullet> +3 Status Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
-        required_skills: [
-            {
-                resid: 5222680233603
-            },
-            {
-                resid: 5222680233749
-            }
-        ]
-    }
-];
-
-const patchDates = [
-    // date ranges of patches
-    { name: "Griffon 1.1", from: new Date("2025-08-114"), to: new Date("2025-11-29") },
-    { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-14") },
-    { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-12") },
-    { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
-];
 
 // Toggle ALT mode on each key press
 /*document.addEventListener("keydown", function (event) {
@@ -245,28 +188,38 @@ function AddTagIconsForStatusEffects(name) {
     return name;
 }
 
-function lookupStatusEffect(status) {
-    /* for (let k = 0; k < jsonExtraTooltips.length; k++) {
-        if (status == jsonExtraTooltips[k].name) {
-            let effect = jsonExtraTooltips[k].name;
-            // check if itss an ability or just a small description
-            let tag = "";
-            if ("range" in jsonExtraTooltips[k]) {
-                tag = GetAbilityInfo(jsonExtraTooltips[k]).innerHTML;
-                //  tag = "testing";
-            } else {
-                tag = jsonExtraTooltips[k].description;
-            }
+function lookupStatusEffect(name) {
+  const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
+  if (!effect) return name;
+  return createStatusEffectTooltip(effect, "status");
+}
+
+function createStatusEffectTooltip(effectData, handlerType = "status") {
+  const span = document.createElement("span");
+  span.className = "statusEffectHandler";
+ // span.innerHTML = maybeHighlight(effectData.description);
+    
+let effect = effectData.name;
+
+           // let tag = jsonUnitAbilitiesLocalized[i].description;
+let tag = maybeHighlight(effectData.description);
+          
+let image = document.createElement("IMG");
+            image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + effectData.icon + ".png");
+            image.setAttribute("width", "30");
+            image.setAttribute("height", "30");
 
             tag.replaceAll("<br><br>", "<br>");
 
             let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
 
-            status = status.replace(effect, effectplusColor + "<br>" + tag);
-            return status;
-        }
-    } */
+            span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
+ // addTooltipListeners(span, name.description, handlerType);
+  return span.outerHTML;
+}
 
+/*function lookupStatusEffect(status) {
+   
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         if (status == jsonUnitAbilitiesLocalized[i].name) {
             // found a mention of an ability
@@ -298,7 +251,7 @@ function lookupStatusEffect(status) {
     }
 
     return status;
-}
+}*/
 
 function HandleExtraTooltips(specificDiv) {
     // Add event listeners after elements exist in the DOM
@@ -4180,78 +4133,6 @@ function lookupSlugFull(slug) {
     return "Couldn't find this";
 }
 
-function romanize(num) {
-    if (isNaN(num)) return NaN;
-    let digits = String(+num).split(""),
-        key = [
-            "",
-            "C",
-            "CC",
-            "CCC",
-            "CD",
-            "D",
-            "DC",
-            "DCC",
-            "DCCC",
-            "CM",
-            "",
-            "X",
-            "XX",
-            "XXX",
-            "XL",
-            "L",
-            "LX",
-            "LXX",
-            "LXXX",
-            "XC",
-            "",
-            "I",
-            "II",
-            "III",
-            "IV",
-            "V",
-            "VI",
-            "VII",
-            "VIII",
-            "IX"
-        ],
-        roman = "",
-        i = 3;
-    while (i--) roman = (key[+digits.pop() + i * 10] || "") + roman;
-    return Array(+digits.join("") + 1).join("M") + roman;
-}
-
-function deromanize(str) {
-    str = str.toUpperCase();
-    let validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
-    let token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
-    let key = {
-        M: 1000,
-        CM: 900,
-        D: 500,
-        CD: 400,
-        C: 100,
-        XC: 90,
-        L: 50,
-        XL: 40,
-        X: 10,
-        IX: 9,
-        V: 5,
-        IV: 4,
-        I: 1
-    };
-    let num = -1;
-    let m;
-
-    if (!(str && validator.test(str))) return false;
-
-    while ((m = token.exec(str)) !== null) {
-        num += key[m[0]];
-    }
-
-    return num;
-}
-
 function showSiegeProject(id, showOrigin) {
     let modName,
         description,
@@ -7066,8 +6947,6 @@ function addTypesList(a) {
         }
     }
 }
-
-
 
 function Localize() {
     for (const id in jsonUILocalized) {

@@ -1,3 +1,56 @@
+
+const extraAbilities = [];
+
+const extraSkills = [
+    {
+        group_name: "Battlesaint - Hero Skill Group",
+        icon: "0000048D000018CC",
+        type: "normal",
+        description: "This and adjecent friendly units gain 50% Morale Resistance",
+
+        resid: 5222680234436,
+        tree_name: "<classBattlesaint></classBattlesaint> Battlesaint",
+        name: "Spiritual Guide",
+        tree_pos_x: 350.0,
+        tree_pos_y: 650.0,
+        id: "hs_battlesaint_spiritual_guide",
+        required_skills: [
+            {
+                resid: 5222680234415
+            },
+            {
+                resid: 5222680234413
+            }
+        ]
+    },
+    {
+        group_name: "Ritualist - Hero Skill Group",
+        icon: "0000048B00000336",
+        type: "normal",
+        name: "Fortifying Support",
+        tree_pos_x: 600.0,
+        id: "hs_ritualist_fortifying_support",
+        excluded_skills: [
+            {
+                resid: 4995046966069
+            }
+        ],
+        resid: 5222680235172,
+        tree_name: "<classRitualist></classRitualist> Ritualist",
+        tree_pos_y: 450.0,
+        description:
+            "<bulletlist><hyperlink>Support</hyperlink> abilities now grant:<bullet> +3 Status Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
+        required_skills: [
+            {
+                resid: 5222680233603
+            },
+            {
+                resid: 5222680233749
+            }
+        ]
+    }
+];
+
 function fetchJsonFiles(filePaths) {
     return Promise.all(
         filePaths.map((filePath) =>
@@ -176,3 +229,11 @@ async function CheckData() {
         Localize();
     }
 }
+
+const patchDates = [
+    // date ranges of patches
+    { name: "Griffon 1.1", from: new Date("2025-08-114"), to: new Date("2025-11-29") },
+    { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-14") },
+    { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-12") },
+    { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
+];
