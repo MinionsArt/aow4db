@@ -17,20 +17,6 @@ function highlightNumbersInDiv(text) {
     return text;
 }
 
-/*document.addEventListener("DOMContentLoaded", function () {
-    fetch("/aow4db/HTML/header.html")
-        .then((response) => response.text())
-        .then((headerHTML) => {
-            document.body.insertAdjacentHTML("afterbegin", headerHTML);
-            
-            CheckData();
-        });
-    // wait for a while and then  HandleExtraTooltips();
-    setTimeout(function () {
-        HandleExtraTooltips();
-    }, 2000);
-});*/
-
 function AddTagIconsForStatusEffects(name) {
     // if(name == "")
     let underline = '<span style="color:white; text-decoration:underline">';
@@ -1042,28 +1028,28 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
 }
 
 function GetAbilityBackground(abilityDam) {
-    let abilityIconType;
-    if (abilityDam != undefined) {
-        splitDamageString = abilityDam.split(">");
-        if (splitDamageString[0].indexOf("phys") != -1) {
-            abilityIconType = "ability_icon_phys";
-        } else if (splitDamageString[0].indexOf("frost") != -1) {
-            abilityIconType = "ability_icon_frost";
-        } else if (splitDamageString[0].indexOf("blight") != -1) {
-            abilityIconType = "ability_icon_blight";
-        } else if (splitDamageString[0].indexOf("spirit") != -1) {
-            abilityIconType = "ability_icon_spirit";
-        } else if (splitDamageString[0].indexOf("fire") != -1) {
-            abilityIconType = "ability_icon_fire";
-        } else if (splitDamageString[0].indexOf("lightning") != -1) {
-            abilityIconType = "ability_icon_light";
-        } else {
-            abilityIconType = "ability_icon";
-        }
-    } else {
-        abilityIconType = "ability_icon";
+  if (!abilityDam) return "ability_icon";
+
+  const splitDamageString = abilityDam.split(">");
+  const damageType = splitDamageString[0].toLowerCase();
+
+  const map = {
+    phys: "ability_icon_phys",
+    frost: "ability_icon_frost",
+    blight: "ability_icon_blight",
+    spirit: "ability_icon_spirit",
+    fire: "ability_icon_fire",
+    lightning: "ability_icon_light",
+  };
+
+  // find the first key that matches
+  for (const key in map) {
+    if (damageType.includes(key)) {
+      return map[key];
     }
-    return abilityIconType;
+  }
+
+  return "ability_icon"; // fallback
 }
 
 function IncreaseDamageValue(input, percentage) {
@@ -1621,52 +1607,6 @@ function addstatusResistanceSlot(a, holder) {
     addTooltipListeners(btn, spa);
 }
 
-function EliteSkill(a) {
-    let nam = "";
-    for (let j = 0; j < jsonUnitAbilities.length; j++) {
-        if (a === jsonUnitAbilities[j].slug) {
-            nam = jsonUnitAbilities[j].name;
-        }
-    }
-    return nam;
-}
-
-function addEliteSkill(a) {
-    let abilityName,
-        abilityIcon,
-        abilityDescr = "";
-    for (let j = 0; j < jsonUnitAbilities.length; j++) {
-        if (a === jsonUnitAbilities[j].slug) {
-            abilityName = jsonUnitAbilities[j].name;
-            abilityIcon = jsonUnitAbilities[j].slug;
-            abilityDescr = jsonUnitAbilities[j].description;
-
-            let btn = document.createElement("DIV");
-            btn.className = "unit_elite_skill";
-            let imag = document.createElement("IMG");
-            imag.className = "unit_ability_icon";
-            let spa = document.createElement("SPAN");
-            let tex = document.createElement("DIV");
-            tex.className = "tooltip";
-            tex.setAttribute("onclick", "");
-            tex.innerHTML = abilityName;
-            spa.innerHTML = "<p>" + '<span style="font-size=20px">' + abilityName + "</p>" + "<hr>" + abilityDescr;
-            imag.setAttribute("src", "/aowp/UI/elite_rank.png");
-            imag.setAttribute("width", "40");
-            imag.setAttribute("height", "40");
-
-            document.getElementById("unitabholder").appendChild(btn);
-            // document.getElementById("unitabholder").setAttribute("id", "unitabholder" + b);
-
-            // tex.appendChild(spa);
-
-            btn.appendChild(imag);
-            btn.append(tex);
-
-            addTooltipListeners(tex, spa);
-        }
-    }
-}
 async function spawnCards(list, divID) {
     if (divID === undefined) {
         divID = "units";
@@ -1695,12 +1635,14 @@ async function spawnCard(string, divID) {
     let doc = document.getElementById(divID);
 
     let iDiv = unit_card_template.content.cloneNode(true);
-    doc.appendChild(iDiv);
+    const element = iDiv.firstElementChild;
+    doc.appendChild(element);
+    return element;
 }
 
 async function showUnitFromString(string, divID, subcultureCheck, resID) {
-    await spawnCard(string, divID);
-    showUnit(string, subcultureCheck, resID);
+   let newDiv = await spawnCard(string, divID);
+    showUnit(string, subcultureCheck, resID, newDiv);
 }
 
 let ascendingOrder = false;
@@ -1913,19 +1855,13 @@ async function spawnEquipCards(list, divID) {
 
 async function showEquipmentFromList(list, divID) {
     await spawnEquipCards(list, divID);
-
-    /* for (let i = 0; i < list.length; i++) {
-
-         showEquipment(list[i], divID);
-
-     };*/
 }
 
 async function showSiegeProjects(list) {
     if (list === undefined) {
         let newDiv = await spawnSpellCards(jsonSiegeProjects, "dataHolder");
         for (let i = 0; i < jsonSiegeProjects.length; i++) {
-            showSiegeProject(jsonSiegeProjects[i].name, true, newDiv);
+            showSiegeProject(jsonSiegeProjects[i].name, true, newDiv[i]);
         }
     } else {
         let newDivList = await spawnSpellCards(list, "Siege Projects");
@@ -1979,13 +1915,15 @@ async function showTomeFromList(list, divID, overwritetext) {
 async function spawnSpellCards(list, divID = "spell") {
     let listOfCreatedDivs = [];
     let doc = document.getElementById(divID);
+    const frag = document.createDocumentFragment();
 
-    for (let i = 0; i < list.length; i++) {
-        const fragment = spell_card_template.content.cloneNode(true);
-        const element = fragment.firstElementChild;
-        doc.appendChild(element);
-        listOfCreatedDivs.push(element);
-    }
+    listOfCreatedDivs = list.map(() => {
+  const el = spell_card_template.content.firstElementChild.cloneNode(true);
+  frag.appendChild(el);
+  return el;
+});
+
+doc.appendChild(frag);
 
     return listOfCreatedDivs;
 }
