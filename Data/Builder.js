@@ -2122,11 +2122,15 @@ async function showCosmicHappeningsWithArgument(argumentType, divID) {
 
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
     if (argumentType != undefined) {
-        let newList = [];
+       let newList = [];
 
-        newList.push(findBy(jsonWorldStructures, "type", argumentType));
+// get all matches
+const matches = findBy(jsonWorldStructures, "type", argumentType, { all: true });
 
-        list = newList;
+// extract just their ids
+newList = matches.map(item => item.id);
+
+list = newList;
     }
 
     await spawnStructureCards(list, divID);

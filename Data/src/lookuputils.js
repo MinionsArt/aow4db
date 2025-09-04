@@ -1,5 +1,7 @@
-function findBy(array, key, value) {
-  return array.find(item => item[key] === value);
+function findBy(array, key, value, { all = false } = {}) {
+  return all
+    ? array.filter(item => item[key] === value)  // all matches
+    : array.find(item => item[key] === value);   // first match
 }
 
 function maybeHighlight(text) {
