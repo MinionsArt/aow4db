@@ -7,18 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             requireAjax("/aow4db/Data/src/settings.js", function () {
                 requireAjax("/aow4db/Data/src/dataloader.js", function () {
-                      requireAjax("/aow4db/Data/src/lookuputils.js", function () {
-                    requireAjax("/aow4db/Data/Search.js", function () {
-                        requireAjax("/aow4db/Data/Faction.js", function () {
-                            requireAjax("/aow4db/Data/Builder.js", function () {
-                                CheckData();
-                                // wait for a while and then  HandleExtraTooltips();
-                                setTimeout(function () {
-                                    HandleExtraTooltips();
-                                }, 2000);
+                    requireAjax("/aow4db/Data/src/tooltips.js", function () {
+                        requireAjax("/aow4db/Data/src/lookuputils.js", function () {
+                            requireAjax("/aow4db/Data/Search.js", function () {
+                                requireAjax("/aow4db/Data/Faction.js", function () {
+                                    requireAjax("/aow4db/Data/Builder.js", function () {
+                                        CheckData();
+                                        // wait for a while and then  HandleExtraTooltips();
+                                        setTimeout(function () {
+                                            HandleExtraTooltips();
+                                        }, 2000);
+                                    });
+                                });
                             });
                         });
-                    }); });
+                    });
                 });
             });
         });

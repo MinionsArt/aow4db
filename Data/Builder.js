@@ -36,19 +36,6 @@ function AddTagIconsForStatusEffects(name) {
     let underline = '<span style="color:white; text-decoration:underline">';
     let endtag = "</span>";
 
-    /*for (let k = 0; k < jsonExtraTooltips.length; k++) {
-        const effect = jsonExtraTooltips[k].name;
-        if (name.includes(effect)) {
-            let tooltipspan = document.createElement("span");
-            tooltipspan.className = "statusEffectHandler";
-            let tag = effect.replaceAll(" ", "_");
-            tooltipspan.innerHTML = effect;
-
-            let pattern = new RegExp(`\\b${effect}\\b`);
-            name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-        }
-    } */
-
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
 
@@ -657,14 +644,11 @@ function addUnitTypeIcon(a, holder, origin) {
         btn,
         imag,
         spa = "";
-    /*let unitAbilityEN = jsonUnitAbilities.find((entry) => entry.slug === a);
-    if (unitAbilityEN === undefined) {
-        console.log("couldn't find ability " + a);
-    }*/
+
     let unitAbilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === a);
     let unitAbilityEN = jsonUnitAbilities.find((entry) => entry.slug === a);
-    iconText = AddTagIconsForStatusEffects(unitAbilityLoc.description);
-    icontext = iconText.replaceAll("<bulletlist></bullet>", "<bulletlist>");
+    icontext = AddTagIconsForStatusEffects(unitAbilityLoc.description);
+    icontext = icontext.replaceAll("<bulletlist></bullet>", "<bulletlist>");
     icontext = icontext.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
     icontext = icontext.replaceAll("<br></br>", "<br>");
 
@@ -693,28 +677,29 @@ function addUnitTypeIcon(a, holder, origin) {
         icontext;
     iconName = unitAbilityEN.name;
 
-    if (origin != "") {
-        if (
-            iconName === "Shock Unit" ||
-            iconName === "Shield Unit" ||
-            iconName === "Fighter Unit" ||
-            iconName === "Support Unit" ||
-            iconName === "Battle Mage Unit" ||
-            iconName === "Skirmisher Unit" ||
-            iconName === "Scout Unit" ||
-            iconName === "Polearm Unit" ||
-            iconName === "Ranged Unit" ||
-            iconName === "Mythic Unit" ||
-            iconName === "Tower" ||
-            iconName === "Siegecraft" ||
-            iconName === "Civilian"
-        ) {
-            unitRole = origin.querySelectorAll("img#unit_role")[0];
-            unitType = iconsrc;
-            // clear name
-            var clearname = unitAbilityEN.name.replaceAll(" ", "_").toLowerCase();
+    if (origin !== "") {
+        const roleNames = [
+            "Shock Unit",
+            "Shield Unit",
+            "Fighter Unit",
+            "Support Unit",
+            "Battle Mage Unit",
+            "Skirmisher Unit",
+            "Scout Unit",
+            "Polearm Unit",
+            "Ranged Unit",
+            "Mythic Unit",
+            "Tower",
+            "Siegecraft",
+            "Civilian"
+        ];
 
-            unitRole.setAttribute("src", "/aow4db/Icons/Text/" + clearname + ".png");
+        if (roleNames.includes(iconName)) {
+            const unitRole = origin.querySelector("img#unit_role"); // no need for [0]
+            const unitType = iconsrc;
+
+            const clearname = unitAbilityEN.name.replaceAll(" ", "_").toLowerCase();
+            unitRole.setAttribute("src", `/aow4db/Icons/Text/${clearname}.png`);
         }
     }
     holder.appendChild(btn);
@@ -1054,190 +1039,6 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     btn.append(divider);
 
     addTooltipListeners(tex, spa);
-}
-
-function doubleNumbers(inputString) {
-    // Regular expression to match numbers
-    let regex = /\b\d+\b/g;
-
-    // Replace each matched number with its double
-    let result = inputString.replace(regex, function (match) {
-        // Convert the matched number to an integer and double it
-        let doubledNumber = parseInt(match) * 2;
-        // Return the doubled number as a string
-        return doubledNumber.toString();
-    });
-
-    return result;
-}
-
-function addTooltipListeners(tooltip, span, secondary) {
-    let hoverDiv2 = document.getElementById("hoverDiv2");
-    let hoverDiv = document.getElementById("hoverDiv");
-
-    if (secondary != undefined) {
-        tooltip.addEventListener("mouseenter", function (event) {
-            TurnOnTooltip(span, secondary);
-            //  FillToolTip(span, secondary);
-
-            hoverDiv2.style.visibility = "hidden"; // make it invisible
-            hoverDiv2.inert = true;
-            hoverDiv2.show();
-            hoverDiv2.inert = false;
-            if (tooltip != hoverDiv2) {
-                updateHoverDivPosition(event, secondary);
-            }
-            hoverDiv2.close(); // close and reset visiblity
-            hoverDiv2.style.visibility = "";
-            hoverDiv2.inert = true;
-            hoverDiv2.show();
-            hoverDiv2.inert = false;
-        });
-
-        tooltip.addEventListener("mouseleave", function () {
-            // if (altHeld == false) {
-            // Only hide if ALT is NOT active
-            TurnOffTooltip(secondary, tooltip);
-            //}
-        });
-    } else {
-        tooltip.addEventListener("mouseenter", function (event) {
-            TurnOnTooltip(span, secondary);
-            // hoverDiv.show();
-            hoverDiv.style.visibility = "hidden";
-            hoverDiv.inert = true;
-            hoverDiv.show();
-            hoverDiv.inert = false;
-            if (tooltip != hoverDiv) {
-                updateHoverDivPosition(event, secondary);
-            }
-            hoverDiv.close();
-            hoverDiv.style.visibility = "";
-            hoverDiv.inert = true;
-            hoverDiv.show();
-            hoverDiv.inert = false;
-        });
-
-        tooltip.addEventListener("mouseleave", function () {
-            //  if (altHeld == false) {
-            TurnOffTooltip(secondary);
-            //  }
-        });
-    }
-}
-
-function removeToolTipListeners(tooltip) {
-    tooltip.removeEventListener("mouseenter", tooltip);
-
-    tooltip.removeEventListener("mouseleave", tooltip);
-}
-
-function TurnOnTooltip(spa, secondary) {
-    // Configuration of the observer: observe changes to child nodes
-    let hoverDiv2 = document.getElementById("hoverDiv2");
-    let hoverDiv = document.getElementById("hoverDiv");
-    if (secondary != undefined) {
-        if (spa != null) {
-            hoverDiv2.innerHTML = spa.innerHTML;
-        }
-    } else {
-        if (spa != null) {
-            hoverDiv.innerHTML = spa.innerHTML;
-            HandleExtraTooltips(hoverDiv);
-        }
-    }
-}
-
-function TurnOffTooltip(secondary, origin) {
-    hoverDiv2 = document.getElementById("hoverDiv2");
-    hoverDiv = document.getElementById("hoverDiv");
-    // console.log("dialog 2 is open? " + hoverDiv2.open);
-    if (secondary != undefined) {
-        if (checkboxTooltip.checked) {
-            if (origin == hoverDiv2) {
-                hoverDiv2.close();
-            }
-        } else {
-            hoverDiv2.close();
-        }
-
-        // console.log("closed dialog 2");
-    } else {
-        if (hoverDiv2.open) {
-            //   console.log("dialog is open ");
-        } else {
-            hoverDiv.close();
-            //  console.log("closed dialog 1");
-        }
-    }
-}
-
-function getNormalizedPosition(event) {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    // event.clientX and event.clientY give the position of the mouse
-    const xPosition = event.clientX;
-    const yPosition = event.clientY;
-
-    // Normalize to a range of 0 to 1
-    const normalizedX = xPosition / screenWidth;
-    const normalizedY = yPosition / screenHeight;
-
-    return {
-        x: normalizedX,
-        y: normalizedY
-    };
-}
-
-function updateHoverDivPosition(event, secondary) {
-    const settings = getUserSettings();
-
-    let offset = 2;
-    let hoverDiv = null;
-    if (secondary != undefined) {
-        hoverDiv = document.getElementById("hoverDiv2");
-        offset = -5;
-    } else {
-        hoverDiv = document.getElementById("hoverDiv");
-    }
-    if (settings.tooltipselectable) {
-        hoverDiv.setAttribute("Style", "pointer-events: all;");
-    } else {
-        hoverDiv.setAttribute("Style", "pointer-events: none;");
-        offset = 10;
-    }
-
-    let normalizedPos = getNormalizedPosition(event);
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
-
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-    if (normalizedPos.x + getNormalizedWidth(hoverDiv) > 1) {
-        hoverDiv.style.left = mouseX - hoverDiv.getBoundingClientRect().width - offset + scrollLeft + "px";
-    } else {
-        hoverDiv.style.left = mouseX + offset + scrollLeft + "px";
-    }
-
-    if (normalizedPos.y + getNormalizedHeight(hoverDiv) > 1) {
-        hoverDiv.style.top = mouseY - hoverDiv.getBoundingClientRect().height - offset + scrollTop + "px";
-    } else {
-        hoverDiv.style.top = mouseY + offset + scrollTop + "px";
-    }
-}
-
-function getNormalizedHeight(element) {
-    const elementWidth = element.getBoundingClientRect().height;
-    const viewportWidth = window.innerHeight;
-    return elementWidth / viewportWidth;
-}
-
-function getNormalizedWidth(element) {
-    const elementWidth = element.getBoundingClientRect().width;
-    const viewportWidth = window.innerWidth;
-    return elementWidth / viewportWidth;
 }
 
 function GetAbilityBackground(abilityDam) {
@@ -3886,7 +3687,7 @@ function addRewards(rewards = [], container) {
         if (isTooltip) {
             const entry = NewLevelUpEntry(`<p class="levelup_medal">${rewardText}`);
             const tooltip = document.createElement("span");
-            tooltip.innerHTML = lookupSlugDescription(reward.slug);
+            tooltip.innerHTML = lookupSlugFull(reward.slug).description;
             addTooltipListeners(entry, tooltip);
             container.append(entry);
         } else {
@@ -3902,47 +3703,17 @@ function NewLevelUpEntry(spanEntry) {
 }
 
 function lookupUnit(id) {
-    let j = 0;
-    for (j in jsonUnits) {
-        if (id === jsonUnits[j].id) {
-            return jsonUnits[j].name;
-        }
-    }
-    return "Couldn't find this";
-}
-
-function lookupSlugDescription(slug) {
-    let j = 0;
-    for (j in jsonUnitAbilitiesLocalized) {
-        if (slug === jsonUnitAbilitiesLocalized[j].slug) {
-            if (slug === "legend_medal_killing_momentum") {
-                return "Unit regains Action Points when killing another unit. Works once per Turn";
-            } else {
-                return jsonUnitAbilitiesLocalized[j].description;
-            }
-        }
-    }
-    return "Couldn't find this";
+    return findBy(jsonUnits, "id", id).name || "Couldn't find this";
 }
 
 function lookupSlug(slug) {
-    let j = 0;
-    for (j in jsonUnitAbilitiesLocalized) {
-        if (slug === jsonUnitAbilitiesLocalized[j].slug) {
-            return jsonUnitAbilitiesLocalized[j].name.replaceAll("<br></br>", "<br>");
-        }
-    }
-    return "Couldn't find this";
+    return (
+        findBy(jsonUnitAbilitiesLocalized, "slug", slug).name.replaceAll("<br></br>", "<br>") || "Couldn't find this"
+    );
 }
 
 function lookupSlugFull(slug) {
-    let j = 0;
-    for (j in jsonUnitAbilitiesLocalized) {
-        if (slug === jsonUnitAbilitiesLocalized[j].slug) {
-            return jsonUnitAbilitiesLocalized[j];
-        }
-    }
-    return "Couldn't find this";
+    return findBy(jsonUnitAbilitiesLocalized, "slug", slug) || "Couldn't find this";
 }
 
 function showSiegeProject(id, showOrigin) {
@@ -3987,7 +3758,7 @@ function showSiegeProject(id, showOrigin) {
             cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
 
-            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].name, showOrigin);
+            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i], showOrigin);
 
             if (tierSpell != undefined) {
                 let splitspell = tierSpell.split(",");
@@ -4048,7 +3819,7 @@ function showSiegeProject(id, showOrigin) {
             cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
             cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
 
-            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i].id, showOrigin);
+            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i], showOrigin);
 
             if (tierSpell != undefined) {
                 let splitspell = tierSpell.split(",");
@@ -4668,21 +4439,11 @@ function GetAbilityInfo(ability) {
 }
 
 function GetStructureName(structureID) {
-    let j = 0;
-    for (j in jsonStructureUpgrades) {
-        if (jsonStructureUpgrades[j].id.indexOf(structureID) != -1) {
-            return jsonStructureUpgrades[j].name;
-        }
-    }
+    return findBy(jsonStructureUpgrades, "id", structureID).name || undefined;
 }
 
 function GetHeroSkillName(skillID) {
-    let j = 0;
-    for (j in jsonHeroSkills) {
-        if (jsonHeroSkills[j].id == skillID) {
-            return jsonHeroSkills[j].name;
-        }
-    }
+    return findBy(jsonHeroSkills, "id", skillID).name || undefined;
 }
 
 function GetHeroSkillDescription(skillID) {
@@ -4705,12 +4466,7 @@ function GetHeroSkillDescription(skillID) {
 }
 
 function GetStructureDescription(structureID) {
-    let j = 0;
-    for (j in jsonStructureUpgrades) {
-        if (jsonStructureUpgrades[j].id === structureID) {
-            return jsonStructureUpgrades[j].description;
-        }
-    }
+    return findBy(jsonStructureUpgrades, "id", structureID).description || undefined;
 }
 
 function showStructure(a, showOrigin) {
@@ -4730,12 +4486,6 @@ function showStructure(a, showOrigin) {
 
     var structureLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid == structureEN.resid);
 
-    // exception
-    /*   if (a === "_teleporter___teleporter") {
-                if (jsonStructureUpgrades[j].is_sector_upgrade === false) {
-                    continue;
-                }
-            }*/
     modcard = document.getElementById("spell_card");
 
     modcard.setAttribute("id", "spell_card" + a);
@@ -4750,7 +4500,7 @@ function showStructure(a, showOrigin) {
 
     modName.innerHTML = nameString;
     // backtracktome
-    let tomeNameandTier = backtraceStructureToTomeNameAndTier(a);
+    let tomeNameandTier = backtraceStructureToTomeNameAndTier(structureEN.id);
 
     modName.setAttribute("id", "modname" + a);
 
@@ -4817,7 +4567,7 @@ function showStructure(a, showOrigin) {
     cost.innerHTML = "Build Cost: " + structureLoc.cost;
     cost.setAttribute("id", "modcost" + a);
 
-    let name = backtraceTomeOriginAndTierForStructure(a, showOrigin);
+    //let name = backtraceTomeOriginAndTier(structureEN, showOrigin);
 
     if ("DLC" in structureEN) {
         let newDivForMount = AddDLCTag(structureEN.DLC);
@@ -4835,21 +4585,10 @@ function showStructure(a, showOrigin) {
 
     let upkeep = document.getElementById("modupkeep");
 
-    // upkeep.innerHTML = "";
-    // upkeep.setAttribute("id", "modupkeep" + a.id);
-
     found = true;
 
     return modcard;
 }
-
-const unlockableUnitsMapStructures = {
-    wildlife_sanctuary: ["goretusk_piglet", "dread_spider_hatchling", "vampire_spider_hatchling", "razorback", "warg"],
-    demon_gate: ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"],
-    wyvern_eyrie: ["fire_wyvern", "frost_wyvern", "gold_wyvern", "obsidian_wyvern"],
-    accursed_shrine: ["accursed_ogre", "accursed_blade", "accursed_trickster"],
-    shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
-};
 
 function addUnlockableUnitsToStructure(a, keyword, unitList, descriptionDiv, unitTypesDiv) {
     if (a.indexOf(keyword) !== -1) {
@@ -5501,7 +5240,7 @@ function showSpell(a, showOrigin) {
             }
             imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
             imagelink.setAttribute("id", "modicon" + a);
-            let tierSpell = backtraceTomeOriginAndTier(jsonSpells[j].id, showOrigin);
+            let tierSpell = backtraceTomeOriginAndTier(jsonSpells[j], showOrigin);
 
             if (tierSpell != undefined) {
                 let splitspell = tierSpell.split(",");
@@ -5558,63 +5297,10 @@ function ShowAllDivsWithFilters(cardClassName) {
     }
 }
 
-function ConvertSpawnTable(input) {
-    const entries = input.split(",");
-
-    const bulletListName = entries.shift(); // Get the first entry as the bullet list name
-
-    // Calculate the percentages for each entry
-    const entryCounts = {};
-    for (const entry of entries) {
-        entryCounts[entry] = (entryCounts[entry] || 0) + 1;
-    }
-
-    const percentages = entries.map((entry) => {
-        const percentage = (entryCounts[entry] / entries.length) * 100;
-        return {
-            entry,
-            percentage
-        };
-    });
-
-    // Sort the percentages in descending order
-    percentages.sort((a, b) => b.percentage - a.percentage);
-
-    // Create a bullet list for the unique entries
-    const uniqueEntries = [];
-    const bulletList = document.createElement("DIV");
-
-    bulletList.innerHTML = '<bulletList><span class="Test">' + bulletListName + "</span>";
-
-    for (const { entry, percentage } of percentages) {
-        const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
-
-        if (!uniqueEntries.includes(itemText)) {
-            uniqueEntries.push(itemText);
-            bulletList.innerHTML += "<bullet>" + `${percentage.toFixed(0)}% - ${itemText}` + "</bullet>";
-        }
-    }
-    bulletList.innerHTML += "</bulletList>";
-    return bulletList;
-}
-
-function addSpoiler(text) {
-    const span = document.createElement("span");
-    span.className = "spoiler";
-    span.innerHTML = text;
-    span.addEventListener("click", () => span.classList.toggle("revealed"));
-    return span;
-}
-
 function FindFormUnits() {
     let unitsList = [];
     let i = 0;
     for (i in jsonUnits) {
-        /* if (jsonUnits[i].culture_name != undefined) {
-            if (!isInArray(unitsList, jsonUnits[i].id)) {
-                unitsList.push(jsonUnits[i]);
-            }
-        }*/
         if (extraFormUnitsList.includes(jsonUnits[i].id)) {
             if (!isInArray(unitsList, jsonUnits[i].id)) {
                 unitsList.push(jsonUnits[i]);
@@ -5862,32 +5548,7 @@ function showTraitSetup(currentTrait) {
     descriptionDiv = document.getElementById("moddescription");
 
     if ("DLC" in currentTrait) {
-        let newDivForMount = document.createElement("DIV");
-        newDivForMount.className = "mountToolTip";
-
-        imag = document.createElement("IMG");
-        imag.setAttribute("height", "30px");
-
-        spa = document.createElement("SPAN");
-
-        // Trim spaces just in case
-        const dlcKey = (currentTrait.DLC || "").trim();
-        const dlcInfo = dlcMap[dlcKey];
-
-        if (dlcInfo) {
-            imag.setAttribute("src", dlcInfo.src);
-            spa.innerHTML = dlcInfo.text;
-        }
-
-        newDivForMount.appendChild(imag);
-
-        addTooltipListeners(newDivForMount, spa);
-        newDivForMount.setAttribute(
-            "style",
-            "text-transform: none;width: 1px;left: -32px;position: relative;margin-left: 30px;height: 20px;float: left;"
-        );
-        // get position of button
-
+        let newDivForMount = AddDLCTag(currentTrait.DLC);
         modName.append(newDivForMount);
     }
 
@@ -6295,8 +5956,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
         imagelink.remove();
     }
 
-    let id = FindHeroSkillOrigin(a.id);
-
     if ("DLC" in a) {
         let newDivForMount = AddDLCTag(a.DLC);
         modName.append(newDivForMount);
@@ -6306,13 +5965,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     tomeOrigin.setAttribute("id", "originTome" + a.id);
     let tomeOriginIcon = document.getElementById("originTomeIcon");
     tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
-
-    if (a.id.indexOf("_transformation") != -1 || a.id.indexOf("_aspect") != -1) {
-        // get position of button
-
-        let newDivForMount = AddDLCTag();
-        modName.append(newDivForMount);
-    }
 
     if (checkInAbilities != "") {
         let j = 0;
@@ -6402,293 +6054,54 @@ function AddDLCTag(dlcname) {
     return newDivForMount;
 }
 
-function FindHeroSkillOrigin(id) {
-    let j = 0;
-    for (j in jsonTomes) {
-        {
-            if ("hero_skills" in jsonTomes[j]) {
-                let k = 0;
-                for (k in jsonTomes[j].hero_skills) {
-                    if (jsonTomes[j].hero_skills[k].slug === id) {
-                        let tomeOrigin = document.getElementById("originTome");
-                        if ("affinities" in jsonTomes[j]) {
-                            tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]) + "<br>";
-                        }
-                        tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
-                        let tomeOriginIcon = document.getElementById("originTomeIcon");
-                        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                        let wrap = tomeOrigin.innerHTML;
-                        tomeOrigin.innerHTML =
-                            '<a href="/aow4db/HTML/Spells.html?tome=' +
-                            jsonTomes[j].id +
-                            '" target="_blank">' +
-                            wrap +
-                            "</a>";
-                        return jsonTomes[j].id;
-                    }
-                }
-            }
-        }
-    }
-}
-
-function backtraceTomeOriginAndTierForStructure(structure, showorigin) {
-    let returning = "";
-    let j = 0;
-    for (j in jsonTomes) {
-        let k = 0;
-        for (k in jsonTomes[j].skills) {
-            if (jsonTomes[j].skills[k].upgrade_slug === structure) {
-                if (showorigin) {
-                    let tomeOrigin = document.getElementById("originTome");
-                    if ("affinities" in jsonTomes[j]) {
-                        tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]);
-
-                        tomeOrigin.innerHTML += "<br>";
-                    }
-                    tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomesLocalized[j].name;
-                    let tomeOriginIcon = document.getElementById("originTomeIcon");
-                    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                    let wrap = tomeOrigin.innerHTML;
-                    tomeOrigin.innerHTML =
-                        '<a href="/aow4db/HTML/Spells.html?tome=' +
-                        jsonTomes[j].id +
-                        '" target="_blank">' +
-                        wrap +
-                        "</a>";
-
-                    returning = jsonTomes[j].id;
-                }
-            }
-        }
-    }
-    return returning;
-}
-
-function uppercaseTextBetweenHyperlinks(str, elments) {
-    const regex = /<hyperlink>(.*?)<\/hyperlink>/g;
-    const replacedString = str.replace(regex, (match, p1) => `<hyperlink>${LookUpHyperLink(p1, elments)}</hyperlink>`);
-
-    return replacedString;
-}
-
-function findDescriptionByName(name, nameElements) {
-    for (let i = 0; i < nameElements.length; i++) {
-        const nameElement = nameElements[i];
-        const text = nameElement.innerText.trim().replace(/\[\w+\/\]/g, "");
-
-        const modifiedStr = name.slice(0, -1);
-        if (text.trim() === name.trim() || text.trim() === modifiedStr.trim()) {
-            const parentElement = nameElement.parentElement;
-            const prevElement = parentElement.previousElementSibling;
-            const prevPrevElement = prevElement && prevElement.previousElementSibling;
-
-            const nameText = parentElement.firstElementChild.innerText.trim();
-            const descText = nameText.replace("@NAME", "@DESCRIPTION");
-
-            if (prevElement && prevElement.querySelector(".src").innerText.trim() === descText) {
-                return prevElement.querySelector(".tra").innerText.trim();
-            } else if (prevPrevElement && prevPrevElement.querySelector(".src").innerText.trim() === descText) {
-                return prevPrevElement.querySelector(".tra").innerText.trim();
-            }
-        }
-    }
-
-    return null;
-}
-
-function parseDescriptionWithHyperlink(string, elements) {
-    let replacedText = string;
-
-    replacedText = uppercaseTextBetweenHyperlinks(string, elements);
-
-    return replacedText;
-}
-
-function replaceTagsWithString(str) {
-    const regex = /<(\/?)([^>]+)>/g;
-    const replacedString = str.replace(regex, "");
-
-    return replacedString;
-}
-
-function InitializeLoca() {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(savedHtmlContent, "text/html");
-
-    const nameElements = doc.getElementsByClassName("tra");
-    const nameLength = name.length;
-
-    const elementsWithDescription = document.querySelectorAll('[id*="description"]');
-
-    // Iterate over the matched elements
-    elementsWithDescription.forEach(function (element) {
-        // Check if element's innerHTML contains <hyperlink>
-        if (element.innerHTML.includes("<hyperlink>")) {
-            // Replace <hyperlink> with desired content
-
-            element.innerHTML = parseDescriptionWithHyperlink(element.innerHTML, nameElements);
-        }
-    });
-}
-
-function LookUpHyperLink(str, elements, elementsLength) {
-    let hyperlinkSpan = str;
-    let description = "";
-    // Example usage in a browser environment
-
-    const noTagsName = replaceTagsWithString(str);
-
-    description = findDescriptionByName(noTagsName, elements, elementsLength);
-
-    if (description != null) {
-        description = description.replace(/\[(\w+)\/?\]/g, "<$1></$1>");
-        spa = document.createElement("SPAN");
-        spa.className = "tooltiptext";
-
-        spa.innerHTML =
-            '<span style="font-size=20px; text-transform:uppercase; color:#deb887 ;">' +
-            str +
-            "</span> <br>" +
-            description;
-        hyperlinkSpan =
-            '<span class="hyperlink" style="color:aliceblue">' +
-            str +
-            '<span class="tooltiphyperlink">' +
-            spa.innerHTML +
-            "</span>" +
-            "</span>";
-    }
-
-    return hyperlinkSpan;
-}
-
 function backtraceTomeOriginAndTier(spell, showorigin) {
-    if (spell === "create_bone_horror" && showorigin) {
-        let tomeOrigin = document.getElementById("originTome");
-        tomeOrigin.innerHTML = "<empireshadow></empireshadow><empireshadow></empireshadow> <br> II - Tome of Souls";
+    let tomespells = findParentByNested(jsonTomes, "skills", "name", spell.name);
+    if (tomespells != undefined) {
+        if (showorigin) {
+            let tomeOrigin = document.getElementById("originTome");
+            if ("affinities" in tomespells) {
+                tomeOrigin.innerHTML = showAffinitySymbols(tomespells);
 
-        let tomeOriginIcon = document.getElementById("originTomeIcon");
-        tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/tome_of_souls.png");
-        let wrap = tomeOrigin.innerHTML;
-        tomeOrigin.innerHTML = '<a href="/aow4db/HTML/Spells.html?tome=tome_of_souls" target="_blank">' + wrap + "</a>";
-    } else {
-        let j = 0;
-        for (j in jsonTomes) {
-            {
-                let k = 0;
-                for (k in jsonTomes[j].skills) {
-                    if (jsonTomes[j].skills[k].spell_slug === spell) {
-                        if (showorigin) {
-                            let tomeOrigin = document.getElementById("originTome");
-                            if ("affinities" in jsonTomes[j]) {
-                                tomeOrigin.innerHTML = showAffinitySymbols(jsonTomes[j]);
-
-                                tomeOrigin.innerHTML += "<br>";
-                            }
-
-                            tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomesLocalized[j].name;
-
-                            let tomeOriginIcon = document.getElementById("originTomeIcon");
-                            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                            let wrap = tomeOrigin.innerHTML;
-                            tomeOrigin.innerHTML =
-                                '<a href="/aow4db/HTML/Spells.html?tome=' +
-                                jsonTomes[j].id +
-                                '" target="_blank">' +
-                                wrap +
-                                "</a>";
-                        }
-
-                        return jsonTomes[j].skills[k].tier + "," + jsonTomes[j].id;
-                    }
-
-                    if (jsonTomes[j].skills[k].siege_project_slug === spell || jsonTomes[j].skills[k].name === spell) {
-                        if (showorigin) {
-                            let tomeOrigin = document.getElementById("originTome");
-                            if ("affinities" in jsonTomes[j]) {
-                                let affinitiesdual = jsonTomes[j].affinities.split(", ");
-
-                                let allAffinity = "";
-                                for (let i = 0; i < affinitiesdual.length; i++) {
-                                    let affinities = affinitiesdual[i].split(" ");
-                                    if (affinities[1] === 2) {
-                                        allAffinity += affinities[0];
-                                    }
-                                    allAffinity += affinities[0];
-                                }
-
-                                tomeOrigin.innerHTML = allAffinity;
-
-                                tomeOrigin.innerHTML += "<br>";
-                            }
-
-                            tomeOrigin.innerHTML += romanize(jsonTomes[j].tier) + " - " + jsonTomes[j].name;
-                            let tomeOriginIcon = document.getElementById("originTomeIcon");
-                            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + jsonTomes[j].id + ".png");
-                            let wrap = tomeOrigin.innerHTML;
-                            tomeOrigin.innerHTML =
-                                '<a href="/aow4db/HTML/Spells.html?tome=' +
-                                jsonTomes[j].id +
-                                '" target="_blank">' +
-                                wrap +
-                                "</a>";
-                        }
-
-                        return jsonTomes[j].skills[k].tier + "," + jsonTomes[j].id;
-                    }
-                }
+                tomeOrigin.innerHTML += "<br>";
             }
+
+            tomeOrigin.innerHTML += romanize(tomespells.tier) + " - " + tomespells.name;
+
+            let tomeOriginIcon = document.getElementById("originTomeIcon");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomespells.id + ".png");
+            let wrap = tomeOrigin.innerHTML;
+            tomeOrigin.innerHTML =
+                '<a href="/aow4db/HTML/Spells.html?tome=' + tomespells.id + '" target="_blank">' + wrap + "</a>";
+
+            return tomespells.tier + "," + tomespells.id;
+        } else {
+            return "couldn't find origin";
         }
     }
 }
 
 function backtraceStructureToTomeNameAndTier(structure) {
-    let array = [];
-    let j = 0;
-    for (j in jsonTomes) {
-        if ("initial_upgrades" in jsonTomes[j]) {
-            let k = 0;
-            for (k in jsonTomes[j].initial_upgrades)
-                if (structure.indexOf(jsonTomes[j].initial_upgrades[k].upgrade_slug) != -1) {
-                    if (structure.indexOf("wildlife_sanctuary") != -1) {
-                        array.push("2 <empirenature></empirenature> Tome of Beasts");
-                    } else {
-                        if ("affinities" in jsonTomes[j]) {
-                            array.push(
-                                ClearAffinityExtraTags(duplicateTags(jsonTomes[j].affinities)).replaceAll(",", "") +
-                                    "<br> " +
-                                    jsonTomes[j].name
-                            );
-                        } else {
-                            array.push(jsonTomes[j].name);
-                        }
-                    }
-                    if (structure.indexOf("wildlife_sanctuary") != -1) {
-                        array.push(1);
-                    } else {
-                        array.push(jsonTomes[j].tier);
-                    }
-
-                    array.push(jsonTomes[j].id);
-                    return array;
-                }
+    let tome =
+        findParentByNested(jsonTomesLocalized, "initial_upgrades", "upgrade_slug", structure) ||
+        findParentByNested(jsonTomesLocalized, "skills", "upgrade_slug", structure);
+    if (tome != undefined) {
+        let array = [];
+        if ("affinities" in tome) {
+            array.push(
+                ClearAffinityExtraTags(duplicateTags(tome.affinities)).replaceAll(",", "") + "<br> " + tome.name
+            );
+        } else {
+            array.push(tome.name);
         }
-    }
+        array.push(tome.tier);
+        array.push(tome.id);
 
-    return "";
+        return array;
+    } else {
+        return "";
+    }
 }
 
 function backtraceTomeNameAndTier(spell) {
     return findParentByNested(jsonTomesLocalized, "skills", "spell_slug", spell) || "";
-}
-
-function Localize() {
-    for (const id in jsonUILocalized) {
-        const el = document.getElementById(id);
-
-        if (el) {
-            el.childNodes[1].nodeValue = " " + jsonUILocalized[id]; // Assumes the image is first, text second
-        }
-    }
 }

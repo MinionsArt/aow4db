@@ -1,4 +1,12 @@
 
+const unlockableUnitsMapStructures = {
+    wildlife_sanctuary: ["goretusk_piglet", "dread_spider_hatchling", "vampire_spider_hatchling", "razorback", "warg"],
+    demon_gate: ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"],
+    wyvern_eyrie: ["fire_wyvern", "frost_wyvern", "gold_wyvern", "obsidian_wyvern"],
+    accursed_shrine: ["accursed_ogre", "accursed_blade", "accursed_trickster"],
+    shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
+};
+
 const highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
 const barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
 const darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
@@ -360,7 +368,7 @@ async function CheckData() {
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
         HandlePage();
-        Localize();
+        LocalizeUI();
     }
 }
 
@@ -371,3 +379,13 @@ const patchDates = [
     { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-12") },
     { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
 ];
+
+function LocalizeUI() {
+    for (const id in jsonUILocalized) {
+        const el = document.getElementById(id);
+
+        if (el) {
+            el.childNodes[1].nodeValue = " " + jsonUILocalized[id]; // Assumes the image is first, text second
+        }
+    }
+}

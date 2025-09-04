@@ -103,3 +103,68 @@ function deromanize(str) {
 
     return num;
 }
+
+function doubleNumbers(inputString) {
+    // Regular expression to match numbers
+    let regex = /\b\d+\b/g;
+
+    // Replace each matched number with its double
+    let result = inputString.replace(regex, function (match) {
+        // Convert the matched number to an integer and double it
+        let doubledNumber = parseInt(match) * 2;
+        // Return the doubled number as a string
+        return doubledNumber.toString();
+    });
+
+    return result;
+}
+
+
+function ConvertSpawnTable(input) {
+    const entries = input.split(",");
+
+    const bulletListName = entries.shift(); // Get the first entry as the bullet list name
+
+    // Calculate the percentages for each entry
+    const entryCounts = {};
+    for (const entry of entries) {
+        entryCounts[entry] = (entryCounts[entry] || 0) + 1;
+    }
+
+    const percentages = entries.map((entry) => {
+        const percentage = (entryCounts[entry] / entries.length) * 100;
+        return {
+            entry,
+            percentage
+        };
+    });
+
+    // Sort the percentages in descending order
+    percentages.sort((a, b) => b.percentage - a.percentage);
+
+    // Create a bullet list for the unique entries
+    const uniqueEntries = [];
+    const bulletList = document.createElement("DIV");
+
+    bulletList.innerHTML = '<bulletList><span class="Test">' + bulletListName + "</span>";
+
+    for (const { entry, percentage } of percentages) {
+        const itemText = entry.replace(/_/g, " "); // Replace underscores with spaces
+
+        if (!uniqueEntries.includes(itemText)) {
+            uniqueEntries.push(itemText);
+            bulletList.innerHTML += "<bullet>" + `${percentage.toFixed(0)}% - ${itemText}` + "</bullet>";
+        }
+    }
+    bulletList.innerHTML += "</bulletList>";
+    return bulletList;
+}
+
+
+function addSpoiler(text) {
+    const span = document.createElement("span");
+    span.className = "spoiler";
+    span.innerHTML = text;
+    span.addEventListener("click", () => span.classList.toggle("revealed"));
+    return span;
+}
