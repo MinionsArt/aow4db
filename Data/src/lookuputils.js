@@ -11,12 +11,25 @@ function tagReplace(text, keyword, tagHTML) {
   return text.replace(pattern, tagHTML);
 }
 
-function wrapStatusTooltip(el, label, handlerType = "something") {
-  const span = document.createElement("span");
-  span.className = "statusEffectHandler";
-  span.innerText = label;
-  addTooltipListeners(el, span, handlerType);
+/**
+ * Find an object in an array where any nested array matches a condition.
+ *
+ * @param {Array} array - top-level array to search (e.g., jsonTomesLocalized)
+ * @param {string} nestedKey - the property that holds the nested array (e.g., "skills")
+ * @param {string} matchKey - property to check inside the nested array (e.g., "spell_slug")
+ * @param {any} matchValue - value to match against
+ * @returns {Object|null} - the found parent object or null
+ */
+function findParentByNested(array, nestedKey, matchKey, matchValue) {
+  for (const parent of array) {
+    if (!Array.isArray(parent[nestedKey])) continue;
+    if (parent[nestedKey].some(child => child[matchKey] === matchValue)) {
+      return parent;
+    }
+  }
+  return null;
 }
+
 
 
 function romanize(num) {

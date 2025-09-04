@@ -1,4 +1,102 @@
 
+const highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
+const barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
+const darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
+const feudalCultureUnits = ["scout", "militia", "archer", "bannerman", "defender", "knight", "longbow", "liege_guard"];
+const industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
+const mysticCultureUnits = [
+    "mystic_projection",
+    "arcane_guard",
+    "arcanist",
+    "soother",
+    "spellshield",
+    "spellbreaker",
+    "spellweaver",
+    "summoner"
+];
+const reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magelock", "dragoon", "magelock_cannon"];
+const primalCultureUnits = [
+    "spirit_tracker",
+    "protector",
+    "primal_darter",
+    "primal_charger",
+    "animist",
+    "ancestral_warden"
+];
+const oathswornCultureUnits = [
+    "honor_guard",
+    "wayfarer",
+    "sworn_guard",
+    "sealbearer",
+    "vowkeeper",
+    "peacebringer",
+    "avenger",
+    "warbound"
+];
+
+const architectCultureUnits = ["surveyor", "cultivator", "earthbreaker", "guardian", "shademaker", "architect"];
+
+const MountedSpecialList = [
+    "pioneer",
+    "pathfinder",
+    "scout",
+    "lightseeker",
+    "knight",
+    "outrider",
+    "dark_knight",
+    "tyrant_knight",
+    "wildspeaker",
+    "houndmaster",
+    "spellbreaker",
+    "dragoon",
+    "spirit_tracker",
+    "spellshield"
+];
+
+const extraFormUnitsList = [
+    "phantasm_warrior",
+    "evoker",
+    "white_witch",
+    "necromancer",
+    "zombie",
+    "decaying_zombie",
+    "skeleton",
+    "chaplain",
+    "zealot",
+    "inquisitor",
+    "glade_runner",
+    "pyromancer",
+    "warbreed",
+    "exemplar",
+    "transmuter",
+    "zephyr_archer",
+    "afflictor",
+    "stormbringer",
+    "constrictor",
+    "pyre_templar",
+    "monk",
+    "shade",
+    "tyrant_knight",
+    "wildspeaker",
+    "houndmaster",
+    "geomancer",
+    "paladin",
+    "oracle"
+];
+
+const incorrectIconOverrideList = [
+    "summon_zealot",
+    "summon_lightbringer",
+    "conjure_divine_beacon",
+    "summon_lesser_snow_spirit",
+    "summon_wind_rager",
+    "summon_balor",
+    "summon_lesser_magma_spirit",
+    "summon_horned_god",
+    "summon_corrupt_soul"
+];
+
+
 const extraAbilities = [];
 
 const extraSkills = [
@@ -65,8 +163,44 @@ function fetchJsonFiles(filePaths) {
 }
 var jsonSiegeProjects;
 
+ const dlcMap = {
+            EMPIRESANDASHES: {
+                src: "/aow4db/Icons/Text/EmpiresAshes.png",
+                text: "Part of the Empires & Ashes DLC"
+            },
+            DRAGONLORDS: {
+                src: "/aow4db/Icons/Text/DragonDawn.png",
+                text: "Part of the Dragon Dawn DLC"
+            },
+            PRIMALFURY: {
+                src: "/aow4db/Icons/Text/PrimalFury.png",
+                text: "Part of the Primal Fury DLC"
+            },
+            ELDRITCHREALMS: {
+                src: "/aow4db/Icons/Text/EldritchRealms.png",
+                text: "Part of the Eldritch Realms DLC"
+            },
+            HERALDOFGLORY: {
+                src: "/aow4db/Icons/Text/herald_of_glory.png",
+                text: "Part of the Herald of Glory DLC"
+            },
+            WAYSOFWAR: {
+                src: "/aow4db/Icons/Text/waysofwar.png",
+                text: "Part of the Ways of War DLC"
+            },
+            GIANTKINGS: {
+                src: "/aow4db/Icons/Text/GKLogo.png",
+                text: "Part of the Giant Kings DLC"
+            },
+            ARCHONPROPHECY: {
+                src: "/aow4db/Icons/Text/ArchonProphecy.png",
+                text: "Part of the Archon Prophecy DLC"
+            }
+        };
+
+
 async function GetAllData(selectedLang) {
-    var basePathEN;
+    let basePathEN;
     //if(selectedLang == "Beta"){
     //         basePathEN = `/aow4db/Data/Beta/`;
     //  }else{
@@ -183,7 +317,7 @@ const abilityMap = {};
 
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
-        var storedSettings = getUserSettings();
+        let storedSettings = getUserSettings();
         if (storedSettings === null) {
             setUserSettings({
                 tooltipselectable: false,

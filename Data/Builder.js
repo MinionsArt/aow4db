@@ -7,19 +7,6 @@ var checkboxNumbers = document.getElementById("numbersCheckbox");
 var showBetaTooltip = document.getElementById("showBetaCheckbox");
 var languageSelect = document.getElementById("languageSelect");
 
-var altHeld = false;
-
-
-
-
-// Toggle ALT mode on each key press
-/*document.addEventListener("keydown", function (event) {
-    if (event.key === "Alt") {
-        event.preventDefault(); // Prevent default browser behavior
-        altHeld = !altHeld; // Toggle state
-    }
-});*/
-
 function highlightNumbersInDiv(text) {
     if (!text) return;
 
@@ -43,103 +30,6 @@ function highlightNumbersInDiv(text) {
         HandleExtraTooltips();
     }, 2000);
 });*/
-
-var highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
-var barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
-var darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
-var feudalCultureUnits = ["scout", "militia", "archer", "bannerman", "defender", "knight", "longbow", "liege_guard"];
-var industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
-var mysticCultureUnits = [
-    "mystic_projection",
-    "arcane_guard",
-    "arcanist",
-    "soother",
-    "spellshield",
-    "spellbreaker",
-    "spellweaver",
-    "summoner"
-];
-var reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magelock", "dragoon", "magelock_cannon"];
-var primalCultureUnits = [
-    "spirit_tracker",
-    "protector",
-    "primal_darter",
-    "primal_charger",
-    "animist",
-    "ancestral_warden"
-];
-var oathswornCultureUnits = [
-    "honor_guard",
-    "wayfarer",
-    "sworn_guard",
-    "sealbearer",
-    "vowkeeper",
-    "peacebringer",
-    "avenger",
-    "warbound"
-];
-
-var architectCultureUnits = ["surveyor", "cultivator", "earthbreaker", "guardian", "shademaker", "architect"];
-
-var MountedSpecialList = [
-    "pioneer",
-    "pathfinder",
-    "scout",
-    "lightseeker",
-    "knight",
-    "outrider",
-    "dark_knight",
-    "tyrant_knight",
-    "wildspeaker",
-    "houndmaster",
-    "spellbreaker",
-    "dragoon",
-    "spirit_tracker",
-    "spellshield"
-];
-
-var extraFormUnitsList = [
-    "phantasm_warrior",
-    "evoker",
-    "white_witch",
-    "necromancer",
-    "zombie",
-    "decaying_zombie",
-    "skeleton",
-    "chaplain",
-    "zealot",
-    "inquisitor",
-    "glade_runner",
-    "pyromancer",
-    "warbreed",
-    "exemplar",
-    "transmuter",
-    "zephyr_archer",
-    "afflictor",
-    "stormbringer",
-    "constrictor",
-    "pyre_templar",
-    "monk",
-    "shade",
-    "tyrant_knight",
-    "wildspeaker",
-    "houndmaster",
-    "geomancer",
-    "paladin",
-    "oracle"
-];
-
-var incorrectIconOverrideList = [
-    "summon_zealot",
-    "summon_lightbringer",
-    "conjure_divine_beacon",
-    "summon_lesser_snow_spirit",
-    "summon_wind_rager",
-    "summon_balor",
-    "summon_lesser_magma_spirit",
-    "summon_horned_god",
-    "summon_corrupt_soul"
-];
 
 function AddTagIconsForStatusEffects(name) {
     // if(name == "")
@@ -189,69 +79,34 @@ function AddTagIconsForStatusEffects(name) {
 }
 
 function lookupStatusEffect(name) {
-  const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
-  if (!effect) return name;
-  return createStatusEffectTooltip(effect, "status");
+    const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
+    if (!effect) return name;
+    return createStatusEffectTooltip(effect, "status");
 }
 
 function createStatusEffectTooltip(effectData, handlerType = "status") {
-  const span = document.createElement("span");
-  span.className = "statusEffectHandler";
- // span.innerHTML = maybeHighlight(effectData.description);
-    
-let effect = effectData.name;
+    const span = document.createElement("span");
+    span.className = "statusEffectHandler";
+    // span.innerHTML = maybeHighlight(effectData.description);
 
-           // let tag = jsonUnitAbilitiesLocalized[i].description;
-let tag = maybeHighlight(effectData.description);
-          
-let image = document.createElement("IMG");
-            image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + effectData.icon + ".png");
-            image.setAttribute("width", "30");
-            image.setAttribute("height", "30");
+    let effect = effectData.name;
 
-            tag.replaceAll("<br><br>", "<br>");
+    // let tag = jsonUnitAbilitiesLocalized[i].description;
+    let tag = maybeHighlight(effectData.description);
 
-            let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
+    let image = document.createElement("IMG");
+    image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + effectData.icon + ".png");
+    image.setAttribute("width", "30");
+    image.setAttribute("height", "30");
 
-            span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
- // addTooltipListeners(span, name.description, handlerType);
-  return span.outerHTML;
+    tag.replaceAll("<br><br>", "<br>");
+
+    let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
+
+    span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
+    // addTooltipListeners(span, name.description, handlerType);
+    return span.outerHTML;
 }
-
-/*function lookupStatusEffect(status) {
-   
-    for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
-        if (status == jsonUnitAbilitiesLocalized[i].name) {
-            // found a mention of an ability
-            // double check if its a status effect
-            // for (let j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
-            //if (jsonUnitAbilitiesLocalized[i].slug == jsonUnitAbilitiesLocalized[j].slug) {
-            // found the right status effect.
-
-            let effect = jsonUnitAbilitiesLocalized[i].name;
-
-            let tag = jsonUnitAbilitiesLocalized[i].description;
-            if (getUserSettings().isolateNumber) {
-                tag = highlightNumbersInDiv(tag);
-            }
-            let image = document.createElement("IMG");
-            image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + jsonUnitAbilitiesLocalized[i].icon + ".png");
-            image.setAttribute("width", "30");
-            image.setAttribute("height", "30");
-
-            tag.replaceAll("<br><br>", "<br>");
-
-            let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
-
-            status = status.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
-            return status;
-            //}
-            // }
-        }
-    }
-
-    return status;
-}*/
 
 function HandleExtraTooltips(specificDiv) {
     // Add event listeners after elements exist in the DOM
@@ -279,7 +134,6 @@ function GetUnitTierAndName(id, subcultureCheck) {
             continue;
         }
 
-        // Skip deprecated units
         // Skip deprecated units
         if (depCheckResID(unit.resid) == true) {
             continue;
@@ -341,35 +195,14 @@ function CheckIfFormUnit(id) {
     }
 }
 
-function GetUnitTierAndNameTome(id) {
-    for (let i = 0; i < jsonTomes.length; i++) {
-        if (id === jsonTomes[i].id) {
-            return romanize(jsonTomes[i].tier) + " - " + jsonTomesLocalized[i].name;
-        }
-    }
-}
-
-function GetSiegeProjectName(id) {
-    for (let i = 0; i < jsonSiegeProjects.length; i++) {
-        if (id === jsonSiegeProjects[i].id) {
-            return jsonSiegeProjectsLocalized[i].name;
-        }
-    }
-}
-
-function GetUnitNamePlain(id) {
-    for (let i = 0; i < jsonUnits.length; i++) {
-        if (id === jsonUnits[i].id) {
-            return jsonUnits[i].name;
-        }
-    }
-}
-
-function GetSpellTierAndName(id) {
-    for (let i = 0; i < jsonSpells.length; i++) {
-        if (id === jsonSpells[i].id) {
-            return jsonSpells[i].name;
-        }
+function GetTomeTierAndNameTome(id) {
+    let tome = findBy(jsonTomes, "id", id);
+    let tomeLoc = findBy(jsonTomesLocalized, "resid", tome.resid);
+    if (tome != undefined) {
+        return romanize(tome.tier) + " - " + tomeLoc.name;
+    } else {
+        console.log("couldn't find tome " + id);
+        return null;
     }
 }
 
@@ -389,7 +222,7 @@ function ShowSpellFromLink() {
     }
     let spellID = searchParams.get("spell");
     if (spellID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + GetSpellTierAndName(spellID).split(">")[2];
+        document.title = "Age of Wonders 4 Database - " + findBy(jsonSpells, "id", spellID).name;
         showSpellFromString(spellID, "dataHolder");
         return;
     }
@@ -567,7 +400,7 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
                 break;
             case "tome":
                 showTomeFromList2(list[i], list[i]);
-                btn.innerHTML = GetUnitTierAndNameTome(list[i]);
+                btn.innerHTML = GetTomeTierAndNameTome(list[i]);
                 btn.setAttribute("onclick", "openDiv(event,'" + list[i] + "',)");
                 break;
             case "searchUnit":
@@ -588,7 +421,7 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
                 break;
             case "searchSpell":
                 showSpellFromString(list[i], list[i]);
-                btn.innerHTML = GetSpellTierAndName(list[i]);
+                btn.innerHTML = findBy(jsonSpells, "id", list[i]).name;
                 btn.setAttribute("onclick", "openDiv(event,'" + list[i] + "')");
                 break;
         }
@@ -607,32 +440,21 @@ function AddTriangleForDLCUnits(type, string, div) {
     if (DLCCheck != null) {
         let triangle = document.createElement("DIV");
         triangle.className = DLCCheck.replace(" ", "") + "triangle";
-
-        // triangle.setAttribute("style", "top: -19px;right: -18px;");
-        // triangle.setAttribute("style", "top: -65px;right: -214px;");
-
         div.appendChild(triangle);
     }
 }
 
 function CheckForDLCContent(type, string) {
+    let unit;
     if (type.toLowerCase().indexOf("unit") != -1) {
-        for (let i = 0; i < jsonUnits.length; i++) {
-            if (jsonUnits[i].id == string) {
-                if ("DLC" in jsonUnits[i]) {
-                    return jsonUnits[i].DLC;
-                }
-            }
-        }
+        unit = findBy(jsonUnits, "id", string);
     }
     if (type.toLowerCase() == "tome") {
-        for (let index = 0; index < jsonTomes.length; index++) {
-            if (jsonTomes[index].id == string) {
-                if ("DLC" in jsonTomes[index]) {
-                    return jsonTomes[index].DLC;
-                }
-            }
-        }
+        unit = findBy(jsonTomes, "id", string);
+    }
+
+    if (unit != undefined && "DLC" in unit) {
+        return unit.DLC;
     }
     return null;
 }
@@ -2500,11 +2322,9 @@ async function showCosmicHappeningsWithArgument(argumentType, divID) {
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
     if (argumentType != undefined) {
         let newList = [];
-        for (let i = 0; i < jsonWorldStructures.length; i++) {
-            if (jsonWorldStructures[i].type == argumentType) {
-                newList.push(jsonWorldStructures[i].id);
-            }
-        }
+
+        newList.push(findBy(jsonWorldStructures, "type", argumentType));
+
         list = newList;
     }
 
@@ -2605,21 +2425,13 @@ async function showStructureFromString(string, divID) {
 
 async function showHeroSkillFromString(string, divID) {
     await spawnSpellCardSingle(string, divID);
-    let skill = findHeroSkill(string);
+    let skill = findBy(jsonHeroSkills, "id", string);
 
     // check if has description
     if ("description" in skill) {
         showSkill(skill, "", skill.icon, skill.category_name, skill.level_name, skill.group_name);
     } else {
         showSkill(skill, "true", skill.icon, skill.category_name, skill.level_name, skill.group_name);
-    }
-}
-
-function findHeroSkill(skillID) {
-    for (let i = 0; i < jsonHeroSkills.length; i++) {
-        if (jsonHeroSkills[i].id === skillID) {
-            return jsonHeroSkills[i];
-        }
     }
 }
 
@@ -6058,30 +5870,13 @@ function showTraitSetup(currentTrait) {
 
         spa = document.createElement("SPAN");
 
-        if (currentTrait.DLC == "EMPIRESANDASHES ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
-            spa.innerHTML = "Part of the Empires & Ashes DLC";
-        } else if (currentTrait.DLC == "DRAGONLORDS ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
-            spa.innerHTML = "Part of the Dragon Dawn DLC";
-        } else if (currentTrait.DLC == "PRIMALFURY ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/PrimalFury.png");
-            spa.innerHTML = "Part of the Primal Fury DLC";
-        } else if (currentTrait.DLC == "ELDRITCHREALMS ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/EldritchRealms.png");
-            spa.innerHTML = "Part of the Eldritch Realms DLC";
-        } else if (currentTrait.DLC == "HERALDOFGLORY ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/herald_of_glory.png");
-            spa.innerHTML = "Part of the Herald of Glory DLC";
-        } else if (currentTrait.DLC == "WAYSOFWAR ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/waysofwar.png");
-            spa.innerHTML = "Part of the Ways of War DLC";
-        } else if (currentTrait.DLC == "GIANTKINGS ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/GKLogo.png");
-            spa.innerHTML = "Part of the Giant Kings DLC";
-        } else if (currentTrait.DLC == "ARCHONPROPHECY ") {
-            imag.setAttribute("src", "/aow4db/Icons/Text/ArchonProphecy.png");
-            spa.innerHTML = "Part of the Archon Prophecy DLC";
+        // Trim spaces just in case
+        const dlcKey = (currentTrait.DLC || "").trim();
+        const dlcInfo = dlcMap[dlcKey];
+
+        if (dlcInfo) {
+            imag.setAttribute("src", dlcInfo.src);
+            spa.innerHTML = dlcInfo.text;
         }
 
         newDivForMount.appendChild(imag);
@@ -6557,25 +6352,25 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
             }
         }
     }
-    for (let j = 0; j < jsonExtraAscendedInfo.length; j++) {
-        if (jsonExtraAscendedInfo[j].id == a.id) {
-            descriptionDiv.innerHTML +=
-                "One of Following Tomes Researched : <br>" + jsonExtraAscendedInfo[j].description;
-            if ("extraspell" in jsonExtraAscendedInfo[j]) {
-                let iDiv = spell_card_template.content.cloneNode(true);
-                // Access the root element in the DocumentFragment
-                let rootElement = iDiv.querySelector("*");
 
-                // Apply the style to the root element
-                if (rootElement) {
-                    rootElement.style.left = "-40px";
-                    rootElement.style.position = "relative";
-                }
-                descriptionDiv.appendChild(iDiv);
-                showSpell(jsonExtraAscendedInfo[j].extraspell, false);
+    let ascendedInfo = findBy(jsonExtraAscendedInfo, "id", a.id);
+    if (ascendedInfo != undefined) {
+        descriptionDiv.innerHTML += "One of Following Tomes Researched : <br>" + ascendedInfo.description;
+        if ("extraspell" in ascendedInfo) {
+            let iDiv = spell_card_template.content.cloneNode(true);
+            // Access the root element in the DocumentFragment
+            let rootElement = iDiv.querySelector("*");
+
+            // Apply the style to the root element
+            if (rootElement) {
+                rootElement.style.left = "-40px";
+                rootElement.style.position = "relative";
             }
+            descriptionDiv.appendChild(iDiv);
+            showSpell(ascendedInfo.extraspell, false);
         }
     }
+
     if (found === false) {
         console.log("Couldn't find skill: " + a.id);
     }
@@ -6589,40 +6384,13 @@ function AddDLCTag(dlcname) {
     imag = document.createElement("IMG");
     imag.setAttribute("height", "25px");
 
-    spa = document.createElement("SPAN");
-    if (dlcname == "DRAGONLORDS") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/DragonDawn.png");
-        spa.innerHTML = "Part of the Dragon Dawn DLC";
-    }
-    if (dlcname == "EMPIRESANDASHES") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/EmpiresAshes.png");
-        spa.innerHTML = "Part of the Empires & Ashes DLC";
-    }
-    if (dlcname == "PRIMALFURY") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/PrimalFury.png");
-        spa.innerHTML = "Part of the Primal Fury DLC";
-    }
-    if (dlcname == "ELDRITCHREALMS") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/EldritchRealms.png");
-        spa.innerHTML = "Part of the Eldritch Realms DLC";
-    }
-    if (dlcname == "WAYSOFWAR") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/waysofwar.png");
-        spa.innerHTML = "Part of the Ways of War DLC";
-    }
-    if (dlcname == "HERALDOFGLORY") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/heraldofglory.png");
-        spa.innerHTML = "Part of the Herald of Glory DLC";
-    }
-    if (dlcname == "GIANTKINGS") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/GKLogo.png");
+    spa = document.createElement("SPAN"); // Trim spaces just in case
+    const dlcKey = (dlcname || "").trim();
+    const dlcInfo = dlcMap[dlcKey];
 
-        spa.innerHTML = "Part of the Giant Kings DLC";
-    }
-    if (dlcname == "ARCHONPROPHECY") {
-        imag.setAttribute("src", "/aow4db/Icons/Text/ArchonProphecy.png");
-
-        spa.innerHTML = "Part of the Archon Prophecy DLC";
+    if (dlcInfo) {
+        imag.setAttribute("src", dlcInfo.src);
+        spa.innerHTML = dlcInfo.text;
     }
     newDivForMount.appendChild(imag);
 
@@ -6912,40 +6680,7 @@ function backtraceStructureToTomeNameAndTier(structure) {
 }
 
 function backtraceTomeNameAndTier(spell) {
-    let j = 0;
-    for (j in jsonTomesLocalized) {
-        {
-            let k = 0;
-            for (k in jsonTomesLocalized[j].skills) {
-                if (jsonTomesLocalized[j].skills[k].spell_slug === spell) {
-                    return jsonTomesLocalized[j];
-                }
-            }
-        }
-    }
-    return "";
-}
-
-function addAbilityList(a) {
-    let dam = "";
-    let j = 0;
-    for (j in jsonUnitAbilities) {
-        if (a === jsonUnitAbilities[j].slug) {
-            if (jsonUnitAbilities[j].damage) {
-                dam = jsonUnitAbilities[j].damage;
-            }
-            return jsonUnitAbilities[j].name + dam + "<br>";
-        }
-    }
-}
-
-function addTypesList(a) {
-    let j = 0;
-    for (j in jsonUnitAbilities) {
-        if (a === jsonUnitAbilities[j].slug) {
-            return jsonUnitAbilities[j].name + "<br>";
-        }
-    }
+    return findParentByNested(jsonTomesLocalized, "skills", "spell_slug", spell) || "";
 }
 
 function Localize() {

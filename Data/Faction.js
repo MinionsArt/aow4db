@@ -1764,15 +1764,14 @@ function SetTomePreview(span, origin) {
                     span.innerHTML +=
                         '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                         origin.skills[index].spell_slug +
-                        '.png">' +
-                        GetSpellTierAndName(origin.skills[index].spell_slug) +
+                        '.png">' + 
+                        findBy(jsonSpells, 'id', origin.skills[index].spell_slug).name+
                         "</bullet>";
                 } else {
                     span.innerHTML +=
                         '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                         origin.skills[index].unit_slug +
-                        '.png">' +
-                        GetUnitNamePlain(origin.skills[index].unit_slug) +
+                        '.png">' + findBy(jsonUnits, 'id', origin.skills[index].unit_slug).name +
                         "</bullet>";
                 }
             }
@@ -1784,11 +1783,12 @@ function SetTomePreview(span, origin) {
                 } else {
                     slug = origin.skills[index].name.replaceAll(" ", "_").toLowerCase();
                 }
+                
+                
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/SiegeProjectIcons/' +
                     slug +
-                    '.png">' +
-                    GetSiegeProjectName(slug) +
+                    '.png">' +findBy(jsonSiegeProjects, 'id', slug).name +
                     "</bullet>";
             }
             // city structure
@@ -1825,7 +1825,7 @@ function SetTomePreview(span, origin) {
                     '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                     origin.skills[index].spell_slug +
                     '.png">' +
-                    GetSpellTierAndName(origin.skills[index].spell_slug) +
+                     findBy(jsonSpells, 'id', origin.skills[index].spell_slug).name +
                     "</bullet>";
             }
             //
@@ -2519,7 +2519,7 @@ function ShowSiegeProjectsOverview(list) {
                 spell.appendChild(text);
                 section.append(spell);
 
-                var name = GetSiegeProjectName(slug);
+                var name = findBy(jsonSiegeProjects, 'id', slug).name;
 
                 var spa = document.createElement("SPAN");
                 spa.innerHTML =
