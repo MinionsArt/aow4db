@@ -1923,22 +1923,22 @@ async function showEquipmentFromList(list, divID) {
 
 async function showSiegeProjects(list) {
     if (list === undefined) {
-        await spawnSpellCards(jsonSiegeProjects, "dataHolder");
+        let newDiv = await spawnSpellCards(jsonSiegeProjects, "dataHolder");
         for (let i = 0; i < jsonSiegeProjects.length; i++) {
-            showSiegeProject(jsonSiegeProjects[i].name, true);
+            showSiegeProject(jsonSiegeProjects[i].name, true, newDiv);
         }
     } else {
-        await spawnSpellCards(list, "Siege Projects");
+        let newDivList = await spawnSpellCards(list, "Siege Projects");
         for (let i = 0; i < list.length; i++) {
-            showSiegeProject(list[i], true);
+            showSiegeProject(list[i], true, newDivList[i]);
         }
     }
 }
 
 async function showStructures(list) {
-    await spawnSpellCards(list, "Structures");
+    let newDivs = await spawnSpellCards(list, "Structures");
     for (let i = 0; i < list.length; i++) {
-        showStructure(list[i], true);
+        showStructure(list[i], true, newDivs[i]);
     }
 }
 
@@ -1976,15 +1976,18 @@ async function showTomeFromList(list, divID, overwritetext) {
     SetButtonsAndDivs(list, undefined, "tome");
 }
 
-async function spawnSpellCards(list, divID) {
-    if (divID === undefined) {
-        divID = "spell";
-    }
+async function spawnSpellCards(list, divID = "spell") {
+    let listOfCreatedDivs = [];
     let doc = document.getElementById(divID);
+
     for (let i = 0; i < list.length; i++) {
-        let iDiv = spell_card_template.content.cloneNode(true);
-        doc.appendChild(iDiv);
+        const fragment = spell_card_template.content.cloneNode(true);
+        const element = fragment.firstElementChild;
+        doc.appendChild(element);
+        listOfCreatedDivs.push(element);
     }
+
+    return listOfCreatedDivs;
 }
 
 async function spawnItemCards(list, divID) {
@@ -2003,12 +2006,15 @@ async function spawnSkillCards(list, divID) {
     if (divID === undefined) {
         divID = "item";
     }
-    let j = "";
+    let newDivArray = [];
     let doc = document.getElementById(divID);
     for (let i = 0; i < list.length; i++) {
         let iDiv = skill_card_template.content.cloneNode(true);
-        doc.appendChild(iDiv);
+        const element = iDiv.firstElementChild;
+        doc.appendChild(element);
+        newDivArray.push(element);
     }
+    return newDivArray;
 }
 
 async function spawnSpellCardSingle(list, divID) {
@@ -2017,8 +2023,10 @@ async function spawnSpellCardSingle(list, divID) {
     }
     let doc = document.getElementById(divID);
 
-    let iDiv = spell_card_template.content.cloneNode(true);
-    doc.appendChild(iDiv);
+    const fragment = spell_card_template.content.cloneNode(true);
+    const element = fragment.firstElementChild;
+    doc.appendChild(element);
+    return element;
 }
 
 async function spawnTomeCardSingle(list, divID) {
@@ -2036,26 +2044,33 @@ async function spawnStructureCardSingle(list, divID) {
     }
     let doc = document.getElementById(divID);
 
-    let iDiv = structure_card_template.content.cloneNode(true);
-    doc.appendChild(iDiv);
+    const iDiv = structure_card_template.content.cloneNode(true);
+    const element = iDiv.firstElementChild;
+    doc.appendChild(element);
+    return element;
 }
 
 async function spawnStructureCards(list, divID) {
     if (divID === undefined) {
         divID = "spell";
     }
+
+    let listOfNewDivs = [];
     let doc = document.getElementById(divID);
     for (let i = 0; i < list.length; i++) {
-        let iDiv = structure_card_template.content.cloneNode(true);
-        doc.appendChild(iDiv);
+        const iDiv = structure_card_template.content.cloneNode(true);
+        const element = iDiv.firstElementChild;
+        doc.appendChild(element);
+        listOfNewDivs.push(element);
     }
+    return listOfNewDivs;
 }
 
 async function showSpellFromList(list, divID) {
-    await spawnSpellCards(list, divID);
+    let listOfNewDivs = await spawnSpellCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showSpell(list[i], true);
+        showSpell(list[i], true, listOfNewDivs[i]);
     }
 }
 async function showHeroTraitFromList(list, divID) {
@@ -2075,14 +2090,14 @@ async function showHeroGovFromList(list, divID) {
 }
 
 async function showSkillFromList(list, divID) {
-    await spawnSkillCards(list, divID);
+   let newDivs= await spawnSkillCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
         // check if has description
         if ("description" in list[i]) {
-            showSkill(list[i], "", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name);
+            showSkill(list[i], "", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name, newDivs[i]);
         } else {
-            showSkill(list[i], "true", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name);
+            showSkill(list[i], "true", list[i].icon, list[i].category_name, list[i].level_name, list[i].group_name, newDivs[i]);
         }
     }
 }
@@ -2122,15 +2137,15 @@ async function showCosmicHappeningsWithArgument(argumentType, divID) {
 
 async function showWorldStructuresWithArgument(overwrite, argumentType, list, divID) {
     if (argumentType != undefined) {
-       let newList = [];
+        let newList = [];
 
-// get all matches
-const matches = findBy(jsonWorldStructures, "type", argumentType, { all: true });
+        // get all matches
+        const matches = findBy(jsonWorldStructures, "type", argumentType, { all: true });
 
-// extract just their ids
-newList = matches.map(item => item.id);
+        // extract just their ids
+        newList = matches.map((item) => item.id);
 
-list = newList;
+        list = newList;
     }
 
     await spawnStructureCards(list, divID);
@@ -2143,10 +2158,10 @@ async function showStructuresWithArgument(argument, divID, argumentType, include
     let list = [];
     list = findStructuresWithArgument(argument, argumentType, includeProvince);
 
-    await spawnStructureCards(list, divID);
+    let newDivs = await spawnStructureCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showStructure(list[i], true);
+        showStructure(list[i], true, newDivs[i]);
     }
 }
 
@@ -2198,8 +2213,8 @@ async function showTraitsWithArgument(argument, overwritetext, affinity) {
 }
 
 async function showSpellFromString(string, divID) {
-    await spawnSpellCardSingle(string, divID);
-    let spellCard = showSpell(string, true);
+    let newSpellDiv = await spawnSpellCardSingle(string, divID);
+    let spellCard = showSpell(string, true, newSpellDiv);
     return spellCard;
 }
 
@@ -2224,8 +2239,8 @@ async function showTomeFromString(string, divID) {
 }
 
 async function showStructureFromString(string, divID) {
-    await spawnStructureCardSingle(string, divID);
-    showStructure(string);
+    let newDiv = await spawnStructureCardSingle(string, divID);
+    showStructure(string, false, newDiv);
 }
 
 async function showHeroSkillFromString(string, divID) {
@@ -3720,76 +3735,63 @@ function lookupSlugFull(slug) {
     return findBy(jsonUnitAbilitiesLocalized, "slug", slug) || "Couldn't find this";
 }
 
-function showSiegeProject(id, showOrigin) {
-    let modName,
-        description,
-        cost,
-        type,
-        tier,
-        i = "";
-    let found = false;
+function showSiegeProject(id, showOrigin, divOrigin) {
+  
+    let siegeProject = findBy(jsonSiegeProjects, "name", id) || findBy(jsonSiegeProjects, "id", id);
+    if (siegeProject != undefined) {
+      let  modName = divOrigin.querySelector("#modname");
+        modName.innerHTML = siegeProject.name.toUpperCase();
+      
+       let descriptionDiv = divOrigin.querySelector("#moddescription");
+      let  description = "<hr>" + siegeProject.description;
 
-    for (i in jsonSiegeProjects) {
-        if (id === jsonSiegeProjects[i].name) {
-            modName = document.getElementById("modname");
-            modName.innerHTML = jsonSiegeProjects[i].name.toUpperCase();
-            modName.setAttribute("id", "modname" + jsonSiegeProjects[i].name);
-            descriptionDiv = document.getElementById("moddescription");
-            description = "<hr>" + jsonSiegeProjects[i].description;
+        description +=
+            "<br>Fortification Damage:<br> +" +
+            siegeProject.siege_health_damage +
+            " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
-            description +=
-                "<br>Fortification Damage:<br> +" +
-                jsonSiegeProjects[i].siege_health_damage +
-                " <siegehealthdamage></siegehealthdamage> Fortification Damage";
+       let  imagelink = divOrigin.querySelector("#modicon");
 
-            imagelink = document.getElementById("modicon");
 
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + jsonSiegeProjects[i].name);
+        imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + siegeProject.icon + ".png");
+        imagelink.setAttribute("id", "modicon" + siegeProject.name);
+        descriptionDiv.innerHTML = description;
+       
 
-            imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + jsonSiegeProjects[i].icon + ".png");
-            imagelink.setAttribute("id", "modicon" + jsonSiegeProjects[i].name);
-            descriptionDiv.innerHTML = description;
-            descriptionDiv.setAttribute("id", "moddescription" + jsonSiegeProjects[i].name);
+     let   tier = divOrigin.querySelector("#modtier");
 
-            tier = document.getElementById("modtier");
+        tier.innerHTML = "<garrison></garrison> Siege Project";
 
-            tier.innerHTML = "<garrison></garrison> Siege Project";
+        let cost = divOrigin.querySelector("#modcost");
+        cost.innerHTML = "Cost:" + siegeProject.cost;
+        let tierSpell = backtraceTomeOriginAndTier(siegeProject, showOrigin, divOrigin);
 
-            tier.setAttribute("id", "modtier" + jsonSiegeProjects[i].name);
+        if (tierSpell != undefined) {
+            let splitspell = tierSpell.split(",");
+            modName.innerHTML +=
+                '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
+                romanize(splitspell[0]) +
+                "</span>";
+            if ("DLC" in siegeProject && showOrigin) {
+                let newDivForMount = AddDLCTag(siegeProject.DLC);
 
-            cost = document.getElementById("modcost");
-            cost.innerHTML = "Cost:" + jsonSiegeProjects[i].cost;
-            cost.setAttribute("id", "modcost" + jsonSiegeProjects[i].name);
-
-            let tierSpell = backtraceTomeOriginAndTier(jsonSiegeProjects[i], showOrigin);
-
-            if (tierSpell != undefined) {
-                let splitspell = tierSpell.split(",");
-                modName.innerHTML +=
-                    '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
-                    romanize(splitspell[0]) +
-                    "</span>";
-                if ("DLC" in jsonSiegeProjects[i] && showOrigin) {
-                    let newDivForMount = AddDLCTag(jsonSiegeProjects[i].DLC);
-
-                    modName.append(newDivForMount);
-                }
-            } else {
-                modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
+                modName.append(newDivForMount);
             }
+        } else {
+            modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
+        }
 
-            let tomeOrigin = document.getElementById("originTome");
-            tomeOrigin.setAttribute("id", "originTome" + id);
-            let tomeOriginIcon = document.getElementById("originTomeIcon");
-            tomeOriginIcon.setAttribute("id", "originTomeIcon" + id);
 
-            let upkeep = document.getElementById("modupkeep");
+        let upkeep = divOrigin.querySelector("#modupkeep");
 
-            upkeep.innerHTML = "";
-            upkeep.setAttribute("id", "modupkeep" + id);
+        upkeep.innerHTML = "";
+    } else {
+        console.log("couldn't find siege project " + id);
+    }
 
-            found = true;
+    /* for (i in jsonSiegeProjects) {
+        if (id === jsonSiegeProjects[i].name) {
+           
         }
         if (id === jsonSiegeProjects[i].id) {
             modName = document.getElementById("modname");
@@ -3852,53 +3854,32 @@ function showSiegeProject(id, showOrigin) {
 
             found = true;
         }
-    }
+    }*/
 }
 
-function showEmpireUpgrade(skill, showOrigin) {
-    let modName,
-        description,
-        cost,
-        type,
-        tier,
-        i = "";
-
-    let upkeep = document.getElementById("modupkeep");
+function showEmpireUpgrade(skill, showOrigin, divOrigin) {
+    let upkeep = divOrigin.querySelector("#modupkeep");
 
     upkeep.innerHTML = "";
-    upkeep.setAttribute("id", "modupkeep" + skill.name);
 
-    modName = document.getElementById("modname");
+    let modName = divOrigin.querySelector("#modname");
     modName.innerHTML = skill.name.toUpperCase();
-    modName.setAttribute("id", "modname" + skill.name);
-    descriptionDiv = document.getElementById("moddescription");
-    description = "<hr>" + skill.description;
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
+    let description = "<hr>" + skill.description;
 
-    imagelink = document.getElementById("modicon");
-
-    unitTypesDiv = document.getElementById("affectUnitTypes");
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + skill.name);
+    let imagelink = divOrigin.querySelector("#modicon");
 
     let imageLinkName = skill.name.replaceAll(" ", "_").toLowerCase();
     imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
-    imagelink.setAttribute("id", "modicon" + skill.name);
-    descriptionDiv.innerHTML = description;
-    descriptionDiv.setAttribute("id", "modicon" + skill.name);
 
-    tier = document.getElementById("modtier");
+    descriptionDiv.innerHTML = description;
+
+    let tier = divOrigin.querySelector("#modtier");
 
     tier.innerHTML = "<empire></empire> Empire Upgrade";
 
-    tier.setAttribute("id", "modtier" + skill.name);
-
-    cost = document.getElementById("modcost");
+    let cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
-    cost.setAttribute("id", "modcost" + skill.name);
-
-    let tomeOrigin = document.getElementById("originTome");
-    tomeOrigin.setAttribute("id", "originTome" + skill.name);
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
-    tomeOriginIcon.setAttribute("id", "originTomeIcon" + skill.name);
 }
 
 function showTome(a, div) {
@@ -4083,34 +4064,39 @@ function showTome(a, div) {
 
     for (k in tomeEN.skills) {
         if ("spell_slug" in tomeEN.skills[k]) {
-            let iDiv = spell_card_template.content.cloneNode(true);
-            skillHolder.appendChild(iDiv);
-            showSpell(tomeEN.skills[k].spell_slug, false);
+            const fragment = spell_card_template.content.cloneNode(true);
+            const element = fragment.firstElementChild;
+            skillHolder.appendChild(element);
+            showSpell(tomeEN.skills[k].spell_slug, false, element);
         }
         if ("unit_slug" in tomeEN.skills[k]) {
-            let iDiv = spell_card_template.content.cloneNode(true);
+            const fragment = spell_card_template.content.cloneNode(true);
+            const iDiv = fragment.firstElementChild;
             skillHolder.appendChild(iDiv);
 
-            showUnitUnlock(tomeEN.skills[k]);
+            showUnitUnlock(tomeEN.skills[k], iDiv);
         }
 
         // stormport for some reason doesnt have an upgrade slug
         if ("upgrade_slug" in tomeEN.skills[k]) {
-            let iDiv = spell_card_template.content.cloneNode(true);
+            const fragment = spell_card_template.content.cloneNode(true);
+            const iDiv = fragment.firstElementChild;
             skillHolder.appendChild(iDiv);
-            showStructure(tomeEN.skills[k].upgrade_slug, false);
+            showStructure(tomeEN.skills[k].upgrade_slug, false, iDiv);
         }
         if ("type" in tomeEN.skills[k]) {
             if (tomeEN.skills[k].type == "<hyperlink>Empire Bonus</hyperlink>") {
-                let iDiv = spell_card_template.content.cloneNode(true);
+                const fragment = spell_card_template.content.cloneNode(true);
+                const iDiv = fragment.firstElementChild;
                 skillHolder.appendChild(iDiv);
-                showEmpireUpgrade(tomeEN.skills[k], false);
+                showEmpireUpgrade(tomeEN.skills[k], false, iDiv);
             }
         }
         if (tomeEN.skills[k].type.indexOf("Siege") != -1) {
-            let iDiv = spell_card_template.content.cloneNode(true);
+            const fragment = spell_card_template.content.cloneNode(true);
+            const iDiv = fragment.firstElementChild;
             skillHolder.appendChild(iDiv);
-            showSiegeProject(tomeEN.skills[k].name, false);
+            showSiegeProject(tomeEN.skills[k].name, false, iDiv);
         }
     }
     skillHolder.setAttribute("id", "tome_unlocks" + a);
@@ -4473,15 +4459,7 @@ function GetStructureDescription(structureID) {
     return findBy(jsonStructureUpgrades, "id", structureID).description || undefined;
 }
 
-function showStructure(a, showOrigin) {
-    let modName,
-        description,
-        cost,
-        type,
-        tier,
-        j,
-        nameString,
-        modCard = "";
+function showStructure(a, showOrigin, divOrigin) {
     var structureEN = jsonStructureUpgrades.find((entry) => entry.id == a);
     if (structureEN === undefined) {
         console.log("Couldn't find structure: " + a);
@@ -4490,11 +4468,9 @@ function showStructure(a, showOrigin) {
 
     var structureLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid == structureEN.resid);
 
-    modcard = document.getElementById("spell_card");
-
-    modcard.setAttribute("id", "spell_card" + a);
-    modName = document.getElementById("modname");
-    nameString = "";
+    let modcard = divOrigin;
+    let modName = divOrigin.querySelector("#modname");
+    let nameString = "";
     nameString = structureLoc.name.toUpperCase();
 
     if (nameString.indexOf("<br>")) {
@@ -4505,13 +4481,9 @@ function showStructure(a, showOrigin) {
     modName.innerHTML = nameString;
     // backtracktome
     let tomeNameandTier = backtraceStructureToTomeNameAndTier(structureEN.id);
-
-    modName.setAttribute("id", "modname" + a);
-
     modName.className = "mod_name";
-    descriptionDiv = document.getElementById("moddescription");
-    description = "<hr>";
-
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
+    let description = "";
     if (structureLoc.requirement_description != "") {
         description += "<yellowText>Requirement: </yellowText><br>";
         description += structureLoc.requirement_description + "<br><br>";
@@ -4529,7 +4501,7 @@ function showStructure(a, showOrigin) {
             "<br><br><yellowText> Base Income Description:</yellowText><br>" + structureLoc.prediction_description;
     }
 
-    imagelink = document.getElementById("modicon");
+    let imagelink = divOrigin.querySelector("#modicon");
 
     if (a.startsWith("_")) {
         a = a.replace("_", "");
@@ -4542,16 +4514,15 @@ function showStructure(a, showOrigin) {
     if (a.indexOf("town_hall_ii_") != -1) {
         description += "<br><br> Unlocks T2 Culture Units";
     }
-    imagelink.setAttribute("id", "modicon" + a);
+
     descriptionDiv.innerHTML = description;
 
     descriptionDiv.setAttribute("id", "modicon" + a);
 
-    unitTypesDiv = document.getElementById("affectUnitTypes");
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
+    let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
     unitTypesDiv.setAttribute("style", "float: left;display: grid;grid-template-columns: 200px 200px;font-size: 15px;");
 
-    tier = document.getElementById("modtier");
+    let tier = divOrigin.querySelector("#modtier");
     if (structureLoc.is_sector_upgrade) {
         if (tomeNameandTier != "") {
             if (tomeNameandTier[1] != 0) {
@@ -4564,12 +4535,10 @@ function showStructure(a, showOrigin) {
     } else {
         tier.innerHTML = "<hyperlink><structure></structure> City Structure</hyperlink>";
     }
-    tier.setAttribute("id", "modtier" + a);
 
-    cost = document.getElementById("modcost");
+    let cost = divOrigin.querySelector("#modcost");
     cost.className = "spell_cost";
     cost.innerHTML = "Build Cost: " + structureLoc.cost;
-    cost.setAttribute("id", "modcost" + a);
 
     //let name = backtraceTomeOriginAndTier(structureEN, showOrigin);
 
@@ -4578,17 +4547,9 @@ function showStructure(a, showOrigin) {
         modName.append(newDivForMount);
     }
 
-    let tomeOrigin = document.getElementById("originTome");
-    tomeOrigin.setAttribute("id", "originTome" + a.id);
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
-    tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
-
     for (const [keyword, units] of Object.entries(unlockableUnitsMapStructures)) {
         addUnlockableUnitsToStructure(a, keyword, units, descriptionDiv, unitTypesDiv);
     }
-
-    let upkeep = document.getElementById("modupkeep");
-
     found = true;
 
     return modcard;
@@ -4850,7 +4811,8 @@ function ShowDestinyTraits() {
         a = jsonDestiny.traits[j].id;
         let doc = document.getElementById("dataHolder");
 
-        let iDiv = spell_card_template.content.cloneNode(true);
+        const fragment = spell_card_template.content.cloneNode(true);
+        const iDiv = fragment.firstElementChild;
         doc.appendChild(iDiv);
 
         modName = document.getElementById("modname");
@@ -5042,25 +5004,18 @@ function GetCostUnit(id) {
     }
 }
 
-function showUnitUnlock(a) {
-    let modName,
-        description,
-        cost,
-        type,
-        tier,
-        j = "";
+function showUnitUnlock(a, divOrigin) {
     let found = false;
 
-    modName = document.getElementById("modname");
+    let modName = divOrigin.querySelector("#modname");
     modName.innerHTML = a.name.toUpperCase();
-    modName.setAttribute("id", "modname" + a);
-    descriptionDiv = document.getElementById("moddescription");
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
 
-    description = "<hr>" + a.description;
+    let description = "<hr>" + a.description;
 
-    imagelink = document.getElementById("modicon");
+    let imagelink = divOrigin.querySelector("#modicon");
 
-    unitTypesDiv = document.getElementById("affectUnitTypes");
+    let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
     if (a.name === "Young Dragon") {
         let alldragons = ["young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon"];
@@ -5077,8 +5032,6 @@ function showUnitUnlock(a) {
                 "</bullet>";
             unitTypesDiv.appendChild(div);
         }
-
-        unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
     } else {
         let div = document.createElement("DIV");
         div.innerHTML =
@@ -5089,191 +5042,150 @@ function showUnitUnlock(a) {
             "</a>" +
             "</bullet>";
         unitTypesDiv.appendChild(div);
-
-        unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
     }
 
     imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a.unit_slug + ".png");
-    imagelink.setAttribute("id", "modicon" + a);
-    descriptionDiv.innerHTML = description;
-    descriptionDiv.setAttribute("id", "modicon" + a);
 
-    tier = document.getElementById("modtier");
+    descriptionDiv.innerHTML = description;
+
+    let tier = divOrigin.querySelector("#modtier");
 
     tier.innerHTML = "<unit></unit> " + a.type;
 
     modName.innerHTML += '<span style="color:white;font-size:15px">  Tier ' + romanize(a.tier) + "</span>";
 
-    tier.setAttribute("id", "modtier" + a);
-
-    cost = document.getElementById("modcost");
+    let cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "Recruit Cost: " + GetCostUnit(a.unit_slug);
 
-    cost.setAttribute("id", "modcost" + a);
-
-    let upkeep = document.getElementById("modupkeep");
-
+    let upkeep = divOrigin.querySelector("#modupkeep");
     upkeep.innerHTML = "";
-    upkeep.setAttribute("id", "modupkeep" + a.unit_slug);
-
     found = true;
 }
 
 const SpellDuplicateExclusionList = []; // [4514010629343, 4514010628856];
 
-function showSpell(a, showOrigin) {
-    let modName,
-        description,
-        cost,
-        type,
-        tier,
-        modCard = "";
-    let found = false;
-    for (let j = jsonSpells.length - 1; j >= 0; j--) {
-        if (a === jsonSpells[j].id) {
-            modCard = document.getElementById("spell_card");
-            modCard.setAttribute("id", "spell_card" + a);
-            modName = document.getElementById("modname");
-            modName.innerHTML = jsonSpellsLocalized[j].name.toUpperCase();
-            modName.setAttribute("id", "modname" + a);
-            description = "<hr>";
-            descriptionDiv = document.getElementById("moddescription");
+function showSpell(a, showOrigin, divOrigin) {
+    let spellFound = findBy(jsonSpells, "id", a);
+    if (spellFound != undefined) {
+        let modCard = divOrigin;
+        // modCard = document.getElementById("spell_card");
+        //  modCard.setAttribute("id", "spell_card" + a);
+        let modName = modCard.querySelector("#modname");
+        modName.innerHTML = spellFound.name.toUpperCase();
+        let description = "<hr>";
+        let descriptionDiv = modCard.querySelector("#moddescription");
 
-            let upkeep = document.getElementById("modupkeep");
-            if ("upkeep" in jsonSpells[j]) {
-                upkeep = document.getElementById("modupkeep");
-                upkeep.innerHTML = "Upkeep: " + jsonSpells[j].upkeep;
-            }
-            upkeep.setAttribute("id", "modupkeep" + a);
+        let upkeep = modCard.querySelector("#modupkeep");
+        if ("upkeep" in spellFound) {
+            upkeep.innerHTML = "Upkeep: " + spellFound.upkeep;
+        }
 
-            description += jsonSpellsLocalized[j].description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
-            description = AddTagIconsForStatusEffects(description);
-            description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
-            description = description.replaceAll("<br></br>", "<br>");
+        description += spellFound.description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
+        description = AddTagIconsForStatusEffects(description);
+        description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
+        description = description.replaceAll("<br></br>", "<br>");
 
-            unitTypesDiv = document.getElementById("affectUnitTypes");
+        let unitTypesDiv = modCard.querySelector("#affectUnitTypes");
 
-            if (jsonSpells[j].enchantment_requisites != undefined) {
-                description += "<br><greenText>Affected Unit Types: </greenText><br>";
-            }
-            let l = 0;
-            for (l in jsonSpells[j].enchantment_requisites) {
+        if (spellFound.enchantment_requisites != undefined) {
+            description += "<br><greenText>Affected Unit Types: </greenText><br>";
+        }
+        let l = 0;
+        for (l in spellFound.enchantment_requisites) {
+            let div = document.createElement("DIV");
+            div.setAttribute("style", "margin-right: 20px;");
+            div.innerHTML = "<bullet>" + spellFound.enchantment_requisites[l].requisite + "</bullet>";
+            unitTypesDiv.appendChild(div);
+        }
+        if ("summoned_units" in spellFound) {
+            description += "<br>Summoned Units:<br>";
+
+            let x = 0;
+            for (x in spellFound.summoned_units) {
                 let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
-                div.innerHTML = "<bullet>" + jsonSpellsLocalized[j].enchantment_requisites[l].requisite + "</bullet>";
+                div.innerHTML =
+                    '<a href="/aow4db/HTML/Units.html?unit=' +
+                    spellFound.summoned_units[x].slug +
+                    '" target="_blank">' +
+                    GetUnitTierAndName(spellFound.summoned_units[x].slug) +
+                    "</a>";
                 unitTypesDiv.appendChild(div);
             }
-            if ("summoned_units" in jsonSpells[j]) {
-                description += "<br>Summoned Units:<br>";
+        }
+        descriptionDiv.innerHTML = description;
+        if (
+            a === "call_wild_animal" ||
+            a === "call_greater_animal" ||
+            a === "awaken_the_forest" ||
+            a === "demonic_summoning" ||
+            a === "summon_elemental" ||
+            a === "raise_undead_army"
+        ) {
+            // extra info
 
-                let x = 0;
-                for (x in jsonSpells[j].summoned_units) {
-                    let div = document.createElement("DIV");
-                    div.setAttribute("style", "margin-right: 20px;");
-                    div.innerHTML =
-                        '<a href="/aow4db/HTML/Units.html?unit=' +
-                        jsonSpells[j].summoned_units[x].slug +
-                        '" target="_blank">' +
-                        GetUnitTierAndName(jsonSpells[j].summoned_units[x].slug) +
-                        "</a>";
-                    unitTypesDiv.appendChild(div);
-                }
-            }
+            info = document.createElement("DIV");
+            info.innerHTML =
+                '<button type="button" class="collapsible"  onclick="SetUpSpawnTable()">SPAWN CHANCES (manually added data, error prone)</button>';
+            let collapsibleC = document.createElement("DIV");
+            collapsibleC.classList = "content";
 
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
-            descriptionDiv.innerHTML = description;
-            if (
-                a === "call_wild_animal" ||
-                a === "call_greater_animal" ||
-                a === "awaken_the_forest" ||
-                a === "demonic_summoning" ||
-                a === "summon_elemental" ||
-                a === "raise_undead_army"
-            ) {
-                // extra info
-
-                info = document.createElement("DIV");
-                info.innerHTML =
-                    '<button type="button" class="collapsible"  onclick="SetUpSpawnTable()">SPAWN CHANCES (manually added data, error prone)</button>';
-                let collapsibleC = document.createElement("DIV");
-                collapsibleC.classList = "content";
-
-                for (let index = 0; index < jsonSpawnTables.length; index++) {
-                    if (jsonSpawnTables[index].id == a) {
-                        for (let j = 0; j < jsonSpawnTables[index].categories.length; j++) {
-                            let div = ConvertSpawnTable(jsonSpawnTables[index].categories[j].table);
-                            collapsibleC.append(div);
-                        }
+            for (let index = 0; index < jsonSpawnTables.length; index++) {
+                if (jsonSpawnTables[index].id == a) {
+                    for (let j = 0; j < jsonSpawnTables[index].categories.length; j++) {
+                        let div = ConvertSpawnTable(jsonSpawnTables[index].categories[j].table);
+                        collapsibleC.append(div);
                     }
                 }
-
-                info.append(collapsibleC);
-                descriptionDiv.append(info);
             }
 
-            descriptionDiv.setAttribute("id", "moddescription" + a);
-            //type = document.getElementById("modtype");
-            //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
-            //type.setAttribute("id", "modtype" + a);
-            tier = document.getElementById("modtier");
-            tier.innerHTML = jsonSpellsLocalized[j].spellType;
-            tier.setAttribute("id", "modtier" + a);
-
-            cost = document.getElementById("modcost");
-            cost.innerHTML = "Cost: " + jsonSpells[j].casting_cost;
-
-            if (jsonSpells[j].tactical === true) {
-                cost.innerHTML += " " + jsonSpells[j].operation_point_cost + "<casttactical></casttactical>";
-            } else {
-                cost.innerHTML += " " + jsonSpells[j].operation_point_cost + "<caststrategic></caststrategic>";
-            }
-            cost.setAttribute("id", "modcost" + a);
-
-            imagelink = document.getElementById("modicon");
-
-            let imageLinkName = "";
-            if (jsonSpells[j].icon != undefined) {
-                imageLinkName = jsonSpells[j].icon;
-            } else {
-                imageLinkName = jsonSpells[j].id;
-            }
-
-            if (incorrectIconOverrideList.includes(jsonSpells[j].id)) {
-                imageLinkName += "2";
-            }
-            imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
-            imagelink.setAttribute("id", "modicon" + a);
-            let tierSpell = backtraceTomeOriginAndTier(jsonSpells[j], showOrigin);
-
-            if (tierSpell != undefined) {
-                let splitspell = tierSpell.split(",");
-                modName.innerHTML +=
-                    '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
-                    romanize(splitspell[0]) +
-                    "</span>";
-                if ("DLC" in jsonSpells[j] && showOrigin) {
-                    let newDivForMount = AddDLCTag(jsonSpells[j].DLC);
-                    modName.append(newDivForMount);
-                }
-            } else {
-                modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px"> Tier - </span>';
-            }
-
-            if (showOrigin === true) {
-                let tomeOrigin = document.getElementById("originTome");
-                tomeOrigin.setAttribute("id", "originTome" + jsonSpells[j].id);
-                let tomeOriginIcon = document.getElementById("originTomeIcon");
-                tomeOriginIcon.setAttribute("id", "originTomeIcon" + jsonSpells[j].id);
-            }
-
-            found = true;
-            return modCard;
-            //break;
+            info.append(collapsibleC);
+            descriptionDiv.append(info);
         }
-    }
-    if (found === false) {
-        console.log("Couldn't find mod: " + a);
+
+        let tier = modCard.querySelector("#modtier");
+        tier.innerHTML = spellFound.spellType;
+
+        let cost = modCard.querySelector("#modcost");
+        cost.innerHTML = "Cost: " + spellFound.casting_cost;
+
+        if (spellFound.tactical === true) {
+            cost.innerHTML += " " + spellFound.operation_point_cost + "<casttactical></casttactical>";
+        } else {
+            cost.innerHTML += " " + spellFound.operation_point_cost + "<caststrategic></caststrategic>";
+        }
+
+        let imagelink = modCard.querySelector("#modicon");
+
+        let imageLinkName = "";
+        if (spellFound.icon != undefined) {
+            imageLinkName = spellFound.icon;
+        } else {
+            imageLinkName = spellFound.id;
+        }
+
+        if (incorrectIconOverrideList.includes(spellFound.id)) {
+            imageLinkName += "2";
+        }
+        imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
+        let tierSpell = backtraceTomeOriginAndTier(spellFound, showOrigin, modCard);
+
+        if (tierSpell != undefined) {
+            let splitspell = tierSpell.split(",");
+            modName.innerHTML +=
+                '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
+                romanize(splitspell[0]) +
+                "</span>";
+            if ("DLC" in spellFound && showOrigin) {
+                let newDivForMount = AddDLCTag(spellFound.DLC);
+                modName.append(newDivForMount);
+            }
+        } else {
+            modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px"> Tier - </span>';
+        }
+        return modCard;
+    } else {
+        console.log("couldn't find spell " + a);
     }
 }
 
@@ -5903,37 +5815,21 @@ function transformString(inputString) {
     return transformedString;
 }
 
-function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) {
-    let modName,
-        description,
-        cost,
-        type,
-        tier = "";
-    let found = false;
-    let k = "";
-    let j = "";
+function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, divOrigin) {
+   
     var skillLoc = jsonHeroSkillsLocalized.find((entry) => entry.id === a.id);
-    modName = document.getElementById("modname");
+    let modName = divOrigin.querySelector("#modname");
 
     modName.innerHTML = skillLoc.name.toUpperCase();
 
-    modName.setAttribute("id", "modname" + a.id);
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
 
-    descriptionDiv = document.getElementById("moddescription");
-
-    unitTypesDiv = document.getElementById("affectUnitTypes");
-
-    descriptionDiv.setAttribute("id", "moddescription" + a.id);
+   let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
     descriptionDiv.innerHTML = "";
 
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
-
-    //type = document.getElementById("modtype");
-    //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
-    //type.setAttribute("id", "modtype" + a);
-    tier = document.getElementById("spell_tier");
+   let tier = divOrigin.querySelector("#spell_tier");
     if (tier == undefined) {
-        tier = document.getElementById("modtier");
+        tier = divOrigin.querySelector("#modtier");
     }
     tier.innerHTML = "";
 
@@ -5941,14 +5837,12 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
         tier.innerHTML += "<br>" + skillLoc.category + " - " + level;
         tier.innerHTML += "<br>" + group_name;
     }
-    tier.setAttribute("id", "spell_tier" + a.id);
 
-    cost = document.getElementById("modcost");
+  let  cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
 
-    cost.setAttribute("id", "modcost" + a.id);
 
-    imagelink = document.getElementById("modicon");
+   let imagelink = divOrigin.querySelector("#modicon");
     if (a.type === "signature") {
         imagelink.className = "smallerIcon";
         imagelink.setAttribute("src", "/aow4db/Icons/UnitIcons/" + icon_slug + ".png");
@@ -5965,10 +5859,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
         modName.append(newDivForMount);
     }
 
-    let tomeOrigin = document.getElementById("originTome");
-    tomeOrigin.setAttribute("id", "originTome" + a.id);
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
-    tomeOriginIcon.setAttribute("id", "originTomeIcon" + a.id);
 
     if (checkInAbilities != "") {
         let j = 0;
@@ -6013,17 +5903,17 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name) 
     if (ascendedInfo != undefined) {
         descriptionDiv.innerHTML += "One of Following Tomes Researched : <br>" + ascendedInfo.description;
         if ("extraspell" in ascendedInfo) {
-            let iDiv = spell_card_template.content.cloneNode(true);
+            const fragment = spell_card_template.content.cloneNode(true);
+            const element = fragment.firstElementChild;
             // Access the root element in the DocumentFragment
-            let rootElement = iDiv.querySelector("*");
 
             // Apply the style to the root element
-            if (rootElement) {
-                rootElement.style.left = "-40px";
-                rootElement.style.position = "relative";
+            if (element) {
+                element.style.left = "-40px";
+                element.style.position = "relative";
             }
-            descriptionDiv.appendChild(iDiv);
-            showSpell(ascendedInfo.extraspell, false);
+            descriptionDiv.appendChild(element);
+            showSpell(ascendedInfo.extraspell, false, element);
         }
     }
 
@@ -6058,11 +5948,11 @@ function AddDLCTag(dlcname) {
     return newDivForMount;
 }
 
-function backtraceTomeOriginAndTier(spell, showorigin) {
+function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
     let tomespells = findParentByNested(jsonTomes, "skills", "name", spell.name);
     if (tomespells != undefined) {
         if (showorigin) {
-            let tomeOrigin = document.getElementById("originTome");
+            let tomeOrigin = modCard.querySelector("#originTome");
             if ("affinities" in tomespells) {
                 tomeOrigin.innerHTML = showAffinitySymbols(tomespells);
 
@@ -6071,7 +5961,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 
             tomeOrigin.innerHTML += romanize(tomespells.tier) + " - " + tomespells.name;
 
-            let tomeOriginIcon = document.getElementById("originTomeIcon");
+            let tomeOriginIcon = modCard.querySelector("#originTomeIcon");
             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomespells.id + ".png");
             let wrap = tomeOrigin.innerHTML;
             tomeOrigin.innerHTML =
@@ -6079,7 +5969,7 @@ function backtraceTomeOriginAndTier(spell, showorigin) {
 
             return tomespells.tier + "," + tomespells.id;
         } else {
-            return "couldn't find origin";
+           return tomespells.tier + "," + tomespells.id;
         }
     }
 }

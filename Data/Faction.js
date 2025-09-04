@@ -2130,10 +2130,13 @@ function CreateSpellIcon(listEntry, colorEntry) {
     spell.appendChild(tier);
     spell.appendChild(smallIcon);
     spell.appendChild(text);
-    var iDiv = spell_card_template.content.cloneNode(true);
+   
+     const fragment = spell_card_template.content.cloneNode(true);
+    const iDiv = fragment.firstElementChild; 
+    
 
     document.getElementById("hiddentooltips").appendChild(iDiv);
-    var span = showSpell(listEntry.spell_slug, false);
+    var span = showSpell(listEntry.spell_slug, false, iDiv) ;
 
     var newSpan = document.createElement("span");
 
@@ -2286,11 +2289,12 @@ function ShowUpgradesOverview(list) {
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
                 section.append(spell);
-                var iDiv = structure_card_template.content.cloneNode(true);
+                const iDiv = structure_card_template.content.cloneNode(true);
+                const element = iDiv.firstElementChild;
 
-                document.getElementById("hiddentooltips").appendChild(iDiv);
+                document.getElementById("hiddentooltips").appendChild(element);
 
-                var span = showStructure(list[index].upgrade_slug, false);
+                var span = showStructure(list[index].upgrade_slug, false, element);
                 var newSpan = document.createElement("span");
                 if (list[index + 1] != null) {
                     newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
