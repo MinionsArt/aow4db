@@ -2121,12 +2121,15 @@ function CreateSpellIcon(listEntry, colorEntry) {
     //tier.setAttribute("style", " top: 50%;left: 50%;");
     
     // get spell already
+    
      var spellData = jsonSpellsLocalized.find((entry) => entry.id == listEntry.spell_slug);
     
 
     var smallIcon = document.createElement("img");
-    smallIcon.setAttribute("src", "/aow4db/Icons/SpellIcons/" + spellData.icon + ".png");
-    smallIcon.setAttribute("width", "20px");
+    let iconLink = spellData.icon || spellData.id;
+    smallIcon.setAttribute("src", "/aow4db/Icons/SpellIcons/" + iconLink + ".png");
+    smallIcon.setAttribute("width", "25px");
+    smallIcon.setAttribute("height", "25px");
     spell.appendChild(tier);
     spell.appendChild(smallIcon);
     spell.appendChild(text);
@@ -2135,14 +2138,16 @@ function CreateSpellIcon(listEntry, colorEntry) {
     const iDiv = fragment.firstElementChild; 
     
 
-    document.getElementById("hiddentooltips").appendChild(iDiv);
-    var span = showSpell(listEntry.spell_slug, false, iDiv) ;
+  document.getElementById("hiddentooltips").appendChild(iDiv);
+    var toolTip = showSpell(listEntry.spell_slug, false, iDiv).firstElementChild ;
 
-    var newSpan = document.createElement("span");
+   var newSpan = document.createElement("div");
 
-    newSpan.innerHTML = "<p>From: " + colorEntry.name + "<br></p>";
-    span.prepend(newSpan);
-    addTooltipListeners(smallIcon, span);
+    newSpan.innerHTML = "<br>From: " + colorEntry.name;
+    toolTip.append(newSpan) ;
+    addTooltipListeners(smallIcon, toolTip);
+    document.getElementById("hoverDiv").classList.add("wide");
+
     return spell;
 }
 
@@ -2213,11 +2218,13 @@ function CreateUnitIcon(listEntry, colorEntry) {
             addPassiveslot(listEntry.primary_passives[index].slug, allAbilities, emptyList);
         }
     }
+    
+    
 
-    var newSpan = document.createElement("span");
+    var newSpan = document.createElement("div");
     if (colorEntry != null) {
-        newSpan.innerHTML = "<p>From: " + colorEntry.name + "<br></p>";
-        allAbilities.prepend(newSpan);
+        newSpan.innerHTML = "<br>From: " + colorEntry.name;
+        allAbilities.append(newSpan);
     }
 
     addTooltipListeners(spell, allAbilities);
@@ -2294,13 +2301,13 @@ function ShowUpgradesOverview(list) {
 
                 document.getElementById("hiddentooltips").appendChild(element);
 
-                var span = showStructure(list[index].upgrade_slug, false, element);
-                var newSpan = document.createElement("span");
+                var tooltip = showStructure(list[index].upgrade_slug, false, element).firstElementChild;
+                var newSpan = document.createElement("div");
                 if (list[index + 1] != null) {
-                    newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
-                    span.prepend(newSpan);
+                    newSpan.innerHTML = "<br>From: " + list[index + 1].name;
+                    tooltip.append(newSpan);
                 }
-                addTooltipListeners(spell, span);
+                addTooltipListeners(spell, tooltip);
             }
         }
     }
@@ -2362,10 +2369,10 @@ function ShowHeroSkillsOverview(list) {
                     spa2.prepend(title);
                     //div.appendChild(spa2);
 
-                    var newSpan = document.createElement("span");
+                    var newSpan = document.createElement("div");
                     if (list[index + 1] != null) {
-                        newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
-                        spa2.prepend(newSpan);
+                        newSpan.innerHTML = "<br>From: " + list[index + 1].name;
+                        spa2.append(newSpan);
                     }
 
                     addTooltipListeners(spell, spa2);
@@ -2406,10 +2413,10 @@ function ShowPassivesOverview(list) {
         spa.innerHTML = list[index].type + "<br>";
         spa.innerHTML += list[index].description;
 
-        var newSpan = document.createElement("span");
+        var newSpan = document.createElement("div");
         if (list[index + 1] != null) {
-            newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
-            spa.prepend(newSpan);
+            newSpan.innerHTML = "<br>From: " + list[index + 1].name;
+            spa.append(newSpan);
         }
         addTooltipListeners(spell, spa);
     }
@@ -2470,10 +2477,10 @@ function ShowSPIOverview(list) {
                     "</span>" +
                     GetStructureDescription(structureId);
 
-                const newSpan = document.createElement("span");
+                const newSpan = document.createElement("div");
                 if (list[index + 1] != null) {
-                    newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
-                    spa.prepend(newSpan);
+                    newSpan.innerHTML = "<br>From: " + list[index + 1].name;
+                    spa.append(newSpan);
                 }
 
                 addTooltipListeners(spell, spa);
@@ -2535,10 +2542,10 @@ function ShowSiegeProjectsOverview(list) {
 
                 //  div.appendChild(spa);
 
-                var newSpan = document.createElement("span");
+                var newSpan = document.createElement("div");
                 if (list[index + 1] != null) {
-                    newSpan.innerHTML = "<p>From: " + list[index + 1].name + "<br></p>";
-                    spa.prepend(newSpan);
+                    newSpan.innerHTML = "<br>From: " + list[index + 1].name ;
+                    spa.append(newSpan);
                 }
 
                 addTooltipListeners(spell, spa);

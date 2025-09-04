@@ -1,8 +1,8 @@
 searchParams = new URLSearchParams(window.location.search);
 let sorting = searchParams.get("sort");
-let  currentView = "";
+let currentView = "";
 
-const  checkboxTooltip = document.getElementById("tooltipCheckbox");
+const checkboxTooltip = document.getElementById("tooltipCheckbox");
 const checkboxNumbers = document.getElementById("numbersCheckbox");
 const showBetaTooltip = document.getElementById("showBetaCheckbox");
 const languageSelect = document.getElementById("languageSelect");
@@ -110,9 +110,6 @@ function GetUnitTierAndName(id, subcultureCheck) {
         if (depCheckResID(unit.resid) == true) {
             continue;
         }
-        //if (unit.primary_passives.length > 0 && unit.primary_passives[0].slug === "000003e300005fe2") {
-        //     continue;
-        // }
 
         // Check if subculture matches if provided,
         if (subcultureCheck !== undefined && "sub_culture_name" in unit && unit.sub_culture_name !== subcultureCheck) {
@@ -685,7 +682,7 @@ function addUnitTypeIcon(a, holder, origin) {
             unitRole.setAttribute("src", `/aow4db/Icons/Text/${clearname}.png`);
         }
     }
-      addTooltipListeners(btn, spa);
+    addTooltipListeners(btn, spa);
     btn.appendChild(imag);
     holder.appendChild(btn);
 
@@ -1098,7 +1095,7 @@ function GetAbilityToolTip(
     // image
     let spa = document.createElement("SPAN");
 
-    let  abilityIcon = ability.icon;
+    let abilityIcon = ability.icon;
     if (abilityIcon == "undefined") {
         console.log("Missing icon in tooltip for : " + ability.name);
         abilityIcon = "";
@@ -2617,18 +2614,8 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     tier.innerHTML = "Tier " + romanize(unitEN.tier) + ": " + unitEN.upkeep;
 
     let summonInfo = canBeSummoned(unitEN.id);
-    if (summonInfo.length > 0) {
+    if (summonInfo == true) {
         tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(unitEN.tier, "");
-        let p = "";
-        for (p in summonInfo) {
-            let castcost = "";
-            if (summonInfo[p].tactical === true) {
-                castcost = summonInfo[p].operation_point_cost + "<casttactical></casttactical>";
-            } else {
-                castcost = summonInfo[p].operation_point_cost + "<caststrategic></caststrategic>";
-            }
-            prodcost.innerHTML += "<br> Spell: " + summonInfo[p].casting_cost + castcost;
-        }
     }
 
     let critChance = 0;
@@ -2840,71 +2827,30 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     const resistanceTooltip = unitCard.querySelector("div#resistence_tt");
     addTooltipListeners(resistanceTooltip, resistanceSpan);
-
     addLevelUpInfo(unitEN, unitID, unitCard);
-
     // backtrack origin;
-
     backtrackUnitOrigins(unitEN, unitEN.name, unitCard);
 }
 
 function canBeSummoned(id) {
-    let i = "";
-    let k = "";
-    let summonInf = [];
-    // check for duplicates
-    let spellIDChecker = [];
-    for (i in jsonSpells) {
-        if ("summoned_units" in jsonSpells[i]) {
-            for (k in jsonSpells[i].summoned_units) {
-                if (jsonSpells[i].summoned_units[k].slug === id) {
-                    if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
-                        summonInf.push(jsonSpells[i]);
-                        spellIDChecker.push(jsonSpells[i].id);
-                    }
-                }
-            }
-        }
+    if (findParentByNested(jsonSpells, "summoned_units", "slug", id) != undefined) {
+        return true;
     }
-    return summonInf;
+    return false;
 }
 
 function getSummonedUpkeep(tier, lowMaintenance) {
-    if (tier === 1) {
-        if (lowMaintenance != "") {
-            return ReduceUpkeepPercentage("8<mana></mana>", lowMaintenance);
-        } else {
-            return "8<mana></mana>";
-        }
-    }
-    if (tier === 2) {
-        if (lowMaintenance != "") {
-            return ReduceUpkeepPercentage("12<mana></mana>", lowMaintenance);
-        } else {
-            return "12<mana></mana>";
-        }
-    }
-    if (tier === 3) {
-        if (lowMaintenance != "") {
-            return ReduceUpkeepPercentage("20<mana></mana>", lowMaintenance);
-        } else {
-            return "20<mana></mana>";
-        }
-    }
-    if (tier === 4) {
-        if (lowMaintenance != "") {
-            return ReduceUpkeepPercentage("30<mana></mana> 3<influence></influence>", lowMaintenance);
-        } else {
-            return "30<mana></mana> 3<influence></influence>";
-        }
-    }
-    if (tier === 5) {
-        if (lowMaintenance != "") {
-            return ReduceUpkeepPercentage("60<mana></mana> 7<influence></influence>", lowMaintenance);
-        } else {
-            return "60<mana></mana> 7<influence></influence>";
-        }
-    }
+    const upkeepTable = {
+        1: "8<mana></mana>",
+        2: "12<mana></mana>",
+        3: "20<mana></mana>",
+        4: "30<mana></mana> 3<influence></influence>",
+        5: "60<mana></mana> 7<influence></influence>"
+    };
+    const base = upkeepTable[tier];
+    if (!base) return ""; // fallback if invalid tier
+
+    return lowMaintenance ? ReduceUpkeepPercentage(base, lowMaintenance) : base;
 }
 
 function createUnitTypeIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText) {
@@ -3112,7 +3058,6 @@ function CheckIfInSpells(unitID, unitName) {
                 }
             }
         }
-
         if (regex.test(jsonSpells[i].description)) {
             if (!isInArray(spellIDChecker, jsonSpells[i].id)) {
                 spell.push(jsonSpells[i]);
@@ -3120,7 +3065,6 @@ function CheckIfInSpells(unitID, unitName) {
             }
         }
     }
-
     return spell;
 }
 
@@ -3665,7 +3609,7 @@ function showTome(a, div) {
             let div = document.createElement("DIV");
             div.className = "initialBonusText";
             let name = GetHeroSkillName(jsonExtraAscendedInfo[l].id);
-            div.innerHTML = "<hero></hero>" + name;
+            div.innerHTML = "<pantheon></pantheon>" + name;
 
             let heroSkillIconAndDesc = GetHeroSkillDescription(jsonExtraAscendedInfo[l].id);
 
@@ -3700,7 +3644,7 @@ function showTome(a, div) {
     div = document.createElement("DIV");
     div.className = "initialBonusText initialBonusCastingPoints";
     let amount = "";
-    if (tomeEN.tier === 1 || tomeEN.tier === 2 || tomeEN.tier === 3 || tomeEN.tier === 4 || tomeEN.tier === 5) {
+    if (tomeEN.tier != 0){
         amount = 5;
     }
 
@@ -3715,44 +3659,31 @@ function showTome(a, div) {
 
     descriptionLoreDiv.setAttribute("id", "tomeloredescription" + a);
     skillHolder = document.getElementById("tome_unlocks");
+    
+    function addTomeSkillCard(holder, callback) {
+  const fragment = spell_card_template.content.cloneNode(true);
+  const element = fragment.firstElementChild;
+  holder.appendChild(element);
+  callback(element);
+}
 
-    for (k in tomeEN.skills) {
-        if ("spell_slug" in tomeEN.skills[k]) {
-            const fragment = spell_card_template.content.cloneNode(true);
-            const element = fragment.firstElementChild;
-            skillHolder.appendChild(element);
-            showSpell(tomeEN.skills[k].spell_slug, false, element);
-        }
-        if ("unit_slug" in tomeEN.skills[k]) {
-            const fragment = spell_card_template.content.cloneNode(true);
-            const iDiv = fragment.firstElementChild;
-            skillHolder.appendChild(iDiv);
-
-            showUnitUnlock(tomeEN.skills[k], iDiv);
-        }
-
-        // stormport for some reason doesnt have an upgrade slug
-        if ("upgrade_slug" in tomeEN.skills[k]) {
-            const fragment = spell_card_template.content.cloneNode(true);
-            const iDiv = fragment.firstElementChild;
-            skillHolder.appendChild(iDiv);
-            showStructure(tomeEN.skills[k].upgrade_slug, false, iDiv);
-        }
-        if ("type" in tomeEN.skills[k]) {
-            if (tomeEN.skills[k].type == "<hyperlink>Empire Bonus</hyperlink>") {
-                const fragment = spell_card_template.content.cloneNode(true);
-                const iDiv = fragment.firstElementChild;
-                skillHolder.appendChild(iDiv);
-                showEmpireUpgrade(tomeEN.skills[k], false, iDiv);
-            }
-        }
-        if (tomeEN.skills[k].type.indexOf("Siege") != -1) {
-            const fragment = spell_card_template.content.cloneNode(true);
-            const iDiv = fragment.firstElementChild;
-            skillHolder.appendChild(iDiv);
-            showSiegeProject(tomeEN.skills[k].name, false, iDiv);
-        }
-    }
+   for (const skill of tomeEN.skills) {
+  if ("spell_slug" in skill) {
+    addTomeSkillCard(skillHolder, el => showSpell(skill.spell_slug, false, el));
+  }
+  if ("unit_slug" in skill) {
+    addTomeSkillCard(skillHolder, el => showUnitUnlock(skill, el));
+  }
+  if ("upgrade_slug" in skill) {
+    addTomeSkillCard(skillHolder, el => showStructure(skill.upgrade_slug, false, el));
+  }
+  if (skill.type === "<hyperlink>Empire Bonus</hyperlink>") {
+    addTomeSkillCard(skillHolder, el => showEmpireUpgrade(skill, false, el));
+  }
+  if (skill.type && skill.type.indexOf("Siege") !== -1) {
+    addTomeSkillCard(skillHolder, el => showSiegeProject(skill.name, false, el));
+  }
+}
     skillHolder.setAttribute("id", "tome_unlocks" + a);
 
     imagelink = document.getElementById("tomeicon");
