@@ -1,6 +1,6 @@
-var searchParams = new URLSearchParams(window.location.search);
-const searchKeyword = searchParams.get("u");
 
+searchParams = new URLSearchParams(window.location.search);
+searchKeyword = searchParams.get("u");
 var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal"];
 
 var ListOfSubsocietyHolders = ["Vision of Promise", "Vision of Ruin", "Vision of Destiny"];

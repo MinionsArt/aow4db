@@ -1,3 +1,5 @@
+let searchParams = new URLSearchParams(window.location.search);
+let searchKeyword = searchParams.get("u");
 document.addEventListener("DOMContentLoaded", function () {
     // Load header
     fetch("/aow4db/HTML/header.html")

@@ -335,17 +335,17 @@ async function CheckData() {
             });
             storedSettings = getUserSettings();
         }
-        checkboxTooltip = document.getElementById("tooltipCheckbox");
+        //checkboxTooltip = document.getElementById("tooltipCheckbox");
         checkboxTooltip.checked = storedSettings.tooltipselectable;
 
-        checkboxNumbers = document.getElementById("numbersCheckbox");
-        checkboxNumbers = document.getElementById("numbersCheckbox");
+        //checkboxNumbers = document.getElementById("numbersCheckbox");
+        //checkboxNumbers = document.getElementById("numbersCheckbox");
         checkboxNumbers.checked = storedSettings.isolateNumber;
 
-        showBetaTooltip = document.getElementById("showBetaCheckbox");
+        //showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
 
-        languageSelect = document.getElementById("languageSelect");
+        //languageSelect = document.getElementById("languageSelect");
         languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");

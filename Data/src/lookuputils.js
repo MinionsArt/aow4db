@@ -237,7 +237,7 @@ async function SetLevelUpStuff() {
         });
     }
 
-    const urlParams = new URLSearchParams(window.location.search);
+   searchParams = new URLSearchParams(window.location.search);
     const product = searchParams.get("type");
 
     if (product != undefined) {

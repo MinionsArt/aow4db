@@ -1,11 +1,11 @@
-var searchParams = new URLSearchParams(window.location.search);
-var sorting = searchParams.get("sort");
-var currentView = "";
+searchParams = new URLSearchParams(window.location.search);
+let sorting = searchParams.get("sort");
+let  currentView = "";
 
-var checkboxTooltip = document.getElementById("tooltipCheckbox");
-var checkboxNumbers = document.getElementById("numbersCheckbox");
-var showBetaTooltip = document.getElementById("showBetaCheckbox");
-var languageSelect = document.getElementById("languageSelect");
+const  checkboxTooltip = document.getElementById("tooltipCheckbox");
+const checkboxNumbers = document.getElementById("numbersCheckbox");
+const showBetaTooltip = document.getElementById("showBetaCheckbox");
+const languageSelect = document.getElementById("languageSelect");
 
 function highlightNumbersInDiv(text) {
     if (!text) return;
@@ -705,9 +705,9 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         abilityReq,
         abilityMod = "";
 
-    var abilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === a);
+    const abilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === a);
 
-    var abilityEn = jsonUnitAbilities.find((entry) => entry.slug === a);
+    const abilityEn = jsonUnitAbilities.find((entry) => entry.slug === a);
     // console.log(abilityEn);
     abilityDam = "";
     if ("damage" in abilityLoc) {
@@ -720,7 +720,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
 
     abilityName = abilityLoc.name;
 
-    var abilityHasMedal = false;
+    let abilityHasMedal = false;
     if (uniqueMedal != null) {
         if (uniqueMedal.name.split("Champion ")[1] == abilityEn.name) {
             abilityName += " <champion></champion>";
@@ -752,7 +752,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     }
 
     if (abilityHasMedal == true) {
-        var championMedal = uniqueMedal.description;
+        let championMedal = uniqueMedal.description;
         console.log(uniqueMedal);
         abilityMod +=
             '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
@@ -1098,7 +1098,7 @@ function GetAbilityToolTip(
     // image
     let spa = document.createElement("SPAN");
 
-    var abilityIcon = ability.icon;
+    let  abilityIcon = ability.icon;
     if (abilityIcon == "undefined") {
         console.log("Missing icon in tooltip for : " + ability.name);
         abilityIcon = "";
@@ -2512,7 +2512,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     resistanceHolder.innerHTML = "";
 
     let unitType = "";
-    for (var j in unitLoc.secondary_passives) {
+    for (let j in unitLoc.secondary_passives) {
         let unitTypeTest = addUnitTypeIcon(unitEN.secondary_passives[j].slug, unitStat, unitCard);
         if (unitTypeTest != "") {
             unitType = unitTypeTest;
@@ -2577,14 +2577,14 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     let unitTabHolder = unitCard.querySelector("div#unitabholder");
     unitTabHolder.innerHTML = "";
 
-    var ab = jsonUnitAbilities.find((entry) => entry.slug === unitEN.medal_rewards_5[0].slug);
+    const ab = jsonUnitAbilities.find((entry) => entry.slug === unitEN.medal_rewards_5[0].slug);
     // champion upgrade
-    var splitName = null;
+    let splitName = null;
     if (ab.name.indexOf("Champion") != -1) {
         splitName = ab;
     }
 
-    for (var k in unitLoc.abilities) {
+    for (let k in unitLoc.abilities) {
         // check if its got a unique medal
 
         addAbilityslot(unitEN.abilities[k].slug, unitTabHolder, activeEnchantList, null, splitName);
@@ -2594,7 +2594,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         addstatusResistanceSlot(unitEN.status_resistance, resistanceHolder);
     }
 
-    for (var z in unitEN.resistances) {
+    for (let z in unitEN.resistances) {
         addResistanceSlot(unitEN.resistances[z].slug, unitEN.resistance, resistanceHolder);
         if (unitEN.resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
             additionalBlight = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
@@ -3903,7 +3903,7 @@ function ShowPossibleEnchantments(evt) {
 
 function hasPassiveForEnchantment(unitData, type) {
     // type to slug dictionary
-    var thisAb = jsonUnitAbilitiesLocalized.find((entry) => entry.name === type);
+    const thisAb = jsonUnitAbilitiesLocalized.find((entry) => entry.name === type);
     if (thisAb == undefined) {
         return false;
     }
@@ -4101,13 +4101,13 @@ function GetStructureDescription(structureID) {
 }
 
 function showStructure(a, showOrigin, divOrigin) {
-    var structureEN = jsonStructureUpgrades.find((entry) => entry.id == a);
+    const structureEN = jsonStructureUpgrades.find((entry) => entry.id == a);
     if (structureEN === undefined) {
         console.log("Couldn't find structure: " + a);
         return;
     }
 
-    var structureLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid == structureEN.resid);
+    const structureLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid == structureEN.resid);
 
     let modcard = divOrigin;
     let modName = divOrigin.querySelector("#modname");
@@ -4893,7 +4893,7 @@ function FindFormUnits() {
 
 function FindUnitsWithSecondaryPassive(trait) {
     // lookup slug
-    var ability = jsonUnitAbilities.find((entry) => entry.name.replaceAll(" ", "_").toLowerCase() === trait);
+    const ability = jsonUnitAbilities.find((entry) => entry.name.replaceAll(" ", "_").toLowerCase() === trait);
     // need to find a way to check tiers as well
     let unitsList = [];
     let i = 0;
@@ -5406,7 +5406,7 @@ function showHeroGov(a, check) {
 }
 
 function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, divOrigin) {
-    var skillLoc = jsonHeroSkillsLocalized.find((entry) => entry.id === a.id);
+    const skillLoc = jsonHeroSkillsLocalized.find((entry) => entry.id === a.id);
     let modName = divOrigin.querySelector("#modname");
 
     modName.innerHTML = skillLoc.name.toUpperCase();
