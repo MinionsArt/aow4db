@@ -106,7 +106,6 @@ function GetUnitTierAndName(id, subcultureCheck) {
         if (id !== unit.id) {
             continue;
         }
-
         // Skip deprecated units
         if (depCheckResID(unit.resid) == true) {
             continue;
@@ -186,52 +185,52 @@ function ShowUnitFromLink() {
 }
 
 function ShowSpellFromLink() {
-    let SkillID = searchParams.get("skill");
-    if (SkillID != undefined) {
-        console.log("here");
-        document.title = "Age of Wonders 4 Database - " + "Hero Skill";
-        showHeroSkillFromString(SkillID, "dataHolder");
-        return;
-    }
-    let spellID = searchParams.get("spell");
-    if (spellID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + findBy(jsonSpells, "id", spellID).name;
-        showSpellFromString(spellID, "dataHolder");
-        return;
-    }
+    const paramMap = [
+        {
+            key: "skill",
+            title: "Hero Skill",
+            action: showHeroSkillFromString
+        },
+        {
+            key: "spell",
+            title: (id) => findBy(jsonSpells, "id", id)?.name ?? "Spell",
+            action: showSpellFromString
+        },
+        {
+            key: "siege",
+            title: "Siege Project",
+            action: showSiegeProjectFromString
+        },
+        {
+            key: "governance",
+            title: "Governance",
+            action: showHeroGovernanceFromString
+        },
+        {
+            key: "wonder",
+            title: "Wonder",
+            action: showWorldStructureFromString
+        },
+        {
+            key: "tome",
+            title: "Tome",
+            action: showTomeFromString
+        },
+        {
+            key: "structure",
+            title: "Structure",
+            action: showStructureFromString
+        }
+    ];
 
-    let SiegeID = searchParams.get("siege");
-    if (SiegeID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + "Siege Project";
-        showSiegeProjectFromString(SiegeID, "dataHolder");
-        return;
-    }
-    let GovID = searchParams.get("governance");
-    if (GovID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + "Governance";
-        showHeroGovernanceFromString(GovID, "dataHolder");
-        return;
-    }
-
-    let WonderID = searchParams.get("wonder");
-    if (WonderID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + "Wonder";
-        showWorldStructureFromString(WonderID, "dataHolder");
-        return;
-    }
-
-    let TomeID = searchParams.get("tome");
-    if (TomeID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + "Tome";
-        showTomeFromString(TomeID, "dataHolder");
-        return;
-    }
-
-    let StrucID = searchParams.get("structure");
-    if (StrucID != undefined) {
-        document.title = "Age of Wonders 4 Database - " + "Structure";
-        showStructureFromString(StrucID, "dataHolder");
-        return;
+    for (const { key, title, action } of paramMap) {
+        const id = searchParams.get(key);
+        if (id) {
+            const titleText = typeof title === "function" ? title(id) : title;
+            document.title = `Age of Wonders 4 Database - ${titleText}`;
+            action(id, "dataHolder");
+            return;
+        }
     }
 }
 
@@ -608,15 +607,13 @@ function closeTabLinks(cityName) {
 
 function CheckIfOptionalCavalry(name) {
     let optional = false;
-    let i = "";
-    let j = "";
-    for (i in jsonUnits) {
-        if (name === jsonUnits[i].id) {
-            for (j in jsonUnits[i].secondary_passives) {
-                if (jsonUnits[i].secondary_passives[j].slug === "000003eb0000073f") {
-                    optional = true;
-                }
-            }
+    const unit = findBy(jsonUnits, "id", name);
+
+    if (unit != undefined) {
+        // optional cavalry slug = 000003eb0000073f
+        const part = findBy(unit.secondary_passives, "slug", "000003eb0000073f");
+        if (part != undefined) {
+            optional = true;
         }
     }
     return optional;
@@ -688,12 +685,9 @@ function addUnitTypeIcon(a, holder, origin) {
             unitRole.setAttribute("src", `/aow4db/Icons/Text/${clearname}.png`);
         }
     }
-    holder.appendChild(btn);
-
+      addTooltipListeners(btn, spa);
     btn.appendChild(imag);
-    // btn.append(spa);
-
-    addTooltipListeners(btn, spa);
+    holder.appendChild(btn);
 
     return unitType;
 }
@@ -1617,8 +1611,6 @@ async function showUnitFromString(string, divID, subcultureCheck, resID) {
     let newDiv = await spawnCard(string, divID);
     showUnit(string, subcultureCheck, resID, newDiv);
 }
-
-
 
 function SetUpSpawnTable() {
     let coll = document.getElementsByClassName("collapsible");
@@ -3174,7 +3166,6 @@ function CheckIfFromAbility(unitName) {
     return unitslugLookup;
 }
 
-
 function CheckIfFromHeroSkill(unitName) {
     let resultslist = "";
     let hero = "";
@@ -3770,7 +3761,6 @@ function showTome(a, div) {
 
     // backtraceTomeOriginAndTier(jsonSpells[j].id);
 }
-
 
 function ShowPossibleEnchantments(evt) {
     let unitType = evt.currentTarget.param;
@@ -4840,7 +4830,6 @@ function showSpell(a, showOrigin, divOrigin) {
     }
 }
 
-
 function FindFormUnits() {
     let unitsList = [];
     let i = 0;
@@ -5415,7 +5404,6 @@ function showHeroGov(a, check) {
         console.log("Didn't find :" + a);
     }
 }
-
 
 function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, divOrigin) {
     var skillLoc = jsonHeroSkillsLocalized.find((entry) => entry.id === a.id);
