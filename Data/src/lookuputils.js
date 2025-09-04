@@ -32,6 +32,234 @@ function findParentByNested(array, nestedKey, matchKey, matchValue) {
   return null;
 }
 
+let ascendingOrder = false;
+
+function sortDivs(sortType, savedOrder) {
+    let i = "";
+
+    // 2 - Detemine the selector
+    if (savedOrder != null) {
+        ascendingOrder = savedOrder;
+    } else {
+        ascendingOrder = !ascendingOrder;
+    }
+
+    let buttontargets = document.getElementsByClassName("sortingButton");
+
+    for (i in buttontargets) {
+        buttontargets[i].className = "sortingButton";
+    }
+    let currentbutton = document.getElementById(sortType + "-button");
+
+    if (ascendingOrder) {
+        currentbutton.className += " activeDown";
+    } else {
+        currentbutton.className += " activeUp";
+    }
+
+    // 3 - Choose the wanted order
+    //  ascendingOrder = !ascendingOrder;
+    const isNumeric = true;
+
+    // 4 - Select all elements
+    let container;
+    if (currentView === "") {
+        container = document.getElementById("dataHolder");
+    } else {
+        container = document.getElementById(currentView);
+    }
+
+    let element = [...container.querySelectorAll(".mod_card")];
+
+    let selector = (element) => element.querySelector(".mod_name").innerHTML;
+    if (sortType === "tier") {
+        selector = (element) => element.querySelector(".spell_tier").innerHTML;
+    } else if (sortType === "cost") {
+        selector = (element) => element.querySelector(".spell_cost").innerHTML;
+    }
+
+    // 5 - Find their parent
+    const parentElement = container;
+
+    // 6 - Sort the elements
+    const collator = new Intl.Collator(undefined, {
+        numeric: isNumeric,
+        sensitivity: "base"
+    });
+
+    element
+        .sort((elementA, elementB) => {
+            const [firstElement, secondElement] = ascendingOrder ? [elementA, elementB] : [elementB, elementA];
+
+            let textOfFirstElement = selector(firstElement);
+
+            let textOfSecondElement = selector(secondElement);
+
+            if (sortType === "tier") {
+                let fields = textOfFirstElement.split("Tier ");
+
+                textOfFirstElement = deromanize(fields[1]);
+                let fields2 = textOfSecondElement.split("Tier ");
+                textOfSecondElement = deromanize(fields2[1]);
+                //console.log("first: " + fields2[1]);
+            }
+
+            return collator.compare(textOfFirstElement, textOfSecondElement);
+        })
+        .forEach((element) => parentElement.appendChild(element));
+
+    let currenturl = window.location.href.split("&")[0];
+
+    window.history.replaceState({}, "foo", currenturl + "&sort=" + sortType + ":" + ascendingOrder);
+    sorting = sortType + ":" + ascendingOrder;
+}
+
+async function SetCollapsibleStuff() {
+    let coll = document.getElementsByClassName("collapsibleUnits");
+
+    for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            let contents = document.getElementsByClassName("contentUnits");
+            let content = this.nextElementSibling;
+
+            for (j = 0; j < contents.length; j++) {
+                if (contents[j].style != null) {
+                    if (contents[j].style.display === "grid") {
+                        if (contents[j].id === content.id) {
+                        } else {
+                            coll[j].classList.toggle("active");
+                            contents[j].style.display = "none";
+                        }
+                    }
+                }
+            }
+            this.classList.toggle("active");
+
+            if (content.style.display === "grid") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "grid";
+            }
+
+            let buttonHolder = document.getElementById("buttonHolder");
+            let holderHeight = buttonHolder.offsetHeight;
+            let dataHolder = document.getElementById("dataHolder");
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px; margin-left:200px");
+        });
+    }
+
+    let buttonHolder = document.getElementById("buttonHolder");
+    let holderHeight = buttonHolder.offsetHeight;
+    let dataHolder = document.getElementById("dataHolder");
+    dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;; margin-left:200px");
+}
+
+
+function expandTags(input) {
+    // Regular expression to match patterns like "2<empirearcana></empirearcana>"
+    const tagPattern = /(\d+)(<.*?>.*?<\/.*?>)/g;
+
+    // Function to replace each match with the expanded form
+    const expanded = input.replace(tagPattern, (match, count, tag) => {
+        // Repeat the tag the specified number of times
+        return tag.repeat(Number(count));
+    });
+
+    return expanded;
+}
+
+
+function HideAll(cardClassName) {
+    let divs = document.getElementsByClassName(cardClassName);
+
+    for (let i = 0; i < divs.length; i++) {
+        let div = divs[i];
+        div.style.display = "none";
+    }
+    return divs;
+}
+
+function transformString(inputString) {
+    // Remove the word "Property"
+    let transformedString = inputString.replace("Property", "");
+    transformedString = transformedString.replace("/", ",");
+    // Replace the specified words with the corresponding tags
+    const replacements = {
+        Astral: "<empirearcana></empirearcana>",
+        Chaos: "<empirechaos></empirechaos>",
+        Order: "<empireorder></empireorder>",
+        Shadow: "<empireshadow></empireshadow>",
+        Materium: "<empirematter></empirematter>",
+        Elementum: "<empirematter></empirematter>",
+        Nature: "<empirenature></empirenature>"
+    };
+
+    // Use a regular expression to replace all occurrences of the keys with the corresponding values
+    for (const [key, value] of Object.entries(replacements)) {
+        const regex = new RegExp(`\\b${key}\\b`, "g");
+        transformedString = transformedString.replace(regex, value);
+    }
+
+    // Remove any extra spaces (especially around the removed "Property" word)
+    transformedString = transformedString.trim();
+
+    return transformedString;
+}
+
+function ShowAllDivsWithFilters(cardClassName) {
+    let listOfDivs = HideAll(cardClassName);
+    //   var list = new Array();
+    let filter = document.getElementById("filterInput");
+
+    let filterText = filter.value.toUpperCase();
+
+    for (let j = 0; j < listOfDivs.length; j++) {
+        if (listOfDivs[j].innerText.toUpperCase().indexOf(filterText) != -1) {
+            listOfDivs[j].style.display = "table";
+        }
+    }
+}
+
+async function SetLevelUpStuff() {
+    let coll = document.getElementsByClassName("collapsibleLevelup");
+    let content = document.getElementsByClassName("contentLevelup");
+
+    for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            //this.classList.toggle("active");
+
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = searchParams.get("type");
+
+    if (product != undefined) {
+        let splits = product.split("&");
+        closeTabLinks(product);
+        document.getElementById(splits[0] + "-button").className += " w3-red";
+        // grab the subculture if available
+
+        let subCulture = splits[0].split(/(?=[A-Z])/);
+        if (subCulture.length > 1) {
+            let test = subCulture.slice(1).join("");
+            await showSubDiv(null, test);
+        }
+        // open div with type
+        await openDiv(event, splits[0]);
+    }
+}
+
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 
 
 function romanize(num) {
