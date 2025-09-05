@@ -1685,9 +1685,9 @@ async function showStructures(list) {
 }
 
 async function showEmpireTrees(list) {
-    await spawnSpellCards(list, "Empire Tree");
+   let cards = await spawnSpellCards(list, "Empire Tree");
     for (let i = 0; i < list.length; i++) {
-        showEmpireTree(list[i]);
+        showEmpireTree(list[i], cards[i]);
     }
 }
 
@@ -4512,7 +4512,7 @@ function showDestinyTrait(trait) {
     }
 }
 
-function showEmpireTree(a) {
+function showEmpireTree(a, divOrigin) {
     let modName,
         description,
         cost,
@@ -4524,7 +4524,7 @@ function showEmpireTree(a) {
 
     for (j in jsonEmpire) {
         if (a === jsonEmpire[j].id) {
-            modName = document.getElementById("modname");
+            modName = divOrigin.querySelector("#modname");
             nameString = "";
             nameString = jsonEmpireLocalized[j].name.toUpperCase();
             nameString += "<br>" + jsonEmpireLocalized[j].category;
@@ -4532,35 +4532,28 @@ function showEmpireTree(a) {
             modName.innerHTML = nameString;
             // backtracktome
 
-            modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
-            descriptionDiv = document.getElementById("moddescription");
+            let descriptionDiv = divOrigin.querySelector("#moddescription");
             description = "<hr>";
 
             description += jsonEmpireLocalized[j].description;
 
-            imagelink = document.getElementById("modicon");
+            let imagelink = divOrigin.querySelector("#modicon");
 
             if (a.startsWith("_")) {
                 a = a.replace("_", "");
             }
 
             imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + a + ".png");
-            imagelink.setAttribute("id", "modicon" + a);
+         
             descriptionDiv.innerHTML = description;
-            descriptionDiv.setAttribute("id", "modicon" + a);
 
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
-            tier = document.getElementById("modtier");
-
-            tier.setAttribute("id", "modtier" + a);
+            tier = divOrigin.querySelector("#modtier");
             tier.innerHTML = "XP required: " + jsonEmpire[j].required_xp + jsonEmpire[j].required_affinity;
 
-            cost = document.getElementById("modcost");
+            cost = divOrigin.querySelector("#modcost");
 
-            cost.setAttribute("id", "modcost" + a);
             cost.innerHTML = "Cost: " + jsonEmpire[j].cost;
 
             found = true;
