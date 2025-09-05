@@ -1735,6 +1735,7 @@ async function spawnSpellCards(list, divID = "spell") {
 }
 
 async function spawnItemCards(list, divID) {
+    let newDivs = [];
     if (divID === undefined) {
         divID = "item";
     }
@@ -1742,8 +1743,11 @@ async function spawnItemCards(list, divID) {
     let doc = document.getElementById(divID);
     for (let i = 0; i < list.length; i++) {
         let iDiv = item_card_template.content.cloneNode(true);
+        let element = iDiv.firstElementChild;
         doc.appendChild(iDiv);
+        newDivs.push(element);
     }
+    return newDivs;
 }
 
 async function spawnSkillCards(list, divID) {
@@ -1879,10 +1883,10 @@ async function showDestinyTraitsFromList(list, divID) {
 }
 
 async function showItemFromList(list, divID) {
-    await spawnItemCards(list, divID);
+   let newDivs = await spawnItemCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showItem(list[i]);
+        showItem(list[i], newDivs[i]);
     }
 }
 
@@ -4900,7 +4904,7 @@ function FindUnitsWithSecondaryPassive(trait) {
     return sortedUnitListArray;
 }
 
-function showItem(a) {
+function showItem(a, divOrigin) {
     let modName,
         description,
         cost,
@@ -4913,7 +4917,7 @@ function showItem(a) {
 
     let itemLoc = jsonHeroItemsLocalized.find((entry) => entry.resid === a.resid);
 
-    modName = document.getElementById("modname");
+    modName = divOrigin.querySelector("#modname");
     // console.log(a.id);
     if (a.id.indexOf("pantheon") != -1) {
         modName.innerHTML = "<pantheon></pantheon>" + itemLoc.name.toUpperCase();
@@ -4921,8 +4925,7 @@ function showItem(a) {
         modName.innerHTML = itemLoc.name.toUpperCase();
     }
 
-    modName.setAttribute("id", "modname" + a.id);
-    descriptionDiv = document.getElementById("moddescription");
+   let  descriptionDiv = divOrigin.querySelector("#moddescription");
 
     descriptionDiv.innerHTML = "<hr>";
     if ("description" in itemLoc) {
@@ -4953,10 +4956,9 @@ function showItem(a) {
         modName.append(dlctag);
     }
 
-    unitTypesDiv = document.getElementById("affectUnitTypes");
+    let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a.id);
-
+    
     let div = document.createElement("DIV");
 
     for (let i = 0; i < itemLoc.disabled_slots.length; i++) {
@@ -4968,16 +4970,15 @@ function showItem(a) {
         descriptionDiv.innerHTML += "Disabled slots: <br>";
     }
 
-    descriptionDiv.setAttribute("id", "moddescription" + a.id);
     //type = document.getElementById("modtype");
     //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
     //type.setAttribute("id", "modtype" + a);
-    tier = document.getElementById("spell_tier");
+    tier = divOrigin.querySelector("#spell_tier");
     tier.innerHTML = a.tier;
 
     tier.setAttribute("id", "spell_tier" + a.id);
 
-    cost = document.getElementById("modcost");
+    cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = itemLoc.slot + "<br>";
     // add classes
     if ("hero_classes" in a) {
@@ -4994,14 +4995,14 @@ function showItem(a) {
 
     cost.setAttribute("id", "modcost" + a.id);
 
-    imagelink = document.getElementById("modicon");
+   let imagelink = divOrigin.querySelector("#modicon");
     imagelink.remove();
 
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
+    let tomeOriginIcon = divOrigin.querySelector("#originTomeIcon");
     tomeOriginIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + a.icon + ".png");
     // tomeOriginIcon.setAttribute("height", "130px");
     //  tomeOriginIcon.setAttribute("style", "margin-left:40px");
-    tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+   
 }
 
 function showTraitSetup(currentTrait) {
