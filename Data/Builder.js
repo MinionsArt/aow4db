@@ -1705,13 +1705,16 @@ async function spawnTomeCards(list, divID) {
     let doc = document.getElementById(divID);
 
     let iDiv = tome_card_template.content.cloneNode(true);
-    doc.appendChild(iDiv);
+    let element = iDiv.firstElementChild;
+    
+    doc.appendChild(element);
+    return element;
 }
 
 async function showTomeFromList2(string, divID) {
-    await spawnTomeCards(string, divID);
+   let card =  await spawnTomeCards(string, divID);
 
-    showTome(string, divID);
+    showTome(string, card);
 }
 
 async function showTomeFromList(list, divID, overwritetext) {
@@ -1784,7 +1787,9 @@ async function spawnTomeCardSingle(list, divID) {
     let doc = document.getElementById(divID);
 
     let iDiv = tome_card_template.content.cloneNode(true);
-    doc.appendChild(iDiv);
+    let element = iDiv.firstElementChild;
+    doc.appendChild(element);
+    return element;
 }
 async function spawnStructureCardSingle(list, divID) {
     if (divID === undefined) {
@@ -1822,18 +1827,18 @@ async function showSpellFromList(list, divID) {
     }
 }
 async function showHeroTraitFromList(list, divID) {
-    await spawnSpellCards(list, divID);
+   let cards = await spawnSpellCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showHeroTrait(list[i].id, true);
+        showHeroTrait(list[i].id, cards[i]);
     }
 }
 
 async function showHeroGovFromList(list, divID) {
-    await spawnSpellCards(list, divID);
+   let cards = await spawnSpellCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showHeroGov(list[i].slug, undefined);
+        showHeroGov(list[i], undefined, cards[i]);
     }
 }
 
@@ -1867,18 +1872,18 @@ async function showSkillFromList(list, divID) {
 }
 
 async function showTraitFromList(list, divID) {
-    await spawnSpellCards(list, divID);
+    let cards = await spawnSpellCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showTrait(list[i]);
+        showTrait(list[i], cards[i]);
     }
 }
 
 async function showDestinyTraitsFromList(list, divID) {
-    await spawnSpellCards(list, divID);
+    let cards = await spawnSpellCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showDestinyTrait(list[i]);
+        showDestinyTrait(list[i], cards[i]);
     }
 }
 
@@ -1893,9 +1898,9 @@ async function showItemFromList(list, divID) {
 async function showCosmicHappeningsWithArgument(argumentType, divID) {
     let list = [];
     list = findCosmicHappeningsWithArgument(argumentType);
-    await spawnStructureCards(list, divID);
+   let cards = await spawnStructureCards(list, divID);
     for (let i = 0; i < list.length; i++) {
-        showCosmicHappening(list[i]);
+        showCosmicHappening(list[i], cards[i]);
     }
 }
 
@@ -1912,10 +1917,10 @@ async function showWorldStructuresWithArgument(overwrite, argumentType, list, di
         list = newList;
     }
 
-    await spawnStructureCards(list, divID);
+   let cards = await spawnStructureCards(list, divID);
 
     for (let i = 0; i < list.length; i++) {
-        showWorldStructure(list[i]);
+        showWorldStructure(list[i], cards[i]);
     }
 }
 async function showStructuresWithArgument(argument, divID, argumentType, includeProvince) {
@@ -1988,8 +1993,8 @@ async function showSiegeProjectFromString(string, divID) {
 }
 
 async function showHeroGovernanceFromString(string, divID) {
-    await spawnSpellCardSingle(string, divID);
-    showHeroGov(string, true);
+   let card = await spawnSpellCardSingle(string, divID);
+    showHeroGov(string, true, card);
 }
 
 async function showWorldStructureFromString(string, divID) {
@@ -1998,8 +2003,8 @@ async function showWorldStructureFromString(string, divID) {
 }
 
 async function showTomeFromString(string, divID) {
-    await spawnTomeCardSingle(string, divID);
-    showTome(string);
+    let card = await spawnTomeCardSingle(string, divID);
+    showTome(string, card);
 }
 
 async function showStructureFromString(string, divID) {
@@ -3484,7 +3489,7 @@ function showEmpireUpgrade(skill, showOrigin, divOrigin) {
     cost.innerHTML = "";
 }
 
-function showTome(a, div) {
+function showTome(a, divOrigin) {
     let modName,
         description,
         cost,
@@ -3503,7 +3508,7 @@ function showTome(a, div) {
     }
     let tomeLoc = jsonTomesLocalized.find((entry) => entry.resid === tomeEN.resid);
 
-    modName = document.getElementById("tomename");
+    modName = divOrigin.querySelector("#tomename");
     modName.innerHTML = "";
 
     modName.innerHTML += tomeLoc.name;
@@ -3513,8 +3518,7 @@ function showTome(a, div) {
         modName.append(newDivForMount);
     }
 
-    modName.setAttribute("id", "tomename" + a);
-    descriptionDiv = document.getElementById("tomedescription");
+    descriptionDiv = divOrigin.querySelector("#tomedescription");
     description = tomeLoc.gameplay_description;
     if ("affinities" in tomeEN) {
         let affinitiesdual = tomeEN.affinities.split(", ");
@@ -3534,18 +3538,17 @@ function showTome(a, div) {
     }
     descriptionDiv.innerHTML += "<hr>";
 
-    descriptionDiv.setAttribute("id", "tomedescription" + a);
     let loreDescription = tomeLoc.lore_description;
     loreDescription = loreDescription.replace(String.fromCharCode(92), "");
     loreDescription = loreDescription.replace(String.fromCharCode(92), "");
 
     loreDescription += "<br> -" + tomeLoc.lore_author;
-    let descriptionLoreDiv = document.getElementById("tomeloredescription");
+    let descriptionLoreDiv = divOrigin.querySelector("#tomeloredescription");
     descriptionLoreDiv.innerHTML = loreDescription;
 
-    let unitTypesDiv = document.getElementById("initialBonusList");
+    let unitTypesDiv = divOrigin.querySelector("#initialBonusList");
 
-    div = document.createElement("DIV");
+    let div = document.createElement("DIV");
 
     if ("affinities" in tomeEN) {
         let affinitiesdual = tomeEN.affinities.split(", ");
@@ -3659,10 +3662,7 @@ function showTome(a, div) {
 
     unitTypesDiv.appendChild(div);
 
-    unitTypesDiv.setAttribute("id", "initialBonusList" + a);
-
-    descriptionLoreDiv.setAttribute("id", "tomeloredescription" + a);
-    skillHolder = document.getElementById("tome_unlocks");
+   let skillHolder = divOrigin.querySelector("#tome_unlocks");
     
     function addTomeSkillCard(holder, callback) {
   const fragment = spell_card_template.content.cloneNode(true);
@@ -3688,9 +3688,7 @@ function showTome(a, div) {
     addTomeSkillCard(skillHolder, el => showSiegeProject(skill.name, false, el));
   }
 }
-    skillHolder.setAttribute("id", "tome_unlocks" + a);
-
-    imagelink = document.getElementById("tomeicon");
+   let imagelink = divOrigin.querySelector("#tomeicon");
     imagelink.setAttribute("src", "/aow4db/Icons/TomeIcons/" + a + ".png");
     imagelink.setAttribute("id", "tomeicon" + a);
 
@@ -4150,7 +4148,7 @@ function addUnlockableUnitsToStructure(a, keyword, unitList, descriptionDiv, uni
     }
 }
 
-function showCosmicHappening(a) {
+function showCosmicHappening(a, divOrigin) {
     let modName,
         description,
         j,
@@ -4159,43 +4157,42 @@ function showCosmicHappening(a) {
 
     for (j in jsonCosmicHappenings) {
         if (a === jsonCosmicHappenings[j].id) {
-            modName = document.getElementById("modname");
+            
+            modName = divOrigin.querySelector("#modname");
             nameString = "";
             nameString = jsonCosmicHappenings[j].name.toUpperCase();
 
             if (modName == undefined) {
             }
             modName.innerHTML = nameString;
-
-            modName.setAttribute("id", "modname" + a);
             modName.className = "mod_name";
 
-            descriptionDiv = document.getElementById("moddescription");
+            let descriptionDiv = divOrigin.querySelector("#moddescription");
             descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
             description = jsonCosmicHappenings[j].description;
             descriptionDiv.innerHTML = description;
-            descriptionDiv.setAttribute("id", "description" + a);
+            
 
-            let imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("id", "img" + a);
+            let imagelink = divOrigin.querySelector("#modicon");
+          
             let categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
             categoryLink = categoryLink.replaceAll("of", "Of");
             imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
 
-            let preview = document.getElementById("structurepreview");
+            let preview = divOrigin.querySelector("#structurepreview");
             let imagePos = jsonCosmicHappenings[j].image;
 
-            preview.setAttribute("id", "img" + a);
+         
             preview.className = "cosmicHappeningPic";
             preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
 
             preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
 
-            let modtier = document.getElementById("modtier");
+            let modtier = divOrigin.querySelector("#modtier");
             modtier.innerHTML = "Category: " + jsonCosmicHappenings[j].category;
-            modtier.setAttribute("id", "img" + a);
+         
 
-            let modcost = document.getElementById("modcost");
+            let modcost = divOrigin.querySelector("#modcost");
             let duration = jsonCosmicHappenings[j].duration;
             if (duration == -1) {
                 duration = "Variable";
@@ -4203,7 +4200,6 @@ function showCosmicHappening(a) {
                 duration += "<turn></turn>";
             }
             modcost.innerHTML = "Duration: " + duration;
-            modcost.setAttribute("id", "img" + a);
 
             // find combat enchantment
             found = true;
@@ -4214,7 +4210,7 @@ function showCosmicHappening(a) {
     }
 }
 
-function showWorldStructure(a) {
+function showWorldStructure(a, divOrigin) {
     let modName,
         description,
         cost,
@@ -4229,7 +4225,7 @@ function showWorldStructure(a) {
         return;
     }
 
-    modName = document.getElementById("modname");
+    modName = divOrigin.querySelector("#modname");
     nameString = "";
     nameString = structure.name.toUpperCase();
 
@@ -4242,17 +4238,15 @@ function showWorldStructure(a) {
         let newDivForMount = AddDLCTag(structure.DLC);
         modName.append(newDivForMount);
     }
-    modName.setAttribute("id", "modname" + a);
     modName.className = "mod_name";
-    loreDiv = document.getElementById("loreText");
+    let loreDiv = divOrigin.querySelector("#loreText");
 
-    loreDiv.setAttribute("id", "loreText" + a);
     if ("lore" in structure) {
         loreDiv.innerHTML = structure.lore;
         loreDiv.innerHTML += "<br><br>" + structure.author;
     }
 
-    descriptionDiv = document.getElementById("moddescription");
+   let descriptionDiv = divOrigin.querySelector("#moddescription");
     descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
     description = "";
 
@@ -4269,7 +4263,7 @@ function showWorldStructure(a) {
         }
     }
 
-    imagelink = document.getElementById("modicon");
+   let imagelink = divOrigin.querySelector("#modicon");
 
     if (structure.type.indexOf("wonder") != -1) {
         imagelink.remove();
@@ -4289,10 +4283,14 @@ function showWorldStructure(a) {
         //descriptionDiv.innerHTML +=
         //   "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
     }
-    unitTypesDiv = document.getElementById("affectUnitTypes");
+    let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
     unitTypesDiv.setAttribute("style", "float: left;display: grid;grid-template-columns: 200px 200px;font-size: 15px;");
-    FindCombatEnchantment(a);
+   let combatEnchantment = FindCombatEnchantment(a);
+    if(combatEnchantment != undefined){
+         descriptionDiv.append(combatEnchantment);
+    }
+   
 
     if ("unit_unlocks" in structure) {
         if ("other_unlock" in structure) {
@@ -4314,31 +4312,20 @@ function showWorldStructure(a) {
             unitTypesDiv.appendChild(div);
         }
     }
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
 
     descriptionDiv.innerHTML += description;
 
     //descriptionDiv.innerHTML = AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
-    descriptionDiv.setAttribute("id", "modicon" + a);
 
-    preview = document.getElementById("structurepreview");
+   let preview = divOrigin.querySelector("#structurepreview");
     preview.setAttribute("src", "/aow4db/Icons/StructurePics/" + a + ".png");
-    preview.setAttribute("id", "structurepreview" + a);
 
-    tier = document.getElementById("modtier");
+    tier = divOrigin.querySelector("#modtier");
 
-    tier.setAttribute("id", "modtier" + a);
     tier.innerHTML = "";
 
-    cost = document.getElementById("modcost");
-
-    let tomeOrigin = document.getElementById("originTome");
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
-    tomeOrigin.setAttribute("id", "originTome" + a);
-    tomeOriginIcon.setAttribute("id", "originTomeIcon" + a);
-
-    cost.setAttribute("id", "modcost" + a);
+    cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
 }
 
@@ -4346,7 +4333,7 @@ function FindCombatEnchantment(id) {
     let i = "";
     for (i in jsonCombatEnchantments) {
         if (jsonCombatEnchantments[i].origin_structure === id) {
-            info = document.createElement("DIV");
+            let info = document.createElement("DIV");
 
             info.innerHTML =
                 '<button type="button" class="collapsible"  onclick="SetUpCombatEnc()"> Combat Enchantment - ' +
@@ -4368,83 +4355,13 @@ function FindCombatEnchantment(id) {
 
             collapsibleC.append(div);
             info.append(collapsibleC);
-            descriptionDiv.append(info);
+            return info;
         }
     }
 }
 
-function ShowDestinyTraits() {
-    let modName,
-        description,
-        cost,
-        type,
-        tier,
-        j,
-        nameString = "";
-    let found = false;
 
-    for (j in jsonDestiny.traits) {
-        a = jsonDestiny.traits[j].id;
-        let doc = document.getElementById("dataHolder");
-
-        const fragment = spell_card_template.content.cloneNode(true);
-        const iDiv = fragment.firstElementChild;
-        doc.appendChild(iDiv);
-
-        modName = document.getElementById("modname");
-        nameString = "";
-        nameString = jsonDestiny.traits[j].name.toUpperCase();
-
-        modName.innerHTML = nameString;
-        // backtracktome
-
-        modName.setAttribute("id", "modname" + a);
-        modName.className = "mod_name";
-        descriptionDiv = document.getElementById("moddescription");
-        description = "<hr> Trigger: <br>";
-
-        description += jsonDestiny.traits[j].trigger;
-
-        imagelink = document.getElementById("modicon");
-
-        if (a.startsWith("_")) {
-            a = a.replace("_", "");
-        }
-
-        imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + a + ".png");
-        imagelink.setAttribute("id", "modicon" + a);
-        imagelink.setAttribute("style", "background-image: none");
-        descriptionDiv.innerHTML = description;
-        descriptionDiv.setAttribute("id", "modicon" + a);
-        descriptionDiv.setAttribute("style", "max-width: 380px");
-
-        unitTypesDiv = document.getElementById("affectUnitTypes");
-        unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
-        descriptionDiv.innerHTML += "<br><br>Effect: <br>";
-        let l = 0;
-        for (l in jsonDestiny.traits[j].gains) {
-            let div = document.createElement("DIV");
-            div.innerHTML = "<bullet>" + jsonDestiny.traits[j].gains[l].description + "</bullet>";
-            descriptionDiv.appendChild(div);
-        }
-
-        tier = document.getElementById("modtier");
-
-        tier.setAttribute("id", "modtier" + a);
-        tier.innerHTML = "";
-
-        cost = document.getElementById("modcost");
-
-        cost.innerHTML = jsonDestiny.traits[j].category;
-
-        cost.setAttribute("id", "modcost" + a);
-
-        found = true;
-    }
-}
-
-function showDestinyTrait(trait) {
+function showDestinyTrait(trait, divOrigin) {
     let modName,
         description,
         cost,
@@ -4458,7 +4375,7 @@ function showDestinyTrait(trait) {
         if (trait === jsonDestiny.traits[j].id) {
             a = jsonDestiny.traits[j].id;
 
-            modName = document.getElementById("modname");
+            modName = divOrigin.querySelector("#modname");
             nameString = "";
             nameString = jsonDestiny.traits[j].name.toUpperCase();
             nameString += "<br>" + jsonDestiny.traits[j].category;
@@ -4466,29 +4383,27 @@ function showDestinyTrait(trait) {
             modName.innerHTML = nameString;
             // backtracktome
 
-            modName.setAttribute("id", "modname" + a);
+           
             modName.className = "mod_name";
-            descriptionDiv = document.getElementById("moddescription");
+           let descriptionDiv = divOrigin.querySelector("#moddescription");
             description = "Trigger: <br>";
 
             description += jsonDestiny.traits[j].trigger;
 
-            imagelink = document.getElementById("modicon");
+           let imagelink = divOrigin.querySelector("#modicon");
 
             if (a.startsWith("_")) {
                 a = a.replace("_", "");
             }
 
             imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + a + ".png");
-            imagelink.setAttribute("id", "modicon" + a);
+         
             imagelink.setAttribute("style", "background-image: none");
             descriptionDiv.innerHTML = description;
-            descriptionDiv.setAttribute("id", "modicon" + a);
             descriptionDiv.setAttribute("style", "max-width: 380px");
 
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
+           let  unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
+          
             descriptionDiv.innerHTML += "<br><br>Effect: <br>";
             let l = 0;
             for (l in jsonDestiny.traits[j].gains) {
@@ -4497,15 +4412,14 @@ function showDestinyTrait(trait) {
                 descriptionDiv.appendChild(div);
             }
 
-            tier = document.getElementById("modtier");
+            tier = divOrigin.querySelector("#modtier");
 
-            tier.setAttribute("id", "modtier" + a);
+         
             tier.innerHTML = "";
 
-            cost = document.getElementById("modcost");
+            cost = divOrigin.querySelector("#modcost");
             cost.innerHTML = "";
 
-            cost.setAttribute("id", "modcost" + a);
 
             found = true;
         }
@@ -4637,8 +4551,7 @@ function showSpell(a, showOrigin, divOrigin) {
     let spellFound = findBy(jsonSpells, "id", a);
     if (spellFound != undefined) {
         let modCard = divOrigin;
-        // modCard = document.getElementById("spell_card");
-        //  modCard.setAttribute("id", "spell_card" + a);
+     
         let modName = modCard.querySelector("#modname");
         modName.innerHTML = spellFound.name.toUpperCase();
         let description = "<hr>";
@@ -4963,9 +4876,7 @@ function showItem(a, divOrigin) {
         descriptionDiv.innerHTML += "Disabled slots: <br>";
     }
 
-    //type = document.getElementById("modtype");
-    //type.innerHTML = "Mod Type: " + jsonSpells[j].type;
-    //type.setAttribute("id", "modtype" + a);
+   
     tier = divOrigin.querySelector("#spell_tier");
     tier.innerHTML = a.tier;
 
@@ -4998,12 +4909,12 @@ function showItem(a, divOrigin) {
    
 }
 
-function showTraitSetup(currentTrait) {
-    modName = document.getElementById("modname");
+function showTraitSetup(currentTrait, divOrigin) {
+    let modName = divOrigin.querySelector("#modname");
     modName.innerHTML = currentTrait.name.toUpperCase();
 
-    modName.setAttribute("id", "modname" + currentTrait.id);
-    descriptionDiv = document.getElementById("moddescription");
+    
+   let descriptionDiv = divOrigin.querySelector("#moddescription");
 
     if ("DLC" in currentTrait) {
         let newDivForMount = AddDLCTag(currentTrait.DLC);
@@ -5012,8 +4923,6 @@ function showTraitSetup(currentTrait) {
 
     descriptionDiv.innerHTML = "";
 
-    unitTypesDiv = document.getElementById("affectUnitTypes");
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + currentTrait.id);
 
     let div = document.createElement("DIV");
 
@@ -5075,9 +4984,9 @@ function showTraitSetup(currentTrait) {
         descriptionDiv.append(addSpoiler(currentTrait.rewards));
     }
 
-    descriptionDiv.setAttribute("id", "moddescription" + currentTrait.id);
+ 
 
-    tier = document.getElementById("modtier");
+   let tier = divOrigin.querySelector("#modtier");
     tier.innerHTML = "";
     if ("affinity" in currentTrait) {
         let splitAff = currentTrait.affinity.split(",");
@@ -5086,9 +4995,8 @@ function showTraitSetup(currentTrait) {
             tier.innerHTML += splitAff[j];
         }
     }
-    tier.setAttribute("id", "modtier" + currentTrait.id);
 
-    cost = document.getElementById("modcost");
+   let cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
     if (currentTrait.type == "form") {
         cost.innerHTML = "Form- " + currentTrait.point_cost + " Points";
@@ -5096,9 +5004,7 @@ function showTraitSetup(currentTrait) {
         cost.innerHTML = "Society";
     }
 
-    cost.setAttribute("id", "modcost" + currentTrait.id);
-
-    imagelink = document.getElementById("modicon");
+   let imagelink = divOrigin.querySelector("#modicon");
     let iconLink = currentTrait.icon;
     if (iconLink == undefined) {
         // fallback
@@ -5111,14 +5017,10 @@ function showTraitSetup(currentTrait) {
     imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     imagelink.setAttribute("style", "background-image:none");
     imagelink.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/empty.png')");
-    imagelink.setAttribute("id", "modicon" + currentTrait.id);
 
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
-
-    tomeOriginIcon.setAttribute("id", "modicon" + currentTrait.id);
 }
 
-function showTrait(a) {
+function showTrait(a, divOrigin) {
     let modName,
         description,
         cost,
@@ -5130,18 +5032,18 @@ function showTrait(a) {
         if (jsonFactionCreation2[i].id === a) {
             let currentTrait = jsonFactionCreation2[i];
 
-            showTraitSetup(currentTrait);
+            showTraitSetup(currentTrait, divOrigin);
         }
     }
     for (i in jsonFactionCreation) {
         if (jsonFactionCreation[i].id === a) {
             let currentTrait = jsonFactionCreation[i];
-            showTraitSetup(currentTrait);
+            showTraitSetup(currentTrait, divOrigin);
         }
     }
 }
 
-function showHeroTrait(a) {
+function showHeroTrait(a, divOrigin ) {
     let modName,
         description,
         cost,
@@ -5153,11 +5055,10 @@ function showHeroTrait(a) {
     let thisAmbition = jsonHeroAmbitions.find((entry) => entry.id === a);
     let thisAmbitionLoc = jsonHeroAmbitionsLocalized.find((entry) => entry.icon === thisAmbition.icon);
 
-    modName = document.getElementById("modname");
+    modName = divOrigin.querySelector("#modname");
     modName.innerHTML = thisAmbitionLoc.name.toUpperCase();
 
-    modName.setAttribute("id", "modname" + a);
-    descriptionDiv = document.getElementById("moddescription");
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
 
     descriptionDiv.innerHTML = "";
     if (thisAmbition.available_to_rulers == false) {
@@ -5167,24 +5068,18 @@ function showHeroTrait(a) {
         descriptionDiv.innerHTML = "<hr>" + thisAmbitionLoc.screen_description;
     }
 
-    descriptionDiv.setAttribute("id", "moddescription" + a);
-    unitTypesDiv = document.getElementById("affectUnitTypes");
+  
 
-    unitTypesDiv.setAttribute("id", "affectUnitTypes" + a);
-
-    tier = document.getElementById("modtier");
+    tier = divOrigin.querySelector("#modtier");
     tier.innerHTML = "";
 
-    tier.setAttribute("id", "modtier" + a);
+   
 
-    cost = document.getElementById("modcost");
-
-    cost.setAttribute("id", "modcost" + a);
-
-    imagelink = document.getElementById("modicon");
+let imagelink = divOrigin.querySelector("#modicon");
     imagelink.setAttribute("src", "/aow4db/Icons/AmbitionIcons/" + thisAmbition.icon + ".png");
     imagelink.setAttribute("style", "background-image:none");
-    imagelink.setAttribute("id", "modicon" + a);
+    
+    let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
     unitTypesDiv.setAttribute("style", "position: relative;display: block");
     // get ambitions
@@ -5230,104 +5125,45 @@ function showHeroTrait(a) {
         }
     }
 
-    let tomeOriginIcon = document.getElementById("originTomeIcon");
-
-    tomeOriginIcon.setAttribute("id", "modicon" + a.id);
+  
     found = true;
 }
 
-function showHeroGov(a, check) {
+function showHeroGov(data, check, divOrigin) {
     let modName,
         description,
         cost,
         type,
         tier = "";
     let found = false;
-    for (let i = 0; i < jsonHeroGovernanceLocalized.length; i++) {
-        if (check != undefined) {
-            if (jsonHeroGovernanceLocalized[i].slug === a) {
-                let newID = a + i;
 
-                let thisGovernance = jsonHeroGovernanceLocalized[i];
-                modName = document.getElementById("modname");
+                let thisGovernance = data;
+                modName = divOrigin.querySelector("#modname");
                 modName.innerHTML = thisGovernance.name.toUpperCase();
 
-                modName.setAttribute("id", "modname" + newID);
-                descriptionDiv = document.getElementById("moddescription");
+                let descriptionDiv = divOrigin.querySelector("#moddescription");
 
                 descriptionDiv.innerHTML = "";
 
                 descriptionDiv.innerHTML = "<hr>" + thisGovernance.screen_description;
 
-                descriptionDiv.setAttribute("id", "moddescription" + newID);
-                unitTypesDiv = document.getElementById("affectUnitTypes");
+               
+              
 
-                unitTypesDiv.setAttribute("id", "affectUnitTypes" + newID);
-
-                tier = document.getElementById("modtier");
+                tier = divOrigin.querySelector("#modtier");
                 tier.innerHTML = "";
 
-                tier.setAttribute("id", "modtier" + newID);
 
-                cost = document.getElementById("modcost");
-
-                cost.setAttribute("id", "modcost" + newID);
-
-                imagelink = document.getElementById("modicon");
+              let  imagelink = divOrigin.querySelector("#modicon");
                 imagelink.setAttribute(
                     "src",
                     "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon.toLowerCase() + ".png"
                 );
                 imagelink.setAttribute("style", "background-image:none");
-                imagelink.setAttribute("id", "modicon" + newID);
-
-                let tomeOriginIcon = document.getElementById("originTomeIcon");
-
-                tomeOriginIcon.setAttribute("id", "modicon" + newID);
                 found = true;
-            }
-        } else {
-            let newID = a + i;
-
-            let thisGovernance = jsonHeroGovernanceLocalized[i];
-            modName = document.getElementById("modname");
-            modName.innerHTML = thisGovernance.name.toUpperCase();
-
-            modName.setAttribute("id", "modname" + newID);
-            descriptionDiv = document.getElementById("moddescription");
-
-            descriptionDiv.innerHTML = "";
-
-            descriptionDiv.innerHTML = "<hr>" + thisGovernance.screen_description;
-
-            descriptionDiv.setAttribute("id", "moddescription" + newID);
-            unitTypesDiv = document.getElementById("affectUnitTypes");
-
-            unitTypesDiv.setAttribute("id", "affectUnitTypes" + newID);
-
-            tier = document.getElementById("modtier");
-            tier.innerHTML = "";
-
-            tier.setAttribute("id", "modtier" + newID);
-
-            cost = document.getElementById("modcost");
-
-            cost.setAttribute("id", "modcost" + newID);
-
-            imagelink = document.getElementById("modicon");
-            imagelink.setAttribute("src", "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon + ".png");
-            imagelink.setAttribute("style", "background-image:none");
-            imagelink.setAttribute("id", "modicon" + newID);
-
-            let tomeOriginIcon = document.getElementById("originTomeIcon");
-
-            tomeOriginIcon.setAttribute("id", "modicon" + newID);
-            found = true;
-        }
-    }
-    if (found == false) {
-        console.log("Didn't find :" + a);
-    }
+            
+        
+    
 }
 
 function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, divOrigin) {
