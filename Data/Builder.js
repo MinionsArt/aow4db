@@ -505,6 +505,11 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showTraitFromList(list, overwrite);
             break;
+              case "searchAmbition":
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+          
+            showHeroTraitFromList(list, overwrite);
+            break;
         case "searchDestiny":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showDestinyTraitsFromList(list, overwrite);
@@ -750,7 +755,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
 
     if (abilityHasMedal == true) {
         let championMedal = uniqueMedal.description;
-        console.log(uniqueMedal);
+      
         abilityMod +=
             '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
             championMedal +
@@ -1692,9 +1697,9 @@ async function showEmpireTrees(list) {
 }
 
 async function showWorldStructures(list) {
-    await spawnStructureCards(list, "World Structures");
+   let card = await spawnStructureCards(list, "World Structures");
     for (let i = 0; i < list.length; i++) {
-        showWorldStructure(list[i]);
+        showWorldStructure(list[i], card[i]);
     }
 }
 
@@ -1876,6 +1881,14 @@ async function showTraitFromList(list, divID) {
 
     for (let i = 0; i < list.length; i++) {
         showTrait(list[i], cards[i]);
+    }
+}
+
+async function showHeroAmbitionFromList(list, divID){
+     let cards = await spawnSpellCards(list, divID);
+
+    for (let i = 0; i < list.length; i++) {
+        showHeroAmbitions(list[i], cards[i]);
     }
 }
 
@@ -3689,7 +3702,7 @@ function showTome(a, divOrigin) {
   }
 }
    let imagelink = divOrigin.querySelector("#tomeicon");
-    imagelink.setAttribute("src", "/aow4db/Icons/TomeIcons/" + a + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomeEN.icon + ".png");
     imagelink.setAttribute("id", "tomeicon" + a);
 
     // backtraceTomeOriginAndTier(jsonSpells[j].id);
@@ -5053,6 +5066,7 @@ function showHeroTrait(a, divOrigin ) {
     let i = "";
 
     let thisAmbition = jsonHeroAmbitions.find((entry) => entry.id === a);
+    console.log(thisAmbition + " " + a);
     let thisAmbitionLoc = jsonHeroAmbitionsLocalized.find((entry) => entry.icon === thisAmbition.icon);
 
     modName = divOrigin.querySelector("#modname");
@@ -5310,7 +5324,7 @@ function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
             tomeOrigin.innerHTML += romanize(tomespells.tier) + " - " + tomespells.name;
 
             let tomeOriginIcon = modCard.querySelector("#originTomeIcon");
-            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomespells.id + ".png");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomespells.icon + ".png");
             let wrap = tomeOrigin.innerHTML;
             tomeOrigin.innerHTML =
                 '<a href="/aow4db/HTML/Spells.html?tome=' + tomespells.id + '" target="_blank">' + wrap + "</a>";

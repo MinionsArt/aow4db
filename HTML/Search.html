@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
-                 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -31,34 +33,80 @@
         <div id="unitS" style="width: 100%; margin: auto; background-color: #0e2229">
             <h2 style="color: white; text-align: center">Search</h2>
 
-            <div style="height: auto; color: white; text-align: center">
-                <br />
-                Filters<br />
-                <label class="switch">
-                    <input type="checkbox" id="namesCheck" checked="checked" />
-                    Name
-                </label>
-                <label class="switch">
-                    <input type="checkbox" id="abilitiesCheck" checked="checked" />
-                    Abilities
-                </label>
-                <label class="switch">
-                    <input type="checkbox" id="passivesCheck" checked="checked" />
-                    Passives
-                </label>
-                <label class="switch">
-                    <input type="checkbox" id="descriptionCheck" checked="checked" />
-                    Descriptions & Modifiers
-                </label>
+            <div style="height: auto; color: white;text-align: center ">
+                Search Filters<br />
+                <div style="display:grid; margin: auto;width:fit-content;text-align: left;">
+                    <div id="unitSearchFilters">
+                        <label class="switch">
+                            <input type="checkbox" id="unitsCheck" checked="checked" />
+                            Units
+                        </label>
+                        <div style="background-color: black">
+                        <label class="switch">
+                            <input type="checkbox" id="namesCheck" checked="checked" />
+                            Unit Name
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="abilityNamesCheck" checked="checked" />
+                            Ability Names
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="abilityDescriptionCheck" checked="checked" />
+                            Ability Descriptions & Modifiers
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="passivesCheck" checked="checked" />
+                            Passives & Types
+                        </label>
 
-                <label class="switch">
-                    <input type="checkbox" id="resistancesCheck" />
-                    Resistances
-                </label>
+                        <label class="switch">
+                            <input type="checkbox" id="resistancesCheck" />
+                            Resistances
+                        </label>
+                            </div>
+                    </div>
+                     <div style="display:grid; margin: auto;width:fit-content;
+    grid-template-columns: auto auto auto;">
+                    <label class="switch">
+                        <input type="checkbox" id="spellsCheck" checked="checked" />
+                        Spells
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" id="siegeCheck" checked="checked" />
+                        Siege Projects
+                    </label>
+                     <label class="switch">
+                        <input type="checkbox" id="heroSkillsCheck" checked="checked" />
+                        Hero Skills
+                    </label>
+                      <label class="switch">
+                        <input type="checkbox" id="heroItemsCheck" checked="checked" />
+                        Hero Equipment
+                    </label>
+                                       <label class="switch">
+                        <input type="checkbox" id="ambitionsCheck" checked="checked" />
+                        Hero Ambitions
+                    </label>
+                      <label class="switch">
+                        <input type="checkbox" id="worldStructuresCheck" checked="checked" />
+                        World Structures
+                    </label>
+                     <label class="switch">
+                        <input type="checkbox" id="cityStructuresCheck" checked="checked" />
+                        City Structures & SPI
+                    </label>
+                          <label class="switch">
+                        <input type="checkbox" id="factionTraitCheck" checked="checked" />
+                        Faction Traits
+                    </label>
+                               <label class="switch">
+                        <input type="checkbox" id="empireTreeCheck" checked="checked" />
+                        Empire Tree
+                    </label>
+                      
+                    </div>
+                </div>
                 <br />
-                <span style="color: aquamarine; font-size: 12px"
-                    >(Can be slow if your search returns a lot of results.)</span
-                >
             </div>
             <div style="margin-right: auto; margin-left: auto; width: 500px">
                 <input style="width: 400px" type="text" class="searchbar" id="searchInput" />

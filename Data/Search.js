@@ -7,7 +7,42 @@ var excludeListStructures = [
     "astral_focus_crystal"
 ];
 
-var deprecatedCheckList= ["000003e300005fe2", "000003e300005fe5", "000003e300005fe7", "000003e300005fe6"];
+const input = document.getElementById("searchInput");
+const output = document.getElementById("searchOutput");
+const result = document.getElementById("searchResult");
+
+// unit checks
+const unitsChecked = document.getElementById("unitsCheck");
+const namesChecked = document.getElementById("namesCheck");
+const abilityNamesChecked = document.getElementById("abilityNamesCheck");
+const abilityDescriptionChecked = document.getElementById("abilityDescriptionCheck");
+const passivesChecked = document.getElementById("passivesCheck");
+const resistancesChecked = document.getElementById("resistancesCheck");
+
+// rest checks
+const spellsChecked = document.getElementById("spellsCheck");
+const siegeChecked = document.getElementById("siegeCheck");
+const empireTreeChecked = document.getElementById("empireTreeCheck");
+const heroSkillChecked = document.getElementById("heroSkillsCheck");
+const factionTraitsChecked = document.getElementById("factionTraitCheck");
+const heroItemsChecked = document.getElementById("heroItemsCheck");
+const worldStructuresChecked = document.getElementById("worldStructuresCheck");
+const cityStructuresChecked = document.getElementById("cityStructuresCheck");
+const ambitionsChecked = document.getElementById("ambitionsCheck");
+
+var deprecatedCheckList = ["000003e300005fe2", "000003e300005fe5", "000003e300005fe7", "000003e300005fe6"];
+
+function normalizeText(str) {
+    return Sanitize(str || "").toUpperCase();
+}
+
+function matches(text, keyword) {
+    return normalizeText(text).includes(keyword);
+}
+
+function pushUnique(set, value) {
+    if (value) set.add(value);
+}
 
 function isInArray(array, search) {
     return array.indexOf(search) >= 0;
@@ -15,7 +50,7 @@ function isInArray(array, search) {
 
 async function rememberSearch() {
     const searchKeyword = searchParams.get("search");
-    input = document.getElementById("searchInput");
+    // input = document.getElementById("searchInput");
     input.value = searchKeyword;
     if (searchKeyword != undefined) {
         searchData(searchKeyword);
@@ -23,9 +58,8 @@ async function rememberSearch() {
 }
 
 function searchData(keywords) {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchInput");
-    output = document.getElementById("searchOutput");
+    let filter = "";
+
     output.innerHTML = "";
     if (keywords != undefined) {
         filter = keywords.toUpperCase();
@@ -34,316 +68,263 @@ function searchData(keywords) {
         keywords = input.value;
     }
 
-    //var test = filter.replaceAll(' ', "_");
-    var test = filter;
-    searchUnits(test);
-    var currenturl = window.location.href.split("?")[0];
+    let test = filter;
+    searchAll(test);
+    let currenturl = window.location.href.split("?")[0];
 
     window.history.replaceState({}, "foo", currenturl + "?search=" + keywords);
+
+    // extra tooltip after search is done
     setTimeout(function () {
         HandleExtraTooltips();
     }, 2000);
 }
 
+function depCheckResID(resid) {
+    let unit = findBy(jsonUnitsLocalized, "resid", resid);
+    if (unit != undefined) {
+        for (let l = 0; l < unit.primary_passives.length; l++) {
+            if (deprecatedCheckList.includes(unit.primary_passives[l].slug)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 function returnUnitList(fieldToSearch) {
-    var i = "";
-    var list = [];
-    for (i = 0; i < jsonUnitsLocalized.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonUnitsLocalized[i].name;
-            if (textvalue.toLowerCase().indexOf(fieldToSearch.toLowerCase()) > -1) {
-                // if (list.length >= 1) {
+    if (!fieldToSearch) return [];
 
-                var newEntry = "";
-                if ("sub_culture_name" in jsonUnitsLocalized[i] && !architectCultureUnits.includes(jsonUnitsLocalized[i].id)) {
-                    newEntry = jsonUnitsLocalized[i].id + "," + jsonUnitsLocalized[i].sub_culture_name;
+    const search = fieldToSearch.toLowerCase();
+    const results = new Set();
+
+    // --- Name-based search ---
+
+    for (const unit of jsonUnitsLocalized) {
+        if (namesChecked.checked) {
+            if (unit.name.toLowerCase().includes(search) && !depCheckResID(unit.resid)) {
+                let entry;
+                if (unit.sub_culture_name && !architectCultureUnits.includes(unit.id)) {
+                    entry = `${unit.id},${unit.sub_culture_name}`;
                 } else {
-                    newEntry = jsonUnitsLocalized[i].id;
+                    entry = unit.id;
                 }
-                if (!isInArray(list, newEntry)) {
-                    list.push(newEntry);
-                }
-                //}
-                // } else {
-                //     list.push(jsonUnitsLocalized[i].id);
+                results.add(entry);
+            }
+        }
 
-                // }
+        if (resistancesChecked.checked) {
+            if (Array.isArray(unit.resistances)) {
+                for (const resistance of unit.resistances) {
+                    if (resistance.slug.toLowerCase().replaceAll("_", " ").includes(search) && !depCheckResID(unit.resid)) {
+                        let entry;
+                        if (unit.sub_culture_name && !architectCultureUnits.includes(unit.id)) {
+                            entry = `${unit.id},${unit.sub_culture_name}`;
+                        } else {
+                            entry = unit.id;
+                        }
+                        results.add(entry);
+                    }
+                }
             }
         }
-        if (document.getElementById("abilitiesCheck").checked) {
-            //  searchArray(fieldToSearch, jsonUnitsLocalized[i].abilities, list, i);
-        }
-        if (document.getElementById("passivesCheck").checked) {
-            //  searchArray(fieldToSearch.replaceAll(" ", "_"), jsonUnitsLocalized[i].primary_passives, list, i);
-            //  searchArray(fieldToSearch.replaceAll(" ", "_"), jsonUnitsLocalized[i].secondary_passives, list, i);
-        }
-        if (document.getElementById("resistancesCheck").checked) {
-            searchArray(fieldToSearch, jsonUnitsLocalized[i].resistances, list, i);
-        }
     }
-    if (document.getElementById("descriptionCheck").checked) {
-        for (j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
-            if ("modifiers" in jsonUnitAbilitiesLocalized[j]) {
-                searchArrayDescrip(fieldToSearch, jsonUnitAbilitiesLocalized[j].modifiers, list, j);
-            }
-            searchArrayDescription(fieldToSearch, jsonUnitAbilitiesLocalized[j], list, j);
-        }
-    }
-    return list;
+    return results;
 }
 
 function returnEmpireTreeList(fieldToSearch) {
-    var list = [];
-    for (i = 0; i < jsonEmpireLocalized.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonEmpireLocalized[i].name;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonEmpireLocalized[i].id)) {
-                    list.push(jsonEmpireLocalized[i].id);
-                }
-            }
-        }
-        if (document.getElementById("descriptionCheck").checked) {
-            textvalue = Sanitize(jsonEmpireLocalized[i].description);
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonEmpireLocalized[i].id)) {
-                    list.push(jsonEmpireLocalized[i].id);
-                }
-            }
+    if (!fieldToSearch) return [];
+
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    for (const spell of jsonEmpireLocalized) {
+        const name = spell.name?.toUpperCase() || "";
+        const description = Sanitize(spell.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(spell.id);
         }
     }
 
-    return list;
+    return Array.from(results);
 }
 
 function returnSpellList(fieldToSearch) {
-    var list = [];
-    for (i = 0; i < jsonSpellsLocalized.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonSpellsLocalized[i].name;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSpellsLocalized[i].id)) {
-                    list.push(jsonSpellsLocalized[i].id);
-                }
-            }
-        }
-        if (document.getElementById("descriptionCheck").checked) {
-            textvalue = Sanitize(jsonSpellsLocalized[i].description);
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSpellsLocalized[i].id)) {
-                    list.push(jsonSpellsLocalized[i].id);
-                }
-            }
-        }
-        if ("enchantment_requisites" in jsonSpellsLocalized[i]) {
-            for (b = 0; b < jsonSpellsLocalized[i].enchantment_requisites.length; b++) {
-                textvalue = Sanitize(jsonSpellsLocalized[i].enchantment_requisites[b].requisite);
+    if (!fieldToSearch) return [];
 
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonSpellsLocalized[i].id)) {
-                        list.push(jsonSpellsLocalized[i].id);
-                    }
-                }
-            }
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    for (const spell of jsonSpellsLocalized) {
+        const name = spell.name?.toUpperCase() || "";
+        const description = Sanitize(spell.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(spell.id);
         }
     }
 
-    return list;
+    return Array.from(results);
+}
+
+function returnAmbitionsList(fieldsToSearch){
+     if (!fieldsToSearch) return [];
+
+    const search = fieldsToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    for (const trait of jsonHeroAmbitions) {
+        const name = trait.name?.toUpperCase() || "";
+        const description = Sanitize(trait.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(trait);
+        }
+    }
+   
+
+    return Array.from(results);
 }
 
 function returnTraitsList(fieldToSearch) {
-    var list = [];
-    var i = "";
-    for (i = 0; i < jsonFactionCreation2.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonFactionCreation2[i].name;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonFactionCreation2[i].id)) {
-                    list.push(jsonFactionCreation2[i].id);
+    if (!fieldToSearch) return [];
+
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    for (const trait of jsonFactionCreation2) {
+        const name = trait.name?.toUpperCase() || "";
+        const description = Sanitize(trait.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(trait.id);
+        }
+         if(Array.isArray(trait.effect_descriptions)){
+                for (const effect of trait.effect_descriptions) {
+                if (effect.name.toUpperCase().includes(search)) {
+                    results.add(trait.id);
+                    
                 }
             }
+          }
+    }
+      for (const trait of jsonFactionCreation) {
+        const name = trait.name?.toUpperCase() || "";
+        const description = Sanitize(trait.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(trait.id);
         }
-        if (document.getElementById("descriptionCheck").checked) {
-            if ("description" in jsonFactionCreation2[i]) {
-                textvalue = Sanitize(jsonFactionCreation2[i].description);
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonFactionCreation2[i].id)) {
-                        list.push(jsonFactionCreation2[i].id);
-                    }
-                }
-            }
-        }
+         
     }
 
-    return list;
+    return Array.from(results);
 }
 
 function returnSkillList(fieldToSearch) {
-    var resultslist = [];
-    var hero = [];
-    var i = "";
-    var j,
-        m,
-        k,
-        l = "";
+    if (!fieldToSearch) return [];
 
-    for (i in jsonUnitAbilitiesLocalized) {
-        if (jsonUnitAbilitiesLocalized[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-            hero.push(jsonUnitAbilitiesLocalized[i]);
-        }
-        if (jsonUnitAbilitiesLocalized[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-            hero.push(jsonUnitAbilitiesLocalized[i]);
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const heroSlugs = new Set();
+    const results = new Set();
+
+    const matches = (text) => text && text.toUpperCase().includes(search);
+
+    // Collect matching unit abilities
+    for (const ability of jsonUnitAbilitiesLocalized) {
+        if (matches(ability.description) || matches(ability.name)) {
+            heroSlugs.add(ability.slug);
         }
 
-        if ("modifiers" in jsonUnitAbilitiesLocalized[i]) {
-            for (m in jsonUnitAbilitiesLocalized[i].modifiers) {
-                if (jsonUnitAbilitiesLocalized[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    hero.push(jsonUnitAbilitiesLocalized[i]);
-                }
-                if (jsonUnitAbilitiesLocalized[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    hero.push(jsonUnitAbilitiesLocalized[i]);
+        if (Array.isArray(ability.modifiers)) {
+            for (const mod of ability.modifiers) {
+                if (matches(mod.description) || matches(mod.name)) {
+                    heroSlugs.add(ability.slug);
+                    break; // stop early if found
                 }
             }
         }
     }
 
-    for (j in jsonHeroSkillsLocalized) {
-        if (hero.length > 0) {
-            if ("abilities" in jsonHeroSkillsLocalized[j]) {
-                for (k in jsonHeroSkillsLocalized[j].abilities) {
-                    for (l in hero) {
-                        if (jsonHeroSkillsLocalized[j].abilities[k].slug === hero[l].slug) {
-                            if (!isInArray(resultslist, jsonHeroSkillsLocalized[j])) {
-                                resultslist.push(jsonHeroSkillsLocalized[j]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        for (k in jsonHeroSkillsLocalized[j].description) {
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (Sanitize(jsonHeroSkillsLocalized[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroSkillsLocalized[j])) {
-                    resultslist.push(jsonHeroSkillsLocalized[j]);
-                }
+    // Match hero skills
+    for (const skill of jsonHeroSkillsLocalized) {
+        // Ability match
+        if (heroSlugs.size && Array.isArray(skill.abilities)) {
+            if (skill.abilities.some((a) => heroSlugs.has(a.slug))) {
+                results.add(skill);
+                continue; // already matched, skip to next skill
             }
         }
 
-        for (k in jsonHeroSkillsLocalized[j].name) {
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (jsonHeroSkillsLocalized[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroSkillsLocalized[j])) {
-                    resultslist.push(jsonHeroSkillsLocalized[j]);
-                }
-            }
+        // Description / name match
+        if (matches(Sanitize(skill.description || "")) || matches(skill.name)) {
+            results.add(skill);
         }
     }
 
-    // Remove duplicate objects from the array
-    const uniqueArray = resultslist.filter((item, index) => {
-        return index === resultslist.findIndex((obj) => obj.resid === item.resid && obj.name === item.name);
-    });
-
-    return uniqueArray;
+    // Return unique results as array
+    return Array.from(results);
 }
 
 function returnEquipList(fieldToSearch) {
-    var resultslist = [];
-    var equip = [];
-    var i = "";
-    var j,
-        m,
-        k,
-        l = "";
+    if (!fieldToSearch) return [];
 
-    for (i in jsonUnitAbilitiesLocalized) {
-        if (jsonUnitAbilitiesLocalized[i].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-            equip.push(jsonUnitAbilitiesLocalized[i]);
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const equipSet = new Set();
+    const resultsSet = new Set();
+
+    // Collect abilities matching the search
+    for (const ability of jsonUnitAbilitiesLocalized) {
+        const matches = (text) => text && text.toUpperCase().includes(search);
+
+        if (matches(ability.description) || matches(ability.name)) {
+            equipSet.add(ability.slug);
         }
 
-        if (jsonUnitAbilitiesLocalized[i].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-            equip.push(jsonUnitAbilitiesLocalized[i]);
-        }
-
-        if ("modifiers" in jsonUnitAbilitiesLocalized[i]) {
-            for (m in jsonUnitAbilitiesLocalized[i].modifiers) {
-                if (jsonUnitAbilitiesLocalized[i].modifiers[m].description.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    equip.push(jsonUnitAbilitiesLocalized[i]);
-                }
-                if (jsonUnitAbilitiesLocalized[i].modifiers[m].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    equip.push(jsonUnitAbilitiesLocalized[i]);
+        if (Array.isArray(ability.modifiers)) {
+            for (const mod of ability.modifiers) {
+                if (matches(mod.description) || matches(mod.name)) {
+                    equipSet.add(ability.slug);
+                    break; // stop early if already matched
                 }
             }
         }
     }
 
-    for (j in jsonHeroItemsLocalized) {
-        if (equip.length > 0) {
-            for (k in jsonHeroItemsLocalized[j].ability_slugs) {
-                for (l in equip) {
-                    if (jsonHeroItemsLocalized[j].ability_slugs[k].slug === equip[l].slug) {
-                        if (!isInArray(resultslist, jsonHeroItemsLocalized[j])) {
-                            resultslist.push(jsonHeroItemsLocalized[j]);
-                        }
-                    }
-                }
-            }
-        }
-        for (k in jsonHeroItemsLocalized[j].description) {
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (Sanitize(jsonHeroItemsLocalized[j].description).toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroItemsLocalized[j])) {
-                    resultslist.push(jsonHeroItemsLocalized[j]);
-                }
-            }
+    // Match items with those abilities
+    for (const item of jsonHeroItemsLocalized) {
+        if (item.ability_slugs?.some((a) => equipSet.has(a.slug))) {
+            resultsSet.add(item);
+            continue; // skip description/name check if already matched
         }
 
-        for (k in jsonHeroItemsLocalized[j].name) {
-            fieldToSearch = fieldToSearch.replaceAll("_", " ");
-            if (jsonHeroItemsLocalized[j].name.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(resultslist, jsonHeroItemsLocalized[j])) {
-                    resultslist.push(jsonHeroItemsLocalized[j]);
-                }
-            }
+        const matches = (text) => text && Sanitize(text).toUpperCase().includes(search);
+
+        if (matches(item.description) || matches(item.name)) {
+            resultsSet.add(item);
         }
     }
 
-    return resultslist;
+    return Array.from(resultsSet);
 }
 
 function returnSiegeProj(fieldToSearch) {
-    var list = [];
-    var resIDList = [];
-    for (i = 0; i < jsonSiegeProjectsLocalized.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonSiegeProjectsLocalized[i].id;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonSiegeProjectsLocalized[i].id)) {
-                    list.push(jsonSiegeProjectsLocalized[i].id);
-                    resIDList.push(jsonSiegeProjectsLocalized[i].resid);
-                }
-            }
-        }
-        if (document.getElementById("descriptionCheck").checked) {
-            if ("description" in jsonSiegeProjectsLocalized[i]) {
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonSiegeProjectsLocalized[i].description);
+    if (!fieldToSearch) return [];
 
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonSiegeProjectsLocalized[i].id)) {
-                        list.push(jsonSiegeProjectsLocalized[i].id);
-                    }
-                }
-            }
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    for (const spell of jsonSiegeProjectsLocalized) {
+        const name = spell.name?.toUpperCase() || "";
+        const description = Sanitize(spell.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(spell.id);
         }
     }
 
-    return list;
+    return Array.from(results);
 }
 
 function Sanitize(string) {
@@ -353,131 +334,86 @@ function Sanitize(string) {
 }
 
 function returnWorldStructure(fieldToSearch) {
-    var list = [];
-    for (i = 0; i < jsonWorldStructures.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonWorldStructures[i].id;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (!isInArray(list, jsonWorldStructures[i].id)) {
-                    list.push(jsonWorldStructures[i].id);
-                }
-            }
-        }
-        if (document.getElementById("descriptionCheck").checked) {
-            if ("description" in jsonWorldStructures[i]) {
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonWorldStructures[i].description);
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (!isInArray(list, jsonWorldStructures[i].id)) {
-                        list.push(jsonWorldStructures[i].id);
-                    }
-                }
-            }
+    if (!fieldToSearch) return [];
+
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    for (const trait of jsonWorldStructures) {
+        const name = trait.name?.toUpperCase() || "";
+        const description = Sanitize(trait.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+            results.add(trait.id);
         }
     }
 
-    return list;
+    return Array.from(results);
 }
 
 function returnStructure(fieldToSearch) {
-    var list = [];
-    for (i = 0; i < jsonStructureUpgradesLocalized.length; i++) {
-        if (document.getElementById("namesCheck").checked) {
-            textvalue = jsonStructureUpgradesLocalized[i].id;
-            if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                if (
-                    !isInArray(list, jsonStructureUpgradesLocalized[i].id) &&
-                    !isInArray(excludeListStructures, jsonStructureUpgradesLocalized[i].id)
-                ) {
-                    list.push(jsonStructureUpgradesLocalized[i].id);
-                }
-            }
-        }
-        if (document.getElementById("descriptionCheck").checked) {
-            if ("description" in jsonStructureUpgradesLocalized[i]) {
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonStructureUpgradesLocalized[i].description);
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (
-                        !isInArray(list, jsonStructureUpgradesLocalized[i].id) &&
-                        !isInArray(excludeListStructures, jsonStructureUpgradesLocalized[i].id)
-                    ) {
-                        list.push(jsonStructureUpgradesLocalized[i].id);
-                    }
-                }
-            }
-            if ("prediction_description" in jsonStructureUpgradesLocalized[i]) {
-                fieldToSearch = fieldToSearch.replaceAll("_", " ");
-                textvalue = Sanitize(jsonStructureUpgradesLocalized[i].prediction_description);
-                if (textvalue.toUpperCase().indexOf(fieldToSearch) != -1) {
-                    if (
-                        !isInArray(list, jsonStructureUpgradesLocalized[i].id) &&
-                        !isInArray(excludeListStructures, jsonStructureUpgradesLocalized[i].id)
-                    ) {
-                        list.push(jsonStructureUpgradesLocalized[i].id);
-                    }
-                }
-            }
-        }
-    }
+    if (!fieldToSearch) return [];
 
-    return list;
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+    const excludeSet = new Set(excludeListStructures);
+
+    const checkAndAdd = (id, text) => {
+        if (text && text.toUpperCase().includes(search) && !excludeSet.has(id)) {
+            results.add(id);
+        }
+    };
+
+    for (const struct of jsonStructureUpgradesLocalized) {
+        // Name check
+        checkAndAdd(struct.id, struct.name);
+        checkAndAdd(struct.id, Sanitize(struct.description || ""));
+        checkAndAdd(struct.id, Sanitize(struct.prediction_description || ""));
+    }
+    return Array.from(results);
 }
 
-function searchUnits(keyword) {
-    var i,
-        output,
-        textvalue,
-        j,
-        l,
-        result = "";
+function searchAll(keyword) {
+    var i, textvalue, j, l;
 
     var fields = keyword.split("+", 3);
-    var list = returnUnitList(fields[0]);
-    list = returnAbilitiesUnits(fields[0], list);
-    var depricatedCheckList = CheckDepricated(list);
+    let listSet = new Set();
+    if (unitsChecked.checked) {
+        listSet = returnUnitList(fields[0]);
+        listSet = returnAbilitiesUnits(fields[0], listSet);
+    }
+    let list = Array.from(listSet);
 
-    output = document.getElementById("searchOutput");
-    result = document.getElementById("searchResult");
-
-    var listspells = returnSpellList(fields[0]);
-    var listSiegeProj = returnSiegeProj(fields[0]);
-    var listskills = returnSkillList(fields[0]);
-    var listTraits = returnTraitsList(fields[0]);
-    var listStructures = returnStructure(fields[0]);
-    var listWorldStructures = returnWorldStructure(fields[0]);
-    var listEmpireTree = returnEmpireTreeList(fields[0]);
-    var listEquip = returnEquipList(fields[0]);
+    let listspells = spellsChecked.checked ? returnSpellList(fields[0]) : "";
+    let listSiegeProj = siegeChecked.checked ? returnSiegeProj(fields[0]) : "";
+    let listskills = heroSkillChecked.checked ? returnSkillList(fields[0]) : "";
+    let listTraits = factionTraitsChecked.checked ? returnTraitsList(fields[0]) : "";
+    let listStructures = cityStructuresChecked.checked ? returnStructure(fields[0]) : "";
+    let listWorldStructures = worldStructuresChecked.checked ? returnWorldStructure(fields[0]) : "";
+    let listEmpireTree = empireTreeChecked.checked ? returnEmpireTreeList(fields[0]) : "";
+    let listEquip = heroItemsChecked.checked ? returnEquipList(fields[0]) : "";
+     let listAmbtions = ambitionsChecked.checked ? returnAmbitionsList(fields[0]) : "";
 
     var buttonHolder = document.getElementById("buttonHolder");
 
     buttonHolder.innerHTML = "";
     var dataHolder = document.getElementById("dataHolder");
     dataHolder.innerHTML = "";
-    depricatedCheckList.sort((a, b) => {
+    list.sort((a, b) => {
         if (a.toLowerCase() < b.toLowerCase()) return -1;
         if (a.toLowerCase() > b.toLowerCase()) return 1;
         return 0;
     });
-    // get list to english
-    for (i in depricatedCheckList) {
-        var unitNew = jsonUnitsLocalized.find((entry) => entry.id === depricatedCheckList[i]);
-        if (unitNew == undefined) {
-            console.log("Test unit is undefined: " + depricatedCheckList[i]);
-        } else {
-            let unit = jsonUnits.find((entry) => entry.resid === unitNew.resid).id;
-            depricatedCheckList[i] = unit;
-        }
-    }
-    SetButtonsAndDivs(depricatedCheckList, "buttonHolder", "searchUnit", undefined, undefined, undefined);
 
+    if (list.length > 0) {
+        SetButtonsAndDivs(list, "buttonHolder", "searchUnit", undefined, undefined, undefined);
+    }
     if (listspells.length > 0) {
         SetCollapsibleButtonsAndDivs("Spells", listspells, "searchSpell");
     }
     if (listSiegeProj.length > 0) {
         SetCollapsibleButtonsAndDivs("Siege Projects", listSiegeProj, "searchSiege");
     }
-
     if (listStructures.length > 0) {
         SetCollapsibleButtonsAndDivs("Structures", listStructures, "searchStruct");
     }
@@ -490,101 +426,53 @@ function searchUnits(keyword) {
     if (listEquip.length > 0) {
         SetCollapsibleButtonsAndDivs("Hero Equipment", listEquip, "searchItem");
     }
-
     if (listEmpireTree.length > 0) {
         SetCollapsibleButtonsAndDivs("Empire Tree", listEmpireTree, "searchEmpire");
     }
     if (listTraits.length > 0) {
         SetCollapsibleButtonsAndDivs("Faction Traits", listTraits, "searchTraits");
     }
+     if (listAmbtions.length > 0) {
+        SetCollapsibleButtonsAndDivs("Hero Ambitions", listAmbtions, "searchAmbition");
+    }
 
     SetLevelUpStuff();
 }
 
-function returnAbilitiesUnits(fieldToSearch, unitListToCheckTo) {
-    var p = "";
-    var abilitiesList = [];
-    for (var j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
-        if ("name" in jsonUnitAbilitiesLocalized[j]) {
-            textvalue = jsonUnitAbilitiesLocalized[j].name;
+function returnAbilitiesUnits(fieldToSearch, unitSetToCheckTo) {
+    let abilitiesList = new Set();
+    const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
 
-            if (textvalue.toLowerCase().indexOf(fieldToSearch.toLowerCase()) != -1) {
-                //  console.log(textvalue.toLowerCase() + " " + fieldToSearch.toLowerCase());
-                if (!isInArray(abilitiesList, jsonUnitAbilitiesLocalized[j].slug)) {
-                    abilitiesList.push(jsonUnitAbilitiesLocalized[j].slug);
+    for (const ability of jsonUnitAbilitiesLocalized) {
+        const matches = (text) => text && text.toUpperCase().includes(search);
+
+        if (abilityNamesChecked.checked && matches(ability.name)) {
+            abilitiesList.add(ability.slug);
+        }
+        if (abilityDescriptionChecked.checked && matches(ability.description)) {
+            abilitiesList.add(ability.slug);
+        }
+
+        if (abilityDescriptionChecked.checked && Array.isArray(ability.modifiers)) {
+            for (const mod of ability.modifiers) {
+                if (matches(mod.description) || matches(mod.name)) {
+                    abilitiesList.add(ability.slug);
+                    break; // stop early if already matched
                 }
             }
         }
     }
-    var returnList = [];
 
-    for (var i = 0; i < abilitiesList.length; i++) {
-        findUnitWithAbility(abilitiesList[i], returnList);
+    let returnList = new Set();
+    for (const slug of abilitiesList) {
+        findUnitWithAbility(slug, returnList);
     }
 
-    for (var k = 0; k < returnList.length; k++) {
-        if (!isInArray(unitListToCheckTo, returnList[k])) {
-            unitListToCheckTo.push(returnList[k]);
-        }
+    for (const unit of returnList) {
+        unitSetToCheckTo.add(unit);
     }
 
-    return unitListToCheckTo;
-}
-
-function CheckDepricated(listChecking) {
-    var newList = [];
-    var i = "";
-    for (i in listChecking) {
-        if (depCheck(listChecking[i]) === false) {
-            newList.push(listChecking[i]);
-        }
-    }
-    return newList;
-}
-
-//const magmaSpiritList= [""]
-
-function depCheck(id) {
-    var p = "";
-      console.log("depUnit " + id);
-    for (p in jsonUnitsLocalized) {
-        if (jsonUnitsLocalized[p].id === id) {
-            for (var l = 0; l < jsonUnitsLocalized[p].primary_passives.length; l++) {
-                if (deprecatedCheckList.includes(jsonUnitsLocalized[p].primary_passives[l].slug)) {
-                  
-                    if (jsonUnitsLocalized[p].id != "magma_spirit") {
-                        return true;
-                    }
-                    
-                   // if (jsonUnitsLocalized[p].id != "magma_spirit") {
-                      
-                        
-                   // } else{
-                   //       return true;
-                   // }
-                }
-            }
-        }
-    }
-    return false;
-}
-
-function depCheckResID(resid) {
-    var p = "";
-   
-    for (p in jsonUnitsLocalized) {
-        if (jsonUnitsLocalized[p].resid === resid) {
-            for (var l = 0; l < jsonUnitsLocalized[p].primary_passives.length; l++) {
-                if (deprecatedCheckList.includes(jsonUnitsLocalized[p].primary_passives[l].slug)) {
-                   
-                        return true;
-                    }
-                  
-                }
-            }
-      
-    }
-    return false;
+    return unitSetToCheckTo;
 }
 
 function searchArray(keyword, arraytosearch, listToPushTo, index) {
@@ -597,71 +485,39 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
 
                 if ("sub_culture_name" in jsonUnitsLocalized[index]) {
                     // not architects
-                    if(jsonUnitsLocalized[index].culture_name == "Architect" ){
+                    if (jsonUnitsLocalized[index].culture_name == "Architect") {
                         // skip
-                          newEntry = jsonUnitsLocalized[index].id;
-                    } else{
-                         newEntry = jsonUnitsLocalized[index].id + "," + jsonUnitsLocalized[index].sub_culture_name;
+                        newEntry = jsonUnitsLocalized[index].id;
+                    } else {
+                        newEntry = jsonUnitsLocalized[index].id + "," + jsonUnitsLocalized[index].sub_culture_name;
                     }
-                   
                 } else {
                     newEntry = jsonUnitsLocalized[index].id;
                 }
-                if (!isInArray(listToPushTo, newEntry)) {
-                    listToPushTo.push(newEntry);
-                }
-                // } else {
-                //     listToPushTo.push(arraytosearch[index].id);
-                // }
+                listToPushTo.push(newEntry);
+                
             }
         }
     }
 }
 
-function searchArrayDescrip(keyword, arraytosearch, listToPushTo, index) {
-    var j = 0;
-    for (j in arraytosearch) {
-        if (arraytosearch[j].name != null) {
-            textvalue = Sanitize(arraytosearch[j].description);
-            if (textvalue.toUpperCase().indexOf(keyword) != -1) {
-                findUnitWithAbility(jsonUnitAbilitiesLocalized[index].slug, listToPushTo);
-            }
-            textvalue = arraytosearch[j].name;
-            if (textvalue.toUpperCase().indexOf(keyword) != -1) {
-                findUnitWithAbility(jsonUnitAbilitiesLocalized[index].slug, listToPushTo);
-            }
-        }
-    }
-}
 
-function searchArrayDescription(keyword, arraytosearch, listToPushTo, index) {
-    textvalue = Sanitize(arraytosearch.description);
-    keyword = keyword.replaceAll("_", " ");
-    if (textvalue.toUpperCase().indexOf(keyword) != -1) {
-        findUnitWithAbility(jsonUnitAbilitiesLocalized[index].slug, listToPushTo);
-    }
-}
-
-function findUnitWithAbility(ability, listToPushTo) {
-    const includePassives = document.getElementById("passivesCheck").checked;
-
+function findUnitWithAbility(ability, results) {
+    console.log(ability);
     for (const unit of jsonUnitsLocalized) {
         const checkSources = [
             ...(unit.abilities || []),
-            ...(includePassives ? unit.primary_passives || [] : []),
-            ...(includePassives ? unit.secondary_passives || [] : [])
+            ...(passivesChecked.checked ? unit.primary_passives || [] : []),
+            ...(passivesChecked.checked ? unit.secondary_passives || [] : [])
         ];
 
-        for (const source of checkSources) {
-            if (source.slug === ability) {
-                const newEntry = unit.sub_culture_name && !architectCultureUnits.includes(unit.id) ? `${unit.id},${unit.sub_culture_name}` : unit.id;
-                
-                if (!isInArray(listToPushTo, newEntry)) {
-                    listToPushTo.push(newEntry);
-                }
+        if (checkSources.some((source) => source.slug === ability) && !depCheckResID(unit.resid)) {
+            const entry =
+                unit.sub_culture_name && !architectCultureUnits.includes(unit.id)
+                    ? `${unit.id},${unit.sub_culture_name}`
+                    : unit.id;
 
-                break; // No need to keep checking if already matched
-            }
+            results.add(entry);
         }
     }
 }
