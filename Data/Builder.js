@@ -742,16 +742,16 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         abilityReq = abilityLoc.requisites;
     }
 
-   /* if ("modifiers" in abilityLoc) {
+    if ("modifiers" in abilityLoc) {
         for (let l = 0; l < abilityLoc.modifiers.length; l++) {
             abilityName += '<span style="color:#addd9e;font-size: 20px">&#11049</span>';
-            let modName = abilityLoc.modifiers[l].name.split("^")[0];
+           /* let modName = abilityLoc.modifiers[l].name.split("^")[0];
 
             let modDesc = abilityLoc.modifiers[l].description;
             abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modName) + "<br>";
-            abilityMod += AddTagIconsForStatusEffects(modDesc) + "</bullet><br>";
+            abilityMod += AddTagIconsForStatusEffects(modDesc) + "</bullet><br>";*/
         }
-    }*/
+    }
 
     
     let combinedReq = "";
