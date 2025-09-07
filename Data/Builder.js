@@ -17,11 +17,59 @@ function highlightNumbersInDiv(text) {
     return text;
 }
 
-function AddTagIconsForStatusEffects(name) {
+// cache maps so we don't rebuild every time
+let abilityTagCache = null;
+
+function buildAbilityTagCache() {
+    abilityTagCache = new Map();
+
+    const underline = '<span style="color:white; text-decoration:underline">';
+    const endtag = "</span>";
+
+    for (const ability of jsonUnitAbilitiesLocalized) {
+        if (ability.slug === "0000041b000013b4") continue; // skip that one
+
+        const abilityName = ability.name.split("^")[0];
+        if (!abilityName || abilityName.includes("%") || abilityName.includes("+")) continue;
+
+        // build the replacement string once
+        const tag = abilityName.replaceAll(" ", "_").toLowerCase();
+        const tooltipspan = `<span class="statusEffectHandler">${abilityName}</span>`;
+        const replacement = `${underline}<${tag}></${tag}>${tooltipspan}${endtag}`;
+
+        abilityTagCache.set(abilityName, replacement);
+    }
+}
+
+// main function
+function AddTagIconsForStatusEffects(text) {
+    if (!text) return text;
+    if (!abilityTagCache) buildAbilityTagCache();
+
+    // simple replace loop — only checks keys that actually exist
+    for (const [abilityName, replacement] of abilityTagCache.entries()) {
+        if (text.includes(abilityName)) {
+             let pattern = new RegExp(`\\b${abilityName}\\b`);
+            text = text.replace(pattern, replacement);
+        }
+    }
+
+    if (getUserSettings().isolateNumber) {
+        text = highlightNumbersInDiv(text);
+    }
+
+    return text;
+}
+
+
+/*function AddTagIconsForStatusEffects(name) {
     // if(name == "")
     let underline = '<span style="color:white; text-decoration:underline">';
     let endtag = "</span>";
-
+    
+   
+    
+    
     for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
         const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
 
@@ -49,7 +97,8 @@ function AddTagIconsForStatusEffects(name) {
     }
 
     return name;
-}
+}*/
+
 
 function lookupStatusEffect(name) {
     const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
@@ -745,7 +794,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     if ("modifiers" in abilityLoc) {
         for (let l = 0; l < abilityLoc.modifiers.length; l++) {
             abilityName += '<span style="color:#addd9e;font-size: 20px">&#11049</span>';
-           /* let modName = abilityLoc.modifiers[l].name.split("^")[0];
+            /* let modName = abilityLoc.modifiers[l].name.split("^")[0];
 
             let modDesc = abilityLoc.modifiers[l].description;
             abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modName) + "<br>";
@@ -753,7 +802,6 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         }
     }
 
-    
     let combinedReq = "";
     let m = "";
     for (m in abilityReq) {
@@ -972,9 +1020,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         btn.append(imageExtra);
     }
 
-    let spa = GetAbilityToolTip(
-        abilityLoc, uniqueMedal
-    );
+    let spa = GetAbilityToolTip(abilityLoc, uniqueMedal);
 
     if (abilityEn.name.indexOf("Defense Mode") > -1) {
         spa.innerHTML =
@@ -1220,10 +1266,12 @@ function GetAbilityToolTip(ability, uniqueMedal) {
     // get template
     const abiltyTemplate = ability_slot_template.content.cloneNode(true);
     const element = abiltyTemplate.firstElementChild;
+    
 
     // name and damage
     let abilityName = element.querySelector("#abilityName");
     abilityName.innerHTML = ability.name.toUpperCase();
+   
     let abilityDam = element.querySelector("#abilityDamage");
     abilityDam.innerHTML = ability.damage;
 
@@ -1248,6 +1296,7 @@ function GetAbilityToolTip(ability, uniqueMedal) {
         : "";
 
     // description
+   
     let descript = element.querySelector("#abilityDescription");
     descript.innerHTML = AddTagIconsForStatusEffects(ability.description);
 
@@ -1255,24 +1304,25 @@ function GetAbilityToolTip(ability, uniqueMedal) {
 
     // cleanup later
     let abilityMod = "";
-    if(Array.isArray(ability.modifiers)){
-    for (const modifier of ability.modifiers) {
-        abilityName += "&#11049";
-        abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
-        abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
+   
+   
+   if (Array.isArray(ability.modifiers)) {
+        for (const modifier of ability.modifiers) {
+            abilityName += "&#11049";
+            abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
+            abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
+        }
     }
-        }
-    
+   
     if (uniqueMedal != undefined) {
-        if (uniqueMedal.name.split("Champion ")[1] == ability.name){
-             let championMedal = AddTagIconsForStatusEffects(uniqueMedal.description);
+        if (uniqueMedal.name.split("Champion ")[1] == ability.name) {
+            let championMedal = uniqueMedal.description;
 
-        abilityMod +=
-            '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
-            championMedal +
-            "</span><br>";
+            abilityMod +=
+                '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
+                championMedal +
+                "</span><br>";
         }
-       
     }
     // modifiers
     if (abilityMod != "") {
@@ -1292,59 +1342,52 @@ function GetAbilityToolTip(ability, uniqueMedal) {
     let Once = "";
 
     for (const noteInfo in ability.notes) {
-       if(noteInfo.note == undefined){
-           continue;
-       }
-        Cooldown = noteInfo.note.includes("Cooldown") ?  noteInfo.note : "";
-       Once =  noteInfo.note.includes("once per") ? noteInfo.note : "";
-           
-                abilityNote += "<br>" + noteInfo.note;
-            
-        
+        if (noteInfo.note == undefined) {
+            continue;
+        }
+        Cooldown = noteInfo.note.includes("Cooldown") ? noteInfo.note : "";
+        Once = noteInfo.note.includes("once per") ? noteInfo.note : "";
+        abilityNote += "<br>" + noteInfo.note;
     }
     modifierSpan.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
 
     let reqs = element.querySelector("#abilityTags");
     reqs.innerHTML = "";
-    if(Array.isArray(ability.requisites)){
-        
-    
-    for (const requisite of ability.requisites) {
-        let newReq = document.createElement("DIV");
-        newReq.innerHTML = requisite.requisite;
-        newReq.setAttribute("style", "background-color:#2e2e28");
-        if (requisite.requisite == "Support") {
-            newReq.setAttribute("style", "background-color:#263b38");
+    if (Array.isArray(ability.requisites)) {
+        for (const requisite of ability.requisites) {
+            let newReq = document.createElement("DIV");
+            newReq.innerHTML = requisite.requisite;
+            newReq.setAttribute("style", "background-color:#2e2e28");
+            if (requisite.requisite == "Support") {
+                newReq.setAttribute("style", "background-color:#263b38");
+            }
+            if (requisite.requisite == "Melee") {
+                newReq.setAttribute("style", "background-color:#3b2826");
+            }
+            if (requisite.requisite == "Physical Ranged") {
+                newReq.setAttribute("style", "background-color:#383125");
+            }
+            if (requisite.requisite == "Magic") {
+                newReq.setAttribute("style", "background-color:#262f42");
+            }
+            if (requisite.requisite == "Debuff") {
+                newReq.setAttribute("style", "background-color:#3c2642");
+            }
+            if (requisite.requisite == "Summoning") {
+                newReq.setAttribute("style", "background-color:#422631");
+            }
+            if (requisite.requisite == "Base") {
+                newReq.setAttribute("style", "background-color:#5d5d5c");
+            }
+            newReq.className = "requisiteSlot";
+            reqs.appendChild(newReq);
         }
-        if (requisite.requisite == "Melee") {
-            newReq.setAttribute("style", "background-color:#3b2826");
-        }
-        if (requisite.requisite == "Physical Ranged") {
-            newReq.setAttribute("style", "background-color:#383125");
-        }
-        if (requisite.requisite == "Magic") {
-            newReq.setAttribute("style", "background-color:#262f42");
-        }
-        if (requisite.requisite == "Debuff") {
-            newReq.setAttribute("style", "background-color:#3c2642");
-        }
-        if (requisite.requisite == "Summoning") {
-            newReq.setAttribute("style", "background-color:#422631");
-        }
-        if (requisite.requisite == "Base") {
-            newReq.setAttribute("style", "background-color:#5d5d5c");
-        }
-        newReq.className = "requisiteSlot";
-        reqs.appendChild(newReq);
     }
-        }
 
     // cooldowns and once per battle
-    
-     let cooldownDiv = element.querySelector("#abilityCooldowns");
+
+    let cooldownDiv = element.querySelector("#abilityCooldowns");
     if (Cooldown != "") {
-        
-       
         cooldownDiv.innerHTML = Cooldown;
     }
     if (Once != "") {
@@ -4101,8 +4144,7 @@ function GetAbilityInfo(ability) {
         abilityAcc = ability.accuracy + "<accuracy></accuracy>";
 
         let abilityIconType = GetAbilityBackground(ability.damage);
-        spa = GetAbilityToolTip(
-            ability );
+        spa = GetAbilityToolTip(ability);
     } else {
         spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
     }
@@ -4906,21 +4948,10 @@ function FindUnitsWithSecondaryPassive(trait) {
     return sortedUnitListArray;
 }
 
-function showItem(a, divOrigin) {
-    let description,
-        cost,
-        type,
-        tier = "";
-    let found = false;
-    let l = "";
-    let j = "";
-    let i = "";
-
-    let itemLoc = a;
-
+function showItem(itemLoc, divOrigin) {
     let modName = divOrigin.querySelector("#modname");
     // console.log(a.id);
-    if (a.id.indexOf("pantheon") != -1) {
+    if (itemLoc.id.indexOf("pantheon") != -1) {
         modName.innerHTML = "<pantheon></pantheon>" + itemLoc.name.toUpperCase();
     } else {
         modName.innerHTML = itemLoc.name.toUpperCase();
@@ -4932,33 +4963,31 @@ function showItem(a, divOrigin) {
     if ("description" in itemLoc) {
         descriptionDiv.innerHTML += itemLoc.description + "<br>";
     }
-    const fragment = document.createElement("span");
+    // const fragment = document.createElement("span");
 
+   
     if ("ability_slugs" in itemLoc) {
         for (const slugObj of itemLoc.ability_slugs) {
+            
             const ability = abilityMap[slugObj.slug];
             if (!ability) continue;
-
-            const abilityElement = GetAbilityInfo(ability); //
-            abilityElement.className = "itemAbility";
-            abilityElement.style.width = "450px";
-
-            fragment.innerHTML += abilityElement.outerHTML;
-            break;
+             const  abTooltips= document.createElement("div");
+            const abilityElement = GetAbilityToolTip(ability); //
+              abTooltips.className = "itemAbility";
+                
+            abTooltips.appendChild(abilityElement);
+              descriptionDiv.innerHTML += abTooltips.innerHTML;
         }
-
-        //
     }
-    descriptionDiv.innerHTML += fragment.innerHTML;
 
-    if ("DLC" in a) {
-        let dlctag = AddDLCTag(a.DLC);
+  
+
+    if ("DLC" in itemLoc) {
+        let dlctag = AddDLCTag(itemLoc.DLC);
         modName.append(dlctag);
     }
 
     let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
-
-    let div = document.createElement("DIV");
 
     for (let i = 0; i < itemLoc.disabled_slots.length; i++) {
         let div = document.createElement("DIV");
@@ -4969,35 +4998,30 @@ function showItem(a, divOrigin) {
         descriptionDiv.innerHTML += "Disabled slots: <br>";
     }
 
-    tier = divOrigin.querySelector("#spell_tier");
-    tier.innerHTML = a.tier;
+    let tier = divOrigin.querySelector("#spell_tier");
+    tier.innerHTML = itemLoc.tier;
 
-    tier.setAttribute("id", "spell_tier" + a.id);
-
-    cost = divOrigin.querySelector("#modcost");
-    cost.innerHTML = itemLoc.slot + "<br>";
+    let cost = divOrigin.querySelector("#modcost");
+    let costText = itemLoc.slot + "<br>";
     // add classes
-    if ("hero_classes" in a) {
+    if ("hero_classes" in itemLoc) {
         for (let i = 0; i < itemLoc.hero_classes.length; i++) {
-            cost.innerHTML += itemLoc.hero_classes[i].name + " , ";
+            costText += itemLoc.hero_classes[i].name + " , ";
         }
     }
-    cost.innerHTML += "<br>";
+    costText += "<br>";
     if ("hero_types" in itemLoc) {
         for (let i = 0; i < itemLoc.hero_types.length; i++) {
-            cost.innerHTML += itemLoc.hero_types[i].name + " , ";
+            costText += itemLoc.hero_types[i].name + " , ";
         }
     }
-
-    cost.setAttribute("id", "modcost" + a.id);
+    cost.innerHTML = costText;
 
     let imagelink = divOrigin.querySelector("#modicon");
     imagelink.remove();
 
     let tomeOriginIcon = divOrigin.querySelector("#originTomeIcon");
-    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + a.icon + ".png");
-    // tomeOriginIcon.setAttribute("height", "130px");
-    //  tomeOriginIcon.setAttribute("style", "margin-left:40px");
+    tomeOriginIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + itemLoc.icon + ".png");
 }
 
 function showTraitSetup(currentTrait, divOrigin) {

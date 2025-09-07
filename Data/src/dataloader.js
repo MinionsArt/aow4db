@@ -7,6 +7,8 @@ const unlockableUnitsMapStructures = {
     shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
 };
 
+
+
 const highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
 const barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
 const darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
@@ -322,6 +324,8 @@ function AddExtraData() {
 }
 
 const abilityMap = {};
+const abilityNameMap = {};
+
 
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
@@ -365,8 +369,11 @@ async function CheckData() {
         //}
 
         AddExtraData();
+        
+     
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
+        jsonUnitAbilitiesLocalized.forEach((a) => (abilityNameMap[a.name] = a));
         HandlePage();
         LocalizeUI();
     }
@@ -389,3 +396,4 @@ function LocalizeUI() {
         }
     }
 }
+
