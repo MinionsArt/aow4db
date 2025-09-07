@@ -753,14 +753,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         }
     }*/
 
-    if (abilityHasMedal == true) {
-        let championMedal = uniqueMedal.description;
-
-        abilityMod +=
-            '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
-            championMedal +
-            "</span><br>";
-    }
+    
     let combinedReq = "";
     let m = "";
     for (m in abilityReq) {
@@ -980,7 +973,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     }
 
     let spa = GetAbilityToolTip(
-        abilityLoc
+        abilityLoc, uniqueMedal
     );
 
     if (abilityEn.name.indexOf("Defense Mode") > -1) {
@@ -1223,7 +1216,7 @@ function IncreaseDamageValue(input, percentage) {
     return spa;
 }*/
 
-function GetAbilityToolTip(ability) {
+function GetAbilityToolTip(ability, uniqueMedal) {
     // get template
     const abiltyTemplate = ability_slot_template.content.cloneNode(true);
     const element = abiltyTemplate.firstElementChild;
@@ -1269,6 +1262,15 @@ function GetAbilityToolTip(ability) {
         abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
     }
         }
+    
+    if (uniqueMedal != undefined) {
+        let championMedal = uniqueMedal.description;
+
+        abilityMod +=
+            '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
+            championMedal +
+            "</span><br>";
+    }
     // modifiers
     if (abilityMod != "") {
         modifierSpan.innerHTML += '<span style="color:#addd9e;font-size: 14px">' + abilityMod + "</span>";
@@ -4097,19 +4099,7 @@ function GetAbilityInfo(ability) {
 
         let abilityIconType = GetAbilityBackground(ability.damage);
         spa = GetAbilityToolTip(
-            ability,
-            ability.damage,
-            abilityName,
-            abilityIconType,
-            abilityAcc,
-            abilityRange,
-            abilityMod,
-            abilityEncht,
-            abilityNote,
-            abilityReq,
-            Cooldown,
-            Once
-        );
+            ability );
     } else {
         spa = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description);
     }
