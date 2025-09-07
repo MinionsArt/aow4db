@@ -1264,12 +1264,15 @@ function GetAbilityToolTip(ability, uniqueMedal) {
         }
     
     if (uniqueMedal != undefined) {
-        let championMedal = uniqueMedal.description;
+        if (uniqueMedal.name.split("Champion ")[1] == ability.name){
+             let championMedal = AddTagIconsForStatusEffects(uniqueMedal.description);
 
         abilityMod +=
             '<br><span style="color:yellow"><medal_champion></medal_champion> Champion Medal ' +
             championMedal +
             "</span><br>";
+        }
+       
     }
     // modifiers
     if (abilityMod != "") {
