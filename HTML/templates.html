@@ -260,39 +260,83 @@
     </div>
 </template>
 
+<template id="ability_slot_template">
+   <div class = "itemability">
+        <div class="abilityHighLighter">
+            <img
+                style="
+                    float: left;
+                    height: 50px;
+                    width: 50px;
+                    background-image: url(&quot;/aow4db/Icons/Interface/ability_icon_spirit.png&quot;);
+                    background-repeat: no-repeat;
+                    background-size: 50px;
+                " id="abilityIcon"
+                src="/aow4db/Icons/UnitIcons/000003E600000566.png" />
+            <div style="display: flex; justify-content: space-between">
+                <div class="abilityLineSlot" style="color: #d7c297" id="abilityName">ABILITYNAME</div>
+                <div class="abilityLineSlot" id="abilityDamage">DAMAGE</div>
+            </div>
+           
+           
+            <div style="display: flex; justify-content: space-between">
+                <div>
+                    <div class="abilityLineSlot" id="abilityAcc">ACC<accuracy></accuracy></div>
+                    <div class="abilityLineSlot" id="abilityRange">RAN<range></range></div>
+                </div>
+               
+                <div>
+                     
+                    <div class="abilityLineSlot" id="abilityAction">ACTIONPOINTS
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div><hr> <div id="abilityDescription"></div><span id="abilityMods"></span></div>
+       
+        <div style="display: flex; justify-content: space-between" >
+
+            <div id="abilityTags">TAGS
+                </div>
+            <div style="margin:5px" id="abilityCooldowns"></div>
+        </div>
+       
+       </div>
+</template>
+
 <template id="tome_card_template">
     <div>
-    <div class="tome_card">
-        <p class="tome_name" id="tomename">Tome of Evocation</p>
-        <p style="text-align: center; font-size: 15px; max-width: 900px" id="tomedescription">Mod Descripiton</p>
-        <div style="width: 150px; float: left">
-            <img class="tome_image" id="tomeicon" src="/aow4db/Icons/TomeIcons/barbarian.png" />
+        <div class="tome_card">
+            <p class="tome_name" id="tomename">Tome of Evocation</p>
+            <p style="text-align: center; font-size: 15px; max-width: 900px" id="tomedescription">Mod Descripiton</p>
+            <div style="width: 150px; float: left">
+                <img class="tome_image" id="tomeicon" src="/aow4db/Icons/TomeIcons/barbarian.png" />
+            </div>
+            <div
+                style="
+                    display: grid;
+                    grid-template-columns: 500px 500px;
+                    width: auto;
+                    justify-content: start;
+                    align-content: center;
+                    align-items: stretch;
+                    justify-items: center;
+                ">
+                <div style="float: left">
+                    <p class="tome_description" id="tomeloredescription">Lore Description</p>
+                </div>
+
+                <div class="InitialBonus">
+                    <span class="initialBonusHeaderText">INITIAL BONUS</span>
+                    <div
+                        id="initialBonusList"
+                        style="display: grid; grid-template-columns: 200px; font-size: 15px"></div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
         </div>
         <div
-            style="
-                display: grid;
-                grid-template-columns: 500px 500px;
-                width: auto;
-                justify-content: start;
-                align-content: center;
-                align-items: stretch;
-                justify-items: center;
-            ">
-            <div style="float: left">
-                <p class="tome_description" id="tomeloredescription">Lore Description</p>
-            </div>
-
-            <div class="InitialBonus">
-                <span class="initialBonusHeaderText">INITIAL BONUS</span>
-                <div id="initialBonusList" style="display: grid; grid-template-columns: 200px; font-size: 15px"></div>
-            </div>
-        </div>
-         <div style="clear: both"></div>
-   
+            id="tome_unlocks"
+            style="display: grid; grid-template-columns: auto auto; justify-content: center; width: auto"></div>
     </div>
-         <div
-        id="tome_unlocks"
-        style="display: grid; grid-template-columns: auto auto; justify-content: center; width: auto"></div>
-        </div>
-   
 </template>

@@ -767,7 +767,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         combinedReq += abilityReq[m].requisite + ",";
     }
     abilityEncht = "";
-    // enchantment handling
+    // enchantment handling disabled for now
     for (let p = 0; p < list.length; p++) {
         let foundEnchantment = false;
 
@@ -1082,20 +1082,7 @@ function IncreaseDamageValue(input, percentage) {
     return newString;
 }
 
-function GetAbilityToolTip(
-    ability,
-    abilityDam,
-    abilityName,
-    abilityIconType,
-    abilityAcc,
-    abilityRange,
-    abilityMod,
-    abilityEncht,
-    abilityNote,
-    abilityReq,
-    cooldown,
-    once
-) {
+/*function GetAbilityToolTip(ability) {
     // block one, header
     // image
     let spa = document.createElement("SPAN");
@@ -1107,6 +1094,7 @@ function GetAbilityToolTip(
     }
     let abilityHighlighter = document.createElement("DIV");
     abilityHighlighter.className = "abilityHighLighter";
+      let abilityIconType = GetAbilityBackground(ability.damage);
     abilityHighlighter.innerHTML =
         "<img style=\"float:left; height:50px; width:50px; background-image:url('/aow4db/Icons/Interface/" +
         abilityIconType +
@@ -1121,11 +1109,11 @@ function GetAbilityToolTip(
     let nameHolder = document.createElement("DIV");
     nameHolder.className = "abilityLineSlot";
     nameHolder.setAttribute("style", "color:#d7c297;");
-    nameHolder.innerHTML = abilityName.toUpperCase();
+    nameHolder.innerHTML = ability.name.toUpperCase();
 
     let damageHolder = document.createElement("DIV");
     damageHolder.className = "abilityLineSlot";
-    damageHolder.innerHTML = abilityDam;
+    damageHolder.innerHTML = ability.damage;
 
     line1.appendChild(nameHolder);
     line1.appendChild(damageHolder);
@@ -1137,11 +1125,11 @@ function GetAbilityToolTip(
     let accrangeHolder = document.createElement("DIV");
 
     let accuracy = document.createElement("DIV");
-    accuracy.innerHTML = abilityAcc;
+    accuracy.innerHTML = ability.accuracy;
     accuracy.className = "abilityLineSlot";
 
     let range = document.createElement("DIV");
-    range.innerHTML = abilityRange;
+    range.innerHTML = ability.range;
     range.className = "abilityLineSlot";
 
     // action point type
@@ -1188,7 +1176,7 @@ function GetAbilityToolTip(
     // block 3, req
     //notes
 
-    spa.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
+    //spa.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
 
     let bottomLine = document.createElement("DIV");
     bottomLine.setAttribute("style", "display: flex;justify-content: space-between;");
@@ -1244,6 +1232,131 @@ function GetAbilityToolTip(
     spa.append(bottomLine);
 
     return spa;
+}*/
+
+function GetAbilityToolTip(ability) {
+    // get template
+    const abiltyTemplate = ability_slot_template.content.cloneNode(true);
+    const element = abiltyTemplate.firstElementChild;
+
+    // name and damage
+    let abilityName = element.querySelector("#abilityName");
+    abilityName.innerHTML = ability.name.toUpperCase();
+    let abilityDam = element.querySelector("#abilityDamage");
+    abilityDam.innerHTML = ability.damage;
+
+    // ability icon
+    let abilityIcon = element.querySelector("#abilityIcon");
+    let abilityBackground = GetAbilityBackground(ability.damage);
+    abilityIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + ability.icon + ".png");
+    abilityIcon.style.backgroundImage = "url(/aow4db/Icons/Interface/" + abilityBackground + ".png";
+
+    // accuracy range and actions
+    let accuracy = element.querySelector("#abilityAcc");
+    accuracy.innerHTML = ability.accuracy + "<accuracy></accuracy>";
+
+    let range = element.querySelector("#abilityRange");
+    range.innerHTML = ability.range + "<range></range>";
+
+    let actions = element.querySelector("#abilityAction");
+    actions.innerHTML = ability.actionPoints;
+    let actionPointName = LookUpActionPointsName(ability.actionPoints);
+    actions.innerHTML += actionPointName
+        ? "<br>" + '<span style="color: lightskyblue; font-size:14px">' + actionPointName + "</span>"
+        : "";
+
+    // description
+    let descript = element.querySelector("#abilityDescription");
+    descript.innerHTML = AddTagIconsForStatusEffects(ability.description);
+
+    let modifierSpan = element.querySelector("#abilityMods");
+
+    // cleanup later
+    let abilityMod = "";
+    if(Array.isArray(ability.modifiers)){
+    for (const modifier of ability.modifiers) {
+        abilityName += "&#11049";
+        abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
+        abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
+    }
+        }
+    // modifiers
+    if (abilityMod != "") {
+        modifierSpan.innerHTML += '<span style="color:#addd9e;font-size: 14px">' + abilityMod + "</span>";
+    }
+
+    let abilityEncht = "";
+    if (abilityEncht != "") {
+        modifierSpan.innerHTML += '<span style="color:#aa84f6;font-size: 14px">' + abilityEncht + "</span>";
+    }
+
+    // notes
+
+    // cleanup later
+    let abilityNote = "";
+    let Cooldown = "";
+    let Once = "";
+
+    for (const noteInfo in ability.notes) {
+       if(noteInfo.note == undefined){
+           continue;
+       }
+        Cooldown = noteInfo.note.includes("Cooldown") ?  noteInfo.note : "";
+       Once =  noteInfo.note.includes("once per") ? noteInfo.note : "";
+           
+                abilityNote += "<br>" + noteInfo.note;
+            
+        
+    }
+    modifierSpan.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
+
+    let reqs = element.querySelector("#abilityTags");
+    reqs.innerHTML = "";
+    if(Array.isArray(ability.requisites)){
+        
+    
+    for (const requisite of ability.requisites) {
+        let newReq = document.createElement("DIV");
+        newReq.innerHTML = requisite.requisite;
+        newReq.setAttribute("style", "background-color:#2e2e28");
+        if (requisite.requisite == "Support") {
+            newReq.setAttribute("style", "background-color:#263b38");
+        }
+        if (requisite.requisite == "Melee") {
+            newReq.setAttribute("style", "background-color:#3b2826");
+        }
+        if (requisite.requisite == "Physical Ranged") {
+            newReq.setAttribute("style", "background-color:#383125");
+        }
+        if (requisite.requisite == "Magic") {
+            newReq.setAttribute("style", "background-color:#262f42");
+        }
+        if (requisite.requisite == "Debuff") {
+            newReq.setAttribute("style", "background-color:#3c2642");
+        }
+        if (requisite.requisite == "Summoning") {
+            newReq.setAttribute("style", "background-color:#422631");
+        }
+        if (requisite.requisite == "Base") {
+            newReq.setAttribute("style", "background-color:#5d5d5c");
+        }
+        newReq.className = "requisiteSlot";
+        reqs.appendChild(newReq);
+    }
+        }
+
+    // cooldowns and once per battle
+    
+     let cooldownDiv = element.querySelector("#abilityCooldowns");
+    if (Cooldown != "") {
+        
+       
+        cooldownDiv.innerHTML = Cooldown;
+    }
+    if (Once != "") {
+        cooldownDiv.innerHTML = "<once></once> Once per battle";
+    }
+    return element;
 }
 
 function LookUpActionPointsName(string) {
@@ -2038,15 +2151,14 @@ async function showHeroSkillFromString(string, divID) {
 }
 
 function findItemsWithArgument(argumentType) {
-    let finalCheckedList = [];
+    // Step 1: filter items with argumentType
+    const matchingItems = jsonHeroItems.filter((item) => item.slot.includes(argumentType) && item.tier_numerals);
 
-    for (let j = 0; j < jsonHeroItems.length; j++) {
-        if (jsonHeroItems[j].slot.indexOf(argumentType) !== -1 && "tier" in jsonHeroItems[j]) {
-            finalCheckedList.push(jsonHeroItems[j]);
-        }
-    }
+    // Step 2: build a Set of resid for fast lookup
+    const residSet = new Set(matchingItems.map((item) => item.resid));
 
-    return finalCheckedList;
+    // Step 3: return matches from second list
+    return jsonHeroItemsLocalized.filter((obj) => residSet.has(obj.resid));
 }
 
 function findSkillsWithArgument(signature, argumentType) {
@@ -4813,8 +4925,7 @@ function FindUnitsWithSecondaryPassive(trait) {
 }
 
 function showItem(a, divOrigin) {
-    let modName,
-        description,
+    let description,
         cost,
         type,
         tier = "";
@@ -4823,9 +4934,9 @@ function showItem(a, divOrigin) {
     let j = "";
     let i = "";
 
-    let itemLoc = jsonHeroItemsLocalized.find((entry) => entry.resid === a.resid);
+    let itemLoc = a;
 
-    modName = divOrigin.querySelector("#modname");
+    let modName = divOrigin.querySelector("#modname");
     // console.log(a.id);
     if (a.id.indexOf("pantheon") != -1) {
         modName.innerHTML = "<pantheon></pantheon>" + itemLoc.name.toUpperCase();
@@ -4839,12 +4950,10 @@ function showItem(a, divOrigin) {
     if ("description" in itemLoc) {
         descriptionDiv.innerHTML += itemLoc.description + "<br>";
     }
+    const fragment = document.createElement("span");
 
-    let lookup;
     if ("ability_slugs" in itemLoc) {
-        const fragment = document.createDocumentFragment();
-
-        for (let slugObj of itemLoc.ability_slugs) {
+        for (const slugObj of itemLoc.ability_slugs) {
             const ability = abilityMap[slugObj.slug];
             if (!ability) continue;
 
@@ -4852,12 +4961,12 @@ function showItem(a, divOrigin) {
             abilityElement.className = "itemAbility";
             abilityElement.style.width = "450px";
 
-            fragment.appendChild(abilityElement);
-            break;
+            fragment.innerHTML += abilityElement.outerHTML;
         }
 
-        descriptionDiv.appendChild(fragment);
+        //
     }
+    descriptionDiv.innerHTML += fragment.innerHTML;
 
     if ("DLC" in a) {
         let dlctag = AddDLCTag(a.DLC);
@@ -5151,12 +5260,10 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, 
     let modName = divOrigin.querySelector("#modname");
 
     modName.innerHTML = skillLoc.name.toUpperCase();
-    
-  
 
     let descriptionDiv = divOrigin.querySelector("#moddescription");
-     descriptionDiv.innerHTML = "";
-        if ("group_name" in skillLoc) {
+    descriptionDiv.innerHTML = "";
+    if ("group_name" in skillLoc) {
         let span = document.createElement("span");
         span.innerHTML = skillLoc.group_name;
         console.log(span.innerHeight);
@@ -5164,7 +5271,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, 
     }
 
     let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
-   
 
     let tier = divOrigin.querySelector("#spell_tier");
     if (tier == undefined) {
@@ -5226,8 +5332,6 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, 
 
         return;
     }
-
-  
 
     let ascendedInfo = findBy(jsonExtraAscendedInfo, "id", a.id);
     if (ascendedInfo != undefined) {
