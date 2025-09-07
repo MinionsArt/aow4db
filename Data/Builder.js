@@ -4972,10 +4972,17 @@ function showItem(itemLoc, divOrigin) {
             const ability = abilityMap[slugObj.slug];
             if (!ability) continue;
              const  abTooltips= document.createElement("div");
+            if('range' in ability){
             const abilityElement = GetAbilityToolTip(ability); //
+              abTooltips.appendChild(abilityElement);
+            }
+            else{
+                   const passiveElement = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description); //
+                   abTooltips.appendChild(passiveElement);
+            }
               abTooltips.className = "itemAbility";
                 
-            abTooltips.appendChild(abilityElement);
+          
               descriptionDiv.innerHTML += abTooltips.innerHTML;
         }
     }
