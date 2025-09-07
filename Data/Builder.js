@@ -742,7 +742,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         abilityReq = abilityLoc.requisites;
     }
 
-    if ("modifiers" in abilityLoc) {
+   /* if ("modifiers" in abilityLoc) {
         for (let l = 0; l < abilityLoc.modifiers.length; l++) {
             abilityName += '<span style="color:#addd9e;font-size: 20px">&#11049</span>';
             let modName = abilityLoc.modifiers[l].name.split("^")[0];
@@ -751,7 +751,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
             abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modName) + "<br>";
             abilityMod += AddTagIconsForStatusEffects(modDesc) + "</bullet><br>";
         }
-    }
+    }*/
 
     if (abilityHasMedal == true) {
         let championMedal = uniqueMedal.description;
@@ -768,7 +768,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     }
     abilityEncht = "";
     // enchantment handling disabled for now
-    for (let p = 0; p < list.length; p++) {
+    /*for (let p = 0; p < list.length; p++) {
         let foundEnchantment = false;
 
         for (let k = 0; k < jsonEnchantments.length; k++) {
@@ -901,7 +901,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         if (foundEnchantment == false) {
             console.log("missing enchantment info for : " + list[p].name);
         }
-    }
+    }*/
 
     // add notes
 
@@ -980,18 +980,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     }
 
     let spa = GetAbilityToolTip(
-        abilityLoc,
-        abilityDam,
-        abilityName,
-        abilityIconType,
-        abilityAcc,
-        abilityRange,
-        abilityMod,
-        abilityEncht,
-        abilityNote,
-        abilityReq,
-        Cooldown,
-        Once
+        abilityLoc
     );
 
     if (abilityEn.name.indexOf("Defense Mode") > -1) {
@@ -1276,8 +1265,8 @@ function GetAbilityToolTip(ability) {
     if(Array.isArray(ability.modifiers)){
     for (const modifier of ability.modifiers) {
         abilityName += "&#11049";
-        abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
-        abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
+        abilityMod += "<bullet>" + (modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
+        abilityMod += (modifier.description) + "</bullet><br>";
     }
         }
     // modifiers
@@ -4962,6 +4951,7 @@ function showItem(a, divOrigin) {
             abilityElement.style.width = "450px";
 
             fragment.innerHTML += abilityElement.outerHTML;
+            break;
         }
 
         //
