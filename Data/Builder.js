@@ -1265,8 +1265,8 @@ function GetAbilityToolTip(ability) {
     if(Array.isArray(ability.modifiers)){
     for (const modifier of ability.modifiers) {
         abilityName += "&#11049";
-        abilityMod += "<bullet>" + (modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
-        abilityMod += (modifier.description) + "</bullet><br>";
+        abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
+        abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
     }
         }
     // modifiers
