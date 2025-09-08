@@ -49,7 +49,7 @@ function AddTagIconsForStatusEffects(text) {
     // simple replace loop — only checks keys that actually exist
     for (const [abilityName, replacement] of abilityTagCache.entries()) {
         if (text.includes(abilityName)) {
-             let pattern = new RegExp(`\\b${abilityName}\\b`);
+            let pattern = new RegExp(`\\b${abilityName}\\b`);
             text = text.replace(pattern, replacement);
         }
     }
@@ -60,7 +60,6 @@ function AddTagIconsForStatusEffects(text) {
 
     return text;
 }
-
 
 /*function AddTagIconsForStatusEffects(name) {
     // if(name == "")
@@ -98,7 +97,6 @@ function AddTagIconsForStatusEffects(text) {
 
     return name;
 }*/
-
 
 function lookupStatusEffect(name) {
     const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
@@ -1266,12 +1264,11 @@ function GetAbilityToolTip(ability, uniqueMedal) {
     // get template
     const abiltyTemplate = ability_slot_template.content.cloneNode(true);
     const element = abiltyTemplate.firstElementChild;
-    
 
     // name and damage
     let abilityName = element.querySelector("#abilityName");
     abilityName.innerHTML = ability.name.toUpperCase();
-   
+
     let abilityDam = element.querySelector("#abilityDamage");
     abilityDam.innerHTML = ability.damage;
 
@@ -1296,7 +1293,7 @@ function GetAbilityToolTip(ability, uniqueMedal) {
         : "";
 
     // description
-   
+
     let descript = element.querySelector("#abilityDescription");
     descript.innerHTML = AddTagIconsForStatusEffects(ability.description);
 
@@ -1304,16 +1301,15 @@ function GetAbilityToolTip(ability, uniqueMedal) {
 
     // cleanup later
     let abilityMod = "";
-   
-   
-   if (Array.isArray(ability.modifiers)) {
+
+    if (Array.isArray(ability.modifiers)) {
         for (const modifier of ability.modifiers) {
             abilityName += "&#11049";
             abilityMod += "<bullet>" + AddTagIconsForStatusEffects(modifier.name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
             abilityMod += AddTagIconsForStatusEffects(modifier.description) + "</bullet><br>";
         }
     }
-   
+
     if (uniqueMedal != undefined) {
         if (uniqueMedal.name.split("Champion ")[1] == ability.name) {
             let championMedal = uniqueMedal.description;
@@ -3689,7 +3685,7 @@ function showTome(a, divOrigin) {
         for (let i = 0; i < affinitiesdual.length; i++) {
             let affinities = affinitiesdual[i].split(" ");
             allAffinity += affinities[0] + affinities[1];
-            console.log(allAffinity);
+
             allAffinity = expandTags(allAffinity);
             allAffinity = allAffinity.replaceAll(",", "");
         }
@@ -4809,6 +4805,51 @@ function showSpell(a, showOrigin, divOrigin) {
     }
 }
 
+function GetAllTomesWithAffinity(affinity, dualOnly) {
+    let arrayResultPlain = [];
+    let arrayResultDual = [];
+    let arrayResultGeneral = [];
+    for (const tome of jsonTomes) {
+        if ("affinities" in tome) {
+            if (dualOnly != undefined) {
+                if (tome.affinities.indexOf("1") != -1) {
+                    arrayResultDual.push(tome);
+                }
+            } else {
+                if (tome.affinities.indexOf(affinity) != -1) {
+                    if (tome.affinities.indexOf("2") != -1) {
+                        arrayResultPlain.push(tome);
+                    } else {
+                        arrayResultDual.push(tome);
+                    }
+                }
+            }
+        } else if (affinity == "general") {
+            // general and cultures
+            if(tome.id != ""){
+                 arrayResultPlain.push(tome);
+            }
+           
+          
+        }
+    }
+if(affinity != "general"){
+       arrayResultPlain.sort((a, b) => a.tier - b.tier);
+    arrayResultDual.sort((a, b) => a.tier - b.tier);
+} else{
+    arrayResultPlain.reverse();
+}
+    console.log(arrayResultPlain);
+ 
+    
+
+    const merged = arrayResultPlain
+        .concat(arrayResultDual) // put them together
+        .map((a) => a.id); // take only the `id` field
+    
+    return merged;
+}
+
 function FindFormUnits() {
     let unitsList = [];
     let i = 0;
@@ -4965,29 +5006,23 @@ function showItem(itemLoc, divOrigin) {
     }
     // const fragment = document.createElement("span");
 
-   
     if ("ability_slugs" in itemLoc) {
         for (const slugObj of itemLoc.ability_slugs) {
-            
             const ability = abilityMap[slugObj.slug];
             if (!ability) continue;
-             const  abTooltips= document.createElement("div");
-            if('range' in ability){
-            const abilityElement = GetAbilityToolTip(ability); //
-              abTooltips.appendChild(abilityElement);
+            const abTooltips = document.createElement("div");
+            if ("range" in ability) {
+                const abilityElement = GetAbilityToolTip(ability); //
+                abTooltips.appendChild(abilityElement);
+            } else {
+                const passiveElement = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description); //
+                abTooltips.appendChild(passiveElement);
             }
-            else{
-                   const passiveElement = CreatePassiveSlotToolTip(ability.icon, ability.name, ability.description); //
-                   abTooltips.appendChild(passiveElement);
-            }
-              abTooltips.className = "itemAbility";
-                
-          
-              descriptionDiv.innerHTML += abTooltips.innerHTML;
+            abTooltips.className = "itemAbility";
+
+            descriptionDiv.innerHTML += abTooltips.innerHTML;
         }
     }
-
-  
 
     if ("DLC" in itemLoc) {
         let dlctag = AddDLCTag(itemLoc.DLC);

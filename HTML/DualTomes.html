@@ -18,30 +18,10 @@
        
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var tomeArray = [
-                "tome_of_evolution",
-                "tome_of_alchemy",
-                "tome_of_the_tentacle",
-                "tome_of_discipline",
-                "tome_of_the_construct",
-                "tome_of_fey_mists",
-              
-                "tome_of_shades",
-                "tome_of_dragons",
-                "tome_of_prophecies",
-                "tome_of_the_cleansing_flame",
-                "tome_of_corruption",
-                "tome_of_the_dreadnought",
-                "tome_of_geomancy",
-                "tome_of_severing",
-                "tome_of_the_stormborne",
-                "tome_of_prosperity",
-                "tome_of_calamity",
-                
-                "tome_of_the_revenant"
-            ];
+         
 
             function HandlePage() {
+                   let tomeArray = GetAllTomesWithAffinity("", "DualOnly");
                 SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
             }

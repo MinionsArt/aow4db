@@ -1,42 +1,27 @@
 <!doctype html>
 <html lang="en">
     <head>
-                 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-     <script src="/aow4db/Data/Init.js"></script>
+        <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var tomeArray = [
-                "tome_of_necromancy",
-                "tome_of_cryomancy",
-                "tome_of_the_doomherald",
-                "tome_of_souls",
-                "tome_of_the_great_transformation",
-                "tome_of_the_cold_dark",
-                "tome_of_oblivion",
-                "tome_of_the_reaper",
-                "tome_of_the_eternal_lord",
-                "tome_of_the_tentacle",
-                "tome_of_shades",
-                "tome_of_corruption",
-                "tome_of_severing",
-                "tome_of_calamity",
-                "tome_of_the_revenant"
-                
-            ];
-
             function HandlePage() {
+                let tomeArray = GetAllTomesWithAffinity("shadow");
+              
                 SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
             }

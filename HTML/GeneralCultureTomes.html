@@ -16,35 +16,9 @@
         <script src="/aow4db/Data/Init.js"></script>
         
         <script>
-            var tomeArray = [
-                "general_research",
-                "feudal_monarchy",
-                "feudal_aristocracy",
-                "high",
-                "barbarian",
-                "industrious",
-                "dark",
-                "mystic_school_of_summoning",
-                "mystic_school_of_potential",
-                "mystic_school_of_attunement",
-                "reaver",
-                "primal_tunneling_spider",
-                "primal_mire_crocodile",
-                "primal_ash_sabertooth",
-                "primal_sylvan_wolf",
-                "primal_dune_serpent",
-                "primal_glacial_mammoth",
-                "primal_storm_crow",
-
-                "oathsworn_harmony",
-                "oathsworn_righteousness",
-                "oathsworn_strife",
-                "architect",
-                "crystal_pact",
-                "eldritch_pact"
-            ];
 
             function HandlePage() {
+                   let tomeArray = GetAllTomesWithAffinity("general");
                 SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
             }

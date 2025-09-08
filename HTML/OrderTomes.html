@@ -16,26 +16,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var tomeArray = [
-                "tome_of_zeal",
-                "tome_of_faith",
-                "tome_of_the_beacon",
-                "tome_of_the_inquisition",
-                "tome_of_sanctuary",
-                "tome_of_subjugation",
-                "tome_of_exaltation",
-                "tome_of_supremacy",
-                "tome_of_the_god_emperor",
-                "tome_of_discipline",
-                "tome_of_the_construct",
-                "tome_of_virtue",
-                "tome_of_prophecies",
-                "tome_of_the_cleansing_flame",
-                "tome_of_prosperity",
-                "tome_of_the_archon",   "tome_of_the_revenant"
-            ];
+           
 
             function HandlePage() {
+                         let tomeArray = GetAllTomesWithAffinity("order");
                 SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
             }

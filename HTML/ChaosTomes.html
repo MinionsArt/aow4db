@@ -17,24 +17,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var tomeArray = [
-                "tome_of_pyromancy",
-                "tome_of_the_horde",
-                "tome_of_revelry",
-                "tome_of_mayhem",
-                "tome_of_pandemonium",
-                "tome_of_devastation",
-                "tome_of_the_demon_gate",
-                "tome_of_chaos_channeling",
-                "tome_of_the_chaos_lord",
-                "tome_of_evolution",
-                "tome_of_dragons",
-                "tome_of_the_cleansing_flame",
-                "tome_of_the_dreadnought",
-                "tome_of_calamity"
-            ];
+           
 
             function HandlePage() {
+                         let tomeArray = GetAllTomesWithAffinity("chaos");
                 SetButtonsAndDivs(tomeArray, undefined, "tome");
                 SetLevelUpStuff();
             }
