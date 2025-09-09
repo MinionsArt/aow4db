@@ -16,9 +16,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
          <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var unitarray = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
-
             function HandlePage() {
+                 let unitarray = GetCultureUnitsOf("Barbarian");
                 SetButtonsAndDivs(unitarray, undefined, "unit");
                 SetLevelUpStuff();
             }

@@ -17,14 +17,11 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <script src="/aow4db/Data/Init.js"></script>
         <script>
-        var unitarray = ["wayfarer", "honor_blade", "sworn_guard", "sealbearer", "vowkeeper", "peacebringer"];
-        var unitarray2 =  ["wayfarer", "honor_blade", "sworn_guard", "sealbearer", "vowkeeper", "avenger"];
-        var unitarray3 = ["wayfarer", "honor_blade", "sworn_guard", "sealbearer", "vowkeeper", "warbound"];
-
-
-
-
+    
         function HandlePage() {
+               let unitarray =  GetCultureUnitsOf("Oathsworn", "Harmony");
+              let unitarray2 =  GetCultureUnitsOf("Oathsworn", "Righteousness");
+              let unitarray3 =  GetCultureUnitsOf("Oathsworn", "Strife");
             SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Harmony");
             SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Righteousness");
             SetButtonsAndDivs(unitarray3, "buttonHolder3", "unit", "dataHolder3", "Strife");

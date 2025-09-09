@@ -17,10 +17,10 @@
 
       <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var unitarray = ["scout", "militia", "archer", "defender", "aspirant_knight", "bannerman", "longbow", "knight"];
-              var unitarray2 = ["scout", "militia", "archer", "defender", "aspirant_knight", "bannerman", "liege_guard", "knight"];
-
             function HandlePage() {
+                
+                 let unitarray =  GetCultureUnitsOf("Feudal", "Monarchy");
+                  let unitarray2 =  GetCultureUnitsOf("Feudal", "Aristocracy");
                 SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Monarchy");
                 SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Aristocracy");
 

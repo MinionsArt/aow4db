@@ -19,14 +19,13 @@
 
     <script src="/aow4db/Data/Init.js"></script>
         <script>
-        var unitarray = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellbreaker"];
-        var unitarray2 = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "spellweaver"];
-        var unitarray3 = ["mystic_projection", "arcane_guard", "arcanist", "soother", "spellshield", "summoner"];
-
-
-
 
         function HandlePage() {
+            
+               let unitarray =  GetCultureUnitsOf("Mystic", "Attunement");
+              let unitarray2 =  GetCultureUnitsOf("Mystic", "Potential");
+              let unitarray3 =  GetCultureUnitsOf("Mystic", "Summoning");
+            
             SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Attunement");
             SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Potential");
             SetButtonsAndDivs(unitarray3, "buttonHolder3", "unit", "dataHolder3", "Summoning");

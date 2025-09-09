@@ -4805,6 +4805,44 @@ function showSpell(a, showOrigin, divOrigin) {
     }
 }
 
+function GetCultureUnitsOf(cultureName, subCultureName) {
+    const SCOUT_SLUG = "000003fe00000060"; // scout
+
+    // Build a lookup map once for O(1) access
+    const unitMap = new Map(jsonUnits.map((u) => [u.id, u]));
+
+    // Collect unique IDs for the culture
+    const idSet = new Set();
+    for (const unit of jsonUnits) {
+        if (unit.culture_name === cultureName && unit.id != "") {
+            if (subCultureName != undefined) {
+                if ("sub_culture_name" in unit && unit.sub_culture_name == subCultureName) {
+                    idSet.add(unit.id);
+                }
+            } else {
+                idSet.add(unit.id);
+            }
+        }
+    }
+
+    // Convert to array of unit objects
+    const units = Array.from(idSet).map((id) => unitMap.get(id));
+
+    // Sort: special slug units first, then by tier
+    units.sort((a, b) => {
+        const aSpecial = a.secondary_passives?.some((p) => p.slug === SCOUT_SLUG) ? 1 : 0;
+        const bSpecial = b.secondary_passives?.some((p) => p.slug === SCOUT_SLUG) ? 1 : 0;
+
+        if (aSpecial !== bSpecial) {
+            return bSpecial - aSpecial; // put "special" units first
+        }
+        return a.tier - b.tier;
+    });
+
+    // Return only IDs
+    return units.map((u) => u.id);
+}
+
 function GetAllTomesWithAffinity(affinity, dualOnly) {
     let arrayResultPlain = [];
     let arrayResultDual = [];
@@ -4826,27 +4864,23 @@ function GetAllTomesWithAffinity(affinity, dualOnly) {
             }
         } else if (affinity == "general") {
             // general and cultures
-            if(tome.id != ""){
-                 arrayResultPlain.push(tome);
+            if (tome.id != "") {
+                arrayResultPlain.push(tome);
             }
-           
-          
         }
     }
-if(affinity != "general"){
-       arrayResultPlain.sort((a, b) => a.tier - b.tier);
-    arrayResultDual.sort((a, b) => a.tier - b.tier);
-} else{
-    arrayResultPlain.reverse();
-}
+    if (affinity != "general") {
+        arrayResultPlain.sort((a, b) => a.tier - b.tier);
+        arrayResultDual.sort((a, b) => a.tier - b.tier);
+    } else {
+        arrayResultPlain.reverse();
+    }
     console.log(arrayResultPlain);
- 
-    
 
     const merged = arrayResultPlain
         .concat(arrayResultDual) // put them together
         .map((a) => a.id); // take only the `id` field
-    
+
     return merged;
 }
 

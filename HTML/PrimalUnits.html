@@ -18,20 +18,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-        var unitarray = ["spirit_tracker", "protector", "primal_darter", "primal_charger", "animist", "ancestral_warden"];
-        // var unitarray2 = ["lesser_stone_spirit"];
-
-
+       const animals = [
+  "Ash Sabertooth",
+  "Dune Serpent",
+  "Glacial Mammoth",
+  "Mire Crocodile",
+  "Storm Crow",
+  "Sylvan Wolf",
+  "Tunneling Spider"
+];
 
         function HandlePage() {
-
-            SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Ash Sabertooth");
-            SetButtonsAndDivs(unitarray, "buttonHolder2", "unit", "dataHolder2", "Dune Serpent");
-            SetButtonsAndDivs(unitarray, "buttonHolder3", "unit", "dataHolder3", "Glacial Mammoth");
-            SetButtonsAndDivs(unitarray, "buttonHolder4", "unit", "dataHolder4", "Mire Crocodile");
-            SetButtonsAndDivs(unitarray, "buttonHolder5", "unit", "dataHolder5", "Storm Crow");
-            SetButtonsAndDivs(unitarray, "buttonHolder6", "unit", "dataHolder6", "Sylvan Wolf");
-            SetButtonsAndDivs(unitarray, "buttonHolder7", "unit", "dataHolder7", "Tunneling Spider");
+            animals.forEach((creature, i) => {
+  const unitarray = GetCultureUnitsOf("Primal", creature);
+  SetButtonsAndDivs(
+    unitarray,
+    `buttonHolder${i + 1}`,
+    "unit",
+    `dataHolder${i + 1}`,
+    creature
+  );
+});
+   
             SetLevelUpStuff();
             SetUpCombatEnc();
         }
