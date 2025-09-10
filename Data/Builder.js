@@ -1336,15 +1336,25 @@ function GetAbilityToolTip(ability, uniqueMedal) {
     let abilityNote = "";
     let Cooldown = "";
     let Once = "";
-
-    for (const noteInfo in ability.notes) {
-        if (noteInfo.note == undefined) {
-            continue;
+    
+    
+    if('notes' in ability){
+        
+    
+    for (let l = 0; l < ability.notes.length; l++) {
+            if (ability.notes[l] === undefined) {
+            } else {
+                if (ability.notes[l].note.indexOf("Cooldown") != -1) {
+                    Cooldown = ability.notes[l].note;
+                } else if (ability.notes[l].note.indexOf("once per") != -1) {
+                    Once = ability.notes[l].note;
+                } else {
+                    abilityNote += "<br>" + ability.notes[l].note;
+                }
+            }
         }
-        Cooldown = noteInfo.note.includes("Cooldown") ? noteInfo.note : "";
-        Once = noteInfo.note.includes("once per") ? noteInfo.note : "";
-        abilityNote += "<br>" + noteInfo.note;
-    }
+}
+   
     modifierSpan.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
 
     let reqs = element.querySelector("#abilityTags");
