@@ -1,4 +1,3 @@
-
 const unlockableUnitsMapStructures = {
     wildlife_sanctuary: ["goretusk_piglet", "dread_spider_hatchling", "vampire_spider_hatchling", "razorback", "warg"],
     demon_gate: ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"],
@@ -6,8 +5,6 @@ const unlockableUnitsMapStructures = {
     accursed_shrine: ["accursed_ogre", "accursed_blade", "accursed_trickster"],
     shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
 };
-
-
 
 const highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
 const barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
@@ -106,7 +103,6 @@ const incorrectIconOverrideList = [
     "summon_corrupt_soul"
 ];
 
-
 const extraAbilities = [];
 
 const extraSkills = [
@@ -173,41 +169,40 @@ function fetchJsonFiles(filePaths) {
 }
 var jsonSiegeProjects;
 
- const dlcMap = {
-            EMPIRESANDASHES: {
-                src: "/aow4db/Icons/Text/EmpiresAshes.png",
-                text: "Part of the Empires & Ashes DLC"
-            },
-            DRAGONLORDS: {
-                src: "/aow4db/Icons/Text/DragonDawn.png",
-                text: "Part of the Dragon Dawn DLC"
-            },
-            PRIMALFURY: {
-                src: "/aow4db/Icons/Text/PrimalFury.png",
-                text: "Part of the Primal Fury DLC"
-            },
-            ELDRITCHREALMS: {
-                src: "/aow4db/Icons/Text/EldritchRealms.png",
-                text: "Part of the Eldritch Realms DLC"
-            },
-            HERALDOFGLORY: {
-                src: "/aow4db/Icons/Text/herald_of_glory.png",
-                text: "Part of the Herald of Glory DLC"
-            },
-            WAYSOFWAR: {
-                src: "/aow4db/Icons/Text/waysofwar.png",
-                text: "Part of the Ways of War DLC"
-            },
-            GIANTKINGS: {
-                src: "/aow4db/Icons/Text/GKLogo.png",
-                text: "Part of the Giant Kings DLC"
-            },
-            ARCHONPROPHECY: {
-                src: "/aow4db/Icons/Text/ArchonProphecy.png",
-                text: "Part of the Archon Prophecy DLC"
-            }
-        };
-
+const dlcMap = {
+    EMPIRESANDASHES: {
+        src: "/aow4db/Icons/Text/EmpiresAshes.png",
+        text: "Part of the Empires & Ashes DLC"
+    },
+    DRAGONLORDS: {
+        src: "/aow4db/Icons/Text/DragonDawn.png",
+        text: "Part of the Dragon Dawn DLC"
+    },
+    PRIMALFURY: {
+        src: "/aow4db/Icons/Text/PrimalFury.png",
+        text: "Part of the Primal Fury DLC"
+    },
+    ELDRITCHREALMS: {
+        src: "/aow4db/Icons/Text/EldritchRealms.png",
+        text: "Part of the Eldritch Realms DLC"
+    },
+    HERALDOFGLORY: {
+        src: "/aow4db/Icons/Text/herald_of_glory.png",
+        text: "Part of the Herald of Glory DLC"
+    },
+    WAYSOFWAR: {
+        src: "/aow4db/Icons/Text/waysofwar.png",
+        text: "Part of the Ways of War DLC"
+    },
+    GIANTKINGS: {
+        src: "/aow4db/Icons/Text/GKLogo.png",
+        text: "Part of the Giant Kings DLC"
+    },
+    ARCHONPROPHECY: {
+        src: "/aow4db/Icons/Text/ArchonProphecy.png",
+        text: "Part of the Archon Prophecy DLC"
+    }
+};
 
 async function GetAllData(selectedLang) {
     let basePathEN;
@@ -225,7 +220,10 @@ async function GetAllData(selectedLang) {
         "BuilderLookup.json",
         "AscendedInfo.json",
         "BuilderLookupHero.json",
-        "ItemForge.json"
+        "ItemForge.json",
+        "world_structures.json",
+        "UI.json"
+       
     ];
     const fileNames = [
         "HeroItems.json",
@@ -246,7 +244,9 @@ async function GetAllData(selectedLang) {
         "Governance.json",
         "StatusEffects.json",
         "ExtraToolTips.json",
-        "UI.json"
+        "UI.json",
+         "baseConceptLookup.json",
+        "extraFactionCreation.json"
     ];
 
     // Create file paths
@@ -268,7 +268,10 @@ async function GetAllData(selectedLang) {
             "jsonBuilderLookUp",
             "jsonExtraAscendedInfo",
             "jsonBuilderHeroLookUp",
-            "jsonItemForge"
+            "jsonItemForge",
+            "jsonParsingTest",
+            "jsonUIGeneric"
+           
         ];
         const targets = [
             "jsonHeroItems",
@@ -289,7 +292,9 @@ async function GetAllData(selectedLang) {
             "jsonHeroGovernance",
             "jsonStatusEffects",
             "jsonExtraTooltips",
-            "jsonUI"
+            "jsonUI",
+             "jsonBaseConcepts",
+            "jsonExtraFactionCreationFromPO"
         ];
 
         // Assign data to global vars
@@ -326,7 +331,6 @@ function AddExtraData() {
 const abilityMap = {};
 const abilityNameMap = {};
 
-
 async function CheckData() {
     if (jsonSiegeProjects === undefined) {
         let storedSettings = getUserSettings();
@@ -349,8 +353,9 @@ async function CheckData() {
         //showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
 
-        //languageSelect = document.getElementById("languageSelect");
-        languageSelect.value = "EN";
+      //  languageSelect = document.getElementById("languageSelect");
+        //languageSelect.value = storedSettings.language;
+       languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {
@@ -369,13 +374,14 @@ async function CheckData() {
         //}
 
         AddExtraData();
-        
-     
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityNameMap[a.name] = a));
         HandlePage();
-        LocalizeUI();
+        if(languageSelect.value != "EN"){
+              LocalizeUI();
+        }
+      
     }
 }
 
@@ -388,11 +394,65 @@ const patchDates = [
 ];
 
 function LocalizeUI() {
+    // general ui lookup first
+    for (const id in jsonUIGeneric) {
+        const el = document.getElementById(id);
+        if (el) {
+            let value = "error";
+
+            // check if there is a lookup in the baseConceptLookup file
+            if ("lookup" in jsonUIGeneric[id]) {
+                let test = jsonUIGeneric[id].lookup;
+
+                if (test.includes("&")) {
+                    test = test.split("&");
+                  
+                      
+                        const found = findBy(jsonBaseConceptsLocalized, "id", test[0]);
+                        if (found) {
+                            value = found[test[1]];
+                        }
+                    
+                } else {
+                    const found = findBy(jsonBaseConceptsLocalized,"id", test);
+                    if (found) {
+                        value = found.hyperlink;
+                    }
+                }
+                console.log(test);
+                value = value.replaceAll("<hyperlink>", "");
+               value = value.replaceAll("</hyperlink>", "");
+                value = value.split("^")[0];
+                
+            }
+            else if ('unit' in jsonUIGeneric[id]){
+                 let test = jsonUIGeneric[id].unit;
+                const abilityName = findBy(jsonUnitAbilities, "name", test);
+                console.log(abilityName.name);
+                const abilityNameLoc = findBy(jsonUnitAbilitiesLocalized, "slug", abilityName.slug);
+                value = abilityNameLoc.name;
+            }
+            
+            else {
+                // Assumes the image is first, text second
+                value = jsonUIGeneric[id].label;
+            }
+
+            el.childNodes[1].nodeValue = " " + value;
+        }
+    }
+    // then specific for ones that arent in the po file translations
     for (const id in jsonUILocalized) {
         const el = document.getElementById(id);
-
         if (el) {
-            el.childNodes[1].nodeValue = " " + jsonUILocalized[id]; // Assumes the image is first, text second
+            let value = "error";
+
+            
+                // Assumes the image is first, text second
+                value = jsonUILocalized[id].label;
+            
+
+            el.childNodes[1].nodeValue = " " + value;
         }
     }
 }

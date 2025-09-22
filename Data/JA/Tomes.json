@@ -12,14 +12,14 @@
   "icon": "0000049C00000079",
   "skills": [
    {
-    "description": "<bulletlist><bullet>+獲得する<mana></mana><hyperlink> マナ</hyperlink>が+15増加する。</bullet><bullet>20 <caststrategic></caststrategic><hyperlink> ワールドマップ詠唱地点</hyperlink>。</bullet><bullet>20 <optactical></optactical><hyperlink>戦闘詠唱地点</hyperlink>。</bullet></bulletlist><br></br>戦闘開始時、この都市の領地内に以下を付与：<bulletlist><bullet> 3体の敵ユニットが90%の確率で1<turn></turn><hyperlink>ターン</hyperlink>の間、錯乱状態になる。失敗した場合、1 <turn></turn><hyperlink>ターン</hyperlink>の間、スタン状態になる。</bullet></bulletlist><br></br><br></br><hyperlink>王座の都市</hyperlink>にしか建設できない。",
+    "description": "<bulletlist><bullet>+獲得する<mana></mana><hyperlink> マナ</hyperlink>が+15増加する。</bullet><bullet>15 <caststrategic></caststrategic><hyperlink> ワールドマップ詠唱地点</hyperlink>。</bullet><bullet>15 <optactical></optactical><hyperlink>戦闘詠唱地点</hyperlink>。</bullet></bulletlist><br></br>戦闘開始時、この都市の領地内に以下を付与：<bulletlist><bullet> 3体の敵ユニットが90%の確率で1<turn></turn><hyperlink>ターン</hyperlink>の間、錯乱状態になる。失敗した場合、1 <turn></turn><hyperlink>ターン</hyperlink>の間、スタン状態になる。</bullet></bulletlist><br></br><br></br><hyperlink>王座の都市</hyperlink>にしか建設できない。",
     "name": "陰湿な囁きの玉座",
     "tier": 7,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "陰湿な囁きの玉座"
    },
    {
-    "description": "1マス範囲内にいる、対象の敵ユニット：<bulletlist><bullet>プラスのステータス効果をすべて失う。</bullet><bullet>失われたステータス効果にステータス効果の無効化がある場合、ユニットはそのマイナスのステータス効果を1スタック得る。<bulletlist></bullet>",
+    "description": "対象の敵ユニット：<bulletlist><bullet><hyperlink>プラスのステータス効果</hyperlink>をすべて失う。</bullet><bullet>失われたステータス効果にステータス効果の無効化がある場合、ユニットはその<hyperlink>マイナスのステータス効果</hyperlink>.を1スタック得る。<bulletlist></bullet>",
     "name": "腐敗の恩恵",
     "spell_slug": "腐敗の恩恵",
     "tier": 7,
@@ -47,11 +47,228 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象の種族が暗影の生物に変身し、以下の効果を得る：<bulletlist><bullet>ユニットタイプがアンブラルの悪魔になる</bullet><bullet>浮遊。</bullet><bullet>高速移動.<bulletlist><br></br><br></br>騎乗ユニットは騎乗物を失う。<br></br><br></br>ヒーローは騎乗物と足の装備スロットを失う。</bullet>",
+    "description": "対象の種族がアンブラルの生物に変身し、以下の効果を得る：<bulletlist><bullet>ユニットタイプがアンブラルの悪魔になる</bullet><bullet>浮遊。</bullet><bullet>高速移動。<bulletlist><br></br><br></br>騎乗ユニットは騎乗物を失う。<br></br><br></br>ヒーローは騎乗物と足の装備スロットを失う。<br></br><br></br>この変身は純粋な霊魂と同時に使用できない。</bullet>",
     "name": "グルーム・ストライダー",
     "spell_slug": "グルーム・ストライダー",
     "tier": 7,
     "type": "<caststrategic></caststrategic><hyperlink> 大きな種族転換</hyperlink>"
+   }
+  ]
+ },
+ {
+  "passives": [
+   {
+    "description": "戦闘中、敵が倒れる度に<souls></souls> 霊魂を獲得する。<br></br><br></br><hyperlink>都市の廃墟</hyperlink>と穴蔵にいる<hyperlink>ヒーロー</hyperlink>をアンデッドの手下として蘇らせるアビリティが解放される。",
+    "name": "ソウル収穫",
+    "type": "<hyperlink>パッシブ学術書</hyperlink>"
+   }
+  ],
+  "affinities": "1 <empireorder></empireorder> 帝国 秩序のアフィニティー, 1 <empireshadow></empireshadow> 帝国 影のアフィニティー",
+  "lore_description": "「我らは、奴らが栄光を享受していた時に、光のために死んだ。我らは、奴らが寵愛を受けていた時に、見捨てられた。我らは、奴らの失敗の骨から、我らの死者の都を作り、追放の闇から、奴らの破滅を企むのだ」",
+  "gameplay_description": "堕落したアンデッドのアーコンの軍隊を蘇らせ、その知識を用いて、光と火の力を使う者たちからアンデッドを守りつつ、さらに何度も復活させる。",
+  "resid": 5046586584076,
+  "id": "亡霊の学術書",
+  "DLC": "ARCHONPROPHECY ",
+  "lore_author": "光を食らう者、ハーラカール",
+  "name": "亡霊の学術書",
+  "tier": 4,
+  "icon": "0000049700002C0D",
+  "skills": [
+   {
+    "description": "対象の味方ユニットが以下を得る：<bulletlist><bullet>+%のダメージ。</bullet><bullet>ネバー・ダイ。</bullet><bullet>絶望の鎧</bullet></bulletlist><br></br>使用時に、マス範囲内にいる敵ユニットが10 <happiness></happiness><hyperlink>士気</hyperlink>を失う。",
+    "name": "アンホーリーチャンピオン",
+    "spell_slug": "アンホーリーチャンピオン",
+    "tier": 7,
+    "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
+   },
+   {
+    "description": "1<hyperlink>ワールドマップ</hyperlink> <turn></turn>ターンの間、対象の敵軍隊が以下を得る：<bulletlist><bullet>2 士気低下。</bullet><bullet>攻撃を受けると、攻撃者の側に3体のスケルトンとアンホーリーチャンピオンを召喚する。</bullet></bulletlist>",
+    "name": "亡霊の囁き",
+    "spell_slug": "亡霊の囁き",
+    "tier": 7,
+    "type": "<caststrategic></caststrategic><hyperlink> 敵軍隊呪文</hyperlink>"
+   },
+   {
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>+ <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>+ <defensefire></defensefire><hyperlink>炎耐性</hyperlink></bullet><bullet>残虐な殺し屋</bullet></bulletlist>",
+    "name": "アンデッドの恨み",
+    "spell_slug": "アンデッドの恨み",
+    "tier": 7,
+    "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
+   },
+   {
+    "description": "この都市で召集されたアンデッドユニットに自然再生を付与する。",
+    "name": "儀式の部屋",
+    "tier": 6,
+    "type": "<hyperlink>都市の建造物</hyperlink>",
+    "upgrade_slug": "儀式の部屋"
+   },
+   {
+    "description": "腐敗と堕落を招く<hyperlink>堕天使</hyperlink>の神話ユニットを召喚する。",
+    "name": "堕天使を召喚",
+    "spell_slug": "堕天使を召喚",
+    "tier": 8,
+    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
+   }
+  ],
+  "initial_upgrades": [
+   {
+    "upgrade_slug": "_researchpost___死者の都"
+   }
+  ]
+ },
+ {
+  "affinities": "2 <empireorder></empireorder> 帝国 秩序のアフィニティー",
+  "lore_description": "「喜べ！アーコンが再び天空より降臨する。審判の日が訪れている。そして、あなたたちは巨人と天使たちと共に高みに立つ。アーコンの到来を告げ、アーコンの憤怒が邪悪を砕き、アーコンの祝福が罪なき者に恩寵を与えるのを目撃せよ。正しき者よ、もう死を恐れる必要はない。昇天は犠牲により成就するのだから」",
+  "gameplay_description": "天空の味方を召喚し、ユニットをアーコンの部隊に昇天させる。",
+  "resid": 5046586583907,
+  "id": "アーコンの学術書",
+  "DLC": "ARCHONPROPHECY ",
+  "lore_author": "栄光の使者、ギルラッドのカンタリエル",
+  "name": "アーコンの学術書",
+  "tier": 4,
+  "icon": "0000049700002B64",
+  "skills": [
+   {
+    "description": "魔法ユニットに付与：<bulletlist><bullet>聖なるオーラ、味方ユニットにステータスの保護を付与し、隣接する敵にダメージを与える</bullet></bulletlist>",
+    "name": "聖なるオーラ",
+    "spell_slug": "聖なるオーラ",
+    "tier": 7,
+    "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
+   },
+   {
+    "description": "対象の軍隊リーダーが天空の守護者を1 <hyperlink>ワールドマップ</hyperlink> <turn></turn>ターン獲得し、その間は戦闘開始時にグレード IIIのアーコンユニットを2体呼び出す。",
+    "name": "天空の守護者",
+    "spell_slug": "天空の守護者",
+    "tier": 7,
+    "type": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>"
+   },
+   {
+    "description": "死亡した非ヒーローと非天空のユニットを対象にする：<bulletlist><bullet>詠唱者の支配の下、戦闘終了まで<hyperlink>看守</hyperlink>として復活させる。</bullet><bullet>復活の際、マスの範囲内の全ての味方ユニットを <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet>",
+    "name": "転生昇天",
+    "spell_slug": "転生昇天",
+    "tier": 6,
+    "type": "<casttactical></casttactical><hyperlink> 回復呪文</hyperlink>"
+   },
+   {
+    "description": "対象の種族の霊魂を浄化して、以下を付与する：<bulletlist><bullet>戦闘ターン開始時に1個の<hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>取り除いたマイナスのステータス効果がプラスの<hyperlink>カウンター</hyperlink>を持っていた場合、<hyperlink>プラスのステータス効果</hyperlink>を獲得する。</bullet></bulletlist><br></br>この変身は暗影の肉体とグルーム・ストライダーとは同時に使用できない。",
+    "name": "純粋な霊魂",
+    "spell_slug": "純粋な霊魂",
+    "tier": 7,
+    "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
+   },
+   {
+    "description": "強力な攻撃力と回復アビリティを持つ天使ユニットである<hyperlink>アストラ</hyperlink> 神話ユニットを召喚する。",
+    "name": "アストラを召喚",
+    "spell_slug": "アストラを召喚",
+    "tier": 8,
+    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
+   }
+  ],
+  "initial_upgrades": [
+   {
+    "upgrade_slug": "_teleporter___アーコンの門"
+   }
+  ]
+ },
+ {
+  "affinities": "1 <empireorder></empireorder> 帝国 秩序のアフィニティー, 1 <empirearcana></empirearcana> 帝国 アストラルアフィニティー",
+  "lore_description": "「自分の運命を知ることは祝福にも呪いにもなりうる。オラクルは、敵に自らの破滅を予見させ、味方には予言で未来を呼び覚ますことで、道を進むのを急がせる。予言をただの言葉に過ぎないと考える間違いを犯す者は哀れである。運命より偉大な力は存在せず、それは必ず約束を果たすからだ」",
+  "gameplay_description": "敵の攻撃を防ぎ、敵の破滅を予知する。",
+  "resid": 5046586583764,
+  "id": "預言の学術書",
+  "DLC": "ARCHONPROPHECY ",
+  "lore_author": "星の子らの運命の紡ぎ手、ペトラス・セレナ",
+  "name": "預言の学術書",
+  "tier": 3,
+  "icon": "0000049700002AD5",
+  "skills": [
+   {
+    "description": "魔法ユニットに付与される：<bulletlist><bullet><hyperlink>防御モード</hyperlink>に入ると予知 を得る。</bullet></bulletlist>",
+    "name": "予知のサークレット",
+    "spell_slug": "予知のサークレット",
+    "tier": 5,
+    "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
+   },
+   {
+    "description": "魔法ユニットに以下の効果を付与：<bulletlist><bullet><hyperlink><crit></crit>クリティカルヒット率</hyperlink>が+%。</bullet><bullet>信仰深き者</bullet></bulletlist>",
+    "name": "運命の投射物",
+    "spell_slug": "運命の投射物",
+    "tier": 5,
+    "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
+   },
+   {
+    "description": "戦闘開始時：<bulletlist><bullet>味方ユニットに付与:<bulletlist></bullet><bullet>戦闘中、予知</bullet><bullet>+10% <hyperlink><crit></crit>クリティカルヒット率</hyperlink></bullet></bulletlist><bullet>敵ユニットに付与:<bulletlist></bullet><bullet>戦闘中、<hyperlink>完全ミス</hyperlink>の確率が10%。</bullet></bulletlist></bulletlist>",
+    "name": "破滅の予知",
+    "tier": 6,
+    "type": "<hyperlink>包囲計画</hyperlink>"
+   },
+   {
+    "description": "詠唱すると、それから2 <turn></turn>ターンに渡って、以下の順番で効果を戦闘に適用する：<bulletlist><bullet>そのターン、すべての味方ユニットの<hyperlink>回避</hyperlink>が+25%。</bullet><bullet>すべての味方ユニットに予知を付与。</bullet><bullet>そのターン、すべての味方ユニットのダメージが+20%。</bullet></bulletlist>",
+    "name": "戦いの予言",
+    "spell_slug": "戦いの予言",
+    "tier": 5,
+    "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
+   },
+   {
+    "description": "未来を予知し、その知識を活かして他のユニットを強化し、守ることができるサポートユニット。",
+    "name": "オラクル",
+    "tier": 6,
+    "unit_slug": "オラクル",
+    "type": "<hyperlink>ユニット</hyperlink>"
+   }
+  ],
+  "initial_upgrades": [
+   {
+    "upgrade_slug": "_conduit___預言者の神殿"
+   }
+  ]
+ },
+ {
+  "affinities": "2 <empireorder></empireorder> 帝国 秩序のアフィニティー",
+  "lore_description": "「最も暗い夜でも、恐怖に立ち向かっていても、最期の瞬間であっても、高潔なる者は挫けない。あなたは悪に対する最後の砦あり、アビスの中の最期の光明なのだ。正義の人がいなくなってしまった時、希望が途絶える時代が来るだろう。しかしそれはこの時代ではない、あなたがまだ立っているのだから」",
+  "gameplay_description": "高潔な軍隊を作り、最後まで戦わせる。",
+  "resid": 5046586583687,
+  "id": "高潔の学術書",
+  "DLC": "ARCHONPROPHECY ",
+  "lore_author": "第二秩序のアーコン・パラディン：マリエル",
+  "name": "高潔の学術書",
+  "tier": 2,
+  "icon": "0000049700002A88",
+  "skills": [
+   {
+    "description": "都市が<gold></gold><hyperlink> ゴールド</hyperlink>収益の10%を失い、その倍の量を<food></food><hyperlink> 食料</hyperlink>と<structureprod></structureprod><hyperlink>生産</hyperlink>として獲得する。",
+    "name": "施しの家",
+    "tier": 3,
+    "type": "<hyperlink>都市の建造物</hyperlink>",
+    "upgrade_slug": "施しの家"
+   },
+   {
+    "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink>マイナスのステータス効果</hyperlink>が取り除かれる。</bullet><bullet> <turn></turn>ターンの間、ステディを得る。</bullet><bullet> <turn></turn>ターンターンの間、<hyperlink>犠牲者</hyperlink>からのペナルティを無視する。</bullet></bulletlist>",
+    "name": "英雄的な抵抗",
+    "spell_slug": "英雄的な抵抗",
+    "tier": 3,
+    "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
+   },
+   {
+    "description": "弱った対象種族に力を与え、以下を付与する：<bulletlist><bullet>+ <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>このユニットの最大<hyperlink><hp></hp>HP</hyperlink>が%未満になると：<bulletlist></bullet><bullet>その<hyperlink>犠牲者</hyperlink>の%を無視する。</bullet><bullet>+の<defense></defense><hyperlink>防御力</hyperlink>を得る。</bullet><bullet>+の<resistance></resistance><hyperlink>耐性</hyperlink>を得る。</bullet></bulletlist>",
+    "name": "高潔な精神",
+    "spell_slug": "高潔な精神",
+    "tier": 3,
+    "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
+   },
+   {
+    "description": "敵を浄化する聖なる炎を発するユニット、<hyperlink>看守</hyperlink> バトルメイジユニットを召喚する。",
+    "name": "看守召喚",
+    "spell_slug": "看守召喚",
+    "tier": 4,
+    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
+   },
+   {
+    "description": "回復能力と強烈な打撃力を持つシールドユニットを召喚する。",
+    "name": "パラディン",
+    "tier": 3,
+    "unit_slug": "パラディン",
+    "type": "<hyperlink>ユニット</hyperlink>"
    }
   ]
  },
@@ -68,7 +285,7 @@
   "icon": "0000049700001A4B",
   "skills": [
    {
-    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃は以下を得る：<bulletlist><bullet>地形に応じて悪いステータス効果を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃は以下を得る：<bulletlist><bullet>地形に応じて<hyperlink>マイナスのステータス効果</hyperlink>を1個付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "反響の刃",
     "spell_slug": "反響の刃",
     "tier": 6,
@@ -198,14 +415,14 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "{VOLATILE_CHARGE_TARGETER\\>AREA\\>Radius}マス範囲内の敵ユニット：<bulletlist><bullet>{CRYSTAL_CRASH_UNIT_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>{CRYSTAL_CRASH_UNIT_DAMAGE\\>DAMAGE\\>Shock} <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>{VOLATILE_CHARGE_RESISTANCE\\>ResolvedStrength}%の基本確率で{VOLATILE_CHARGE_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間ヴォラタイル・チャージを与える。</bullet>",
+    "description": "マス範囲内の敵ユニット：<bulletlist><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet> <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>%の基本確率で <turn></turn>ターンの間ヴォラタイル・チャージを与える。</bullet>",
     "name": "クリスタルクラッシュ",
     "spell_slug": "クリスタルクラッシュ",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>15 <mana></mana><hyperlink> マナ</hyperlink></bullet><bullet>15 <knowledge></knowledge> <hyperlink> 知識</hyperlink></bullet><bullet>10 <influence></influence><hyperlink> 帝権</hyperlink></bullet></bulletlist>",
+    "description": "<bulletlist><bullet>15 <mana></mana><hyperlink> マナ</hyperlink></bullet><bullet>15 <knowledge></knowledge><hyperlink>知識</hyperlink></bullet><bullet>10 <influence></influence><hyperlink> 帝権</hyperlink></bullet></bulletlist>",
     "name": "エターナル使節団",
     "tier": 7,
     "type": "<hyperlink>都市の建造物</hyperlink>",
@@ -226,7 +443,7 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>{VOLATILE_CHARGE_RESISTANCE\\>ResolvedStrength}%の基本確率でヴォラタイル・チャージを与える。</bullet></bulletlist>",
+    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>%の基本確率でヴォラタイル・チャージを与える。</bullet></bulletlist>",
     "name": "クリスタルフォーカス",
     "spell_slug": "クリスタルフォーカス",
     "tier": 5,
@@ -247,14 +464,14 @@
   "icon": "00000497000013A1",
   "skills": [
    {
-    "description": "魔法ユニットが以下を得る：<bulletlist><bullet><hyperlink>近接攻撃</hyperlink>攻撃が命中したとき、攻撃者は以下の状態になる：<bulletlist></bullet><bullet>{GHOSTFIRE_RESISTANCE\\>ResolvedStrength}%の確率で、{GHOSTFIRE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間ゴーストファイヤー状態になる。</bullet><bullet>{MISFORTUNE_RESISTANCE\\>ResolvedStrength}%の確率で、{MISFORTUNE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間ミスフォーチュン状態になる。</bullet></bulletlist><bullet>+{ACCURSED_ARMORS_RESISTANCE\\>DEF_MOD\\>Armor}<defense></defense><hyperlink>防御力</hyperlink>。</bullet></bulletlist>",
+    "description": "魔法ユニットが以下を得る：<bulletlist><bullet><hyperlink>近接攻撃</hyperlink>攻撃が命中したとき、攻撃者は以下の状態になる：<bulletlist></bullet><bullet>%の確率で、<turn></turn>ターンの間ゴーストファイヤー状態になる。</bullet><bullet>%の確率で、<turn></turn>ターンの間ミスフォーチュン状態になる。</bullet></bulletlist><bullet>+<defense></defense><hyperlink>防御力</hyperlink>。</bullet></bulletlist>",
     "name": "呪われた鎧",
     "spell_slug": "呪われた鎧",
     "tier": 7,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の攻撃：<bulletlist><bullet>+{ACCURSED_PROJECTILES_EXTRA_DAMAGE\\>DAMAGE\\>Fire}<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>+{ACCURSED_PROJECTILES_EXTRA_DAMAGE\\>DAMAGE\\>Frost}<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を与える。</bullet><bullet>{GHOSTFIRE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、{GHOSTFIRE_RESISTANCE\\>ResolvedStrength}%の基本確率でゴーストファイヤーを与える。<br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。</bullet>",
+    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の攻撃：<bulletlist><bullet>+<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>+<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を与える。</bullet><bullet><turn></turn>ターンの間、ゴーストファイヤーを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "呪われた一撃",
     "spell_slug": "呪われた一撃",
     "tier": 7,
@@ -267,14 +484,14 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>領域改善</hyperlink>が含まれる場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたは報酬を得て、<reputation2></reputation2><hyperlink>考え方</hyperlink>を失う。</bullet></bulletlist><bullet>領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+    "description": "対象の<hyperlink>領域</hyperlink>：<bulletlist><bullet><hyperlink>領域改善</hyperlink>が存在する場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたはその報酬を得て、<reputation2></reputation2><hyperlink>考え方</hyperlink>を失う。</bullet></bulletlist><bullet>その領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>その領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
     "name": "土地の荒廃",
     "spell_slug": "土地の荒廃",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>"
    },
    {
-    "description": "{METEOR_OF_CALAMITY_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲内にいるユニットは：<bulletlist><bullet>{METEOR_OF_CALAMITY_UNIT_DAMAGE\\>DAMAGE\\>Fire}<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>{METEOR_OF_CALAMITY_UNIT_DAMAGE\\>DAMAGE\\>Frost}<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>{FROZEN_RESISTANCE\\>ResolvedStrength}%の基本確率で、{FROZEN_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間凍結になる。</bullet><bullet>{GHOSTFIRE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、ゴーストファイヤーを2スタック得る。</bullet></bulletlist>",
+    "description": "マスの範囲内にいるユニットは：<bulletlist><bullet><damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet><damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>%の基本確率で、<turn></turn>ターンの間凍結になる。</bullet><bullet><turn></turn>ターンの間、ゴーストファイヤーを2スタック得る。</bullet></bulletlist>",
     "name": "災厄の彗星",
     "spell_slug": "災厄の彗星",
     "tier": 6,
@@ -314,7 +531,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットが以下を得る：<bulletlist><bullet>内なる優美</bullet><bullet>+{BLESSED_ARMORS_RESISTANCE\\>DEF_MOD\\>Resistance}<resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
+    "description": "魔法ユニットが以下を得る：<bulletlist><bullet>内なる優美</bullet><bullet>+<resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
     "name": "祝福の鎧",
     "spell_slug": "祝福の鎧",
     "tier": 7,
@@ -328,7 +545,7 @@
     "upgrade_slug": "豊潤の庭園"
    },
    {
-    "description": "{GRAND_PROTECTION_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方ユニットが以下を得る：<bulletlist><bullet>2優美</bullet><bullet>{REGENERATION_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間2再生</bullet><bullet>{BOLSTERED_RESISTANCE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間3防御強化</bullet><bullet>{SUNDERED_RESISTANCE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間3耐性強化</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方ユニットが以下を得る：<bulletlist><bullet>2優美</bullet><bullet><turn></turn>ターンの間2再生</bullet><bullet><turn></turn>ターンの間3防御強化</bullet><bullet><turn></turn>ターンの間3耐性強化</bullet></bulletlist>",
     "name": "偉大なる加護",
     "spell_slug": "偉大なる加護",
     "tier": 6,
@@ -367,14 +584,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{FIRES_OF_DEVOTION_TARGETER\\>AREA\\>Radius}マスの範囲内にいる敵ユニットが{FIRES_OF_DEVOTION_DAMAGE\\>DAMAGE\\>Spirit}<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。<br></br><br></br>ダメージは自分の<hyperlink>献身</hyperlink>レベルに応じて変化する。",
+    "description": "マスの範囲内にいる敵ユニットが<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。<br></br><br></br>ダメージは自分の<hyperlink>献身</hyperlink>レベルに応じて変化する。",
     "name": "敬虔なる輝き",
     "spell_slug": "敬虔なる輝き",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>ダメージ呪文</hyperlink>"
    },
    {
-    "description": "{COUNTER_STANCE_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方ユニットが以下を得る：{FIRST_STRIKE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方ユニットが以下を得る：<turn></turn>ターンの間：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
     "name": "カウンタースタンス",
     "spell_slug": "カウンタースタンス",
     "tier": 1,
@@ -406,14 +623,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{FIRES_OF_DEVOTION_TARGETER\\>AREA\\>Radius}マスの範囲内にいる敵ユニットが{FIRES_OF_DEVOTION_DAMAGE\\>DAMAGE\\>Spirit}<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。<br></br><br></br>ダメージは自分の<hyperlink>献身</hyperlink>レベルに応じて変化する。",
+    "description": "マスの範囲内にいる敵ユニットが<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。<br></br><br></br>ダメージは自分の<hyperlink>献身</hyperlink>レベルに応じて変化する。",
     "name": "敬虔なる輝き",
     "spell_slug": "敬虔なる輝き",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>ダメージ呪文</hyperlink>"
    },
    {
-    "description": "{COUNTER_STANCE_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方ユニットが以下を得る：{FIRST_STRIKE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方ユニットが以下を得る：<turn></turn>ターンの間：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
     "name": "カウンタースタンス",
     "spell_slug": "カウンタースタンス",
     "tier": 1,
@@ -445,14 +662,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{FIRES_OF_DEVOTION_TARGETER\\>AREA\\>Radius}マスの範囲内にいる敵ユニットが{FIRES_OF_DEVOTION_DAMAGE\\>DAMAGE\\>Spirit}<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。<br></br><br></br>ダメージは自分の<hyperlink>献身</hyperlink>レベルに応じて変化する。",
+    "description": "マスの範囲内にいる敵ユニットが<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。<br></br><br></br>ダメージは自分の<hyperlink>献身</hyperlink>レベルに応じて変化する。",
     "name": "敬虔なる輝き",
     "spell_slug": "敬虔なる輝き",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>ダメージ呪文</hyperlink>"
    },
    {
-    "description": "{COUNTER_STANCE_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方ユニットが以下を得る：{FIRST_STRIKE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方ユニットが以下を得る：<turn></turn>ターンの間：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
     "name": "カウンタースタンス",
     "spell_slug": "カウンタースタンス",
     "tier": 1,
@@ -467,7 +684,7 @@
  },
  {
   "lore_description": "",
-  "gameplay_description": "これらの効果は<rs_vassalage></rs_vassalage><hyperlink>奇怪なる協定</hyperlink>を結ぶことで<hyperlink>暗影の本拠地</hyperlink>から購入でき、あなたが<hyperlink>暗影の深淵</hyperlink>に適応し、<hyperlink>暗闇</hyperlink>を広めるのに役立ちます。",
+  "gameplay_description": "これらの効果は<rs_vassalage></rs_vassalage><hyperlink>奇怪なる協定</hyperlink>を結ぶことで<hyperlink>暗影の本拠地</hyperlink>から購入でき、あなたが<hyperlink>暗影の深淵</hyperlink>に適応し、<hyperlink>暗闇</hyperlink>を広めるのに役立つ。",
   "resid": 5046586575464,
   "id": "奇怪なる協定",
   "DLC": "ELDRITCHREALMS ",
@@ -491,7 +708,7 @@
     "upgrade_slug": "_conduit__マーチング・グルームの祭壇"
    },
    {
-    "description": "対象の種族に暗影の深淵の祝福を与え、以下を付与：<bulletlist><bullet>アンブラルの病魔無効</bullet><bullet><hyperlink>暗闇</hyperlink>の地形にいる間、ユニットに以下を付与：<bulletlist></bullet><bullet>+{UMBRAL_FLESH_MORALE\\>MoraleBonus}<happiness></happiness><hyperlink>士気</hyperlink></bullet><bullet>ワールドマップ上で<turn></turn><hyperlink>ターン</hyperlink>ごとに+{GLOOM_SHEPHERD_HEALTH_REGEN\\>BONUS\\>Regen}<hyperlink><hp></hp>HP</hyperlink>。</bullet></bulletlist><bullet>対象の種族の<hyperlink>都市</hyperlink>に以下を付与：<bulletlist></bullet><bullet>暗闇の地形がある領域1つにつき、+2<knowledge></knowledge> <hyperlink> 知識</hyperlink>の収入を得る。</bullet><bullet>暗闇の領域による<happiness></happiness> <hyperlink>都市の安定性</hyperlink>のペナルティを無視する。</bullet></bulletlist><bullet>ヒーローユニットがグルーム・シェパードを得る。</bullet></bulletlist>",
+    "description": "対象の種族にアンブラル・アビスの祝福を与え、以下を付与：<bulletlist><bullet>アンブラルの病魔無効</bullet><bullet><hyperlink>暗闇</hyperlink>の地形にいる間、ユニットに以下を付与：<bulletlist></bullet><bullet>+<happiness></happiness><hyperlink>士気</hyperlink></bullet><bullet>ワールドマップ上で<turn></turn><hyperlink>ターン</hyperlink>ごとに+<hyperlink><hp></hp>HP</hyperlink>。</bullet></bulletlist><bullet>対象の種族の<hyperlink>都市</hyperlink>に以下を付与：<bulletlist></bullet><bullet>暗闇の地形がある領域1つにつき、+2<knowledge></knowledge><hyperlink>知識</hyperlink>の収益を得る。</bullet><bullet>暗闇の領域による<happiness></happiness> <hyperlink>都市の安定性</hyperlink>のペナルティを無視する。</bullet></bulletlist><bullet>ヒーローユニットがグルーム・シェパードを得る。</bullet></bulletlist><br></br>この変身は純粋な霊魂と同時に使用できない。",
     "name": "暗影の肉体",
     "spell_slug": "暗影の肉体",
     "tier": 3,
@@ -505,7 +722,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象ユニットは{UMBRAL_EXILE_RESIST\\>ResolvedStrength}%の基本確率で：<bulletlist><bullet>直ちに戦闘から離脱する。</bullet><bullet>戦闘後、アンブラル・アビスのランダムな地点に出現する。</bullet><bullet>失敗した場合、代わりにスタンを{STUNNED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターン付与する。</bullet></bulletlist><br></br><br></br>水域戦闘では無効。",
+    "description": "対象ユニットは%の基本確率で：<bulletlist><bullet>直ちに戦闘から離脱する。</bullet><bullet>戦闘後、アンブラル・アビスのランダムな地点に出現する。</bullet><bullet>失敗した場合、代わりにスタンを<turn></turn>ターン付与する。</bullet></bulletlist><br></br><br></br>水域戦闘では無効。",
     "name": "暗影の追放",
     "spell_slug": "暗影の追放",
     "tier": 3,
@@ -519,7 +736,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> ワールド呪文</hyperlink>"
    },
    {
-    "description": "対象の<hyperlink>領域</hyperlink>および隣接する<hyperlink>領域</hyperlink>が：<bulletlist><bullet><hyperlink>暗闇</hyperlink>を獲得する</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>沼地</hyperlink>および<hyperlink>ダンジョン</hyperlink>を失う。</bullet><bullet>敵の<hyperlink>ユニット</hyperlink>が10 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>および10 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
+    "description": "対象の<hyperlink>領域</hyperlink>および隣接する<hyperlink>領域</hyperlink>が：<bulletlist><bullet><hyperlink>暗闇</hyperlink>を獲得する</bullet><bullet><hyperlink>裂け目</hyperlink><hyperlink>川</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>および<hyperlink>ダンジョン</hyperlink>を失う。</bullet><bullet>敵の<hyperlink>ユニット</hyperlink>が10 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>および10 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
     "name": "暗闇の覆い",
     "spell_slug": "暗闇の覆い",
     "tier": 7,
@@ -545,14 +762,14 @@
   "icon": "000004970000058F",
   "skills": [
    {
-    "description": "対象の領域に以下の効果を付与：<bulletlist><bullet>陸地だった場合、地形を沼地に変える。</bullet><bullet>{DOWNPOUR\\>Duration}<turn></turn>ターンの間、土砂降りになる。</bullet></bulletlist><br></br><br></br>地下では使用不可。",
+    "description": "対象の領域に以下の効果を付与：<bulletlist><bullet>陸地だった場合、地形を沼地に変える。</bullet><bullet><turn></turn>ターンの間、土砂降りになる。</bullet></bulletlist><br></br><br></br>地下では使用不可。",
     "name": "豪雨",
     "spell_slug": "豪雨",
     "tier": 7,
     "type": "<caststrategic></caststrategic><hyperlink> ワールド呪文</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>{WET_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、すべてのユニットが水浸しになる。</bullet><bullet>最大{LIGHTNING_STORM_COMBAT_AUTO_SPELL\\>MinCastCount}体のランダムな敵ユニットに以下を付与：<bulletlist></bullet><bullet>{LIGHTNING_STORM_DAMAGE\\>DAMAGE\\>Shock}<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>{ELECTRIFIED_RESISTANCE\\>ResolvedStrength}%の基本確率で、{ELECTRIFIED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、感電になる。</bullet></bulletlist></bulletlist><br></br>次の{LIGHTNING_STORM_COMBAT_AUTO_SPELL\\>TimeToLive}<turn></turn>ターンの間、この呪文はターン開始時に繰り返される。",
+    "description": "<bulletlist><bullet><turn></turn>ターンの間、すべてのユニットが水浸しになる。</bullet><bullet>最大体のランダムな敵ユニットに以下を付与：<bulletlist></bullet><bullet><damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>%の基本確率で、<turn></turn>ターンの間、感電になる。</bullet></bulletlist></bulletlist><br></br>次の<turn></turn>ターンの間、この呪文はターン開始時に繰り返される。",
     "name": "ライトニング・ストーム",
     "spell_slug": "ライトニング・ストーム",
     "tier": 7,
@@ -573,7 +790,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "対象の種族がナーガの体を獲得し、以下の効果を得る：<bulletlist><bullet>高速移動</bullet><bullet>水陸両用</bullet><bullet>こっそり逃げる</bullet><bullet>感電に対して無敵</bullet><bullet>+{NAGA_TRANSFORMATION_RESISTANCE\\>REDUCTION\\>Blight}<defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink></bullet><bullet>+{NAGA_TRANSFORMATION_RESISTANCE\\>REDUCTION\\>Shock}<defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet></bulletlist></bulletlist><br></br><br></br>騎乗ユニットは騎乗物を失う。<br></br><br></br>ヒーローは騎乗物と足の装備スロットを失う。",
+    "description": "対象の種族がナーガの体を獲得し、以下の効果を得る：<bulletlist><bullet>高速移動</bullet><bullet>水陸両用</bullet><bullet>こっそり逃げる</bullet><bullet>感電に対して無敵</bullet><bullet>+<defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink></bullet><bullet>+<defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet></bulletlist></bulletlist><br></br><br></br>騎乗ユニットは騎乗物を失う。<br></br><br></br>ヒーローは騎乗物と足の装備スロットを失う。",
     "name": "ナーガの変身",
     "spell_slug": "ナーガの変身",
     "tier": 7,
@@ -601,21 +818,21 @@
   "icon": "0000049700000518",
   "skills": [
    {
-    "description": "対象の種族を妖怪の力と結合させ、以下の効果を付与：<bulletlist><bullet>フェイ・ガイル</bullet><bullet>以下が無効になる：<bulletlist></bullet><bullet>ミスティによる視界ペナルティ</bullet><bullet>まとわりつく霧による命中率ペナルティ</bullet></bulletlist></bulletlist>",
+    "description": "対象の種族を妖怪の力と結合させ、以下の効果を付与：<bulletlist><bullet>フェイ・ガイル</bullet><bullet>以下が無効になる：<bulletlist></bullet><bullet>ミスティによるペナルティ</bullet><bullet><hyperlink><accuracy></accuracy>命中率</hyperlink>まとわりつく霧によるペナルティ</bullet></bulletlist></bulletlist>",
     "name": "妖怪の加護",
     "spell_slug": "妖怪の加護",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "対象の領域が{LINGERING_MISTS\\>Duration}<turn></turn>ターンの間ミスティになる。",
+    "description": "対象の領域が<turn></turn>ターンの間ミスティになる。",
     "name": "停滞する霧",
     "spell_slug": "停滞する霧",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink> ワールド呪文</hyperlink>"
    },
    {
-    "description": "{FEY_EMBRACE_TARGETER\\>AREA\\>Radius}マスの範囲に以下の効果を付与：<bulletlist><bullet><hyperlink>霧</hyperlink>の雲を配置する。</bullet><bullet>味方ユニットが2個のランダムなプラスのステータス効果を得る。</bullet>",
+    "description": "マスの範囲に以下の効果を付与：<bulletlist><bullet><hyperlink>霧</hyperlink>の雲を配置する。</bullet><bullet>味方ユニットが2個のランダムな <hyperlink>プラスのステータス効果</hyperlink>を獲得する。</bullet>",
     "name": "妖怪の抱擁",
     "spell_slug": "妖怪の抱擁",
     "tier": 4,
@@ -629,7 +846,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "ランダムなマイナスのステータス効果を付与する攻撃ができる散兵ユニットの<hyperlink>ミストリング</hyperlink>を召喚する。",
+    "description": "ランダムな<hyperlink>マイナスのステータス効果</hyperlink>を付与する攻撃ができる散兵ユニットの<hyperlink>ミストリング</hyperlink>を召喚する。",
     "name": "ミストリングの召喚",
     "spell_slug": "ミストリングの召喚",
     "tier": 3,
@@ -673,14 +890,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルスパイダー</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルスパイダー</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルスパイダーを魔法で呼び出す",
     "spell_slug": "プライマルスパイダーを魔法で呼び出す",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>トンネリングスパイダーの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>トンネリングスパイダーの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -724,14 +941,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルマンモス</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルマンモス</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルマンモスを魔法で呼び出す",
     "spell_slug": "プライマルマンモスを魔法で呼び出す",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>グレーシャルマンモスの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>グレーシャルマンモスの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -775,14 +992,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルクロウ</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルクロウ</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルクロウを魔法で呼び出す",
     "spell_slug": "プライマルクロウを魔法で呼び出す",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>ストームクロウの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>ストームクロウの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -826,14 +1043,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルサーペント</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルサーペント</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルサーペントを魔法で呼び出す",
     "spell_slug": "プライマルサーペントを魔法で呼び出す",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>デューンサーペントの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>デューンサーペントの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -877,14 +1094,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルサーベルタイガー</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルサーベルタイガー</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルサーベルタイガーを魔法で呼び出す",
     "spell_slug": "プライマルサーベルタイガーを魔法で呼び出す",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>アッシュサーベルタイガーの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>アッシュサーベルタイガーの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -928,14 +1145,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルクロコダイル</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルクロコダイル</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルクロコダイルを魔法で呼び出す",
     "spell_slug": "プライマルクロコダイルを魔法で呼び出す",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>マイアクロコダイルの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>マイアクロコダイルの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -972,7 +1189,7 @@
   "icon": "0000049700000260",
   "skills": [
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet>{ANCESTRAL_HARMONY_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>シルヴァンウルフの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
+    "description": "標的の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>シルヴァンウルフの逆鱗が有効な場合、二倍の量を回復する。</bullet></bulletlist>",
     "name": "祖先の調和",
     "spell_slug": "祖先の調和",
     "tier": 1,
@@ -986,7 +1203,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "グレード2の<hyperlink>プライマルウルフ</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "グレード2の<hyperlink>プライマルウルフ</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "プライマルウルフを魔法で呼び出す",
     "spell_slug": "プライマルウルフを魔法で呼び出す",
     "tier": 2,
@@ -1012,28 +1229,28 @@
   "icon": "0000049000000F52",
   "skills": [
    {
-    "description": "対象の種族を渦巻く影で囲い、以下を付与する：<bulletlist><bullet>+{SHADOW_BLESSED_EVASION\\>ResolvedAccuracyModifier}%<hyperlink>回避</hyperlink>。</bullet><bullet>{LIVING_SHADOWS_MAGIC_SHIELD\\>MaxAttackerDistance}マスの範囲内から攻撃された場合、攻撃者は{BLINDED_RESISTANCE\\>ResolvedStrength}%の基本確率で{BLINDED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn><hyperlink>ターン</hyperlink>の間盲目になる。</bullet></bulletlist>",
+    "description": "対象の種族を渦巻く影で囲い、以下を付与する：<bulletlist><bullet>+%<hyperlink>回避</hyperlink>。</bullet><bullet>マスの範囲内から攻撃された場合、攻撃者は%の基本確率で<turn></turn><hyperlink>ターン</hyperlink>の間盲目になる。</bullet></bulletlist>",
     "name": "生ける影",
     "spell_slug": "生ける影",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>収益+10<knowledge></knowledge> <hyperlink> 知識</hyperlink>。</bullet><bullet>この<hyperlink>都市</hyperlink>と隣接する未所有の都市1つごとに+10<knowledge></knowledge> <hyperlink> 知識</hyperlink>。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>収益+10<knowledge></knowledge><hyperlink>知識</hyperlink>。</bullet><bullet>この<hyperlink>都市</hyperlink>と隣接する未所有の都市1つごとに+10<knowledge></knowledge><hyperlink>知識</hyperlink>。</bullet></bulletlist>",
     "name": "影の経路",
     "tier": 5,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "影の経路"
    },
    {
-    "description": "{RENDING_SHADOWS_TARGETER\\>AREA\\>Radius}マスの範囲内にいる敵ユニット：<bulletlist><bullet>{RENDING_SHADOWS_DAMAGE\\>DAMAGE\\>Physical}<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>{BLINDED_RESISTANCE\\>ResolvedStrength}%の基本確率で{BLINDED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn><hyperlink>ターン</hyperlink>の間盲目になる。</bullet><bullet>{SUNDERED_DEFENSE_RESISTANCE\\>ResolvedStrength}%の基本確率で{SUNDERED_DEFENSE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn><hyperlink>ターン</hyperlink>の間バラバラの防衛になる。</bullet></bulletlist>",
+    "description": "マスの範囲内にいる敵ユニット：<bulletlist><bullet><damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>%の基本確率で<turn></turn><hyperlink>ターン</hyperlink>の間盲目になる。</bullet><bullet>%の基本確率で<turn></turn><hyperlink>ターン</hyperlink>の間バラバラの防衛になる。</bullet></bulletlist>",
     "name": "引き裂く影",
     "spell_slug": "引き裂く影",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットによる<hyperlink>近接攻撃</hyperlink>の基本攻撃：<bulletlist><bullet>盲目の対象に対して、対象の<defense></defense><hyperlink>防御力</hyperlink>と<resistance></resistance><hyperlink>耐性</hyperlink>の{SHADOW_BLADE_PIERCING_AND_BREACHING\\>MODIFIERS\\>ResolvedArmor}%を無視する。</bullet></bulletlist>",
+    "description": "魔法ユニットによる<hyperlink>近接攻撃</hyperlink>の基本攻撃：<bulletlist><bullet>盲目の対象に対して、対象の<defense></defense><hyperlink>防御力</hyperlink>と<resistance></resistance><hyperlink>耐性</hyperlink>の%を無視する。</bullet></bulletlist>",
     "name": "影の刃",
     "spell_slug": "影の刃",
     "tier": 4,
@@ -1045,6 +1262,101 @@
     "tier": 4,
     "unit_slug": "シェイド",
     "type": "<hyperlink>ユニット</hyperlink>"
+   }
+  ]
+ },
+ {
+  "lore_description": "",
+  "gameplay_description": "この研究は、<hyperlink>設計者</hyperlink>文化を持つ支配者に対して利用可能です。支配者が自分のアフィニティーを強化し、それに順応します。",
+  "resid": 5003636905394,
+  "id": "設計者",
+  "DLC": "ARCHONPROPHECY ",
+  "lore_author": "",
+  "name": "設計者",
+  "tier": 0,
+  "icon": "0000048D000015B3",
+  "skills": [
+   {
+    "description": "1<turn></turn>ターンの間、1マスの範囲内にいる味方ユニットが以下を得る：<bulletlist><bullet>+1<defense></defense><hyperlink>防御力</hyperlink>、+1 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>+1の追加<defense></defense><hyperlink>防御力</hyperlink>、アフィニティーの化身のスタック1回ごとに+1の<resistance></resistance><hyperlink>耐性</hyperlink>。</bullet></bulletlist>",
+    "name": "まばゆき化身",
+    "spell_slug": "まばゆき化身",
+    "tier": 3,
+    "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
+   },
+   {
+    "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。<br></br>この召喚は 3<turn></turn><hyperlink>ターン</hyperlink>の間継続する。",
+    "name": "エレメンタルの召喚",
+    "tier": 3,
+    "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
+   },
+   {
+    "description": "非設計者ユニットに以下を付与：<bulletlist><bullet>アフィニティーの化身。</bullet></bulletlist>",
+    "name": "化身の印",
+    "spell_slug": "化身の印",
+    "tier": 3,
+    "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
+   }
+  ],
+  "initial_upgrades": [
+   {
+    "upgrade_slug": "記念碑i：基礎"
+   },
+   {
+    "upgrade_slug": "アフィニティーの標柱"
+   },
+   {
+    "upgrade_slug": "記念碑ii：聖域"
+   },
+   {
+    "upgrade_slug": "記念碑ii：聖域"
+   },
+   {
+    "upgrade_slug": "記念碑ii：聖域"
+   },
+   {
+    "upgrade_slug": "記念碑ii：聖域"
+   },
+   {
+    "upgrade_slug": "記念碑ii：聖域"
+   },
+   {
+    "upgrade_slug": "記念碑ii：聖域"
+   },
+   {
+    "upgrade_slug": "記念碑iii：天頂"
+   },
+   {
+    "upgrade_slug": "記念碑iii：天頂"
+   },
+   {
+    "upgrade_slug": "記念碑iii：天頂"
+   },
+   {
+    "upgrade_slug": "記念碑iii：天頂"
+   },
+   {
+    "upgrade_slug": "記念碑iii：天頂"
+   },
+   {
+    "upgrade_slug": "記念碑iii：天頂"
+   },
+   {
+    "upgrade_slug": "記念碑iv：頂点"
+   },
+   {
+    "upgrade_slug": "記念碑iv：頂点"
+   },
+   {
+    "upgrade_slug": "記念碑iv：頂点"
+   },
+   {
+    "upgrade_slug": "記念碑iv：頂点"
+   },
+   {
+    "upgrade_slug": "記念碑iv：頂点"
+   },
+   {
+    "upgrade_slug": "記念碑iv：頂点"
    }
   ]
  },
@@ -1087,13 +1399,6 @@
   ]
  },
  {
-  "passives": [
-   {
-    "description": "<bulletlist><bullet>すべての<hyperlink>燃える地面</hyperlink>が<hyperlink>浄化の炎</hyperlink>になる</bullet><bullet>倒された敵ユニットは<hyperlink>浄化の炎</hyperlink>を3<turn></turn>ターン生み出す</bullet></bulletlist>",
-    "name": "浄化のフレイムヘラルド",
-    "type": "<hyperlink>パッシブ学術書</hyperlink>"
-   }
-  ],
   "affinities": "1 <empireorder></empireorder> 帝国 秩序のアフィニティー, 1 <empirechaos></empirechaos> 帝国 カオスアフィニティー",
   "lore_description": "「内なる火炎を操り、悪しき者を怒りの炎で燃やし尽くす狂信者の心の光に祝福あれ。灼熱を恐れるな。すべての者が抱える腐敗を浄化してくれるのだから。燃え盛る剣を振るい、敵に業火の呪文をかけよ。そして見よ… 炎が過ぎ去った頃には、信じる心を持つ者のみが残されるだろう」",
   "gameplay_description": "自軍の熱意で戦場を浄化の炎に包み、罪人を罰して信心深い者を祝福する。",
@@ -1113,7 +1418,7 @@
     "upgrade_slug": "火葬の神殿"
    },
    {
-    "description": "対象の非友好的な<hyperlink>領域</hyperlink>で<hyperlink>古代遺産</hyperlink>を含まない領域：<bulletlist><bullet>その<hyperlink>領域改善</hyperlink>が壊滅させられる。</bullet><bullet>領域内の敵ユニットは20 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>{CONSECRATING_FIRESTORM_SPELL\\>Duration}<turn></turn>ターンの間、戦闘に参加したすべての敵ユニットは有罪を受ける。</bullet><bullet>ランダムなマスに<hyperlink>浄化の炎</hyperlink>を生成する。</bullet></bulletlist>",
+    "description": "対象の<hyperlink>領域</hyperlink>において：<bulletlist><bullet>敵ユニットは 20 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>領域は <turn></turn>ターンの間 聖別のファイアストームを獲得する。</bullet><bullet><hyperlink>領域改善</hyperlink>を所有する敵がいる場合は <hyperlink>略奪</hyperlink>される。</bullet></bulletlist>",
     "name": "聖別のファイアストーム",
     "spell_slug": "聖別のファイアストーム",
     "tier": 6,
@@ -1127,21 +1432,21 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>{CONDEMN_RESISTANCE\\>ResolvedStrength}%の基本確率で有罪を与える</bullet><bullet>{CLEANSING_FLAME_PUREFLAME_STAVES_EFFECT_MARKER\\>Duration}<turn></turn>ターンの間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>%の基本確率で有罪を与える</bullet><bullet><turn></turn>ターンの間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "ピュアフレイムの杖",
     "spell_slug": "ピュアフレイムの杖",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象のユニット：<bulletlist><bullet>戦闘終了時まで熱狂になる。<br></br>既に熱狂になっている場合、{STRENGTHENED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、強化が+2増加する。</bullet><bullet>{ZEALOUS_IGNITION_SPELL_TARGETER_ENEMY\\>AREA\\>Radius}マスの範囲内にいる敵ユニットは戦闘終了時まで有罪になる。</bullet><bullet>{ZEALOUS_IGNITION_SPELL_EFFECT_MARKER\\>Duration}<turn></turn>ターンの間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する。</bullet></bulletlist>",
+    "description": "対象のユニット：<bulletlist><bullet>戦闘終了時まで熱狂になる。<br></br>既に熱狂になっている場合、<turn></turn>ターンの間、強化が+2増加する。</bullet><bullet>マスの範囲内にいる敵ユニットは戦闘終了時まで有罪になる。</bullet><bullet><turn></turn>ターンの間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する。</bullet></bulletlist>",
     "name": "狂信の点火",
     "spell_slug": "狂信の点火",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink>バフ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>{BURNING_RESISTANCE\\>ResolvedStrength}%の基本確率で火傷を与える</bullet><bullet>対象の火傷が5スタック以上の場合：<br></br>3<turn></turn><hyperlink>ターン</hyperlink>の間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>%の基本確率で火傷を与える</bullet><bullet><turn></turn>ターンの間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "炎に祝福されしチャンピオン",
     "spell_slug": "炎に祝福されしチャンピオン",
     "tier": 6,
@@ -1172,7 +1477,7 @@
   "icon": "0000048D0000061A",
   "skills": [
    {
-    "description": "自分の領地付近にある領域内で、新たな<hyperlink>アストラル・エコー</hyperlink>を創り上げて出現させる。",
+    "description": "自分の領地付近にある領域内で、新たな<hyperlink> アストラル・エコー</hyperlink>を創り上げて出現させる。",
     "name": "アストラルの予言",
     "spell_slug": "アストラルの予言",
     "tier": 1,
@@ -1186,7 +1491,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "<hyperlink>移動不可能な</hyperlink><hyperlink>アストラル・ワード</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "<hyperlink>移動不可能な</hyperlink><hyperlink>アストラル・ワード</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "アストラル・ワード",
     "spell_slug": "アストラル・ワード",
     "tier": 1,
@@ -1217,7 +1522,7 @@
     "type": "<caststrategic></caststrategic> <hyperlink>都市呪文</hyperlink>"
    },
    {
-    "description": "対象ユニットが受ける：<bulletlist><bullet>{ARCANE_JOLT_DAMAGE\\>DAMAGE\\>Shock} <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink></bullet><bullet>{ARCANE_JOLT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet><bullet>{ARCANE_JOLT_DAMAGE\\>DAMAGE\\>Frost} <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink></bullet></bulletlist>",
+    "description": "対象ユニットが受ける：<bulletlist><bullet> <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink></bullet><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet><bullet> <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink></bullet></bulletlist>",
     "name": "宇宙切断",
     "spell_slug": "宇宙切断",
     "tier": 1,
@@ -1255,14 +1560,14 @@
   "icon": "0000048D00000613",
   "skills": [
    {
-    "description": "対象のユニットが以下を獲得する：<bulletlist><bullet>{BOLSTERED_DEFENSE_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間2 防御強化。</bullet><bullet>{BOLSTERED_RESISTANCE_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間2 耐性強化。</bullet></bulletlist>",
+    "description": "対象のユニットが以下を獲得する：<bulletlist><bullet> <turn></turn>ターンの間2 防御強化。</bullet><bullet> <turn></turn>ターンの間2 耐性強化。</bullet></bulletlist>",
     "name": "魔法シールド",
     "spell_slug": "魔法シールド",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "自分の領地付近にある領域内で、新たな<hyperlink>アストラル・エコー</hyperlink>を創り上げて出現させる。",
+    "description": "自分の領地付近にある領域内で、新たな<hyperlink> アストラル・エコー</hyperlink>を創り上げて出現させる。",
     "name": "アストラルの予言",
     "spell_slug": "アストラルの予言",
     "tier": 1,
@@ -1295,7 +1600,7 @@
   "icon": "0000048D00000597",
   "skills": [
    {
-    "description": "対象の味方ユニットが{RETALIATING_GROWTHS\\>NumTurns} <turn></turn>ターンの間報復の出来物を獲得する。",
+    "description": "対象の味方ユニットが <turn></turn>ターンの間報復の出来物を獲得する。",
     "name": "報復の出来物",
     "spell_slug": "報復の出来物",
     "tier": 2,
@@ -1309,14 +1614,14 @@
     "upgrade_slug": "蔓の迷宮"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>{CONSTRICTED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、{CONSTRICTED_RESISTANCE_CHECK\\>ResolvedStrength}%の基本確率でコンストリクトを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet><turn></turn>ターンの間、%の基本確率でコンストリクトを与える。</bullet><bullet> マークまたは減速 ユニットに対する確率は60%まで上昇する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "コンストリクター・フォーカス",
     "spell_slug": "コンストリクター・フォーカス",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "占いの目を使って<hyperlink>移動不可能</hyperlink>な戦士ユニットを召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "ハイパー覚醒を持つ<hyperlink>移動不可能</hyperlink>な戦士ユニットを召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "触手の召喚",
     "spell_slug": "触手の召喚",
     "tier": 1,
@@ -1351,21 +1656,21 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下の効果を付与：<bulletlist><bullet>+{EMPOWERED_STRIKES_EXTRA_DAMAGE\\>DAMAGE\\>Physical}<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える</bullet><bullet>ターン中の3回目の攻撃が{STUNNED_RESISTANCE\\>ResolvedStrength}%の基本確率で{STUNNED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間スタンを与える</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下の効果を付与：<bulletlist><bullet>+<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える</bullet><bullet>ターン中の3回目の攻撃が%の基本確率で<turn></turn>ターンの間スタンを与える</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "強化攻撃",
     "spell_slug": "強化攻撃",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の種族に内なるエネルギーを支配する力を授け、以下を付与する：<bulletlist><bullet>+{STATUS_RESISTANCE\\>Resistance}<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet><bullet>戦闘中に受ける回復量が+{INNER_MASTERY_HEAL_MODIFIER\\>ResolvedHealing Multiplier}%</bullet></bulletlist>",
+    "description": "対象の種族に内なるエネルギーを支配する力を授け、以下を付与する：<bulletlist><bullet>+<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet><bullet>戦闘中に受ける回復量が+%</bullet></bulletlist>",
     "name": "内的統制",
     "spell_slug": "内的統制",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "対象の味方ユニット：<bulletlist><bullet>{MANTRA_OF_PURIFICATION_HEAL\\>NumHitpointsToRestore}<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist>マイナスのステータス効果が{TACTICAL_EFFECT_DISPEL\\>NumThingsToDispel}個解除される。<bullet></bullet>",
+    "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet> <hyperlink>マイナスのステータス効果</hyperlink>を解除する。</bullet></bulletlist>",
     "name": "浄化のマントラ",
     "spell_slug": "浄化のマントラ",
     "tier": 1,
@@ -1398,28 +1703,28 @@
   "icon": "0000046A000001DE",
   "skills": [
    {
-    "description": "味方のマイナスなステータス効果と敵の魔力を取り除くことができる、古代のデザインを基にした詠唱者神話ユニット。",
+    "description": "味方の<hyperlink>マイナスのステータス効果</hyperlink>と敵の魔力を取り除くことができる、古代のデザインを基にした詠唱者神話ユニット。",
     "name": "セヴェリング・ゴーレム",
     "tier": 8,
     "unit_slug": "セヴェリング・ゴーレム",
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "マップ上にある非ヒーローの死体すべてが破壊される。破壊された死体1体ごとに味方ユニットが：<bulletlist><bullet>+{BOLSTERED_RESISTANCE_DEFENSE\\>DEF_MOD\\>Resistance} 耐性強化を得る。</bullet><bullet>+{FINAL_BANISHMENT_UNIT_HEAL\\>NumHitpointsToRestore} <temphp></temphp>追加HPを回復する。</bullet></bulletlist>",
+    "description": "マップ上にある非ヒーローの死体すべてが破壊される。破壊された死体1体ごとに味方ユニットが：<bulletlist><bullet>+ 耐性強化を得る。</bullet><bullet>+ <temphp></temphp>追加HPを回復する。</bullet></bulletlist>",
     "name": "最後の放逐",
     "spell_slug": "最後の放逐",
     "tier": 7,
-    "type": "~ Combat Spell"
+    "type": "Combat Spell"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>{DISRUPTION_DISABLE\\>Duration}<turn></turn><hyperlink>ターン</hyperlink>の間、{DISRUPTION_RESISTANCE\\>ResolvedStrength}%の基本確率で妨害したを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet><turn></turn><hyperlink>ターン</hyperlink>の間、%の基本確率で妨害したを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "妨害の刃",
     "spell_slug": "妨害の刃",
     "tier": 8,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットが<hyperlink>防御モード</hyperlink>に入った場合、そのユニット、そして隣接する味方ユニットが以下を獲得：<bulletlist><bullet>+{NULL_SHIELD_STATUS_RESISTANCE\\>Resistance} <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet></bulletlist>",
+    "description": "魔法ユニットが<hyperlink>防御モード</hyperlink>に入った場合、そのユニット、そして隣接する味方ユニットが以下を獲得：<bulletlist><bullet>+ <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet></bulletlist>",
     "name": "シールド",
     "spell_slug": "シールド",
     "tier": 7,
@@ -1433,7 +1738,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "標的のマジック・オリジン <hyperlink>ユニット</hyperlink>：<bulletlist><bullet>{ASTRAL_SEVERANCE_RESISTANCE_CHECK\\>ResolvedStrength}%の基本確率で倒される。</bullet><bullet>失敗した場合、妨害した腐敗中を与える。</bullet></bulletlist>",
+    "description": "標的のマジック・オリジン <hyperlink>ユニット</hyperlink>：<bulletlist><bullet>%の基本確率で倒される。</bullet><bullet>失敗した場合、妨害したと4スタックの腐敗中を与える。</bullet></bulletlist>",
     "name": "アストラル断絶",
     "spell_slug": "アストラル断絶",
     "tier": 7,
@@ -1454,7 +1759,7 @@
   "icon": "0000046A00000169",
   "skills": [
    {
-    "description": "この種族のユニットが感覚を共有するアビリティを得て、以下を獲得する：<bulletlist><bullet>変造体または精神結合をした別のユニットの隣に立っている場合、占いの目。</bullet></bulletlist>",
+    "description": "この種族のユニットが感覚を共有するアビリティを得て、以下を獲得する：<bulletlist><bullet>変造体または精神結合をした別のユニットの隣に立っている場合、ハイパー覚醒。</bullet></bulletlist>",
     "name": "精神結合",
     "spell_slug": "精神結合",
     "tier": 4,
@@ -1468,14 +1773,14 @@
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "複合防衛を持った別のユニットに隣接する場合、このユニットが以下を得る：<bulletlist><bullet>+{COMPOUNDING_DEFENSE_DEFENSE\\>DEF_MOD\\>Armor} <defense></defense><hyperlink>防御力</hyperlink></bullet><bullet>+{COMPOUNDING_DEFENSE_DEFENSE\\>DEF_MOD\\>Resistance} <resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
+    "description": "複合防衛を持った別のユニットに隣接する場合、このユニットが以下を得る：<bulletlist><bullet>+ <defense></defense><hyperlink>防御力</hyperlink></bullet><bullet>+ <resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
     "name": "複合防衛",
     "spell_slug": "複合防衛",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の味方変造体または精神結合ユニット： <bulletlist><bullet>{CASCADING_COMMAND_DEFEND_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間用心深いを得る。</bullet><bullet><hyperlink>防御モード</hyperlink>に入る。</bullet><bullet>その後、この効果は隣接する味方の変造体または精神連結ユニットに適用され、繰り返し発動する。</bullet></bulletlist>",
+    "description": "対象の味方変造体または精神結合ユニット： <bulletlist><bullet> <turn></turn>ターンの間防衛マスターを得る。</bullet><bullet>個の<hyperlink>マイナスのステータス効果</hyperlink>を解除する。</bullet><bullet>その後、この効果は隣接する味方の変造体または精神連結ユニットに適用され、繰り返し発動する。</bullet></bulletlist>",
     "name": "連鎖指揮：防衛",
     "spell_slug": "連鎖指揮：防衛",
     "tier": 3,
@@ -1498,7 +1803,7 @@
  {
   "affinities": "1 <empirematter></empirematter> 帝国 マテリアムアフィニティー, 1 <empirenature></empirenature> 帝国 自然のアフィニティー",
   "lore_description": "「完璧な錬金術の公式を生み出すためには、同量の時間と幸運が必要である。自然の本質を理解するために、何年もの綿密な研究時間を費やす者が、錬金術師以外に存在しているだろうか… しかもその解決策が、偶然によって発見されるなんて！錬金術はまさに自然との賭けであり、創造する力も破壊する力も伴うもの」",
-  "gameplay_description": "敵にデバフ効果を与え、自分のユニットのデバフ効果を和らげる。薬と強力な遠隔ユニットが、戦いの勢いを操るのに役立つだろう。",
+  "gameplay_description": "敵に<hyperlink>マイナスのステータス効果</hyperlink>効果を与え、自分のユニットのその効果を和らげる。薬と強力な遠隔ユニットが、戦いの勢いを操るのに役立つだろう。",
   "resid": 4853313044697,
   "id": "錬金術の学術書",
   "DLC": "EMPIRESANDASHES ",
@@ -1508,7 +1813,7 @@
   "icon": "0000046A000000DA",
   "skills": [
    {
-    "description": "<bulletlist><bullet>+5<knowledge></knowledge> <hyperlink> 知識</hyperlink>の収益。</bullet><bullet>+5<gold></gold><hyperlink> ゴールド</hyperlink>の収益。</bullet><bullet>この都市の<hyperlink>領地</hyperlink>内にある<hyperlink>魔法素材</hyperlink>ごとに+5<knowledge></knowledge> <hyperlink> 知識</hyperlink>の収益。</bullet><bullet>この都市の<hyperlink>領地</hyperlink>内にある<hyperlink>魔法素材</hyperlink>ごとに+5<gold></gold><hyperlink> ゴールド</hyperlink>の収益。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>+5<knowledge></knowledge><hyperlink>知識</hyperlink>の収益。</bullet><bullet>+5<gold></gold><hyperlink> ゴールド</hyperlink>の収益。</bullet><bullet>この都市の<hyperlink>領地</hyperlink>内にある<hyperlink>魔法素材</hyperlink>ごとに+5<knowledge></knowledge><hyperlink>知識</hyperlink>の収益。</bullet><bullet>この都市の<hyperlink>領地</hyperlink>内にある<hyperlink>魔法素材</hyperlink>ごとに+5<gold></gold><hyperlink> ゴールド</hyperlink>の収益。</bullet></bulletlist>",
     "name": "資材精錬所",
     "tier": 2,
     "type": "<hyperlink>都市の建造物</hyperlink>",
@@ -1522,7 +1827,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "{ANTIMAGIC_TINCTURE_CIRCLE\\>AREA\\>Radius}マスの範囲内にいる味方ユニット：<bulletlist><bullet>{ANTIMAGIC_TINCTURE_DISPEL\\>NumThingsToDispel}マイナスのステータス効果が解除される。</bullet><bullet>2 ステータスの保護を得る。</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方ユニット：<bulletlist><bullet>個の<hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>2 ステータスの保護を得る。</bullet></bulletlist>",
     "name": "抗魔法薬",
     "spell_slug": "抗魔法薬",
     "tier": 2,
@@ -1543,7 +1848,7 @@
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットに付与：<bulletlist><bullet>強壮剤の付与、マイナスのステータス効果を取り除いてプラスのステータス効果を与える。</bullet></bulletlist>",
+    "description": "魔法ユニットに付与：<bulletlist><bullet>強壮剤の付与、マイナスのステータス効果を取り除いて<hyperlink>プラスのステータス効果</hyperlink>を与える。</bullet></bulletlist>",
     "name": "謎の強壮剤",
     "spell_slug": "謎の強壮剤",
     "tier": 1,
@@ -1569,7 +1874,7 @@
   "icon": "0000046A000000BC",
   "skills": [
    {
-    "description": "{DESTABILIZED_MANA_CORE_CIRCLE_TARGETER_MARKED\\>AREA\\>Radius}マス範囲内のユニットがマーク状態になる1 <turn></turn><hyperlink>ターン</hyperlink>後、このマナコアが爆発して以下を与える：<bulletlist><bullet>24 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet>24 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet>60%の基本確率で妨害したを受ける。</bullet></bulletlist>",
+    "description": "マス範囲内のユニットがマーク状態になる1 <turn></turn><hyperlink>ターン</hyperlink>後、このマナコアが爆発して以下を与える：<bulletlist><bullet>24 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet>24 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet>60%の基本確率で妨害したを受ける。</bullet></bulletlist>",
     "name": "弱体化したマナコア",
     "spell_slug": "弱体化したマナコア",
     "tier": 4,
@@ -1596,7 +1901,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{PINNING_BARRAGE_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マス範囲内のユニットが：<bulletlist><bullet>{PINNING_BARRAGE_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>マークになる。</bullet><bullet>{IMMOBILIZED_RESISTANCE\\>ResolvedStrength}%の基本確率で移動不能状態になる。</bullet></bulletlist>",
+    "description": "マス範囲内のユニットが：<bulletlist><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>マークになる。</bullet><bullet>%の基本確率で移動不能状態になる。</bullet></bulletlist>",
     "name": "固定弾幕",
     "spell_slug": "固定弾幕",
     "tier": 4,
@@ -1628,14 +1933,14 @@
   "icon": "0000044500000050",
   "skills": [
    {
-    "description": "<bulletlist><bullet>全ての味方ユニットが{MASS_REJUVENATE_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>死亡した動物と植物の味方は全て、<hp></hp>HPが{MASS_REJUVENATE_EFFECT_RESSURECT\\>ResolvedHitPoints}%回復した状態で蘇生する。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>全ての味方ユニットが <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>死亡した動物と植物の味方は全て、<hp></hp>HPが%回復した状態で蘇生する。</bullet></bulletlist>",
     "name": "集団再生",
     "spell_slug": "集団再生",
     "tier": 10,
     "type": "<casttactical></casttactical><hyperlink> 回復呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットが以下を得る：<bulletlist><bullet><hyperlink>会心のヒット</hyperlink>の確率が+{FORCE_OF_NATURE_CRITICAL_CHANCE\\>ResolvedCritChanceBonus}%増加する。</bullet><bullet>攻撃の<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>が{FORCE_OF_NATURE_EXTRA_DAMAGE\\>DAMAGE\\>Blight}増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットが以下を得る：<bulletlist><bullet>+%<hyperlink><crit></crit>クリティカルヒット率</hyperlink>。</bullet><bullet>攻撃の<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>が増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "自然の力",
     "spell_slug": "自然の力",
     "tier": 9,
@@ -1668,14 +1973,14 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>自然再生</bullet><bullet>+{SHAPERS_TOUCH_STAT_BONUS\\>BONUS\\>HitPoints} <hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+{SHAPERS_TOUCH_DEFENSE\\>REDUCTION\\>Shock} <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>自然再生</bullet><bullet>+ <hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+ <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet></bulletlist>",
     "name": "創造者の作法",
     "spell_slug": "創造者の作法",
     "tier": 10,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>全ての敵が{TECTONIC_SHATTER_UNIT_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>全ての敵が{STUNNED_RESISTANCE\\>ResolvedStrength}%の確率でスタンになる。</bullet><bullet>マップ上にある障害物が50%の確率で破壊される。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>全ての敵が <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>全ての敵が%の確率でスタンになる。</bullet><bullet>マップ上にある障害物が50%の確率で破壊される。</bullet></bulletlist>",
     "name": "地殻粉砕",
     "spell_slug": "地殻粉砕",
     "tier": 9,
@@ -1709,7 +2014,7 @@
     "upgrade_slug": "試薬精錬所"
    },
    {
-    "description": "{GOLDED_BLAST_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいるユニットが{GILDED_RESISTANCE\\>ResolvedStrength}%の確率で、{GILDED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間金箔になる。",
+    "description": "マスの範囲にいるユニットが%の確率で、 <turn></turn>ターンの間金箔になる。",
     "name": "金箔ブラスト",
     "spell_slug": "金箔ブラスト",
     "tier": 8,
@@ -1730,7 +2035,7 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "標的となった種族にゴールドのアフィニティーを獲得させて以下を付与：<bulletlist><bullet>+{GOLDEN_TOUCHED_STAT_BONUS\\>BONUS\\>DEFENSE\\>Resistance}の<resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>その種族の<hyperlink>都市</hyperlink>内で<population></population><hyperlink>人口</hyperlink>ごとに+1の<gold></gold><hyperlink> ゴールド</hyperlink>。</bullet></bulletlist>",
+    "description": "標的となった種族にゴールドのアフィニティーを獲得させて以下を付与：<bulletlist><bullet>+の<resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>その種族の<hyperlink>都市</hyperlink>内で<population></population><hyperlink>人口</hyperlink>ごとに+1の<gold></gold><hyperlink> ゴールド</hyperlink>。</bullet></bulletlist>",
     "name": "黄金の手",
     "spell_slug": "黄金の手",
     "tier": 8,
@@ -1755,21 +2060,21 @@
   "icon": "0000041B00000F73",
   "skills": [
    {
-    "description": "標的の種族の肌を鋼鉄に変えて以下を付与：<bulletlist><bullet>+{STEELSKIN_DEFENSE\\>DEF_MOD\\>Armor}の<defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>+{STEELSKIN_DEFENSE\\>REDUCTION\\>Blight}の<defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink>。</bullet><bullet>{STEELSKIN_DEFENSE\\>REDUCTION\\>Shock}の<defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>。</bullet></bulletlist>",
+    "description": "標的の種族の肌を鋼鉄に変えて以下を付与：<bulletlist><bullet>+の<defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>+の<defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink>。</bullet><bullet>の<defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>。</bullet></bulletlist>",
     "name": "鋼の肌",
     "spell_slug": "鋼の肌",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "敵のアーマーを同盟に移し、敵を動けなくするバトルメイジユニット。",
+    "description": "バトルメイジユニットは敵をゴールドに変え、そのアーマーを奪って味方ユニットに与える。",
     "name": "トランスミューター",
     "tier": 5,
     "unit_slug": "トランスミューター",
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "{MELT_ARMOR_OBSTACLE_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる敵が対象になる：<bulletlist><bullet>3バラバラの防衛を得る。</bullet><bullet>{MELT_ARMOR_UNIT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
+    "description": "マスの範囲にいる敵が対象になる：<bulletlist><bullet>3バラバラの防衛を得る。</bullet><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
     "name": "溶解鎧",
     "spell_slug": "溶解鎧",
     "tier": 5,
@@ -1783,7 +2088,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "<turn></turn>ターンに一度、魔法ユニットが非<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受けた場合にそのユニットに以下を付与：<bulletlist><bullet>魔法ダメージへの耐性が増加する耐性強化。</bullet><bullet>マイナスのステータス効果によってユニットが影響を受ける確率を減少させるステータスの保護。</bullet></bulletlist>",
+    "description": "<turn></turn>ターンに一度、魔法ユニットに非<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>が命中した場合にそのユニットに以下を付与：<bulletlist><bullet>魔法ダメージへの耐性が増加する耐性強化。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>によってユニットが影響を受ける確率を減少させるステータスの保護。</bullet></bulletlist>",
     "name": "適応鎧",
     "spell_slug": "適応鎧",
     "tier": 6,
@@ -1808,7 +2113,7 @@
   "icon": "000003E300005CBA",
   "skills": [
    {
-    "description": "魔法ユニットが以下の効果を得る：<bulletlist><bullet>ターン開始時、そしてユニットが移動するまで：<bulletlist></bullet><bullet>+{LEY_LINE_FOCUS_DAMAGE_MULT\\>ResolvedMultiplier}%</bullet><bullet>+{LEY_LINE_FOCUS_DEFENSE\\>DEF_MOD\\>Resistance} <resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
+    "description": "魔法ユニットが以下の効果を得る：<bulletlist><bullet>ターン開始時、そしてユニットが移動するまで：<bulletlist></bullet><bullet>+%</bullet><bullet>+ <resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
     "name": "レイライン・フォーカス",
     "spell_slug": "レイライン・フォーカス",
     "tier": 6,
@@ -1828,21 +2133,21 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "居住可能および居住不可の<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>が10 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet> <hyperlink>山</hyperlink>、<hyperlink>石筍</hyperlink>、<hyperlink>破壊可能な地面</hyperlink>を失う。</bullet></bulletlist>",
+    "description": "居住可能および居住不可の対象<hyperlink>領域</hyperlink>内：<bulletlist><bullet>敵<hyperlink>ユニット</hyperlink>が10 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet> 領域が<hyperlink>山</hyperlink>、<hyperlink>石筍</hyperlink>、<hyperlink>破壊可能な地面</hyperlink>を失う。</bullet><bullet><hyperlink>石の精霊</hyperlink>を召喚する</bullet></bulletlist>",
     "name": "アースシャッター",
     "spell_slug": "アースシャッター",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>"
    },
    {
-    "description": "{SEISMIC_SHOCK_OBSTACLE_TARGETER\\>AREA\\>Radius}マスの範囲にいるユニットに{SEISMIC_SHOCK_UNIT_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与え、減速効果を付与する。<br></br>この呪文は障害物に2倍のダメージを与える。",
+    "description": "マスの範囲にいるユニットに <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与え、減速効果を付与する。<br></br>この呪文は障害物に2倍のダメージを与える。",
     "name": "地殻ショック",
     "spell_slug": "地殻ショック",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{CRUSHING_EARTH_UNIT_DAMAGE\\>DAMAGE\\>Physical}<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>{SUNDERED_DEFENSE_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、4バラバラの防衛を受ける。</bullet><bullet>{STUNNED_RESISTANCE\\>ResolvedStrength}%の基本確率で、{STUNNED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間スタンになる。</bullet></bulletlist>",
+    "description": "対象の敵ユニット：<bulletlist><bullet><damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet><turn></turn>ターンの間、4バラバラの防衛を受ける。</bullet><bullet>%の基本確率で、 <turn></turn>ターンの間スタンになる。</bullet></bulletlist>",
     "name": "土地の圧壊",
     "spell_slug": "土地の圧壊",
     "tier": 5,
@@ -1881,21 +2186,21 @@
     "type": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>"
    },
    {
-    "description": "{DUST_STORM_UNIT_TARGETER_SINGLE\\>AREA\\>Radius}マス範囲内にいる敵ユニットが：<bulletlist><bullet>{DUST_STORM_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>{BLINDED_RESISTANCE\\>ResolvedStrength}%の基本確率で{BLINDED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間盲目になる。</bullet>",
+    "description": "マス範囲内にいる敵ユニットが：<bulletlist><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>%の基本確率で <turn></turn>ターンの間盲目になる。</bullet>",
     "name": "ダストストーム",
     "spell_slug": "ダストストーム",
     "tier": 3,
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+{SEEKER_ARROWS_RANGE_BOOST\\>ADD\\>MaxRange}<range></range>の範囲。</bullet></bulletlist>",
+    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+<hyperlink><range></range>範囲</hyperlink>。</bullet></bulletlist>",
     "name": "探究者の矢",
     "spell_slug": "探究者の矢",
     "tier": 3,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{ABDUCTING_CYCLONE_UNIT_TARGETER_NEAREST_TO_TARGET\\>MaxDistance}マス内にいる最寄りの敵を、標的である空のマスへ引っ張る。この敵は{STUNNED_RESISTANCE\\>ResolvedStrength}%の基本確率で{STUNNED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間スタンになる。",
+    "description": "マス内にいる最寄りの敵を、標的である空のマスへ引っ張る。この敵は%の基本確率で <turn></turn>ターンの間スタンになる。",
     "name": "抗えぬ暴風",
     "spell_slug": "抗えぬ暴風",
     "tier": 3,
@@ -1922,14 +2227,14 @@
   "icon": "0000042A00000601",
   "skills": [
    {
-    "description": "魔法ユニットの<hyperlink>近接攻撃</hyperlink>と<hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+{OBSIDIAN_BLADES_DAMAGE_REPEATING\\>DAMAGE\\>Physical}<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet>{BLEEDING_RESISTANCE\\>ResolvedStrength}%の基本確率で出血を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの<hyperlink>近接攻撃</hyperlink>と<hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet>%の基本確率で出血を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "オブシディアン武器",
     "spell_slug": "オブシディアン武器",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "標的の種族に岩石をまとわせ、以下を付与：<bulletlist><bullet>+{EARTHKIN_DEFENSE\\>DEF_MOD\\>Armor}の<defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>山地形で隠れることを可能にする山迷彩。</bullet><bullet>山地形での移動が速くなる山地歩行。</bullet></bulletlist>",
+    "description": "標的の種族に岩石をまとわせ、以下を付与：<bulletlist><bullet>+の<defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>山地形で隠れることを可能にする山迷彩。</bullet><bullet>山地形での移動が速くなる山地歩行。</bullet></bulletlist>",
     "name": "アースキン",
     "spell_slug": "アースキン",
     "tier": 2,
@@ -1943,7 +2248,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象のユニットは、{STONE_SKIN_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間ストーンスキン状態になる。",
+    "description": "対象のユニットは、 <turn></turn>ターンの間ストーンスキン状態になる。",
     "name": "ストーンスキン",
     "spell_slug": "ストーンスキン",
     "tier": 2,
@@ -1957,7 +2262,7 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{ROCK_BLAST_UNIT_DAMAGE\\>DAMAGE\\>Physical}<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet><hyperlink>防御モード</hyperlink>がキャンセルされる。</bullet><bullet><hyperlink>報復攻撃</hyperlink>が取り除かれる。</bullet></bulletlist>",
+    "description": "対象の敵ユニット：<bulletlist><bullet><damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet><hyperlink>防御モード</hyperlink>がキャンセルされる。</bullet><bullet><hyperlink>報復攻撃</hyperlink>が取り除かれる。</bullet></bulletlist>",
     "name": "ロックブラスト",
     "spell_slug": "ロックブラスト",
     "tier": 1,
@@ -1982,7 +2287,7 @@
   "icon": "0000041B000019C3",
   "skills": [
    {
-    "description": "信仰深き者か熱狂である死亡済み味方ユニットが対象になる。<hyperlink><hp></hp>HP</hyperlink>が{MASS_REVIVE_RESURRECT\\>ResolvedHitPoints}%回復した状態で蘇生する。<br></br><br></br>水域戦闘では使用不可。",
+    "description": "信仰深き者か熱狂である死亡済み味方ユニットが対象になる。<hyperlink><hp></hp>HP</hyperlink>が%回復した状態で蘇生する。<br></br><br></br>水域戦闘では使用不可。",
     "name": "大量蘇生",
     "spell_slug": "大量蘇生",
     "tier": 10,
@@ -2003,7 +2308,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>"
    },
    {
-    "description": "{EXALTED_CHAMPION_STATUS_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、対象の味方ユニットに以下の効果を付与：<bulletlist><bullet>{EXALTED_CHAMPION_DAMAGE_MULITPLIER\\>ResolvedMultiplier}%のダメージを与える。 </bullet><bullet>+5防御強化を得る。 </bullet><bullet>+5 耐性強化を得る。 </bullet><bullet>+5 ステータスの保護を得る。</bullet></bulletlist>",
+    "description": "<turn></turn>ターンの間、対象の味方ユニットに以下の効果を付与：<bulletlist><bullet>%のダメージを与える。 </bullet><bullet>+5防御強化を得る。 </bullet><bullet>+5 耐性強化を得る。 </bullet><bullet>+5 ステータスの保護を得る。</bullet></bulletlist>",
     "name": "高貴な王者",
     "spell_slug": "高貴な王者",
     "tier": 9,
@@ -2076,14 +2381,14 @@
   "icon": "0000041B0000198F",
   "skills": [
    {
-    "description": "全味方ユニットが以下を得る：<bulletlist><bullet>3 強化。</bullet><bullet>+{ANTHEM_OF_VICTORY_CHANGE_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>。</bullet></bulletlist>",
+    "description": "全味方ユニットが以下を得る：<bulletlist><bullet>3 強化。</bullet><bullet>+ <happiness></happiness><hyperlink>士気</hyperlink>。</bullet></bulletlist>",
     "name": "勝利の讃歌",
     "spell_slug": "勝利の讃歌",
     "tier": 8,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニット：<bulletlist><bullet>熱狂になり、攻撃は追加の<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を与えるようになる。</bullet><bullet>倒したユニットを爆発させ、隣接する敵ユニットに{SUPREME_MAGIC_UNIT_DAMAGE\\>DAMAGE\\>Spirit} <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を与える。</bullet></bulletlist>",
+    "description": "魔法ユニット：<bulletlist><bullet>熱狂になり、攻撃は追加の<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を与えるようになる。</bullet><bullet>倒したユニットを爆発させ、隣接する敵ユニットに <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を与える。</bullet></bulletlist>",
     "name": "シュプリームマジック",
     "spell_slug": "シュプリームマジック",
     "tier": 8,
@@ -2124,7 +2429,14 @@
   "icon": "0000041B00001975",
   "skills": [
    {
-    "description": "<hyperlink>塔の建造物</hyperlink><br></br><bulletlist><bullet><hyperlink>包囲</hyperlink>の最中、<hyperlink>戦闘</hyperlink>に4の<hyperlink>回復尖塔</hyperlink>を追加する。</bullet><bullet>この領地内にいる味方ユニットが<turn></turn><hyperlink>ターン</hyperlink>ごとに+12 <hyperlink><hp></hp>HP</hyperlink>を回復する。</bullet></bulletlist>",
+    "description": "高い回復能力を持った<hyperlink>光の精霊</hyperlink>、サポートユニットを召喚する。",
+    "name": "光の精霊の召喚",
+    "spell_slug": "光の精霊の召喚",
+    "tier": 5,
+    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
+   },
+   {
+    "description": "<hyperlink>塔の建造物</hyperlink><br></br><bulletlist><bullet><hyperlink>包囲</hyperlink>の最中、<hyperlink>戦闘</hyperlink>に4の<hyperlink>回復尖塔</hyperlink>を追加する。</bullet><bullet>この領地内にいる味方ユニットが<turn></turn><hyperlink>ターン</hyperlink>ごとに+12 <hyperlink><hp></hp>HP</hyperlink>を回復する。</bullet><bullet>+10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet>\n</bulletlist>",
     "name": "回復尖塔",
     "tier": 5,
     "type": "<hyperlink>都市の建造物</hyperlink>",
@@ -2138,7 +2450,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "標的の味方ユニット：<bulletlist><bullet><hyperlink><hp></hp>HP</hyperlink>が<hyperlink><temphp></temphp>追加HP</hyperlink>として全回復する。</bullet><bullet>マイナスのステータス効果が解除される。</bullet><bullet>3 耐性強化を得る。</bullet></bulletlist>",
+    "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink><hp></hp>HP</hyperlink>が<hyperlink><temphp></temphp>追加HP</hyperlink>として全回復する。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>3 耐性強化を得る。</bullet></bulletlist>",
     "name": "サルベーション",
     "spell_slug": "サルベーション",
     "tier": 6,
@@ -2152,7 +2464,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "標的の種族に神の守護を与えて以下を付与：<bulletlist><bullet>+{ANOINTED_PEOPLE_STATUS_RESISTANCE\\>Resistance} <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet><bullet>+{ANOINTED_PEOPLE_DEFENSE\\>REDUCTION\\>Spirit} <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet></bulletlist>",
+    "description": "標的の種族に神の守護を与えて以下を付与：<bulletlist><bullet>+ <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet><bullet>+ <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet></bulletlist>",
     "name": "受膏した人々",
     "spell_slug": "受膏した人々",
     "tier": 5,
@@ -2177,16 +2489,16 @@
   "icon": "0000041B0000195B",
   "skills": [
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>ユニット維持費</hyperlink>を減少させる信仰深き者。</bullet><bullet>対象のユニットグレードごとに、攻撃に+{MIGHTY_MEEK_COUNTING_TIER_DAMAGE\\>DAMAGE\\>Spirit} <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>ユニット維持費</hyperlink>を減少させる信仰深き者。</bullet><bullet>+<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet><bullet>対象のユニットグレードごとに、攻撃に+ <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "強力な従順さ",
     "spell_slug": "強力な従順さ",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の隷属自由都市が、2体の<hyperlink>祝福した魂</hyperlink>を獲得して支配下に置く。",
-    "name": "恵まれた援軍",
-    "spell_slug": "恵まれた援軍",
+    "description": "<hyperlink>祝福した魂</hyperlink> シールドユニットを召喚する。これはあなたのユニットを進軍させて、敵に有罪宣告できる。",
+    "name": "祝福の霊魂の召喚",
+    "spell_slug": "祝福の霊魂の召喚",
     "tier": 3,
     "type": "<caststrategic></caststrategic> <hyperlink>都市呪文</hyperlink>"
    },
@@ -2198,14 +2510,14 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "他のユニットを自分の味方に変換できる<hyperlink>ライトブリンガー</hyperlink>バトルメイジユニットを召喚する。",
-    "name": "ライトブリンガーの召喚",
-    "spell_slug": "ライトブリンガーの召喚",
+    "description": "味方を強化する信仰深き者なサポートユニット。",
+    "name": "聖職者",
     "tier": 4,
-    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
+    "unit_slug": "聖職者",
+    "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "<hyperlink>神のビーコン</hyperlink>を召喚する。詠唱および各ターンの開始時に、{DIVINE_BEACONS_GRACE_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる味方ユニット：<bulletlist><bullet>+{DIVINE_BEACONS_GRACE_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+{DIVINE_BEACONS_GRACE_MORALE_GAIN\\>Morale Change}の<happiness></happiness><hyperlink>士気</hyperlink>を獲得する。</bullet></bulletlist><br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
+    "description": "<hyperlink>神のビーコン</hyperlink>を召喚する。詠唱および各ターンの開始時に、マスの範囲にいる味方ユニット：<bulletlist><bullet>+ <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+の<happiness></happiness><hyperlink>士気</hyperlink>を獲得する。</bullet></bulletlist><br></br>この召喚が <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
     "name": "神のビーコンの魔法",
     "spell_slug": "神のビーコンの魔法",
     "tier": 2,
@@ -2225,6 +2537,13 @@
   "icon": "0000041B00001941",
   "skills": [
    {
+    "description": "他のユニットを自分の味方に変換できる<hyperlink>ライトブリンガー</hyperlink>バトルメイジユニットを召喚する。",
+    "name": "ライトブリンガーの召喚",
+    "spell_slug": "ライトブリンガーの召喚",
+    "tier": 2,
+    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
+   },
+   {
     "description": "対象の敵部隊：<bulletlist><bullet>20 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet><hyperlink>ワールドマップ</hyperlink>上の移動ポイントを50%失う。</bullet></bulletlist>",
     "name": "罪の重責",
     "spell_slug": "罪の重責",
@@ -2232,21 +2551,21 @@
     "type": "<caststrategic></caststrategic><hyperlink> 敵軍隊呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本攻撃が以下を得る：<bulletlist><bullet>戦闘終了時まで基本確率{CONDEMN_RESISTANCE\\>ResolvedStrength}%で有罪を与え、敵の<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を減少させる。</bullet><bullet>基本確率{WEAKENED_RESISTANCE\\>ResolvedStrength}%で弱まったを与え、敵のダメージを減少させる。</bullet><bullet>基本確率{SLOWED_RESISTANCE\\>ResolvedStrength}%で減速を与え、敵の移動速度を減少させて報復攻撃を防ぐ。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの攻撃が以下を得る：<bulletlist><bullet>戦闘終了時まで基本確率%で有罪を与え、敵の<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を減少させる。</bullet><bullet> %の基本確率で 弱まったを与え、敵のダメージを減少させる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "異端審問官の印",
     "spell_slug": "異端審問官の印",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>+20 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet><bullet><population></population><hyperlink>人口</hyperlink>ごとに+1 <knowledge></knowledge> <hyperlink> 知識</hyperlink></bullet></bulletlist>",
+    "description": "<bulletlist><bullet>+20 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet><bullet><population></population><hyperlink>人口</hyperlink>ごとに+1 <knowledge></knowledge><hyperlink>知識</hyperlink></bullet></bulletlist>",
     "name": "裁判官席",
     "tier": 3,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "裁判官席"
    },
    {
-    "description": "{MASS_CONDEMN_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius} マスの範囲にいる敵：<bulletlist><bullet>{MASS_CONDEMN_DAMAGE\\>DAMAGE\\>Spirit} <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>戦闘終了時まで有罪状態になる。</bullet></bulletlist>",
+    "description": " マスの範囲にいる敵：<bulletlist><bullet> <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>戦闘終了時まで有罪状態になる。</bullet></bulletlist>",
     "name": "大規模糾弾",
     "spell_slug": "大規模糾弾",
     "tier": 3,
@@ -2285,7 +2604,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{INSPIRING_CHANT_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる味方ユニットは以下の効果を得る：<bulletlist><bullet>+{INSPIRING_CHANT_CHANGE_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>熱狂がある場合、2 強化状態になる。</bullet></bulletlist>",
+    "description": "マスの範囲にいる味方ユニットは以下の効果を得る：<bulletlist><bullet>+ <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>熱狂がある場合、2 強化状態になる。</bullet></bulletlist>",
     "name": "鼓舞の詠唱",
     "spell_slug": "鼓舞の詠唱",
     "tier": 2,
@@ -2299,7 +2618,7 @@
     "type": "<caststrategic></caststrategic> <hyperlink>都市呪文</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{CONDEMNATION_UNIT_DAMAGE\\>DAMAGE\\>Spirit}<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>戦闘終了時まで有罪になる。</bullet></bulletlist>",
+    "description": "対象の敵ユニット：<bulletlist><bullet><damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>戦闘終了時まで有罪になる。</bullet></bulletlist>",
     "name": "断罪",
     "spell_slug": "断罪",
     "tier": 1,
@@ -2338,7 +2657,7 @@
   "icon": "0000041B0000175F",
   "skills": [
    {
-    "description": "<bulletlist><bullet>味方の不死ユニット全体が、合計<hyperlink><hp></hp>HP</hyperlink>の{BATTLEFIELD_REANIMATION_RESSURECT_ALLIES\\>ResolvedHitPoints}%を持って蘇る。</bullet><bullet>戦闘終了まで、アンデッド化していない死骸があなたの支配下の<hyperlink>腐敗のゾンビ</hyperlink>として蘇る。</bullet></bulletlist><br></br><br></br>水域戦闘では使用不可。",
+    "description": "<bulletlist><bullet>味方の不死ユニット全体が、合計<hyperlink><hp></hp>HP</hyperlink>の%を持って蘇る。</bullet><bullet>戦闘終了まで、アンデッド化していない死骸があなたの支配下の<hyperlink>腐敗のゾンビ</hyperlink>として蘇る。</bullet></bulletlist><br></br><br></br>水域戦闘では使用不可。",
     "name": "戦場での蘇生",
     "spell_slug": "戦場での蘇生",
     "tier": 10,
@@ -2359,7 +2678,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "毎ターン、{BLINDING_MIST_AUTO_SPELL\\>TimeToLive}<turn></turn>ターンの間、全ての敵は以下の効果を受ける。<bulletlist><bullet>{WITHERING_MIST_DAMAGE\\>DAMAGE\\>Frost}<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>{BLINDED_RESISTANCE\\>ResolvedStrength}%の確率で{BLINDED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間盲目になる。</bullet><bullet>{WEAKENED_RESISTANCE\\>ResolvedStrength}%の確率で{WEAKENED_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間弱まったになる。</bullet></bulletlist>",
+    "description": "毎ターン、<turn></turn>ターンの間、全ての敵は以下の効果を受ける。<bulletlist><bullet><damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>%の確率で<turn></turn>ターンの間盲目になる。</bullet><bullet>%の確率で<turn></turn>ターンの間弱まったになる。</bullet></bulletlist>",
     "name": "枯れゆく霧",
     "spell_slug": "枯れゆく霧",
     "tier": 8,
@@ -2386,7 +2705,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>{DEVOURING_VOID_POSITION_TARGETER_CIRCLE_1\\>AREA\\>Radius}マス範囲の<hyperlink>貪る虚空</hyperlink>を召喚する。</bullet><bullet>1ターンごとに範囲が1 hex拡大する。</bullet><bullet>{DEVOURING_VOID_AUTO_SPELL_1\\>Duration} <turn></turn>ターンの間継続する。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>マス範囲の<hyperlink>貪る虚空</hyperlink>を召喚する。</bullet><bullet>1ターンごとに範囲が1 hex拡大する。</bullet><bullet> <turn></turn>ターンの間継続する。</bullet></bulletlist>",
     "name": "激しい虚空",
     "spell_slug": "激しい虚空",
     "tier": 7,
@@ -2400,7 +2719,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "ヒーローユニットでない対象は死亡する。{SLEEP_OF_OBLIVION_UNDYING\\>TurnsTilRes} <turn></turn>ターン後、<hyperlink><hp></hp>HP</hyperlink>が{SLEEP_OF_OBLIVION_UNDYING\\>ResolvedHealthProportion}%回復した状態で蘇生し、錯乱状態になる。",
+    "description": "対象の非ヒーローユニットは死亡する。 <turn></turn>ターン後、<hyperlink><hp></hp>HP</hyperlink>が%回復した状態で蘇生し、錯乱状態になる。<br></br><br></br>この方法で死亡していると、ユニットの復活はできないし、死体の破壊もできない。",
     "name": "忘却の眠り",
     "spell_slug": "忘却の眠り",
     "tier": 7,
@@ -2448,7 +2767,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の非ヒーローユニットを以下の通りに蘇生させる：<bulletlist><bullet>不死でない場合は、<hyperlink>腐敗した魂</hyperlink>として蘇生。</bullet><bullet>不死の場合は、合計<hyperlink><hp></hp>HP</hyperlink>の{GREATER_REANIMATION_RESURRECT\\>ResolvedHitPoints}%を持って蘇生。</bullet></bulletlist><br></br>この戦闘で<hyperlink>腐敗した魂</hyperlink>または敵の不死が生き延びた場合、操作者には<souls></souls>を消費してこのユニットを永久に保持する選択肢が与えられる。",
+    "description": "標的の非ヒーローユニットを以下の通りに蘇生させる：<bulletlist><bullet>不死でない場合は、<hyperlink>腐敗した魂</hyperlink>として蘇生。</bullet><bullet>不死の場合は、合計<hyperlink><hp></hp>HP</hyperlink>の%を持って蘇生。</bullet></bulletlist><br></br>この戦闘で<hyperlink>腐敗した魂</hyperlink>または敵の不死が生き延びた場合、操作者には<souls></souls>を消費してこのユニットを永久に保持する選択肢が与えられる。",
     "name": "強化蘇生",
     "spell_slug": "強化蘇生",
     "tier": 7,
@@ -2461,7 +2780,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "標的のユニット：<bulletlist><bullet>{VISIONS_OF_DEATH_DAMAGE\\>DAMAGE\\>Physical}のブロック不可能な<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>{VISION_OF_DEATH_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>を失う。</bullet><bullet>隣接するマスに<hyperlink>腐敗のゾンビ</hyperlink>を出現させる。</bullet><bullet>戦闘終了時まで死の幻視の影響を受ける。</bullet></bulletlist>",
+    "description": "標的のユニット：<bulletlist><bullet>のブロック不可能な<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet> <happiness></happiness><hyperlink>士気</hyperlink>を失う。</bullet><bullet>隣接するマスに<hyperlink>腐敗のゾンビ</hyperlink>を出現させる。</bullet><bullet>戦闘終了時まで死の幻視の影響を受ける。</bullet></bulletlist>",
     "name": "死の印",
     "spell_slug": "死の印",
     "tier": 7,
@@ -2481,14 +2800,14 @@
   "icon": "0000041B00001714",
   "skills": [
    {
-    "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は次を受ける：<bulletlist></bullet><bullet>20 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>1 <hyperlink>ワールドマップ</hyperlink> <turn></turn><hyperlink>ターン</hyperlink>で-5 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet></bulletlist><bullet>領域は<hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+    "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は次を受ける：<bulletlist></bullet><bullet>20 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>1 <hyperlink>ワールドマップ</hyperlink> <turn></turn><hyperlink>ターン</hyperlink>で-5 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet></bulletlist><bullet>領域は<hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
     "name": "フラッシュ・<br></br>フリーズ",
     "spell_slug": "フラッシュ・_br__フリーズ",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>"
    },
    {
-    "description": "味方の対象<hyperlink>都市</hyperlink>が以下を得る：<bulletlist><hyperlink>領地</hyperlink>の中かそれに隣接するすべての<turn></turn><hyperlink>ターン</hyperlink>、2<hyperlink>領域</hyperlink>：<bulletlist><bullet><hyperlink>雪の土地</hyperlink> と<hyperlink>氷</hyperlink>を得る</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist><bullet>領地内の雪か氷のある領域では、<food></food><hyperlink> 食料</hyperlink>を2、<structureprod></structureprod><hyperlink>生産</hyperlink>を2獲得する。</bullet></bulletlist>",
+    "description": "味方の対象<hyperlink>都市</hyperlink>が以下を得る：<bulletlist>毎<turn></turn><hyperlink>ターン</hyperlink>、<hyperlink>領地</hyperlink>の中かそれに隣接する2 <hyperlink>領域</hyperlink>が：<bulletlist><bullet><hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist><bullet>領地内の雪か氷のある領域では、<food></food><hyperlink> 食料</hyperlink>を2、<structureprod></structureprod><hyperlink>生産</hyperlink>収益を2獲得する。</bullet></bulletlist>",
     "name": "冬の進軍",
     "spell_slug": "冬の進軍",
     "tier": 6,
@@ -2502,7 +2821,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>"
    },
    {
-    "description": "標的となった種族の血管に冬を流れるようにさせて、その種族に以下を付与：<bulletlist><bullet>{FROSTLING_TRANSFORMATION_DEFENSE\\>REDUCTION\\>Frost}の<defensefrost></defensefrost><hyperlink>凍結耐性</hyperlink>。</bullet><bullet>凍結に対して無敵。</bullet><bullet>寒い地形にいる間は+{FROSTLING_TRANSFORMATION_MORALE_BONUS_FROZEN_WASTE\\>MoraleBonus}の<happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>北極歩行、これにより寒い地形でより速く移動することができるようになる。</bullet></bulletlist>",
+    "description": "標的となった種族の血管に冬を流れるようにさせて、その種族に以下を付与：<bulletlist><bullet>の<defensefrost></defensefrost><hyperlink>凍結耐性</hyperlink>。</bullet><bullet>凍結に対して無敵。</bullet><bullet>寒い地形にいる間は+の<happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>北極歩行、これにより寒い地形でより速く移動することができるようになる。</bullet></bulletlist>",
     "name": "凍結変身",
     "spell_slug": "凍結変身",
     "tier": 6,
@@ -2541,7 +2860,7 @@
   "icon": "0000041B000016FB",
   "skills": [
    {
-    "description": "種族に属さないグレードVのユニットを倒した時、戦闘後に<souls></souls><hyperlink> 霊魂</hyperlink>を消費して<hyperlink>骨ドラゴン</hyperlink>を作成できるようになる。",
+    "description": "種族に属さないグレードIVもしくはグレードVのユニットを倒した時、戦闘後に<souls></souls><hyperlink> 霊魂</hyperlink>を消費して<hyperlink>骨ドラゴン</hyperlink>を作成できるようになる。",
     "name": "ボーンドラゴンの蘇生",
     "tier": 5,
     "type": "<hyperlink>帝国ボーナス</hyperlink>"
@@ -2568,7 +2887,7 @@
     "upgrade_slug": "壊死の尖塔"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>+{FETID_LEGION_STAT_BONUS\\>BONUS\\>HitPoints}の<hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet>ターン終了時に隣接する敵に弱体化オーラを与える弱まった。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>+の<hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet>ターン終了時に隣接する敵に弱体化オーラを与える弱まった。</bullet></bulletlist>",
     "name": "悪臭軍団",
     "spell_slug": "悪臭軍団",
     "tier": 6,
@@ -2604,7 +2923,7 @@
    {
     "description": "種族に属するグレードのユニットを倒したとき、戦闘後に<souls></souls><hyperlink> 霊魂</hyperlink>を消費してスケルトンを作成できるようになる。",
     "name": "スケルトン蘇生",
-    "tier": 5,
+    "tier": 1,
     "type": "<hyperlink>帝国ボーナス</hyperlink>"
    },
    {
@@ -2615,31 +2934,31 @@
     "type": "<caststrategic></caststrategic><hyperlink> ワールド呪文を受ける</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本攻撃に以下を付与：<bulletlist><bullet>{DECAYING_RESISTANCE\\>ResolvedStrength}%の基本確率で腐敗中を与え、経過ダメージ効果によりユニットがHPを回復できなくなる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
-    "name": "壊死の魔法",
-    "spell_slug": "壊死の魔法",
-    "tier": 3,
+    "description": "魔法ユニットの攻撃に以下を付与：<bulletlist><bullet>%の基本確率で腐敗中を与え、経過ダメージ効果により回復量が減少する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "name": "壊死の投射物",
+    "spell_slug": "壊死の投射物",
+    "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
     "description": "<hyperlink>黒魔術師</hyperlink>はアンデッドを強化し、死体からアンデッドを作り出す。",
     "name": "ネクロマンサー",
-    "tier": 4,
+    "tier": 2,
     "unit_slug": "黒魔術師",
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "対象の味方<hyperlink>ゾンビ</hyperlink>もしくはスケルトンユニットが爆発し、{ROTTING_EXPLOSION_TARGETER\\>AREA\\>Radius}マスの範囲にいる敵ユニットに以下の効果を与える：<bulletlist><bullet>{ROTTING_EXPLOSION_DAMAGE\\>DAMAGE\\>Frost} <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と{ROTTING_EXPLOSION_DAMAGE\\>DAMAGE\\>Blight}<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>{DECAYING_RESISTANCE\\>ResolvedStrength}%の確率で腐敗中状態になる。</bullet></bulletlist>",
+    "description": "対象の味方<hyperlink>ゾンビ</hyperlink>もしくはスケルトンユニットが爆発し、マスの範囲にいる敵ユニットに以下の効果を与える：<bulletlist><bullet> <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet> <turn></turn>ターンの間、2腐敗中を得る。</bullet></bulletlist>",
     "name": "腐食爆発",
     "spell_slug": "腐食爆発",
     "tier": 3,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{SOUL_FIRE_DAMAGE\\>DAMAGE\\>Frost}<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と{SOUL_FIRE_DAMAGE\\>DAMAGE\\>Blight} <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>腐敗中状態になる。</bullet><bullet>死亡した時、あなたが戦闘終了時まで支配できる<hyperlink>腐敗のゾンビ</hyperlink>になる。</bullet></bulletlist>",
+    "description": "対象の敵ユニット：<bulletlist><bullet><damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet> <turn></turn>ターンの間、腐敗中を2スタック獲得する。</bullet><bullet>死亡した時、あなたが戦闘終了時まで支配できる<hyperlink>腐敗のゾンビ</hyperlink>になる。</bullet></bulletlist>",
     "name": "壊死",
     "spell_slug": "壊死",
-    "tier": 2,
+    "tier": 1,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    }
   ],
@@ -2661,7 +2980,7 @@
   "icon": "0000041B000016C9",
   "skills": [
    {
-    "description": "対象となった種族に士気を吸い上げる能力を付与し、その攻撃に以下の効果を付与：<bulletlist><bullet>攻撃するたびに{JOY_SIPHONERS_CHANGE_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>を奪う。</bullet><bullet>対象の士気が「高い」場合、士気の減少量が2倍になる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "対象となった種族に士気を吸い上げる能力を付与し、その攻撃に以下の効果を付与：<bulletlist><bullet>攻撃するたびに <happiness></happiness><hyperlink>士気</hyperlink>を奪う。</bullet><bullet>対象の士気が「高い」場合、士気の減少量が2倍になる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "喜びのサイフォナー",
     "spell_slug": "喜びのサイフォナー",
     "tier": 4,
@@ -2675,21 +2994,21 @@
     "type": "<caststrategic></caststrategic><hyperlink> 敵軍隊呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下の効果を付与：<bulletlist><bullet><happiness></happiness><hyperlink>士気</hyperlink>が「低い」以下のユニットに与えるダメージ量が{CRUEL_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%増加する。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下の効果を付与：<bulletlist><bullet><happiness></happiness><hyperlink>士気</hyperlink>が「低い」以下のユニットに与えるダメージ量が%増加する。</bullet></bulletlist>",
     "name": "残酷武器",
     "spell_slug": "残酷武器",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "耳をつんざく泣き声で士気を下げ、敵を弱らせる復讐的な精霊である<hyperlink>バンシー</hyperlink>を召喚する。",
-    "name": "バンシー召喚",
-    "spell_slug": "バンシー召喚",
+    "description": "グレードの低い敵ユニット<happiness></happiness><hyperlink>士気</hyperlink>を活用できる戦士ユニットである<hyperlink>腐敗した魂</hyperlink>を召喚する。",
+    "name": "腐敗した霊魂の召喚",
+    "spell_slug": "腐敗した霊魂の召喚",
     "tier": 3,
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "{INSTILL_DESPAIR_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる敵は、{INSTILL_DESPAIR_RESISTANCE\\>ResolvedStrength}%の確率で{INSTILL_DESPAIR_MORALE_EFFECT\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>を失う。",
+    "description": "マスの範囲にいる敵は、%の確率で <happiness></happiness><hyperlink>士気</hyperlink>を失う。",
     "name": "絶望の要因",
     "spell_slug": "絶望の要因",
     "tier": 3,
@@ -2714,21 +3033,21 @@
   "icon": "0000041B000012C5",
   "skills": [
    {
-    "description": "<bulletlist><bullet>敵ユニットが{DISRUPTION_RESISTANCE\\>ResolvedStrength}%の基本確率で{DISRUPTION_DISABLE\\>Duration} <turn></turn>ターンの間妨害したになる。</bullet><bullet>敵から{DISRUPTION_WAVE_PROPERTY_DISPEL_ENEMIES\\>NumThingsToDispel}個の良いステータス効果を解除する。</bullet><bullet>同盟から{DISRUPTION_WAVE_DISPEL_ALLIES\\>NumThingsToDispel}個の悪いステータス効果を解除する。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>敵ユニットが%の基本確率で <turn></turn>ターンの間妨害したになる。</bullet><bullet>敵から個の<hyperlink>プラスのステータス効果</hyperlink>を解除する。</bullet><bullet>同盟から個の<hyperlink>マイナスのステータス効果</hyperlink>を解除する。</bullet></bulletlist>",
     "name": "崩壊の波",
     "spell_slug": "崩壊の波",
     "tier": 10,
     "type": "<casttactical></casttactical><hyperlink>バフ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>ダメージが{COSMIC_OVERDRIVE_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%増加する。</bullet><bullet>超高速移動。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>ダメージが%増加する。</bullet><bullet>超高速移動。</bullet></bulletlist>",
     "name": "コズミック・オーバードライブ",
     "spell_slug": "コズミック・オーバードライブ",
     "tier": 9,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{TIME_STOP_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マス内にいる対象の敵ユニット：<bulletlist><bullet>{STUNNED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間スタンになる。</bullet><bullet>{DISTRACTED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間注意散漫になる。</bullet><bullet>{MARKED_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間5 マークを獲得する。</bullet></bulletlist>",
+    "description": "マス内にいる対象の敵ユニット：<bulletlist><bullet> <turn></turn>ターンの間スタンになる。</bullet><bullet> <turn></turn>ターンの間注意散漫になる。</bullet><bullet> <turn></turn>ターンの間5 マークを獲得する。</bullet></bulletlist>",
     "name": "時間停止",
     "spell_slug": "時間停止",
     "tier": 9,
@@ -2755,14 +3074,14 @@
   "icon": "0000041B000012AC",
   "skills": [
    {
-    "description": "<bulletlist><bullet>この都市が包囲されている時、防衛者の統率者がそこにいない場合、<hyperlink>支配者</hyperlink>のアストラルの反射体が防衛者に付与される。</bullet><bullet>自軍支配者が、この都市建造物があり、所有している都市ごとに、<turn></turn><hyperlink>ターン</hyperlink>毎に2 <hyperlink><xp></xp>経験値</hyperlink>を獲得する。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>この都市の領地で戦いが発生した時、<hyperlink>支配者</hyperlink>がそこにいない場合、プレイヤーがそのアストラルの反射体を獲得する。</bullet><bullet>この都市建造物のある所有している都市1つごとに、自軍支配者が毎<turn></turn><hyperlink>ターン</hyperlink>2 <hyperlink><xp></xp>経験値</hyperlink>を獲得する。</bullet></bulletlist>",
     "name": "鏡の王座",
     "tier": 8,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "鏡の王座"
    },
    {
-    "description": "魔法がかかったユニットに以下の効果を付与：<bulletlist><bullet>非<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>が受けた{MIRROR_VEIL_DAMAGE_REFLECTION\\>ResolvedDamageReflected}%を攻撃側に跳ね返す。</bullet></bulletlist>",
+    "description": "魔法がかかったユニットに以下の効果を付与：<bulletlist><bullet>非<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>が受けた%を攻撃側に跳ね返す。</bullet></bulletlist>",
     "name": "鏡のベール",
     "spell_slug": "鏡のベール",
     "tier": 8,
@@ -2824,14 +3143,14 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "標的の未占拠マス：<bulletlist><bullet>{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間、<hyperlink>アストラルの蛇</hyperlink> または<hyperlink>アストラル・サイフォナー</hyperlink>のユニットをランダムで召喚する。</bullet><bullet>隣接する全ユニットが{EXPLOSIVE_MANIFESTATION_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>、{EXPLOSIVE_MANIFESTATION_DAMAGE\\>DAMAGE\\>Shock} <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>、{EXPLOSIVE_MANIFESTATION_DAMAGE\\>DAMAGE\\>Frost} <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
+    "description": "標的の未占拠マス：<bulletlist><bullet> <turn></turn>ターンの間、<hyperlink>アストラルの蛇</hyperlink> または<hyperlink>アストラル・サイフォナー</hyperlink>のユニットをランダムで召喚する。</bullet><bullet>隣接する全ユニットが <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>、 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>、 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
     "name": "爆発的な発揮",
     "spell_slug": "爆発的な発揮",
     "tier": 7,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の種族をアストラル海に繋げ、以下を付与する：<bulletlist><bullet>無実体のユニットタイプ</bullet><bullet>同調：アストラルの予兆。戦闘中に呪文が詠唱される度に、良いステータス効果をランダムで得る。</bullet></bulletlist>",
+    "description": "標的の種族をアストラル海に繋げ、以下を付与する：<bulletlist><bullet>無実体のユニットタイプ</bullet><bullet>同調：アストラルの予兆。戦闘中に呪文が詠唱される度に、<hyperlink>プラスのステータス効果</hyperlink>をランダムで得る。</bullet></bulletlist>",
     "name": "アストラル同調",
     "spell_slug": "アストラル同調",
     "tier": 8,
@@ -2858,28 +3177,28 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "{STATIC_CHARGE_STATUS_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間、対象の味方マジック・オリジンユニットが以下を得る：<bulletlist><bullet>5強化</bullet><bullet> 3防御強化</bullet><bullet>3耐性強化</bullet><bullet>静電荷</bullet></bulletlist>",
+    "description": " <turn></turn>ターンの間、対象の味方マジック・オリジンユニットが以下を得る：<bulletlist><bullet>5強化</bullet><bullet> 3防御強化</bullet><bullet>3耐性強化</bullet><bullet>静電荷</bullet></bulletlist>",
     "name": "秘儀のスーパー<br></br>チャージ",
     "spell_slug": "秘儀のスーパー_br__チャージ",
     "tier": 3,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "死亡時でもユニットを回復させることができるサポートユニットである<hyperlink>アストラルの番人</hyperlink>を召喚する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "死亡時でもユニットを回復させることができるサポートユニットである<hyperlink>アストラルの番人</hyperlink>を召喚する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "アストラルキー<br></br>パーの召喚",
     "spell_slug": "アストラルキー_br__パーの召喚",
     "tier": 4,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "味方マジック・オリジンユニットは全て{ARCANE_RESTORATION_UNIT_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
+    "description": "味方マジック・オリジンユニットは全て <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
     "name": "秘儀復元",
     "spell_slug": "秘儀復元",
     "tier": 3,
     "type": "<casttactical></casttactical><hyperlink> 回復呪文</hyperlink>"
    },
    {
-    "description": "対象の敵マジック・オリジンユニットが{ARCANE_BIND_MIND_CONTROL\\>NumTurns}<turn></turn>ターンの間{ARCANE_BIND_RESISTANCE_CHECK\\>ResolvedStrength}%の基本確率で支配済みになる。<br></br><br></br>成功しなかった場合、代わりに{ARCANE_BIND_UNIT_DAMAGE\\>DAMAGE\\>Shock}<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。",
+    "description": "対象の敵マジック・オリジンユニットが<turn></turn>ターンの間%の基本確率で支配済みになる。<br></br><br></br>成功しなかった場合、代わりに<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。",
     "name": "秘儀の結束",
     "spell_slug": "秘儀の結束",
     "tier": 3,
@@ -2904,21 +3223,21 @@
   "icon": "0000041B00001261",
   "skills": [
    {
-    "description": "<bulletlist><bulletlist><bullet>+15 <gold></gold><hyperlink> ゴールド</hyperlink>の収入を得る。</bullet><bullet>自分の帝国に建築されたアストラル中継貿易1基につき、+2 <gold></gold><hyperlink> ゴールド</hyperlink>の収入を得る。</bullet></bulletlist></bulletlist>",
+    "description": "<bulletlist><bulletlist><bullet>+15 <gold></gold><hyperlink> ゴールド</hyperlink>の収入を得る。</bullet><bullet>自分の帝国に建築されたアストラル中継貿易1基につき、+4 <gold></gold><hyperlink> ゴールド</hyperlink>の収入を得る。</bullet></bulletlist></bulletlist>",
     "name": "アストラル中継貿易",
     "tier": 6,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "アストラル中継貿易"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>戦闘中にテレポートが可能になるフェーズアビリティ。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>戦闘中に転送が可能になるチャージフェーズアビリティ。</bullet></bulletlist>",
     "name": "フェーズの魔力",
     "spell_slug": "フェーズの魔力",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{EMERGENCY_TELEPORTATION_UNIT_TARGETER_NEAREST_TO_TARGET\\>MaxDista}マス以内の最も近い味方ユニットを、選択した誰もいないマスに転送させる。<br></br>そのユニットは+{EMERGENCY_TELEPORTATION_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
+    "description": "マス以内の最も近い味方ユニットを、標的の誰もいないマスに転送させる。<br></br>そのユニットは+ <hyperlink><temphp></temphp>追加HP</hyperlink>を回復し、すべての<hyperlink>マイナスのステータス効果</hyperlink>が解除される。",
     "name": "緊急離脱",
     "spell_slug": "緊急離脱",
     "tier": 5,
@@ -2957,14 +3276,14 @@
   "icon": "0000041B00001248",
   "skills": [
    {
-    "description": "領地は視界+6と「真の視力」を獲得し、見えない敵やカモフラージュされた敵を発見することが可能になる。",
+    "description": "<bulletlist><bullet>+10<happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet><bullet>+10<knowledge></knowledge><hyperlink>知識</hyperlink></bullet><bullet>+6 <hyperlink>視界範囲</hyperlink></bullet><bullet>「真の視力」により、都市付近のカモフラージュされた敵を発見することが可能になる。</bullet></bulletlist>",
     "name": "真の視力の塔",
     "tier": 4,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "真の視力の塔"
    },
    {
-    "description": "魔法ユニットの基本攻撃：<bulletlist><bullet>移動を妨害しているユニットや一部の地形による<hyperlink>不明瞭</hyperlink>状態の命中率ペナルティが適用されない。</bullet></bulletlist>",
+    "description": "魔法ユニットの基本攻撃：<bulletlist><bullet>遠距離<hyperlink><accuracy></accuracy>命中率</hyperlink>のペナルティを受けることなく、さらにマス遠くへ撃てる。</bullet><bullet>移動を妨害しているユニットや一部の地形による<hyperlink>不明瞭</hyperlink>のペナルティが適用されない。</bullet></bulletlist>",
     "name": "誘導投射物",
     "spell_slug": "誘導投射物",
     "tier": 4,
@@ -2978,14 +3297,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "{MENTAL_MARK_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マス範囲内にいる敵が以下の効果を得る：<bulletlist><bullet>2マーク。</bullet><bullet>3バラバラの耐性。</bullet></bulletlist>",
+    "description": "マス範囲内にいる敵が以下の効果を得る：<bulletlist><bullet>2マーク。</bullet><bullet>3バラバラの耐性。</bullet></bulletlist>",
     "name": "精神の印",
     "spell_slug": "精神の印",
     "tier": 3,
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "対象の部隊内の敵は全て15 <turn></turn>ターンの間、自分の視界を広げてくれる。",
+    "description": "対象の部隊内の敵は全て10 <turn></turn>ターンの間、自分の視界を広げてくれる。",
     "name": "敵を占う",
     "spell_slug": "敵を占う",
     "tier": 3,
@@ -3005,42 +3324,42 @@
   "icon": "0000041B0000122F",
   "skills": [
    {
-    "description": "標的の所有済みの都市が以下を得る：<bulletlist><bullet>+20 <knowledge></knowledge> <hyperlink> 知識</hyperlink>の収益</bullet><bullet>-10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet></bulletlist>",
+    "description": "標的の所有済みの都市が以下を得る：<bulletlist><bullet>+20 <knowledge></knowledge><hyperlink>知識</hyperlink>の収益</bullet><bullet>-10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet></bulletlist>",
     "name": "知性増幅",
     "spell_slug": "知性増幅",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "標的となった種族の血管に魔法が流れ始めるようにして、その種族に以下を付与：<bulletlist><bullet>同調：幸運、これにより呪文詠唱時に<hyperlink>会心のヒット</hyperlink>の確率が上昇する。</bullet></bulletlist>",
+    "description": "標的となった種族の血管に魔法を宿し、その種族に以下を付与：<bulletlist><bullet>同調：幸運、これにより呪文詠唱時に<hyperlink><crit></crit>クリティカルヒット率</hyperlink>が上昇する。</bullet></bulletlist>",
     "name": "アストラル血",
     "spell_slug": "アストラル血",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>攻撃時に与えるダメージが増加する逆上。</bullet><bullet>基本攻撃の射程範囲が{ARCANE_FRENZY_RANGE_MODIFIER\\>ADD\\>MaxRange}増加する。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>攻撃時に与えるダメージが増加する逆上。</bullet><bullet>基本攻撃が+<hyperlink><range></range>範囲</hyperlink>。</bullet></bulletlist>",
     "name": "逆上のフォーカス",
     "spell_slug": "逆上のフォーカス",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{CHAIN_LIGHTNING_DAMAGE\\>DAMAGE\\>Shock} <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>感電が付与される。</bullet><bullet>この効果は{CHAIN_LIGHTNING_JUMP\\>MaxDistance}マス内にいる別の敵へと移行する。</bullet><bullet>効果は{CHAIN_LIGHTNING_JUMP\\>MaxJumps}回まで移行する。</bullet></bulletlist>",
+    "description": "対象の敵ユニットが：<bulletlist><bullet> <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>2感電が付与される。</bullet><bullet>この効果はマス内にいる別の敵へと移行する。</bullet><bullet>効果は回まで移行する。</bullet></bulletlist>",
     "name": "チェーンライトニング",
     "spell_slug": "チェーンライトニング",
     "tier": 6,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "ダメージを与える固定された建造物に<hyperlink>増幅のパイロン</hyperlink>をかけ、自分の呪文のダメージを+50%増加させる。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
+    "description": "ダメージを与える固定された建造物に<hyperlink>増幅のパイロン</hyperlink>をかけ、自分の呪文のダメージを+50%増加させる。<br></br>この召喚が <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
     "name": "拡大パイロンに魔法をかける",
     "spell_slug": "拡大パイロンに魔法をかける",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットによる<hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃が以下を与える：<bulletlist><bullet>+{AMPLIFIED_ARROWS_EXTRA_DAMAGE\\>DAMAGE\\>Shock}<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>{AMPLIFIED_ARROWS_EXTRA_DAMAGE\\>DAMAGE\\>Physical}<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>{AMPLIFIED_ARROWS_JUMP\\>MaxDistance}マスの範囲内にいる{AMPLIFIED_ARROWS_JUMP\\>MaxJumps}体の別の対象に{AMPLIFIED_ARROWS_BOUNCE_DAMAGE\\>DAMAGE\\>Shock}<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>{SUNDERED_RESISTANCE_RESISTANCE\\>ResolvedStrength}%の確率で、攻撃が命中した標的に{SUNDERED_RESISTANCE_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンのバラバラの耐性を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットによる<hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃が以下を与える：<bulletlist><bullet>+<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet><damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>マスの範囲内にいる体の別の対象に<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>%の確率で、攻撃が命中した標的に <turn></turn>ターンのバラバラの耐性を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "パワーアロー",
     "spell_slug": "パワーアロー",
     "tier": 4,
@@ -3065,7 +3384,7 @@
   "icon": "0000041B00001214",
   "skills": [
    {
-    "description": "対象の敵部隊：<bulletlist><bullet>全てのユニットが20 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>全てのユニットが-3 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>を1 <hyperlink>ワールドマップ</hyperlink> <turn></turn>ターン受け続ける。</bullet></bulletlist>",
+    "description": "対象の敵部隊：<bulletlist><bullet>全てのユニットが20 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>全てのユニットが-1 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>を1 <hyperlink>ワールドマップ</hyperlink> <turn></turn>ターン受け続ける。</bullet></bulletlist>",
     "name": "ライトニングトレント",
     "spell_slug": "ライトニングトレント",
     "tier": 3,
@@ -3079,7 +3398,7 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "魔法ユニットの攻撃：<bulletlist><bullet>+{LIGHTNING_FOCUS_EXTRA_DAMAGE\\>DAMAGE\\>Shock} <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>{ELECTRIFIED_RESISTANCE\\>ResolvedStrength}%の基本確率で、経過ダメージ効果である感電を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの攻撃：<bulletlist><bullet>+ <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>%の基本確率で、経過ダメージ効果である感電を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "ライトニング・<br></br>フォーカス",
     "spell_slug": "ライトニング・_br__フォーカス",
     "tier": 1,
@@ -3093,14 +3412,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+{LIGHTNING_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Shock} <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet>{LIGHTNING_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>感電ユニットに対して、ダメージが{LIGHTNING_BLADES_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+ <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>感電ユニットに対して、ダメージが%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "稲妻の刃",
     "spell_slug": "稲妻の刃",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{FULMINATION_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる敵ユニットに以下の効果を与える。<bulletlist><bullet>{FULMINATION_DAMAGE\\>DAMAGE\\>Shock}<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>{ELECTRIFIED_RESISTANCE\\>ResolvedStrength}%の確率で感電状態になる。</bullet></bulletlist>",
+    "description": "マスの範囲にいる敵ユニットに以下の効果を与える。<bulletlist><bullet><damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>%の確率で感電状態になる。</bullet></bulletlist>",
     "name": "炸裂",
     "spell_slug": "炸裂",
     "tier": 1,
@@ -3125,14 +3444,14 @@
   "icon": "0000041B000011FB",
   "skills": [
    {
-    "description": "対象の種族に魔法の結界印を刻み、以下を付与：<bulletlist><bullet>+{MAGIAL_WARDS_RESISTANCE\\>REDUCTION\\>Shock} <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet><bullet>+{MAGIAL_WARDS_RESISTANCE\\>REDUCTION\\>Fire} <defensefire></defensefire><hyperlink>炎耐性</hyperlink></bullet><bullet>+{MAGIAL_WARDS_RESISTANCE\\>REDUCTION\\>Frost} <defensefrost></defensefrost><hyperlink>凍結耐性</hyperlink></bullet></bulletlist>",
+    "description": "対象の種族に魔法の結界印を刻み、以下を付与：<bulletlist><bullet>+ <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet><bullet>+ <defensefire></defensefire><hyperlink>炎耐性</hyperlink></bullet><bullet>+ <defensefrost></defensefrost><hyperlink>凍結耐性</hyperlink></bullet></bulletlist>",
     "name": "魔法結界印",
     "spell_slug": "魔法結界印",
     "tier": 3,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "標的の味方ユニットは、{STUNNED_RESISTANCE\\>ResolvedStrength}%の確率で攻撃者にスタン効果を付与するシールドを獲得する。<br></br>{STATIC_SHIELD_STATUS_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間継続する。",
+    "description": "対象の味方ユニットおよびマス以内の他ユニットがシールドを獲得する。<bulletlist><bullet>基本確率%で、攻撃者にスタンを付与する。</bullet><bullet>効果は<turn></turn>ターン持続する。</bullet></bulletlist>",
     "name": "静電シールド",
     "spell_slug": "静電シールド",
     "tier": 3,
@@ -3153,7 +3472,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の味方ユニットは以下を得る。<bulletlist><bullet>1<turn></turn>ターンの間無敵になる。</bullet><bullet>マイナスのステータス効果が無効になる。</bullet></bulletlist><br></br>1回の戦闘で同一ユニットに複数回使用することはできない。",
+    "description": "対象の味方ユニットは以下を得る。<bulletlist><bullet>1<turn></turn>ターンの間無敵になる。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>が無効になる。</bullet></bulletlist><br></br>1回の戦闘で同一ユニットに複数回使用することはできない。",
     "name": "不死身の印",
     "spell_slug": "不死身の印",
     "tier": 2,
@@ -3173,7 +3492,7 @@
   "icon": "0000041B00000DB6",
   "skills": [
    {
-    "description": "対象の種族に自然の祝福をもたらす。彼らは以下を得る：<bulletlist><bullet>植物のユニットタイプ。</bullet><bullet>+{GAIA_CHOSEN_STATUS_RESISTANCE\\>Resistance} <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet><bullet>+{GAIA_CHOSEN_STAT_BONUS\\>BONUS\\>HitPoints} <hyperlink><hp></hp>HP</hyperlink>。</bullet></bulletlist>",
+    "description": "対象の種族に自然の祝福をもたらす。彼らは以下を得る：<bulletlist><bullet>植物のユニットタイプ。</bullet><bullet>+ <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet><bullet>+ <hyperlink><hp></hp>HP</hyperlink>。</bullet></bulletlist>",
     "name": "ガイアに選ばれし者",
     "spell_slug": "ガイアに選ばれし者",
     "tier": 8,
@@ -3194,14 +3513,14 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "全ての味方ユニットは<happiness></happiness><hyperlink>士気</hyperlink>が+{EXHILIRATING_POLLEN_CHANGE_MORALE\\>Morale Change}増加する。<br></br>全ての敵ユニットは{DISTRACTED_RESISTANCE\\>ResolvedStrength}%の確率で注意散漫状態になる。",
+    "description": "全ての味方ユニットは<happiness></happiness><hyperlink>士気</hyperlink>が+増加する。<br></br>全ての敵ユニットは%の確率で注意散漫状態になる。",
     "name": "爽快な花粉",
     "spell_slug": "爽快な花粉",
     "tier": 7,
     "type": "<casttactical></casttactical><hyperlink>バフ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "味方の対象<hyperlink>都市</hyperlink>が次を得る：<bulletlist><bullet><hyperlink>領地</hyperlink>の中かそれに隣接するすべての<turn></turn><hyperlink>ターン</hyperlink>と1<hyperlink>領域</hyperlink>：<bulletlist></bullet><bullet>地上にある場合は<hyperlink>草原</hyperlink>と<hyperlink>森</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>と<hyperlink>キノコの森</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet><bullet>領地内の、草原か森、真菌畑あるいはキノコの森がある領域は以下を得る：<food></food><hyperlink> 食料</hyperlink>が2、<structureprod></structureprod><hyperlink>生産</hyperlink>が2、<unitprod></unitprod><hyperlink>召集</hyperlink>が2増加する。</bullet></bulletlist>",
+    "description": "味方の対象<hyperlink>都市</hyperlink>が次を得る：<bulletlist><bullet>毎<turn></turn><hyperlink>ターン</hyperlink>、<hyperlink>領地</hyperlink>の中かそれに隣接する1<hyperlink>領域</hyperlink>が：<bulletlist></bullet><bullet>地上にある場合は<hyperlink>草原</hyperlink>と<hyperlink>森</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>と<hyperlink>キノコの森</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet><bullet>領地内の、草原か森、真菌畑あるいはキノコの森がある領域は以下を得る：<food></food><hyperlink> 食料</hyperlink>が2、<structureprod></structureprod><hyperlink>生産</hyperlink>が2、<unitprod></unitprod><hyperlink>召集</hyperlink>が2増加する。</bullet></bulletlist>",
     "name": "魔法の花",
     "spell_slug": "魔法の花",
     "tier": 7,
@@ -3233,28 +3552,28 @@
   "icon": "0000041B00000D9D",
   "skills": [
    {
-    "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を付与：<bulletlist><bullet>+{POISON_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Blight} <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>。</bullet><bullet>{POISON_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>毒または腐敗中ユニットに対するダメージが+{BLIGHT_BLADES_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を付与：<bulletlist><bullet>+ <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>毒または腐敗中ユニットに対するダメージが+%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "疫病の刃",
     "spell_slug": "疫病の刃",
     "tier": 1,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{VINE_PRISON_POSITION_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲に、{VINE_PRISON_SUMMON\\>TurnsToLive}<turn></turn>ターン生存する{VINE_PRISON_POSITION_TARGETER_CIRCLE\\>RandomHexes}<hyperlink>生けるツタ</hyperlink>をランダムに召喚する。このユニットはダメージを与えないが、敵に移動不能を与える可能性がある。<br></br><br></br>水域戦闘では使用不可。",
+    "description": "マスの範囲に、<turn></turn>ターン生存する<hyperlink>生けるツタ</hyperlink>をランダムに召喚する。このユニットはダメージを与えないが、敵に移動不能を与える可能性がある。<br></br><br></br>水域戦闘では使用不可。",
     "name": "ツタの牢獄",
     "spell_slug": "ツタの牢獄",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "エンチャントされたユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下の効果を付与：<bulletlist><bullet>+{POISON_ARROWS_EXTRA_DAMAGE\\>DAMAGE\\>Blight} <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet><bullet>{POISON_ARROWS_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>{POISONED_RESISTANCE\\>ResolvedStrength}%の確率で毒による経過ダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "エンチャントされたユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下の効果を付与：<bulletlist><bullet>+ <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>%の確率で毒による経過ダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "ポイズンアロー",
     "spell_slug": "ポイズンアロー",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の味方ユニット：<bulletlist><bullet>{HEALING_ROOTS_UNIT_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>再生を2得る。</bullet></bulletlist>",
+    "description": "対象の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>再生を2得る。</bullet></bulletlist>",
     "name": "回復の根",
     "spell_slug": "回復の根",
     "tier": 1,
@@ -3286,28 +3605,28 @@
   "icon": "0000041B00000D6B",
   "skills": [
    {
-    "description": "対象の<hyperlink>植物の障害物</hyperlink>が、自ら支配できる<hyperlink>植物の毒針</hyperlink>のユニットに変身する。<br></br>この召喚が{SUMMON_POSITION_EFFECT\\>TurnsToLive} <turn></turn>ターンの間継続する。",
+    "description": "対象の<hyperlink>植物の障害物</hyperlink>が、自ら支配できる<hyperlink>植物の毒針</hyperlink>のユニットに変身する。<br></br>この召喚が <turn></turn>ターンの間継続する。",
     "name": "動く植物",
     "spell_slug": "動く植物",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "味方および所有者のいない<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>地上にある場合は<hyperlink>草原</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+    "description": "味方および所有者のいない<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>地上にある場合は<hyperlink>草原</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>と<hyperlink>キノコの森</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>石筍</hyperlink><hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
     "name": "土地の復興",
     "spell_slug": "土地の復興",
     "tier": 3,
     "type": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>"
    },
    {
-    "description": "{BLOSSOM_OF_LIFE_UNIT_TARGETER_ALL\\>AREA\\>Radius}マスの範囲内にいる味方ユニットが3再生を獲得する。",
+    "description": "マスの範囲内にいる味方ユニットが3再生を獲得する。",
     "name": "生命の開花",
     "spell_slug": "生命の開花",
     "tier": 4,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>1<population></population><hyperlink>人口</hyperlink>ごとに+10 <food></food><hyperlink> 食料</hyperlink></bullet><bullet>+3<food></food><hyperlink> 食料</hyperlink></bullet><bullet>1<population></population><hyperlink>人口</hyperlink>ごとに+1 <unitprod></unitprod><hyperlink>召集</hyperlink></bullet></bulletlist>",
+    "description": "<bulletlist><bullet>1<population></population><hyperlink>人口</hyperlink>ごとに+10 <food></food><hyperlink> 食料</hyperlink></bullet><bullet>+3<food></food><hyperlink> 食料</hyperlink></bullet><bullet>1<population></population><hyperlink>人口</hyperlink>ごとに+2 <unitprod></unitprod><hyperlink>召集</hyperlink></bullet></bulletlist>",
     "name": "繁殖力の神殿",
     "tier": 3,
     "type": "<hyperlink>都市の建造物</hyperlink>",
@@ -3339,21 +3658,28 @@
   "icon": "0000041B00000D52",
   "skills": [
    {
-    "description": "友好都市に詠唱する。この都市内で行われる全ての戦闘が<abilityblue>季節のサイクル</abilityblue>を獲得し、各戦闘ターンごとに異なる効果が以下の順番で発生する：<bulletlist><bullet>冬：全ての敵ユニットが10 <damageFrost></damageFrost>を受ける。</bullet><bullet>春：全ての味方ユニットが1 強化状態になる。</bullet><bullet>夏：全ての味方ユニットが10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>秋：全ての敵が1 弱まった状態になる。</bullet></bulletlist>",
+    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet><turn></turn>ターンの間、生命のシードを付与する基本確率が%増加する。</bullet><bullet>腐敗中ユニットに対して +%のダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "name": "開花の投射物",
+    "spell_slug": "開花の投射物",
+    "tier": 6,
+    "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
+   },
+   {
+    "description": "対象の都市内で行われる全ての戦闘が<abilityblue>季節のサイクル</abilityblue>を獲得し、各戦闘ターンごとに異なる効果が以下の順番で発生する：<bulletlist><bullet>冬：全ての敵ユニットが10 <damageFrost></damageFrost>を受ける。</bullet><bullet>春：全ての味方ユニットが1 強化状態になる。</bullet><bullet>夏：全ての味方ユニットが10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>秋：全ての敵が1 弱まった状態になる。</bullet></bulletlist>",
     "name": "季節の一巡",
     "spell_slug": "季節の一巡",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "戦闘終了時まで、味方ユニットが死亡したとき、{PARTING_GIFTS_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マス以内にいる残りの味方ユニットは全て{PARTING_GIFTS_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
+    "description": "戦闘終了時まで、味方ユニットが死亡したとき、マス以内にいる残りの味方ユニットは全て <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
     "name": "餞別",
     "spell_slug": "餞別",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink>戦闘魔力</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{DIFFUSE_HEALTH_DAMAGE\\>DAMAGE\\>Blight} <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>1 腐敗中を獲得する。</bullet></bulletlist><br></br>{DIFFUSE_HEALTH_UNIT_TARGETER_FRIENDLY\\>AREA\\>Radius}マス以内の味方ユニット：<bulletlist><bullet>{DIFFUSE_HEALTH_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>1 再生を獲得する。</bullet></bulletlist>",
+    "description": "対象の敵ユニット：<bulletlist><bullet> <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>2 腐敗中を獲得する。</bullet></bulletlist><br></br>マス以内の味方ユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>2 再生を獲得する。</bullet></bulletlist>",
     "name": "HP拡散",
     "spell_slug": "hp拡散",
     "tier": 5,
@@ -3367,9 +3693,9 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "エンチャントされたユニットによる<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>の基本攻撃に以下の効果を付与：<bulletlist><bullet>{WITHERING_DECAY_EXTRA_DAMAGE\\>DAMAGE\\>Blight} <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet><bullet>継続的にダメージを与えながら回復を阻止する腐敗中効果を、{DECAYING_RESISTANCE\\>ResolvedStrength}%の確率で敵に付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
-    "name": "腐敗の投射",
-    "spell_slug": "腐敗の投射",
+    "description": "魔法ユニットの基本攻撃が次の効果を得る：<bulletlist><bullet>腐敗中を付与する。これは時間経過ダメージの効果で、回復量を減少させる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "name": "腐敗の剣",
+    "spell_slug": "腐敗の剣",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    }
@@ -3468,7 +3794,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を与える：<bulletlist><bullet>+{FROST_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Frost} <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>{FROST_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>凍結または減速ユニットに対するダメージが+{FROST_BLADES_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を与える：<bulletlist><bullet>+ <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>凍結または減速ユニットに対するダメージが+%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "霧氷刃",
     "spell_slug": "霧氷刃",
     "tier": 2,
@@ -3482,14 +3808,14 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "対象の敵は：<bulletlist><bullet>{ICE_COFFIN_DAMAGE\\>DAMAGE\\>Frost}<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>{FROZEN_RESISTANCE\\>ResolvedStrength}%の確率で凍結状態になる。成功しなかった場合、減速を与える。</bullet></bulletlist>",
+    "description": "対象の敵は：<bulletlist><bullet><damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>%の確率で凍結状態になる。成功しなかった場合、減速を与える。</bullet></bulletlist>",
     "name": "氷の棺桶",
     "spell_slug": "氷の棺桶",
     "tier": 1,
     "type": "<casttactical></casttactical><hyperlink>ダメージ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+{FROST_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Frost} <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>{FROST_BLADES_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>{SLOWED_RESISTANCE\\>ResolvedStrength}%の基本確率で減速を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+ <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>%の基本確率で減速を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "霧氷矢",
     "spell_slug": "霧氷矢",
     "tier": 2,
@@ -3521,36 +3847,36 @@
   "icon": "0000041B000005E8",
   "skills": [
    {
-    "description": "魔法ユニット：<bulletlist><bullet>攻撃時に{SOULBOUND_RESISTANCE_90\\>ResolvedStrength}%の確率でソウルバウンドを付与し、その対象を倒したときの<souls></souls><hyperlink> 霊魂</hyperlink>獲得量が増加する。</bullet><bullet>ソウルバウンド状態のユニットに与えるダメージ量が{SOULBINDERS_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニット：<bulletlist><bullet>攻撃時に%の確率でソウルバウンドを付与し、その対象を倒したときの<souls></souls><hyperlink> 霊魂</hyperlink>獲得量が増加する。</bullet><bullet>ソウルバウンド状態のユニットに与えるダメージ量が%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "霊魂縛り",
     "spell_slug": "霊魂縛り",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "種族に属さないグレードIII-IVのユニットを倒した時、戦闘後に<souls></souls><hyperlink> 霊魂</hyperlink>を消費して<hyperlink>骨の恐怖</hyperlink>を作成できるようになる。",
+    "description": "種族に属さないグレードI-IIIのユニットを倒した時、戦闘後に<souls></souls><hyperlink> 霊魂</hyperlink>を消費して<hyperlink>骨の恐怖</hyperlink>を作成できるようになる。<br></br>倒したユニットのグレード4分ごとに一つ<hyperlink>骨の恐怖</hyperlink>を作成できる。",
     "name": "ボーンホラーの蘇生",
-    "tier": 1,
+    "tier": 4,
     "type": "<hyperlink>帝国ボーナス</hyperlink>"
    },
    {
-    "description": "{SOUL_OVERFLOW_TARGETER\\>AREA\\>Radius}マス範囲内の味方ユニット：<bulletlist><bullet>1強化を得る。</bullet><bullet>戦闘終了時まで最大<hyperlink><hp></hp>HP</hyperlink>+{SOUL_OVERFLOW_STAT_BONUS\\>BONUS\\>HitPoints}を得る。</bullet><bullet>マイナスのステータス効果が無効になる。</bullet></bulletlist>",
+    "description": "マス範囲内の味方ユニットは以下を得る：<bulletlist><bullet>1強化を獲得。</bullet><bullet>戦闘終了時まで最大<hyperlink><hp></hp>HP</hyperlink>+。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>を取り除く。</bullet></bulletlist>",
     "name": "ソウル超過",
     "spell_slug": "ソウル超過",
-    "tier": 2,
+    "tier": 3,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "対象の味方部隊にいる全ての不死ユニットの<hyperlink><hp></hp>HP</hyperlink>を20回復させる。",
-    "name": "アンデッド軍の復活",
-    "spell_slug": "アンデッド軍の復活",
+    "description": "対象となる味方軍隊：<bulletlist><bullet>非不死ユニットを20<hyperlink><hp></hp>HP</hyperlink>回復する。</bullet><bullet>アンデッドユニットを40<hyperlink><hp></hp>HP</hyperlink>回復する。</bullet></bulletlist>",
+    "name": "魂の宴",
+    "spell_slug": "魂の宴",
     "tier": 3,
     "type": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>"
    },
    {
-    "description": "グレードの低い敵ユニット<happiness></happiness><hyperlink>士気</hyperlink>を活用できる戦士ユニットである<hyperlink>腐敗した魂</hyperlink>を召喚する。",
-    "name": "腐敗した霊魂の召喚",
-    "spell_slug": "腐敗した霊魂の召喚",
+    "description": "耳をつんざく泣き声で士気を下げ、敵を弱らせる復讐的な精霊である<hyperlink>バンシー</hyperlink>を召喚する。",
+    "name": "バンシー召喚",
+    "spell_slug": "バンシー召喚",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    }
@@ -3568,7 +3894,7 @@
   "icon": "0000041B000002F6",
   "skills": [
    {
-    "description": "{CALL_OF_THE_WILD_CIRCLE_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方動物と騎兵隊ユニットが以下を獲得：<bulletlist><bullet>2 防御強化</bullet><bullet>2強化</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方動物と騎兵隊ユニットが以下を獲得：<bulletlist><bullet>2 防御強化</bullet><bullet>2強化</bullet></bulletlist>",
     "name": "野生の呼び声",
     "spell_slug": "野生の呼び声",
     "tier": 2,
@@ -3582,14 +3908,14 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>対象のワールドマスにランダムなグレードIの動物を召喚する。</bullet><bullet>低確率でグレードIIの動物を召喚する。</bullet><bullet>召喚可能な動物は、このスキルを発動した地形の種類によって決まる。</bullet></bulletlist>",
-    "name": "野生動物召喚",
-    "spell_slug": "野生動物召喚",
+    "description": "<bulletlist><bullet>グレード Iかグレード IIの動物ユニットを選択すると自軍に加えられる。</bullet><bullet>利用可能な動物は呪文が唱えられた地形のタイプによる。</bullet></bulletlist>",
+    "name": "野生動物招集",
+    "spell_slug": "野生動物招集",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "標的の種族はより獣らしくなり、動物と繋がりやすくなる。味方の動物と隣接している場合、両方のユニットが以下を獲得：<bulletlist><bullet>ダメージが+10%。</bullet><bullet>会心のヒットの確率が+10%。</bullet></bulletlist>",
+    "description": "標的の種族はより獣らしくなり、動物と繋がりやすくなる。味方の動物と隣接している場合、両方のユニットが以下を獲得：<bulletlist><bullet>ダメージが+10%。</bullet><bullet><crit></crit>クリティカルヒット率が+10%。</bullet></bulletlist>",
     "name": "動物との親密さ",
     "spell_slug": "動物との親密さ",
     "tier": 2,
@@ -3672,14 +3998,14 @@
   "icon": "0000041300000D0C",
   "skills": [
    {
-    "description": "{BERSERK_DESCRIPTION_3\\>NumTurns} <turn></turn>ターンの間、対象の味方ユニットが獲得：<bulletlist><bullet>狂乱</bullet><bullet>3 強化</bullet></bulletlist>",
+    "description": " <turn></turn>ターンの間、対象の味方ユニットが以下を得る：<bulletlist><bullet>狂乱</bullet><bullet>3 強化</bullet></bulletlist><br></br><hyperlink>制御喪失に対して無敵</hyperlink>状態のユニットには効果はない。",
     "name": "命知らずの歌",
     "spell_slug": "命知らずの歌",
     "tier": 1,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "{SONG_OF_VICTORY_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方ユニットが以下を獲得する：3フォーチュン",
+    "description": "マスの範囲内にいる味方ユニットが以下を獲得する：3フォーチュン",
     "name": "勝利のビジョン",
     "spell_slug": "勝利のビジョン",
     "tier": 2,
@@ -3717,7 +4043,7 @@
   "icon": "0000041300000CA1",
   "skills": [
    {
-    "description": "{AWAKEN_INNER_RADIANCE_AWAKENED\\>AREA\\>Radius}マスの範囲にいる味方ユニットは、{AWAKEN_STATUS_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間呼び起こされた者する。<br></br>既に呼び起こされた者している場合、このユニットは代わりに強化される。",
+    "description": "マスの範囲にいる味方ユニットは、 <turn></turn>ターンの間呼び起こされた者する。<br></br>既に呼び起こされた者している場合、このユニットは代わりに強化される。",
     "name": "目覚めた内なる輝き",
     "spell_slug": "目覚めた内なる輝き",
     "tier": 1,
@@ -3801,7 +4127,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "{SUPPRESSING_BARRAGE_OBSTACLE_TARGETER\\>AREA\\>Radius}マス内にいるユニットが：<bulletlist><bullet>{SUPPRESSING_BARRAGE_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>基本確率{IMMOBILIZED_RESISTANCE\\>ResolvedStrength}%で移動不能状態になる。</bullet></bulletlist>",
+    "description": "マス内にいるユニットが：<bulletlist><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>基本確率%で移動不能状態になる。</bullet></bulletlist>",
     "name": "制圧弾幕",
     "spell_slug": "制圧弾幕",
     "tier": 1,
@@ -3848,7 +4174,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "{PURIFYING_FLAME_TARGETER\\>AREA\\>Radius}マスの範囲内にいる味方ユニット：<bulletlist><bullet>{PURIFYING_FLAME_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>マイナスのステータス効果が取り除かれる。</bullet></bulletlist>",
+    "description": "マスの範囲内にいる味方ユニット：<bulletlist><bullet><hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>が取り除かれる。</bullet></bulletlist>",
     "name": "清める炎",
     "spell_slug": "清める炎",
     "tier": 5,
@@ -3888,7 +4214,7 @@
   "icon": "000003E300006B28",
   "skills": [
    {
-    "description": "対象の種族はドラゴンのような生命力が与えられ、以下の効果が付与される：<bulletlist><bullet><hyperlink>ワールドマップ</hyperlink> <turn></turn><hyperlink>ターン</hyperlink>ごとに<hyperlink><hp></hp>HP</hyperlink>再生+{DRACONIC_VITALITY_WM_REGEN_BONUS\\>BONUS\\>Regen} 。</bullet><bullet>ユニットランク1つにつき+{DRACONIC_VITALITY_HP_BONUS\\>BONUS\\>HitPoints} <hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet>ヒーローレベル1つにつき+{DRACONIC_VITALITY_HP_BONUS\\>BONUS\\>HitPoints} <hyperlink><hp></hp>HP</hyperlink>。（最大レベル{DRACONIC_VITALITY_HERO_LEVEL_UP\\>LevelCap}）</bullet></bulletlist>",
+    "description": "対象の種族はドラゴンのような生命力が与えられ、以下の効果が付与される：<bulletlist><bullet><hyperlink>ワールドマップ</hyperlink> <turn></turn><hyperlink>ターン</hyperlink>ごとに<hyperlink><hp></hp>HP</hyperlink>再生+ 。</bullet><bullet>ユニットランク1つにつき+ <hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet>ヒーローレベル1つにつき+ <hyperlink><hp></hp>HP</hyperlink>。（最大レベル）</bullet></bulletlist>",
     "name": "ドラゴンの生命力",
     "spell_slug": "ドラゴンの生命力",
     "tier": 3,
@@ -3902,14 +4228,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "標的のユニット：<bulletlist><bullet>{YOUTHFUL_REJUVENATION_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復する。</bullet><bullet>強化を得る。</bullet></bulletlist><br></br>進化を持つユニット：<bulletlist><bullet>効果が2倍になる。</bullet><bullet>戦闘終了時まで再起を得る。</bullet></bulletlist>",
+    "description": "標的のユニット：<bulletlist><bullet> <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復する。</bullet><bullet>強化を得る。</bullet></bulletlist><br></br>進化を持つユニット：<bulletlist><bullet>効果が2倍になる。</bullet><bullet>戦闘終了時まで再起を得る。</bullet></bulletlist>",
     "name": "活力の再生",
     "spell_slug": "活力の再生",
     "tier": 1,
     "type": "<casttactical></casttactical><hyperlink> 回復/バフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットに付与する：<bulletlist><bullet>戦闘から+{EXPERIENCE_BONUS\\>ResolvedProportion}%の<hyperlink><xp></xp>経験値</hyperlink>。</bullet><bullet>グレード IまたはIIの場合こっそり逃げる。このユニットの<hyperlink><hp></hp>HP</hyperlink>がゼロまで減った場合は、戦闘一度につき一回だけ回復される。</bullet></bulletlist>",
+    "description": "魔法ユニットに付与する：<bulletlist><bullet>戦闘から+%の<hyperlink><xp></xp>経験値</hyperlink>。</bullet><bullet>グレード IまたはIIの場合こっそり逃げる。このユニットの<hyperlink><hp></hp>HP</hyperlink>がゼロまで減った場合は、戦闘一度につき一回だけ回復される。</bullet></bulletlist>",
     "name": "高速進化の魔力",
     "spell_slug": "高速進化の魔力",
     "tier": 2,
@@ -3936,7 +4262,7 @@
   "icon": "000003E300005A05",
   "skills": [
    {
-    "description": "戦闘用に自分の<hyperlink>支配者</hyperlink>の化身を召喚する。この化身は自分の支配者と同じ能力を持ち、満タンの<hyperlink>アクションポイント</hyperlink>を持って出現する。すべての悪魔が+{AVATAR_OF_CHAOS_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>を獲得する。<br></br><br></br>水域戦闘では使用不可。<br></br>自分の<hyperlink>支配者</hyperlink>がいる場合は、戦闘中に使用することができない。",
+    "description": "戦闘用に自分の<hyperlink>支配者</hyperlink>の化身を召喚する。この化身は自分の支配者と同じ能力を持ち、満タンの<hyperlink>アクションポイント</hyperlink>を持って出現する。すべての悪魔が+ <happiness></happiness><hyperlink>士気</hyperlink>を獲得する。<br></br><br></br>水域戦闘では使用不可。<br></br>自分の<hyperlink>支配者</hyperlink>がいる場合は、戦闘中に使用することができない。",
     "name": "カオスのアバターの呼び起こし",
     "spell_slug": "カオスのアバターの呼び起こし",
     "tier": 10,
@@ -3949,7 +4275,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "{HASTENED_EFFECT_DESCRIPTION_3\\>NumTurns} <turn></turn>ターンの間、全ての攻撃ユニットが虐殺の機運と加速を獲得する。",
+    "description": " <turn></turn>ターンの間、全ての攻撃ユニットが虐殺の機運と加速を獲得する。",
     "name": "悪魔の襲来",
     "spell_slug": "悪魔の襲来",
     "tier": 9,
@@ -3976,7 +4302,7 @@
   "icon": "000003E3000059FE",
   "skills": [
    {
-    "description": "<hyperlink>領域</hyperlink>と、隣接する領域が対象：<bulletlist><bullet>敵の<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+    "description": "<hyperlink>領域</hyperlink>と、隣接する領域が対象：<bulletlist><bullet>敵の<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
     "name": "深淵の炎",
     "spell_slug": "深淵の炎",
     "tier": 8,
@@ -4036,28 +4362,28 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象の味方ユニットが爆発し、{SACRIFICIAL_SLAUGHTER_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マス以内の敵ユニットが以下を受ける：<bulletlist><bullet>生贄となったユニットのグレードの数だけ{SACRIFICIAL_SLAUGHTER_TIER_DAMAGE\\>DAMAGE\\>Fire}<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と{SACRIFICIAL_SLAUGHTER_DAMAGE\\>DAMAGE\\>Fire}<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>生贄となったユニットのグレードの数だけランダムなマイナスのステータス効果を受ける。</bullet>",
+    "description": "対象の味方ユニットが爆発し、マス以内の敵ユニットが以下を受ける：<bulletlist><bullet>生贄となったユニットのグレードの数だけ<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>生贄となったユニットのグレードの数だけランダムな<hyperlink>マイナスのステータス効果</hyperlink>を受ける。</bullet>",
     "name": "犠牲的な殺りく",
     "spell_slug": "犠牲的な殺りく",
     "tier": 7,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "戦闘で別のユニットが死亡する度に、魔法ユニットに以下を付与：<bulletlist><bullet>{INFERNAL_BLAZE_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、地獄の力になる。</bullet><bullet>+{DEMONIC_SIPHON_MORALE\\>Morale Change}<happiness></happiness><hyperlink>士気</hyperlink></bullet></bulletlist>。<br></br>戦闘召喚、塔および包囲クラフトユニットの死亡時には発動しない。</bulletlist>",
+    "description": "戦闘で別のユニットが死亡する度に、魔法ユニットに以下を付与：<bulletlist><bullet><turn></turn>ターンの間、地獄の力になる。</bullet><bullet>+<happiness></happiness><hyperlink>士気</hyperlink></bullet></bulletlist>。<br></br>戦闘召喚、塔および包囲クラフトユニットの死亡時には発動しない。</bulletlist>",
     "name": "地獄の眼光",
     "spell_slug": "地獄の眼光",
     "tier": 8,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の種族を炎の化身に変身させ、次の効果を付与する：<bulletlist><bullet>{SCION_OF_FLAME_DEFENSE\\>REDUCTION\\>Fire} <defensefire></defensefire><hyperlink>炎耐性</hyperlink>。</bullet><bullet><hyperlink>近接攻撃</hyperlink>攻撃者にダメージを与える復讐の炎。</bullet><bullet>火の目覚めによって、<hyperlink>植物の障害物</hyperlink>などの燃える地形を着火させる。</bullet><bullet>火傷無効。</bullet><bullet>溶岩地歩行。</bullet><bullet>この種族の<hyperlink>都市</hyperlink>は、<hyperlink>領地</hyperlink>に溶岩や亀裂があることによる<happiness></happiness> <hyperlink>都市の安定性</hyperlink>ペナルティを受けない。</bullet></bulletlist>",
+    "description": "対象の種族を炎の化身に変身させ、次の効果を付与する：<bulletlist><bullet> <defensefire></defensefire><hyperlink>炎耐性</hyperlink>。</bullet><bullet><hyperlink>近接攻撃</hyperlink>攻撃者にダメージを与える復讐の炎。</bullet><bullet>火の目覚めによって、<hyperlink>植物の障害物</hyperlink>などの燃える地形を着火させる。</bullet><bullet>火傷無効。</bullet><bullet>溶岩地歩行。</bullet><bullet>この種族の<hyperlink>都市</hyperlink>は、<hyperlink>領地</hyperlink>に溶岩や亀裂があることによる<happiness></happiness> <hyperlink>都市の安定性</hyperlink>ペナルティを受けない。</bullet></bulletlist>",
     "name": "炎の若枝",
     "spell_slug": "炎の若枝",
     "tier": 7,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "全的ユニット：<bulletlist><bullet>{FAN_THE_INFERNO_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>火傷状態にさせられる。</bullet></bulletlist>",
+    "description": "全的ユニット：<bulletlist><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>火傷状態にさせられる。</bullet></bulletlist>",
     "name": "猛火の煽り立て",
     "spell_slug": "猛火の煽り立て",
     "tier": 7,
@@ -4075,7 +4401,7 @@
  {
   "affinities": "2 <empirechaos></empirechaos> 帝国 カオスアフィニティー",
   "lore_description": "「真のカオスには、芸術性とも言えるものがかすかに秘められている。混沌の火種が集団ヒステリーと化し、恐慌と混乱が集落の隅々まで伝染していく様は、見ていて実に痛快だ！私にとっては… 究極の至福である！」",
-  "gameplay_description": "敵にランダムでマイナスのステータス効果を与え、すでにダメージを受けている敵にはさらにダメージを与えることに特化し、戦いの混乱の中で成長する。",
+  "gameplay_description": "敵にランダムで<hyperlink>マイナスのステータス効果</hyperlink>を与え、すでにダメージを受けている敵にはさらにダメージを与えることに特化し、戦いの混乱の中で成長する。",
   "resid": 4273492482541,
   "id": "伏魔殿の学術書",
   "lore_author": "情熱の女王、赤色のカリッサ",
@@ -4084,35 +4410,35 @@
   "icon": "000003E3000059EE",
   "skills": [
    {
-    "description": "対象の種族をカオスエネルギーの霊媒に変身させ、以下の効果を付与する：<bulletlist><bullet>対象が受けているマイナス効果の数だけ、与えるダメージ量が{VESSELS_OF_CHAOS_COUNTING_DAMAGE_MULTIPLIER\\>ResolvedDamageMultip}%増加する。効果は{VESSELS_OF_CHAOS_COUNTING_DAMAGE_MULTIPLIER\\>MaxCount}回まで重複する。</bullet></bulletlist>",
+    "description": "対象の種族をカオスエネルギーの霊媒に変身させ、以下の効果を付与する：<bulletlist><bullet>対象が受けている<hyperlink>マイナスのステータス効果</hyperlink>の数だけ、与えるダメージ量が%増加する。効果は回までスタックする。</bullet></bulletlist>",
     "name": "カオスの器",
     "spell_slug": "カオスの器",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>{INSANITY_RESISTANCE\\>ResolvedStrength}%の基本確率でマイナスのステータス効果をランダムで与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>%の基本確率で<hyperlink>マイナスのステータス効果</hyperlink>をランダムで与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "大混乱魔法",
     "spell_slug": "大混乱魔法",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "悪いステータス効果を食べて生きる、近距離バトルメイジユニットの<hyperlink>カオスイーター</hyperlink>を召喚する。",
+    "description": "<hyperlink>マイナスのステータス効果</hyperlink>を食べて生きる、近距離バトルメイジユニットの<hyperlink>カオスイーター</hyperlink>を召喚する。",
     "name": "カオスイーター召喚",
     "spell_slug": "カオスイーター召喚",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象ユニット：<bulletlist><bullet>{INFECTIOUS_INSANITY_RESISTANCE\\>ResolvedStrength}%の確率で{INFECTIOUS_INSANITY_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間感染性の狂気状態になる。</bullet><bullet>抵抗された場合、対象は{INSANITY_EFFECT_DESCRIPTION\\>NumTurns} <turn></turn>ターンの間錯乱状態になる。</bullet></bulletlist>",
+    "description": "対象ユニット：<bulletlist><bullet>%の確率で <turn></turn>ターンの間感染性の狂気状態になる。</bullet><bullet>抵抗された場合、対象は <turn></turn>ターンの間錯乱状態になる。</bullet></bulletlist>",
     "name": "感染性の狂気",
     "spell_slug": "感染性の狂気",
     "tier": 6,
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "{MASS_HYSTERIA_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる全ユニットにランダムなマイナスのステータス効果を付与する。",
+    "description": "マスの範囲にいる全ユニットにランダムな<hyperlink>マイナスのステータス効果</hyperlink>を付与する。",
     "name": "集団ヒステリー",
     "spell_slug": "集団ヒステリー",
     "tier": 5,
@@ -4132,7 +4458,7 @@
   "icon": "000003E3000059E7",
   "skills": [
    {
-    "description": "強烈な炎熱で標的の種族を圧倒し、その種族に以下を付与：<bulletlist><bullet>すべてのソースから+{REVELERS_HEART_MORALE_RESISTANCE\\>ResolvedMoraleRiseModifier}%の<happiness></happiness><hyperlink>士気</hyperlink>。</bullet></bulletlist>",
+    "description": "強烈な炎熱で標的の種族を圧倒し、その種族に以下を付与：<bulletlist><bullet>すべてのソースから+%の<happiness></happiness><hyperlink>士気</hyperlink>。</bullet></bulletlist>",
     "name": "反逆者の心臓",
     "spell_slug": "反逆者の心臓",
     "tier": 4,
@@ -4145,7 +4471,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>ユニットを倒したとき、+{BLOODFURY_WEAPONS_CHANGE_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>と +1 強化。</bullet><bullet><hyperlink>近接攻撃</hyperlink>と <hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃は +{BLOODFURY_WEAPONS_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>ユニットを倒したとき、+ <happiness></happiness><hyperlink>士気</hyperlink>と +1 強化。</bullet><bullet><hyperlink>近接攻撃</hyperlink>と <hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃は + <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "ブラッドフュー<br></br>リー武器",
     "spell_slug": "ブラッドフュー_br__リー武器",
     "tier": 3,
@@ -4198,7 +4524,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "{CURSE_OF_MISFORTUNE_UNIT_TARGETER_CIRCLE\\>AREA\\>Radius}マスの範囲にいる対象は2 ミスフォーチュンを受ける。",
+    "description": "マスの範囲にいる対象は2 ミスフォーチュンを受ける。",
     "name": "不運の呪い",
     "spell_slug": "不運の呪い",
     "tier": 3,
@@ -4239,7 +4565,7 @@
     "type": "<hyperlink>包囲計画</hyperlink>"
    },
    {
-    "description": "標的の敵ユニットが以下を受ける：<bulletlist><bullet>{BLAZE_OF_THE_HORDE_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>.</bullet><bullet>隣接する味方ユニットごとに+{BLAZE_OF_THE_HORDE_COUNT_ADJACENT\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet></bulletlist>",
+    "description": "標的の敵ユニットが以下を受ける：<bulletlist><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>.</bullet><bullet>隣接する味方ユニットごとに+ <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet></bulletlist>",
     "name": "灼熱の群れ",
     "spell_slug": "灼熱の群れ",
     "tier": 2,
@@ -4253,7 +4579,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象の種族を小さくして数を増やし、以下の効果を付与：<bulletlist><bullet>編隊に配置できるユニットの数が増加する。</bullet><bullet>非ヒーローユニットに対して+{SPAWNKIN_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%ダメージ。</bullet><bullet>ヒーローユニットに対して+{SPAWNKIN_HERO_EVASION\\>ResolvedAccuracyModifier}% <hyperlink>回避</hyperlink>。 </bullet><bullet>超成長と同時に使用できない。</bullet></bulletlist>",
+    "description": "対象の種族を小さくして数を増やし、以下の効果を付与：<bulletlist><bullet>編隊に配置できるユニットの数が増加する。</bullet><bullet>非ヒーローユニットに対して+%ダメージ。</bullet><bullet>ヒーローユニットに対して+% <hyperlink>回避</hyperlink>。 </bullet><bullet>超成長と同時に使用できない。</bullet></bulletlist>",
     "name": "スポーンキン",
     "spell_slug": "スポーンキン",
     "tier": 2,
@@ -4299,7 +4625,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "{AWAKEN_INSTINCTS_CIRCLE_TARGETER\\>AREA\\>Radius}マス範囲内にいる味方ユニット全体：<bulletlist><bullet>+{AWAKEN_INSTINCTS_HEAL\\>NumHitpointsToRestore} <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>すべての<hyperlink>アクションポイント</hyperlink>を取り戻す。</bullet><bullet>{BERSERK_DESCRIPTION_2\\>NumTurns} <turn></turn>ターンの間狂乱になる。</bullet></bulletlist>",
+    "description": "マス範囲内にいる味方ユニット全体：<bulletlist><bullet>+ <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>すべての<hyperlink>アクションポイント</hyperlink>を取り戻す。</bullet><bullet> <turn></turn>ターンの間狂乱になる。</bullet></bulletlist><br></br><hyperlink>制御喪失に対して無敵</hyperlink>状態のユニットには効果はない。",
     "name": "目覚めた本能",
     "spell_slug": "目覚めた本能",
     "tier": 7,
@@ -4313,14 +4639,14 @@
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet>敵の<hyperlink>領域改善</hyperlink>が含まれる場合は、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>報酬を得ることはなく<hyperlink>考え方</hyperlink>を失うこともない。</bullet></bulletlist><bullet>領域が地上にある場合は<hyperlink>森</hyperlink>を得て、地下にある場合は<hyperlink>キノコの森</hyperlink>を得る。</bullet></bulletlist>",
+    "description": "対象の<hyperlink>領域</hyperlink>で：<bulletlist><bullet>敵ユニットは20の<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>敵の<hyperlink>領域改善</hyperlink>がある場合、それは<hyperlink>略奪状態</hyperlink>になる。<bulletlist></bullet><bullet>その報酬は得られず、<hyperlink>考え方</hyperlink>も失わない。</bullet></bulletlist><bullet>その領域は地表なら<hyperlink>森</hyperlink>、地下なら<hyperlink>キノコの森</hyperlink>を得る。</bullet></bulletlist>",
     "name": "破壊的再生",
     "spell_slug": "破壊的再生",
     "tier": 7,
     "type": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>"
    },
    {
-    "description": "対象の非ヒーローの敵：<bulletlist><bullet>戦闘終了時まで、{DEVOLVE_RESISTANCE_CHECK\\>ResolvedStrength}%の確率でランダムなグレードIの動物に変身させられる。</bullet><bullet>抵抗された場合、代わりにスタン効果を与える。</bullet></bulletlist><br></br><br></br>水域戦闘では使用不可。",
+    "description": "対象の非ヒーローの敵：<bulletlist><bullet>戦闘終了時まで、%の確率でランダムなグレードIの動物に変身させられる。</bullet><bullet>抵抗された場合、代わりにスタン効果を与える。</bullet></bulletlist><br></br><br></br>水域戦闘では使用不可。",
     "name": "退化",
     "spell_slug": "退化",
     "tier": 7,
@@ -4330,7 +4656,7 @@
  },
  {
   "lore_description": "",
-  "gameplay_description": "この研究は、<hyperlink>闇</hyperlink>文化を持つ支配者に対して利用可能です。マイナスのステータス効果を与えることと潜伏術に特化しています。",
+  "gameplay_description": "この研究は、<hyperlink>闇</hyperlink>文化を持つ支配者に対して利用可能。<hyperlink>マイナスのステータス効果</hyperlink>を与えることと潜伏術に特化している。",
   "resid": 4273492480198,
   "id": "闇",
   "lore_author": "",
@@ -4339,18 +4665,18 @@
   "icon": "000003E3000050C7",
   "skills": [
    {
-    "description": "{SUNDERING_CURSE_TARGETER\\>AREA\\>Radius}マスの範囲内にいる敵ユニットが以下の効果を得る：<bulletlist><bullet>バラバラの防衛</bullet><bullet>バラバラの耐性</bullet><bullet>弱まった</bullet></bulletlist>",
+    "description": "マスの範囲内にいる敵ユニットが以下の効果を得る：<bulletlist><bullet>バラバラの防衛</bullet><bullet>バラバラの耐性</bullet><bullet>弱まった</bullet></bulletlist>",
     "name": "有毒な呪い",
     "spell_slug": "有毒な呪い",
     "tier": 2,
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "対象の敵ユニットと、{ICE_SHACKLES_TARGETER\\>MaxDistance}のマス内にいる別のユニット1体：<bulletlist><bullet>{ICE_SHACKLES_DAMAGE\\>DAMAGE\\>Frost} <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>減速になる。</bullet></bulletlist>",
+    "description": "対象の敵ユニットと、のマス内にいる別のユニット1体：<bulletlist><bullet> <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>減速になる。</bullet></bulletlist>",
     "name": "氷の束縛",
     "spell_slug": "氷の束縛",
     "tier": 1,
-    "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
+    "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
     "description": "非闇ユニットに以下を付与する：<bulletlist><bullet>弱者の淘汰：<bulletlist></bullet><bullet>遠隔攻撃者が弱まったを与える可能性を付与する。</bullet><bullet>弱まったユニットに対して近接攻撃者が与えたダメージが増加する。</bullet></bulletlist></bulletlist>",
@@ -4378,35 +4704,35 @@
   "icon": "000003E300004AEE",
   "skills": [
    {
-    "description": "自分の<turn></turn>ターン開始時にグレード Iの動物ユニットを出現させる<hyperlink>大自然のトーテム</hyperlink>を出現させる。{TOTEM_OF_THE_WILD_SUMMON\\>TurnsToLive} <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
+    "description": "<hyperlink>大自然のトーテム</hyperlink>を召喚する。これの作成時とあなたの次の<turn></turn>ターン開始時に、ランダムなグレードIかIIの動物ユニットを出現させる。<br></br><br></br>水域戦闘では使用不可。",
     "name": "大自然のトーテム",
     "spell_slug": "大自然のトーテム",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニット：<bulletlist><bullet>+{EMPOWERED_BEASTS_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%ダメージを与える。</bullet><bullet>+{EMPOWERED_BEASTS_HP_BONUS\\>BONUS\\>HitPoints} <hyperlink><hp></hp>HP</hyperlink>を獲得する。</bullet><bullet>デモリッシャーを獲得し、強化障害物を破壊できるようになる。</bullet><bullet>編隊のユニット数が減少する。</bullet></bulletlist>",
+    "description": "魔法ユニット：<bulletlist><bullet>+%ダメージを与える。</bullet><bullet>+ <hyperlink><hp></hp>HP</hyperlink>を獲得する。</bullet><bullet>デモリッシャーを獲得し、強化障害物を破壊できるようになる。</bullet><bullet>編隊のユニット数が減少する。</bullet></bulletlist>",
     "name": "強化ビースト",
     "spell_slug": "強化ビースト",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "標的の種族の数を増やして体格を大きくさせ、以下を付与する：<bulletlist><bullet>+{SUPERGROWTH_STAT_BONUS\\>BONUS\\>HitPoints} <hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet>+{WATCHFUL_NUM_OVERWATCH\\>NumTriggersToAdd} <hyperlink>報復攻撃</hyperlink>。</bullet><bullet>編隊のユニット数を減らす。</bullet></bulletlist><br></br>この変身はスポーンキンと同時に使用できない。",
+    "description": "標的の種族の数を増やして体格を大きくさせ、以下を付与する：<bulletlist><bullet>+ <hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet>+ <hyperlink>報復攻撃</hyperlink>。</bullet><bullet>編隊のユニット数を減らす。</bullet></bulletlist><br></br>この変身はスポーンキンと同時に使用できない。",
     "name": "超成長",
     "spell_slug": "超成長",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "対象の地点にランダムなグレードIII動物ユニットを召喚する。<br></br><br></br>低確率でグレードIV動物ユニットを召喚する。",
-    "name": "グレーターアニマル召喚",
-    "spell_slug": "グレーターアニマル召喚",
+    "description": "<bulletlist><bullet>グレード IIIかグレード IVの動物ユニットを選択すると自軍に加えられる。</bullet><bullet>利用可能な動物は呪文が唱えられた地形のタイプによる。</bullet></bulletlist>",
+    "name": "グレーターアニマル招集",
+    "spell_slug": "グレーターアニマル招集",
     "tier": 5,
     "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "動物または騎兵隊ユニットに{UNLEASH_BEAST_STATUS_EFFECT_DESCRIPTION\\>NumTurns}<turn></turn>ターンの間、以下を付与する：<bulletlist><bullet>5 強化</bullet><bullet>5 防御強化</bullet><bullet> 狂乱。</bullet></bulletlist>",
+    "description": "動物または騎兵隊ユニットに<turn></turn>ターンの間、以下を付与する：<bulletlist><bullet>5 強化</bullet><bullet>5 防御強化</bullet><bullet> 狂乱。</bullet></bulletlist>",
     "name": "野獣解放",
     "spell_slug": "野獣解放",
     "tier": 6,
@@ -4426,18 +4752,18 @@
   "icon": "000003E1000012B1",
   "skills": [
    {
-    "description": "この都市は以下を得る：<bulletlist><bullet>+10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet></bulletlist><br></br>あなたの<hyperlink>王座の都市</hyperlink>は以下を得る：:<bulletlist><bullet>+20 <gold></gold><hyperlink> ゴールド</hyperlink></bullet><bullet>+10 <food></food><hyperlink> 食料</hyperlink></bullet><bullet>+10 <unitprod></unitprod><hyperlink>召集</hyperlink></bullet></bulletlist><br></br><br></br>異種族の都市にしか建築できない。",
+    "description": "この都市は以下を得る：<bulletlist><bullet>+10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet><bullet>+20<unitprod></unitprod><hyperlink>召集</hyperlink></bullet></bulletlist><br></br>あなたの<hyperlink>王座の都市</hyperlink>は以下を得る：:<bulletlist><bullet>+20 <gold></gold><hyperlink> ゴールド</hyperlink></bullet><bullet>+20 <food></food><hyperlink> 食料</hyperlink></bullet><bullet>+5 <influence></influence><hyperlink> 帝権</hyperlink></bullet></bulletlist><br></br><br></br>異種族の都市にしか建築できない。",
     "name": "男爵の宮殿",
     "tier": 6,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "男爵の宮殿"
    },
    {
-    "description": "対象の非ヒーローユニット（<hyperlink>敗走</hyperlink>）：<bulletlist><bullet>{FINAL_ULTIMATUM_RESISTANCE_CHECK\\>ResolvedStrength}%の確率で永久に洗脳状態になる。</bullet><bullet>成功の場合、+{FINAL_ULTIMATUM_CHANGE_MORALE\\>Morale Change} <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>抵抗された場合、ユニットは死亡する。</bullet></bulletlist>",
+    "description": "対象の非ヒーローユニット（<hyperlink>敗走</hyperlink>）：<bulletlist><bullet>%の確率で永久に洗脳状態になる。</bullet><bullet>成功の場合、+ <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>抵抗された場合、ユニットは死亡する。</bullet></bulletlist>",
     "name": "最終通告",
     "spell_slug": "最終通告",
     "tier": 5,
-    "type": "~ Combat Spell"
+    "type": "Combat Spell"
    },
    {
     "description": "<bulletlist><bullet>壁が突破されると、包囲されていた<hyperlink>都市</hyperlink>が-2 <population></population><hyperlink>人口</hyperlink>を失う。</bullet><bullet>自分が所有している中で最も近い<hyperlink>都市</hyperlink>は+2 <population></population><hyperlink>人口</hyperlink>を得る。</bullet><bullet>戦闘の開始時に、すべての敵ユニットは戦闘終了時まで-10<happiness></happiness><hyperlink>士気</hyperlink>を獲得する。</bullet></bulletlist>",
@@ -4481,21 +4807,21 @@
     "upgrade_slug": "要塞の工匠"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>+{SIEGE_MAGIC_DAMAGE\\>ResolvedMultiplier}%ダメージ</bullet><bullet>包囲突破、包囲中に追加の要塞ダメージを与える。</bullet><bullet>デモリッシャー、再強化された障害物を破壊できるようにする。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>+%ダメージ</bullet><bullet>包囲突破、包囲中に追加の要塞ダメージを与える。</bullet><bullet>デモリッシャー、再強化された障害物を破壊できるようにする。</bullet></bulletlist>",
     "name": "包囲魔法",
     "spell_slug": "包囲魔法",
     "tier": 4,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "マイナスのステータス効果に耐性があり、さらに同盟を同様の効果から守ることができる、非常に防衛的なシールドユニット。",
+    "description": " <hyperlink>マイナスのステータス効果</hyperlink>に耐性があり、さらに同盟を同様の効果から守ることができる、非常に防衛的なシールドユニット。",
     "name": "鉄のゴーレム",
     "tier": 3,
     "unit_slug": "鉄のゴーレム",
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>会心のヒット</hyperlink>の確率が+{ARTISAN_BLADES_CRITICAL_CHANCE\\>ResolvedCritChanceBonus}%。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下の効果を付与：<bulletlist><bullet><hyperlink><crit></crit>クリティカルヒット率</hyperlink>が+%。</bullet></bulletlist>",
     "name": "兵器の工匠",
     "spell_slug": "兵器の工匠",
     "tier": 3,
@@ -4527,21 +4853,21 @@
   "icon": "000003AD00002BB1",
   "skills": [
    {
-    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+{FIERY_ARROWS_EXTRA_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>{FIERY_ARROWS_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>{BURNING_RESISTANCE\\>ResolvedStrength}%の基本確率で火傷を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+ <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>%の基本確率で火傷を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "猛火矢",
     "spell_slug": "猛火矢",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "対象の敵ユニット：<bulletlist><bullet>{FIREBALL_UNIT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>火傷状態になる。</bullet><bullet>立っている地面が<hyperlink>炎上</hyperlink>する。</bullet></bulletlist>",
+    "description": "対象の敵ユニット：<bulletlist><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>火傷状態になる。</bullet><bullet>立っている地面が<hyperlink>炎上</hyperlink>する。</bullet></bulletlist>",
     "name": "発火",
     "spell_slug": "発火",
     "tier": 1,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "{WILDFIRE_CIRCLE\\>AREA\\>Radius}マス範囲内の敵ユニットは：<bulletlist><bullet>{WILDFIRE_UNIT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>火傷している場合、追加で{WILDFIRE_UNIT_DAMAGE_BURNING\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
+    "description": "マス範囲内の敵ユニットは：<bulletlist><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>火傷している場合、追加で <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
     "name": "焼身",
     "spell_slug": "焼身",
     "tier": 2,
@@ -4562,7 +4888,7 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "エンチャントされたユニットによる<hyperlink>近接攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+{SEARING_STEEL_EXTRA_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>{SEARING_STEEL_EXTRA_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>対象が火傷状態の場合、ダメージが{SEARING_STEEL_DAMAGE_MULTIPLIER\\>ResolvedMultiplier}%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "エンチャントされたユニットによる<hyperlink>近接攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+ <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>対象が火傷状態の場合、ダメージが%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "焼け付く刃",
     "spell_slug": "焼け付く刃",
     "tier": 2,
@@ -4594,14 +4920,14 @@
     "type": "<caststrategic></caststrategic> <hyperlink>都市呪文</hyperlink>"
    },
    {
-    "description": "エンチャントされたユニットによる基本<hyperlink>近接攻撃</hyperlink>に以下の効果を付与：<bulletlist><bullet>{SUNDERED_DEFENSE_RESISTANCE\\>ResolvedStrength}%の確率でバラバラの防衛効果を与え、敵の<defense></defense><hyperlink>防御力</hyperlink>を減少させる。</bullet><bullet>デモリッシャーになり、強化された障害物を破壊できるようになる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>攻撃に以下の効果を付与：<bulletlist><bullet>バラバラの防衛の効果を与え、敵の<defense></defense><hyperlink>防御力</hyperlink>を減少させる。</bullet><bullet>デモリッシャーになり、強化された障害物を破壊できるようになる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "分断の刃",
     "spell_slug": "分断の刃",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>マジック・オリジンに対するダメージ量が+{PURGING_ARROWS_DAMAGE\\>ResolvedMultiplier}%。</bullet><bullet> {PURGING_ARROWS_RESISTANCE\\>ResolvedStrength}%の確率で1種類のプラスのステータス効果を標的から取り除く。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>マジック・オリジンに対するダメージ量が+%。</bullet><bullet> %の基本確率で1種類の<hyperlink>プラスのステータス効果</hyperlink>を標的から取り除く。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "浄化の矢",
     "spell_slug": "浄化の矢",
     "tier": 2,
@@ -4615,7 +4941,7 @@
     "type": "<hyperlink>ユニット</hyperlink>"
    },
    {
-    "description": "エンチャントされたユニット：<bulletlist><bullet>+{SPELL_TEMPERED_SHIELDS_STAT_BONUS\\>BONUS\\>DEFENSE\\>Resistance} <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet><hyperlink>防御モード</hyperlink>に入る時、このユニットと隣接するすべての同盟が、次のターンの開始時まで+{SPELL_TEMPERED_SHIELDS_PROP_DEFENSE\\>DEF_MOD\\>Resistance}の<resistance></resistance><hyperlink>耐性</hyperlink>を得る。</bullet></bulletlist>",
+    "description": "エンチャントされたユニット：<bulletlist><bullet>+ <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet><hyperlink>防御モード</hyperlink>に入る時、このユニットと隣接するすべての同盟が、次のターンの開始時まで+の<resistance></resistance><hyperlink>耐性</hyperlink>を得る。</bullet></bulletlist>",
     "name": "呪文強化の盾",
     "spell_slug": "呪文強化の盾",
     "tier": 1,
@@ -4654,32 +4980,32 @@
     "type": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>"
    },
    {
-    "description": "<happiness></happiness> <hyperlink>都市の安定性</hyperlink>レベルが<hyperlink>不安定</hyperlink>を1レベル上回るごとに、都市は以下を入手する：<bulletlist><bullet>+5 <knowledge></knowledge> <hyperlink> 知識</hyperlink>。</bullet><bullet>+5 <mana></mana><hyperlink> マナ</hyperlink>。</bullet></bulletlist>",
+    "description": "<happiness></happiness> <hyperlink>都市の安定性</hyperlink>レベルが<hyperlink>不安定</hyperlink>を1レベル上回るごとに、都市は以下を入手する：<bulletlist><bullet>+5 <knowledge></knowledge><hyperlink>知識</hyperlink>。</bullet><bullet>+5 <mana></mana><hyperlink> マナ</hyperlink>。</bullet></bulletlist>",
     "name": "修道院",
     "tier": 2,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "修道院"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>信仰深き者、これにより<hyperlink>ユニット維持費</hyperlink>が減少する。</bullet><bullet>戦闘中に使用できる回復アビリティである修復の仕上げ。</bullet></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet>信仰深き者、これにより基本の<hyperlink>ユニット維持費</hyperlink>が減少する。</bullet><bullet>戦闘中に使用できる回復アビリティである修復の仕上げ。</bullet></bulletlist>",
     "name": "修復の杖",
     "spell_slug": "修復の杖",
     "tier": 2,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "味方を強化する信仰深き者なサポートユニット。",
-    "name": "聖職者",
+    "description": "<hyperlink>光の小精霊</hyperlink> サポートユニットを召喚する。",
+    "name": "光の小精霊の召喚",
+    "spell_slug": "光の小精霊の召喚",
     "tier": 2,
-    "unit_slug": "聖職者",
-    "type": "<hyperlink>ユニット</hyperlink>"
+    "type": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>"
    },
    {
-    "description": "対象の敵ユニットは{WRATH_OF_THE_FAITHFUL_DAMAGE\\>DAMAGE\\>Spirit}<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>に加え、戦闘している味方の信仰深き者ユニット1人につき{WRATH_OF_THE_FAITHFUL_COUNTING_EXTRA_DAMAGE\\>DAMAGE\\>Spirit} <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を追加で受ける（最大8）。",
+    "description": "対象の敵ユニットは<damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>に加え、戦闘している味方の信仰深き者ユニット1人につき <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を追加で受ける（最大8）。",
     "name": "信仰者の怒り",
     "spell_slug": "信仰者の怒り",
     "tier": 2,
-    "type": "~ Combat Spell"
+    "type": "Combat Spell"
    }
   ],
   "initial_upgrades": [
@@ -4700,21 +5026,21 @@
   "icon": "000003BD00002DF8",
   "skills": [
    {
-    "description": "対象のグレードI、II、IIIいずれかの非マジック・オリジンかつ非変造体の味方ユニットに以下を付与：<bulletlist><bullet><hyperlink>ウォーブリード</hyperlink>に変身する。</bullet><bullet>{MONSTROUS_REBIRTH_HEAL\\>NumHitpointsToRestore}<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>戦闘終了時に死亡する。</bullet></bulletlist>",
+    "description": "対象のグレードI、II、IIIいずれかの非マジック・オリジンかつ非変造体の味方ユニットに以下を付与：<bulletlist><bullet><hyperlink>ウォーブリード</hyperlink>に変身する。</bullet><bullet><hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>戦闘終了時に死亡する。</bullet></bulletlist><br><br></br>水域戦闘では使用できない。",
     "name": "醜悪なる回生",
     "spell_slug": "醜悪なる回生",
     "tier": 5,
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの攻撃に以下を付与：<bulletlist><bullet>デモリッシャー、これにより魔法ユニットが<hyperlink>強化</hyperlink>の障害物を破壊できるようになる。</bullet><bullet><hyperlink>防御モード</hyperlink>を{FOCUS_OF_DEVASTATION_RESISTANCE_CHECK\\>ResolvedStrength}%の基本確率でキャンセルする。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの攻撃に以下を付与：<bulletlist><bullet>デモリッシャー、これにより魔法ユニットが<hyperlink>強化</hyperlink>の障害物を破壊できるようになる。</bullet><bullet><hyperlink>防御モード</hyperlink>を%の基本確率でキャンセルする。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "破滅のフォーカス",
     "spell_slug": "破滅のフォーカス",
     "tier": 6,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>会心のヒット</hyperlink>確率+{FLAMEBURST_WEAPONS_CRITICAL\\>ResolvedCritChanceBonus}。</bullet><bullet>このユニットが別のユニットを倒す度に：<bulletlist></bullet><bullet>倒したユニットを爆発させ、隣接する敵ユニットに{FLAMEBURST_UNIT_DAMAGE\\>DAMAGE\\>Fire}の<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist></bulletlist>",
+    "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink><crit></crit>クリティカルヒット率</hyperlink>+。</bullet><bullet>このユニットが別のユニットを倒す度に：<bulletlist></bullet><bullet>倒したユニットを爆発させ、隣接する敵ユニットにの<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist></bulletlist>",
     "name": "集中砲火の武器",
     "spell_slug": "集中砲火の武器",
     "tier": 6,
@@ -4747,7 +5073,7 @@
   "icon": "000003AD00002BA3",
   "skills": [
    {
-    "description": "ワールドマップ上で+{ENCHANTED_CROW_STATS_BONUS\\>BONUS\\>SightRange} <hyperlink>視界範囲</hyperlink>を得る。",
+    "description": "ワールドマップ上で+ <hyperlink>視界範囲</hyperlink>を得る。",
     "name": "魔力された仲間のカラス",
     "spell_slug": "魔力された仲間のカラス",
     "tier": 1,
@@ -4774,35 +5100,35 @@
   "icon": "000003AD00002B83",
   "skills": [
    {
-    "description": "魔法ユニットの基本に以下の効果を付与：<bulletlist><bullet>対象ユニットと隣接する敵に対して+{METEOR_ARROWS_UNIT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>デモリッシャーを獲得し、強化された障害物が破壊できるようになる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本に以下の効果を付与：<bulletlist><bullet>対象ユニットと隣接する敵に対して+ <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>デモリッシャーを獲得し、強化された障害物が破壊できるようになる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "隕石投射物",
     "spell_slug": "隕石投射物",
     "tier": 8,
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "<hyperlink>胸壁の建造物</hyperlink><br></br><bulletlist><bullet>胸壁は<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist></bullet><bullet>+4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink> を与える。</bullet><bullet>影響を受けたマスは<hyperlink>炎上</hyperlink>状態となる。</bullet><bullet>対象の<hyperlink>不明瞭</hyperlink>の影響を受けない。</bullet><bullet>+1 <range></range>の範囲。</bullet></bulletlist><bullet>この都市で生産されたユニットは、攻撃時に+1 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist>",
+    "description": "<hyperlink>胸壁の建造物</hyperlink><br></br><bulletlist><bullet>胸壁は<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist></bullet><bullet>+4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink> を与える。</bullet><bullet>影響を受けたマスは<hyperlink>炎上</hyperlink>状態となる。</bullet><bullet>対象の<hyperlink>不明瞭</hyperlink>の影響を受けない。</bullet><bullet>+1 <hyperlink><range></range>範囲</hyperlink></bullet></bulletlist><bullet>都市は<hyperlink>裂け目</hyperlink>もしくは<hyperlink>溶岩</hyperlink>によって併合中の領域からマイナスの<happiness></happiness> <hyperlink>都市の安定性</hyperlink>ペナルティを受けない。</bullet></bulletlist>",
     "name": "るつぼの胸壁",
     "tier": 7,
     "type": "<hyperlink>都市の建造物</hyperlink>",
     "upgrade_slug": "るつぼの胸壁"
    },
    {
-    "description": "最大{METEOR_SHOWER_AUTO_SPELL\\>MaxCastCount}体のランダムな敵ユニットと、そのユニットに隣接する敵：<bulletlist><bullet>{METEOR_SHOWER_UNIT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と{METEOR_SHOWER_UNIT_DAMAGE\\>DAMAGE\\>Physical} <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet></bulletlist><br></br>この呪文は、これから{METEOR_SHOWER_AUTO_SPELL\\>TimeToLive} <turn></turn>ターンターンの間、各ターン開始時に繰り返される。",
+    "description": "最大体のランダムな敵ユニットと、そのユニットに隣接する敵：<bulletlist><bullet> <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet></bulletlist><br></br>この呪文は、これから <turn></turn>ターンターンの間、各ターン開始時に繰り返される。",
     "name": "流星群",
     "spell_slug": "流星群",
     "tier": 8,
     "type": "<casttactical></casttactical><hyperlink>戦闘魔力</hyperlink>"
    },
    {
-    "description": "{LAVA_BURST_OBSTACLE_TARGETER_CIRCLE\\>AREA\\>Radius}マス範囲が対象になる。<bulletlist><bullet>全てのユニットが{LAVA_BURST_UNIT_DAMAGE\\>DAMAGE\\>Fire} <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>全てのユニットが火傷する。</bullet><bullet>全てのユニットが減速状態になる。</bullet><bullet>地面が<hyperlink>炎上</hyperlink>する。</bullet></bulletlist>",
+    "description": "マス範囲が対象になる。<bulletlist><bullet>全てのユニットが <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>全てのユニットが火傷する。</bullet><bullet>全てのユニットが減速状態になる。</bullet><bullet>地面が<hyperlink>炎上</hyperlink>する。</bullet></bulletlist>",
     "name": "溶岩爆発",
     "spell_slug": "溶岩爆発",
     "tier": 7,
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>敵の<hyperlink>領域改善</hyperlink>が含まれている場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたはその報酬を得ることもなく、<hyperlink>考え方</hyperlink>を失うこともない。</bullet></bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>その領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>その領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+    "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>敵の<hyperlink>領域改善</hyperlink>が含まれている場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたはその報酬を得ることもなく、<hyperlink>考え方</hyperlink>を失うこともない。</bullet></bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>その領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>その領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
     "name": "火砕噴火",
     "spell_slug": "火砕噴火",
     "tier": 7,

@@ -28,7 +28,7 @@
   "id": "zeichen_des_schwerfälligen_stabs",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Für die Einheit gilt:<bulletlist><bullet><hyperlink>Magische</hyperlink> und <hyperlink>Unterstützung</hyperlink>sfähigkeiten haben +1 Reichweite.</bullet><bullet>Niedrige Geschwindigkeit im Kampf.</bullet></bulletlist>",
+  "description": "Für die Einheit gilt:<bulletlist><bullet><hyperlink>Magie</hyperlink>- und <hyperlink>Unterstützung</hyperlink>sfähigkeiten haben +1 <hyperlink><range></range>Reichweite</hyperlink>.</bullet><bullet>Niedrige Geschwindigkeit im Kampf.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -48,7 +48,7 @@
   "id": "zeichen_der_vorhut",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Für die Einheit gilt:<bulletlist><bullet>Hat Sehr hohe Geschwindigkeit im Kampf.</bullet><bullet><hyperlink>Magische</hyperlink> und <hyperlink>physische Fernkampf</hyperlink>angriffe gegen diese Einheit haben -20 % <hyperlink>Treffsicherheit</hyperlink>.</bullet><bullet><hyperlink>Nahkampf</hyperlink>angriffe verursachen -20 % Schaden.</bullet></bulletlist>",
+  "description": "Für die Einheit gilt:<bulletlist><bullet>Hat Sehr hohe Geschwindigkeit im Kampf.</bullet><bullet><hyperlink>Magische</hyperlink> und <hyperlink>physische Fernkampf</hyperlink>angriffe gegen diese Einheit haben -20 % <hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink>.</bullet><bullet><hyperlink>Nahkampf</hyperlink>angriffe verursachen -20 % Schaden.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShock></unitShock> Schockeinheit"
@@ -154,7 +154,7 @@
   "id": "zeichen_der_jägerin",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "<hyperlink>Magische</hyperlink> und <hyperlink>physische Fernkampf</hyperlink>angriffe haben +30 % Schaden und -1 Reichweite.",
+  "description": "<hyperlink>Magie</hyperlink>angriffe und <hyperlink>physische Fernkampf</hyperlink>angriffe haben +30 % Schaden und -1 <hyperlink><range></range>Reichweite</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -183,15 +183,15 @@
   "icon": "0000049C00000082"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "20<mana></mana> ",
   "resid": 5068061409449,
   "spellType": "<casttactical></casttactical> <hyperlink>Schwächungszauber</hyperlink>",
   "id": "verdorbener_segen",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Feindliche Zieleinheiten im Umkreis von 1 Feld(ern):<bulletlist><bullet>Verlieren alle positiven Statuseffekte.</bullet><bullet>Falls ein verlorener Statuseffekt Kontern von Statuseffekten hatte, erhält die Einheit einen Stapel dieses negativen Statuseffekts.<bulletlist></bullet>",
+  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Verliert alle <hyperlink>positiven Statuseffekte</hyperlink>.</bullet><bullet>Falls ein verlorener Statuseffekt Kontern von Statuseffekten hat, erhält die Einheit einen Stapel des entsprechenden <hyperlink>negativen Statuseffekts</hyperlink>.<bulletlist></bullet>",
   "name": "verdorbener Segen",
-  "operation_point_cost": 30,
+  "operation_point_cost": 25,
   "icon": "0000049C0000008C"
  },
  {
@@ -246,6 +246,321 @@
   "name": "Umbrariss",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "120<mana></mana> ",
+  "resid": 5046586584490,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
+  "id": "blühende_projektile",
+  "tactical": false,
+  "description": "Für <hyperlink>physische Fernkampf</hyperlink>- und <hyperlink>Magie</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>Erhalten eine Basischance von 60 %, für 3 <turn></turn> Runden Lebenssaat zuzufügen.</bullet><bullet>Verursachen +10 % Schaden gegen <hyperlink>verwesende</hyperlink> Einheiten.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Kampfmagiereinheit"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
+   }
+  ],
+  "name": "blühende Projektile",
+  "operation_point_cost": 120,
+  "icon": "0000049700002DA7"
+ },
+ {
+  "casting_cost": "60<mana></mana> ",
+  "resid": 5046586584448,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "geringen_lichtgeist_beschwören",
+  "tactical": false,
+  "description": "Beschwört die Unterstützungseinheit <hyperlink>Geringer Lichtgeist</hyperlink>.",
+  "name": "Geringen Lichtgeist beschwören",
+  "operation_point_cost": 60,
+  "icon": "000003BD00002E6E",
+  "summoned_units": [
+   {
+    "slug": "geringer_lichtgeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586584444,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "lichtbringer_beschwören",
+  "tactical": false,
+  "description": "Beschwört einen <hyperlink>Lichtbringer</hyperlink>, eine Kampfmagiereinheit, der andere Einheiten für deine Sache bekehren kann.",
+  "name": "Lichtbringer beschwören",
+  "operation_point_cost": 100,
+  "icon": "0000049700002D86",
+  "summoned_units": [
+   {
+    "slug": "lichtbringer"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584436,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "lichtgeist_beschwören",
+  "tactical": false,
+  "description": "Beschwört einen <hyperlink>Lichtgeist</hyperlink>, eine Unterstützungseinheit mit starken Heilungsfähigkeiten.",
+  "name": "Lichtgeist beschwören",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "lichtgeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584156,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "gesegnete_seele_beschwören",
+  "tactical": false,
+  "description": "Beschwört eine <hyperlink>Gesegnete Seele</hyperlink> als Schildeinheit, die deine Einheiten mobilisieren und den Feind verdammen kann.",
+  "name": "Gesegnete Seele beschwören",
+  "operation_point_cost": 150,
+  "icon": "0000041B00001969",
+  "summoned_units": [
+   {
+    "slug": "gesegnete_seele"
+   }
+  ]
+ },
+ {
+  "casting_cost": "35<souls></souls> ",
+  "resid": 5046586584128,
+  "spellType": "<casttactical></casttactical> <hyperlink>Stärkungs-/Schwächungszauber</hyperlink>",
+  "id": "unheiliger_champion",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Verbündete Zieleinheit erhält:<bulletlist><bullet>+50 % Schaden.</bullet><bullet>Unsterblich.</bullet><bullet>Rüstung der Verzweiflung.</bullet></bulletlist><br></br>Beim Wirken verlieren feindliche Einheiten in einem Umkreis von 2 Feld(ern) 10 <happiness></happiness> <hyperlink>Moral</hyperlink>.",
+  "name": "unheiliger Champion",
+  "operation_point_cost": 40,
+  "icon": "0000049700002C3D"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586584106,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
+  "id": "untote_missgunst",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+2 <defensespirit></defensespirit> <hyperlink>Geistwiderstand</hyperlink></bullet><bullet>+2 <defensefire></defensefire> <hyperlink>Feuerwiderstand</hyperlink></bullet><bullet>Bösartiger Killer</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitUndead></unitUndead> Untoter"
+   }
+  ],
+  "name": "untote Missgunst",
+  "operation_point_cost": 140,
+  "icon": "0000049700002C32"
+ },
+ {
+  "casting_cost": "150<souls></souls> ",
+  "resid": 5046586584087,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "gefallenen_engel_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Beschwört einen <hyperlink>Gefallenen Engel</hyperlink>. Diese Kampfmagiereinheit bringt Verfall und Verderbnis.",
+  "name": "Gefallenen Engel beschwören",
+  "operation_point_cost": 200,
+  "summoned_units": [
+   {
+    "slug": "gefallener_engel"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586583968,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
+  "id": "heilige_aura",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Heilige Aura, was angrenzenden verbündeten Einheiten Statusschutz gewährt und angrenzend Feinden Schaden zufügt.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Schildeinheit"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Stangenwaffeneinheit"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Schockeinheit"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Kämpfereinheit"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
+   }
+  ],
+  "name": "heilige Aura",
+  "operation_point_cost": 140,
+  "icon": "0000049700002B9D"
+ },
+ {
+  "casting_cost": "200<mana></mana> ",
+  "resid": 5046586583955,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Freundarmeezauber</hyperlink>",
+  "id": "himmlische_wächter",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Anvisierter Anführer einer Armee erhält für 1 <turn></turn> Runde auf die <hyperlink>Weltkarte</hyperlink> Himmlische Wächter, was zu Beginn des Kampfes für die Dauer des Effekts 2 Archoniereinheiten der Stufe III beschwört.",
+  "name": "himmlische Wächter",
+  "operation_point_cost": 200,
+  "icon": "0000049700002B90"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583943,
+  "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
+  "id": "aufgestiegene_wiedergeburt",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Anvisierte Einheit, die kein Held und nicht himmlisch ist:<bulletlist><bullet>Wird bis zum Ende des Kampfes als <hyperlink>Nachtwache</hyperlink> unter der Kontrolle des Wirkers wiederbelebt.</bullet><bullet>Bei der Wiederbelebung werden alle verbündeten Einheiten in einem Umkreis von 2 Feld(ern) um 20 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> geheilt.</bullet>",
+  "name": "aufgestiegene Wiedergeburt",
+  "operation_point_cost": 40,
+  "icon": "0000049700002B84"
+ },
+ {
+  "casting_cost": "450<mana></mana> ",
+  "resid": 5046586583927,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Geringfügige Volkstransformation</hyperlink>",
+  "id": "reine_seele",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Reinigt die Seelen des Zielvolkes und gewährt ihm folgende Effekte:<bulletlist><bullet>Entfernt zu Beginn jeder Runde im Kampf 1 <hyperlink>negativen Statuseffekt</hyperlink>.</bullet><bullet>Falls der entfernte negative Statuseffekt einen positiven <hyperlink>Konter</hyperlink> hatte, wird der <hyperlink>positive Statuseffekt</hyperlink> gewährt.</bullet></bulletlist><br></br>Diese Transformation ist nicht mit Umbrafleisch und Düsterschreiter kompatibel.",
+  "name": "reine Seele",
+  "operation_point_cost": 450,
+  "icon": "0000049700002B7C"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586583923,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "astra_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Beschwört eine <hyperlink>Astra</hyperlink>, eine <hyperlink>mythische</hyperlink> Engelseinheit mit starken Angriffen und Heilfähigkeiten.",
+  "name": "Astra beschwören",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "astra"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583846,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
+  "id": "vorausschauende_diademe",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Verzauberte Einheiten:<bulletlist><bullet>Erhalten Vorkenntnis, wenn sie in den <hyperlink>Verteidigungsmodus</hyperlink> wechseln.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Schildeinheit"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Stangenwaffeneinheit"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Schockeinheit"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Kämpfereinheit"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
+   }
+  ],
+  "name": "vorausschauende Diademe",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B1A"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583837,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
+  "id": "vorherbestimmte_projektile",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+20 % <hyperlink>kritische Trefferchance</hyperlink>.</bullet><bullet>Gläubiger.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Kampfmagiereinheit"
+   }
+  ],
+  "name": "vorherbestimmte Projektile",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B16"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586583776,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampfverzauberung</hyperlink>",
+  "id": "kampfprophezeiung",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beim Wirken und für die nächsten 2 <turn></turn> Runden werden diese Effekte in der folgenden Reihenfolge auf den Kampf angewendet:<bulletlist><bullet>Alle verbündeten Einheiten erhalten in dieser Runde +25 % <hyperlink>Ausweichen</hyperlink>.</bullet><bullet>Alle verbündeten Einheiten erhalten Vorkenntnis.</bullet><bullet>Alle verbündeten Einheiten erhalten in dieser Runde +20 % Schaden.</bullet></bulletlist>",
+  "name": "Kampfprophezeiung",
+  "operation_point_cost": 35,
+  "icon": "0000049700002ADD"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586583726,
+  "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
+  "id": "heroischer_widerstand",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Verliert ihre <hyperlink>negativen Statuseffekte</hyperlink>.</bullet><bullet>Erhält 1 <turn></turn> Runde lang Standfest.</bullet><bullet>Ignoriert 1 <turn></turn> Runde lang die Abzüge durch <hyperlink>Verlust</hyperlink>.</bullet></bulletlist>",
+  "name": "heroischer Widerstand",
+  "operation_point_cost": 20,
+  "icon": "0000049700002AAB"
+ },
+ {
+  "casting_cost": "250<mana></mana> ",
+  "resid": 5046586583714,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Geringfügige Volkstransformation</hyperlink>",
+  "id": "tugendhafter_geist",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Verleiht dem Zielvolk in Momenten der Schwäche neue Stärke und gewährt ihm:<bulletlist><bullet>+2 <defensespirit></defensespirit> <hyperlink>Geistwiderstand</hyperlink></bullet><bullet>Wenn diese Einheit unter 60 % ihrer maximalen <hyperlink><hp></hp> Trefferpunkte</hyperlink> fällt:<bulletlist></bullet><bullet>Ignoriert sie 50 % ihrer <hyperlink>Verlust</hyperlink>.</bullet><bullet>Erhält sie +1 <defense></defense> <hyperlink>Verteidigung</hyperlink>.</bullet><bullet>Erhält sie +1 <resistance></resistance> <hyperlink>Widerstand</hyperlink>.</bullet></bulletlist>",
+  "name": "tugendhafter Geist",
+  "operation_point_cost": 250,
+  "icon": "0000049700002A9E"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586583705,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
+  "id": "nachtwache_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Beschwört eine <hyperlink>Nachtwache</hyperlink> Kampfmagiereinheit - eine Einheit, die ihre Feinde mit heiligem Feuer läutert.",
+  "name": "Nachtwache beschwören",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "nachtwache"
+   }
+  ]
  },
  {
   "casting_cost": "90<mana></mana> ",
@@ -344,7 +659,7 @@
   "id": "schwingende_klingen",
   "DLC": "GIANTKINGS ",
   "tactical": false,
-  "description": "Für Standard-<hyperlink>Nahkampf</hyperlink>angriffe verzauberter Einheiten gilt:<bulletlist><bullet>Fügen je nach Gelände negative Statuseffekte zu.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für Standard-<hyperlink>Nahkampf</hyperlink>angriffe verzauberter Einheiten gilt:<bulletlist><bullet>Fügen je nach Gelände einen <hyperlink>negativen Statuseffekt</hyperlink> zu.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -457,7 +772,7 @@
   "id": "kristallsturz",
   "DLC": "GIANTKINGS ",
   "tactical": true,
-  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern):<bulletlist><bullet>Erleiden 15 <damagePhysical></damagePhysical> <hyperlink>physischen Schaden</hyperlink>.</bullet><bullet>Erleiden 15 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Haben eine Basischance von 90 %, für 2 <turn></turn> Runden flüchtige Aufladung zuzufügen.</bullet>",
+  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern):<bulletlist><bullet>Erleiden 15 <damagePhysical></damagePhysical> <hyperlink>physischen Schaden</hyperlink>.</bullet><bullet>Erleiden 15 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Haben eine Basischance von 90 %, für 2 <turn></turn> Runden Flüchtige Aufladung zuzufügen.</bullet>",
   "name": "Kristallsturz",
   "operation_point_cost": 35,
   "icon": "00000497000015BB"
@@ -469,7 +784,7 @@
   "id": "kristallfokus",
   "DLC": "GIANTKINGS ",
   "tactical": false,
-  "description": "Gewährt <hyperlink>magischen</hyperlink> Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 60 %, flüchtige Aufladung zuzufügen.</bullet></bulletlist>",
+  "description": "Gewährt <hyperlink>magischen</hyperlink> Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 60 %, Flüchtige Aufladung zuzufügen.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -536,7 +851,7 @@
   "id": "verfluchte_projektile",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Für <hyperlink>physische Fernkampf</hyperlink>- und <hyperlink>Magie</hyperlink>angriffe von verzauberten Einheiten gilt:<bulletlist><bullet>Verursachen +2 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Verursachen +2 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink></bullet><bullet>Haben eine Basischance von 60 %, für3 <turn></turn> Runden Geisterbrand zuzufügen.<br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.</bullet>",
+  "description": "<hyperlink>Physische Fernkampf</hyperlink>- und <hyperlink>Magie</hyperlink>angriffe von verzauberten Einheiten:<bulletlist><bullet>Verursachen +1 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Verursachen +1 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</bullet><bullet>Fügen für3 <turn></turn> Runden Geisterbrand zu.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -591,7 +906,7 @@
   "id": "land_entweihen",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine <hyperlink>Provinzverbesserung</hyperlink> enthält, wird sie <hyperlink>geplündert</hyperlink>.<bulletlist></bullet><bullet>Dir werden ihre Belohnungen gewährt und du verlierst <reputation2></reputation2> <hyperlink>Einstellung</hyperlink>.</bullet></bulletlist><bullet>Die Provinz erhält <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine <hyperlink>Provinzverbesserung</hyperlink> enthält, wird sie <hyperlink>geplündert</hyperlink>.<bulletlist></bullet><bullet>Dir werden ihre Belohnungen gewährt und du verlierst <reputation2></reputation2> <hyperlink>Einstellung</hyperlink>.</bullet></bulletlist><bullet>Die Provinz erhält <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Land entweihen",
   "operation_point_cost": 60,
   "icon": "00000497000013B2"
@@ -901,7 +1216,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "monströse_wiedergeburt",
   "tactical": true,
-  "description": "Für verbündete Zieleinheiten der Stufe I, II oder III, die nicht <hyperlink>magischen Ursprungs</hyperlink> oder Konstrukte sind, gilt:<bulletlist><bullet>Verwandelt sich in eine <hyperlink>Kriegsbrut</hyperlink>.</bullet><bullet>Heilt 60 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Stirbt am Ende des Kampfes.</bullet></bulletlist>",
+  "description": "Für verbündete Zieleinheiten der Stufe I, II oder III, die nicht <hyperlink>magischen Ursprungs</hyperlink> oder Konstrukte sind, gilt:<bulletlist><bullet>Verwandelt sich in eine <hyperlink>Kriegsbrut</hyperlink>.</bullet><bullet>Heilt 60 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Stirbt am Ende des Kampfes.</bullet></bulletlist><br><br></br>Kann nicht in Wasserkämpfen verwendet werden.",
   "name": "Monströse Wiedergeburt",
   "operation_point_cost": 30,
   "icon": "0000049700000ECB"
@@ -1108,7 +1423,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "läuternde_pfeile",
   "tactical": false,
-  "description": "Die <hyperlink>physischen Fernkampf</hyperlink>-Standardangriffe verzauberter Einheiten erhalten:<bulletlist><bullet>+10 % Schaden gegen Einheiten <hyperlink>magischen Ursprungs</hyperlink>.</bullet><bullet>Eine Basischance von 60 %, 1 positiven Statuseffekt vom Ziel zu entfernen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Die <hyperlink>physischen Fernkampf</hyperlink>-Standardangriffe verzauberter Einheiten erhalten:<bulletlist><bullet>+10 % Schaden gegen Einheiten <hyperlink>magischen Ursprungs</hyperlink>.</bullet><bullet>Eine Basischance von 60 %, 1 <hyperlink>positiven Statuseffekt</hyperlink> vom Ziel zu entfernen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -1199,13 +1514,13 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "erdenform_aschenland",
   "tactical": false,
-  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Erhält <hyperlink>Aschenland</hyperlink></bullet><bullet>Verliert <hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink></bullet></bulletlist>",
+  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Erhält <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Verliert <hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Erdenform: Aschenland",
   "operation_point_cost": 45,
   "icon": "000004970000066F"
  },
  {
-  "casting_cost": "80<mana></mana> ",
+  "casting_cost": "60<mana></mana> ",
   "resid": 5046586574328,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Weltzauber</hyperlink>",
   "id": "wolkenbruch",
@@ -1213,7 +1528,7 @@
   "tactical": false,
   "description": "Zielprovinz:<bulletlist><bullet>Ändert das Gelände zu Sumpf, falls Land.</bullet><bullet>Ist für 3 <turn></turn> Runden von einem Wolkenbruch betroffen.</bullet></bulletlist><br></br><br></br>Kann nicht im Untergrund angewendet werden.",
   "name": "Wolkenbruch",
-  "operation_point_cost": 80,
+  "operation_point_cost": 60,
   "icon": "00000497000005A8"
  },
  {
@@ -1223,7 +1538,7 @@
   "id": "blitzsturm",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "<bulletlist><bullet>Alle Einheiten werden für 3 <turn></turn> Runden mit Nass belegt.</bullet><bullet>Bis zu 2 zufällige gegnerische Einheiten:<bulletlist></bullet><bullet>Erleiden 10 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Haben eine Basischance von 90 %, für 3 <turn></turn> Runden mit Elektrifiziert belegt zu werden.</bullet></bulletlist></bulletlist><br></br>Dieser Zauber wird für die nächsten 6 <turn></turn> Runden zu Beginn jeder Runde wiederholt.",
+  "description": "<bulletlist><bullet>Alle Einheiten werden für 3 <turn></turn> Runden mit Nass belegt.</bullet><bullet>Bis zu 2 zufällige gegnerische Einheiten:<bulletlist></bullet><bullet>Erleiden 20 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Haben eine Basischance von 90 %, für 3 <turn></turn> Runden mit Elektrifiziert belegt zu werden.</bullet></bulletlist></bulletlist><br></br>Dieser Zauber wird für die nächsten 6 <turn></turn> Runden zu Beginn jeder Runde wiederholt.",
   "name": "Blitzsturm",
   "operation_point_cost": 35,
   "icon": "00000497000005A4"
@@ -1247,7 +1562,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Geringfügige Volkstransformation</hyperlink>",
   "id": "feenverbindung",
   "tactical": false,
-  "description": "Das Zielvolk macht sich die Kräfte der Feenwesen zunutze und erhält:<bulletlist><bullet>Arglist der Feenwesen</bullet><bullet>Die Fähigkeit zum Ignorieren von:<bulletlist></bullet><bullet>Sichtabzügen durch Neblig.</bullet><bullet>Treffsicherheitsabzügen durch haftender Nebel.</bullet></bulletlist></bulletlist>",
+  "description": "Das Zielvolk macht sich die Kräfte der Feenwesen zunutze und erhält:<bulletlist><bullet>Arglist der Feenwesen</bullet><bullet>Die Fähigkeit zum Ignorieren von:<bulletlist></bullet><bullet>Sichtabzügen durch Neblig.</bullet><bullet><hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink>sabzügen durch Haftender Nebel.</bullet></bulletlist></bulletlist>",
   "name": "Feenverbindung",
   "operation_point_cost": 250,
   "icon": "000004970000052C"
@@ -1270,7 +1585,7 @@
   "id": "umarmung_der_feenwesen",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "In einem Umkreis von 1 Feld(ern):<bulletlist><bullet>Werden <hyperlink>Nebel</hyperlink>wolken platziert.</bullet><bullet>Erhalten verbündete Einheiten 2 zufällige positive Statuseffekte.</bullet>",
+  "description": "In einem Umkreis von 1 Feld(ern):<bulletlist><bullet>Werden <hyperlink>Nebel</hyperlink>wolken platziert.</bullet><bullet>Erhalten verbündete Einheiten 2 zufällige <hyperlink>positive Statuseffekte</hyperlink>.</bullet>",
   "name": "Umarmung der Feenwesen",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1299,7 +1614,7 @@
   "id": "dunstling_beschwören",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Beschwört einen <hyperlink>Dunstling</hyperlink>, eine Plänklereinheit mit Angriffen, die zufällige negative Statuseffekte verursachen.",
+  "description": "Beschwört einen <hyperlink>Dunstling</hyperlink>, eine Plänklereinheit mit Angriffen, die einen zufälligen <hyperlink>negativen Statuseffekt</hyperlink> zufügen.",
   "name": "Dunstling beschwören",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -1705,7 +2020,7 @@
   "id": "ritual_des_unheils",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<bulletlist><bullet>Zu Beginn jeder <turn></turn> <hyperlink>Runde</hyperlink> während der Belagerung wird eine zufällige <hyperlink>Provinzverbesserung</hyperlink> der belagerten Stadt <hyperlink>geplündert</hyperlink> und gewährt Belohnungen.</bullet><bullet>Zu Beginn des Kampfes:<bulletlist></bullet><bullet>Alle Verteidiger erhalten für {duration} <turn></turn> Runden einen Stapel Geisterbrand.</bullet><bullet>Auf der Seite des Angreifers erscheinen {amountUnits} <hyperlink>Verfluchte Oger</hyperlink>.</bullet></bulletlist></bulletlist>",
+  "description": "<bulletlist><bullet>Zu Beginn jeder <turn></turn> <hyperlink>Runde</hyperlink> während der Belagerung wird eine zufällige <hyperlink>Provinzverbesserung</hyperlink> der belagerten Stadt <hyperlink>geplündert</hyperlink> und gewährt Belohnungen.</bullet><bullet>Zu Beginn des Kampfes:<bulletlist></bullet><bullet>Alle Verteidiger erhalten für  <turn></turn> Runden einen Stapel Geisterbrand.</bullet><bullet>Auf der Seite des Angreifers erscheinen <hyperlink>Verfluchte Oger</hyperlink>.</bullet></bulletlist></bulletlist>",
   "name": "Ritual des Unheils",
   "operation_point_cost": 0,
   "icon": "00000497000013B6"
@@ -1781,7 +2096,7 @@
   "description": "Wähle eine verbündete <hyperlink>Armee</hyperlink> aus. Eine zufällige <hyperlink>Einheit</hyperlink> mit Entwickeln in der Armee steigt sofort genug Ränge auf, um sich weiterzuentwickeln.",
   "name": "erzwungene Evolution",
   "operation_point_cost": 80,
-  "icon": "00000493000001AF"
+  "icon": "0000049700002DFE"
  },
  {
   "casting_cost": "200<mana></mana> ",
@@ -1829,7 +2144,7 @@
   "id": "umbrafleisch",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Verleiht dem Zielvolk die Segen der Umbrakluft und gewährt:<bulletlist><bullet>Umbrapathie-Immunität</bullet><bullet>Auf <hyperlink>Düsternis</hyperlink>gelände erhalten Einheiten:<bulletlist></bullet><bullet>+10 <happiness></happiness> <hyperlink>Moral</hyperlink></bullet><bullet>+12 <hyperlink><hp></hp> Trefferpunkt</hyperlink> pro <turn></turn> <hyperlink>Runde</hyperlink> auf der Weltkarte</bullet></bulletlist><bullet><hyperlink>Städte</hyperlink> des Volkes:<bulletlist></bullet><bullet>Erhalten +2 Einnahmen durch <knowledge></knowledge> <hyperlink>Wissen</hyperlink> für jede Provinz mit Düsternisgelände.</bullet><bullet>Ignorieren <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink>sabzüge durch Düsternisgelände.</bullet></bulletlist><bullet>Heldeneinheiten erhalten Düsterhirte.</bullet></bulletlist>",
+  "description": "Verleiht dem Zielvolk die Segen der Umbrakluft und gewährt:<bulletlist><bullet>Umbrapathie-Immunität</bullet><bullet>Auf <hyperlink>Düsternis</hyperlink>gelände erhalten Einheiten:<bulletlist></bullet><bullet>+10 <happiness></happiness> <hyperlink>Moral</hyperlink></bullet><bullet>+12 <hyperlink><hp></hp> Trefferpunkt</hyperlink> pro <turn></turn> <hyperlink>Runde</hyperlink> auf der Weltkarte</bullet></bulletlist><bullet><hyperlink>Städte</hyperlink> des Volkes:<bulletlist></bullet><bullet>Erhalten +2 Einnahmen durch <knowledge></knowledge> <hyperlink>Wissen</hyperlink> für jede Provinz mit Düsternisgelände.</bullet><bullet>Ignorieren <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink>sabzüge durch Düsternisgelände.</bullet></bulletlist><bullet>Heldeneinheiten erhalten Düsterhirte.</bullet></bulletlist><br></br>Diese Transformation ist nicht mit Reine Seele kompatibel.",
   "name": "Umbrafleisch",
   "operation_point_cost": 250,
   "icon": "0000049000000854"
@@ -1841,10 +2156,162 @@
   "id": "düsterschreiter",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Verwandelt das Zielvolk in umbrale Wesen, was folgende Effekte gewährt:<bulletlist><bullet>Einheitentyp Umbradämon.</bullet><bullet>Schweben.</bullet><bullet>Hohe Geschwindigkeit.<bulletlist><br></br><br></br>Berittene Einheiten verlieren ihre Reittiere.<br></br><br></br>Helden verlieren ihr Reittier und ihren Bein-Ausrüstungsplatz.</bullet>",
+  "description": "Verwandelt das Zielvolk in umbrale Wesen, was folgende Effekte gewährt:<bulletlist><bullet>Einheitentyp Umbradämon.</bullet><bullet>Schweben.</bullet><bullet>Hohe Geschwindigkeit.<bulletlist><br></br><br></br>Berittene Einheiten verlieren ihre Reittiere.<br></br><br></br>Helden verlieren ihr Reittier und ihren Bein-Ausrüstungsplatz.<br></br><br></br>Diese Transformation ist nicht mit Reine Seele kompatibel.</bullet>",
   "name": "Düsterschreiter",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905512,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
+  "id": "elementar_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beschwört einen Geringen Geist auf Stufe I, der der dominanten <hyperlink>Affinität</hyperlink> deines Reiches entspricht: <hyperlink>Geringer Schneegeist</hyperlink><br></br><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "name": "Elementar beschwören",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "geringer_schneegeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905508,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
+  "id": "elementar_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beschwört einen Geringen Geist auf Stufe I, der der dominanten <hyperlink>Affinität</hyperlink> deines Reiches entspricht: <hyperlink>Geringer Flutgeist</hyperlink><br></br><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "name": "Elementar beschwören",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "geringer_flutgeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905504,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
+  "id": "elementar_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beschwört einen Geringen Geist auf Stufe I, der der dominanten <hyperlink>Affinität</hyperlink> deines Reiches entspricht: <hyperlink>Geringer Steingeist</hyperlink><br></br><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "name": "Elementar beschwören",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "geringer_steingeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905500,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
+  "id": "elementar_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beschwört einen Geringen Geist auf Stufe I, der der dominanten <hyperlink>Affinität</hyperlink> deines Reiches entspricht: <hyperlink>Geringer Sturmgeist</hyperlink><br></br><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "name": "Elementar beschwören",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "geringer_sturmgeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905496,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
+  "id": "elementar_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beschwört einen Geringen Geist auf Stufe I, der der dominanten <hyperlink>Affinität</hyperlink> deines Reiches entspricht: <hyperlink>Geringer Magmageist</hyperlink><br></br><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "name": "Elementar beschwören",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "geringer_magmageist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905491,
+  "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
+  "id": "elementar_beschwören",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Beschwört einen Geringen Geist auf Stufe I, der der dominanten <hyperlink>Affinität</hyperlink> deines Reiches entspricht: <hyperlink>Geringer Lichtgeist</hyperlink><br></br><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "name": "Elementar beschwören",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "geringer_lichtgeist"
+   }
+  ]
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636905483,
+  "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
+  "id": "zähe_inkarnation",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Verbündete Einheiten in einem Umkreis von 1 Feld(ern) erhalten 1 <turn></turn> Runde lang:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Verteidigung</hyperlink> und +1 <resistance></resistance> <hyperlink>Widerstand</hyperlink>.</bullet><bullet>Zusätzlich +1 <defense></defense> <hyperlink>Verteidigung</hyperlink> und +1 <resistance></resistance> <hyperlink>Widerstand</hyperlink> pro Stapel Affinitätsinkarnation.</bullet></bulletlist>",
+  "name": "zähe Inkarnation",
+  "operation_point_cost": 15,
+  "icon": "0000048D000015C1"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636905425,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
+  "id": "inkarnationsmal",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Gewährt Einheiten, die keine Architekten sind:<bulletlist><bullet>Affinitätsinkarnation.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Schildeinheit"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Stangenwaffeneinheit"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Schockeinheit"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Kampfmagiereinheit"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Kämpfereinheit"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
+   }
+  ],
+  "name": "Inkarnationsmal",
+  "operation_point_cost": 90,
+  "icon": "0000048D000015B9"
  },
  {
   "casting_cost": "60<gold></gold> ",
@@ -1895,7 +2362,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Weltzauber</hyperlink>",
   "id": "astralprophezeiung",
   "tactical": false,
-  "description": "Erschafft und enthüllt neue <hyperlink>Astralecho</hyperlink> in Provinzen in der Nähe deines Gebiets.",
+  "description": "Erschafft und enthüllt neue <hyperlink>Astralechos</hyperlink> in Provinzen in der Nähe deines Gebiets.",
   "name": "Astralprophezeiung",
   "operation_point_cost": 300,
   "icon": "000003E3000053C6"
@@ -1918,7 +2385,7 @@
   "id": "weihender_feuersturm",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Anvisierte nicht verbündete <hyperlink>Provinz</hyperlink>, die kein <hyperlink>Altes Wunder</hyperlink> enthält:<bulletlist><bullet>Ihre <hyperlink>Provinzverbesserung</hyperlink> wird zerstört.</bullet><bullet>Feindliche Einheiten in der Provinz erleiden 20 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink>.</bullet><bullet>3 <turn></turn> Runden lang erleiden alle feindlichen Einheiten beim Kampfeintritt Verurteilt.</bullet><bullet>Erzeugt <hyperlink>Reinigende Flammen</hyperlink> auf zufälligen Feldern.</bullet></bulletlist>",
+  "description": "In Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Feindliche Einheiten erleiden 20 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink>.</bullet><bullet>Die Provinz erhält für 3 <turn></turn> Runden Weihender Feuersturm.</bullet><bullet>Wenn sie eine <hyperlink>Provinzverbesserung</hyperlink> in feindlichem Besitz hat, wird diese <hyperlink>geplündert</hyperlink>.</bullet></bulletlist>",
   "name": "weihender Feuersturm",
   "operation_point_cost": 100,
   "icon": "0000048D0000087B"
@@ -1942,7 +2409,7 @@
   "id": "flammengesegnete_champions",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Gewährt <hyperlink>Nahkampf</hyperlink>-Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 60 %, Brennen zuzufügen.</bullet><bullet>Falls das Ziel 5 Stapel Brennen hat:<br></br>Erschafft 3 <turn></turn> <hyperlink>Runden</hyperlink> lang <hyperlink>Reinigende Flammen</hyperlink> auf dem Zielfeld.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Gewährt <hyperlink>Nahkampf</hyperlink>-Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 60 %, Brennen zuzufügen.</bullet><bullet>Die Fähigkeit, für 3 <turn></turn> Runden <hyperlink>Reinigende Flammen</hyperlink> auf dem Zielfeld zu erzeugen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -2052,7 +2519,7 @@
   "id": "vergeltende_auswüchse",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Verbündete Zieleinheit erhält: vergeltende Auswüchse für 2 <turn></turn> Runden.",
+  "description": "Verbündete Zieleinheit erhält: Vergeltende Auswüchse für 2 <turn></turn> Runden.",
   "name": "vergeltende Auswüchse",
   "operation_point_cost": 15,
   "icon": "0000048D000005AC"
@@ -2064,7 +2531,7 @@
   "id": "tentakel_beschwören",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Beschwört eine <hyperlink>unbewegliche</hyperlink> Kämpfereinheit mit Vorhersehendes Auge.<br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
+  "description": "Beschwört eine <hyperlink>unbewegliche</hyperlink> Kämpfereinheit mit Hyperwahrnehmung.<br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.",
   "name": "Tentakel beschwören",
   "operation_point_cost": 25,
   "summoned_units": [
@@ -2080,7 +2547,7 @@
   "id": "umschlingender_fokus",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Gewährt <hyperlink>Magie</hyperlink>-Standardangriffen verzauberter Einheiten:<bulletlist><bullet>1 <turn></turn> Runde lang eine Basischance von 30 %, Umschlungen zuzufügen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für <hyperlink>Magie</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>Erhalten 1 <turn></turn> Runde lang eine Basischance von 30 %, Umschlungen zuzufügen.</bullet><bullet>Gegen <hyperlink>markierte</hyperlink> oder <hyperlink>verlangsamte</hyperlink> Einheiten erhöht sich die Chance auf 60 %.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -2126,10 +2593,10 @@
   "casting_cost": "60<mana></mana> ",
   "resid": 5003636899875,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
-  "id": "wildes_tier_beschwören",
+  "id": "wildes_tier_rufen",
   "tactical": false,
-  "description": "<bulletlist><bullet>Beschwört zufällig ein Tier der Stufe I auf das gewünschte Weltfeld.</bullet><bullet>Geringe Chance auf die Beschwörung eines Tiers der Stufe II.</bullet><bullet>Die möglichen Tiere hängen von der Art des Geländes ab, auf das diese Fertigkeit wirkt.</bullet></bulletlist>",
-  "name": "Wildes Tier beschwören",
+  "description": "<bulletlist><bullet>Wähle eine Tiereinheit der Stufe I oder II für deine Armee.</bullet><bullet>Welche Tiere verfügbar sind, hängt von der Art des Geländes ab, auf dem der Zauber gewirkt wird.</bullet></bulletlist>",
+  "name": "Wildes Tier rufen",
   "operation_point_cost": 60,
   "icon": "0000041B000002E7",
   "summoned_units": [
@@ -2204,7 +2671,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
   "id": "großes_tier_beschwören",
   "tactical": false,
-  "description": "Beschwört eine zufällige Tiereinheit der Stufe III am Zielort.<br></br><br></br>Mit geringer Wahrscheinlichkeit wird ein Tier der Stufe IV beschworen.",
+  "description": "<bulletlist><bullet>Wähle eine Tiereinheit der Stufe III oder IV für deine Armee.</bullet><bullet>Welche Tiere verfügbar sind, hängt von der Art des Geländes ab, auf dem der Zauber gewirkt wird.</bullet></bulletlist>",
   "name": "Großes Tier beschwören",
   "operation_point_cost": 150,
   "icon": "000003E300004AF7",
@@ -2276,6 +2743,17 @@
     "slug": "obisidianwyvern"
    }
   ]
+ },
+ {
+  "casting_cost": "5<mana></mana> ",
+  "resid": 4995046968314,
+  "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
+  "id": "gesprengte_fesseln",
+  "tactical": true,
+  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Verliert alle <hyperlink>negativen Statuseffekte</hyperlink>.</bullet><bullet>Erhält 2 Gestärkt.</bullet></bulletlist>",
+  "name": "Gesprengte Fesseln",
+  "operation_point_cost": 10,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -2386,7 +2864,7 @@
   "id": "mantra_der_reinigung",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Wird um 15 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> geheilt.</bullet><bullet>Verliert 2 negativen Statuseffekt.</bullet></bulletlist>",
+  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Wird um 15 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> geheilt.</bullet><bullet>Verliert 2 <hyperlink>negativen Statuseffekt</hyperlink>.</bullet></bulletlist>",
   "name": "Mantra der Reinigung",
   "operation_point_cost": 10,
   "icon": "0000048B000001D1"
@@ -2414,7 +2892,7 @@
   "id": "bahrtuch_der_düsternis",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Für die Ziel<hyperlink>provinz</hyperlink> und angrenzende <hyperlink>Provinzen</hyperlink> gilt:<bulletlist><bullet>Sie erhalten <hyperlink>Düsternis</hyperlink>.</bullet><bullet>Sie verlieren <hyperlink>Schlucht</hyperlink>, <hyperlink>Fluss</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sumpf</hyperlink> und <hyperlink>Verlies</hyperlink>.</bullet><bullet>Feindliche <hyperlink>Einheiten</hyperlink> erleiden 10 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> und 10 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet></bulletlist>",
+  "description": "Für die Ziel<hyperlink>provinz</hyperlink> und angrenzende <hyperlink>Provinzen</hyperlink> gilt:<bulletlist><bullet>Sie erhalten<hyperlink>Düsternis</hyperlink>.</bullet><bullet>Sie verlieren <hyperlink>Schlucht</hyperlink>, <hyperlink>Fluss</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Verlies</hyperlink>.</bullet><bullet>Feindliche <hyperlink>Einheiten</hyperlink> erleiden 10 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> und 10 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet></bulletlist>",
   "name": "Bahrtuch der Düsternis",
   "operation_point_cost": 150,
   "icon": "0000048B00000135"
@@ -2508,7 +2986,7 @@
   "id": "astraltrennung",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Ziel<hyperlink>einheit</hyperlink> <hyperlink>magischen Ursprungs</hyperlink>:<bulletlist><bullet>Hat eine Basischance von 60 %, getötet zu werden.</bullet><bullet>Bei einem Fehlschlag wird das Ziel mit Gestört und Verwesung belegt.</bullet></bulletlist>",
+  "description": "Ziel<hyperlink>einheit</hyperlink> <hyperlink>magischen Ursprungs</hyperlink>:<bulletlist><bullet>Hat eine Basischance von 60 %, getötet zu werden.</bullet><bullet>Bei Misserfolg wird das Ziel mit Gestört und 4 Stapeln Verwesung belegt.</bullet></bulletlist>",
   "name": "Astraltrennung",
   "operation_point_cost": 50,
   "icon": "0000046A000001E7"
@@ -2527,6 +3005,9 @@
    },
    {
     "requisite": "<unitPolearm></unitPolearm> Stangenwaffeneinheit"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Kämpfereinheit"
    }
   ],
   "name": "Kompositverteidigung",
@@ -2540,7 +3021,7 @@
   "id": "verbundene_geister",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Einheiten dieses Volkes erhalten die Fähigkeit, ihre Sinneswahrnehmung zu teilen, und erhalten dadurch:<bulletlist><bullet>Vorhersehendes Auge, wenn sie an ein Konstrukt oder eine andere Einheit mit Verbundene Geister angrenzen.</bullet></bulletlist>",
+  "description": "Einheiten dieses Volkes erhalten die Fähigkeit, ihre Sinneswahrnehmung zu teilen. Dis gewährt ihnen:<bulletlist><bullet>Hyperwahrnehmung, wenn sie an ein Konstrukt oder eine andere Einheit mit Verbundene Geister angrenzen.</bullet></bulletlist>",
   "name": "verbundene Geister",
   "operation_point_cost": 250,
   "icon": "0000046A0000019C"
@@ -2552,7 +3033,7 @@
   "id": "kaskadierendes_kommando_umpositionieren",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Verbündetes Zielkonstrukt oder verbündete Zieleinheit mit verbundene Geister:<bulletlist><bullet>Eilig</bullet><bullet>Gestärkt</bullet><bullet>Dieser Effekt springt dann auf angrenzende verbündete Konstrukt- oder Verbundene-Geister-Einheiten über und wird wiederholt.</bullet></bulletlist>",
+  "description": "Verbündetes Zielkonstrukt oder verbündete Zieleinheit mit Verbundene Geister:<bulletlist><bullet>Eilig</bullet><bullet>Gestärkt</bullet><bullet>Dieser Effekt springt dann auf angrenzende verbündete Konstrukt- oder Verbundene-Geister-Einheiten über und wird wiederholt.</bullet></bulletlist>",
   "name": "Kaskadierendes Kommando: Umpositionieren",
   "operation_point_cost": 25,
   "icon": "0000046A00000187"
@@ -2564,7 +3045,7 @@
   "id": "kaskadierendes_kommando_verteidigen",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Verbündetes Zielkonstrukt oder verbündete Zieleinheit mit verbundene Geister: <bulletlist><bullet>Erhält für 1 <turn></turn> Runde Wachsam.</bullet><bullet>Aktiviert den <hyperlink>Verteidigungsmodus</hyperlink>.</bullet><bullet>Dieser Effekt wird dann auf angrenzende verbündete Konstrukt- oder Verbundene-Geister-Einheiten angewendet und wiederholt.</bullet></bulletlist>",
+  "description": "Verbündetes Zielkonstrukt oder verbündete Zieleinheit mit Verbundene Geister: <bulletlist><bullet>Erhält für 1 <turn></turn> Runde Meister der Verteidigung.</bullet><bullet>Verliert 2 <hyperlink>negative Statuseffekte</hyperlink>.</bullet><bullet>Dieser Effekt wird dann auf angrenzende verbündete Konstrukt- oder Verbundene-Geister-Einheiten angewendet und wiederholt.</bullet></bulletlist>",
   "name": "Kaskadierendes Kommando: Verteidigen",
   "operation_point_cost": 25,
   "icon": "0000046A0000017D"
@@ -2619,7 +3100,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "erdenform_sand",
   "tactical": false,
-  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink> auf der Oberfläche:<bulletlist><bullet>Erhält <hyperlink>Sand</hyperlink>.</bullet><bullet>Verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Fluss</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink> auf der Oberfläche:<bulletlist><bullet>Erhält <hyperlink>Sand</hyperlink>.</bullet><bullet>Verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Erdenform: Sand",
   "operation_point_cost": 45,
   "icon": "0000045E00000EB2"
@@ -2641,7 +3122,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "erdenform_schnee",
   "tactical": false,
-  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Erhält <hyperlink>Schnee</hyperlink> und <hyperlink>Eis</hyperlink>.</bullet><bullet>Verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Fluss</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Erhält <hyperlink>Schnee</hyperlink> und <hyperlink>Eis</hyperlink>.</bullet><bullet>Verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Erdenform: Schnee",
   "operation_point_cost": 45,
   "icon": "0000045E00000E97"
@@ -2675,7 +3156,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "höllenflammen",
   "tactical": false,
-  "description": "Ziel<hyperlink>provinz</hyperlink> und angrenzende Provinzen:<bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> erleiden 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Die Provinzen erhalten <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Die Provinzen verlieren<hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Ziel<hyperlink>provinz</hyperlink> und angrenzende Provinzen:<bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> erleiden 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Die Provinzen erhalten <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Die Provinzen verlieren<hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Höllenflammen",
   "operation_point_cost": 200,
   "icon": "000003E300005AA8"
@@ -2686,7 +3167,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "blitzfrost",
   "tactical": false,
-  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> in der Provinz erleiden:<bulletlist></bullet><bullet>20 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</bullet><bullet>-5 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink> für 1 <turn></turn> <hyperlink>Runde</hyperlink> auf der <hyperlink>Weltkarte</hyperlink>.</bullet></bulletlist><bullet>Die Provinz erhält <hyperlink>Schnee</hyperlink> und <hyperlink>Eis</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Fluss</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> in der Provinz erleiden:<bulletlist></bullet><bullet>20 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</bullet><bullet>-5 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink> für 1 <turn></turn> <hyperlink>Runde</hyperlink> auf der <hyperlink>Weltkarte</hyperlink>.</bullet></bulletlist><bullet>Die Provinz erhält <hyperlink>Schnee</hyperlink> und <hyperlink>Eis</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Blitzfrost",
   "operation_point_cost": 100,
   "icon": "0000041B00001764"
@@ -2728,7 +3209,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "zerstörerischer_wiederwuchs",
   "tactical": false,
-  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine feindliche <hyperlink>Provinzverbesserung</hyperlink> enthält, wird sie <hyperlink>geplündert</hyperlink>.<bulletlist></bullet><bullet>Dir werden weder ihre Belohnungen gewährt, noch verlierst du <hyperlink>Einstellung</hyperlink>.</bullet></bulletlist><bullet>Die Provinz erhält <hyperlink>Wald</hyperlink>, wenn sie sich auf der Oberfläche befindet, und <hyperlink>Pilzwald</hyperlink>, wenn sie im Untergrund ist.</bullet></bulletlist>",
+  "description": "Bei Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Feindliche Einheiten erleiden 20 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Wenn sie eine feindliche <hyperlink>Provinzverbesserung</hyperlink> enthält, wird sie <hyperlink>geplündert</hyperlink>.<bulletlist></bullet><bullet>Dir werden weder ihre Belohnungen gewährt, noch verlierst du <hyperlink>Einstellung</hyperlink>.</bullet></bulletlist><bullet>Die Provinz erhält <hyperlink>Wald</hyperlink>, wenn sie sich auf der Oberfläche befindet, und <hyperlink>Pilzwald</hyperlink>, wenn sie im Untergrund ist.</bullet></bulletlist>",
   "name": "Zerstörerischer Wiederwuchs",
   "operation_point_cost": 150,
   "icon": "000003E30000522E"
@@ -2774,7 +3255,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaubersieg</hyperlink>",
   "id": "Ära_der_ordnung",
   "tactical": false,
-  "description": "Kanalisiere die Ära der Ordnung, um den <hyperlink>Magiesieg</hyperlink> zu erringen. Während des Kanalisierens:<bulletlist><bullet>Deine <hyperlink>Zauber</hyperlink> der <order></order> <hyperlink>Ordnungsaffinität</hyperlink> kosten -20 % <mana></mana> <hyperlink>Mana</hyperlink>, <caststrategic></caststrategic> <hyperlink>Weltkarten-Zauberpunkte</hyperlink> und <optactical></optactical> <hyperlink>Kampf-Zauberpunkte</hyperlink>.</bullet><bullet>In jeder Runde im Kampf erhält ein zufälliger Verbündeter 3 zufällige positive Statuseffekte und verliert alle negativen Statuseffekte.</bullet></bulletlist>",
+  "description": "Kanalisiere die Ära der Ordnung, um den <hyperlink>Magiesieg</hyperlink> zu erringen. Während des Kanalisierens:<bulletlist><bullet>Deine <hyperlink>Zauber</hyperlink> der <order></order> <hyperlink>Ordnungsaffinität</hyperlink> kosten -20 % <mana></mana> <hyperlink>Mana</hyperlink>, <caststrategic></caststrategic> <hyperlink>Weltkarten-Zauberpunkte</hyperlink> und <optactical></optactical> <hyperlink>Kampf-Zauberpunkte</hyperlink>.</bullet><bullet>In jeder Runde im Kampf erhält ein zufälliger Verbündeter 3 zufällige <hyperlink>positive Statuseffekte</hyperlink> und verliert alle <hyperlink>negativen Statuseffekte</hyperlink>.</bullet></bulletlist>",
   "name": "Ära der Ordnung",
   "operation_point_cost": 400,
   "icon": "0000045A0000000B"
@@ -2844,7 +3325,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaubersieg</hyperlink>",
   "id": "Ära_des_chaos",
   "tactical": false,
-  "description": "Kanalisiere die Ära des Chaos, um den <hyperlink>Magiesieg</hyperlink> zu erringen. Während des Kanalisierens:<bulletlist><bullet>Deine <hyperlink>Zauber</hyperlink> der <chaos></chaos> <hyperlink>Chaosaffinität</hyperlink> kosten -20 % <mana></mana> <hyperlink>Mana</hyperlink>, <caststrategic></caststrategic> <hyperlink>Weltkarten-Zauberpunkte</hyperlink> und <optactical></optactical> <hyperlink>Kampf-Zauberpunkte</hyperlink>.</bullet><bullet>In jeder <turn></turn> Runde im Kampf erleidet eine zufällige feindliche Einheit 15 Schaden eines zufälligen Typs und erhält mit einer Basischance von 90 % einen zufälligen negativen Statuseffekt.</bullet></bulletlist>",
+  "description": "Kanalisiere die Ära des Chaos, um den <hyperlink>Magiesieg</hyperlink> zu erringen. Während des Kanalisierens:<bulletlist><bullet>Deine <hyperlink>Zauber</hyperlink> der <chaos></chaos> <hyperlink>Chaosaffinität</hyperlink> kosten -20 % <mana></mana> <hyperlink>Mana</hyperlink>, <caststrategic></caststrategic> <hyperlink>Weltkarten-Zauberpunkte</hyperlink> und <optactical></optactical> <hyperlink>Kampf-Zauberpunkte</hyperlink>.</bullet><bullet>In jeder <turn></turn> Runde im Kampf erleidet eine zufällige feindliche Einheit 15 Schaden eines zufälligen Typs und erhält mit einer Basischance von 90 % einen zufälligen <hyperlink>negativen Statuseffekt</hyperlink>.</bullet></bulletlist>",
   "name": "Ära des Chaos",
   "operation_point_cost": 400,
   "icon": "0000044500000040"
@@ -2957,14 +3438,14 @@
   "icon": "0000041B000019A1"
  },
  {
-  "casting_cost": "200<mana></mana> ",
+  "casting_cost": "150<mana></mana> ",
   "resid": 4514010634915,
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "siegeshymne",
   "tactical": true,
   "description": "Alle verbündeten Einheiten erhalten:<bulletlist><bullet>3 Gestärkt.</bullet><bullet>+15 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist>",
   "name": "Siegeshymne",
-  "operation_point_cost": 65,
+  "operation_point_cost": 50,
   "icon": "0000041B000019A5"
  },
  {
@@ -2984,7 +3465,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "mal_des_inquisitors",
   "tactical": false,
-  "description": "Verleiht Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 30 %, bis zum Kampfende Verurteilt zuzufügen und den <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink> des Feindes zu verringern.</bullet><bullet>Basischance von 30 %, Geschwächt zuzufügen und den Schaden des Feindes zu verringern.</bullet><bullet>Basischance von 30 %, Verlangsamt zuzufügen, die Bewegung des Feindes einzuschränken und Gegenschläge zu verhindern.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Verleiht Angriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 60 %, bis zum Kampfende Verurteilt zuzufügen und den <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink> des Feindes zu verringern.</bullet><bullet>Basischance von 60 %, Geschwächt zuzufügen und den Schaden des Feindes zu verringern.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -3067,14 +3548,14 @@
   "icon": "0000041B0000193D"
  },
  {
-  "casting_cost": "15<mana></mana> ",
+  "casting_cost": "30<mana></mana> ",
   "resid": 4514010634749,
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "inspirierender_choral",
   "tactical": true,
   "description": "Verbündete Einheiten in einem Umkreis von 2 Feld(ern):<bulletlist><bullet>Erhalten +10 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet><bullet>Erhalten 2 Gestärkt, wenn sie über Eifer verfügen.</bullet></bulletlist>",
   "name": "Inspirierender Choral",
-  "operation_point_cost": 20,
+  "operation_point_cost": 25,
   "icon": "0000041B00001939"
  },
  {
@@ -3115,7 +3596,7 @@
   "tactical": true,
   "description": "<bulletlist><bullet>Alle verbündeten <hyperlink>untoten</hyperlink> Einheiten werden mit 50 % ihrer gesamten <hyperlink><hp></hp> Trefferpunkte</hyperlink> wiederbelebt.</bullet><bullet>Leichen, die keine Untoten sind, werden als <hyperlink>Verwesende Zombien</hyperlink> wiederbelebt, die bis zum Ende des Kampfes unter deiner Kontrolle stehen.</bullet></bulletlist><br></br><br></br>Kann nicht in Wasserkämpfen eingesetzt werden.",
   "name": "Schlachtfeld-Wiederbelebung",
-  "operation_point_cost": 80,
+  "operation_point_cost": 65,
   "icon": "0000041B00001770"
  },
  {
@@ -3140,6 +3621,12 @@
    },
    {
     "slug": "skelettkrieger"
+   },
+   {
+    "slug": "knochenwyvern"
+   },
+   {
+    "slug": "korrupte_seele"
    },
    {
     "slug": "todesfee"
@@ -3256,7 +3743,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Schwächungszauber</hyperlink>",
   "id": "schlaf_der_vergessenheit",
   "tactical": true,
-  "description": "Eine anvisierte Einheit, die kein Held ist, stirbt. Nach 2 <turn></turn> Runden wird sie mit 75 % ihrer gesamten <hp></hp> Trefferpunkte wiederbelebt und mit Tollheit belegt.",
+  "description": "Eine anvisierte Einheit, die kein Held ist, stirbt. Nach 2 <turn></turn> Runden wird sie mit 75 % ihrer gesamten <hyperlink><hp></hp> Trefferpunkte</hyperlink> wiederbelebt und mit Tollheit belegt. <br></br><br></br>Solange die Einheit auf diese Weise tot ist, kann sie nicht wiederbelebt werden und es ist auch nicht möglich, ihre Leiche zu zerstören.",
   "name": "Schlaf der Vergessenheit",
   "operation_point_cost": 40,
   "icon": "0000041B0000174F"
@@ -3279,7 +3766,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "wintermarsch",
   "tactical": false,
-  "description": "Für die verbündete Ziel<hyperlink>stadt</hyperlink> gilt:<bulletlist>Jede <turn></turn> <hyperlink>Runde</hyperlink> erhalten bzw. verlieren 2 <hyperlink>Provinzen</hyperlink>, die sich in ihrem <hyperlink>Gebiet</hyperlink> befinden oder daran angrenzen:<bulletlist><bullet>Erhalten <hyperlink>Schnee</hyperlink> und <hyperlink>Eis</hyperlink>.</bullet><bullet>Verlieren <hyperlink>Schlucht</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Fluss</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist><bullet>Provinzen im Gebiet mit Schnee oder Eis liefern +2 <food></food> <hyperlink>Nahrung</hyperlink> und +2 <structureprod></structureprod> <hyperlink> Produktion</hyperlink>.</bullet></bulletlist>",
+  "description": "Für die verbündete Ziel<hyperlink>stadt</hyperlink> gilt:<bulletlist>Jede <turn></turn> <hyperlink>Runde</hyperlink> erhalten bzw. verlieren 2 <hyperlink>Provinzen</hyperlink>, die sich in ihrem <hyperlink>Gebiet</hyperlink> befinden oder daran angrenzen:<bulletlist><bullet>Erhalten <hyperlink>Schnee</hyperlink> und <hyperlink>Eis</hyperlink>.</bullet><bullet>Verlieren <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist><bullet>Provinzen im Gebiet mit Schnee oder Eis liefern +2 einer Nahrung- und +2 <structureprod></structureprod> <hyperlink> Produktion</hyperlink>seinnahmen.</bullet></bulletlist>",
   "name": "Wintermarsch",
   "operation_point_cost": 120,
   "icon": "0000041B00001729"
@@ -3323,7 +3810,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
   "id": "schneegeist_beschwören",
   "tactical": false,
-  "description": "Beschwöre einen <hyperlink>Schneegeist</hyperlink>, einen Plänklereinheit mit Angriffen, die Gefroren verursachen.",
+  "description": "Beschwöre einen <hyperlink>Schneegeist</hyperlink>, eine Plänklereinheit mit Angriffen, die Gefroren verursachen.",
   "name": "Schneegeist beschwören",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -3380,7 +3867,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Erhebliche Volkstransformation</hyperlink>",
   "id": "astrale_anpassung",
   "tactical": false,
-  "description": "Verbindet das Zielvolk mit dem Astralmeer und gewährt ihm:<bulletlist><bullet>Den Einheitentyp Ätherisch.</bullet><bullet>Anpassung: Astralomen, wodurch beim Wirken eines Zaubers im Kampf ein zufälliger positiver Statuseffekt gewährt wird.</bullet></bulletlist>",
+  "description": "Verbindet das Zielvolk mit dem Astralmeer und gewährt ihm:<bulletlist><bullet>Den Einheitentyp Ätherisch.</bullet><bullet>Anpassung: Astralomen, wodurch beim Wirken eines Zaubers im Kampf ein zufälliger <hyperlink>positiver Statuseffekt</hyperlink> gewährt wird.</bullet></bulletlist>",
   "name": "Astrale Anpassung",
   "operation_point_cost": 600,
   "icon": "0000041B00001298"
@@ -3403,7 +3890,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "kosmisches_Übersteuern",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+30 % Schaden.</bullet><bullet>Sehr hohe Geschwindigkeit.</bullet></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+20 % Schaden.</bullet><bullet>Sehr hohe Geschwindigkeit.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Kampf-Beschwörung"
@@ -3433,7 +3920,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungs-/Schwächungszauber</hyperlink>",
   "id": "störwelle",
   "tactical": true,
-  "description": "<bulletlist><bullet>Feindliche Einheiten haben eine Basischance von 120 %, 2 <turn></turn> Runden lang mit Gestört belegt zu werden.</bullet><bullet>Entfernt 2 positive Statuseffekte von Feinden.</bullet><bullet>Entfernt 2 negative Statuseffekte von Verbündeten.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Feindliche Einheiten haben eine Basischance von 120 %, für 2 <turn></turn> Runden mit Gestört belegt zu werden.</bullet><bullet>Entfernt 2 <hyperlink>positive Statuseffekte</hyperlink> von Feinden.</bullet><bullet>Entfernt 2 <hyperlink>negative Statuseffekte</hyperlink> von Verbündeten.</bullet></bulletlist>",
   "name": "Störwelle",
   "operation_point_cost": 80,
   "icon": "0000041B000012D6"
@@ -3444,7 +3931,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "phasenverzauberung",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Die Fähigkeit Phasenanpassung, wodurch sie sich im Kampf teleportieren können.</bullet></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Die Fähigkeit Geladene Phase, wodurch sie sich im Kampf teleportieren können.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -3489,7 +3976,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Heilungszauber</hyperlink>",
   "id": "notfallteleportation",
   "tactical": true,
-  "description": "Teleportiert die nächste verbündete Einheit im Umkreis von 4 Feldern auf ein leeres Zielfeld.<br></br>Diese Einheit heilt sich um +30 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.",
+  "description": "Teleportiert die nächste verbündete Einheit im Umkreis von 4 Feldern auf ein leeres Zielfeld.<br></br>Diese Einheit heilt sich um +30 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> und alle ihre <hyperlink>negative Statuseffekte</hyperlink> werden entfernt.",
   "name": "Notfallteleportation",
   "operation_point_cost": 30,
   "icon": "0000041B0000126E"
@@ -3500,7 +3987,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Geringfügige Volkstransformation</hyperlink>",
   "id": "astralblut",
   "tactical": false,
-  "description": "Lässt Magie durch die Adern des Zielvolks fließen und gewährt ihm: <bulletlist><bullet>Anpassung: Glück, wodurch die Chance auf <hyperlink>kritische Treffer</hyperlink> erhöht wird, wenn Zauber gewirkt werden.</bullet></bulletlist>",
+  "description": "Lässt Magie durch die Adern des Zielvolks fließen und gewährt ihm:<bulletlist><bullet>Anpassung: Glück, wodurch die <hyperlink><crit></crit>kritische Trefferchance</hyperlink> erhöht wird, wenn Zauber gewirkt werden.</bullet></bulletlist>",
   "name": "Astralblut",
   "operation_point_cost": 250,
   "icon": "0000041B00001240"
@@ -3538,7 +4025,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Schadens-/Schwächungszauber</hyperlink>",
   "id": "kettenblitz",
   "tactical": true,
-  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Erleidet 30 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Wird mit Elektrifiziert belegt.</bullet><bullet>Dieser Effekt geht auf einen weiteren Feind im Umkreis von 3 Feldern über.</bullet><bullet>Wird bis zu 2-mal weitergegeben.</bullet></bulletlist>",
+  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Erleidet 30 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Wird mit 2 Elektrifiziert belegt.</bullet><bullet>Dieser Effekt geht auf einen weiteren Feind im Umkreis von 3 Feldern über.</bullet><bullet>Wird bis zu 2-mal weitergegeben.</bullet></bulletlist>",
   "name": "Kettenblitz",
   "operation_point_cost": 30,
   "icon": "0000041B00001238"
@@ -3549,7 +4036,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "rasender_fokus",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Raserei, was den verursachten Schaden erhöht, wenn sie angreifen.</bullet><bullet>+1 Reichweite auf Standardangriffe.</bullet></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Raserei, was den verursachten Schaden erhöht, wenn sie angreifen.</bullet><bullet>+1 <hyperlink><range></range>Reichweite</hyperlink> auf Standardangriffe.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -3568,7 +4055,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "blitzklingen",
   "tactical": false,
-  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink>.</bullet><bullet>+20 % Schaden gegen <hyperlink>elektrifizierte</hyperlink> Einheiten.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink>.</bullet><bullet>+10 % Schaden gegen <hyperlink>elektrifizierte</hyperlink> Einheiten.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -3596,7 +4083,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Feindarmeezauber</hyperlink>",
   "id": "blitzschwall",
   "tactical": false,
-  "description": "In der feindlichen Zielarmee:<bulletlist><bullet>Alle Einheiten erleiden 20 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Alle Einheiten erleiden für 1 <turn></turn> Runde auf der <hyperlink>Weltkarte</hyperlink> -3 <defenselightning></defenselightning> <hyperlink>Blitzwiderstand</hyperlink>.</bullet></bulletlist>",
+  "description": "In der feindlichen Zielarmee:<bulletlist><bullet>Alle Einheiten erleiden 20 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</bullet><bullet>Alle Einheiten erleiden für 1 <turn></turn> Runde auf der <hyperlink>Weltkarte</hyperlink> -1 <defenselightning></defenselightning> <hyperlink>Blitzwiderstand</hyperlink>.</bullet></bulletlist>",
   "name": "Blitzschwall",
   "operation_point_cost": 80,
   "icon": "0000041B000012E5"
@@ -3699,7 +4186,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "pyroklastische_eruption",
   "tactical": false,
-  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine feindliche <hyperlink>Provinzverbesserung</hyperlink> enthält, wird sie <hyperlink>geplündert</hyperlink>.<bulletlist></bullet><bullet>Dir werden weder ihre Belohnungen gewährt, noch verlierst du <hyperlink>Einstellung</hyperlink>.</bullet></bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> in der Provinz erleiden 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Die Provinz erhält <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine feindliche <hyperlink>Provinzverbesserung</hyperlink> enthält, wird sie <hyperlink>geplündert</hyperlink>.<bulletlist></bullet><bullet>Dir werden weder ihre Belohnungen gewährt, noch verlierst du <hyperlink>Einstellung</hyperlink>.</bullet></bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> in der Provinz erleiden 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Die Provinz erhält <hyperlink>Aschenland</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Fluss</hyperlink>, <hyperlink>Grasland</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Pyroklastische Eruption",
   "operation_point_cost": 150,
   "icon": "000003AD00002B86"
@@ -3722,7 +4209,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "spaltende_klingen",
   "tactical": false,
-  "description": "<hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten erhalten:<bulletlist><bullet>Basischance von 90 %, Gespaltene Verteidigung zuzufügen und die feindliche <defense></defense> <hyperlink>Verteidigung</hyperlink> zu verringern.</bullet><bullet>Zertrümmerer, kann verstärkte Hindernisse zerstören.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Gewährt <hyperlink>Nahkampf</hyperlink>-Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Fügen Gespaltene Verteidigung zu und verringern die feindliche <defense></defense> <hyperlink>Verteidigung</hyperlink>.</bullet><bullet>Zertrümmerer, kann verstärkte Hindernisse zerstören.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -3750,7 +4237,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "sucherpfeile",
   "tactical": false,
-  "description": "Gewährt <hyperlink>physischen Fernkampf</hyperlink>angriffen verzauberter Einheiten:<bulletlist><bullet>+1<range></range> Reichweite.</bullet></bulletlist>",
+  "description": "Gewährt <hyperlink>physischen Fernkampf</hyperlink>angriffen verzauberter Einheiten:<bulletlist><bullet>+1 <hyperlink><range></range>Reichweite</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -3867,7 +4354,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "anpassungsfähige_rüstung",
   "tactical": false,
-  "description": "Sobald verzauberte Einheiten Schaden erleiden, der kein <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink> ist, erhalten sie einmal pro <turn></turn> Runde:<bulletlist><bullet>Gestärkter Widerstand, was ihren Widerstand gegen magischen Schaden reduziert.</bullet><bullet>Statusschutz, was die Wahrscheinlichkeit, dass die Einheit durch negative Statuseffekte beeinflusst wird, reduziert.</bullet></bulletlist>",
+  "description": "Sobald verzauberte Einheiten Schaden erleiden, der kein <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink> ist, erhalten sie einmal pro <turn></turn> Runde:<bulletlist><bullet>Gestärkter Widerstand, wodurch ihr Widerstand gegenüber magischem Schaden verstärkt wird.</bullet><bullet>Statusschutz, was die Wahrscheinlichkeit reduziert, dass die Einheit durch <hyperlink>negative Statuseffekte</hyperlink> beeinflusst wird.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -3945,7 +4432,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Heilungs-/Stärkungszauber</hyperlink>",
   "id": "instinkte_wecken",
   "tactical": true,
-  "description": "Alle verbündeten Einheiten in einem Umkreis von 2 Feld(ern):<bulletlist><bullet>Heilen +25 <hyperlink><hp></hp>temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Füllen alle <hyperlink>Aktionspunkte</hyperlink> auf.</bullet><bullet>Werden für 2 <turn></turn> Runden mit Berserkerwut belegt.</bullet></bulletlist>",
+  "description": "Alle verbündeten Einheiten in einem Umkreis von 2 Feld(ern):<bulletlist><bullet>Heilen +25 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Füllen alle <hyperlink>Aktionspunkte</hyperlink> auf.</bullet><bullet>Werden für 2 <turn></turn> Runden mit Berserkerwut belegt.</bullet></bulletlist><br></br>Einheiten mit <hyperlink>Immunität gegen Kontrollverlust</hyperlink> sind nicht betroffen.",
   "name": "Instinkte wecken",
   "operation_point_cost": 50,
   "icon": "000003E300005236"
@@ -3972,7 +4459,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "das_land_wiederherstellen",
   "tactical": false,
-  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Erhält <hyperlink>Grasland</hyperlink>, wenn sie sich auf der Oberfläche befindet, oder <hyperlink>Pilzfelder</hyperlink>, wenn sie im Untergrund ist.</bullet><bullet>Verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
+  "description": "Verbündete oder freie Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Erhält <hyperlink>Grasland</hyperlink>, wenn sie sich auf der Oberfläche befindet, oder <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Pilzwald</hyperlink>, wenn sie im Untergrund ist.</bullet><bullet>Verliert <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Höhlengrund</hyperlink>, <hyperlink>Stalagmiten</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet></bulletlist>",
   "name": "Das Land wiederherstellen",
   "operation_point_cost": 30,
   "icon": "0000041B00000D7C"
@@ -4119,7 +4606,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "infernaler_fokus",
   "tactical": false,
-  "description": "Wenn eine andere Einheit im Kampf stirbt, erhalten verzauberte Einheiten:<bulletlist><bullet>infernale Macht für 3 <turn></turn> Runden.</bullet><bullet>+5 <happiness></happiness> <hyperlink>Moral</hyperlink></bullet></bulletlist>.<br></br>Wird nicht beim Tod von <hyperlink>Kampf-Beschwörungs</hyperlink>-, Turm- und Belagerungstechnik-Einheiten ausgelöst.</bulletlist>",
+  "description": "Wenn eine andere Einheit im Kampf stirbt, erhalten verzauberte Einheiten:<bulletlist><bullet>Infernale Macht für 3 <turn></turn> Runden.</bullet><bullet>+5 <happiness></happiness> <hyperlink>Moral</hyperlink></bullet></bulletlist>.<br></br>Wird nicht beim Tod von <hyperlink>Kampf-Beschwörungs</hyperlink>-, Turm- und Belagerungstechnik-Einheiten ausgelöst.</bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -4155,7 +4642,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Geringfügige Volkstransformation</hyperlink>",
   "id": "gefäße_des_chaos",
   "tactical": false,
-  "description": "Verwandelt das anvisierte Volk in einen Nexus für chaotische Energien und gewährt ihm:<bulletlist><bullet>+10 % Schaden für jeden negativen Statuseffekt des Ziels. Bis zu 3-mal stapelbar.</bullet></bulletlist>",
+  "description": "Verwandelt das anvisierte Volk in einen Nexus für chaotische Energien und gewährt ihm:<bulletlist><bullet>+10 % Schaden für jeden <hyperlink>negativen Statuseffekt</hyperlink> des Ziels. Bis zu 3-mal stapelbar.</bullet></bulletlist>",
   "name": "Gefäße des Chaos",
   "operation_point_cost": 350,
   "icon": "0000041B00000B60"
@@ -4166,7 +4653,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "chaosmagie",
   "tactical": false,
-  "description": "Die <hyperlink>Magie</hyperlink>-Standardangriffe verzauberter Einheiten erhalten:<bulletlist><bullet>Eine Basischance von 60 %, einen zufälligen negativen Statuseffekt zuzufügen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Die <hyperlink>Magie</hyperlink>-Standardangriffe verzauberter Einheiten erhalten:<bulletlist><bullet>Eine Basischance von 60 %, einen zufälligen <hyperlink>negativen Statuseffekt</hyperlink> zuzufügen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -4185,7 +4672,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
   "id": "chaosschlinger_beschwören",
   "tactical": false,
-  "description": "Beschwört einen <hyperlink>Chaosschlinger</hyperlink>. Dieser Kampfmagiereinheit für den Nahkampf ernährt sich von negativen Statuseffekten.",
+  "description": "Beschwört einen <hyperlink>Chaosschlinger</hyperlink>. Diese Kampfmagiereinheit für den Nahkampf ernährt sich von <hyperlink>negativen Statuseffekten</hyperlink>.",
   "name": "Chaosschlinger beschwören",
   "operation_point_cost": 200,
   "summoned_units": [
@@ -4200,7 +4687,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Schwächungszauber</hyperlink>",
   "id": "massenhysterie",
   "tactical": true,
-  "description": "Belegt alle Einheiten im Umkreis von 1 Feld(ern) mit einem zufälligen negativen Statuseffekt.",
+  "description": "Belegt alle Einheiten im Umkreis von 1 Feld(ern) mit einem zufälligen <hyperlink>negativen Statuseffekt</hyperlink>.",
   "name": "Massenhysterie",
   "operation_point_cost": 30,
   "icon": "000003E3000059F1"
@@ -4273,7 +4760,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "stäbe_der_heilung",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet><hyperlink>Glauben</hyperlink>, was die <hyperlink>Einheitenversorgung</hyperlink> reduziert.</bullet><bullet>Heilende Berührung, eine Heilfähigkeit für den Kampf.</bullet></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet><hyperlink>Glauben</hyperlink>, was die Basis<hyperlink>einheitenversorgung</hyperlink> reduziert.</bullet><bullet>Heilende Berührung, eine Heilfähigkeit für den Kampf.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -4316,7 +4803,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "frostklingen",
   "tactical": false,
-  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink>.</bullet><bullet>+20 % Schaden gegen <hyperlink>gefrorene</hyperlink> oder <hyperlink>verlangsamte</hyperlink> Einheiten.</bullet></bulletlist> <br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink>.</bullet><bullet>+10 % Schaden gegen <hyperlink>gefrorene</hyperlink> oder <hyperlink>verlangsamte</hyperlink> Einheiten.</bullet></bulletlist> <br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -4355,7 +4842,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "versengende_klingen",
   "tactical": false,
-  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physischer Schaden</hyperlink>.</bullet><bullet>+20 % Schaden gegen Einheiten mit Brennen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Physischer Schaden</hyperlink>.</bullet><bullet>+10 % Schaden gegen Einheiten mit Brennen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -4383,7 +4870,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "seelenüberschuss",
   "tactical": true,
-  "description": "Verbündete Einheiten im Umkreis von 1Feld(ern):<bulletlist><bullet>Erhalten 1 Gestärkt.</bullet><bullet>Erhalten +20 maximale <hyperlink><hp></hp> Trefferpunkte</hyperlink> bis zum Ende des Kampfes.</bullet><bullet>Negative Statuseffekte werden entfernt.</bullet></bulletlist>",
+  "description": "Verbündete Einheiten im Umkreis von 1Feld(ern):<bulletlist><bullet>Erhalten 1 Gestärkt.</bullet><bullet>Erhalten +20 maximale <hyperlink><hp></hp> Trefferpunkte</hyperlink> bis zum Ende des Kampfes.</bullet><bullet>2 <hyperlink>negative Statuseffekte</hyperlink> werden entfernt.</bullet></bulletlist>",
   "name": "Seelenüberschuss",
   "operation_point_cost": 20,
   "icon": "0000041B000005E4"
@@ -4394,87 +4881,10 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
   "id": "großes_tier_beschwören",
   "tactical": false,
-  "description": "Beschwört eine zufällige Tiereinheit der Stufe III am Zielort.<br></br><br></br>Mit geringer Wahrscheinlichkeit wird ein Tier der Stufe IV beschworen.",
+  "description": "<bulletlist><bullet>Wähle eine Tiereinheit der Stufe III oder IV für deine Armee.</bullet><bullet>Welche Tiere verfügbar sind, hängt von der Art des Geländes ab, auf dem der Zauber gewirkt wird.</bullet></bulletlist>",
   "name": "Großes Tier beschwören",
   "operation_point_cost": 150,
-  "icon": "000003E300004AF7",
-  "summoned_units": [
-   {
-    "slug": "eisspinnen-matriarchin"
-   },
-   {
-    "slug": "weisser_wolf"
-   },
-   {
-    "slug": "donnervogel"
-   },
-   {
-    "slug": "blutzahn-matriarchin"
-   },
-   {
-    "slug": "frostwyvern"
-   },
-   {
-    "slug": "grimmbär"
-   },
-   {
-    "slug": "mammut"
-   },
-   {
-    "slug": "säbelzahn"
-   },
-   {
-    "slug": "schlängler"
-   },
-   {
-    "slug": "goldwyvern"
-   },
-   {
-    "slug": "jagdspinnen-matriarchin"
-   },
-   {
-    "slug": "furchtspinnen-matriarchin"
-   },
-   {
-    "slug": "geisterwolf"
-   },
-   {
-    "slug": "einhorn"
-   },
-   {
-    "slug": "pestilenzkrokodil"
-   },
-   {
-    "slug": "Ätzwurm"
-   },
-   {
-    "slug": "albtraum"
-   },
-   {
-    "slug": "feuerwyvern"
-   },
-   {
-    "slug": "infernokoloss"
-   },
-   {
-    "slug": "infernohund"
-   },
-   {
-    "slug": "obisidianwyvern"
-   },
-   {
-    "slug": "vampirspinnen-matriarchin"
-   },
-   {
-    "slug": "phönix"
-   },
-   {
-    "slug": "tiefsee-nimu"
-   },
-   {
-    "slug": "krake"
-   }
-  ]
+  "icon": "000003E300004AF7"
  },
  {
   "casting_cost": "15<mana></mana> ",
@@ -4493,7 +4903,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
   "id": "totem_der_wildnis",
   "tactical": true,
-  "description": "Bringt ein <hyperlink>Totem der Wildnis</hyperlink> hervor, wodurch wiederum zu Beginn jeder deiner <turn></turn> Runden zufällig eine Tiereinheit der Stufe I hervorgebracht wird. Hält 3 <turn></turn> Runden an.<br></br><br></br>Kann nicht in Wasserkämpfen eingesetzt werden.",
+  "description": "Beschwört ein <hyperlink>Totem der Wildnis</hyperlink>, das nach der Beschwörung und zu Beginn deiner nächsten 2 <turn></turn> Runden eine zufällige Tiereinheit der Stufe I oder II hervorbringt.<br></br><br></br>Kann nicht in Wasserkämpfen eingesetzt werden.",
   "name": "Totem der Wildnis",
   "operation_point_cost": 35,
   "summoned_units": [
@@ -4508,7 +4918,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "ruf_der_wildnis",
   "tactical": true,
-  "description": "Verbündete Tier- und Kavallerie in einem Umkreis von 1 Feld(ern) erhalten:<bulletlist><bullet>2 Gestärkte Verteidigung.</bullet><bullet>2 Gestärkt.</bullet></bulletlist>",
+  "description": "Verbündete Tier- und Kavallerieeinheiten in einem Umkreis von 1 Feld(ern) erhalten:<bulletlist><bullet>2 Gestärkte Verteidigung.</bullet><bullet>2 Gestärkt.</bullet></bulletlist>",
   "name": "Ruf der Wildnis",
   "operation_point_cost": 20,
   "icon": "0000041B000002EF"
@@ -4517,89 +4927,12 @@
   "casting_cost": "60<mana></mana> ",
   "resid": 4514010628856,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
-  "id": "wildes_tier_beschwören",
+  "id": "wildes_tier_rufen",
   "tactical": false,
-  "description": "<bulletlist><bullet>Beschwört zufällig ein Tier der Stufe I auf das gewünschte Weltfeld.</bullet><bullet>Geringe Chance auf die Beschwörung eines Tiers der Stufe II.</bullet><bullet>Die möglichen Tiere hängen von der Art des Geländes ab, auf das diese Fertigkeit wirkt.</bullet></bulletlist>",
-  "name": "Wildes Tier beschwören",
+  "description": "<bulletlist><bullet>Wähle eine Tiereinheit der Stufe I oder II für deine Armee.</bullet><bullet>Welche Tiere verfügbar sind, hängt von der Art des Geländes ab, auf dem der Zauber gewirkt wird.</bullet></bulletlist>",
+  "name": "Wildes Tier rufen",
   "operation_point_cost": 60,
-  "icon": "0000041B000002E7",
-  "summoned_units": [
-   {
-    "slug": "eisspinne"
-   },
-   {
-    "slug": "blutzahnferkel"
-   },
-   {
-    "slug": "grimmschnabelkrähe"
-   },
-   {
-    "slug": "eisbär"
-   },
-   {
-    "slug": "aasvogel"
-   },
-   {
-    "slug": "infernowelpe"
-   },
-   {
-    "slug": "schrotteremit"
-   },
-   {
-    "slug": "elefant"
-   },
-   {
-    "slug": "flammenmotte"
-   },
-   {
-    "slug": "warg"
-   },
-   {
-    "slug": "jagdspinne"
-   },
-   {
-    "slug": "furchtspinnenjunges"
-   },
-   {
-    "slug": "junger_Ätzwurm"
-   },
-   {
-    "slug": "braunbär"
-   },
-   {
-    "slug": "riesenkäfer"
-   },
-   {
-    "slug": "todeskäfer"
-   },
-   {
-    "slug": "schlänglerjunges"
-   },
-   {
-    "slug": "wyvernjunges"
-   },
-   {
-    "slug": "klingenrücken"
-   },
-   {
-    "slug": "vampirspinnenjunges"
-   },
-   {
-    "slug": "krokodil"
-   },
-   {
-    "slug": "affe"
-   },
-   {
-    "slug": "nimu"
-   },
-   {
-    "slug": "krakenbrut"
-   },
-   {
-    "slug": "riesenpinguin"
-   }
-  ]
+  "icon": "0000041B000002E7"
  },
  {
   "casting_cost": "10<mana></mana> ",
@@ -4618,7 +4951,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "lied_der_verwegenen",
   "tactical": true,
-  "description": "Verbündete Zieleinheit erhält für 3 <turn></turn> Runden:<bulletlist><bullet>Berserkerwut</bullet><bullet>3 Gestärkt</bullet></bulletlist>",
+  "description": "Verbündete Zieleinheit erhält für 3 <turn></turn> Runden:<bulletlist><bullet>Berserkerwut</bullet><bullet>3 Gestärkt</bullet></bulletlist><br></br>Gilt nicht für Einheiten mit <hyperlink>Immunität gegen Kontrollverlust</hyperlink>.",
   "name": "Lied der Verwegenen",
   "operation_point_cost": 20,
   "icon": "0000041300000D74"
@@ -4673,7 +5006,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Anhaltender Stadtzauber</hyperlink>",
   "id": "bevölkerung_ernten",
   "tactical": false,
-  "description": "Verbündete Zielstadt:<bulletlist><bullet>Erhält keine <food></food> Nahrung mehr.</bullet><bullet>Erhält +30 <souls></souls> Seeleeinnahmen.</bullet><bullet>Hat -20 <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink>.</bullet></bulletlist>",
+  "description": "Verbündete Zielstadt:<bulletlist><bullet>Erhält keine <food></food> Nahrungseinnahmen mehr.</bullet><bullet>Erhält +30 <souls></souls> Seeleeinnahmen.</bullet><bullet>Hat -20 <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink>.</bullet></bulletlist>",
   "name": "Bevölkerung ernten",
   "operation_point_cost": 45,
   "icon": "0000041B00001742"
@@ -4684,7 +5017,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "naturgewalt",
   "tactical": false,
-  "description": "Verzauberte Einheiten erhalten:<bulletlist><bullet>+20 % Chance auf <hyperlink>kritische Treffer</hyperlink>.</bullet><bullet>+4 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> bei Angriffen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Verzauberte Einheiten erhalten:<bulletlist><bullet>+15 % <hyperlink><crit></crit>kritische Trefferchance</hyperlink>.</bullet><bullet>+3 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> bei Angriffen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitCavalry></unitCavalry> Kavallerie"
@@ -4730,7 +5063,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Geringfügige Volkstransformation</hyperlink>",
   "id": "tierverbundenheit",
   "tactical": false,
-  "description": "Macht das Zielvolk tierischer und verbessert sein Verhältnis zu Tieren. Befindet sich eine Einheit neben einer verbündeten Tier, erhalten beide Einheiten:<bulletlist><bullet>+10 % Schaden.</bullet><bullet>+10 % Chance auf <hyperlink>kritische Treffer</hyperlink>.</bullet></bulletlist>",
+  "description": "Macht das Zielvolk tierischer und verbessert sein Verhältnis zu Tieren. Befindet sich eine Einheit neben einer verbündeten Tiereinheit, erhalten beide Einheiten:<bulletlist><bullet>+10 % Schaden.</bullet><bullet>+10 % <crit></crit>kritische Trefferchance.</bullet></bulletlist>",
   "name": "Tierverbundenheit",
   "operation_point_cost": 150,
   "icon": "0000041B000002E3"
@@ -4756,7 +5089,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "verderbnisklingen",
   "tactical": false,
-  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink>.</bullet><bullet>+20 % Schaden gegen <hyperlink>vergiftete</hyperlink> oder <hyperlink>verwesende</hyperlink> Einheiten.</bullet></bulletlist> <br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für <hyperlink>Nahkampf</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>+4 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink>.</bullet><bullet>+10 % Schaden gegen <hyperlink>vergiftete</hyperlink> oder <hyperlink>verwesende</hyperlink> Einheiten.</bullet></bulletlist> <br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -4809,7 +5142,7 @@
   "id": "gravur_des_fokus",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Gewährt allen Einheiten außer Räubern:<bulletlist><bullet>fokussierte Aggression.</bullet></bulletlist>",
+  "description": "Gewährt allen Einheiten außer Räubern:<bulletlist><bullet>Fokussierte Aggression.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -4871,7 +5204,7 @@
   "id": "antimagische_tinktur",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Verbündete Einheiten in einem Umkreis von 1 Feld(ern):<bulletlist><bullet>Werden von 2 negativen Statuseffekten geläutert.</bullet><bullet>Erhalten 2 Statusschutz.</bullet></bulletlist>",
+  "description": "Verbündete Einheiten in einem Umkreis von 1 Feld(ern):<bulletlist><bullet>Verlieren 2 <hyperlink>negative Statuseffekte</hyperlink>.</bullet><bullet>Erhalten 2 Statusschutz.</bullet></bulletlist>",
   "name": "antimagische Tinktur",
   "operation_point_cost": 15,
   "icon": "0000046A000000EF"
@@ -4895,7 +5228,7 @@
   "id": "mysteriöses_tonikum",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Tonikum verteilen, was positive Statuseffekte gewährt und einen negativen Statuseffekt entfernt.</bullet></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Tonikum verteilen, was <hyperlink>positive Statuseffekte</hyperlink> gewährt und einen negativen Statuseffekt entfernt.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -4909,15 +5242,15 @@
   "casting_cost": "45<souls></souls> ",
   "resid": 4273492488482,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
-  "id": "verdorbene_seele_beschwören",
+  "id": "todesfee_beschwören",
   "tactical": false,
-  "description": "Beschwört eine <hyperlink>Korrupte Seele</hyperlink>. Diese Kämpfereinheit macht sich niedrige <happiness></happiness> <hyperlink>Moral</hyperlink> von Feinden zunutze.",
-  "name": "Verdorbene Seele beschwören",
+  "description": "Beschwört eine <hyperlink>Todesfee</hyperlink>, die mit ihrem durchdringenden Wehklagen die Moral senkt und Feinde schwächt.",
+  "name": "Todesfee beschwören",
   "operation_point_cost": 90,
   "icon": "000003E300007127",
   "summoned_units": [
    {
-    "slug": "korrupte_seele"
+    "slug": "todesfee"
    }
   ]
  },
@@ -4928,7 +5261,7 @@
   "id": "läuternde_flamme",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Verbündete Einheiten in einem Umkreis von 1 Feld(ern):<bulletlist><bullet>Heilen 25 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Verlieren negative Statuseffekte.</bullet></bulletlist>",
+  "description": "Verbündete Einheiten in einem Umkreis von 1 Feld(ern):<bulletlist><bullet>Werden um 25 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> geheilt.</bullet><bullet>Verlieren ihre <hyperlink>negativen Statuseffekte</hyperlink>.</bullet></bulletlist>",
   "name": "läuternde Flamme",
   "operation_point_cost": 35,
   "icon": "000003E300006B8F"
@@ -5062,14 +5395,14 @@
   ]
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "10<souls></souls> ",
   "resid": 4273492485799,
   "spellType": "<casttactical></casttactical> <hyperlink>Schadens-/Schwächungszauber</hyperlink>",
   "id": "verwesende_explosion",
   "tactical": true,
-  "description": "Die verbündete <hyperlink>Zombie</hyperlink>- oder Skelett-Zieleinheit explodiert und alle Feinde in einem Umkreis von 2 Feld(ern):<bulletlist><bullet>Erleiden 10 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> und 10 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Haben eine Chance von 90 %, mitVerwesung belegt zu werden.</bullet></bulletlist>",
+  "description": "Die verbündete <hyperlink>Zombie</hyperlink>- oder Skelett-Zieleinheit explodiert und alle Feinde in einem Umkreis von 2 Feld(ern):<bulletlist><bullet>Erleiden 10 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> und 10 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Werden für 3 <turn></turn> Runden mit 2Verwesung belegt.</bullet></bulletlist>",
   "name": "Verwesende Explosion",
-  "operation_point_cost": 20,
+  "operation_point_cost": 15,
   "icon": "000003E3000066A4"
  },
  {
@@ -5078,7 +5411,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Schadens-/Schwächungszauber</hyperlink>",
   "id": "nekrotisieren",
   "tactical": true,
-  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Erleidet 10 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> und 10 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Wird mit Verwesung belegt.</bullet><bullet>Wenn sie stirbt, wird sie bis zum Ende des Kampfes zu einem von dir kontrollierten <hyperlink>Verwesenden Zombie</hyperlink>.</bullet></bulletlist>",
+  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Erleidet 10 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> und 10 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink></bullet><bullet>Erhält für 3 <turn></turn> Runden 2 Stapel Verwesung.</bullet><bullet>Wenn sie stirbt, wird sie bis zum Ende des Kampfes zu einem von dir kontrollierten <hyperlink>verwesenden Zombie</hyperlink>.</bullet></bulletlist>",
   "name": "Nekrotisieren",
   "operation_point_cost": 15,
   "icon": "000003E30000669A"
@@ -5105,7 +5438,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "verzauberte_blüte",
   "tactical": false,
-  "description": "Für die verbündete Ziel<hyperlink>stadt</hyperlink> gilt:<bulletlist><bullet>Jede <turn></turn> <hyperlink>Runde</hyperlink> erhalten bzw. verlieren 1 <hyperlink>Provinz</hyperlink>, die sich in ihrem <hyperlink>Gebiet</hyperlink> befinden oder daran angrenzen:<bulletlist></bullet><bullet>Erhalten <hyperlink>Grasland</hyperlink> und <hyperlink>Wald</hyperlink>, wenn auf der Oberfläche oder <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Pilzwald</hyperlink>, wenn im Untergrund.</bullet><bullet>Verlieren <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink>, <hyperlink>Höhlengrund</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet><bullet>Provinzen im Gebiet mit Grasland, Wald, Pilzfeldern oder Pilzwald erhalten: +2 <food></food> <hyperlink>Nahrung</hyperlink>, +2 <structureprod></structureprod> <hyperlink> Produktion</hyperlink> und +2 <unitprod></unitprod><hyperlink> Einberufung</hyperlink>.</bullet></bulletlist>",
+  "description": "Für die verbündete Ziel<hyperlink>stadt</hyperlink> gilt:<bulletlist><bullet>Jede <turn></turn> <hyperlink>Runde</hyperlink> erhalten bzw. verlieren 1 <hyperlink>Provinz</hyperlink>, die sich in ihrem <hyperlink>Gebiet</hyperlink> befinden oder daran angrenzen:<bulletlist></bullet><bullet>Erhalten <hyperlink>Grasland</hyperlink> und <hyperlink>Wald</hyperlink>, wenn auf der Oberfläche oder <hyperlink>Pilzfelder</hyperlink> und <hyperlink>Pilzwald</hyperlink>, wenn im Untergrund.</bullet><bullet>Verlieren <hyperlink>Schlucht</hyperlink>, <hyperlink>Sumpf</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Schnee</hyperlink>, <hyperlink>Eis</hyperlink>, <hyperlink>Aschenland</hyperlink> und <hyperlink>Düsternis</hyperlink>.</bullet><bullet>Provinzen im Gebiet mit Grasland, Wald, Pilzfeldern oder Pilzwald erhalten: +2 <food></food> <hyperlink>Nahrung</hyperlink>, +2 <structureprod></structureprod> <hyperlink> Produktion</hyperlink> und +2 <unitprod></unitprod><hyperlink> Einberufung</hyperlink>.</bullet></bulletlist>",
   "name": "Verzauberte Blüte",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5128,7 +5461,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "geführte_projektile",
   "tactical": false,
-  "description": "Lässt Standardangriffe verzauberter Einheiten:<bulletlist><bullet>Treffsicherheitsabzüge ignorieren, die von <hyperlink>Verschleierung</hyperlink> durch im Weg stehende Einheiten und bestimmte Geländetypen hervorgerufen werden.</bullet></bulletlist>",
+  "description": "Lässt Standardangriffe verzauberter Einheiten:<bulletlist><bullet>1 Feld(er) weiter feuern, ohne <hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink>sabzüge für die hohe Reichweite.</bullet><bullet><hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink>sabzüge ignorieren, die von <hyperlink>Verschleierung</hyperlink> durch im Weg stehende Einheiten und bestimmte Geländetypen hervorgerufen werden.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -5148,17 +5481,6 @@
   "icon": "0000041B00001259"
  },
  {
-  "casting_cost": "45<mana></mana> ",
-  "resid": 4273492485152,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>Stadtzauber</hyperlink>",
-  "id": "gesegnete_verstärkung",
-  "tactical": false,
-  "description": "Die anvisierte Freie Vasallenstadt erhält 2 <hyperlink>gesegnete Seelen</hyperlink> unter ihrer Kontrolle.",
-  "name": "Gesegnete Verstärkung",
-  "operation_point_cost": 45,
-  "icon": "0000041B00001969"
- },
- {
   "casting_cost": "60<mana></mana> ",
   "resid": 4273492485151,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Anhaltender Stadtzauber</hyperlink>",
@@ -5175,7 +5497,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Weltzauber</hyperlink>",
   "id": "astrales_zerschmettern",
   "tactical": false,
-  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine feindliche <hyperlink>Provinzverbesserung</hyperlink> und keine <hyperlink>Altes Wunder</hyperlink> enthält, wird sie zu einer Ruine.</bullet><bullet>Bringt eine mächtige plündernde <hyperlink>Armee</hyperlink> von Astralmeer-<hyperlink>Einheiten</hyperlink> hervor.</bullet></bulletlist>",
+  "description": "Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Wenn sie eine feindliche <hyperlink>Provinzverbesserung</hyperlink> und kein <hyperlink>Altes Wunder</hyperlink> enthält, wird sie zu einer Ruine.</bullet><bullet>Bringt eine mächtige plündernde <hyperlink>Armee</hyperlink> von Astralmeer-<hyperlink>Einheiten</hyperlink> hervor.</bullet></bulletlist>",
   "name": "Astrales Zerschmettern",
   "operation_point_cost": 150,
   "icon": "0000041B000012A4"
@@ -5284,7 +5606,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
   "id": "geringen_schneegeist_beschwören",
   "tactical": false,
-  "description": "Beschwört einen <hyperlink>Geringer Schneegeist</hyperlink>, einen Plänklereinheit mit Angriffen, die Gefroren verursachen.",
+  "description": "Beschwört einen <hyperlink>Geringer Schneegeist</hyperlink>, eine Plänklereinheit mit Angriffen, die Gefroren verursachen.",
   "name": "Geringen Schneegeist beschwören",
   "operation_point_cost": 60,
   "icon": "0000041B000006CC",
@@ -5295,14 +5617,14 @@
   ]
  },
  {
-  "casting_cost": "150<mana></mana> ",
+  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484493,
   "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
   "id": "einheit_wiederbeleben",
   "tactical": true,
   "description": "Stellt bei toter verbündeter Zieleinheit <temphp></temphp> temporäre Trefferpunkte vollständig wieder her.<br></br><br></br>Kann nicht in Wasserkämpfen eingesetzt werden.",
   "name": "Einheit wiederbeleben",
-  "operation_point_cost": 50,
+  "operation_point_cost": 40,
   "icon": "0000041B000019BF"
  },
  {
@@ -5333,7 +5655,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Heilungs-/Stärkungszauber</hyperlink>",
   "id": "rettung",
   "tactical": true,
-  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Heilt all ihre <hyperlink><hp></hp> Trefferpunkte</hyperlink> als <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Entfernt ihre negativen Statuseffekte.</bullet><bullet>Erhält 3 Gestärkter Widerstand.</bullet></bulletlist>",
+  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Heilt all ihre <hyperlink><hp></hp> Trefferpunkte</hyperlink> als <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Entfernt ihre <hyperlink>negativen Statuseffekte</hyperlink>.</bullet><bullet>Erhält 3 Gestärkter Widerstand.</bullet></bulletlist>",
   "name": "Rettung",
   "operation_point_cost": 35,
   "icon": "0000041B0000197F"
@@ -5395,7 +5717,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Kampf-Beschwörungszauber</hyperlink>",
   "id": "göttliches_leuchtfeuer_beschwören",
   "tactical": true,
-  "description": "Beschwört ein <hyperlink>Göttliches Leuchtfeuer</hyperlink>. Verbündete Einheiten in einem Umkreis von 2 Feld(ern) beim Wirken und zu Beginn jeder Runde:<bulletlist><bullet>Heilen +5 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Erhalten +5 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.<br></br><br></br>Kann nicht in Wasserkämpfen eingesetzt werden.",
+  "description": "Beschwört ein <hyperlink>Göttliches Leuchtfeuer</hyperlink>. Verbündete Einheiten in einem Umkreis von 2 Feld(ern) beim Wirken und zu Beginn jeder Runde:<bulletlist><bullet>Heilen +15 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Erhalten +5 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.<br></br><br></br>Kann nicht in Wasserkämpfen eingesetzt werden.",
   "name": "Göttliches Leuchtfeuer beschwören",
   "operation_point_cost": 25,
   "icon": "000003E3000060DF",
@@ -5407,30 +5729,17 @@
  },
  {
   "casting_cost": "100<mana></mana> ",
-  "resid": 4273492484345,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
-  "id": "lichtbringer_beschwören",
-  "tactical": false,
-  "description": "Beschwört einen <hyperlink>Lichtbringer</hyperlink>. Diese Kampfmagiereinheit kann andere Einheiten für deine Sache bekehren.",
-  "name": "Lichtbringer beschwören",
-  "operation_point_cost": 100,
-  "icon": "0000041B00001961",
-  "summoned_units": [
-   {
-    "slug": "lichtbringer"
-   }
-  ]
- },
- {
-  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484335,
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "mächtige_sanftmut",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Gläubiger, wodurch <hyperlink>Einheitenversorgung</hyperlink> reduziert wird.</bullet><bullet>+1 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink> bei Angriffen für jede Einheitenstufe des Ziels.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>Gläubiger, wodurch <hyperlink>Einheitenversorgung</hyperlink> reduziert wird.</bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink>.</bullet><bullet>+1 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink> bei Angriffen für jede Einheitenstufe des Ziels.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "Stufe I"
+   },
+   {
+    "requisite": "Stufe II"
    }
   ],
   "name": "Mächtige Sanftmut",
@@ -5520,42 +5829,49 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492484056,
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
-  "id": "nekrotische_magie",
+  "id": "nekrotische_projektile",
   "tactical": false,
-  "description": "Gewährt Standardangriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 60 %, Verwesung zu verursachen. Dieser „Schaden über Zeit“-Effekt verhindert, dass Einheiten Trefferpunkte regenerieren.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Gewährt Angriffen verzauberter Einheiten:<bulletlist><bullet>Eine Basischance von 90 %, Verwesung zu verursachen. Dieser „Schaden über Zeit“-Effekt verringert die erhaltene Heilung.</bullet></bulletlist> <br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
+   },
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
    },
    {
     "requisite": "<unitBattleMage></unitBattleMage> Kampfmagiereinheit"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
    }
   ],
-  "name": "Nekrotische Magie",
+  "name": "nekrotische Projektile",
   "operation_point_cost": 90,
   "icon": "0000041B000005E0"
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "20<souls></souls> ",
   "resid": 4273492484053,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Freundarmeezauber</hyperlink>",
-  "id": "wiederherstellung_der_untotenarmee",
+  "id": "seelenschmaus",
   "tactical": false,
-  "description": "Stellt bei allen <hyperlink>untoten</hyperlink> Einheiten in der verbündeten Zielarmee 20 <hyperlink><hp></hp> Trefferpunkte</hyperlink> wieder her.",
-  "name": "Wiederherstellung der Untotenarmee",
-  "operation_point_cost": 20,
+  "description": "Verbündete Zielarmee:<bulletlist><bullet>Heilt Einheiten, die keine <hyperlink>Untoten</hyperlink> sind, um 20 <hyperlink><hp></hp> Trefferpunkte</hyperlink>.</bullet><bullet>Heilt untote Einheiten um 40 <hyperlink><hp></hp> Trefferpunkte</hyperlink>.</bullet></bulletlist>",
+  "name": "Seelenschmaus",
+  "operation_point_cost": 25,
   "icon": "0000041B000005DC"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "60<souls></souls> ",
   "resid": 4273492483972,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Feindarmeezauber</hyperlink>",
-  "id": "armee_seelenbinden",
+  "id": "geflüster_der_wiedergänger",
+  "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Feindliche Einheiten in der Zielarmee erhalten bis zum nächsten Kampf Seelengebunden.",
-  "name": "Armee seelenbinden",
-  "operation_point_cost": 45,
-  "icon": "0000041B000016EF"
+  "description": "Feindliche Zielarmee erhält für 1 <turn></turn> Runde auf der <hyperlink>Weltkarte</hyperlink>:<bulletlist><bullet>2 Demoralisiert.</bullet><bullet>Wenn sie angegriffen wird, werden 3 Skelette mit Unheiligem Champion auf Angreiferseite beschworen.</bullet></bulletlist>",
+  "name": "Geflüster der Wiedergänger",
+  "operation_point_cost": 100,
+  "icon": "0000049700002C39"
  },
  {
   "casting_cost": "80<mana></mana> ",
@@ -5563,7 +5879,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "seelenbinder",
   "tactical": false,
-  "description": "Verzauberte Einheiten erhalten:<bulletlist><bullet>Basischance von 90 % auf Zufügen von Seelengebunden bei Angriffen, wodurch sich die <souls></souls> <hyperlink>Seelen</hyperlink>gewinn beim Töten des Ziels erhöht.</bullet><bullet>+20 % Schaden gegen <hyperlink>seelengebundene</hyperlink> Einheiten.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Verzauberte Einheiten erhalten:<bulletlist><bullet>Basischance von 90 % auf Zufügen von Seelengebunden bei Angriffen, wodurch sich die <souls></souls> <hyperlink>Seelen</hyperlink>gewinn beim Töten des Ziels erhöht.</bullet><bullet>+10 % Schaden gegen <hyperlink>seelengebundene</hyperlink> Einheiten.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -5591,14 +5907,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483932,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Beschwörungszauber</hyperlink>",
-  "id": "todesfee_beschwören",
+  "id": "verdorbene_seele_beschwören",
   "tactical": false,
-  "description": "Beschwört eine <hyperlink>Todesfee</hyperlink>, die mit ihrem durchdringenden Wehklagen die Moral senkt und Feinde schwächt.",
-  "name": "Todesfee beschwören",
+  "description": "Beschwört eine <hyperlink>Korrupte Seele</hyperlink>. Diese Kämpfereinheit macht sich niedrige <happiness></happiness> <hyperlink>Moral</hyperlink> von Feinden zunutze.",
+  "name": "Verdorbene Seele beschwören",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "todesfee"
+    "slug": "korrupte_seele"
    }
   ]
  },
@@ -5773,7 +6089,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Feindarmeezauber</hyperlink>",
   "id": "feind_vorhersehen",
   "tactical": false,
-  "description": "Alle Feinde in der Zielarmee gewähren dir für 15 <turn></turn> Runden Sicht.",
+  "description": "Alle Feinde in der Zielarmee gewähren dir für 10 <turn></turn> Runden Sicht.",
   "name": "Feind vorhersehen",
   "operation_point_cost": 30,
   "icon": "0000041B0000124D"
@@ -5815,7 +6131,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "statischer_schild",
   "tactical": true,
-  "description": "Verbündete Zieleinheit erhält einen Schild, der mit einer Basischance von 60 % Angreifer mit Betäubt belegt.<br></br>Hält 2 <turn></turn> Runden an.",
+  "description": "Verbündete Zieleinheit und eine weitere Einheit im Umkreis von 3 Feldern erhalten einen Schild:<bulletlist><bullet>Mit einer Basischance von 60 %, Angreifer mit Betäubt zu belegen.</bullet><bullet>Hält 2 <turn></turn> Runden an.</bullet></bulletlist>",
   "name": "Statischer Schild",
   "operation_point_cost": 15,
   "icon": "0000041B0000120C"
@@ -5826,7 +6142,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Stärkungszauber</hyperlink>",
   "id": "mal_der_unschlagbarkeit",
   "tactical": true,
-  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Wird für 1 <turn></turn> Runde <hyperlink>unverwundbar</hyperlink>.</bullet><bullet>Negative Statuseffekte werden entfernt.</bullet></bulletlist><br></br>Kann nur einmal pro Kampf auf eine Einheit angewendet werden.",
+  "description": "Verbündete Zieleinheit:<bulletlist><bullet>Wird für 1 <turn></turn> Runde <hyperlink>unverwundbar</hyperlink>.</bullet><bullet><hyperlink>Negative Statuseffekte</hyperlink> werden entfernt.</bullet></bulletlist><br></br>Kann nur einmal pro Kampf auf eine Einheit angewendet werden.",
   "name": "Mal der Unschlagbarkeit",
   "operation_point_cost": 20,
   "icon": "0000041B00001200"
@@ -5878,7 +6194,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "handwerkerwaffen",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+30 % Chance auf <hyperlink>kritische Treffer</hyperlink>.</bullet></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+25 % <hyperlink><crit></crit>kritische Trefferchance</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -5928,7 +6244,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming-Zauber</hyperlink>",
   "id": "erdschmettern",
   "tactical": false,
-  "description": "Bewohnbare oder unbewohnbare Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> in der Provinz erleiden 10 <damagePhysical></damagePhysical> <hyperlink>Physischer Schaden</hyperlink>.</bullet><bullet>Verliert <hyperlink>Berg</hyperlink>, <hyperlink>Stalagmiten</hyperlink> und <hyperlink>Grabbare Erde</hyperlink>.</bullet></bulletlist>",
+  "description": "In bewohnbarer oder unbewohnbarer Ziel<hyperlink>provinz</hyperlink>:<bulletlist><bullet>Feindliche <hyperlink>Einheiten</hyperlink> erleiden 10 <damagePhysical></damagePhysical> <hyperlink>Physischer Schaden</hyperlink>.</bullet><bullet>Die Provinz verliert <hyperlink>Berge</hyperlink>, <hyperlink>Stalagmiten</hyperlink> und <hyperlink>Grabbare Erde</hyperlink>.</bullet><bullet>Beschwört einen <hyperlink>Steingeist</hyperlink>.</bullet></bulletlist>",
   "name": "Erdschmettern",
   "operation_point_cost": 150,
   "icon": "000003E300005CCB",
@@ -6021,24 +6337,27 @@
   "casting_cost": "120<mana></mana> ",
   "resid": 4273492483003,
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
-  "id": "projektile_der_verwesung",
+  "id": "klingen_der_verwesung",
   "tactical": false,
-  "description": "Für <hyperlink>physische Fernkampf</hyperlink>- und <hyperlink>Magie</hyperlink>-Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>Verursachen +2 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Erhalten eine Basischance von 60 % auf Zufügen des „Schaden über Zeit“-Effekts Verwesung, der verhindert, dass Feinde heilen.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Für Standardangriffe verzauberter Einheiten gilt:<bulletlist><bullet>Verursacht Verwesung, einen „Schaden über Zeit“-Effekt, der die erhaltene Heilung verringert.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
-    "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
+    "requisite": "<unitShield></unitShield> Schildeinheit"
    },
    {
-    "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
+    "requisite": "<unitPolearm></unitPolearm> Stangenwaffeneinheit"
    },
    {
-    "requisite": "<unitBattleMage></unitBattleMage> Kampfmagiereinheit"
+    "requisite": "<unitShock></unitShock> Schockeinheit"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Kämpfereinheit"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
    }
   ],
-  "name": "Projektile der Verwesung",
+  "name": "Klingen der Verwesung",
   "operation_point_cost": 120,
   "icon": "0000041B00000D54"
  },
@@ -6049,7 +6368,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Anhaltender Stadtzauber</hyperlink>",
   "id": "zyklus_der_jahreszeiten",
   "tactical": false,
-  "description": "Wird auf verbündete Stadt gewirkt. Alle Kämpfe, die im Gebiet dieser Stadt ausgetragen werden, erhalten <abilityblue>Zyklus der Jahreszeiten</abilityblue>, wodurch in jeder Kampfrunde ein anderer Effekt in der folgenden Reihenfolge gewährt wird:<bulletlist><bullet>Winter: Alle Feinde erleiden 10 <damageFrost></damageFrost>.</bullet><bullet>Frühling: Alle verbündeten Einheiten erhalten 1 Gestärkt.</bullet><bullet>Sommer: Alle verbündeten Einheiten werden um 10 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> geheilt.</bullet><bullet>Herbst: Alle Feinde erhalten 1 Geschwächt.</bullet></bulletlist>",
+  "description": "Alle Kämpfe, die im Gebiet der Zielstadt ausgetragen werden, erhalten <abilityblue>Zyklus der Jahreszeiten</abilityblue>, wodurch in jeder Kampfrunde ein anderer Effekt in der folgenden Reihenfolge gewährt wird:<bulletlist><bullet>Winter: Alle Feinde erleiden 10 <damageFrost></damageFrost>.</bullet><bullet>Frühling: Alle verbündeten Einheiten erhalten 1 Gestärkt.</bullet><bullet>Sommer: Alle verbündeten Einheiten werden um 10 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> geheilt.</bullet><bullet>Herbst: Alle Feinde erhalten 1 Geschwächt.</bullet></bulletlist>",
   "name": "Zyklus der Jahreszeiten",
   "operation_point_cost": 120,
   "icon": "0000041B00000D64"
@@ -6071,7 +6390,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Schadens-/Heilungszauber</hyperlink>",
   "id": "gesundheit_zerstreuen",
   "tactical": true,
-  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Erleidet 30 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Erhält 1 Verwesung.</bullet></bulletlist><br></br>Verbündete Einheiten in einem Umkreis von 2 Feld(ern): <bulletlist><bullet>Heilen +15 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Erhalten 1 Regeneration.</bullet></bulletlist>",
+  "description": "Feindliche Zieleinheit:<bulletlist><bullet>Erleidet 30 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink>.</bullet><bullet>Erhält 2 Verwesung.</bullet></bulletlist><br></br>Verbündete Einheiten in einem Umkreis von 2 Feld(ern): <bulletlist><bullet>Heilen +15 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Erhalten 2 Regeneration.</bullet></bulletlist>",
   "name": "Gesundheit zerstreuen",
   "operation_point_cost": 30,
   "icon": "0000041B00000D5C"
@@ -6126,7 +6445,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Schadenszauber</hyperlink>",
   "id": "opferschlachtung",
   "tactical": true,
-  "description": "Verbündete Zieleinheit explodiert und gegnerische Einheiten im Umkreis von 2 Feldern:<bulletlist><bullet>Erleiden 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> plus 5 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> pro Stufe der geopferten Einheit.</bullet><bullet>Erleiden einen negativen Statuseffekt pro Stufe der geopferten Einheit.</bullet>",
+  "description": "Verbündete Zieleinheit explodiert und gegnerische Einheiten im Umkreis von 2 Feldern:<bulletlist><bullet>Erleiden 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> plus 5 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> pro Stufe der geopferten Einheit.</bullet><bullet>Erleiden einen zufälligen <hyperlink>negativen Statuseffekt</hyperlink> pro Stufe der geopferten Einheit.</bullet>",
   "name": "Opferschlachtung",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6225,7 +6544,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "schriftrolle_der_anpassung",
   "tactical": false,
-  "description": "Gewährt allen Einheiten außer mystischen Einheiten:<bulletlist><bullet>Anpassung: Sternenklingen, was den verursachten Schaden durch gewirkte Zauber erhöht.</bullet></bulletlist>",
+  "description": "Gewährt allen Einheiten außer mystischen Einheiten:<bulletlist><bullet>Anpassung Sternenklingen, was den verursachten Schaden durch gewirkte Zauber erhöht.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -6503,7 +6822,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "flammenstoß-waffen",
   "tactical": false,
-  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+20 % Chance auf <hyperlink>kritischen Treffer</hyperlink>.</bullet><bullet>Sobald diese Einheit eine andere Einheit tötet:<bulletlist></bullet><bullet>Die getötete Einheit explodiert und angrenzenden feindlichen Einheiten wird 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> zugefügt.</bullet></bulletlist></bulletlist>",
+  "description": "Gewährt verzauberten Einheiten:<bulletlist><bullet>+20 % <hyperlink><crit></crit>kritische Trefferchance</hyperlink>.</bullet><bullet>Sobald diese Einheit eine andere Einheit tötet:<bulletlist></bullet><bullet>Die getötete Einheit explodiert und fügt angrenzenden feindlichen Einheiten 20 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> zu.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -6640,7 +6959,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "mal_der_brutalität",
   "tactical": false,
-  "description": "Gewährt allen Einheiten, die nicht der barbarischen Kultur angehören:<bulletlist><bullet>wilder Hieb, was kritischen Treffern <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> hinzufügt.</bullet></bulletlist>",
+  "description": "Gewährt allen Einheiten, die nicht der barbarischen Kultur angehören:<bulletlist><bullet>Wilder Hieb, was kritischen Treffern <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> hinzufügt.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"

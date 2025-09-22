@@ -28,7 +28,7 @@
   "id": "鈍重の杖の印",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "ユニットが以下を得る：<bulletlist><bullet><hyperlink>魔法攻撃</hyperlink>と<hyperlink>サポート</hyperlink>のアビリティ範囲が+1になる。</bullet><bullet>戦闘中に低速移動。</bullet></bulletlist>",
+  "description": "ユニットに以下を付与：<bulletlist><bullet><hyperlink>魔法攻撃</hyperlink>と<hyperlink>サポート</hyperlink>のアビリティが+1<hyperlink><range></range>範囲</hyperlink>となる。</bullet><bullet>戦闘で低速移動</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -48,7 +48,7 @@
   "id": "ヴァンガードの印",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "ユニットが以下を得る：<bulletlist><bullet>戦闘中の超高速移動。</bullet><bullet>このユニットに対する<hyperlink>魔法攻撃</hyperlink>および<hyperlink>物理遠隔攻撃</hyperlink>攻撃時、<hyperlink>命中率</hyperlink>が-20%となる。</bullet><bullet><hyperlink>近接攻撃</hyperlink>攻撃時、与えるダメージが-20%となる。</bullet></bulletlist>",
+  "description": "ユニットが以下を得る：<bulletlist><bullet>戦闘中の超高速移動。</bullet><bullet>このユニットに対する<hyperlink>魔法攻撃</hyperlink>および<hyperlink>物理遠隔攻撃</hyperlink>攻撃時、<hyperlink><accuracy></accuracy>命中率</hyperlink>が-20%となる。</bullet><bullet><hyperlink>近接攻撃</hyperlink>攻撃時、与えるダメージが-20%となる。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShock></unitShock>ショックユニット"
@@ -154,7 +154,7 @@
   "id": "狩猟の女神の印",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "<hyperlink>魔法攻撃</hyperlink>と<hyperlink>物理遠隔攻撃</hyperlink>時、ダメージ+30%となり、範囲が-1となる。",
+  "description": "<hyperlink>魔法攻撃</hyperlink>と<hyperlink>物理遠隔攻撃</hyperlink>の攻撃時、ダメージ+30%となり、-1<hyperlink><range></range>範囲</hyperlink>となる。",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>遠隔ユニット"
@@ -183,15 +183,15 @@
   "icon": "0000049C00000082"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "20<mana></mana> ",
   "resid": 5068061409449,
   "spellType": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>",
   "id": "腐敗の恩恵",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "1マス範囲内にいる、対象の敵ユニット：<bulletlist><bullet>プラスのステータス効果をすべて失う。</bullet><bullet>失われたステータス効果にステータス効果の無効化がある場合、ユニットはそのマイナスのステータス効果を1スタック得る。<bulletlist></bullet>",
+  "description": "対象の敵ユニット：<bulletlist><bullet><hyperlink>プラスのステータス効果</hyperlink>をすべて失う。</bullet><bullet>失われたステータス効果にステータス効果の無効化がある場合、ユニットはその<hyperlink>マイナスのステータス効果</hyperlink>.を1スタック得る。<bulletlist></bullet>",
   "name": "腐敗の恩恵",
-  "operation_point_cost": 30,
+  "operation_point_cost": 25,
   "icon": "0000049C0000008C"
  },
  {
@@ -246,6 +246,321 @@
   "name": "暗影の裂け目",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "120<mana></mana> ",
+  "resid": 5046586584490,
+  "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
+  "id": "開花の投射物",
+  "tactical": false,
+  "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>3<turn></turn>ターンの間、生命のシードを付与する基本確率が60%増加する。</bullet><bullet>腐敗中ユニットに対して +10%のダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged>遠隔ユニット"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport>サポートユニット"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>戦闘魔術師ユニット"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵ユニット"
+   }
+  ],
+  "name": "開花の投射物",
+  "operation_point_cost": 120,
+  "icon": "0000049700002DA7"
+ },
+ {
+  "casting_cost": "60<mana></mana> ",
+  "resid": 5046586584448,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "光の小精霊の召喚",
+  "tactical": false,
+  "description": "<hyperlink>光の小精霊</hyperlink> サポートユニットを召喚する。",
+  "name": "光の小精霊の召喚",
+  "operation_point_cost": 60,
+  "icon": "000003BD00002E6E",
+  "summoned_units": [
+   {
+    "slug": "光の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586584444,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "ライトブリンガーの召喚",
+  "tactical": false,
+  "description": "他のユニットを自分の味方に変換できる<hyperlink>ライトブリンガー</hyperlink>バトルメイジユニットを召喚する。",
+  "name": "ライトブリンガーの召喚",
+  "operation_point_cost": 100,
+  "icon": "0000049700002D86",
+  "summoned_units": [
+   {
+    "slug": "ライトブリンガー"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584436,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "光の精霊の召喚",
+  "tactical": false,
+  "description": "高い回復能力を持った<hyperlink>光の精霊</hyperlink>、サポートユニットを召喚する。",
+  "name": "光の精霊の召喚",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "光の精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584156,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "祝福の霊魂の召喚",
+  "tactical": false,
+  "description": "<hyperlink>祝福した魂</hyperlink> シールドユニットを召喚する。これはあなたのユニットを進軍させて、敵に有罪宣告できる。",
+  "name": "祝福の霊魂の召喚",
+  "operation_point_cost": 150,
+  "icon": "0000041B00001969",
+  "summoned_units": [
+   {
+    "slug": "祝福した魂"
+   }
+  ]
+ },
+ {
+  "casting_cost": "35<souls></souls> ",
+  "resid": 5046586584128,
+  "spellType": "<casttactical></casttactical><hyperlink>バフ/デバフ呪文</hyperlink>",
+  "id": "アンホーリーチャンピオン",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "対象の味方ユニットが以下を得る：<bulletlist><bullet>+50%のダメージ。</bullet><bullet>ネバー・ダイ。</bullet><bullet>絶望の鎧</bullet></bulletlist><br></br>使用時に、2マス範囲内にいる敵ユニットが10 <happiness></happiness><hyperlink>士気</hyperlink>を失う。",
+  "name": "アンホーリーチャンピオン",
+  "operation_point_cost": 40,
+  "icon": "0000049700002C3D"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586584106,
+  "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
+  "id": "アンデッドの恨み",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>+2 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>+2 <defensefire></defensefire><hyperlink>炎耐性</hyperlink></bullet><bullet>残虐な殺し屋</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitUndead></unitUndead> 不死"
+   }
+  ],
+  "name": "アンデッドの恨み",
+  "operation_point_cost": 140,
+  "icon": "0000049700002C32"
+ },
+ {
+  "casting_cost": "150<souls></souls> ",
+  "resid": 5046586584087,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "堕天使を召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "腐敗と堕落を招く<hyperlink>堕天使</hyperlink>のバトルメイジユニットを召喚する。",
+  "name": "堕天使を召喚",
+  "operation_point_cost": 200,
+  "summoned_units": [
+   {
+    "slug": "堕天使"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586583968,
+  "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
+  "id": "聖なるオーラ",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "魔法ユニットに付与：<bulletlist><bullet>聖なるオーラ、味方ユニットにステータスの保護を付与し、隣接する敵にダメージを与える</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield>シールドユニット"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm>槍兵ユニット"
+   },
+   {
+    "requisite": "<unitShock></unitShock>ショックユニット"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>戦士ユニット"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵ユニット"
+   }
+  ],
+  "name": "聖なるオーラ",
+  "operation_point_cost": 140,
+  "icon": "0000049700002B9D"
+ },
+ {
+  "casting_cost": "200<mana></mana> ",
+  "resid": 5046586583955,
+  "spellType": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>",
+  "id": "天空の守護者",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "対象の軍隊リーダーが天空の守護者を1 <hyperlink>ワールドマップ</hyperlink> <turn></turn>ターン獲得し、その間は戦闘開始時にグレード IIIのアーコンユニットを2体呼び出す。",
+  "name": "天空の守護者",
+  "operation_point_cost": 200,
+  "icon": "0000049700002B90"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583943,
+  "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
+  "id": "転生昇天",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "死亡した非ヒーローと非天空のユニットを対象にする：<bulletlist><bullet>詠唱者の支配の下、戦闘終了まで<hyperlink>看守</hyperlink>として復活させる。</bullet><bullet>復活の際、2マスの範囲内の全ての味方ユニットを20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet>",
+  "name": "転生昇天",
+  "operation_point_cost": 40,
+  "icon": "0000049700002B84"
+ },
+ {
+  "casting_cost": "450<mana></mana> ",
+  "resid": 5046586583927,
+  "spellType": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>",
+  "id": "純粋な霊魂",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "対象の種族の霊魂を浄化して、以下を付与する：<bulletlist><bullet>戦闘ターン開始時に1個の<hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>取り除いたマイナスのステータス効果がプラスの<hyperlink>カウンター</hyperlink>を持っていた場合、<hyperlink>プラスのステータス効果</hyperlink>を獲得する。</bullet></bulletlist><br></br>この変身は暗影の肉体とグルーム・ストライダーとは同時に使用できない。",
+  "name": "純粋な霊魂",
+  "operation_point_cost": 450,
+  "icon": "0000049700002B7C"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586583923,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "アストラを召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "強力な攻撃力と回復アビリティを持つ天使ユニットである<hyperlink>アストラ</hyperlink> 神話ユニットを召喚する。",
+  "name": "アストラを召喚",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "アストラ"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583846,
+  "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
+  "id": "予知のサークレット",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "魔法ユニットに付与される：<bulletlist><bullet><hyperlink>防御モード</hyperlink>に入ると予知 を得る。</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield>シールドユニット"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm>槍兵ユニット"
+   },
+   {
+    "requisite": "<unitShock></unitShock>ショックユニット"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>戦士ユニット"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵ユニット"
+   }
+  ],
+  "name": "予知のサークレット",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B1A"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583837,
+  "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
+  "id": "運命の投射物",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "魔法ユニットに以下の効果を付与：<bulletlist><bullet><hyperlink><crit></crit>クリティカルヒット率</hyperlink>が+20%。</bullet><bullet>信仰深き者</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged>遠隔ユニット"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>戦闘魔術師ユニット"
+   }
+  ],
+  "name": "運命の投射物",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B16"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586583776,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘魔力</hyperlink>",
+  "id": "戦いの予言",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "詠唱すると、それから2 <turn></turn>ターンに渡って、以下の順番で効果を戦闘に適用する：<bulletlist><bullet>そのターン、すべての味方ユニットの<hyperlink>回避</hyperlink>が+25%。</bullet><bullet>すべての味方ユニットに予知を付与。</bullet><bullet>そのターン、すべての味方ユニットのダメージが+20%。</bullet></bulletlist>",
+  "name": "戦いの予言",
+  "operation_point_cost": 35,
+  "icon": "0000049700002ADD"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586583726,
+  "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
+  "id": "英雄的な抵抗",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink>マイナスのステータス効果</hyperlink>が取り除かれる。</bullet><bullet>1 <turn></turn>ターンの間、ステディを得る。</bullet><bullet>1 <turn></turn>ターンターンの間、<hyperlink>犠牲者</hyperlink>からのペナルティを無視する。</bullet></bulletlist>",
+  "name": "英雄的な抵抗",
+  "operation_point_cost": 20,
+  "icon": "0000049700002AAB"
+ },
+ {
+  "casting_cost": "250<mana></mana> ",
+  "resid": 5046586583714,
+  "spellType": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>",
+  "id": "高潔な精神",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "弱った対象種族に力を与え、以下を付与する：<bulletlist><bullet>+2 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>このユニットの最大<hyperlink><hp></hp>HP</hyperlink>が60%未満になると：<bulletlist></bullet><bullet>その<hyperlink>犠牲者</hyperlink>の50%を無視する。</bullet><bullet>+1の<defense></defense><hyperlink>防御力</hyperlink>を得る。</bullet><bullet>+1の<resistance></resistance><hyperlink>耐性</hyperlink>を得る。</bullet></bulletlist>",
+  "name": "高潔な精神",
+  "operation_point_cost": 250,
+  "icon": "0000049700002A9E"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586583705,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
+  "id": "看守召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "敵を浄化する聖なる炎を発するユニット、<hyperlink>看守</hyperlink> バトルメイジユニットを召喚する。",
+  "name": "看守召喚",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "看守"
+   }
+  ]
  },
  {
   "casting_cost": "90<mana></mana> ",
@@ -344,7 +659,7 @@
   "id": "反響の刃",
   "DLC": "GIANTKINGS ",
   "tactical": false,
-  "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃は以下を得る：<bulletlist><bullet>地形に応じて悪いステータス効果を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃は以下を得る：<bulletlist><bullet>地形に応じて<hyperlink>マイナスのステータス効果</hyperlink>を1個付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -536,7 +851,7 @@
   "id": "呪われた一撃",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の攻撃：<bulletlist><bullet>+2<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>+2<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を与える。</bullet><bullet>3<turn></turn>ターンの間、60%の基本確率でゴーストファイヤーを与える。<br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。</bullet>",
+  "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の攻撃：<bulletlist><bullet>+1<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>+1<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を与える。</bullet><bullet>3<turn></turn>ターンの間、ゴーストファイヤーを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>遠隔ユニット"
@@ -591,7 +906,7 @@
   "id": "土地の荒廃",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>領域改善</hyperlink>が含まれる場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたは報酬を得て、<reputation2></reputation2><hyperlink>考え方</hyperlink>を失う。</bullet></bulletlist><bullet>領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "対象の<hyperlink>領域</hyperlink>：<bulletlist><bullet><hyperlink>領域改善</hyperlink>が存在する場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたはその報酬を得て、<reputation2></reputation2><hyperlink>考え方</hyperlink>を失う。</bullet></bulletlist><bullet>その領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>その領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "土地の荒廃",
   "operation_point_cost": 60,
   "icon": "00000497000013B2"
@@ -901,7 +1216,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "醜悪なる回生",
   "tactical": true,
-  "description": "対象のグレードI、II、IIIいずれかの非マジック・オリジンかつ非変造体の味方ユニットに以下を付与：<bulletlist><bullet><hyperlink>ウォーブリード</hyperlink>に変身する。</bullet><bullet>60<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>戦闘終了時に死亡する。</bullet></bulletlist>",
+  "description": "対象のグレードI、II、IIIいずれかの非マジック・オリジンかつ非変造体の味方ユニットに以下を付与：<bulletlist><bullet><hyperlink>ウォーブリード</hyperlink>に変身する。</bullet><bullet>60<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>戦闘終了時に死亡する。</bullet></bulletlist><br><br></br>水域戦闘では使用できない。",
   "name": "醜悪なる回生",
   "operation_point_cost": 30,
   "icon": "0000049700000ECB"
@@ -972,7 +1287,7 @@
   "id": "黒魔術の儀式",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "200<knowledge></knowledge> <hyperlink> 知識</hyperlink>を獲得する。",
+  "description": "200<knowledge></knowledge><hyperlink>知識</hyperlink>を獲得する。",
   "name": "黒魔術の儀式",
   "operation_point_cost": 150,
   "icon": "0000049700000BEB"
@@ -1108,7 +1423,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "浄化の矢",
   "tactical": false,
-  "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>マジック・オリジンに対するダメージ量が+10%。</bullet><bullet> 60%の確率で1種類のプラスのステータス効果を標的から取り除く。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>マジック・オリジンに対するダメージ量が+10%。</bullet><bullet> 60%の基本確率で1種類の<hyperlink>プラスのステータス効果</hyperlink>を標的から取り除く。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>遠隔ユニット"
@@ -1199,13 +1514,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "アースシェイプ：灰野原",
   "tactical": false,
-  "description": "味方もしくは所有者のいない<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>灰野原</hyperlink>を得る。</bullet><bullet><hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "味方もしくは所有者のいない<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>灰野原</hyperlink>を得る</bullet><bullet><hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う</bullet></bulletlist>",
   "name": "アースシェイプ：灰野原",
   "operation_point_cost": 45,
   "icon": "000004970000066F"
  },
  {
-  "casting_cost": "80<mana></mana> ",
+  "casting_cost": "60<mana></mana> ",
   "resid": 5046586574328,
   "spellType": "<caststrategic></caststrategic><hyperlink> ワールド呪文</hyperlink>",
   "id": "豪雨",
@@ -1213,7 +1528,7 @@
   "tactical": false,
   "description": "対象の領域に以下の効果を付与：<bulletlist><bullet>陸地だった場合、地形を沼地に変える。</bullet><bullet>3<turn></turn>ターンの間、土砂降りになる。</bullet></bulletlist><br></br><br></br>地下では使用不可。",
   "name": "豪雨",
-  "operation_point_cost": 80,
+  "operation_point_cost": 60,
   "icon": "00000497000005A8"
  },
  {
@@ -1223,7 +1538,7 @@
   "id": "ライトニング・ストーム",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "<bulletlist><bullet>3<turn></turn>ターンの間、すべてのユニットが水浸しになる。</bullet><bullet>最大2体のランダムな敵ユニットに以下を付与：<bulletlist></bullet><bullet>10<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で、3<turn></turn>ターンの間、感電になる。</bullet></bulletlist></bulletlist><br></br>次の6<turn></turn>ターンの間、この呪文はターン開始時に繰り返される。",
+  "description": "<bulletlist><bullet>3<turn></turn>ターンの間、すべてのユニットが水浸しになる。</bullet><bullet>最大2体のランダムな敵ユニットに以下を付与：<bulletlist></bullet><bullet>20<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で、3<turn></turn>ターンの間、感電になる。</bullet></bulletlist></bulletlist><br></br>次の6<turn></turn>ターンの間、この呪文はターン開始時に繰り返される。",
   "name": "ライトニング・ストーム",
   "operation_point_cost": 35,
   "icon": "00000497000005A4"
@@ -1247,7 +1562,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>",
   "id": "妖怪の加護",
   "tactical": false,
-  "description": "対象の種族を妖怪の力と結合させ、以下の効果を付与：<bulletlist><bullet>フェイ・ガイル</bullet><bullet>以下が無効になる：<bulletlist></bullet><bullet>ミスティによる視界ペナルティ</bullet><bullet>まとわりつく霧による命中率ペナルティ</bullet></bulletlist></bulletlist>",
+  "description": "対象の種族を妖怪の力と結合させ、以下の効果を付与：<bulletlist><bullet>フェイ・ガイル</bullet><bullet>以下が無効になる：<bulletlist></bullet><bullet>ミスティによるペナルティ</bullet><bullet><hyperlink><accuracy></accuracy>命中率</hyperlink>まとわりつく霧によるペナルティ</bullet></bulletlist></bulletlist>",
   "name": "妖怪の加護",
   "operation_point_cost": 250,
   "icon": "000004970000052C"
@@ -1270,7 +1585,7 @@
   "id": "妖怪の抱擁",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "1マスの範囲に以下の効果を付与：<bulletlist><bullet><hyperlink>霧</hyperlink>の雲を配置する。</bullet><bullet>味方ユニットが2個のランダムなプラスのステータス効果を得る。</bullet>",
+  "description": "1マスの範囲に以下の効果を付与：<bulletlist><bullet><hyperlink>霧</hyperlink>の雲を配置する。</bullet><bullet>味方ユニットが2個のランダムな <hyperlink>プラスのステータス効果</hyperlink>を獲得する。</bullet>",
   "name": "妖怪の抱擁",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1299,7 +1614,7 @@
   "id": "ミストリングの召喚",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "ランダムなマイナスのステータス効果を付与する攻撃ができる散兵ユニットの<hyperlink>ミストリング</hyperlink>を召喚する。",
+  "description": "ランダムな<hyperlink>マイナスのステータス効果</hyperlink>を付与する攻撃ができる散兵ユニットの<hyperlink>ミストリング</hyperlink>を召喚する。",
   "name": "ミストリングの召喚",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -1705,7 +2020,7 @@
   "id": "災厄の儀式",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<bulletlist><bullet>包囲攻撃中、毎回<turn></turn><hyperlink>ターン</hyperlink>の開始時に、包囲を受けている都市内のランダムな<hyperlink>領域改善</hyperlink>が<hyperlink>略奪</hyperlink>され、あなたに報酬が付与される。</bullet><bullet>戦闘開始時：<bulletlist></bullet><bullet>すべての防衛者がゴーストファイヤーのスタックを{duration} <turn></turn>ターンの間獲得する。</bullet><bullet>攻撃者側に<hyperlink>呪われたオーガ</hyperlink>が{amountUnits}体出現する。</bullet></bulletlist></bulletlist>",
+  "description": "<bulletlist><bullet>包囲攻撃中、毎回<turn></turn><hyperlink>ターン</hyperlink>の開始時に、包囲を受けている都市内のランダムな<hyperlink>領域改善</hyperlink>が<hyperlink>略奪</hyperlink>され、あなたに報酬が付与される。</bullet><bullet>戦闘開始時：<bulletlist></bullet><bullet>すべての防衛者がゴーストファイヤーのスタックを <turn></turn>ターンの間獲得する。</bullet><bullet>攻撃者側に<hyperlink>呪われたオーガ</hyperlink>が体出現する。</bullet></bulletlist></bulletlist>",
   "name": "災厄の儀式",
   "operation_point_cost": 0,
   "icon": "00000497000013B6"
@@ -1781,7 +2096,7 @@
   "description": "味方の<hyperlink>軍隊</hyperlink>を標的にし、進化を持つ軍隊内のランダムな<hyperlink>ユニット</hyperlink>が即座に進化に必要なランクを獲得する。",
   "name": "強制進化",
   "operation_point_cost": 80,
-  "icon": "00000493000001AF"
+  "icon": "0000049700002DFE"
  },
  {
   "casting_cost": "200<mana></mana> ",
@@ -1829,7 +2144,7 @@
   "id": "暗影の肉体",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "対象の種族に暗影の深淵の祝福を与え、以下を付与：<bulletlist><bullet>アンブラルの病魔無効</bullet><bullet><hyperlink>暗闇</hyperlink>の地形にいる間、ユニットに以下を付与：<bulletlist></bullet><bullet>+10<happiness></happiness><hyperlink>士気</hyperlink></bullet><bullet>ワールドマップ上で<turn></turn><hyperlink>ターン</hyperlink>ごとに+12<hyperlink><hp></hp>HP</hyperlink>。</bullet></bulletlist><bullet>対象の種族の<hyperlink>都市</hyperlink>に以下を付与：<bulletlist></bullet><bullet>暗闇の地形がある領域1つにつき、+2<knowledge></knowledge> <hyperlink> 知識</hyperlink>の収入を得る。</bullet><bullet>暗闇の領域による<happiness></happiness> <hyperlink>都市の安定性</hyperlink>のペナルティを無視する。</bullet></bulletlist><bullet>ヒーローユニットがグルーム・シェパードを得る。</bullet></bulletlist>",
+  "description": "対象の種族にアンブラル・アビスの祝福を与え、以下を付与：<bulletlist><bullet>アンブラルの病魔無効</bullet><bullet><hyperlink>暗闇</hyperlink>の地形にいる間、ユニットに以下を付与：<bulletlist></bullet><bullet>+10<happiness></happiness><hyperlink>士気</hyperlink></bullet><bullet>ワールドマップ上で<turn></turn><hyperlink>ターン</hyperlink>ごとに+12<hyperlink><hp></hp>HP</hyperlink>。</bullet></bulletlist><bullet>対象の種族の<hyperlink>都市</hyperlink>に以下を付与：<bulletlist></bullet><bullet>暗闇の地形がある領域1つにつき、+2<knowledge></knowledge><hyperlink>知識</hyperlink>の収益を得る。</bullet><bullet>暗闇の領域による<happiness></happiness> <hyperlink>都市の安定性</hyperlink>のペナルティを無視する。</bullet></bulletlist><bullet>ヒーローユニットがグルーム・シェパードを得る。</bullet></bulletlist><br></br>この変身は純粋な霊魂と同時に使用できない。",
   "name": "暗影の肉体",
   "operation_point_cost": 250,
   "icon": "0000049000000854"
@@ -1841,10 +2156,162 @@
   "id": "グルーム・ストライダー",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "対象の種族が暗影の生物に変身し、以下の効果を得る：<bulletlist><bullet>ユニットタイプがアンブラルの悪魔になる</bullet><bullet>浮遊。</bullet><bullet>高速移動.<bulletlist><br></br><br></br>騎乗ユニットは騎乗物を失う。<br></br><br></br>ヒーローは騎乗物と足の装備スロットを失う。</bullet>",
+  "description": "対象の種族がアンブラルの生物に変身し、以下の効果を得る：<bulletlist><bullet>ユニットタイプがアンブラルの悪魔になる</bullet><bullet>浮遊。</bullet><bullet>高速移動。<bulletlist><br></br><br></br>騎乗ユニットは騎乗物を失う。<br></br><br></br>ヒーローは騎乗物と足の装備スロットを失う。<br></br><br></br>この変身は純粋な霊魂と同時に使用できない。</bullet>",
   "name": "グルーム・ストライダー",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905512,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
+  "id": "エレメンタルの召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。 <hyperlink>雪の小精霊</hyperlink><br></br><br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "エレメンタルの召喚",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "雪の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905508,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
+  "id": "エレメンタルの召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。 <hyperlink>潮の小精霊</hyperlink><br></br><br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "エレメンタルの召喚",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "潮の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905504,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
+  "id": "エレメンタルの召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。 <hyperlink>石の小精霊</hyperlink><br></br><br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "エレメンタルの召喚",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "石の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905500,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
+  "id": "エレメンタルの召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。 <hyperlink>嵐の小精霊</hyperlink><br></br><br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "エレメンタルの召喚",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "嵐の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905496,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
+  "id": "エレメンタルの召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。 <hyperlink>溶岩の小精霊</hyperlink><br></br><br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "エレメンタルの召喚",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "溶岩の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905491,
+  "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
+  "id": "エレメンタルの召喚",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "自分の帝国の主要な<hyperlink>アフィニティー</hyperlink>に基づき、グレード1の小精霊を召喚する。 <hyperlink>光の小精霊</hyperlink><br></br><br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "エレメンタルの召喚",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "光の小精霊"
+   }
+  ]
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636905483,
+  "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
+  "id": "まばゆき化身",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "1<turn></turn>ターンの間、1マスの範囲内にいる味方ユニットが以下を得る：<bulletlist><bullet>+1<defense></defense><hyperlink>防御力</hyperlink>、+1 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>+1の追加<defense></defense><hyperlink>防御力</hyperlink>、アフィニティーの化身のスタック1回ごとに+1の<resistance></resistance><hyperlink>耐性</hyperlink>。</bullet></bulletlist>",
+  "name": "まばゆき化身",
+  "operation_point_cost": 15,
+  "icon": "0000048D000015C1"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636905425,
+  "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
+  "id": "化身の印",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "非設計者ユニットに以下を付与：<bulletlist><bullet>アフィニティーの化身。</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield>シールドユニット"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged>遠隔ユニット"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm>槍兵ユニット"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport>サポートユニット"
+   },
+   {
+    "requisite": "<unitShock></unitShock>ショックユニット"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>戦闘魔術師ユニット"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>戦士ユニット"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵ユニット"
+   }
+  ],
+  "name": "化身の印",
+  "operation_point_cost": 90,
+  "icon": "0000048D000015B9"
  },
  {
   "casting_cost": "60<gold></gold> ",
@@ -1895,7 +2362,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> ワールド呪文</hyperlink>",
   "id": "アストラルの予言",
   "tactical": false,
-  "description": "自分の領地付近にある領域内で、新たな<hyperlink>アストラル・エコー</hyperlink>を創り上げて出現させる。",
+  "description": "自分の領地付近にある領域内で、新たな<hyperlink> アストラル・エコー</hyperlink>を創り上げて出現させる。",
   "name": "アストラルの予言",
   "operation_point_cost": 300,
   "icon": "000003E3000053C6"
@@ -1918,7 +2385,7 @@
   "id": "聖別のファイアストーム",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "対象の非友好的な<hyperlink>領域</hyperlink>で<hyperlink>古代遺産</hyperlink>を含まない領域：<bulletlist><bullet>その<hyperlink>領域改善</hyperlink>が壊滅させられる。</bullet><bullet>領域内の敵ユニットは20 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>3<turn></turn>ターンの間、戦闘に参加したすべての敵ユニットは有罪を受ける。</bullet><bullet>ランダムなマスに<hyperlink>浄化の炎</hyperlink>を生成する。</bullet></bulletlist>",
+  "description": "対象の<hyperlink>領域</hyperlink>において：<bulletlist><bullet>敵ユニットは 20 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>領域は3 <turn></turn>ターンの間 聖別のファイアストームを獲得する。</bullet><bullet><hyperlink>領域改善</hyperlink>を所有する敵がいる場合は <hyperlink>略奪</hyperlink>される。</bullet></bulletlist>",
   "name": "聖別のファイアストーム",
   "operation_point_cost": 100,
   "icon": "0000048D0000087B"
@@ -1942,7 +2409,7 @@
   "id": "炎に祝福されしチャンピオン",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>60%の基本確率で火傷を与える</bullet><bullet>対象の火傷が5スタック以上の場合：<br></br>3<turn></turn><hyperlink>ターン</hyperlink>の間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>60%の基本確率で火傷を与える</bullet><bullet>3<turn></turn>ターンの間、対象のマスに<hyperlink>浄化の炎</hyperlink>を生成する</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -2064,7 +2531,7 @@
   "id": "触手の召喚",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "占いの目を使って<hyperlink>移動不可能</hyperlink>な戦士ユニットを召喚する。<br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "description": "ハイパー覚醒を持つ<hyperlink>移動不可能</hyperlink>な戦士ユニットを召喚する。<br></br>この召喚が3 <turn></turn>ターンの間継続する。",
   "name": "触手の召喚",
   "operation_point_cost": 25,
   "summoned_units": [
@@ -2080,7 +2547,7 @@
   "id": "コンストリクター・フォーカス",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>1<turn></turn>ターンの間、30%の基本確率でコンストリクトを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>1<turn></turn>ターンの間、30%の基本確率でコンストリクトを与える。</bullet><bullet> マークまたは減速 ユニットに対する確率は60%まで上昇する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -2126,10 +2593,10 @@
   "casting_cost": "60<mana></mana> ",
   "resid": 5003636899875,
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "野生動物召喚",
+  "id": "野生動物招集",
   "tactical": false,
-  "description": "<bulletlist><bullet>対象のワールドマスにランダムなグレードIの動物を召喚する。</bullet><bullet>低確率でグレードIIの動物を召喚する。</bullet><bullet>召喚可能な動物は、このスキルを発動した地形の種類によって決まる。</bullet></bulletlist>",
-  "name": "野生動物召喚",
+  "description": "<bulletlist><bullet>グレード Iかグレード IIの動物ユニットを選択すると自軍に加えられる。</bullet><bullet>利用可能な動物は呪文が唱えられた地形のタイプによる。</bullet></bulletlist>",
+  "name": "野生動物招集",
   "operation_point_cost": 60,
   "icon": "0000041B000002E7",
   "summoned_units": [
@@ -2202,10 +2669,10 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 5003636899859,
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "グレーターアニマル召喚",
+  "id": "グレーターアニマル招集",
   "tactical": false,
-  "description": "対象の地点にランダムなグレードIII動物ユニットを召喚する。<br></br><br></br>低確率でグレードIV動物ユニットを召喚する。",
-  "name": "グレーターアニマル召喚",
+  "description": "<bulletlist><bullet>グレード IIIかグレード IVの動物ユニットを選択すると自軍に加えられる。</bullet><bullet>利用可能な動物は呪文が唱えられた地形のタイプによる。</bullet></bulletlist>",
+  "name": "グレーターアニマル招集",
   "operation_point_cost": 150,
   "icon": "000003E300004AF7",
   "summoned_units": [
@@ -2276,6 +2743,17 @@
     "slug": "黒曜石のワイバーン"
    }
   ]
+ },
+ {
+  "casting_cost": "5<mana></mana> ",
+  "resid": 4995046968314,
+  "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
+  "id": "破壊の束縛",
+  "tactical": true,
+  "description": "対象の味方ユニット：<bulletlist><bullet>すべての<hyperlink>マイナスのステータス効果</hyperlink>を失う。</bullet><bullet>2 強化を獲得する。</bullet></bulletlist>",
+  "name": "破壊の束縛",
+  "operation_point_cost": 10,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -2386,7 +2864,7 @@
   "id": "浄化のマントラ",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "対象の味方ユニット：<bulletlist><bullet>15<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist>マイナスのステータス効果が2個解除される。<bullet></bullet>",
+  "description": "対象の味方ユニット：<bulletlist><bullet>15<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet> 2<hyperlink>マイナスのステータス効果</hyperlink>を解除する。</bullet></bulletlist>",
   "name": "浄化のマントラ",
   "operation_point_cost": 10,
   "icon": "0000048B000001D1"
@@ -2414,7 +2892,7 @@
   "id": "暗闇の覆い",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "対象の<hyperlink>領域</hyperlink>および隣接する<hyperlink>領域</hyperlink>が：<bulletlist><bullet><hyperlink>暗闇</hyperlink>を獲得する</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>沼地</hyperlink>および<hyperlink>ダンジョン</hyperlink>を失う。</bullet><bullet>敵の<hyperlink>ユニット</hyperlink>が10 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>および10 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
+  "description": "対象の<hyperlink>領域</hyperlink>および隣接する<hyperlink>領域</hyperlink>が：<bulletlist><bullet><hyperlink>暗闇</hyperlink>を獲得する</bullet><bullet><hyperlink>裂け目</hyperlink><hyperlink>川</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>および<hyperlink>ダンジョン</hyperlink>を失う。</bullet><bullet>敵の<hyperlink>ユニット</hyperlink>が10 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>および10 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
   "name": "暗闇の覆い",
   "operation_point_cost": 150,
   "icon": "0000048B00000135"
@@ -2508,7 +2986,7 @@
   "id": "アストラル断絶",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "標的のマジック・オリジン <hyperlink>ユニット</hyperlink>：<bulletlist><bullet>60%の基本確率で倒される。</bullet><bullet>失敗した場合、妨害した腐敗中を与える。</bullet></bulletlist>",
+  "description": "標的のマジック・オリジン <hyperlink>ユニット</hyperlink>：<bulletlist><bullet>60%の基本確率で倒される。</bullet><bullet>失敗した場合、妨害したと4スタックの腐敗中を与える。</bullet></bulletlist>",
   "name": "アストラル断絶",
   "operation_point_cost": 50,
   "icon": "0000046A000001E7"
@@ -2527,6 +3005,9 @@
    },
    {
     "requisite": "<unitPolearm></unitPolearm>槍兵ユニット"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>戦士ユニット"
    }
   ],
   "name": "複合防衛",
@@ -2540,7 +3021,7 @@
   "id": "精神結合",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "この種族のユニットが感覚を共有するアビリティを得て、以下を獲得する：<bulletlist><bullet>変造体または精神結合をした別のユニットの隣に立っている場合、占いの目。</bullet></bulletlist>",
+  "description": "この種族のユニットが感覚を共有するアビリティを得て、以下を獲得する：<bulletlist><bullet>変造体または精神結合をした別のユニットの隣に立っている場合、ハイパー覚醒。</bullet></bulletlist>",
   "name": "精神結合",
   "operation_point_cost": 250,
   "icon": "0000046A0000019C"
@@ -2564,7 +3045,7 @@
   "id": "連鎖指揮：防衛",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "対象の味方変造体または精神結合ユニット： <bulletlist><bullet>1 <turn></turn>ターンの間用心深いを得る。</bullet><bullet><hyperlink>防御モード</hyperlink>に入る。</bullet><bullet>その後、この効果は隣接する味方の変造体または精神連結ユニットに適用され、繰り返し発動する。</bullet></bulletlist>",
+  "description": "対象の味方変造体または精神結合ユニット： <bulletlist><bullet>1 <turn></turn>ターンの間防衛マスターを得る。</bullet><bullet>2個の<hyperlink>マイナスのステータス効果</hyperlink>を解除する。</bullet><bullet>その後、この効果は隣接する味方の変造体または精神連結ユニットに適用され、繰り返し発動する。</bullet></bulletlist>",
   "name": "連鎖指揮：防衛",
   "operation_point_cost": 25,
   "icon": "0000046A0000017D"
@@ -2619,7 +3100,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "アースシェイプ：砂",
   "tactical": false,
-  "description": "味方もしくは所有者のいない地上<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>砂地</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "味方もしくは所有者のいない地上<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>砂地</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "アースシェイプ：砂",
   "operation_point_cost": 45,
   "icon": "0000045E00000EB2"
@@ -2641,7 +3122,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "アースシェイプ：雪",
   "tactical": false,
-  "description": "味方もしくは所有者のいない<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "味方もしくは所有者のいない<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet><hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "アースシェイプ：雪",
   "operation_point_cost": 45,
   "icon": "0000045E00000E97"
@@ -2675,7 +3156,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "深淵の炎",
   "tactical": false,
-  "description": "<hyperlink>領域</hyperlink>と、隣接する領域が対象：<bulletlist><bullet>敵の<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "<hyperlink>領域</hyperlink>と、隣接する領域が対象：<bulletlist><bullet>敵の<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "深淵の炎",
   "operation_point_cost": 200,
   "icon": "000003E300005AA8"
@@ -2686,7 +3167,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "フラッシュ・_br__フリーズ",
   "tactical": false,
-  "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は次を受ける：<bulletlist></bullet><bullet>20 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>1 <hyperlink>ワールドマップ</hyperlink> <turn></turn><hyperlink>ターン</hyperlink>で-5 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet></bulletlist><bullet>領域は<hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は次を受ける：<bulletlist></bullet><bullet>20 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>1 <hyperlink>ワールドマップ</hyperlink> <turn></turn><hyperlink>ターン</hyperlink>で-5 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet></bulletlist><bullet>領域は<hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet>領域は<hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "フラッシュ・<br></br>フリーズ",
   "operation_point_cost": 100,
   "icon": "0000041B00001764"
@@ -2728,7 +3209,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "破壊的再生",
   "tactical": false,
-  "description": "<hyperlink>領域</hyperlink>を対象とする：<bulletlist><bullet>敵の<hyperlink>領域改善</hyperlink>が含まれる場合は、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>報酬を得ることはなく<hyperlink>考え方</hyperlink>を失うこともない。</bullet></bulletlist><bullet>領域が地上にある場合は<hyperlink>森</hyperlink>を得て、地下にある場合は<hyperlink>キノコの森</hyperlink>を得る。</bullet></bulletlist>",
+  "description": "対象の<hyperlink>領域</hyperlink>で：<bulletlist><bullet>敵ユニットは20の<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>敵の<hyperlink>領域改善</hyperlink>がある場合、それは<hyperlink>略奪状態</hyperlink>になる。<bulletlist></bullet><bullet>その報酬は得られず、<hyperlink>考え方</hyperlink>も失わない。</bullet></bulletlist><bullet>その領域は地表なら<hyperlink>森</hyperlink>、地下なら<hyperlink>キノコの森</hyperlink>を得る。</bullet></bulletlist>",
   "name": "破壊的再生",
   "operation_point_cost": 150,
   "icon": "000003E30000522E"
@@ -2774,7 +3255,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>呪文勝利</hyperlink>",
   "id": "秩序の時代",
   "tactical": false,
-  "description": "秩序の時代を唱えて<hyperlink>魔法勝利</hyperlink>を達成する。詠唱中：<bulletlist><bullet>あなたの<order></order><hyperlink>秩序のアフィニティー</hyperlink> <hyperlink>呪文</hyperlink>コストが-20% <mana></mana><hyperlink> マナ</hyperlink>、<caststrategic></caststrategic><hyperlink> ワールドマップ詠唱地点</hyperlink>、そして<optactical></optactical><hyperlink>戦闘詠唱地点</hyperlink>になる。</bullet><bullet>戦闘中の各ターンで、ランダムな同盟が3のランダムなプラスのステータス効果を獲得し、すべてのマイナスなステータス効果を失う。</bullet></bulletlist>",
+  "description": "秩序の時代を唱えて<hyperlink>魔法勝利</hyperlink>を達成する。詠唱中：<bulletlist><bullet>自身の<order></order><hyperlink>秩序のアフィニティー</hyperlink> <hyperlink>呪文</hyperlink>コストが-20% <mana></mana><hyperlink> マナ</hyperlink>、<caststrategic></caststrategic><hyperlink> ワールドマップ詠唱地点</hyperlink>、そして<optactical></optactical><hyperlink>戦闘詠唱地点</hyperlink>になる。</bullet><bullet>戦闘中の各ターンで、ランダムな同盟が3のランダムな<hyperlink>プラスのステータス効果</hyperlink>を獲得し、すべての<hyperlink>マイナスのステータス効果</hyperlink>を失う。</bullet></bulletlist>",
   "name": "秩序の時代",
   "operation_point_cost": 400,
   "icon": "0000045A0000000B"
@@ -2844,7 +3325,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>呪文勝利</hyperlink>",
   "id": "カオスの時代",
   "tactical": false,
-  "description": "カオスの時代を唱えて<hyperlink>魔法勝利</hyperlink>を達成する。詠唱中：<bulletlist><bullet>あなたの<chaos></chaos> <hyperlink>カオスアフィニティー</hyperlink> <hyperlink>呪文</hyperlink>コストが-20% <mana></mana><hyperlink> マナ</hyperlink>、<caststrategic></caststrategic><hyperlink> ワールドマップ詠唱地点</hyperlink>、そして<optactical></optactical><hyperlink>戦闘詠唱地点</hyperlink>になる。</bullet><bullet>戦闘中の各<turn></turn>ターンで、ランダムな敵ユニットがランダムなタイプのダメージを15受け、90%の基本確率でランダムなマイナスのステータス効果を受ける。</bullet></bulletlist>",
+  "description": "カオスの時代を唱えて<hyperlink>魔法勝利</hyperlink>を達成する。詠唱中：<bulletlist><bullet>自身の<chaos></chaos> <hyperlink>カオスアフィニティー</hyperlink> <hyperlink>呪文</hyperlink>コストが-20% <mana></mana><hyperlink> マナ</hyperlink>、<caststrategic></caststrategic><hyperlink> ワールドマップ詠唱地点</hyperlink>、そして<optactical></optactical><hyperlink>戦闘詠唱地点</hyperlink>になる。</bullet><bullet>戦闘中の各<turn></turn>ターンで、ランダムな敵ユニットがランダムなタイプのダメージを15受け、90%の基本確率でランダムな<hyperlink>マイナスのステータス効果</hyperlink>を受ける。</bullet></bulletlist>",
   "name": "カオスの時代",
   "operation_point_cost": 400,
   "icon": "0000044500000040"
@@ -2957,14 +3438,14 @@
   "icon": "0000041B000019A1"
  },
  {
-  "casting_cost": "200<mana></mana> ",
+  "casting_cost": "150<mana></mana> ",
   "resid": 4514010634915,
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "勝利の讃歌",
   "tactical": true,
   "description": "全味方ユニットが以下を得る：<bulletlist><bullet>3 強化。</bullet><bullet>+15 <happiness></happiness><hyperlink>士気</hyperlink>。</bullet></bulletlist>",
   "name": "勝利の讃歌",
-  "operation_point_cost": 65,
+  "operation_point_cost": 50,
   "icon": "0000041B000019A5"
  },
  {
@@ -2984,7 +3465,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "異端審問官の印",
   "tactical": false,
-  "description": "魔法ユニットの基本攻撃が以下を得る：<bulletlist><bullet>戦闘終了時まで基本確率30%で有罪を与え、敵の<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を減少させる。</bullet><bullet>基本確率30%で弱まったを与え、敵のダメージを減少させる。</bullet><bullet>基本確率30%で減速を与え、敵の移動速度を減少させて報復攻撃を防ぐ。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの攻撃が以下を得る：<bulletlist><bullet>戦闘終了時まで基本確率60%で有罪を与え、敵の<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を減少させる。</bullet><bullet> 60%の基本確率で 弱まったを与え、敵のダメージを減少させる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>遠隔ユニット"
@@ -3067,14 +3548,14 @@
   "icon": "0000041B0000193D"
  },
  {
-  "casting_cost": "15<mana></mana> ",
+  "casting_cost": "30<mana></mana> ",
   "resid": 4514010634749,
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "鼓舞の詠唱",
   "tactical": true,
   "description": "2マスの範囲にいる味方ユニットは以下の効果を得る：<bulletlist><bullet>+10 <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>熱狂がある場合、2 強化状態になる。</bullet></bulletlist>",
   "name": "鼓舞の詠唱",
-  "operation_point_cost": 20,
+  "operation_point_cost": 25,
   "icon": "0000041B00001939"
  },
  {
@@ -3115,7 +3596,7 @@
   "tactical": true,
   "description": "<bulletlist><bullet>味方の不死ユニット全体が、合計<hyperlink><hp></hp>HP</hyperlink>の50%を持って蘇る。</bullet><bullet>戦闘終了まで、アンデッド化していない死骸があなたの支配下の<hyperlink>腐敗のゾンビ</hyperlink>として蘇る。</bullet></bulletlist><br></br><br></br>水域戦闘では使用不可。",
   "name": "戦場での蘇生",
-  "operation_point_cost": 80,
+  "operation_point_cost": 65,
   "icon": "0000041B00001770"
  },
  {
@@ -3140,6 +3621,12 @@
    },
    {
     "slug": "スケルトン戦士"
+   },
+   {
+    "slug": "骨ワイバーン"
+   },
+   {
+    "slug": "腐敗した魂"
    },
    {
     "slug": "バンシー"
@@ -3256,7 +3743,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>",
   "id": "忘却の眠り",
   "tactical": true,
-  "description": "ヒーローユニットでない対象は死亡する。2 <turn></turn>ターン後、<hyperlink><hp></hp>HP</hyperlink>が75%回復した状態で蘇生し、錯乱状態になる。",
+  "description": "対象の非ヒーローユニットは死亡する。2 <turn></turn>ターン後、<hyperlink><hp></hp>HP</hyperlink>が75%回復した状態で蘇生し、錯乱状態になる。<br></br><br></br>この方法で死亡していると、ユニットの復活はできないし、死体の破壊もできない。",
   "name": "忘却の眠り",
   "operation_point_cost": 40,
   "icon": "0000041B0000174F"
@@ -3279,7 +3766,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "冬の進軍",
   "tactical": false,
-  "description": "味方の対象<hyperlink>都市</hyperlink>が以下を得る：<bulletlist><hyperlink>領地</hyperlink>の中かそれに隣接するすべての<turn></turn><hyperlink>ターン</hyperlink>、2<hyperlink>領域</hyperlink>：<bulletlist><bullet><hyperlink>雪の土地</hyperlink> と<hyperlink>氷</hyperlink>を得る</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>川</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist><bullet>領地内の雪か氷のある領域では、<food></food><hyperlink> 食料</hyperlink>を2、<structureprod></structureprod><hyperlink>生産</hyperlink>を2獲得する。</bullet></bulletlist>",
+  "description": "味方の対象<hyperlink>都市</hyperlink>が以下を得る：<bulletlist>毎<turn></turn><hyperlink>ターン</hyperlink>、<hyperlink>領地</hyperlink>の中かそれに隣接する2 <hyperlink>領域</hyperlink>が：<bulletlist><bullet><hyperlink>雪の土地</hyperlink>と<hyperlink>氷</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist><bullet>領地内の雪か氷のある領域では、<food></food><hyperlink> 食料</hyperlink>を2、<structureprod></structureprod><hyperlink>生産</hyperlink>収益を2獲得する。</bullet></bulletlist>",
   "name": "冬の進軍",
   "operation_point_cost": 120,
   "icon": "0000041B00001729"
@@ -3380,7 +3867,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 大きな種族転換</hyperlink>",
   "id": "アストラル同調",
   "tactical": false,
-  "description": "標的の種族をアストラル海に繋げ、以下を付与する：<bulletlist><bullet>無実体のユニットタイプ</bullet><bullet>同調：アストラルの予兆。戦闘中に呪文が詠唱される度に、良いステータス効果をランダムで得る。</bullet></bulletlist>",
+  "description": "標的の種族をアストラル海に繋げ、以下を付与する：<bulletlist><bullet>無実体のユニットタイプ</bullet><bullet>同調：アストラルの予兆。戦闘中に呪文が詠唱される度に、<hyperlink>プラスのステータス効果</hyperlink>をランダムで得る。</bullet></bulletlist>",
   "name": "アストラル同調",
   "operation_point_cost": 600,
   "icon": "0000041B00001298"
@@ -3403,7 +3890,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "コズミック・オーバードライブ",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>ダメージが30%増加する。</bullet><bullet>超高速移動。</bullet></bulletlist>",
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>ダメージが20%増加する。</bullet><bullet>超高速移動。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "戦闘召喚"
@@ -3433,7 +3920,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>バフ/デバフ呪文</hyperlink>",
   "id": "崩壊の波",
   "tactical": true,
-  "description": "<bulletlist><bullet>敵ユニットが120%の基本確率で2 <turn></turn>ターンの間妨害したになる。</bullet><bullet>敵から2個の良いステータス効果を解除する。</bullet><bullet>同盟から2個の悪いステータス効果を解除する。</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>敵ユニットが120%の基本確率で2 <turn></turn>ターンの間妨害したになる。</bullet><bullet>敵から2個の<hyperlink>プラスのステータス効果</hyperlink>を解除する。</bullet><bullet>同盟から2個の<hyperlink>マイナスのステータス効果</hyperlink>を解除する。</bullet></bulletlist>",
   "name": "崩壊の波",
   "operation_point_cost": 80,
   "icon": "0000041B000012D6"
@@ -3444,7 +3931,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "フェーズの魔力",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>戦闘中にテレポートが可能になるフェーズアビリティ。</bullet></bulletlist>",
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>戦闘中に転送が可能になるチャージフェーズアビリティ。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -3489,7 +3976,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> 回復呪文</hyperlink>",
   "id": "緊急離脱",
   "tactical": true,
-  "description": "4マス以内の最も近い味方ユニットを、選択した誰もいないマスに転送させる。<br></br>そのユニットは+30 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
+  "description": "4マス以内の最も近い味方ユニットを、標的の誰もいないマスに転送させる。<br></br>そのユニットは+30 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復し、すべての<hyperlink>マイナスのステータス効果</hyperlink>が解除される。",
   "name": "緊急離脱",
   "operation_point_cost": 30,
   "icon": "0000041B0000126E"
@@ -3500,7 +3987,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>",
   "id": "アストラル血",
   "tactical": false,
-  "description": "標的となった種族の血管に魔法が流れ始めるようにして、その種族に以下を付与：<bulletlist><bullet>同調：幸運、これにより呪文詠唱時に<hyperlink>会心のヒット</hyperlink>の確率が上昇する。</bullet></bulletlist>",
+  "description": "標的となった種族の血管に魔法を宿し、その種族に以下を付与：<bulletlist><bullet>同調：幸運、これにより呪文詠唱時に<hyperlink><crit></crit>クリティカルヒット率</hyperlink>が上昇する。</bullet></bulletlist>",
   "name": "アストラル血",
   "operation_point_cost": 250,
   "icon": "0000041B00001240"
@@ -3527,7 +4014,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>",
   "id": "知性増幅",
   "tactical": false,
-  "description": "標的の所有済みの都市が以下を得る：<bulletlist><bullet>+20 <knowledge></knowledge> <hyperlink> 知識</hyperlink>の収益</bullet><bullet>-10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet></bulletlist>",
+  "description": "標的の所有済みの都市が以下を得る：<bulletlist><bullet>+20 <knowledge></knowledge><hyperlink>知識</hyperlink>の収益</bullet><bullet>-10 <happiness></happiness> <hyperlink>都市の安定性</hyperlink></bullet></bulletlist>",
   "name": "知性増幅",
   "operation_point_cost": 80,
   "icon": "0000041B00001244"
@@ -3538,7 +4025,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>",
   "id": "チェーンライトニング",
   "tactical": true,
-  "description": "対象の敵ユニット：<bulletlist><bullet>30 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>感電が付与される。</bullet><bullet>この効果は3マス内にいる別の敵へと移行する。</bullet><bullet>効果は2回まで移行する。</bullet></bulletlist>",
+  "description": "対象の敵ユニットが：<bulletlist><bullet>30 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>2感電が付与される。</bullet><bullet>この効果は3マス内にいる別の敵へと移行する。</bullet><bullet>効果は2回まで移行する。</bullet></bulletlist>",
   "name": "チェーンライトニング",
   "operation_point_cost": 30,
   "icon": "0000041B00001238"
@@ -3549,7 +4036,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "逆上のフォーカス",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>攻撃時に与えるダメージが増加する逆上。</bullet><bullet>基本攻撃の射程範囲が1増加する。</bullet></bulletlist>",
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>攻撃時に与えるダメージが増加する逆上。</bullet><bullet>基本攻撃が+1<hyperlink><range></range>範囲</hyperlink>。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -3568,7 +4055,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "稲妻の刃",
   "tactical": false,
-  "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+4 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>感電ユニットに対して、ダメージが20%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+4 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>感電ユニットに対して、ダメージが10%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -3596,7 +4083,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 敵軍隊呪文</hyperlink>",
   "id": "ライトニングトレント",
   "tactical": false,
-  "description": "対象の敵部隊：<bulletlist><bullet>全てのユニットが20 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>全てのユニットが-3 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>を1 <hyperlink>ワールドマップ</hyperlink> <turn></turn>ターン受け続ける。</bullet></bulletlist>",
+  "description": "対象の敵部隊：<bulletlist><bullet>全てのユニットが20 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を受ける。</bullet><bullet>全てのユニットが-1 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>を1 <hyperlink>ワールドマップ</hyperlink> <turn></turn>ターン受け続ける。</bullet></bulletlist>",
   "name": "ライトニングトレント",
   "operation_point_cost": 80,
   "icon": "0000041B000012E5"
@@ -3699,7 +4186,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "火砕噴火",
   "tactical": false,
-  "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>敵の<hyperlink>領域改善</hyperlink>が含まれている場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたはその報酬を得ることもなく、<hyperlink>考え方</hyperlink>を失うこともない。</bullet></bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>その領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>その領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>真菌畑</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>敵の<hyperlink>領域改善</hyperlink>が含まれている場合、それは<hyperlink>略奪</hyperlink>される。<bulletlist></bullet><bullet>あなたはその報酬を得ることもなく、<hyperlink>考え方</hyperlink>を失うこともない。</bullet></bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>は20 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>その領域は<hyperlink>灰野原</hyperlink>を得る。</bullet><bullet>その領域は<hyperlink>川</hyperlink>、<hyperlink>草原</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "火砕噴火",
   "operation_point_cost": 150,
   "icon": "000003AD00002B86"
@@ -3722,7 +4209,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "分断の刃",
   "tactical": false,
-  "description": "エンチャントされたユニットによる基本<hyperlink>近接攻撃</hyperlink>に以下の効果を付与：<bulletlist><bullet>90%の確率でバラバラの防衛効果を与え、敵の<defense></defense><hyperlink>防御力</hyperlink>を減少させる。</bullet><bullet>デモリッシャーになり、強化された障害物を破壊できるようになる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>攻撃に以下の効果を付与：<bulletlist><bullet>バラバラの防衛の効果を与え、敵の<defense></defense><hyperlink>防御力</hyperlink>を減少させる。</bullet><bullet>デモリッシャーになり、強化された障害物を破壊できるようになる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -3750,7 +4237,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "探究者の矢",
   "tactical": false,
-  "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+1<range></range>の範囲。</bullet></bulletlist>",
+  "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+1<hyperlink><range></range>範囲</hyperlink>。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>遠隔ユニット"
@@ -3867,7 +4354,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "適応鎧",
   "tactical": false,
-  "description": "<turn></turn>ターンに一度、魔法ユニットが非<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受けた場合にそのユニットに以下を付与：<bulletlist><bullet>魔法ダメージへの耐性が増加する耐性強化。</bullet><bullet>マイナスのステータス効果によってユニットが影響を受ける確率を減少させるステータスの保護。</bullet></bulletlist>",
+  "description": "<turn></turn>ターンに一度、魔法ユニットに非<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>が命中した場合にそのユニットに以下を付与：<bulletlist><bullet>魔法ダメージへの耐性が増加する耐性強化。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>によってユニットが影響を受ける確率を減少させるステータスの保護。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -3945,7 +4432,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> 回復/バフ呪文</hyperlink>",
   "id": "目覚めた本能",
   "tactical": true,
-  "description": "2マス範囲内にいる味方ユニット全体：<bulletlist><bullet>+25 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>すべての<hyperlink>アクションポイント</hyperlink>を取り戻す。</bullet><bullet>2 <turn></turn>ターンの間狂乱になる。</bullet></bulletlist>",
+  "description": "2マス範囲内にいる味方ユニット全体：<bulletlist><bullet>+25 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>すべての<hyperlink>アクションポイント</hyperlink>を取り戻す。</bullet><bullet>2 <turn></turn>ターンの間狂乱になる。</bullet></bulletlist><br></br><hyperlink>制御喪失に対して無敵</hyperlink>状態のユニットには効果はない。",
   "name": "目覚めた本能",
   "operation_point_cost": 50,
   "icon": "000003E300005236"
@@ -3972,7 +4459,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "土地の復興",
   "tactical": false,
-  "description": "味方および所有者のいない<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>地上にある場合は<hyperlink>草原</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "味方および所有者のいない<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>地上にある場合は<hyperlink>草原</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>と<hyperlink>キノコの森</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>石筍</hyperlink><hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
   "name": "土地の復興",
   "operation_point_cost": 30,
   "icon": "0000041B00000D7C"
@@ -4155,7 +4642,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>",
   "id": "カオスの器",
   "tactical": false,
-  "description": "対象の種族をカオスエネルギーの霊媒に変身させ、以下の効果を付与する：<bulletlist><bullet>対象が受けているマイナス効果の数だけ、与えるダメージ量が10%増加する。効果は3回まで重複する。</bullet></bulletlist>",
+  "description": "対象の種族をカオスエネルギーの霊媒に変身させ、以下の効果を付与する：<bulletlist><bullet>対象が受けている<hyperlink>マイナスのステータス効果</hyperlink>の数だけ、与えるダメージ量が10%増加する。効果は3回までスタックする。</bullet></bulletlist>",
   "name": "カオスの器",
   "operation_point_cost": 350,
   "icon": "0000041B00000B60"
@@ -4166,7 +4653,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "大混乱魔法",
   "tactical": false,
-  "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>60%の基本確率でマイナスのステータス効果をランダムで与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本<hyperlink>魔法攻撃</hyperlink>に以下を付与：<bulletlist><bullet>60%の基本確率で<hyperlink>マイナスのステータス効果</hyperlink>をランダムで与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -4185,7 +4672,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
   "id": "カオスイーター召喚",
   "tactical": false,
-  "description": "悪いステータス効果を食べて生きる、近距離バトルメイジユニットの<hyperlink>カオスイーター</hyperlink>を召喚する。",
+  "description": "<hyperlink>マイナスのステータス効果</hyperlink>を食べて生きる、近距離バトルメイジユニットの<hyperlink>カオスイーター</hyperlink>を召喚する。",
   "name": "カオスイーター召喚",
   "operation_point_cost": 200,
   "summoned_units": [
@@ -4200,7 +4687,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>",
   "id": "集団ヒステリー",
   "tactical": true,
-  "description": "1マスの範囲にいる全ユニットにランダムなマイナスのステータス効果を付与する。",
+  "description": "1マスの範囲にいる全ユニットにランダムな<hyperlink>マイナスのステータス効果</hyperlink>を付与する。",
   "name": "集団ヒステリー",
   "operation_point_cost": 30,
   "icon": "000003E3000059F1"
@@ -4273,7 +4760,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "修復の杖",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>信仰深き者、これにより<hyperlink>ユニット維持費</hyperlink>が減少する。</bullet><bullet>戦闘中に使用できる回復アビリティである修復の仕上げ。</bullet></bulletlist>",
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet>信仰深き者、これにより基本の<hyperlink>ユニット維持費</hyperlink>が減少する。</bullet><bullet>戦闘中に使用できる回復アビリティである修復の仕上げ。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -4316,7 +4803,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "霧氷刃",
   "tactical": false,
-  "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を与える：<bulletlist><bullet>+4 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>凍結または減速ユニットに対するダメージが+20%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を与える：<bulletlist><bullet>+4 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>凍結または減速ユニットに対するダメージが+10%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -4355,7 +4842,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "焼け付く刃",
   "tactical": false,
-  "description": "エンチャントされたユニットによる<hyperlink>近接攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>対象が火傷状態の場合、ダメージが20%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "エンチャントされたユニットによる<hyperlink>近接攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>対象が火傷状態の場合、ダメージが10%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -4383,7 +4870,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "ソウル超過",
   "tactical": true,
-  "description": "1マス範囲内の味方ユニット：<bulletlist><bullet>1強化を得る。</bullet><bullet>戦闘終了時まで最大<hyperlink><hp></hp>HP</hyperlink>+20を得る。</bullet><bullet>マイナスのステータス効果が無効になる。</bullet></bulletlist>",
+  "description": "1マス範囲内の味方ユニットは以下を得る：<bulletlist><bullet>1強化を獲得。</bullet><bullet>戦闘終了時まで最大<hyperlink><hp></hp>HP</hyperlink>+20。</bullet><bullet>2<hyperlink>マイナスのステータス効果</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "ソウル超過",
   "operation_point_cost": 20,
   "icon": "0000041B000005E4"
@@ -4392,89 +4879,12 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4514010629343,
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "グレーターアニマル召喚",
+  "id": "グレーターアニマル招集",
   "tactical": false,
-  "description": "対象の地点にランダムなグレードIII動物ユニットを召喚する。<br></br><br></br>低確率でグレードIV動物ユニットを召喚する。",
-  "name": "グレーターアニマル召喚",
+  "description": "<bulletlist><bullet>グレード IIIかグレード IVの動物ユニットを選択すると自軍に加えられる。</bullet><bullet>利用可能な動物は呪文が唱えられた地形のタイプによる。</bullet></bulletlist>",
+  "name": "グレーターアニマル招集",
   "operation_point_cost": 150,
-  "icon": "000003E300004AF7",
-  "summoned_units": [
-   {
-    "slug": "氷クモの女族長"
-   },
-   {
-    "slug": "白狼"
-   },
-   {
-    "slug": "サンダーバード"
-   },
-   {
-    "slug": "血まみれ牙の女族長"
-   },
-   {
-    "slug": "凍結のワイバーン"
-   },
-   {
-    "slug": "恐ろしいクマ"
-   },
-   {
-    "slug": "マンモス"
-   },
-   {
-    "slug": "サーベルタイガー"
-   },
-   {
-    "slug": "トカゲ"
-   },
-   {
-    "slug": "黄金のワイバーン"
-   },
-   {
-    "slug": "猟師クモの女族長"
-   },
-   {
-    "slug": "恐怖クモの女族長"
-   },
-   {
-    "slug": "精霊狼"
-   },
-   {
-    "slug": "ユニコーン"
-   },
-   {
-    "slug": "ペストクロコダイル"
-   },
-   {
-    "slug": "腐食蠕虫"
-   },
-   {
-    "slug": "悪夢"
-   },
-   {
-    "slug": "炎のワイバーン"
-   },
-   {
-    "slug": "地獄のジャガーノート"
-   },
-   {
-    "slug": "インフェルノ・ハウンド"
-   },
-   {
-    "slug": "黒曜石のワイバーン"
-   },
-   {
-    "slug": "吸血クモの女族長"
-   },
-   {
-    "slug": "フェニックス"
-   },
-   {
-    "slug": "深海のニム"
-   },
-   {
-    "slug": "クラーケン"
-   }
-  ]
+  "icon": "000003E300004AF7"
  },
  {
   "casting_cost": "15<mana></mana> ",
@@ -4493,7 +4903,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
   "id": "大自然のトーテム",
   "tactical": true,
-  "description": "自分の<turn></turn>ターン開始時にグレード Iの動物ユニットを出現させる<hyperlink>大自然のトーテム</hyperlink>を出現させる。3 <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
+  "description": "<hyperlink>大自然のトーテム</hyperlink>を召喚する。これの作成時とあなたの次の2<turn></turn>ターン開始時に、ランダムなグレードIかIIの動物ユニットを出現させる。<br></br><br></br>水域戦闘では使用不可。",
   "name": "大自然のトーテム",
   "operation_point_cost": 35,
   "summoned_units": [
@@ -4517,89 +4927,12 @@
   "casting_cost": "60<mana></mana> ",
   "resid": 4514010628856,
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "野生動物召喚",
+  "id": "野生動物招集",
   "tactical": false,
-  "description": "<bulletlist><bullet>対象のワールドマスにランダムなグレードIの動物を召喚する。</bullet><bullet>低確率でグレードIIの動物を召喚する。</bullet><bullet>召喚可能な動物は、このスキルを発動した地形の種類によって決まる。</bullet></bulletlist>",
-  "name": "野生動物召喚",
+  "description": "<bulletlist><bullet>グレード Iかグレード IIの動物ユニットを選択すると自軍に加えられる。</bullet><bullet>利用可能な動物は呪文が唱えられた地形のタイプによる。</bullet></bulletlist>",
+  "name": "野生動物招集",
   "operation_point_cost": 60,
-  "icon": "0000041B000002E7",
-  "summoned_units": [
-   {
-    "slug": "氷クモ"
-   },
-   {
-    "slug": "ゴレタスクのピグレット"
-   },
-   {
-    "slug": "グリムビーク・クロウ"
-   },
-   {
-    "slug": "シロクマ"
-   },
-   {
-    "slug": "腐肉食の鳥"
-   },
-   {
-    "slug": "インフェルノ・パピー"
-   },
-   {
-    "slug": "スクラップ・ハーミット"
-   },
-   {
-    "slug": "ゾウ"
-   },
-   {
-    "slug": "パイアモス"
-   },
-   {
-    "slug": "ワーグ"
-   },
-   {
-    "slug": "猟師クモ"
-   },
-   {
-    "slug": "恐怖クモのふ化幼生"
-   },
-   {
-    "slug": "腐食蠕虫の幼虫"
-   },
-   {
-    "slug": "ヒグマ"
-   },
-   {
-    "slug": "ジャイアントビートル"
-   },
-   {
-    "slug": "デスビートル"
-   },
-   {
-    "slug": "トカゲの幼体"
-   },
-   {
-    "slug": "ワイバーン・フレッドリング"
-   },
-   {
-    "slug": "イノブタ"
-   },
-   {
-    "slug": "吸血クモのふ化幼生"
-   },
-   {
-    "slug": "クロコダイル"
-   },
-   {
-    "slug": "猿"
-   },
-   {
-    "slug": "ニム"
-   },
-   {
-    "slug": "クラーケンの卵"
-   },
-   {
-    "slug": "恐ろしいペンギン"
-   }
-  ]
+  "icon": "0000041B000002E7"
  },
  {
   "casting_cost": "10<mana></mana> ",
@@ -4618,7 +4951,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "命知らずの歌",
   "tactical": true,
-  "description": "3 <turn></turn>ターンの間、対象の味方ユニットが獲得：<bulletlist><bullet>狂乱</bullet><bullet>3 強化</bullet></bulletlist>",
+  "description": "3 <turn></turn>ターンの間、対象の味方ユニットが以下を得る：<bulletlist><bullet>狂乱</bullet><bullet>3 強化</bullet></bulletlist><br></br><hyperlink>制御喪失に対して無敵</hyperlink>状態のユニットには効果はない。",
   "name": "命知らずの歌",
   "operation_point_cost": 20,
   "icon": "0000041300000D74"
@@ -4684,7 +5017,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "自然の力",
   "tactical": false,
-  "description": "魔法ユニットが以下を得る：<bulletlist><bullet><hyperlink>会心のヒット</hyperlink>の確率が+20%増加する。</bullet><bullet>攻撃の<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>が4増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットが以下を得る：<bulletlist><bullet>+15%<hyperlink><crit></crit>クリティカルヒット率</hyperlink>。</bullet><bullet>攻撃の<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>が3増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitCavalry></unitCavalry>騎兵隊"
@@ -4730,7 +5063,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>",
   "id": "動物との親密さ",
   "tactical": false,
-  "description": "標的の種族はより獣らしくなり、動物と繋がりやすくなる。味方の動物と隣接している場合、両方のユニットが以下を獲得：<bulletlist><bullet>ダメージが+10%。</bullet><bullet>会心のヒットの確率が+10%。</bullet></bulletlist>",
+  "description": "標的の種族はより獣らしくなり、動物と繋がりやすくなる。味方の動物と隣接している場合、両方のユニットが以下を獲得：<bulletlist><bullet>ダメージが+10%。</bullet><bullet><crit></crit>クリティカルヒット率が+10%。</bullet></bulletlist>",
   "name": "動物との親密さ",
   "operation_point_cost": 150,
   "icon": "0000041B000002E3"
@@ -4756,7 +5089,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "疫病の刃",
   "tactical": false,
-  "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を付与：<bulletlist><bullet>+4 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>毒または腐敗中ユニットに対するダメージが+20%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットによる基本<hyperlink>近接攻撃</hyperlink>の際に以下を付与：<bulletlist><bullet>+4 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>。</bullet><bullet>-2 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>毒または腐敗中ユニットに対するダメージが+10%。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -4871,7 +5204,7 @@
   "id": "抗魔法薬",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "1マスの範囲内にいる味方ユニット：<bulletlist><bullet>2マイナスのステータス効果が解除される。</bullet><bullet>2 ステータスの保護を得る。</bullet></bulletlist>",
+  "description": "1マスの範囲内にいる味方ユニット：<bulletlist><bullet>2個の<hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>2 ステータスの保護を得る。</bullet></bulletlist>",
   "name": "抗魔法薬",
   "operation_point_cost": 15,
   "icon": "0000046A000000EF"
@@ -4895,7 +5228,7 @@
   "id": "謎の強壮剤",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "魔法ユニットに付与：<bulletlist><bullet>強壮剤の付与、マイナスのステータス効果を取り除いてプラスのステータス効果を与える。</bullet></bulletlist>",
+  "description": "魔法ユニットに付与：<bulletlist><bullet>強壮剤の付与、マイナスのステータス効果を取り除いて<hyperlink>プラスのステータス効果</hyperlink>を与える。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -4909,15 +5242,15 @@
   "casting_cost": "45<souls></souls> ",
   "resid": 4273492488482,
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "腐敗した霊魂の召喚",
+  "id": "バンシー召喚",
   "tactical": false,
-  "description": "グレードの低い敵ユニット<happiness></happiness><hyperlink>士気</hyperlink>を活用できる戦士ユニットである<hyperlink>腐敗した魂</hyperlink>を召喚する。",
-  "name": "腐敗した霊魂の召喚",
+  "description": "耳をつんざく泣き声で士気を下げ、敵を弱らせる復讐的な精霊である<hyperlink>バンシー</hyperlink>を召喚する。",
+  "name": "バンシー召喚",
   "operation_point_cost": 90,
   "icon": "000003E300007127",
   "summoned_units": [
    {
-    "slug": "腐敗した魂"
+    "slug": "バンシー"
    }
   ]
  },
@@ -4928,7 +5261,7 @@
   "id": "清める炎",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "1マスの範囲内にいる味方ユニット：<bulletlist><bullet>25 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>マイナスのステータス効果が取り除かれる。</bullet></bulletlist>",
+  "description": "1マスの範囲内にいる味方ユニット：<bulletlist><bullet>25<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>が取り除かれる。</bullet></bulletlist>",
   "name": "清める炎",
   "operation_point_cost": 35,
   "icon": "000003E300006B8F"
@@ -5062,14 +5395,14 @@
   ]
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "10<souls></souls> ",
   "resid": 4273492485799,
   "spellType": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>",
   "id": "腐食爆発",
   "tactical": true,
-  "description": "対象の味方<hyperlink>ゾンビ</hyperlink>もしくはスケルトンユニットが爆発し、2マスの範囲にいる敵ユニットに以下の効果を与える：<bulletlist><bullet>10 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と10<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>90%の確率で腐敗中状態になる。</bullet></bulletlist>",
+  "description": "対象の味方<hyperlink>ゾンビ</hyperlink>もしくはスケルトンユニットが爆発し、2マスの範囲にいる敵ユニットに以下の効果を与える：<bulletlist><bullet>10 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と10<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>3 <turn></turn>ターンの間、2腐敗中を得る。</bullet></bulletlist>",
   "name": "腐食爆発",
-  "operation_point_cost": 20,
+  "operation_point_cost": 15,
   "icon": "000003E3000066A4"
  },
  {
@@ -5078,7 +5411,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>",
   "id": "壊死",
   "tactical": true,
-  "description": "対象の敵ユニット：<bulletlist><bullet>10<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と10 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>腐敗中状態になる。</bullet><bullet>死亡した時、あなたが戦闘終了時まで支配できる<hyperlink>腐敗のゾンビ</hyperlink>になる。</bullet></bulletlist>",
+  "description": "対象の敵ユニット：<bulletlist><bullet>10<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>と10 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>3 <turn></turn>ターンの間、腐敗中を2スタック獲得する。</bullet><bullet>死亡した時、あなたが戦闘終了時まで支配できる<hyperlink>腐敗のゾンビ</hyperlink>になる。</bullet></bulletlist>",
   "name": "壊死",
   "operation_point_cost": 15,
   "icon": "000003E30000669A"
@@ -5105,7 +5438,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "魔法の花",
   "tactical": false,
-  "description": "味方の対象<hyperlink>都市</hyperlink>が次を得る：<bulletlist><bullet><hyperlink>領地</hyperlink>の中かそれに隣接するすべての<turn></turn><hyperlink>ターン</hyperlink>と1<hyperlink>領域</hyperlink>：<bulletlist></bullet><bullet>地上にある場合は<hyperlink>草原</hyperlink>と<hyperlink>森</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>と<hyperlink>キノコの森</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>大洞窟の穴底</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet><bullet>領地内の、草原か森、真菌畑あるいはキノコの森がある領域は以下を得る：<food></food><hyperlink> 食料</hyperlink>が2、<structureprod></structureprod><hyperlink>生産</hyperlink>が2、<unitprod></unitprod><hyperlink>召集</hyperlink>が2増加する。</bullet></bulletlist>",
+  "description": "味方の対象<hyperlink>都市</hyperlink>が次を得る：<bulletlist><bullet>毎<turn></turn><hyperlink>ターン</hyperlink>、<hyperlink>領地</hyperlink>の中かそれに隣接する1<hyperlink>領域</hyperlink>が：<bulletlist></bullet><bullet>地上にある場合は<hyperlink>草原</hyperlink>と<hyperlink>森</hyperlink>を得て、地下にある場合は<hyperlink>真菌畑</hyperlink>と<hyperlink>キノコの森</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>、<hyperlink>沼地</hyperlink>、<hyperlink>砂地</hyperlink>、<hyperlink>雪の土地</hyperlink>、<hyperlink>氷</hyperlink>、<hyperlink>灰野原</hyperlink>、<hyperlink>暗闇</hyperlink>を失う。</bullet><bullet>領地内の、草原か森、真菌畑あるいはキノコの森がある領域は以下を得る：<food></food><hyperlink> 食料</hyperlink>が2、<structureprod></structureprod><hyperlink>生産</hyperlink>が2、<unitprod></unitprod><hyperlink>召集</hyperlink>が2増加する。</bullet></bulletlist>",
   "name": "魔法の花",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5128,7 +5461,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "誘導投射物",
   "tactical": false,
-  "description": "魔法ユニットの基本攻撃：<bulletlist><bullet>移動を妨害しているユニットや一部の地形による<hyperlink>不明瞭</hyperlink>状態の命中率ペナルティが適用されない。</bullet></bulletlist>",
+  "description": "魔法ユニットの基本攻撃：<bulletlist><bullet>遠距離<hyperlink><accuracy></accuracy>命中率</hyperlink>のペナルティを受けることなく、さらに1マス遠くへ撃てる。</bullet><bullet>移動を妨害しているユニットや一部の地形による<hyperlink>不明瞭</hyperlink>のペナルティが適用されない。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>遠隔ユニット"
@@ -5146,17 +5479,6 @@
   "name": "誘導投射物",
   "operation_point_cost": 90,
   "icon": "0000041B00001259"
- },
- {
-  "casting_cost": "45<mana></mana> ",
-  "resid": 4273492485152,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>都市呪文</hyperlink>",
-  "id": "恵まれた援軍",
-  "tactical": false,
-  "description": "対象の隷属自由都市が、2体の<hyperlink>祝福した魂</hyperlink>を獲得して支配下に置く。",
-  "name": "恵まれた援軍",
-  "operation_point_cost": 45,
-  "icon": "0000041B00001969"
  },
  {
   "casting_cost": "60<mana></mana> ",
@@ -5295,14 +5617,14 @@
   ]
  },
  {
-  "casting_cost": "150<mana></mana> ",
+  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484493,
   "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
   "id": "ユニット復活",
   "tactical": true,
   "description": "対象の死亡した味方ユニットは<temphp></temphp>追加HPが全回復する。<br></br><br></br>水域戦闘では使用不可。",
   "name": "ユニット復活",
-  "operation_point_cost": 50,
+  "operation_point_cost": 40,
   "icon": "0000041B000019BF"
  },
  {
@@ -5333,7 +5655,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> 回復/バフ呪文</hyperlink>",
   "id": "サルベーション",
   "tactical": true,
-  "description": "標的の味方ユニット：<bulletlist><bullet><hyperlink><hp></hp>HP</hyperlink>が<hyperlink><temphp></temphp>追加HP</hyperlink>として全回復する。</bullet><bullet>マイナスのステータス効果が解除される。</bullet><bullet>3 耐性強化を得る。</bullet></bulletlist>",
+  "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink><hp></hp>HP</hyperlink>が<hyperlink><temphp></temphp>追加HP</hyperlink>として全回復する。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>3 耐性強化を得る。</bullet></bulletlist>",
   "name": "サルベーション",
   "operation_point_cost": 35,
   "icon": "0000041B0000197F"
@@ -5395,7 +5717,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>",
   "id": "神のビーコンの魔法",
   "tactical": true,
-  "description": "<hyperlink>神のビーコン</hyperlink>を召喚する。詠唱および各ターンの開始時に、2マスの範囲にいる味方ユニット：<bulletlist><bullet>+5 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+5の<happiness></happiness><hyperlink>士気</hyperlink>を獲得する。</bullet></bulletlist><br></br>この召喚が3 <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
+  "description": "<hyperlink>神のビーコン</hyperlink>を召喚する。詠唱および各ターンの開始時に、2マスの範囲にいる味方ユニット：<bulletlist><bullet>+15 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+5の<happiness></happiness><hyperlink>士気</hyperlink>を獲得する。</bullet></bulletlist><br></br>この召喚が3 <turn></turn>ターンの間継続する。<br></br><br></br>水域戦闘では使用不可。",
   "name": "神のビーコンの魔法",
   "operation_point_cost": 25,
   "icon": "000003E3000060DF",
@@ -5407,30 +5729,17 @@
  },
  {
   "casting_cost": "100<mana></mana> ",
-  "resid": 4273492484345,
-  "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "ライトブリンガーの召喚",
-  "tactical": false,
-  "description": "他のユニットを自分の味方に変換できる<hyperlink>ライトブリンガー</hyperlink>バトルメイジユニットを召喚する。",
-  "name": "ライトブリンガーの召喚",
-  "operation_point_cost": 100,
-  "icon": "0000041B00001961",
-  "summoned_units": [
-   {
-    "slug": "ライトブリンガー"
-   }
-  ]
- },
- {
-  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484335,
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "強力な従順さ",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>ユニット維持費</hyperlink>を減少させる信仰深き者。</bullet><bullet>対象のユニットグレードごとに、攻撃に+1 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>ユニット維持費</hyperlink>を減少させる信仰深き者。</bullet><bullet>+2<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。</bullet><bullet>対象のユニットグレードごとに、攻撃に+1 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "グレード I"
+   },
+   {
+    "requisite": "グレード II"
    }
   ],
   "name": "強力な従順さ",
@@ -5520,42 +5829,49 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492484056,
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
-  "id": "壊死の魔法",
+  "id": "壊死の投射物",
   "tactical": false,
-  "description": "魔法ユニットの基本攻撃に以下を付与：<bulletlist><bullet>60%の基本確率で腐敗中を与え、経過ダメージ効果によりユニットがHPを回復できなくなる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの攻撃に以下を付与：<bulletlist><bullet>90%の基本確率で腐敗中を与え、経過ダメージ効果により回復量が減少する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged>遠隔ユニット"
+   },
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
    },
    {
     "requisite": "<unitBattleMage></unitBattleMage>戦闘魔術師ユニット"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵ユニット"
    }
   ],
-  "name": "壊死の魔法",
+  "name": "壊死の投射物",
   "operation_point_cost": 90,
   "icon": "0000041B000005E0"
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "20<souls></souls> ",
   "resid": 4273492484053,
   "spellType": "<caststrategic></caststrategic><hyperlink> 味方軍隊呪文</hyperlink>",
-  "id": "アンデッド軍の復活",
+  "id": "魂の宴",
   "tactical": false,
-  "description": "対象の味方部隊にいる全ての不死ユニットの<hyperlink><hp></hp>HP</hyperlink>を20回復させる。",
-  "name": "アンデッド軍の復活",
-  "operation_point_cost": 20,
+  "description": "対象となる味方軍隊：<bulletlist><bullet>非不死ユニットを20<hyperlink><hp></hp>HP</hyperlink>回復する。</bullet><bullet>アンデッドユニットを40<hyperlink><hp></hp>HP</hyperlink>回復する。</bullet></bulletlist>",
+  "name": "魂の宴",
+  "operation_point_cost": 25,
   "icon": "0000041B000005DC"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "60<souls></souls> ",
   "resid": 4273492483972,
   "spellType": "<caststrategic></caststrategic><hyperlink> 敵軍隊呪文</hyperlink>",
-  "id": "ソウルバインド・アーミー",
+  "id": "亡霊の囁き",
+  "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "対象の部隊内の敵ユニットは、次回戦闘するまでソウルバウンド状態になる。",
-  "name": "ソウルバインド・アーミー",
-  "operation_point_cost": 45,
-  "icon": "0000041B000016EF"
+  "description": "1<hyperlink>ワールドマップ</hyperlink> <turn></turn>ターンの間、対象の敵軍隊が以下を得る：<bulletlist><bullet>2 士気低下。</bullet><bullet>攻撃を受けると、攻撃者の側に3体のスケルトンとアンホーリーチャンピオンを召喚する。</bullet></bulletlist>",
+  "name": "亡霊の囁き",
+  "operation_point_cost": 100,
+  "icon": "0000049700002C39"
  },
  {
   "casting_cost": "80<mana></mana> ",
@@ -5563,7 +5879,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "霊魂縛り",
   "tactical": false,
-  "description": "魔法ユニット：<bulletlist><bullet>攻撃時に90%の確率でソウルバウンドを付与し、その対象を倒したときの<souls></souls><hyperlink> 霊魂</hyperlink>獲得量が増加する。</bullet><bullet>ソウルバウンド状態のユニットに与えるダメージ量が20%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニット：<bulletlist><bullet>攻撃時に90%の確率でソウルバウンドを付与し、その対象を倒したときの<souls></souls><hyperlink> 霊魂</hyperlink>獲得量が増加する。</bullet><bullet>ソウルバウンド状態のユニットに与えるダメージ量が10%増加する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>サポートユニット"
@@ -5591,14 +5907,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483932,
   "spellType": "<caststrategic></caststrategic><hyperlink>召喚呪文</hyperlink>",
-  "id": "バンシー召喚",
+  "id": "腐敗した霊魂の召喚",
   "tactical": false,
-  "description": "耳をつんざく泣き声で士気を下げ、敵を弱らせる復讐的な精霊である<hyperlink>バンシー</hyperlink>を召喚する。",
-  "name": "バンシー召喚",
+  "description": "グレードの低い敵ユニット<happiness></happiness><hyperlink>士気</hyperlink>を活用できる戦士ユニットである<hyperlink>腐敗した魂</hyperlink>を召喚する。",
+  "name": "腐敗した霊魂の召喚",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "バンシー"
+    "slug": "腐敗した魂"
    }
   ]
  },
@@ -5773,7 +6089,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 敵軍隊呪文</hyperlink>",
   "id": "敵を占う",
   "tactical": false,
-  "description": "対象の部隊内の敵は全て15 <turn></turn>ターンの間、自分の視界を広げてくれる。",
+  "description": "対象の部隊内の敵は全て10 <turn></turn>ターンの間、自分の視界を広げてくれる。",
   "name": "敵を占う",
   "operation_point_cost": 30,
   "icon": "0000041B0000124D"
@@ -5815,7 +6131,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "静電シールド",
   "tactical": true,
-  "description": "標的の味方ユニットは、60%の確率で攻撃者にスタン効果を付与するシールドを獲得する。<br></br>2 <turn></turn>ターンの間継続する。",
+  "description": "対象の味方ユニットおよび3マス以内の他ユニットがシールドを獲得する。<bulletlist><bullet>基本確率60%で、攻撃者にスタンを付与する。</bullet><bullet>効果は2<turn></turn>ターン持続する。</bullet></bulletlist>",
   "name": "静電シールド",
   "operation_point_cost": 15,
   "icon": "0000041B0000120C"
@@ -5826,7 +6142,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>",
   "id": "不死身の印",
   "tactical": true,
-  "description": "対象の味方ユニットは以下を得る。<bulletlist><bullet>1<turn></turn>ターンの間無敵になる。</bullet><bullet>マイナスのステータス効果が無効になる。</bullet></bulletlist><br></br>1回の戦闘で同一ユニットに複数回使用することはできない。",
+  "description": "対象の味方ユニットは以下を得る。<bulletlist><bullet>1<turn></turn>ターンの間無敵になる。</bullet><bullet><hyperlink>マイナスのステータス効果</hyperlink>が無効になる。</bullet></bulletlist><br></br>1回の戦闘で同一ユニットに複数回使用することはできない。",
   "name": "不死身の印",
   "operation_point_cost": 20,
   "icon": "0000041B00001200"
@@ -5878,7 +6194,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "兵器の工匠",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>会心のヒット</hyperlink>の確率が+30%。</bullet></bulletlist>",
+  "description": "魔法ユニットに以下の効果を付与：<bulletlist><bullet><hyperlink><crit></crit>クリティカルヒット率</hyperlink>が+25%。</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"
@@ -5928,7 +6244,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地球化呪文</hyperlink>",
   "id": "アースシャッター",
   "tactical": false,
-  "description": "居住可能および居住不可の<hyperlink>領域</hyperlink>が対象：<bulletlist><bullet>領域内の敵<hyperlink>ユニット</hyperlink>が10 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet> <hyperlink>山</hyperlink>、<hyperlink>石筍</hyperlink>、<hyperlink>破壊可能な地面</hyperlink>を失う。</bullet></bulletlist>",
+  "description": "居住可能および居住不可の対象<hyperlink>領域</hyperlink>内：<bulletlist><bullet>敵<hyperlink>ユニット</hyperlink>が10 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet> 領域が<hyperlink>山</hyperlink>、<hyperlink>石筍</hyperlink>、<hyperlink>破壊可能な地面</hyperlink>を失う。</bullet><bullet><hyperlink>石の精霊</hyperlink>を召喚する</bullet></bulletlist>",
   "name": "アースシャッター",
   "operation_point_cost": 150,
   "icon": "000003E300005CCB",
@@ -6021,24 +6337,27 @@
   "casting_cost": "120<mana></mana> ",
   "resid": 4273492483003,
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
-  "id": "腐敗の投射",
+  "id": "腐敗の剣",
   "tactical": false,
-  "description": "エンチャントされたユニットによる<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>の基本攻撃に以下の効果を付与：<bulletlist><bullet>2 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet><bullet>継続的にダメージを与えながら回復を阻止する腐敗中効果を、60%の確率で敵に付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "魔法ユニットの基本攻撃が次の効果を得る：<bulletlist><bullet>腐敗中を付与する。これは時間経過ダメージの効果で、回復量を減少させる。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "enchantment_requisites": [
    {
-    "requisite": "<unitRanged></unitRanged>遠隔ユニット"
+    "requisite": "<unitShield></unitShield>シールドユニット"
    },
    {
-    "requisite": "<unitSupport></unitSupport>サポートユニット"
+    "requisite": "<unitPolearm></unitPolearm>槍兵ユニット"
    },
    {
-    "requisite": "<unitBattleMage></unitBattleMage>戦闘魔術師ユニット"
+    "requisite": "<unitShock></unitShock>ショックユニット"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>戦士ユニット"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher>散兵ユニット"
    }
   ],
-  "name": "腐敗の投射",
+  "name": "腐敗の剣",
   "operation_point_cost": 120,
   "icon": "0000041B00000D54"
  },
@@ -6049,7 +6368,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> 都市呪文を受ける</hyperlink>",
   "id": "季節の一巡",
   "tactical": false,
-  "description": "友好都市に詠唱する。この都市内で行われる全ての戦闘が<abilityblue>季節のサイクル</abilityblue>を獲得し、各戦闘ターンごとに異なる効果が以下の順番で発生する：<bulletlist><bullet>冬：全ての敵ユニットが10 <damageFrost></damageFrost>を受ける。</bullet><bullet>春：全ての味方ユニットが1 強化状態になる。</bullet><bullet>夏：全ての味方ユニットが10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>秋：全ての敵が1 弱まった状態になる。</bullet></bulletlist>",
+  "description": "対象の都市内で行われる全ての戦闘が<abilityblue>季節のサイクル</abilityblue>を獲得し、各戦闘ターンごとに異なる効果が以下の順番で発生する：<bulletlist><bullet>冬：全ての敵ユニットが10 <damageFrost></damageFrost>を受ける。</bullet><bullet>春：全ての味方ユニットが1 強化状態になる。</bullet><bullet>夏：全ての味方ユニットが10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>秋：全ての敵が1 弱まった状態になる。</bullet></bulletlist>",
   "name": "季節の一巡",
   "operation_point_cost": 120,
   "icon": "0000041B00000D64"
@@ -6071,7 +6390,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> ダメージ/回復呪文</hyperlink>",
   "id": "hp拡散",
   "tactical": true,
-  "description": "対象の敵ユニット：<bulletlist><bullet>30 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>1 腐敗中を獲得する。</bullet></bulletlist><br></br>2マス以内の味方ユニット：<bulletlist><bullet>15 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>1 再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の敵ユニット：<bulletlist><bullet>30 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>2 腐敗中を獲得する。</bullet></bulletlist><br></br>2マス以内の味方ユニット：<bulletlist><bullet>15 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>2 再生を獲得する。</bullet></bulletlist>",
   "name": "HP拡散",
   "operation_point_cost": 30,
   "icon": "0000041B00000D5C"
@@ -6126,7 +6445,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>ダメージ呪文</hyperlink>",
   "id": "犠牲的な殺りく",
   "tactical": true,
-  "description": "対象の味方ユニットが爆発し、2マス以内の敵ユニットが以下を受ける：<bulletlist><bullet>生贄となったユニットのグレードの数だけ5<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と20<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>生贄となったユニットのグレードの数だけランダムなマイナスのステータス効果を受ける。</bullet>",
+  "description": "対象の味方ユニットが爆発し、2マス以内の敵ユニットが以下を受ける：<bulletlist><bullet>生贄となったユニットのグレードの数だけ5<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と20<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>生贄となったユニットのグレードの数だけランダムな<hyperlink>マイナスのステータス効果</hyperlink>を受ける。</bullet>",
   "name": "犠牲的な殺りく",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6503,7 +6822,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>",
   "id": "集中砲火の武器",
   "tactical": false,
-  "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink>会心のヒット</hyperlink>確率+20。</bullet><bullet>このユニットが別のユニットを倒す度に：<bulletlist></bullet><bullet>倒したユニットを爆発させ、隣接する敵ユニットに20の<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist></bulletlist>",
+  "description": "魔法ユニットに以下を付与：<bulletlist><bullet><hyperlink><crit></crit>クリティカルヒット率</hyperlink>+20。</bullet><bullet>このユニットが別のユニットを倒す度に：<bulletlist></bullet><bullet>倒したユニットを爆発させ、隣接する敵ユニットに20の<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>シールドユニット"

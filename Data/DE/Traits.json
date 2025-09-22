@@ -1,10 +1,233 @@
 [
  {
-  "lore_description": "<helpcolor>Einheiten haben eine höhere kritische Trefferchance.</helpcolor>",
+  "biography_description": "Manche betrachten sie als Feiglinge – sie selbst betrachten sich als Überlebenskünstler.",
+  "lore_description": "<helpcolor>Ergreifen im Kampf leichter die Flucht.</helpcolor>",
+  "point_cost": -1,
+  "id": "feigheit",
+  "name": "Feigheit",
+  "incompatible_society_traits": [
+   {
+    "name": "Glücklich"
+   },
+   {
+    "name": "Kaltblütig"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Moralverlust ist um 25 % erhöht und der Moralgewinn ist um 25 % verringert."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mängel^mp",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002D42"
+ },
+ {
+  "biography_description": "Sie lassen sich von Stolz leiten und sind es nicht gewohnt, als Einheit zu kämpfen.",
+  "lore_description": "<helpcolor>Chance, reduzierten oder gar keinen Schaden zu verursachen, wenn sich die Einheit neben einer verbündeten Einheit befindet.</helpcolor>",
+  "point_cost": -1,
+  "id": "unkooperativ",
+  "name": "Unkooperativ",
+  "incompatible_society_traits": [
+   {
+    "name": "Taktik: Verteidigung"
+   },
+   {
+    "name": "Taktik: Überwältigung"
+   },
+   {
+    "name": "Rudeltaktiken"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Chance von 10 % auf <hyperlink>Fehlschläge</hyperlink>, wenn sich die Einheit neben einer anderen verbündeten Einheit befindet."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mängel^mp",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002D2D"
+ },
+ {
+  "biography_description": "Sie fliegen auf edlen Greifen durch die Lüfte.",
+  "lore_description": "<helpcolor>Berittene Einheiten kommen häufiger vor und erhalten ein Greifen-Reittier.</helpcolor>",
+  "DLC": "ARCHONPROPHECY ",
+  "point_cost": 3,
+  "id": "greifen-reittiere",
+  "name": "Greifen-Reittiere",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Gewährt Fliegen Bewegung."
+   },
+   {
+    "name": "Zusätzliche Einheiten werden zu Kavallerie."
+   },
+   {
+    "name": "Herrscher beginnt mit einem Greifen-Reittier."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Reittiere",
+  "front_end": true,
+  "icon": "0000049700002D23",
+  "display_order": 0
+ },
+ {
+  "biography_description": "Sind anfällig für physische Angriffe.",
+  "lore_description": "<helpcolor>Erleiden mehr physischen Schaden.</helpcolor>",
+  "point_cost": -1,
+  "id": "physische_anfälligkeit",
+  "name": "physische Anfälligkeit",
+  "incompatible_society_traits": [
+   {
+    "name": "Robust"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "-1 <defense></defense> <hyperlink>Verteidigung</hyperlink>"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mängel^mp",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C84"
+ },
+ {
+  "biography_description": "Sie sind von Natur aus anfällig für Magie.",
+  "lore_description": "<helpcolor>Erleiden mehr magischen Schaden.</helpcolor>",
+  "point_cost": -1,
+  "id": "magische_anfälligkeit",
+  "name": "magische Anfälligkeit",
+  "incompatible_society_traits": [
+   {
+    "name": "Resistent"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "-1 <resistance></resistance> <hyperlink>Widerstand</hyperlink>"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mängel^mp",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C82"
+ },
+ {
+  "biography_description": "Legenden besagen, dass ein Fluch der Schwäche auf ihrem Stammbaum liegt.",
+  "lore_description": "<helpcolor>Einheiten erhalten ihre Gesundheit langsamer zurück.</helpcolor>",
+  "point_cost": -1,
+  "id": "schwache_konstitution",
+  "name": "schwache Konstitution",
+  "incompatible_society_traits": [
+   {
+    "name": "Rasche Erholung"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Gesundheitsregeneration auf die <hyperlink>Weltkarte</hyperlink> ist um 50 % reduziert."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mängel^mp",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C7D"
+ },
+ {
+  "biography_description": "Sie verlieren sich im Eifer des Gefechts, ohne der Gefahr Beachtung zu schenken.",
+  "lore_description": "<helpcolor>Der Verteidigungsmodus ist weniger effektiv.</helpcolor>",
+  "point_cost": -1,
+  "id": "unbesonnen",
+  "name": "Unbesonnen",
+  "incompatible_society_traits": [
+   {
+    "name": "Bollwerk"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Verteidigungsmodus gewährt -1 <defense></defense> <hyperlink>Verteidigung</hyperlink> und -1 <resistance></resistance> <hyperlink>Widerstand</hyperlink>."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Mängel^mp",
+  "front_end": true,
+  "display_order": 0,
+  "icon": "0000049700002C79"
+ },
+ {
+  "biography_description": "Ihre Körper können ihren göttlichen Ursprung kaum im Zaum halten – heiliges Licht strahlt aus ihnen wie eine läuternde Flamme.",
+  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink>.</helpcolor>",
+  "point_cost": 2,
+  "id": "innerer_glanz",
+  "name": "innerer Glanz",
+  "incompatible_society_traits": [
+   {
+    "name": "Inneres Feuer"
+   },
+   {
+    "name": "Innerer Frost"
+   },
+   {
+    "name": "Innerer Blitz"
+   },
+   {
+    "name": "Giftig"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "+3 <defensespirit></defensespirit> <hyperlink>Geistwiderstand</hyperlink>."
+   },
+   {
+    "name": "Nahkampfangreifer erleiden 3 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink>."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "0000049700002C73"
+ },
+ {
   "biography_description": "Ihr fröhliches Gebaren macht sie zu furchteinflößenden Kämpfern.",
+  "lore_description": "<helpcolor>Einheiten haben eine höhere kritische Trefferchance.</helpcolor>",
   "point_cost": 1,
   "id": "glücklich",
   "name": "Glücklich",
+  "incompatible_society_traits": [
+   {
+    "name": "Kaltblütig"
+   },
+   {
+    "name": "Feigheit"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -12,18 +235,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "MORALE",
-  "front_end": true,
-  "icon": "000004970000120D",
   "type": "form",
-  "display_order": 5
+  "group_name": "Unterstützung^f",
+  "front_end": true,
+  "display_order": 5,
+  "icon": "000004970000120D"
  },
  {
-  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</helpcolor>",
   "biography_description": "Blitzenergie durchfährt ihre Adern und springt auf all jene über, die ihnen schaden wollen.",
+  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.</helpcolor>",
   "point_cost": 2,
   "id": "innerer_blitz",
   "name": "Innerer Blitz",
+  "incompatible_society_traits": [
+   {
+    "name": "Inneres Feuer"
+   },
+   {
+    "name": "Innerer Frost"
+   },
+   {
+    "name": "innerer Glanz"
+   },
+   {
+    "name": "Giftig"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -34,18 +271,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "00000497000011FC",
   "type": "form",
-  "display_order": 4
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "00000497000011FC"
  },
  {
-  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</helpcolor>",
   "biography_description": "Ihre Haut fühlt sich so kalt an, dass alle, die zu nahe kommen, Frostbeulen erleiden.",
+  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</helpcolor>",
   "point_cost": 2,
   "id": "innerer_frost",
   "name": "Innerer Frost",
+  "incompatible_society_traits": [
+   {
+    "name": "Inneres Feuer"
+   },
+   {
+    "name": "Innerer Blitz"
+   },
+   {
+    "name": "innerer Glanz"
+   },
+   {
+    "name": "Giftig"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -56,18 +307,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "00000497000011FA",
   "type": "form",
-  "display_order": 4
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "00000497000011FA"
  },
  {
-  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</helpcolor>",
   "biography_description": "Ihr kochendes Blut verbrennt alle, die es wagen sollten, sie zu verwunden.",
+  "lore_description": "<helpcolor>Nahkampfangreifer erleiden <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</helpcolor>",
   "point_cost": 2,
   "id": "inneres_feuer",
   "name": "Inneres Feuer",
+  "incompatible_society_traits": [
+   {
+    "name": "Innerer Frost"
+   },
+   {
+    "name": "Innerer Blitz"
+   },
+   {
+    "name": "innerer Glanz"
+   },
+   {
+    "name": "Giftig"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -78,11 +343,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "00000497000011F8",
   "type": "form",
-  "display_order": 4
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "00000497000011F8"
  },
  {
   "lore_description": "<helpcolor>Berittene Einheiten kommen häufiger vor und erhalten ein Raptor-Reittier.</helpcolor>",
@@ -109,7 +374,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "0000049700000D4D",
   "type": "form",
@@ -124,11 +389,11 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Gewährt einmal pro Runde bei erlittenem Schaden, der kein <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink> ist, Gestärkt. Effekt hält <turn></turn> Runde  lang an."
+    "name": "Gewährt einmal pro Runde bei erlittenem Schaden, der kein <damagePhysical></damagePhysical> <hyperlink>physischer Schaden</hyperlink> ist, Gestärkt. Effekt hält <turn></turn> Runde <turn></turn> Runden lang an."
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000049700000C93",
   "type": "form",
@@ -147,7 +412,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000049700000C8A",
   "type": "form",
@@ -172,7 +437,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000004970000086B",
   "type": "form",
@@ -191,7 +456,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "00000497000007E7",
   "type": "form",
@@ -224,7 +489,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000004970000069E",
   "display_order": 0
@@ -259,7 +524,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "0000049700000697",
   "display_order": 0
@@ -277,18 +542,29 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "0000049700000688",
   "type": "form",
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Füge Gegnern, die von deinen Einheiten umzingelt sind, mehr Schaden zu.</helpcolor>",
   "biography_description": "Sie kreisen ihre Gegner ein und überrennen sie.",
+  "lore_description": "<helpcolor>Füge Gegnern, die von deinen Einheiten umzingelt sind, mehr Schaden zu.</helpcolor>",
   "point_cost": 2,
   "id": "rudeltaktiken",
   "name": "Rudeltaktiken",
+  "incompatible_society_traits": [
+   {
+    "name": "Taktik: Verteidigung"
+   },
+   {
+    "name": "Taktik: Überwältigung"
+   },
+   {
+    "name": "Unkooperativ"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -296,11 +572,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "TACTICS",
-  "front_end": true,
-  "icon": "000004970000067E",
   "type": "form",
-  "display_order": 3
+  "group_name": "Angriff^m",
+  "front_end": true,
+  "display_order": 3,
+  "icon": "000004970000067E"
  },
  {
   "lore_description": "<helpcolor>Erleichtert die Fortbewegung und das Ansiedeln in Aschenland.</helpcolor>",
@@ -327,7 +603,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Anpassungen^fp",
   "front_end": true,
   "icon": "000004970000066B",
   "type": "form",
@@ -338,8 +614,8 @@
   "lore_description": "<helpcolor>Berittene Einheiten kommen häufiger vor und erhalten ein Grimmbär-Reittier.</helpcolor>",
   "DLC": "EMPIRESANDASHES ",
   "point_cost": 3,
-  "id": "grimmbär-reittiere",
-  "name": "Grimmbär-Reittiere",
+  "id": "grimmbär-reittier",
+  "name": "Grimmbär-Reittier",
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -357,7 +633,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000004970000007D",
   "display_order": 0
@@ -375,7 +651,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Unterstützung^f",
   "front_end": true,
   "icon": "0000049700000075",
   "type": "form",
@@ -394,7 +670,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Unterstützung^f",
   "front_end": true,
   "icon": "0000049700000072",
   "type": "form",
@@ -413,13 +689,41 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000049700000066",
   "type": "form",
   "display_order": 1
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astralaffinität"
+   }
+  ],
+  "lore_description": "Sie studieren die Sterne und bündeln ihren Segen, wenn sie ihren Weisungen folgen.",
+  "biography_description": "Sie beobachten stets die Sterne und lassen sich von ihnen leiten.",
+  "point_cost": 1,
+  "id": "astrologische_wahrsager",
+  "name": "astrologische Wahrsager",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "In jeder 10. <turn></turn> <hyperlink>Runde</hyperlink>:<bulletlist><bullet>Deine <hyperlink>Einheiten</hyperlink> erhalten Gewogene Sterne.</bullet><bullet>Einheiten, die keine Helden sind und in einer 10. Runde einberufen, erweckt oder beschworen wurden, erhalten dauerhaft Unter den Sternen geboren.</bullet><bullet><hyperlink>Stadtbauwerke</hyperlink> und <hyperlink>besondere Provinzverbesserungen</hyperlink>, die in einer 10. Runde fertiggestellt werden, gewähren 100 <knowledge></knowledge> <hyperlink>Wissen</hyperlink>.</bullet></bulletlist>"
+   }
+  ],
+  "enabled": true,
+  "front_end": false,
+  "icon": "0000049300000DA0",
+  "type": "society",
+  "display_order": 4
+ },
+ {
+  "starting_bonuses": [
+   {
+    "description": "Start<hyperlink>einheiten</hyperlink> erhalten +1 Rang."
+   }
+  ],
   "affinities": [
    {
     "name": "1<order></order> Ordnungsaffinität"
@@ -440,18 +744,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 6,
-  "starting_bonuses": [
-   {
-    "description": "Start<hyperlink>einheiten</hyperlink> erhalten +1 Rang."
-   }
-  ],
   "icon": "00000493000008F8"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Starte mit +1 <unitHero></unitHero> <hyperlink>Heldenlimit</hyperlink> und einem Heldenlimit von +3 für Pantheonhelden."
+   }
+  ],
   "affinities": [
    {
     "name": "1<shadow></shadow> Schattenaffinität"
@@ -475,18 +778,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 1,
-  "starting_bonuses": [
-   {
-    "description": "Starte mit +1 <unitHero></unitHero> <hyperlink>Heldenlimit</hyperlink> und einem Heldenlimit von +3 für Pantheonhelden."
-   }
-  ],
   "icon": "00000493000008F4"
  },
  {
+  "affinities": [
+   {
+    "name": "-100<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
   "biography_description": "Man sagt, die Umbradiener seien einst eine freie Zivilisation unter der Lenkung einer wohlwollenden Schwarmintelligenz gewesen. Doch durch <hyperlink>Urraths schaurige Ranken</hyperlink> wurde der Verstand eines jeden Umbradieners in Ketten gelegt, und ihr Schwarm mutierte zu einem Instrument der Sklaverei. So wurden sie zu willenlosen Drohnen und dienen nun als unerschöpflicher Quell für Krieger, Arbeiter oder Seelenspender, um den Hunger der <hyperlink>Umbradämonen</hyperlink> zu stillen. Ihr Schwarm trägt die Düsternis in andere Reiche, damit andere freie Völker im <hyperlink>Astralmeer</hyperlink> dasselbe schreckliche Schicksal erleiden.",
   "lore_description": "Man sagt, die Umbradiener seien einst eine freie Zivilisation unter der Lenkung einer wohlwollenden Schwarmintelligenz gewesen. Doch durch <hyperlink>Urraths schaurige Ranken</hyperlink> wurde der Verstand eines jeden Umbradieners in Ketten gelegt, und ihr Schwarm mutierte zu einem Instrument der Sklaverei. So wurden sie zu willenlosen Drohnen und dienen nun als unerschöpflicher Quell für Krieger, Arbeiter oder Seelenspender, um den Hunger der <hyperlink>Umbradämonen</hyperlink> zu stillen. Ihr Schwarm trägt die Düsternis in andere Reiche, damit andere freie Völker im <hyperlink>Astralmeer</hyperlink> dasselbe schreckliche Schicksal erleiden.",
   "DLC": "ELDRITCHREALMS ",
@@ -511,16 +813,65 @@
    }
   ],
   "enabled": false,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": -1,
-  "affinities": [
+  "icon": "0000049300000774"
+ },
+ {
+  "biography_description": "Sie fliegen auf himmlischen Greifen durch die Lüfte.",
+  "lore_description": "<helpcolor>Berittene Einheiten kommen häufiger vor und erhalten ein himmlisches Greifen-Reittier.</helpcolor>",
+  "DLC": "ARCHONPROPHECY ",
+  "point_cost": 3,
+  "id": "himmlische_greifen-reittiere",
+  "name": "himmlische Greifen-Reittiere",
+  "screen_description": "",
+  "effect_descriptions": [
    {
-    "name": "-100<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+    "name": "Gewährt Fliegen Bewegung."
+   },
+   {
+    "name": "Zusätzliche Einheiten werden zu Kavallerie."
+   },
+   {
+    "name": "Herrscher beginnt mit einem Himmlischen Greifen-Reittier."
    }
   ],
-  "icon": "0000049300000774"
+  "enabled": true,
+  "type": "form",
+  "group_name": "Reittiere",
+  "front_end": true,
+  "icon": "0000049000002980",
+  "display_order": 0
+ },
+ {
+  "biography_description": "Ihre Bestien und Truppen sind für den Kampf mit Streitwagen ausgebildet.",
+  "lore_description": "<helpcolor>Berittene Einheiten kommen häufiger vor und erhalten einen Streitwagen.</helpcolor>",
+  "DLC": "ARCHONPROPHECY ",
+  "point_cost": 3,
+  "id": "streitwagen",
+  "name": "Streitwagen",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "+5 <hyperlink><hp></hp> Trefferpunkte</hyperlink>."
+   },
+   {
+    "name": "Reduziert die Anzahl der Mitglieder der Einheit auf 1 und gewährt Immunität gegen <hyperlink>Verluste</hyperlink>."
+   },
+   {
+    "name": "Zusätzliche Einheiten werden zu Kavallerie."
+   },
+   {
+    "name": "Herrscher beginnt mit einem Streitwagen."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Reittiere",
+  "front_end": true,
+  "icon": "000004900000292D",
+  "display_order": 0
  },
  {
   "biography_description": "Sie fliegen auf majestätischen geflügelten Pferden durch die Lüfte.",
@@ -543,7 +894,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000004900000095F",
   "display_order": 0
@@ -561,7 +912,7 @@
     "name": "+5 <hyperlink><hp></hp> Trefferpunkte</hyperlink>"
    },
    {
-    "name": "Gewährt die Fähigkeit verseuchende Flucht."
+    "name": "Gewährt die Fähigkeit Verseuchende Flucht."
    },
    {
     "name": "Zusätzliche Einheiten werden zu Kavallerie."
@@ -572,12 +923,92 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "0000049000000917",
   "display_order": 0
  },
  {
+  "lore_description": "Dazu bestimmt, dem Reich große Veränderungen zu bescheren.",
+  "biography_description": "Dazu bestimmt, dem Reich eine schlimme Veränderung zu bescheren.",
+  "point_cost": 1,
+  "id": "vision_des_ruins",
+  "name": "Vision des Ruins",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Bei deiner Ankunft im Reich musst du eine Vision des Ruins interpretieren:<bulletlist><bullet><chaos></chaos> <hyperlink>Chaosaffinität</hyperlink>: Der Krieg soll das Reich verschlingen.</bullet><bullet><arcana></arcana> <hyperlink>Astralaffinität</hyperlink>: Das Arkane soll dominieren.</bullet><bullet><shadow></shadow> <hyperlink>Schattenaffinität</hyperlink>: Der Tod wird herrschen.</bullet></bulletlist>"
+   },
+   {
+    "name": "Löst bei Abschluss einen mächtigen globalen Effekt aus."
+   },
+   {
+    "name": "+1 <hyperlink>Affinität</hyperlink> je nach gewählter Interpretation."
+   }
+  ],
+  "enabled": true,
+  "front_end": true,
+  "icon": "0000048D000017DC",
+  "type": "society",
+  "display_order": 1,
+  "DLC": "ARCHONPROPHECY "
+ },
+ {
+  "lore_description": "Mit dem Mal einer Affinität sind sie für Großes bestimmt.",
+  "biography_description": "Sie sind von einer Affinität gezeichnet und befinden sich auf einem Pfad, den sie noch nicht erkennen.",
+  "point_cost": 1,
+  "id": "vision_des_schicksals",
+  "name": "Vision des Schicksals",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Bei deiner Ankunft im Reich musst du eine Vision dessen interpretieren, was aus deinem Volk werden soll:<bulletlist><bullet><order></order> <hyperlink>Ordnungsaffinität</hyperlink>: Friedensstifter.</bullet><bullet><chaos></chaos> <hyperlink>Chaosaffinität</hyperlink>: Eroberer.</bullet><bullet><arcana></arcana> <hyperlink>Astralaffinität</hyperlink>: Gelehrte.</bullet><bullet><matter></matter> <hyperlink>Materiumaffinität</hyperlink>: Handwerker.</bullet><bullet><nature></nature> <hyperlink>Naturaffinität</hyperlink>: Landwirte.</bullet><bullet><shadow></shadow> <hyperlink>Schattenaffinität</hyperlink>: Todbringer.</bullet></bulletlist>"
+   },
+   {
+    "name": "Ermächtigt deine Einheiten nach Fertigstellung dauerhaft."
+   },
+   {
+    "name": "+2 <hyperlink>Affinität</hyperlink> je nach gewählter Interpretation."
+   }
+  ],
+  "enabled": true,
+  "front_end": true,
+  "icon": "0000048D000017D8",
+  "type": "society",
+  "display_order": 1,
+  "DLC": "ARCHONPROPHECY "
+ },
+ {
+  "lore_description": "Die Prophezeiung wird sie in ein neues Zuhause führen.",
+  "biography_description": "Es ist ihr Schicksal, sich in einem Land der Verheißung niederzulassen.",
+  "point_cost": 1,
+  "id": "vision_der_verheißung",
+  "name": "Vision der Verheißung",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Bei deiner Ankunft im Reich musst du eine Vision der Verheißung interpretieren:<bulletlist><bullet><order></order> <hyperlink>Ordnungsaffinität</hyperlink>: Die Verheißung ist ein Land, das erobert werden muss.</bullet><bullet><matter></matter> <hyperlink>Materiumaffinität</hyperlink>: Die Verheißung ist ein Zuhause, das erbaut werden muss.</bullet><bullet><nature></nature> <hyperlink>Naturaffinität</hyperlink>: Das Verheißene Land ist von einem Monster besetzt, das wir besiegen müssen.</bullet></bulletlist>"
+   },
+   {
+    "name": "Bei Abschluss erhältst du eine mächtige Thronstadt."
+   },
+   {
+    "name": "+1 <hyperlink>Affinität</hyperlink> je nach gewählter Interpretation."
+   }
+  ],
+  "enabled": true,
+  "front_end": true,
+  "icon": "0000048D0000149B",
+  "type": "society",
+  "display_order": 1,
+  "DLC": "ARCHONPROPHECY "
+ },
+ {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "erdabtragung"
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -601,18 +1032,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "erdabtragung"
-   }
-  ],
   "icon": "0000048D00001282"
  },
  {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "gewaltmarsch"
+   },
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Späheinheit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<chaos></chaos> Chaosaffinität"
@@ -637,21 +1070,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 5,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "gewaltmarsch"
-   },
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Späheinheit."
-   }
-  ],
   "icon": "0000048D00000ED9"
  },
  {
+  "affinities": [
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   },
+   {
+    "name": "1<shadow></shadow> Schattenaffinität"
+   }
+  ],
   "biography_description": "Ihr umfangreiches Wissen verschafft ihnen Macht und Respekt in allen Reichen.",
   "lore_description": "Sie verstehen, dass Wissen Macht bedeutet, und Macht verdient Respekt.",
   "point_cost": 1,
@@ -674,22 +1106,13 @@
     "name": "Erhalte +10 <knowledge></knowledge> <hyperlink>Wissen</hyperlink>-Einnahmen für jedes Reich, mit dem du über <hyperlink>Offene Grenzen</hyperlink> verfügst."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   },
-   {
-    "name": "1<shadow></shadow> Schattenaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "empire_progression_slug": "allsehend"
@@ -698,6 +1121,14 @@
   "icon": "0000048D000009BB"
  },
  {
+  "affinities": [
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   },
+   {
+    "name": "1<shadow></shadow> Schattenaffinität"
+   }
+  ],
   "biography_description": "Sie wissen, dass man die Schatten nicht fürchten, sondern studieren und nutzen sollte.",
   "lore_description": "Die Schatten flüstern und die Jünger lauschen.",
   "DLC": "ELDRITCHREALMS ",
@@ -721,22 +1152,13 @@
     "name": "Dein Herrscher erlangt Tyrannengefolge."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   },
-   {
-    "name": "1<shadow></shadow> Schattenaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Umbrafleisch ist zu Beginn aktiv."
@@ -745,6 +1167,11 @@
   "icon": "0000048D000009B4"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Elementareinheit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Naturaffinität"
@@ -768,18 +1195,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Elementareinheit."
-   }
-  ],
   "icon": "0000048D00000320"
  },
  {
+  "affinities": [
+   {
+    "name": "1<chaos></chaos> Chaosaffinität"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
   "biography_description": "Sie sind gnadenlos und betrachten das Leben nur als Beute, dies es an sich zu reißen gilt.",
   "lore_description": "Sie sind gnadenlos. Für sie ist das Leben eine Ware, die mit Klingen oder Ketten an sich gerissen werden kann.",
   "point_cost": 1,
@@ -796,22 +1225,13 @@
     "name": "<hyperlink>Panische</hyperlink> <hyperlink>Einheiten</hyperlink> werden <hyperlink>gefangen genommen</hyperlink>, wenn du im <hyperlink>Kampf</hyperlink> siegreich bist."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 5,
-  "affinities": [
-   {
-    "name": "1<chaos></chaos> Chaosaffinität"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   }
-  ],
   "starting_bonuses": [
    {
     "empire_progression_slug": "kriegssklaven"
@@ -820,6 +1240,14 @@
   "icon": "0000048D000001D7"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Ordnungsaffinität"
+   },
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
   "biography_description": "In ihrem Kreuzzug zur Ausrottung des Bösen sind sie unerbittlich.",
   "lore_description": "Sie sind bedingungslos entschlossen, das Böse auszurotten, und kennen kein Erbarmen.",
   "point_cost": 1,
@@ -842,25 +1270,21 @@
     "name": "Gewährt +30 <casusBelli></casusBelli> <hyperlink>Konflikten</hyperlink> gegen Spieler mit <evilact></evilact>böser <hyperlink>Einstellung</hyperlink>."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Ordnungsaffinität"
-   },
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   }
-  ],
   "icon": "0000048D00000196"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "100<influence></influence> "
+   }
+  ],
   "affinities": [
    {
     "name": "1<arcana></arcana> Astralaffinität"
@@ -881,18 +1305,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "starting_bonuses": [
-   {
-    "description": "100<influence></influence> "
-   }
-  ],
   "icon": "0000048D0000018E"
  },
  {
+  "starting_bonuses": [
+   {
+    "structure_upgrade_slug": "zaubererturm_arkane_schmiede"
+   },
+   {
+    "description": "200<bindingessence></bindingessence> "
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -910,18 +1336,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "structure_upgrade_slug": "zaubererturm_arkane_schmiede"
-   },
-   {
-    "description": "200<bindingessence></bindingessence> "
-   }
-  ],
   "icon": "0000048D00000179"
  },
  {
@@ -948,7 +1365,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "0000048900001153",
   "display_order": 0
@@ -974,12 +1391,17 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000004890000110B",
   "display_order": 0
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Erhalte 2 zufällige Heldengegenstände."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -1000,18 +1422,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "Erhalte 2 zufällige Heldengegenstände."
-   }
-  ],
   "icon": "0000045E00000910"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Ordnungsaffinität"
+   }
+  ],
   "biography_description": "Sie schätzen und pflegen gute Beziehungen zu ihren Vasallen.",
   "lore_description": "Sie schätzen und pflegen gute Beziehungen zu ihren Vasallen und erheben in Kriegszeiten ihre Banner.",
   "point_cost": 1,
@@ -1029,15 +1450,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Ordnungsaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Zu Beginn ist die nächstgelegene <minorcity></minorcity><hyperlink>Freie Stadt</hyperlink> aufgedeckt und du erhältst +25 <hyperlink><allegiance></allegiance> Gefolgschaftstreue</hyperlink> bei ihr."
@@ -1046,6 +1461,11 @@
   "icon": "0000045A0000048C"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine Kampfmagiereinheit oder eine Unterstützungseinheit zusätzlich."
+   }
+  ],
   "affinities": [
    {
     "name": "1<arcana></arcana> Astralaffinität"
@@ -1066,18 +1486,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 4,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du einen Kampfmagiereinheit oder eine Unterstützungseinheit zusätzlich."
-   }
-  ],
   "icon": "0000045A00000481"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine zusätzliche <hyperlink>Einheit</hyperlink> der Stufe 3."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -1098,18 +1517,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du eine zusätzliche <hyperlink>Einheit</hyperlink> der Stufe 3."
-   }
-  ],
   "icon": "0000045A0000047B"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du ein <hyperlink>magisches Material</hyperlink> in der Nähe."
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Naturaffinität"
@@ -1127,18 +1545,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du ein <hyperlink>magisches Material</hyperlink> in der Nähe."
-   }
-  ],
   "icon": "0000045A00000474"
  },
  {
+  "affinities": [
+   {
+    "name": "1<chaos></chaos> Chaosaffinität"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
   "biography_description": "Sie sind Kriegstreiber und Zerstörer, für die Gewalt nach Möglichkeit immer das erste Mittel darstellt.",
   "lore_description": "Sie sind Kriegstreiber und Zerstörer, für die Gewalt nach Möglichkeit immer das erste Mittel darstellt.",
   "point_cost": 1,
@@ -1173,25 +1593,21 @@
     "name": "Erleide -300 <hyperlink>Beziehungen</hyperlink> zu allen <minorcity></minorcity><hyperlink>Freien Städten</hyperlink> und -300 <hyperlink>Reichsbeziehung</hyperlink> zu allen anderen <hyperlink>Reichen</hyperlink>."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 5,
-  "affinities": [
-   {
-    "name": "1<chaos></chaos> Chaosaffinität"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   }
-  ],
   "icon": "0000045A00000454"
  },
  {
+  "affinities": [
+   {
+    "name": "1<shadow></shadow> Schattenaffinität"
+   }
+  ],
   "biography_description": "Sie wissen genau, wann Schmeichelei und wann Erpressung angebracht ist, wodurch sie die Intrige zur lukrativen Kunst erheben.",
   "lore_description": "Sie wissen genau, wann Schmeichelei und wann Erpressung angebracht ist, wodurch sie die Intrige zur lukrativen Kunst erheben.",
   "point_cost": 1,
@@ -1212,15 +1628,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": false,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "1<shadow></shadow> Schattenaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Zu Beginn hast du eine zusätzliche Späheinheit."
@@ -1232,6 +1642,14 @@
   "icon": "0000045A00000451"
  },
  {
+  "affinities": [
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   },
+   {
+    "name": "1<order></order> Ordnungsaffinität"
+   }
+  ],
   "biography_description": "Sie glauben, dass es ihre Berufung ist, alle Gesellschaften zu vereinen.",
   "lore_description": "Sie bemühen sich um den Aufbau eines Reiches, das auf Zusammenarbeit beruht, zögern aber nicht, es zu verteidigen.",
   "point_cost": 1,
@@ -1248,7 +1666,7 @@
     "name": "Erhalte +30% Einnahmen von <hyperlink>Vasallen</hyperlink>"
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>."
    },
    {
     "name": "<hyperlink>Einheiten</hyperlink>, die durch <hyperlink>Vasallenmobilisierung</hyperlink> rekrutiert werden, erhalten bei der Rekrutierung ++1 Rang."
@@ -1258,18 +1676,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   },
-   {
-    "name": "1<order></order> Ordnungsaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Zu Beginn hast du eine zusätzliche Schildeinheit oder Stangenwaffeneinheit."
@@ -1283,19 +1692,18 @@
     "name": "1<nature></nature> Naturaffinität"
    }
   ],
-  "biography_description": "",
   "lore_description": "",
+  "biography_description": "",
   "point_cost": 1,
   "id": "",
   "name": "",
   "screen_description": "",
   "effect_descriptions": [],
   "enabled": false,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003FE000002B1"
+  "icon": "000003FE000002B1",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1303,19 +1711,18 @@
     "name": "1<order></order> Ordnungsaffinität"
    }
   ],
-  "biography_description": "",
   "lore_description": "",
+  "biography_description": "",
   "point_cost": 1,
   "id": "",
   "name": "",
   "screen_description": "",
   "effect_descriptions": [],
   "enabled": false,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003FE000002B1"
+  "icon": "000003FE000002B1",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1323,8 +1730,8 @@
     "name": "2<shadow></shadow> Schattenaffinität"
    }
   ],
-  "biography_description": "Ihre Gesellschaft hat es sich zum Ziel gesetzt, die Geheimnisse der Vergangenheit zu lüften. Sie sind begierig darauf, uralte Orte zu studieren, werden im drögen Alltag aber schnell rastlos.",
   "lore_description": "Dieses Volk hat es sich zum Ziel gesetzt, die Geheimnisse der Vergangenheit zu lüften. Es ist begierig darauf, uralte Orte zu studieren, wird im drögen Alltag aber schnell rastlos.",
+  "biography_description": "Ihre Gesellschaft hat es sich zum Ziel gesetzt, die Geheimnisse der Vergangenheit zu lüften. Sie sind begierig darauf, uralte Orte zu studieren, werden im drögen Alltag aber schnell rastlos.",
   "point_cost": 1,
   "id": "mal_der_eule",
   "name": "Mal der Eule",
@@ -1341,11 +1748,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001362"
+  "icon": "000003DF00001362",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1353,8 +1759,8 @@
     "name": "2<matter></matter> Materiumaffinität"
    }
   ],
-  "biography_description": "In ihrem Verlangen, materielle Reichtümer anzuhäufen, schätzt sie Gold mehr als alles andere.",
   "lore_description": "In seinem Verlangen, materielle Reichtümer anzuhäufen, schätzt dieses Volk Gold mehr als alles andere.",
+  "biography_description": "In ihrem Verlangen, materielle Reichtümer anzuhäufen, schätzt sie Gold mehr als alles andere.",
   "point_cost": 1,
   "id": "mal_des_hortes",
   "name": "Mal des Hortes",
@@ -1371,11 +1777,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001361"
+  "icon": "000003DF00001361",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -1383,8 +1788,8 @@
     "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
    }
   ],
-  "biography_description": "Ihre Gesellschaft gedeiht durch Friedfertigkeit und Pazifismus.",
   "lore_description": "Dieses Volk gedeiht durch Friedfertigkeit und Pazifismus.",
+  "biography_description": "Ihre Gesellschaft gedeiht durch Friedfertigkeit und Pazifismus.",
   "point_cost": 1,
   "id": "mal_der_taube",
   "name": "Mal der Taube",
@@ -1401,11 +1806,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001360"
+  "icon": "000003DF00001360",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "lore_description": "<helpcolor>Erleichtert die Fortbewegung und das Ansiedeln in Sumpfgebieten.</helpcolor>",
@@ -1429,7 +1833,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Anpassungen^fp",
   "front_end": true,
   "icon": "0000041B00001D31",
   "type": "form",
@@ -1457,7 +1861,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Anpassungen^fp",
   "front_end": true,
   "icon": "0000041B00001D2E",
   "type": "form",
@@ -1485,7 +1889,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "ADAPTATION",
+  "group_name": "Anpassungen^fp",
   "front_end": true,
   "icon": "0000041B00001D2B",
   "type": "form",
@@ -1522,7 +1926,7 @@
   ],
   "enabled": true,
   "type": "form",
-  "group_name": "ADAPTATION",
+  "group_name": "Anpassungen^fp",
   "front_end": true,
   "display_order": 6,
   "icon": "0000041B00001D27"
@@ -1540,7 +1944,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "0000041B00001D02",
   "type": "form",
@@ -1559,7 +1963,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "0000041B00001CFF",
   "type": "form",
@@ -1578,18 +1982,29 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Unterstützung^f",
   "front_end": true,
   "icon": "0000041B00001CF4",
   "type": "form",
   "display_order": 1
  },
  {
-  "lore_description": "<helpcolor>Einheiten werden zäher, wenn sie neben Verbündeten stehen.</helpcolor>",
   "biography_description": "Sie sind darin ausgebildet, alle Lücken in ihren Verteidigungsformationen zu schließen.",
+  "lore_description": "<helpcolor>Einheiten werden zäher, wenn sie neben Verbündeten stehen.</helpcolor>",
   "point_cost": 2,
   "id": "taktik_verteidigung",
   "name": "Taktik: Verteidigung",
+  "incompatible_society_traits": [
+   {
+    "name": "Taktik: Überwältigung"
+   },
+   {
+    "name": "Rudeltaktiken"
+   },
+   {
+    "name": "Unkooperativ"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1597,37 +2012,53 @@
    }
   ],
   "enabled": true,
-  "group_name": "TACTICS",
-  "front_end": true,
-  "icon": "0000041B00001CEE",
   "type": "form",
-  "display_order": 3
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 3,
+  "icon": "0000041B00001CEE"
  },
  {
-  "lore_description": "<helpcolor>Einheiten verursachen mehr Schaden, wenn sie in Gruppen kämpfen.</helpcolor>",
   "biography_description": "Sie arbeiten zusammen, um selbst die größten Feinde zu besiegen.",
+  "lore_description": "<helpcolor>Einheiten verursachen mehr Schaden, wenn sie in Gruppen kämpfen.</helpcolor>",
   "point_cost": 2,
   "id": "taktik_Überwältigung",
   "name": "Taktik: Überwältigung",
+  "incompatible_society_traits": [
+   {
+    "name": "Taktik: Verteidigung"
+   },
+   {
+    "name": "Rudeltaktiken"
+   },
+   {
+    "name": "Unkooperativ"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Chance von +20% auf <hyperlink>kritischen Treffer</hyperlink> neben einer verbündeten Einheit mit Überwältigungstaktik. Nicht stapelbar."
+    "name": "+20% <hyperlink>kritische Trefferchance</hyperlink> neben einer verbündeten Einheit mit Überwältigungstaktik. Nicht stapelbar."
    }
   ],
   "enabled": true,
-  "group_name": "TACTICS",
-  "front_end": true,
-  "icon": "0000041B00001CE7",
   "type": "form",
-  "display_order": 3
+  "group_name": "Angriff^m",
+  "front_end": true,
+  "display_order": 3,
+  "icon": "0000041B00001CE7"
  },
  {
-  "lore_description": "<helpcolor>Begünstigt einen langsamen und stetigen Spielstil.</helpcolor>",
   "biography_description": "Der Einsatz ihrer Schilde und ihre Geduld im Kampf sind aus ihrer Sicht die beste Verteidigung.",
+  "lore_description": "<helpcolor>Begünstigt einen langsamen und stetigen Spielstil.</helpcolor>",
   "point_cost": 2,
   "id": "bollwerk",
   "name": "Bollwerk",
+  "incompatible_society_traits": [
+   {
+    "name": "Unbesonnen"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -1635,11 +2066,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
-  "front_end": true,
-  "icon": "0000041B00001CD0",
   "type": "form",
-  "display_order": 4
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "0000041B00001CD0"
  },
  {
   "lore_description": "<helpcolor>Nützlich für Armeen, die sich auf Kampfmagier konzentrieren.</helpcolor>",
@@ -1654,14 +2085,14 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000041B00001CC8",
   "type": "form",
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Einheiten erleiden mit geringerer Wahrscheinlichkeit negative Statuseffekte und werden diese schneller wieder los.</helpcolor>",
+  "lore_description": "<helpcolor>Einheiten erleiden mit geringerer Wahrscheinlichkeit <hyperlink>negative Statuseffekte</hyperlink> und werden diese schneller wieder los.</helpcolor>",
   "biography_description": "Ihre natürliche Widerstandsfähigkeit macht sie weniger anfällig für Magie.",
   "point_cost": 2,
   "id": "zähigkeit",
@@ -1672,11 +2103,11 @@
     "name": "+2 Statuswiderstand."
    },
    {
-    "name": "Negative Statuseffekte halten -1 <turn></turn> Runde an, bei einem Minimum von 1."
+    "name": "<hyperlink>Negative Statuseffekte</hyperlink> halten -1 <turn></turn> Runde an, bei einem Minimum von 1."
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "0000041B00001D3B",
   "type": "form",
@@ -1695,13 +2126,21 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "0000041B00001CBF",
   "type": "form",
   "display_order": 5
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Wegfinder-Verzauberung ist bereits aktiv und kostet keine Versorgung."
+   },
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Späheinheit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<shadow></shadow> Schattenaffinität"
@@ -1725,21 +2164,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "starting_bonuses": [
-   {
-    "description": "Wegfinder-Verzauberung ist bereits aktiv und kostet keine Versorgung."
-   },
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Späheinheit."
-   }
-  ],
   "icon": "000003FC000004C5"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine Kampfmagiereinheit oder eine Unterstützungseinheit zusätzlich."
+   }
+  ],
   "affinities": [
    {
     "name": "1<shadow></shadow> Schattenaffinität"
@@ -1760,18 +2195,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du einen Kampfmagiereinheit oder eine Unterstützungseinheit zusätzlich."
-   }
-  ],
   "icon": "000003FC000004BE"
  },
  {
+  "affinities": [
+   {
+    "name": "1<shadow></shadow> Schattenaffinität"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
   "biography_description": "Sie verwerfen alberne Vorstellungen von Moral und Mitgefühl, weil sie wissen, dass Wissen und Macht die wahren Tugenden sind, nach denen es zu streben lohnt.",
   "lore_description": "Sie zeichnen sich durch einen Durst nach Wissen und Macht aus, der sie in ihrem Streben nach dem Bösen gedeihen lässt.",
   "point_cost": 1,
@@ -1794,25 +2231,16 @@
     "name": "Städte erhalten +10 <unitprod></unitprod> Einberufung und dein Reich erhält +5 <influence></influence> Imperium pro Stufe böser Einstellung."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
    },
    {
     "name": "Die Rekrutierung von Einheiten kostet -20 % weniger <gold></gold> <hyperlink>Gold</hyperlink> und <unitprod></unitprod><hyperlink> Einberufung</hyperlink>, während du die maximale böse <evilact></evilact> <hyperlink>Einstellung</hyperlink> hast."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 1,
-  "affinities": [
-   {
-    "name": "1<shadow></shadow> Schattenaffinität"
-   },
-   {
-    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Zu Beginn hast du eine zusätzliche Schockeinheit oder Schildeinheit."
@@ -1821,6 +2249,11 @@
   "icon": "000003FC000004C0"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "1 Alte Wunder in der Nähe gesäubert."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -1841,18 +2274,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "1 Alte Wunder in der Nähe gesäubert."
-   }
-  ],
   "icon": "000003FC000004C6"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Schildeinheit oder Stangenwaffeneinheit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -1866,25 +2298,27 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Die Freischaltung der Forschung an <caststrategic></caststrategic> Einheitenverzauberung kostet -40% <knowledge></knowledge> Wissen."
+    "name": "Die Freischaltung die Forschung an <caststrategic></caststrategic> Einheitenverzauberung kostet -40% <knowledge></knowledge> Wissen."
    },
    {
     "name": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberungen</hyperlink> kosten -30 % Versorgung."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Schildeinheit oder Stangenwaffeneinheit."
-   }
-  ],
   "icon": "000003FC000004C2"
  },
  {
+  "starting_bonuses": [
+   {
+    "structure_upgrade_slug": "werkstatt"
+   },
+   {
+    "structure_upgrade_slug": "verkäufer"
+   }
+  ],
   "affinities": [
    {
     "name": "1<matter></matter> Materiumaffinität"
@@ -1905,21 +2339,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 2,
-  "starting_bonuses": [
-   {
-    "structure_upgrade_slug": "werkstatt"
-   },
-   {
-    "structure_upgrade_slug": "verkäufer"
-   }
-  ],
   "icon": "000003FC000004BA"
  },
  {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "einfache_seefahrt"
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Naturaffinität"
@@ -1940,18 +2370,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "einfache_seefahrt"
-   }
-  ],
   "icon": "000003FC000004B7"
  },
  {
+  "starting_bonuses": [
+   {
+    "empire_progression_slug": "erweiterte_führung"
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Naturaffinität"
@@ -1972,18 +2401,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "empire_progression_slug": "erweiterte_führung"
-   }
-  ],
   "icon": "000003FC000004BB"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Fernkampfeinheit."
+   }
+  ],
   "affinities": [
    {
     "name": "1<nature></nature> Naturaffinität"
@@ -2004,18 +2432,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 3,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Fernkampfeinheit."
-   }
-  ],
   "icon": "000003FC000004B8"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Einheit <hyperlink>magischen Ursprungs</hyperlink>."
+   }
+  ],
   "affinities": [
    {
     "name": "1<arcana></arcana> Astralaffinität"
@@ -2036,18 +2463,17 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Einheit <hyperlink>magischen Ursprungs</hyperlink>."
-   }
-  ],
   "icon": "000003FC000004BC"
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astralaffinität"
+   }
+  ],
   "biography_description": "Sie sind mit einem angeborenen Talent für die Zauberei gesegnet.",
   "lore_description": "Sie sind mit einem angeborenen Talent für die Zauberei gesegnet und stoßen nur selten auf ein Problem, das nicht durch den ausgiebigen Einsatz von Magie gelöst werden kann.",
   "point_cost": 1,
@@ -2071,15 +2497,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "affinities": [
-   {
-    "name": "1<arcana></arcana> Astralaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Zu Beginn sind 1 zusätzliche Zauber freigeschaltet."
@@ -2096,8 +2516,8 @@
     "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
    }
   ],
-  "biography_description": "Sie opfern ihr Volk, um die Gunst ihrer Götter zu gewinnen.",
   "lore_description": "Sie glauben sowohl an die spirituelle Kraft des Lebens ... als auch an den Wert eines guten Festmahls.",
+  "biography_description": "Sie opfern ihr Volk, um die Gunst ihrer Götter zu gewinnen.",
   "point_cost": 1,
   "id": "ritualkannibalen__evilact__",
   "name": "Ritualkannibalen <evilact></evilact>",
@@ -2107,20 +2527,24 @@
     "name": "Einheiten erhalten die Fähigkeit Leichenfressen."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
    },
    {
     "name": "Die nächste eigene Stadt erhält nach erfolgreichem Kampf +3 <mana></mana> <hyperlink>Mana</hyperlink> und +3 <food></food> <hyperlink>Nahrung</hyperlink> pro Stufe der getöteten oder verlorenen Einheiten, die nicht <hyperlink>magischen Ursprungs</hyperlink> sind."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
-  "display_order": 5,
-  "icon": "000003FC000004C1"
+  "icon": "000003FC000004C1",
+  "type": "society",
+  "display_order": 5
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Erhalte 2 zufällige Heldengegenstände."
+   }
+  ],
   "affinities": [
    {
     "name": "1<chaos></chaos> Chaosaffinität"
@@ -2140,22 +2564,21 @@
     "name": "Die nächste eigene Stadt erhält nach erfolgreichem Kampf +3 <gold></gold> <hyperlink>Gold</hyperlink> und +3 <unitprod></unitprod><hyperlink> Einberufung</hyperlink> pro Stufe der getöteten Einheiten."
    },
    {
-    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>"
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 5,
-  "starting_bonuses": [
-   {
-    "description": "Erhalte 2 zufällige Heldengegenstände."
-   }
-  ],
   "icon": "000003FC000004C4"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Hauptstadt beginnt mit +1 <population></population> Bevölkerung."
+   }
+  ],
   "affinities": [
    {
     "name": "1<order></order> Ordnungsaffinität"
@@ -2173,18 +2596,20 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 6,
-  "starting_bonuses": [
-   {
-    "description": "Hauptstadt beginnt mit +1 <population></population> Bevölkerung."
-   }
-  ],
   "icon": "000003FC000004B6"
  },
  {
+  "affinities": [
+   {
+    "name": "1<order></order> Ordnungsaffinität"
+   },
+   {
+    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
   "biography_description": "Sie teilen reine Absichten, Mitgefühl und eine unbeirrbare Hingabe an die gute Sache.",
   "lore_description": "Sie teilen reine Absichten, Mitgefühl und eine unbeirrbare Hingabe an das Gute.",
   "point_cost": 1,
@@ -2207,25 +2632,16 @@
     "name": "Städte erhalten +10 <gold></gold> <hyperlink>Gold</hyperlink> und dein Reich erhält +5 <influence></influence> Imperium pro Stufe guter Einstellung."
    },
    {
-    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>"
+    "name": "+10 <goodact></goodact> <hyperlink>Einstellung</hyperlink>."
    },
    {
     "name": "Einheiten erhalten +2 <hyperlink><xp></xp> Erfahrung</hyperlink> pro <turn></turn> <hyperlink>Runde</hyperlink>, während du die maximale gute <goodact></goodact> <hyperlink>Einstellung</hyperlink> hast."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 6,
-  "affinities": [
-   {
-    "name": "1<order></order> Ordnungsaffinität"
-   },
-   {
-    "name": "10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "Zu Beginn hast du eine zusätzliche Unterstützungseinheit oder Stangenwaffeneinheit."
@@ -2234,6 +2650,11 @@
   "icon": "000003FC000004B5"
  },
  {
+  "starting_bonuses": [
+   {
+    "description": "Zu Beginn hast du eine zusätzliche Einheit der Stufe I."
+   }
+  ],
   "affinities": [
    {
     "name": "1<chaos></chaos> Chaosaffinität"
@@ -2253,19 +2674,13 @@
     "name": "Volksspezifische Einheiten der Stufe I haben den Rang +1."
    },
    {
-    "name": "Einheiten, die nicht <hyperlink>magischen Ursprungs</hyperlink> sind, benötigen -20 % <hyperlink>Einheitenversorgung</hyperlink>."
+    "name": "Einheiten, die nicht <hyperlink>magischen Ursprungs</hyperlink> sind, benötigen -20 % Basis<hyperlink>einheitenversorgung</hyperlink>."
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 5,
-  "starting_bonuses": [
-   {
-    "description": "Zu Beginn hast du eine zusätzliche Einheit der Stufe I."
-   }
-  ],
   "icon": "000003FC000004BF"
  },
  {
@@ -2293,7 +2708,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "0000041B00001637",
   "type": "form",
@@ -2324,7 +2739,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "0000041B0000162E",
   "type": "form",
@@ -2343,7 +2758,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000041B0000074C",
   "type": "form",
@@ -2365,7 +2780,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000041B0000073C",
   "type": "form",
@@ -2384,13 +2799,18 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "0000041B0000072D",
   "type": "form",
   "display_order": 4
  },
  {
+  "affinities": [
+   {
+    "name": "1<arcana></arcana> Astralaffinität"
+   }
+  ],
   "biography_description": "Sie beherbergen Wissen, das bis zu den Anfängen der Zeit zurückreicht.",
   "lore_description": "Sie existieren seit Anbeginn der Zeit und schärfen ihren Verstand auf der Suche nach arkanem Wissen.",
   "point_cost": 1,
@@ -2408,15 +2828,9 @@
    }
   ],
   "enabled": true,
-  "type": "society",
-  "group_name": "",
   "front_end": true,
+  "type": "society",
   "display_order": 4,
-  "affinities": [
-   {
-    "name": "1<arcana></arcana> Astralaffinität"
-   }
-  ],
   "starting_bonuses": [
    {
     "description": "1 zufällige Forschungsfertigkeit ist bereits freigeschaltet."
@@ -2433,11 +2847,10 @@
   "lore_description": "",
   "biography_description": "Sie sind dafür bekannt, die Körper ihrer eigenen Art sowie die anderer leckerer Humanoide zu essen.",
   "point_cost": 0,
-  "id": "~_cannibals",
-  "name": "~ Cannibals",
-  "screen_description": "~ - Small Food <food></food> reward after tactical combat.<abilityred>Non-Functional</abilityred><br></br>- -1 <order></order> <abilityblue>Order</abilityblue>.",
+  "id": "cannibals",
+  "name": "Cannibals",
+  "screen_description": "- Small Food <food></food> reward after tactical combat.<abilityred>Non-Functional</abilityred><br></br>- -1 <order></order> <abilityblue>Order</abilityblue>.",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2450,13 +2863,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ At one point these creatures grew to be hideously mutated, making them a horror for others to behold.",
+  "biography_description": "At one point these creatures grew to be hideously mutated, making them a horror for others to behold.",
   "point_cost": -1,
-  "id": "~_malformed",
-  "name": "~ Malformed",
-  "screen_description": "~ - Units have <abilityblue>Cause Fear</abiliytblue> <br></br>- -2 <abilityblue>Charisma</abilityblue>",
+  "id": "malformed",
+  "name": "Malformed",
+  "screen_description": "- Units have <abilityblue>Cause Fear</abiliytblue> <br></br>- -2 <abilityblue>Charisma</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2469,13 +2881,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ Their bodies regenerate fast which sometimes allows them to regrow entire limbs.",
+  "biography_description": "Their bodies regenerate fast which sometimes allows them to regrow entire limbs.",
   "point_cost": 1,
-  "id": "~_regenerating",
-  "name": "~ Regenerating",
-  "screen_description": "~ - Units gain <abilityblue>Regeneration</abilityblue>",
+  "id": "regenerating",
+  "name": "Regenerating",
+  "screen_description": "- Units gain <abilityblue>Regeneration</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2488,13 +2899,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ They share a strong bond with spiders, although no-one really knows how or why.",
+  "biography_description": "They share a strong bond with spiders, although no-one really knows how or why.",
   "point_cost": 1,
-  "id": "~_spider_worshippers",
-  "name": "~ Spider Worshippers",
-  "screen_description": "~ - Unlocks the <abilityblue>Spider mount</abilityblue><br></br>- Unlocks the <abilityblue>Spider Riders</abilityblue> unit",
+  "id": "spider_worshippers",
+  "name": "Spider Worshippers",
+  "screen_description": "- Unlocks the <abilityblue>Spider mount</abilityblue><br></br>- Unlocks the <abilityblue>Spider Riders</abilityblue> unit",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2507,13 +2917,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ Their bards only sing gloomy songs and even their parties are depressing, for they believe an inevitable doom awaits them.",
+  "biography_description": "Their bards only sing gloomy songs and even their parties are depressing, for they believe an inevitable doom awaits them.",
   "point_cost": 1,
-  "id": "~_doomed",
-  "name": "~ Doomed",
-  "screen_description": "~ - No happiness events in cities.<abilityred>Non-Functional</abilityred><br></br>- Other races have -100 Relation with Doomed races.<br></br>- +1 <chaos></chaos> <abilityblue>Chaos</abilityblue>.",
+  "id": "doomed",
+  "name": "Doomed",
+  "screen_description": "- No happiness events in cities.<abilityred>Non-Functional</abilityred><br></br>- Other races have -100 Relation with Doomed races.<br></br>- +1 <chaos></chaos> <abilityblue>Chaos</abilityblue>.",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2526,13 +2935,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ They are blessed by unnatural luck and love to play games of chance.",
+  "biography_description": "They are blessed by unnatural luck and love to play games of chance.",
   "point_cost": 1,
-  "id": "~_lucky_ones",
-  "name": "~ Lucky Ones",
-  "screen_description": "~ - +5% <abilityblue>Crit chance</abiliytblue><br></br>+5% rewards from clearing <abilityblue>Exploration Sites</abilityblue> and <abilityblue>pick-ups</abilityblue><br></br>- <abilityblue>Cities</abilityblue> have an increased chance of <abilityblue>Happiness events</abilitytblue><br></br>- +1 <chaos></chaos> <abilityblue>Chaos</abilityblue>",
+  "id": "lucky_ones",
+  "name": "Lucky Ones",
+  "screen_description": "- +5% <abilityblue>Crit chance</abiliytblue><br></br>+5% rewards from clearing <abilityblue>Exploration Sites</abilityblue> and <abilityblue>pick-ups</abilityblue><br></br>- <abilityblue>Cities</abilityblue> have an increased chance of <abilityblue>Happiness events</abilitytblue><br></br>- +1 <chaos></chaos> <abilityblue>Chaos</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2545,13 +2953,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ They reproduce fast and are despised by other races for the blight and disease they spread.",
+  "biography_description": "They reproduce fast and are despised by other races for the blight and disease they spread.",
   "point_cost": -1,
-  "id": "~_verminous",
-  "name": "~ Verminous",
-  "screen_description": "~ - +20% Food <food></food> income<br></br>- <abilityblue>Cities</abilityblue> have an increased chance of <abilityred>Unhappiness events</abilityred><br></br>- -1 <abilityblue>Courage</abilityblue><br></br>- -1 <abilityblue>Charisma</abilityblue>",
+  "id": "verminous",
+  "name": "Verminous",
+  "screen_description": "- +20% Food <food></food> income<br></br>- <abilityblue>Cities</abilityblue> have an increased chance of <abilityred>Unhappiness events</abilityred><br></br>- -1 <abilityblue>Courage</abilityblue><br></br>- -1 <abilityblue>Charisma</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2564,13 +2971,12 @@
    }
   ],
   "lore_description": "",
-  "biography_description": "~ They believe themselves to be Chosen, wanting to show others the the way to their true greatness. These others generally disagree.",
+  "biography_description": "They believe themselves to be Chosen, wanting to show others the the way to their true greatness. These others generally disagree.",
   "point_cost": 0,
-  "id": "~_chosen",
-  "name": "~ Chosen",
-  "screen_description": "~ - +1 <order></order> <abilityblue>Order</abilityblue>",
+  "id": "chosen",
+  "name": "Chosen",
+  "screen_description": "- +1 <order></order> <abilityblue>Order</abilityblue>",
   "enabled": false,
-  "group_name": "",
   "front_end": false,
   "icon": "000003FE000002B1",
   "type": "society",
@@ -2598,7 +3004,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000003EB00000599",
   "type": "form",
@@ -2629,18 +3035,32 @@
    }
   ],
   "enabled": true,
-  "group_name": "MOUNT",
+  "group_name": "Reittiere",
   "front_end": true,
   "icon": "000003EB00000597",
   "type": "form",
   "display_order": 0
  },
  {
-  "lore_description": "<helpcolor>Nahkampfangreifer haben eine Chance, vergiftet zu werden.</helpcolor>",
   "biography_description": "Mit ihren Giftdrüsen halten sie sich Angreifer vom Leib.",
+  "lore_description": "<helpcolor>Nahkampfangreifer haben eine Chance, vergiftet zu werden.</helpcolor>",
   "point_cost": 2,
   "id": "giftig",
   "name": "Giftig",
+  "incompatible_society_traits": [
+   {
+    "name": "Inneres Feuer"
+   },
+   {
+    "name": "Innerer Frost"
+   },
+   {
+    "name": "Innerer Blitz"
+   },
+   {
+    "name": "innerer Glanz"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2654,18 +3074,26 @@
    }
   ],
   "enabled": true,
-  "group_name": "DAMAGE_RETALIATION",
-  "front_end": true,
-  "icon": "000003E300007147",
   "type": "form",
-  "display_order": 4
+  "group_name": "Verteidigung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "000003E300007147"
  },
  {
-  "lore_description": "<helpcolor>Einheiten fliehen seltener.</helpcolor>",
   "biography_description": "Manche nennen sie kaltherzig. Sie selbst bevorzugen „pragmatisch“.",
+  "lore_description": "<helpcolor>Einheiten fliehen seltener.</helpcolor>",
   "point_cost": 1,
   "id": "kaltblütig",
   "name": "Kaltblütig",
+  "incompatible_society_traits": [
+   {
+    "name": "Glücklich"
+   },
+   {
+    "name": "Feigheit"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2673,11 +3101,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "MORALE",
-  "front_end": true,
-  "icon": "000003E100001497",
   "type": "form",
-  "display_order": 5
+  "group_name": "Unterstützung^f",
+  "front_end": true,
+  "display_order": 5,
+  "icon": "000003E100001497"
  },
  {
   "lore_description": "<helpcolor>Einheiten werden schneller stärker, wenn sie Kämpfe gewinnen.</helpcolor>",
@@ -2692,7 +3120,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Unterstützung^f",
   "front_end": true,
   "icon": "000003E10000148A",
   "type": "form",
@@ -2711,7 +3139,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "000003E10000146F",
   "type": "form",
@@ -2730,7 +3158,7 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "000003E100001469",
   "type": "form",
@@ -2745,11 +3173,11 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+20 % <hyperlink>Treffsicherheit</hyperlink> bei <hyperlink>physischen Fernkampf</hyperlink>- und <hyperlink>Magie</hyperlink>angriffen."
+    "name": "+20 % <hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink> bei <hyperlink>physischen Fernkampf</hyperlink>- und <hyperlink>Magie</hyperlink>angriffen."
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Angriff^m",
   "front_end": true,
   "icon": "0000041B00001CBE",
   "type": "form",
@@ -2768,18 +3196,23 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
+  "group_name": "Verteidigung^f",
   "front_end": true,
   "icon": "000003E10000145F",
   "type": "form",
   "display_order": 4
  },
  {
-  "lore_description": "<helpcolor>Armeen können länger auf der Weltkarte kämpfen.</helpcolor>",
   "biography_description": "Ihr Blut ist stark, wodurch sie sich von Wunden schneller erholen als andere.",
+  "lore_description": "<helpcolor>Armeen können länger auf der Weltkarte kämpfen.</helpcolor>",
   "point_cost": 2,
   "id": "rasche_erholung",
   "name": "Rasche Erholung",
+  "incompatible_society_traits": [
+   {
+    "name": "schwache Konstitution"
+   }
+  ],
   "screen_description": "",
   "effect_descriptions": [
    {
@@ -2787,11 +3220,11 @@
    }
   ],
   "enabled": true,
-  "group_name": "",
-  "front_end": true,
-  "icon": "000003E100001454",
   "type": "form",
-  "display_order": 4
+  "group_name": "Unterstützung^f",
+  "front_end": true,
+  "display_order": 4,
+  "icon": "000003E100001454"
  },
  {
   "affinities": [
@@ -2799,8 +3232,8 @@
     "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
    }
   ],
-  "biography_description": "Sie sind durch ständige Kämpfe verroht und lassen jeden Konflikt in ein Gemetzel ausarten.",
   "lore_description": "Dieses Volk ist durch ständige Kämpfe verroht und lässt jeden Konflikt in ein Gemetzel ausarten.",
+  "biography_description": "Sie sind durch ständige Kämpfe verroht und lassen jeden Konflikt in ein Gemetzel ausarten.",
   "point_cost": 1,
   "id": "mal_des_schlachters",
   "name": "Mal des Schlachters",
@@ -2817,11 +3250,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001367"
+  "icon": "000003DF00001367",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2829,8 +3261,8 @@
     "name": "2<nature></nature> Naturaffinität"
    }
   ],
-  "biography_description": "Ihr Gesellschaft hat ein enges Band mit den heimischen Tieren dieses Reiches geknüpft.",
   "lore_description": "Dieses Volk hat ein enges Band mit den heimischen Tieren dieses Reiches geknüpft.",
+  "biography_description": "Ihr Gesellschaft hat ein enges Band mit den heimischen Tieren dieses Reiches geknüpft.",
   "point_cost": 1,
   "id": "mal_des_otters",
   "name": "Mal des Otters",
@@ -2840,18 +3272,17 @@
     "name": "<xpCol>+2</xpCol> <nature></nature> <hyperlink>Naturaffinität</hyperlink>"
    },
    {
-    "name": "<hyperlink>Städte</hyperlink> dieses Volkes erhalten <xpCol>+5 <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink></xpCol> für jede verbündete Tier auf ihrem <hyperlink>Gebiet</hyperlink>, bis zu einem Maximum von <xpCol>+30 <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink></xpCol>."
+    "name": "<hyperlink>Städte</hyperlink> dieses Volkes erhalten <xpCol>+5 <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink></xpCol> für jede verbündete Tiereinheit auf ihrem <hyperlink>Gebiet</hyperlink>, bis zu einem Maximum von <xpCol>+30 <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink></xpCol>."
    },
    {
-    "name": "<hyperlink>Städte</hyperlink> dieses Volkes haben <fireCol>-20</fireCol> <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink>, wenn sich keine verbündete Tier auf ihrem <hyperlink>Gebiet</hyperlink> befindet."
+    "name": "<hyperlink>Städte</hyperlink> dieses Volkes haben <fireCol>-20</fireCol> <happiness></happiness> <hyperlink>Stadtstabilität</hyperlink>, wenn sich keine verbündete Tiereinheit auf ihrem <hyperlink>Gebiet</hyperlink> befindet."
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001366"
+  "icon": "000003DF00001366",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2859,8 +3290,8 @@
     "name": "2<chaos></chaos> Chaosaffinität"
    }
   ],
-  "biography_description": "Ihre Gesellschaft gedeiht in Kriegszeiten und sieht in fremden Reichen lediglich eine Gelegenheit für Eroberungen.",
   "lore_description": "Dieses Volk gedeiht in Kriegszeiten und sieht in fremden Reichen lediglich eine Gelegenheit für Eroberungen.",
+  "biography_description": "Ihre Gesellschaft gedeiht in Kriegszeiten und sieht in fremden Reichen lediglich eine Gelegenheit für Eroberungen.",
   "point_cost": 1,
   "id": "mal_des_schwertes",
   "name": "Mal des Schwertes",
@@ -2877,11 +3308,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001364"
+  "icon": "000003DF00001364",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2889,8 +3319,8 @@
     "name": "2<order></order> Ordnungsaffinität"
    }
   ],
-  "biography_description": "Von ihren hohen Hallen aus blicken die Mitglieder des Volkes auf alle herab, die in rückständigeren Behausungen leben.",
   "lore_description": "Von ihren hohen Hallen aus blicken die Mitglieder dieses Volkes auf alle herab, die in rückständigeren Behausungen leben.",
+  "biography_description": "Von ihren hohen Hallen aus blicken die Mitglieder des Volkes auf alle herab, die in rückständigeren Behausungen leben.",
   "point_cost": 1,
   "id": "mal_des_turmes",
   "name": "Mal des Turmes",
@@ -2907,11 +3337,10 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001365"
+  "icon": "000003DF00001365",
+  "type": "destiny",
+  "display_order": -1
  },
  {
   "affinities": [
@@ -2919,8 +3348,8 @@
     "name": "2<arcana></arcana> Astralaffinität"
    }
   ],
-  "biography_description": "Für dieses Volk gehört Zauberei zum Alltag, die Nutzung von Mana ist tief in seiner Gesellschaft verwurzelt.",
   "lore_description": "Für dieses Volk gehört Zauberei zum Alltag, die Nutzung von Mana ist tief in seiner Gesellschaft verwurzelt.",
+  "biography_description": "Für dieses Volk gehört Zauberei zum Alltag, die Nutzung von Mana ist tief in seiner Gesellschaft verwurzelt.",
   "point_cost": 1,
   "id": "mal_des_konfluxes",
   "name": "Mal des Konfluxes",
@@ -2937,10 +3366,9 @@
    }
   ],
   "enabled": true,
-  "type": "destiny",
-  "group_name": "",
   "front_end": false,
-  "display_order": -1,
-  "icon": "000003DF00001363"
+  "icon": "000003DF00001363",
+  "type": "destiny",
+  "display_order": -1
  }
 ]

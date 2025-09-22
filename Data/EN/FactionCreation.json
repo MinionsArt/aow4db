@@ -55,27 +55,27 @@
         "icon": "warlock",
         "description": ""
     },
-     {
+    {
         "type": "Class",
         "id": "battlesaint",
         "name": "Battlesaint",
-         "DLC" : "ARCHONPROPHECY",
+        "DLC": "ARCHONPROPHECY",
         "icon": "battlesaint",
         "description": ""
     },
     {
         "type": "Ruler Origin",
         "id": "champion",
-        "name": "Champion",
         "icon": "champion",
-        "description": "<bulletlist>A Ruler risen from the ranks of their people.<bullet>Mortal Champions have access to unique army leadership hero skills.</bullet><bullet>Mortal Champion rulers gain +20% <xp></xp> Experience</bullet><br><bullet>Start with +100 Relations with Free Cities.</bullet><bullet>Mortal Champion rulers start with the Command ability in Combat</bullet><bullet>Mortal Champions are CHampion Governors.</bullet></bulletlist>"
+        "name": "Champion",
+        "extraLookup": "TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@RACIAL_LEADER"
     },
     {
         "type": "Ruler Origin",
         "id": "wizard_king",
         "name": "Wizard King",
-        "icon": "wizard_king",
-        "description": "<bulletlist>A powerful Wizard seeking dominion over a new realm.<bullet>Wizard Kings have access to unique Combat Spell enhancing hero skills.</bullet><bullet>All <conduit></conduit> Conduits grant +2<mana></mana> Mana.</bullet><bullet>Start with +10 Combat Casting points and +10 World Map Casting Points</bullet><bullet>Wizard Kings start with the Channeling Ritual ability in combat</bullet><bullet>Wizard Kings are Wizard Governors.</bullet></bulletlist>"
+        "extraLookup": "TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@WIZARD_KING",
+        "icon": "wizard_king"
     },
     {
         "type": "Ruler Origin",
@@ -83,7 +83,7 @@
         "name": "Dragon Lord",
         "icon": "dragon_lord",
         "DLC": "DRAGONLORDS ",
-        "description": "<bulletlist>A mighty Dragon seeking new realms to shape in their vision.<bullet>Dragon Lords have access to unique combat Hero Skills.</bullet><bullet>Dragon Lords gain powerful Transformation Hero Signature Skills based on empire Affinities.</bullet><bullet>Gain extra Gold with <hyperlink>Dragon Hoard</hyperlink>.</bullet><bullet>Dragon Lords are Dragon Governors.</bullet><bullet>Dragon Lords have 30 <gold></gold> Gold Unit Upkeep and cannot equip most Hero Items.</bullet><br></bulletlist>"
+        "extraLookup": "DLC@DRAGONLORDS@TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@DRAGON_LEADER"
     },
     {
         "type": "Ruler Origin",
@@ -91,7 +91,7 @@
         "name": "Eldritch Sovereign",
         "icon": "eldritch_sovereign",
         "DLC": "ELDRITCHREALMS ",
-        "description": "<bulletlist>An eldritch Ruler with powers beyond mortal comprehension.<bullet>Eldritch Sovereigns have access to powerful control Hero.</bullet><bullet>Eldritch Sovereigns gain powerful unique Hero Signature Skills.</bullet><bullet>Use <thralls></thralls> Thralls to cast powerful ritual Spells.</bullet><bullet>Start with Clairvoyance Ritual and Enthrall Population</bullet><bullet>Eldritch Sovereigns have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Leg and Mount items</bullet></bulletlist>"
+        "extraLookup": "DLC@ELDRITCHREALMS@ELDRITCH_RULER_TYPE"
     },
     {
         "type": "Ruler Origin",
@@ -99,22 +99,21 @@
         "name": "Giant King",
         "icon": "giant_king",
         "DLC": "GIANTKINGS ",
-        "description": "<bulletlist>A formidable Giant refashioning realms with the elemental force of the Clan of Fire, Rock, Storm, or Frost</bulletlist>"
+        "extraLookup": "DLC@GIANTKINGS@TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@GIANT_KING"
     },
     {
         "type": "Culture",
         "id": "feudal",
         "icon": "feudal",
-       
         "name": "Feudal",
-        "description": "<bulletlist>A hierarchical society where nobles reign over their subjects. They field exceptionally cheap to maintain armies and specialize in the use of cavalry.<bullet>Low Unit Upkeep.</bullet><bullet>Powerful cavalry units.</bullet></bulletlist>"
+        "extraLookup": "CULTURE_FEUDAL@FEUDAL"
     },
     {
         "type": "SubCulture",
         "id": "feudal_monarchy",
         "icon": "feudal_monarchy",
         "affinity": "<empireorder></empireorder>,<empirematter></empirematter>",
-        "requirement" : "Feudal",
+        "requirement": "Feudal",
         "name": "Feudal - Monarchy",
         "description": "<bulletlist>Your people are loyal to the absolute rule of their Monarch, gaining power from the presence of their ruler:<bullet>Units gain For the Monarch.</bullet><bullet>Certain units can promote to higher Tier units on attaining Legendary Rank.</bullet></bulletlist>"
     },
@@ -124,7 +123,7 @@
         "icon": "feudal_aristocracy",
         "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
         "name": "Feudal - Aristocracy",
-          "requirement" : "Feudal",
+        "requirement": "Feudal",
         "description": "<bulletlist>Your cities form powerful Houses, able to field efficient armies when led by their Liege Lords:<bullet>Each city has a Feudal House led by its governor, who becomes the House's Liege Lord.</bullet><bullet>Units produced in Feudal cities become part of that city's Fedual House, gaining<xp></xp> Expierience as their Liege Lord gains <renown></renown> Renown.</bullet>Certain units can promote to higher Tier units on attaining Legendary Rank.</bullet></bulletlist>"
     },
     {
@@ -133,14 +132,14 @@
         "icon": "barbarian",
         "affinity": "<empirechaos></empirechaos>,<empirenature></empirenature>",
         "name": "Barbarian",
-        "description": "<bulletlist>A people who thrive on war and aggression. They value strength and prefer to charge head-on into bloody battles.<bullet>Structures with <food></food> Food and <draft></draft> Draft income.</bullet><bullet>Melee units have Primal Strike, dealing extra damage ontheir first strike in combat.</bullet><bullet>Ritual of Alacrity passive</bullet></bulletlist>"
+        "extraLookup": "CULTURE_SAVAGE@SAVAGE"
     },
-     {
+    {
         "type": "Culture",
         "id": "architect",
         "icon": "architect",
         "name": "Architect",
-        "description": "<bulletlist>A people dedicated to the creation of something greater than themselves, building Monuments to their chosen Affinities.<bullet>Has higher <production></production> Production income.</bullet><bullet>Collect <wonderstone></wonderstone> Wonderstone to build impressive <monument></monument> Monuments to the Affinities.</bullet><bullet><monument></monument> Monuments grant Affinity Incarnate to Architect Units</bullet><bullet>Architect culture units deal damage matching the Empire's dominant Affinity.</bullet></bulletlist>"
+        "extraLookup": "DLC@ARCHONPROPHECY@CULTURE_ARCHITECT"
     },
     {
         "type": "Culture",
@@ -148,7 +147,7 @@
         "icon": "industrious",
         "affinity": "<empirematter></empirematter>,<empirematter></empirematter>",
         "name": "Industrious",
-        "description": "<bulletlist>Master builders who value grand cities and strong armor, preferring a defensive attitude over an aggressive one.<bullet>Structures with <production></production> Production income.</bullet><bullet>Through Bolstering, units get sturdier as they get hit in battle.</bullet><bullet>Scout Prospecting passive</bullet></bulletlist>"
+        "extraLookup": "CULTURE_INDUSTRIOUS@INDUSTRIOUS"
     },
     {
         "type": "Culture",
@@ -156,7 +155,7 @@
         "icon": "high",
         "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
         "name": "High",
-        "description": "<bulletlist>A highly developed society whose members strive for harmony. When threatened, however, they wield their guiding light as a weapon.<bullet>Structures have <happiness></happiness> City Stability and <knowledge></knowledge> Knowledge income.</bullet><bullet>Units are strengthened with Awakened, revealing their hidden potential</bullet><bullet>+10 <reputation6></reputation6> Alignment.<bullet>Alignment Agenda passive</bullet></bulletlist>"
+        "extraLookup": "CULTURE_HIGH@HIGH"
     },
     {
         "type": "Culture",
@@ -164,7 +163,7 @@
         "icon": "dark",
         "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
         "name": "Dark",
-        "description": "<bulletlist>A dictatorial civilization where the strong and ruthless dominate the weak. They use forbidden magics to maintain control and weaken their enemies.<bullet>Cities can negate <happiness></happiness> City Stability income penalties.</bullet><bullet>Unique City Structures granting <research></research> Knowledge and extra income from Prisons and Crypts.</bullet><bullet>Units specialize in inflicting negative status effects and exploiting them with Cull the Weak.</bullet><bullet>-10 <reputation2></reputation2> Alignment.</bulletlist>"
+        "extraLookup": "CULTURE_DARK@DARK"
     },
     {
         "type": "SubCulture",
@@ -172,7 +171,7 @@
         "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
         "name": "Mystic - School of Attunement",
         "icon": "mystic_school_of_attunement",
-           "requirement" : "Mystic",
+        "requirement": "Mystic",
         "description": "<bulletlist>Your people are versatile spellcasters, attuned to the arcane:<bullet>Units gain Attunement: Star Blades.</bullet><bullet>Collect Astracl Echoes through exploration and research</bullet><bullet>Use Echo Casting to cast spells beyond normal limits</bullet></bulletlist>",
         "incompatible": [
             {
@@ -180,14 +179,12 @@
             }
         ]
     },
-     {
+    {
         "type": "Culture",
         "id": "mystic",
-     
         "name": "Mystic",
         "icon": "mystic",
-        
-        "description": "<bulletlist>A culture of scholars, driven to study every corner of the Astral Sea. They prefer to find answer through research and arcane prowess.<bullet>Has higher <mana></mana> Mana income</bullet><bullet>Powerful interactions with Spells, depending on their subculture.</bullet></bulletlist>",
+        "extraLookup": "CULTURE_MYSTIC@MYSTIC",
         "incompatible": [
             {
                 "name": "Fabled Hunters"
@@ -200,7 +197,7 @@
         "affinity": "<empirearcana></empirearcana>,<empireshadow></empireshadow>",
         "name": "Mystic - School of Potential",
         "icon": "mystic_school_of_potential",
-        "requirement" : "Mystic",
+        "requirement": "Mystic",
         "description": "<bulletlist>Your people are experimental spellcasters, seekeing knowledge in the arcane:<bullet>Combat Spells are always Overcharged the first time they are cast each combat</bullet><bullet>Use spells to exploit Arcane Inspiration and gain an exonomic edge.</bullet><bullet>This culture's units inflict Dissonance with their attacks</bullet></bulletlist>",
         "incompatible": [
             {
@@ -214,7 +211,7 @@
         "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
         "name": "Mystic - School of Summoning",
         "icon": "mystic_school_of_summoning",
-           "requirement" : "Mystic",
+        "requirement": "Mystic",
         "description": "<bulletlist>Your people are powerful summoners, specializing in magical creatures:<bullet>Magic Origin units gain Attunement: Astral Resonance</bullet><bullet>Collect Astral Echos through exploration and research.</bullet><bullet>Use Echo Infusion to rank up your Magic Origin units rapidly.</bullet><bullet>This culture's units gain Astral Connection.</bullet></bulletlist>",
         "incompatible": [
             {
@@ -225,13 +222,11 @@
     {
         "type": "Culture",
         "id": "oathsworn",
-      
         "name": "Oathsworn",
         "icon": "oathsworn",
         "DLC": "WAYSOFWAR ",
-        "description": "<bulletlist>A society that function through a strong sense of devotion, rewarding its rulers for their dedication to their chosen oath.<bullet>Has higher <draft></draft> Draft income.</bullet><bullet>Swear Devition to an oath that guides their people.</bullet></bulletlist>"
-      
-    },
+        "extraLookup" : "DLC@WAYSOFWAR@CULTURE_OATHSWORN"
+         },
     {
         "type": "SubCulture",
         "id": "oathsworn_oath_of_strife",
@@ -239,7 +234,7 @@
         "name": "Oathsworn - Oath of Strife",
         "icon": "oathsworn_oath_of_strife",
         "DLC": "WAYSOFWAR ",
-         "requirement" : "Oathsworn",
+        "requirement": "Oathsworn",
         "description": "<bulletlist>Your people follow a path of Strife, seeking to forge their strength in the fires of war:<bullet>Gain grievances against Rulers with an overall better ranking</bullet><bullet>Razing Cities and Pillaging Provinces takes -1 <turn></turn> Turn.</bullet><bullet>Razing Cities and Pillaging Provinces yields <influence></influence> Imperium.</bullet><bullet>Culture units have Warrior's Soul.</bullet><bullet>Become stronger as you gain Devotion to the Oath of Strife.</bullet></bulletlist>",
         "incompatible": [
             {
@@ -257,7 +252,7 @@
         "name": "Oathsworn - Oath of Righteousness",
         "icon": "oathsworn_oath_of_righteousness",
         "DLC": "WAYSOFWAR ",
-        "requirement" : "Oathsworn",
+        "requirement": "Oathsworn",
         "description": "<bulletlist>Your people follow a path of Righteousness, working to be a positive force for good upon the world:<bullet>Negative <evil></evil> alignment gained is doubled.</bullet><bullet>Culture units have Nobility.</bullet><bullet>Become stronger as you gain Devotion to the Oath of Righteousness.</bullet></bulletlist>",
         "incompatible": [
             {
@@ -278,7 +273,7 @@
         "name": "Oathsworn - Oath of Harmony",
         "icon": "oathsworn_oath_of_harmony",
         "DLC": "WAYSOFWAR ",
-         "requirement" : "Oathsworn",
+        "requirement": "Oathsworn",
         "description": "<bulletlist>Your people follow a path of Harmony, seeking cooperation and to clear the world of threats:<bullet>Gain +100 relations with Free Cities and Rulers</bullet><bullet>When vassalizing a conquered city, they start at Vassalage phase instead of Tributary.</bullet><bullet>Culture units have Harmonize.</bullet><bullet>Become stronger as you gain Devotion to the Oath of Harmony.</bullet></bulletlist>",
         "incompatible": [
             {
@@ -296,21 +291,22 @@
         "name": "Reaver",
         "DLC": "EMPIRESANDASHES ",
         "icon": "reaver",
-        "description": "<bulletlist>A society of industrial opportunists. Pragmatic and brutal, they combine the material and the arcane, expanding their dominion through conquests and hunts. <bullet>Structures have <production></production> Production and <mana></mana> Mana income.</bullet><bullet>Units are specialized in focusing down Marked targets with Focused Aggression.</bullet><bullet>-1 <whisperingstone></whisperingstone> Whispering Stone.</bullet><bullet>Total War</bullet><bullet>War Spoils</bullet></bulletlist>",
+        "extraLookup": "DLC@EMPIRESANDASHES@CULTURE_REAVER",
+        "extraLookup2" : "DLC@EMPIRESANDASHES@CULTURE_REAVER@REAVER",
         "incompatible": [
             {
                 "name": "Scions of Evil <evilact></evilact>"
             }
         ]
     },
-     {
+    {
         "type": "Culture",
         "id": "primal",
-       
         "name": "Primal",
         "DLC": "PRIMALFURY ",
         "icon": "primal",
-        "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environments.<bullet>Has higher <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> ",
+        "extraLookup": "DLC@PRIMALFURY@CULTURE_PRIMAL",
+        "extraLookup2" : "DLC@PRIMALFURY@CULTURE_PRIMAL@PRIMAL",
         "incompatible": [
             {
                 "name": "Adaptation"
@@ -324,7 +320,7 @@
         "name": "Primal - Mire Crocodile",
         "DLC": "PRIMALFURY",
         "icon": "primal_mire_crocodile",
-           "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Mire Crocodile, bestowing benefits to your culture: <bullet>Start in Swamp</bullet><bullet>Swamp provinces are Favored Terrain and gain: <bullet>+3 <food></food> Food</bullet></bullet><bullet>Access to the Primal Crocodile summon</bullet><bullet>Units have:<bullet>Status Effect Immunity: Diseased</bullet><bullet>Swamp Walk</bullet><bullet>Mire Crocodile's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -339,7 +335,7 @@
         "name": "Primal - Storm Crow",
         "DLC": "PRIMALFURY",
         "icon": "primal_storm_crow",
-                  "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Storm Crow, bestowing benefits to your culture: <bullet>Start in Grasslands</bullet><bullet>Grassland provinces are Favored Terrain and gain: <bullet>+2 <mana></mana> Mana</bullet></bullet><bullet>Access to the Primal Crow summon</bullet><bullet>Units have:<bullet>Grassland Walk</bullet><bullet>Storm Crow's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -354,7 +350,7 @@
         "name": "Primal - Glacial Mammoth",
         "DLC": "PRIMALFURY",
         "icon": "primal_glacial_mammoth",
-                  "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Glacial Mammoth, bestowing benefits to your culture: <bullet>Start in Arctic</bullet><bullet>Able to build Farms on Snow terrain</bullet><bullet>Snow provinces are Favored Terrain and gain: <bullet>+3 <production></production> Production </bullet></bullet><bullet>Access to the Primal Mammoth summon</bullet><bullet>Units have:<bullet>Arctic Walk</bullet><bullet>Glacial Mammoth's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -369,7 +365,7 @@
         "name": "Primal - Dune Serpent",
         "DLC": "PRIMALFURY",
         "icon": "primal_dune_serpent",
-                  "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Dune Serpent, bestowing benefits to your culture: <bullet>Start in the Desert</bullet><bullet>Able to build Farms on Sand terrain</bullet><bullet>Sand provinces are Favored Terrain and gain: <bullet>+2 <gold></gold> Gold </bullet></bullet><bullet>Access to the Primal Serpent summon</bullet><bullet>Units have:<bullet>Sand Walk</bullet><bullet>Dune Serpent's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -384,7 +380,7 @@
         "name": "Primal - Ash Sabertooth",
         "DLC": "PRIMALFURY",
         "icon": "primal_ash_sabertooth",
-                  "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Ash Sabertooth, bestowing benefits to your culture: <bullet>Start in Ashlands</bullet><bullet>Able to build Farms on Ashlands terrain</bullet><bullet>Ashland provinces are Favored Terrain and gain: <bullet>+3 <gold></gold> Gold </bullet></bullet><bullet>Access to the Primal Sabertooth summon</bullet><bullet>Units have:<bullet>Desolate Walk</bullet><bullet>Ash Sabertooth's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -399,7 +395,7 @@
         "name": "Primal - Tunneling Spider",
         "DLC": "PRIMALFURY",
         "icon": "primal_tunneling_spider",
-                  "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Tunneling Spider, bestowing benefits to your culture: <bullet>Start in the Underground</bullet><bullet>Able to build Farms on Cavern terrain</bullet><bullet>Mushroom Forest provinces are Favored Terrain and gain: <bullet>+2 <knowledge></knowledge> Knowledge </bullet></bullet><bullet>Access to the Primal Spider summon</bullet><bullet>Units have:<bullet>Cave Walk</bullet><bullet>Tunneling Spider's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -414,7 +410,7 @@
         "name": "Primal - Sylvan Wolf",
         "DLC": "PRIMALFURY",
         "icon": "primal_sylvan_wolf",
-                  "requirement": "Primal",
+        "requirement": "Primal",
         "description": "<bulletlist>A people who worship powerful Animal Spirits and channel their Fury during battle. They receive blessings by altering their environment. <bullet>Structures have <food></food> Food income.</bullet><bullet>Alter privinces into the Primal Animal's Favored Terrain</bullet></bulletlist> <br><br><bulletlist>Your people worship the Sylvan Wolf, bestowing benefits to your culture: <bullet>Start in the Forest</bullet><bullet>Forest provinces are Favored Terrain and gain: <bullet>+3 <draft></draft> Draft </bullet></bullet><bullet>Access to the Primal Wolf summon</bullet><bullet>Units have:<bullet>Forest Walk</bullet><bullet>Sylvan Wolf's Boon</bullet></bullet></bulletlist>",
         "incompatible": [
             {
@@ -537,20 +533,21 @@
         "name": "Goatkin",
         "DLC": "PRIMALFURY",
         "description": "Goat-like beings who take pride in their elaborate horns."
-    },{
+    },
+    {
         "type": "Skin",
         "id": "ancient",
         "name": "Ancient",
         "DLC": "ARCHONPROPHECY",
         "description": ".."
-    },{
+    },
+    {
         "type": "Skin",
         "id": "elysian",
         "name": "Elysian",
         "DLC": "ARCHONPROPHECY",
         "description": "..."
     },
-    
     {
         "type": "SubType",
         "id": "astral_dragon",
@@ -637,51 +634,56 @@
         "DLC": "GIANTKINGS ",
         "description": "A glacial Giant who reshapes realms by driving snow.<bulletlist><bullet>Capital city starts with Wizard Tower: Item Forge</bullet><bullet>Has the Summon Ice Runestele spell.</bullet><bullet>Can build <farm></farm> Farms on Snow.</bullet><bullet>Provinces with Snow or Ice +2 <mana></mana> Mana.</bullet><bullet>Giant Kings are Giant King Governors.</bullet><bullet>Giant Kings have a 5 <mana></mana> Mana Unit Upkeep and cannot equip Mount items.</bullet></bulletlist>"
     },
-     {
+    {
         "type": "SubCulture",
         "id": "architects_of_shadow",
         "name": "Architects of Shadow",
-         "affinity" : "<empireshadow></empireshadow>, <empireshadow></empireshadow>",
+        "affinity": "<empireshadow></empireshadow>, <empireshadow></empireshadow>",
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
-    }, {
+    },
+    {
         "type": "SubCulture",
         "id": "architects_of_order",
         "name": "Architects of Order",
-         "affinity" : "<empireorder></empireorder>, <empireorder></empireorder>",
+        "affinity": "<empireorder></empireorder>, <empireorder></empireorder>",
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
-    },{
+    },
+    {
         "type": "SubCulture",
         "id": "architects_of_chaos",
         "name": "Architects of Chaos",
-         "affinity" : "<empirechaos></empirechaos>, <empirechaos></empirechaos>",
+        "affinity": "<empirechaos></empirechaos>, <empirechaos></empirechaos>",
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
-    },{
+    },
+    {
         "type": "SubCulture",
         "id": "architects_of_nature",
         "name": "Architects of Nature",
-         "affinity" : "<empirenature></empirenature>, <empirenature></empirenature>",
+        "affinity": "<empirenature></empirenature>, <empirenature></empirenature>",
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
-    },{
+    },
+    {
         "type": "SubCulture",
         "id": "architects_of_materium",
         "name": "Architects of Materium",
-         "affinity" : "<empirematter></empirematter>, <empirematter></empirematter>",
+        "affinity": "<empirematter></empirematter>, <empirematter></empirematter>",
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
-    },{
+    },
+    {
         "type": "SubCulture",
         "id": "architects_of_astral",
         "name": "Architects of Astral",
-         "affinity" : "<empirearcana></empirearcana>, <empirearcana></empirearcana>",
+        "affinity": "<empirearcana></empirearcana>, <empirearcana></empirearcana>",
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
@@ -690,118 +692,120 @@
         "type": "SubSociety",
         "id": "vision_of_promise_order",
         "name": "Visions of Promise: Order",
-         "affinity" : "<empireorder></empireorder>",
+        "affinity": "<empireorder></empireorder>",
         "requirement": "Vision of Promise",
         "DLC": "ARCHONPROPHECY ",
         "description": "WIP",
-         "rewards": "<bulletlist><bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
-    
+        "rewards": "<bulletlist><bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
     },
     {
         "type": "SubSociety",
         "id": "vision_of_promise_nature",
         "name": "Visions of Promise : Nature",
-         "affinity" : "<empirenature></empirenature>",
+        "affinity": "<empirenature></empirenature>",
         "requirement": "Vision of Promise",
         "DLC": "ARCHONPROPHECY ",
         "description": "WIP",
-          "rewards": "<bulletlist>WIP<bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
+        "rewards": "<bulletlist>WIP<bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
     },
     {
         "type": "SubSociety",
         "id": "vision_of_promise_materium",
         "name": "Visions of Promise: Materium",
-         "affinity" : "<empirematter></empirematter>",
+        "affinity": "<empirematter></empirematter>",
         "requirement": "Vision of Promise",
         "DLC": "ARCHONPROPHECY ",
         "description": "WIP",
-          "rewards": "<bulletlist>WIP<bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
+        "rewards": "<bulletlist>WIP<bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
     },
-       {
+    {
         "type": "SubSociety",
         "id": "vision_of_ruin_chaos",
         "name": "Visions of Ruin : Chaos",
-         "affinity" : "<empirechaos></empirechaos>",
+        "affinity": "<empirechaos></empirechaos>",
         "requirement": "Vision of Ruin",
         "DLC": "ARCHONPROPHECY ",
         "description": "WIP",
-             "rewards": "WIP"
-    }, {
+        "rewards": "WIP"
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_ruin_astral",
         "name": "Visions of Ruin : Astral",
-         "affinity" : "<empirearcana></empirearcana>",
+        "affinity": "<empirearcana></empirearcana>",
         "requirement": "Vision of Ruin",
         "DLC": "ARCHONPROPHECY ",
         "description": "WIP",
-             "rewards": "WIP"
-    },{
+        "rewards": "WIP"
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_ruin_shadow",
         "name": "Visions of Ruin : Shadow",
-         "affinity" : "<empireshadow></empireshadow>",
+        "affinity": "<empireshadow></empireshadow>",
         "requirement": "Vision of Ruin",
         "DLC": "ARCHONPROPHECY ",
         "description": "WIP",
-             "rewards": "WIP"
-    },{
+        "rewards": "WIP"
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_destiny_order",
         "name": "Visions of Destiny : Order Affinity: Peacemakers",
-         "affinity" : "<empireorder></empireorder>,<empireorder></empireorder>",
+        "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
         "description": "Vassalize cities, destroy infestations, form diplomatic bonds with players.",
-          "rewards": "<bulletlist><bullet>Passive: +4 Status resistance, Inspiring Killer.</bullet><bullet> Rally: Light Spirit, Blessed Soul, and Astra.</bullet></bulletlist>"
-    },{
+        "rewards": "<bulletlist><bullet>Passive: +4 Status resistance, Inspiring Killer.</bullet><bullet> Rally: Light Spirit, Blessed Soul, and Astra.</bullet></bulletlist>"
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_destiny_chaos",
         "name": "Visions of Destiny : Chaos Affinity: Conquerors",
-         "affinity" : "<empirechaos></empirechaos>,<empirechaos></empirechaos>",
+        "affinity": "<empirechaos></empirechaos>,<empirechaos></empirechaos>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
         "description": "Conquer cities, slay heroes, defeat an empire.",
         "rewards": "<bulletlist><bullet>Passive: 10% Crit, Life Steal</bullet><bullet> Rally: Inferno Hound, Nightmare, and Balor.</bullet></bulletlist>"
-    
-    },{
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_destiny_astral",
         "name": "Visions of Destiny : Astral Affinity: Scholars",
-         "affinity" : "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
+        "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description" : "Unlock tomes, clear Ancient Wonders.",
+        "description": "Unlock tomes, clear Ancient Wonders.",
         "rewards": "<bulletlist><bullet>Passive: +20% Experience, +2 Resistance.</bullet><bullet> Rally: Lost Wizard and Mage Bane.</bullet></bulletlist>"
-    },{
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_destiny_materium",
         "name": "Visions of Destiny : Materium Affinity: Artisans",
-         "affinity" : "<empirematter></empirematter>,<empirematter></empirematter>",
+        "affinity": "<empirematter></empirematter>,<empirematter></empirematter>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Construct Special Province Improvements, City Structures, and City Tier Structures." ,
+        "description": "Construct Special Province Improvements, City Structures, and City Tier Structures.",
         "rewards": "<bulletlist><bullet>Passive: +50% damage on retaliation attacks. Fighter, Shield, Polearm, and Mythic units gain +1 retaliation attack.</bullet><bullet> Rally: Earth Titan and Golden Golem.</bullet></bulletlist>"
-  
-    },{
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_destiny_nature",
         "name": "Visions of Destiny : Nature Affinity: Cultivators",
-         "affinity" : "<empirenature></empirenature>,<empirenature></empirenature>",
+        "affinity": "<empirenature></empirenature>,<empirenature></empirenature>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Annex provinces.", 
+        "description": "Annex provinces.",
         "rewards": "<bulletlist><bullet>Whenever a friendly unit dies, this unit gains Grace for 1 turn. Whenever an enemy unit dies this unit gains Strengthened for 3 turns.</bullet><bullet> Rally: Entwined Scourge..</bullet><bullet>Other: Gain 50% mana equal to food income.</bullet></bulletlist>"
-  
-    },{
+    },
+    {
         "type": "SubSociety",
         "id": "vision_of_destiny_shadow",
         "name": "Visions of Destiny : Shadow Affinity: Deathbringers",
-         "affinity" : "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
+        "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
         "description": "Units slain or lost.",
         "rewards": "<bulletlist><bullet>Passive: Whenever an enemy unit dies, this unit heals +10 temp Hp and gains Slippery and Flanker for 1 turn.</bullet><bullet> Rally: Fallen Angel, Undead Titan, and Bone Dragon.</bullet></bulletlist>"
-    
     }
-    
 ]

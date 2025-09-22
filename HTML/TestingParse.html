@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+         <script src="/aow4db/Data/Init.js"></script>
+        <script>
+            
+                    function HandlePage() {
+           
+                        const text = document.getElementById("test");
+                        for(const test of jsonParsingTest){
+                            if(test.description != null){
+                                //
+                                
+                                text.innerHTML += "<hr>" + test.name + "<br>";
+                                 text.innerHTML += test.lore_description? test.lore_description : "" ;
+                                text.innerHTML += test.description;
+                            }
+                             
+                        }
+                      
+                    }
+              
+        </script>
+
+        <title>Age of Wonders 4 Database - Abilities List</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div id="test" class="mod_card"></div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>

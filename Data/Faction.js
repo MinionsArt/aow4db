@@ -1488,8 +1488,7 @@ function createTooltip(origin, type) {
 
     var originLoc = findOriginLoc(origin, type);
     switch (type) {
-        case "Origin":
-        case "Culture":
+       
         case "Form":
         case "Society1":
         case "Society2":
@@ -1513,7 +1512,15 @@ function createTooltip(origin, type) {
                 tooltip.innerHTML += "</bulletlist>";
             }
 
-            if (origin.incompatible_society_traits || origin.incompatible) {
+           
+            break;
+             case "Origin":
+             case "Culture":
+            const el = spell_card_template.content.firstElementChild.cloneNode(true);
+            
+            tooltip.innerHTML = el.firstElementChild.innerHTML;
+             showTrait(origin.id, tooltip);
+             if (origin.incompatible_society_traits || origin.incompatible) {
                 tooltip.innerHTML += `<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>`;
                 const incompatibles = originLoc.incompatible_society_traits || originLoc.incompatible;
                 for (const i of incompatibles) {
@@ -1746,7 +1753,7 @@ function SetTomePreview(span, origin) {
                 '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
                 origin.initial_upgrades[index].upgrade_slug +
                 '.png">' +
-                GetStructureName(origin.initial_upgrades[index].upgrade_slug) +
+                GetStructure(origin.initial_upgrades[index].upgrade_slug).name +
                 "</bullet>";
         }
     }
@@ -1797,7 +1804,7 @@ function SetTomePreview(span, origin) {
                     '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
                     origin.skills[index].upgrade_slug +
                     '.png">' +
-                    GetStructureName(origin.skills[index].upgrade_slug) +
+                    GetStructure(origin.skills[index].upgrade_slug).name +
                     "</bullet>";
             }
             // province Improvement
@@ -1806,7 +1813,7 @@ function SetTomePreview(span, origin) {
                     '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
                     origin.skills[index].upgrade_slug +
                     '.png">' +
-                    GetStructureName(origin.skills[index].upgrade_slug) +
+                    GetStructure(origin.skills[index].upgrade_slug).name +
                     "</bullet>";
             }
             // empire upgrades
@@ -2468,14 +2475,14 @@ function ShowSPIOverview(list) {
                 spell.appendChild(text);
                 section.append(spell);
 
-                const name = GetStructureName(structureId);
+                const name = GetStructure(structureId).name;
                 const spa = document.createElement("SPAN");
 
                 spa.innerHTML =
                     '<span style="color: #deb887 ;text-transform: uppercase">' +
                     name +
                     "</span>" +
-                    GetStructureDescription(structureId);
+                    GetStructure(structureId).description;
 
                 const newSpan = document.createElement("div");
                 if (list[index + 1] != null) {
