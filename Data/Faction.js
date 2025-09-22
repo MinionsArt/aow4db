@@ -1516,6 +1516,9 @@ function createTooltip(origin, type) {
             break;
              case "Origin":
              case "Culture":
+        case "Class":
+        case "SubCulture": 
+             case "SubType":
             const el = spell_card_template.content.firstElementChild.cloneNode(true);
             
             tooltip.innerHTML = el.firstElementChild.innerHTML;

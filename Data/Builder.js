@@ -5147,6 +5147,9 @@ function showTraitSetup(currentTrait, divOrigin) {
             } else if ("name" in valueLookup) {
                 modName.innerHTML = valueLookup.name.toUpperCase();
             }
+            if('description_short' in valueLookup){
+                descriptionDiv.innerHTML += valueLookup.description_short;
+            }
             if ("lore" in valueLookup) {
                 descriptionDiv.innerHTML += valueLookup.lore;
             }
