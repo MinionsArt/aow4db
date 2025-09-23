@@ -4500,11 +4500,43 @@ function showWorldStructure(a, divOrigin) {
         }
     }
     
+    
+    let spellDesc = "";
     if("spell_unlocks" in structure){
-      description=  description.replaceAll("<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>", structure.spell_unlocks + "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>");
+        // if a lookup link
+        if(structure.spell_unlocks.indexOf("@") != -1){
+             const valueLookup = findBy(jsonExtraCombatPropertiesFromPOLocalized, "id", structure.spell_unlocks);
+                
+                  const div = document.createElement("span");
+         
+            div.setAttribute("id", "test");
+               div.setAttribute("style", 'color:white; text-decoration:underline');
+            if('description' in valueLookup){    
+               spellDesc = valueLookup.description;
+                }
+                   if('name' in valueLookup){
+                       div.innerHTML = valueLookup.name;
+                  description= description.replaceAll("<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>", div.outerHTML + "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>")
+                }
+        }
+        else{
+             description=  description.replaceAll("<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>", structure.spell_unlocks + "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>");
+    
+        }
+     
     }
    
     descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
+    
+      const insertDiv = divOrigin.querySelector("#test");
+     const spaDes2 = document.createElement("span");
+   
+    if(insertDiv != undefined && spellDesc != ""){
+         spaDes2.innerHTML = insertDiv.innerHTML.toUpperCase() + "<br>" +  spellDesc;
+        addTooltipListeners(insertDiv, spaDes2);
+    }
+       
+    //insertDiv = 
 
     //descriptionDiv.innerHTML = AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
