@@ -4240,7 +4240,7 @@ function showStructure(a, showOrigin, divOrigin) {
         description += "<br><br> Unlocks T2 Culture Units";
     }
 
-    descriptionDiv.innerHTML = description;
+    descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
 
     descriptionDiv.setAttribute("id", "modicon" + a);
 
@@ -4327,7 +4327,7 @@ function showCosmicHappening(a, divOrigin) {
                 
                 modName.innerHTML = valueLookup.name.toUpperCase();
             }
-            descriptionDiv.innerHTML = description;
+            descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
 
             let imagelink = divOrigin.querySelector("#modicon");
 
@@ -4503,8 +4503,8 @@ function showWorldStructure(a, divOrigin) {
     if("spell_unlocks" in structure){
       description=  description.replaceAll("<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>", structure.spell_unlocks + "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>");
     }
-
-    descriptionDiv.innerHTML += description;
+   
+    descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
 
     //descriptionDiv.innerHTML = AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
