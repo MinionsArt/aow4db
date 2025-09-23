@@ -4318,7 +4318,7 @@ function showCosmicHappening(a, divOrigin) {
             modName.className = "mod_name";
 
             let descriptionDiv = divOrigin.querySelector("#moddescription");
-            descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
+            descriptionDiv.setAttribute("style", "max-width:560px;");
             description = jsonCosmicHappenings[j].description;
             descriptionDiv.innerHTML = description;
 
@@ -4381,10 +4381,7 @@ function showWorldStructure(a, divOrigin) {
         nameString = nameString.replace("<br>", "");
     }
     modName.innerHTML = nameString;
-    if ("DLC" in structure) {
-        let newDivForMount = AddDLCTag(structure.DLC);
-        modName.append(newDivForMount);
-    }
+  
     modName.className = "mod_name";
     let loreDiv = divOrigin.querySelector("#loreText");
 
@@ -4394,20 +4391,57 @@ function showWorldStructure(a, divOrigin) {
     }
 
     let descriptionDiv = divOrigin.querySelector("#moddescription");
-    descriptionDiv.setAttribute("style", "max-width:560px; width:560px");
+    descriptionDiv.setAttribute("style", "max-width:560px;");
     description = "";
 
     if (structure.type.indexOf("wonder") != -1) {
-        description = structure.type + "<br>";
+        description = structure.type + "<br><br>";
     } else {
     }
-
-    description += structure.description;
+   
+    if("description" in structure){
+         description += structure.description;
+    }
+   
 
     if ("prediction_description" in structure) {
         if (structure.prediction_description != "") {
             description += "<br>" + structure.prediction_description;
         }
+    }
+    
+    // extra lookup
+    if("extraLookup" in structure){
+          const valueLookup = findBy(jsonExtraStructureFromPOLocalized, "id", structure.extraLookup);
+           if ("hyperlink" in valueLookup) {
+                modName.innerHTML = valueLookup.hyperlink.toUpperCase();
+            } else if ("name" in valueLookup) {
+                modName.innerHTML = valueLookup.name.split("^")[0].toUpperCase();
+            }
+            if('description_short' in valueLookup){
+                description += valueLookup.description_short;
+            }
+            if ("lore" in valueLookup) {
+                description += "<helpColor>"  + valueLookup.lore + "</helpColor>" + "<br><br>";
+            }
+        
+         
+    if("nodeType" in structure){
+         const valueLookup = findBy(jsonExtraStructureFromPOLocalized, "id", "INTERFACE@COUNTS_AS");
+        const nodeType = structure.nodeType.split("&");
+        console.log(valueLookup);
+        description +=  "<bullet>" + valueLookup[nodeType[0]] + " +5<influence></influence>" +  nodeType[1]+ "-5 <happiness></happiness> </bullet>";
+    }
+            if ("fpg_description" in valueLookup) {
+                description += valueLookup.fpg_description;
+            } else if ("description" in valueLookup) {
+                description += valueLookup.description;
+            }
+    }
+    
+      if ("DLC" in structure) {
+        let newDivForMount = AddDLCTag(structure.DLC);
+        modName.append(newDivForMount);
     }
 
     let imagelink = divOrigin.querySelector("#modicon");
@@ -4432,7 +4466,7 @@ function showWorldStructure(a, divOrigin) {
     }
     let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
-    unitTypesDiv.setAttribute("style", "float: left;display: grid;grid-template-columns: 200px 200px;font-size: 15px;");
+    unitTypesDiv.setAttribute("style", "display: grid; justify-content: center;grid-template-columns: 200px 200px;font-size: 15px;");
     let combatEnchantment = FindCombatEnchantment(a);
     if (combatEnchantment != undefined) {
         descriptionDiv.append(combatEnchantment);
@@ -4486,6 +4520,20 @@ function FindCombatEnchantment(id) {
                 "</button>";
             let collapsibleC = document.createElement("DIV");
             collapsibleC.className = "combatEnchantment";
+            
+            let name = jsonCombatEnchantments[i].name.toUpperCase();
+            let description =  jsonCombatEnchantments[i].description;
+            
+            if("extraLookup" in jsonCombatEnchantments[i]){
+                const valueLookup = findBy(jsonExtraCombatPropertiesFromPOLocalized, "id", jsonCombatEnchantments[i].extraLookup);
+                
+                if('description' in valueLookup){
+                    description = valueLookup.description;
+                }
+                   if('name' in valueLookup){
+                    name = valueLookup.name;
+                }
+            }
 
             let div = document.createElement("DIV");
             div.innerHTML =
@@ -4493,10 +4541,11 @@ function FindCombatEnchantment(id) {
                 jsonCombatEnchantments[i].id +
                 '.png"><p style="color: #aa84f6;>' +
                 '<span style="font-size=20px;">' +
-                jsonCombatEnchantments[i].name.toUpperCase() +
+                name +
                 "</p>" +
                 "</br>" +
-                jsonCombatEnchantments[i].description;
+                
+                description;
 
             collapsibleC.append(div);
             info.append(collapsibleC);
@@ -5140,7 +5189,7 @@ function showTraitSetup(currentTrait, divOrigin) {
             }
         }
         if ("extraLookup" in currentTrait) {
-            const valueLookup = findBy(jsonExtraFactionCreationFromPO, "id", currentTrait.extraLookup);
+            const valueLookup = findBy(jsonExtraFactionCreationFromPOLocalized, "id", currentTrait.extraLookup);
           
             if ("hyperlink" in valueLookup) {
                 modName.innerHTML = valueLookup.hyperlink.toUpperCase();
@@ -5160,7 +5209,7 @@ function showTraitSetup(currentTrait, divOrigin) {
             }
             
             if("extraLookup2" in currentTrait){
-              const valueLookup2 = findBy(jsonExtraFactionCreationFromPO, "id", currentTrait.extraLookup2);
+              const valueLookup2 = findBy(jsonExtraFactionCreationFromPOLocalized, "id", currentTrait.extraLookup2);
            console.log(valueLookup2);
             if ("hyperlink" in valueLookup2) {
                 modName.innerHTML = valueLookup2.hyperlink.toUpperCase();

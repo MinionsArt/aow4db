@@ -221,7 +221,6 @@ async function GetAllData(selectedLang) {
         "AscendedInfo.json",
         "BuilderLookupHero.json",
         "ItemForge.json",
-        "world_structures.json",
         "UI.json"
        
     ];
@@ -246,7 +245,9 @@ async function GetAllData(selectedLang) {
         "ExtraToolTips.json",
         "UI.json",
          "baseConceptLookup.json",
-        "extraFactionCreation.json"
+        "extraFactionCreation.json",
+         "world_structures.json",
+        "combat_properties.json"
     ];
 
     // Create file paths
@@ -269,7 +270,6 @@ async function GetAllData(selectedLang) {
             "jsonExtraAscendedInfo",
             "jsonBuilderHeroLookUp",
             "jsonItemForge",
-            "jsonParsingTest",
             "jsonUIGeneric"
            
         ];
@@ -294,7 +294,9 @@ async function GetAllData(selectedLang) {
             "jsonExtraTooltips",
             "jsonUI",
              "jsonBaseConcepts",
-            "jsonExtraFactionCreationFromPO"
+            "jsonExtraFactionCreationFromPO",
+            "jsonExtraStructureFromPO",
+           "jsonExtraCombatPropertiesFromPO"
         ];
 
         // Assign data to global vars
