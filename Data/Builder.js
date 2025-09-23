@@ -4320,6 +4320,13 @@ function showCosmicHappening(a, divOrigin) {
             let descriptionDiv = divOrigin.querySelector("#moddescription");
             descriptionDiv.setAttribute("style", "max-width:560px;");
             description = jsonCosmicHappenings[j].description;
+            
+            if("extraLookup" in jsonCosmicHappenings[j]){
+                const valueLookup = findBy(jsonExtraEventsFromPOLocalized, "id", jsonCosmicHappenings[j].extraLookup);  
+                description = valueLookup.description;
+                
+                modName.innerHTML = valueLookup.name.toUpperCase();
+            }
             descriptionDiv.innerHTML = description;
 
             let imagelink = divOrigin.querySelector("#modicon");

@@ -247,7 +247,8 @@ async function GetAllData(selectedLang) {
          "baseConceptLookup.json",
         "extraFactionCreation.json",
          "world_structures.json",
-        "combat_properties.json"
+        "combat_properties.json",
+        "events.json"
     ];
 
     // Create file paths
@@ -296,7 +297,8 @@ async function GetAllData(selectedLang) {
              "jsonBaseConcepts",
             "jsonExtraFactionCreationFromPO",
             "jsonExtraStructureFromPO",
-           "jsonExtraCombatPropertiesFromPO"
+           "jsonExtraCombatPropertiesFromPO",
+             "jsonExtraEventsFromPO"
         ];
 
         // Assign data to global vars
