@@ -4492,6 +4492,10 @@ function showWorldStructure(a, divOrigin) {
             unitTypesDiv.appendChild(div);
         }
     }
+    
+    if("spell_unlocks" in structure){
+      description=  description.replaceAll("<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>", structure.spell_unlocks + "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>");
+    }
 
     descriptionDiv.innerHTML += description;
 
