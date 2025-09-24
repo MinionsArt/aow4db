@@ -2623,8 +2623,10 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     }
 
     let hpspan = document.createElement("span");
+    
+    const hpText = findBy(jsonBaseConceptsLocalized, "id","CONCEPT@HITPOINTS");
     hpspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase ">Hit Points</span><br><span style="font-size: 14px;"><bullet>Hit Points represent the amount of damage a unit can take before being defeated</bullet> <bullet>Most units will take Casualties as their Hit Points drop.</bullet></span>';
+        '<span style="color:burlywood;text-transform: uppercase ">' + hpText.hyperlink + '</span><br><span style="font-size: 14px;">' + hpText.description + '</span>';
     let hpTooltip = unitCard.querySelector("div#hp_tt");
 
     addTooltipListeners(hpTooltip, hpspan);
@@ -2634,19 +2636,22 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     let hpvalue = unitEN.hp;
     hp.innerHTML = unitEN.hp;
 
+     const critText = findBy(jsonBaseConceptsLocalized, "id","CONCEPT@CRITICAL_HIT");
+    
     let critspan = document.createElement("span");
     critspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase;">Critical Hit Chance</span><br><span style="font-size: 14px;">Chance to deliver a critical hit for increased damage</span>';
+        '<span style="color:burlywood;text-transform: uppercase;">Critical Hit Chance</span><br><span style="font-size: 14px;">' + critText.description + '</span>';
     let critTooltip = unitCard.querySelector("div#crit_tt");
 
     addTooltipListeners(critTooltip, critspan);
 
     let crit = unitCard.querySelector("p#crit");
     crit.innerHTML = "+" + 0 + "%";
-
+    
+      const defenseText = findBy(jsonBaseConceptsLocalized, "id","INTERFACE@HUD_GENERAL_INFO");
     let armorspan = document.createElement("span");
     armorspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">Defense reduces physical damage.Damage Reduction: ' +
+        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' + defenseText.armor_description + '.Damage Reduction: ' +
         '<br>Physical :  <span style="color:white;">' +
         GetDamageReductionPercentage(unitEN.armor) +
         '</span> ( From <span style="color:white;">' +
@@ -2701,7 +2706,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     mpspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase;">Move Points</span><br>' +
         movementDiv.innerHTML +
-        '</p><span style="font-size: 14px;">Move points represent how far a unit can move in one turn on the world map and in combat</span>';
+        '</p><span style="font-size: 14px;">' + defenseText.move_points_description + '</span>';
     let mpTooltip = unitCard.querySelector("div#mp_tt");
 
     addTooltipListeners(mpTooltip, mpspan);
@@ -2784,8 +2789,9 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
             additionalSpirit = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
         }
     }
-
-    tier.innerHTML = "Tier " + romanize(unitEN.tier) + ": " + unitEN.upkeep;
+    
+    const tierText = findBy(jsonBaseConceptsLocalized, "id","INTERFACE@TEXT");
+    tier.innerHTML = tierText.tier +" " + romanize(unitEN.tier) + ": " + unitEN.upkeep;
 
     let summonInfo = canBeSummoned(unitEN.id);
     if (summonInfo == true) {
@@ -2991,13 +2997,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistances);
 
     const resistanceSpan = document.createElement("span");
-    resistanceSpan.innerHTML = `
-    <span style="color:burlywood; text-transform: uppercase;">Resistance</span><br>
-    <span style="font-size: 14px;">
-        Resistance reduces all non-physical damage.<br><br>
-        Damage Reduction:<br>${resistanceDiv.innerHTML}
-    </span>
-`;
+    resistanceSpan.innerHTML = '<span style="color:burlywood; text-transform: uppercase;">Resistance</span><br><span style="font-size: 14px;">' + defenseText.resistance_description +'<br><br>Damage Reduction:<br>'+ resistanceDiv.innerHTML + '</span>';
 
     const resistanceTooltip = unitCard.querySelector("div#resistence_tt");
     addTooltipListeners(resistanceTooltip, resistanceSpan);
