@@ -1631,9 +1631,11 @@ function addResistanceSlot(a, resistance, holder) {
                 split = a.split("resistance_");
                 num = "x";
             }
+            
+            const damageRedText = findBy(jsonBaseConceptsLocalized, "id","INTERFACE@TEXT");
 
             spa.innerHTML +=
-                "<br><br>Damage Reduction: <br> " +
+                "<br><br>" + damageRedText.damage_reduction + ": <br> " +
                 firstPart +
                 ' <span style="color:white;">' +
                 GetDamageReductionPercentage(resistance, num) +
@@ -2648,11 +2650,13 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     let crit = unitCard.querySelector("p#crit");
     crit.innerHTML = "+" + 0 + "%";
     
+    const damageRedText = findBy(jsonBaseConceptsLocalized, "id","INTERFACE@TEXT");
+
       const defenseText = findBy(jsonBaseConceptsLocalized, "id","INTERFACE@HUD_GENERAL_INFO");
     let armorspan = document.createElement("span");
     armorspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' + defenseText.armor_description + '.Damage Reduction: ' +
-        '<br>Physical :  <span style="color:white;">' +
+        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' + defenseText.armor_description + damageRedText.damage_reduction +  ' : ' +
+        '<br><damagePhysical></damagePhysical> :  <span style="color:white;">' +
         GetDamageReductionPercentage(unitEN.armor) +
         '</span> ( From <span style="color:white;">' +
         unitEN.armor +
@@ -2985,11 +2989,11 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     // Define your resistance types and values here
     const resistances = [
-        { type: "blight", label: "Blight", value: additionalBlight },
-        { type: "shock", label: "Shock", value: additionalShock },
-        { type: "fire", label: "Fire", value: additionalFire },
-        { type: "spirit", label: "Spirit", value: additionalSpirit },
-        { type: "frost", label: "Frost", value: additionalFrost }
+        { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
+        { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
+        { type: "fire", label: "<damageFire></damageFire", value: additionalFire },
+        { type: "spirit", label: "<damageSpirit></damageSpirit>", value: additionalSpirit },
+        { type: "frost", label: "<damageFrost></damageFrost>", value: additionalFrost }
     ];
 
     // Create the tooltip content
@@ -2997,7 +3001,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistances);
 
     const resistanceSpan = document.createElement("span");
-    resistanceSpan.innerHTML = '<span style="color:burlywood; text-transform: uppercase;">Resistance</span><br><span style="font-size: 14px;">' + defenseText.resistance_description +'<br><br>Damage Reduction:<br>'+ resistanceDiv.innerHTML + '</span>';
+    resistanceSpan.innerHTML = '<span style="color:burlywood; text-transform: uppercase;">Resistance</span><br><span style="font-size: 14px;">' + defenseText.resistance_description +'<br><br>'+ damageRedText.damage_reduction + ':<br>'+ resistanceDiv.innerHTML + '</span>';
 
     const resistanceTooltip = unitCard.querySelector("div#resistence_tt");
     addTooltipListeners(resistanceTooltip, resistanceSpan);
