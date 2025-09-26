@@ -358,8 +358,8 @@ async function CheckData() {
         showBetaTooltip.checked = storedSettings.showBeta;
 
       //  languageSelect = document.getElementById("languageSelect");
-        languageSelect.value = storedSettings.language;
-      // languageSelect.value = "EN";
+        //languageSelect.value = storedSettings.language;
+      languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {
