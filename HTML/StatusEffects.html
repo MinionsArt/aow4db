@@ -31,9 +31,9 @@
                 // Create a Set for quick lookup of status effect slugs
                 const statusEffectSlugs = new Set(jsonStatusEffects.map((effect) => effect.slug));
 
-                for (let i = 0; i < jsonUnitAbilities.length; i++) {
+                for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
                     // Only passive abilities
-                    let slug = jsonUnitAbilities[i].slug;
+                    let slug = jsonUnitAbilitiesLocalized[i].slug;
 
                     if (
                         statusEffectSlugs.has(slug) // Ensure it's NOT in status effects
@@ -61,8 +61,8 @@
                 var filter = document.getElementById("filterInput");
                 var filterText = filter.value.toUpperCase();
 
-                for (i = 0; i < jsonUnitAbilities.length; i++) {
-                    var ability = jsonUnitAbilities[i];
+                for (i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
+                    var ability = jsonUnitAbilitiesLocalized[i];
                     if (filterText != "") {
                         if (ability.name.toUpperCase().indexOf(filterText) != -1) {
                             if (!isInArray(list, ability.slug)) {
@@ -165,10 +165,10 @@
                     abilityReq,
                     abilityMod = "";
 
-                for (j in jsonUnitAbilities) {
-                    if (a === jsonUnitAbilities[j].slug) {
-                        abilityName = jsonUnitAbilities[j].name;
-                        abilityIcon = jsonUnitAbilities[j].icon;
+                for (j in jsonUnitAbilitiesLocalized) {
+                    if (a === jsonUnitAbilitiesLocalized[j].slug) {
+                        abilityName = jsonUnitAbilitiesLocalized[j].name;
+                        abilityIcon = jsonUnitAbilitiesLocalized[j].icon;
 
                         var tooltipName = document.createElement("SPAN");
                         var btn = document.createElement("DIV");
@@ -182,7 +182,7 @@
                         imag.className = "unit_ability_icon";
                         //  var spa = document.createElement("SPAN");
 
-                        abilityDescr = jsonUnitAbilities[j].description;
+                        abilityDescr = jsonUnitAbilitiesLocalized[j].description;
 
                         var abilityIconType = "";
                         imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");

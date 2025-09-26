@@ -221,7 +221,8 @@ async function GetAllData(selectedLang) {
         "AscendedInfo.json",
         "BuilderLookupHero.json",
         "ItemForge.json",
-        "UI.json"
+        "UI.json",
+          "FactionCreation.json"
        
     ];
     const fileNames = [
@@ -237,7 +238,7 @@ async function GetAllData(selectedLang) {
         "StructureUpgrades.json",
         "CombatEnchantments.json",
         "WorldStructures.json",
-        "FactionCreation.json",
+      
         "Destinies.json",
         "CosmicHappenings.json",
         "Governance.json",
@@ -271,8 +272,8 @@ async function GetAllData(selectedLang) {
             "jsonExtraAscendedInfo",
             "jsonBuilderHeroLookUp",
             "jsonItemForge",
-            "jsonUIGeneric"
-           
+            "jsonUIGeneric",
+             "jsonFactionCreation"
         ];
         const targets = [
             "jsonHeroItems",
@@ -286,8 +287,7 @@ async function GetAllData(selectedLang) {
             "jsonSpells",
             "jsonStructureUpgrades",
             "jsonCombatEnchantments",
-            "jsonWorldStructures",
-            "jsonFactionCreation",
+            "jsonWorldStructures",     
             "jsonHeroAmbitions",
             "jsonCosmicHappenings",
             "jsonHeroGovernance",
@@ -358,8 +358,8 @@ async function CheckData() {
         showBetaTooltip.checked = storedSettings.showBeta;
 
       //  languageSelect = document.getElementById("languageSelect");
-       // languageSelect.value = storedSettings.language;
-       languageSelect.value = "EN";
+        languageSelect.value = storedSettings.language;
+      // languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {

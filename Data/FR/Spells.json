@@ -28,7 +28,7 @@
   "id": "signe_du_bâton_traînant",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "L'unité a :<bulletlist><bullet>Les capacités de <hyperlink>Magie</hyperlink> et d'<hyperlink>Assistance</hyperlink> ont +1 de portée.</bullet><bullet>Déplacement lent en combat.</bullet></bulletlist>",
+  "description": "L'unité a :<bulletlist><bullet>Les capacités <hyperlink>Magie</hyperlink> et de <hyperlink>Assistance</hyperlink> ont +1 de <hyperlink><range></range>Portée</hyperlink>.</bullet><bullet>Déplacement lent en combat.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -48,7 +48,7 @@
   "id": "signe_de_lavant-garde",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "L'unité a :<bulletlist><bullet>Déplacement très rapide au combat.</bullet><bullet>Les attaques de <hyperlink>Magie</hyperlink> et <hyperlink>Physiques à distance</hyperlink> contre elle ont -20 % de <hyperlink>Précision</hyperlink>.</bullet><bullet>Les attaques de <hyperlink>Mêlée</hyperlink> infligent -20 % de dégâts.</bullet></bulletlist>",
+  "description": "L'unité a :<bulletlist><bullet>Déplacement très rapide au combat.</bullet><bullet>Les attaques de <hyperlink>Magie</hyperlink> et <hyperlink>Physiques à distance</hyperlink> contre elle ont -20 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.</bullet><bullet>Les attaques de <hyperlink>Mêlée</hyperlink> infligent -20 % de dégâts.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -154,7 +154,7 @@
   "id": "signe_de_la_chasseuse",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Les attaques de <hyperlink>Magie</hyperlink> et <hyperlink>Physiques à distance</hyperlink> ont +30 % de dégâts et -1 de portée.",
+  "description": "Les attaques <hyperlink>Magie</hyperlink> et <hyperlink>Physiques à distance</hyperlink> ont +30 % de dégâts et -1 de <hyperlink><range></range>Portée</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -183,15 +183,15 @@
   "icon": "0000049C00000082"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "20<mana></mana> ",
   "resid": 5068061409449,
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'affaiblissement</hyperlink>",
   "id": "bénédiction_corrompue",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Les unités ennemies ciblées dans un rayon de 1 case(s) :<bulletlist><bullet>Perdent tous les effets d'état positifs.</bullet><bullet>Si un effet d'état perdu a un Contre des effets d'état, alors l'unité obtient un cumul de cet effet d'état négatif.<bulletlist></bullet>",
+  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Perd tous ses <hyperlink>Effets d'état positif</hyperlink>.</bullet><bullet>Si un effet d'état perdu a Contre des effets d'état, l'unité gagne un cumul de cet <hyperlink>Effet d'état négatif</hyperlink>.<bulletlist></bullet>",
   "name": "Bénédiction corrompue",
-  "operation_point_cost": 30,
+  "operation_point_cost": 25,
   "icon": "0000049C0000008C"
  },
  {
@@ -248,6 +248,321 @@
   "icon": "0000049C0000003B"
  },
  {
+  "casting_cost": "120<mana></mana> ",
+  "resid": 5046586584490,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
+  "id": "projectiles_fleuris",
+  "tactical": false,
+  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> de base des unités enchantées :<bulletlist><bullet>Gagnent 60 % de chances de base d'infliger Graine de vie pendant 3 <turn></turn> Tour.</bullet><bullet>Infligent +10 % de dégâts contre les unités En décomposition.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unité à distance"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unité d'assistance"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unité mage de combat"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
+   }
+  ],
+  "name": "Projectiles fleuris",
+  "operation_point_cost": 120,
+  "icon": "0000049700002DA7"
+ },
+ {
+  "casting_cost": "60<mana></mana> ",
+  "resid": 5046586584448,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_desprit_de_lumière_mineur",
+  "tactical": false,
+  "description": "Invoque un <hyperlink>Esprit de la lumière mineur</hyperlink> Soutien.",
+  "name": "Invocation d'esprit de lumière mineur",
+  "operation_point_cost": 60,
+  "icon": "000003BD00002E6E",
+  "summoned_units": [
+   {
+    "slug": "esprit_de_la_lumière_mineur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586584444,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_de_portelume",
+  "tactical": false,
+  "description": "Invoque une Unité mage de combat <hyperlink>Portelume</hyperlink> capable de convertir d'autres unités.",
+  "name": "Invocation de Portelume",
+  "operation_point_cost": 100,
+  "icon": "0000049700002D86",
+  "summoned_units": [
+   {
+    "slug": "portelume"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584436,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_desprit_de_lumière",
+  "tactical": false,
+  "description": "Invoque un <hyperlink>Esprit de la lumière</hyperlink>, une Soutien disposant de bonnes capacités de soin.",
+  "name": "Invocation d'esprit de lumière",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "esprit_de_la_lumière"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584156,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_dâme_bénie",
+  "tactical": false,
+  "description": "Invoque une <hyperlink>Âme bénie</hyperlink> Bouclier qui peut rallier vos unités et condamner l'ennemi.",
+  "name": "Invocation d'âme bénie",
+  "operation_point_cost": 150,
+  "icon": "0000041B00001969",
+  "summoned_units": [
+   {
+    "slug": "Âme_bénie"
+   }
+  ]
+ },
+ {
+  "casting_cost": "35<souls></souls> ",
+  "resid": 5046586584128,
+  "spellType": "<casttactical></casttactical> <hyperlink>Sort de buff/affaiblissement</hyperlink>",
+  "id": "champion_impie",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "L'unité alliée ciblée obtient :<bulletlist><bullet>+50 % de dégâts</bullet><bullet>Impérissable</bullet><bullet>Armure du désespoir</bullet></bulletlist><br></br>Une fois lancé, les unités ennemies ciblées dans un rayon de 2 case(s) perdent 10 <happiness></happiness> <hyperlink>Moral</hyperlink>.",
+  "name": "Champion impie",
+  "operation_point_cost": 40,
+  "icon": "0000049700002C3D"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586584106,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
+  "id": "rancune_des_morts-vivants",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+2 <defensespirit></defensespirit> <hyperlink>Résistance à l'esprit</hyperlink></bullet><bullet>+2 <defensefire></defensefire> <hyperlink>Résistance au feu</hyperlink></bullet><bullet>Tueur fourbe</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitUndead></unitUndead> Mort-vivant"
+   }
+  ],
+  "name": "Rancune des morts-vivants",
+  "operation_point_cost": 140,
+  "icon": "0000049700002C32"
+ },
+ {
+  "casting_cost": "150<souls></souls> ",
+  "resid": 5046586584087,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_dange_déchu",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Invoquez une Unité mage de combat <hyperlink>Ange déchu</hyperlink>, une unité qui répand la pourriture et la corruption.",
+  "name": "Invocation d'ange déchu",
+  "operation_point_cost": 200,
+  "summoned_units": [
+   {
+    "slug": "ange_déchu"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586583968,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
+  "id": "aura_sacrée",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Aura sacrée, qui accorde une protection d'état aux unités alliées adjacentes et inflige des dégâts aux ennemis à proximité.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unité bouclier"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Troupe de choc"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unité combattante"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
+   }
+  ],
+  "name": "Aura sacrée",
+  "operation_point_cost": 140,
+  "icon": "0000049700002B9D"
+ },
+ {
+  "casting_cost": "200<mana></mana> ",
+  "resid": 5046586583955,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
+  "id": "gardes_célestes",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Le dirigeant ciblé d'une armée obtient Gardes célestes pendant 1 <turn></turn> Tour de la <hyperlink>Carte mondiale</hyperlink>, conjurant 2 unités Archontes d'échelon III au début du combat pour toute la durée de l'effet.",
+  "name": "Gardes célestes",
+  "operation_point_cost": 200,
+  "icon": "0000049700002B90"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583943,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
+  "id": "renaissance_exaltée",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "L'unité morte non héros et non céleste :<bulletlist><bullet>Ressuscite comme <hyperlink>Vigile</hyperlink> sous le contrôle du lanceur de sort jusqu'à la fin du combat.</bullet><bullet>À son retour, toutes les unités alliées dans un rayon de 2 cases(s) récupèrent 20 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet>",
+  "name": "Renaissance exaltée",
+  "operation_point_cost": 40,
+  "icon": "0000049700002B84"
+ },
+ {
+  "casting_cost": "450<mana></mana> ",
+  "resid": 5046586583927,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
+  "id": "Âme_pure",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Purifiez les âmes de la race ciblée, leur octroyant :<bulletlist><bullet>Au début de chaque tour, au combat, dissipent 1 <hyperlink>Effet d'état négatif</hyperlink>.</bullet><bullet>Si l'effet d'état négatif supprimé avait un <hyperlink>contre</hyperlink> positif, gagnent cet <hyperlink>Effet d'état positif</hyperlink>.</bullet></bulletlist><br></br>Cette transformation est incompatible avec Chair ténébreuse et Arpenteur morne.",
+  "name": "Âme pure",
+  "operation_point_cost": 450,
+  "icon": "0000049700002B7C"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586583923,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_dastra",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Invoquez une Unité mythique <hyperlink>Astra</hyperlink>, une unité angélique dotée de puissantes attaques et de capacités de soin.",
+  "name": "Invocation d'Astra",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "astra"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583846,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
+  "id": "bandeaux_de_prescience",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Les unités enchantées :<bulletlist><bullet>Obtiennent Prémonition lorsqu'elles entrent en <hyperlink>Mode défensif</hyperlink>.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unité bouclier"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Troupe de choc"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unité combattante"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
+   }
+  ],
+  "name": "Bandeaux de prescience",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B1A"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583837,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
+  "id": "projectiles_funestes",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+20 % de <hyperlink><crit></crit>Chance de coup critique</hyperlink>.</bullet><bullet>Fidèle.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unité à distance"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unité mage de combat"
+   }
+  ],
+  "name": "Projectiles funestes",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B16"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586583776,
+  "spellType": "<casttactical></casttactical><hyperlink>Enchantement de combat</hyperlink>",
+  "id": "divination_de_bataille",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Une fois l'effet lancé et pendant 2 <turn></turn> Tour, appliquez l'effet au combat dans l'ordre suivant :<bulletlist><bullet>Toutes les unités alliées obtiennent +25 % d'<hyperlink>Évasion</hyperlink> pour le tour.</bullet><bullet>Toutes les unités alliées obtiennent Prémonition.</bullet><bullet>Toutes les unités alliées obtiennent +20 % de dégâts pour le tour.</bullet></bulletlist>",
+  "name": "Divination de bataille",
+  "operation_point_cost": 35,
+  "icon": "0000049700002ADD"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586583726,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
+  "id": "résistance_héroïque",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "L'unité alliée ciblée :<bulletlist><bullet>Est débarrassée de ses <hyperlink>Effets d'état négatif</hyperlink>.</bullet><bullet>Obtient Ferme pendant 1 <turn></turn> Tour.</bullet><bullet>Ignore les pénalités de <hyperlink>Victimes</hyperlink> pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
+  "name": "Résistance héroïque",
+  "operation_point_cost": 20,
+  "icon": "0000049700002AAB"
+ },
+ {
+  "casting_cost": "250<mana></mana> ",
+  "resid": 5046586583714,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
+  "id": "esprit_vertueux",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Donne de la force à la race ciblée dans ses moments de faiblesse, lui conférant :<bulletlist><bullet>+2 <defensespirit></defensespirit> <hyperlink>Résistance à l'esprit</hyperlink></bullet><bullet>Quand cette unité tombe sous 60 % de ses <hyperlink><hp></hp> Point de vie</hyperlink> maximum :<bulletlist></bullet><bullet>Ignore 50 % de ses <hyperlink>Victimes</hyperlink>.</bullet><bullet>Obtient +1 <defense></defense> <hyperlink>Défense</hyperlink>.</bullet><bullet>Obtient +1 <resistance></resistance> <hyperlink>Résistance</hyperlink>.</bullet></bulletlist>",
+  "name": "Esprit vertueux",
+  "operation_point_cost": 250,
+  "icon": "0000049700002A9E"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586583705,
+  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
+  "id": "invocation_de_vigile",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Invoque une Unité mage de combat <hyperlink>Vigile</hyperlink>, une unité qui lance un feu purificateur sur ses ennemis.",
+  "name": "Invocation de vigile",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "vigile"
+   }
+  ]
+ },
+ {
   "casting_cost": "90<mana></mana> ",
   "resid": 5046586583609,
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
@@ -263,7 +578,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -344,13 +659,13 @@
   "id": "lames_de_résonance",
   "DLC": "GIANTKINGS ",
   "tactical": false,
-  "description": "Les attaques de <hyperlink>Mêlée</hyperlink> de base des unités enchantées gagnent :<bulletlist><bullet>Applique un effet d'état négatif selon le terrain.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de <hyperlink>Mêlée</hyperlink> de base des unités enchantées gagnent :<bulletlist><bullet>Applique un <hyperlink>Effet d'état négatif</hyperlink> selon le terrain.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -536,7 +851,7 @@
   "id": "projectiles_maudits",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> et <hyperlink>Magie</hyperlink> des unités enchantées :<bulletlist><bullet>Infligent +2 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>Infligent +2 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink></bullet><bullet>Ont 60 % de chances de base d'appliquer Feu spectral pendant 3 <turn></turn> Tour.<br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.</bullet>",
+  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> des unités enchantées :<bulletlist><bullet>Infligent +1 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>Infligent +1 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink></bullet><bullet>Infligent Feu spectral pendant 3 <turn></turn> Tour.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -568,7 +883,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -591,7 +906,7 @@
   "id": "terres_désacralisées",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<hyperlink>Province</hyperlink> Ciblée :<bulletlist><bullet>Si elle renferme une <hyperlink>Amélioration de province</hyperlink>, elle devient <hyperlink>pillée</hyperlink>.<bulletlist></bullet><bullet>Vous recevez ses récompenses et perdez <reputation2></reputation2> <hyperlink>Alignement</hyperlink>.</bullet></bulletlist><bullet>La province gagne <hyperlink>Terres cendrées</hyperlink>.</bullet><bullet>La province perd <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
+  "description": "<hyperlink>Province</hyperlink> Ciblée :<bulletlist><bullet>Si elle renferme une <hyperlink>Amélioration de province</hyperlink>, elle devient <hyperlink>pillée</hyperlink>.<bulletlist></bullet><bullet>Vous recevez ses récompenses et perdez <reputation2></reputation2> <hyperlink>Alignement</hyperlink>.</bullet></bulletlist><bullet>La province gagne <hyperlink>Terres cendrées</hyperlink>.</bullet><bullet>La province perd <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Terres désacralisées",
   "operation_point_cost": 60,
   "icon": "00000497000013B2"
@@ -637,7 +952,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -725,7 +1040,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -763,7 +1078,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -801,7 +1116,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -901,7 +1216,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "renaissance_monstrueuse",
   "tactical": true,
-  "description": "L'unité alliée ciblée non Origine magique et non Machine d'échelon I, II ou III :<bulletlist><bullet>Se transforme en <hyperlink>Belliqueux</hyperlink>.</bullet><bullet>Restaure 60 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Meurt à la fin du combat.</bullet></bulletlist>",
+  "description": "L'unité alliée ciblée non Origine magique et non Machine d'échelon I, II ou III :<bulletlist><bullet>Se transforme en <hyperlink>Belliqueux</hyperlink>.</bullet><bullet>Restaure 60 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Meurt à la fin du combat.</bullet></bulletlist><br><br></br>Ne peut pas être utilisée en combat aquatique.",
   "name": "Renaissance monstrueuse",
   "operation_point_cost": 30,
   "icon": "0000049700000ECB"
@@ -921,7 +1236,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -972,7 +1287,7 @@
   "id": "rituel_du_sombre_savoir",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Gagnez 200 <knowledge></knowledge> <hyperlink>Savoir</hyperlink>.",
+  "description": "Gagnez 200 <knowledge></knowledge><hyperlink>Savoir</hyperlink>.",
   "name": "Rituel du sombre savoir",
   "operation_point_cost": 150,
   "icon": "0000049700000BEB"
@@ -1038,7 +1353,7 @@
   "id": "rituel_fantasmatique_de_masse",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Les unités ennemies sur les <hyperlink>Provinces</hyperlink> ciblées ou limitrophes :<bulletlist><bullet>Subissent des dégâts à hauteur de 15 % de leurs <hyperlink><hp></hp> Points de vie</hyperlink> maximum.</bullet><bullet>Perdent 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> jusqu'à a fin de leur combat suivant.</bullet></bulletlist>",
+  "description": "Les unités ennemies sur les <hyperlink>Provinces</hyperlink> ciblées ou limitrophes :<bulletlist><bullet>Subissent des dégâts à hauteur de 15 % de leurs <hyperlink><hp></hp> Point de vie</hyperlink> maximum.</bullet><bullet>Perdent 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> jusqu'à a fin de leur combat suivant.</bullet></bulletlist>",
   "name": "Rituel fantasmatique de masse",
   "operation_point_cost": 150,
   "icon": "0000049700000C1E"
@@ -1050,7 +1365,7 @@
   "id": "rituel_fantasmatique",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "L'armée ennemie ciblée :<bulletlist><bullet>Subit des dégâts à hauteur de 20 % de ses <hyperlink><hp></hp> Points de vie</hyperlink> maximum.</bullet><bullet>Perd 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> jusqu'à la fin de son prochain combat.</bullet></bulletlist>",
+  "description": "L'armée ennemie ciblée :<bulletlist><bullet>Subit des dégâts à hauteur de 20 % de ses <hyperlink><hp></hp> Point de vie</hyperlink> maximum.</bullet><bullet>Perd 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> jusqu'à la fin de son prochain combat.</bullet></bulletlist>",
   "name": "Rituel fantasmatique",
   "operation_point_cost": 100,
   "icon": "0000049700000C16"
@@ -1108,7 +1423,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "flèches_purgatives",
   "tactical": false,
-  "description": "Octroie aux attaques de base <hyperlink>Physiques à distance</hyperlink> des unités enchantées :<bulletlist><bullet>+10 % de dégâts contre les unités d'Origine magique.</bullet><bullet> % de chances de base 60 de supprimer 1 effet d'état positif à la cible.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Octroie aux attaques de base <hyperlink>Physiques à distance</hyperlink> des unités enchantées :<bulletlist><bullet>+10 % de dégâts contre les unités Origine magique.</bullet><bullet> % de chances de base 60 de supprimer 1 <hyperlink>Effet d'état positif</hyperlink>.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -1199,13 +1514,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "forme_de_la_terre _terres_cendrées",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> alliée ou non possédée ciblée :<bulletlist><bullet>Gagne <hyperlink>Terres cendrées</hyperlink></bullet><bullet>Perd <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink></bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> alliée ou non possédée ciblée :<bulletlist><bullet>Gagne <hyperlink>Terres cendrées</hyperlink></bullet><bullet>Perd <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Terre morne</hyperlink></bullet></bulletlist>",
   "name": "Forme de la terre : terres cendrées",
   "operation_point_cost": 45,
   "icon": "000004970000066F"
  },
  {
-  "casting_cost": "80<mana></mana> ",
+  "casting_cost": "60<mana></mana> ",
   "resid": 5046586574328,
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de monde</hyperlink>",
   "id": "déluge",
@@ -1213,7 +1528,7 @@
   "tactical": false,
   "description": "La province ciblée :<bulletlist><bullet>Change le terrain en marais.</bullet><bullet>Obtient Pluie diluvienne pendant 3 <turn></turn> <hyperlink>Tours</hyperlink>.</bullet></bulletlist><br></br><br></br>Ne fonctionne pas en sous-sol.",
   "name": "Déluge",
-  "operation_point_cost": 80,
+  "operation_point_cost": 60,
   "icon": "00000497000005A8"
  },
  {
@@ -1223,7 +1538,7 @@
   "id": "orage_déchaîné",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "<bulletlist><bullet>Toutes les unités sont <hyperlink>Humides</hyperlink> pendant 3 <turn></turn> <hyperlink>Tours</hyperlink></bullet><bullet>Jusqu'à 2 unités ennemies aléatoires :<bulletlist></bullet><bullet>Subissent 10 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>Ont 90 % de chances de base de subir Électrifié pendant 3 <turn></turn> <hyperlink>Tours</hyperlink>.</bullet></bulletlist></bulletlist><br></br>Le sort se répète au début de chaque tour pendant les 6 prochains <turn></turn> <hyperlink>Tours</hyperlink>.",
+  "description": "<bulletlist><bullet>Toutes les unités sont <hyperlink>Humides</hyperlink> pendant 3 <turn></turn> <hyperlink>Tours</hyperlink></bullet><bullet>Jusqu'à 2 unités ennemies aléatoires :<bulletlist></bullet><bullet>Subissent 20 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>Ont 90 % de chances de base de subir Électrifié pendant 3 <turn></turn> <hyperlink>Tours</hyperlink>.</bullet></bulletlist></bulletlist><br></br>Le sort se répète au début de chaque tour pendant les 6 prochains <turn></turn> <hyperlink>Tours</hyperlink>.",
   "name": "Orage déchaîné",
   "operation_point_cost": 35,
   "icon": "00000497000005A4"
@@ -1247,7 +1562,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
   "id": "touché_par_les_fées",
   "tactical": false,
-  "description": "La race ciblée est connectée aux pouvoirs des fées, ce qui lui octroie :<bulletlist><bullet>Ruse de fée</bullet><bullet>La capacité d'ignorer :<bulletlist></bullet><bullet>Pénalités de vision de Brumeuse.</bullet><bullet>Pénalités de précision de Brume tenace.</bullet></bulletlist></bulletlist>",
+  "description": "La race ciblée est connectée aux pouvoirs des fées, ce qui lui octroie :<bulletlist><bullet>Ruse de fée</bullet><bullet>La capacité d'ignorer :<bulletlist></bullet><bullet>Pénalités de vision de Brumeuse.</bullet><bullet><hyperlink><accuracy></accuracy> Précision</hyperlink>Pénalités de Brume tenace.</bullet></bulletlist></bulletlist>",
   "name": "Touché par les fées",
   "operation_point_cost": 250,
   "icon": "000004970000052C"
@@ -1270,7 +1585,7 @@
   "id": "Étreinte_des_fées",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Dans un rayon de 1 case(s) :<bulletlist><bullet>Place des nuages de <hyperlink>Brume</hyperlink>.</bullet><bullet>Les unités alliées gagnent 2 effets d'état positifs aléatoires.</bullet>",
+  "description": "Dans un rayon de 1 case(s) :<bulletlist><bullet>Place des nuages de <hyperlink>Brume</hyperlink>.</bullet><bullet>Les unités alliées gagnent 2 <hyperlink>Effets d'état positif</hyperlink> aléatoires.</bullet>",
   "name": "Étreinte des fées",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1299,7 +1614,7 @@
   "id": "invocation_de_rejeton_de_la_brume",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Invoque un <hyperlink>Rejeton de la brume</hyperlink>, un Escarmoucheur dont les attaques infligent des effets d'état négatifs aléatoires.",
+  "description": "Invoque un <hyperlink>Rejeton de la brume</hyperlink>, un Escarmoucheur dont les attaques infligent des <hyperlink>Effets d'état négatif</hyperlink> aléatoires.",
   "name": "Invocation de rejeton de la brume",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -1448,7 +1763,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1486,7 +1801,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1524,7 +1839,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1562,7 +1877,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1600,7 +1915,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1638,7 +1953,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1676,7 +1991,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -1705,7 +2020,7 @@
   "id": "rituel_de_la_calamité",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<bulletlist><bullet>Au début de chaque <turn></turn> <hyperlink>Tour</hyperlink> pendant le siège, une <hyperlink>Amélioration de province</hyperlink> aléatoire de la ville assiégée est <hyperlink>pillée</hyperlink>, vous octroyant des récompenses.</bullet><bullet>Au début du combat :<bulletlist></bullet><bullet>Tous les défenseurs obtiennent un cumul de Feu spectral pendant {duration} <turn></turn> Tour.</bullet><bullet>{amountUnits} <hyperlink>Ogres maudits</hyperlink> apparaissent du côté de l'attaquant.</bullet></bulletlist></bulletlist>",
+  "description": "<bulletlist><bullet>Au début de chaque <turn></turn> <hyperlink>Tour</hyperlink> pendant le siège, une <hyperlink>Amélioration de province</hyperlink> aléatoire de la ville assiégée est <hyperlink>pillée</hyperlink>, vous octroyant des récompenses.</bullet><bullet>Au début du combat :<bulletlist></bullet><bullet>Tous les défenseurs obtiennent un cumul de Feu spectral pendant  <turn></turn> Tour.</bullet><bullet> <hyperlink>Ogres maudits</hyperlink> apparaissent du côté de l'attaquant.</bullet></bulletlist></bulletlist>",
   "name": "Rituel de la calamité",
   "operation_point_cost": 0,
   "icon": "00000497000013B6"
@@ -1781,7 +2096,7 @@
   "description": "Visez une <hyperlink>Armée</hyperlink> alliée et une <hyperlink>Unité</hyperlink> aléatoire dans les troupes avec Évolution gagnera immédiatement les rangs nécessaires pour évoluer.",
   "name": "Évolution forcée",
   "operation_point_cost": 80,
-  "icon": "00000493000001AF"
+  "icon": "0000049700002DFE"
  },
  {
   "casting_cost": "200<mana></mana> ",
@@ -1829,7 +2144,7 @@
   "id": "chair_ténébreuse",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Confère à la race ciblée des bénédictions de l'Abîme des ténèbres, lui octroyant les éléments suivants :<bulletlist><bullet>Immunité contre la maladie ténébreuse</bullet><bullet>Lorsqu'elles se trouvent sur des terres <hyperlink>Terre morne</hyperlink>, les unités obtiennent :<bulletlist></bullet><bullet>+10 <happiness></happiness> <hyperlink>Moral</hyperlink></bullet><bullet>+12 <hyperlink><hp></hp> Point de vie</hyperlink> par <turn></turn> <hyperlink>Tour</hyperlink> sur la carte du monde.</bullet></bulletlist><bullet>Les <hyperlink>Villes</hyperlink> de la race :<bulletlist></bullet><bullet>Obtiennent +2 revenus de <knowledge></knowledge> <hyperlink>Savoir</hyperlink> pour chaque province de terre morne.</bullet><bullet>Ignorent les pénalités de <happiness></happiness> <hyperlink>Stabilité urbaine</hyperlink> dues à la terre morne.</bullet></bulletlist><bullet>Les unités héroïques obtiennent Berger morne.</bullet></bulletlist>",
+  "description": "Confère à la race ciblée des bénédictions de l'Abîme des ténèbres, lui octroyant les éléments suivants :<bulletlist><bullet>Immunité contre la maladie ténébreuse</bullet><bullet>Lorsqu'elles se trouvent sur des <hyperlink>Terres mornes</hyperlink>, les unités obtiennent :<bulletlist></bullet><bullet>+10 <happiness></happiness> <hyperlink>Moral</hyperlink></bullet><bullet>+12 <hyperlink><hp></hp> Point de vie</hyperlink> par <turn></turn> <hyperlink>Tour</hyperlink> sur la carte du monde.</bullet></bulletlist><bullet>Les <hyperlink>Villes</hyperlink> de la race :<bulletlist></bullet><bullet>Obtiennent +2 revenus de <knowledge></knowledge><hyperlink>Savoir</hyperlink> pour chaque province de terre morne.</bullet><bullet>Ignorent les pénalités de <happiness></happiness> <hyperlink>Stabilité urbaine</hyperlink> dues à la terre morne.</bullet></bulletlist><bullet>Les unités héroïques obtiennent Berger morne.</bullet></bulletlist><br></br>Cette transformation est incompatible avec Âme pure.",
   "name": "Chair ténébreuse",
   "operation_point_cost": 250,
   "icon": "0000049000000854"
@@ -1841,10 +2156,162 @@
   "id": "arpenteur_morne",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Transforme la race ciblée en créatures des ténèbres, leur conférant :<bulletlist><bullet>Le type d'unité Démon des ténèbres.</bullet><bullet>Flottant.</bullet><bullet>Déplacement rapide.<bulletlist><br></br><br></br>Les unités montées perdent leur monture.<br></br><br></br>Les héros perdent leurs emplacements d'équipement de jambe et de monture.</bullet>",
+  "description": "Transforme la race ciblée en créatures des ténèbres, leur conférant :<bulletlist><bullet>Le type d'unité Démon des ténèbres.</bullet><bullet>Flottant.</bullet><bullet>Déplacement rapide.<bulletlist><br></br><br></br>Les unités montées perdent leur monture.<br></br><br></br>Les héros perdent leurs emplacements d'équipement de jambe et de monture.<br></br><br></br>Cette transformation est incompatible avec Âme pure.</bullet>",
   "name": "Arpenteur morne",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905512,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
+  "id": "conjuration_élémentaire",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoquez un esprit inférieur d'échelon 1 en fonction de l'<hyperlink>Affinité</hyperlink> dominante de votre empire. <hyperlink>Esprit des neiges inférieur</hyperlink><br></br><br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "name": "Conjuration élémentaire",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "esprit_des_neiges_inférieur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905508,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
+  "id": "conjuration_élémentaire",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoquez un esprit inférieur d'échelon 1 en fonction de l'<hyperlink>Affinité</hyperlink> dominante de votre empire. <hyperlink>Esprit de la marée inférieur</hyperlink><br></br><br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "name": "Conjuration élémentaire",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "esprit_de_la_marée_inférieur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905504,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
+  "id": "conjuration_élémentaire",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoquez un esprit inférieur d'échelon 1 en fonction de l'<hyperlink>Affinité</hyperlink> dominante de votre empire. <hyperlink>Esprit de la pierre inférieur</hyperlink><br></br><br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "name": "Conjuration élémentaire",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "esprit_de_la_pierre_inférieur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905500,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
+  "id": "conjuration_élémentaire",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoquez un esprit inférieur d'échelon 1 en fonction de l'<hyperlink>Affinité</hyperlink> dominante de votre empire. <hyperlink>Esprit de la tempête inférieur</hyperlink><br></br><br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "name": "Conjuration élémentaire",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "esprit_de_la_tempête_inférieur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905496,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
+  "id": "conjuration_élémentaire",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoquez un esprit inférieur d'échelon 1 en fonction de l'<hyperlink>Affinité</hyperlink> dominante de votre empire. <hyperlink>Esprit du magma inférieur</hyperlink><br></br><br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "name": "Conjuration élémentaire",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "esprit_du_magma_inférieur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905491,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
+  "id": "conjuration_élémentaire",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoquez un esprit inférieur d'échelon 1 en fonction de l'<hyperlink>Affinité</hyperlink> dominante de votre empire. <hyperlink>Esprit de la lumière mineur</hyperlink><br></br><br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "name": "Conjuration élémentaire",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "esprit_de_la_lumière_mineur"
+   }
+  ]
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636905483,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
+  "id": "incarnation_résiliente",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Les unités alliées dans un rayon de 1 case(s) pendant 1 <turn></turn> Tour gagnent :<bulletlist><bullet>+1 <defense></defense> <hyperlink>Défense</hyperlink>, +1 <resistance></resistance> <hyperlink>Résistance</hyperlink>.</bullet><bullet>+1 <defense></defense> <hyperlink>Défense</hyperlink> supplémentaires, +1 <resistance></resistance> <hyperlink>Résistance</hyperlink> par cumul d’Incarnation d'affinité.</bullet></bulletlist>",
+  "name": "Incarnation résiliente",
+  "operation_point_cost": 15,
+  "icon": "0000048D000015C1"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636905425,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
+  "id": "marque_dincarnation",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Octroie aux unités non architectes :<bulletlist><bullet>Incarnation d'affinité.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unité bouclier"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Unité à distance"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unité d'assistance"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Troupe de choc"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unité mage de combat"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unité combattante"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
+   }
+  ],
+  "name": "Marque d'incarnation",
+  "operation_point_cost": 90,
+  "icon": "0000048D000015B9"
  },
  {
   "casting_cost": "60<gold></gold> ",
@@ -1918,7 +2385,7 @@
   "id": "tempête_de_feu_consécratrice",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Cible une <hyperlink>Province</hyperlink> non alliée qui ne contient pas d'<hyperlink>Ancienne merveille</hyperlink> :<bulletlist><bullet>Voit son <hyperlink>Amélioration de province</hyperlink> rasée.</bullet><bullet>Les unités ennemies dans la province subissent 20 <damageSpirit></damageSpirit> <hyperlink>Dégâts d'esprit</hyperlink>.</bullet><bullet>Pendant 3 <turn></turn> Tour, lorsque vous entrez au combat, toutes les unités ennemies subissent Condamné.</bullet><bullet> Vous créez <hyperlink>Flammes purificatrices</hyperlink> sur des cases aléatoires.</bullet></bulletlist>",
+  "description": "Dans la <hyperlink>Province</hyperlink> cible :<bulletlist><bullet>Les unités ennemies subissent 20 <damageSpirit></damageSpirit> <hyperlink>Dégâts d'esprit</hyperlink>.</bullet><bullet>La province gagne Tempête de feu consécratrice pendant 3 <turn></turn> Tour</bullet><bullet>Si elle a une <hyperlink>Amélioration de province</hyperlink> possédée par l'ennemi, elle est <hyperlink>pillée</hyperlink>.</bullet></bulletlist>",
   "name": "Tempête de feu consécratrice",
   "operation_point_cost": 100,
   "icon": "0000048D0000087B"
@@ -1942,13 +2409,13 @@
   "id": "champions_bénis_par_les_flammes",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées :<bulletlist><bullet>Gagnent 60 % de chances de base d'infliger Brûlure</bullet><bullet>Si la cible a 5 cumuls de Brûlure :<br></br>Vous créez <hyperlink>Flammes purificatrices</hyperlink> sur la case cible pendant 3 <turn></turn> <hyperlink>Tours</hyperlink>.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques <hyperlink>Mêlée</hyperlink> de base des unités enchantées :<bulletlist><bullet>Gagnent 60 % de chances de base d'infliger Brûlure</bullet><bullet>Vous créez <hyperlink>Flammes purificatrices</hyperlink> sur la case cible pendant 3 <turn></turn> Tour</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -2023,7 +2490,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -2064,7 +2531,7 @@
   "id": "conjuration_de_tentacule",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Invoquez un Unité combattante <hyperlink>immobile</hyperlink> avec Œil de divination.<br></br>L'invocation dure 3 <turn></turn> Tour.",
+  "description": "Invoquez une Unité combattante <hyperlink>immobile</hyperlink> avec Hyper conscience.<br></br>L'invocation dure 3 <turn></turn> Tour.",
   "name": "Conjuration de tentacule",
   "operation_point_cost": 25,
   "summoned_units": [
@@ -2080,7 +2547,7 @@
   "id": "focalisation_constrictrice",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Les attaques de base de <hyperlink>Magie</hyperlink> des unités enchantées :<bulletlist><bullet>Gagnent 30 % de chances de base d'infliger Restriction pendant 1 <turn></turn> Tour.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de base de <hyperlink>Magie</hyperlink> des unités enchantées :<bulletlist><bullet>Gagnent 30 % de chances de base d'infliger Restriction pendant 1 <turn></turn> Tour.</bullet><bullet>Chances augmentées à 60 % contre les unités Marqué ou Ralentissement.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -2126,10 +2593,10 @@
   "casting_cost": "60<mana></mana> ",
   "resid": 5003636899875,
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_danimal_sauvage",
+  "id": "appel_danimal_sauvage",
   "tactical": false,
-  "description": "<bulletlist><bullet>Invoque un Animal aléatoire d'échelon I sur la case du monde ciblée.</bullet><bullet>Chance faible d'invoquer un animal d'échelon II.</bullet><bullet>Les Animaux possibles dépendent du type de terrain sur lequel la compétence est utilisée.</bullet></bulletlist>",
-  "name": "Invocation d'animal sauvage",
+  "description": "<bulletlist><bullet>Choisissez une unité Animal d'échelon I ou II à ajouter à votre armée.</bullet><bullet>Les Animaux disponibles dépendent du type de terrain sur lequel le sort est lancé.</bullet></bulletlist>",
+  "name": "Appel d'animal sauvage",
   "operation_point_cost": 60,
   "icon": "0000041B000002E7",
   "summoned_units": [
@@ -2202,10 +2669,10 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 5003636899859,
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_danimal_supérieu",
+  "id": "invocation_danimal_supérieur",
   "tactical": false,
-  "description": "Invoque une unité animale aléatoire d'échelon III sur l'emplacement ciblé.<br></br><br></br>A une petite chance d'invoquer un animal d'échelon IV.",
-  "name": "Invocation d'animal supérieu",
+  "description": "<bulletlist><bullet>Choisissez une unité Animal d'échelon III ou IV à ajouter à votre armée.</bullet><bullet>L'Animaux disponible dépend du type de terrain sur lequel le sort est lancé.</bullet></bulletlist>",
+  "name": "Invocation d'animal supérieur",
   "operation_point_cost": 150,
   "icon": "000003E300004AF7",
   "summoned_units": [
@@ -2278,6 +2745,17 @@
   ]
  },
  {
+  "casting_cost": "5<mana></mana> ",
+  "resid": 4995046968314,
+  "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
+  "id": "chaînes_brisées",
+  "tactical": true,
+  "description": "L'unité alliée ciblée :<bulletlist><bullet>Perd tous ses <hyperlink>Effets d'état négatif</hyperlink>.</bullet><bullet>Gagne 2 Renforcé</bullet></bulletlist>.",
+  "name": "Chaînes brisées",
+  "operation_point_cost": 10,
+  "icon": "000003E300005353"
+ },
+ {
   "casting_cost": "30<mana></mana> ",
   "resid": 4995046965803,
   "spellType": "<casttactical></casttactical><hyperlink>Sort de dégâts/affaiblissement</hyperlink>",
@@ -2302,7 +2780,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -2354,7 +2832,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitFighter></unitFighter> Unité combattante"
@@ -2386,7 +2864,7 @@
   "id": "mantra_de_purification",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "L'unité alliée ciblée :<bulletlist><bullet>Récupère 15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>2 effets d'état négatifs sont dissipés.</bullet></bulletlist>",
+  "description": "L'unité alliée ciblée :<bulletlist><bullet>Récupère 15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>2 <hyperlink>Effet d'état négatif</hyperlink> sont dissipés.</bullet></bulletlist>",
   "name": "Mantra de purification",
   "operation_point_cost": 10,
   "icon": "0000048B000001D1"
@@ -2414,7 +2892,7 @@
   "id": "voile_de_morosité",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> ciblée et les <hyperlink>Provinces</hyperlink> limitrophes :<bulletlist><bullet>Gagnent <hyperlink>Terre morne</hyperlink></bullet><bullet>Perdent <hyperlink>Abîme</hyperlink>, <hyperlink>Rivière</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Marais</hyperlink> et <hyperlink>Donjon</hyperlink>.</bullet><bullet>Les <hyperlink>Unités</hyperlink> adverses subissent 10 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> et 10 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> ciblée et les <hyperlink>Provinces</hyperlink> limitrophes :<bulletlist><bullet>Gagnent <hyperlink>Terre morne</hyperlink></bullet><bullet>Perdent <hyperlink>Abîme</hyperlink>, <hyperlink>Rivière</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Donjon</hyperlink>.</bullet><bullet>Les <hyperlink>Unités</hyperlink> adverses subissent 10 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> et 10 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet></bulletlist>",
   "name": "Voile de morosité",
   "operation_point_cost": 150,
   "icon": "0000048B00000135"
@@ -2456,7 +2934,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -2508,7 +2986,7 @@
   "id": "rupture_astrale",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "L'<hyperlink>Unité</hyperlink> Origine magique ciblée :<bulletlist><bullet> 60 % de chances de base d'être tuée.</bullet><bullet>Dans le cas contraire, inflige Perturbé et En décomposition.</bullet></bulletlist>",
+  "description": "L'<hyperlink>Unité</hyperlink> Origine magique ciblée :<bulletlist><bullet> 60 % de chances de base d'être tuée.</bullet><bullet>Dans le cas contraire, inflige Perturbé et 4 cumuls d’En décomposition.</bullet></bulletlist>",
   "name": "Rupture astrale",
   "operation_point_cost": 50,
   "icon": "0000046A000001E7"
@@ -2526,7 +3004,10 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unité combattante"
    }
   ],
   "name": "Enceinte défensive",
@@ -2540,7 +3021,7 @@
   "id": "lien_psychique",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Les unités de cette race sont alors capables de partager leurs impressions :<bulletlist><bullet>Œil de divination à proximité d'une autre Machine ou unité avec Lien psychique.</bullet></bulletlist>",
+  "description": "Les unités de cette race sont alors capables de partager leurs impressions :<bulletlist><bullet>Hyper conscience à proximité d'une autre Machine ou unité avec Lien psychique.</bullet></bulletlist>",
   "name": "Lien psychique",
   "operation_point_cost": 250,
   "icon": "0000046A0000019C"
@@ -2564,7 +3045,7 @@
   "id": "ordre_en_cascade _défense",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "La Machine ou Lien psychique alliée ciblée : <bulletlist><bullet>Gagne Attentif pendant 1 <turn></turn> Tour.</bullet><bullet>Passe en <hyperlink>Mode défensif</hyperlink>.</bullet><bullet>L'effet s'applique alors aux unités mécaniques alliées ou aux unités avec Lien psychique voisines et se répète.</bullet></bulletlist>",
+  "description": "La Machine ou Lien psychique alliée ciblée : <bulletlist><bullet>Gagne Maîtres défensifs pendant 1 <turn></turn> Tour.</bullet><bullet>2 de ses <hyperlink>Effets d'état négatif</hyperlink> sont dissipés.</bullet><bullet>L'effet s'applique alors aux unités mécaniques alliées ou aux unités avec Lien psychique voisines et se répète.</bullet></bulletlist>",
   "name": "Ordre en cascade : défense",
   "operation_point_cost": 25,
   "icon": "0000046A0000017D"
@@ -2619,7 +3100,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "forme_de_la_terre _sable",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> en surface alliée ou non possédée ciblée :<bulletlist><bullet>Gagne <hyperlink>Sable</hyperlink></bullet><bullet>Perd , <hyperlink>Abîme</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Rivière</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink> et <hyperlink>Terre morne</hyperlink></bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> en surface alliée ou non possédée ciblée :<bulletlist><bullet>Gagne <hyperlink>Sable</hyperlink>.</bullet><bullet>Perd <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Forme de la terre : sable",
   "operation_point_cost": 45,
   "icon": "0000045E00000EB2"
@@ -2641,7 +3122,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "forme_de_la_terre _neige",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> alliée ou non possédée ciblée :<bulletlist><bullet>Gagne <hyperlink>Neige</hyperlink> et <hyperlink>Glace</hyperlink>.</bullet><bullet>Perd <hyperlink>Abîme</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Rivière</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> alliée ou non possédée ciblée :<bulletlist><bullet>Gagne <hyperlink>Neige</hyperlink> et <hyperlink>Glace</hyperlink>.</bullet><bullet>Perd <hyperlink>Abîme</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Forme de la terre : neige",
   "operation_point_cost": 45,
   "icon": "0000045E00000E97"
@@ -2675,7 +3156,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "flammes_abyssales",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> ciblée et les provinces adjacentes :<bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies subissent 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>Les provinces gagnent <hyperlink>Terres cendrées</hyperlink>.</bullet><bullet>Les provinces perdent <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> ciblée et les provinces adjacentes :<bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies subissent 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>Les provinces gagnent <hyperlink>Terres cendrées</hyperlink>.</bullet><bullet>Les provinces perdent <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Flammes abyssales",
   "operation_point_cost": 200,
   "icon": "000003E300005AA8"
@@ -2686,7 +3167,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "gel_éclair",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> ciblée :<bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies dans la province subissent :<bulletlist></bullet><bullet>20 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink>.</bullet><bullet>-5 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> pendant 1 <turn></turn> <hyperlink>Tour</hyperlink> sur la <hyperlink>Carte mondiale</hyperlink>.</bullet></bulletlist><bullet>La province gagne <hyperlink>Neige</hyperlink> et <hyperlink>Glace</hyperlink>.</bullet><bullet>La province perd <hyperlink>Abîme</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Rivière</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> ciblée :<bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies dans la province subissent :<bulletlist></bullet><bullet>20 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink>.</bullet><bullet>-5 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> pendant 1 <turn></turn> <hyperlink>Tour</hyperlink> sur la <hyperlink>Carte mondiale</hyperlink>.</bullet></bulletlist><bullet>La province gagne <hyperlink>Neige</hyperlink> et <hyperlink>Glace</hyperlink>.</bullet><bullet>La province perd <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Gel éclair",
   "operation_point_cost": 100,
   "icon": "0000041B00001764"
@@ -2728,7 +3209,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "régénérescence_destructrice",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink>ciblée :<bulletlist><bullet>Si elle renferme une <hyperlink>Amélioration de province</hyperlink> ennemie, elle devient <hyperlink>pillée</hyperlink>.<bulletlist></bullet><bullet>Vous ne recevez pas ses récompenses et ne perdez pas d'<hyperlink>Alignement</hyperlink>.</bullet></bulletlist><bullet>La province gagne une <hyperlink>Forêt</hyperlink> en surface ou une <hyperlink>Forêt fongique</hyperlink> dans le sous-sol.</bullet></bulletlist>",
+  "description": "Dans la <hyperlink>Province</hyperlink> ciblée :<bulletlist><bullet>Les unités ennemies subissent 20 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>Si elle renferme une <hyperlink>Amélioration de province</hyperlink> ennemie, elle devient <hyperlink>pillée</hyperlink>.<bulletlist></bullet><bullet>Vous ne recevez pas ses récompenses et ne perdez pas d'<hyperlink>Alignement</hyperlink>.</bullet></bulletlist><bullet>La province gagne une <hyperlink>Forêt</hyperlink> en surface ou une <hyperlink>Forêt fongique</hyperlink> dans le sous-sol.</bullet></bulletlist>",
   "name": "Régénérescence destructrice",
   "operation_point_cost": 150,
   "icon": "000003E30000522E"
@@ -2774,7 +3255,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Victoire par sort</hyperlink>",
   "id": "Âge_de_lordre",
   "tactical": false,
-  "description": "Canalisez l'Âge de l'ordre pour obtenir la <hyperlink>Victoire magique</hyperlink>. Pendant la canalisation :<bulletlist><bullet>Vos <hyperlink>Sorts</hyperlink> de l'<order></order> <hyperlink>Affinité Ordre</hyperlink> coûtent 20 % de <mana></mana> <hyperlink>Mana</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Points de lancer carte mondiale</hyperlink> et de <optactical></optactical> <hyperlink> Points de lancer de combat</hyperlink> en moins.</bullet><bullet>À chaque tour de combat, un allié aléatoire obtient 3 effets d'état positifs aléatoires et perd tous les effets d'état négatifs.</bullet></bulletlist>",
+  "description": "Canalisez l'Âge de l'ordre pour obtenir la <hyperlink>Victoire magique</hyperlink>. Pendant la canalisation :<bulletlist><bullet>Vos <hyperlink>Sorts</hyperlink> de l'<order></order> <hyperlink>Affinité Ordre</hyperlink> coûtent 20 % de <mana></mana> <hyperlink>Mana</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Points de lancer carte mondiale</hyperlink> et de <optactical></optactical> <hyperlink> Points de lancer de combat</hyperlink> en moins.</bullet><bullet>À chaque tour de combat, un allié aléatoire obtient 3 <hyperlink>Effets d'état positif</hyperlink> aléatoires et perd tous ses <hyperlink>Effets d'état négatif</hyperlink>.</bullet></bulletlist>",
   "name": "Âge de l'ordre",
   "operation_point_cost": 400,
   "icon": "0000045A0000000B"
@@ -2821,7 +3302,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race majeure</hyperlink>",
   "id": "Élu_de_gaïa",
   "tactical": false,
-  "description": "Imprègne la race ciblée de la bénédiction de la nature. Les unités gagnent :<bulletlist><bullet>Le type d'unité Plante.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink>.</bullet><bullet>+20 <hyperlink><hp></hp> Points de vie</hyperlink>.</bullet></bulletlist>",
+  "description": "Imprègne la race ciblée de la bénédiction de la nature. Les unités gagnent :<bulletlist><bullet>Le type d'unité Plante.</bullet><bullet>+3 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink>.</bullet><bullet>+20 <hyperlink><hp></hp> Point de vie</hyperlink>.</bullet></bulletlist>",
   "name": "Élu de Gaïa",
   "operation_point_cost": 600,
   "icon": "0000044500000057"
@@ -2844,7 +3325,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Victoire par sort</hyperlink>",
   "id": "Âge_du_chaos",
   "tactical": false,
-  "description": "Canalisez l'Âge du chaos pour obtenir la <hyperlink>Victoire magique</hyperlink>. Pendant la canalisation :<bulletlist><bullet>Vos <hyperlink>Sorts</hyperlink> du <chaos></chaos> <hyperlink>Affinité Chaos</hyperlink> coûtent 20 % de <mana></mana> <hyperlink>Mana</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Points de lancer carte mondiale</hyperlink> et de <optactical></optactical> <hyperlink> Points de lancer de combat</hyperlink> en moins.</bullet><bullet>À chaque <turn></turn> Tour de combat, une unité ennemie aléatoire subit 15 dégâts de type aléatoire et a 90 % de chances de base de recevoir un effet d'état négatif aléatoire.</bullet></bulletlist>",
+  "description": "Canalisez l'Âge du chaos pour obtenir la <hyperlink>Victoire magique</hyperlink>. Pendant la canalisation :<bulletlist><bullet>Vos <hyperlink>Sorts</hyperlink> du <chaos></chaos> <hyperlink>Affinité Chaos</hyperlink> coûtent 20 % de <mana></mana> <hyperlink>Mana</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Points de lancer carte mondiale</hyperlink> et de <optactical></optactical> <hyperlink> Points de lancer de combat</hyperlink> en moins.</bullet><bullet>À chaque <turn></turn> Tour de combat, une unité ennemie aléatoire subit 15 dégâts de type aléatoire et a 90 % de chances de base de recevoir un <hyperlink>Effet d'état négatif</hyperlink> aléatoire.</bullet></bulletlist>",
   "name": "Âge du chaos",
   "operation_point_cost": 400,
   "icon": "0000044500000040"
@@ -2921,7 +3402,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
   "id": "réanimation_massive",
   "tactical": true,
-  "description": "Cible toutes les unités alliées mortes avec Fidèle ou Zèle. Elles ressuscitent avec 50 % de leurs <hyperlink><hp></hp> Points de vie</hyperlink>.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
+  "description": "Cible toutes les unités alliées mortes avec Fidèle ou Zèle. Elles ressuscitent avec 50 % de leurs <hyperlink><hp></hp> Point de vie</hyperlink>.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
   "name": "Réanimation massive",
   "operation_point_cost": 65,
   "icon": "0000041B000019D9"
@@ -2957,14 +3438,14 @@
   "icon": "0000041B000019A1"
  },
  {
-  "casting_cost": "200<mana></mana> ",
+  "casting_cost": "150<mana></mana> ",
   "resid": 4514010634915,
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "hymne_de_la_victoire",
   "tactical": true,
   "description": "Toutes les unités alliées gagnent :<bulletlist><bullet>3 Renforcé.</bullet><bullet>+15 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist>",
   "name": "Hymne de la victoire",
-  "operation_point_cost": 65,
+  "operation_point_cost": 50,
   "icon": "0000041B000019A5"
  },
  {
@@ -2984,7 +3465,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "marque_de_linquisiteur",
   "tactical": false,
-  "description": "Les attaques de base des unités enchantées ont :<bulletlist><bullet>30 % de chances de base d'infliger Condamné jusqu'à la fin du combat, de réduire la <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> des ennemis.</bullet><bullet>30 % de chances de base d'infliger Affaibli, réduisant les dégâts ennemis.</bullet><bullet>30 % de chances de base d'infliger Ralentissement, réduisant le déplacement des ennemis et empêchant les attaques de riposte.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques des unités enchantées ont :<bulletlist><bullet>60 % de chances de base d'infliger Condamné jusqu'à la fin du combat, de réduire la <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink> des ennemis.</bullet><bullet>60 % de chances de base d'infliger Affaibli, réduisant les dégâts ennemis.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -3050,7 +3531,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -3067,14 +3548,14 @@
   "icon": "0000041B0000193D"
  },
  {
-  "casting_cost": "15<mana></mana> ",
+  "casting_cost": "30<mana></mana> ",
   "resid": 4514010634749,
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "chant_exaltant",
   "tactical": true,
   "description": "Les unités alliées dans un rayon de 2 case(s) :<bulletlist><bullet>Gain +10 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet><bullet>Sont 2 Renforcé si elles ont Zèle.</bullet></bulletlist>",
   "name": "Chant exaltant",
-  "operation_point_cost": 20,
+  "operation_point_cost": 25,
   "icon": "0000041B00001939"
  },
  {
@@ -3113,9 +3594,9 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
   "id": "réanimation_sur_le_champ_de_bataille",
   "tactical": true,
-  "description": "<bulletlist><bullet>Toutes les unités de type Mort-vivant alliées reviennent à la vie avec 50 % de leurs <hyperlink><hp></hp> Points de vie</hyperlink> totaux.</bullet><bullet>Les cadavres autres que les morts-vivants reviennent à la vie sous forme de <hyperlink>Zombies en décompositions</hyperlink> sous votre contrôle jusqu'à la fin du combat.</bullet></bulletlist><br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
+  "description": "<bulletlist><bullet>Toutes les unités de type Mort-vivant alliées reviennent à la vie avec 50 % de leurs <hyperlink><hp></hp> Point de vie</hyperlink> totaux.</bullet><bullet>Les cadavres autres que les morts-vivants reviennent à la vie sous forme de <hyperlink>Zombies en décompositions</hyperlink> sous votre contrôle jusqu'à la fin du combat.</bullet></bulletlist><br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
   "name": "Réanimation sur le champ de bataille",
-  "operation_point_cost": 80,
+  "operation_point_cost": 65,
   "icon": "0000041B00001770"
  },
  {
@@ -3140,6 +3621,12 @@
    },
    {
     "slug": "guerrier_squelette"
+   },
+   {
+    "slug": "vouivre_dos"
+   },
+   {
+    "slug": "Âme_corrompue"
    },
    {
     "slug": "banshee"
@@ -3179,13 +3666,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "légion_fétide",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+10 <hyperlink><hp></hp> Points de vie</hyperlink>.</bullet><bullet>Aura d'affaiblissement, qui inflige Affaibli aux ennemis à proximité à la fin du tour.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+10 <hyperlink><hp></hp> Point de vie</hyperlink>.</bullet><bullet>Aura d'affaiblissement, qui inflige Affaibli aux ennemis à proximité à la fin du tour.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -3256,7 +3743,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'affaiblissement</hyperlink>",
   "id": "sommeil_de_loubli",
   "tactical": true,
-  "description": "L'unité non-Héros ciblée meurt. Après 2 <turn></turn> Tour, elle revient à la vie avec 75 % de ses <hyperlink><hp></hp> Points de vie</hyperlink> et Folie.",
+  "description": "L'unité non-Héros ciblée meurt. Après 2 <turn></turn> Tour, elle revient à la vie avec 75 % de ses <hyperlink><hp></hp> Point de vie</hyperlink> et Folie.<br></br><br></br>Une unité morte de cette manière ne peut pas être ramenée à la vie et son corps ne peut pas être détruit.",
   "name": "Sommeil de l'oubli",
   "operation_point_cost": 40,
   "icon": "0000041B0000174F"
@@ -3279,7 +3766,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "hiver_en_marche",
   "tactical": false,
-  "description": "La <hyperlink>Ville</hyperlink> alliée ciblée gagne :<bulletlist>À chaque <turn></turn> <hyperlink>Tour</hyperlink>, 2 <hyperlink>Provinces</hyperlink> à l'intérieur du <hyperlink>Domaine</hyperlink> ou adjacentes à celui-ci :<bulletlist><bullet>Gagnent <hyperlink>Neige</hyperlink> et <hyperlink>Glace</hyperlink></bullet><bullet>Perdent <hyperlink>Abîme</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Rivière</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist><bullet>Les provinces dans un domaine présentant les caractéristiques neige ou glace octroient +2 revenus de <food></food> <hyperlink>Nourriture</hyperlink> et +2 revenus de <structureprod></structureprod> <hyperlink>Production</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Ville</hyperlink> alliée ciblée gagne :<bulletlist>À chaque <turn></turn> <hyperlink>Tour</hyperlink>, 2 <hyperlink>Provinces</hyperlink> à l'intérieur du <hyperlink>Domaine</hyperlink> ou adjacentes à celui-ci :<bulletlist><bullet>Gagnent <hyperlink>Neige</hyperlink> et <hyperlink>Glace</hyperlink>.</bullet><bullet>Perdent <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist><bullet>Les provinces dans un domaine présentant les caractéristiques neige ou glace octroient +2 revenus de <food></food> <hyperlink>Nourriture</hyperlink> et +2 revenus de <structureprod></structureprod> <hyperlink>Production</hyperlink>.</bullet></bulletlist>",
   "name": "Hiver en marche",
   "operation_point_cost": 120,
   "icon": "0000041B00001729"
@@ -3350,7 +3837,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Sort de monde soutenu</hyperlink>",
   "id": "cascade_de_puissance",
   "tactical": false,
-  "description": "Lorsque vous lancez un sort en combat tactique, vous ajoutez un Cumul de Cascade de puissance à ce combat.",
+  "description": "Lorsque vous lancez un sort en combat tactique, vous ajoutez Cumul de Cascade de puissance à ce combat.",
   "name": "Cascade de puissance",
   "operation_point_cost": 120,
   "icon": "0000041B000012A8"
@@ -3380,7 +3867,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race majeure</hyperlink>",
   "id": "syntonie_astrale",
   "tactical": false,
-  "description": "Lie la race ciblée à la mer Astrale, lui octroyant :<bulletlist><bullet>Le type d'unité Éthérée.</bullet><bullet>Syntonie : présage astral, octroyant un effet d'état positif aléatoire lorsqu'un sort est lancé au combat.</bullet></bulletlist>",
+  "description": "Lie la race ciblée à la mer Astrale, lui octroyant :<bulletlist><bullet>Le type d'unité Éthérée.</bullet><bullet>Syntonie : présage astral, octroyant un <hyperlink>Effet d'état positif</hyperlink> aléatoire lorsqu'un sort est lancé au combat.</bullet></bulletlist>",
   "name": "Syntonie astrale",
   "operation_point_cost": 600,
   "icon": "0000041B00001298"
@@ -3403,7 +3890,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "survitesse_cosmique",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+30 % de dégâts.</bullet><bullet>Déplacement très rapide.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+20 % de dégâts.</bullet><bullet>Déplacement très rapide.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Invocation de combat"
@@ -3433,7 +3920,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Sort de buff/affaiblissement</hyperlink>",
   "id": "vague_perturbatrice",
   "tactical": true,
-  "description": "<bulletlist><bullet>Les unités ennemies ont 120 % de chances de base d'être Perturbé pendant 2 <turn></turn> Tour.</bullet><bullet>Dissipe 2 effets d'état positifs sur les ennemis.</bullet><bullet>Dissipe 2 effets d'état négatifs sur les alliés.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Les unités ennemies ont 120 % de chances de base d'être Perturbé pendant 2 <turn></turn> Tour.</bullet><bullet>Dissipe 2 <hyperlink>Effets d'état positif</hyperlink> sur les ennemis.</bullet><bullet>Dissipe 2 <hyperlink>Effets d'état négatif</hyperlink> sur les alliés.</bullet></bulletlist>",
   "name": "Vague perturbatrice",
   "operation_point_cost": 80,
   "icon": "0000041B000012D6"
@@ -3444,7 +3931,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "enchantement_de_phase",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>La capacité Phase, qui permet aux unités de se téléporter au combat.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>La capacité Phase chargée, qui permet aux unités de se téléporter au combat.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -3489,7 +3976,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de soins</hyperlink>",
   "id": "téléportation_durgence",
   "tactical": true,
-  "description": "Téléporte l'unité alliée la plus proche dans un rayon de 4 case(s) vers la case vide ciblée.<br></br>Cette unité récupère +30 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+  "description": "Téléporte l'unité alliée la plus proche dans un rayon de 4 case(s) vers la case vide ciblée.<br></br>Cette unité récupère +30 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink> et tous ses <hyperlink>Effets d'état négatif</hyperlink> sont dissipés.",
   "name": "Téléportation d'urgence",
   "operation_point_cost": 30,
   "icon": "0000041B0000126E"
@@ -3500,7 +3987,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
   "id": "sang_astral",
   "tactical": false,
-  "description": "La magie commence à couler dans les veines de la race cible, lui accordant :<bulletlist><bullet>Syntonie : fortune, ce qui augmente les chances de <hyperlink>Coup critique</hyperlink> quand des sorts sont lancés.</bullet></bulletlist>",
+  "description": "La magie commence à couler dans les veines de la race cible, lui accordant :<bulletlist><bullet>Syntonie : fortune, ce qui augmente les <hyperlink><crit></crit>Chance de coup critique</hyperlink> quand des sorts sont lancés.</bullet></bulletlist>",
   "name": "Sang astral",
   "operation_point_cost": 250,
   "icon": "0000041B00001240"
@@ -3527,7 +4014,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de ville soutenu</hyperlink>",
   "id": "esprits_amplifiés",
   "tactical": false,
-  "description": "La ville ciblée en votre possession gagne :<bulletlist><bullet>+20 revenus de <knowledge></knowledge> <hyperlink>Savoir</hyperlink></bullet><bullet>-10 <happiness></happiness> <hyperlink>Stabilité urbaine</hyperlink></bullet></bulletlist>",
+  "description": "La ville ciblée en votre possession gagne :<bulletlist><bullet>+20 revenus de <knowledge></knowledge><hyperlink>Savoir</hyperlink></bullet><bullet>-10 <happiness></happiness> <hyperlink>Stabilité urbaine</hyperlink></bullet></bulletlist>",
   "name": "Esprits amplifiés",
   "operation_point_cost": 80,
   "icon": "0000041B00001244"
@@ -3538,7 +4025,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de dégâts/affaiblissement</hyperlink>",
   "id": "Éclairs_en_chaîne",
   "tactical": true,
-  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit 30 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>Se voit infliger Électrifié.</bullet><bullet>L'effet passe sur un autre ennemi dans un rayon de 3 cases.</bullet><bullet>Se transmet jusqu'à 2 fois.</bullet></bulletlist>",
+  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit 30 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>Se voit infliger 2 Électrifié.</bullet><bullet>L'effet passe sur un autre ennemi dans un rayon de 3 cases.</bullet><bullet>Se transmet jusqu'à 2 fois.</bullet></bulletlist>",
   "name": "Éclairs en chaîne",
   "operation_point_cost": 30,
   "icon": "0000041B00001238"
@@ -3549,7 +4036,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "concentration_aliénante",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Frénésie, ce qui augmente les dégâts infligés quand elles attaquent.</bullet><bullet>+1 de portée sur les attaques de base.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Frénésie, ce qui augmente les dégâts infligés quand elles attaquent.</bullet><bullet>+1 de <hyperlink><range></range>Portée</hyperlink> sur les attaques de base.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -3568,13 +4055,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "lames_de_foudre",
   "tactical": false,
-  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+20 % de dégâts contre les unités subissant Électrifié.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+10 % de dégâts contre les unités subissant Électrifié.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -3596,7 +4083,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée ennemie</hyperlink>",
   "id": "torrent_déclairs",
   "tactical": false,
-  "description": "Dans l'armée ennemie ciblée :<bulletlist><bullet>Toutes les unités subissent 20 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>Toutes les unités subissent -3 <defenselightning></defenselightning><hyperlink>Résistance à la foudre</hyperlink> pendant 1 <turn></turn> Tour de <hyperlink>Carte mondiale</hyperlink>.</bullet></bulletlist>",
+  "description": "Dans l'armée ennemie ciblée :<bulletlist><bullet>Toutes les unités subissent 20 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink>.</bullet><bullet>Toutes les unités subissent -1 <defenselightning></defenselightning><hyperlink>Résistance à la foudre</hyperlink> pendant 1 <turn></turn> Tour de <hyperlink>Carte mondiale</hyperlink>.</bullet></bulletlist>",
   "name": "Torrent d'éclairs",
   "operation_point_cost": 80,
   "icon": "0000041B000012E5"
@@ -3618,7 +4105,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "touche_du_façonneur",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Régénération naturelle</bullet><bullet>+10 <hyperlink><hp></hp> Points de vie</hyperlink></bullet><bullet>+2 <defenselightning></defenselightning><hyperlink>Résistance à la foudre</hyperlink></bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Régénération naturelle</bullet><bullet>+10 <hyperlink><hp></hp> Point de vie</hyperlink></bullet><bullet>+2 <defenselightning></defenselightning><hyperlink>Résistance à la foudre</hyperlink></bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitElemental></unitElemental> Élémentaire"
@@ -3699,7 +4186,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "Éruption_pyroclastique",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> ciblée :<bulletlist><bullet>Si elle renferme une <hyperlink>Amélioration de province</hyperlink> ennemie, elle sera <hyperlink>pillée</hyperlink>.<bulletlist></bullet><bullet>Vous ne gagnerez pas ses récompenses et ne perdrez pas d'<hyperlink>Alignement</hyperlink>.</bullet></bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies dans la province subissent 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>La province gagne <hyperlink>Terres cendrées</hyperlink>.</bullet><bullet>La province perd <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> ciblée :<bulletlist><bullet>Si elle renferme une <hyperlink>Amélioration de province</hyperlink> ennemie, elle sera <hyperlink>pillée</hyperlink>.<bulletlist></bullet><bullet>Vous ne gagnerez pas ses récompenses et ne perdrez pas d'<hyperlink>Alignement</hyperlink>.</bullet></bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies dans la province subissent 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>La province gagne <hyperlink>Terres cendrées</hyperlink>.</bullet><bullet>La province perd <hyperlink>Rivière</hyperlink>, <hyperlink>Prairies</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Éruption pyroclastique",
   "operation_point_cost": 150,
   "icon": "000003AD00002B86"
@@ -3722,13 +4209,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "lames_de_fragmentation",
   "tactical": false,
-  "description": "Octroie aux attaques de <hyperlink>Mêlée</hyperlink> de base des unités enchantées :<bulletlist><bullet>90 % de chances de base d'infliger Défense fragmentée, réduisant la <defense></defense> <hyperlink>Défense</hyperlink> ennemie.</bullet><bullet>Démolisseur, qui leur permet de détruire des obstacles renforcés.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Octroie aux attaques <hyperlink>Mêlée</hyperlink> de base des unités enchantées :<bulletlist><bullet>Infliction de Défense fragmentée, réduisant la <defense></defense> <hyperlink>Défense</hyperlink> ennemie.</bullet><bullet>Démolisseur, qui leur permet de détruire des obstacles renforcés.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -3750,7 +4237,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "flèches_chercheuses",
   "tactical": false,
-  "description": "Octroie aux attaques <hyperlink>Physiques à distance</hyperlink> des unités enchantées :<bulletlist><bullet>+1<range></range> de portée.</bullet></bulletlist>",
+  "description": "Octroie aux attaques <hyperlink>Physiques à distance</hyperlink> des unités enchantées :<bulletlist><bullet>+1 de <hyperlink><range></range>Portée</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -3867,13 +4354,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "armure_adaptative",
   "tactical": false,
-  "description": "Une fois par <turn></turn> Tour quand des unités enchantées subissent des dégâts non <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>, elles gagnent :<bulletlist><bullet>Résistance renforcée, ce qui augmente leur résistance aux dégâts magiques.</bullet><bullet>Protection d'état, ce qui réduit les chances que l'unité soit affectée par des effets d'état négatifs.</bullet></bulletlist>",
+  "description": "Une fois par <turn></turn> Tour quand des unités enchantées sont touchées par des dégâts non <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>, elles gagnent :<bulletlist><bullet>Résistance renforcée, ce qui augmente leur résistance aux dégâts magiques.</bullet><bullet>Protection d'état, ce qui réduit les chances que l'unité soit affectée par des <hyperlink>Effets d'état négatif</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -3945,7 +4432,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Sort de buff/soins</hyperlink>",
   "id": "Éveil_de_linstinct",
   "tactical": true,
-  "description": "Toutes les unités alliées dans un rayon de 2 case(s) :<bulletlist><bullet>Récupèrent 25 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink></bullet><bullet>Récupèrent tous leurs <hyperlink>Points d'action</hyperlink></bullet><bullet>Sont Fou furieux pendant 2 <turn></turn> Tour.</bullet></bulletlist>",
+  "description": "Toutes les unités alliées dans un rayon de 2 case(s) :<bulletlist><bullet>Récupèrent 25 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink></bullet><bullet>Récupèrent tous leurs <hyperlink>Points d'action</hyperlink></bullet><bullet>Sont Fou furieux pendant 2 <turn></turn> Tour.</bullet></bulletlist><br></br>N'affecte pas les unités ayant <hyperlink>Immunité contre la perte de contrôle</hyperlink>.",
   "name": "Éveil de l'instinct",
   "operation_point_cost": 50,
   "icon": "000003E300005236"
@@ -3972,7 +4459,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "restauration_des_terres",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> alliée ciblée ou non possédée :<bulletlist><bullet>Gagne des <hyperlink>Prairies</hyperlink> si elle est en surface ou des <hyperlink>Champs fongiques</hyperlink> si elle se trouve dans le sous-sol.</bullet><bullet>Perd <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Province</hyperlink> alliée ciblée ou non possédée :<bulletlist><bullet>Gagne des <hyperlink>Prairies</hyperlink> si elle est en surface ou des <hyperlink>Champs fongiques</hyperlink> et des <hyperlink>Forêt fongique</hyperlink> si elle se trouve dans le sous-sol.</bullet><bullet>Perd <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Sol de grotte</hyperlink>, <hyperlink>Stalagmites</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet></bulletlist>",
   "name": "Restauration des terres",
   "operation_point_cost": 30,
   "icon": "0000041B00000D7C"
@@ -4042,7 +4529,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    }
   ],
   "name": "Aspect de racine",
@@ -4155,7 +4642,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
   "id": "vaisseaux_du_chaos",
   "tactical": false,
-  "description": "La race ciblée se transforme en un réceptacle d'énergie chaotique et reçoit :<bulletlist><bullet>+10 % de dégâts pour chaque effet d'état négatif de la cible. Cumulable jusqu'à 3 fois.</bullet></bulletlist>",
+  "description": "La race ciblée se transforme en un réceptacle d'énergie chaotique et gagne :<bulletlist><bullet>+10 % de dégâts pour chaque <hyperlink>Effets d'état négatif</hyperlink> de la cible. Cumulable jusqu'à 3 fois.</bullet></bulletlist>",
   "name": "Vaisseaux du chaos",
   "operation_point_cost": 350,
   "icon": "0000041B00000B60"
@@ -4166,7 +4653,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "magie_du_désastre",
   "tactical": false,
-  "description": "Octroie aux attaques de base de <hyperlink>Magie</hyperlink> des unités enchantées :<bulletlist><bullet>60 % de chances d'infliger un effet d'état négatif aléatoire.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Octroie aux attaques de base de <hyperlink>Magie</hyperlink> des unités enchantées :<bulletlist><bullet>60 % de chances d'infliger un<hyperlink>Effet d'état négatif</hyperlink> aléatoire.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -4185,7 +4672,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
   "id": "invocation_du_dévoreur_de_chaos",
   "tactical": false,
-  "description": "Invoque un <hyperlink>Dévoreur de chaos</hyperlink>, un Unité mage de combat de mêlée qui se nourrit d'effets d'état négatifs.",
+  "description": "Invoque un <hyperlink>Dévoreur de chaos</hyperlink>, une Unité mage de combat de mêlée qui se nourrit d'<hyperlink>Effets d'état négatif</hyperlink>.",
   "name": "Invocation du dévoreur de chaos",
   "operation_point_cost": 200,
   "summoned_units": [
@@ -4200,7 +4687,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'affaiblissement</hyperlink>",
   "id": "hystérie_de_masse",
   "tactical": true,
-  "description": "Inflige un effet d'état négatif à toutes les unités dans un rayon de 1 case(s).",
+  "description": "Inflige un <hyperlink>Effet d'état négatif</hyperlink> aléatoire à toutes les unités dans un rayon de 1 case(s).",
   "name": "Hystérie de masse",
   "operation_point_cost": 30,
   "icon": "000003E3000059F1"
@@ -4273,7 +4760,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "bâtons_de_réparation",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Fidèle, ce qui réduit l'<hyperlink>Entretien d'unité</hyperlink>.</bullet><bullet>Toucher guérisseur, une capacité de soins pour le combat.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Fidèle, ce qui réduit l'<hyperlink>Entretien d'unité</hyperlink> de base.</bullet><bullet>Toucher guérisseur, une capacité de soins pour le combat.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -4316,13 +4803,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "lames_de_givre",
   "tactical": false,
-  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+20 % de dégâts contre les unités subissant Gelé ou Ralentissement.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+10 % de dégâts contre les unités subissant Gelé ou Ralentissement.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -4355,13 +4842,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "lames_incandescentes",
   "tactical": false,
-  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+20 % de dégâts contre les unités subissant Brûlure.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+10 % de dégâts contre les unités subissant Brûlure.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -4383,7 +4870,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "débordement_animique",
   "tactical": true,
-  "description": "Les unités alliées dans un rayon de 1 case(s) :<bulletlist><bullet>Obtiennent 1 Renforcé.</bullet><bullet>Obtiennent +20 <hyperlink><hp></hp> Points de vie</hyperlink> maximum jusqu'à la fin du combat.</bullet><bullet>Leurs effets d'état négatifs sont supprimés.</bullet></bulletlist>",
+  "description": "Les unités alliées dans un rayon de 1 case(s) :<bulletlist><bullet>Gagnent 1 Renforcé.</bullet><bullet>Gagnent +20 à leurs <hyperlink><hp></hp> Point de vie</hyperlink> maximum jusqu'à la fin de la bataille.</bullet><bullet>Perdent 2 <hyperlink>Effets d'état négatif</hyperlink>.</bullet></bulletlist>",
   "name": "Débordement animique",
   "operation_point_cost": 20,
   "icon": "0000041B000005E4"
@@ -4392,89 +4879,12 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4514010629343,
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_danimal_supérieu",
+  "id": "invocation_danimal_supérieur",
   "tactical": false,
-  "description": "Invoque une unité animale aléatoire d'échelon III sur l'emplacement ciblé.<br></br><br></br>A une petite chance d'invoquer un animal d'échelon IV.",
-  "name": "Invocation d'animal supérieu",
+  "description": "<bulletlist><bullet>Choisissez une unité Animal d'échelon III ou IV à ajouter à votre armée.</bullet><bullet>L'Animaux disponible dépend du type de terrain sur lequel le sort est lancé.</bullet></bulletlist>",
+  "name": "Invocation d'animal supérieur",
   "operation_point_cost": 150,
-  "icon": "000003E300004AF7",
-  "summoned_units": [
-   {
-    "slug": "matriarche_araignée_de_glace"
-   },
-   {
-    "slug": "loup_blanc"
-   },
-   {
-    "slug": "oiseau_tempête"
-   },
-   {
-    "slug": "matriarche_phacochère"
-   },
-   {
-    "slug": "vouivre_de_gel"
-   },
-   {
-    "slug": "ours-garou"
-   },
-   {
-    "slug": "mammouth"
-   },
-   {
-    "slug": "tigre_à_dents_de_sabre"
-   },
-   {
-    "slug": "rampeur"
-   },
-   {
-    "slug": "vouivre_dor"
-   },
-   {
-    "slug": "matriarche_araignée_chasseuse"
-   },
-   {
-    "slug": "matriarche_araignée_terrible"
-   },
-   {
-    "slug": "loup_spectral"
-   },
-   {
-    "slug": "licorne"
-   },
-   {
-    "slug": "crocodile_puant"
-   },
-   {
-    "slug": "ver_caustique"
-   },
-   {
-    "slug": "cauchemar"
-   },
-   {
-    "slug": "vouivre_de_feu"
-   },
-   {
-    "slug": "mastodonte_infernal"
-   },
-   {
-    "slug": "chien_infernal"
-   },
-   {
-    "slug": "vouivre_dobsidienne"
-   },
-   {
-    "slug": "matriarche_araignée_vampire"
-   },
-   {
-    "slug": "phénix"
-   },
-   {
-    "slug": "nimu_abyssal"
-   },
-   {
-    "slug": "kraken"
-   }
-  ]
+  "icon": "000003E300004AF7"
  },
  {
   "casting_cost": "15<mana></mana> ",
@@ -4493,7 +4903,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
   "id": "totem_des_terres_sauvages",
   "tactical": true,
-  "description": "Génère un <hyperlink>Totem des terres sauvages</hyperlink>, qui génère à son tour une unité animale d'échelon I au début de chacun de vos <turn></turn> Tour. Dure 3 <turn></turn> Tour.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
+  "description": "Invoque un <hyperlink>Totem des terres sauvages</hyperlink>, qui génère à son tour une unité animale aléatoire d'échelon I ou II lors de sa création et au début de vos 2 prochains <turn></turn> Tour.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
   "name": "Totem des terres sauvages",
   "operation_point_cost": 35,
   "summoned_units": [
@@ -4517,89 +4927,12 @@
   "casting_cost": "60<mana></mana> ",
   "resid": 4514010628856,
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_danimal_sauvage",
+  "id": "appel_danimal_sauvage",
   "tactical": false,
-  "description": "<bulletlist><bullet>Invoque un Animal aléatoire d'échelon I sur la case du monde ciblée.</bullet><bullet>Chance faible d'invoquer un animal d'échelon II.</bullet><bullet>Les Animaux possibles dépendent du type de terrain sur lequel la compétence est utilisée.</bullet></bulletlist>",
-  "name": "Invocation d'animal sauvage",
+  "description": "<bulletlist><bullet>Choisissez une unité Animal d'échelon I ou II à ajouter à votre armée.</bullet><bullet>Les Animaux disponibles dépendent du type de terrain sur lequel le sort est lancé.</bullet></bulletlist>",
+  "name": "Appel d'animal sauvage",
   "operation_point_cost": 60,
-  "icon": "0000041B000002E7",
-  "summoned_units": [
-   {
-    "slug": "araignée_de_glace"
-   },
-   {
-    "slug": "petit_phacochère"
-   },
-   {
-    "slug": "corbeau_sinistre"
-   },
-   {
-    "slug": "ours_polaire"
-   },
-   {
-    "slug": "charognard"
-   },
-   {
-    "slug": "chiot_infernal"
-   },
-   {
-    "slug": "ermite_de_ferraille"
-   },
-   {
-    "slug": "Éléphant"
-   },
-   {
-    "slug": "pyrephalène"
-   },
-   {
-    "slug": "warg"
-   },
-   {
-    "slug": "araignée_chasseuse"
-   },
-   {
-    "slug": "bébé_araignée_terrible"
-   },
-   {
-    "slug": "jeune_ver_caustique"
-   },
-   {
-    "slug": "ours_brun"
-   },
-   {
-    "slug": "scarabée_géant"
-   },
-   {
-    "slug": "thanatoptère"
-   },
-   {
-    "slug": "jeune_rampeur"
-   },
-   {
-    "slug": "nouvelle_vouivre"
-   },
-   {
-    "slug": "sanglier"
-   },
-   {
-    "slug": "petite_araignée_vampire"
-   },
-   {
-    "slug": "crocodile"
-   },
-   {
-    "slug": "singe"
-   },
-   {
-    "slug": "nimu"
-   },
-   {
-    "slug": "petit_kraken"
-   },
-   {
-    "slug": "pingouin-garou"
-   }
-  ]
+  "icon": "0000041B000002E7"
  },
  {
   "casting_cost": "10<mana></mana> ",
@@ -4618,7 +4951,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "chant_des_braves",
   "tactical": true,
-  "description": "Pendant 3 <turn></turn> Tour, l'unité alliée ciblée obtient :<bulletlist><bullet>Fou furieux</bullet><bullet>3 Renforcé</bullet></bulletlist>",
+  "description": "Pendant 3 <turn></turn> Tour, l'unité alliée ciblée obtient :<bulletlist><bullet>Fou furieux</bullet><bullet>3 Renforcé</bullet></bulletlist><br></br>N'affecte pas les unités ayant <hyperlink>Immunité contre la perte de contrôle</hyperlink>.",
   "name": "Chant des braves",
   "operation_point_cost": 20,
   "icon": "0000041300000D74"
@@ -4629,7 +4962,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "vision_de_gloire",
   "tactical": true,
-  "description": "Les unités alliées dans un rayon de 1 case(s) gagnent 3 Bonne étoile.",
+  "description": "Les unités alliées dans un rayon de 1 case(s) gagnent 3 Fortune.",
   "name": "Vision de gloire",
   "operation_point_cost": 25,
   "icon": "0000041300000D12"
@@ -4684,7 +5017,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "force_de_la_nature",
   "tactical": false,
-  "description": "Les unités enchantées gagnent :<bulletlist><bullet>+20 % de chances de <hyperlink>Coup critique</hyperlink>.</bullet><bullet>+4 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink> sur les attaques.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les unités enchantées gagnent :<bulletlist><bullet>+15 % de <hyperlink><crit></crit>Chance de coup critique</hyperlink>.</bullet><bullet>+3 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink> sur les attaques.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitCavalry></unitCavalry> Cavalerie"
@@ -4730,7 +5063,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
   "id": "lien_animal",
   "tactical": false,
-  "description": "Rend la race ciblée plus bestiale et connectée aux animaux. À côté d'une unité Animal alliée, les deux reçoivent :<bulletlist><bullet>+10 % de dégâts.</bullet><bullet>+10 % de chances de Coup critique.</bullet></bulletlist>",
+  "description": "Rend la race ciblée plus bestiale et connectée aux animaux. À côté d'une unité Animal alliée, les deux reçoivent :<bulletlist><bullet>+10 % de dégâts.</bullet><bullet>+10 % de <crit></crit>Chance de coup critique.</bullet></bulletlist>",
   "name": "Lien animal",
   "operation_point_cost": 150,
   "icon": "0000041B000002E3"
@@ -4756,13 +5089,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "lames_de_fléau",
   "tactical": false,
-  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+20 % de dégâts contre les unités subissant Empoisonné ou En décomposition.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de base de <hyperlink>Mêlée</hyperlink> des unités enchantées infligent :<bulletlist><bullet>+4 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>-2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>+10 % de dégâts contre les unités subissant Empoisonné ou En décomposition.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -4818,7 +5151,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -4871,7 +5204,7 @@
   "id": "teinture_antimagique",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Les unités alliées dans un rayon de 1 case(s) :<bulletlist><bullet>Bénéficient d'une dissipation de leurs effets d'état négatifs 2.</bullet><bullet>Obtiennent 2 Protection d'état.</bullet></bulletlist>",
+  "description": "Octroie aux unités alliées dans un rayon de 1 cases :<bulletlist><bullet> 2 de leurs <hyperlink>Effets d'état négatif</hyperlink> sont dissipés.</bullet><bullet>Gagnent 2 Protection d'état.</bullet></bulletlist>",
   "name": "Teinture antimagique",
   "operation_point_cost": 15,
   "icon": "0000046A000000EF"
@@ -4895,7 +5228,7 @@
   "id": "remontant_mystérieux",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Distribuer le remontant, qui leur accorde des effets d'état positifs et supprime un effet négatif.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Distribuer le remontant, qui leur accorde des <hyperlink>Effets d'état positif</hyperlink> et supprime un effet négatif.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -4909,15 +5242,15 @@
   "casting_cost": "45<souls></souls> ",
   "resid": 4273492488482,
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_dâme_corrompue",
+  "id": "invocation_de_banshee",
   "tactical": false,
-  "description": "Invoque une <hyperlink>Âme corrompue</hyperlink>, Unité combattante qui tire parti du <happiness></happiness> <hyperlink>Moral</hyperlink> faible de l'ennemi.",
-  "name": "Invocation d'âme corrompue",
+  "description": "Invoque une <hyperlink>Banshee</hyperlink>, un esprit vengeur qui réduit le moral et affaiblit l'ennemi par ses hurlements perçants.",
+  "name": "Invocation de banshee",
   "operation_point_cost": 90,
   "icon": "000003E300007127",
   "summoned_units": [
    {
-    "slug": "Âme_corrompue"
+    "slug": "banshee"
    }
   ]
  },
@@ -4928,7 +5261,7 @@
   "id": "flamme_purificatrice",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Les unités alliées dans un rayon de 1 case(s) :<bulletlist><bullet>Récupèrent +25 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Leurs effets d'état négatifs sont supprimés.</bullet></bulletlist>",
+  "description": "Les unités alliées dans un rayon de 1 case(s) :<bulletlist><bullet>Récupèrent 25 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Leurs <hyperlink>Effets d'état négatif</hyperlink> sont supprimés.</bullet></bulletlist>",
   "name": "Flamme purificatrice",
   "operation_point_cost": 35,
   "icon": "000003E300006B8F"
@@ -4969,7 +5302,7 @@
   "id": "vitalité_draconienne",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "La race ciblée reçoit la vitalité du dragon, qui lui octroie :<bulletlist><bullet>Régénération de +5 <hyperlink><hp></hp> Point de vie</hyperlink> par <turn></turn> <hyperlink>Tour</hyperlink> sur la <hyperlink>Carte mondiale</hyperlink>.</bullet><bullet>+3 <hyperlink><hp></hp> Points de vie</hyperlink> par rang d'unité.</bullet><bullet>+3 <hyperlink><hp></hp> Points de vie</hyperlink> par niveau de héros, jusqu'au niveau 10.</bullet></bulletlist>",
+  "description": "La race ciblée reçoit la vitalité du dragon, qui lui octroie :<bulletlist><bullet>Régénération de +5 <hyperlink><hp></hp> Point de vie</hyperlink> par <turn></turn> <hyperlink>Tour</hyperlink> sur la <hyperlink>Carte mondiale</hyperlink>.</bullet><bullet>+3 <hyperlink><hp></hp> Point de vie</hyperlink> par rang d'unité.</bullet><bullet>+3 <hyperlink><hp></hp> Point de vie</hyperlink> par niveau de héros, jusqu'au niveau 10.</bullet></bulletlist>",
   "name": "Vitalité draconienne",
   "operation_point_cost": 150,
   "icon": "000003E300006B3C"
@@ -5009,7 +5342,7 @@
   "id": "enchantement_dévolution_rapide",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+20 % <hyperlink><xp></xp> Expérience</hyperlink> du combat.</bullet><bullet>Volatilisation si échelon I ou II, les guérissant une fois par combat si leurs <hyperlink><hp></hp> Points de vie</hyperlink> sont réduits à zéro.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+20 % <hyperlink><xp></xp> Expérience</hyperlink> du combat.</bullet><bullet>Volatilisation si échelon I ou II, les guérissant une fois par combat si leurs <hyperlink><hp></hp> Point de vie</hyperlink> sont réduits à zéro.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Unités qui évoluent"
@@ -5062,14 +5395,14 @@
   ]
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "10<souls></souls> ",
   "resid": 4273492485799,
   "spellType": "<casttactical></casttactical><hyperlink>Sort de dégâts/affaiblissement</hyperlink>",
   "id": "explosion_pourrissante",
   "tactical": true,
-  "description": "L'unité <hyperlink>Zombie</hyperlink> ou squelette alliée ciblée explose, tous les ennemis dans un rayon de 2 case(s) :<bulletlist><bullet>Subissent 10 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> et 10 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>Ont 90 % de chances de recevoir En décomposition.</bullet></bulletlist>",
+  "description": "L'unité <hyperlink>Zombie</hyperlink> ou squelette alliée ciblée explose, tous les ennemis dans un rayon de 2 case(s) :<bulletlist><bullet>Subissent 10 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> et 10 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>Obtiennent 2 En décomposition pendant 3 <turn></turn> Tour.</bullet></bulletlist>",
   "name": "Explosion pourrissante",
-  "operation_point_cost": 20,
+  "operation_point_cost": 15,
   "icon": "000003E3000066A4"
  },
  {
@@ -5078,7 +5411,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de dégâts/affaiblissement</hyperlink>",
   "id": "nécrose",
   "tactical": true,
-  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit 10 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> et 10 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink></bullet><bullet>Reçoit En décomposition.</bullet><bullet>Quand elle meurt, elle reçoit un <hyperlink>Zombie en décomposition</hyperlink> sous votre contrôle jusqu'à la fin du combat.</bullet></bulletlist>",
+  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit 10 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> et 10 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink></bullet><bullet>Reçoit En décomposition.</bullet><bullet>Quand elle meurt, elle devient un <hyperlink>Zombie en décomposition</hyperlink> sous votre contrôle jusqu'à la fin du combat.</bullet></bulletlist>",
   "name": "Nécrose",
   "operation_point_cost": 15,
   "icon": "000003E30000669A"
@@ -5105,7 +5438,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "floraison_enchantée",
   "tactical": false,
-  "description": "La <hyperlink>Ville</hyperlink> alliée ciblée gagne :<bulletlist><bullet>À chaque <turn></turn> <hyperlink>Tour</hyperlink>, 1 <hyperlink>Province</hyperlink> à l'intérieur du <hyperlink>Domaine</hyperlink> ou adjacentes à celui-ci :<bulletlist></bullet><bullet>Gagnent <hyperlink>Prairies</hyperlink> et <hyperlink>Forêt</hyperlink> en surface, ou <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Forêt fongique</hyperlink> dans le sous-sol.</bullet><bullet>Perdent <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink>, <hyperlink>Sol de grotte</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet><bullet>Les provinces à l'intérieur du domaine présentant soit les caractéristiques prairies, forêts, champs fongiques ou forêt fongique gagnent : +2 <food></food> <hyperlink>Nourriture</hyperlink>, +2 <structureprod></structureprod> <hyperlink>Production</hyperlink> et +2 <unitprod></unitprod><hyperlink>Enrôlement</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Ville</hyperlink> alliée ciblée gagne :<bulletlist><bullet>À chaque <turn></turn> <hyperlink>Tour</hyperlink>, 1 <hyperlink>Province</hyperlink> à l'intérieur du <hyperlink>Domaine</hyperlink> ou adjacentes à celui-ci :<bulletlist></bullet><bullet>Gagnent <hyperlink>Prairies</hyperlink> et <hyperlink>Forêt</hyperlink> en surface, ou <hyperlink>Champs fongiques</hyperlink> et <hyperlink>Forêt fongique</hyperlink> dans le sous-sol.</bullet><bullet>Perdent <hyperlink>Abîme</hyperlink>, <hyperlink>Marais</hyperlink>, <hyperlink>Sable</hyperlink>, <hyperlink>Neige</hyperlink>, <hyperlink>Glace</hyperlink>, <hyperlink>Terres cendrées</hyperlink> et <hyperlink>Terre morne</hyperlink>.</bullet><bullet>Les provinces à l'intérieur du domaine présentant soit les caractéristiques prairies, forêts, champs fongiques ou forêt fongique gagnent : +2 <food></food> <hyperlink>Nourriture</hyperlink>, +2 <structureprod></structureprod> <hyperlink>Production</hyperlink> et +2 <unitprod></unitprod><hyperlink>Enrôlement</hyperlink>.</bullet></bulletlist>",
   "name": "Floraison enchantée",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5128,7 +5461,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "projectiles_guidés",
   "tactical": false,
-  "description": "Les attaques de base des unités enchantées :<bulletlist><bullet>Ignorent les pénalités de précision de la condition <hyperlink>Obscurcissement</hyperlink> causées par les unités sur le passage et certains terrains.</bullet></bulletlist>",
+  "description": "Les attaques de base des unités enchantées :<bulletlist><bullet>Lancent 1 case(s) plus loin sans pénalité de <hyperlink><accuracy></accuracy> Précision</hyperlink> de longue portée.</bullet><bullet>Ignorent les pénalités de <hyperlink><accuracy></accuracy> Précision</hyperlink> de la condition <hyperlink>Obscurcissement</hyperlink> causées par les unités sur le passage et certains terrains.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -5146,17 +5479,6 @@
   "name": "Projectiles guidés",
   "operation_point_cost": 90,
   "icon": "0000041B00001259"
- },
- {
-  "casting_cost": "45<mana></mana> ",
-  "resid": 4273492485152,
-  "spellType": "<caststrategic></caststrategic><hyperlink>Sort de ville</hyperlink>",
-  "id": "renforts_bénis",
-  "tactical": false,
-  "description": "La ville libre vassale ciblée obtient 2 <hyperlink>Âmes bénies</hyperlink> sous son contrôle.",
-  "name": "Renforts bénis",
-  "operation_point_cost": 45,
-  "icon": "0000041B00001969"
  },
  {
   "casting_cost": "60<mana></mana> ",
@@ -5295,14 +5617,14 @@
   ]
  },
  {
-  "casting_cost": "150<mana></mana> ",
+  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484493,
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
   "id": "unité_ressuscitée",
   "tactical": true,
   "description": "L'unité morte-vivante alliée ciblée récupère tous ses <temphp></temphp> Points de vie temporaires.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau.",
   "name": "Unité ressuscitée",
-  "operation_point_cost": 50,
+  "operation_point_cost": 40,
   "icon": "0000041B000019BF"
  },
  {
@@ -5333,7 +5655,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Sort de buff/soins</hyperlink>",
   "id": "sauvetage",
   "tactical": true,
-  "description": "L'unité alliée ciblée :<bulletlist><bullet>Récupère tous ses <hyperlink><hp></hp> Points de vie</hyperlink> sous forme de <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Dissipe tout effet d'état négatif.</bullet><bullet>Gagne 3 Résistance renforcée.</bullet></bulletlist>",
+  "description": "L'unité alliée ciblée :<bulletlist><bullet>Récupère tous ses <hyperlink><hp></hp> Point de vie</hyperlink> sous forme de <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Dissipe <hyperlink>Effets d'état négatif</hyperlink>.</bullet><bullet>Gagne 3 Résistance renforcée.</bullet></bulletlist>",
   "name": "Sauvetage",
   "operation_point_cost": 35,
   "icon": "0000041B0000197F"
@@ -5350,7 +5672,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -5395,7 +5717,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
   "id": "conjuration_de_la_balise_divine",
   "tactical": true,
-  "description": "Invoque une <hyperlink>Balise divine</hyperlink>. Au lancement et au début de chaque tour, les unités alliées dans un rayon de 2 case(s) :<bulletlist><bullet>Récupèrent +5 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Gagnent +5 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>L'invocation dure 3 <turn></turn> Tour.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau..",
+  "description": "Invoque une <hyperlink>Balise divine</hyperlink>. Au lancement et au début de chaque tour, les unités alliées dans un rayon de 2 case(s) :<bulletlist><bullet>Récupèrent +15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Gagnent +5 <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>L'invocation dure 3 <turn></turn> Tour.<br></br><br></br>Ne peut pas être utilisé dans des combats sur l'eau..",
   "name": "Conjuration de la balise divine",
   "operation_point_cost": 25,
   "icon": "000003E3000060DF",
@@ -5407,30 +5729,17 @@
  },
  {
   "casting_cost": "100<mana></mana> ",
-  "resid": 4273492484345,
-  "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_de_portelume",
-  "tactical": false,
-  "description": "Invoque un <hyperlink>Portelume</hyperlink>Unité mage de combat capable de convertir d'autres unités.",
-  "name": "Invocation de Portelume",
-  "operation_point_cost": 100,
-  "icon": "0000041B00001961",
-  "summoned_units": [
-   {
-    "slug": "portelume"
-   }
-  ]
- },
- {
-  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484335,
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "force_aux_faibles",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Fidèle, ce qui réduit l'<hyperlink>Entretien d'unité</hyperlink>.</bullet><bullet>+1 <damageSpirit></damageSpirit> <hyperlink>Dégâts d'esprit</hyperlink> aux attaques pour chaque échelon d'unité de la cible.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>Fidèle, ce qui réduit l'<hyperlink>Entretien d'unité</hyperlink>.</bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink>.</bullet><bullet>+1 <damageSpirit></damageSpirit> <hyperlink>Dégâts d'esprit</hyperlink> aux attaques pour chaque échelon d'unité de la cible.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "Échelon I"
+   },
+   {
+    "requisite": "Échelon II"
    }
   ],
   "name": "Force aux faibles",
@@ -5454,7 +5763,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
   "id": "soins_darmée",
   "tactical": false,
-  "description": "Les unités de l'armée ciblée récupèrent 25 <hyperlink><hp></hp> Points de vie</hyperlink>.",
+  "description": "Les unités de l'armée ciblée récupèrent 25 <hyperlink><hp></hp> Point de vie</hyperlink>.",
   "name": "Soins d'armée",
   "operation_point_cost": 80,
   "icon": "000003BD00002E6C"
@@ -5465,7 +5774,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
   "id": "invocation_du_golem_de_cuivre",
   "tactical": false,
-  "description": "Invoque une <hyperlink>Golem de cuivre</hyperlink>, une unité hast d'échelon I.",
+  "description": "Invoque une <hyperlink>Golem de cuivre</hyperlink>, une unité d'hast d'échelon I.",
   "name": "Invocation du golem de cuivre",
   "operation_point_cost": 60,
   "summoned_units": [
@@ -5495,7 +5804,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort d'invocation de combat</hyperlink>",
   "id": "réanimation_supérieure",
   "tactical": true,
-  "description": "Ressuscite l'unité non-Héros ciblée :<bulletlist><bullet>En tant qu'<hyperlink>Âme corrompue</hyperlink> si elle n'est pas Mort-vivant.</bullet><bullet>Avec 100 % de ses <hyperlink><hp></hp> Points de vie</hyperlink> totaux si elle est Mort-vivant.</bullet></bulletlist><br></br>Si une <hyperlink>Âme corrompue</hyperlink> ou un Mort-vivant ennemi survit à ce combat, le contrôleur pourra dépenser des <souls></souls> pour conserver l'unité de manière permanente.",
+  "description": "Ressuscite l'unité non-Héros ciblée :<bulletlist><bullet>En tant qu'<hyperlink>Âme corrompue</hyperlink> si elle n'est pas Mort-vivant.</bullet><bullet>Avec 100 % de ses <hyperlink><hp></hp> Point de vie</hyperlink> totaux si elle est Mort-vivant.</bullet></bulletlist><br></br>Si une <hyperlink>Âme corrompue</hyperlink> ou un Mort-vivant ennemi survit à ce combat, le contrôleur pourra dépenser des <souls></souls> pour conserver l'unité de manière permanente.",
   "name": "Réanimation supérieure",
   "operation_point_cost": 40,
   "icon": "0000041B0000173A"
@@ -5520,42 +5829,49 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492484056,
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
-  "id": "magie_nécrotique",
+  "id": "projectiles_nécrotiques",
   "tactical": false,
-  "description": "Octroie aux attaques de base des unités enchantées :<bulletlist><bullet>60 % de chances de base d'infliger En décomposition, un effet de dégâts sur la durée qui empêche l'ennemi de récupérer.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Octroie aux attaques des unités enchantées :<bulletlist><bullet>90 % de chances de base d'infliger En décomposition, un effet de dégâts sur la durée qui réduit les soins reçus.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unité à distance"
+   },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
    },
    {
     "requisite": "<unitBattleMage></unitBattleMage> Unité mage de combat"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
    }
   ],
-  "name": "Magie nécrotique",
+  "name": "Projectiles nécrotiques",
   "operation_point_cost": 90,
   "icon": "0000041B000005E0"
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "20<souls></souls> ",
   "resid": 4273492484053,
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
-  "id": "restauration_darmée_de_morts-vivants",
+  "id": "festin_dâmes",
   "tactical": false,
-  "description": "Restaure 20 <hyperlink><hp></hp> Points de vie</hyperlink> à toutes les unités de type Mort-vivant dans l'armée alliée ciblée.",
-  "name": "Restauration d'armée de morts-vivants",
-  "operation_point_cost": 20,
+  "description": "L'armée alliée ciblée :<bulletlist><bullet>Soigne les unités non-Mort-vivant à hauteur de 20 <hyperlink><hp></hp> Point de vie</hyperlink>.</bullet><bullet>Soigne les unités mort-vivantes à hauteur de 40 <hyperlink><hp></hp> Point de vie</hyperlink>.</bullet></bulletlist>",
+  "name": "Festin d'âmes",
+  "operation_point_cost": 25,
   "icon": "0000041B000005DC"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "60<souls></souls> ",
   "resid": 4273492483972,
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée ennemie</hyperlink>",
-  "id": "armée_liée_par_lâme",
+  "id": "murmures_de_revenants",
+  "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Les unités ennemies de l'armée ciblée gagnent Lien spirituel jusqu'à la leur prochaine participation au combat.",
-  "name": "Armée liée par l'âme",
-  "operation_point_cost": 45,
-  "icon": "0000041B000016EF"
+  "description": "Pendant 1 <turn></turn> Tour de la <hyperlink>Carte mondiale</hyperlink>, l'armée ennemie ciblée obtient :<bulletlist><bullet>2 Démoralisé.</bullet><bullet>En cas d'attaque, conjure 3 squelettes avec Champion impie du côté de l'attaquant.</bullet></bulletlist>",
+  "name": "Murmures de Revenants",
+  "operation_point_cost": 100,
+  "icon": "0000049700002C39"
  },
  {
   "casting_cost": "80<mana></mana> ",
@@ -5563,7 +5879,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "lieurs_dâmes",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>90 % de chances de base d'infliger Lien spirituel aux attaques, augmentant le gain d'<souls></souls> <hyperlink>Âme</hyperlink> quand la cible est tuée.</bullet><bullet>+20 % de dégâts contre les unités avec Lien spirituel.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>90 % de chances de base d'infliger Lien spirituel aux attaques, augmentant le gain d'<souls></souls> <hyperlink>Âme</hyperlink> quand la cible est tuée.</bullet><bullet>+10 % de dégâts contre les unités avec Lien spirituel.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -5591,14 +5907,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483932,
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
-  "id": "invocation_de_banshee",
+  "id": "invocation_dâme_corrompue",
   "tactical": false,
-  "description": "Invoque une <hyperlink>Banshee</hyperlink>, un esprit vengeur qui réduit le moral et affaiblit l'ennemi par ses hurlements perçants.",
-  "name": "Invocation de banshee",
+  "description": "Invoque une <hyperlink>Âme corrompue</hyperlink>, Unité combattante qui tire parti du <happiness></happiness> <hyperlink>Moral</hyperlink> faible de l'ennemi.",
+  "name": "Invocation d'âme corrompue",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "banshee"
+    "slug": "Âme_corrompue"
    }
   ]
  },
@@ -5636,7 +5952,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -5732,7 +6048,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
   "id": "invocation_du_serpent_astral",
   "tactical": false,
-  "description": "Invoque un <hyperlink>Serpent astral</hyperlink>, un Unité combattante capable de se téléporter sur le front de façon explosive.",
+  "description": "Invoque un <hyperlink>Serpent astral</hyperlink>, une Unité combattante capable de se téléporter sur le front de façon explosive.",
   "name": "Invocation du serpent astral",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -5758,7 +6074,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink> Sort d'invocation</hyperlink>",
   "id": "invocation_du_gardien",
   "tactical": false,
-  "description": "Invoque un <hyperlink>Gardien</hyperlink>, un Unité mage de combat doté d'une vision améliorée.",
+  "description": "Invoque un <hyperlink>Gardien</hyperlink>, une Unité mage de combat doté d'une vision améliorée.",
   "name": "Invocation du gardien",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -5773,7 +6089,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée ennemie</hyperlink>",
   "id": "divination_sur_lennemi",
   "tactical": false,
-  "description": "Tous les ennemis de l'armée adverse vous ouvrent les portes de la divination pendant 15 <turn></turn> Tour.",
+  "description": "Tous les ennemis de l'armée adverse vous ouvrent les portes de la divination pendant 10 <turn></turn> Tour.",
   "name": "Divination sur l'ennemi",
   "operation_point_cost": 30,
   "icon": "0000041B0000124D"
@@ -5815,7 +6131,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "bouclier_statique",
   "tactical": true,
-  "description": "L'unité alliée ciblée gagne un bouclier avec 60 % de chances de base d'infliger Étourdie aux attaquants.<br></br>Dure 2 <turn></turn> Tour.",
+  "description": "L'unité alliée ciblée et un deuxième allié dans un rayon de 3 case(s) gagnent un bouclier : <bulletlist><bullet>60 % de chances de base d'infliger Étourdie aux attaquants.</bullet><bullet>Dure 2 <turn></turn> Tour.</bullet></bulletlist>",
   "name": "Bouclier statique",
   "operation_point_cost": 15,
   "icon": "0000041B0000120C"
@@ -5826,7 +6142,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "marque_dinvulnérabilité",
   "tactical": true,
-  "description": "L'unité alliée ciblée :<bulletlist><bullet>Reçoit Invulnérable pendant 1 <turn></turn> Tour.</bullet><bullet>Ses effets d'état négatifs sont supprimés.</bullet></bulletlist><br></br>Une seule utilisation sur une unité par combat.",
+  "description": "L'unité alliée ciblée :<bulletlist><bullet>Reçoit Invulnérable pendant 1 <turn></turn> Tour.</bullet><bullet>Ses effets <hyperlink>Effets d'état négatif</hyperlink> sont supprimés.</bullet></bulletlist><br></br>Une seule utilisation sur une unité par combat.",
   "name": "Marque d'invulnérabilité",
   "operation_point_cost": 20,
   "icon": "0000041B00001200"
@@ -5878,13 +6194,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "armement_dartisan",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+30 % chances de <hyperlink>Coup critique</hyperlink>.</bullet></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+25 % de <hyperlink><crit></crit>Chance de coup critique</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -5928,7 +6244,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de terraformation</hyperlink>",
   "id": "bris_terrestre",
   "tactical": false,
-  "description": "La <hyperlink>Province</hyperlink> ciblée habitable ou inhabitable :<bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies dans la province subissent 10 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>Perd <hyperlink>Montagne</hyperlink>, <hyperlink>Stalagmites</hyperlink> et <hyperlink>Terre creusable</hyperlink>.</bullet></bulletlist>",
+  "description": "Dans la <hyperlink>Province</hyperlink> ciblée habitable ou inhabitable :<bulletlist><bullet>Les <hyperlink>Unités</hyperlink> ennemies subissent 10 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink>.</bullet><bullet>La province perd ses <hyperlink>Montagne</hyperlink>, <hyperlink>Stalagmites</hyperlink> et <hyperlink>Terre creusable</hyperlink>.</bullet><bullet>Invoque une <hyperlink>Esprit de la pierre</hyperlink></bullet></bulletlist>",
   "name": "Bris terrestre",
   "operation_point_cost": 150,
   "icon": "000003E300005CCB",
@@ -5944,7 +6260,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "peau_de_pierre",
   "tactical": true,
-  "description": "L'unité ciblée gagne Peau de pierre  pendant 3 <hyperlink>Tours</hyperlink>.",
+  "description": "L'unité ciblée gagne Peau de pierre pendant 3 <hyperlink>Tours</hyperlink>.",
   "name": "Peau de pierre",
   "operation_point_cost": 10,
   "icon": "000003E300005C80"
@@ -6001,7 +6317,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
   "id": "abondance_naturelle",
   "tactical": false,
-  "description": "Toutes les unités alliées dans la Province ciblée obtiennent +15 <hyperlink><hp></hp> Points de vie</hyperlink> max et récupèrent 15 <hyperlink><hp></hp> Points de vie</hyperlink> dans les domaines neutres et alliés pendant les 2 prochains <turn></turn> Tour de <hyperlink>Carte mondiale</hyperlink>.",
+  "description": "Toutes les unités alliées dans la Province ciblée obtiennent +15 <hyperlink><hp></hp> Point de vie</hyperlink> max et récupèrent 15 <hyperlink><hp></hp> Point de vie</hyperlink> dans les domaines neutres et alliés pendant les 2 prochains <turn></turn> Tour de <hyperlink>Carte mondiale</hyperlink>.",
   "name": "Abondance naturelle",
   "operation_point_cost": 120,
   "icon": "0000041B00000DBB"
@@ -6012,7 +6328,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Transformation de race mineure</hyperlink>",
   "id": "super_prolifération",
   "tactical": false,
-  "description": "La race ciblée grandit en nombre et en taille, et se voit octroyer :<bulletlist><bullet>+10 <hyperlink><hp></hp> Points de vie</hyperlink>.</bullet><bullet>+1 <hyperlink>Riposte</hyperlink>.</bullet><bullet>Nombre réduit d'unités en formation.</bullet></bulletlist><br></br>La transformation est incompatible avec Fourmillement.",
+  "description": "La race ciblée grandit en nombre et en taille, et se voit octroyer :<bulletlist><bullet>+10 <hyperlink><hp></hp> Point de vie</hyperlink>.</bullet><bullet>+1 <hyperlink>Riposte</hyperlink>.</bullet><bullet>Nombre réduit d'unités en formation.</bullet></bulletlist><br></br>La transformation est incompatible avec Fourmillement.",
   "name": "Super prolifération",
   "operation_point_cost": 350,
   "icon": "000003E300004AFB"
@@ -6021,24 +6337,27 @@
   "casting_cost": "120<mana></mana> ",
   "resid": 4273492483003,
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
-  "id": "projectiles_de_pourrissement",
+  "id": "lames_putréfiantes",
   "tactical": false,
-  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> de base des unités enchantées :<bulletlist><bullet>Infligent +2 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>Gagnent 60 % de chances de base d'infliger En décomposition, un effet de dégâts sur la durée qui empêche l'ennemi de récupérer.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques de base des unités enchantées :<bulletlist><bullet>Infligent En décomposition, un effet de dégâts sur la durée qui réduit les soins reçus.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
-    "requisite": "<unitRanged></unitRanged> Unité à distance"
+    "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitSupport></unitSupport> Unité d'assistance"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
-    "requisite": "<unitBattleMage></unitBattleMage> Unité mage de combat"
+    "requisite": "<unitShock></unitShock> Troupe de choc"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unité combattante"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
    }
   ],
-  "name": "Projectiles de pourrissement",
+  "name": "Lames putréfiantes",
   "operation_point_cost": 120,
   "icon": "0000041B00000D54"
  },
@@ -6049,7 +6368,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Sort de ville soutenu</hyperlink>",
   "id": "cycle_des_saisons",
   "tactical": false,
-  "description": "À lancer sur une ville alliée. Tous les combats se déroulant sur le domaine de la ville gagnent <abilityblue>Cycle des saisons</abilityblue>, qui accorde un effet différent à chaque tour de combat dans l'ordre suivant :<bulletlist><bullet>Hiver : tous les ennemis subissent 10 <damageFrost></damageFrost>.</bullet><bullet>Printemps : toutes les unités alliées gagnent 1 Renforcé.</bullet><bullet>Été : toutes les unités alliées récupèrent +10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Automne : tous les ennemis gagnent 1 Affaibli.</bullet></bulletlist>",
+  "description": "Tous les combats se déroulant sur le domaine de la ville ciblée gagnent <abilityblue>Cycle des saisons</abilityblue>, qui accorde un effet différent à chaque tour de combat dans l'ordre suivant :<bulletlist><bullet>Hiver : tous les ennemis subissent 10 <damageFrost></damageFrost>.</bullet><bullet>Printemps : toutes les unités alliées gagnent 1 Renforcé.</bullet><bullet>Été : toutes les unités alliées récupèrent +10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Automne : tous les ennemis gagnent 1 Affaibli.</bullet></bulletlist>",
   "name": "Cycle des saisons",
   "operation_point_cost": 120,
   "icon": "0000041B00000D64"
@@ -6071,7 +6390,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de dégâts/soins</hyperlink>",
   "id": "diffusion_de_santé",
   "tactical": true,
-  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit 30 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>Obtient 1 En décomposition.</bullet></bulletlist><br></br>Les unités alliées dans un rayon de 2 case(s) .<bulletlist><bullet>Soignent +15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Obtiennent1 Régénération.</bullet></bulletlist>",
+  "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit 30 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink>.</bullet><bullet>Obtient 2 En décomposition.</bullet></bulletlist><br></br>Les unités alliées dans un rayon de 2 case(s) .<bulletlist><bullet>Soignent +15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Obtiennent2 Régénération.</bullet></bulletlist>",
   "name": "Diffusion de santé",
   "operation_point_cost": 30,
   "icon": "0000041B00000D5C"
@@ -6126,7 +6445,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de dégâts</hyperlink>",
   "id": "massacre_sacrificiel",
   "tactical": true,
-  "description": "L'unité alliée ciblée explose et les unités ennemis dans un rayon de 2 cases :<bulletlist><bullet>Subissent 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> plus 5 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> par échelon de l'unité sacrifiée.</bullet><bullet>Subissent un effet d'état négatif aléatoire par échelon de l'unité sacrifiée.</bullet>",
+  "description": "L'unité alliée ciblée explose et les unités ennemies dans un rayon de 2 cases :<bulletlist><bullet>Subissent 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> plus 5 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> par échelon de l'unité sacrifiée.</bullet><bullet>Subissent un <hyperlink>Effet d'état négatif</hyperlink> aléatoire par échelon de l'unité sacrifiée.</bullet>",
   "name": "Massacre sacrificiel",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6170,7 +6489,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -6234,7 +6553,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -6309,7 +6628,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -6410,7 +6729,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -6481,7 +6800,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -6503,13 +6822,13 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "armes_explosives_de_feu",
   "tactical": false,
-  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+20 % de chances de <hyperlink>Coup critique</hyperlink>.</bullet><bullet>Quand cette unité en tue une autre :<bulletlist></bullet><bullet>L'unité qui meurt explose, infligeant 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> aux unités ennemies adjacentes.</bullet></bulletlist></bulletlist>",
+  "description": "Octroie aux unités enchantées :<bulletlist><bullet>+20 % de <hyperlink><crit></crit>Chance de coup critique</hyperlink>.</bullet><bullet>Quand cette unité en tue une autre :<bulletlist></bullet><bullet>L'unité qui meurt explose, infligeant 20 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> aux unités ennemies adjacentes.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -6531,7 +6850,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "bêtes_libres",
   "tactical": false,
-  "description": "Les unités enchantées :<bulletlist><bullet>Infligent +20 % de dégâts.</bullet><bullet>Gagnent +10 <hyperlink><hp></hp> Points de vie</hyperlink>.</bullet><bullet>Gagnent Démolisseur et peuvent détruire des obstacles renforcés.</bullet><bullet>Voient leur nombre d'unités en formation réduit.</bullet></bulletlist>",
+  "description": "Les unités enchantées :<bulletlist><bullet>Infligent +20 % de dégâts.</bullet><bullet>Gagnent +10 <hyperlink><hp></hp> Point de vie</hyperlink>.</bullet><bullet>Gagnent Démolisseur et peuvent détruire des obstacles renforcés.</bullet><bullet>Voient leur nombre d'unités en formation réduit.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitAnimal></unitAnimal> Animal"
@@ -6553,7 +6872,7 @@
     "requisite": "<unitShield></unitShield> Unité bouclier"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitShock></unitShock> Troupe de choc"
@@ -6575,7 +6894,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "enchantement_latent",
   "tactical": false,
-  "description": "Donne aux unités non-élevées :<bulletlist><bullet>Latent : Gardien si Unité hast.</bullet><bullet>Latent : Bouclier de lumière si Bouclier.</bullet><bullet>Latent : Flèches chercheuses si Unité à distance.</bullet><bullet>Latent : Lumière radieuse si Unité mage de combat.</bullet><bullet>La capacité Réveil et Latent : Lumière radieuse si Soutien.</bullet></bulletlist>",
+  "description": "Donne aux unités non-élevées :<bulletlist><bullet>Latent : Gardien si Unité d'hast.</bullet><bullet>Latent : Bouclier de lumière si Bouclier.</bullet><bullet>Latent : Flèches chercheuses si Unité à distance.</bullet><bullet>Latent : Lumière radieuse si Unité mage de combat.</bullet><bullet>La capacité Réveil et Latent : Lumière radieuse si Soutien.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
@@ -6584,7 +6903,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -6612,7 +6931,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -6649,7 +6968,7 @@
     "requisite": "<unitRanged></unitRanged> Unité à distance"
    },
    {
-    "requisite": "<unitPolearm></unitPolearm> Unité hast"
+    "requisite": "<unitPolearm></unitPolearm> Unité d'hast"
    },
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -6677,7 +6996,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>Sort de buff</hyperlink>",
   "id": "chant_de_fureur_inébranlable",
   "tactical": true,
-  "description": "Toutes les unités alliées perdent tous les cumuls de Défense renforcée et Résistance renforcée. Pour chaque cumul perdu, elles gagnent :<bulletlist><bullet> Renforcé</bullet><bullet> Bonne étoile</bullet></bulletlist>",
+  "description": "Toutes les unités alliées perdent tous les cumuls de Défense renforcée et Résistance renforcée. Pour chaque cumul perdu, elles gagnent :<bulletlist><bullet> Renforcé</bullet><bullet> Fortune</bullet></bulletlist>",
   "name": "Chant de fureur inébranlable",
   "operation_point_cost": 20,
   "icon": "0000041B00000115"
@@ -6747,7 +7066,7 @@
   "id": "Élu_donoka",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau hivernal</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau hivernal</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Point de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
   "name": "Élu d'Onoka",
   "operation_point_cost": 300,
   "icon": "000003DF000016E6"
@@ -6759,7 +7078,7 @@
   "id": "Élu_de_luth",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau automnal</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau automnal</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Point de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
   "name": "Élu de Luth",
   "operation_point_cost": 300,
   "icon": "000003DF000016E5"
@@ -6771,7 +7090,7 @@
   "id": "Élu_de_ventrogh",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau estival</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau estival</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Point de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
   "name": "Élu de Ventrogh",
   "operation_point_cost": 300,
   "icon": "000003DF000016E4"
@@ -6783,7 +7102,7 @@
   "id": "Élu_dilandra",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau printanier</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau printanier</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Point de vie</hyperlink> et les <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
   "name": "Élu d'Ilandra",
   "operation_point_cost": 300,
   "icon": "000003DF000016E0"

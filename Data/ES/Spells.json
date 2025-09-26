@@ -28,7 +28,7 @@
   "id": "signo_del_bastón_pesado",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "La unidad tiene:<bulletlist><bullet>Las habilidades <hyperlink>mágicas</hyperlink> y de <hyperlink>Apoyo</hyperlink> tienen +1 de alcance.</bullet><bullet>Movimiento lento en combate.</bullet></bulletlist>",
+  "description": "La unidad tiene:<bulletlist><bullet>Las habilidades <hyperlink>mágicas</hyperlink> y de <hyperlink>Apoyo</hyperlink> tienen +1 de <hyperlink><range></range>Alcance</hyperlink>.</bullet><bullet>Movimiento lento en combate.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -48,7 +48,7 @@
   "id": "signo_de_la_vanguardia",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "La unidad tiene:<bulletlist><bullet>Movimiento muy veloz en combate.</bullet><bullet>Los ataques <hyperlink>mágicos</hyperlink> y de <hyperlink>Alcance físico</hyperlink> dirigidos a esta unidad tienen -20 % de <hyperlink>Precisión</hyperlink>.</bullet><bullet>Los ataques <hyperlink>Cuerpo a cuerpo</hyperlink> infligen -20 % de daño.</bullet></bulletlist>",
+  "description": "La unidad tiene:<bulletlist><bullet>Movimiento muy veloz en combate.</bullet><bullet>Los ataques <hyperlink>mágicos</hyperlink> y de <hyperlink>Alcance físico</hyperlink> dirigidos a esta unidad tienen -20 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.</bullet><bullet>Los ataques <hyperlink>Cuerpo a cuerpo</hyperlink> infligen -20 % de daño.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShock></unitShock> Unidad de choque"
@@ -154,7 +154,7 @@
   "id": "signo_de_la_cazadora",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Los ataques <hyperlink>mágicos</hyperlink> y de <hyperlink>Alcance físico</hyperlink> tienen +30 % de daño y -1 de alcance.",
+  "description": "Los ataques <hyperlink>mágicos</hyperlink> y <hyperlink>Alcance físico</hyperlink> tienen +30 % de daño y -1 de <hyperlink><range></range>Alcance</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -183,15 +183,15 @@
   "icon": "0000049C00000082"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "20<mana></mana> ",
   "resid": 5068061409449,
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de debilitación</hyperlink>",
   "id": "bendición_corrupta",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Las unidades enemigas objetivo situadas en un área de 1 casilla(s):<bulletlist><bullet>Pierden todos los efectos de estado positivos.</bullet><bullet>Si un efecto de estado que se haya perdido tiene algún Contrarresto de efectos de estado, entonces la unidad obtiene una acumulación de ese efecto de estado negativo.<bulletlist></bullet>",
+  "description": "La unidad enemiga objetivo:<bullet><bulletlist>Pierde todos los <hyperlink>Efectos de estado positivo</hyperlink>.</bullet><bullet>Si un efecto de estado que se haya perdido tiene algún Contrarresto de efectos de estado, entonces la unidad obtiene una acumulación de ese <hyperlink>Efecto de estado negativo</hyperlink>.<bulletlist></bullet>",
   "name": "Bendición corrupta",
-  "operation_point_cost": 30,
+  "operation_point_cost": 25,
   "icon": "0000049C0000008C"
  },
  {
@@ -246,6 +246,321 @@
   "name": "Grieta umbría",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "120<mana></mana> ",
+  "resid": 5046586584490,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "proyectiles_florecientes",
+  "tactical": false,
+  "description": "Los ataques básicos <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Obtienen una probabilidad inicial del 60 % de infligir Semilla de vida durante 3 <turn></turn> Turnos.</bullet><bullet>Infligen +10 % de daño contra unidades con el estado Decadencia.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Proyectiles florecientes",
+  "operation_point_cost": 120,
+  "icon": "0000049700002DA7"
+ },
+ {
+  "casting_cost": "60<mana></mana> ",
+  "resid": 5046586584448,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_espíritu_lumínico_menor",
+  "tactical": false,
+  "description": "Invoca <hyperlink>un Espíritu lumínico menor</hyperlink>, una Unidad de apoyo.",
+  "name": "Invocar espíritu lumínico menor",
+  "operation_point_cost": 60,
+  "icon": "000003BD00002E6E",
+  "summoned_units": [
+   {
+    "slug": "espíritu_lumínico_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586584444,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_portador_de_luz",
+  "tactical": false,
+  "description": "Invoca <hyperlink>un Portador de luz</hyperlink>, una Unidad de magia de combate que recluta otras unidades para que se unan a tu causa.",
+  "name": "Invocar portador de luz",
+  "operation_point_cost": 100,
+  "icon": "0000049700002D86",
+  "summoned_units": [
+   {
+    "slug": "portador_de_luz"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584436,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_espíritu_lumínico",
+  "tactical": false,
+  "description": "Invoca <hyperlink>un Espíritu lumínico</hyperlink>, una Unidad de apoyo con potentes capacidades curativas.",
+  "name": "Invocar espíritu lumínico",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "espíritu_lumínico"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584156,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_alma_bendita",
+  "tactical": false,
+  "description": "Invoca <hyperlink>una Alma bendita</hyperlink>, una Unidad de protección que puede reunir a tus unidades y condenar al enemigo.",
+  "name": "Invocar alma bendita",
+  "operation_point_cost": 150,
+  "icon": "0000041B00001969",
+  "summoned_units": [
+   {
+    "slug": "alma_bendita"
+   }
+  ]
+ },
+ {
+  "casting_cost": "35<souls></souls> ",
+  "resid": 5046586584128,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora/debilitación</hyperlink>",
+  "id": "campeón_impío",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "La unidad aliada objetivo obtiene:<bulletlist><bullet>+50 % de daño.</bullet><bullet>Inmortal.</bullet><bullet>Armadura de la desesperación.</bullet></bulletlist><br></br>Al lanzar la habilidad, las unidades enemigas situadas en un área de 2 casilla(s) pierden 10 de <happiness></happiness> <hyperlink>Moral</hyperlink>.",
+  "name": "Campeón impío",
+  "operation_point_cost": 40,
+  "icon": "0000049700002C3D"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586584106,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "resentimiento_no_muerto",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+2 de <defensespirit></defensespirit> <hyperlink>Resistencia espiritual</hyperlink>.</bullet><bullet>+2 de <defensefire></defensefire> <hyperlink>Resistencia al fuego</hyperlink>.</bullet><bullet>Asesino rabioso.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitUndead></unitUndead> No muerto"
+   }
+  ],
+  "name": "Resentimiento no muerto",
+  "operation_point_cost": 140,
+  "icon": "0000049700002C32"
+ },
+ {
+  "casting_cost": "150<souls></souls> ",
+  "resid": 5046586584087,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_ángel_caído",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Invoca <hyperlink>un Ángel caído</hyperlink>, una Unidad de magia de combate que provoca la decadencia y la corrupción.",
+  "name": "Invocar ángel caído",
+  "operation_point_cost": 200,
+  "summoned_units": [
+   {
+    "slug": "Ángel_caído"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586583968,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "aura_sagrada",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Aura sagrada, lo que otorga protección de estado a las unidades aliadas adyacentes e inflige daño a los enemigos adyacentes.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unidad de protección"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Aura sagrada",
+  "operation_point_cost": 140,
+  "icon": "0000049700002B9D"
+ },
+ {
+  "casting_cost": "200<mana></mana> ",
+  "resid": 5046586583955,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
+  "id": "guardianes_celestiales",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "El líder objetivo de un ejército obtiene Guardianes celestiales durante 1 <turn></turn> Turno del <hyperlink>Mapa del mundo</hyperlink>, lo que conjura 2 unidades arcontes de nivel III al inicio del combate mientras dure.",
+  "name": "Guardianes celestiales",
+  "operation_point_cost": 200,
+  "icon": "0000049700002B90"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583943,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
+  "id": "renacer_ascendido",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "La unidad objetivo muerta que no sea un héroe ni celestial:<bulletlist><bullet>Revive como <hyperlink>un Vigía</hyperlink> bajo el control del conjurador hasta el final del combate.</bullet><bullet>Al revivir, todas las unidades aliadas situadas en un área de 2 casilla(s) recuperan 20 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet>",
+  "name": "Renacer ascendido",
+  "operation_point_cost": 40,
+  "icon": "0000049700002B84"
+ },
+ {
+  "casting_cost": "450<mana></mana> ",
+  "resid": 5046586583927,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
+  "id": "alma_pura",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Purifica las almas de la raza objetivo y le otorga:<bulletlist><bullet>Al inicio de cada turno en combate, elimina 1 <hyperlink>Efecto de estado negativo</hyperlink>.</bullet><bullet>Si el efecto de estado negativo eliminado tenía un <hyperlink>contraefecto</hyperlink>, obtiene el <hyperlink>Efecto de estado positivo</hyperlink>.</bullet></bulletlist><br></br>Esta transformación es incompatible con Carne umbría y Caminante de la penumbra.",
+  "name": "Alma pura",
+  "operation_point_cost": 450,
+  "icon": "0000049700002B7C"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586583923,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_astra",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Invoca <hyperlink>una Astra</hyperlink>, una Unidad mítica angelical con ataques poderosos y habilidades curativas.",
+  "name": "Invocar astra",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "astra"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583846,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "diademas_proféticas",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Obtienen Precognición al entrar en <hyperlink>Modo defensivo</hyperlink>.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unidad de protección"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Diademas proféticas",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B1A"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583837,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "proyectiles_del_destino",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+20 % de <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink>.</bullet><bullet>Fiel.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   }
+  ],
+  "name": "Proyectiles del destino",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B16"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586583776,
+  "spellType": "<casttactical></casttactical> <hyperlink>Conjuro de combate</hyperlink>",
+  "id": "adivinación_de_combate",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Cuando se lanza la habilidad y durante los siguientes 2 <turn></turn> Turnos, aplica el efecto a la batalla en el siguiente orden:<bulletlist><bullet>Todas las unidades aliadas obtienen +25 % de <hyperlink>Evasión</hyperlink> durante el turno.</bullet><bullet>Todas las unidades aliadas obtienen Precognición.</bullet><bullet>Todas las unidades aliadas obtienen +20 % de daño durante el turno.</bullet></bulletlist>",
+  "name": "Adivinación de combate",
+  "operation_point_cost": 35,
+  "icon": "0000049700002ADD"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586583726,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
+  "id": "postura_heroica",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "La unidad aliada objetivo:<bulletlist><bullet>Se eliminan sus <hyperlink>Efectos de estado negativo</hyperlink>.</bullet><bullet>Obtiene Firme durante 1 <turn></turn> Turnos.</bullet><bullet>Ignora las penalizaciones de <hyperlink>Bajas</hyperlink> durante 1 <turn></turn> Turnos.</bullet></bulletlist>",
+  "name": "Postura heroica",
+  "operation_point_cost": 20,
+  "icon": "0000049700002AAB"
+ },
+ {
+  "casting_cost": "250<mana></mana> ",
+  "resid": 5046586583714,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
+  "id": "espíritu_virtuoso",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Otorga fuerza a la raza objetivo en momentos de debilidad, y les otorga:<bulletlist><bullet>+2 de <defensespirit></defensespirit> <hyperlink>Resistencia espiritual</hyperlink>.</bullet><bullet>Cuando los <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos de esta unidad bajan del 60 %:<bulletlist></bullet><bullet>Ignora un 50 % de sus <hyperlink>Bajas</hyperlink>.</bullet><bullet>Obtiene +1 de <defense></defense> <hyperlink>Defensa</hyperlink>.</bullet><bullet>Obtiene +1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist>",
+  "name": "Espíritu virtuoso",
+  "operation_point_cost": 250,
+  "icon": "0000049700002A9E"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586583705,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_vigía",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Invoca <hyperlink>un Vigía</hyperlink>, una Unidad de magia de combate que desata el fuego sagrado para purificar a sus enemigos.",
+  "name": "Invocar vigía",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "vigía"
+   }
+  ]
  },
  {
   "casting_cost": "90<mana></mana> ",
@@ -344,7 +659,7 @@
   "id": "hojas_resonantes",
   "DLC": "GIANTKINGS ",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas obtienen:<bulletlist><bullet>Aplican un efecto de estado negativo en función del terreno.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas obtienen:<bulletlist><bullet>Aplican <hyperlink>un Efecto de estado negativo</hyperlink> en función del terreno.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -488,7 +803,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
   "id": "invocar_espíritu_magmático",
   "tactical": false,
-  "description": "Invoca una unidad <hyperlink>Espíritu magmático</hyperlink>, un Unidad de magia de combate de nivel III.",
+  "description": "Invoca una unidad <hyperlink>Espíritu magmático</hyperlink>, una Unidad de magia de combate de nivel III.",
   "name": "Invocar espíritu magmático",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -536,7 +851,7 @@
   "id": "proyectiles_malditos",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Los ataques de <hyperlink>Alcance físico</hyperlink> y <GLOBAL.MagicConcept>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen +2 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>Infligen +2 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 60 % de aplicar Fuego fantasmal durante 3 <turn></turn> Turnos.<br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.</bullet>",
+  "description": "Los ataques <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen +1 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>Infligen +1 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Infligen Fuego fantasmal durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -591,7 +906,7 @@
   "id": "profanar_el_terreno",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Si contiene <hyperlink>una Mejora de provincia</hyperlink>, se convierte en <hyperlink>saqueada</hyperlink>.<bulletlist></bullet><bullet>Recibes sus recompensas y pierdes <reputation2></reputation2> de <hyperlink>Posicionamiento</hyperlink>.</bullet></bulletlist><bullet>La provincia obtiene <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>La provincia pierde <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Si contiene <hyperlink>una Mejora de provincia</hyperlink>, se convierte en <hyperlink>saqueada</hyperlink>.<bulletlist></bullet><bullet>Recibes sus recompensas y pierdes <reputation2></reputation2> de <hyperlink>Posicionamiento</hyperlink>.</bullet></bulletlist><bullet>La provincia obtiene <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>La provincia pierde <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Profanar el terreno",
   "operation_point_cost": 60,
   "icon": "00000497000013B2"
@@ -901,7 +1216,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "renacer_monstruoso",
   "tactical": true,
-  "description": "La unidad aliada objetivo de nivel I, II, o III que no sea de Origen mágico ni un Artefacto:<bulletlist><bullet>Se transforma en una unidad <hyperlink>Guerreante</hyperlink>.</bullet><bullet>Recupera 60 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Muere al final del combate.</bullet></bulletlist>",
+  "description": "La unidad aliada objetivo de nivel I, II o III que no sea de Origen mágico ni un Artefacto:<bulletlist><bullet>Se transforma en una unidad <hyperlink>Guerreante</hyperlink>.</bullet><bullet>Recupera 60 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Muere al final del combate.</bullet></bulletlist><br><br></br>No se puede usar en el combate acuático.",
   "name": "Renacer monstruoso",
   "operation_point_cost": 30,
   "icon": "0000049700000ECB"
@@ -1108,7 +1423,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "flechas_depuradoras",
   "tactical": false,
-  "description": "Otorga a los ataques básicos de <hyperlink>Alcance físico</hyperlink> de las unidades encantadas:<bulletlist><bullet>+10 % de daño contra unidades <hyperlink>mágicas</hyperlink>.</bullet><bullet>Probabilidad inicial del 60 % de eliminar 1 efecto de estado positivo del objetivo.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Otorga a los ataques básicos <hyperlink>Alcance físico</hyperlink> de las unidades encantadas:<bulletlist><bullet>+10 % de daño contra unidades de Origen mágico.</bullet><bullet>Probabilidad inicial del 60 % de eliminar 1 <hyperlink>Efecto de estado positivo</hyperlink> del objetivo.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -1199,13 +1514,13 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "creación_de_mundos_tierras_cenicientas",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo:<bulletlist><bullet>Obtiene <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>Pierde <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo:<bulletlist><bullet>Obtiene <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>Pierde <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Creación de mundos: tierras cenicientas",
   "operation_point_cost": 45,
   "icon": "000004970000066F"
  },
  {
-  "casting_cost": "80<mana></mana> ",
+  "casting_cost": "60<mana></mana> ",
   "resid": 5046586574328,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de mundo</hyperlink>",
   "id": "aluvión",
@@ -1213,7 +1528,7 @@
   "tactical": false,
   "description": "La provincia objetivo:<bulletlist><bullet>Transforma el terreno en pantano (si hay masa de tierra).</bullet><bullet>Se convierte en Aluvión durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br><br></br>No se puede usar en el subterráneo.",
   "name": "Aluvión",
-  "operation_point_cost": 80,
+  "operation_point_cost": 60,
   "icon": "00000497000005A8"
  },
  {
@@ -1223,7 +1538,7 @@
   "id": "tormenta_eléctrica",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "<bulletlist><bullet>Todas las unidades reciben el estado Humedad durante 3 <turn></turn> Turnos.</bullet><bullet>Hasta 2 unidades enemigas al azar:<bulletlist></bullet><bullet>Reciben 10 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de recibir el estado Electrificación durante 3 <turn></turn> Turnos.</bullet></bulletlist></bulletlist><br></br>Este hechizo se repite al principio de cada turno durante los siguientes 6 <turn></turn> Turnos.",
+  "description": "<bulletlist><bullet>Todas las unidades reciben el estado Humedad durante 3 <turn></turn> Turnos.</bullet><bullet>Hasta 2 unidades enemigas al azar:<bulletlist></bullet><bullet>Reciben 20 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de recibir el estado Electrificación durante 3 <turn></turn> Turnos.</bullet></bulletlist></bulletlist><br></br>Este hechizo se repite al principio de cada turno durante los siguientes 6 <turn></turn> Turnos.",
   "name": "Tormenta eléctrica",
   "operation_point_cost": 35,
   "icon": "00000497000005A4"
@@ -1247,7 +1562,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
   "id": "toque_espiritual",
   "tactical": false,
-  "description": "Hace que la raza objetivo conecte con los poderes espirituales, lo que les otorga:<bulletlist><bullet>Astucia espiritual.</bullet><bullet>La habilidad para ignorar:<bulletlist></bullet><bullet>Penalizaciones a la visión por Nublado.</bullet><bullet>Penalizaciones a la precisión por Neblina persistente.</bullet></bulletlist></bulletlist>",
+  "description": "Hace que la raza objetivo conecte con los poderes espirituales, lo que les otorga:<bulletlist><bullet>Astucia espiritual.</bullet><bullet>La habilidad para ignorar:<bulletlist></bullet><bullet>Penalizaciones a la visión por Nublado.</bullet><bullet>Penalizaciones de <hyperlink><accuracy></accuracy>Precisión</hyperlink> por Neblina persistente.</bullet></bulletlist></bulletlist>",
   "name": "Toque espiritual",
   "operation_point_cost": 250,
   "icon": "000004970000052C"
@@ -1270,7 +1585,7 @@
   "id": "abrazo_espiritual",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "En un área de 1 casilla(s):<bulletlist><bullet>Coloca nubes de <hyperlink>Niebla</hyperlink>.</bullet><bullet>Las unidades aliadas obtienen 2 efectos de estado positivos al azar.</bullet>",
+  "description": "En un área de 1 casilla(s):<bulletlist><bullet>Coloca nubes de <hyperlink>Niebla</hyperlink>.</bullet><bullet>Las unidades aliadas obtienen 2 <hyperlink>Efectos de estado positivo</hyperlink> al azar.</bullet>",
   "name": "Abrazo espiritual",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1299,7 +1614,7 @@
   "id": "generar_neblinoso",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Invoca <hyperlink>un Neblinoso</hyperlink>, una Unidad combatiente cuyos ataques infligen efectos de estado negativos al azar.",
+  "description": "Invoca <hyperlink>un Neblinoso</hyperlink>, una Unidad combatiente con ataques que infligen <hyperlink>Efectos de estado negativo</hyperlink> al azar.",
   "name": "Generar neblinoso",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -1705,7 +2020,7 @@
   "id": "ritual_de_la_calamidad",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<bulletlist><bullet>Al comienzo de cada <turn></turn><hyperlink>Turno</hyperlink> durante un asedio, se <hyperlink>saquea</hyperlink> <hyperlink>una Mejora de provincia</hyperlink> aleatoria de la ciudad asediada, lo que te otorga recompensas.</bullet><bullet>Al inicio del combate:<bulletlist></bullet><bullet>Todos los defensores obtienen una acumulación de Fuego fantasmal durante {duration} <turn></turn> Turnos</bullet><bullet>Aparecen {amountUnits} <hyperlink>Ogros malditos</hyperlink> en el bando atacante.</bullet></bulletlist></bulletlist>",
+  "description": "<bulletlist><bullet>Al comienzo de cada <turn></turn><hyperlink>Turno</hyperlink> durante un asedio, se <hyperlink>saquea</hyperlink> <hyperlink>una Mejora de provincia</hyperlink> aleatoria de la ciudad asediada, lo que te otorga recompensas.</bullet><bullet>Al inicio del combate:<bulletlist></bullet><bullet>Todos los defensores obtienen una acumulación de Fuego fantasmal durante <turn></turn> Turnos</bullet><bullet>Aparecen <hyperlink>Ogros malditos</hyperlink> en el bando atacante.</bullet></bulletlist></bulletlist>",
   "name": "Ritual de la calamidad",
   "operation_point_cost": 0,
   "icon": "00000497000013B6"
@@ -1781,7 +2096,7 @@
   "description": "Selecciona <hyperlink>un Ejército</hyperlink> aliado como objetivo. <hyperlink>Una Unidad</hyperlink> del ejército al azar que tenga Evolución obtiene al instante suficientes rangos para evolucionar.",
   "name": "Evolución forzosa",
   "operation_point_cost": 80,
-  "icon": "00000493000001AF"
+  "icon": "0000049700002DFE"
  },
  {
   "casting_cost": "200<mana></mana> ",
@@ -1829,7 +2144,7 @@
   "id": "carne_umbría",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Da a la raza objetivo bendiciones del Abismo Umbrío, que le otorgan:<bulletlist><bullet>Inmunidad a mal umbrío.</bullet><bullet>Mientras están en terreno de <hyperlink>Penumbra</hyperlink>, las unidades obtienen:<bulletlist></bullet><bullet>+10 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet><bullet>+12 <hyperlink><hp></hp> Punto de salud</hyperlink> por <turn></turn><hyperlink>Turno</hyperlink> en el mapa del mundo.</bullet></bulletlist><bullet>Las <hyperlink>Ciudades</hyperlink> de la raza:<bulletlist></bullet><bullet>Obtienen +2 de ganancias de <knowledge></knowledge> <hyperlink>Conocimiento</hyperlink> por cada provincia con terreno de penumbra.</bullet><bullet>Ignora las penalizaciones de <happiness></happiness> <hyperlink>Estabilidad de la ciudad</hyperlink> del terreno de penumbra.</bullet></bulletlist><bullet>Las unidades heroicas obtienen Pastor de la penumbra.</bullet></bulletlist>",
+  "description": "Da a la raza objetivo bendiciones del Abismo Umbrío, que le otorgan:<bulletlist><bullet>Inmunidad a mal umbrío.</bullet><bullet>Mientras están en <hyperlink>Penumbra</hyperlink>, las unidades obtienen:<bulletlist></bullet><bullet>+10 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet><bullet>+12 <hyperlink><hp></hp> Punto de salud</hyperlink> por <turn></turn><hyperlink>Turno</hyperlink> en el mapa del mundo.</bullet></bulletlist><bullet>Las <hyperlink>Ciudades</hyperlink> de la raza:<bulletlist></bullet><bullet>Obtienen +2 de ganancias de <knowledge></knowledge> <hyperlink>Conocimiento</hyperlink> por cada provincia con terreno de penumbra.</bullet><bullet>Ignoran las penalizaciones de <happiness></happiness> <hyperlink>Estabilidad de la ciudad</hyperlink> del terreno de penumbra.</bullet></bulletlist><bullet>Las unidades heroicas obtienen Pastor de la penumbra.</bullet></bulletlist><br></br>Esta transformación es incompatible con Alma pura.",
   "name": "Carne umbría",
   "operation_point_cost": 250,
   "icon": "0000049000000854"
@@ -1841,10 +2156,162 @@
   "id": "caminante_de_la_penumbra",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Las criaturas de la raza objetivo se convierten en seres umbríos, lo que otorga:<bulletlist><bullet>El tipo de unidad Demonio umbrío.</bullet><bullet>Flotante.</bullet><bullet>Movimiento veloz.<bulletlist><br></br><br></br>Las unidades montadas pierden sus monturas.<br></br><br></br>Los héroes pierden sus ranuras de equipamiento de montura y pierna.</bullet>",
+  "description": "Las criaturas de la raza objetivo se convierten en seres umbríos, lo que otorga:<bulletlist><bullet>El tipo de unidad Demonio umbrío.</bullet><bullet>Flotante.</bullet><bullet>Movimiento veloz.<bulletlist><br></br><br></br>Las unidades montadas pierden sus monturas.<br></br><br></br>Los héroes pierden sus ranuras de equipamiento de montura y pierna.<br></br><br></br>Esta transformación es incompatible con Alma pura.</bullet>",
   "name": "Caminante de la penumbra",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905512,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
+  "id": "conjurar_elemental",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoca un espíritu menor de nivel I en función de la <hyperlink>Afinidad</hyperlink> dominante de tu imperio: <hyperlink>Espíritu níveo menor</hyperlink><br></br><br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "name": "Conjurar elemental",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "espíritu_níveo_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905508,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
+  "id": "conjurar_elemental",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoca un espíritu menor de nivel I en función de la <hyperlink>Afinidad</hyperlink> dominante de tu imperio: <hyperlink>Espíritu oceánico menor</hyperlink><br></br><br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "name": "Conjurar elemental",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "espíritu_oceánico_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905504,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
+  "id": "conjurar_elemental",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoca un espíritu menor de nivel I en función de la <hyperlink>Afinidad</hyperlink> dominante de tu imperio: <hyperlink>Espíritu pétreo menor</hyperlink><br></br><br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "name": "Conjurar elemental",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "espíritu_pétreo_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905500,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
+  "id": "conjurar_elemental",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoca un espíritu menor de nivel I en función de la <hyperlink>Afinidad</hyperlink> dominante de tu imperio: <hyperlink>Espíritu pluvial menor</hyperlink><br></br><br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "name": "Conjurar elemental",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "espíritu_pluvial_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905496,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
+  "id": "conjurar_elemental",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoca un espíritu menor de nivel I en función de la <hyperlink>Afinidad</hyperlink> dominante de tu imperio: <hyperlink>Espíritu magmático menor</hyperlink><br></br><br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "name": "Conjurar elemental",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "espíritu_magmático_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905491,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
+  "id": "conjurar_elemental",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Invoca un espíritu menor de nivel I en función de la <hyperlink>Afinidad</hyperlink> dominante de tu imperio: <hyperlink>Espíritu lumínico menor</hyperlink><br></br><br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "name": "Conjurar elemental",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "espíritu_lumínico_menor"
+   }
+  ]
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636905483,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
+  "id": "encarnación_resiliente",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Las unidades aliadas situadas en un área de 1 casilla(s) durante 1 <turn></turn> Turnos obtienen:<bulletlist><bullet>+1 de <defense></defense> <hyperlink>Defensa</hyperlink> y +1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet><bullet>+1 de <defense></defense> <hyperlink>Defensa</hyperlink> y +1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink> adicionales por acumulación de Encarnación de afinidad.</bullet></bulletlist>",
+  "name": "Encarnación resiliente",
+  "operation_point_cost": 15,
+  "icon": "0000048D000015C1"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636905425,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "marca_de_la_encarnación",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Otorga a las unidades que no sean arquitectas:<bulletlist><bullet>Encarnación de afinidad.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unidad de protección"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Marca de la encarnación",
+  "operation_point_cost": 90,
+  "icon": "0000048D000015B9"
  },
  {
   "casting_cost": "60<gold></gold> ",
@@ -1918,7 +2385,7 @@
   "id": "tormenta_ígnea_consagradora",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> no aliada objetivo que no contenga ninguna <hyperlink>Maravilla ancestral</hyperlink>:<bulletlist><bullet>Hace que su <hyperlink>Mejora de provincia</hyperlink> quede arrasada.</bullet><bullet>Las unidades enemigas en la provincia reciben 20 de <damageSpirit></damageSpirit> <hyperlink>Daño espiritual</hyperlink>.</bullet><bullet>Durante 3 <turn></turn> Turnos, al entrar en combate, todas las unidades enemigas sufren Condenación.</bullet><bullet>Crea <hyperlink>Llamas purificadoras</hyperlink> en casillas aleatorias.</bullet></bulletlist>",
+  "description": "En la <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Las unidades enemigas reciben 20 de <damageSpirit></damageSpirit> <hyperlink>Daño espiritual</hyperlink>.</bullet><bullet>La provincia obtiene Tormenta ígnea consagradora durante 3 <turn></turn> Turnos.</bullet><bullet>Si cuenta con <hyperlink>una Mejora de provincia</hyperlink> del enemigo, se <hyperlink>saquea</hyperlink>.</bullet></bulletlist>",
   "name": "Tormenta ígnea consagradora",
   "operation_point_cost": 100,
   "icon": "0000048D0000087B"
@@ -1942,7 +2409,7 @@
   "id": "campeones_bendecidos_por_la_llama",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Obtienen una probabilidad inicial del 60 % de infligir Quemadura.</bullet><bullet>Si el objetivo tiene 5 acumulaciones de Quemadura:<br></br>Crea <hyperlink>Llamas purificadoras</hyperlink> en la casilla objetivo durante 3 <turn></turn><hyperlink>Turnos</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Obtienen una probabilidad inicial del 60 % de infligir Quemadura.</bullet><bullet>Crean <hyperlink>Llamas purificadoras</hyperlink> en la casilla objetivo durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -2064,7 +2531,7 @@
   "id": "conjurar_tentáculo",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Invoca una Unidad de lucha <hyperlink>inmóvil</hyperlink> con Ojo clarividente.<br></br>Esta invocación dura 3 <turn></turn> Turnos.",
+  "description": "Invoca una Unidad de lucha <hyperlink>inmóvil</hyperlink> con Hiperconsciencia.<br></br>Esta invocación dura 3 <turn></turn> Turnos.",
   "name": "Conjurar tentáculo",
   "operation_point_cost": 25,
   "summoned_units": [
@@ -2080,7 +2547,7 @@
   "id": "concentración_constrictiva",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Obtienen una probabilidad inicial del 30 % de infligir Constricción durante 1 <turn></turn> Turnos.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Obtienen una probabilidad inicial del 30 % de infligir Constricción durante 1 <turn></turn> Turnos.</bullet><bullet>La probabilidad aumenta a 60 % contra unidades con Marca o Ralentización.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -2128,7 +2595,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
   "id": "invocar_animal_salvaje",
   "tactical": false,
-  "description": "<bulletlist><bullet>Invoca un Animal aleatorio de nivel I en la casilla del mundo seleccionada como objetivo.</bullet><bullet>Ligera probabilidad de invocar un animal de nivel II.</bullet><bullet>Los Animales dependerán del tipo de terreno en el que se lance el hechizo.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Elige una unidad Animal de nivel I o II para añadirla a tu ejército.</bullet><bullet>Los Animales disponibles dependen del tipo de terreno sobre el que se lanza el hechizo.</bullet></bulletlist>",
   "name": "Invocar animal salvaje",
   "operation_point_cost": 60,
   "icon": "0000041B000002E7",
@@ -2204,7 +2671,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
   "id": "invocar_animal_superior",
   "tactical": false,
-  "description": "Invoca una unidad animal aleatoria de nivel III en una ubicación objetivo.<br></br><br></br>Tiene una pequeña probabilidad de invocar a un animal de nivel IV.",
+  "description": "<bulletlist><bullet>Elige una unidad Animal de nivel III o IV para añadirla a tu ejército.</bullet><bullet>Los Animales disponibles dependen del tipo de terreno sobre el que se lanza el hechizo.</bullet></bulletlist>",
   "name": "Invocar animal superior",
   "operation_point_cost": 150,
   "icon": "000003E300004AF7",
@@ -2276,6 +2743,17 @@
     "slug": "guiverno_de_obsidiana"
    }
   ]
+ },
+ {
+  "casting_cost": "5<mana></mana> ",
+  "resid": 4995046968314,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
+  "id": "rotura_de_grilletes",
+  "tactical": true,
+  "description": "La unidad aliada objetivo:<bulletlist><bullet>Pierde todos los <hyperlink>Efectos de estado negativo</hyperlink>.</bullet><bullet>Obtiene 2 de Fortaleza.</bullet></bulletlist>",
+  "name": "Rotura de grilletes",
+  "operation_point_cost": 10,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -2386,7 +2864,7 @@
   "id": "mantra_de_purificación",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "La unidad aliada objetivo:<bulletlist><bullet>Recupera 15 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Se elimina(n) 2 efecto(s) de estado negativo(s).</bullet></bulletlist>",
+  "description": "La unidad aliada objetivo:<bulletlist><bullet>Recupera 15 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Se elimina 2 <hyperlink>Efecto de estado negativo</hyperlink>.</bullet></bulletlist>",
   "name": "Mantra de purificación",
   "operation_point_cost": 10,
   "icon": "0000048B000001D1"
@@ -2414,7 +2892,7 @@
   "id": "manto_de_penumbra",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> objetivo y las <hyperlink>Provincias</hyperlink> adyacentes:<bulletlist><bullet>Obtienen <hyperlink>Penumbra</hyperlink>.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Río</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Pantano</hyperlink> y <hyperlink>Mazmorra</hyperlink>.</bullet><bullet>Las <hyperlink>Unidades</hyperlink> enemigas reciben 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> y 10 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> objetivo y las <hyperlink>Provincias</hyperlink> adyacentes:<bulletlist><bullet>Obtienen <hyperlink>Penumbra</hyperlink>.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Río</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Mazmorra</hyperlink>.</bullet><bullet>Las <hyperlink>Unidades</hyperlink> enemigas reciben 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> y 10 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet></bulletlist>",
   "name": "Manto de penumbra",
   "operation_point_cost": 150,
   "icon": "0000048B00000135"
@@ -2508,7 +2986,7 @@
   "id": "separación_astral",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "La <hyperlink>Unidad</hyperlink> de Origen mágico objetivo:<bulletlist><bullet>Tiene una probabilidad inicial del 60 % de morir.</bullet><bullet>Si no surte efecto, inflige Interrupción y Decadencia.</bullet></bulletlist>",
+  "description": "La <hyperlink>Unidad</hyperlink> de Origen mágico objetivo:<bulletlist><bullet>Tiene una probabilidad inicial del 60 % de morir.</bullet><bullet>Si no surte efecto, inflige Interrupción y 4 acumulaciones de Decadencia.</bullet></bulletlist>",
   "name": "Separación astral",
   "operation_point_cost": 50,
   "icon": "0000046A000001E7"
@@ -2527,6 +3005,9 @@
    },
    {
     "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
    }
   ],
   "name": "Composición de defensa",
@@ -2540,7 +3021,7 @@
   "id": "mentes_vinculadas",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Las unidades de esta raza pueden compartir sus sentidos, lo que les otorga:<bulletlist><bullet>Ojo clarividente al estar junto a un Artefacto u otra unidad con Mentes vinculadas.</bullet></bulletlist>",
+  "description": "Las unidades de esta raza pueden compartir sus sentidos, lo que les otorga:<bulletlist><bullet>Hiperconsciencia al estar junto a un Artefacto u otra unidad con Mentes vinculadas.</bullet></bulletlist>",
   "name": "Mentes vinculadas",
   "operation_point_cost": 250,
   "icon": "0000046A0000019C"
@@ -2564,7 +3045,7 @@
   "id": "orden_en_cascada_defensa",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "El Artefacto aliado objetivo o la unidad con Mentes vinculadas: <bulletlist><bullet>Obtiene Cautela durante 1 <turn></turn> Turnos.</bullet><bullet>Entra en <hyperlink>Modo defensivo</hyperlink>.</bullet><bullet>Luego, este efecto se aplica a los artefactos aliados o unidades con Mentes vinculadas adyacentes y se repite.</bullet></bulletlist>",
+  "description": "El Artefacto aliado objetivo o la unidad con Mentes vinculadas: <bulletlist><bullet>Obtiene Maestros defensivos durante 1 <turn></turn> Turnos.</bullet><bullet>Se eliminan 2 <hyperlink>Efectos de estado negativo</hyperlink>.</bullet><bullet>Luego, este efecto se aplica a los artefactos aliados o unidades con Mentes vinculadas adyacentes y se repite.</bullet></bulletlist>",
   "name": "Orden en cascada: defensa",
   "operation_point_cost": 25,
   "icon": "0000046A0000017D"
@@ -2619,7 +3100,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "creación_de_mundos_arena",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo en la superficie:<bulletlist><bullet>Obtiene <hyperlink>Arena</hyperlink>.</bullet><bullet>Pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Río</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo en la superficie:<bulletlist><bullet>Obtiene <hyperlink>Arena</hyperlink>.</bullet><bullet>Pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Creación de mundos: arena",
   "operation_point_cost": 45,
   "icon": "0000045E00000EB2"
@@ -2641,7 +3122,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "creación_de_mundos_nieve",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo:<bulletlist><bullet>Obtiene <hyperlink>Nevado</hyperlink> y <hyperlink>Hielo</hyperlink>.</bullet><bullet>Pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Río</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo:<bulletlist><bullet>Obtiene <hyperlink>Nevado</hyperlink> y <hyperlink>Hielo</hyperlink>.</bullet><bullet>Pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Creación de mundos: nieve",
   "operation_point_cost": 45,
   "icon": "0000045E00000E97"
@@ -2675,7 +3156,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "llamas_del_abismo",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> objetivo y las provincias adyacentes:<bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>Las provincias obtienen <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>Las provincias pierden <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> objetivo y las provincias adyacentes:<bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>Las provincias obtienen <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>Las provincias pierden <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Llamas del abismo",
   "operation_point_cost": 200,
   "icon": "000003E300005AA8"
@@ -2686,7 +3167,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "congelación_instantánea",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas en la provincia reciben:<bulletlist></bullet><bullet>20 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>-5 de <statuseffectresistance></statuseffectresistance> <hyperlink>Resistencia a estados</hyperlink> durante 1 <turn></turn><hyperlink>Turnos</hyperlink> en el <hyperlink>Mapa del mundo</hyperlink>.</bullet></bulletlist><bullet>La provincia obtiene <hyperlink>Nevado</hyperlink> y <hyperlink>Hielo</hyperlink>.</bullet><bullet>La provincia pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Río</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas en la provincia reciben:<bulletlist></bullet><bullet>20 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>-5 de <statuseffectresistance></statuseffectresistance> <hyperlink>Resistencia a estados</hyperlink> durante 1 <turn></turn><hyperlink>Turnos</hyperlink> en el <hyperlink>Mapa del mundo</hyperlink>.</bullet></bulletlist><bullet>La provincia obtiene <hyperlink>Nevado</hyperlink> y <hyperlink>Hielo</hyperlink>.</bullet><bullet>La provincia pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Congelación instantánea",
   "operation_point_cost": 100,
   "icon": "0000041B00001764"
@@ -2728,7 +3209,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "resurgimiento_destructivo",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Si contiene <hyperlink>una Mejora de provincia</hyperlink> enemiga, se convierte en <hyperlink>saqueada</hyperlink>.<bulletlist></bullet><bullet>No recibes sus recompensas ni pierdes <hyperlink>Posicionamiento</hyperlink>.</bullet></bulletlist><bullet>La provincia obtiene <hyperlink>Bosque</hyperlink> si se encuentra en la superficie o <hyperlink>Bosque de champiñones</hyperlink> si se encuentra en el subterráneo.</bullet></bulletlist>",
+  "description": "En la <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Las unidades enemigas reciben 20 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Si contiene <hyperlink>una Mejora de provincia</hyperlink> enemiga, se convierte en <hyperlink>saqueada</hyperlink>.<bulletlist></bullet><bullet>No recibes sus recompensas ni pierdes <hyperlink>Posicionamiento</hyperlink>.</bullet></bulletlist><bullet>La provincia obtiene <hyperlink>Bosque</hyperlink> si se encuentra en la superficie o <hyperlink>Bosque de champiñones</hyperlink> si se encuentra en el subterráneo.</bullet></bulletlist>",
   "name": "Resurgimiento destructivo",
   "operation_point_cost": 150,
   "icon": "000003E30000522E"
@@ -2774,7 +3255,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Victoria por hechizos</hyperlink>",
   "id": "era_del_orden",
   "tactical": false,
-  "description": "Canaliza la Era del orden para conseguir la <hyperlink>Victoria mágica</hyperlink>. Mientras canalizas:<bulletlist><bullet>Tus <hyperlink>Hechizos</hyperlink> de <order></order> <hyperlink>Afinidad del orden</hyperlink> cuestan un 20 % menos de <mana></mana> <hyperlink>Maná</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Puntos de hechizo en el mapa del mundo</hyperlink> y de <optactical></optactical> <hyperlink>Puntos de hechizo en combate</hyperlink>.</bullet><bullet>Cada turno en combate, un aliado aleatorio obtiene 3 efectos de estado positivos aleatorios y pierde todos los efectos de estado negativos.</bullet></bulletlist>",
+  "description": "Canaliza la Era del orden para conseguir la <hyperlink>Victoria mágica</hyperlink>. Mientras canalizas:<bulletlist><bullet>Tus <hyperlink>Hechizos</hyperlink> del <order></order> <hyperlink>Afinidad del orden</hyperlink> cuestan un 20 % menos de <mana></mana> <hyperlink>Maná</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Puntos de hechizo en el mapa del mundo</hyperlink> y de <optactical></optactical> <hyperlink>Puntos de hechizo en combate</hyperlink>.</bullet><bullet>Cada turno en combate, un aliado aleatorio obtiene 3 <hyperlink>Efectos de estado positivo</hyperlink> al azar y pierde todos los <hyperlink>Efectos de estado negativo</hyperlink>.</bullet></bulletlist>",
   "name": "Era del orden",
   "operation_point_cost": 400,
   "icon": "0000045A0000000B"
@@ -2844,7 +3325,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Victoria por hechizos</hyperlink>",
   "id": "era_del_caos",
   "tactical": false,
-  "description": "Canaliza la Era del caos para conseguir la <hyperlink>Victoria mágica</hyperlink>. Mientras canalizas:<bulletlist><bullet>Tus <hyperlink>Hechizos</hyperlink> de <chaos></chaos> <hyperlink>Afinidad del caos</hyperlink> cuestan un 20 % menos de <mana></mana> <hyperlink>Maná</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Puntos de hechizo en el mapa del mundo</hyperlink> y de <optactical></optactical> <hyperlink>Puntos de hechizo en combate</hyperlink>.</bullet><bullet>Cada <turn></turn> Turno en combate, una unidad enemiga aleatoria recibe 15 de daño de un tipo aleatorio y tiene una probabilidad inicial del 90 % de sufrir un efecto de estado negativo aleatorio.</bullet></bulletlist>",
+  "description": "Canaliza la Era del caos para conseguir la <hyperlink>Victoria mágica</hyperlink>. Mientras canalizas:<bulletlist><bullet>Tus <hyperlink>Hechizos</hyperlink> del <chaos></chaos> <hyperlink>Afinidad del caos</hyperlink> cuestan un 20 % menos de <mana></mana> <hyperlink>Maná</hyperlink>, de <caststrategic></caststrategic> <hyperlink>Puntos de hechizo en el mapa del mundo</hyperlink> y de <optactical></optactical> <hyperlink>Puntos de hechizo en combate</hyperlink>.</bullet><bullet>Cada <turn></turn> Turno en combate, una unidad enemiga aleatoria recibe 15 de daño de un tipo aleatorio y tiene una probabilidad inicial del 90 % de sufrir <hyperlink>un Efecto de estado negativo</hyperlink> aleatorio.</bullet></bulletlist>",
   "name": "Era del caos",
   "operation_point_cost": 400,
   "icon": "0000044500000040"
@@ -2957,14 +3438,14 @@
   "icon": "0000041B000019A1"
  },
  {
-  "casting_cost": "200<mana></mana> ",
+  "casting_cost": "150<mana></mana> ",
   "resid": 4514010634915,
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "himno_de_la_victoria",
   "tactical": true,
   "description": "Todas las unidades aliadas obtienen:<bulletlist><bullet>3 de Fortaleza.</bullet><bullet>+15 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist>",
   "name": "Himno de la victoria",
-  "operation_point_cost": 65,
+  "operation_point_cost": 50,
   "icon": "0000041B000019A5"
  },
  {
@@ -2984,7 +3465,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "marca_del_inquisidor",
   "tactical": false,
-  "description": "Los ataques básicos de las unidades encantadas tienen:<bulletlist><bullet>Una probabilidad inicial del 30 % de infligir Condenación hasta el final del combate, lo que reduce la <statuseffectresistance></statuseffectresistance> <hyperlink>Resistencia a estados</hyperlink> enemiga.</bullet><bullet>Una probabilidad inicial del 30 % de infligir Debilitamiento, lo que reduce el daño enemigo.</bullet><bullet>Una probabilidad inicial del 30 % de infligir Ralentización, lo que reduce el movimiento enemigo y evita los contraataques.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques de las unidades encantadas tienen:<bulletlist><bullet>Una probabilidad inicial del 60 % de infligir Condenación hasta el final del combate, lo que reduce la <statuseffectresistance></statuseffectresistance> <hyperlink>Resistencia a estados</hyperlink> enemiga.</bullet><bullet>Una probabilidad inicial del 60 % de infligir Debilitamiento, lo que reduce el daño enemigo.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -3067,14 +3548,14 @@
   "icon": "0000041B0000193D"
  },
  {
-  "casting_cost": "15<mana></mana> ",
+  "casting_cost": "30<mana></mana> ",
   "resid": 4514010634749,
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "cántico_inspirador",
   "tactical": true,
   "description": "Las unidades aliadas situadas en un área de 2 casilla(s):<bulletlist><bullet>Reciben +10 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet><bullet>Reciben 2 de Fortaleza si tienen Fervor.</bullet></bulletlist>",
   "name": "Cántico inspirador",
-  "operation_point_cost": 20,
+  "operation_point_cost": 25,
   "icon": "0000041B00001939"
  },
  {
@@ -3115,7 +3596,7 @@
   "tactical": true,
   "description": "<bulletlist><bullet>Todas las unidades <hyperlink>no muertas</hyperlink> aliadas vuelven a la vida con un 50 % de sus <hyperlink><hp></hp> Puntos de salud</hyperlink> totales.</bullet><bullet>Los cadáveres (menos los de no muertos) resucitan y se convierten en <hyperlink>Zombis decadentes</hyperlink> bajo tu control hasta el final de la batalla.</bullet></bulletlist><br></br><br></br>No se puede usar en batallas acuáticas..",
   "name": "Reanimación campal",
-  "operation_point_cost": 80,
+  "operation_point_cost": 65,
   "icon": "0000041B00001770"
  },
  {
@@ -3140,6 +3621,12 @@
    },
    {
     "slug": "guerrero_esqueleto"
+   },
+   {
+    "slug": "guiverno_óseo"
+   },
+   {
+    "slug": "alma_corrupta"
    },
    {
     "slug": "alma_en_pena"
@@ -3256,7 +3743,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de debilitación</hyperlink>",
   "id": "letargo_del_olvido",
   "tactical": true,
-  "description": "La unidad objetivo que no sea un Héroe muere. Después de 2 <turn></turn> Turnos, resucita con el 75 % de sus <hyperlink><hp></hp> Puntos de salud</hyperlink> totales y se le aplica Locura.",
+  "description": "La unidad objetivo que no sea un Héroe muere. Después de 2 <turn></turn> Turnos, resucita con el 75 % de sus <hyperlink><hp></hp> Puntos de salud</hyperlink> totales y se le aplica Locura.<br></br><br></br>Mientras la unidad esté muerta de esta forma, no se puede destruir su cadáver ni revivirla.",
   "name": "Letargo del olvido",
   "operation_point_cost": 40,
   "icon": "0000041B0000174F"
@@ -3279,7 +3766,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "avance_invernal",
   "tactical": false,
-  "description": "La <hyperlink>Ciudad</hyperlink> aliada objetivo obtiene:<bulletlist>Cada <turn></turn><hyperlink>Turno</hyperlink>, 2 <hyperlink>Provincias</hyperlink> dentro del <hyperlink>Dominio</hyperlink> o adyacentes a él:<bulletlist><bullet>Obtienen <hyperlink>Nevado</hyperlink> y <hyperlink>Hielo</hyperlink>.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Río</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist><bullet>Las provincias en el dominio con nieve o hielo otorgan +2 de ganancias de <food></food> <hyperlink>Comida</hyperlink> y +2 de ganancias de <structureprod></structureprod> <hyperlink>Producción</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Ciudad</hyperlink> aliada objetivo obtiene:<bulletlist>Cada <turn></turn><hyperlink>Turno</hyperlink>, 2 <hyperlink>Provincias</hyperlink> dentro del <hyperlink>Dominio</hyperlink> o adyacentes a él:<bulletlist><bullet>Obtienen <hyperlink>Nevado</hyperlink> y <hyperlink>Hielo</hyperlink>.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist><bullet>Las provincias en el dominio con nieve o hielo otorgan +2 de ganancias de <food></food> <hyperlink>Comida</hyperlink> y +2 de ganancias de <structureprod></structureprod> <hyperlink>Producción</hyperlink>.</bullet></bulletlist>",
   "name": "Avance invernal",
   "operation_point_cost": 120,
   "icon": "0000041B00001729"
@@ -3350,7 +3837,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de mundo prolongado</hyperlink>",
   "id": "poder_encadenado",
   "tactical": false,
-  "description": "Cada vez que lances un hechizo en combate táctico, se añadirá un Acumulación de poder encadenado a ese combate.",
+  "description": "Cada vez que lances un hechizo en combate táctico, se añadirá una Acumulación de poder encadenado a ese combate.",
   "name": "Poder encadenado",
   "operation_point_cost": 120,
   "icon": "0000041B000012A8"
@@ -3380,7 +3867,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza superior</hyperlink>",
   "id": "armonización_astral",
   "tactical": false,
-  "description": "Vincula la raza objetivo al Mar Astral y le otorga:<bulletlist><bullet>El tipo de unidad Etérea.</bullet><bullet>Armonización: presagio astral, que le otorga un efecto de estado positivo al azar cuando se lanza un hechizo en combate.</bullet></bulletlist>",
+  "description": "Vincula la raza objetivo al Mar Astral y le otorga:<bulletlist><bullet>El tipo de unidad Etérea.</bullet><bullet>Armonización: presagio astral, que le otorga <hyperlink>un Efecto de estado positivo</hyperlink> al azar cuando se lanza un hechizo en combate.</bullet></bulletlist>",
   "name": "Armonización astral",
   "operation_point_cost": 600,
   "icon": "0000041B00001298"
@@ -3403,7 +3890,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "velocidad_cósmica",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+30 % de daño.</bullet><bullet>Movimiento muy veloz.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+20 % de daño.</bullet><bullet>Movimiento muy veloz.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Invocación de combate"
@@ -3433,7 +3920,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora/debilitación</hyperlink>",
   "id": "onda_disruptiva",
   "tactical": true,
-  "description": "<bulletlist><bullet>Las unidades enemigas tienen una probabilidad inicial del 120 % de sufrir el estado Interrupción durante 2 <turn></turn> Turnos.</bullet><bullet>Elimina 2 efectos de estado positivos de los enemigos.</bullet><bullet>Elimina 2 efectos de estado negativos de los aliados.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Las unidades enemigas tienen una probabilidad inicial del 120 % de sufrir el estado Interrupción durante 2 <turn></turn> Turnos.</bullet><bullet>Elimina 2 <hyperlink>Efectos de estado positivo</hyperlink> de los enemigos.</bullet><bullet>Elimina 2 <hyperlink>Efectos de estado negativo</hyperlink> de los aliados.</bullet></bulletlist>",
   "name": "Onda disruptiva",
   "operation_point_cost": 80,
   "icon": "0000041B000012D6"
@@ -3444,7 +3931,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "encantamiento_de_fases",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>La habilidad Fase, lo que les permite teletransportarse en combate.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>La habilidad Fase cargada, lo que les permite teletransportarse en combate.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -3489,7 +3976,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de curación</hyperlink>",
   "id": "teletransporte_de_emergencia",
   "tactical": true,
-  "description": "Teletransporta a la unidad aliada más cercana situada a 4 casillas a la casilla objetivo vacía.<br></br>Esa unidad recupera +30 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.",
+  "description": "Teletransporta a la unidad aliada más cercana situada a 4 casillas a la casilla objetivo vacía.<br></br>Esa unidad recupera +30 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> y se eliminan todos sus <hyperlink>Efectos de estado negativo</hyperlink>.",
   "name": "Teletransporte de emergencia",
   "operation_point_cost": 30,
   "icon": "0000041B0000126E"
@@ -3500,7 +3987,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
   "id": "sangre_astral",
   "tactical": false,
-  "description": "Hace que la magia fluya por las venas de la raza objetivo, lo que les otorga:<bulletlist><bullet>Armonización: fortuna, lo que aumenta la probabilidad de <hyperlink>Golpe crítico</hyperlink> al lanzar hechizos.</bullet></bulletlist>",
+  "description": "Hace que la magia fluya por las venas de la raza objetivo, lo que les otorga:<bulletlist><bullet>Armonización: fortuna, lo que aumenta la <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink> al lanzar hechizos.</bullet></bulletlist>",
   "name": "Sangre astral",
   "operation_point_cost": 250,
   "icon": "0000041B00001240"
@@ -3538,7 +4025,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
   "id": "electricidad_en_cadena",
   "tactical": true,
-  "description": "Unidad enemiga objetivo:<bulletlist><bullet>Recibe 30 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Sufre Electrificación.</bullet><bullet>Este efecto pasa a otro enemigo situado a 3 casillas de distancia.</bullet><bullet>Pasa de un enemigo a otro hasta 2 veces.</bullet></bulletlist>",
+  "description": "La unidad enemiga objetivo:<bulletlist><bullet>Recibe 30 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Sufre 2 de Electrificación.</bullet><bullet>Este efecto pasa a otro enemigo situado a 3 casillas de distancia.</bullet><bullet>Pasa de un enemigo a otro hasta 2 veces.</bullet></bulletlist>",
   "name": "Electricidad en cadena",
   "operation_point_cost": 30,
   "icon": "0000041B00001238"
@@ -3549,7 +4036,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "foco_frenético",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Frenesí, lo que aumenta el daño que infligen al atacar.</bullet><bullet>+1 de alcance a los ataques básicos.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Frenesí, lo que aumenta el daño que infligen al atacar.</bullet><bullet>+1 de <hyperlink><range></range>Alcance</hyperlink> a los ataques básicos.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -3568,7 +4055,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "hojas_relámpago",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+20 % de daño contra las unidades <hyperlink>electrificadas</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+10 % de daño contra las unidades <hyperlink>electrificadas</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -3596,7 +4083,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército enemigo</hyperlink>",
   "id": "torrente_eléctrico",
   "tactical": false,
-  "description": "El ejército enemigo objetivo:<bulletlist><bullet>Todas las unidades reciben 20 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Todas las unidades sufren -3 de <defenselightning></defenselightning> <hyperlink>Resistencia a la electricidad</hyperlink> durante 1 <turn></turn> Turnos del <hyperlink>Mapa del mundo</hyperlink>.</bullet></bulletlist>",
+  "description": "El ejército enemigo objetivo:<bulletlist><bullet>Todas las unidades reciben 20 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Todas las unidades sufren -1 de <defenselightning></defenselightning> <hyperlink>Resistencia a la electricidad</hyperlink> durante 1 <turn></turn> Turnos del <hyperlink>Mapa del mundo</hyperlink>.</bullet></bulletlist>",
   "name": "Torrente eléctrico",
   "operation_point_cost": 80,
   "icon": "0000041B000012E5"
@@ -3699,7 +4186,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "erupción_piroclástica",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Si contiene <hyperlink>una Mejora de provincia</hyperlink> enemiga, se convierte en <hyperlink>saqueada</hyperlink>.<bulletlist></bullet><bullet>No recibirás sus recompensas ni perderás <hyperlink>Posicionamiento</hyperlink>.</bullet></bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas en la provincia reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>La provincia obtiene <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>La provincia pierde <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> objetivo:<bulletlist><bullet>Si contiene <hyperlink>una Mejora de provincia</hyperlink> enemiga, se convierte en <hyperlink>saqueada</hyperlink>.<bulletlist></bullet><bullet>No recibirás sus recompensas ni perderás <hyperlink>Posicionamiento</hyperlink>.</bullet></bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas en la provincia reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>La provincia obtiene <hyperlink>Tierras cenicientas</hyperlink>.</bullet><bullet>La provincia pierde <hyperlink>Río</hyperlink>, <hyperlink>Pradera</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Erupción piroclástica",
   "operation_point_cost": 150,
   "icon": "000003AD00002B86"
@@ -3722,7 +4209,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "hojas_desgarradoras",
   "tactical": false,
-  "description": "Otorga a los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Una probabilidad inicial del 90 % de infligir Defensa desgarrada, lo que reduce la <defense></defense> <hyperlink>Defensa</hyperlink> del enemigo.</bullet><bullet>Demolición, lo que les permite destruir obstáculos reforzados.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Otorga a los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligir Defensa desgarrada, lo que reduce la <defense></defense> <hyperlink>Defensa</hyperlink> del enemigo.</bullet><bullet>Demolición, lo que les permite destruir obstáculos reforzados.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -3750,7 +4237,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "flechas_rastreadoras",
   "tactical": false,
-  "description": "Otorga a los ataques <hyperlink>Alcance físico</hyperlink> de las unidades encantadas:<bulletlist><bullet>+1<range></range> de alcance.</bullet></bulletlist>",
+  "description": "Otorga a los ataques <hyperlink>Alcance físico</hyperlink> de las unidades encantadas:<bulletlist><bullet>+1 de <hyperlink><range></range>Alcance</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -3867,7 +4354,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "armadura_adaptable",
   "tactical": false,
-  "description": "Una vez por <turn></turn> Turno, cuando las unidades encantadas reciben <hyperlink>daño que no sea físico</hyperlink>, obtienen:<bulletlist><bullet>Resistencia reforzada, lo que aumenta su resistencia al daño mágico.</bullet><bullet>Protección de estado, lo que reduce la probabilidad de la unidad se vea afectada por un efecto de estado negativo.</bullet></bulletlist>",
+  "description": "Una vez por <turn></turn> Turno, cuando las unidades encantadas reciben <hyperlink>daño que no sea físico</hyperlink>, obtienen:<bulletlist><bullet>Resistencia reforzada, lo que aumenta su resistencia al daño mágico.</bullet><bullet>Protección de estado, lo que reduce la probabilidad de que la unidad se vea afectada por <hyperlink>un Efecto de estado negativo</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -3945,7 +4432,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora/curación</hyperlink>",
   "id": "instintos_agudizados",
   "tactical": true,
-  "description": "Todas tus unidades aliadas situadas en un área de 2 casilla(s):<bulletlist><bullet>Recuperan +25 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Recuperan todos los <hyperlink>Puntos de acción</hyperlink>.</bullet><bullet>Obtienen el estado Furia durante 2 <turn></turn> Turno.</bullet></bulletlist>",
+  "description": "Todas tus unidades aliadas situadas en un área de 2 casilla(s):<bulletlist><bullet>Recuperan +25 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Recuperan todos los <hyperlink>Puntos de acción</hyperlink>.</bullet><bullet>Obtienen el estado Furia durante 2 <turn></turn> Turno.</bullet></bulletlist><br></br>No afecta a las unidades con <hyperlink>Inmunidad a pérdida de control</hyperlink>.",
   "name": "Instintos agudizados",
   "operation_point_cost": 50,
   "icon": "000003E300005236"
@@ -3972,7 +4459,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "restaurar_el_terreno",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño objetivo:<bulletlist><bullet>Obtiene <hyperlink>Pradera</hyperlink> si se encuentra en la superficie o <hyperlink>Campos de champiñones</hyperlink> si se encuentra en el subterráneo.</bullet><bullet>Pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Provincia</hyperlink> aliada o sin dueño:<bulletlist><bullet>Obtiene <hyperlink>Pradera</hyperlink> si se encuentra en la superficie o <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Bosque de champiñones</hyperlink> si se encuentra en el subterráneo.</bullet><bullet>Pierde <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink>, <hyperlink>Estalagmitas</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet></bulletlist>",
   "name": "Restaurar el terreno",
   "operation_point_cost": 30,
   "icon": "0000041B00000D7C"
@@ -4155,7 +4642,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
   "id": "recipientes_del_caos",
   "tactical": false,
-  "description": "Convierte a la raza objetivo en un canalizador de energías caóticas, lo que les otorga:<bulletlist><bullet>+10 % de daño por cada efecto de estado negativo del objetivo. Se acumula hasta 3 veces.</bullet></bulletlist>",
+  "description": "Convierte a la raza objetivo en un canalizador de energías caóticas, lo que les otorga:<bulletlist><bullet>+10 % de daño por cada <hyperlink>Efecto de estado negativo</hyperlink> del objetivo. Se acumula hasta 3 veces.</bullet></bulletlist>",
   "name": "Recipientes del caos",
   "operation_point_cost": 350,
   "icon": "0000041B00000B60"
@@ -4166,7 +4653,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "magia_caótica",
   "tactical": false,
-  "description": "Otorga a los ataques básicos <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Una probabilidad inicial del 60 % de infligir un efecto de estado negativo al azar.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Otorga a los ataques básicos <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Una probabilidad inicial del 60 % de infligir <hyperlink>un Efecto de estado negativo</hyperlink> aleatorio.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -4185,7 +4672,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
   "id": "invocar_devorador_del_caos",
   "tactical": false,
-  "description": "Invoca <hyperlink>un Devorador del caos</hyperlink>, una Unidad de magia de combate a corta distancia que se alimenta de efectos de estado negativos.",
+  "description": "Invoca <hyperlink>un Devorador del caos</hyperlink>, una Unidad de magia de combate a corta distancia que se alimenta de <hyperlink>Efectos de estado negativo</hyperlink>.",
   "name": "Invocar devorador del caos",
   "operation_point_cost": 200,
   "summoned_units": [
@@ -4200,7 +4687,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de debilitación</hyperlink>",
   "id": "histeria_colectiva",
   "tactical": true,
-  "description": "Inflige un efecto de estado negativo al azar a todas las unidades situadas en un área de 1 casilla(s).",
+  "description": "Inflige <hyperlink>un Efecto de estado negativo</hyperlink> aleatorio a todas las unidades situadas en un área de 1 casilla(s).",
   "name": "Histeria colectiva",
   "operation_point_cost": 30,
   "icon": "000003E3000059F1"
@@ -4273,7 +4760,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "pentagramas_del_remiendo",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Fiel, lo que reduce el <hyperlink>Mantenimiento de la unidad</hyperlink>.</bullet><bullet>Toque reparador, una habilidad sanadora que puede usarse en combate.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Fiel, lo que reduce el <hyperlink>Mantenimiento de la unidad</hyperlink> básico.</bullet><bullet>Toque reparador, una habilidad sanadora que puede usarse en combate.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -4316,7 +4803,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "hojas_gélidas",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+20 % de daño contra las unidades <hyperlink>congeladas</hyperlink> o <hyperlink>ralentizadas</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+10 % de daño contra las unidades <hyperlink>congeladas</hyperlink> o <hyperlink>ralentizadas</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -4355,7 +4842,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "hojas_abrasadoras",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+20 % de daño contra los objetivos <hyperlink>quemados</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+10 % de daño contra los objetivos <hyperlink>quemados</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -4383,7 +4870,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "excedente_de_almas",
   "tactical": true,
-  "description": "Las unidades aliadas situadas en un área de 1 casilla(s):<bulletlist><bullet>Obtienen 1 de Fortaleza.</bullet><bullet>Obtienen +20 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos hasta el final de la batalla.</bullet><bullet>Se eliminan sus efectos de estado negativos.</bullet></bulletlist>",
+  "description": "Las unidades aliadas situadas en un área de 1 casilla(s):<bulletlist><bullet>Obtienen 1 de Fortaleza.</bullet><bullet>Obtienen +20 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos hasta el final de la batalla.</bullet><bullet>Se eliminan 2 de sus <hyperlink>Efectos de estado negativo</hyperlink>.</bullet></bulletlist>",
   "name": "Excedente de almas",
   "operation_point_cost": 20,
   "icon": "0000041B000005E4"
@@ -4394,87 +4881,10 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
   "id": "invocar_animal_superior",
   "tactical": false,
-  "description": "Invoca una unidad animal aleatoria de nivel III en una ubicación objetivo.<br></br><br></br>Tiene una pequeña probabilidad de invocar a un animal de nivel IV.",
+  "description": "<bulletlist><bullet>Elige una unidad Animal de nivel III o IV para añadirla a tu ejército.</bullet><bullet>Los Animales disponibles dependen del tipo de terreno sobre el que se lanza el hechizo.</bullet></bulletlist>",
   "name": "Invocar animal superior",
   "operation_point_cost": 150,
-  "icon": "000003E300004AF7",
-  "summoned_units": [
-   {
-    "slug": "araña_glacial_matriarca"
-   },
-   {
-    "slug": "lobo_blanco"
-   },
-   {
-    "slug": "ave_del_trueno"
-   },
-   {
-    "slug": "dentocornea_matriarca"
-   },
-   {
-    "slug": "guiverno_gélido"
-   },
-   {
-    "slug": "oso_funesto"
-   },
-   {
-    "slug": "mamut"
-   },
-   {
-    "slug": "dientes_de_sable"
-   },
-   {
-    "slug": "sierpe"
-   },
-   {
-    "slug": "guiverno_dorado"
-   },
-   {
-    "slug": "araña_cazadora_matriarca"
-   },
-   {
-    "slug": "horroaraña_matriarca"
-   },
-   {
-    "slug": "lobo_espiritual"
-   },
-   {
-    "slug": "unicornio"
-   },
-   {
-    "slug": "cocodrilo_de_la_pestilencia"
-   },
-   {
-    "slug": "gusano_cáustico"
-   },
-   {
-    "slug": "pesadilla"
-   },
-   {
-    "slug": "guiverno_ígneo"
-   },
-   {
-    "slug": "juggernaut_infernal"
-   },
-   {
-    "slug": "sabueso_infernal"
-   },
-   {
-    "slug": "guiverno_de_obsidiana"
-   },
-   {
-    "slug": "araña_vampírica_matriarca"
-   },
-   {
-    "slug": "fénix"
-   },
-   {
-    "slug": "nimu_del_fondo_marino"
-   },
-   {
-    "slug": "kraken"
-   }
-  ]
+  "icon": "000003E300004AF7"
  },
  {
   "casting_cost": "15<mana></mana> ",
@@ -4493,7 +4903,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
   "id": "tótem_salvaje",
   "tactical": true,
-  "description": "Genera <hyperlink>un Tótem salvaje</hyperlink>, lo que genera una unidad animal aleatoria de nivel I al comienzo de cada <turn></turn> Turno. Dura 3 <turn></turn> Turnos.<br></br><br></br>No se puede usar en batallas acuáticas..",
+  "description": "Invoca <hyperlink>un Tótem salvaje</hyperlink>, lo que genera una unidad animal aleatoria de nivel I o II al crearla y al comienzo de tus siguientes 2 <turn></turn> Turnos.<br></br><br></br>No se puede usar en batallas acuáticas.",
   "name": "Tótem salvaje",
   "operation_point_cost": 35,
   "summoned_units": [
@@ -4519,87 +4929,10 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
   "id": "invocar_animal_salvaje",
   "tactical": false,
-  "description": "<bulletlist><bullet>Invoca un Animal aleatorio de nivel I en la casilla del mundo seleccionada como objetivo.</bullet><bullet>Ligera probabilidad de invocar un animal de nivel II.</bullet><bullet>Los Animales dependerán del tipo de terreno en el que se lance el hechizo.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Elige una unidad Animal de nivel I o II para añadirla a tu ejército.</bullet><bullet>Los Animales disponibles dependen del tipo de terreno sobre el que se lanza el hechizo.</bullet></bulletlist>",
   "name": "Invocar animal salvaje",
   "operation_point_cost": 60,
-  "icon": "0000041B000002E7",
-  "summoned_units": [
-   {
-    "slug": "araña_glacial"
-   },
-   {
-    "slug": "lechón_de_dentocornea"
-   },
-   {
-    "slug": "cuervo_picoscuro"
-   },
-   {
-    "slug": "oso_polar"
-   },
-   {
-    "slug": "ave_carroñera"
-   },
-   {
-    "slug": "cachorro_infernal"
-   },
-   {
-    "slug": "ermitaño_de_chatarra"
-   },
-   {
-    "slug": "elefante"
-   },
-   {
-    "slug": "polilla_ígnea"
-   },
-   {
-    "slug": "huargo"
-   },
-   {
-    "slug": "araña_cazadora"
-   },
-   {
-    "slug": "cría_de_horroaraña"
-   },
-   {
-    "slug": "gusano_cáustico_joven"
-   },
-   {
-    "slug": "oso_pardo"
-   },
-   {
-    "slug": "escarabajo_gigante"
-   },
-   {
-    "slug": "escarabajo_de_la_muerte"
-   },
-   {
-    "slug": "cría_de_sierpe"
-   },
-   {
-    "slug": "cría_de_guiverno"
-   },
-   {
-    "slug": "puercoespín"
-   },
-   {
-    "slug": "cría_de_araña_vampírica"
-   },
-   {
-    "slug": "cocodrilo"
-   },
-   {
-    "slug": "mono"
-   },
-   {
-    "slug": "nimu"
-   },
-   {
-    "slug": "cría_de_kraken"
-   },
-   {
-    "slug": "pingüino_funesto"
-   }
-  ]
+  "icon": "0000041B000002E7"
  },
  {
   "casting_cost": "10<mana></mana> ",
@@ -4618,7 +4951,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "canción_de_los_temerarios",
   "tactical": true,
-  "description": "Durante 3 <turn></turn> Turnos, la unidad aliada objetivo recibe:<bulletlist><bullet>Furia.</bullet><bullet>3 de Fortaleza.</bullet></bulletlist>",
+  "description": "Durante 3 <turn></turn> Turnos, la unidad aliada objetivo de tipo obtiene:<bulletlist><bullet>Furia.</bullet><bullet>3 de Fortaleza.</bullet></bulletlist><br></br>No afecta a las unidades con <hyperlink>Inmunidad a pérdida de control</hyperlink>.",
   "name": "Canción de los temerarios",
   "operation_point_cost": 20,
   "icon": "0000041300000D74"
@@ -4684,7 +5017,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "fuerza_de_la_naturaleza",
   "tactical": false,
-  "description": "Las unidades encantadas obtienen:<bulletlist><bullet>+20 % de probabilidad de <hyperlink>Golpe crítico</hyperlink>.</bullet><bullet>+4 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink> en los ataques.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Las unidades encantadas obtienen:<bulletlist><bullet>+15 % de <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink>.</bullet><bullet>+3 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink> en los ataques.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitCavalry></unitCavalry> Caballería"
@@ -4730,7 +5063,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
   "id": "afinidad_animal",
   "tactical": false,
-  "description": "Hace que la raza objetivo sea más bestial y tenga una mayor conexión con los animales. Si se halla adyacente a un Animal aliado, ambas unidades obtienen:<bulletlist><bullet>+10 % de daño.</bullet><bullet>+10 % de probabilidad de Golpe crítico.</bullet></bulletlist>",
+  "description": "Hace que la raza objetivo sea más bestial y tenga una mayor conexión con los animales. Si se halla adyacente a un Animal aliado, ambas unidades obtienen:<bulletlist><bullet>+10 % de daño.</bullet><bullet>+10 % de <crit></crit>Probabilidad de golpe crítico.</bullet></bulletlist>",
   "name": "Afinidad animal",
   "operation_point_cost": 150,
   "icon": "0000041B000002E3"
@@ -4756,7 +5089,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "hojas_de_la_decadencia",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+20 % de daño contra las unidades <hyperlink>envenenadas</hyperlink> o <hyperlink>decadentes</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas infligen:<bulletlist><bullet>+4 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>-2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>+10 % de daño contra las unidades <hyperlink>envenenadas</hyperlink> o <hyperlink>decadentes</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -4871,7 +5204,7 @@
   "id": "tintura_antimagia",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Las unidades aliadas situadas en un área de 1 casilla(s):<bulletlist><bullet>Eliminan 2 efectos de estado negativos.</bullet><bullet>Obtienen 2 de Protección de estado.</bullet></bulletlist>",
+  "description": "Las unidades aliadas situadas en un área de 1 casilla(s):<bulletlist><bullet>Se eliminan 2 <hyperlink>Efectos de estado negativo</hyperlink>.</bullet><bullet>Obtienen 2 de Protección de estado.</bullet></bulletlist>",
   "name": "Tintura antimagia",
   "operation_point_cost": 15,
   "icon": "0000046A000000EF"
@@ -4895,7 +5228,7 @@
   "id": "tónico_misterioso",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Entrega de tónicos, que otorga efectos de estado positivos y elimina uno de los negativos.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Entrega de tónicos, que otorga <hyperlink>Efectos de estado positivo</hyperlink> y elimina uno de los negativos.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -4909,15 +5242,15 @@
   "casting_cost": "45<souls></souls> ",
   "resid": 4273492488482,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
-  "id": "invocar_alma_corrupta",
+  "id": "invocar_alma_en_pena",
   "tactical": false,
-  "description": "Invoca <hyperlink>una Alma corrupta</hyperlink>, una Unidad de lucha que se aprovecha de las unidades enemigas con poca <happiness></happiness> <hyperlink>Moral</hyperlink>.",
-  "name": "Invocar alma corrupta",
+  "description": "Invoca <hyperlink>una Alma en pena</hyperlink>, un espíritu vengativo que reduce la moral y debilita a los enemigos con sus llantos desgarradores.",
+  "name": "Invocar alma en pena",
   "operation_point_cost": 90,
   "icon": "000003E300007127",
   "summoned_units": [
    {
-    "slug": "alma_corrupta"
+    "slug": "alma_en_pena"
    }
   ]
  },
@@ -4928,7 +5261,7 @@
   "id": "llama_purificadora",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Las unidades aliadas situadas en un área de 1 casilla(s):<bulletlist><bullet>Recuperan 25 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Se eliminan sus efectos de estado negativos.</bullet></bulletlist>",
+  "description": "Las unidades aliadas situadas en un área de 1 casilla(s):<bulletlist><bullet>Recuperan 25 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Se eliminan sus <hyperlink>Efectos de estado negativo</hyperlink>.</bullet></bulletlist>",
   "name": "Llama purificadora",
   "operation_point_cost": 35,
   "icon": "000003E300006B8F"
@@ -5062,14 +5395,14 @@
   ]
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "10<souls></souls> ",
   "resid": 4273492485799,
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
   "id": "explosión_putrefacta",
   "tactical": true,
-  "description": "La unidad <hyperlink>Zombi</hyperlink> o esqueleto aliada explota y todos los enemigos situados en un área de 2 casilla(s):<bulletlist><bullet>Reciben 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> y 10 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Tienen un 90 % de probabilidad de sufrir Decadencia.</bullet></bulletlist>",
+  "description": "La unidad <hyperlink>Zombi</hyperlink> o esqueleto aliada objetivo explota y todos los enemigos situados en un área de 2 casilla(s):<bulletlist><bullet>Reciben 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> y 10 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Obtienen 2Decadencia durante 3 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Explosión putrefacta",
-  "operation_point_cost": 20,
+  "operation_point_cost": 15,
   "icon": "000003E3000066A4"
  },
  {
@@ -5078,7 +5411,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
   "id": "necrotizar",
   "tactical": true,
-  "description": "La unidad enemiga objetivo:<bulletlist><bullet>Recibe 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> y 10 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Obtiene Decadencia.</bullet><bullet>Cuando muere, se convierte en <hyperlink>un Zombi decadente</hyperlink>bajo tu control hasta el final del combate.</bullet></bulletlist>",
+  "description": "La unidad enemiga objetivo:<bulletlist><bullet>Recibe 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> y 10 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Obtiene 2 acumulaciones de Decadencia durante 3 <turn></turn> Turnos.</bullet><bullet>Cuando muere, se convierte en <hyperlink>un Zombi decadente</hyperlink> bajo tu control hasta el final del combate.</bullet></bulletlist>",
   "name": "Necrotizar",
   "operation_point_cost": 15,
   "icon": "000003E30000669A"
@@ -5105,7 +5438,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "crecimiento_hechizado",
   "tactical": false,
-  "description": "La <hyperlink>Ciudad</hyperlink> aliada objetivo obtiene:<bulletlist><bullet>Cada <turn></turn><hyperlink>Turno</hyperlink>, 1 <hyperlink>Provincias</hyperlink> dentro del <hyperlink>Dominio</hyperlink> o adyacentes a él:<bulletlist></bullet><bullet>Obtienen <hyperlink>Pradera</hyperlink> y <hyperlink>Bosque</hyperlink> si se encuentran en la superficie o <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Bosque de champiñones</hyperlink> si se encuentran en el subterráneo.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink>, <hyperlink>Suelo cavernoso</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet><bullet>Las provincias dentro del dominio con praderas, bosques, campos de champiñones o bosques de champiñones obtienen: +2 de <food></food> <hyperlink>Comida</hyperlink>, +2 de <structureprod></structureprod> <hyperlink>Producción</hyperlink> y +2 de <unitprod></unitprod> <hyperlink>Reclutamiento</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Ciudad</hyperlink> aliada objetivo obtiene:<bulletlist><bullet>Cada <turn></turn><hyperlink>Turno</hyperlink>, 1 <hyperlink>Provincias</hyperlink> dentro del <hyperlink>Dominio</hyperlink> o adyacentes a él:<bulletlist></bullet><bullet>Obtienen <hyperlink>Pradera</hyperlink> y <hyperlink>Bosque</hyperlink> si se encuentran en la superficie o <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Bosque de champiñones</hyperlink> si se encuentran en el subterráneo.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet><bullet>Las provincias dentro del dominio con praderas, bosques, campos de champiñones o bosques de champiñones obtienen: +2 de <food></food> <hyperlink>Comida</hyperlink>, +2 de <structureprod></structureprod> <hyperlink>Producción</hyperlink> y +2 de <unitprod></unitprod> <hyperlink>Reclutamiento</hyperlink>.</bullet></bulletlist>",
   "name": "Crecimiento hechizado",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5128,7 +5461,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "proyectiles_guiados",
   "tactical": false,
-  "description": "Hace que los ataques básicos de las unidades encantadas:<bulletlist><bullet>Ignoren las penalizaciones a la precisión debido a la condición <hyperlink>Con camuflaje</hyperlink> causada por las unidades que obstaculizan el camino y por ciertos terrenos.</bullet></bulletlist>",
+  "description": "Hace que los ataques básicos de las unidades encantadas:<bulletlist><bullet>Lleguen 1 casilla más lejos sin sufrir penalizaciones a la <hyperlink><accuracy></accuracy>Precisión</hyperlink> por largo alcance.</bullet><bullet>Ignoren las penalizaciones a la <hyperlink><accuracy></accuracy>Precisión</hyperlink> debido a la condición <hyperlink>Con camuflaje</hyperlink> causada por las unidades que obstaculizan el camino y por ciertos terrenos.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -5146,17 +5479,6 @@
   "name": "Proyectiles guiados",
   "operation_point_cost": 90,
   "icon": "0000041B00001259"
- },
- {
-  "casting_cost": "45<mana></mana> ",
-  "resid": 4273492485152,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ciudad</hyperlink>",
-  "id": "refuerzos_benditos",
-  "tactical": false,
-  "description": "La ciudad libre vasalla que sea el objetivo obtiene 2 <hyperlink>Almas benditas</hyperlink> bajo su control.",
-  "name": "Refuerzos benditos",
-  "operation_point_cost": 45,
-  "icon": "0000041B00001969"
  },
  {
   "casting_cost": "60<mana></mana> ",
@@ -5295,14 +5617,14 @@
   ]
  },
  {
-  "casting_cost": "150<mana></mana> ",
+  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484493,
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
   "id": "revivir_unidad",
   "tactical": true,
   "description": "Revive la unidad aliada objetivo muerta con los <temphp></temphp> Puntos de salud temporal al máximo.<br></br><br></br>No se puede usar en batallas acuáticas..",
   "name": "Revivir unidad",
-  "operation_point_cost": 50,
+  "operation_point_cost": 40,
   "icon": "0000041B000019BF"
  },
  {
@@ -5333,7 +5655,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora/curación</hyperlink>",
   "id": "salvación",
   "tactical": true,
-  "description": "La unidad aliada objetivo:<bulletlist><bullet>Recupera todos sus <hyperlink><hp></hp> Puntos de salud</hyperlink> como <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Elimina sus efectos de estado negativos.</bullet><bullet>Obtiene 3 de Resistencia reforzada.</bullet></bulletlist>",
+  "description": "La unidad aliada objetivo:<bulletlist><bullet>Recupera todos sus <hyperlink><hp></hp> Puntos de salud</hyperlink> como <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Elimina sus <hyperlink>Efectos de estado negativo</hyperlink>.</bullet><bullet>Obtiene 3 de Resistencia reforzada.</bullet></bulletlist>",
   "name": "Salvación",
   "operation_point_cost": 35,
   "icon": "0000041B0000197F"
@@ -5395,7 +5717,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de invocación de combate</hyperlink>",
   "id": "conjurar_almenara_divina",
   "tactical": true,
-  "description": "Invoca <hyperlink>una Almenara divina</hyperlink>. Cuando se invoca y al principio de cada turno, las unidades aliadas situadas en un área de 2 casilla(s):<bulletlist><bullet>Recuperan +5 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Obtienen +5 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>Esta invocación dura 3 <turn></turn> Turnos..<br></br><br></br>No se puede usar en batallas acuáticas..",
+  "description": "Invoca <hyperlink>una Almenara divina</hyperlink>. Cuando se invoca y al principio de cada turno, las unidades aliadas situadas en un área de 2 casilla(s):<bulletlist><bullet>Recuperan +15 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Obtienen +5 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>Esta invocación dura 3 <turn></turn> Turnos..<br></br><br></br>No se puede usar en batallas acuáticas..",
   "name": "Conjurar almenara divina",
   "operation_point_cost": 25,
   "icon": "000003E3000060DF",
@@ -5407,30 +5729,17 @@
  },
  {
   "casting_cost": "100<mana></mana> ",
-  "resid": 4273492484345,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
-  "id": "invocar_portador_de_luz",
-  "tactical": false,
-  "description": "Invoca una Unidad de magia de combate <hyperlink>Portador de luz</hyperlink> que recluta otras unidades para que se unan a tu causa.",
-  "name": "Invocar portador de luz",
-  "operation_point_cost": 100,
-  "icon": "0000041B00001961",
-  "summoned_units": [
-   {
-    "slug": "portador_de_luz"
-   }
-  ]
- },
- {
-  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484335,
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "humildad_imponente",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Fiel, lo que reduce el <hyperlink>Mantenimiento de la unidad</hyperlink>.</bullet><bullet>+1 de <damageSpirit></damageSpirit> <hyperlink>Daño espiritual</hyperlink> en los ataques por cada nivel de unidad del objetivo.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Fiel, lo que reduce el <hyperlink>Mantenimiento de la unidad</hyperlink>.</bullet><bullet>+2 de <statuseffectresistance></statuseffectresistance> <hyperlink>Resistencia a estados</hyperlink>.</bullet><bullet>+1 de <damageSpirit></damageSpirit> <hyperlink>Daño espiritual</hyperlink> en los ataques por cada nivel de unidad del objetivo.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "Nivel I"
+   },
+   {
+    "requisite": "Nivel II"
    }
   ],
   "name": "Humildad imponente",
@@ -5520,42 +5829,49 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492484056,
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
-  "id": "magia_necrótica",
+  "id": "proyectiles_necróticos",
   "tactical": false,
-  "description": "Los ataques básicos de las unidades encantadas tienen:<bulletlist><bullet>Una probabilidad inicial del 60 % de infligir Decadencia, un efecto de daño a lo largo del tiempo que impide que la unidad recupere vida.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques de las unidades encantadas tienen:<bulletlist><bullet>Una probabilidad inicial del 90 % de infligir Decadencia, un efecto de daño a lo largo del tiempo que reduce la curación recibida.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
    },
    {
     "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
    }
   ],
-  "name": "Magia necrótica",
+  "name": "Proyectiles necróticos",
   "operation_point_cost": 90,
   "icon": "0000041B000005E0"
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "20<souls></souls> ",
   "resid": 4273492484053,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
-  "id": "curación_de_ejército_no_muerto",
+  "id": "festín_de_las_almas",
   "tactical": false,
-  "description": "Recupera 20 <hyperlink><hp></hp> Puntos de salud</hyperlink> de todas las unidades <hyperlink>no muertas</hyperlink> del ejército aliado objetivo.",
-  "name": "Curación de ejército no muerto",
-  "operation_point_cost": 20,
+  "description": "El ejército aliado objetivo:<bulletlist><bullet>Recupera 20 <hyperlink><hp></hp> Puntos de salud</hyperlink> de las unidades que no sean No muertos.</bullet><bullet>Recupera 40 <hyperlink><hp></hp> Puntos de salud</hyperlink> de las unidades no muertas.</bullet></bulletlist>",
+  "name": "Festín de las almas",
+  "operation_point_cost": 25,
   "icon": "0000041B000005DC"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "60<souls></souls> ",
   "resid": 4273492483972,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército enemigo</hyperlink>",
-  "id": "ejército_vínculo_de_alma",
+  "id": "susurros_de_los_renacidos",
+  "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Las unidades enemigas en el ejército objetivo reciben el estado Vínculo de alma hasta la próxima vez que participen en una batalla.",
-  "name": "Ejército vínculo de alma",
-  "operation_point_cost": 45,
-  "icon": "0000041B000016EF"
+  "description": "Durante 1 <turn></turn> Turno del <hyperlink>Mapa del mundo</hyperlink>, el ejército enemigo objetivo obtiene:<bulletlist><bullet>2 de Desmoralización.</bullet><bullet>Cuando recibe un ataque, conjura 3 esqueletos con Campeón impío en el bando atacante.</bullet></bulletlist>",
+  "name": "Susurros de los renacidos",
+  "operation_point_cost": 100,
+  "icon": "0000049700002C39"
  },
  {
   "casting_cost": "80<mana></mana> ",
@@ -5563,7 +5879,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "enlazador_de_almas",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Una probabilidad inicial del 90 % de infligir Vínculo de alma en los ataques, lo que aumenta la obtención de <souls></souls> <hyperlink>Almas</hyperlink> al matar al objetivo.</bullet><bullet>+20 % de daño contra unidades con Vínculo de alma.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Una probabilidad inicial del 90 % de infligir Vínculo de alma en los ataques, lo que aumenta la obtención de <souls></souls> <hyperlink>Almas</hyperlink> al matar al objetivo.</bullet><bullet>+10 % de daño contra unidades con Vínculo de alma.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -5591,14 +5907,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483932,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
-  "id": "invocar_alma_en_pena",
+  "id": "invocar_alma_corrupta",
   "tactical": false,
-  "description": "Invoca <hyperlink>una Alma en pena</hyperlink>, un espíritu vengativo que reduce la moral y debilita a los enemigos con sus llantos desgarradores.",
-  "name": "Invocar alma en pena",
+  "description": "Invoca <hyperlink>una Alma corrupta</hyperlink>, una Unidad de lucha que se aprovecha de las unidades enemigas con poca <happiness></happiness> <hyperlink>Moral</hyperlink>.",
+  "name": "Invocar alma corrupta",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "alma_en_pena"
+    "slug": "alma_corrupta"
    }
   ]
  },
@@ -5756,14 +6072,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483617,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
-  "id": "invocar_vigía",
+  "id": "invocar_ojeador",
   "tactical": false,
-  "description": "Invoca <hyperlink>un Vigía</hyperlink>, una Unidad de magia de combate con mayor capacidad de visión.",
-  "name": "Invocar vigía",
+  "description": "Invoca <hyperlink>un Ojeador</hyperlink>, una Unidad de magia de combate con mayor capacidad de visión.",
+  "name": "Invocar ojeador",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "vigía"
+    "slug": "ojeador"
    }
   ]
  },
@@ -5773,7 +6089,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército enemigo</hyperlink>",
   "id": "predecir_al_enemigo",
   "tactical": false,
-  "description": "Todos los enemigos del ejército objetivo te otorgan visión durante 15 <turn></turn> Turnos.",
+  "description": "Todos los enemigos del ejército objetivo te otorgan visión durante 10 <turn></turn> Turnos.",
   "name": "Predecir al enemigo",
   "operation_point_cost": 30,
   "icon": "0000041B0000124D"
@@ -5815,7 +6131,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "escudo_estático",
   "tactical": true,
-  "description": "La unidad aliada objetivo recibe un escudo con una probabilidad inicial del 60 % de <hyperlink>aturdir</hyperlink> a los atacantes.<br></br>Dura 2 <turn></turn> Turnos.",
+  "description": "La unidad aliada objetivo y otra a 3 casillas de distancia reciben un escudo:<bulletlist><bullet>Tiene una probabilidad inicial del 60 % de <hyperlink>aturdir</hyperlink> a los atacantes.</bullet><bullet>Dura 2 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Escudo estático",
   "operation_point_cost": 15,
   "icon": "0000041B0000120C"
@@ -5826,7 +6142,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
   "id": "marca_de_invulnerabilidad",
   "tactical": true,
-  "description": "La unidad aliada objetivo:<bulletlist><bullet>Se vuelve <hyperlink>invulnerable</hyperlink> durante 1 <turn></turn> Turno.</bullet><bullet>Se eliminan sus efectos de estado negativos.</bullet></bulletlist><br></br>No se puede usar en una unidad más de una vez por batalla.",
+  "description": "La unidad aliada objetivo:<bulletlist><bullet>Se vuelve <hyperlink>invulnerable</hyperlink> durante 1 <turn></turn> Turno.</bullet><bullet>Se eliminan sus <hyperlink>Efectos de estado negativo</hyperlink>.</bullet></bulletlist><br></br>No se puede usar en una unidad más de una vez por batalla.",
   "name": "Marca de invulnerabilidad",
   "operation_point_cost": 20,
   "icon": "0000041B00001200"
@@ -5878,7 +6194,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "armamentos_artesanales",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+30 % de probabilidad de <hyperlink>Golpe crítico</hyperlink>.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+25 % de <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -5928,7 +6244,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "quiebratierras",
   "tactical": false,
-  "description": "La <hyperlink>Provincia</hyperlink> habitable o inhabitable objetivo:<bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas en la provincia reciben 10 <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Pierde <hyperlink>Montaña</hyperlink>, <hyperlink>Estalagmitas</hyperlink> y <hyperlink>Tierra excavable</hyperlink>.</bullet></bulletlist>",
+  "description": "En la <hyperlink>Provincia</hyperlink> habitable o inhabitable objetivo:<bulletlist><bullet>Las <hyperlink>Unidades</hyperlink> enemigas reciben 10 <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink> de daño.</bullet><bullet>La provincia pierde cualquier <hyperlink>Montaña</hyperlink>, <hyperlink>Estalagmitas</hyperlink> y <hyperlink>Tierra excavable</hyperlink>.</bullet><bullet>Invoca <hyperlink>un Espíritu pétreo</hyperlink>.</bullet></bulletlist>",
   "name": "Quiebratierras",
   "operation_point_cost": 150,
   "icon": "000003E300005CCB",
@@ -6001,7 +6317,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
   "id": "botín_natural",
   "tactical": false,
-  "description": "Todas las unidades aliadas de la Provincia objetivo obtienen +15 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos y se curan 15 <hyperlink><hp></hp> Puntos de salud</hyperlink> en dominios aliados y neutrales durante los próximos 2 <turn></turn> Turnos del <hyperlink>Mapa del mundo</hyperlink>.",
+  "description": "Todas las unidades aliadas del Provincia objetivo obtienen +15 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos y se curan 15 <hyperlink><hp></hp> Puntos de salud</hyperlink> en dominios aliados y neutrales durante los próximos 2 <turn></turn> Turnos del <hyperlink>Mapa del mundo</hyperlink>.",
   "name": "Botín natural",
   "operation_point_cost": 120,
   "icon": "0000041B00000DBB"
@@ -6021,24 +6337,27 @@
   "casting_cost": "120<mana></mana> ",
   "resid": 4273492483003,
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
-  "id": "proyectiles_putrefactos",
+  "id": "hojas_de_decadencia",
   "tactical": false,
-  "description": "Los ataques básicos de <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen +2 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Obtienen una probabilidad inicial del 60 % de infligir Decadencia, un efecto de daño a lo largo del tiempo que impide que los enemigos se curen.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos de las unidades encantadas:<bulletlist><bullet>Infligen Decadencia, un efecto de daño a lo largo del tiempo que reduce la curación recibida.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
-    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+    "requisite": "<unitShield></unitShield> Unidad de protección"
    },
    {
-    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
    },
    {
-    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
    }
   ],
-  "name": "Proyectiles putrefactos",
+  "name": "Hojas de decadencia",
   "operation_point_cost": 120,
   "icon": "0000041B00000D54"
  },
@@ -6049,7 +6368,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ciudad prolongado</hyperlink>",
   "id": "ciclo_de_las_estaciones",
   "tactical": false,
-  "description": "Se usa en una ciudad aliada. Todas las batallas que tengan lugar en los dominios de esta ciudad obtendrán <abilityblue>Ciclo de las estaciones</abilityblue>, lo que aplicará un efecto distinto a cada turno de la batalla en el siguiente orden:<bulletlist><bullet>Invierno: todos los enemigos reciben 10 de <damageFrost></damageFrost>.</bullet><bullet>Primavera: todas las unidades aliadas obtienen 1 de Fortaleza.</bullet><bullet>Verano: todas las unidades aliadas recuperan +10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Otoño: todos los enemigos obtienen 1 del estado Debilitamiento.</bullet></bulletlist>",
+  "description": "Todas las batallas que tengan lugar en los dominios de la ciudad objetivo obtendrán <abilityblue>Ciclo de las estaciones</abilityblue>, lo que aplicará un efecto distinto a cada turno de la batalla en el siguiente orden:<bulletlist><bullet>Invierno: todos los enemigos reciben 10 de <damageFrost></damageFrost>.</bullet><bullet>Primavera: todas las unidades aliadas obtienen 1 de Fortaleza.</bullet><bullet>Verano: todas las unidades aliadas recuperan +10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Otoño: todos los enemigos obtienen 1 del estado Debilitamiento.</bullet></bulletlist>",
   "name": "Ciclo de las estaciones",
   "operation_point_cost": 120,
   "icon": "0000041B00000D64"
@@ -6071,7 +6390,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/curación</hyperlink>",
   "id": "dispersar_salud",
   "tactical": true,
-  "description": "La unidad enemiga objetivo:<bulletlist><bullet>Recibe 30 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Obtiene 1 de Decadencia.</bullet></bulletlist><br></br>Las unidades aliadas situadas en un área de 2 casilla(s): <bulletlist><bullet>Recuperan 15 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Obtienen 1 de Regeneración.</bullet></bulletlist>",
+  "description": "La unidad enemiga objetivo:<bulletlist><bullet>Recibe 30 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink>.</bullet><bullet>Obtiene 2 de Decadencia.</bullet></bulletlist><br></br>Las unidades aliadas situadas en un área de 2 casilla(s): <bulletlist><bullet>Recuperan 15 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Obtienen 2 de Regeneración.</bullet></bulletlist>",
   "name": "Dispersar salud",
   "operation_point_cost": 30,
   "icon": "0000041B00000D5C"
@@ -6126,7 +6445,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño</hyperlink>",
   "id": "matanza_sacrificial",
   "tactical": true,
-  "description": "La unidad aliada objetivo explota y las unidades enemigas situadas en un área de 2 casilla(s):<bulletlist><bullet>Reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> más 5 <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> por cada nivel de la unidad sacrificada.</bullet><bullet>Sufre un efecto de estado negativo aleatorio por cada nivel de la unidad sacrificada.</bullet>",
+  "description": "La unidad aliada objetivo explota y las unidades enemigas situadas en un área de 2 casillas:<bulletlist><bullet>Reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> más 5 <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> por cada nivel de la unidad sacrificada.</bullet><bullet>Sufre <hyperlink>un Efecto de estado negativo</hyperlink> aleatorio por cada nivel de la unidad sacrificada.</bullet>",
   "name": "Matanza sacrificial",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6503,7 +6822,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "armas_de_explosión_ígnea",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas: <bulletlist><bullet>+20 % de probabilidad de <hyperlink>Golpe crítico</hyperlink>.</bullet><bullet>Cuando esta unidad mata a otra unidad:<bulletlist></bullet><bullet>La unidad muerta explota, lo que inflige 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> a las unidades enemigas adyacentes.</bullet></bulletlist></bulletlist>",
+  "description": "Otorga a las unidades encantadas: <bulletlist><bullet>+20 % de <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink>.</bullet><bullet>Cuando esta unidad mata a otra unidad:<bulletlist></bullet><bullet>La unidad muerta explota, lo que inflige 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> a las unidades enemigas adyacentes.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"

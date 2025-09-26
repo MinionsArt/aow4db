@@ -174,10 +174,11 @@
                     abilityReq,
                     abilityMod = "";
 
-                for (j in jsonUnitAbilities) {
-                    if (a === jsonUnitAbilities[j].slug) {
-                        abilityName = jsonUnitAbilities[j].name;
-                        abilityIcon = jsonUnitAbilities[j].icon;
+                for (j in jsonUnitAbilitiesLocalized) {
+                    if (a === jsonUnitAbilitiesLocalized[j].slug) {
+                        
+                        abilityName = jsonUnitAbilitiesLocalized[j].name;
+                        abilityIcon = jsonUnitAbilitiesLocalized[j].icon;
 
                         var tooltipName = document.createElement("SPAN");
                         var btn = document.createElement("DIV");
@@ -191,7 +192,7 @@
                         imag.className = "unit_ability_icon";
                         //  var spa = document.createElement("SPAN");
 
-                        abilityDescr = jsonUnitAbilities[j].description;
+                        abilityDescr = jsonUnitAbilitiesLocalized[j].description;
 
                         var abilityIconType = "";
                         imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");

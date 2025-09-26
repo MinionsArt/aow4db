@@ -28,7 +28,7 @@
   "id": "znamię_niezdarnego_kostura",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Jednostka ma:<bulletlist><bullet>Zdolności <hyperlink>magiczne</hyperlink> i <hyperlink>wsparcia</hyperlink> mają +1 pkt. zasięgu.</bullet><bullet>Wolny ruch podczas walki.</bullet></bulletlist>",
+  "description": "Jednostka ma:<bulletlist><bullet>Zdolności <hyperlink>magiczne</hyperlink> i <hyperlink>wsparcia</hyperlink> mają +1 pkt. <hyperlink><range></range>zasięg</hyperlink>.</bullet><bullet>Wolny ruch podczas walki.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -48,7 +48,7 @@
   "id": "znak_straży_przedniej",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Jednostka ma:<bulletlist><bullet>Bardzo szybki ruch w walce.</bullet><bullet>Ataki <hyperlink>magiczne</hyperlink> i <hyperlink>fizyczne dystansowe</hyperlink> przeciwko tej jednostce mają -20% <hyperlink>celność</hyperlink>i.</bullet><bullet>Ataki <hyperlink>wręcz</hyperlink> zadają -20% obrażeń.</bullet></bulletlist>",
+  "description": "Jednostka ma:<bulletlist><bullet>Bardzo szybki ruch w walce.</bullet><bullet>Ataki <hyperlink>magiczne</hyperlink> i <hyperlink>fizyczne dystansowe</hyperlink> przeciwko tej jednostce mają -20% <hyperlink><accuracy></accuracy> celność</hyperlink>.</bullet><bullet>Ataki <hyperlink>wręcz</hyperlink> zadają -20% obrażeń.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShock></unitShock> Jednostka rażąca"
@@ -154,7 +154,7 @@
   "id": "znak_Łowczyni",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Ataki <hyperlink>magiczne</hyperlink> i <hyperlink>fizyczne dystansowe</hyperlink> mają +30% obrażeń i -1 pkt. zasięgu.",
+  "description": "Ataki <hyperlink>magiczne</hyperlink> i <hyperlink>fizyczne dystansowe</hyperlink> mają +30% obrażeń i -1 pkt. <hyperlink><range></range>zasięg</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
@@ -183,15 +183,15 @@
   "icon": "0000049C00000082"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "20<mana></mana> ",
   "resid": 5068061409449,
   "spellType": "<casttactical></casttactical> <hyperlink>Czar osłabiający</hyperlink>",
   "id": "spaczony_dar",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Wybrane jednostki wroga w promieniu 1 <range></range>:<bulletlist><bullet>Tracą wszystkie pozytywne efekty stanu.</bullet><bullet>Jeśli utracony efekt stanu ma kontrowanie efektów stanu, wówczas jednostka zyskuje kumulację tego negatywnego efektu stanu.<bulletlist></bullet>",
+  "description": "Wybrana jednostka wroga:<bulletlist><bullet>Traci wszystkie <hyperlink>pozytywny efekt stanu</hyperlink>.</bullet><bullet>Jeśli utracony efekt stanu ma kontrowanie efektów stanu, wówczas jednostka zyskuje kumulację tego <hyperlink>negatywniego efektu stanu</hyperlink>.<bulletlist></bullet>",
   "name": "Spaczony dar",
-  "operation_point_cost": 30,
+  "operation_point_cost": 25,
   "icon": "0000049C0000008C"
  },
  {
@@ -246,6 +246,321 @@
   "name": "Umbralna szczelina",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "120<mana></mana> ",
+  "resid": 5046586584490,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
+  "id": "rozkwitające_pociski",
+  "tactical": false,
+  "description": "Sprawia, że podstawowe ataki <hyperlink>fizyczne dystansowe</hyperlink> i <hyperlink>magiczne</hyperlink> zaklętych jednostek mają:<bulletlist><bullet>Podstawowe 60% szans na nałożenie zalążek życia na 3 <turn></turn>.</bullet><bullet>Zadają +10% obrażeń jednostkom ze stanem Rozkład.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Jednostka magów bitewnych"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Jednostka harcowników"
+   }
+  ],
+  "name": "Rozkwitające pociski",
+  "operation_point_cost": 120,
+  "icon": "0000049700002DA7"
+ },
+ {
+  "casting_cost": "60<mana></mana> ",
+  "resid": 5046586584448,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołanie_pomniejszego_ducha_światła",
+  "tactical": false,
+  "description": "Przywołuje jednostkę wsparcia <hyperlink>pomniejszego duchego światłau</hyperlink> na wybrane pole.",
+  "name": "Przywołanie pomniejszego ducha światła",
+  "operation_point_cost": 60,
+  "icon": "000003BD00002E6E",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_duch_światła"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586584444,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołanie_niosącego_światło",
+  "tactical": false,
+  "description": "Przywołaj jednostkę magów bitewnych <hyperlink>niosącego światło</hyperlink>, który nawraca inne jednostki na twoją stronę.",
+  "name": "Przywołanie niosącego światło",
+  "operation_point_cost": 100,
+  "icon": "0000049700002D86",
+  "summoned_units": [
+   {
+    "slug": "niosący_światło"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584436,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołanie_ducha_światła",
+  "tactical": false,
+  "description": "Przywołaj <hyperlink>duch światła</hyperlink>. Ta jednostka to jednostka wsparcia z dobrymi zdolnościami leczniczymi.",
+  "name": "Przywołanie ducha światła",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "duch_światła"
+   }
+  ]
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586584156,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołanie_błogosławionej_duszy",
+  "tactical": false,
+  "description": "Przywołuje jednostkę tarczową <hyperlink>błogosławionej duszy</hyperlink>, która może mobilizować twoje jednostki i potępiać wroga.",
+  "name": "Przywołanie błogosławionej duszy",
+  "operation_point_cost": 150,
+  "icon": "0000041B00001969",
+  "summoned_units": [
+   {
+    "slug": "błogosławiona_dusza"
+   }
+  ]
+ },
+ {
+  "casting_cost": "35<souls></souls> ",
+  "resid": 5046586584128,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający/osłabiający</hyperlink>",
+  "id": "nieświęty_czempion",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Wybrane jednostki sojusznicze zyskują:<bulletlist><bullet>+50% zadawanych obrażeń.</bullet><bullet>Bezśmierć.</bullet><bullet>Zbroja rozpaczy.</bullet></bulletlist><br></br>Po rzuceniu wrogie jednostki w zasięgu 2 <range></range> tracą 10 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>.",
+  "name": "Nieświęty czempion",
+  "operation_point_cost": 40,
+  "icon": "0000049700002C3D"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586584106,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
+  "id": "uraza_do_nieumarłych",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>+2 pkt. <defensespirit></defensespirit> <hyperlink>odporności przeciw duchom</hyperlink>.</bullet><bullet>+2 pkt. <defensefire></defensefire> <hyperlink>odporności na ogień</hyperlink>.</bullet><bullet>Nikczemny zabójca.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitUndead></unitUndead> Nieumarły"
+   }
+  ],
+  "name": "Uraza do nieumarłych",
+  "operation_point_cost": 140,
+  "icon": "0000049700002C32"
+ },
+ {
+  "casting_cost": "150<souls></souls> ",
+  "resid": 5046586584087,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołanie_upadłego_anioła",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przywołaj jednostkę magów bitewnych – <hyperlink>upadły anioł</hyperlink>, który powoduje rozkład i spaczenie.",
+  "name": "Przywołanie upadłego anioła",
+  "operation_point_cost": 200,
+  "summoned_units": [
+   {
+    "slug": "upadły_anioł"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586583968,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
+  "id": "Święta_aura",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Święta aura, która zapewnia ochronę przed stanami przylegającym jednostkom sojuszniczym i zadaje obrażenia przylegającym wrogom.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Jednostka tarczowa"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Jednostka z bronią drzewcową"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Jednostka rażąca"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Jednostka wojowników"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Jednostka harcowników"
+   }
+  ],
+  "name": "Święta aura",
+  "operation_point_cost": 140,
+  "icon": "0000049700002B9D"
+ },
+ {
+  "casting_cost": "200<mana></mana> ",
+  "resid": 5046586583955,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na armię sojuszniczą</hyperlink>",
+  "id": "niebiańscy_strażnicy",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Do wybranego przywódcy armii dołączają niebiańscy strażnicy na 1 <turn></turn> Tura na <hyperlink>Mapie świata</hyperlink>, przywołując jednostki archontów III poziomu (2) na początku bitwy i na czas jej trwania.",
+  "name": "Niebiańscy strażnicy",
+  "operation_point_cost": 200,
+  "icon": "0000049700002B90"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583943,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
+  "id": "wzniesione_odrodzenie",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Wybrana martwa niebędąca bohaterem ani niebianinem jednostka:<bulletlist><bullet>Zostaje wskrzeszona jako <hyperlink>Czuwanie</hyperlink> pod kontrolą rzucającego do końca walki.</bullet><bullet>W chwili wskrzeszenia wszystkie jednostki sojusznicze w zasięgu 2 <range></range> odzyskują 20 <hyperlink><temphp></temphp> tymczasowe punkty zdrowia</hyperlink>.</bullet>",
+  "name": "Wzniesione odrodzenie",
+  "operation_point_cost": 40,
+  "icon": "0000049700002B84"
+ },
+ {
+  "casting_cost": "450<mana></mana> ",
+  "resid": 5046586583927,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Nieznaczna transformacja rasy</hyperlink>",
+  "id": "czysta_dusza",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Oczyść dusze docelowej rasy, zapewniając im:<bulletlist><bullet>Na początku każdej tury walki rozprosz <hyperlink>negatywny efekt stanu</hyperlink> w liczbie 1.</bullet><bullet>Jeśli usunięty negatywny efekt stanu miał pozytywną <hyperlink>kontrę</hyperlink>, zyskaj ten <hyperlink>pozytywny efekt stanu</hyperlink>.</bullet></bulletlist><br></br>Ta transformacja jest niezgodna z transformacjami: Umbralne ciało i Szybkonogi ponurak.",
+  "name": "Czysta dusza",
+  "operation_point_cost": 450,
+  "icon": "0000049700002B7C"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586583923,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołaj_astrę",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przywołaj mityczną jednostkę <hyperlink>astrę</hyperlink>, jednostkę anioła o silnych atakach i zdolnościach leczenia.",
+  "name": "Przywołaj Astrę",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "astra"
+   }
+  ]
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583846,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
+  "id": "przepowiadające_diademy",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Zyskaj prekognicję po wejściu w <hyperlink>tryb obronny</hyperlink>.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Jednostka tarczowa"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Jednostka z bronią drzewcową"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Jednostka rażąca"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Jednostka wojowników"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Jednostka harcowników"
+   }
+  ],
+  "name": "Przepowiadające diademy",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B1A"
+ },
+ {
+  "casting_cost": "100<mana></mana> ",
+  "resid": 5046586583837,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
+  "id": "przeznaczone_pociski",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>+20% <hyperlink><crit></crit>szansy na trafienie krytyczne</hyperlink>.</bullet><bullet>Lojalność.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Jednostka magów bitewnych"
+   }
+  ],
+  "name": "Przeznaczone pociski",
+  "operation_point_cost": 100,
+  "icon": "0000049700002B16"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586583776,
+  "spellType": "<casttactical></casttactical> <hyperlink>Zaklęcie bojowe</hyperlink>",
+  "id": "wróżenie_bitewne",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Po rzuceniu i przez 2 <turn></turn> tury, stosuj ten efekt do bitwy w następującej kolejności:<bulletlist><bullet>Wszystkie jednostki sojusznicze zyskują +25% <hyperlink>unik</hyperlink>u na czas tury.</bullet><bullet>Wszystkie jednostki sojusznicze zyskują prekognicję.</bullet><bullet>Wszystkie jednostki sojusznicze zyskują +20% obrażeń na czas tury.</bullet></bulletlist>",
+  "name": "Wróżenie bitewne",
+  "operation_point_cost": 35,
+  "icon": "0000049700002ADD"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586583726,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
+  "id": "bohaterska_postawa",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Ma usuwane wszystkie <hyperlink>negatywnie efekty stanu</hyperlink>.</bullet><bullet>Zyskuje niezłomność na 1 <turn></turn>.</bullet><bullet>Ignoruje kary z <hyperlink>ofiarami</hyperlink> na 1 <turn></turn>.</bullet></bulletlist>",
+  "name": "Bohaterska postawa",
+  "operation_point_cost": 20,
+  "icon": "0000049700002AAB"
+ },
+ {
+  "casting_cost": "250<mana></mana> ",
+  "resid": 5046586583714,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Nieznaczna transformacja rasy</hyperlink>",
+  "id": "cnotliwy_duch",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Daje docelowej rasie siłę w chwilach słabości, zapewniając jej:<bulletlist><bullet>+2 pkt. <defensespirit></defensespirit> <hyperlink>odporności przeciw duchom</hyperlink></bullet><bullet>Kiedy <hyperlink><hp></hp> punkty zdrowia</hyperlink> tej jednostki spadną poniżej 60% maksimum:<bulletlist></bullet><bullet>Ignoruje 50% <hyperlink>ofiar</hyperlink>.</bullet><bullet>Przyznaje+1 pkt. <defense></defense> <hyperlink>obrony</hyperlink>.</bullet><bullet>Przyznaje+1 pkt. <resistance></resistance> <hyperlink>odporności</hyperlink>.</bullet></bulletlist>",
+  "name": "Cnotliwy duch",
+  "operation_point_cost": 250,
+  "icon": "0000049700002A9E"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586583705,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
+  "id": "przywołanie_czuwania",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przywołaj jednostkę magów bitewnych, <hyperlink>czuwanie</hyperlink>, jednostkę, która razi wrogów świętym ogniem.",
+  "name": "Przywołanie czuwania",
+  "operation_point_cost": 150,
+  "summoned_units": [
+   {
+    "slug": "czuwanie"
+   }
+  ]
  },
  {
   "casting_cost": "90<mana></mana> ",
@@ -344,7 +659,7 @@
   "id": "rezonujące_ostrza",
   "DLC": "GIANTKINGS ",
   "tactical": false,
-  "description": "Podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zyskują:<bulletlist><bullet>Nałożenie negatywnego efektu stanu w zależności od typu terenu.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zyskują:<bulletlist><bullet>Nałożenie <hyperlink>negatywniego efektu stanu</hyperlink> w zależności od typu terenu.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -536,7 +851,7 @@
   "id": "przeklęte_pociski",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Ataki <hyperlink>magiczne</hyperlink> i <hyperlink>fizyczne dystansowe</hyperlink> zaklętych jednostek:<bulletlist><bullet>Zadają +2 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>Zadają 2 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink></bullet><bullet>Mają podstawowe 60% szans na nałożenie duchowego ognia na 3 <turn></turn>.<br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.</bullet>",
+  "description": "Ataki <hyperlink>fizyczne dystansowe</hyperlink> i <hyperlink>magiczne</hyperlink> zaklętych jednostek:<bulletlist><bullet>Zadają +1 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>Zadają 1 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink></bullet><bullet>Nakładają stan duchowy ogień na 3 <turn></turn>.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
@@ -591,7 +906,7 @@
   "id": "zbezczeszczona_ziemia",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Jeśli znajduje się na niej <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ona <hyperlink>splądrowana</hyperlink>.<bulletlist></bullet><bullet>Zyskujesz z tego tytułu nagrody i tracisz <reputation2></reputation2> <hyperlink>powiązanie</hyperlink>.</bullet></bulletlist><bullet>Prowincja zyskuje <hyperlink>ziemie popielne</hyperlink>.</bullet><bullet>Prowincja traci <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Jeśli znajduje się na niej <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ona <hyperlink>splądrowana</hyperlink>.<bulletlist></bullet><bullet>Zyskujesz z tego tytułu nagrody i tracisz <reputation2></reputation2> <hyperlink>powiązanie</hyperlink>.</bullet></bulletlist><bullet>Prowincja zyskuje <hyperlink>ziemie popielne</hyperlink>.</bullet><bullet>Prowincja traci <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, : i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Zbezczeszczona ziemia",
   "operation_point_cost": 60,
   "icon": "00000497000013B2"
@@ -901,7 +1216,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "potworne_odrodzenie",
   "tactical": true,
-  "description": "Wybrana sojusznicza jednostka poziomu I, II lub II niebędąca jednostką magicznym pochodzeniem ani konstruktem:<bulletlist><bullet>Zmienia się w <hyperlink>wojennik</hyperlink>.</bullet><bullet>Leczy 60 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Ginie po zakończeniu bitwy.</bullet></bulletlist>",
+  "description": "Wybrana sojusznicza jednostka poziomu I, II lub III niebędąca jednostką magicznym pochodzeniem ani konstruktem:<bulletlist><bullet>Zmienia się w <hyperlink>wojennik</hyperlink>.</bullet><bullet>Leczy 60 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Ginie po zakończeniu bitwy.</bullet></bulletlist><br><br></br>Nie można używać w bitwach wodnych.",
   "name": "Potworne odrodzenie",
   "operation_point_cost": 30,
   "icon": "0000049700000ECB"
@@ -1108,7 +1423,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "oczyszczająca_strzała",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>fizyczne dystansowe</hyperlink> zaklętych jednostek mają:<bulletlist><bullet>10+% obrażeń przeciwko jednostkom magicznego pochodzenia.</bullet><bullet>Podstawowe 60% szans na usunięcie 1 losowych pozytywnych efektu stanu celu.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>fizyczne dystansowe</hyperlink> zaklętych jednostek mają:<bulletlist><bullet>+10% obrażeń przeciwko jednostkom magicznego pochodzenia.</bullet><bullet>Podstawowe 60% szans na usunięcie 1<hyperlink>Pozytywny efekt stanu</hyperlink> losowych <hyperlink>fizycznych dystansowych</hyperlink> celu.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
@@ -1199,13 +1514,13 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "kreacja_ziemi_ziemie_popielne",
   "tactical": false,
-  "description": "Wybrana sojusznicza <hyperlink>prowincja</hyperlink> lub prowincja bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>ziemie popielne</hyperlink></bullet><bullet>Traci <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink> sojusznicza lub bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>ziemie popielne</hyperlink></bullet><bullet>Traci <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Kreacja ziemi: ziemie popielne",
   "operation_point_cost": 45,
   "icon": "000004970000066F"
  },
  {
-  "casting_cost": "80<mana></mana> ",
+  "casting_cost": "60<mana></mana> ",
   "resid": 5046586574328,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na świat</hyperlink>",
   "id": "ulewa",
@@ -1213,7 +1528,7 @@
   "tactical": false,
   "description": "Wybrana prowincja:<bulletlist><bullet>Jeśli jest lądem, zamienia się w mokradła.</bullet><bullet>Szaleje na niej ulewa przez 3 <turn></turn>.</bullet></bulletlist><br></br><br></br>Nie da się użyć pod ziemią.",
   "name": "Ulewa",
-  "operation_point_cost": 80,
+  "operation_point_cost": 60,
   "icon": "00000497000005A8"
  },
  {
@@ -1223,7 +1538,7 @@
   "id": "burza",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "<bulletlist><bullet>Wszystkie jednostki zyskują stan wilgoć na 3 <turn></turn>.</bullet><bullet>Do 2 losowych jednostek wroga:<bulletlist></bullet><bullet>Otrzymuje 10 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>Ma podstawowe 90% szans na otrzymanie stanu porażenie na 3 <turn></turn>.</bullet></bulletlist></bulletlist><br></br>Ten czar będzie powtarzany na początku każdej tury przez następne 6 <turn></turn>.",
+  "description": "<bulletlist><bullet>Wszystkie jednostki zyskują stan wilgoć na 3 <turn></turn>.</bullet><bullet>Do 2 losowych jednostek wroga:<bulletlist></bullet><bullet>Otrzymuje 20 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>Ma podstawowe 90% szans na otrzymanie stanu porażenie na 3 <turn></turn>.</bullet></bulletlist></bulletlist><br></br>Ten czar będzie powtarzany na początku każdej tury przez następne 6 <turn></turn>.",
   "name": "Burza",
   "operation_point_cost": 35,
   "icon": "00000497000005A4"
@@ -1247,7 +1562,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Nieznaczna transformacja rasy</hyperlink>",
   "id": "dotknięcie_wróżek",
   "tactical": false,
-  "description": "Łączy wybraną rasę z mocami wróżek, dzięki czemu ta zyskuje:<bulletlist><bullet>Wróżkowy podstęp</bullet><bullet>Zdolność ignorowania:<bulletlist></bullet><bullet>Kary do zasięgu widzenia z powodu stanu mglistyu.</bullet><bullet>Kary do celności z powodu uporczywa mgła.</bullet></bulletlist></bulletlist>",
+  "description": "Łączy wybraną rasę z mocami wróżek, dzięki czemu ta zyskuje:<bulletlist><bullet>Wróżkowy podstęp</bullet><bullet>Zdolność ignorowania:<bulletlist></bullet><bullet>Kary do zasięgu widzenia z powodu stanu mglistyu.</bullet><bullet>Kary do <hyperlink><accuracy></accuracy> celność</hyperlink> z powodu uporczywa mgła.</bullet></bulletlist></bulletlist>",
   "name": "Dotknięcie wróżek",
   "operation_point_cost": 250,
   "icon": "000004970000052C"
@@ -1270,7 +1585,7 @@
   "id": "wróżkowe_objęcia",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "W zasięgu 1 <range></range>:<bulletlist><bullet>Pojawiają się obłoki <hyperlink>mgły</hyperlink>.</bullet><bullet>Jednostki sojusznicze zyskują losowe pozytywne efekty stanu w liczbie: 2.</bullet>",
+  "description": "W zasięgu 1 <range></range>:<bulletlist><bullet>Pojawiają się obłoki <hyperlink>mgły</hyperlink>.</bullet><bullet>Jednostki sojusznicze zyskują losowe <hyperlink>pozytywnie efekcie stanu</hyperlink> w liczbie: 2.</bullet>",
   "name": "Wróżkowe objęcia",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1299,7 +1614,7 @@
   "id": "przywołanie_mgielnika",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>mgielnik</hyperlink> (jednostka harcowników) z atakami nakładającymi losowe negatywne efekty stanu.",
+  "description": "Przywołanie <hyperlink>mgielniku</hyperlink> (jednostka harcowników) z atakami nakładającymi losowy <hyperlink>negatywny efekt stanu</hyperlink>.",
   "name": "Przywołanie mgielnika",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -1395,7 +1710,7 @@
   "id": "przywołanie_pierwotnego_krokodyla",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Przywołuje <hyperlink>krokodyla Pierwotnego</hyperlink> 2 poziomu. <br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "description": "Przywołuje <hyperlink>krokodyla Pierwotniego</hyperlink> 2 poziomu. <br></br>Czas trwania przywołania to 3 <turn></turn>.",
   "name": "Przywołanie pierwotnego krokodyla",
   "operation_point_cost": 30,
   "summoned_units": [
@@ -1705,7 +2020,7 @@
   "id": "rytuał_zguby",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "<bulletlist><bullet>Podczas oblężenia na początku każdej <turn></turn> <hyperlink>tury</hyperlink> losowe <hyperlink>ulepszenia prowincji</hyperlink> obleganego miasta zostają <hyperlink>zburzone</hyperlink>, za co otrzymujesz nagrody.</bullet><bullet>Na początku walki:<bulletlist></bullet><bullet>Wszyscy obrońcy zyskują kumulację duchowego ognia na {duration} <turn></turn>.</bullet><bullet>Po stronie atakujących pojawiają się <hyperlink>przeklęty ogr</hyperlink> w liczbie {amountUnits}.</bullet></bulletlist></bulletlist>",
+  "description": "<bulletlist><bullet>Podczas oblężenia na początku każdej <turn></turn> <hyperlink>tury</hyperlink> losowe <hyperlink>ulepszenia prowincji</hyperlink> obleganego miasta zostają <hyperlink>zburzone</hyperlink>, za co otrzymujesz nagrody.</bullet><bullet>Na początku walki:<bulletlist></bullet><bullet>Wszyscy obrońcy zyskują kumulację duchowego ognia na <turn></turn>.</bullet><bullet>Po stronie atakujących pojawiają się <hyperlink>przeklęty ogr</hyperlink> w liczbie .</bullet></bulletlist></bulletlist>",
   "name": "Rytuał zguby",
   "operation_point_cost": 0,
   "icon": "00000497000013B6"
@@ -1781,7 +2096,7 @@
   "description": "Wybrana sojusznicza <hyperlink>armia</hyperlink>: losowa <hyperlink>jednostka</hyperlink> w armii ze stanem przemiana natychmiastowo zyskuje wystarczająco dużo punktów rangi, aby ewoluować.",
   "name": "Wymuszona ewolucja",
   "operation_point_cost": 80,
-  "icon": "00000493000001AF"
+  "icon": "0000049700002DFE"
  },
  {
   "casting_cost": "200<mana></mana> ",
@@ -1829,7 +2144,7 @@
   "id": "umbralne_ciało",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Daje wybranej rasie błogosławieństwa umbralnej otchłani, przyznając jej:<bulletlist><bullet>Niewrażliwość na umbralną chorobę</bullet><bullet>Podczas przebywania na <hyperlink>mroku</hyperlink> jednostki terenowe zyskują:<bulletlist></bullet><bullet>+10 pkt. <happiness></happiness> <hyperlink>morale</hyperlink></bullet><bullet>+12 <hyperlink><hp></hp> pkt. zdrowia</hyperlink> na <turn></turn> <hyperlink>turę</hyperlink> na mapie świata.</bullet></bulletlist><bullet><hyperlink>Miasta</hyperlink> rasy:<bulletlist></bullet><bullet>Zyskują +2 pkt. przychodu z <knowledge></knowledge> <hyperlink>wiedzy</hyperlink> za każdą prowincję na terenie mroku.</bullet><bullet>Ignorują kary do <happiness></happiness> <hyperlink>stabilności miasta</hyperlink> za tereny mroku.</bullet></bulletlist><bullet>Jednostki bohaterów zyskują ponury pasterz.</bullet></bulletlist>",
+  "description": "Daje wybranej rasie błogosławieństwa umbralnej otchłani, przyznając jej:<bulletlist><bullet>Niewrażliwość na umbralną chorobę.</bullet><bullet>Podczas przebywania na <hyperlink>mroku</hyperlink> jednostki terenowe zyskują:<bulletlist></bullet><bullet>+10 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>.</bullet><bullet>+12 <hyperlink><hp></hp> pkt. zdrowia</hyperlink> na <turn></turn> <hyperlink>turę</hyperlink> na mapie świata.</bullet></bulletlist><bullet><hyperlink>Miasta</hyperlink> rasy:<bulletlist></bullet><bullet>Zyskują +2 pkt. przychodu z <knowledge></knowledge> <hyperlink>wiedzy</hyperlink> za każdą prowincję na terenie mroku.</bullet><bullet>Ignorują kary do <happiness></happiness> <hyperlink>stabilności miasta</hyperlink> za tereny mroku.</bullet></bulletlist><bullet>Jednostki bohaterów zyskują ponury pasterz.</bullet></bulletlist><br></br>Ta przemiana nie jest możliwa ze zdolnością: czysta dusza.",
   "name": "Umbralne ciało",
   "operation_point_cost": 250,
   "icon": "0000049000000854"
@@ -1841,10 +2156,162 @@
   "id": "szybkonogi_ponurak",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Zamienia wybraną rasę w umbralne stworzenia, co zapewnia im:<bulletlist><bullet>Typ jednostki: umbralny demon.</bullet><bullet>Lewitacja.</bullet><bullet>Szybki ruch.<bulletlist><br></br><br></br>Jednostki na wierzchowcach tracą swoje wierzchowce.<br></br><br></br>Bohaterowie tracą swoje wierzchowce i sprzęt zakładany na nogi.</bullet>",
+  "description": "Zamienia wybraną rasę w umbralne stworzenia, co zapewnia im:<bulletlist><bullet>Typ jednostki: umbralny demon.</bullet><bullet>Lewitacja.</bullet><bullet>Szybki ruch.<bulletlist><br></br><br></br>Jednostki na wierzchowcach tracą swoje wierzchowce.<br></br><br></br>Bohaterowie tracą swoje wierzchowce i sprzęt zakładany na nogi.<br></br><br></br>Ta przemiana nie jest możliwa ze zdolnością: czysta dusza.</bullet>",
   "name": "Szybkonogi ponurak",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905512,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
+  "id": "przywołanie_żywiołaka",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Przywołaj mniejszego ducha 1. poziomu, którego <hyperlink>więź</hyperlink> odpowiada dominującej więzi twojego imperium: <hyperlink>Pomniejszy śnieżny duch</hyperlink><br></br><br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "name": "Przywołanie żywiołaka",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_śnieżny_duch"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905508,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
+  "id": "przywołanie_żywiołaka",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Przywołaj mniejszego ducha 1. poziomu, którego <hyperlink>więź</hyperlink> odpowiada dominującej więzi twojego imperium: <hyperlink>Pomniejszy duch fal</hyperlink><br></br><br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "name": "Przywołanie żywiołaka",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_duch_fal"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905504,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
+  "id": "przywołanie_żywiołaka",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Przywołaj mniejszego ducha 1. poziomu, którego <hyperlink>więź</hyperlink> odpowiada dominującej więzi twojego imperium: <hyperlink>Pomniejszy duch kamienia</hyperlink><br></br><br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "name": "Przywołanie żywiołaka",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_duch_kamienia"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905500,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
+  "id": "przywołanie_żywiołaka",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Przywołaj mniejszego ducha 1. poziomu, którego <hyperlink>więź</hyperlink> odpowiada dominującej więzi twojego imperium: <hyperlink>Pomniejszy duch burzy</hyperlink><br></br><br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "name": "Przywołanie żywiołaka",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_duch_burzy"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905496,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
+  "id": "przywołanie_żywiołaka",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Przywołaj mniejszego ducha 1. poziomu, którego <hyperlink>więź</hyperlink> odpowiada dominującej więzi twojego imperium: <hyperlink>Pomniejszy duch magmy</hyperlink><br></br><br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "name": "Przywołanie żywiołaka",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_duch_magmy"
+   }
+  ]
+ },
+ {
+  "casting_cost": "20<mana></mana> ",
+  "resid": 5003636905491,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
+  "id": "przywołanie_żywiołaka",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Przywołaj mniejszego ducha 1. poziomu, którego <hyperlink>więź</hyperlink> odpowiada dominującej więzi twojego imperium: <hyperlink>Pomniejszy duch światła</hyperlink><br></br><br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "name": "Przywołanie żywiołaka",
+  "operation_point_cost": 25,
+  "icon": "0000048D000015BD",
+  "summoned_units": [
+   {
+    "slug": "pomniejszy_duch_światła"
+   }
+  ]
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636905483,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
+  "id": "wcielenie_wytrzymałości",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": true,
+  "description": "Jednostki sojusznicze w promieniu 1 <range></range> na 1 <turn></turn> <turn></turn> Tura zyskują:<bulletlist><bullet>+1 pkt. <defense></defense> <hyperlink>obrony</hyperlink>, +1 pkt. <resistance></resistance> <hyperlink>odporności</hyperlink>.</bullet><bullet>Dodatkowe +1 pkt. <defense></defense> <hyperlink>obrony</hyperlink>, +1 pkt. <resistance></resistance> <hyperlink>odporności</hyperlink> na kumulację wcielenia więzi.</bullet></bulletlist>",
+  "name": "Wcielenie wytrzymałości",
+  "operation_point_cost": 15,
+  "icon": "0000048D000015C1"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636905425,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
+  "id": "znamię_wcielenia",
+  "DLC": "ARCHONPROPHECY ",
+  "tactical": false,
+  "description": "Przyznaje jednostkom nienależącym do kultury architekta:<bulletlist><bullet>Wcielenie więzi.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Jednostka tarczowa"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Jednostka z bronią drzewcową"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Jednostka rażąca"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Jednostka magów bitewnych"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Jednostka wojowników"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Jednostka harcowników"
+   }
+  ],
+  "name": "Znamię wcielenia",
+  "operation_point_cost": 90,
+  "icon": "0000048D000015B9"
  },
  {
   "casting_cost": "60<gold></gold> ",
@@ -1895,7 +2362,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na świat</hyperlink>",
   "id": "astralne_wróżenie",
   "tactical": false,
-  "description": "Stwórz i pokaż nowe <hyperlink>echo astralne</hyperlink> w prowincjach obok twojej posiadłości.",
+  "description": "Stwórz i pokaż nowe <hyperlink>echa astralne</hyperlink> w prowincjach obok twojej posiadłości.",
   "name": "Astralne wróżenie",
   "operation_point_cost": 300,
   "icon": "000003E3000053C6"
@@ -1918,7 +2385,7 @@
   "id": "uświęcająca_ognista_burza",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Wybrana nieprzyjazna <hyperlink>prowincja</hyperlink> nieposiadająca <hyperlink>starożytnego cudu</hyperlink>:<bulletlist><bullet>Jej <hyperlink>ulepszenie prowincji</hyperlink> zostaje spustoszone.</bullet><bullet>Wrogie jednostki w prowincji otrzymują 20 pkt. <damageSpirit></damageSpirit> <hyperlink>obrażenia od duchów</hyperlink>.</bullet><bullet>Na 3 <turn></turn> przy rozpoczęciu walki wszystkie jednostki wroga otrzymują stan potępienie.</bullet><bullet>Tworzy na losowych polach <hyperlink>oczyszczające płomienie</hyperlink>.</bullet></bulletlist>",
+  "description": "W wybranej <hyperlink>prowincji</hyperlink>:<bulletlist><bullet>Wrogie jednostki otrzymują 20 pkt. <damageSpirit></damageSpirit> <hyperlink>obrażenia od duchów</hyperlink>.</bullet><bullet>Prowincja zyskuje uświęcająca ognista burza na 3 <turn></turn>.</bullet><bullet>Jeśli znajduje się w niej wrogie <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ono <hyperlink>splądrowane</hyperlink>.</bullet></bulletlist>",
   "name": "Uświęcająca ognista burza",
   "operation_point_cost": 100,
   "icon": "0000048D0000087B"
@@ -1942,7 +2409,7 @@
   "id": "czempioni_błogosławieni_płomieniem",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek:<bulletlist><bullet>Zyskują podstawowe 60% szans na nałożenie stanu podpalenie</bullet><bullet>Jeśli cel otrzyma 5 razy stan podpalenie:<br></br>Tworzy na wybranym polu <hyperlink>oczyszczające płomienie</hyperlink> na 3 <turn></turn>.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek:<bulletlist><bullet>Zyskują podstawowe 60% szans na nałożenie stanu podpalenie.</bullet><bullet>Tworzą na wybranym polu <hyperlink>oczyszczające płomienie</hyperlink> na 3 <turn></turn>.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -2064,7 +2531,7 @@
   "id": "przywołanie_macki",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Przywołaj <hyperlink>nieruchomego</hyperlink> jednostki wojowników ze stanem widzące oko.<br></br>Czas trwania przywołania to 3 <turn></turn>.",
+  "description": "Przywołaj <hyperlink>nieruchomego</hyperlink> jednostkę wojowników ze stanem naduważność.<br></br>Czas trwania przywołania to 3 <turn></turn>.",
   "name": "Przywołanie macki",
   "operation_point_cost": 25,
   "summoned_units": [
@@ -2080,7 +2547,7 @@
   "id": "duszące_skupienie",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>magiczne</hyperlink> zaklętych jednostek:<bulletlist><bullet>Mają podstawowe 30% szans na nałożenie uduszona na 1 <turn></turn>.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>magiczne</hyperlink> zaklętych jednostek:<bulletlist><bullet>Mają podstawowe 30% szans na nałożenie uduszona na 1 <turn></turn>.</bullet><bullet>Szansa jest zwiększona do 60% w przypadku jednostek ze stanem oznaczenie lub spowolnienie.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -2128,7 +2595,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_dzikiego_zwierzęcia",
   "tactical": false,
-  "description": "<bulletlist><bullet>Przywołuje losową jednostkę <hyperlink>zwierzęcą</hyperlink> I poziomu na wybrane pole świata.</bullet><bullet>Niewielka szansa na przywoływanie zwierzęcia II poziomu.</bullet><bullet><hyperlink>Zwierzęta</hyperlink> zależą od rodzaju terenu, na którym jest używana ta umiejętność.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Wybierz jednostkę <hyperlink>zwierzęcą</hyperlink> I lub II poziomu, którą chcesz dodać do swojej armii.</bullet><bullet>Dostępne Zwierzę zależą od rodzaju terenu, na który rzucany jest czar.</bullet></bulletlist>",
   "name": "Przywołanie dzikiego zwierzęcia",
   "operation_point_cost": 60,
   "icon": "0000041B000002E7",
@@ -2204,7 +2671,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_potężnego_zwierzęcia",
   "tactical": false,
-  "description": "Przywołuje losową jednostkę zwierzęcą III poziomu na wybrane miejsce.<br></br><br></br>Ma małą szansę na przywołanie losowej jednostki zwierzęcia IV poziomu.",
+  "description": "<bulletlist><bullet>Wybierz jednostkę <hyperlink>zwierzęcą</hyperlink> III lub IV poziomu, którą chcesz dodać do swojej armii.</bullet><bullet>Dostępne Zwierzę zależą od rodzaju terenu, na który rzucany jest czar.</bullet></bulletlist>",
   "name": "Przywołanie potężnego zwierzęcia",
   "operation_point_cost": 150,
   "icon": "000003E300004AF7",
@@ -2276,6 +2743,17 @@
     "slug": "wywerna_obsydianowa"
    }
   ]
+ },
+ {
+  "casting_cost": "5<mana></mana> ",
+  "resid": 4995046968314,
+  "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
+  "id": "zerwanie_kajdanów",
+  "tactical": true,
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Traci wszystkie <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Zyskuje 2 razy wzmocnienie.</bullet></bulletlist>",
+  "name": "Zerwanie kajdanów",
+  "operation_point_cost": 10,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -2386,7 +2864,7 @@
   "id": "oczyszczająca_mantra",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy +15 <hp></hp> <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Ma zniwelowane negatywne efekty stanu w liczbie 2.</bullet></bulletlist>",
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy 15 <hp></hp> <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Traci <hyperlink>negatywnie efekty stanu</hyperlink> w liczbie 2.</bullet></bulletlist>",
   "name": "Oczyszczająca mantra",
   "operation_point_cost": 10,
   "icon": "0000048B000001D1"
@@ -2414,7 +2892,7 @@
   "id": "całun_mroku",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink> i przylegające <hyperlink>prowincje</hyperlink>:<bulletlist><bullet>Zyskują <hyperlink>mrok</hyperlink></bullet><bullet>Tracą tereny: <hyperlink>przepaść</hyperlink>, <hyperlink>rzeka</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>mokradła</hyperlink> i <hyperlink>loch</hyperlink>.</bullet><bullet><hyperlink>Jednostki</hyperlink> wroga otrzymują 10 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink> i 10 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink> i przylegające <hyperlink>prowincje</hyperlink>:<bulletlist><bullet>Zyskują bullet<hyperlink>Przepaść</hyperlink>Tracą tereny: <hyperlink>rzeka</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>dno jaskini</hyperlink> i <hyperlink>loch</hyperlink>.</bullet><bullet><hyperlink>Jednostki</hyperlink> wroga otrzymują 10 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink> i 10 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet></bulletlist>",
   "name": "Całun mroku",
   "operation_point_cost": 150,
   "icon": "0000048B00000135"
@@ -2508,7 +2986,7 @@
   "id": "astralne_odłączenie",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Wybrana <hyperlink>jednostka</hyperlink> <hyperlink>pochodzenia magicznego</hyperlink>:<bulletlist><bullet>Ma podstawowe 60% szans na zostanie zabitą.</bullet><bullet>W przypadku niepowodzenia zostanie nałożone: zakłócenie oraz rozkład.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>jednostka</hyperlink> <hyperlink>pochodzenia magicznego</hyperlink>:<bulletlist><bullet>Ma podstawowe 60% szans na zostanie zabitą.</bullet><bullet>W przypadku niepowodzenia zostanie nałożone: zakłócenie oraz 4 razy rozkład.</bullet></bulletlist>",
   "name": "Astralne odłączenie",
   "operation_point_cost": 50,
   "icon": "0000046A000001E7"
@@ -2527,6 +3005,9 @@
    },
    {
     "requisite": "<unitPolearm></unitPolearm> Jednostka z bronią drzewcową"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Jednostka wojowników"
    }
   ],
   "name": "Obrona przed pogarszaniem",
@@ -2540,7 +3021,7 @@
   "id": "połączone_umysły",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Jednostki tej rasy zyskują zdolność dzielenia zmysłów, co zapewnia im:<bulletlist><bullet>Widzące oko, kiedy stoją obok konstruktu lub innej jednostki z połączonymi umysłami.</bullet></bulletlist>",
+  "description": "Jednostki tej rasy zyskują zdolność dzielenia zmysłów, co zapewnia im:<bulletlist><bullet>Naduważność, kiedy stoją obok konstruktu lub innej jednostki z połączonymi umysłami.</bullet></bulletlist>",
   "name": "Połączone umysły",
   "operation_point_cost": 250,
   "icon": "0000046A0000019C"
@@ -2564,7 +3045,7 @@
   "id": "kaskada_władzy_obrona",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Wybrany sojuszniczy konstrukt lub połączone umysły:<bulletlist><bullet>Zyskuje czujność na 1 <turn></turn>.</bullet><bullet>Wchodzi w <hyperlink>tryb obronny</hyperlink>.</bullet><bullet>Efekt ten ma następnie zastosowanie do przylegających sojuszniczych jednostek konstruktów lub jednostek z połączonymi umysłami i jest powtarzany.</bullet></bulletlist>",
+  "description": "Wybrany sojuszniczy konstrukt lub połączone umysły:<bulletlist><bullet>Zyskuje mistrzowie obronni na 1 <turn></turn>.</bullet><bullet>Traci <hyperlink>negatywnie efekty stanu</hyperlink> w liczbie 2.</bullet><bullet>Efekt ten ma następnie zastosowanie do przylegających sojuszniczych jednostek konstruktów lub jednostek z połączonymi umysłami i jest powtarzany.</bullet></bulletlist>",
   "name": "Kaskada władzy: obrona",
   "operation_point_cost": 25,
   "icon": "0000046A0000017D"
@@ -2619,7 +3100,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "kreacja_ziemi_piasek",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink> lub prowincja na powierzchni bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>piasek</hyperlink></bullet><bullet>Traci <hyperlink>przepaść</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>rzekę</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink> na powierzchni, sojusznicza lub bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>piasek</hyperlink></bullet><bullet>Traci <hyperlink>przepaść</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Kreacja ziemi: piasek",
   "operation_point_cost": 45,
   "icon": "0000045E00000EB2"
@@ -2641,7 +3122,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "kreacja_ziemi_śnieg",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink> lub prowincja bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>śnieg</hyperlink> i <hyperlink>lód</hyperlink>.</bullet><bullet>Traci <hyperlink>przepaść</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>rzekę</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink> sojusznicza lub bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>śnieg</hyperlink> i <hyperlink>lód</hyperlink>.</bullet><bullet>Traci <hyperlink>przepaść</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Kreacja ziemi: śnieg",
   "operation_point_cost": 45,
   "icon": "0000045E00000E97"
@@ -2675,7 +3156,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "płomienie_otchłani",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink> i prowincje przylegające:<bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> otrzymują 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>Prowincje otrzymują <hyperlink>ziemie popielne</hyperlink>.</bullet><bullet>Prowincje tracą <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink> i prowincje przylegające:<bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> otrzymują 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>Prowincje zyskują <hyperlink>ziemie popielne</hyperlink>.</bullet><bullet>Prowincje tracą <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Płomienie otchłani",
   "operation_point_cost": 200,
   "icon": "000003E300005AA8"
@@ -2686,7 +3167,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "szybkie_zmrożenie",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> w tej prowincji otrzymują:<bulletlist></bullet><bullet>20 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink>.</bullet><bullet>-5 razy <statuseffectresistance></statuseffectresistance> <hyperlink>odporność na stany</hyperlink> na 1 <turn></turn> na <hyperlink>mapie świata</hyperlink>.</bullet></bulletlist><bullet>Prowincja zyskuje <hyperlink>śnieg</hyperlink> i <hyperlink>lód</hyperlink>.</bullet><bullet>Prowincja traci <hyperlink>przepaść</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>rzekę</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> w tej prowincji otrzymują:<bulletlist></bullet><bullet>20 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink>.</bullet><bullet>-5 razy <statuseffectresistance></statuseffectresistance> <hyperlink>odporność na stany</hyperlink> na 1 <turn></turn> na <hyperlink>mapie świata</hyperlink>.</bullet></bulletlist><bullet>Prowincja zyskuje <hyperlink>śnieg</hyperlink> i <hyperlink>lód</hyperlink>.</bullet><bullet>Prowincja traci <hyperlink>przepaść</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Szybkie zmrożenie",
   "operation_point_cost": 100,
   "icon": "0000041B00001764"
@@ -2728,7 +3209,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "destrukcyjne_odrodzenie",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Jeśli znajduje się na niej wrogie <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ona <hyperlink>splądrowana</hyperlink>.<bulletlist></bullet><bullet>Nie zyskujesz z tego tytułu nagród, ani nie tracisz <hyperlink>Powiązanie</hyperlink>.</bullet></bulletlist><bullet>Prowincja zyskuje <hyperlink>las</hyperlink>, jeśli znajduje się na powierzchni lub <hyperlink>las grzybów</hyperlink>, jeśli znajduje się pod ziemią.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Wrogie jednostki otrzymują 20 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Jeśli znajduje się na niej wrogie <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ona <hyperlink>splądrowana</hyperlink>.<bulletlist></bullet><bullet>Nie zyskujesz z tego tytułu nagród, ani nie tracisz <hyperlink>Powiązanie</hyperlink>.</bullet></bulletlist><bullet>Prowincja zyskuje <hyperlink>las</hyperlink>, jeśli znajduje się na powierzchni, lub <hyperlink>las grzybów</hyperlink>, jeśli znajduje się pod ziemią.</bullet></bulletlist>",
   "name": "Destrukcyjne odrodzenie",
   "operation_point_cost": 150,
   "icon": "000003E30000522E"
@@ -2774,7 +3255,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zwycięstwo poprzez czary</hyperlink>",
   "id": "epoka_ładu",
   "tactical": false,
-  "description": "Wykorzystaj epokę ładu, aby osiągnąć <hyperlink>zwycięstwo poprzez magię</hyperlink>. Podczas łączenia:<bulletlist><bullet>Twoje <hyperlink>czary</hyperlink> <order></order> <hyperlink>więźi ładu</hyperlink> kosztują -20% mniej <mana></mana> <hyperlink>many</hyperlink>, <opstrategic></opstrategic> <hyperlink> pkt. czarowania na mapie świata</hyperlink> i <optactical></optactical> <hyperlink> pkt. czarowania w walce</hyperlink>.</bullet><bullet>W każdej turze losowy sojusznik zyskuje następującą liczbę pozytywnych efektów stanu: 3 i traci wszystkie negatywne efekty stanu.</bullet></bulletlist>",
+  "description": "Wykorzystaj epokę ładu, aby osiągnąć <hyperlink>zwycięstwo poprzez magię</hyperlink>. Podczas łączenia:<bulletlist><bullet>Twoje <hyperlink>czary</hyperlink> <order></order> <hyperlink>więzi ładu</hyperlink> kosztują -20% mniej <mana></mana> <hyperlink>many</hyperlink>, <caststrategic></caststrategic> <hyperlink> punktu czarowania na mapie świata</hyperlink> i <optactical></optactical> <hyperlink> punktu czarowania w walce</hyperlink>.</bullet><bullet>W każdej turze losowy sojusznik zyskuje losowe <hyperlink>pozytywnie efekcie stanu</hyperlink> w liczbie 3 i traci wszystkie <hyperlink>negatywnie efekty stanu</hyperlink>.</bullet></bulletlist>",
   "name": "Epoka ładu",
   "operation_point_cost": 400,
   "icon": "0000045A0000000B"
@@ -2844,7 +3325,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zwycięstwo poprzez czary</hyperlink>",
   "id": "epoka_chaosu",
   "tactical": false,
-  "description": "Wykorzystaj epokę chaosu, aby osiągnąć <hyperlink>zwycięstwo poprzez magię</hyperlink>. Podczas łączenia:<bulletlist><bullet>Twoje <hyperlink>czary</hyperlink> <chaos></chaos> <hyperlink>więźi chaosu</hyperlink> kosztują -20% mniej <mana></mana> <hyperlink>many</hyperlink>, <opstrategic></opstrategic> <hyperlink> pkt. czarowania na mapie świata</hyperlink> i <optactical></optactical> <hyperlink> pkt. czarowania w walce</hyperlink>.</bullet><bullet>W każdej  podczas walki losowy wróg otrzymuje 15 pkt. losowych obrażeń i ma 90% szans na otrzymanie negatywnego efektu stanu.</bullet></bulletlist>",
+  "description": "Wykorzystaj epokę chaosu, aby osiągnąć <hyperlink>zwycięstwo poprzez magię</hyperlink>. Podczas łączenia:<bulletlist><bullet>Twoje <hyperlink>czary</hyperlink> <chaos></chaos> <hyperlink>więzi chaosu</hyperlink> kosztują -20% mniej <mana></mana> <hyperlink>many</hyperlink>, <caststrategic></caststrategic> <hyperlink> punktu czarowania na mapie świata</hyperlink> i <optactical></optactical> <hyperlink> punktu czarowania w walce</hyperlink>.</bullet><bullet>W każdej <turn></turn> tura podczas walki losowy wróg otrzymuje 15 pkt. losowych obrażeń i ma 90% szans na otrzymanie losowego <hyperlink>negatywniego efektu stanu</hyperlink>.</bullet></bulletlist>",
   "name": "Epoka chaosu",
   "operation_point_cost": 400,
   "icon": "0000044500000040"
@@ -2957,14 +3438,14 @@
   "icon": "0000041B000019A1"
  },
  {
-  "casting_cost": "200<mana></mana> ",
+  "casting_cost": "150<mana></mana> ",
   "resid": 4514010634915,
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "hymn_triumfalny",
   "tactical": true,
   "description": "Wszystkie jednostki sojusznicze otrzymują:<bulletlist><bullet>3 pkt. wzmocnienia.</bullet><bullet>+15 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>.</bullet></bulletlist>",
   "name": "Hymn triumfalny",
-  "operation_point_cost": 65,
+  "operation_point_cost": 50,
   "icon": "0000041B000019A5"
  },
  {
@@ -2984,7 +3465,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "znamię_inkwizytora",
   "tactical": false,
-  "description": "Sprawia, że ataki podstawowe zaklętych jednostek mają:<bulletlist><bullet>Podstawowe 30% szans na zadanie potępienie do końca walki, co zmniejsza <statuseffectresistance></statuseffectresistance> <hyperlink>odporność na stany</hyperlink> wroga.</bullet><bullet>Podstawowe 30% szans na zadanie osłabienia, co zmniejsza obrażenia wroga.</bullet><bullet>Podstawowe 30% szans na zadanie spowolnienia, co zmniejsza prędkość ruchu oraz zapobiega atakom odwetowym.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że ataki zaklętych jednostek mają:<bulletlist><bullet>Podstawowe 60% szans na nałożenie potępienie do końca walki, co zmniejsza <statuseffectresistance></statuseffectresistance> <hyperlink>odporność na stany</hyperlink> wroga.</bullet><bullet>Podstawowe 60% szans na nałożenie osłabienia, co zmniejsza obrażenia wroga.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
@@ -3067,14 +3548,14 @@
   "icon": "0000041B0000193D"
  },
  {
-  "casting_cost": "15<mana></mana> ",
+  "casting_cost": "30<mana></mana> ",
   "resid": 4514010634749,
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "inspirująca_pieśń",
   "tactical": true,
   "description": "Jednostki sojusznicze w promieniu 2 <range></range>:<bulletlist><bullet>Zyskują +10 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>.</bullet><bullet>Otrzymują 2 razy wzmocnienie, jeśli posiadają zapał.</bullet></bulletlist>",
   "name": "Inspirująca pieśń",
-  "operation_point_cost": 20,
+  "operation_point_cost": 25,
   "icon": "0000041B00001939"
  },
  {
@@ -3115,7 +3596,7 @@
   "tactical": true,
   "description": "<bulletlist><bullet>Wszystkie sojusznicze <hyperlink>jednostki nieumarłych</hyperlink> zostają wskrzeszone, mając 50% swoich łącznych <hyperlink><hp></hp> pkt. zdrowia</hyperlink>.</bullet><bullet>Zwłoki niebędące nieumarłymi ożywają jako <hyperlink>rozkładające się zombie</hyperlink> i pozostają pod twoją kontrolą do końca bitwy.</bullet></bulletlist><br></br><br></br>Nie można użyć w bitwach wodnych.",
   "name": "Bitewne ożywienie",
-  "operation_point_cost": 80,
+  "operation_point_cost": 65,
   "icon": "0000041B00001770"
  },
  {
@@ -3142,6 +3623,12 @@
     "slug": "szkieletowy_wojownik"
    },
    {
+    "slug": "wywerna_kościana"
+   },
+   {
+    "slug": "zepsuta_dusza"
+   },
+   {
     "slug": "banshee"
    },
    {
@@ -3156,7 +3643,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na świat</hyperlink>",
   "id": "zbezczeszczenie_struktury",
   "tactical": false,
-  "description": "Wybrane źródło zasobu na twoich posiadłościach:<bulletlist><bullet>Źródło zasobu zapewnia przychody +5 <souls></souls> <hyperlink>duszy</hyperlink>.</bullet><bullet>Efekt ustaje, jeśli stracisz tę prowincję.</bullet></bulletlist>",
+  "description": "Wybrane źródło zasobu na twoich posiadłościach:<bulletlist><bullet>Źródło zasobu zapewnia przychody +5 <souls></souls> <hyperlink>dusz</hyperlink>.</bullet><bullet>Efekt ustaje, jeśli stracisz tę prowincję.</bullet></bulletlist>",
   "name": "Zbezczeszczenie struktury",
   "operation_point_cost": 80,
   "icon": "0000041B00001710"
@@ -3256,7 +3743,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar osłabiający</hyperlink>",
   "id": "sen_zapomnienia",
   "tactical": true,
-  "description": "Wybrana jednostka (nie: bohater) ginie. Po 2 <turn></turn> wraca do życia z 75% jej łącznych <hyperlink><hp></hp> pkt. zdrowia</hyperlink> i stanem obłęd.",
+  "description": "Wybrana jednostka niebędąca bohater ginie. Po 2 <turn></turn> wraca do życia z 75% jej łącznych <hyperlink><hp></hp> pkt. zdrowia</hyperlink> i stanem obłęd.<br></br><br></br>Gdy jednostka zostanie w ten sposób zniszczona, nie można jej wskrzesić ani zniszczyć jej zwłok.",
   "name": "Sen zapomnienia",
   "operation_point_cost": 40,
   "icon": "0000041B0000174F"
@@ -3279,7 +3766,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "krocząca_zima",
   "tactical": false,
-  "description": "Wybrane sojusznicze <hyperlink>miasto</hyperlink> zyskuje:<bulletlist>W każdej <turn></turn> <hyperlink>tura</hyperlink>, <hyperlink>prowincje</hyperlink> w liczbie 2 na terenie <hyperlink>posiadłości</hyperlink> lub przylegające do nich:<bulletlist><bullet>Zyskują <hyperlink>śnieg</hyperlink> i <hyperlink>lód</hyperlink></bullet><bullet>Tracą <hyperlink>przepaść</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>rzekę</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist><bullet>Prowincje na terenie posiadłości ze śniegiem lub lodem zapewniają +2 pkt. <food></food> <hyperlink>żywność</hyperlink> i +2 pkt. <structureprod></structureprod> <hyperlink>produkcję</hyperlink> w formie przychodów.</bullet></bulletlist>",
+  "description": "Wybrane sojusznicze <hyperlink>miasto</hyperlink> zyskuje:<bulletlist>W każdej <turn></turn> <hyperlink>turze</hyperlink> <hyperlink>prowincje</hyperlink> w liczbie 2 na terenie <hyperlink>posiadłości</hyperlink> lub przylegające do nich:<bulletlist><bullet>Zyskują <hyperlink>śnieg</hyperlink> i <hyperlink>lód</hyperlink>.</bullet><bullet>Tracą <hyperlink>przepaść</hyperlink>, :, <hyperlink>mokradła</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist><bullet>Prowincje na terenie posiadłości ze śniegiem lub lodem zapewniają +2 pkt. <food></food> <hyperlink>żywności</hyperlink> i +2 pkt. <structureprod></structureprod> <hyperlink>produkcji</hyperlink> w formie przychodów.</bullet></bulletlist>",
   "name": "Krocząca zima",
   "operation_point_cost": 120,
   "icon": "0000041B00001729"
@@ -3323,7 +3810,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_śnieżnego_ducha",
   "tactical": false,
-  "description": "Przywołanie <hyperlink>śnieżniego duchu</hyperlink> (jednostka harcowników) z atakami nakładającymi stan zamarznięcie.",
+  "description": "Przywołanie <hyperlink>śnieżniego ducha</hyperlink> (jednostka harcowników) z atakami nakładającymi stan zamarznięcie.",
   "name": "Przywołanie śnieżnego ducha",
   "operation_point_cost": 150,
   "summoned_units": [
@@ -3380,7 +3867,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Znaczna transformacja rasy</hyperlink>",
   "id": "astralne_dostrojenie",
   "tactical": false,
-  "description": "Łączy wybraną rasę z Morzem Astralnym, przyznając jej:<bulletlist><bullet>Rodzaj jednostki: eteryczny.</bullet><bullet>Dostrojenie: astralny omen, przyznając jej losowy pozytywny efekt stanu podczas rzucania czaru w walce.</bullet></bulletlist>",
+  "description": "Łączy wybraną rasę z Morzem Astralnym, przyznając jej:<bulletlist><bullet>Rodzaj jednostki: eteryczny.</bullet><bullet>Dostrojenie: astralny omen, przyznając jej losowy <hyperlink>pozytywny efekt stanu</hyperlink> podczas rzucania czaru w walce.</bullet></bulletlist>",
   "name": "Astralne dostrojenie",
   "operation_point_cost": 600,
   "icon": "0000041B00001298"
@@ -3392,7 +3879,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zwycięstwo poprzez czary</hyperlink>",
   "id": "epoka_astralna",
   "tactical": false,
-  "description": "Wykorzystaj epokę astralną, aby osiągnąć <hyperlink>zwycięstwo poprzez magię</hyperlink>. Podczas łączenia:<bulletlist><bullet>Twoje <hyperlink>czary</hyperlink> <arcana></arcana> <hyperlink>więźi astralnej</hyperlink> kosztują -20% mniej <mana></mana> <hyperlink>many</hyperlink>, <opstrategic></opstrategic> <hyperlink> pkt. czarowania na mapie świata</hyperlink> i <optactical></optactical> <hyperlink> pkt. czarowania w walce</hyperlink>.</bullet><bullet>W każdej turze walki losowy wróg otrzymuje 15 pkt. mieszanych obrażeń od ognia, błyskawic i mrozu oraz otrzymuje 2 razy rozdartą odporność i 2 razy wrażliwość na stany.</bullet></bulletlist>",
+  "description": "Wykorzystaj epokę astralną, aby osiągnąć <hyperlink>zwycięstwo poprzez magię</hyperlink>. Podczas łączenia:<bulletlist><bullet>Twoje <hyperlink>czary</hyperlink> <arcana></arcana> <hyperlink>więzi astralnej</hyperlink> kosztują -20% mniej <mana></mana> <hyperlink>many</hyperlink>, <opstrategic></opstrategic> <hyperlink> pkt. czarowania na mapie świata</hyperlink> i <optactical></optactical> <hyperlink> pkt. czarowania w walce</hyperlink>.</bullet><bullet>W każdej turze walki losowy wróg otrzymuje 15 pkt. mieszanych obrażeń od ognia, błyskawic i mrozu oraz otrzymuje 2 razy rozdartą odporność i 2 razy wrażliwość na stany.</bullet></bulletlist>",
   "name": "Epoka astralna",
   "operation_point_cost": 400,
   "icon": "0000041B00001560"
@@ -3403,7 +3890,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "kosmiczne_przeciążenie",
   "tactical": false,
-  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>+30% obrażeń.</bullet><bullet><hyperlink>Bardzo szybki ruch</hyperlink>.</bullet></bulletlist>",
+  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>+20% obrażeń.</bullet><bullet><hyperlink>Bardzo szybki ruch</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Istota przywołana do walki"
@@ -3433,7 +3920,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający/osłabiający</hyperlink>",
   "id": "fala_zakłócenia",
   "tactical": true,
-  "description": "<bulletlist><bullet>Wrogie jednostki mają podstawowe 120% szans na otrzymanie stanu zakłócenie na 2 <turn></turn>.</bullet><bullet>Usuwa pozytywne efekty stanu 2 z wrogów.</bullet><bullet>Usuwa negatywne efekty stanu 2 z sojuszników.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Wrogie jednostki mają podstawowe 120% szans na otrzymanie stanu zakłócenie na 2 <turn></turn>.</bullet><bullet>Usuwa <hyperlink>pozytywny efekt stanu</hyperlink> (2) z wrogów.</bullet><bullet>Usuwa <hyperlink>negatywny efekt stanu</hyperlink> (2) z sojuszników.</bullet></bulletlist>",
   "name": "Fala zakłócenia",
   "operation_point_cost": 80,
   "icon": "0000041B000012D6"
@@ -3444,7 +3931,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "fazowe_zaklęcie",
   "tactical": false,
-  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Zdolność faza, która pozwala im się teleportować w walce.</bullet></bulletlist>",
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Zdolność faza doładowania, która pozwala im się teleportować w walce.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -3489,7 +3976,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar leczący</hyperlink>",
   "id": "teleportacja_awaryjna",
   "tactical": true,
-  "description": "Teleportuj najbliższą jednostkę sojuszniczą w promieniu 4 <range></range> do wybranego pustego pola.<br></br>Ta jednostka leczy +30 <hyperlink><hp></hp> tymczas. pkt. zdrowia</hyperlink>.",
+  "description": "Teleportuj najbliższą jednostkę sojuszniczą w promieniu 4 <range></range> do wybranego pustego pola.<br></br>Ta jednostka leczy +30 <hyperlink><hp></hp> tymczas. pkt. zdrowia</hyperlink> i traci wszystkie <hyperlink>negatywnie efekty stanu</hyperlink>.",
   "name": "Teleportacja awaryjna",
   "operation_point_cost": 30,
   "icon": "0000041B0000126E"
@@ -3500,7 +3987,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Nieznaczna transformacja rasy</hyperlink>",
   "id": "astralna_krew",
   "tactical": false,
-  "description": "Sprawia, że w żyłach danej rasy zaczyna płynąć magia, zapewniając:<bulletlist><bullet>Dostrojenie: pomyślność, co zwiększa szanse na <hyperlink>trafienie krytyczne</hyperlink> po rzuceniu czaru.</bullet></bulletlist>",
+  "description": "Sprawia, że w żyłach danej rasy zaczyna płynąć magia, zapewniając:<bulletlist><bullet>Dostrojenie: pomyślność, co zwiększa <hyperlink><crit></crit>szansę na trafienie krytyczne</hyperlink> po rzuceniu czaru.</bullet></bulletlist>",
   "name": "Astralna krew",
   "operation_point_cost": 250,
   "icon": "0000041B00001240"
@@ -3538,7 +4025,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> Czar zadający obrażenia/osłabiający</hyperlink>",
   "id": "seria_wyładowań",
   "tactical": true,
-  "description": "Wybrana jednostka wroga:<bulletlist><bullet>Otrzymuje 30 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>Otrzymuje porażenie.</bullet><bullet>Efekt przechodzi na kolejnego wroga w obrębie 3 <range></range>.</bullet><bullet>Efekt przechodzi do 2 razy.</bullet></bulletlist>",
+  "description": "Wybrana jednostka wroga:<bulletlist><bullet>Otrzymuje 30 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>Otrzymuje 2 razy stan porażenie.</bullet><bullet>Efekt przechodzi na kolejnego wroga w obrębie 3 <range></range>.</bullet><bullet>Efekt przechodzi do 2 razy.</bullet></bulletlist>",
   "name": "Seria wyładowań",
   "operation_point_cost": 30,
   "icon": "0000041B00001238"
@@ -3549,7 +4036,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "skupienie_szaleństwa",
   "tactical": false,
-  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Szał, co zwiększa zadawane obrażenia, gdy atakują.</bullet><bullet>+1 pkt. zasięgu do podstawowych ataków.</bullet></bulletlist>",
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Szał, co zwiększa zadawane obrażenia, gdy atakują.</bullet><bullet>+1 pkt. <hyperlink><range></range>zasięg</hyperlink> do podstawowych ataków.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -3568,7 +4055,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "ostrza_błyskawicy",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+20% obrażeń przeciwko <hyperlink>porażonym</hyperlink> jednostkom.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+10% obrażeń przeciwko <hyperlink>porażonym</hyperlink> jednostkom.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -3596,7 +4083,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Czar na wrogą armię</hyperlink>",
   "id": "fala_błyskawic",
   "tactical": false,
-  "description": "W wybranej wrogiej armii:<bulletlist><bullet>Wszystkie jednostki otrzymują 20 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>Wszystkie jednostki tracą -3 pkt. <defenselightning></defenselightning> <hyperlink>odporności na błyskawice</hyperlink> przez 1 <turn></turn> na <hyperlink>mapie świata</hyperlink>.</bullet></bulletlist>",
+  "description": "W wybranej wrogiej armii:<bulletlist><bullet>Wszystkie jednostki otrzymują 20 pkt. <damageLightning></damageLightning> <hyperlink>obrażenia od błyskawic</hyperlink>.</bullet><bullet>Wszystkie jednostki tracą -1 pkt. <defenselightning></defenselightning> <hyperlink>odporności na błyskawice</hyperlink> przez 1 <turn></turn> na <hyperlink>mapie świata</hyperlink>.</bullet></bulletlist>",
   "name": "Fala błyskawic",
   "operation_point_cost": 80,
   "icon": "0000041B000012E5"
@@ -3663,7 +4150,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Podtrzymywany czar na miasto</hyperlink>",
   "id": "przemiana_zasobów",
   "tactical": false,
-  "description": "Wybrane posiadane miasto przekształca swoje przychody <mana></mana> mana, zdobywając przychody <gold></gold> złota, <structureprod></structureprod> produkcja i <food></food> żywność w ilości równej 75% przychodów <mana></mana> mana.",
+  "description": "Wybrane posiadane miasto przekształca swoje przychody <mana></mana> many, zdobywając przychody <gold></gold> złota, <structureprod></structureprod> produkcja i <food></food> żywność w ilości równej 75% przychodów <mana></mana> many.",
   "name": "Przemiana zasobów",
   "operation_point_cost": 100,
   "icon": "0000041B00000F7C"
@@ -3699,7 +4186,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "wybuch_piroklastyczny",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Jeśli znajduje się na niej wrogie <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ona <hyperlink>splądrowana</hyperlink>.<bulletlist></bullet><bullet>Nie zyskujesz z tego tytułu nagród ani nie tracisz <hyperlink>powiązania</hyperlink>.</bullet></bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> w tej prowincji otrzymują 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>Prowincja zyskuje <hyperlink>ziemie popielne</hyperlink>.</bullet><bullet>Prowincja traci <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>pola grzybów</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink>:<bulletlist><bullet>Jeśli znajduje się na niej wrogie <hyperlink>ulepszenie prowincji</hyperlink>, zostaje ona <hyperlink>splądrowana</hyperlink>.<bulletlist></bullet><bullet>Nie zyskujesz z tego tytułu nagród ani nie tracisz <hyperlink>powiązania</hyperlink>.</bullet></bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> w tej prowincji otrzymują 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>Prowincja zyskuje <hyperlink>ziemie popielne</hyperlink>.</bullet><bullet>Prowincja traci <hyperlink>rzekę</hyperlink>, <hyperlink>łąkę</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Wybuch piroklastyczny",
   "operation_point_cost": 150,
   "icon": "000003AD00002B86"
@@ -3722,7 +4209,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "rozdzierające_ostrza",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zyskują:<bulletlist><bullet>Podstawowe 90% szans na nałożenie stanu rozdarta obrona, zmniejszającego <defense></defense> <hyperlink>obronę</hyperlink> wroga.</bullet><bullet>Niszczyciel, co umożliwia niszczenie wzmocnionych przeszkód.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek:<bulletlist><bullet>Nakładają stan rozdarta obrona, zmniejszający <defense></defense> <hyperlink>obronę</hyperlink> wroga.</bullet><bullet>Zyskują Niszczyciel, co umożliwia niszczenie wzmocnionych przeszkód.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -3750,7 +4237,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "wyszukujące_strzały",
   "tactical": false,
-  "description": "Przyznaje atakom <hyperlink>fizycznym dystansowym</hyperlink> zaklętych jednostek:<bulletlist><bullet>+1 <range></range>.</bullet></bulletlist>",
+  "description": "Przyznaje atakom <hyperlink>fizycznym dystansowym</hyperlink> zaklętych jednostek:<bulletlist><bullet>+1 pkt. <hyperlink><range></range>zasięg</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
@@ -3867,7 +4354,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "adaptacyjny_pancerz",
   "tactical": false,
-  "description": "Raz na <turn></turn> tura, za każdym razem, gdy zaklęte jednostki otrzymują obrażenia inne niż <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>, zyskują:<bulletlist><bullet>Podtrzymanie odporności, co zwiększa ich odporność na obrażenia magiczne.</bullet><bullet>Ochrona przed stanami, co ogranicza szansę, że jednostka zostanie dotknięta negatywnymi efektami stanu.</bullet></bulletlist>",
+  "description": "Raz na <turn></turn> tura, za każdym razem, gdy zaklęte jednostki otrzymują obrażenia inne niż <hyperlink>obrażenia fizyczne</hyperlink>, zyskują:<bulletlist><bullet>Podtrzymanie odporności, co zwiększa ich odporność na obrażenia magiczne.</bullet><bullet>Ochrona przed stanami, co ogranicza szansę, że jednostka zostanie dotknięta <hyperlink>negatywnymi efektami stanu</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -3945,7 +4432,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar leczący/wzmacniający</hyperlink>",
   "id": "przebudzenie_instynktów",
   "tactical": true,
-  "description": "Wszystkie sojusznicze jednostki w promieniu 2 <range></range>:<bulletlist><bullet>Leczą +25 <hyperlink><hp></hp> tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Odzyskują wszystkie <hyperlink><hp></hp> pkt. akcji</hyperlink>.</bullet><bullet>Stają się: szałem na 2 <turn></turn>.</bullet></bulletlist>",
+  "description": "Wszystkie sojusznicze jednostki w promieniu 2 <range></range>:<bulletlist><bullet>Leczą +25 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Odzyskują wszystkie <hyperlink>pkt. akcji</hyperlink>.</bullet><bullet>Stają się: szałem na 2 <turn></turn>.</bullet></bulletlist><br></br>Nie dotyczy jednostek z cechą <hyperlink>niewrażliwość na utratę kontroli</hyperlink>.",
   "name": "Przebudzenie instynktów",
   "operation_point_cost": 50,
   "icon": "000003E300005236"
@@ -3972,7 +4459,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "przywrócenie_ziem",
   "tactical": false,
-  "description": "Wybrana sojusznicza <hyperlink>prowincja</hyperlink> lub prowincja bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>łąkę</hyperlink>, jeśli znajduje się na powierzchni lub <hyperlink>pola grzybów</hyperlink>, jeśli znajduje się pod ziemią.</bullet><bullet>Traci <hyperlink>przepaść</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana sojusznicza <hyperlink>prowincja</hyperlink> lub prowincja bez właściciela:<bulletlist><bullet>Zyskuje <hyperlink>łąkę</hyperlink>, jeśli znajduje się na powierzchni lub <hyperlink>pola grzybów</hyperlink> i <hyperlink>las grzybów</hyperlink>, jeśli znajduje się pod ziemią.</bullet><bullet>Traci <hyperlink>przepaść</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>dno jaskini</hyperlink>, <hyperlink>stalagmity</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet></bulletlist>",
   "name": "Przywrócenie ziem",
   "operation_point_cost": 30,
   "icon": "0000041B00000D7C"
@@ -4155,7 +4642,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Nieznaczna transformacja rasy</hyperlink>",
   "id": "naczynia_chaosu",
   "tactical": false,
-  "description": "Sprawia, że wybrana rasa staje się łączem energii Chaosu, zapewniając jej:<bulletlist><bullet>+10% obrażeń na każdy z negatywnych stanów celu. Kumuluje się do 3 razy.</bullet></bulletlist>",
+  "description": "Sprawia, że wybrana rasa staje się łączem energii chaosu, zapewniając jej:<bulletlist><bullet>+10% obrażeń na każdy z <hyperlink>negatywnych efektów stanu</hyperlink> celu. Kumuluje się do 3 razy.</bullet></bulletlist>",
   "name": "Naczynia chaosu",
   "operation_point_cost": 350,
   "icon": "0000041B00000B60"
@@ -4166,7 +4653,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "magia_zamętu",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>magiczne</hyperlink> zaklętych jednostek mają:<bulletlist><bullet>Podstawowe 60% szans na nałożenie losowego negatywnego efektu stanu.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>magiczne</hyperlink> zaklętych jednostek mają:<bulletlist><bullet>Podstawowe 60% szans na nałożenie losowego <hyperlink>negatywniego efektu stanu</hyperlink>.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -4185,7 +4672,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_pożeracza_chaosu",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>pożeracz chaosu</hyperlink>, blisko zasięgowego jednostki magów bitewnych żywiącego się negatywnymi efektami stanu.",
+  "description": "Przywołuje <hyperlink>pożeracz chaosu</hyperlink>, blisko dystansowego jednostki magów bitewnych żywiącego się <hyperlink>negatywnymi efektami stanu</hyperlink>.",
   "name": "Przywołanie pożeracza chaosu",
   "operation_point_cost": 200,
   "summoned_units": [
@@ -4200,7 +4687,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar osłabiający</hyperlink>",
   "id": "masowa_histeria",
   "tactical": true,
-  "description": "Nakłada losowy negatywny efekt stanu na wszystkie jednostki w promieniu 1 pól.",
+  "description": "Nakłada losowy <hyperlink>Negatywny efekt stanu</hyperlink> na wszystkie jednostki w promieniu 1 <range></range>.",
   "name": "Masowa histeria",
   "operation_point_cost": 30,
   "icon": "000003E3000059F1"
@@ -4273,7 +4760,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "takty_ukojenia",
   "tactical": false,
-  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet><GLOBAL.PROPERTIES.FAITHFUL>Lojalność</hyperlink>, co ogranicza <hyperlink>utrzymanie jednostek</hyperlink>.</bullet><bullet><hyperlink>Naprawczy dotyk</hyperlink>, zdolność leczenia do wykorzystania w walce.</bullet></bulletlist>",
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Lojalność, co ogranicza podstawowy koszt <hyperlink>utrzymania jednostek</hyperlink>.</bullet><bullet>Naprawczy dotyk, zdolność leczenia do wykorzystania w walce.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -4316,7 +4803,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "ostrza_mrozu",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+20% obrażeń przeciwko <hyperlink>zamarzniętym</hyperlink> lub <hyperlink>spowolnionym</hyperlink> jednostkom.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+10% obrażeń przeciwko <hyperlink>zamarzniętym</hyperlink> lub <hyperlink>spowolnionym</hyperlink> jednostkom.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -4355,7 +4842,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "płonące_ostrza",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+20% obrażeń przeciwko celom mającym stan: podpalenie.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+10% obrażeń przeciwko celom mającym stan: podpalenie.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -4383,7 +4870,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "przepełnienie_duszy",
   "tactical": true,
-  "description": "Jednostki sojusznicze w promieniu 1 <range></range>:<bulletlist><bullet>Zyskują 1 razy wzmocnienie.</bullet><bullet>+20 pkt. maks. <hyperlink><hp></hp> punktów zdrowia</hyperlink> do końca bitwy.</bullet><bullet>Mają usunięte negatywne efekty stanu.</bullet></bulletlist>",
+  "description": "Jednostki sojusznicze w promieniu 1 <range></range>:<bulletlist><bullet>Zyskują 1 pkt. wzmocnienia.</bullet><bullet>Zyskują +20 pkt. maks. <hyperlink><hp></hp> punktów zdrowia</hyperlink> do końca bitwy.<hyperlink><hp></hp> Punkt zdrowia</hyperlink></bullet><bullet>Tracą <hyperlink>Negatywne efekty stanu</hyperlink> w liczbie 2.</bullet></bulletlist>",
   "name": "Przepełnienie duszy",
   "operation_point_cost": 20,
   "icon": "0000041B000005E4"
@@ -4394,87 +4881,10 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_potężnego_zwierzęcia",
   "tactical": false,
-  "description": "Przywołuje losową jednostkę zwierzęcą III poziomu na wybrane miejsce.<br></br><br></br>Ma małą szansę na przywołanie losowej jednostki zwierzęcia IV poziomu.",
+  "description": "<bulletlist><bullet>Wybierz jednostkę <hyperlink>zwierzęcą</hyperlink> III lub IV poziomu, którą chcesz dodać do swojej armii.</bullet><bullet>Dostępne Zwierzę zależą od rodzaju terenu, na który rzucany jest czar.</bullet></bulletlist>",
   "name": "Przywołanie potężnego zwierzęcia",
   "operation_point_cost": 150,
-  "icon": "000003E300004AF7",
-  "summoned_units": [
-   {
-    "slug": "matrona_lodowych_pająków"
-   },
-   {
-    "slug": "biały_wilk"
-   },
-   {
-    "slug": "gromowładny_ptak"
-   },
-   {
-    "slug": "matrona_goretusk"
-   },
-   {
-    "slug": "wywerna_lodowa"
-   },
-   {
-    "slug": "straszny_niedźwiedź"
-   },
-   {
-    "slug": "mamut"
-   },
-   {
-    "slug": "tygrys_szablozębny"
-   },
-   {
-    "slug": "pełzacz"
-   },
-   {
-    "slug": "wywerna_złota"
-   },
-   {
-    "slug": "matrona_skakunów"
-   },
-   {
-    "slug": "matrona_archanogrów"
-   },
-   {
-    "slug": "duchowy_wilk"
-   },
-   {
-    "slug": "jednorożec"
-   },
-   {
-    "slug": "krokodyl_zarazy"
-   },
-   {
-    "slug": "Żrący_robak"
-   },
-   {
-    "slug": "koszmar"
-   },
-   {
-    "slug": "wywerna_ognista"
-   },
-   {
-    "slug": "piekielny_moloch"
-   },
-   {
-    "slug": "piekielny_ogar"
-   },
-   {
-    "slug": "wywerna_obsydianowa"
-   },
-   {
-    "slug": "matrona_wampirzych_pająków"
-   },
-   {
-    "slug": "feniks"
-   },
-   {
-    "slug": "głębinowy_nimu"
-   },
-   {
-    "slug": "kraken"
-   }
-  ]
+  "icon": "000003E300004AF7"
  },
  {
   "casting_cost": "15<mana></mana> ",
@@ -4493,7 +4903,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
   "id": "totem_dzikości",
   "tactical": true,
-  "description": "Tworzy <hyperlink>totem dzikości</hyperlink>, który tworzy losową jednostkę zwierzęcą I poziomu na początku każdej z twoich <turn></turn> <hyperlink>tur</hyperlink>. Trwa 3 <turn></turn>.<br></br><br></br>Nie można użyć w bitwach wodnych.",
+  "description": "Przywołuje <hyperlink>totem dzikości</hyperlink>, który tworzy losową jednostkę zwierzęcą I lub II poziomu po stworzeniu i na początku każdej z twoich 2 <turn></turn>. <br></br><br></br>Nie można użyć w bitwach wodnych.",
   "name": "Totem dzikości",
   "operation_point_cost": 35,
   "summoned_units": [
@@ -4519,87 +4929,10 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_dzikiego_zwierzęcia",
   "tactical": false,
-  "description": "<bulletlist><bullet>Przywołuje losową jednostkę <hyperlink>zwierzęcą</hyperlink> I poziomu na wybrane pole świata.</bullet><bullet>Niewielka szansa na przywoływanie zwierzęcia II poziomu.</bullet><bullet><hyperlink>Zwierzęta</hyperlink> zależą od rodzaju terenu, na którym jest używana ta umiejętność.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Wybierz jednostkę <hyperlink>zwierzęcą</hyperlink> I lub II poziomu, którą chcesz dodać do swojej armii.</bullet><bullet>Dostępne Zwierzę zależą od rodzaju terenu, na który rzucany jest czar.</bullet></bulletlist>",
   "name": "Przywołanie dzikiego zwierzęcia",
   "operation_point_cost": 60,
-  "icon": "0000041B000002E7",
-  "summoned_units": [
-   {
-    "slug": "lodowy_pająk"
-   },
-   {
-    "slug": "prosiak_goretusk"
-   },
-   {
-    "slug": "krukodziób"
-   },
-   {
-    "slug": "niedźwiedź_polarny"
-   },
-   {
-    "slug": "Ścierwoptak"
-   },
-   {
-    "slug": "piekielny_piesek"
-   },
-   {
-    "slug": "złomiarz"
-   },
-   {
-    "slug": "słoń"
-   },
-   {
-    "slug": "Żaromól"
-   },
-   {
-    "slug": "warg"
-   },
-   {
-    "slug": "skakun"
-   },
-   {
-    "slug": "młody_archanogr"
-   },
-   {
-    "slug": "młody_żrący_robak"
-   },
-   {
-    "slug": "niedźwiedź_brunatny"
-   },
-   {
-    "slug": "Żuk-gigant"
-   },
-   {
-    "slug": "Żuk_śmierci"
-   },
-   {
-    "slug": "pełzające_młode"
-   },
-   {
-    "slug": "wiwerni_podlot"
-   },
-   {
-    "slug": "dzik"
-   },
-   {
-    "slug": "młody_wampirzy_pająk"
-   },
-   {
-    "slug": "krokodyl"
-   },
-   {
-    "slug": "goryl"
-   },
-   {
-    "slug": "nimu"
-   },
-   {
-    "slug": "młody_kraken"
-   },
-   {
-    "slug": "pingwin_królewski"
-   }
-  ]
+  "icon": "0000041B000002E7"
  },
  {
   "casting_cost": "10<mana></mana> ",
@@ -4618,7 +4951,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "pieśń_brawury",
   "tactical": true,
-  "description": "Przez 3 <turn></turn> wybrana jednostka sojusznicza zyskuje:<bulletlist><bullet>Szał</bullet><bullet>3 razy wzmocnienie</bullet></bulletlist>",
+  "description": "Przez 3 <turn></turn> wybrana jednostka sojusznicza zyskuje:<bulletlist><bullet>Szał.</bullet><bullet>3 razy wzmocnienie.</bullet></bulletlist><br></br>Nie dotyczy jednostek z cechą <hyperlink>niewrażliwość na utratę kontroli</hyperlink>.",
   "name": "Pieśń brawury",
   "operation_point_cost": 20,
   "icon": "0000041300000D74"
@@ -4684,7 +5017,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "siła_natury",
   "tactical": false,
-  "description": "Zaklęte jednostki zyskują:<bulletlist><bullet>+20% szans na <hyperlink>trafienie krytyczne</hyperlink>.</bullet><bullet>+4 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink> do ataków.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Zaklęte jednostki zyskują:<bulletlist><bullet>+15% <hyperlink><crit></crit>szanes na trafienie krytyczne</hyperlink>.</bullet><bullet>+3 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink> do ataków.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitCavalry></unitCavalry> Kawaleria"
@@ -4730,7 +5063,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Nieznaczna transformacja rasy</hyperlink>",
   "id": "zwierzęce_braterstwo",
   "tactical": false,
-  "description": "Sprawia, że wybrana rasa staje się bardziej bestialska i zbliżona do zwierząt. Gdy przylega do sojuszniczej <hyperlink>zwierzęcej</hyperlink> jednostki, obie jednostki otrzymują:<bulletlist><bullet>+10% obrażeń.</bullet><bullet>+10% szans na trafienie krytyczne.</bullet></bulletlist>",
+  "description": "Sprawia, że wybrana rasa staje się bardziej bestialska i zbliżona do zwierząt. Gdy przylega do sojuszniczej <hyperlink>zwierzęcej</hyperlink> jednostki, obie jednostki otrzymują:<bulletlist><bullet>+10% obrażeń.</bullet><bullet>+10% <crit></crit>szansy na trafienie krytyczne.</bullet></bulletlist>",
   "name": "Zwierzęce braterstwo",
   "operation_point_cost": 150,
   "icon": "0000041B000002E3"
@@ -4756,7 +5089,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "ostrza_zarazy",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+20% obrażeń przeciwko <hyperlink>zatrutym</hyperlink> lub <hyperlink>rozkładającym</hyperlink> się jednostkom.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki <hyperlink>wręcz</hyperlink> zaklętych jednostek zadają:<bulletlist><bullet>4 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>-2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink>.</bullet><bullet>+10% obrażeń przeciwko <hyperlink>zatrutym</hyperlink> lub <hyperlink>rozkładającym</hyperlink> się jednostkom.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -4871,7 +5204,7 @@
   "id": "nalewka_antymagiczna",
   "DLC": "EMPIRESANDASHES ",
   "tactical": true,
-  "description": "Jednostki sojusznicze w promieniu 1 <range></range>:<bulletlist><bullet>Mają usunięte negatywne efekty stanu w liczbie 2.</bullet><bullet>Zyskują ochronę przed stanami 2 razy.</bullet></bulletlist>",
+  "description": "Sojusznicze jednostki w promieniu 1 <range></range>:<bulletlist><bullet>Tracą <hyperlink>negatywnie efekty stanu</hyperlink> w liczbie 2.</bullet><bullet>Zyskują 2 pkt. ochrony przed stanami.</bullet></bulletlist>",
   "name": "Nalewka antymagiczna",
   "operation_point_cost": 15,
   "icon": "0000046A000000EF"
@@ -4895,7 +5228,7 @@
   "id": "tajemniczy_tonik",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>Rozprowadzanie toniku, co zapewnia pozytywne efekty stanu, usuwając jeden negatywny efekt.</bullet></bulletlist>",
+  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>Rozprowadzanie toniku, co zapewnia <hyperlink>pozytywnie efekcie stanu</hyperlink>, usuwając jeden negatywny efekt.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -4909,15 +5242,15 @@
   "casting_cost": "45<souls></souls> ",
   "resid": 4273492488482,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
-  "id": "przywołanie_spaczonej_duszy",
+  "id": "przywołanie_banshee",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>zepsutą duszę</hyperlink> – typ jednostki wojowników. Wykorzystuje niskie <happiness></happiness> <hyperlink>morale</hyperlink> wrogiej jednostki.",
-  "name": "Przywołanie spaczonej duszy",
+  "description": "Przywołuje <hyperlink>banshee</hyperlink> – jednostkę, która obniża morale i osłabia wrogów przeszywającym zawodzeniem.",
+  "name": "Przywołanie banshee",
   "operation_point_cost": 90,
   "icon": "000003E300007127",
   "summoned_units": [
    {
-    "slug": "zepsuta_dusza"
+    "slug": "banshee"
    }
   ]
  },
@@ -4928,7 +5261,7 @@
   "id": "oczyszczający_płomień",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Jednostki sojusznicze w promieniu 1 <range></range>:<bulletlist><bullet>Zyskują +25 <hyperlink><hp></hp> tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Mają usunięte negatywne efekty stanu.</bullet></bulletlist>",
+  "description": "Jednostki sojusznicze w promieniu 1 <range></range>:<bulletlist><bullet>Leczą 25 <hyperlink><hp></hp> tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Tracą <hyperlink>negatywnie efekty stanu</hyperlink>.</bullet></bulletlist>",
   "name": "Oczyszczający płomień",
   "operation_point_cost": 35,
   "icon": "000003E300006B8F"
@@ -5036,7 +5369,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_pomniejszego_ducha_magmy",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>pomniejszy duch magmy</hyperlink> na wybrane pole.",
+  "description": "Przywołuje <hyperlink>pomniejszego ducha magmy</hyperlink> na wybrane pole.",
   "name": "Przywołanie pomniejszego ducha magmy",
   "operation_point_cost": 60,
   "icon": "000003AD00002BAE",
@@ -5062,14 +5395,14 @@
   ]
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "10<souls></souls> ",
   "resid": 4273492485799,
   "spellType": "<casttactical></casttactical><hyperlink> Czar zadający obrażenia/osłabiający</hyperlink>",
   "id": "gnijąca_eksplozja",
   "tactical": true,
-  "description": "Wybrane jednostki sojusznicze, które są <hyperlink>zombie</hyperlink> lub szkieletami wybuchają, a wszyscy wrogowie w promieniu 2 <range></range>:<bulletlist><bullet>Otrzymują 10 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink> i 10 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Mają 90% szans na otrzymanie stanu rozkładu.</bullet></bulletlist>",
+  "description": "Wybrane jednostki sojusznicze, które są <hyperlink>zombie</hyperlink> lub szkieletami wybuchają, a wszyscy wrogowie w promieniu 2 <range></range>:<bulletlist><bullet>Otrzymują 10 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink> i 10 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Otrzymują 2 razy stan rozkład na 3 <turn></turn>.</bullet></bulletlist>",
   "name": "Gnijąca eksplozja",
-  "operation_point_cost": 20,
+  "operation_point_cost": 15,
   "icon": "000003E3000066A4"
  },
  {
@@ -5078,7 +5411,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> Czar zadający obrażenia/osłabiający</hyperlink>",
   "id": "nekrotoza",
   "tactical": true,
-  "description": "Wybrana jednostka wroga:<bulletlist><bullet>Otrzymuje 10 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink> i 10 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink></bullet><bullet>Otrzymuje stan rozkładu.</bullet><bullet>Gdy ginie, staje się <hyperlink>rozkładające się zombie</hyperlink> i jest pod twoją kontrolą do końca walki.</bullet></bulletlist>",
+  "description": "Wybrana jednostka wroga:<bulletlist><bullet>Otrzymuje 10 pkt. <damageFrost></damageFrost> <hyperlink>obrażenia od mrozu</hyperlink> i 10 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Otrzymuje kumulacje (2) stanu rozkład na 3 <turn></turn>.</bullet><bullet>Gdy ginie, staje się <hyperlink>rozkładającym się zombie</hyperlink> i jest pod twoją kontrolą do końca walki.</bullet></bulletlist>",
   "name": "Nekrotoza",
   "operation_point_cost": 15,
   "icon": "000003E30000669A"
@@ -5089,7 +5422,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_mniejszego_ducha_burzy",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>pomniejszy duch burzy</hyperlink> na wybrane pole.",
+  "description": "Przywołuje <hyperlink>pomniejszego ducha burzy</hyperlink> na wybrane pole.",
   "name": "Przywołanie mniejszego ducha burzy",
   "operation_point_cost": 60,
   "summoned_units": [
@@ -5105,7 +5438,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "zaklęty_rozkwit",
   "tactical": false,
-  "description": "Wybrane sojusznicze <hyperlink>miasto</hyperlink> zyskuje:<bulletlist><bullet>W każdej <turn></turn> <hyperlink>tura</hyperlink>, <hyperlink>prowincje</hyperlink> w liczbie 1 na terenie <hyperlink>posiadłości</hyperlink> lub przylegające do nich:<bulletlist></bullet><bullet>Zyskują <hyperlink>łąkę</hyperlink> i <hyperlink>las</hyperlink>, jeśli znajduje się na powierzchni lub <hyperlink>pola grzybów</hyperlink> i <hyperlink>las grzybów</hyperlink>, jeśli znajduje się pod ziemią.</bullet><bullet>Tracą <hyperlink>przepaść</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink>, <hyperlink>dno jaskini</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet><bullet>Prowincje na terenie posiadłości z łąką, lasem, polem grzybów lub lasem grzybów zapewniają +2 pkt. <food></food> <hyperlink>żywność</hyperlink>, +2 pkt. <structureprod></structureprod> <hyperlink>produkcji</hyperlink> i 2 pkt. <unitprod></unitprod><hyperlink>werbunek</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrane sojusznicze <hyperlink>miasto</hyperlink> zyskuje:<bulletlist><bullet>W każdej <turn></turn> <hyperlink>turze</hyperlink> <hyperlink>prowincje</hyperlink> w liczbie 1 na terenie <hyperlink>posiadłości</hyperlink> lub przylegające do nich:<bulletlist></bullet><bullet>Zyskują <hyperlink>łąkę</hyperlink> i <hyperlink>las</hyperlink>, jeśli znajdują się na powierzchni, lub <hyperlink>pola grzybów</hyperlink> i <hyperlink>las grzybów</hyperlink>, jeśli znajdują się pod ziemią.</bullet><bullet>Tracą <hyperlink>przepaść</hyperlink>, <hyperlink>mokradła</hyperlink>, <hyperlink>piasek</hyperlink>, <hyperlink>śnieg</hyperlink>, <hyperlink>lód</hyperlink>, <hyperlink>ziemie popielne</hyperlink> i <hyperlink>mrok</hyperlink>.</bullet><bullet>Prowincje na terenie posiadłości z łąką, lasem, polem grzybów lub lasem grzybów zapewniają +2 pkt. <food></food> <hyperlink>żywności</hyperlink>, +2 pkt. <structureprod></structureprod> <hyperlink>produkcji</hyperlink> i 2 pkt. <unitprod></unitprod><hyperlink>werbunku</hyperlink>.</bullet></bulletlist>",
   "name": "Zaklęty rozkwit",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5128,7 +5461,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "prowadzone_pociski",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki zaklętych jednostek:<bulletlist><bullet>Ignorują karę do celności przez stan <hyperlink>zasłonięcia</hyperlink> spowodowany jednostkami stojącymi na drodze lub niektórymi rodzajami terenu.</bullet></bulletlist>",
+  "description": "Sprawia, że podstawowe ataki zaklętych jednostek:<bulletlist><bullet>Mają zasięg zwiększony o 1 <range></range> bez kar do <hyperlink><accuracy></accuracy> celność</hyperlink> za dużą odległość.</bullet><bullet>Ignorują karę do <hyperlink><accuracy></accuracy> celność</hyperlink> przez stan <hyperlink>zasłonięcia</hyperlink> spowodowany jednostkami stojącymi na drodze lub niektórymi rodzajami terenu.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
@@ -5148,17 +5481,6 @@
   "icon": "0000041B00001259"
  },
  {
-  "casting_cost": "45<mana></mana> ",
-  "resid": 4273492485152,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na miasto</hyperlink>",
-  "id": "błogosławione_posiłki",
-  "tactical": false,
-  "description": "Wybrane wasalskie wolne miasto otrzymuje pod swoją kontrolę 2 razy <hyperlink>błogosławione dusze</hyperlink>.",
-  "name": "Błogosławione posiłki",
-  "operation_point_cost": 45,
-  "icon": "0000041B00001969"
- },
- {
   "casting_cost": "60<mana></mana> ",
   "resid": 4273492485151,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Podtrzymywany czar na miasto</hyperlink>",
@@ -5175,7 +5497,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na świat</hyperlink>",
   "id": "astralne_zdruzgotanie",
   "tactical": false,
-  "description": "Obierz za cel <hyperlink>prowincję</hyperlink><bulletlist><bullet>Jeśli zawiera wrogie <hyperlink>ulepszenie prowincji</hyperlink>, ale nie zawiera <hyperlink>starożytnego cudu</hyperlink>, staje się ruinami.</bullet><bullet>Przywołuje potężną wędrowną <hyperlink>armię</hyperlink> <hyperlink>jednostek</hyperlink> z Morza Astralnego.</bullet></bulletlist>",
+  "description": "Obierz za cel <hyperlink>prowincję</hyperlink>:<bulletlist><bullet>Jeśli zawiera wrogie <hyperlink>ulepszenie prowincji</hyperlink>, ale nie zawiera <hyperlink>starożytniego cudu</hyperlink>, staje się ruinami.</bullet><bullet>Przywołuje potężną wędrowną <hyperlink>armię</hyperlink> <hyperlink>jednostek</hyperlink> z Morza Astralnego.</bullet></bulletlist>",
   "name": "Astralne zdruzgotanie",
   "operation_point_cost": 150,
   "icon": "0000041B000012A4"
@@ -5284,7 +5606,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_mniejszego_śnieżnego_ducha",
   "tactical": false,
-  "description": "Przywołanie <hyperlink>pomniejszego śnieżniego duchu</hyperlink> (jednostka harcowników) z atakami nakładającymi stan: zamarznięcie.",
+  "description": "Przywołanie <hyperlink>pomniejszego śnieżniego ducha</hyperlink> (jednostka harcowników) z atakami nakładającymi stan: zamarznięcie.",
   "name": "Przywołanie mniejszego śnieżnego ducha",
   "operation_point_cost": 60,
   "icon": "0000041B000006CC",
@@ -5295,14 +5617,14 @@
   ]
  },
  {
-  "casting_cost": "150<mana></mana> ",
+  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484493,
   "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
   "id": "wskrzeszenie_jednostki",
   "tactical": true,
   "description": "Przywraca wszystkie <hyperlink>tymczasowe punkty zdrowia</hyperlink> wybranej martwej jednostce sojuszniczej.<br></br><br></br>Nie można użyć w bitwach wodnych.",
   "name": "Wskrzeszenie jednostki",
-  "operation_point_cost": 50,
+  "operation_point_cost": 40,
   "icon": "0000041B000019BF"
  },
  {
@@ -5333,7 +5655,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar leczący/wzmacniający</hyperlink>",
   "id": "ocalenie",
   "tactical": true,
-  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy wszystkie swoje <hyperlink><hp></hp> punkty zdrowia</hyperlink> jako <hyperlink>tymczasowe punkty zdrowia</hyperlink>.</bullet><bullet>Usuwa swoje negatywne efekty stanu.</bullet><bullet>Zyskuje 3 razy podtrzymanie odporności.</bullet></bulletlist>",
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy wszystkie swoje <hyperlink><hp></hp> punkty zdrowia</hyperlink> jako <hyperlink>tymczasowe punkty zdrowia</hyperlink>.</bullet><bullet>Usuwa swoje <hyperlink>negatywne efekty stanu</hyperlink>.</bullet><bullet>Zyskuje 3 razy podtrzymanie odporności.</bullet></bulletlist>",
   "name": "Ocalenie",
   "operation_point_cost": 35,
   "icon": "0000041B0000197F"
@@ -5395,7 +5717,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar przywołania w walce</hyperlink>",
   "id": "przywołanie_boskiego_sygnału",
   "tactical": true,
-  "description": "Przywołuje <hyperlink>boski sygnał</hyperlink>. Po rzuceniu czaru i na początku każdej tury jednostki sojusznicze w promieniu 2 <range></range>:<bulletlist><bullet>Leczą 5 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Zyskują 5 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>.</bullet></bulletlist><br></br>Czas trwania przywołania to 3 <turn></turn>.<br></br><br></br>Nie można użyć w bitwach wodnych.",
+  "description": "Przywołuje <hyperlink>boski sygnał</hyperlink>. Po rzuceniu czaru i na początku każdej tury jednostki sojusznicze w promieniu 2 <range></range>:<bulletlist><bullet>Leczą 15 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Zyskują 5 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>.</bullet></bulletlist><br></br>Czas trwania przywołania to 3 <turn></turn>.<br></br><br></br>Nie można użyć w bitwach wodnych.",
   "name": "Przywołanie boskiego sygnału",
   "operation_point_cost": 25,
   "icon": "000003E3000060DF",
@@ -5407,30 +5729,17 @@
  },
  {
   "casting_cost": "100<mana></mana> ",
-  "resid": 4273492484345,
-  "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
-  "id": "przywołanie_niosącego_światło",
-  "tactical": false,
-  "description": "Przywołuje jednostkę <hyperlink>niosący światło</hyperlink> – jednostki magów bitewnych, który nawraca inne jednostki na twoją stronę.",
-  "name": "Przywołanie niosącego światło",
-  "operation_point_cost": 100,
-  "icon": "0000041B00001961",
-  "summoned_units": [
-   {
-    "slug": "niosący_światło"
-   }
-  ]
- },
- {
-  "casting_cost": "100<mana></mana> ",
   "resid": 4273492484335,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "potężny_milczek",
   "tactical": false,
-  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>Lojalność, która ogranicza koszt <hyperlink>utrzymania jednostek</hyperlink>.</bullet><bullet>+1 pkt. <damageSpirit></damageSpirit> <hyperlink>obrażenia od duchów</hyperlink> na ataki za każdy poziom celu.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>Lojalność, która ogranicza koszt <hyperlink>utrzymania jednostek</hyperlink>.</bullet><bullet>+2 pkt. <statuseffectresistance></statuseffectresistance> <hyperlink>odporności na stany</hyperlink> na ataki.</bullet><bullet>+1 pkt. <damageSpirit></damageSpirit> <hyperlink>obrażenia od duchów</hyperlink> za każdy poziom celu.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "Poziom I"
+   },
+   {
+    "requisite": "Poziom II"
    }
   ],
   "name": "Potężny milczek",
@@ -5506,7 +5815,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> Czar zadający obrażenia/osłabiający</hyperlink>",
   "id": "naznaczenie_przez_śmierć",
   "tactical": true,
-  "description": "Wybrana jednostka:<bulletlist><bullet>Otrzymuje 15 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink> nie do uniknięcia.</bullet><bullet>Traci -10 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>a.</bullet><bullet>Ma przywołane przylegające do niej <hyperlink>rozkładające się zombie</hyperlink>.</bullet><bullet>Jest dotknięta przypadłością wizje śmierci do końca walki.</bullet></bulletlist>",
+  "description": "Wybrana jednostka:<bulletlist><bullet>Otrzymuje 15 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażenia fizyczne</hyperlink> nie do uniknięcia.</bullet><bullet>Traci -10 pkt. <happiness></happiness> <hyperlink>morale</hyperlink>a.</bullet><bullet>Ma przywołane przylegające do niej <hyperlink>rozkładająkie się zombie</hyperlink>.</bullet><bullet>Jest dotknięta przypadłością wizje śmierci do końca walki.</bullet></bulletlist>",
   "name": "Naznaczenie przez śmierć",
   "operation_point_cost": 40,
   "icon": "0000041B00001732",
@@ -5520,42 +5829,49 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492484056,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
-  "id": "nekrotyczna_magia",
+  "id": "nekrotyczne_pociski",
   "tactical": false,
-  "description": "Przyznaje podstawowym atakom zaklętych jednostek:<bulletlist><bullet>Podstawowe 60% szans na nałożenie stanu rozkład, który zadaje obrażenia wraz z biegiem czasu i uniemożliwia jednostce odnowienie zdrowia.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>Podstawowe 90% szans na nałożenie stanu rozkładu, efektu obrażeń w czasie, który zmniejsza otrzymywane leczenie.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
+   },
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
    },
    {
     "requisite": "<unitBattleMage></unitBattleMage> Jednostka magów bitewnych"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Jednostka harcowników"
    }
   ],
-  "name": "Nekrotyczna magia",
+  "name": "Nekrotyczne pociski",
   "operation_point_cost": 90,
   "icon": "0000041B000005E0"
  },
  {
-  "casting_cost": "15<souls></souls> ",
+  "casting_cost": "20<souls></souls> ",
   "resid": 4273492484053,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar na armię sojuszniczą</hyperlink>",
-  "id": "przywrócenie_armii_nieumarłych",
+  "id": "uczta_dusz",
   "tactical": false,
-  "description": "Przywraca 20 <hyperlink><hp></hp> pkt. zdrowia</hyperlink> wszystkich <hyperlink>jednostek nieumarłych</hyperlink> w wybranej armii sojuszniczej.",
-  "name": "Przywrócenie armii nieumarłych",
-  "operation_point_cost": 20,
+  "description": "Wybrana armia sojusznicza:<bulletlist><bullet>Przywraca jednostkom niebędącym nieumarłyami 20 <hyperlink><hp></hp> punktów zdrowia</hyperlink>.</bullet><bullet>Przywraca jednostkom nieumarłych 40 <hyperlink><hp></hp> punktów zdrowia</hyperlink>.</bullet></bulletlist>",
+  "name": "Uczta dusz",
+  "operation_point_cost": 25,
   "icon": "0000041B000005DC"
  },
  {
-  "casting_cost": "45<mana></mana> ",
+  "casting_cost": "60<souls></souls> ",
   "resid": 4273492483972,
   "spellType": "<caststrategic></caststrategic><hyperlink> Czar na wrogą armię</hyperlink>",
-  "id": "wyrwanie_dusz_armii",
+  "id": "szepty_nieumarłych",
+  "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Jednostki wroga w wybranej armii zyskują więź duszy do następnego udziału w bitwie.",
-  "name": "Wyrwanie dusz armii",
-  "operation_point_cost": 45,
-  "icon": "0000041B000016EF"
+  "description": "Na 1 <turn></turn> turę na <hyperlink>mapie świata</hyperlink> wybrana armia wroga zyskuje:<bulletlist><bullet>2 razy demoralizację.</bullet><bullet>W przypadku ataku przywołaj szkielety (3) z cechą nieświęty czempion po stronie atakującego.</bullet></bulletlist>",
+  "name": "Szepty nieumarłych",
+  "operation_point_cost": 100,
+  "icon": "0000049700002C39"
  },
  {
   "casting_cost": "80<mana></mana> ",
@@ -5563,7 +5879,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "wiążący_dusze",
   "tactical": false,
-  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>Podstawowe 90% szans na nałożenie stanu więźi duszy podczas ataków, zwiększając zysk <souls></souls> <hyperlink>dusi</hyperlink>, gdy jednostka zostanie zabita.</bullet><bullet>+20% obrażeń przeciwko jednostkom, które mają więź duszy.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>Podstawowe 90% szans na nałożenie stanu więzi duszy podczas ataków, zwiększając zysk <souls></souls> <hyperlink>duszy</hyperlink>, gdy jednostka zostanie zabita.</bullet><bullet>+10% obrażeń przeciwko jednostkom, które mają więź duszy.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
@@ -5591,14 +5907,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483932,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
-  "id": "przywołanie_banshee",
+  "id": "przywołanie_spaczonej_duszy",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>banshee</hyperlink> – jednostkę, która obniża morale i osłabia wrogów przeszywającym zawodzeniem.",
-  "name": "Przywołanie banshee",
+  "description": "Przywołuje <hyperlink>zepsutą duszę</hyperlink> – typ jednostki wojowników. Wykorzystuje niskie <happiness></happiness> <hyperlink>morale</hyperlink> wrogiej jednostki.",
+  "name": "Przywołanie spaczonej duszy",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "banshee"
+    "slug": "zepsuta_dusza"
    }
   ]
  },
@@ -5684,7 +6000,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar przywołania</hyperlink>",
   "id": "przywołanie_mniejszego_ducha_kamieni",
   "tactical": false,
-  "description": "Przywołuje <hyperlink>pomniejszy duch kamienia</hyperlink>. Ta jednostka to jednostka tarczowa z dobrymi statystykami obronnymi.",
+  "description": "Przywołany zostaje <hyperlink>pomniejszy duch kamienia</hyperlink>. Ta jednostka to jednostka tarczowa z dobrymi statystykami obronnymi.",
   "name": "Przywołanie mniejszego ducha kamieni",
   "operation_point_cost": 60,
   "summoned_units": [
@@ -5773,7 +6089,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Czar na wrogą armię</hyperlink>",
   "id": "widzenie_wroga",
   "tactical": false,
-  "description": "Wszyscy wrogowie w wybranej armii zapewniają pole widzenia przez 15 <turn></turn>.",
+  "description": "Wszyscy wrogowie w wybranej armii zapewniają pole widzenia przez 10 <turn></turn>.",
   "name": "Widzenie wroga",
   "operation_point_cost": 30,
   "icon": "0000041B0000124D"
@@ -5815,7 +6131,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "tarcza_statyczna",
   "tactical": true,
-  "description": "Wybrana jednostka sojusznicza zyskuje tarczę, która ma podstawowe 60% szans, na nałożenie stanu ogłuszenie na atakujących.<br></br>Trwa przez 2 <turn></turn>.",
+  "description": "Wybrana jednostka sojusznicza i inna w odległości 3 <range></range> zyskują tarczę:<bulletlist><bullet>Ma 60% szans na nałożenie stanu ogłuszenie na atakujących.</bullet><bullet>Trwa przez 2 <turn></turn>.</bullet></bulletlist>",
   "name": "Tarcza statyczna",
   "operation_point_cost": 15,
   "icon": "0000041B0000120C"
@@ -5826,7 +6142,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Czar wzmacniający</hyperlink>",
   "id": "znak_niepodatności",
   "tactical": true,
-  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Otrzymuje stan niepodatność na 1 <turn></turn>.</bullet><bullet>Ma usuwane negatywne efekty stanu.</bullet></bulletlist><br></br>Nie można użyć na jednostce więcej niż raz na bitwę.",
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Otrzymuje stan niepodatność na 1 <turn></turn>.</bullet><bullet>Ma usuwane <hyperlink>negatywnie efekty stanu</hyperlink>.</bullet></bulletlist><br></br>Nie można użyć na jednostce więcej niż raz na bitwę.",
   "name": "Znak niepodatności",
   "operation_point_cost": 20,
   "icon": "0000041B00001200"
@@ -5878,7 +6194,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "rzemieślnicze_uzbrojenia",
   "tactical": false,
-  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>+30% szans na <hyperlink>trafienie krytyczne</hyperlink>.</bullet></bulletlist>",
+  "description": "Zapewnia zaklętym jednostkom:<bulletlist><bullet>+25% <hyperlink><crit></crit>szansy na trafienie krytyczne</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"
@@ -5928,7 +6244,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Czar terraformujący</hyperlink>",
   "id": "rozpad_ziemi",
   "tactical": false,
-  "description": "Wybrana <hyperlink>prowincja</hyperlink> nadająca się do zamieszkania bądź nie:<bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> w tej prowincji otrzymują 10 <damagePhysical></damagePhysical> <hyperlink>Obrażenia fizyczne</hyperlink> pkt. obrażeń.</bullet><bullet>Traci <hyperlink>górę</hyperlink>, <hyperlink>stalagmity</hyperlink> i <hyperlink>ziemię do wykopania</hyperlink>.</bullet></bulletlist>",
+  "description": "Wybrana <hyperlink>prowincja</hyperlink> nadająca się do zamieszkania bądź nie:<bulletlist><bullet>Wrogie <hyperlink>jednostki</hyperlink> otrzymują 10 <damagePhysical></damagePhysical> <hyperlink>Obrażenia fizyczne</hyperlink> pkt. obrażeń.</bullet><bullet>Prowincja traci <hyperlink>góry</hyperlink>, <hyperlink>stalagmity</hyperlink> i <hyperlink>ziemie do wykopania</hyperlink>.</bullet><bullet>Przywołaj <hyperlink>duch kamienia</hyperlink></bullet></bulletlist>",
   "name": "Rozpad ziemi",
   "operation_point_cost": 150,
   "icon": "000003E300005CCB",
@@ -6021,24 +6337,27 @@
   "casting_cost": "120<mana></mana> ",
   "resid": 4273492483003,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
-  "id": "pociski_rozkładu",
+  "id": "ostrza_rozkładu",
   "tactical": false,
-  "description": "Sprawia, że podstawowe ataki <hyperlink>fizyczne dystansowe</hyperlink> i <hyperlink>magiczne</hyperlink> zaklętych jednostek:<bulletlist><bullet>Zadają +2 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Zyskują podstawowe 60% szans na nałożenie stanu rozkładu z obrażeniami w czasie, co uniemożliwia wrogom leczenie.</bullet></bulletlist><br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
+  "description": "Sprawia, że podstawowe ataki zaklętych jednostek:<bulletlist><bullet>Nakładają rozkład, efekt obrażeń w czasie, który zmniejsza otrzymywane leczenie.</bullet></bulletlist> <br></br>Efekty dla pojedynczych strzałów <hyperlink>zostają zwiększone</hyperlink>.",
   "enchantment_requisites": [
    {
-    "requisite": "<unitRanged></unitRanged> Jednostka dystansowa"
+    "requisite": "<unitShield></unitShield> Jednostka tarczowa"
    },
    {
-    "requisite": "<unitSupport></unitSupport> Jednostka wsparcia"
+    "requisite": "<unitPolearm></unitPolearm> Jednostka z bronią drzewcową"
    },
    {
-    "requisite": "<unitBattleMage></unitBattleMage> Jednostka magów bitewnych"
+    "requisite": "<unitShock></unitShock> Jednostka rażąca"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Jednostka wojowników"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Jednostka harcowników"
    }
   ],
-  "name": "Pociski rozkładu",
+  "name": "Ostrza rozkładu",
   "operation_point_cost": 120,
   "icon": "0000041B00000D54"
  },
@@ -6049,7 +6368,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Podtrzymywany czar na miasto</hyperlink>",
   "id": "cykl_pór_roku",
   "tactical": false,
-  "description": "Rzucane na miasto sojusznicze. Wszystkie bitwy, które odbędą się na posiadłościach tego miasta otrzymują <abilityblue>cykl pór roku</abilityblue>, zapewniający w każdej turze inny efekt w następującej kolejności:<bulletlist><bullet>Zima: wszyscy wrogowie otrzymują 10 pkt. <damageFrost></damageFrost>.</bullet><bullet>Wiosna: wszystkie jednostki sojusznicze otrzymują 1 razy wzmocnienie.</bullet><bullet>Lato: wszystkie jednostki sojusznicze leczą +10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Jesień: wszyscy wrogowie otrzymują 1 razy osłabienie.</bullet></bulletlist>",
+  "description": "Wszystkie bitwy, które odbędą się na ziemiach wybranego miasta otrzymują <abilityblue>cykl pór roku</abilityblue>, zapewniający w każdej turze inny efekt w następującej kolejności:<bulletlist><bullet>Zima: wszyscy wrogowie otrzymują 10 pkt. <damageFrost></damageFrost>.</bullet><bullet>Wiosna: wszystkie jednostki sojusznicze otrzymują 1 razy wzmocnienie.</bullet><bullet>Lato: wszystkie jednostki sojusznicze leczą +10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Jesień: wszyscy wrogowie otrzymują 1 razy osłabienie.</bullet></bulletlist>",
   "name": "Cykl pór roku",
   "operation_point_cost": 120,
   "icon": "0000041B00000D64"
@@ -6071,7 +6390,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> Czar zadający obrażenia/leczący</hyperlink>",
   "id": "rozproszenie_zdrowia",
   "tactical": true,
-  "description": "Wybrana wroga jednostka:<bulletlist><bullet>Otrzymuje 30 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Otrzymuje 1 pkt. rozkładów.</bullet></bulletlist><br></br>Jednostki sojusznicze w promieniu 2 <range></range>. <bulletlist><bullet>Leczą +15 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Zyskują 1 pkt. dzięki regeneracji.</bullet></bulletlist>",
+  "description": "Wybrana wroga jednostka:<bulletlist><bullet>Otrzymuje 30 pkt. <damageBlight></damageBlight> <hyperlink>obrażenia zarazy</hyperlink>.</bullet><bullet>Otrzymuje 2 pkt. rozkładów.</bullet></bulletlist><br></br>Jednostki sojusznicze w promieniu 2 <range></range>. <bulletlist><bullet>Leczą +15 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Zyskują 2 pkt. dzięki regeneracji.</bullet></bulletlist>",
   "name": "Rozproszenie zdrowia",
   "operation_point_cost": 30,
   "icon": "0000041B00000D5C"
@@ -6126,7 +6445,7 @@
   "spellType": "<casttactical></casttactical><hyperlink> Czar zadający obrażenia</hyperlink>",
   "id": "ofiarna_rzeź",
   "tactical": true,
-  "description": "Wybrana jednostka sojusznicza wybucha i wrogie jednostki w zasięgu 2 <range></range>:<bulletlist><bullet>Otrzymują 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink> i 5 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink> na poziom poświęconej jednostki.</bullet><bullet>Otrzymuje jeden losowy negatywny efekt stanu na poziom poświęconej jednostki.</bullet>",
+  "description": "Wybrana jednostka sojusznicza wybucha i wrogie jednostki w zasięgu 2 <range></range>:<bulletlist><bullet>Otrzymują 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink> i 5 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink> na poziom poświęconej jednostki.</bullet><bullet>Otrzymuje jeden losowy <hyperlink>Negatywny efekt stanu</hyperlink> na poziom poświęconej jednostki.</bullet>",
   "name": "Ofiarna rzeź",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6459,7 +6778,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "zaklęty_kruczy_towarzysz",
   "tactical": false,
-  "description": "Zapewnia: +2 pkt. <hyperlink>zasięgu widzenia</hyperlink> na mapa świata.",
+  "description": "Zapewnia: +2 pkt. <hyperlink>zasięgu widzenia</hyperlink> na mapie świata.",
   "enchantment_requisites": [
    {
     "requisite": "<unitScout></unitScout> Jednostka zwiadowcza"
@@ -6503,7 +6822,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Zaklęcie jednostki</hyperlink>",
   "id": "płomienna_broń",
   "tactical": false,
-  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>+20% szans na <hyperlink>trafienie krytyczne</hyperlink>.</bullet><bullet>Za każdym razem, gdy ta jednostka zabije inną jednostkę:<bulletlist></bullet><bullet>Sprawia, że zabita jednostka wybucha, zadając 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink> przylegającym wrogim jednostkom.</bullet></bulletlist></bulletlist>",
+  "description": "Przyznaje zaklętym jednostkom:<bulletlist><bullet>+20% <hyperlink><crit></crit>szansy na trafienie krytyczne</hyperlink>.</bullet><bullet>Za każdym razem, gdy ta jednostka zabije inną jednostkę:<bulletlist></bullet><bullet>Sprawia, że zabita jednostka wybucha, zadając 20 pkt. <damageFire></damageFire> <hyperlink>obrażenia od ognia</hyperlink> przylegającym wrogim jednostkom.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Jednostka tarczowa"

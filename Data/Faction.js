@@ -1405,23 +1405,23 @@ function findOriginLoc(origin, type) {
         case "Culture":
         case "Form":
             // not translated
-            newOrigin = jsonFactionCreationLocalized.find((entry) => entry.id === origin.id);
+            newOrigin = jsonFactionCreation.find((entry) => entry.id === origin.id);
             break;
 
         case "Tome":
-            newOrigin = jsonTomesLocalized.find((entry) => entry.resid === origin.resid);
-            newOrigin = jsonTomesLocalized.find((entry) => entry.resid === origin.resid);
+            newOrigin = jsonTomes.find((entry) => entry.resid === origin.resid);
+            //newOrigin = jsonTomes.find((entry) => entry.resid === origin.resid);
             break;
 
         case "FormTrait":
         case "Society1":
         case "Society2":
-            newOrigin = jsonFactionCreation2Localized.find((entry) => entry.icon === origin.icon);
+            newOrigin = jsonFactionCreation2.find((entry) => entry.icon === origin.icon);
 
             break;
 
         case "Ascension":
-            newOrigin = jsonHeroSkillsLocalized.find((entry) => entry.resid === origin.resid);
+            newOrigin = jsonHeroSkills.find((entry) => entry.resid === origin.resid);
             break;
         case "Signature":
         case "Loadout":
@@ -1432,7 +1432,7 @@ function findOriginLoc(origin, type) {
 function createButtonText(origin, type) {
     const span = document.createElement("span");
 
-    var originLoc = findOriginLoc(origin, type);
+    const originLoc = findOriginLoc(origin, type);
 
     if ("point_cost" in origin && type === "FormTrait") {
         span.innerHTML += `${origin.point_cost}: `;
@@ -1489,9 +1489,11 @@ function createTooltip(origin, type) {
     var originLoc = findOriginLoc(origin, type);
     switch (type) {
        
-        case "Form":
+       
         case "Society1":
         case "Society2":
+            
+           origin =  findBy(jsonFactionCreation2Localized, "icon", origin.icon);
             if (origin.effect_descriptions) {
                 tooltip.innerHTML += `<br><br><span class="mod_name">EFFECTS: </span><bulletlist>`;
                 for (const e of originLoc.effect_descriptions) {
@@ -1519,6 +1521,7 @@ function createTooltip(origin, type) {
         case "Class":
         case "SubCulture": 
              case "SubType":
+             case "Form":
             const el = spell_card_template.content.firstElementChild.cloneNode(true);
             
             tooltip.innerHTML = el.firstElementChild.innerHTML;
@@ -1555,6 +1558,9 @@ function createTooltip(origin, type) {
 }
 
 function SetSkillPreview(span, origin) {
+    
+    
+    
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
     if ("description" in origin) {
@@ -1563,9 +1569,11 @@ function SetSkillPreview(span, origin) {
 
     if ("abilities" in origin) {
         for (let index = 0; index < origin.abilities.length; index++) {
-            for (let i = 0; i < jsonUnitAbilities.length; i++) {
-                const test = jsonUnitAbilities[i];
+            for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
+                const test = jsonUnitAbilitiesLocalized[i];
                 if (origin.abilities[index].slug == test.slug) {
+                    
+                  
                     span.innerHTML += "<br>" + GetAbilityInfo(test).innerHTML;
                 }
             }
@@ -1732,6 +1740,8 @@ function GetClassFromWeaponId(id) {
 }
 
 function SetTomePreview(span, origin) {
+    // get loc version?
+    
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
     span.innerHTML += origin.gameplay_description + "<br>";
@@ -1761,6 +1771,7 @@ function SetTomePreview(span, origin) {
         }
     }
     if ("skills" in origin) {
+        console.log (origin.skills);
         span.innerHTML += '<p  style="color: #97d7a2;>' + '<span style="font-size=20px;">Skills:<br></p>';
 
         for (let index = 0; index < origin.skills.length; index++) {
@@ -1831,7 +1842,8 @@ function SetTomePreview(span, origin) {
             }
             // normal spell
             else {
-                span.innerHTML +=
+              
+                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                     origin.skills[index].spell_slug +
                     '.png">' +
@@ -2132,7 +2144,7 @@ function CreateSpellIcon(listEntry, colorEntry) {
     
     // get spell already
     
-     var spellData = jsonSpellsLocalized.find((entry) => entry.id == listEntry.spell_slug);
+     var spellData = jsonSpells.find((entry) => entry.id == listEntry.spell_slug);
     
 
     var smallIcon = document.createElement("img");
