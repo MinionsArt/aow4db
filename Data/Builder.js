@@ -5295,6 +5295,9 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             if ("lore" in valueLookup) {
                 descriptionDiv.innerHTML += valueLookup.lore;
             }
+            if ("bio" in valueLookup) {
+                descriptionDiv.innerHTML += valueLookup.bio;
+            }
             if ("fpg_description" in valueLookup) {
                 descriptionDiv.innerHTML += valueLookup.fpg_description;
             } else if ("description" in valueLookup) {

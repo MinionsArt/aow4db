@@ -205,11 +205,13 @@ const dlcMap = {
 };
 
 async function GetAllData(selectedLang) {
-    let basePathEN;
+    const basePathEN = `/aow4db/Data/EN/`;
+
     //if(selectedLang == "Beta"){
     //         basePathEN = `/aow4db/Data/Beta/`;
     //  }else{
-    basePathEN = `/aow4db/Data/EN/`;
+
+    const basePathGen = `/aow4db/Data/GEN/`;
     // }
     //  const basePathEN = `/aow4db/Data/EN/`;
     const basePathLocal = `/aow4db/Data/${selectedLang}/`;
@@ -222,10 +224,15 @@ async function GetAllData(selectedLang) {
         "BuilderLookupHero.json",
         "ItemForge.json",
         "UI.json",
-          "FactionCreation.json"
-       
+        "FactionCreation.json",
+        "StatusEffects.json",
+        "ExtraToolTips.json",
+        "CombatEnchantments.json",
+        "WorldStructures.json",
+        "CosmicHappenings.json",
     ];
     const fileNames = [
+        // ingame dump files
         "HeroItems.json",
         "HeroSkills.json",
         "SiegeProjects.json",
@@ -236,24 +243,19 @@ async function GetAllData(selectedLang) {
         "EmpireProgression.json",
         "Spells.json",
         "StructureUpgrades.json",
-        "CombatEnchantments.json",
-        "WorldStructures.json",
-      
         "Destinies.json",
-        "CosmicHappenings.json",
         "Governance.json",
-        "StatusEffects.json",
-        "ExtraToolTips.json",
+        // non-ingame-dump-json-files
         "UI.json",
-         "baseConceptLookup.json",
+        "baseConceptLookup.json",
         "extraFactionCreation.json",
-         "world_structures.json",
+        "world_structures.json",
         "combat_properties.json",
         "events.json"
     ];
 
     // Create file paths
-    const filesToFetchGeneric = fileNamesGeneric.map((f) => basePathEN + f);
+    const filesToFetchGeneric = fileNamesGeneric.map((f) => basePathGen + f);
     const filesToFetchEN = fileNames.map((f) => basePathEN + f);
     const filesToFetchLocal = fileNames.map((f) => basePathLocal + f);
 
@@ -273,7 +275,12 @@ async function GetAllData(selectedLang) {
             "jsonBuilderHeroLookUp",
             "jsonItemForge",
             "jsonUIGeneric",
-             "jsonFactionCreation"
+            "jsonFactionCreation",
+            "jsonStatusEffects",
+            "jsonExtraTooltips",
+             "jsonCombatEnchantments",
+        "jsonWorldStructures",
+        "jsonCosmicHappenings"
         ];
         const targets = [
             "jsonHeroItems",
@@ -286,19 +293,14 @@ async function GetAllData(selectedLang) {
             "jsonEmpire",
             "jsonSpells",
             "jsonStructureUpgrades",
-            "jsonCombatEnchantments",
-            "jsonWorldStructures",     
             "jsonHeroAmbitions",
-            "jsonCosmicHappenings",
             "jsonHeroGovernance",
-            "jsonStatusEffects",
-            "jsonExtraTooltips",
             "jsonUI",
-             "jsonBaseConcepts",
+            "jsonBaseConcepts",
             "jsonExtraFactionCreationFromPO",
             "jsonExtraStructureFromPO",
-           "jsonExtraCombatPropertiesFromPO",
-             "jsonExtraEventsFromPO"
+            "jsonExtraCombatPropertiesFromPO",
+            "jsonExtraEventsFromPO"
         ];
 
         // Assign data to global vars
@@ -357,9 +359,9 @@ async function CheckData() {
         //showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
 
-      //  languageSelect = document.getElementById("languageSelect");
+        //  languageSelect = document.getElementById("languageSelect");
         //languageSelect.value = storedSettings.language;
-      languageSelect.value = "EN";
+         languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {
@@ -382,10 +384,9 @@ async function CheckData() {
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityNameMap[a.name] = a));
         HandlePage();
-        if(languageSelect.value != "EN"){
-              LocalizeUI();
+        if (languageSelect.value != "EN") {
+            LocalizeUI();
         }
-      
     }
 }
 
@@ -410,34 +411,28 @@ function LocalizeUI() {
 
                 if (test.includes("&")) {
                     test = test.split("&");
-                  
-                      
-                        const found = findBy(jsonBaseConceptsLocalized, "id", test[0]);
-                        if (found) {
-                            value = found[test[1]];
-                        }
-                    
+
+                    const found = findBy(jsonBaseConceptsLocalized, "id", test[0]);
+                    if (found) {
+                        value = found[test[1]];
+                    }
                 } else {
-                    const found = findBy(jsonBaseConceptsLocalized,"id", test);
+                    const found = findBy(jsonBaseConceptsLocalized, "id", test);
                     if (found) {
                         value = found.hyperlink;
                     }
                 }
-                console.log(test);
+             //   console.log(test);
                 value = value.replaceAll("<hyperlink>", "");
-               value = value.replaceAll("</hyperlink>", "");
+                value = value.replaceAll("</hyperlink>", "");
                 value = value.split("^")[0];
-                
-            }
-            else if ('unit' in jsonUIGeneric[id]){
-                 let test = jsonUIGeneric[id].unit;
+            } else if ("unit" in jsonUIGeneric[id]) {
+                let test = jsonUIGeneric[id].unit;
                 const abilityName = findBy(jsonUnitAbilities, "name", test);
                 console.log(abilityName.name);
                 const abilityNameLoc = findBy(jsonUnitAbilitiesLocalized, "slug", abilityName.slug);
                 value = abilityNameLoc.name;
-            }
-            
-            else {
+            } else {
                 // Assumes the image is first, text second
                 value = jsonUIGeneric[id].label;
             }
@@ -451,13 +446,10 @@ function LocalizeUI() {
         if (el) {
             let value = "error";
 
-            
-                // Assumes the image is first, text second
-                value = jsonUILocalized[id].label;
-            
+            // Assumes the image is first, text second
+            value = jsonUILocalized[id].label;
 
             el.childNodes[1].nodeValue = " " + value;
         }
     }
 }
-
