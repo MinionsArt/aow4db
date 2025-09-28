@@ -41,6 +41,19 @@ const oathswornCultureUnits = [
     "warbound"
 ];
 
+
+function cleanTranslation(text) {
+  if (!text) return text;
+
+  return text
+    // Remove ^fa{[1]}fn{[2]} style markers
+    .replace(/\^fa\{\[\d+\]\}fn\{\[\d+\]\}/g, "")
+    // Remove any ^ followed by a single letter (e.g. ^m, ^N, ^a)
+    .replace(/\^[a-zA-Z]/g, "")
+    // Clean up leftover spaces
+    .trim();
+}
+
 const architectCultureUnits = ["surveyor", "cultivator", "earthbreaker", "guardian", "shademaker", "architect"];
 
 const MountedSpecialList = [
@@ -162,7 +175,7 @@ function fetchJsonFiles(filePaths) {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
-                return response.json();
+                return  response.json();
             })
         )
     );
@@ -360,8 +373,8 @@ async function CheckData() {
         showBetaTooltip.checked = storedSettings.showBeta;
 
         //  languageSelect = document.getElementById("languageSelect");
-        //languageSelect.value = storedSettings.language;
-         languageSelect.value = "EN";
+        languageSelect.value = storedSettings.language;
+         //languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {

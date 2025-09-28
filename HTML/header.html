@@ -23,27 +23,27 @@
                             <input type="checkbox" id="numbersCheckbox" onclick="CheckBoxTooltips()" />
                         </label>
                         <br />
-                        <label style="display: none">
-                            Language:
-                            <select id="languageSelect" onchange="SwitchToBeta()">
-                                <option value="EN">English</option>
-                                <option value="DE">Deutsch</option>
-                                <option value="ES">Español</option>
-                                <option value="FR">Français</option>
-                                <option value="JA">日本語</option>
-                                <option value="KO">한국어</option>
-                                <option value="PL">Polski</option>
-                                <option value="RU">Pусский</option>
-                                <option value="ZH">中文</option>
-                            </select>
-                        </label>
                     </div>
                 </div>
-                <div class="donate">
-                    <a class="prett" href="/aow4db/HTML/Donate.html">
-                        Donate<img src="/aow4db/Icons/Text/health.png" width="20px" />
-                    </a>
-                </div>
+            </div>
+            <label style="display: block; position: relative; left: -86px">
+                WIP
+                <select id="languageSelect" class="button-random" onchange="SwitchToBeta()">
+                    <option value="EN">English</option>
+                    <option value="DE">Deutsch</option>
+                    <option value="ES">Español</option>
+                    <option value="FR">Français</option>
+                    <option value="JA">日本語</option>
+                    <option value="KO">한국어</option>
+                    <option value="PL">Polski</option>
+                    <option value="RU">Pусский</option>
+                    <option value="ZH">中文</option>
+                </select>
+            </label>
+            <div class="donate" >
+                <a class="prett" href="/aow4db/HTML/Donate.html">
+                    Donate<img src="/aow4db/Icons/Text/health.png" width="20px" />
+                </a>
             </div>
 
             <div class="dropdown">
@@ -71,7 +71,9 @@
             <div class="current-version">Updated: 14 AUGUST 2025 (GRIFFON PATCH)</div>
 
             <div class="hero-text" style="display: block">
-                <img src="/aow4db/Icons/Interface/archon_prophecy.png" width="442px" />
+                <img style="
+    position: relative;
+    top: -21px;" src="/aow4db/Icons/Interface/archon_prophecy.png" width="442px" />
             </div>
             <ul id="menu">
                 <li>
@@ -691,11 +693,15 @@
     <style>
         .topbar {
             color: white;
-            padding: 10px 20px;
+           
             font-size: 14px;
+            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: nowrap;
+            z-index: 30;
+            flex-direction: row;
         }
 
         .dropdown {
@@ -704,9 +710,21 @@
         }
 
         .donate {
-            margin-left: 20px;
-            position: relative;
-            display: inline-block;
+          
+    right: -152px;
+    position: relative;
+    display: inline-block;
+    background-color: #4b1d63;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    /* height: 30px; */
+    border-width: 5px;
+    border-style: solid;
+    border-image: url(/aow4db/Icons/9slicetooltip.png);
+    border-image-slice: 10 10 10 10;
         }
 
         .dropdown-title {

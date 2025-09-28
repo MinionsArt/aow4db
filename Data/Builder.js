@@ -44,6 +44,7 @@ function buildAbilityTagCache() {
 // main function
 function AddTagIconsForStatusEffects(text) {
     if (!text) return text;
+   text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
 
     // simple replace loop — only checks keys that actually exist
@@ -3615,21 +3616,21 @@ function lookupSlugFull(slug) {
 function showSiegeProject(id, showOrigin, divOrigin) {
     let siegeProject = findBy(jsonSiegeProjects, "name", id) || findBy(jsonSiegeProjects, "id", id);
     if (siegeProject != undefined) {
+        const siegeLoc = findBy(jsonSiegeProjectsLocalized, "resid", siegeProject.resid);
         let modName = divOrigin.querySelector("#modname");
-        modName.innerHTML = siegeProject.name.toUpperCase();
+        modName.innerHTML = siegeLoc.name.toUpperCase();
 
         let descriptionDiv = divOrigin.querySelector("#moddescription");
-        let description = "<hr>" + siegeProject.description;
+        let description = "<hr>" + siegeLoc.description;
 
         description +=
             "<br>Fortification Damage:<br> +" +
-            siegeProject.siege_health_damage +
+            siegeLoc.siege_health_damage +
             " <siegehealthdamage></siegehealthdamage> Fortification Damage";
 
         let imagelink = divOrigin.querySelector("#modicon");
 
         imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + siegeProject.icon + ".png");
-        imagelink.setAttribute("id", "modicon" + siegeProject.name);
         descriptionDiv.innerHTML = description;
 
         let tier = divOrigin.querySelector("#modtier");
@@ -3637,7 +3638,7 @@ function showSiegeProject(id, showOrigin, divOrigin) {
         tier.innerHTML = "<garrison></garrison> Siege Project";
 
         let cost = divOrigin.querySelector("#modcost");
-        cost.innerHTML = "Cost:" + siegeProject.cost;
+        cost.innerHTML = "Cost:" + siegeLoc.cost;
         let tierSpell = backtraceTomeOriginAndTier(siegeProject, showOrigin, divOrigin);
 
         if (tierSpell != undefined) {

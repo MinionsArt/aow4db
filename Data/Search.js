@@ -101,13 +101,16 @@ function returnUnitList(fieldToSearch) {
     // --- Name-based search ---
 
     for (const unit of jsonUnitsLocalized) {
+          const enUnit = findBy(jsonUnits, "resid", unit.resid);
         if (namesChecked.checked) {
             if (unit.name.toLowerCase().includes(search) && !depCheckResID(unit.resid)) {
                 let entry;
-                if (unit.sub_culture_name && !architectCultureUnits.includes(unit.id)) {
-                    entry = `${unit.id},${unit.sub_culture_name}`;
+                
+                if (unit.sub_culture_name && !architectCultureUnits.includes(enUnit.id)) {
+                  
+                    entry = `${enUnit.id},${enUnit.sub_culture_name}`;
                 } else {
-                    entry = unit.id;
+                    entry = enUnit.id;
                 }
                 results.add(entry);
             }
@@ -118,10 +121,10 @@ function returnUnitList(fieldToSearch) {
                 for (const resistance of unit.resistances) {
                     if (resistance.slug.toLowerCase().replaceAll("_", " ").includes(search) && !depCheckResID(unit.resid)) {
                         let entry;
-                        if (unit.sub_culture_name && !architectCultureUnits.includes(unit.id)) {
-                            entry = `${unit.id},${unit.sub_culture_name}`;
+                        if (unit.sub_culture_name && !architectCultureUnits.includes(enUnit.id)) {
+                            entry = `${enUnit.id},${enUnit.sub_culture_name}`;
                         } else {
-                            entry = unit.id;
+                            entry = enUnit.id;
                         }
                         results.add(entry);
                     }
@@ -143,7 +146,8 @@ function returnEmpireTreeList(fieldToSearch) {
         const description = Sanitize(spell.description || "").toUpperCase();
 
         if (name.includes(search) || description.includes(search)) {
-            results.add(spell.id);
+              const spellEN = findBy(jsonEmpire, "icon", spell.icon);
+            results.add(spellEN.id);
         }
     }
 
@@ -157,11 +161,13 @@ function returnSpellList(fieldToSearch) {
     const results = new Set();
 
     for (const spell of jsonSpellsLocalized) {
+       
         const name = spell.name?.toUpperCase() || "";
         const description = Sanitize(spell.description || "").toUpperCase();
 
         if (name.includes(search) || description.includes(search)) {
-            results.add(spell.id);
+             const spellEN = findBy(jsonSpells, "resid", spell.resid);
+            results.add(spellEN.id);
         }
     }
 
@@ -174,12 +180,13 @@ function returnAmbitionsList(fieldsToSearch){
     const search = fieldsToSearch.replaceAll("_", " ").toUpperCase();
     const results = new Set();
 
-    for (const trait of jsonHeroAmbitions) {
+    for (const trait of jsonHeroAmbitionsLocalized) {
         const name = trait.name?.toUpperCase() || "";
         const description = Sanitize(trait.description || "").toUpperCase();
 
         if (name.includes(search) || description.includes(search)) {
-            results.add(trait);
+              const traitEN = findBy(jsonHeroAmbitions, "icon", trait.icon);
+            results.add(traitEN);
         }
     }
    
@@ -203,7 +210,8 @@ function returnTraitsList(fieldToSearch) {
          if(Array.isArray(trait.effect_descriptions)){
                 for (const effect of trait.effect_descriptions) {
                 if (effect.name.toUpperCase().includes(search)) {
-                    results.add(trait.id);
+                     const traitEN = findBy(jsonFactionCreation2, "icon", trait.icon);
+                    results.add(traitEN.id);
                     
                 }
             }
@@ -214,6 +222,7 @@ function returnTraitsList(fieldToSearch) {
         const description = Sanitize(trait.description || "").toUpperCase();
 
         if (name.includes(search) || description.includes(search)) {
+            // const traitEN = findBy(jsonFactionCreation, "id", trait.id);
             results.add(trait.id);
         }
          
@@ -234,12 +243,15 @@ function returnSkillList(fieldToSearch) {
     // Collect matching unit abilities
     for (const ability of jsonUnitAbilitiesLocalized) {
         if (matches(ability.description) || matches(ability.name)) {
-            heroSlugs.add(ability.slug);
+            const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
+            heroSlugs.add(abilityEN.slug);
         }
 
         if (Array.isArray(ability.modifiers)) {
             for (const mod of ability.modifiers) {
                 if (matches(mod.description) || matches(mod.name)) {
+                      const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
+          
                     heroSlugs.add(ability.slug);
                     break; // stop early if found
                 }
@@ -252,14 +264,18 @@ function returnSkillList(fieldToSearch) {
         // Ability match
         if (heroSlugs.size && Array.isArray(skill.abilities)) {
             if (skill.abilities.some((a) => heroSlugs.has(a.slug))) {
-                results.add(skill);
+                    const skillEN = findBy(jsonHeroSkills, "id", skill.id);
+          
+                results.add(skillEN);
                 continue; // already matched, skip to next skill
             }
         }
 
         // Description / name match
         if (matches(Sanitize(skill.description || "")) || matches(skill.name)) {
-            results.add(skill);
+                const skillEN = findBy(jsonHeroSkills, "id", skill.id);
+          
+            results.add(skillEN);
         }
     }
 
@@ -279,13 +295,17 @@ function returnEquipList(fieldToSearch) {
         const matches = (text) => text && text.toUpperCase().includes(search);
 
         if (matches(ability.description) || matches(ability.name)) {
-            equipSet.add(ability.slug);
+                const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
+          
+            equipSet.add(abilityEN.slug);
         }
 
         if (Array.isArray(ability.modifiers)) {
             for (const mod of ability.modifiers) {
                 if (matches(mod.description) || matches(mod.name)) {
-                    equipSet.add(ability.slug);
+                        const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
+          
+                    equipSet.add(abilityEN.slug);
                     break; // stop early if already matched
                 }
             }
@@ -295,14 +315,18 @@ function returnEquipList(fieldToSearch) {
     // Match items with those abilities
     for (const item of jsonHeroItemsLocalized) {
         if (item.ability_slugs?.some((a) => equipSet.has(a.slug))) {
-            resultsSet.add(item);
+              const itemEN = findBy(jsonHeroItems, "resid", item.resid);
+          
+            resultsSet.add(itemEN);
             continue; // skip description/name check if already matched
         }
 
         const matches = (text) => text && Sanitize(text).toUpperCase().includes(search);
 
         if (matches(item.description) || matches(item.name)) {
-            resultsSet.add(item);
+              const itemEN = findBy(jsonHeroItems, "resid", item.resid);
+          
+            resultsSet.add(itemEN);
         }
     }
 
@@ -320,7 +344,9 @@ function returnSiegeProj(fieldToSearch) {
         const description = Sanitize(spell.description || "").toUpperCase();
 
         if (name.includes(search) || description.includes(search)) {
-            results.add(spell.id);
+               const siegeEN = findBy(jsonSiegeProjects, "resid", spell.resid);
+        
+            results.add(siegeEN.id);
         }
     }
 
@@ -358,17 +384,19 @@ function returnStructure(fieldToSearch) {
     const results = new Set();
     const excludeSet = new Set(excludeListStructures);
 
-    const checkAndAdd = (id, text) => {
-        if (text && text.toUpperCase().includes(search) && !excludeSet.has(id)) {
-            results.add(id);
+    const checkAndAdd = (struct, text) => {
+        if (text && text.toUpperCase().includes(search) && !excludeSet.has(struct.id)) {
+               const structEN = findBy(jsonStructureUpgrades, "resid", struct.resid);
+        
+            results.add(structEN.id);
         }
     };
 
     for (const struct of jsonStructureUpgradesLocalized) {
         // Name check
-        checkAndAdd(struct.id, struct.name);
-        checkAndAdd(struct.id, Sanitize(struct.description || ""));
-        checkAndAdd(struct.id, Sanitize(struct.prediction_description || ""));
+        checkAndAdd(struct, struct.name);
+        checkAndAdd(struct, Sanitize(struct.description || ""));
+        checkAndAdd(struct, Sanitize(struct.prediction_description || ""));
     }
     return Array.from(results);
 }
@@ -503,8 +531,9 @@ function searchArray(keyword, arraytosearch, listToPushTo, index) {
 
 
 function findUnitWithAbility(ability, results) {
-    console.log(ability);
+  
     for (const unit of jsonUnitsLocalized) {
+          const enUnit = findBy(jsonUnits, "resid", unit.resid);
         const checkSources = [
             ...(unit.abilities || []),
             ...(passivesChecked.checked ? unit.primary_passives || [] : []),
@@ -513,9 +542,9 @@ function findUnitWithAbility(ability, results) {
 
         if (checkSources.some((source) => source.slug === ability) && !depCheckResID(unit.resid)) {
             const entry =
-                unit.sub_culture_name && !architectCultureUnits.includes(unit.id)
-                    ? `${unit.id},${unit.sub_culture_name}`
-                    : unit.id;
+                unit.sub_culture_name && !architectCultureUnits.includes(enUnit.id)
+                    ? `${enUnit.id},${enUnit.sub_culture_name}`
+                    : enUnit.id;
 
             results.add(entry);
         }
