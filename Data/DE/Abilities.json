@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>Basischance von 60 %, 1 <turn></turn> Runde lang Umschlungen zuzufügen.</bullet><bullet>Chance von  % gegen <hyperlink>markierte</hyperlink> oder <hyperlink>verlangsamte</hyperlink> Einheiten.</bullet></bulletlist>",
+    "description": "Basischance von 60 %, 1 <turn></turn> Runde lang Umschlungen zuzufügen.",
     "name": "Umschlingend^N",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>Basischance von 60 %, 1 <turn></turn> Runde lang Umschlungen zuzufügen.</bullet><bullet>Chance von  % gegen <hyperlink>markierte</hyperlink> oder <hyperlink>verlangsamte</hyperlink> Einheiten.</bullet></bulletlist>",
+    "description": "Basischance von 60 %, 1 <turn></turn> Runde lang Umschlungen zuzufügen.",
     "name": "Umschlingend^N",
     "count": 1
    }
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "Basischance von 90 % auf Zufügen von Blenden für 1 <turn></turn> Runde.",
+    "name": "Blenden",
+    "count": 1
+   }
+  ],
+  "description": "Einzelner Magieangriff auf Zieleinheit.",
+  "name": "Seelenstoß",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Basis"
+   },
+   {
+    "requisite": "Magie"
+   },
+   {
+    "requisite": "Einzelschlag^m"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Nahkampf^m"
+   },
+   {
+    "requisite": "Einzelschlag^m"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "Einzelner Nahkampfangriff.",
-  "name": "Schnellstich",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Nahkampf^m"
-   },
-   {
-    "requisite": "Einzelschlag^m"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab.",
+  "name": "Feuerblitze",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "Magie"
+   },
+   {
+    "requisite": "Basis"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   },
+   {
+    "note": "Abklingzeit: 2 <turn></turn>"
+   }
+  ],
+  "description": "Heilt die verbündete Zieleinheit um 10 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink> und teleportiert sie auf ein angrenzendes Feld.",
+  "name": "kosmische Rettung",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Unterstützung^f"
+   }
+  ],
+  "accuracy": "Trifft immer",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab. Ein weiterer Feind im Umkreis von 3 Feldern erleidet 30 % des verursachten Schadens.",
+  "name": "Kosmische Blitze",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magie"
+   },
+   {
+    "requisite": "Basis"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab.",
   "name": "Kristallblitze",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "Basischance von 90 % auf Zufügen von Blenden für 1 <turn></turn> Runde.",
-    "name": "Blenden",
-    "count": 1
-   }
-  ],
-  "description": "Einzelner Magieangriff auf Zieleinheit.",
-  "name": "Seelenstoß",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Basis"
-   },
-   {
-    "requisite": "Magie"
-   },
-   {
-    "requisite": "Einzelschlag^m"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "Basischance von 60 % auf Zufügen von Brennen für 3 <turn></turn> Runden.",
     "name": "Brennen^n",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab.",
-  "name": "Feuerblitze",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "Magie"
-   },
-   {
-    "requisite": "Basis"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab.",
-  "name": "Kosmische Blitze",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "Magie"
-   },
-   {
-    "requisite": "Basis"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],

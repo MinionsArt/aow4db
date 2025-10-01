@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.</bullet><bullet>% chance against Marked or Slowed units.</bullet></bulletlist>",
+    "description": "Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.",
     "name": "Constricting",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.</bullet><bullet>% chance against Marked or Slowed units.</bullet></bulletlist>",
+    "description": "Base 60% chance of inflicting Constricted for 1 <turn></turn> Turn.",
     "name": "Constricting",
     "count": 1
    }
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Blind for 1 <turn></turn> Turn.",
+    "name": "Blind",
+    "count": 1
+   }
+  ],
+  "description": "Single magical attack at target unit.",
+  "name": "Spirit Blast",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Single Melee Strike.",
+  "name": "Quick Stab",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "Single Melee Strike.",
-  "name": "Quick Stab",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Melee"
-   },
-   {
-    "requisite": "Single Shot"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "Unleashes a magical bolt at target enemy.",
+  "name": "Fire Bolts",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Heal target friendly unit for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and teleport it to an adjacent space.",
+  "name": "Cosmic Rescue",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "Unleashes a magical bolt at target enemy. An additional enemy within 3 hexes receives 30% of the damage dealt.",
+  "name": "Cosmic Bolts",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "Unleashes a magical bolt at target enemy.",
   "name": "Crystal Bolts",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "Base 90% chance of inflicting Blind for 1 <turn></turn> Turn.",
-    "name": "Blind",
-    "count": 1
-   }
-  ],
-  "description": "Single magical attack at target unit.",
-  "name": "Spirit Blast",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Base"
-   },
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Single Shot"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "Unleashes a magical bolt at target enemy.",
-  "name": "Fire Bolts",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "description": "Unleashes a magical bolt at target enemy.",
-  "name": "Cosmic Bolts",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],

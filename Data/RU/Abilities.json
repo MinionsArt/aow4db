@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>С базовой вероятностью 60% может на 1 <turn></turn> х. применить эффект «Удушение».</bullet><bullet>Против врагов под воздействием эффектов «Помечен» или «Скорость снижена» вероятность повышается до %.</bullet></bulletlist>",
+    "description": "С базовой вероятностью 60% может на 1 <turn></turn> х. применить эффект «Удушение».",
     "name": "Удушение",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>С базовой вероятностью 60% может на 1 <turn></turn> х. применить эффект «Удушение».</bullet><bullet>Против врагов под воздействием эффектов «Помечен» или «Скорость снижена» вероятность повышается до %.</bullet></bulletlist>",
+    "description": "С базовой вероятностью 60% может на 1 <turn></turn> х. применить эффект «Удушение».",
     "name": "Удушение",
     "count": 1
    }
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "С базовой вероятностью 90% может на 1 <turn></turn> х. применить эффект «Слепота».",
+    "name": "Слепота",
+    "count": 1
+   }
+  ],
+  "description": "Магическая атака, направленная на выбранного воина.",
+  "name": "Взрыв духа",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Основная атака"
+   },
+   {
+    "requisite": "Магия"
+   },
+   {
+    "requisite": "Однократная атака"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Ближний бой"
+   },
+   {
+    "requisite": "Однократная атака"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "Один удар в рукопашной.",
-  "name": "Быстрый укол",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Ближний бой"
-   },
-   {
-    "requisite": "Однократная атака"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "Выпускает волшебную стрелу в выбранного вражеского воина.",
+  "name": "Огненные снаряды",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "Магия"
+   },
+   {
+    "requisite": "Основная атака"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   },
+   {
+    "note": "Перезарядка: 2 <turn></turn>"
+   }
+  ],
+  "description": "Исцеляет выбранного дружественного воина на 10 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink> и телепортирует его на соседнюю клетку.",
+  "name": "Космическое избавление",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Поддержка"
+   }
+  ],
+  "accuracy": "Всегда попадает в цель",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "Выпускает в выбранного вражеского воина волшебную стрелу. Ещё один враг в радиусе 3 кл. получает 30% от нанесённого урона.",
+  "name": "Снаряды космоса",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Магия"
+   },
+   {
+    "requisite": "Основная атака"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "Выпускает волшебную стрелу в выбранного вражеского воина.",
   "name": "Кристаллические снаряды",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "С базовой вероятностью 90% может на 1 <turn></turn> х. применить эффект «Слепота».",
-    "name": "Слепота",
-    "count": 1
-   }
-  ],
-  "description": "Магическая атака, направленная на выбранного воина.",
-  "name": "Взрыв духа",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Основная атака"
-   },
-   {
-    "requisite": "Магия"
-   },
-   {
-    "requisite": "Однократная атака"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "С базовой вероятностью 60% может на 3 <turn></turn> х. применить эффект «Горение».",
     "name": "Горение",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "Выпускает волшебную стрелу в выбранного вражеского воина.",
-  "name": "Огненные снаряды",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "Магия"
-   },
-   {
-    "requisite": "Основная атака"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "description": "Выпускает волшебную стрелу в выбранного вражеского воина.",
-  "name": "Снаряды космоса",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "Магия"
-   },
-   {
-    "requisite": "Основная атака"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],

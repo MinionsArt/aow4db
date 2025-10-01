@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>60%の基本確率で1<turn></turn>ターンの間コンストリクトを付与する。</bullet><bullet> マークまたは 減速ユニットに対しては%の確率となる。</bullet></bulletlist>",
+    "description": "60%の基本確率で1<turn></turn>ターンの間コンストリクトを付与する。",
     "name": "コンストリクティング",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>60%の基本確率で1<turn></turn>ターンの間コンストリクトを付与する。</bullet><bullet> マークまたは 減速ユニットに対しては%の確率となる。</bullet></bulletlist>",
+    "description": "60%の基本確率で1<turn></turn>ターンの間コンストリクトを付与する。",
     "name": "コンストリクティング",
     "count": 1
    }
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "1 <turn></turn>ターンの間、90%の確率で盲目効果を与える。",
+    "name": "盲目",
+    "count": 1
+   }
+  ],
+  "description": "対象のユニットへの単発魔法攻撃。",
+  "name": "スピリットブラスト",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "単発近接攻撃。",
-  "name": "高速突き刺し",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "近接"
-   },
-   {
-    "requisite": "単発"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "敵に魔法のボルトを放つ。",
+  "name": "ファイヤーボルト",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "対象の味方ユニットを10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復し、そのユニットを隣接するスペースに転送する。",
+  "name": "コズミックレスキュー",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "標的の敵に魔法ボルトを放射する。3マス以内にいる敵1体にも、ダメージの30%を与える。",
+  "name": "コズミックボルト",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "敵に魔法のボルトを放つ。",
   "name": "クリスタルボルト",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "1 <turn></turn>ターンの間、90%の確率で盲目効果を与える。",
-    "name": "盲目",
-    "count": 1
-   }
-  ],
-  "description": "対象のユニットへの単発魔法攻撃。",
-  "name": "スピリットブラスト",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "基本"
-   },
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "単発"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "3 <turn></turn>ターンの間、60%の確率で火傷効果を与える。",
     "name": "火傷",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "敵に魔法のボルトを放つ。",
-  "name": "ファイヤーボルト",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "description": "敵に魔法のボルトを放つ。",
-  "name": "コズミックボルト",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],

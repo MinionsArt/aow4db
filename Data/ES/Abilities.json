@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>Probabilidad inicial del 60 % de infligir Constricción durante 1 <turn></turn> Turno.</bullet><bullet> % de probabilidad contra unidades con Marca o Ralentización.</bullet></bulletlist>",
+    "description": "Probabilidad inicial del 60 % de infligir Constricción durante 1 <turn></turn> Turno.",
     "name": "Constriñendo^n",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>Probabilidad inicial del 60 % de infligir Constricción durante 1 <turn></turn> Turno.</bullet><bullet> % de probabilidad contra unidades con Marca o Ralentización.</bullet></bulletlist>",
+    "description": "Probabilidad inicial del 60 % de infligir Constricción durante 1 <turn></turn> Turno.",
     "name": "Constriñendo^n",
     "count": 1
    }
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "Probabilidad inicial del 90 % de infligir el estado Ceguera durante 1 <turn></turn> Turnos.",
+    "name": "Ceguera^f",
+    "count": 1
+   }
+  ],
+  "description": "Un solo ataque mágico a la unidad objetivo.",
+  "name": "Explosión espiritual",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Magia"
+   },
+   {
+    "requisite": "Disparo único^m"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Cuerpo a cuerpo^n"
+   },
+   {
+    "requisite": "Disparo único^m"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "Un solo ataque cuerpo a cuerpo.",
-  "name": "Puñalada veloz",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Cuerpo a cuerpo^n"
-   },
-   {
-    "requisite": "Disparo único^m"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "Lanza un rayo mágico contra un enemigo objetivo.",
+  "name": "Rayos ígneos",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "Magia"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   },
+   {
+    "note": "Enfriamiento: 2 <turn></turn>"
+   }
+  ],
+  "description": "La unidad aliada objetivo recupera 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> y la teletransporta a un espacio adyacente.",
+  "name": "Rescate cósmico",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Apoyo"
+   }
+  ],
+  "accuracy": "Siempre acierta",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "Lanza un rayo mágico contra un enemigo objetivo. Un enemigo adicional a 3 casilla(s) recibe un 30 % del daño infligido.",
+  "name": "Rayos cósmicos",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magia"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "Lanza un rayo mágico contra un enemigo objetivo.",
   "name": "Rayos de cristal",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "Probabilidad inicial del 90 % de infligir el estado Ceguera durante 1 <turn></turn> Turnos.",
-    "name": "Ceguera^f",
-    "count": 1
-   }
-  ],
-  "description": "Un solo ataque mágico a la unidad objetivo.",
-  "name": "Explosión espiritual",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Base"
-   },
-   {
-    "requisite": "Magia"
-   },
-   {
-    "requisite": "Disparo único^m"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "Probabilidad inicial del 60 % de infligir el estado Quemadura durante 3 <turn></turn> Turnos.",
     "name": "Quemadura^f",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "Lanza un rayo mágico contra un enemigo objetivo.",
-  "name": "Rayos ígneos",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "Magia"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "description": "Lanza un rayo mágico contra un enemigo objetivo.",
-  "name": "Rayos cósmicos",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "Magia"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],

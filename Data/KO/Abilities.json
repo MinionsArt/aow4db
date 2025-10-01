@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>60%의 기본 확률로 1 <turn></turn> 턴 동안 위축 상태를 유발합니다.</bullet><bullet>상대가 표식 또는 둔화 유닛일 경우 %의 확률로 유발합니다.</bullet></bulletlist>",
+    "description": "60%의 기본 확률로 1 <turn></turn> 턴 동안 위축 상태를 유발합니다.",
     "name": "위축",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>60%의 기본 확률로 1 <turn></turn> 턴 동안 위축 상태를 유발합니다.</bullet><bullet>상대가 표식 또는 둔화 유닛일 경우 %의 확률로 유발합니다.</bullet></bulletlist>",
+    "description": "60%의 기본 확률로 1 <turn></turn> 턴 동안 위축 상태를 유발합니다.",
     "name": "위축",
     "count": 1
    }
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태를 유발합니다.",
+    "name": "실명",
+    "count": 1
+   }
+  ],
+  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
+  "name": "영혼 폭발",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "단발성 근접 공격입니다.",
-  "name": "빠른 찌르기",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "근접"
-   },
-   {
-    "requisite": "단일 사격"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "대상 적에게 마법 화살을 발사합니다.",
+  "name": "화염 화살",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "대상 우호 유닛의 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 10 치유하고 인접 공간으로 순간이동시킵니다.",
+  "name": "우주적 구출",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적에게 마법 화살을 발사합니다. 3 헥스 내 1기의 추가 적에게 피해의 30%를 줍니다.",
+  "name": "우주 화살",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적에게 마법 화살을 발사합니다.",
   "name": "수정 화살",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태를 유발합니다.",
-    "name": "실명",
-    "count": 1
-   }
-  ],
-  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
-  "name": "영혼 폭발",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "기본"
-   },
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "단일 사격"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
     "name": "불붙음",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "대상 적에게 마법 화살을 발사합니다.",
-  "name": "화염 화살",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "description": "대상 적에게 마법 화살을 발사합니다.",
-  "name": "우주 화살",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],

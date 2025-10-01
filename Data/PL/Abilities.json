@@ -3178,7 +3178,7 @@
     "note": "Odnowienie: 3 <turn></turn>"
    }
   ],
-  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy 30 c:m2</bullet><bullet>Otrzymuje 2 razy ochronę przed stanami na 3 <turn></turn>.</bullet></bulletlist>",
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy 30 <hyperlink><temphp></temphp> tymczasowych punket zdrowia</hyperlink></bullet><bullet>Otrzymuje 2 razy ochronę przed stanami na 3 <turn></turn>.</bullet></bulletlist>",
   "name": "Przyłożenie rąk",
   "slug": "lay_on_hands_ability_00000490000028DE",
   "damage": "",
@@ -10051,7 +10051,7 @@
     "count": 1
    },
    {
-    "description": "<bulletlist><bullet>Podstawowe 60% szans na nałożenie uduszona na 1 <turn></turn>.</bullet><bullet>% szans w przypadku jednostek ze stanem oznaczenie lub spowolnienie.</bullet></bulletlist>",
+    "description": "Podstawowe 60% szans na nałożenie uduszona na 1 <turn></turn>.",
     "name": "Duszenie^nn",
     "count": 1
    }
@@ -13588,7 +13588,7 @@
  {
   "modifiers": [
    {
-    "description": "<bulletlist><bullet>Podstawowe 60% szans na nałożenie uduszona na 1 <turn></turn>.</bullet><bullet>% szans w przypadku jednostek ze stanem oznaczenie lub spowolnienie.</bullet></bulletlist>",
+    "description": "Podstawowe 60% szans na nałożenie uduszona na 1 <turn></turn>.",
     "name": "Duszenie^nn",
     "count": 1
    }
@@ -23188,7 +23188,7 @@
     "note": "Odnowienie: 3 <turn></turn>"
    }
   ],
-  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy 30 c:m2</bullet><bullet>Otrzymuje 2 razy ochronę przed stanami na 3 <turn></turn>.</bullet></bulletlist>",
+  "description": "Wybrana jednostka sojusznicza:<bulletlist><bullet>Leczy 30 <hyperlink><temphp></temphp> tymczasowych punket zdrowia</hyperlink></bullet><bullet>Otrzymuje 2 razy ochronę przed stanami na 3 <turn></turn>.</bullet></bulletlist>",
   "name": "Przyłożenie rąk",
   "slug": "lay_on_hands_ability_000003BD00002895",
   "damage": "",
@@ -27241,6 +27241,61 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "Podstawowe 90% szans na nałożenie stanu oślepienie na 1 <turn></turn>.",
+    "name": "Oślepienie^nn",
+    "count": 1
+   }
+  ],
+  "description": "Pojedynczy magiczny atak na wybraną jednostkę.",
+  "name": "Duchowy wybuch",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Podstawa^fn"
+   },
+   {
+    "requisite": "Magia^fn"
+   },
+   {
+    "requisite": "Pojedynczy strzał"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Wręcz^x"
+   },
+   {
+    "requisite": "Pojedynczy strzał"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
   "notes": [
    {
     "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
@@ -27399,25 +27454,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "Pojedynczy cios walki wręcz.",
-  "name": "Szybkie dźgnięcie",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Wręcz^x"
-   },
-   {
-    "requisite": "Pojedynczy strzał"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
-  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -28161,6 +28197,83 @@
  {
   "modifiers": [],
   "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
+  "name": "Ogniste pociski",
+  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "Magia^fn"
+   },
+   {
+    "requisite": "Podstawa^fn"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   },
+   {
+    "note": "Odnowienie: 2 <turn></turn>"
+   }
+  ],
+  "description": "Przywraca wybranej jednostce sojuszniczej 10 <hyperlink>tymczas. pkt. zdrowia</hyperlink> i teleportuje ją na sąsiednie pole.",
+  "name": "Kosmiczny ratunek",
+  "slug": "cosmic_rescue_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Wsparcie^nn"
+   }
+  ],
+  "accuracy": "Zawsze trafia",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "modifiers": [],
+  "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga. Zadaje 30% obrażeń dodatkowemu wrogowi w zasięgu 3 <range></range>.",
+  "name": "Pociski kosmosu",
+  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magia^fn"
+   },
+   {
+    "requisite": "Podstawa^fn"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [],
+  "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
   "name": "Kryształowe pociski",
   "slug": "magic_hero_bolts_(crystal)__ability_000003BD00002895",
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
@@ -28479,42 +28592,6 @@
  {
   "modifiers": [
    {
-    "description": "Podstawowe 90% szans na nałożenie stanu oślepienie na 1 <turn></turn>.",
-    "name": "Oślepienie^nn",
-    "count": 1
-   }
-  ],
-  "description": "Pojedynczy magiczny atak na wybraną jednostkę.",
-  "name": "Duchowy wybuch",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Podstawa^fn"
-   },
-   {
-    "requisite": "Magia^fn"
-   },
-   {
-    "requisite": "Pojedynczy strzał"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "icon": "000003E600000566"
- },
- {
-  "modifiers": [
-   {
     "description": "Podstawowe 60% szans na nałożenie stanu podpalenie na 3 <turn></turn>.",
     "name": "Podpalenie^nn",
     "count": 1
@@ -28642,33 +28719,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004970000004E"
- },
- {
-  "modifiers": [],
-  "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
-  "name": "Ogniste pociski",
-  "slug": "magic_hero_bolts_(base)_ability_000003BD00002895",
-  "damage": "12<damagefire></damagefire> ",
-  "requisites": [
-   {
-    "requisite": "Magia^fn"
-   },
-   {
-    "requisite": "Podstawa^fn"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "icon": "000003BD0000210B"
  },
  {
   "notes": [],
@@ -30074,32 +30124,6 @@
    }
   ],
   "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
-  "name": "Pociski kosmosu",
-  "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
-  "damage": "5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "Magia^fn"
-   },
-   {
-    "requisite": "Podstawa^fn"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD0000210B"
  },
  {
   "modifiers": [],
