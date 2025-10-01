@@ -214,6 +214,9 @@ const dlcMap = {
     ARCHONPROPHECY: {
         src: "/aow4db/Icons/Text/ArchonProphecy.png",
         text: "Part of the Archon Prophecy DLC"
+    }, COSMICWANDERER: {
+        src: "/aow4db/Icons/Text/CosmicWanderer.png",
+        text: "Part of the Cosmic Wanderer DLC"
     }
 };
 
