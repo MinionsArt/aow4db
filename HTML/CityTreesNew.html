@@ -126,7 +126,7 @@
                     null,
                     "town_hall_iv_palace_of_vows"
                 ],
-                 [
+                [
                     "town_hall_ii_great_ziggurat",
                     null,
                     "town_hall_iii_ascended_gardens",
@@ -148,7 +148,7 @@
                 ["mana_forge:reaver", "lodestone_foundry:reaver", null, null],
                 ["library", "arcane_institute", "academy", "scholars_guild"],
                 ["battle_ritual_site:barbarian", "ancestral_seer_hall:barbarian", null, null],
-                 ["magitectural_archive:architect", "architect_institute:architect", null, null],
+                ["magitectural_archive:architect", "architect_institute:architect", null, null],
                 ["store_house", "granary", "estate_hall", "farmers_guild"],
                 ["workers_farmstead:industrious", "grand_mill:industrious", null, null],
                 ["house_hunting_grounds:feudalAristocracy", "serf_quarters:feudalAristocracy", null, null],
@@ -211,7 +211,8 @@
                     null,
                     "monument_of_supremacy:order",
                     null,
-                    "throne_of_insidious_whispers", "house_of_charity"
+                    "throne_of_insidious_whispers",
+                    "house_of_charity"
                 ],
                 [null, null, "temple_of_the_exalted:order", null, "temple_of_the_pyre", "chamber_of_the_rite"]
             ];
@@ -245,6 +246,103 @@
 
             const baseGrid = [["town_hall_i_town_center"], ["throne:throne"]];
 
+           function getCenter(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+        x: rect.left + window.scrollX + rect.width / 2,
+        y: rect.top + window.scrollY + rect.height / 2
+    };
+}
+            
+            function getAnchor(el, side = "center") {
+    const rect = el.getBoundingClientRect();
+    const x = rect.left + window.scrollX;
+    const y = rect.top + window.scrollY;
+
+    switch (side) {
+        case "top":
+            return { x: x + rect.width / 2, y: y };
+        case "bottom":
+            return { x: x + rect.width / 2, y: y + rect.height };
+        case "left":
+            return { x: x, y: y + rect.height / 2 };
+        case "right":
+            return { x: x + rect.width, y: y + rect.height / 2 };
+        default: // center
+            return { x: x + rect.width / 2, y: y + rect.height / 2 };
+    }
+}
+            
+            function generatePathSettings(entry1, entry2, offset) {
+    const p1 = getAnchor(entry1.firstElementChild, "right");  // start on right edge
+    const p2 = getAnchor(entry2.firstElementChild, "left");   // end on left edge
+
+    const midX = p1.x + offset;
+
+    return `
+        M ${p1.x},${p1.y}
+        H ${midX}
+        V ${p2.y}
+        H ${p2.x}
+    `;
+}
+
+            function updateConnector() {
+                const holderSVG = document.getElementById("SVGHolder");
+
+                // optional: clear old paths so they don’t stack up
+                holderSVG.innerHTML = "";
+
+                for (let i = 0; i < jsonCityTreeNodes.length; i++) {
+                    for (let j = 0; j < jsonCityTreeNodes[i].connectTo.length; j++) {
+                       
+                        const affinity = ["materium", "astral", "nature", "chaos", "shadow", "order"];
+                        
+                        if(jsonCityTreeNodes[i].id.startsWith("*")){
+                              // affinity lenses/bolstering
+                            for(const af of affinity){
+                                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                                  path.setAttribute("stroke", "pink");
+                       
+                       
+                        path.setAttribute("fill", "none");
+                        path.setAttribute("stroke-width", "3");
+                                
+                              const  affPath = jsonCityTreeNodes[i].id.replace("*", af + "_")
+                              console.log(affPath);
+                        
+                        const divOG = document.getElementById(affPath);
+                        const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
+
+                        path.setAttribute("d", generatePathSettings(divTO, divOG, (j*5) + 10));
+                        holderSVG.appendChild(path);
+                                
+                            }
+                          
+                            
+                        } else{
+                             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+                        // ✅ must use setAttribute for SVG
+                         path.setAttribute("stroke", "white");
+                        if(jsonCityTreeNodes[i].id.indexOf("wizard_tower")!= -1){
+                             path.setAttribute("stroke", "green");
+                        }
+                       
+                        path.setAttribute("fill", "none");
+                        path.setAttribute("stroke-width", "2");
+                        
+                        const divOG = document.getElementById(jsonCityTreeNodes[i].id);
+                        const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
+
+                        path.setAttribute("d", generatePathSettings(divTO, divOG, (j*5) + 10));
+                        holderSVG.appendChild(path);
+                        }
+
+                    }
+                }
+            }
+
             function HandlePage() {
                 SetUpTreeDivChunks(fortificationsGrid, 622, 0);
                 SetUpTreeDivChunks(basicIncomeGrid, 287, 595);
@@ -258,6 +356,7 @@
 
                 SetCategories();
                 SetLevelUpStuff();
+                updateConnector();
             }
 
             function SetUpTreeDivChunks(list, positionLeft, positionTop) {
@@ -517,7 +616,7 @@
                             spa.innerHTML =
                                 '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
                         }
-                         if (affinity == "architect") {
+                        if (affinity == "architect") {
                             newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/architect.png")';
                             newNodeBackground.style.backgroundRepeat = "no-repeat";
                             newNodeBackground.style.backgroundPositionX = "140px";
@@ -831,7 +930,6 @@
 
     <body>
         <div id="header"></div>
-
         <div id="General" class="w3-container w3-border city">
             <div class="textblocktitle">City Tree</div>
 
@@ -839,6 +937,8 @@
                 <div class="tree-grid" id="treeHoldergeneral"></div>
             </div>
         </div>
+          <svg height="4000px" width="4000px" id="SVGHolder" style="position: absolute; top: 0px; left:1px; z-index: 1"></svg>
+      
     </body>
 </html>
 <style>
@@ -872,9 +972,7 @@
         height: auto;
         width: auto;
         background-color: black;
-        background-image: url(/aow4db/Icons/Interface/citytree.png);
-        background-size: 5584px;
-        background-repeat: no-repeat;
+
         border-width: 5px;
         border-image: url(/aow4db/Icons/9slicetooltip.png);
         border-image-slice: 10 10 10 10 fill;

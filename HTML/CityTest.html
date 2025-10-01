@@ -1,123 +1,106 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
-
-
-<head>
-             <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-
-    <script>
-        $("#body").ready(function() {
-
-            $("#header").load("/aow4db/HTML/header.html", function() {
-                //   CheckData();
-            });
-        });
-
-    </script>
-    <style>
-        .tree-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin: 20px;
-        }
-
-        .tree-node {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
-            width: 120px;
-            text-align: center;
-        }
-
-        .tree-node.hidden {
-            display: none;
-        }
-
-        .tree-connector {
-            width: 2px;
-            height: 40px;
-            background-color: #ccc;
-            margin: 0 auto;
-        }
-
-        .tree-horizontal-connector {
-            width: 40px;
-            height: 2px;
-            background-color: #ccc;
-        }
-
-    </style>
-
-    <script>
-        function unlockBuilding(buildingId) {
-            var building = document.getElementById(buildingId);
-            if (building) {
-                building.classList.remove('hidden');
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
             }
-        }
+            gtag("js", new Date());
 
-    </script>
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <title>Age of Wonders 4 Database - Abilities List</title>
-</head>
+        <script src="/aow4db/Data/Init.js"></script>
+        <script>
 
-<body>
-    <div id="header"></div>
+                        function HandlePage() {
+                           function getCenter(el) {
+                               const rect = el.getBoundingClientRect();
+                               return {
+                                   x: rect.left + rect.width / 2,
+                                   y: rect.top + rect.height / 2
+                               };
+                           }
 
+                           function generatePathSettings(entry1, entry2, offset) {
+                                const p1 = getCenter(entry1);
+                               const p2 = getCenter(entry2);
+                               // Example: simple "elbow" path (horizontal then vertical)
+                               const midX = p1.x + offset;
+                               const path = `
+               M ${p1.x},${p1.y}
+               H ${midX}
+               V ${p2.y}
+               H ${p2.x}
+             `;
+                               return path;
+                           }
 
-    <div class="tree-container">
-        <div class="tree-node" id="building1">
-            Building 1
-            <div class="tree-connector"></div>
-        </div>
-        <div class="tree-horizontal-connector"></div>
-        <div class="tree-node" id="building2">
-            Building 2
-            <div class="tree-connector"></div>
-        </div>
-        <div class="tree-horizontal-connector"></div>
-        <div class="tree-node hidden" id="building3">
-            Building 3
-            <div class="tree-connector"></div>
-        </div>
-        <div class="tree-horizontal-connector"></div>
-        <div class="tree-node hidden" id="building4">
-            Building 4
-            <div class="tree-connector"></div>
-        </div>
-    </div>
+                           function updateConnector() {
 
-    <button onclick="unlockBuilding('building3')">Unlock Building 3</button>
-    <button onclick="unlockBuilding('building4')">Unlock Building 4</button>
+                               const holder = document.getElementById("holder");
+                                 const holderSVG = document.getElementById("holderSVG");
+                                for (let i = 0; i < jsonCityTreeNodes.length; i++) {
+                             
+                                   const newDiv = document.createElement("div");
+                                   newDiv.className = "box";
+                                   newDiv.innerHTML = jsonCityTreeNodes[i].id;
+                                   newDiv.setAttribute("id", jsonCityTreeNodes[i].id);
+                                  for (let j = 0; j < jsonCityTreeNodes[i].connectTo.length; j++) {
+                                        const path = document.createElement("path");
+                                       const div = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id)
+                                          path.setAttribute("d", generatePathSettings(div, newDiv, 100));
+                          holderSVG.appendChild(path);
+                                       
+                                   }
+                                   
+                                   holder.appendChild(newDiv);
+                                  
+                                  
+                                   
 
+                               }
+                           }
 
+                           // Initial render
+                           updateConnector();
 
+                           // Recompute on resize or scroll
+                          // window.addEventListener("resize", updateConnector);
+                          // window.addEventListener("scroll", updateConnector);
+                       }
+        </script>
 
+        <title>Age of Wonders 4 Database - Abilities List</title>
+    </head>
 
+    <body>
+        <div id="holder"></div>
+      
+        <svg id="holderSVG" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+             </svg>
 
-</body>
-
+        <style>
+            .box {
+                position: relative;
+                width: 100px;
+                height: 50px;
+                background: lightblue;
+                border: 1px solid #333;
+                text-align: center;
+                line-height: 50px;
+            }
+        </style>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>

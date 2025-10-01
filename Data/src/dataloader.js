@@ -243,6 +243,7 @@ async function GetAllData(selectedLang) {
         "CombatEnchantments.json",
         "WorldStructures.json",
         "CosmicHappenings.json",
+        "CityTree.json"
     ];
     const fileNames = [
         // ingame dump files
@@ -293,7 +294,8 @@ async function GetAllData(selectedLang) {
             "jsonExtraTooltips",
              "jsonCombatEnchantments",
         "jsonWorldStructures",
-        "jsonCosmicHappenings"
+        "jsonCosmicHappenings",
+            "jsonCityTreeNodes"
         ];
         const targets = [
             "jsonHeroItems",
