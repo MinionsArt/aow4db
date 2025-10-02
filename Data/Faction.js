@@ -1396,6 +1396,7 @@ function findOriginLocName(origin, type) {
         case "Culture":
               case "Class":
               case "SubCulture":
+        case "SubType":
         case "Form": 
            
             if("extraLookup" in origin){
@@ -1403,7 +1404,7 @@ function findOriginLocName(origin, type) {
                 if("extraLookup2" in origin){
                   const valueLookup2 = findBy(jsonExtraFactionCreationFromPOLocalized, "id", origin.extraLookup2);
              
-                newOrigin = valueLookup2.name;
+                newOrigin = valueLookup2.hyperlink  || valueLookup2.name;
             } else{
                 console.log(valueLookup);
                  newOrigin = valueLookup.hyperlink || valueLookup.name;
@@ -1724,11 +1725,12 @@ function SetTomePreview(span, origin) {
         span.innerHTML += '<p  style="color: #97d7a2;>' + '<span style="font-size=20px;">Initial Upgrades:<br></p>';
 
         for (let index = 0; index < locOrigin.initial_upgrades.length; index++) {
+            const struc = GetStructure(locOrigin.initial_upgrades[index].upgrade_slug);
             span.innerHTML +=
                 '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
-                origin.initial_upgrades[index].upgrade_slug +
+                struc.icon +
                 '.png">' +
-                GetStructure(locOrigin.initial_upgrades[index].upgrade_slug).name +
+                struc.name +
                 "</bullet>";
         }
     }
@@ -1743,11 +1745,12 @@ function SetTomePreview(span, origin) {
             ) {
                 // can be summon as well
                 if ("spell_slug" in origin.skills[index]) {
+                    const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
                     span.innerHTML +=
                         '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                        origin.skills[index].spell_slug +
+                        spell.icon +
                         '.png">' +
-                        findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug).name +
+                        spell.name +
                         "</bullet>";
                 } else {
                     span.innerHTML +=
@@ -1776,20 +1779,22 @@ function SetTomePreview(span, origin) {
             }
             // city structure
             else if (origin.skills[index].type.indexOf("Structure") != -1) {
+                const struc = GetStructure(locOrigin.skills[index].upgrade_slug);
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
-                    origin.skills[index].upgrade_slug +
+                    struc.icon +
                     '.png">' +
-                    GetStructure(locOrigin.skills[index].upgrade_slug).name +
+                    struc.name +
                     "</bullet>";
             }
             // province Improvement
             else if (origin.skills[index].type.indexOf("Province") != -1) {
+                const struc = GetStructure(locOrigin.skills[index].upgrade_slug);
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
-                    origin.skills[index].upgrade_slug +
+                    struc.icon +
                     '.png">' +
-                    GetStructure(locOrigin.skills[index].upgrade_slug).name +
+                    struc.name +
                     "</bullet>";
             }
             // empire upgrades
@@ -1804,11 +1809,12 @@ function SetTomePreview(span, origin) {
             }
             // normal spell
             else {
+                const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                    origin.skills[index].spell_slug +
+                    spell.icon +
                     '.png">' +
-                    findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug).name +
+                    spell.name +
                     "</bullet>";
             }
             //

@@ -3873,7 +3873,13 @@ function showTome(a, divOrigin) {
     }
 
     for (const skill of tomeEN.skills) {
+        // this one doesnt have a slug for some reason, architect spell
+          if (skill.name === "Conjure Elemental") {
+              
+            addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
+        }
         if ("spell_slug" in skill) {
+            console.log(skill.spell_slug);
             addTomeSkillCard(skillHolder, (el) => showSpell(skill.spell_slug, false, el));
         }
         if ("unit_slug" in skill) {
