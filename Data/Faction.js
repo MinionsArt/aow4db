@@ -1404,7 +1404,7 @@ function findOriginLocName(origin, type) {
                 if("extraLookup2" in origin){
                   const valueLookup2 = findBy(jsonExtraFactionCreationFromPOLocalized, "id", origin.extraLookup2);
              
-                newOrigin = valueLookup2.hyperlink  || valueLookup2.name;
+                newOrigin = valueLookup2.hyperlink  || valueLookup2.name || valueLookup2.title;
             } else{
                 console.log(valueLookup);
                  newOrigin = valueLookup.hyperlink || valueLookup.name;
