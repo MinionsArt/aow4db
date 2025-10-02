@@ -2592,7 +2592,7 @@ function GetNextSetOfTomes() {
         for (i = 0; i < jsonTomes.length; i++) {
             if (jsonTomes[i].tier === 3) {
                 // 3 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 2)) {
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 2) || checkEmpireOfCosmos(1)) {
                     if (!isInArray(currentTomeList, jsonTomes[i])) {
                         listOfNextTomes.push(jsonTomes[i]);
                     }
@@ -2600,12 +2600,12 @@ function GetNextSetOfTomes() {
             }
         }
     }
-    if (currentTomeList.length > 5) {
+    if (currentTomeList.length > 5 ) {
         // allow tier 4 tomes
         for (i = 0; i < jsonTomes.length; i++) {
             if (jsonTomes[i].tier === 4) {
                 // 6 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 5)) {
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 5) || checkEmpireOfCosmos(2)) {
                     if (!isInArray(currentTomeList, jsonTomes[i])) {
                         listOfNextTomes.push(jsonTomes[i]);
                     }
@@ -2618,7 +2618,7 @@ function GetNextSetOfTomes() {
         for (i = 0; i < jsonTomes.length; i++) {
             if (jsonTomes[i].tier === 5) {
                 // 8 affinity
-                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 7)) {
+                if (GetAffinityMatches(currentAffinityTotal, jsonTomes[i].affinities, 7) || checkEmpireOfCosmos(3)) {
                     // check if we dont already have a t5, we can only have 1
                     if (!checkIfT5(currentTomeList)) {
                         if (!isInArray(currentTomeList, jsonTomes[i])) {
@@ -2631,6 +2631,42 @@ function GetNextSetOfTomes() {
     }
 
     return listOfNextTomes;
+}
+
+function checkEmpireOfCosmos(tierCheck){
+    // no empire of cosmos here
+    if(currentSociety1.id != "empire_of_the_cosmos" && currentSociety2.id != "empire_of_the_cosmos" ){
+        console.log("no empire");
+        return false;
+    }
+    
+     if( hasAllAffinitiesForEmpireOfCosmos(tierCheck)){
+         return true;
+     } else{
+         return false;
+     }
+    
+}
+    
+    function hasAllAffinitiesForEmpireOfCosmos(number) {
+  const html = document.getElementById("currentAffinity").innerHTML;
+
+  // List of affinity tags
+  const affinities = [
+    "empirematter",
+    "empirearcana",
+    "empirechaos",
+    "empirenature",
+    "empireorder",
+    "empireshadow"
+  ];
+
+  // Check if each affinity has a number >= 1 after it
+  return affinities.every(affinity => {
+    const regex = new RegExp(`<${affinity}big></${affinity}big>\\s*(\\d+)`);
+    const match = html.match(regex);
+    return match && parseInt(match[1], 10) >= number;
+  });
 }
 
 function GetAffinityMatches(affinityTotal, substringToCount, number) {
