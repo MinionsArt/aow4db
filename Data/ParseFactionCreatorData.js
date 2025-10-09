@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const filePath = "EN/BuilderLookup.json";
+const filePath = "GEN/BuilderLookup.json";
 
 // Read the existing JSON file
 let existingData;
@@ -32,7 +32,7 @@ try {
 }
 
 // get the traits, tomes, etc
-const testFilePathTraits2 = "EN/FactionCreation.json";
+const testFilePathTraits2 = "GEN/FactionCreation.json";
 // read the source data list to check if theres anything new to add
 let dataToCheck2;
 try {

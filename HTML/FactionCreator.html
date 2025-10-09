@@ -380,6 +380,43 @@
         <script>
             const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
             const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
+            
+            const placeHolderTomes = [
+    {
+  "affinities": "1 <empirechaos></empirechaos> Empire Order Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
+   "gameplay_description": "For Theorycrafting",
+  "id": "tome_of_the_blood_rite",
+  "DLC": "THRONESOFBLOOD ",
+  "lore_author": "",
+  "name": "Tome of the Blood Rite",
+  "tier": 1,
+  "icon": "0000049700002A88",
+  "skills": [
+  ]
+ }, {
+  "affinities": "2 <empireshadow></empireshadow> Empire Shadow Affinity",
+   "gameplay_description": "For Theorycrafting",
+  "id": "tome_of_torment",
+  "DLC": "THRONESOFBLOOD ",
+  "lore_author": "",
+  "name": "Tome of Torment",
+  "tier": 3,
+  "icon": "0000049700002A88",
+  "skills": [
+  ]
+ },{
+  "affinities": "1 <empirechaos></empirechaos> Empire Order Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
+   "gameplay_description": "For Theorycrafting",
+  "id": "tome_of_the_crimson_reign",
+  "DLC": "THRONESOFBLOOD ",
+  "lore_author": "",
+  "name": "Tome of the Crimson Reign",
+  "tier": 4,
+  "icon": "0000049700002A88",
+  "skills": [
+  ]
+ }
+];
 
           
             function HandlePage() {
@@ -390,6 +427,8 @@
                //         document.getElementById("shareSection").style.display= "none";
                //     document.getElementById("buildsSubmitHolder").style.display = "none";
                // }
+                
+                   jsonTomes = [...jsonTomes, ...placeHolderTomes];
                 SetRandomStart();
 
                 document.getElementById("YourKey").textContent = getOrCreateUserEditKey();

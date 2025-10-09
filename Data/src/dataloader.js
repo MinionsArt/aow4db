@@ -217,6 +217,9 @@ const dlcMap = {
     }, COSMICWANDERER: {
         src: "/aow4db/Icons/Text/CosmicWanderer.png",
         text: "Part of the Cosmic Wanderer DLC"
+    },THRONESOFBLOOD: {
+        src: "/aow4db/Icons/Text/ThronesOfBlood.png",
+        text: "Part of the Thrones of Blood DLC"
     }
 };
 

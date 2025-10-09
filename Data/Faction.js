@@ -1,8 +1,10 @@
 searchParams = new URLSearchParams(window.location.search);
 searchKeyword = searchParams.get("u");
-var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal"];
+var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark"];
 
 var ListOfSubsocietyHolders = ["Vision of Promise", "Vision of Ruin", "Vision of Destiny"];
+
+
 
 var currentOrigin = "";
 var currentTome = "";
@@ -44,6 +46,7 @@ var listOfPantheonTraits = [
     "merciless_slavers__evilact__",
     "relentless_crusaders__goodact__",
     "silver_tongued",
+    
     "perfectionist_artisans"
 ];
 
@@ -302,7 +305,7 @@ function selectOrigin(origin, type) {
             break;
         case "Origin":
             currentOrigin = origin;
-            if (origin.name != "Dragon Lord" && origin.name != "Giant King") {
+            if (origin.name != "Dragon Lord" && origin.name != "Giant King" && origin.name != "Elder Vampire") {
                 currentSubType = "";
             } else {
                 let newBit;
@@ -316,9 +319,14 @@ function selectOrigin(origin, type) {
                         if (jsonFactionCreation[index].id === "rock_giant_king") {
                             newBit = jsonFactionCreation[index];
                         }
+                    } else if (origin.name == "Elder Vampire") {
+                        if (jsonFactionCreation[index].id === "elder_vampire_pureblood") {
+                            newBit = jsonFactionCreation[index];
+                        }
                     }
                 }
-                console.log(newBit.name);
+               //
+               //  console.log(newBit.name);
                 currentSubType = newBit;
             }
             selectOrigin(currentSubType, "SubType");
@@ -378,7 +386,7 @@ function selectOrigin(origin, type) {
                     }
                 }
 
-                console.log(newBit.name);
+               // console.log(newBit.name);
                 currentSubCulture = newBit;
             }
             selectOrigin(currentSubCulture, "SubCulture");
@@ -971,13 +979,12 @@ function SetupButtons(evt, type) {
         /*  case "Signature":
             list = GetAllSignatureSkills();
             if (currentSignatureSkills.length == 4) {
-                console.log("more than 4");
+               
                 return;
             }
             break;*/
     }
 
-    // console.log(currentChoice);
     // List of origin options
 
     // Create origin buttons dynamically from the list
@@ -995,12 +1002,11 @@ function SetupButtons(evt, type) {
             // hook into options thingie
             originButtonNew.className = "list-button";
 
-            // console.log(origin.point_cost + " " + getPoints());
-
+          
             if (isInArray(currentFormTraitList, origin)) {
                 originButtonNew.classList.toggle("selected");
 
-                console.log(currentFormTraitList + " " + origin);
+              
             }
 
             if (origin.point_cost + getPoints() > 5) {
@@ -1298,7 +1304,7 @@ function ClearAffinityExtraTags(input) {
 function duplicateTags(inputString) {
     const tagPattern = /(\d+)\s+<([^>]+)>/g;
 
-    //console.log(inputString);
+ 
 
     let result = "";
     let match;
@@ -1323,7 +1329,7 @@ function duplicateTags(inputString) {
 function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
 
-    if (type === "SubType" && !["Dragon Lord", "Giant King"].includes(currentOrigin.name)) return;
+    if (type === "SubType" && !["Dragon Lord", "Giant King", "Elder Vampire"].includes(currentOrigin.name)) return;
 
     if (type === "SubCulture" && !ListOfSubcultureHolders.includes(currentCulture.name)) return;
 
@@ -1406,15 +1412,24 @@ function findOriginLocName(origin, type) {
              
                 newOrigin = valueLookup2.hyperlink  || valueLookup2.name || valueLookup2.title;
             } else{
-                console.log(valueLookup);
+              
                  newOrigin = valueLookup.hyperlink || valueLookup.name;
             }
                
+            }else{
+                newOrigin =  origin.name;
             }
+              
             break;
 
         case "Tome":
-            newOrigin = jsonTomesLocalized.find((entry) => entry.resid === origin.resid).name;
+            
+            const tomeNameLoc = jsonTomesLocalized.find((entry) => entry.resid === origin.resid);
+            if(tomeNameLoc == undefined ){
+                newOrigin = origin.name;
+            } else{
+                newOrigin = tomeNameLoc.name;
+            }
             //newOrigin = jsonTomes.find((entry) => entry.resid === origin.resid);
             break;
 
@@ -1703,7 +1718,11 @@ function GetClassFromWeaponId(id) {
 
 function SetTomePreview(span, origin) {
     // get loc version?
-    const locOrigin = findBy(jsonTomesLocalized, "resid", origin.resid);
+    let locOrigin = findBy(jsonTomesLocalized, "resid", origin.resid);
+    // if not found, use og
+    if(locOrigin == undefined){
+        locOrigin = origin;
+    }
 
     span.innerHTML =
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + locOrigin.name.toUpperCase() + "</p>";
@@ -1949,7 +1968,7 @@ function CollectAllPartsForOverview(fromload) {
                 listOfAllCurrentPassivesSlugs.push(ExtraTomelist[index].passives[q], ExtraTomelist[index]);
             }
         }
-        console.log(listOfAllCurrentPassivesSlugs);
+      
     }
     ShowPassivesOverview(listOfAllCurrentPassivesSlugs);
     ShowUnitsOverview(listOfAllCurrentUnitSlugs);
@@ -1962,7 +1981,7 @@ function CollectAllPartsForOverview(fromload) {
     ShowSiegeProjectsOverview(listOfAllCurrentSiegeProjectsSlugs);
     var parentDiv = document.getElementById("mainoverview");
 
-    // console.log("here");
+   
     // reset highlights
     if (fromload == false) {
         ResetHighlights();
@@ -2161,7 +2180,7 @@ function GetColors(affinity) {
             colors.push("#e39954");
         }
     }
-    // console.log(colors);
+   
     return colors;
 }
 
@@ -2441,7 +2460,7 @@ function ShowSPIOverview(list) {
             if (jsonStructureUpgrades[i].id == structureId) {
                 // get loc name
                 const loc = findBy(jsonStructureUpgradesLocalized, "resid", jsonStructureUpgrades[i].resid);
-                console.log(loc);
+              
                 const spell = document.createElement("button");
 
                 const Color = GetColors(list[index + 1].affinities);
@@ -2636,7 +2655,7 @@ function GetNextSetOfTomes() {
 function checkEmpireOfCosmos(tierCheck){
     // no empire of cosmos here
     if(currentSociety1.id != "empire_of_the_cosmos" && currentSociety2.id != "empire_of_the_cosmos" ){
-        console.log("no empire");
+      
         return false;
     }
     
@@ -2676,7 +2695,7 @@ function GetAffinityMatches(affinityTotal, substringToCount, number) {
         var empireType = substringToCount.split(" ")[1];
 
         affinityTotal = affinityTotal.replaceAll("  ", " ");
-        //   console.log(empireType + " input :" + inputString);
+     
 
         // Use a regular expression to find the tag and extract the number
         const match = affinityTotal.match(new RegExp(`${empireType}\\s*(\\d+)`));
@@ -2702,7 +2721,7 @@ function GetAffinityMatches(affinityTotal, substringToCount, number) {
             // Use a regular expression to find the tag and extract the number
             const match = affinityTotal.match(new RegExp(`${empireType}\\s*(\\d+)`));
             numberMatches.push(match ? parseInt(match[1]) : 0);
-            // console.log(match);
+          
         }
 
         var finalNumber = 0;
@@ -2760,7 +2779,7 @@ function GetAllFormTraitsList() {
             listOfAllOrigins.push(jsonFactionCreation2[i]);
         }
     }
-    //console.log(listOfAllOrigins);
+  
     listOfAllOrigins.sort((a, b) => a.point_cost - b.point_cost);
 
     return listOfAllOrigins;
@@ -2822,6 +2841,7 @@ function GetAllSubCultureSetups() {
     }
 
     listOfAllSubCultTypes.sort((a, b) => a.id - b.id);
+    console.log(listOfAllSubCultTypes);
     return listOfAllSubCultTypes;
 }
 
@@ -2906,12 +2926,9 @@ function GetRandomEntry(type) {
             var list = GetAllSubTypes(currentOrigin);
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            if (currentOrigin.name != "Dragon Lord" && currentOrigin.name != "Giant King") {
+            if (currentOrigin.name != "Dragon Lord" && currentOrigin.name != "Giant King" && currentOrigin.name != "Elder Vampire") {
                 randomOrigin = "";
             }
-            // while (incompatibleCheck("Loadout", randomOrigin) === true) {
-            //   randomOrigin = list[Math.floor(Math.random() * list.length)];
-            //}
             break;
         case "SubCulture":
             var list = GetAllSubCultureSetups(currentOrigin);
@@ -3496,7 +3513,7 @@ function reversLookUp(code) {
     // subculture
     if (currentCultureSplit[1] != undefined) {
         // subculture here
-        console.log("here");
+      //  console.log("here");
         var subcultureNo = jsonBuilderLookUp[hexToDecimal(currentCultureSplit[1])].id;
 
         for (let index = 0; index < jsonFactionCreation.length; index++) {

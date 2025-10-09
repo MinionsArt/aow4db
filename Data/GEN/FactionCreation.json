@@ -70,6 +70,7 @@
         "name": "Champion",
         "extraLookup": "TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@RACIAL_LEADER"
     },
+    
     {
         "type": "Ruler Origin",
         "id": "wizard_king",
@@ -84,6 +85,14 @@
         "icon": "dragon_lord",
         "DLC": "DRAGONLORDS ",
         "extraLookup": "DLC@DRAGONLORDS@TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@DRAGON_LEADER"
+    },
+     {
+        "type": "Ruler Origin",
+        "id": "elder_vampire",
+        "icon": "elder_vampire",
+        "name": "Elder Vampire",
+         "DLC" : "THRONESOFBLOOD ",
+        "description": "For Theorycrafting"
     },
     {
         "type": "Ruler Origin",
@@ -108,13 +117,14 @@
         "id": "feudal",
         "icon": "feudal",
         "name": "Feudal",
+         "affinity": "<empireorder></empireorder>",
         "extraLookup": "CULTURE_FEUDAL@FEUDAL"
     },
     {
         "type": "SubCulture",
         "id": "feudal_monarchy",
         "icon": "feudal_monarchy",
-        "affinity": "<empireorder></empireorder>,<empirematter></empirematter>",
+        "affinity": "<empirematter></empirematter>",
         "requirement": "Feudal",
         "name": "Feudal - Monarchy",
         "extraLookup": "CULTURE_FEUDAL@SUBCULTURE@MONARCHY"
@@ -123,7 +133,7 @@
         "type": "SubCulture",
         "id": "feudal_aristocracy",
         "icon": "feudal_aristocracy",
-        "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
+        "affinity": "<empirenature></empirenature>",
         "name": "Feudal - Aristocracy",
         "requirement": "Feudal",
         "extraLookup": "CULTURE_FEUDAL@SUBCULTURE@ARISTOCRACY"
@@ -163,14 +173,14 @@
         "type": "Culture",
         "id": "dark",
         "icon": "dark",
-        "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
         "name": "Dark",
+        "affinity": "<empireshadow></empireshadow>",
         "extraLookup": "CULTURE_DARK@DARK"
     },
     {
         "type": "SubCulture",
         "id": "mystic_school_of_attunement",
-        "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
+        "affinity": "<empirearcana></empirearcana>",
         "name": "Mystic - School of Attunement",
         "icon": "mystic_school_of_attunement",
         "requirement": "Mystic",
@@ -186,6 +196,7 @@
         "id": "mystic",
         "name": "Mystic",
         "icon": "mystic",
+         "affinity": "<empirearcana></empirearcana>",
         "extraLookup": "CULTURE_MYSTIC@MYSTIC",
         "incompatible": [
             {
@@ -196,7 +207,7 @@
     {
         "type": "SubCulture",
         "id": "mystic_school_of_potential",
-        "affinity": "<empirearcana></empirearcana>,<empireshadow></empireshadow>",
+        "affinity": "<empireshadow></empireshadow>",
         "name": "Mystic - School of Potential",
         "icon": "mystic_school_of_potential",
         "requirement": "Mystic",
@@ -210,7 +221,7 @@
     {
         "type": "SubCulture",
         "id": "mystic_school_of_summoning",
-        "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
+        "affinity": "<empirearcana></empirearcana>",
         "name": "Mystic - School of Summoning",
         "icon": "mystic_school_of_summoning",
         "requirement": "Mystic",
@@ -227,12 +238,13 @@
         "name": "Oathsworn",
         "icon": "oathsworn",
         "DLC": "WAYSOFWAR ",
+        "affinity": "<empireorder></empireorder>",
         "extraLookup": "DLC@WAYSOFWAR@CULTURE_OATHSWORN"
     },
     {
         "type": "SubCulture",
         "id": "oathsworn_oath_of_strife",
-        "affinity": "<empireorder></empireorder>,<empirechaos></empirechaos>",
+        "affinity": "<empirechaos></empirechaos>",
         "name": "Oathsworn - Oath of Strife",
         "icon": "oathsworn_oath_of_strife",
         "DLC": "WAYSOFWAR ",
@@ -250,7 +262,7 @@
     {
         "type": "SubCulture",
         "id": "oathsworn_oath_of_righteousness",
-        "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
+        "affinity": "<empireorder></empireorder>",
         "name": "Oathsworn - Oath of Righteousness",
         "icon": "oathsworn_oath_of_righteousness",
         "DLC": "WAYSOFWAR ",
@@ -271,7 +283,7 @@
     {
         "type": "SubCulture",
         "id": "oathsworn_oath_of_harmony",
-        "affinity": "<empireorder></empireorder>,<empirenature></empirenature>",
+        "affinity": "<empirenature></empirenature>",
         "name": "Oathsworn - Oath of Harmony",
         "icon": "oathsworn_oath_of_harmony",
         "DLC": "WAYSOFWAR ",
@@ -637,6 +649,22 @@
         "DLC": "GIANTKINGS ",
         "extraLookup": "DLC@GIANTKINGS@TRAITS_BACKGROUND_CHARACTERS@MAIN_TYPE@GIANT_KING_FROST"
     },
+     {
+        "type": "SubType",
+        "id": "elder_vampire_pureblood",
+        "name": "Elder Vampire Pureblood",
+        "requirement": "Elder Vampire",
+        "DLC": "THRONESOFBLOOD ",
+         "description": "For Theorycrafting"
+    },
+     {
+        "type": "SubType",
+        "id": "elder_vampire_hybrid",
+        "name": "Elder Vampire Hybrid",
+        "requirement": "Elder Vampire",
+        "DLC": "THRONESOFBLOOD ",
+         "description": "For Theorycrafting"
+    },
     {
         "type": "SubCulture",
         "id": "architects_of_shadow",
@@ -690,6 +718,22 @@
         "requirement": "Architect",
         "DLC": "ARCHONPROPHECY ",
         "description": ""
+    },
+    {
+        "type": "SubCulture",
+        "id": "cult_of_death",
+        "name": "Cult of Death",
+       "affinity": "<empirenature></empirenature>",
+        "requirement": "Dark",
+        "description": "For Theorycrafting, units/spells not adjusted"
+    },
+     {
+        "type": "SubCulture",
+        "id": "cult_of_tyranny",
+        "name": "Cult of Tyranny",
+       "affinity": "<empireshadow></empireshadow>",
+        "requirement": "Dark",
+        "description": "For Theorycrafting, units/spells not adjusted"
     },
     {
         "type": "SubSociety",
