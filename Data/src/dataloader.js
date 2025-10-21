@@ -224,11 +224,11 @@ const dlcMap = {
 };
 
 async function GetAllData(selectedLang) {
-    const basePathEN = `/aow4db/Data/EN/`;
+    let basePathEN = `/aow4db/Data/EN/`;
 
-    //if(selectedLang == "Beta"){
-    //         basePathEN = `/aow4db/Data/Beta/`;
-    //  }else{
+    if(selectedLang == "BETA"){
+            basePathEN = `/aow4db/Data/BETA/`;
+     }
 
     const basePathGen = `/aow4db/Data/GEN/`;
     // }
@@ -394,11 +394,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-        //  if (storedSettings.showBeta) {
-        //      await GetAllData("Beta");
-        //  } else {
+          if (storedSettings.showBeta) {
+             await GetAllData("BETA");
+         } else {
         await GetAllData(storedSettings.language);
-        //}
+        }
 
         AddExtraData();
 

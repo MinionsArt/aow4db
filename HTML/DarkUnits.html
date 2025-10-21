@@ -16,9 +16,28 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
       <script src="/aow4db/Data/Init.js"></script>
         <script>
+            
+              const listOfSub = ["Cult of Death", "Cult of Tyranny"];
+            const listOfIcons = ["dark_cult_of"];
+             const listOfName = ["Cult of "];
+          
+
             function HandlePage() {
-              let unitarray =  GetCultureUnitsOf("Dark");
+                // create parts
+                
+                if(showBetaTooltip.checked){
+                     CreateParts(listOfSub, listOfIcons, listOfName);
+
+                listOfSub.forEach((sub, i) => {
+                    const unitarray = GetCultureUnitsOf("Dark", sub);
+                    console.log(unitarray);
+                    SetButtonsAndDivs(unitarray, "buttonHolder" + i, "unit", "dataHolder" + i, sub);
+                });
+                } else{
+                     let unitarray =  GetCultureUnitsOf("Dark");
                 SetButtonsAndDivs(unitarray, undefined, "unit");
+                }
+               
                 SetLevelUpStuff();
             }
         </script>
@@ -38,6 +57,8 @@
             <div id="buttonHolder" class="w3-bar w3-black"></div>
             <div id="dataHolder" style="margin-top: -250px"></div>
         </div>
+        
+        <div id="presetPoint"></div>
     </body>
 </html>
 <footer>

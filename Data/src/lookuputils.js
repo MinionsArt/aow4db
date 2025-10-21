@@ -390,6 +390,53 @@ function ConvertSpawnTable(input) {
     return bulletList;
 }
 
+  function CreateParts(subcultures, icons, names) {
+                const presetPoint = document.getElementById("presetPoint");
+
+                // Create the main holder div for buttons
+                const holder = document.createElement("div");
+                holder.className = "subcultureHolder";
+
+                // Generate the subculture buttons
+                subcultures.forEach((sub) => {
+                    const button = document.createElement("button");
+                    button.className = "subscultureButton";
+                    button.setAttribute("onclick", `showSubDiv(event,'${sub}')`);
+
+                    const img = document.createElement("img");
+                    img.src = `/aow4db/Icons/FactionCreation/${icons}${sub.toLowerCase()}.png`;
+                    img.width = 50;
+
+                    const span = document.createElement("span");
+                    span.className = "subCultureName";
+                    span.id = `subCultureName${sub}`;
+                    span.textContent = `${names}${sub}`;
+
+                    button.appendChild(img);
+                    button.appendChild(span);
+                    holder.appendChild(button);
+                });
+
+                // Append the button holder to the body
+                presetPoint.append(holder);
+
+                // Generate subDiv sections
+                subcultures.forEach((sub, i) => {
+                    const div = document.createElement("div");
+                    div.className = "subDiv";
+                    div.id = sub;
+
+                    div.innerHTML = `
+    <div class="w3-container">
+      <div id="buttonHolder${i}" class="w3-bar w3-black"></div>
+      <div id="dataHolder${i}" class="dataholder" style="margin-top:-250px"></div>
+    </div>
+  `;
+
+                    presetPoint.append(div);
+                });
+            }
+
 
 function addSpoiler(text) {
     const span = document.createElement("span");

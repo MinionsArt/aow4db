@@ -3062,7 +3062,7 @@ function getSummonedUpkeep(tier, lowMaintenance) {
     return lowMaintenance ? ReduceUpkeepPercentage(base, lowMaintenance) : base;
 }
 
-function createUnitTypeIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText) {
+function createFoundUnitInHereIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText, overIcon) {
     let btn = document.createElement("DIV");
     btn.className = "unittype_icon";
     let imag = document.createElement("IMG");
@@ -3075,6 +3075,17 @@ function createUnitTypeIcon(parent, imgSrc, imgFallbackSrc, link, tooltipText) {
     imag.setAttribute("height", "60");
 
     btn.appendChild(imag);
+    
+   /* if(overIcon != undefined){
+        // add icon type
+         let imagOver = document.createElement("IMG");
+          imagOver.setAttribute("src", overIcon);
+          imagOver.setAttribute("width", "60");
+    imagOver.setAttribute("height", "60");
+        btn.appendChild(imagOver);
+        
+        
+    }*/
     let wrap = btn.innerHTML;
     btn.innerHTML = `<a href="${link}" target="_blank">${wrap}</a>`;
 
@@ -3096,7 +3107,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/Text/${culture}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/${capitalized}Units.html`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let subculture = "";
@@ -3112,7 +3123,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/Text/${subculture}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         //  const link = `/aow4db/HTML/${capitalized}Units.html`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, null, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, null, tooltipText);
     }
 
     let tomes = CheckIfInTomes(unitData.id);
@@ -3121,7 +3132,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/TomeIcons/${tomes.id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?tome=${tomes.id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let spells = CheckIfInSpells(unitData.id, name);
@@ -3135,7 +3146,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let siege = CheckIfInSiege(name);
@@ -3144,7 +3155,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/SiegeProjectIcons/${siege.icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?siege=${siege.id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let struc = CheckIfInStructure(name);
@@ -3153,7 +3164,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc.id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?structure=${struc.id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let wonder = CheckIfInAncientWonder(unitData.id);
@@ -3171,7 +3182,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/StructurePics/${wonder.id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?wonder=${wonder.id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText, wonder);
     }
 
     let tree = CheckIfInEmpireTree(name);
@@ -3180,7 +3191,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree.id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/EmpireTree.html`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let unitAbility = CheckIfFromAbility(name);
@@ -3192,7 +3203,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
                 : `/aow4db/Icons/HeroSkillIcons/${unitAbility[1].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${unitAbility[0].id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let heroSkill = CheckIfFromHeroSkill(name);
@@ -3204,7 +3215,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
                 : `/aow4db/Icons/HeroSkillIcons/${heroSkill[1].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?skill=${heroSkill[1].id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let governance = CheckIfFromGovernance(name);
@@ -3213,7 +3224,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/GovernanceIcons/${governance.icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?governance=${governance.id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let evolve = CheckIfEvolveTarget(unitData.id);
@@ -3222,7 +3233,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/UnitIcons/evolve.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${evolve.id}`;
-        createUnitTypeIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 }
 

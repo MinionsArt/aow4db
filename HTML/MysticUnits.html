@@ -1,108 +1,56 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
-
-
-<head>
-             <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
-<link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script src="/aow4db/Data/Init.js"></script>
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
         <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-        function HandlePage() {
-            
-               let unitarray =  GetCultureUnitsOf("Mystic", "Attunement");
-              let unitarray2 =  GetCultureUnitsOf("Mystic", "Potential");
-              let unitarray3 =  GetCultureUnitsOf("Mystic", "Summoning");
-            
-            SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Attunement");
-            SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Potential");
-            SetButtonsAndDivs(unitarray3, "buttonHolder3", "unit", "dataHolder3", "Summoning");
-            SetLevelUpStuff();
-        }
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    </script>
+        <script src="/aow4db/Data/Init.js"></script>
+        <script>
+            const listOfSub = ["Attunement", "Potential", "Summoning"];
+            const listOfIcons = ["mystic_school_of_"];
+             const listOfName = ["School of "];
+          
 
+            function HandlePage() {
+                // create parts
+                CreateParts(listOfSub, listOfIcons, listOfName);
 
-    <title>Age of Wonders 4 Database - Mystic Units</title>
-</head>
+                listOfSub.forEach((sub, i) => {
+                    const unitarray = GetCultureUnitsOf("Mystic", sub);
+                    SetButtonsAndDivs(unitarray, "buttonHolder" + i, "unit", "dataHolder" + i, sub);
+                });
+                SetLevelUpStuff();
+            }
+        </script>
 
-<body>
-    <div id="header"></div>
+        <title>Age of Wonders 4 Database - Mystic Units</title>
+    </head>
 
-    <div class="textblocktitle">
-        <img src="/aow4db/Icons/Text/mystic.png" height="40px"> Mystic Culture Units <img src="/aow4db/Icons/Text/mystic.png" height="40px">
-    </div>
+    <body>
+        <div id="header"></div>
 
-
-    <div class="subcultureHolder">
-        <button onclick="showSubDiv(event,'Attunement')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_attunement.png width="50px">
-            <span class="subCultureName" id="subCultureNameAttunement">School of Attunement</span>
-        </button>
-        <button onclick="showSubDiv(event,'Potential')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_potential.png width="50px">
-            <span class="subCultureName" id="subCultureNamePotential">School of Potential</span>
-        </button>
-        <button onclick="showSubDiv(event,'Summoning')" class="subscultureButton"><img src=/aow4db/Icons/FactionCreation/mystic_school_of_summoning.png width="50px">
-            <span class="subCultureName" id="subCultureNameSummoning">School of Summoning</span>
-        </button>
-
-
-    </div>
-
-    <div class="subDiv" id="Attunement">
-        <div class="w3-container">
-            <div id="buttonHolder1" class="w3-bar w3-black">
-
-            </div>
-            <div id="dataHolder1" class="dataholder" style="margin-top:-250px">
-            </div>
-
-
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/mystic.png" height="40px" /> Mystic Culture Units
+            <img src="/aow4db/Icons/Text/mystic.png" height="40px" />
         </div>
-    </div>
-    <div class="subDiv" id="Potential">
-        <div class="w3-container">
-            <div id="buttonHolder2" class="w3-bar w3-black">
 
-            </div>
-            <div id="dataHolder2" class="dataholder" style="margin-top:-250px">
-            </div>
-
-
-        </div>
-    </div>
-    <div class="subDiv" id="Summoning">
-        <div class="w3-container">
-            <div id="buttonHolder3" class="w3-bar w3-black">
-
-            </div>
-            <div id="dataHolder3" class="dataholder" style="margin-top:-250px">
-            </div>
-
-
-        </div>
-    </div>
-
-
-
-
-</body>
-
-
-
+        <div id="presetPoint"></div>
+    </body>
 </html>
 <footer>
-    <br>
-    <br>
+    <br />
+    <br />
 </footer>
