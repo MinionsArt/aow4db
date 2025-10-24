@@ -9494,10 +9494,10 @@
     "count": 1
    }
   ],
-  "description": "Displace and replace the target enemy unit.",
+  "description": "Jump onto the target enemy unit, Knocking them back then enter Defense Mode.",
   "name": "Death Stalk",
   "slug": "death_stalk_unit_property_ability_0000048D00001A25_0000048d000019d6",
-  "damage": "25<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Single Shot"
@@ -10031,7 +10031,7 @@
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d000011e2",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -10066,7 +10066,7 @@
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d00001220",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -10138,7 +10138,7 @@
     "note": "Cooldown: 0 <turn></turn>"
    }
   ],
-  "description": "Link with the target friendly Magic Origin, while active:<bulletlist><bullet>Target gains +1 <hyperlink>Retaliation Attack</hyperlink>, +30 <hyperlink><accuracy></accuracy> Accuracy</hyperlink>, and Frenzy.</bullet></bulletlist>",
+  "description": "Link with the target friendly Magic Origin, while active:<bulletlist><bullet>Target inflicts +20% damage.</bullet><bullet>At the start of their <turn></turn> Turn, the target heals for +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
   "name": "Astral Bond",
   "slug": "astral_bond_ability_0000048D000006F4_0000048d00000620",
   "damage": "",
@@ -10168,12 +10168,12 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "3",
   "icon": "0000048D00000728"
  },
  {
-  "description": "While adjacent to a friendly Magic Origin unit, both units gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist>",
+  "description": "While adjacent to a friendly Magic Origin unit, both units gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist><br></br>This effect stacks.",
   "name": "Astral Connection",
   "slug": "0000048d00001b26",
   "icon": "0000048D0000098F"
@@ -11059,7 +11059,7 @@
  },
  {
   "notes": [],
-  "description": "Link to target friendly unit:<bulletlist><bullet>Damage sustained by the linked unit is transferred to this unit with a 35% reduction.</bullet><bullet>At the start of each turn, this unit and the linked unit gain Grace.</bullet></bulletlist><br></br>While active, gain Recall Mask of Prosperity.",
+  "description": "Link to target friendly unit:<bulletlist><bullet>Damage sustained by the linked unit is dealt to this unit as well with a 50% reduction.</bullet><bullet>At the start of each turn, this unit and the linked unit gain Grace.</bullet></bulletlist><br></br>While active, gain Recall Mask of Prosperity.",
   "name": "Bestow Mask of Prosperity",
   "slug": "bestow_mask_of_prosperity_ability_0000048900001231",
   "damage": "",
@@ -13962,6 +13962,12 @@
   "name": "Berserk",
   "slug": "000003e1000013e6",
   "icon": "000003E1000013E7"
+ },
+ {
+  "description": "This unit does not trigger \\\"on unit death\\\" effects when it dies.",
+  "name": "Deathless",
+  "slug": "0000048b00000e94",
+  "icon": "0000048D00001BC5"
  },
  {
   "modifiers": [
@@ -21307,17 +21313,11 @@
   "icon": "0000045E000008E2"
  },
  {
-  "modifiers": [
-   {
-    "description": "Deal +40% damage against creatures with Large Target.",
-    "name": "Giant Slayer",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d000011e2",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -21342,17 +21342,11 @@
   "icon": "0000048D0000135A"
  },
  {
-  "modifiers": [
-   {
-    "description": "Deal +40% damage against creatures with Large Target.",
-    "name": "Giant Slayer",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d00001220",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -25447,9 +25441,6 @@
  {
   "notes": [
    {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
     "note": "Can only be used once per battle."
    }
   ],
@@ -27290,7 +27281,7 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 2 <turn></turn>"
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ],
   "description": "Target friendly unit:<bulletlist><bullet>Has all <hyperlink>Negative Status Effects</hyperlink> removed.</bullet><bullet>Gains +3<statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
@@ -27479,7 +27470,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -31258,7 +31249,7 @@
   "icon": "0000049700000CDC"
  },
  {
-  "description": "<bulletlist><bullet>Attacks have +2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Fiend units gain double the effect.</bullet><bullet>Can stack up to 5 times.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "<bulletlist><bullet>Attacks have +2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Can stack up to 5 times.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Infernal Might",
   "slug": "000004970000364c",
   "icon": "0000049700000EC9"
@@ -31359,7 +31350,7 @@
   "icon": "000004970000158F"
  },
  {
-  "description": "<bulletlist><bullet>Attacks have +1 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Fiend units gain double the effect.</bullet><bullet>Can stack up to 5 times.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "<bulletlist><bullet>Attacks have +1 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Can stack up to 5 times.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Infernal Might",
   "slug": "0000049700000ec3",
   "icon": "0000049700000EC9"
