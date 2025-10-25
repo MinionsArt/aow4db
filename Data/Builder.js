@@ -189,22 +189,11 @@ function GetUnitTierAndName(id, subcultureCheck) {
     }
 }
 
-function CheckIfFormUnit(id) {
-    if (
-        MountedSpecialList.includes(id) ||
-        highCultureUnits.includes(id) ||
-        barbarianCultureUnits.includes(id) ||
-        darkCultureUnits.includes(id) ||
-        feudalCultureUnits.includes(id) ||
-        industriousCultureUnits.includes(id) ||
-        mysticCultureUnits.includes(id) ||
-        reaverCultureUnits.includes(id) ||
-        primalCultureUnits.includes(id) ||
-        extraFormUnitsList.includes(id) ||
-        oathswornCultureUnits.includes(id) ||
-        architectCultureUnits.includes(id)
+function CheckIfFormUnit(unit) {
+    if (    
+        MountedSpecialList.includes(unit.id) || extraFormUnitsList.includes(unit.id) || 'culture_name' in unit
     ) {
-        if (id !== "observer" && id != "magelock_cannon") {
+        if (unit.id !== "observer" && unit.id != "magelock_cannon") {
             return true;
         }
     } else {
@@ -2738,7 +2727,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     addTooltipListeners(mpTooltip, mpspan);
 
-    if (CheckIfFormUnit(unitID)) {
+    if (CheckIfFormUnit(unitEN)) {
         btn = document.createElement("DIV");
         btn.className = "unittype_icon";
         imag = document.createElement("IMG");

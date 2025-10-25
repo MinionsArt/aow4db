@@ -1888,8 +1888,7 @@ function CollectAllPartsForOverview(fromload) {
 
     for (let v = 0; v < jsonTomes.length; v++) {
         if (currentSubCulture != "") {
-            console.log(currentSubCulture.name + " " + jsonTomes[v].name);
-            if (jsonTomes[v].name.indexOf(currentSubCulture.name) != -1) {
+              if (jsonTomes[v].name.indexOf(currentSubCulture.name) != -1) {
                  // if subcutlure
                 ExtraTomelist.push(jsonTomes[v]);
             }

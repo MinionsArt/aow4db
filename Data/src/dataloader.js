@@ -6,41 +6,6 @@ const unlockableUnitsMapStructures = {
     shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
 };
 
-const highCultureUnits = ["lightseeker", "dawn_defender", "dusk_hunter", "sun_priest", "daylight_spear", "awakener"];
-const barbarianCultureUnits = ["pathfinder", "sunderer", "warrior", "war_shaman", "fury", "berserker"];
-const darkCultureUnits = ["outrider", "pursuer", "dark_warrior", "warlock", "night_guard", "dark_knight"];
-const feudalCultureUnits = ["scout", "militia", "archer", "bannerman", "defender", "knight", "longbow", "liege_guard"];
-const industriousCultureUnits = ["pioneer", "anvil_guard", "arbalest", "steelshaper", "halberdier", "bastion"];
-const mysticCultureUnits = [
-    "mystic_projection",
-    "arcane_guard",
-    "arcanist",
-    "soother",
-    "spellshield",
-    "spellbreaker",
-    "spellweaver",
-    "summoner"
-];
-const reaverCultureUnits = ["observer", "mercenary", "harrier", "overseer", "magelock", "dragoon", "magelock_cannon"];
-const primalCultureUnits = [
-    "spirit_tracker",
-    "protector",
-    "primal_darter",
-    "primal_charger",
-    "animist",
-    "ancestral_warden"
-];
-const oathswornCultureUnits = [
-    "honor_guard",
-    "wayfarer",
-    "sworn_guard",
-    "sealbearer",
-    "vowkeeper",
-    "peacebringer",
-    "avenger",
-    "warbound"
-];
-
 
 function cleanTranslation(text) {
   if (!text) return text;
