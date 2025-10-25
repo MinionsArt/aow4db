@@ -44,7 +44,7 @@ function buildAbilityTagCache() {
 // main function
 function AddTagIconsForStatusEffects(text) {
     if (!text) return text;
-   text = cleanTranslation(text);
+    text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
 
     // simple replace loop — only checks keys that actually exist
@@ -2543,15 +2543,14 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
             (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck) &&
             depCheckResID(entry.resid) == false
     );
-    
-    if(unitEN == undefined){
-          unitEN = jsonUnitsLocalized.find(
-        (entry) =>
-            entry.id === unitID &&
-            (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck) &&
-            depCheckResID(entry.resid) == false
-    );
-    
+
+    if (unitEN == undefined) {
+        unitEN = jsonUnitsLocalized.find(
+            (entry) =>
+                entry.id === unitID &&
+                (subcultureCheck === undefined || entry.sub_culture_name === subcultureCheck) &&
+                depCheckResID(entry.resid) == false
+        );
     }
 
     if (!unitEN) {
@@ -3075,8 +3074,8 @@ function createFoundUnitInHereIcon(parent, imgSrc, imgFallbackSrc, link, tooltip
     imag.setAttribute("height", "60");
 
     btn.appendChild(imag);
-    
-   /* if(overIcon != undefined){
+
+    /* if(overIcon != undefined){
         // add icon type
          let imagOver = document.createElement("IMG");
           imagOver.setAttribute("src", overIcon);
@@ -3158,7 +3157,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    let struc = CheckIfInStructure(name);
+    let struc = CheckIfInStructure(unitData.id, name);
     if (struc != "") {
         const tooltipText = `Unit mentioned in Structure <hyperlink>${struc.name}</hyperlink>`;
         const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc.id}.png`;
@@ -3403,7 +3402,7 @@ function CheckIfInSiege(unitName) {
     return siege;
 }
 
-function CheckIfInStructure(unitName) {
+function CheckIfInStructure(id, unitName) {
     let structure = "";
     let i = 0;
 
@@ -3419,7 +3418,17 @@ function CheckIfInStructure(unitName) {
         if (regex.test(jsonStructureUpgrades[i].description)) {
             structure = jsonStructureUpgrades[i];
         }
+
+        for (const [keyword, units] of Object.entries(unlockableUnitsMapStructures)) {
+            if (jsonStructureUpgrades[i].id.indexOf(keyword) != -1) {
+                // right structure
+                if (units.includes(id)) {
+                    structure = jsonStructureUpgrades[i];
+                }
+            }
+        }
     }
+
     return structure;
 }
 
@@ -3885,8 +3894,7 @@ function showTome(a, divOrigin) {
 
     for (const skill of tomeEN.skills) {
         // this one doesnt have a slug for some reason, architect spell
-          if (skill.name === "Conjure Elemental") {
-              
+        if (skill.name === "Conjure Elemental") {
             addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
         }
         if ("spell_slug" in skill) {
@@ -3906,7 +3914,6 @@ function showTome(a, divOrigin) {
             addTomeSkillCard(skillHolder, (el) => showSiegeProject(skill.name, false, el));
         }
     }
-    
 
     let imagelink = divOrigin.querySelector("#tomeicon");
     imagelink.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomeEN.icon + ".png");
@@ -4211,15 +4218,15 @@ function GetAbilityInfo(ability) {
 
 function GetStructure(structureID) {
     let struc = findBy(jsonStructureUpgradesLocalized, "id", structureID);
-   let strucNameLoc;
+    let strucNameLoc;
     // if it cant find the EN one, try loc directly
-    if(struc == undefined){
-          strucNameLoc = findBy(jsonStructureUpgradesLocalized, "id", structureID);
-          return strucNameLoc || "Not found + " + structureID;
-    } else{
-           strucNameLoc = findBy(jsonStructureUpgradesLocalized, "resid", struc.resid);
+    if (struc == undefined) {
+        strucNameLoc = findBy(jsonStructureUpgradesLocalized, "id", structureID);
+        return strucNameLoc || "Not found + " + structureID;
+    } else {
+        strucNameLoc = findBy(jsonStructureUpgradesLocalized, "resid", struc.resid);
     }
-  
+
     return strucNameLoc || "Not found + " + structureID;
 }
 
@@ -4776,7 +4783,7 @@ function GetCostUnit(id) {
 }
 
 function showUnitUnlock(a, divOrigin) {
-   const unitEN = findBy(jsonUnits, "id", a.unit_slug);
+    const unitEN = findBy(jsonUnits, "id", a.unit_slug);
     const unitLoc = findBy(jsonUnitsLocalized, "resid", unitEN.resid);
     let modName = divOrigin.querySelector("#modname");
     modName.innerHTML = unitLoc.name.toUpperCase();
@@ -4830,16 +4837,15 @@ function showUnitUnlock(a, divOrigin) {
 
     let upkeep = divOrigin.querySelector("#modupkeep");
     upkeep.innerHTML = "";
-  
 }
 
 const SpellDuplicateExclusionList = []; // [4514010629343, 4514010628856];
 
 function showSpell(a, showOrigin, divOrigin) {
     let spellFoundEN = findBy(jsonSpells, "id", a);
-        // if it cant find th EN one, try loc one
-    if(spellFoundEN == undefined ){
-      spellFoundEN=  findBy(jsonSpellsLocalized, "id", a);
+    // if it cant find th EN one, try loc one
+    if (spellFoundEN == undefined) {
+        spellFoundEN = findBy(jsonSpellsLocalized, "id", a);
     }
 
     if (spellFoundEN != undefined) {
@@ -5261,14 +5267,14 @@ function showItem(itemLoc, divOrigin) {
 }
 
 function showTraitSetup(currentTrait, divOrigin, loc) {
-    if(loc == "loc"){
-         const traitLoc = findBy(jsonFactionCreation2Localized, "icon", currentTrait.icon);
-    if(traitLoc == undefined){
-        console.log(currentTrait);
+    if (loc == "loc") {
+        const traitLoc = findBy(jsonFactionCreation2Localized, "icon", currentTrait.icon);
+        if (traitLoc == undefined) {
+            console.log(currentTrait);
+        }
+        currentTrait = traitLoc;
     }
-    currentTrait = traitLoc;
-    }
-   
+
     let modName = divOrigin.querySelector("#modname");
     modName.innerHTML = currentTrait.name.toUpperCase();
 
