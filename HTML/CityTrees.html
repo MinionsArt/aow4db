@@ -104,25 +104,25 @@
                 }
             }
 
-            function generatePathSettings(entry1, entry2, offset) {
-                const p1 = getAnchor(entry1.firstElementChild, "right"); // start on right edge
-                const p2 = getAnchor(entry2.firstElementChild, "left"); // end on left edge
+            function generatePathSettings(entry1, offsetXY1, entryanchor1, entry2, offsetXY2, entryanchor2, offset) {
+                const p1 = getAnchor(entry1.firstElementChild, entryanchor1); // start on right edge
+                const p2 = getAnchor(entry2.firstElementChild, entryanchor2); // end on left edge
 
-                const midX = p1.x + offset;
+                const midX = p1.x + offsetXY1.x + offset;
+
+                const p1Offset = { x: p1.x + offsetXY1.x, y: p1.y + offsetXY1.y };
+                const p2Offset = { x: p2.x + offsetXY2.x, y: p2.y + offsetXY2.y };
 
                 return `
-                                                  M ${p1.x},${p1.y}
+                                                  M ${p1Offset.x},${p1Offset.y}
                                                   H ${midX}
-                                                  V ${p2.y}
-                                                  H ${p2.x}
+                                                  V ${p2Offset.y}
+                                                  H ${p2Offset.x}
                                               `;
             }
 
             function updateConnector() {
                 const holderSVG = document.getElementById("SVGHolder");
-
-                // optional: clear old paths so they don’t stack up
-                holderSVG.innerHTML = "";
 
                 for (let i = 0; i < jsonCityTreeNodes.length; i++) {
                     for (let j = 0; j < jsonCityTreeNodes[i].connectTo.length; j++) {
@@ -145,7 +145,18 @@
                                 if (divOG == undefined || divTO == undefined) {
                                     break;
                                 }
-                                path.setAttribute("d", generatePathSettings(divTO, divOG, j * 5 + 10));
+                                path.setAttribute(
+                                    "d",
+                                    generatePathSettings(
+                                        divTO,
+                                        { x: 0, y: 0 },
+                                        "right",
+                                        divOG,
+                                        { x: 0, y: 0 },
+                                        "left",
+                                        j * 5 + 10
+                                    )
+                                );
                                 holderSVG.appendChild(path);
                             }
                         } else {
@@ -167,11 +178,48 @@
                                 break;
                             }
 
-                            path.setAttribute("d", generatePathSettings(divTO, divOG, j + 30));
+                            path.setAttribute(
+                                "d",
+                                generatePathSettings(
+                                    divTO,
+                                    { x: j * 5, y: j  },
+                                    "right",
+                                    divOG,
+                                    { x: 0, y: 0 },
+                                    "left",
+                                    j + 30
+                                )
+                            );
                             holderSVG.appendChild(path);
                         }
                     }
                 }
+            }
+
+            function connectBottom(divToID, divFromID) {
+                const holderSVG = document.getElementById("SVGHolder");
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+                // ✅ must use setAttribute for SVG
+                path.setAttribute("stroke", "grey");
+                path.setAttribute("stroke-dasharray", "6,10");
+
+                path.setAttribute("fill", "none");
+                path.setAttribute("stroke-width", "2");
+
+                const divOG = document.getElementById(divFromID);
+
+                const divTO = document.getElementById(divToID);
+                console.log(divOG, divTO);
+                if (divOG == undefined || divTO == undefined) {
+                    return;
+                }
+
+                path.setAttribute(
+                    "d",
+                    generatePathSettings(divTO, { x: -100, y: 0 }, "bottom", divOG, { x: 0, y: 0 }, "left", 0)
+                );
+                holderSVG.appendChild(path);
             }
 
             // end generation of lines
@@ -183,12 +231,13 @@
                 foodline: ["store_house", "granary", "estate_hall", "farmers_guild"],
                 productionline: ["workshop", "stonemason", "masonic_hall", "workers_guild"],
                 draftline: ["empty", "blacksmith", "armory", "smiths_guild"],
-                shipline: ["shipyard", "fishmonger", "grand_wharf", "seafarers_guild"],
+                fishline: ["shipyard", "fishmonger", "grand_wharf", "seafarers_guild"],
                 lavaline: ["mineral_extractor", "basalt_excavation", "obsidian_weaponsmith", "volcanologists_guild"]
             };
 
             const wizardTower = {
-                baseLine: ["empty",
+                baseLine: [
+                    "empty",
                     "wizard_tower_foundation",
                     "wizard_tower_level_i",
                     "wizard_tower_level_ii",
@@ -205,7 +254,8 @@
                 ]
             };
             const wizardTowerBeta = {
-                baseLine: ["empty",
+                baseLine: [
+                    "empty",
                     "wizard_tower_foundation",
                     "wizard_tower_chambers",
                     "wizard_tower_high_halls",
@@ -292,6 +342,10 @@
             }
 
             function reDrawAll() {
+                const holderSVG = document.getElementById("SVGHolder");
+
+                // optional: clear old paths so they don’t stack up
+                holderSVG.innerHTML = "";
                 const buildingMap = GetAllBuildings();
                 var treespace = document.getElementById("treespacegeneral");
                 treespace.innerHTML = "";
@@ -324,6 +378,14 @@
                 treespace.appendChild(parentTomes);
                 parentTomes.setAttribute("style", " position: relative;left: 293px;");
                 GetTree("Tome Buildings", GetTomeBuilds(buildingMap), parentTomes, buildingMap);
+                
+                 for (const [overrideName, list] of Object.entries(overrideBuildingsBeta)) {
+                        for (const entry of list) {
+                            const [base, extra] = entry.split(":");
+                             connectBottom(base, extra);
+                          
+                        }
+                    }
 
                 SetLevelUpStuff();
                 updateConnector();
@@ -381,7 +443,8 @@
                     key: "feudal_aristocracy",
                     color: "rgb(17, 17, 17)",
                     title: "Feudal Aristocracy"
-                }, {
+                },
+                {
                     key: "feudal_monarchy",
                     color: "rgb(17, 17, 17)",
                     title: "Feudal Monarchy"
@@ -406,45 +469,47 @@
                     color: "rgb(17, 17, 17)",
                     title: "Mystic School of Summoning"
                 },
-                 {
+                {
                     key: "mystic_school_of_potential",
                     color: "rgb(17, 17, 17)",
                     title: "Mystic School of Potential"
                 },
-                 {
+                {
                     key: "mystic_school_of_attunement",
                     color: "rgb(17, 17, 17)",
                     title: "Mystic School of Attunement"
                 },
-                  {
+                {
                     key: "dark",
                     color: "rgb(17, 17, 17)",
                     title: "Dark"
                 },
-                 {
+                {
                     key: "dark_cult_of_tyranny",
                     color: "rgb(17, 17, 17)",
                     title: "Dark Cult of Tyranny"
-                }, {
+                },
+                {
                     key: "dark_cult_of_death",
                     color: "rgb(17, 17, 17)",
                     title: "Dark Cult of Death"
                 },
-                  {
+                {
                     key: "primal",
                     color: "rgb(17, 17, 17)",
                     title: "Primal"
                 },
-                  {
+                {
                     key: "oathsworn",
                     color: "rgb(17, 17, 17)",
                     title: "Oathsworn"
                 },
-                  {
+                {
                     key: "architect",
                     color: "rgb(17, 17, 17)",
                     title: "Architect"
-                }, {
+                },
+                {
                     key: "reaver",
                     color: "rgb(17, 17, 17)",
                     title: "Reaver"
@@ -581,7 +646,7 @@
                     "iii_unlock:bastions_barricade",
                     "town_hall_iv:town_hall_iv_industry_compound"
                 ],
-                  mystic: [
+                mystic: [
                     "workshop:evocators_abode",
                     "stonemason:stone_conjurer",
                     "town_hall_ii:town_hall_ii_mages_plaza",
@@ -706,10 +771,10 @@
                         } else {
                             if (buildingMap.some((b) => b.buildingId === buildingName)) {
                                 if (document.getElementById("tomeCheck").checked) {
-                                    handleStructure(buildingName, row, col, Holder, undefined, tomeID);
+                                    handleStructure(buildingName, row, col, Holder, undefined, tomeID, lineName);
                                 }
                             } else {
-                                handleStructure(buildingName, row, col, Holder, undefined, tomeID);
+                                handleStructure(buildingName, row, col, Holder, undefined, tomeID, lineName);
                             }
 
                             //  row++; // move down one row for each building
@@ -726,25 +791,29 @@
                                         if (!offsetby.includes(name)) {
                                             offsetby.push(name);
                                         }
+
                                         handleStructure(
                                             extra,
                                             row + offsetby.indexOf(name) + 1,
                                             col,
                                             Holder,
                                             overrideName,
-                                            tomeID
+                                            tomeID,
+                                            lineName
                                         );
                                     } else if (checkmark.checked) {
                                         if (!offsetby.includes(name)) {
                                             offsetby.push(name);
                                         }
+
                                         handleStructure(
                                             extra,
                                             row + offsetby.indexOf(name) + 1,
                                             col,
                                             Holder,
                                             overrideName,
-                                            tomeID
+                                            tomeID,
+                                            lineName
                                         );
                                     }
                                 }
@@ -760,6 +829,8 @@
 
                 parent.appendChild(Holder);
                 resizeParentToFitChildren(Holder);
+                
+               
             }
 
             function resizeParentToFitChildren(parent) {
@@ -780,7 +851,7 @@
                 parent.style.width = `${maxRight}px`;
             }
 
-            function handleStructure(entry, rowIndex, columnIndex, Holder, override, tomeID) {
+            function handleStructure(entry, rowIndex, columnIndex, Holder, override, tomeID, lineName) {
                 if (entry == null) {
                     return;
                 }
@@ -800,14 +871,15 @@
                                 columnIndex,
                                 Holder,
                                 override,
-                                tomeID
+                                tomeID,
+                                lineName
                             );
                         }
                     }
                 }
             }
 
-            function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, override, tomeID) {
+            function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, override, tomeID, lineName) {
                 var i,
                     x = "";
 
@@ -829,7 +901,7 @@
                     name = name.replaceAll("<br>", " ");
                 }
 
-                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID);
+                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID, lineName);
 
                 //insert connection line
                 let extra = 0;
@@ -848,7 +920,42 @@
                 holder.append(newNode);
             }
 
-            function CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID) {
+            const lineNameMap = [
+                {
+                    key: "goldline",
+                    color: "rgb(118, 107, 43)"
+                },
+                {
+                    key: "manaline",
+                    color: "rgb(40, 85 ,144)"
+                },
+                {
+                    key: "knowledgeline",
+                    color: "rgb(106, 40, 144)"
+                },
+                {
+                    key: "foodline",
+                    color: "rgb(40, 144, 53)"
+                },
+                {
+                    key: "draftline",
+                    color: "rgb(144, 40, 40)"
+                },
+                {
+                    key: "productionline",
+                    color: "rgb(144, 80, 40)"
+                },
+                {
+                    key: "fishline",
+                    color: "rgb(40, 144, 141)"
+                },
+                {
+                    key: "lavaline",
+                    color: "rgb(165, 160, 10)"
+                }
+            ];
+
+            function CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID, lineName) {
                 var i,
                     x = "";
                 var name = structureInfoLoc.name;
@@ -871,6 +978,13 @@
 
                 var spa = document.createElement("SPAN");
                 spa.className = "structureNodeTitle";
+                for (const { key, color } of lineNameMap) {
+                    if (key == lineName) {
+                        const colorTwo = "rgb(0,0,0,0)";
+                        spa.style.backgroundImage =
+                            "linear-gradient(to right, " + colorTwo + ", " + color + ", " + colorTwo + ")";
+                    }
+                }
 
                 newNodeBackground.className = "structureNode";
 
@@ -995,7 +1109,7 @@
             <div class="textblocktitle">City Tree</div>
 
             <div class="tree-space" id="treespacegeneral"></div>
-            <div style="display: flex; justify-content: center;">
+            <div style="display: flex; justify-content: center">
                 <label class="switch">
                     <input
                         type="checkbox"
@@ -1124,7 +1238,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         transform: scale(0.9);
-         transform-origin: left;
+        transform-origin: left;
     }
 
     .entry {
@@ -1159,8 +1273,14 @@
     }
 
     .structureNodeTitle {
+        display: block;
+        width: auto;
         z-index: 2;
-        left: 0px;
+
+        margin-top: -5px;
+        padding: 3px;
+        padding-top: 4px;
+        background-image: linear-gradient(to right, rgba(44, 60, 78, 0.6), rgba(97, 47, 162, 0));
         position: relative;
     }
 
