@@ -18,274 +18,105 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-            var townHall1 = {
-                requirement_description: "",
-                id: "town_hall_i_town_center",
-                description: "Expand your City further and unlock more specialized City Structures",
-                name: "Town Hall I: Town Center",
-                icon: "town_hall_i_town_center",
-                is_sector_upgrade: false,
-                cost: "",
-                prediction_description:
-                    "<bulletlist><bullet>+20 <unitprod></unitprod> Draft</bullet><bullet>+10 <happiness></happiness> City Stability income</bullet><bullet>+30 <food></food> Food income</bullet><bullet>+20 <production></production> Production income</bullet></bulletlist>"
-            };
-            var throne = {
-                requirement_description: "",
-                id: "throne",
-                description:
-                    "An Empire can only have one Throne. If your Ruler is defeated in Combat, they will respawn here after 3<turn></turn> Turns. If your Ruler is defeated and your Throne is taken, your Empire is defeated.",
-                name: "Throne",
-                icon: "throne",
-                is_sector_upgrade: false,
-                cost: "",
-                prediction_description:
-                    "<bulletlist><bullet>Unlock Fortification</bullet><bullet>+20 <garrison></garrison> Fortification Health</bullet><bullet>+60 <knowledge></knowledge> Knowledge income</bullet><bullet>+120 <gold></gold> Gold income</bullet><bullet>+20 <mana></mana> Mana income</bullet></bulletlist>"
-            };
-
-            // set up chunks instead of a full list
-
-            const townHallsGrid = [
-                [
-                    "town_hall_ii_castle",
-                    null,
-                    "town_hall_iii_citadel",
-                    "lords_manor:feudalMonarchy",
-                    "retainers_estate:feudalAristocracy",
-                    null,
-                    "town_hall_iv_grand_estate"
-                ],
-                [
-                    "town_hall_ii_bulwark",
-                    null,
-                    "town_hall_iii_forge_tower",
-                    "bastions_barricade:industrious",
-                    null,
-                    null,
-                    "town_hall_iv_industry_compound"
-                ],
-                [
-                    "town_hall_ii_communal_tent",
-                    null,
-                    "town_hall_iii_halls_of_war",
-                    "shrine_of_the_wargod:barbarian",
-                    null,
-                    null,
-                    "town_hall_iv_warlords_pavilion"
-                ],
-                [
-                    "town_hall_ii_mages_plaza",
-                    null,
-                    "town_hall_iii_mystic_spire",
-                    "altar_of_the_all-seers:mysticAttunement",
-                    "academy_of_potential:mysticPotential",
-                    "summoners_cistern:mysticSummoning",
-                    "town_hall_iv_wizards_auditorium"
-                ],
-                [
-                    "town_hall_ii_atrium_of_light",
-                    null,
-                    "town_hall_iii_pantheon",
-                    "solar_nexus:high",
-                    null,
-                    null,
-                    "town_hall_iv_solar_sanctum"
-                ],
-                [
-                    "town_hall_ii_dread_spire",
-                    null,
-                    "town_hall_iii_stronghold",
-                    "overlords_tower:dark",
-                    null,
-                    null,
-                    "town_hall_iv_black_palace"
-                ],
-                [
-                    "town_hall_ii_steel_hall",
-                    null,
-                    "town_hall_iii_chained_spire",
-                    "extraction_nexus:reaver",
-                    null,
-                    null,
-                    "town_hall_iv_ironclad_citadel"
-                ],
-                [
-                    "town_hall_ii_clan_lodge",
-                    null,
-                    "town_hall_iii_spirit_hall",
-                    "shrine_to_the_spirits:primal",
-                    null,
-                    null,
-                    "town_hall_iv_primeval_palace"
-                ],
-                [
-                    "town_hall_ii_oath_square",
-                    null,
-                    "town_hall_iii_steel_bastion",
-                    "paragon_quarters:oathsworn",
-                    null,
-                    null,
-                    "town_hall_iv_palace_of_vows"
-                ],
-                [
-                    "town_hall_ii_great_ziggurat",
-                    null,
-                    "town_hall_iii_ascended_gardens",
-                    "affinity_obelisks:architect",
-                    null,
-                    null,
-                    "town_hall_iv_pinnacle_of_the_incarnate"
-                ],
-                [null, "tavern", "bathhouse"],
-                [null, "interrogation_dungeon:dark", "ritual_mausoleum:dark"]
-            ];
-
-            const basicIncomeGrid = [
-                ["vendor", "market", "mint", "merchants_guild"],
-                ["experimentation_chambers:dark", "underground_laboratory:dark", null, null],
-                ["training_hall:oathsworn", "hall_of_devotion:oathsworn", null, null],
-                ["shrine", "mana_obelisk", "monolith", "mages_guild"],
-
-                ["mana_forge:reaver", "lodestone_foundry:reaver", null, null],
-                ["library", "arcane_institute", "academy", "scholars_guild"],
-                ["battle_ritual_site:barbarian", "ancestral_seer_hall:barbarian", null, null],
-                ["magitectural_archive:architect", "architect_institute:architect", null, null],
-                ["store_house", "granary", "estate_hall", "farmers_guild"],
-                ["workers_farmstead:industrious", "grand_mill:industrious", null, null],
-                ["house_hunting_grounds:feudalAristocracy", "serf_quarters:feudalAristocracy", null, null],
-                ["workshop", "stonemason", "masonic_hall", "workers_guild"],
-                ["evocators_abode:mystic", "stone_conjurer:mystic", null, null],
-                ["woodcarvers_workshop:primal", "stonestele:primal", null, null],
-                ["artisan_workshop:high", "blacksmith", "armory", "smiths_guild"],
-                ["militia_barracks:feudalMonarchy", "lightforge:high", null, null],
-                [null, "royal_smith:feudalMonarchy", null, null],
-                ["shipyard", "fishmonger", "grand_wharf", "seafarers_guild"],
-                ["mineral_extractor", "basalt_excavation", "obsidian_weaponsmith", "volcanologists_guild"]
-            ];
-
-            const fortificationsGrid = [
-                ["palisade_walls", null, null, null, null, null, null, "stone_walls"],
-                [null, null, null, null, "caltrop_stash", null, null, null, "ballista_towers", null, "catapult_towers"],
-                [
-                    null,
-                    null,
-                    null,
-                    null,
-                    "arcane_battlements",
-                    null,
-                    null,
-                    null,
-                    "necrotic_spires:shadow",
-                    null,
-                    "beacon_of_valor"
-                ],
-                [null, null, null, null, "archer_battlements", null, null, null, "healing_spires:order", null, null]
-            ];
-
-            const tomeBuildingsGrid = [
-                [
-                    "luxury_markets:materium",
-                    "tower_of_true_sight:astral",
-                    "tribunal:order",
-                    "temple_of_fertility:nature",
-                    "material_refinery:nature",
-                    "shade_network"
-                ],
-                [
-                    "artisan_fortification:materium",
-                    "astral_trade_relay:astral",
-                    "convent:order",
-                    null,
-                    "stormport:astral",
-                    "garden_of_affluence"
-                ],
-                [
-                    "crucible_battlements:materium",
-                    "throne_of_mirrors:astral",
-                    "barons_palace:order",
-                    null,
-                    "tendril_labyrinth",
-                    "hall_of_geomantic_resonance"
-                ],
-                [
-                    "reagent_refinery:materium",
-                    null,
-                    "monument_of_supremacy:order",
-                    null,
-                    "throne_of_insidious_whispers",
-                    "house_of_charity"
-                ],
-                [null, null, "temple_of_the_exalted:order", null, "temple_of_the_pyre", "chamber_of_the_rite"]
-            ];
-
-            const wizardTowerGrid = [
-                [null, "wizard_tower_prison_cells", "wizard_tower_item_forge", null, null],
-                [
-                    "wizard_tower_foundation:throne",
-                    "wizard_tower_level_i",
-                    "wizard_tower_level_ii",
-                    "wizard_tower_apex",
-                    "wizard_tower_arcane_observatory"
-                ],
-                [
-                    null,
-                    "wizard_tower_crypts",
-                    "wizard_tower_room_of_recall",
-                    "wizard_tower_channeling_chamber",
-                    "wizard_tower_teleportation_circle"
-                ]
-            ];
-
-            const affinityGrid = [
-                ["materium_bolstering_matrix:throne", "materium_amplifier_lens:throne"],
-                ["astral_bolstering_matrix:throne", "astral_amplifier_lens:throne"],
-                ["nature_bolstering_matrix:throne", "nature_amplifier_lens:throne"],
-                ["chaos_bolstering_matrix:throne", "chaos_amplifier_lens:throne"],
-                ["order_bolstering_matrix:throne", "order_amplifier_lens:throne"],
-                ["shadow_bolstering_matrix:throne", "shadow_amplifier_lens:throne"]
+            const extraBuildings = [
+                {
+                    requirement_description: "",
+                    id: "town_hall_i_town_center",
+                    description: "Expand your City further and unlock more specialized City Structures",
+                    name: "Town Hall I: Town Center",
+                    icon: "town_hall_i_town_center",
+                    is_sector_upgrade: false,
+                    cost: "",
+                    prediction_description:
+                        "<bulletlist><bullet>+20 <unitprod></unitprod> Draft</bullet><bullet>+10 <happiness></happiness> City Stability income</bullet><bullet>+30 <food></food> Food income</bullet><bullet>+20 <production></production> Production income</bullet></bulletlist>"
+                },
+                {
+                    requirement_description: "",
+                    id: "town_hall_ii",
+                    description: "",
+                    name: "Town Hall II",
+                    icon: "town_hall_ii",
+                    is_sector_upgrade: false,
+                    cost: "",
+                    prediction_description: ""
+                },
+                {
+                    requirement_description: "",
+                    id: "town_hall_iii",
+                    description: "",
+                    name: "Town Hall III",
+                    icon: "town_hall_iii",
+                    is_sector_upgrade: false,
+                    cost: "",
+                    prediction_description: ""
+                },
+                {
+                    requirement_description: "",
+                    id: "town_hall_iv",
+                    description: "",
+                    name: "Town Hall IV",
+                    icon: "town_hall_iv",
+                    is_sector_upgrade: false,
+                    cost: "",
+                    prediction_description: ""
+                },
+                {
+                    requirement_description: "",
+                    id: "throne",
+                    description:
+                        "An Empire can only have one Throne. If your Ruler is defeated in Combat, they will respawn here after 3<turn></turn> Turns. If your Ruler is defeated and your Throne is taken, your Empire is defeated.",
+                    name: "Throne",
+                    icon: "throne",
+                    is_sector_upgrade: false,
+                    cost: "",
+                    prediction_description:
+                        "<bulletlist><bullet>Unlock Fortification</bullet><bullet>+20 <garrison></garrison> Fortification Health</bullet><bullet>+60 <knowledge></knowledge> Knowledge income</bullet><bullet>+120 <gold></gold> Gold income</bullet><bullet>+20 <mana></mana> Mana income</bullet></bulletlist>"
+                }
             ];
 
             const baseGrid = [["town_hall_i_town_center"], ["throne:throne"]];
 
-           function getCenter(el) {
-    const rect = el.getBoundingClientRect();
-    return {
-        x: rect.left + window.scrollX + rect.width / 2,
-        y: rect.top + window.scrollY + rect.height / 2
-    };
-}
-            
+            // generation of lines
+            function getCenter(el) {
+                const rect = el.getBoundingClientRect();
+                return {
+                    x: rect.left + window.scrollX + rect.width / 2,
+                    y: rect.top + window.scrollY + rect.height / 2
+                };
+            }
+
             function getAnchor(el, side = "center") {
-    const rect = el.getBoundingClientRect();
-    const x = rect.left + window.scrollX;
-    const y = rect.top + window.scrollY;
+                const rect = el.getBoundingClientRect();
+                const x = rect.left + window.scrollX;
+                const y = rect.top + window.scrollY;
 
-    switch (side) {
-        case "top":
-            return { x: x + rect.width / 2, y: y };
-        case "bottom":
-            return { x: x + rect.width / 2, y: y + rect.height };
-        case "left":
-            return { x: x, y: y + rect.height / 2 };
-        case "right":
-            return { x: x + rect.width, y: y + rect.height / 2 };
-        default: // center
-            return { x: x + rect.width / 2, y: y + rect.height / 2 };
-    }
-}
-            
+                switch (side) {
+                    case "top":
+                        return { x: x + rect.width / 2, y: y };
+                    case "bottom":
+                        return { x: x + rect.width / 2, y: y + rect.height };
+                    case "left":
+                        return { x: x, y: y + rect.height / 2 };
+                    case "right":
+                        return { x: x + rect.width, y: y + rect.height / 2 };
+                    default: // center
+                        return { x: x + rect.width / 2, y: y + rect.height / 2 };
+                }
+            }
+
             function generatePathSettings(entry1, entry2, offset) {
-    const p1 = getAnchor(entry1.firstElementChild, "right");  // start on right edge
-    const p2 = getAnchor(entry2.firstElementChild, "left");   // end on left edge
+                const p1 = getAnchor(entry1.firstElementChild, "right"); // start on right edge
+                const p2 = getAnchor(entry2.firstElementChild, "left"); // end on left edge
 
-    const midX = p1.x + offset;
+                const midX = p1.x + offset;
 
-    return `
-        M ${p1.x},${p1.y}
-        H ${midX}
-        V ${p2.y}
-        H ${p2.x}
-    `;
-}
+                return `
+                                                  M ${p1.x},${p1.y}
+                                                  H ${midX}
+                                                  V ${p2.y}
+                                                  H ${p2.x}
+                                              `;
+            }
 
             function updateConnector() {
                 const holderSVG = document.getElementById("SVGHolder");
@@ -295,231 +126,512 @@
 
                 for (let i = 0; i < jsonCityTreeNodes.length; i++) {
                     for (let j = 0; j < jsonCityTreeNodes[i].connectTo.length; j++) {
-                       
                         const affinity = ["materium", "astral", "nature", "chaos", "shadow", "order"];
-                        
-                        if(jsonCityTreeNodes[i].id.startsWith("*")){
-                              // affinity lenses/bolstering
-                            for(const af of affinity){
-                                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                                  path.setAttribute("stroke", "pink");
-                       
-                       
-                        path.setAttribute("fill", "none");
-                        path.setAttribute("stroke-width", "3");
-                                
-                              const  affPath = jsonCityTreeNodes[i].id.replace("*", af + "_")
-                              console.log(affPath);
-                        
-                        const divOG = document.getElementById(affPath);
-                        const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
 
-                        path.setAttribute("d", generatePathSettings(divTO, divOG, (j*5) + 10));
-                        holderSVG.appendChild(path);
-                                
+                        if (jsonCityTreeNodes[i].id.startsWith("*")) {
+                            // affinity lenses/bolstering
+                            for (const af of affinity) {
+                                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                                path.setAttribute("stroke", "pink");
+
+                                path.setAttribute("fill", "none");
+                                path.setAttribute("stroke-width", "3");
+
+                                const affPath = jsonCityTreeNodes[i].id.replace("*", af + "_");
+
+                                const divOG = document.getElementById(affPath);
+
+                                const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
+                                if (divOG == undefined || divTO == undefined) {
+                                    break;
+                                }
+                                path.setAttribute("d", generatePathSettings(divTO, divOG, j * 5 + 10));
+                                holderSVG.appendChild(path);
                             }
-                          
-                            
-                        } else{
-                             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                        } else {
+                            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-                        // ✅ must use setAttribute for SVG
-                         path.setAttribute("stroke", "white");
-                        if(jsonCityTreeNodes[i].id.indexOf("wizard_tower")!= -1){
-                             path.setAttribute("stroke", "green");
+                            // ✅ must use setAttribute for SVG
+                            path.setAttribute("stroke", "white");
+                            if (jsonCityTreeNodes[i].id.indexOf("wizard_tower") != -1) {
+                                path.setAttribute("stroke", "green");
+                            }
+
+                            path.setAttribute("fill", "none");
+                            path.setAttribute("stroke-width", "2");
+
+                            const divOG = document.getElementById(jsonCityTreeNodes[i].id);
+
+                            const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
+                            if (divOG == undefined || divTO == undefined) {
+                                break;
+                            }
+
+                            path.setAttribute("d", generatePathSettings(divTO, divOG, j + 30));
+                            holderSVG.appendChild(path);
                         }
-                       
-                        path.setAttribute("fill", "none");
-                        path.setAttribute("stroke-width", "2");
-                        
-                        const divOG = document.getElementById(jsonCityTreeNodes[i].id);
-                        const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
-
-                        path.setAttribute("d", generatePathSettings(divTO, divOG, (j*5) + 10));
-                        holderSVG.appendChild(path);
-                        }
-
                     }
                 }
             }
 
-            function HandlePage() {
-                SetUpTreeDivChunks(fortificationsGrid, 622, 0);
-                SetUpTreeDivChunks(basicIncomeGrid, 287, 595);
+            // end generation of lines
+            const TestBase = {
+                padding: ["empty"],
+                goldline: ["vendor", "market", "mint", "merchants_guild"],
+                manaline: ["shrine", "mana_obelisk", "monolith", "mages_guild"],
+                knowledgeline: ["library", "arcane_institute", "academy", "scholars_guild"],
+                foodline: ["store_house", "granary", "estate_hall", "farmers_guild"],
+                productionline: ["workshop", "stonemason", "masonic_hall", "workers_guild"],
+                draftline: ["empty", "blacksmith", "armory", "smiths_guild"],
+                shipline: ["shipyard", "fishmonger", "grand_wharf", "seafarers_guild"],
+                lavaline: ["mineral_extractor", "basalt_excavation", "obsidian_weaponsmith", "volcanologists_guild"]
+            };
 
-                SetUpTreeDivChunks(townHallsGrid, 1586, 485);
-                SetUpTreeDivChunks(tomeBuildingsGrid, 287, 2959);
-                SetUpTreeDivChunks(wizardTowerGrid, 1886, 1975);
-                SetUpTreeDivChunks(affinityGrid, 2850, 2408);
-                SetUpTreeDivChunks(baseGrid, 0, 485);
-                //SetUpTreeNodes(general, "general");
+            const wizardTower = {
+                baseLine: ["empty",
+                    "wizard_tower_foundation",
+                    "wizard_tower_level_i",
+                    "wizard_tower_level_ii",
+                    "wizard_tower_apex",
+                    "wizard_tower_arcane_observatory"
+                ],
+                secondLine: ["empty*2", "wizard_tower_crypts", "wizard_tower_item_forge"],
+                thirdLine: [
+                    "empty*2",
+                    "wizard_tower_prison_cells",
+                    "wizard_tower_room_of_recall",
+                    "wizard_tower_channeling_chamber",
+                    "wizard_tower_teleportation_circle"
+                ]
+            };
+            const wizardTowerBeta = {
+                baseLine: ["empty",
+                    "wizard_tower_foundation",
+                    "wizard_tower_chambers",
+                    "wizard_tower_high_halls",
+                    "wizard_tower_apex",
+                    "wizard_tower_arcane_observatory"
+                ],
+                secondLine: ["empty*2", "wizard_tower_crypts", "wizard_tower_item_forge"],
+                thirdLine: [
+                    "empty*2",
+                    "wizard_tower_prison_cells",
+                    "wizard_tower_room_of_recall",
+                    "wizard_tower_channeling_chamber",
+                    "wizard_tower_teleportation_circle"
+                ]
+            };
 
-                SetCategories();
+            const vampireTower = {
+                baseLine: [
+                    "wizard_tower_foundation",
+                    "wizard_tower_chambers",
+                    "wizard_tower_high_halls",
+                    "wizard_tower_apex",
+                    "wizard_tower_arcane_observatory"
+                ],
+                secondLine: ["empty", "wizard_tower_crypts", "wizard_tower_item_forge"],
+                thirdLine: [
+                    "empty",
+                    "wizard_tower_prison_cells",
+                    "wizard_tower_room_of_recall",
+                    "wizard_tower_channeling_chamber",
+                    "wizard_tower_teleportation_circle"
+                ]
+            };
+
+            const affinity = {
+                materium: ["empty*4", "materium_bolstering_matrix:throne", "materium_amplifier_lens:throne"],
+                astra: ["empty*4", "astral_bolstering_matrix:throne", "astral_amplifier_lens:throne"],
+                nature: ["empty*4", "nature_bolstering_matrix:throne", "nature_amplifier_lens:throne"],
+                chaos: ["empty*4", "chaos_bolstering_matrix:throne", "chaos_amplifier_lens:throne"],
+                order: ["empty*4", "order_bolstering_matrix:throne", "order_amplifier_lens:throne"],
+                shadow: ["empty*4", "shadow_bolstering_matrix:throne", "shadow_amplifier_lens:throne"]
+            };
+
+            // end generation of lines
+            const Start = {
+                baseline: ["town_hall_i_town_center"]
+            };
+
+            const TownHalls = {
+                townHallsline: [
+                    "town_hall_ii",
+                    "empty",
+                    "town_hall_iii",
+                    "iii_unlock",
+                    "iii_unlock_2",
+                    "iii_unlock_3",
+                    "town_hall_iv"
+                ]
+            };
+
+            const Bath = {
+                stabilityLine: ["empty", "tavern", "bathhouse"]
+            };
+            const Fortifications = {
+                walls: ["empty*4", "palisade_walls", "empty*6", "stone_walls"],
+                Towers: ["empty*9", "caltrop_stash", "empty*3", "ballista_towers", "catapult_towers"],
+                Battlements: ["empty*9", "arcane_battlements", "empty*3", "necrotic_spires", "beacon_of_valor"],
+                Spires: ["empty*9", "archer_battlements", "empty*3", "healing_spires"]
+            };
+
+            function GetTomeBuilds(buildingMap) {
+                const excludedIds = ["healing_spires", "necrotic_spires"];
+
+                const filteredIds = buildingMap.filter((b) => !excludedIds.includes(b.buildingId));
+
+                const Buildings = {};
+                const chunkSize = 6;
+
+                for (let i = 0; i < filteredIds.length; i += chunkSize) {
+                    const chunk = filteredIds.slice(i, i + chunkSize);
+                    Buildings[i / chunkSize] = chunk;
+                }
+                return Buildings;
+            }
+
+            function reDrawAll() {
+                const buildingMap = GetAllBuildings();
+                var treespace = document.getElementById("treespacegeneral");
+                treespace.innerHTML = "";
+                // parent fortifications
+                const parentFort = document.createElement("div");
+                treespace.appendChild(parentFort);
+
+                GetTree("Fortifications", Fortifications, parentFort, buildingMap);
+                // parent base
+                const parentBase = document.createElement("div");
+                parentBase.setAttribute("style", "display:flex");
+                treespace.appendChild(parentBase);
+                GetTree("", Start, parentBase, buildingMap);
+                GetTree("Base Buildings", TestBase, parentBase, buildingMap);
+                // tome stuff
+                //  if(tomeCheck)
+                const parentWizard = document.createElement("div");
+                treespace.appendChild(parentWizard);
+                GetTree("", TownHalls, parentWizard, buildingMap);
+                GetTree("", Bath, parentWizard, buildingMap);
+                // wizard tower base
+                if (showBetaTooltip.checked) {
+                    GetTree("Wizard Tower", wizardTowerBeta, parentWizard, buildingMap);
+                } else {
+                    GetTree("Wizard Tower", wizardTower, parentWizard, buildingMap);
+                }
+
+                GetTree("", affinity, parentWizard, buildingMap);
+                const parentTomes = document.createElement("div");
+                treespace.appendChild(parentTomes);
+                parentTomes.setAttribute("style", " position: relative;left: 293px;");
+                GetTree("Tome Buildings", GetTomeBuilds(buildingMap), parentTomes, buildingMap);
+
                 SetLevelUpStuff();
                 updateConnector();
             }
 
-            function SetUpTreeDivChunks(list, positionLeft, positionTop) {
-                var Holder = document.createElement("DIV");
-                Holder.className = "tree-grid2";
+            function GetAllBuildings() {
+                let ListOfCityBuildings = [];
+                let TomeBuildings = [];
 
-                var columns = 0;
-                var rows = 0;
-                var maxcolumn = 0;
-                list.forEach((row, rowIndex) => {
-                    rows++;
+                // 1️⃣ Collect city buildings
+                for (const i in jsonStructureUpgrades) {
+                    if (!jsonStructureUpgrades[i].is_sector_upgrade) {
+                        ListOfCityBuildings.push(jsonStructureUpgrades[i].id);
+                    }
+                }
 
-                    row.forEach((cell, colIndex) => {
-                        if (colIndex > maxcolumn) {
-                            columns = colIndex;
-                            maxcolumn = colIndex;
-                        }
-                    });
-                });
+                // 2️⃣ Find tome buildings that match city buildings
+                for (const j in jsonTomes) {
+                    const tome = jsonTomes[j];
+                    if (!("skills" in tome)) continue;
 
-                Holder.setAttribute(
-                    "style",
-                    "  grid-template-columns: repeat(" +
-                        columns +
-                        ", 320px);grid-template-rows: repeat(" +
-                        rows +
-                        ", 120px); top:" +
-                        positionTop +
-                        "px; left:" +
-                        positionLeft +
-                        "px"
-                );
-
-                var treespace = document.getElementById("treespacegeneral");
-                treespace.appendChild(Holder);
-
-                var rowIndex2 = "";
-
-                list.forEach((row, rowIndex) => {
-                    rowIndex2 = rowIndex + 1;
-                    row.forEach((cell, colIndex) => {
-                        handleStructure(cell, rowIndex2, colIndex + 1, Holder);
-                    });
-                });
-            }
-
-            function backtrackTome(structure) {
-                var returning = "";
-                var j = 0;
-                for (j in jsonTomes) {
-                    var k = 0;
-                    for (k in jsonTomes[j].skills) {
-                        if (jsonTomes[j].skills[k].upgrade_slug === structure) {
-                            returning = jsonTomes[j];
+                    for (const k in tome.skills) {
+                        const skill = tome.skills[k];
+                        if ("upgrade_slug" in skill && ListOfCityBuildings.includes(skill.upgrade_slug)) {
+                            TomeBuildings.push({
+                                tomeId: tome.id, // Tome ID
+                                buildingId: skill.upgrade_slug // Building ID
+                            });
                         }
                     }
                 }
-                return returning;
+
+                return TomeBuildings;
             }
 
-            function handleStructure(entry, rowIndex, columnIndex, Holder) {
-                if (entry == null) {
-                    return;
-                }
-                var splits = entry.split(":");
-                var structure = splits[0];
-                var affinity = splits[1];
+            function HandlePage() {
+                // combine extra additions
+                jsonStructureUpgrades = [...jsonStructureUpgrades, ...extraBuildings];
 
-                var overwrite = "";
-
-                if (structure == "throne") {
-                    overwrite = throne;
-                    SetUpStructureNodeNew(overwrite, rowIndex, columnIndex, Holder, affinity);
-                }
-                if (structure == "town_hall_i_town_center") {
-                    overwrite = townHall1;
-                    SetUpStructureNodeNew(overwrite, rowIndex, columnIndex, Holder, affinity);
-                }
-
-                for (i in jsonStructureUpgrades) {
-                    if (structure == "town_hall_ii_castle") {
-                        console.log(rowIndex, columnIndex);
-                        if (jsonStructureUpgrades[i].resid == "4282082401405") {
-                            SetUpStructureNodeNew(
-                                jsonStructureUpgrades[i],
-                                rowIndex,
-                                columnIndex,
-                                Holder,
-                                affinity,
-                                backtrackTome(jsonStructureUpgrades[i].id)
-                            );
-                        }
-                    } else if (structure == "town_hall_iii_citadel") {
-                        if (jsonStructureUpgrades[i].resid == "4282082401410") {
-                            SetUpStructureNodeNew(
-                                jsonStructureUpgrades[i],
-                                rowIndex,
-                                columnIndex,
-                                Holder,
-                                affinity,
-                                backtrackTome(jsonStructureUpgrades[i].id)
-                            );
-                        }
-                    } else if (structure == "town_hall_iv_grand_estate") {
-                        if (jsonStructureUpgrades[i].resid == "4282082401414") {
-                            SetUpStructureNodeNew(
-                                jsonStructureUpgrades[i],
-                                rowIndex,
-                                columnIndex,
-                                Holder,
-                                affinity,
-                                backtrackTome(jsonStructureUpgrades[i].id)
-                            );
-                        }
-                    } else {
-                        if (jsonStructureUpgrades[i].id === structure) {
-                            SetUpStructureNodeNew(
-                                jsonStructureUpgrades[i],
-                                rowIndex,
-                                columnIndex,
-                                Holder,
-                                affinity,
-                                backtrackTome(jsonStructureUpgrades[i].id)
-                            );
-                        }
-                    }
-                }
+                reDrawAll();
             }
 
-            function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, affinity, tome) {
-                var i,
-                    x = "";
-
-                var nodeHeight = 100;
-                var nodeWidth = 250;
-
-                var tomeInfo = null;
-                if (tome != "") {
-                    // add tome ID
-                    tomeInfo = tome;
+            const iconBackgroundMap = [
+                {
+                    key: "industrious",
+                    color: "rgb(17, 17, 17)",
+                    title: "Industrious"
+                },
+                {
+                    key: "feudal",
+                    color: "rgb(17, 17, 17)",
+                    title: "Feudal"
+                },
+                {
+                    key: "feudal_aristocracy",
+                    color: "rgb(17, 17, 17)",
+                    title: "Feudal Aristocracy"
+                }, {
+                    key: "feudal_monarchy",
+                    color: "rgb(17, 17, 17)",
+                    title: "Feudal Monarchy"
+                },
+                {
+                    key: "barbarian",
+                    color: "rgb(17, 17, 17)",
+                    title: "Barbarian"
+                },
+                {
+                    key: "high",
+                    color: "rgb(17, 17, 17)",
+                    title: "High"
+                },
+                {
+                    key: "mystic",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic"
+                },
+                {
+                    key: "mystic_school_of_summoning",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic School of Summoning"
+                },
+                 {
+                    key: "mystic_school_of_potential",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic School of Potential"
+                },
+                 {
+                    key: "mystic_school_of_attunement",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic School of Attunement"
+                },
+                  {
+                    key: "dark",
+                    color: "rgb(17, 17, 17)",
+                    title: "Dark"
+                },
+                 {
+                    key: "dark_cult_of_tyranny",
+                    color: "rgb(17, 17, 17)",
+                    title: "Dark Cult of Tyranny"
+                }, {
+                    key: "dark_cult_of_death",
+                    color: "rgb(17, 17, 17)",
+                    title: "Dark Cult of Death"
+                },
+                  {
+                    key: "primal",
+                    color: "rgb(17, 17, 17)",
+                    title: "Primal"
+                },
+                  {
+                    key: "oathsworn",
+                    color: "rgb(17, 17, 17)",
+                    title: "Oathsworn"
+                },
+                  {
+                    key: "architect",
+                    color: "rgb(17, 17, 17)",
+                    title: "Architect"
+                }, {
+                    key: "reaver",
+                    color: "rgb(17, 17, 17)",
+                    title: "Reaver"
                 }
+            ];
 
-                var structureInfoLoc = jsonStructureUpgradesLocalized.find(
-                    (entry) => entry.resid == structureInfo.resid
-                );
-                if (structureInfoLoc == undefined) {
-                    console.log("couldn't find " + structureInfo.name + " in loca");
-                    structureInfoLoc = structureInfo;
-                }
-                var name = structureInfoLoc.name;
+            const overrideBuildingsBeta = {
+                /*throne: ["town_hall_i_town_center: throne"],*/
+                feudal: [
+                    "town_hall_ii:town_hall_ii_castle",
+                    "town_hall_iii:town_hall_iii_citadel",
+                    "town_hall_iv:town_hall_iv_grand_estate"
+                ],
+                feudal_monarchy: ["workshop:militia_barracks", "blacksmith:royal_smith", "iii_unlock:lords_manor"],
+                feudal_aristocracy: [
+                    "store_house:house_hunting_grounds",
+                    "granary:serf_quarters",
+                    "iii_unlock_2:retainers_estate"
+                ],
+                dark: [
+                    "town_hall_ii:town_hall_ii_dread_spire",
+                    "town_hall_iii:town_hall_iii_stronghold",
+                    "iii_unlock:overlords_tower",
+                    "town_hall_iv:town_hall_iv_black_palace"
+                ],
 
-                if (name.indexOf("<br>")) {
-                    name = name.replaceAll("</br>", " ");
-                    name = name.replaceAll("<br>", " ");
-                }
+                dark_cult_of_tyranny: ["vendor:collector", "market:shadowtrade_quarter"],
+                dark_cult_of_death: ["mana_obelisk:grave_obelisk", "monolith:crypt-temple"],
+                barbarian: [
+                    "library:battle_ritual_site",
+                    "arcane_institute:ancestral_seer_hall",
+                    "town_hall_ii:town_hall_ii_communal_tent",
+                    "town_hall_iii:town_hall_iii_halls_of_war",
+                    "iii_unlock:shrine_of_the_wargod",
+                    "town_hall_iv:town_hall_iv_warlords_pavilion"
+                ],
+                industrious: [
+                    "store_house:workers_farmstead",
+                    "granary:grand_mill",
+                    "town_hall_ii:town_hall_ii_bulwark",
+                    "town_hall_iii:town_hall_iii_forge_tower",
+                    "iii_unlock:bastions_barricade",
+                    "town_hall_iv:town_hall_iv_industry_compound"
+                ],
+                mystic: [
+                    "workshop:evocators_abode",
+                    "stonemason:stone_conjurer",
+                    "town_hall_ii:town_hall_ii_mages_plaza",
+                    "town_hall_iii:town_hall_iii_mystic_spire",
+                    "town_hall_iv:town_hall_iv_wizards_auditorium"
+                ],
+                mystic_school_of_summoning: ["iii_unlock_3:summoners_cistern"],
+                mystic_school_of_potential: ["iii_unlock_2:academy_of_potential"],
+                mystic_school_of_attunement: ["iii_unlock:altar_of_the_all-seers"],
 
-                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, affinity, tomeInfo);
+                high: [
+                    "workshop:artisan_workshop",
+                    "blacksmith:lightforge",
+                    "town_hall_ii:town_hall_ii_atrium_of_light",
+                    "town_hall_iii:town_hall_iii_pantheon",
+                    "iii_unlock:solar_nexus",
+                    "town_hall_iv:town_hall_iv_solar_sanctum"
+                ],
+                reaver: [
+                    "shrine:mana_forge",
+                    "mana_obelisk:lodestone_foundry",
+                    "town_hall_ii:town_hall_ii_steel_hall",
+                    "town_hall_iii:town_hall_iii_chained_spire",
+                    "iii_unlock:extraction_nexus",
+                    "town_hall_iv:town_hall_iv_ironclad_citadel"
+                ],
+                primal: [
+                    "workshop:woodcarvers_workshop",
+                    "stonemason:stonestele",
+                    "town_hall_ii:town_hall_ii_clan_lodge",
+                    "town_hall_iii:town_hall_iii_spirit_hall",
+                    "iii_unlock:shrine_to_the_spirits",
+                    "town_hall_iv:town_hall_iv_primeval_palace"
+                ],
+                oathsworn: [
+                    "vendor:training_hall",
+                    "market:hall_of_devotion",
+                    "town_hall_ii:town_hall_ii_oath_square",
+                    "town_hall_iii:town_hall_iii_steel_bastion",
+                    "iii_unlock:paragon_quarters",
+                    "town_hall_iv:town_hall_iv_palace_of_vows"
+                ],
+                architect: [
+                    "library:magitectural_archive",
+                    "arcane_institute:architect_institute",
+                    "town_hall_ii:town_hall_ii_great_ziggurat",
+                    "town_hall_iii:town_hall_iii_ascended_gardens",
+                    "iii_unlock:affinity_obelisks",
+                    "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
+                ]
+            };
+            const overrideBuildings = {
+                /*throne: ["town_hall_i_town_center: throne"],*/
+                feudal: [
+                    "town_hall_ii:town_hall_ii_castle",
+                    "town_hall_iii:town_hall_iii_citadel",
+                    "town_hall_iv:town_hall_iv_grand_estate"
+                ],
+                feudal_monarchy: ["workshop:militia_barracks", "blacksmith:royal_smith", "iii_unlock:lords_manor"],
+                feudal_aristocracy: [
+                    "store_house:house_hunting_grounds",
+                    "granary:serf_quarters",
+                    "iii_unlock_2:retainers_estate"
+                ],
+                dark: [
+                    "town_hall_ii:town_hall_ii_dread_spire",
+                    "town_hall_iii:town_hall_iii_stronghold",
+                    "iii_unlock:overlords_tower",
+                    "town_hall_iv:town_hall_iv_black_palace",
+                    "vendor:experimentation_chambers",
+                    "market:underground_laboratory",
+                    "tavern:interrogation_dungeon",
+                    "bathhouse:ritual_mausoleum"
+                ],
 
-                //insert connection line
-
-                newNode.setAttribute("style", "grid-row:" + rowIndex + "; grid-column:" + columnIndex + ";");
-                holder.append(newNode);
-            }
+                barbarian: [
+                    "library:battle_ritual_site",
+                    "arcane_institute:ancestral_seer_hall",
+                    "town_hall_ii:town_hall_ii_communal_tent",
+                    "town_hall_iii:town_hall_iii_halls_of_war",
+                    "iii_unlock:shrine_of_the_wargod",
+                    "town_hall_iv:town_hall_iv_warlords_pavilion"
+                ],
+                industrious: [
+                    "store_house:workers_farmstead",
+                    "granary:grand_mill",
+                    "town_hall_ii:town_hall_ii_bulwark",
+                    "town_hall_iii:town_hall_iii_forge_tower",
+                    "iii_unlock:bastions_barricade",
+                    "town_hall_iv:town_hall_iv_industry_compound"
+                ],
+                  mystic: [
+                    "workshop:evocators_abode",
+                    "stonemason:stone_conjurer",
+                    "town_hall_ii:town_hall_ii_mages_plaza",
+                    "town_hall_iii:town_hall_iii_mystic_spire",
+                    "town_hall_iv:town_hall_iv_wizards_auditorium"
+                ],
+                mystic_school_of_summoning: ["iii_unlock_3:summoners_cistern"],
+                mystic_school_of_potential: ["iii_unlock_2:academy_of_potential"],
+                mystic_school_of_attunement: ["iii_unlock:altar_of_the_all-seers"],
+                high: [
+                    "workshop:artisan_workshop",
+                    "blacksmith:lightforge",
+                    "town_hall_ii:town_hall_ii_atrium_of_light",
+                    "town_hall_iii:town_hall_iii_pantheon",
+                    "iii_unlock:solar_nexus",
+                    "town_hall_iv:town_hall_iv_solar_sanctum"
+                ],
+                reaver: [
+                    "shrine:mana_forge",
+                    "mana_obelisk:lodestone_foundry",
+                    "town_hall_ii:town_hall_ii_steel_hall",
+                    "town_hall_iii:town_hall_iii_chained_spire",
+                    "iii_unlock:extraction_nexus",
+                    "town_hall_iv:town_hall_iv_ironclad_citadel"
+                ],
+                primal: [
+                    "workshop:woodcarvers_workshop",
+                    "stonemason:stonestele",
+                    "town_hall_ii:town_hall_ii_clan_lodge",
+                    "town_hall_iii:town_hall_iii_spirit_hall",
+                    "iii_unlock:shrine_to_the_spirits",
+                    "town_hall_iv:town_hall_iv_primeval_palace"
+                ],
+                oathsworn: [
+                    "vendor:training_hall",
+                    "market:hall_of_devotion",
+                    "town_hall_ii:town_hall_ii_oath_square",
+                    "town_hall_iii:town_hall_iii_steel_bastion",
+                    "iii_unlock:paragon_quarters",
+                    "town_hall_iv:town_hall_iv_palace_of_vows"
+                ],
+                architect: [
+                    "library:magitectural_archive",
+                    "arcane_institute:architect_institute",
+                    "town_hall_ii:town_hall_ii_great_ziggurat",
+                    "town_hall_iii:town_hall_iii_ascended_gardens",
+                    "iii_unlock:affinity_obelisks",
+                    "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
+                ]
+            };
 
             function findResources(text) {
                 const regex = /\+\d+%?\s*<([^>]+)>/g;
@@ -533,7 +645,210 @@
                 return Array.from(resources);
             }
 
-            function CreateStructureNode(structureInfo, structureInfoLoc, affinity, tomeInfo) {
+            function GetTree(nameOverride, lines, parent, buildingMap) {
+                var Holder = document.createElement("DIV");
+                Holder.className = "tree-grid";
+
+                const text = document.createElement("div");
+                text.className = "textTitle";
+
+                if (nameOverride != "") {
+                    text.innerHTML = nameOverride;
+                    Holder.className = "tree-grid2";
+                }
+
+                Holder.appendChild(text);
+                //Holder.setAttribute("style", "top: " + offset[0] + "px; left:" + offset[1] + "px;");
+
+                // Convert overrideBuildings into a lookup map for easy matching
+                const overrideMap = {};
+                if (showBetaTooltip.checked) {
+                    for (const [overrideName, list] of Object.entries(overrideBuildingsBeta)) {
+                        for (const entry of list) {
+                            const [base, extra] = entry.split(":");
+                            if (!overrideMap[base]) overrideMap[base] = [];
+                            overrideMap[base].push({ overrideName, extra });
+                        }
+                    }
+                } else {
+                    for (const [overrideName, list] of Object.entries(overrideBuildings)) {
+                        for (const entry of list) {
+                            const [base, extra] = entry.split(":");
+                            if (!overrideMap[base]) overrideMap[base] = [];
+                            overrideMap[base].push({ overrideName, extra });
+                        }
+                    }
+                }
+
+                // Now loop through TestBase
+                let row = 0;
+
+                for (const [lineName, buildings] of Object.entries(lines)) {
+                    let offsetby = [];
+                    let col = 0;
+
+                    buildings.forEach((building) => {
+                        // Regular building
+                        // check if skipping
+                        let tomeID = "";
+                        let buildingName = "";
+                        if (nameOverride.indexOf("Tome") != -1) {
+                            tomeID = building.tomeId;
+                            buildingName = building.buildingId;
+                        } else {
+                            buildingName = building;
+                        }
+
+                        const split = buildingName.split("*");
+                        if (split[1] != undefined) {
+                            // if theres a split, add to column and break
+                            col += parseInt(split[1]);
+                        } else {
+                            if (buildingMap.some((b) => b.buildingId === buildingName)) {
+                                if (document.getElementById("tomeCheck").checked) {
+                                    handleStructure(buildingName, row, col, Holder, undefined, tomeID);
+                                }
+                            } else {
+                                handleStructure(buildingName, row, col, Holder, undefined, tomeID);
+                            }
+
+                            //  row++; // move down one row for each building
+
+                            // Check if this building has overrides
+
+                            // After finishing the line, reset col for next line (if you need multiple columns)
+
+                            if (overrideMap[buildingName]) {
+                                for (const { overrideName, extra } of overrideMap[buildingName]) {
+                                    const name = overrideName.split("_")[0];
+                                    const checkmark = document.getElementById(name + "Check");
+                                    if (checkmark === null) {
+                                        if (!offsetby.includes(name)) {
+                                            offsetby.push(name);
+                                        }
+                                        handleStructure(
+                                            extra,
+                                            row + offsetby.indexOf(name) + 1,
+                                            col,
+                                            Holder,
+                                            overrideName,
+                                            tomeID
+                                        );
+                                    } else if (checkmark.checked) {
+                                        if (!offsetby.includes(name)) {
+                                            offsetby.push(name);
+                                        }
+                                        handleStructure(
+                                            extra,
+                                            row + offsetby.indexOf(name) + 1,
+                                            col,
+                                            Holder,
+                                            overrideName,
+                                            tomeID
+                                        );
+                                    }
+                                }
+                            }
+                            col++;
+                        }
+                    });
+
+                    row = row + offsetby.length;
+
+                    row++;
+                }
+
+                parent.appendChild(Holder);
+                resizeParentToFitChildren(Holder);
+            }
+
+            function resizeParentToFitChildren(parent) {
+                const children = parent.querySelectorAll(":scope > *");
+                let maxBottom = 0;
+                let maxRight = 0;
+
+                children.forEach((child) => {
+                    // Get child offset relative to parent
+                    const bottom = child.offsetTop + child.offsetHeight;
+                    const right = child.offsetLeft + child.offsetWidth;
+
+                    if (bottom > maxBottom) maxBottom = bottom;
+                    if (right > maxRight) maxRight = right;
+                });
+
+                parent.style.height = `${maxBottom}px`;
+                parent.style.width = `${maxRight}px`;
+            }
+
+            function handleStructure(entry, rowIndex, columnIndex, Holder, override, tomeID) {
+                if (entry == null) {
+                    return;
+                }
+                var splits = entry.split(":");
+                var structure = splits[0];
+                var affinity = splits[1];
+
+                var overwrite = "";
+
+                for (i in jsonStructureUpgrades) {
+                    if (jsonStructureUpgrades[i].id === structure) {
+                        // no icon skips the unused ones that are still in the data
+                        if ("icon" in jsonStructureUpgrades[i]) {
+                            SetUpStructureNodeNew(
+                                jsonStructureUpgrades[i],
+                                rowIndex,
+                                columnIndex,
+                                Holder,
+                                override,
+                                tomeID
+                            );
+                        }
+                    }
+                }
+            }
+
+            function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, override, tomeID) {
+                var i,
+                    x = "";
+
+                var nodeHeight = 120;
+                var nodeWidth = 300;
+
+                var tomeInfo = null;
+
+                var structureInfoLoc = jsonStructureUpgradesLocalized.find(
+                    (entry) => entry.resid == structureInfo.resid
+                );
+                if (structureInfoLoc == undefined) {
+                    structureInfoLoc = structureInfo;
+                }
+                var name = structureInfoLoc.name;
+
+                if (name.indexOf("<br>")) {
+                    name = name.replaceAll("</br>", " ");
+                    name = name.replaceAll("<br>", " ");
+                }
+
+                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID);
+
+                //insert connection line
+                let extra = 0;
+                if (override) {
+                    extra = 20;
+                }
+                const top = rowIndex * nodeHeight;
+                const left = extra + columnIndex * nodeWidth;
+
+                //  newNode.setAttribute("style", "grid-row:" + rowIndex + "; grid-column:" + columnIndex + ";");
+
+                newNode.style.position = "absolute";
+                newNode.style.left = left + "px";
+                newNode.style.top = top + "px";
+
+                holder.append(newNode);
+            }
+
+            function CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID) {
                 var i,
                     x = "";
                 var name = structureInfoLoc.name;
@@ -544,8 +859,6 @@
                 }
 
                 var newNode = document.createElement("DIV");
-
-                //insert connection line
 
                 newNode.className = "entry";
                 var newNodeBackground = document.createElement("DIV");
@@ -562,155 +875,6 @@
                 newNodeBackground.className = "structureNode";
 
                 spa.innerHTML = '<span style="color:  #d7c297;">' + name.toUpperCase() + "</span>" + "<br>";
-                if (tomeInfo) {
-                    newNodeBackground.setAttribute("style", "left:15px; top:-30px; width:190px");
-                    spa.innerHTML =
-                        '<span style="color:  #d7c297;">' +
-                        name.toUpperCase() +
-                        ClearAffinityExtraTags(duplicateTags(tomeInfo.affinities)).replaceAll(",", "") +
-                        "</span>" +
-                        "<br>";
-
-                    newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/TomeIcons/' + tomeInfo.id + '.png")';
-                    newNodeBackground.style.backgroundRepeat = "no-repeat";
-                    newNodeBackground.style.backgroundPositionX = "140px";
-                    newNodeBackground.style.backgroundSize = "80px";
-                    newNodeBackground.style.backgroundColor = "#111";
-                } else {
-                    if (affinity) {
-                        newNodeBackground.setAttribute("style", "left:15px; top:-30px; width:190px");
-
-                        if (affinity == "mystic") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/mystic.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML =
-                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "mysticAttunement") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/attunement.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML =
-                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "mysticPotential") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/potential.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML =
-                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "oathsworn") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/oathsworn.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML =
-                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "architect") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/architect.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#282711";
-                            spa.innerHTML =
-                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "mysticSummoning") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/summoning.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML =
-                                '<span style="color:  #9bc6ff;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "barbarian") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/barbarian.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  red;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "high") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/high.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  yellow;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "feudalMonarchy") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/monarchy.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  grey;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "feudalAristocracy") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/aristocracy.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  grey;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "dark") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/dark.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML =
-                                '<span style="color:  #e92fe9;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "industrious") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/industrious.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  orange;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "reaver") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/reaver.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  yellow;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                        if (affinity == "primal") {
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/primal.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  green;">⤷' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-
-                        if (affinity == "throne") {
-                            newNodeBackground.setAttribute("style", "left:0px; top:0px; width:220px");
-                            newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/throne.png")';
-                            newNodeBackground.style.backgroundRepeat = "no-repeat";
-                            newNodeBackground.style.backgroundPositionX = "140px";
-                            newNodeBackground.style.backgroundSize = "80px";
-                            newNodeBackground.style.backgroundColor = "#111";
-                            spa.innerHTML = '<span style="color:  yellow;">' + name.toUpperCase() + "</span>" + "<br>";
-                        }
-                    }
-                }
 
                 var spa2 = document.createElement("SPAN");
                 spa2.setAttribute("style", "float:right");
@@ -760,11 +924,28 @@
                 cost.innerHTML = structureInfo.cost;
 
                 newNode.appendChild(newNodeBackground);
+                if (override) {
+                    newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/Text/' + override + '.png")';
+                    newNodeBackground.style.backgroundRepeat = "no-repeat";
+                    newNodeBackground.style.backgroundPositionX = "140px";
+                    newNodeBackground.style.backgroundSize = "80px";
+                    newNodeBackground.style.backgroundColor = "rgb(17,17,17)";
+                }
 
-                newNodeBackground.append(spa);
-                newNodeBackground.append(cost);
+                if (tomeID) {
+                    newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/TomeIcons/' + tomeID + '.png")';
+                    newNodeBackground.style.backgroundRepeat = "no-repeat";
+                    newNodeBackground.style.backgroundPositionX = "140px";
+                    newNodeBackground.style.backgroundSize = "80px";
+                    newNodeBackground.style.backgroundColor = "rgb(17,17,17)";
+                }
 
-                newNodeBackground.append(img);
+                for (const { key, color, title } of iconBackgroundMap) {
+                    if (key == override) {
+                        newNodeBackground.style.backgroundColor = color;
+                        spa2.innerHTML += "<br>" + title;
+                    }
+                }
 
                 var type = findResources(structureInfo.prediction_description + structureInfo.description);
 
@@ -777,151 +958,25 @@
                     newNodeBackground.append(Type);
                 }
 
-                //newNode.appendChild(spa2);
+                newNodeBackground.append(spa);
+                newNodeBackground.append(cost);
+
+                newNodeBackground.append(img);
 
                 addTooltipListeners(newNode, spa2);
                 return newNode;
             }
 
-            function drawLine(topPos, leftPos, angle, width) {
-                var connectionLine = document.createElement("DIV");
+            function toggle(source) {
+                checkboxes = document.getElementsByName("checkToggle");
+                // Create a new 'change' event
 
-                connectionLine.setAttribute(
-                    "style",
-                    "top:" +
-                        topPos +
-                        "px; left:" +
-                        leftPos +
-                        "px; rotate:" +
-                        angle +
-                        "deg; background-color:" +
-                        "white" +
-                        "; width: +" +
-                        width +
-                        "px"
-                );
-                connectionLine.className = "branch-line";
-                return connectionLine;
-            }
+                // Dispatch it.
 
-            function SetHeaderNodes(keyword, type) {
-                var offset = 1;
-                var i,
-                    x = "";
-                var holder = document.getElementById("treeHolder" + type);
-                var treespace = document.getElementById("treespace" + type);
-                var nodeHeight = 150;
-                for (x in keyword) {
-                    var splits = keyword[x].split(":");
-
-                    var structure = splits[0];
-                    var row = parseInt(splits[1]);
-                    var column = parseInt(splits[2]);
-                    var connectTo = splits[3];
-
-                    var newNode = document.createElement("DIV");
-
-                    newNode.setAttribute("style", "grid-row:" + row + "; grid-column:" + column + ";");
-
-                    //  newNode.innerHTML = name;
-                    newNode.className = "entry";
-                    var newNodeBackground = document.createElement("DIV");
-
-                    var img = document.createElement("IMG");
-                    img.setAttribute("src", "/aow4db/Icons/Text/" + structure + ".png");
-                    img.setAttribute("height", "50px");
-                    img.className = "structureNodeIcon";
-                    newNode.setAttribute("id", structure);
-
-                    var spa = document.createElement("SPAN");
-                    spa.innerHTML = structure.toUpperCase();
-
-                    //newNodeBackground.className = "structureNode";
-
-                    newNode.appendChild(newNodeBackground);
-                    newNodeBackground.append(spa);
-                    newNodeBackground.append(img);
-
-                    holder.appendChild(newNode);
+                for (var checkbox in checkboxes) {
+                    checkboxes[checkbox].checked = source.checked;
                 }
-            }
-
-            function SetCategories() {
-                // name of category , width, height, color, left, top
-                CreateCategory("Affinity Upgrades", 610, 750, "#641c3459", 2850, 2408);
-                CreateCategory("Wizard Tower", 1583, 400, "#1c645d59", 1886, 1975);
-                CreateCategory("Tome Buildings", 1945, 660, "#482e8530", 287, 2900);
-                CreateCategory("Fortifications", 3470, 476, "#4c4b4b57", 622, 0);
-                CreateCategory("Basic Income Buildings", 1245, 2150, "#8eae6f2b", 287, 595);
-                CreateCategory("TII City", 280, 1110, "#b48d522b", 1586, 485);
-                CreateCategory("TIII City", 280, 1110, "#b48d522b", 2249, 485);
-                CreateCategory("TIV City", 280, 1110, "#b48d522b", 3509, 485);
-            }
-
-            function CreateCategory(name, width, height, color, positionLeft, positionTop) {
-                var holder = document.getElementById("treeHoldergeneral");
-                var treespace = document.getElementById("treespacegeneral");
-                var category = document.createElement("DIV");
-
-                category.setAttribute(
-                    "style",
-                    "width:" +
-                        width +
-                        "px; height:" +
-                        height +
-                        "px; position:absolute; top:" +
-                        positionTop +
-                        "px; left:" +
-                        positionLeft +
-                        "px; background-color:" +
-                        color +
-                        ";   border-width:5px;   border-style: solid;border-image: url(/aow4db/Icons/9slicetooltip.png);border-image-slice: 10 10 10 10 ; margin-left:-40px"
-                );
-                var categoryname = document.createElement("DIV");
-                categoryname.innerHTML = name.toUpperCase();
-                categoryname.setAttribute("Style", "position:absolute; top:2px; left:5px; color:white");
-                category.appendChild(categoryname);
-                holder.appendChild(category);
-            }
-
-            function CreateDiv(row, breakpoint) {
-                var holder = document.getElementById("treeHoldergeneral");
-                var treespace = document.getElementById("treespacegeneral");
-                var breakline = document.createElement("DIV");
-
-                breakline.setAttribute(
-                    "style",
-                    "grid-row:" +
-                        row +
-                        "; grid-column:16; left: 30%; position: relative; color: grey; font-size:12px;top: 75%;"
-                );
-                breakline.innerHTML = breakpoint;
-                // add breaklines
-                holder.appendChild(breakline);
-
-                var breakline = document.createElement("DIV");
-
-                breakline.setAttribute(
-                    "style",
-                    "grid-row:" +
-                        row +
-                        "; grid-column:1; left: 60%; position: relative; color: grey;font-size:12px;top: 75%;"
-                );
-                breakline.innerHTML = breakpoint;
-                // add breaklines
-                holder.appendChild(breakline);
-
-                var toppos = row * 150;
-                var leftpos = 0;
-                var color = "red";
-                var connectionLine = document.createElement("DIV");
-                connectionLine.setAttribute(
-                    "style",
-                    "top:" + toppos + "px; left:" + leftpos + "px; rotate:0deg;width: 1100px;"
-                );
-
-                connectionLine.className = "dotted-line";
-                treespace.appendChild(connectionLine);
+                reDrawAll();
             }
         </script>
 
@@ -930,74 +985,146 @@
 
     <body>
         <div id="header"></div>
-         <svg height="4000px" width="4000px" id="SVGHolder" style="position: absolute; top: 0px; left:1px; z-index: 1; pointer-events: none"></svg>
-      
+        <svg
+            height="4000px"
+            width="6000px"
+            id="SVGHolder"
+            style="position: absolute; top: 0px; left: 1px; z-index: 1; pointer-events: none"></svg>
+
         <div id="General" class="w3-container w3-border city">
             <div class="textblocktitle">City Tree</div>
 
-            <div class="tree-space" id="treespacegeneral">
-                <div class="tree-grid" id="treeHoldergeneral"></div>
+            <div class="tree-space" id="treespacegeneral"></div>
+            <div style="display: flex; justify-content: center;">
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="toggleAllCheck"
+                        checked="checked"
+                        onchange="toggle(this)" />
+                    Toggle All
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="checkToggle" id="tomeCheck" checked="checked" onchange="reDrawAll()" />
+                    Tomes
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="barbarianCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Barbarian
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="checkToggle" id="darkCheck" checked="checked" onchange="reDrawAll()" />
+                    Dark
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="feudalCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Feudal
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="checkToggle" id="highCheck" checked="checked" onchange="reDrawAll()" />
+                    High
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="industriousCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Industrious
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="mysticCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Mystic
+                </label>
+
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="reaverCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Reaver
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="primalCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Primal
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="oathswornCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Oathsworn
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="architectCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Architect
+                </label>
             </div>
         </div>
-         
     </body>
 </html>
 <style>
-    .branch-line {
-        height: 4px;
-        margin-top: -6px;
-        position: absolute;
-
-        transform-origin: left center;
-        background-color: white;
-        background-size: 10px;
-        width: 25px;
-    }
-
-    .dotted-line {
-        height: 4px;
-        margin-top: -6px;
-        position: absolute;
-
-        transform-origin: left center;
-        background-image: url(/aow4db/Icons/Interface/talents-arrow-line-gray.png);
-        background-size: 10px;
-        width: 25px;
-    }
-
-    .tree-grid {
-        display: grid;
-        grid-template-columns: repeat(14, 320px);
-        grid-template-rows: repeat(26, 120px);
-        position: absolute;
-        height: auto;
-        width: auto;
-        background-color: black;
-
-        border-width: 5px;
-        border-image: url(/aow4db/Icons/9slicetooltip.png);
-        border-image-slice: 10 10 10 10 fill;
-        border-style: solid;
-        padding-top: 30px;
-    }
-
     .tree-grid2 {
-        display: grid;
-        grid-template-columns: repeat(14, 320px);
-        grid-template-rows: repeat(26, 120px);
-        position: absolute;
-        height: auto;
-        width: auto;
+        position: relative;
+        margin: 80px;
 
-        padding-top: 30px;
+        background-color: #1c645d59;
+        border-width: 5px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+    }
+    .tree-grid {
+        position: relative;
+        margin: 80px;
+    }
+
+    .textTitle {
+        color: white;
+        position: relative;
+        top: -20px;
     }
 
     .tree-space {
         width: auto;
         height: auto;
-
-        position: relative;
-        transform: scale(0.85);
+        display: flex;
+        position: absolute;
+        flex-direction: row;
+        flex-wrap: wrap;
+        transform: scale(0.9);
+         transform-origin: left;
     }
 
     .entry {
@@ -1024,6 +1151,11 @@
 
         padding: 5px;
         z-index: 2;
+    }
+
+    .structureNode.override {
+        background-image: none;
+        background-color: aliceblue;
     }
 
     .structureNodeTitle {

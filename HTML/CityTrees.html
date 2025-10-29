@@ -74,15 +74,6 @@
                 }
             ];
 
-            const affinityGrid = [
-                ["materium_bolstering_matrix:throne", "materium_amplifier_lens:throne"],
-                ["astral_bolstering_matrix:throne", "astral_amplifier_lens:throne"],
-                ["nature_bolstering_matrix:throne", "nature_amplifier_lens:throne"],
-                ["chaos_bolstering_matrix:throne", "chaos_amplifier_lens:throne"],
-                ["order_bolstering_matrix:throne", "order_amplifier_lens:throne"],
-                ["shadow_bolstering_matrix:throne", "shadow_amplifier_lens:throne"]
-            ];
-
             const baseGrid = [["town_hall_i_town_center"], ["throne:throne"]];
 
             // generation of lines
@@ -147,13 +138,11 @@
                                 path.setAttribute("stroke-width", "3");
 
                                 const affPath = jsonCityTreeNodes[i].id.replace("*", af + "_");
-                                //console.log(affPath);
 
                                 const divOG = document.getElementById(affPath);
 
                                 const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
                                 if (divOG == undefined || divTO == undefined) {
-                                    //  console.log("Couldn't find " + affPath + " node");
                                     break;
                                 }
                                 path.setAttribute("d", generatePathSettings(divTO, divOG, j * 5 + 10));
@@ -175,11 +164,10 @@
 
                             const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
                             if (divOG == undefined || divTO == undefined) {
-                                //  console.log("Couldn't find " + jsonCityTreeNodes[i].id + " node");
                                 break;
                             }
 
-                            path.setAttribute("d", generatePathSettings(divTO, divOG, j * 5 + 10));
+                            path.setAttribute("d", generatePathSettings(divTO, divOG, j + 30));
                             holderSVG.appendChild(path);
                         }
                     }
@@ -188,6 +176,7 @@
 
             // end generation of lines
             const TestBase = {
+                padding: ["empty"],
                 goldline: ["vendor", "market", "mint", "merchants_guild"],
                 manaline: ["shrine", "mana_obelisk", "monolith", "mages_guild"],
                 knowledgeline: ["library", "arcane_institute", "academy", "scholars_guild"],
@@ -199,6 +188,41 @@
             };
 
             const wizardTower = {
+                baseLine: ["empty",
+                    "wizard_tower_foundation",
+                    "wizard_tower_level_i",
+                    "wizard_tower_level_ii",
+                    "wizard_tower_apex",
+                    "wizard_tower_arcane_observatory"
+                ],
+                secondLine: ["empty*2", "wizard_tower_crypts", "wizard_tower_item_forge"],
+                thirdLine: [
+                    "empty*2",
+                    "wizard_tower_prison_cells",
+                    "wizard_tower_room_of_recall",
+                    "wizard_tower_channeling_chamber",
+                    "wizard_tower_teleportation_circle"
+                ]
+            };
+            const wizardTowerBeta = {
+                baseLine: ["empty",
+                    "wizard_tower_foundation",
+                    "wizard_tower_chambers",
+                    "wizard_tower_high_halls",
+                    "wizard_tower_apex",
+                    "wizard_tower_arcane_observatory"
+                ],
+                secondLine: ["empty*2", "wizard_tower_crypts", "wizard_tower_item_forge"],
+                thirdLine: [
+                    "empty*2",
+                    "wizard_tower_prison_cells",
+                    "wizard_tower_room_of_recall",
+                    "wizard_tower_channeling_chamber",
+                    "wizard_tower_teleportation_circle"
+                ]
+            };
+
+            const vampireTower = {
                 baseLine: [
                     "wizard_tower_foundation",
                     "wizard_tower_chambers",
@@ -216,11 +240,22 @@
                 ]
             };
 
+            const affinity = {
+                materium: ["empty*4", "materium_bolstering_matrix:throne", "materium_amplifier_lens:throne"],
+                astra: ["empty*4", "astral_bolstering_matrix:throne", "astral_amplifier_lens:throne"],
+                nature: ["empty*4", "nature_bolstering_matrix:throne", "nature_amplifier_lens:throne"],
+                chaos: ["empty*4", "chaos_bolstering_matrix:throne", "chaos_amplifier_lens:throne"],
+                order: ["empty*4", "order_bolstering_matrix:throne", "order_amplifier_lens:throne"],
+                shadow: ["empty*4", "shadow_bolstering_matrix:throne", "shadow_amplifier_lens:throne"]
+            };
+
             // end generation of lines
             const Start = {
-                baseline: [
-                    "town_hall_i_town_center",
-                    "empty*5",
+                baseline: ["town_hall_i_town_center"]
+            };
+
+            const TownHalls = {
+                townHallsline: [
                     "town_hall_ii",
                     "empty",
                     "town_hall_iii",
@@ -230,50 +265,282 @@
                     "town_hall_iv"
                 ]
             };
+
+            const Bath = {
+                stabilityLine: ["empty", "tavern", "bathhouse"]
+            };
             const Fortifications = {
-                walls: ["palisade_walls", "empty*6", "stone_walls"],
-                Towers: ["empty*5", "caltrop_stash", "empty*3", "ballista_towers", "catapult_towers"],
-                Battlements: ["empty*5", "arcane_battlements", "empty*3", "necrotic_spires:shadow", "beacon_of_valor"],
-                Spires: ["empty*5", "archer_battlements", "empty*3", "healing_spires:order"]
+                walls: ["empty*4", "palisade_walls", "empty*6", "stone_walls"],
+                Towers: ["empty*9", "caltrop_stash", "empty*3", "ballista_towers", "catapult_towers"],
+                Battlements: ["empty*9", "arcane_battlements", "empty*3", "necrotic_spires", "beacon_of_valor"],
+                Spires: ["empty*9", "archer_battlements", "empty*3", "healing_spires"]
             };
 
+            function GetTomeBuilds(buildingMap) {
+                const excludedIds = ["healing_spires", "necrotic_spires"];
+
+                const filteredIds = buildingMap.filter((b) => !excludedIds.includes(b.buildingId));
+
+                const Buildings = {};
+                const chunkSize = 6;
+
+                for (let i = 0; i < filteredIds.length; i += chunkSize) {
+                    const chunk = filteredIds.slice(i, i + chunkSize);
+                    Buildings[i / chunkSize] = chunk;
+                }
+                return Buildings;
+            }
+
             function reDrawAll() {
+                const buildingMap = GetAllBuildings();
                 var treespace = document.getElementById("treespacegeneral");
                 treespace.innerHTML = "";
-                const offsetStart = [500, -200];
-                const offsetBase = [500, 200];
-                const offsetWizard = [1500, 1800];
-                const offsetTower = [-300, 500];
-                GetTree(Start, offsetStart);
-                GetTree(TestBase, offsetBase);
-                GetTree(wizardTower, offsetWizard);
-                GetTree(Fortifications, offsetTower);
+                // parent fortifications
+                const parentFort = document.createElement("div");
+                treespace.appendChild(parentFort);
 
-                //  SetUpTreeDivChunks(townHallsGrid, 1586, 485);
-                //  SetUpTreeDivChunks(tomeBuildingsGrid, 287, 2959);
-                //  SetUpTreeDivChunks(wizardTowerGrid, 1886, 1975);
-                //  SetUpTreeDivChunks(affinityGrid, 2850, 2408);
-                //  SetUpTreeDivChunks(baseGrid, 0, 485);
-                //SetUpTreeNodes(general, "general");
+                GetTree("Fortifications", Fortifications, parentFort, buildingMap);
+                // parent base
+                const parentBase = document.createElement("div");
+                parentBase.setAttribute("style", "display:flex");
+                treespace.appendChild(parentBase);
+                GetTree("", Start, parentBase, buildingMap);
+                GetTree("Base Buildings", TestBase, parentBase, buildingMap);
+                // tome stuff
+                //  if(tomeCheck)
+                const parentWizard = document.createElement("div");
+                treespace.appendChild(parentWizard);
+                GetTree("", TownHalls, parentWizard, buildingMap);
+                GetTree("", Bath, parentWizard, buildingMap);
+                // wizard tower base
+                if (showBetaTooltip.checked) {
+                    GetTree("Wizard Tower", wizardTowerBeta, parentWizard, buildingMap);
+                } else {
+                    GetTree("Wizard Tower", wizardTower, parentWizard, buildingMap);
+                }
+
+                GetTree("", affinity, parentWizard, buildingMap);
+                const parentTomes = document.createElement("div");
+                treespace.appendChild(parentTomes);
+                parentTomes.setAttribute("style", " position: relative;left: 293px;");
+                GetTree("Tome Buildings", GetTomeBuilds(buildingMap), parentTomes, buildingMap);
+
                 SetLevelUpStuff();
                 updateConnector();
+            }
+
+            function GetAllBuildings() {
+                let ListOfCityBuildings = [];
+                let TomeBuildings = [];
+
+                // 1️⃣ Collect city buildings
+                for (const i in jsonStructureUpgrades) {
+                    if (!jsonStructureUpgrades[i].is_sector_upgrade) {
+                        ListOfCityBuildings.push(jsonStructureUpgrades[i].id);
+                    }
+                }
+
+                // 2️⃣ Find tome buildings that match city buildings
+                for (const j in jsonTomes) {
+                    const tome = jsonTomes[j];
+                    if (!("skills" in tome)) continue;
+
+                    for (const k in tome.skills) {
+                        const skill = tome.skills[k];
+                        if ("upgrade_slug" in skill && ListOfCityBuildings.includes(skill.upgrade_slug)) {
+                            TomeBuildings.push({
+                                tomeId: tome.id, // Tome ID
+                                buildingId: skill.upgrade_slug // Building ID
+                            });
+                        }
+                    }
+                }
+
+                return TomeBuildings;
             }
 
             function HandlePage() {
                 // combine extra additions
                 jsonStructureUpgrades = [...jsonStructureUpgrades, ...extraBuildings];
-                //  SetUpTreeDivChunks(fortificationsGrid, 622, 0);
-                //   SetUpTreeDivChunks(basicIncomeGrid, 287, 595);
+
                 reDrawAll();
             }
 
             const iconBackgroundMap = [
                 {
                     key: "industrious",
-                    color: "Hero Skill"
+                    color: "rgb(17, 17, 17)",
+                    title: "Industrious"
+                },
+                {
+                    key: "feudal",
+                    color: "rgb(17, 17, 17)",
+                    title: "Feudal"
+                },
+                {
+                    key: "feudal_aristocracy",
+                    color: "rgb(17, 17, 17)",
+                    title: "Feudal Aristocracy"
+                }, {
+                    key: "feudal_monarchy",
+                    color: "rgb(17, 17, 17)",
+                    title: "Feudal Monarchy"
+                },
+                {
+                    key: "barbarian",
+                    color: "rgb(17, 17, 17)",
+                    title: "Barbarian"
+                },
+                {
+                    key: "high",
+                    color: "rgb(17, 17, 17)",
+                    title: "High"
+                },
+                {
+                    key: "mystic",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic"
+                },
+                {
+                    key: "mystic_school_of_summoning",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic School of Summoning"
+                },
+                 {
+                    key: "mystic_school_of_potential",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic School of Potential"
+                },
+                 {
+                    key: "mystic_school_of_attunement",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mystic School of Attunement"
+                },
+                  {
+                    key: "dark",
+                    color: "rgb(17, 17, 17)",
+                    title: "Dark"
+                },
+                 {
+                    key: "dark_cult_of_tyranny",
+                    color: "rgb(17, 17, 17)",
+                    title: "Dark Cult of Tyranny"
+                }, {
+                    key: "dark_cult_of_death",
+                    color: "rgb(17, 17, 17)",
+                    title: "Dark Cult of Death"
+                },
+                  {
+                    key: "primal",
+                    color: "rgb(17, 17, 17)",
+                    title: "Primal"
+                },
+                  {
+                    key: "oathsworn",
+                    color: "rgb(17, 17, 17)",
+                    title: "Oathsworn"
+                },
+                  {
+                    key: "architect",
+                    color: "rgb(17, 17, 17)",
+                    title: "Architect"
+                }, {
+                    key: "reaver",
+                    color: "rgb(17, 17, 17)",
+                    title: "Reaver"
                 }
             ];
 
+            const overrideBuildingsBeta = {
+                /*throne: ["town_hall_i_town_center: throne"],*/
+                feudal: [
+                    "town_hall_ii:town_hall_ii_castle",
+                    "town_hall_iii:town_hall_iii_citadel",
+                    "town_hall_iv:town_hall_iv_grand_estate"
+                ],
+                feudal_monarchy: ["workshop:militia_barracks", "blacksmith:royal_smith", "iii_unlock:lords_manor"],
+                feudal_aristocracy: [
+                    "store_house:house_hunting_grounds",
+                    "granary:serf_quarters",
+                    "iii_unlock_2:retainers_estate"
+                ],
+                dark: [
+                    "town_hall_ii:town_hall_ii_dread_spire",
+                    "town_hall_iii:town_hall_iii_stronghold",
+                    "iii_unlock:overlords_tower",
+                    "town_hall_iv:town_hall_iv_black_palace"
+                ],
+
+                dark_cult_of_tyranny: ["vendor:collector", "market:shadowtrade_quarter"],
+                dark_cult_of_death: ["mana_obelisk:grave_obelisk", "monolith:crypt-temple"],
+                barbarian: [
+                    "library:battle_ritual_site",
+                    "arcane_institute:ancestral_seer_hall",
+                    "town_hall_ii:town_hall_ii_communal_tent",
+                    "town_hall_iii:town_hall_iii_halls_of_war",
+                    "iii_unlock:shrine_of_the_wargod",
+                    "town_hall_iv:town_hall_iv_warlords_pavilion"
+                ],
+                industrious: [
+                    "store_house:workers_farmstead",
+                    "granary:grand_mill",
+                    "town_hall_ii:town_hall_ii_bulwark",
+                    "town_hall_iii:town_hall_iii_forge_tower",
+                    "iii_unlock:bastions_barricade",
+                    "town_hall_iv:town_hall_iv_industry_compound"
+                ],
+                mystic: [
+                    "workshop:evocators_abode",
+                    "stonemason:stone_conjurer",
+                    "town_hall_ii:town_hall_ii_mages_plaza",
+                    "town_hall_iii:town_hall_iii_mystic_spire",
+                    "town_hall_iv:town_hall_iv_wizards_auditorium"
+                ],
+                mystic_school_of_summoning: ["iii_unlock_3:summoners_cistern"],
+                mystic_school_of_potential: ["iii_unlock_2:academy_of_potential"],
+                mystic_school_of_attunement: ["iii_unlock:altar_of_the_all-seers"],
+
+                high: [
+                    "workshop:artisan_workshop",
+                    "blacksmith:lightforge",
+                    "town_hall_ii:town_hall_ii_atrium_of_light",
+                    "town_hall_iii:town_hall_iii_pantheon",
+                    "iii_unlock:solar_nexus",
+                    "town_hall_iv:town_hall_iv_solar_sanctum"
+                ],
+                reaver: [
+                    "shrine:mana_forge",
+                    "mana_obelisk:lodestone_foundry",
+                    "town_hall_ii:town_hall_ii_steel_hall",
+                    "town_hall_iii:town_hall_iii_chained_spire",
+                    "iii_unlock:extraction_nexus",
+                    "town_hall_iv:town_hall_iv_ironclad_citadel"
+                ],
+                primal: [
+                    "workshop:woodcarvers_workshop",
+                    "stonemason:stonestele",
+                    "town_hall_ii:town_hall_ii_clan_lodge",
+                    "town_hall_iii:town_hall_iii_spirit_hall",
+                    "iii_unlock:shrine_to_the_spirits",
+                    "town_hall_iv:town_hall_iv_primeval_palace"
+                ],
+                oathsworn: [
+                    "vendor:training_hall",
+                    "market:hall_of_devotion",
+                    "town_hall_ii:town_hall_ii_oath_square",
+                    "town_hall_iii:town_hall_iii_steel_bastion",
+                    "iii_unlock:paragon_quarters",
+                    "town_hall_iv:town_hall_iv_palace_of_vows"
+                ],
+                architect: [
+                    "library:magitectural_archive",
+                    "arcane_institute:architect_institute",
+                    "town_hall_ii:town_hall_ii_great_ziggurat",
+                    "town_hall_iii:town_hall_iii_ascended_gardens",
+                    "iii_unlock:affinity_obelisks",
+                    "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
+                ]
+            };
             const overrideBuildings = {
                 /*throne: ["town_hall_i_town_center: throne"],*/
                 feudal: [
@@ -290,73 +557,126 @@
                 dark: [
                     "town_hall_ii:town_hall_ii_dread_spire",
                     "town_hall_iii:town_hall_iii_stronghold",
-                    "town_hall_iv:town_hall_iv_black_palace"
+                    "iii_unlock:overlords_tower",
+                    "town_hall_iv:town_hall_iv_black_palace",
+                    "vendor:experimentation_chambers",
+                    "market:underground_laboratory",
+                    "tavern:interrogation_dungeon",
+                    "bathhouse:ritual_mausoleum"
                 ],
 
-                dark_cult_of_tyranny: ["vendor:collector", "market:shadowtrade_quarter"],
-                dark_cult_of_death: ["mana_obelisk:grave_obelisk", "monolith:crypt-temple"],
                 barbarian: [
                     "library:battle_ritual_site",
                     "arcane_institute:ancestral_seer_hall",
                     "town_hall_ii:town_hall_ii_communal_tent",
-                    "town_hall_iii:town_hall_iii_halls_of_war"
+                    "town_hall_iii:town_hall_iii_halls_of_war",
+                    "iii_unlock:shrine_of_the_wargod",
+                    "town_hall_iv:town_hall_iv_warlords_pavilion"
                 ],
                 industrious: [
                     "store_house:workers_farmstead",
                     "granary:grand_mill",
                     "town_hall_ii:town_hall_ii_bulwark",
-                    "town_hall_iii:town_hall_iii_forge_tower"
+                    "town_hall_iii:town_hall_iii_forge_tower",
+                    "iii_unlock:bastions_barricade",
+                    "town_hall_iv:town_hall_iv_industry_compound"
                 ],
-                mystic: [
+                  mystic: [
                     "workshop:evocators_abode",
                     "stonemason:stone_conjurer",
                     "town_hall_ii:town_hall_ii_mages_plaza",
-                    "town_hall_iii:town_hall_iii_mystic_spire"
+                    "town_hall_iii:town_hall_iii_mystic_spire",
+                    "town_hall_iv:town_hall_iv_wizards_auditorium"
                 ],
+                mystic_school_of_summoning: ["iii_unlock_3:summoners_cistern"],
+                mystic_school_of_potential: ["iii_unlock_2:academy_of_potential"],
+                mystic_school_of_attunement: ["iii_unlock:altar_of_the_all-seers"],
                 high: [
                     "workshop:artisan_workshop",
                     "blacksmith:lightforge",
                     "town_hall_ii:town_hall_ii_atrium_of_light",
-                    "town_hall_iii:town_hall_iii_pantheon"
+                    "town_hall_iii:town_hall_iii_pantheon",
+                    "iii_unlock:solar_nexus",
+                    "town_hall_iv:town_hall_iv_solar_sanctum"
                 ],
                 reaver: [
                     "shrine:mana_forge",
                     "mana_obelisk:lodestone_foundry",
                     "town_hall_ii:town_hall_ii_steel_hall",
-                    "town_hall_iii:town_hall_iii_chained_spire"
+                    "town_hall_iii:town_hall_iii_chained_spire",
+                    "iii_unlock:extraction_nexus",
+                    "town_hall_iv:town_hall_iv_ironclad_citadel"
                 ],
                 primal: [
                     "workshop:woodcarvers_workshop",
                     "stonemason:stonestele",
                     "town_hall_ii:town_hall_ii_clan_lodge",
-                    "town_hall_iii:town_hall_iii_spirit_hall"
+                    "town_hall_iii:town_hall_iii_spirit_hall",
+                    "iii_unlock:shrine_to_the_spirits",
+                    "town_hall_iv:town_hall_iv_primeval_palace"
                 ],
                 oathsworn: [
                     "vendor:training_hall",
                     "market:hall_of_devotion",
                     "town_hall_ii:town_hall_ii_oath_square",
-                    "town_hall_iii:town_hall_iii_steel_bastion"
+                    "town_hall_iii:town_hall_iii_steel_bastion",
+                    "iii_unlock:paragon_quarters",
+                    "town_hall_iv:town_hall_iv_palace_of_vows"
                 ],
                 architect: [
                     "library:magitectural_archive",
                     "arcane_institute:architect_institute",
                     "town_hall_ii:town_hall_ii_great_ziggurat",
-                    "town_hall_iii:town_hall_iii_ascended_gardens"
+                    "town_hall_iii:town_hall_iii_ascended_gardens",
+                    "iii_unlock:affinity_obelisks",
+                    "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
                 ]
             };
 
-            function GetTree(lines, offset) {
+            function findResources(text) {
+                const regex = /\+\d+%?\s*<([^>]+)>/g;
+                let match;
+                const resources = new Set();
+
+                while ((match = regex.exec(text)) !== null) {
+                    resources.add(`<${match[1]}></${match[1]}>`);
+                }
+
+                return Array.from(resources);
+            }
+
+            function GetTree(nameOverride, lines, parent, buildingMap) {
                 var Holder = document.createElement("DIV");
-                Holder.className = "tree-grid2";
-                Holder.setAttribute("style", "top: " + offset[0] + "px; left:" + offset[1] + "px;");
+                Holder.className = "tree-grid";
+
+                const text = document.createElement("div");
+                text.className = "textTitle";
+
+                if (nameOverride != "") {
+                    text.innerHTML = nameOverride;
+                    Holder.className = "tree-grid2";
+                }
+
+                Holder.appendChild(text);
+                //Holder.setAttribute("style", "top: " + offset[0] + "px; left:" + offset[1] + "px;");
 
                 // Convert overrideBuildings into a lookup map for easy matching
                 const overrideMap = {};
-                for (const [overrideName, list] of Object.entries(overrideBuildings)) {
-                    for (const entry of list) {
-                        const [base, extra] = entry.split(":");
-                        if (!overrideMap[base]) overrideMap[base] = [];
-                        overrideMap[base].push({ overrideName, extra });
+                if (showBetaTooltip.checked) {
+                    for (const [overrideName, list] of Object.entries(overrideBuildingsBeta)) {
+                        for (const entry of list) {
+                            const [base, extra] = entry.split(":");
+                            if (!overrideMap[base]) overrideMap[base] = [];
+                            overrideMap[base].push({ overrideName, extra });
+                        }
+                    }
+                } else {
+                    for (const [overrideName, list] of Object.entries(overrideBuildings)) {
+                        for (const entry of list) {
+                            const [base, extra] = entry.split(":");
+                            if (!overrideMap[base]) overrideMap[base] = [];
+                            overrideMap[base].push({ overrideName, extra });
+                        }
                     }
                 }
 
@@ -370,23 +690,36 @@
                     buildings.forEach((building) => {
                         // Regular building
                         // check if skipping
+                        let tomeID = "";
+                        let buildingName = "";
+                        if (nameOverride.indexOf("Tome") != -1) {
+                            tomeID = building.tomeId;
+                            buildingName = building.buildingId;
+                        } else {
+                            buildingName = building;
+                        }
 
-                        const split = building.split("*");
+                        const split = buildingName.split("*");
                         if (split[1] != undefined) {
-                            console.log(split[1]);
                             // if theres a split, add to column and break
                             col += parseInt(split[1]);
-                            console.log(col);
                         } else {
-                            handleStructure(building, row, col, Holder);
+                            if (buildingMap.some((b) => b.buildingId === buildingName)) {
+                                if (document.getElementById("tomeCheck").checked) {
+                                    handleStructure(buildingName, row, col, Holder, undefined, tomeID);
+                                }
+                            } else {
+                                handleStructure(buildingName, row, col, Holder, undefined, tomeID);
+                            }
+
                             //  row++; // move down one row for each building
 
                             // Check if this building has overrides
 
                             // After finishing the line, reset col for next line (if you need multiple columns)
 
-                            if (overrideMap[building]) {
-                                for (const { overrideName, extra } of overrideMap[building]) {
+                            if (overrideMap[buildingName]) {
+                                for (const { overrideName, extra } of overrideMap[buildingName]) {
                                     const name = overrideName.split("_")[0];
                                     const checkmark = document.getElementById(name + "Check");
                                     if (checkmark === null) {
@@ -398,7 +731,8 @@
                                             row + offsetby.indexOf(name) + 1,
                                             col,
                                             Holder,
-                                            overrideName
+                                            overrideName,
+                                            tomeID
                                         );
                                     } else if (checkmark.checked) {
                                         if (!offsetby.includes(name)) {
@@ -409,7 +743,8 @@
                                             row + offsetby.indexOf(name) + 1,
                                             col,
                                             Holder,
-                                            overrideName
+                                            overrideName,
+                                            tomeID
                                         );
                                     }
                                 }
@@ -423,11 +758,29 @@
                     row++;
                 }
 
-                var treespace = document.getElementById("treespacegeneral");
-                treespace.appendChild(Holder);
+                parent.appendChild(Holder);
+                resizeParentToFitChildren(Holder);
             }
 
-            function handleStructure(entry, rowIndex, columnIndex, Holder, override) {
+            function resizeParentToFitChildren(parent) {
+                const children = parent.querySelectorAll(":scope > *");
+                let maxBottom = 0;
+                let maxRight = 0;
+
+                children.forEach((child) => {
+                    // Get child offset relative to parent
+                    const bottom = child.offsetTop + child.offsetHeight;
+                    const right = child.offsetLeft + child.offsetWidth;
+
+                    if (bottom > maxBottom) maxBottom = bottom;
+                    if (right > maxRight) maxRight = right;
+                });
+
+                parent.style.height = `${maxBottom}px`;
+                parent.style.width = `${maxRight}px`;
+            }
+
+            function handleStructure(entry, rowIndex, columnIndex, Holder, override, tomeID) {
                 if (entry == null) {
                     return;
                 }
@@ -441,13 +794,20 @@
                     if (jsonStructureUpgrades[i].id === structure) {
                         // no icon skips the unused ones that are still in the data
                         if ("icon" in jsonStructureUpgrades[i]) {
-                            SetUpStructureNodeNew(jsonStructureUpgrades[i], rowIndex, columnIndex, Holder, override);
+                            SetUpStructureNodeNew(
+                                jsonStructureUpgrades[i],
+                                rowIndex,
+                                columnIndex,
+                                Holder,
+                                override,
+                                tomeID
+                            );
                         }
                     }
                 }
             }
 
-            function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, override) {
+            function SetUpStructureNodeNew(structureInfo, rowIndex, columnIndex, holder, override, tomeID) {
                 var i,
                     x = "";
 
@@ -460,7 +820,6 @@
                     (entry) => entry.resid == structureInfo.resid
                 );
                 if (structureInfoLoc == undefined) {
-                    //console.log("couldn't find " + structureInfo.name + " in loca");
                     structureInfoLoc = structureInfo;
                 }
                 var name = structureInfoLoc.name;
@@ -470,15 +829,15 @@
                     name = name.replaceAll("<br>", " ");
                 }
 
-                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, override);
+                var newNode = CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID);
 
                 //insert connection line
                 let extra = 0;
                 if (override) {
                     extra = 20;
                 }
-                const top = nodeHeight + rowIndex * nodeHeight;
-                const left = extra + nodeWidth + columnIndex * nodeWidth;
+                const top = rowIndex * nodeHeight;
+                const left = extra + columnIndex * nodeWidth;
 
                 //  newNode.setAttribute("style", "grid-row:" + rowIndex + "; grid-column:" + columnIndex + ";");
 
@@ -489,7 +848,7 @@
                 holder.append(newNode);
             }
 
-            function CreateStructureNode(structureInfo, structureInfoLoc, override) {
+            function CreateStructureNode(structureInfo, structureInfoLoc, override, tomeID) {
                 var i,
                     x = "";
                 var name = structureInfoLoc.name;
@@ -570,14 +929,33 @@
                     newNodeBackground.style.backgroundRepeat = "no-repeat";
                     newNodeBackground.style.backgroundPositionX = "140px";
                     newNodeBackground.style.backgroundSize = "80px";
+                    newNodeBackground.style.backgroundColor = "rgb(17,17,17)";
                 }
 
-                for (const { key, title, action } of iconBackgroundMap) {
-                    if (key == override) {
-                        console.log("test" + key + " " + override);
+                if (tomeID) {
+                    newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/TomeIcons/' + tomeID + '.png")';
+                    newNodeBackground.style.backgroundRepeat = "no-repeat";
+                    newNodeBackground.style.backgroundPositionX = "140px";
+                    newNodeBackground.style.backgroundSize = "80px";
+                    newNodeBackground.style.backgroundColor = "rgb(17,17,17)";
+                }
 
-                        newNodeBackground.style.backgroundColor = "#111";
+                for (const { key, color, title } of iconBackgroundMap) {
+                    if (key == override) {
+                        newNodeBackground.style.backgroundColor = color;
+                        spa2.innerHTML += "<br>" + title;
                     }
+                }
+
+                var type = findResources(structureInfo.prediction_description + structureInfo.description);
+
+                if (type != "") {
+                    var Type = document.createElement("DIV");
+                    Type.innerHTML += "+" + type;
+
+                    Type.setAttribute("style", "position:absolute; bottom:40px; left:75px; z-index:3;");
+                    //Type.setAttribute("style", "float:left; z-index:3");
+                    newNodeBackground.append(Type);
                 }
 
                 newNodeBackground.append(spa);
@@ -588,21 +966,18 @@
                 addTooltipListeners(newNode, spa2);
                 return newNode;
             }
-            
-           function toggle(source) {
-  checkboxes = document.getElementsByName('checkToggle');
-               // Create a new 'change' event
 
-// Dispatch it.
+            function toggle(source) {
+                checkboxes = document.getElementsByName("checkToggle");
+                // Create a new 'change' event
 
-  for(var checkbox in checkboxes){
-      
-    checkboxes[checkbox].checked = source.checked;
-  }
-               reDrawAll();
-               
-}
-            
+                // Dispatch it.
+
+                for (var checkbox in checkboxes) {
+                    checkboxes[checkbox].checked = source.checked;
+                }
+                reDrawAll();
+            }
         </script>
 
         <title>Age of Wonders 4 Database - City Tree</title>
@@ -612,7 +987,7 @@
         <div id="header"></div>
         <svg
             height="4000px"
-            width="4000px"
+            width="6000px"
             id="SVGHolder"
             style="position: absolute; top: 0px; left: 1px; z-index: 1; pointer-events: none"></svg>
 
@@ -620,68 +995,136 @@
             <div class="textblocktitle">City Tree</div>
 
             <div class="tree-space" id="treespacegeneral"></div>
-            <div>
-             <label class="switch">
-                <input type="checkbox" name="checkToggle" id="toggleAllCheck" checked="checked" onchange="toggle(this)" />
-                Toggle All
-            </label>
-                           <label class="switch">
-                <input type="checkbox" name="checkToggle" id="barbarianCheck" checked="checked" onchange="reDrawAll()" />
-                Barbarian
-            </label>
-            <label class="switch">
-                <input type="checkbox" name="checkToggle" id="darkCheck" checked="checked" onchange="reDrawAll()" />
-                Dark
-            </label>
-                     <label class="switch">
-                <input type="checkbox" name="checkToggle" id="highCheck" checked="checked" onchange="reDrawAll()" />
-                Feudal
-            </label>
-                     <label class="switch">
-                <input type="checkbox" name="checkToggle" id="feudalCheck" checked="checked" onchange="reDrawAll()" />
-                High
-            </label>
-                 <label class="switch">
-                <input type="checkbox" name="checkToggle" id="industriousCheck" checked="checked" onchange="reDrawAll()" />
-                Industrious
-            </label>
-                  <label class="switch">
-                <input type="checkbox" name="checkToggle" id="mysticCheck" checked="checked" onchange="reDrawAll()" />
-                Mystic
-            </label>
-          
-                       <label class="switch">
-                <input type="checkbox" name="checkToggle" id="reaverCheck" checked="checked" onchange="reDrawAll()" />
-                Reaver
-            </label>
-                        <label class="switch">
-                <input type="checkbox" name="checkToggle" id="primalCheck" checked="checked" onchange="reDrawAll()" />
-                Primal
-            </label>
-                       <label class="switch">
-                <input type="checkbox" name="checkToggle" id="oathswornCheck" checked="checked" onchange="reDrawAll()" />
-                Oathsworn
-            </label>
-                       <label class="switch">
-                <input type="checkbox" name="checkToggle" id="architectCheck" checked="checked" onchange="reDrawAll()" />
-                Architect
-            </label>
-                </div>
+            <div style="display: flex; justify-content: center;">
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="toggleAllCheck"
+                        checked="checked"
+                        onchange="toggle(this)" />
+                    Toggle All
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="checkToggle" id="tomeCheck" checked="checked" onchange="reDrawAll()" />
+                    Tomes
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="barbarianCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Barbarian
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="checkToggle" id="darkCheck" checked="checked" onchange="reDrawAll()" />
+                    Dark
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="feudalCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Feudal
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="checkToggle" id="highCheck" checked="checked" onchange="reDrawAll()" />
+                    High
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="industriousCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Industrious
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="mysticCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Mystic
+                </label>
+
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="reaverCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Reaver
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="primalCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Primal
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="oathswornCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Oathsworn
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="architectCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Architect
+                </label>
+            </div>
         </div>
     </body>
 </html>
 <style>
     .tree-grid2 {
         position: relative;
-        height: 100px;
-        width: 2000px;
+        margin: 80px;
+
+        background-color: #1c645d59;
+        border-width: 5px;
+        border-style: solid;
+        border-image: url(/aow4db/Icons/9slicetooltip.png);
+        border-image-slice: 10 10 10 10;
+    }
+    .tree-grid {
+        position: relative;
+        margin: 80px;
+    }
+
+    .textTitle {
+        color: white;
+        position: relative;
+        top: -20px;
     }
 
     .tree-space {
         width: auto;
         height: auto;
-
+        display: flex;
         position: absolute;
+        flex-direction: row;
+        flex-wrap: wrap;
+        transform: scale(0.9);
+         transform-origin: left;
     }
 
     .entry {
