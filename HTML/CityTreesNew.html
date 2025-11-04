@@ -161,19 +161,30 @@
                             }
                         } else {
                             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
+                            
+                            let extraOffset = 1;
                             // ✅ must use setAttribute for SVG
                             path.setAttribute("stroke", "white");
+                             path.setAttribute("fill", "none");
+                            path.setAttribute("stroke-width", "1");
                             if (jsonCityTreeNodes[i].id.indexOf("wizard_tower") != -1) {
                                 path.setAttribute("stroke", "green");
                             }
+                             for (const [lineName, buildings] of Object.entries(Fortifications)) {
+                                  if(buildings.includes(jsonCityTreeNodes[i].connectTo[j].id)){
+                                  path.setAttribute("stroke", "blue");
+                                       path.setAttribute("stroke-width", "4");
+                                      extraOffset = 15;
+                            }
+                             } 
+                           
 
-                            path.setAttribute("fill", "none");
-                            path.setAttribute("stroke-width", "2");
+                           
 
                             const divOG = document.getElementById(jsonCityTreeNodes[i].id);
 
                             const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
+                            
                             if (divOG == undefined || divTO == undefined) {
                                 break;
                             }
@@ -182,12 +193,12 @@
                                 "d",
                                 generatePathSettings(
                                     divTO,
-                                    { x: j * 5, y: j  },
+                                    { x: j * extraOffset, y: j * extraOffset},
                                     "right",
                                     divOG,
                                     { x: 0, y: 0 },
                                     "left",
-                                    j + 30
+                                    j * extraOffset + 30
                                 )
                             );
                             holderSVG.appendChild(path);
@@ -320,10 +331,10 @@
                 stabilityLine: ["empty", "tavern", "bathhouse"]
             };
             const Fortifications = {
-                walls: ["empty*4", "palisade_walls", "empty*6", "stone_walls"],
-                Towers: ["empty*9", "caltrop_stash", "empty*3", "ballista_towers", "catapult_towers"],
-                Battlements: ["empty*9", "arcane_battlements", "empty*3", "necrotic_spires", "beacon_of_valor"],
-                Spires: ["empty*9", "archer_battlements", "empty*3", "healing_spires"]
+                walls: ["empty*4", "palisade_walls", "empty*6", "stone_walls", "empty*2",  "catapult_towers"],
+                Towers: ["empty*7", "caltrop_stash", "empty*5", "ballista_towers"],
+                Battlements: ["empty*7", "arcane_battlements", "empty*5", "necrotic_spires", "beacon_of_valor"],
+                Spires: ["empty*7", "archer_battlements", "empty*5", "healing_spires"]
             };
 
             function GetTomeBuilds(buildingMap) {
