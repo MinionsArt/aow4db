@@ -166,13 +166,13 @@
                             // ✅ must use setAttribute for SVG
                             path.setAttribute("stroke", "white");
                              path.setAttribute("fill", "none");
-                            path.setAttribute("stroke-width", "1");
+                            path.setAttribute("stroke-width", "2");
                             if (jsonCityTreeNodes[i].id.indexOf("wizard_tower") != -1) {
                                 path.setAttribute("stroke", "green");
                             }
                              for (const [lineName, buildings] of Object.entries(Fortifications)) {
                                   if(buildings.includes(jsonCityTreeNodes[i].connectTo[j].id)){
-                                  path.setAttribute("stroke", "blue");
+                                  path.setAttribute("stroke", "rgb(100 100 100)");
                                        path.setAttribute("stroke-width", "4");
                                       extraOffset = 15;
                             }
@@ -193,10 +193,10 @@
                                 "d",
                                 generatePathSettings(
                                     divTO,
-                                    { x: j * extraOffset, y: j * extraOffset},
+                                    { x: j , y: j},
                                     "right",
                                     divOG,
-                                    { x: 0, y: 0 },
+                                    { x: 0 , y: 0 -  extraOffset},
                                     "left",
                                     j * extraOffset + 30
                                 )
@@ -331,10 +331,10 @@
                 stabilityLine: ["empty", "tavern", "bathhouse"]
             };
             const Fortifications = {
-                walls: ["empty*4", "palisade_walls", "empty*6", "stone_walls", "empty*2",  "catapult_towers"],
-                Towers: ["empty*7", "caltrop_stash", "empty*5", "ballista_towers"],
-                Battlements: ["empty*7", "arcane_battlements", "empty*5", "necrotic_spires", "beacon_of_valor"],
-                Spires: ["empty*7", "archer_battlements", "empty*5", "healing_spires"]
+                walls: ["empty*4", "palisade_walls", "empty*4", "stone_walls", "empty*3",  "catapult_towers"],
+                Towers: ["empty*7", "caltrop_stash", "empty*2", "ballista_towers"],
+                Battlements: ["empty*7", "arcane_battlements", "empty*2", "necrotic_spires", "beacon_of_valor"],
+                Spires: ["empty*7", "archer_battlements", "empty*2", "healing_spires"]
             };
 
             function GetTomeBuilds(buildingMap) {
