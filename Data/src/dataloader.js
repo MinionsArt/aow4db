@@ -119,9 +119,6 @@ const extraSkills = [
   "required_skills": [
    {
     "resid": 5222680234747
-   },
-   {
-    "resid": 5222680233389
    }
   ]
  },
