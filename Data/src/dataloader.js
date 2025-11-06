@@ -106,6 +106,26 @@ const extraSkills = [
         ]
     },
     {
+  "group_name": "Warlock - Skill Group",
+  "icon": "000004C000000B45",
+  "type": "normal",
+  "resid": 5222680234769,
+  "tree_name": "<classWarlock></classWarlock> Warlock",
+  "name": "Hexseeking Bolts",
+  "tree_pos_x": 250.0,
+  "tree_pos_y": 150.0,
+  "id": "hs_warlock_hexseeking_bolts",
+  "description": "Attacks and <hyperlink>Debuff</hyperlink> abilities against the target of Hex pact:<bulletlist><bullet>Always Hit.</bullet><bullet>Ignore 3 Status Resistance against the target of Hex Pact</bullet></bulletlist>",
+  "required_skills": [
+   {
+    "resid": 5222680234747
+   },
+   {
+    "resid": 5222680233389
+   }
+  ]
+ },
+    {
         group_name: "Ritualist - Hero Skill Group",
         icon: "0000048B00000336",
         type: "normal",
