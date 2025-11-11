@@ -23,6 +23,18 @@
                 console.log("handling");
                 rememberSearch();
             }
+
+            function toggle(source) {
+                checkboxes = document.getElementsByName("checkToggle");
+                // Create a new 'change' event
+
+                // Dispatch it.
+
+                for (var checkbox in checkboxes) {
+                    checkboxes[checkbox].checked = source.checked;
+                }
+               
+            }
         </script>
         <title>Age of Wonders 4 Database - Search</title>
     </head>
@@ -33,77 +45,84 @@
         <div id="unitS" style="width: 100%; margin: auto; background-color: #0e2229">
             <h2 style="color: white; text-align: center">Search</h2>
 
-            <div style="height: auto; color: white;text-align: center ">
+            <div style="height: auto; color: white; text-align: center">
                 Search Filters<br />
-                <div style="display:grid; margin: auto;width:fit-content;text-align: left;">
+                <div style="display: grid; margin: auto; width: fit-content; text-align: left">
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            name="checkToggle"
+                            id="toggleAllCheck"
+                            checked="checked"
+                            onchange="toggle(this)" />
+                        Toggle All
+                    </label>
                     <div id="unitSearchFilters">
                         <label class="switch">
-                            <input type="checkbox" id="unitsCheck" checked="checked" />
+                            <input type="checkbox"    name="checkToggle" id="unitsCheck" checked="checked" />
                             Units
                         </label>
                         <div style="background-color: black">
-                        <label class="switch">
-                            <input type="checkbox" id="namesCheck" checked="checked" />
-                            Unit Name
-                        </label>
-                        <label class="switch">
-                            <input type="checkbox" id="abilityNamesCheck" checked="checked" />
-                            Ability Names
-                        </label>
-                        <label class="switch">
-                            <input type="checkbox" id="abilityDescriptionCheck" checked="checked" />
-                            Ability Descriptions & Modifiers
-                        </label>
-                        <label class="switch">
-                            <input type="checkbox" id="passivesCheck" checked="checked" />
-                            Passives & Types
-                        </label>
+                            <label class="switch">
+                                <input type="checkbox"   name="checkToggle" id="namesCheck" checked="checked" />
+                                Unit Name
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox"   name="checkToggle" id="abilityNamesCheck" checked="checked" />
+                                Ability Names
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox"    name="checkToggle" id="abilityDescriptionCheck" checked="checked" />
+                                Ability Descriptions & Modifiers
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox"    name="checkToggle"  id="passivesCheck" checked="checked" />
+                                Passives & Types
+                            </label>
 
-                        <label class="switch">
-                            <input type="checkbox" id="resistancesCheck" />
-                            Resistances
-                        </label>
-                            </div>
+                            <label class="switch">
+                                <input type="checkbox"    name="checkToggle" id="resistancesCheck" />
+                                Resistances
+                            </label>
+                        </div>
                     </div>
-                     <div style="display:grid; margin: auto;width:fit-content;
-    grid-template-columns: auto auto auto;">
-                    <label class="switch">
-                        <input type="checkbox" id="spellsCheck" checked="checked" />
-                        Spells
-                    </label>
-                    <label class="switch">
-                        <input type="checkbox" id="siegeCheck" checked="checked" />
-                        Siege Projects
-                    </label>
-                     <label class="switch">
-                        <input type="checkbox" id="heroSkillsCheck" checked="checked" />
-                        Hero Skills
-                    </label>
-                      <label class="switch">
-                        <input type="checkbox" id="heroItemsCheck" checked="checked" />
-                        Hero Equipment
-                    </label>
-                                       <label class="switch">
-                        <input type="checkbox" id="ambitionsCheck" checked="checked" />
-                        Hero Ambitions
-                    </label>
-                      <label class="switch">
-                        <input type="checkbox" id="worldStructuresCheck" checked="checked" />
-                        World Structures
-                    </label>
-                     <label class="switch">
-                        <input type="checkbox" id="cityStructuresCheck" checked="checked" />
-                        City Structures & SPI
-                    </label>
-                          <label class="switch">
-                        <input type="checkbox" id="factionTraitCheck" checked="checked" />
-                        Faction Traits
-                    </label>
-                               <label class="switch">
-                        <input type="checkbox" id="empireTreeCheck" checked="checked" />
-                        Empire Tree
-                    </label>
-                      
+                    <div style="display: grid; margin: auto; width: fit-content; grid-template-columns: auto auto auto">
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="spellsCheck" checked="checked" />
+                            Spells
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="siegeCheck" checked="checked" />
+                            Siege Projects
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="heroSkillsCheck" checked="checked" />
+                            Hero Skills
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="heroItemsCheck" checked="checked" />
+                            Hero Equipment
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="ambitionsCheck" checked="checked" />
+                            Hero Ambitions
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="worldStructuresCheck" checked="checked" />
+                            World Structures
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="cityStructuresCheck" checked="checked" />
+                            City Structures & SPI
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="factionTraitCheck" checked="checked" />
+                            Faction Traits
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox"   name="checkToggle" id="empireTreeCheck" checked="checked" />
+                            Empire Tree
+                        </label>
                     </div>
                 </div>
                 <br />
