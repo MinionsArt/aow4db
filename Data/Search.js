@@ -1,4 +1,4 @@
-var excludeListStructures = [
+const excludeListStructures = [
     "shadow_focus_crystal",
     "nature_focus_crystal",
     "materium_focus_crystal",
@@ -6,6 +6,24 @@ var excludeListStructures = [
     "order_focus_crystal",
     "astral_focus_crystal"
 ];
+
+const filterMap = {
+  unitsCheck: "u",
+  namesCheck: "un",
+  abilityNamesCheck: "an",
+  abilityDescriptionCheck: "ad",
+  passivesCheck: "p",
+  resistancesCheck: "r",
+  spellsCheck: "s",
+  siegeCheck: "sg",
+  heroSkillsCheck: "hs",
+  heroItemsCheck: "hi",
+  ambitionsCheck: "ha",
+  worldStructuresCheck: "ws",
+  cityStructuresCheck: "cs",
+  factionTraitCheck: "ft",
+  empireTreeCheck: "et"
+};
 
 const input = document.getElementById("searchInput");
 const output = document.getElementById("searchOutput");
@@ -49,12 +67,34 @@ function isInArray(array, search) {
 }
 
 async function rememberSearch() {
-    const searchKeyword = searchParams.get("search");
-    // input = document.getElementById("searchInput");
-    input.value = searchKeyword;
-    if (searchKeyword != undefined) {
-        searchData(searchKeyword);
+    // filter settings 
+     const params = new URLSearchParams(window.location.search);
+  const filters = (params.get("f") || "").split(",");
+    if(filters != ""){
+         for (const [id, code] of Object.entries(filterMap)) {
+    const el = document.getElementById(id);
+    if (el) el.checked = filters.includes(code);
+  }
     }
+  // restore keyword too, if you have it
+  const keyword = params.get("q") || "";
+    if(keyword != ""){
+         input.value = keyword;
+    searchData(searchKeyword);
+    }
+}
+
+function getActiveFilters() {
+  const active = [];
+  for (const [id, code] of Object.entries(filterMap)) {
+    const el = document.getElementById(id);
+    if (el && el.checked) active.push(code);
+  }
+  return active.join(",");
+}
+
+function restoreFiltersFromURL() {
+ 
 }
 
 function searchData(keywords) {
@@ -71,8 +111,16 @@ function searchData(keywords) {
     let test = filter;
     searchAll(test);
     let currenturl = window.location.href.split("?")[0];
+  
+   const filterState = getActiveFilters(); // f = filters
+    
+     const params = new URLSearchParams();
+  params.set("q", keywords);
+     params.set("f", getActiveFilters()); // f = filters
+     const newUrl = `${window.location.pathname}?${params.toString()}`;
+  window.history.replaceState({}, "", newUrl);
 
-    window.history.replaceState({}, "foo", currenturl + "?search=" + keywords);
+   // window.history.replaceState({}, "foo", currenturl + "?search=" + keywords + ":" + filterState);
 
     // extra tooltip after search is done
     setTimeout(function () {
@@ -285,6 +333,7 @@ function returnSkillList(fieldToSearch) {
 
 function returnEquipList(fieldToSearch) {
     if (!fieldToSearch) return [];
+  
 
     const search = fieldToSearch.replaceAll("_", " ").toUpperCase();
     const equipSet = new Set();
@@ -293,10 +342,11 @@ function returnEquipList(fieldToSearch) {
     // Collect abilities matching the search
     for (const ability of jsonUnitAbilitiesLocalized) {
         const matches = (text) => text && text.toUpperCase().includes(search);
-
+      
         if (matches(ability.description) || matches(ability.name)) {
+            
                 const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
-          
+            console.log(abilityEN);
             equipSet.add(abilityEN.slug);
         }
 
@@ -313,6 +363,7 @@ function returnEquipList(fieldToSearch) {
     }
 
     // Match items with those abilities
+  
     for (const item of jsonHeroItemsLocalized) {
         if (item.ability_slugs?.some((a) => equipSet.has(a.slug))) {
               const itemEN = findBy(jsonHeroItems, "resid", item.resid);
