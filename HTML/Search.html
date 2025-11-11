@@ -16,12 +16,25 @@
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
         <meta charset="UTF-8" />
+        <style>
+        .disabled-section {
+  opacity: 0.5;
+  pointer-events: none;
+}</style>
 
         <script src="/aow4db/Data/Init.js"></script>
         <script>
+          
             function HandlePage() {
+                
+                  const unitsToggle = document.getElementById("unitsCheck");
+            const unitSubFilters = document.querySelectorAll("#unitSubFilters input[type='checkbox']");
+                // Run once on load and whenever it's toggled
+            unitsToggle.addEventListener("change", updateUnitSubFilters);
+           
                 console.log("handling");
                 rememberSearch();
+                 updateUnitSubFilters();
             }
 
             function toggle(source) {
@@ -33,8 +46,22 @@
                 for (var checkbox in checkboxes) {
                     checkboxes[checkbox].checked = source.checked;
                 }
-               
             }
+
+            
+
+            function updateUnitSubFilters() {
+                   const unitsToggle = document.getElementById("unitsCheck");
+            const unitSubFilters = document.querySelectorAll("#unitSubFilters input[type='checkbox']");
+                const enabled = unitsToggle.checked;
+                unitSubFilters.forEach((cb) => {
+                    cb.disabled = !enabled;
+                    cb.parentElement.style.opacity = enabled ? "1" : "0.5"; // grey out labels
+                    
+                });
+            }
+
+            
         </script>
         <title>Age of Wonders 4 Database - Search</title>
     </head>
@@ -57,70 +84,75 @@
                             onchange="toggle(this)" />
                         Toggle All
                     </label>
+                    
                     <div id="unitSearchFilters">
                         <label class="switch">
-                            <input type="checkbox"    name="checkToggle" id="unitsCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="unitsCheck" checked="checked" />
                             Units
                         </label>
-                        <div style="background-color: black">
+                          <div id="unitSubFilters" style="background-color: black">
                             <label class="switch">
-                                <input type="checkbox"   name="checkToggle" id="namesCheck" checked="checked" />
+                                <input type="checkbox" name="checkToggle" id="namesCheck" checked="checked" />
                                 Unit Name
                             </label>
                             <label class="switch">
-                                <input type="checkbox"   name="checkToggle" id="abilityNamesCheck" checked="checked" />
+                                <input type="checkbox" name="checkToggle" id="abilityNamesCheck" checked="checked" />
                                 Ability Names
                             </label>
                             <label class="switch">
-                                <input type="checkbox"    name="checkToggle" id="abilityDescriptionCheck" checked="checked" />
+                                <input
+                                    type="checkbox"
+                                    name="checkToggle"
+                                    id="abilityDescriptionCheck"
+                                    checked="checked" />
                                 Ability Descriptions & Modifiers
                             </label>
                             <label class="switch">
-                                <input type="checkbox"    name="checkToggle"  id="passivesCheck" checked="checked" />
+                                <input type="checkbox" name="checkToggle" id="passivesCheck" checked="checked" />
                                 Passives & Types
                             </label>
 
                             <label class="switch">
-                                <input type="checkbox"    name="checkToggle" id="resistancesCheck" />
+                                <input type="checkbox" name="checkToggle" id="resistancesCheck" />
                                 Resistances
                             </label>
                         </div>
                     </div>
                     <div style="display: grid; margin: auto; width: fit-content; grid-template-columns: auto auto auto">
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="spellsCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="spellsCheck" checked="checked" />
                             Spells
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="siegeCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="siegeCheck" checked="checked" />
                             Siege Projects
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="heroSkillsCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="heroSkillsCheck" checked="checked" />
                             Hero Skills
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="heroItemsCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="heroItemsCheck" checked="checked" />
                             Hero Equipment
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="ambitionsCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="ambitionsCheck" checked="checked" />
                             Hero Ambitions
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="worldStructuresCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="worldStructuresCheck" checked="checked" />
                             World Structures
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="cityStructuresCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="cityStructuresCheck" checked="checked" />
                             City Structures & SPI
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="factionTraitCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="factionTraitCheck" checked="checked" />
                             Faction Traits
                         </label>
                         <label class="switch">
-                            <input type="checkbox"   name="checkToggle" id="empireTreeCheck" checked="checked" />
+                            <input type="checkbox" name="checkToggle" id="empireTreeCheck" checked="checked" />
                             Empire Tree
                         </label>
                     </div>
@@ -168,5 +200,7 @@
                 });
             });
         </script>
+        
     </body>
+    
 </html>
