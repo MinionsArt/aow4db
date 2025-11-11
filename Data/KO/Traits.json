@@ -1,5 +1,31 @@
 [
  {
+  "biography_description": "이들은 비명 박쥐를 타고 하늘을 어둡게 물들입니다.",
+  "lore_description": "<helpcolor>탈것에 탄 유닛이 증가하며 비명 박쥐 탈것을 획득합니다.</helpcolor>",
+  "DLC": "THRONESOFBLOOD ",
+  "point_cost": 3,
+  "id": "비명_박쥐_탈것",
+  "name": "비명 박쥐 탈것",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "비행 이동을 획득합니다."
+   },
+   {
+    "name": "추가 유닛이 기병 상태가 됩니다."
+   },
+   {
+    "name": "지도자가 비명 박쥐 탈것을 타고 시작합니다."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "탈것",
+  "front_end": true,
+  "icon": "000004C5000008FD",
+  "display_order": 0
+ },
+ {
   "starting_bonuses": [
    {
     "description": "추가 <hyperlink>영체 도깨비불</hyperlink> 1기를 지닌 채 시작합니다."
@@ -720,7 +746,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "해당 특성이 없는 인접 적이 상실: <bulletlist><bullet>-2 <resistance></resistance> <hyperlink>저항력</hyperlink></bullet><bullet>-2 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink></bullet>"
+    "name": "해당 특성이 없는 인접 적이 상실:<bulletlist><bullet>-2 <resistance></resistance> <hyperlink>저항력</hyperlink></bullet><bullet>-2 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink></bullet></bulletlist>"
    }
   ],
   "enabled": true,
@@ -729,6 +755,54 @@
   "icon": "0000049700000066",
   "type": "form",
   "display_order": 1
+ },
+ {
+  "affinities": [
+   {
+    "name": "1<nature></nature> 자연 친화"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>성향</hyperlink>"
+   }
+  ],
+  "biography_description": "",
+  "lore_description": "지금은 자신들이 먹이사슬의 최정점에 있으며, 약자는 먹잇감에 불과하다고 생각합니다.",
+  "point_cost": 1,
+  "id": "정점의_포식자__evilact__",
+  "name": "정점의 포식자 <evilact></evilact>",
+  "incompatible_society_traits": [
+   {
+    "name": "선의의 신자 <goodact></goodact>"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "<hyperlink>구획 개선 시설</hyperlink> <hyperlink>약탈</hyperlink> 성공 시 50 <food></food> <hyperlink>식량을</hyperlink> 획득합니다."
+   },
+   {
+    "name": "정복한 <hyperlink>도시를</hyperlink> <hyperlink>파괴</hyperlink>하는 데 성공할 경우, 도시가 보유한 <hyperlink>구획 개선 시설</hyperlink>마다 50 <food></food> <hyperlink>식량</hyperlink> 효과를 획득합니다."
+   },
+   {
+    "name": "정복한 <hyperlink>도시</hyperlink> <hyperlink>이주</hyperlink> 성공 시, <population></population> <hyperlink>인구</hyperlink> 하나당 30 <food></food> <hyperlink>식량을</hyperlink> 획득합니다. 단, 도시는 완료 이후 <population></population> 인구를 추가로 상실합니다."
+   },
+   {
+    "name": "<hyperlink>봉신이</hyperlink> <population></population> <hyperlink>인구</hyperlink> 하나당 +10 <food></food> <hyperlink>식량</hyperlink> 수입을 제공합니다."
+   },
+   {
+    "name": "<hyperlink>성향</hyperlink> -10 <evilact></evilact>"
+   }
+  ],
+  "enabled": true,
+  "front_end": false,
+  "type": "society",
+  "display_order": 3,
+  "starting_bonuses": [
+   {
+    "description": "시작 <hyperlink>유닛</hyperlink>의 계급이 +1 증가합니다."
+   }
+  ],
+  "icon": "0000049300000F66"
  },
  {
   "affinities": [
@@ -2005,7 +2079,7 @@
   "display_order": 5
  },
  {
-  "lore_description": "<helpcolor>유닛의 일반 이동력이 32 증가합니다.</helpcolor>",
+  "lore_description": "<helpcolor>유닛이 전투 및 세계 지도에서 움직이는 속도가 증가합니다.</helpcolor>",
   "biography_description": "장거리 질주 훈련을 받아 이례적으로 빠른 속도를 자랑합니다.",
   "point_cost": 3,
   "id": "운동_능력",
@@ -2135,7 +2209,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "상태 저항력이 +2 증가합니다."
+    "name": "<statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력이</hyperlink> +2 증가합니다."
    },
    {
     "name": "<hyperlink>부정적인 상태 효과</hyperlink>의 지속 시간이 -1 <turn></turn> 턴 감소합니다. 최소 지속 시간은 1 입니다."
@@ -2463,7 +2537,7 @@
     "name": "<hyperlink>침략지</hyperlink>, <hyperlink>고대 불가사의</hyperlink> 또는 <hyperlink>자원 집산지</hyperlink> 확보 시 획득 자원이 +75% 증가합니다."
    },
    {
-    "name": "<turn></turn> <hyperlink>턴</hyperlink>마다 <hyperlink><hp></hp> 체력을</hyperlink> +5만큼 추가로 회복합니다."
+    "name": "유닛이 매 <turn></turn> <hyperlink>턴</hyperlink>마다 <hyperlink><hp></hp> 체력을</hyperlink> +5만큼 추가로 <hyperlink>재생</hyperlink>합니다."
    }
   ],
   "enabled": true,
@@ -3239,7 +3313,7 @@
  },
  {
   "biography_description": "강력한 피 덕분에 남들보다 부상을 더 빠르게 회복하며",
-  "lore_description": "<helpcolor>군대가 세계 지도에서 더 오래 싸울 수 있습니다.</helpcolor>",
+  "lore_description": "<helpcolor>군대가 세계 지도에서 전투 중 입은 피해를 회복하는 속도가 증가합니다.</helpcolor>",
   "point_cost": 2,
   "id": "신속한_회복",
   "name": "신속한 회복",
@@ -3251,7 +3325,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<hyperlink>세계 지도</hyperlink> <turn></turn> <hyperlink>턴</hyperlink>마다 <hyperlink><hp></hp> 체력을</hyperlink> +10만큼 추가로 회복합니다."
+    "name": "<hyperlink>세계 지도</hyperlink> <turn></turn> <hyperlink>턴</hyperlink>마다 <hyperlink><hp></hp> 체력을</hyperlink> +10만큼 추가로 <hyperlink>재생</hyperlink>합니다."
    }
   ],
   "enabled": true,

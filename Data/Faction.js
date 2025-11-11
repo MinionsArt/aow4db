@@ -1398,9 +1398,9 @@ function findOriginLocName(origin, type) {
         case "SubType":
         case "Form":
             if ("extraLookup" in origin) {
-                const valueLookup = findBy(jsonExtraFactionCreationFromPOLocalized, "id", origin.extraLookup);
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", origin.extraLookup);
                 if ("extraLookup2" in origin) {
-                    const valueLookup2 = findBy(jsonExtraFactionCreationFromPOLocalized, "id", origin.extraLookup2);
+                    const valueLookup2 = findBy(jsonAllFromPOLocalized, "id", origin.extraLookup2);
 
                     newOrigin = valueLookup2.hyperlink || valueLookup2.name || valueLookup2.title;
                 } else {
@@ -1750,9 +1750,14 @@ function SetTomePreview(span, origin) {
                 // can be summon as well
                 if ("spell_slug" in origin.skills[index]) {
                     const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
+                    
+                     let iconLink = spell.icon;
+                if(spell.icon == undefined){
+                    iconLink = spell.id;
+                }
                     span.innerHTML +=
                         '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                        spell.icon +
+                        iconLink +
                         '.png">' +
                         spell.name +
                         "</bullet>";
@@ -1814,9 +1819,13 @@ function SetTomePreview(span, origin) {
             // normal spell
             else {
                 const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
+                let iconLink = spell.icon;
+                if(spell.icon == undefined){
+                    iconLink = spell.id;
+                }
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                    spell.icon +
+                    iconLink +
                     '.png">' +
                     spell.name +
                     "</bullet>";

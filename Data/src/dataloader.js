@@ -219,7 +219,7 @@ async function GetAllData(selectedLang) {
 
     const fileNamesGeneric = [
         "EnchantmentTables.json",
-        "SpawnTables.json",
+        "all_spawnsets.json",
         "BuilderLookup.json",
         "AscendedInfo.json",
         "BuilderLookupHero.json",
@@ -249,11 +249,7 @@ async function GetAllData(selectedLang) {
         "Governance.json",
         // non-ingame-dump-json-files
         "UI.json",
-        "baseConceptLookup.json",
-        "extraFactionCreation.json",
-        "world_structures.json",
-        "combat_properties.json",
-        "events.json"
+        "all.json",
     ];
 
     // Create file paths
@@ -299,11 +295,7 @@ async function GetAllData(selectedLang) {
             "jsonHeroAmbitions",
             "jsonHeroGovernance",
             "jsonUI",
-            "jsonBaseConcepts",
-            "jsonExtraFactionCreationFromPO",
-            "jsonExtraStructureFromPO",
-            "jsonExtraCombatPropertiesFromPO",
-            "jsonExtraEventsFromPO"
+            "jsonAllFromPO"
         ];
 
         // Assign data to global vars
@@ -360,7 +352,7 @@ async function CheckData() {
         checkboxNumbers.checked = storedSettings.isolateNumber;
 
         //showBetaTooltip = document.getElementById("showBetaCheckbox");
-        showBetaTooltip.checked = storedSettings.showBeta;
+      //  showBetaTooltip.checked = storedSettings.showBeta;
 
         //  languageSelect = document.getElementById("languageSelect");
         languageSelect.value = storedSettings.language;
@@ -376,11 +368,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-          if (storedSettings.showBeta) {
-             await GetAllData("BETA");
-         } else {
+       //   if (storedSettings.showBeta) {
+     //        await GetAllData("BETA");
+      //   } else {
         await GetAllData(storedSettings.language);
-        }
+      //  }
 
         AddExtraData();
 
@@ -395,7 +387,8 @@ async function CheckData() {
 
 const patchDates = [
     // date ranges of patches
-    { name: "Griffon 1.1", from: new Date("2025-08-114"), to: new Date("2025-11-29") },
+    { name: "Gargoyle 1.0", from: new Date("2025-11-11"), to: new Date("2026-11-29") },
+    { name: "Griffon 1.1", from: new Date("2025-08-11"), to: new Date("2025-11-10") },
     { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-14") },
     { name: "Ogre 1.2.1", from: new Date("2025-05-13"), to: new Date("2025-08-12") },
     { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }

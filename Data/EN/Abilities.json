@@ -2,6 +2,854 @@
  {
   "modifiers": [
    {
+    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Unleashes a magical bolt at target enemy.",
+  "name": "Sanguine Bolts",
+  "slug": "magic_bolts_ability_000004D0000002C1",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "description": "This unit ends its turn and goes into a defensive mode. The unit:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>Gains +2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Gains +2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Becomes immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet></bulletlist>",
+  "name": "Defense Mode",
+  "slug": "0000034500000469",
+  "icon": "000003450000049D"
+ },
+ {
+  "description": "Magic users who specialize in ranged offense and weakening enemies.<bulletlist><bullet>Their <hyperlink><accuracy></accuracy> Accuracy</hyperlink> is affected by <hyperlink>Line of Sight</hyperlink>.</bullet><bullet>Cannot use their main <hyperlink>Magic</hyperlink> attacks when <hyperlink>Engaged in Melee</hyperlink>.</bullet></bulletlist>",
+  "name": "Battle Mage Unit",
+  "slug": "000003e300004c86",
+  "icon": "000003E300004C87"
+ },
+ {
+  "description": "This unit's death does not affect their allies' <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+  "name": "Expendable",
+  "slug": "0000048d00001a24",
+  "icon": "0000048D00001A19"
+ },
+ {
+  "description": "The unit has a -50% modifier to <happiness></happiness> <hyperlink>Morale</hyperlink> changes",
+  "name": "Heartless",
+  "slug": "0000049700000f8f",
+  "icon": "0000048B0000005B"
+ },
+ {
+  "description": "This unit can move over land hexes.",
+  "name": "Land Movement",
+  "slug": "0000049300000402",
+  "icon": "00000357000001AB"
+ },
+ {
+  "description": "Base <hyperlink>Unit Upkeep</hyperlink> reduced by -25%",
+  "name": "Low Maintenance",
+  "slug": "0000045e00000664",
+  "icon": "0000045E00000665"
+ },
+ {
+  "description": "This unit was summoned or comes from another dimension and requires mana upkeep.",
+  "name": "Magic Origin",
+  "slug": "000003e500001adb",
+  "icon": "0000039F00002B34"
+ },
+ {
+  "description": "Melee attackers suffer a stack of Bleeding for 3 <turn></turn> Turns.",
+  "name": "Razor Thorns",
+  "slug": "00000497000033d0",
+  "icon": "00000497000033CF"
+ },
+ {
+  "description": "Unit is immune to Bleeding.",
+  "name": "Status Effect Immunity: Bleeding",
+  "slug": "0000049700001683",
+  "icon": "0000049700001685"
+ },
+ {
+  "description": "An undead unit with:<bulletlist><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>Heartless</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Poisoned</bullet><bullet>Diseased</bullet></bulletlist></bulletlist>",
+  "name": "Undead",
+  "slug": "000003e500001a37",
+  "icon": "000003E500001A38"
+ },
+ {
+  "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
+  "description": "",
+  "name": "<xpCol>Blight Resistance</xpCol>",
+  "slug": "Blight_resistance_2"
+ },
+ {
+  "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
+  "description": "",
+  "name": "<xpCol>Frost Resistance</xpCol>",
+  "slug": "Frost_resistance_2"
+ },
+ {
+  "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
+  "description": "",
+  "name": "<fireCol>Fire Weakness</fireCol>",
+  "slug": "Fire_weakness_4"
+ },
+ {
+  "damage": "<fireCol>4<damagespirit></damagespirit></fireCol>",
+  "description": "",
+  "name": "<fireCol>Spirit Weakness</fireCol>",
+  "slug": "Spirit_weakness_4"
+ },
+ {
+  "description": "This unit has an extra 10 to its maximum <hyperlink><hp></hp> Hit Points</hyperlink>.",
+  "name": "+10<hp></hp>",
+  "slug": "0000048b00000c6e",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "This unit has an extra 1 to its maximum <defense></defense> <hyperlink>Defense</hyperlink>.",
+  "name": "+1<defense></defense>",
+  "slug": "0000048b00000c7a",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "This unit has an extra 1 to its maximum <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
+  "name": "+1<resistance></resistance>",
+  "slug": "0000048b00000c79",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "The unit's attacks:<bulletlist><bullet>Ignore up to 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Ignore up to 1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Ignore up to 1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
+  "name": "Champion Medal: Evoker",
+  "slug": "000003e30000628a",
+  "icon": "000003E30000627B"
+ },
+ {
+  "description": "When the unit dies in combat, it is revived at the end of combat if its owner is victorious. Revived units are brought back with 50% of their maximum <hyperlink><hp></hp> Hit Points</hyperlink>.",
+  "name": "Resurgence",
+  "slug": "0000035700000332",
+  "icon": "0000035700000333"
+ },
+ {
+  "description": "This unit does an extra 10% damage with its attacks.",
+  "name": "+10% damage",
+  "slug": "0000048b00000c74",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "This unit has an extra 1 to its maximum <defense></defense> <hyperlink>Defense</hyperlink>.",
+  "name": "+1<defense></defense>",
+  "slug": "0000048b00000c7b",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "This unit has an extra 1 to its maximum <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
+  "name": "+1<resistance></resistance>",
+  "slug": "0000048b00000c7d",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Shoot Bow",
+  "slug": "shoot_bow_ability_000004D0000002C0",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "An attack unit that takes out targets from afar. It is somewhat vulnerable.<bulletlist><bullet>Its <hyperlink><accuracy></accuracy> Accuracy</hyperlink> is affected by <hyperlink>Line of Sight</hyperlink>.</bullet><bullet>Cannot fire its main ranged attack when <hyperlink>Engaged in Melee</hyperlink>.</bullet></bulletlist>",
+  "name": "Ranged Unit",
+  "slug": "0000039f000016f1",
+  "icon": "0000039F000016E8"
+ },
+ {
+  "description": "+1<hyperlink><range></range>Range</hyperlink> on <hyperlink>Physical Ranged</hyperlink> attacks.",
+  "name": "Champion Medal: Eagle Eye",
+  "slug": "000003e300006289",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_000004D0000002BF",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "This unit ends its turn and goes into a defensive mode:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet><bullet>All adjacent friendly units gain +3 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
+  "name": "Defense Mode: Shield Wall",
+  "slug": "000003e300004c8f",
+  "icon": "000003E300004C94"
+ },
+ {
+  "description": "This unit has +3 <defense></defense> <hyperlink>Defense</hyperlink> against non-<hyperlink><flank></flank> Flanking</hyperlink> attacks.",
+  "name": "Shield Defense",
+  "slug": "000003e300004c8a",
+  "icon": "000003E300004C8C"
+ },
+ {
+  "description": "Great at blocking enemies and protecting allies against physical attacks. A Shield unit gains:<bulletlist><bullet>Shield Defense.</bullet><bullet>Defense Mode: Shield Wall.</bullet></bulletlist>",
+  "name": "Shield Unit",
+  "slug": "0000039f000016f0",
+  "icon": "0000039F000016E5"
+ },
+ {
+  "description": "When this unit enters <hyperlink>Defense Mode</hyperlink>, adjacent friendly units gain Bolstered Defense.",
+  "name": "Champion Medal: Exalted Defense",
+  "slug": "000003e300006280",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "+40% damage to Cavalry and Large Target units.",
+    "name": "Polearm",
+    "count": 1
+   }
+  ],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_000004D0000002BE",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "Unaffected by the bonus effects of <hyperlink>Charge</hyperlink> attacks.<br></br><br></br>Can be counteracted by using Heavy Charge Strike.",
+  "name": "Charge Resistance",
+  "slug": "000003eb0000053e",
+  "icon": "000003EB0000053F"
+ },
+ {
+  "description": "When attacked, a unit with First Strike will use a <hyperlink>Retaliation Attack</hyperlink> to attack first.",
+  "name": "First Strike",
+  "slug": "000003fe0000008a",
+  "icon": "000003E300004D6B"
+ },
+ {
+  "description": "Specialists in taking out large threats and cavalry and can counter shock unit charges.<br></br>Polearm Units have:<bulletlist><bullet><hyperlink>First Strike</hyperlink></bullet><bullet>Charge Resistance</bullet><bullet>+40% damage against Cavalry and Large Target units.</bullet></bulletlist>",
+  "name": "Polearm Unit",
+  "slug": "0000039f000016f2",
+  "icon": "0000039F000016EB"
+ },
+ {
+  "description": "+40% damage on <hyperlink>Retaliation Attacks</hyperlink>",
+  "name": "Champion Medal: Retaliation Damage",
+  "slug": "0000049700001549",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_000004D00000018B",
+  "damage": "10<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "An Ethereal unit with:<bulletlist><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>Pass Through</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Bleeding</bullet><bullet>Diseased</bullet><bullet>Immobilized</bullet><bullet>Poisoned</bullet></bulletlist></bulletlist>",
+  "name": "Ethereal",
+  "slug": "000003e300004802",
+  "icon": "000003E300004804"
+ },
+ {
+  "description": "An outright melee unit with no obvious specialization or counters.",
+  "name": "Fighter Unit",
+  "slug": "000003e300004ea6",
+  "icon": "000003E300004EA5"
+ },
+ {
+  "description": "This unit is not stopped by enemy <hyperlink>Zone of Control</hyperlink>.",
+  "name": "Fleeting",
+  "slug": "0000042b00000006",
+  "icon": "0000042B00000008"
+ },
+ {
+  "description": "This unit can move through obstacles. Does not function when the unit is in a transport.",
+  "name": "Pass Through",
+  "slug": "000003e300004814",
+  "icon": "000003E300004815"
+ },
+ {
+  "description": "This unit does not trigger <hyperlink>Opportunity Attack</hyperlink>.",
+  "name": "Slippery",
+  "slug": "000003eb00000425",
+  "icon": "000003E300004CA5"
+ },
+ {
+  "damage": "<fireCol>2<damagefire></damagefire></fireCol>",
+  "description": "",
+  "name": "<fireCol>Fire Weakness</fireCol>",
+  "slug": "Fire_weakness_2"
+ },
+ {
+  "description": "Unit has:<bulletlist><bullet>+10 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet></bulletlist>",
+  "name": "Champion Medal: Brawler",
+  "slug": "000003e300006294",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflicts 2 Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "name": "Charge Strike",
+  "slug": "melee_charge_strike_(base)_ability_000004C6000001F5",
+  "damage": "27<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "Enemy units in a 2-hex radius:<bulletlist><bullet>Sustain damage.</bullet><bullet>Sustain an extra 5 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> per stack of Bleeding.</bullet><bullet>For each Bleeding unit hit, heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+  "name": "Blood Rose Drain",
+  "slug": "blood_rose_drain_ability_000004C6000001F5",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000033BE"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target corpse revives as a Thorned Skeleton under your control.",
+  "name": "Raise Thorned Skeleton",
+  "slug": "raise_rose_skeleton_ability_000004C6000001F5",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "icon": "00000497000033CA"
+ },
+ {
+  "description": "This unit is mounted on an animal.",
+  "name": "Cavalry",
+  "slug": "0000038400000371",
+  "icon": "0000038400000372"
+ },
+ {
+  "description": "While this unit is in combat, all friendly undead units have Razor Thorns.",
+  "name": "Cursed Rose Command",
+  "slug": "00000497000033d2",
+  "icon": "00000497000033D3"
+ },
+ {
+  "description": "An offensive unit specialized in disrupting the enemy line. A Shock Unit has a <hyperlink>Charge</hyperlink> attack, which counters Shield Units, but can be countered by Polearm Units.",
+  "name": "Shock Unit",
+  "slug": "000003bd000028b7",
+  "icon": "000003BD000028B8"
+ },
+ {
+  "description": "Unit gains the Sprint ability.",
+  "name": "Champion Medal: Sprint",
+  "slug": "000003e300006287",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Unit deals +25% damage when <hyperlink><flank></flank> Flanking</hyperlink>.",
+    "name": "Flanker",
+    "count": 1
+   }
+  ],
+  "description": "Strike target unit and gain <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> equal to 50% the damage dealt.",
+  "name": "Draining Strike",
+  "slug": "melee_strike_(base)_ability_000004C500000B15",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Unit deals +25% damage when <hyperlink><flank></flank> Flanking</hyperlink>.",
+    "name": "Flanker",
+    "count": 1
+   },
+   {
+    "description": "Inflicts 4 Torment until the end of combat.",
+    "name": "Torment",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to target enemy.",
+  "name": "Tormenting Lash",
+  "slug": "whip_ability_000004C500000B15",
+  "damage": "18<damagephysical></damagephysical> 18<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   },
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700003011"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 0 <turn></turn>"
+   }
+  ],
+  "description": "Teleport to target hex.",
+  "name": "Shadow Step",
+  "slug": "shadow_step_ability_000004C500000B15",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Movement"
+   },
+   {
+    "requisite": "Teleport"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "2",
+  "icon": "00000497000032F2"
+ },
+ {
+  "description": "Immune to effects that make you lose control of a unit, such as Berserk and Dominated.<br></br>Also grants immunity to being <hyperlink>Captured</hyperlink>.",
+  "name": "Control Loss Immunity",
+  "slug": "0000045e00000580",
+  "icon": "0000048B00000057"
+ },
+ {
+  "description": "Unit deals +25% damage when <hyperlink><flank></flank> Flanking</hyperlink>.",
+  "name": "Flanker",
+  "slug": "000003fe0000007e",
+  "icon": "00000415000001D2"
+ },
+ {
+  "description": "Immune to <hyperlink><flank></flank> Flanking</hyperlink>",
+  "name": "Hyper-Awareness",
+  "slug": "000003e10000139d",
+  "icon": "000003E10000139A"
+ },
+ {
+  "description": "A powerful unit that doesn't conform to a particular fighting style.<br></br>All mythic units have Control Loss Immunity.",
+  "name": "Mythic Unit",
+  "slug": "000003e300004e9f",
+  "icon": "000003E300004EA0"
+ },
+ {
+  "description": "Unit has +1 <hyperlink>Retaliation Attack</hyperlink>.",
+  "name": "Watchful",
+  "slug": "000003e100001533",
+  "icon": "000003E3000063F6"
+ },
+ {
+  "description": "Unit gains Killing Momentum.",
+  "name": "Champion Medal: Killing Momentum",
+  "slug": "000003e300006288",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Blood Parasite for 3 <turn></turn> Turns.",
+    "name": "Blood Parasite",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to units in a 1-hex cone.",
+  "name": "Parasitic Cleave",
+  "slug": "melee_strike_(base)_ability_000004C500000B10",
+  "damage": "22<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Damage increases by 10 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> for each unit tier of the target below V.</bullet><bullet>Heal for 50% of the damage dealt to the target.</bullet><bullet>If this ability kills the target, reset the cooldown on Grant Blood of the Exarch.</bullet></bulletlist>",
+  "name": "Siphon Lesser",
+  "slug": "siphon_lesser_ability_000004C500000B10",
+  "damage": "33<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000033F0"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 4 <turn></turn>"
+   },
+   {
+    "note": "Starts on cooldown"
+   }
+  ],
+  "description": "Target friendly Tier III or higher unit gains Blood of the Exarch until the end of combat.",
+  "name": "Grant Blood of the Exarch",
+  "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000049700003402"
+ },
+ {
+  "modifiers": [],
+  "description": "Target enemy unit sustains damage and is pulled to an adjacent hex.",
+  "name": "Blood Pull",
+  "slug": "blood_pull_ability_000004C500000B10",
+  "damage": "11<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000004970000340F"
+ },
+ {
+  "description": "Once per turn when hit by an attack, gain for 3 <turn></turn> Turns:<bulletlist><bullet>Bolstered Defense</bullet><bullet>Bolstered Resistance</bullet></bulletlist>",
+  "name": "Coagulate",
+  "slug": "000004970000341e",
+  "icon": "0000049700003420"
+ },
+ {
+  "description": "This unit's attacks damage <hyperlink>Fortified</hyperlink> obstacles.",
+  "name": "Demolisher",
+  "slug": "000003870000001b",
+  "icon": "0000038700000022"
+ },
+ {
+  "description": "A large unit that:<bulletlist><bullet>Is 20% easier to hit with <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Is immune to most displacement effects.</bullet><bullet>Has Demolisher.</bullet></bulletlist>",
+  "name": "Large Target",
+  "slug": "000003450000052c",
+  "icon": "000003450000049B"
+ },
+ {
+  "description": "When an adjacent unit dies:<bulletlist><bullet>Gain Strengthened for 3 <turn></turn> Turns.</bullet><bullet>Heal for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+  "name": "Lifedrinker",
+  "slug": "0000049700003414",
+  "icon": "0000049700003415"
+ },
+ {
+  "description": "At the end of the turn adjacent enemies have a base 90% chance of suffering:<bulletlist><bullet>Misfortune for 3 <turn></turn> Turns.</bullet><bullet>10 <happiness></happiness> <hyperlink>Morale</hyperlink> loss.</bullet></bulletlist>",
+  "name": "Oppressing Aura",
+  "slug": "0000049700003422",
+  "icon": "0000049700003423"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflicts Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_000004C500000B0A",
+  "damage": "8<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 0 <turn></turn>"
+   }
+  ],
+  "description": "Consume target dead unit:<bulletlist><bullet>Gain a stack of Strengthened for 3 <turn></turn> Turns.</bullet><bullet>Gain a stack of Bloated, increasing the damage of Parasitic Bloat.</bullet></bulletlist>",
+  "name": "Corpse Gorge",
+  "slug": "corpse_gorge_ability_000004C500000B0A",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "icon": "00000497000033A5"
+ },
+ {
+  "description": "An Animal unit.",
+  "name": "Animal",
+  "slug": "000003fe00000018",
+  "icon": "000003FE00000019"
+ },
+ {
+  "description": "When this unit dies adjacent enemies:<bulletlist><bullet>Sustain 10 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of gaining Blood Parasite for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Parasitic Bloat",
+  "slug": "00000497000033a0",
+  "icon": "00000497000033A1"
+ },
+ {
+  "description": "Unit is immune to Blood Parasite.",
+  "name": "Status Effect Immunity: Blood Parasite",
+  "slug": "00000497000035d5",
+  "icon": "00000497000035D7"
+ },
+ {
+  "modifiers": [],
+  "description": "Unleashes a magical bolt at target enemy. Deals an extra +10% damage per Bleeding stack on the target.",
+  "name": "Hemorrhage Bolts",
+  "slug": "magic_bolts_ability_000004C500000B05",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Target enemy:<bulletlist><bullet>Sustains damage</bullet><bullet>Gains 2 Blood Parasite for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Scarlet Plague",
+  "slug": "scarlet_plague_ability_000004C500000B05",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003269"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "The caster:<bulletlist><bullet>Sustains 5 unblockable <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gains +60% damage.</bullet><bullet>Gains Resurgence</bullet><bullet>Dies at the end of the turn.</bullet></bulletlist>",
+  "name": "Dagger of the Rite",
+  "slug": "dagger_of_the_rite_ability_000004C500000B05",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "0000049700003275"
+ },
+ {
+  "description": "This unit will become Cavalry if the race has a special mount trait.",
+  "name": "Optional Cavalry",
+  "slug": "000003eb0000073f",
+  "icon": "000003EB0000073E"
+ },
+ {
+  "description": "Scarlet Plague:<bulletlist><bullet>Base damage increases to 25 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Inflicts 4 Blood Parasite.</bullet></bulletlist>",
+  "name": "Champion Scarlet Plague",
+  "slug": "0000049700003270",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
     "description": "+30% damage against units with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse.",
     "name": "Cruel",
     "count": 1
@@ -86,13 +934,7 @@
   "icon": "000004C000000521"
  },
  {
-  "description": "This unit ends its turn and goes into a defensive mode. The unit:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>Gains +2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Gains +2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Becomes immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet></bulletlist>",
-  "name": "Defense Mode",
-  "slug": "0000034500000469",
-  "icon": "000003450000049D"
- },
- {
-  "description": "This unit:<bulletlist><bullet>Can enter water hexes without movement penalties or becoming Embarked.</bullet><bullet>Has faster movement over Rivers and Swamps.</bullet>",
+  "description": "This unit:<bulletlist><bullet>Can enter water hexes without movement penalties or becoming Embarked.</bullet><bullet>Has faster movement over Rivers and Swamps.</bullet></bulletlist>",
   "name": "Amphibious",
   "slug": "000003eb0000071f",
   "icon": "0000039F000028E0"
@@ -104,46 +946,10 @@
   "icon": "000004A600000B7B"
  },
  {
-  "description": "Immune to effects that make you lose control of a unit, such as Berserk and Dominated.<br></br>Also grants immunity to being <hyperlink>Captured</hyperlink>.",
-  "name": "Control Loss Immunity",
-  "slug": "0000045e00000580",
-  "icon": "0000048B00000057"
- },
- {
-  "description": "This unit's attacks damage <hyperlink>Fortified</hyperlink> obstacles.",
-  "name": "Demolisher",
-  "slug": "000003870000001b",
-  "icon": "0000038700000022"
- },
- {
-  "description": "The unit has a -50% modifier to <happiness></happiness> <hyperlink>Morale</hyperlink> changes",
-  "name": "Heartless",
-  "slug": "0000049700000f8f",
-  "icon": "0000048B0000005B"
- },
- {
-  "description": "A large unit that:<bulletlist><bullet>Is 20% easier to hit with <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Is immune to most displacement effects.</bullet><bullet>Has Demolisher.</bullet></bulletlist>",
-  "name": "Large Target",
-  "slug": "000003450000052c",
-  "icon": "000003450000049B"
- },
- {
   "description": "Allows the unit to traverse lava at a Movement Cost of 6.",
   "name": "Lava Walk",
   "slug": "000004970000191a",
   "icon": "000004970000191C"
- },
- {
-  "description": "This unit was summoned or comes from another dimension and requires mana upkeep.",
-  "name": "Magic Origin",
-  "slug": "000003e500001adb",
-  "icon": "0000039F00002B34"
- },
- {
-  "description": "A powerful unit that doesn't conform to a particular fighting style.<br></br>All mythic units have Control Loss Immunity.",
-  "name": "Mythic Unit",
-  "slug": "000003e300004e9f",
-  "icon": "000003E300004EA0"
  },
  {
   "description": "When this unit kills an enemy, turn it into a Skeleton unit under its control.<br></br><br></br>Doesn't work in Water Combat.",
@@ -164,82 +970,10 @@
   "icon": "0000041B000008F3"
  },
  {
-  "description": "An undead unit with:<bulletlist><bullet>+2 <defensefrost></defensefrost> <hyperlink>Frost Resistance</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defensefire></defensefire> <hyperlink>Fire Resistance</hyperlink></bullet><bullet>Heartless</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Poisoned</bullet><bullet>Diseased</bullet></bulletlist></bulletlist></bulletlist>",
-  "name": "Undead",
-  "slug": "000003e500001a37",
-  "icon": "000003E500001A38"
- },
- {
   "description": "This unit can crush non-<hyperlink>Fortified</hyperlink> obstacles without slowing.",
   "name": "Unstoppable Juggernaut",
   "slug": "0000039c0000061d",
   "icon": "000003E300005B1F"
- },
- {
-  "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
-  "description": "",
-  "name": "<xpCol>Blight Resistance</xpCol>",
-  "slug": "Blight_resistance_2"
- },
- {
-  "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
-  "description": "",
-  "name": "<xpCol>Frost Resistance</xpCol>",
-  "slug": "Frost_resistance_2"
- },
- {
-  "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
-  "description": "",
-  "name": "<fireCol>Fire Weakness</fireCol>",
-  "slug": "Fire_weakness_4"
- },
- {
-  "damage": "<fireCol>4<damagespirit></damagespirit></fireCol>",
-  "description": "",
-  "name": "<fireCol>Spirit Weakness</fireCol>",
-  "slug": "Spirit_weakness_4"
- },
- {
-  "description": "This unit has an extra 10 to its maximum <hyperlink><hp></hp> Hit Points</hyperlink>.",
-  "name": "+10<hp></hp>",
-  "slug": "0000048b00000c6e",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "This unit has an extra 1 to its maximum <defense></defense> <hyperlink>Defense</hyperlink>.",
-  "name": "+1<defense></defense>",
-  "slug": "0000048b00000c7a",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "This unit has an extra 1 to its maximum <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-  "name": "+1<resistance></resistance>",
-  "slug": "0000048b00000c79",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "Unit gains Killing Momentum.",
-  "name": "Champion Medal: Killing Momentum",
-  "slug": "000003e300006288",
-  "icon": "000003E30000627B"
- },
- {
-  "description": "This unit does an extra 10% damage with its attacks.",
-  "name": "+10% damage",
-  "slug": "0000048b00000c74",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "This unit has an extra 1 to its maximum <defense></defense> <hyperlink>Defense</hyperlink>.",
-  "name": "+1<defense></defense>",
-  "slug": "0000048b00000c7b",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "This unit has an extra 1 to its maximum <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-  "name": "+1<resistance></resistance>",
-  "slug": "0000048b00000c7d",
-  "icon": "0000048B00000C78"
  },
  {
   "modifiers": [
@@ -531,12 +1265,6 @@
   "icon": "000003E30000448F"
  },
  {
-  "description": "Magic users who specialize in ranged offense and weakening enemies.<bulletlist><bullet>Their <hyperlink><accuracy></accuracy> Accuracy</hyperlink> is affected by <hyperlink>Line of Sight</hyperlink>.</bullet><bullet>Cannot use their main <hyperlink>Magic</hyperlink> attacks when <hyperlink>Engaged in Melee</hyperlink>.</bullet></bulletlist>",
-  "name": "Battle Mage Unit",
-  "slug": "000003e300004c86",
-  "icon": "000003E300004C87"
- },
- {
   "description": "This unit is Flying:<bulletlist><bullet>It has +2 Vision Range</bullet><bullet>Can move in any terrain at a movement cost of 5</bullet><bullet>Requires Seafaring to traverse Water hexes</bullet><bullet>Can safely move past most other units and obstacles in combat.</bullet></bulletlist>",
   "name": "Flying",
   "slug": "000003eb0000071b",
@@ -671,30 +1399,6 @@
   "icon": "0000048D00000864"
  },
  {
-  "description": "Unaffected by the bonus effects of <hyperlink>Charge</hyperlink> attacks.<br></br><br></br>Can be counteracted by using Heavy Charge Strike.",
-  "name": "Charge Resistance",
-  "slug": "000003eb0000053e",
-  "icon": "000003EB0000053F"
- },
- {
-  "description": "When attacked, a unit with First Strike will use a <hyperlink>Retaliation Attack</hyperlink> to attack first.",
-  "name": "First Strike",
-  "slug": "000003fe0000008a",
-  "icon": "000003E300004D6B"
- },
- {
-  "description": "This unit can move over land hexes.",
-  "name": "Land Movement",
-  "slug": "0000049300000402",
-  "icon": "00000357000001AB"
- },
- {
-  "description": "Specialists in taking out large threats and cavalry and can counter shock unit charges.<br></br>Polearm Units have:<bulletList><bullet><hyperlink>First Strike</hyperlink></bullet><bullet>Charge Resistance</bullet><bullet>+40% damage against Cavalry and Large Target units.</bullet></bulletlist>",
-  "name": "Polearm Unit",
-  "slug": "0000039f000016f2",
-  "icon": "0000039F000016EB"
- },
- {
   "description": "Unit is immune to Burning.",
   "name": "Status Effect Immunity: Burning",
   "slug": "0000041b00000cbc",
@@ -705,12 +1409,6 @@
   "description": "",
   "name": "<xpCol>Fire Resistance</xpCol>",
   "slug": "Fire_resistance_4"
- },
- {
-  "description": "+40% damage on <hyperlink>Retaliation Attacks</hyperlink>",
-  "name": "Champion Medal: Retaliation Damage",
-  "slug": "0000049700001549",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [
@@ -768,28 +1466,10 @@
   "icon": "00000497000003CC"
  },
  {
-  "description": "An Animal unit.",
-  "name": "Animal",
-  "slug": "000003fe00000018",
-  "icon": "000003FE00000019"
- },
- {
-  "description": "Base <hyperlink>Unit Upkeep</hyperlink> reduced by -25%",
-  "name": "Low Maintenance",
-  "slug": "0000045e00000664",
-  "icon": "0000045E00000665"
- },
- {
   "description": "Cheap and swift units that are useful at <hyperlink><flank></flank> Flanking</hyperlink> and targeting lone enemies.<br></br>Skirmisher units gain:<bulletlist><bullet>Swift.</bullet><bullet>Slippery.</bullet></bulletlist>",
   "name": "Skirmisher Unit",
   "slug": "000003e600000492",
   "icon": "000003E600000493"
- },
- {
-  "description": "This unit does not trigger <hyperlink>Opportunity Attack</hyperlink>.",
-  "name": "Slippery",
-  "slug": "000003eb00000425",
-  "icon": "000003E300004CA5"
  },
  {
   "description": "This unit ignores the effects of <hyperlink>Slowing</hyperlink> terrain in combat.",
@@ -893,7 +1573,7 @@
   "icon": "000003E3000065DD"
  },
  {
-  "description": "A Fey unit with:<bulletlist><bullet>+4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>Fey Guile</bullet><bullet>The ability to ignore:<bulletlist></bullet><bullet>Vision penalties from Misty.</bullet><bullet><hyperlink><accuracy></accuracy> Accuracy</hyperlink> penalties from Clinging Mist.</bullet></bulletlist>",
+  "description": "A Fey unit with:<bulletlist><bullet>+4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>-4 <defenseblight></defenseblight> <hyperlink>Blight Resistance</hyperlink></bullet><bullet>Fey Guile</bullet><bullet>The ability to ignore:<bulletlist></bullet><bullet>Vision penalties from Misty.</bullet><bullet><hyperlink><accuracy></accuracy> Accuracy</hyperlink> penalties from Clinging Mist.</bullet></bulletlist></bulletlist>",
   "name": "Fey",
   "slug": "000003fe0000001c",
   "icon": "000003FE0000001D"
@@ -1159,16 +1839,74 @@
   "icon": "00000493000003A3"
  },
  {
-  "damage": "<fireCol>2<damagefire></damagefire></fireCol>",
-  "description": "",
-  "name": "<fireCol>Fire Weakness</fireCol>",
-  "slug": "Fire_weakness_2"
- },
- {
   "damage": "<fireCol>2<damagespirit></damagespirit></fireCol>",
   "description": "",
   "name": "<fireCol>Spirit Weakness</fireCol>",
   "slug": "Spirit_weakness_2"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   },
+   {
+    "description": "Attacks heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
+    "count": 1
+   }
+  ],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_000004970000359A",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "50% chance of dealing an extra 5 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> and 1 <happiness></happiness> <hyperlink>Morale</hyperlink> loss.",
+    "name": "Echo",
+    "count": 1
+   }
+  ],
+  "description": "Target unit sustains damage and loses 2 <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+  "name": "Echoing Shriek",
+  "slug": "shoot_bow_ability_000004970000339B",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD000020CE"
  },
  {
   "modifiers": [
@@ -1197,19 +1935,7 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [],
-  "icon": "000004D500000041"
- },
- {
-  "description": "An offensive unit specialized in disrupting the enemy line. A Shock Unit has a <hyperlink>Charge</hyperlink> attack, which counters Shield Units, but can be countered by Polearm Units.",
-  "name": "Shock Unit",
-  "slug": "000003bd000028b7",
-  "icon": "000003BD000028B8"
- },
- {
-  "description": "Unit gains the Sprint ability.",
-  "name": "Champion Medal: Sprint",
-  "slug": "000003e300006287",
-  "icon": "000003E30000627B"
+  "icon": "000004D500000040"
  },
  {
   "modifiers": [
@@ -1436,7 +2162,7 @@
   "icon": "000004970000286B"
  },
  {
-  "description": "A construct unit with:<bulletlist><bullet>Reinforced</bullet><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink>.</bullet><bullet>Heartless</bullet><bullet>Control Loss Immunity</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Bleeding</bullet><bullet>Diseased</bullet><bullet>Distracted</bullet><bullet>Poisoned</bullet></bulletlist>",
+  "description": "A construct unit with:<bulletlist><bullet>Reinforced</bullet><bullet>-4 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>2 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink>.</bullet><bullet>Heartless</bullet><bullet>Control Loss Immunity</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Bleeding</bullet><bullet>Diseased</bullet><bullet>Distracted</bullet><bullet>Poisoned</bullet></bulletlist></bulletlist>",
   "name": "Construct",
   "slug": "000003e3000071ff",
   "icon": "000003E3000071FD"
@@ -1487,30 +2213,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
- },
- {
-  "description": "This unit ends its turn and goes into a defensive mode:<bulletlist><bullet>Extends its <hyperlink>Zone of Control</hyperlink> to all adjacent hexes.</bullet><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>+2 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Immune to <hyperlink><flank></flank> Flanking</hyperlink>.</bullet><bullet>All adjacent friendly units gain +3 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
-  "name": "Defense Mode: Shield Wall",
-  "slug": "000003e300004c8f",
-  "icon": "000003E300004C94"
- },
- {
-  "description": "This unit has +3 <defense></defense> <hyperlink>Defense</hyperlink> against non-<hyperlink><flank></flank> Flanking</hyperlink> attacks.",
-  "name": "Shield Defense",
-  "slug": "000003e300004c8a",
-  "icon": "000003E300004C8C"
- },
- {
-  "description": "Great at blocking enemies and protecting allies against physical attacks. A Shield unit gains:<bulletlist><bullet>Shield Defense.</bullet><bullet>Defense Mode: Shield Wall.</bullet></bulletlist>",
-  "name": "Shield Unit",
-  "slug": "0000039f000016f0",
-  "icon": "0000039F000016E5"
- },
- {
-  "description": "When this unit enters <hyperlink>Defense Mode</hyperlink>, adjacent friendly units gain Bolstered Defense.",
-  "name": "Champion Medal: Exalted Defense",
-  "slug": "000003e300006280",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -1585,22 +2287,10 @@
   "icon": "000003E3000045B1"
  },
  {
-  "description": "An attack unit that takes out targets from afar. It is somewhat vulnerable.<bulletlist><bullet>Its <hyperlink><accuracy></accuracy> Accuracy</hyperlink> is affected by <hyperlink>Line of Sight</hyperlink>.</bullet><bullet>Cannot fire its main ranged attack when <hyperlink>Engaged in Melee</hyperlink>.</bullet></bulletlist>",
-  "name": "Ranged Unit",
-  "slug": "0000039f000016f1",
-  "icon": "0000039F000016E8"
- },
- {
   "damage": "<xpCol>5<damagefire></damagefire></xpCol>",
   "description": "",
   "name": "<xpCol>Fire Resistance</xpCol>",
   "slug": "Fire_resistance_5"
- },
- {
-  "description": "+1<hyperlink><range></range>Range</hyperlink> on <hyperlink>Physical Ranged</hyperlink> attacks.",
-  "name": "Champion Medal: Eagle Eye",
-  "slug": "000003e300006289",
-  "icon": "000003E30000627B"
  },
  {
   "notes": [
@@ -1670,18 +2360,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
- },
- {
-  "description": "An outright melee unit with no obvious specialization or counters.",
-  "name": "Fighter Unit",
-  "slug": "000003e300004ea6",
-  "icon": "000003E300004EA5"
- },
- {
-  "description": "Unit has:<bulletlist><bullet>+10 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet></bulletlist>",
-  "name": "Champion Medal: Brawler",
-  "slug": "000003e300006294",
-  "icon": "000003E30000627B"
  },
  {
   "description": "Immune to <hyperlink><flank></flank> Flanking</hyperlink>",
@@ -2750,7 +3428,7 @@
     "note": "Cooldown: 3 <turn></turn>"
    }
   ],
-  "description": "Up to 5 random enemies:<bulletlist><bullet>Sustain 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Disrupted.</bullet>",
+  "description": "Up to 5 random enemies:<bulletlist><bullet>Sustain 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Disrupted.</bullet></bulletlist>",
   "name": "Magical Disruption",
   "slug": "magical_disruption_ability_0000049700000035",
   "damage": "",
@@ -3193,12 +3871,6 @@
   "icon": "0000049700002A90"
  },
  {
-  "description": "This unit will become Cavalry if the race has a special mount trait.",
-  "name": "Optional Cavalry",
-  "slug": "000003eb0000073f",
-  "icon": "000003EB0000073E"
- },
- {
   "modifiers": [],
   "description": "Single magical attack at target unit.",
   "name": "Magic Blast",
@@ -3231,10 +3903,10 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the target has, it:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
+  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the caster has, it:<bulletlist><bullet>Heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
   "name": "Incarnate Restoration",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000176d",
   "damage": "",
@@ -3269,7 +3941,7 @@
   "icon": "0000048D00001548"
  },
  {
-  "description": "Affinity Incarnate is granted by Architect Monuments based on the <hyperlink>Affinity</hyperlink> they are dedicated to:<bulletlist><bullet><order></order> <hyperlink>Order Affinity</hyperlink>: +1 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink></bullet><bullet><chaos></chaos> <hyperlink>Chaos Affinity</hyperlink>: +1 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink></bullet><bullet><arcana></arcana> <hyperlink>Astral Affinity</hyperlink>: +1 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink></bullet><bullet><matter></matter> <hyperlink>Materium Affinity</hyperlink>: +1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet><nature></nature> <hyperlink>Nature Affinity</hyperlink>: +1 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink></bullet><bullet><shadow></shadow> <hyperlink>Shadow Affinity</hyperlink>: +1 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "For each stack of Affinity Incarnate this unit gains damage based on their Empire's dominant <hyperlink>Affinity</hyperlink>:<bulletlist><bullet><order></order> <hyperlink>Order Affinity</hyperlink>: +1 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink></bullet><bullet><chaos></chaos> <hyperlink>Chaos Affinity</hyperlink>: +1 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink></bullet><bullet><arcana></arcana> <hyperlink>Astral Affinity</hyperlink>: +1 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink></bullet><bullet><matter></matter> <hyperlink>Materium Affinity</hyperlink>: +1 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet><nature></nature> <hyperlink>Nature Affinity</hyperlink>: +1 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink></bullet><bullet><shadow></shadow> <hyperlink>Shadow Affinity</hyperlink>: +1 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Affinity Incarnate",
   "slug": "0000048d00001907",
   "icon": "0000048D000017DF"
@@ -3313,10 +3985,10 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the target has, it:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
+  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the caster has, it:<bulletlist><bullet>Heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
   "name": "Incarnate Restoration",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d00001785",
   "damage": "",
@@ -3383,10 +4055,10 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the target has, it:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
+  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the caster has, it:<bulletlist><bullet>Heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
   "name": "Incarnate Restoration",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000178f",
   "damage": "",
@@ -3453,10 +4125,10 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the target has, it:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
+  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the caster has, it:<bulletlist><bullet>Heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
   "name": "Incarnate Restoration",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d00001797",
   "damage": "",
@@ -3523,10 +4195,10 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the target has, it:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
+  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the caster has, it:<bulletlist><bullet>Heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
   "name": "Incarnate Restoration",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000179d",
   "damage": "",
@@ -3593,10 +4265,10 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the target has, it:<bulletlist><bullet>Heals +10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
+  "description": "Target friendly unit heals 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Additionally for each stack of Affinity Incarnate the caster has, it:<bulletlist><bullet>Heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains +1 Regeneration.</bullet></bulletlist>",
   "name": "Incarnate Restoration",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d000017a1",
   "damage": "",
@@ -4252,7 +4924,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -4315,7 +4987,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -4378,7 +5050,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -4441,7 +5113,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -4504,7 +5176,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -4567,7 +5239,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -4977,7 +5649,7 @@
  },
  {
   "notes": [],
-  "description": "Target enemy units gains:<bulletlist><bullet>5 Sundered Defense for 3 <turn></turn> Turns.</bullet><bullet>5 Sundered Resistance for 3 <turn></turn> Turns</bullet><bullet>5 Status Vulnerability for 3 <turn></turn> Turns</bullet>",
+  "description": "Target enemy units gains:<bulletlist><bullet>5 Sundered Defense for 3 <turn></turn> Turns.</bullet><bullet>5 Sundered Resistance for 3 <turn></turn> Turns</bullet><bullet>5 Status Vulnerability for 3 <turn></turn> Turns</bullet></bulletlist>",
   "name": "Reveal Weakness",
   "slug": "reveal_weakness_ability_0000049000001403",
   "damage": "",
@@ -4996,12 +5668,6 @@
   "name": "Greater Farsight",
   "slug": "0000045e0000085d",
   "icon": "00000385000000F7"
- },
- {
-  "description": "Immune to <hyperlink><flank></flank> Flanking</hyperlink>",
-  "name": "Hyper-Awareness",
-  "slug": "000003e10000139d",
-  "icon": "000003E10000139A"
  },
  {
   "modifiers": [],
@@ -5301,12 +5967,6 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "This unit is mounted on an animal.",
-  "name": "Cavalry",
-  "slug": "0000038400000371",
-  "icon": "0000038400000372"
- },
- {
   "description": "When this unit drops below 60% of their maximum <hyperlink><hp></hp> Hit Points</hyperlink>, gain an effect based on the culture's <hyperlink>Devotion</hyperlink>:<bulletlist><bullet><devotion3></devotion3> Paragon: Heal 30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet><devotion2></devotion2> Devotee: Heal 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet><devotion1></devotion1> Adherent: Heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet><devotion0></devotion0> Neutral: Heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink></bullet><bullet><devotion-1></devotion-1> Oathbreaker: 3 Weakened for 3 <turn></turn> Turns</bullet></bulletlist>",
   "name": "Harmonize",
   "slug": "00000497000010f3",
@@ -5317,70 +5977,6 @@
   "name": "Paragon of Harmony",
   "slug": "000004970000155a",
   "icon": "0000049700001270"
- },
- {
-  "modifiers": [],
-  "description": "Unleashes a magical bolt at target enemy. Cannot miss against targets with Seal of Resonance.",
-  "name": "Seal Bolts",
-  "slug": "magic_bolts_ability_0000049000000E8C_0000049700000fb2",
-  "damage": "6<damageblight></damageblight> 6<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "icon": "000003BD0000210B"
- },
- {
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
-    "note": "Cooldown: 3 <turn></turn>"
-   }
-  ],
-  "description": "Deals damage and inflicts Seal of Resonance, a link effect that lasts for 3 <turn></turn> Turns.",
-  "name": "Resonance Seal",
-  "slug": "magic_seal_ability_0000049000000E8C_0000049700000fb2",
-  "damage": "30<damageblight></damageblight> ",
-  "requisites": [
-   {
-    "requisite": "Base"
-   },
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Debuff"
-   },
-   {
-    "requisite": "Single Shot"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "6"
- },
- {
-  "description": "<oathswornHarmony></oathswornHarmony>Resonance Seal:<bulletlist><bullet>Does an additional 2<damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> per attack.</bullet></bulletlist><br></br><oathswornStrife></oathswornStrife>Fire Seal:<bulletlist><bullet>Does an additional 5<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> per turn.</bullet><bullet>Does an additional 10<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> when the target dies.</bullet></bulletlist><br></br><oathswornRighteousness></oathswornRighteousness>Transference Seal:<bulletlist><bullet>Heals an addition 3<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per attack.</bullet></bulletlist>",
-  "name": "Champion Seals",
-  "slug": "0000048b00000ab5",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -5437,9 +6033,73 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ]
+ },
+ {
+  "description": "<oathswornHarmony></oathswornHarmony>Resonance Seal:<bulletlist><bullet>Does an additional 2<damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> per attack.</bullet></bulletlist><br></br><oathswornStrife></oathswornStrife>Fire Seal:<bulletlist><bullet>Does an additional 5<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> per turn.</bullet><bullet>Does an additional 10<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> when the target dies.</bullet></bulletlist><br></br><oathswornRighteousness></oathswornRighteousness>Transference Seal:<bulletlist><bullet>Heals an addition 3<hyperlink><temphp></temphp> Temporary Hit Point</hyperlink> per attack.</bullet></bulletlist>",
+  "name": "Champion Seals",
+  "slug": "0000048b00000ab5",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [],
+  "description": "Unleashes a magical bolt at target enemy. Cannot miss against targets with Seal of Resonance.",
+  "name": "Seal Bolts",
+  "slug": "magic_bolts_ability_0000049000000E8C_0000049700000fb2",
+  "damage": "6<damageblight></damageblight> 6<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Deals damage and inflicts Seal of Resonance, a link effect that lasts for 3 <turn></turn> Turns.",
+  "name": "Resonance Seal",
+  "slug": "magic_seal_ability_0000049000000E8C_0000049700000fb2",
+  "damage": "30<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6"
  },
  {
   "modifiers": [],
@@ -5474,7 +6134,7 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ],
   "description": "Deals damage and inflicts Seal of Fire, a link effect that lasts for 3<turn></turn> Turns.",
@@ -5498,87 +6158,6 @@
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6"
- },
- {
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "description": "Target unit sustains damage and has 1 <hyperlink>Positive Status Effect</hyperlink> removed.",
-  "name": "Purging Blast",
-  "slug": "magic_blast_(single)_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "14<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Base"
-   },
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Single Shot"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
-    "note": "Cooldown: 2 <turn></turn>"
-   }
-  ],
-  "description": "Friendly units in a 1-hex radius heal for 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
-  "name": "Vow of Healing",
-  "slug": "vow_of_healing_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
-  "icon": "0000049700001048"
- },
- {
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
-  "description": "Target friendly unit:<bulletlist><bullet>Has their <hyperlink>Negative Status Effects</hyperlink> removed.</bullet><bullet>Gains 3 Status Protection for 3 <turn></turn> Turns.</bullet></bulletlist>",
-  "name": "Vow of Purification",
-  "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "Support"
-   }
-  ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "00000497000012C8"
- },
- {
-  "description": "Vow of Healing:<bulletlist><bullet>Heals an additional 15<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
-  "name": "Champion Vow of Healing",
-  "slug": "0000048b00000c51",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -5645,6 +6224,87 @@
   "description": "Target friendly unit:<bulletlist><bullet>Has their <hyperlink>Negative Status Effects</hyperlink> removed.</bullet><bullet>Gains 3 Status Protection for 3 <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Vow of Purification",
   "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb5",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000012C8"
+ },
+ {
+  "description": "Vow of Healing:<bulletlist><bullet>Heals an additional 15<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+  "name": "Champion Vow of Healing",
+  "slug": "0000048b00000c51",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "description": "Target unit sustains damage and has 1 <hyperlink>Positive Status Effect</hyperlink> removed.",
+  "name": "Purging Blast",
+  "slug": "magic_blast_(single)_ability_0000049000000E8B_0000049700000fb2",
+  "damage": "14<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Friendly units in a 1-hex radius heal for 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+  "name": "Vow of Healing",
+  "slug": "vow_of_healing_ability_0000049000000E8B_0000049700000fb2",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "0000049700001048"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>Has their <hyperlink>Negative Status Effects</hyperlink> removed.</bullet><bullet>Gains 3 Status Protection for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Vow of Purification",
+  "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb2",
   "damage": "",
   "requisites": [
    {
@@ -5735,7 +6395,7 @@
   "modifiers": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb2",
+  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb5",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5755,7 +6415,7 @@
   "modifiers": [],
   "description": "Strike at target unit and enter <hyperlink>Defense Mode</hyperlink>.",
   "name": "Defensive Strike",
-  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb2",
+  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb5",
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5788,7 +6448,7 @@
   "modifiers": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb5",
+  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb2",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5808,7 +6468,7 @@
   "modifiers": [],
   "description": "Strike at target unit and enter <hyperlink>Defense Mode</hyperlink>.",
   "name": "Defensive Strike",
-  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb5",
+  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb2",
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5893,7 +6553,7 @@
   ],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb2",
+  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb5",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5924,7 +6584,7 @@
   ],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb5",
+  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb2",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5972,44 +6632,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "description": "Fires ranged projectiles at target enemy unit.",
-  "name": "Shoot Bow",
-  "slug": "wayfarer_shoot_bow_ability_0000049000000E88_0000049700000fb2",
-  "damage": "6<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Physical Ranged"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD000020CE"
- },
- {
-  "description": "When retreating from battle, this unit returns 2 turns faster and it is never fatal.",
-  "name": "Retreat Expert",
-  "slug": "000004970000113c",
-  "icon": "000004970000113E"
- },
- {
-  "description": "Moving over Roads costs 4 <hyperlink>Move Points</hyperlink> instead of 5.",
-  "name": "Road Walk",
-  "slug": "0000045e00000849",
-  "icon": "0000045E0000085B"
- },
- {
   "modifiers": [],
   "description": "Fires ranged projectiles at target enemy unit.",
   "name": "Shoot Bow",
@@ -6034,6 +6656,44 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    }
   ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "When retreating from battle, this unit returns 2 turns faster and it is never fatal.",
+  "name": "Retreat Expert",
+  "slug": "000004970000113c",
+  "icon": "000004970000113E"
+ },
+ {
+  "description": "Moving over Roads costs 4 <hyperlink>Move Points</hyperlink> instead of 5.",
+  "name": "Road Walk",
+  "slug": "0000045e00000849",
+  "icon": "0000045E0000085B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Shoot Bow",
+  "slug": "wayfarer_shoot_bow_ability_0000049000000E88_0000049700000fb2",
+  "damage": "6<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
   "icon": "000003BD000020CE"
  },
  {
@@ -6137,24 +6797,6 @@
   "icon": "000003BD0000210B"
  },
  {
-  "description": "Unit is immune to Bleeding.",
-  "name": "Status Effect Immunity: Bleeding",
-  "slug": "0000049700001683",
-  "icon": "0000049700001685"
- },
- {
-  "description": "The unit's attacks:<bulletlist><bullet>Ignore up to 2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet>Ignore up to 1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Ignore up to 1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
-  "name": "Champion Medal: Evoker",
-  "slug": "000003e30000628a",
-  "icon": "000003E30000627B"
- },
- {
-  "description": "When the unit dies in combat, it is revived at the end of combat if its owner is victorious. Revived units are brought back with 50% of their maximum <hyperlink><hp></hp> Hit Points</hyperlink>.",
-  "name": "Resurgence",
-  "slug": "0000035700000332",
-  "icon": "0000035700000333"
- },
- {
   "notes": [
    {
     "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
@@ -6235,18 +6877,6 @@
   "name": "Crocodile Primal Connection",
   "slug": "00000497000003a7",
   "icon": "00000497000003A4"
- },
- {
-  "description": "An Ethereal unit with:<bulletlist><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit> <hyperlink>Spirit Resistance</hyperlink></bullet><bullet>Pass Through</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Bleeding</bullet><bullet>Diseased</bullet><bullet>Immobilized</bullet><bullet>Poisoned</bullet></bulletlist></bulletlist>",
-  "name": "Ethereal",
-  "slug": "000003e300004802",
-  "icon": "000003E300004804"
- },
- {
-  "description": "This unit can move through obstacles. Does not function when the unit is in a transport.",
-  "name": "Pass Through",
-  "slug": "000003e300004814",
-  "icon": "000003E300004815"
  },
  {
   "description": "Unit is immune to Diseased.",
@@ -9452,6 +10082,216 @@
   "icon": "000003E30000728A"
  },
  {
+  "modifiers": [
+   {
+    "description": "Base 120% chance of inflicting 2x Decaying for 3 <turn></turn> Turns.",
+    "name": "Decaying",
+    "count": 1
+   }
+  ],
+  "description": "Single Melee Strike.",
+  "name": "Melee Single Strike",
+  "slug": "melee_single_strike_(base)_ability_0000048D00001A25_0000048d000019d6",
+  "damage": "28<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Damage increases based on target's lost <hyperlink><hp></hp> Hit Points</hyperlink>",
+    "name": "Death Stalk",
+    "count": 1
+   }
+  ],
+  "description": "Jump onto the target enemy unit, knocking them back, then enter Defense Mode.",
+  "name": "Death Stalk",
+  "slug": "death_stalk_unit_property_ability_0000048D00001A25_0000048d000019d6",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Single Shot"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Melee"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "icon": "0000048D00001A46"
+ },
+ {
+  "description": "On Kill, gain +1 additional Mortal Blessing until the end of combat",
+  "name": "Blessed End",
+  "slug": "0000048d00001a43",
+  "icon": "0000048D00001A49"
+ },
+ {
+  "description": "+5% damage for each stack of Mortal Blessing",
+  "name": "Fatebringer",
+  "slug": "0000048d00001a3a",
+  "icon": "0000048D00001A3B"
+ },
+ {
+  "description": "Whenever a unit dies:<bulletlist><bullet>Gain +1 Mortal Blessing</bullet><bullet>If this unit struck the killing blow +1 additional Mortal Blessing</bullet></bulletlist>",
+  "name": "Power from Death",
+  "slug": "0000048d000019f7",
+  "icon": "0000048D00001A13"
+ },
+ {
+  "description": "This unit cannot be seen on the World Map.",
+  "name": "Universal Camouflage",
+  "slug": "000003e300004864",
+  "icon": "000003E300004865"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "+40% damage to Cavalry and Large Target units.",
+    "name": "Polearm",
+    "count": 1
+   }
+  ],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_0000048D00001A22_0000048d000019d6",
+  "damage": "14<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "This unit gains:<bulletlist><bullet>+20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>+10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> for each stack of Mortal Blessing.</bullet></bulletlist><br></br>This unit then enters Defense Mode.",
+  "name": "Deathly Vitality",
+  "slug": "deathly_vitality_ability_0000048D00001A22_0000048d000019d6",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000048D00001A21"
+ },
+ {
+  "modifiers": [],
+  "description": "Unleashes a magical bolt at target enemy.",
+  "name": "Decay Bolts",
+  "slug": "magic_bolts_ability_0000048D000019EC_0000048d000019d6",
+  "damage": "12<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflicts 2 stacks of Decaying for 3 <turn></turn>.",
+    "name": "Decaying",
+    "count": 1
+   },
+   {
+    "description": "Inflict Life Seed for 3 <turn></turn> Turns.",
+    "name": "Life Seed",
+    "count": 1
+   }
+  ],
+  "description": "Target enemy unit and another within 3 hexes sustain damage.",
+  "name": "Death Hex",
+  "slug": "death_hex_ability_0000048D000019EC_0000048d000019d6",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000048D000019F0"
+ },
+ {
+  "description": "Death Hex:<bulletlist><bullet>Inflicts +4 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink></bullet><bullet>Inflicts +1 Decaying</bullet></bulletlist>",
+  "name": "Champion Death Hex",
+  "slug": "0000048d000019f4",
+  "icon": "000003E30000627B"
+ },
+ {
   "modifiers": [],
   "description": "Unleashes a magical bolt at target enemy.",
   "name": "Frost Bolts",
@@ -9715,7 +10555,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Link to target friendly <hyperlink>Hero</hyperlink> unit:<bulletlist><bullet>Damage sustained by the linked unit is transferred to this unit with a 25% reduction.</bullet><bullet>At the start of each turn, the linked unit gains Strengthened.</bullet></bulletlist>",
+  "description": "Link to target friendly <hyperlink>Hero</hyperlink> unit:<bulletlist><bullet>Damage sustained by the linked unit is dealt to this unit as well but reduced by 50%.</bullet><bullet>At the start of each turn, the linked unit gains Strengthened.</bullet></bulletlist>",
   "name": "Sworn Bond",
   "slug": "sworn_bond_ability_0000048D00001227_0000048d00001220",
   "damage": "",
@@ -9815,7 +10655,7 @@
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d000011e2",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -9850,7 +10690,7 @@
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d00001220",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -9922,7 +10762,7 @@
     "note": "Cooldown: 0 <turn></turn>"
    }
   ],
-  "description": "Link with the target friendly Magic Origin, while active:<bulletlist><bullet>Target gains +1 <hyperlink>Retaliation Attack</hyperlink>, +30 <hyperlink><accuracy></accuracy> Accuracy</hyperlink>, and Frenzy.</bullet></bulletlist>",
+  "description": "Link with the target friendly Magic Origin, while active:<bulletlist><bullet>Target inflicts +20% damage.</bullet><bullet>At the start of their <turn></turn> Turn, the target heals for +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
   "name": "Astral Bond",
   "slug": "astral_bond_ability_0000048D000006F4_0000048d00000620",
   "damage": "",
@@ -9952,14 +10792,14 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "3",
   "icon": "0000048D00000728"
  },
  {
-  "description": "Friendly Magic Origins units in combat gain: <bulletlist><bullet>+5 <happiness></happiness> <hyperlink>Morale</hyperlink> for each friendly unit with this property</bullet></bulletlist>",
+  "description": "While adjacent to a friendly Magic Origin unit, both units gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist><br></br>This effect stacks.",
   "name": "Astral Connection",
-  "slug": "0000048d00000989",
+  "slug": "0000048d00001b26",
   "icon": "0000048D0000098F"
  },
  {
@@ -10080,7 +10920,7 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    }
   ],
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist>",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist></bulletlist>",
   "name": "Pull",
   "slug": "constrictor_pull_ability_0000048D000005E0",
   "damage": "20<damagephysical></damagephysical> ",
@@ -10843,7 +11683,7 @@
  },
  {
   "notes": [],
-  "description": "Link to target friendly unit:<bulletlist><bullet>Damage sustained by the linked unit is transferred to this unit with a 35% reduction.</bullet><bullet>At the start of each turn, this unit and the linked unit gain Grace.</bullet></bulletlist><br></br>While active, gain Recall Mask of Prosperity.",
+  "description": "Link to target friendly unit:<bulletlist><bullet>Damage sustained by the linked unit is dealt to this unit as well with a 50% reduction.</bullet><bullet>At the start of each turn, this unit and the linked unit gain Grace.</bullet></bulletlist><br></br>While active, gain Recall Mask of Prosperity.",
   "name": "Bestow Mask of Prosperity",
   "slug": "bestow_mask_of_prosperity_ability_0000048900001231",
   "damage": "",
@@ -11232,7 +12072,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "<bulletlist><bullet>Inflict 3 Ghostfire for 3 <turn></turn> Turns to target unit.</bullet><bullet>Teleport back 4 hexes.</bulletlsit></bullet>",
+  "description": "<bulletlist><bullet>Inflict 3 Ghostfire for 3 <turn></turn> Turns to target unit.</bullet><bullet>Teleport back 4 hexes.</bullet></bulletlist>",
   "name": "Tricky Escape",
   "slug": "tricky_escape_ability_0000048900001226",
   "damage": "",
@@ -11421,12 +12261,6 @@
   "name": "Shadowed Escape",
   "slug": "0000048b00000205",
   "icon": "0000048B00000209"
- },
- {
-  "description": "This unit cannot be seen on the World Map.",
-  "name": "Universal Camouflage",
-  "slug": "000003e300004864",
-  "icon": "000003E300004865"
  },
  {
   "modifiers": [
@@ -13302,8 +14136,14 @@
   "icon": "000003E30000627B"
  },
  {
-  "modifiers": [],
-  "description": "Target units in a 1-hex radius are dealt damage. Destroys all obstacles in the same radius.",
+  "modifiers": [
+   {
+    "description": "Inflicts Burning for 3 <turn></turn> Turns.",
+    "name": "Burning",
+    "count": 1
+   }
+  ],
+  "description": "Unit detonates itself. In a 1-hex radius:<bulletlist><bullet>Units sustain damage.</bullet><bullet>All obstacles are destroyed.</bullet><bullet>Sets hexes <hyperlink>On Fire</hyperlink>.</bullet></bulletlist>",
   "name": "Detonate and Devastate",
   "slug": "detonate_ability_0000041B0000117A",
   "damage": "15<damagephysical></damagephysical> 15<damagefire></damagefire> ",
@@ -13445,14 +14285,7 @@
   "icon": "000003BD0000210B"
  },
  {
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "Enemy units in a 1-hex radius:<bulletlist><bullet>Sustain damage.</bullet><bullet>Gain Sundered Defense for 3 <turn></turn> Turns.</bullet></bulletlist><br></br>If successful, grant Bolstered Defense for 3 <turn></turn> Turns to all friendly units within 2-hexes of the caster.",
   "name": "Transmute",
   "slug": "transmute_ability_0000041B00001093",
@@ -13468,6 +14301,14 @@
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000041B0000109E"
  },
  {
@@ -13747,7 +14588,18 @@
   "icon": "000003E1000013E7"
  },
  {
+  "description": "This unit does not trigger \\\"on unit death\\\" effects when it dies.",
+  "name": "Deathless",
+  "slug": "0000048b00000e94",
+  "icon": "0000048D00001BC5"
+ },
+ {
   "modifiers": [
+   {
+    "description": "Inflicts Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   },
    {
     "description": "Displaces the attacked target and moves onto its hex.",
     "name": "Displace and Replace",
@@ -13776,7 +14628,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
   "description": "Attacks units in a 1-hex cone.<bulletlist><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Power Cleave",
   "slug": "power_cleave_ability_0000041B00000BB2",
@@ -13861,7 +14719,7 @@
   "icon": "0000041B00000B75"
  },
  {
-  "description": "Attackers within 3 hexes have a base 60% chance of gaining a random status effect.",
+  "description": "Enemy attackers within 3 hexes have a base 60% chance of gaining a random status effect.",
   "name": "Chaotic Rebuke",
   "slug": "0000041b00000c5c",
   "icon": "000003E300006A21"
@@ -16271,7 +17129,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Units in a 2-hex cone:<bulletlist><bullet>Sustain damage.</bullet><bullet>Gain 2 Sundered Defense.</bullet>",
+  "description": "Units in a 2-hex cone:<bulletlist><bullet>Sustain damage.</bullet><bullet>Gain 2 Sundered Defense.</bullet></bulletlist>",
   "name": "Acid Spray",
   "slug": "acid_spray_ability_000003E3000072B0",
   "damage": "14<damageblight></damageblight> ",
@@ -16567,12 +17425,6 @@
    }
   ],
   "icon": "000003E300007267"
- },
- {
-  "description": "This unit is not stopped by enemy <hyperlink>Zone of Control</hyperlink>.",
-  "name": "Fleeting",
-  "slug": "0000042b00000006",
-  "icon": "0000042B00000008"
  },
  {
   "description": "After attacking, this unit regains half their <hyperlink>Action Points</hyperlink> but can no longer attack.",
@@ -17061,7 +17913,7 @@
   "icon": "000003E300006BDE"
  },
  {
-  "description": "At the start of the turn, adjacent enemy units:<bulletlist><bullet>Sustain 8 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Blind for 1 <turn></turn> Turn.</bullet>",
+  "description": "At the start of the turn, adjacent enemy units:<bulletlist><bullet>Sustain 8 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Blind for 1 <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Spirit Aura",
   "slug": "000003e300006be6",
   "icon": "000003E300006BE7"
@@ -17861,7 +18713,7 @@
  },
  {
   "notes": [],
-  "description": "Unit dies:<bulletlist><bullet>Triggering Astral Torrent.</bullet><bullet>Heals an additional 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> to friendly units within 2 hexes.</bullet>",
+  "description": "Unit dies:<bulletlist><bullet>Triggering Astral Torrent.</bullet><bullet>Heals an additional 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> to friendly units within 2 hexes.</bullet></bulletlist>",
   "name": "Shatter Self",
   "slug": "shatter_self_ability_000003E300005EB2",
   "damage": "",
@@ -18094,7 +18946,7 @@
   "icon": "000003E30000656A"
  },
  {
-  "description": "Unit has:<bulletList><bullet><hyperlink>First Strike</hyperlink></bullet><bullet>Charge Resistance</bullet><bullet>+40% damage against Cavalry and Large Target units.</bullet></bulletlist>",
+  "description": "Unit has:<bulletlist><bullet><hyperlink>First Strike</hyperlink></bullet><bullet>Charge Resistance</bullet><bullet>+40% damage against Cavalry and Large Target units.</bullet></bulletlist>",
   "name": "Polearm Weapon",
   "slug": "000003e3000068c8",
   "icon": "0000039F000016EB"
@@ -18212,7 +19064,7 @@
     "count": 1
    }
   ],
-  "description": "A Charge attack:<bulletlist><bullet>Gains % damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_(caustic_worm_only)_000003E300005C57",
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
@@ -18326,7 +19178,7 @@
   "icon": "000003E300006607"
  },
  {
-  "description": "At the start of battle, summons a War Hound that inflicts Marked and Sundered Defense with its attack.<br></br><br></br>Doesn't work in water combat.",
+  "description": "At the start of battle, summon a <hyperlink>War Hound</hyperlink> Shock Unit that inflicts Marked and Bleeding with its attack.<br></br><br></br>Doesn't work in water combat and cannot benefit from Unit Enchantments.",
   "name": "Unleash the Hounds",
   "slug": "000003e3000064a5",
   "icon": "000003E3000064A6"
@@ -18671,7 +19523,13 @@
   "icon": "000003E300005B3D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
+    "name": "Burning",
+    "count": 1
+   }
+  ],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_000003E300005AC4",
@@ -18729,7 +19587,7 @@
     "count": 1
    }
   ],
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Becomes Berserk until the end of battle.</bullet><bullet>If not a <hyperlink>Hero</hyperlink>, unit turns into a Tier I Infernal Fiend unit under your control upon its death.</bullet></bulletlist>",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Becomes Berserk until the end of battle.</bullet><bullet>Turns into a Tier I Infernal Fiend unit under your control upon its death.</bullet></bulletlist><br></br>Cannot affect Heroes, Fiends or Siegecraft units.",
   "name": "Chaos Brand",
   "slug": "chaos_brand_ability_000003E300005AB0",
   "damage": "39<damagefire></damagefire> ",
@@ -18782,7 +19640,7 @@
   "icon": "000003E300005AC9"
  },
  {
-  "description": "When this unit dies, units in a 2-hex radius:<bulletlist><bullet>Sustain 30 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>. Halved for friendly units.</bullet><bullet>Become Burning for 3 <turn></turn> Turns.</bullet>",
+  "description": "When this unit dies, units in a 2-hex radius:<bulletlist><bullet>Sustain 30 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>. Halved for friendly units.</bullet><bullet>Become Burning for 3 <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Death Explosion",
   "slug": "000003e300005ab4",
   "icon": "000003E300005AB5"
@@ -18878,8 +19736,8 @@
  {
   "modifiers": [
    {
-    "description": "Attacks inflict Sundered Defense",
-    "name": "Sundered Defense",
+    "description": "Inflicts Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
     "count": 1
    },
    {
@@ -18949,7 +19807,7 @@
  },
  {
   "modifiers": [],
-  "description": "A Charge attack:<bulletlist><bullet>Gains % damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_(ram_warship_only)_000003E300005880",
   "damage": "24<damagephysical></damagephysical> ",
@@ -19694,14 +20552,19 @@
  {
   "modifiers": [
    {
-    "description": "Inflict Sundered Defense for 3 <turn></turn> Turns.",
-    "name": "Sundered Defense",
+    "description": "Base 90% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
+    "count": 1
+   },
+   {
+    "description": "Base 90% chance of inflicting 2 Weakened for 3 <turn></turn> Turns.",
+    "name": "Weakened",
     "count": 1
    }
   ],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
-  "slug": "melee_charge_strike_(base)_ability_000003E300005305",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005305_0000048d000019de",
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19723,35 +20586,47 @@
  {
   "modifiers": [
    {
-    "description": "Base 90% chance of inflicting Weakened for 3 <turn></turn> Turns.",
-    "name": "Weakened",
+    "description": "Base 90% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
     "count": 1
    }
   ],
-  "description": "Deals damage to enemies in a 2-hex cone. Deals double damage to units with a <hyperlink>Negative Status Effect</hyperlink>.",
-  "name": "Dark Surge",
-  "slug": "dark_surge_ability_000003E300005305",
-  "damage": "18<damagefrost></damagefrost> ",
+  "description": "Trample the target:<bulletlist><bullet>Displace the attacked target and move onto its hex.</bullet><bullet>Cancel <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attacks</hyperlink>.</bullet><bullet>Adjacent enemy units have 90% chance of suffering Weakened.</bullet><bullet>Enter <hyperlink>Defense Mode</hyperlink>.</bullet></bulletlist>",
+  "name": "Trample",
+  "slug": "trample_ability_000003E300005305_0000048d000019de",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "Magic"
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
    }
   ],
-  "accuracy": "Always Hits",
-  "actionPoints": "<fullaction></fullaction>",
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [
    {
-    "note": "Cooldown: 3 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "icon": "000003E300006553"
+  "icon": "0000048D00001ADC"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks have a base 90% of inflicting Weakened.</bullet><bullet><hyperlink>Melee</hyperlink> attacks against Weakened units:<bulletlist></bullet><bullet>Deal +20% damage.</bullet><bullet>Heal the attacker for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>, once per turn.</bullet></bulletlist></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
-  "name": "Cull the Weak",
-  "slug": "0000049700000f4f",
-  "icon": "000003E3000055A5"
+  "description": "Adjacent enemies have -1 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.",
+  "name": "Aura of Tyranny",
+  "slug": "0000048d00001aa4",
+  "icon": "0000048D00001AA2"
+ },
+ {
+  "description": "At the end of this unit's turn:<bulletlist><bullet>Heal for 15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> per adjacent enemy unit.</bullet></bulletlist>",
+  "name": "Despotic Vitality",
+  "slug": "0000048d00001ade",
+  "icon": "0000048D00001AE1"
  },
  {
   "modifiers": [
@@ -19759,11 +20634,21 @@
     "description": "+40% damage to Cavalry and Large Target units.",
     "name": "Polearm",
     "count": 1
+   },
+   {
+    "description": "Base 60% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
+    "name": "Immobilized",
+    "count": 1
+   },
+   {
+    "description": "Base 60% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
+    "count": 1
    }
   ],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(base)_ability_000003E300005304",
+  "slug": "melee_strike_(base)_ability_000003E300005304_0000048d000019de",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19780,10 +20665,10 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "At the end of this unit's turn, adjacent enemy units have a base 90% chance of receiving:<bulletlist><bullet>Sundered Defense</bullet><bullet>Sundered Resistance</bullet></bulletlist>",
-  "name": "Dark Stalwart",
-  "slug": "000003e3000050e6",
-  "icon": "000003E3000050E8"
+  "description": "Unit has +1 <defense></defense> <hyperlink>Defense</hyperlink> and +1 <resistance></resistance> <hyperlink>Resistance</hyperlink> against attacks for each <hyperlink>Debuff</hyperlink> on the attacker.<br></br>Stacks up to 5 times.",
+  "name": "Armor of Contempt",
+  "slug": "0000048d00001b59",
+  "icon": "0000048D00001B5A"
  },
  {
   "modifiers": [
@@ -19791,11 +20676,16 @@
     "description": "Base 90% chance of inflicting Weakened for 3 <turn></turn> Turns.",
     "name": "Weakened",
     "count": 1
+   },
+   {
+    "description": "Base 60% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
+    "count": 1
    }
   ],
   "description": "Unleashes a magical bolt at target enemy.",
   "name": "Weakening Bolts",
-  "slug": "magic_bolts_ability_000003E300005303",
+  "slug": "magic_bolts_ability_000003E300005303_0000048d000019de",
   "damage": "12<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -19821,24 +20711,24 @@
  {
   "modifiers": [
    {
-    "description": "Inflict Sundered Defense for 3 <turn></turn> Turns.",
+    "description": "Base 90% chance of inflicting 2 Sundered Defense for 3 <turn></turn> Turns.",
     "name": "Sundered Defense",
     "count": 1
    },
    {
-    "description": "Inflict Sundered Resistance for 3 <turn></turn> Turns.",
-    "name": "Sundered Resistance",
+    "description": "Base 90% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
     "count": 1
    },
    {
-    "description": "Inflict Weakened for 3 <turn></turn> Turns.",
-    "name": "Weakened",
+    "description": "Base 90% chance of inflicting 2 Sundered Resistance for 3 <turn></turn> Turns.",
+    "name": "Sundered Resistance",
     "count": 1
    }
   ],
   "description": "Target enemy unit and another within 3 hexes sustain damage.",
   "name": "Sundering Curse",
-  "slug": "sundering_curse_ability_000003E300005303",
+  "slug": "sundering_curse_ability_000003E300005303_0000048d000019de",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -19868,7 +20758,7 @@
   "icon": "000003E3000050EA"
  },
  {
-  "description": "Sundering Curse:<bulletlist><bullet>Applies an additional stack of Weakened, Sundered Defense, and Sundered Resistance.</bullet></bulletlist>",
+  "description": "Sundering Curse:<bulletlist><bullet>Gains a base 90% chance of inflicting 2 Weakened</bullet></bulletlist>",
   "name": "Champion Sundering Curse",
   "slug": "0000048b00000a45",
   "icon": "000003E30000627B"
@@ -19876,14 +20766,67 @@
  {
   "modifiers": [
    {
-    "description": "Base 90% chance of inflicting Weakened for 3 <turn></turn> Turns.",
-    "name": "Weakened",
+    "description": "Base 60% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
     "count": 1
    }
   ],
   "description": "Fires ranged projectiles at target enemy unit.",
   "name": "Shoot Bow",
-  "slug": "shoot_bow_ability_000003E300005302",
+  "slug": "shoot_bow_ability_000003E300005302_0000048d000019de",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "Caster moves to target hex.<br></br>This ability recharges on kill.",
+  "name": "Relentless Pursuit",
+  "slug": "relentless_pursuit_unit_property_ability_000003E300005302_0000048d000019de",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Movement"
+   },
+   {
+    "requisite": "Relentless Pursuit"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000048D000019E5"
+ },
+ {
+  "modifiers": [],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Shoot Bow",
+  "slug": "shoot_bow_ability_000003E300005302_0000048d000019d6",
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19908,9 +20851,42 @@
  },
  {
   "modifiers": [],
+  "description": "Caster moves to target hex.<br></br>This ability recharges on kill.",
+  "name": "Relentless Pursuit",
+  "slug": "relentless_pursuit_unit_property_ability_000003E300005302_0000048d000019d6",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Movement"
+   },
+   {
+    "requisite": "Relentless Pursuit"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "icon": "0000048D000019E5"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
+    "count": 1
+   }
+  ],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
-  "slug": "melee_charge_strike_(base)_ability_000003E300005301",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005301_0000048d000019de",
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19930,10 +20906,45 @@
   "icon": "000003EB0000040D"
  },
  {
+  "description": "When the unit dies in combat, it is revived at the end of combat if its owner is victorious. Revived units are brought back with 10% of their maximum <hyperlink><hp></hp> Hit Points</hyperlink> and no <hyperlink>Move Points</hyperlink>.",
+  "name": "Lesser Resurgence",
+  "slug": "0000048d00001b16",
+  "icon": "0000035700000333"
+ },
+ {
   "modifiers": [],
+  "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "name": "Charge Strike",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005301_0000048d000019d6",
+  "damage": "18<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of:<bulletlist><bullet>Inflicting Status Vulnerability for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Healing self for 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+    "name": "Exploit Vulnerability",
+    "count": 1
+   }
+  ],
   "description": "Fires ranged projectiles at target enemy unit.",
   "name": "Shoot Bow",
-  "slug": "shoot_bow_ability_000003E300005300",
+  "slug": "shoot_bow_ability_000003E300005300_0000048d000019de",
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19970,10 +20981,37 @@
  },
  {
   "modifiers": [],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Shoot Bow",
+  "slug": "shoot_bow_ability_000003E300005300_0000048d000019d6",
+  "damage": "6<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "modifiers": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_000003E3000052F9",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -20010,7 +21048,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "<bulletlist><bullet>Deal damage to target unit.</bullet><bullet>Adjacent enemy units take 50% of the damage.</bullet><bullet>Enter <hyperlink>Defense Mode</hyperlink> after use.</bullet>",
+  "description": "<bulletlist><bullet>Deal damage to target unit.</bullet><bullet>Adjacent enemy units take 50% of the damage.</bullet><bullet>Enter <hyperlink>Defense Mode</hyperlink> after use.</bullet></bulletlist>",
   "name": "Defensive Sweep",
   "slug": "defensive_sweep_ability_000003E3000052F9",
   "damage": "16<damagephysical></damagephysical> ",
@@ -20031,12 +21069,6 @@
   "icon": "000003E100001523"
  },
  {
-  "description": "Unit has +1 <hyperlink>Retaliation Attack</hyperlink>.",
-  "name": "Watchful",
-  "slug": "000003e100001533",
-  "icon": "000003E3000063F6"
- },
- {
   "modifiers": [
    {
     "description": "+40% damage to Cavalry and Large Target units.",
@@ -20047,7 +21079,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_000003E3000052F8",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -20204,11 +21236,11 @@
   "icon": "000003E30000623D"
  },
  {
-  "modifiers": [],
+  "notes": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_000003E3000052F5",
-  "damage": "8<damagephysical></damagephysical> ",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -20220,7 +21252,6 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "notes": [],
   "icon": "000003BD000020C9"
  },
  {
@@ -20893,17 +21924,11 @@
   "icon": "0000045E000008E2"
  },
  {
-  "modifiers": [
-   {
-    "description": "Deal +40% damage against creatures with Large Target.",
-    "name": "Giant Slayer",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d000011e2",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -20928,17 +21953,11 @@
   "icon": "0000048D0000135A"
  },
  {
-  "modifiers": [
-   {
-    "description": "Deal +40% damage against creatures with Large Target.",
-    "name": "Giant Slayer",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "A Charge attack:<bulletlist><bullet>Gains 20% damage per hex traveled, up to 3 hexes.</bullet><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Charge Strike",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d00001220",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -21789,7 +22808,7 @@
  {
   "modifiers": [
    {
-    "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
+    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
     "count": 1
    }
@@ -22682,7 +23701,7 @@
   "icon": "000003E1000011B3"
  },
  {
-  "description": "Melee attackers sustain 3 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> per attack.",
+  "description": "Melee attackers suffer a stack of Bleeding for 3 <turn></turn> Turns.",
   "name": "Quill Hide",
   "slug": "000003e1000011ba",
   "icon": "000003E1000011B9"
@@ -23201,6 +24220,54 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "icon": "0000049700002A90"
+ },
+ {
+  "description": "At the start of combat, summon a <hyperlink>Blood Maggot</hyperlink>.",
+  "name": "Blood Pest",
+  "slug": "00000497000034f4",
+  "icon": "00000497000034F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "In a 1-hex radius enemy units:<bulletlist><bullet>Sustain damage.</bullet><bullet>Gain 3 stacks of Torment.</bullet></bulletlist>",
+  "name": "Torment and Pain",
+  "slug": "torment_and_pain_ability_000003BD00002895",
+  "damage": "20<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000034F0"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "The caster:<bulletlist><bullet>Sustains 10 unblockable <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Gains +40% damage for this turn.</bullet></bulletlist>",
+  "name": "Blood Rite",
+  "slug": "blood_rite_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "00000497000034D9"
  },
  {
   "description": "At the start of combat, summon a Tier I Skeleton unit with Unholy Champion.",
@@ -24576,9 +25643,6 @@
   "requisites": [
    {
     "requisite": "Summoning"
-   },
-   {
-    "requisite": "Support"
    }
   ],
   "accuracy": "Always Hits",
@@ -24628,9 +25692,6 @@
   "requisites": [
    {
     "requisite": "Summoning"
-   },
-   {
-    "requisite": "Support"
    }
   ],
   "accuracy": "Always Hits",
@@ -24781,7 +25842,7 @@
     "note": "Can only be used once per battle."
    }
   ],
-  "description": "All friendly units gain:<bulletlist><bullet>+1 Bolstered Defense for 3 <turn></turn> Turns.</bullet><bullet>+1 Bolstered Resistance for 3 <turn></turn> Turns.</bullet>",
+  "description": "All friendly units gain:<bulletlist><bullet>+1 Bolstered Defense for 3 <turn></turn> Turns.</bullet><bullet>+1 Bolstered Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Rite of Vigil",
   "slug": "hs_ritualist_rite_of_vigil_ability_000003BD00002895",
   "damage": "",
@@ -24801,7 +25862,7 @@
     "note": "Cooldown: 3 <turn></turn>"
    }
   ],
-  "description": "Target non-Hero Enemy:<bulletlist><bullet>Base 90% chance of transforming into a Weakened Tier 1 animal for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet>",
+  "description": "Target non-Hero Enemy:<bulletlist><bullet>Base 90% chance of transforming into a Weakened Tier 1 animal for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
   "name": "Polymorph",
   "slug": "hs_ritualist_polymorph_ability_000003BD00002895",
   "damage": "",
@@ -24833,7 +25894,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Destroy target corpse, and create a <hyperlink>Flora Obstacle</hyperlink> on the target hex.<br></br><br></br>Friendly units in 2-hex radius:<bulletlist><bullet>Gain 10<temphp></temphp> Temporary Hit Points.</bullet><bullet>Gain Regeneration for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet>",
+  "description": "Destroy target corpse and create a <hyperlink>Flora Obstacle</hyperlink> on the target hex.<br></br><br></br>Friendly units in 2-hex radius:<bulletlist><bullet>Gain 10<temphp></temphp> Temporary Hit Points.</bullet><bullet>Gain Regeneration for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
   "name": "Decompose",
   "slug": "hs_ritualist_decompose_ability_000003BD00002895",
   "damage": "",
@@ -25039,9 +26100,6 @@
  {
   "notes": [
    {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   },
-   {
     "note": "Can only be used once per battle."
    }
   ],
@@ -25232,7 +26290,7 @@
   "icon": "000004BB0000001B"
  },
  {
-  "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet>Regenerate +10 <hyperlink><hp></hp> Hit Points</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
+  "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet><hyperlink>Regenerate</hyperlink> +10 <hyperlink><hp></hp> Hit Points</hyperlink> per <turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
   "name": "Foraging Training",
   "slug": "0000048d00000dac",
   "icon": "000004BB0000001E"
@@ -25438,6 +26496,154 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
    {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Conjure a <hyperlink>Vampire Spider Matriarch</hyperlink>.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Conjure Vampire Spider Matriarch",
+  "slug": "conjure_vampire_matriarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Summoning"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000004970000354F"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Target enemy:<bulletlist><bullet>Sustains damage</bullet><bullet>Gains 2 Blood Parasite for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Scarlet Plague",
+  "slug": "scarlet_plague_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003269"
+ },
+ {
+  "modifiers": [],
+  "description": "Enemy units within a 2-hex radius sustain damage and have a base 90% chance of:<bulletlist><bullet>Having their <happiness></happiness> <hyperlink>Morale</hyperlink> reduced by -10.</bullet><bullet>Becoming 2 Weakened.</bullet></bulletlist>",
+  "name": "Wail of the Banshee",
+  "slug": "wail_of_the_banshee_ability_000003BD00002895",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Magic"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005F65"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target unit with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse:<bulletlist><bullet>Has a chance of dying instantly.</bullet><bullet>The lower the target unit's morale is, the more this chance increases.</bullet><bullet>If the unit does not die, it sustains 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> instead.</bullet></bulletlist>",
+  "name": "Crushing Anguish",
+  "slug": "crushing_anguish_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000003E3000063B5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Conjure a <hyperlink>Dread Spider Matriarch</hyperlink>.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Conjure Dread Matriarch",
+  "slug": "conjure_dread_matriarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Summoning"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000004970000324A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "This unit and adjacent friendly units gain:<bulletlist><bullet>2 Strengthened.</bullet><bullet>2 Fortune.</bullet></bulletlist>",
+  "name": "Song of Carnage",
+  "slug": "song_of_carnage_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A62"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
@@ -25585,7 +26791,7 @@
   "icon": "0000041B00001983"
  },
  {
-  "description": "<bulletlist><bullet>+6 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet><happiness></happiness> <hyperlink>Morale</hyperlink> loss reduced by -50%.</bullet>",
+  "description": "<bulletlist><bullet>+6 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.</bullet><bullet><happiness></happiness> <hyperlink>Morale</hyperlink> loss reduced by -50%.</bullet></bulletlist>",
   "name": "Incorruptible Spirit",
   "slug": "000004a6000009dc",
   "icon": "0000041B0000192B"
@@ -26021,6 +27227,12 @@
   "icon": "000003E300004F67"
  },
  {
+  "description": "<bulletlist><bullet><hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks have a base 90% of inflicting Weakened.</bullet><bullet><hyperlink>Melee</hyperlink> attacks against Weakened units:<bulletlist></bullet><bullet>Deal +20% damage.</bullet><bullet>Heal the attacker for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>, once per turn.</bullet></bulletlist></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "name": "Cull the Weak",
+  "slug": "0000049700000f4f",
+  "icon": "000003E3000055A5"
+ },
+ {
   "description": "At the end of each turn, adjacent enemy units:<bulletlist><bullet>Gain Weakened.</bullet><bullet>Gain Slowed.</bullet><bullet>Have a base 60% chance of being inflicted with Frozen.</bullet></bulletlist>",
   "name": "Shadow Aura",
   "slug": "000003e300006d1e",
@@ -26336,6 +27548,95 @@
   "icon": "0000049700001737"
  },
  {
+  "description": "This unit is Flying:<bulletlist><bullet>It has +2 Vision Range</bullet><bullet>Can move in any terrain at a movement cost of 5</bullet><bullet>Requires Seafaring to traverse Water hexes</bullet><bullet>Can safely move past most other units and obstacles in combat.</bullet></bulletlist>",
+  "name": "Flying",
+  "slug": "0000049700002f03",
+  "icon": "00000357000001A5"
+ },
+ {
+  "description": "When this unit's <hyperlink><hp></hp> Hit Points</hyperlink> are reduced to zero, it is displaced by 3 hexes and heals +20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br>Works once per battle.",
+  "name": "Mist Away",
+  "slug": "0000049700002ef6",
+  "icon": "0000049700002EF7"
+ },
+ {
+  "modifiers": [],
+  "description": "Deal unblockable damage to target friendly unit. Then the caster:<bulletlist><bullet>Heals for 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains 2 Strengthened for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Drain Familiar",
+  "slug": "drain_familiar_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002EC6"
+ },
+ {
+  "modifiers": [],
+  "description": "Deal damage to target unit and heal for 50% of the damage dealt.<br></br><br></br>Cannot target units that are immune to Bleeding.",
+  "name": "Siphon Blood",
+  "slug": "siphon_blood_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Blood Drain"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E98"
+ },
+ {
+  "modifiers": [],
+  "description": "Deal damage to target unit and heal for 50% of the damage dealt.<br></br><br></br>Cannot target units that are immune to Bleeding.",
+  "name": "Draining Bite",
+  "slug": "draining_bite_ability_000003BD00002895",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Blood Drain"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E87"
+ },
+ {
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -26503,7 +27804,7 @@
   "icon": "000004C000000B84"
  },
  {
-  "description": "Gain:<bulletlist><bullet>Cruel</bullet><bullet>When any enemy unit <hyperlink>Fumble</hyperlink>, this unit gains +5 Max <hyperlink><hp></hp> Hit Point</hyperlink> until the end of combat.</bullet>",
+  "description": "Gain:<bulletlist><bullet>Cruel</bullet><bullet>When any enemy unit <hyperlink>Fumble</hyperlink>, this unit gains +5 Max <hyperlink><hp></hp> Hit Point</hyperlink> until the end of combat.</bullet></bulletlist>",
   "name": "Feed on Despair",
   "slug": "000004c000000b77",
   "icon": "000004C000000B76"
@@ -26589,7 +27890,7 @@
     "note": "Can only be used once per battle."
    }
   ],
-  "description": "Target enemy unit and all connected units:<bulletlist><bullet>Gain Afflicted for 3<turn></turn> <hyperlink>Turns</hyperlink></bullet><bullet>Gain Diseased for 3<turn></turn> <hyperlink>Turns</hyperlink></bullet>",
+  "description": "Target enemy unit and all connected units:<bulletlist><bullet>Gain Afflicted for 3<turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Gain Diseased for 3<turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
   "name": "Infectious Affliction",
   "slug": "hs_warlock_infectious_affliction_ability_000003BD00002895",
   "damage": "",
@@ -26612,7 +27913,7 @@
     "note": "Cooldown: 3 <turn></turn>"
    }
   ],
-  "description": "Target enemy unit with <hyperlink>Low Morale</hyperlink> or worse:<bulletlist><bullet> Base 120% chance of becoming Dominated for 3<turn></turn> <hyperlink>Turns</hyperlink>.</bullet>",
+  "description": "Target enemy unit with <hyperlink>Low Morale</hyperlink> or worse:<bulletlist><bullet> Base 120% chance of becoming Dominated for 3<turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
   "name": "Bend Broken Will",
   "slug": "hs_warlock_bend_broken_will_ability_000003BD00002895",
   "damage": "",
@@ -26732,7 +28033,7 @@
   "icon": "000004C000000AC7"
  },
  {
-  "description": "1 <turn></turn> <hyperlink>Turn</hyperlink> after this unit dies, it:<bulletlist><bullet>Comes back to life with 40% Hit Points.</bullet><bullet>Gains +5 Fervor.</bullet>",
+  "description": "1 <turn></turn> <hyperlink>Turn</hyperlink> after this unit dies, it:<bulletlist><bullet>Comes back to life with 40% Hit Points.</bullet><bullet>Gains +5 Fervor.</bullet></bulletlist>",
   "name": "Immortal Saint",
   "slug": "000004c0000009d7",
   "icon": "000004C0000009DA"
@@ -26760,7 +28061,7 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 2 <turn></turn>"
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ],
   "description": "Target friendly unit:<bulletlist><bullet>Has all <hyperlink>Negative Status Effects</hyperlink> removed.</bullet><bullet>Gains +3<statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
@@ -26783,7 +28084,7 @@
     "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "description": "Target enemy unit:<bulletlist><bullet>Base 90% chance of suffering Condemned until the end of combat.</bullet><bullet>Base 90% chance of suffering 2 Weakened for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
+  "description": "Target enemy unit:<bulletlist><bullet>Suffers Condemned until the end of combat.</bullet><bullet>Base 90% chance of suffering 2 Weakened for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist>",
   "name": "Condemnation",
   "slug": "hs_battlesaint_condemnation_ability_000003BD00002895",
   "damage": "",
@@ -26794,7 +28095,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<freeaction></freeaction>",
-  "range": "1",
+  "range": "4",
   "icon": "000004C000000AC6"
  },
  {
@@ -26909,7 +28210,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -26949,7 +28250,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -26974,15 +28275,15 @@
   "icon": "000004C000000AC4"
  },
  {
-  "description": "Landing attacks grants +1 Fervor.<br></br>Effect is doubled for non repeating attacks.",
+  "description": "This and adjacent friendly units gain +1<defense></defense> <hyperlink>Defense</hyperlink>.<br></br><br></br>Landing attacks grants +1 Fervor.<br></br>Effect is doubled for non repeating attacks.",
   "name": "Paladin",
   "slug": "000004c000000940",
   "icon": "000004C000000942"
  },
  {
-  "description": "At the end of its turn, this unit gains +1 Fervor.",
+  "description": "This and adjacent friendly units gain +1<resistance></resistance> <hyperlink>Resistance</hyperlink>.<br></br><br></br>At the end of its turn, this unit gains +1 Fervor.",
   "name": "Cleric",
-  "slug": "000004c000000979",
+  "slug": "0000048d00001bab",
   "icon": "000004C000000941"
  },
  {
@@ -27034,6 +28335,149 @@
   "icon": "0000048D00000AB0"
  },
  {
+  "description": "<bulletlist><bullet>Unit is immune to Blind.</bullet><bullet>While in Sunless, Underground, or Gloom this unit has:<bulletlist></bullet><bullet>+20% damage.</bullet><bullet>Natural Regeneration.</bullet></bulletlist></bulletlist>",
+  "name": "Nightlord",
+  "slug": "000004970000353c",
+  "icon": "0000049700003538"
+ },
+ {
+  "description": "On kill:<bulletlist><bullet>Active cooldowns are reduced by 1 <turn></turn> Turn.</bullet><bullet>Gain +10 <hyperlink><hp></hp> Hit Points</hyperlink> for the fight.</bullet></bulletlist><br></br>Triggers once per turn.",
+  "name": "Reaper",
+  "slug": "0000049700003533",
+  "icon": "000004970000352D"
+ },
+ {
+  "description": "Damage increases as <hyperlink><hp></hp> Hit Points</hyperlink> are lowered, up to 50%.",
+  "name": "Vampiric Rage",
+  "slug": "0000049700003527",
+  "icon": "0000049700003524"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Move to target hex.",
+  "name": "Supernatural Speed",
+  "slug": "supernatural_speed_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Movement"
+   },
+   {
+    "requisite": "Teleport"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000049700002F81"
+ },
+ {
+  "description": "This unit and all Turned Vampires under it have Very Fast Movement when not mounted.<br></br><br></br>If the Elder Vampire has Profane Body Mastery, it gains +20% <hyperlink>Critical Hit</hyperlink> chance instead, even when mounted.",
+  "name": "Exceptional Speed",
+  "slug": "0000049700003580",
+  "icon": "0000049700003587"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit and the caster:<bulletlist><bullet>Heal 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Have 2 negative status effects removed.</bullet></bulletlist>",
+  "name": "Blood Communion",
+  "slug": "blood_communion_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Support"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "0000049700002F58"
+ },
+ {
+  "description": "Upkeep increases by 20 <gold></gold> <hyperlink>Gold</hyperlink>.",
+  "name": "Increased Upkeep",
+  "slug": "0000049700003215",
+  "icon": "0000049700003612"
+ },
+ {
+  "modifiers": [],
+  "description": "Target:<bulletlist><bullet>Sustains damage which ignores 50% of <defense></defense> <hyperlink>Defense</hyperlink> and <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Gains 3 Bleeding for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Exsanguinate",
+  "slug": "exsanguinate_ability_000003BD00002895",
+  "damage": "40<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002F3F"
+ },
+ {
+  "description": "Unit has:<bulletlist><bullet>Very Fast Movement</bullet><bullet>+15% <hyperlink>Evasion</hyperlink></bullet><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink></bullet></bulletlist>",
+  "name": "Profane Body Mastery",
+  "slug": "0000049700002f36",
+  "icon": "0000049700002F35"
+ },
+ {
+  "description": "<bulletlist><bullet>Attacks inflict Bleeding for 3 <turn></turn> Turns, increased for Single Shots.</bullet><bullet>When an enemy suffers damage from Bleeding, gain 2 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+  "name": "Marrow Drinker",
+  "slug": "0000049700002f33",
+  "icon": "0000049700002F2A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Sustain unblockable damage equal to 10% of your maximum <hyperlink><hp></hp> Hit Points</hyperlink>. Your next attack this turn deals +50% damage.",
+  "name": "Blood Empowerment",
+  "slug": "blood_empowerment_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "0000049700002F1B"
+ },
+ {
+  "description": "Recover 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> when killing a unit with a <hyperlink>Magic</hyperlink>, <hyperlink>Melee</hyperlink>, or <hyperlink>Physical Ranged</hyperlink> attack.",
+  "name": "Blood Recovery",
+  "slug": "0000049700002f26",
+  "icon": "0000049700002F28"
+ },
+ {
+  "description": "Upkeep increases by 10 <gold></gold> <hyperlink>Gold</hyperlink>.",
+  "name": "Increased Upkeep",
+  "slug": "0000049700003214",
+  "icon": "0000049700003611"
+ },
+ {
   "description": "While army leader, all non-hero units in the army:<bulletlist><bullet>Gain a stack of Strengthened and Fortune for 3 <turn></turn> Turns when it uses an attack ability.</bullet></bulletlist>",
   "name": "Grand Fury Rune",
   "slug": "00000497000027bf",
@@ -27046,7 +28490,7 @@
   "icon": "0000049700001852"
  },
  {
-  "description": "Unit:<bulletlist><bullet>Has Very Fast Movement</bullet><bullet>Gains a stack of Strengthened and Fortune for 3 <turn></turn> Turns when it uses an attack ability.</bullet>",
+  "description": "Unit:<bulletlist><bullet>Has Very Fast Movement</bullet><bullet>Gains a stack of Strengthened and Fortune for 3 <turn></turn> Turns when it uses an attack ability.</bullet></bulletlist>",
   "name": "Fury Rune",
   "slug": "00000497000027bd",
   "icon": "000004970000185F"
@@ -27058,7 +28502,7 @@
   "icon": "0000049700000D40"
  },
  {
-  "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet>Hastened and Strengthened at the start of combat.</bullet></bulletlist></bulletlist>",
+  "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet>Hastened and Strengthened at the start of combat.</bullet></bulletlist>",
   "name": "Paragon of Chaos",
   "slug": "0000048d00000aab",
   "icon": "0000048D00000AAA"
@@ -27089,7 +28533,7 @@
     "count": 1
    },
    {
-    "description": "Inflicts x3 Bleeding for 3 <turn></turn> Turns.",
+    "description": "Inflicts 3 Bleeding for 3 <turn></turn> Turns.",
     "name": "Bleeding",
     "count": 1
    },
@@ -27199,6 +28643,254 @@
   "icon": "0000048D00000A82"
  },
  {
+  "description": "At the start of combat, conjure a <hyperlink>Rose Knight</hyperlink>.",
+  "name": "Rose Knight Guardian",
+  "slug": "00000497000035a6",
+  "icon": "00000497000035A7"
+ },
+ {
+  "description": "Cities gain the ability to draft <hyperlink>Rose Knights</hyperlink>.",
+  "name": "Rose Knight Recruitment",
+  "slug": "0000049700003596",
+  "icon": "0000049700003597"
+ },
+ {
+  "modifiers": [],
+  "description": "Target enemy unit and 2 others within 2 hexes:<bulletlist><bullet>Sustain damage.</bullet><bullet>Gain 3 Blood Parasite for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Bloodblight",
+  "slug": "bloodblight_ability_000003BD00002895",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "000004970000356C"
+ },
+ {
+  "description": "At the end of the turn, adjacent enemies:<bulletlist><bullet>Sustain 4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Lose 4 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Gain 1 Torment until the end of combat.</bullet></bulletlist>",
+  "name": "Aura of Torment",
+  "slug": "0000049700003564",
+  "icon": "0000049700003565"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Adjacent enemy units:<bulletlist><bullet>Sustain damage.</bullet><bullet>Have a base 90% chance of becoming Blind for 1 <turn></turn> Turn.</bullet></bulletlist>",
+  "name": "Bat Swarm",
+  "slug": "bat_swarm_ability_000003BD00002895",
+  "damage": "8<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Melee"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "000004970000351F"
+ },
+ {
+  "description": "At the start of combat, conjure a <hyperlink>Doom Bat</hyperlink>.",
+  "name": "Night Creature",
+  "slug": "0000049700003519",
+  "icon": "000004970000351A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Enemy units within a 2-hex radius:<bulletlist><bullet>Sustain damage.</bullet><bullet>Lose 10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Gain 4 stacks of Torment until end of combat.</bullet></bulletlist>",
+  "name": "Tormenting Mist",
+  "slug": "tormenting_mist_ability_000003BD00002895",
+  "damage": "8<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Debuff"
+   },
+   {
+    "requisite": "Magic"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "0",
+  "icon": "00000497000031EB"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target enemy unit:<bulletlist><bullet>Gains 2 Torment until the end of combat.</bullet><bullet>Gains Status Vulnerability for 3 <turn></turn> Turns.</bullet><bullet>Loses 10 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet></bulletlist>",
+  "name": "Dread",
+  "slug": "dread_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "000004970000312B"
+ },
+ {
+  "description": "Attacks cause 4 <happiness></happiness> <hyperlink>Morale</hyperlink> loss on target. Doubled for Single Shot attacks.",
+  "name": "Tyrant",
+  "slug": "000004970000313a",
+  "icon": "0000049700003131"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target enemy unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Gains 4 Poisoned for 3 <turn></turn> Turns.</bullet><bullet>Gains 2 Decaying for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Festering Spine",
+  "slug": "festering_spine_ability_000003BD00002895",
+  "damage": "40<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000030F2"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Enemy units in a 2-hex radius:<bulletlist><bullet>Sustain damage.</bullet><bullet>Become Soulbound until end of combat.</bullet></bulletlist>",
+  "name": "Curse to Undeath",
+  "slug": "curse_to_undeath_ability_000003BD00002895",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "00000497000030B4"
+ },
+ {
+  "description": "At the start of the turn, enemy units with Soulbound sustain 4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.",
+  "name": "Soulbound Anguish",
+  "slug": "00000497000030c4",
+  "icon": "0000049700003588"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 5 <turn></turn>"
+   }
+  ],
+  "description": "Conjure 4 corpses of Tier I Thorned Skeleton units in a 1-hex radius.<br></br>For the next 4 <turn></turn> Turns, resurrect one random corpse on the battlefield under your control until the end of combat.",
+  "name": "Gravemarch",
+  "slug": "gravemarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Summoning"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003090"
+ },
+ {
+  "description": "Attacks remove 1 <hyperlink>Positive Status Effect</hyperlink>. Single Shot attacks remove 2 <hyperlink>Positive Status Effects</hyperlink> instead.",
+  "name": "Defiler",
+  "slug": "000004970000305a",
+  "icon": "0000049700003059"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 120% chance of inflicting Diseased for 3 <turn></turn> Turns.",
+    "name": "Diseased",
+    "count": 1
+   },
+   {
+    "description": "Base 120% chance of inflicting Decaying for 3 <turn></turn> Turns.",
+    "name": "Decaying",
+    "count": 1
+   }
+  ],
+  "description": "Target corpse explodes and all enemy units in a 2-hex radius from it sustain damage.",
+  "name": "Dark Sacrament",
+  "slug": "dark_sacrament_ability_000003BD00002895",
+  "damage": "15<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Debuff"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700003038"
+ },
+ {
+  "description": "At the start of combat, conjure a <hyperlink>Zombie</hyperlink>.<br></br><br></br>Doesn't work on Water Combat.",
+  "name": "Undead Servants",
+  "slug": "0000049700003048",
+  "icon": "0000049700003049"
+ },
+ {
   "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet>Base attacks have a base 60% chance of inflicting Disrupted for 2 <turn></turn> Turns, Effects <hyperlink>are increased</hyperlink> for Single Shot attacks..</bullet><bullet>Attacks deal +20% damage to Magic Origin units.</bullet></bulletlist>",
   "name": "Grand Disruption Rune",
   "slug": "00000497000027d5",
@@ -27241,59 +28933,50 @@
   "icon": "0000048D00000AD7"
  },
  {
-  "modifiers": [
-   {
-    "description": "Base 90% chance of inflicting Blind for 1 <turn></turn> Turn.",
-    "name": "Blind",
-    "count": 1
-   }
-  ],
-  "description": "Single magical attack at target unit.",
-  "name": "Spirit Blast",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "Base"
-   },
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Single Shot"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
   "notes": [
    {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
    {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
-  "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "Single Melee Strike.",
-  "name": "Quick Stab",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
+  "description": "This unit and adjacent friendly units gain:<bulletlist><bullet>3 Rally.</bullet><bullet>2 Regeneration.</bullet></bulletlist>",
+  "name": "Song of Revelry",
+  "slug": "song_of_revelry_ability_000003BD00002895",
+  "damage": "",
   "requisites": [
    {
-    "requisite": "Melee"
-   },
-   {
-    "requisite": "Single Shot"
+    "requisite": "Support"
    }
   ],
-  "accuracy": "100%",
+  "accuracy": "Always Hits",
   "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A5A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a <hyperlink>Rose Knight</hyperlink>.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Rose Knight",
+  "slug": "summon_rose_knight_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "Summoning"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
   "range": "1",
-  "icon": "000003E3000057D6"
+  "icon": "0000049700003494"
  },
  {
   "notes": [
@@ -27411,6 +29094,87 @@
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_(combo)_000003BD00002895",
   "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Dagger Flurry",
+  "slug": "floating_daggers_ability_000003BD00002895",
+  "damage": "24<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "0000049700003622"
+ },
+ {
+  "notes": [],
+  "description": "Single Melee Strike.",
+  "name": "Quick Stab",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(base)_ability_000003BD00002895",
+  "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -27737,32 +29501,6 @@
    }
   ],
   "icon": "000003BD00002EA7"
- },
- {
-  "modifiers": [
-   {
-    "description": "+40% damage to Cavalry and Large Target units.",
-    "name": "Polearm",
-    "count": 1
-   }
-  ],
-  "description": "Strikes target enemy unit.",
-  "name": "Melee Strike",
-  "slug": "melee_strike_(base)_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Melee"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "1",
-  "notes": [],
-  "icon": "000003BD000020C9"
  },
  {
   "modifiers": [
@@ -28195,6 +29933,57 @@
   "icon": "0000048B00000BAB"
  },
  {
+  "notes": [],
+  "description": "Strikes target enemy unit.",
+  "name": "Melee Strike",
+  "slug": "melee_strike_(item_forge_dual)_ability_000003BD00002895",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Deal damage to target enemy.",
+  "name": "Whip Lash",
+  "slug": "whip_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000049700003011"
+ },
+ {
   "modifiers": [],
   "description": "Unleashes a magical bolt at target enemy.",
   "name": "Fire Bolts",
@@ -28220,6 +30009,42 @@
    }
   ],
   "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Single magical attack at target unit.",
+  "name": "Blood Blast",
+  "slug": "blood_staff_blast_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003E600000566"
  },
  {
   "notes": [
@@ -28250,6 +30075,39 @@
   "name": "Cosmic Bolts",
   "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
   "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Base"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Unleashes a magical bolt at target enemy.",
+  "name": "Blood Bolts",
+  "slug": "magic_bolts_ability_000003BD00002895",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Magic"
@@ -28592,6 +30450,42 @@
  {
   "modifiers": [
    {
+    "description": "Base 90% chance of inflicting Blind for 1 <turn></turn> Turn.",
+    "name": "Blind",
+    "count": 1
+   }
+  ],
+  "description": "Single magical attack at target unit.",
+  "name": "Spirit Blast",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Magic"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "modifiers": [
+   {
     "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
     "count": 1
@@ -28694,7 +30588,7 @@
     "note": "Cooldown: 3 <turn></turn>"
    }
   ],
-  "description": "Up to 5 random enemies:<bulletlist><bullet>Sustain 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Disrupted.</bullet>",
+  "description": "Up to 5 random enemies:<bulletlist><bullet>Sustain 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Have a base 90% chance of becoming Disrupted.</bullet></bulletlist>",
   "name": "Magical Disruption",
   "slug": "magical_disruption_ability_000003BD00002895",
   "damage": "",
@@ -28721,11 +30615,40 @@
   "icon": "000004970000004E"
  },
  {
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "description": "Fires ranged projectiles at target enemy unit.",
+  "name": "Shoot Crossbow",
+  "slug": "shoot_crossbow_(item_forge)_ability_000003BD00002895",
+  "damage": "26<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Physical Ranged"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
   "notes": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(item_forge_dual)_ability_000003BD00002895",
-  "damage": "12<damagephysical></damagephysical> ",
+  "slug": "melee_strike_(item_forge_dual_strong)_ability_000003BD00002895",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
@@ -28813,25 +30736,6 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "000003BD000020E7"
- },
- {
-  "notes": [],
-  "description": "Strikes target enemy unit.",
-  "name": "Melee Strike",
-  "slug": "melee_strike_(item_forge_dual_strong)_ability_000003BD00002895",
-  "damage": "14<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Melee"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "1",
-  "icon": "000003BD000020C9"
  },
  {
   "modifiers": [
@@ -29154,7 +31058,7 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    }
   ],
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist>",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist></bulletlist>",
   "name": "Pull",
   "slug": "constrictor_pull_ability_000003BD00002895",
   "damage": "20<damagephysical></damagephysical> ",
@@ -29279,35 +31183,6 @@
    }
   ],
   "icon": "000004A6000008A4"
- },
- {
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "description": "Fires ranged projectiles at target enemy unit.",
-  "name": "Shoot Crossbow",
-  "slug": "shoot_crossbow_(item_forge)_ability_000003BD00002895",
-  "damage": "26<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "Physical Ranged"
-   },
-   {
-    "requisite": "Base"
-   },
-   {
-    "requisite": "Single Shot"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000003BD00002EA7"
  },
  {
   "description": "When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach 30% or lower, grants this unit:<bulletlist><bullet>3 Strengthened for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Berserk for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet><bullet>Steadfast for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
@@ -29484,23 +31359,27 @@
   "icon": "0000041B00001B9D"
  },
  {
-  "notes": [
-   {
-    "note": "Cooldown: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "Deals damage to all adjacent units.",
   "name": "Whirlwind Strike",
   "slug": "whirlwind_strike_ability_000003BD00002895",
-  "damage": "20<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
    }
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000041B0000167F"
  },
  {
@@ -29610,39 +31489,6 @@
   "icon": "000003BD0000210B"
  },
  {
-  "modifiers": [
-   {
-    "description": "Base 90% chance of inflicting Misfortune for 3 <turn></turn> Turns.",
-    "name": "Misfortune",
-    "count": 1
-   }
-  ],
-  "description": "Unleashes a magical bolt at target enemy.",
-  "name": "Death Bolts",
-  "slug": "magic_bolts_ability_000003BD00002895",
-  "damage": "8<damageblight></damageblight> 8<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "Magic"
-   },
-   {
-    "requisite": "Base"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
-   },
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
-  "icon": "000003BD0000210B"
- },
- {
   "description": "This unit loses -50% less <happiness></happiness> <hyperlink>Morale</hyperlink>.",
   "name": "Brave",
   "slug": "000004a60000048d",
@@ -29683,12 +31529,6 @@
   "name": "Opportunist",
   "slug": "0000041b00000572",
   "icon": "0000041B00000573"
- },
- {
-  "description": "Unit deals +25% damage when <hyperlink><flank></flank> Flanking</hyperlink>.",
-  "name": "Flanker",
-  "slug": "000003fe0000007e",
-  "icon": "00000415000001D2"
  },
  {
   "modifiers": [
@@ -30010,21 +31850,24 @@
     "count": 1
    },
    {
-    "description": "Deals +30% damage to <hyperlink>Hero</hyperlink> units. ",
-    "name": "Assassin's Dagger^n",
+    "description": "Damage increases as the target loses health, up to +100%.",
+    "name": "Fatal Strikes",
     "count": 1
    }
   ],
   "description": "Single Melee Strike.",
   "name": "Assassin's Strike",
   "slug": "assassins_dagger_ability_000003BD00002895",
-  "damage": "22<damagephysical></damagephysical> ",
+  "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
    },
    {
     "requisite": "Single Shot"
+   },
+   {
+    "requisite": "Base"
    }
   ],
   "accuracy": "100%",
@@ -30263,7 +32106,7 @@
   "description": "Enemy units in a 2-hex cone:<bulletlist><bullet>Sustain damage.</bullet><bullet>Become Slowed for 1 <turn></turn> Turn</bullet></bulletlist>",
   "name": "Web",
   "slug": "web_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Physical Ranged"
@@ -30282,7 +32125,7 @@
  {
   "modifiers": [
    {
-    "description": "Base 60% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
     "name": "Bleeding",
     "count": 1
    },
@@ -30300,7 +32143,7 @@
   "description": "Enemy units in a 2-hex cone:<bulletlist><bullet>Sustain damage.</bullet><bullet>Become Slowed for 1 <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Barbed Webs",
   "slug": "barbed_webs_ability_000003BD00002895",
-  "damage": "14<damagephysical></damagephysical> ",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Physical Ranged"
@@ -30347,18 +32190,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "If this hero is not <hyperlink>Engaged in Melee</hyperlink> when its turn starts, then it gains +20% damage and +1 <hyperlink><range></range>Range</hyperlink> on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
-  "name": "Mastered Focus",
-  "slug": "000004c000000c5e",
-  "icon": "0000048B000005D6"
- },
- {
-  "description": "Unit cannot use <hyperlink>Melee</hyperlink>, <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> abilities.",
-  "name": "Pacified",
-  "slug": "000004970000109b",
-  "icon": "000004970000109D"
- },
- {
   "description": "This unit's attacks:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Have a base 60% Frozen for 1 <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Sharpened Conjure Weapon",
   "slug": "00000497000025ff",
@@ -30381,6 +32212,18 @@
   "name": "Stoneshard Recycling",
   "slug": "000004c00000019b",
   "icon": "000003E300007216"
+ },
+ {
+  "description": "Unit cannot use <hyperlink>Melee</hyperlink>, <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> abilities.",
+  "name": "Pacified",
+  "slug": "000004970000109b",
+  "icon": "000004970000109D"
+ },
+ {
+  "description": "If this hero is not <hyperlink>Engaged in Melee</hyperlink> when its turn starts, then it gains +20% damage and +1 <hyperlink><range></range>Range</hyperlink> on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
+  "name": "Mastered Focus",
+  "slug": "000004c000000c5e",
+  "icon": "0000048B000005D6"
  },
  {
   "description": "Unit has:<bulletlist><bullet>+50% damage</bullet><bullet>Undying</bullet><bullet>Armor of Despair</bullet></bulletlist>",
@@ -30407,12 +32250,6 @@
   "icon": "000003E300005FEE"
  },
  {
-  "description": "Unit has Hastened.",
-  "name": "Tyrant's Mark",
-  "slug": "0000049700000d12",
-  "icon": "0000049700000D14"
- },
- {
   "description": "When this unit dies, adjacent enemy units suffer 15 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> and 2x Decaying.",
   "name": "Decaying Dissolution",
   "slug": "000004c000000be2",
@@ -30431,6 +32268,24 @@
   "icon": "0000049700002D8B"
  },
  {
+  "description": "Unit has +10 <hyperlink><hp></hp> Hit Points</hyperlink> per stack.",
+  "name": "Reaper",
+  "slug": "000004970000352f",
+  "icon": "0000049700003536"
+ },
+ {
+  "description": "Unit:<bulletlist><bullet>Has +5 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Receives +5% healing in combat.</bullet></bulletlist>",
+  "name": "Mantle of the Blood Noble",
+  "slug": "00000497000035c9",
+  "icon": "00000497000035CA"
+ },
+ {
+  "description": "The death of another has granted this unit:<bulletlist><bullet>+5 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+2% <hyperlink><crit></crit>Critical Hit Chance</hyperlink></bullet></bulletlist><br></br>Stacks up to 10 times.",
+  "name": "Mortal Blessing",
+  "slug": "0000048d00001a0f",
+  "icon": "0000048D00001A0A"
+ },
+ {
   "description": "+1<hyperlink><range></range>Range</hyperlink> until unit moves.",
   "name": "Sniper's Focus",
   "slug": "000004c000000b8b",
@@ -30441,6 +32296,18 @@
   "name": "Diseased",
   "slug": "000003e100001303",
   "icon": "000003E100001300"
+ },
+ {
+  "description": "This unit has +10<hyperlink><hp></hp> Hit Point</hyperlink>.",
+  "name": "Fortified Summons",
+  "slug": "0000048b00000386",
+  "icon": "0000048B00000387"
+ },
+ {
+  "description": "This unit's attacks heal it for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> when they hit.<br></br>For repeating attacks only 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> are healed.",
+  "name": "Life Steal",
+  "slug": "000004970000362e",
+  "icon": "000004970000362F"
  },
  {
   "description": "<bulletlist><bullet>Unit sustains 4<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Burning <hyperlink>counters</hyperlink> Wet and Frozen.",
@@ -30455,40 +32322,22 @@
   "icon": "0000048D00000E87"
  },
  {
-  "description": "Unit gains:<bulletlist><bullet>+1 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> per stack.</bullet></bulletlist><br></br>Stacks up to 5 times.",
-  "name": "Fervor",
-  "slug": "000004c00000092c",
-  "icon": "000004C000000934"
- },
- {
   "description": "Unit has -2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> until the end of the next combat.",
   "name": "Phantasmal Ritual",
   "slug": "0000049700000c53",
   "icon": "0000049700000C16"
  },
  {
+  "description": "Unit gains:<bulletlist><bullet>+1 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> per stack.</bullet></bulletlist><br></br>Stacks up to 5 times.",
+  "name": "Fervor",
+  "slug": "000004c00000092c",
+  "icon": "000004C000000934"
+ },
+ {
   "description": "Unit has:<bulletlist><bullet>A base 90% chance of inflicting Soulbound on attacks.</bullet><bullet>+10% damage against units that are Soulbound.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Soulbinders",
   "slug": "0000048b000000e5",
   "icon": "0000041B000016F3"
- },
- {
-  "description": "This unit has +10 <happiness></happiness> <hyperlink>Morale</hyperlink> because of recent events.",
-  "name": "Increased Morale (Minor)",
-  "slug": "000004130000000b",
-  "icon": "0000042A000004CE"
- },
- {
-  "description": "Summon a <hyperlink>Lesser Magma Spirit</hyperlink> onto the target hex.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br>Spirit Summons have a shared 3 <turn></turn> Turns cooldown.",
-  "name": "Spirit Summon: Chaos",
-  "slug": "0000048d00000741",
-  "icon": "0000048D00000740"
- },
- {
-  "description": "This unit's attacks:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Inflict Burning for 3 <turn></turn> Turns.</bullet></bulletlist>",
-  "name": "Sharpened Conjure Weapon",
-  "slug": "000004970000176b",
-  "icon": "000004970000176C"
  },
  {
   "description": "While the Primordial Bloodback is alive, whenever a defending Lithorine Tier 1 - Tier 3 Unit dies, if there is another Lithorine Corpse on the map, resurrect that one as a Lithorine unit that is 1 tier higher than the Lithorine unit that just died.",
@@ -30539,18 +32388,7 @@
   "icon": "0000048B000005DB"
  },
  {
-  "description": "This unit is controlled by the opponent.<br></br>If the effect lasts until the end of combat, the controller will have the option to spend <mana></mana> to keep the unit permanently.",
-  "name": "Dominated",
-  "slug": "00000413000018dd",
-  "icon": "00000413000018DC"
- },
- {
-  "description": "Unit deals +20% damage until the end of its next combat.",
-  "name": "Eldritch Rituals",
-  "slug": "0000049700000c06"
- },
- {
-  "description": "When this unit dies, it heals a unit on the caster's side in range 4 by 20 <hyperlink><temphp></temphp> Temporary Hit Point</hyperlink>.",
+  "description": "When this unit dies, it heals a unit on the caster's side within 4 hexes by 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
   "name": "Life Seed",
   "slug": "000004c0000006fa",
   "icon": "0000049700002DB6"
@@ -30568,6 +32406,12 @@
   "icon": "000004C0000007FC"
  },
  {
+  "description": "The next attack this turn deals +50% damage.",
+  "name": "Blood Empowerment",
+  "slug": "0000049700002f16",
+  "icon": "0000049700002F18"
+ },
+ {
   "description": "Gain:<bulletlist><bullet>+3 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet><bullet>Adjacent enemy units suffer -3 <defenselightning></defenselightning> <hyperlink>Lightning Resistance</hyperlink></bullet></bulletlist>",
   "name": "Elemental Infusion",
   "slug": "000004c000000803",
@@ -30580,22 +32424,16 @@
   "icon": "000003E300005610"
  },
  {
-  "description": "Until the end of combat, when this unit is dealt damage it has a 20% chance of becoming Frozen for 1 <turn></turn> Turn.",
-  "name": "Frost Hex",
-  "slug": "0000049700000b2d",
-  "icon": "0000049700000B2E"
- },
- {
-  "description": "When this effect expires:<bulletlist><bullet>This unit sustains 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Damage is halved if there is an adjacent friendly unit.</bullet></bulletlist>",
-  "name": "Umbran Exile",
-  "slug": "0000049700000dbe",
-  "icon": "0000049700000DBF"
- },
- {
   "description": "<bulletlist><bullet>Base attacks have +1 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink></bullet><bullet>Can stack up to 5 times</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Nature's Might",
   "slug": "000004970000244b",
   "icon": "000004970000244C"
+ },
+ {
+  "description": "Unit has +40% damage for this turn.",
+  "name": "Blood Rite",
+  "slug": "00000497000034de",
+  "icon": "00000497000034DF"
  },
  {
   "description": "+2 <defense></defense> <hyperlink>Defense</hyperlink> and + 2 <resistance></resistance> <hyperlink>Resistance</hyperlink> until the start of the next turn or until the unit moves.",
@@ -30616,7 +32454,7 @@
   "icon": "000003E3000049ED"
  },
  {
-  "description": "<bulletlist><bullet>Unit sustains 4 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br>Cannot affect Ethereal or Undead units.<br></br><br></br>Poison <hyperlink>counters</hyperlink> Regeneration.</bulletlist>",
+  "description": "<bulletlist><bullet>Unit sustains 4 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.<br></br>Cannot affect Ethereal or Undead units.<br></br><br></br>Poison <hyperlink>counters</hyperlink> Regeneration.</bullet></bulletlist>",
   "name": "Poisoned",
   "slug": "0000041b00000bab",
   "icon": "000003E3000045AF"
@@ -30628,10 +32466,10 @@
   "icon": "000004AC000000A3"
  },
  {
-  "description": "This unit's attacks:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Have a base 90% chance of inflicting Sundered Defense for 3 <turn></turn> Turns.</bullet><bullet>Have a base 90% chance of inflicting Sundered Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
-  "name": "Sharpened Conjure Weapon",
-  "slug": "0000049700001764",
-  "icon": "0000049700001765"
+  "description": "<bulletlist><bullet>1<resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Bolstered Resistance <hyperlink>counters</hyperlink> Sundered Resistance.",
+  "name": "Bolstered Resistance",
+  "slug": "000003e100001411",
+  "icon": "000003E10000140E"
  },
  {
   "description": "Unit has:<bulletlist><bullet>Slow Movement</bullet><bullet>One less <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist><br></br><br></br>Slowed <hyperlink>counters</hyperlink> Hastened.",
@@ -30694,6 +32532,12 @@
   "icon": "0000049700000CDC"
  },
  {
+  "description": "<bulletlist><bullet>Attacks have +2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Can stack up to 5 times.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "name": "Infernal Might",
+  "slug": "000004970000364c",
+  "icon": "0000049700000EC9"
+ },
+ {
   "description": "Target linked unit is inflicted with Insanity for 1 <turn></turn> Turn.<br></br><br></br>Disables Gratitude and Surrender for this turn.",
   "name": "Fury",
   "slug": "0000049c000000d0",
@@ -30716,6 +32560,59 @@
   "name": "Insanity",
   "slug": "0000041b00000b17",
   "icon": "0000041B00000B1A"
+ },
+ {
+  "description": "Unit is:<bulletlist><bullet> Invulnerable</bullet><bullet> Stunned</bullet></bulletlist>",
+  "name": "Refuged",
+  "slug": "000003e300005873",
+  "icon": "000003E300005EBE"
+ },
+ {
+  "description": "An enemy was slain, granting this unit:<bulletlist><bullet>Slippery</bullet><bullet>Flanker</bullet></bulletlist>",
+  "name": "Mark of Shadow",
+  "slug": "0000048d0000180a",
+  "icon": "0000048D0000180C"
+ },
+ {
+  "description": "<bulletlist><bullet>1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Bolstered Defense <hyperlink>counters</hyperlink> Sundered Defense.",
+  "name": "Bolstered Defense",
+  "slug": "000003e1000013c8",
+  "icon": "000003E1000013CA"
+ },
+ {
+  "description": "Unit has:<bulletlist><bullet>+20% damage.</bullet><bullet>+10% <hyperlink>Critical Hit</hyperlink> chance.</bullet><bullet>+25% <hyperlink>Critical Hit</hyperlink> damage.</bullet></bulletlist>",
+  "name": "Blood of the Exarch",
+  "slug": "0000049700003407",
+  "icon": "0000049700003408"
+ },
+ {
+  "description": "<bulletlist><bullet>Parasitic Bloat deals an extra 5 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist>",
+  "name": "Bloated",
+  "slug": "00000497000033ab",
+  "icon": "00000497000033AC"
+ },
+ {
+  "description": "This unit<bulletlist><bullet>Has +60% damage.</bullet><bullet>Has Resurgence</bullet><bullet>Dies at the end of the turn.</bullet></bulletlist>",
+  "name": "Dagger of the Rite",
+  "slug": "000004970000327a",
+  "icon": "000004970000327B"
+ },
+ {
+  "description": "On <hyperlink>Fumble</hyperlink>, this unit loses 10 <happiness></happiness> <hyperlink>Morale</hyperlink>.",
+  "name": "Fumbling Despair",
+  "slug": "0000049700003184"
+ },
+ {
+  "description": "When the unit uses an ability:<bulletlist><bullet>It sustains 8 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Loses 4 <happiness></happiness> <hyperlink>Morale</hyperlink>.</bullet><bullet>Loses one stack of this effect.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Torment <hyperlink>counters</hyperlink> Grace.",
+  "name": "Torment",
+  "slug": "0000049700003110",
+  "icon": "0000049700003114"
+ },
+ {
+  "description": "<bulletlist><bullet>Unit sustains 4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> each <turn></turn>.</bullet><bullet>Replaces and counts as Bleeding, but ignores Status Effect Immunity: Bleeding.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br>On unit death, it spawns a <hyperlink>Blood Maggot</hyperlink> under the opponent's control until end of combat.</bulletlist></bulletlist>",
+  "name": "Blood Parasite",
+  "slug": "0000049700002ef4",
+  "icon": "0000049700002EF5"
  },
  {
   "description": "This unit has:<bulletlist><bullet>+10 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink></bullet><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+X <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist>",
@@ -30760,6 +32657,30 @@
   "icon": "0000049700001A56"
  },
  {
+  "description": "This unit has +10 <happiness></happiness> <hyperlink>Morale</hyperlink> because of recent events.",
+  "name": "Increased Morale (Minor)",
+  "slug": "000004130000000b",
+  "icon": "0000042A000004CE"
+ },
+ {
+  "description": "Summon a <hyperlink>Lesser Magma Spirit</hyperlink> onto the target hex.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br>Spirit Summons have a shared 3 <turn></turn> Turns cooldown.",
+  "name": "Spirit Summon: Chaos",
+  "slug": "0000048d00000741",
+  "icon": "0000048D00000740"
+ },
+ {
+  "description": "This unit's attacks:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Inflict Burning for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Sharpened Conjure Weapon",
+  "slug": "000004970000176b",
+  "icon": "000004970000176C"
+ },
+ {
+  "description": "This unit's attacks:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Have a base 90% chance of inflicting Sundered Defense for 3 <turn></turn> Turns.</bullet><bullet>Have a base 90% chance of inflicting Sundered Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Sharpened Conjure Weapon",
+  "slug": "0000049700001764",
+  "icon": "0000049700001765"
+ },
+ {
   "description": "This unit's attacks:<bulletlist><bullet>Deal +20% damage.</bullet><bullet>Inflict Electrified for 3 <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Sharpened Conjure Weapon",
   "slug": "000004970000175d",
@@ -30772,7 +32693,7 @@
   "icon": "000004970000158F"
  },
  {
-  "description": "Unit has:<bulletlist><bullet>First Strike</bullet><bullet>An extra <hyperlink>Retaliation Attack</hyperlink>.</bullet><bullet>Defensive Masters</bullet></bulletlist>.</bulletlist>",
+  "description": "Unit has:<bulletlist><bullet>First Strike</bullet><bullet>An extra <hyperlink>Retaliation Attack</hyperlink></bullet><bullet>Defensive Masters.</bullet></bulletlist>",
   "name": "Counter Stance",
   "slug": "0000049700001522",
   "icon": "000003E30000435F"
@@ -30782,6 +32703,24 @@
   "name": "Infernal Might",
   "slug": "0000049700000ec3",
   "icon": "0000049700000EC9"
+ },
+ {
+  "description": "Until the end of combat, when this unit is dealt damage it has a 20% chance of becoming Frozen for 1 <turn></turn> Turn.",
+  "name": "Frost Hex",
+  "slug": "0000049700000b2d",
+  "icon": "0000049700000B2E"
+ },
+ {
+  "description": "When this effect expires:<bulletlist><bullet>This unit sustains 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Damage is halved if there is an adjacent friendly unit.</bullet></bulletlist>",
+  "name": "Umbran Exile",
+  "slug": "0000049700000dbe",
+  "icon": "0000049700000DBF"
+ },
+ {
+  "description": "Unit has Hastened.",
+  "name": "Tyrant's Mark",
+  "slug": "0000049700000d12",
+  "icon": "0000049700000D14"
  },
  {
   "description": "<bulletlist><bullet>+10% damage.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Strengthened <hyperlink>counters</hyperlink> Weakened.",
@@ -30794,6 +32733,17 @@
   "name": "Quickening Ritual",
   "slug": "0000049700000c54",
   "icon": "0000049700000C0C"
+ },
+ {
+  "description": "This unit is controlled by the opponent.<br></br>If the effect lasts until the end of combat, the controller will have the option to spend <mana></mana> to keep the unit permanently.",
+  "name": "Dominated",
+  "slug": "00000413000018dd",
+  "icon": "00000413000018DC"
+ },
+ {
+  "description": "Unit deals +20% damage until the end of its next combat.",
+  "name": "Eldritch Rituals",
+  "slug": "0000049700000c06"
  },
  {
   "description": "Unit's base attacks have:<bulletlist><bullet>+2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>+2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>A base 50% chance of inflicting Burning for 3 <turn></turn> Turns.</bullet><bullet>A base 50% chance of inflicting Electrified for 3 <turn></turn> Turns.</bullet></bulletlist>",
@@ -30856,6 +32806,12 @@
   "icon": "0000049700000200"
  },
  {
+  "description": "Until the end of their next combat, this unit has:<bulletlist><bullet>+20 <hyperlink><hp></hp> Hit Points</hyperlink></bullet><bullet>+15 <happiness></happiness> <hyperlink>Morale</hyperlink></bullet></bulletlist>",
+  "name": "Morbid Sacrifice",
+  "slug": "0000048d00001ba3",
+  "icon": "0000048D00001A6E"
+ },
+ {
   "description": "Attacks:<bulletlist><bullet>Gain +4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.</bullet><bullet>Inflict Blind for 1 <turn></turn> Turn.</bullet></bulletlist><br></br>Each attack removes a stack of this effect.",
   "name": "Fury of the Dune Serpent",
   "slug": "00000497000001f2",
@@ -30874,7 +32830,7 @@
   "icon": "00000497000001D9"
  },
  {
-  "description": "This unit has: <Bulletlist><bullet>+50% damage on attacks.</bullet><bullet>A 30% chance of suffering Stunned for 2 <turn></turn> Turns after completing an attack action.</bullet></bulletlist>",
+  "description": "This unit has:<bulletlist><bullet>+50% damage on attacks.</bullet><bullet>A 30% chance of suffering Stunned for 2 <turn></turn> Turns after completing an attack action.</bullet></bulletlist>",
   "name": "Overcharged",
   "slug": "0000048d000000bc",
   "icon": "0000048D000000C3"
@@ -30890,6 +32846,30 @@
   "name": "Clinging Mist",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
+ },
+ {
+  "description": "<bulletlist><bullet>Unit sustains 3 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn>.</bullet><bullet>Unit receives -25% healing in combat.</bullet><bullet>Stacks up to 4 times.<br></br><br></br>Decaying <hyperlink>counters</hyperlink> Regeneration.</bullet></bulletlist>",
+  "name": "Decaying",
+  "slug": "000003e300005b7e",
+  "icon": "000003E300005B80"
+ },
+ {
+  "description": "On unit death, it spawns a <hyperlink>Blood Maggot</hyperlink> under the defender's control until end of combat.",
+  "name": "Benevolent Blood Parasite",
+  "slug": "0000049300000fae",
+  "icon": "0000049700002EF5"
+ },
+ {
+  "description": "When a <hyperlink>Melee</hyperlink> attack hits, the attacker sustains 6 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.",
+  "name": "Lesser Spirit Shield",
+  "slug": "0000045e00000d38",
+  "icon": "0000045E00000D39"
+ },
+ {
+  "description": "On unit death, it spawns a <hyperlink>Blood Maggot</hyperlink> under the defender's control until end of combat.",
+  "name": "Benevolent Blood Parasite",
+  "slug": "0000049300000fa2",
+  "icon": "0000049700002EF5"
  },
  {
   "description": "Support abilities dispel 1 <hyperlink>Negative Status Effect</hyperlink> from affected units.",
@@ -30928,25 +32908,13 @@
   "icon": "000003E300005D92"
  },
  {
-  "description": "<bulletlist><bullet>1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Bolstered Defense <hyperlink>counters</hyperlink> Sundered Defense.",
-  "name": "Bolstered Defense",
-  "slug": "000003e1000013c8",
-  "icon": "000003E1000013CA"
+  "description": "This unit dies at the end of this turn.",
+  "name": "Doomed",
+  "slug": "0000048d00001b17",
+  "icon": "0000048D00001B1A"
  },
  {
-  "description": "Unit is:<bulletlist><bullet> Invulnerable</bullet><bullet> Stunned</bullet></bulletlist>",
-  "name": "Refuged",
-  "slug": "000003e300005873",
-  "icon": "000003E300005EBE"
- },
- {
-  "description": "An enemy was slain, granting this unit:<bulletlist><bullet>Slippery</bullet><bullet>Flanker</bullet></bulletlist>",
-  "name": "Mark of Shadow",
-  "slug": "0000048d0000180a",
-  "icon": "0000048D0000180C"
- },
- {
-  "description": "Per stack:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>, +1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet>",
+  "description": "Per stack:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>, +1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet></bulletlist>",
   "name": "Resilient Incarnation",
   "slug": "0000048d00001610",
   "icon": "0000048D000015C1"
@@ -31192,12 +33160,6 @@
   "icon": "0000048B000005D3"
  },
  {
-  "description": "This unit has +10<hyperlink><hp></hp> Hit Point</hyperlink>.",
-  "name": "Fortified Summons",
-  "slug": "0000048b00000386",
-  "icon": "0000048B00000387"
- },
- {
   "description": "This hero's first charge attack this <turn></turn> <hyperlink>Turn</hyperlink> gains 20% damage.",
   "name": "Prepared Charge",
   "slug": "0000048b000002be",
@@ -31258,7 +33220,7 @@
   "icon": "000004A6000004A2"
  },
  {
-  "description": "Unit gains +15 max <hyperlink><hp></hp> Hit Points</hyperlink> and regenerates +15 <hyperlink><hp></hp> Hit Points</hyperlink> in neutral and friendly domain for the next 2 <hyperlink>World Map</hyperlink> <turn></turn> Turns.",
+  "description": "Unit gains +15 max <hyperlink><hp></hp> Hit Points</hyperlink> and <hyperlink>regenerates</hyperlink> +15 <hyperlink><hp></hp> Hit Points</hyperlink> in neutral and friendly domain for the next 2 <hyperlink>World Map</hyperlink> <turn></turn> Turns.",
   "name": "Nature's Bounty",
   "slug": "000003fe00000e50",
   "icon": "0000041B00000DBB"
@@ -31282,7 +33244,7 @@
   "icon": "0000042A000004CE"
  },
  {
-  "description": "<bulletlist><bullet>-5 <happiness></happiness> <hyperlink>Morale</hyperlink> per stack.</bullet><bullet>Stacks up to 5 times. </bullet>",
+  "description": "<bulletlist><bullet>-5 <happiness></happiness> <hyperlink>Morale</hyperlink> per stack.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist>",
   "name": "Demoralized",
   "slug": "0000042a000004ca",
   "icon": "0000042A000004CD"
@@ -31480,13 +33442,7 @@
   "icon": "000003E30000727A"
  },
  {
-  "description": "<bulletlist><bullet>Unit sustains 3 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> each <turn></turn>.</bullet><bullet>Unit receives -25% healing in combat.</bullet><bullet>Stacks up to 4 times.<br></br><br></br>Decaying <hyperlink>counters</hyperlink> Regeneration.</bullet>",
-  "name": "Decaying",
-  "slug": "000003e300005b7e",
-  "icon": "000003E300005B80"
- },
- {
-  "description": "<bulletlist><bullet>Unit sustains 2<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> and 2 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> each <turn></turn>.</bullet><bullet>Replaces and counts as Burning but isn't removed by Frozen or Wet.</bullet><bullet>Stacks up to 5 times.</bullet>",
+  "description": "<bulletlist><bullet>Unit sustains 2<damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> and 2 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> each <turn></turn>.</bullet><bullet>Replaces and counts as Burning, but isn't removed by Frozen or Wet.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist>",
   "name": "Ghostfire",
   "slug": "000003e300006f65",
   "icon": "000003E300006F67"
@@ -31508,12 +33464,6 @@
   "name": "Awakened: Radiant Light",
   "slug": "000003e300006564",
   "icon": "000003E300004C79"
- },
- {
-  "description": "<bulletlist><bullet>1<resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Bolstered Resistance <hyperlink>counters</hyperlink> Sundered Resistance.",
-  "name": "Bolstered Resistance",
-  "slug": "000003e100001411",
-  "icon": "000003E10000140E"
  },
  {
   "description": "+20 maximum <hyperlink><hp></hp> Hit Points</hyperlink> until the end of battle.",
@@ -31570,7 +33520,7 @@
   "icon": "000003E300004C5D"
  },
  {
-  "description": "<bulletlist><bullet>Unit sustains 4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br>Cannot affect Ethereal or Undead units.</bulletlist>",
+  "description": "<bulletlist><bullet>Unit sustains 4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> each <turn></turn>.</bullet><bullet>Stacks up to 5 times.<br></br>Cannot affect Ethereal or Undead units.</bullet></bulletlist>",
   "name": "Bleeding",
   "slug": "0000041b00000bad",
   "icon": "000003BD00002CFC"

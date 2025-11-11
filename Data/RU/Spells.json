@@ -16,7 +16,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание исцеления</hyperlink>",
   "id": "Магическое_обновление",
   "tactical": true,
-  "description": "Выбранный дружественный воин восстанавливает 30 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.",
+  "description": "Выбранный дружественный воин восстанавливает 30 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.",
   "name": "Магическое обновление",
   "operation_point_cost": 20,
   "icon": "000004A600000B0A"
@@ -28,7 +28,7 @@
   "id": "Знак_Тяжкого_Посоха",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Воин получает:<bulletlist><bullet>+1 к <hyperlink><range></range>дальности</hyperlink> <hyperlink>магических</hyperlink> способностей и способностей <hyperlink>поддержки</hyperlink>;</bullet><bullet>эффект «Низкая скорость» в бою.</bullet></bulletlist>",
+  "description": "Воин получает:<bulletlist><bullet>+1 к <range></range> <hyperlink>дальности</hyperlink> <hyperlink>магических</hyperlink> способностей и способностей <hyperlink>поддержки</hyperlink>;</bullet><bullet>эффект «Низкая скорость» в бою.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -48,7 +48,7 @@
   "id": "Знак_Авангарда",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Воин получает:<bulletlist><bullet>способность «Очень высокая скорость» в бою.</bullet><bullet><hyperlink>Стрельба</hyperlink> и <hyperlink>магические</hyperlink> атаки, нацеленные на этого воина, теряют 20% от <hyperlink><accuracy></accuracy> точности</hyperlink>.</bullet><bullet>Атаки в <hyperlink>ближнем бою</hyperlink> наносят на -20% меньше урона.</bullet></bulletlist>",
+  "description": "Воин получает:<bulletlist><bullet>способность «Очень высокая скорость» в бою.</bullet><bullet><hyperlink>Стрельба</hyperlink> и <hyperlink>магические</hyperlink> атаки, нацеленные на этого воина, теряют 20% от <accuracy></accuracy> <hyperlink>точности</hyperlink>.</bullet><bullet>Атаки в <hyperlink>ближнем бою</hyperlink> наносят на -20% меньше урона.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShock></unitShock> Ударный воин"
@@ -154,7 +154,7 @@
   "id": "Знак_Охотницы",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "<hyperlink>Стрельба</hyperlink> и <hyperlink>магические</hyperlink> атаки получают +30% к урону и -1 от <hyperlink><range></range>дальности</hyperlink>.",
+  "description": "<hyperlink>Стрельба</hyperlink> и <hyperlink>магические</hyperlink> атаки получают +30% к урону и -1 от <range></range> <hyperlink>дальности</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
@@ -189,7 +189,7 @@
   "id": "Осквернённый_дар",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Выбранный вражеский воин:<bulletlist><bullet>теряет все <hyperlink>положительные эффекты</hyperlink>;</bullet><bullet>если у снятого эффекта есть <hyperlink>отрицательный</hyperlink> <hyperlink>противодействующий эффект</hyperlink>, он автоматически применяется к воину.<bulletlist></bullet>",
+  "description": "Выбранный вражеский воин:<bulletlist><bullet>теряет все <hyperlink>положительные эффекты</hyperlink>;</bullet><bullet>если у снятого эффекта есть <hyperlink>отрицательный</hyperlink> <hyperlink>противодействующий эффект</hyperlink>, он автоматически применяется к воину.</bullet></bulletlist>",
   "name": "Осквернённый дар",
   "operation_point_cost": 25,
   "icon": "0000049C0000008C"
@@ -201,7 +201,7 @@
   "id": "Коварное_отражение",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "Создаёт Коварное отражение выбранного вражеского воина.<br></br><br></br>Нельзя использовать против героев, призванный на бой и мифических созданий.",
+  "description": "Создаёт Коварное отражение выбранного вражеского воина.<br></br><br></br>Нельзя использовать против героев, призванных на бой и мифических созданий.",
   "name": "Коварное отражение",
   "operation_point_cost": 40,
   "icon": "0000049C00000086"
@@ -246,6 +246,252 @@
   "name": "Разлом мрака",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586548,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
+  "id": "Кровавая_сосредоточенность",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "<hyperlink>Магические</hyperlink> атаки воинов под действием чар получают:<bulletlist><bullet>+1 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 60% могут на 3 <turn></turn> х. применить эффект «Кровотечение».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitSupport></unitSupport> Воин поддержки"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Боевой маг"
+   }
+  ],
+  "name": "Кровавая сосредоточенность",
+  "operation_point_cost": 80,
+  "icon": "0000049700003292"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586586294,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание призыва</hyperlink>",
+  "id": "Призыв_кровавого_экзарха",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Призывает <hyperlink>кровавого экзарха</hyperlink>-мифическое создание, которое может как поддерживать союзников, так и наносить сокрушительный урон врагам низкого ранга.",
+  "name": "Призыв кровавого экзарха",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "Кровавый_экзарх"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586586275,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
+  "id": "Мантия_кровавого_аристократа",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Воины под действием чар получают:<bulletlist><bullet>«Свёртываемость крови»;</bullet><bullet>в начале боя за каждого дружественного воина рангов I–II (кроме призванных):<bulletlist></bullet><bullet>+5 ед. <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>+5% к эффективности исцеления в бою.</bullet></bulletlist></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "Ранг III"
+   },
+   {
+    "requisite": "Ранг IV"
+   },
+   {
+    "requisite": "Ранг V"
+   }
+  ],
+  "name": "Мантия кровавого аристократа",
+  "operation_point_cost": 140,
+  "icon": "0000049700003431"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586204,
+  "spellType": "<casttactical></casttactical> <hyperlink>Чары для битвы</hyperlink>",
+  "id": "Слёзы_алого_владыки",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "При использовании этого заклинания и в течение следующих 2 <turn></turn> х.:<bulletlist><bullet>до 3 вражеских воинов:<bulletlist></bullet><bullet>получают 10 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 90% могут получить эффект «Паразит крови» на 3 <turn></turn> х.</bullet></bulletlist><bullet>До 3 дружественных воинов:<bulletlist></bullet><bullet>восстанавливают 10 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получают эффект «Удача» на 3 <turn></turn> х.</bullet></bulletlist></bulletlist>",
+  "name": "Слёзы алого владыки",
+  "operation_point_cost": 35,
+  "icon": "000004970000342D"
+ },
+ {
+  "casting_cost": "600<mana></mana> ",
+  "resid": 5046586586172,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Значительная трансформация народа</hyperlink>",
+  "id": "Дар_старой_крови",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "В ходе тёмных ритуалов ваши воины поглощают кровь экзарха, приобретая следующие особенности:<bulletlist><bullet>тип «Нежить»;</bullet><bullet>способность «Поглощение жизни»;</bullet><bullet>базовые атаки с базовой вероятностью 60% могут на 3 <turn></turn> х. применить эффект «Паразит крови». Эффект усиливается для однократных атак.</bullet></bulletlist>",
+  "name": "Дар старой крови",
+  "operation_point_cost": 600,
+  "icon": "0000049700003439"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586001,
+  "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона и ослабления</hyperlink>",
+  "id": "Мучение",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "Вражеские воины в радиусе 1 кл.:<bulletlist><bullet>получают 40 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink>;</bullet><bullet>с базовой вероятностью 90% получают 3 ур. эффекта «Мучение» до конца боя. В случае неудачи получают только 1 уровень эффекта «Мучение».</bullet></bulletlist>",
+  "name": "Мучение",
+  "operation_point_cost": 35,
+  "icon": "0000049700003366"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586585990,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
+  "id": "Истязающие_снаряды",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "<hyperlink>Магические атаки</hyperlink> и <hyperlink>стрельба</hyperlink> воинов под действием чар:<bulletlist><bullet>применяют эффект «Мучение» до конца боя.</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Стрелок"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Воин поддержки"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Боевой маг"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Застрельщик"
+   }
+  ],
+  "name": "Истязающие снаряды",
+  "operation_point_cost": 140,
+  "icon": "0000049700003362"
+ },
+ {
+  "casting_cost": "350<mana></mana> ",
+  "resid": 5046586585968,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Незначительная трансформация народа</hyperlink>",
+  "id": "Самоистязание",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Выбранный народ упивается болью, при ранении его воины получают:<bulletlist><bullet>2 к <happiness></happiness> <hyperlink>боевому духу</hyperlink>;</bullet><bullet>случайный положительный эффект.</bullet></bulletlist>",
+  "name": "Самоистязание",
+  "operation_point_cost": 350,
+  "icon": "000004970000335A"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586585803,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Незначительная трансформация народа</hyperlink>",
+  "id": "Телесные_руны",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Ваши воины вырезают на своих телах зловещие руны, которые дают им следующие особенности:<bulletlist><bullet>+5 к восстановлению <hp></hp> <hyperlink>здоровья</hyperlink> на <hyperlink>глобальной карте</hyperlink>;</bullet><bullet>атаки и <hyperlink>ослабляющие способности</hyperlink>:<bulletlist></bullet><bullet>игнорируют 1 ед. <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивления эффектам</hyperlink> за каждый уровень эффекта «Кровотечение» у цели.</bullet></bulletlist></bulletlist>",
+  "name": "Телесные руны",
+  "operation_point_cost": 150,
+  "icon": "000004970000329E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5046586585798,
+  "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона</hyperlink>",
+  "id": "Ритуал_кровопускания",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "Выбранный дружественный воин получает 5 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>, который невозможно блокировать. Затем все вражеские воины в радиусе 2 кл. от цели получают:<bulletlist><bullet>10 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>эффект «Кровотечение» (2) на 3 <turn></turn> х.</bullet></bulletlist>",
+  "name": "Ритуал кровопускания",
+  "operation_point_cost": 15,
+  "icon": "0000049700003296"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586585790,
+  "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления</hyperlink>",
+  "id": "Ритуал_высасывания_жизни",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "Выбранный дружественный воин получает 5 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>, который невозможно заблокировать. Все дружественные воины по соседству с целью получают:<bulletlist><bullet>эффект «Дополнительная сила» на 3 <turn></turn> х.;</bullet><bullet>способность «Вампиризм» на 3 <turn></turn> х.</bullet></bulletlist>",
+  "name": "Ритуал высасывания жизни",
+  "operation_point_cost": 20,
+  "icon": "0000049700003286"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586585776,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
+  "id": "Кровожадные_клинки",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Базовые атаки воинов под действием чар в <hyperlink>ближнем бою</hyperlink>:<bulletlist><bullet>наносят +1 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>восстанавливают 2 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>, если цель находится под воздействием эффекта «Кровотечение».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Воин со щитом"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Воин с пикой"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Ударный воин"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Боец"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Застрельщик"
+   }
+  ],
+  "name": "Кровожадные клинки",
+  "operation_point_cost": 80,
+  "icon": "000004970000328A"
+ },
+ {
+  "casting_cost": "4<thralls></thralls> ",
+  "resid": 5046586585066,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для вражеской армии</hyperlink>",
+  "id": "Ритуал_вивисекции",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Выбранная вражеская армия получает 20 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>. Даёт +150 к <knowledge></knowledge> <hyperlink>знаниям</hyperlink>.",
+  "name": "Ритуал вивисекции",
+  "operation_point_cost": 150,
+  "icon": "0000049700002FEB"
+ },
+ {
+  "casting_cost": "12<thralls></thralls> ",
+  "resid": 5046586584681,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Глобальное заклинание</hyperlink>",
+  "id": "Ритуал_Кровавой_луны",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Вампиры в течение следующих 10 <turn></turn> х. на <hyperlink>глобальной карте</hyperlink>:<bulletlist><bullet>защищены от эффектов свойства «Уязвимость к солнцу»;</bullet><bullet>регенерируют +15 ед. <hp></hp> <hyperlink>здоровья</hyperlink> на глобальной карте;</bullet><bullet>получают +20% к урону;</bullet><bullet>получают +2 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist>",
+  "name": "Ритуал Кровавой луны",
+  "operation_point_cost": 300,
+  "icon": "0000049700002E66"
+ },
+ {
+  "casting_cost": "6<thralls></thralls> ",
+  "resid": 5046586584666,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для изменения ландшафта</hyperlink>",
+  "id": "Ритуал_осквернения",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Выбранная <hyperlink>провинция</hyperlink> на поверхности и провинции по соседству:<bulletlist><bullet>погружаются в <hyperlink>вечную ночь</hyperlink>;</bullet><bullet>вражеские армии получают 20 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink>.</bullet></bulletlist>",
+  "name": "Ритуал осквернения",
+  "operation_point_cost": 275,
+  "icon": "0000049700002E5B"
+ },
+ {
+  "casting_cost": "2<thralls></thralls> ",
+  "resid": 5046586584657,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
+  "id": "Ритуал_переноса_крови",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Выбранная дружественная армия:<bulletlist><bullet>вампиры восстанавливают 50% от максимального запаса <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>прочие создания восстанавливают 20% от максимального запаса <hp></hp> <hyperlink>здоровья</hyperlink>.</bullet></bulletlist>",
+  "name": "Ритуал переноса крови",
+  "operation_point_cost": 80,
+  "icon": "0000049700002E52"
  },
  {
   "casting_cost": "120<mana></mana> ",
@@ -373,7 +619,7 @@
   "tactical": false,
   "description": "Призывает <hyperlink>падшего ангела</hyperlink> — боевого мага, который насылает на врагов скверну и разложение.",
   "name": "Призыв падшего ангела",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "Падший_ангел"
@@ -428,7 +674,7 @@
   "id": "Возрождение_вознесённого",
   "DLC": "ARCHONPROPHECY ",
   "tactical": true,
-  "description": "Выбранный мёртвый воин, не являющийся героем или ангелом:<bulletlist><bullet>возрождается в облике <hyperlink>смотрящего</hyperlink> под контролем заклинателя и сражается до конца боя;</bullet><bullet>при возрождении все дружественные воины в радиусе 2 кл. восстанавливают 20 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet>",
+  "description": "Выбранный мёртвый воин, не являющийся героем или ангелом:<bulletlist><bullet>возрождается в облике <hyperlink>смотрящего</hyperlink> под контролем заклинателя и сражается до конца боя;</bullet><bullet>при возрождении все дружественные воины в радиусе 2 кл. восстанавливают 20 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet></bulletlist>",
   "name": "Возрождение вознесённого",
   "operation_point_cost": 40,
   "icon": "0000049700002B84"
@@ -497,7 +743,7 @@
   "id": "Роковые_снаряды",
   "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к <hyperlink><crit></crit>шансу критического удара</hyperlink>;</bullet><bullet>способность «Верный».</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к <crit></crit> <hyperlink>шансу критического удара</hyperlink>;</bullet><bullet>способность «Верный».</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
@@ -541,7 +787,7 @@
   "id": "Праведный_дух",
   "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Придаёт выбранному народу стойкость в особенно тяжёлые моменты, наделяя их следующими особенностями:<bulletlist><bullet>+ 2 к <defensespirit></defensespirit> <hyperlink>сопротивлению магии духа</hyperlink>;</bullet><bullet>когда <hyperlink>здоровье</hyperlink> воинов падает ниже 60% от максимального запаса, они:<bulletlist></bullet><bullet>игнорируют 50% <hyperlink>потерь</hyperlink>;</bullet><bullet>получают +1 к <defense></defense> <hyperlink>защите</hyperlink>;</bullet><bullet>получают +1 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist>",
+  "description": "Придаёт выбранному народу стойкость в особенно тяжёлые моменты, наделяя их следующими особенностями:<bulletlist><bullet>+2 к <defensespirit></defensespirit> <hyperlink>сопротивлению магии духа</hyperlink>;</bullet><bullet>когда <hp></hp> <hyperlink>здоровье</hyperlink> воинов падает ниже 60% от максимального запаса, они:<bulletlist></bullet><bullet>игнорируют 50% <hyperlink>потерь</hyperlink>;</bullet><bullet>получают +1 к <defense></defense> <hyperlink>защите</hyperlink>;</bullet><bullet>получают +1 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist></bulletlist>",
   "name": "Праведный дух",
   "operation_point_cost": 250,
   "icon": "0000049700002A9E"
@@ -716,7 +962,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Концентрация_на_линиях_силы",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>В начале хода и пока воин не начнёт передвижение:<bulletlist></bullet><bullet>+30% к урону;</bullet><bullet>+2 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>в начале хода и пока воин не начнёт передвижение:<bulletlist></bullet><bullet>+30% к урону;</bullet><bullet>+2 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -772,7 +1018,7 @@
   "id": "Кристаллический_удар",
   "DLC": "GIANTKINGS ",
   "tactical": true,
-  "description": "Вражеские воины в радиусе 1 кл.:<bulletlist><bullet>получают 15 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>получают 15 ед. <damageLightning></damageLightning> <hyperlink>электрического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 90% на 2 <turn></turn> х. получают эффект «Волатильный разряд».</bullet>",
+  "description": "Вражеские воины в радиусе 1 кл.:<bulletlist><bullet>получают 15 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>получают 15 ед. <damageLightning></damageLightning> <hyperlink>электрического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 90% на 2 <turn></turn> х. получают эффект «Волатильный разряд».</bullet></bulletlist>",
   "name": "Кристаллический удар",
   "operation_point_cost": 35,
   "icon": "00000497000015BB"
@@ -946,7 +1192,7 @@
   "id": "Благословенные_доспехи",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Внутренняя благодать»;</bullet><bullet>+2 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Внутренняя благодать»;</bullet><bullet>+1 к <resistance></resistance> <hyperlink>сопротивлению</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -992,7 +1238,7 @@
   "id": "Мощная_защита",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "Дружественные воины в радиусе 2 кл. получают:<bulletlist><bullet>эффект «Благодать» (2);</bullet><bullet>эффект «Регенерация» (2) на 3 <turn></turn> х.;</bullet><bullet>эффект «Усиленная защита» (3) на 3 <turn></turn> х.;</bullet><bullet>эффект «Усиленное сопротивление» (3) на 3 <turn></turn> х.</bullet></bulletlist>",
+  "description": "Дружественные воины в радиусе 2 кл. получают:<bulletlist><bullet>эффект «Благодать» (2);</bullet><bullet>эффект «Регенерация» (2) на 3 <turn></turn> х.;</bullet><bullet>эффект «Усиленная защита» (2) на 3 <turn></turn> х.;</bullet><bullet>эффект «Усиленное сопротивление» (2) на 3 <turn></turn> х.</bullet></bulletlist>",
   "name": "Мощная защита",
   "operation_point_cost": 40,
   "icon": "0000049700001351"
@@ -1216,7 +1462,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления</hyperlink>",
   "id": "Ужасное_перерождение",
   "tactical": true,
-  "description": "Выбранный дружественный воин ранга I, II или III, не являющийся конструкцией или воином <hyperlink>магического происхождения</hyperlink>:<bulletlist><bullet>превращается в <hyperlink>рождённого для войны</hyperlink>;</bullet><bullet>восстанавливает 60 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>погибает в конце боя.</bullet></bulletlist><br><br></br>Нельзя использовать в боях на воде.",
+  "description": "Выбранный дружественный воин ранга I, II или III, не являющийся конструкцией или воином <hyperlink>магического происхождения</hyperlink>:<bulletlist><bullet>превращается в <hyperlink>рождённого для войны</hyperlink>;</bullet><bullet>восстанавливает 60 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>погибает в конце боя.</bullet></bulletlist><br><br></br>Нельзя использовать в боях на воде.",
   "name": "Ужасное перерождение",
   "operation_point_cost": 30,
   "icon": "0000049700000ECB"
@@ -1227,7 +1473,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Обсидиановое_оружие",
   "tactical": false,
-  "description": "Базовые атаки в <hyperlink>ближнем бою</hyperlink> и <hyperlink>стрельба</hyperlink> воинов под действием чар:<bulletlist><bullet>+1 к <damagePhysical></damagePhysical> <hyperlink>физическому урону</hyperlink>;</bullet><bullet>с базовой вероятностью 60% могут применить эффект «Кровотечение».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Базовые атаки <hyperlink>в ближнем бою</hyperlink> и <hyperlink>стрельба</hyperlink> воинов под действием чар получают:<bulletlist><bullet>+1 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 60% могут на 3 <turn></turn> х. применить эффект «Кровотечение».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -1257,7 +1503,6 @@
   "resid": 5046586576384,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Глобальное заклинание</hyperlink>",
   "id": "Ритуал_ясновидения",
-  "DLC": "ELDRITCHREALMS ",
   "tactical": false,
   "description": "Открывает ближайшее неизведанное <hyperlink>вторжение</hyperlink> или <hyperlink>древнее чудо</hyperlink>.",
   "name": "Ритуал ясновидения",
@@ -1353,7 +1598,7 @@
   "id": "Ритуал_массовых_фантазмов",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Вражеские воины в выбранной <hyperlink>провинции</hyperlink> и всех провинциях по соседству:<bulletlist><bullet>получают урон, равный 15% от максимального <hyperlink>здоровья</hyperlink>;</bullet><bullet>теряет 2 ед. <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивления эффектам</hyperlink> до конца своего следующего боя.</bullet></bulletlist>",
+  "description": "Вражеские воины в выбранной <hyperlink>провинции</hyperlink> и всех провинциях по соседству:<bulletlist><bullet>получают урон, равный 15% от максимального <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>теряет 2 ед. <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивления эффектам</hyperlink> до конца своего следующего боя.</bullet></bulletlist>",
   "name": "Ритуал массовых фантазмов",
   "operation_point_cost": 150,
   "icon": "0000049700000C1E"
@@ -1365,7 +1610,7 @@
   "id": "Ритуал_фантазмов",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранная вражеская армия:<bulletlist><bullet>получает урон, равный 20% от максимального <hyperlink>здоровья</hyperlink>;</bullet><bullet>теряет 2 ед. <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивления эффектам</hyperlink> до конца своего следующего боя.</bullet></bulletlist>",
+  "description": "Выбранная вражеская армия:<bulletlist><bullet>получает урон, равный 20% от максимального <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>теряет 2 ед. <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивления эффектам</hyperlink> до конца своего следующего боя.</bullet></bulletlist>",
   "name": "Ритуал фантазмов",
   "operation_point_cost": 100,
   "icon": "0000049700000C16"
@@ -1443,7 +1688,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Подземного паука», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Подземного паука», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -1455,7 +1700,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Ледового мамонта», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Ледового мамонта», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -1467,7 +1712,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Штормового ворона», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Штормового ворона», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -1479,7 +1724,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Песчаного змея», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Песчаного змея», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -1491,7 +1736,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Пепельного смилодона», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Пепельного смилодона», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -1503,7 +1748,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Болотного крокодила», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Болотного крокодила», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -1551,7 +1796,7 @@
   "id": "Дары_моря",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "В выбранном принадлежащем вам городе:<bulletlist><bullet>базовые ресурсы <hyperlink>улучшений</hyperlink> в прибрежных провинциях удваиваются;</bullet><bullet>-10 от <happiness></happiness> <hyperlink> стабильности города</hyperlink>.</bullet></bulletlist>",
+  "description": "В выбранном принадлежащем вам городе:<bulletlist><bullet>базовые ресурсы <hyperlink>улучшений</hyperlink> в прибрежных провинциях удваиваются;</bullet><bullet>-10 от <happiness></happiness> <hyperlink>стабильности города</hyperlink>.</bullet></bulletlist>",
   "name": "Дары моря",
   "operation_point_cost": 80,
   "icon": "000004970000059C"
@@ -1562,7 +1807,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Незначительная трансформация народа</hyperlink>",
   "id": "Касание_фей",
   "tactical": false,
-  "description": "Выбранный народ обретает связь с миром фей и получает следующие особенности:<bulletlist><bullet>способность «Коварство фей»;</bullet><bullet>возможность игнорировать:<bulletlist></bullet><bullet>штрафы к обзору, вызванные эффектом «Туманы»;</bullet><bullet>штрафы к <hyperlink><accuracy></accuracy> точности</hyperlink>, вызванные способностью «Прилипчивый туман».</bullet></bulletlist></bulletlist>",
+  "description": "Выбранный народ обретает связь с миром фей и получает следующие особенности:<bulletlist><bullet>способность «Коварство фей»;</bullet><bullet>возможность игнорировать:<bulletlist></bullet><bullet>штрафы к обзору, вызванные эффектом «Туманы»;</bullet><bullet>штрафы к <accuracy></accuracy> <hyperlink>точности</hyperlink>, вызванные способностью «Прилипчивый туман».</bullet></bulletlist></bulletlist>",
   "name": "Касание фей",
   "operation_point_cost": 250,
   "icon": "000004970000052C"
@@ -1585,7 +1830,7 @@
   "id": "Объятия_фей",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "В радиусе 1 кл.:<bulletlist><bullet>возникают облака <hyperlink>тумана</hyperlink>;</bullet><bullet>дружественные воины получают случайные <hyperlink>положительные эффекты</hyperlink> (до 2).</bullet>",
+  "description": "В радиусе 1 кл.:<bulletlist><bullet>возникают облака <hyperlink>тумана</hyperlink>;</bullet><bullet>дружественные воины получают случайные <hyperlink>положительные эффекты</hyperlink> (до 2).</bullet></bulletlist>",
   "name": "Объятия фей",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1597,7 +1842,7 @@
   "id": "Жезлы_тумана",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Благословение фей».</bullet>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Благословение фей».</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -1742,7 +1987,7 @@
   "id": "Гармония_предков",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Лесного волка», эффект от исцеления удваивается.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Если действует особенность «Ярость Лесного волка», эффект от исцеления удваивается.</bullet></bulletlist>",
   "name": "Гармония предков",
   "operation_point_cost": 10,
   "icon": "00000497000004A4"
@@ -2144,7 +2389,7 @@
   "id": "Мрачная_плоть",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранный народ получает от Пучины мрака дары, дающие следующие особенности:<bulletlist><bullet>способность «Невосприимчивость к мрачной хвори»;</bullet><bullet>воины на ландшафте <hyperlink>Мрака</hyperlink>:<bulletlist></bullet><bullet>получают +10 к <happiness></happiness> <hyperlink>боевому духу</hyperlink>;</bullet><bullet>восстанавливают +12 ед. <hyperlink>здоровья</hyperlink> за каждый <turn></turn> <hyperlink>ход</hyperlink> на глобальной карте.</bullet></bulletlist><bullet><hyperlink>Города</hyperlink> народа:<bulletlist></bullet><bullet>получают +2 к <knowledge></knowledge> <hyperlink>знаниям</hyperlink> за каждую провинцию с ландшафтом Мрака;</bullet><bullet>игнорируют штрафы к <happiness></happiness> <hyperlink> стабильности города</hyperlink>, вызванные ландшафтом Мрака.</bullet></bulletlist><bullet>Герои получают способность «Мрачный пастырь».</bullet></bulletlist><br></br>Эта трансформация несовместима со способностью «Чистая душа».",
+  "description": "Выбранный народ получает от Пучины мрака дары, дающие следующие особенности:<bulletlist><bullet>способность «Невосприимчивость к мрачной хвори»;</bullet><bullet>воины на ландшафте <hyperlink>Мрака</hyperlink>:<bulletlist></bullet><bullet>получают +10 к <happiness></happiness> <hyperlink>боевому духу</hyperlink>;</bullet><bullet>восстанавливают +12 ед. <hp></hp> <hyperlink>здоровья</hyperlink> за каждый <turn></turn> <hyperlink>ход</hyperlink> на глобальной карте.</bullet></bulletlist><bullet><hyperlink>Города</hyperlink> народа:<bulletlist></bullet><bullet>получают +2 к <knowledge></knowledge> <hyperlink>знаниям</hyperlink> за каждую провинцию с ландшафтом Мрака;</bullet><bullet>игнорируют штрафы к <happiness></happiness> <hyperlink>стабильности города</hyperlink>, вызванные ландшафтом Мрака.</bullet></bulletlist><bullet>Герои получают способность «Мрачный пастырь».</bullet></bulletlist><br></br>Эта трансформация несовместима со способностью «Чистая душа».",
   "name": "Мрачная плоть",
   "operation_point_cost": 250,
   "icon": "0000049000000854"
@@ -2156,10 +2401,106 @@
   "id": "Мрачный_скиталец",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранный народ превращается в создания мрака и получает следующие особенности:<bulletlist><bullet>тип «Демон мрака»;</bullet><bullet>способность «Парящий»;</bullet><bullet>способность «Высокая скорость».<bulletlist><br></br><br></br>Всадники лишаются ездовых животных.<br></br><br></br>Герои утрачивают ячейки инвентаря для ног и ездового животного.<br></br><br></br>Эта трансформация несовместима со способностью «Чистая душа».</bullet>",
+  "description": "Выбранный народ превращается в создания мрака и получает следующие особенности:<bulletlist><bullet>тип «Демон мрака»;</bullet><bullet>способность «Парящий»;</bullet><bullet>способность «Высокая скорость».<br></br><br></br>Всадники лишаются ездовых животных.<br></br><br></br>Герои утрачивают ячейки инвентаря для ног и ездового животного.<br></br><br></br>Эта трансформация несовместима со способностью «Чистая душа».</bullet></bulletlist>",
   "name": "Мрачный скиталец",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906798,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
+  "id": "Свиток_астральной_связи",
+  "tactical": false,
+  "description": "Воины немагического происхождения, не относящиеся к культуре мистиков, получают:<bulletlist><bullet>«Астральная связь».</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Воин со щитом"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Стрелок"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Воин с пикой"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Воин поддержки"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Ударный воин"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Боевой маг"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Боец"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Застрельщик"
+   }
+  ],
+  "name": "Свиток астральной связи",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001B34"
+ },
+ {
+  "casting_cost": "60<mana></mana> 1<embalmedsacrifice></embalmedsacrifice> ",
+  "resid": 5003636906629,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
+  "id": "Мрачное_жертвоприношение",
+  "tactical": false,
+  "description": "Воины в дружественных армиях в выбранной провинции:<bulletlist><bullet>восстанавливают всё <hp></hp> <hyperlink>здоровье</hyperlink>;</bullet><bullet>на 3 <turn></turn> х. получают свойство «Универсальный камуфляж»;</bullet><bullet>получают +15 к <happiness></happiness> <hyperlink>боевому духу</hyperlink> до конца своего следующего боя;</bullet><bullet>получают +20 к <hp></hp> <hyperlink>здоровью</hyperlink> до конца своего следующего боя.</bullet></bulletlist>",
+  "name": "Мрачное жертвоприношение",
+  "operation_point_cost": 60,
+  "icon": "0000048D00001A6E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636906616,
+  "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления</hyperlink>",
+  "id": "Вальс_смерти",
+  "tactical": true,
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает <hyperlink>очки действия</hyperlink> и здоровье;</bullet><bullet>получает свойство «Воскрешение»;</bullet><bullet>получает свойство «Обречённость» и погибает в конце этого хода.</bullet></bulletlist>",
+  "name": "Вальс смерти",
+  "operation_point_cost": 15,
+  "icon": "0000048D00001A6A"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906609,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
+  "id": "Знак_культа_смерти",
+  "tactical": false,
+  "description": "Воины, не относящиеся к культуре Тьмы, получают:<bulletlist><bullet>«Сила смерти».</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Воин со щитом"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Стрелок"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Воин с пикой"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Воин поддержки"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Ударный воин"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Боевой маг"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Боец"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Застрельщик"
+   }
+  ],
+  "name": "Знак культа смерти",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001A66"
  },
  {
   "casting_cost": "20<mana></mana> ",
@@ -2454,7 +2795,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Глобальное заклинание</hyperlink>",
   "id": "Создать_Разлом_призыва",
   "tactical": false,
-  "description": "Создаёт в пустой клетке выбранной <hyperlink>провинции</hyperlink> Разлом призыва. Это сооружение:<bulletlist><bullet>позволяет использовать заклинания призыва в этой провинции и провинциях по соседству;</bullet><bullet>обеспечивает обзор в радиусе 5 кл.</bullet></bulletlist>",
+  "description": "Создаёт в пустой клетке выбранной <hyperlink>провинции</hyperlink> Разлом призыва. Это сооружение:<bulletlist><bullet>позволяет использовать заклинания призыва в этой провинции и провинциях по соседству;</bullet><bullet>обеспечивает обзор в радиусе 5 кл.;</bullet><bullet>воины в этой провинции <hyperlink>восстанавливают</hyperlink> +15 ед. <hp></hp> <hyperlink>здоровья</hyperlink> за <turn></turn> <hyperlink>ход</hyperlink>;</bullet><bullet>при сражении в этой провинции дружественные <casttactical></casttactical> заклинание призыва для битвы обходятся на 20% дешевле.</bullet></bulletlist>",
   "name": "Создать Разлом призыва",
   "operation_point_cost": 60,
   "icon": "0000048D000007A6"
@@ -2579,7 +2920,7 @@
   "id": "Наборы_для_разгона",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Перегрузка», дающую воинам-конструкциям эффект «Режим перегрузки» до конца боя.</bullet>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Перегрузка», дающую воинам-конструкциям эффект «Режим перегрузки» до конца боя.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -2683,7 +3024,7 @@
     "slug": "Белый_волкБелые_волки"
    },
    {
-    "slug": "БуревестникБуревестники"
+    "slug": "Буревестник"
    },
    {
     "slug": "Вепрь-матриархВепри-матриархи"
@@ -2826,7 +3167,7 @@
   "id": "Мощные_удары",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Базовые атаки воинов под действием чар в <hyperlink>ближнем бою</hyperlink>:<bulletlist><bullet>наносят +1 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>третья атака за ход с базовой вероятностью 60% может применить эффект «Оглушение» на 1 <turn></turn> х.</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Базовые атаки воинов под действием чар в <hyperlink>ближнем бою</hyperlink>:<bulletlist><bullet>наносят +1 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>третья атака за ход с базовой вероятностью 60% может применить эффект «Оглушение» на 1 <turn></turn> х.</bullet></bulletlist><br></br>Эти чары не применяются к воинам, у которых нет многократной базовой атаки в ближнем бою.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -2864,7 +3205,7 @@
   "id": "Мантра_очищения",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>избавляется от 2 <hyperlink>отрицательного эффекта</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>избавляется от 2 <hyperlink>отрицательного эффекта</hyperlink>.</bullet></bulletlist>",
   "name": "Мантра очищения",
   "operation_point_cost": 10,
   "icon": "0000048B000001D1"
@@ -2904,10 +3245,21 @@
   "id": "Превращение_в_нагов",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Выбранный народ превращается в нагов и получает следующие особенности:<bulletlist><bullet>«Высокая скорость»;</bullet><bullet>«Амфибия»;</bullet><bullet>«Исчезновение»;</bullet><bullet>невосприимчивость к эффекту «Наэлектризованность»;</bullet><bullet>+2 ед. <defenseblight></defenseblight> <hyperlink>сопротивления яду</hyperlink>;</bullet><bullet>+2 к <defenselightning></defenselightning> <hyperlink>сопротивлению молниям</hyperlink>.</bullet></bulletlist></bulletlist><br></br><br></br>Всадники лишаются ездовых животных.<br></br><br></br>Герои утрачивают ячейки инвентаря для ног и ездового животного.",
+  "description": "Выбранный народ превращается в нагов и получает следующие особенности:<bulletlist><bullet>«Высокая скорость»;</bullet><bullet>«Амфибия»;</bullet><bullet>«Исчезновение»;</bullet><bullet>невосприимчивость к эффекту «Наэлектризованность»;</bullet><bullet>+2 к <defenseblight></defenseblight> <hyperlink>сопротивлению яду</hyperlink>;</bullet><bullet>+2 к <defenselightning></defenselightning> <hyperlink>сопротивлению молниям</hyperlink>.</bullet></bulletlist><br></br><br></br>Всадники лишаются ездовых животных.<br></br><br></br>Герои утрачивают ячейки инвентаря для ног и ездового животного.",
   "name": "Превращение в нагов",
   "operation_point_cost": 600,
   "icon": "0000049700000598"
+ },
+ {
+  "casting_cost": "30<mana></mana> ",
+  "resid": 4982162064633,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для города</hyperlink>",
+  "id": "Тираническая_эксплуатация",
+  "tactical": false,
+  "description": "Выбранный вассальный город:<bulletlist><bullet>больше не повышает <allegiance></allegiance> <hyperlink>благосклонность</hyperlink>;</bullet><bullet>вместо этого доход от вассала увеличивается на 20% за каждое очко прироста <allegiance></allegiance> <hyperlink>благосклонности</hyperlink>.</bullet></bulletlist>",
+  "name": "Тираническая эксплуатация",
+  "operation_point_cost": 30,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -3134,7 +3486,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Постоянное заклинание для мира</hyperlink>",
   "id": "Сбор_душ",
   "tactical": false,
-  "description": "<bulletlist><bullet>Даёт +10 к доходу <souls></souls> <hyperlink>душ</hyperlink>.</bullet><bullet>Содержание обходится в 30 ед. <gold></gold> <hyperlink>золота</hyperlink>.<bulletlist></bullet>",
+  "description": "<bulletlist><bullet>Даёт +10 к приросту <souls></souls> <hyperlink>душ</hyperlink>.</bullet><bullet>Содержание обходится в 30 ед. <gold></gold> <hyperlink>золота</hyperlink>.</bullet></bulletlist>",
   "name": "Сбор душ",
   "operation_point_cost": 45,
   "icon": "0000041B000016EF"
@@ -3178,7 +3530,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание призыва</hyperlink>",
   "id": "Призыв_демона",
   "tactical": false,
-  "description": "Выбранный <minorcity></minorcity><hyperlink>свободный город</hyperlink>, являющийся вашим <hyperlink>вассалом</hyperlink>:<bulletlist><bullet>в город призываются 2 случайно выбранных демонов, один из которых будет ранга III, а другой ранга IV;</bullet><bullet><hyperlink>вассал</hyperlink>:<bulletlist></bullet><bullet>перестаёт быть <hyperlink>вассалом</hyperlink>;</bullet><bullet>теряет 1 ед. <population></population> <hyperlink>населения</hyperlink>.</bullet></bulletlist></bulletlist><br></br>Нельзя применить к городу на стадии вассализации «<rs_vassalage-3></rs_vassalage-3> <hyperlink>Мятежный данник</hyperlink>».",
+  "description": "Выбранный <minorcity></minorcity> <hyperlink>свободный город</hyperlink>, являющийся вашим <hyperlink>вассалом</hyperlink>:<bulletlist><bullet>в город призываются 2 случайно выбранных демонов, один из которых будет ранга III, а другой ранга IV;</bullet><bullet><hyperlink>вассал</hyperlink>:<bulletlist></bullet><bullet>перестаёт быть <hyperlink>вассалом</hyperlink>;</bullet><bullet>теряет 1 ед. <population></population> <hyperlink>населения</hyperlink>.</bullet></bulletlist></bulletlist><br></br>Нельзя применить к городу на стадии вассализации «<rs_vassalage-3></rs_vassalage-3> <hyperlink>Мятежный данник</hyperlink>».",
   "name": "Призыв демона",
   "operation_point_cost": 150,
   "icon": "000003E300005A9C",
@@ -3302,7 +3654,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Значительная трансформация народа</hyperlink>",
   "id": "Избранник_Геи",
   "tactical": false,
-  "description": "Выбранный народ получает благословение природы, а с ним — следующие особенности:<bulletlist><bullet>тип «Растение»;</bullet><bullet>+3 к <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивлению эффектам</hyperlink>;</bullet><bullet>+20 к <hyperlink>здоровью</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный народ получает благословение природы, а с ним — следующие особенности:<bulletlist><bullet>тип «Растение»;</bullet><bullet>+3 к <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивлению эффектам</hyperlink>;</bullet><bullet>+20 к <hp></hp> <hyperlink>здоровью</hyperlink>.</bullet></bulletlist>",
   "name": "Избранник Геи",
   "operation_point_cost": 600,
   "icon": "0000044500000057"
@@ -3313,7 +3665,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание исцеления</hyperlink>",
   "id": "Массовое_восстановление",
   "tactical": true,
-  "description": "<bulletlist><bullet>Восстанавливает всем дружественным воинам +40 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Все убитые дружественные животные и растения возвращаются к жизни с 50% от максимального <hp></hp> здоровья.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Восстанавливает всем дружественным воинам +40 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Все убитые дружественные животные и растения возвращаются к жизни с 50% от максимального <hp></hp> здоровья.</bullet></bulletlist>",
   "name": "Массовое восстановление",
   "operation_point_cost": 50,
   "icon": "000004450000005F"
@@ -3358,7 +3710,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Значительная трансформация народа</hyperlink>",
   "id": "Демоническая_трансформация",
   "tactical": false,
-  "description": "Выбранный народ превращается в демонических созданий и получает следующие особенности:<bulletlist><bullet>тип «Чудовищный демон»;</bullet><bullet>способность «Летающий», повышающая мобильность;</bullet><bullet>способность «Буйство», повышающая урон от атак;</bullet><bullet><hyperlink>города</hyperlink> этого народа игнорируют штраф к <happiness></happiness> <hyperlink> стабильности города</hyperlink> за провинции с пропастями и лавой в своих <hyperlink>владениях</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный народ превращается в демонических созданий и получает следующие особенности:<bulletlist><bullet>тип «Чудовищный демон»;</bullet><bullet>способность «Летающий», повышающая мобильность;</bullet><bullet>способность «Буйство», повышающая урон от атак;</bullet><bullet><hyperlink>города</hyperlink> этого народа игнорируют штраф к <happiness></happiness> <hyperlink>стабильности города</hyperlink> за провинции с пропастями и лавой в своих <hyperlink>владениях</hyperlink>.</bullet></bulletlist>",
   "name": "Демоническая трансформация",
   "operation_point_cost": 600,
   "icon": "000003E300005A08"
@@ -3402,7 +3754,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание призыва для битвы</hyperlink>",
   "id": "Массовое_воскрешение",
   "tactical": true,
-  "description": "Действует на всех убитых дружественных воинов, обладающих способностью «Рвение» или «Верный». Они возвращаются к жизни с 50% от максимального <hyperlink>здоровья</hyperlink>.<br></br><br></br>Нельзя использовать в битвах на воде.",
+  "description": "Действует на всех убитых дружественных воинов, обладающих способностью «Рвение» или «Верный». Они возвращаются к жизни с 50% от максимального <hp></hp> <hyperlink>здоровья</hyperlink>.<br></br><br></br>Нельзя использовать в битвах на воде.",
   "name": "Массовое воскрешение",
   "operation_point_cost": 65,
   "icon": "0000041B000019D9"
@@ -3594,7 +3946,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание призыва для битвы</hyperlink>",
   "id": "Реанимация_на_поле_боя",
   "tactical": true,
-  "description": "<bulletlist><bullet>Все дружественные воины-нежить возвращаются в строй с 50% от максимального <hyperlink>здоровья</hyperlink>.</bullet><bullet>Трупы убитых, за исключением нежити, превращаются в <hyperlink>гниющих зомби</hyperlink> и остаются под вашим контролем до конца боя.</bullet></bulletlist><br></br><br></br>Нельзя использовать в битвах на воде.",
+  "description": "<bulletlist><bullet>Все дружественные воины-нежить возвращаются в строй с 50% от максимального <hp></hp> <hyperlink>здоровья</hyperlink>.</bullet><bullet>Трупы убитых, за исключением нежити, превращаются в <hyperlink>гниющих зомби</hyperlink> и остаются под вашим контролем до конца боя.</bullet></bulletlist><br></br><br></br>Нельзя использовать в битвах на воде.",
   "name": "Реанимация на поле боя",
   "operation_point_cost": 65,
   "icon": "0000041B00001770"
@@ -3607,7 +3959,7 @@
   "tactical": false,
   "description": "Призывает на выбранную клетку глобальной карты целую армию нежити низкого ранга.",
   "name": "Призыв армии нежити",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "icon": "0000041B00001768",
   "summoned_units": [
    {
@@ -3617,7 +3969,7 @@
     "slug": "Маг-скелетМаги-скелеты"
    },
    {
-    "slug": "Копейщик-скелетКопейщики-скелеты"
+    "slug": "Ополченец-скелет"
    },
    {
     "slug": "Воин-скелетВоины-скелеты"
@@ -3655,7 +4007,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Постоянное заклинание для города</hyperlink>",
   "id": "Владения_смерти",
   "tactical": false,
-  "description": "Выбранный дружественный город получает:<bulletlist><bullet>+20 к <happiness></happiness> <hyperlink> стабильности города</hyperlink>.</bullet><bullet>Дружественные воины-нежить во владениях города наносят на 10% больше урона.</bullet><bullet>Вражеские воины во владениях города получают эффект «Пленённая душа».</bullet></bulletlist>",
+  "description": "Выбранный дружественный город получает:<bulletlist><bullet>+20 к <happiness></happiness> <hyperlink>стабильности города</hyperlink>.</bullet><bullet>Дружественные воины-нежить во владениях города наносят на 10% больше урона.</bullet><bullet>Вражеские воины во владениях города получают эффект «Пленённая душа».</bullet></bulletlist>",
   "name": "Владения смерти",
   "operation_point_cost": 50,
   "icon": "0000041B0000170C"
@@ -3666,7 +4018,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Легион_упырей",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+10 ед. <hyperlink>здоровья</hyperlink>;</bullet><bullet>способность «Ослабляющая аура», которая в конце хода применяет к врагам по соседству эффект «Слабость».</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+10 ед. <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>способность «Ослабляющая аура», которая в конце хода применяет к врагам по соседству эффект «Слабость».</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -3694,7 +4046,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Значительная трансформация народа</hyperlink>",
   "id": "Умертвия",
   "tactical": false,
-  "description": "Выбранный народ обретает вечную жизнь в посмертии и получает следующие способности:<bulletlist><bullet>воины-нежить;</bullet><bullet>способность «Вампиризм», благодаря которой воины восстанавливают <hyperlink><temphp></temphp> временное здоровье</hyperlink>с каждой атакой по врагу.</bullet></bulletlist>",
+  "description": "Выбранный народ обретает вечную жизнь в посмертии и получает следующие способности:<bulletlist><bullet>воины-нежить;</bullet><bullet>способность «Вампиризм», благодаря которой воины восстанавливают <temphp></temphp> <hyperlink>временное здоровье</hyperlink>с каждой атакой по врагу.</bullet></bulletlist>",
   "name": "Умертвия",
   "operation_point_cost": 300,
   "icon": "0000041B00001700"
@@ -3743,7 +4095,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание ослабления</hyperlink>",
   "id": "Сон_забвения",
   "tactical": true,
-  "description": "Выбранный воин, не являющийся <hyperlink>героем</hyperlink>, погибает. Через 2 <turn></turn> х. он возвращается к жизни с 75% от максимального <hyperlink>здоровья</hyperlink> и получает эффект «Безумие».<br></br><br></br>Погибшего таким образом воина невозможно воскресить, а его труп нельзя уничтожить.",
+  "description": "Выбранный воин, не являющийся <hyperlink>героем</hyperlink>, погибает. Через 2 <turn></turn> х. он возвращается к жизни с 75% от максимального <hp></hp> <hyperlink>здоровья</hyperlink> и получает эффект «Безумие».<br></br><br></br>Погибшего таким образом воина невозможно воскресить, а его труп нельзя уничтожить.",
   "name": "Сон забвения",
   "operation_point_cost": 40,
   "icon": "0000041B0000174F"
@@ -3976,7 +4328,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание исцеления</hyperlink>",
   "id": "Срочная_телепортация",
   "tactical": true,
-  "description": "Переносит ближайшего союзного воина в радиусе 4 кл. в выбранную пустую клетку.<br></br>При этом воин восстанавливает 30 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink> и избавляется от всех <hyperlink>отрицательных эффектов</hyperlink>.",
+  "description": "Переносит ближайшего союзного воина в радиусе 4 кл. в выбранную пустую клетку.<br></br>При этом воин восстанавливает 30 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink> и избавляется от всех <hyperlink>отрицательных эффектов</hyperlink>.",
   "name": "Срочная телепортация",
   "operation_point_cost": 30,
   "icon": "0000041B0000126E"
@@ -3987,7 +4339,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Незначительная трансформация народа</hyperlink>",
   "id": "Астральная_кровь",
   "tactical": false,
-  "description": "Кровь, текущая в жилах выбранного народа, наполняется волшебством, дающим следующие особенности:<bulletlist><bullet>способность «Гармония: удача», повышающая <hyperlink><crit></crit>шанс критического удара</hyperlink> при использовании заклинаний.</bullet></bulletlist>",
+  "description": "Кровь, текущая в жилах выбранного народа, наполняется волшебством, дающим следующие особенности:<bulletlist><bullet>способность «Гармония: удача», повышающая <crit></crit> <hyperlink>шанс критического удара</hyperlink> при использовании заклинаний.</bullet></bulletlist>",
   "name": "Астральная кровь",
   "operation_point_cost": 250,
   "icon": "0000041B00001240"
@@ -4014,7 +4366,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Постоянное заклинание для города</hyperlink>",
   "id": "Усиление_разума",
   "tactical": false,
-  "description": "Выбранный принадлежащий вам город получает:<bulletlist><bullet>+20 к <knowledge></knowledge> <hyperlink>знаниям</hyperlink>;</bullet><bullet>-10 к <happiness></happiness> <hyperlink> стабильности города</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный принадлежащий вам город получает:<bulletlist><bullet>+20 к <knowledge></knowledge> <hyperlink>знаниям</hyperlink>;</bullet><bullet>-10 к <happiness></happiness> <hyperlink>стабильности города</hyperlink>.</bullet></bulletlist>",
   "name": "Усиление разума",
   "operation_point_cost": 80,
   "icon": "0000041B00001244"
@@ -4036,7 +4388,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Вдохновлённое_буйство",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Буйство», увеличивающую наносимый при атаке урон;</bullet><bullet>+1 к <hyperlink><range></range>дальности</hyperlink> базовых атак.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>способность «Буйство», увеличивающую наносимый при атаке урон;</bullet><bullet>+1 к <range></range> <hyperlink>дальности</hyperlink> базовых атак.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -4105,7 +4457,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Рука_зодчего",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>«Естественная регенерация»;</bullet><bullet>+10 ед. <hyperlink>здоровья</hyperlink>;</bullet><bullet>+2 к <defenselightning></defenselightning> <hyperlink>сопротивлению молниям</hyperlink>.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>«Естественная регенерация»;</bullet><bullet>+10 ед. <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>+2 к <defenselightning></defenselightning> <hyperlink>сопротивлению молниям</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitElemental></unitElemental> Элементаль"
@@ -4198,7 +4550,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Постоянное заклинание для города</hyperlink>",
   "id": "Ожившие_инструменты",
   "tactical": false,
-  "description": "Выбранный принадлежащий вам город получает:<bulletlist><bullet>+20 к <structureprod></structureprod> <hyperlink>производству</hyperlink>;</bullet><bullet>+20 к <unitprod></unitprod> <hyperlink>на́йму</hyperlink>;</bullet><bullet>-10 к <happiness></happiness> <hyperlink> стабильности города</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный принадлежащий вам город получает:<bulletlist><bullet>+20 к <structureprod></structureprod> <hyperlink>производству</hyperlink>;</bullet><bullet>+20 к <unitprod></unitprod> <hyperlink>на́йму</hyperlink>;</bullet><bullet>-10 к <happiness></happiness> <hyperlink>стабильности города</hyperlink>.</bullet></bulletlist>",
   "name": "Ожившие инструменты",
   "operation_point_cost": 60,
   "icon": "000003BD00002E9E"
@@ -4237,7 +4589,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Парящие_стрелы",
   "tactical": false,
-  "description": "<hyperlink>Дистанционные атаки</hyperlink> воинов под действием чар получают:<bulletlist><bullet>+1 к <hyperlink><range></range>дальности</hyperlink>.</bullet></bulletlist>",
+  "description": "<hyperlink>Дистанционные атаки</hyperlink> воинов под действием чар получают:<bulletlist><bullet>+1 к <range></range> <hyperlink>дальности</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
@@ -4332,7 +4684,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона и ослабления</hyperlink>",
   "id": "Пыльная_буря",
   "tactical": true,
-  "description": "Вражеские воины в радиусе 2 кл.:<bulletlist><bullet>получают 10 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 90% на 1 <turn></turn> х. получают эффект «Слепота».</bullet>",
+  "description": "Вражеские воины в радиусе 2 кл.:<bulletlist><bullet>получают 10 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>;</bullet><bullet>с базовой вероятностью 90% могут получить эффект «Слепота» на 1 <turn></turn> х.</bullet></bulletlist>",
   "name": "Пыльная буря",
   "operation_point_cost": 20,
   "icon": "0000041B00000FD0"
@@ -4432,7 +4784,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления и исцеления</hyperlink>",
   "id": "Пробудившиеся_инстинкты",
   "tactical": true,
-  "description": "Все дружественные воины в радиусе 2 кл.:<bulletlist><bullet>восстанавливают 25 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>восстанавливают все <hyperlink>очки действия</hyperlink>;</bullet><bullet>на 2 <turn></turn> х. получают эффект «Берсерк».</bullet></bulletlist><br></br>Не действует на воинов со способностью «<hyperlink>Невосприимчивость к потере контроля</hyperlink>».",
+  "description": "Все дружественные воины в радиусе 2 кл.:<bulletlist><bullet>восстанавливают 25 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>восстанавливают все <hyperlink>очки действия</hyperlink>;</bullet><bullet>на 2 <turn></turn> х. получают эффект «Берсерк».</bullet></bulletlist><br></br>Не действует на воинов со способностью «<hyperlink>Невосприимчивость к потере контроля</hyperlink>».",
   "name": "Пробудившиеся инстинкты",
   "operation_point_cost": 50,
   "icon": "000003E300005236"
@@ -4561,7 +4913,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления и исцеления</hyperlink>",
   "id": "Целебные_корни",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает +10 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Регенерация» (2).</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает +10 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Регенерация» (2).</bullet></bulletlist>",
   "name": "Целебные корни",
   "operation_point_cost": 15,
   "icon": "0000041B00000D9F"
@@ -4583,7 +4935,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Незначительная трансформация народа</hyperlink>",
   "id": "Потомок_пламени",
   "tactical": false,
-  "description": "Выбранный народ становится олицетворением огня и получает следующие особенности:<bulletlist><bullet>4 к <defensefire></defensefire> <hyperlink>сопротивлению огню</hyperlink>;</bullet><bullet>способность «Мстительное пламя», которая наносит урон атакующим в <hyperlink>в ближнем бою</hyperlink>;</bullet><bullet>способность «Огненный след», которая вызывает горение легковоспламеняющихся элементов ландшафта, таких как <hyperlink>растительные препятствия</hyperlink>;</bullet><bullet>невосприимчивость к эффекту «Горение».</bullet><bullet>способность «Ходьба по лаве»;</bullet><bullet><hyperlink>города</hyperlink> этого народа игнорируют штраф к <happiness></happiness> <hyperlink> стабильности города</hyperlink> за провинции с пропастями и лавой в своих <hyperlink>владениях</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный народ становится олицетворением огня и получает следующие особенности:<bulletlist><bullet>4 к <defensefire></defensefire> <hyperlink>сопротивлению огню</hyperlink>;</bullet><bullet>способность «Мстительное пламя», которая наносит урон атакующим в <hyperlink>в ближнем бою</hyperlink>;</bullet><bullet>способность «Огненный след», которая вызывает горение легковоспламеняющихся элементов ландшафта, таких как <hyperlink>растительные препятствия</hyperlink>;</bullet><bullet>невосприимчивость к эффекту «Горение».</bullet><bullet>способность «Ходьба по лаве»;</bullet><bullet><hyperlink>города</hyperlink> этого народа игнорируют штраф к <happiness></happiness> <hyperlink>стабильности города</hyperlink> за провинции с пропастями и лавой в своих <hyperlink>владениях</hyperlink>.</bullet></bulletlist>",
   "name": "Потомок пламени",
   "operation_point_cost": 450,
   "icon": "0000041B00000C3D"
@@ -4606,7 +4958,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Чудовищная_концентрация",
   "tactical": false,
-  "description": "Когда кто-то погибает в бою, воины под действием чар получают:<bulletlist><bullet>эффект «Чудовищная сила» на 3 <turn></turn> х.;</bullet><bullet>+5 к <happiness></happiness> <hyperlink>боевому духу</hyperlink></bullet></bulletlist>.<br></br>Не срабатывает при уничтожении воинов типа «Призванный на бой», «Башня» и «Осадное орудие».</bulletlist>",
+  "description": "Когда кто-то погибает в бою, воины под действием чар получают:<bulletlist><bullet>эффект «Чудовищная сила» на 3 <turn></turn> х.;</bullet><bullet>+5 к <happiness></happiness> <hyperlink>боевому духу</hyperlink>.<br></br>Не срабатывает при уничтожении воинов типа «Призванный на бой», «Башня» и «Осадное орудие».</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
@@ -4787,7 +5139,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
   "id": "Создать_костяной_кошмар",
   "tactical": false,
-  "description": "Создаёт <hyperlink>костяного кошмара</hyperlink> путём соединения двух <hyperlink>копейщиков-скелетов</hyperlink>.",
+  "description": "Создаёт <hyperlink>костяного кошмара</hyperlink> путём соединения двух <hyperlink>ополченецов-скелетов</hyperlink>.",
   "name": "Создать костяной кошмар",
   "operation_point_cost": 30,
   "icon": "0000041B000016E7",
@@ -4831,7 +5183,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона и ослабления</hyperlink>",
   "id": "Ледяной_гроб",
   "tactical": true,
-  "description": "Выбранный вражеский воин:<bulletlist><bullet>получает 10 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink>;</bullet><bullet>с базовой вероятностью 90% к нему применяется эффект «Заморожен». В случае неудачи применяется эффект «Скорость снижена».</bullet></bulletlist>",
+  "description": "Выбранный вражеский воин:<bulletlist><bullet>получает 10 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink>;</bullet><bullet>с базовой вероятностью 90% к нему применяется эффект «Заморожен». В случае неудачи применяется эффект «Уязвимость к эффектам».</bullet></bulletlist>",
   "name": "Ледяной гроб",
   "operation_point_cost": 20,
   "icon": "0000041B000006C0"
@@ -4870,7 +5222,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления</hyperlink>",
   "id": "Переполнение_души",
   "tactical": true,
-  "description": "Дружественные воины в радиусе 1 кл.:<bulletlist><bullet>получают эффект «Дополнительная сила» (1);</bullet><bullet>получают +20 к максимальному запасу <hyperlink>здоровья</hyperlink> до конца боя;</bullet><bullet>избавляются от <hyperlink>отрицательных эффектов</hyperlink> (до 2).</bullet></bulletlist>",
+  "description": "Дружественные воины в радиусе 1 кл.:<bulletlist><bullet>получают эффект «Дополнительная сила» (1);</bullet><bullet>получают +20 к максимальному запасу <hp></hp> <hyperlink>здоровья</hyperlink> до конца боя;</bullet><bullet>избавляются от <hyperlink>отрицательных эффектов</hyperlink> (до 2).</bullet></bulletlist>",
   "name": "Переполнение души",
   "operation_point_cost": 20,
   "icon": "0000041B000005E4"
@@ -4893,7 +5245,7 @@
     "slug": "Белый_волкБелые_волки"
    },
    {
-    "slug": "БуревестникБуревестники"
+    "slug": "Буревестник"
    },
    {
     "slug": "Вепрь-матриархВепри-матриархи"
@@ -5085,6 +5437,18 @@
    },
    {
     "slug": "Отродье_кракенаОтродья_кракена"
+   },
+   {
+    "slug": "Кровавая_личинка"
+   },
+   {
+    "slug": "Гибельный_нетопырь"
+   },
+   {
+    "slug": "Визжащий_нетопырь"
+   },
+   {
+    "slug": "Чумной_змейЧумные_змеи"
    }
   ]
  },
@@ -5127,7 +5491,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления и исцеления</hyperlink>",
   "id": "Оберег-благословение",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает +20 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Усиленное сопротивление» (2).</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает +20 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Усиленное сопротивление» (2).</bullet></bulletlist>",
   "name": "Оберег-благословение",
   "operation_point_cost": 15,
   "icon": "0000041300000CAC"
@@ -5160,7 +5524,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Постоянное заклинание для города</hyperlink>",
   "id": "Жатва_душ",
   "tactical": false,
-  "description": "Выбранный дружественный город:<bulletlist><bullet>больше не производит <food></food> пищу;</bullet><bullet>даёт +30 к доходу <souls></souls> душа;</bullet><bullet>получает <happiness></happiness> <hyperlink> стабильность города</hyperlink> -20.</bullet></bulletlist>",
+  "description": "Выбранный дружественный город:<bulletlist><bullet>больше не производит <food></food> пищу;</bullet><bullet>даёт +30 к доходу <souls></souls> душа;</bullet><bullet>получает <happiness></happiness> <hyperlink>стабильность города</hyperlink> -20.</bullet></bulletlist>",
   "name": "Жатва душ",
   "operation_point_cost": 45,
   "icon": "0000041B00001742"
@@ -5171,7 +5535,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Сила_природы",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+15% <hyperlink><crit></crit>шансу критического удара</hyperlink>;</bullet><bullet>+3 ед. <damageBlight></damageBlight> <hyperlink>урона ядом</hyperlink> к атакам.</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+15% <crit></crit> <hyperlink>шансу критического удара</hyperlink>;</bullet><bullet>+3 ед. <damageBlight></damageBlight> <hyperlink>урона ядом</hyperlink> к атакам.</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
   "enchantment_requisites": [
    {
     "requisite": "<unitCavalry></unitCavalry> Кавалерия"
@@ -5415,7 +5779,7 @@
   "id": "Очистительное_пламя",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Дружественные воины в радиусе 1 кл.:<bulletlist><bullet>восстанавливают 25 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>избавляются от <hyperlink>отрицательных эффектов</hyperlink>.</bullet></bulletlist>",
+  "description": "Дружественные воины в радиусе 1 кл.:<bulletlist><bullet>восстанавливают 25 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>избавляются от <hyperlink>отрицательных эффектов</hyperlink>.</bullet></bulletlist>",
   "name": "Очистительное пламя",
   "operation_point_cost": 35,
   "icon": "000003E300006B8F"
@@ -5456,7 +5820,7 @@
   "id": "Жизненные_силы_дракона",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "Выбранный народ обретает жизненную энергию драконов и получает следующие особенности:<bulletlist><bullet>+5 к восстановлению <hyperlink>здоровья</hyperlink> за каждый <turn></turn> <hyperlink>ход</hyperlink> на <hyperlink>глобальной карте</hyperlink>;</bullet><bullet>+3 к <hyperlink>здоровью</hyperlink> за каждый ранг воина;</bullet><bullet>+3 к <hyperlink>здоровью</hyperlink> за каждый уровень героя (вплоть до 10).</bullet></bulletlist>",
+  "description": "Выбранный народ обретает жизненную энергию драконов и получает следующие особенности:<bulletlist><bullet>+5 к восстановлению <hp></hp> <hyperlink>здоровья</hyperlink> за каждый <turn></turn> <hyperlink>ход</hyperlink> на <hyperlink>глобальной карте</hyperlink>;</bullet><bullet>+3 к <hp></hp> <hyperlink>здоровью</hyperlink> за каждый ранг воина;</bullet><bullet>+3 к <hp></hp> <hyperlink>здоровью</hyperlink> за каждый уровень героя (вплоть до 10).</bullet></bulletlist>",
   "name": "Жизненные силы дракона",
   "operation_point_cost": 150,
   "icon": "000003E300006B3C"
@@ -5484,7 +5848,7 @@
   "id": "Омолаживающее_восстановление",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Выбранный воин:<bulletlist><bullet>исцеляет 18 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Дополнительная сила».</bullet></bulletlist><br></br>Воины со способностью «Развитие»:<bulletlist><bullet>получают эффект удвоенной силы;</bullet><bullet>получают способность «Воскрешение» до конца боя.</bullet></bulletlist>",
+  "description": "Выбранный воин:<bulletlist><bullet>исцеляет 18 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Дополнительная сила».</bullet></bulletlist><br></br>Воины со способностью «Развитие»:<bulletlist><bullet>получают эффект удвоенной силы;</bullet><bullet>получают способность «Воскрешение» до конца боя.</bullet></bulletlist>",
   "name": "Омолаживающее восстановление",
   "operation_point_cost": 15,
   "icon": "000003E300006B34"
@@ -5496,7 +5860,7 @@
   "id": "Чары_ускоренной_эволюции",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к боевому <hyperlink><xp></xp> опыту</hyperlink>;</bullet><bullet>способность «Исчезновение», благодаря которой воины ранга I и II, <hyperlink>здоровье</hyperlink> которых упало до нуля, исцеляются один раз за бой.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к боевому <xp></xp> <hyperlink>опыту</hyperlink>;</bullet><bullet>способность «Исчезновение», благодаря которой воины, чьё <hp></hp> <hyperlink>здоровье</hyperlink> упало до нуля, исцеляются один раз за бой.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Воины, способные к эволюции"
@@ -5592,7 +5956,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для изменения ландшафта</hyperlink>",
   "id": "Волшебное_цветение",
   "tactical": false,
-  "description": "Выбранный дружественный <hyperlink>город</hyperlink> получает следующие особенности:<bulletlist><bullet>Каждый <turn></turn> <hyperlink>ход</hyperlink> до 1 <hyperlink>провинций</hyperlink> в пределах городских <hyperlink>владений</hyperlink> или по соседству с ними:<bulletlist></bullet><bullet>в провинциях появляются особенности ландшафта «<hyperlink>Луга</hyperlink>» и «<hyperlink>Лес</hyperlink>» (если провинция на поверхности), либо «<hyperlink>Грибные поля</hyperlink>» и «<hyperlink>Грибной лес</hyperlink>» (если провинция в подземелье);</bullet><bullet>провинции теряют особенности ландшафта «<hyperlink>Пропасть</hyperlink>», «<hyperlink>Болото</hyperlink>», «<hyperlink>Пески</hyperlink>», «<hyperlink>Снег</hyperlink>», «<hyperlink>Лёд</hyperlink>», «<hyperlink>Пепелище</hyperlink>» и «<hyperlink>Мрак</hyperlink>».</bullet><bullet>Провинции с лугами, лесами, грибными полями и грибными лесами в пределах городских владений приносят +2 к <food></food> <hyperlink>пище</hyperlink>, +2 к очкам <structureprod></structureprod> <hyperlink>производства</hyperlink> и +2 к очкам <unitprod></unitprod> <hyperlink>на́йма</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранный дружественный <hyperlink>город</hyperlink> получает следующие особенности:<bulletlist><bullet>каждый <turn></turn> <hyperlink>ход</hyperlink> до 1 <hyperlink>провинций</hyperlink> в пределах городских <hyperlink>владений</hyperlink> или по соседству с ними:<bulletlist></bullet><bullet>в провинциях появляются особенности ландшафта «<hyperlink>Луга</hyperlink>» и «<hyperlink>Лес</hyperlink>» (если провинция на поверхности), либо «<hyperlink>Грибные поля</hyperlink>» и «<hyperlink>Грибной лес</hyperlink>» (если провинция в подземелье);</bullet><bullet>провинции теряют особенности ландшафта «<hyperlink>Пропасть</hyperlink>», «<hyperlink>Болото</hyperlink>», «<hyperlink>Пески</hyperlink>», «<hyperlink>Снег</hyperlink>», «<hyperlink>Лёд</hyperlink>», «<hyperlink>Пепелище</hyperlink>» и «<hyperlink>Мрак</hyperlink>».</bullet><bullet>Провинции с лугами, лесами, грибными полями и грибными лесами в пределах городских владений приносят +2 к <food></food> <hyperlink>пище</hyperlink>, +2 к очкам <structureprod></structureprod> <hyperlink>производства</hyperlink> и +2 к очкам <unitprod></unitprod> <hyperlink>на́йма</hyperlink>.</bullet></bulletlist></bulletlist>",
   "name": "Волшебное цветение",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5615,7 +5979,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Самонаводящиеся_снаряды",
   "tactical": false,
-  "description": "Базовые атаки воинов под действием чар:<bulletlist><bullet>получают +1 к дальности, при этом игнорируя штрафы к <hyperlink><accuracy></accuracy> точности</hyperlink> из-за большого расстояния до цели;</bullet><bullet>игнорируют штрафы к <hyperlink><accuracy></accuracy> точности</hyperlink>, вызванные тем, что цель <hyperlink>частично скрыта</hyperlink> другими воинами и элементами ландшафта.</bullet></bulletlist>",
+  "description": "Базовые атаки воинов под действием чар:<bulletlist><bullet>получают +1 к дальности, при этом игнорируя штрафы к <accuracy></accuracy> <hyperlink>точности</hyperlink> из-за большого расстояния до цели;</bullet><bullet>игнорируют штрафы к <accuracy></accuracy> <hyperlink>точности</hyperlink>, вызванные тем, что цель <hyperlink>частично скрыта</hyperlink> другими воинами и элементами ландшафта.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
@@ -5809,7 +6173,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления и исцеления</hyperlink>",
   "id": "Спасение",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>полностью восстанавливает запас <hyperlink>здоровья</hyperlink> как <hyperlink><temphp></temphp> временное здоровье</hyperlink>;</bullet><bullet>избавляется от всех <hyperlink>отрицательных эффектов</hyperlink>;</bullet><bullet>получает эффект «Усиленное сопротивление» (3).</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>полностью восстанавливает запас <hp></hp> <hyperlink>здоровья</hyperlink> как <temphp></temphp> <hyperlink>временное здоровье</hyperlink>;</bullet><bullet>избавляется от всех <hyperlink>отрицательных эффектов</hyperlink>;</bullet><bullet>получает эффект «Усиленное сопротивление» (3).</bullet></bulletlist>",
   "name": "Спасение",
   "operation_point_cost": 35,
   "icon": "0000041B0000197F"
@@ -5871,7 +6235,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание призыва для битвы</hyperlink>",
   "id": "Призыв_божественного_маяка",
   "tactical": true,
-  "description": "Призывает <hyperlink>божественный маяк</hyperlink>. При использовании заклинания и в начале каждого хода дружественные воины в радиусе 2 кл.:<bulletlist><bullet>восстанавливают +15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>получают +5 к <happiness></happiness> <hyperlink>боевому духу</hyperlink>.</bullet></bulletlist><br></br>Призванный воин остаётся в бою на 3 <hyperlink>х.</hyperlink>.<br></br><br></br>Нельзя использовать в битвах на воде.",
+  "description": "Призывает <hyperlink>божественный маяк</hyperlink>. При использовании заклинания и в начале каждого хода дружественные воины в радиусе 2 кл.:<bulletlist><bullet>восстанавливают +15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получают +5 к <happiness></happiness> <hyperlink>боевому духу</hyperlink>.</bullet></bulletlist><br></br>Призванный воин остаётся в бою на 3 <hyperlink>х.</hyperlink>.<br></br><br></br>Нельзя использовать в битвах на воде.",
   "name": "Призыв божественного маяка",
   "operation_point_cost": 25,
   "icon": "000003E3000060DF",
@@ -5917,7 +6281,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
   "id": "Исцеление_армии",
   "tactical": false,
-  "description": "Воины в выбранной армии восстанавливают 25 ед. <hyperlink>здоровья</hyperlink>.",
+  "description": "Воины в выбранной армии восстанавливают 25 ед. <hp></hp> <hyperlink>здоровья</hyperlink>.",
   "name": "Исцеление армии",
   "operation_point_cost": 80,
   "icon": "000003BD00002E6C"
@@ -5945,7 +6309,7 @@
   "tactical": false,
   "description": "Призывает <hyperlink>жнеца</hyperlink> — мифическое создание ранга V, способное убивать вражеских воинов одним прикосновением. Смерть врагов делает <hyperlink>жнеца</hyperlink> сильнее.",
   "name": "Призыв жнеца",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "ЖнецЖнецы"
@@ -5958,7 +6322,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание призыва для битвы</hyperlink>",
   "id": "Большое_воскрешение",
   "tactical": true,
-  "description": "Воскрешает выбранного воина, не являющегося героем:<bulletlist><bullet>Если воин не является нежитью, он возрождается как <hyperlink>оскверненная душа</hyperlink>.</bullet><bullet>Если воин является нежитью, он возрождается с 100% от максимального <hyperlink>здоровья</hyperlink>.</bullet></bulletlist><br></br>Если <hyperlink>оскверненная душа</hyperlink> или вражеская нежить доживёт до конца боя, у того, кто контролирует воина, будет возможность потратить <souls></souls>, чтобы навсегда оставить его у себя.",
+  "description": "Воскрешает выбранного воина, не являющегося героем:<bulletlist><bullet>Если воин не является нежитью, он возрождается как <hyperlink>оскверненная душа</hyperlink>.</bullet><bullet>Если воин является нежитью, он возрождается с 100% от максимального <hp></hp> <hyperlink>здоровья</hyperlink>.</bullet></bulletlist><br></br>Если <hyperlink>оскверненная душа</hyperlink> или вражеская нежить доживёт до конца боя, у того, кто контролирует воина, будет возможность потратить <souls></souls>, чтобы навсегда оставить его у себя.",
   "name": "Большое воскрешение",
   "operation_point_cost": 40,
   "icon": "0000041B0000173A"
@@ -6010,7 +6374,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
   "id": "Пожирание_душ",
   "tactical": false,
-  "description": "Выбранная дружественная армия:<bulletlist><bullet>воины, не являющиеся <hyperlink>нежитью</hyperlink>, восстанавливают 20 ед. <hyperlink>здоровья</hyperlink>;</bullet><bullet>нежить восстанавливает 40 ед. <hyperlink>здоровья</hyperlink>.</bullet></bulletlist>",
+  "description": "Выбранная дружественная армия:<bulletlist><bullet>воины, не являющиеся <hyperlink>нежитью</hyperlink>, восстанавливают 20 ед. <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>нежить восстанавливает 40 ед. <hp></hp> <hyperlink>здоровья</hyperlink>.</bullet></bulletlist>",
   "name": "Пожирание душ",
   "operation_point_cost": 25,
   "icon": "0000041B000005DC"
@@ -6180,7 +6544,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание исцеления</hyperlink>",
   "id": "Магическое_восстановление",
   "tactical": true,
-  "description": "Восстанавливает +25 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink> всем дружественным воинам <hyperlink>магического происхождения</hyperlink>.",
+  "description": "Восстанавливает +25 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink> всем дружественным воинам <hyperlink>магического происхождения</hyperlink>.",
   "name": "Магическое восстановление",
   "operation_point_cost": 25,
   "icon": "0000041B00001283"
@@ -6348,7 +6712,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Оружие_мастерской_работы",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+25% к <hyperlink><crit></crit>шансу критического удара</hyperlink>.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+25% к <crit></crit> <hyperlink>шансу критического удара</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -6471,7 +6835,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
   "id": "Дары_природы",
   "tactical": false,
-  "description": "Все дружественные воины в выбранной провинция получают +15 к максимальному <hyperlink>здоровью</hyperlink> и продолжают восстанавливать по 15 ед. <hyperlink>здоровья</hyperlink> в дружественных и нейтральных владениях в течение ещё 2 <turn></turn> х. на <hyperlink>глобальной карте</hyperlink>.",
+  "description": "Все дружественные воины в выбранной провинция получают +15 к максимальному запасу <hp></hp> <hyperlink>здоровью</hyperlink> и продолжают <hyperlink>восстанавливать</hyperlink> по 15 ед. <hp></hp> <hyperlink>здоровья</hyperlink> в дружественных и нейтральных владениях в течение ещё 2 <turn></turn> х. на <hyperlink>глобальной карте</hyperlink>.",
   "name": "Дары природы",
   "operation_point_cost": 120,
   "icon": "0000041B00000DBB"
@@ -6482,7 +6846,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Незначительная трансформация народа</hyperlink>",
   "id": "Интенсивный_рост",
   "tactical": false,
-  "description": "Выбранный народ увеличивается в росте и размерах и получает следующие особенности:<bulletlist><bullet>+10 ед. <hyperlink>здоровья</hyperlink>;</bullet><bullet>+1 к <hyperlink>ответному удару</hyperlink>.</bullet><bullet>Количество солдат в одном отряде уменьшается.</bullet></bulletlist><br></br>Эта трансформация несовместима со способностью «Плодовитость».",
+  "description": "Выбранный народ увеличивается в росте и размерах и получает следующие особенности:<bulletlist><bullet>+10 ед. <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>+1 к <hyperlink>ответному удару</hyperlink>.</bullet><bullet>Количество солдат в одном отряде уменьшается.</bullet></bulletlist><br></br>Эта трансформация несовместима со способностью «Плодовитость».",
   "name": "Интенсивный рост",
   "operation_point_cost": 350,
   "icon": "000003E300004AFB"
@@ -6522,7 +6886,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Постоянное заклинание для города</hyperlink>",
   "id": "Смена_сезонов",
   "tactical": false,
-  "description": "Во всех битвах на землях выбранного города действует способность <abilityblue>«Смена сезонов»</abilityblue>, эффект от которой меняется каждый ход в следующем порядке.<bulletlist><bullet>Зима: все враги получают 10 <damageFrost></damageFrost> ед.</bullet><bullet>Весна: все дружественные воины получают эффект «Дополнительная сила» (1).</bullet><bullet>Лето: все дружественные воины восстанавливают +10 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>.</bullet><bullet>Осень: все враги получают эффект «Слабость» (1).</bullet></bulletlist>",
+  "description": "Во всех битвах на землях выбранного города действует способность <abilityblue>«Смена сезонов»</abilityblue>, эффект от которой меняется каждый ход в следующем порядке.<bulletlist><bullet>Зима: все враги получают 10 <damageFrost></damageFrost> ед.</bullet><bullet>Весна: все дружественные воины получают эффект «Дополнительная сила» (1).</bullet><bullet>Лето: все дружественные воины восстанавливают +10 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.</bullet><bullet>Осень: все враги получают эффект «Слабость» (1).</bullet></bulletlist>",
   "name": "Смена сезонов",
   "operation_point_cost": 120,
   "icon": "0000041B00000D64"
@@ -6533,7 +6897,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Чары для битвы</hyperlink>",
   "id": "Прощальные_дары",
   "tactical": true,
-  "description": "До окончания боя все дружественные воины в радиусе 2 кл. восстанавливают +12 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink> всякий раз, когда один из них погибает.",
+  "description": "До окончания боя все дружественные воины в радиусе 2 кл. восстанавливают +12 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink> всякий раз, когда один из них погибает.",
   "name": "Прощальные дары",
   "operation_point_cost": 40,
   "icon": "0000041B00000D60"
@@ -6544,7 +6908,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона и исцеления</hyperlink>",
   "id": "Исцеляющий_ливень",
   "tactical": true,
-  "description": "Выбранный вражеский воин:<bulletlist><bullet>получает 30 ед. <damageBlight></damageBlight> <hyperlink>урона ядом</hyperlink>;</bullet><bullet>получает эффект «Разлагается» (2).</bullet></bulletlist><br></br>Дружественные воины в радиусе 2 кл.:<bulletlist><bullet>восстанавливают +15 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>получают эффект «Регенерация» (2).</bullet></bulletlist>",
+  "description": "Выбранный вражеский воин:<bulletlist><bullet>получает 30 ед. <damageBlight></damageBlight> <hyperlink>урона ядом</hyperlink>;</bullet><bullet>получает эффект «Разлагается» (2).</bullet></bulletlist><br></br>Дружественные воины в радиусе 2 кл.:<bulletlist><bullet>восстанавливают +15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получают эффект «Регенерация» (2).</bullet></bulletlist>",
   "name": "Исцеляющий ливень",
   "operation_point_cost": 30,
   "icon": "0000041B00000D5C"
@@ -6577,7 +6941,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
   "id": "Буйство_бойни",
   "tactical": false,
-  "description": "Воины в выбранной дружественной армии получают +30% к боевому <hyperlink><xp></xp> опыту</hyperlink> в течение 3 <turn></turn> х.",
+  "description": "Воины в выбранной дружественной армии получают +30% к боевому <xp></xp> <hyperlink>опыту</hyperlink> в течение 3 <turn></turn> х.",
   "name": "Буйство бойни",
   "operation_point_cost": 60,
   "icon": "000003E300005A65"
@@ -6599,7 +6963,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона</hyperlink>",
   "id": "Ритуальная_бойня",
   "tactical": true,
-  "description": "Выбранный дружественный воин взрывается, и вражеские воины в радиусе 2 кл. получают:<bulletlist><bullet>20 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink>, а также 5 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink> за каждый ранг воина, принесённого в жертву;</bullet><bullet>один случайный <hyperlink>отрицательный эффект</hyperlink> за каждый ранг воина, принесённого в жертву.</bullet>",
+  "description": "Выбранный дружественный воин взрывается, и вражеские воины в радиусе 2 кл. получают:<bulletlist><bullet>20 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink>, а также 5 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink> за каждый ранг воина, принесённого в жертву;</bullet><bullet>один случайный <hyperlink>отрицательный эффект</hyperlink> за каждый ранг воина, принесённого в жертву.</bullet></bulletlist>",
   "name": "Ритуальная бойня",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6637,7 +7001,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Клинки_кровавой_ярости",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+5 к <happiness></happiness> <hyperlink>боевому духу</hyperlink> и эффект «Дополнительная сила» (1), когда они убивают врага.</bullet><bullet>Базовые <hyperlink>атаки в ближнем бою</hyperlink> и <hyperlink>стрельба</hyperlink> получают +2 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink>.</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+2 ед. <damagePhysical></damagePhysical> <hyperlink>физического урона</hyperlink> для базовых атак.</bullet><bullet>При убийстве врага к вражеским воинам по соседству с целью на 3 <turn></turn> х. применяется эффект «Кровотечение» (2).</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -6771,9 +7135,9 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492480453,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
-  "id": "Клеймо_ярости",
+  "id": "Знак_тирании",
   "tactical": false,
-  "description": "Воины, не относящиеся к культуре Тьмы, получают:<bulletlist><bullet>способность «Истребление слабых», которая:<bulletlist></bullet><bullet>даёт стрелкам и магам шанс применить к врагу эффект «Слабость»;</bullet><bullet>увеличивает урон в ближнем бою против врагов под воздействием эффекта «Слабость».</bullet></bulletlist></bulletlist>",
+  "description": "Воины, не относящиеся к культуре Тьмы, получают:<bulletlist><bullet>«Культ тирании».</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -6800,7 +7164,7 @@
     "requisite": "<unitSkirmisher></unitSkirmisher> Застрельщик"
    }
   ],
-  "name": "Клеймо ярости",
+  "name": "Знак тирании",
   "operation_point_cost": 90,
   "icon": "000003E300005352"
  },
@@ -6810,21 +7174,10 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание ослабления</hyperlink>",
   "id": "Гибельное_проклятие",
   "tactical": true,
-  "description": "Вражеские воины в радиусе 1 кл. получают:<bulletlist><bullet>«Пробитая защита»;</bullet><bullet>«Пробитое сопротивление»;</bullet><bullet>«Слабость».</bullet></bulletlist>",
+  "description": "Вражеские воины в радиусе 1 кл. получают:<bulletlist><bullet>эффект «Слабость» (2) с базовой вероятностью 90% на 3 <turn></turn> х.;</bullet><bullet>эффект «Невезение» (2) с базовой вероятностью 90% на 3 <turn></turn> х.</bullet></bulletlist>",
   "name": "Гибельное проклятие",
   "operation_point_cost": 15,
   "icon": "000003E300005354"
- },
- {
-  "casting_cost": "10<mana></mana> ",
-  "resid": 4273492480429,
-  "spellType": "<casttactical></casttactical> <hyperlink>Заклинание урона и ослабления</hyperlink>",
-  "id": "Ледяные_оковы",
-  "tactical": true,
-  "description": "Выбранный вражеский воин и ещё один в радиусе 2 кл. получают:<bulletlist><bullet>14 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink>;</bullet><bullet>«Скорость снижена».</bullet></bulletlist>",
-  "name": "Ледяные оковы",
-  "operation_point_cost": 15,
-  "icon": "000003E300005353"
  },
  {
   "casting_cost": "100<mana></mana> ",
@@ -6905,7 +7258,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание призыва для битвы</hyperlink>",
   "id": "Призыв_астрального_отражения",
   "tactical": true,
-  "description": "Призывает <hyperlink>астральное отражение</hyperlink> выбранного дружественного воина на свободную соседнюю клетку.<br></br><br></br>Нельзя использовать с героями, призванный на бой и мифическими созданиями.",
+  "description": "Призывает <hyperlink>астральное отражение</hyperlink> выбранного дружественного воина на свободную соседнюю клетку.<br></br><br></br>Нельзя использовать с героями, призванными на бой и мифическими созданиями.",
   "name": "Призыв астрального отражения",
   "operation_point_cost": 50,
   "icon": "0000041B000012B9"
@@ -6976,7 +7329,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Клинки_огненной_вспышки",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к <hyperlink><crit></crit>шансу критического удара</hyperlink>.</bullet><bullet>Когда воин убивает вражеского воина:<bulletlist></bullet><bullet>цель взрывается и наносит 20 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink> вражеским воинам по соседству.</bullet></bulletlist></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к <crit></crit> <hyperlink>шансу критического удара</hyperlink>.</bullet><bullet>Когда воин убивает врага, тот взрывается, при этом враги по соседству:<bulletlist></bullet><bullet>получают 15 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink>;</bullet><bullet>на 3 <turn></turn> х. получают эффект «Горение» (2).</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -7004,7 +7357,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Могучие_звери",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к урону;</bullet><bullet>+10 ед. <hyperlink>здоровья</hyperlink>;</bullet><bullet>способность «Сокрушитель», позволяющую разрушать укреплённые препятствия.</bullet><bullet>Количество солдат в одном отряде уменьшается.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+20% к урону;</bullet><bullet>+10 ед. <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>способность «Сокрушитель», позволяющую разрушать укреплённые препятствия.</bullet><bullet>Количество солдат в одном отряде уменьшается.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitAnimal></unitAnimal> Животное"
@@ -7161,7 +7514,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Заклинание усиления и исцеления</hyperlink>",
   "id": "Укрепляющая_песнь",
   "tactical": true,
-  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает +20 ед. <hyperlink><temphp></temphp> временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Усиленная защита» (2).</bullet></bulletlist>",
+  "description": "Выбранный дружественный воин:<bulletlist><bullet>восстанавливает +20 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>получает эффект «Усиленная защита» (2).</bullet></bulletlist>",
   "name": "Укрепляющая песнь",
   "operation_point_cost": 15,
   "icon": "0000041B00000101"
@@ -7220,7 +7573,7 @@
   "id": "Избранник_Оноки",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Зимнюю кару</hyperlink>. При этом у него полностью восстанавливаются <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Зимнюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
   "name": "Избранник Оноки",
   "operation_point_cost": 300,
   "icon": "000003DF000016E6"
@@ -7232,7 +7585,7 @@
   "id": "Избранник_Лута",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Осеннюю кару</hyperlink>. При этом у него полностью восстанавливаются <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Осеннюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
   "name": "Избранник Лута",
   "operation_point_cost": 300,
   "icon": "000003DF000016E5"
@@ -7244,7 +7597,7 @@
   "id": "Избранник_Вентрога",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Летнюю кару</hyperlink>. При этом у него полностью восстанавливаются <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Летнюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
   "name": "Избранник Вентрога",
   "operation_point_cost": 300,
   "icon": "000003DF000016E4"
@@ -7256,7 +7609,7 @@
   "id": "Избранник_Иландры",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Весеннюю кару</hyperlink>. При этом у него полностью восстанавливаются <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Весеннюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
   "name": "Избранник Иландры",
   "operation_point_cost": 300,
   "icon": "000003DF000016E0"

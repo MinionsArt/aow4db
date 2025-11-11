@@ -2,6 +2,854 @@
  {
   "modifiers": [
    {
+    "description": "3 <turn></turn>ターンの間、60%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "敵に魔法のボルトを放つ。",
+  "name": "血紅のボルト",
+  "slug": "magic_bolts_ability_000004D0000002C1",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "description": "このユニットがターンを終えると防御モードになり、以下の効果を得る：<bulletlist><bullet>その<hyperlink>支配ゾーン</hyperlink>を隣接するマスすべてに向けて拡張する。</bullet><bullet>+2 <defense></defense><hyperlink>防御力</hyperlink>を獲得する。</bullet><bullet>+2 <resistance></resistance><hyperlink>耐性</hyperlink>を獲得する。</bullet><bullet><hyperlink><flank></flank>側面攻撃</hyperlink>の効果を受けない。</bullet></bulletlist>",
+  "name": "防御モード",
+  "slug": "0000034500000469",
+  "icon": "000003450000049D"
+ },
+ {
+  "description": "このユニットは召喚されたか、別次元から来訪しているため維持にマナが必要。",
+  "name": "マジック・オリジン",
+  "slug": "000003e500001adb",
+  "icon": "0000039F00002B34"
+ },
+ {
+  "description": "範囲攻撃と敵の弱体化を得意とする魔法使い。<bulletlist><bullet><hyperlink><accuracy></accuracy>命中率</hyperlink>は<hyperlink>照準線</hyperlink>の影響を受ける。</bullet><bullet><hyperlink>近接攻撃状態</hyperlink>時にはメイン<hyperlink>魔法攻撃</hyperlink>を使用できない。</bullet></bulletlist>",
+  "name": "バトルメイジユニット",
+  "slug": "000003e300004c86",
+  "icon": "000003E300004C87"
+ },
+ {
+  "description": "近接攻撃者が3 <turn></turn>ターンの間、出血を1スタック受ける。",
+  "name": "レイザーソーン",
+  "slug": "00000497000033d0",
+  "icon": "00000497000033CF"
+ },
+ {
+  "description": "基本<hyperlink>ユニット維持費</hyperlink>が25%減少する",
+  "name": "ローメンテナンス",
+  "slug": "0000045e00000664",
+  "icon": "0000045E00000665"
+ },
+ {
+  "description": "アンデッドユニット：<bulletlist><bullet>+2 <defensefrost></defensefrost><hyperlink>凍結耐性</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>-4 <defensefire></defensefire><hyperlink>炎耐性</hyperlink></bullet><bullet>無情</bullet><bullet>以下の影響を受けない：<bulletlist></bullet><bullet>毒</bullet><bullet>病気</bullet></bulletlist></bulletlist>",
+  "name": "不死",
+  "slug": "000003e500001a37",
+  "icon": "000003E500001A38"
+ },
+ {
+  "description": "このユニットは出血の影響を受けない。",
+  "name": "以下のステータス効果の影響を受けない：出血",
+  "slug": "0000049700001683",
+  "icon": "0000049700001685"
+ },
+ {
+  "description": "このユニットは地上のマスを移動可能である。",
+  "name": "地上移動",
+  "slug": "0000049300000402",
+  "icon": "00000357000001AB"
+ },
+ {
+  "description": "ユニットの死亡は味方の<happiness></happiness><hyperlink>士気</hyperlink>に影響しません。",
+  "name": "消耗品",
+  "slug": "0000048d00001a24",
+  "icon": "0000048D00001A19"
+ },
+ {
+  "description": "このユニットは<happiness></happiness><hyperlink>士気</hyperlink>の変動値が50%減少する。",
+  "name": "無情",
+  "slug": "0000049700000f8f",
+  "icon": "0000048B0000005B"
+ },
+ {
+  "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
+  "description": "",
+  "name": "<xpCol>疫病耐性</xpCol>",
+  "slug": "Blight_resistance_2"
+ },
+ {
+  "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
+  "description": "",
+  "name": "<xpCol>凍結耐性</xpCol>",
+  "slug": "Frost_resistance_2"
+ },
+ {
+  "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
+  "description": "",
+  "name": "<fireCol>炎弱点</fireCol>",
+  "slug": "Fire_weakness_4"
+ },
+ {
+  "damage": "<fireCol>4<damagespirit></damagespirit></fireCol>",
+  "description": "",
+  "name": "<fireCol>精霊弱点</fireCol>",
+  "slug": "Spirit_weakness_4"
+ },
+ {
+  "description": "このユニットは最大<hyperlink><hp></hp>HP</hyperlink>が追加で10上昇する。",
+  "name": "+10<hp></hp>",
+  "slug": "0000048b00000c6e",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "このユニットは最大<defense></defense><hyperlink>防御力</hyperlink>が追加で1上昇する。",
+  "name": "+1<defense></defense>",
+  "slug": "0000048b00000c7a",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "このユニットは最大<resistance></resistance><hyperlink>耐性</hyperlink>が追加で1上昇する。",
+  "name": "+1<resistance></resistance>",
+  "slug": "0000048b00000c79",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "このユニットによる攻撃：<bulletlist><bullet><statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を最大で2まで無効化する。</bullet><bullet><resistance></resistance><hyperlink>耐性</hyperlink>を最大で1まで無効化する。</bullet><bullet><defense></defense><hyperlink>防御力</hyperlink>を最大で1まで無効化する。</bullet></bulletlist>",
+  "name": "チャンピオン勲章：力術師",
+  "slug": "000003e30000628a",
+  "icon": "000003E30000627B"
+ },
+ {
+  "description": "このユニットが戦闘中に死亡すると、その所有者が勝利した場合、そのユニットは戦闘終了時に復活する。復活したユニットは最大<hyperlink><hp></hp>HP</hyperlink>の50%を持って蘇る。",
+  "name": "再起",
+  "slug": "0000035700000332",
+  "icon": "0000035700000333"
+ },
+ {
+  "description": "このユニットが攻撃で与えるダメージが10%増加する。",
+  "name": "+10%のダメージ",
+  "slug": "0000048b00000c74",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "このユニットは最大<defense></defense><hyperlink>防御力</hyperlink>が追加で1上昇する。",
+  "name": "+1<defense></defense>",
+  "slug": "0000048b00000c7b",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "このユニットは最大<resistance></resistance><hyperlink>耐性</hyperlink>が追加で1上昇する。",
+  "name": "+1<resistance></resistance>",
+  "slug": "0000048b00000c7d",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "弓を撃つ",
+  "slug": "shoot_bow_ability_000004D0000002C0",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "遠距離から対象を倒す攻撃ユニット。少し防御力が低い。<bulletlist><bullet><hyperlink><accuracy></accuracy>命中率</hyperlink>は<hyperlink>照準線</hyperlink>に影響される。</bullet><bullet><hyperlink>近接攻撃状態</hyperlink>の場合、メインの遠距離攻撃が行えなくなる。</bullet></bulletlist>",
+  "name": "長射程ユニット",
+  "slug": "0000039f000016f1",
+  "icon": "0000039F000016E8"
+ },
+ {
+  "description": "<hyperlink>物理遠隔攻撃</hyperlink>攻撃で<hyperlink><range></range>範囲</hyperlink>が+1になる。",
+  "name": "チャンピオン勲章：鷹の目",
+  "slug": "000003e300006289",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_000004D0000002BF",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "このユニットはターンを終えると防御モードになる：<bulletlist><bullet><hyperlink>支配ゾーン</hyperlink>が全ての隣接マスに拡大する。</bullet><bullet>+2 <defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>+2 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet><hyperlink><flank></flank>側面攻撃</hyperlink>が効かない。</bullet><bullet>隣接する全ての味方ユニットは+3 <defense></defense><hyperlink>防御力</hyperlink>を獲得する。</bullet></bulletlist>",
+  "name": "防御モード：盾の壁",
+  "slug": "000003e300004c8f",
+  "icon": "000003E300004C94"
+ },
+ {
+  "description": "敵の攻撃を防ぎ、味方を物理攻撃から守ることが得意。シールドユニットは以下の効果を得る：<bulletlist><bullet>シールド防御</bullet><bullet>防御モード：盾の壁</bullet></bulletlist>",
+  "name": "シールドユニット",
+  "slug": "0000039f000016f0",
+  "icon": "0000039F000016E5"
+ },
+ {
+  "description": "このユニットは、<hyperlink><flank></flank>側面攻撃</hyperlink>でない攻撃に対して+3 <defense></defense><hyperlink>防御力</hyperlink>を持つ。",
+  "name": "シールド防御",
+  "slug": "000003e300004c8a",
+  "icon": "000003E300004C8C"
+ },
+ {
+  "description": "このユニットが<hyperlink>防御モード</hyperlink>状態になると、隣接する味方ユニットが防御強化を得る。",
+  "name": "チャンピオン勲章：高貴な守り",
+  "slug": "000003e300006280",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "騎兵隊ユニットと大型ターゲットユニットに対して+40%ダメージ。",
+    "name": "ポールアーム",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_000004D0000002BE",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "攻撃されると、先制攻撃ができるユニットが<hyperlink>報復攻撃</hyperlink>を使って先に攻撃する。",
+  "name": "先制攻撃",
+  "slug": "000003fe0000008a",
+  "icon": "000003E300004D6B"
+ },
+ {
+  "description": "大きな脅威や騎兵隊を排除することに特化しており、ショックユニット突撃に反撃することができる。<br></br>槍兵ユニット：<bulletlist><bullet><hyperlink>先制攻撃</hyperlink></bullet><bullet>突進耐性</bullet><bullet>騎兵隊ユニットと大型ターゲットユニットに対するダメージ量が40%増加する。</bullet></bulletlist>",
+  "name": "槍兵ユニット",
+  "slug": "0000039f000016f2",
+  "icon": "0000039F000016EB"
+ },
+ {
+  "description": "<hyperlink>突撃</hyperlink>攻撃のボーナス効果の影響を受けない。<br></br><br></br>ヘビーチャージストライクを使って無効にすることができる。",
+  "name": "突進耐性",
+  "slug": "000003eb0000053e",
+  "icon": "000003EB0000053F"
+ },
+ {
+  "description": "<hyperlink>報復攻撃</hyperlink>に対して+40%ダメージ。",
+  "name": "チャンピオン勲章：報復ダメージ",
+  "slug": "0000049700001549",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_000004D00000018B",
+  "damage": "10<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "このユニットは<hyperlink>チャンス攻撃</hyperlink>を発動させない。",
+  "name": "ツルツル",
+  "slug": "000003eb00000425",
+  "icon": "000003E300004CA5"
+ },
+ {
+  "description": "このユニットは敵の<hyperlink>支配ゾーン</hyperlink>によって阻止されない。",
+  "name": "フリーティング",
+  "slug": "0000042b00000006",
+  "icon": "0000042B00000008"
+ },
+ {
+  "description": "一般的な近接ユニット。特化や有利は特にない。",
+  "name": "戦士ユニット",
+  "slug": "000003e300004ea6",
+  "icon": "000003E300004EA5"
+ },
+ {
+  "description": "無実体ユニット：<bulletlist><bullet>+2 <defense></defense><hyperlink>防御力</hyperlink></bullet><bullet>-4<defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>貫通</bullet><bullet>以下の影響を受けない：<bulletlist></bullet><bullet>出血</bullet><bullet>病気</bullet><bullet>移動不能</bullet><bullet>毒</bullet></bulletlist></bulletlist>",
+  "name": "無実体",
+  "slug": "000003e300004802",
+  "icon": "000003E300004804"
+ },
+ {
+  "description": "このユニットは障害物を通り抜けられる。輸送中の場合は機能しない。",
+  "name": "貫通",
+  "slug": "000003e300004814",
+  "icon": "000003E300004815"
+ },
+ {
+  "damage": "<fireCol>2<damagefire></damagefire></fireCol>",
+  "description": "",
+  "name": "<fireCol>炎弱点</fireCol>",
+  "slug": "Fire_weakness_2"
+ },
+ {
+  "description": "ユニットが以下を獲得：<bulletlist><bullet>+10 <hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+1 <defense></defense><hyperlink>防御力</hyperlink></bullet></bulletlist>",
+  "name": "チャンピオン勲章：喧嘩屋",
+  "slug": "000003e300006294",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間2出血を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
+  "name": "チャージストライク",
+  "slug": "melee_charge_strike_(base)_ability_000004C6000001F5",
+  "damage": "27<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "2マスの範囲内にいる敵ユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>出血1つにつき、追加で5 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>ヒットを受けた出血ユニット1体につき、10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist>",
+  "name": "吸血の薔薇",
+  "slug": "blood_rose_drain_ability_000004C6000001F5",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000033BE"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "対象の死体をソーンスケルトンとして復活させて、操作できる。",
+  "name": "ソーンスケルトン復活",
+  "slug": "raise_rose_skeleton_ability_000004C6000001F5",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "icon": "00000497000033CA"
+ },
+ {
+  "description": "敵の戦線を妨害することに特化した攻撃的なユニット。ショックユニットは<hyperlink>突撃</hyperlink>攻撃を行い、シールドユニットに対して有利だが槍兵ユニットに対して不利である。",
+  "name": "ショックユニット",
+  "slug": "000003bd000028b7",
+  "icon": "000003BD000028B8"
+ },
+ {
+  "description": "このユニットが戦っている間、全ての味方アンデッドユニットはレイザーソーンを得る。",
+  "name": "呪われた薔薇の指令",
+  "slug": "00000497000033d2",
+  "icon": "00000497000033D3"
+ },
+ {
+  "description": "このユニットは動物に騎乗している。",
+  "name": "騎兵隊",
+  "slug": "0000038400000371",
+  "icon": "0000038400000372"
+ },
+ {
+  "description": "ユニットが疾走アビリティを獲得する。",
+  "name": "チャンピオン勲章：疾走",
+  "slug": "000003e300006287",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "<hyperlink><flank></flank>側面攻撃</hyperlink>状態だとユニットの与えるダメージが+25%増加する。",
+    "name": "フランカー",
+    "count": 1
+   }
+  ],
+  "description": "対象ユニットを攻撃し、与えたダメージの50%に等しい<hyperlink><temphp></temphp>追加HP</hyperlink>を得る。",
+  "name": "ドレイン・ストライク",
+  "slug": "melee_strike_(base)_ability_000004C500000B15",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "<hyperlink><flank></flank>側面攻撃</hyperlink>状態だとユニットの与えるダメージが+25%増加する。",
+    "name": "フランカー",
+    "count": 1
+   },
+   {
+    "description": "戦闘終了時まで4苦悩を付与する。",
+    "name": "苦悩",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵にダメージを与える。",
+  "name": "トーメント・ラッシュ",
+  "slug": "whip_ability_000004C500000B15",
+  "damage": "18<damagephysical></damagephysical> 18<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   },
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700003011"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：0 <turn></turn>"
+   }
+  ],
+  "description": "対象のマスへテレポートする。",
+  "name": "シャドウステップ",
+  "slug": "shadow_step_ability_000004C500000B15",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "移動"
+   },
+   {
+    "requisite": "テレポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "2",
+  "icon": "00000497000032F2"
+ },
+ {
+  "description": "<hyperlink><flank></flank>側面攻撃</hyperlink>無効",
+  "name": "ハイパー覚醒",
+  "slug": "000003e10000139d",
+  "icon": "000003E10000139A"
+ },
+ {
+  "description": "<hyperlink><flank></flank>側面攻撃</hyperlink>状態だとユニットの与えるダメージが+25%増加する。",
+  "name": "フランカー",
+  "slug": "000003fe0000007e",
+  "icon": "00000415000001D2"
+ },
+ {
+  "description": "狂乱や支配済みといった、ユニットの制御力を失わせる効果に対して無敵。<br></br>また、<hyperlink>捕虜</hyperlink>の効果を受けない。",
+  "name": "制御喪失に対して無敵",
+  "slug": "0000045e00000580",
+  "icon": "0000048B00000057"
+ },
+ {
+  "description": "ユニットが+1 <hyperlink>報復攻撃</hyperlink>を得る。",
+  "name": "用心深い",
+  "slug": "000003e100001533",
+  "icon": "000003E3000063F6"
+ },
+ {
+  "description": "特定の戦闘スタイルを持たない強力なユニット。<br></br>すべての神話ユニットは制御喪失に対して無敵を持つ。",
+  "name": "神話ユニット",
+  "slug": "000003e300004e9f",
+  "icon": "000003E300004EA0"
+ },
+ {
+  "description": "ユニットが虐殺の機運を獲得する。",
+  "name": "チャンピオン勲章：虐殺の機運",
+  "slug": "000003e300006288",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "90%の基本確率で3<turn></turn>ターンの間血の寄生者を与える。",
+    "name": "血の寄生者",
+    "count": 1
+   }
+  ],
+  "description": "1マスの円錐型範囲内のユニットにダメージを与える。",
+  "name": "パラシティッククリーヴ",
+  "slug": "melee_strike_(base)_ability_000004C500000B10",
+  "damage": "22<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "対象ユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>Vよりグレードが下の対象1体につき、10<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>増加する。</bullet><bullet>対象に与えられたダメージの50%を回復する。</bullet><bullet>このアビリティで対象を倒した場合、太守の血を付与のクールダウンがリセットされる。</bullet></bulletlist>",
+  "name": "サイフォンレッサー",
+  "slug": "siphon_lesser_ability_000004C500000B10",
+  "damage": "33<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000033F0"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：4 <turn></turn>"
+   },
+   {
+    "note": "クールダウン状態で開始"
+   }
+  ],
+  "description": "グレードがIII以上の対象味方ユニットは、戦闘終了時まで太守の血を獲得する。",
+  "name": "太守の血を付与",
+  "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000049700003402"
+ },
+ {
+  "modifiers": [],
+  "description": "対象の敵ユニットにダメージを与え、隣接するマスに引き込む。",
+  "name": "ブラッドプル",
+  "slug": "blood_pull_ability_000004C500000B10",
+  "damage": "11<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "icon": "000004970000340F"
+ },
+ {
+  "description": "このユニットの攻撃は<hyperlink>強化</hyperlink>障害物にダメージを与える。",
+  "name": "デモリッシャー",
+  "slug": "000003870000001b",
+  "icon": "0000038700000022"
+ },
+ {
+  "description": "ターンごとに1回攻撃を当てられると、3 <turn></turn>ターンを得る:<bulletlist><bullet>防御強化</bullet><bullet>耐性強化</bullet></bulletlist>",
+  "name": "凝血",
+  "slug": "000004970000341e",
+  "icon": "0000049700003420"
+ },
+ {
+  "description": "ターン終了時、隣接する敵ユニットが基本確率90%で以下を受ける：<bulletlist><bullet>3 <turn></turn>ターンの間、ミスフォーチュン。</bullet><bullet>10 <happiness></happiness><hyperlink>士気</hyperlink>の喪失。</bullet></bulletlist>",
+  "name": "圧制のオーラ",
+  "slug": "0000049700003422",
+  "icon": "0000049700003423"
+ },
+ {
+  "description": "大型のユニット：<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の命中率が20%上昇する。</bullet><bullet>を持つ。ほとんどの転置効果に耐性を持つ。</bullet><bullet>デモリッシャーがある。</bullet></bulletlist>",
+  "name": "大型ターゲット",
+  "slug": "000003450000052c",
+  "icon": "000003450000049B"
+ },
+ {
+  "description": "隣接する味方ユニットが死亡すると、以下を適用：<bulletlist><bullet>3 <turn></turn>ターンの間強化を得る。</bullet><bullet>10 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復する。</bullet></bulletlist>",
+  "name": "生命を飲み尽くす剣",
+  "slug": "0000049700003414",
+  "icon": "0000049700003415"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間出血を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_000004C500000B0A",
+  "damage": "8<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：0 <turn></turn>"
+   }
+  ],
+  "description": "対象の死亡ユニットを消費：<bulletlist><bullet>3 <turn></turn>ターンの間、強化を1スタック獲得する。</bullet><bullet>膨張を1スタック獲得し、寄生膨張のダメージが増加する。</bullet></bulletlist>",
+  "name": "死体貪り",
+  "slug": "corpse_gorge_ability_000004C500000B0A",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "icon": "00000497000033A5"
+ },
+ {
+  "description": "このユニットは血の寄生者の影響を受けない。",
+  "name": "ステータス効果無効：血の寄生者",
+  "slug": "00000497000035d5",
+  "icon": "00000497000035D7"
+ },
+ {
+  "description": "動物ユニット。",
+  "name": "動物",
+  "slug": "000003fe00000018",
+  "icon": "000003FE00000019"
+ },
+ {
+  "description": "このユニットが死ぬと隣接する敵が以下を受ける：<bulletlist><bullet>10 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で、3 <turn></turn>ターンの間血の寄生者を付与される。</bullet></bulletlist>",
+  "name": "寄生膨張",
+  "slug": "00000497000033a0",
+  "icon": "00000497000033A1"
+ },
+ {
+  "modifiers": [],
+  "description": "敵に魔法のボルトを放つ。出血のスタックごとに、対象に追加で+10%のダメージを付与する。",
+  "name": "出血ボルト",
+  "slug": "magic_bolts_ability_000004C500000B05",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "description": "対象の敵：<bulletlist><bullet>ダメージを受ける</bullet><bullet>3 <turn></turn>ターンの間、2血の寄生者を獲得する。</bullet></bulletlist> ",
+  "name": "紅の疫病",
+  "slug": "scarlet_plague_ability_000004C500000B05",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003269"
+ },
+ {
+  "notes": [
+   {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   }
+  ],
+  "description": "詠唱者：<bulletlist><bullet>5の阻害不可能な<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>攻撃のダメージが+60%増加する。</bullet><bullet>再起を獲得する</bullet><bullet>ターン終了時に死亡する。</bullet></bulletlist>",
+  "name": "儀式の短剣",
+  "slug": "dagger_of_the_rite_ability_000004C500000B05",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "0000049700003275"
+ },
+ {
+  "description": "このユニットは、該当種族が特殊な乗り物特性を持っている場合は騎兵隊になる。",
+  "name": "任意の騎兵隊",
+  "slug": "000003eb0000073f",
+  "icon": "000003EB0000073E"
+ },
+ {
+  "description": "紅の疫病：<bulletlist><bullet>基本ダメージが25 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>に増加する。</bullet><bullet>4 血の寄生者を付与する。</bullet></bulletlist>",
+  "name": "紅の疫病・チャンピオン",
+  "slug": "0000049700003270",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
     "description": "「低い」またはそれ以下の<happiness></happiness><hyperlink>士気</hyperlink>を持つユニットに対して+30%のダメージ。",
     "name": "残酷",
     "count": 1
@@ -86,52 +934,16 @@
   "icon": "000004C000000521"
  },
  {
-  "description": "このユニットがターンを終えると防御モードになり、以下の効果を得る：<bulletlist><bullet>その<hyperlink>支配ゾーン</hyperlink>を隣接するマスすべてに向けて拡張する。</bullet><bullet>+2 <defense></defense><hyperlink>防御力</hyperlink>を獲得する。</bullet><bullet>+2 <resistance></resistance><hyperlink>耐性</hyperlink>を獲得する。</bullet><bullet><hyperlink><flank></flank>側面攻撃</hyperlink>の効果を受けない。</bullet></bulletlist>",
-  "name": "防御モード",
-  "slug": "0000034500000469",
-  "icon": "000003450000049D"
- },
- {
-  "description": "このユニットの攻撃は<hyperlink>強化</hyperlink>障害物にダメージを与える。",
-  "name": "デモリッシャー",
-  "slug": "000003870000001b",
-  "icon": "0000038700000022"
- },
- {
-  "description": "このユニットは召喚されたか、別次元から来訪しているため維持にマナが必要。",
-  "name": "マジック・オリジン",
-  "slug": "000003e500001adb",
-  "icon": "0000039F00002B34"
- },
- {
-  "description": "アンデッドユニット：<bulletlist><bullet>+2 <defensefrost></defensefrost><hyperlink>凍結耐性</hyperlink></bullet><bullet>+2 <defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink></bullet><bullet>-4 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>-4 <defensefire></defensefire><hyperlink>炎耐性</hyperlink></bullet><bullet>無情</bullet><bullet>以下の影響を受けない：<bulletlist></bullet><bullet>毒</bullet><bullet>病気</bullet></bulletlist></bulletlist></bulletlist>",
-  "name": "不死",
-  "slug": "000003e500001a37",
-  "icon": "000003E500001A38"
- },
- {
   "description": "このユニットが敵を撃破すると、撃破されたユニットがスケルトンユニットへと変化してあなたの支配下になる。<br></br><br></br>水域戦闘では無効。",
   "name": "不死の儀式",
   "slug": "000004c00000052a",
   "icon": "000004C00000052B"
  },
  {
-  "description": "狂乱や支配済みといった、ユニットの制御力を失わせる効果に対して無敵。<br></br>また、<hyperlink>捕虜</hyperlink>の効果を受けない。",
-  "name": "制御喪失に対して無敵",
-  "slug": "0000045e00000580",
-  "icon": "0000048B00000057"
- },
- {
   "description": "包囲軍隊の一員である場合、このユニットは+1<siegehealthdamage></siegehealthdamage><hyperlink>要塞のダメージ</hyperlink>を与える。",
   "name": "包囲突破",
   "slug": "000003fe000008c4",
   "icon": "000003FE000008C5"
- },
- {
-  "description": "大型のユニット：<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の命中率が20%上昇する。</bullet><bullet>を持つ。ほとんどの転置効果に耐性を持つ。</bullet><bullet>デモリッシャーがある。</bullet></bulletlist>",
-  "name": "大型ターゲット",
-  "slug": "000003450000052c",
-  "icon": "000003450000049B"
  },
  {
   "description": "このユニットのターン終了時、隣接する敵ユニットは-5<happiness></happiness><hyperlink>士気</hyperlink>を失う。<br></br><br></br>このアビリティを持つユニットには無効。",
@@ -146,7 +958,7 @@
   "icon": "000003E300005B1F"
  },
  {
-  "description": "このユニットは以下の効果を得る：<bulletlist><bullet>水上マスに移動しても移動ペナルティを受けず、騎乗状態状態にならない。</bullet><bullet>川と沼の移動速度が早い。</bullet>",
+  "description": "このユニットは以下の効果を得る：<bulletlist><bullet>水上マスに移動しても移動ペナルティを受けず、騎乗状態状態にならない。</bullet><bullet>川と沼の移動速度が早い。</bullet></bulletlist>",
   "name": "水陸両用",
   "slug": "000003eb0000071f",
   "icon": "0000039F000028E0"
@@ -158,88 +970,10 @@
   "icon": "000004970000191C"
  },
  {
-  "description": "このユニットは<happiness></happiness><hyperlink>士気</hyperlink>の変動値が50%減少する。",
-  "name": "無情",
-  "slug": "0000049700000f8f",
-  "icon": "0000048B0000005B"
- },
- {
-  "description": "特定の戦闘スタイルを持たない強力なユニット。<br></br>すべての神話ユニットは制御喪失に対して無敵を持つ。",
-  "name": "神話ユニット",
-  "slug": "000003e300004e9f",
-  "icon": "000003E300004EA0"
- },
- {
   "description": "このユニットは強制的かつ物理的に移動させる効果を受けない",
   "name": "転置させることができない",
   "slug": "000004a600000b7a",
   "icon": "000004A600000B7B"
- },
- {
-  "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
-  "description": "",
-  "name": "<xpCol>疫病耐性</xpCol>",
-  "slug": "Blight_resistance_2"
- },
- {
-  "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
-  "description": "",
-  "name": "<xpCol>凍結耐性</xpCol>",
-  "slug": "Frost_resistance_2"
- },
- {
-  "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
-  "description": "",
-  "name": "<fireCol>炎弱点</fireCol>",
-  "slug": "Fire_weakness_4"
- },
- {
-  "damage": "<fireCol>4<damagespirit></damagespirit></fireCol>",
-  "description": "",
-  "name": "<fireCol>精霊弱点</fireCol>",
-  "slug": "Spirit_weakness_4"
- },
- {
-  "description": "このユニットは最大<hyperlink><hp></hp>HP</hyperlink>が追加で10上昇する。",
-  "name": "+10<hp></hp>",
-  "slug": "0000048b00000c6e",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "このユニットは最大<defense></defense><hyperlink>防御力</hyperlink>が追加で1上昇する。",
-  "name": "+1<defense></defense>",
-  "slug": "0000048b00000c7a",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "このユニットは最大<resistance></resistance><hyperlink>耐性</hyperlink>が追加で1上昇する。",
-  "name": "+1<resistance></resistance>",
-  "slug": "0000048b00000c79",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "ユニットが虐殺の機運を獲得する。",
-  "name": "チャンピオン勲章：虐殺の機運",
-  "slug": "000003e300006288",
-  "icon": "000003E30000627B"
- },
- {
-  "description": "このユニットが攻撃で与えるダメージが10%増加する。",
-  "name": "+10%のダメージ",
-  "slug": "0000048b00000c74",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "このユニットは最大<defense></defense><hyperlink>防御力</hyperlink>が追加で1上昇する。",
-  "name": "+1<defense></defense>",
-  "slug": "0000048b00000c7b",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "このユニットは最大<resistance></resistance><hyperlink>耐性</hyperlink>が追加で1上昇する。",
-  "name": "+1<resistance></resistance>",
-  "slug": "0000048b00000c7d",
-  "icon": "0000048B00000C78"
  },
  {
   "modifiers": [
@@ -531,12 +1265,6 @@
   "icon": "000003E30000448F"
  },
  {
-  "description": "範囲攻撃と敵の弱体化を得意とする魔法使い。<bulletlist><bullet><hyperlink><accuracy></accuracy>命中率</hyperlink>は<hyperlink>照準線</hyperlink>の影響を受ける。</bullet><bullet><hyperlink>近接攻撃状態</hyperlink>時にはメイン<hyperlink>魔法攻撃</hyperlink>を使用できない。</bullet></bulletlist>",
-  "name": "バトルメイジユニット",
-  "slug": "000003e300004c86",
-  "icon": "000003E300004C87"
- },
- {
   "description": "このユニットは飛行している：<bulletlist><bullet>+2の視界範囲を持つ</bullet><bullet>5の移動コストを費やしてあらゆる地形を移動して行く。</bullet><bullet>水のマスを移動するには航海が必須。</bullet><bullet>戦闘中、他のほとんどのユニットや障害物を安全に通過できる。</bullet></bulletlist>",
   "name": "飛行",
   "slug": "000003eb0000071b",
@@ -677,40 +1405,10 @@
   "icon": "0000049700000866"
  },
  {
-  "description": "攻撃されると、先制攻撃ができるユニットが<hyperlink>報復攻撃</hyperlink>を使って先に攻撃する。",
-  "name": "先制攻撃",
-  "slug": "000003fe0000008a",
-  "icon": "000003E300004D6B"
- },
- {
-  "description": "このユニットは地上のマスを移動可能である。",
-  "name": "地上移動",
-  "slug": "0000049300000402",
-  "icon": "00000357000001AB"
- },
- {
-  "description": "大きな脅威や騎兵隊を排除することに特化しており、ショックユニット突撃に反撃することができる。<br></br>槍兵ユニット：<bulletList><bullet><hyperlink>先制攻撃</hyperlink></bullet><bullet>突進耐性</bullet><bullet>騎兵隊ユニットと大型ターゲットユニットに対するダメージ量が40%増加する。</bullet></bulletlist>",
-  "name": "槍兵ユニット",
-  "slug": "0000039f000016f2",
-  "icon": "0000039F000016EB"
- },
- {
-  "description": "<hyperlink>突撃</hyperlink>攻撃のボーナス効果の影響を受けない。<br></br><br></br>ヘビーチャージストライクを使って無効にすることができる。",
-  "name": "突進耐性",
-  "slug": "000003eb0000053e",
-  "icon": "000003EB0000053F"
- },
- {
   "damage": "<xpCol>4<damagefire></damagefire></xpCol>",
   "description": "",
   "name": "<xpCol>炎耐性</xpCol>",
   "slug": "Fire_resistance_4"
- },
- {
-  "description": "<hyperlink>報復攻撃</hyperlink>に対して+40%ダメージ。",
-  "name": "チャンピオン勲章：報復ダメージ",
-  "slug": "0000049700001549",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [
@@ -766,24 +1464,6 @@
   "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "00000497000003CC"
- },
- {
-  "description": "このユニットは<hyperlink>チャンス攻撃</hyperlink>を発動させない。",
-  "name": "ツルツル",
-  "slug": "000003eb00000425",
-  "icon": "000003E300004CA5"
- },
- {
-  "description": "基本<hyperlink>ユニット維持費</hyperlink>が25%減少する",
-  "name": "ローメンテナンス",
-  "slug": "0000045e00000664",
-  "icon": "0000045E00000665"
- },
- {
-  "description": "動物ユニット。",
-  "name": "動物",
-  "slug": "000003fe00000018",
-  "icon": "000003FE00000019"
  },
  {
   "description": "このユニットは戦闘中、<hyperlink>減速</hyperlink>地形効果を無視する。",
@@ -893,7 +1573,7 @@
   "icon": "0000049700000534"
  },
  {
-  "description": "以下の特徴を持つ妖怪ユニット：<bulletlist><bullet>+4 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>-4 <defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink></bullet><bullet>フェイ・ガイル</bullet><bullet>以下が無効になる：<bulletlist></bullet><bullet>ミスティによる視界ペナルティ</bullet><bullet>まとわりつく霧による<hyperlink><accuracy></accuracy>命中率</hyperlink>ペナルティ</bullet></bulletlist>",
+  "description": "以下の特徴を持つ妖怪ユニット：<bulletlist><bullet>+4 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>-4 <defenseblight></defenseblight><hyperlink>疫病耐性</hyperlink></bullet><bullet>フェイ・ガイル</bullet><bullet>以下が無効になる：<bulletlist></bullet><bullet>ミスティによる視界ペナルティ</bullet><bullet>まとわりつく霧による<hyperlink><accuracy></accuracy>命中率</hyperlink>ペナルティ</bullet></bulletlist></bulletlist>",
   "name": "妖怪",
   "slug": "000003fe0000001c",
   "icon": "000003FE0000001D"
@@ -1159,16 +1839,74 @@
   "icon": "0000049700000CED"
  },
  {
-  "damage": "<fireCol>2<damagefire></damagefire></fireCol>",
-  "description": "",
-  "name": "<fireCol>炎弱点</fireCol>",
-  "slug": "Fire_weakness_2"
- },
- {
   "damage": "<fireCol>2<damagespirit></damagespirit></fireCol>",
   "description": "",
   "name": "<fireCol>精霊弱点</fireCol>",
   "slug": "Spirit_weakness_2"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、60%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   },
+   {
+    "description": "攻撃を行うと5 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。",
+    "name": "ライフスティール",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_000004970000359A",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "50%の確率で追加の5 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与え、1 <happiness></happiness><hyperlink>士気</hyperlink>を解除する。",
+    "name": "エコー",
+    "count": 1
+   }
+  ],
+  "description": "対象のユニットはダメージを受け、2 <happiness></happiness><hyperlink>士気</hyperlink>を失う。",
+  "name": "反響する叫喚",
+  "slug": "shoot_bow_ability_000004970000339B",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD000020CE"
  },
  {
   "modifiers": [
@@ -1197,19 +1935,7 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [],
-  "icon": "000004D500000041"
- },
- {
-  "description": "敵の戦線を妨害することに特化した攻撃的なユニット。ショックユニットは<hyperlink>突撃</hyperlink>攻撃を行い、シールドユニットに対して有利だが槍兵ユニットに対して不利である。",
-  "name": "ショックユニット",
-  "slug": "000003bd000028b7",
-  "icon": "000003BD000028B8"
- },
- {
-  "description": "ユニットが疾走アビリティを獲得する。",
-  "name": "チャンピオン勲章：疾走",
-  "slug": "000003e300006287",
-  "icon": "000003E30000627B"
+  "icon": "000004D500000040"
  },
  {
   "modifiers": [
@@ -1436,7 +2162,7 @@
   "icon": "000004970000286B"
  },
  {
-  "description": "変造体ユニット：<bulletlist><bullet>強化済み</bullet><bullet>-4 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet><bullet>2 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink>.</bullet><bullet>無情</bullet><bullet>制御喪失に対して無敵</bullet><bullet>以下の影響を受けない：<bulletlist></bullet><bullet>出血</bullet><bullet>病気</bullet><bullet>注意散漫</bullet><bullet>毒</bullet></bulletlist>",
+  "description": "変造体ユニット：<bulletlist><bullet>強化済み</bullet><bullet>-4 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet><bullet>2 <defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink>.</bullet><bullet>無情</bullet><bullet>制御喪失に対して無敵</bullet><bullet>以下の影響を受けない：<bulletlist></bullet><bullet>出血</bullet><bullet>病気</bullet><bullet>注意散漫</bullet><bullet>毒</bullet></bulletlist></bulletlist>",
   "name": "変造体",
   "slug": "000003e3000071ff",
   "icon": "000003E3000071FD"
@@ -1487,30 +2213,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
- },
- {
-  "description": "このユニットはターンを終えると防御モードになる：<bulletlist><bullet><hyperlink>支配ゾーン</hyperlink>が全ての隣接マスに拡大する。</bullet><bullet>+2 <defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>+2 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet><hyperlink><flank></flank>側面攻撃</hyperlink>が効かない。</bullet><bullet>隣接する全ての味方ユニットは+3 <defense></defense><hyperlink>防御力</hyperlink>を獲得する。</bullet></bulletlist>",
-  "name": "防御モード：盾の壁",
-  "slug": "000003e300004c8f",
-  "icon": "000003E300004C94"
- },
- {
-  "description": "敵の攻撃を防ぎ、味方を物理攻撃から守ることが得意。シールドユニットは以下の効果を得る：<bulletlist><bullet>シールド防御</bullet><bullet>防御モード：盾の壁</bullet></bulletlist>",
-  "name": "シールドユニット",
-  "slug": "0000039f000016f0",
-  "icon": "0000039F000016E5"
- },
- {
-  "description": "このユニットは、<hyperlink><flank></flank>側面攻撃</hyperlink>でない攻撃に対して+3 <defense></defense><hyperlink>防御力</hyperlink>を持つ。",
-  "name": "シールド防御",
-  "slug": "000003e300004c8a",
-  "icon": "000003E300004C8C"
- },
- {
-  "description": "このユニットが<hyperlink>防御モード</hyperlink>状態になると、隣接する味方ユニットが防御強化を得る。",
-  "name": "チャンピオン勲章：高貴な守り",
-  "slug": "000003e300006280",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -1585,22 +2287,10 @@
   "icon": "000003E3000045B1"
  },
  {
-  "description": "遠距離から対象を倒す攻撃ユニット。少し防御力が低い。<bulletlist><bullet><hyperlink><accuracy></accuracy>命中率</hyperlink>は<hyperlink>照準線</hyperlink>に影響される。</bullet><bullet><hyperlink>近接攻撃状態</hyperlink>の場合、メインの遠距離攻撃が行えなくなる。</bullet></bulletlist>",
-  "name": "長射程ユニット",
-  "slug": "0000039f000016f1",
-  "icon": "0000039F000016E8"
- },
- {
   "damage": "<xpCol>5<damagefire></damagefire></xpCol>",
   "description": "",
   "name": "<xpCol>炎耐性</xpCol>",
   "slug": "Fire_resistance_5"
- },
- {
-  "description": "<hyperlink>物理遠隔攻撃</hyperlink>攻撃で<hyperlink><range></range>範囲</hyperlink>が+1になる。",
-  "name": "チャンピオン勲章：鷹の目",
-  "slug": "000003e300006289",
-  "icon": "000003E30000627B"
  },
  {
   "notes": [
@@ -1670,18 +2360,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
- },
- {
-  "description": "一般的な近接ユニット。特化や有利は特にない。",
-  "name": "戦士ユニット",
-  "slug": "000003e300004ea6",
-  "icon": "000003E300004EA5"
- },
- {
-  "description": "ユニットが以下を獲得：<bulletlist><bullet>+10 <hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+1 <defense></defense><hyperlink>防御力</hyperlink></bullet></bulletlist>",
-  "name": "チャンピオン勲章：喧嘩屋",
-  "slug": "000003e300006294",
-  "icon": "000003E30000627B"
  },
  {
   "description": "このユニットは士気タイプのステータス効果に対して無敵です。",
@@ -2750,7 +3428,7 @@
     "note": "クールタイム：3 <turn></turn>"
    }
   ],
-  "description": "最大5体までのランダムな敵：<bulletlist><bullet>30 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で妨害したになる。</bullet>",
+  "description": "最大5体までのランダムな敵に以下を付与：<bulletlist><bullet>30 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で妨害したになる。</bullet></bulletlist>",
   "name": "魔法妨害",
   "slug": "magical_disruption_ability_0000049700000035",
   "damage": "",
@@ -3193,12 +3871,6 @@
   "icon": "0000049700002A90"
  },
  {
-  "description": "このユニットは、該当種族が特殊な乗り物特性を持っている場合は騎兵隊になる。",
-  "name": "任意の騎兵隊",
-  "slug": "000003eb0000073f",
-  "icon": "000003EB0000073E"
- },
- {
   "modifiers": [],
   "description": "対象のユニットへの単発魔法攻撃。",
   "name": "マジックブラスト",
@@ -3231,10 +3903,10 @@
  {
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
   "name": "化身復元",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000176d",
   "damage": "",
@@ -3269,7 +3941,7 @@
   "icon": "0000048D00001548"
  },
  {
-  "description": "設計者の記念碑により、それぞれが表している<hyperlink>アフィニティー</hyperlink>に基づいてアフィニティーの化身が付与される：<bulletlist><bullet><order></order><hyperlink>秩序のアフィニティー</hyperlink>：+1 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink></bullet><bullet><chaos></chaos> <hyperlink>カオスアフィニティー</hyperlink>：+1 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet><bullet><arcana></arcana><hyperlink>アストラルアフィニティー</hyperlink>：+1 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink></bullet><bullet><matter></matter><hyperlink>マテリアムアフィニティー</hyperlink>：+1 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet><nature></nature><hyperlink>自然のアフィニティー</hyperlink>：+1 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink></bullet><bullet><shadow></shadow><hyperlink>影のアフィニティー</hyperlink>：+1 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink></bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "このユニットはアフィニティーの化身のスタック1つにつき、支配する帝国<hyperlink>アフィニティー</hyperlink>によって以下のダメージを得る：<bulletlist><bullet><order></order><hyperlink>秩序のアフィニティー</hyperlink>: +1 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink></bullet><bullet><chaos></chaos> <hyperlink>カオスアフィニティー</hyperlink>: +1 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet><bullet><arcana></arcana><hyperlink>アストラルアフィニティー</hyperlink>: +1 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink></bullet><bullet><matter></matter><hyperlink>マテリアムアフィニティー</hyperlink>: +1 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet><nature></nature><hyperlink>自然のアフィニティー</hyperlink>: +1 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink></bullet><bullet><shadow></shadow><hyperlink>影のアフィニティー</hyperlink>: +1 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink></bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "name": "アフィニティーの化身",
   "slug": "0000048d00001907",
   "icon": "0000048D000017DF"
@@ -3313,10 +3985,10 @@
  {
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
   "name": "化身復元",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d00001785",
   "damage": "",
@@ -3383,10 +4055,10 @@
  {
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
   "name": "化身復元",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000178f",
   "damage": "",
@@ -3453,10 +4125,10 @@
  {
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
   "name": "化身復元",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d00001797",
   "damage": "",
@@ -3523,10 +4195,10 @@
  {
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
   "name": "化身復元",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000179d",
   "damage": "",
@@ -3593,10 +4265,10 @@
  {
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br><br></br>アフィニティーの化身を1スタックごとに追加で以下を得る：<bulletlist><bullet>+20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>+1再生を獲得する。</bullet></bulletlist>",
   "name": "化身復元",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d000017a1",
   "damage": "",
@@ -4252,7 +4924,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -4315,7 +4987,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -4378,7 +5050,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -4441,7 +5113,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -4504,7 +5176,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -4567,7 +5239,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -4977,7 +5649,7 @@
  },
  {
   "notes": [],
-  "description": "対象の敵ユニットが以下を得る：<bulletlist><bullet>3 <turn></turn>ターンの間5 バラバラの防衛。</bullet><bullet>3 <turn></turn>ターンの間5 バラバラの耐性。</bullet><bullet>3 <turn></turn>ターンの間5 ステータスの脆弱性。</bullet>",
+  "description": "対象の敵ユニットに以下を付与：<bulletlist><bullet>3 <turn></turn>ターンの間5 バラバラの防衛。</bullet><bullet>3 <turn></turn>ターンの間5 バラバラの耐性。</bullet><bullet>3 <turn></turn>ターンの間5 ステータスの脆弱性。</bullet></bulletlist>",
   "name": "暴かれた弱点",
   "slug": "reveal_weakness_ability_0000049000001403",
   "damage": "",
@@ -4990,12 +5662,6 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "9",
   "icon": "00000497000024B7"
- },
- {
-  "description": "<hyperlink><flank></flank>側面攻撃</hyperlink>無効",
-  "name": "ハイパー覚醒",
-  "slug": "000003e10000139d",
-  "icon": "000003E10000139A"
  },
  {
   "description": "このユニットは+2の視界範囲を得る。",
@@ -5313,76 +5979,6 @@
   "icon": "0000049700001105"
  },
  {
-  "description": "このユニットは動物に騎乗している。",
-  "name": "騎兵隊",
-  "slug": "0000038400000371",
-  "icon": "0000038400000372"
- },
- {
-  "modifiers": [],
-  "description": "敵に魔法のボルトを放つ。共鳴の紋章を持つ対象には必ず命中する。",
-  "name": "シールボルト",
-  "slug": "magic_bolts_ability_0000049000000E8C_0000049700000fb2",
-  "damage": "6<damageblight></damageblight> 6<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "000003BD0000210B"
- },
- {
-  "notes": [
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   },
-   {
-    "note": "クールタイム：3 <turn></turn>"
-   }
-  ],
-  "description": "ダメージを与えて共鳴の紋章を付与する。（3<turn></turn>ターン秒間続くリンク効果）",
-  "name": "レゾナンス・シール",
-  "slug": "magic_seal_ability_0000049000000E8C_0000049700000fb2",
-  "damage": "30<damageblight></damageblight> ",
-  "requisites": [
-   {
-    "requisite": "基本"
-   },
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "デバフ"
-   },
-   {
-    "requisite": "単発"
-   }
-  ],
-  "accuracy": "常にヒット",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "6"
- },
- {
-  "description": "<oathswornHarmony></oathswornHarmony>共鳴紋章：<bulletlist><bullet>攻撃ごとに追加の2<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet></bulletlist><br></br><oathswornStrife></oathswornStrife>火炎紋章：<bulletlist><bullet>ターンごとに追加の5<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>標的が死亡すると追加の10<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist><br></br><oathswornRighteousness></oathswornRighteousness>転移紋章：<bulletlist><bullet>攻撃ごとに追加で3<hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet></bulletlist>",
-  "name": "紋章・チャンピオン",
-  "slug": "0000048b00000ab5",
-  "icon": "000003E30000627B"
- },
- {
   "modifiers": [],
   "description": "敵に魔法のボルトを放つ。転移の紋章を持つ対象には必ず命中する。",
   "name": "シールボルト",
@@ -5437,9 +6033,73 @@
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    },
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：1 <turn></turn>"
    }
   ]
+ },
+ {
+  "description": "<oathswornHarmony></oathswornHarmony>共鳴紋章：<bulletlist><bullet>攻撃ごとに追加の2<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet></bulletlist><br></br><oathswornStrife></oathswornStrife>火炎紋章：<bulletlist><bullet>ターンごとに追加の5<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>標的が死亡すると追加の10<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet></bulletlist><br></br><oathswornRighteousness></oathswornRighteousness>転移紋章：<bulletlist><bullet>攻撃ごとに追加で3<hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet></bulletlist>",
+  "name": "紋章・チャンピオン",
+  "slug": "0000048b00000ab5",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [],
+  "description": "敵に魔法のボルトを放つ。共鳴の紋章を持つ対象には必ず命中する。",
+  "name": "シールボルト",
+  "slug": "magic_bolts_ability_0000049000000E8C_0000049700000fb2",
+  "damage": "6<damageblight></damageblight> 6<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "description": "ダメージを与えて共鳴の紋章を付与する。（3<turn></turn>ターン秒間続くリンク効果）",
+  "name": "レゾナンス・シール",
+  "slug": "magic_seal_ability_0000049000000E8C_0000049700000fb2",
+  "damage": "30<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6"
  },
  {
   "modifiers": [],
@@ -5474,7 +6134,7 @@
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    },
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：1 <turn></turn>"
    }
   ],
   "description": "ダメージを与えて火炎の紋章を付与する。（3<turn></turn>ターン秒間続くリンク効果）",
@@ -5498,87 +6158,6 @@
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6"
- },
- {
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "description": "対象のユニットはダメージを受け、<hyperlink>プラスのステータス効果</hyperlink>が1個解除される。",
-  "name": "パージブラスト",
-  "slug": "magic_blast_(single)_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "14<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "基本"
-   },
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "単発"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   },
-   {
-    "note": "クールタイム：2 <turn></turn>"
-   }
-  ],
-  "description": "1マスの範囲内にいる味方ユニットが25<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
-  "name": "癒しの誓い",
-  "slug": "vow_of_healing_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "サポート"
-   }
-  ],
-  "accuracy": "常にヒット",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
-  "icon": "0000049700001048"
- },
- {
-  "notes": [
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   },
-   {
-    "note": "クールタイム：1 <turn></turn>"
-   }
-  ],
-  "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>3<turn></turn>ターンの間3ステータスの保護を獲得する。</bullet></bulletlist>",
-  "name": "浄化の誓い",
-  "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "サポート"
-   }
-  ],
-  "accuracy": "常にヒット",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "00000497000012C8"
- },
- {
-  "description": "癒しの誓い：<bulletlist><bullet>追加の15<hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet></bulletlist>",
-  "name": "癒しの誓い・チャンピオン",
-  "slug": "0000048b00000c51",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -5645,6 +6224,87 @@
   "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>3<turn></turn>ターンの間3ステータスの保護を獲得する。</bullet></bulletlist>",
   "name": "浄化の誓い",
   "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb5",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000012C8"
+ },
+ {
+  "description": "癒しの誓い：<bulletlist><bullet>追加の15<hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet></bulletlist>",
+  "name": "癒しの誓い・チャンピオン",
+  "slug": "0000048b00000c51",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "対象のユニットはダメージを受け、<hyperlink>プラスのステータス効果</hyperlink>が1個解除される。",
+  "name": "パージブラスト",
+  "slug": "magic_blast_(single)_ability_0000049000000E8B_0000049700000fb2",
+  "damage": "14<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "1マスの範囲内にいる味方ユニットが25<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
+  "name": "癒しの誓い",
+  "slug": "vow_of_healing_ability_0000049000000E8B_0000049700000fb2",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "0000049700001048"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "description": "対象の味方ユニット：<bulletlist><bullet><hyperlink>マイナスのステータス効果</hyperlink>が解除される。</bullet><bullet>3<turn></turn>ターンの間3ステータスの保護を獲得する。</bullet></bulletlist>",
+  "name": "浄化の誓い",
+  "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb2",
   "damage": "",
   "requisites": [
    {
@@ -5735,7 +6395,7 @@
   "modifiers": [],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
-  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb2",
+  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb5",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5755,7 +6415,7 @@
   "modifiers": [],
   "description": "対象のユニットを攻撃し、<hyperlink>防御モード</hyperlink>に入る。",
   "name": "ディフェンス・ストライク",
-  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb2",
+  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb5",
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5788,7 +6448,7 @@
   "modifiers": [],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
-  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb5",
+  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb2",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5808,7 +6468,7 @@
   "modifiers": [],
   "description": "対象のユニットを攻撃し、<hyperlink>防御モード</hyperlink>に入る。",
   "name": "ディフェンス・ストライク",
-  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb5",
+  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb2",
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5893,7 +6553,7 @@
   ],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
-  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb2",
+  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb5",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5924,7 +6584,7 @@
   ],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
-  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb5",
+  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb2",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5972,44 +6632,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "description": "敵ユニットに長射程投射物を放つ。",
-  "name": "弓を撃つ",
-  "slug": "wayfarer_shoot_bow_ability_0000049000000E88_0000049700000fb2",
-  "damage": "6<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "物理範囲"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD000020CE"
- },
- {
-  "description": "戦闘から撤退するとき、このユニットは2ターン早く去ることができ、絶対に死亡しない。",
-  "name": "撤退の達人",
-  "slug": "000004970000113c",
-  "icon": "000004970000113E"
- },
- {
-  "description": "道路を移動するときのコストが5でなく4 <hyperlink>移動ポイント</hyperlink>になる。",
-  "name": "道路歩行",
-  "slug": "0000045e00000849",
-  "icon": "0000045E0000085B"
- },
- {
   "modifiers": [],
   "description": "敵ユニットに長射程投射物を放つ。",
   "name": "弓を撃つ",
@@ -6034,6 +6656,44 @@
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    }
   ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "戦闘から撤退するとき、このユニットは2ターン早く去ることができ、絶対に死亡しない。",
+  "name": "撤退の達人",
+  "slug": "000004970000113c",
+  "icon": "000004970000113E"
+ },
+ {
+  "description": "道路を移動するときのコストが5でなく4 <hyperlink>移動ポイント</hyperlink>になる。",
+  "name": "道路歩行",
+  "slug": "0000045e00000849",
+  "icon": "0000045E0000085B"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "弓を撃つ",
+  "slug": "wayfarer_shoot_bow_ability_0000049000000E88_0000049700000fb2",
+  "damage": "6<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
   "icon": "000003BD000020CE"
  },
  {
@@ -6137,24 +6797,6 @@
   "icon": "000003BD0000210B"
  },
  {
-  "description": "このユニットは出血の影響を受けない。",
-  "name": "以下のステータス効果の影響を受けない：出血",
-  "slug": "0000049700001683",
-  "icon": "0000049700001685"
- },
- {
-  "description": "このユニットによる攻撃：<bulletlist><bullet><statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を最大で2まで無効化する。</bullet><bullet><resistance></resistance><hyperlink>耐性</hyperlink>を最大で1まで無効化する。</bullet><bullet><defense></defense><hyperlink>防御力</hyperlink>を最大で1まで無効化する。</bullet></bulletlist>",
-  "name": "チャンピオン勲章：力術師",
-  "slug": "000003e30000628a",
-  "icon": "000003E30000627B"
- },
- {
-  "description": "このユニットが戦闘中に死亡すると、その所有者が勝利した場合、そのユニットは戦闘終了時に復活する。復活したユニットは最大<hyperlink><hp></hp>HP</hyperlink>の50%を持って蘇る。",
-  "name": "再起",
-  "slug": "0000035700000332",
-  "icon": "0000035700000333"
- },
- {
   "notes": [
    {
     "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
@@ -6247,18 +6889,6 @@
   "name": "沼地歩行",
   "slug": "000003e300004d60",
   "icon": "000003E3000061DC"
- },
- {
-  "description": "無実体ユニット：<bulletlist><bullet>+2 <defense></defense><hyperlink>防御力</hyperlink></bullet><bullet>-4<defensespirit></defensespirit><hyperlink>精霊耐性</hyperlink></bullet><bullet>貫通</bullet><bullet>以下の影響を受けない：<bulletlist></bullet><bullet>出血</bullet><bullet>病気</bullet><bullet>移動不能</bullet><bullet>毒</bullet></bulletlist></bulletlist>",
-  "name": "無実体",
-  "slug": "000003e300004802",
-  "icon": "000003E300004804"
- },
- {
-  "description": "このユニットは障害物を通り抜けられる。輸送中の場合は機能しない。",
-  "name": "貫通",
-  "slug": "000003e300004814",
-  "icon": "000003E300004815"
  },
  {
   "damage": "<xpCol>4<damageblight></damageblight></xpCol>",
@@ -9452,6 +10082,216 @@
   "icon": "000003E30000728A"
  },
  {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、120%の基本確率で2x腐敗中を与える。",
+    "name": "腐敗中",
+    "count": 1
+   }
+  ],
+  "description": "単発近接攻撃。",
+  "name": "近接単発攻撃。",
+  "slug": "melee_single_strike_(base)_ability_0000048D00001A25_0000048d000019d6",
+  "damage": "28<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "対象が失った<hyperlink><hp></hp>HP</hyperlink>に応じてダメージが増加する。",
+    "name": "死の追跡",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットに飛び掛かり、ノックバックさせ、防御モードに入る。",
+  "name": "死の追跡",
+  "slug": "death_stalk_unit_property_ability_0000048D00001A25_0000048d000019d6",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "単発"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "近接"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   }
+  ],
+  "icon": "0000048D00001A46"
+ },
+ {
+  "description": "ユニットの死亡時、以下を適用：<bulletlist><bullet>+1 人間の祝福を獲得</bullet><bullet>もしこのユニットがとどめの一撃を放った場合は+1の人間の祝福を追加</bullet></bulletlist>",
+  "name": "死からの力",
+  "slug": "0000048d000019f7",
+  "icon": "0000048D00001A13"
+ },
+ {
+  "description": "このユニットはワールドマップでは見られない。",
+  "name": "汎用迷彩",
+  "slug": "000003e300004864",
+  "icon": "000003E300004865"
+ },
+ {
+  "description": "人間の祝福のスタック1個につき+5%ダメージ。",
+  "name": "破滅をもたらすもの",
+  "slug": "0000048d00001a3a",
+  "icon": "0000048D00001A3B"
+ },
+ {
+  "description": "敵ユニット撃破時、終了時まで+1の人間の祝福を追加",
+  "name": "祝福されし結末",
+  "slug": "0000048d00001a43",
+  "icon": "0000048D00001A49"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "騎兵隊ユニットと大型ターゲットユニットに対して+40%ダメージ。",
+    "name": "ポールアーム",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_0000048D00001A22_0000048d000019d6",
+  "damage": "14<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "このユニットに以下を付与：<bulletlist><bullet>+20<hyperlink><temphp></temphp>追加HP</hyperlink>。</bullet><bullet>+10 <hyperlink><temphp></temphp>追加HP</hyperlink> を、人間の祝福のスタック1個ごとに付与。</bullet></bulletlist><br></br>それからこのユニットは防御モードに突入する。",
+  "name": "死の生命力",
+  "slug": "deathly_vitality_ability_0000048D00001A22_0000048d000019d6",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "icon": "0000048D00001A21"
+ },
+ {
+  "modifiers": [],
+  "description": "敵に魔法のボルトを放つ。",
+  "name": "腐敗のボルト",
+  "slug": "magic_bolts_ability_0000048D000019EC_0000048d000019d6",
+  "damage": "12<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3<turn></turn>の間、腐敗中を2スタック付与する。",
+    "name": "腐敗中",
+    "count": 1
+   },
+   {
+    "description": "3 <turn></turn>ターンの間生命のシードを与える。",
+    "name": "生命のシード",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットと、3マス以内にいるもう1体の敵ユニットがダメージを受ける。",
+  "name": "死のマス",
+  "slug": "death_hex_ability_0000048D000019EC_0000048d000019d6",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "icon": "0000048D000019F0"
+ },
+ {
+  "description": "死のマス：<bulletlist><bullet>+4 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える</bullet><bullet>+1 腐敗中を与える</bullet></bulletlist>",
+  "name": "死のマス・チャンピオン",
+  "slug": "0000048d000019f4",
+  "icon": "000003E30000627B"
+ },
+ {
   "modifiers": [],
   "description": "敵に魔法のボルトを放つ。",
   "name": "フロストボルト",
@@ -9715,7 +10555,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の味方<hyperlink>ヒーロー</hyperlink>ユニットにリンクする：<bulletlist><bullet>リンクしたユニットが受けるダメージを、このユニットが25%軽減して代わりに受ける。</bullet><bullet>毎ターン開始時、リンクしたユニットが強化を得る。</bullet></bulletlist>",
+  "description": "対象の味方<hyperlink>ヒーロー</hyperlink>ユニットにリンクする：<bulletlist><bullet>リンクしたユニットが受けるダメージをこのユニットが受けるが、50%軽減された状態である。</bullet><bullet>毎ターン開始時、リンクしたユニットが強化を得る。</bullet></bulletlist>",
   "name": "誓いの絆",
   "slug": "sworn_bond_ability_0000048D00001227_0000048d00001220",
   "damage": "",
@@ -9815,7 +10655,7 @@
   "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d000011e2",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -9850,7 +10690,7 @@
   "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d00001220",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -9922,7 +10762,7 @@
     "note": "クールタイム：0 <turn></turn>"
    }
   ],
-  "description": "対象の味方マジック・オリジンと繋がり、有効な間：<bulletlist><bullet>対象が+1 <hyperlink>報復攻撃</hyperlink>、+30 <hyperlink><accuracy></accuracy>命中率</hyperlink>と逆上を獲得する。</bullet></bulletlist>",
+  "description": "対象の味方マジック・オリジンと繋がり、有効な間：<bulletlist><bullet>対象が+20%のダメージを与える。</bullet><bullet>対象の<turn></turn>ターン開始時に、対象は+20 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet></bulletlist>",
   "name": "アストラルの結束",
   "slug": "astral_bond_ability_0000048D000006F4_0000048d00000620",
   "damage": "",
@@ -9952,14 +10792,14 @@
    }
   ],
   "accuracy": "常にヒット",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "3",
   "icon": "0000048D00000728"
  },
  {
-  "description": "戦闘中である味方のマジック・オリジンユニットが以下を獲得する： <bulletlist><bullet>この性質を持つ味方ユニットそれぞれに対して+5 <happiness></happiness><hyperlink>士気</hyperlink></bullet></bulletlist>",
+  "description": "味方のマジック・オリジンユニットに隣接している間、両方のユニットが以下を獲得：<bulletlist><bullet>+1 <defense></defense><hyperlink>防御力</hyperlink></bullet><bullet>+1 <resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist><br></br>この効果はスタックする。",
   "name": "アストラルの結合",
-  "slug": "0000048d00000989",
+  "slug": "0000048d00001b26",
   "icon": "0000048D0000098F"
  },
  {
@@ -10080,7 +10920,7 @@
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    }
   ],
-  "description": "対象のユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の基本確率：<bulletlist></bullet><bullet>隣接するスペースに引き寄せられる。</bullet><bullet>1 <turn></turn>ターンの間コンストリクトになる。</bullet></bulletlist>",
+  "description": "対象のユニットに以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の基本確率：<bulletlist></bullet><bullet>隣接するスペースに引き寄せられる。</bullet><bullet>1 <turn></turn>ターンの間コンストリクトになる。</bullet></bulletlist></bulletlist>",
   "name": "引き寄せ",
   "slug": "constrictor_pull_ability_0000048D000005E0",
   "damage": "20<damagephysical></damagephysical> ",
@@ -10843,7 +11683,7 @@
  },
  {
   "notes": [],
-  "description": "対象の味方ユニットにリンクする：<bulletlist><bullet>リンクしたユニットが受けたダメージを、このユニットが35%軽減して吸収する。</bullet><bullet>毎ターン開始時、このユニットとリンクしたユニットが優美を得る。</bullet></bulletlist><br></br>発動している間、繁栄仮面の回収を得る。",
+  "description": "対象の味方ユニットにリンクする：<bulletlist><bullet>リンクしたユニットが受けるダメージを、このユニットが50%軽減して代わりに受ける。</bullet><bullet>毎ターン開始時、このユニットとリンクしたユニットが優美を得る。</bullet></bulletlist><br></br>発動している間、繁栄仮面の回収を得る。",
   "name": "繁栄仮面の授与",
   "slug": "bestow_mask_of_prosperity_ability_0000048900001231",
   "damage": "",
@@ -11232,7 +12072,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "<bulletlist><bullet>対象のユニットに3<turn></turn>ターンの間3ゴーストファイヤーを与える。</bullet><bullet>4マスだけ瞬間移動で後退する。</bulletlsit></bullet>",
+  "description": "<bulletlist><bullet>対象のユニットに3<turn></turn>ターンの間3ゴーストファイヤーを与える。</bullet><bullet>4マスだけ瞬間移動で後退する。</bullet></bulletlist>",
   "name": "トリックエスケープ",
   "slug": "tricky_escape_ability_0000048900001226",
   "damage": "",
@@ -11421,12 +12261,6 @@
   "name": "影の脱出",
   "slug": "0000048b00000205",
   "icon": "0000048B00000209"
- },
- {
-  "description": "このユニットはワールドマップでは見られない。",
-  "name": "汎用迷彩",
-  "slug": "000003e300004864",
-  "icon": "000003E300004865"
  },
  {
   "modifiers": [
@@ -13302,8 +14136,14 @@
   "icon": "000003E30000627B"
  },
  {
-  "modifiers": [],
-  "description": "1マス範囲内にいる対象ユニットにダメージを与える。同じ範囲内の障害物すべてを破壊する。",
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間火傷を与える。",
+    "name": "火傷",
+    "count": 1
+   }
+  ],
+  "description": "ユニットが自爆する。1マスの範囲内：<bulletlist><bullet>ユニットがダメージを受ける。</bullet><bullet>すべての障害物が破壊される。</bullet><bullet>マスを<hyperlink>炎上</hyperlink>状態にする。</bullet></bulletlist>",
   "name": "起爆と滅却",
   "slug": "detonate_ability_0000041B0000117A",
   "damage": "15<damagephysical></damagephysical> 15<damagefire></damagefire> ",
@@ -13445,14 +14285,7 @@
   "icon": "000003BD0000210B"
  },
  {
-  "notes": [
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   },
-   {
-    "note": "クールタイム：1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "1マス範囲内にいる敵ユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>3 <turn></turn>ターンの間バラバラの防衛を獲得する。</bullet></bulletlist><br></br>成功した場合、詠唱者から2マス以内にいるすべての味方ユニットに、3 <turn></turn>ターンの間防御強化を付与する。",
   "name": "変形",
   "slug": "transmute_ability_0000041B00001093",
@@ -13468,6 +14301,14 @@
   "accuracy": "常にヒット",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6",
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
   "icon": "0000041B0000109E"
  },
  {
@@ -13741,6 +14582,12 @@
   "icon": "000003E3000060AD"
  },
  {
+  "description": "このユニットは「死亡時」の効果を発動させない。",
+  "name": "不死",
+  "slug": "0000048b00000e94",
+  "icon": "0000048D00001BC5"
+ },
+ {
   "description": "このユニットは：<bulletlist><bullet>制御不能であり、必ず最も近い敵を攻撃する。</bullet><bullet>攻撃範囲内に敵がいない場合、味方を攻撃する。</bullet><bullet><happiness></happiness><hyperlink>士気</hyperlink>効果が無効。</bullet><bullet>犠牲者によるダメージペナルティが適用されない。</bullet></bulletlist>",
   "name": "狂乱",
   "slug": "000003e1000013e6",
@@ -13748,6 +14595,11 @@
  },
  {
   "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間出血を与える。",
+    "name": "出血",
+    "count": 1
+   },
    {
     "description": "攻撃された対象の位置をずらし、そのマスに自ら移動する。",
     "name": "置換と代替",
@@ -13776,7 +14628,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、90%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
   "description": "1マスの円錐型範囲の中にいるユニットを攻撃する。<bulletlist><bullet><hyperlink>防御モード</hyperlink>を解除する。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を解除する。</bullet></bulletlist>",
   "name": "パワークリーブ",
   "slug": "power_cleave_ability_0000041B00000BB2",
@@ -13861,7 +14719,7 @@
   "icon": "0000041B00000B75"
  },
  {
-  "description": "3マスの範囲にいる攻撃者が60%の確率でランダムなステータス効果を得る。",
+  "description": "3マスの範囲にいる敵攻撃者が60%の確率でランダムなステータス効果を得る。",
   "name": "混沌の叱責",
   "slug": "0000041b00000c5c",
   "icon": "000003E300006A21"
@@ -16271,7 +17129,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "2マスの円錐型範囲内にいるユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>2 バラバラの防衛を得る。</bullet>",
+  "description": "2マスの円錐型範囲内にいるユニットに以下を付与：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>2 バラバラの防衛を得る。</bullet></bulletlist>",
   "name": "アシッドスプレー",
   "slug": "acid_spray_ability_000003E3000072B0",
   "damage": "14<damageblight></damageblight> ",
@@ -16567,12 +17425,6 @@
    }
   ],
   "icon": "000003E300007267"
- },
- {
-  "description": "このユニットは敵の<hyperlink>支配ゾーン</hyperlink>によって阻止されない。",
-  "name": "フリーティング",
-  "slug": "0000042b00000006",
-  "icon": "0000042B00000008"
  },
  {
   "description": "攻撃後、このユニットが<hyperlink>アクションポイント</hyperlink>の半分を取り戻すが、攻撃はできなくなる。",
@@ -17061,7 +17913,7 @@
   "icon": "000003E300006BDE"
  },
  {
-  "description": "ターン開始時、隣接する敵ユニットは：<bulletlist><bullet>8 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>受ける。</bullet><bullet>90%の確率で盲目を1 <turn></turn>ターン受ける。</bullet>",
+  "description": "ターン開始時、隣接する敵ユニットに以下を付与：<bulletlist><bullet>8 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で盲目を1 <turn></turn>ターン受ける。</bullet></bulletlist>",
   "name": "精霊のオーラ",
   "slug": "000003e300006be6",
   "icon": "000003E300006BE7"
@@ -17861,7 +18713,7 @@
  },
  {
   "notes": [],
-  "description": "ユニットが死亡したとき:<bulletlist><bullet>アストラルトーレントを発動する。</bullet><bullet>2マス以内の味方ユニットを追加で10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet>",
+  "description": "ユニットが死亡したとき:<bulletlist><bullet>アストラルトーレントを発動する。</bullet><bullet>2マス以内の味方ユニットを追加で10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist>",
   "name": "自己粉砕",
   "slug": "shatter_self_ability_000003E300005EB2",
   "damage": "",
@@ -18082,7 +18934,7 @@
   "icon": "000003E300005DB7"
  },
  {
-  "description": "ユニットに以下を付与：<bulletList><bullet><hyperlink>先制攻撃</hyperlink></bullet><bullet>突進耐性</bullet><bullet>騎兵隊と大型ターゲットのユニットに対するダメージが+40%増加する。</bullet></bulletlist>",
+  "description": "ユニットに以下を付与：<bulletlist><bullet><hyperlink>先制攻撃</hyperlink></bullet><bullet>突進耐性</bullet><bullet>騎兵隊と大型ターゲットのユニットに対するダメージが+40%増加する。</bullet></bulletlist>",
   "name": "槍兵武器",
   "slug": "000003e3000068c8",
   "icon": "0000039F000016EB"
@@ -18212,7 +19064,7 @@
     "count": 1
    }
   ],
-  "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
+  "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
   "slug": "melee_charge_strike_(base)_ability_(caustic_worm_only)_000003E300005C57",
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
@@ -18326,7 +19178,7 @@
   "icon": "000003E300006607"
  },
  {
-  "description": "戦闘開始時、攻撃と共にマークとバラバラの防衛状態を付与する戦の猟犬を召喚する。<br></br><br></br>水域戦闘では無効。",
+  "description": "戦闘開始時、攻撃と共にマークと出血状態を付与する<hyperlink>戦の猟犬</hyperlink> ショックユニットを召喚する。<br></br><br></br>水域戦闘では無効であり、ユニット魔力の恩恵は受けられない。",
   "name": "戦の猟犬の解放",
   "slug": "000003e3000064a5",
   "icon": "000003E3000064A6"
@@ -18671,7 +19523,13 @@
   "icon": "000003E300005B3D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、60%の確率で火傷効果を与える。",
+    "name": "火傷",
+    "count": 1
+   }
+  ],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_000003E300005AC4",
@@ -18729,7 +19587,7 @@
     "count": 1
    }
   ],
-  "description": "対象ユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>戦闘終了時まで狂乱状態になる。</bullet><bullet><hyperlink>ヒーロー</hyperlink>でなければグレードIの地獄の悪魔に変身し、死ぬまで自分の支配下に置かれる。</bullet></bulletlist>",
+  "description": "対象ユニットが以下の通りになる：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>戦闘終了時まで狂乱状態になる。</bullet><bullet>でなければグレードIの地獄の悪魔に変身し、死ぬまで自分の支配下に置かれる。</bullet></bulletlist><br></br> ヒーロー、悪魔、または攻城ユニットには影響しない。",
   "name": "カオスの烙印",
   "slug": "chaos_brand_ability_000003E300005AB0",
   "damage": "39<damagefire></damagefire> ",
@@ -18782,7 +19640,7 @@
   "icon": "000003E300005AC9"
  },
  {
-  "description": "このユニットの死亡時、2マスの範囲にいる味方ユニットは：<bulletlist><bullet>30 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>受ける。味方ユニットの場合は半減する。</bullet><bullet>3 <turn></turn>ターンの間火傷状態になる。</bullet>",
+  "description": "このユニットの死亡時、2マスの範囲にいる味方ユニットは：<bulletlist><bullet>30 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>受ける。味方ユニットの場合は半減する。</bullet><bullet>3 <turn></turn>ターンの間火傷状態になる。</bullet></bulletlist>",
   "name": "死の爆発",
   "slug": "000003e300005ab4",
   "icon": "000003E300005AB5"
@@ -18878,8 +19736,8 @@
  {
   "modifiers": [
    {
-    "description": "攻撃者はバラバラの防衛効果を付与",
-    "name": "バラバラの防衛",
+    "description": "3 <turn></turn>ターンの間出血を与える。",
+    "name": "出血",
     "count": 1
    },
    {
@@ -18949,7 +19807,7 @@
  },
  {
   "modifiers": [],
-  "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
+  "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
   "slug": "melee_charge_strike_(base)_ability_(ram_warship_only)_000003E300005880",
   "damage": "24<damagephysical></damagephysical> ",
@@ -19694,14 +20552,19 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn>ターンの間バラバラの防衛を与える。",
-    "name": "バラバラの防衛",
+    "description": "90%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を10 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
+    "count": 1
+   },
+   {
+    "description": "3 <turn></turn>ターンの間、90%の基本確率で2弱まったを与える。",
+    "name": "弱まった",
     "count": 1
    }
   ],
   "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
-  "slug": "melee_charge_strike_(base)_ability_000003E300005305",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005305_0000048d000019de",
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19723,35 +20586,47 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn>ターンの間、90%の確率で弱まった効果を与える。",
-    "name": "弱まった",
+    "description": "90%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を10 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
     "count": 1
    }
   ],
-  "description": "2マス内の円錐型範囲内にいる敵にダメージを与える。<hyperlink>マイナスのステータス効果</hyperlink>を持つユニットに2倍のダメージを与える。",
-  "name": "闇の大波",
-  "slug": "dark_surge_ability_000003E300005305",
-  "damage": "18<damagefrost></damagefrost> ",
+  "description": "対象を蹂躙する:<bulletlist><bullet>攻撃された対象を転置し、そのマスに移動する。</bullet><bullet>キャンセル<hyperlink>防御モード</hyperlink>。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet><bullet>隣接する敵ユニットは、90%の基本確率で弱まったを受ける。</bullet><bullet><hyperlink>防御モード</hyperlink>に進入。</bullet></bulletlist>",
+  "name": "蹂躙",
+  "slug": "trample_ability_000003E300005305_0000048d000019de",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "魔法"
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
    }
   ],
-  "accuracy": "常にヒット",
-  "actionPoints": "<fullaction></fullaction>",
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [
    {
-    "note": "クールタイム：3 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "icon": "000003E300006553"
+  "icon": "0000048D00001ADC"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃時、基本確率90%で弱まったを与える。</bullet><bullet>弱まったユニットに対する<hyperlink>近接攻撃</hyperlink>攻撃が：<bulletlist></bullet><bullet>+20%ダメージを与える。</bullet><bullet>1回のターンごとに1度、攻撃者を10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
-  "name": "弱者の淘汰",
-  "slug": "0000049700000f4f",
-  "icon": "000003E3000055A5"
+  "description": "隣接する敵が-1 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を持っている。",
+  "name": "暴政のオーラ",
+  "slug": "0000048d00001aa4",
+  "icon": "0000048D00001AA2"
+ },
+ {
+  "description": "このユニットのターン終了時に以下を適用：<bulletlist><bullet>隣接する敵ユニットごとに15 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist>",
+  "name": "暴虐の生命力",
+  "slug": "0000048d00001ade",
+  "icon": "0000048D00001AE1"
  },
  {
   "modifiers": [
@@ -19759,11 +20634,21 @@
     "description": "騎兵隊ユニットと大型ターゲットユニットに対して+40%ダメージ。",
     "name": "ポールアーム",
     "count": 1
+   },
+   {
+    "description": "1 <turn></turn>ターンの間、60%の確率で移動不能効果を与える。",
+    "name": "移動不能",
+    "count": 1
+   },
+   {
+    "description": "60%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を5 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
+    "count": 1
    }
   ],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
-  "slug": "melee_strike_(base)_ability_000003E300005304",
+  "slug": "melee_strike_(base)_ability_000003E300005304_0000048d000019de",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19780,10 +20665,10 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "このユニットのターン終了時、隣接する敵のユニットが90%の確率で以下を受ける：<bulletlist><bullet>バラバラの防衛</bullet><bullet>バラバラの耐性</bullet></bulletlist>",
-  "name": "闇のストールワート",
-  "slug": "000003e3000050e6",
-  "icon": "000003E3000050E8"
+  "description": "攻撃者の<hyperlink>デバフ</hyperlink>ごとに、ユニットが攻撃に対して+1 <defense></defense><hyperlink>防御力</hyperlink>と+1 <resistance></resistance><hyperlink>耐性</hyperlink>を得る。<br></br>最大5回までスタックする。",
+  "name": "侮蔑の鎧",
+  "slug": "0000048d00001b59",
+  "icon": "0000048D00001B5A"
  },
  {
   "modifiers": [
@@ -19791,11 +20676,16 @@
     "description": "3 <turn></turn>ターンの間、90%の確率で弱まった効果を与える。",
     "name": "弱まった",
     "count": 1
+   },
+   {
+    "description": "60%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を5 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
+    "count": 1
    }
   ],
   "description": "敵に魔法のボルトを放つ。",
   "name": "弱体化ボルト",
-  "slug": "magic_bolts_ability_000003E300005303",
+  "slug": "magic_bolts_ability_000003E300005303_0000048d000019de",
   "damage": "12<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -19821,24 +20711,24 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn>ターンの間バラバラの防衛を与える。",
+    "description": "3 <turn></turn>ターンの間、90%の基本確率で2バラバラの防衛を与える。",
     "name": "バラバラの防衛",
     "count": 1
    },
    {
-    "description": "3 <turn></turn>ターンの間バラバラの耐性を与える。",
-    "name": "バラバラの耐性",
+    "description": "90%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を10 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
     "count": 1
    },
    {
-    "description": "3 <turn></turn>ターンの間弱まったを与える。",
-    "name": "弱まった",
+    "description": "3 <turn></turn>ターンの間、90%の基本確率で2バラバラの耐性を与える。",
+    "name": "バラバラの耐性",
     "count": 1
    }
   ],
   "description": "対象の敵ユニットと、3マス以内にいるもう1体の敵ユニットがダメージを受ける。",
   "name": "分断の呪い",
-  "slug": "sundering_curse_ability_000003E300005303",
+  "slug": "sundering_curse_ability_000003E300005303_0000048d000019de",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -19868,7 +20758,7 @@
   "icon": "000003E3000050EA"
  },
  {
-  "description": "分断の呪い：<bulletlist><bullet>弱まった、バラバラの防衛、バラバラの耐性を追加で1スタックずつ付与する。</bullet></bulletlist>",
+  "description": "分断の呪い:<bulletlist><bullet>90%の基本確率で2弱まったを付与する</bullet></bulletlist>",
   "name": "分断の呪い・チャンピオン",
   "slug": "0000048b00000a45",
   "icon": "000003E30000627B"
@@ -19876,14 +20766,67 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn>ターンの間、90%の確率で弱まった効果を与える。",
-    "name": "弱まった",
+    "description": "60%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を5 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
     "count": 1
    }
   ],
   "description": "敵ユニットに長射程投射物を放つ。",
   "name": "弓を撃つ",
-  "slug": "shoot_bow_ability_000003E300005302",
+  "slug": "shoot_bow_ability_000003E300005302_0000048d000019de",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "notes": [
+   {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   },
+   {
+    "note": "クールダウン状態で開始: 1<turn></turn>"
+   }
+  ],
+  "description": "詠唱者が対象のマスへ移動する。<br></br>このアビリティは撃破でチャージされる。",
+  "name": "無慈悲な追跡",
+  "slug": "relentless_pursuit_unit_property_ability_000003E300005302_0000048d000019de",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "移動"
+   },
+   {
+    "requisite": "無慈悲な追跡"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000048D000019E5"
+ },
+ {
+  "modifiers": [],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "弓を撃つ",
+  "slug": "shoot_bow_ability_000003E300005302_0000048d000019d6",
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19908,9 +20851,42 @@
  },
  {
   "modifiers": [],
+  "description": "詠唱者が対象のマスへ移動する。<br></br>このアビリティは撃破でチャージされる。",
+  "name": "無慈悲な追跡",
+  "slug": "relentless_pursuit_unit_property_ability_000003E300005302_0000048d000019d6",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "移動"
+   },
+   {
+    "requisite": "無慈悲な追跡"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   },
+   {
+    "note": "クールダウン状態で開始: 1<turn></turn>"
+   }
+  ],
+  "icon": "0000048D000019E5"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "90%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を10 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
+    "count": 1
+   }
+  ],
   "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
-  "slug": "melee_charge_strike_(base)_ability_000003E300005301",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005301_0000048d000019de",
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19930,10 +20906,45 @@
   "icon": "000003EB0000040D"
  },
  {
+  "description": "このユニットが戦闘中に死亡すると、その所有者が勝利した場合、そのユニットは戦闘終了時に復活する。復活したユニットは最大<hyperlink><hp></hp>HP</hyperlink>の10%を持って蘇り、<hyperlink>移動ポイント</hyperlink>はない。",
+  "name": "小さな再起",
+  "slug": "0000048d00001b16",
+  "icon": "0000035700000333"
+ },
+ {
   "modifiers": [],
+  "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
+  "name": "チャージストライク",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005301_0000048d000019d6",
+  "damage": "18<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60%の基本確率で以下を適用：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間ステータスの脆弱性を与える。</bullet><bullet>自身を5 <hyperlink><temphp></temphp>追加HP</hyperlink>の間回復させる。</bullet></bulletlist>",
+    "name": "活性化の脆弱性",
+    "count": 1
+   }
+  ],
   "description": "敵ユニットに長射程投射物を放つ。",
   "name": "弓を撃つ",
-  "slug": "shoot_bow_ability_000003E300005300",
+  "slug": "shoot_bow_ability_000003E300005300_0000048d000019de",
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19970,10 +20981,37 @@
  },
  {
   "modifiers": [],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "弓を撃つ",
+  "slug": "shoot_bow_ability_000003E300005300_0000048d000019d6",
+  "damage": "6<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "modifiers": [],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_000003E3000052F9",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -20010,7 +21048,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "<bulletlist><bullet>対象のユニットにダメージを与える。</bullet><bullet>隣接する敵ユニットはダメージの50%を受ける。</bullet><bullet>使用後、<hyperlink>防御モード</hyperlink>に入る。</bullet>",
+  "description": "<bulletlist><bullet>対象のユニットにダメージを与える。</bullet><bullet>隣接する敵ユニットはダメージの50%を受ける。</bullet><bullet>使用後、<hyperlink>防御モード</hyperlink>に入る。</bullet></bulletlist>",
   "name": "ディフェンス・スイープ",
   "slug": "defensive_sweep_ability_000003E3000052F9",
   "damage": "16<damagephysical></damagephysical> ",
@@ -20031,12 +21069,6 @@
   "icon": "000003E100001523"
  },
  {
-  "description": "ユニットが+1 <hyperlink>報復攻撃</hyperlink>を得る。",
-  "name": "用心深い",
-  "slug": "000003e100001533",
-  "icon": "000003E3000063F6"
- },
- {
   "modifiers": [
    {
     "description": "騎兵隊ユニットと大型ターゲットユニットに対して+40%ダメージ。",
@@ -20047,7 +21079,7 @@
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_000003E3000052F8",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -20204,11 +21236,11 @@
   "icon": "000003E30000623D"
  },
  {
-  "modifiers": [],
+  "notes": [],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_000003E3000052F5",
-  "damage": "8<damagephysical></damagephysical> ",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -20220,7 +21252,6 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "notes": [],
   "icon": "000003BD000020C9"
  },
  {
@@ -20893,17 +21924,11 @@
   "icon": "0000045E000008E2"
  },
  {
-  "modifiers": [
-   {
-    "description": "大型ターゲットを持つモンスターに+40%ダメージを与える。",
-    "name": "ジャイアントスレイヤー",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d000011e2",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -20928,17 +21953,11 @@
   "icon": "0000048D0000135A"
  },
  {
-  "modifiers": [
-   {
-    "description": "大型ターゲットを持つモンスターに+40%ダメージを与える。",
-    "name": "ジャイアントスレイヤー",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "チャージ攻撃：<bulletlist><bullet>移動したマス1つにつき、ダメージが20%増加する（最大3マス）。</bullet><bullet><hyperlink>防御モード</hyperlink>をキャンセルする。</bullet><bullet><hyperlink>報復攻撃</hyperlink>を取り除く。</bullet></bulletlist>",
   "name": "チャージストライク",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d00001220",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -21789,7 +22808,7 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn>ターンの間、60%の確率で火傷効果を与える。",
+    "description": "3 <turn></turn>ターンの間、90%の確率で火傷効果を与える。",
     "name": "火傷",
     "count": 1
    }
@@ -21954,7 +22973,7 @@
    }
   ],
   "description": "子グモを産む。",
-  "name": "子を産む。",
+  "name": "クモ産み",
   "slug": "spawn_hatchling_vampire_ability_000003E300004A22",
   "damage": "",
   "requisites": [
@@ -22064,7 +23083,7 @@
    }
   ],
   "description": "子グモを産む。",
-  "name": "子を産む。",
+  "name": "クモ産み",
   "slug": "spawn_hatchling_dread_ability_000003E300004A1F",
   "damage": "",
   "requisites": [
@@ -22682,7 +23701,7 @@
   "icon": "000003E1000011B3"
  },
  {
-  "description": "近接攻撃者は攻撃する度に3 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink> 受ける。",
+  "description": "近接攻撃者が3 <turn></turn>ターンの間、出血を1スタック受ける。",
   "name": "羽の皮",
   "slug": "000003e1000011ba",
   "icon": "000003E1000011B9"
@@ -23201,6 +24220,54 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "icon": "0000049700002A90"
+ },
+ {
+  "description": "戦闘開始時、<hyperlink>ブラッドマゴット</hyperlink>を召喚する。",
+  "name": "血の疫病神",
+  "slug": "00000497000034f4",
+  "icon": "00000497000034F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "1マス範囲内にいる敵ユニットに以下を付与：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>苦悩を3スタックを得る。</bullet></bulletlist>",
+  "name": "苦悩と苦痛",
+  "slug": "torment_and_pain_ability_000003BD00002895",
+  "damage": "20<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000034F0"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：3 <turn></turn>"
+   }
+  ],
+  "description": "詠唱者は以下を通りになる：<bulletlist><bullet>10の阻害不可能な<damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>このターンで+40%のダメージを得る。</bullet></bulletlist>",
+  "name": "血の儀式",
+  "slug": "blood_rite_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "00000497000034D9"
  },
  {
   "description": "戦闘開始時、グレード Iのスケルトンユニットとアンホーリーチャンピオンを召喚する。",
@@ -24576,9 +25643,6 @@
   "requisites": [
    {
     "requisite": "召喚中"
-   },
-   {
-    "requisite": "サポート"
    }
   ],
   "accuracy": "常にヒット",
@@ -24628,9 +25692,6 @@
   "requisites": [
    {
     "requisite": "召喚中"
-   },
-   {
-    "requisite": "サポート"
    }
   ],
   "accuracy": "常にヒット",
@@ -24781,7 +25842,7 @@
     "note": "1回の戦闘で1回のみ使用可能。"
    }
   ],
-  "description": "全ての味方ユニットが以下を得る：<bulletlist><bullet>+1の防御強化を3 <turn></turn>ターンの間。</bullet><bullet>+1 の耐性強化を3<turn></turn>ターンの間。</bullet>",
+  "description": "全ての味方ユニットが以下を得る：<bulletlist><bullet>+1の防御強化を3 <turn></turn>ターンの間。</bullet><bullet>+1 の耐性強化を3<turn></turn>ターンの間。</bullet></bulletlist>",
   "name": "監守の儀式",
   "slug": "hs_ritualist_rite_of_vigil_ability_000003BD00002895",
   "damage": "",
@@ -24801,7 +25862,7 @@
     "note": "クールタイム：3 <turn></turn>"
    }
   ],
-  "description": "対象の非ヒーローの敵は以下を獲得:<bulletlist><bullet>90%の基本確率で1 <turn></turn><hyperlink>ターン</hyperlink>の間弱まったグレード1動物に変身する。</bullet>",
+  "description": "対象の非ヒーローの敵は以下を獲得：<bulletlist><bullet>90%の基本確率で1 <turn></turn><hyperlink>ターン</hyperlink>の間弱まったグレード1の動物に変身する。</bullet></bulletlist>",
   "name": "多形体",
   "slug": "hs_ritualist_polymorph_ability_000003BD00002895",
   "damage": "",
@@ -24833,7 +25894,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の遺体を破壊し、対象のマスに<hyperlink>植物の障害物</hyperlink>を作成する。<br></br><br></br>2マスの範囲内にいる味方ユニット：<bulletlist><bullet>10<temphp></temphp>追加HPを獲得する。</bullet><bullet>3 <turn></turn><hyperlink>ターン</hyperlink>の間再生を獲得する。</bullet>",
+  "description": "対象の遺体を破壊し、対象のマスに<hyperlink>植物の障害物</hyperlink>を作成する。<br></br><br></br>2マスの範囲内にいる味方ユニット：<bulletlist><bullet>10<temphp></temphp>追加HPを獲得する。</bullet><bullet>3 <turn></turn><hyperlink>ターン</hyperlink>の間再生を獲得する。</bullet></bulletlist>",
   "name": "分解",
   "slug": "hs_ritualist_decompose_ability_000003BD00002895",
   "damage": "",
@@ -25039,9 +26100,6 @@
  {
   "notes": [
    {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   },
-   {
     "note": "1回の戦闘で1回のみ使用可能。"
    }
   ],
@@ -25232,7 +26290,7 @@
   "icon": "000004BB0000001B"
  },
  {
-  "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を獲得：<bulletlist><bullet>毎<turn></turn><hyperlink>ターン</hyperlink>、+10 <hyperlink><hp></hp>HP</hyperlink>回復。</bullet></bulletlist>",
+  "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を獲得：<bulletlist><bullet>毎<turn></turn><hyperlink>ターン</hyperlink>、+10 <hyperlink><hp></hp>HP</hyperlink><hyperlink>回復</hyperlink>。</bullet></bulletlist>",
   "name": "食糧探しの訓練",
   "slug": "0000048d00000dac",
   "icon": "000004BB0000001E"
@@ -25438,6 +26496,154 @@
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    },
    {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   }
+  ],
+  "description": "<hyperlink>吸血クモの女族長</hyperlink>を魔法で呼び出す。<br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "吸血クモの女族長を魔法召喚",
+  "slug": "conjure_vampire_matriarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "召喚中"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000004970000354F"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "description": "対象の敵：<bulletlist><bullet>ダメージを受ける</bullet><bullet>3 <turn></turn>ターンの間、2血の寄生者を獲得する。</bullet></bulletlist> ",
+  "name": "紅の疫病",
+  "slug": "scarlet_plague_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003269"
+ },
+ {
+  "modifiers": [],
+  "description": "2マスの範囲にいる敵ユニットはダメージを受け、90%の確率で以下の効果を得る：<bulletlist><bullet><happiness></happiness><hyperlink>士気</hyperlink>が-10減少する。</bullet><bullet>2 弱まった状態になる。</bullet></bulletlist>",
+  "name": "バンシーの嘆き",
+  "slug": "wail_of_the_banshee_ability_000003BD00002895",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "魔法"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005F65"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "<happiness></happiness><hyperlink>士気</hyperlink>が「低い」以下のユニットが対象：<bulletlist><bullet>一定確率で即死する。</bullet><bullet>ユニットの士気が低ければ低いほど確率が上がる。</bullet><bullet>ユニットが死亡しない場合、代わりに30 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet></bulletlist>",
+  "name": "苦悩の粉砕",
+  "slug": "crushing_anguish_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000003E3000063B5"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   }
+  ],
+  "description": "<hyperlink>恐怖クモの女族長</hyperlink>を魔法で呼び出す。<br></br>この召喚が3 <turn></turn>ターンの間継続する。",
+  "name": "恐怖の女族長を魔法召喚",
+  "slug": "conjure_dread_matriarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "召喚中"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000004970000324A"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "ユニットと隣接している味方ユニットは以下の効果を得る：<bulletlist><bullet>2強化。</bullet><bullet>2 フォーチュン。</bullet></bulletlist>",
+  "name": "虐殺の歌",
+  "slug": "song_of_carnage_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A62"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
@@ -25585,7 +26791,7 @@
   "icon": "0000041B00001983"
  },
  {
-  "description": "<bulletlist><bullet><statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>+6。</bullet><bullet><happiness></happiness><hyperlink>士気</hyperlink> の減少が50%軽減される。</bullet>",
+  "description": "<bulletlist><bullet><statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>+6。</bullet><bullet><happiness></happiness><hyperlink>士気</hyperlink> の減少が50%軽減される。</bullet></bulletlist>",
   "name": "堕落知らずの魂",
   "slug": "000004a6000009dc",
   "icon": "0000041B0000192B"
@@ -26021,6 +27227,12 @@
   "icon": "000003E300004F67"
  },
  {
+  "description": "<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃時、基本確率90%で弱まったを与える。</bullet><bullet>弱まったユニットに対する<hyperlink>近接攻撃</hyperlink>攻撃が：<bulletlist></bullet><bullet>+20%ダメージを与える。</bullet><bullet>1回のターンごとに1度、攻撃者を10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "name": "弱者の淘汰",
+  "slug": "0000049700000f4f",
+  "icon": "000003E3000055A5"
+ },
+ {
   "description": "各ターン終了時、隣接する敵ユニット：<bulletlist><bullet>弱まったを得る。</bullet><bullet>減速を得る。</bullet><bullet>基本確率60%で凍結を受ける。</bullet></bulletlist>",
   "name": "影のオーラ",
   "slug": "000003e300006d1e",
@@ -26336,6 +27548,95 @@
   "icon": "0000049700001737"
  },
  {
+  "description": "このユニットは飛行している：<bulletlist><bullet>+2の視界範囲を持つ</bullet><bullet>5の移動コストを費やしてあらゆる地形を移動して行く。</bullet><bullet>水のマスを移動するには航海が必須。</bullet><bullet>戦闘中、他のほとんどのユニットや障害物を安全に通過できる。</bullet></bulletlist>",
+  "name": "飛行",
+  "slug": "0000049700002f03",
+  "icon": "00000357000001A5"
+ },
+ {
+  "description": "このユニットの<hyperlink><hp></hp>HP</hyperlink>がゼロまで減少すると、3マスで表示され、+20 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。<br></br>戦闘1回ごとに効果が発動する。",
+  "name": "ミスト・アウェイ",
+  "slug": "0000049700002ef6",
+  "icon": "0000049700002EF7"
+ },
+ {
+  "modifiers": [],
+  "description": "対象の味方ユニットに阻害不可能なダメージを与え、付与者に以下を与える：<bulletlist><bullet>20 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>3 <turn></turn>ターンの間、強化を2得る。</bullet></bulletlist>",
+  "name": "ドレインの使い魔",
+  "slug": "drain_familiar_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002EC6"
+ },
+ {
+  "modifiers": [],
+  "description": "対象のユニットにダメージを与え、与えたダメージの50%だけ体力を回復する。<br></br><br></br>出血が効かないユニットは対象にできない。",
+  "name": "サイフォンの血",
+  "slug": "siphon_blood_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "吸血"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E98"
+ },
+ {
+  "modifiers": [],
+  "description": "対象のユニットにダメージを与え、与えたダメージの50%だけ体力を回復する。<br></br><br></br>出血が効かないユニットは対象にできない。",
+  "name": "ドレインバイト",
+  "slug": "draining_bite_ability_000003BD00002895",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "吸血"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "クールタイム：3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E87"
+ },
+ {
   "notes": [
    {
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
@@ -26503,7 +27804,7 @@
   "icon": "000004C000000B84"
  },
  {
-  "description": "以下を獲得：<bulletlist><bullet>残酷</bullet><bullet>敵ユニットが<hyperlink>完全ミス</hyperlink>の時、このユニットは戦闘終了まで+5を獲得する（最大<hyperlink><hp></hp>HP</hyperlink>）。</bullet>",
+  "description": "以下を獲得：<bulletlist><bullet>残酷</bullet><bullet>敵ユニットが<hyperlink>完全ミス</hyperlink>の時、このユニットは戦闘終了まで+5を獲得する（最大<hyperlink><hp></hp>HP</hyperlink>）。</bullet></bulletlist>",
   "name": "絶望を喰らう者",
   "slug": "000004c000000b77",
   "icon": "000004C000000B76"
@@ -26589,7 +27890,7 @@
     "note": "1回の戦闘で1回のみ使用可能。"
    }
   ],
-  "description": "対象の敵ユニットと繋がっている全ユニット：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間感染済みを獲得</bullet><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間病気を獲得</bullet>",
+  "description": "対象の敵ユニットと繋がっている全ユニット：<bulletlist><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間感染済みを獲得。</bullet><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間病気を獲得。</bullet></bulletlist>",
   "name": "感染性の苦痛",
   "slug": "hs_warlock_infectious_affliction_ability_000003BD00002895",
   "damage": "",
@@ -26612,7 +27913,7 @@
     "note": "クールタイム：3 <turn></turn>"
    }
   ],
-  "description": "対象の敵ユニットが <hyperlink>低い士気</hyperlink>以下：<bulletlist><bullet>120%の基本確率で3<turn></turn><hyperlink>ターン</hyperlink>の間支配済みになる。</bullet>",
+  "description": "対象の敵ユニットが <hyperlink>低い士気</hyperlink>以下：<bulletlist><bullet>120%の基本確率で3<turn></turn><hyperlink>ターン</hyperlink>の間支配済みになる。</bullet></bulletlist>",
   "name": "砕かれた意思を曲げる",
   "slug": "hs_warlock_bend_broken_will_ability_000003BD00002895",
   "damage": "",
@@ -26732,7 +28033,7 @@
   "icon": "000004C000000AC7"
  },
  {
-  "description": "このユニットが死亡した1<turn></turn><hyperlink>ターン</hyperlink>後：<bulletlist><bullet>HPが40%回復した状態で蘇生する。</bullet><bullet>+5の熱気を得る。</bullet>",
+  "description": "このユニットが死亡した1<turn></turn><hyperlink>ターン</hyperlink>後、以下の通り：<bulletlist><bullet>HPが40%回復した状態で蘇生する。</bullet><bullet>+5の熱気を得る。</bullet></bulletlist>",
   "name": "不死身の聖者",
   "slug": "000004c0000009d7",
   "icon": "000004C0000009DA"
@@ -26760,7 +28061,7 @@
  {
   "notes": [
    {
-    "note": "クールタイム：2 <turn></turn>"
+    "note": "クールタイム：1 <turn></turn>"
    }
   ],
   "description": "対象の味方ユニット：<bulletlist><bullet>すべての<hyperlink>マイナスのステータス効果</hyperlink>が取り除かれる。</bullet><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間+3<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を得る。</bullet></bulletlist>",
@@ -26783,7 +28084,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "対象の敵ユニット：<bulletlist><bullet>90%の基本確率で、戦闘終了時まで有罪が付与される。</bullet><bullet>3<turn></turn><hyperlink>ターン</hyperlink>の間、90%の基本確率で2弱まったが付与される。</bullet></bulletlist>",
+  "description": "対象の敵ユニット：<bulletlist><bullet>戦闘終了時まで有罪が付与される。</bullet><bullet>90%の基本確率で3 <turn></turn><hyperlink>ターン</hyperlink>の間、2 弱まったが付与される。</bullet></bulletlist>",
   "name": "断罪",
   "slug": "hs_battlesaint_condemnation_ability_000003BD00002895",
   "damage": "",
@@ -26794,7 +28095,7 @@
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<freeaction></freeaction>",
-  "range": "1",
+  "range": "4",
   "icon": "000004C000000AC6"
  },
  {
@@ -26909,7 +28210,7 @@
    }
   ],
   "accuracy": "常にヒット",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -26949,7 +28250,7 @@
    }
   ],
   "accuracy": "常にヒット",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -26974,15 +28275,15 @@
   "icon": "000004C000000AC4"
  },
  {
-  "description": "攻撃が命中すると+1の熱気が付与される。<br></br>単発攻撃では効果が倍になる。",
+  "description": "このユニットと隣接する味方ユニットが+1の<defense></defense><hyperlink>防御力</hyperlink>を得る。<br></br><br></br>攻撃が命中すると+1の熱気が付与される。<br></br>単発攻撃では効果が倍になる。",
   "name": "パラディン",
   "slug": "000004c000000940",
   "icon": "000004C000000942"
  },
  {
-  "description": "このユニットが自分のターン終了時、+1の熱気を得る。",
+  "description": "このユニットと隣接する味方ユニットが+1<resistance></resistance><hyperlink>耐性</hyperlink>を獲得。<br></br><br></br>そのターンの終了時にこのユニットが+1の熱気を獲得。",
   "name": "聖職者",
-  "slug": "000004c000000979",
+  "slug": "0000048d00001bab",
   "icon": "000004C000000941"
  },
  {
@@ -27034,6 +28335,149 @@
   "icon": "0000048D00000AB0"
  },
  {
+  "description": "<bulletlist><bullet>ユニットが盲目無効になる。</bullet><bullet>日陰、地下、もしくは暗闇の地形にいる間、このユニットに以下を適用：<bulletlist></bullet><bullet>+20%のダメージ。</bullet><bullet>自然再生。</bullet></bulletlist></bulletlist>",
+  "name": "夜の支配者",
+  "slug": "000004970000353c",
+  "icon": "0000049700003538"
+ },
+ {
+  "description": "撃破時に以下を適用：<bulletlist><bullet>有効なクールタイムが1 <turn></turn>ターンまで短縮される。</bullet><bullet>戦闘時に+10 <hyperlink><hp></hp>HP</hyperlink>を得る。</bullet></bulletlist><br></br>発動は1ターンに1回のみ。",
+  "name": "リーパー",
+  "slug": "0000049700003533",
+  "icon": "000004970000352D"
+ },
+ {
+  "description": "<hyperlink><hp></hp>HP</hyperlink>が低下すると、ダメージが最大50%まで増加する。",
+  "name": "吸血鬼の怒り",
+  "slug": "0000049700003527",
+  "icon": "0000049700003524"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "description": "対象マスへ移動する。",
+  "name": "超自然的な速度",
+  "slug": "supernatural_speed_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "移動"
+   },
+   {
+    "requisite": "テレポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000049700002F81"
+ },
+ {
+  "description": "このユニットとその下にいる眷属は、非騎乗時に超高速移動になる。<br></br><br></br>もしエルダーヴァンパイアが不浄なる肉体の統制の場合は、騎乗時であっても、代わりに<hyperlink>会心のヒット</hyperlink>の確率が+20%になる。",
+  "name": "圧倒的な速度",
+  "slug": "0000049700003580",
+  "icon": "0000049700003587"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "対象の味方ユニットと詠唱者に以下を適用：<bulletlist><bullet>20<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>2のマイナスステータス効果が解除される。</bullet></bulletlist>",
+  "name": "血の交流",
+  "slug": "blood_communion_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "サポート"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "0000049700002F58"
+ },
+ {
+  "description": "維持費が20 <gold></gold><hyperlink> ゴールド</hyperlink>で増加する。",
+  "name": "増加した維持費",
+  "slug": "0000049700003215",
+  "icon": "0000049700003612"
+ },
+ {
+  "modifiers": [],
+  "description": "対象のユニットに以下を適用：<bulletlist><bullet>50%の<defense></defense><hyperlink>防御力</hyperlink>および<resistance></resistance><hyperlink>耐性</hyperlink>を無視したダメージを受ける。</bullet><bullet>3 <turn></turn>ターンの間、3 出血を獲得する。</bullet></bulletlist>",
+  "name": "放血",
+  "slug": "exsanguinate_ability_000003BD00002895",
+  "damage": "40<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002F3F"
+ },
+ {
+  "description": "ユニットに以下を付与：<bulletlist><bullet>超高速移動</bullet><bullet>+15% <hyperlink>回避</hyperlink></bullet><bullet>+20 <hyperlink><hp></hp>HP</hyperlink></bullet></bulletlist>",
+  "name": "不浄なる肉体の統制",
+  "slug": "0000049700002f36",
+  "icon": "0000049700002F35"
+ },
+ {
+  "description": "<bulletlist><bullet>3 <turn></turn>ターンの間、攻撃が出血を与える。単発攻撃の場合は増加する。</bullet><bullet>敵が出血のダメージを受けた時、2を<hyperlink><temphp></temphp>追加HP</hyperlink>得る。</bullet></bulletlist>",
+  "name": "髄を啜るもの",
+  "slug": "0000049700002f33",
+  "icon": "0000049700002F2A"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "あなたの最大<hyperlink><hp></hp>HP</hyperlink>に対して10%と同等の阻害不可能なダメージを受ける。このターンの次の攻撃時、+50%のダメージを与える。",
+  "name": "血の強化",
+  "slug": "blood_empowerment_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "0000049700002F1B"
+ },
+ {
+  "description": "<hyperlink>魔法攻撃</hyperlink>、<hyperlink>近接攻撃</hyperlink>または<hyperlink>物理遠隔攻撃</hyperlink>攻撃でユニットを倒す時、10 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復させる。",
+  "name": "血の回復",
+  "slug": "0000049700002f26",
+  "icon": "0000049700002F28"
+ },
+ {
+  "description": "維持費が10 <gold></gold><hyperlink> ゴールド</hyperlink>で増加する。",
+  "name": "増加した維持費",
+  "slug": "0000049700003214",
+  "icon": "0000049700003611"
+ },
+ {
   "description": "軍隊リーダーの間、軍隊内の非ヒーローユニットはすべて以下の効果を得る：<bulletlist><bullet>攻撃アビリティを使用したとき、3 <turn></turn>ターンの間、強化とフォーチュンを1スタックずつ得る。</bullet></bulletlist>",
   "name": "激怒のルーン（特大）",
   "slug": "00000497000027bf",
@@ -27046,7 +28490,7 @@
   "icon": "0000049700001852"
  },
  {
-  "description": "ユニットは以下の効果を得る：<bulletlist><bullet>超高速移動</bullet><bullet>攻撃アビリティを使用したとき、3 <turn></turn>ターンの間、強化とフォーチュンを1スタックずつ得る。</bullet>",
+  "description": "ユニットは以下の効果を得る：<bulletlist><bullet>超高速移動</bullet><bullet>攻撃アビリティを使用したとき、3 <turn></turn>ターンの間、強化とフォーチュンを1スタックずつ得る。</bullet></bulletlist>",
   "name": "激怒のルーン",
   "slug": "00000497000027bd",
   "icon": "000004970000185F"
@@ -27058,7 +28502,7 @@
   "icon": "0000049700000D40"
  },
  {
-  "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を獲得：<bulletlist><bullet>戦闘開始時に加速と強化。</bullet></bulletlist></bulletlist>",
+  "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を獲得：<bulletlist><bullet>戦闘開始時に加速と強化。</bullet></bulletlist>",
   "name": "カオスの模範者",
   "slug": "0000048d00000aab",
   "icon": "0000048D00000AAA"
@@ -27089,7 +28533,7 @@
     "count": 1
    },
    {
-    "description": "3 <turn></turn>ターンの間x3出血を与える。",
+    "description": "3 <turn></turn>ターンの間3出血を与える。",
     "name": "出血",
     "count": 1
    },
@@ -27199,6 +28643,254 @@
   "icon": "0000048D00000A82"
  },
  {
+  "description": "戦闘開始時に、<hyperlink>薔薇騎士</hyperlink>を魔法で呼び出す。",
+  "name": "薔薇騎士の守護者",
+  "slug": "00000497000035a6",
+  "icon": "00000497000035A7"
+ },
+ {
+  "description": "都市が<hyperlink>薔薇騎士</hyperlink>を招集するアビリティを獲得する。",
+  "name": "薔薇騎士の雇用",
+  "slug": "0000049700003596",
+  "icon": "0000049700003597"
+ },
+ {
+  "modifiers": [],
+  "description": "2マス以内にいる対象の敵ユニットおよび2に以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>3<turn></turn>ターンの間、3の血の寄生者を獲得する。</bullet></bulletlist>",
+  "name": "血枯れ",
+  "slug": "bloodblight_ability_000003BD00002895",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "クールタイム：3 <turn></turn>"
+   }
+  ],
+  "icon": "000004970000356C"
+ },
+ {
+  "description": "ターン終了時、隣接する敵に以下を適用：<bulletlist><bullet>4 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>4 <happiness></happiness><hyperlink>士気</hyperlink>を失う。</bullet><bullet>戦闘終了時まで1 苦悩を得る。</bullet></bulletlist>",
+  "name": "苦悩のオーラ",
+  "slug": "0000049700003564",
+  "icon": "0000049700003565"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "隣接するすべての敵ユニットに以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の基本確率で1<turn></turn>ターンの間盲目になる。</bullet></bulletlist>",
+  "name": "コウモリの群れ",
+  "slug": "bat_swarm_ability_000003BD00002895",
+  "damage": "8<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "近接"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "000004970000351F"
+ },
+ {
+  "description": "戦闘開始時に、<hyperlink>破滅のコウモリ</hyperlink>を魔法で呼び出す。",
+  "name": "夜の生物",
+  "slug": "0000049700003519",
+  "icon": "000004970000351A"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：3 <turn></turn>"
+   }
+  ],
+  "description": "2マスの範囲にいる敵ユニットに以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>10 <happiness></happiness><hyperlink>士気</hyperlink>を消失する。</bullet><bullet>戦闘終了時まで苦悩のスタックを4得る。</bullet></bulletlist>",
+  "name": "苦しみの霧",
+  "slug": "tormenting_mist_ability_000003BD00002895",
+  "damage": "8<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "デバフ"
+   },
+   {
+    "requisite": "魔法"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "0",
+  "icon": "00000497000031EB"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "対象の敵ユニットに以下を適用：<bulletlist><bullet>戦闘終了時まで2苦悩を獲得する。</bullet><bullet>3 <turn></turn>ターンの間にステータスの脆弱性を獲得する。</bullet><bullet>10 <happiness></happiness><hyperlink>士気</hyperlink>を失う。</bullet></bulletlist>",
+  "name": "恐怖",
+  "slug": "dread_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "000004970000312B"
+ },
+ {
+  "description": "攻撃が対象に4 <happiness></happiness><hyperlink>士気</hyperlink>の消失をもたらす。単発攻撃であれば、倍になる。",
+  "name": "暴君",
+  "slug": "000004970000313a",
+  "icon": "0000049700003131"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "対象の敵ユニットに以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>3 <turn></turn>ターンの間4 毒を得る。</bullet><bullet>3 <turn></turn>ターンの間2 腐敗中を得る。</bullet></bulletlist>",
+  "name": "爛れる針",
+  "slug": "festering_spine_ability_000003BD00002895",
+  "damage": "40<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000030F2"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：3 <turn></turn>"
+   }
+  ],
+  "description": "2マス範囲内にいる敵ユニットが以下の通りになる:<bulletlist><bullet>ダメージを受ける。</bullet><bullet>戦闘終了時までソウルバウンドになる。</bullet></bulletlist>",
+  "name": "不死の呪い",
+  "slug": "curse_to_undeath_ability_000003BD00002895",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "00000497000030B4"
+ },
+ {
+  "description": "ターン開始時にソウルバウンドをもつ敵ユニットは4 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。",
+  "name": "ソウルバウンドの粉砕",
+  "slug": "00000497000030c4",
+  "icon": "0000049700003588"
+ },
+ {
+  "notes": [
+   {
+    "note": "クールタイム：5 <turn></turn>"
+   }
+  ],
+  "description": "グレード Iのユニットである4のソーンスケルトンの死体を1マス範囲内に魔法で呼び出す。<br></br>次の4 <turn></turn>ターンの間、あなたの支配下にある死体を戦闘終了時までランダムで戦場に蘇生させる。",
+  "name": "墓場の進軍",
+  "slug": "gravemarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "召喚中"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003090"
+ },
+ {
+  "description": "攻撃すると1 <hyperlink>プラスのステータス効果</hyperlink>を排除する。単発攻撃の場合は、代わりに2の<hyperlink>プラスのステータス効果</hyperlink>を排除する。",
+  "name": "汚辱者",
+  "slug": "000004970000305a",
+  "icon": "0000049700003059"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、120%の確率で病気効果を与える。",
+    "name": "病気",
+    "count": 1
+   },
+   {
+    "description": "3 <turn></turn>ターンの間、120%の確率で腐敗中効果を与える。",
+    "name": "腐敗中",
+    "count": 1
+   }
+  ],
+  "description": "対象の死体が爆発し、2マス範囲内にいるすべての敵ユニットがダメージを受ける。",
+  "name": "闇の聖餐",
+  "slug": "dark_sacrament_ability_000003BD00002895",
+  "damage": "15<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "デバフ"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700003038"
+ },
+ {
+  "description": "戦闘開始時に、<hyperlink>ゾンビ</hyperlink>を魔法で出す。<br></br><br></br>水域戦闘では無効。",
+  "name": "アンデッドの召使い",
+  "slug": "0000049700003048",
+  "icon": "0000049700003049"
+ },
+ {
   "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を得る：<bulletlist><bullet>ユニットの基本攻撃が60%の確率で妨害したを2 <turn></turn>ターン付与する。単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。。</bullet><bullet>マジック・オリジンユニットへの与ダメージ+20%。</bullet></bulletlist>",
   "name": "妨害のルーン（特大）",
   "slug": "00000497000027d5",
@@ -27241,59 +28933,50 @@
   "icon": "0000048D00000AD7"
  },
  {
-  "modifiers": [
-   {
-    "description": "1 <turn></turn>ターンの間、90%の確率で盲目効果を与える。",
-    "name": "盲目",
-    "count": 1
-   }
-  ],
-  "description": "対象のユニットへの単発魔法攻撃。",
-  "name": "スピリットブラスト",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "基本"
-   },
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "単発"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
   "notes": [
    {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    },
    {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "単発近接攻撃。",
-  "name": "高速突き刺し",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
+  "description": "ユニットと隣接している味方ユニットは以下の効果を得る：<bulletlist><bullet>3進軍。</bullet><bullet>2 再生。</bullet></bulletlist>",
+  "name": "宴の歌",
+  "slug": "song_of_revelry_ability_000003BD00002895",
+  "damage": "",
   "requisites": [
    {
-    "requisite": "近接"
-   },
-   {
-    "requisite": "単発"
+    "requisite": "サポート"
    }
   ],
-  "accuracy": "100%",
+  "accuracy": "常にヒット",
   "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A5A"
+ },
+ {
+  "notes": [
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "1回の戦闘で1回のみ使用可能。"
+   }
+  ],
+  "description": "<hyperlink>薔薇騎士</hyperlink> <br></br>この召喚が3 <turn></turn>ターンの間継続する。を召喚する。",
+  "name": "バラの騎士召喚",
+  "slug": "summon_rose_knight_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "召喚中"
+   }
+  ],
+  "accuracy": "常にヒット",
+  "actionPoints": "<fullaction></fullaction>",
   "range": "1",
-  "icon": "000003E3000057D6"
+  "icon": "0000049700003494"
  },
  {
   "notes": [
@@ -27411,6 +29094,87 @@
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_(combo)_000003BD00002895",
   "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、90%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "短剣の突風",
+  "slug": "floating_daggers_ability_000003BD00002895",
+  "damage": "24<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "0000049700003622"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、60%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(base)_ability_000003BD00002895",
+  "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -27737,32 +29501,6 @@
    }
   ],
   "icon": "000003BD00002EA7"
- },
- {
-  "modifiers": [
-   {
-    "description": "騎兵隊ユニットと大型ターゲットユニットに対して+40%ダメージ。",
-    "name": "ポールアーム",
-    "count": 1
-   }
-  ],
-  "description": "対象の敵ユニットを攻撃する。",
-  "name": "近接攻撃",
-  "slug": "melee_strike_(base)_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "近接"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "1",
-  "notes": [],
-  "icon": "000003BD000020C9"
  },
  {
   "modifiers": [
@@ -28195,6 +29933,57 @@
   "icon": "0000048B00000BAB"
  },
  {
+  "notes": [],
+  "description": "対象の敵ユニットを攻撃する。",
+  "name": "近接攻撃",
+  "slug": "melee_strike_(item_forge_dual)_ability_000003BD00002895",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
+  "description": "対象の敵にダメージを与える。",
+  "name": "ウィップラッシュ",
+  "slug": "whip_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000049700003011"
+ },
+ {
   "modifiers": [],
   "description": "敵に魔法のボルトを放つ。",
   "name": "ファイヤーボルト",
@@ -28220,6 +30009,42 @@
    }
   ],
   "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、90%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "対象のユニットへの単発魔法攻撃。",
+  "name": "ブラッドブラスト",
+  "slug": "blood_staff_blast_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003E600000566"
  },
  {
   "notes": [
@@ -28250,6 +30075,39 @@
   "name": "コズミックボルト",
   "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
   "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "基本"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、60%の確率で出血効果を与える。",
+    "name": "出血",
+    "count": 1
+   }
+  ],
+  "description": "敵に魔法のボルトを放つ。",
+  "name": "血のボルト",
+  "slug": "magic_bolts_ability_000003BD00002895",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "魔法"
@@ -28592,6 +30450,42 @@
  {
   "modifiers": [
    {
+    "description": "1 <turn></turn>ターンの間、90%の確率で盲目効果を与える。",
+    "name": "盲目",
+    "count": 1
+   }
+  ],
+  "description": "対象のユニットへの単発魔法攻撃。",
+  "name": "スピリットブラスト",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "魔法"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "modifiers": [
+   {
     "description": "3 <turn></turn>ターンの間、60%の確率で火傷効果を与える。",
     "name": "火傷",
     "count": 1
@@ -28694,7 +30588,7 @@
     "note": "クールタイム：3 <turn></turn>"
    }
   ],
-  "description": "最大5体までのランダムな敵：<bulletlist><bullet>30 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で妨害したになる。</bullet>",
+  "description": "最大5体までのランダムな敵に以下を付与：<bulletlist><bullet>30 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>90%の基本確率で妨害したになる。</bullet></bulletlist>",
   "name": "魔法妨害",
   "slug": "magical_disruption_ability_000003BD00002895",
   "damage": "",
@@ -28721,11 +30615,40 @@
   "icon": "000004970000004E"
  },
  {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "クロスボウを撃つ",
+  "slug": "shoot_crossbow_(item_forge)_ability_000003BD00002895",
+  "damage": "26<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "物理範囲"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
   "notes": [],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
-  "slug": "melee_strike_(item_forge_dual)_ability_000003BD00002895",
-  "damage": "12<damagephysical></damagephysical> ",
+  "slug": "melee_strike_(item_forge_dual_strong)_ability_000003BD00002895",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
@@ -28813,25 +30736,6 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "000003BD000020E7"
- },
- {
-  "notes": [],
-  "description": "対象の敵ユニットを攻撃する。",
-  "name": "近接攻撃",
-  "slug": "melee_strike_(item_forge_dual_strong)_ability_000003BD00002895",
-  "damage": "14<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "近接"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "1",
-  "icon": "000003BD000020C9"
  },
  {
   "modifiers": [
@@ -29154,7 +31058,7 @@
     "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    }
   ],
-  "description": "対象のユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の基本確率：<bulletlist></bullet><bullet>隣接するスペースに引き寄せられる。</bullet><bullet>1 <turn></turn>ターンの間コンストリクトになる。</bullet></bulletlist>",
+  "description": "対象のユニットに以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の基本確率：<bulletlist></bullet><bullet>隣接するスペースに引き寄せられる。</bullet><bullet>1 <turn></turn>ターンの間コンストリクトになる。</bullet></bulletlist></bulletlist>",
   "name": "引き寄せ",
   "slug": "constrictor_pull_ability_000003BD00002895",
   "damage": "20<damagephysical></damagephysical> ",
@@ -29279,35 +31183,6 @@
    }
   ],
   "icon": "000004A6000008A4"
- },
- {
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "description": "敵ユニットに長射程投射物を放つ。",
-  "name": "クロスボウを撃つ",
-  "slug": "shoot_crossbow_(item_forge)_ability_000003BD00002895",
-  "damage": "26<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "物理範囲"
-   },
-   {
-    "requisite": "基本"
-   },
-   {
-    "requisite": "単発"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000003BD00002EA7"
  },
  {
   "description": "このユニットの合計<hyperlink><hp></hp>HP</hyperlink>が30%またはそれ以下に到達した場合、このユニットに以下が付与される：<bulletlist><bullet>3 <turn></turn><hyperlink>ターン</hyperlink>の間3 強化。</bullet><bullet>1 <turn></turn><hyperlink>ターン</hyperlink>の間狂乱。</bullet><bullet>1 <turn></turn><hyperlink>ターン</hyperlink>の間ステディ。</bullet></bulletlist>",
@@ -29484,23 +31359,27 @@
   "icon": "0000041B00001B9D"
  },
  {
-  "notes": [
-   {
-    "note": "クールタイム：2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "全ての隣接するユニットにダメージを与える。",
   "name": "旋風攻撃",
   "slug": "whirlwind_strike_ability_000003BD00002895",
-  "damage": "20<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
    }
   ],
   "accuracy": "常にヒット",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
   "icon": "0000041B0000167F"
  },
  {
@@ -29610,39 +31489,6 @@
   "icon": "000003BD0000210B"
  },
  {
-  "modifiers": [
-   {
-    "description": "3 <turn></turn>ターンの間、90%の確率でミスフォーチュン効果を与える。",
-    "name": "ミスフォーチュン",
-    "count": 1
-   }
-  ],
-  "description": "敵に魔法のボルトを放つ。",
-  "name": "デスボルト",
-  "slug": "magic_bolts_ability_000003BD00002895",
-  "damage": "8<damageblight></damageblight> 8<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "魔法"
-   },
-   {
-    "requisite": "基本"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "000003BD0000210B"
- },
- {
   "description": "このユニットは<happiness></happiness><hyperlink>士気</hyperlink>の減少量が通常より50%少ない。",
   "name": "勇敢",
   "slug": "000004a60000048d",
@@ -29683,12 +31529,6 @@
   "name": "日和見主義者",
   "slug": "0000041b00000572",
   "icon": "0000041B00000573"
- },
- {
-  "description": "<hyperlink><flank></flank>側面攻撃</hyperlink>状態だとユニットの与えるダメージが+25%増加する。",
-  "name": "フランカー",
-  "slug": "000003fe0000007e",
-  "icon": "00000415000001D2"
  },
  {
   "modifiers": [
@@ -30010,21 +31850,24 @@
     "count": 1
    },
    {
-    "description": "<hyperlink>ヒーロー</hyperlink>ユニットに+30%のダメージを与える。 ",
-    "name": "暗殺者の短剣^n",
+    "description": "標的のHPが減るにつれて与ダメージが最大+100%まで増加する。",
+    "name": "致命的な攻撃",
     "count": 1
    }
   ],
   "description": "単発近接攻撃。",
   "name": "暗殺者の一撃",
   "slug": "assassins_dagger_ability_000003BD00002895",
-  "damage": "22<damagephysical></damagephysical> ",
+  "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
    },
    {
     "requisite": "単発"
+   },
+   {
+    "requisite": "基本"
    }
   ],
   "accuracy": "100%",
@@ -30263,7 +32106,7 @@
   "description": "2マスの円錐型範囲内にいる敵ユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>1<turn></turn>ターンの間減速になる。</bullet></bulletlist>",
   "name": "蜘蛛の巣",
   "slug": "web_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "物理範囲"
@@ -30282,7 +32125,7 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn>ターンの間、60%の確率で出血効果を与える。",
+    "description": "3 <turn></turn>ターンの間、90%の確率で出血効果を与える。",
     "name": "出血",
     "count": 1
    },
@@ -30300,7 +32143,7 @@
   "description": "2マスの円錐型範囲内にいる敵ユニット：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>1<turn></turn>ターンの間減速になる。</bullet></bulletlist>",
   "name": "棘付き網",
   "slug": "barbed_webs_ability_000003BD00002895",
-  "damage": "14<damagephysical></damagephysical> ",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "物理範囲"
@@ -30347,18 +32190,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "このヒーローがターン開始時に<hyperlink>近接攻撃状態</hyperlink>でない場合、移動するまでその<hyperlink>魔法攻撃</hyperlink>攻撃およびアビリティに+20ダメージおよび+1<hyperlink><range></range>範囲</hyperlink>を付与。",
-  "name": "至高の集中",
-  "slug": "000004c000000c5e",
-  "icon": "0000048B000005D6"
- },
- {
-  "description": "このユニットは<hyperlink>近接攻撃</hyperlink>、<hyperlink>物理遠隔攻撃</hyperlink>、<hyperlink>魔法攻撃</hyperlink>のアビリティを使用できない。",
-  "name": "鎮静状態",
-  "slug": "000004970000109b",
-  "icon": "000004970000109D"
- },
- {
   "description": "このユニットの攻撃：<bulletlist><bullet>+20%のダメージを与える。</bullet><bullet>60%の基本確率で1 <turn></turn>ターンの間凍結を与える。</bullet></bulletlist>",
   "name": "研がれた魔法武器",
   "slug": "00000497000025ff",
@@ -30381,6 +32212,18 @@
   "name": "ストーンシャード・リサイクル",
   "slug": "000004c00000019b",
   "icon": "000003E300007216"
+ },
+ {
+  "description": "このユニットは<hyperlink>近接攻撃</hyperlink>、<hyperlink>物理遠隔攻撃</hyperlink>、<hyperlink>魔法攻撃</hyperlink>のアビリティを使用できない。",
+  "name": "鎮静状態",
+  "slug": "000004970000109b",
+  "icon": "000004970000109D"
+ },
+ {
+  "description": "このヒーローがターン開始時に<hyperlink>近接攻撃状態</hyperlink>でない場合、移動するまでその<hyperlink>魔法攻撃</hyperlink>攻撃およびアビリティに+20ダメージおよび+1<hyperlink><range></range>範囲</hyperlink>を付与。",
+  "name": "至高の集中",
+  "slug": "000004c000000c5e",
+  "icon": "0000048B000005D6"
  },
  {
   "description": "ユニットに以下を付与：<bulletlist><bullet>+50%のダメージ</bullet><bullet>ネバー・ダイ</bullet><bullet>絶望の鎧</bullet></bulletlist>",
@@ -30407,12 +32250,6 @@
   "icon": "000003E300005FEE"
  },
  {
-  "description": "このユニットが加速を得る。",
-  "name": "暴君の印",
-  "slug": "0000049700000d12",
-  "icon": "0000049700000D14"
- },
- {
   "description": "このユニットが死亡すると、隣接する敵ユニットが15 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受け、2腐敗中状態になる。",
   "name": "腐敗の分解",
   "slug": "000004c000000be2",
@@ -30431,6 +32268,24 @@
   "icon": "0000049700002D8B"
  },
  {
+  "description": "このユニットはスタックごとに+10<hyperlink><hp></hp>HP</hyperlink>を得る。",
+  "name": "リーパー",
+  "slug": "000004970000352f",
+  "icon": "0000049700003536"
+ },
+ {
+  "description": "ユニットが以下を獲得：<bulletlist><bullet> +5 <hyperlink><hp></hp>HP</hyperlink>を得る。</bullet><bullet>戦闘中の回復が+5%。</bullet></bulletlist>",
+  "name": "血の貴族のマント",
+  "slug": "00000497000035c9",
+  "icon": "00000497000035CA"
+ },
+ {
+  "description": "別ユニットの死亡によって、このユニットは以下を獲得する：<bulletlist><bullet>+5<hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+2% <hyperlink><crit></crit>クリティカルヒット率</hyperlink></bullet></bulletlist><br></br>最大10回までスタックする。",
+  "name": "人間の祝福",
+  "slug": "0000048d00001a0f",
+  "icon": "0000048D00001A0A"
+ },
+ {
   "description": "ユニットが移動するまで+1<hyperlink><range></range>範囲</hyperlink>。",
   "name": "狙撃手の集中",
   "slug": "000004c000000b8b",
@@ -30441,6 +32296,18 @@
   "name": "病気",
   "slug": "000003e100001303",
   "icon": "000003E100001300"
+ },
+ {
+  "description": "このユニットは+10<hyperlink><hp></hp>HP</hyperlink>を持つ。",
+  "name": "強化召喚",
+  "slug": "0000048b00000386",
+  "icon": "0000048B00000387"
+ },
+ {
+  "description": "このユニットの攻撃は命中時に自分を10<hyperlink><temphp></temphp>追加HP</hyperlink>回復する。<br></br>連続攻撃の場合、5<hyperlink><temphp></temphp>追加HP</hyperlink>だけ回復する。",
+  "name": "ライフスティール",
+  "slug": "000004970000362e",
+  "icon": "000004970000362F"
  },
  {
   "description": "<bulletlist><bullet><turn></turn>ごとにユニットが4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を受ける。</bullet><bullet>最高5回までスタックする。</bullet></bulletlist><br></br><br></br>火傷は水浸しと凍結の<hyperlink>無効化</hyperlink>である。",
@@ -30455,40 +32322,22 @@
   "icon": "0000048D00000E87"
  },
  {
-  "description": "ユニットに以下を得る：<bulletlist><bullet>スタックごとに<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>が+1。</bullet></bulletlist><br></br>最高5回までスタックする。",
-  "name": "熱気",
-  "slug": "000004c00000092c",
-  "icon": "000004C000000934"
- },
- {
   "description": "次の戦闘終了時まで、ユニットが-2<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>を得る。",
   "name": "幻の儀式",
   "slug": "0000049700000c53",
   "icon": "0000049700000C16"
  },
  {
+  "description": "ユニットに以下を得る：<bulletlist><bullet>スタックごとに<statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>が+1。</bullet></bulletlist><br></br>最高5回までスタックする。",
+  "name": "熱気",
+  "slug": "000004c00000092c",
+  "icon": "000004C000000934"
+ },
+ {
   "description": "ユニットに以下を付与：<bulletlist><bullet>基本攻撃時に90%の基本確率でソウルバウンドを与える。</bullet><bullet>ソウルバウンドを持つユニットに対して+10%のダメージ。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "name": "霊魂縛り",
   "slug": "0000048b000000e5",
   "icon": "0000041B000016F3"
- },
- {
-  "description": "このユニットは、直近のイベントにより<happiness></happiness><hyperlink>士気</hyperlink>が+10となる。",
-  "name": "士気増加（小）",
-  "slug": "000004130000000b",
-  "icon": "0000042A000004CE"
- },
- {
-  "description": "対象のマスに<hyperlink>溶岩の小精霊</hyperlink>を召喚する。<br></br>この召喚が3 <turn></turn>ターンの間継続する。<br></br>精霊召喚は3 <turn></turn>ターンの共有クールダウンとなっている。",
-  "name": "精霊召喚：カオス",
-  "slug": "0000048d00000741",
-  "icon": "0000048D00000740"
- },
- {
-  "description": "このユニットの攻撃：<bulletlist><bullet>+20%のダメージを与える。</bullet><bullet>3 <turn></turn>ターンの間火傷を与える。</bullet></bulletlist>",
-  "name": "研がれた魔法武器",
-  "slug": "000004970000176b",
-  "icon": "000004970000176C"
  },
  {
   "description": "原始のブラッドバックが生きている間に防衛中のグレード1～3のリソラインユニットが死亡した際、マップ上に他のリソラインの死体が存在しているならば、その死体がリソラインユニットとして復活する。なお、そのグレードは死亡したリソラインユニットより1高くなる。",
@@ -30539,17 +32388,6 @@
   "icon": "0000048B000005DB"
  },
  {
-  "description": "このユニットは相手によって操作されている。<br></br>この効果が戦闘終了時まで持続した場合、相手は<mana></mana>を消費することでこのユニットを永久に保持することができる。",
-  "name": "支配済み",
-  "slug": "00000413000018dd",
-  "icon": "00000413000018DC"
- },
- {
-  "description": "ユニットが、次の戦闘終了時まで+20%のダメージを与える。",
-  "name": "奇怪なる儀式",
-  "slug": "0000049700000c06"
- },
- {
   "description": "このユニットが死亡すると、詠唱者側の範囲内4にいるユニット1体を20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。",
   "name": "生命のシード",
   "slug": "000004c0000006fa",
@@ -30568,6 +32406,12 @@
   "icon": "000004C0000007FC"
  },
  {
+  "description": "このターンの次の攻撃時、+50%のダメージを与える。",
+  "name": "血の強化",
+  "slug": "0000049700002f16",
+  "icon": "0000049700002F18"
+ },
+ {
   "description": "以下を付与：<bulletlist><bullet>+3 <defenselightning></defenselightning><hyperlink>雷耐性</hyperlink></bullet><bullet>隣接する敵ユニットは-3<defenselightning></defenselightning><hyperlink>雷耐性</hyperlink>を受ける</bullet></bulletlist>",
   "name": "エレメンタル注入",
   "slug": "000004c000000803",
@@ -30580,22 +32424,16 @@
   "icon": "000003E300005610"
  },
  {
-  "description": "戦闘終了時まで、このユニットにダメージが与えられると、20%の確率で1 <turn></turn>ターンの間凍結になる。",
-  "name": "凍結のマス",
-  "slug": "0000049700000b2d",
-  "icon": "0000049700000B2E"
- },
- {
-  "description": "この効果の消失時：<bulletlist><bullet>このユニットは30<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>受ける。</bullet><bullet>味方ユニットが隣接している場合、受けるダメージが半減する。</bullet></bulletlist>",
-  "name": "暗影の追放",
-  "slug": "0000049700000dbe",
-  "icon": "0000049700000DBF"
- },
- {
   "description": "<bulletlist><bullet>基本攻撃に+1<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を付与。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "name": "自然の力",
   "slug": "000004970000244b",
   "icon": "000004970000244C"
+ },
+ {
+  "description": "このターンで、ユニットは+40%を付与される。",
+  "name": "血の儀式",
+  "slug": "00000497000034de",
+  "icon": "00000497000034DF"
  },
  {
   "description": "次のターンまたはユニットが移動するまで<defense></defense><hyperlink>防御力</hyperlink>+2 と<resistance></resistance><hyperlink>耐性</hyperlink>+ 2を得る。",
@@ -30616,7 +32454,7 @@
   "icon": "000003E3000049ED"
  },
  {
-  "description": "<bulletlist><bullet>ユニットが<turn></turn>ごとに4 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>最高で5回までスタックする。</bullet></bulletlist><br></br>無実体またはアンデッドユニットには影響しない。<br></br><br></br>猛毒<hyperlink>無効化</hyperlink> 再生.</bulletlist>",
+  "description": "<bulletlist><bullet>ユニットが<turn></turn>ごとに4 <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>最高で5回までスタックする。<br></br>無実体またはアンデッドユニットには影響しない。<br></br><br></br>猛毒<hyperlink>無効化</hyperlink> 再生.</bullet></bulletlist>",
   "name": "毒",
   "slug": "0000041b00000bab",
   "icon": "000003E3000045AF"
@@ -30628,10 +32466,10 @@
   "icon": "000004AC000000A3"
  },
  {
-  "description": "このユニットの攻撃：<bulletlist><bullet>+20%のダメージを与える。</bullet><bullet>90%の基本確率で3 <turn></turn>ターンの間バラバラの防衛を与える。</bullet><bullet>90%の基本確率で3 <turn></turn>ターンの間バラバラの耐性を与える。</bullet></bulletlist>",
-  "name": "研がれた魔法武器",
-  "slug": "0000049700001764",
-  "icon": "0000049700001765"
+  "description": "<bulletlist><bullet>1 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br><br></br>耐性強化<hyperlink>無効化</hyperlink> バラバラの耐性。",
+  "name": "耐性強化",
+  "slug": "000003e100001411",
+  "icon": "000003E10000140E"
  },
  {
   "description": "ユニットが以下を得る：<bulletlist><bullet>低速移動</bullet><bullet><hyperlink>報復攻撃</hyperlink>が1つ減少。</bullet></bulletlist><br></br><br></br>減速した<hyperlink>無効化</hyperlink> 加速。",
@@ -30694,6 +32532,12 @@
   "icon": "0000049700000CDC"
  },
  {
+  "description": "<bulletlist><bullet>攻撃に+2<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を付与。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "name": "地獄の力",
+  "slug": "000004970000364c",
+  "icon": "0000049700000EC9"
+ },
+ {
   "description": "リンクしている対象ユニットは錯乱を1 <turn></turn>ターン付与される。<br></br><br></br>このターンは感謝と降参ができなくなる。",
   "name": "激怒",
   "slug": "0000049c000000d0",
@@ -30716,6 +32560,59 @@
   "name": "錯乱",
   "slug": "0000041b00000b17",
   "icon": "0000041B00000B1A"
+ },
+ {
+  "description": "このユニットは以下の効果を得る：<bulletlist><bullet> 無敵</bullet><bullet> スタン</bullet></bulletlist>",
+  "name": "秘匿",
+  "slug": "000003e300005873",
+  "icon": "000003E300005EBE"
+ },
+ {
+  "description": "敵が殺害され、このユニットに以下が付与される：<bulletlist><bullet>ツルツル</bullet><bullet>フランカー</bullet></bulletlist>",
+  "name": "影の印",
+  "slug": "0000048d0000180a",
+  "icon": "0000048D0000180C"
+ },
+ {
+  "description": "<bulletlist><bullet>1 <defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br><br></br>防御強化<hyperlink>無効化</hyperlink> バラバラの防衛。",
+  "name": "防御強化",
+  "slug": "000003e1000013c8",
+  "icon": "000003E1000013CA"
+ },
+ {
+  "description": "ユニットが以下を得る：<bulletlist><bullet>+20%のダメージ。</bullet><bullet><hyperlink>会心のヒット</hyperlink>の確率が+10%。</bullet><bullet>+25%の<hyperlink>会心のヒット</hyperlink>ダメージ。</bullet></bulletlist>",
+  "name": "太守の血",
+  "slug": "0000049700003407",
+  "icon": "0000049700003408"
+ },
+ {
+  "description": "<bulletlist><bullet>寄生膨張が追加で5 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>5回まで重複する。</bullet></bulletlist>",
+  "name": "膨張",
+  "slug": "00000497000033ab",
+  "icon": "00000497000033AC"
+ },
+ {
+  "description": "このユニットは<bulletlist><bullet>与えるダメージが +60% 増加する。</bullet><bullet>再起を得る。</bullet><bullet>ターン終了時に死亡する。</bullet></bulletlist>",
+  "name": "儀式の短剣",
+  "slug": "000004970000327a",
+  "icon": "000004970000327B"
+ },
+ {
+  "description": "<hyperlink>完全ミス</hyperlink>で、このユニットは10<happiness></happiness><hyperlink>士気</hyperlink>を喪失する。",
+  "name": "ファンブルデスペア",
+  "slug": "0000049700003184"
+ },
+ {
+  "description": "このユニットがアビリティを使用した際：<bulletlist><bullet>8 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>4 <happiness></happiness><hyperlink>士気</hyperlink>を失う。</bullet><bullet>この効果を1スタック分、失う。</bullet><bullet>最大5回までスタックする。</bullet></bulletlist><br></br><br></br><hyperlink>無効化</hyperlink> 優美を苦しめる。",
+  "name": "苦悩",
+  "slug": "0000049700003110",
+  "icon": "0000049700003114"
+ },
+ {
+  "description": "<bulletlist><bullet>ユニットは、<turn></turn>ごとに4 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>これは出血に置き換わりカウントされるが、以下のステータス効果の影響を受けない：出血を無視する。</bullet><bullet>5回までスタック可能。</bullet></bulletlist><br></br>このユニットが死亡すると、戦闘終了時まで対戦相手の支配下にある<hyperlink>ブラッドマゴット</hyperlink>をスポーンさせる。</bulletlist></bulletlist>",
+  "name": "血の寄生者",
+  "slug": "0000049700002ef4",
+  "icon": "0000049700002EF5"
  },
  {
   "description": "このユニットに以下を付与：<bulletlist><bullet>+10 <hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+2 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet><bullet>+1 <defense></defense><hyperlink>防御力</hyperlink></bullet><bullet>+X <resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
@@ -30760,6 +32657,30 @@
   "icon": "0000049700001A56"
  },
  {
+  "description": "このユニットは、直近のイベントにより<happiness></happiness><hyperlink>士気</hyperlink>が+10となる。",
+  "name": "士気増加（小）",
+  "slug": "000004130000000b",
+  "icon": "0000042A000004CE"
+ },
+ {
+  "description": "対象のマスに<hyperlink>溶岩の小精霊</hyperlink>を召喚する。<br></br>この召喚が3 <turn></turn>ターンの間継続する。<br></br>精霊召喚は3 <turn></turn>ターンの共有クールダウンとなっている。",
+  "name": "精霊召喚：カオス",
+  "slug": "0000048d00000741",
+  "icon": "0000048D00000740"
+ },
+ {
+  "description": "このユニットの攻撃：<bulletlist><bullet>+20%のダメージを与える。</bullet><bullet>3 <turn></turn>ターンの間火傷を与える。</bullet></bulletlist>",
+  "name": "研がれた魔法武器",
+  "slug": "000004970000176b",
+  "icon": "000004970000176C"
+ },
+ {
+  "description": "このユニットの攻撃：<bulletlist><bullet>+20%のダメージを与える。</bullet><bullet>90%の基本確率で3 <turn></turn>ターンの間バラバラの防衛を与える。</bullet><bullet>90%の基本確率で3 <turn></turn>ターンの間バラバラの耐性を与える。</bullet></bulletlist>",
+  "name": "研がれた魔法武器",
+  "slug": "0000049700001764",
+  "icon": "0000049700001765"
+ },
+ {
   "description": "このユニットの攻撃：<bulletlist><bullet>+20%のダメージを与える。</bullet><bullet>3 <turn></turn>ターンの間感電を与える。</bullet></bulletlist>",
   "name": "研がれた魔法武器",
   "slug": "000004970000175d",
@@ -30772,7 +32693,7 @@
   "icon": "000004970000158F"
  },
  {
-  "description": "ユニットが以下を得る：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist></bulletlist>",
+  "description": "ユニットが以下を得る：<bulletlist><bullet>先制攻撃</bullet><bullet>追加の<hyperlink>報復攻撃</hyperlink></bullet><bullet>防衛マスター</bullet></bulletlist>",
   "name": "カウンタースタンス",
   "slug": "0000049700001522",
   "icon": "000003E30000435F"
@@ -30782,6 +32703,24 @@
   "name": "地獄の力",
   "slug": "0000049700000ec3",
   "icon": "0000049700000EC9"
+ },
+ {
+  "description": "戦闘終了時まで、このユニットにダメージが与えられると、20%の確率で1 <turn></turn>ターンの間凍結になる。",
+  "name": "凍結のマス",
+  "slug": "0000049700000b2d",
+  "icon": "0000049700000B2E"
+ },
+ {
+  "description": "この効果の消失時：<bulletlist><bullet>このユニットは30<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>受ける。</bullet><bullet>味方ユニットが隣接している場合、受けるダメージが半減する。</bullet></bulletlist>",
+  "name": "暗影の追放",
+  "slug": "0000049700000dbe",
+  "icon": "0000049700000DBF"
+ },
+ {
+  "description": "このユニットが加速を得る。",
+  "name": "暴君の印",
+  "slug": "0000049700000d12",
+  "icon": "0000049700000D14"
  },
  {
   "description": "<bulletlist><bullet>ダメージが10%増加する。</bullet><bullet>効果は5回までスタックする。</bullet></bulletlist><br></br><br></br>強化<hyperlink>無効化</hyperlink> 弱まった。",
@@ -30794,6 +32733,17 @@
   "name": "活性の儀式",
   "slug": "0000049700000c54",
   "icon": "0000049700000C0C"
+ },
+ {
+  "description": "このユニットは相手によって操作されている。<br></br>この効果が戦闘終了時まで持続した場合、相手は<mana></mana>を消費することでこのユニットを永久に保持することができる。",
+  "name": "支配済み",
+  "slug": "00000413000018dd",
+  "icon": "00000413000018DC"
+ },
+ {
+  "description": "ユニットが、次の戦闘終了時まで+20%のダメージを与える。",
+  "name": "奇怪なる儀式",
+  "slug": "0000049700000c06"
  },
  {
   "description": "ユニットの基本攻撃が以下を得る：<bulletlist><bullet>+2 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>。</bullet><bullet>+2 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>。</bullet><bullet>50%の基本確率で3 <turn></turn>ターンの間火傷を与える。</bullet><bullet>50%の基本確率で3 <turn></turn>ターンの間感電を与える。</bullet></bulletlist>",
@@ -30856,6 +32806,12 @@
   "icon": "0000049700000200"
  },
  {
+  "description": "次の戦闘終了時まで、このユニットに以下を付与：<bulletlist><bullet>+20 <hyperlink><hp></hp>HP</hyperlink></bullet><bullet>+15 <happiness></happiness><hyperlink>士気</hyperlink></bullet></bulletlist>",
+  "name": "陰鬱な犠牲",
+  "slug": "0000048d00001ba3",
+  "icon": "0000048D00001A6E"
+ },
+ {
   "description": "攻撃：<bulletlist><bullet>+4 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>となる。</bullet><bullet>1 <turn></turn>ターンの間盲目を与える。</bullet></bulletlist><br></br>攻撃するたびにこの効果のスタック1回分が取り除かれる。",
   "name": "デューンサーペントの逆鱗",
   "slug": "00000497000001f2",
@@ -30874,7 +32830,7 @@
   "icon": "00000497000001D9"
  },
  {
-  "description": "このユニットに以下を付与：<Bulletlist><bullet>攻撃のダメージが+50%。</bullet><bullet>攻撃アクション完了後2 <turn></turn>ターンの間、30%の確率でスタン状態になる。</bullet></bulletlist>",
+  "description": "このユニットに以下を付与：<bulletlist><bullet>攻撃のダメージが+50%になる。</bullet><bullet>攻撃アクション完了後2 <turn></turn>ターンの間、30%の確率でスタン状態になる。</bullet></bulletlist>",
   "name": "オーバーチャージ完了",
   "slug": "0000048d000000bc",
   "icon": "0000048D000000C3"
@@ -30890,6 +32846,30 @@
   "name": "まとわりつく霧",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
+ },
+ {
+  "description": "<bulletlist><bullet><turn></turn>ごとにユニットが3 する<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>ユニットは戦闘中 -25%回復する。</bullet><bullet>最高4回までスタックする。<br></br><br></br> <hyperlink>無効化</hyperlink> 再生を分解する。</bullet></bulletlist>",
+  "name": "腐敗中",
+  "slug": "000003e300005b7e",
+  "icon": "000003E300005B80"
+ },
+ {
+  "description": "ユニットが死亡すると、戦闘終了時まで防衛者の支配下にある<hyperlink>ブラッドマゴット</hyperlink>をスポーンさせる。",
+  "name": "慈悲深き血の寄生者",
+  "slug": "0000049300000fae",
+  "icon": "0000049700002EF5"
+ },
+ {
+  "description": "<hyperlink>近接攻撃</hyperlink>が命中したとき、攻撃者が6 <damageSpirit></damageSpirit><hyperlink>精霊ダメージ</hyperlink>を受ける。",
+  "name": "小精霊シールド",
+  "slug": "0000045e00000d38",
+  "icon": "0000045E00000D39"
+ },
+ {
+  "description": "ユニットが死亡すると、戦闘終了時まで防衛者の支配下にある<hyperlink>ブラッドマゴット</hyperlink>をスポーンさせる。",
+  "name": "慈悲深き血の寄生者",
+  "slug": "0000049300000fa2",
+  "icon": "0000049700002EF5"
  },
  {
   "description": "サポートアビリティが、影響を受けるユニットから1の<hyperlink>マイナスのステータス効果</hyperlink>を解除する。",
@@ -30928,25 +32908,13 @@
   "icon": "000003E300005D92"
  },
  {
-  "description": "<bulletlist><bullet>1 <defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br><br></br>防御強化<hyperlink>無効化</hyperlink> バラバラの防衛。",
-  "name": "防御強化",
-  "slug": "000003e1000013c8",
-  "icon": "000003E1000013CA"
+  "description": "このユニットはターン終了時に死亡する。",
+  "name": "破滅",
+  "slug": "0000048d00001b17",
+  "icon": "0000048D00001B1A"
  },
  {
-  "description": "このユニットは以下の効果を得る：<bulletlist><bullet> 無敵</bullet><bullet> スタン</bullet></bulletlist>",
-  "name": "秘匿",
-  "slug": "000003e300005873",
-  "icon": "000003E300005EBE"
- },
- {
-  "description": "敵が殺害され、このユニットに以下が付与される：<bulletlist><bullet>ツルツル</bullet><bullet>フランカー</bullet></bulletlist>",
-  "name": "影の印",
-  "slug": "0000048d0000180a",
-  "icon": "0000048D0000180C"
- },
- {
-  "description": "スタックごとに：<bulletlist><bullet>+1の<defense></defense><hyperlink>防御力</hyperlink>、+1の<resistance></resistance><hyperlink>耐性</hyperlink></bullet>",
+  "description": "スタックごとに以下を付与：<bulletlist><bullet>+1の<defense></defense><hyperlink>防御力</hyperlink>、+1の<resistance></resistance><hyperlink>耐性</hyperlink></bullet></bulletlist>",
   "name": "まばゆき化身",
   "slug": "0000048d00001610",
   "icon": "0000048D000015C1"
@@ -31192,12 +33160,6 @@
   "icon": "0000048B000005D3"
  },
  {
-  "description": "このユニットは+10<hyperlink><hp></hp>HP</hyperlink>を持つ。",
-  "name": "強化召喚",
-  "slug": "0000048b00000386",
-  "icon": "0000048B00000387"
- },
- {
   "description": "このヒーローがこの<turn></turn><hyperlink>ターン</hyperlink>に最初に行ったチャージ攻撃のダメージが20%増加する。",
   "name": "プリペアチャージ",
   "slug": "0000048b000002be",
@@ -31258,7 +33220,7 @@
   "icon": "000004A6000004A2"
  },
  {
-  "description": "ユニットは2<hyperlink>ワールドマップ</hyperlink><turn></turn>ターンの間、+15の最大<hyperlink><hp></hp>HP</hyperlink>を得て、中立または味方領地内で+15<hyperlink><hp></hp>HP</hyperlink>再生する。",
+  "description": "ユニットは2<hyperlink>ワールドマップ</hyperlink><turn></turn>ターンの間、+15の最大<hyperlink><hp></hp>HP</hyperlink>を得て、中立または味方領地内で+15<hyperlink><hp></hp>HP</hyperlink><hyperlink>再生</hyperlink>する。",
   "name": "自然の恵み",
   "slug": "000003fe00000e50",
   "icon": "0000041B00000DBB"
@@ -31282,7 +33244,7 @@
   "icon": "0000042A000004CE"
  },
  {
-  "description": "<bulletlist><bullet>スタックするごとに-5 <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>最高5回までスタックする。 </bullet>",
+  "description": "<bulletlist><bullet>スタックするごとに-5 <happiness></happiness><hyperlink>士気</hyperlink>。</bullet><bullet>最高5回までスタックする。</bullet></bulletlist>",
   "name": "士気低下",
   "slug": "0000042a000004ca",
   "icon": "0000042A000004CD"
@@ -31480,13 +33442,7 @@
   "icon": "000003E30000727A"
  },
  {
-  "description": "<bulletlist><bullet><turn></turn>ごとにユニットが3 する<damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を受ける。</bullet><bullet>ユニットは戦闘中 -25%回復する。</bullet><bullet>最高4回までスタックする。<br></br><br></br> <hyperlink>無効化</hyperlink> 再生を分解する。</bullet>",
-  "name": "腐敗中",
-  "slug": "000003e300005b7e",
-  "icon": "000003E300005B80"
- },
- {
-  "description": "<bulletlist><bullet>ユニットが<turn></turn>ごとに2<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と2 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>火傷に置き換わり、かつ火傷としてカウントされるが、凍結または水浸しによって取り除かれない。</bullet><bullet>最大5回までスタック可能。</bullet>",
+  "description": "<bulletlist><bullet>ユニットが<turn></turn>ごとに2<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>と2 <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を受ける。</bullet><bullet>火傷に置き換わり、かつ火傷としてカウントされるが、凍結または水浸しによって取り除かれない。</bullet><bullet>最大5回までスタック可能。</bullet></bulletlist>",
   "name": "ゴーストファイヤー",
   "slug": "000003e300006f65",
   "icon": "000003E300006F67"
@@ -31508,12 +33464,6 @@
   "name": "目覚めた：まばゆい光",
   "slug": "000003e300006564",
   "icon": "000003E300004C79"
- },
- {
-  "description": "<bulletlist><bullet>1 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br><br></br>耐性強化<hyperlink>無効化</hyperlink> バラバラの耐性。",
-  "name": "耐性強化",
-  "slug": "000003e100001411",
-  "icon": "000003E10000140E"
  },
  {
   "description": "戦闘終了時まで最大<hyperlink><hp></hp>HP</hyperlink>で+20。",
@@ -31570,7 +33520,7 @@
   "icon": "000003E300004C5D"
  },
  {
-  "description": "<bulletlist><bullet>ユニットが<turn></turn>ごとに4 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>最高で5回までスタックする。</bullet></bulletlist><br></br>無実体またはアンデッドユニットには影響しない。</bulletlist>",
+  "description": "<bulletlist><bullet>ユニットが<turn></turn>ごとに4 <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を受ける。</bullet><bullet>最高で5回までスタックする。<br></br>無実体またはアンデッドユニットには影響しない。</bullet></bulletlist>",
   "name": "出血",
   "slug": "0000041b00000bad",
   "icon": "000003BD00002CFC"

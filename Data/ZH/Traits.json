@@ -1,5 +1,31 @@
 [
  {
+  "biography_description": "此人可骑乘尖啸蝙蝠在天空中翱翔",
+  "lore_description": "<helpcolor>骑乘单位变得更为常见，并获得一个尖啸蝙蝠坐骑</helpcolor>",
+  "DLC": "THRONESOFBLOOD ",
+  "point_cost": 3,
+  "id": "尖啸蝙蝠坐骑",
+  "name": "尖啸蝙蝠坐骑",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "获得飞行移动力"
+   },
+   {
+    "name": "额外单位成为骑兵"
+   },
+   {
+    "name": "领袖开局拥有尖啸蝙蝠坐骑"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "坐骑",
+  "front_end": true,
+  "icon": "000004C5000008FD",
+  "display_order": 0
+ },
+ {
   "starting_bonuses": [
    {
     "description": "开局时额外拥有一个<hyperlink>星辰小精灵</hyperlink>单位"
@@ -720,7 +746,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "不具备此特性的相邻敌人遭受：<bulletlist><bullet>-2<resistance></resistance><hyperlink>抗性</hyperlink></bullet><bullet>-2<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink></bullet>"
+    "name": "不具备此特性的相邻敌人遭受：<bulletlist><bullet>-2<resistance></resistance><hyperlink>抗性</hyperlink></bullet><bullet>-2<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink></bullet></bulletlist>"
    }
   ],
   "enabled": true,
@@ -729,6 +755,54 @@
   "icon": "0000049700000066",
   "type": "form",
   "display_order": 1
+ },
+ {
+  "affinities": [
+   {
+    "name": "1<nature></nature> 自然理念"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>品性</hyperlink>"
+   }
+  ],
+  "biography_description": "",
+  "lore_description": "他们自认为身处食物链的顶端，成为弱者也就意味着成为猎物",
+  "point_cost": 1,
+  "id": "顶级掠食者_evilact__",
+  "name": "顶级掠食者<evilact></evilact>",
+  "incompatible_society_traits": [
+   {
+    "name": "善意奉献者<goodact></goodact>"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "成功<hyperlink>掠夺</hyperlink><hyperlink>行省强化设施</hyperlink>时获得50 <food></food><hyperlink>食物</hyperlink>"
+   },
+   {
+    "name": "成功<hyperlink>毁灭</hyperlink>被征服的<hyperlink>城邦</hyperlink>时，可基于<hyperlink>行省强化设施</hyperlink>数量获得50 <food></food><hyperlink>食物</hyperlink>"
+   },
+   {
+    "name": "成功<hyperlink>移民</hyperlink>被征服的<hyperlink>城邦</hyperlink>时可基于<population></population><hyperlink>人口</hyperlink>数量获得30 <food></food><hyperlink>食物</hyperlink>。但该城邦过后会损失额外的<population></population>人口"
+   },
+   {
+    "name": "<hyperlink>附庸</hyperlink>赋予基于<population></population><hyperlink>人口</hyperlink>数量的+10 <food></food><hyperlink>食物</hyperlink>收入"
+   },
+   {
+    "name": "-10<evilact></evilact><hyperlink>品性</hyperlink>"
+   }
+  ],
+  "enabled": true,
+  "front_end": false,
+  "type": "society",
+  "display_order": 3,
+  "starting_bonuses": [
+   {
+    "description": "初始<hyperlink>单位</hyperlink>获得+1品级"
+   }
+  ],
+  "icon": "0000049300000F66"
  },
  {
   "affinities": [
@@ -2005,7 +2079,7 @@
   "display_order": 5
  },
  {
-  "lore_description": "<helpcolor>单位通常只拥有32移动力</helpcolor>",
+  "lore_description": "<helpcolor>单位在战斗及世界地图中移动更快</helpcolor>",
   "biography_description": "经过长跑训练后，他们的速度极快。",
   "point_cost": 3,
   "id": "运动健将",
@@ -2135,7 +2209,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+2状态抗性"
+    "name": "+2<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink>"
    },
    {
     "name": "<hyperlink>负面状态效果</hyperlink>持续-1<turn></turn>回合，至少为1"
@@ -2463,7 +2537,7 @@
     "name": "通过清理<hyperlink>侵扰</hyperlink>、<hyperlink>远古奇观</hyperlink>或<hyperlink>资源节点</hyperlink>获得的资源+75%"
    },
    {
-    "name": "单位每<turn></turn><hyperlink>回合</hyperlink>额外自愈5<hyperlink><hp></hp>生命值</hyperlink>"
+    "name": "单位每<turn></turn><hyperlink>回合</hyperlink>额外<hyperlink>自愈</hyperlink>+5<hyperlink><hp></hp>生命值</hyperlink>"
    }
   ],
   "enabled": true,
@@ -3239,7 +3313,7 @@
  },
  {
   "biography_description": "他们血脉贲张，这使得他们会比其他人更快地恢复伤势。",
-  "lore_description": "<helpcolor>军队可以在世界地图上战斗得更长久</helpcolor>",
+  "lore_description": "<helpcolor>军队在世界地图上战后恢复更快</helpcolor>",
   "point_cost": 2,
   "id": "快速休整",
   "name": "快速休整",
@@ -3251,7 +3325,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "每<hyperlink>世界地图</hyperlink><turn></turn><hyperlink>回合</hyperlink>额外自愈+10<hyperlink><hp></hp>生命值</hyperlink>"
+    "name": "每<hyperlink>世界地图</hyperlink><turn></turn><hyperlink>回合</hyperlink><hyperlink>额外自愈</hyperlink>+10<hyperlink><hp></hp>生命值</hyperlink>"
    }
   ],
   "enabled": true,

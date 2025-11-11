@@ -2,6 +2,854 @@
  {
   "modifiers": [
    {
+    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "대상 적에게 마법 화살을 발사합니다.",
+  "name": "진한 피 화살",
+  "slug": "magic_bolts_ability_000004D0000002C1",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "description": "해당 유닛이 턴을 종료하고 방어 모드에 돌입:<bulletlist><bullet><hyperlink>통제 구역을</hyperlink> 모든 인접 헥스로 확장</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet><bullet><hyperlink><flank></flank> 측면 공격</hyperlink>에 면역</bullet></bulletlist>",
+  "name": "방어 모드",
+  "slug": "0000034500000469",
+  "icon": "000003450000049D"
+ },
+ {
+  "description": "근접 공격자에게 3 <turn></turn> 턴 동안 출혈 중첩을 유발합니다.",
+  "name": "가시덩굴",
+  "slug": "00000497000033d0",
+  "icon": "00000497000033CF"
+ },
+ {
+  "description": "기본 <hyperlink>유닛 유지비가</hyperlink> -25% 감소합니다.",
+  "name": "낮은 유지비",
+  "slug": "0000045e00000664",
+  "icon": "0000045E00000665"
+ },
+ {
+  "description": "소환되었거나 다른 차원에서 넘어온 유닛입니다. 마나 유지비가 필요합니다.",
+  "name": "마법 기원",
+  "slug": "000003e500001adb",
+  "icon": "0000039F00002B34"
+ },
+ {
+  "description": "유닛의 <happiness></happiness> <hyperlink>사기가</hyperlink> -50% 감소합니다.",
+  "name": "무정함",
+  "slug": "0000049700000f8f",
+  "icon": "0000048B0000005B"
+ },
+ {
+  "description": "출혈에 면역인 유닛입니다.",
+  "name": "상태 효과 면역: 출혈",
+  "slug": "0000049700001683",
+  "icon": "0000049700001685"
+ },
+ {
+  "description": "해당 유닛의 죽음은 다른 아군의 <happiness></happiness> <hyperlink>사기</hyperlink>에 영향을 미치지 않습니다.",
+  "name": "소모성 병력",
+  "slug": "0000048d00001a24",
+  "icon": "0000048D00001A19"
+ },
+ {
+  "description": "언데드 유닛의 보유 효과:<bulletlist><bullet><defensefrost></defensefrost> <hyperlink>서리 저항</hyperlink> +2</bullet><bullet><defenseblight></defenseblight> <hyperlink>역병 저항</hyperlink> +2</bullet><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> -4</bullet><bullet><defensefire></defensefire> <hyperlink>화염 저항</hyperlink> -4</bullet><bullet>무정함</bullet><bullet>면역:<bulletlist></bullet><bullet>중독</bullet><bullet>질병</bullet></bulletlist></bulletlist>",
+  "name": "언데드",
+  "slug": "000003e500001a37",
+  "icon": "000003E500001A38"
+ },
+ {
+  "description": "원거리 공격 및 적을 약화하는 데 특화된 마법 사용자입니다.<bulletlist><bullet>유닛의 <hyperlink><accuracy></accuracy> 명중률이</hyperlink> <hyperlink>사선</hyperlink>에 영향을 받습니다.</bullet><bullet><hyperlink>근접 교전</hyperlink> 시 기본 <hyperlink>마법</hyperlink> 공격을 사용할 수 없습니다.</bullet></bulletlist>",
+  "name": "전투 마법사 유닛",
+  "slug": "000003e300004c86",
+  "icon": "000003E300004C87"
+ },
+ {
+  "description": "지상 헥스에서 이동 가능한 유닛입니다.",
+  "name": "지상 이동",
+  "slug": "0000049300000402",
+  "icon": "00000357000001AB"
+ },
+ {
+  "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
+  "description": "",
+  "name": "<xpCol>역병 저항</xpCol>",
+  "slug": "Blight_resistance_2"
+ },
+ {
+  "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
+  "description": "",
+  "name": "<xpCol>서리 저항</xpCol>",
+  "slug": "Frost_resistance_2"
+ },
+ {
+  "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
+  "description": "",
+  "name": "<fireCol>화염 약점</fireCol>",
+  "slug": "Fire_weakness_4"
+ },
+ {
+  "damage": "<fireCol>4<damagespirit></damagespirit></fireCol>",
+  "description": "",
+  "name": "<fireCol>영혼 약점</fireCol>",
+  "slug": "Spirit_weakness_4"
+ },
+ {
+  "description": "해당 유닛의 최대 <hyperlink><hp></hp> 체력이</hyperlink> 10 증가합니다.",
+  "name": "<hp></hp> +10",
+  "slug": "0000048b00000c6e",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "해당 유닛의 최대 <defense></defense> <hyperlink>방어력이</hyperlink> 1 증가합니다.",
+  "name": "<defense></defense> +1",
+  "slug": "0000048b00000c7a",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "해당 유닛의 최대 <resistance></resistance> <hyperlink>저항력이</hyperlink> 1 증가합니다.",
+  "name": "<resistance></resistance> +1",
+  "slug": "0000048b00000c79",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "유닛이 공격 시:<bulletlist><bullet><statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력을</hyperlink> 최대 2까지 무시</bullet><bullet><resistance></resistance> <hyperlink>저항력을</hyperlink> 최대 1까지 무시</bullet><bullet><defense></defense> <hyperlink>방어력을</hyperlink> 최대 1까지 무시</bullet></bulletlist>",
+  "name": "투사 메달: 유도자",
+  "slug": "000003e30000628a",
+  "icon": "000003E30000627B"
+ },
+ {
+  "description": "해당 유닛이 전투 도중 사망할 경우, 아군의 승리로 전투가 끝나면 최대 <hyperlink><hp></hp> 체력</hyperlink>의 50%를 지닌 채 부활합니다.",
+  "name": "회생",
+  "slug": "0000035700000332",
+  "icon": "0000035700000333"
+ },
+ {
+  "description": "해당 유닛은 공격 시 10%의 추가 피해를 줍니다.",
+  "name": "피해 +10%",
+  "slug": "0000048b00000c74",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "해당 유닛의 최대 <defense></defense> <hyperlink>방어력이</hyperlink> 1 증가합니다.",
+  "name": "<defense></defense> +1",
+  "slug": "0000048b00000c7b",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "해당 유닛의 최대 <resistance></resistance> <hyperlink>저항력이</hyperlink> 1 증가합니다.",
+  "name": "<resistance></resistance> +1",
+  "slug": "0000048b00000c7d",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "활 사격",
+  "slug": "shoot_bow_ability_000004D0000002C0",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "멀리 있는 대상을 노리는 공격 유닛입니다. 직접 공격에 다소 취약합니다.<bulletlist><bullet>유닛의 <hyperlink><accuracy></accuracy> 명중률이</hyperlink> <hyperlink>사선</hyperlink>에 영향을 받습니다.</bullet><bullet><hyperlink>근접 교전</hyperlink> 시 기본 원거리 공격을 사용할 수 없습니다.</bullet></bulletlist>",
+  "name": "원거리 유닛",
+  "slug": "0000039f000016f1",
+  "icon": "0000039F000016E8"
+ },
+ {
+  "description": "<hyperlink><range></range>범위</hyperlink> 공격의 <hyperlink>물리 원거리가</hyperlink> +1 증가합니다.",
+  "name": "투사 메달: 독수리의 눈",
+  "slug": "000003e300006289",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_000004D0000002BF",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "해당 유닛이 턴을 종료하고 방어 모드에 돌입:<bulletlist><bullet><hyperlink>통제 구역을</hyperlink> 모든 인접 헥스로 확장</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet><bullet><hyperlink><flank></flank> 측면 공격</hyperlink>에 면역</bullet><bullet>모든 인접 우호 유닛의 <defense></defense> <hyperlink>방어력</hyperlink> +3</bullet></bulletlist>",
+  "name": "방어 모드: 방패 장벽",
+  "slug": "000003e300004c8f",
+  "icon": "000003E300004C94"
+ },
+ {
+  "description": "해당 유닛의 비 <hyperlink><flank></flank> 측면 공격</hyperlink>에 대한 <defense></defense> <hyperlink>방어력이</hyperlink> +3 증가합니다.",
+  "name": "방패 방어",
+  "slug": "000003e300004c8a",
+  "icon": "000003E300004C8C"
+ },
+ {
+  "description": "적을 막고 물리 공격으로부터 아군을 보호하는 데 특화된 유닛입니다. 방패 유닛은 다음을 보유합니다.<bulletlist><bullet>방패 방어 상태</bullet><bullet>방어 모드: 방패 장벽 상태</bullet></bulletlist>",
+  "name": "방패 유닛",
+  "slug": "0000039f000016f0",
+  "icon": "0000039F000016E5"
+ },
+ {
+  "description": "해당 유닛이 <hyperlink>방어 모드</hyperlink>에 돌입할 경우, 인접한 우호 유닛들이 방어력 강화 상태를 획득합니다.",
+  "name": "투사 메달: 확고한 방어",
+  "slug": "000003e300006280",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "기병 및 대형 유닛을 대상으로 +40% 추가 피해를 줍니다.",
+    "name": "폴암",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_000004D0000002BE",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "<hyperlink>돌진</hyperlink> 공격의 추가 효과에 영향을 받지 않습니다.<br></br><br></br>육중한 돌진 공격에 역으로 당할 수 있습니다.",
+  "name": "돌진 저항",
+  "slug": "000003eb0000053e",
+  "icon": "000003EB0000053F"
+ },
+ {
+  "description": "\\\"선제 공격\\\"을 지닌 유닛은 공격을 받을 때 <hyperlink>반격으로</hyperlink> 먼저 공격합니다.",
+  "name": "선제 공격",
+  "slug": "000003fe0000008a",
+  "icon": "000003E300004D6B"
+ },
+ {
+  "description": "커다란 위협과 기병을 상대하는 전문가입니다. 돌격 유닛의 돌진에 효과적으로 대응할 수 있습니다.<br></br>폴암 유닛의 보유 효과:<bulletlist><bullet><hyperlink>선제 공격</hyperlink></bullet><bullet>돌진 저항</bullet><bullet>기병 및 대형 유닛을 대상으로 +40 추가 피해 유발</bullet></bulletlist>",
+  "name": "폴암 유닛",
+  "slug": "0000039f000016f2",
+  "icon": "0000039F000016EB"
+ },
+ {
+  "description": "<hyperlink>반격</hyperlink> 시 피해가 +40% 증가합니다.",
+  "name": "투사 메달: 반격 피해",
+  "slug": "0000049700001549",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_000004D00000018B",
+  "damage": "10<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "해당 유닛이 적의 <hyperlink>통제 구역</hyperlink>에 의해 멈추지 않습니다.",
+  "name": "날랜 몸놀림",
+  "slug": "0000042b00000006",
+  "icon": "0000042B00000008"
+ },
+ {
+  "description": "해당 유닛이 <hyperlink>기회 공격을</hyperlink> 발동하지 않습니다.",
+  "name": "능수능란",
+  "slug": "000003eb00000425",
+  "icon": "000003E300004CA5"
+ },
+ {
+  "description": "특별한 전문화 또는 카운터가 없는 완전한 근접 유닛입니다.",
+  "name": "싸움꾼 유닛",
+  "slug": "000003e300004ea6",
+  "icon": "000003E300004EA5"
+ },
+ {
+  "description": "에테르 유닛의 보유 효과:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> -4</bullet><bullet>지형 통과 상태</bullet><bullet>면역:<bulletlist></bullet><bullet>출혈</bullet><bullet>질병</bullet><bullet>부동</bullet><bullet>중독</bullet></bulletlist></bulletlist>",
+  "name": "에테르",
+  "slug": "000003e300004802",
+  "icon": "000003E300004804"
+ },
+ {
+  "description": "이 유닛은 장애물을 통과할 수 있습니다. 유닛이 운송 수단에 있을 때는 적용되지 않습니다.",
+  "name": "지형 통과",
+  "slug": "000003e300004814",
+  "icon": "000003E300004815"
+ },
+ {
+  "damage": "<fireCol>2<damagefire></damagefire></fireCol>",
+  "description": "",
+  "name": "<fireCol>화염 약점</fireCol>",
+  "slug": "Fire_weakness_2"
+ },
+ {
+  "description": "유닛이 획득:<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +10</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet></bulletlist>",
+  "name": "투사 메달: 난동꾼",
+  "slug": "000003e300006294",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn> 턴 동안 2 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
+  "name": "돌진 공격",
+  "slug": "melee_charge_strike_(base)_ability_000004C6000001F5",
+  "damage": "27<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "반경 2 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>출혈 중첩 하나당 추가 5 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>출혈 유닛이 맞을 때마다 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist>",
+  "name": "피의 장미 흡수",
+  "slug": "blood_rose_drain_ability_000004C6000001F5",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000033BE"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "대상 시체가 당신의 통제를 받는 가시 스켈레톤으로 부활합니다.",
+  "name": "가시 스켈레톤 소생",
+  "slug": "raise_rose_skeleton_ability_000004C6000001F5",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "icon": "00000497000033CA"
+ },
+ {
+  "description": "동물에 올라탄 유닛입니다.",
+  "name": "기병",
+  "slug": "0000038400000371",
+  "icon": "0000038400000372"
+ },
+ {
+  "description": "적 진열을 교란하는 데 특화된 공격 유닛입니다. 돌격 유닛은 <hyperlink>돌진</hyperlink> 공격을 보유하고 있어 방패 유닛에 강하지만, 폴암 유닛에 역으로 당할 수 있습니다.",
+  "name": "돌격 유닛",
+  "slug": "000003bd000028b7",
+  "icon": "000003BD000028B8"
+ },
+ {
+  "description": "해당 유닛이 전장에 있을 때, 모든 우호 언데드 유닛이 가시덩굴 상태를 획득합니다.",
+  "name": "저주받은 장미의 지휘",
+  "slug": "00000497000033d2",
+  "icon": "00000497000033D3"
+ },
+ {
+  "description": "유닛이 질주 능력을 획득합니다.",
+  "name": "투사 메달: 질주",
+  "slug": "000003e300006287",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "유닛이 <hyperlink><flank></flank> 측면 공격</hyperlink> 시 주는 피해가 +25% 증가합니다.",
+    "name": "측면 공격자",
+    "count": 1
+   }
+  ],
+  "description": "대상 유닛을 타격하고 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 준 피해의 50%만큼 회복합니다.",
+  "name": "흡혈 타격",
+  "slug": "melee_strike_(base)_ability_000004C500000B15",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "유닛이 <hyperlink><flank></flank> 측면 공격</hyperlink> 시 주는 피해가 +25% 증가합니다.",
+    "name": "측면 공격자",
+    "count": 1
+   },
+   {
+    "description": "전투가 종료될 때까지 4 고통을 유발합니다.",
+    "name": "고통",
+    "count": 1
+   }
+  ],
+  "description": "대상 적에게 피해를 줍니다.",
+  "name": "고통의 채찍",
+  "slug": "whip_ability_000004C500000B15",
+  "damage": "18<damagephysical></damagephysical> 18<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   },
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700003011"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 0 <turn></turn>"
+   }
+  ],
+  "description": "대상 헥스로 순간이동합니다.",
+  "name": "그림자 걸음",
+  "slug": "shadow_step_ability_000004C500000B15",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "이동"
+   },
+   {
+    "requisite": "순간이동"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "2",
+  "icon": "00000497000032F2"
+ },
+ {
+  "description": "특정 전투 스타일에 국한되지 않는 강력한 유닛입니다.<br></br>모든 신화 유닛은 통제 상실 면역 상태를 보유합니다.",
+  "name": "신화 유닛",
+  "slug": "000003e300004e9f",
+  "icon": "000003E300004EA0"
+ },
+ {
+  "description": "유닛의 <hyperlink>반격이</hyperlink> +1 증가합니다.",
+  "name": "주시",
+  "slug": "000003e100001533",
+  "icon": "000003E3000063F6"
+ },
+ {
+  "description": "<hyperlink><flank></flank> 측면 공격</hyperlink> 면역",
+  "name": "초감각 인지",
+  "slug": "000003e10000139d",
+  "icon": "000003E10000139A"
+ },
+ {
+  "description": "유닛이 <hyperlink><flank></flank> 측면 공격</hyperlink> 시 주는 피해가 +25% 증가합니다.",
+  "name": "측면 공격자",
+  "slug": "000003fe0000007e",
+  "icon": "00000415000001D2"
+ },
+ {
+  "description": "광폭화, 압도 등 유닛의 통제력을 상실하는 효과에 면역입니다.<br></br>또한 <hyperlink>포획당함</hyperlink> 효과에도 면역을 부여합니다.",
+  "name": "통제 상실 면역",
+  "slug": "0000045e00000580",
+  "icon": "0000048B00000057"
+ },
+ {
+  "description": "유닛이 살육의 기세 상태를 획득합니다.",
+  "name": "투사 메달: 살육의 기세",
+  "slug": "000003e300006288",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 피의 기생충 상태를 유발합니다.",
+    "name": "피의 기생충",
+    "count": 1
+   }
+  ],
+  "description": "원뿔 1 헥스 내 유닛에 피해를 줍니다.",
+  "name": "기생성 베기",
+  "slug": "melee_strike_(base)_ability_000004C500000B10",
+  "damage": "22<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>피해가 유닛 등급 하나당 10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 증가(단, 대상의 등급이 V 미만일 경우)</bullet><bullet>대상이 받은 피해의 50%만큼 회복</bullet><bullet>해당 능력이 대상을 처치할 경우, 집정관의 피 부여의 재사용 대기시간 초기화</bullet></bulletlist>",
+  "name": "하급 생명체 흡수",
+  "slug": "siphon_lesser_ability_000004C500000B10",
+  "damage": "33<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000033F0"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 4 <turn></turn>"
+   },
+   {
+    "note": "시작 시 재사용 대기시간"
+   }
+  ],
+  "description": "등급이 III 이상인 대상 우호 유닛이 전투가 종료될 때까지 집정관의 피 상태를 획득합니다.",
+  "name": "집정관의 피 부여",
+  "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000049700003402"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적 유닛이 피해를 받고 인접 헥스로 끌어당겨집니다.",
+  "name": "피의 인력",
+  "slug": "blood_pull_ability_000004C500000B10",
+  "damage": "11<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000004970000340F"
+ },
+ {
+  "description": "대형 유닛:<bulletlist><bullet><hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 공격에 맞을 확률 20% 증가</bullet><bullet>대다수의 이동 효과에 면역</bullet><bullet>파괴 전문가 상태 보유</bullet></bulletlist>",
+  "name": "대형",
+  "slug": "000003450000052c",
+  "icon": "000003450000049B"
+ },
+ {
+  "description": "인접 유닛이 사망할 경우:<bulletlist><bullet>3 <turn></turn> 턴 동안 강화 획득</bullet><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist>",
+  "name": "생혈 흡수",
+  "slug": "0000049700003414",
+  "icon": "0000049700003415"
+ },
+ {
+  "description": "턴 종료 시 인접 적 유닛이 90%의 기본 확률로 다음을 겪음:<bulletlist><bullet>3 <turn></turn> 턴 동안 불운 상태</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> 10 감소</bullet></bulletlist>",
+  "name": "억압의 오라",
+  "slug": "0000049700003422",
+  "icon": "0000049700003423"
+ },
+ {
+  "description": "턴마다 한 번 공격에 맞을 경우, 3 <turn></turn> 턴 동안 획득:<bulletlist><bullet>방어력 강화</bullet><bullet>저항력 강화</bullet></bulletlist>",
+  "name": "응혈",
+  "slug": "000004970000341e",
+  "icon": "0000049700003420"
+ },
+ {
+  "description": "해당 유닛의 공격이 <hyperlink>요새화</hyperlink> 상태인 장애물에 피해를 줍니다.",
+  "name": "파괴 전문가",
+  "slug": "000003870000001b",
+  "icon": "0000038700000022"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_000004C500000B0A",
+  "damage": "8<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 0 <turn></turn>"
+   }
+  ],
+  "description": "죽은 대상 유닛 흡수:<bulletlist><bullet>3 <turn></turn> 턴 동안 강화 중첩 획득</bullet><bullet>기생충 팽창의 피해를 증가시키는 팽창 중첩 획득</bullet></bulletlist>",
+  "name": "시체 과식",
+  "slug": "corpse_gorge_ability_000004C500000B0A",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "icon": "00000497000033A5"
+ },
+ {
+  "description": "해당 유닛 사망 시 인접 적:<bulletlist><bullet>10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 피의 기생충 상태 획득</bullet></bulletlist>",
+  "name": "기생충 팽창",
+  "slug": "00000497000033a0",
+  "icon": "00000497000033A1"
+ },
+ {
+  "description": "동물 유닛입니다.",
+  "name": "동물",
+  "slug": "000003fe00000018",
+  "icon": "000003FE00000019"
+ },
+ {
+  "description": "피의 기생충에 면역인 유닛입니다.",
+  "name": "상태 효과 면역: 피의 기생충",
+  "slug": "00000497000035d5",
+  "icon": "00000497000035D7"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적에게 마법 화살을 발사합니다. 대상이 보유한 출혈 중첩당 +10% 추가 피해를 줍니다.",
+  "name": "출혈 화살",
+  "slug": "magic_bolts_ability_000004C500000B05",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "description": "대상 적:<bulletlist><bullet>피해 유발</bullet><bullet>3 <turn></turn> 턴 동안 2 피의 기생충 획득</bullet></bulletlist>",
+  "name": "진홍빛 역병",
+  "slug": "scarlet_plague_ability_000004C500000B05",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003269"
+ },
+ {
+  "notes": [
+   {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   }
+  ],
+  "description": "시전자:<bulletlist><bullet>막을 수 없는 5 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 받음</bullet><bullet>피해 +60%</bullet><bullet>회생 상태 획득</bullet><bullet>턴 종료 시 사망</bullet></bulletlist>",
+  "name": "의례용 단검",
+  "slug": "dagger_of_the_rite_ability_000004C500000B05",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "0000049700003275"
+ },
+ {
+  "description": "해당 유닛은 종족이 특별한 탈것 특성을 보유할 경우 기병 상태가 됩니다.",
+  "name": "지정 기병",
+  "slug": "000003eb0000073f",
+  "icon": "000003EB0000073E"
+ },
+ {
+  "description": "진홍빛 역병:<bulletlist><bullet>기본 피해가 25 <damagePhysical></damagePhysical> <hyperlink>물리 피해로</hyperlink> 증가</bullet><bullet>4 피의 기생충 상태 유발</bullet></bulletlist>",
+  "name": "투사의 진홍빛 역병",
+  "slug": "0000049700003270",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
     "description": "<happiness></happiness> <hyperlink>사기가</hyperlink> \\\"낮음\\\" 이하인 유닛에 주는 피해가 +30 증가합니다.",
     "name": "잔혹",
     "count": 1
@@ -86,34 +934,10 @@
   "icon": "000004C000000521"
  },
  {
-  "description": "해당 유닛이 턴을 종료하고 방어 모드에 돌입:<bulletlist><bullet><hyperlink>통제 구역을</hyperlink> 모든 인접 헥스로 확장</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet><bullet><hyperlink><flank></flank> 측면 공격</hyperlink>에 면역</bullet></bulletlist>",
-  "name": "방어 모드",
-  "slug": "0000034500000469",
-  "icon": "000003450000049D"
- },
- {
   "description": "해당 유닛이 공성 중인 군대에 속한 경우 +1 <siegehealthdamage></siegehealthdamage><hyperlink>요새 피해</hyperlink>에 기여합니다.",
   "name": "공성 전문가",
   "slug": "000003fe000008c4",
   "icon": "000003FE000008C5"
- },
- {
-  "description": "대형 유닛:<bulletlist><bullet><hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 공격에 맞을 확률 20% 증가</bullet><bullet>대다수의 이동 효과에 면역</bullet><bullet>파괴 전문가 상태 보유</bullet></bulletlist>",
-  "name": "대형",
-  "slug": "000003450000052c",
-  "icon": "000003450000049B"
- },
- {
-  "description": "소환되었거나 다른 차원에서 넘어온 유닛입니다. 마나 유지비가 필요합니다.",
-  "name": "마법 기원",
-  "slug": "000003e500001adb",
-  "icon": "0000039F00002B34"
- },
- {
-  "description": "유닛의 <happiness></happiness> <hyperlink>사기가</hyperlink> -50% 감소합니다.",
-  "name": "무정함",
-  "slug": "0000049700000f8f",
-  "icon": "0000048B0000005B"
  },
  {
   "description": "해당 유닛은 비 <hyperlink>요새화</hyperlink> 장애물을 속도 감소 없이 짓뭉갤 수 있습니다.",
@@ -134,7 +958,7 @@
   "icon": "0000041B000008F3"
  },
  {
-  "description": "해당 유닛:<bulletlist><bullet>이동 점수 페널티 또는 승선 없이 수상 헥스 진입 가능</bullet><bullet>강과 늪지에서 이동 속도가 더 빠른 유닛입니다.</bullet>",
+  "description": "해당 유닛:<bulletlist><bullet>이동 점수 페널티 또는 승선 없이 수상 헥스 진입 가능</bullet><bullet>강과 늪지에서 이동 속도가 더 빠른 유닛입니다.</bullet></bulletlist>",
   "name": "수륙 양용",
   "slug": "000003eb0000071f",
   "icon": "0000039F000028E0"
@@ -146,100 +970,10 @@
   "icon": "000004970000191C"
  },
  {
-  "description": "특정 전투 스타일에 국한되지 않는 강력한 유닛입니다.<br></br>모든 신화 유닛은 통제 상실 면역 상태를 보유합니다.",
-  "name": "신화 유닛",
-  "slug": "000003e300004e9f",
-  "icon": "000003E300004EA0"
- },
- {
   "description": "해당 유닛은 유닛을 강력한 힘이나 물리적으로 옮기는 효과에 면역입니다.",
   "name": "위치 이동 불가",
   "slug": "000004a600000b7a",
   "icon": "000004A600000B7B"
- },
- {
-  "description": "언데드 유닛의 보유 효과:<bulletlist><bullet><defensefrost></defensefrost> <hyperlink>서리 저항</hyperlink> +2</bullet><bullet><defenseblight></defenseblight> <hyperlink>역병 저항</hyperlink> +2</bullet><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> -4</bullet><bullet><defensefire></defensefire> <hyperlink>화염 저항</hyperlink> -4</bullet><bullet>무정함</bullet><bullet>면역:<bulletlist></bullet><bullet>중독</bullet><bullet>질병</bullet></bulletlist></bulletlist></bulletlist>",
-  "name": "언데드",
-  "slug": "000003e500001a37",
-  "icon": "000003E500001A38"
- },
- {
-  "description": "광폭화, 압도 등 유닛의 통제력을 상실하는 효과에 면역입니다.<br></br>또한 <hyperlink>포획당함</hyperlink> 효과에도 면역을 부여합니다.",
-  "name": "통제 상실 면역",
-  "slug": "0000045e00000580",
-  "icon": "0000048B00000057"
- },
- {
-  "description": "해당 유닛의 공격이 <hyperlink>요새화</hyperlink> 상태인 장애물에 피해를 줍니다.",
-  "name": "파괴 전문가",
-  "slug": "000003870000001b",
-  "icon": "0000038700000022"
- },
- {
-  "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
-  "description": "",
-  "name": "<xpCol>역병 저항</xpCol>",
-  "slug": "Blight_resistance_2"
- },
- {
-  "damage": "<xpCol>2<damagefrost></damagefrost></xpCol>",
-  "description": "",
-  "name": "<xpCol>서리 저항</xpCol>",
-  "slug": "Frost_resistance_2"
- },
- {
-  "damage": "<fireCol>4<damagefire></damagefire></fireCol>",
-  "description": "",
-  "name": "<fireCol>화염 약점</fireCol>",
-  "slug": "Fire_weakness_4"
- },
- {
-  "damage": "<fireCol>4<damagespirit></damagespirit></fireCol>",
-  "description": "",
-  "name": "<fireCol>영혼 약점</fireCol>",
-  "slug": "Spirit_weakness_4"
- },
- {
-  "description": "해당 유닛의 최대 <hyperlink><hp></hp> 체력이</hyperlink> 10 증가합니다.",
-  "name": "<hp></hp> +10",
-  "slug": "0000048b00000c6e",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "해당 유닛의 최대 <defense></defense> <hyperlink>방어력이</hyperlink> 1 증가합니다.",
-  "name": "<defense></defense> +1",
-  "slug": "0000048b00000c7a",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "해당 유닛의 최대 <resistance></resistance> <hyperlink>저항력이</hyperlink> 1 증가합니다.",
-  "name": "<resistance></resistance> +1",
-  "slug": "0000048b00000c79",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "유닛이 살육의 기세 상태를 획득합니다.",
-  "name": "투사 메달: 살육의 기세",
-  "slug": "000003e300006288",
-  "icon": "000003E30000627B"
- },
- {
-  "description": "해당 유닛은 공격 시 10%의 추가 피해를 줍니다.",
-  "name": "피해 +10%",
-  "slug": "0000048b00000c74",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "해당 유닛의 최대 <defense></defense> <hyperlink>방어력이</hyperlink> 1 증가합니다.",
-  "name": "<defense></defense> +1",
-  "slug": "0000048b00000c7b",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "해당 유닛의 최대 <resistance></resistance> <hyperlink>저항력이</hyperlink> 1 증가합니다.",
-  "name": "<resistance></resistance> +1",
-  "slug": "0000048b00000c7d",
-  "icon": "0000048B00000C78"
  },
  {
   "modifiers": [
@@ -537,12 +1271,6 @@
   "icon": "00000357000001A5"
  },
  {
-  "description": "원거리 공격 및 적을 약화하는 데 특화된 마법 사용자입니다.<bulletlist><bullet>유닛의 <hyperlink><accuracy></accuracy> 명중률이</hyperlink> <hyperlink>사선</hyperlink>에 영향을 받습니다.</bullet><bullet><hyperlink>근접 교전</hyperlink> 시 기본 <hyperlink>마법</hyperlink> 공격을 사용할 수 없습니다.</bullet></bulletlist>",
-  "name": "전투 마법사 유닛",
-  "slug": "000003e300004c86",
-  "icon": "000003E300004C87"
- },
- {
   "damage": "<xpCol>2<damagespirit></damagespirit></xpCol>",
   "description": "",
   "name": "<xpCol>영혼 저항</xpCol>",
@@ -671,46 +1399,16 @@
   "icon": "0000048D00000864"
  },
  {
-  "description": "<hyperlink>돌진</hyperlink> 공격의 추가 효과에 영향을 받지 않습니다.<br></br><br></br>육중한 돌진 공격에 역으로 당할 수 있습니다.",
-  "name": "돌진 저항",
-  "slug": "000003eb0000053e",
-  "icon": "000003EB0000053F"
- },
- {
   "description": "불붙음에 면역인 유닛입니다.",
   "name": "상태 효과 면역: 불붙음",
   "slug": "0000041b00000cbc",
   "icon": "0000049700000866"
  },
  {
-  "description": "\\\"선제 공격\\\"을 지닌 유닛은 공격을 받을 때 <hyperlink>반격으로</hyperlink> 먼저 공격합니다.",
-  "name": "선제 공격",
-  "slug": "000003fe0000008a",
-  "icon": "000003E300004D6B"
- },
- {
-  "description": "지상 헥스에서 이동 가능한 유닛입니다.",
-  "name": "지상 이동",
-  "slug": "0000049300000402",
-  "icon": "00000357000001AB"
- },
- {
-  "description": "커다란 위협과 기병을 상대하는 전문가입니다. 돌격 유닛의 돌진에 효과적으로 대응할 수 있습니다.<br></br>폴암 유닛의 보유 효과:<bulletList><bullet><hyperlink>선제 공격</hyperlink></bullet><bullet>돌진 저항</bullet><bullet>기병 및 대형 유닛을 대상으로 +40 추가 피해 유발</bullet></bulletlist>",
-  "name": "폴암 유닛",
-  "slug": "0000039f000016f2",
-  "icon": "0000039F000016EB"
- },
- {
   "damage": "<xpCol>4<damagefire></damagefire></xpCol>",
   "description": "",
   "name": "<xpCol>화염 저항</xpCol>",
   "slug": "Fire_resistance_4"
- },
- {
-  "description": "<hyperlink>반격</hyperlink> 시 피해가 +40% 증가합니다.",
-  "name": "투사 메달: 반격 피해",
-  "slug": "0000049700001549",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [
@@ -772,24 +1470,6 @@
   "name": "날렵함",
   "slug": "000003fe0000007f",
   "icon": "000003E3000059BA"
- },
- {
-  "description": "기본 <hyperlink>유닛 유지비가</hyperlink> -25% 감소합니다.",
-  "name": "낮은 유지비",
-  "slug": "0000045e00000664",
-  "icon": "0000045E00000665"
- },
- {
-  "description": "해당 유닛이 <hyperlink>기회 공격을</hyperlink> 발동하지 않습니다.",
-  "name": "능수능란",
-  "slug": "000003eb00000425",
-  "icon": "000003E300004CA5"
- },
- {
-  "description": "동물 유닛입니다.",
-  "name": "동물",
-  "slug": "000003fe00000018",
-  "icon": "000003FE00000019"
  },
  {
   "description": "<hyperlink><flank></flank> 측면 공격</hyperlink> 및 홀로 있는 적을 노리는 데 유용한 저렴하고 날렵한 유닛입니다.<br></br>척후병 유닛은 다음을 보유합니다.<bulletlist><bullet>날렵함</bullet><bullet>능수능란</bullet></bulletlist>",
@@ -899,7 +1579,7 @@
   "icon": "000004930000074F"
  },
  {
-  "description": "요정 유닛의 보유 효과:<bulletlist><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> +4</bullet><bullet><defenseblight></defenseblight> <hyperlink>역병 저항</hyperlink> -4</bullet><bullet>요정의 계략</bullet><bullet>다음을 무시할 수 있음:<bulletlist></bullet><bullet>자욱한 안개로 인한 시야 페널티</bullet><bullet>달라붙는 안개로 인한 <hyperlink><accuracy></accuracy> 명중률</hyperlink> 페널티</bullet></bulletlist>",
+  "description": "요정 유닛의 보유 효과:<bulletlist><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> +4</bullet><bullet><defenseblight></defenseblight> <hyperlink>역병 저항</hyperlink> -4</bullet><bullet>요정의 계략 상태</bullet><bullet>다음을 무시할 수 있음:<bulletlist></bullet><bullet>자욱한 안개로 인한 시야 페널티</bullet><bullet>달라붙는 안개로 인한 <hyperlink><accuracy></accuracy> 명중률</hyperlink> 페널티</bullet></bulletlist></bulletlist>",
   "name": "요정",
   "slug": "000003fe0000001c",
   "icon": "000003FE0000001D"
@@ -1159,16 +1839,74 @@
   "icon": "0000049700000CC3"
  },
  {
-  "damage": "<fireCol>2<damagefire></damagefire></fireCol>",
-  "description": "",
-  "name": "<fireCol>화염 약점</fireCol>",
-  "slug": "Fire_weakness_2"
- },
- {
   "damage": "<fireCol>2<damagespirit></damagespirit></fireCol>",
   "description": "",
   "name": "<fireCol>영혼 약점</fireCol>",
   "slug": "Spirit_weakness_2"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   },
+   {
+    "description": "공격 시 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 5 회복합니다.",
+    "name": "생명력 갈취",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_000004970000359A",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "50%의 기본 확률로 5 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink>의 추가 피해를 주고 <happiness></happiness> <hyperlink>사기를</hyperlink> 1 상실합니다.",
+    "name": "메아리",
+    "count": 1
+   }
+  ],
+  "description": "대상 유닛이 피해를 받고 <happiness></happiness> <hyperlink>사기를</hyperlink> 2 상실합니다.",
+  "name": "메아리치는 비명",
+  "slug": "shoot_bow_ability_000004970000339B",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD000020CE"
  },
  {
   "modifiers": [
@@ -1197,19 +1935,7 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [],
-  "icon": "000004D500000041"
- },
- {
-  "description": "적 진열을 교란하는 데 특화된 공격 유닛입니다. 돌격 유닛은 <hyperlink>돌진</hyperlink> 공격을 보유하고 있어 방패 유닛에 강하지만, 폴암 유닛에 역으로 당할 수 있습니다.",
-  "name": "돌격 유닛",
-  "slug": "000003bd000028b7",
-  "icon": "000003BD000028B8"
- },
- {
-  "description": "유닛이 질주 능력을 획득합니다.",
-  "name": "투사 메달: 질주",
-  "slug": "000003e300006287",
-  "icon": "000003E30000627B"
+  "icon": "000004D500000040"
  },
  {
   "modifiers": [
@@ -1436,7 +2162,7 @@
   "icon": "000004970000286B"
  },
  {
-  "description": "구성체 유닛의 보유 효과:<bulletlist><bullet>보강 상태</bullet><bullet><defenselightning></defenselightning> <hyperlink>번개 저항</hyperlink></bullet><bullet>2<defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> -4</bullet><bullet>무정함 상태</bullet><bullet>통제 상실 면역 상태</bullet><bullet>면역:<bulletlist></bullet><bullet>출혈 상태</bullet><bullet>질병 상태</bullet><bullet>주의 산만 상태</bullet><bullet>중독 상태</bullet></bulletlist>",
+  "description": "구성체 유닛의 보유 효과:<bulletlist><bullet>보강 상태</bullet><bullet><defenselightning></defenselightning> <hyperlink>번개 저항</hyperlink> 2</bullet><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> -4</bullet><bullet>무정함 상태</bullet><bullet>통제 상실 면역 상태</bullet><bullet>면역:<bulletlist></bullet><bullet>출혈 상태</bullet><bullet>질병 상태</bullet><bullet>주의 산만 상태</bullet><bullet>중독 상태</bullet></bulletlist></bulletlist>",
   "name": "구성체",
   "slug": "000003e3000071ff",
   "icon": "000003E3000071FD"
@@ -1487,30 +2213,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
- },
- {
-  "description": "해당 유닛이 턴을 종료하고 방어 모드에 돌입:<bulletlist><bullet><hyperlink>통제 구역을</hyperlink> 모든 인접 헥스로 확장</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet><bullet><hyperlink><flank></flank> 측면 공격</hyperlink>에 면역</bullet><bullet>모든 인접 우호 유닛의 <defense></defense> <hyperlink>방어력</hyperlink> +3</bullet></bulletlist>",
-  "name": "방어 모드: 방패 장벽",
-  "slug": "000003e300004c8f",
-  "icon": "000003E300004C94"
- },
- {
-  "description": "해당 유닛의 비 <hyperlink><flank></flank> 측면 공격</hyperlink>에 대한 <defense></defense> <hyperlink>방어력이</hyperlink> +3 증가합니다.",
-  "name": "방패 방어",
-  "slug": "000003e300004c8a",
-  "icon": "000003E300004C8C"
- },
- {
-  "description": "적을 막고 물리 공격으로부터 아군을 보호하는 데 특화된 유닛입니다. 방패 유닛은 다음을 보유합니다.<bulletlist><bullet>방패 방어 상태</bullet><bullet>방어 모드: 방패 장벽 상태</bullet></bulletlist>",
-  "name": "방패 유닛",
-  "slug": "0000039f000016f0",
-  "icon": "0000039F000016E5"
- },
- {
-  "description": "해당 유닛이 <hyperlink>방어 모드</hyperlink>에 돌입할 경우, 인접한 우호 유닛들이 방어력 강화 상태를 획득합니다.",
-  "name": "투사 메달: 확고한 방어",
-  "slug": "000003e300006280",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -1585,22 +2287,10 @@
   "icon": "000003E3000045B1"
  },
  {
-  "description": "멀리 있는 대상을 노리는 공격 유닛입니다. 직접 공격에 다소 취약합니다.<bulletlist><bullet>유닛의 <hyperlink><accuracy></accuracy> 명중률이</hyperlink> <hyperlink>사선</hyperlink>에 영향을 받습니다.</bullet><bullet><hyperlink>근접 교전</hyperlink> 시 기본 원거리 공격을 사용할 수 없습니다.</bullet></bulletlist>",
-  "name": "원거리 유닛",
-  "slug": "0000039f000016f1",
-  "icon": "0000039F000016E8"
- },
- {
   "damage": "<xpCol>5<damagefire></damagefire></xpCol>",
   "description": "",
   "name": "<xpCol>화염 저항</xpCol>",
   "slug": "Fire_resistance_5"
- },
- {
-  "description": "<hyperlink><range></range>범위</hyperlink> 공격의 <hyperlink>물리 원거리가</hyperlink> +1 증가합니다.",
-  "name": "투사 메달: 독수리의 눈",
-  "slug": "000003e300006289",
-  "icon": "000003E30000627B"
  },
  {
   "notes": [
@@ -1670,18 +2360,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
- },
- {
-  "description": "특별한 전문화 또는 카운터가 없는 완전한 근접 유닛입니다.",
-  "name": "싸움꾼 유닛",
-  "slug": "000003e300004ea6",
-  "icon": "000003E300004EA5"
- },
- {
-  "description": "유닛이 획득:<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +10</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet></bulletlist>",
-  "name": "투사 메달: 난동꾼",
-  "slug": "000003e300006294",
-  "icon": "000003E30000627B"
  },
  {
   "description": "부가 전력 유닛은 전투에서 아군 부가 전력 유닛만 남으면 파괴됩니다.",
@@ -2750,7 +3428,7 @@
     "note": "재사용 대기시간: 3 <turn></turn>"
    }
   ],
-  "description": "무작위 적 최대 5기:<bulletlist><bullet>30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 교란됨 상태 유발</bullet>",
+  "description": "무작위 적 최대 5기:<bulletlist><bullet>30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 교란됨 상태 유발</bullet></bulletlist>",
   "name": "마법 교란",
   "slug": "magical_disruption_ability_0000049700000035",
   "damage": "",
@@ -3193,12 +3871,6 @@
   "icon": "0000049700002A90"
  },
  {
-  "description": "해당 유닛은 종족이 특별한 탈것 특성을 보유할 경우 기병 상태가 됩니다.",
-  "name": "지정 기병",
-  "slug": "000003eb0000073f",
-  "icon": "000003EB0000073E"
- },
- {
   "modifiers": [],
   "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
   "name": "마법 폭발",
@@ -3231,10 +3903,10 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>대상이 지닌 친화의 현신 중첩마다 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +10 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
+  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>시전자가 지닌 친화의 현신 중첩마다 대상이 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
   "name": "현신 회복",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000176d",
   "damage": "",
@@ -3269,7 +3941,7 @@
   "icon": "0000048D00001548"
  },
  {
-  "description": "건축 문화에서 자신들이 헌신하기로 한 <hyperlink>친화</hyperlink> 관련 기념물을 건설한 경우, 기념물이 친화의 현신에게 다음을 부여:<bulletlist><bullet><order></order> <hyperlink>질서 친화</hyperlink>: <damageSpirit></damageSpirit> <hyperlink>영혼 피해</hyperlink> +1</bullet><bullet><chaos></chaos> <hyperlink>혼돈 친화</hyperlink>: <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> +1</bullet><bullet><arcana></arcana> <hyperlink>영체 친화</hyperlink>: <damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> +1</bullet><bullet><matter></matter> <hyperlink>마테리움 친화</hyperlink>: <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet><nature></nature> <hyperlink>자연 친화</hyperlink>: <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> +1</bullet><bullet><shadow></shadow> <hyperlink> 그림자 친화</hyperlink>: <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> +1</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다. 상태",
+  "description": "친화 관련 현신이 중첩될 때마다, 해당 유닛이 제국의 우세 <hyperlink>친화</hyperlink>에 따라 피해 증가 효과 획득:<bulletlist><bullet><order></order> <hyperlink>질서 친화</hyperlink>: <damageSpirit></damageSpirit> <hyperlink>영혼 피해</hyperlink> +1</bullet><bullet><chaos></chaos> <hyperlink>혼돈 친화</hyperlink>: <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> +1</bullet><bullet><arcana></arcana> <hyperlink>영체 친화</hyperlink>: <damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> +1</bullet><bullet><matter></matter> <hyperlink>마테리움 친화</hyperlink>: <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet><nature></nature> <hyperlink>자연 친화</hyperlink>: <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> +1</bullet><bullet><shadow></shadow> <hyperlink> 그림자 친화</hyperlink>: <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> +1</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "name": "친화의 현신",
   "slug": "0000048d00001907",
   "icon": "0000048D000017DF"
@@ -3313,10 +3985,10 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>대상이 지닌 친화의 현신 중첩마다 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +10 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
+  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>시전자가 지닌 친화의 현신 중첩마다 대상이 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
   "name": "현신 회복",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d00001785",
   "damage": "",
@@ -3383,10 +4055,10 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>대상이 지닌 친화의 현신 중첩마다 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +10 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
+  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>시전자가 지닌 친화의 현신 중첩마다 대상이 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
   "name": "현신 회복",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000178f",
   "damage": "",
@@ -3453,10 +4125,10 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>대상이 지닌 친화의 현신 중첩마다 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +10 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
+  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>시전자가 지닌 친화의 현신 중첩마다 대상이 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
   "name": "현신 회복",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d00001797",
   "damage": "",
@@ -3523,10 +4195,10 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>대상이 지닌 친화의 현신 중첩마다 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +10 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
+  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>시전자가 지닌 친화의 현신 중첩마다 대상이 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
   "name": "현신 회복",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d0000179d",
   "damage": "",
@@ -3593,10 +4265,10 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>대상이 지닌 친화의 현신 중첩마다 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +10 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
+  "description": "대상 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br><br></br>시전자가 지닌 친화의 현신 중첩마다 대상이 추가로 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet><bullet>재생 +1</bullet></bulletlist>",
   "name": "현신 회복",
   "slug": "incarnate_restoration_ability_00000490000016DF_0000048d000017a1",
   "damage": "",
@@ -4252,7 +4924,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -4315,7 +4987,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -4378,7 +5050,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -4441,7 +5113,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -4504,7 +5176,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -4567,7 +5239,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -4977,7 +5649,7 @@
  },
  {
   "notes": [],
-  "description": "대상 적 유닛이 획득:<bulletlist><bullet>3 <turn></turn> 턴 동안 5 방어력 약화</bullet><bullet>3 <turn></turn> 턴 동안 5 저항력 약화</bullet><bullet>3 <turn></turn> 턴 동안 5 상태 효과 취약</bullet>",
+  "description": "대상 적 유닛이 획득:<bulletlist><bullet>3 <turn></turn> 턴 동안 5 방어력 약화</bullet><bullet>3 <turn></turn> 턴 동안 5 저항력 약화</bullet><bullet>3 <turn></turn> 턴 동안 5 상태 효과 취약</bullet></bulletlist>",
   "name": "약점 공개",
   "slug": "reveal_weakness_ability_0000049000001403",
   "damage": "",
@@ -4996,12 +5668,6 @@
   "name": "상급 먼 시야",
   "slug": "0000045e0000085d",
   "icon": "00000385000000F7"
- },
- {
-  "description": "<hyperlink><flank></flank> 측면 공격</hyperlink> 면역",
-  "name": "초감각 인지",
-  "slug": "000003e10000139d",
-  "icon": "000003E10000139A"
  },
  {
   "modifiers": [],
@@ -5301,12 +5967,6 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "동물에 올라탄 유닛입니다.",
-  "name": "기병",
-  "slug": "0000038400000371",
-  "icon": "0000038400000372"
- },
- {
   "description": "해당 유닛의 HP가 최대 <hyperlink><hp></hp> 체력</hyperlink>의 60% 미만으로 떨어질 경우, 소속 문화의 <hyperlink>헌신</hyperlink>에 따라 다음 효과 획득:<bulletlist><bullet><devotion3></devotion3> 귀감: <hyperlink><temphp></temphp> 임시 체력</hyperlink> 30 치유</bullet><bullet><devotion2></devotion2> 신봉: <hyperlink><temphp></temphp> 임시 체력</hyperlink> 20 치유 </bullet><bullet><devotion1></devotion1> 지지: <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 치유</bullet><bullet><devotion0></devotion0> 중립: <hyperlink><temphp></temphp> 임시 체력</hyperlink> 5 치유</bullet><bullet><devotion-1></devotion-1> 서약을 깨는 자: 3 <turn></turn> 턴 동안 3 쇠약 치유</bullet></bulletlist>",
   "name": "조화",
   "slug": "00000497000010f3",
@@ -5317,70 +5977,6 @@
   "name": "조화의 귀감",
   "slug": "000004970000155a",
   "icon": "0000049700001270"
- },
- {
-  "modifiers": [],
-  "description": "대상 적에게 마법 화살을 발사합니다. 공명의 봉인 상태를 보유한 대상에 쏘면 빗나가지 않습니다.",
-  "name": "봉인 화살",
-  "slug": "magic_bolts_ability_0000049000000E8C_0000049700000fb2",
-  "damage": "6<damageblight></damageblight> 6<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "000003BD0000210B"
- },
- {
-  "notes": [
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   },
-   {
-    "note": "재사용 대기시간: 3 <turn></turn>"
-   }
-  ],
-  "description": "피해를 주고 3 <turn></turn> 턴 동안 지속되는 연결 효과인 공명의 봉인 상태를 유발합니다.",
-  "name": "공명 봉인",
-  "slug": "magic_seal_ability_0000049000000E8C_0000049700000fb2",
-  "damage": "30<damageblight></damageblight> ",
-  "requisites": [
-   {
-    "requisite": "기본"
-   },
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "디버프"
-   },
-   {
-    "requisite": "단일 사격"
-   }
-  ],
-  "accuracy": "항상 명중",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "6"
- },
- {
-  "description": "<oathswornHarmony></oathswornHarmony>공명 봉인:<bulletlist><bullet>공격할 때마다 2 <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> 추가 유발</bullet></bulletlist><br></br><oathswornStrife></oathswornStrife>화염 봉인:<bulletlist><bullet>매 턴마다 5 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 추가 유발</bullet><bullet>대상 사망 시 10 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 추가 유발</bullet></bulletlist><br></br><oathswornRighteousness></oathswornRighteousness>전이 봉인:<bulletlist><bullet>공격할 때마다 3 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 추가 회복</bullet></bulletlist>",
-  "name": "투사의 봉인",
-  "slug": "0000048b00000ab5",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -5437,9 +6033,73 @@
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    },
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 1 <turn></turn>"
    }
   ]
+ },
+ {
+  "description": "<oathswornHarmony></oathswornHarmony>공명 봉인:<bulletlist><bullet>공격할 때마다 2 <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> 추가 유발</bullet></bulletlist><br></br><oathswornStrife></oathswornStrife>화염 봉인:<bulletlist><bullet>매 턴마다 5 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 추가 유발</bullet><bullet>대상 사망 시 10 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 추가 유발</bullet></bulletlist><br></br><oathswornRighteousness></oathswornRighteousness>전이 봉인:<bulletlist><bullet>공격할 때마다 3 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 추가 회복</bullet></bulletlist>",
+  "name": "투사의 봉인",
+  "slug": "0000048b00000ab5",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적에게 마법 화살을 발사합니다. 공명의 봉인 상태를 보유한 대상에 쏘면 빗나가지 않습니다.",
+  "name": "봉인 화살",
+  "slug": "magic_bolts_ability_0000049000000E8C_0000049700000fb2",
+  "damage": "6<damageblight></damageblight> 6<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "description": "피해를 주고 3 <turn></turn> 턴 동안 지속되는 연결 효과인 공명의 봉인 상태를 유발합니다.",
+  "name": "공명 봉인",
+  "slug": "magic_seal_ability_0000049000000E8C_0000049700000fb2",
+  "damage": "30<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6"
  },
  {
   "modifiers": [],
@@ -5474,7 +6134,7 @@
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    },
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 1 <turn></turn>"
    }
   ],
   "description": "피해를 주고 3 <turn></turn> 턴 동안 지속되는 연결 효과인 화염의 봉인 상태를 유발합니다.",
@@ -5498,87 +6158,6 @@
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6"
- },
- {
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "description": "대상 유닛에 피해를 주고 <hyperlink>긍정적인 상태 효과</hyperlink> 1개를 제거합니다.",
-  "name": "일소 폭발",
-  "slug": "magic_blast_(single)_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "14<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "기본"
-   },
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "단일 사격"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000003E600000566"
- },
- {
-  "notes": [
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   },
-   {
-    "note": "재사용 대기시간: 2 <turn></turn>"
-   }
-  ],
-  "description": "반경 1 헥스 내 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 25 회복합니다.",
-  "name": "치유의 맹세",
-  "slug": "vow_of_healing_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "지원"
-   }
-  ],
-  "accuracy": "항상 명중",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
-  "icon": "0000049700001048"
- },
- {
-  "notes": [
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   },
-   {
-    "note": "재사용 대기시간: 1 <turn></turn>"
-   }
-  ],
-  "description": "대상 우호 유닛:<bulletlist><bullet><hyperlink>부정적인 상태 효과</hyperlink> 제거</bullet><bullet>3 <turn></turn> 턴 동안 3 상태 효과 보호 획득</bullet></bulletlist>",
-  "name": "정화의 맹세",
-  "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb2",
-  "damage": "",
-  "requisites": [
-   {
-    "requisite": "지원"
-   }
-  ],
-  "accuracy": "항상 명중",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "00000497000012C8"
- },
- {
-  "description": "치유의 맹세:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 15 추가 회복</bullet></bulletlist>",
-  "name": "투사의 치유의 맹세",
-  "slug": "0000048b00000c51",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [],
@@ -5645,6 +6224,87 @@
   "description": "대상 우호 유닛:<bulletlist><bullet><hyperlink>부정적인 상태 효과</hyperlink> 제거</bullet><bullet>3 <turn></turn> 턴 동안 3 상태 효과 보호 획득</bullet></bulletlist>",
   "name": "정화의 맹세",
   "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb5",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000012C8"
+ },
+ {
+  "description": "치유의 맹세:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 15 추가 회복</bullet></bulletlist>",
+  "name": "투사의 치유의 맹세",
+  "slug": "0000048b00000c51",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 유닛에 피해를 주고 <hyperlink>긍정적인 상태 효과</hyperlink> 1개를 제거합니다.",
+  "name": "일소 폭발",
+  "slug": "magic_blast_(single)_ability_0000049000000E8B_0000049700000fb2",
+  "damage": "14<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "반경 1 헥스 내 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 25 회복합니다.",
+  "name": "치유의 맹세",
+  "slug": "vow_of_healing_ability_0000049000000E8B_0000049700000fb2",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "0000049700001048"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "description": "대상 우호 유닛:<bulletlist><bullet><hyperlink>부정적인 상태 효과</hyperlink> 제거</bullet><bullet>3 <turn></turn> 턴 동안 3 상태 효과 보호 획득</bullet></bulletlist>",
+  "name": "정화의 맹세",
+  "slug": "vow_of_purification_ability_0000049000000E8B_0000049700000fb2",
   "damage": "",
   "requisites": [
    {
@@ -5735,7 +6395,7 @@
   "modifiers": [],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
-  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb2",
+  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb5",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5755,7 +6415,7 @@
   "modifiers": [],
   "description": "대상 유닛을 타격하고 <hyperlink>방어 모드</hyperlink>에 돌입합니다.",
   "name": "방어 타격",
-  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb2",
+  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb5",
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5788,7 +6448,7 @@
   "modifiers": [],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
-  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb5",
+  "slug": "melee_strike_(base)_ability_0000049000000E8A_0000049700000fb2",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5808,7 +6468,7 @@
   "modifiers": [],
   "description": "대상 유닛을 타격하고 <hyperlink>방어 모드</hyperlink>에 돌입합니다.",
   "name": "방어 타격",
-  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb5",
+  "slug": "defensive_strike_ability_0000049000000E8A_0000049700000fb2",
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5893,7 +6553,7 @@
   ],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
-  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb2",
+  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb5",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5924,7 +6584,7 @@
   ],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
-  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb5",
+  "slug": "melee_strike_(base)_ability_0000049000000E89_0000049700000fb2",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -5972,44 +6632,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
-  "name": "활 사격",
-  "slug": "wayfarer_shoot_bow_ability_0000049000000E88_0000049700000fb2",
-  "damage": "6<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "물리 원거리"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "icon": "000003BD000020CE"
- },
- {
-  "description": "도로 통행 시 <hyperlink>이동 점수</hyperlink> 비용이 5에서 4로 변경됩니다.",
-  "name": "도로 보행",
-  "slug": "0000045e00000849",
-  "icon": "0000045E0000085B"
- },
- {
-  "description": "전투에서 후퇴할 경우, 해당 유닛의 도주 경과 시간이 2 턴 감소하며 절대 죽지 않습니다.",
-  "name": "후퇴 전문가",
-  "slug": "000004970000113c",
-  "icon": "000004970000113E"
- },
- {
   "modifiers": [],
   "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
   "name": "활 사격",
@@ -6034,6 +6656,44 @@
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    }
   ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "도로 통행 시 <hyperlink>이동 점수</hyperlink> 비용이 5에서 4로 변경됩니다.",
+  "name": "도로 보행",
+  "slug": "0000045e00000849",
+  "icon": "0000045E0000085B"
+ },
+ {
+  "description": "전투에서 후퇴할 경우, 해당 유닛의 도주 경과 시간이 2 턴 감소하며 절대 죽지 않습니다.",
+  "name": "후퇴 전문가",
+  "slug": "000004970000113c",
+  "icon": "000004970000113E"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "활 사격",
+  "slug": "wayfarer_shoot_bow_ability_0000049000000E88_0000049700000fb2",
+  "damage": "6<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
   "icon": "000003BD000020CE"
  },
  {
@@ -6137,24 +6797,6 @@
   "icon": "000003BD0000210B"
  },
  {
-  "description": "출혈에 면역인 유닛입니다.",
-  "name": "상태 효과 면역: 출혈",
-  "slug": "0000049700001683",
-  "icon": "0000049700001685"
- },
- {
-  "description": "유닛이 공격 시:<bulletlist><bullet><statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력을</hyperlink> 최대 2까지 무시</bullet><bullet><resistance></resistance> <hyperlink>저항력을</hyperlink> 최대 1까지 무시</bullet><bullet><defense></defense> <hyperlink>방어력을</hyperlink> 최대 1까지 무시</bullet></bulletlist>",
-  "name": "투사 메달: 유도자",
-  "slug": "000003e30000628a",
-  "icon": "000003E30000627B"
- },
- {
-  "description": "해당 유닛이 전투 도중 사망할 경우, 아군의 승리로 전투가 끝나면 최대 <hyperlink><hp></hp> 체력</hyperlink>의 50%를 지닌 채 부활합니다.",
-  "name": "회생",
-  "slug": "0000035700000332",
-  "icon": "0000035700000333"
- },
- {
   "notes": [
    {
     "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
@@ -6247,18 +6889,6 @@
   "name": "악어 원시 연결",
   "slug": "00000497000003a7",
   "icon": "00000497000003A4"
- },
- {
-  "description": "에테르 유닛의 보유 효과:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> -4</bullet><bullet>지형 통과 상태</bullet><bullet>면역:<bulletlist></bullet><bullet>출혈</bullet><bullet>질병</bullet><bullet>부동</bullet><bullet>중독</bullet></bulletlist></bulletlist>",
-  "name": "에테르",
-  "slug": "000003e300004802",
-  "icon": "000003E300004804"
- },
- {
-  "description": "이 유닛은 장애물을 통과할 수 있습니다. 유닛이 운송 수단에 있을 때는 적용되지 않습니다.",
-  "name": "지형 통과",
-  "slug": "000003e300004814",
-  "icon": "000003E300004815"
  },
  {
   "damage": "<xpCol>4<damageblight></damageblight></xpCol>",
@@ -9452,6 +10082,216 @@
   "icon": "000003E30000728A"
  },
  {
+  "modifiers": [
+   {
+    "description": "120%의 기본 확률로 3 <turn></turn> 턴 동안 2x 부패 상태를 유발합니다.",
+    "name": "부패",
+    "count": 1
+   }
+  ],
+  "description": "단발성 근접 공격입니다.",
+  "name": "근접 단발 공격",
+  "slug": "melee_single_strike_(base)_ability_0000048D00001A25_0000048d000019d6",
+  "damage": "28<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "피해가 대상이 잃은 <hyperlink><hp></hp> 체력</hyperlink>에 따라 증가합니다.",
+    "name": "죽음의 추적",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛으로 도약해 밀어냅니다. 사용 후 방어 모드에 돌입합니다.",
+  "name": "죽음의 추적",
+  "slug": "death_stalk_unit_property_ability_0000048D00001A25_0000048d000019d6",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "단일 사격"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "근접"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   }
+  ],
+  "icon": "0000048D00001A46"
+ },
+ {
+  "description": "세계 지도에 보이지 않는 유닛입니다.",
+  "name": "범용 위장",
+  "slug": "000003e300004864",
+  "icon": "000003E300004865"
+ },
+ {
+  "description": "피해가 필멸자의 축복 중첩 하나당 +5% 증가합니다.",
+  "name": "운명 인도자",
+  "slug": "0000048d00001a3a",
+  "icon": "0000048D00001A3B"
+ },
+ {
+  "description": "유닛이 사망할 때마다:<bulletlist><bullet>+1 필멸자의 축복 상태 획득</bullet><bullet>해당 유닛이 마지막 일격을 당할 경우 +1 필멸자의 축복 상태 추가 획득</bullet></bulletlist>",
+  "name": "죽음에서 비롯된 힘",
+  "slug": "0000048d000019f7",
+  "icon": "0000048D00001A13"
+ },
+ {
+  "description": "처치 시, 전투가 종료될 때까지 +1 필멸자의 축복을 추가로 획득합니다.",
+  "name": "축복받은 종말",
+  "slug": "0000048d00001a43",
+  "icon": "0000048D00001A49"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "기병 및 대형 유닛을 대상으로 +40% 추가 피해를 줍니다.",
+    "name": "폴암",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_0000048D00001A22_0000048d000019d6",
+  "damage": "14<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "해당 유닛이 획득:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> +20</bullet><bullet>필멸자의 축복 중첩 하나당 <hyperlink><temphp></temphp> 임시 체력</hyperlink> +10</bullet></bulletlist><br></br>이후 해당 유닛은 방어 모드에 돌입합니다.",
+  "name": "치명적 활력",
+  "slug": "deathly_vitality_ability_0000048D00001A22_0000048d000019d6",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000048D00001A21"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적에게 마법 화살을 발사합니다.",
+  "name": "부패 화살",
+  "slug": "magic_bolts_ability_0000048D000019EC_0000048d000019d6",
+  "damage": "12<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn> 동안 2 부패 중첩을 유발합니다.",
+    "name": "부패",
+    "count": 1
+   },
+   {
+    "description": "3 <turn></turn> 턴 동안 생명의 씨앗 상태를 유발합니다.",
+    "name": "생명의 씨앗",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛 및 3 헥스 내 유닛이 피해를 받습니다.",
+  "name": "죽음의 사술",
+  "slug": "death_hex_ability_0000048D000019EC_0000048d000019d6",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000048D000019F0"
+ },
+ {
+  "description": "죽음의 사술:<bulletlist><bullet><damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> +4 유발</bullet><bullet>부패 +1 유발</bullet></bulletlist>",
+  "name": "투사의 죽음의 사술",
+  "slug": "0000048d000019f4",
+  "icon": "000003E30000627B"
+ },
+ {
   "modifiers": [],
   "description": "대상 적에게 마법 화살을 발사합니다.",
   "name": "서리 화살",
@@ -9715,7 +10555,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 우호 <hyperlink>영웅</hyperlink> 유닛에 연결:<bulletlist><bullet>연결된 유닛이 받은 피해가 해당 유닛에 25%만큼 감소한 채 전달됨</bullet><bullet>매 턴 시작 시, 연결된 유닛은 강화 상태 획득</bullet></bulletlist>",
+  "description": "대상 우호 <hyperlink>영웅</hyperlink> 유닛에 연결:<bulletlist><bullet>연결된 유닛이 받은 피해가 해당 유닛에 50%만큼 감소한 채 전달됨</bullet><bullet>매 턴 시작 시, 연결된 유닛은 강화 상태 획득</bullet></bulletlist>",
   "name": "맹세의 유대",
   "slug": "sworn_bond_ability_0000048D00001227_0000048d00001220",
   "damage": "",
@@ -9815,7 +10655,7 @@
   "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d000011e2",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -9850,7 +10690,7 @@
   "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
   "slug": "melee_charge_strike_(base)_ability_0000048D000011F9_0000048d00001220",
-  "damage": "28<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -9922,7 +10762,7 @@
     "note": "재사용 대기시간: 0 <turn></turn>"
    }
   ],
-  "description": "대상 우호 마법 기원과 연결 형성, 연결되는 동안:<bulletlist><bullet>대상이 <hyperlink>반격</hyperlink> +1, <hyperlink><accuracy></accuracy> 명중률</hyperlink> +30 및 광분 상태 획득</bullet></bulletlist>",
+  "description": "대상 우호 마법 기원 유닛과 연결 형성, 연결되는 동안:<bulletlist><bullet>대상이 주는 피해 +20%</bullet><bullet>대상의 <turn></turn> 턴 시작 시, 대상이 <hyperlink><temphp></temphp> 임시 체력</hyperlink> +20 회복</bullet></bulletlist>",
   "name": "영체 유대",
   "slug": "astral_bond_ability_0000048D000006F4_0000048d00000620",
   "damage": "",
@@ -9952,14 +10792,14 @@
    }
   ],
   "accuracy": "항상 명중",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "3",
   "icon": "0000048D00000728"
  },
  {
-  "description": "전투 시 우호적인 마법 기원 유닛이 획득: <bulletlist><bullet>해당 특성을 보유한 우호적인 유닛 하나당 <happiness></happiness> <hyperlink>사기</hyperlink> +5</bullet></bulletlist>",
+  "description": "우호 마법 기원 유닛에 인접한 경우, 시전자와 대상 유닛 둘다 획득:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet></bulletlist><br></br>해당 효과는 중첩됩니다.",
   "name": "영체 연결",
-  "slug": "0000048d00000989",
+  "slug": "0000048d00001b26",
   "icon": "0000048D0000098F"
  },
  {
@@ -10080,7 +10920,7 @@
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    }
   ],
-  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>90%의 기본 확률로 발동:<bulletlist></bullet><bullet>인접 공간으로 끌어당겨짐</bullet><bullet>1 <turn></turn> 턴 동안 위축 상태 유발</bullet></bulletlist>",
+  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>90%의 기본 확률로 발동:<bulletlist></bullet><bullet>인접 공간으로 끌어당겨짐</bullet><bullet>1 <turn></turn> 턴 동안 위축 상태 유발</bullet></bulletlist></bulletlist>",
   "name": "당기기",
   "slug": "constrictor_pull_ability_0000048D000005E0",
   "damage": "20<damagephysical></damagephysical> ",
@@ -10843,7 +11683,7 @@
  },
  {
   "notes": [],
-  "description": "대상 우호 유닛에 연결:<bulletlist><bullet>연결된 유닛이 받은 피해가 해당 유닛에 35%만큼 감소한 채 전달됨</bullet><bullet>매 턴 시작 시, 해당 유닛과 연결된 유닛은 은총 상태 획득</bullet></bulletlist><br></br>활성화된 동안, 번영의 가면 재소환 상태 획득",
+  "description": "대상 우호 유닛에 연결:<bulletlist><bullet>연결된 유닛이 받은 피해가 50%만큼 감소한 채 해당 유닛으로 전달됨</bullet><bullet>매 턴 시작 시, 해당 유닛 및 연결된 유닛은 은총 상태 획득</bullet></bulletlist><br></br>활성화된 동안, 번영의 가면 재소환 상태 획득",
   "name": "번영의 가면 수여",
   "slug": "bestow_mask_of_prosperity_ability_0000048900001231",
   "damage": "",
@@ -11232,7 +12072,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "<bulletlist><bullet>대상 유닛에 3 <turn></turn> 턴 동안 3 유령 불꽃 상태를 유발합니다.</bullet><bullet>순간이동으로 4 헥스 뒤로 이동합니다.</bulletlsit></bullet>",
+  "description": "<bulletlist><bullet>대상 유닛에 3 <turn></turn> 턴 동안 3 유령 불꽃 상태를 유발합니다.</bullet><bullet>순간이동으로 4 헥스 뒤로 이동합니다.</bullet></bulletlist>",
   "name": "교묘한 탈출",
   "slug": "tricky_escape_ability_0000048900001226",
   "damage": "",
@@ -11421,12 +12261,6 @@
   "name": "그늘진 탈출",
   "slug": "0000048b00000205",
   "icon": "0000048B00000209"
- },
- {
-  "description": "세계 지도에 보이지 않는 유닛입니다.",
-  "name": "범용 위장",
-  "slug": "000003e300004864",
-  "icon": "000003E300004865"
  },
  {
   "modifiers": [
@@ -13302,8 +14136,14 @@
   "icon": "000003E30000627B"
  },
  {
-  "modifiers": [],
-  "description": "반경 1 헥스 내의 대상 유닛이 피해를 받습니다. 같은 반경에 속한 모든 장애물을 파괴합니다.",
+  "modifiers": [
+   {
+    "description": "3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
+    "name": "불붙음",
+    "count": 1
+   }
+  ],
+  "description": "유닛이 자폭, 반경 1 헥스 내:<bulletlist><bullet>유닛에 피해 유발</bullet><bullet>모든 장애물 파괴</bullet><bullet>해당 헥스에 <hyperlink>화재</hyperlink> 상태 유발</bullet></bulletlist>",
   "name": "기폭 후 파괴",
   "slug": "detonate_ability_0000041B0000117A",
   "damage": "15<damagephysical></damagephysical> 15<damagefire></damagefire> ",
@@ -13445,14 +14285,7 @@
   "icon": "000003BD0000210B"
  },
  {
-  "notes": [
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   },
-   {
-    "note": "재사용 대기시간: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "반경 1 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>3 <turn></turn> 턴 동안 방어력 약화 획득</bullet></bulletlist><br></br>성공할 경우, 3 <turn></turn> 턴 동안 시전자로부터 반경 2 헥스 내 모든 우호 유닛에 방어력 강화 부여",
   "name": "변형",
   "slug": "transmute_ability_0000041B00001093",
@@ -13468,6 +14301,14 @@
   "accuracy": "항상 명중",
   "actionPoints": "<fullaction></fullaction>",
   "range": "6",
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000041B0000109E"
  },
  {
@@ -13747,7 +14588,18 @@
   "icon": "000003E1000013E7"
  },
  {
+  "description": "사망해도 \\\"유닛 사망 시 발동\\\" 효과를 발동하지 않는 유닛입니다.",
+  "name": "죽음 상실",
+  "slug": "0000048b00000e94",
+  "icon": "0000048D00001BC5"
+ },
+ {
   "modifiers": [
+   {
+    "description": "3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   },
    {
     "description": "해당 유닛이 공격한 대상의 위치를 옮기고 그 헥스로 이동합니다.",
     "name": "공격 후 이동",
@@ -13776,7 +14628,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
   "description": "원뿔 1 헥스 내 유닛을 공격합니다.<bulletlist><bullet><hyperlink>방어 모드</hyperlink> 상태를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink> 상태를 제거합니다.</bullet></bulletlist>",
   "name": "강력한 베기",
   "slug": "power_cleave_ability_0000041B00000BB2",
@@ -13861,7 +14719,7 @@
   "icon": "0000041B00000B75"
  },
  {
-  "description": "3 헥스 내 공격자가 60%의 기본 확률로 무작위 상태 효과를 획득합니다.",
+  "description": "3 헥스 내 적 공격자가 60%의 기본 확률로 무작위 상태 효과를 획득합니다.",
   "name": "혼돈의 징계",
   "slug": "0000041b00000c5c",
   "icon": "000003E300006A21"
@@ -16271,7 +17129,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "원뿔 2 헥스 내 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>2 방어력 약화 상태 획득</bullet>",
+  "description": "원뿔 2 헥스 내 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>2 방어력 약화 상태 획득</bullet></bulletlist>",
   "name": "산성 분사",
   "slug": "acid_spray_ability_000003E3000072B0",
   "damage": "14<damageblight></damageblight> ",
@@ -16567,12 +17425,6 @@
    }
   ],
   "icon": "000003E300007267"
- },
- {
-  "description": "해당 유닛이 적의 <hyperlink>통제 구역</hyperlink>에 의해 멈추지 않습니다.",
-  "name": "날랜 몸놀림",
-  "slug": "0000042b00000006",
-  "icon": "0000042B00000008"
  },
  {
   "description": "해당 유닛은 공격 후 <hyperlink>행동 점수</hyperlink>의 절반을 회복합니다. 대신 공격할 수 없습니다.",
@@ -17061,7 +17913,7 @@
   "icon": "000003E300006BDE"
  },
  {
-  "description": "턴 시작 시 인접 적 유닛:<bulletlist><bullet>8 <damageSpirit></damageSpirit> <hyperlink>영혼 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태 유발</bullet>",
+  "description": "턴 시작 시 인접 적 유닛:<bulletlist><bullet>8 <damageSpirit></damageSpirit> <hyperlink>영혼 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태 유발</bullet></bulletlist>",
   "name": "영혼 오라",
   "slug": "000003e300006be6",
   "icon": "000003E300006BE7"
@@ -17861,7 +18713,7 @@
  },
  {
   "notes": [],
-  "description": "유닛 사망 시:<bulletlist><bullet>영체의 흐름 발동</bullet><bullet>2 헥스 내 우호 유닛이 추가로 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet>",
+  "description": "유닛 사망 시:<bulletlist><bullet>영체의 흐름 발동</bullet><bullet>2 헥스 내 우호 유닛이 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 추가 회복</bullet></bulletlist>",
   "name": "자기 파괴",
   "slug": "shatter_self_ability_000003E300005EB2",
   "damage": "",
@@ -18088,7 +18940,7 @@
   "icon": "000003E30000656A"
  },
  {
-  "description": "유닛이 획득:<bulletList><bullet><hyperlink>선제 공격</hyperlink></bullet><bullet>돌진 저항</bullet><bullet>기병 및 대형 상태인 유닛에 주는 피해 +40%</bullet></bulletlist>",
+  "description": "유닛이 획득:<bulletlist><bullet><hyperlink>선제 공격</hyperlink></bullet><bullet>돌진 저항</bullet><bullet>기병 및 대형 상태인 유닛에 주는 피해 +40%</bullet></bulletlist>",
   "name": "폴암 무기",
   "slug": "000003e3000068c8",
   "icon": "0000039F000016EB"
@@ -18212,7 +19064,7 @@
     "count": 1
    }
   ],
-  "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 % 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
+  "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
   "slug": "melee_charge_strike_(base)_ability_(caustic_worm_only)_000003E300005C57",
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
@@ -18326,7 +19178,7 @@
   "icon": "000003E300006607"
  },
  {
-  "description": "전투를 시작할 때, 공격 시 표식 및 방어력 약화 상태를 유발하는 전쟁 사냥개를 소환합니다.<br></br><br></br>수상 전투 시 적용되지 않습니다.",
+  "description": "전투 시작 시, 공격할 때 표식 및 출혈 상태를 유발하는 <hyperlink>전쟁 사냥개</hyperlink> 돌격 유닛을 소환합니다.<br></br><br></br>수상 전투 시 적용되지 않습니다. 유닛 인챈트의 효과를 받지 않습니다.",
   "name": "사냥개 해방",
   "slug": "000003e3000064a5",
   "icon": "000003E3000064A6"
@@ -18671,7 +19523,13 @@
   "icon": "000003E300005B3D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
+    "name": "불붙음",
+    "count": 1
+   }
+  ],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
   "slug": "melee_strike_(base)_ability_000003E300005AC4",
@@ -18729,7 +19587,7 @@
     "count": 1
    }
   ],
-  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>전투가 종료될 때까지 광폭화 상태 유발</bullet><bullet><hyperlink>영웅이</hyperlink> 아닐 경우, 유닛 사망 시 당신의 통제를 받는 1등급 지옥불 마귀 유닛으로 변화</bullet></bulletlist>",
+  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>전투가 종료될 때까지 광폭화 상태 유발</bullet><bullet>유닛 사망 시 당신의 통제를 받는 1등급 지옥불 마귀 유닛으로 변화</bullet></bulletlist><br></br>영웅, 마귀, 공성술 유닛에는 영향을 주지 않습니다.",
   "name": "혼돈의 낙인",
   "slug": "chaos_brand_ability_000003E300005AB0",
   "damage": "39<damagefire></damagefire> ",
@@ -18782,7 +19640,7 @@
   "icon": "000003E300005AC9"
  },
  {
-  "description": "해당 유닛 사망 시, 2 헥스 반경 내 유닛:<bulletlist><bullet>30 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 유발, 우호적인 유닛인 경우 절반으로 감소</bullet><bullet>3 <turn></turn> 턴 동안 불붙음 상태 유발</bullet>",
+  "description": "해당 유닛 사망 시, 반경 2 헥스 내 유닛:<bulletlist><bullet>30 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 유발, 우호적인 유닛인 경우 절반으로 감소</bullet><bullet>3 <turn></turn> 턴 동안 불붙음 상태 유발</bullet></bulletlist>",
   "name": "시체 자폭",
   "slug": "000003e300005ab4",
   "icon": "000003E300005AB5"
@@ -18878,8 +19736,8 @@
  {
   "modifiers": [
    {
-    "description": "공격 시 방어력 약화 상태를 유발합니다.",
-    "name": "방어력 약화",
+    "description": "3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
     "count": 1
    },
    {
@@ -18949,7 +19807,7 @@
  },
  {
   "modifiers": [],
-  "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 % 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
+  "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
   "slug": "melee_charge_strike_(base)_ability_(ram_warship_only)_000003E300005880",
   "damage": "24<damagephysical></damagephysical> ",
@@ -19694,14 +20552,19 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn> 턴 동안 방어력 약화 상태를 유발합니다.",
-    "name": "방어력 약화",
+    "description": "90%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
+    "count": 1
+   },
+   {
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 2 쇠약 상태를 유발합니다.",
+    "name": "쇠약",
     "count": 1
    }
   ],
   "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
-  "slug": "melee_charge_strike_(base)_ability_000003E300005305",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005305_0000048d000019de",
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19723,35 +20586,47 @@
  {
   "modifiers": [
    {
-    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 쇠약 상태를 유발합니다.",
-    "name": "쇠약",
+    "description": "90%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
     "count": 1
    }
   ],
-  "description": "원뿔 2 헥스 내 적에 피해를 줍니다. <hyperlink>부정적인 상태 효과를</hyperlink> 지닌 유닛에 2배의 피해를 줍니다.",
-  "name": "어둠 쇄도",
-  "slug": "dark_surge_ability_000003E300005305",
-  "damage": "18<damagefrost></damagefrost> ",
+  "description": "대상을 짓밟음:<bulletlist><bullet>공격 대상의 위치를 옮기고 해당 헥스로 이동</bullet><bullet><hyperlink>방어 모드</hyperlink> 취소</bullet><bullet><hyperlink>반격</hyperlink> 제거</bullet><bullet>인접 적 유닛에 90%의 확률로 쇠약 상태 유발</bullet><bullet><hyperlink>방어 모드</hyperlink> 진입</bullet></bulletlist>",
+  "name": "짓밟기",
+  "slug": "trample_ability_000003E300005305_0000048d000019de",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "마법"
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
    }
   ],
-  "accuracy": "항상 명중",
-  "actionPoints": "<fullaction></fullaction>",
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [
    {
-    "note": "재사용 대기시간: 3 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "icon": "000003E300006553"
+  "icon": "0000048D00001ADC"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 공격 시 90%의 기본 확률로 쇠약 상태를 유발합니다.</bullet><bullet>쇠약 상태인 유닛에 <hyperlink>근접</hyperlink> 공격 시:<bulletlist></bullet><bullet>피해 +20%</bullet><bullet>턴마다 한 번만 공격자의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
-  "name": "약자 도태",
-  "slug": "0000049700000f4f",
-  "icon": "000003E3000055A5"
+  "description": "해당 유닛의 턴 종료 시:<bulletlist><bullet>인접 적 유닛 하나당 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 15 회복</bullet></bulletlist>",
+  "name": "가학의 활력",
+  "slug": "0000048d00001ade",
+  "icon": "0000048D00001AE1"
+ },
+ {
+  "description": "인접한 적들이 -1 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력을</hyperlink> 획득합니다.",
+  "name": "폭군의 오라",
+  "slug": "0000048d00001aa4",
+  "icon": "0000048D00001AA2"
  },
  {
   "modifiers": [
@@ -19759,11 +20634,21 @@
     "description": "기병 및 대형 유닛을 대상으로 +40% 추가 피해를 줍니다.",
     "name": "폴암",
     "count": 1
+   },
+   {
+    "description": "60%의 기본 확률로 1 <turn></turn> 턴 동안 부동 상태를 유발합니다.",
+    "name": "부동",
+    "count": 1
+   },
+   {
+    "description": "60%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 5 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
+    "count": 1
    }
   ],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
-  "slug": "melee_strike_(base)_ability_000003E300005304",
+  "slug": "melee_strike_(base)_ability_000003E300005304_0000048d000019de",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19780,10 +20665,10 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "해당 유닛의 턴 종료 시, 인접 적 유닛이 90%의 기본 확률로 획득:<bulletlist><bullet>방어력 약화</bullet><bullet>저항력 약화</bullet></bulletlist>",
-  "name": "어둠의 권속",
-  "slug": "000003e3000050e6",
-  "icon": "000003E3000050E8"
+  "description": "공격에 대한 유닛의 <defense></defense> <hyperlink>방어력이</hyperlink> +1, <resistance></resistance> <hyperlink>저항력이</hyperlink> +1 증가합니다. 효과는 공격자가 보유한 <hyperlink>디버프</hyperlink>에 따라 결정됩니다.<br></br>최대 5회까지 중첩됩니다.",
+  "name": "경멸의 갑옷",
+  "slug": "0000048d00001b59",
+  "icon": "0000048D00001B5A"
  },
  {
   "modifiers": [
@@ -19791,11 +20676,16 @@
     "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 쇠약 상태를 유발합니다.",
     "name": "쇠약",
     "count": 1
+   },
+   {
+    "description": "60%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 5 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
+    "count": 1
    }
   ],
   "description": "대상 적에게 마법 화살을 발사합니다.",
   "name": "쇠약의 볼트",
-  "slug": "magic_bolts_ability_000003E300005303",
+  "slug": "magic_bolts_ability_000003E300005303_0000048d000019de",
   "damage": "12<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -19821,24 +20711,24 @@
  {
   "modifiers": [
    {
-    "description": "3 <turn></turn> 턴 동안 방어력 약화 상태를 유발합니다.",
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 2 방어력 약화 상태를 유발합니다.",
     "name": "방어력 약화",
     "count": 1
    },
    {
-    "description": "3 <turn></turn> 턴 동안 저항력 약화 상태를 유발합니다.",
-    "name": "저항력 약화",
+    "description": "90%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
     "count": 1
    },
    {
-    "description": "3 <turn></turn> 턴 동안 쇠약 상태를 유발합니다.",
-    "name": "쇠약",
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 2 저항력 약화 상태를 유발합니다.",
+    "name": "저항력 약화",
     "count": 1
    }
   ],
   "description": "대상 적 유닛 및 3 헥스 내 유닛이 피해를 받습니다.",
   "name": "약화의 저주",
-  "slug": "sundering_curse_ability_000003E300005303",
+  "slug": "sundering_curse_ability_000003E300005303_0000048d000019de",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -19868,7 +20758,7 @@
   "icon": "000003E3000050EA"
  },
  {
-  "description": "약화의 저주:<bulletlist><bullet>쇠약, 방어력 약화, 저항력 약화 중첩 1개씩 추가 유발</bullet></bulletlist>",
+  "description": "약화의 저주:<bulletlist><bullet>90%의 기본 확률로 2 쇠약 유발</bullet></bulletlist>",
   "name": "달인의 약화의 저주",
   "slug": "0000048b00000a45",
   "icon": "000003E30000627B"
@@ -19876,14 +20766,67 @@
  {
   "modifiers": [
    {
-    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 쇠약 상태를 유발합니다.",
-    "name": "쇠약",
+    "description": "60%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 5 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
     "count": 1
    }
   ],
   "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
   "name": "활 사격",
-  "slug": "shoot_bow_ability_000003E300005302",
+  "slug": "shoot_bow_ability_000003E300005302_0000048d000019de",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "notes": [
+   {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   },
+   {
+    "note": "시작 시 재사용 대기시간: 1<turn></turn>"
+   }
+  ],
+  "description": "시전자가 대상 헥스로 이동합니다.<br></br>해당 능력은 처치 시 충전됩니다.",
+  "name": "끈질긴 추적",
+  "slug": "relentless_pursuit_unit_property_ability_000003E300005302_0000048d000019de",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "이동"
+   },
+   {
+    "requisite": "끈질긴 추적"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000048D000019E5"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "활 사격",
+  "slug": "shoot_bow_ability_000003E300005302_0000048d000019d6",
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19908,9 +20851,42 @@
  },
  {
   "modifiers": [],
+  "description": "시전자가 대상 헥스로 이동합니다.<br></br>해당 능력은 처치 시 충전됩니다.",
+  "name": "끈질긴 추적",
+  "slug": "relentless_pursuit_unit_property_ability_000003E300005302_0000048d000019d6",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "이동"
+   },
+   {
+    "requisite": "끈질긴 추적"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   },
+   {
+    "note": "시작 시 재사용 대기시간: 1<turn></turn>"
+   }
+  ],
+  "icon": "0000048D000019E5"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "90%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
+    "count": 1
+   }
+  ],
   "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
-  "slug": "melee_charge_strike_(base)_ability_000003E300005301",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005301_0000048d000019de",
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19930,10 +20906,45 @@
   "icon": "000003EB0000040D"
  },
  {
+  "description": "해당 유닛이 전투 도중 사망할 경우, 아군의 승리로 전투가 끝나면 최대 <hyperlink><hp></hp> 체력</hyperlink>의 10%를 지닌 채 부활합니다. <hyperlink>이동 점수는</hyperlink> 보유하지 않습니다.",
+  "name": "하급 부활",
+  "slug": "0000048d00001b16",
+  "icon": "0000035700000333"
+ },
+ {
   "modifiers": [],
+  "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
+  "name": "돌진 공격",
+  "slug": "melee_charge_strike_(base)_ability_000003E300005301_0000048d000019d6",
+  "damage": "18<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60%의 기본 확률로:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 상태 효과 취약 상태 유발</bullet><bullet>자신의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 5 회복</bullet></bulletlist>",
+    "name": "취약점 활용",
+    "count": 1
+   }
+  ],
   "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
   "name": "활 사격",
-  "slug": "shoot_bow_ability_000003E300005300",
+  "slug": "shoot_bow_ability_000003E300005300_0000048d000019de",
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19970,10 +20981,37 @@
  },
  {
   "modifiers": [],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "활 사격",
+  "slug": "shoot_bow_ability_000003E300005300_0000048d000019d6",
+  "damage": "6<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "modifiers": [],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
   "slug": "melee_strike_(base)_ability_000003E3000052F9",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -20010,7 +21048,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "<bulletlist><bullet>대상 유닛에 피해를 줍니다.</bullet><bullet>인접 적 유닛이 해당 피해의 50%만큼 피해를 받습니다.</bullet><bullet>사용 후 <hyperlink>방어 모드</hyperlink>에 돌입합니다.</bullet>",
+  "description": "<bulletlist><bullet>대상 유닛에 피해를 줍니다.</bullet><bullet>인접 적 유닛이 해당 피해의 50%만큼 피해를 받습니다.</bullet><bullet>사용 후 <hyperlink>방어 모드</hyperlink>에 돌입합니다.</bullet></bulletlist>",
   "name": "방어 휩쓸기",
   "slug": "defensive_sweep_ability_000003E3000052F9",
   "damage": "16<damagephysical></damagephysical> ",
@@ -20031,12 +21069,6 @@
   "icon": "000003E100001523"
  },
  {
-  "description": "유닛의 <hyperlink>반격이</hyperlink> +1 증가합니다.",
-  "name": "주시",
-  "slug": "000003e100001533",
-  "icon": "000003E3000063F6"
- },
- {
   "modifiers": [
    {
     "description": "기병 및 대형 유닛을 대상으로 +40% 추가 피해를 줍니다.",
@@ -20047,7 +21079,7 @@
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
   "slug": "melee_strike_(base)_ability_000003E3000052F8",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -20204,11 +21236,11 @@
   "icon": "000003E30000623D"
  },
  {
-  "modifiers": [],
+  "notes": [],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
   "slug": "melee_strike_(base)_ability_000003E3000052F5",
-  "damage": "8<damagephysical></damagephysical> ",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -20220,7 +21252,6 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "notes": [],
   "icon": "000003BD000020C9"
  },
  {
@@ -20893,17 +21924,11 @@
   "icon": "0000045E000008E2"
  },
  {
-  "modifiers": [
-   {
-    "description": "대형 상태를 지닌 생명체에 대한 피해가 +40% 증가합니다.",
-    "name": "거인 학살자",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d000011e2",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -20928,17 +21953,11 @@
   "icon": "0000048D0000135A"
  },
  {
-  "modifiers": [
-   {
-    "description": "대형 상태를 지닌 생명체에 대한 피해가 +40% 증가합니다.",
-    "name": "거인 학살자",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "돌진 공격:<bulletlist><bullet>피해가 이동한 헥스 하나당 20% 증가합니다(최대 3 헥스).</bullet><bullet><hyperlink>방어 모드</hyperlink>를 취소합니다.</bullet><bullet><hyperlink>반격</hyperlink>을 제거합니다.</bullet></bulletlist>",
   "name": "돌진 공격",
   "slug": "melee_charge_strike_(base)_ability_000003E3000052D5_0000048d00001220",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -21789,7 +22808,7 @@
  {
   "modifiers": [
    {
-    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
     "name": "불붙음",
     "count": 1
    }
@@ -22682,7 +23701,7 @@
   "icon": "000003E1000011B3"
  },
  {
-  "description": "근접 공격자가 공격할 때마다 3 <damagePhysical></damagePhysical> <hyperlink>물리 피해를</hyperlink> 받습니다.",
+  "description": "근접 공격자에게 3 <turn></turn> 턴 동안 출혈 중첩을 유발합니다.",
   "name": "가시 피부",
   "slug": "000003e1000011ba",
   "icon": "000003E1000011B9"
@@ -23201,6 +24220,54 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "icon": "0000049700002A90"
+ },
+ {
+  "description": "전투 시작 시 <hyperlink>피의 구더기를</hyperlink> 소환합니다.",
+  "name": "피의 역병",
+  "slug": "00000497000034f4",
+  "icon": "00000497000034F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "반경 1 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>고통 3 중첩 획득</bullet></bulletlist>",
+  "name": "고문과 고통",
+  "slug": "torment_and_pain_ability_000003BD00002895",
+  "damage": "20<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000034F0"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 3 <turn></turn>"
+   }
+  ],
+  "description": "시전자:<bulletlist><bullet>막을 수 없는 10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 받음</bullet><bullet>해당 턴에 피해 +40% 증가</bullet></bulletlist>",
+  "name": "피의 의식",
+  "slug": "blood_rite_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "00000497000034D9"
  },
  {
   "description": "전투 시작 시 불경한 투사 편에 서서 싸우는 1등급 스켈레톤 유닛 1기를 소환합니다.",
@@ -24576,9 +25643,6 @@
   "requisites": [
    {
     "requisite": "소환"
-   },
-   {
-    "requisite": "지원"
    }
   ],
   "accuracy": "항상 명중",
@@ -24628,9 +25692,6 @@
   "requisites": [
    {
     "requisite": "소환"
-   },
-   {
-    "requisite": "지원"
    }
   ],
   "accuracy": "항상 명중",
@@ -24781,7 +25842,7 @@
     "note": "전투당 한 번만 사용할 수 있습니다."
    }
   ],
-  "description": "모든 우호 유닛이 획득:<bulletlist><bullet>3 <turn></turn> 턴 동안 +1 방어력 강화</bullet><bullet>3 <turn></turn> 턴 동안 +1 저항력 강화</bullet>",
+  "description": "모든 우호 유닛이 획득:<bulletlist><bullet>3 <turn></turn> 턴 동안 +1 방어력 강화</bullet><bullet>3 <turn></turn> 턴 동안 +1 저항력 강화</bullet></bulletlist>",
   "name": "경계의 의식",
   "slug": "hs_ritualist_rite_of_vigil_ability_000003BD00002895",
   "damage": "",
@@ -24801,7 +25862,7 @@
     "note": "재사용 대기시간: 3 <turn></turn>"
    }
   ],
-  "description": "비 영웅 적 대상:<bulletlist><bullet>90%의 기본 확률로 1 <turn></turn> <hyperlink>턴</hyperlink> 동안 쇠약 상태의 1등급 동물로 변환</bullet>",
+  "description": "영웅이 아닌 대상 적:<bulletlist><bullet>90%의 기본 확률로 1 <turn></turn> <hyperlink>턴</hyperlink> 동안 쇠약 상태인 1등급 동물로 변환</bullet></bulletlist>",
   "name": "다형체",
   "slug": "hs_ritualist_polymorph_ability_000003BD00002895",
   "damage": "",
@@ -24833,7 +25894,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 시체를 파괴하고 대상 헥스에 <hyperlink>식물 장애물을</hyperlink> 생성합니다.<br></br><br></br>반경 2 헥스 내의 우호 유닛:<bulletlist><bullet>10 <temphp></temphp> 임시 체력 획득</bullet><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 재생 상태 획득</bullet>",
+  "description": "대상 시체를 파괴하고 대상 헥스에 <hyperlink>식물 장애물을</hyperlink> 생성합니다.<br></br><br></br>반경 2 헥스 내 우호 유닛:<bulletlist><bullet><temphp></temphp> 임시 체력 10 획득</bullet><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 재생 상태 획득</bullet></bulletlist>",
   "name": "분해",
   "slug": "hs_ritualist_decompose_ability_000003BD00002895",
   "damage": "",
@@ -25039,9 +26100,6 @@
  {
   "notes": [
    {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   },
-   {
     "note": "전투당 한 번만 사용할 수 있습니다."
    }
   ],
@@ -25232,7 +26290,7 @@
   "icon": "000004BB0000001B"
  },
  {
-  "description": "해당 유닛이 군대 지도자일 때 영웅이 아닌 소속 유닛:<bulletlist><bullet><turn></turn> <hyperlink>턴</hyperlink>당 <hyperlink><hp></hp> 체력</hyperlink> +10 재생</bullet></bulletlist>",
+  "description": "해당 유닛이 군대 지도자일 때 영웅이 아닌 소속 유닛:<bulletlist><bullet>매 <hyperlink> <turn></turn> <hyperlink>턴</hyperlink>마다 <hyperlink><hp></hp> 체력을</hyperlink> +10만큼 재생</bullet></bulletlist></hyperlink>",
   "name": "습격 훈련",
   "slug": "0000048d00000dac",
   "icon": "000004BB0000001E"
@@ -25438,6 +26496,154 @@
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    },
    {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   }
+  ],
+  "description": "<hyperlink>어미 흡혈 거미를</hyperlink> 소환합니다.<br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.",
+  "name": "어미 흡혈 거미 소환",
+  "slug": "conjure_vampire_matriarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "소환"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000004970000354F"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "description": "대상 적:<bulletlist><bullet>피해 유발</bullet><bullet>3 <turn></turn> 턴 동안 2 피의 기생충 획득</bullet></bulletlist>",
+  "name": "진홍빛 역병",
+  "slug": "scarlet_plague_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003269"
+ },
+ {
+  "modifiers": [],
+  "description": "반경 2 헥스 내 적 유닛에게 피해를 주고 90%의 기본 확률로 유발:<bulletlist><bullet><happiness></happiness> <hyperlink>사기</hyperlink> -10 감소</bullet><bullet>2 쇠약</bullet></bulletlist>",
+  "name": "밴시의 통곡",
+  "slug": "wail_of_the_banshee_ability_000003BD00002895",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "마법"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005F65"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "<happiness></happiness> <hyperlink>사기가</hyperlink> \\\"낮음\\\" 이하인 대상 유닛:<bulletlist><bullet>일정 확률로 즉사</bullet><bullet>대상 유닛의 사기가 낮을수록 즉사 확률 증가</bullet><bullet>유닛이 사망하지 않을 경우 30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet></bulletlist>",
+  "name": "짓이기는 고통",
+  "slug": "crushing_anguish_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000003E3000063B5"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   }
+  ],
+  "description": "<hyperlink>어미 공포 거미를</hyperlink> 소환합니다.<br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.",
+  "name": "어미 공포 거미 소환",
+  "slug": "conjure_dread_matriarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "소환"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000004970000324A"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "해당 유닛 및 인접 우호 유닛이 획득:<bulletlist><bullet>2 강화</bullet><bullet>2 행운</bullet></bulletlist>",
+  "name": "학살의 노래",
+  "slug": "song_of_carnage_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A62"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
@@ -25585,7 +26791,7 @@
   "icon": "0000041B00001983"
  },
  {
-  "description": "<bulletlist><bullet><statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력이</hyperlink> +6 증가합니다.</bullet><bullet><happiness></happiness> <hyperlink>사기가</hyperlink> -50% 감소합니다.</bullet>",
+  "description": "<bulletlist><bullet><statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력이</hyperlink> +6 증가합니다.</bullet><bullet><happiness></happiness> <hyperlink>사기가</hyperlink> -50% 감소합니다.</bullet></bulletlist>",
   "name": "청렴한 영혼",
   "slug": "000004a6000009dc",
   "icon": "0000041B0000192B"
@@ -26021,6 +27227,12 @@
   "icon": "000003E300004F67"
  },
  {
+  "description": "<bulletlist><bullet><hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 공격 시 90%의 기본 확률로 쇠약 상태를 유발합니다.</bullet><bullet>쇠약 상태인 유닛에 <hyperlink>근접</hyperlink> 공격 시:<bulletlist></bullet><bullet>피해 +20%</bullet><bullet>턴마다 한 번만 공격자의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet></bulletlist></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "name": "약자 도태",
+  "slug": "0000049700000f4f",
+  "icon": "000003E3000055A5"
+ },
+ {
   "description": "턴이 종료될 때마다 인접 적 유닛이 획득:<bulletlist><bullet>쇠약 상태</bullet><bullet>둔화 상태</bullet><bullet>60%의 기본 확률로 동결 상태 유발</bullet></bulletlist>",
   "name": "그림자 오라",
   "slug": "000003e300006d1e",
@@ -26336,6 +27548,95 @@
   "icon": "0000049700001737"
  },
  {
+  "description": "비행 이동 유닛:<bulletlist><bullet>시야 범위 +2</bullet><bullet>이동력 5점으로 모든 지형에서 이동 가능</bullet><bullet>수상 헥스 통과 시 항해 스킬 필요</bullet><bullet>전투 중 대부분의 다른 유닛과 장애물을 안전하게 통과</bullet></bulletlist>",
+  "name": "비행",
+  "slug": "0000049700002f03",
+  "icon": "00000357000001A5"
+ },
+ {
+  "description": "해당 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 0이 되면 3 헥스만큼 옮겨지고 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br>전투마다 한 번만 적용됩니다.",
+  "name": "안개 도피",
+  "slug": "0000049700002ef6",
+  "icon": "0000049700002EF7"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 우호 유닛에게 막을 수 없는 피해를 줌, 이후 시전자:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 20 회복</bullet><bullet>3 <turn></turn> 턴 동안 2 강화 획득</bullet></bulletlist>",
+  "name": "우호 흡혈",
+  "slug": "drain_familiar_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002EC6"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 유닛에게 피해를 주고, 체력을 준 피해의 50%만큼 회복합니다.<br></br><br></br>출혈 면역인 유닛을 대상으로 할 수 없습니다.",
+  "name": "혈액 사이펀",
+  "slug": "siphon_blood_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "흡혈"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E98"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 유닛에게 피해를 주고, 체력을 준 피해의 50%만큼 회복합니다.<br></br><br></br>출혈 면역인 유닛을 대상으로 할 수 없습니다.",
+  "name": "흡혈 물어뜯기",
+  "slug": "draining_bite_ability_000003BD00002895",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "흡혈"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E87"
+ },
+ {
   "notes": [
    {
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
@@ -26503,7 +27804,7 @@
   "icon": "000004C000000B84"
  },
  {
-  "description": "획득:<bulletlist><bullet>잔혹 상태</bullet><bullet>적 유닛이 <hyperlink>놓침</hyperlink> 발동 시, 이 능력을 보유한 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 전투가 종료될 때까지 +5 증가</bullet>",
+  "description": "획득:<bulletlist><bullet>잔혹 상태</bullet><bullet>적 유닛이 <hyperlink>놓침</hyperlink> 발동 시, 이 능력을 보유한 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 전투가 종료될 때까지 +5 증가</bullet></bulletlist>",
   "name": "절망 포식자",
   "slug": "000004c000000b77",
   "icon": "000004C000000B76"
@@ -26589,7 +27890,7 @@
     "note": "전투당 한 번만 사용할 수 있습니다."
    }
   ],
-  "description": "대상 적 유닛 및 연결된 모든 유닛:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 고통받음 상태 획득</bullet><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 질병 상태 획득</bullet>",
+  "description": "대상 적 유닛 및 연결된 모든 유닛:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 고통받음 상태 획득</bullet><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 질병 상태 획득</bullet></bulletlist>",
   "name": "감염의 고통",
   "slug": "hs_warlock_infectious_affliction_ability_000003BD00002895",
   "damage": "",
@@ -26612,7 +27913,7 @@
     "note": "재사용 대기시간: 3 <turn></turn>"
    }
   ],
-  "description": "사기가 <hyperlink>낮은 사기</hyperlink> 이하인 대상 적 유닛:<bulletlist><bullet>120%의 기본 확률로 3 <turn></turn> <hyperlink>턴</hyperlink> 동안 압도 상태 유발</bullet>",
+  "description": "사기가 <hyperlink>낮은 사기</hyperlink> 이하인 대상 적 유닛:<bulletlist><bullet>120%의 기본 확률로 3 <turn></turn> <hyperlink>턴</hyperlink> 동안 압도 상태 유발</bullet></bulletlist>",
   "name": "무너진 의지 굽히기",
   "slug": "hs_warlock_bend_broken_will_ability_000003BD00002895",
   "damage": "",
@@ -26732,7 +28033,7 @@
   "icon": "000004C000000AC7"
  },
  {
-  "description": "해당 유닛이 사망하고 1 <turn></turn> <hyperlink>턴</hyperlink> 이후:<bulletlist><bullet>유닛이 전체 체력의 40%만큼 지닌 상태로 부활</bullet><bullet>5 열정 획득</bullet>",
+  "description": "해당 유닛이 사망하고 1 <turn></turn> <hyperlink>턴</hyperlink> 이후:<bulletlist><bullet>유닛이 전체 체력의 40%만큼 지닌 상태로 부활</bullet><bullet>+5 열정 상태 획득</bullet></bulletlist>",
   "name": "불멸의 성인",
   "slug": "000004c0000009d7",
   "icon": "000004C0000009DA"
@@ -26760,7 +28061,7 @@
  {
   "notes": [
    {
-    "note": "재사용 대기시간: 2 <turn></turn>"
+    "note": "재사용 대기시간: 1 <turn></turn>"
    }
   ],
   "description": "대상 우호 유닛:<bulletlist><bullet>모든 <hyperlink>부정적인 상태 효과</hyperlink> 제거</bullet><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink> +3</bullet></bulletlist>",
@@ -26783,7 +28084,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "대상 적 유닛:<bulletlist><bullet>90%의 기본 확률로 전투가 종료될 때까지 규탄 받음 상태 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> <hyperlink>턴</hyperlink> 동안 2 쇠약 유발</bullet></bulletlist>",
+  "description": "대상 적 유닛:<bulletlist><bullet>전투가 종료될 때까지 규탄 받음 상태 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> <hyperlink>턴</hyperlink> 동안 2 쇠약 상태 유발</bullet></bulletlist>",
   "name": "규탄",
   "slug": "hs_battlesaint_condemnation_ability_000003BD00002895",
   "damage": "",
@@ -26794,7 +28095,7 @@
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<freeaction></freeaction>",
-  "range": "1",
+  "range": "4",
   "icon": "000004C000000AC6"
  },
  {
@@ -26909,7 +28210,7 @@
    }
   ],
   "accuracy": "항상 명중",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -26949,7 +28250,7 @@
    }
   ],
   "accuracy": "항상 명중",
-  "actionPoints": "<singleuseaction></singleuseaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "000004C000000ABE"
  },
@@ -26974,15 +28275,15 @@
   "icon": "000004C000000AC4"
  },
  {
-  "description": "공격이 명중할 때마다 1 열정을 획득합니다.<br></br>연사 공격이 아닐 경우 효과가 2배로 증가합니다.",
+  "description": "해당 유닛 및 인접 우호 유닛의 <defense></defense> <hyperlink>방어력이</hyperlink> +1 증가합니다.<br></br><br></br>공격이 명중할 때마다 +1 열정 상태를 획득합니다.<br></br>연사 공격이 아닐 경우 효과가 2배로 증가합니다.",
   "name": "성기사",
   "slug": "000004c000000940",
   "icon": "000004C000000942"
  },
  {
-  "description": "해당 유닛은 자신의 턴이 끝날 때 1 열정을 획득합니다.",
+  "description": "해당 유닛 및 인접 우호 유닛의 <resistance></resistance> <hyperlink>저항력이</hyperlink> +1 증가합니다.<br></br><br></br>자신의 턴이 끝날 때 +1 열정을 획득합니다.",
   "name": "성직자",
-  "slug": "000004c000000979",
+  "slug": "0000048d00001bab",
   "icon": "000004C000000941"
  },
  {
@@ -27034,6 +28335,149 @@
   "icon": "0000048D00000AB0"
  },
  {
+  "description": "<bulletlist><bullet>실명에 면역인 유닛입니다.</bullet><bullet>해당 유닛이 무광, 지하, 암흑 지형에 있는 동안 획득:<bulletlist></bullet><bullet>피해 +20%</bullet><bullet>자연 재생 상태</bullet></bulletlist></bulletlist>",
+  "name": "밤의 군주",
+  "slug": "000004970000353c",
+  "icon": "0000049700003538"
+ },
+ {
+  "description": "처치 시:<bulletlist><bullet>활성화된 재사용 대기시간이 1 <turn></turn> 턴 감소합니다.</bullet><bullet>전투 시 <hyperlink><hp></hp> 체력을</hyperlink> +10 획득합니다.</bullet></bulletlist><br></br>턴마다 한 번만 발동됩니다.",
+  "name": "수확자",
+  "slug": "0000049700003533",
+  "icon": "000004970000352D"
+ },
+ {
+  "description": "<hyperlink><hp></hp> 체력이</hyperlink> 감소할수록 피해가 증가합니다(최대 50%).",
+  "name": "흡혈귀의 격분",
+  "slug": "0000049700003527",
+  "icon": "0000049700003524"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "description": "대상 헥스로 이동합니다.",
+  "name": "초자연적 속도",
+  "slug": "supernatural_speed_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "이동"
+   },
+   {
+    "requisite": "순간이동"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "0000049700002F81"
+ },
+ {
+  "description": "해당 유닛 및 이 유닛에 의해 변한 모든 흡혈귀가 탈것이 없을 경우 매우 빠른 이동 상태를 보유합니다.<br></br><br></br>장로 흡혈귀가 불경한 육체 지배 상태를 보유한 경우, 해당 유닛의 <hyperlink>치명타</hyperlink> 확률이 +20% 증가합니다. 이 효과는 탈것에 탈 때도 적용됩니다.",
+  "name": "독보적인 속도",
+  "slug": "0000049700003580",
+  "icon": "0000049700003587"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "대상 우호 유닛 및 시전자:<bulletlist><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 20 회복</bullet><bullet>부정적인 상태 효과 2개 제거</bullet></bulletlist>",
+  "name": "피의 교감",
+  "slug": "blood_communion_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "지원"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "0000049700002F58"
+ },
+ {
+  "description": "<gold></gold> <hyperlink>금화</hyperlink> 유지비가 20 증가합니다.",
+  "name": "유지비 증가",
+  "slug": "0000049700003215",
+  "icon": "0000049700003612"
+ },
+ {
+  "modifiers": [],
+  "description": "대상:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink>, <resistance></resistance> <hyperlink>저항력을</hyperlink> 50% 무시하는 피해 유발</bullet><bullet>3 <turn></turn> 턴 동안 3 출혈 상태 획득</bullet></bulletlist>",
+  "name": "유혈",
+  "slug": "exsanguinate_ability_000003BD00002895",
+  "damage": "40<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002F3F"
+ },
+ {
+  "description": "유닛이 획득:<bulletlist><bullet>매우 빠른 이동</bullet><bullet><hyperlink>회피</hyperlink> +15%</bullet><bullet><hyperlink><hp></hp> 체력</hyperlink> +20</bullet></bulletlist>",
+  "name": "불경한 육체 지배",
+  "slug": "0000049700002f36",
+  "icon": "0000049700002F35"
+ },
+ {
+  "description": "<bulletlist><bullet>3 <turn></turn> 턴 동안 출혈 상태를 유발합니다. 단발성 공격일 경우 피해가 증가합니다.</bullet><bullet>적이 출혈으로 피해를 받을 경우, 시전자가 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 2 획득합니다.</bullet></bulletlist>",
+  "name": "골수 흡혈자",
+  "slug": "0000049700002f33",
+  "icon": "0000049700002F2A"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "막을 수 없는 피해를 보유한 최대 <hyperlink><hp></hp> 체력</hyperlink>의 10%만큼 받습니다. 해당 턴에서 다음 공격을 시전할 경우 주는 피해가 +50% 증가합니다.",
+  "name": "피의 권능",
+  "slug": "blood_empowerment_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "0000049700002F1B"
+ },
+ {
+  "description": "<hyperlink>마법</hyperlink>, <hyperlink>근접</hyperlink>, <hyperlink>물리 원거리</hyperlink> 공격 중 하나로 다른 유닛을 처치하면 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 10 회복합니다.",
+  "name": "피 회복",
+  "slug": "0000049700002f26",
+  "icon": "0000049700002F28"
+ },
+ {
+  "description": "<gold></gold> <hyperlink>금화</hyperlink> 유지비가 10 증가합니다.",
+  "name": "유지비 증가",
+  "slug": "0000049700003214",
+  "icon": "0000049700003611"
+ },
+ {
   "description": "해당 유닛이 군대 지도자일 때 영웅이 아닌 소속 유닛:<bulletlist><bullet>공격 능력을 사용할 때 3 <turn></turn> 턴 동안 강화, 행운 중첩 획득</bullet></bulletlist>",
   "name": "거대 분노의 룬",
   "slug": "00000497000027bf",
@@ -27046,7 +28490,7 @@
   "icon": "0000049700001852"
  },
  {
-  "description": "유닛:<bulletlist><bullet>매우 빠른 이동 상태 획득</bullet><bullet>공격 능력을 사용할 때 3 <turn></turn> 턴 동안 강화, 행운 중첩 획득</bullet>",
+  "description": "유닛:<bulletlist><bullet>매우 빠른 이동 상태 획득</bullet><bullet>공격 능력을 사용할 때 3 <turn></turn> 턴 동안 강화, 행운 중첩 획득</bullet></bulletlist>",
   "name": "분노의 룬",
   "slug": "00000497000027bd",
   "icon": "000004970000185F"
@@ -27058,7 +28502,7 @@
   "icon": "0000049700000D40"
  },
  {
-  "description": "해당 유닛이 군대 지도자일 때 영웅이 아닌 소속 유닛:<bulletlist><bullet>전투 시작 시 신속, 강화 상태 획득</bullet></bulletlist></bulletlist>",
+  "description": "해당 유닛이 군대 지도자일 때 영웅이 아닌 소속 유닛:<bulletlist><bullet>전투 시작 시 신속, 강화 상태 획득</bullet></bulletlist>",
   "name": "혼돈의 귀감",
   "slug": "0000048d00000aab",
   "icon": "0000048D00000AAA"
@@ -27089,7 +28533,7 @@
     "count": 1
    },
    {
-    "description": "3 <turn></turn> 턴 동안 x3 출혈 상태를 유발합니다.",
+    "description": "3 <turn></turn> 턴 동안 3 출혈 상태를 유발합니다.",
     "name": "출혈",
     "count": 1
    },
@@ -27199,6 +28643,254 @@
   "icon": "0000048D00000A82"
  },
  {
+  "description": "전투 시작 시 <hyperlink>장미 기사를</hyperlink> 소환합니다.",
+  "name": "장미 기사 수호자",
+  "slug": "00000497000035a6",
+  "icon": "00000497000035A7"
+ },
+ {
+  "description": "도시에서 <hyperlink>장미 기사를</hyperlink> 고용할 수 있게 됩니다.",
+  "name": "장미 기사 고용",
+  "slug": "0000049700003596",
+  "icon": "0000049700003597"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적 유닛 및 반경 2 헥스 내 2기의 유닛이 획득:<bulletlist><bullet>피해 유발</bullet><bullet>3 <turn></turn> 턴 동안 3 피의 기생충 상태 획득</bullet></bulletlist>",
+  "name": "피의 역병",
+  "slug": "bloodblight_ability_000003BD00002895",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 3 <turn></turn>"
+   }
+  ],
+  "icon": "000004970000356C"
+ },
+ {
+  "description": "턴 종료 시 인접 적:<bulletlist><bullet>4 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> 상실 4</bullet><bullet>전투가 종료될 때까지 1 고통 상태 획득</bullet></bulletlist>",
+  "name": "고통의 오라",
+  "slug": "0000049700003564",
+  "icon": "0000049700003565"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "인접 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태 유발</bullet></bulletlist>",
+  "name": "박쥐 무리",
+  "slug": "bat_swarm_ability_000003BD00002895",
+  "damage": "8<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "근접"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "icon": "000004970000351F"
+ },
+ {
+  "description": "전투 시작 시 <hyperlink>파멸의 박쥐를</hyperlink> 소환합니다.",
+  "name": "밤의 생명체",
+  "slug": "0000049700003519",
+  "icon": "000004970000351A"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 3 <turn></turn>"
+   }
+  ],
+  "description": "반경 2 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> 10 상실</bullet><bullet>전투가 종료될 때까지 고통 4 중첩 획득</bullet></bulletlist>",
+  "name": "고통의 안개",
+  "slug": "tormenting_mist_ability_000003BD00002895",
+  "damage": "8<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "디버프"
+   },
+   {
+    "requisite": "마법"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "0",
+  "icon": "00000497000031EB"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "대상 적 유닛:<bulletlist><bullet>전투가 종료될 때까지 2 고통 획득</bullet><bullet>3 <turn></turn> 턴 동안 상태 효과 취약 상태 획득</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> 10 상실</bullet></bulletlist>",
+  "name": "공포",
+  "slug": "dread_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
+  "icon": "000004970000312B"
+ },
+ {
+  "description": "공격 시 대상의 <happiness></happiness> <hyperlink>사기가</hyperlink> 4 감소합니다. 단발성 공격 시 감소량이 2배로 증가합니다.",
+  "name": "폭군",
+  "slug": "000004970000313a",
+  "icon": "0000049700003131"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "대상 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>3 <turn></turn> 턴 동안 4 중독 상태 획득</bullet><bullet>3 <turn></turn> 턴 동안 2 부패 상태 획득</bullet></bulletlist>",
+  "name": "부패한 척추",
+  "slug": "festering_spine_ability_000003BD00002895",
+  "damage": "40<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000030F2"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 3 <turn></turn>"
+   }
+  ],
+  "description": "반경 2 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>전투가 종료될 때까지 영혼 결속 상태 유발</bullet></bulletlist>",
+  "name": "불사로의 저주",
+  "slug": "curse_to_undeath_ability_000003BD00002895",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "00000497000030B4"
+ },
+ {
+  "description": "턴 시작 시, 영혼 결속 상태를 지닌 적 유닛이 4 <damageFrost></damageFrost> <hyperlink>서리 피해를</hyperlink> 받습니다.",
+  "name": "영혼 결속의 고뇌",
+  "slug": "00000497000030c4",
+  "icon": "0000049700003588"
+ },
+ {
+  "notes": [
+   {
+    "note": "재사용 대기시간: 5 <turn></turn>"
+   }
+  ],
+  "description": "반경 1 헥스 안에 1등급 가시 스켈레톤 유닛의 시체 4기를 소환합니다.<br></br>다음 4 <turn></turn> 턴 동안, 전장에 있는 무작위 시체 1기를 전투가 종료될 때까지 당신의 통제를 받는 상태로 부활시킵니다.",
+  "name": "무덤 속 행군",
+  "slug": "gravemarch_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "소환"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "0000049700003090"
+ },
+ {
+  "description": "공격 시 <hyperlink>긍정적인 상태 효과</hyperlink> 1개를 제거합니다. 단발성 공격 시 대신 <hyperlink>긍정적인 상태 효과</hyperlink> 2개를 제거합니다.",
+  "name": "모독자",
+  "slug": "000004970000305a",
+  "icon": "0000049700003059"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "120%의 기본 확률로 3 <turn></turn> 턴 동안 질병 상태를 유발합니다.",
+    "name": "질병",
+    "count": 1
+   },
+   {
+    "description": "120%의 기본 확률로 3 <turn></turn> 턴 동안 부패 상태를 유발합니다.",
+    "name": "부패",
+    "count": 1
+   }
+  ],
+  "description": "대상 시체가 폭발합니다. 시체로부터 헥스 2 반경 내 모든 적 유닛이 피해를 받습니다.",
+  "name": "어둠의 성물",
+  "slug": "dark_sacrament_ability_000003BD00002895",
+  "damage": "15<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "디버프"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700003038"
+ },
+ {
+  "description": "전투 시작 시 <hyperlink>좀비를</hyperlink> 소환합니다.<br></br><br></br>수상 전투 시 적용되지 않습니다.",
+  "name": "언데드 종복",
+  "slug": "0000049700003048",
+  "icon": "0000049700003049"
+ },
+ {
   "description": "해당 유닛이 군대 지도자일 때 영웅이 아닌 소속 유닛:<bulletlist><bullet>기본 공격 시 60%의 기본 확률로 2 <turn></turn> 턴 동안 교란됨 상태 유발, 단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.</bullet><bullet>마법 기원 유닛이 공격 시 주는 피해 +20%</bullet></bulletlist>",
   "name": "거대 교란의 룬",
   "slug": "00000497000027d5",
@@ -27241,59 +28933,50 @@
   "icon": "0000048D00000AD7"
  },
  {
-  "modifiers": [
-   {
-    "description": "90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태를 유발합니다.",
-    "name": "실명",
-    "count": 1
-   }
-  ],
-  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
-  "name": "영혼 폭발",
-  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
-  "damage": "16<damagespirit></damagespirit> ",
-  "requisites": [
-   {
-    "requisite": "기본"
-   },
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "단일 사격"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
   "notes": [
    {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    },
    {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "icon": "000003E600000566"
- },
- {
-  "notes": [],
-  "description": "단발성 근접 공격입니다.",
-  "name": "빠른 찌르기",
-  "slug": "quick_stab_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
+  "description": "해당 유닛 및 인접 우호 유닛이 획득:<bulletlist><bullet>3 집결</bullet><bullet>2 재생</bullet></bulletlist>",
+  "name": "환락의 노래",
+  "slug": "song_of_revelry_ability_000003BD00002895",
+  "damage": "",
   "requisites": [
    {
-    "requisite": "근접"
-   },
-   {
-    "requisite": "단일 사격"
+    "requisite": "지원"
    }
   ],
-  "accuracy": "100%",
+  "accuracy": "항상 명중",
   "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A5A"
+ },
+ {
+  "notes": [
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "전투당 한 번만 사용할 수 있습니다."
+   }
+  ],
+  "description": "<hyperlink>장미 기사를</hyperlink> 소환합니다.<br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.",
+  "name": "장미 기사 소환",
+  "slug": "summon_rose_knight_ability_000003BD00002895",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "소환"
+   }
+  ],
+  "accuracy": "항상 명중",
+  "actionPoints": "<fullaction></fullaction>",
   "range": "1",
-  "icon": "000003E3000057D6"
+  "icon": "0000049700003494"
  },
  {
   "notes": [
@@ -27411,6 +29094,87 @@
   "name": "근접 공격",
   "slug": "melee_strike_(base)_ability_(combo)_000003BD00002895",
   "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "단검 연속 베기",
+  "slug": "floating_daggers_ability_000003BD00002895",
+  "damage": "24<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "0000049700003622"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(base)_ability_000003BD00002895",
+  "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -27737,32 +29501,6 @@
    }
   ],
   "icon": "000003BD00002EA7"
- },
- {
-  "modifiers": [
-   {
-    "description": "기병 및 대형 유닛을 대상으로 +40% 추가 피해를 줍니다.",
-    "name": "폴암",
-    "count": 1
-   }
-  ],
-  "description": "대상 적 유닛을 공격합니다.",
-  "name": "근접 공격",
-  "slug": "melee_strike_(base)_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "근접"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "1",
-  "notes": [],
-  "icon": "000003BD000020C9"
  },
  {
   "modifiers": [
@@ -28195,6 +29933,57 @@
   "icon": "0000048B00000BAB"
  },
  {
+  "notes": [],
+  "description": "대상 적 유닛을 공격합니다.",
+  "name": "근접 공격",
+  "slug": "melee_strike_(item_forge_dual)_ability_000003BD00002895",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   },
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
+  "description": "대상 적에게 피해를 줍니다.",
+  "name": "채찍질",
+  "slug": "whip_ability_000003BD00002895",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000049700003011"
+ },
+ {
   "modifiers": [],
   "description": "대상 적에게 마법 화살을 발사합니다.",
   "name": "화염 화살",
@@ -28220,6 +30009,42 @@
    }
   ],
   "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
+  "name": "피의 폭발",
+  "slug": "blood_staff_blast_ability_000003BD00002895",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003E600000566"
  },
  {
   "notes": [
@@ -28250,6 +30075,39 @@
   "name": "우주 화살",
   "slug": "magic_hero_bolts_(cosmic)_ability_000003BD00002895",
   "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "기본"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "name": "출혈",
+    "count": 1
+   }
+  ],
+  "description": "대상 적에게 마법 화살을 발사합니다.",
+  "name": "피의 박쥐",
+  "slug": "magic_bolts_ability_000003BD00002895",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "마법"
@@ -28592,6 +30450,42 @@
  {
   "modifiers": [
    {
+    "description": "90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태를 유발합니다.",
+    "name": "실명",
+    "count": 1
+   }
+  ],
+  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
+  "name": "영혼 폭발",
+  "slug": "magic_hero_blast_(spirit)_ability_000003BD00002895",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "마법"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "modifiers": [
+   {
     "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
     "name": "불붙음",
     "count": 1
@@ -28694,7 +30588,7 @@
     "note": "재사용 대기시간: 3 <turn></turn>"
    }
   ],
-  "description": "무작위 적 최대 5기:<bulletlist><bullet>30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 교란됨 상태 유발</bullet>",
+  "description": "무작위 적 최대 5기:<bulletlist><bullet>30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 교란됨 상태 유발</bullet></bulletlist>",
   "name": "마법 교란",
   "slug": "magical_disruption_ability_000003BD00002895",
   "damage": "",
@@ -28721,11 +30615,40 @@
   "icon": "000004970000004E"
  },
  {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "쇠뇌 사격",
+  "slug": "shoot_crossbow_(item_forge)_ability_000003BD00002895",
+  "damage": "26<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "물리 원거리"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
   "notes": [],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "근접 공격",
-  "slug": "melee_strike_(item_forge_dual)_ability_000003BD00002895",
-  "damage": "12<damagephysical></damagephysical> ",
+  "slug": "melee_strike_(item_forge_dual_strong)_ability_000003BD00002895",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
@@ -28813,25 +30736,6 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "000003BD000020E7"
- },
- {
-  "notes": [],
-  "description": "대상 적 유닛을 공격합니다.",
-  "name": "근접 공격",
-  "slug": "melee_strike_(item_forge_dual_strong)_ability_000003BD00002895",
-  "damage": "14<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "근접"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "100%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "1",
-  "icon": "000003BD000020C9"
  },
  {
   "modifiers": [
@@ -29154,7 +31058,7 @@
     "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    }
   ],
-  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>90%의 기본 확률로 발동:<bulletlist></bullet><bullet>인접 공간으로 끌어당겨짐</bullet><bullet>1 <turn></turn> 턴 동안 위축 상태 유발</bullet></bulletlist>",
+  "description": "대상 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>90%의 기본 확률로 발동:<bulletlist></bullet><bullet>인접 공간으로 끌어당겨짐</bullet><bullet>1 <turn></turn> 턴 동안 위축 상태 유발</bullet></bulletlist></bulletlist>",
   "name": "당기기",
   "slug": "constrictor_pull_ability_000003BD00002895",
   "damage": "20<damagephysical></damagephysical> ",
@@ -29279,35 +31183,6 @@
    }
   ],
   "icon": "000004A6000008A4"
- },
- {
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
-  "name": "쇠뇌 사격",
-  "slug": "shoot_crossbow_(item_forge)_ability_000003BD00002895",
-  "damage": "26<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "물리 원거리"
-   },
-   {
-    "requisite": "기본"
-   },
-   {
-    "requisite": "단일 사격"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "000003BD00002EA7"
  },
  {
   "description": "해당 유닛의 전체 <hyperlink><hp></hp> 체력이</hyperlink> 30% 이하로 내려갈 경우:<bulletlist><bullet>3 <turn></turn> <hyperlink>턴</hyperlink> 동안 3 강화 획득</bullet><bullet>1 <turn></turn> <hyperlink>턴</hyperlink> 동안 광폭화 상태 획득</bullet><bullet>1 <turn></turn> <hyperlink>턴</hyperlink> 동안 요지부동 상태 획득</bullet></bulletlist>",
@@ -29484,23 +31359,27 @@
   "icon": "0000041B00001B9D"
  },
  {
-  "notes": [
-   {
-    "note": "재사용 대기시간: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "모든 인접 유닛에 피해를 줍니다.",
   "name": "회오리 타격",
   "slug": "whirlwind_strike_ability_000003BD00002895",
-  "damage": "20<damagephysical></damagephysical> ",
+  "damage": "27<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
    }
   ],
   "accuracy": "항상 명중",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000041B0000167F"
  },
  {
@@ -29610,39 +31489,6 @@
   "icon": "000003BD0000210B"
  },
  {
-  "modifiers": [
-   {
-    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 불운 상태를 유발합니다.",
-    "name": "불운",
-    "count": 1
-   }
-  ],
-  "description": "대상 적에게 마법 화살을 발사합니다.",
-  "name": "죽음 화살",
-  "slug": "magic_bolts_ability_000003BD00002895",
-  "damage": "8<damageblight></damageblight> 8<damagefrost></damagefrost> ",
-  "requisites": [
-   {
-    "requisite": "마법"
-   },
-   {
-    "requisite": "기본"
-   }
-  ],
-  "accuracy": "90%",
-  "actionPoints": "<repeatingaction></repeatingaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "000003BD0000210B"
- },
- {
   "description": "해당 유닛의 <happiness></happiness> <hyperlink>사기</hyperlink> 손실이 -50% 감소합니다.",
   "name": "용감함",
   "slug": "000004a60000048d",
@@ -29683,12 +31529,6 @@
   "name": "기회주의자",
   "slug": "0000041b00000572",
   "icon": "0000041B00000573"
- },
- {
-  "description": "유닛이 <hyperlink><flank></flank> 측면 공격</hyperlink> 시 주는 피해가 +25% 증가합니다.",
-  "name": "측면 공격자",
-  "slug": "000003fe0000007e",
-  "icon": "00000415000001D2"
  },
  {
   "modifiers": [
@@ -30010,21 +31850,24 @@
     "count": 1
    },
    {
-    "description": "<hyperlink>영웅</hyperlink> 유닛에 주는 피해가 +30% 증가합니다. ",
-    "name": "암살자의 단검^n",
+    "description": "대상의 체력이 낮을수록 주는 피해가 최대 +100%까지 증가합니다.",
+    "name": "필살 타격",
     "count": 1
    }
   ],
   "description": "단발성 근접 공격입니다.",
   "name": "암살자의 공격",
   "slug": "assassins_dagger_ability_000003BD00002895",
-  "damage": "22<damagephysical></damagephysical> ",
+  "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
    },
    {
     "requisite": "단일 사격"
+   },
+   {
+    "requisite": "기본"
    }
   ],
   "accuracy": "100%",
@@ -30263,7 +32106,7 @@
   "description": "원뿔 2 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>1 <turn></turn> 턴 동안 둔화 상태 유발</bullet></bulletlist>",
   "name": "거미줄",
   "slug": "web_ability_000003BD00002895",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "물리 원거리"
@@ -30282,7 +32125,7 @@
  {
   "modifiers": [
    {
-    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
+    "description": "90%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태를 유발합니다.",
     "name": "출혈",
     "count": 1
    },
@@ -30300,7 +32143,7 @@
   "description": "원뿔 2 헥스 내 적 유닛:<bulletlist><bullet>피해 유발</bullet><bullet>1 <turn></turn> 턴 동안 둔화 상태 유발</bullet></bulletlist>",
   "name": "가시 돋친 거미줄",
   "slug": "barbed_webs_ability_000003BD00002895",
-  "damage": "14<damagephysical></damagephysical> ",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "물리 원거리"
@@ -30347,18 +32190,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "턴 시작 시 해당 영웅이 <hyperlink>근접 교전</hyperlink> 상태가 아닐 경우, 이동할 때까지 <hyperlink>마법</hyperlink> 공격 및 능력의 피해가 +20%, <hyperlink><range></range>범위가</hyperlink> 1 증가합니다.",
-  "name": "완성된 집중",
-  "slug": "000004c000000c5e",
-  "icon": "0000048B000005D6"
- },
- {
-  "description": "유닛이 <hyperlink>근접</hyperlink>, <hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 능력을 사용할 수 없습니다.",
-  "name": "평화",
-  "slug": "000004970000109b",
-  "icon": "000004970000109D"
- },
- {
   "description": "해당 유닛의 공격:<bulletlist><bullet>피해 +20%</bullet><bullet>60%의 기본 확률로 1 <turn></turn> 턴 동안 동결 상태 유발</bullet></bulletlist>",
   "name": "소환 무기 연마",
   "slug": "00000497000025ff",
@@ -30381,6 +32212,18 @@
   "name": "돌조각 재생",
   "slug": "000004c00000019b",
   "icon": "000003E300007216"
+ },
+ {
+  "description": "유닛이 <hyperlink>근접</hyperlink>, <hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 능력을 사용할 수 없습니다.",
+  "name": "평화",
+  "slug": "000004970000109b",
+  "icon": "000004970000109D"
+ },
+ {
+  "description": "턴 시작 시 해당 영웅이 <hyperlink>근접 교전</hyperlink> 상태가 아닐 경우, 이동할 때까지 <hyperlink>마법</hyperlink> 공격 및 능력의 피해가 +20%, <hyperlink><range></range>범위가</hyperlink> 1 증가합니다.",
+  "name": "완성된 집중",
+  "slug": "000004c000000c5e",
+  "icon": "0000048B000005D6"
  },
  {
   "description": "유닛이 획득:<bulletlist><bullet>피해 +50%</bullet><bullet>불사</bullet><bullet>절망의 갑옷</bullet></bulletlist>",
@@ -30407,12 +32250,6 @@
   "icon": "000003E300005FEE"
  },
  {
-  "description": "유닛이 신속 상태를 획득합니다.",
-  "name": "폭군의 표식",
-  "slug": "0000049700000d12",
-  "icon": "0000049700000D14"
- },
- {
   "description": "해당 유닛 사망 시 인접한 적 유닛에 15 <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> 및 2 부패 상태를 유발합니다.",
   "name": "부패 소멸",
   "slug": "000004c000000be2",
@@ -30431,6 +32268,24 @@
   "icon": "0000049700002D8B"
  },
  {
+  "description": "유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 중첩당 +10 증가합니다.",
+  "name": "수확자",
+  "slug": "000004970000352f",
+  "icon": "0000049700003536"
+ },
+ {
+  "description": "유닛이 보유:<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +5</bullet><bullet>전투 시 치유받을 때 회복량 +5%</bullet></bulletlist>",
+  "name": "피의 귀족의 망토",
+  "slug": "00000497000035c9",
+  "icon": "00000497000035CA"
+ },
+ {
+  "description": "타인의 죽음이 해당 유닛에 부여:<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +5</bullet><bullet><hyperlink><crit></crit>치명타 확률</hyperlink> +2%</bullet></bulletlist><br></br>최대 10회까지 중첩됩니다.",
+  "name": "필멸자의 축복",
+  "slug": "0000048d00001a0f",
+  "icon": "0000048D00001A0A"
+ },
+ {
   "description": "유닛이 이동할 때까지 <hyperlink><range></range>범위가</hyperlink> +1 증가합니다.",
   "name": "저격수의 집중",
   "slug": "000004c000000b8b",
@@ -30441,6 +32296,18 @@
   "name": "질병",
   "slug": "000003e100001303",
   "icon": "000003E100001300"
+ },
+ {
+  "description": "해당 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> +10 증가합니다.",
+  "name": "소환 요새화",
+  "slug": "0000048b00000386",
+  "icon": "0000048B00000387"
+ },
+ {
+  "description": "해당 유닛의 공격 명중 시 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 10 회복합니다.<br></br>반복 공격 시 <hyperlink><temphp></temphp> 임시 체력이</hyperlink> 5만큼만 회복됩니다.",
+  "name": "생명력 갈취",
+  "slug": "000004970000362e",
+  "icon": "000004970000362F"
  },
  {
   "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 4 <damageFire></damageFire> <hyperlink>화염 피해를</hyperlink> 받습니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist><br></br><br></br><hyperlink>상쇄</hyperlink> 효과는 젖음, 동결에 적용됩니다.",
@@ -30455,40 +32322,22 @@
   "icon": "0000048D00000E87"
  },
  {
-  "description": "유닛이 획득:<bulletlist><bullet>중첩당 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink> +1</bullet></bulletlist><br></br>최대 5회까지 중첩됩니다.",
-  "name": "열정",
-  "slug": "000004c00000092c",
-  "icon": "000004C000000934"
- },
- {
   "description": "다음 전투가 끝날 때까지 유닛이 -2 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력을</hyperlink> 보유합니다.",
   "name": "환상의 의식",
   "slug": "0000049700000c53",
   "icon": "0000049700000C16"
  },
  {
+  "description": "유닛이 획득:<bulletlist><bullet>중첩당 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink> +1</bullet></bulletlist><br></br>최대 5회까지 중첩됩니다.",
+  "name": "열정",
+  "slug": "000004c00000092c",
+  "icon": "000004C000000934"
+ },
+ {
   "description": "유닛이 획득:<bulletlist><bullet>공격 시 90%의 기본 확률로 영혼 결속 상태 유발</bullet><bullet>영혼 결속 상태인 유닛에 대한 피해 +10%</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "name": "영혼 속박자",
   "slug": "0000048b000000e5",
   "icon": "0000041B000016F3"
- },
- {
-  "description": "해당 유닛의 <happiness></happiness> <hyperlink>사기가</hyperlink> 최근 이벤트로 인해 +10 증가했습니다.",
-  "name": "사기 진작 (소규모)",
-  "slug": "000004130000000b",
-  "icon": "0000042A000004CE"
- },
- {
-  "description": "대상 헥스에 <hyperlink>하급 마그마 정령을</hyperlink> 소환합니다.<br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.<br></br>영혼 소환 시 재사용 대기시간이 3 <turn></turn> 턴 만큼 변화합니다.",
-  "name": "영혼 소환: 혼돈",
-  "slug": "0000048d00000741",
-  "icon": "0000048D00000740"
- },
- {
-  "description": "해당 유닛의 공격:<bulletlist><bullet>피해 +20%</bullet><bullet>3 <turn></turn> 턴 동안 불붙음 상태 유발</bullet></bulletlist>",
-  "name": "소환 무기 연마",
-  "slug": "000004970000176b",
-  "icon": "000004970000176C"
  },
  {
   "description": "해당 능력은 태초의 블러드백이 살아있을 경우 발동됩니다. 1~3등급 리소린 유닛이 사망할 때마다, 다른 리소린의 시체가 지도에 있다면 시체를 부활시킵니다. 이때 시체는 방금 사망한 리소린 유닛보다 1등급 높아진 상태로 부활합니다.",
@@ -30539,18 +32388,7 @@
   "icon": "0000048B000005DB"
  },
  {
-  "description": "상대가 조종하고 있는 유닛입니다.<br></br>전투가 종료될 때까지 효과가 지속되는 경우, 주인은 <mana></mana>를 소모해 유닛을 계속 소유할 수도 있습니다.",
-  "name": "압도",
-  "slug": "00000413000018dd",
-  "icon": "00000413000018DC"
- },
- {
-  "description": "다음 전투가 끝날 때까지 유닛이 주는 피해가 +20% 증가합니다.",
-  "name": "섬뜩한 의식",
-  "slug": "0000049700000c06"
- },
- {
-  "description": "해당 유닛 사망 시, 4 헥스 안에 위치한 시전자 진영 유닛 1기의 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 치유합니다.",
+  "description": "해당 유닛 사망 시, 4 헥스 안에 위치한 시전자 진영 유닛 1기의 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.",
   "name": "생명의 씨앗",
   "slug": "000004c0000006fa",
   "icon": "0000049700002DB6"
@@ -30568,6 +32406,12 @@
   "icon": "000004C0000007FC"
  },
  {
+  "description": "이번 턴에서 다음 공격을 시전할 경우 주는 피해가 +50% 증가합니다.",
+  "name": "피의 권능",
+  "slug": "0000049700002f16",
+  "icon": "0000049700002F18"
+ },
+ {
   "description": "획득:<bulletlist><bullet><defenselightning></defenselightning> <hyperlink>번개 저항</hyperlink> +3</bullet><bullet>인접 적 유닛에 -3 <defenselightning></defenselightning> <hyperlink>번개 저항</hyperlink> 유발</bullet></bulletlist>",
   "name": "정령 주입",
   "slug": "000004c000000803",
@@ -30580,22 +32424,16 @@
   "icon": "000003E300005610"
  },
  {
-  "description": "전투가 종료될 때까지, 해당 유닛이 피해를 받을 때 20%의 확률로 1 <turn></turn> 턴 동안 동결 상태를 유발합니다.",
-  "name": "서리 저주",
-  "slug": "0000049700000b2d",
-  "icon": "0000049700000B2E"
- },
- {
-  "description": "해당 효과가 만료될 경우:<bulletlist><bullet>해당 유닛에 30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>우호 유닛이 인접해 있는 경우, 해당 우호 유닛이 피해의 절반을 대신 받음</bullet></bulletlist>",
-  "name": "유배 추방",
-  "slug": "0000049700000dbe",
-  "icon": "0000049700000DBF"
- },
- {
   "description": "<bulletlist><bullet>기본 공격 시 <damageBlight></damageBlight> <hyperlink>역병 피해가</hyperlink> +1 증가합니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "name": "자연의 위력",
   "slug": "000004970000244b",
   "icon": "000004970000244C"
+ },
+ {
+  "description": "이번 턴에 유닛이 주는 피해가 +40% 증가합니다.",
+  "name": "피의 의식",
+  "slug": "00000497000034de",
+  "icon": "00000497000034DF"
  },
  {
   "description": "다음 턴이 시작될 때까지, 또는 유닛이 이동할 때까지 <defense></defense> <hyperlink>방어력이</hyperlink> +2, <resistance></resistance> <hyperlink>저항력이</hyperlink> +2 증가합니다.",
@@ -30616,7 +32454,7 @@
   "icon": "000003E3000049ED"
  },
  {
-  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 4 <damageBlight></damageBlight> <hyperlink>역병 피해를</hyperlink> 받습니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist><br></br>에테르, 언데드 유닛은 면역입니다.<br></br><br></br>중독의 <hyperlink>상쇄</hyperlink> 효과는 재생에 적용됩니다.</bulletlist>",
+  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 4 <damageBlight></damageBlight> <hyperlink>역병 피해를</hyperlink> 받습니다.</bullet><bullet>최대 5회까지 중첩됩니다.<br></br>에테르, 언데드 유닛은 면역입니다.<br></br><br></br>중독의 <hyperlink>상쇄</hyperlink> 효과는 재생에 적용됩니다.</bullet></bulletlist>",
   "name": "중독",
   "slug": "0000041b00000bab",
   "icon": "000003E3000045AF"
@@ -30628,10 +32466,10 @@
   "icon": "000004AC000000A3"
  },
  {
-  "description": "해당 유닛의 공격:<bulletlist><bullet>피해 +20%</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 방어력 약화 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 저항력 약화 유발</bullet></bulletlist>",
-  "name": "소환 무기 연마",
-  "slug": "0000049700001764",
-  "icon": "0000049700001765"
+  "description": "<bulletlist><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> 1</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist><br></br><br></br>저항력 강화의 <hyperlink>상쇄</hyperlink> 효과는 저항력 약화에 적용됩니다.",
+  "name": "저항력 강화",
+  "slug": "000003e100001411",
+  "icon": "000003E10000140E"
  },
  {
   "description": "유닛이 획득:<bulletlist><bullet>느린 이동</bullet><bullet><hyperlink>반격</hyperlink> 1 감소</bullet></bulletlist><br></br><br></br>둔화의 <hyperlink>상쇄</hyperlink> 효과는 신속에 적용됩니다.",
@@ -30694,6 +32532,12 @@
   "icon": "0000049700000CDC"
  },
  {
+  "description": "<bulletlist><bullet>공격 시 <damageFire></damageFire> <hyperlink>화염 피해가</hyperlink> +2 증가합니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "name": "지옥불 권능",
+  "slug": "000004970000364c",
+  "icon": "0000049700000EC9"
+ },
+ {
   "description": "연결된 대상 유닛이 1 <turn></turn> 턴 동안 착란 상태를 겪습니다.<br></br><br></br>해당 턴에는 감사 및 항복이 비활성화됩니다.",
   "name": "분노",
   "slug": "0000049c000000d0",
@@ -30716,6 +32560,59 @@
   "name": "착란",
   "slug": "0000041b00000b17",
   "icon": "0000041B00000B1A"
+ },
+ {
+  "description": "유닛이 다음을 보유:<bulletlist><bullet>무적 상태</bullet><bullet>기절 상태</bullet></bulletlist>",
+  "name": "피난 중",
+  "slug": "000003e300005873",
+  "icon": "000003E300005EBE"
+ },
+ {
+  "description": "적이 살해당할 경우, 해당 유닛에 부여:<bulletlist><bullet>능수능란 상태</bullet><bullet>측면 공격자 상태</bullet></bulletlist>",
+  "name": "그림자의 표식",
+  "slug": "0000048d0000180a",
+  "icon": "0000048D0000180C"
+ },
+ {
+  "description": "<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> 1</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist><br></br><br></br>방어력 강화의 <hyperlink>상쇄</hyperlink> 효과는 방어력 약화에 적용됩니다.",
+  "name": "방어력 강화",
+  "slug": "000003e1000013c8",
+  "icon": "000003E1000013CA"
+ },
+ {
+  "description": "유닛이 획득:<bulletlist><bullet>피해 +20%</bullet><bullet><hyperlink>치명타</hyperlink> 확률 +10%</bullet><bullet><hyperlink>치명타</hyperlink> 피해 +25%</bullet></bulletlist>",
+  "name": "집정관의 피",
+  "slug": "0000049700003407",
+  "icon": "0000049700003408"
+ },
+ {
+  "description": "<bulletlist><bullet>기생충 팽창이 추가로 5 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist>",
+  "name": "팽창",
+  "slug": "00000497000033ab",
+  "icon": "00000497000033AC"
+ },
+ {
+  "description": "해당 유닛:<bulletlist><bullet>피해 +60%</bullet><bullet>회생 상태 보유</bullet><bullet>턴 종료 시 사망</bullet></bulletlist>",
+  "name": "의례용 단검",
+  "slug": "000004970000327a",
+  "icon": "000004970000327B"
+ },
+ {
+  "description": "<hyperlink>놓침</hyperlink> 발생 시, 해당 유닛의 <happiness></happiness> <hyperlink>사기가</hyperlink> 10 감소합니다.",
+  "name": "놓침의 절망",
+  "slug": "0000049700003184"
+ },
+ {
+  "description": "해당 유닛이 능력 사용 시:<bulletlist><bullet>8 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> 4 상실</bullet><bullet>해당 능력 중첩 1개 상실</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist><br></br><br></br>고통의 <hyperlink>상쇄는</hyperlink> 은총에 적용됩니다.",
+  "name": "고통",
+  "slug": "0000049700003110",
+  "icon": "0000049700003114"
+ },
+ {
+  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 4 <damagePhysical></damagePhysical> <hyperlink>물리 피해를</hyperlink> 받습니다.</bullet><bullet>교체 후 출혈으로 간주하지만, 대신 상태 효과 면역: 출혈 상태를 무시합니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist><br></br>유닛 사망 시, 전투가 종료될 때까지 상대의 통제를 받는 <hyperlink>피의 구더기를</hyperlink> 생성합니다.</bulletlist></bulletlist>",
+  "name": "피의 기생충",
+  "slug": "0000049700002ef4",
+  "icon": "0000049700002EF5"
  },
  {
   "description": "해당 유닛이 획득:<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +10</bullet><bullet><statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink> +2</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +X</bullet></bulletlist>",
@@ -30760,6 +32657,30 @@
   "icon": "0000049700001A56"
  },
  {
+  "description": "해당 유닛의 <happiness></happiness> <hyperlink>사기가</hyperlink> 최근 이벤트로 인해 +10 증가했습니다.",
+  "name": "사기 진작 (소규모)",
+  "slug": "000004130000000b",
+  "icon": "0000042A000004CE"
+ },
+ {
+  "description": "대상 헥스에 <hyperlink>하급 마그마 정령을</hyperlink> 소환합니다.<br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.<br></br>영혼 소환 시 재사용 대기시간이 3 <turn></turn> 턴 만큼 변화합니다.",
+  "name": "영혼 소환: 혼돈",
+  "slug": "0000048d00000741",
+  "icon": "0000048D00000740"
+ },
+ {
+  "description": "해당 유닛의 공격:<bulletlist><bullet>피해 +20%</bullet><bullet>3 <turn></turn> 턴 동안 불붙음 상태 유발</bullet></bulletlist>",
+  "name": "소환 무기 연마",
+  "slug": "000004970000176b",
+  "icon": "000004970000176C"
+ },
+ {
+  "description": "해당 유닛의 공격:<bulletlist><bullet>피해 +20%</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 방어력 약화 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 저항력 약화 유발</bullet></bulletlist>",
+  "name": "소환 무기 연마",
+  "slug": "0000049700001764",
+  "icon": "0000049700001765"
+ },
+ {
   "description": "해당 유닛의 공격:<bulletlist><bullet>피해 +20%</bullet><bullet>3 <turn></turn> 턴 동안 감전 상태 유발</bullet></bulletlist>",
   "name": "소환 무기 연마",
   "slug": "000004970000175d",
@@ -30772,7 +32693,7 @@
   "icon": "000004970000158F"
  },
  {
-  "description": "유닛이 획득:<bulletlist><bullet>선제 공격</bullet><bullet>추가 <hyperlink>반격</hyperlink></bullet><bullet>방어의 달인</bullet></bulletlist></bulletlist>",
+  "description": "유닛이 획득:<bulletlist><bullet>선제 공격</bullet><bullet>추가 <hyperlink>반격</hyperlink></bullet><bullet>방어의 달인</bullet></bulletlist>",
   "name": "반격 태세",
   "slug": "0000049700001522",
   "icon": "000003E30000435F"
@@ -30782,6 +32703,24 @@
   "name": "지옥불 권능",
   "slug": "0000049700000ec3",
   "icon": "0000049700000EC9"
+ },
+ {
+  "description": "전투가 종료될 때까지, 해당 유닛이 피해를 받을 때 20%의 확률로 1 <turn></turn> 턴 동안 동결 상태를 유발합니다.",
+  "name": "서리 저주",
+  "slug": "0000049700000b2d",
+  "icon": "0000049700000B2E"
+ },
+ {
+  "description": "해당 효과가 만료될 경우:<bulletlist><bullet>해당 유닛에 30 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>우호 유닛이 인접해 있는 경우, 해당 우호 유닛이 피해의 절반을 대신 받음</bullet></bulletlist>",
+  "name": "유배 추방",
+  "slug": "0000049700000dbe",
+  "icon": "0000049700000DBF"
+ },
+ {
+  "description": "유닛이 신속 상태를 획득합니다.",
+  "name": "폭군의 표식",
+  "slug": "0000049700000d12",
+  "icon": "0000049700000D14"
  },
  {
   "description": "<bulletlist><bullet>피해 +10%</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist><br></br><br></br>강화의 <hyperlink>상쇄</hyperlink> 효과는 쇠약에 적용됩니다.",
@@ -30794,6 +32733,17 @@
   "name": "신속화의 의식",
   "slug": "0000049700000c54",
   "icon": "0000049700000C0C"
+ },
+ {
+  "description": "상대가 조종하고 있는 유닛입니다.<br></br>전투가 종료될 때까지 효과가 지속되는 경우, 주인은 <mana></mana>를 소모해 유닛을 계속 소유할 수도 있습니다.",
+  "name": "압도",
+  "slug": "00000413000018dd",
+  "icon": "00000413000018DC"
+ },
+ {
+  "description": "다음 전투가 끝날 때까지 유닛이 주는 피해가 +20% 증가합니다.",
+  "name": "섬뜩한 의식",
+  "slug": "0000049700000c06"
  },
  {
   "description": "유닛의 기본 공격:<bulletlist><bullet><damageFire></damageFire> <hyperlink>화염 피해</hyperlink> +2</bullet><bullet><damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> +2</bullet><bullet>50%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태 유발</bullet><bullet>50%의 기본 확률로 3 <turn></turn> 턴 동안 감전 상태 유발</bullet></bulletlist>",
@@ -30856,6 +32806,12 @@
   "icon": "0000049700000200"
  },
  {
+  "description": "다음 전투가 끝날 때까지 해당 유닛이 획득:<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +20</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> +15</bullet></bulletlist>",
+  "name": "병적 희생",
+  "slug": "0000048d00001ba3",
+  "icon": "0000048D00001A6E"
+ },
+ {
   "description": "공격 능력:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +4</bullet><bullet>1 <turn></turn> 턴 동안 실명 상태 유발</bullet></bulletlist><br></br>공격할 때마다 해당 효과 중첩을 1개 제거합니다.",
   "name": "사구 서펀트의 분노",
   "slug": "00000497000001f2",
@@ -30874,7 +32830,7 @@
   "icon": "00000497000001D9"
  },
  {
-  "description": "해당 유닛이 획득:<Bulletlist><bullet>공격 시 피해 +50%</bullet><bullet>공격 완료 시 30% 확률로 2 <turn></turn> 턴 동안 기절 상태 유발</bullet></bulletlist>",
+  "description": "해당 유닛이 획득:<bulletlist><bullet>공격 시 피해 +50%</bullet><bullet>공격 완료 시 30% 확률로 2 <turn></turn> 턴 동안 기절 상태 유발</bullet></bulletlist>",
   "name": "과충전",
   "slug": "0000048d000000bc",
   "icon": "0000048D000000C3"
@@ -30890,6 +32846,30 @@
   "name": "달라붙는 안개",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
+ },
+ {
+  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 3 <damageBlight></damageBlight> <hyperlink>역병 피해를</hyperlink> 받습니다.</bullet><bullet>전투 시 유닛이 받는 치유량이 -25% 감소합니다.</bullet><bullet>최대 4회까지 중첩됩니다.<br></br><br></br>부패의 <hyperlink>상쇄</hyperlink> 효과는 재생에 적용됩니다.</bullet></bulletlist>",
+  "name": "부패",
+  "slug": "000003e300005b7e",
+  "icon": "000003E300005B80"
+ },
+ {
+  "description": "유닛 사망 시, 전투가 종료될 때까지 수비군의 통제를 받는 <hyperlink>피의 구더기를</hyperlink> 생성합니다.",
+  "name": "자애로운 피의 기생충",
+  "slug": "0000049300000fae",
+  "icon": "0000049700002EF5"
+ },
+ {
+  "description": "<hyperlink>근접</hyperlink> 공격 명중 시, 공격자에게 6 <damageSpirit></damageSpirit> <hyperlink>영혼 피해를</hyperlink> 유발합니다.",
+  "name": "하급 영혼 보호막",
+  "slug": "0000045e00000d38",
+  "icon": "0000045E00000D39"
+ },
+ {
+  "description": "유닛 사망 시, 전투가 종료될 때까지 수비군의 통제를 받는 <hyperlink>피의 구더기를</hyperlink> 생성합니다.",
+  "name": "자애로운 피의 기생충",
+  "slug": "0000049300000fa2",
+  "icon": "0000049700002EF5"
  },
  {
   "description": "영향을 받는 유닛의 <hyperlink>부정적인 상태 효과</hyperlink> 1개를 해제하는 지원 능력입니다.",
@@ -30928,25 +32908,13 @@
   "icon": "000003E300005D92"
  },
  {
-  "description": "<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> 1</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist><br></br><br></br>방어력 강화의 <hyperlink>상쇄</hyperlink> 효과는 방어력 약화에 적용됩니다.",
-  "name": "방어력 강화",
-  "slug": "000003e1000013c8",
-  "icon": "000003E1000013CA"
+  "description": "해당 유닛은 이번 턴 종료 시 사망합니다.",
+  "name": "파멸",
+  "slug": "0000048d00001b17",
+  "icon": "0000048D00001B1A"
  },
  {
-  "description": "유닛이 다음을 보유:<bulletlist><bullet>무적 상태</bullet><bullet>기절 상태</bullet></bulletlist>",
-  "name": "피난 중",
-  "slug": "000003e300005873",
-  "icon": "000003E300005EBE"
- },
- {
-  "description": "적이 살해당할 경우, 해당 유닛에 부여:<bulletlist><bullet>능수능란 상태</bullet><bullet>측면 공격자 상태</bullet></bulletlist>",
-  "name": "그림자의 표식",
-  "slug": "0000048d0000180a",
-  "icon": "0000048D0000180C"
- },
- {
-  "description": "중첩당:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1, <resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet>",
+  "description": "중첩당:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1, <resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet></bulletlist>",
   "name": "적응력의 현신",
   "slug": "0000048d00001610",
   "icon": "0000048D000015C1"
@@ -31192,12 +33160,6 @@
   "icon": "0000048B000005D3"
  },
  {
-  "description": "해당 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> +10 증가합니다.",
-  "name": "소환 요새화",
-  "slug": "0000048b00000386",
-  "icon": "0000048B00000387"
- },
- {
   "description": "이번 <turn></turn> <hyperlink>턴</hyperlink>에 해당 영웅의 첫 돌진 공격 피해가 20% 증가합니다.",
   "name": "준비된 돌진",
   "slug": "0000048b000002be",
@@ -31258,7 +33220,7 @@
   "icon": "000004A6000004A2"
  },
  {
-  "description": "유닛이 최대 <hyperlink><hp></hp> 체력을</hyperlink> +15 획득하고, 다음 2 <hyperlink>세계 지도</hyperlink> <turn></turn> 턴 동안 중립 및 우호 영토에서 <hyperlink><hp></hp> 체력을</hyperlink> +15 재생합니다.",
+  "description": "유닛이 최대 <hyperlink><hp></hp> 체력을</hyperlink> +15 획득하고, 다음 2 <hyperlink>세계 지도</hyperlink> <turn></turn> 턴 동안 중립 및 우호 영토에서 <hyperlink><hp></hp> 체력을</hyperlink> +15 <hyperlink>재생</hyperlink>합니다.",
   "name": "자연의 풍요",
   "slug": "000003fe00000e50",
   "icon": "0000041B00000DBB"
@@ -31282,7 +33244,7 @@
   "icon": "0000042A000004CE"
  },
  {
-  "description": "<bulletlist><bullet>중첩당 <happiness></happiness> <hyperlink>사기</hyperlink> -5</bullet><bullet>최대 5회까지 중첩 </bullet>",
+  "description": "<bulletlist><bullet><happiness></happiness> <hyperlink>사기가</hyperlink> 중첩 하나당 -5 감소합니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist>",
   "name": "사기 저하",
   "slug": "0000042a000004ca",
   "icon": "0000042A000004CD"
@@ -31480,13 +33442,7 @@
   "icon": "000003E30000727A"
  },
  {
-  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 3 <damageBlight></damageBlight> <hyperlink>역병 피해를</hyperlink> 받습니다.</bullet><bullet>전투 시 유닛이 받는 치유량이 -25% 감소합니다.</bullet><bullet>최대 4회까지 중첩됩니다.<br></br><br></br>부패의 <hyperlink>상쇄</hyperlink> 효과는 재생에 적용됩니다.</bullet>",
-  "name": "부패",
-  "slug": "000003e300005b7e",
-  "icon": "000003E300005B80"
- },
- {
-  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 2 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink>, 2 <damageFrost></damageFrost> <hyperlink>서리 피해를</hyperlink> 받습니다.</bullet><bullet>불붙음 상태로 교체 및 간주되지만 동결 또는 젖음 상태에 의해 제거되지 않습니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet>",
+  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 2 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink>, 2 <damageFrost></damageFrost> <hyperlink>서리 피해를</hyperlink> 받습니다.</bullet><bullet>불붙음 상태로 교체 및 간주되지만 동결 또는 젖음 상태에 의해 제거되지 않습니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist>",
   "name": "유령 불꽃",
   "slug": "000003e300006f65",
   "icon": "000003E300006F67"
@@ -31508,12 +33464,6 @@
   "name": "각성: 찬란한 빛",
   "slug": "000003e300006564",
   "icon": "000003E300004C79"
- },
- {
-  "description": "<bulletlist><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> 1</bullet><bullet>최대 5회까지 중첩</bullet></bulletlist><br></br><br></br>저항력 강화의 <hyperlink>상쇄</hyperlink> 효과는 저항력 약화에 적용됩니다.",
-  "name": "저항력 강화",
-  "slug": "000003e100001411",
-  "icon": "000003E10000140E"
  },
  {
   "description": "전투가 종료될 때까지 최대 <hyperlink><hp></hp> 체력이</hyperlink> +20 증가합니다.",
@@ -31570,7 +33520,7 @@
   "icon": "000003E300004C5D"
  },
  {
-  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 4 <damagePhysical></damagePhysical> <hyperlink>물리 피해를</hyperlink> 받습니다.</bullet><bullet>최대 5회까지 중첩됩니다.</bullet></bulletlist><br></br>에테르, 언데드 유닛은 면역입니다.</bulletlist>",
+  "description": "<bulletlist><bullet>유닛이 매 <turn></turn>마다 4 <damagePhysical></damagePhysical> <hyperlink>물리 피해를</hyperlink> 받습니다.</bullet><bullet>최대 5회까지 중첩됩니다.<br></br>에테르, 언데드 유닛은 면역입니다.</bullet></bulletlist>",
   "name": "출혈",
   "slug": "0000041b00000bad",
   "icon": "000003BD00002CFC"

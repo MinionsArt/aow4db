@@ -1,5 +1,31 @@
 [
  {
+  "biography_description": "Sie verdunkeln den Himmel auf ihren kreischenden Fledermäusen.",
+  "lore_description": "<helpcolor>Berittene Einheiten kommen häufiger vor und erhalten ein Kreischendes Fledermaus-Reittier.</helpcolor>",
+  "DLC": "THRONESOFBLOOD ",
+  "point_cost": 3,
+  "id": "kreischende_fledermaus-reittiere",
+  "name": "Kreischende Fledermaus-Reittiere",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Gewährt Fliegen Bewegung."
+   },
+   {
+    "name": "Zusätzliche Einheiten werden zu Kavallerie."
+   },
+   {
+    "name": "Herrscher beginnt mit einem Kreischenden Fledermaus-Reittier."
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "Reittiere",
+  "front_end": true,
+  "icon": "000004C5000008FD",
+  "display_order": 0
+ },
+ {
   "starting_bonuses": [
    {
     "description": "Zu Beginn hast du eine zusätzliche <hyperlink>Astral-Irrlicht</hyperlink>-Einheit."
@@ -720,7 +746,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Angrenzende Feinde ohne diese Eigenschaft erleiden:<bulletlist><bullet>-2 <resistance></resistance> <hyperlink>Widerstand</hyperlink></bullet><bullet>-2 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink></bullet>"
+    "name": "Angrenzende Feinde ohne diese Eigenschaft erleiden:<bulletlist><bullet>-2 <resistance></resistance> <hyperlink>Widerstand</hyperlink></bullet><bullet>-2 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink></bullet></bulletlist>"
    }
   ],
   "enabled": true,
@@ -729,6 +755,54 @@
   "icon": "0000049700000066",
   "type": "form",
   "display_order": 1
+ },
+ {
+  "affinities": [
+   {
+    "name": "1<nature></nature> Naturaffinität"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>Einstellung</hyperlink>"
+   }
+  ],
+  "biography_description": "",
+  "lore_description": "Sie halten sich für das oberste Glied der Nahrungskette. Wer schwach ist, ist Beute.",
+  "point_cost": 1,
+  "id": "spitzenraubtiere__evilact__",
+  "name": "Spitzenraubtiere <evilact></evilact>",
+  "incompatible_society_traits": [
+   {
+    "name": "Verehrer des Guten <goodact></goodact>"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "Gewährt 50 <food></food> <hyperlink>Nahrung</hyperlink> nach erfolgreichem <hyperlink>Plündern</hyperlink> einer <hyperlink>Provinzverbesserung</hyperlink>."
+   },
+   {
+    "name": "Gewährt 50 <food></food> <hyperlink>Nahrung</hyperlink> nach erfolgreichem <hyperlink>Zerstören</hyperlink> einer eroberten <hyperlink>Stadt</hyperlink> pro <hyperlink>Provinzverbesserung</hyperlink> im Besitz."
+   },
+   {
+    "name": "Gewährt 30 <food></food> <hyperlink>Nahrung</hyperlink> nach erfolgreichem <hyperlink>Neu besiedeln</hyperlink> einer eroberten <hyperlink>Stadt</hyperlink> pro <population></population> <hyperlink>Bevölkerung</hyperlink>. Dabei verliert die Stadt jedoch zusätzlich <population></population> Bevölkerung."
+   },
+   {
+    "name": "<hyperlink>Vasallen</hyperlink> liefern Einnahmen von +10 <food></food> <hyperlink>Nahrung</hyperlink> pro <population></population> <hyperlink>Bevölkerung</hyperlink>."
+   },
+   {
+    "name": "-10 <evilact></evilact> <hyperlink>Einstellung</hyperlink>."
+   }
+  ],
+  "enabled": true,
+  "front_end": false,
+  "type": "society",
+  "display_order": 3,
+  "starting_bonuses": [
+   {
+    "description": "Start<hyperlink>einheiten</hyperlink> erhalten +1 Rang."
+   }
+  ],
+  "icon": "0000049300000F66"
  },
  {
   "affinities": [
@@ -2005,7 +2079,7 @@
   "display_order": 5
  },
  {
-  "lore_description": "<helpcolor>Einheiten haben normalerweise nur 32 Bewegung.</helpcolor>",
+  "lore_description": "<helpcolor>Einheiten bewegen sich im Kampf und auf der Weltkarte schneller.</helpcolor>",
   "biography_description": "In langen Läufen geübt und außergewöhnlich schnell.",
   "point_cost": 3,
   "id": "athletik",
@@ -2135,7 +2209,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+2 Statuswiderstand."
+    "name": "+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink>."
    },
    {
     "name": "<hyperlink>Negative Statuseffekte</hyperlink> halten -1 <turn></turn> Runde an, bei einem Minimum von 1."
@@ -2463,7 +2537,7 @@
     "name": "Erhalte +75 % Ressourcen, indem du eine <hyperlink>Plage</hyperlink> oder ein <hyperlink>Altes Wunder</hyperlink> oder einen <hyperlink>Ressourcenknoten</hyperlink> säuberst."
    },
    {
-    "name": "Einheiten regenerieren zusätzlich 5 <hyperlink><hp></hp> Trefferpunkte</hyperlink> pro <turn></turn> <hyperlink>Runde</hyperlink>."
+    "name": "Einheiten <hyperlink>regenerieren</hyperlink> zusätzlich +5 <hyperlink><hp></hp> Trefferpunkte</hyperlink> pro <turn></turn> <hyperlink>Runde</hyperlink>."
    }
   ],
   "enabled": true,
@@ -3239,7 +3313,7 @@
  },
  {
   "biography_description": "Ihr Blut ist stark, wodurch sie sich von Wunden schneller erholen als andere.",
-  "lore_description": "<helpcolor>Armeen können länger auf der Weltkarte kämpfen.</helpcolor>",
+  "lore_description": "<helpcolor>Armeen erholen sich schneller von Kämpfen auf der Weltkarte.</helpcolor>",
   "point_cost": 2,
   "id": "rasche_erholung",
   "name": "Rasche Erholung",
@@ -3251,7 +3325,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "Regenerieren zusätzlich +10 <hyperlink><hp></hp> Trefferpunkte</hyperlink> pro <turn></turn> <hyperlink>Runde</hyperlink> auf die <hyperlink>Weltkarte</hyperlink>."
+    "name": "<hyperlink>Regenerieren</hyperlink> zusätzlich +10 <hyperlink><hp></hp> Trefferpunkte</hyperlink> pro <hyperlink>Weltkarte</hyperlink> <turn></turn> <hyperlink>Runde</hyperlink>."
    }
   ],
   "enabled": true,

@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const filePath = "EN/BuilderLookupHero.json";
+const filePath = "GEN/BuilderLookupHero.json";
 
 // Read the existing JSON file
 let existingData;

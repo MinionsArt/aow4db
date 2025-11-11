@@ -1,5 +1,31 @@
 [
  {
+  "biography_description": "彼らは空を暗くさせることができ、叫喚するコウモリに騎乗している。",
+  "lore_description": "<helpcolor>騎乗ユニットが見つかりやすく、叫喚するコウモリの騎乗物を獲得する。</helpcolor>",
+  "DLC": "THRONESOFBLOOD ",
+  "point_cost": 3,
+  "id": "叫喚するコウモリの騎乗物",
+  "name": "叫喚するコウモリの騎乗物",
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "飛行移動を得る。"
+   },
+   {
+    "name": "追加のユニットが騎兵隊になる。"
+   },
+   {
+    "name": "支配者が叫喚するコウモリの騎乗物に乗ってスタートする。"
+   }
+  ],
+  "enabled": true,
+  "type": "form",
+  "group_name": "騎乗物",
+  "front_end": true,
+  "icon": "000004C5000008FD",
+  "display_order": 0
+ },
+ {
   "starting_bonuses": [
    {
     "description": "<hyperlink>アストラルの鬼火</hyperlink>ユニットが1体多い状態でスタートする。"
@@ -720,7 +746,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "この特性を持たない隣接する敵が以下を受ける：<bulletlist><bullet>-2 <resistance></resistance><hyperlink>耐性</hyperlink></bullet><bullet>-2 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet>"
+    "name": "この特性を持たない隣接する敵が以下を受ける：<bulletlist><bullet>-2 <resistance></resistance><hyperlink>耐性</hyperlink></bullet><bullet>-2 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink></bullet></bulletlist>"
    }
   ],
   "enabled": true,
@@ -729,6 +755,54 @@
   "icon": "0000049700000066",
   "type": "form",
   "display_order": 1
+ },
+ {
+  "affinities": [
+   {
+    "name": "1<nature></nature> 自然のアフィニティー"
+   },
+   {
+    "name": "-10<reputation4></reputation4> <hyperlink>考え方</hyperlink>"
+   }
+  ],
+  "biography_description": "",
+  "lore_description": "彼らは自らが食物連鎖の頂点だと信じている。弱肉強食だ。",
+  "point_cost": 1,
+  "id": "エイペックスの捕食者_evilact__",
+  "name": "エイペックスの捕食者<evilact></evilact>",
+  "incompatible_society_traits": [
+   {
+    "name": "善の信奉者<goodact></goodact>"
+   }
+  ],
+  "screen_description": "",
+  "effect_descriptions": [
+   {
+    "name": "<hyperlink>領域改善</hyperlink>の<hyperlink>略奪</hyperlink>が成功すると50 <food></food><hyperlink> 食料</hyperlink>を獲得する。"
+   },
+   {
+    "name": "征服した<hyperlink>都市</hyperlink>の<hyperlink>破壊</hyperlink>が成功すると、<hyperlink>領域改善</hyperlink>ごとに50 <food></food><hyperlink> 食料</hyperlink>を獲得する。"
+   },
+   {
+    "name": "征服した<hyperlink>都市</hyperlink>の<hyperlink>移住</hyperlink>に成功すると<population></population><hyperlink>人口</hyperlink>ごとに30 <food></food><hyperlink> 食料</hyperlink>を獲得する。しかし、都市はその後、<population></population>の人口を失う。"
+   },
+   {
+    "name": "<population></population><hyperlink>人口</hyperlink>ごとに、<hyperlink>隷属</hyperlink>が+10 <food></food><hyperlink> 食料</hyperlink>収益を付与する。"
+   },
+   {
+    "name": "-10 <evilact></evilact> <hyperlink>考え方</hyperlink>。"
+   }
+  ],
+  "enabled": true,
+  "front_end": false,
+  "type": "society",
+  "display_order": 3,
+  "starting_bonuses": [
+   {
+    "description": "初期<hyperlink>ユニット</hyperlink>が+1を得る。"
+   }
+  ],
+  "icon": "0000049300000F66"
  },
  {
   "affinities": [
@@ -2005,7 +2079,7 @@
   "display_order": 5
  },
  {
-  "lore_description": "<helpcolor>ユニットは通常、32のみ移動できる。</helpcolor>",
+  "lore_description": "<helpcolor>戦闘中とワールドマップ上でのユニットの移動速度が上昇する。</helpcolor>",
   "biography_description": "長距離走の訓練を積んでおり、移動速度が異常に速い。",
   "point_cost": 3,
   "id": "強健",
@@ -2135,7 +2209,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "+2 ステータス耐性。"
+    "name": "+2 <statuseffectresistance></statuseffectresistance><hyperlink>ステータス耐性</hyperlink>。"
    },
    {
     "name": "<hyperlink>マイナスのステータス効果</hyperlink>が-1 <turn></turn>ターン持続する（最低で1）。"
@@ -2463,7 +2537,7 @@
     "name": "<hyperlink>感染</hyperlink>、<hyperlink>古代遺産</hyperlink>または<hyperlink>資源ノード</hyperlink>を一掃することで+75%の資源を獲得する。"
    },
    {
-    "name": "ユニットが<turn></turn><hyperlink>ターン</hyperlink>ごとに追加で+5 <hyperlink><hp></hp>HP</hyperlink>を回復する。"
+    "name": "ユニットが<turn></turn><hyperlink>ターン</hyperlink>ごとに追加で+5 <hyperlink><hp></hp>HP</hyperlink>を<hyperlink>回復</hyperlink>する。"
    }
   ],
   "enabled": true,
@@ -3239,7 +3313,7 @@
  },
  {
   "biography_description": "彼らの血が強いため、他者よりも速い速度で傷を回復することができます。",
-  "lore_description": "<helpcolor>ワールドマップ上で軍隊がより長く戦うことができます。</helpcolor>",
+  "lore_description": "<helpcolor>ワールドマップ上で軍隊が戦闘から立ち直るのが早くなる。</helpcolor>",
   "point_cost": 2,
   "id": "高速回復",
   "name": "高速回復",
@@ -3251,7 +3325,7 @@
   "screen_description": "",
   "effect_descriptions": [
    {
-    "name": "<hyperlink>ワールドマップ</hyperlink><turn></turn><hyperlink>ターン</hyperlink>ごとに追加で+10 <hyperlink><hp></hp>HP</hyperlink>を回復する。"
+    "name": "<hyperlink>ワールドマップ</hyperlink><turn></turn><hyperlink>ターン</hyperlink>ごとに追加で+10 <hyperlink><hp></hp>HP</hyperlink>を<hyperlink>回復</hyperlink>する。"
    }
   ],
   "enabled": true,

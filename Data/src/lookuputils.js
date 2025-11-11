@@ -350,19 +350,18 @@ function doubleNumbers(inputString) {
 }
 
 
-function ConvertSpawnTable(input) {
-    const entries = input.split(",");
-
-    const bulletListName = entries.shift(); // Get the first entry as the bullet list name
+function ConvertSpawnTable(input, subtractName) {
+  
+    const bulletListName = input.category.split(subtractName + "_")[1]; // Get the first entry as the bullet list name
 
     // Calculate the percentages for each entry
     const entryCounts = {};
-    for (const entry of entries) {
+    for (const entry of input.items) {
         entryCounts[entry] = (entryCounts[entry] || 0) + 1;
     }
 
-    const percentages = entries.map((entry) => {
-        const percentage = (entryCounts[entry] / entries.length) * 100;
+    const percentages = input.items.map((entry) => {
+        const percentage = (entryCounts[entry] / input.items.length) * 100;
         return {
             entry,
             percentage
@@ -404,7 +403,7 @@ function ConvertSpawnTable(input) {
                     button.setAttribute("onclick", `showSubDiv(event,'${sub}')`);
 
                     const img = document.createElement("img");
-                    img.src = `/aow4db/Icons/FactionCreation/${icons}${sub.toLowerCase()}.png`;
+                    img.src = `/aow4db/Icons/FactionCreation/${sub.toLowerCase().replaceAll(" ","_")}.png`;
                     img.width = 50;
 
                     const span = document.createElement("span");

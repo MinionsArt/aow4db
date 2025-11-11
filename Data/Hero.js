@@ -8,8 +8,8 @@ let currentSelectedSkillsArray = [];
 var currentsignatureSelectionsArray = [];
 var currentSkillPoints = 24;
 
- const exclusionListElementalistDisplines = [5222680233915,5222680233899,5222680233884,5222680233875 ];
-      const exclusionListElementalistFinalSkills = [5222680234221,5222680234241,5222680234248,5222680234256 ];
+const exclusionListElementalistDisplines = [5222680233915, 5222680233899, 5222680233884, 5222680233875];
+const exclusionListElementalistFinalSkills = [5222680234221, 5222680234241, 5222680234248, 5222680234256];
 
 var signature1 = "";
 var signature2 = "";
@@ -137,6 +137,11 @@ function ResetAll() {
 
 function SetStartingSkillsSelection() {
     // set base skills
+    console.log(currentSelectedSkillsArray[0]);
+    if(currentSelectedSkillsArray[0] == undefined){
+        
+        return;
+    }
     let nodeWithId = document.getElementById(currentSelectedSkillsArray[0]);
 
     let findSkill = ReturnHeroSkillItself(null, currentSelectedSkillsArray[0]);
@@ -160,12 +165,12 @@ function ResetSkills() {
         // lesser dragon breath
         currentSelectedSkillsArray = [4273492487240];
         currentSkillPoints--;
-    }
+    } else
     if (rulerOrigin == "Eldritch") {
         // enthralling presence
         currentSelectedSkillsArray = [5046586576674];
         currentSkillPoints--;
-    }
+    } else
     if (rulerOrigin == "Giant") {
         if (rulerSubType == "GiantFire") {
             // fire summon
@@ -184,6 +189,9 @@ function ResetSkills() {
             currentSelectedSkillsArray = [5046586578733];
         }
         currentSkillPoints--;
+    } else if (rulerOrigin == "Vampire"){
+       currentSelectedSkillsArray= [];
+        // no preset skills
     }
 }
 
@@ -201,9 +209,10 @@ function LookupCode(code) {
     code = code.replaceAll("%20", " ");
     var splitcode = code.split(",");
     // console.log("Splitcode" + splitcode);
-
+    
     // 0 = currentOrigin
     var origin = splitcode[0];
+    console.log(origin);
     // check for dragon type
     var originSplitForDragon = origin.split(":");
     if (originSplitForDragon[0] != undefined) {
@@ -605,11 +614,11 @@ function ChooseSignatures(slot, nodeElement, evt) {
 }
 
 function GetAllAvailableSignatureSkills(slot) {
-    var listOfFirstChoice = ["Mindbreaker", "Fleshweaver", "Madcaster"];
-    var listOfSecondChoiceMindbreaker = ["Enthraller", "Mind Devourer"];
-    var listOfSecondChoiceFleshweaver = ["Puppeteer", "Fleshsculptor"];
-    var listOfSecondChoiceMadcaster = ["Cosmic Caster", "Havoc Caster"];
-    var dragonBreathIDList = [
+    const listOfFirstChoice = ["Mindbreaker", "Fleshweaver", "Madcaster"];
+    const listOfSecondChoiceMindbreaker = ["Enthraller", "Mind Devourer"];
+    const listOfSecondChoiceFleshweaver = ["Puppeteer", "Fleshsculptor"];
+    const listOfSecondChoiceMadcaster = ["Cosmic Caster", "Havoc Caster"];
+    const dragonBreathIDList = [
         "4273492487959",
         "4273492488409",
         "4273492488425",
@@ -617,7 +626,7 @@ function GetAllAvailableSignatureSkills(slot) {
         "4273492488449",
         "4273492488460"
     ];
-    var GiantFirstRuneList = [
+    const GiantFirstRuneList = [
         "Reflecting Rune",
         "Critical Rune",
         "Damage Rune",
@@ -626,7 +635,7 @@ function GetAllAvailableSignatureSkills(slot) {
         "Dispelling Rune"
     ];
 
-    var GiantSecondRuneList = [
+    const GiantSecondRuneList = [
         "Cascading Rune",
         "Fury Rune",
         "Brawn Rune",
@@ -634,6 +643,26 @@ function GetAllAvailableSignatureSkills(slot) {
         "Safeguard Rune",
         "Disruption Rune"
     ];
+
+    const listOfFirstChoiceVampire = ["Hemomancer", "Nightsworn", "Dreadful", "Desecrator"];
+
+    const listOfSecondChoiceVampire = [
+        "Nightlord",
+        "Reaper",
+        "Vampiric Rage",
+        "Profane Body Mastery",
+        "Marrow Drinker",
+        "Defiler"
+    ];
+    const listOfThirdChoiceVampire = [
+        "Blood Communion",
+        "Exsanguinate",
+        "Bloodblight",
+        "Tormenting Mist",
+        "Festering Spine",
+        "Gravemarch"
+    ];
+    const listOfFourthChoiceVampire = ["Supernatural Speed", "Rosebound Noble", "Curse to Undeath"];
 
     var listOfSkills = [];
     for (var s = 0; s < jsonHeroSkills.length; s++) {
@@ -812,6 +841,41 @@ function GetAllAvailableSignatureSkills(slot) {
                         // forgotten tome
                     }
                 }
+            } else if (rulerOrigin == "Vampire") {
+                if ("DLC" in jsonHeroSkills[s]) {
+                    if (jsonHeroSkills[s].DLC.indexOf("THRONESOFBLOOD") != -1) {
+                        if (slot == 1) {
+                            if (listOfFirstChoiceVampire.includes(jsonHeroSkills[s].name)) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        } else if (slot == 2) {
+                            if (listOfSecondChoiceVampire.includes(jsonHeroSkills[s].name)) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        } else if (slot == 3) {
+                            // fleshweaver
+                            if (listOfThirdChoiceVampire.includes(jsonHeroSkills[s].name)) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        } else if (slot == 4) {
+                            if ("required_skills" in jsonHeroSkills[s]) {
+                                for (let j = 0; j < jsonHeroSkills[s].required_skills.length; j++) {
+                               //     console.log(type);
+                                    if (jsonHeroSkills[s].required_skills[j].resid == signature3 && jsonHeroSkills[s].type == "signature") {
+                                        listOfSkills.push(jsonHeroSkills[s]);
+                                    }
+                                }
+                            }
+
+                            // generic skills
+                            if (listOfFourthChoiceVampire.includes(jsonHeroSkills[s].name)) {
+                                listOfSkills.push(jsonHeroSkills[s]);
+                            }
+                        }
+
+                        // forgotten tome
+                    }
+                }
             }
         }
     }
@@ -973,7 +1037,10 @@ function GetSignatureSkillUnlocks(currentSig) {
         }
         if ("required_skills" in jsonHeroSkills[i]) {
             for (let j = 0; j < jsonHeroSkills[i].required_skills.length; j++) {
-                if (jsonHeroSkills[i].required_skills[j].resid == currentSig.resid) {
+                if (
+                    jsonHeroSkills[i].required_skills[j].resid == currentSig.resid &&
+                    jsonHeroSkills[i].type != "signature"
+                ) {
                     unlockedSigs.push(jsonHeroSkills[i]);
                 }
             }
@@ -1147,7 +1214,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, 
     if (!("required_skills" in currentSkill)) {
         newNode.classList.add("selectable");
     }
- 
+
     // Create connection lines for each linkto
     if ("required_skills" in currentSkill) {
         currentSkill.required_skills.forEach((link) => {
@@ -1155,15 +1222,16 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, 
             let targetNode = jsonHeroSkills.find((node) => node.resid === link.resid);
             // elementalist skills withering blizzard and the other elemental end points, incorrect lines
             // discipline lines to exclude array
-            
-          
 
             if (targetNode) {
-                  if(exclusionListElementalistDisplines.includes(targetNode.resid) && exclusionListElementalistFinalSkills.includes(currentSkill.resid)){
-                targetNode = null;
-                console.log("here");
-                      return;
-            }
+                if (
+                    exclusionListElementalistDisplines.includes(targetNode.resid) &&
+                    exclusionListElementalistFinalSkills.includes(currentSkill.resid)
+                ) {
+                    targetNode = null;
+                    console.log("here");
+                    return;
+                }
                 let connectionLine = document.createElement("DIV");
                 var extra = row * 200;
                 // Calculate the difference in x and y positions between the target and current node
@@ -1250,7 +1318,7 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
     //
     //
 
-    console.log("toggling");
+    //console.log("toggling" + nodeData.id);
 
     // Check if the node is already active
     const isActive = nodeElement.classList.contains("activated");
@@ -1274,9 +1342,6 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
                     }
                 }
             }
-            
-         
-            
 
             activateNode(nodeElement, nodeData, isSig);
 
@@ -1288,32 +1353,33 @@ function toggleNodeSelection(nodeData, nodeElement, isSig) {
                         otherNode.required_skills &&
                         otherNode.required_skills.some((req) => String(req.resid) === String(nodeData.resid))
                     ) {
-                        
-                      
-                    
                         // Get the corresponding DOM element for this other node
                         const relatedNode = document.getElementById(otherNode.resid);
                         if (relatedNode) {
-                            
                             // check if its not the special elementalist nodes
-                            // 
-                            if(exclusionListElementalistDisplines.includes(nodeData.resid) && exclusionListElementalistFinalSkills.includes(otherNode.resid) ){
+                            //
+                            if (
+                                exclusionListElementalistDisplines.includes(nodeData.resid) &&
+                                exclusionListElementalistFinalSkills.includes(otherNode.resid)
+                            ) {
                                 console.log("found special");
                                 return;
                             }
                             // check if final skills have the right node 5222680234186 = elemental mastery
-                            const  elemental_Mastery = 5222680234186;
-                             if(nodeData.resid == elemental_Mastery && exclusionListElementalistFinalSkills.includes(otherNode.resid) ){
+                            const elemental_Mastery = 5222680234186;
+                            if (
+                                nodeData.resid == elemental_Mastery &&
+                                exclusionListElementalistFinalSkills.includes(otherNode.resid)
+                            ) {
                                 console.log("found special");
-                                 // get the required node data
-                                
-                                   const secondRelatedNode = document.getElementById( otherNode.required_skills[1].resid);
-                                 if(!secondRelatedNode.classList.contains("activated")){
-                                       return;
-                                 }
-                              
+                                // get the required node data
+
+                                const secondRelatedNode = document.getElementById(otherNode.required_skills[1].resid);
+                                if (!secondRelatedNode.classList.contains("activated")) {
+                                    return;
+                                }
                             }
-                            // 
+                            //
                             // chec kif its not already activated
                             if (!relatedNode.classList.contains("activated")) {
                                 // Change the color of the related node to blue
@@ -1531,7 +1597,7 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                     "comet_breath_ability_000003BD00002895"
                 ];
 
-                console.log(skill.name);
+             //   console.log(skill.name);
 
                 if (dragonBreath.includes(skill.slug)) {
                     switch (subTypeOverride) {

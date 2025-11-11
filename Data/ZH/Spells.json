@@ -189,7 +189,7 @@
   "id": "腐化恩惠",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "指定敌方单位：<bulletlist><bullet>失去所有<hyperlink>正面状态效果</hyperlink></bullet><bullet>若失去的状态效果拥有状态效果克制，此单位获得一层相应的<hyperlink>负面状态效果</hyperlink><bulletlist></bullet>",
+  "description": "指定敌方单位：<bulletlist><bullet>失去所有<hyperlink>正面状态效果</hyperlink></bullet><bullet>若失去的状态效果拥有状态效果克制，此单位获得一层相应的<hyperlink>负面状态效果</hyperlink></bullet></bulletlist>",
   "name": "腐化恩惠",
   "operation_point_cost": 25,
   "icon": "0000049C0000008C"
@@ -246,6 +246,252 @@
   "name": "幽影裂隙",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586548,
+  "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
+  "id": "血红聚焦",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "附魔单位的<hyperlink>魔法</hyperlink>攻击：<bulletlist><bullet>+1<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有60%的基础概率施加失血，持续3<turn></turn>回合</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitSupport></unitSupport>支援单位"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>战斗法师单位"
+   }
+  ],
+  "name": "血红聚焦",
+  "operation_point_cost": 80,
+  "icon": "0000049700003292"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586586294,
+  "spellType": "<caststrategic></caststrategic><hyperlink>召唤法术</hyperlink>",
+  "id": "召唤鲜血使徒",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "召唤一个<hyperlink>鲜血使徒</hyperlink>神话单位，拥有强大的支援与进攻能力，可摧毁低阶单位",
+  "name": "召唤鲜血使徒",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "鲜血使徒"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586586275,
+  "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
+  "id": "鲜血贵族披风",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "赋予附魔单位：<bulletlist><bullet>凝血</bullet><bullet>战斗开始时，每有一个友方I阶与II阶非召唤单位：<bulletlist></bullet><bullet>+5<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>战斗中受到的治疗效果+5%</bullet></bulletlist></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "III阶"
+   },
+   {
+    "requisite": "IV阶"
+   },
+   {
+    "requisite": "V阶"
+   }
+  ],
+  "name": "鲜血贵族披风",
+  "operation_point_cost": 140,
+  "icon": "0000049700003431"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586204,
+  "spellType": "<casttactical></casttactical><hyperlink>战斗附魔</hyperlink>",
+  "id": "绯红君王之泪",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "施放时及接下来的2<turn></turn>回合：<bulletlist><bullet>最多3个敌方单位：<bulletlist></bullet><bullet>承受10点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有90%的基础概率获得血寄生虫，持续3<turn></turn>回合</bullet></bulletlist><bullet>最多3个友方单位：<bulletlist></bullet><bullet>恢复10点<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>获得幸运，持续3<turn></turn>回合</bullet></bulletlist></bulletlist>",
+  "name": "绯红君王之泪",
+  "operation_point_cost": 35,
+  "icon": "000004970000342D"
+ },
+ {
+  "casting_cost": "600<mana></mana> ",
+  "resid": 5046586586172,
+  "spellType": "<caststrategic></caststrategic><hyperlink>主要种族转换</hyperlink>",
+  "id": "远古之血的馈赠",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "让你的单位通过仪式吸噬使徒之血进行转化，赋予其：<bulletlist><bullet>亡灵单位类型</bullet><bullet>生命汲取</bullet><bullet>基础攻击有60%的基础概率附加血寄生虫，持续3<turn></turn>回合。单击攻击可强化此效果</bullet></bulletlist>",
+  "name": "远古之血的馈赠",
+  "operation_point_cost": 600,
+  "icon": "0000049700003439"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586001,
+  "spellType": "<casttactical></casttactical><hyperlink>伤害/减益法术</hyperlink>",
+  "id": "折磨",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "1框格半径内的敌方单位：<bulletlist><bullet>承受40点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有90%的基础概率获得3层折磨，持续至战斗结束。若失败，则改为附加1层折磨</bullet></bulletlist>",
+  "name": "折磨",
+  "operation_point_cost": 35,
+  "icon": "0000049700003366"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586585990,
+  "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
+  "id": "苦痛飞弹",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "附魔单位的<hyperlink>物理远程</hyperlink>与<hyperlink>魔法</hyperlink>攻击：<bulletlist><bullet>附加折磨，持续至战斗结束</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged>远程单位"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport>支援单位"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>战斗法师单位"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵单位"
+   }
+  ],
+  "name": "苦痛飞弹",
+  "operation_point_cost": 140,
+  "icon": "0000049700003362"
+ },
+ {
+  "casting_cost": "350<mana></mana> ",
+  "resid": 5046586585968,
+  "spellType": "<caststrategic></caststrategic><hyperlink>次要种族转换</hyperlink>",
+  "id": "痛苦束缚",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "目标种族拥抱痛苦并在受到攻击时获得：<bulletlist><bullet>2<happiness></happiness><hyperlink>士气</hyperlink></bullet><bullet>随机一项正面状态效果</bullet></bulletlist>",
+  "name": "痛苦束缚",
+  "operation_point_cost": 350,
+  "icon": "000004970000335A"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586585803,
+  "spellType": "<caststrategic></caststrategic><hyperlink>次要种族转换</hyperlink>",
+  "id": "血肉蚀刻符文",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "在族人躯体刻蚀亵渎符文，赋予他们：<bulletlist><bullet>在<hyperlink>世界地图</hyperlink>中+5<hyperlink><hp></hp>生命值</hyperlink>恢复</bullet><bullet>攻击与<hyperlink>减益</hyperlink>技能：<bulletlist></bullet><bullet>依目标失血层数，每层无视1<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink></bullet></bulletlist></bulletlist>",
+  "name": "血肉蚀刻符文",
+  "operation_point_cost": 150,
+  "icon": "000004970000329E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5046586585798,
+  "spellType": "<casttactical></casttactical><hyperlink>伤害法术</hyperlink>",
+  "id": "放血祭仪",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "目标友军承受不可格挡的5<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink>，随后2框格范围内的所有敌人：<bulletlist><bullet>承受10<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>陷入2层失血，持续3<turn></turn>回合</bullet></bulletlist>",
+  "name": "放血祭仪",
+  "operation_point_cost": 15,
+  "icon": "0000049700003296"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586585790,
+  "spellType": "<casttactical></casttactical><hyperlink>增益法术</hyperlink>",
+  "id": "生命吸取祭仪",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "目标友军承受不可格挡的5<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink>，随后所有相邻友军获得：<bulletlist><bullet>强化状态，持续3<turn></turn>回合</bullet><bullet>生命窃取状态，持续3<turn></turn>回合</bullet></bulletlist>",
+  "name": "生命吸取祭仪",
+  "operation_point_cost": 20,
+  "icon": "0000049700003286"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586585776,
+  "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
+  "id": "血饮之刃",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "附魔单位的基础<hyperlink>近战</hyperlink>攻击：<bulletlist><bullet>额外造成1<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>攻击带有失血的目标时，恢复2<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield>护盾单位"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm>长柄武器单位"
+   },
+   {
+    "requisite": "<unitShock></unitShock>冲击单位"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>斗士单位"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵单位"
+   }
+  ],
+  "name": "血饮之刃",
+  "operation_point_cost": 80,
+  "icon": "000004970000328A"
+ },
+ {
+  "casting_cost": "4<thralls></thralls> ",
+  "resid": 5046586585066,
+  "spellType": "<caststrategic></caststrategic><hyperlink>敌方军队法术</hyperlink>",
+  "id": "活体解剖仪式",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "指定敌军受到20点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink>伤害。随后获得+150<knowledge></knowledge><hyperlink>知识</hyperlink>",
+  "name": "活体解剖仪式",
+  "operation_point_cost": 150,
+  "icon": "0000049700002FEB"
+ },
+ {
+  "casting_cost": "12<thralls></thralls> ",
+  "resid": 5046586584681,
+  "spellType": "<caststrategic></caststrategic><hyperlink>世界法术</hyperlink>",
+  "id": "血月仪式",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "接下来10个<hyperlink>世界地图</hyperlink><turn></turn>回合内，吸血鬼：<bulletlist><bullet>不受日光弱点影响</bullet><bullet>+15世界地图<hyperlink><hp></hp>生命值</hyperlink>恢复</bullet><bullet>+20%伤害</bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "name": "血月仪式",
+  "operation_point_cost": 300,
+  "icon": "0000049700002E66"
+ },
+ {
+  "casting_cost": "6<thralls></thralls> ",
+  "resid": 5046586584666,
+  "spellType": "<caststrategic></caststrategic><hyperlink>地形改造法术</hyperlink>",
+  "id": "亵渎仪式",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "目标及相邻地表<hyperlink>行省</hyperlink>：<bulletlist><bullet>获得<hyperlink>无光</hyperlink></bullet><bullet>敌方军队受到20点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet></bulletlist>",
+  "name": "亵渎仪式",
+  "operation_point_cost": 275,
+  "icon": "0000049700002E5B"
+ },
+ {
+  "casting_cost": "2<thralls></thralls> ",
+  "resid": 5046586584657,
+  "spellType": "<caststrategic></caststrategic><hyperlink>友方军队法术</hyperlink>",
+  "id": "血液转移仪式",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "指定友方军队：<bulletlist><bullet>吸血鬼治疗最大<hyperlink><hp></hp>生命值</hyperlink>的50%</bullet><bullet>非吸血鬼治疗最大<hyperlink><hp></hp>生命值</hyperlink>的20%</bullet></bulletlist>",
+  "name": "血液转移仪式",
+  "operation_point_cost": 80,
+  "icon": "0000049700002E52"
  },
  {
   "casting_cost": "120<mana></mana> ",
@@ -373,7 +619,7 @@
   "tactical": false,
   "description": "召唤一个<hyperlink>堕落天使</hyperlink>战斗法师单位，能带来腐朽与侵蚀",
   "name": "召唤堕落天使",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "堕落天使"
@@ -428,7 +674,7 @@
   "id": "登神重生",
   "DLC": "ARCHONPROPHECY ",
   "tactical": true,
-  "description": "指定已死的非英雄与非星神单位：<bulletlist><bullet>作为施法者指挥的<hyperlink>戒卫</hyperlink>复活，持续至战斗结束</bullet><bullet>复活时，2框格范围内的所有友方单位获得20<hyperlink><temphp></temphp>临时生命值</hyperlink>治疗</bullet>",
+  "description": "指定已死的非英雄与非神族单位：<bulletlist><bullet>作为施法者指挥的<hyperlink>戒卫</hyperlink>复活，持续至战斗结束</bullet><bullet>复活时，2框格范围内的所有友方单位获得20<hyperlink><temphp></temphp>临时生命值</hyperlink>治疗</bullet></bulletlist>",
   "name": "登神重生",
   "operation_point_cost": 40,
   "icon": "0000049700002B84"
@@ -541,7 +787,7 @@
   "id": "高洁之魂",
   "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "在目标种族处于劣势时对其进行强化，使其获得：<bulletlist><bullet>+2<defensespirit></defensespirit><hyperlink>精神抗性</hyperlink></bullet><bullet>此单位的最大<hyperlink><hp></hp>生命值</hyperlink>降至60%以下时：<bulletlist></bullet><bullet>无视 50%的<hyperlink>伤亡</hyperlink></bullet><bullet>获得+1<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>获得+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "description": "在目标种族处于劣势时对其进行强化，使其获得：<bulletlist><bullet>+2<defensespirit></defensespirit><hyperlink>精神抗性</hyperlink></bullet><bullet>此单位的最大<hyperlink><hp></hp>生命值</hyperlink>降至60%以下时：<bulletlist></bullet><bullet>无视 50%的<hyperlink>伤亡</hyperlink></bullet><bullet>获得+1<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>获得+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist></bulletlist>",
   "name": "高洁之魂",
   "operation_point_cost": 250,
   "icon": "0000049700002A9E"
@@ -716,7 +962,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
   "id": "地脉聚焦",
   "tactical": false,
-  "description": "附魔单位获得：<bulletlist><bullet>回合开始至单位移动时，此单位获得：<bulletlist></bullet><bullet>+30%伤害</bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "description": "附魔单位获得：<bulletlist><bullet>回合开始至单位移动时，此单位获得：<bulletlist></bullet><bullet>+30%伤害</bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>支援单位"
@@ -772,7 +1018,7 @@
   "id": "水晶崩裂",
   "DLC": "GIANTKINGS ",
   "tactical": true,
-  "description": "1框格范围内的敌方单位：<bulletlist><bullet>受到15<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>受到15<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink></bullet><bullet>有90%的基础概率施加不稳定充能，持续2<turn></turn>回合</bullet>",
+  "description": "1框格范围内的敌方单位：<bulletlist><bullet>受到15<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>受到15<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink></bullet><bullet>有90%的基础概率施加不稳定充能，持续2<turn></turn>回合</bullet></bulletlist>",
   "name": "水晶崩裂",
   "operation_point_cost": 35,
   "icon": "00000497000015BB"
@@ -946,7 +1192,7 @@
   "id": "祝福盔甲",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "附魔单位获得：<bulletlist><bullet>内蕴恩典</bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "description": "附魔单位获得：<bulletlist><bullet>内蕴恩典</bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>护盾单位"
@@ -992,7 +1238,7 @@
   "id": "伟大守护",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "2框格范围内的友方单位：<bulletlist><bullet>2层恩典</bullet><bullet>2层再生，持续3<turn></turn>回合</bullet><bullet>3层提振防御，持续3<turn></turn>回合</bullet><bullet>3层提振抗性，持续3<turn></turn>回合</bullet></bulletlist>",
+  "description": "2框格范围内的友方单位：<bulletlist><bullet>2层恩典</bullet><bullet>2层再生，持续3<turn></turn>回合</bullet><bullet>2层提振防御，持续3<turn></turn>回合</bullet><bullet>2层提振抗性，持续3<turn></turn>回合</bullet></bulletlist>",
   "name": "伟大守护",
   "operation_point_cost": 40,
   "icon": "0000049700001351"
@@ -1227,7 +1473,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
   "id": "黑曜石武器",
   "tactical": false,
-  "description": "附魔单位的基础<hyperlink>近战</hyperlink>与<hyperlink>物理远程</hyperlink>攻击获得：<bulletlist><bullet>+1<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有60%的基础概率施加失血</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
+  "description": "附魔单位的基础<hyperlink>近战</hyperlink>与<hyperlink>物理远程</hyperlink>攻击获得：<bulletlist><bullet>+1<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有60%的基础概率施加失血，持续3<turn></turn>回合</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>护盾单位"
@@ -1257,7 +1503,6 @@
   "resid": 5046586576384,
   "spellType": "<caststrategic></caststrategic><hyperlink>世界法术</hyperlink>",
   "id": "千里洞察仪式",
-  "DLC": "ELDRITCHREALMS ",
   "tactical": false,
   "description": "显示距离最近且未发现的<hyperlink>侵扰</hyperlink>或<hyperlink>远古奇观</hyperlink>",
   "name": "千里洞察仪式",
@@ -1585,7 +1830,7 @@
   "id": "仙灵之拥",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "1框格范围内：<bulletlist><bullet>放置<hyperlink>迷雾</hyperlink>云</bullet><bullet>友方单位获得2个随机<hyperlink>正面状态效果</hyperlink></bullet>",
+  "description": "1框格范围内：<bulletlist><bullet>放置<hyperlink>迷雾</hyperlink>云</bullet><bullet>友方单位获得2个随机<hyperlink>正面状态效果</hyperlink></bullet></bulletlist>",
   "name": "仙灵之拥",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1597,7 +1842,7 @@
   "id": "雾之法杖",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "赋予附魔单位：<bulletlist><bullet>仙灵祝福技能</bullet>",
+  "description": "赋予附魔单位：<bulletlist><bullet>仙灵祝福技能</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>支援单位"
@@ -2156,10 +2401,106 @@
   "id": "幽暗行者",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "将目标种族转变为幽影生物，赋予他们：<bulletlist><bullet>幽影恶魔单位类型</bullet><bullet>漂浮</bullet><bullet>快速移动<bulletlist><br></br><br></br>骑兵单位失去坐骑<br></br><br></br>英雄失去坐骑与腿部装备栏位<br></br><br></br>该转换与纯净之魂互斥</bullet>",
+  "description": "将目标种族转变为幽影生物，赋予他们：<bulletlist><bullet>幽影恶魔单位类型</bullet><bullet>漂浮</bullet><bullet>快速移动<br></br><br></br>骑兵单位失去坐骑<br></br><br></br>英雄失去坐骑与腿部装备栏位<br></br><br></br>该转换与纯净之魂互斥</bullet></bulletlist>",
   "name": "幽暗行者",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906798,
+  "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
+  "id": "星辰连接卷轴",
+  "tactical": false,
+  "description": "赋予非神话或魔法起源单位：<bulletlist><bullet>星辰羁绊.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield>护盾单位"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged>远程单位"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm>长柄武器单位"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport>支援单位"
+   },
+   {
+    "requisite": "<unitShock></unitShock>冲击单位"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>战斗法师单位"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>斗士单位"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵单位"
+   }
+  ],
+  "name": "星辰连接卷轴",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001B34"
+ },
+ {
+  "casting_cost": "60<mana></mana> 1<embalmedsacrifice></embalmedsacrifice> ",
+  "resid": 5003636906629,
+  "spellType": "<caststrategic></caststrategic><hyperlink>友方军队法术</hyperlink>",
+  "id": "可怖献祭",
+  "tactical": false,
+  "description": "指定行省内的友军单位：<bulletlist><bullet>恢复所有<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>获得战略伪装，持续3<turn></turn>回合</bullet><bullet>获得+15<happiness></happiness><hyperlink>士气</hyperlink>，持续至下场战斗结束</bullet><bullet>获得+20<hyperlink><hp></hp>生命值</hyperlink>，持续至下场战斗结束</bullet></bulletlist>",
+  "name": "可怖献祭",
+  "operation_point_cost": 60,
+  "icon": "0000048D00001A6E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636906616,
+  "spellType": "<casttactical></casttactical><hyperlink>增益法术</hyperlink>",
+  "id": "死亡华尔兹",
+  "tactical": true,
+  "description": "指定友方单位：<bulletlist><bullet>恢复<hyperlink>行动点数</hyperlink>与生命值</bullet><bullet>获得复生</bullet><bullet>获得已毁灭，在回合结束后死亡</bullet></bulletlist>",
+  "name": "死亡华尔兹",
+  "operation_point_cost": 15,
+  "icon": "0000048D00001A6A"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906609,
+  "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
+  "id": "死亡崇拜印记",
+  "tactical": false,
+  "description": "赋予非黑暗单位：<bulletlist><bullet>死亡之力</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield>护盾单位"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged>远程单位"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm>长柄武器单位"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport>支援单位"
+   },
+   {
+    "requisite": "<unitShock></unitShock>冲击单位"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage>战斗法师单位"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter>斗士单位"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher>散兵单位"
+   }
+  ],
+  "name": "死亡崇拜印记",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001A66"
  },
  {
   "casting_cost": "20<mana></mana> ",
@@ -2454,7 +2795,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>世界法术</hyperlink>",
   "id": "咒唤召唤裂隙",
   "tactical": false,
-  "description": "在指定<hyperlink>行省</hyperlink>的一处空框格召唤一个召唤裂隙。此建筑：<bulletlist><bullet>可在所在处或相邻处施放召唤法术</bullet><bullet>提供5框格范围内的视野</bullet></bulletlist>",
+  "description": "在指定<hyperlink>行省</hyperlink>的一处空框格召唤一个召唤裂隙。此建筑：<bulletlist><bullet>可在所在处或相邻处施放召唤法术</bullet><bullet>提供5框格范围内的视野</bullet><bullet>行省内的单位每<turn></turn><hyperlink>回合</hyperlink><hyperlink>重生</hyperlink>+15<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>此行省发生的战斗中友方<casttactical></casttactical>战斗召唤法术施放成本降低20%</bullet></bulletlist>",
   "name": "咒唤召唤裂隙",
   "operation_point_cost": 60,
   "icon": "0000048D000007A6"
@@ -2579,7 +2920,7 @@
   "id": "调谐工具",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "赋予附魔单位：<bulletlist><bullet>过载技能，可赋予构装体单位已过载，持续至战斗结束</bullet>",
+  "description": "赋予附魔单位：<bulletlist><bullet>过载技能，可赋予构装体单位已过载，持续至战斗结束</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport>支援单位"
@@ -2826,7 +3167,7 @@
   "id": "强化攻击",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "附魔单位的基础<hyperlink>近战</hyperlink>攻击：<bulletlist><bullet>+1<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>回合内的第三次攻击有60%的基础概率施加昏厥，持续1<turn></turn>回合</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
+  "description": "附魔单位的基础<hyperlink>近战</hyperlink>攻击：<bulletlist><bullet>+1<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>回合内的第三次攻击有60%的基础概率施加昏厥，持续1<turn></turn>回合</bullet></bulletlist><br></br>此附魔对无重复基础近战攻击的单位无效",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>护盾单位"
@@ -2904,10 +3245,21 @@
   "id": "娜迦转化",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "指定种族获得娜迦身躯，获得：<bulletlist><bullet>快速移动</bullet><bullet>两栖</bullet><bullet>溜走</bullet><bullet>免疫电离</bullet><bullet>+2<defenseblight></defenseblight><hyperlink>疫病抗性</hyperlink></bullet><bullet>+2<defenselightning></defenselightning><hyperlink>闪电抗性</hyperlink></bullet></bulletlist></bulletlist><br></br><br></br>骑兵单位失去坐骑<br></br><br></br>英雄失去坐骑与腿部装备栏位",
+  "description": "指定种族获得娜迦身躯，获得：<bulletlist><bullet>快速移动</bullet><bullet>两栖</bullet><bullet>溜走</bullet><bullet>免疫电离</bullet><bullet>+2<defenseblight></defenseblight><hyperlink>疫病抗性</hyperlink></bullet><bullet>+2<defenselightning></defenselightning><hyperlink>闪电抗性</hyperlink></bullet></bulletlist><br></br><br></br>骑兵单位失去坐骑<br></br><br></br>英雄失去坐骑与腿部装备栏位",
   "name": "娜迦转化",
   "operation_point_cost": 600,
   "icon": "0000049700000598"
+ },
+ {
+  "casting_cost": "30<mana></mana> ",
+  "resid": 4982162064633,
+  "spellType": "<caststrategic></caststrategic><hyperlink>城邦法术</hyperlink>",
+  "id": "暴政剥削",
+  "tactical": false,
+  "description": "指定附庸城邦：<bulletlist><bullet>不再获得<hyperlink><allegiance></allegiance>臣道</hyperlink></bullet><bullet>每点<hyperlink><allegiance></allegiance>臣道</hyperlink>转化为附庸收入增加+20%</bullet></bulletlist>",
+  "name": "暴政剥削",
+  "operation_point_cost": 30,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -3134,7 +3486,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>持续性世界法术</hyperlink>",
   "id": "灵魂收集",
   "tactical": false,
-  "description": "<bulletlist><bullet>+10<souls></souls><hyperlink>灵魂</hyperlink>收入</bullet><bullet>耗费30<gold></gold><hyperlink>黄金</hyperlink>维持费<bulletlist></bullet>",
+  "description": "<bulletlist><bullet>+10<souls></souls><hyperlink>灵魂</hyperlink>收入</bullet><bullet>耗费30<gold></gold><hyperlink>黄金</hyperlink>维持费</bullet></bulletlist>",
   "name": "灵魂收集",
   "operation_point_cost": 45,
   "icon": "0000041B000016EF"
@@ -3607,7 +3959,7 @@
   "tactical": false,
   "description": "向指定的世界框格召唤一支低阶亡灵单位组成的军队",
   "name": "亡者大军",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "icon": "0000041B00001768",
   "summoned_units": [
    {
@@ -3617,7 +3969,7 @@
     "slug": "骷髅法师"
    },
    {
-    "slug": "骷髅长柄兵"
+    "slug": "骷髅民兵"
    },
    {
     "slug": "骷髅勇士"
@@ -3626,7 +3978,7 @@
     "slug": "骨双足飞龙"
    },
    {
-    "slug": "受腐之魂"
+    "slug": "腐化之魂"
    },
    {
     "slug": "女妖"
@@ -4332,7 +4684,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>伤害/减益法术</hyperlink>",
   "id": "浊尘风暴",
   "tactical": true,
-  "description": "2框格范围内的敌军部队：<bulletlist><bullet>遭受10<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有90%的基础概率陷入致盲，持续1<turn></turn>回合</bullet>",
+  "description": "2框格范围内的敌军部队：<bulletlist><bullet>遭受10<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有90%的基础概率陷入致盲，持续1<turn></turn>回合</bullet></bulletlist>",
   "name": "浊尘风暴",
   "operation_point_cost": 20,
   "icon": "0000041B00000FD0"
@@ -4606,7 +4958,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
   "id": "地狱专注",
   "tactical": false,
-  "description": "当其它单位阵亡时，附魔单位获得：<bulletlist><bullet>地狱伟力，持续3<turn></turn>回合</bullet><bullet>+5<happiness></happiness><hyperlink>士气</hyperlink></bullet></bulletlist><br></br>战斗召唤、塔楼与城战器具单位死亡时不会激活</bulletlist>",
+  "description": "当其它单位阵亡时，附魔单位获得：<bulletlist><bullet>地狱伟力，持续3<turn></turn>回合</bullet><bullet>+5<happiness></happiness><hyperlink>士气</hyperlink><br></br>战斗召唤、塔楼与城战器具单位死亡时不会激活</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged>远程单位"
@@ -4787,7 +5139,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>友方军队法术</hyperlink>",
   "id": "制作白骨恐魔",
   "tactical": false,
-  "description": "通过融合两个<hyperlink>骷髅长柄兵</hyperlink>单位制作<hyperlink>白骨恐魔</hyperlink>",
+  "description": "通过融合两个<hyperlink>骷髅民兵</hyperlink>单位制作<hyperlink>白骨恐魔</hyperlink>",
   "name": "制作白骨恐魔",
   "operation_point_cost": 30,
   "icon": "0000041B000016E7",
@@ -4831,7 +5183,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>伤害/减益法术</hyperlink>",
   "id": "寒冰棺椁",
   "tactical": true,
-  "description": "指定敌人：<bulletlist><bullet>受到10<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有90%的基础概率陷入冻结。如果失败，则施加缓速</bullet></bulletlist>",
+  "description": "指定敌人：<bulletlist><bullet>受到10<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有90%的基础概率陷入冻结。如果失败，则施加脆弱状态</bullet></bulletlist>",
   "name": "寒冰棺椁",
   "operation_point_cost": 20,
   "icon": "0000041B000006C0"
@@ -5085,6 +5437,18 @@
    },
    {
     "slug": "孽障克拉肯"
+   },
+   {
+    "slug": "鲜血蛆虫"
+   },
+   {
+    "slug": "末日蝙蝠"
+   },
+   {
+    "slug": "尖啸蝙蝠"
+   },
+   {
+    "slug": "瘟疫巨蛇"
    }
   ]
  },
@@ -5496,7 +5860,7 @@
   "id": "快速进化附魔",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "赋予附魔单位：<bulletlist><bullet>+20%的战斗<hyperlink><xp></xp>经验</hyperlink></bullet><bullet>若是I阶或II阶单位则获得溜走：单位在<hyperlink><hp></hp>生命值</hyperlink>减少至零时获得治疗，每场战斗只生效一次</bullet></bulletlist>",
+  "description": "赋予附魔单位：<bulletlist><bullet>+20%的战斗<hyperlink><xp></xp>经验</hyperlink></bullet><bullet>溜走：单位在<hyperlink><hp></hp>生命值</hyperlink>减少至零时获得治疗，每场战斗只生效一次</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "进化单位"
@@ -5592,7 +5956,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>地形改造法术</hyperlink>",
   "id": "附魔花朵",
   "tactical": false,
-  "description": "指定友方<hyperlink>城邦</hyperlink>获得：<bulletlist><bullet>每<turn></turn><hyperlink>回合</hyperlink>，其<hyperlink>领地</hyperlink>境内或邻近的1<hyperlink>行省</hyperlink>：<bulletlist></bullet><bullet>若处于地面，则获得<hyperlink>草原</hyperlink>与<hyperlink>森林</hyperlink>；若处于地下，则获得<hyperlink>菌毯</hyperlink>与<hyperlink>蘑菇森林</hyperlink></bullet><bullet>失去<hyperlink>裂隙</hyperlink>、<hyperlink>沼泽</hyperlink>、<hyperlink>沙地</hyperlink>、<hyperlink>雪地</hyperlink>、<hyperlink>冰冻废土</hyperlink>、<hyperlink>焦土</hyperlink>与<hyperlink>幽暗</hyperlink></bullet><bullet>领地内拥有草原、森林、菌毯或蘑菇森林的行省获得：+2<food></food><hyperlink>食物</hyperlink>、+2<structureprod></structureprod><hyperlink>产能</hyperlink>与+2<unitprod></unitprod><hyperlink>募役</hyperlink></bullet></bulletlist>",
+  "description": "指定友方<hyperlink>城邦</hyperlink>获得：<bulletlist><bullet>每<turn></turn><hyperlink>回合</hyperlink>，其<hyperlink>领地</hyperlink>境内或邻近的1<hyperlink>行省</hyperlink>：<bulletlist></bullet><bullet>若处于地面，则获得<hyperlink>草原</hyperlink>与<hyperlink>森林</hyperlink>；若处于地下，则获得<hyperlink>菌毯</hyperlink>与<hyperlink>蘑菇森林</hyperlink></bullet><bullet>失去<hyperlink>裂隙</hyperlink>、<hyperlink>沼泽</hyperlink>、<hyperlink>沙地</hyperlink>、<hyperlink>雪地</hyperlink>、<hyperlink>冰冻废土</hyperlink>、<hyperlink>焦土</hyperlink>与<hyperlink>幽暗</hyperlink></bullet><bullet>领地内拥有草原、森林、菌毯或蘑菇森林的行省获得：+2<food></food><hyperlink>食物</hyperlink>、+2<structureprod></structureprod><hyperlink>产能</hyperlink>与+2<unitprod></unitprod><hyperlink>募役</hyperlink></bullet></bulletlist></bulletlist>",
   "name": "附魔花朵",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5945,7 +6309,7 @@
   "tactical": false,
   "description": "召唤一个<hyperlink>死神</hyperlink>，该V阶神话单位单位能够秒杀单位并在敌方单位死亡后变得更加强大",
   "name": "召唤死神",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "死神"
@@ -5958,7 +6322,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>战斗召唤法术</hyperlink>",
   "id": "高级起死术",
   "tactical": true,
-  "description": "复活指定非英雄单位：<bulletlist><bullet>若为非亡灵，则为<hyperlink>受腐之魂</hyperlink></bullet><bullet>若为亡灵，则拥有100%的<hyperlink><hp></hp>生命值</hyperlink></bullet></bulletlist><br></br>如果<hyperlink>受腐之魂</hyperlink>或敌方亡灵在战后存活，所有者可以选择花费<souls></souls>来永久保留此单位",
+  "description": "复活指定非英雄单位：<bulletlist><bullet>若为非亡灵，则为<hyperlink>腐化之魂</hyperlink></bullet><bullet>若为亡灵，则拥有100%的<hyperlink><hp></hp>生命值</hyperlink></bullet></bulletlist><br></br>如果<hyperlink>腐化之魂</hyperlink>或敌方亡灵在战后存活，所有者可以选择花费<souls></souls>来永久保留此单位",
   "name": "高级起死术",
   "operation_point_cost": 40,
   "icon": "0000041B0000173A"
@@ -6061,14 +6425,14 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 4273492483932,
   "spellType": "<caststrategic></caststrategic><hyperlink>召唤法术</hyperlink>",
-  "id": "召唤受腐之魂",
+  "id": "召唤腐化之魂",
   "tactical": false,
-  "description": "召唤一个<hyperlink>受腐之魂</hyperlink>，这种斗士单位能降低敌人的<happiness></happiness><hyperlink>士气</hyperlink>",
-  "name": "召唤受腐之魂",
+  "description": "召唤一个<hyperlink>腐化之魂</hyperlink>，这种斗士单位能降低敌人的<happiness></happiness><hyperlink>士气</hyperlink>",
+  "name": "召唤腐化之魂",
   "operation_point_cost": 150,
   "summoned_units": [
    {
-    "slug": "受腐之魂"
+    "slug": "腐化之魂"
    }
   ]
  },
@@ -6471,7 +6835,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>友方军队法术</hyperlink>",
   "id": "自然恩赐",
   "tactical": false,
-  "description": "指定行省中的所有友方单位若在此后2<hyperlink>世界地图</hyperlink><turn></turn>回合中位于中立和友方领地内，则+15最大<hyperlink><hp></hp>生命值</hyperlink>并自愈15<hyperlink><hp></hp>生命值</hyperlink>",
+  "description": "指定行省中的所有友方单位若在此后2<hyperlink>世界地图</hyperlink><turn></turn>回合中位于中立和友方领地内， 则+15最大<hyperlink><hp></hp>生命值</hyperlink>，并<hyperlink>自愈</hyperlink>15<hyperlink><hp></hp>生命值</hyperlink>",
   "name": "自然恩赐",
   "operation_point_cost": 120,
   "icon": "0000041B00000DBB"
@@ -6599,7 +6963,7 @@
   "spellType": "<casttactical></casttactical><hyperlink>伤害法术</hyperlink>",
   "id": "献祭屠戮",
   "tactical": true,
-  "description": "令指定友方单位爆炸，导致2框格范围内的敌方单位：<bulletlist><bullet>遭受20<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>，牺牲单位每有一阶则额外增加5<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>牺牲单位每有一阶，便会向敌方施加一项随机<hyperlink>负面状态效果</hyperlink></bullet>",
+  "description": "令指定友方单位爆炸，导致2框格范围内的敌方单位：<bulletlist><bullet>遭受20<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>，牺牲单位每有一阶则额外增加5<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>牺牲单位每有一阶，便会向敌方施加一项随机<hyperlink>负面状态效果</hyperlink></bullet></bulletlist>",
   "name": "献祭屠戮",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6637,7 +7001,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
   "id": "血怒武器",
   "tactical": false,
-  "description": "附魔单位：<bulletlist><bullet>在击杀单位时获得+5<happiness></happiness><hyperlink>士气</hyperlink>与+1层强化</bullet><bullet>基础<hyperlink>近战</hyperlink>与<hyperlink>物理远程</hyperlink>攻击+2<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
+  "description": "赋予附魔单位：<bulletlist><bullet>基础攻击+2<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>击杀目标时，目标相邻的敌人陷入2层失血，持续3<turn></turn>回合</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>护盾单位"
@@ -6771,9 +7135,9 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492480453,
   "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
-  "id": "怒火烙印",
+  "id": "暴政印记",
   "tactical": false,
-  "description": "赋予非黑暗单位：<bulletlist><bullet>剔除弱者，效果为：<bulletlist></bullet><bullet>令远程攻击者有概率施加削弱</bullet><bullet>令近战攻击者增加对削弱单位的伤害</bullet></bulletlist></bulletlist>",
+  "description": "赋予非黑暗单位：<bulletlist><bullet>暴政教派</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>护盾单位"
@@ -6800,7 +7164,7 @@
     "requisite": "<unitSkirmisher></unitSkirmisher>散兵单位"
    }
   ],
-  "name": "怒火烙印",
+  "name": "暴政印记",
   "operation_point_cost": 90,
   "icon": "000003E300005352"
  },
@@ -6810,21 +7174,10 @@
   "spellType": "<casttactical></casttactical><hyperlink>减益法术</hyperlink>",
   "id": "灾厄诅咒",
   "tactical": true,
-  "description": "1框格的范围内的敌方单位：<bulletlist><bullet>瓦解防御</bullet><bullet>瓦解抗性</bullet><bullet>削弱</bullet></bulletlist>",
+  "description": "1框格范围内的敌方单位获得：<bulletlist><bullet>有90%的基础概率施加2层削弱，持续3<turn></turn>回合</bullet><bullet>有90%的基础概率施加2层不幸，持续3<turn></turn>回合</bullet></bulletlist>",
   "name": "灾厄诅咒",
   "operation_point_cost": 15,
   "icon": "000003E300005354"
- },
- {
-  "casting_cost": "10<mana></mana> ",
-  "resid": 4273492480429,
-  "spellType": "<casttactical></casttactical><hyperlink>伤害/减益法术</hyperlink>",
-  "id": "寒冰枷锁",
-  "tactical": true,
-  "description": "指定敌方单位与2框格内的另一单位：<bulletlist><bullet>受到14<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>获得缓速</bullet></bulletlist>",
-  "name": "寒冰枷锁",
-  "operation_point_cost": 15,
-  "icon": "000003E300005353"
  },
  {
   "casting_cost": "100<mana></mana> ",
@@ -6976,7 +7329,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>",
   "id": "爆燃武器",
   "tactical": false,
-  "description": "赋予附魔单位：<bulletlist><bullet>+20%<hyperlink><crit></crit>暴击概率</hyperlink></bullet><bullet>当此单位击杀另一单位时：<bulletlist></bullet><bullet>被击杀的单位会爆炸，对邻近敌方单位造成20<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet></bulletlist></bulletlist>",
+  "description": "赋予附魔单位：<bulletlist><bullet>+20%<hyperlink><crit></crit>暴击概率</hyperlink></bullet><bullet>击杀单位会导致其爆炸，邻近敌军：<bulletlist></bullet><bullet>遭受15<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>获得2层燃烧，持续3<turn></turn>回合</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield>护盾单位"

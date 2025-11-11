@@ -25,7 +25,7 @@
             function HandlePage() {
                 // create parts
                 
-                if(showBetaTooltip.checked){
+               
                      CreateParts(listOfSub, listOfIcons, listOfName);
 
                 listOfSub.forEach((sub, i) => {
@@ -33,10 +33,7 @@
                     console.log(unitarray);
                     SetButtonsAndDivs(unitarray, "buttonHolder" + i, "unit", "dataHolder" + i, sub);
                 });
-                } else{
-                     let unitarray =  GetCultureUnitsOf("Dark");
-                SetButtonsAndDivs(unitarray, undefined, "unit");
-                }
+               
                
                 SetLevelUpStuff();
             }

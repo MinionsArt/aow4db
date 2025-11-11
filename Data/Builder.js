@@ -190,9 +190,7 @@ function GetUnitTierAndName(id, subcultureCheck) {
 }
 
 function CheckIfFormUnit(unit) {
-    if (    
-        MountedSpecialList.includes(unit.id) || extraFormUnitsList.includes(unit.id) || 'culture_name' in unit
-    ) {
+    if (MountedSpecialList.includes(unit.id) || extraFormUnitsList.includes(unit.id) || "culture_name" in unit) {
         if (unit.id !== "observer" && unit.id != "magelock_cannon") {
             return true;
         }
@@ -1622,7 +1620,7 @@ function addResistanceSlot(a, resistance, holder) {
                 num = "x";
             }
 
-            const damageRedText = findBy(jsonBaseConceptsLocalized, "id", "INTERFACE@TEXT");
+            const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
             spa.innerHTML +=
                 "<br><br>" +
@@ -2298,7 +2296,7 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
     let finalCheckedList = [];
     if (argumentaffinity === "") {
         for (j in jsonSpells) {
-            if (jsonSpells[j].spellType.indexOf(argumentType) !== -1) {
+            if (jsonSpells[j].spellType.indexOf(argumentType) !== -1 && jsonSpells[j].id != "invalid") {
                 finalCheckedList.push(jsonSpells[j].id);
             }
         }
@@ -2627,7 +2625,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     let hpspan = document.createElement("span");
 
-    const hpText = findBy(jsonBaseConceptsLocalized, "id", "CONCEPT@HITPOINTS");
+    const hpText = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@HITPOINTS");
     hpspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase ">' +
         hpText.hyperlink +
@@ -2643,7 +2641,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     let hpvalue = unitEN.hp;
     hp.innerHTML = unitEN.hp;
 
-    const critText = findBy(jsonBaseConceptsLocalized, "id", "CONCEPT@CRITICAL_HIT");
+    const critText = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@CRITICAL_HIT");
 
     let critspan = document.createElement("span");
     critspan.innerHTML =
@@ -2657,9 +2655,9 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     let crit = unitCard.querySelector("p#crit");
     crit.innerHTML = "+" + 0 + "%";
 
-    const damageRedText = findBy(jsonBaseConceptsLocalized, "id", "INTERFACE@TEXT");
+    const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
-    const defenseText = findBy(jsonBaseConceptsLocalized, "id", "INTERFACE@HUD_GENERAL_INFO");
+    const defenseText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@HUD_GENERAL_INFO");
     let armorspan = document.createElement("span");
     armorspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
@@ -2806,7 +2804,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         }
     }
 
-    const tierText = findBy(jsonBaseConceptsLocalized, "id", "INTERFACE@TEXT");
+    const tierText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
     tier.innerHTML = tierText.tier + " " + romanize(unitEN.tier) + ": " + unitEN.upkeep;
 
     let summonInfo = canBeSummoned(unitEN.id);
@@ -3131,7 +3129,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
             tierandnameoftome != ""
                 ? `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink> <br>in Tier <hyperlink>${romanize(tierandnameoftome.tier)} - ${showAffinitySymbols(tierandnameoftome)} ${tierandnameoftome.name}</hyperlink>`
                 : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].icon}.png`;
+        const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3887,7 +3885,7 @@ function showTome(a, divOrigin) {
             addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
         }
         if ("spell_slug" in skill) {
-            console.log(skill.spell_slug);
+          //  console.log(skill.spell_slug);
             addTomeSkillCard(skillHolder, (el) => showSpell(skill.spell_slug, false, el));
         }
         if ("unit_slug" in skill) {
@@ -4380,7 +4378,7 @@ function showCosmicHappening(a, divOrigin) {
             description = jsonCosmicHappenings[j].description;
 
             if ("extraLookup" in jsonCosmicHappenings[j]) {
-                const valueLookup = findBy(jsonExtraEventsFromPOLocalized, "id", jsonCosmicHappenings[j].extraLookup);
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonCosmicHappenings[j].extraLookup);
                 description = valueLookup.description;
 
                 modName.innerHTML = valueLookup.name.toUpperCase();
@@ -4476,7 +4474,7 @@ function showWorldStructure(a, divOrigin) {
 
     // extra lookup
     if ("extraLookup" in structure) {
-        const valueLookup = findBy(jsonExtraStructureFromPOLocalized, "id", structure.extraLookup);
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", structure.extraLookup);
         if ("hyperlink" in valueLookup) {
             modName.innerHTML = valueLookup.hyperlink.toUpperCase();
         } else if ("name" in valueLookup) {
@@ -4490,7 +4488,7 @@ function showWorldStructure(a, divOrigin) {
         }
 
         if ("nodeType" in structure) {
-            const valueLookup = findBy(jsonExtraStructureFromPOLocalized, "id", "INTERFACE@COUNTS_AS");
+            const valueLookup = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@COUNTS_AS");
             const nodeType = structure.nodeType.split("&");
             console.log(valueLookup);
             description +=
@@ -4568,7 +4566,7 @@ function showWorldStructure(a, divOrigin) {
     if ("spell_unlocks" in structure) {
         // if a lookup link
         if (structure.spell_unlocks.indexOf("@") != -1) {
-            const valueLookup = findBy(jsonExtraCombatPropertiesFromPOLocalized, "id", structure.spell_unlocks);
+            const valueLookup = findBy(jsonAllFromPOLocalized, "id", structure.spell_unlocks);
 
             const div = document.createElement("span");
 
@@ -4593,7 +4591,7 @@ function showWorldStructure(a, divOrigin) {
     }
 
     descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
-
+    descriptionDiv.innerHTML = descriptionDiv.innerHTML.replaceAll("{LOC.CONCEPT@HITPOINTS@NAME}", "<hp></hp>");
     const insertDiv = divOrigin.querySelector("#test");
     const spaDes2 = document.createElement("span");
 
@@ -4634,11 +4632,7 @@ function FindCombatEnchantment(id) {
             let description = jsonCombatEnchantments[i].description;
 
             if ("extraLookup" in jsonCombatEnchantments[i]) {
-                const valueLookup = findBy(
-                    jsonExtraCombatPropertiesFromPOLocalized,
-                    "id",
-                    jsonCombatEnchantments[i].extraLookup
-                );
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonCombatEnchantments[i].extraLookup);
 
                 if ("description" in valueLookup) {
                     description = valueLookup.description;
@@ -4778,7 +4772,7 @@ function showUnitUnlock(a, divOrigin) {
     modName.innerHTML = unitLoc.name.toUpperCase();
     let descriptionDiv = divOrigin.querySelector("#moddescription");
 
-    let description = "<hr>" + unitLoc.description;
+    let description = "<hr>" + a.description;
 
     let imagelink = divOrigin.querySelector("#modicon");
 
@@ -4817,7 +4811,7 @@ function showUnitUnlock(a, divOrigin) {
 
     let tier = divOrigin.querySelector("#modtier");
 
-    tier.innerHTML = "<unit></unit> " + unitLoc.type;
+    tier.innerHTML = "<unit></unit> " + a.type;
 
     modName.innerHTML += '<span style="color:white;font-size:15px">  Tier ' + romanize(a.tier) + "</span>";
 
@@ -4885,31 +4879,47 @@ function showSpell(a, showOrigin, divOrigin) {
             }
         }
         descriptionDiv.innerHTML = description;
-        if (
-            a === "call_wild_animal" ||
-            a === "call_greater_animal" ||
-            a === "awaken_the_forest" ||
-            a === "demonic_summoning" ||
-            a === "summon_elemental" ||
-            a === "raise_undead_army"
-        ) {
-            // extra info
 
-            info = document.createElement("DIV");
-            info.innerHTML =
-                '<button type="button" class="collapsible"  onclick="SetUpSpawnTable()">SPAWN CHANCES (manually added data, error prone)</button>';
+        const Pairs = [
+            { id: "call_wild_animal", spawnset: "SUMMON_WILD_ANIMAL" },
+            { id: "call_greater_animal", spawnset: "SUMMON_GREATER_WILD_ANIMAL" },
+              { id: "summon_elemental", spawnset: "SUMMON_ELEMENTAL" },
+              { id: "awaken_the_forest", spawnset: "AWAKEN_THE_FOREST" },
+             { id: "demonic_summoning", spawnset: "DEMONIC_SUMMONING" },
+             { id: "raise_undead_army", spawnset: "RAISE_UNDEAD_ARMY" }
+        ];
+
+        const match = Pairs.find((p) => p.id === a);
+        if (match) {
+            const results =[];
+            // skip if not found
+            // extra info
+            // call_wild_animal = SUMMON_WILD_ANIMAL
+           const info = document.createElement("DIV");
+            info.innerHTML = '<button type="button" class="collapsible"onclick="SetUpSpawnTable()">SPAWN CHANCES</button>';
             let collapsibleC = document.createElement("DIV");
             collapsibleC.classList = "content";
 
-            for (let index = 0; index < jsonSpawnTables.length; index++) {
-                if (jsonSpawnTables[index].id == a) {
-                    for (let j = 0; j < jsonSpawnTables[index].categories.length; j++) {
-                        let div = ConvertSpawnTable(jsonSpawnTables[index].categories[j].table);
-                        collapsibleC.append(div);
-                    }
-                }
-            }
+            const related = jsonSpawnTables.filter((t) => t.category.startsWith(match.spawnset + "_"));
 
+            // 3️⃣ Combine all items for the same category name
+            for (const entry of related) {
+                // Check if we already have this category in results
+                let existing = results.find((r) => r.category === entry.category);
+                if (!existing) {
+                    // If not, create it
+                    existing = { category: entry.category, items: [] };
+                    results.push(existing);
+                }
+                // Add new items
+                existing.items.push(...entry.items);
+            }
+            for(const entry of results){
+               let div = ConvertSpawnTable(entry,match.spawnset);
+              collapsibleC.append(div);
+            }
+           
+           
             info.append(collapsibleC);
             descriptionDiv.append(info);
         }
@@ -5295,8 +5305,8 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             }
         }
         if ("extraLookup" in currentTrait) {
-            const valueLookup = findBy(jsonExtraFactionCreationFromPOLocalized, "id", currentTrait.extraLookup);
-
+            const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup);
+            console.log(currentTrait.extraLookup);
             if ("hyperlink" in valueLookup) {
                 modName.innerHTML = valueLookup.hyperlink.toUpperCase();
             } else if ("name" in valueLookup) {
@@ -5318,7 +5328,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             }
 
             if ("extraLookup2" in currentTrait) {
-                const valueLookup2 = findBy(jsonExtraFactionCreationFromPOLocalized, "id", currentTrait.extraLookup2);
+                const valueLookup2 = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup2);
                 console.log(valueLookup2);
                 if ("hyperlink" in valueLookup2) {
                     modName.innerHTML = valueLookup2.hyperlink.toUpperCase();

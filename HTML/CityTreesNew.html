@@ -161,30 +161,30 @@
                             }
                         } else {
                             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                            
+
                             let extraOffset = 1;
                             // ✅ must use setAttribute for SVG
                             path.setAttribute("stroke", "white");
-                             path.setAttribute("fill", "none");
+                            path.setAttribute("fill", "none");
                             path.setAttribute("stroke-width", "2");
                             if (jsonCityTreeNodes[i].id.indexOf("wizard_tower") != -1) {
                                 path.setAttribute("stroke", "green");
                             }
-                             for (const [lineName, buildings] of Object.entries(Fortifications)) {
-                                  if(buildings.includes(jsonCityTreeNodes[i].connectTo[j].id)){
-                                  path.setAttribute("stroke", "rgb(100 100 100)");
-                                       path.setAttribute("stroke-width", "4");
-                                      extraOffset = 15;
+                            if (jsonCityTreeNodes[i].id.indexOf("vampire_castle") != -1) {
+                                path.setAttribute("stroke", "red");
                             }
-                             } 
-                           
-
-                           
+                            for (const [lineName, buildings] of Object.entries(Fortifications)) {
+                                if (buildings.includes(jsonCityTreeNodes[i].connectTo[j].id)) {
+                                    path.setAttribute("stroke", "rgb(100 100 100)");
+                                    path.setAttribute("stroke-width", "4");
+                                    extraOffset = 15;
+                                }
+                            }
 
                             const divOG = document.getElementById(jsonCityTreeNodes[i].id);
 
                             const divTO = document.getElementById(jsonCityTreeNodes[i].connectTo[j].id);
-                            
+
                             if (divOG == undefined || divTO == undefined) {
                                 break;
                             }
@@ -193,10 +193,10 @@
                                 "d",
                                 generatePathSettings(
                                     divTO,
-                                    { x: j , y: j},
+                                    { x: j, y: j },
                                     "right",
                                     divOG,
-                                    { x: 0 , y: 0 -  extraOffset},
+                                    { x: 0, y: 0 - extraOffset },
                                     "left",
                                     j * extraOffset + 30
                                 )
@@ -250,24 +250,6 @@
                 baseLine: [
                     "empty",
                     "wizard_tower_foundation",
-                    "wizard_tower_level_i",
-                    "wizard_tower_level_ii",
-                    "wizard_tower_apex",
-                    "wizard_tower_arcane_observatory"
-                ],
-                secondLine: ["empty*2", "wizard_tower_crypts", "wizard_tower_item_forge"],
-                thirdLine: [
-                    "empty*2",
-                    "wizard_tower_prison_cells",
-                    "wizard_tower_room_of_recall",
-                    "wizard_tower_channeling_chamber",
-                    "wizard_tower_teleportation_circle"
-                ]
-            };
-            const wizardTowerBeta = {
-                baseLine: [
-                    "empty",
-                    "wizard_tower_foundation",
                     "wizard_tower_chambers",
                     "wizard_tower_high_halls",
                     "wizard_tower_apex",
@@ -285,20 +267,22 @@
 
             const vampireTower = {
                 baseLine: [
-                    "wizard_tower_foundation",
-                    "wizard_tower_chambers",
-                    "wizard_tower_high_halls",
-                    "wizard_tower_apex",
-                    "wizard_tower_arcane_observatory"
-                ],
-                secondLine: ["empty", "wizard_tower_crypts", "wizard_tower_item_forge"],
-                thirdLine: [
                     "empty",
-                    "wizard_tower_prison_cells",
-                    "wizard_tower_room_of_recall",
-                    "wizard_tower_channeling_chamber",
-                    "wizard_tower_teleportation_circle"
-                ]
+                    "vampire_castle_foundation",
+                    "vampire_castle_chambers",
+                    "vampire_castle_grand_halls",
+                    "vampire_castle_throne_of_blood",
+                    "vampire_castle_stygian_observers"
+                ],
+                secondLine: [
+                    "empty*2",
+                    "vampire_castle_deep_crypts",
+                    "vampire_castle_laboratory",
+                    "vampire_castle_ritual_chamber",
+                    "vampire_castle_teleportation_circle"
+                ],
+                thirdLine: ["empty*2", "vampire_castle_abattoir", "vampire_castle_room_of_recall"],
+                fourthLine: ["empty*2", "vampire_castle_soul_forge"]
             };
 
             const affinity = {
@@ -331,7 +315,7 @@
                 stabilityLine: ["empty", "tavern", "bathhouse"]
             };
             const Fortifications = {
-                walls: ["empty*4", "palisade_walls", "empty*4", "stone_walls", "empty*3",  "catapult_towers"],
+                walls: ["empty*4", "palisade_walls", "empty*4", "stone_walls", "empty*3", "catapult_towers"],
                 Towers: ["empty*7", "caltrop_stash", "empty*2", "ballista_towers"],
                 Battlements: ["empty*7", "arcane_battlements", "empty*2", "necrotic_spires", "beacon_of_valor"],
                 Spires: ["empty*7", "archer_battlements", "empty*2", "healing_spires"]
@@ -378,25 +362,24 @@
                 GetTree("", TownHalls, parentWizard, buildingMap);
                 GetTree("", Bath, parentWizard, buildingMap);
                 // wizard tower base
-                if (showBetaTooltip.checked) {
-                    GetTree("Wizard Tower", wizardTowerBeta, parentWizard, buildingMap);
-                } else {
-                    GetTree("Wizard Tower", wizardTower, parentWizard, buildingMap);
-                }
 
+                GetTree("Wizard Tower", wizardTower, parentWizard, buildingMap);
+                // if vampire check
+                if (document.getElementById("vampireCheck").checked) {
+                    GetTree("Vampire Castle", vampireTower, parentWizard, buildingMap);
+                }
                 GetTree("", affinity, parentWizard, buildingMap);
                 const parentTomes = document.createElement("div");
                 treespace.appendChild(parentTomes);
                 parentTomes.setAttribute("style", " position: relative;left: 293px;");
                 GetTree("Tome Buildings", GetTomeBuilds(buildingMap), parentTomes, buildingMap);
-                
-                 for (const [overrideName, list] of Object.entries(overrideBuildingsBeta)) {
-                        for (const entry of list) {
-                            const [base, extra] = entry.split(":");
-                             connectBottom(base, extra);
-                          
-                        }
+
+                for (const [overrideName, list] of Object.entries(overrideBuildings)) {
+                    for (const entry of list) {
+                        const [base, extra] = entry.split(":");
+                        connectBottom(base, extra);
                     }
+                }
 
                 SetLevelUpStuff();
                 updateConnector();
@@ -527,7 +510,7 @@
                 }
             ];
 
-            const overrideBuildingsBeta = {
+            const overrideBuildings = {
                 /*throne: ["town_hall_i_town_center: throne"],*/
                 feudal: [
                     "town_hall_ii:town_hall_ii_castle",
@@ -617,97 +600,6 @@
                     "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
                 ]
             };
-            const overrideBuildings = {
-                /*throne: ["town_hall_i_town_center: throne"],*/
-                feudal: [
-                    "town_hall_ii:town_hall_ii_castle",
-                    "town_hall_iii:town_hall_iii_citadel",
-                    "town_hall_iv:town_hall_iv_grand_estate"
-                ],
-                feudal_monarchy: ["workshop:militia_barracks", "blacksmith:royal_smith", "iii_unlock:lords_manor"],
-                feudal_aristocracy: [
-                    "store_house:house_hunting_grounds",
-                    "granary:serf_quarters",
-                    "iii_unlock_2:retainers_estate"
-                ],
-                dark: [
-                    "town_hall_ii:town_hall_ii_dread_spire",
-                    "town_hall_iii:town_hall_iii_stronghold",
-                    "iii_unlock:overlords_tower",
-                    "town_hall_iv:town_hall_iv_black_palace",
-                    "vendor:experimentation_chambers",
-                    "market:underground_laboratory",
-                    "tavern:interrogation_dungeon",
-                    "bathhouse:ritual_mausoleum"
-                ],
-
-                barbarian: [
-                    "library:battle_ritual_site",
-                    "arcane_institute:ancestral_seer_hall",
-                    "town_hall_ii:town_hall_ii_communal_tent",
-                    "town_hall_iii:town_hall_iii_halls_of_war",
-                    "iii_unlock:shrine_of_the_wargod",
-                    "town_hall_iv:town_hall_iv_warlords_pavilion"
-                ],
-                industrious: [
-                    "store_house:workers_farmstead",
-                    "granary:grand_mill",
-                    "town_hall_ii:town_hall_ii_bulwark",
-                    "town_hall_iii:town_hall_iii_forge_tower",
-                    "iii_unlock:bastions_barricade",
-                    "town_hall_iv:town_hall_iv_industry_compound"
-                ],
-                mystic: [
-                    "workshop:evocators_abode",
-                    "stonemason:stone_conjurer",
-                    "town_hall_ii:town_hall_ii_mages_plaza",
-                    "town_hall_iii:town_hall_iii_mystic_spire",
-                    "town_hall_iv:town_hall_iv_wizards_auditorium"
-                ],
-                mystic_school_of_summoning: ["iii_unlock_3:summoners_cistern"],
-                mystic_school_of_potential: ["iii_unlock_2:academy_of_potential"],
-                mystic_school_of_attunement: ["iii_unlock:altar_of_the_all-seers"],
-                high: [
-                    "workshop:artisan_workshop",
-                    "blacksmith:lightforge",
-                    "town_hall_ii:town_hall_ii_atrium_of_light",
-                    "town_hall_iii:town_hall_iii_pantheon",
-                    "iii_unlock:solar_nexus",
-                    "town_hall_iv:town_hall_iv_solar_sanctum"
-                ],
-                reaver: [
-                    "shrine:mana_forge",
-                    "mana_obelisk:lodestone_foundry",
-                    "town_hall_ii:town_hall_ii_steel_hall",
-                    "town_hall_iii:town_hall_iii_chained_spire",
-                    "iii_unlock:extraction_nexus",
-                    "town_hall_iv:town_hall_iv_ironclad_citadel"
-                ],
-                primal: [
-                    "workshop:woodcarvers_workshop",
-                    "stonemason:stonestele",
-                    "town_hall_ii:town_hall_ii_clan_lodge",
-                    "town_hall_iii:town_hall_iii_spirit_hall",
-                    "iii_unlock:shrine_to_the_spirits",
-                    "town_hall_iv:town_hall_iv_primeval_palace"
-                ],
-                oathsworn: [
-                    "vendor:training_hall",
-                    "market:hall_of_devotion",
-                    "town_hall_ii:town_hall_ii_oath_square",
-                    "town_hall_iii:town_hall_iii_steel_bastion",
-                    "iii_unlock:paragon_quarters",
-                    "town_hall_iv:town_hall_iv_palace_of_vows"
-                ],
-                architect: [
-                    "library:magitectural_archive",
-                    "arcane_institute:architect_institute",
-                    "town_hall_ii:town_hall_ii_great_ziggurat",
-                    "town_hall_iii:town_hall_iii_ascended_gardens",
-                    "iii_unlock:affinity_obelisks",
-                    "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
-                ]
-            };
 
             function findResources(text) {
                 const regex = /\+\d+%?\s*<([^>]+)>/g;
@@ -738,21 +630,12 @@
 
                 // Convert overrideBuildings into a lookup map for easy matching
                 const overrideMap = {};
-                if (showBetaTooltip.checked) {
-                    for (const [overrideName, list] of Object.entries(overrideBuildingsBeta)) {
-                        for (const entry of list) {
-                            const [base, extra] = entry.split(":");
-                            if (!overrideMap[base]) overrideMap[base] = [];
-                            overrideMap[base].push({ overrideName, extra });
-                        }
-                    }
-                } else {
-                    for (const [overrideName, list] of Object.entries(overrideBuildings)) {
-                        for (const entry of list) {
-                            const [base, extra] = entry.split(":");
-                            if (!overrideMap[base]) overrideMap[base] = [];
-                            overrideMap[base].push({ overrideName, extra });
-                        }
+
+                for (const [overrideName, list] of Object.entries(overrideBuildings)) {
+                    for (const entry of list) {
+                        const [base, extra] = entry.split(":");
+                        if (!overrideMap[base]) overrideMap[base] = [];
+                        overrideMap[base].push({ overrideName, extra });
                     }
                 }
 
@@ -840,8 +723,6 @@
 
                 parent.appendChild(Holder);
                 resizeParentToFitChildren(Holder);
-                
-               
             }
 
             function resizeParentToFitChildren(parent) {
@@ -1129,6 +1010,15 @@
                         checked="checked"
                         onchange="toggle(this)" />
                     Toggle All
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="vampireCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Elder Vampire
                 </label>
                 <label class="switch">
                     <input type="checkbox" name="checkToggle" id="tomeCheck" checked="checked" onchange="reDrawAll()" />

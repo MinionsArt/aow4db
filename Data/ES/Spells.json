@@ -189,7 +189,7 @@
   "id": "bendición_corrupta",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "La unidad enemiga objetivo:<bullet><bulletlist>Pierde todos los <hyperlink>Efectos de estado positivo</hyperlink>.</bullet><bullet>Si un efecto de estado que se haya perdido tiene algún Contrarresto de efectos de estado, entonces la unidad obtiene una acumulación de ese <hyperlink>Efecto de estado negativo</hyperlink>.<bulletlist></bullet>",
+  "description": "La unidad enemiga objetivo:<bullet><bulletlist>Pierde todos los <hyperlink>Efectos de estado positivo</hyperlink>.</bullet><bullet>Si un efecto de estado que se haya perdido tiene algún Contrarresto de efectos de estado, entonces la unidad obtiene una acumulación de ese <hyperlink>Efecto de estado negativo</hyperlink>.</bullet></bulletlist>",
   "name": "Bendición corrupta",
   "operation_point_cost": 25,
   "icon": "0000049C0000008C"
@@ -246,6 +246,252 @@
   "name": "Grieta umbría",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586548,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "concentración_sanguínea",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Los ataques básicos <hyperlink>mágicos</hyperlink> de las unidades encantadas obtienen:<bulletlist><bullet>+1 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Una probabilidad inicial del 60 % de infligir Sangrado durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   }
+  ],
+  "name": "Concentración sanguínea",
+  "operation_point_cost": 80,
+  "icon": "0000049700003292"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586586294,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de invocación</hyperlink>",
+  "id": "invocar_exarca_de_sangre",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Invoca a <hyperlink>un Exarca de sangre</hyperlink>, una Unidad mítica que cuenta con poderosas habilidades de apoyo y de ataque que aniquilarán a las unidades de nivel bajo.",
+  "name": "Invocar exarca de sangre",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "exarca_de_sangre"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586586275,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "manto_del_noble_de_sangre",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>Coagulación.</bullet><bullet>Al inicio del combate, por cada unidad aliada de nivel I o II que no se haya invocado:<bulletlist></bullet><bullet>+5 <hyperlink><hp></hp> Puntos de salud</hyperlink>.</bullet><bullet>+5 % de curación recibida en combate.</bullet></bulletlist></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "Nivel III"
+   },
+   {
+    "requisite": "Nivel IV"
+   },
+   {
+    "requisite": "Nivel V"
+   }
+  ],
+  "name": "Manto del noble de sangre",
+  "operation_point_cost": 140,
+  "icon": "0000049700003431"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586204,
+  "spellType": "<casttactical></casttactical> <hyperlink>Conjuro de combate</hyperlink>",
+  "id": "lágrimas_del_soberano_carmesí",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "Cuando se lanza la habilidad y durante los siguientes 2 <turn></turn> Turnos:<bulletlist><bullet>Hasta 3 unidades enemigas:<bulletlist></bullet><bullet>Reciben 10 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de recibir Parásito de sangre durante 3 <turn></turn> Turnos.</bullet></bulletlist><bullet>Hasta 3 unidades aliadas:<bulletlist></bullet><bullet>Recuperan 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Obtienen Fortuna durante 3 <turn></turn> Turnos.</bullet></bulletlist></bulletlist>",
+  "name": "Lágrimas del soberano carmesí",
+  "operation_point_cost": 35,
+  "icon": "000004970000342D"
+ },
+ {
+  "casting_cost": "600<mana></mana> ",
+  "resid": 5046586586172,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza superior</hyperlink>",
+  "id": "regalo_de_la_vieja_sangre",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Tus unidades se transforman al beber la sangre de un exarca, lo que les otorga:<bulletlist><bullet>El tipo de unidad No muerto.</bullet><bullet>Absorbevidas.</bullet><bullet>Los ataques básicos tienen una probabilidad inicial del 60 % de infligir Parásito de sangre durante 3 <turn></turn> Turnos. Este efecto aumenta con los ataques de disparo único.</bullet></bulletlist>",
+  "name": "Regalo de la vieja sangre",
+  "operation_point_cost": 600,
+  "icon": "0000049700003439"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586001,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
+  "id": "agonizar",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "Las unidades enemigas situadas en un área de 1 casilla(s):<bulletlist><bullet>Reciben 40 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de obtener 3 acumulaciones de Tormento hasta el final del combate. Si falla, solo inflige 1 acumulaciones de Tormento.</bullet></bulletlist>",
+  "name": "Agonizar",
+  "operation_point_cost": 35,
+  "icon": "0000049700003366"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586585990,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "proyectiles_de_tormento",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Los ataques <hyperlink>mágicos</hyperlink> y <hyperlink>Alcance físico</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen Tormento hasta el final del combate.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Proyectiles de tormento",
+  "operation_point_cost": 140,
+  "icon": "0000049700003362"
+ },
+ {
+  "casting_cost": "350<mana></mana> ",
+  "resid": 5046586585968,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
+  "id": "dolor_vinculante",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "La raza objetivo acepta el dolor y cuando le alcanza un ataque, obtiene:<bulletlist><bullet>2 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet><bullet>Un efecto de estado positivo al azar.</bullet></bulletlist>",
+  "name": "Dolor vinculante",
+  "operation_point_cost": 350,
+  "icon": "000004970000335A"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586585803,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Transformación de raza menor</hyperlink>",
+  "id": "runas_grabadas_en_carne",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Graba unos sellos profanos en la carne de tu raza para otorgarle:<bulletlist><bullet>+5 de regeneración de <hyperlink><hp></hp> Puntos de salud</hyperlink> en el <hyperlink>Mapa del mundo</hyperlink>.</bullet><bullet>Las habilidades de ataque y de <hyperlink>debilitación</hyperlink>:<bulletlist></bullet><bullet>Ignoran 1 de <statuseffectresistance></statuseffectresistance> <hyperlink>Resistencia a estados</hyperlink> por cada acumulación de Sangrado en el objetivo.</bullet></bulletlist></bulletlist>",
+  "name": "Runas grabadas en carne",
+  "operation_point_cost": 150,
+  "icon": "000004970000329E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5046586585798,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño</hyperlink>",
+  "id": "ritual_de_la_sangría",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "La unidad aliada objetivo recibe 5 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink> ineludible. Luego, todas las unidades enemigas situadas en un área de 2 casillas:<bulletlist><bullet>Reciben 10 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Reciben 2 de Sangrado durante 3 <turn></turn> Turnos.</bullet></bulletlist>",
+  "name": "Ritual de la sangría",
+  "operation_point_cost": 15,
+  "icon": "0000049700003296"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586585790,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
+  "id": "ritual_de_absorción_de_vida",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "La unidad aliada objetivo recibe 5 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink> ineludible. Luego, todas las unidades aliadas adyacentes obtienen:<bulletlist><bullet>Fortaleza durante 3 <turn></turn> Turnos.</bullet><bullet>Robo de vida durante 3 <turn></turn> Turnos.</bullet></bulletlist>",
+  "name": "Ritual de absorción de vida",
+  "operation_point_cost": 20,
+  "icon": "0000049700003286"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586585776,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "hojas_bebesangre",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen +1 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Al golpear a unidades con Sangrado, recuperan 2 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unidad de protección"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Hojas bebesangre",
+  "operation_point_cost": 80,
+  "icon": "000004970000328A"
+ },
+ {
+  "casting_cost": "4<thralls></thralls> ",
+  "resid": 5046586585066,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército enemigo</hyperlink>",
+  "id": "ritual_de_la_vivisección",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "El ejército enemigo objetivo recibe 20 de daño <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>. Luego, obtiene +150 de <knowledge></knowledge> <hyperlink>Conocimiento</hyperlink>.",
+  "name": "Ritual de la vivisección",
+  "operation_point_cost": 150,
+  "icon": "0000049700002FEB"
+ },
+ {
+  "casting_cost": "12<thralls></thralls> ",
+  "resid": 5046586584681,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de mundo</hyperlink>",
+  "id": "ritual_de_la_luna_de_sangre",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Durante los próximos 10 <turn></turn> Turnos en el <hyperlink>Mapa del mundo</hyperlink>, los vampiros:<bulletlist><bullet>No sufren Debilidad a la luz del sol.</bullet><bullet>+15 de regeneración de <hyperlink><hp></hp> Punto de salud</hyperlink> en el mapa del mundo.</bullet><bullet>Obtienen un +20 % de daño.</bullet><bullet>Obtienen +2 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist>",
+  "name": "Ritual de la luna de sangre",
+  "operation_point_cost": 300,
+  "icon": "0000049700002E66"
+ },
+ {
+  "casting_cost": "6<thralls></thralls> ",
+  "resid": 5046586584666,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
+  "id": "ritual_de_la_profanación",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "La superficie de las <hyperlink>Provincias</hyperlink> objetivo y adyacentes:<bulletlist><bullet>Se vuelve <GLOBAL.SunlessConcept.Hyperlink>lóbrega</hyperlink>.</bullet><bullet>Los ejércitos enemigos reciben 20 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet></bulletlist>",
+  "name": "Ritual de la profanación",
+  "operation_point_cost": 275,
+  "icon": "0000049700002E5B"
+ },
+ {
+  "casting_cost": "2<thralls></thralls> ",
+  "resid": 5046586584657,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
+  "id": "ritual_de_la_transferencia_de_sangre",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "En el ejército aliado objetivo:<bulletlist><bullet>Cura a los vampiros un 50 % de sus <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos.</bullet><bullet>Cura a las unidades que no sean vampiros un 20 % de sus <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos.</bullet></bulletlist>",
+  "name": "Ritual de la transferencia de sangre",
+  "operation_point_cost": 80,
+  "icon": "0000049700002E52"
  },
  {
   "casting_cost": "120<mana></mana> ",
@@ -373,7 +619,7 @@
   "tactical": false,
   "description": "Invoca <hyperlink>un Ángel caído</hyperlink>, una Unidad de magia de combate que provoca la decadencia y la corrupción.",
   "name": "Invocar ángel caído",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "Ángel_caído"
@@ -428,7 +674,7 @@
   "id": "renacer_ascendido",
   "DLC": "ARCHONPROPHECY ",
   "tactical": true,
-  "description": "La unidad objetivo muerta que no sea un héroe ni celestial:<bulletlist><bullet>Revive como <hyperlink>un Vigía</hyperlink> bajo el control del conjurador hasta el final del combate.</bullet><bullet>Al revivir, todas las unidades aliadas situadas en un área de 2 casilla(s) recuperan 20 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet>",
+  "description": "La unidad objetivo muerta que no sea un héroe ni celestial:<bulletlist><bullet>Revive como <hyperlink>un Vigía</hyperlink> bajo el control del conjurador hasta el final del combate.</bullet><bullet>Al revivir, todas las unidades aliadas situadas en un área de 2 casilla(s) recuperan 20 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet></bulletlist>",
   "name": "Renacer ascendido",
   "operation_point_cost": 40,
   "icon": "0000049700002B84"
@@ -541,7 +787,7 @@
   "id": "espíritu_virtuoso",
   "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "Otorga fuerza a la raza objetivo en momentos de debilidad, y les otorga:<bulletlist><bullet>+2 de <defensespirit></defensespirit> <hyperlink>Resistencia espiritual</hyperlink>.</bullet><bullet>Cuando los <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos de esta unidad bajan del 60 %:<bulletlist></bullet><bullet>Ignora un 50 % de sus <hyperlink>Bajas</hyperlink>.</bullet><bullet>Obtiene +1 de <defense></defense> <hyperlink>Defensa</hyperlink>.</bullet><bullet>Obtiene +1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist>",
+  "description": "Concede fuerza a la raza objetivo en momentos de debilidad, y les otorga:<bulletlist><bullet>+2 de <defensespirit></defensespirit> <hyperlink>Resistencia espiritual</hyperlink>.</bullet><bullet>Cuando los <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos de esta unidad bajan del 60 %:<bulletlist></bullet><bullet>Ignora un 50 % de sus <hyperlink>Bajas</hyperlink>.</bullet><bullet>Obtiene +1 de <defense></defense> <hyperlink>Defensa</hyperlink>.</bullet><bullet>Obtiene +1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist></bulletlist>",
   "name": "Espíritu virtuoso",
   "operation_point_cost": 250,
   "icon": "0000049700002A9E"
@@ -716,7 +962,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "concentración_en_la_línea_ley",
   "tactical": false,
-  "description": "Las unidades encantadas obtienen:<bulletlist><bullet>Al comienzo del turno y hasta que la unidad se mueva, tiene:<bulletlist></bullet><bullet>+30 % de daño.</bullet><bullet>+2 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist>",
+  "description": "Las unidades encantadas obtienen:<bulletlist><bullet>Al comienzo del turno y hasta que la unidad se mueva, tiene:<bulletlist></bullet><bullet>+30 % de daño.</bullet><bullet>+2 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -772,7 +1018,7 @@
   "id": "impacto_de_cristal",
   "DLC": "GIANTKINGS ",
   "tactical": true,
-  "description": "Las unidades enemigas situadas en un área de 1 casilla(s):<bulletlist><bullet>Reciben 15 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Reciben 15 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de aplicar Carga volátil durante 2 <turn></turn> Turnos.</bullet>",
+  "description": "Las unidades enemigas situadas en un área de 1 casilla(s):<bulletlist><bullet>Reciben 15 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Reciben 15 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de aplicar Carga volátil durante 2 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Impacto de cristal",
   "operation_point_cost": 35,
   "icon": "00000497000015BB"
@@ -946,7 +1192,7 @@
   "id": "armaduras_bendecidas",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Las unidades encantadas obtienen:<bulletlist><bullet>Gracia interior.</bullet><bullet>+2 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist>",
+  "description": "Las unidades encantadas obtienen:<bulletlist><bullet>Gracia interior.</bullet><bullet>+1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -992,7 +1238,7 @@
   "id": "protección_grandiosa",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "Las unidades aliadas situadas en un área de 2 casilla(s) obtienen:<bulletlist><bullet>2 de Gracia.</bullet><bullet>2 de Regeneración durante 3 <turn></turn> Turnos.</bullet><bullet>3 de Defensa reforzada durante 3 <turn></turn> Turnos.</bullet><bullet>3 de Resistencia reforzada durante 3 <turn></turn> Turnos.</bullet></bulletlist>",
+  "description": "Las unidades aliadas situadas en un área de 2 casilla(s) obtienen:<bulletlist><bullet>2 de Gracia.</bullet><bullet>2 de Regeneración durante 3 <turn></turn> Turnos.</bullet><bullet>2 de Defensa reforzada durante 3 <turn></turn> Turnos.</bullet><bullet>2 de Resistencia reforzada durante 3 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Protección grandiosa",
   "operation_point_cost": 40,
   "icon": "0000049700001351"
@@ -1227,7 +1473,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "armas_de_obsidiana",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> y de <hyperlink>Alcance físico</hyperlink> de las unidades encantadas obtienen:<bulletlist><bullet>+1 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Una probabilidad inicial del 60 % de aplicar Sangrado.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> y <hyperlink>Alcance físico</hyperlink> de las unidades encantadas obtienen:<bulletlist><bullet>+1 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Una probabilidad inicial del 60 % de infligir Sangrado durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -1257,7 +1503,6 @@
   "resid": 5046586576384,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de mundo</hyperlink>",
   "id": "ritual_de_clarividencia",
-  "DLC": "ELDRITCHREALMS ",
   "tactical": false,
   "description": "Revela la <hyperlink>Infestación</hyperlink> o <hyperlink>Maravilla ancestral</hyperlink> sin descubrir que haya más cerca.",
   "name": "Ritual de clarividencia",
@@ -1585,7 +1830,7 @@
   "id": "abrazo_espiritual",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "En un área de 1 casilla(s):<bulletlist><bullet>Coloca nubes de <hyperlink>Niebla</hyperlink>.</bullet><bullet>Las unidades aliadas obtienen 2 <hyperlink>Efectos de estado positivo</hyperlink> al azar.</bullet>",
+  "description": "En un área de 1 casilla(s):<bulletlist><bullet>Coloca nubes de <hyperlink>Niebla</hyperlink>.</bullet><bullet>Las unidades aliadas obtienen 2 <hyperlink>Efectos de estado positivo</hyperlink> al azar.</bullet></bulletlist>",
   "name": "Abrazo espiritual",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1597,7 +1842,7 @@
   "id": "pentagramas_de_la_bruma",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>La habilidad Bendición espiritual.</bullet>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>La habilidad Bendición espiritual.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -2156,10 +2401,106 @@
   "id": "caminante_de_la_penumbra",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "Las criaturas de la raza objetivo se convierten en seres umbríos, lo que otorga:<bulletlist><bullet>El tipo de unidad Demonio umbrío.</bullet><bullet>Flotante.</bullet><bullet>Movimiento veloz.<bulletlist><br></br><br></br>Las unidades montadas pierden sus monturas.<br></br><br></br>Los héroes pierden sus ranuras de equipamiento de montura y pierna.<br></br><br></br>Esta transformación es incompatible con Alma pura.</bullet>",
+  "description": "Las criaturas de la raza objetivo se convierten en seres umbríos, lo que otorga:<bulletlist><bullet>El tipo de unidad Demonio umbrío.</bullet><bullet>Flotante.</bullet><bullet>Movimiento veloz.<br></br><br></br>Las unidades montadas pierden sus monturas.<br></br><br></br>Los héroes pierden sus ranuras de equipamiento de montura y pierna.<br></br><br></br>Esta transformación es incompatible con Alma pura.</bullet></bulletlist>",
   "name": "Caminante de la penumbra",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906798,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "pergamino_de_conexión_astral",
+  "tactical": false,
+  "description": "Otorga a las unidades que no sean místicas ni de origen mágico:<bulletlist><bullet>Conexión astral.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unidad de protección"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Pergamino de conexión astral",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001B34"
+ },
+ {
+  "casting_cost": "60<mana></mana> 1<embalmedsacrifice></embalmedsacrifice> ",
+  "resid": 5003636906629,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
+  "id": "sacrificio_macabro",
+  "tactical": false,
+  "description": "Las unidades de los ejércitos aliados situadas en la provincia objetivo:<bulletlist><bullet>Recuperan todos los <hyperlink><hp></hp> Puntos de salud</hyperlink>.</bullet><bullet>Obtienen Camuflaje universal durante 3 <turn></turn> Turnos.</bullet><bullet>Obtienen +15 de <happiness></happiness> <hyperlink>Moral</hyperlink> hasta el final de su siguiente combate.</bullet><bullet>Obtienen +20 <hyperlink><hp></hp> Puntos de salud</hyperlink> hasta el final de su siguiente combate.</bullet></bulletlist>",
+  "name": "Sacrificio macabro",
+  "operation_point_cost": 60,
+  "icon": "0000048D00001A6E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636906616,
+  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de mejora</hyperlink>",
+  "id": "vals_de_la_muerte",
+  "tactical": true,
+  "description": "La unidad aliada objetivo:<bulletlist><bullet>Recupera sus <hyperlink>Puntos de acción</hyperlink> y salud.</bullet><bullet>Obtiene Resurgimiento.</bullet><bullet>Obtiene Condenación, y muere al final de este turno.</bullet></bulletlist>",
+  "name": "Vals de la muerte",
+  "operation_point_cost": 15,
+  "icon": "0000048D00001A6A"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906609,
+  "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
+  "id": "marca_de_la_secta_de_la_muerte",
+  "tactical": false,
+  "description": "Otorga a las unidades que no sean oscuras:<bulletlist><bullet>Poder de la muerte.</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> Unidad de protección"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> Unidad a distancia"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> Unidad de asta"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
+   },
+   {
+    "requisite": "<unitShock></unitShock> Unidad de choque"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unidad de magia de combate"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> Unidad de lucha"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
+   }
+  ],
+  "name": "Marca de la secta de la muerte",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001A66"
  },
  {
   "casting_cost": "20<mana></mana> ",
@@ -2454,7 +2795,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de mundo</hyperlink>",
   "id": "conjurar_portal_de_invocación",
   "tactical": false,
-  "description": "Conjura un portal de invocación en una casilla vacía en la <hyperlink>Provincia</hyperlink> objetivo. Este edificio:<bulletlist><bullet>Permite lanzar hechizos de invocación en él o al estar adyacente a él.</bullet><bullet>Proporciona visión en un área de 5 casilla(s).</bullet></bulletlist>",
+  "description": "Conjura un portal de invocación en una casilla vacía en la <hyperlink>Provincia</hyperlink> objetivo. Este edificio:<bulletlist><bullet>Permite lanzar hechizos de invocación en él o al estar adyacente a él.</bullet><bullet>Proporciona visión en un área de 5 casilla(s).</bullet><bullet>Las unidades de esta provincia reciben una<hyperlink>regeneración</hyperlink> de +15 <hyperlink><hp></hp> Puntos de salud</hyperlink> por <turn></turn><hyperlink>Turno</hyperlink>.</bullet><bullet>Durante el combate en esta provincia aliada, lanzar <casttactical></casttactical> Hechizos de invocación de combate cuesta un 20 % menos.</bullet></bulletlist>",
   "name": "Conjurar portal de invocación",
   "operation_point_cost": 60,
   "icon": "0000048D000007A6"
@@ -2579,7 +2920,7 @@
   "id": "kits_de_mejora",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>La habilidad Sobrecargar, que puede otorgar Sobrecarga a una unidad Artefacto hasta el final de la batalla.</bullet>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>La habilidad Sobrecargar, que puede otorgar Sobrecarga a una unidad Artefacto hasta el final de la batalla.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unidad de apoyo"
@@ -2826,7 +3167,7 @@
   "id": "golpes_reforzados",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen +1 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>El tercer ataque en un turno tiene una probabilidad inicial del 60 % de infligir Aturdimiento durante 1 <turn></turn> Turno.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> de las unidades encantadas:<bulletlist><bullet>Infligen +1 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>El tercer ataque en un turno tiene una probabilidad inicial del 60 % de infligir Aturdimiento durante 1 <turn></turn> Turno.</bullet></bulletlist><br></br>El encantamiento no funciona con unidades que no tengan un ataque cuerpo a cuerpo básico de repetición.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -2904,10 +3245,21 @@
   "id": "transformación_en_naga",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "La raza objetivo recibe la forma de Naga, lo que otorga:<bulletlist><bullet>Movimiento veloz.</bullet><bullet>Anfibio.</bullet><bullet>Deslizamiento.</bullet><bullet>Inmunidad a Electrificación.</bullet><bullet>+2 de <defenseblight></defenseblight> <hyperlink>Resistencia a la decadencia</hyperlink>.</bullet><bullet>+2 de <defenselightning></defenselightning> <hyperlink>Resistencia a la electricidad</hyperlink>.</bullet></bulletlist></bulletlist><br></br><br></br>Las unidades montadas pierden sus monturas.<br></br><br></br>Los héroes pierden sus ranuras de equipamiento de montura y pierna.",
+  "description": "La raza objetivo recibe la forma de Naga, lo que otorga:<bulletlist><bullet>Movimiento veloz.</bullet><bullet>Anfibio.</bullet><bullet>Deslizamiento.</bullet><bullet>Inmunidad a Electrificación.</bullet><bullet>+2 de <defenseblight></defenseblight> <hyperlink>Resistencia a la decadencia</hyperlink>.</bullet><bullet>+2 de <defenselightning></defenselightning> <hyperlink>Resistencia a la electricidad</hyperlink>.</bullet></bulletlist><br></br><br></br>Las unidades montadas pierden sus monturas.<br></br><br></br>Los héroes pierden sus ranuras de equipamiento de montura y pierna.",
   "name": "Transformación en Naga",
   "operation_point_cost": 600,
   "icon": "0000049700000598"
+ },
+ {
+  "casting_cost": "30<mana></mana> ",
+  "resid": 4982162064633,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ciudad</hyperlink>",
+  "id": "explotación_tiránica",
+  "tactical": false,
+  "description": "Ciudad vasalla objetivo:<bulletlist><bullet>Ya no obtiene <hyperlink><allegiance></allegiance>Lealtad</hyperlink>.</bullet><bullet>Las ganancias por vasallaje aumentan un +20 % por cada punto de ganancias de <hyperlink><allegiance></allegiance>Lealtad</hyperlink>.</bullet></bulletlist>",
+  "name": "Explotación tiránica",
+  "operation_point_cost": 30,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -3134,7 +3486,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de mundo prolongado</hyperlink>",
   "id": "recolección_de_almas",
   "tactical": false,
-  "description": "<bulletlist><bullet>Obtienes ganancias de +10 <souls></souls> <hyperlink>Almas</hyperlink>.</bullet><bullet>Cuesta 30 de <gold></gold> <hyperlink>Oro</hyperlink> de mantenimiento.<bulletlist></bullet>",
+  "description": "<bulletlist><bullet>Obtienes ganancias de +10 <souls></souls> <hyperlink>Almas</hyperlink>.</bullet><bullet>Cuesta 30 de <gold></gold> <hyperlink>Oro</hyperlink> de mantenimiento.</bullet></bulletlist>",
   "name": "Recolección de almas",
   "operation_point_cost": 45,
   "icon": "0000041B000016EF"
@@ -3607,7 +3959,7 @@
   "tactical": false,
   "description": "Invoca un ejército entero de unidades no muertas de nivel bajo en la casilla del mundo seleccionada como objetivo.",
   "name": "Invocar ejército no muerto",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "icon": "0000041B00001768",
   "summoned_units": [
    {
@@ -3617,7 +3969,7 @@
     "slug": "mago_esqueleto"
    },
    {
-    "slug": "arma_de_asta_esqueleto"
+    "slug": "milicia_esqueleto"
    },
    {
     "slug": "guerrero_esqueleto"
@@ -4332,7 +4684,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
   "id": "tormenta_de_polvo",
   "tactical": true,
-  "description": "Las unidades enemigas situadas en un área de 2 casilla(s):<bulletlist><bullet>Reciben 10 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de <hyperlink>cegarse</hyperlink> durante 1 <turn></turn> Turnos.</bullet>",
+  "description": "Las unidades enemigas situadas en un área de 2 casilla(s):<bulletlist><bullet>Reciben 10 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet><bullet>Tienen una probabilidad inicial del 90 % de <hyperlink>cegarse</hyperlink> durante 1 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Tormenta de polvo",
   "operation_point_cost": 20,
   "icon": "0000041B00000FD0"
@@ -4606,7 +4958,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "foco_infernal",
   "tactical": false,
-  "description": "Cuando otra unidad muere en combate, otorga a las unidades encantadas:<bulletlist><bullet>Poderío infernal durante3 <turn></turn> Turnos.</bullet><bullet>+5 de <happiness></happiness> <hyperlink>Moral</hyperlink>.</bullet></bulletlist><br></br>No se activa con la muerte de unidades de Invocaciones de combate, Torres, ni Asedio.</bulletlist>",
+  "description": "Cuando otra unidad muere en combate, otorga a las unidades encantadas:<bulletlist><bullet>Poderío infernal durante3 <turn></turn> Turnos.</bullet><bullet>+5 de <happiness></happiness> <hyperlink>Moral</hyperlink>.<br></br>No se activa con la muerte de unidades de Invocaciones de combate, Torres ni Asedio.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unidad a distancia"
@@ -4787,7 +5139,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
   "id": "crear_horror_óseo",
   "tactical": false,
-  "description": "Fusiona dos unidades <hyperlink>Arma de asta esqueleto</hyperlink> para crear <hyperlink>un Horror óseo</hyperlink>.",
+  "description": "Fusiona dos unidades <hyperlink>Milicia esqueleto</hyperlink> para crear <hyperlink>un Horror óseo</hyperlink>.",
   "name": "Crear horror óseo",
   "operation_point_cost": 30,
   "icon": "0000041B000016E7",
@@ -4831,7 +5183,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
   "id": "ataúd_glacial",
   "tactical": true,
-  "description": "Objetivo enemigo:<bulletlist><bullet>Recibe 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Tiene una probabilidad inicial del 90 % de <hyperlink>congelarse</hyperlink>. Si no surte efecto, inflige el estado Ralentización.</bullet></bulletlist>",
+  "description": "Objetivo enemigo:<bulletlist><bullet>Recibe 10 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Tiene una probabilidad inicial del 90 % de <hyperlink>congelarse</hyperlink>. Si no surte efecto, inflige el estado Vulnerabilidad de estado.</bullet></bulletlist>",
   "name": "Ataúd glacial",
   "operation_point_cost": 20,
   "icon": "0000041B000006C0"
@@ -5085,6 +5437,18 @@
    },
    {
     "slug": "cría_de_kraken"
+   },
+   {
+    "slug": "gusano_de_sangre"
+   },
+   {
+    "slug": "murciélago_de_la_perdición"
+   },
+   {
+    "slug": "murciélago_ululante"
+   },
+   {
+    "slug": "serpiente_de_la_plaga"
    }
   ]
  },
@@ -5496,7 +5860,7 @@
   "id": "encantamiento_de_evolución_rápida",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+20 % de <xp></xp> <hyperlink>Experiencia</hyperlink> de los combates.</bullet><bullet>Deslizamiento si son de nivel I o II, y se curan una vez por batalla si sus <hyperlink><hp></hp> Puntos de salud</hyperlink> llegan a cero.</bullet></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+20 % de <xp></xp> <hyperlink>Experiencia</hyperlink> de los combates.</bullet><bullet>Deslizamiento, y se curan una vez por batalla si sus <hyperlink><hp></hp> Puntos de salud</hyperlink> llegan a cero.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Unidades que evolucionan"
@@ -5592,7 +5956,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de terraformación</hyperlink>",
   "id": "crecimiento_hechizado",
   "tactical": false,
-  "description": "La <hyperlink>Ciudad</hyperlink> aliada objetivo obtiene:<bulletlist><bullet>Cada <turn></turn><hyperlink>Turno</hyperlink>, 1 <hyperlink>Provincias</hyperlink> dentro del <hyperlink>Dominio</hyperlink> o adyacentes a él:<bulletlist></bullet><bullet>Obtienen <hyperlink>Pradera</hyperlink> y <hyperlink>Bosque</hyperlink> si se encuentran en la superficie o <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Bosque de champiñones</hyperlink> si se encuentran en el subterráneo.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet><bullet>Las provincias dentro del dominio con praderas, bosques, campos de champiñones o bosques de champiñones obtienen: +2 de <food></food> <hyperlink>Comida</hyperlink>, +2 de <structureprod></structureprod> <hyperlink>Producción</hyperlink> y +2 de <unitprod></unitprod> <hyperlink>Reclutamiento</hyperlink>.</bullet></bulletlist>",
+  "description": "La <hyperlink>Ciudad</hyperlink> aliada objetivo obtiene:<bulletlist><bullet>Cada <turn></turn><hyperlink>Turno</hyperlink>, 1 <hyperlink>Provincias</hyperlink> dentro del <hyperlink>Dominio</hyperlink> o adyacentes a él:<bulletlist></bullet><bullet>Obtienen <hyperlink>Pradera</hyperlink> y <hyperlink>Bosque</hyperlink> si se encuentran en la superficie o <hyperlink>Campos de champiñones</hyperlink> y <hyperlink>Bosque de champiñones</hyperlink> si se encuentran en el subterráneo.</bullet><bullet>Pierden <hyperlink>Abismo</hyperlink>, <hyperlink>Pantano</hyperlink>, <hyperlink>Arena</hyperlink>, <hyperlink>Nevado</hyperlink>, <hyperlink>Hielo</hyperlink>, <hyperlink>Tierras cenicientas</hyperlink> y <hyperlink>Penumbra</hyperlink>.</bullet><bullet>Las provincias dentro del dominio con praderas, bosques, campos de champiñones o bosques de champiñones obtienen: +2 de <food></food> <hyperlink>Comida</hyperlink>, +2 de <structureprod></structureprod> <hyperlink>Producción</hyperlink> y +2 de <unitprod></unitprod> <hyperlink>Reclutamiento</hyperlink>.</bullet></bulletlist></bulletlist>",
   "name": "Crecimiento hechizado",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5945,7 +6309,7 @@
   "tactical": false,
   "description": "Invoca <hyperlink>un Segador</hyperlink>, una Unidad mítica de nivel V que mata al instante a las unidades y se vuelve más fuerte cuando mueren los enemigos.",
   "name": "Invocar segador",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "segador"
@@ -6471,7 +6835,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Hechizo de ejército aliado</hyperlink>",
   "id": "botín_natural",
   "tactical": false,
-  "description": "Todas las unidades aliadas del Provincia objetivo obtienen +15 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos y se curan 15 <hyperlink><hp></hp> Puntos de salud</hyperlink> en dominios aliados y neutrales durante los próximos 2 <turn></turn> Turnos del <hyperlink>Mapa del mundo</hyperlink>.",
+  "description": "Todas las unidades aliadas del Provincia objetivo obtienen +15 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos y <hyperlink>recuperan</hyperlink> 15 <hyperlink><hp></hp> Puntos de salud</hyperlink> en dominios aliados y neutrales durante los próximos 2 <turn></turn> Turnos del <hyperlink>Mapa del mundo</hyperlink>.",
   "name": "Botín natural",
   "operation_point_cost": 120,
   "icon": "0000041B00000DBB"
@@ -6599,7 +6963,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño</hyperlink>",
   "id": "matanza_sacrificial",
   "tactical": true,
-  "description": "La unidad aliada objetivo explota y las unidades enemigas situadas en un área de 2 casillas:<bulletlist><bullet>Reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> más 5 <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> por cada nivel de la unidad sacrificada.</bullet><bullet>Sufre <hyperlink>un Efecto de estado negativo</hyperlink> aleatorio por cada nivel de la unidad sacrificada.</bullet>",
+  "description": "La unidad aliada objetivo explota y las unidades enemigas situadas en un área de 2 casillas:<bulletlist><bullet>Reciben 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> más 5 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> por cada nivel de la unidad sacrificada.</bullet><bullet>Sufre <hyperlink>un Efecto de estado negativo</hyperlink> aleatorio por cada nivel de la unidad sacrificada.</bullet></bulletlist>",
   "name": "Matanza sacrificial",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6637,7 +7001,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "armas_de_sangre_enardecida",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+5 de <happiness></happiness> <hyperlink>Moral</hyperlink> y +1 de Fortaleza cuando matan a una unidad.</bullet><bullet>Los ataques básicos <hyperlink>Cuerpo a cuerpo</hyperlink> y <hyperlink>Alcance físico</hyperlink> obtienen +2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink>.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink> a sus ataques básicos.</bullet><bullet>Al matar, los enemigos adyacentes al objetivo reciben 2 de Sangrado durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -6771,9 +7135,9 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492480453,
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
-  "id": "estigma_de_la_furia",
+  "id": "marca_de_la_tiranía",
   "tactical": false,
-  "description": "Otorga a las unidades que no son oscuras:<bulletlist><bullet>Matanza selectiva, que:<bulletlist></bullet><bullet>Otorga a los atacantes a distancia una probabilidad de infligir Debilitamiento.</bullet><bullet>Aumenta el daño que infligen los atacantes cuerpo a cuerpo a las unidades <GLOBAL.PROPERTIES.WEAKENED>debilitadas</hyperlink>.</bullet></bulletlist></bulletlist>",
+  "description": "Otorga a las unidades que no sean oscuras:<bulletlist><bullet>Secta de la tiranía.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"
@@ -6800,7 +7164,7 @@
     "requisite": "<unitSkirmisher></unitSkirmisher> Unidad combatiente"
    }
   ],
-  "name": "Estigma de la furia",
+  "name": "Marca de la tiranía",
   "operation_point_cost": 90,
   "icon": "000003E300005352"
  },
@@ -6810,21 +7174,10 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de debilitación</hyperlink>",
   "id": "maldición_perniciosa",
   "tactical": true,
-  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) obtienen:<bulletlist><bullet>Defensa desgarrada.</bullet><bullet>Resistencia desgarrada.</bullet><bullet>Debilitamiento.</bullet></bulletlist>",
+  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) obtienen:<bulletlist><bullet>Una probabilidad inicial del 90 % de infligir 2 de Debilitamiento durante 3 <turn></turn> Turnos.</bullet><bullet>Una probabilidad inicial del 90 % de infligir 2 de Infortunio durante 3 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Maldición perniciosa",
   "operation_point_cost": 15,
   "icon": "000003E300005354"
- },
- {
-  "casting_cost": "10<mana></mana> ",
-  "resid": 4273492480429,
-  "spellType": "<casttactical></casttactical> <hyperlink>Hechizo de daño/debilitación</hyperlink>",
-  "id": "grilletes_de_hielo",
-  "tactical": true,
-  "description": "La unidad enemiga objetivo y alguna más situada a 2 casillas de distancia:<bulletlist><bullet>Reciben 14 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Sufren Ralentización.</bullet></bulletlist>",
-  "name": "Grilletes de hielo",
-  "operation_point_cost": 15,
-  "icon": "000003E300005353"
  },
  {
   "casting_cost": "100<mana></mana> ",
@@ -6976,7 +7329,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink> Conjuro de unidad</hyperlink>",
   "id": "armas_de_explosión_ígnea",
   "tactical": false,
-  "description": "Otorga a las unidades encantadas: <bulletlist><bullet>+20 % de <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink>.</bullet><bullet>Cuando esta unidad mata a otra unidad:<bulletlist></bullet><bullet>La unidad muerta explota, lo que inflige 20 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> a las unidades enemigas adyacentes.</bullet></bulletlist></bulletlist>",
+  "description": "Otorga a las unidades encantadas:<bulletlist><bullet>+20 % de <hyperlink><crit></crit>Probabilidad de golpe crítico</hyperlink>.</bullet><bullet>Matar a unidad provocará que explote, y los enemigos adyacentes:<bulletlist></bullet><bullet>Reciben 15 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.</bullet><bullet>Reciben 2 de Quemadura durante 3 <turn></turn> Turnos.</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unidad de protección"

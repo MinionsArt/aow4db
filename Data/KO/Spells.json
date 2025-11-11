@@ -189,7 +189,7 @@
   "id": "타락한_축복",
   "DLC": "ELDRITCHREALMS ",
   "tactical": true,
-  "description": "대상 적 유닛:<bulletlist><bullet>모든 <hyperlink>긍정적인 상태 효과</hyperlink> 상실</bullet><bullet>상실한 상태 효과의 상태 효과 상쇄가 존재하는 경우, 해당 유닛이 <hyperlink>부정적인 상태 효과</hyperlink> 중첩 1개 획득<bulletlist></bullet>",
+  "description": "대상 적 유닛:<bulletlist><bullet>모든 <hyperlink>긍정적인 상태 효과</hyperlink> 상실</bullet><bullet>상실한 상태 효과의 상태 효과 상쇄가 존재하는 경우, 해당 유닛이 <hyperlink>부정적인 상태 효과</hyperlink> 중첩 획득</bullet></bulletlist>",
   "name": "타락한 축복",
   "operation_point_cost": 25,
   "icon": "0000049C0000008C"
@@ -246,6 +246,252 @@
   "name": "그늘 균열",
   "operation_point_cost": 100,
   "icon": "0000049C0000003B"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586548,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
+  "id": "진혈_집중",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "영향을 받은 유닛의 <hyperlink>마법</hyperlink> 공격이 획득:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet>60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태 유발</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitSupport></unitSupport> 지원 유닛"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> 전투 마법사 유닛"
+   }
+  ],
+  "name": "진혈 집중",
+  "operation_point_cost": 80,
+  "icon": "0000049700003292"
+ },
+ {
+  "casting_cost": "150<gold></gold> 300<mana></mana> ",
+  "resid": 5046586586294,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>소환 주문</hyperlink>",
+  "id": "피의_집정관_소환",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "강력한 지원 능력 및 등급이 낮은 유닛들을 파괴하는 공격 능력을 지닌 신화 유닛, <hyperlink>피의 집정관을</hyperlink> 소환합니다.",
+  "name": "피의 집정관 소환",
+  "operation_point_cost": 300,
+  "summoned_units": [
+   {
+    "slug": "피의_집정관"
+   }
+  ]
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586586275,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
+  "id": "피의_귀족의_망토",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "영향을 받은 유닛에 부여<bulletlist><bullet>응혈</bullet><bullet>전투 시작 시, 소환된 대상이 아닌 1, 2등급 우호 유닛 하나당:<bulletlist></bullet><bullet><hyperlink><hp></hp> 체력</hyperlink> +5</bullet><bullet>전투 시 치유받을 때 회복량 +5%</bullet></bulletlist></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "3등급"
+   },
+   {
+    "requisite": "4등급"
+   },
+   {
+    "requisite": "5등급"
+   }
+  ],
+  "name": "피의 귀족의 망토",
+  "operation_point_cost": 140,
+  "icon": "0000049700003431"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586204,
+  "spellType": "<casttactical></casttactical> <hyperlink>전투 인챈트</hyperlink>",
+  "id": "핏빛_군주의_눈물",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "시전할 때 및 다음 2 <turn></turn> 턴 동안:<bulletlist><bullet>최대 3기의 적 유닛:<bulletlist></bullet><bullet>10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 피의 기생충 상태 획득</bullet></bulletlist><bullet>최대 3기의 우호 유닛:<bulletlist></bullet><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 10 회복</bullet><bullet>3 <turn></turn> 턴 동안 행운 상태 획득</bullet></bulletlist></bulletlist>",
+  "name": "핏빛 군주의 눈물",
+  "operation_point_cost": 35,
+  "icon": "000004970000342D"
+ },
+ {
+  "casting_cost": "600<mana></mana> ",
+  "resid": 5046586586172,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>대규모 종족 변신</hyperlink>",
+  "id": "오래된_피의_선물",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "의식으로 유닛들에게 집정관의 피를 흡수시켜 부여:<bulletlist><bullet>언데드 유닛 유형</bullet><bullet>생혈 흡수 상태</bullet><bullet>기본 공격 시 60%의 기본 확률로 3 <turn></turn> 턴 동안 피의 기생충 상태 유발, 단발성 공격일 경우 효과 증가</bullet></bulletlist>",
+  "name": "오래된 피의 선물",
+  "operation_point_cost": 600,
+  "icon": "0000049700003439"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586586001,
+  "spellType": "<casttactical></casttactical> <hyperlink>피해/디버프 주문</hyperlink>",
+  "id": "고통_파동",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "반경 1 헥스 내 적 유닛:<bulletlist><bullet>40 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 전투가 종료될 때까지 3 고통 중첩 획득. 실패 시, 대신 1 고통 중첩 유발</bullet></bulletlist>",
+  "name": "고통 파동",
+  "operation_point_cost": 35,
+  "icon": "0000049700003366"
+ },
+ {
+  "casting_cost": "140<mana></mana> ",
+  "resid": 5046586585990,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
+  "id": "고통의_투사체",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "영향을 받은 유닛의 <hyperlink>물리 원거리</hyperlink>, <hyperlink>마법</hyperlink> 공격:<bulletlist><bullet>전투가 종료될 때까지 고통 상태 유발</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitRanged></unitRanged> 원거리 유닛"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> 지원 유닛"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> 전투 마법사 유닛"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> 척후병 유닛"
+   }
+  ],
+  "name": "고통의 투사체",
+  "operation_point_cost": 140,
+  "icon": "0000049700003362"
+ },
+ {
+  "casting_cost": "350<mana></mana> ",
+  "resid": 5046586585968,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>소규모 종족 변신</hyperlink>",
+  "id": "고통의_수용",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "대상 종족은 고통을 받아들임, 공격받을 때 다음을 획득:<bulletlist><bullet><happiness></happiness> <hyperlink>사기</hyperlink> 2</bullet><bullet>무작위 긍정적인 상태 효과</bullet></bulletlist>",
+  "name": "고통의 수용",
+  "operation_point_cost": 350,
+  "icon": "000004970000335A"
+ },
+ {
+  "casting_cost": "150<mana></mana> ",
+  "resid": 5046586585803,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>소규모 종족 변신</hyperlink>",
+  "id": "살갗에_새겨진_룬",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "동족의 살갗에 불경한 문양을 새겨 부여:<bulletlist><bullet><hyperlink>세계 지도</hyperlink>에 있을 때 <hyperlink><hp></hp> 체력</hyperlink> 재생 +5</bullet><bullet>공격 및 <hyperlink>디버프</hyperlink> 능력:<bulletlist></bullet><bullet>대상에 부여된 출혈 상태 중첩 하나당 1 <statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink> 무시</bullet></bulletlist></bulletlist>",
+  "name": "살갗에 새겨진 룬",
+  "operation_point_cost": 150,
+  "icon": "000004970000329E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5046586585798,
+  "spellType": "<casttactical></casttactical> <hyperlink>피해 주문</hyperlink>",
+  "id": "유혈의_의식",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "대상 우호 유닛이 막을 수 없는 5 <damagePhysical></damagePhysical> <hyperlink>물리 피해를</hyperlink> 받음, 이후 반경 2 헥스 내 모든 적 유닛:<bulletlist><bullet>10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>3 <turn></turn> 턴 동안 2 출혈 상태 획득</bullet></bulletlist>",
+  "name": "유혈의 의식",
+  "operation_point_cost": 15,
+  "icon": "0000049700003296"
+ },
+ {
+  "casting_cost": "15<mana></mana> ",
+  "resid": 5046586585790,
+  "spellType": "<casttactical></casttactical> <hyperlink>버프 주문</hyperlink>",
+  "id": "생명_흡수의_의식",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": true,
+  "description": "대상 우호 유닛이 막을 수 없는 5 <damagePhysical></damagePhysical> <hyperlink>물리 피해를</hyperlink> 받음, 이후 인접 우호 유닛이 획득:<bulletlist><bullet>3 <turn></turn> 턴 동안 강화 상태</bullet><bullet>3 <turn></turn> 턴 동안 생명력 갈취 상태</bullet></bulletlist>",
+  "name": "생명 흡수의 의식",
+  "operation_point_cost": 20,
+  "icon": "0000049700003286"
+ },
+ {
+  "casting_cost": "80<mana></mana> ",
+  "resid": 5046586585776,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
+  "id": "흡혈_칼날",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "영향을 받은 유닛의 기본 <hyperlink>근접</hyperlink> 공격:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet>출혈 상태를 갖춘 채 유닛을 타격할 경우, <hyperlink><temphp></temphp> 임시 체력</hyperlink> 2 회복</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> 방패 유닛"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> 폴암 유닛"
+   },
+   {
+    "requisite": "<unitShock></unitShock> 돌격 유닛"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> 싸움꾼 유닛"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> 척후병 유닛"
+   }
+  ],
+  "name": "흡혈 칼날",
+  "operation_point_cost": 80,
+  "icon": "000004970000328A"
+ },
+ {
+  "casting_cost": "4<thralls></thralls> ",
+  "resid": 5046586585066,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>적 군대 주문</hyperlink>",
+  "id": "생체_해부_의식",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "대상 적 군대가 20 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 피해를 받습니다. 이후 <knowledge></knowledge> <hyperlink>지식을</hyperlink> +150 획득합니다.",
+  "name": "생체 해부 의식",
+  "operation_point_cost": 150,
+  "icon": "0000049700002FEB"
+ },
+ {
+  "casting_cost": "12<thralls></thralls> ",
+  "resid": 5046586584681,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>세계 주문</hyperlink>",
+  "id": "혈월_의식",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "다음 10 <hyperlink>세계 지도</hyperlink> <turn></turn> 턴 동안 흡혈귀:<bulletlist><bullet>무광 약점에 의해 고통받지 않음</bullet><bullet>세계 지도에서 <hyperlink><hp></hp> 체력</hyperlink> +15 재생</bullet><bullet>피해 +20%</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet></bulletlist>",
+  "name": "혈월 의식",
+  "operation_point_cost": 300,
+  "icon": "0000049700002E66"
+ },
+ {
+  "casting_cost": "6<thralls></thralls> ",
+  "resid": 5046586584666,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>테라포밍 주문</hyperlink>",
+  "id": "모독_의식",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "대상 및 인접 지상 <hyperlink>구획</hyperlink>:<bulletlist><bullet><hyperlink>무광</hyperlink> 획득</bullet><bullet>적 군대가 20 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 받음</bullet></bulletlist>",
+  "name": "모독 의식",
+  "operation_point_cost": 275,
+  "icon": "0000049700002E5B"
+ },
+ {
+  "casting_cost": "2<thralls></thralls> ",
+  "resid": 5046586584657,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
+  "id": "피의_전이_의식",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "대상 우호 군대 내부:<bulletlist><bullet>흡혈귀 체력을 최대 <hyperlink><hp></hp> 체력</hyperlink>의 50%만큼 회복</bullet><bullet>비 흡혈귀 체력을 <hyperlink><hp></hp> 체력</hyperlink>의 20%만큼 회복</bullet></bulletlist>",
+  "name": "피의 전이 의식",
+  "operation_point_cost": 80,
+  "icon": "0000049700002E52"
  },
  {
   "casting_cost": "120<mana></mana> ",
@@ -373,7 +619,7 @@
   "tactical": false,
   "description": "부패와 타락을 유발하는 전투 마법사 유닛, <hyperlink>타락 천사를</hyperlink> 소환합니다.",
   "name": "타락 천사 소환",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "타락_천사"
@@ -428,7 +674,7 @@
   "id": "승천의_부활",
   "DLC": "ARCHONPROPHECY ",
   "tactical": true,
-  "description": "사망했으며 영웅도 아니고 천상도 아닌 유닛을 대상으로:<bulletlist><bullet>전투가 종료될 때까지 시전자의 지배를 받는 <hyperlink>비질으로</hyperlink> 부활</bullet><bullet>부활 시 반경 2 헥스 내 모든 우호 유닛의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 20 회복</bullet>",
+  "description": "사망했으며 영웅도 아니고 천상도 아닌 유닛을 대상으로:<bulletlist><bullet>전투가 종료될 때까지 시전자의 지배를 받는 <hyperlink>비질으로</hyperlink> 부활</bullet><bullet>부활 시 반경 2 헥스 내 모든 우호 유닛의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 20 회복</bullet></bulletlist>",
   "name": "승천의 부활",
   "operation_point_cost": 40,
   "icon": "0000049700002B84"
@@ -541,7 +787,7 @@
   "id": "고결한_영혼",
   "DLC": "ARCHONPROPHECY ",
   "tactical": false,
-  "description": "대상 종족이 약해진 순간에 힘을 불어넣어 다음을 부여:<bulletlist><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> +2</bullet><bullet>해당 유닛의 체력이 최대 <hyperlink><hp></hp> 체력</hyperlink>의 60% 아래일 때:<bulletlist></bullet><bullet><hyperlink>사상자</hyperlink>의 50% 무시</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet></bulletlist>",
+  "description": "대상 종족이 약해진 순간에 힘을 불어넣어 다음을 부여:<bulletlist><bullet><defensespirit></defensespirit> <hyperlink>영혼 저항</hyperlink> +2</bullet><bullet>해당 유닛의 체력이 최대 <hyperlink><hp></hp> 체력</hyperlink>의 60% 아래일 때:<bulletlist></bullet><bullet><hyperlink>사상자</hyperlink>의 50% 무시</bullet><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet></bulletlist></bulletlist>",
   "name": "고결한 영혼",
   "operation_point_cost": 250,
   "icon": "0000049700002A9E"
@@ -716,7 +962,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
   "id": "마법선_집중",
   "tactical": false,
-  "description": "영향을 받은 유닛이 획득:<bulletlist><bullet>턴 시작 시, 유닛이 이동할 때까지 다음을 보유:<bulletlist></bullet><bullet>피해 +30%</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet></bulletlist>",
+  "description": "영향을 받은 유닛이 획득:<bulletlist><bullet>턴 시작 시, 유닛이 이동할 때까지 다음을 보유:<bulletlist></bullet><bullet>피해 +30%</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> 지원 유닛"
@@ -772,7 +1018,7 @@
   "id": "수정_충돌",
   "DLC": "GIANTKINGS ",
   "tactical": true,
-  "description": "반경 1 헥스 내 적 유닛:<bulletlist><bullet>15 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>15 <damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 2 <turn></turn> 턴 동안 격발성 전하 상태 유발</bullet>",
+  "description": "반경 1 헥스 내 적 유닛:<bulletlist><bullet>15 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>15 <damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 2 <turn></turn> 턴 동안 격발성 전하 상태 유발</bullet></bulletlist>",
   "name": "수정 충돌",
   "operation_point_cost": 35,
   "icon": "00000497000015BB"
@@ -946,7 +1192,7 @@
   "id": "축복받은_갑옷",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "영향을 받은 유닛이 획득:<bulletlist><bullet>내면의 은총 상태</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +2</bullet></bulletlist>",
+  "description": "영향을 받은 유닛이 획득:<bulletlist><bullet>내면의 은총 상태</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
@@ -992,7 +1238,7 @@
   "id": "거대한_보호",
   "DLC": "WAYSOFWAR ",
   "tactical": true,
-  "description": "반경 2 헥스 내 우호 유닛이 획득:<bulletlist><bullet>2 은총 상태</bullet><bullet>3 <turn></turn> 턴 동안 2 재생 상태</bullet><bullet>3 <turn></turn> 턴 동안 3 방어력 강화 상태</bullet><bullet>3 <turn></turn> 턴 동안 3 저항력 강화 상태</bullet></bulletlist>",
+  "description": "반경 2 헥스 내 우호 유닛이 획득:<bulletlist><bullet>2 은총 상태</bullet><bullet>3 <turn></turn> 턴 동안 2 재생 상태</bullet><bullet>3 <turn></turn> 턴 동안 2 방어력 강화 상태</bullet><bullet>3 <turn></turn> 턴 동안 2 저항력 강화 상태</bullet></bulletlist>",
   "name": "거대한 보호",
   "operation_point_cost": 40,
   "icon": "0000049700001351"
@@ -1227,7 +1473,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
   "id": "흑요석_무기",
   "tactical": false,
-  "description": "영향을 받은 유닛의 기본 <hyperlink>근접</hyperlink>, <hyperlink>물리 원거리</hyperlink> 공격이 획득:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet>60%의 기본 확률로 출혈 상태 유발</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "description": "영향을 받은 유닛의 기본 <hyperlink>근접</hyperlink>, <hyperlink>물리 원거리</hyperlink> 공격이 획득:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet>60%의 기본 확률로 3 <turn></turn> 턴 동안 출혈 상태 유발</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
@@ -1257,7 +1503,6 @@
   "resid": 5046586576384,
   "spellType": "<caststrategic></caststrategic> <hyperlink>세계 주문</hyperlink>",
   "id": "천리안의_의식",
-  "DLC": "ELDRITCHREALMS ",
   "tactical": false,
   "description": "가장 가까운 미발견 <hyperlink>침략지</hyperlink> 또는 <hyperlink>고대 불가사의를</hyperlink> 밝힙니다.",
   "name": "천리안의 의식",
@@ -1585,7 +1830,7 @@
   "id": "요정의_포옹",
   "DLC": "PRIMALFURY ",
   "tactical": true,
-  "description": "반경 1 헥스 내:<bulletlist><bullet><hyperlink>안개</hyperlink> 구름 배치</bullet><bullet>우호 유닛이 2개의 무작위 <hyperlink>긍정적인 상태 효과</hyperlink> 획득</bullet>",
+  "description": "반경 1 헥스 내:<bulletlist><bullet><hyperlink>안개</hyperlink> 구름 배치</bullet><bullet>우호 유닛이 2개의 무작위 <hyperlink>긍정적인 상태 효과</hyperlink> 획득</bullet></bulletlist>",
   "name": "요정의 포옹",
   "operation_point_cost": 20,
   "icon": "0000049700000530"
@@ -1597,7 +1842,7 @@
   "id": "안개의_지팡이",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>요정의 축복 능력</bullet>",
+  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>요정의 축복 능력</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> 지원 유닛"
@@ -2156,10 +2401,106 @@
   "id": "암흑_횡단자",
   "DLC": "ELDRITCHREALMS ",
   "tactical": false,
-  "description": "대상 종족을 그늘의 존재로 바꾸어 다음을 부여:<bulletlist><bullet>그늘 악마 유닛 유형</bullet><bullet>부유</bullet><bullet>빠른 이동<bulletlist><br></br><br></br>탈것 유닛은 탈것을 상실합니다.<br></br><br></br>영웅은 탈것, 다리 장비 슬롯을 상실합니다.<br></br><br></br>해당 변화는 순수한 영혼과 양립할 수 없습니다.</bullet>",
+  "description": "대상 종족을 그늘의 존재로 바꾸어 다음을 부여:<bulletlist><bullet>그늘 악마 유닛 유형</bullet><bullet>부유</bullet><bullet>빠른 이동<br></br><br></br>탈것 유닛은 탈것을 상실합니다.<br></br><br></br>영웅은 탈것, 다리 장비 슬롯을 상실합니다.<br></br><br></br>해당 변신은 순수한 영혼과 양립할 수 없습니다.</bullet></bulletlist>",
   "name": "암흑 횡단자",
   "operation_point_cost": 600,
   "icon": "000004900000082F"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906798,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
+  "id": "영체_연결의_두루마리",
+  "tactical": false,
+  "description": "비 신화 및 비 마법 기원 유닛에 부여:<bulletlist><bullet>영체 연결 상태</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> 방패 유닛"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> 원거리 유닛"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> 폴암 유닛"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> 지원 유닛"
+   },
+   {
+    "requisite": "<unitShock></unitShock> 돌격 유닛"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> 전투 마법사 유닛"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> 싸움꾼 유닛"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> 척후병 유닛"
+   }
+  ],
+  "name": "영체 연결의 두루마리",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001B34"
+ },
+ {
+  "casting_cost": "60<mana></mana> 1<embalmedsacrifice></embalmedsacrifice> ",
+  "resid": 5003636906629,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
+  "id": "병적_희생",
+  "tactical": false,
+  "description": "대상 구획 내 우호 군대에 속한 유닛:<bulletlist><bullet>모든 <hyperlink><hp></hp> 체력</hyperlink> 회복</bullet><bullet>3 <turn></turn> 턴 동안 범용 위장 상태 획득</bullet><bullet>다음 전투가 끝날 때까지 <happiness></happiness> <hyperlink>사기</hyperlink> +15</bullet><bullet>다음 전투가 끝날 때까지 <hyperlink><hp></hp> 체력</hyperlink> +20</bullet></bulletlist>",
+  "name": "병적 희생",
+  "operation_point_cost": 60,
+  "icon": "0000048D00001A6E"
+ },
+ {
+  "casting_cost": "10<mana></mana> ",
+  "resid": 5003636906616,
+  "spellType": "<casttactical></casttactical> <hyperlink>버프 주문</hyperlink>",
+  "id": "죽음의_왈츠",
+  "tactical": true,
+  "description": "대상 우호 유닛:<bulletlist><bullet><hyperlink>행동 점수</hyperlink> 및 체력 회복</bullet><bullet>회생 상태 획득</bullet><bullet>해당 턴 종료 시 사망하는 파멸 상태 획득</bullet></bulletlist>",
+  "name": "죽음의 왈츠",
+  "operation_point_cost": 15,
+  "icon": "0000048D00001A6A"
+ },
+ {
+  "casting_cost": "90<mana></mana> ",
+  "resid": 5003636906609,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
+  "id": "죽음_교단의_표식",
+  "tactical": false,
+  "description": "비 어둠 유닛에 부여:<bulletlist><bullet>죽음에서 비롯된 힘 상태</bullet></bulletlist>",
+  "enchantment_requisites": [
+   {
+    "requisite": "<unitShield></unitShield> 방패 유닛"
+   },
+   {
+    "requisite": "<unitRanged></unitRanged> 원거리 유닛"
+   },
+   {
+    "requisite": "<unitPolearm></unitPolearm> 폴암 유닛"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> 지원 유닛"
+   },
+   {
+    "requisite": "<unitShock></unitShock> 돌격 유닛"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> 전투 마법사 유닛"
+   },
+   {
+    "requisite": "<unitFighter></unitFighter> 싸움꾼 유닛"
+   },
+   {
+    "requisite": "<unitSkirmisher></unitSkirmisher> 척후병 유닛"
+   }
+  ],
+  "name": "죽음 교단의 표식",
+  "operation_point_cost": 90,
+  "icon": "0000048D00001A66"
  },
  {
   "casting_cost": "20<mana></mana> ",
@@ -2454,7 +2795,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>세계 주문</hyperlink>",
   "id": "소환의_균열_소환",
   "tactical": false,
-  "description": "대상 <hyperlink>구획</hyperlink>의 빈 헥스에 소환의 균열 소환, 해당 건물:<bulletlist><bullet>해당 구획 및 인접 구획에 소환 주문 사용 가능</bullet><bullet>5 헥스 반경 시야 제공</bullet></bulletlist>",
+  "description": "대상 <hyperlink>구획</hyperlink>의 빈 헥스에 소환의 균열 소환, 해당 건물:<bulletlist><bullet>해당 구획 및 인접 구획에 소환 주문 사용 가능</bullet><bullet>반경 5 헥스 내 시야 제공</bullet><bullet>해당 구획 내 유닛이 매 <turn></turn> <hyperlink>턴</hyperlink>마다 <hyperlink><hp></hp> 체력을</hyperlink> +15만큼 추가로 <hyperlink>재생</hyperlink></bullet><bullet>해당 구획에서 전투를 진행할 경우, 아군의 <casttactical></casttactical> 전투 소환 주문 시전 비용 20% 감소</bullet></bulletlist>",
   "name": "소환의 균열 소환",
   "operation_point_cost": 60,
   "icon": "0000048D000007A6"
@@ -2579,7 +2920,7 @@
   "id": "수리_키트",
   "DLC": "EMPIRESANDASHES ",
   "tactical": false,
-  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>전투가 종료될 때까지 구성체 유닛에게 과충전 상태를 부여하는 과충전 능력</bullet>",
+  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>전투가 종료될 때까지 구성체 유닛에게 과충전 상태를 부여하는 과충전 능력</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> 지원 유닛"
@@ -2826,7 +3167,7 @@
   "id": "강화_타격",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "영향을 받은 유닛의 기본 <hyperlink>근접</hyperlink> 공격:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet>한 턴에 세 번째 공격 시 60%의 기본 확률로 1 <turn></turn> 턴 동안 기절 상태 유발</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "description": "영향을 받은 유닛의 기본 <hyperlink>근접</hyperlink> 공격:<bulletlist><bullet><damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +1</bullet><bullet>한 턴에 세 번째 공격 시 60%의 기본 확률로 1 <turn></turn> 턴 동안 기절 상태 유발</bullet></bulletlist><br></br>인챈트는 반복성 기본 근접 공격이 없는 유닛한테 적용되지 않습니다.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
@@ -2904,10 +3245,21 @@
   "id": "나가_변신",
   "DLC": "PRIMALFURY ",
   "tactical": false,
-  "description": "대상 유닛에 나가의 육체를 선사하며 부여:<bulletlist><bullet>빠른 이동 상태</bullet><bullet>수륙 양용 상태</bullet><bullet>빠져나가기 상태</bullet><bullet>감전 면역</bullet><bullet><defenseblight></defenseblight> <hyperlink>역병 저항</hyperlink> +2</bullet><bullet><defenselightning></defenselightning> <hyperlink>번개 저항</hyperlink> +2</bullet></bulletlist></bulletlist><br></br><br></br>탈것 유닛은 탈것을 상실합니다.<br></br><br></br>영웅은 탈것, 다리 장비 슬롯을 상실합니다.",
+  "description": "대상 유닛에 나가의 육체를 선사하며 부여:<bulletlist><bullet>빠른 이동 상태</bullet><bullet>수륙 양용 상태</bullet><bullet>빠져나가기 상태</bullet><bullet>감전 면역</bullet><bullet><defenseblight></defenseblight> <hyperlink>역병 저항</hyperlink> +2</bullet><bullet><defenselightning></defenselightning> <hyperlink>번개 저항</hyperlink> +2</bullet></bulletlist><br></br><br></br>탈것 유닛은 탈것을 상실합니다.<br></br><br></br>영웅은 탈것, 다리 장비 슬롯을 상실합니다.",
   "name": "나가 변신",
   "operation_point_cost": 600,
   "icon": "0000049700000598"
+ },
+ {
+  "casting_cost": "30<mana></mana> ",
+  "resid": 4982162064633,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>도시 주문</hyperlink>",
+  "id": "폭군의_착취",
+  "tactical": false,
+  "description": "대상 봉신 도시:<bulletlist><bullet><hyperlink><allegiance></allegiance>충성도</hyperlink> 획득 불가</bullet><bullet>대신 봉신 수입이 <hyperlink><allegiance></allegiance>충성도</hyperlink> 수입 하나당 +20% 증가 </bullet></bulletlist>",
+  "name": "폭군의 착취",
+  "operation_point_cost": 30,
+  "icon": "000003E300005353"
  },
  {
   "casting_cost": "30<mana></mana> ",
@@ -3134,7 +3486,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>지속 세계 주문</hyperlink>",
   "id": "영혼_수집",
   "tactical": false,
-  "description": "<bulletlist><bullet><souls></souls> <hyperlink>영혼</hyperlink> 수입이 +10 증가합니다.</bullet><bullet>30 <gold></gold> <hyperlink>금화를</hyperlink> 유지비로 소모합니다.<bulletlist></bullet>",
+  "description": "<bulletlist><bullet><souls></souls> <hyperlink>영혼</hyperlink> 수입이 +10 증가합니다.</bullet><bullet>30 <gold></gold> <hyperlink>금화를</hyperlink> 유지비로 소모합니다.</bullet></bulletlist>",
   "name": "영혼 수집",
   "operation_point_cost": 45,
   "icon": "0000041B000016EF"
@@ -3607,7 +3959,7 @@
   "tactical": false,
   "description": "대상 세계 지도 헥스에 낮은 등급의 언데드 유닛이 가득한 군대를 소환합니다.",
   "name": "언데드 군대 부활",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "icon": "0000041B00001768",
   "summoned_units": [
    {
@@ -3617,7 +3969,7 @@
     "slug": "스켈레톤_마법사"
    },
    {
-    "slug": "스켈레톤_폴암병"
+    "slug": "스켈레톤_민병대"
    },
    {
     "slug": "스켈레톤_전사"
@@ -4332,7 +4684,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>피해/디버프 주문</hyperlink>",
   "id": "모래_폭풍",
   "tactical": true,
-  "description": "반경 2 헥스 내 적 유닛:<bulletlist><bullet>10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태 유발</bullet>",
+  "description": "반경 2 헥스 내 적 유닛:<bulletlist><bullet>10 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 1 <turn></turn> 턴 동안 실명 상태 유발</bullet></bulletlist>",
   "name": "모래 폭풍",
   "operation_point_cost": 20,
   "icon": "0000041B00000FD0"
@@ -4606,7 +4958,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
   "id": "지옥불_집중",
   "tactical": false,
-  "description": "적 유닛이 전투 도중 사망할 때마다 인챈트가 적용된 유닛에 부여:<bulletlist><bullet>3 <turn></turn> 턴 동안 지옥불 권능 상태 부여</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> +5</bullet></bulletlist><br></br>전투 소환, 탑, 공성술 유닛이 사망할 때는 발동되지 않음</bulletlist>",
+  "description": "적 유닛이 전투 도중 사망할 때마다 영향을 받은 유닛에 부여:<bulletlist><bullet>3 <turn></turn> 턴 동안 지옥불 권능 상태 부여</bullet><bullet><happiness></happiness> <hyperlink>사기</hyperlink> +5<br></br>전투 소환, 탑, 공성술 유닛이 사망할 때는 발동되지 않음</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> 원거리 유닛"
@@ -4787,7 +5139,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
   "id": "해골_피바람_생성",
   "tactical": false,
-  "description": "<hyperlink>스켈레톤 폴암병</hyperlink> 유닛 2기를 조합하여 <hyperlink>해골 피바람</hyperlink> 1기를 생성합니다.",
+  "description": "<hyperlink>스켈레톤 민병대</hyperlink> 유닛 2기를 조합하여 <hyperlink>해골 피바람</hyperlink> 1기를 생성합니다.",
   "name": "해골 피바람 생성",
   "operation_point_cost": 30,
   "icon": "0000041B000016E7",
@@ -4831,7 +5183,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>피해/디버프 주문</hyperlink>",
   "id": "얼음_관",
   "tactical": true,
-  "description": "대상 적:<bulletlist><bullet>10 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 피해 유발</bullet><bullet>90%의 기본 확률로 동결 상태 유발, 실패할 경우 둔화 상태 유발</bullet></bulletlist>",
+  "description": "대상 적:<bulletlist><bullet>10 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>90%의 기본 확률로 동결 상태 유발, 실패할 경우 상태 효과 취약 상태 유발</bullet></bulletlist>",
   "name": "얼음 관",
   "operation_point_cost": 20,
   "icon": "0000041B000006C0"
@@ -5085,6 +5437,18 @@
    },
    {
     "slug": "새끼_크라켄"
+   },
+   {
+    "slug": "피의_구더기"
+   },
+   {
+    "slug": "파멸의_박쥐"
+   },
+   {
+    "slug": "비명_박쥐"
+   },
+   {
+    "slug": "역병_서펀트"
    }
   ]
  },
@@ -5496,7 +5860,7 @@
   "id": "신속_진화_인챈트",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>전투로 얻는 <hyperlink><xp></xp> 경험치</hyperlink> +20%</bullet><bullet>전투당 한 번 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 0으로 떨어지면 치유하는 빠져나가기 상태 (1등급 또는 2등급일 경우)</bullet></bulletlist>",
+  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>전투로 얻는 <hyperlink><xp></xp> 경험치</hyperlink> +20%</bullet><bullet>전투당 한 번 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 0으로 떨어지면 치유하는 빠져나가기 상태</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "진화 유닛"
@@ -5592,7 +5956,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>테라포밍 주문</hyperlink>",
   "id": "인챈트된_꽃",
   "tactical": false,
-  "description": "대상 우호 <hyperlink>도시가</hyperlink> 획득:<bulletlist><bullet>매 <turn></turn> <hyperlink>턴</hyperlink>마다, <hyperlink>영토</hyperlink> 내부 또는 영토에 인접한 <hyperlink>구획</hyperlink> 1개:<bulletlist></bullet><bullet>지상에 있을 경우 <hyperlink>초원</hyperlink> 및 <hyperlink>삼림</hyperlink> 획득, 지하에 있을 경우 <hyperlink>버섯 들판</hyperlink> 및 <hyperlink>버섯 삼림</hyperlink> 획득</bullet><bullet><hyperlink>골짜기</hyperlink>, <hyperlink>늪지</hyperlink>, <hyperlink>사막</hyperlink>, <hyperlink>설원</hyperlink>, <hyperlink>빙판</hyperlink>, <hyperlink>잿빛 땅</hyperlink>, <hyperlink>암흑</hyperlink> 상실</bullet><bullet>초원, 삼림, 버섯 들판 또는 버섯 삼림 특성을 보유한 영토 내 구획이 획득: <food></food> <hyperlink>식량</hyperlink> +2, <structureprod></structureprod> <hyperlink>생산력</hyperlink> +2, <unitprod></unitprod> <hyperlink>징집력</hyperlink> +2</bullet></bulletlist>",
+  "description": "대상 우호 <hyperlink>도시가</hyperlink> 획득:<bulletlist><bullet>매 <turn></turn> <hyperlink>턴</hyperlink>마다, <hyperlink>영토</hyperlink> 내부 또는 영토에 인접한 <hyperlink>구획</hyperlink> 1개:<bulletlist></bullet><bullet>지상에 있을 경우 <hyperlink>초원</hyperlink> 및 <hyperlink>삼림</hyperlink> 획득, 지하에 있을 경우 <hyperlink>버섯 들판</hyperlink> 및 <hyperlink>버섯 삼림</hyperlink> 획득</bullet><bullet><hyperlink>골짜기</hyperlink>, <hyperlink>늪지</hyperlink>, <hyperlink>사막</hyperlink>, <hyperlink>설원</hyperlink>, <hyperlink>빙판</hyperlink>, <hyperlink>잿빛 땅</hyperlink>, <hyperlink>암흑</hyperlink> 상실</bullet><bullet>초원, 삼림, 버섯 들판 또는 버섯 삼림 특성을 보유한 영토 내 구획이 획득: <food></food> <hyperlink>식량</hyperlink> +2, <structureprod></structureprod> <hyperlink>생산력</hyperlink> +2, <unitprod></unitprod> <hyperlink>징집력</hyperlink> +2</bullet></bulletlist></bulletlist>",
   "name": "인챈트된 꽃",
   "operation_point_cost": 150,
   "icon": "0000041B00000DBF"
@@ -5945,7 +6309,7 @@
   "tactical": false,
   "description": "유닛을 즉사시키고 적이 죽을 때마다 더 강해지는 5등급 신화 유닛, <hyperlink>사신을</hyperlink> 소환합니다.",
   "name": "사신 소환",
-  "operation_point_cost": 200,
+  "operation_point_cost": 300,
   "summoned_units": [
    {
     "slug": "사신"
@@ -6471,7 +6835,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
   "id": "자연의_풍요",
   "tactical": false,
-  "description": "대상 구획의 모든 우호 유닛이 최대 <hyperlink><hp></hp> 체력을</hyperlink> +15 획득하고, 다음 2 <hyperlink>세계 지도</hyperlink> <turn></turn> 턴 동안 중립 및 우호 영토에서 <hyperlink><hp></hp> 체력을</hyperlink> 15 재생합니다.",
+  "description": "대상 구획의 모든 우호 유닛이 최대 <hyperlink><hp></hp> 체력을</hyperlink> +15 획득하고, 다음 2 <hyperlink>세계 지도</hyperlink> <turn></turn> 턴 동안 중립 및 우호 영토에서 <hyperlink><hp></hp> 체력을</hyperlink> 15 <hyperlink>재생</hyperlink>합니다.",
   "name": "자연의 풍요",
   "operation_point_cost": 120,
   "icon": "0000041B00000DBB"
@@ -6599,7 +6963,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>피해 주문</hyperlink>",
   "id": "제물_도살",
   "tactical": true,
-  "description": "대상 우호 유닛 폭발, 폭발 시 반경 2 헥스 내 적 유닛:<bulletlist><bullet>20 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 유발, 또한 희생된 유닛의 등급당 5 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 추가 유발</bullet><bullet>희생된 유닛의 등급당 무작위 <hyperlink>부정적인 상태 효과</hyperlink> 1개 획득</bullet>",
+  "description": "대상 우호 유닛 폭발, 폭발 시 반경 2 헥스 내 적 유닛:<bulletlist><bullet>20 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 유발, 또한 희생된 유닛의 등급당 5 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 추가 유발</bullet><bullet><hyperlink>부정적인 상태 효과를</hyperlink> 희생된 유닛의 등급 하나당 무작위로 1개 획득</bullet></bulletlist>",
   "name": "제물 도살",
   "operation_point_cost": 40,
   "icon": "0000041B00000C3F"
@@ -6637,7 +7001,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
   "id": "피의_격노_무기",
   "tactical": false,
-  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>유닛 처치 시 <happiness></happiness> <hyperlink>사기</hyperlink> +5, 강화 +1</bullet><bullet>기본 <hyperlink>근접</hyperlink>, <hyperlink>물리 원거리</hyperlink> 공격 시 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +2</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet>기본 공격 시 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +2</bullet><bullet>처치 시: 대상과 인접한 적이 3 <turn></turn> 턴 동안 2 출혈 상태 획득</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
@@ -6771,9 +7135,9 @@
   "casting_cost": "90<mana></mana> ",
   "resid": 4273492480453,
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
-  "id": "분노의_낙인",
+  "id": "폭군의_표식",
   "tactical": false,
-  "description": "비 어둠 유닛이 획득:<bulletlist><bullet>다음 효과를 지닌 약자 도태 상태:<bulletlist></bullet><bullet>원거리 공격자가 공격 시 일정 확률로 쇠약 상태 유발</bullet><bullet>근접 공격자가 쇠약 상태인 유닛 공격 시 피해 증가</bullet></bulletlist></bulletlist>",
+  "description": "비 어둠 유닛에 부여:<bulletlist><bullet>폭군 교단 상태</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
@@ -6800,7 +7164,7 @@
     "requisite": "<unitSkirmisher></unitSkirmisher> 척후병 유닛"
    }
   ],
-  "name": "분노의 낙인",
+  "name": "폭군의 표식",
   "operation_point_cost": 90,
   "icon": "000003E300005352"
  },
@@ -6810,21 +7174,10 @@
   "spellType": "<casttactical></casttactical> <hyperlink>디버프 주문</hyperlink>",
   "id": "사악한_저주",
   "tactical": true,
-  "description": "반경 1 헥스 내 적 유닛이 획득:<bulletlist><bullet>방어력 약화</bullet><bullet>저항력 약화</bullet><bullet>쇠약 상태</bullet></bulletlist>",
+  "description": "반경 1 헥스 내 적 유닛이 획득:<bulletlist><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 2 쇠약 상태 유발</bullet><bullet>90%의 기본 확률로 3 <turn></turn> 턴 동안 2 불운 상태 유발</bullet></bulletlist>",
   "name": "사악한 저주",
   "operation_point_cost": 15,
   "icon": "000003E300005354"
- },
- {
-  "casting_cost": "10<mana></mana> ",
-  "resid": 4273492480429,
-  "spellType": "<casttactical></casttactical> <hyperlink>피해/디버프 주문</hyperlink>",
-  "id": "얼음_수갑",
-  "tactical": true,
-  "description": "반경 2 헥스 내 대상 적 유닛 및 다른 유닛 1기를 대상으로:<bulletlist><bullet>14 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>둔화 상태 유발</bullet></bulletlist>",
-  "name": "얼음 수갑",
-  "operation_point_cost": 15,
-  "icon": "000003E300005353"
  },
  {
   "casting_cost": "100<mana></mana> ",
@@ -6976,7 +7329,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
   "id": "화염_폭발_무기",
   "tactical": false,
-  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet><hyperlink><crit></crit>치명타 확률</hyperlink> +20%</bullet><bullet>해당 유닛이 다른 유닛을 처치할 때마다:<bulletlist></bullet><bullet>사망한 유닛이 폭발하여 인접 적 유닛에 20 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 유발</bullet></bulletlist></bulletlist>",
+  "description": "영향을 받은 유닛에 부여:<bulletlist><bullet><hyperlink><crit></crit>치명타 확률</hyperlink> +20%</bullet><bullet>유닛 처치 시 처치한 유닛이 폭발, 인접 적을 대상으로:<bulletlist></bullet><bullet>15 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> 유발</bullet><bullet>3 <turn></turn> 턴 동안 2 불붙음 상태 획득</bullet></bulletlist></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
