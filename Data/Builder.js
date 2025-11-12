@@ -3147,7 +3147,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let struc = CheckIfInStructure(unitData.id, name);
     if (struc != "") {
         const tooltipText = `Unit mentioned in Structure <hyperlink>${struc.name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc.id}.png`;
+        const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc.icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?structure=${struc.id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
