@@ -3152,6 +3152,15 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const link = `/aow4db/HTML/Spells.html?structure=${struc.id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
+    
+    let traitFound = CheckIfInTraits(unitData.id);
+    if (traitFound != "") {
+        const tooltipText = `Unit added by Faction Trait <hyperlink>${traitFound.name}</hyperlink>`;
+        const imgSrc = `/aow4db/Icons/TraitIcons/${traitFound.id}.png`;
+        const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
+        const link = `/aow4db/HTML/Spells.html?trait=${traitFound.id}`;
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+    }
 
     let wonder = CheckIfInAncientWonder(unitData.id);
     if (wonder != "") {
@@ -3468,6 +3477,22 @@ function CheckIfEvolveTarget(unitID) {
         }
     }
     return evolve;
+}
+
+function CheckIfInTraits(unitID) {
+    let wonder = "";
+    let i,
+        k = "";
+    for (i in jsonFactionCreation) {
+        if ("unit_unlocks" in jsonFactionCreation[i]) {
+            for (k in jsonFactionCreation[i].unit_unlocks) {
+                if (unitID === jsonFactionCreation[i].unit_unlocks[k].slug) {
+                    wonder = jsonFactionCreation[i];
+                }
+            }
+        }
+    }
+    return wonder;
 }
 
 function CheckIfInAncientWonder(unitID) {
@@ -3885,7 +3910,7 @@ function showTome(a, divOrigin) {
             addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
         }
         if ("spell_slug" in skill) {
-          //  console.log(skill.spell_slug);
+            //  console.log(skill.spell_slug);
             addTomeSkillCard(skillHolder, (el) => showSpell(skill.spell_slug, false, el));
         }
         if ("unit_slug" in skill) {
@@ -4883,20 +4908,21 @@ function showSpell(a, showOrigin, divOrigin) {
         const Pairs = [
             { id: "call_wild_animal", spawnset: "SUMMON_WILD_ANIMAL" },
             { id: "call_greater_animal", spawnset: "SUMMON_GREATER_WILD_ANIMAL" },
-              { id: "summon_elemental", spawnset: "SUMMON_ELEMENTAL" },
-              { id: "awaken_the_forest", spawnset: "AWAKEN_THE_FOREST" },
-             { id: "demonic_summoning", spawnset: "DEMONIC_SUMMONING" },
-             { id: "raise_undead_army", spawnset: "RAISE_UNDEAD_ARMY" }
+            { id: "summon_elemental", spawnset: "SUMMON_ELEMENTAL" },
+            { id: "awaken_the_forest", spawnset: "AWAKEN_THE_FOREST" },
+            { id: "demonic_summoning", spawnset: "DEMONIC_SUMMONING" },
+            { id: "raise_undead_army", spawnset: "RAISE_UNDEAD_ARMY" }
         ];
 
         const match = Pairs.find((p) => p.id === a);
         if (match) {
-            const results =[];
+            const results = [];
             // skip if not found
             // extra info
             // call_wild_animal = SUMMON_WILD_ANIMAL
-           const info = document.createElement("DIV");
-            info.innerHTML = '<button type="button" class="collapsible"onclick="SetUpSpawnTable()">SPAWN CHANCES</button>';
+            const info = document.createElement("DIV");
+            info.innerHTML =
+                '<button type="button" class="collapsible"onclick="SetUpSpawnTable()">SPAWN CHANCES</button>';
             let collapsibleC = document.createElement("DIV");
             collapsibleC.classList = "content";
 
@@ -4914,12 +4940,11 @@ function showSpell(a, showOrigin, divOrigin) {
                 // Add new items
                 existing.items.push(...entry.items);
             }
-            for(const entry of results){
-               let div = ConvertSpawnTable(entry,match.spawnset);
-              collapsibleC.append(div);
+            for (const entry of results) {
+                let div = ConvertSpawnTable(entry, match.spawnset);
+                collapsibleC.append(div);
             }
-           
-           
+
             info.append(collapsibleC);
             descriptionDiv.append(info);
         }
@@ -5300,13 +5325,16 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     if ("description" in currentTrait || "extraLookup" in currentTrait) {
         if ("requirement" in currentTrait) {
-            if (currentTrait.requirement == "Vision of Destiny") {
+            if (currentTrait.requirement.indexOf("Vision of Destiny") != -1) {
+                // vision trait setup
+                if ("rewards" in currentTrait) {
+                }
                 descriptionDiv.innerHTML += "Earn 500 points by:<br>";
             }
         }
         if ("extraLookup" in currentTrait) {
             const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup);
-           // console.log(currentTrait.extraLookup);
+            // console.log(currentTrait.extraLookup);
             if ("hyperlink" in valueLookup) {
                 modName.innerHTML = valueLookup.hyperlink.toUpperCase();
             } else if ("name" in valueLookup) {
@@ -5329,7 +5357,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
             if ("extraLookup2" in currentTrait) {
                 const valueLookup2 = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup2);
-               // console.log(valueLookup2);
+                // console.log(valueLookup2);
                 if ("hyperlink" in valueLookup2) {
                     modName.innerHTML = valueLookup2.hyperlink.toUpperCase();
                 } else if ("name" in valueLookup2) {
@@ -5381,10 +5409,54 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         }
         descriptionDiv.innerHTML += "</bulletlist>";
     }
+    
+    if ("objective" in currentTrait) {
+        descriptionDiv.innerHTML += "<br><hr><span style='color:beige'>Objective: </span><br>";
+    const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.objective);
+         if (valueLookup) {
+                descriptionDiv.innerHTML += valueLookup.objective_1 + "<br>";
+                descriptionDiv.innerHTML += valueLookup.objective_2 ?valueLookup.objective_2 + "<br>" :"";
+         descriptionDiv.innerHTML += valueLookup.objective_3 ?valueLookup.objective_3 + "<br>":"";
+      
+         }
+          
+    }
 
     if ("rewards" in currentTrait) {
-        descriptionDiv.innerHTML += "<br><br>Rewards: <br>";
-        descriptionDiv.append(addSpoiler(currentTrait.rewards));
+        descriptionDiv.innerHTML += "<br><hr><span style='color:beige'>Rewards: </span><br>";
+        for (let i in currentTrait.rewards) {
+            //console.log(currentTrait.rewards[i]);
+            const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.rewards[i]);
+            if (valueLookup) {
+                descriptionDiv.innerHTML += valueLookup.city_cap_buff ? "<bullet>"+ valueLookup.city_cap_buff+ "</bullet>" : "";
+                descriptionDiv.innerHTML += valueLookup.throne_city_buff ? "<bullet>" + valueLookup.throne_city_buff + "</bullet>" : "";
+                 descriptionDiv.innerHTML += valueLookup.unit_reward ? "<bullet>" + valueLookup.unit_reward + "</bullet>" : "";
+                descriptionDiv.innerHTML += valueLookup.war ? "<bullet>" + valueLookup.war + "</bullet>" : "";
+              
+                descriptionDiv.innerHTML += valueLookup.war_houses ? "<bullet>" + valueLookup.war_houses + "</bullet>" : "";
+               descriptionDiv.innerHTML += valueLookup.name?  "<bullet>" + valueLookup.name + "<br>": "";
+                descriptionDiv.innerHTML += valueLookup.description? valueLookup.description + "</bullet>" : "";
+            }
+        }
+    }
+    
+    if ("unit_unlocks" in currentTrait) {
+        
+            descriptionDiv.innerHTML += "<br><span style='color:beige'>Rally Units:</span><br>";
+        
+
+        for (let x = 0; x < currentTrait.unit_unlocks.length; x++) {
+            let div = document.createElement("DIV");
+            div.setAttribute("style", "margin-right: 20px;");
+            div.innerHTML =
+                '<a href="/aow4db/HTML/Units.html?unit=' +
+                currentTrait.unit_unlocks[x].slug +
+                '" target="_blank">' +
+                GetUnitTierAndName(currentTrait.unit_unlocks[x].slug) +
+                "</a>" +
+                "</bullet>";
+            descriptionDiv.appendChild(div);
+        }
     }
 
     let tier = divOrigin.querySelector("#modtier");
@@ -5564,7 +5636,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, 
     if ("group_name" in skillLoc) {
         let span = document.createElement("span");
         span.innerHTML = skillLoc.group_name;
-      //  console.log(span.innerHeight);
+        //  console.log(span.innerHeight);
         descriptionDiv.append(span);
     }
 

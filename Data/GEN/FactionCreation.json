@@ -745,9 +745,9 @@
         "affinity": "<empireorder></empireorder>",
         "requirement": "Vision of Promise",
         "DLC": "ARCHONPROPHECY ",
-        "description": "WIP",
-        "rewards": "<bulletlist><bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
-    },
+       "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_PROMISE@CONQUEST_ORDER",
+        "rewards" : ["DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_PROMISE@COMPLETION"]
+       },
     {
         "type": "SubSociety",
         "id": "vision_of_promise_nature",
@@ -755,9 +755,10 @@
         "affinity": "<empirenature></empirenature>",
         "requirement": "Vision of Promise",
         "DLC": "ARCHONPROPHECY ",
-        "description": "WIP",
-        "rewards": "<bulletlist>WIP<bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
-    },
+       
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_PROMISE@RECLAMATION_NATURE",
+        "rewards" : ["DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_PROMISE@COMPLETION"]
+         },
     {
         "type": "SubSociety",
         "id": "vision_of_promise_materium",
@@ -765,9 +766,12 @@
         "affinity": "<empirematter></empirematter>",
         "requirement": "Vision of Promise",
         "DLC": "ARCHONPROPHECY ",
-        "description": "WIP",
-        "rewards": "<bulletlist>WIP<bullet>Shrine of Fullfilled Promise</bullet></bulletlist>"
-    },
+       
+        "amount" : "50",
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_PROMISE@CONSTRUCT_MATERIUM",
+        "rewards" : [ 
+                     "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_PROMISE@COMPLETION","DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@TITAN_GUARDIAN"]
+        },
     {
         "type": "SubSociety",
         "id": "vision_of_ruin_chaos",
@@ -775,8 +779,8 @@
         "affinity": "<empirechaos></empirechaos>",
         "requirement": "Vision of Ruin",
         "DLC": "ARCHONPROPHECY ",
-        "description": "WIP",
-        "rewards": "WIP"
+        "objective": "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_RUIN@WAR_CHAOS",
+       "rewards": ["DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_RUIN@WAR_CHAOS@OUTCOME"]
     },
     {
         "type": "SubSociety",
@@ -785,8 +789,8 @@
         "affinity": "<empirearcana></empirearcana>",
         "requirement": "Vision of Ruin",
         "DLC": "ARCHONPROPHECY ",
-        "description": "WIP",
-        "rewards": "WIP"
+        "objective": "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_RUIN@MAGIC_ASTRAL",
+        "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_RUIN@MAGIC@AGE_OF_MAGIC"]
     },
     {
         "type": "SubSociety",
@@ -795,8 +799,8 @@
         "affinity": "<empireshadow></empireshadow>",
         "requirement": "Vision of Ruin",
         "DLC": "ARCHONPROPHECY ",
-        "description": "WIP",
-        "rewards": "WIP"
+        "objective": "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_RUIN@DEATH_SHADOW",
+       "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_RUIN@SHADOW@AGE_OF_DEATH"]
     },
     {
         "type": "SubSociety",
@@ -805,8 +809,19 @@
         "affinity": "<empireorder></empireorder>,<empireorder></empireorder>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Vassalize cities, destroy infestations, form diplomatic bonds with players.",
-        "rewards": "<bulletlist><bullet>Passive: +4 Status resistance, Inspiring Killer.</bullet><bullet> Rally: Light Spirit, Blessed Soul, and Astra.</bullet></bulletlist>"
+         "unit_unlocks": [
+            {
+                "slug": "light_spirit"
+            },
+            {
+                "slug": "blessed_soul"
+            },
+            {
+                "slug": "astra"
+            }
+        ],
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_DESTINY@ORDER",
+        "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@ORDER@MARK_OF_ORDER"]
     },
     {
         "type": "SubSociety",
@@ -815,8 +830,19 @@
         "affinity": "<empirechaos></empirechaos>,<empirechaos></empirechaos>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Conquer cities, slay heroes, defeat an empire.",
-        "rewards": "<bulletlist><bullet>Passive: 10% Crit, Life Steal</bullet><bullet> Rally: Inferno Hound, Nightmare, and Balor.</bullet></bulletlist>"
+         "unit_unlocks": [
+            {
+                "slug": "inferno_hound"
+            },
+            {
+                "slug": "nightmare"
+            },
+            {
+                "slug": "balor"
+            }
+        ],
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_DESTINY@CHAOS",
+        "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@CHAOS@MARK_OF_CHAOS"]
     },
     {
         "type": "SubSociety",
@@ -825,8 +851,16 @@
         "affinity": "<empirearcana></empirearcana>,<empirearcana></empirearcana>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Unlock tomes, clear Ancient Wonders.",
-        "rewards": "<bulletlist><bullet>Passive: +20% Experience, +2 Resistance.</bullet><bullet> Rally: Lost Wizard and Mage Bane.</bullet></bulletlist>"
+         "unit_unlocks": [
+            {
+                "slug": "lost_wizard"
+            },
+            {
+                "slug": "mage_bane"
+            }
+        ],
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_DESTINY@ASTRAL",
+        "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@ASTRAL@MARK_OF_ASTRAL"]
     },
     {
         "type": "SubSociety",
@@ -835,8 +869,16 @@
         "affinity": "<empirematter></empirematter>,<empirematter></empirematter>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Construct Special Province Improvements, City Structures, and City Tier Structures.",
-        "rewards": "<bulletlist><bullet>Passive: +50% damage on retaliation attacks. Fighter, Shield, Polearm, and Mythic units gain +1 retaliation attack.</bullet><bullet> Rally: Earth Titan and Golden Golem.</bullet></bulletlist>"
+         "unit_unlocks": [
+            {
+                "slug": "earth_titan"
+            },
+            {
+                "slug": "golden_golem"
+            }
+        ],
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_DESTINY@MATERIUM",
+         "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@MATERIUM@MARK_OF_MATERIUM"]
     },
     {
         "type": "SubSociety",
@@ -845,8 +887,17 @@
         "affinity": "<empirenature></empirenature>,<empirenature></empirenature>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Annex provinces.",
-        "rewards": "<bulletlist><bullet>Whenever a friendly unit dies, this unit gains Grace for 1 turn. Whenever an enemy unit dies this unit gains Strengthened for 3 turns.</bullet><bullet> Rally: Entwined Scourge..</bullet><bullet>Other: Gain 50% mana equal to food income.</bullet></bulletlist>"
+         "unit_unlocks": [
+            {
+                "slug": "entwined_scourge"
+            },
+            {
+                "slug": "horned_god"
+            }
+          
+        ],
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_DESTINY@NATURE",
+        "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@NATURE@MARK_OF_NATURE"]
     },
     {
         "type": "SubSociety",
@@ -855,7 +906,19 @@
         "affinity": "<empireshadow></empireshadow>,<empireshadow></empireshadow>",
         "requirement": "Vision of Destiny",
         "DLC": "ARCHONPROPHECY ",
-        "description": "Units slain or lost.",
-        "rewards": "<bulletlist><bullet>Passive: Whenever an enemy unit dies, this unit heals +10 temp Hp and gains Slippery and Flanker for 1 turn.</bullet><bullet> Rally: Fallen Angel, Undead Titan, and Bone Dragon.</bullet></bulletlist>"
+        "unit_unlocks": [
+            {
+                "slug": "bone_dragon"
+            },
+            {
+                "slug": "undead_titan"
+            },
+            {
+                "slug": "fallen_angel"
+            }
+        ],
+        
+        "objective" : "DLC@ARCHONPROPHECY@PROPHECY_TRAITS@VISION_OF_DESTINY@SHADOW",
+        "rewards": ["DLC@ARCHONPROPHECY@RACETRAITS_WORLD@VISION_OF_PROMISE@SHADOW@MARK_OF_SHADOW"]
     }
 ]

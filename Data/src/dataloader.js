@@ -409,12 +409,12 @@ function LocalizeUI() {
                 if (test.includes("&")) {
                     test = test.split("&");
 
-                    const found = findBy(jsonBaseConceptsLocalized, "id", test[0]);
+                    const found = findBy(jsonAllFromPOLocalized, "id", test[0]);
                     if (found) {
                         value = found[test[1]];
                     }
                 } else {
-                    const found = findBy(jsonBaseConceptsLocalized, "id", test);
+                    const found = findBy(jsonAllFromPOLocalized, "id", test);
                     if (found) {
                         value = found.hyperlink;
                     }
