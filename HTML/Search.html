@@ -17,6 +17,19 @@
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
         <meta charset="UTF-8" />
         <style>
+            .dlc-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+                margin:10px;
+  transition: transform 0.1s ease;
+                 transform: scale(1.5);
+}
+
+.dlc-button:hover {
+ filter:brightness(2);
+}
         .disabled-section {
   opacity: 0.5;
   pointer-events: none;
@@ -35,6 +48,28 @@
                 console.log("handling");
                 rememberSearch();
                  updateUnitSubFilters();
+                
+                const container = document.getElementById("dlcButtonRow");
+
+for (const key in dlcMap) {
+  const btn = document.createElement("button");
+  btn.className = "dlc-button"; // optional class for styling
+  btn.title = dlcMap[key].text; // tooltip
+btn.id = key;
+  // Custom tag that your stylesheet will convert to an icon
+  const iconTag = document.createElement(key);
+  // can also be data-attribute or empty
+ btn.addEventListener("click", () => {
+    handleDlcClick(key, dlcMap[key]);
+  });
+  btn.appendChild(iconTag);
+  container.appendChild(btn);
+}
+            }
+            
+            function handleDlcClick(DLC){
+                document.getElementById("searchInput").value = DLC ;
+                 searchData();
             }
 
             function toggle(source) {
@@ -61,6 +96,9 @@
                     
                 });
             }
+            
+            
+
 
             
         </script>
@@ -71,12 +109,14 @@
         <div id="header"></div>
 
         <div id="unitS" style="width: 100%; margin: auto; background-color: #0e2229">
-            <h2 style="color: white; text-align: center">Search</h2>
-
+            <h1 style="color: white; text-align: center">DLC List & Search</h1>
+            <div style="height: auto; color: white; text-align: center">Show all entries from DLC:<div id="dlcButtonRow" style="display: flex; flex-wrap: wrap; gap: 6px;    justify-content: center;"></div></div>
             <div style="height: auto; color: white; text-align: center">
-                Search Filters<br />
+              <hr>Search Filters:
                 <div style="display: grid; margin: auto; width: fit-content; text-align: left">
+                    
                     <label class="switch">
+                          
                         <input
                             type="checkbox"
                             name="checkToggle"
@@ -86,7 +126,7 @@
                         Toggle All
                     </label>
                     
-                    <div id="unitSearchFilters">
+                    <div id="unitSearchFilters" style="display:flex">
                         <label class="switch">
                             <input type="checkbox" name="checkToggle" id="unitsCheck" checked="checked" />
                             Units

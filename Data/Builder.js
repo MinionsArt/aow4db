@@ -5306,7 +5306,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         }
         if ("extraLookup" in currentTrait) {
             const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup);
-            console.log(currentTrait.extraLookup);
+           // console.log(currentTrait.extraLookup);
             if ("hyperlink" in valueLookup) {
                 modName.innerHTML = valueLookup.hyperlink.toUpperCase();
             } else if ("name" in valueLookup) {
@@ -5329,7 +5329,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
             if ("extraLookup2" in currentTrait) {
                 const valueLookup2 = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup2);
-                console.log(valueLookup2);
+               // console.log(valueLookup2);
                 if ("hyperlink" in valueLookup2) {
                     modName.innerHTML = valueLookup2.hyperlink.toUpperCase();
                 } else if ("name" in valueLookup2) {
@@ -5564,7 +5564,7 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, 
     if ("group_name" in skillLoc) {
         let span = document.createElement("span");
         span.innerHTML = skillLoc.group_name;
-        console.log(span.innerHeight);
+      //  console.log(span.innerHeight);
         descriptionDiv.append(span);
     }
 

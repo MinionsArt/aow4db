@@ -165,13 +165,14 @@ function fetchJsonFiles(filePaths) {
 var jsonSiegeProjects;
 
 const dlcMap = {
-    EMPIRESANDASHES: {
-        src: "/aow4db/Icons/Text/EmpiresAshes.png",
-        text: "Part of the Empires & Ashes DLC"
-    },
+   
     DRAGONLORDS: {
         src: "/aow4db/Icons/Text/DragonDawn.png",
         text: "Part of the Dragon Dawn DLC"
+    },
+     EMPIRESANDASHES: {
+        src: "/aow4db/Icons/Text/EmpiresAshes.png",
+        text: "Part of the Empires & Ashes DLC"
     },
     PRIMALFURY: {
         src: "/aow4db/Icons/Text/PrimalFury.png",
