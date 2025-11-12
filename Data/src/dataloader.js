@@ -66,7 +66,7 @@ const extraFormUnitsList = [
     "houndmaster",
     "geomancer",
     "paladin",
-    "oracle"
+    "oracle", "pain_bringer", "blood_cultist"
 ];
 
 const incorrectIconOverrideList = [
