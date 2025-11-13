@@ -421,13 +421,18 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
                     btn.innerHTML = GetUnitTierAndName(list[i]);
                     btn.setAttribute("onclick", "openDiv(event,'" + list[i] + "',true)");
                 }
+                
+                div.setAttribute("style", "margin-left:200px");
 
                 break;
             case "searchSpell":
                 showSpellFromString(list[i], list[i]);
                 btn.innerHTML = findBy(jsonSpells, "id", list[i]).name;
                 btn.setAttribute("onclick", "openDiv(event,'" + list[i] + "')");
+               
+              
                 break;
+           
         }
 
         buttonHolder.appendChild(btn);
@@ -491,11 +496,18 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         btn.className = "w3-bar-item w3-button tablink";
         dataHolder = document.getElementById("dataHolder");
         holderHeight = buttonHolder.offsetHeight;
-        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+       
+              dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+        
+      
         let div = document.createElement("DIV");
 
         div.className = "w3-container w3-border city";
         div.setAttribute("id", overwrite);
+        if(overwrite == "Spells" || overwrite == "Siege Projects"){
+             div.setAttribute("style", "margin-left: 250px;");
+        }
+       
 
         dataHolder.appendChild(div);
     }
@@ -559,13 +571,16 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             break;
         case "searchSpell":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+         
             showSpellFromList(list, overwrite);
             break;
         case "tome":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showTomeFromList2(list, overwrite);
             break;
+       
         case "unit":
+            
             btn.className = "collapsibleUnits";
             let content = document.createElement("DIV");
             content.setAttribute("id", overwrite + "-button");
@@ -5756,19 +5771,19 @@ function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
     let tomespells = findParentByNested(jsonTomes, "skills", "name", spell.name);
     if (tomespells != undefined) {
         if (showorigin) {
-            let tomeOrigin = modCard.querySelector("#originTome");
+            const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
+            const tomeOriginName = modCard.querySelector("#originTomeName");
+             const originTomeTier = modCard.querySelector("#originTomeTier");
             if ("affinities" in tomespells) {
-                tomeOrigin.innerHTML = showAffinitySymbols(tomespells);
-
-                tomeOrigin.innerHTML += "<br>";
+                tomeOriginAff.innerHTML = showAffinitySymbols(tomespells);
             }
+            originTomeTier.innerHTML += romanize(tomespells.tier);
+            tomeOriginName.innerHTML +=  tomespells.name;
 
-            tomeOrigin.innerHTML += romanize(tomespells.tier) + " - " + tomespells.name;
-
-            let tomeOriginIcon = modCard.querySelector("#originTomeIcon");
+            const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomespells.icon + ".png");
-            let wrap = tomeOrigin.innerHTML;
-            tomeOrigin.innerHTML =
+            const wrap = tomeOriginName.innerHTML;
+            tomeOriginName.innerHTML =
                 '<a href="/aow4db/HTML/Spells.html?tome=' + tomespells.id + '" target="_blank">' + wrap + "</a>";
 
             return tomespells.tier + "," + tomespells.id;
