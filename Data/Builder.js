@@ -2156,8 +2156,8 @@ async function showSpellFromString(string, divID) {
 }
 
 async function showSiegeProjectFromString(string, divID) {
-    await spawnSpellCardSingle(string, divID);
-    showSiegeProject(string, true);
+   const newSiegeDiv =  await spawnSpellCardSingle(string, divID);
+    showSiegeProject(string, true,newSiegeDiv);
 }
 
 async function showHeroGovernanceFromString(string, divID) {
@@ -2166,8 +2166,8 @@ async function showHeroGovernanceFromString(string, divID) {
 }
 
 async function showWorldStructureFromString(string, divID) {
-    await spawnStructureCardSingle(string, divID);
-    showWorldStructure(string);
+  const worldDiv = await spawnStructureCardSingle(string, divID);
+    showWorldStructure(string,worldDiv);
 }
 
 async function showTomeFromString(string, divID) {
@@ -2176,19 +2176,19 @@ async function showTomeFromString(string, divID) {
 }
 
 async function showStructureFromString(string, divID) {
-    let newDiv = await spawnStructureCardSingle(string, divID);
-    showStructure(string, false, newDiv);
+    let strucDiv = await spawnStructureCardSingle(string, divID);
+    showStructure(string, false, strucDiv);
 }
 
 async function showHeroSkillFromString(string, divID) {
-    await spawnSpellCardSingle(string, divID);
+   const skillCard = await spawnSpellCardSingle(string, divID);
     let skill = findBy(jsonHeroSkills, "id", string);
 
     // check if has description
     if ("description" in skill) {
-        showSkill(skill, "", skill.icon, skill.category_name, skill.level_name, skill.group_name);
+        showSkill(skill, "", skill.icon, skill.category_name, skill.level_name, skill.group_name,skillCard);
     } else {
-        showSkill(skill, "true", skill.icon, skill.category_name, skill.level_name, skill.group_name);
+        showSkill(skill, "true", skill.icon, skill.category_name, skill.level_name, skill.group_name,skillCard);
     }
 }
 
