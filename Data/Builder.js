@@ -3090,6 +3090,11 @@ function createFoundUnitInHereIcon(parent, imgSrc, imgFallbackSrc, link, tooltip
 }
 
 function backtrackUnitOrigins(unitData, name, holder) {
+    
+    if(name == "Guardian" || name == "Astra"){
+          name = name + " ";
+    }
+  
     let holderOrigin = holder.querySelectorAll("div#originHolder")[0];
     holderOrigin.innerHTML = "";
     let culture = "thing";
@@ -3301,12 +3306,13 @@ function CheckIfFromAbility(unitName) {
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
-
+    
     for (i in jsonUnitAbilities) {
         if (unitName === "Fire Runestone") {
             unitName = "Runestone";
         }
-        if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
+        if (regex.test(jsonUnitAbilities[i].description)) {
+     //   if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
             ability.add(jsonUnitAbilities[i]);
         }
     }
@@ -3408,6 +3414,11 @@ function CheckIfInSiege(unitName) {
 function CheckIfInStructure(id, unitName) {
     let structure = new Set();
     let i = 0;
+    if(unitName == "Architect")
+        {
+        // skip architect as a word
+        return [];
+        }
 
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
