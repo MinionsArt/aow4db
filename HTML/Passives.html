@@ -55,17 +55,10 @@
                     addAbility(slug);
                 }
             }
-            function HideAll() {
-                const divs = document.getElementsByClassName("list_abilityslot");
-
-                for (let i = 0; i < divs.length; i++) {
-                    const div = divs[i];
-                    div.style.display = "none";
-                }
-            }
-
+            
             function ShowAllPassivesWithFilters() {
-                HideAll();
+                document.querySelectorAll(".list_abilityslot").forEach((div) => (div.style.display = "none"));
+         
                 var list = new Array();
                 var filter = document.getElementById("filterInput");
                 var filterText = filter.value.toUpperCase();
