@@ -3412,13 +3412,20 @@ function CheckIfInStructure(id, unitName) {
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
+    if(unitName == "Titan"){
+        const archonGate =findBy(jsonStructureUpgrades, "id","_teleporter___archon_gate");
+        structure.add(archonGate);
+           return Array.from(structure);
+       
+    }
+    
 
     for (i in jsonStructureUpgrades) {
-        if (regex.test(jsonStructureUpgrades[i].prediction_description)) {
+        if (jsonStructureUpgrades[i].description.indexOf(unitName) != -1) {
             structure.add(jsonStructureUpgrades[i]);
         }
 
-        if (regex.test(jsonStructureUpgrades[i].description)) {
+        if (jsonStructureUpgrades[i].description.indexOf(unitName) != -1) {
             structure.add(jsonStructureUpgrades[i]);
         }
 
