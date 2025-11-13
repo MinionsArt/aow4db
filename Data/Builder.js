@@ -421,7 +421,7 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
                     btn.innerHTML = GetUnitTierAndName(list[i]);
                     btn.setAttribute("onclick", "openDiv(event,'" + list[i] + "',true)");
                 }
-                
+
                 div.setAttribute("style", "margin-left:200px");
 
                 break;
@@ -429,10 +429,8 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
                 showSpellFromString(list[i], list[i]);
                 btn.innerHTML = findBy(jsonSpells, "id", list[i]).name;
                 btn.setAttribute("onclick", "openDiv(event,'" + list[i] + "')");
-               
-              
+
                 break;
-           
         }
 
         buttonHolder.appendChild(btn);
@@ -496,18 +494,16 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
         btn.className = "w3-bar-item w3-button tablink";
         dataHolder = document.getElementById("dataHolder");
         holderHeight = buttonHolder.offsetHeight;
-       
-              dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-        
-      
+
+        dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+
         let div = document.createElement("DIV");
 
         div.className = "w3-container w3-border city";
         div.setAttribute("id", overwrite);
-        if(overwrite == "Spells" || overwrite == "Siege Projects"){
-             div.setAttribute("style", "margin-left: 250px;");
+        if (overwrite == "Spells" || overwrite == "Siege Projects") {
+            div.setAttribute("style", "margin-left: 250px;");
         }
-       
 
         dataHolder.appendChild(div);
     }
@@ -571,16 +567,15 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             break;
         case "searchSpell":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
-         
+
             showSpellFromList(list, overwrite);
             break;
         case "tome":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showTomeFromList2(list, overwrite);
             break;
-       
+
         case "unit":
-            
             btn.className = "collapsibleUnits";
             let content = document.createElement("DIV");
             content.setAttribute("id", overwrite + "-button");
@@ -3128,11 +3123,11 @@ function backtrackUnitOrigins(unitData, name, holder) {
     }
 
     let tomes = CheckIfInTomes(unitData.id);
-    if (tomes != "") {
-        const tooltipText = `Unit production unlocked from Tier <hyperlink>${romanize(tomes.tier)} - ${showAffinitySymbols(tomes)} ${tomes.name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/TomeIcons/${tomes.id}.png`;
+    for (let x = 0; x < tomes.length; x++) {
+        const tooltipText = `Unit production unlocked from Tier <hyperlink>${romanize(tomes[x].tier)} - ${showAffinitySymbols(tomes[x])} ${tomes[x].name}</<hyperlink>`;
+        const imgSrc = `/aow4db/Icons/TomeIcons/${tomes[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?tome=${tomes.id}`;
+        const link = `/aow4db/HTML/Spells.html?tome=${tomes[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
@@ -3151,89 +3146,91 @@ function backtrackUnitOrigins(unitData, name, holder) {
     }
 
     let siege = CheckIfInSiege(name);
-    if (siege != "") {
-        const tooltipText = `Unit mentioned in Siege Project <hyperlink>${siege.name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/SiegeProjectIcons/${siege.icon}.png`;
+    for (let x = 0; x < siege.length; x++) {
+        const tooltipText = `Unit mentioned in Siege Project <hyperlink>${siege[x].name}</hyperlink>`;
+        const imgSrc = `/aow4db/Icons/SiegeProjectIcons/${siege[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?siege=${siege.id}`;
+        const link = `/aow4db/HTML/Spells.html?siege=${siege[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let struc = CheckIfInStructure(unitData.id, name);
-    if (struc != "") {
-        const tooltipText = `Unit mentioned in Structure <hyperlink>${struc.name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc.icon}.png`;
+    for (let x = 0; x < struc.length; x++) {
+        const tooltipText = `Unit mentioned in Structure <hyperlink>${struc[x].name}</hyperlink>`;
+        const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?structure=${struc.id}`;
+        const link = `/aow4db/HTML/Spells.html?structure=${struc[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
-    
+
     let traitFound = CheckIfInTraits(unitData.id);
-    if (traitFound != "") {
-        const tooltipText = `Unit added by Faction Trait <hyperlink>${traitFound.name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/TraitIcons/${traitFound.id}.png`;
+    for (let x = 0; x < traitFound.length; x++) {
+        const tooltipText = `Unit added by Faction Trait <hyperlink>${traitFound[x].name}</hyperlink>`;
+        const imgSrc = `/aow4db/Icons/TraitIcons/${traitFound[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?trait=${traitFound.id}`;
+        const link = `/aow4db/HTML/Spells.html?trait=${traitFound[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let wonder = CheckIfInAncientWonder(unitData.id);
-    if (wonder != "") {
+    for (let x = 0; x < wonder.length; x++) {
         // if landmark different text:
         let tooltipText = "";
-        if (wonder.type == "Landmark") {
-            tooltipText = `Unit unlocked from <landmark></landmark> <hyperlink>${wonder.type}</<hyperlink> : <hyperlink>${wonder.name}</<hyperlink>`;
+        if (wonder[x].type == "Landmark") {
+            tooltipText = `Unit unlocked from <landmark></landmark> <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         } else {
-            tooltipText = `Rally Unit unlocked from <hyperlink>${wonder.type}</<hyperlink> : <hyperlink>${wonder.name}</<hyperlink>`;
+            tooltipText = `Rally Unit unlocked from <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         }
-        if ("other_unlock" in wonder) {
-            tooltipText = `Unit available in <hyperlink>${wonder.type}</<hyperlink> : <hyperlink>${wonder.name}</<hyperlink>`;
+        if ("other_unlock" in wonder[x]) {
+            tooltipText = `Unit available in <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         }
-        const imgSrc = `/aow4db/Icons/StructurePics/${wonder.id}.png`;
+        const imgSrc = `/aow4db/Icons/StructurePics/${wonder[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?wonder=${wonder.id}`;
-        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText, wonder);
+        const link = `/aow4db/HTML/Spells.html?wonder=${wonder[x].id}`;
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText, wonder[x]);
     }
 
     let tree = CheckIfInEmpireTree(name);
-    if (tree != "") {
-        const tooltipText = `Unit mentioned in <hyperlink>${tree.category} ${tree.required_level}</<hyperlink> : <hyperlink>${tree.name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree.id}.png`;
+    for (let x = 0; x < tree.length; x++) {
+        const tooltipText = `Unit mentioned in <hyperlink>${tree[x].category} ${tree[x].required_level}</<hyperlink> : <hyperlink>${tree[x].name}</<hyperlink>`;
+        const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/EmpireTree.html`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let unitAbility = CheckIfFromAbility(name);
-    if (unitAbility != "") {
-        const tooltipText = `Unit mentioned in Ability <hyperlink>${unitAbility[1].name}</hyperlink> of Unit <hyperlink>${unitAbility[0].name}</hyperlink>`;
+
+    for (let x = 0; x < unitAbility.length; x++) {
+      
+        const tooltipText = `Unit mentioned in Ability <hyperlink>${unitAbility[x][1].name}</hyperlink> of Unit <hyperlink>${unitAbility[x][0].name}</hyperlink>`;
         const imgSrc =
             unitAbility[0] != ""
-                ? `/aow4db/Icons/UnitIcons/${unitAbility[1].icon}.png`
-                : `/aow4db/Icons/HeroSkillIcons/${unitAbility[1].icon}.png`;
+                ? `/aow4db/Icons/UnitIcons/${unitAbility[x][1].icon}.png`
+                : `/aow4db/Icons/HeroSkillIcons/${unitAbility[x][1].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Units.html?unit=${unitAbility[0].id}`;
+        const link = `/aow4db/HTML/Units.html?unit=${unitAbility[x][0].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let heroSkill = CheckIfFromHeroSkill(name);
-    if (heroSkill != "") {
-        const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[1].name}</hyperlink>`;
+    for (let x = 0; x < heroSkill.length; x++) {
+        const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[x][1].name}</hyperlink>`;
         const imgSrc =
-            heroSkill[0] != ""
-                ? `/aow4db/Icons/UnitIcons/${heroSkill[0].icon}.png`
-                : `/aow4db/Icons/HeroSkillIcons/${heroSkill[1].icon}.png`;
+            heroSkill[x][0] != ""
+                ? `/aow4db/Icons/UnitIcons/${heroSkill[x][0].icon}.png`
+                : `/aow4db/Icons/HeroSkillIcons/${heroSkill[x][1].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?skill=${heroSkill[1].id}`;
+        const link = `/aow4db/HTML/Spells.html?skill=${heroSkill[x][1].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
     let governance = CheckIfFromGovernance(name);
-    if (governance != "") {
-        const tooltipText = `Unit mentioned in Governance <hyperlink>${governance.name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/GovernanceIcons/${governance.icon}.png`;
+     for (let x = 0; x < governance.length; x++) {
+        const tooltipText = `Unit mentioned in Governance <hyperlink>${governance[x].name}</hyperlink>`;
+        const imgSrc = `/aow4db/Icons/GovernanceIcons/${governance[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?governance=${governance.id}`;
+        const link = `/aow4db/HTML/Spells.html?governance=${governance[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
@@ -3299,7 +3296,7 @@ function CheckIfInSpells(unitID, unitName) {
 }
 
 function CheckIfFromAbility(unitName) {
-    let ability = "";
+    let ability = new Set();
     let i = 0;
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
@@ -3309,80 +3306,75 @@ function CheckIfFromAbility(unitName) {
         if (unitName === "Fire Runestone") {
             unitName = "Runestone";
         }
-        if (regex.test(jsonUnitAbilities[i].description)) {
-            ability = jsonUnitAbilities[i];
+        if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
+            ability.add(jsonUnitAbilities[i]);
         }
     }
 
-    let unitslugLookup = "";
-    if (ability != "") {
+    let unitslugLookup = new Set();
+
+    const arrayAbilities = Array.from(ability);
+
+    for (let x = 0; x < arrayAbilities.length; x++) {
         let j = 0;
         for (j in jsonUnits) {
             let k = 0;
             for (k in jsonUnits[j].abilities) {
-                if (jsonUnits[j].abilities[k].slug === ability.slug) {
-                    unitslugLookup = [];
-                    unitslugLookup.push(jsonUnits[j]);
-                    unitslugLookup.push(ability);
+                if (jsonUnits[j].abilities[k].slug === arrayAbilities[x].slug) {
+                    unitslugLookup.add([jsonUnits[j], arrayAbilities[x]]);
                 }
             }
             let l = 0;
             for (l in jsonUnits[j].primary_passives) {
-                if (jsonUnits[j].primary_passives[l].slug === ability.slug) {
-                    unitslugLookup = [];
-                    unitslugLookup.push(jsonUnits[j]);
-                    unitslugLookup.push(ability);
+                if (jsonUnits[j].primary_passives[l].slug === arrayAbilities[x].slug) {
+                    unitslugLookup.add([jsonUnits[j], arrayAbilities[x]]);
                 }
             }
         }
     }
-
-    return unitslugLookup;
+    // console.log(unitslugLookup);
+    return Array.from(unitslugLookup);
 }
 
 function CheckIfFromHeroSkill(unitName) {
-    let resultslist = "";
-    let hero = "";
+    let resultslist = new Set();
+    let hero = new Set();
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
 
     for (let i in jsonUnitAbilities) {
         if (regex.test(jsonUnitAbilities[i].description)) {
-            hero = jsonUnitAbilities[i];
+            hero.add(jsonUnitAbilities[i]);
         }
     }
 
+    const heroList = Array.from(hero);
     let j = 0;
     for (j in jsonHeroSkills) {
-        if (hero != "") {
+        for (let x = 0; x < heroList.length; x++) {
             if ("abilities" in jsonHeroSkills[j]) {
                 let k = 0;
                 for (k in jsonHeroSkills[j].abilities) {
-                    if (jsonHeroSkills[j].abilities[k].slug === hero.slug) {
-                        resultslist = [];
-                        resultslist.push(hero);
-                        resultslist.push(jsonHeroSkills[j]);
+                    if (jsonHeroSkills[j].abilities[k].slug === heroList[x].slug) {
+                        resultslist.add([heroList[x], jsonHeroSkills[j]]);
                     }
                 }
             }
-        } else {
-            let k = 0;
-            for (k in jsonHeroSkills[j].description) {
-                if (regex.test(jsonHeroSkills[j].description)) {
-                    resultslist = [];
-                    resultslist.push(hero);
-                    resultslist.push(jsonHeroSkills[j]);
-                }
-            }
+        }
+        let k = 0;
+      
+            if (regex.test(jsonHeroSkills[j].description)) {
+                resultslist.add(["", jsonHeroSkills[j]]);
+            
         }
     }
-
-    return resultslist;
+    console.log(Array.from(resultslist));
+    return Array.from(resultslist);
 }
 
 function CheckIfFromGovernance(unitName) {
-    let governance = "";
+    let governance = new Set();
 
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
@@ -3390,15 +3382,15 @@ function CheckIfFromGovernance(unitName) {
 
     let i = 0;
     for (i in jsonHeroGovernance) {
-        if (regex.test(jsonHeroGovernance[i].screen_description)) {
-            governance = jsonHeroGovernance[i];
+        if (jsonHeroGovernance[i].screen_description.indexOf(unitName)!= -1) {
+            governance.add(jsonHeroGovernance[i]);
         }
     }
-    return governance;
+    return Array.from(governance);
 }
 
 function CheckIfInSiege(unitName) {
-    let siege = "";
+    let siege = new Set();
     let i = 0;
 
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
@@ -3407,14 +3399,14 @@ function CheckIfInSiege(unitName) {
 
     for (i in jsonSiegeProjects) {
         if (regex.test(jsonSiegeProjects[i].description)) {
-            siege = jsonSiegeProjects[i];
+            siege.add(jsonSiegeProjects[i]);
         }
     }
-    return siege;
+    return Array.from(siege);
 }
 
 function CheckIfInStructure(id, unitName) {
-    let structure = "";
+    let structure = new Set();
     let i = 0;
 
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
@@ -3423,28 +3415,28 @@ function CheckIfInStructure(id, unitName) {
 
     for (i in jsonStructureUpgrades) {
         if (regex.test(jsonStructureUpgrades[i].prediction_description)) {
-            structure = jsonStructureUpgrades[i];
+            structure.add(jsonStructureUpgrades[i]);
         }
 
         if (regex.test(jsonStructureUpgrades[i].description)) {
-            structure = jsonStructureUpgrades[i];
+            structure.add(jsonStructureUpgrades[i]);
         }
 
         for (const [keyword, units] of Object.entries(unlockableUnitsMapStructures)) {
             if (jsonStructureUpgrades[i].id.indexOf(keyword) != -1) {
                 // right structure
                 if (units.includes(id)) {
-                    structure = jsonStructureUpgrades[i];
+                    structure.add(jsonStructureUpgrades[i]);
                 }
             }
         }
     }
 
-    return structure;
+    return Array.from(structure);
 }
 
 function CheckIfInTomes(unitID) {
-    let tome = "";
+    let tome = new Set();
 
     if (unitID == "young_frost_dragon" || unitID == "young_obsidian_dragon" || unitID == "young_golden_dragon") {
         unitID = "young_fire_dragon";
@@ -3456,16 +3448,16 @@ function CheckIfInTomes(unitID) {
         for (k in jsonTomes[i].skills) {
             if ("unit_slug" in jsonTomes[i].skills[k]) {
                 if (unitID === jsonTomes[i].skills[k].unit_slug) {
-                    tome = jsonTomes[i];
+                    tome.add(jsonTomes[i]);
                 }
             }
         }
     }
-    return tome;
+    return Array.from(tome);
 }
 
 function CheckIfInEmpireTree(unitName) {
-    let tree = "";
+    let tree = new Set();
 
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
@@ -3473,11 +3465,11 @@ function CheckIfInEmpireTree(unitName) {
     let i = "";
     for (i in jsonEmpire) {
         if (regex.test(jsonEmpire[i].description)) {
-            tree = jsonEmpire[i];
+            tree.add(jsonEmpire[i]);
         }
     }
 
-    return tree;
+    return Array.from(tree);
 }
 
 function CheckIfEvolveTarget(unitID) {
@@ -3495,35 +3487,35 @@ function CheckIfEvolveTarget(unitID) {
 }
 
 function CheckIfInTraits(unitID) {
-    let wonder = "";
+    let wonder = new Set();
     let i,
         k = "";
     for (i in jsonFactionCreation) {
         if ("unit_unlocks" in jsonFactionCreation[i]) {
             for (k in jsonFactionCreation[i].unit_unlocks) {
                 if (unitID === jsonFactionCreation[i].unit_unlocks[k].slug) {
-                    wonder = jsonFactionCreation[i];
+                    wonder.add(jsonFactionCreation[i]);
                 }
             }
         }
     }
-    return wonder;
+    return Array.from(wonder);
 }
 
 function CheckIfInAncientWonder(unitID) {
-    let wonder = "";
+    let wonder = new Set();
     let i,
         k = "";
     for (i in jsonWorldStructures) {
         if ("unit_unlocks" in jsonWorldStructures[i]) {
             for (k in jsonWorldStructures[i].unit_unlocks) {
                 if (unitID === jsonWorldStructures[i].unit_unlocks[k].slug) {
-                    wonder = jsonWorldStructures[i];
+                    wonder.add(jsonWorldStructures[i]);
                 }
             }
         }
     }
-    return wonder;
+    return Array.from(wonder);
 }
 
 function ReduceUpkeepPercentage(value, percentage) {
@@ -5424,17 +5416,15 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         }
         descriptionDiv.innerHTML += "</bulletlist>";
     }
-    
+
     if ("objective" in currentTrait) {
         descriptionDiv.innerHTML += "<br><hr><span style='color:beige'>Objective: </span><br>";
-    const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.objective);
-         if (valueLookup) {
-                descriptionDiv.innerHTML += valueLookup.objective_1 + "<br>";
-                descriptionDiv.innerHTML += valueLookup.objective_2 ?valueLookup.objective_2 + "<br>" :"";
-         descriptionDiv.innerHTML += valueLookup.objective_3 ?valueLookup.objective_3 + "<br>":"";
-      
-         }
-          
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.objective);
+        if (valueLookup) {
+            descriptionDiv.innerHTML += valueLookup.objective_1 + "<br>";
+            descriptionDiv.innerHTML += valueLookup.objective_2 ? valueLookup.objective_2 + "<br>" : "";
+            descriptionDiv.innerHTML += valueLookup.objective_3 ? valueLookup.objective_3 + "<br>" : "";
+        }
     }
 
     if ("rewards" in currentTrait) {
@@ -5443,22 +5433,28 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             //console.log(currentTrait.rewards[i]);
             const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.rewards[i]);
             if (valueLookup) {
-                descriptionDiv.innerHTML += valueLookup.city_cap_buff ? "<bullet>"+ valueLookup.city_cap_buff+ "</bullet>" : "";
-                descriptionDiv.innerHTML += valueLookup.throne_city_buff ? "<bullet>" + valueLookup.throne_city_buff + "</bullet>" : "";
-                 descriptionDiv.innerHTML += valueLookup.unit_reward ? "<bullet>" + valueLookup.unit_reward + "</bullet>" : "";
+                descriptionDiv.innerHTML += valueLookup.city_cap_buff
+                    ? "<bullet>" + valueLookup.city_cap_buff + "</bullet>"
+                    : "";
+                descriptionDiv.innerHTML += valueLookup.throne_city_buff
+                    ? "<bullet>" + valueLookup.throne_city_buff + "</bullet>"
+                    : "";
+                descriptionDiv.innerHTML += valueLookup.unit_reward
+                    ? "<bullet>" + valueLookup.unit_reward + "</bullet>"
+                    : "";
                 descriptionDiv.innerHTML += valueLookup.war ? "<bullet>" + valueLookup.war + "</bullet>" : "";
-              
-                descriptionDiv.innerHTML += valueLookup.war_houses ? "<bullet>" + valueLookup.war_houses + "</bullet>" : "";
-               descriptionDiv.innerHTML += valueLookup.name?  "<bullet>" + valueLookup.name + "<br>": "";
-                descriptionDiv.innerHTML += valueLookup.description? valueLookup.description + "</bullet>" : "";
+
+                descriptionDiv.innerHTML += valueLookup.war_houses
+                    ? "<bullet>" + valueLookup.war_houses + "</bullet>"
+                    : "";
+                descriptionDiv.innerHTML += valueLookup.name ? "<bullet>" + valueLookup.name + "<br>" : "";
+                descriptionDiv.innerHTML += valueLookup.description ? valueLookup.description + "</bullet>" : "";
             }
         }
     }
-    
+
     if ("unit_unlocks" in currentTrait) {
-        
-            descriptionDiv.innerHTML += "<br><span style='color:beige'>Rally Units:</span><br>";
-        
+        descriptionDiv.innerHTML += "<br><span style='color:beige'>Rally Units:</span><br>";
 
         for (let x = 0; x < currentTrait.unit_unlocks.length; x++) {
             let div = document.createElement("DIV");
@@ -5773,12 +5769,12 @@ function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
         if (showorigin) {
             const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
             const tomeOriginName = modCard.querySelector("#originTomeName");
-             const originTomeTier = modCard.querySelector("#originTomeTier");
+            const originTomeTier = modCard.querySelector("#originTomeTier");
             if ("affinities" in tomespells) {
                 tomeOriginAff.innerHTML = showAffinitySymbols(tomespells);
             }
             originTomeTier.innerHTML += romanize(tomespells.tier);
-            tomeOriginName.innerHTML +=  tomespells.name;
+            tomeOriginName.innerHTML += tomespells.name;
 
             const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/TomeIcons/" + tomespells.icon + ".png");
