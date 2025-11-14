@@ -1778,12 +1778,14 @@ function SetTomePreview(span, origin) {
                 } else {
                     slug = locOrigin.skills[index].name.replaceAll(" ", "_").toLowerCase();
                 }
+                
+                const siege = findBy(jsonSiegeProjectsLocalized, "id", slug);
 
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/SiegeProjectIcons/' +
-                    slug +
+                    siege.icon +
                     '.png">' +
-                    findBy(jsonSiegeProjectsLocalized, "id", slug).name +
+                    siege.name +
                     "</bullet>";
             }
             // city structure
@@ -2530,7 +2532,7 @@ function ShowSiegeProjectsOverview(list) {
                 var text = document.createElement("div");
                 text.innerHTML = loc.name;
                 var smallIcon = document.createElement("img");
-                smallIcon.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + jsonSiegeProjects[i].id + ".png");
+                smallIcon.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + jsonSiegeProjects[i].icon + ".png");
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
