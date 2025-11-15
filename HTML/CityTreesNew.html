@@ -173,6 +173,10 @@
                             if (jsonCityTreeNodes[i].id.indexOf("vampire_castle") != -1) {
                                 path.setAttribute("stroke", "red");
                             }
+                              if (jsonCityTreeNodes[i].id.indexOf("desecration_chambers") != -1) {
+                                path.setAttribute("stroke", "red");
+                                  path.setAttribute("stroke-dasharray", "6,10");
+                            }
                             for (const [lineName, buildings] of Object.entries(Fortifications)) {
                                 if (buildings.includes(jsonCityTreeNodes[i].connectTo[j].id)) {
                                     path.setAttribute("stroke", "rgb(100 100 100)");
