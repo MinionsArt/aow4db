@@ -667,7 +667,7 @@ function GetAllAvailableSignatureSkills(slot) {
     var listOfSkills = [];
     for (var s = 0; s < jsonHeroSkills.length; s++) {
         if (jsonHeroSkills[s].type == "signature") {
-            if (rulerOrigin == "Champion" || rulerOrigin == "Wizard") {
+            if ((rulerOrigin == "Champion" || rulerOrigin == "Wizard") && jsonHeroSkills[s].DLC == undefined) {
                 if (slot === 1 && jsonHeroSkills[s].name.indexOf("Initiate") != -1) {
                     listOfSkills.push(jsonHeroSkills[s]);
                 }
