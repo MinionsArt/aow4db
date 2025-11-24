@@ -593,7 +593,7 @@ function SetSkillData(nodeElement, skill, rulerSubType, choice) {
     }
 
     if (skillLoc.description == undefined) {
-        spa.innerHTML += GetSkillData(skillLoc, rulerSubType).innerHTML;
+        spa.innerHTML += GetSkillData(skillLoc, rulerSubType);
     } else {
         var description = skillLoc.description;
         description = description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
@@ -1679,18 +1679,20 @@ function ReturnHeroSkillItself(lookup, resid) {
 }
 
 function GetSkillData(a, subtype) {
+    var spa = "";
     if ("abilities" in a) {
         var l = 0;
-        var spa = "";
+        
         for (l in a.abilities) {
             let lookup = a.abilities[l].slug;
             let thisSkill = ReturnSkillItself(lookup, subtype);
             let abilityName = thisSkill.name;
 
             //   description = jsonUnit[j].description;
-            spa = GetAbilityInfo(thisSkill);
+            spa += GetAbilityInfo(thisSkill).innerHTML + "<br>";
 
-            return spa;
+            
         }
     }
+    return spa;
 }
