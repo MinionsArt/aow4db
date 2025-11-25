@@ -1784,16 +1784,9 @@ function SetUpSpawnTable() {
     }
 }
 
-function SetUpCombatEnc() {
-    // Get all collapsible elements
-    let collapsibles = document.getElementsByClassName("collapsible");
-
-    // Iterate over each collapsible element
-    for (const collapsible of collapsibles) {
-        // Attach event listener to each collapsible
-        collapsible.addEventListener("click", function () {
-            // Toggle the "active" class on the current collapsible
-            this.classList.toggle("active");
+function SetUpCombatEnc(event) {
+    
+      this.classList.toggle("active");
 
             // Get the next sibling element (which should be the content)
             let contentElement = this.nextElementSibling;
@@ -1804,8 +1797,19 @@ function SetUpCombatEnc() {
             } else {
                 contentElement.style.display = "grid";
             }
+    /*
+    // Get all collapsible elements
+    let collapsibles = document.getElementsByClassName("collapsible");
+
+    // Iterate over each collapsible element
+    for (const collapsible of collapsibles) {
+        // Attach event listener to each collapsible
+        collapsible.addEventListener("click", function () {
+            // Toggle the "active" class on the current collapsible
+          
         });
     }
+    */
 }
 
 async function spawnEquipCards(list, divID) {
@@ -4540,7 +4544,7 @@ function showWorldStructure(a, divOrigin) {
         if ("nodeType" in structure) {
             const valueLookup = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@COUNTS_AS");
             const nodeType = structure.nodeType.split("&");
-            console.log(valueLookup);
+         //   console.log(valueLookup);
             description +=
                 "<bullet>" +
                 valueLookup[nodeType[0]] +
@@ -4574,9 +4578,20 @@ function showWorldStructure(a, divOrigin) {
         imagelink.setAttribute("style", "background-image: none");
     }
     descriptionDiv.innerHTML = "";
+    
+      const eventDiv = divOrigin.querySelector("#event");
+ 
+    eventDiv.innerHTML = "";
 
     if (structure.type.indexOf("Ancient") != 1) {
-        console.log(structure.type);
+        //console.log("found ancient wonder" + structure.type);
+        if('events' in structure){
+            // events are here
+            for(var i in structure.events){
+              //  console.log(structure.events[i]);
+               eventDiv.appendChild(CreateAncientWonderEventSetup(structure.events[i].name, structure));
+            }
+        }
         //descriptionDiv.innerHTML +=
         //   "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
     }
@@ -4588,7 +4603,7 @@ function showWorldStructure(a, divOrigin) {
     );
     let combatEnchantment = FindCombatEnchantment(a);
     if (combatEnchantment != undefined) {
-        descriptionDiv.append(combatEnchantment);
+        descriptionDiv.appendChild(combatEnchantment);
     }
 
     if ("unit_unlocks" in structure) {
@@ -4663,6 +4678,103 @@ function showWorldStructure(a, divOrigin) {
 
     cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
+}
+
+function getEventStructureNameByPrefix(obj, prefix) {
+  return Object.entries(obj)
+    .filter(([key]) => key.startsWith(prefix + "_"))
+    .map(([_, value]) => value);
+}
+
+function getStoryParts(obj, prefix, lookup) {
+  return Object.entries(obj)
+    .filter(([key]) => key.startsWith(prefix + "_story"))
+    .map(([_, value]) => value);
+}
+
+function CreateAncientWonderEventSetup(eventHandle, structure){
+    
+    
+
+          const divHolder = document.createElement("div");
+    const div = document.createElement("div");
+  
+    
+            div.className = "combatEnchantment";
+    const TitleHolder = document.createElement("button");
+    TitleHolder.className =  "collapsible";
+    TitleHolder.onclick = SetUpCombatEnc;
+     const AlternateNames = document.createElement("div");
+    divHolder.appendChild(TitleHolder);
+      divHolder.appendChild(div);
+    div.appendChild(AlternateNames);
+    if('nameOverrides' in structure){
+          // names
+       const overrides = findBy(jsonAllFromPOLocalized, "id", structure.nameOverrides);
+        
+        const rightSites = getEventStructureNameByPrefix(overrides, eventHandle);
+      
+        for(var i in rightSites){
+              AlternateNames.innerHTML += rightSites[i] + " | ";
+        }
+    // story
+         const story = findBy(jsonAllFromPOLocalized, "id", structure[eventHandle + "_story"]);
+          //const rightStoryParts = getEventStructureNameByPrefix(overrides, eventHandle);
+        if(story != undefined){
+            TitleHolder.innerHTML = story.title;
+            
+            const title = document.createElement("div");
+                title.innerHTML = story.title;
+            div.appendChild(title);
+           const lorePart = document.createElement("div");
+        
+             const storyLore = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_LORE");
+            let loreText =  storyLore?(storyLore.hero_is_playerle  || storyLore.hero_is_playelea) :  story.body_lore ;
+            lorePart.innerHTML = processStoryEventText(loreText);
+              div.appendChild(lorePart);
+             const headerPart = document.createElement("div");
+              const storyHeader = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_HEADER");
+            let headerText =    storyHeader? (storyHeader.hero_is_playerle || storyHeader.hero_is_playelea) : story.body_header;
+            headerPart.innerHTML = processStoryEventText(headerText);
+              div.appendChild(headerPart);
+             const footerPart = document.createElement("div");
+              const storyFooter = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_FOOTER");
+            let footerText = storyFooter?( storyFooter.hero_is_playerle || storyFooter.hero_is_playelea)  : story.body_footer;
+                footerPart.innerHTML = processStoryEventText(footerText) ;
+              div.appendChild(footerPart);
+            
+             // options
+          const buttons = getEventStructureNameByPrefix(story, "button");
+         for(let j in buttons){
+              const button = document.createElement("div");
+             button.className = "button-random";
+              div.appendChild(button);
+              button.innerHTML += buttons[j];
+        }
+            
+        }
+        
+       
+         
+       // div.innerHTML += story.header;
+       
+    }else{
+        console.log("missing overrides in " + structure.name);
+    }
+    
+        
+   // div.innerHTML = eventHandle;
+    console.log(eventHandle);
+    return divHolder;
+}
+
+function processStoryEventText(text){
+    text = text.replaceAll("<EventHero.FirstName></EventHero.FirstName>", "<hyperlink>Hero Name</hyperlink>");
+    text = text.replaceAll("<EventHero></EventHero>", "<hyperlink>Hero</hyperlink>");
+      text = text.replaceAll("<PlayerLeader.Title></PlayerLeader.Title>", "<hyperlink>Hero</hyperlink>");
+   
+    text = text.replaceAll("<<m:EnemyUnit>>" , "<hyperlink>Enemy Unit</hyperlink>");
+    return text;
 }
 
 function FindCombatEnchantment(id) {
