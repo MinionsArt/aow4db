@@ -321,7 +321,7 @@ function AddListView(list, parent) {
 
     btn.className = "w3-bar-item w3-button tablink";
     btn.type = "button";
-    btn.innerHTML = '<i class="fa fa-solid fa-list"></i>';
+    btn.innerHTML = '&#9776';
     btn.setAttribute("onclick", 'openDiv(event, "' + list + '")');
 
     let firstChild = buttonHolder.firstChild;
