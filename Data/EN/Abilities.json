@@ -635,7 +635,7 @@
     "note": "Starts on cooldown"
    }
   ],
-  "description": "Target friendly Tier III or higher unit gains Blood of the Exarch until the end of combat.",
+  "description": "Target friendly Tier III or higher unit gains Blood of the Exarch until the end of combat.<br></br><br></br>Cannot affect <hyperlink>Heroes</hyperlink> or other Blood Exarchs.",
   "name": "Grant Blood of the Exarch",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "Target enemy unit sustains damage and is pulled to an adjacent hex.",
+  "description": "Target unit sustains damage and has a base 90% chance of being pulled to an adjacent hex.",
   "name": "Blood Pull",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "Cooldown: 1 <turn></turn>"
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "Cooldown: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Deal damage to target unit.</bullet><bullet>Adjacent enemy units take 50% of the damage.</bullet><bullet>Enter <hyperlink>Defense Mode</hyperlink> after use.</bullet></bulletlist>",
   "name": "Defensive Sweep",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Melee"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Single Shot"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "Overcharge Cast",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "Can't be refreshed"
+   }
+  ],
   "accuracy": "Always Hits",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28646,7 +28657,7 @@
   "icon": "0000048D00000A82"
  },
  {
-  "description": "At the start of combat, conjure a <hyperlink>Rose Knight</hyperlink>.",
+  "description": "At the start of combat, conjure a <hyperlink>Rose Knight</hyperlink>.<br></br><br></br>Does not work in water battles.",
   "name": "Rose Knight Guardian",
   "slug": "00000497000035a6",
   "icon": "00000497000035A7"
@@ -32615,7 +32626,7 @@
   "icon": "0000049700003114"
  },
  {
-  "description": "<bulletlist><bullet>Unit sustains 4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> each <turn></turn>.</bullet><bullet>Replaces and counts as Bleeding, but ignores Status Effect Immunity: Bleeding.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br>On unit death, it spawns a <hyperlink>Blood Maggot</hyperlink> under the opponent's control until end of combat.</bulletlist></bulletlist>",
+  "description": "<bulletlist><bullet>Unit sustains 4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> each <turn></turn>.</bullet><bullet>Replaces and counts as Bleeding, but ignores Status Effect Immunity: Bleeding.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><bulletlist><br></br>On unit death, it spawns a <hyperlink>Blood Maggot</hyperlink> under the opponent's control until end of combat.</bulletlist>",
   "name": "Blood Parasite",
   "slug": "0000049700002ef4",
   "icon": "0000049700002EF5"
