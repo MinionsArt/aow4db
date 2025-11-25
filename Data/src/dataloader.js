@@ -395,11 +395,19 @@ const patchDates = [
     { name: "Ogre 1.2", from: new Date("2025-04-26"), to: new Date("2025-05-13") }
 ];
 
-function LocalizeUI() {
+function LocalizeUI(specific) {
     // general ui lookup first
     for (const id in jsonUIGeneric) {
-        const el = document.getElementById(id);
-        if (el) {
+        let el = "";
+        if(specific != undefined){
+              el = specific.querySelector("#" +id);
+            console.log(el);
+           
+        }else{
+              el = document.getElementById(id);
+        }
+       
+        if (el != null) {
             let value = "error";
 
             // check if there is a lookup in the baseConceptLookup file

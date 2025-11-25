@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
@@ -8,74 +19,162 @@
 
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
-        <script>
-            var unitarray = ["scout", "militia", "archer", "defender", "aspirant_knight", "bannerman", "longbow", "knight"];
-              var unitarray2 = ["scout", "militia", "archer", "defender", "aspirant_knight", "bannerman", "liege_guard", "knight"];
-
             function HandlePage() {
-                SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Monarchy");
-                SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Aristocracy");
+                GenerateLandingPage();
+            }
 
-                SetLevelUpStuff();
+            async function GenerateLandingPage() {
+                // Load your header HTML
+                const response = await fetch("/aow4db/HTML/header.html");
+                const headerHTML = await response.text();
+
+                // Create a hidden DOM from header.html
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(headerHTML, "text/html");
+
+                // Adjust selector if your menu has a wrapper element
+                const menuItems = doc.querySelector("#menu");
+
+                const grid = document.getElementById("grid");
+                for (const child of menuItems.children) {
+                    //for(let i in menuItems) {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    // units needs more sub menus
+
+                    const topItem = child;
+
+                    const titleLink = topItem.querySelector("a");
+                    const titleText = titleLink ? titleLink.textContent.trim() : "Untitled";
+
+                    if (titleLink.id == "menu-units") {
+                        for (const unitChild of titleLink.nextElementSibling.children) {
+                            const titleLink2 = unitChild.querySelector("a");
+                            const titleText2 = titleLink2 ? titleLink2.textContent.trim() : "Untitled";
+
+                            const h2 = document.createElement("h2");
+                            h2.className = "header";
+                            if (titleLink2) {
+                                h2.innerHTML = `<a href="${titleLink2.href}"> Units - ${titleText2}</a>`;
+                            } else {
+                                h2.textContent = titleText2;
+                            }
+
+                            const img = titleLink2.querySelector("img");
+                            img.setAttribute("width", "70px");
+                            h2.prepend(img);
+                            const card2 = document.createElement("div");
+                            card2.appendChild(h2);
+
+                            card2.className = "card";
+                            const subMenu = unitChild.querySelector("ul");
+                            if (subMenu) {
+                                const ul = document.createElement("ul");
+                                subMenu.querySelectorAll("li a").forEach((subLink) => {
+                                    const li = document.createElement("li");
+                                     li.className = "list";
+                                    const img = subLink.querySelector("img");
+                                      const text = subLink.textContent.trim();
+                                      li.innerHTML = `<a id="${subLink.id}" href="${subLink.href}">`+ img.outerHTML + text +`</a>`;
+                              
+                                    //li.innerHTML = `<a href="${subLink.href}">${subLink.textContent.trim()}</a>`;
+                                  
+                                    ul.appendChild(li);
+                                });
+                                card2.appendChild(ul);
+                            }
+
+                            grid.appendChild(card2);
+                        }
+                    } else {
+                        const h2 = document.createElement("h2");
+                        if (titleLink) {
+                            h2.innerHTML = `<a id="${titleLink.id}" href="${titleLink.href}">${titleText}</a>`;
+                        } else {
+                            h2.textContent = titleText;
+                        }
+                         h2.className = "header";
+                        const img = titleLink.querySelector("img");
+                         img.setAttribute("width", "70px");
+                        h2.prepend(img);
+                        card.appendChild(h2);
+
+                        const subMenu = topItem.querySelector("ul");
+                        if (subMenu) {
+                            const ul = document.createElement("ul");
+                            subMenu.querySelectorAll("li a").forEach((subLink) => {
+                               
+                                const li = document.createElement("li");
+                                li.className = "list";
+                                const img = subLink.querySelector("img");
+                                 const text = subLink.textContent.trim();
+                                li.innerHTML = `<a id="${subLink.id}" href="${subLink.href}">`+ img.outerHTML + text +`</a>`;
+                               
+                                 
+                               
+                                
+                                ul.appendChild(li);
+                            });
+                            card.appendChild(ul);
+                        }
+                        grid.appendChild(card);
+                    }
+                }
+                 LocalizeUI(grid);
             }
         </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Age of Wonders 4 Database</title>
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .header {
+                
+    background-color: black;
+    margin: -12px;
+                margin-bottom: 0px;
+            }
+            
+            .list {
+                padding-bottom: 5px;
+                font-size: large;
+            }
 
-        <title>Age of Wonders 4 Database - Feudal Units</title>
+            .card {
+                position: relative;
+
+                float: left;
+
+                background-image: url(/aow4db/Icons/Interface/panel_Background.png);
+                background-size: cover;
+                font-size: 15px;
+                color: #bbcdf6;
+                text-align: left;
+                border-width: 10px;
+                border-style: solid;
+                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                border-image-slice: 10 10 10 10;
+                text-shadow: 2px 2px 3px black;
+                box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+
+                padding: 10px;
+                margin: 5px;
+            }
+        </style>
     </head>
-
     <body>
-        <div id="header"></div>
+        <h1>Age of Wonders 4 Database</h1>
 
-        <div class="textblocktitle">
-            <img src="/aow4db/Icons/Text/feudal.png" height="40px" /> Feudal Culture Units
-            <img src="/aow4db/Icons/Text/feudal.png" height="40px" />
+        <div class="grid" id="grid">
+            <!-- Units -->
         </div>
-        
-        
-    <div class="subcultureHolder">
-        <button onclick="showSubDiv(event,'Monarchy')" class="subscultureButton"><img src=/aow4db/Icons/Text/monarchy.png width="50px">
-            <span class="subCultureName" id="subCultureNameMonarchy">Monarchy</span>
-        </button>
-        <button onclick="showSubDiv(event,'Aristocracy')" class="subscultureButton"><img src=/aow4db/Icons/Text/aristocracy.png width="50px">
-            <span class="subCultureName" id="subCultureNameAristocracy">Aristocracy</span>
-        </button>
-      
-
-    </div>
-
-    <div class="subDiv" id="Monarchy">
-        <div class="w3-container">
-            <div id="buttonHolder1" class="w3-bar w3-black">
-
-            </div>
-            <div id="dataHolder1" class="dataholder" style="margin-top:-250px">
-            </div>
-
-
-        </div>
-    </div>
-    <div class="subDiv" id="Aristocracy">
-        <div class="w3-container">
-            <div id="buttonHolder2" class="w3-bar w3-black">
-
-            </div>
-            <div id="dataHolder2" class="dataholder" style="margin-top:-250px">
-            </div>
-
-
-        </div>
-    </div>
-
-    
     </body>
 </html>
-<footer>
-    <br />
-    <br />
-</footer>

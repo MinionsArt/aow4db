@@ -19,61 +19,102 @@
 
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-                  function HandlePage() {
-                     GenerateLandingPage();
-                  }
-
-                 async function GenerateLandingPage(){
-            // Load your header HTML
-            const response = await fetch("/aow4db/HTML/header.html");
-            const headerHTML = await response.text();
-
-            // Create a hidden DOM from header.html
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(headerHTML, "text/html");
-
-            // Adjust selector if your menu has a wrapper element
-            const menuItems = doc.querySelector("#menu");
-             const menuItems2 = menuItems.childNodes;   
-                 console.log(menuItems2);
-
-            const grid = document.getElementById("grid");
-
-           for(const topItem in menuItems2) {
-            
-              const card = document.createElement("div");
-              card.className = "card";
-
-              const titleLink = topItem.querySelector("a");
-              const titleText = titleLink ? titleLink.textContent.trim() : "Untitled";
-
-              const h2 = document.createElement("h2");
-              if (titleLink) {
-                h2.innerHTML = `<a href="${titleLink.href}">${titleText}</a>`;
-              } else {
-                h2.textContent = titleText;
-              }
-
-              card.appendChild(h2);
-
-              const subMenu = topItem.querySelector("ul");
-              if (subMenu) {
-                const ul = document.createElement("ul");
-                subMenu.querySelectorAll("li a").forEach(subLink => {
-                  const li = document.createElement("li");
-                  li.innerHTML = `<a href="${subLink.href}">${subLink.textContent.trim()}</a>`;
-                  ul.appendChild(li);
-                });
-                card.appendChild(ul);
-              }
-
-              grid.appendChild(card);
+            function HandlePage() {
+                GenerateLandingPage();
             }
 
+            async function GenerateLandingPage() {
+                // Load your header HTML
+                const response = await fetch("/aow4db/HTML/header.html");
+                const headerHTML = await response.text();
 
+                // Create a hidden DOM from header.html
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(headerHTML, "text/html");
 
+                // Adjust selector if your menu has a wrapper element
+                const menuItems = doc.querySelector("#menu");
 
-                  }
+                const grid = document.getElementById("grid");
+                for (const child of menuItems.children) {
+                    //for(let i in menuItems) {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    // units needs more sub menus
+
+                    const topItem = child;
+
+                    const titleLink = topItem.querySelector("a");
+                    const titleText = titleLink ? titleLink.textContent.trim() : "Untitled";
+
+                    if (titleLink.id == "menu-units") {
+                        for (const unitChild of titleLink.nextElementSibling.children) {
+                            const titleLink2 = unitChild.querySelector("a");
+                            const titleText2 = titleLink2 ? titleLink2.textContent.trim() : "Untitled";
+
+                            const h2 = document.createElement("h2");
+                            h2.className = "header";
+                            if (titleLink2) {
+                                h2.innerHTML = `<a href="${titleLink2.href}"> Units - ${titleText2}</a>`;
+                            } else {
+                                h2.textContent = titleText2;
+                            }
+
+                            const img = titleLink2.querySelector("img");
+                            img.setAttribute("width", "70px");
+                            h2.prepend(img);
+                            const card2 = document.createElement("div");
+                            card2.appendChild(h2);
+
+                            card2.className = "card";
+                            const subMenu = unitChild.querySelector("ul");
+                            if (subMenu) {
+                                const ul = document.createElement("ul");
+                                subMenu.querySelectorAll("li a").forEach((subLink) => {
+                                    const li = document.createElement("li");
+                                     li.className = "list";
+                                    const img = subLink.querySelector("img");
+                                    li.innerHTML = `<a href="${subLink.href}">${subLink.textContent.trim()}</a>`;
+                                    li.prepend(img);
+                                    ul.appendChild(li);
+                                });
+                                card2.appendChild(ul);
+                            }
+
+                            grid.appendChild(card2);
+                        }
+                    } else {
+                        const h2 = document.createElement("h2");
+                        if (titleLink) {
+                            h2.innerHTML = `<a href="${titleLink.href}">${titleText}</a>`;
+                        } else {
+                            h2.textContent = titleText;
+                        }
+                         h2.className = "header";
+                        const img = titleLink.querySelector("img");
+                         img.setAttribute("width", "70px");
+                        h2.prepend(img);
+                        card.appendChild(h2);
+
+                        const subMenu = topItem.querySelector("ul");
+                        if (subMenu) {
+                            const ul = document.createElement("ul");
+                            subMenu.querySelectorAll("li a").forEach((subLink) => {
+                                console.log(subLink);
+                                const li = document.createElement("li");
+                                li.className = "list";
+                                const img = subLink.querySelector("img");
+                                li.innerHTML = `<a href="${subLink.href}">${subLink.textContent.trim()}</a>`;
+                                li.prepend(img);
+                                ul.appendChild(li);
+                            });
+                            card.appendChild(ul);
+                        }
+                        grid.appendChild(card);
+                    }
+                }
+            }
         </script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -85,6 +126,39 @@
                 gap: 20px;
                 max-width: 1200px;
                 margin: 0 auto;
+            }
+            
+            .header {
+                
+    background-color: black;
+    margin: -12px;
+                margin-bottom: 0px;
+            }
+            
+            .list {
+                padding-bottom: 5px;
+                font-size: large;
+            }
+
+            .card {
+                position: relative;
+
+                float: left;
+
+                background-image: url(/aow4db/Icons/Interface/panel_Background.png);
+                background-size: cover;
+                font-size: 15px;
+                color: #bbcdf6;
+                text-align: left;
+                border-width: 10px;
+                border-style: solid;
+                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                border-image-slice: 10 10 10 10;
+                text-shadow: 2px 2px 3px black;
+                box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+
+                padding: 10px;
+                margin: 5px;
             }
         </style>
     </head>
