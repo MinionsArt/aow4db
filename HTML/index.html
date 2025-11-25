@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <script src="/aow4db/Data/Init.js"></script>
+        <script>
+                  function HandlePage() {
+                     GenerateLandingPage();
+                  }
+
+                 async function GenerateLandingPage(){
+            // Load your header HTML
+            const response = await fetch("/aow4db/HTML/header.html");
+            const headerHTML = await response.text();
+
+            // Create a hidden DOM from header.html
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(headerHTML, "text/html");
+
+            // Adjust selector if your menu has a wrapper element
+            const menuItems = doc.querySelector("#menu");
+             const menuItems2 = menuItems.childNodes;   
+                 console.log(menuItems2);
+
+            const grid = document.getElementById("grid");
+
+           for(const topItem in menuItems2) {
+            
+              const card = document.createElement("div");
+              card.className = "card";
+
+              const titleLink = topItem.querySelector("a");
+              const titleText = titleLink ? titleLink.textContent.trim() : "Untitled";
+
+              const h2 = document.createElement("h2");
+              if (titleLink) {
+                h2.innerHTML = `<a href="${titleLink.href}">${titleText}</a>`;
+              } else {
+                h2.textContent = titleText;
+              }
+
+              card.appendChild(h2);
+
+              const subMenu = topItem.querySelector("ul");
+              if (subMenu) {
+                const ul = document.createElement("ul");
+                subMenu.querySelectorAll("li a").forEach(subLink => {
+                  const li = document.createElement("li");
+                  li.innerHTML = `<a href="${subLink.href}">${subLink.textContent.trim()}</a>`;
+                  ul.appendChild(li);
+                });
+                card.appendChild(ul);
+              }
+
+              grid.appendChild(card);
+            }
+
+
+
+
+                  }
+        </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Age of Wonders 4 Database</title>
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Age of Wonders 4 Database</h1>
+
+        <div class="grid" id="grid">
+            <!-- Units -->
+        </div>
+    </body>
+</html>
