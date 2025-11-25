@@ -635,7 +635,7 @@
     "note": "Zaczyna bez zregenerowanej umiejętności"
    }
   ],
-  "description": "Wybrana jednostka sojusznicza co najmniej III poziomu zyskuje krew egzarchy do końca walki.",
+  "description": "Wybrana jednostka sojusznicza co najmniej III poziomu zyskuje krew egzarchy do końca walki.<br></br><br></br>Nie ma wpływu na <hyperlink>bohatery</hyperlink> ani innych egzarchów krwi.",
   "name": "Zapewnij krew egzarchy",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "Wybrana jednostka wroga odnosi obrażenia i zostaje przesunięta na sąsiednie pole.",
+  "description": "Wybrana jednostka otrzymuje obrażenia i ma podstawowe 90% szans na przesunięcie na przylegające pole.",
   "name": "Krwiste pociągnięcie",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "Zawsze trafia",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "Odnowienie: 1 <turn></turn>"
+    "note": "Odnowienie: 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "Odnowienie: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Zadaje obrażenia wybranej jednostce.</bullet><bullet>Przylegające jednostki wroga otrzymują 50% obrażeń.</bullet><bullet>Po użyciu aktywuje się <hyperlink>tryb obronny</hyperlink>.</bullet></bulletlist>",
   "name": "Obronny wymach",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Wręcz^x"
+   },
+   {
+    "requisite": "Podstawa^fn"
+   },
+   {
+    "requisite": "Pojedynczy strzał"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "Odnowienie: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "Rzucenie przeciążenia",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "Nie można odświeżyć"
+   }
+  ],
   "accuracy": "Zawsze trafia",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "Obrażenia rosną wraz ze spadkiem <hyperlink><hp></hp> punktów zdrowia</hyperlink>, do 50%.",
+  "description": "Obrażenia rosną wraz ze spadkiem <hyperlink><hp></hp> punktów zdrowia</hyperlink>, do 50% przy 1 <hyperlink><hp></hp> punktach zdrowia</hyperlink>.",
   "name": "Wampiryczna furia",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

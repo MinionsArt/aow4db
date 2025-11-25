@@ -635,7 +635,7 @@
     "note": "Commence avec un temps de recharge "
    }
   ],
-  "description": "L'unité alliée ciblée d'échelon III ou supérieur obtient Sang de l'exarque jusqu'à la fin du combat.",
+  "description": "L'unité alliée ciblée d'échelon III ou supérieur obtient Sang de l'exarque jusqu'à la fin du combat. <br></br><br></br>N'affecte pas les <hyperlink>Héros</hyperlink> ou d'autres exarques de sang.",
   "name": "Octroi de Sang de l'exarque",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "L'unité ennemie ciblée subit des dégâts et est attirée vers une case adjacente.",
+  "description": "L'unité ciblée subit des dégâts et a 90 % de chances de base d'être attirée sur une case adjacente.",
   "name": "Attraction sanglante",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "Touche toujours",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "Temps de recharge : 1 <turn></turn>"
+    "note": "Temps de recharge : 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "Temps de recharge : 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Infligez des dégâts à l'unité ciblée.</bullet><bullet>Les ennemis adjacents subissent 50 % des dégâts.</bullet><bullet>Passez en <hyperlink>Mode défensif</hyperlink> après utilisation.</bullet></bulletlist>",
   "name": "Balayage défensif",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Mêlée"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Tir unique^m"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "Temps de recharge : 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "Sort surchargé",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "Non actualisable"
+   }
+  ],
   "accuracy": "Touche toujours",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "Les dégâts augmentent tandis que <hyperlink><hp></hp> Points de vie</hyperlink> baissent, jusqu'à 50 %.",
+  "description": "Les dégâts augmentent tandis que les <hyperlink><hp></hp> Points de vie</hyperlink> baissent, jusqu'à 50 % à 1 <hyperlink><hp></hp> Point de vie</hyperlink>.",
   "name": "Rage vampirique",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

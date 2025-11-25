@@ -635,7 +635,7 @@
     "note": "クールダウン状態で開始"
    }
   ],
-  "description": "グレードがIII以上の対象味方ユニットは、戦闘終了時まで太守の血を獲得する。",
+  "description": "グレードがIII以上の対象味方ユニットは、戦闘終了時まで太守の血を獲得する。<br></br><br></br><hyperlink>ヒーロー</hyperlink>や他の血の太守には効果は適用されない。",
   "name": "太守の血を付与",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "対象の敵ユニットにダメージを与え、隣接するマスに引き込む。",
+  "description": "対象のユニットがダメージを受け、90%の基本確率で隣接するマスに引き寄せられる。",
   "name": "ブラッドプル",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "常にヒット",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "クールタイム：1 <turn></turn>"
+    "note": "クールタイム：2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "クールタイム：2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>対象のユニットにダメージを与える。</bullet><bullet>隣接する敵ユニットはダメージの50%を受ける。</bullet><bullet>使用後、<hyperlink>防御モード</hyperlink>に入る。</bullet></bulletlist>",
   "name": "ディフェンス・スイープ",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近接"
+   },
+   {
+    "requisite": "基本"
+   },
+   {
+    "requisite": "単発"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "クールタイム：2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "詠唱のオーバーチャージ",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "更新できません"
+   }
+  ],
   "accuracy": "常にヒット",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "<hyperlink><hp></hp>HP</hyperlink>が低下すると、ダメージが最大50%まで増加する。",
+  "description": "<hyperlink><hp></hp>HP</hyperlink>が低下すると、ダメージが増加する（1 <hyperlink><hp></hp>HP</hyperlink>で最大50%）。",
   "name": "吸血鬼の怒り",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

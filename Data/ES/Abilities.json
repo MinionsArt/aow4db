@@ -635,7 +635,7 @@
     "note": "Empieza con enfriamiento"
    }
   ],
-  "description": "La unidad aliada objetivo de nivel III o superior obtiene Sangre del exarca hasta el final del combate.",
+  "description": "La unidad aliada objetivo de nivel III o superior obtiene Sangre del exarca hasta el final del combate.<br></br><br></br>No afecta a <hyperlink>Héroes</hyperlink> ni a otros exarcas de sangre.",
   "name": "Otorgar sangre del exarca",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "La unidad enemiga objetivo recibe daño y es arrastrada a una casilla adyacente.",
+  "description": "La unidad objetivo recibe daño y tiene una probabilidad inicial del 90 % de que la empujen a una casilla adyacente.",
   "name": "Atracción sanguinaria",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "Siempre acierta",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "Enfriamiento: 1 <turn></turn>"
+    "note": "Enfriamiento: 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "Enfriamiento: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Inflige daño a la unidad objetivo.</bullet><bullet>Las unidades enemigas adyacentes reciben un 50 % del daño.</bullet><bullet>Entra en <hyperlink>Modo defensivo</hyperlink> tras el uso.</bullet></bulletlist>",
   "name": "Barrido defensivo",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Cuerpo a cuerpo^n"
+   },
+   {
+    "requisite": "Base"
+   },
+   {
+    "requisite": "Disparo único^m"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "Enfriamiento: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "Lanzamiento de sobrecarga",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "No se puede actualizar"
+   }
+  ],
   "accuracy": "Siempre acierta",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "El daño aumenta, pero se reducen los <hyperlink><hp></hp> Puntos de salud</hyperlink> hasta un 50 %.",
+  "description": "El daño aumenta, pero se reducen los <hyperlink><hp></hp> Puntos de salud</hyperlink> hasta un 50 % en 1 <hyperlink><hp></hp> Punto de salud</hyperlink>.",
   "name": "Furia vampírica",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

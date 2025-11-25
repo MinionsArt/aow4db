@@ -635,7 +635,7 @@
     "note": "开始冷却"
    }
   ],
-  "description": "目标友方III阶或更高单位获得使徒之血，持续至战斗结束",
+  "description": "目标友方III阶或更高单位获得使徒之血，持续至战斗结束<br></br><br></br>无法影响<hyperlink>英雄</hyperlink>或其他鲜血使徒",
   "name": "颁赐使徒之血",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "目标敌方单位承受伤害并被拉拽至相邻框格",
+  "description": "指定单位受到伤害，并有90%的基础概率被拉至邻近的框格",
   "name": "鲜血牵引",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "始终命中",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "冷却：1<turn></turn>"
+    "note": "冷却：2<turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "冷却：2<turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>对指定单位造成伤害</bullet><bullet>邻近敌方单位受到50%伤害</bullet><bullet>使用后进入<hyperlink>防御模式</hyperlink></bullet></bulletlist>",
   "name": "防御扫击",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "近战"
+   },
+   {
+    "requisite": "基础"
+   },
+   {
+    "requisite": "单击攻击"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "超额充能施法",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "无法刷新"
+   }
+  ],
   "accuracy": "始终命中",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "伤害随<hyperlink><hp></hp>生命值</hyperlink>降低而增加，至多50%",
+  "description": "伤害随<hyperlink><hp></hp>生命值</hyperlink>降低而增加，至多50%，1<hyperlink><hp></hp>生命值</hyperlink>",
   "name": "吸血鬼狂怒",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

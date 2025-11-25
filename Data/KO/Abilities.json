@@ -635,7 +635,7 @@
     "note": "시작 시 재사용 대기시간"
    }
   ],
-  "description": "등급이 III 이상인 대상 우호 유닛이 전투가 종료될 때까지 집정관의 피 상태를 획득합니다.",
+  "description": "등급이 III 이상인 대상 우호 유닛이 전투가 종료될 때까지 집정관의 피 상태를 획득합니다.<br></br><br></br><hyperlink>영웅</hyperlink>, 기타 피의 집정관은 면역입니다.",
   "name": "집정관의 피 부여",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "대상 적 유닛이 피해를 받고 인접 헥스로 끌어당겨집니다.",
+  "description": "대상 유닛이 피해를 받고 90%의 기본 확률로 인접 헥스를 향해 끌어당겨집니다.",
   "name": "피의 인력",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "항상 명중",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "재사용 대기시간: 1 <turn></turn>"
+    "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "재사용 대기시간: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>대상 유닛에 피해를 줍니다.</bullet><bullet>인접 적 유닛이 해당 피해의 50%만큼 피해를 받습니다.</bullet><bullet>사용 후 <hyperlink>방어 모드</hyperlink>에 돌입합니다.</bullet></bulletlist>",
   "name": "방어 휩쓸기",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "근접"
+   },
+   {
+    "requisite": "기본"
+   },
+   {
+    "requisite": "단일 사격"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "주문 과충전",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "재충전 불가"
+   }
+  ],
   "accuracy": "항상 명중",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "<hyperlink><hp></hp> 체력이</hyperlink> 감소할수록 피해가 증가합니다(최대 50%).",
+  "description": "<hyperlink><hp></hp> 체력이</hyperlink> 감소할수록 피해가 증가합니다(최대치는 <hyperlink><hp></hp> 체력이</hyperlink> 1일 때 50%).",
   "name": "흡혈귀의 격분",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

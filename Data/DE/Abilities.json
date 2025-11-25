@@ -635,7 +635,7 @@
     "note": "Beginnt mit Abklingzeit"
    }
   ],
-  "description": "Verbündete Zieleinheit der Stufe III oder höher erhält bis zum Ende des Kampfes Blut des Exarchen.",
+  "description": "Verbündete Zieleinheit der Stufe III oder höher erhält bis zum Ende des Kampfes Blut des Exarchen.<br></br><br></br>Hat keine Wirkung auf <hyperlink>Helden</hyperlink> oder andere Blutexarchen.",
   "name": "Blut des Exarchen gewähren",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "Feindliche Zieleinheit erleidet Schaden und wird auf ein angrenzendes Feld gezogen.",
+  "description": "Zieleinheit erleidet Schaden und hat eine Basischance von 90 %, auf ein angrenzendes Feld gezogen zu werden.",
   "name": "Blutsog",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "Trifft immer",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "Abklingzeit: 1 <turn></turn>"
+    "note": "Abklingzeit: 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "Abklingzeit: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Fügt Zieleinheit Schaden zu.</bullet><bullet>Angrenzende feindliche Einheiten erleiden 50 % des Schadens.</bullet><bullet>Aktiviert nach der Verwendung den <hyperlink>Verteidigungsmodus</hyperlink>.</bullet></bulletlist>",
   "name": "defensives Streufeuer",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Nahkampf^m"
+   },
+   {
+    "requisite": "Basis"
+   },
+   {
+    "requisite": "Einzelschlag^m"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "Abklingzeit: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "Zauberüberladung",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "Kann nicht aktualisiert werden"
+   }
+  ],
   "accuracy": "Trifft immer",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "Der Schaden erhöht sich, wenn die <hyperlink><hp></hp> Trefferpunkte</hyperlink> sinken, bis zu 50 %.",
+  "description": "Der Schaden erhöht sich, wenn die <hyperlink><hp></hp> Trefferpunkte</hyperlink> sinken, bis zu 50 % bei 1 <hyperlink><hp></hp> Trefferpunkt</hyperlink>.",
   "name": "vampirischer Zorn",
   "slug": "0000049700003527",
   "icon": "0000049700003524"

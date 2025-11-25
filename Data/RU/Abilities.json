@@ -635,7 +635,7 @@
     "note": "На перезарядке в начале битвы"
    }
   ],
-  "description": "Выбранный дружественный воин ранга III и выше получает эффект «Кровь экзарха» до конца боя.",
+  "description": "Выбранный дружественный воин ранга III и выше получает эффект «Кровь экзарха» до конца боя.<br></br><br></br>Не действует на <hyperlink>героев</hyperlink> и других кровавых экзархов.",
   "name": "Даровать кровь экзарха",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -651,7 +651,7 @@
  },
  {
   "modifiers": [],
-  "description": "Выбранный вражеский воин получает урон и притягивается на соседнюю клетку.",
+  "description": "Выбранный воин получает урон и с базовой вероятностью 90% может быть притянут на соседнюю клетку.",
   "name": "Кровавое притяжение",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -661,11 +661,11 @@
    }
   ],
   "accuracy": "Всегда попадает в цель",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "notes": [
    {
-    "note": "Перезарядка: 1 <turn></turn>"
+    "note": "Перезарядка: 2 <turn></turn>"
    }
   ],
   "icon": "000004970000340F"
@@ -21043,23 +21043,30 @@
   "icon": "000003E10000154C"
  },
  {
-  "notes": [
-   {
-    "note": "Перезарядка: 2 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Наносит урон выбранному воину.</bullet><bullet>Вражеские воины по соседству получают 50% от этого урона.</bullet><bullet>После применения воин принимает <hyperlink>защитную позицию</hyperlink>.</bullet></bulletlist>",
   "name": "Защитный выпад",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "Ближний бой"
+   },
+   {
+    "requisite": "Основная атака"
+   },
+   {
+    "requisite": "Однократная атака"
    }
   ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
+  "notes": [
+   {
+    "note": "Перезарядка: 2 <turn></turn>"
+   }
+  ],
   "icon": "0000049700000175"
  },
  {
@@ -27183,7 +27190,11 @@
   "name": "Перегрузка заклинаний",
   "slug": "overcharge_cast_ability_property_000003BD00002895",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "Не перезаряжается"
+   }
+  ],
   "accuracy": "Всегда попадает в цель",
   "actionPoints": "<freeaction></freeaction>",
   "range": "0",
@@ -28347,7 +28358,7 @@
   "icon": "000004970000352D"
  },
  {
-  "description": "Урон увеличивается, а <hp></hp> <hyperlink>здоровье</hyperlink> снижается до 50%.",
+  "description": "Урон увеличивается по мере снижения <hp></hp> <hyperlink>здоровья</hyperlink>, до 50% при 1 ед. <hp></hp> <hyperlink>здоровья</hyperlink>.",
   "name": "Ярость вампира",
   "slug": "0000049700003527",
   "icon": "0000049700003524"
