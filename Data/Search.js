@@ -351,7 +351,7 @@ function returnSkillList(fieldToSearch) {
     for (const ability of jsonUnitAbilitiesLocalized) {
         if (matches(ability.description) || matches(ability.name)) {
             const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
-            heroSlugs.add(abilityEN.slug);
+            heroSlugs.add(ability.slug);
         }
 
         if (Array.isArray(ability.modifiers)) {
@@ -360,11 +360,12 @@ function returnSkillList(fieldToSearch) {
                     const abilityEN = findBy(jsonUnitAbilities, "id", ability.id);
 
                     heroSlugs.add(ability.slug);
-                    break; // stop early if found
+                    //break; // stop early if found
                 }
             }
         }
     }
+    console.log(heroSlugs);
 
     // Match hero skills
     for (const skill of jsonHeroSkillsLocalized) {
