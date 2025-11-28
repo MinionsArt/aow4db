@@ -4707,7 +4707,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure){
      const AlternateNames = document.createElement("div");
     divHolder.appendChild(TitleHolder);
       divHolder.appendChild(div);
-    div.appendChild(AlternateNames);
+   
     if('nameOverrides' in structure){
           // names
        const overrides = findBy(jsonAllFromPOLocalized, "id", structure.nameOverrides);
@@ -4715,29 +4715,36 @@ function CreateAncientWonderEventSetup(eventHandle, structure){
         const rightSites = getEventStructureNameByPrefix(overrides, eventHandle);
       
         for(var i in rightSites){
-              AlternateNames.innerHTML += rightSites[i] + " | ";
+              AlternateNames.innerHTML += " <bronzewonder></bronzewonder>"+ rightSites[i];
         }
     // story
          const story = findBy(jsonAllFromPOLocalized, "id", structure[eventHandle + "_story"]);
           //const rightStoryParts = getEventStructureNameByPrefix(overrides, eventHandle);
         if(story != undefined){
-            TitleHolder.innerHTML = story.title;
+           
+             TitleHolder.appendChild(AlternateNames);
+             TitleHolder.innerHTML += story.title;
             
             const title = document.createElement("div");
+            
+            title.className = "eventTitleSegment";
                 title.innerHTML = story.title;
             div.appendChild(title);
-           const lorePart = document.createElement("div");
-        
-             const storyLore = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_LORE");
-            let loreText =  storyLore?(storyLore.hero_is_playerle  || storyLore.hero_is_playelea) :  story.body_lore ;
-            lorePart.innerHTML = processStoryEventText(loreText);
-              div.appendChild(lorePart);
-             const headerPart = document.createElement("div");
+              const headerPart = document.createElement("div");
+              headerPart.className = "eventBodySegment";
               const storyHeader = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_HEADER");
             let headerText =    storyHeader? (storyHeader.hero_is_playerle || storyHeader.hero_is_playelea) : story.body_header;
             headerPart.innerHTML = processStoryEventText(headerText);
               div.appendChild(headerPart);
+           const lorePart = document.createElement("div");
+           lorePart.className = "eventLoreSegment";
+             const storyLore = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_LORE");
+            let loreText =  storyLore?(storyLore.hero_is_playerle  || storyLore.hero_is_playelea) :  story.body_lore ;
+            lorePart.innerHTML = processStoryEventText(loreText);
+              div.appendChild(lorePart);
+           
              const footerPart = document.createElement("div");
+              footerPart.className = "eventBodySegment";
               const storyFooter = findBy(jsonAllFromPOLocalized, "id", story.id + "@BODY_FOOTER");
             let footerText = storyFooter?( storyFooter.hero_is_playerle || storyFooter.hero_is_playelea)  : story.body_footer;
                 footerPart.innerHTML = processStoryEventText(footerText) ;
@@ -4747,16 +4754,15 @@ function CreateAncientWonderEventSetup(eventHandle, structure){
           const buttons = getEventStructureNameByPrefix(story, "button");
          for(let j in buttons){
               const button = document.createElement("div");
-             button.className = "button-random";
+             button.className = "button-event";
               div.appendChild(button);
-              button.innerHTML += buttons[j];
+              button.innerHTML += processStoryEventText(buttons[j]);
         }
             
         }
         
-       
-         
-       // div.innerHTML += story.header;
+       // combat enchantment
+        
        
     }else{
         console.log("missing overrides in " + structure.name);
@@ -4772,8 +4778,17 @@ function processStoryEventText(text){
     text = text.replaceAll("<EventHero.FirstName></EventHero.FirstName>", "<hyperlink>Hero Name</hyperlink>");
     text = text.replaceAll("<EventHero></EventHero>", "<hyperlink>Hero</hyperlink>");
       text = text.replaceAll("<PlayerLeader.Title></PlayerLeader.Title>", "<hyperlink>Hero</hyperlink>");
-   
-    text = text.replaceAll("<<m:EnemyUnit>>" , "<hyperlink>Enemy Unit</hyperlink>");
+   text = text.replaceAll("<EnemyUnit></EnemyUnit>", "<hyperlink>EnemyUnit</hyperlink>");
+     text = text.replaceAll("<EventStructure></EventStructure>", "<hyperlink>EventStructure</hyperlink>");
+    text = text.replaceAll("<<m:" , "<hyperlink>");
+     text = text.replaceAll("<<P:" , "<hyperlink>");
+       text = text.replaceAll("<<p:" , "<hyperlink>");
+       text = text.replaceAll("<<r:" , "<hyperlink>");
+     text = text.replaceAll("<Event" , "");
+        text = text.replaceAll("<<Cp:" , "<hyperlink>");
+      
+     text = text.replaceAll("<<o:" , "<hyperlink>");
+       text = text.replaceAll(">>" , "</hyperlink>");
     return text;
 }
 
