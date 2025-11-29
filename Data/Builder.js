@@ -4793,11 +4793,17 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
             }
             // combat
             const combatEnch = structure[eventHandle + "_combat"];
+            const combatEnchHolder = document.createElement("div");
+            combatEnchHolder.setAttribute("style", "display: grid;");
+          
             if (combatEnch != undefined) {
-                for (let k in combatEnch) {
-                    combatReveal.appendChild(FindCombatEnchantment(combatEnch[k]));
+                for (let index = 0; index < combatEnch.length; index++) {
+                    console.log("here " + combatEnch[index]);
+                    const child = FindCombatEnchantment(combatEnch[index]);
+                    combatEnchHolder.appendChild(child);
                 }
             }
+              combatReveal.appendChild(combatEnchHolder);
         }
 
         // combat enchantment
