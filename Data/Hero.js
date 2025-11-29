@@ -1020,8 +1020,9 @@ function GetSignatureSkillUnlocks(currentSig) {
     for (let i = 0; i < jsonHeroSkills.length; i++) {
         // hardcode some of these because theyre not hooked up properly
         // mind devourer - ancient one not exported
-
-        if (currentSig.resid == 5046586575333) {
+// ev ancient one not exported
+        // mind devourer || roseblood noble || bloodsomething
+        if (currentSig.resid == 5046586575333 || currentSig.resid == 5046586586510 || currentSig.resid == 5046586586483) {
             // ancient one : +30% damage +20 hp, same as ancient of earth but different name
             if (jsonHeroSkills[i].resid == 4514010632504) {
                 // change name to Ancient One
