@@ -232,7 +232,8 @@ async function GetAllData(selectedLang) {
         "CombatEnchantments.json",
         "WorldStructures.json",
         "CosmicHappenings.json",
-        "CityTree.json"
+        "CityTree.json",
+        "all_spawnsets_strategic.json"
     ];
     const fileNames = [
         // ingame dump files
@@ -250,7 +251,7 @@ async function GetAllData(selectedLang) {
         "Governance.json",
         // non-ingame-dump-json-files
         "UI.json",
-        "all.json",
+        "all.json"
     ];
 
     // Create file paths
@@ -280,7 +281,8 @@ async function GetAllData(selectedLang) {
              "jsonCombatEnchantments",
         "jsonWorldStructures",
         "jsonCosmicHappenings",
-            "jsonCityTreeNodes"
+            "jsonCityTreeNodes",
+            "jsonSpawnSetsStrat"
         ];
         const targets = [
             "jsonHeroItems",
