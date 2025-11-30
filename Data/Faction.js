@@ -20,6 +20,7 @@ var currentSubSociety2 = "";
 var currentSubType = "";
 var currentClass = "";
 var currentAscension = "";
+var currentAmbition = "";
 
 // sub culture
 var currentSubCulture = "";
@@ -444,6 +445,9 @@ function selectOrigin(origin, type) {
         case "Ascension":
             currentAscension = origin;
             break;
+            case "Ambition":
+            currentAmbition = origin;
+            break;
         case "Class":
             currentClass = origin;
             // only if its the first
@@ -497,6 +501,12 @@ function ClearAscensionSkill() {
     var ascensionHolder = document.getElementById("originButtonAscension");
     ascensionHolder.innerHTML = "+";
     currentAscension = "";
+}
+
+function ClearAmbition() {
+    var ascensionHolder = document.getElementById("originButtonAmbition");
+    ascensionHolder.innerHTML = "+";
+    currentAmbition = "";
 }
 
 /*
@@ -956,6 +966,10 @@ function SetupButtons(evt, type) {
             list = GetAllAscensions();
 
             break;
+             case "Ambition":
+            list = GetAllAmbitions();
+
+            break;
         case "Society2":
             list = GetAllSocietyTraits();
 
@@ -1372,6 +1386,9 @@ function createImage(type, origin) {
         case "Ascension":
             setImage(`/aow4db/Icons/UnitIcons/${origin.icon}.png`);
             break;
+             case "Ambition":
+            setImage(`/aow4db/Icons/AmbitionIcons/${origin.icon}.png`);
+            break;
         case "Symbol":
             let symbolId = parseInt(origin, 10);
             if (symbolId < 10 && symbolId > 0) symbolId = "0" + symbolId;
@@ -1405,11 +1422,13 @@ function findOriginLocName(origin, type) {
                     newOrigin = valueLookup2.hyperlink || valueLookup2.name || valueLookup2.title;
                 } else {
                     newOrigin = valueLookup.hyperlink || valueLookup.name;
+                  
                 }
             } else {
+                
                 newOrigin = origin.name;
             }
-
+             newOrigin = newOrigin.split("{")[0];
             break;
 
         case "Tome":
@@ -1431,6 +1450,9 @@ function findOriginLocName(origin, type) {
 
         case "Ascension":
             newOrigin = jsonHeroSkillsLocalized.find((entry) => entry.resid === origin.resid).name;
+            break;
+             case "Ambition":
+            newOrigin = jsonHeroAmbitionsLocalized.find((entry) => entry.icon === origin.icon).name;
             break;
         case "Signature":
         case "Loadout":
@@ -1531,6 +1553,7 @@ function createTooltip(origin, type) {
         case "SubType":
         case "Form":
         case "FormTrait":
+           
             const el = spell_card_template.content.firstElementChild.cloneNode(true);
 
             tooltip.innerHTML = el.firstElementChild.innerHTML;
@@ -1546,15 +1569,26 @@ function createTooltip(origin, type) {
             break;
 
         case "Tome":
+            
             SetTomePreview(tooltip, originLoc);
             break;
 
         /* case "FormTrait":
             SetFullPreview(tooltip, originLoc);
             break;*/
+                
+            
+        case "Ambition":
+             const el2 = spell_card_template.content.firstElementChild.cloneNode(true);
+
+            tooltip.innerHTML = el2.firstElementChild.innerHTML;
+           
+             showHeroTrait(origin.id, tooltip);
+            break;
 
         case "Signature":
         case "Ascension":
+        
             SetSkillPreview(tooltip, originLoc);
             break;
 
@@ -2800,6 +2834,18 @@ function GetAllAscensions() {
     return listOfAllOrigins;
 }
 
+function GetAllAmbitions() {
+    var listOfAllOrigins = [];
+
+    for (i = 0; i < jsonHeroAmbitions.length; i++) {
+        if (jsonHeroAmbitions[i].available_to_rulers == true) {
+            listOfAllOrigins.push(jsonHeroAmbitions[i]);
+        }
+    }
+    listOfAllOrigins.sort((a, b) => a.name - b.name);
+    return listOfAllOrigins;
+}
+
 function GetAllSubTypes() {
     var listOfAllSubTypes = [];
 
@@ -3346,6 +3392,14 @@ function GenerateQuickLink() {
         var modRaceName = raceName.replaceAll(" ", "%20");
         code += ":" + modRaceName;
     }
+    // 12 add ambition
+    // 13 ascension
+    if (currentAmbition == "") {
+        code += "," + "am";
+    } else {
+        var number = decimalToHex(LookUpTableData(currentAmbition.id));
+        code += "," + number;
+    }
 
     // console.log("hex code: " + code);
 
@@ -3648,6 +3702,21 @@ function reversLookUp(code) {
         if (splitNames[1] != "r") {
             document.getElementById("fname").value = splitNames[1];
         }
+    }
+    
+     // 13 = ambition if available, else placeholder "am" is added
+    var amb = splitcode[13];
+    if (amb != "am" && amb != undefined) {
+        var numbernew = jsonBuilderLookUp[hexToDecimal(amb)].id;
+
+        for (let index = 0; index < jsonHeroAmbitions.length; index++) {
+            if (jsonHeroAmbitions[index].id === numbernew) {
+                var newas = jsonHeroAmbitions[index];
+            }
+        }
+        currentAmbition = newas;
+        var originButton = document.getElementById("originButtonAmbition");
+        SetButtonInfo(originButton, currentAmbition, "Ambition");
     }
 }
 
