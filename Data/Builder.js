@@ -4710,8 +4710,9 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
             const titleSide = document.createElement("div");
             TitleHolder.appendChild(titleSide);
             TitleHolder.appendChild(AlternateNames);
-
-            titleSide.innerHTML = "<quest></quest>" + story.title;
+            
+            const titleChanged = story.title;
+            titleSide.innerHTML = "<quest></quest>" + titleChanged;
             TitleHolder.setAttribute("style", "display:flex;justify-content: space-between;font-size:small");
 
             const title = document.createElement("div");
@@ -4752,7 +4753,9 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
                 button.innerHTML += processStoryEventText(buttons[j]);
             }
 
-            // combat
+           
+        }
+         // combat
             const combatReveal = document.createElement("div");
             combatReveal.setAttribute("style", "display: flex;justify-content: space-between;");
             div.appendChild(combatReveal);
@@ -4774,7 +4777,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
                 console.log(spawnSetMultiple + " " + eventHandle);
 
                 combatReveal.appendChild(spawnHolder);
-                spawnHolder.innerHTML += "Unit Spawnset: <br>";
+                spawnHolder.innerHTML += "Linked Spawnsets: <br>";
                 
 
                 for (let j in spawnSetMultiple) {
@@ -4807,9 +4810,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
         }
 
         // combat enchantment
-    } else {
-        console.log("missing overrides in " + structure.name);
-    }
+    
 
     // div.innerHTML = eventHandle;
     // console.log(eventHandle);
@@ -4817,6 +4818,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 }
 
 function processStoryEventText(text) {
+    return text;
     text = text.replaceAll("<EventHero.FirstName></EventHero.FirstName>", "<hyperlink>Hero Name</hyperlink>");
     text = text.replaceAll("<EventHero></EventHero>", "<hyperlink>Hero</hyperlink>");
     text = text.replaceAll("<PlayerLeader.Title></PlayerLeader.Title>", "<hyperlink>Hero</hyperlink>");
@@ -4844,7 +4846,7 @@ function FindCombatEnchantment(combatID) {
     let description;
 
     const valueLookup = findBy(jsonAllFromPOLocalized, "id", combatID);
-
+    console.log(combatID);
     if ("description" in valueLookup) {
         description = valueLookup.description;
     }
