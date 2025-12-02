@@ -5114,9 +5114,17 @@ function showSpell(a, showOrigin, divOrigin) {
                 '<button type="button" class="collapsible"onclick="SetUpSpawnTable()">SPAWN CHANCES</button>';
             let collapsibleC = document.createElement("DIV");
             collapsibleC.classList = "content";
-
+            
+            
             const related = jsonSpawnTables.filter((t) => t.category.startsWith(match.spawnset + "_"));
-
+            if(a === "call_greater_animal"){
+                 
+               const extra = jsonSpawnTables.filter((t) => t.category.startsWith("SUMMON_GREATER_GREATER_ANIMAL_CAT"));
+             console.log(extra);
+               
+                related.push(...extra);
+            }
+           
             // 3️⃣ Combine all items for the same category name
             for (const entry of related) {
                 // Check if we already have this category in results
@@ -5130,6 +5138,7 @@ function showSpell(a, showOrigin, divOrigin) {
                 existing.items.push(...entry.items);
             }
             for (const entry of results) {
+                
                 let div = ConvertSpawnTable(entry, match.spawnset);
                 collapsibleC.append(div);
             }

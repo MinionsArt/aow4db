@@ -358,8 +358,10 @@ function doubleNumbers(inputString) {
 
 function ConvertSpawnTable(input, subtractName) {
   
-    const bulletListName = input.category.split(subtractName + "_")[1]; // Get the first entry as the bullet list name
-
+    let bulletListName = input.category.split(subtractName + "_")[1]; // Get the first entry as the bullet list name
+ if(bulletListName == undefined){
+                    bulletListName = "Default";
+                }
     // Calculate the percentages for each entry
     const entryCounts = {};
     for (const entry of input.items) {
