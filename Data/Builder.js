@@ -58,6 +58,11 @@ function AddTagIconsForStatusEffects(text) {
     if (getUserSettings().isolateNumber) {
         text = highlightNumbersInDiv(text);
     }
+    
+      text = text.replaceAll("<bulletlist></bullet>", "<bulletlist>");
+      
+        text = text.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
+        text = text.replaceAll("<br></br>", "<br>");
 
     return text;
 }
@@ -4140,8 +4145,11 @@ function createTooltipForEnchant(item) {
     text.textContent = item.name;
     text.className = "tooltip";
     text.setAttribute("style", "padding:0px");
+    
+    
 
-    span.innerHTML = item.description;
+    span.innerHTML = AddTagIconsForStatusEffects(item.description);
+    
 
     addTooltipListeners(enchantEntry, span);
 
@@ -5061,8 +5069,8 @@ function showSpell(a, showOrigin, divOrigin) {
 
         description += spellFound.description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
         description = AddTagIconsForStatusEffects(description);
-        description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
-        description = description.replaceAll("<br></br>", "<br>");
+       // description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
+      //  description = description.replaceAll("<br></br>", "<br>");
 
         let unitTypesDiv = modCard.querySelector("#affectUnitTypes");
 
