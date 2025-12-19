@@ -58,11 +58,11 @@ function AddTagIconsForStatusEffects(text) {
     if (getUserSettings().isolateNumber) {
         text = highlightNumbersInDiv(text);
     }
-    
-      text = text.replaceAll("<bulletlist></bullet>", "<bulletlist>");
-      
-        text = text.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
-        text = text.replaceAll("<br></br>", "<br>");
+
+    text = text.replaceAll("<bulletlist></bullet>", "<bulletlist>");
+
+    text = text.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
+    text = text.replaceAll("<br></br>", "<br>");
 
     return text;
 }
@@ -4145,11 +4145,8 @@ function createTooltipForEnchant(item) {
     text.textContent = item.name;
     text.className = "tooltip";
     text.setAttribute("style", "padding:0px");
-    
-    
 
     span.innerHTML = AddTagIconsForStatusEffects(item.description);
-    
 
     addTooltipListeners(enchantEntry, span);
 
@@ -4597,6 +4594,8 @@ function showWorldStructure(a, divOrigin) {
         //descriptionDiv.innerHTML +=
         //   "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
     }
+    
+   
     let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
     unitTypesDiv.setAttribute(
@@ -4673,6 +4672,13 @@ function showWorldStructure(a, divOrigin) {
     tier = divOrigin.querySelector("#modtier");
 
     tier.innerHTML = "";
+    
+    
+     if(structure.type == "ore" ||structure.type == "plant" || structure.type == "liquid" || structure.type == "void_stones" ){
+          eventDiv.appendChild(CreateAncientWonderEventSetup("", structure));
+     }
+      
+    
 
     cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
@@ -4718,7 +4724,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
             const titleSide = document.createElement("div");
             TitleHolder.appendChild(titleSide);
             TitleHolder.appendChild(AlternateNames);
-            
+
             const titleChanged = story.title;
             titleSide.innerHTML = "<quest></quest>" + titleChanged;
             TitleHolder.setAttribute("style", "display:flex;justify-content: space-between;font-size:small");
@@ -4760,65 +4766,76 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
                 div.appendChild(button);
                 button.innerHTML += processStoryEventText(buttons[j]);
             }
-
-           
         }
-         // combat
-            const combatReveal = document.createElement("div");
-            combatReveal.setAttribute("style", "display: flex;justify-content: space-between;");
-            div.appendChild(combatReveal);
+        // combat
+        const combatReveal = document.createElement("div");
+        combatReveal.setAttribute("style", "display: flex;justify-content: space-between;");
+        div.appendChild(combatReveal);
 
-            // spawnsets
-            const spawnset = structure[eventHandle + "_spawnset"];
-            if (spawnset != undefined) {
-                const spawnHolder = document.createElement("Div");
-                spawnHolder.style.width = "400px";
-                const spawnSetMultiple = [];
+        // spawnsets
+        const spawnset = structure[eventHandle + "_spawnset"];
+        if (spawnset != undefined) {
+            const spawnHolder = document.createElement("Div");
+            spawnHolder.style.width = "400px";
+            const spawnSetMultiple = [];
 
-                for (let k in spawnset) {
-                    const result = findByFuzzy(jsonSpawnSetsStrat, "pool", spawnset[k]);
-                    if(result != undefined){
-                        
+            for (let k in spawnset) {
+                const result = findByFuzzy(jsonSpawnSetsStrat, "pool", spawnset[k]);
+                if (result != undefined) {
                     spawnSetMultiple.push(result);
-                    }
-                }
-                console.log(spawnSetMultiple + " " + eventHandle);
-
-                combatReveal.appendChild(spawnHolder);
-                spawnHolder.innerHTML += "Linked Spawnsets: <br>";
-                
-
-                for (let j in spawnSetMultiple) {
-                    for (const unit of spawnSetMultiple[j].units) {
-                        spawnHolder.innerHTML += "<bullet> <unit></unit>" + unit + "</bullet>";
-                    }
-                    for (const other of spawnSetMultiple[j].others) {
-                        spawnHolder.innerHTML += "<bullet> <ench></ench>" + other + "</bullet>";
-                    }
-                    for (const type of spawnSetMultiple[j].type) {
-                        spawnHolder.innerHTML += "<bullet> <other></other>" + type + "</bullet>";
-                    }
-                }
-                    
-                
-            }
-            // combat
-            const combatEnch = structure[eventHandle + "_combat"];
-            const combatEnchHolder = document.createElement("div");
-            combatEnchHolder.setAttribute("style", "display: grid;");
-          
-            if (combatEnch != undefined) {
-                for (let index = 0; index < combatEnch.length; index++) {
-                    console.log("here " + combatEnch[index]);
-                    const child = FindCombatEnchantment(combatEnch[index]);
-                    combatEnchHolder.appendChild(child);
                 }
             }
-              combatReveal.appendChild(combatEnchHolder);
+            console.log(spawnSetMultiple + " " + eventHandle);
+
+            combatReveal.appendChild(spawnHolder);
+            spawnHolder.innerHTML += "Linked Spawnsets: <br>";
+
+            for (let j in spawnSetMultiple) {
+                for (const unit of spawnSetMultiple[j].units) {
+                    spawnHolder.innerHTML += "<bullet> <unit></unit>" + unit + "</bullet>";
+                }
+                for (const other of spawnSetMultiple[j].others) {
+                    spawnHolder.innerHTML += "<bullet> <ench></ench>" + other + "</bullet>";
+                }
+                for (const type of spawnSetMultiple[j].type) {
+                    spawnHolder.innerHTML += "<bullet> <other></other>" + type + "</bullet>";
+                }
+            }
         }
+        // combat
+        let combatEnch = structure[eventHandle + "_combat"];
+        const combatEnchHolder = document.createElement("div");
+        combatEnchHolder.setAttribute("style", "display: grid;");
+      
+        if (combatEnch != undefined) {
+            for (let index = 0; index < combatEnch.length; index++) {
+                console.log("here " + combatEnch[index]);
+                const child = FindCombatEnchantment(combatEnch[index]);
+                combatEnchHolder.appendChild(child);
+            }
+        }
+        combatReveal.appendChild(combatEnchHolder);
+    } else if('combat' in structure){
+        TitleHolder.innerText = "Enchantment";
+        const combatReveal = document.createElement("div");
+        combatReveal.setAttribute("style", "display: flex;justify-content: space-between;");
+        div.appendChild(combatReveal);
 
-        // combat enchantment
-    
+        let combatEnch = structure.combat;
+        const combatEnchHolder = document.createElement("div");
+        combatEnchHolder.setAttribute("style", "display: grid;");
+       console.log("here combat 2");
+
+        if (combatEnch != undefined) {
+         
+                
+                const child = FindCombatEnchantment(combatEnch);
+                combatEnchHolder.appendChild(child);
+            
+        }
+        combatReveal.appendChild(combatEnchHolder);
+    }
+    // combat enchantment
 
     // div.innerHTML = eventHandle;
     // console.log(eventHandle);
@@ -4856,7 +4873,7 @@ function FindCombatEnchantment(combatID) {
     const valueLookup = findBy(jsonAllFromPOLocalized, "id", combatID);
     console.log(combatID);
     if ("description" in valueLookup) {
-        description = valueLookup.description;
+        description = AddTagIconsForStatusEffects(valueLookup.description);
     }
     if ("name" in valueLookup) {
         name = valueLookup.name;
@@ -5069,8 +5086,8 @@ function showSpell(a, showOrigin, divOrigin) {
 
         description += spellFound.description.replaceAll("<bulletlist></bullet>", "<bulletlist>");
         description = AddTagIconsForStatusEffects(description);
-       // description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
-      //  description = description.replaceAll("<br></br>", "<br>");
+        // description = description.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
+        //  description = description.replaceAll("<br></br>", "<br>");
 
         let unitTypesDiv = modCard.querySelector("#affectUnitTypes");
 
@@ -5122,17 +5139,15 @@ function showSpell(a, showOrigin, divOrigin) {
                 '<button type="button" class="collapsible"onclick="SetUpSpawnTable()">SPAWN CHANCES</button>';
             let collapsibleC = document.createElement("DIV");
             collapsibleC.classList = "content";
-            
-            
+
             const related = jsonSpawnTables.filter((t) => t.category.startsWith(match.spawnset + "_"));
-            if(a === "call_greater_animal"){
-                 
-               const extra = jsonSpawnTables.filter((t) => t.category.startsWith("SUMMON_GREATER_GREATER_ANIMAL_CAT"));
-             console.log(extra);
-               
+            if (a === "call_greater_animal") {
+                const extra = jsonSpawnTables.filter((t) => t.category.startsWith("SUMMON_GREATER_GREATER_ANIMAL_CAT"));
+                console.log(extra);
+
                 related.push(...extra);
             }
-           
+
             // 3️⃣ Combine all items for the same category name
             for (const entry of related) {
                 // Check if we already have this category in results
@@ -5146,7 +5161,6 @@ function showSpell(a, showOrigin, divOrigin) {
                 existing.items.push(...entry.items);
             }
             for (const entry of results) {
-                
                 let div = ConvertSpawnTable(entry, match.spawnset);
                 collapsibleC.append(div);
             }
