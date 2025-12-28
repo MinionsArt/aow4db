@@ -1266,6 +1266,9 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, 
                 }
                 return;
             }
+            else{
+                console.log("missing Node here for: " + currentSkill.name + " node missing for : " + link.name);
+            }
         });
     }
 
@@ -1580,11 +1583,17 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                 modifiers: originalSkill.modifiers ? originalSkill.modifiers.map((mod) => ({ ...mod })) : undefined
             };
             const eldritchAncientOne = ["0000041b0000113a"];
-            if (eldritchAncientOne.includes(skill.slug)) {
-                console.log("here");
+             const dropdownOrigin = document.getElementById("actionDropdownOrigin");
+            //console.log(dropdownOrigin.value);
+            if (eldritchAncientOne.includes(skill.slug) && dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire") {
+               // console.log("here");
                 skill.name = "Ancient One";
                 skill.description =
                     skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
+               skill.description =  skill.description.replace("+30", "+20");
+            }
+             if (eldritchAncientOne.includes(skill.slug) && dropdownOrigin.value == "Dragon" || dropdownOrigin.value == "Giant") {
+               skill.description =  skill.description.replace("+30", "+20");
             }
 
             if (subTypeOverride !== undefined) {
