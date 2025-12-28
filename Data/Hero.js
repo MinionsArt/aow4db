@@ -1611,6 +1611,7 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                 eldritchAncientOne.includes(skill.slug) &&
                 (dropdownOrigin.value == "Dragon" || dropdownOrigin.value == "Giant")
             ) {
+                  skill.description =skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
                 skill.description = skill.description.replace("+30", "+20");
             }
 
