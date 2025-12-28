@@ -138,8 +138,7 @@ function ResetAll() {
 function SetStartingSkillsSelection() {
     // set base skills
     console.log(currentSelectedSkillsArray[0]);
-    if(currentSelectedSkillsArray[0] == undefined){
-        
+    if (currentSelectedSkillsArray[0] == undefined) {
         return;
     }
     let nodeWithId = document.getElementById(currentSelectedSkillsArray[0]);
@@ -165,13 +164,11 @@ function ResetSkills() {
         // lesser dragon breath
         currentSelectedSkillsArray = [4273492487240];
         currentSkillPoints--;
-    } else
-    if (rulerOrigin == "Eldritch") {
+    } else if (rulerOrigin == "Eldritch") {
         // enthralling presence
         currentSelectedSkillsArray = [5046586576674];
         currentSkillPoints--;
-    } else
-    if (rulerOrigin == "Giant") {
+    } else if (rulerOrigin == "Giant") {
         if (rulerSubType == "GiantFire") {
             // fire summon
             currentSelectedSkillsArray = [5046586578740];
@@ -189,8 +186,8 @@ function ResetSkills() {
             currentSelectedSkillsArray = [5046586578733];
         }
         currentSkillPoints--;
-    } else if (rulerOrigin == "Vampire"){
-       currentSelectedSkillsArray= [];
+    } else if (rulerOrigin == "Vampire") {
+        currentSelectedSkillsArray = [];
         // no preset skills
     }
 }
@@ -209,7 +206,7 @@ function LookupCode(code) {
     code = code.replaceAll("%20", " ");
     var splitcode = code.split(",");
     // console.log("Splitcode" + splitcode);
-    
+
     // 0 = currentOrigin
     var origin = splitcode[0];
     console.log(origin);
@@ -860,8 +857,11 @@ function GetAllAvailableSignatureSkills(slot) {
                         } else if (slot == 4) {
                             if ("required_skills" in jsonHeroSkills[s]) {
                                 for (let j = 0; j < jsonHeroSkills[s].required_skills.length; j++) {
-                               //     console.log(type);
-                                    if (jsonHeroSkills[s].required_skills[j].resid == signature3 && jsonHeroSkills[s].type == "signature") {
+                                    //     console.log(type);
+                                    if (
+                                        jsonHeroSkills[s].required_skills[j].resid == signature3 &&
+                                        jsonHeroSkills[s].type == "signature"
+                                    ) {
                                         listOfSkills.push(jsonHeroSkills[s]);
                                     }
                                 }
@@ -1020,28 +1020,27 @@ function GetSignatureSkillUnlocks(currentSig) {
     for (let i = 0; i < jsonHeroSkills.length; i++) {
         // hardcode some of these because theyre not hooked up properly
         // mind devourer - ancient one not exported
-// ev ancient one not exported
+        // ev ancient one not exported
         // mind devourer || roseblood noble || bloodsomething
-        if (currentSig.resid == 5046586575333 || currentSig.resid == 5046586586510 || currentSig.resid == 5046586586483) {
+        if (
+            currentSig.resid == 5046586575333 ||
+            currentSig.resid == 5046586586510 ||
+            currentSig.resid == 5046586586483
+        ) {
             // ancient one : +30% damage +20 hp, same as ancient of earth but different name
-            
-           
-            
+
             if (jsonHeroSkills[i].resid == 4514010632504) {
-                
                 // modify ancient of earth
-             /*   var skill = jsonHeroSkills[i];
-                
+                let skill = jsonHeroSkills[i];
+                console.log(skill);
+                 const dropdownOrigin = document.getElementById("actionDropdownOrigin");
                 // change name to Ancient One
-                 if(dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire") {
-               // console.log("here");
-                skill.name = "Ancient One";
-                skill.description =
-                    skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
-               skill.description =  skill.description.replace("+30", "+20");*/
-           // }
-                
-                unlockedSigs.push(jsonHeroSkills[i]);
+                if (dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire") {
+                    // console.log("here");
+                    skill.name = "Ancient One";
+                }
+
+                unlockedSigs.push(skill);
             }
         }
         // grand brawn rune - ancient of earth
@@ -1279,8 +1278,7 @@ function BuildSkillTreeEntry(currentSkill, row, holder, treespace, extraOffset, 
                     treespace.appendChild(connectionLine);
                 }
                 return;
-            }
-            else{
+            } else {
                 console.log("missing Node here for: " + currentSkill.name + " node missing for : " + link.name);
             }
         });
@@ -1597,17 +1595,23 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                 modifiers: originalSkill.modifiers ? originalSkill.modifiers.map((mod) => ({ ...mod })) : undefined
             };
             const eldritchAncientOne = ["0000041b0000113a"];
-             const dropdownOrigin = document.getElementById("actionDropdownOrigin");
+            const dropdownOrigin = document.getElementById("actionDropdownOrigin");
             //console.log(dropdownOrigin.value);
-            if (eldritchAncientOne.includes(skill.slug) && (dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire")) {
-               // console.log("here");
+            if (
+                eldritchAncientOne.includes(skill.slug) &&
+                (dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire")
+            ) {
+                // console.log("here");
                 skill.name = "Ancient One";
                 skill.description =
                     skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
-               skill.description =  skill.description.replace("+30", "+20");
+                skill.description = skill.description.replace("+30", "+20");
             }
-             if (eldritchAncientOne.includes(skill.slug) && (dropdownOrigin.value == "Dragon" || dropdownOrigin.value == "Giant")) {
-               skill.description =  skill.description.replace("+30", "+20");
+            if (
+                eldritchAncientOne.includes(skill.slug) &&
+                (dropdownOrigin.value == "Dragon" || dropdownOrigin.value == "Giant")
+            ) {
+                skill.description = skill.description.replace("+30", "+20");
             }
 
             if (subTypeOverride !== undefined) {
@@ -1621,7 +1625,7 @@ function ReturnSkillItself(lookup, subTypeOverride) {
                     "comet_breath_ability_000003BD00002895"
                 ];
 
-             //   console.log(skill.name);
+                //   console.log(skill.name);
 
                 if (dragonBreath.includes(skill.slug)) {
                     switch (subTypeOverride) {
@@ -1706,7 +1710,7 @@ function GetSkillData(a, subtype) {
     var spa = "";
     if ("abilities" in a) {
         var l = 0;
-        
+
         for (l in a.abilities) {
             let lookup = a.abilities[l].slug;
             let thisSkill = ReturnSkillItself(lookup, subtype);
@@ -1714,8 +1718,6 @@ function GetSkillData(a, subtype) {
 
             //   description = jsonUnit[j].description;
             spa += GetAbilityInfo(thisSkill).innerHTML + "<br>";
-
-            
         }
     }
     return spa;
