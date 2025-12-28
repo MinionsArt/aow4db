@@ -1024,9 +1024,23 @@ function GetSignatureSkillUnlocks(currentSig) {
         // mind devourer || roseblood noble || bloodsomething
         if (currentSig.resid == 5046586575333 || currentSig.resid == 5046586586510 || currentSig.resid == 5046586586483) {
             // ancient one : +30% damage +20 hp, same as ancient of earth but different name
+            
+           
+            
             if (jsonHeroSkills[i].resid == 4514010632504) {
+                
+                // modify ancient of earth
+             /*   var skill = jsonHeroSkills[i];
+                
                 // change name to Ancient One
-
+                 if(dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire") {
+               // console.log("here");
+                skill.name = "Ancient One";
+                skill.description =
+                    skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
+               skill.description =  skill.description.replace("+30", "+20");*/
+           // }
+                
                 unlockedSigs.push(jsonHeroSkills[i]);
             }
         }
@@ -1585,14 +1599,14 @@ function ReturnSkillItself(lookup, subTypeOverride) {
             const eldritchAncientOne = ["0000041b0000113a"];
              const dropdownOrigin = document.getElementById("actionDropdownOrigin");
             //console.log(dropdownOrigin.value);
-            if (eldritchAncientOne.includes(skill.slug) && dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire") {
+            if (eldritchAncientOne.includes(skill.slug) && (dropdownOrigin.value == "Eldritch" || dropdownOrigin.value == "Vampire")) {
                // console.log("here");
                 skill.name = "Ancient One";
                 skill.description =
                     skill.description.split("</bullet>")[1] + "</bullet>" + skill.description.split("</bullet>")[2];
                skill.description =  skill.description.replace("+30", "+20");
             }
-             if (eldritchAncientOne.includes(skill.slug) && dropdownOrigin.value == "Dragon" || dropdownOrigin.value == "Giant") {
+             if (eldritchAncientOne.includes(skill.slug) && (dropdownOrigin.value == "Dragon" || dropdownOrigin.value == "Giant")) {
                skill.description =  skill.description.replace("+30", "+20");
             }
 
