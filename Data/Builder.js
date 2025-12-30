@@ -194,6 +194,7 @@ function GetUnitTierAndName(id, subcultureCheck) {
     }
 }
 
+
 function CheckIfFormUnit(unit) {
     if (MountedSpecialList.includes(unit.id) || extraFormUnitsList.includes(unit.id) || "culture_name" in unit) {
         if (unit.id !== "observer" && unit.id != "magelock_cannon") {
@@ -217,7 +218,10 @@ function GetTomeTierAndNameTome(id) {
 
 function ShowUnitFromLink() {
     let unitID = searchParams.get("unit");
-    document.title = "Age of Wonders 4 Database - " + GetUnitTierAndName(unitID).split(">")[2];
+    let unitName = findBy(jsonUnits, "id", unitID);
+    let unitNameLoc = findBy(jsonUnitsLocalized, "resid", unitName.resid);
+    
+    document.title = "Age of Wonders 4 Database - " + unitNameLoc.name;
     showUnitFromString(unitID, "dataHolder");
 }
 
@@ -2143,10 +2147,10 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
     let list = [];
     list = findSpellsWithArgument(argument, argumentType);
 
-    if (overwritetext.indexOf(">") != -1) {
+   /* if (overwritetext.indexOf(">") != -1) {
         overwritetext = overwritetext.split("/")[1];
         overwritetext = overwritetext.split(">")[1];
-    }
+    }*/
 
     SetCollapsibleButtonsAndDivs(overwritetext, list, "spell");
 }
