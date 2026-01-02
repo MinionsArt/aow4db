@@ -3494,13 +3494,13 @@ function reversLookUp(code) {
     SetButtonInfo(originButton, currentSociety2, "Society2");
 
     // sub society
-    if (currentSocietySplit[1] != undefined) {
+    if (currentSocietySplit2[1] != undefined) {
         // sub society here
 
-        var subsoc1 = jsonBuilderLookUp[hexToDecimal(currentSocietySplit[1])].id;
+        var subsoc2 = jsonBuilderLookUp[hexToDecimal(currentSocietySplit2[1])].id;
 
         for (let index = 0; index < jsonFactionCreation.length; index++) {
-            if (jsonFactionCreation[index].id === subsoc1) {
+            if (jsonFactionCreation[index].id === subsoc2) {
                 var newBit = jsonFactionCreation[index];
             }
             currentSubSociety2 = newBit;
