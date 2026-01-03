@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <head>
+                 <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CC3NE8PT7K');
+</script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+         <script src="/aow4db/Data/Init.js"></script>
+        <script>
+            function HandlePage() {
+                showFreeCityUpgradeSets();
+
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+
+                $("#filterInput").on("change input", function () {
+                    ShowAllDivsWithFilters("mod_card");
+                    SetLevelUpStuff();
+                });
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Hero Ambitions</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">Free City Upgrade Sets</div>
+        <div style="height: auto; color: white; text-align: center">
+            <br />
+            Filter<br />
+            <div style="margin-right: auto; margin-left: auto; width: 500px">
+                <input type="text" class="searchbar" id="filterInput" />
+            </div>
+        </div>
+        <div style="display: table; margin: 5px; margin-left: auto; margin-right: auto">
+            <button class="sortingButton" id="name-button" onclick="sortDivs('name')">Name</button>
+        </div>
+
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>

@@ -194,6 +194,49 @@ function GetUnitTierAndName(id, subcultureCheck) {
     }
 }
 
+function GetSpellTierAndName(spell){
+    for (let i = 0; i < jsonSpells.length; i++) {
+        let unit = jsonSpells[i];
+
+        // Check if the ID matches
+        if (spell !== unit.id) {
+            continue;
+        }
+        
+        let spellLoc = jsonSpellsLocalized.find((entry) => entry.resid === unit.resid);
+        // Prepare the unit's name
+        let name = spellLoc.name;
+
+        // Return the formatted name and tier
+        return `
+            <p style="width: 160px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-transform: none;">
+                ${name}
+            </p>`;
+    }
+}
+
+function GetStructureTierAndName(spell){
+    for (let i = 0; i < jsonStructureUpgradesLocalized.length; i++) {
+        let unit = jsonStructureUpgradesLocalized[i];
+
+        // Check if the ID matches
+        if (unit.id.indexOf(spell) == -1) {
+            continue;
+        }
+        
+       // let spellLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid === unit.resid);
+        // Prepare the unit's name
+        let name = unit.name;
+
+        // Return the formatted name and tier
+        return `
+            <p style="width: 160px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-transform: none;">
+                ${name}
+            </p>`;
+    }
+}
+
+
 
 function CheckIfFormUnit(unit) {
     if (MountedSpecialList.includes(unit.id) || extraFormUnitsList.includes(unit.id) || "culture_name" in unit) {
@@ -220,7 +263,7 @@ function ShowUnitFromLink() {
     let unitID = searchParams.get("unit");
     let unitName = findBy(jsonUnits, "id", unitID);
     let unitNameLoc = findBy(jsonUnitsLocalized, "resid", unitName.resid);
-    
+
     document.title = "Age of Wonders 4 Database - " + unitNameLoc.name;
     showUnitFromString(unitID, "dataHolder");
 }
@@ -523,6 +566,9 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             break;
         case "heroTrait":
             showHeroTraitFromList(list, overwrite);
+            break;
+        case "freeCity":
+            showFreeCityUpgradeSetFromList(list, overwrite);
             break;
         case "heroGov":
             showHeroGovFromList(list, overwrite);
@@ -2007,6 +2053,14 @@ async function showHeroTraitFromList(list, divID) {
     }
 }
 
+async function showFreeCityUpgradeSetFromList(list, divID) {
+    let cards = await spawnSpellCards(list, divID);
+
+    for (let i = 0; i < list.length; i++) {
+        showFreeCityUpgrade(list[i].id, cards[i]);
+    }
+}
+
 async function showHeroGovFromList(list, divID) {
     let cards = await spawnSpellCards(list, divID);
 
@@ -2136,6 +2190,13 @@ async function showHeroAmbitions() {
     SetCollapsibleButtonsAndDivs("Hero Ambitions", list, "heroTrait");
 }
 
+async function showFreeCityUpgradeSets() {
+    let list = [];
+    list = findFreeCitySets();
+
+    SetCollapsibleButtonsAndDivs("Free City Sets", list, "freeCity");
+}
+
 async function showHeroGovernance() {
     let list = [];
     list = findHeroGovernance();
@@ -2147,7 +2208,7 @@ async function showSpellsWithArgument(argument, argumentType, overwritetext) {
     let list = [];
     list = findSpellsWithArgument(argument, argumentType);
 
-   /* if (overwritetext.indexOf(">") != -1) {
+    /* if (overwritetext.indexOf(">") != -1) {
         overwritetext = overwritetext.split("/")[1];
         overwritetext = overwritetext.split(">")[1];
     }*/
@@ -2272,6 +2333,25 @@ function findHeroGovernance() {
     }
     console.log(finalCheckedList);
     return finalCheckedList;
+}
+
+function findFreeCitySets() {
+    let j = "";
+
+    let finalCheckedList = [];
+
+    for (j in jsonFreeCities) {
+        if (!isInArray(finalCheckedList, jsonFreeCities[j])) {
+            finalCheckedList.push(jsonFreeCities[j]);
+        }
+    }
+
+    // Remove duplicate objects from the array
+    const uniqueArray = finalCheckedList.filter((item, index) => {
+        return index === finalCheckedList.findIndex((obj) => obj.id === item.id && obj.name === item.name);
+    });
+
+    return uniqueArray;
 }
 
 function findHeroAmbition() {
@@ -4598,8 +4678,7 @@ function showWorldStructure(a, divOrigin) {
         //descriptionDiv.innerHTML +=
         //   "Combat Enchantments depend on story event choices when entering the Ancient Wonder. <br><br>";
     }
-    
-   
+
     let unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
     unitTypesDiv.setAttribute(
@@ -4676,13 +4755,15 @@ function showWorldStructure(a, divOrigin) {
     tier = divOrigin.querySelector("#modtier");
 
     tier.innerHTML = "";
-    
-    
-     if(structure.type == "ore" ||structure.type == "plant" || structure.type == "liquid" || structure.type == "void_stones" ){
-          eventDiv.appendChild(CreateAncientWonderEventSetup("", structure));
-     }
-      
-    
+
+    if (
+        structure.type == "ore" ||
+        structure.type == "plant" ||
+        structure.type == "liquid" ||
+        structure.type == "void_stones"
+    ) {
+        eventDiv.appendChild(CreateAncientWonderEventSetup("", structure));
+    }
 
     cost = divOrigin.querySelector("#modcost");
     cost.innerHTML = "";
@@ -4810,7 +4891,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
         let combatEnch = structure[eventHandle + "_combat"];
         const combatEnchHolder = document.createElement("div");
         combatEnchHolder.setAttribute("style", "display: grid;");
-      
+
         if (combatEnch != undefined) {
             for (let index = 0; index < combatEnch.length; index++) {
                 console.log("here " + combatEnch[index]);
@@ -4819,7 +4900,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
             }
         }
         combatReveal.appendChild(combatEnchHolder);
-    } else if('combat' in structure){
+    } else if ("combat" in structure) {
         TitleHolder.innerText = "Enchantment";
         const combatReveal = document.createElement("div");
         combatReveal.setAttribute("style", "display: flex;justify-content: space-between;");
@@ -4828,14 +4909,11 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
         let combatEnch = structure.combat;
         const combatEnchHolder = document.createElement("div");
         combatEnchHolder.setAttribute("style", "display: grid;");
-       console.log("here combat 2");
+        console.log("here combat 2");
 
         if (combatEnch != undefined) {
-         
-                
-                const child = FindCombatEnchantment(combatEnch);
-                combatEnchHolder.appendChild(child);
-            
+            const child = FindCombatEnchantment(combatEnch);
+            combatEnchHolder.appendChild(child);
         }
         combatReveal.appendChild(combatEnchHolder);
     }
@@ -5739,6 +5817,124 @@ function showTrait(a, divOrigin) {
         if (jsonFactionCreation[i].id === a) {
             let currentTrait = jsonFactionCreation[i];
             showTraitSetup(currentTrait, divOrigin);
+        }
+    }
+}
+
+function showFreeCityUpgrade(a, divOrigin) {
+    let thisFreeCity = jsonFreeCities.find((entry) => entry.id === a);
+
+    const modName = divOrigin.querySelector("#modname");
+    // lookup name and description from lookup
+
+    const valueLookup = findBy(jsonAllFromPOLocalized, "id", thisFreeCity.lookup);
+    console.log(valueLookup, thisFreeCity);
+    let description = valueLookup.description;
+
+    modName.innerHTML = valueLookup.name.toUpperCase();
+    const tier = divOrigin.querySelector("#modtier");
+    tier.innerHTML = "";
+
+    const descriptionDiv = divOrigin.querySelector("#moddescription");
+
+    descriptionDiv.innerHTML = description;
+    const typesDiv = divOrigin.querySelector("#affectUnitTypes");
+    typesDiv.style.display = "block";
+    typesDiv.style.float = "none";
+
+    typesDiv.innerHTML = "Mandatory: <hr><br>";
+    
+    GetFreecityLines(thisFreeCity.mandatory, typesDiv);
+     typesDiv.innerHTML += "Upgrades: <hr><br>";
+     GetFreecityLines(thisFreeCity.upgrades, typesDiv);
+    
+    
+    
+}
+
+function GetFreecityLines(thisFreeCityPart, typesDiv){
+    for (const entry of thisFreeCityPart) {
+        if ("units" in entry) {
+             const entriesNoSpace = entry.units.replaceAll(" ", "");
+            const entries = entriesNoSpace.split(",");
+            typesDiv.innerHTML += "One of: <hr>";
+            for (const unit of entries) {
+                
+                let div = document.createElement("DIV");
+                div.setAttribute("style", "margin-right: 20px;");
+                div.innerHTML =
+                    '<a href="/aow4db/HTML/Units.html?unit=' +
+                    unit +
+                    '" target="_blank">' +
+                    GetUnitTierAndName(unit) +
+                    "</a>";
+                typesDiv.appendChild(div);
+            }
+            }
+        
+        if ("enchantments" in entry) {
+               const entriesNoSpace = entry.enchantments.replaceAll(" ", "");
+            const entries = entriesNoSpace.split(",");
+            typesDiv.innerHTML += "One of: <br>";
+            for (const unit of entries) {
+                  let div = document.createElement("DIV");
+                div.setAttribute("style", "margin-right: 20px;");
+                div.innerHTML =
+                    '<a href="/aow4db/HTML/Spells.html?spell=' +
+                    unit +
+                    '" target="_blank">' +
+                    GetSpellTierAndName(unit) +
+                    "</a>";
+                typesDiv.appendChild(div);
+            }
+        }
+         if ("spells" in entry) {
+               const entriesNoSpace = entry.spells.replaceAll(" ", "");
+            const entries = entriesNoSpace.split(",");
+            typesDiv.innerHTML += "One of: <br>";
+            for (const unit of entries) {
+                  let div = document.createElement("DIV");
+                div.setAttribute("style", "margin-right: 20px;");
+                div.innerHTML =
+                    '<a href="/aow4db/HTML/Spells.html?spell=' +
+                    unit +
+                    '" target="_blank">' +
+                    GetSpellTierAndName(unit) +
+                    "</a>";
+                typesDiv.appendChild(div);
+            }
+        }
+        if ("transformations" in entry) {
+                const entriesNoSpace = entry.transformations.replaceAll(" ", "");
+            const entries = entriesNoSpace.split(",");
+            typesDiv.innerHTML += "One of: <br>";
+            for (const unit of entries) {
+                  let div = document.createElement("DIV");
+                div.setAttribute("style", "margin-right: 20px;");
+                div.innerHTML =
+                    '<a href="/aow4db/HTML/Spells.html?spell=' +
+                    unit +
+                    '" target="_blank">' +
+                    GetSpellTierAndName(unit) +
+                    "</a>";
+                typesDiv.appendChild(div);
+            }
+        }
+        if ("buildings" in entry) {
+                const entriesNoSpace = entry.buildings.replaceAll(" ", "");
+            const entries = entriesNoSpace.split(",");
+            typesDiv.innerHTML += "One of: <br>";
+            for (const unit of entries) {
+                  let div = document.createElement("DIV");
+                div.setAttribute("style", "margin-right: 20px;");
+                div.innerHTML =
+                    '<a href="/aow4db/HTML/Spells.html?structure=' +
+                    unit +
+                    '" target="_blank">' +
+                    GetStructureTierAndName(unit) +
+                    "</a>";
+                typesDiv.appendChild(div);
+            }
         }
     }
 }

@@ -233,7 +233,8 @@ async function GetAllData(selectedLang) {
         "WorldStructures.json",
         "CosmicHappenings.json",
         "CityTree.json",
-        "all_spawnsets_strategic.json"
+        "all_spawnsets_strategic.json",
+        "FreeCities.json"
     ];
     const fileNames = [
         // ingame dump files
@@ -282,7 +283,8 @@ async function GetAllData(selectedLang) {
         "jsonWorldStructures",
         "jsonCosmicHappenings",
             "jsonCityTreeNodes",
-            "jsonSpawnSetsStrat"
+            "jsonSpawnSetsStrat",
+            "jsonFreeCities"
         ];
         const targets = [
             "jsonHeroItems",
