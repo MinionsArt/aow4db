@@ -41,18 +41,49 @@ function buildAbilityTagCache() {
     }
 }
 
+function extractHyperlinks(text) {
+    const links = [];
+    let index = 0;
+
+    text = text.replace(
+        /<hyperlink>(.*?)<\/hyperlink>/g,
+        (_, inner) => {
+            const token = `__HYPERLINK_${index}__`;
+            links.push({ token, inner });
+            index++;
+            return token;
+        }
+    );
+
+    return { text, links };
+}
+
 // main function
 function AddTagIconsForStatusEffects(text) {
     if (!text) return text;
     text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
 
-    // simple replace loop — only checks keys that actually exist
+    // 1. Extract hyperlinks
+    const extracted = extractHyperlinks(text);
+    text = extracted.text;
+
+    // 2. Replace plain-text abilities ONLY
     for (const [abilityName, replacement] of abilityTagCache.entries()) {
-        if (text.includes(abilityName)) {
-            let pattern = new RegExp(`\\b${abilityName}\\b`);
-            text = text.replace(pattern, replacement);
+        const escaped = abilityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const pattern = new RegExp(`\\b${escaped}\\b`, "g");
+        text = text.replace(pattern, replacement);
+    }
+
+    // 3. Restore hyperlinks, selectively replacing full matches
+    for (const link of extracted.links) {
+        let restored = `<hyperlink>${link.inner}</hyperlink>`;
+
+        if (abilityTagCache.has(link.inner)) {
+            restored = abilityTagCache.get(link.inner);
         }
+
+        text = text.replace(link.token, restored);
     }
 
     if (getUserSettings().isolateNumber) {
@@ -60,12 +91,12 @@ function AddTagIconsForStatusEffects(text) {
     }
 
     text = text.replaceAll("<bulletlist></bullet>", "<bulletlist>");
-
     text = text.replaceAll("</bullet></bulletlist>", "</bullet></bullet></bulletlist>");
     text = text.replaceAll("<br></br>", "<br>");
 
     return text;
 }
+
 
 /*function AddTagIconsForStatusEffects(name) {
     // if(name == "")
