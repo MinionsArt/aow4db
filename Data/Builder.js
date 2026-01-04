@@ -3270,7 +3270,16 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
+          const miniIcon = document.createElement("div");
+           miniIcon.className = "MiniIconCheck";
+        if(spells[x].tactical == true){
+              miniIcon.innerHTML = "<casttactical></casttactical>";
+        }else{
+              miniIcon.innerHTML = "<caststrategic></caststrategic>";
+        }
+     
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+         holderOrigin.appendChild(miniIcon);
     }
 
     let siege = CheckIfInSiege(name);
@@ -3288,7 +3297,11 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/UpgradeIcons/${struc[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?structure=${struc[x].id}`;
+        const miniIcon = document.createElement("div");
+        miniIcon.className = "MiniIconCheck";
+       miniIcon.innerHTML = "<structure></structure>";
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        holderOrigin.appendChild(miniIcon);
     }
 
     let traitFound = CheckIfInTraits(unitData.id);
@@ -3304,9 +3317,16 @@ function backtrackUnitOrigins(unitData, name, holder) {
     for (let x = 0; x < wonder.length; x++) {
         // if landmark different text:
         let tooltipText = "";
+          const miniIcon = document.createElement("div");
+         miniIcon.className = "MiniIconCheck";
+        
+      
         if (wonder[x].type == "Landmark") {
+            miniIcon.innerHTML = "<landmark></landmark>";
+            
             tooltipText = `Unit unlocked from <landmark></landmark> <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         } else {
+              miniIcon.innerHTML = "<rally></rally>";
             tooltipText = `Rally Unit unlocked from <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         }
         if ("other_unlock" in wonder[x]) {
@@ -3315,7 +3335,11 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/StructurePics/${wonder[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?wonder=${wonder[x].id}`;
+      
+       
+    
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText, wonder[x]);
+         holderOrigin.appendChild(miniIcon);
     }
 
     let tree = CheckIfInEmpireTree(name);
@@ -4721,7 +4745,7 @@ function showWorldStructure(a, divOrigin) {
         if ("other_unlock" in structure) {
             description += "<br>Unit Reward:<br>";
         } else {
-            description += "<br>Rally Units:<br>";
+            description += "<br><hyperlink><rally></rally>Rally Units:</hyperlink><br>";
         }
 
         for (let x = 0; x < structure.unit_unlocks.length; x++) {
