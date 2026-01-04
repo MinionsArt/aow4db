@@ -4742,8 +4742,8 @@ function showWorldStructure(a, divOrigin) {
     );
 
     if ("unit_unlocks" in structure) {
-        if ("other_unlock" in structure) {
-            description += "<br>Unit Reward:<br>";
+        if ("other_unlock" in structure || structure.type == "Landmark") {
+            description += "<br>Unit Unlock:<br>";
         } else {
             description += "<br><hyperlink><rally></rally>Rally Units:</hyperlink><br>";
         }
