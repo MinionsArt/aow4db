@@ -68,7 +68,8 @@ function isInArray(array, search) {
 
 async function rememberSearch() {
     // filter settings
-    const params = new URLSearchParams(window.location.search);
+     const rawSearch = window.location.search.replace(/&amp;/g, "&");
+    let params = new URLSearchParams(rawSearch);
     const filters = (params.get("f") || "").split(",");
     if (filters != "") {
         for (const [id, code] of Object.entries(filterMap)) {
