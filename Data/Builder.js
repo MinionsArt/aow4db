@@ -283,7 +283,22 @@ function GetTomeTierAndNameTome(id) {
     let tome = findBy(jsonTomes, "id", id);
     let tomeLoc = findBy(jsonTomesLocalized, "resid", tome.resid);
     if (tome != undefined) {
-        return romanize(tome.tier) + " - " + tomeLoc.name;
+        // get affinity
+          let allAffinity = "";
+       if(tome.affinities){
+           let affinitiesdual = tome.affinities.split(", ");
+
+      
+        for (let i = 0; i < affinitiesdual.length; i++) {
+            let affinities = affinitiesdual[i].split(" ");
+            allAffinity += affinities[0] + affinities[1];
+
+            allAffinity = expandTags(allAffinity);
+            allAffinity = allAffinity.replaceAll(",", "");
+        }
+       }
+        
+        return allAffinity + " " + romanize(tome.tier) + " - " + tomeLoc.name;
     } else {
         console.log("couldn't find tome " + id);
         return null;
