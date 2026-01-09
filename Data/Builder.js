@@ -45,15 +45,12 @@ function extractHyperlinks(text) {
     const links = [];
     let index = 0;
 
-    text = text.replace(
-        /<hyperlink>(.*?)<\/hyperlink>/g,
-        (_, inner) => {
-            const token = `__HYPERLINK_${index}__`;
-            links.push({ token, inner });
-            index++;
-            return token;
-        }
-    );
+    text = text.replace(/<hyperlink>(.*?)<\/hyperlink>/g, (_, inner) => {
+        const token = `__HYPERLINK_${index}__`;
+        links.push({ token, inner });
+        index++;
+        return token;
+    });
 
     return { text, links };
 }
@@ -96,7 +93,6 @@ function AddTagIconsForStatusEffects(text) {
 
     return text;
 }
-
 
 /*function AddTagIconsForStatusEffects(name) {
     // if(name == "")
@@ -225,7 +221,7 @@ function GetUnitTierAndName(id, subcultureCheck) {
     }
 }
 
-function GetSpellTierAndName(spell){
+function GetSpellTierAndName(spell) {
     for (let i = 0; i < jsonSpells.length; i++) {
         let unit = jsonSpells[i];
 
@@ -233,7 +229,7 @@ function GetSpellTierAndName(spell){
         if (spell !== unit.id) {
             continue;
         }
-        
+
         let spellLoc = jsonSpellsLocalized.find((entry) => entry.resid === unit.resid);
         // Prepare the unit's name
         let name = spellLoc.name;
@@ -246,7 +242,7 @@ function GetSpellTierAndName(spell){
     }
 }
 
-function GetStructureTierAndName(spell){
+function GetStructureTierAndName(spell) {
     for (let i = 0; i < jsonStructureUpgradesLocalized.length; i++) {
         let unit = jsonStructureUpgradesLocalized[i];
 
@@ -254,8 +250,8 @@ function GetStructureTierAndName(spell){
         if (unit.id.indexOf(spell) == -1) {
             continue;
         }
-        
-       // let spellLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid === unit.resid);
+
+        // let spellLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid === unit.resid);
         // Prepare the unit's name
         let name = unit.name;
 
@@ -266,8 +262,6 @@ function GetStructureTierAndName(spell){
             </p>`;
     }
 }
-
-
 
 function CheckIfFormUnit(unit) {
     if (MountedSpecialList.includes(unit.id) || extraFormUnitsList.includes(unit.id) || "culture_name" in unit) {
@@ -284,20 +278,19 @@ function GetTomeTierAndNameTome(id) {
     let tomeLoc = findBy(jsonTomesLocalized, "resid", tome.resid);
     if (tome != undefined) {
         // get affinity
-          let allAffinity = "";
-       if(tome.affinities){
-           let affinitiesdual = tome.affinities.split(", ");
+        let allAffinity = "";
+        if (tome.affinities) {
+            let affinitiesdual = tome.affinities.split(", ");
 
-      
-        for (let i = 0; i < affinitiesdual.length; i++) {
-            let affinities = affinitiesdual[i].split(" ");
-            allAffinity += affinities[0] + affinities[1];
+            for (let i = 0; i < affinitiesdual.length; i++) {
+                let affinities = affinitiesdual[i].split(" ");
+                allAffinity += affinities[0] + affinities[1];
 
-            allAffinity = expandTags(allAffinity);
-            allAffinity = allAffinity.replaceAll(",", "");
+                allAffinity = expandTags(allAffinity);
+                allAffinity = allAffinity.replaceAll(",", "");
+            }
         }
-       }
-        
+
         return allAffinity + " " + romanize(tome.tier) + " - " + tomeLoc.name;
     } else {
         console.log("couldn't find tome " + id);
@@ -3285,16 +3278,16 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
-          const miniIcon = document.createElement("div");
-           miniIcon.className = "MiniIconCheck";
-        if(spells[x].tactical == true){
-              miniIcon.innerHTML = "<casttactical></casttactical>";
-        }else{
-              miniIcon.innerHTML = "<caststrategic></caststrategic>";
+        const miniIcon = document.createElement("div");
+        miniIcon.className = "MiniIconCheck";
+        if (spells[x].tactical == true) {
+            miniIcon.innerHTML = "<casttactical></casttactical>";
+        } else {
+            miniIcon.innerHTML = "<caststrategic></caststrategic>";
         }
-     
+
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
-         holderOrigin.appendChild(miniIcon);
+        holderOrigin.appendChild(miniIcon);
     }
 
     let siege = CheckIfInSiege(name);
@@ -3306,6 +3299,9 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
+  
+    
+
     let struc = CheckIfInStructure(unitData.id, name);
     for (let x = 0; x < struc.length; x++) {
         const tooltipText = `Unit mentioned in Structure <hyperlink>${struc[x].name}</hyperlink>`;
@@ -3314,7 +3310,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const link = `/aow4db/HTML/Spells.html?structure=${struc[x].id}`;
         const miniIcon = document.createElement("div");
         miniIcon.className = "MiniIconCheck";
-       miniIcon.innerHTML = "<structure></structure>";
+        miniIcon.innerHTML = "<structure></structure>";
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
         holderOrigin.appendChild(miniIcon);
     }
@@ -3332,16 +3328,15 @@ function backtrackUnitOrigins(unitData, name, holder) {
     for (let x = 0; x < wonder.length; x++) {
         // if landmark different text:
         let tooltipText = "";
-          const miniIcon = document.createElement("div");
-         miniIcon.className = "MiniIconCheck";
-        
-      
+        const miniIcon = document.createElement("div");
+        miniIcon.className = "MiniIconCheck";
+
         if (wonder[x].type == "Landmark") {
             miniIcon.innerHTML = "<landmark></landmark>";
-            
+
             tooltipText = `Unit unlocked from <landmark></landmark> <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         } else {
-              miniIcon.innerHTML = "<rally></rally>";
+            miniIcon.innerHTML = "<rally></rally>";
             tooltipText = `Rally Unit unlocked from <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
         }
         if ("other_unlock" in wonder[x]) {
@@ -3350,11 +3345,9 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc = `/aow4db/Icons/StructurePics/${wonder[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?wonder=${wonder[x].id}`;
-      
-       
-    
+
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText, wonder[x]);
-         holderOrigin.appendChild(miniIcon);
+        holderOrigin.appendChild(miniIcon);
     }
 
     let tree = CheckIfInEmpireTree(name);
@@ -3407,6 +3400,25 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${evolve.id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+    }
+    
+      let freecity = CheckIfInFreeCitySets(unitData.id);
+    if(freecity.length > 0){
+        let tooltipText = `Unit is a possible Rally unit from Free Cities: `;
+        for (let x = 0; x < freecity.length; x++) {
+           const lookup =  findBy(jsonAllFromPOLocalized, "id", freecity[x].lookup);
+        tooltipText += "<bullet>" + lookup.name +  "</bullet>";
+        
+    }
+        const imgSrc = `/aow4db/Icons/Text/free_city.png`;
+        const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
+        const link = `/aow4db/HTML/FreeCities.html`;
+          const miniIcon = document.createElement("div");
+        miniIcon.className = "MiniIconCheck";
+          miniIcon.innerHTML = "<rally></rally>";
+        
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+         holderOrigin.appendChild(miniIcon);
     }
 }
 
@@ -3535,7 +3547,7 @@ function CheckIfFromHeroSkill(unitName) {
             resultslist.add(["", jsonHeroSkills[j]]);
         }
     }
-    console.log(Array.from(resultslist));
+    //  console.log(Array.from(resultslist));
     return Array.from(resultslist);
 }
 
@@ -3569,6 +3581,47 @@ function CheckIfInSiege(unitName) {
         }
     }
     return Array.from(siege);
+}
+
+function CheckIfInFreeCitySets(unitName) {
+    let freecity = new Set();
+    let i = 0;
+
+    for (i in jsonFreeCities) {
+        for (const entry of jsonFreeCities[i].mandatory) {
+            
+            if ("units" in entry) {
+             
+                const entriesNoSpace = entry.units.replaceAll(" ", "");
+                const entries = entriesNoSpace.split(",");
+   
+                for (const unit of entries) {
+                   console.log(unit + " " + unitName);
+                    if (unit == unitName) {
+                        freecity.add(jsonFreeCities[i]);
+                         
+                    }
+                }
+            }
+        }
+          for (const entry of jsonFreeCities[i].upgrades) {
+            
+            if ("units" in entry) {
+             
+                const entriesNoSpace = entry.units.replaceAll(" ", "");
+                const entries = entriesNoSpace.split(",");
+   
+                for (const unit of entries) {
+                   console.log(unit + " " + unitName);
+                    if (unit == unitName) {
+                        freecity.add(jsonFreeCities[i]);
+                         
+                    }
+                }
+            }
+        }
+    }
+    return Array.from(freecity);
 }
 
 function CheckIfInStructure(id, unitName) {
@@ -5913,23 +5966,19 @@ function showFreeCityUpgrade(a, divOrigin) {
     typesDiv.style.float = "none";
 
     typesDiv.innerHTML = "Mandatory: <hr><br>";
-    
+
     GetFreecityLines(thisFreeCity.mandatory, typesDiv);
-     typesDiv.innerHTML += "Upgrades: <hr><br>";
-     GetFreecityLines(thisFreeCity.upgrades, typesDiv);
-    
-    
-    
+    typesDiv.innerHTML += "Upgrades: <hr><br>";
+    GetFreecityLines(thisFreeCity.upgrades, typesDiv);
 }
 
-function GetFreecityLines(thisFreeCityPart, typesDiv){
+function GetFreecityLines(thisFreeCityPart, typesDiv) {
     for (const entry of thisFreeCityPart) {
         if ("units" in entry) {
-             const entriesNoSpace = entry.units.replaceAll(" ", "");
+            const entriesNoSpace = entry.units.replaceAll(" ", "");
             const entries = entriesNoSpace.split(",");
             typesDiv.innerHTML += "One of: <hr>";
             for (const unit of entries) {
-                
                 let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML =
@@ -5940,14 +5989,14 @@ function GetFreecityLines(thisFreeCityPart, typesDiv){
                     "</a>";
                 typesDiv.appendChild(div);
             }
-            }
-        
+        }
+
         if ("enchantments" in entry) {
-               const entriesNoSpace = entry.enchantments.replaceAll(" ", "");
+            const entriesNoSpace = entry.enchantments.replaceAll(" ", "");
             const entries = entriesNoSpace.split(",");
             typesDiv.innerHTML += "One of: <br>";
             for (const unit of entries) {
-                  let div = document.createElement("DIV");
+                let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML =
                     '<a href="/aow4db/HTML/Spells.html?spell=' +
@@ -5958,12 +6007,12 @@ function GetFreecityLines(thisFreeCityPart, typesDiv){
                 typesDiv.appendChild(div);
             }
         }
-         if ("spells" in entry) {
-               const entriesNoSpace = entry.spells.replaceAll(" ", "");
+        if ("spells" in entry) {
+            const entriesNoSpace = entry.spells.replaceAll(" ", "");
             const entries = entriesNoSpace.split(",");
             typesDiv.innerHTML += "One of: <br>";
             for (const unit of entries) {
-                  let div = document.createElement("DIV");
+                let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML =
                     '<a href="/aow4db/HTML/Spells.html?spell=' +
@@ -5975,11 +6024,11 @@ function GetFreecityLines(thisFreeCityPart, typesDiv){
             }
         }
         if ("transformations" in entry) {
-                const entriesNoSpace = entry.transformations.replaceAll(" ", "");
+            const entriesNoSpace = entry.transformations.replaceAll(" ", "");
             const entries = entriesNoSpace.split(",");
             typesDiv.innerHTML += "One of: <br>";
             for (const unit of entries) {
-                  let div = document.createElement("DIV");
+                let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML =
                     '<a href="/aow4db/HTML/Spells.html?spell=' +
@@ -5991,11 +6040,11 @@ function GetFreecityLines(thisFreeCityPart, typesDiv){
             }
         }
         if ("buildings" in entry) {
-                const entriesNoSpace = entry.buildings.replaceAll(" ", "");
+            const entriesNoSpace = entry.buildings.replaceAll(" ", "");
             const entries = entriesNoSpace.split(",");
             typesDiv.innerHTML += "One of: <br>";
             for (const unit of entries) {
-                  let div = document.createElement("DIV");
+                let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML =
                     '<a href="/aow4db/HTML/Spells.html?structure=' +
