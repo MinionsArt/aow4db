@@ -9,7 +9,70 @@
         <script src="/aow4db/Data/Init.js"></script>
         <script>
             function HandlePage() {
-                CheckLengths();
+                const sections = [
+                    "OneHanded",
+                    "Shield",
+                    "TwoHanded",
+                    "Polearm",
+                    ".Bow",
+                    "Crossbow",
+                    "MagicalOrb",
+                    "Staff",
+                    "OtherWeapon",
+                    "DragonClaw",
+                    "EldritchRelic",
+                    "Giant",
+                    "Head",
+                    "Torso",
+                    "Legs",
+                    "Ring",
+                    "Wand",
+                    "OtherItem"
+                ];
+                for (let i = 0; i < sections.length; i++) {
+                     const entry = sections[i];
+                     const listWithArgument = [];
+                for (let i = 0; i < jsonItemForge.length; i++) {
+                    const exists = jsonItemForge[i].itemType.some((e) => e.indexOf(entry) != -1);
+                    if (exists) {
+                        listWithArgument.push(jsonItemForge[i]);
+                    }
+                }
+                   
+                    let buttonHolder = document.getElementById("buttonHolder");
+                    let btn = document.createElement("BUTTON");
+                    btn.type = "button";
+
+                    btn.innerHTML = entry + " (" + listWithArgument.length + ")";
+
+                    btn.setAttribute("onclick", "openDiv(event,'" + entry + "',true)");
+                    btn.setAttribute("id", entry + "-button");
+                    buttonHolder.appendChild(btn);
+                    let dataHolder;
+                    let holderHeight = buttonHolder.offsetHeight;
+
+                    btn.className = "w3-bar-item w3-button tablink";
+                    dataHolder = document.getElementById("dataHolder");
+                    holderHeight = buttonHolder.offsetHeight;
+
+                    dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+
+                    let div = document.createElement("DIV");
+
+                    div.className = "w3-container w3-border city";
+                    div.setAttribute("id", entry);
+
+                    dataHolder.appendChild(div);
+                    
+                    
+
+                    CheckLengths(entry, listWithArgument);
+                }
+
+                $("#filterInput").on("change input", function () {
+                    ShowAllDivsWithFilters("mod_card");
+                    SetLevelUpStuff();
+                });
             }
 
             function ShowInfusion(test, holder) {
@@ -38,15 +101,16 @@
 
                     description.innerHTML += "<br>" + test.unlockSettings + "<br>";
                     description.innerHTML += "<br>" + test.tagFilter + "<br>";
-                     description.innerHTML += "<br>" + test.itemType + "<br>";
+                    description.innerHTML += "<br>" + test.itemType + "<br>";
                     //  text.innerHTML += test.lore_description ? test.lore_description : "";
                     //  text.innerHTML += test.description;
                 }
             }
-            async function CheckLengths() {
-                let card = await spawnStructureCards(jsonItemForge, "Test");
-                for (let i = 0; i < jsonItemForge.length; i++) {
-                    ShowInfusion(jsonItemForge[i], card[i]);
+            async function CheckLengths(argument, list) {
+               
+                let card = await spawnStructureCards(list, argument);
+                for (let i = 0; i < list.length; i++) {
+                    ShowInfusion(list[i], card[i]);
                 }
             }
         </script>
@@ -68,32 +132,7 @@
 
         <div class="w3-container">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
-            <div class="list_abilityslotfilter">
-                <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
-                    Name
-                </button>
-                <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">
-                    Range <range></range>
-                </button>
-                <button
-                    style="width: 150px"
-                    class="sortingButton"
-                    id="accuracy-button"
-                    onclick="sortDivsList('accuracy')">
-                    Acc.<br />
-                    <accuracy></accuracy>
-                </button>
-                <button style="width: 150px" class="sortingButton" id="damage-button" onclick="sortDivsList('damage')">
-                    Damage<br />
-                    <damageblight></damageblight>
-                </button>
-                <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">
-                    Action <repeatingAction></repeatingAction>
-                </button>
-                <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
-                    Type
-                </button>
-            </div>
+
             <div id="dataHolder" class="divContainer">
                 <div id="Test" class="mod_card"></div>
             </div>
