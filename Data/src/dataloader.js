@@ -224,7 +224,7 @@ async function GetAllData(selectedLang) {
         "BuilderLookup.json",
         "AscendedInfo.json",
         "BuilderLookupHero.json",
-        "ItemForge.json",
+        "item_forge.json",
         "UI.json",
         "FactionCreation.json",
         "StatusEffects.json",
@@ -234,7 +234,8 @@ async function GetAllData(selectedLang) {
         "CosmicHappenings.json",
         "CityTree.json",
         "all_spawnsets_strategic.json",
-        "FreeCities.json"
+        "FreeCities.json",
+        
     ];
     const fileNames = [
         // ingame dump files

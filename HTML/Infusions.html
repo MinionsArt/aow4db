@@ -1,0 +1,106 @@
+<!doctype html>
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/aow4db/Data/Init.js"></script>
+        <script>
+            function HandlePage() {
+                CheckLengths();
+            }
+
+            function ShowInfusion(test, holder) {
+                const name = holder.querySelector("#modname");
+                const description = holder.querySelector("#moddescription");
+                if (test.datastoreTag != null) {
+                    //
+
+                    name.innerHTML += "<hr>" + test.entryName + "<br>";
+
+                    // name
+                    const parts = test.screenName.split("@");
+                    const baseId = parts.slice(0, -1).join("@");
+                    const suffix = parts[parts.length - 1].toLowerCase();
+
+                    // descr
+                    const parts2 = test.screenDescription.split("@");
+
+                    const suffix2 = parts2[parts2.length - 1].toLowerCase();
+
+                    const valueLookup = findBy(jsonAllFromPOLocalized, "id", baseId);
+                    console.log(suffix);
+                    description.innerHTML += "<br>" + valueLookup[suffix] + "<br>";
+
+                    description.innerHTML += "<br>" + valueLookup[suffix2] + "<br>";
+
+                    description.innerHTML += "<br>" + test.unlockSettings + "<br>";
+                    description.innerHTML += "<br>" + test.tagFilter + "<br>";
+                     description.innerHTML += "<br>" + test.itemType + "<br>";
+                    //  text.innerHTML += test.lore_description ? test.lore_description : "";
+                    //  text.innerHTML += test.description;
+                }
+            }
+            async function CheckLengths() {
+                let card = await spawnStructureCards(jsonItemForge, "Test");
+                for (let i = 0; i < jsonItemForge.length; i++) {
+                    ShowInfusion(jsonItemForge[i], card[i]);
+                }
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Infusions List</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">Infusions List</div>
+        <div style="height: auto; color: white; text-align: center">
+            <br />
+            Filter<br />
+            <div style="margin-right: auto; margin-left: auto; width: 500px">
+                <input type="text" class="searchbar" id="filterInput" />
+            </div>
+        </div>
+
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div class="list_abilityslotfilter">
+                <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
+                    Name
+                </button>
+                <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">
+                    Range <range></range>
+                </button>
+                <button
+                    style="width: 150px"
+                    class="sortingButton"
+                    id="accuracy-button"
+                    onclick="sortDivsList('accuracy')">
+                    Acc.<br />
+                    <accuracy></accuracy>
+                </button>
+                <button style="width: 150px" class="sortingButton" id="damage-button" onclick="sortDivsList('damage')">
+                    Damage<br />
+                    <damageblight></damageblight>
+                </button>
+                <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">
+                    Action <repeatingAction></repeatingAction>
+                </button>
+                <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
+                    Type
+                </button>
+            </div>
+            <div id="dataHolder" class="divContainer">
+                <div id="Test" class="mod_card"></div>
+            </div>
+        </div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>
