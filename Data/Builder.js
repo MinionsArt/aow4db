@@ -3596,7 +3596,7 @@ function CheckIfInFreeCitySets(unitName) {
                 const entries = entriesNoSpace.split(",");
    
                 for (const unit of entries) {
-                   console.log(unit + " " + unitName);
+                 //  console.log(unit + " " + unitName);
                     if (unit == unitName) {
                         freecity.add(jsonFreeCities[i]);
                          
@@ -3612,7 +3612,7 @@ function CheckIfInFreeCitySets(unitName) {
                 const entries = entriesNoSpace.split(",");
    
                 for (const unit of entries) {
-                   console.log(unit + " " + unitName);
+                 //  console.log(unit + " " + unitName);
                     if (unit == unitName) {
                         freecity.add(jsonFreeCities[i]);
                          
