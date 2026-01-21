@@ -29,16 +29,19 @@
                     "Wand",
                     "OtherItem"
                 ];
-                for (let i = 0; i < sections.length; i++) {
-                     const entry = sections[i];
-                     const listWithArgument = [];
-                for (let i = 0; i < jsonItemForge.length; i++) {
-                    const exists = jsonItemForge[i].itemType.some((e) => e.indexOf(entry) != -1);
-                    if (exists) {
-                        listWithArgument.push(jsonItemForge[i]);
+
+                const type = ["Active", "Passive"];
+                for (let i = 0; i < type.length; i++) {
+                    const entry = type[i];
+                    const listWithArgument = [];
+                    for (let i = 0; i < jsonItemForge.length; i++) {
+                        //const exists = jsonItemForge[i].itemType.some((e) => e.indexOf(entry) != -1);
+                        const exists = jsonItemForge[i].entryName.indexOf(entry) != -1;
+                        if (exists) {
+                            listWithArgument.push(jsonItemForge[i]);
+                        }
                     }
-                }
-                   
+
                     let buttonHolder = document.getElementById("buttonHolder");
                     let btn = document.createElement("BUTTON");
                     btn.type = "button";
@@ -63,8 +66,6 @@
                     div.setAttribute("id", entry);
 
                     dataHolder.appendChild(div);
-                    
-                    
 
                     CheckLengths(entry, listWithArgument);
                 }
@@ -81,7 +82,7 @@
                 if (test.datastoreTag != null) {
                     //
 
-                    name.innerHTML += "<hr>" + test.entryName + "<br>";
+                    name.innerHTML = test.entryName;
 
                     // name
                     const parts = test.screenName.split("@");
@@ -94,21 +95,52 @@
                     const suffix2 = parts2[parts2.length - 1].toLowerCase();
 
                     const valueLookup = findBy(jsonAllFromPOLocalized, "id", baseId);
-                    console.log(suffix);
-                    description.innerHTML += "<br>" + valueLookup[suffix] + "<br>";
+                  //  console.log(suffix);
+                   
+                    
+
+                    const ability = findBy(jsonUnitAbilities, "name", valueLookup[suffix]);
+  
+                    if (ability) {
+                        let spa;
+                        spa= GetAbilityInfo(ability);
+                        description.append(spa);
+                    } else{
+                         description.innerHTML = valueLookup[suffix] + "<br>";
 
                     description.innerHTML += "<br>" + valueLookup[suffix2] + "<br>";
-
-                    description.innerHTML += "<br>" + test.unlockSettings + "<br>";
+                    }
+                    
+                    // get spawnset if available
+                     const data = test.datastoreTag.split("_");
+                    // spell name minus upgrade
+                    let spell_cat = data.slice(0, -1).join("_");
+                
+                    console.log(spell_cat + "_CAT");
+                    // misspelled
+                    if(spell_cat == "SUMMON_UMBAL_DEMON"){
+                        spell_cat = "SUMMON_UMBRAL_DEMON";
+                    }
+                    
+                  
+                    const spawnTable = findBy(jsonSpawnTables, "category", spell_cat+"_CAT");
+                    
+                    if(spawnTable){
+                        let div = ConvertSpawnTable(spawnTable, "Summon");
+                        description.appendChild(div);
+                    }
+                 
+                    
+                       description.innerHTML += "<br>" + test.unlockSettings + "<br>";
                     description.innerHTML += "<br>" + test.tagFilter + "<br>";
                     description.innerHTML += "<br>" + test.itemType + "<br>";
+
                     //  text.innerHTML += test.lore_description ? test.lore_description : "";
                     //  text.innerHTML += test.description;
                 }
             }
             async function CheckLengths(argument, list) {
-               
-                let card = await spawnStructureCards(list, argument);
+                let card = await spawnSpellCards(list, argument);
                 for (let i = 0; i < list.length; i++) {
                     ShowInfusion(list[i], card[i]);
                 }

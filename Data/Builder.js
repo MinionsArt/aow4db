@@ -3299,9 +3299,6 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-  
-    
-
     let struc = CheckIfInStructure(unitData.id, name);
     for (let x = 0; x < struc.length; x++) {
         const tooltipText = `Unit mentioned in Structure <hyperlink>${struc[x].name}</hyperlink>`;
@@ -3372,6 +3369,16 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
+    let infusion = CheckIfFromInfusion(name);
+
+    for (let x = 0; x < infusion.length; x++) {
+        const tooltipText = `Unit mentioned in Infusion <hyperlink>${infusion[x].entryName} </<hyperlink>`;
+        const imgSrc = `/aow4db/Icons/UpgradeIcons/0000045E00000EC3.png`;
+        const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
+        const link = `#`;
+        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+    }
+
     let heroSkill = CheckIfFromHeroSkill(name);
     for (let x = 0; x < heroSkill.length; x++) {
         const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[x][1].name}</hyperlink>`;
@@ -3401,24 +3408,23 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const link = `/aow4db/HTML/Units.html?unit=${evolve.id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
-    
-      let freecity = CheckIfInFreeCitySets(unitData.id);
-    if(freecity.length > 0){
+
+    let freecity = CheckIfInFreeCitySets(unitData.id);
+    if (freecity.length > 0) {
         let tooltipText = `Unit is a possible Rally unit from Free Cities: `;
         for (let x = 0; x < freecity.length; x++) {
-           const lookup =  findBy(jsonAllFromPOLocalized, "id", freecity[x].lookup);
-        tooltipText += "<bullet>" + lookup.name +  "</bullet>";
-        
-    }
+            const lookup = findBy(jsonAllFromPOLocalized, "id", freecity[x].lookup);
+            tooltipText += "<bullet>" + lookup.name + "</bullet>";
+        }
         const imgSrc = `/aow4db/Icons/Text/free_city.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/FreeCities.html`;
-          const miniIcon = document.createElement("div");
+        const miniIcon = document.createElement("div");
         miniIcon.className = "MiniIconCheck";
-          miniIcon.innerHTML = "<rally></rally>";
-        
+        miniIcon.innerHTML = "<rally></rally>";
+
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
-         holderOrigin.appendChild(miniIcon);
+        holderOrigin.appendChild(miniIcon);
     }
 }
 
@@ -3484,6 +3490,11 @@ function CheckIfFromAbility(unitName) {
         if (unitName === "Fire Runestone") {
             unitName = "Runestone";
         }
+
+        if (jsonUnitAbilities[i].description.indexOf(unitName + "s") != -1) {
+            ability.add(jsonUnitAbilities[i]);
+        }
+
         if (regex.test(jsonUnitAbilities[i].description)) {
             //   if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
             ability.add(jsonUnitAbilities[i]);
@@ -3589,33 +3600,29 @@ function CheckIfInFreeCitySets(unitName) {
 
     for (i in jsonFreeCities) {
         for (const entry of jsonFreeCities[i].mandatory) {
-            
             if ("units" in entry) {
-             
+                showSpellsWithArgument;
+
                 const entriesNoSpace = entry.units.replaceAll(" ", "");
                 const entries = entriesNoSpace.split(",");
-   
+
                 for (const unit of entries) {
-                 //  console.log(unit + " " + unitName);
+                    //  console.log(unit + " " + unitName);
                     if (unit == unitName) {
                         freecity.add(jsonFreeCities[i]);
-                         
                     }
                 }
             }
         }
-          for (const entry of jsonFreeCities[i].upgrades) {
-            
+        for (const entry of jsonFreeCities[i].upgrades) {
             if ("units" in entry) {
-             
                 const entriesNoSpace = entry.units.replaceAll(" ", "");
                 const entries = entriesNoSpace.split(",");
-   
+
                 for (const unit of entries) {
-                 //  console.log(unit + " " + unitName);
+                    //  console.log(unit + " " + unitName);
                     if (unit == unitName) {
                         freecity.add(jsonFreeCities[i]);
-                         
                     }
                 }
             }
@@ -3682,6 +3689,38 @@ function CheckIfInTomes(unitID) {
         }
     }
     return Array.from(tome);
+}
+
+function CheckIfFromInfusion(unitName) {
+    let infusions = new Set();
+
+    let i = "";
+    for (i in jsonItemForge) {
+        // check the descriptions
+        const parts = jsonItemForge[i].screenName.split("@");
+        const baseId = parts.slice(0, -1).join("@");
+        const suffix = parts[parts.length - 1].toLowerCase();
+        const descr = findBy(jsonAllFromPOLocalized, "id", baseId);
+
+        const parts2 = jsonItemForge[i].screenDescription.split("@");
+        const baseId2 = parts2.slice(0, -1).join("@");
+        const suffix2 = parts2[parts2.length - 1].toLowerCase();
+        const descr2 = findBy(jsonAllFromPOLocalized, "id", baseId2);
+
+        if (descr) {
+            
+            if (descr[suffix].indexOf(unitName) != -1) {
+                infusions.add(jsonItemForge[i]);
+            }
+        }
+        if (descr2 && descr2[suffix2]) {
+            if (descr2[suffix2].indexOf(unitName) != -1) {
+                infusions.add(jsonItemForge[i]);
+            }
+        }
+    }
+
+    return Array.from(infusions);
 }
 
 function CheckIfInEmpireTree(unitName) {
