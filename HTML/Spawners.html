@@ -19,44 +19,32 @@
         <script src="/aow4db/Data/Init.js"></script>
         
         <script>
-            var bronzeArray = ["ancient_cave", "castle_ruins", "crystal_forest", "hidden_wellspring", "crimson_fane"];
-            var silverArray = ["lost_tomb", "magma_forge", "secret_temple", "lava_prison","archon_observatory"];
-            var goldArray = ["golden_ziggurat", "lost_wizard_tower", "world_tree", "vaultsphere", "giants_throne", "rose_choked_palace"];
-
+          
             function HandlePage() {
-                showWorldStructuresWithArgument("Bronze", undefined, bronzeArray, "Bronze");
-                showWorldStructuresWithArgument("Silver", undefined, silverArray, "Silver");
-                showWorldStructuresWithArgument("Gold", undefined, goldArray, "Gold");
+                showWorldStructuresWithArgument(undefined, "Spawner", undefined, "Bronze");
                 SetLevelUpStuff();
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Ancient Wonders</title>
+        <title>Age of Wonders 4 Database - Spawners</title>
     </head>
 
     <body>
-        <div class="textblocktitle">Ancient Wonders</div>
+        <div class="textblocktitle">Infestation Spawners</div>
         <div class="w3-container">
             <div class="w3-bar w3-black" id="buttonHolder">
                 <button
                     id="Bronze-button"
                     class="w3-bar-item w3-button tablink w3-red"
                     onclick="openDiv(event,'Bronze')">
-                    <bronzewonder></bronzewonder>Bronze
+                    Infestations
                 </button>
-                <button id="Silver-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Silver')">
-                    <silverwonder></silverwonder>Silver
-                </button>
-                <button id="Gold-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Gold')">
-                    <goldwonder></goldwonder>Gold
-                </button>
+              
             </div>
-            <div id="dataHolder" style="margin-top: -150px">
+            <div id="dataHolder">
                 <div id="Bronze" class="w3-container w3-border city"></div>
 
-                <div id="Silver" class="w3-container w3-border city"></div>
-
-                <div id="Gold" class="w3-container w3-border city"></div>
+                
             </div>
         </div>
     </body>

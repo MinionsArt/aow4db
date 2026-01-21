@@ -4815,11 +4815,16 @@ function showWorldStructure(a, divOrigin) {
         imagelink.remove();
     } else if (structure.type.indexOf("Landmark") != -1) {
         imagelink.setAttribute("src", "/aow4db/Icons/Text/landmark.png");
-        imagelink.setAttribute("id", "modicon" + a);
+       
         imagelink.setAttribute("style", "background-image: none");
-    } else {
+    } else if(structure.type == "Spawner"){
+         imagelink.setAttribute("src", "/aow4db/Icons/Interface/Infestation.png");
+          imagelink.setAttribute("style", "background-image: none");
+    }
+    else
+    {
         imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
-        imagelink.setAttribute("id", "modicon" + a);
+        
         imagelink.setAttribute("style", "background-image: none");
     }
     descriptionDiv.innerHTML = "";
