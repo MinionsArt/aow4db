@@ -2782,6 +2782,8 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     let hpvalue = unitEN.hp;
     hp.innerHTML = unitEN.hp;
+    
+   
 
     const critText = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@CRITICAL_HIT");
 
@@ -2796,6 +2798,13 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     let crit = unitCard.querySelector("p#crit");
     crit.innerHTML = "+" + 0 + "%";
+    
+     if('combat_speed' in unitEN){
+          let critTooltip = unitCard.querySelector("div#crit_tt");
+            let crit = unitCard.querySelector("p#crit");
+         crit.innerHTML = unitEN.combat_speed;
+        
+    }
 
     const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
