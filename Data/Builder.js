@@ -3284,7 +3284,13 @@ function backtrackUnitOrigins(unitData, name, holder) {
             tierandnameoftome != ""
                 ? `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink> <br>in Tier <hyperlink>${romanize(tierandnameoftome.tier)} - ${showAffinitySymbols(tierandnameoftome)} ${tierandnameoftome.name}</hyperlink>`
                 : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/SpellIcons/${spells[x].id}.png`;
+        
+      
+        let imageLinkName =  spells[x].icon?  spells[x].icon :  spells[x].id;
+         if (incorrectIconOverrideList.includes(spells[x].id)) {
+            imageLinkName = spells[x].id;
+        }
+        const imgSrc = `/aow4db/Icons/SpellIcons/${imageLinkName}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
         const miniIcon = document.createElement("div");
@@ -5447,9 +5453,9 @@ function showSpell(a, showOrigin, divOrigin) {
         } else {
             imageLinkName = spellFound.id;
         }
-
-        if (incorrectIconOverrideList.includes(spellFound.id)) {
-            imageLinkName += "2";
+        console.log(spellFoundEN.id);
+        if (incorrectIconOverrideList.includes(spellFoundEN.id)) {
+            imageLinkName = spellFound.id;
         }
         imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
         let tierSpell = backtraceTomeOriginAndTier(spellFoundEN, showOrigin, modCard);

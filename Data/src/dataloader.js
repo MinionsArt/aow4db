@@ -78,7 +78,10 @@ const incorrectIconOverrideList = [
     "summon_balor",
     "summon_lesser_magma_spirit",
     "summon_horned_god",
-    "summon_corrupt_soul"
+    "summon_corrupt_soul",
+    "summon_lesser_light_spirit",
+
+    "summon_blessed_soul"
 ];
 
 const extraAbilities = [];
