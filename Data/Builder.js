@@ -3384,7 +3384,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    let infusion = CheckIfFromInfusion(name);
+    /*let infusion = CheckIfFromInfusion(name);
 
     for (let x = 0; x < infusion.length; x++) {
         const tooltipText = `Unit mentioned in Infusion <hyperlink>${infusion[x].entryName} </<hyperlink>`;
@@ -3392,7 +3392,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `#`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
-    }
+    }*/
 
     let heroSkill = CheckIfFromHeroSkill(name);
     for (let x = 0; x < heroSkill.length; x++) {
