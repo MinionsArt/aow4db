@@ -2995,7 +2995,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
             }
         }
     }
-    for (x in activeEnchantList) {
+   /* for (x in activeEnchantList) {
         for (k = 0; k < jsonEnchantments.length; k++) {
             if (jsonEnchantments[k].id === activeEnchantList[x].id) {
                 if ("hp" in jsonEnchantments[k]) {
@@ -3058,7 +3058,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
                 }
             }
         }
-    }
+    } */
 
     for (let x = 0; x < unitEN.primary_passives.length; x++) {
         addPassiveslot(unitEN.primary_passives[x].slug, unitTabHolder);
