@@ -366,6 +366,7 @@ function getUnitTypeTag(passivesList) {
         "000003bd000020c0": "<unitSupport></unitSupport>",
         "000003fe00000060": "<unitScout></unitScout>",
         "0000039f000016f1": "<unitRanged></unitRanged>",
+          "0000049700003951": "<unitMagicFighter></unitMagicFighter>",
         "000003e300004c86": "<unitBattlemage></unitBattlemage>",
         "0000039f000016f2": "<unitPolearm></unitPolearm>",
         "0000039f000016f0": "<unitShield></unitShield>",
@@ -806,6 +807,7 @@ function addUnitTypeIcon(a, holder, origin) {
             "Shock Unit",
             "Shield Unit",
             "Fighter Unit",
+             "Magic Fighter Unit",
             "Support Unit",
             "Battle Mage Unit",
             "Skirmisher Unit",
@@ -994,7 +996,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
                                 }
                             }
                             // or check, not and
-                        } else {
+                       /* } else {
                             if (
                                 combinedReq.indexOf(jsonEnchantments[k].requisites[0].type) != -1 &&
                                 combinedReq.indexOf(jsonEnchantments[k].requisites[1].type) != -1
@@ -1036,7 +1038,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
 
     // add notes
 
-    abilityNote = "";
+  //  abilityNote = "";
     let Cooldown = "";
     let Once = "";
     // jsonUnitAbilities english;
@@ -1047,11 +1049,25 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
             } else {
                 if (abilityEn.notes[l].note.indexOf("Cooldown") != -1) {
                     Cooldown = abilityLoc.notes[l].note;
-                } else if (abilityEn.notes[l].note.indexOf("once per") != -1) {
+                } if (abilityEn.notes[l].note.indexOf("once per") != -1) {
                     Once = abilityLoc.notes[l].note;
-                } else {
+                }/* else {
                     abilityNote += "<br>" + abilityLoc.notes[l].note;
-                }
+                }*/
+            }
+        }
+    }
+      let Melee = "";
+    let Magic = "";
+    if ("requisites" in abilityLoc) {
+        for (let l = 0; l < abilityLoc.requisites.length; l++) {
+            if (abilityLoc.requisites[l] === undefined) {
+            } else {
+                if (abilityEn.requisites[l].requisite.indexOf("Melee") != -1 || abilityEn.requisites[l].requisite.indexOf("Physical") != -1) {
+                    Melee = abilityLoc.requisites[l].requisite;
+                } if (abilityEn.requisites[l].requisite.indexOf("Magic") != -1) {
+                    Magic = abilityLoc.requisites[l].requisite;
+                } 
             }
         }
     }
@@ -1107,6 +1123,20 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         imageExtra = document.createElement("IMG");
         imageExtra.setAttribute("src", "/aow4db/Icons/Text/once.png");
         imageExtra.setAttribute("style", " position: absolute; height: 18px; left: 0px;bottom: 4px;");
+        btn.append(imageExtra);
+    }
+    
+     if (Melee != "" && showBetaTooltip.checked) {
+        imageExtra = document.createElement("IMG");
+        imageExtra.setAttribute("src", "/aow4db/Icons/Text/armor_small.png");
+        imageExtra.setAttribute("style", " position: absolute; height: 15px; left: 30px;bottom: 5px;");
+        btn.append(imageExtra);
+    }
+
+    if (Magic != "" && showBetaTooltip.checked) {
+        imageExtra = document.createElement("IMG");
+        imageExtra.setAttribute("src", "/aow4db/Icons/Text/resistance_small.png");
+        imageExtra.setAttribute("style", " position: absolute; height: 15px; left: 30px;bottom: 4px;");
         btn.append(imageExtra);
     }
 
@@ -1672,7 +1702,7 @@ function combineDamageStrings(str1, str2) {
     return result.join(" ");
 }
 
-function addResistanceSlot(a, resistance, holder) {
+function addResistanceSlot(a, resistance, defense, holder) {
     let abilityName,
         abilityIcon,
         abilityDescr,
@@ -1726,7 +1756,38 @@ function addResistanceSlot(a, resistance, holder) {
 
             const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
-            spa.innerHTML +=
+           
+            
+            if(showBetaTooltip.checked){
+                 spa.innerHTML +=
+                "<br><br>" +
+                damageRedText.damage_reduction +
+                ": <br> " +
+                firstPart +
+                ' <span style="color:white;">' +
+                GetDamageReductionPercentage(defense, num) +
+                '</span> ( From <span style="color:white;">' +
+                defense +
+                "</span> <defense> </defense>";
+                 if (num != undefined) {
+                if (num > 0) {
+                    spa.innerHTML += "+";
+                }
+                spa.innerHTML += num;
+            }
+                 spa.innerHTML +="<br>" +    firstPart  +
+                GetDamageReductionPercentage(resistance, num) +
+                '</span> ( From <span style="color:white;">' +
+                resistance +
+                "</span> <resistance> </resistance>";
+                 if (num != undefined) {
+                if (num > 0) {
+                    spa.innerHTML += "+";
+                }
+                spa.innerHTML += num;
+            }
+            } else{
+                 spa.innerHTML +=
                 "<br><br>" +
                 damageRedText.damage_reduction +
                 ": <br> " +
@@ -1736,12 +1797,14 @@ function addResistanceSlot(a, resistance, holder) {
                 '</span> ( From <span style="color:white;">' +
                 resistance +
                 "</span> <resistance> </resistance>";
-            if (num != undefined) {
+                 if (num != undefined) {
                 if (num > 0) {
                     spa.innerHTML += "+";
                 }
                 spa.innerHTML += num;
             }
+            }
+           
 
             imag.setAttribute("width", "25");
             imag.setAttribute("height", "25");
@@ -1753,6 +1816,10 @@ function addResistanceSlot(a, resistance, holder) {
             if (a.indexOf("Blight") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/blight_resistance.png");
                 spa.innerHTML += "<defenseblight></defenseblight>";
+            }
+            if (a.indexOf("Physical") !== -1) {
+                imag.setAttribute("src", "/aow4db/Icons/Text/physical_resistance.png");
+                spa.innerHTML += "<defensephysical></defensephysical>";
             }
             if (a.indexOf("Fire") !== -1) {
                 imag.setAttribute("src", "/aow4db/Icons/Text/fire_resistance.png");
@@ -2794,7 +2861,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         "</span>";
     let critTooltip = unitCard.querySelector("div#crit_tt");
 
-    addTooltipListeners(critTooltip, critspan);
+  
 
     let crit = unitCard.querySelector("p#crit");
     crit.innerHTML = "+" + 0 + "%";
@@ -2803,27 +2870,29 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
           let critTooltip = unitCard.querySelector("div#crit_tt");
             let crit = unitCard.querySelector("p#crit");
          crit.innerHTML = unitEN.combat_speed;
+         const img = document.createElement("img");
+         img.setAttribute("src", "/aow4db/Icons/Text/combat_speed.png");
+         img.className = "unit_stat_icon";
+         img.style.width = "25px";
+         critTooltip.innerHTML = "";
+         critTooltip.appendChild(img);
+         
+           critspan.innerHTML =
+        '<span style="color:burlywood;text-transform: uppercase;">Combat Speed</span><br><span style="font-size: 14px;">' +
+        "How many hexes in combat this unit can move" +
+        "</span>";
         
     }
+    
+      addTooltipListeners(critTooltip, critspan);
 
     const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
     const defenseText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@HUD_GENERAL_INFO");
-    let armorspan = document.createElement("span");
-    armorspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
-        defenseText.armor_description +
-        damageRedText.damage_reduction +
-        " : " +
-        '<br><damagePhysical></damagePhysical> :  <span style="color:white;">' +
-        GetDamageReductionPercentage(unitEN.armor) +
-        '</span> ( From <span style="color:white;">' +
-        unitEN.armor +
-        "</span> <defense> </defense>)" +
-        "</p></span>";
-    let armorTooltip = unitCard.querySelector("div#armor_tt");
-
-    addTooltipListeners(armorTooltip, armorspan);
+    //
+   
+  
+    
 
     armor = unitCard.querySelector("p#armor");
     let armorValue = unitEN.armor;
@@ -2841,7 +2910,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     prodcost = unitCard.querySelector("p#productioncost");
     prodcost.innerHTML = "Cost: " + unitEN.cost;
-    let additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost;
+    let additionalBlight, additionalShock, additionalFire, additionalSpirit, additionalFrost, additionalPhysical;
     movementDiv = document.createElement("div");
 
     let unitStat = unitCard.querySelector("div#unitstat");
@@ -2936,9 +3005,12 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     }
 
     for (let z in unitEN.resistances) {
-        addResistanceSlot(unitEN.resistances[z].slug, unitEN.resistance, resistanceHolder);
+        addResistanceSlot(unitEN.resistances[z].slug, unitEN.resistance, unitEN.armor, resistanceHolder);
         if (unitEN.resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
             additionalBlight = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
+        }
+         if (unitEN.resistances[z].slug.toUpperCase().indexOf("PHYSICAL") != -1) {
+            additionalPhysical = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
         }
         if (unitEN.resistances[z].slug.toUpperCase().indexOf("FIRE") != -1) {
             additionalFire = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
@@ -3121,7 +3193,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     y = "";
 
-    function createResistanceEntry(type, label, baseResistance, additionalValue) {
+    function createResistanceEntry(type, label, baseResistance, additionalValue, typeOfDef) {
         // Handle immunity special case
         if (additionalValue === "immune") {
             return `${label}: Immune<br>`;
@@ -3130,19 +3202,32 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         let totalReduction = GetDamageReductionPercentage(baseResistance, additionalValue);
         let valueText = additionalValue != null ? (additionalValue > 0 ? `+${additionalValue}` : additionalValue) : "";
         let tagName = `defense${type.toLowerCase()}`;
+         let typeDef;
+        if(typeOfDef == "Defense"){
+              typeDef = '<defense></defense>';
+        }else{
+              typeDef = '<resistance></resistance>';
+        }
+       
 
         return `${label} : <span style="color:white;">${totalReduction}</span> 
         ( From <span style="color:white;">${baseResistance}</span> 
-        <resistance></resistance>${valueText ? ` ${valueText}<${tagName}></${tagName}>` : ""}
+        ${typeDef}${valueText ? ` ${valueText}<${tagName}></${tagName}>` : ""}
         )<br>`;
     }
 
-    function generateResistanceHTML(unitEN, resistances) {
-        const base = unitEN.resistance;
+    function generateResistanceHTML(unitEN, resistances, type) {
+        let base;
+        if(type == "Defense"){
+              base = unitEN.armor;
+        } else{
+              base = unitEN.resistance;
+        }
+       
         let resistanceHTML = "";
 
         for (const res of resistances) {
-            resistanceHTML += createResistanceEntry(res.type, res.label, base, res.value);
+            resistanceHTML += createResistanceEntry(res.type, res.label, base, res.value, type);
         }
 
         return resistanceHTML;
@@ -3150,6 +3235,17 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     // Define your resistance types and values here
     const resistances = [
+        
+        { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
+        { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
+        { type: "fire", label: "<damageFire></damageFire", value: additionalFire },
+        { type: "spirit", label: "<damageSpirit></damageSpirit>", value: additionalSpirit },
+        { type: "frost", label: "<damageFrost></damageFrost>", value: additionalFrost }
+    ];
+    
+     // Define your resistance types and values here
+    const resistancesBeta = [
+         { type: "physical", label: "<damagePhysical></damagePhysical>", value: additionalPhysical },
         { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
         { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
         { type: "fire", label: "<damageFire></damageFire", value: additionalFire },
@@ -3158,8 +3254,13 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     ];
 
     // Create the tooltip content
+    // resistance
     const resistanceDiv = document.createElement("div");
-    resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistances);
+    resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistances, "Resistance");
+    if(showBetaTooltip.checked){
+        resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Resistance");
+    }
+      
 
     const resistanceSpan = document.createElement("span");
     resistanceSpan.innerHTML =
@@ -3173,6 +3274,36 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     const resistanceTooltip = unitCard.querySelector("div#resistence_tt");
     addTooltipListeners(resistanceTooltip, resistanceSpan);
+    
+    
+    // armor
+     const armorDiv = document.createElement("div");
+       armorDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Defense");
+    let armorspan = document.createElement("span");
+    armorspan.innerHTML =
+        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
+        defenseText.armor_description +
+        damageRedText.damage_reduction +
+        " : " +
+        '<br><damagePhysical></damagePhysical> :  <span style="color:white;">' +
+        GetDamageReductionPercentage(unitEN.armor) +
+        '</span> ( From <span style="color:white;">' +
+        unitEN.armor +
+        "</span> <defense> </defense>)" +
+        "</p></span>";
+    let armorTooltip = unitCard.querySelector("div#armor_tt");
+    
+      if(showBetaTooltip.checked){
+        
+         armorspan.innerHTML =
+        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
+        defenseText.armor_description +
+        damageRedText.damage_reduction +
+        " : " +
+        '<br>' +  armorDiv.innerHTML + '</span>';
+    }
+
+    addTooltipListeners(armorTooltip, armorspan);
     addLevelUpInfo(unitEN, unitID, unitCard);
     // backtrack origin;
     backtrackUnitOrigins(unitEN, unitEN.name, unitCard);

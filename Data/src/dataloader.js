@@ -360,8 +360,8 @@ async function CheckData() {
         //checkboxNumbers = document.getElementById("numbersCheckbox");
         checkboxNumbers.checked = storedSettings.isolateNumber;
 
-        //showBetaTooltip = document.getElementById("showBetaCheckbox");
-      //  showBetaTooltip.checked = storedSettings.showBeta;
+   // showBetaTooltip = document.getElementById("showBetaCheckbox");
+        showBetaTooltip.checked = storedSettings.showBeta;
 
         //  languageSelect = document.getElementById("languageSelect");
         languageSelect.value = storedSettings.language;
@@ -377,11 +377,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-       //   if (storedSettings.showBeta) {
-     //        await GetAllData("BETA");
-      //   } else {
+          if (storedSettings.showBeta) {
+             await GetAllData("BETA");
+       } else {
         await GetAllData(storedSettings.language);
-      //  }
+        }
 
         AddExtraData();
 

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+                 <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CC3NE8PT7K');
+</script>
+        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+        <meta charset="UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+       <script src="/aow4db/Data/Init.js"></script>
+        <script>
+            function HandlePage() {
+                  if (!showBetaTooltip.checked) {
+                    return;
+                }
+                unitarray = FindUnitsWithSecondaryPassive("magic_fighter_unit");
+                console.log(unitarray);
+
+                if (unitarray.length > 1) {
+                    for (i in unitarray) {
+                        showUnitsFromList(unitarray[i], "Magic Fighter Tier " + romanize(parseInt(parseInt(i) + 1)) + " ");
+                    }
+                } else {
+                    SetButtonsAndDivs(unitarray[0], undefined, "unit");
+                }
+
+                SetLevelUpStuff();
+                SetCollapsibleStuff();
+            }
+        </script>
+
+        <title>Age of Wonders 4 Database - Magic Fighter Units</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="textblocktitle">
+            <img src="/aow4db/Icons/Text/magic_fighter.png" height="40px" /> Magic Fighter Units
+            <img src="/aow4db/Icons/Text/magic_fighter.png" height="40px" />
+        </div>
+        <div class="w3-container">
+            <div class="w3-bar w3-black" id="buttonHolder"></div>
+            <div id="dataHolder"></div>
+        </div>
+    </body>
+</html>
+<footer>
+    <br />
+    <br />
+</footer>
