@@ -3994,8 +3994,25 @@ function addLevelUpInfo(units, a, holder) {
         4: 10,
         5: 12
     };
-    const xpNeeded = xpByTier[units.tier] || 0;
+    
+    const xpByTierBeta = {
+        1: 40,
+        2: 60,
+        3: 80,
+        4: 80,
+        5: 100
+    };
+    
+     // Add medal sections
+    let xpNeeded = xpByTier[units.tier] || 0;
+    if(showBetaTooltip.checked){
+         xpNeeded = xpByTierBeta[units.tier] || 0;
+    }
+    
+  
     const evolveTarget = units.evolve_target;
+    
+    
 
     const medals = [
         { name: "Soldier", icon: "medal_soldier", xp: 1, rewards: units.medal_rewards_2 },
@@ -4010,7 +4027,7 @@ function addLevelUpInfo(units, a, holder) {
         }
     ];
 
-    // Add medal sections
+   
     for (const medal of medals) {
         addMedalEntry(medal.name, medal.icon, xpNeeded * medal.xp, levelup);
         addRewards(medal.rewards, levelup);

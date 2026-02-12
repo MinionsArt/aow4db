@@ -6,17 +6,18 @@ const unlockableUnitsMapStructures = {
     shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
 };
 
-
 function cleanTranslation(text) {
-  if (!text) return text;
+    if (!text) return text;
 
-  return text
-    // Remove ^fa{[1]}fn{[2]} style markers
-    .replace(/\^fa\{\[\d+\]\}fn\{\[\d+\]\}/g, "")
-    // Remove any ^ followed by a single letter (e.g. ^m, ^N, ^a)
-    .replace(/\^[a-zA-Z]/g, "")
-    // Clean up leftover spaces
-    .trim();
+    return (
+        text
+            // Remove ^fa{[1]}fn{[2]} style markers
+            .replace(/\^fa\{\[\d+\]\}fn\{\[\d+\]\}/g, "")
+            // Remove any ^ followed by a single letter (e.g. ^m, ^N, ^a)
+            .replace(/\^[a-zA-Z]/g, "")
+            // Clean up leftover spaces
+            .trim()
+    );
 }
 
 const architectCultureUnits = ["surveyor", "cultivator", "earthbreaker", "guardian", "shademaker", "architect"];
@@ -66,7 +67,10 @@ const extraFormUnitsList = [
     "houndmaster",
     "geomancer",
     "paladin",
-    "oracle", "pain_bringer", "blood_cultist", "subjugator"
+    "oracle",
+    "pain_bringer",
+    "blood_cultist",
+    "subjugator"
 ];
 
 const incorrectIconOverrideList = [
@@ -109,22 +113,23 @@ const extraSkills = [
         ]
     },
     {
-  "group_name": "Warlock - Skill Group",
-  "icon": "000004C000000B45",
-  "type": "normal",
-  "resid": 5222680234769,
-  "tree_name": "<classWarlock></classWarlock> Warlock",
-  "name": "Hexseeking Bolts",
-  "tree_pos_x": 250.0,
-  "tree_pos_y": 150.0,
-  "id": "hs_warlock_hexseeking_bolts",
-  "description": "Attacks and <hyperlink>Debuff</hyperlink> abilities against the target of Hex pact:<bulletlist><bullet>Always Hit.</bullet><bullet>Ignore 3 Status Resistance against the target of Hex Pact</bullet></bulletlist>",
-  "required_skills": [
-   {
-    "resid": 5222680234747
-   }
-  ]
- },
+        group_name: "Warlock - Skill Group",
+        icon: "000004C000000B45",
+        type: "normal",
+        resid: 5222680234769,
+        tree_name: "<classWarlock></classWarlock> Warlock",
+        name: "Hexseeking Bolts",
+        tree_pos_x: 250.0,
+        tree_pos_y: 150.0,
+        id: "hs_warlock_hexseeking_bolts",
+        description:
+            "Attacks and <hyperlink>Debuff</hyperlink> abilities against the target of Hex pact:<bulletlist><bullet>Always Hit.</bullet><bullet>Ignore 3 Status Resistance against the target of Hex Pact</bullet></bulletlist>",
+        required_skills: [
+            {
+                resid: 5222680234747
+            }
+        ]
+    },
     {
         group_name: "Ritualist - Hero Skill Group",
         icon: "0000048B00000336",
@@ -160,7 +165,7 @@ function fetchJsonFiles(filePaths) {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
-                return  response.json();
+                return response.json();
             })
         )
     );
@@ -168,12 +173,11 @@ function fetchJsonFiles(filePaths) {
 var jsonSiegeProjects;
 
 const dlcMap = {
-   
     DRAGONLORDS: {
         src: "/aow4db/Icons/Text/DragonDawn.png",
         text: "Part of the Dragon Dawn DLC"
     },
-     EMPIRESANDASHES: {
+    EMPIRESANDASHES: {
         src: "/aow4db/Icons/Text/EmpiresAshes.png",
         text: "Part of the Empires & Ashes DLC"
     },
@@ -200,10 +204,12 @@ const dlcMap = {
     ARCHONPROPHECY: {
         src: "/aow4db/Icons/Text/ArchonProphecy.png",
         text: "Part of the Archon Prophecy DLC"
-    }, COSMICWANDERER: {
+    },
+    COSMICWANDERER: {
         src: "/aow4db/Icons/Text/CosmicWanderer.png",
         text: "Part of the Cosmic Wanderer DLC"
-    },THRONESOFBLOOD: {
+    },
+    THRONESOFBLOOD: {
         src: "/aow4db/Icons/Text/ThronesOfBlood.png",
         text: "Part of the Thrones of Blood DLC"
     }
@@ -212,9 +218,9 @@ const dlcMap = {
 async function GetAllData(selectedLang) {
     let basePathEN = `/aow4db/Data/EN/`;
 
-    if(selectedLang == "BETA"){
-            basePathEN = `/aow4db/Data/BETA/`;
-     }
+    if (selectedLang == "BETA") {
+        basePathEN = `/aow4db/Data/BETA/`;
+    }
 
     const basePathGen = `/aow4db/Data/GEN/`;
     // }
@@ -227,7 +233,6 @@ async function GetAllData(selectedLang) {
         "BuilderLookup.json",
         "AscendedInfo.json",
         "BuilderLookupHero.json",
-        "item_forge.json",
         "UI.json",
         "FactionCreation.json",
         "StatusEffects.json",
@@ -238,7 +243,8 @@ async function GetAllData(selectedLang) {
         "CityTree.json",
         "all_spawnsets_strategic.json",
         "FreeCities.json",
-        
+          "ItemForgeTypes.json",
+         "ItemForgeUpgrades.json"
     ];
     const fileNames = [
         // ingame dump files
@@ -278,17 +284,19 @@ async function GetAllData(selectedLang) {
             "jsonBuilderLookUp",
             "jsonExtraAscendedInfo",
             "jsonBuilderHeroLookUp",
-            "jsonItemForge",
+           
             "jsonUIGeneric",
             "jsonFactionCreation",
             "jsonStatusEffects",
             "jsonExtraTooltips",
-             "jsonCombatEnchantments",
-        "jsonWorldStructures",
-        "jsonCosmicHappenings",
+            "jsonCombatEnchantments",
+            "jsonWorldStructures",
+            "jsonCosmicHappenings",
             "jsonCityTreeNodes",
             "jsonSpawnSetsStrat",
-            "jsonFreeCities"
+            "jsonFreeCities",
+             "jsonItemForgeTypes",
+             "jsonItemForgeUpgrades"
         ];
         const targets = [
             "jsonHeroItems",
@@ -363,9 +371,10 @@ async function CheckData() {
    // showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
 
+
         //  languageSelect = document.getElementById("languageSelect");
         languageSelect.value = storedSettings.language;
-         //languageSelect.value = "EN";
+        //languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {
@@ -382,6 +391,7 @@ async function CheckData() {
        } else {
         await GetAllData(storedSettings.language);
         }
+
 
         AddExtraData();
 
@@ -407,14 +417,13 @@ function LocalizeUI(specific) {
     // general ui lookup first
     for (const id in jsonUIGeneric) {
         let el = "";
-        if(specific != undefined){
-              el = specific.querySelector("#" +id);
+        if (specific != undefined) {
+            el = specific.querySelector("#" + id);
             console.log(el);
-           
-        }else{
-              el = document.getElementById(id);
+        } else {
+            el = document.getElementById(id);
         }
-       
+
         if (el != null) {
             let value = "error";
 
@@ -435,7 +444,7 @@ function LocalizeUI(specific) {
                         value = found.hyperlink;
                     }
                 }
-             //   console.log(test);
+                //   console.log(test);
                 value = value.replaceAll("<hyperlink>", "");
                 value = value.replaceAll("</hyperlink>", "");
                 value = value.split("^")[0];
