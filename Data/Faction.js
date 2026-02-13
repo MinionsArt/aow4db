@@ -445,7 +445,7 @@ function selectOrigin(origin, type) {
         case "Ascension":
             currentAscension = origin;
             break;
-            case "Ambition":
+        case "Ambition":
             currentAmbition = origin;
             break;
         case "Class":
@@ -697,7 +697,7 @@ function SetTomePathInfoSmall(buttonHolder, origin) {
     image.setAttribute("height", "60");
     image.style = "position: relative; top: 10px;";
 
-    image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
+    image.src = "/aow4db/Icons/TomeIcons/" + origin.icon + ".png"; // Set the image source to your image file
 
     // Create a span element to hold the button text
     const buttonText = document.createElement("span");
@@ -794,7 +794,7 @@ function SetTomePathInfo(button, origin) {
     image.setAttribute("width", "50");
     image.setAttribute("height", "50");
 
-    image.src = "/aow4db/Icons/TomeIcons/" + origin.id + ".png"; // Set the image source to your image file
+    image.src = "/aow4db/Icons/TomeIcons/" + origin.icon + ".png"; // Set the image source to your image file
 
     // Create a span element to hold the button text
     const buttonText = document.createElement("span");
@@ -966,7 +966,7 @@ function SetupButtons(evt, type) {
             list = GetAllAscensions();
 
             break;
-             case "Ambition":
+        case "Ambition":
             list = GetAllAmbitions();
 
             break;
@@ -1364,7 +1364,7 @@ function createImage(type, origin) {
 
     switch (type) {
         case "Tome":
-            setImage(`/aow4db/Icons/TomeIcons/${origin.id}.png`);
+            setImage(`/aow4db/Icons/TomeIcons/${origin.icon}.png`);
             break;
         case "Society1":
         case "Society2":
@@ -1386,15 +1386,15 @@ function createImage(type, origin) {
         case "Ascension":
             setImage(`/aow4db/Icons/UnitIcons/${origin.icon}.png`);
             break;
-             case "Ambition":
+        case "Ambition":
             setImage(`/aow4db/Icons/AmbitionIcons/${origin.icon}.png`);
             break;
-        case "Symbol":
+        /* case "Symbol":
             let symbolId = parseInt(origin, 10);
             if (symbolId < 10 && symbolId > 0) symbolId = "0" + symbolId;
             if (symbolId === 0) symbolId = 138;
             setImage(`/aow4db/Icons/Symbols/SigilIcons_${symbolId}.gif`);
-            break;
+            break;*/
     }
 
     return image;
@@ -1402,7 +1402,7 @@ function createImage(type, origin) {
 
 function getFactionIconPath(id) {
     const cleanId = id.startsWith("_") ? id.split("_").slice(1).join("_") : id;
-    return `/aow4db/Icons/TraitIcons/${cleanId}.png`;
+    return `/aow4db/Icons/FactionCreation/${cleanId}.png`;
 }
 
 function findOriginLocName(origin, type) {
@@ -1422,13 +1422,11 @@ function findOriginLocName(origin, type) {
                     newOrigin = valueLookup2.hyperlink || valueLookup2.name || valueLookup2.title;
                 } else {
                     newOrigin = valueLookup.hyperlink || valueLookup.name;
-                  
                 }
             } else {
-                
                 newOrigin = origin.name;
             }
-             newOrigin = newOrigin.split("{")[0];
+            newOrigin = newOrigin.split("{")[0];
             break;
 
         case "Tome":
@@ -1451,7 +1449,7 @@ function findOriginLocName(origin, type) {
         case "Ascension":
             newOrigin = jsonHeroSkillsLocalized.find((entry) => entry.resid === origin.resid).name;
             break;
-             case "Ambition":
+        case "Ambition":
             newOrigin = jsonHeroAmbitionsLocalized.find((entry) => entry.icon === origin.icon).name;
             break;
         case "Signature":
@@ -1553,7 +1551,6 @@ function createTooltip(origin, type) {
         case "SubType":
         case "Form":
         case "FormTrait":
-           
             const el = spell_card_template.content.firstElementChild.cloneNode(true);
 
             tooltip.innerHTML = el.firstElementChild.innerHTML;
@@ -1569,26 +1566,23 @@ function createTooltip(origin, type) {
             break;
 
         case "Tome":
-            
             SetTomePreview(tooltip, originLoc);
             break;
 
         /* case "FormTrait":
             SetFullPreview(tooltip, originLoc);
             break;*/
-                
-            
+
         case "Ambition":
-             const el2 = spell_card_template.content.firstElementChild.cloneNode(true);
+            const el2 = spell_card_template.content.firstElementChild.cloneNode(true);
 
             tooltip.innerHTML = el2.firstElementChild.innerHTML;
-           
-             showHeroTrait(origin.id, tooltip);
+
+            showHeroTrait(origin.id, tooltip);
             break;
 
         case "Signature":
         case "Ascension":
-        
             SetSkillPreview(tooltip, originLoc);
             break;
 
@@ -1784,20 +1778,27 @@ function SetTomePreview(span, origin) {
                 // can be summon as well
                 if ("spell_slug" in origin.skills[index]) {
                     const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
-                    
-                     let iconLink = spell.icon;
-                if(spell.icon == undefined){
-                    iconLink = spell.id;
-                }
-                    span.innerHTML +=
-                        '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                        iconLink +
-                        '.png">' +
-                        spell.name +
-                        "</bullet>";
+
+                    let iconLink = spell.icon;
+                    if (spell.icon == undefined || incorrectIconOverrideList.includes(spell.spell_slug)) {
+                        iconLink = spell.id;
+                        span.innerHTML +=
+                            '<bullet> <img width="20px" src="/aow4db/Icons/SummonIcons/' +
+                            iconLink +
+                            '.png">' +
+                            spell.name +
+                            "</bullet>";
+                    } else {
+                        span.innerHTML +=
+                            '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
+                            iconLink +
+                            '.png">' +
+                            spell.name +
+                            "</bullet>";
+                    }
                 } else {
                     span.innerHTML +=
-                        '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
+                        '<bullet> <img width="20px" src="/aow4db/Icons/UnitUnlockIcons/' +
                         origin.skills[index].unit_slug +
                         '.png">' +
                         findBy(jsonUnitsLocalized, "id", locOrigin.skills[index].unit_slug).name +
@@ -1812,7 +1813,7 @@ function SetTomePreview(span, origin) {
                 } else {
                     slug = locOrigin.skills[index].name.replaceAll(" ", "_").toLowerCase();
                 }
-                
+
                 const siege = findBy(jsonSiegeProjectsLocalized, "id", slug);
 
                 span.innerHTML +=
@@ -1846,7 +1847,7 @@ function SetTomePreview(span, origin) {
             else if (origin.skills[index].type.indexOf("Empire") != -1) {
                 var imageLinkName = locOrigin.skills[index].name.replaceAll(" ", "_").toLowerCase();
                 span.innerHTML +=
-                    '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
+                    '<bullet> <img width="20px" src="/aow4db/Icons/ExtraIcons/' +
                     imageLinkName +
                     '.png">' +
                     origin.skills[index].name +
@@ -1856,15 +1857,22 @@ function SetTomePreview(span, origin) {
             else {
                 const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
                 let iconLink = spell.icon;
-                if(spell.icon == undefined){
-                    iconLink = spell.id;
-                }
-                span.innerHTML +=
-                    '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                    iconLink +
-                    '.png">' +
-                    spell.name +
-                    "</bullet>";
+                    if (spell.icon == undefined || incorrectIconOverrideList.includes(spell.spell_slug)) {
+                        iconLink = spell.id;
+                        span.innerHTML +=
+                            '<bullet> <img width="20px" src="/aow4db/Icons/SummonIcons/' +
+                            iconLink +
+                            '.png">' +
+                            spell.name +
+                            "</bullet>";
+                    } else {
+                        span.innerHTML +=
+                            '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
+                            iconLink +
+                            '.png">' +
+                            spell.name +
+                            "</bullet>";
+                    }
             }
             //
         }
@@ -1933,14 +1941,12 @@ function CollectAllPartsForOverview(fromload) {
 
     for (let v = 0; v < jsonTomes.length; v++) {
         if (currentSubCulture != "") {
-              if (jsonTomes[v].name.indexOf(currentSubCulture.name) != -1) {
-                 // if subcutlure
+            if (jsonTomes[v].name.indexOf(currentSubCulture.name) != -1) {
+                // if subcutlure
                 ExtraTomelist.push(jsonTomes[v]);
             }
         } else {
             if (jsonTomes[v].name.indexOf(currentCulture.name) != -1) {
-               
-
                 ExtraTomelist.push(jsonTomes[v]);
             }
         }
@@ -2167,8 +2173,17 @@ function CreateSpellIcon(listEntry, colorEntry) {
     text.innerHTML = " " + listEntryLoc.name;
 
     var smallIcon = document.createElement("img");
-    let iconLink = spellData.icon || spellData.id;
-    smallIcon.setAttribute("src", "/aow4db/Icons/SpellIcons/" + iconLink + ".png");
+   
+    let imageSRC;
+        let imageLinkName;
+        if (spellData.icon != undefined && !incorrectIconOverrideList.includes(spellData.id)) {
+            imageLinkName = spellData.icon;
+            imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
+        } else {
+            imageLinkName = spellData.id;
+            imageSRC = "/aow4db/Icons/SummonIcons/" + imageLinkName + ".png";
+        }
+    smallIcon.setAttribute("src", imageSRC);
     smallIcon.setAttribute("width", "25px");
     smallIcon.setAttribute("height", "25px");
     spell.appendChild(tier);
@@ -2330,7 +2345,7 @@ function ShowUpgradesOverview(list) {
                 var text = document.createElement("div");
                 text.innerHTML = " " + loc.name;
                 var smallIcon = document.createElement("img");
-                smallIcon.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + jsonStructureUpgrades[i].id + ".png");
+                smallIcon.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + jsonStructureUpgrades[i].icon + ".png");
                 smallIcon.setAttribute("width", "20px");
                 spell.appendChild(smallIcon);
                 spell.appendChild(text);
@@ -3703,8 +3718,8 @@ function reversLookUp(code) {
             document.getElementById("fname").value = splitNames[1];
         }
     }
-    
-     // 13 = ambition if available, else placeholder "am" is added
+
+    // 13 = ambition if available, else placeholder "am" is added
     var amb = splitcode[13];
     if (amb != "am" && amb != undefined) {
         var numbernew = jsonBuilderLookUp[hexToDecimal(amb)].id;

@@ -409,7 +409,7 @@
                         const skill = tome.skills[k];
                         if ("upgrade_slug" in skill && ListOfCityBuildings.includes(skill.upgrade_slug)) {
                             TomeBuildings.push({
-                                tomeId: tome.id, // Tome ID
+                                tomeId: tome, // Tome ID
                                 buildingId: skill.upgrade_slug // Building ID
                             });
                         }
@@ -867,7 +867,13 @@
                 var newNodeBackground = document.createElement("DIV");
 
                 var img = document.createElement("IMG");
-                img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureInfo.icon + ".png");
+                // different palce when its the 4 I added here
+                if(extraBuildings.includes(structureInfo)){
+                     img.setAttribute("src", "/aow4db/Icons/ExtraIcons/" + structureInfo.icon + ".png");
+                }else{
+                     img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureInfo.icon + ".png");
+                }
+          
                 img.setAttribute("height", "60px");
                 img.className = "structureNodeIcon";
                 newNode.setAttribute("id", structureInfo.id);
@@ -943,7 +949,7 @@
                 }
 
                 if (tomeID) {
-                    newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/TomeIcons/' + tomeID + '.png")';
+                    newNodeBackground.style.backgroundImage = 'url("/aow4db/Icons/TomeIcons/' + tomeID.icon + '.png")';
                     newNodeBackground.style.backgroundRepeat = "no-repeat";
                     newNodeBackground.style.backgroundPositionX = "140px";
                     newNodeBackground.style.backgroundSize = "80px";

@@ -2,6 +2,8 @@ searchParams = new URLSearchParams(window.location.search);
 let sorting = searchParams.get("sort");
 let currentView = "";
 
+const errorImage = "/aow4db/Icons/Text/exclamationpoint.png";
+
 const checkboxTooltip = document.getElementById("tooltipCheckbox");
 const checkboxNumbers = document.getElementById("numbersCheckbox");
 const showBetaTooltip = document.getElementById("showBetaCheckbox");
@@ -366,7 +368,7 @@ function getUnitTypeTag(passivesList) {
         "000003bd000020c0": "<unitSupport></unitSupport>",
         "000003fe00000060": "<unitScout></unitScout>",
         "0000039f000016f1": "<unitRanged></unitRanged>",
-          "0000049700003951": "<unitMagicFighter></unitMagicFighter>",
+        "0000049700003951": "<unitMagicFighter></unitMagicFighter>",
         "000003e300004c86": "<unitBattlemage></unitBattlemage>",
         "0000039f000016f2": "<unitPolearm></unitPolearm>",
         "0000039f000016f0": "<unitShield></unitShield>",
@@ -468,9 +470,10 @@ function SetButtonsAndDivs(list, parent, cardType, otherParent, subcultureCheck)
                 let splitIcon = list[i].split(":");
                 div.setAttribute("id", splitIcon[0]);
                 btn.setAttribute("id", splitIcon[0] + "-button");
+                const lookUpTome = findBy(jsonTomes, "id", splitIcon[1]);
                 btn.innerHTML =
                     '<img style="float:left;" src="/aow4db/Icons/TomeIcons/' +
-                    splitIcon[1] +
+                    lookUpTome.icon +
                     ".png\" width='25px'\">" +
                     GetUnitTierAndName(splitIcon[0]);
                 AddTriangleForDLCUnits("Unit", splitIcon[0], btn);
@@ -787,7 +790,7 @@ function addUnitTypeIcon(a, holder, origin) {
     imag = document.createElement("IMG");
     spa = document.createElement("SPAN");
     imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + iconsrc + ".png");
-    imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+    imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
     imag.setAttribute("width", "40");
     imag.setAttribute("height", "40");
 
@@ -807,7 +810,7 @@ function addUnitTypeIcon(a, holder, origin) {
             "Shock Unit",
             "Shield Unit",
             "Fighter Unit",
-             "Magic Fighter Unit",
+            "Magic Fighter Unit",
             "Support Unit",
             "Battle Mage Unit",
             "Skirmisher Unit",
@@ -1038,7 +1041,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
 
     // add notes
 
-  //  abilityNote = "";
+    //  abilityNote = "";
     let Cooldown = "";
     let Once = "";
     // jsonUnitAbilities english;
@@ -1049,25 +1052,30 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
             } else {
                 if (abilityEn.notes[l].note.indexOf("Cooldown") != -1) {
                     Cooldown = abilityLoc.notes[l].note;
-                } if (abilityEn.notes[l].note.indexOf("once per") != -1) {
+                }
+                if (abilityEn.notes[l].note.indexOf("once per") != -1) {
                     Once = abilityLoc.notes[l].note;
-                }/* else {
+                } /* else {
                     abilityNote += "<br>" + abilityLoc.notes[l].note;
                 }*/
             }
         }
     }
-      let Melee = "";
+    let Melee = "";
     let Magic = "";
     if ("requisites" in abilityLoc) {
         for (let l = 0; l < abilityLoc.requisites.length; l++) {
             if (abilityLoc.requisites[l] === undefined) {
             } else {
-                if (abilityEn.requisites[l].requisite.indexOf("Melee") != -1 || abilityEn.requisites[l].requisite.indexOf("Physical") != -1) {
+                if (
+                    abilityEn.requisites[l].requisite.indexOf("Melee") != -1 ||
+                    abilityEn.requisites[l].requisite.indexOf("Physical") != -1
+                ) {
                     Melee = abilityLoc.requisites[l].requisite;
-                } if (abilityEn.requisites[l].requisite.indexOf("Magic") != -1) {
+                }
+                if (abilityEn.requisites[l].requisite.indexOf("Magic") != -1) {
                     Magic = abilityLoc.requisites[l].requisite;
-                } 
+                }
             }
         }
     }
@@ -1108,7 +1116,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
             '.png");background-repeat: no-repeat;background-size: 40px 40px'
     );
 
-    imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+    imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
     imag.setAttribute("width", "40");
     imag.setAttribute("height", "40");
     let imageExtra;
@@ -1125,8 +1133,8 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         imageExtra.setAttribute("style", " position: absolute; height: 18px; left: 0px;bottom: 4px;");
         btn.append(imageExtra);
     }
-    
-     if (Melee != "" && showBetaTooltip.checked) {
+
+    if (Melee != "" && showBetaTooltip.checked) {
         imageExtra = document.createElement("IMG");
         imageExtra.setAttribute("src", "/aow4db/Icons/Text/armor_small.png");
         imageExtra.setAttribute("style", " position: absolute; height: 15px; left: 30px;bottom: 5px;");
@@ -1566,7 +1574,7 @@ function addPassiveslot(a, div, enchant) {
             tex.innerHTML = abilityName;
 
             imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
-            imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+            imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
             imag.setAttribute("width", "40");
             imag.setAttribute("height", "40");
 
@@ -1616,7 +1624,7 @@ function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
     tex.innerHTML = abilityName;
 
     imag.setAttribute("src", "/aow4db/Icons/SpellIcons/" + abilityIcon + ".png");
-    imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
+    imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
     imag.setAttribute("width", "40");
     imag.setAttribute("height", "40");
 
@@ -1756,55 +1764,54 @@ function addResistanceSlot(a, resistance, defense, holder) {
 
             const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
-           
-            
-            if(showBetaTooltip.checked){
-                 spa.innerHTML +=
-                "<br><br>" +
-                damageRedText.damage_reduction +
-                ": <br> " +
-                firstPart +
-                ' <span style="color:white;">' +
-                GetDamageReductionPercentage(defense, num) +
-                '</span> ( From <span style="color:white;">' +
-                defense +
-                "</span> <defense> </defense>";
-                 if (num != undefined) {
-                if (num > 0) {
-                    spa.innerHTML += "+";
+            if (showBetaTooltip.checked) {
+                spa.innerHTML +=
+                    "<br><br>" +
+                    damageRedText.damage_reduction +
+                    ": <br> " +
+                    firstPart +
+                    ' <span style="color:white;">' +
+                    GetDamageReductionPercentage(defense, num) +
+                    '</span> ( From <span style="color:white;">' +
+                    defense +
+                    "</span> <defense> </defense>";
+                if (num != undefined) {
+                    if (num > 0) {
+                        spa.innerHTML += "+";
+                    }
+                    spa.innerHTML += num;
                 }
-                spa.innerHTML += num;
-            }
-                 spa.innerHTML +="<br>" +    firstPart  +
-                GetDamageReductionPercentage(resistance, num) +
-                '</span> ( From <span style="color:white;">' +
-                resistance +
-                "</span> <resistance> </resistance>";
-                 if (num != undefined) {
-                if (num > 0) {
-                    spa.innerHTML += "+";
+                spa.innerHTML +=
+                    "<br>" +
+                    firstPart +
+                    GetDamageReductionPercentage(resistance, num) +
+                    '</span> ( From <span style="color:white;">' +
+                    resistance +
+                    "</span> <resistance> </resistance>";
+                if (num != undefined) {
+                    if (num > 0) {
+                        spa.innerHTML += "+";
+                    }
+                    spa.innerHTML += num;
                 }
-                spa.innerHTML += num;
-            }
-            } else{
-                 spa.innerHTML +=
-                "<br><br>" +
-                damageRedText.damage_reduction +
-                ": <br> " +
-                firstPart +
-                ' <span style="color:white;">' +
-                GetDamageReductionPercentage(resistance, num) +
-                '</span> ( From <span style="color:white;">' +
-                resistance +
-                "</span> <resistance> </resistance>";
-                 if (num != undefined) {
-                if (num > 0) {
-                    spa.innerHTML += "+";
+            } else {
+                spa.innerHTML +=
+                    "<br><br>" +
+                    damageRedText.damage_reduction +
+                    ": <br> " +
+                    firstPart +
+                    ' <span style="color:white;">' +
+                    GetDamageReductionPercentage(resistance, num) +
+                    '</span> ( From <span style="color:white;">' +
+                    resistance +
+                    "</span> <resistance> </resistance>";
+                if (num != undefined) {
+                    if (num > 0) {
+                        spa.innerHTML += "+";
+                    }
+                    spa.innerHTML += num;
                 }
-                spa.innerHTML += num;
             }
-            }
-           
 
             imag.setAttribute("width", "25");
             imag.setAttribute("height", "25");
@@ -2849,8 +2856,6 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     let hpvalue = unitEN.hp;
     hp.innerHTML = unitEN.hp;
-    
-   
 
     const critText = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@CRITICAL_HIT");
 
@@ -2861,38 +2866,32 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         "</span>";
     let critTooltip = unitCard.querySelector("div#crit_tt");
 
-  
-
     let crit = unitCard.querySelector("p#crit");
     crit.innerHTML = "+" + 0 + "%";
-    
-     if('combat_speed' in unitEN){
-          let critTooltip = unitCard.querySelector("div#crit_tt");
-            let crit = unitCard.querySelector("p#crit");
-         crit.innerHTML = unitEN.combat_speed;
-         const img = document.createElement("img");
-         img.setAttribute("src", "/aow4db/Icons/Text/combat_speed.png");
-         img.className = "unit_stat_icon";
-         img.style.width = "25px";
-         critTooltip.innerHTML = "";
-         critTooltip.appendChild(img);
-         
-           critspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase;">Combat Speed</span><br><span style="font-size: 14px;">' +
-        "How many hexes in combat this unit can move" +
-        "</span>";
-        
+
+    if ("combat_speed" in unitEN) {
+        let critTooltip = unitCard.querySelector("div#crit_tt");
+        let crit = unitCard.querySelector("p#crit");
+        crit.innerHTML = unitEN.combat_speed;
+        const img = document.createElement("img");
+        img.setAttribute("src", "/aow4db/Icons/Text/combat_speed.png");
+        img.className = "unit_stat_icon";
+        img.style.width = "25px";
+        critTooltip.innerHTML = "";
+        critTooltip.appendChild(img);
+
+        critspan.innerHTML =
+            '<span style="color:burlywood;text-transform: uppercase;">Combat Speed</span><br><span style="font-size: 14px;">' +
+            "How many hexes in combat this unit can move" +
+            "</span>";
     }
-    
-      addTooltipListeners(critTooltip, critspan);
+
+    addTooltipListeners(critTooltip, critspan);
 
     const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
     const defenseText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@HUD_GENERAL_INFO");
     //
-   
-  
-    
 
     armor = unitCard.querySelector("p#armor");
     let armorValue = unitEN.armor;
@@ -3009,7 +3008,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         if (unitEN.resistances[z].slug.toUpperCase().indexOf("BLIGHT") != -1) {
             additionalBlight = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
         }
-         if (unitEN.resistances[z].slug.toUpperCase().indexOf("PHYSICAL") != -1) {
+        if (unitEN.resistances[z].slug.toUpperCase().indexOf("PHYSICAL") != -1) {
             additionalPhysical = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
         }
         if (unitEN.resistances[z].slug.toUpperCase().indexOf("FIRE") != -1) {
@@ -3067,7 +3066,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
             }
         }
     }
-   /* for (x in activeEnchantList) {
+    /* for (x in activeEnchantList) {
         for (k = 0; k < jsonEnchantments.length; k++) {
             if (jsonEnchantments[k].id === activeEnchantList[x].id) {
                 if ("hp" in jsonEnchantments[k]) {
@@ -3202,13 +3201,12 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         let totalReduction = GetDamageReductionPercentage(baseResistance, additionalValue);
         let valueText = additionalValue != null ? (additionalValue > 0 ? `+${additionalValue}` : additionalValue) : "";
         let tagName = `defense${type.toLowerCase()}`;
-         let typeDef;
-        if(typeOfDef == "Defense"){
-              typeDef = '<defense></defense>';
-        }else{
-              typeDef = '<resistance></resistance>';
+        let typeDef;
+        if (typeOfDef == "Defense") {
+            typeDef = "<defense></defense>";
+        } else {
+            typeDef = "<resistance></resistance>";
         }
-       
 
         return `${label} : <span style="color:white;">${totalReduction}</span> 
         ( From <span style="color:white;">${baseResistance}</span> 
@@ -3218,12 +3216,12 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     function generateResistanceHTML(unitEN, resistances, type) {
         let base;
-        if(type == "Defense"){
-              base = unitEN.armor;
-        } else{
-              base = unitEN.resistance;
+        if (type == "Defense") {
+            base = unitEN.armor;
+        } else {
+            base = unitEN.resistance;
         }
-       
+
         let resistanceHTML = "";
 
         for (const res of resistances) {
@@ -3235,17 +3233,16 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     // Define your resistance types and values here
     const resistances = [
-        
         { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
         { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
         { type: "fire", label: "<damageFire></damageFire", value: additionalFire },
         { type: "spirit", label: "<damageSpirit></damageSpirit>", value: additionalSpirit },
         { type: "frost", label: "<damageFrost></damageFrost>", value: additionalFrost }
     ];
-    
-     // Define your resistance types and values here
+
+    // Define your resistance types and values here
     const resistancesBeta = [
-         { type: "physical", label: "<damagePhysical></damagePhysical>", value: additionalPhysical },
+        { type: "physical", label: "<damagePhysical></damagePhysical>", value: additionalPhysical },
         { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
         { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
         { type: "fire", label: "<damageFire></damageFire", value: additionalFire },
@@ -3257,10 +3254,9 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     // resistance
     const resistanceDiv = document.createElement("div");
     resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistances, "Resistance");
-    if(showBetaTooltip.checked){
+    if (showBetaTooltip.checked) {
         resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Resistance");
     }
-      
 
     const resistanceSpan = document.createElement("span");
     resistanceSpan.innerHTML =
@@ -3274,11 +3270,10 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     const resistanceTooltip = unitCard.querySelector("div#resistence_tt");
     addTooltipListeners(resistanceTooltip, resistanceSpan);
-    
-    
+
     // armor
-     const armorDiv = document.createElement("div");
-       armorDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Defense");
+    const armorDiv = document.createElement("div");
+    armorDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Defense");
     let armorspan = document.createElement("span");
     armorspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
@@ -3292,15 +3287,16 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         "</span> <defense> </defense>)" +
         "</p></span>";
     let armorTooltip = unitCard.querySelector("div#armor_tt");
-    
-      if(showBetaTooltip.checked){
-        
-         armorspan.innerHTML =
-        '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
-        defenseText.armor_description +
-        damageRedText.damage_reduction +
-        " : " +
-        '<br>' +  armorDiv.innerHTML + '</span>';
+
+    if (showBetaTooltip.checked) {
+        armorspan.innerHTML =
+            '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
+            defenseText.armor_description +
+            damageRedText.damage_reduction +
+            " : " +
+            "<br>" +
+            armorDiv.innerHTML +
+            "</span>";
     }
 
     addTooltipListeners(armorTooltip, armorspan);
@@ -3338,7 +3334,7 @@ function createFoundUnitInHereIcon(parent, imgSrc, imgFallbackSrc, link, tooltip
 
     spa.innerHTML = tooltipText;
     imag.setAttribute("src", imgSrc);
-    imag.setAttribute("onerror", `this.setAttribute('src','${imgFallbackSrc}')`);
+    imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
     imag.setAttribute("width", "60");
     imag.setAttribute("height", "60");
 
@@ -3401,7 +3397,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let tomes = CheckIfInTomes(unitData.id);
     for (let x = 0; x < tomes.length; x++) {
         const tooltipText = `Unit production unlocked from Tier <hyperlink>${romanize(tomes[x].tier)} - ${showAffinitySymbols(tomes[x])} ${tomes[x].name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/TomeIcons/${tomes[x].id}.png`;
+        const imgSrc = `/aow4db/Icons/TomeIcons/${tomes[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?tome=${tomes[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3415,13 +3411,19 @@ function backtrackUnitOrigins(unitData, name, holder) {
             tierandnameoftome != ""
                 ? `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink> <br>in Tier <hyperlink>${romanize(tierandnameoftome.tier)} - ${showAffinitySymbols(tierandnameoftome)} ${tierandnameoftome.name}</hyperlink>`
                 : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</<hyperlink>`;
-        
-      
-        let imageLinkName =  spells[x].icon?  spells[x].icon :  spells[x].id;
-         if (incorrectIconOverrideList.includes(spells[x].id)) {
+
+        let imageSRC;
+        let imageLinkName;
+        if (spells[x].icon != undefined && !incorrectIconOverrideList.includes(spells[x].id)) {
+            imageLinkName = spells[x].icon;
+            imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
+        } else {
             imageLinkName = spells[x].id;
+            imageSRC = "/aow4db/Icons/SummonIcons/" + imageLinkName + ".png";
         }
-        const imgSrc = `/aow4db/Icons/SpellIcons/${imageLinkName}.png`;
+        // let imageLinkName =  spells[x].icon?  spells[x].icon :  spells[x].id;
+
+        // const imgSrc = `/aow4db/Icons/SpellIcons/${imageLinkName}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?spell=${spells[x].id}`;
         const miniIcon = document.createElement("div");
@@ -3432,7 +3434,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
             miniIcon.innerHTML = "<caststrategic></caststrategic>";
         }
 
-        createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
+        createFoundUnitInHereIcon(holderOrigin, imageSRC, imgFallbackSrc, link, tooltipText);
         holderOrigin.appendChild(miniIcon);
     }
 
@@ -3461,7 +3463,8 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let traitFound = CheckIfInTraits(unitData.id);
     for (let x = 0; x < traitFound.length; x++) {
         const tooltipText = `Unit added by Faction Trait <hyperlink>${traitFound[x].name}</hyperlink>`;
-        const imgSrc = `/aow4db/Icons/TraitIcons/${traitFound[x].id}.png`;
+        // if from GEN, use FACTIONCREATION folder
+        const imgSrc = `/aow4db/Icons/FactionCreation/${traitFound[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?trait=${traitFound[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3496,7 +3499,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let tree = CheckIfInEmpireTree(name);
     for (let x = 0; x < tree.length; x++) {
         const tooltipText = `Unit mentioned in <hyperlink>${tree[x].category} ${tree[x].required_level}</<hyperlink> : <hyperlink>${tree[x].name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree[x].id}.png`;
+        const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/EmpireTree.html`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3509,7 +3512,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc =
             unitAbility[0] != ""
                 ? `/aow4db/Icons/UnitIcons/${unitAbility[x][1].icon}.png`
-                : `/aow4db/Icons/HeroSkillIcons/${unitAbility[x][1].icon}.png`;
+                : `/aow4db/Icons/UnitIcons/${unitAbility[x][1].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${unitAbility[x][0].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3531,7 +3534,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         const imgSrc =
             heroSkill[x][0] != ""
                 ? `/aow4db/Icons/UnitIcons/${heroSkill[x][0].icon}.png`
-                : `/aow4db/Icons/HeroSkillIcons/${heroSkill[x][1].icon}.png`;
+                : `/aow4db/Icons/UnitIcons/${heroSkill[x][1].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?skill=${heroSkill[x][1].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3549,7 +3552,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let evolve = CheckIfEvolveTarget(unitData.id);
     if (evolve != "") {
         const tooltipText = `Evolved/Promoted from Unit <hyperlink>${evolve.name}</<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/UnitIcons/evolve.png`;
+        const imgSrc = `/aow4db/Icons/Text/evolve.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${evolve.id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
@@ -3854,7 +3857,6 @@ function CheckIfFromInfusion(unitName) {
         const descr2 = findBy(jsonAllFromPOLocalized, "id", baseId2);
 
         if (descr) {
-            
             if (descr[suffix].indexOf(unitName) != -1) {
                 infusions.add(jsonItemForge[i]);
             }
@@ -3994,7 +3996,7 @@ function addLevelUpInfo(units, a, holder) {
         4: 10,
         5: 12
     };
-    
+
     const xpByTierBeta = {
         1: 40,
         2: 60,
@@ -4002,17 +4004,14 @@ function addLevelUpInfo(units, a, holder) {
         4: 80,
         5: 100
     };
-    
-     // Add medal sections
+
+    // Add medal sections
     let xpNeeded = xpByTier[units.tier] || 0;
-    if(showBetaTooltip.checked){
-         xpNeeded = xpByTierBeta[units.tier] || 0;
+    if (showBetaTooltip.checked) {
+        xpNeeded = xpByTierBeta[units.tier] || 0;
     }
-    
-  
+
     const evolveTarget = units.evolve_target;
-    
-    
 
     const medals = [
         { name: "Soldier", icon: "medal_soldier", xp: 1, rewards: units.medal_rewards_2 },
@@ -4027,7 +4026,6 @@ function addLevelUpInfo(units, a, holder) {
         }
     ];
 
-   
     for (const medal of medals) {
         addMedalEntry(medal.name, medal.icon, xpNeeded * medal.xp, levelup);
         addRewards(medal.rewards, levelup);
@@ -4171,7 +4169,7 @@ function showEmpireUpgrade(skill, showOrigin, divOrigin) {
     let imagelink = divOrigin.querySelector("#modicon");
 
     let imageLinkName = skill.name.replaceAll(" ", "_").toLowerCase();
-    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/ExtraIcons/" + imageLinkName + ".png");
 
     descriptionDiv.innerHTML = description;
 
@@ -4370,25 +4368,20 @@ function showTome(a, divOrigin) {
         // this one doesnt have a slug for some reason, architect spell
         if (skill.name === "Conjure Elemental") {
             addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
-        }
-       else if ("spell_slug" in skill) {
+        } else if ("spell_slug" in skill) {
             //  console.log(skill.spell_slug);
             addTomeSkillCard(skillHolder, (el) => showSpell(skill.spell_slug, false, el));
-        }
-       else if ("unit_slug" in skill) {
+        } else if ("unit_slug" in skill) {
             addTomeSkillCard(skillHolder, (el) => showUnitUnlock(skill, el));
-        }
-       else if ("upgrade_slug" in skill) {
+        } else if ("upgrade_slug" in skill) {
             addTomeSkillCard(skillHolder, (el) => showStructure(skill.upgrade_slug, false, el));
-        }
-       else if (skill.type === "<hyperlink>Empire Bonus</hyperlink>") {
+        } else if (skill.type === "<hyperlink>Empire Bonus</hyperlink>") {
             addTomeSkillCard(skillHolder, (el) => showEmpireUpgrade(skill, false, el));
-        }
-       else if (skill.type && skill.type.indexOf("Siege") !== -1) {
+        } else if (skill.type && skill.type.indexOf("Siege") !== -1) {
             addTomeSkillCard(skillHolder, (el) => showSiegeProject(skill.name, false, el));
-        } else{
+        } else {
             // something is missing, but display anyway
-             addTomeSkillCard(skillHolder, (el) => showExtraTomeSkill(skill, false, el));
+            addTomeSkillCard(skillHolder, (el) => showExtraTomeSkill(skill, false, el));
         }
     }
 
@@ -5006,16 +4999,14 @@ function showWorldStructure(a, divOrigin) {
         imagelink.remove();
     } else if (structure.type.indexOf("Landmark") != -1) {
         imagelink.setAttribute("src", "/aow4db/Icons/Text/landmark.png");
-       
+
         imagelink.setAttribute("style", "background-image: none");
-    } else if(structure.type == "Spawner"){
-         imagelink.setAttribute("src", "/aow4db/Icons/Interface/Infestation.png");
-          imagelink.setAttribute("style", "background-image: none");
-    }
-    else
-    {
+    } else if (structure.type == "Spawner") {
+        imagelink.setAttribute("src", "/aow4db/Icons/Interface/Header/Infestation.png");
+        imagelink.setAttribute("style", "background-image: none");
+    } else {
         imagelink.setAttribute("src", "/aow4db/Icons/WorldStructures/" + a + ".png");
-        
+
         imagelink.setAttribute("style", "background-image: none");
     }
     descriptionDiv.innerHTML = "";
@@ -5416,7 +5407,7 @@ function showEmpireTree(a, divOrigin) {
                 a = a.replace("_", "");
             }
 
-            imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + a + ".png");
+            imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[j].icon + ".png");
 
             descriptionDiv.innerHTML = description;
 
@@ -5484,7 +5475,7 @@ function showUnitUnlock(a, divOrigin) {
         unitTypesDiv.appendChild(div);
     }
 
-    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + a.unit_slug + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/UnitUnlockIcons/" + a.unit_slug + ".png");
 
     descriptionDiv.innerHTML = description;
 
@@ -5624,16 +5615,16 @@ function showSpell(a, showOrigin, divOrigin) {
         let imagelink = modCard.querySelector("#modicon");
 
         let imageLinkName = "";
-        if (spellFound.icon != undefined) {
+        let imageSRC;
+        if (spellFound.icon != undefined && !incorrectIconOverrideList.includes(spellFoundEN.id)) {
             imageLinkName = spellFound.icon;
+            imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
         } else {
             imageLinkName = spellFound.id;
+            imageSRC = "/aow4db/Icons/SummonIcons/" + imageLinkName + ".png";
         }
-        console.log(spellFoundEN.id);
-        if (incorrectIconOverrideList.includes(spellFoundEN.id)) {
-            imageLinkName = spellFound.id;
-        }
-        imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
+
+        imagelink.setAttribute("src", imageSRC);
         let tierSpell = backtraceTomeOriginAndTier(spellFoundEN, showOrigin, modCard);
 
         if (tierSpell != undefined) {
@@ -6143,17 +6134,21 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     let imagelink = divOrigin.querySelector("#modicon");
     let iconLink = currentTrait.icon;
-    if (iconLink == undefined) {
+    if ('extraLookup' in currentTrait || iconLink == undefined) {
         // fallback
         iconLink = currentTrait.id;
-    }
-    if (iconLink.startsWith("_")) {
-        iconLink = iconLink.split("_").slice(1).join("_");
+        imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + iconLink + ".png");
+    } else {
+        
+        if (iconLink.startsWith("_")) {
+            iconLink = iconLink.split("_").slice(1).join("_");
+        }
+        imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     }
 
-    imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
+    // imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     imagelink.setAttribute("style", "background-image:none");
-    imagelink.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/empty.png')");
+    imagelink.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
 }
 
 function showTrait(a, divOrigin) {
