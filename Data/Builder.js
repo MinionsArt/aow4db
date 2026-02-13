@@ -4133,6 +4133,31 @@ function showSiegeProject(id, showOrigin, divOrigin) {
     }
 }
 
+function showExtraTomeSkill(skill, showOrigin, divOrigin) {
+    let upkeep = divOrigin.querySelector("#modupkeep");
+
+    upkeep.innerHTML = "";
+
+    let modName = divOrigin.querySelector("#modname");
+    modName.innerHTML = skill.name.toUpperCase();
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
+    let description = "<hr>" + skill.description;
+
+    let imagelink = divOrigin.querySelector("#modicon");
+
+    let imageLinkName = skill.name.replaceAll(" ", "_").toLowerCase();
+    imagelink.setAttribute("src", "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png");
+
+    descriptionDiv.innerHTML = description;
+
+    let tier = divOrigin.querySelector("#modtier");
+
+    tier.innerHTML = "Missing Skill Data";
+
+    let cost = divOrigin.querySelector("#modcost");
+    cost.innerHTML = "";
+}
+
 function showEmpireUpgrade(skill, showOrigin, divOrigin) {
     let upkeep = divOrigin.querySelector("#modupkeep");
 
@@ -4346,21 +4371,24 @@ function showTome(a, divOrigin) {
         if (skill.name === "Conjure Elemental") {
             addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
         }
-        if ("spell_slug" in skill) {
+       else if ("spell_slug" in skill) {
             //  console.log(skill.spell_slug);
             addTomeSkillCard(skillHolder, (el) => showSpell(skill.spell_slug, false, el));
         }
-        if ("unit_slug" in skill) {
+       else if ("unit_slug" in skill) {
             addTomeSkillCard(skillHolder, (el) => showUnitUnlock(skill, el));
         }
-        if ("upgrade_slug" in skill) {
+       else if ("upgrade_slug" in skill) {
             addTomeSkillCard(skillHolder, (el) => showStructure(skill.upgrade_slug, false, el));
         }
-        if (skill.type === "<hyperlink>Empire Bonus</hyperlink>") {
+       else if (skill.type === "<hyperlink>Empire Bonus</hyperlink>") {
             addTomeSkillCard(skillHolder, (el) => showEmpireUpgrade(skill, false, el));
         }
-        if (skill.type && skill.type.indexOf("Siege") !== -1) {
+       else if (skill.type && skill.type.indexOf("Siege") !== -1) {
             addTomeSkillCard(skillHolder, (el) => showSiegeProject(skill.name, false, el));
+        } else{
+            // something is missing, but display anyway
+             addTomeSkillCard(skillHolder, (el) => showExtraTomeSkill(skill, false, el));
         }
     }
 
