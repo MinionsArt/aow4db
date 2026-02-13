@@ -6392,7 +6392,7 @@ function showHeroGov(data, check, divOrigin) {
     tier.innerHTML = "";
 
     let imagelink = divOrigin.querySelector("#modicon");
-    imagelink.setAttribute("src", "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon.toLowerCase() + ".png");
+    imagelink.setAttribute("src", "/aow4db/Icons/GovernanceIcons/" + thisGovernance.icon + ".png");
     imagelink.setAttribute("style", "background-image:none");
     found = true;
 }
