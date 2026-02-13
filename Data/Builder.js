@@ -9,6 +9,8 @@ const checkboxNumbers = document.getElementById("numbersCheckbox");
 const showBetaTooltip = document.getElementById("showBetaCheckbox");
 const languageSelect = document.getElementById("languageSelect");
 
+
+
 function highlightNumbersInDiv(text) {
     if (!text) return;
 
@@ -41,6 +43,8 @@ function buildAbilityTagCache() {
 
         abilityTagCache.set(abilityName, replacement);
     }
+    
+    
 }
 
 function extractHyperlinks(text) {
@@ -1238,157 +1242,6 @@ function IncreaseDamageValue(input, percentage) {
     return newString;
 }
 
-/*function GetAbilityToolTip(ability) {
-    // block one, header
-    // image
-    let spa = document.createElement("SPAN");
-
-    let abilityIcon = ability.icon;
-    if (abilityIcon == "undefined") {
-        console.log("Missing icon in tooltip for : " + ability.name);
-        abilityIcon = "";
-    }
-    let abilityHighlighter = document.createElement("DIV");
-    abilityHighlighter.className = "abilityHighLighter";
-      let abilityIconType = GetAbilityBackground(ability.damage);
-    abilityHighlighter.innerHTML =
-        "<img style=\"float:left; height:50px; width:50px; background-image:url('/aow4db/Icons/Interface/" +
-        abilityIconType +
-        '.png\');background-repeat: no-repeat;background-size: 50px" src="/aow4db/Icons/UnitIcons/' +
-        abilityIcon +
-        '.png">';
-
-    // name and damage
-
-    let line1 = document.createElement("DIV");
-    line1.setAttribute("style", "display: flex;justify-content: space-between;");
-    let nameHolder = document.createElement("DIV");
-    nameHolder.className = "abilityLineSlot";
-    nameHolder.setAttribute("style", "color:#d7c297;");
-    nameHolder.innerHTML = ability.name.toUpperCase();
-
-    let damageHolder = document.createElement("DIV");
-    damageHolder.className = "abilityLineSlot";
-    damageHolder.innerHTML = ability.damage;
-
-    line1.appendChild(nameHolder);
-    line1.appendChild(damageHolder);
-    abilityHighlighter.append(line1);
-
-    // block accuracy range abilitytype
-    let line2 = document.createElement("DIV");
-    line2.setAttribute("style", "display: flex;justify-content: space-between;");
-    let accrangeHolder = document.createElement("DIV");
-
-    let accuracy = document.createElement("DIV");
-    accuracy.innerHTML = ability.accuracy;
-    accuracy.className = "abilityLineSlot";
-
-    let range = document.createElement("DIV");
-    range.innerHTML = ability.range;
-    range.className = "abilityLineSlot";
-
-    // action point type
-    let actionPoint = document.createElement("DIV");
-    actionPoint.innerHTML = ability.actionPoints;
-    actionPoint.className = "abilityLineSlot";
-
-    // action point name
-
-    let actionPointName = LookUpActionPointsName(ability.actionPoints);
-    if (actionPointName != undefined) {
-        actionPoint.innerHTML +=
-            "<br>" + '<span style="color: lightskyblue; font-size:14px">' + actionPointName + "</span>";
-    }
-
-    accrangeHolder.appendChild(accuracy);
-    accrangeHolder.appendChild(range);
-    ////spa.append(accrangeHolder);
-
-    let typeHolder = document.createElement("DIV");
-    typeHolder.appendChild(actionPoint);
-
-    line2.appendChild(accrangeHolder);
-    line2.appendChild(typeHolder);
-    abilityHighlighter.append(line2);
-
-    spa.append(abilityHighlighter);
-
-    // block 2, descrp
-    let abilityDescr = ability.description;
-
-    abilityDescr = abilityDescr.replaceAll("</br>", "");
-    abilityDescr = AddTagIconsForStatusEffects(abilityDescr);
-    spa.innerHTML += "<hr> " + abilityDescr; // + "<br>";
-
-    // modifiers
-    if (abilityMod != "") {
-        spa.innerHTML += '<span style="color:#addd9e;font-size: 14px">' + abilityMod + "</span>";
-    }
-    if (abilityEncht != "") {
-        spa.innerHTML += '<span style="color:#aa84f6;font-size: 14px">' + abilityEncht + "</span>";
-    }
-
-    // block 3, req
-    //notes
-
-    //spa.innerHTML += '<span style="color:#a4a4a6; font-size: 13px">' + abilityNote + "</span>";
-
-    let bottomLine = document.createElement("DIV");
-    bottomLine.setAttribute("style", "display: flex;justify-content: space-between;");
-    let reqs = document.createElement("DIV");
-    if (abilityReq != "") {
-        let i = "";
-        for (i in abilityReq) {
-            let newReq = document.createElement("DIV");
-            newReq.innerHTML = abilityReq[i].requisite;
-            newReq.setAttribute("style", "background-color:#2e2e28");
-            if (abilityReq[i].requisite == "Support") {
-                newReq.setAttribute("style", "background-color:#263b38");
-            }
-            if (abilityReq[i].requisite == "Melee") {
-                newReq.setAttribute("style", "background-color:#3b2826");
-            }
-            if (abilityReq[i].requisite == "Physical Ranged") {
-                newReq.setAttribute("style", "background-color:#383125");
-            }
-            if (abilityReq[i].requisite == "Magic") {
-                newReq.setAttribute("style", "background-color:#262f42");
-            }
-            if (abilityReq[i].requisite == "Debuff") {
-                newReq.setAttribute("style", "background-color:#3c2642");
-            }
-            if (abilityReq[i].requisite == "Summoning") {
-                newReq.setAttribute("style", "background-color:#422631");
-            }
-            if (abilityReq[i].requisite == "Base") {
-                newReq.setAttribute("style", "background-color:#5d5d5c");
-            }
-            newReq.className = "requisiteSlot";
-            reqs.appendChild(newReq);
-        }
-    }
-    bottomLine.appendChild(reqs);
-
-    if (cooldown != "") {
-        let cooldownDiv = document.createElement("DIV");
-        cooldownDiv.innerHTML = cooldown;
-        cooldownDiv.setAttribute("style", "margin:5px");
-        //  cooldownDiv.setattri() = "requisiteSlot";
-        bottomLine.appendChild(cooldownDiv);
-    }
-    if (once != "") {
-        let onceDiv = document.createElement("DIV");
-        onceDiv.innerHTML = "<once></once> Once per battle";
-        onceDiv.setAttribute("style", "margin:5px");
-        //  cooldownDiv.setattri() = "requisiteSlot";
-        bottomLine.appendChild(onceDiv);
-    }
-
-    spa.append(bottomLine);
-
-    return spa;
-}*/
 
 function GetAbilityToolTip(ability, uniqueMedal) {
     // get template
@@ -1486,21 +1339,34 @@ function GetAbilityToolTip(ability, uniqueMedal) {
 
     let reqs = element.querySelector("#abilityTags");
     reqs.innerHTML = "";
+    
+    
+ const Melee = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@MELEE_ABILITY");
+    
+ const Magic = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@MAGIC_ABILITY");
+ const PhysicalRanged = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@RANGED_ABILITY");  
+   
     if (Array.isArray(ability.requisites)) {
+       
         for (const requisite of ability.requisites) {
+            
             let newReq = document.createElement("DIV");
-            newReq.innerHTML = requisite.requisite;
+           
             newReq.setAttribute("style", "background-color:#2e2e28");
             if (requisite.requisite == "Support") {
                 newReq.setAttribute("style", "background-color:#263b38");
             }
-            if (requisite.requisite == "Melee") {
+            if (requisite.requisite == Melee.hyperlink) {
+             
+                newReq.innerHTML += "<defense></defense>";
                 newReq.setAttribute("style", "background-color:#3b2826");
             }
-            if (requisite.requisite == "Physical Ranged") {
+            if (requisite.requisite == PhysicalRanged.hyperlink) {
+                  newReq.innerHTML += "<defense></defense>";
                 newReq.setAttribute("style", "background-color:#383125");
             }
-            if (requisite.requisite == "Magic") {
+            if (requisite.requisite == Magic.hyperlink) {
+                  newReq.innerHTML += "<resistance></resistance>";
                 newReq.setAttribute("style", "background-color:#262f42");
             }
             if (requisite.requisite == "Debuff") {
@@ -1513,6 +1379,7 @@ function GetAbilityToolTip(ability, uniqueMedal) {
                 newReq.setAttribute("style", "background-color:#5d5d5c");
             }
             newReq.className = "requisiteSlot";
+             newReq.innerHTML += requisite.requisite;
             reqs.appendChild(newReq);
         }
     }
@@ -4656,7 +4523,7 @@ function GetAbilityInfo(ability) {
 
         // add notes
 
-        abilityNote = "";
+       let abilityNote = "";
         let Cooldown = "";
         let Once = "";
 

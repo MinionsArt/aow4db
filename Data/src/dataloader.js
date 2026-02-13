@@ -482,3 +482,4 @@ function LocalizeUI(specific) {
         }
     }
 }
+

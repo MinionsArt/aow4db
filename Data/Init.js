@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+
+
 function requireAjax(file, callback) {
     jQuery.getScript(file, callback);
 }
