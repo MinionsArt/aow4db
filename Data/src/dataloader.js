@@ -212,7 +212,10 @@ const dlcMap = {
     THRONESOFBLOOD: {
         src: "/aow4db/Icons/Text/ThronesOfBlood.png",
         text: "Part of the Thrones of Blood DLC"
-    }
+    }/*, RISEFROMRUIN: {
+        src: "/aow4db/Icons/Text/mp.png",
+        text: "Part of the Rise From Ruin DLC"
+    }*/
 };
 
 async function GetAllData(selectedLang) {
@@ -220,6 +223,10 @@ async function GetAllData(selectedLang) {
 
     if (selectedLang == "BETA") {
         basePathEN = `/aow4db/Data/BETA/`;
+    }
+    
+     if (selectedLang == "TESTING") {
+        basePathEN = `/aow4db/Data/TESTING/`;
     }
 
     const basePathGen = `/aow4db/Data/GEN/`;
