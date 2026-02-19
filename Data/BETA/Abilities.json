@@ -596,7 +596,7 @@
   "description": "Deal damage to units in a 1-hex cone.",
   "name": "Parasitic Cleave",
   "slug": "melee_strike_(base)_ability_blood_exarch",
-  "damage": "22<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -1663,7 +1663,7 @@
   "icon": "000003E300005580"
  },
  {
-  "description": "Unit is very small, making it 20% harder to hit by <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
+  "description": "Unit is very small, making it 20% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Tiny",
   "slug": "000003e30000528e",
   "icon": "000003E30000528F"
@@ -2871,11 +2871,6 @@
     "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
     "name": "Piercing",
     "count": 1
-   },
-   {
-    "description": "Ignore 50% of the target's <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-    "name": "Breaching",
-    "count": 1
    }
   ],
   "description": "Deals damage to target unit.",
@@ -2964,7 +2959,7 @@
  {
   "modifiers": [
    {
-    "description": "Base 60% chance of inflicting Weakened for 3 <turn></turn> Turns.",
+    "description": "Base 90% chance of inflicting Weakened for 3 <turn></turn> Turns.",
     "name": "Weakened",
     "count": 1
    }
@@ -2972,7 +2967,7 @@
   "description": "Adjacent enemy units sustain damage. Then this unit moves to target hex and enters <hyperlink>Defense Mode</hyperlink>.",
   "name": "Pestilent Escape",
   "slug": "pestilent_escape_ability_death_beetle",
-  "damage": "8<damagephysical></damagephysical> 8<damageblight></damageblight> ",
+  "damage": "12<damageblight></damageblight> 12<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Movement</hyperlink>"
@@ -14343,13 +14338,13 @@
   "icon": "0000041B00001011"
  },
  {
-  "description": "This unit is 60% harder to hit by <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
+  "description": "This unit is 60% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Wind Barrier",
   "slug": "000003e3000045a3",
   "icon": "000003E3000045A4"
  },
  {
-  "description": "Adjacent friendly units are 30% harder to hit by <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
+  "description": "Adjacent friendly units are 30% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Wind Barrier Aura",
   "slug": "0000049700000021",
   "icon": "000004970000042E"
@@ -14581,7 +14576,7 @@
     "count": 1
    }
   ],
-  "description": "Attacks units in a 1-hex cone.<bulletlist><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "description": "Attacks enemy units in a 1-hex cone.<bulletlist><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
   "name": "Power Cleave",
   "slug": "power_cleave_ability_warbreed",
   "damage": "33<damagephysical></damagephysical> ",
@@ -14594,7 +14589,7 @@
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "notes": [
    {
@@ -15392,8 +15387,8 @@
     "count": 1
    },
    {
-    "description": "Ignore 50% of the target's <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-    "name": "Breaching",
+    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
+    "name": "Piercing",
     "count": 1
    }
   ],
@@ -16097,7 +16092,7 @@
     "note": "Cooldown: 3 <turn></turn>"
    }
   ],
-  "description": "Unit gains:<bulletlist><bullet>2 Strengthened</bullet><bullet>2 Sundered Defense</bullet><bullet>Frigid Belch ability.</bullet></bulletlist>",
+  "description": "Unit gains:<bulletlist><bullet>2 Strengthened</bullet><bullet>Frigid Belch ability.</bullet></bulletlist>",
   "name": "Drink!",
   "slug": "drink_ability_brewer_ogre",
   "damage": "",
@@ -17525,7 +17520,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Magic Strike",
   "slug": "magic_strike_(base)_ability_gold_wyvern",
-  "damage": "14<damagespirit></damagespirit> ",
+  "damage": "15<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -17543,11 +17538,6 @@
  {
   "modifiers": [
    {
-    "description": "Base 30% chance of inflicting Distracted for 1 <turn></turn> Turn.",
-    "name": "Distracted",
-    "count": 1
-   },
-   {
     "description": "Base 90% chance of inflicting Distracted for 1 <turn></turn> Turn.",
     "name": "Distracted",
     "count": 1
@@ -17556,7 +17546,7 @@
   "description": "Deals damage to target unit.",
   "name": "Distracting Burst",
   "slug": "wyvern_burst_ability_gold_wyvern",
-  "damage": "23<damagespirit></damagespirit> ",
+  "damage": "24<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -18267,11 +18257,6 @@
     "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
     "name": "Piercing",
     "count": 1
-   },
-   {
-    "description": "Ignore 50% of the target's <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-    "name": "Breaching",
-    "count": 1
    }
   ],
   "description": "Strikes target enemy unit.",
@@ -18739,7 +18724,7 @@
   "description": "<bulletlist><bullet>Deal damage to enemy units in a 1-hex cone.</bullet><bullet>When hitting a Gilded target:<bulletlist></bullet><bullet>Heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Deal +20% damage.</bullet></bulletlist></bulletlist>",
   "name": "Golden Cleave",
   "slug": "golden_cleave_ability_golden_golem",
-  "damage": "16<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -18943,7 +18928,7 @@
   "description": "Deals damage to enemy units in a 2-hex radius.",
   "name": "Caustic Eruption",
   "slug": "caustic_eruption_ability_caustic_worm",
-  "damage": "18<damageblight></damageblight> ",
+  "damage": "20<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -22288,7 +22273,7 @@
   "icon": "0000041B00000EC9"
  },
  {
-  "description": "Friendly Animal and Plant units are Fearless.",
+  "description": "Friendly Animal and Plant units gain Stalwart.",
   "name": "Shepherd of the Wilds",
   "slug": "0000041b00000eb2",
   "icon": "0000041B00000EC7"
@@ -24312,7 +24297,7 @@
   "icon": "0000048D000004B9"
  },
  {
-  "description": "Non-Hero units in this hero's army gain +50% <hyperlink><xp></xp> Experience</hyperlink> from combat.",
+  "description": "Non-Hero units in this hero's army gain +50% <hyperlink><xp></xp> Experience</hyperlink>.",
   "name": "Ascended Shaper",
   "slug": "0000048d000004b3",
   "icon": "0000048D000004B2"
@@ -25353,12 +25338,12 @@
  {
   "modifiers": [
    {
-    "description": "Base 90% chance of inflicting Slowed on non-Slowed targets for 2 <turn></turn> <hyperlink>Turns</hyperlink>.",
+    "description": "Base 60% chance of inflicting Slowed for 2 <turn></turn> Turns.",
     "name": "Slowed",
     "count": 1
    },
    {
-    "description": "Base 60% chance of inflicting Frozen on Slowed targets for 1 <turn></turn> <hyperlink>Turn</hyperlink>.",
+    "description": "Base 30% chance of inflicting Frozen for 1 <turn></turn> Turn.",
     "name": "Frozen",
     "count": 1
    }
@@ -25431,7 +25416,7 @@
   "description": "Deals damage to enemy units in a 2-hex radius:<bulletlist><bullet>Inflicts 4 Weakened for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet></bulletlist><br></br><br></br>Requires the Discipline of Frost",
   "name": "Withering Blizzard",
   "slug": "hs_mage_withering_blizzard_ability_hs_mage_withering_blizzard",
-  "damage": "10<damagefrost></damagefrost> ",
+  "damage": "15<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -25442,7 +25427,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "notes": [
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
@@ -25465,7 +25450,7 @@
   "description": "Deals damage to enemy units in a 1-hex radius:<bulletlist><bullet>Inflicts 2 Sundered Defense.</bullet><bullet>Targets are knocked out of <hyperlink>Defense Mode</hyperlink> and lose all <hyperlink>Retaliation Attacks</hyperlink>.</bullet></bulletlist><br></br><br></br>Requires Discipline of Earth",
   "name": "Sunder Earth",
   "slug": "hs_mage_sunder_earth_ability_hs_mage_sunder_earth",
-  "damage": "30<damagephysical></damagephysical> ",
+  "damage": "45<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -25473,7 +25458,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "icon": "000004C000000C64"
  },
  {
@@ -25488,7 +25473,7 @@
   "description": "Deals damage to target enemy unit:<bulletlist><bullet>Inflicts 4 Burning for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>This effect cascades to adjacent enemy units and repeats.</bullet></bulletlist><br></br><br></br>Requires Discipline of Flames",
   "name": "Wildfire",
   "slug": "hs_mage_wildfire_ability_hs_mage_wildfire",
-  "damage": "30<damagefire></damagefire> ",
+  "damage": "45<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -25496,7 +25481,7 @@
   ],
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
-  "range": "4",
+  "range": "6",
   "icon": "000004CF00000049"
  },
  {
@@ -25508,7 +25493,7 @@
   "description": "Deals damage to enemy units in a 6-hex line:<bulletlist><bullet>Inflicts 2 Electrified for 3 <turn></turn> <hyperlink>Turns</hyperlink>.</bullet><bullet>Lightning jumps from each target hit to another enemy unit within 2 hexes.</bullet></bulletlist><br></br><br></br>Requires the Discipline of Storms",
   "name": "Lightning Bolt",
   "slug": "hs_mage_lightning_bolt_ability_hs_mage_lightning_bolt",
-  "damage": "20<damagelightning></damagelightning> ",
+  "damage": "30<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -25522,7 +25507,7 @@
  {
   "notes": [
    {
-    "note": "Can only be used once per battle."
+    "note": "Cooldown: 2 <turn></turn>"
    }
   ],
   "description": "Until the end of this <turn></turn> <hyperlink>Turn</hyperlink>, all attacks and abilities ignore 10 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.",
@@ -25555,7 +25540,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "0",
   "icon": "000004C000000870"
  },
@@ -26237,7 +26222,7 @@
   "icon": "000004BB0000001A"
  },
  {
-  "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>+10 Experience each <turn></turn> Turn.</bullet></bulletlist>",
+  "description": "While army leader, all non-Hero units in the army gain:<bulletlist><bullet>+20 Experience each <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Experienced Leader",
   "slug": "0000041b00000a1c",
   "icon": "0000045E00000670"
@@ -27858,7 +27843,7 @@
   "icon": "000004C000000BEF"
  },
  {
-  "description": "If this hero is not <hyperlink>Engaged in Melee</hyperlink> when its turn starts, then it gains +1<hyperlink><range></range>Range</hyperlink> on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
+  "description": "If this hero is not <hyperlink>Engaged in Melee</hyperlink> when its turn starts, then it gains +1<hyperlink><range></range>Range</hyperlink> on its <hyperlink>Magic</hyperlink> attacks and <hyperlink>Debuff</hyperlink> abilities until it moves.",
   "name": "Ritualized Focus",
   "slug": "000004c000000b86",
   "icon": "000004C000000B84"
@@ -29237,7 +29222,7 @@
   "description": "Fires ranged projectiles at target enemy unit.",
   "name": "Dagger Flurry",
   "slug": "floating_daggers_ability_(item_forge)_vampire_lord_floating_daggers_tier_i",
-  "damage": "30<damagephysical></damagephysical> ",
+  "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Physical Ranged</hyperlink>"
@@ -31064,7 +31049,7 @@
   "description": "Fires ranged projectiles at target enemy unit.",
   "name": "Dagger Flurry",
   "slug": "floating_daggers_ability_(item_forge)_equipment_item_vampire_floating_daggers_base",
-  "damage": "30<damagephysical></damagephysical> ",
+  "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Physical Ranged</hyperlink>"
@@ -34315,8 +34300,8 @@
   "notes": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
-  "slug": "melee_strike_(item_forge_dual)_ability_equipment_item_hunter_rapier_and_whip_base",
-  "damage": "12<damagephysical></damagephysical> ",
+  "slug": "melee_strike_(item_forge_dual_strong)_ability_equipment_item_hunter_rapier_and_whip_base",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -41699,7 +41684,7 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "This unit is 40% harder to hit with <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
+  "description": "This unit is 40% harder to hit with <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Obscured",
   "slug": "00000387000014fa",
   "icon": "00000387000014FB"
@@ -43678,7 +43663,7 @@
   "icon": "000004970000109D"
  },
  {
-  "description": "If this hero is not <hyperlink>Engaged in Melee</hyperlink> when its turn starts, then it gains +20% damage and +1 <hyperlink><range></range>Range</hyperlink> on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
+  "description": "This hero gains +30% damage and +1 <hyperlink><range></range>Range</hyperlink> on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
   "name": "Mastered Focus",
   "slug": "000004c000000c5e",
   "icon": "0000048B000005D6"
@@ -43690,7 +43675,7 @@
   "icon": "0000049700002C3D"
  },
  {
-  "description": "Until the end of this <turn></turn> <hyperlink>Turn</hyperlink>, all attacks and abilities ignore <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink>.",
+  "description": "Until the end of this <turn></turn> <hyperlink>Turn</hyperlink>, all attacks and abilities ignore 10 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> and 50% of <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
   "name": "Inexorable Cast",
   "slug": "000004c000000c4c",
   "icon": "0000048D00000CB0"
@@ -43822,7 +43807,7 @@
   "icon": "000004AC000000A5"
  },
  {
-  "description": "If this hero is not <hyperlink>Engaged in Melee</hyperlink> when its turn starts, then it gains +20% damage on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
+  "description": "This hero gains +20% damage on its <hyperlink>Magic</hyperlink> attacks and abilities until it moves.",
   "name": "Elemental Focus",
   "slug": "000004c000000873",
   "icon": "000004CF0000004B"
@@ -44678,8 +44663,8 @@
   "icon": "0000041B00001764"
  },
  {
-  "description": "Unit cannot lose <happiness></happiness> <hyperlink>Morale</hyperlink>.",
-  "name": "Fearless",
+  "description": "100% <happiness></happiness> <hyperlink>Morale</hyperlink> loss resistance.",
+  "name": "Stalwart",
   "slug": "000003e100001383",
   "icon": "000003E100001384"
  },
@@ -44924,7 +44909,7 @@
   "icon": "000003E3000061FC"
  },
  {
-  "description": "Unit gains +30% <hyperlink><xp></xp> Experience</hyperlink> from combat.",
+  "description": "Unit gains +100% <hyperlink><xp></xp> Experience</hyperlink> from combat.",
   "name": "Revels of Carnage",
   "slug": "000003e3000066d0",
   "icon": "000003E300005A65"
@@ -45132,5 +45117,2701 @@
   "name": "Final Ultimatum",
   "slug": "0000048b0000011c",
   "icon": "0000048B00000053"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Enemy units in a 1-hex radius have a base 60% chance of being:<bulletlist><bullet>Teleported up to hexes.</bullet><bullet>Inflicted with Insanity for <turn></turn> Turn.</bullet></bulletlist>",
+  "name": "Hysteria Storm",
+  "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "3",
+  "icon": "0000049700000DB5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   }
+  ],
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of:<bulletlist></bullet><bullet>Being pulled to an adjacent space.</bullet><bullet>Becoming Constricted for 1 <turn></turn> Turn.</bullet></bulletlist></bulletlist>",
+  "name": "Pull",
+  "slug": "constrictor_pull_ability_lashers_sword_equipment_upgrade",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000048D000005E3"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 50% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
+    "name": "Immobilized",
+    "count": 1
+   }
+  ],
+  "description": "Enemy units in a 2-hex radius sustain damage. Enter <hyperlink>Defense Mode</hyperlink>.",
+  "name": "Quake",
+  "slug": "quake_ability_earthshaker_hammer_equipment_upgrade",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E3000045ED"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet></bulletlist>",
+  "name": "Raise Undead",
+  "slug": "raise_undead_ability_(necromancer)_staff_of_necromancy_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E300005FC8"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful, inflicts Status Vulnerability.",
+    "name": "Frozen",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to target enemy unit.",
+  "name": "Freezing Blast",
+  "slug": "freezing_blast_ability_cryomancers_staff_equipment_upgrade",
+  "damage": "14<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B0000070D"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Enemy units in a 1-hex radius:<bulletlist><bullet>Have a base 90% chance of receiving 3 stacks of Weakened for 3 <turn></turn> Turns.</bullet></bulletlist><br></br>The caster gains:<bulletlist><bullet>Strengthened for 3 <turn></turn> Turns for each enemy affected.</bullet></bulletlist>",
+  "name": "Sap Strength",
+  "slug": "sap_strength_ability_druids_staff_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "6",
+  "icon": "000003E300005203"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier II-IV Umbral Demon.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Umbral Demon",
+  "slug": "summon_umbral_demon_ability_equipment_upgrade_active_staff_summon_umbral_demon",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000004A60000081B"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier II-IV Umbral Demon.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Umbral Demon",
+  "slug": "summon_umbral_demon_ability_equipment_upgrade_active_wand_summon_umbral_demon",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000004A60000081B"
+ },
+ {
+  "description": "Units in the army gain +20% <hyperlink><xp></xp> Experience</hyperlink>.",
+  "name": "Army Trainer",
+  "slug": "000004a60000001a",
+  "icon": "000004A60000001B"
+ },
+ {
+  "description": "All units in the army heal +5 <hyperlink><hp></hp> Hit Points</hyperlink> every <hyperlink>World Map</hyperlink> <turn></turn> <hyperlink>Turn</hyperlink>.<br></br><br></br>Does not stack.",
+  "name": "Army Recuperation",
+  "slug": "0000045e00000d75",
+  "icon": "000003E30000649F"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Stunned for 1 <turn></turn> Turn.",
+    "name": "Stunned",
+    "count": 1
+   }
+  ],
+  "description": "Damages adjacent enemy units.",
+  "name": "Stunning Flash",
+  "slug": "stunning_flash_ability_equipment_upgrade_active_staff_stunning_flash",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005382"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a <hyperlink>Rose Knight</hyperlink>.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Rose Knight",
+  "slug": "summon_rose_knight_ability_equipment_upgrade_active_staff_summon_rose_knight",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700003494"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a <hyperlink>Rose Knight</hyperlink>.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Rose Knight",
+  "slug": "summon_rose_knight_ability_equipment_upgrade_active_wand_summon_rose_knight",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700003494"
+ },
+ {
+  "description": "Attack and <hyperlink>Debuff</hyperlink> abilities ignore 1 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink> per stack of Bleeding on the target.",
+  "name": "Blood Sigil",
+  "slug": "0000049700003484",
+  "icon": "0000049700003483"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Heal target friendly unit for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and teleport it to an adjacent space.",
+  "name": "Cosmic Rescue",
+  "slug": "cosmic_rescue_ability_equipment_upgrade_active_staff_cosmic_rescue",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Heal target friendly unit for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> and teleport it to an adjacent space.",
+  "name": "Cosmic Rescue",
+  "slug": "cosmic_rescue_ability_equipment_upgrade_active_wand_cosmic_rescue",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003325"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Summon an <hyperlink>Ice Runestone</hyperlink> on target hex. On summon, enemy units within 2 hexes sustain damage and have a base 30% chance of becoming Frozen for 1 <turn></turn> Turn. If unsuccessful, inflicts Status Vulnerability.",
+  "name": "Conjure Ice Runestone",
+  "slug": "conjure_ice_runestone_ability_equipment_upgrade_passive_rune_of_creation_frost",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000017F1"
+ },
+ {
+  "description": "While army leader, all non-hero units in army have 1 <hyperlink>Negative Status Effect</hyperlink> dispelled at the start of the turn in combat.",
+  "name": "Rune of Command: Frost",
+  "slug": "0000049700002616",
+  "icon": "00000497000017CC"
+ },
+ {
+  "description": "Gain:<bulletlist><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>+3 <defensefrost></defensefrost> <hyperlink>Frost Protection</hyperlink></bullet><bullet>Status Effect Immunity: Frozen</bullet></bulletlist>",
+  "name": "Rune of Protection: Frost",
+  "slug": "0000049700002610",
+  "icon": "0000049700002611"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Jumps to target location.",
+  "name": "Leap",
+  "slug": "cestus_leap_ability_equipment_upgrade_active_melee_leap",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Movement</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "2",
+  "icon": "00000493000008E7"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Summon a <hyperlink>Lava Runestone</hyperlink> on target hex and deal damage to enemy units within a 2-hex radius around it.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Conjure Lava Runestone",
+  "slug": "conjure_lava_runestone_ability_equipment_upgrade_passive_rune_of_creation_fire",
+  "damage": "15<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000017F1"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Summon 3 <hyperlink>Stone Wall</hyperlink> units in a line which deal 30 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> and push back units on those hexes.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Conjure Stone Wall",
+  "slug": "conjure_stone_wall_ability_equipment_upgrade_passive_rune_of_creation_rock",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000017E3"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Summon a <hyperlink>Crystal Pillar</hyperlink> on target hex and then deal damage to a unit within 4-hexes and inflict it with Volatile Charge.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Conjure Crystal Pillar",
+  "slug": "conjure_crystal_pillar_ability_equipment_upgrade_passive_rune_of_creation_storm",
+  "damage": "20<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "icon": "00000497000017DA"
+ },
+ {
+  "description": "While army leader, all non-hero units in army have a +10% <hyperlink><crit></crit>Critical Hit Chance</hyperlink>.",
+  "name": "Rune of Command: Fire",
+  "slug": "00000497000017cb",
+  "icon": "00000497000017CC"
+ },
+ {
+  "description": "While army leader, all non-hero units in army deal +10% damage.",
+  "name": "Rune of Command: Rock",
+  "slug": "00000497000017c4",
+  "icon": "00000497000017C5"
+ },
+ {
+  "description": "While army leader, all non-hero units in army gain +1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
+  "name": "Rune of Command: Storm",
+  "slug": "00000497000017bc",
+  "icon": "00000497000017BD"
+ },
+ {
+  "description": "Gain:<bulletlist><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>+3 <defensefire></defensefire> <hyperlink>Fire Protection</hyperlink></bullet><bullet>Status Effect Immunity: Burning</bullet></bulletlist>",
+  "name": "Rune of Protection: Fire",
+  "slug": "00000497000019cd",
+  "icon": "00000497000017B6"
+ },
+ {
+  "description": "Gain:<bulletlist><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>Status Effect Immunity: Bleeding</bullet></bulletlist>",
+  "name": "Rune of Protection: Rock",
+  "slug": "00000497000019cc",
+  "icon": "00000497000017B1"
+ },
+ {
+  "description": "Gain:<bulletlist><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink></bullet><bullet>+3 <defenselightning></defenselightning> <hyperlink>Lightning Protection</hyperlink></bullet><bullet>Status Effect Immunity: Electrified</bullet></bulletlist>",
+  "name": "Rune of Protection: Storm",
+  "slug": "00000497000019cb",
+  "icon": "00000497000017A5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "90% chance of linking with and inflicting Subdued.<bulletlist><bullet>Target must be affected by Immobilized, Frozen, or Stunned.</bullet><bullet>Cannot affect Heroes or units with Control Loss Immunity.</bullet><bullet>This effect ends if the caster dies.</bullet></bulletlist>",
+  "name": "Subdue",
+  "slug": "subdue_(pantheon)_ability_subdue_infusion_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000049300001480"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a <hyperlink>Spirit Hawk</hyperlink> under your control on the target hex. The summoned unit lasts for 3 <turn></turn> <hyperlink>Turns</hyperlink>.",
+  "name": "Summon Spirit Hawk",
+  "slug": "summon_spirit_hawk_ability_summon_spirit_hawk_infusion_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049300001491"
+ },
+ {
+  "modifiers": [],
+  "description": "Enemy units within a 2-hex radius sustain damage and have a base 90% chance of:<bulletlist><bullet>Having their <happiness></happiness> <hyperlink>Morale</hyperlink> reduced by -10.</bullet><bullet>Becoming 2 Weakened.</bullet></bulletlist>",
+  "name": "Wail of the Banshee",
+  "slug": "wail_of_the_banshee_ability_wail_of_the_banshee_infusion_equipment_upgrade",
+  "damage": "10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005F65"
+ },
+ {
+  "modifiers": [],
+  "description": "Deal damage to target unit and pull them adjacent to this unit if able.",
+  "name": "Pull Shot",
+  "slug": "pull_shot_ability_pull_shot_infusion_euipment_upgrade",
+  "damage": "24<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
+  "range": "5",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049300000F74"
+ },
+ {
+  "modifiers": [],
+  "description": "Deal damage to all targets in a 4-hex line from this unit.",
+  "name": "Pierce Shot",
+  "slug": "pierce_shot_ability_pierce_shot_infusion_equipment_upgrade",
+  "damage": "18<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049300000F79"
+ },
+ {
+  "modifiers": [],
+  "description": "Grant your <hyperlink>Spells</hyperlink> <hyperlink>Overcharge</hyperlink> this <turn></turn> <hyperlink>Turn</hyperlink>",
+  "name": "Overcharge Cast",
+  "slug": "overcharge_cast_ability_property_overcharge_cast_infusion_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Can't be refreshed</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "icon": "0000048D000008C9"
+ },
+ {
+  "description": "This unit:<bulletlist><bullet>Reflects 30% of non-<damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> sustained back at attackers.</bullet></bulletlist>",
+  "name": "Mirror Veil",
+  "slug": "000003e1000017ab",
+  "icon": "0000041B000012BD"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>+2 Fortune</bullet><bullet>+2 Strengthened</bullet><bullet>+2 Bolstered Resistance</bullet></bulletlist>",
+  "name": "Bless",
+  "slug": "bless_infusion_version_ability_bless_infusion_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E300004841"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Jumps to target location.",
+  "name": "Leap",
+  "slug": "cestus_leap_ability_martial_cestus_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Movement</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "2",
+  "icon": "00000493000008E7"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflict Sundered Defense for 3 <turn></turn> Turns.",
+    "name": "Sundered Defense",
+    "count": 1
+   },
+   {
+    "description": "Inflict Sundered Resistance for 3 <turn></turn> Turns.",
+    "name": "Sundered Resistance",
+    "count": 1
+   }
+  ],
+  "description": "Deals damage in a 1-hex radius.",
+  "name": "Exposing Light",
+  "slug": "exposing_light_ability_equipment_upgrade_active_staff_exposing_light",
+  "damage": "22<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300004DEC"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflict Sundered Defense for 3 <turn></turn> Turns.",
+    "name": "Sundered Defense",
+    "count": 1
+   },
+   {
+    "description": "Inflict Sundered Resistance for 3 <turn></turn> Turns.",
+    "name": "Sundered Resistance",
+    "count": 1
+   }
+  ],
+  "description": "Deals damage in a 1-hex radius.",
+  "name": "Exposing Light",
+  "slug": "exposing_light_ability_equipment_upgrade_active_wand_exposing_light",
+  "damage": "22<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300004DEC"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful, inflicts Status Vulnerability.",
+    "name": "Frozen",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to target enemy unit.",
+  "name": "Freezing Blast",
+  "slug": "freezing_blast_ability_equipment_upgrade_active_staff_freezing_blast",
+  "damage": "14<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B0000070D"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>Gains 2 Bolstered Defense</bullet></bulletlist>",
+  "name": "Grant Defense",
+  "slug": "transfer_defense_property_ability_equipment_upgrade_active_staff_grant_defense",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "000003E10000155E"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>Heals +25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains Static Charge for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Astral Blessing",
+  "slug": "astral_blessing_ability_equipment_upgrade_active_staff_astral_blessing",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E300005EB4"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Grants a base 60% chance of making target enemy unit become Dominated for 3 <turn></turn> Turns.<br></br>If unsuccessful, the unit is Distracted instead.",
+  "name": "Seduce",
+  "slug": "seduce_ability_equipment_upgrade_active_staff_seduce",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000041B00000E69"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "This unit and adjacent friendly units gain:<bulletlist><bullet>3 Rally.</bullet><bullet>2 Regeneration.</bullet></bulletlist>",
+  "name": "Song of Revelry",
+  "slug": "song_of_revelry_ability_equipment_upgrade_active_staff_song_of_revelry",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A5A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "This unit and adjacent friendly units gain:<bulletlist><bullet>2 Strengthened.</bullet><bullet>2 Fortune.</bullet></bulletlist>",
+  "name": "Song of Carnage",
+  "slug": "song_of_carnage_ability_equipment_upgrade_active_staff_song_of_carnage",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A62"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
+    "name": "Burning",
+    "count": 1
+   }
+  ],
+  "description": "Deals damage in a 1-hex radius, and sets these hexes <hyperlink>On Fire</hyperlink>.",
+  "name": "Flamestrike",
+  "slug": "flamestrike_ability_equipment_upgrade_active_staff_flame_strike",
+  "damage": "16<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B00000405"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target unit gains:<bulletlist><bullet>2 Marked</bullet><bullet>Sundered Defense</bullet></bulletlist>",
+  "name": "Tracker's Mark",
+  "slug": "trackers_mark_ability_equipment_upgrade_active_staff_trackers_mark",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "5",
+  "icon": "000003E300005B60"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting 2 Sundered Defense for 3 <turn></turn> Turns.",
+    "name": "Sundered Defense",
+    "count": 1
+   },
+   {
+    "description": "Base 90% chance of inflicting 2 Sundered Resistance for 3 <turn></turn> Turns.",
+    "name": "Sundered Resistance",
+    "count": 1
+   }
+  ],
+  "description": "Target enemy unit and another within 3 hexes sustain damage.",
+  "name": "Sundering Curse",
+  "slug": "sundering_curse_ability_equipment_upgrade_active_staff_sundering_curse",
+  "damage": "16<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E3000050EA"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Poisoned for 3 <turn></turn> Turns.",
+    "name": "Poisoned",
+    "count": 1
+   }
+  ],
+  "description": "Single magical attack at target unit.",
+  "name": "Poison Darts",
+  "slug": "wand_of_poison_darts_ability_equipment_upgrade_active_staff_poison_darts",
+  "damage": "20<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "modifiers": [],
+  "description": "Target non-Hero enemy unit has a base 60% chance of dying.<bulletlist><bullet>If a non-Undead unit dies this way, it transforms into a <hyperlink>Decaying Zombie</hyperlink> under your control until the end of the battle.</bullet><bullet>If resisted, the unit sustains 45 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> that ignores <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet></bulletlist>",
+  "name": "Finger of Death",
+  "slug": "finger_of_death_ability_equipment_upgrade_active_staff_finger_of_death",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300006018"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target unit with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse:<bulletlist><bullet>Has a chance of dying instantly.</bullet><bullet>The lower the target unit's morale is, the more this chance increases.</bullet><bullet>If the unit does not die, it sustains 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> instead.</bullet></bulletlist>",
+  "name": "Crushing Anguish",
+  "slug": "crushing_anguish_ability_equipment_upgrade_active_staff_crushing_anguish",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000003E3000063B5"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful, inflicts Status Vulnerability.",
+    "name": "Frozen",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to target enemy unit.",
+  "name": "Freezing Blast",
+  "slug": "freezing_blast_ability_equipment_upgrade_active_wand_freezing_blast",
+  "damage": "14<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B0000070D"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Stunned for 1 <turn></turn> Turn.",
+    "name": "Stunned",
+    "count": 1
+   }
+  ],
+  "description": "Damages adjacent enemy units.",
+  "name": "Stunning Flash",
+  "slug": "stunning_flash_ability_equipment_upgrade_active_wand_stunning_flash",
+  "damage": "3<damagelightning></damagelightning> 3<damagefire></damagefire> 3<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005382"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>Gains 2 Bolstered Defense</bullet></bulletlist>",
+  "name": "Grant Defense",
+  "slug": "transfer_defense_property_ability_equipment_upgrade_active_wand_grant_defense",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "000003E10000155E"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflicts 2 stacks of Decaying for 3 <turn></turn>.",
+    "name": "Decaying",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to all units in a 3-hex cone.",
+  "name": "Putrid Breath",
+  "slug": "putrid_breath_item_forge_ability_equipment_upgrade_active_wand_putrid_breath",
+  "damage": "28<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300005078"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Frozen for 1 <turn></turn> Turn. If unsuccessful, inflicts Status Vulnerability.",
+    "name": "Frozen",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to all units in a 3-hex cone.",
+  "name": "Frost Breath",
+  "slug": "frost_breath_item_forge_ability_equipment_upgrade_active_wand_frost_breath",
+  "damage": "28<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300004E57"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Inflicts 3 stacks of Burning for 3 <turn></turn> Turns.",
+    "name": "Burning",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to all units in a 3-hex cone.",
+  "name": "Fire Breath",
+  "slug": "fire_breath_item_forge_ability_equipment_upgrade_active_wand_fire_breath",
+  "damage": "28<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E3000042A1"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Target friendly unit:<bulletlist><bullet>Heals +25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains Static Charge for 3 <turn></turn> Turns.</bullet></bulletlist>",
+  "name": "Astral Blessing",
+  "slug": "astral_blessing_ability_equipment_upgrade_active_wand_astral_blessing",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E300005EB4"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Grants a base 60% chance of making target enemy unit become Dominated for 3 <turn></turn> Turns.<br></br>If unsuccessful, the unit is Distracted instead.",
+  "name": "Seduce",
+  "slug": "seduce_ability_equipment_upgrade_active_wand_seduce",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000041B00000E69"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "This unit and adjacent friendly units gain:<bulletlist><bullet>3 Rally.</bullet><bullet>2 Regeneration.</bullet></bulletlist>",
+  "name": "Song of Revelry",
+  "slug": "song_of_revelry_ability_equipment_upgrade_active_wand_song_of_revelry",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A5A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "This unit and adjacent friendly units gain:<bulletlist><bullet>2 Strengthened.</bullet><bullet>2 Fortune.</bullet></bulletlist>",
+  "name": "Song of Carnage",
+  "slug": "song_of_carnage_ability_equipment_upgrade_active_wand_song_of_carnage",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "000003E300005A62"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Burning for 3 <turn></turn> Turns.",
+    "name": "Burning",
+    "count": 1
+   }
+  ],
+  "description": "Deals damage in a 1-hex radius, and sets these hexes <hyperlink>On Fire</hyperlink>.",
+  "name": "Flamestrike",
+  "slug": "flamestrike_ability_equipment_upgrade_active_wand_flame_strike",
+  "damage": "16<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B00000405"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target unit gains:<bulletlist><bullet>2 Marked</bullet><bullet>Sundered Defense</bullet></bulletlist>",
+  "name": "Tracker's Mark",
+  "slug": "trackers_mark_ability_equipment_upgrade_active_wand_trackers_mark",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "5",
+  "icon": "000003E300005B60"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting 2 Sundered Defense for 3 <turn></turn> Turns.",
+    "name": "Sundered Defense",
+    "count": 1
+   },
+   {
+    "description": "Base 90% chance of inflicting 2 Sundered Resistance for 3 <turn></turn> Turns.",
+    "name": "Sundered Resistance",
+    "count": 1
+   }
+  ],
+  "description": "Target enemy unit and another within 3 hexes sustain damage.",
+  "name": "Sundering Curse",
+  "slug": "sundering_curse_ability_equipment_upgrade_active_wand_sundering_curse",
+  "damage": "16<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E3000050EA"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Poisoned for 3 <turn></turn> Turns.",
+    "name": "Poisoned",
+    "count": 1
+   }
+  ],
+  "description": "Single magical attack at target unit.",
+  "name": "Poison Darts",
+  "slug": "wand_of_poison_darts_ability_equipment_upgrade_active_wand_poison_darts",
+  "damage": "20<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "modifiers": [],
+  "description": "Target non-Hero enemy unit has a base 60% chance of dying.<bulletlist><bullet>If a non-Undead unit dies this way, it transforms into a <hyperlink>Decaying Zombie</hyperlink> under your control until the end of the battle.</bullet><bullet>If resisted, the unit sustains 45 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> that ignores <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet></bulletlist>",
+  "name": "Finger of Death",
+  "slug": "finger_of_death_ability_equipment_upgrade_active_wand_finger_of_death",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+  "icon": "000003E300006018"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target unit with <happiness></happiness> <hyperlink>Morale</hyperlink> of \\\"Low\\\" or worse:<bulletlist><bullet>Has a chance of dying instantly.</bullet><bullet>The lower the target unit's morale is, the more this chance increases.</bullet><bullet>If the unit does not die, it sustains 30 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> instead.</bullet></bulletlist>",
+  "name": "Crushing Anguish",
+  "slug": "crushing_anguish_ability_equipment_upgrade_active_wand_crushing_anguish",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "4",
+  "icon": "000003E3000063B5"
+ },
+ {
+  "description": "Animals in this army require 20% less base <hyperlink>Unit Upkeep</hyperlink>.",
+  "name": "Caretaker",
+  "slug": "0000048b00000d8e",
+  "icon": "0000041B000003BA"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_mammoth",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_spider",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_serpent",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_crocodile",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_sabertooth",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_wolf",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   },
+   {
+    "note": "Starts on cooldown: 1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>Summon a <hyperlink>Primal Crocodile</hyperlink> onto target hex.</bullet><bullet>When summoned on favored terrain gains Frenzy.</bullet></bulletlist><br></br><br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Primal Crocodile",
+  "slug": "summon_totem_animal_ability_equipment_upgrade_active_staff_summon_totem_animal_crow",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "0000049700000197"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Target unit:<bulletlist><bullet>Loses all <hyperlink>Negative Status Effects</hyperlink> if friendly.</bullet><bullet>Loses all <hyperlink>Positive Status Effects</hyperlink> if an enemy.</bullet></bulletlist>",
+  "name": "Greater Dispel Magic",
+  "slug": "greater_dispel_magic_ability_equipment_upgrade_active_staff_greater_dispel_magic",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000048B00000C8E"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Target unit:<bulletlist><bullet>Loses all <hyperlink>Negative Status Effects</hyperlink> if friendly.</bullet><bullet>Loses all <hyperlink>Positive Status Effects</hyperlink> if an enemy.</bullet></bulletlist>",
+  "name": "Greater Dispel Magic",
+  "slug": "greater_dispel_magic_ability_equipment_upgrade_active_wand_greater_dispel_magic",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000048B00000C8E"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Target unit:<bulletlist><bullet>Loses 2 <hyperlink>Negative Status Effects</hyperlink> if friendly.</bullet><bullet>Loses 2 <hyperlink>Positive Status Effects</hyperlink> if an enemy.</bullet></bulletlist>",
+  "name": "Dispel Magic",
+  "slug": "dispel_magic_ability_equipment_upgrade_active_staff_dispel_magic",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000048B00000C8A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Target unit:<bulletlist><bullet>Loses 2 <hyperlink>Negative Status Effects</hyperlink> if friendly.</bullet><bullet>Loses 2 <hyperlink>Positive Status Effects</hyperlink> if an enemy.</bullet></bulletlist>",
+  "name": "Dispel Magic",
+  "slug": "dispel_magic_ability_equipment_upgrade_active_wand_dispel_magic",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "0000048B00000C8A"
+ },
+ {
+  "description": "Units in the army cost -10% base <hyperlink>Unit Upkeep</hyperlink>.",
+  "name": "Army Maintenance",
+  "slug": "000004a600000006",
+  "icon": "000004A600000019"
+ },
+ {
+  "description": "Grants +20 <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink> at the start of battle.<br></br><br></br>These are lost at the end of battle.",
+  "name": "Greater Casting Point Bonus",
+  "slug": "0000045e00000d71",
+  "icon": "0000045E00000D72"
+ },
+ {
+  "description": "Unit has +3 <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
+  "name": "Warded",
+  "slug": "0000046a0000014f",
+  "icon": "0000046A00000152"
+ },
+ {
+  "description": "Once per turn this unit gains Regeneration when hit by an attack.",
+  "name": "Bolstering Regeneration",
+  "slug": "0000045e00000d49",
+  "icon": "0000045E00000D48"
+ },
+ {
+  "description": "Once per turn this unit gains Bolstered Resistance when hit by a <hyperlink>Magic</hyperlink> attack.",
+  "name": "Bolstering Resistance",
+  "slug": "0000045e00000d45",
+  "icon": "0000045E00000D47"
+ },
+ {
+  "description": "Once per turn this unit gains Bolstered Defense when hit by a <hyperlink>Melee</hyperlink> or <hyperlink>Physical Ranged</hyperlink> attack.",
+  "name": "Bolstering Defense",
+  "slug": "0000045e00000d43",
+  "icon": "0000045E00000D46"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker:<bulletlist><bullet>Sustains 6 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.</bullet><bullet>Has a base 60% chance of being inflicted with Electrified.</bullet></bulletlist>",
+  "name": "Greater Lightning Shield",
+  "slug": "0000045e00000d23",
+  "icon": "0000045E00000D24"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker sustains 6 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.",
+  "name": "Lesser Lightning Shield",
+  "slug": "0000045e00000d20",
+  "icon": "0000045E00000D1F"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker:<bulletlist><bullet>Sustains 6 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.</bullet><bullet>Has a base 60% chance of being inflicted with Poisoned.</bullet></bulletlist>",
+  "name": "Greater Blight Shield",
+  "slug": "0000045e00000d2f",
+  "icon": "0000045E00000D30"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker sustains 6 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.",
+  "name": "Lesser Blight Shield",
+  "slug": "0000045e00000d2c",
+  "icon": "0000045E00000D2D"
+ },
+ {
+  "description": "Reflects 40% of all damage sustained from attacks back onto attackers.",
+  "name": "Damage Reflection",
+  "slug": "0000045e00000d1d",
+  "icon": "0000041B00001436"
+ },
+ {
+  "description": "Reflects 30% of all damage sustained from attacks back onto attackers.",
+  "name": "Damage Reflection",
+  "slug": "0000045e00000d1c",
+  "icon": "0000041B00001436"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker:<bulletlist><bullet>Sustains 6 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Has a base 60% chance of being inflicted with Burning.</bullet></bulletlist>",
+  "name": "Greater Fire Shield",
+  "slug": "0000045e00000d29",
+  "icon": "0000045E00000D2A"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Grants a base 90% chance of inflicting Dominated on target enemy until the end of battle.",
+  "name": "Domination",
+  "slug": "wand_of_domination_ability_equipment_upgrade_active_staff_mind_control",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003E6"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Target non-<hyperlink>Hero</hyperlink> enemy has a base 90% chance to transform into a Tier I animal for 3 <turn></turn> <hyperlink>Turns</hyperlink>.",
+  "name": "Polymorph",
+  "slug": "wand_of_polymorph_ability_equipment_upgrade_active_staff_polymorph",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003CD"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Slowed for 2 <turn></turn> Turns.",
+    "name": "Slowed",
+    "count": 1
+   }
+  ],
+  "description": "Units in a 1-hex radius sustain damage.",
+  "name": "Hindering Blizzard",
+  "slug": "hindering_blizzard_ability_equipment_upgrade_active_staff_hindering_blizzard",
+  "damage": "24<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E3000052A8"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Deals damage in a 3-hex line.",
+  "name": "Lightning Strike",
+  "slug": "wand_of_lightning_strike_ability_equipment_upgrade_active_staff_lightning_strike",
+  "damage": "20<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+  "description": "Summon a random Tier I animal unit.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
+  "name": "Conjure Animal",
+  "slug": "conjure_animal_ability_equipment_upgrade_active_staff_conjure_animal",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000041B000003B2"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier IV Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Spider Monarch",
+  "slug": "spider_monarchs_leg_ability_equipment_upgrade_active_staff_summon_spider_t3",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000003E300005807"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier II Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Spider",
+  "slug": "spider_flute_ability_equipment_upgrade_active_staff_summon_spider_t2",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000003E300005801"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier I Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Spider Egg",
+  "slug": "spider_hatchling_bell_ability_equipment_upgrade_active_staff_summon_spider_t1",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000003E3000057F8"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet></bulletlist>",
+  "name": "Raise Undead",
+  "slug": "raise_undead_ability_(necromancer)_equipment_upgrade_active_staff_raise_undead",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E300005FC8"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Animate Flora",
+  "slug": "awaken_flora_ability_equipment_upgrade_active_staff_awaken_flora",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "0000041B00000EC9"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Brings target allied unit back to life with 75% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.",
+  "name": "Resurrection",
+  "slug": "wand_of_resurrection_ability_equipment_upgrade_active_staff_resurrection",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003E1"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Removes all <hyperlink>Negative Status Effects</hyperlink> from the target ally and grants a random <hyperlink>Positive Status Effect</hyperlink> for each negative effect removed.",
+  "name": "Inversion",
+  "slug": "wand_of_inversion_ability_equipment_upgrade_active_staff_inversion",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003AB"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Heals target friendly units in a 1-hex radius 30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+  "name": "Mass Heal",
+  "slug": "mass_heal_ability_equipment_upgrade_active_staff_heal_mass",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000041B00001523"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Heals target friendly unit 30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+  "name": "Heal",
+  "slug": "heal_ability_equipment_upgrade_active_staff_heal_single",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E30000579C"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Bleeding for 3 <turn></turn> Turns.",
+    "name": "Bleeding",
+    "count": 1
+   }
+  ],
+  "description": "Attacks enemy units in a 1-hex cone.<bulletlist><bullet>Cancels <hyperlink>Defense Mode</hyperlink>.</bullet><bullet>Removes <hyperlink>Retaliation Attack</hyperlink>.</bullet></bulletlist>",
+  "name": "Power Cleave",
+  "slug": "power_cleave_ability_equipment_upgrade_active_melee_power_cleave",
+  "damage": "24<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B00000C23"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Grants a 90% chance of inflicting Taunted on target enemy for 2 <turn></turn> <hyperlink>Turns</hyperlink>.",
+  "name": "Provoke",
+  "slug": "wand_of_provocation_ability_equipment_upgrade_active_melee_provocation",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "2",
+  "icon": "0000045E000003B7"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Unit deals +25% damage when <hyperlink><flank></flank> Flanking</hyperlink>.",
+    "name": "Flanker",
+    "count": 1
+   },
+   {
+    "description": "Damage increases as the target loses health, up to +100%.",
+    "name": "Fatal Strikes",
+    "count": 1
+   }
+  ],
+  "description": "Single Melee Strike.",
+  "name": "Assassin's Strike",
+  "slug": "assassins_dagger_ability_equipment_upgrade_active_melee_assassinate",
+  "damage": "25<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "000004A600000043"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Attacks heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
+    "count": 1
+   }
+  ],
+  "description": "Targets all adjacent enemies:<bulletlist><bullet>Removes all <hyperlink>Negative Status Effects</hyperlink>.</bullet><bullet>Deals 12 random elemental damage for each status effect removed.</bullet></bulletlist>",
+  "name": "Consume Chaos",
+  "slug": "consume_chaos_ability_equipment_upgrade_active_melee_consume_chaos",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B00000B75"
+ },
+ {
+  "description": "Grants +10 <optactical></optactical> <hyperlink> Combat Casting Points</hyperlink> at the start of battle.<br></br><br></br>These are lost at the end of battle.",
+  "name": "Casting Point Bonus",
+  "slug": "0000045e00000d6e",
+  "icon": "0000045E00000D6F"
+ },
+ {
+  "description": "This unit is 30% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
+  "name": "Wind Shield",
+  "slug": "0000045e00000c0c",
+  "icon": "0000045E00000C0D"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker:<bulletlist><bullet>Sustains 6 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Has a base 30% chance of being inflicted with Frozen.</bullet></bulletlist>",
+  "name": "Greater Frost Shield",
+  "slug": "0000045e00000d35",
+  "icon": "0000045E00000D36"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker sustains 6 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.",
+  "name": "Lesser Frost Shield",
+  "slug": "0000045e00000d32",
+  "icon": "0000045E00000D33"
+ },
+ {
+  "description": "When an attacker hits at melee range, the attacker sustains 6 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.",
+  "name": "Lesser Fire Shield",
+  "slug": "0000045e00000d26",
+  "icon": "0000045E00000D27"
+ },
+ {
+  "description": "Whenever a friendly spell is cast, unit gains:<bulletlist><bullet>1 Fortune</bullet></bulletlist>",
+  "name": "Attunement: Fortune",
+  "slug": "0000041b00001343",
+  "icon": "0000041B00001349"
+ },
+ {
+  "description": "Base attacks deal +40% damage to <hyperlink>Hero</hyperlink> units.",
+  "name": "Hero Slayer",
+  "slug": "0000045e00000bfb",
+  "icon": "000003E3000055A5"
+ },
+ {
+  "description": "Base attacks deal +40% damage to Undead units.",
+  "name": "Undead Slayer",
+  "slug": "0000045e00000be2",
+  "icon": "000003E3000055A5"
+ },
+ {
+  "description": "When this unit lands a base attack, it gains a stack of Strengthened.<br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "name": "Frenzy",
+  "slug": "0000048b00000b36",
+  "icon": "000003E300004EFF"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Brings target allied unit back to life with 75% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.",
+  "name": "Resurrection",
+  "slug": "wand_of_resurrection_ability_equipment_upgrade_active_wand_resurrection",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003E1"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Grants a base 90% chance of inflicting Dominated on target enemy until the end of battle.",
+  "name": "Domination",
+  "slug": "wand_of_domination_ability_equipment_upgrade_active_wand_mind_control",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003E6"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Target non-<hyperlink>Hero</hyperlink> enemy has a base 90% chance to transform into a Tier I animal for 3 <turn></turn> <hyperlink>Turns</hyperlink>.",
+  "name": "Polymorph",
+  "slug": "wand_of_polymorph_ability_equipment_upgrade_active_wand_polymorph",
+  "damage": "",
+  "requisites": [],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003CD"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Base 90% chance of inflicting Slowed for 2 <turn></turn> Turns.",
+    "name": "Slowed",
+    "count": 1
+   }
+  ],
+  "description": "Units in a 1-hex radius sustain damage.",
+  "name": "Hindering Blizzard",
+  "slug": "hindering_blizzard_ability_equipment_upgrade_active_wand_hindering_blizzard",
+  "damage": "24<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "000003E3000052A8"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 4 <turn></turn>"
+   }
+  ],
+  "description": "Summon a random Tier I animal unit.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
+  "name": "Conjure Animal",
+  "slug": "conjure_animal_ability_equipment_upgrade_active_wand_conjure_animal",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000041B000003B2"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier IV Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Spider Monarch",
+  "slug": "spider_monarchs_leg_ability_equipment_upgrade_active_wand_summon_spider_t3",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000003E300005807"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier II Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Summon Spider",
+  "slug": "spider_flute_ability_equipment_upgrade_active_wand_summon_spider_t2",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000003E300005801"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Summons a random Tier I Spider.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Spider Egg",
+  "slug": "spider_hatchling_bell_ability_equipment_upgrade_active_wand_summon_spider_t1",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "icon": "000003E3000057F8"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "description": "Deals damage in a 3-hex line.",
+  "name": "Lightning Strike",
+  "slug": "wand_of_lightning_strike_ability_equipment_upgrade_active_wand_lightning_strike",
+  "damage": "20<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Target:<bulletlist><bullet>Friendly Undead corpse is revived with 60% of its total <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Non-Undead corpse is raised as a <hyperlink>Zombie</hyperlink>.</bullet></bulletlist>",
+  "name": "Raise Undead",
+  "slug": "raise_undead_ability_(necromancer)_equipment_upgrade_active_wand_raise_undead",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E300005FC8"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.<br></br>This summon lasts for 3 <turn></turn> Turns.",
+  "name": "Animate Flora",
+  "slug": "awaken_flora_ability_equipment_upgrade_active_wand_awaken_flora",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Summoning</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "4",
+  "icon": "0000041B00000EC9"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "description": "Removes all <hyperlink>Negative Status Effects</hyperlink> from the target ally and grants a random <hyperlink>Positive Status Effect</hyperlink> for each negative effect removed.",
+  "name": "Inversion",
+  "slug": "wand_of_inversion_ability_equipment_upgrade_active_wand_inversion",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000045E000003AB"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Heals target friendly units in a 1-hex radius 30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+  "name": "Mass Heal",
+  "slug": "mass_heal_ability_equipment_upgrade_active_wand_heal_mass",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000041B00001523"
+ },
+ {
+  "notes": [
+   {
+    "note": "Can only be used once per battle."
+   }
+  ],
+  "description": "Heals target friendly unit 30 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+  "name": "Heal",
+  "slug": "heal_ability_equipment_upgrade_active_wand_heal_single",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E30000579C"
+ },
+ {
+  "modifiers": [],
+  "description": "Deals damage to all adjacent units.",
+  "name": "Whirlwind Strike",
+  "slug": "whirlwind_strike_ability_equipment_upgrade_active_melee_whirlwind",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "icon": "0000041B0000167F"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Fires a magic bolt at the target that cannot miss.",
+  "name": "Magic Missile",
+  "slug": "magic_missile_ability_equipment_upgrade_active_staff_magic_missile",
+  "damage": "20<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "6",
+  "icon": "0000045E000007B1"
+ },
+ {
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 2 <turn></turn>"
+   }
+  ],
+  "description": "Fires a magic bolt at the target that cannot miss.",
+  "name": "Magic Missile",
+  "slug": "magic_missile_ability_equipment_upgrade_active_wand_magic_missile",
+  "damage": "20<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "6",
+  "icon": "0000045E000007B1"
  }
 ]

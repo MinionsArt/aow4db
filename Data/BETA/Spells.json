@@ -2566,7 +2566,7 @@
   "DLC": "DRAGONLORDS ",
   "tactical": false,
   "description": "<bulletlist><bullet>Choose a Tier III young Dragon unit to add to your army.</bullet></bulletlist>",
-  "name": "Call Young Dragon",
+  "name": "Summon Young Dragon",
   "operation_point_cost": 150,
   "icon": "000003E300006B87",
   "summoned_units": [
@@ -2611,10 +2611,16 @@
     "requisite": "<unitBattleMage></unitBattleMage> Battle Mage Unit"
    },
    {
+    "requisite": "<unitMythic></unitMythic> Mythic Unit"
+   },
+   {
     "requisite": "<unitFighter></unitFighter> Fighter Unit"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Skirmisher Unit"
+   },
+   {
+    "requisite": "<unitMagicFighter></unitMagicFighter> Magic Fighter Unit"
    }
   ],
   "name": "Scroll of Astral Connection",
@@ -2668,6 +2674,9 @@
    },
    {
     "requisite": "<unitBattleMage></unitBattleMage> Battle Mage Unit"
+   },
+   {
+    "requisite": "<unitMythic></unitMythic> Mythic Unit"
    },
    {
     "requisite": "<unitFighter></unitFighter> Fighter Unit"
@@ -3271,6 +3280,18 @@
     "slug": "obsidian_wyvern"
    }
   ]
+ },
+ {
+  "casting_cost": "1<thralls></thralls> ",
+  "resid": 4995046969137,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
+  "id": "pall_of_darkness_ritual",
+  "DLC": "THRONESOFBLOOD ",
+  "tactical": false,
+  "description": "Target surface <hyperlink>Provinces</hyperlink> gains <hyperlink>Sunless</hyperlink> for 3 <turn></turn> <hyperlink>Turns</hyperlink>.",
+  "name": "Pall of Darkness Ritual",
+  "operation_point_cost": 30,
+  "icon": "0000048B00000F32"
  },
  {
   "casting_cost": "5<mana></mana> ",
@@ -4783,7 +4804,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
   "id": "sundering_blades",
   "tactical": false,
-  "description": "Grants base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Inflict Sundered Defense, reducing enemy <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "Grants base <hyperlink>Melee</hyperlink> attacks of enchanted units:<bulletlist><bullet>Base 90% chance to inflict Sundered Defense, reducing enemy <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>Demolisher, making them able to destroy reinforced obstacles.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -6025,10 +6046,10 @@
   "casting_cost": "100<mana></mana> ",
   "resid": 4273492487078,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
-  "id": "dragonbreath_focus",
+  "id": "dragonstrike_infusion",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "Grants enchanted units:<bulletlist><bullet>Breath Attack.</bullet><bullet>The damage type is determined by your empire's Dominant Affinity and increases with the <hyperlink>unit's tier</hyperlink>.</bullet></bulletlist>",
+  "description": "Grants enchanted units:<bulletlist><bullet>Dragonstrike.</bullet><bullet>The damage type is determined by your empire's Dominant Affinity and increases with the <hyperlink>unit's tier</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -6046,7 +6067,7 @@
     "requisite": "<unitMagicFighter></unitMagicFighter> Magic Fighter Unit"
    }
   ],
-  "name": "Dragonbreath Focus",
+  "name": "Dragonstrike Infusion",
   "operation_point_cost": 100,
   "icon": "000003E300006B8B"
  },
@@ -6109,7 +6130,7 @@
   "id": "rapid_evolution_enchantment",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
-  "description": "Grants enchanted units:<bulletlist><bullet>10 <hyperlink><xp></xp> Experience</hyperlink> per <turn></turn> Turn.</bullet><bullet>Slip Away healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduced to zero.</bullet></bulletlist>",
+  "description": "Grants enchanted units:<bulletlist><bullet>15 <hyperlink><xp></xp> Experience</hyperlink> per <turn></turn> Turn.</bullet><bullet>Slip Away healing them once per battle if their <hyperlink><hp></hp> Hit Points</hyperlink> would be reduced to zero.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "Units that Evolve"
@@ -7217,7 +7238,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
   "id": "revels_of_carnage",
   "tactical": false,
-  "description": "Units in target friendly army gain +30% <hyperlink><xp></xp> Experience</hyperlink> from combat for 3 <turn></turn> Turns.",
+  "description": "Units in target friendly army gain +100% <hyperlink><xp></xp> Experience</hyperlink> from combat for 3 <turn></turn> Turns.",
   "name": "Revels of Carnage",
   "operation_point_cost": 60,
   "icon": "000003E300005A65"
