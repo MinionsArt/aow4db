@@ -1,6 +1,6 @@
 searchParams = new URLSearchParams(window.location.search);
 searchKeyword = searchParams.get("u");
-var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark"];
+var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark", "Nomad"];
 
 var ListOfSubsocietyHolders = ["Vision of Promise", "Vision of Ruin", "Vision of Destiny"];
 
@@ -88,7 +88,52 @@ function addOrSubtract(extraAffinity, add) {
     return extraAffinity;
 }
 
+const extraTomesForTheorycrafting = [
+    {
+        affinities:
+            "1 <empirechaos></empirechaos> Empire Chaos Affinity, 1 <empirematter></empirematter> Empire Materium Affinity",
+        lore_description: "",
+        gameplay_description: "For Theorycrafting..",
+
+        id: "tome_of_the_warband",
+        DLC: "RISEFROMRUIN ",
+
+        name: "Tome of the Warband",
+        tier: 1,
+        icon: "warband",
+        skills: []
+    },  {
+        affinities:
+             "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirenature></empirenature> Empire Nature Affinity",
+        lore_description: "",
+       gameplay_description: "For Theorycrafting..",
+
+        id: "tome_of_the_sand_stalkers",
+        DLC: "RISEFROMRUIN ",
+
+        name: "Tome of the Sand Stalkers",
+        tier: 2,
+        icon: "sand_stalkers",
+        skills: []
+    }, {
+        affinities:
+            "2 <empirechaos></empirechaos> Empire Chaos Affinity",
+        lore_description: "",
+       gameplay_description: "For Theorycrafting..",
+
+        id: "tome_of_the_warlord",
+        DLC: "RISEFROMRUIN ",
+
+        name: "Tome of the Warlord",
+        tier: 3,
+        icon: "warlord",
+        skills: []
+    }
+];
+
 function SetRandomStart(overwriteParameter) {
+    jsonTomes.push(...extraTomesForTheorycrafting);
+    jsonTomesLocalized.push(...extraTomesForTheorycrafting);
     if (searchKeyword != undefined && !overwriteParameter) {
         // console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
@@ -1857,22 +1902,22 @@ function SetTomePreview(span, origin) {
             else {
                 const spell = findBy(jsonSpellsLocalized, "id", locOrigin.skills[index].spell_slug);
                 let iconLink = spell.icon;
-                    if (spell.icon == undefined || incorrectIconOverrideList.includes(spell.spell_slug)) {
-                        iconLink = spell.id;
-                        span.innerHTML +=
-                            '<bullet> <img width="20px" src="/aow4db/Icons/SummonIcons/' +
-                            iconLink +
-                            '.png">' +
-                            spell.name +
-                            "</bullet>";
-                    } else {
-                        span.innerHTML +=
-                            '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
-                            iconLink +
-                            '.png">' +
-                            spell.name +
-                            "</bullet>";
-                    }
+                if (spell.icon == undefined || incorrectIconOverrideList.includes(spell.spell_slug)) {
+                    iconLink = spell.id;
+                    span.innerHTML +=
+                        '<bullet> <img width="20px" src="/aow4db/Icons/SummonIcons/' +
+                        iconLink +
+                        '.png">' +
+                        spell.name +
+                        "</bullet>";
+                } else {
+                    span.innerHTML +=
+                        '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
+                        iconLink +
+                        '.png">' +
+                        spell.name +
+                        "</bullet>";
+                }
             }
             //
         }
@@ -2173,16 +2218,16 @@ function CreateSpellIcon(listEntry, colorEntry) {
     text.innerHTML = " " + listEntryLoc.name;
 
     var smallIcon = document.createElement("img");
-   
+
     let imageSRC;
-        let imageLinkName;
-        if (spellData.icon != undefined && !incorrectIconOverrideList.includes(spellData.id)) {
-            imageLinkName = spellData.icon;
-            imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
-        } else {
-            imageLinkName = spellData.id;
-            imageSRC = "/aow4db/Icons/SummonIcons/" + imageLinkName + ".png";
-        }
+    let imageLinkName;
+    if (spellData.icon != undefined && !incorrectIconOverrideList.includes(spellData.id)) {
+        imageLinkName = spellData.icon;
+        imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
+    } else {
+        imageLinkName = spellData.id;
+        imageSRC = "/aow4db/Icons/SummonIcons/" + imageLinkName + ".png";
+    }
     smallIcon.setAttribute("src", imageSRC);
     smallIcon.setAttribute("width", "25px");
     smallIcon.setAttribute("height", "25px");
