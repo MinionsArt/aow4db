@@ -1209,7 +1209,7 @@
   "id": "accursed_armors",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Enchanted units gain:<bulletlist><bullet>When a <hyperlink>Melee</hyperlink> attack hits, the attacker has a:<bulletlist></bullet><bullet>30% chance of being inflicted with Ghostfire for 3 <turn></turn> Turns.</bullet><bullet>30% chance of being inflicted with Misfortune for 3 <turn></turn> Turns</bullet></bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
+  "description": "Enchanted units gain:<bulletlist><bullet>When a melee range attack hits, the attacker has a:<bulletlist></bullet><bullet>30% chance of being inflicted with Ghostfire for 3 <turn></turn> Turns.</bullet><bullet>30% chance of being inflicted with Misfortune for 3 <turn></turn> Turns</bullet></bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -2562,11 +2562,11 @@
   "casting_cost": "150<mana></mana> ",
   "resid": 5003636907045,
   "spellType": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>",
-  "id": "summon_young_dragon",
+  "id": "call_young_dragon",
   "DLC": "DRAGONLORDS ",
   "tactical": false,
   "description": "<bulletlist><bullet>Choose a Tier III young Dragon unit to add to your army.</bullet></bulletlist>",
-  "name": "Summon Young Dragon",
+  "name": "Call young Dragon",
   "operation_point_cost": 150,
   "icon": "000003E300006B87",
   "summoned_units": [
@@ -3728,7 +3728,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Terraforming Spell</hyperlink>",
   "id": "abyssal_flames",
   "tactical": false,
-  "description": "Target <hyperlink>Province</hyperlink> and adjacent Provinces:<bulletlist><bullet>Enemy <hyperlink>Units</hyperlink> suffer 20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>The provinces gain <hyperlink>Ashlands</hyperlink>.</bullet><bullet>The provinces lose <hyperlink>River</hyperlink>, <hyperlink>Grassland</hyperlink>, <hyperlink>Swamp</hyperlink>, <hyperlink>Snow</hyperlink>, <hyperlink>Ice</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Cavern Floor</hyperlink>, and <hyperlink>Gloom</hyperlink>.</bullet><bullet>Summon a <hyperlink>Magma Spirit</hyperlink> on the targeted hex.</bullet></bulletlist>",
+  "description": "Target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Enemy <hyperlink>Units</hyperlink> suffer -2 <defensefire></defensefire> <hyperlink>Fire Protection</hyperlink> for 1 <hyperlink>World Map</hyperlink> <turn></turn> Turn.</bullet><bullet>The provinces gain <hyperlink>Ashlands</hyperlink>.</bullet><bullet>The provinces lose <hyperlink>River</hyperlink>, <hyperlink>Grassland</hyperlink>, <hyperlink>Swamp</hyperlink>, <hyperlink>Snow</hyperlink>, <hyperlink>Ice</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Cavern Floor</hyperlink>, and <hyperlink>Gloom</hyperlink>.</bullet><bullet>Summon a <hyperlink>Magma Spirit</hyperlink> on the targeted hex.</bullet></bulletlist>",
   "name": "Abyssal Flames",
   "operation_point_cost": 150,
   "icon": "000003E300005AA8",
@@ -5229,7 +5229,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>",
   "id": "fan_the_inferno",
   "tactical": true,
-  "description": "All enemy units:<bulletlist><bullet>Sustain 5 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Are inflicted with Burning.</bullet></bulletlist>",
+  "description": "All enemy units:<bulletlist><bullet>Sustain 5 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> that ignores 50% of <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Are inflicted with Burning.</bullet></bulletlist>",
   "name": "Fan the Inferno",
   "operation_point_cost": 40,
   "icon": "0000041B00000C2E"
@@ -5685,6 +5685,12 @@
     "slug": "ape"
    },
    {
+    "slug": "celestial_griffon"
+   },
+   {
+    "slug": "griffon"
+   },
+   {
     "slug": "nimu"
    },
    {
@@ -6118,7 +6124,7 @@
   "id": "youthful_rejuvenation",
   "DLC": "DRAGONLORDS ",
   "tactical": true,
-  "description": "Target unit:<bulletlist><bullet>Heals for 36 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains 2 stacks of Strengthened.</bullet></bulletlist><br></br>Units with Evolve:<bulletlist><bullet>Gain Resurgence until the end of combat.</bullet></bulletlist>",
+  "description": "Target unit:<bulletlist><bullet>Heals for 25 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains 2 stacks of Strengthened.</bullet></bulletlist><br></br>Units with Evolve or Product of Evolution:<bulletlist><bullet>Gain Resurgence until the end of combat.</bullet></bulletlist>",
   "name": "Youthful Rejuvenation",
   "operation_point_cost": 15,
   "icon": "000003E300006B34"
@@ -6134,6 +6140,9 @@
   "enchantment_requisites": [
    {
     "requisite": "Units that Evolve"
+   },
+   {
+    "requisite": "Units that have Evolved"
    }
   ],
   "name": "Rapid Evolution Enchantment",
@@ -7238,7 +7247,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
   "id": "revels_of_carnage",
   "tactical": false,
-  "description": "Units in target friendly army gain +100% <hyperlink><xp></xp> Experience</hyperlink> from combat for 3 <turn></turn> Turns.",
+  "description": "Non-hero units in target friendly army gain +100% <hyperlink><xp></xp> Experience</hyperlink> from combat for 3 <turn></turn> Turns.",
   "name": "Revels of Carnage",
   "operation_point_cost": 60,
   "icon": "000003E300005A65"
@@ -7348,7 +7357,7 @@
   "spellType": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>",
   "id": "fury_of_the_horde",
   "tactical": true,
-  "description": "All friendly units in a 2-hex radius gain:<bulletlist><bullet>2 stacks of Strengthened if Tier I.</bullet><bullet>A stack of Strengthened if Tier II.</bullet></bulletlist>",
+  "description": "Tier I and Tier II friendly units in a 2-hex radius gain:<bulletlist><bullet>2 stacks of Strengthened.</bullet></bulletlist>",
   "name": "Fury of the Horde",
   "operation_point_cost": 15,
   "icon": "000003E3000059C3"

@@ -628,7 +628,7 @@
   "icon": "00000497000013A1",
   "skills": [
    {
-    "description": "Enchanted units gain:<bulletlist><bullet>When a <hyperlink>Melee</hyperlink> attack hits, the attacker has a:<bulletlist></bullet><bullet>% chance of being inflicted with Ghostfire for <turn></turn> Turns.</bullet><bullet>% chance of being inflicted with Misfortune for <turn></turn> Turns</bullet></bulletlist><bullet>+ <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
+    "description": "Enchanted units gain:<bulletlist><bullet>When a melee range attack hits, the attacker has a:<bulletlist></bullet><bullet>% chance of being inflicted with Ghostfire for <turn></turn> Turns.</bullet><bullet>% chance of being inflicted with Misfortune for <turn></turn> Turns</bullet></bulletlist><bullet>+ <defense></defense> <hyperlink>Defense</hyperlink>.</bullet></bulletlist>",
     "name": "Accursed Armors",
     "spell_slug": "accursed_armors",
     "tier": 7,
@@ -4418,7 +4418,7 @@
     "description": "Choose a Tier III Young Dragon to add to your army:<bulletlist><bullet><hyperlink>Young Fire Dragon</hyperlink></bullet><bullet><hyperlink>Young Frost Dragon</hyperlink> </bullet><bullet><hyperlink>Young Obsidian Dragon</hyperlink></bullet><bullet><hyperlink>Young Golden Dragon</hyperlink></bullet></bulletlist><br></br>These units may Evolve into Adult Dragons.",
     "name": "Call young Dragon",
     "tier": 6,
-    "spell_slug": "summon_young_dragon",
+    "spell_slug": "call_young_dragon",
     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    }
   ],
@@ -4455,7 +4455,7 @@
     "type": "<caststrategic></caststrategic> <hyperlink>Summon Spell</hyperlink>"
    },
    {
-    "description": "Target unit:<bulletlist><bullet>Heals for <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains 2 stacks of Strengthened.</bullet></bulletlist><br></br>Units with Evolve:<bulletlist><bullet>Gain Resurgence until the end of combat.</bullet></bulletlist>",
+    "description": "Target unit:<bulletlist><bullet>Heals for <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Gains 2 stacks of Strengthened.</bullet></bulletlist><br></br>Units with Evolve or Product of Evolution:<bulletlist><bullet>Gain Resurgence until the end of combat.</bullet></bulletlist>",
     "name": "Youthful Rejuvenation",
     "spell_slug": "youthful_rejuvenation",
     "tier": 1,
@@ -4610,14 +4610,14 @@
     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    },
    {
-    "description": "All enemy units:<bulletlist><bullet>Sustain <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Are inflicted with Burning.</bullet></bulletlist>",
+    "description": "All enemy units:<bulletlist><bullet>Sustain <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> that ignores % of <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Are inflicted with Burning.</bullet></bulletlist>",
     "name": "Fan the Inferno",
     "spell_slug": "fan_the_inferno",
     "tier": 7,
     "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
    },
    {
-    "description": "Target <hyperlink>Province</hyperlink> and adjacent Provinces:<bulletlist><bullet>Enemy <hyperlink>Units</hyperlink> suffer 20 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>The provinces gain <hyperlink>Ashlands</hyperlink>.</bullet><bullet>The provinces lose <hyperlink>River</hyperlink>, <hyperlink>Grassland</hyperlink>, <hyperlink>Swamp</hyperlink>, <hyperlink>Snow</hyperlink>, <hyperlink>Ice</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Cavern Floor</hyperlink>, and <hyperlink>Gloom</hyperlink>.</bullet><bullet>Summon a <hyperlink>Magma Spirit</hyperlink> on the targeted hex.</bullet></bulletlist>",
+    "description": "Target <hyperlink>Province</hyperlink>:<bulletlist><bullet>Enemy <hyperlink>Units</hyperlink> suffer -2 <defensefire></defensefire> <hyperlink>Fire Protection</hyperlink> for 1 <hyperlink>World Map</hyperlink> <turn></turn> Turn.</bullet><bullet>The provinces gain <hyperlink>Ashlands</hyperlink>.</bullet><bullet>The provinces lose <hyperlink>River</hyperlink>, <hyperlink>Grassland</hyperlink>, <hyperlink>Swamp</hyperlink>, <hyperlink>Snow</hyperlink>, <hyperlink>Ice</hyperlink>, <hyperlink>Sand</hyperlink>, <hyperlink>Cavern Floor</hyperlink>, and <hyperlink>Gloom</hyperlink>.</bullet><bullet>Summon a <hyperlink>Magma Spirit</hyperlink> on the targeted hex.</bullet></bulletlist>",
     "name": "Abyssal Flames",
     "spell_slug": "abyssal_flames",
     "tier": 7,
@@ -4712,7 +4712,7 @@
     "type": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>"
    },
    {
-    "description": "Units in target friendly army gain +30% <hyperlink><xp></xp> Experience</hyperlink> from combat for 3 <turn></turn> Turns.",
+    "description": "Non-hero units in target friendly army gain +100% <hyperlink><xp></xp> Experience</hyperlink> from combat for 3 <turn></turn> Turns.",
     "name": "Revels of Carnage",
     "spell_slug": "revels_of_carnage",
     "tier": 3,
@@ -4820,7 +4820,7 @@
     "type": "<caststrategic></caststrategic> <hyperlink>Minor Race Transformation</hyperlink>"
    },
    {
-    "description": "All friendly units in a -hex radius gain:<bulletlist><bullet>2 stacks of Strengthened if Tier I.</bullet><bullet>A stack of Strengthened if Tier II.</bullet></bulletlist>",
+    "description": "Tier I and Tier II friendly units in a -hex radius gain:<bulletlist><bullet>2 stacks of Strengthened.</bullet></bulletlist>",
     "name": "Fury of the Horde",
     "spell_slug": "fury_of_the_horde",
     "tier": 1,
@@ -5264,7 +5264,7 @@
     "name": "Flame Volley",
     "spell_slug": "flame_volley",
     "tier": 5,
-    "type": "<casttactical></casttactical> <hyperlink>Buff Spell</hyperlink>"
+    "type": "<casttactical></casttactical> <hyperlink>Damage/Debuff Spell</hyperlink>"
    },
    {
     "description": "Target friendly Tier I, II, or III non-Magic Origin, non-Construct unit:<bulletlist><bullet>Transforms into a <hyperlink>Warbreed</hyperlink>.</bullet><bullet>Heals <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Dies at the end of combat.</bullet></bulletlist><br><br></br>Cannot be used in Water Combat.",
