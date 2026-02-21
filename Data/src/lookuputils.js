@@ -212,7 +212,7 @@ function transformString(inputString) {
     return transformedString;
 }
 
-function ShowAllDivsWithFilters(cardClassName) {
+function ShowAllDivsWithFilters(cardClassName, displaystyle = "table") {
     let listOfDivs = HideAll(cardClassName);
     //   var list = new Array();
     let filter = document.getElementById("filterInput");
@@ -221,7 +221,7 @@ function ShowAllDivsWithFilters(cardClassName) {
 
     for (let j = 0; j < listOfDivs.length; j++) {
         if (listOfDivs[j].innerText.toUpperCase().indexOf(filterText) != -1) {
-            listOfDivs[j].style.display = "table";
+            listOfDivs[j].style.display = displaystyle;
         }
     }
 }

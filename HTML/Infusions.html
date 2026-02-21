@@ -12,151 +12,21 @@
                 CheckLengths(jsonItemForgeUpgrades);
 
                 $("#filterInput").on("change input", function () {
-                    ShowAllDivsWithFilters("list_abilityslot");
+                    ShowAllDivsWithFilters("list_abilityslot", "flex");
                     SetLevelUpStuff();
                 });
             }
 
-            function ShowInfusion(infusion) {
-                var abilityName,
-                    abilityIcon,
-                    abilityDescr,
-                    abilityDam,
-                    abilityAcc,
-                    abilityRange,
-                    abilityType,
-                    abilityNote,
-                    j,
-                    splitDamageString,
-                    abilityDamType,
-                    abilityReq,
-                    abilityMod = "";
-
-                abilityName = infusion.name;
-                abilityIcon = infusion.icon;
-
-                var tooltipName = document.createElement("SPAN");
-                var btn = document.createElement("DIV");
-
-                btn.className = "list_abilityslot";
-
-                // if (n === true) {
-                //   btn.style.backgroundColor = "rgb(73, 0, 80)";
-                //}
-                var imag = document.createElement("IMG");
-                imag.className = "unit_ability_icon";
-                //  var spa = document.createElement("SPAN");
-
-                abilityDescr = infusion.description;
-                
-               
-
-                var abilityIconType = "";
-                imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
-
-                var abilityIconType = GetAbilityBackground(abilityDam);
-
-                imag.setAttribute(
-                    "style",
-                    'background-image: url("/aow4db/Icons/Interface/' +
-                        abilityIconType +
-                        '.png");background-repeat: no-repeat;background-size: 40px 40px'
-                );
-
-                imag.setAttribute("onerror", "this.setAttribute('src','/aow4db/Icons/Text/mp.png')");
-                imag.setAttribute("width", "40");
-                imag.setAttribute("height", "40");
-
-                var action = document.createElement("DIV");
-
-               
-                
-                 if('abilities' in infusion){
-                    for(ability of infusion.abilities){
-                        const found = findBy(jsonUnitAbilities, "slug", ability.slug );
-                          
-                        if(found){
-                           var spa = GetAbilityInfo(found);
-                            console.log(spa);
-                           action.appendChild(spa);
-                            
-                        }
-                   
-                    }
-                       
-                } else{
-                     action.innerHTML = abilityName + "<hr>" + abilityDescr;
-                  action.innerHTML = AddTagIconsForStatusEffects(action.innerHTML);
-                }
-                // check if it mentions stacks
-
-                action.className = "list_types";
-                action.setAttribute("style", "color:white; width:1000px");
-
-                var stacks = document.createElement("DIV");
-
-                stacks.innerHTML = "";
-                stacks.className = "list_stacks";
-
-               if ("unlock_requirements" in infusion) {
-                    for (test of infusion.unlock_requirements) {
-                        stacks.innerHTML = test.num_required + " " + test.token_name;
-                    }
-                }
-
-                stacks.setAttribute("style", "color:white; width:300px");
-
-                var counter = document.createElement("DIV");
-
-                counter.innerHTML = "";
-                counter.className = "list_counter";
-                
-                if ("tag_filter" in infusion) {
-                    
-                        counter.innerHTML += infusion.tag_filter.condition + "<br>";
-                         for (test2 of infusion.tag_filter.children) {
-                        counter.innerHTML += test2.condition + "<br>";
-                        
-                    
-                    }
-                }
-                // let nextTwoChars = splitStacks[1].trim().match(/^\d+/)?.[0] || "";
-                
-                counter.setAttribute("style", "color:white; width:300px");
-
-                // let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
-
-                // findSource(a);
-
-                // abilityName += '<br><span style="font-size:10px">' + cleanName + " </span>";
-                var tex = document.createElement("DIV");
-                tex.className = "tooltip";
-  if ("tags" in infusion) {
-                    for (test of infusion.tags) {
-                        tex.innerHTML += test.tag + "<br>";
-                    }
-                }
-                
-              
-                tex.setAttribute("style", "color:white; width:250px");
-
-                // spa.className = "tooltiptext";
-              
-                counter.innerHTML = AddTagIconsForStatusEffects(counter.innerHTML);
-                document.getElementById("dataHolder").append(btn);
-                //  tex.appendChild(spa);
-
-                btn.appendChild(imag);
-                btn.append(tex);
-                btn.append(action);
-                btn.append(stacks);
-                btn.append(counter);
-                //addTooltipListeners(tex, spa);
-            }
+          
             async function CheckLengths(list) {
                 // let card = await spawnSpellCards(list);
+                const holder = document.getElementById("dataHolder");
                 for (let i = 0; i < list.length; i++) {
-                    ShowInfusion(list[i]);
+                    // skip damage for now
+                    if(list[i].name.indexOf(" Damage") != -1){
+                        continue;
+                    }
+                   holder.appendChild(showInfusionListEntrySmall(list[i]));
                 }
             }
         </script>
@@ -176,15 +46,15 @@
             </div>
         </div>
 
-        <div class="w3-container">
+       <div class="w3-container" style="  justify-content: center;">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
 
             <div id="dataHolder" class="divContainer">
-                <div id="spell" class="mod_card"></div>
             </div>
         </div>
     </body>
 </html>
+
 <footer>
     <br />
     <br />

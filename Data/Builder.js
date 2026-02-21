@@ -9,8 +9,6 @@ const checkboxNumbers = document.getElementById("numbersCheckbox");
 const showBetaTooltip = document.getElementById("showBetaCheckbox");
 const languageSelect = document.getElementById("languageSelect");
 
-
-
 function highlightNumbersInDiv(text) {
     if (!text) return;
 
@@ -43,8 +41,6 @@ function buildAbilityTagCache() {
 
         abilityTagCache.set(abilityName, replacement);
     }
-    
-    
 }
 
 function extractHyperlinks(text) {
@@ -1242,7 +1238,6 @@ function IncreaseDamageValue(input, percentage) {
     return newString;
 }
 
-
 function GetAbilityToolTip(ability, uniqueMedal) {
     // get template
     const abiltyTemplate = ability_slot_template.content.cloneNode(true);
@@ -1339,34 +1334,30 @@ function GetAbilityToolTip(ability, uniqueMedal) {
 
     let reqs = element.querySelector("#abilityTags");
     reqs.innerHTML = "";
-    
-    
- const Melee = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@MELEE_ABILITY");
-    
- const Magic = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@MAGIC_ABILITY");
- const PhysicalRanged = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@RANGED_ABILITY");  
-   
+
+    const Melee = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@MELEE_ABILITY");
+
+    const Magic = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@MAGIC_ABILITY");
+    const PhysicalRanged = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@RANGED_ABILITY");
+
     if (Array.isArray(ability.requisites)) {
-       
         for (const requisite of ability.requisites) {
-            
             let newReq = document.createElement("DIV");
-           
+
             newReq.setAttribute("style", "background-color:#2e2e28");
             if (requisite.requisite == "Support") {
                 newReq.setAttribute("style", "background-color:#263b38");
             }
             if (requisite.requisite == Melee.hyperlink) {
-             
                 newReq.innerHTML += "<defense></defense>";
                 newReq.setAttribute("style", "background-color:#3b2826");
             }
             if (requisite.requisite == PhysicalRanged.hyperlink) {
-                  newReq.innerHTML += "<defense></defense>";
+                newReq.innerHTML += "<defense></defense>";
                 newReq.setAttribute("style", "background-color:#383125");
             }
             if (requisite.requisite == Magic.hyperlink) {
-                  newReq.innerHTML += "<resistance></resistance>";
+                newReq.innerHTML += "<resistance></resistance>";
                 newReq.setAttribute("style", "background-color:#262f42");
             }
             if (requisite.requisite == "Debuff") {
@@ -1379,7 +1370,7 @@ function GetAbilityToolTip(ability, uniqueMedal) {
                 newReq.setAttribute("style", "background-color:#5d5d5c");
             }
             newReq.className = "requisiteSlot";
-             newReq.innerHTML += requisite.requisite;
+            newReq.innerHTML += requisite.requisite;
             reqs.appendChild(newReq);
         }
     }
@@ -3617,7 +3608,7 @@ function CheckIfInFreeCitySets(unitName) {
     for (i in jsonFreeCities) {
         for (const entry of jsonFreeCities[i].mandatory) {
             if ("units" in entry) {
-                showSpellsWithArgument;
+                //   showSpellsWithArgument;
 
                 const entriesNoSpace = entry.units.replaceAll(" ", "");
                 const entries = entriesNoSpace.split(",");
@@ -4523,7 +4514,7 @@ function GetAbilityInfo(ability) {
 
         // add notes
 
-       let abilityNote = "";
+        let abilityNote = "";
         let Cooldown = "";
         let Once = "";
 
@@ -4971,14 +4962,10 @@ function showWorldStructure(a, divOrigin) {
     tier = divOrigin.querySelector("#modtier");
 
     tier.innerHTML = "";
-
-    if (
-        structure.type == "ore" ||
-        structure.type == "plant" ||
-        structure.type == "liquid" ||
-        structure.type == "void_stones"
-    ) {
+    const MagicMaterialTypes = ["plant", "liquid", "ore", "void_stones"];
+    if (MagicMaterialTypes.includes(structure.type)) {
         eventDiv.appendChild(CreateAncientWonderEventSetup("", structure));
+      //  eventDiv.appendChild(ListInfusionsOfMagicMaterial(structure));
     }
 
     cost = divOrigin.querySelector("#modcost");
@@ -4995,6 +4982,250 @@ function getStoryParts(obj, prefix, lookup) {
     return Object.entries(obj)
         .filter(([key]) => key.startsWith(prefix + "_story"))
         .map(([_, value]) => value);
+}
+
+function ListInfusionsOfMagicMaterial(structure) {
+    const divHolder = document.createElement("div");
+    const div = document.createElement("div");
+
+    div.className = "combatEnchantment";
+    const TitleHolder = document.createElement("button");
+    TitleHolder.className = "collapsible";
+    TitleHolder.onclick = SetUpCombatEnc;
+    const AlternateNames = document.createElement("div");
+    divHolder.appendChild(TitleHolder);
+    divHolder.appendChild(div);
+
+    // spawnsets
+
+    TitleHolder.innerText = "Infusions";
+    const combatReveal = document.createElement("div");
+    combatReveal.setAttribute("style", "display: flex;justify-content: space-between;");
+    div.appendChild(combatReveal);
+
+    const combatEnchHolder = document.createElement("div");
+    combatEnchHolder.setAttribute("style", "display: grid; width:100%");
+
+    const infusions = new Set();
+    // get all infusions
+    for (const infusion of jsonItemForgeUpgrades) {
+        if ("unlock_requirements" in infusion) {
+            for (const requirement of infusion.unlock_requirements) {
+                console.log(structure.name);
+                if (requirement.token_name == structure.name) {
+                    infusions.add(infusion);
+                }
+            }
+        }
+    }
+
+    for (const entry of infusions) {
+        const child = showInfusionListEntrySmall(entry);
+
+        //child.innerHTML = entry.name;
+        combatEnchHolder.appendChild(child);
+    }
+
+    combatReveal.appendChild(combatEnchHolder);
+
+    // combat enchantment
+
+    // div.innerHTML = eventHandle;
+    // console.log(eventHandle);
+    return divHolder;
+}
+const weapons = [
+    "OneHanded",
+    "TwoHandedHeavy",
+    "Bow",
+    "Polearm",
+    "Warclaw",
+    "ArmoredClaw",
+    "Staff",
+    "DragonClaw",
+    "Warhammer",
+    "GiantAxe",
+    "RangedPhysical",
+    "Cestus"
+];
+const armor = ["Legs", "Torso", "Wand", "Amulet", "Ring"];
+function showInfusionListEntrySmall(infusion) {
+    const div = document.createElement("div");
+    div.className = "list_abilityslot";
+    div.setAttribute("style", "font-size:15px: color:white");
+    // icon
+    const icon = document.createElement("img");
+    icon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + infusion.icon + ".png");
+    icon.setAttribute("style", "width:40px; height:40px");
+    icon.className = "unit_ability_icon";
+    // name
+    // requirements
+    const name = document.createElement("div");
+    name.innerHTML = infusion.name;
+    name.className = "tooltip";
+    name.setAttribute("style", "width:250px;");
+   
+    if('abilities' in infusion){
+        for(const slug of infusion.abilities){
+          
+            const ab = findBy(jsonUnitAbilitiesLocalized, "slug", slug.slug);
+             const spa = GetAbilityInfo(ab);
+              addTooltipListeners(name, spa);
+        }
+      
+    } else{
+         const spa = document.createElement("span");
+    spa.innerHTML = infusion.description;
+        addTooltipListeners(name, spa);
+    }
+  
+    const requirements = document.createElement("div");
+    requirements.setAttribute("style", "width:150px");
+    if ("unlock_requirements" in infusion) {
+        for (const unlocks of infusion.unlock_requirements) {
+            const nameClean = unlocks.token_name.toLowerCase().replaceAll(" ", "_");
+            requirements.innerHTML += unlocks.num_required + " <" + nameClean + "></" + nameClean + ">"; // + unlocks.token_name ;
+        }
+    }
+    // point cost
+    const points = document.createElement("div");
+    points.innerHTML = "";
+    points.setAttribute("style", "width:50px");
+    // slot
+    const slot = document.createElement("div");
+    slot.setAttribute("style", "width:650px");
+
+    slot.className = "infusionsGrid";
+
+    /*   slot.innerHTML += infusion.tag_filter.condition;// + unlocks.token_name ;
+     for(const tagchild of infusion.tag_filter.children){
+      let condition = tagchild.condition;
+       condition=  condition.replaceAll("Does not contain ", "X");
+          condition=  condition.replaceAll("Contains ", "V");
+          slot.innerHTML += "<br>" + condition ;// + unlocks.token_name ;
+    }*/
+
+    const rule = document.createElement("div");
+    rule.className = "rule-box";
+    slot.appendChild(rule);
+    for (const entry of weapons) {
+        const weaponHolder = document.createElement("div");
+        weaponHolder.setAttribute("style", "background-color:black");
+        const name = document.createElement("div");
+
+        name.setAttribute("style", "text-align: center; font-size:12px");
+        name.innerHTML = entry;
+        const img = document.createElement("img");
+        img.setAttribute("src", "/aow4db/Icons/ItemForge/" + entry.toLowerCase() + ".png");
+        img.setAttribute("style", "width:30px;height:30px");
+        const spa = document.createElement("span");
+        spa.innerHTML = entry;
+        const box = document.createElement("div");
+        box.setAttribute("id", entry);
+        box.setAttribute("style", "text-align: center;");
+        box.innerHTML = "";
+        addTooltipListeners(img, spa);
+       // weaponHolder.appendChild(name);
+        weaponHolder.appendChild(img);
+        weaponHolder.appendChild(box);
+
+        rule.appendChild(weaponHolder);
+    }
+   
+    for (const entry of armor) {
+        const weaponHolder = document.createElement("div");
+        weaponHolder.setAttribute("style", "background-color:black");
+        const img = document.createElement("img");
+        img.setAttribute("src", "/aow4db/Icons/ItemForge/" + entry.toLowerCase() + ".png");
+        img.setAttribute("style", "width:30px;height:30px");
+        const spa = document.createElement("span");
+        spa.innerHTML = entry;
+        const box = document.createElement("div");
+        box.setAttribute("id", entry);
+        box.setAttribute("style", "text-align: center;");
+        box.innerHTML = "";
+        addTooltipListeners(img, spa);
+        weaponHolder.appendChild(img);
+        weaponHolder.appendChild(box);
+
+        rule.appendChild(weaponHolder);
+    }
+    renderRule(infusion.tag_filter, rule);
+
+    div.appendChild(icon);
+    div.appendChild(name);
+    div.appendChild(points);
+    div.appendChild(requirements);
+    div.appendChild(slot);
+    return div;
+}
+
+function renderRule(node, weaponHolder) {
+    const parsed = parseCondition(node.condition);
+
+    // LEAF NODE (Contains / Does not contain)
+
+    // GROUP NODE (ALL / ANY)
+    // list weapons
+
+    if (parsed.type === "all" || parsed.type === "any") {
+        /* const group = document.createElement("div");
+        group.className = "rule-group";
+
+        const label = document.createElement("div");
+        label.className = "group-label";
+        label.textContent = parsed.type === "all" ? "ALL of:" : "ANY of:";
+        group.appendChild(label);
+
+        const childrenContainer = document.createElement("div");
+        childrenContainer.className = "group-children";
+*/
+        node.children.forEach((child) => {
+            renderRule(child, weaponHolder);
+        });
+
+        // group.appendChild(childrenContainer);
+        // return group;
+    }
+
+    const icon = document.createElement("span");
+    icon.className = parsed.type === "contains" ? "check" : "cross";
+    icon.textContent = parsed.type === "contains" ? "✔" : "✖";
+
+    const text = document.createElement("span");
+    const name = parsed.text.replaceAll("inherited ", "");
+    if (weapons.includes(name)) {
+        const test = weaponHolder.querySelector("#" + name);
+        test.innerHTML = "✔";
+    }
+    text.textContent = parsed.text.replaceAll("inherited ", "");
+//text.setAttribute('style', "display:none");
+    weaponHolder.appendChild(text);
+    //  rule.appendChild(icon);
+    // rule.appendChild(text);
+
+    // return rule;
+}
+function parseCondition(condition) {
+    const clean = condition.replace(/<.*?>/g, "").trim();
+
+    if (clean.startsWith("Does not contain")) {
+        return { type: "not", text: clean.replace("Does not contain ", "") };
+    }
+
+    if (clean.startsWith("Contains")) {
+        return { type: "contains", text: clean.replace("Contains ", "") };
+    }
+
+    if (clean.includes("All of the following")) {
+        return { type: "all", text: "ALL" };
+    }
+
+    if (clean.includes("One or More")) {
+        return { type: "any", text: "ANY" };
+    }
+
+    return { type: "unknown", text: clean };
 }
 
 function CreateAncientWonderEventSetup(eventHandle, structure) {
@@ -5125,7 +5356,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
         let combatEnch = structure.combat;
         const combatEnchHolder = document.createElement("div");
         combatEnchHolder.setAttribute("style", "display: grid;");
-        console.log("here combat 2");
+        //console.log("here combat 2");
 
         if (combatEnch != undefined) {
             const child = FindCombatEnchantment(combatEnch);
@@ -5142,7 +5373,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 
 function processStoryEventText(text) {
     return text;
-    text = text.replaceAll("<EventHero.FirstName></EventHero.FirstName>", "<hyperlink>Hero Name</hyperlink>");
+    /* text = text.replaceAll("<EventHero.FirstName></EventHero.FirstName>", "<hyperlink>Hero Name</hyperlink>");
     text = text.replaceAll("<EventHero></EventHero>", "<hyperlink>Hero</hyperlink>");
     text = text.replaceAll("<PlayerLeader.Title></PlayerLeader.Title>", "<hyperlink>Hero</hyperlink>");
     text = text.replaceAll("<EnemyUnit></EnemyUnit>", "<hyperlink>EnemyUnit</hyperlink>");
@@ -5156,7 +5387,7 @@ function processStoryEventText(text) {
 
     text = text.replaceAll("<<o:", "<hyperlink>");
     text = text.replaceAll(">>", "</hyperlink>");
-    return text;
+    return text;*/
 }
 
 function FindCombatEnchantment(combatID) {
@@ -5169,7 +5400,7 @@ function FindCombatEnchantment(combatID) {
     let description;
 
     const valueLookup = findBy(jsonAllFromPOLocalized, "id", combatID);
-    console.log(combatID);
+    // console.log(combatID);
     if ("description" in valueLookup) {
         description = AddTagIconsForStatusEffects(valueLookup.description);
     }
@@ -6001,12 +6232,11 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     let imagelink = divOrigin.querySelector("#modicon");
     let iconLink = currentTrait.icon;
-    if ('extraLookup' in currentTrait || iconLink == undefined) {
+    if ("extraLookup" in currentTrait || iconLink == undefined) {
         // fallback
         iconLink = currentTrait.id;
         imagelink.setAttribute("src", "/aow4db/Icons/FactionCreation/" + iconLink + ".png");
     } else {
-        
         if (iconLink.startsWith("_")) {
             iconLink = iconLink.split("_").slice(1).join("_");
         }
