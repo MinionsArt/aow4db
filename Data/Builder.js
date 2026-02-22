@@ -2751,7 +2751,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     const defenseText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@HUD_GENERAL_INFO");
     //
 
-    armor = unitCard.querySelector("p#armor");
+    let armor = unitCard.querySelector("p#armor");
     let armorValue = unitEN.armor;
     armor.innerHTML = armorValue;
 
