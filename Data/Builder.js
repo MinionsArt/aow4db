@@ -4965,7 +4965,7 @@ function showWorldStructure(a, divOrigin) {
     const MagicMaterialTypes = ["plant", "liquid", "ore", "void_stones"];
     if (MagicMaterialTypes.includes(structure.type)) {
         eventDiv.appendChild(CreateAncientWonderEventSetup("", structure));
-      //  eventDiv.appendChild(ListInfusionsOfMagicMaterial(structure));
+        //  eventDiv.appendChild(ListInfusionsOfMagicMaterial(structure));
     }
 
     cost = divOrigin.querySelector("#modcost");
@@ -5039,16 +5039,20 @@ const weapons = [
     "TwoHandedHeavy",
     "Bow",
     "Polearm",
+    "Staff",
+    "MagicalOrb",
+    "MeleeRanged",
+    "RangedPhysical",
+    "Cestus",
+    "DragonClaw",
     "Warclaw",
     "ArmoredClaw",
-    "Staff",
-    "DragonClaw",
+    "EldritchRelic",
     "Warhammer",
     "GiantAxe",
-    "RangedPhysical",
-    "Cestus"
+    "Obelisk"
 ];
-const armor = ["Legs", "Torso", "Wand", "Amulet", "Ring"];
+const armor = ["Shield","Head", "Armor",  "Legs", "Ring","Wand", "Amulet"];
 function showInfusionListEntrySmall(infusion) {
     const div = document.createElement("div");
     div.className = "list_abilityslot";
@@ -5064,23 +5068,21 @@ function showInfusionListEntrySmall(infusion) {
     name.innerHTML = infusion.name;
     name.className = "tooltip";
     name.setAttribute("style", "width:250px;");
-   
-    if('abilities' in infusion){
-        for(const slug of infusion.abilities){
-          
+
+    if ("abilities" in infusion) {
+        for (const slug of infusion.abilities) {
             const ab = findBy(jsonUnitAbilitiesLocalized, "slug", slug.slug);
-             const spa = GetAbilityInfo(ab);
-              addTooltipListeners(name, spa);
+            const spa = GetAbilityInfo(ab);
+            addTooltipListeners(name, spa);
         }
-      
-    } else{
-         const spa = document.createElement("span");
-    spa.innerHTML = infusion.description;
+    } else {
+        const spa = document.createElement("span");
+        spa.innerHTML = infusion.description;
         addTooltipListeners(name, spa);
     }
-  
+
     const requirements = document.createElement("div");
-    requirements.setAttribute("style", "width:150px");
+    requirements.setAttribute("style", "width:100px; color:white");
     if ("unlock_requirements" in infusion) {
         for (const unlocks of infusion.unlock_requirements) {
             const nameClean = unlocks.token_name.toLowerCase().replaceAll(" ", "_");
@@ -5093,7 +5095,7 @@ function showInfusionListEntrySmall(infusion) {
     points.setAttribute("style", "width:50px");
     // slot
     const slot = document.createElement("div");
-    slot.setAttribute("style", "width:650px");
+    slot.setAttribute("style", "width:800px");
 
     slot.className = "infusionsGrid";
 
@@ -5110,9 +5112,10 @@ function showInfusionListEntrySmall(infusion) {
     slot.appendChild(rule);
     for (const entry of weapons) {
         const weaponHolder = document.createElement("div");
-        weaponHolder.setAttribute("style", "background-color:black");
+        
+        // weaponHolder.setAttribute("style", "background-color:black");
         const name = document.createElement("div");
-
+        
         name.setAttribute("style", "text-align: center; font-size:12px");
         name.innerHTML = entry;
         const img = document.createElement("img");
@@ -5125,16 +5128,16 @@ function showInfusionListEntrySmall(infusion) {
         box.setAttribute("style", "text-align: center;");
         box.innerHTML = "";
         addTooltipListeners(img, spa);
-       // weaponHolder.appendChild(name);
+        // weaponHolder.appendChild(name);
         weaponHolder.appendChild(img);
         weaponHolder.appendChild(box);
-
+ //AddTriangleForDLCUnits("Unit", "DRAGONLORDS", box);
         rule.appendChild(weaponHolder);
     }
-   
+
     for (const entry of armor) {
         const weaponHolder = document.createElement("div");
-        weaponHolder.setAttribute("style", "background-color:black");
+        //weaponHolder.setAttribute("style", "background-color:black");
         const img = document.createElement("img");
         img.setAttribute("src", "/aow4db/Icons/ItemForge/" + entry.toLowerCase() + ".png");
         img.setAttribute("style", "width:30px;height:30px");
@@ -5163,29 +5166,11 @@ function showInfusionListEntrySmall(infusion) {
 function renderRule(node, weaponHolder) {
     const parsed = parseCondition(node.condition);
 
-    // LEAF NODE (Contains / Does not contain)
-
-    // GROUP NODE (ALL / ANY)
-    // list weapons
 
     if (parsed.type === "all" || parsed.type === "any") {
-        /* const group = document.createElement("div");
-        group.className = "rule-group";
-
-        const label = document.createElement("div");
-        label.className = "group-label";
-        label.textContent = parsed.type === "all" ? "ALL of:" : "ANY of:";
-        group.appendChild(label);
-
-        const childrenContainer = document.createElement("div");
-        childrenContainer.className = "group-children";
-*/
         node.children.forEach((child) => {
             renderRule(child, weaponHolder);
         });
-
-        // group.appendChild(childrenContainer);
-        // return group;
     }
 
     const icon = document.createElement("span");
@@ -5193,13 +5178,20 @@ function renderRule(node, weaponHolder) {
     icon.textContent = parsed.type === "contains" ? "✔" : "✖";
 
     const text = document.createElement("span");
-    const name = parsed.text.replaceAll("inherited ", "");
-    if (weapons.includes(name)) {
+    let name = parsed.text.replaceAll("inherited ", "");
+    name = name.replaceAll("ItemType", "");
+    if(name == "Instrument"){
+        name = "Amulet";
+    }
+    if (weapons.includes(name) || armor.includes(name)) {
         const test = weaponHolder.querySelector("#" + name);
         test.innerHTML = "✔";
+       
+    }else{
+         console.log("Couldnt find: " + name);
     }
     text.textContent = parsed.text.replaceAll("inherited ", "");
-//text.setAttribute('style', "display:none");
+    //text.setAttribute('style', "display:none");
     weaponHolder.appendChild(text);
     //  rule.appendChild(icon);
     // rule.appendChild(text);

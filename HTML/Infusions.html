@@ -29,6 +29,45 @@
                    holder.appendChild(showInfusionListEntrySmall(list[i]));
                 }
             }
+            
+            function sortDivsList(sortType) {
+                const currentbutton = document.getElementById(`${sortType}-button`);
+                const ascendingOrder = !currentbutton.classList.contains("activeDown");
+
+                document.querySelectorAll(".sortingButton").forEach((btn) => (btn.className = "sortingButton"));
+                currentbutton.classList.add(ascendingOrder ? "activeDown" : "activeUp");
+
+                const container = document.getElementById(currentView || "dataHolder");
+                const elements = Array.from(container.querySelectorAll(".list_abilityslot"));
+
+                const selectorMap = {
+                    range: (el) => el.querySelector(".list_range")?.innerHTML,
+                    accuracy: (el) => el.querySelector(".list_accuracy")?.innerHTML,
+                    damage: (el) => el.querySelector(".ability_damage")?.innerHTML,
+                    action: (el) => el.querySelector(".list_action")?.innerHTML,
+                    type: (el) => el.querySelector(".list_types")?.innerHTML,
+                    default: (el) => el.querySelector(".tooltip")?.innerHTML
+                };
+
+                const selector = selectorMap[sortType] || selectorMap.default;
+                const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+
+                elements
+                    .sort((a, b) => {
+                        let valA = selector(a);
+                        let valB = selector(b);
+
+                        if (sortType === "tier") {
+                            valA = deromanize(valA.split("Tier ")[1]);
+                            valB = deromanize(valB.split("Tier ")[1]);
+                        }
+
+                        return collator.compare(ascendingOrder ? valA : valB, ascendingOrder ? valB : valA);
+                    })
+                    .forEach((el) => container.appendChild(el));
+
+                sorting = `${sortType}:${ascendingOrder}`;
+            }
         </script>
 
         <title>Age of Wonders 4 Database - Infusions List</title>
@@ -48,6 +87,32 @@
 
        <div class="w3-container" style="  justify-content: center;">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
+           <div class="list_abilityslotfilter">
+                <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
+                    Name
+                </button>
+                <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">
+                    Range <range></range>
+                </button>
+                <button
+                    style="width: 150px"
+                    class="sortingButton"
+                    id="accuracy-button"
+                    onclick="sortDivsList('accuracy')">
+                    Acc.<br />
+                    <accuracy></accuracy>
+                </button>
+                <button style="width: 150px" class="sortingButton" id="damage-button" onclick="sortDivsList('damage')">
+                    Damage<br />
+                    <damageblight></damageblight>
+                </button>
+                <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">
+                    Action <repeatingAction></repeatingAction>
+                </button>
+                <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
+                    Type
+                </button>
+            </div>
 
             <div id="dataHolder" class="divContainer">
             </div>
