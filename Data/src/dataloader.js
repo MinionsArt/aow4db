@@ -329,10 +329,10 @@ async function CheckData() {
         /*  if (storedSettings.showBeta) {
              await GetAllData("BETA");
        } else {*/
-        await GetAllData(storedSettings.language);
+       // await GetAllData(storedSettings.language);
       //  }
 
-
+await GetAllData("EN");
         AddExtraData();
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
