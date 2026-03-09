@@ -225,7 +225,7 @@
                 const divOG = document.getElementById(divFromID);
 
                 const divTO = document.getElementById(divToID);
-                console.log(divOG, divTO);
+              //  console.log(divOG, divTO);
                 if (divOG == undefined || divTO == undefined) {
                     return;
                 }
@@ -507,6 +507,21 @@
                     color: "rgb(17, 17, 17)",
                     title: "Architect"
                 },
+                 {
+                    key: "nomad",
+                    color: "rgb(17, 17, 17)",
+                    title: "Nomad"
+                },
+                   {
+                    key: "nomad_conquerors",
+                       color: "rgb(17, 17, 17)",
+                    title: "Nomad Conquerors"
+                },
+                 {
+                    key: "nomad_scavengers",
+                       color: "rgb(17, 17, 17)",
+                    title: "Nomad Scavengers"
+                },
                 {
                     key: "reaver",
                     color: "rgb(17, 17, 17)",
@@ -514,98 +529,9 @@
                 }
             ];
 
-            const overrideBuildings = {
-                /*throne: ["town_hall_i_town_center: throne"],*/
-                feudal: [
-                    "town_hall_ii:town_hall_ii_castle",
-                    "town_hall_iii:town_hall_iii_citadel",
-                    "town_hall_iv:town_hall_iv_grand_estate"
-                ],
-                feudal_monarchy: ["workshop:militia_barracks", "blacksmith:royal_smith", "iii_unlock_2:retainers_estate"],
-                feudal_aristocracy: [
-                    "store_house:house_hunting_grounds",
-                    "granary:serf_quarters",
-                    "iii_unlock:lords_manor"
-                ],
-                dark: [
-                    "town_hall_ii:town_hall_ii_dread_spire",
-                    "town_hall_iii:town_hall_iii_stronghold",
-                
-                    "town_hall_iv:town_hall_iv_black_palace"
-                ],
-
-                dark_cult_of_tyranny: ["market:collector", "mint:shadowtrade_quarter", "iii_unlock:overlords_tower"],
-                dark_cult_of_death: ["mana_obelisk:grave_obelisk", "monolith:crypt-temple", "iii_unlock_2:soulvault"],
-                barbarian: [
-                    "library:battle_ritual_site",
-                    "arcane_institute:ancestral_seer_hall",
-                    "town_hall_ii:town_hall_ii_communal_tent",
-                    "town_hall_iii:town_hall_iii_halls_of_war",
-                    "iii_unlock:shrine_of_the_wargod",
-                    "town_hall_iv:town_hall_iv_warlords_pavilion"
-                ],
-                industrious: [
-                    "store_house:workers_farmstead",
-                    "granary:grand_mill",
-                    "town_hall_ii:town_hall_ii_bulwark",
-                    "town_hall_iii:town_hall_iii_forge_tower",
-                    "iii_unlock:bastions_barricade",
-                    "town_hall_iv:town_hall_iv_industry_compound"
-                ],
-                mystic: [
-                    "workshop:evocators_abode",
-                    "stonemason:stone_conjurer",
-                    "town_hall_ii:town_hall_ii_mages_plaza",
-                    "town_hall_iii:town_hall_iii_mystic_spire",
-                    "town_hall_iv:town_hall_iv_wizards_auditorium"
-                ],
-                mystic_school_of_summoning: ["iii_unlock_3:summoners_cistern"],
-                mystic_school_of_potential: ["iii_unlock_2:academy_of_potential"],
-                mystic_school_of_attunement: ["iii_unlock:altar_of_the_all-seers"],
-
-                high: [
-                    "workshop:artisan_workshop",
-                    "blacksmith:lightforge",
-                    "town_hall_ii:town_hall_ii_atrium_of_light",
-                    "town_hall_iii:town_hall_iii_pantheon",
-                    "iii_unlock:solar_nexus",
-                    "town_hall_iv:town_hall_iv_solar_sanctum"
-                ],
-                reaver: [
-                    "shrine:mana_forge",
-                    "mana_obelisk:lodestone_foundry",
-                    "town_hall_ii:town_hall_ii_steel_hall",
-                    "town_hall_iii:town_hall_iii_chained_spire",
-                    "iii_unlock:extraction_nexus",
-                    "town_hall_iv:town_hall_iv_ironclad_citadel"
-                ],
-                primal: [
-                    "workshop:woodcarvers_workshop",
-                    "stonemason:stonestele",
-                    "town_hall_ii:town_hall_ii_clan_lodge",
-                    "town_hall_iii:town_hall_iii_spirit_hall",
-                    "iii_unlock:shrine_to_the_spirits",
-                    "town_hall_iv:town_hall_iv_primeval_palace"
-                ],
-                oathsworn: [
-                    "vendor:training_hall",
-                    "market:hall_of_devotion",
-                    "town_hall_ii:town_hall_ii_oath_square",
-                    "town_hall_iii:town_hall_iii_steel_bastion",
-                    "iii_unlock:paragon_quarters",
-                    "town_hall_iv:town_hall_iv_palace_of_vows"
-                ],
-                architect: [
-                    "library:magitectural_archive",
-                    "arcane_institute:architect_institute",
-                    "town_hall_ii:town_hall_ii_great_ziggurat",
-                    "town_hall_iii:town_hall_iii_ascended_gardens",
-                    "iii_unlock:affinity_obelisks",
-                    "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
-                ]
-            };
             
-             const overrideBuildingsBeta = {
+            
+             const overrideBuildings = {
                 /*throne: ["town_hall_i_town_center: throne"],*/
                 feudal: [
                     "town_hall_ii:town_hall_ii_castle",
@@ -693,7 +619,15 @@
                     "town_hall_iii:town_hall_iii_ascended_gardens",
                     "iii_unlock:affinity_obelisks",
                     "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
-                ]
+                ],
+                 nomad: [
+                  
+                    "town_hall_ii:town_hall_ii_council_deck",
+                    "town_hall_iii:town_hall_iii_cartography_bilge",
+                    "town_hall_iv:town_hall_iv_pinnacle_bridge","stone_walls:sentry_nests"
+                ],
+                   nomad_conquerors: ["store_house:raider_tents", "granary:trophy_stores", "iii_unlock:conquerors_tower"],
+                  nomad_scavengers: ["workshop:salvage_shop", "blacksmith:loot_armory", "iii_unlock_2:scavenger_vault"],
             };
 
             function findResources(text) {
@@ -727,15 +661,8 @@
                 const overrideMap = {};
 
                 //
-                if(showBetaTooltip.checked){
-                    for (const [overrideName, list] of Object.entries(overrideBuildingsBeta)) {
-                    for (const entry of list) {
-                        const [base, extra] = entry.split(":");
-                        if (!overrideMap[base]) overrideMap[base] = [];
-                        overrideMap[base].push({ overrideName, extra });
-                    }
-                }
-                } else{
+               // if(showBetaTooltip.checked){
+                
                      for (const [overrideName, list] of Object.entries(overrideBuildings)) {
                     for (const entry of list) {
                         const [base, extra] = entry.split(":");
@@ -743,7 +670,7 @@
                         overrideMap[base].push({ overrideName, extra });
                     }
                 }
-                }
+               
                
 
                 // Now loop through TestBase
@@ -1217,6 +1144,15 @@
                         checked="checked"
                         onchange="reDrawAll()" />
                     Architect
+                </label>
+                   <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="nomadCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Nomad
                 </label>
             </div>
         </div>

@@ -62,7 +62,6 @@ const extraFormUnitsList = [
     "pyre_templar",
     "monk",
     "shade",
-    "tyrant_knight",
     "wildspeaker",
     "houndmaster",
     "geomancer",
@@ -70,7 +69,9 @@ const extraFormUnitsList = [
     "oracle",
     "pain_bringer",
     "blood_cultist",
-    "subjugator"
+    "subjugator",
+    "lieutenant",
+    "warlord"
 ];
 
 const incorrectIconOverrideList = [
@@ -91,71 +92,6 @@ const incorrectIconOverrideList = [
 const extraAbilities = [];
 
 const extraSkills = [
-    {
-        group_name: "Battlesaint - Hero Skill Group",
-        icon: "0000048D000018CC",
-        type: "normal",
-        description: "This and adjecent friendly units gain 50% Morale Resistance",
-
-        resid: 5222680234436,
-        tree_name: "<classBattlesaint></classBattlesaint> Battlesaint",
-        name: "Spiritual Guide",
-        tree_pos_x: 350.0,
-        tree_pos_y: 650.0,
-        id: "hs_battlesaint_spiritual_guide",
-        required_skills: [
-            {
-                resid: 5222680234415
-            },
-            {
-                resid: 5222680234413
-            }
-        ]
-    },
-    {
-        group_name: "Warlock - Skill Group",
-        icon: "000004C000000B45",
-        type: "normal",
-        resid: 5222680234769,
-        tree_name: "<classWarlock></classWarlock> Warlock",
-        name: "Hexseeking Bolts",
-        tree_pos_x: 250.0,
-        tree_pos_y: 150.0,
-        id: "hs_warlock_hexseeking_bolts",
-        description:
-            "Attacks and <hyperlink>Debuff</hyperlink> abilities against the target of Hex pact:<bulletlist><bullet>Always Hit.</bullet><bullet>Ignore 3 Status Resistance against the target of Hex Pact</bullet></bulletlist>",
-        required_skills: [
-            {
-                resid: 5222680234747
-            }
-        ]
-    },
-    {
-        group_name: "Ritualist - Hero Skill Group",
-        icon: "0000048B00000336",
-        type: "normal",
-        name: "Fortifying Support",
-        tree_pos_x: 600.0,
-        id: "hs_ritualist_fortifying_support",
-        excluded_skills: [
-            {
-                resid: 4995046966069
-            }
-        ],
-        resid: 5222680235172,
-        tree_name: "<classRitualist></classRitualist> Ritualist",
-        tree_pos_y: 450.0,
-        description:
-            "<bulletlist><hyperlink>Support</hyperlink> abilities now grant:<bullet> +3 Status Resistance for 3 <turn></turn> Turns.</bullet></bulletlist>",
-        required_skills: [
-            {
-                resid: 5222680233603
-            },
-            {
-                resid: 5222680233749
-            }
-        ]
-    }
 ];
 
 function fetchJsonFiles(filePaths) {
@@ -212,22 +148,19 @@ const dlcMap = {
     THRONESOFBLOOD: {
         src: "/aow4db/Icons/Text/ThronesOfBlood.png",
         text: "Part of the Thrones of Blood DLC"
-    }/*, RISEFROMRUIN: {
-        src: "/aow4db/Icons/Text/mp.png",
+    }, RISEFROMRUIN: {
+        src: "/aow4db/Icons/Text/RiseFromRuin.png",
         text: "Part of the Rise From Ruin DLC"
-    }*/
+    }
 };
 
 async function GetAllData(selectedLang) {
     let basePathEN = `/aow4db/Data/EN/`;
 
-    if (selectedLang == "BETA") {
+    /*if (selectedLang == "BETA") {
         basePathEN = `/aow4db/Data/BETA/`;
     }
-    
-     if (selectedLang == "TESTING") {
-        basePathEN = `/aow4db/Data/TESTING/`;
-    }
+    */
 
     const basePathGen = `/aow4db/Data/GEN/`;
     // }
@@ -380,8 +313,8 @@ async function CheckData() {
 
 
         //  languageSelect = document.getElementById("languageSelect");
-        languageSelect.value = storedSettings.language;
-        //languageSelect.value = "EN";
+        //languageSelect.value = storedSettings.language;
+        languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {
@@ -393,11 +326,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-          if (storedSettings.showBeta) {
+        /*  if (storedSettings.showBeta) {
              await GetAllData("BETA");
-       } else {
+       } else {*/
         await GetAllData(storedSettings.language);
-        }
+      //  }
 
 
         AddExtraData();

@@ -375,6 +375,7 @@ function getUnitTypeTag(passivesList) {
         "0000041b00001910": "<unitTower></unitTower>",
         "000003fe00000020": "<unitSiegecraft></unitSiegecraft>",
         "000003e300004e9f": "<unitMythic></unitMythic>",
+        "000003fe000000c6": "<unitSettler></unitSettler>",
         "000003ec000021b1": "<unitCivilian></unitCivilian>"
     };
 
@@ -820,7 +821,8 @@ function addUnitTypeIcon(a, holder, origin) {
             "Mythic Unit",
             "Tower",
             "Siegecraft",
-            "Civilian"
+            "Civilian",
+            "Settler Unit"
         ];
 
         if (roleNames.includes(iconName)) {
@@ -851,10 +853,13 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         abilityReq,
         abilityMod = "";
 
-    const abilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === a);
+   
 
     const abilityEn = jsonUnitAbilities.find((entry) => entry.slug === a);
-    // console.log(abilityEn);
+     const abilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === abilityEn.slug);
+    
+     console.log(abilityEn);
+     console.log(abilityLoc);
     abilityDam = "";
     if ("damage" in abilityLoc) {
         abilityDam = abilityLoc.damage;
@@ -1134,14 +1139,14 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         btn.append(imageExtra);
     }
 
-    if (Melee != "" && showBetaTooltip.checked) {
+    if (Melee != "" ) {
         imageExtra = document.createElement("IMG");
         imageExtra.setAttribute("src", "/aow4db/Icons/Text/armor_small.png");
         imageExtra.setAttribute("style", " position: absolute; height: 15px; left: 30px;bottom: 5px;");
         btn.append(imageExtra);
     }
 
-    if (Magic != "" && showBetaTooltip.checked) {
+    if (Magic != "") {
         imageExtra = document.createElement("IMG");
         imageExtra.setAttribute("src", "/aow4db/Icons/Text/resistance_small.png");
         imageExtra.setAttribute("style", " position: absolute; height: 15px; left: 30px;bottom: 4px;");
@@ -1419,6 +1424,7 @@ function addPassiveslot(a, div, enchant) {
         if (a === jsonUnitAbilitiesLocalized[j].slug) {
             abilityName = jsonUnitAbilitiesLocalized[j].name;
             abilityIcon = jsonUnitAbilitiesLocalized[j].icon;
+            
             abilityDescr = jsonUnitAbilitiesLocalized[j].description;
 
             let btn = document.createElement("DIV");
@@ -1610,19 +1616,19 @@ function addResistanceSlot(a, resistance, defense, holder) {
                 split = a.split("weakness_");
                 num = "-" + split[1];
             }
-            if (a.indexOf("resistance") !== -1) {
+            else if (a.indexOf("resistance") !== -1) {
                 split = a.split("resistance_");
                 num = split[1];
             }
 
-            if (a.indexOf("immun") !== -1) {
+            else  {
                 split = a.split("resistance_");
                 num = "x";
             }
 
             const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
-            if (showBetaTooltip.checked) {
+           
                 spa.innerHTML +=
                     "<br><br>" +
                     damageRedText.damage_reduction +
@@ -1652,24 +1658,7 @@ function addResistanceSlot(a, resistance, defense, holder) {
                     }
                     spa.innerHTML += num;
                 }
-            } else {
-                spa.innerHTML +=
-                    "<br><br>" +
-                    damageRedText.damage_reduction +
-                    ": <br> " +
-                    firstPart +
-                    ' <span style="color:white;">' +
-                    GetDamageReductionPercentage(resistance, num) +
-                    '</span> ( From <span style="color:white;">' +
-                    resistance +
-                    "</span> <resistance> </resistance>";
-                if (num != undefined) {
-                    if (num > 0) {
-                        spa.innerHTML += "+";
-                    }
-                    spa.innerHTML += num;
-                }
-            }
+            
 
             imag.setAttribute("width", "25");
             imag.setAttribute("height", "25");
@@ -1704,12 +1693,12 @@ function addResistanceSlot(a, resistance, defense, holder) {
                 split = a.split("weakness_");
                 abilityDam = '<p class="resistanceNumber" style="color:red;">-' + split[1];
             }
-            if (a.indexOf("resistance") !== -1) {
+            else if (a.indexOf("resistance") !== -1) {
                 split = a.split("resistance_");
                 abilityDam = '<p class="resistanceNumber" style="color:lawngreen;">' + split[1];
             }
 
-            if (a.indexOf("immun") !== -1) {
+            else  {
                 split = a.split("resistance_");
                 abilityDam = '<p class="resistanceNumber">IMM';
             }
@@ -2404,7 +2393,9 @@ function findSpellsWithArgument(argumentaffinity, argumentType) {
                         jsonTomes[i].name.toUpperCase().indexOf("High".toUpperCase()) !== -1 ||
                         jsonTomes[i].name.toUpperCase().indexOf("Industrious".toUpperCase()) !== -1 ||
                         jsonTomes[i].name.toUpperCase().indexOf("Reaver".toUpperCase()) !== -1 ||
-                        jsonTomes[i].name.toUpperCase().indexOf("Oathsworn".toUpperCase()) !== -1
+                        jsonTomes[i].name.toUpperCase().indexOf("Oathsworn".toUpperCase()) !== -1||
+                          jsonTomes[i].name.toUpperCase().indexOf("Architect".toUpperCase()) !== -1||
+                      jsonTomes[i].name.toUpperCase().indexOf("Nomad".toUpperCase()) !== -1
                     ) {
                         for (k in jsonTomes[i].skills) {
                             listMod.push(jsonTomes[i].skills[k].spell_slug);
@@ -3053,7 +3044,9 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     function createResistanceEntry(type, label, baseResistance, additionalValue, typeOfDef) {
         // Handle immunity special case
         if (additionalValue === "immune") {
-            return `${label}: Immune<br>`;
+          
+           return `${label} : <span style="color:gold;">IMMUNE</span><br>`;
+            //return `${label}: Immune<br>`;
         }
 
         let totalReduction = GetDamageReductionPercentage(baseResistance, additionalValue);
@@ -3091,15 +3084,6 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     // Define your resistance types and values here
     const resistances = [
-        { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
-        { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
-        { type: "fire", label: "<damageFire></damageFire", value: additionalFire },
-        { type: "spirit", label: "<damageSpirit></damageSpirit>", value: additionalSpirit },
-        { type: "frost", label: "<damageFrost></damageFrost>", value: additionalFrost }
-    ];
-
-    // Define your resistance types and values here
-    const resistancesBeta = [
         { type: "physical", label: "<damagePhysical></damagePhysical>", value: additionalPhysical },
         { type: "blight", label: "<damageBlight></damageBlight>", value: additionalBlight },
         { type: "shock", label: "<damageLightning></damageLightning>", value: additionalShock },
@@ -3112,9 +3096,6 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     // resistance
     const resistanceDiv = document.createElement("div");
     resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistances, "Resistance");
-    if (showBetaTooltip.checked) {
-        resistanceDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Resistance");
-    }
 
     const resistanceSpan = document.createElement("span");
     resistanceSpan.innerHTML =
@@ -3131,31 +3112,19 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     // armor
     const armorDiv = document.createElement("div");
-    armorDiv.innerHTML = generateResistanceHTML(unitEN, resistancesBeta, "Defense");
+    armorDiv.innerHTML = generateResistanceHTML(unitEN, resistances, "Defense");
     let armorspan = document.createElement("span");
+
+    let armorTooltip = unitCard.querySelector("div#armor_tt");
+
     armorspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
         defenseText.armor_description +
         damageRedText.damage_reduction +
         " : " +
-        '<br><damagePhysical></damagePhysical> :  <span style="color:white;">' +
-        GetDamageReductionPercentage(unitEN.armor) +
-        '</span> ( From <span style="color:white;">' +
-        unitEN.armor +
-        "</span> <defense> </defense>)" +
-        "</p></span>";
-    let armorTooltip = unitCard.querySelector("div#armor_tt");
-
-    if (showBetaTooltip.checked) {
-        armorspan.innerHTML =
-            '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
-            defenseText.armor_description +
-            damageRedText.damage_reduction +
-            " : " +
-            "<br>" +
-            armorDiv.innerHTML +
-            "</span>";
-    }
+        "<br>" +
+        armorDiv.innerHTML +
+        "</span>";
 
     addTooltipListeners(armorTooltip, armorspan);
     addLevelUpInfo(unitEN, unitID, unitCard);
@@ -3803,15 +3772,16 @@ function ReduceUpkeepPercentage(value, percentage) {
 }
 
 function ReturnWeaknessOrResistanceNumber(slug) {
+    let abilityDam;
     if (slug.indexOf("weakness") !== -1) {
         let split = slug.split("weakness_");
         abilityDam = "-" + split[1];
-    }
-    if (slug.indexOf("resistance") !== -1) {
+    } else if (slug.indexOf("resistance") !== -1) {
         let split = slug.split("resistance_");
         abilityDam = split[1];
     }
-    if (slug.indexOf("immunity") !== -1) {
+    // immunitylist
+    else {
         abilityDam = "immune";
     }
 
@@ -3848,14 +3818,6 @@ function addLevelUpInfo(units, a, holder) {
     levelup.innerHTML = "";
 
     const xpByTier = {
-        1: 4,
-        2: 6,
-        3: 8,
-        4: 10,
-        5: 12
-    };
-
-    const xpByTierBeta = {
         1: 40,
         2: 60,
         3: 80,
@@ -3863,11 +3825,11 @@ function addLevelUpInfo(units, a, holder) {
         5: 100
     };
 
+   
+
     // Add medal sections
     let xpNeeded = xpByTier[units.tier] || 0;
-    if (showBetaTooltip.checked) {
-        xpNeeded = xpByTierBeta[units.tier] || 0;
-    }
+   
 
     const evolveTarget = units.evolve_target;
 
@@ -4226,6 +4188,8 @@ function showTome(a, divOrigin) {
         // this one doesnt have a slug for some reason, architect spell
         if (skill.name === "Conjure Elemental") {
             addTomeSkillCard(skillHolder, (el) => showSpell("conjure_elemental", false, el));
+        } else if (skill.name === "Call young Dragon") {
+            addTomeSkillCard(skillHolder, (el) => showSpell("call_young_dragon", false, el));
         } else if ("spell_slug" in skill) {
             //  console.log(skill.spell_slug);
             addTomeSkillCard(skillHolder, (el) => showSpell(skill.spell_slug, false, el));
@@ -4878,7 +4842,7 @@ function showWorldStructure(a, divOrigin) {
         if ("events" in structure) {
             // events are here
             for (var i in structure.events) {
-                //  console.log(structure.events[i]);
+                
                 eventDiv.appendChild(CreateAncientWonderEventSetup(structure.events[i].name, structure));
             }
         }
@@ -5052,7 +5016,7 @@ const weapons = [
     "GiantAxe",
     "Obelisk"
 ];
-const armor = ["Shield","Head", "Armor",  "Legs", "Ring","Wand", "Amulet"];
+const armor = ["Shield", "Head", "Armor", "Legs", "Ring", "Wand", "Amulet"];
 function showInfusionListEntrySmall(infusion) {
     const div = document.createElement("div");
     div.className = "list_abilityslot";
@@ -5112,10 +5076,10 @@ function showInfusionListEntrySmall(infusion) {
     slot.appendChild(rule);
     for (const entry of weapons) {
         const weaponHolder = document.createElement("div");
-        
+
         // weaponHolder.setAttribute("style", "background-color:black");
         const name = document.createElement("div");
-        
+
         name.setAttribute("style", "text-align: center; font-size:12px");
         name.innerHTML = entry;
         const img = document.createElement("img");
@@ -5131,7 +5095,7 @@ function showInfusionListEntrySmall(infusion) {
         // weaponHolder.appendChild(name);
         weaponHolder.appendChild(img);
         weaponHolder.appendChild(box);
- //AddTriangleForDLCUnits("Unit", "DRAGONLORDS", box);
+        //AddTriangleForDLCUnits("Unit", "DRAGONLORDS", box);
         rule.appendChild(weaponHolder);
     }
 
@@ -5166,7 +5130,6 @@ function showInfusionListEntrySmall(infusion) {
 function renderRule(node, weaponHolder) {
     const parsed = parseCondition(node.condition);
 
-
     if (parsed.type === "all" || parsed.type === "any") {
         node.children.forEach((child) => {
             renderRule(child, weaponHolder);
@@ -5180,15 +5143,14 @@ function renderRule(node, weaponHolder) {
     const text = document.createElement("span");
     let name = parsed.text.replaceAll("inherited ", "");
     name = name.replaceAll("ItemType", "");
-    if(name == "Instrument"){
+    if (name == "Instrument") {
         name = "Amulet";
     }
     if (weapons.includes(name) || armor.includes(name)) {
         const test = weaponHolder.querySelector("#" + name);
         test.innerHTML = "✔";
-       
-    }else{
-         console.log("Couldnt find: " + name);
+    } else {
+        console.log("Couldnt find: " + name);
     }
     text.textContent = parsed.text.replaceAll("inherited ", "");
     //text.setAttribute('style', "display:none");
@@ -5233,9 +5195,11 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
     divHolder.appendChild(div);
 
     if ("nameOverrides" in structure) {
+      
         // names
         const overrides = findBy(jsonAllFromPOLocalized, "id", structure.nameOverrides);
-
+        console.log(overrides);
+       
         const rightSites = getEventStructureNameByPrefix(overrides, eventHandle);
 
         for (var i in rightSites) {
@@ -5365,21 +5329,6 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 
 function processStoryEventText(text) {
     return text;
-    /* text = text.replaceAll("<EventHero.FirstName></EventHero.FirstName>", "<hyperlink>Hero Name</hyperlink>");
-    text = text.replaceAll("<EventHero></EventHero>", "<hyperlink>Hero</hyperlink>");
-    text = text.replaceAll("<PlayerLeader.Title></PlayerLeader.Title>", "<hyperlink>Hero</hyperlink>");
-    text = text.replaceAll("<EnemyUnit></EnemyUnit>", "<hyperlink>EnemyUnit</hyperlink>");
-    text = text.replaceAll("<EventStructure></EventStructure>", "<hyperlink>EventStructure</hyperlink>");
-    text = text.replaceAll("<<m:", "<hyperlink>");
-    text = text.replaceAll("<<P:", "<hyperlink>");
-    text = text.replaceAll("<<p:", "<hyperlink>");
-    text = text.replaceAll("<<r:", "<hyperlink>");
-    text = text.replaceAll("<Event", "");
-    text = text.replaceAll("<<Cp:", "<hyperlink>");
-
-    text = text.replaceAll("<<o:", "<hyperlink>");
-    text = text.replaceAll(">>", "</hyperlink>");
-    return text;*/
 }
 
 function FindCombatEnchantment(combatID) {
@@ -5885,7 +5834,7 @@ function FindUnitsWithSecondaryPassive(trait) {
     for (i in jsonUnits) {
         let j = 0;
         for (j in jsonUnits[i].secondary_passives) {
-            if (jsonUnits[i].secondary_passives[j].slug === ability.slug) {
+            if (jsonUnits[i].secondary_passives[j].slug === ability.slug && !depCheckResID(jsonUnits[i].resid)) {
                 //  if (!isInArray(unitsList, jsonUnits[i])) {
 
                 unitsList.push(jsonUnits[i]);

@@ -48,7 +48,8 @@ const worldStructuresChecked = document.getElementById("worldStructuresCheck");
 const cityStructuresChecked = document.getElementById("cityStructuresCheck");
 const ambitionsChecked = document.getElementById("ambitionsCheck");
 
-var deprecatedCheckList = ["000003e300005fe2", "000003e300005fe5", "000003e300005fe7", "000003e300005fe6"];
+const deprecatedCheckList = ["000003e300005fe2", "000003e300005fe5", "000003e300005fe7", "000003e300005fe6"];
+const invalidUnitCheckList = ["fracture", "townsman"];
 
 function normalizeText(str) {
     return Sanitize(str || "").toUpperCase();
@@ -128,6 +129,10 @@ function searchData(keywords) {
 }
 
 function depCheckResID(resid) {
+    let unitEN = findBy(jsonUnits, "resid", resid);
+    if (invalidUnitCheckList.includes(unitEN.id)) {
+        return true;
+    }
     let unit = findBy(jsonUnitsLocalized, "resid", resid);
     if (unit != undefined) {
         for (let l = 0; l < unit.primary_passives.length; l++) {
@@ -143,15 +148,25 @@ function DLCCheck(fieldToSearch) {
     return fieldToSearch.toUpperCase() in dlcMap;
 }
 
-function DLCAdd(jsonLookup, DLC, type, toArray) {
+function DLCAdd(jsonLookup, DLC, type, toArray, depCheck = false) {
     const results = new Set();
     for (const unit of jsonLookup) {
         if ("DLC" in unit) {
             if (unit.DLC.indexOf(DLC) != -1) {
-                if (type == null) {
-                    results.add(unit);
+                if (depCheck == true) {
+                    if (!depCheckResID(unit.resid)) {
+                        if (type == null) {
+                            results.add(unit);
+                        } else {
+                            results.add(unit[type]);
+                        }
+                    }
                 } else {
-                    results.add(unit[type]);
+                    if (type == null) {
+                        results.add(unit);
+                    } else {
+                        results.add(unit[type]);
+                    }
                 }
             }
         }
@@ -171,7 +186,7 @@ function returnUnitList(fieldToSearch) {
     const results = new Set();
 
     if (DLCCheck(fieldToSearch)) {
-        return DLCAdd(jsonUnits, fieldToSearch, "id", false);
+        return DLCAdd(jsonUnits, fieldToSearch, "id", false, depCheck = true);
     }
 
     // --- Name-based search ---
@@ -341,14 +356,13 @@ function returnTraitsList(fieldToSearch, locToCheck) {
         const description = Sanitize(trait.description || "").toUpperCase();
 
         // check lookup
-          if ("extraLookup" in trait) {
+        if ("extraLookup" in trait) {
             const exists = locToCheck.some((e) => e.id === trait.extraLookup);
 
             if (exists) {
                 results.add(trait.id);
             }
         }
-      
 
         if (name.includes(search) || description.includes(search)) {
             // const traitEN = findBy(jsonFactionCreation, "id", trait.id);

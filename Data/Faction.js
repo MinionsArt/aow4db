@@ -89,46 +89,7 @@ function addOrSubtract(extraAffinity, add) {
 }
 
 const extraTomesForTheorycrafting = [
-    {
-        affinities:
-            "1 <empirechaos></empirechaos> Empire Chaos Affinity, 1 <empirematter></empirematter> Empire Materium Affinity",
-        lore_description: "",
-        gameplay_description: "For Theorycrafting..",
-
-        id: "tome_of_the_warband",
-        DLC: "RISEFROMRUIN ",
-
-        name: "Tome of the Warband",
-        tier: 1,
-        icon: "warband",
-        skills: []
-    },  {
-        affinities:
-             "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirenature></empirenature> Empire Nature Affinity",
-        lore_description: "",
-       gameplay_description: "For Theorycrafting..",
-
-        id: "tome_of_the_sand_stalkers",
-        DLC: "RISEFROMRUIN ",
-
-        name: "Tome of the Sand Stalkers",
-        tier: 2,
-        icon: "sand_stalkers",
-        skills: []
-    }, {
-        affinities:
-            "2 <empirechaos></empirechaos> Empire Chaos Affinity",
-        lore_description: "",
-       gameplay_description: "For Theorycrafting..",
-
-        id: "tome_of_the_warlord",
-        DLC: "RISEFROMRUIN ",
-
-        name: "Tome of the Warlord",
-        tier: 3,
-        icon: "warlord",
-        skills: []
-    }
+    
 ];
 
 function SetRandomStart(overwriteParameter) {
