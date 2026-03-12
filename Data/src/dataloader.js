@@ -313,8 +313,8 @@ async function CheckData() {
 
 
         //  languageSelect = document.getElementById("languageSelect");
-        //languageSelect.value = storedSettings.language;
-        languageSelect.value = "EN";
+        languageSelect.value = storedSettings.language;
+        //languageSelect.value = "EN";
         let hoverDiv = document.getElementById("hoverDiv");
         let hoverDiv2 = document.getElementById("hoverDiv2");
         if (checkboxTooltip.checked === true) {
@@ -329,10 +329,10 @@ async function CheckData() {
         /*  if (storedSettings.showBeta) {
              await GetAllData("BETA");
        } else {*/
-       // await GetAllData(storedSettings.language);
+        await GetAllData(storedSettings.language);
       //  }
 
-await GetAllData("EN");
+//await GetAllData("EN");
         AddExtraData();
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));

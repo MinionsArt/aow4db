@@ -198,6 +198,8 @@ function GetUnitTierAndName(id, subcultureCheck) {
             continue;
         }
         let unitLoc = jsonUnitsLocalized.find((entry) => entry.resid === unit.resid);
+        
+       
         // Prepare the unit's name
         let name = unitLoc.name;
 
@@ -205,6 +207,10 @@ function GetUnitTierAndName(id, subcultureCheck) {
         if (MountedSpecialList.includes(id) || CheckIfOptionalCavalry(id)) {
             name += " <mountSpecial></mountSpecial>";
         }
+        
+        /* if('DLC' in unit){
+              name += " <" + unit.DLC + "></" + unit.DLC + ">";
+        }*/
 
         // Add subculture tags if available
         if ("sub_culture_name" in unit) {
