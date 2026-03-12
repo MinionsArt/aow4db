@@ -1018,7 +1018,7 @@ function setSignatureSelection(chosenSkill, origin, slot, holder, treespace) {
 function GetSignatureSkillUnlocks(currentSig) {
     var unlockedSigs = [];
     for (let i = 0; i < jsonHeroSkills.length; i++) {
-        // hardcode some of these because theyre not hooked up properly
+      /*  // hardcode some of these because theyre not hooked up properly
         // mind devourer - ancient one not exported
         // ev ancient one not exported
         // mind devourer || roseblood noble || bloodsomething
@@ -1048,7 +1048,7 @@ function GetSignatureSkillUnlocks(currentSig) {
             if (jsonHeroSkills[i].resid == 4514010632504) {
                 unlockedSigs.push(jsonHeroSkills[i]);
             }
-        }
+        } */
         if ("required_skills" in jsonHeroSkills[i]) {
             for (let j = 0; j < jsonHeroSkills[i].required_skills.length; j++) {
                 if (
