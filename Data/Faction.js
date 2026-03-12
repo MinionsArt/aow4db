@@ -1121,8 +1121,9 @@ function GetCurrentChoiceList() {
 
 function GetAffinityTotalFromList(list, tomeList, subType, subCulture, subSociety1, subSociety2) {
     var input = "";
+    console.log(list);
     for (i = 0; i < list.length; i++) {
-        if (list[i] != "") {
+        if (list[i] != "" && list[i] != undefined) {
             if ("affinity" in list[i]) {
                 input += list[i].affinity + ",";
             }
