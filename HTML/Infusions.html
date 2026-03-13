@@ -8,17 +8,58 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Init.js"></script>
         <script>
+              let selectedTreeFilter = "all";
+            let selectedSubTreeFilter = "all";
             function HandlePage() {
-                CheckLengths(jsonItemForgeUpgrades);
+               // CheckLengths(jsonItemForgeUpgrades);
+                CreateAllInfusions();
 
                 $("#filterInput").on("change input", function () {
                     ShowAllDivsWithFilters("list_abilityslot", "flex");
                     SetLevelUpStuff();
                 });
+                
+                 document.querySelectorAll(".treeFilterButton").forEach((button) => {
+                    button.addEventListener("click", () => {
+                        // Remove active state from all buttons
+                        document.querySelectorAll(".treeFilterButton").forEach((btn) => btn.classList.remove("active"));
+                        button.classList.add("active");
+
+                        // Update selected filter and refresh view
+                        selectedTreeFilter = button.dataset.tree;
+                        CreateAllInfusions();
+                    });
+                });
+
+                document.querySelectorAll(".treeFilterButtonSub").forEach((button) => {
+                    button.addEventListener("click", () => {
+                        document
+                            .querySelectorAll(".treeFilterButtonSub")
+                            .forEach((btn) => btn.classList.remove("active"));
+                        button.classList.add("active");
+
+                        selectedSubTreeFilter = button.dataset.tree;
+                        CreateAllInfusions(); // refresh on subfilter change
+                    });
+                });
             }
+            
+             function CreateAllInfusions() {
+                 const holder =   document.getElementById("dataHolder");
+                holder.innerHTML = ""; // Clear existing
+
+                jsonItemForgeUpgrades.forEach((infusion) => {
+                    const div = showInfusionListEntrySmall(infusion,selectedTreeFilter, selectedSubTreeFilter);
+                    if(div != undefined){
+                         holder.appendChild(div);
+                    }
+                     
+               });
+             }
+                                              
 
           
-            async function CheckLengths(list) {
+          /*  async function CheckLengths(list) {
                 // let card = await spawnSpellCards(list);
                 const holder = document.getElementById("dataHolder");
                 for (let i = 0; i < list.length; i++) {
@@ -28,7 +69,7 @@
                     }
                    holder.appendChild(showInfusionListEntrySmall(list[i]));
                 }
-            }
+            }*/
             
             function sortDivsList(sortType) {
                 const currentbutton = document.getElementById(`${sortType}-button`);
@@ -83,6 +124,46 @@
             <div style="margin-right: auto; margin-left: auto; width: 500px">
                 <input type="text" class="searchbar" id="filterInput" />
             </div>
+        </div>
+        
+        <div id="treeFilterGroup" style="margin: 20px; display: flex; justify-content: center; align-items: start">
+            <button class="treeFilterButton active" data-tree="all">All</button>
+            <button class="treeFilterButton" data-tree="Champion">Champion</button>
+            <button class="treeFilterButton" data-tree="Wizard King">Wizard King</button>
+            <button class="treeFilterButton" data-tree="Dragon Lord">Dragon Lord</button>
+            <button class="treeFilterButton" data-tree="Eldritch Sovereign">Eldritch Sovereign</button>
+            <button class="treeFilterButton" data-tree="Giant King">Giant King</button>
+            <button class="treeFilterButton" data-tree="Vampire">Elder Vampire</button>
+            <div>Spacer</div>
+            <button class="treeFilterButton" data-tree="Warrior"><classWarrior></classWarrior>Warrior</button>
+            <button class="treeFilterButton" data-tree="Defender"><classDefender></classDefender>Defender</button>
+            <button class="treeFilterButton" data-tree="Mage"><classMage></classMage>Elementalist</button>
+            <button class="treeFilterButton" data-tree="Warlock"><classWarlock></classWarlock>Warlock</button>
+            <button class="treeFilterButton" data-tree="Ranger"><classRanger></classRanger>Ranger</button>
+            <button class="treeFilterButton" data-tree="Ritualist"><classRitualist></classRitualist>Ritualist</button>
+
+            <button class="treeFilterButton" data-tree="Spellblade">
+                <classSpellblade></classSpellblade>Spellblade
+            </button>
+            <button class="treeFilterButton" data-tree="Death Knight">
+                <classDeathKnight></classDeathKnight>Death Knight
+            </button>
+            <button class="treeFilterButton" data-tree="BattleSaint">
+                <classBattlesaint></classBattlesaint>Battlesaint
+            </button>
+            <div>Spacer</div>
+            <button class="treeFilterButton" data-tree="Signature">Signature</button>
+            <button class="treeFilterButton" data-tree="Affinity">Affinity</button>
+
+            <!-- Add more as needed -->
+        </div>
+
+        <div id="treeFilterGroupSub" style="margin: 20px; display: flex; justify-content: center; align-items: start">
+            <button class="treeFilterButtonSub active" data-tree="all">All</button>
+            <button class="treeFilterButtonSub" data-tree="Active">Active</button>
+            <button class="treeFilterButtonSub" data-tree="Passive">Passive</button>
+             <button class="treeFilterButtonSub" data-tree="Damage">Damage</button>
+            <!-- Add more as needed -->
         </div>
 
        <div class="w3-container" style="  justify-content: center;">
