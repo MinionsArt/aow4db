@@ -182,9 +182,8 @@ async function GetAllData(selectedLang) {
         "CosmicHappenings.json",
         "CityTree.json",
         "all_spawnsets_strategic.json",
-        "FreeCities.json",
-          "ItemForgeTypes.json",
-         "ItemForgeUpgrades.json"
+        "FreeCities.json"
+        
     ];
     const fileNames = [
         // ingame dump files
@@ -200,6 +199,8 @@ async function GetAllData(selectedLang) {
         "StructureUpgrades.json",
         "Destinies.json",
         "Governance.json",
+          "ItemForgeTypes.json",
+         "ItemForgeUpgrades.json",
         // non-ingame-dump-json-files
         "UI.json",
         "all.json"
@@ -234,9 +235,8 @@ async function GetAllData(selectedLang) {
             "jsonCosmicHappenings",
             "jsonCityTreeNodes",
             "jsonSpawnSetsStrat",
-            "jsonFreeCities",
-             "jsonItemForgeTypes",
-             "jsonItemForgeUpgrades"
+            "jsonFreeCities"
+            
         ];
         const targets = [
             "jsonHeroItems",
@@ -251,6 +251,8 @@ async function GetAllData(selectedLang) {
             "jsonStructureUpgrades",
             "jsonHeroAmbitions",
             "jsonHeroGovernance",
+             "jsonItemForgeTypes",
+             "jsonItemForgeUpgrades",
             "jsonUI",
             "jsonAllFromPO"
         ];
