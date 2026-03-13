@@ -1821,10 +1821,10 @@ function SetTomePreview(span, origin) {
                 } else {
                     slug = origin.skills[index].name.replaceAll(" ", "_").toLowerCase();
                 }
-  const siegeEN = findBy(jsonSiegeProjects, "id", slug);
+                const siegeEN = findBy(jsonSiegeProjects, "id", slug);
                 const siege = findBy(jsonSiegeProjectsLocalized, "resid", siegeEN.resid);
-      let iconLink = "";
-                if('icon' in siege){
+                let iconLink = "";
+                if ("icon" in siege) {
                     iconLink = siege.icon;
                 }
                 span.innerHTML +=
@@ -1837,8 +1837,8 @@ function SetTomePreview(span, origin) {
             // city structure
             else if (origin.skills[index].type.indexOf("Structure") != -1) {
                 const struc = GetStructure(locOrigin.skills[index].upgrade_slug);
-                      let iconLink = "";
-                if('icon' in struc){
+                let iconLink = "";
+                if ("icon" in struc) {
                     iconLink = struc.icon;
                 }
                 span.innerHTML +=
@@ -1850,13 +1850,12 @@ function SetTomePreview(span, origin) {
             }
             // province Improvement
             else if (origin.skills[index].type.indexOf("Province") != -1) {
-                
-                  const struc = GetStructure(locOrigin.skills[index].upgrade_slug);
-                    let iconLink = "";
-                if('icon' in struc){
+                const struc = GetStructure(locOrigin.skills[index].upgrade_slug);
+                let iconLink = "";
+                if ("icon" in struc) {
                     iconLink = struc.icon;
                 }
-              
+
                 span.innerHTML +=
                     '<bullet> <img width="20px" src="/aow4db/Icons/UpgradeIcons/' +
                     iconLink +
@@ -1877,12 +1876,12 @@ function SetTomePreview(span, origin) {
             // normal spell
             else {
                 // call young dragon failing? loc will fail here
-                 if (origin.skills[index].name == "Call young Dragon"){
-                     origin.skills[index].spell_slug = "call_young_dragon";
-                 }
-                console.log( origin.skills[index].name);
+                if (origin.skills[index].name == "Call young Dragon") {
+                    origin.skills[index].spell_slug = "call_young_dragon";
+                }
+                console.log(origin.skills[index].name);
                 const spellEN = findBy(jsonSpells, "id", origin.skills[index].spell_slug);
-                   const spell = findBy(jsonSpellsLocalized, "resid", spellEN.resid);
+                const spell = findBy(jsonSpellsLocalized, "resid", spellEN.resid);
                 let iconLink = "";
                 if ("icon" in spell) {
                     iconLink = spell.icon;
@@ -2284,12 +2283,14 @@ function CreateUnitIcon(listEntry, colorEntry) {
     allAbilities.innerHTML +=
         '<span style="font-size: 20px ;display:flex" ><img  src="/aow4db/Icons/Text/health.png" width="25 " height="25 ">' +
         listEntry.hp +
-        '<img src="/aow4db/Icons/Text/mp.png" width="25 " height="25 ">' +
-        listEntry.mp +
-        '<img src="/aow4db/Icons/Text/resistance.png" width="25 " height="25 ">' +
-        listEntry.resistance +
         '<img  src="/aow4db/Icons/Text/armor.png" width="25 " height="25 ">' +
         listEntry.armor +
+        '<img src="/aow4db/Icons/Text/resistance.png" width="25 " height="25 ">' +
+        listEntry.resistance +
+        '<img src="/aow4db/Icons/Text/mp.png" width="25 " height="25 ">' +
+        listEntry.mp +
+        '<img src="/aow4db/Icons/Text/combat_speed.png" width="25 " height="25 ">' +
+        listEntry.combat_speed +
         "</span><hr>";
     if ("secondary_passives" in listEntry) {
         for (let index = 0; index < listEntry.secondary_passives.length; index++) {
