@@ -5007,7 +5007,38 @@ const weapons = [
     "Obelisk"
 ];
 const armor = ["Shield", "Head", "Armor", "Legs", "Ring", "Wand", "Amulet"];
-function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTreeFilter) {
+
+const pantheonList = [
+    "umbral_staff_equipment_upgrade",
+    "umbral_greataxe_equipment_upgrade_(umbral_wake)",
+    "umbral_greataxe_equipment_upgrade_(umbral_immunity)",
+     "lashers_sword_equipment_upgrade","crowmasters_bow_equipment_upgrade",
+    "captains_shield_equipment_upgrade",
+    "earthshaker_hammer_equipment_upgrade",
+    "staff_of_necromancy_equipment_upgrade",
+    "cryomancers_staff_equipment_upgrade",
+    "druids_staff_equipment_upgrade",
+    "berserkers_greataxe_equipment_upgrade",
+    "tyrants_shield_equipment_upgrade",
+    "innate_spell_jammer_infusion_equipment_upgrade",
+    "inner_grace_infusion_equipment_upgrade",
+    "mirror_veil_infusion_equipment_upgrade",
+    "overcharge_cast_infusion_equipment_upgrade",
+    "greater_farsight_infusion_equipment_upgrade",
+    "pierce_shot_infusion_equipment_upgrade",
+    "pull_shot_infusion_euipment_upgrade",
+    "inspiring_presence_infusion_equipment_upgrade",
+    "wail_of_the_banshee_infusion_equipment_upgrade",
+    "summon_spirit_hawk_infusion_equipment_upgrade",
+    "defense_mode_nullify_infusion_equipment_upgrade",
+    "subdue_infusion_equipment_upgrade",
+    "equipment_upgrade_defense_mode_protective_wall",
+    "bless_infusion_equipment_upgrade",
+"fearless_infusion_equipment_upgrade"
+    
+    
+];
+function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTreeFilter, selectedMMTreeFilter) {
     const div = document.createElement("div");
     div.className = "list_abilityslot";
     div.setAttribute("style", "font-size:15px: color:white");
@@ -5052,12 +5083,30 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
 
     const requirements = document.createElement("div");
     requirements.setAttribute("style", "width:100px; color:white");
+    if (pantheonList.includes(infusion.id)) {
+        requirements.innerHTML += "<pantheon></pantheon>"; // + unlocks.token_name ;
+    }
     if ("unlock_requirements" in infusion) {
         for (const unlocks of infusion.unlock_requirements) {
             const nameClean = unlocks.token_name.toLowerCase().replaceAll(" ", "_");
             requirements.innerHTML += unlocks.num_required + " <" + nameClean + "></" + nameClean + ">"; // + unlocks.token_name ;
         }
+    } else if (infusion.name.indexOf("Rune of ") != -1) {
+        requirements.innerHTML += "GiantKing"; // + unlocks.token_name ;
+    } else if (!pantheonList.includes(infusion.id)) {
+        // always onlocked
+        requirements.innerHTML += "Always"; // + unlocks.token_name ;
     }
+
+    // console.log(requirements.innerHTML + selectedMMTreeFilter);
+    // Sub-type filter
+    if (
+        selectedMMTreeFilter !== "all" &&
+        requirements.innerHTML.toLowerCase().indexOf(selectedMMTreeFilter.toLowerCase().replaceAll(" ", "_")) == -1
+    ) {
+        return;
+    }
+
     // point cost
     const points = document.createElement("div");
     points.innerHTML = "";
@@ -5122,7 +5171,16 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
 
         rule.appendChild(weaponHolder);
     }
-    renderRule(infusion.tag_filter, rule);
+
+    const textBased = document.createElement("div");
+    renderRule(infusion.tag_filter, rule, textBased);
+    // console.log(textBased);
+    if (
+        selectedTreeFilter !== "all" &&
+        textBased.innerHTML.toLowerCase().indexOf(selectedTreeFilter.toLowerCase()) == -1
+    ) {
+        return;
+    }
 
     div.appendChild(icon);
     div.appendChild(type);
@@ -5131,15 +5189,16 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     div.appendChild(points);
     div.appendChild(requirements);
     div.appendChild(slot);
+    //div.appendChild(textBased);
     return div;
 }
 
-function renderRule(node, weaponHolder) {
+function renderRule(node, weaponHolder, textBased) {
     const parsed = parseCondition(node.condition);
 
     if (parsed.type === "all" || parsed.type === "any") {
         node.children.forEach((child) => {
-            renderRule(child, weaponHolder);
+            renderRule(child, weaponHolder, textBased);
         });
     }
 
@@ -5153,15 +5212,28 @@ function renderRule(node, weaponHolder) {
     if (name == "Instrument") {
         name = "Amulet";
     }
-    if (weapons.includes(name) || armor.includes(name)) {
-        const test = weaponHolder.querySelector("#" + name);
-        test.innerHTML = "✔";
+    for (const entry of weapons) {
+        if (name.indexOf(entry) != -1) {
+            const test = weaponHolder.querySelector("#" + entry);
+            test.innerHTML = "✔";
+        }
+    }
+    for (const entry of armor) {
+        if (name.indexOf(entry) != -1) {
+            const test = weaponHolder.querySelector("#" + entry);
+            test.innerHTML = "✔";
+        }
+    }
+    /* if (weapons.includes(name) || armor.includes(name)) {
+      
     } else {
         console.log("Couldnt find: " + name);
-    }
-    text.textContent = parsed.text.replaceAll("inherited ", "");
+    }*/
+    text.textContent = name;
+
     //text.setAttribute('style', "display:none");
-    weaponHolder.appendChild(text);
+    textBased.appendChild(text);
+
     //  rule.appendChild(icon);
     // rule.appendChild(text);
 
