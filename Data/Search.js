@@ -614,7 +614,9 @@ function searchAll(keyword) {
     });
 
     if (list.length > 0) {
-        SetButtonsAndDivs(list, "buttonHolder", "searchUnit", undefined, undefined, undefined);
+           SetCollapsibleButtonsAndDivs("Units", list, "unit");
+    SetButtonsAndDivs(list, "Units" + "-button","searchUnit", undefined, undefined, undefined);
+     //   SetButtonsAndDivs(list, "buttonHolder", "searchUnit", undefined, undefined, undefined);
     }
     if (listspells.length > 0) {
         SetCollapsibleButtonsAndDivs("Spells", listspells, "searchSpell");
@@ -646,6 +648,7 @@ function searchAll(keyword) {
     }
 
     SetLevelUpStuff();
+      SetCollapsibleStuff();
 }
 
 function returnAbilitiesUnits(fieldToSearch, unitSetToCheckTo) {
