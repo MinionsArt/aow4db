@@ -41,7 +41,7 @@
     "note": "Odnowienie: 1 <turn></turn>"
    }
   ],
-  "description": "Wybrana jednostka:<bulletlist><bullet>Otrzymuje obrażenia.</bullet><bullet>Ma podstawowe 90% szans na otrzymanie stanu zakłócenie na 2 <turn></turn>.</bullet><bullet>Ma podstawowe 90% szans na otrzymanie stanu wyssanie many na 1 <turn></turn>.</bullet>",
+  "description": "Wybrana jednostka:<bulletlist><bullet>Otrzymuje obrażenia.</bullet><bullet>Ma podstawowe 90% szans na otrzymanie stanu zakłócenie na 2 <turn></turn>.</bullet><bullet>Ma podstawowe 90% szans na otrzymanie stanu wyssanie many na 1 <turn></turn>.</bullet></bulletlist>",
   "name": "Wysysanie many",
   "slug": "mana_drain_ability_000004E00000006C",
   "damage": "30<damagephysical></damagephysical> ",
@@ -229,7 +229,7 @@
   "description": "<bulletlist><bullet>Zadaje obrażenia wszystkim jednostkom w zasięgu stożka o długości3 <range></range>.</bullet><bullet>Jednostki mające magiczne pochodzenie mają podstawowe 30% szans na natychmiastową śmierć.</bullet></bulletlist>",
   "name": "Oddech antymagiczny",
   "slug": "anti-magic_breath_ability_000004E000000059",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -338,11 +338,6 @@
  {
   "modifiers": [
    {
-    "description": "Ignoruje 50% <defense></defense> <hyperlink>obrony</hyperlink> celu.",
-    "name": "Przebijanie^n",
-    "count": 1
-   },
-   {
     "description": "Podstawowe 60% szans na usunięcie wszystkich <caststrategic></caststrategic> <hyperlink>zaklęciów jednostki</hyperlink> z celu na 2 <turn></turn>.",
     "name": "Zakłócenie^nn",
     "count": 1
@@ -351,7 +346,7 @@
   "description": "Uderza w wybraną jednostkę wroga.",
   "name": "Walka wręcz",
   "slug": "melee_strike_(base)_ability_000004E000000033",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Wręcz</hyperlink>"
@@ -369,6 +364,11 @@
  {
   "modifiers": [
    {
+    "description": "Ignoruje 50% <defense></defense> <hyperlink>obrony</hyperlink> celu.",
+    "name": "Przebijanie^n",
+    "count": 1
+   },
+   {
     "description": "Nakłada stan zakłócenie na 2 <turn></turn>.",
     "name": "Zakłócenie^nn",
     "count": 1
@@ -377,10 +377,13 @@
   "description": "Wybrana jednostka otrzymuje obrażenia. Przejdź w <hyperlink>tryb obronny</hyperlink>.",
   "name": "Zakłócające ukłucie",
   "slug": "disrupting_sting_ability_000004E000000033",
-  "damage": "40<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Wręcz</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -461,7 +464,7 @@
  {
   "modifiers": [
    {
-    "description": "Podstawowe 10% szans na <hyperlink>pożarcie</hyperlink> jednostki niebędącej bohaterem.",
+    "description": "Podstawowe 60% szans na <hyperlink>pożarcie</hyperlink> jednostki niebędącej bohaterem.",
     "name": "Połknięcie w całości^nn{1}x{2}x{3}",
     "count": 1
    }
@@ -488,7 +491,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Podstawowe 60% szans na nałożenie stanu unieruchomienie na 1 <turn></turn>.",
+    "name": "Unieruchomienie^nn",
+    "count": 1
+   }
+  ],
   "description": "Jednostki wroga w promieniu 2 <range></range> otrzymują obrażenia.<br></br><br></br>Zadaje podwójne uszkodzenia przeszkodom.",
   "name": "Drżenie ziemi",
   "slug": "earth_tremor_ability_000004E00000001E",
@@ -640,7 +649,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -1202,7 +1211,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -1253,7 +1262,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -1331,7 +1340,7 @@
  {
   "notes": [
    {
-    "note": "Odnowienie: 2 <turn></turn>"
+    "note": "Odnowienie: 1 <turn></turn>"
    }
   ],
   "description": "Usuń wybrany znacznik <hyperlink>łupu</hyperlink> i zapewnij sojuszniczej jednostce w zasięgu 4 <range></range>:<bulletlist><bullet>Zrabowana potęga.</bullet><bullet>15<hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet></bulletlist>",
@@ -1340,7 +1349,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Zawsze trafia",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001EAD"
  },
@@ -1357,7 +1366,7 @@
   "icon": "000003BD000020C1"
  },
  {
-  "description": "Regenerujący poryw wiatru:<<bulletlist><bullet>Leczy dodatkowe +10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Czas odnowienia skrócony o następującą liczbę <turn></turn> <hyperlink>Tur</hyperlink>: -1.</bullet></bulletlist>",
+  "description": "Regenerujący poryw wiatru:<bulletlist><bullet>Leczy dodatkowe +10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Czas odnowienia skrócony o następującą liczbę <turn></turn> <hyperlink>Tur</hyperlink>: -1.</bullet></bulletlist>",
   "name": "Czempioński regenerujący poryw wiatru",
   "slug": "0000048d00001f59",
   "icon": "000003E30000627B"
@@ -1421,7 +1430,7 @@
  {
   "notes": [
    {
-    "note": "Odnowienie: 2 <turn></turn>"
+    "note": "Odnowienie: 1 <turn></turn>"
    }
   ],
   "description": "Wybrana jednostka sojusznicza, która posiada punkty akcji, otrzymuje:<bulletlist><bullet>Wzmacniający pęd na 1 <turn></turn>.</bullet></bulletlist>",
@@ -1430,7 +1439,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Zawsze trafia",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001E1B"
  },
@@ -1503,7 +1512,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -1577,7 +1586,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -1630,7 +1639,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -1798,7 +1807,7 @@
   "damage": "20<damagephysical></damagephysical> 20<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -3252,17 +3261,12 @@
     "description": "Podstawowe 60% szans na nałożenie stanu podpalenie na 3 <turn></turn>.",
     "name": "Podpalenie^nn",
     "count": 1
-   },
-   {
-    "description": "Ignoruje 50% <resistance></resistance> <hyperlink>odporności</hyperlink> celu.",
-    "name": "Przełamanie^nn",
-    "count": 1
    }
   ],
   "description": "Uderza w wybraną jednostkę wroga.",
   "name": "Magiczne uderzenie",
   "slug": "magic_strike_(base)_ability_0000049700003753",
-  "damage": "13<damagefire></damagefire> ",
+  "damage": "15<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -3301,7 +3305,13 @@
   "icon": "000004970000375C"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignoruje 50% <resistance></resistance> <hyperlink>odporności</hyperlink> celu.",
+    "name": "Przełamanie^nn",
+    "count": 1
+   }
+  ],
   "description": "W zasięgu stożka o długości 2 <range></range>:<bulletlist><bullet>Jednostki otrzymują obrażenia.</bullet><bullet>Jednostki zyskują 2 razy stan podpalenie na 3 <turn></turn>.</bullet><bullet>Pola stają <hyperlink>w ogniu</hyperlink>.</bullet></bulletlist><br></br>Zadaje podwójne uszkodzenia przeszkodom.",
   "name": "Promień piekielny",
   "slug": "infernal_ray_ability_0000049700003753",
@@ -3459,17 +3469,11 @@
   "icon": "0000049700003886"
  },
  {
-  "modifiers": [
-   {
-    "description": "Ignoruje 50% <defense></defense> <hyperlink>obrony</hyperlink> celu.",
-    "name": "Przebijanie^n",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "Uderza w wybraną jednostkę wroga.",
   "name": "Walka wręcz",
   "slug": "melee_strike_(base)_ability_000004970000366E",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Wręcz</hyperlink>"
@@ -3485,14 +3489,23 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignoruje 50% <defense></defense> <hyperlink>obrony</hyperlink> celu.",
+    "name": "Przebijanie^n",
+    "count": 1
+   }
+  ],
   "description": "Wybrana jednostka wroga:<bulletlist><bullet>Otrzymuje obrażenia.</bullet><bullet>Zyskuje 3 razy osłabienie na 3 <turn></turn>.</bullet><bullet>Zyskuje 2 razy zatrucie na 3 <turn></turn>.</bullet></bulletlist><br></br>Przejdź w <hyperlink>tryb obronny</hyperlink>.",
   "name": "Osłabiające ukłucie",
   "slug": "debilitating_sting_ability_000004970000366E",
-  "damage": "20<damagephysical></damagephysical> 20<damageblight></damageblight> ",
+  "damage": "15<damagephysical></damagephysical> 15<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Wręcz</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -3568,7 +3581,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -3661,7 +3674,7 @@
   "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -3720,7 +3733,7 @@
   "damage": "41<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -3919,7 +3932,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -3974,7 +3987,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6602,7 +6615,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6635,7 +6648,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -6665,7 +6678,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6698,7 +6711,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -6728,7 +6741,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6761,7 +6774,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -6791,7 +6804,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6824,7 +6837,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -6854,7 +6867,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6887,7 +6900,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -6917,7 +6930,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -6950,7 +6963,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -7609,7 +7622,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -7643,7 +7656,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -8343,7 +8356,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -8389,7 +8402,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -8415,7 +8428,7 @@
   "damage": "6<damagephysical></damagephysical> 2<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -8515,7 +8528,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -8838,7 +8851,7 @@
   "damage": "14<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -8948,7 +8961,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -8999,7 +9012,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -9044,7 +9057,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -9083,7 +9096,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -9122,7 +9135,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -9161,7 +9174,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -9200,7 +9213,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10715,7 +10728,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10748,7 +10761,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10784,7 +10797,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10817,7 +10830,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10853,7 +10866,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10886,7 +10899,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10922,7 +10935,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10955,7 +10968,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -10991,7 +11004,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11024,7 +11037,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11060,7 +11073,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11093,7 +11106,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11129,7 +11142,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11162,7 +11175,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11643,7 +11656,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -11755,7 +11768,7 @@
   "description": "Zadaje obrażenia w promieniu 1 <range></range>.",
   "name": "Machnięcie",
   "slug": "swipe_ability_0000049000000027",
-  "damage": "26<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Wręcz</hyperlink>"
@@ -12308,7 +12321,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -12419,7 +12432,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -12457,7 +12470,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -12809,7 +12822,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -13108,7 +13121,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -13359,7 +13372,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -14056,7 +14069,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -14469,7 +14482,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -14510,7 +14523,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -14648,7 +14661,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -14742,7 +14755,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -14810,7 +14823,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -14843,7 +14856,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -14885,7 +14898,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -14915,7 +14928,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "50%",
@@ -15619,7 +15632,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -15655,7 +15668,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -15804,9 +15817,9 @@
  },
  {
   "notes": [],
-  "description": "Rzucający przesuwa się na wybrane pole. Traci 1 <hyperlink>punkt akcji</hyperlink>.",
-  "name": "Faza",
-  "slug": "phase_ability-_no_cooldown_0000041B00001492",
+  "description": "Rzucający przesuwa się na wybrane pole.",
+  "name": "Szybka faza",
+  "slug": "fast_phase_ability_0000041B00001492",
   "damage": "",
   "requisites": [
    {
@@ -15817,8 +15830,8 @@
    }
   ],
   "accuracy": "Zawsze trafia",
-  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
-  "range": "6",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
   "icon": "000003E3000045B1"
  },
  {
@@ -15962,7 +15975,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -16269,7 +16282,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -17019,7 +17032,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -17064,7 +17077,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -17094,7 +17107,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -17124,7 +17137,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -17168,6 +17181,39 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "Zadaje wybranej jednostce obrażenia.",
+  "name": "Pomniejszy wybuch",
+  "slug": "wyvern_burst_ability_000003EC00002919",
+  "damage": "15<damagefire></damagefire> 1<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magiczne</hyperlink>^p"
+   },
+   {
+    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   },
+   {
+    "note": "Odnowienie: 1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000029D1"
  },
  {
   "modifiers": [],
@@ -17483,7 +17529,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -17511,6 +17557,11 @@
     "description": "Nakłada zatrucie na następującą liczbę <turn></turn> tur: 3.",
     "name": "Zatrucie^nn",
     "count": 1
+   },
+   {
+    "description": "Ataki przywracają 5 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.",
+    "name": "Wykradanie życia",
+    "count": 1
    }
   ],
   "description": "Uderza w wybraną jednostkę wroga.",
@@ -17532,7 +17583,13 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ataki przywracają 10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.",
+    "name": "Wykradanie życia",
+    "count": 1
+   }
+  ],
   "description": "Atakuje następującą liczbę sąsiadujących jednostek: 3 i usuwa ich <hyperlink>tryb obronny</hyperlink> oraz <hyperlink>odwet</hyperlink>.<br></br>Przejdź w <hyperlink>tryb obronny</hyperlink> po użyciu.",
   "name": "Machnięcie ogonem",
   "slug": "tail_swipe_ability_000003EC00001E55",
@@ -17558,12 +17615,17 @@
     "description": "Nakłada 2 razy rozkład na 3 <turn></turn>.",
     "name": "Rozkład^mn",
     "count": 1
+   },
+   {
+    "description": "Ataki przywracają 10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.",
+    "name": "Wykradanie życia",
+    "count": 1
    }
   ],
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Gnijący oddech",
   "slug": "putrid_breath_dragon_ability_000003EC00001E55",
-  "damage": "20<damageblight></damageblight> ",
+  "damage": "30<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -17613,10 +17675,10 @@
     "count": 1
    }
   ],
-  "description": "Zadaje obrażenia w promieniu 2 <range></range>.",
+  "description": "Zadaje obrażenia jednostkom wroga w promieniu 2 <range></range>.",
   "name": "Przegrzanie",
   "slug": "overheat_ability_000003EC00001891",
-  "damage": "22<damagefire></damagefire> ",
+  "damage": "30<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -17628,9 +17690,6 @@
   "notes": [
    {
     "note": "Odnowienie: 2 <turn></turn>"
-   },
-   {
-    "note": "Zaczyna bez zregenerowanej umiejętności: 1<turn></turn>"
    }
   ],
   "icon": "000003E3000052B3"
@@ -17928,7 +17987,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -17979,7 +18038,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -18564,7 +18623,7 @@
   "damage": "41<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -19071,7 +19130,7 @@
   "damage": "9<damagephysical></damagephysical> 5<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -19105,7 +19164,7 @@
   "damage": "24<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -19166,7 +19225,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -19572,7 +19631,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w linii 5 <range></range>.",
   "name": "Oddech błyskawic",
   "slug": "lightning_breath_dragon_ability_000003E300006BEC",
-  "damage": "31<damagelightning></damagelightning> ",
+  "damage": "40<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -19658,7 +19717,7 @@
   "description": "W promieniu 3 <range></range>:<bulletlist><bullet>Wrogie jednostki otrzymują obrażenia.</bullet><bullet>Jednostki sojusznicze otrzymują 20 <hyperlink><hp></hp> tymczas. pkt. zdrowia</hyperlink>.</bullet><bullet>Jednostki sojusznicze mają usunięte nawet do 2 <hyperlink>negatywnych efektów stanu</hyperlink>.</bullet></bulletlist>",
   "name": "Oczyszczający oddech",
   "slug": "purifying_breath_dragon_ability_000003E300006BD8",
-  "damage": "22<damagespirit></damagespirit> ",
+  "damage": "30<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -19741,7 +19800,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -19768,7 +19827,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -20714,7 +20773,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -20916,7 +20975,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -21084,7 +21143,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -21543,7 +21602,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -22538,7 +22597,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -22591,7 +22650,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -22709,7 +22768,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -22748,7 +22807,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -22951,7 +23010,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -22981,7 +23040,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23050,7 +23109,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23184,7 +23243,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23347,7 +23406,7 @@
   "damage": "7<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23524,7 +23583,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23630,7 +23689,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23666,7 +23725,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23900,7 +23959,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23927,7 +23986,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -23954,7 +24013,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -24395,7 +24454,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Mroźny oddech",
   "slug": "frost_breath_dragon_ability_000003E300004E76",
-  "damage": "31<damagefrost></damagefrost> ",
+  "damage": "40<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -24650,7 +24709,7 @@
   "description": "Wrogie jednostki w promieniu 2 <range></range> otrzymują obrażenia i zyskują 2 razy osłabienie.",
   "name": "Wyczerpujące wycie",
   "slug": "enfeebling_howl_ability_000003E300004A35",
-  "damage": "18<damagefrost></damagefrost> ",
+  "damage": "30<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -24721,7 +24780,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24831,7 +24890,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24955,7 +25014,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25034,7 +25093,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25452,7 +25511,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -25779,7 +25838,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Ognisty oddech",
   "slug": "fire_breath_dragon_ability_000003BD00002904",
-  "damage": "31<damagefire></damagefire> ",
+  "damage": "40<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -25922,7 +25981,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -25952,7 +26011,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -28038,7 +28097,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -28068,7 +28127,7 @@
   "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -28101,7 +28160,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -28882,7 +28941,7 @@
   "damage": "25<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -29409,7 +29468,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -29564,7 +29623,7 @@
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
@@ -30854,7 +30913,7 @@
   "damage": "40<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -31266,7 +31325,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -31464,7 +31523,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -31664,7 +31723,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -31799,7 +31858,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -31849,7 +31908,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -32335,7 +32394,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -32860,7 +32919,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -32887,7 +32946,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -32925,7 +32984,7 @@
   "damage": "44<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -32982,7 +33041,7 @@
   "damage": "29<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -33082,7 +33141,7 @@
    }
   ],
   "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
-  "name": "Strzaskane pociski",
+  "name": "Stalowe pociski",
   "slug": "magic_hero_bolts_(physical)__ability_fractured_orb_item_tier_1",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
@@ -33185,7 +33244,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -33214,7 +33273,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -33741,7 +33800,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -33804,7 +33863,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -33849,7 +33908,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -33971,7 +34030,7 @@
   "damage": "19<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -34049,7 +34108,7 @@
   "damage": "14<damagephysical></damagephysical> 14<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -34332,7 +34391,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -34410,7 +34469,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -34566,7 +34625,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -34675,7 +34734,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -34880,7 +34939,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36233,7 +36292,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36260,7 +36319,7 @@
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36433,7 +36492,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36495,7 +36554,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36524,7 +36583,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36621,7 +36680,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36796,7 +36855,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36876,7 +36935,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -36996,7 +37055,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37044,7 +37103,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37091,7 +37150,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37147,7 +37206,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37195,7 +37254,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37243,7 +37302,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37361,7 +37420,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37406,7 +37465,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37521,7 +37580,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37550,7 +37609,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37679,7 +37738,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -37825,7 +37884,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38172,7 +38231,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38228,7 +38287,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38273,7 +38332,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38376,7 +38435,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38424,7 +38483,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38472,7 +38531,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38501,7 +38560,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38546,7 +38605,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -38849,7 +38908,7 @@
   "damage": "12<damagephysical></damagephysical> 2<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -39800,7 +39859,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40166,7 +40225,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40228,7 +40287,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40816,7 +40875,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40853,7 +40912,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40882,7 +40941,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40930,7 +40989,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -40978,7 +41037,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41026,7 +41085,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41074,7 +41133,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41119,7 +41178,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41164,7 +41223,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41209,7 +41268,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41254,7 +41313,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41299,7 +41358,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -41344,7 +41403,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -42534,7 +42593,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -43101,7 +43160,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44091,7 +44150,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44149,7 +44208,7 @@
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "Zawsze trafia",
@@ -44195,7 +44254,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44247,7 +44306,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44336,7 +44395,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44469,7 +44528,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Ognisty oddech",
   "slug": "wand_of_fire_breath_ability_wand_of_fire_breath_item_tier_3",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -44845,7 +44904,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44893,7 +44952,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44963,7 +45022,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -44999,7 +45058,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -45272,7 +45331,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -46130,7 +46189,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46167,7 +46226,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46194,7 +46253,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -47028,7 +47087,7 @@
   "icon": "0000048D00001E70"
  },
  {
-  "description": "<bulletlist><bullet>Ataki zadają +20% obrażeń.</bullet><bullet>Zdolności <hyperlink>wspierające</hyperlink> przywracają +20% <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+1 pkt. <defense></defense> <hyperlink>obrony</hyperlink>.</bullet><bullet>+1 pkt. <resistance></resistance> <hyperlink>odporności</hyperlink>.</bullet><bullet>Ataki zadają +30% obrażeń.</bullet><bullet>Zdolności <hyperlink>wspierające</hyperlink> przywracają +30% <hyperlink>tymczas. pkt. zdrowia</hyperlink>.</bullet></bulletlist>",
   "name": "Impet",
   "slug": "0000048d00001c55",
   "icon": "0000048D00001C5E"
@@ -47634,7 +47693,7 @@
   "icon": "000003E300004C79"
  },
  {
-  "description": "Ataki <hyperlink>dystansowe</hyperlink> mają +1 pkt. <hyperlink>fizycznych dystansowych</hyperlink>.",
+  "description": "Ataki <hyperlink>dystansowe</hyperlink> mają +1 pkt. <hyperlink>ostrzału</hyperlink>.",
   "name": "Przebudzenie: Poszukujące strzały",
   "slug": "000003e300004c72",
   "icon": "000003E300004C79"
@@ -48347,7 +48406,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -48374,7 +48433,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Fizyczne dystansowe^pa{1}pa{2}</hyperlink>"
+    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -48743,12 +48802,9 @@
   ],
   "description": "Wybrana jednostka wroga i dodatkowa jednostka w promieniu 3 <range></range> odnosi obrażenia.",
   "name": "Rozdzierająca klątwa",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_staff_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_staff_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>Osłabienie</hyperlink>"
    },
@@ -48946,7 +49002,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Gnijący oddech",
   "slug": "putrid_breath_item_forge_ability_equipment_upgrade_active_wand_putrid_breath",
-  "damage": "28<damageblight></damageblight> ",
+  "damage": "37<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -48973,7 +49029,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Mroźny oddech",
   "slug": "frost_breath_item_forge_ability_equipment_upgrade_active_wand_frost_breath",
-  "damage": "28<damagefrost></damagefrost> ",
+  "damage": "36<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -49000,7 +49056,7 @@
   "description": "Zadaje obrażenia wszystkim jednostkom w promieniu 3 <range></range>.",
   "name": "Ognisty oddech",
   "slug": "fire_breath_item_forge_ability_equipment_upgrade_active_wand_fire_breath",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magiczne</hyperlink>^p"
@@ -49173,12 +49229,9 @@
   ],
   "description": "Wybrana jednostka wroga i dodatkowa jednostka w promieniu 3 <range></range> odnosi obrażenia.",
   "name": "Rozdzierająca klątwa",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_wand_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_wand_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>Osłabienie</hyperlink>"
    },

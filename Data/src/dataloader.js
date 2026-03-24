@@ -348,7 +348,8 @@ async function CheckData() {
 
 const patchDates = [
     // date ranges of patches
-      { name: "Scorpion 1.1", from: new Date("2026-03-12"), to: new Date("2026-11-29") },
+     { name: "Scorpion 1.2", from: new Date("2026-03-24"), to: new Date("2026-11-29") },
+      { name: "Scorpion 1.1", from: new Date("2026-03-12"), to: new Date("2026-03-23") },
      { name: "Scorpion 1.0", from: new Date("2026-03-09"), to: new Date("2026-03-11") },
      { name: "Gargoyle 1.2.2", from: new Date("2025-12-09"), to: new Date("2026-03-08") },
       { name: "Gargoyle 1.2.1", from: new Date("2025-11-26"), to: new Date("2025-12-08") },

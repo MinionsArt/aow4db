@@ -41,7 +41,7 @@
     "note": "Cooldown: 1 <turn></turn>"
    }
   ],
-  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of becoming Disrupted for 2 <turn></turn> Turns.</bullet><bullet>Has a base 90% chance of becoming Mana Drained for 1 <turn></turn> Turn.</bullet>",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 90% chance of becoming Disrupted for 2 <turn></turn> Turns.</bullet><bullet>Has a base 90% chance of becoming Mana Drained for 1 <turn></turn> Turn.</bullet></bulletlist>",
   "name": "Mana Drain",
   "slug": "mana_drain_ability_000004E00000006C",
   "damage": "30<damagephysical></damagephysical> ",
@@ -226,10 +226,10 @@
     "count": 1
    }
   ],
-  "description": "<bulletlist><bullet>Deal damage to all units in a 3-hex cone.</bullet><bullet>Magic Origin units have a base 30% chance of dieing instantly.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>Deal damage to all units in a 3-hex cone.</bullet><bullet>Magic Origin units have a base 30% chance of dying instantly.</bullet></bulletlist>",
   "name": "Anti-Magic Breath",
   "slug": "anti-magic_breath_ability_000004E000000059",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -300,7 +300,7 @@
   "icon": "000003E100001678"
  },
  {
-  "description": "A large unit that:<bulletlist><bullet>Is 20% easier to hit with <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Is immune to most displacement effects.</bullet><bullet>Has Demolisher.</bullet></bulletlist>",
+  "description": "A large unit that:<bulletlist><bullet>Is 20% easier to hit with <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Is immune to most displacement effects.</bullet><bullet>Has Demolisher.</bullet></bulletlist>",
   "name": "Large Target",
   "slug": "000003450000052c",
   "icon": "000003450000049B"
@@ -338,11 +338,6 @@
  {
   "modifiers": [
    {
-    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
-    "name": "Piercing",
-    "count": 1
-   },
-   {
     "description": "Base 60% chance of draining all <caststrategic></caststrategic> <hyperlink>Unit Enchantments</hyperlink> from target for 2 <turn></turn> Turns.",
     "name": "Disrupted",
     "count": 1
@@ -351,7 +346,7 @@
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_000004E000000033",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -369,6 +364,11 @@
  {
   "modifiers": [
    {
+    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
+    "name": "Piercing",
+    "count": 1
+   },
+   {
     "description": "Inflict Disrupted for 2 <turn></turn> Turns.",
     "name": "Disrupted",
     "count": 1
@@ -377,10 +377,13 @@
   "description": "Target unit sustains damage. Enter <hyperlink>Defense Mode</hyperlink>.",
   "name": "Disrupting Sting",
   "slug": "disrupting_sting_ability_000004E000000033",
-  "damage": "40<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -435,7 +438,7 @@
   "icon": "0000045E00000665"
  },
  {
-  "description": "Unit has +3 <defense></defense> <hyperlink>Defense</hyperlink> against <hyperlink>Physical Ranged</hyperlink> attacks.",
+  "description": "Unit has +3 <defense></defense> <hyperlink>Defense</hyperlink> against <hyperlink>Missile</hyperlink> attacks.",
   "name": "Reinforced",
   "slug": "000003e3000071f0",
   "icon": "000003E3000071F2"
@@ -461,7 +464,7 @@
  {
   "modifiers": [
    {
-    "description": "Base 10% chance of <hyperlink>Swallowing</hyperlink> a non-hero unit.",
+    "description": "Base 60% chance of <hyperlink>Swallowing</hyperlink> a non-hero unit.",
     "name": "Swallow Whole",
     "count": 1
    }
@@ -488,7 +491,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Base 60% chance of inflicting Immobilized for 1 <turn></turn> Turn.",
+    "name": "Immobilized",
+    "count": 1
+   }
+  ],
   "description": "Enemy units in a 2-hex radius sustain damage.<br></br><br></br>Deals double damage to obstacles.",
   "name": "Earth Tremor",
   "slug": "earth_tremor_ability_000004E00000001E",
@@ -640,7 +649,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -658,7 +667,7 @@
   "icon": "0000039F000016E8"
  },
  {
-  "description": "+1<hyperlink><range></range>Range</hyperlink> on <hyperlink>Physical Ranged</hyperlink> attacks.",
+  "description": "+1<hyperlink><range></range>Range</hyperlink> on <hyperlink>Missile</hyperlink> attacks.",
   "name": "Champion Medal: Eagle Eye",
   "slug": "000003e300006289",
   "icon": "000003E30000627B"
@@ -1202,7 +1211,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -1253,7 +1262,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -1331,7 +1340,7 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 2 <turn></turn>"
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ],
   "description": "Remove the target <hyperlink>Loot</hyperlink> marker to grant a friendly unit within 4 hexes:<bulletlist><bullet>Looted Power</bullet><bullet>15 <hyperlink><temphp></temphp> Temporary Hit Point</hyperlink></bullet></bulletlist>",
@@ -1340,7 +1349,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Always Hits",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001EAD"
  },
@@ -1357,7 +1366,7 @@
   "icon": "000003BD000020C1"
  },
  {
-  "description": "Recovering Windpull:<<bulletlist><bullet>Heals an additional +10<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Cooldown reduced by -1<turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
+  "description": "Recovering Windpull:<bulletlist><bullet>Heals an additional +10<hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Cooldown reduced by -1<turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
   "name": "Champion Recovering Windpull",
   "slug": "0000048d00001f59",
   "icon": "000003E30000627B"
@@ -1421,7 +1430,7 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 2 <turn></turn>"
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ],
   "description": "Target friendly unit that has action points remaining gains:<bulletlist><bullet>Empowering Momentum for 1 <turn></turn> <hyperlink>Turn</hyperlink>.</bullet></bulletlist>",
@@ -1430,7 +1439,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Always Hits",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001E1B"
  },
@@ -1503,7 +1512,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -1577,7 +1586,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -1630,7 +1639,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -1798,7 +1807,7 @@
   "damage": "20<damagephysical></damagephysical> 20<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -2943,7 +2952,7 @@
   "icon": "000003E300005580"
  },
  {
-  "description": "Unit is very small, making it 20% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
+  "description": "Unit is very small, making it 20% harder to hit by <hyperlink>Missile</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Tiny",
   "slug": "000003e30000528e",
   "icon": "000003E30000528F"
@@ -3252,17 +3261,12 @@
     "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
     "count": 1
-   },
-   {
-    "description": "Ignore 50% of the target's <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-    "name": "Breaching",
-    "count": 1
    }
   ],
   "description": "Strikes target enemy unit.",
   "name": "Magic Strike",
   "slug": "magic_strike_(base)_ability_0000049700003753",
-  "damage": "13<damagefire></damagefire> ",
+  "damage": "15<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -3301,7 +3305,13 @@
   "icon": "000004970000375C"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignore 50% of the target's <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
+    "name": "Breaching",
+    "count": 1
+   }
+  ],
   "description": "In a 2-hex cone:<bulletlist><bullet>Units sustain damage.</bullet><bullet>Units gain 2 Burning for 3 <turn></turn> Turns.</bullet><bullet>Hexes are set <hyperlink>On Fire</hyperlink></bullet></bulletlist><br></br>Deals double damage to obstacles.",
   "name": "Infernal Ray",
   "slug": "infernal_ray_ability_0000049700003753",
@@ -3459,17 +3469,11 @@
   "icon": "0000049700003886"
  },
  {
-  "modifiers": [
-   {
-    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
-    "name": "Piercing",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "Strikes target enemy unit.",
   "name": "Melee Strike",
   "slug": "melee_strike_(base)_ability_000004970000366E",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -3485,14 +3489,23 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
+    "name": "Piercing",
+    "count": 1
+   }
+  ],
   "description": "Target enemy unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Gains 3 Weakened for 3 <turn></turn> Turns.</bullet><bullet>Gains 2 Poisoned for 3 <turn></turn> Turns.</bullet></bulletlist><br></br>Enter <hyperlink>Defense Mode</hyperlink>.",
   "name": "Debilitating Sting",
   "slug": "debilitating_sting_ability_000004970000366E",
-  "damage": "20<damagephysical></damagephysical> 20<damageblight></damageblight> ",
+  "damage": "15<damagephysical></damagephysical> 15<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -3568,7 +3581,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -3661,7 +3674,7 @@
   "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -3720,7 +3733,7 @@
   "damage": "41<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -3919,7 +3932,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -3974,7 +3987,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6602,7 +6615,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6635,7 +6648,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -6665,7 +6678,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6698,7 +6711,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -6728,7 +6741,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6761,7 +6774,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -6791,7 +6804,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6824,7 +6837,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -6854,7 +6867,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6887,7 +6900,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -6917,7 +6930,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -6950,7 +6963,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -7609,7 +7622,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -7643,7 +7656,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -8343,7 +8356,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -8389,7 +8402,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -8415,7 +8428,7 @@
   "damage": "6<damagephysical></damagephysical> 2<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -8515,7 +8528,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -8838,7 +8851,7 @@
   "damage": "14<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -8948,7 +8961,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -8999,7 +9012,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -9044,7 +9057,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -9083,7 +9096,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -9122,7 +9135,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -9161,7 +9174,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -9200,7 +9213,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10715,7 +10728,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10748,7 +10761,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10784,7 +10797,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10817,7 +10830,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10853,7 +10866,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10886,7 +10899,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10922,7 +10935,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10955,7 +10968,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -10991,7 +11004,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11024,7 +11037,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11060,7 +11073,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11093,7 +11106,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11129,7 +11142,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11162,7 +11175,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11643,7 +11656,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -11755,7 +11768,7 @@
   "description": "Deal damage in a 1-hex cone.",
   "name": "Swipe",
   "slug": "swipe_ability_0000049000000027",
-  "damage": "26<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Melee</hyperlink>"
@@ -12308,7 +12321,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -12419,7 +12432,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -12457,7 +12470,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -12480,7 +12493,7 @@
   "icon": "0000048D0000120C"
  },
  {
-  "description": "Base <hyperlink>Physical Ranged</hyperlink> attacks gain +1<hyperlink><range></range>Range</hyperlink>.",
+  "description": "Base <hyperlink>Missile</hyperlink> attacks gain +1<hyperlink><range></range>Range</hyperlink>.",
   "name": "Longbow",
   "slug": "0000048d00001211",
   "icon": "0000048D00001213"
@@ -12809,7 +12822,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -13108,7 +13121,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -13125,7 +13138,7 @@
   "icon": "000004970000242E"
  },
  {
-  "description": "Unit regains 1 <hyperlink>Action Point</hyperlink> when killing another unit with a <hyperlink>Magic</hyperlink>, <hyperlink>Melee</hyperlink>, or <hyperlink>Physical Ranged</hyperlink> attack.<br></br><br></br>Works once per <turn></turn> Turn.",
+  "description": "Unit regains 1 <hyperlink>Action Point</hyperlink> when killing another unit with a <hyperlink>Magic</hyperlink>, <hyperlink>Melee</hyperlink>, or <hyperlink>Missile</hyperlink> attack.<br></br><br></br>Works once per <turn></turn> Turn.",
   "name": "Killing Momentum",
   "slug": "000003e300004ef4",
   "icon": "000003E300004EF5"
@@ -13359,7 +13372,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -14056,7 +14069,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -14469,7 +14482,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -14510,7 +14523,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -14648,7 +14661,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -14742,7 +14755,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -14810,7 +14823,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -14843,7 +14856,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -14885,7 +14898,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -14915,7 +14928,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "50%",
@@ -15619,7 +15632,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -15655,7 +15668,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -15804,9 +15817,9 @@
  },
  {
   "notes": [],
-  "description": "Caster moves to target hex. Leaves 1 <hyperlink>Action Point</hyperlink>.",
-  "name": "Phase",
-  "slug": "phase_ability-_no_cooldown_0000041B00001492",
+  "description": "Caster moves to target hex.",
+  "name": "Fast Phase",
+  "slug": "fast_phase_ability_0000041B00001492",
   "damage": "",
   "requisites": [
    {
@@ -15817,8 +15830,8 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
-  "range": "6",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
   "icon": "000003E3000045B1"
  },
  {
@@ -15962,7 +15975,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -16197,13 +16210,13 @@
   "icon": "0000041B00001011"
  },
  {
-  "description": "This unit is 60% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
+  "description": "This unit is 60% harder to hit by <hyperlink>Missile</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Wind Barrier",
   "slug": "000003e3000045a3",
   "icon": "000003E3000045A4"
  },
  {
-  "description": "Adjacent friendly units are 30% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
+  "description": "Adjacent friendly units are 30% harder to hit by <hyperlink>Missile</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Wind Barrier Aura",
   "slug": "0000049700000021",
   "icon": "000004970000042E"
@@ -16269,7 +16282,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -17019,7 +17032,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -17064,7 +17077,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -17094,7 +17107,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -17124,7 +17137,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -17168,6 +17181,39 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "Deals damage to target unit.",
+  "name": "Lesser Burst",
+  "slug": "wyvern_burst_ability_000003EC00002919",
+  "damage": "15<damagefire></damagefire> 1<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affected by <hyperlink>Line of Sight</hyperlink> rules."
+   },
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000029D1"
  },
  {
   "modifiers": [],
@@ -17483,7 +17529,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -17511,6 +17557,11 @@
     "description": "Inflicts Poisoned for 3 <turn></turn> Turns.",
     "name": "Poisoned",
     "count": 1
+   },
+   {
+    "description": "Attacks heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
+    "count": 1
    }
   ],
   "description": "Strikes target enemy unit.",
@@ -17532,7 +17583,13 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Attacks heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
+    "count": 1
+   }
+  ],
   "description": "Attacks 3 adjacent units and removes their <hyperlink>Defense Mode</hyperlink> and <hyperlink>Retaliation Attack</hyperlink>.<br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
   "name": "Tail Swipe",
   "slug": "tail_swipe_ability_000003EC00001E55",
@@ -17558,12 +17615,17 @@
     "description": "Inflicts 2 stacks of Decaying for 3 <turn></turn>.",
     "name": "Decaying",
     "count": 1
+   },
+   {
+    "description": "Attacks heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
+    "count": 1
    }
   ],
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Putrid Breath",
   "slug": "putrid_breath_dragon_ability_000003EC00001E55",
-  "damage": "20<damageblight></damageblight> ",
+  "damage": "30<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -17613,10 +17675,10 @@
     "count": 1
    }
   ],
-  "description": "Deals damage in a 2-hex radius.",
+  "description": "Deals damage to enemy units in a 2-hex radius.",
   "name": "Overheat",
   "slug": "overheat_ability_000003EC00001891",
-  "damage": "22<damagefire></damagefire> ",
+  "damage": "30<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -17628,9 +17690,6 @@
   "notes": [
    {
     "note": "Cooldown: 2 <turn></turn>"
-   },
-   {
-    "note": "Starts on cooldown: 1<turn></turn>"
    }
   ],
   "icon": "000003E3000052B3"
@@ -17928,7 +17987,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -17979,7 +18038,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -18564,7 +18623,7 @@
   "damage": "41<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -19071,7 +19130,7 @@
   "damage": "9<damagephysical></damagephysical> 5<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -19105,7 +19164,7 @@
   "damage": "24<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -19166,7 +19225,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -19572,7 +19631,7 @@
   "description": "Deal damage to all units in a 5-hex line.",
   "name": "Lightning Breath",
   "slug": "lightning_breath_dragon_ability_000003E300006BEC",
-  "damage": "31<damagelightning></damagelightning> ",
+  "damage": "40<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -19658,7 +19717,7 @@
   "description": "In a 3-hex cone:<bulletlist><bullet>Enemy units sustain damage.</bullet><bullet>Friendly units heal 20 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Friendly units have up to 2 of their <hyperlink>Negative Status Effects</hyperlink> removed.</bullet></bulletlist>",
   "name": "Purifying Breath",
   "slug": "purifying_breath_dragon_ability_000003E300006BD8",
-  "damage": "22<damagespirit></damagespirit> ",
+  "damage": "30<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -19741,7 +19800,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -19768,7 +19827,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -20714,7 +20773,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -20916,7 +20975,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -21084,7 +21143,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -21543,7 +21602,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -22538,7 +22597,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -22591,7 +22650,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -22709,7 +22768,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -22748,7 +22807,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -22831,7 +22890,7 @@
   "icon": "0000049700000175"
  },
  {
-  "description": "Once per turn this unit gains:<bulletlist><bullet>Bolstered Defense when hit by a <hyperlink>Melee</hyperlink> or <hyperlink>Physical Ranged</hyperlink> attack.</bullet><bullet>Bolstered Resistance when hit by a <hyperlink>Magic</hyperlink> attack.</bullet></bulletlist>",
+  "description": "Once per turn this unit gains:<bulletlist><bullet>Bolstered Defense when hit by a <hyperlink>Melee</hyperlink> or <hyperlink>Missile</hyperlink> attack.</bullet><bullet>Bolstered Resistance when hit by a <hyperlink>Magic</hyperlink> attack.</bullet></bulletlist>",
   "name": "Bolstering",
   "slug": "000003e300006a3a",
   "icon": "000003E100001523"
@@ -22951,7 +23010,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -22981,7 +23040,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23050,7 +23109,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23184,7 +23243,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23347,7 +23406,7 @@
   "damage": "7<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23524,7 +23583,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23630,7 +23689,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23666,7 +23725,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23900,7 +23959,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23927,7 +23986,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -23954,7 +24013,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -24395,7 +24454,7 @@
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Frost Breath",
   "slug": "frost_breath_dragon_ability_000003E300004E76",
-  "damage": "31<damagefrost></damagefrost> ",
+  "damage": "40<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -24650,7 +24709,7 @@
   "description": "Enemy units in a 2-hex cone sustain damage and gain 2 stacks of Weakened.",
   "name": "Enfeebling Howl",
   "slug": "enfeebling_howl_ability_000003E300004A35",
-  "damage": "18<damagefrost></damagefrost> ",
+  "damage": "30<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -24721,7 +24780,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24831,7 +24890,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24955,7 +25014,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25034,7 +25093,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25452,7 +25511,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -25779,7 +25838,7 @@
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Fire Breath",
   "slug": "fire_breath_dragon_ability_000003BD00002904",
-  "damage": "31<damagefire></damagefire> ",
+  "damage": "40<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -25922,7 +25981,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -25952,7 +26011,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -28038,7 +28097,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -28068,7 +28127,7 @@
   "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -28101,7 +28160,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -28635,7 +28694,7 @@
   "icon": "000004BB00000018"
  },
  {
-  "description": "Once per turn, this unit gains Evasion when hit by a <hyperlink>Magic</hyperlink> or <hyperlink>Physical Ranged</hyperlink> attack.",
+  "description": "Once per turn, this unit gains Evasion when hit by a <hyperlink>Magic</hyperlink> or <hyperlink>Missile</hyperlink> attack.",
   "name": "Bolstering Evasion",
   "slug": "000004a600000a3a",
   "icon": "000004A600000A55"
@@ -28882,7 +28941,7 @@
   "damage": "25<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -29201,7 +29260,7 @@
   "icon": "000003E300004F67"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks have a base 90% of inflicting Weakened.</bullet><bullet><hyperlink>Melee</hyperlink> attacks against Weakened units:<bulletlist></bullet><bullet>Deal +20% damage.</bullet><bullet>Heal the attacker for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>, once per turn.</bullet></bulletlist></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "<bulletlist><bullet><hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks have a base 90% of inflicting Weakened.</bullet><bullet><hyperlink>Melee</hyperlink> attacks against Weakened units:<bulletlist></bullet><bullet>Deal +20% damage.</bullet><bullet>Heal the attacker for 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>, once per turn.</bullet></bulletlist></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "name": "Cull the Weak",
   "slug": "0000049700000f4f",
   "icon": "000003E3000055A5"
@@ -29409,7 +29468,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -29564,7 +29623,7 @@
     "requisite": "<hyperlink>Magic</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Single Shot</hyperlink>"
@@ -30391,7 +30450,7 @@
   "icon": "0000049700000D3F"
  },
  {
-  "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet><hyperlink>Magic</hyperlink> and <hyperlink>Physical Ranged</hyperlink> attacks gain +1 <hyperlink><range></range>Range</hyperlink>.</bullet></bulletlist>",
+  "description": "While army leader, all non-hero units in the army gain:<bulletlist><bullet><hyperlink>Magic</hyperlink> and <hyperlink>Missile</hyperlink> attacks gain +1 <hyperlink><range></range>Range</hyperlink>.</bullet></bulletlist>",
   "name": "Paragon of Astral",
   "slug": "0000048d00000abf",
   "icon": "0000048D00000ABC"
@@ -30537,7 +30596,7 @@
   "icon": "0000049700002F1B"
  },
  {
-  "description": "Recover 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> when killing a unit with a <hyperlink>Magic</hyperlink>, <hyperlink>Melee</hyperlink>, or <hyperlink>Physical Ranged</hyperlink> attack.",
+  "description": "Recover 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink> when killing a unit with a <hyperlink>Magic</hyperlink>, <hyperlink>Melee</hyperlink>, or <hyperlink>Missile</hyperlink> attack.",
   "name": "Blood Recovery",
   "slug": "0000049700002f26",
   "icon": "0000049700002F28"
@@ -30854,7 +30913,7 @@
   "damage": "40<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -31266,7 +31325,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -31464,7 +31523,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -31664,7 +31723,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -31799,7 +31858,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -31849,7 +31908,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -32335,7 +32394,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -32860,7 +32919,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -32887,7 +32946,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -32925,7 +32984,7 @@
   "damage": "44<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -32982,7 +33041,7 @@
   "damage": "29<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -33082,7 +33141,7 @@
    }
   ],
   "description": "Unleashes a magical bolt at target enemy.",
-  "name": "Fractured Bolts",
+  "name": "Steel Bolts",
   "slug": "magic_hero_bolts_(physical)__ability_fractured_orb_item_tier_1",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
@@ -33185,7 +33244,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -33214,7 +33273,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -33741,7 +33800,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -33804,7 +33863,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -33849,7 +33908,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -33971,7 +34030,7 @@
   "damage": "19<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -34049,7 +34108,7 @@
   "damage": "14<damagephysical></damagephysical> 14<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -34332,7 +34391,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -34410,7 +34469,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -34566,7 +34625,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -34675,7 +34734,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -34880,7 +34939,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36233,7 +36292,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36260,7 +36319,7 @@
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36433,7 +36492,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36495,7 +36554,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36524,7 +36583,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36621,7 +36680,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36796,7 +36855,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36876,7 +36935,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -36996,7 +37055,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37044,7 +37103,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37091,7 +37150,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37147,7 +37206,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37195,7 +37254,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37243,7 +37302,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37361,7 +37420,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37406,7 +37465,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37521,7 +37580,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37550,7 +37609,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37679,7 +37738,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -37825,7 +37884,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38172,7 +38231,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38228,7 +38287,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38273,7 +38332,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38376,7 +38435,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38424,7 +38483,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38472,7 +38531,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38501,7 +38560,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38546,7 +38605,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -38849,7 +38908,7 @@
   "damage": "12<damagephysical></damagephysical> 2<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -39800,7 +39859,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40166,7 +40225,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40228,7 +40287,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40816,7 +40875,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40853,7 +40912,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40882,7 +40941,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40930,7 +40989,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -40978,7 +41037,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41026,7 +41085,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41074,7 +41133,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41119,7 +41178,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41164,7 +41223,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41209,7 +41268,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41254,7 +41313,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41299,7 +41358,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -41344,7 +41403,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -42534,7 +42593,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -43101,7 +43160,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -43900,7 +43959,7 @@
   "icon": "000003E300004779"
  },
  {
-  "description": "Grants +3 <defense></defense> <hyperlink>Defense</hyperlink> and +3 <resistance></resistance> <hyperlink>Resistance</hyperlink> against <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
+  "description": "Grants +3 <defense></defense> <hyperlink>Defense</hyperlink> and +3 <resistance></resistance> <hyperlink>Resistance</hyperlink> against <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks.",
   "name": "Ring of Deflection",
   "slug": "0000041b0000190d",
   "icon": "0000041B00001436"
@@ -44091,7 +44150,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44149,7 +44208,7 @@
     "requisite": "<hyperlink>Base</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Always Hits",
@@ -44195,7 +44254,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44247,7 +44306,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44289,7 +44348,7 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "This unit is 40% harder to hit with <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
+  "description": "This unit is 40% harder to hit with <hyperlink>Missile</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Obscured",
   "slug": "00000387000014fa",
   "icon": "00000387000014FB"
@@ -44336,7 +44395,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44469,7 +44528,7 @@
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Fire Breath",
   "slug": "wand_of_fire_breath_ability_wand_of_fire_breath_item_tier_3",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -44845,7 +44904,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44893,7 +44952,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44963,7 +45022,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -44999,7 +45058,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -45272,7 +45331,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -46130,7 +46189,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46167,7 +46226,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46194,7 +46253,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46285,7 +46344,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "Unit cannot use <hyperlink>Melee</hyperlink>, <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> abilities.",
+  "description": "Unit cannot use <hyperlink>Melee</hyperlink>, <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> abilities.",
   "name": "Pacified",
   "slug": "000004970000109b",
   "icon": "000004970000109D"
@@ -46519,7 +46578,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "<bulletlist><bullet>-50% <hyperlink><accuracy></accuracy> Accuracy</hyperlink> on <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Cannot perform <hyperlink>Retaliation Attack</hyperlink> attacks.</bullet></bulletlist><br></br><br></br>Blind <hyperlink>counters</hyperlink> True Strike.",
+  "description": "<bulletlist><bullet>-50% <hyperlink><accuracy></accuracy> Accuracy</hyperlink> on <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet><bullet>Cannot perform <hyperlink>Retaliation Attack</hyperlink> attacks.</bullet></bulletlist><br></br><br></br>Blind <hyperlink>counters</hyperlink> True Strike.",
   "name": "Blind",
   "slug": "000003e3000049ef",
   "icon": "000003E3000049ED"
@@ -46603,7 +46662,7 @@
   "icon": "0000049700000F1B"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks targeting this unit suffer -10% <hyperlink><accuracy></accuracy> Accuracy</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Evasion <hyperlink>counters</hyperlink> Marked.",
+  "description": "<bulletlist><bullet><hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks targeting this unit suffer -10% <hyperlink><accuracy></accuracy> Accuracy</hyperlink>.</bullet><bullet>Stacks up to 5 times.</bullet></bulletlist><br></br><br></br>Evasion <hyperlink>counters</hyperlink> Marked.",
   "name": "Evasion",
   "slug": "0000041b00000536",
   "icon": "0000041B00000538"
@@ -46890,7 +46949,7 @@
   "icon": "0000049700000A7F"
  },
  {
-  "description": "This unit has visited a Scrying Sanctum and temporarily gained:<bulletlist><bullet>Farsight</bullet><bullet>+1<range></range> on <hyperlink>Physical Ranged</hyperlink> and <hyperlink>Magic</hyperlink> attacks in <hyperlink>Combat</hyperlink></bullet></bulletlist>",
+  "description": "This unit has visited a Scrying Sanctum and temporarily gained:<bulletlist><bullet>Farsight</bullet><bullet>+1<range></range> on <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks in <hyperlink>Combat</hyperlink></bullet></bulletlist>",
   "name": "Scrying Sanctum",
   "slug": "00000493000004ac",
   "icon": "00000493000004AD"
@@ -46950,7 +47009,7 @@
   "icon": "0000049700000146"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>Melee</hyperlink>, <hyperlink>Physical Ranged</hyperlink>, and <hyperlink>Magic</hyperlink> attacks targeting this unit suffer -15% <hyperlink><accuracy></accuracy> Accuracy</hyperlink>.</bullet><bullet>Can stack up to 3 times.</bullet></bulletlist><br></br><br></br>Clinging Mist <hyperlink>counters</hyperlink> Marked",
+  "description": "<bulletlist><bullet><hyperlink>Melee</hyperlink>, <hyperlink>Missile</hyperlink>, and <hyperlink>Magic</hyperlink> attacks targeting this unit suffer -15% <hyperlink><accuracy></accuracy> Accuracy</hyperlink>.</bullet><bullet>Can stack up to 3 times.</bullet></bulletlist><br></br><br></br>Clinging Mist <hyperlink>counters</hyperlink> Marked",
   "name": "Clinging Mist",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
@@ -47028,7 +47087,7 @@
   "icon": "0000048D00001E70"
  },
  {
-  "description": "<bulletlist><bullet>Attacks inflict +20% damage.</bullet><bullet><hyperlink>Support</hyperlink> abilities heal +20% <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink>.</bullet><bullet>+1 <resistance></resistance> <hyperlink>Resistance</hyperlink>.</bullet><bullet>Attacks inflict +30% damage.</bullet><bullet><hyperlink>Support</hyperlink> abilities heal +30% <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet></bulletlist>",
   "name": "Momentum",
   "slug": "0000048d00001c55",
   "icon": "0000048D00001C5E"
@@ -47256,7 +47315,7 @@
   "icon": "0000048B00000549"
  },
  {
-  "description": "<hyperlink>Physical Ranged</hyperlink> attacks do +20% more damage.",
+  "description": "<hyperlink>Missile</hyperlink> attacks do +20% more damage.",
   "name": "Prepared Shot",
   "slug": "0000048b0000053e",
   "icon": "0000048B0000053F"
@@ -47634,7 +47693,7 @@
   "icon": "000003E300004C79"
  },
  {
-  "description": "<hyperlink>Physical Ranged</hyperlink> attacks have +1<hyperlink><range></range>Range</hyperlink>.",
+  "description": "<hyperlink>Missile</hyperlink> attacks have +1<hyperlink><range></range>Range</hyperlink>.",
   "name": "Awakened: Seeking Arrows",
   "slug": "000003e300004c72",
   "icon": "000003E300004C79"
@@ -48347,7 +48406,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -48374,7 +48433,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physical Ranged</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>"
@@ -48743,12 +48802,9 @@
   ],
   "description": "Target enemy unit and another within 3 hexes sustain damage.",
   "name": "Sundering Curse",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_staff_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_staff_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Base</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>Debuff</hyperlink>"
    },
@@ -48946,7 +49002,7 @@
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Putrid Breath",
   "slug": "putrid_breath_item_forge_ability_equipment_upgrade_active_wand_putrid_breath",
-  "damage": "28<damageblight></damageblight> ",
+  "damage": "37<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -48973,7 +49029,7 @@
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Frost Breath",
   "slug": "frost_breath_item_forge_ability_equipment_upgrade_active_wand_frost_breath",
-  "damage": "28<damagefrost></damagefrost> ",
+  "damage": "36<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -49000,7 +49056,7 @@
   "description": "Deal damage to all units in a 3-hex cone.",
   "name": "Fire Breath",
   "slug": "fire_breath_item_forge_ability_equipment_upgrade_active_wand_fire_breath",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magic</hyperlink>"
@@ -49173,12 +49229,9 @@
   ],
   "description": "Target enemy unit and another within 3 hexes sustain damage.",
   "name": "Sundering Curse",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_wand_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_wand_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Base</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>Debuff</hyperlink>"
    },
@@ -49593,7 +49646,7 @@
   "icon": "0000045E00000D47"
  },
  {
-  "description": "Once per turn this unit gains Bolstered Defense when hit by a <hyperlink>Melee</hyperlink> or <hyperlink>Physical Ranged</hyperlink> attack.",
+  "description": "Once per turn this unit gains Bolstered Defense when hit by a <hyperlink>Melee</hyperlink> or <hyperlink>Missile</hyperlink> attack.",
   "name": "Bolstering Defense",
   "slug": "0000045e00000d43",
   "icon": "0000045E00000D46"
@@ -50052,7 +50105,7 @@
   "icon": "0000045E00000D6F"
  },
  {
-  "description": "This unit is 30% harder to hit by <hyperlink>Physical Ranged</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
+  "description": "This unit is 30% harder to hit by <hyperlink>Missile</hyperlink> and ranged <hyperlink>Magic</hyperlink> attacks.",
   "name": "Wind Shield",
   "slug": "0000045e00000c0c",
   "icon": "0000045E00000C0D"

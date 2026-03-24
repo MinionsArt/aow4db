@@ -1077,7 +1077,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
             } else {
                 if (
                     abilityEn.requisites[l].requisite.indexOf("Melee") != -1 ||
-                    abilityEn.requisites[l].requisite.indexOf("Physical") != -1
+                    abilityEn.requisites[l].requisite.indexOf("Missile") != -1
                 ) {
                     Melee = abilityLoc.requisites[l].requisite;
                 }

@@ -41,7 +41,7 @@
     "note": "クールタイム：1 <turn></turn>"
    }
   ],
-  "description": "対象ユニットは以下の効果を受ける。<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の確率で2<turn></turn>ターンの間妨害したになる。</bullet><bullet>90%の確率で1<turn></turn>ターンの間マナドレインドになる。</bullet>",
+  "description": "対象ユニットは以下の効果を受ける。<bulletlist><bullet>ダメージを受ける。</bullet><bullet>90%の確率で2<turn></turn>ターンの間妨害したになる。</bullet><bullet>90%の確率で1<turn></turn>ターンの間マナドレインドになる。</bullet></bulletlist>",
   "name": "マナドレイン",
   "slug": "mana_drain_ability_000004E00000006C",
   "damage": "30<damagephysical></damagephysical> ",
@@ -229,7 +229,7 @@
   "description": "<bulletlist><bullet>3マスの円錐型範囲内の全ユニットにダメージを与える。</bullet><bullet>マジック・オリジンユニットは30%の基本確率で即死する。</bullet></bulletlist>",
   "name": "反魔のブレス",
   "slug": "anti-magic_breath_ability_000004E000000059",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -282,7 +282,7 @@
   "icon": "000003FE000008C5"
  },
  {
-  "description": "大型のユニット：<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の命中率が20%上昇する。</bullet><bullet>を持つ。ほとんどの転置効果に耐性を持つ。</bullet><bullet>デモリッシャーがある。</bullet></bulletlist>",
+  "description": "大型のユニット：<bulletlist><bullet><hyperlink>飛び道具</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の命中率が20%上昇する。</bullet><bullet>を持つ。ほとんどの転置効果に耐性を持つ。</bullet><bullet>デモリッシャーがある。</bullet></bulletlist>",
   "name": "大型ターゲット",
   "slug": "000003450000052c",
   "icon": "000003450000049B"
@@ -338,11 +338,6 @@
  {
   "modifiers": [
    {
-    "description": "標的の<defense></defense><hyperlink>防御力</hyperlink>の50%を無視する。",
-    "name": "貫通攻撃",
-    "count": 1
-   },
-   {
     "description": "60%の基本確率で2 <turn></turn>ターンの間、標的からすべての<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>を枯渇させる。",
     "name": "妨害した",
     "count": 1
@@ -351,7 +346,7 @@
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_000004E000000033",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近接攻撃</hyperlink>"
@@ -369,6 +364,11 @@
  {
   "modifiers": [
    {
+    "description": "標的の<defense></defense><hyperlink>防御力</hyperlink>の50%を無視する。",
+    "name": "貫通攻撃",
+    "count": 1
+   },
+   {
     "description": "2 <turn></turn>ターンの間妨害したを与える。",
     "name": "妨害した",
     "count": 1
@@ -377,10 +377,13 @@
   "description": "対象のユニットはダメージを受ける。 <hyperlink>防御モード</hyperlink>になる。",
   "name": "ディスラプト・スティング",
   "slug": "disrupting_sting_ability_000004E000000033",
-  "damage": "40<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近接攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -447,7 +450,7 @@
   "icon": "000003FE00000019"
  },
  {
-  "description": "ユニットが<hyperlink>物理遠隔攻撃</hyperlink>攻撃に対して+3 <defense></defense><hyperlink>防御力</hyperlink>を得る。",
+  "description": "ユニットが<hyperlink>飛び道具</hyperlink>攻撃に対して+3 <defense></defense><hyperlink>防御力</hyperlink>を得る。",
   "name": "強化済み",
   "slug": "000003e3000071f0",
   "icon": "000003E3000071F2"
@@ -461,7 +464,7 @@
  {
   "modifiers": [
    {
-    "description": "10%の基本確率で非ヒーローユニットを<hyperlink>呑み込む</hyperlink>。",
+    "description": "60%の基本確率で非ヒーローユニットを<hyperlink>呑み込む</hyperlink>。",
     "name": "丸飲み",
     "count": 1
    }
@@ -488,7 +491,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "1 <turn></turn>ターンの間、60%の確率で移動不能効果を与える。",
+    "name": "移動不能",
+    "count": 1
+   }
+  ],
   "description": "2マス範囲内にいる敵ユニットがダメージを受ける。<br></br><br></br>障害物には二倍のダメージ。",
   "name": "地震",
   "slug": "earth_tremor_ability_000004E00000001E",
@@ -640,7 +649,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -658,7 +667,7 @@
   "icon": "0000039F000016E8"
  },
  {
-  "description": "<hyperlink>物理遠隔攻撃</hyperlink>攻撃で<hyperlink><range></range>範囲</hyperlink>が+1になる。",
+  "description": "<hyperlink>飛び道具</hyperlink>攻撃で<hyperlink><range></range>範囲</hyperlink>が+1になる。",
   "name": "チャンピオン勲章：鷹の目",
   "slug": "000003e300006289",
   "icon": "000003E30000627B"
@@ -1202,7 +1211,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -1253,7 +1262,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -1331,7 +1340,7 @@
  {
   "notes": [
    {
-    "note": "クールタイム：2 <turn></turn>"
+    "note": "クールタイム：1 <turn></turn>"
    }
   ],
   "description": "対象の<hyperlink>略奪品</hyperlink>マーカーを取り除き、4 マス範囲内にいる味方ユニットに以下を付与する：<bulletlist><bullet>盗んだ力</bullet><bullet>15 <hyperlink><temphp></temphp>追加HP</hyperlink></bullet></bulletlist>",
@@ -1340,7 +1349,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "常にヒット",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001EAD"
  },
@@ -1357,7 +1366,7 @@
   "icon": "000003BD000020C1"
  },
  {
-  "description": "回復の風引：<<bulletlist><bullet>追加で+10<hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet><turn></turn><hyperlink>ターン</hyperlink>ごとにクールダウンが-1減少する。</bullet></bulletlist>",
+  "description": "回復の風引：<bulletlist><bullet>追加で+10<hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。</bullet><bullet>ごとにクールダウンが-1<turn></turn><hyperlink>ターン</hyperlink>減少する。</bullet></bulletlist>",
   "name": "回復の風引・チャンピオン",
   "slug": "0000048d00001f59",
   "icon": "000003E30000627B"
@@ -1421,7 +1430,7 @@
  {
   "notes": [
    {
-    "note": "クールタイム：2 <turn></turn>"
+    "note": "クールタイム：1 <turn></turn>"
    }
   ],
   "description": "アクションポイントが残っている味方ユニットとマス内にいる別のユニットは以下を得る：<bulletlist><bullet>1<turn></turn><hyperlink>ターン</hyperlink>の力づけの機運。</bullet></bulletlist>",
@@ -1430,7 +1439,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "常にヒット",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001E1B"
  },
@@ -1503,7 +1512,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -1577,7 +1586,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -1630,7 +1639,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -1798,7 +1807,7 @@
   "damage": "20<damagephysical></damagephysical> 20<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -2931,7 +2940,7 @@
   "icon": "000003BD000020E7"
  },
  {
-  "description": "非常に小型なため、<hyperlink>物理遠隔攻撃</hyperlink>と遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が20%低下する。",
+  "description": "非常に小型なため、<hyperlink>飛び道具</hyperlink>と遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が20%低下する。",
   "name": "小さな",
   "slug": "000003e30000528e",
   "icon": "000003E30000528F"
@@ -3252,17 +3261,12 @@
     "description": "3 <turn></turn>ターンの間、60%の確率で火傷効果を与える。",
     "name": "火傷",
     "count": 1
-   },
-   {
-    "description": "標的の<resistance></resistance><hyperlink>耐性</hyperlink>の50%を無視する。",
-    "name": "打開",
-    "count": 1
    }
   ],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "魔法攻撃",
   "slug": "magic_strike_(base)_ability_0000049700003753",
-  "damage": "13<damagefire></damagefire> ",
+  "damage": "15<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -3301,7 +3305,13 @@
   "icon": "000004970000375C"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "標的の<resistance></resistance><hyperlink>耐性</hyperlink>の50%を無視する。",
+    "name": "打開",
+    "count": 1
+   }
+  ],
   "description": "2マスの円錐型範囲内にいると以下の通りになる:<bulletlist><bullet>ユニットがダメージを受ける。</bullet><bullet>ユニットは 3 <turn></turn>ターンの間 2 火傷 を獲得する。</bullet><bullet>マスが<hyperlink>炎上</hyperlink> に設置される。</bullet></bulletlist><br></br>障害物には二倍のダメージ。",
   "name": "地獄の光芒",
   "slug": "infernal_ray_ability_0000049700003753",
@@ -3459,17 +3469,11 @@
   "icon": "000004970000372A"
  },
  {
-  "modifiers": [
-   {
-    "description": "標的の<defense></defense><hyperlink>防御力</hyperlink>の50%を無視する。",
-    "name": "貫通攻撃",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "対象の敵ユニットを攻撃する。",
   "name": "近接攻撃",
   "slug": "melee_strike_(base)_ability_000004970000366E",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近接攻撃</hyperlink>"
@@ -3485,14 +3489,23 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "標的の<defense></defense><hyperlink>防御力</hyperlink>の50%を無視する。",
+    "name": "貫通攻撃",
+    "count": 1
+   }
+  ],
   "description": "対象の敵ユニットに以下を適用：<bulletlist><bullet>ダメージを受ける。</bullet><bullet>3 <turn></turn>ターンの間3 弱まったを得る。</bullet><bullet>3 <turn></turn>ターンの間2 毒を得る。</bullet></bulletlist><br></br><hyperlink>防御モード</hyperlink> に入る。",
   "name": "衰弱スティング",
   "slug": "debilitating_sting_ability_000004970000366E",
-  "damage": "20<damagephysical></damagephysical> 20<damageblight></damageblight> ",
+  "damage": "15<damagephysical></damagephysical> 15<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近接攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -3568,7 +3581,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -3661,7 +3674,7 @@
   "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -3720,7 +3733,7 @@
   "damage": "41<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -3919,7 +3932,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -3974,7 +3987,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6602,7 +6615,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6635,7 +6648,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -6665,7 +6678,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6698,7 +6711,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -6728,7 +6741,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6761,7 +6774,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -6791,7 +6804,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6824,7 +6837,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -6854,7 +6867,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6887,7 +6900,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -6917,7 +6930,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -6950,7 +6963,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -7609,7 +7622,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -7643,7 +7656,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -8343,7 +8356,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -8389,7 +8402,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -8415,7 +8428,7 @@
   "damage": "6<damagephysical></damagephysical> 2<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -8515,7 +8528,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -8838,7 +8851,7 @@
   "damage": "14<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -8948,7 +8961,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -8999,7 +9012,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -9044,7 +9057,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -9083,7 +9096,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -9122,7 +9135,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -9161,7 +9174,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -9200,7 +9213,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10715,7 +10728,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10748,7 +10761,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10784,7 +10797,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10817,7 +10830,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10853,7 +10866,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10886,7 +10899,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10922,7 +10935,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10955,7 +10968,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -10991,7 +11004,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11024,7 +11037,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11060,7 +11073,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11093,7 +11106,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11129,7 +11142,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11162,7 +11175,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11643,7 +11656,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -11755,7 +11768,7 @@
   "description": "1マスの円錐型範囲内にダメージを与える。",
   "name": "スワイプ",
   "slug": "swipe_ability_0000049000000027",
-  "damage": "26<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近接攻撃</hyperlink>"
@@ -12308,7 +12321,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -12419,7 +12432,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -12457,7 +12470,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -12480,7 +12493,7 @@
   "icon": "0000048D0000120C"
  },
  {
-  "description": "基本<hyperlink>物理遠隔攻撃</hyperlink>攻撃が1<hyperlink><range></range>範囲</hyperlink>を得る。",
+  "description": "基本<hyperlink>飛び道具</hyperlink>攻撃が1<hyperlink><range></range>範囲</hyperlink>を得る。",
   "name": "長弓",
   "slug": "0000048d00001211",
   "icon": "0000048D00001213"
@@ -12809,7 +12822,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -13108,7 +13121,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -13131,7 +13144,7 @@
   "icon": "000004970000243C"
  },
  {
-  "description": "ユニットが<hyperlink>魔法攻撃</hyperlink>、<hyperlink>近接攻撃</hyperlink>または<hyperlink>物理遠隔攻撃</hyperlink>で他のユニットを倒す時に1 <hyperlink>アクションポイント</hyperlink>を取り戻す。<br></br><br></br><turn></turn>ターンごとに1度だけ有効。",
+  "description": "ユニットが<hyperlink>魔法攻撃</hyperlink>、<hyperlink>近接攻撃</hyperlink>または<hyperlink>飛び道具</hyperlink>で他のユニットを倒す時に1 <hyperlink>アクションポイント</hyperlink>を取り戻す。<br></br><br></br><turn></turn>ターンごとに1度だけ有効。",
   "name": "虐殺の機運",
   "slug": "000003e300004ef4",
   "icon": "000003E300004EF5"
@@ -13359,7 +13372,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -14056,7 +14069,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -14469,7 +14482,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -14510,7 +14523,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -14648,7 +14661,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -14742,7 +14755,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -14810,7 +14823,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -14843,7 +14856,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -14885,7 +14898,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -14915,7 +14928,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "50%",
@@ -15619,7 +15632,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -15655,7 +15668,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -15804,9 +15817,9 @@
  },
  {
   "notes": [],
-  "description": "詠唱者が対象マスへ移動する。1<hyperlink>アクションポイント</hyperlink>が残る。",
-  "name": "フェーズ",
-  "slug": "phase_ability-_no_cooldown_0000041B00001492",
+  "description": "使用者が対象マスへ移動する。",
+  "name": "ファストフェイズ",
+  "slug": "fast_phase_ability_0000041B00001492",
   "damage": "",
   "requisites": [
    {
@@ -15817,8 +15830,8 @@
    }
   ],
   "accuracy": "常にヒット",
-  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
-  "range": "6",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
   "icon": "000003E3000045B1"
  },
  {
@@ -15962,7 +15975,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -16197,13 +16210,13 @@
   "icon": "0000041B00001011"
  },
  {
-  "description": "このユニットへの<hyperlink>物理遠隔攻撃</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が60%低下する。",
+  "description": "このユニットへの<hyperlink>飛び道具</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が60%低下する。",
   "name": "風障壁",
   "slug": "000003e3000045a3",
   "icon": "000003E3000045A4"
  },
  {
-  "description": "隣接する味方ユニットに<hyperlink>物理遠隔攻撃</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が30%低下する。",
+  "description": "隣接する味方ユニットに<hyperlink>飛び道具</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が30%低下する。",
   "name": "風障壁のオーラ",
   "slug": "0000049700000021",
   "icon": "000004970000042E"
@@ -16269,7 +16282,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -17019,7 +17032,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -17064,7 +17077,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -17094,7 +17107,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -17124,7 +17137,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -17168,6 +17181,39 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "対象のユニットにダメージを与える。",
+  "name": "レッサーバースト",
+  "slug": "wyvern_burst_ability_000003EC00002919",
+  "damage": "15<damagefire></damagefire> 1<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基本</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   },
+   {
+    "note": "クールタイム：1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000029D1"
  },
  {
   "modifiers": [],
@@ -17483,7 +17529,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -17511,6 +17557,11 @@
     "description": "3 <turn></turn>ターンの間毒を与える。",
     "name": "毒",
     "count": 1
+   },
+   {
+    "description": "攻撃を行うと5 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。",
+    "name": "ライフスティール",
+    "count": 1
    }
   ],
   "description": "対象の敵ユニットを攻撃する。",
@@ -17532,7 +17583,13 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "攻撃を行うと10 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。",
+    "name": "ライフスティール",
+    "count": 1
+   }
+  ],
   "description": "3体の隣接ユニットを攻撃し、<hyperlink>防御モード</hyperlink>と<hyperlink>報復攻撃</hyperlink>を除去する。<br></br>使用後に<hyperlink>防御モード</hyperlink>になる。",
   "name": "テール・スワイプ",
   "slug": "tail_swipe_ability_000003EC00001E55",
@@ -17558,12 +17615,17 @@
     "description": "3<turn></turn>の間、腐敗中を2スタック付与する。",
     "name": "腐敗中",
     "count": 1
+   },
+   {
+    "description": "攻撃を行うと10 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。",
+    "name": "ライフスティール",
+    "count": 1
    }
   ],
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "腐敗のブレス",
   "slug": "putrid_breath_dragon_ability_000003EC00001E55",
-  "damage": "20<damageblight></damageblight> ",
+  "damage": "30<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -17613,10 +17675,10 @@
     "count": 1
    }
   ],
-  "description": "2マスの範囲にダメージを与える。",
+  "description": "2マスの範囲にいる敵ユニットにダメージを与える。",
   "name": "オーバーヒート",
   "slug": "overheat_ability_000003EC00001891",
-  "damage": "22<damagefire></damagefire> ",
+  "damage": "30<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -17628,9 +17690,6 @@
   "notes": [
    {
     "note": "クールタイム：2 <turn></turn>"
-   },
-   {
-    "note": "クールダウン状態で開始: 1<turn></turn>"
    }
   ],
   "icon": "000003E3000052B3"
@@ -17928,7 +17987,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -17979,7 +18038,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -18564,7 +18623,7 @@
   "damage": "41<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -19071,7 +19130,7 @@
   "damage": "9<damagephysical></damagephysical> 5<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -19105,7 +19164,7 @@
   "damage": "24<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -19166,7 +19225,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -19572,7 +19631,7 @@
   "description": "5マスの線上にいる全ユニットにダメージを与える。",
   "name": "稲妻のブレス",
   "slug": "lightning_breath_dragon_ability_000003E300006BEC",
-  "damage": "31<damagelightning></damagelightning> ",
+  "damage": "40<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -19658,7 +19717,7 @@
   "description": "3マスの円錐型範囲内：<bulletlist><bullet>敵ユニットがダメージを受ける。</bullet><bullet>味方ユニットが20 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet><bullet>味方ユニットの<hyperlink>マイナスのステータス効果</hyperlink>が最高で2個まで取り除かれる。</bullet></bulletlist>",
   "name": "浄化のブレス",
   "slug": "purifying_breath_dragon_ability_000003E300006BD8",
-  "damage": "22<damagespirit></damagespirit> ",
+  "damage": "30<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -19741,7 +19800,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -19768,7 +19827,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -20714,7 +20773,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -20916,7 +20975,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -21084,7 +21143,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -21543,7 +21602,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -22538,7 +22597,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -22591,7 +22650,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -22709,7 +22768,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -22748,7 +22807,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -22831,7 +22890,7 @@
   "icon": "0000049700000175"
  },
  {
-  "description": "各ターンに1度ずつこのユニットに付与：<bulletlist><bullet><hyperlink>近接攻撃</hyperlink>または<hyperlink>物理遠隔攻撃</hyperlink>がヒットした場合に防御強化。</bullet><bullet><hyperlink>魔法攻撃</hyperlink>がヒットした場合に耐性強化。</bullet></bulletlist>",
+  "description": "各ターンに1度ずつこのユニットに付与：<bulletlist><bullet><hyperlink>近接攻撃</hyperlink>または<hyperlink>飛び道具</hyperlink>がヒットした場合に防御強化。</bullet><bullet><hyperlink>魔法攻撃</hyperlink>がヒットした場合に耐性強化。</bullet></bulletlist>",
   "name": "強化",
   "slug": "000003e300006a3a",
   "icon": "000003E100001523"
@@ -22951,7 +23010,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -22981,7 +23040,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23050,7 +23109,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23184,7 +23243,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23347,7 +23406,7 @@
   "damage": "7<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23524,7 +23583,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23630,7 +23689,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23666,7 +23725,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23900,7 +23959,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23927,7 +23986,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -23954,7 +24013,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -24395,7 +24454,7 @@
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "フロスト・ブレス",
   "slug": "frost_breath_dragon_ability_000003E300004E76",
-  "damage": "31<damagefrost></damagefrost> ",
+  "damage": "40<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -24650,7 +24709,7 @@
   "description": "2マスの円錐型範囲内にいる敵ユニットはダメージを受け、2 stackの弱まったが付与される。",
   "name": "衰弱の遠吠え",
   "slug": "enfeebling_howl_ability_000003E300004A35",
-  "damage": "18<damagefrost></damagefrost> ",
+  "damage": "30<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -24721,7 +24780,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24831,7 +24890,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24955,7 +25014,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25034,7 +25093,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25452,7 +25511,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -25779,7 +25838,7 @@
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "ファイア・ブレス",
   "slug": "fire_breath_dragon_ability_000003BD00002904",
-  "damage": "31<damagefire></damagefire> ",
+  "damage": "40<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -25922,7 +25981,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -25952,7 +26011,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -28038,7 +28097,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -28068,7 +28127,7 @@
   "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -28101,7 +28160,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -28635,7 +28694,7 @@
   "icon": "000004BB00000018"
  },
  {
-  "description": "1ターンに一度、このユニットに<hyperlink>魔法攻撃</hyperlink>または<hyperlink>物理遠隔攻撃</hyperlink>攻撃がヒットした場合、回避を獲得する。",
+  "description": "1ターンに一度、このユニットに<hyperlink>魔法攻撃</hyperlink>または<hyperlink>飛び道具</hyperlink>攻撃がヒットした場合、回避を獲得する。",
   "name": "強まる回避",
   "slug": "000004a600000a3a",
   "icon": "000004A600000A55"
@@ -28882,7 +28941,7 @@
   "damage": "25<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -29201,7 +29260,7 @@
   "icon": "000003E300004F67"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃時、基本確率90%で弱まったを与える。</bullet><bullet>弱まったユニットに対する<hyperlink>近接攻撃</hyperlink>攻撃が：<bulletlist></bullet><bullet>+20%ダメージを与える。</bullet><bullet>1回のターンごとに1度、攻撃者を10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+  "description": "<bulletlist><bullet><hyperlink>飛び道具</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃時、基本確率90%で弱まったを与える。</bullet><bullet>弱まったユニットに対する<hyperlink>近接攻撃</hyperlink>攻撃が：<bulletlist></bullet><bullet>+20%ダメージを与える。</bullet><bullet>1回のターンごとに1度、攻撃者を10 <hyperlink><temphp></temphp>追加HP</hyperlink>回復する。</bullet></bulletlist></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
   "name": "弱者の淘汰",
   "slug": "0000049700000f4f",
   "icon": "000003E3000055A5"
@@ -29409,7 +29468,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -29564,7 +29623,7 @@
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
@@ -30391,7 +30450,7 @@
   "icon": "0000049700000D3F"
  },
  {
-  "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を獲得：<bulletlist><bullet><hyperlink>魔法攻撃</hyperlink>と<hyperlink>物理遠隔攻撃</hyperlink>攻撃が+1<hyperlink><range></range>範囲</hyperlink></bullet></bulletlist>",
+  "description": "軍隊リーダーである間、軍隊内の非ヒーローユニットが以下を獲得：<bulletlist><bullet><hyperlink>魔法攻撃</hyperlink>と<hyperlink>飛び道具</hyperlink>攻撃が+1<hyperlink><range></range>範囲</hyperlink></bullet></bulletlist>",
   "name": "アストラルの模範者",
   "slug": "0000048d00000abf",
   "icon": "0000048D00000ABC"
@@ -30537,7 +30596,7 @@
   "icon": "0000049700002F1B"
  },
  {
-  "description": "<hyperlink>魔法攻撃</hyperlink>、<hyperlink>近接攻撃</hyperlink>または<hyperlink>物理遠隔攻撃</hyperlink>攻撃でユニットを倒す時、10 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復させる。",
+  "description": "<hyperlink>魔法攻撃</hyperlink>、<hyperlink>近接攻撃</hyperlink>または<hyperlink>飛び道具</hyperlink>攻撃でユニットを倒す時、10 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復させる。",
   "name": "血の回復",
   "slug": "0000049700002f26",
   "icon": "0000049700002F28"
@@ -30854,7 +30913,7 @@
   "damage": "40<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -31266,7 +31325,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -31464,7 +31523,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -31664,7 +31723,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -31799,7 +31858,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -31849,7 +31908,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -32335,7 +32394,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -32860,7 +32919,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -32887,7 +32946,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -32925,7 +32984,7 @@
   "damage": "44<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -32982,7 +33041,7 @@
   "damage": "29<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -33082,7 +33141,7 @@
    }
   ],
   "description": "敵に魔法のボルトを放つ。",
-  "name": "ひび割れたボルト",
+  "name": "スチールボルト",
   "slug": "magic_hero_bolts_(physical)__ability_fractured_orb_item_tier_1",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
@@ -33185,7 +33244,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -33214,7 +33273,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -33741,7 +33800,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -33804,7 +33863,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -33849,7 +33908,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -33971,7 +34030,7 @@
   "damage": "19<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -34049,7 +34108,7 @@
   "damage": "14<damagephysical></damagephysical> 14<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -34332,7 +34391,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -34410,7 +34469,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -34566,7 +34625,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -34675,7 +34734,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -34880,7 +34939,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36233,7 +36292,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36260,7 +36319,7 @@
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36433,7 +36492,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36495,7 +36554,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36524,7 +36583,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36621,7 +36680,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36796,7 +36855,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36876,7 +36935,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -36996,7 +37055,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37044,7 +37103,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37091,7 +37150,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37147,7 +37206,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37195,7 +37254,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37243,7 +37302,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37361,7 +37420,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37406,7 +37465,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37521,7 +37580,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37550,7 +37609,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37679,7 +37738,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -37825,7 +37884,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38172,7 +38231,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38228,7 +38287,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38273,7 +38332,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38376,7 +38435,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38424,7 +38483,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38472,7 +38531,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38501,7 +38560,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38546,7 +38605,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -38849,7 +38908,7 @@
   "damage": "12<damagephysical></damagephysical> 2<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -39800,7 +39859,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40166,7 +40225,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40228,7 +40287,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40816,7 +40875,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40853,7 +40912,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40882,7 +40941,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40930,7 +40989,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -40978,7 +41037,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41026,7 +41085,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41074,7 +41133,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41119,7 +41178,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41164,7 +41223,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41209,7 +41268,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41254,7 +41313,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41299,7 +41358,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -41344,7 +41403,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -42534,7 +42593,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -43101,7 +43160,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -43900,7 +43959,7 @@
   "icon": "000003E300004779"
  },
  {
-  "description": "<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>に対して+3 <defense></defense><hyperlink>防御力</hyperlink>と+3 <resistance></resistance><hyperlink>耐性</hyperlink>を付与する。",
+  "description": "<hyperlink>飛び道具</hyperlink>および<hyperlink>魔法攻撃</hyperlink>に対して+3 <defense></defense><hyperlink>防御力</hyperlink>と+3 <resistance></resistance><hyperlink>耐性</hyperlink>を付与する。",
   "name": "偏向の指輪",
   "slug": "0000041b0000190d",
   "icon": "0000041B00001436"
@@ -44091,7 +44150,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44149,7 +44208,7 @@
     "requisite": "<hyperlink>基本</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "常にヒット",
@@ -44195,7 +44254,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44247,7 +44306,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44289,7 +44348,7 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "このユニットに対する<hyperlink>物理遠隔攻撃</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が40%低下する。",
+  "description": "このユニットに対する<hyperlink>飛び道具</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が40%低下する。",
   "name": "不明瞭",
   "slug": "00000387000014fa",
   "icon": "00000387000014FB"
@@ -44336,7 +44395,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44469,7 +44528,7 @@
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "ファイア・ブレス",
   "slug": "wand_of_fire_breath_ability_wand_of_fire_breath_item_tier_3",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -44845,7 +44904,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44893,7 +44952,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44963,7 +45022,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -44999,7 +45058,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -45272,7 +45331,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -46130,7 +46189,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46167,7 +46226,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46194,7 +46253,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46285,7 +46344,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "このユニットは<hyperlink>近接攻撃</hyperlink>、<hyperlink>物理遠隔攻撃</hyperlink>、<hyperlink>魔法攻撃</hyperlink>のアビリティを使用できない。",
+  "description": "このユニットは<hyperlink>近接攻撃</hyperlink>、<hyperlink>飛び道具</hyperlink>、<hyperlink>魔法攻撃</hyperlink>のアビリティを使用できない。",
   "name": "鎮静状態",
   "slug": "000004970000109b",
   "icon": "000004970000109D"
@@ -46519,7 +46578,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>で-50% <hyperlink><accuracy></accuracy>命中率</hyperlink>。</bullet><bullet><hyperlink>報復攻撃</hyperlink>攻撃は実行できない。</bullet></bulletlist><br></br><br></br>盲目<hyperlink>無効化</hyperlink> 本物の攻撃。",
+  "description": "<bulletlist><bullet><hyperlink>飛び道具</hyperlink>および<hyperlink>魔法攻撃</hyperlink>で-50% <hyperlink><accuracy></accuracy>命中率</hyperlink>。</bullet><bullet><hyperlink>報復攻撃</hyperlink>攻撃は実行できない。</bullet></bulletlist><br></br><br></br>盲目<hyperlink>無効化</hyperlink> 本物の攻撃。",
   "name": "盲目",
   "slug": "000003e3000049ef",
   "icon": "000003E3000049ED"
@@ -46603,7 +46662,7 @@
   "icon": "0000049700000F1B"
  },
  {
-  "description": "<bulletlist><bullet>このユニットを標的としている<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>が-10% <hyperlink><accuracy></accuracy>命中率</hyperlink>の影響を受ける。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br><br></br>回避 <hyperlink>無効化</hyperlink> マーク。",
+  "description": "<bulletlist><bullet>このユニットを標的としている<hyperlink>飛び道具</hyperlink>と<hyperlink>魔法攻撃</hyperlink>が-10% <hyperlink><accuracy></accuracy>命中率</hyperlink>の影響を受ける。</bullet><bullet>5回までスタックする。</bullet></bulletlist><br></br><br></br>回避 <hyperlink>無効化</hyperlink> マーク。",
   "name": "回避",
   "slug": "0000041b00000536",
   "icon": "0000041B00000538"
@@ -46890,7 +46949,7 @@
   "icon": "0000049700000A7F"
  },
  {
-  "description": "このユニットは占いの聖域を訪問したため、一時的に以下の効果を得ている：<bulletlist><bullet>遠視</bullet><bullet><hyperlink>戦闘</hyperlink>中の<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>に+1<range></range>の効果がつく</bullet></bulletlist>",
+  "description": "このユニットは占いの聖域を訪問したため、一時的に以下の効果を得ている：<bulletlist><bullet>遠視</bullet><bullet><hyperlink>戦闘</hyperlink>中の<hyperlink>飛び道具</hyperlink>と<hyperlink>魔法攻撃</hyperlink>に+1<range></range>の効果がつく</bullet></bulletlist>",
   "name": "占いの聖域",
   "slug": "00000493000004ac",
   "icon": "00000493000004AD"
@@ -46950,7 +47009,7 @@
   "icon": "0000049700000146"
  },
  {
-  "description": "<bulletlist><bullet>このユニットを標的としている<hyperlink>近接攻撃</hyperlink>、<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>が-15% <hyperlink><accuracy></accuracy>命中率</hyperlink>の影響を受ける。</bullet><bullet>3回までスタックする。</bullet></bulletlist><br></br><br></br>まとわりつく霧は マークの<hyperlink>無効化</hyperlink>である。",
+  "description": "<bulletlist><bullet>このユニットを標的としている<hyperlink>近接攻撃</hyperlink>、<hyperlink>飛び道具</hyperlink>および<hyperlink>魔法攻撃</hyperlink>が-15% <hyperlink><accuracy></accuracy>命中率</hyperlink>の影響を受ける。</bullet><bullet>3回までスタックする。</bullet></bulletlist><br></br><br></br>まとわりつく霧は マークの<hyperlink>無効化</hyperlink>である。",
   "name": "まとわりつく霧",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
@@ -47028,7 +47087,7 @@
   "icon": "0000048D00001E70"
  },
  {
-  "description": "<bulletlist><bullet>攻撃の与ダメージ+20%。</bullet><bullet><hyperlink>サポート</hyperlink> アビリティの回復量が+20% <hyperlink><temphp></temphp>追加HP</hyperlink>。</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+1 <defense></defense><hyperlink>防御力</hyperlink>。</bullet><bullet>+1 <resistance></resistance><hyperlink>耐性</hyperlink>。</bullet><bullet>攻撃の与ダメージ+30%。</bullet><bullet><hyperlink>サポート</hyperlink> アビリティの回復量が+30% <hyperlink><temphp></temphp>追加HP</hyperlink>。</bullet></bulletlist>",
   "name": "機運",
   "slug": "0000048d00001c55",
   "icon": "0000048D00001C5E"
@@ -47256,7 +47315,7 @@
   "icon": "0000048B00000549"
  },
  {
-  "description": "<hyperlink>物理遠隔攻撃</hyperlink>攻撃の与ダメージが20%増加する。",
+  "description": "<hyperlink>飛び道具</hyperlink>攻撃の与ダメージが20%増加する。",
   "name": "プリペアショット",
   "slug": "0000048b0000053e",
   "icon": "0000048B0000053F"
@@ -47634,7 +47693,7 @@
   "icon": "000003E300004C79"
  },
  {
-  "description": "<hyperlink>物理遠隔攻撃</hyperlink>攻撃の<hyperlink><range></range>範囲</hyperlink>が+1%。",
+  "description": "<hyperlink>飛び道具</hyperlink>攻撃の<hyperlink><range></range>範囲</hyperlink>が+1%。",
   "name": "覚醒：探求の矢",
   "slug": "000003e300004c72",
   "icon": "000003E300004C79"
@@ -48347,7 +48406,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -48374,7 +48433,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>物理遠隔攻撃</hyperlink>"
+    "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -48743,12 +48802,9 @@
   ],
   "description": "対象の敵ユニットと、3マス以内にいるもう1体の敵ユニットがダメージを受ける。",
   "name": "分断の呪い",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_staff_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_staff_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>基本</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>デバフ</hyperlink>"
    },
@@ -48946,7 +49002,7 @@
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "腐敗のブレス",
   "slug": "putrid_breath_item_forge_ability_equipment_upgrade_active_wand_putrid_breath",
-  "damage": "28<damageblight></damageblight> ",
+  "damage": "37<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -48973,7 +49029,7 @@
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "フロスト・ブレス",
   "slug": "frost_breath_item_forge_ability_equipment_upgrade_active_wand_frost_breath",
-  "damage": "28<damagefrost></damagefrost> ",
+  "damage": "36<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -49000,7 +49056,7 @@
   "description": "3マスの円錐型範囲内の全ユニットにダメージを与える。",
   "name": "ファイア・ブレス",
   "slug": "fire_breath_item_forge_ability_equipment_upgrade_active_wand_fire_breath",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法攻撃</hyperlink>"
@@ -49173,12 +49229,9 @@
   ],
   "description": "対象の敵ユニットと、3マス以内にいるもう1体の敵ユニットがダメージを受ける。",
   "name": "分断の呪い",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_wand_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_wand_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>基本</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>デバフ</hyperlink>"
    },
@@ -49593,7 +49646,7 @@
   "icon": "0000045E00000D47"
  },
  {
-  "description": "このユニットに<hyperlink>近接攻撃</hyperlink>または<hyperlink>物理遠隔攻撃</hyperlink>がヒットした場合、ターンごとに1度このユニットが防御強化を獲得する。",
+  "description": "このユニットに<hyperlink>近接攻撃</hyperlink>または<hyperlink>飛び道具</hyperlink>がヒットした場合、ターンごとに1度このユニットが防御強化を獲得する。",
   "name": "防衛強化",
   "slug": "0000045e00000d43",
   "icon": "0000045E00000D46"
@@ -50052,7 +50105,7 @@
   "icon": "0000045E00000D6F"
  },
  {
-  "description": "このユニットへの<hyperlink>物理遠隔攻撃</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が30%低下する。",
+  "description": "このユニットへの<hyperlink>飛び道具</hyperlink>および遠隔<hyperlink>魔法攻撃</hyperlink>攻撃の命中率が30%低下する。",
   "name": "風のシールド",
   "slug": "0000045e00000c0c",
   "icon": "0000045E00000C0D"

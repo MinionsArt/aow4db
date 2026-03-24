@@ -41,7 +41,7 @@
     "note": "Temps de recharge : 1 <turn></turn>"
    }
   ],
-  "description": "L'unité ciblée :<bulletlist><bullet>Subit des dégâts.</bullet><bullet>A 90 % de chances de base d'être Perturbé pendant 2 <turn></turn> Tour</bullet><bullet>A 90 % de chances de base d'être Vidés de mana pendant 1 <turn></turn> Tour.</bullet>",
+  "description": "L'unité ciblée :<bulletlist><bullet>Subit des dégâts.</bullet><bullet>A 90 % de chances de base d'être Perturbé pendant 2 <turn></turn> Tour</bullet><bullet>A 90 % de chances de base d'être Vidés de mana pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
   "name": "Drain de mana",
   "slug": "mana_drain_ability_000004E00000006C",
   "damage": "30<damagephysical></damagephysical> ",
@@ -229,7 +229,7 @@
   "description": "<bulletlist><bullet>Inflige des dégâts à toutes les unités dans un cône de 3 case(s).</bullet><bullet>Les unités Origine magique ont 30 % de risques de mourir instantanément.</bullet></bulletlist>",
   "name": "Souffle anti-magie",
   "slug": "anti-magic_breath_ability_000004E000000059",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -288,7 +288,7 @@
   "icon": "000004A600000B7B"
  },
  {
-  "description": "Grande unité qui :<bulletlist><bullet>Est 20 % plus facile à toucher avec des attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink>.</bullet><bullet>Est immunisée contre la plupart des effets de déplacement.</bullet><bullet>A Démolisseur.</bullet></bulletlist>",
+  "description": "Grande unité qui :<bulletlist><bullet>Est 20 % plus facile à toucher avec des attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink>.</bullet><bullet>Est immunisée contre la plupart des effets de déplacement.</bullet><bullet>A Démolisseur.</bullet></bulletlist>",
   "name": "Grande cible",
   "slug": "000003450000052c",
   "icon": "000003450000049B"
@@ -338,11 +338,6 @@
  {
   "modifiers": [
    {
-    "description": "Ignore 50 % de la <defense></defense> <hyperlink>Défense</hyperlink> de la cible.",
-    "name": "Perforant^m",
-    "count": 1
-   },
-   {
     "description": "60 % de chances de base de drainer tous les <caststrategic></caststrategic><hyperlink>Enchantements d'unité</hyperlink> de la cible pendant 2 <turn></turn> Tour.",
     "name": "Perturbé^F",
     "count": 1
@@ -351,7 +346,7 @@
   "description": "Frappe l'unité ennemie ciblée.",
   "name": "Frappe de mêlée",
   "slug": "melee_strike_(base)_ability_000004E000000033",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Mêlée^f</hyperlink>"
@@ -369,6 +364,11 @@
  {
   "modifiers": [
    {
+    "description": "Ignore 50 % de la <defense></defense> <hyperlink>Défense</hyperlink> de la cible.",
+    "name": "Perforant^m",
+    "count": 1
+   },
+   {
     "description": "Inflige Perturbé pendant 2 <turn></turn> Tour.",
     "name": "Perturbé^F",
     "count": 1
@@ -377,10 +377,13 @@
   "description": "L'unité ciblée subit des dégâts. Passe en <hyperlink>Mode défensif</hyperlink>.",
   "name": "Piqûre perturbatrice",
   "slug": "disrupting_sting_ability_000004E000000033",
-  "damage": "40<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
    }
   ],
   "accuracy": "100%",
@@ -447,7 +450,7 @@
   "icon": "0000045E00000665"
  },
  {
-  "description": "L'unité a +3 <defense></defense> <hyperlink>Défense</hyperlink> contre les attaques <hyperlink>Physiques à distance</hyperlink>.",
+  "description": "L'unité a +3 <defense></defense> <hyperlink>Défense</hyperlink> contre les attaques <hyperlink>Missile</hyperlink>.",
   "name": "Renforcé",
   "slug": "000003e3000071f0",
   "icon": "000003E3000071F2"
@@ -461,7 +464,7 @@
  {
   "modifiers": [
    {
-    "description": "10 % de chances de base d'infliger <hyperlink>Engloutissement</hyperlink> à une unité non-héros.",
+    "description": "60 % de chances de base d'infliger <hyperlink>Engloutissement</hyperlink> à une unité non-héros.",
     "name": "Avaler tout rond^m",
     "count": 1
    }
@@ -488,7 +491,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "60 % de chances de base d'infliger Immobilisé pendant 1 <turn></turn> Tour.",
+    "name": "Immobilisé^M",
+    "count": 1
+   }
+  ],
   "description": "Les unités ennemies dans un rayon de 2 case(s) subissent des dégâts.<br></br><br></br>Inflige deux fois plus de dégâts aux obstacles.",
   "name": "Secousse terrestre",
   "slug": "earth_tremor_ability_000004E00000001E",
@@ -640,7 +649,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -658,7 +667,7 @@
   "icon": "0000039F000016E8"
  },
  {
-  "description": "+1 de <hyperlink><range></range>Portée</hyperlink> sur les attaques <hyperlink>Physiques à distance</hyperlink>.",
+  "description": "+1 de <hyperlink><range></range>Portée</hyperlink> sur les attaques <hyperlink>Missile</hyperlink>.",
   "name": "Médaille de champion : œil de lynx",
   "slug": "000003e300006289",
   "icon": "000003E30000627B"
@@ -1202,7 +1211,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -1253,7 +1262,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -1331,7 +1340,7 @@
  {
   "notes": [
    {
-    "note": "Temps de recharge : 2 <turn></turn>"
+    "note": "Temps de recharge : 1 <turn></turn>"
    }
   ],
   "description": "Supprimez le marqueur <hyperlink>Butin</hyperlink> de la cible et conférez à une unité alliée dans un rayon de 4 case(s) :<bulletlist><bullet>Puissance pillée</bullet><bullet>15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink></bullet></bulletlist>",
@@ -1340,7 +1349,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Touche toujours",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001EAD"
  },
@@ -1357,7 +1366,7 @@
   "icon": "000003BD000020C1"
  },
  {
-  "description": "Vent contraire revigorant :<<bulletlist><bullet>Restitue +10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink> supplémentaires.</bullet><bullet>Temps de recharge réduit de -1 <turn></turn> <hyperlink>Tour</hyperlink>.</bullet></bulletlist>",
+  "description": "Vent contraire revigorant :<bulletlist><bullet>Restitue +10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink> supplémentaires.</bullet><bullet>Temps de recharge réduit de -1<turn></turn> <hyperlink>Tour</hyperlink> .</bullet></bulletlist>",
   "name": "Vent contraire revigorant de champion",
   "slug": "0000048d00001f59",
   "icon": "000003E30000627B"
@@ -1421,7 +1430,7 @@
  {
   "notes": [
    {
-    "note": "Temps de recharge : 2 <turn></turn>"
+    "note": "Temps de recharge : 1 <turn></turn>"
    }
   ],
   "description": "L'unité alliée ciblée ayant des points d'action obtient :<bulletlist><bullet>Élan vivifiant pendant 1 <turn></turn> <hyperlink>Tour</hyperlink>.</bullet></bulletlist>",
@@ -1430,7 +1439,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Touche toujours",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001E1B"
  },
@@ -1503,7 +1512,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -1577,7 +1586,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -1630,7 +1639,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -1798,7 +1807,7 @@
   "damage": "20<damagephysical></damagephysical> 20<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -2937,7 +2946,7 @@
   "icon": "000003E300005580"
  },
  {
-  "description": "Cette unité est très petite, elle est 20 % plus difficile à toucher avec des attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
+  "description": "Cette unité est très petite, elle est 20 % plus difficile à toucher avec des attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
   "name": "Minuscule",
   "slug": "000003e30000528e",
   "icon": "000003E30000528F"
@@ -3252,17 +3261,12 @@
     "description": "60 % de chances de base d'infliger Brûlure pendant 3 <turn></turn> Tour.",
     "name": "Brûlure^f",
     "count": 1
-   },
-   {
-    "description": "Ignore 50 % de la <resistance></resistance> <hyperlink>Résistance</hyperlink> de la cible.",
-    "name": "Brèche^f",
-    "count": 1
    }
   ],
   "description": "Frappe l'unité ennemie ciblée.",
   "name": "Frappe magique",
   "slug": "magic_strike_(base)_ability_0000049700003753",
-  "damage": "13<damagefire></damagefire> ",
+  "damage": "15<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -3301,7 +3305,13 @@
   "icon": "000004970000375C"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignore 50 % de la <resistance></resistance> <hyperlink>Résistance</hyperlink> de la cible.",
+    "name": "Brèche^f",
+    "count": 1
+   }
+  ],
   "description": "Dans un cône de 2 case(s) :<bulletlist><bullet>Les unités subissent des dégâts.</bullet><bullet>Les unités gagnent 2 Brûlure pendant 3 <turn></turn> Tour.</bullet><bullet>Les cases sont <hyperlink>En feu</hyperlink></bullet></bulletlist><br></br>Inflige deux fois plus de dégâts aux obstacles.",
   "name": "Rayon infernal",
   "slug": "infernal_ray_ability_0000049700003753",
@@ -3459,17 +3469,11 @@
   "icon": "000004970000372A"
  },
  {
-  "modifiers": [
-   {
-    "description": "Ignore 50 % de la <defense></defense> <hyperlink>Défense</hyperlink> de la cible.",
-    "name": "Perforant^m",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "Frappe l'unité ennemie ciblée.",
   "name": "Frappe de mêlée",
   "slug": "melee_strike_(base)_ability_000004970000366E",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Mêlée^f</hyperlink>"
@@ -3485,14 +3489,23 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignore 50 % de la <defense></defense> <hyperlink>Défense</hyperlink> de la cible.",
+    "name": "Perforant^m",
+    "count": 1
+   }
+  ],
   "description": "L'unité ennemie ciblée :<bulletlist><bullet>Subit des dégâts.</bullet><bullet>Obtient 3 Affaibli pendant 3 <turn></turn> Tour.</bullet><bullet>Obtient 2 Empoisonné pendant 3 <turn></turn> Tour.</bullet></bulletlist><br></br>Passe en <hyperlink>Mode défensif</hyperlink>.",
   "name": "Piqûre débilitante",
   "slug": "debilitating_sting_ability_000004970000366E",
-  "damage": "20<damagephysical></damagephysical> 20<damageblight></damageblight> ",
+  "damage": "15<damagephysical></damagephysical> 15<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
    }
   ],
   "accuracy": "100%",
@@ -3568,7 +3581,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -3661,7 +3674,7 @@
   "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -3720,7 +3733,7 @@
   "damage": "41<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -3919,7 +3932,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -3974,7 +3987,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6602,7 +6615,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6635,7 +6648,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -6665,7 +6678,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6698,7 +6711,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -6728,7 +6741,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6761,7 +6774,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -6791,7 +6804,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6824,7 +6837,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -6854,7 +6867,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6887,7 +6900,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -6917,7 +6930,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -6950,7 +6963,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -7609,7 +7622,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -7643,7 +7656,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -8343,7 +8356,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -8389,7 +8402,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -8415,7 +8428,7 @@
   "damage": "6<damagephysical></damagephysical> 2<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -8515,7 +8528,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -8838,7 +8851,7 @@
   "damage": "14<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -8948,7 +8961,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -8999,7 +9012,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -9044,7 +9057,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -9083,7 +9096,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -9122,7 +9135,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -9161,7 +9174,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -9200,7 +9213,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10715,7 +10728,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10748,7 +10761,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10784,7 +10797,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10817,7 +10830,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10853,7 +10866,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10886,7 +10899,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10922,7 +10935,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10955,7 +10968,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -10991,7 +11004,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11024,7 +11037,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11060,7 +11073,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11093,7 +11106,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11129,7 +11142,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11162,7 +11175,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11643,7 +11656,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -11755,7 +11768,7 @@
   "description": "Inflige des dégâts dans un cône de 1 case(s).",
   "name": "Grand coup",
   "slug": "swipe_ability_0000049000000027",
-  "damage": "26<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Mêlée^f</hyperlink>"
@@ -12308,7 +12321,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -12419,7 +12432,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -12457,7 +12470,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -12480,7 +12493,7 @@
   "icon": "0000048D0000120C"
  },
  {
-  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> de base obtiennent +1 de <hyperlink><range></range>Portée</hyperlink>.",
+  "description": "Les attaques <hyperlink>Missile</hyperlink> de base obtiennent +1 de <hyperlink><range></range>Portée</hyperlink>.",
   "name": "Arc long",
   "slug": "0000048d00001211",
   "icon": "0000048D00001213"
@@ -12809,7 +12822,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -13108,7 +13121,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -13131,7 +13144,7 @@
   "icon": "000004970000243C"
  },
  {
-  "description": "L'unité regagne 1 <hyperlink>Point d'action</hyperlink> quand elle tue une autre unité avec des attaques de <hyperlink>Magie</hyperlink>, de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Physiques à distance</hyperlink>.<br></br><br></br>Fonctionne une fois par <turn></turn> Tour.",
+  "description": "L'unité regagne 1 <hyperlink>Point d'action</hyperlink> quand elle tue une autre unité avec des attaques de <hyperlink>Magie</hyperlink>, de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Missile</hyperlink>.<br></br><br></br>Fonctionne une fois par <turn></turn> Tour.",
   "name": "Élan assassin",
   "slug": "000003e300004ef4",
   "icon": "000003E300004EF5"
@@ -13359,7 +13372,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -14056,7 +14069,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -14469,7 +14482,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -14510,7 +14523,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -14648,7 +14661,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -14742,7 +14755,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -14810,7 +14823,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -14843,7 +14856,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -14885,7 +14898,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -14915,7 +14928,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "50%",
@@ -15619,7 +15632,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -15655,7 +15668,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -15804,9 +15817,9 @@
  },
  {
   "notes": [],
-  "description": "Le lanceur se déplace vers la case ciblée. Laisse 1 <hyperlink>Point d'action</hyperlink>.",
-  "name": "Phase",
-  "slug": "phase_ability-_no_cooldown_0000041B00001492",
+  "description": "Le lanceur se déplace vers la case ciblée.",
+  "name": "Phase rapide",
+  "slug": "fast_phase_ability_0000041B00001492",
   "damage": "",
   "requisites": [
    {
@@ -15817,8 +15830,8 @@
    }
   ],
   "accuracy": "Touche toujours",
-  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
-  "range": "6",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
   "icon": "000003E3000045B1"
  },
  {
@@ -15962,7 +15975,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -16197,13 +16210,13 @@
   "icon": "0000041B00001011"
  },
  {
-  "description": "Les unités alliées voisines sont 30 % plus difficile à toucher avec des attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
+  "description": "Les unités alliées voisines sont 30 % plus difficile à toucher avec des attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
   "name": "Aura barrière de vent",
   "slug": "0000049700000021",
   "icon": "000004970000042E"
  },
  {
-  "description": "Cette unité est 60 % plus difficile à toucher avec des attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
+  "description": "Cette unité est 60 % plus difficile à toucher avec des attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
   "name": "Barrière de vent",
   "slug": "000003e3000045a3",
   "icon": "000003E3000045A4"
@@ -16269,7 +16282,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -17019,7 +17032,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -17064,7 +17077,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -17094,7 +17107,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -17124,7 +17137,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -17168,6 +17181,39 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "Inflige des dégâts à l'unité ciblée.",
+  "name": "Volée inférieure",
+  "slug": "wyvern_burst_ability_000003EC00002919",
+  "damage": "15<damagefire></damagefire> 1<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   },
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>^f"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
+   },
+   {
+    "note": "Temps de recharge : 1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000029D1"
  },
  {
   "modifiers": [],
@@ -17483,7 +17529,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -17511,6 +17557,11 @@
     "description": "Inflige Empoisonné pendant 3 <turn></turn> Tour.",
     "name": "Empoisonné^M",
     "count": 1
+   },
+   {
+    "description": "Les attaques soignent 5 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+    "name": "Vol de vie^M",
+    "count": 1
    }
   ],
   "description": "Frappe l'unité ennemie ciblée.",
@@ -17532,7 +17583,13 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Les attaques soignent 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+    "name": "Vol de vie^M",
+    "count": 1
+   }
+  ],
   "description": "Attaque 3 unité(s) à proximité, annulant le <hyperlink>Mode défensif</hyperlink> et la <hyperlink>Riposte</hyperlink>.<br></br>Passe en <hyperlink>Mode défensif</hyperlink> après utilisation.",
   "name": "Queue balayante",
   "slug": "tail_swipe_ability_000003EC00001E55",
@@ -17558,12 +17615,17 @@
     "description": "Inflige 2 cumuls d’En décomposition pendant 3 <turn></turn>.",
     "name": "En décomposition^M",
     "count": 1
+   },
+   {
+    "description": "Les attaques soignent 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+    "name": "Vol de vie^M",
+    "count": 1
    }
   ],
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle putride",
   "slug": "putrid_breath_dragon_ability_000003EC00001E55",
-  "damage": "20<damageblight></damageblight> ",
+  "damage": "30<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -17613,10 +17675,10 @@
     "count": 1
    }
   ],
-  "description": "Inflige des dégâts dans un rayon de 2 case(s).",
+  "description": "Inflige des dégâts aux unités ennemies dans un rayon de 2 case(s).",
   "name": "Surchauffe",
   "slug": "overheat_ability_000003EC00001891",
-  "damage": "22<damagefire></damagefire> ",
+  "damage": "30<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -17628,9 +17690,6 @@
   "notes": [
    {
     "note": "Temps de recharge : 2 <turn></turn>"
-   },
-   {
-    "note": "Commence avec un temps de recharge : 1<turn></turn>"
    }
   ],
   "icon": "000003E3000052B3"
@@ -17928,7 +17987,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -17979,7 +18038,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -18564,7 +18623,7 @@
   "damage": "41<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -19071,7 +19130,7 @@
   "damage": "9<damagephysical></damagephysical> 5<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -19105,7 +19164,7 @@
   "damage": "24<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -19166,7 +19225,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -19572,7 +19631,7 @@
   "description": "Inflige des dégâts à toutes les unités sur une ligne de 5 case(s).",
   "name": "Souffle foudroyant",
   "slug": "lightning_breath_dragon_ability_000003E300006BEC",
-  "damage": "31<damagelightning></damagelightning> ",
+  "damage": "40<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -19658,7 +19717,7 @@
   "description": "Dans un rayon de 3 case(s) :<bulletlist><bullet>Les unités ennemies subissent des dégâts.</bullet><bullet>Les unités alliées récupèrent 20 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>Les unités alliées sont débarrassées jusqu'à 2 de leurs <hyperlink>Effets d'état négatif</hyperlink>.</bullet></bulletlist>",
   "name": "Souffle purificateur",
   "slug": "purifying_breath_dragon_ability_000003E300006BD8",
-  "damage": "22<damagespirit></damagespirit> ",
+  "damage": "30<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -19741,7 +19800,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -19768,7 +19827,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -20714,7 +20773,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -20916,7 +20975,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -21084,7 +21143,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -21543,7 +21602,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -22538,7 +22597,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -22591,7 +22650,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -22709,7 +22768,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -22748,7 +22807,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -22831,7 +22890,7 @@
   "icon": "0000049700000175"
  },
  {
-  "description": "Une fois par tour, cette unité gagne :<bulletlist><bullet>Défense renforcée si elle subit une attaque de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Physiques à distance</hyperlink>.</bullet><bullet>Résistance renforcée si elle subit une attaque de <hyperlink>Magie</hyperlink>.</bullet></bulletlist>",
+  "description": "Une fois par tour, cette unité gagne :<bulletlist><bullet>Défense renforcée si elle subit une attaque de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Missile</hyperlink>.</bullet><bullet>Résistance renforcée si elle subit une attaque de <hyperlink>Magie</hyperlink>.</bullet></bulletlist>",
   "name": "Renforcement",
   "slug": "000003e300006a3a",
   "icon": "000003E100001523"
@@ -22951,7 +23010,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -22981,7 +23040,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23050,7 +23109,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23184,7 +23243,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23347,7 +23406,7 @@
   "damage": "7<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23524,7 +23583,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23630,7 +23689,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23666,7 +23725,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23900,7 +23959,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23927,7 +23986,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -23954,7 +24013,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -24395,7 +24454,7 @@
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle de givre",
   "slug": "frost_breath_dragon_ability_000003E300004E76",
-  "damage": "31<damagefrost></damagefrost> ",
+  "damage": "40<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -24650,7 +24709,7 @@
   "description": "Les unités ennemies dans un cône de 2 case(s) subissent des dégâts et obtiennent 2 stack d’Affaibli.",
   "name": "Hurlement affaiblissant",
   "slug": "enfeebling_howl_ability_000003E300004A35",
-  "damage": "18<damagefrost></damagefrost> ",
+  "damage": "30<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -24721,7 +24780,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24831,7 +24890,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24955,7 +25014,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25034,7 +25093,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25452,7 +25511,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -25779,7 +25838,7 @@
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle de feu",
   "slug": "fire_breath_dragon_ability_000003BD00002904",
-  "damage": "31<damagefire></damagefire> ",
+  "damage": "40<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -25922,7 +25981,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -25952,7 +26011,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -28038,7 +28097,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -28068,7 +28127,7 @@
   "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -28101,7 +28160,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -28635,7 +28694,7 @@
   "icon": "000004BB00000018"
  },
  {
-  "description": "Une fois par tour, cette unité gagne Évasion si elle subit une attaque de <hyperlink>Magie</hyperlink> ou <hyperlink>Physiques à distance</hyperlink>.",
+  "description": "Une fois par tour, cette unité gagne Évasion si elle subit une attaque de <hyperlink>Magie</hyperlink> ou <hyperlink>Missile</hyperlink>.",
   "name": "Évasion de renforcement",
   "slug": "000004a600000a3a",
   "icon": "000004A600000A55"
@@ -28882,7 +28941,7 @@
   "damage": "25<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -29201,7 +29260,7 @@
   "icon": "000003E300004F67"
  },
  {
-  "description": "<bulletlist><bullet>Les attaques <hyperlink>Physiques à distance</hyperlink> et <hyperlink>Magie</hyperlink> ont 90 % de chances de base d'infliger Affaibli.</bullet><bullet>Les attaques de <hyperlink>Mêlée</hyperlink> contre les unités Affaibli :<bulletlist></bullet><bullet>Infligent +20 % de dégâts.</bullet><bullet>Soignent l'attaquant à hauteur de 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>, une fois par tour.</bullet></bulletlist></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "<bulletlist><bullet>Les attaques <hyperlink>Missile</hyperlink> et <hyperlink>Magie</hyperlink> ont 90 % de chances de base d'infliger Affaibli.</bullet><bullet>Les attaques de <hyperlink>Mêlée</hyperlink> contre les unités Affaibli :<bulletlist></bullet><bullet>Infligent +20 % de dégâts.</bullet><bullet>Soignent l'attaquant à hauteur de 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>, une fois par tour.</bullet></bulletlist></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "name": "Abattre les faibles",
   "slug": "0000049700000f4f",
   "icon": "000003E3000055A5"
@@ -29409,7 +29468,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -29564,7 +29623,7 @@
     "requisite": "<hyperlink>Magie^f</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
@@ -30391,7 +30450,7 @@
   "icon": "0000049700000D3F"
  },
  {
-  "description": "Quand chef d'armée, toutes les unités non-héros de cette armée obtiennent :<bulletlist><bullet>Les attaques <hyperlink>Magie</hyperlink> et <hyperlink>Physiques à distance</hyperlink> obtiennent +1 <hyperlink><range></range>Portée</hyperlink>.</bullet></bulletlist>",
+  "description": "Quand chef d'armée, toutes les unités non-héros de cette armée obtiennent :<bulletlist><bullet>Les attaques <hyperlink>Magie</hyperlink> et <hyperlink>Missile</hyperlink> obtiennent +1 <hyperlink><range></range>Portée</hyperlink>.</bullet></bulletlist>",
   "name": "Parangon de l'Astral",
   "slug": "0000048d00000abf",
   "icon": "0000048D00000ABC"
@@ -30537,7 +30596,7 @@
   "icon": "0000049700002F1B"
  },
  {
-  "description": "Vous récupérez 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink> lorsque vous tuez une unité avec une attaque de <hyperlink>Magie</hyperlink>, de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Physiques à distance</hyperlink>.",
+  "description": "Vous récupérez 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink> lorsque vous tuez une unité avec une attaque de <hyperlink>Magie</hyperlink>, de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Missile</hyperlink>.",
   "name": "Récupération de sang",
   "slug": "0000049700002f26",
   "icon": "0000049700002F28"
@@ -30854,7 +30913,7 @@
   "damage": "40<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -31266,7 +31325,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -31464,7 +31523,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -31664,7 +31723,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -31799,7 +31858,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -31849,7 +31908,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -32335,7 +32394,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -32860,7 +32919,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -32887,7 +32946,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -32925,7 +32984,7 @@
   "damage": "44<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -32982,7 +33041,7 @@
   "damage": "29<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -33082,7 +33141,7 @@
    }
   ],
   "description": "Déclenche un trait magique sur l'ennemi ciblé.",
-  "name": "Traits fracturés",
+  "name": "Traits d'acier",
   "slug": "magic_hero_bolts_(physical)__ability_fractured_orb_item_tier_1",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
@@ -33185,7 +33244,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -33214,7 +33273,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -33741,7 +33800,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -33804,7 +33863,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -33849,7 +33908,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -33971,7 +34030,7 @@
   "damage": "19<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -34049,7 +34108,7 @@
   "damage": "14<damagephysical></damagephysical> 14<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -34332,7 +34391,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -34410,7 +34469,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -34566,7 +34625,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -34675,7 +34734,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -34880,7 +34939,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36233,7 +36292,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36260,7 +36319,7 @@
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36433,7 +36492,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36495,7 +36554,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36524,7 +36583,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36621,7 +36680,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36796,7 +36855,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36876,7 +36935,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -36996,7 +37055,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37044,7 +37103,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37091,7 +37150,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37147,7 +37206,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37195,7 +37254,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37243,7 +37302,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37361,7 +37420,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37406,7 +37465,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37521,7 +37580,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37550,7 +37609,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37679,7 +37738,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -37825,7 +37884,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38172,7 +38231,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38228,7 +38287,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38273,7 +38332,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38376,7 +38435,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38424,7 +38483,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38472,7 +38531,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38501,7 +38560,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38546,7 +38605,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -38849,7 +38908,7 @@
   "damage": "12<damagephysical></damagephysical> 2<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -39800,7 +39859,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40166,7 +40225,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40228,7 +40287,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40816,7 +40875,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40853,7 +40912,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40882,7 +40941,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40930,7 +40989,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -40978,7 +41037,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41026,7 +41085,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41074,7 +41133,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41119,7 +41178,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41164,7 +41223,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41209,7 +41268,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41254,7 +41313,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41299,7 +41358,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -41344,7 +41403,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -42534,7 +42593,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -43101,7 +43160,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -43900,7 +43959,7 @@
   "icon": "000003E300004779"
  },
  {
-  "description": "Octroie +3 <defense></defense> <hyperlink>Défense</hyperlink> et +3 <resistance></resistance> <hyperlink>Résistance</hyperlink> contre les attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink>.",
+  "description": "Octroie +3 <defense></defense> <hyperlink>Défense</hyperlink> et +3 <resistance></resistance> <hyperlink>Résistance</hyperlink> contre les attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink>.",
   "name": "Anneau de déviation",
   "slug": "0000041b0000190d",
   "icon": "0000041B00001436"
@@ -44091,7 +44150,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44149,7 +44208,7 @@
     "requisite": "<hyperlink>Base</hyperlink>^f"
    },
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "Touche toujours",
@@ -44195,7 +44254,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44247,7 +44306,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44289,7 +44348,7 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "Cette unité est 40 % plus difficile à toucher avec des attaques <hyperlink>Physiques à distance</hyperlink> et <hyperlink>Magie</hyperlink> à distance.",
+  "description": "Cette unité est 40 % plus difficile à toucher avec des attaques <hyperlink>Missile</hyperlink> et <hyperlink>Magie</hyperlink> à distance.",
   "name": "Obscurci",
   "slug": "00000387000014fa",
   "icon": "00000387000014FB"
@@ -44336,7 +44395,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44469,7 +44528,7 @@
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle de feu",
   "slug": "wand_of_fire_breath_ability_wand_of_fire_breath_item_tier_3",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -44845,7 +44904,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44893,7 +44952,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44963,7 +45022,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -44999,7 +45058,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -45272,7 +45331,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -46130,7 +46189,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46167,7 +46226,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46194,7 +46253,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46285,7 +46344,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "L'unité ne peut pas utiliser les capacités <hyperlink>Mêlée</hyperlink>, <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink>.",
+  "description": "L'unité ne peut pas utiliser les capacités <hyperlink>Mêlée</hyperlink>, <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink>.",
   "name": "Pacifié",
   "slug": "000004970000109b",
   "icon": "000004970000109D"
@@ -46519,7 +46578,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "<bulletlist><bullet>-50 % <hyperlink><accuracy></accuracy> Précision</hyperlink> sur les attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink>.</bullet><bullet>Attaques de <hyperlink>Riposte</hyperlink> impossibles.</bullet></bulletlist><br></br><br></br>Aveuglement <hyperlink>contre</hyperlink> Frappe réelle.",
+  "description": "<bulletlist><bullet>-50 % <hyperlink><accuracy></accuracy> Précision</hyperlink> sur les attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink>.</bullet><bullet>Attaques de <hyperlink>Riposte</hyperlink> impossibles.</bullet></bulletlist><br></br><br></br>Aveuglement <hyperlink>contre</hyperlink> Frappe réelle.",
   "name": "Aveuglement",
   "slug": "000003e3000049ef",
   "icon": "000003E3000049ED"
@@ -46603,7 +46662,7 @@
   "icon": "0000049700000F1B"
  },
  {
-  "description": "<bulletlist><bullet>Les attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> visant cette unité subissent -10 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.</bullet><bullet>Peut se cumuler jusqu'à 5 fois.</bullet></bulletlist><br></br><br></br>Évasion <hyperlink>contre</hyperlink> Marqué.",
+  "description": "<bulletlist><bullet>Les attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> visant cette unité subissent -10 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.</bullet><bullet>Peut se cumuler jusqu'à 5 fois.</bullet></bulletlist><br></br><br></br>Évasion <hyperlink>contre</hyperlink> Marqué.",
   "name": "Évasion",
   "slug": "0000041b00000536",
   "icon": "0000041B00000538"
@@ -46890,7 +46949,7 @@
   "icon": "0000049700000A7F"
  },
  {
-  "description": "Cette unité a visité un Sanctuaire de la divination et gagné temporairement :<bulletlist><bullet>Prévoyance</bullet><bullet>+1<range></range> aux attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> <hyperlink>au Combat</hyperlink></bullet></bulletlist>",
+  "description": "Cette unité a visité un Sanctuaire de la divination et gagné temporairement :<bulletlist><bullet>Prévoyance</bullet><bullet>+1<range></range> aux attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> <hyperlink>au Combat</hyperlink></bullet></bulletlist>",
   "name": "Sanctuaire de la divination",
   "slug": "00000493000004ac",
   "icon": "00000493000004AD"
@@ -46950,7 +47009,7 @@
   "icon": "0000049700000146"
  },
  {
-  "description": "<bulletlist><bullet>Les attaques de <hyperlink>Mêlée</hyperlink>, <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> ciblant cette unité subissent -15 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.</bullet><bullet>Peut se cumuler jusqu'à 3 fois.</bullet></bulletlist><br></br><br></br>Brume tenace <hyperlink>contre</hyperlink> Marqué",
+  "description": "<bulletlist><bullet>Les attaques de <hyperlink>Mêlée</hyperlink>, <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> ciblant cette unité subissent -15 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.</bullet><bullet>Peut se cumuler jusqu'à 3 fois.</bullet></bulletlist><br></br><br></br>Brume tenace <hyperlink>contre</hyperlink> Marqué",
   "name": "Brume tenace",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
@@ -47028,7 +47087,7 @@
   "icon": "0000048D00001E70"
  },
  {
-  "description": "<bulletlist><bullet>Les attaques infligent +20 % de dégâts.</bullet><bullet>Les capacités de <hyperlink>Assistance</hyperlink> soignent +20 % de <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+1 <defense></defense> <hyperlink>Défense</hyperlink>.</bullet><bullet>+1 <resistance></resistance> <hyperlink>Résistance</hyperlink>.</bullet><bullet>Les attaques infligent +30 % de dégâts.</bullet><bullet>Les capacités de <hyperlink>Assistance</hyperlink> soignent +30 % de <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet></bulletlist>",
   "name": "Élan",
   "slug": "0000048d00001c55",
   "icon": "0000048D00001C5E"
@@ -47256,7 +47315,7 @@
   "icon": "0000048B00000549"
  },
  {
-  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> infligent +20 % de dégâts.",
+  "description": "Les attaques <hyperlink>Missile</hyperlink> infligent +20 % de dégâts.",
   "name": "Tir préparé",
   "slug": "0000048b0000053e",
   "icon": "0000048B0000053F"
@@ -47634,7 +47693,7 @@
   "icon": "000003E300004C79"
  },
  {
-  "description": "Les attaques <hyperlink>Physiques à distance</hyperlink> ont +1<hyperlink><range></range>Portée</hyperlink> de portée.",
+  "description": "Les attaques <hyperlink>Missile</hyperlink> ont +1<hyperlink><range></range>Portée</hyperlink> de portée.",
   "name": "Éveillé : Flèches chercheuses",
   "slug": "000003e300004c72",
   "icon": "000003E300004C79"
@@ -48347,7 +48406,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -48374,7 +48433,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Physiques à distance^pm</hyperlink>"
+    "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -48743,12 +48802,9 @@
   ],
   "description": "L'unité ennemie ciblée et une autre à moins de 3 cases subissent des dégâts.",
   "name": "Malédiction de fragmentation",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_staff_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_staff_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Base</hyperlink>^f"
-   },
    {
     "requisite": "<hyperlink>Affaiblissement</hyperlink>"
    },
@@ -48946,7 +49002,7 @@
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle putride",
   "slug": "putrid_breath_item_forge_ability_equipment_upgrade_active_wand_putrid_breath",
-  "damage": "28<damageblight></damageblight> ",
+  "damage": "37<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -48973,7 +49029,7 @@
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle de givre",
   "slug": "frost_breath_item_forge_ability_equipment_upgrade_active_wand_frost_breath",
-  "damage": "28<damagefrost></damagefrost> ",
+  "damage": "36<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -49000,7 +49056,7 @@
   "description": "Inflige des dégâts à toutes les unités dans un cône de 3 case(s).",
   "name": "Souffle de feu",
   "slug": "fire_breath_item_forge_ability_equipment_upgrade_active_wand_fire_breath",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magie^f</hyperlink>"
@@ -49173,12 +49229,9 @@
   ],
   "description": "L'unité ennemie ciblée et une autre à moins de 3 cases subissent des dégâts.",
   "name": "Malédiction de fragmentation",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_wand_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_wand_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Base</hyperlink>^f"
-   },
    {
     "requisite": "<hyperlink>Affaiblissement</hyperlink>"
    },
@@ -49593,7 +49646,7 @@
   "icon": "0000045E00000D47"
  },
  {
-  "description": "Une fois par tour, cette unité gagne Défense renforcée si elle subit une attaque de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Physiques à distance</hyperlink>.",
+  "description": "Une fois par tour, cette unité gagne Défense renforcée si elle subit une attaque de <hyperlink>Mêlée</hyperlink> ou <hyperlink>Missile</hyperlink>.",
   "name": "Renforcement de défense",
   "slug": "0000045e00000d43",
   "icon": "0000045E00000D46"
@@ -50052,7 +50105,7 @@
   "icon": "0000045E00000D6F"
  },
  {
-  "description": "Cette unité est 30 % plus difficile à toucher avec des attaques <hyperlink>Physiques à distance</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
+  "description": "Cette unité est 30 % plus difficile à toucher avec des attaques <hyperlink>Missile</hyperlink> et de <hyperlink>Magie</hyperlink> à distance.",
   "name": "Bouclier Éole",
   "slug": "0000045e00000c0c",
   "icon": "0000045E00000C0D"

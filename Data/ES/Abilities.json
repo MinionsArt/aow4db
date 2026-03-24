@@ -41,7 +41,7 @@
     "note": "Enfriamiento: 1 <turn></turn>"
    }
   ],
-  "description": "La unidad objetivo:<bulletlist><bullet>Recibe daño.</bullet><bullet>Tiene una probabilidad inicial del 90 % de adquirir el estado Interrupción durante 2 <turn></turn> Turnos.</bullet><bullet>Tiene una probabilidad inicial del 90 % de adquirir el estado Drenaje de maná durante 1 <turn></turn> Turnos.</bullet>",
+  "description": "La unidad objetivo:<bulletlist><bullet>Recibe daño.</bullet><bullet>Tiene una probabilidad inicial del 90 % de adquirir el estado Interrupción durante 2 <turn></turn> Turnos.</bullet><bullet>Tiene una probabilidad inicial del 90 % de adquirir el estado Drenaje de maná durante 1 <turn></turn> Turnos.</bullet></bulletlist>",
   "name": "Drenaje de maná",
   "slug": "mana_drain_ability_000004E00000006C",
   "damage": "30<damagephysical></damagephysical> ",
@@ -229,7 +229,7 @@
   "description": "<bulletlist><bullet>Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).</bullet><bullet>Las unidades de Origen mágico tienen una probabilidad inicial del 30 % de morir al instante.</bullet></bulletlist>",
   "name": "Aliento antimagia",
   "slug": "anti-magic_breath_ability_000004E000000059",
-  "damage": "31<damagephysical></damagephysical> ",
+  "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -294,7 +294,7 @@
   "icon": "000004A600000B7B"
  },
  {
-  "description": "Una unidad grande que:<bulletlist><bullet>Es un 20 % más fácil de alcanzar con ataques de <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink>.</bullet><bullet>Es inmune a la mayoría de efectos de desplazamiento.</bullet><bullet>Tiene Demolición.</bullet></bulletlist>",
+  "description": "Una unidad grande que:<bulletlist><bullet>Es un 20 % más fácil de alcanzar con ataques de <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink>.</bullet><bullet>Es inmune a la mayoría de efectos de desplazamiento.</bullet><bullet>Tiene Demolición.</bullet></bulletlist>",
   "name": "Objetivo grande",
   "slug": "000003450000052c",
   "icon": "000003450000049B"
@@ -338,11 +338,6 @@
  {
   "modifiers": [
    {
-    "description": "Ignora el 50 % de la <defense></defense> <hyperlink>Defensa</hyperlink> del objetivo.",
-    "name": "Perforante^n",
-    "count": 1
-   },
-   {
     "description": "Probabilidad inicial del 60 % de drenar todos los <caststrategic></caststrategic><hyperlink> Conjuros de unidad</hyperlink> del objetivo durante 2 <turn></turn> Turnos.",
     "name": "Interrupción^f",
     "count": 1
@@ -351,7 +346,7 @@
   "description": "Ataca a la unidad enemiga objetivo.",
   "name": "Ataque cuerpo a cuerpo",
   "slug": "melee_strike_(base)_ability_000004E000000033",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
@@ -369,6 +364,11 @@
  {
   "modifiers": [
    {
+    "description": "Ignora el 50 % de la <defense></defense> <hyperlink>Defensa</hyperlink> del objetivo.",
+    "name": "Perforante^n",
+    "count": 1
+   },
+   {
     "description": "Inflige Interrupción durante 2 <turn></turn> Turnos.",
     "name": "Interrupción^f",
     "count": 1
@@ -377,10 +377,13 @@
   "description": "La unidad objetivo recibe daño. Entra en <hyperlink>Modo defensivo</hyperlink>.",
   "name": "Picadura disruptiva",
   "slug": "disrupting_sting_ability_000004E000000033",
-  "damage": "40<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -441,7 +444,7 @@
   "icon": "0000045E00000665"
  },
  {
-  "description": "La unidad tiene +3 de <defense></defense> <hyperlink>Defensa</hyperlink> contra ataques <hyperlink>Alcance físico</hyperlink>.",
+  "description": "La unidad tiene +3 de <defense></defense> <hyperlink>Defensa</hyperlink> contra ataques <hyperlink>Proyectil</hyperlink>.",
   "name": "Refuerzo",
   "slug": "000003e3000071f0",
   "icon": "000003E3000071F2"
@@ -461,7 +464,7 @@
  {
   "modifiers": [
    {
-    "description": "Probabilidad inicial del 10 % de <hyperlink>engullir</hyperlink> una unidad que no sea héroe.",
+    "description": "Probabilidad inicial del 60 % de <hyperlink>engullir</hyperlink> una unidad que no sea héroe.",
     "name": "Engullir^n",
     "count": 1
    }
@@ -488,7 +491,13 @@
   "icon": "000003EB0000040D"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Probabilidad inicial del 60 % de infligir el estado Inmovilización durante 1 <turn></turn> Turnos.",
+    "name": "Inmovilización^f",
+    "count": 1
+   }
+  ],
   "description": "Las unidades enemigas situadas en un área de 2 casillas(s) reciben daño.<br></br><br></br>Inflige del doble de daño a los obstáculos.",
   "name": "Onda sísmica",
   "slug": "earth_tremor_ability_000004E00000001E",
@@ -640,7 +649,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -658,7 +667,7 @@
   "icon": "0000039F000016E8"
  },
  {
-  "description": "+1 de <hyperlink><range></range>Alcance</hyperlink> a los ataques <hyperlink>Alcance físico</hyperlink>.",
+  "description": "+1 de <hyperlink><range></range>Alcance</hyperlink> a los ataques <hyperlink>Proyectil</hyperlink>.",
   "name": "Medalla de adalid: vista de águila",
   "slug": "000003e300006289",
   "icon": "000003E30000627B"
@@ -1202,7 +1211,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -1253,7 +1262,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -1331,7 +1340,7 @@
  {
   "notes": [
    {
-    "note": "Enfriamiento: 2 <turn></turn>"
+    "note": "Enfriamiento: 1 <turn></turn>"
    }
   ],
   "description": "Elimina el marcador de <hyperlink>Botín</hyperlink> del objetivo para otorgar a una unidad aliada situada en un área de 4 casilla(s):<bulletlist><bullet>Poder saqueado.</bullet><bullet>15 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet></bulletlist>",
@@ -1340,7 +1349,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Siempre acierta",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001EAD"
  },
@@ -1357,7 +1366,7 @@
   "icon": "000003BD000020C1"
  },
  {
-  "description": "Viento restaurador:<<bulletlist><bullet>Recupera +10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> adicionales.</bullet><bullet>Se reduce el enfriamiento en -1 <turn></turn><hyperlink>Turno</hyperlink>.</bullet></bulletlist>",
+  "description": "Viento restaurador:<bulletlist><bullet>Recupera +10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> adicionales.</bullet><bullet>Se reduce el enfriamiento en -1<turn></turn><hyperlink>Turno</hyperlink> .</bullet></bulletlist>",
   "name": "Viento restaurador del campeón",
   "slug": "0000048d00001f59",
   "icon": "000003E30000627B"
@@ -1421,7 +1430,7 @@
  {
   "notes": [
    {
-    "note": "Enfriamiento: 2 <turn></turn>"
+    "note": "Enfriamiento: 1 <turn></turn>"
    }
   ],
   "description": "La unidad aliada objetivo que tenga puntos de acción restantes obtiene:<bulletlist><bullet>Impulso potenciador durante 1 <turn></turn><hyperlink>Turnos</hyperlink>.</bullet></bulletlist>",
@@ -1430,7 +1439,7 @@
   "damage": "",
   "requisites": [],
   "accuracy": "Siempre acierta",
-  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "actionPoints": "<freeaction></freeaction>",
   "range": "4",
   "icon": "0000048D00001E1B"
  },
@@ -1503,7 +1512,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -1577,7 +1586,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -1630,7 +1639,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -1798,7 +1807,7 @@
   "damage": "20<damagephysical></damagephysical> 20<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -2937,7 +2946,7 @@
   "icon": "000003E300005580"
  },
  {
-  "description": "Esta unidad es muy pequeña, por lo que es un 20 % más difícil de alcanzar con ataques <hyperlink>Alcance físico</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
+  "description": "Esta unidad es muy pequeña, por lo que es un 20 % más difícil de alcanzar con ataques <hyperlink>Proyectil</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
   "name": "Muy pequeña",
   "slug": "000003e30000528e",
   "icon": "000003E30000528F"
@@ -3252,17 +3261,12 @@
     "description": "Probabilidad inicial del 60 % de infligir el estado Quemadura durante 3 <turn></turn> Turnos.",
     "name": "Quemadura^f",
     "count": 1
-   },
-   {
-    "description": "Ignora el 50 % de la <resistance></resistance> <hyperlink>Resistencia</hyperlink> del objetivo.",
-    "name": "Ruptura^f",
-    "count": 1
    }
   ],
   "description": "Ataca a la unidad enemiga objetivo.",
   "name": "Ataque mágico",
   "slug": "magic_strike_(base)_ability_0000049700003753",
-  "damage": "13<damagefire></damagefire> ",
+  "damage": "15<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -3301,7 +3305,13 @@
   "icon": "000004970000375C"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignora el 50 % de la <resistance></resistance> <hyperlink>Resistencia</hyperlink> del objetivo.",
+    "name": "Ruptura^f",
+    "count": 1
+   }
+  ],
   "description": "En un cono de 2 casilla(s):<bulletlist><bullet>Las unidades reciben daño.</bullet><bullet>Las unidades obtienen 2 de Quemadura durante 3 <turn></turn> Turnos.</bullet><bullet>Se <hyperlink>prende fuego</hyperlink> a las casillas.</bullet></bulletlist><br></br>Inflige el doble de daño a los obstáculos.",
   "name": "Rayo infernal",
   "slug": "infernal_ray_ability_0000049700003753",
@@ -3459,17 +3469,11 @@
   "icon": "0000049700003886"
  },
  {
-  "modifiers": [
-   {
-    "description": "Ignora el 50 % de la <defense></defense> <hyperlink>Defensa</hyperlink> del objetivo.",
-    "name": "Perforante^n",
-    "count": 1
-   }
-  ],
+  "modifiers": [],
   "description": "Ataca a la unidad enemiga objetivo.",
   "name": "Ataque cuerpo a cuerpo",
   "slug": "melee_strike_(base)_ability_000004970000366E",
-  "damage": "12<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
@@ -3485,14 +3489,23 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ignora el 50 % de la <defense></defense> <hyperlink>Defensa</hyperlink> del objetivo.",
+    "name": "Perforante^n",
+    "count": 1
+   }
+  ],
   "description": "La unidad enemiga objetivo:<bulletlist><bullet>Recibe daño.</bullet><bullet>Obtiene 3 de Debilitamiento durante 3 <turn></turn> Turnos.</bullet><bullet>Obtiene 2 de Envenenamiento durante 3 <turn></turn> Turnos.</bullet></bulletlist><br></br>Entra en <hyperlink>Modo defensivo</hyperlink>.",
   "name": "Picadura debilitante",
   "slug": "debilitating_sting_ability_000004970000366E",
-  "damage": "20<damagephysical></damagephysical> 20<damageblight></damageblight> ",
+  "damage": "15<damagephysical></damagephysical> 15<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -3568,7 +3581,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -3661,7 +3674,7 @@
   "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -3720,7 +3733,7 @@
   "damage": "41<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -3919,7 +3932,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -3974,7 +3987,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6602,7 +6615,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6635,7 +6648,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -6665,7 +6678,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6698,7 +6711,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -6728,7 +6741,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6761,7 +6774,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -6791,7 +6804,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6824,7 +6837,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -6854,7 +6867,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6887,7 +6900,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -6917,7 +6930,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -6950,7 +6963,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -7609,7 +7622,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -7643,7 +7656,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -8343,7 +8356,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -8389,7 +8402,7 @@
   "damage": "6<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -8415,7 +8428,7 @@
   "damage": "6<damagephysical></damagephysical> 2<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -8515,7 +8528,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -8838,7 +8851,7 @@
   "damage": "14<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -8948,7 +8961,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -8999,7 +9012,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -9044,7 +9057,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -9083,7 +9096,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -9122,7 +9135,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -9161,7 +9174,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -9200,7 +9213,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10715,7 +10728,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10748,7 +10761,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10784,7 +10797,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10817,7 +10830,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10853,7 +10866,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10886,7 +10899,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10922,7 +10935,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10955,7 +10968,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagefire></damagefire> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -10991,7 +11004,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11024,7 +11037,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11060,7 +11073,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11093,7 +11106,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11129,7 +11142,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11162,7 +11175,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11643,7 +11656,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -11755,7 +11768,7 @@
   "description": "Inflige daño en un cono de 1 casilla(s).",
   "name": "Barrido",
   "slug": "swipe_ability_0000049000000027",
-  "damage": "26<damagephysical></damagephysical> ",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
@@ -12308,7 +12321,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -12419,7 +12432,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -12457,7 +12470,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -12480,7 +12493,7 @@
   "icon": "0000048D0000120C"
  },
  {
-  "description": "Los ataques básicos <hyperlink>Alcance físico</hyperlink> obtienen +1 de <hyperlink><range></range>Alcance</hyperlink>.",
+  "description": "Los ataques básicos <hyperlink>Proyectil</hyperlink> obtienen +1 de <hyperlink><range></range>Alcance</hyperlink>.",
   "name": "Arco largo",
   "slug": "0000048d00001211",
   "icon": "0000048D00001213"
@@ -12809,7 +12822,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -13108,7 +13121,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -13131,7 +13144,7 @@
   "icon": "000004970000243C"
  },
  {
-  "description": "La unidad recupera 1 <hyperlink>Puntos de acción</hyperlink> al matar a otra unidad con un ataque <hyperlink>mágico</hyperlink>, <hyperlink>Cuerpo a cuerpo</hyperlink> o <hyperlink>Alcance físico</hyperlink>.<br></br><br></br>Funciona una vez por <turn></turn> Turno.",
+  "description": "La unidad recupera 1 <hyperlink>Puntos de acción</hyperlink> al matar a otra unidad con un ataque <hyperlink>mágico</hyperlink>, <hyperlink>Cuerpo a cuerpo</hyperlink> o <hyperlink>Proyectil</hyperlink>.<br></br><br></br>Funciona una vez por <turn></turn> Turno.",
   "name": "Impulso mortal",
   "slug": "000003e300004ef4",
   "icon": "000003E300004EF5"
@@ -13359,7 +13372,7 @@
   "damage": "7<damagephysical></damagephysical> 7<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -14056,7 +14069,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -14469,7 +14482,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -14510,7 +14523,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -14648,7 +14661,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -14742,7 +14755,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -14810,7 +14823,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -14843,7 +14856,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -14885,7 +14898,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -14915,7 +14928,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "50%",
@@ -15619,7 +15632,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -15655,7 +15668,7 @@
   "damage": "24<damagephysical></damagephysical> 4<damagespirit></damagespirit> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -15804,9 +15817,9 @@
  },
  {
   "notes": [],
-  "description": "El conjurador se mueve a la casilla objetivo y deja 1 <hyperlink>Punto de acción</hyperlink>.",
-  "name": "Fase",
-  "slug": "phase_ability-_no_cooldown_0000041B00001492",
+  "description": "El conjurador se mueve a la casilla objetivo.",
+  "name": "Fase veloz",
+  "slug": "fast_phase_ability_0000041B00001492",
   "damage": "",
   "requisites": [
    {
@@ -15817,8 +15830,8 @@
    }
   ],
   "accuracy": "Siempre acierta",
-  "actionPoints": "<fullactioncontinue></fullactioncontinue>",
-  "range": "6",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "3",
   "icon": "000003E3000045B1"
  },
  {
@@ -15962,7 +15975,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -16197,13 +16210,13 @@
   "icon": "0000041B00001011"
  },
  {
-  "description": "Las unidades aliadas adyacentes son un 30 % más difíciles de alcanzar con ataques <hyperlink>Alcance físico</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
+  "description": "Las unidades aliadas adyacentes son un 30 % más difíciles de alcanzar con ataques <hyperlink>Proyectil</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
   "name": "Aura de barrera eólica",
   "slug": "0000049700000021",
   "icon": "000004970000042E"
  },
  {
-  "description": "Esta unidad es un 60 % más difícil de alcanzar con ataques <hyperlink>Alcance físico</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
+  "description": "Esta unidad es un 60 % más difícil de alcanzar con ataques <hyperlink>Proyectil</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
   "name": "Barrera eólica",
   "slug": "000003e3000045a3",
   "icon": "000003E3000045A4"
@@ -16269,7 +16282,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -17019,7 +17032,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -17064,7 +17077,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -17094,7 +17107,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -17124,7 +17137,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -17168,6 +17181,39 @@
   "range": "1",
   "notes": [],
   "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [],
+  "description": "Inflige daño a la unidad objetivo.",
+  "name": "Estallido menor",
+  "slug": "wyvern_burst_ability_000003EC00002919",
+  "damage": "15<damagefire></damagefire> 1<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magia^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Básico^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   },
+   {
+    "note": "Enfriamiento: 1 <turn></turn>"
+   }
+  ],
+  "icon": "00000497000029D1"
  },
  {
   "modifiers": [],
@@ -17483,7 +17529,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -17511,6 +17557,11 @@
     "description": "Inflige Envenenamiento durante 3 <turn></turn> Turnos.",
     "name": "Envenenamiento^m",
     "count": 1
+   },
+   {
+    "description": "Los ataques recuperan 5 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.",
+    "name": "Robo de vida^m",
+    "count": 1
    }
   ],
   "description": "Ataca a la unidad enemiga objetivo.",
@@ -17532,7 +17583,13 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Los ataques recuperan 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.",
+    "name": "Robo de vida^m",
+    "count": 1
+   }
+  ],
   "description": "Ataca a 3 unidades adyacentes y anula su <hyperlink>Modo defensivo</hyperlink> y su <hyperlink>Contraataque</hyperlink>.<br></br>Entra en <hyperlink>Modo defensivo</hyperlink> tras su uso.",
   "name": "Barrido de cola",
   "slug": "tail_swipe_ability_000003EC00001E55",
@@ -17558,12 +17615,17 @@
     "description": "Inflige 2 acumulaciones de Decadencia durante 3 <turn></turn>.",
     "name": "Decadencia^f",
     "count": 1
+   },
+   {
+    "description": "Los ataques recuperan 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.",
+    "name": "Robo de vida^m",
+    "count": 1
    }
   ],
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento pútrido",
   "slug": "putrid_breath_dragon_ability_000003EC00001E55",
-  "damage": "20<damageblight></damageblight> ",
+  "damage": "30<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -17613,10 +17675,10 @@
     "count": 1
    }
   ],
-  "description": "Inflige daño en un área de 2 casilla(s).",
+  "description": "Inflige daño a las unidades enemigas situadas en un área de 2 casilla(s).",
   "name": "Sobrecalentamiento",
   "slug": "overheat_ability_000003EC00001891",
-  "damage": "22<damagefire></damagefire> ",
+  "damage": "30<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -17628,9 +17690,6 @@
   "notes": [
    {
     "note": "Enfriamiento: 2 <turn></turn>"
-   },
-   {
-    "note": "Empieza con enfriamiento: 1<turn></turn>"
    }
   ],
   "icon": "000003E3000052B3"
@@ -17928,7 +17987,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -17979,7 +18038,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -18564,7 +18623,7 @@
   "damage": "41<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -19071,7 +19130,7 @@
   "damage": "9<damagephysical></damagephysical> 5<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -19105,7 +19164,7 @@
   "damage": "24<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -19166,7 +19225,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -19572,7 +19631,7 @@
   "description": "Inflige daño a todas las unidades situadas en una línea de 5 casilla(s).",
   "name": "Aliento eléctrico",
   "slug": "lightning_breath_dragon_ability_000003E300006BEC",
-  "damage": "31<damagelightning></damagelightning> ",
+  "damage": "40<damagelightning></damagelightning> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -19658,7 +19717,7 @@
   "description": "En un cono de 3 casilla(s):<bulletlist><bullet>Las unidades enemigas reciben daño.</bullet><bullet>Las unidades aliadas recuperan 20 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Se eliminan hasta 2 de los <hyperlink>Efectos de estado negativo</hyperlink> de las unidades aliadas.</bullet></bulletlist>",
   "name": "Aliento purificador",
   "slug": "purifying_breath_dragon_ability_000003E300006BD8",
-  "damage": "22<damagespirit></damagespirit> ",
+  "damage": "30<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -19741,7 +19800,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -19768,7 +19827,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -20714,7 +20773,7 @@
   "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -20916,7 +20975,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -21084,7 +21143,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -21543,7 +21602,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -22538,7 +22597,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -22591,7 +22650,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -22709,7 +22768,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -22748,7 +22807,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -22831,7 +22890,7 @@
   "icon": "0000049700000175"
  },
  {
-  "description": "Una vez por turno, esta unidad obtiene:<bulletlist><bullet>Defensa reforzada cuando le alcanza un ataque <hyperlink>Cuerpo a cuerpo</hyperlink> o de <hyperlink>Alcance físico</hyperlink>.</bullet><bullet>Resistencia reforzada cuando le alcanza un ataque <hyperlink>mágico</hyperlink>.</bullet></bulletlist>",
+  "description": "Una vez por turno, esta unidad obtiene:<bulletlist><bullet>Defensa reforzada cuando le alcanza un ataque <hyperlink>Cuerpo a cuerpo</hyperlink> o de <hyperlink>Proyectil</hyperlink>.</bullet><bullet>Resistencia reforzada cuando le alcanza un ataque <hyperlink>mágico</hyperlink>.</bullet></bulletlist>",
   "name": "Refuerzo",
   "slug": "000003e300006a3a",
   "icon": "000003E100001523"
@@ -22951,7 +23010,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -22981,7 +23040,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23050,7 +23109,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23184,7 +23243,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23347,7 +23406,7 @@
   "damage": "7<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23524,7 +23583,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23630,7 +23689,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23666,7 +23725,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23900,7 +23959,7 @@
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23927,7 +23986,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -23954,7 +24013,7 @@
   "damage": "8<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -24395,7 +24454,7 @@
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento de escarcha",
   "slug": "frost_breath_dragon_ability_000003E300004E76",
-  "damage": "31<damagefrost></damagefrost> ",
+  "damage": "40<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -24650,7 +24709,7 @@
   "description": "Las unidades enemigas situadas en un cono de 2 casilla(s) reciben daño y obtienen 2 stackes de Debilitamiento.",
   "name": "Aullido debilitante",
   "slug": "enfeebling_howl_ability_000003E300004A35",
-  "damage": "18<damagefrost></damagefrost> ",
+  "damage": "30<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -24721,7 +24780,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24831,7 +24890,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -24955,7 +25014,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25034,7 +25093,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -25452,7 +25511,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -25779,7 +25838,7 @@
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento de fuego",
   "slug": "fire_breath_dragon_ability_000003BD00002904",
-  "damage": "31<damagefire></damagefire> ",
+  "damage": "40<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -25922,7 +25981,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -25952,7 +26011,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -28038,7 +28097,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -28068,7 +28127,7 @@
   "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -28101,7 +28160,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -28635,7 +28694,7 @@
   "icon": "000004BB00000018"
  },
  {
-  "description": "Una vez por turno, esta unidad obtiene Evasión cuando le alcanza un ataque <hyperlink>mágico</hyperlink> o de <hyperlink>Alcance físico</hyperlink>.",
+  "description": "Una vez por turno, esta unidad obtiene Evasión cuando le alcanza un ataque <hyperlink>mágico</hyperlink> o de <hyperlink>Proyectil</hyperlink>.",
   "name": "Evasión reforzada",
   "slug": "000004a600000a3a",
   "icon": "000004A600000A55"
@@ -28882,7 +28941,7 @@
   "damage": "25<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -29201,7 +29260,7 @@
   "icon": "000003E300004F67"
  },
  {
-  "description": "<bulletlist><bullet>Los ataques de <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> tienen una probabilidad inicial del 90 % de infligir Debilitamiento.</bullet><bullet>Los ataques <hyperlink>Cuerpo a cuerpo</hyperlink> contra unidades <hyperlink>debilitadas</hyperlink>:<bulletlist></bullet><bullet>Infligen +20 % de daño.</bullet><bullet>Recuperan 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> del atacante una vez por turno.</bullet></bulletlist></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
+  "description": "<bulletlist><bullet>Los ataques de <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink> tienen una probabilidad inicial del 90 % de infligir Debilitamiento.</bullet><bullet>Los ataques <hyperlink>Cuerpo a cuerpo</hyperlink> contra unidades <hyperlink>debilitadas</hyperlink>:<bulletlist></bullet><bullet>Infligen +20 % de daño.</bullet><bullet>Recuperan 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> del atacante una vez por turno.</bullet></bulletlist></bulletlist><br></br>Los efectos de los ataques de disparo único <hyperlink>aumentan</hyperlink>.",
   "name": "Matanza selectiva",
   "slug": "0000049700000f4f",
   "icon": "000003E3000055A5"
@@ -29409,7 +29468,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -29564,7 +29623,7 @@
     "requisite": "<hyperlink>Magia^f</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
@@ -30391,7 +30450,7 @@
   "icon": "0000049700000D3F"
  },
  {
-  "description": "Mientras sea el líder del ejército, todas las unidades que lo conforman, excepto los héroes, obtienen:<bulletlist><bullet>Los ataques <hyperlink>mágicos</hyperlink> y <hyperlink>Alcance físico</hyperlink> obtienen +1 de <hyperlink><range></range>Alcance</hyperlink>.</bullet></bulletlist>",
+  "description": "Mientras sea el líder del ejército, todas las unidades que lo conforman, excepto los héroes, obtienen:<bulletlist><bullet>Los ataques <hyperlink>mágicos</hyperlink> y <hyperlink>Proyectil</hyperlink> obtienen +1 de <hyperlink><range></range>Alcance</hyperlink>.</bullet></bulletlist>",
   "name": "Parangón de lo astral",
   "slug": "0000048d00000abf",
   "icon": "0000048D00000ABC"
@@ -30537,7 +30596,7 @@
   "icon": "0000049700002F1B"
  },
  {
-  "description": "Recupera 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> al matar a una unidad con un ataque <hyperlink>mágico</hyperlink>, <hyperlink>Cuerpo a cuerpo</hyperlink> o <hyperlink>Alcance físico</hyperlink>.",
+  "description": "Recupera 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink> al matar a una unidad con un ataque <hyperlink>mágico</hyperlink>, <hyperlink>Cuerpo a cuerpo</hyperlink> o <hyperlink>Proyectil</hyperlink>.",
   "name": "Recuperación de sangre",
   "slug": "0000049700002f26",
   "icon": "0000049700002F28"
@@ -30854,7 +30913,7 @@
   "damage": "40<damageblight></damageblight> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -31266,7 +31325,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -31464,7 +31523,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -31664,7 +31723,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -31799,7 +31858,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -31849,7 +31908,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -32335,7 +32394,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -32860,7 +32919,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -32887,7 +32946,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -32925,7 +32984,7 @@
   "damage": "44<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -32982,7 +33041,7 @@
   "damage": "29<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -33082,7 +33141,7 @@
    }
   ],
   "description": "Lanza un rayo mágico contra un enemigo objetivo.",
-  "name": "Rayos fracturados",
+  "name": "Rayos de acero",
   "slug": "magic_hero_bolts_(physical)__ability_fractured_orb_item_tier_1",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
@@ -33185,7 +33244,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -33214,7 +33273,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -33741,7 +33800,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -33804,7 +33863,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -33849,7 +33908,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -33971,7 +34030,7 @@
   "damage": "19<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -34049,7 +34108,7 @@
   "damage": "14<damagephysical></damagephysical> 14<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -34332,7 +34391,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -34410,7 +34469,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -34566,7 +34625,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -34675,7 +34734,7 @@
   "damage": "12<damagephysical></damagephysical> 12<damagelightning></damagelightning> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -34880,7 +34939,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36233,7 +36292,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36260,7 +36319,7 @@
   "damage": "26<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36433,7 +36492,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36495,7 +36554,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36524,7 +36583,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36621,7 +36680,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36796,7 +36855,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36876,7 +36935,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -36996,7 +37055,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37044,7 +37103,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37091,7 +37150,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37147,7 +37206,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37195,7 +37254,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37243,7 +37302,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37361,7 +37420,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37406,7 +37465,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37521,7 +37580,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37550,7 +37609,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37679,7 +37738,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -37825,7 +37884,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38172,7 +38231,7 @@
   "damage": "22<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38228,7 +38287,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38273,7 +38332,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38376,7 +38435,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38424,7 +38483,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38472,7 +38531,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38501,7 +38560,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38546,7 +38605,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -38849,7 +38908,7 @@
   "damage": "12<damagephysical></damagephysical> 2<damagefrost></damagefrost> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -39800,7 +39859,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40166,7 +40225,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40228,7 +40287,7 @@
   "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40816,7 +40875,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40853,7 +40912,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40882,7 +40941,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40930,7 +40989,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -40978,7 +41037,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41026,7 +41085,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41074,7 +41133,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41119,7 +41178,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41164,7 +41223,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41209,7 +41268,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41254,7 +41313,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41299,7 +41358,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -41344,7 +41403,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -42534,7 +42593,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -43101,7 +43160,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -43900,7 +43959,7 @@
   "icon": "000003E300004779"
  },
  {
-  "description": "Otorga +3 de <defense></defense> <hyperlink>Defensa</hyperlink> y +3 de <resistance></resistance> <hyperlink>Resistencia</hyperlink> contra ataques <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink>.",
+  "description": "Otorga +3 de <defense></defense> <hyperlink>Defensa</hyperlink> y +3 de <resistance></resistance> <hyperlink>Resistencia</hyperlink> contra ataques <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink>.",
   "name": "Anillo de bloqueo mágico",
   "slug": "0000041b0000190d",
   "icon": "0000041B00001436"
@@ -44091,7 +44150,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44149,7 +44208,7 @@
     "requisite": "<hyperlink>Básico^m</hyperlink>"
    },
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "Siempre acierta",
@@ -44195,7 +44254,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44247,7 +44306,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44289,7 +44348,7 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "Esta unidad es un 40 % más difícil de alcanzar con ataques <hyperlink>Alcance físico</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
+  "description": "Esta unidad es un 40 % más difícil de alcanzar con ataques <hyperlink>Proyectil</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
   "name": "Camuflaje",
   "slug": "00000387000014fa",
   "icon": "00000387000014FB"
@@ -44336,7 +44395,7 @@
   "damage": "34<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44469,7 +44528,7 @@
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento de fuego",
   "slug": "wand_of_fire_breath_ability_wand_of_fire_breath_item_tier_3",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -44845,7 +44904,7 @@
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44893,7 +44952,7 @@
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44963,7 +45022,7 @@
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -44999,7 +45058,7 @@
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -45272,7 +45331,7 @@
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -46130,7 +46189,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46167,7 +46226,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46194,7 +46253,7 @@
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -46285,7 +46344,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "La unidad no puede usar habilidades <hyperlink>Cuerpo a cuerpo</hyperlink>, de <hyperlink>Alcance físico</hyperlink> ni <hyperlink>mágicas</hyperlink>.",
+  "description": "La unidad no puede usar habilidades <hyperlink>Cuerpo a cuerpo</hyperlink>, de <hyperlink>Proyectil</hyperlink> ni <hyperlink>mágicas</hyperlink>.",
   "name": "Apaciguar",
   "slug": "000004970000109b",
   "icon": "000004970000109D"
@@ -46519,7 +46578,7 @@
   "icon": "000003E300007216"
  },
  {
-  "description": "<bulletlist><bullet>-50 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink> de los ataques <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink>.</bullet><bullet>No puede realizar <hyperlink>Contraataques</hyperlink>.</bullet></bulletlist><br></br><br></br>Ceguera <GLOBAL.OpposingStatusEffectsConcept>contrarresta</hyperlink> Golpe verdadero.",
+  "description": "<bulletlist><bullet>-50 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink> de los ataques <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink>.</bullet><bullet>No puede realizar <hyperlink>Contraataques</hyperlink>.</bullet></bulletlist><br></br><br></br>Ceguera <GLOBAL.OpposingStatusEffectsConcept>contrarresta</hyperlink> Golpe verdadero.",
   "name": "Ceguera",
   "slug": "000003e3000049ef",
   "icon": "000003E3000049ED"
@@ -46603,7 +46662,7 @@
   "icon": "0000049700000F1B"
  },
  {
-  "description": "<bulletlist><bullet>Los ataques <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> dirigidos a esta unidad sufren -10 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.</bullet><bullet>Se acumula hasta 5 veces.</bullet></bulletlist><br></br><br></br>Evasión <GLOBAL.OpposingStatusEffectsConcept>contrarresta</hyperlink> Marca.",
+  "description": "<bulletlist><bullet>Los ataques <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink> dirigidos a esta unidad sufren -10 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.</bullet><bullet>Se acumula hasta 5 veces.</bullet></bulletlist><br></br><br></br>Evasión <GLOBAL.OpposingStatusEffectsConcept>contrarresta</hyperlink> Marca.",
   "name": "Evasión",
   "slug": "0000041b00000536",
   "icon": "0000041B00000538"
@@ -46890,7 +46949,7 @@
   "icon": "0000049700000A7F"
  },
  {
-  "description": "Esta unidad ha visitado un santuario de la adivinación y ha obtenido temporalmente:<bulletlist><bullet>Visión lejana.</bullet><bullet>+1 <range></range> al asestar ataques de <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> en <hyperlink>Combate</hyperlink>.</bullet></bulletlist>",
+  "description": "Esta unidad ha visitado un santuario de la adivinación y ha obtenido temporalmente:<bulletlist><bullet>Visión lejana.</bullet><bullet>+1 <range></range> al asestar ataques de <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink> en <hyperlink>Combate</hyperlink>.</bullet></bulletlist>",
   "name": "Santuario de la adivinación",
   "slug": "00000493000004ac",
   "icon": "00000493000004AD"
@@ -46950,7 +47009,7 @@
   "icon": "0000049700000146"
  },
  {
-  "description": "<bulletlist><bullet>Los ataques <hyperlink>Cuerpo a cuerpo</hyperlink>, de <hyperlink>Alcance físico</hyperlink> y <hyperlink>mágicos</hyperlink> dirigidos a esta unidad sufren -15 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.</bullet><bullet>Se puede acumular hasta 3 veces.</bullet></bulletlist><br></br><br></br>Neblina persistente <GLOBAL.OpposingStatusEffectsConcept>contrarresta</hyperlink> Marca.",
+  "description": "<bulletlist><bullet>Los ataques <hyperlink>Cuerpo a cuerpo</hyperlink>, de <hyperlink>Proyectil</hyperlink> y <hyperlink>mágicos</hyperlink> dirigidos a esta unidad sufren -15 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.</bullet><bullet>Se puede acumular hasta 3 veces.</bullet></bulletlist><br></br><br></br>Neblina persistente <GLOBAL.OpposingStatusEffectsConcept>contrarresta</hyperlink> Marca.",
   "name": "Neblina persistente",
   "slug": "0000049700000553",
   "icon": "0000049700000554"
@@ -47028,7 +47087,7 @@
   "icon": "0000048D00001E70"
  },
  {
-  "description": "<bulletlist><bullet>Los ataques infligen +20 % de daño.</bullet><bullet>Las habilidades de <hyperlink>Apoyo</hyperlink> curan +20 % <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+1 de <defense></defense> <hyperlink>Defensa</hyperlink>.</bullet><bullet>+1 de <resistance></resistance> <hyperlink>Resistencia</hyperlink>.</bullet><bullet>Los ataques infligen +30 % de daño.</bullet><bullet>Las habilidades de <hyperlink>Apoyo</hyperlink> curan +30 % <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet></bulletlist>",
   "name": "Impulso",
   "slug": "0000048d00001c55",
   "icon": "0000048D00001C5E"
@@ -47256,7 +47315,7 @@
   "icon": "0000048B00000549"
  },
  {
-  "description": "Los ataques de <hyperlink>Alcance físico</hyperlink> infligen un 20 % más de daño.",
+  "description": "Los ataques de <hyperlink>Proyectil</hyperlink> infligen un 20 % más de daño.",
   "name": "Disparo preparado",
   "slug": "0000048b0000053e",
   "icon": "0000048B0000053F"
@@ -47634,7 +47693,7 @@
   "icon": "000003E300004C79"
  },
  {
-  "description": "Los ataques <hyperlink>Alcance físico</hyperlink> obtienen +1 de <hyperlink><range></range>Alcance</hyperlink>.",
+  "description": "Los ataques <hyperlink>Proyectil</hyperlink> obtienen +1 de <hyperlink><range></range>Alcance</hyperlink>.",
   "name": "Activo: flechas buscadoras",
   "slug": "000003e300004c72",
   "icon": "000003E300004C79"
@@ -48347,7 +48406,7 @@
   "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -48374,7 +48433,7 @@
   "damage": "18<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Alcance físico^m</hyperlink>"
+    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -48743,12 +48802,9 @@
   ],
   "description": "La unidad enemiga objetivo y otra a 3 casillas reciben daño.",
   "name": "Maldición desgarradora",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_staff_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_staff_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Básico^m</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>Efecto negativo^m</hyperlink>"
    },
@@ -48946,7 +49002,7 @@
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento pútrido",
   "slug": "putrid_breath_item_forge_ability_equipment_upgrade_active_wand_putrid_breath",
-  "damage": "28<damageblight></damageblight> ",
+  "damage": "37<damageblight></damageblight> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -48973,7 +49029,7 @@
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento de escarcha",
   "slug": "frost_breath_item_forge_ability_equipment_upgrade_active_wand_frost_breath",
-  "damage": "28<damagefrost></damagefrost> ",
+  "damage": "36<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -49000,7 +49056,7 @@
   "description": "Inflige daño a todas las unidades situadas en un cono de 3 casilla(s).",
   "name": "Aliento de fuego",
   "slug": "fire_breath_item_forge_ability_equipment_upgrade_active_wand_fire_breath",
-  "damage": "28<damagefire></damagefire> ",
+  "damage": "36<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Magia^f</hyperlink>"
@@ -49173,12 +49229,9 @@
   ],
   "description": "La unidad enemiga objetivo y otra a 3 casillas reciben daño.",
   "name": "Maldición desgarradora",
-  "slug": "sundering_curse_ability_equipment_upgrade_active_wand_sundering_curse",
+  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_wand_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
-   {
-    "requisite": "<hyperlink>Básico^m</hyperlink>"
-   },
    {
     "requisite": "<hyperlink>Efecto negativo^m</hyperlink>"
    },
@@ -49593,7 +49646,7 @@
   "icon": "0000045E00000D47"
  },
  {
-  "description": "Una vez por turno, esta unidad obtiene Defensa reforzada cuando le alcanza un ataque <hyperlink>Cuerpo a cuerpo</hyperlink> o <hyperlink>Alcance físico</hyperlink>.",
+  "description": "Una vez por turno, esta unidad obtiene Defensa reforzada cuando le alcanza un ataque <hyperlink>Cuerpo a cuerpo</hyperlink> o <hyperlink>Proyectil</hyperlink>.",
   "name": "Defensa reforzada",
   "slug": "0000045e00000d43",
   "icon": "0000045E00000D46"
@@ -50052,7 +50105,7 @@
   "icon": "0000045E00000D6F"
  },
  {
-  "description": "Esta unidad es un 30 % más difícil de alcanzar con ataques <hyperlink>Alcance físico</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
+  "description": "Esta unidad es un 30 % más difícil de alcanzar con ataques <hyperlink>Proyectil</hyperlink> y ataques <hyperlink>mágicos</hyperlink> a distancia.",
   "name": "Escudo eólico",
   "slug": "0000045e00000c0c",
   "icon": "0000045E00000C0D"

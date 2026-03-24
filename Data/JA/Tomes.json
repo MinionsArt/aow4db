@@ -130,7 +130,7 @@
     "type": "<casttactical></casttactical><hyperlink> バフ呪文</hyperlink>"
    },
    {
-    "description": "<bulletlist><bullet>全ての味方ユニットが、包囲中に 包囲突破 の効果を受ける。</bullet><bullet>戦闘中は以下の通り:<bulletlist></bullet><bullet>全ての味方ユニットが戦闘中に <hyperlink>会心のヒット</hyperlink> 確率が +15%される。</bullet><bullet>ランダムのマスに <hyperlink>炎上</hyperlink> が設置される。</bullet></bulletlist><bullet>勝利すると、この都市を破壊・もしくはここに移住するときに求められる<turn></turn>ターンが 1 減少する。</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>戦闘開始時、ランダムなマスが<hyperlink>炎上</hyperlink>状態になる。</bullet><bullet>戦闘中、全ての味方ユニットの<hyperlink>会心のヒット</hyperlink>確率が+15%される。</bullet><bullet>勝利すると、この都市を破壊・もしくはここに移住するときに求められる<turn></turn>ターンが1減少する。</bullet></bulletlist>",
     "name": "征服者の勅令",
     "siege_project_slug": "征服者の勅令",
     "tier": 5,
@@ -203,14 +203,14 @@
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "対象の種族が砂漠と一体化し、以下を付与する：<bulletlist><bullet>砂地歩行</bullet><bullet>砂地迷彩</bullet><bullet><hyperlink>砂地</hyperlink> の地形にいるとき以下を獲得：<bulletlist></bullet><bullet>戦闘中は超高速移動になる。</bullet><bullet><hyperlink><flank></flank>側面攻撃</hyperlink> ダメージが20%増加。</bulltlist></bulltlist></bullet>",
+    "description": "対象の種族が砂漠と一体化し、以下を付与する：<bulletlist><bullet>砂地歩行</bullet><bullet>砂地迷彩</bullet><bullet><hyperlink>砂地</hyperlink> の地形にいるとき以下を獲得：<bulletlist></bullet><bullet>戦闘中は超高速移動になる。</bullet><bullet><hyperlink><flank></flank>側面攻撃</hyperlink>ダメージが20%増加。</bullet></bulletlist></bulletlist>",
     "name": "デューンストーカー",
     "spell_slug": "デューンストーカー",
     "tier": 3,
     "type": "<caststrategic></caststrategic><hyperlink> 小さな種族転換</hyperlink>"
    },
    {
-    "description": "対象と隣接する<hyperlink>領域</hyperlink>の地上に<hyperlink>砂地</hyperlink>を付与する。",
+    "description": "対象と<hyperlink>領域</hyperlink>の地表に隣接している場合、以下を付与：<bulletlist><bullet><hyperlink>砂地</hyperlink>を得る。</bullet><bullet><hyperlink>裂け目</hyperlink>・<hyperlink>沼地</hyperlink>・<hyperlink>雪の土地</hyperlink>・<hyperlink>氷</hyperlink>・<hyperlink>灰野原</hyperlink>・ <hyperlink>暗闇</hyperlink>を失う。</bullet></bulletlist>",
     "name": "砂漠化",
     "spell_slug": "砂漠化",
     "tier": 3,
@@ -306,7 +306,7 @@
     "type": "<casttactical></casttactical><hyperlink> ダメージ/デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃に以下を適用：<bulletlist><bullet>戦闘終了時まで、%の基本確率で苦悩効果を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの<hyperlink>飛び道具</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃に以下を適用：<bulletlist><bullet>戦闘終了時まで、%の基本確率で苦悩効果を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "苦しみの投射物",
     "spell_slug": "苦しみの投射物",
     "tier": 5,
@@ -810,7 +810,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の攻撃：<bulletlist><bullet>+<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>+<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を与える。</bullet><bullet><turn></turn>ターンの間、ゴーストファイヤーを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの<hyperlink>飛び道具</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の攻撃：<bulletlist><bullet>+<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>を与える。</bullet><bullet>+<damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>を与える。</bullet><bullet><turn></turn>ターンの間、ゴーストファイヤーを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "呪われた一撃",
     "spell_slug": "呪われた一撃",
     "tier": 7,
@@ -1568,7 +1568,7 @@
   "icon": "0000049000000F52",
   "skills": [
    {
-    "description": "対象の種族を渦巻く影で囲い、以下を付与する：<bulletlist><bullet>+%<hyperlink>回避</hyperlink>。</bullet><bullet>マスの範囲内から攻撃された場合、攻撃者は%の基本確率で<turn></turn><hyperlink>ターン</hyperlink>の間盲目になる。</bullet></bulletlist>",
+    "description": "対象の種族を渦巻く影で囲い、以下を付与する：<bulletlist><bullet>+%<hyperlink>回避</hyperlink>。</bullet><bullet>マスの範囲内から敵に攻撃された場合、攻撃者は%の基本確率で<turn></turn><hyperlink>ターン</hyperlink>の間盲目になる。</bullet></bulletlist>",
     "name": "生ける影",
     "spell_slug": "生ける影",
     "tier": 5,
@@ -1662,7 +1662,7 @@
     "type": "<caststrategic></caststrategic><hyperlink> ワールド呪文を受ける</hyperlink>"
    },
    {
-    "description": "アクションポイントが残っている味方ユニットとマス内にいる別のユニットは以下を得る：<bulletlist><bullet> <turn></turn><hyperlink>ターン</hyperlink>の力づけの機運。</bullet><bullet> <turn></turn><hyperlink>ターン</hyperlink>のフォーチュン。</bullet></bulletlist>",
+    "description": "アクションポイントが残っている味方ユニットとマス内にいる別のユニットは以下を得る：<bulletlist><bullet> <turn></turn><hyperlink>ターン</hyperlink>の機運。</bullet><bullet> <turn></turn><hyperlink>ターン</hyperlink>のフォーチュン。</bullet></bulletlist>",
     "name": "素早い一撃の祝福",
     "spell_slug": "素早い一撃の祝福",
     "tier": 1,
@@ -2634,7 +2634,7 @@
   "icon": "0000041B00000FC6",
   "skills": [
    {
-    "description": "素早くて破壊的な戦士ユニットである<hyperlink>ウィンド・レイジャー</hyperlink>を召喚する。",
+    "description": "素早くて破壊的な魔法戦士ユニットである<hyperlink>ウィンド・レイジャー</hyperlink>を召喚する。",
     "name": "ウィンド・<br></br>レイジャー召喚",
     "spell_slug": "ウィンド・_br__レイジャー召喚",
     "tier": 4,
@@ -2655,7 +2655,7 @@
     "type": "<casttactical></casttactical><hyperlink> デバフ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+<hyperlink><range></range>範囲</hyperlink>。</bullet></bulletlist>",
+    "description": "魔法ユニットの<hyperlink>飛び道具</hyperlink>に以下を付与：<bulletlist><bullet>+<hyperlink><range></range>範囲</hyperlink>。</bullet></bulletlist>",
     "name": "探究者の矢",
     "spell_slug": "探究者の矢",
     "tier": 3,
@@ -2689,7 +2689,7 @@
   "icon": "0000042A00000601",
   "skills": [
    {
-    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>および<hyperlink>物理遠隔攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>+ <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet><turn></turn>ターンの間、%の基本確率で出血を得る。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>近接攻撃</hyperlink>および<hyperlink>飛び道具</hyperlink>攻撃に以下を付与：<bulletlist><bullet>+ <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink></bullet><bullet><turn></turn>ターンの間、%の基本確率で出血を得る。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "オブシディアン武器",
     "spell_slug": "オブシディアン武器",
     "tier": 2,
@@ -3644,7 +3644,7 @@
   "icon": "0000041B0000127A",
   "skills": [
    {
-    "description": "爆発を起こしながら前線に瞬間移動できる、戦士ユニットの<hyperlink>アストラルの蛇</hyperlink>を召喚する。",
+    "description": "爆発を起こしながら前線に瞬間移動できる、魔法戦士ユニットの<hyperlink>アストラルの蛇</hyperlink>を召喚する。",
     "name": "アストラル蛇の召喚",
     "spell_slug": "アストラル蛇の召喚",
     "tier": 4,
@@ -3833,7 +3833,7 @@
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットによる<hyperlink>物理遠隔攻撃</hyperlink>の基本攻撃が以下を与える：<bulletlist><bullet>+<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet><damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>マスの範囲内にいる体の別の対象に<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>%の確率で、攻撃が命中した標的に <turn></turn>ターンのバラバラの耐性を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットによる<hyperlink>飛び道具</hyperlink>の基本攻撃が以下を与える：<bulletlist><bullet>+<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet><damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>マスの範囲内にいる体の別の対象に<damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を与える。</bullet><bullet>%の確率で、攻撃が命中した標的に <turn></turn>ターンのバラバラの耐性を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "パワーアロー",
     "spell_slug": "パワーアロー",
     "tier": 4,
@@ -4040,7 +4040,7 @@
     "type": "<casttactical></casttactical><hyperlink>戦闘召喚呪文</hyperlink>"
    },
    {
-    "description": "エンチャントされたユニットの<hyperlink>物理遠隔攻撃</hyperlink>に以下の効果を付与：<bulletlist><bullet>+ <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>%の確率で毒による経過ダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "エンチャントされたユニットの<hyperlink>飛び道具</hyperlink>に以下の効果を付与：<bulletlist><bullet>+ <damageBlight></damageBlight><hyperlink>疫病ダメージ</hyperlink>を与える。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>を与える。</bullet><bullet>%の確率で毒による経過ダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "ポイズンアロー",
     "spell_slug": "ポイズンアロー",
     "tier": 2,
@@ -4132,7 +4132,7 @@
   "icon": "0000041B00000D52",
   "skills": [
    {
-    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet><turn></turn>ターンの間、生命のシードを付与する基本確率が%増加する。</bullet><bullet>腐敗中ユニットに対して +%のダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>飛び道具</hyperlink>と<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet><turn></turn>ターンの間、生命のシードを付与する基本確率が%増加する。</bullet><bullet>腐敗中ユニットに対して +%のダメージを与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "開花の投射物",
     "spell_slug": "開花の投射物",
     "tier": 6,
@@ -4289,7 +4289,7 @@
     "type": "<casttactical></casttactical><hyperlink>ダメージ呪文</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>に以下を付与：<bulletlist><bullet>+ <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>%の基本確率で減速を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>飛び道具</hyperlink>に以下を付与：<bulletlist><bullet>+ <damageFrost></damageFrost><hyperlink>凍結ダメージ</hyperlink>。</bullet><bullet> <damagePhysical></damagePhysical><hyperlink>物理ダメージ</hyperlink>。</bullet><bullet>%の基本確率で減速を与える。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "霧氷矢",
     "spell_slug": "霧氷矢",
     "tier": 2,
@@ -5339,7 +5339,7 @@
   "icon": "000003AD00002BB1",
   "skills": [
    {
-    "description": "魔法ユニットの<hyperlink>物理遠隔攻撃</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet><bullet>%の基本確率で火傷を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの<hyperlink>飛び道具</hyperlink>と<hyperlink>魔法攻撃</hyperlink>の基本攻撃に以下を付与：<bulletlist><bullet>+<damageFire></damageFire><hyperlink>炎ダメージ</hyperlink></bullet><bullet>%の基本確率で火傷を付与する。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "燃え盛る投射物",
     "spell_slug": "燃え盛る投射物",
     "tier": 2,
@@ -5413,7 +5413,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "魔法ユニットの基本<hyperlink>物理遠隔攻撃</hyperlink>攻撃に以下を付与：<bulletlist><bullet>マジック・オリジンに対するダメージ量が+%。</bullet><bullet> %の基本確率で1種類の<hyperlink>プラスのステータス効果</hyperlink>を標的から取り除く。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
+    "description": "魔法ユニットの基本<hyperlink>飛び道具</hyperlink>攻撃に以下を付与：<bulletlist><bullet>マジック・オリジンに対するダメージ量が+%。</bullet><bullet> %の基本確率で1種類の<hyperlink>プラスのステータス効果</hyperlink>を標的から取り除く。</bullet></bulletlist><br></br>単発攻撃の場合、効果が<hyperlink>増加</hyperlink>する。",
     "name": "浄化の矢",
     "spell_slug": "浄化の矢",
     "tier": 2,
@@ -5600,7 +5600,7 @@
     "type": "<caststrategic></caststrategic><hyperlink>ユニット魔力</hyperlink>"
    },
    {
-    "description": "<hyperlink>胸壁の建造物</hyperlink><br></br><bulletlist><bullet>胸壁は<hyperlink>物理遠隔攻撃</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist></bullet><bullet>+4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink> を与える。</bullet><bullet>影響を受けたマスは<hyperlink>炎上</hyperlink>状態となる。</bullet><bullet>対象の<hyperlink>不明瞭</hyperlink>の影響を受けない。</bullet><bullet>+1 <hyperlink><range></range>範囲</hyperlink></bullet></bulletlist><bullet>都市は<hyperlink>裂け目</hyperlink>もしくは<hyperlink>溶岩</hyperlink>によって併合中の領域からマイナスの<happiness></happiness> <hyperlink>都市の安定性</hyperlink>ペナルティを受けない。</bullet></bulletlist>",
+    "description": "<hyperlink>胸壁の建造物</hyperlink><br></br><bulletlist><bullet>胸壁は<hyperlink>飛び道具</hyperlink>および<hyperlink>魔法攻撃</hyperlink>攻撃に以下を付与：<bulletlist></bullet><bullet>+4 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink> を与える。</bullet><bullet>影響を受けたマスは<hyperlink>炎上</hyperlink>状態となる。</bullet><bullet>対象の<hyperlink>不明瞭</hyperlink>の影響を受けない。</bullet><bullet>+1 <hyperlink><range></range>範囲</hyperlink></bullet></bulletlist><bullet>都市は<hyperlink>裂け目</hyperlink>もしくは<hyperlink>溶岩</hyperlink>によって併合中の領域からマイナスの<happiness></happiness> <hyperlink>都市の安定性</hyperlink>ペナルティを受けない。</bullet></bulletlist>",
     "name": "るつぼの胸壁",
     "tier": 7,
     "type": "<hyperlink>都市の建造物</hyperlink>",
