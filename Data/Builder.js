@@ -5216,12 +5216,19 @@ function renderRule(node, weaponHolder, textBased) {
     }
     for (const entry of weapons) {
         if (name.indexOf(entry) != -1) {
+          
             const test = weaponHolder.querySelector("#" + entry);
             test.innerHTML = "✔";
         }
     }
     for (const entry of armor) {
         if (name.indexOf(entry) != -1) {
+              
+            // false positive
+            if(name.indexOf("ArmoredClaw") != -1){
+              
+              break;
+            }
             const test = weaponHolder.querySelector("#" + entry);
             test.innerHTML = "✔";
         }
