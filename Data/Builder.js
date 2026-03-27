@@ -867,8 +867,8 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     const abilityEn = jsonUnitAbilities.find((entry) => entry.slug === a);
     const abilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === abilityEn.slug);
 
-   // console.log(abilityEn);
-  //  console.log(abilityLoc);
+    // console.log(abilityEn);
+    //  console.log(abilityLoc);
     abilityDam = "";
     if ("damage" in abilityLoc) {
         abilityDam = abilityLoc.damage;
@@ -2016,7 +2016,7 @@ async function showHeroTraitFromList(list, divID) {
 
 async function showInfusionsFromList(list, divID) {
     // let cards = await spawnSpellCards(list, divID);
-  let doc = document.getElementById(divID);
+    let doc = document.getElementById(divID);
     for (let i = 0; i < list.length; i++) {
         const div = showInfusionListEntrySmall(list[i]);
         if (div != undefined) {
@@ -3200,6 +3200,8 @@ function backtrackUnitOrigins(unitData, name, holder) {
         name = name + " ";
     }
 
+    const GetAllMatchingAbilities = CheckIfMatchingAbility(name);
+
     let holderOrigin = holder.querySelectorAll("div#originHolder")[0];
     holderOrigin.innerHTML = "";
     let culture = "thing";
@@ -3343,7 +3345,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    let unitAbility = CheckIfFromAbility(name);
+    const unitAbility = CheckIfFromAbility(name, GetAllMatchingAbilities);
 
     for (let x = 0; x < unitAbility.length; x++) {
         const tooltipText = `Unit mentioned in Ability <hyperlink>${unitAbility[x][1].name}</hyperlink> of Unit <hyperlink>${unitAbility[x][0].name}</hyperlink>`;
@@ -3356,17 +3358,21 @@ function backtrackUnitOrigins(unitData, name, holder) {
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
-    /*let infusion = CheckIfFromInfusion(name);
+    let infusion = CheckIfFromInfusion(name, GetAllMatchingAbilities);
 
     for (let x = 0; x < infusion.length; x++) {
-        const tooltipText = `Unit mentioned in Infusion <hyperlink>${infusion[x].entryName} </<hyperlink>`;
-        const imgSrc = `/aow4db/Icons/UpgradeIcons/0000045E00000EC3.png`;
+        const tooltipText = `Unit mentioned in Infusion <hyperlink>${infusion[x].name} </<hyperlink>`;
+        const imgSrc = `/aow4db/Icons/UnitIcons/` + infusion[x].icon + `.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `#`;
+        const link = `/aow4db/HTML/Infusions.html`;
+          const miniIcon = document.createElement("div");
+        miniIcon.className = "MiniIconCheck";
+        miniIcon.innerHTML = "<bindingessence></bindingessence>";
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
-    }*/
+         holderOrigin.appendChild(miniIcon);
+    }
 
-    let heroSkill = CheckIfFromHeroSkill(name);
+    let heroSkill = CheckIfFromHeroSkill(name, GetAllMatchingAbilities);
     for (let x = 0; x < heroSkill.length; x++) {
         const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[x][1].name}</hyperlink>`;
         const imgSrc =
@@ -3466,8 +3472,8 @@ function CheckIfInSpells(unitID, unitName) {
     return spell;
 }
 
-function CheckIfFromAbility(unitName) {
-    let ability = new Set();
+function CheckIfMatchingAbility(unitName) {
+    const ability = new Set();
     let i = 0;
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
@@ -3479,63 +3485,56 @@ function CheckIfFromAbility(unitName) {
         }
 
         if (jsonUnitAbilities[i].description.indexOf(unitName + "s") != -1) {
-            ability.add(jsonUnitAbilities[i]);
+            ability.add(jsonUnitAbilities[i].slug);
         }
 
         if (regex.test(jsonUnitAbilities[i].description)) {
             //   if (jsonUnitAbilities[i].description.indexOf(unitName) != -1) {
-            ability.add(jsonUnitAbilities[i]);
+            ability.add(jsonUnitAbilities[i].slug);
         }
     }
 
+    // console.log(unitslugLookup);
+    return ability;
+}
+
+function CheckIfFromAbility(unitName, matchingList) {
     let unitslugLookup = new Set();
 
-    const arrayAbilities = Array.from(ability);
-
-    for (let x = 0; x < arrayAbilities.length; x++) {
-        let j = 0;
-        for (j in jsonUnits) {
-            let k = 0;
-            for (k in jsonUnits[j].abilities) {
-                if (jsonUnits[j].abilities[k].slug === arrayAbilities[x].slug) {
-                    unitslugLookup.add([jsonUnits[j], arrayAbilities[x]]);
-                }
+    let j = 0;
+    for (j in jsonUnits) {
+        let k = 0;
+        for (k in jsonUnits[j].abilities) {
+            if (matchingList.has(jsonUnits[j].abilities[k].slug)) {
+                unitslugLookup.add([jsonUnits[j], findBy(jsonUnitAbilities, "slug", jsonUnits[j].abilities[k].slug)]);
             }
-            let l = 0;
-            for (l in jsonUnits[j].primary_passives) {
-                if (jsonUnits[j].primary_passives[l].slug === arrayAbilities[x].slug) {
-                    unitslugLookup.add([jsonUnits[j], arrayAbilities[x]]);
-                }
+        }
+        let l = 0;
+        for (l in jsonUnits[j].primary_passives) {
+            if (matchingList.has(jsonUnits[j].primary_passives[l].slug)) {
+                unitslugLookup.add([jsonUnits[j], findBy(jsonUnitAbilities, "slug", jsonUnits[j].abilities[k].slug)]);
             }
         }
     }
+
     // console.log(unitslugLookup);
     return Array.from(unitslugLookup);
 }
 
-function CheckIfFromHeroSkill(unitName) {
+function CheckIfFromHeroSkill(unitName, matchingList) {
     let resultslist = new Set();
-    let hero = new Set();
+
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
 
-    for (let i in jsonUnitAbilities) {
-        if (regex.test(jsonUnitAbilities[i].description)) {
-            hero.add(jsonUnitAbilities[i]);
-        }
-    }
-
-    const heroList = Array.from(hero);
     let j = 0;
     for (j in jsonHeroSkills) {
-        for (let x = 0; x < heroList.length; x++) {
-            if ("abilities" in jsonHeroSkills[j]) {
-                let k = 0;
-                for (k in jsonHeroSkills[j].abilities) {
-                    if (jsonHeroSkills[j].abilities[k].slug === heroList[x].slug) {
-                        resultslist.add([heroList[x], jsonHeroSkills[j]]);
-                    }
+        if ("abilities" in jsonHeroSkills[j]) {
+            let k = 0;
+            for (k in jsonHeroSkills[j].abilities) {
+                if (matchingList.has(jsonHeroSkills[j].abilities[k].slug)) {
+                    resultslist.add([heroList[x], jsonHeroSkills[j]]);
                 }
             }
         }
@@ -3678,31 +3677,25 @@ function CheckIfInTomes(unitID) {
     return Array.from(tome);
 }
 
-function CheckIfFromInfusion(unitName) {
+function CheckIfFromInfusion(unitName, matchingAbilities) {
     let infusions = new Set();
 
-    let i = "";
-    for (i in jsonItemForge) {
+    for (const entry of jsonItemForgeUpgrades) {
         // check the descriptions
-        const parts = jsonItemForge[i].screenName.split("@");
-        const baseId = parts.slice(0, -1).join("@");
-        const suffix = parts[parts.length - 1].toLowerCase();
-        const descr = findBy(jsonAllFromPOLocalized, "id", baseId);
-
-        const parts2 = jsonItemForge[i].screenDescription.split("@");
-        const baseId2 = parts2.slice(0, -1).join("@");
-        const suffix2 = parts2[parts2.length - 1].toLowerCase();
-        const descr2 = findBy(jsonAllFromPOLocalized, "id", baseId2);
-
-        if (descr) {
-            if (descr[suffix].indexOf(unitName) != -1) {
-                infusions.add(jsonItemForge[i]);
+        if ("abilities" in entry) {
+            for (const slug of entry.abilities) {
+                if (matchingAbilities.has(slug.slug)) {
+                    infusions.add(entry);
+                }
             }
         }
-        if (descr2 && descr2[suffix2]) {
-            if (descr2[suffix2].indexOf(unitName) != -1) {
-                infusions.add(jsonItemForge[i]);
-            }
+
+        if (entry.name.indexOf(unitName) != -1) {
+            infusions.add(entry);
+        }
+
+        if (entry.description.indexOf(unitName) != -1) {
+            infusions.add(entry);
         }
     }
 
@@ -3926,7 +3919,7 @@ function showSiegeProject(id, showOrigin, divOrigin) {
         let imagelink = divOrigin.querySelector("#modicon");
 
         imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + siegeProject.icon + ".png");
-        descriptionDiv.innerHTML = AddTagIconsForStatusEffects( description);
+        descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
 
         let tier = divOrigin.querySelector("#modtier");
 
@@ -5067,27 +5060,25 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     // requirements
     const name = document.createElement("div");
     name.innerHTML = infusion.name;
-    if('DLC' in infusion){
-         name.innerHTML+= " <" + infusion.DLC + "></" + infusion.DLC + ">";
+    if ("DLC" in infusion) {
+        name.innerHTML += " <" + infusion.DLC + "></" + infusion.DLC + ">";
     }
     name.className = "tooltip";
     name.setAttribute("style", "width:250px;");
     const type = document.createElement("div");
     type.setAttribute("style", "width:50px;");
     type.className = "list_types";
-    
-      const description = document.createElement("div");
+
+    const description = document.createElement("div");
     description.setAttribute("style", "width:50px; display:none");
     description.innerHTML = infusion.description;
-    
-    
-   
+
     if ("abilities" in infusion) {
         for (const slug of infusion.abilities) {
             const ab = findBy(jsonUnitAbilitiesLocalized, "slug", slug.slug);
             const spa = GetAbilityInfo(ab);
             addTooltipListeners(name, spa);
-              description.innerHTML += spa.innerHTML;
+            description.innerHTML += spa.innerHTML;
         }
         type.innerHTML = "Active";
     } else if (infusion.name.indexOf(" Damage") != -1) {
@@ -5211,22 +5202,21 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     const textBased = document.createElement("div");
     renderRule(infusion.tag_filter, rule, textBased);
     // console.log(textBased);
-    if(selectedTreeFilter != null){
-          if (
-        selectedTreeFilter !== "all" &&
-        textBased.innerHTML.toLowerCase().indexOf(selectedTreeFilter.toLowerCase()) == -1
-    ) {
-        return;
+    if (selectedTreeFilter != null) {
+        if (
+            selectedTreeFilter !== "all" &&
+            textBased.innerHTML.toLowerCase().indexOf(selectedTreeFilter.toLowerCase()) == -1
+        ) {
+            return;
+        }
     }
-    }
-  
 
     div.appendChild(type);
     div.appendChild(icon);
     div.appendChild(name);
     div.appendChild(points);
-      div.appendChild(description);
-    
+    div.appendChild(description);
+
     div.appendChild(requirements);
     div.appendChild(slot);
     //div.appendChild(textBased);
@@ -5320,7 +5310,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
     if ("nameOverrides" in structure) {
         // names
         const overrides = findBy(jsonAllFromPOLocalized, "id", structure.nameOverrides);
-        console.log(overrides);
+        //  console.log(overrides);
 
         const rightSites = getEventStructureNameByPrefix(overrides, eventHandle);
 
@@ -5395,7 +5385,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
                     spawnSetMultiple.push(result);
                 }
             }
-            console.log(spawnSetMultiple + " " + eventHandle);
+            //  console.log(spawnSetMultiple + " " + eventHandle);
 
             combatReveal.appendChild(spawnHolder);
             spawnHolder.innerHTML += "Linked Spawnsets: <br>";
@@ -5419,7 +5409,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 
         if (combatEnch != undefined) {
             for (let index = 0; index < combatEnch.length; index++) {
-                console.log("here " + combatEnch[index]);
+                // console.log("here " + combatEnch[index]);
                 const child = FindCombatEnchantment(combatEnch[index]);
                 combatEnchHolder.appendChild(child);
             }
