@@ -3541,7 +3541,7 @@ function CheckIfFromHeroSkill(unitName, matchingList) {
             resultslist.add( skill);
         }
     }
-    console.log(resultslist);
+  //  console.log(resultslist);
     //  console.log(Array.from(resultslist));
     return Array.from(resultslist);
 }
