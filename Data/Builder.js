@@ -657,6 +657,12 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
             showHeroTraitFromList(list, overwrite);
             break;
+
+        case "searchInfusion":
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+
+            showInfusionsFromList(list, overwrite);
+            break;
         case "searchDestiny":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
             showDestinyTraitsFromList(list, overwrite);
@@ -861,8 +867,8 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     const abilityEn = jsonUnitAbilities.find((entry) => entry.slug === a);
     const abilityLoc = jsonUnitAbilitiesLocalized.find((entry) => entry.slug === abilityEn.slug);
 
-    console.log(abilityEn);
-    console.log(abilityLoc);
+   // console.log(abilityEn);
+  //  console.log(abilityLoc);
     abilityDam = "";
     if ("damage" in abilityLoc) {
         abilityDam = abilityLoc.damage;
@@ -2005,6 +2011,17 @@ async function showHeroTraitFromList(list, divID) {
 
     for (let i = 0; i < list.length; i++) {
         showHeroTrait(list[i].id, cards[i]);
+    }
+}
+
+async function showInfusionsFromList(list, divID) {
+    // let cards = await spawnSpellCards(list, divID);
+  let doc = document.getElementById(divID);
+    for (let i = 0; i < list.length; i++) {
+        const div = showInfusionListEntrySmall(list[i]);
+        if (div != undefined) {
+            doc.appendChild(div);
+        }
     }
 }
 
@@ -5012,7 +5029,8 @@ const pantheonList = [
     "umbral_staff_equipment_upgrade",
     "umbral_greataxe_equipment_upgrade_(umbral_wake)",
     "umbral_greataxe_equipment_upgrade_(umbral_immunity)",
-     "lashers_sword_equipment_upgrade","crowmasters_bow_equipment_upgrade",
+    "lashers_sword_equipment_upgrade",
+    "crowmasters_bow_equipment_upgrade",
     "captains_shield_equipment_upgrade",
     "earthshaker_hammer_equipment_upgrade",
     "staff_of_necromancy_equipment_upgrade",
@@ -5034,9 +5052,7 @@ const pantheonList = [
     "subdue_infusion_equipment_upgrade",
     "equipment_upgrade_defense_mode_protective_wall",
     "bless_infusion_equipment_upgrade",
-"fearless_infusion_equipment_upgrade"
-    
-    
+    "fearless_infusion_equipment_upgrade"
 ];
 function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTreeFilter, selectedMMTreeFilter) {
     const div = document.createElement("div");
@@ -5051,16 +5067,27 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     // requirements
     const name = document.createElement("div");
     name.innerHTML = infusion.name;
+    if('DLC' in infusion){
+         name.innerHTML+= " <" + infusion.DLC + "></" + infusion.DLC + ">";
+    }
     name.className = "tooltip";
     name.setAttribute("style", "width:250px;");
     const type = document.createElement("div");
     type.setAttribute("style", "width:50px;");
     type.className = "list_types";
+    
+      const description = document.createElement("div");
+    description.setAttribute("style", "width:50px; display:none");
+    description.innerHTML = infusion.description;
+    
+    
+   
     if ("abilities" in infusion) {
         for (const slug of infusion.abilities) {
             const ab = findBy(jsonUnitAbilitiesLocalized, "slug", slug.slug);
             const spa = GetAbilityInfo(ab);
             addTooltipListeners(name, spa);
+              description.innerHTML += spa.innerHTML;
         }
         type.innerHTML = "Active";
     } else if (infusion.name.indexOf(" Damage") != -1) {
@@ -5079,12 +5106,17 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     // if (selectedTreeFilter !== "all" && !treeName.includes(selectedTreeFilter.toLowerCase())) return;
 
     // Sub-type filter
-    if (selectedSubTreeFilter !== "all" && type.innerHTML.toLocaleLowerCase() !== selectedSubTreeFilter.toLowerCase())
-        return;
+    if (selectedSubTreeFilter != undefined) {
+        if (
+            selectedSubTreeFilter !== "all" &&
+            type.innerHTML.toLocaleLowerCase() !== selectedSubTreeFilter.toLowerCase()
+        )
+            return;
+    }
 
     const requirements = document.createElement("div");
     requirements.setAttribute("style", "width:100px;");
-      requirements.className = "requirements";
+    requirements.className = "requirements";
     if (pantheonList.includes(infusion.id)) {
         requirements.innerHTML += "<pantheon></pantheon>"; // + unlocks.token_name ;
     }
@@ -5102,17 +5134,19 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
 
     // console.log(requirements.innerHTML + selectedMMTreeFilter);
     // Sub-type filter
-    if (
-        selectedMMTreeFilter !== "all" &&
-        requirements.innerHTML.toLowerCase().indexOf(selectedMMTreeFilter.toLowerCase().replaceAll(" ", "_")) == -1
-    ) {
-        return;
+    if (selectedMMTreeFilter != undefined) {
+        if (
+            selectedMMTreeFilter !== "all" &&
+            requirements.innerHTML.toLowerCase().indexOf(selectedMMTreeFilter.toLowerCase().replaceAll(" ", "_")) == -1
+        ) {
+            return;
+        }
     }
 
     // point cost
     const points = document.createElement("div");
     points.className = "point_cost";
-    points.innerHTML =  infusion.point_cost;
+    points.innerHTML = infusion.point_cost;
     points.setAttribute("style", "width:50px");
     // slot
     const slot = document.createElement("div");
@@ -5177,18 +5211,22 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     const textBased = document.createElement("div");
     renderRule(infusion.tag_filter, rule, textBased);
     // console.log(textBased);
-    if (
+    if(selectedTreeFilter != null){
+          if (
         selectedTreeFilter !== "all" &&
         textBased.innerHTML.toLowerCase().indexOf(selectedTreeFilter.toLowerCase()) == -1
     ) {
         return;
     }
+    }
+  
 
- 
     div.appendChild(type);
-   div.appendChild(icon);
+    div.appendChild(icon);
     div.appendChild(name);
     div.appendChild(points);
+      div.appendChild(description);
+    
     div.appendChild(requirements);
     div.appendChild(slot);
     //div.appendChild(textBased);
@@ -5216,18 +5254,15 @@ function renderRule(node, weaponHolder, textBased) {
     }
     for (const entry of weapons) {
         if (name.indexOf(entry) != -1) {
-          
             const test = weaponHolder.querySelector("#" + entry);
             test.innerHTML = "✔";
         }
     }
     for (const entry of armor) {
         if (name.indexOf(entry) != -1) {
-              
             // false positive
-            if(name.indexOf("ArmoredClaw") != -1){
-              
-              break;
+            if (name.indexOf("ArmoredClaw") != -1) {
+                break;
             }
             const test = weaponHolder.querySelector("#" + entry);
             test.innerHTML = "✔";
