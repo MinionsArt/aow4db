@@ -3374,13 +3374,10 @@ function backtrackUnitOrigins(unitData, name, holder) {
 
     let heroSkill = CheckIfFromHeroSkill(name, GetAllMatchingAbilities);
     for (let x = 0; x < heroSkill.length; x++) {
-        const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[x][1].name}</hyperlink>`;
-        const imgSrc =
-            heroSkill[x][0] != ""
-                ? `/aow4db/Icons/UnitIcons/${heroSkill[x][0].icon}.png`
-                : `/aow4db/Icons/UnitIcons/${heroSkill[x][1].icon}.png`;
+        const tooltipText = `Unit mentioned in Hero Skill <hyperlink>${heroSkill[x].name}</hyperlink>`;
+        const imgSrc = `/aow4db/Icons/UnitIcons/${heroSkill[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
-        const link = `/aow4db/HTML/Spells.html?skill=${heroSkill[x][1].id}`;
+        const link = `/aow4db/HTML/Spells.html?skill=${heroSkill[x].id}`;
         createFoundUnitInHereIcon(holderOrigin, imgSrc, imgFallbackSrc, link, tooltipText);
     }
 
@@ -3529,21 +3526,22 @@ function CheckIfFromHeroSkill(unitName, matchingList) {
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
 
     let j = 0;
-    for (j in jsonHeroSkills) {
-        if ("abilities" in jsonHeroSkills[j]) {
-            let k = 0;
-            for (k in jsonHeroSkills[j].abilities) {
-                if (matchingList.has(jsonHeroSkills[j].abilities[k].slug)) {
-                    resultslist.add([heroList[x], jsonHeroSkills[j]]);
+    for (const skill of jsonHeroSkills) {
+        if ("abilities" in skill) {
+            
+            for (const ability of skill.abilities) {
+                if (matchingList.has(ability.slug)) {
+                    resultslist.add( skill);
                 }
             }
         }
-        let k = 0;
+       
 
-        if (regex.test(jsonHeroSkills[j].description)) {
-            resultslist.add(["", jsonHeroSkills[j]]);
+        if (regex.test(skill.description)) {
+            resultslist.add( skill);
         }
     }
+    console.log(resultslist);
     //  console.log(Array.from(resultslist));
     return Array.from(resultslist);
 }
