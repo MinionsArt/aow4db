@@ -95,8 +95,8 @@
 
                 const selectorMap = {
                     range: (el) => el.querySelector(".list_range")?.innerHTML,
-                    accuracy: (el) => el.querySelector(".list_accuracy")?.innerHTML,
-                    damage: (el) => el.querySelector(".ability_damage")?.innerHTML,
+                    points: (el) => el.querySelector(".point_cost")?.innerHTML,
+                    unlock: (el) => el.querySelector(".requirements")?.innerHTML,
                     action: (el) => el.querySelector(".list_action")?.innerHTML,
                     type: (el) => el.querySelector(".list_types")?.innerHTML,
                     default: (el) => el.querySelector(".tooltip")?.innerHTML
@@ -141,8 +141,15 @@
         <div id="treeFilterGroup" style="margin: 20px; display: flex; justify-content: center; align-items: start">
             <button class="treeFilterButton active" data-tree="all">All</button>
             <button class="treeFilterButton" data-tree="OneHanded">1H</button>
-                <button class="treeFilterButton" data-tree="TwoHandedHeavy">2H Heavy</button>
+             <button class="treeFilterButton" data-tree="TwoHandedHeavy">2H Heavy</button>
+                <button class="treeFilterButton" data-tree="Bow">Bow</button>
+              <button class="treeFilterButton" data-tree="Polearm">Polearm</button>
+                <button class="treeFilterButton" data-tree="Staff">Staff</button>
+               <button class="treeFilterButton" data-tree="MagicalOrb">Magical Orb</button>
                <button class="treeFilterButton" data-tree="EldritchRelic">Eldritch Relic</button>
+              <button class="treeFilterButton" data-tree="Warhammer">Warhammer</button>
+               <button class="treeFilterButton" data-tree="GiantAxe">Giant Axe</button>
+              <button class="treeFilterButton" data-tree="Obelisk">Obelisk</button>
              <button class="treeFilterButton" data-tree="Shield">Shield</button>
              <button class="treeFilterButton" data-tree="Head">Head</button>
               <button class="treeFilterButton" data-tree="Armor">Torso</button>
@@ -166,7 +173,7 @@
             <button class="treeFilterButtonMM" data-tree="Archon Blood">Archon Blood</button>
              <button class="treeFilterButtonMM" data-tree="Astral Dew">Astral Dew</button>
              <button class="treeFilterButtonMM" data-tree="Tranquility Pool">Tranquility Pool</button>
-                  <button class="treeFilterButtonMM" data-tree="Hasteberries">Hasteberries</button>
+                  <button class="treeFilterButtonMM" data-tree="Haste Berries">Haste Berries</button>
              <button class="treeFilterButtonMM" data-tree="Silvertongue Fruit">Silvertongue Fruit</button>
              <button class="treeFilterButtonMM" data-tree="Rainbow Clover">Rainbow Clover</button>
                 <button class="treeFilterButtonMM" data-tree="Void Stone">Void Stone</button>
@@ -186,30 +193,32 @@
        <div class="w3-container" style="  justify-content: center;">
             <div class="w3-bar w3-black" id="buttonHolder"></div>
            <div class="list_abilityslotfilter">
-                <button style="width: 300px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
-                    Name
-                </button>
-                <button style="width: 80px" class="sortingButton" id="range-button" onclick="sortDivsList('range')">
-                    Range <range></range>
-                </button>
-                <button
-                    style="width: 150px"
-                    class="sortingButton"
-                    id="accuracy-button"
-                    onclick="sortDivsList('accuracy')">
-                    Acc.<br />
-                    <accuracy></accuracy>
-                </button>
-                <button style="width: 150px" class="sortingButton" id="damage-button" onclick="sortDivsList('damage')">
-                    Damage<br />
-                    <damageblight></damageblight>
-                </button>
-                <button style="width: 100px" class="sortingButton" id="action-button" onclick="sortDivsList('action')">
-                    Action <repeatingAction></repeatingAction>
-                </button>
-                <button style="width: 200px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
+                <button style="width: 80px" class="sortingButton" id="type-button" onclick="sortDivsList('type')">
                     Type
                 </button>
+                <button style="width: 270px" class="sortingButton" id="name-button" onclick="sortDivsList('name')">
+                    Name
+                </button>
+                <button style="width: 50px" class="sortingButton" id="points-button" onclick="sortDivsList('points')">
+                    Points
+                </button>
+                <button
+                    style="width: 100px"
+                    class="sortingButton"
+                    id="unlock-button"
+                    onclick="sortDivsList('unlock')">
+                    Unlock<br />
+                    <astral_dew></astral_dew>
+                </button>
+                 <button
+                    style="width: 500px"
+                    class="sortingButton"
+                    id="accuracy-button"
+                    onclick="">
+                
+                </button>
+              
+               
             </div>
 
             <div id="dataHolder" class="divContainer">

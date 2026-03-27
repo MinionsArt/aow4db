@@ -5041,7 +5041,7 @@ const pantheonList = [
 function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTreeFilter, selectedMMTreeFilter) {
     const div = document.createElement("div");
     div.className = "list_abilityslot";
-    div.setAttribute("style", "font-size:15px: color:white");
+    div.setAttribute("style", "font-size:15px; color:white");
     // icon
     const icon = document.createElement("img");
     icon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + infusion.icon + ".png");
@@ -5055,6 +5055,7 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
     name.setAttribute("style", "width:250px;");
     const type = document.createElement("div");
     type.setAttribute("style", "width:50px;");
+    type.className = "list_types";
     if ("abilities" in infusion) {
         for (const slug of infusion.abilities) {
             const ab = findBy(jsonUnitAbilitiesLocalized, "slug", slug.slug);
@@ -5082,7 +5083,8 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
         return;
 
     const requirements = document.createElement("div");
-    requirements.setAttribute("style", "width:100px; color:white");
+    requirements.setAttribute("style", "width:100px;");
+      requirements.className = "requirements";
     if (pantheonList.includes(infusion.id)) {
         requirements.innerHTML += "<pantheon></pantheon>"; // + unlocks.token_name ;
     }
@@ -5109,7 +5111,8 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
 
     // point cost
     const points = document.createElement("div");
-    points.innerHTML = "";
+    points.className = "point_cost";
+    points.innerHTML =  infusion.point_cost;
     points.setAttribute("style", "width:50px");
     // slot
     const slot = document.createElement("div");
@@ -5124,7 +5127,6 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
           condition=  condition.replaceAll("Contains ", "V");
           slot.innerHTML += "<br>" + condition ;// + unlocks.token_name ;
     }*/
-
     const rule = document.createElement("div");
     rule.className = "rule-box";
     slot.appendChild(rule);
@@ -5182,9 +5184,9 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
         return;
     }
 
-    div.appendChild(icon);
+ 
     div.appendChild(type);
-
+   div.appendChild(icon);
     div.appendChild(name);
     div.appendChild(points);
     div.appendChild(requirements);
