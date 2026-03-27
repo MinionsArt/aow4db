@@ -3926,7 +3926,7 @@ function showSiegeProject(id, showOrigin, divOrigin) {
         let imagelink = divOrigin.querySelector("#modicon");
 
         imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + siegeProject.icon + ".png");
-        descriptionDiv.innerHTML = description;
+        descriptionDiv.innerHTML = AddTagIconsForStatusEffects( description);
 
         let tier = divOrigin.querySelector("#modtier");
 
@@ -5092,12 +5092,12 @@ function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTre
         type.innerHTML = "Active";
     } else if (infusion.name.indexOf(" Damage") != -1) {
         const spa = document.createElement("span");
-        spa.innerHTML = infusion.description;
+        spa.innerHTML = AddTagIconsForStatusEffects(infusion.description);
         addTooltipListeners(name, spa);
         type.innerHTML = "Damage";
     } else {
         const spa = document.createElement("span");
-        spa.innerHTML = infusion.description;
+        spa.innerHTML = AddTagIconsForStatusEffects(infusion.description);
         addTooltipListeners(name, spa);
         type.innerHTML = "Passive";
     }
