@@ -339,11 +339,41 @@ async function CheckData() {
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityNameMap[a.name] = a));
+        
+        // maps
         HandlePage();
         if (languageSelect.value != "EN") {
             LocalizeUI();
         }
     }
+}
+
+const lookupMaps = new Map(); // cache of maps per "array+key" combo
+
+function buildLookupMap(array, key) {
+    const mapKey = array === jsonUnits ? "jsonUnits:" + key :
+                   array === jsonUnitAbilities ? "jsonUnitAbilities:" + key :
+                   array === jsonUnitAbilitiesLocalized ? "jsonUnitAbilitiesLocalized:" + key :
+                   array === jsonSpells ? "jsonSpells:" + key :
+                   array === jsonSpellsLocalized ? "jsonSpellsLocalized:" + key :
+                   array === jsonTomes ? "jsonTomes:" + key :
+                   array === jsonTomesLocalized ? "jsonTomesLocalized:" + key :
+                   array === jsonHeroSkills ? "jsonHeroSkills:" + key :
+                   array === jsonAllFromPOLocalized ? "jsonAllFromPOLocalized:" + key :
+                   null;
+
+    if (!mapKey) return null; // not a static array we track
+
+    if (!lookupMaps.has(mapKey)) {
+        const map = new Map();
+        for (const entry of array) {
+            if (entry[key] !== undefined) {
+                map.set(entry[key], entry);
+            }
+        }
+        lookupMaps.set(mapKey, map);
+    }
+    return lookupMaps.get(mapKey);
 }
 
 const patchDates = [
