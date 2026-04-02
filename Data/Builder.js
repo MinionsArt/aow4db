@@ -29,17 +29,20 @@ function buildAbilityTagCache() {
     const endtag = "</span>";
 
     for (const ability of jsonUnitAbilitiesLocalized) {
-        if (ability.slug === "0000041b000013b4") continue; // skip that one
+        if (ability.slug === "0000041b000013b4") continue;
 
         const abilityName = ability.name.split("^")[0];
         if (!abilityName || abilityName.includes("%") || abilityName.includes("+")) continue;
 
-        // build the replacement string once
         const tag = abilityName.replaceAll(" ", "_").toLowerCase();
         const tooltipspan = `<span class="statusEffectHandler">${abilityName}</span>`;
         const replacement = `${underline}<${tag}></${tag}>${tooltipspan}${endtag}`;
 
-        abilityTagCache.set(abilityName, replacement);
+        // Pre-compile the regex here instead of later
+        const escaped = abilityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const regex = new RegExp(`\\b${escaped}\\b`, "g");
+
+        abilityTagCache.set(abilityName, { replacement, regex }); // store both
     }
 }
 
@@ -63,25 +66,20 @@ function AddTagIconsForStatusEffects(text) {
     text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
 
-    // 1. Extract hyperlinks
     const extracted = extractHyperlinks(text);
     text = extracted.text;
 
-    // 2. Replace plain-text abilities ONLY
-    for (const [abilityName, replacement] of abilityTagCache.entries()) {
-        const escaped = abilityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        const pattern = new RegExp(`\\b${escaped}\\b`, "g");
-        text = text.replace(pattern, replacement);
+    // Use the pre-compiled regex instead of building it here
+    for (const [abilityName, { replacement, regex }] of abilityTagCache.entries()) {
+        regex.lastIndex = 0; // reset since the regex has the "g" flag
+        text = text.replace(regex, replacement);
     }
 
-    // 3. Restore hyperlinks, selectively replacing full matches
     for (const link of extracted.links) {
         let restored = `<hyperlink>${link.inner}</hyperlink>`;
-
         if (abilityTagCache.has(link.inner)) {
-            restored = abilityTagCache.get(link.inner);
+            restored = abilityTagCache.get(link.inner).replacement; // updated to get just the replacement
         }
-
         text = text.replace(link.token, restored);
     }
 
@@ -860,7 +858,6 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
         abilityRange,
         abilityType,
         abilityNote,
-        j,
         abilityReq,
         abilityMod = "";
 
@@ -1183,7 +1180,7 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     }
 
     holder.append(btn);
-    btn.ability = jsonUnitAbilities[j];
+    btn.ability = abilityEn;
     btn.appendChild(imag);
     let divider = document.createElement("div");
     divider.setAttribute("style", "display: flex;justify-content: space-between;width: 100%;");
