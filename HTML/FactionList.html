@@ -471,6 +471,19 @@
                 if (dlc == "GIANTKINGS") {
                     return "Giant Kings";
                 }
+                  if (dlc == "ARCHONPROPHECY") {
+                    return "Archon Prophecy";
+                }
+                   if (dlc == "COSMICWANDERER") {
+                    return "Cosmic Wanderer";
+                }
+                  if (dlc == "THRONESOFBLOOD") {
+                    return "Thrones of Blood";
+                }
+                   if (dlc == "RISEFROMRUIN") {
+                    return "Rise from Ruin";
+                }
+                
             }
 
             function createDlcFilters() {
@@ -483,6 +496,11 @@
                 allDLCs.add("WAYSOFWAR");
                 allDLCs.add("HERALDOFGLORY");
                 allDLCs.add("GIANTKINGS");
+                  allDLCs.add("ARCHONPROPHECY");
+                  allDLCs.add("COSMICWANDERER");
+                 allDLCs.add("THRONESOFBLOOD");
+                  allDLCs.add("RISEFROMRUIN");
+                
 
                 allDLCs.forEach((dlc) => {
                     const btn = document.createElement("button");
@@ -636,6 +654,15 @@
                 };
 
                 const createTomeList = (tomes, source, size) => {
+                    const container = document.createElement("div");
+                    container.className = "sideList";
+                    tomes.forEach((tome) => {
+                        container.appendChild(createEntry(tome.name, tome.icon, source, size));
+                    });
+                    return container;
+                };
+                
+                  const createTraitList = (tomes, source, size) => {
                     const container = document.createElement("div");
                     container.className = "sideList";
                     tomes.forEach((tome) => {
@@ -826,7 +853,7 @@
                         createEntry(build.currentForm.name, build.currentForm.id, "FactionCreation", 40)
                     );
                 if (build.currentFormTraitList.length)
-                    newDivForm.appendChild(createTomeList(build.currentFormTraitList, "FactionCreation", 30));
+                    newDivForm.appendChild(createTraitList(build.currentFormTraitList, "FactionCreation", 30));
 
                 // culture
 
