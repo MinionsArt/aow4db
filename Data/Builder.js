@@ -6113,6 +6113,11 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         }
         descriptionDiv.innerHTML += "</bulletlist>";
     }
+    
+    if(currentTrait.type == "destiny"){
+        
+    }
+    
 
     if ("description" in currentTrait || "extraLookup" in currentTrait) {
         if ("requirement" in currentTrait) {
