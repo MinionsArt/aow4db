@@ -6081,6 +6081,7 @@ function showItem(itemLoc, divOrigin) {
 }
 
 function showTraitSetup(currentTrait, divOrigin, loc) {
+    const originalTrait = currentTrait;
     if (loc == "loc") {
         const traitLoc = findBy(jsonFactionCreation2Localized, "icon", currentTrait.icon);
         if (traitLoc == undefined) {
@@ -6114,8 +6115,20 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         descriptionDiv.innerHTML += "</bulletlist>";
     }
     
-    if(currentTrait.type == "destiny"){
-        
+    if(originalTrait.type == "destiny"){
+       const trigger = findBy(jsonDestinyTriggers, "id", originalTrait.id);
+        if(trigger != undefined){
+            
+               const questTitle = findBy(jsonAllFromPOLocalized, "id", trigger.quest).title;
+              
+             descriptionDiv.innerHTML += "<br><span class='mod_name'>TRIGGERS: </span><br>";
+           descriptionDiv.innerHTML += "<quest></quest> " + "<span class='loreText'> Quest: " +  questTitle + "</span>";
+              descriptionDiv.innerHTML += "<br><span class='loreText'><bulletlist>Need all of the following: </span><br>";
+            for(const entry of trigger.trigger){
+                descriptionDiv.innerHTML += "<bullet>" + entry.entry + "</bullet>";
+            }
+            
+        }
     }
     
 
@@ -6260,6 +6273,8 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             descriptionDiv.appendChild(div);
         }
     }
+    
+   descriptionDiv.innerHTML =  AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
     let tier = divOrigin.querySelector("#modtier");
     tier.innerHTML = "";
@@ -6295,6 +6310,8 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
     // imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     imagelink.setAttribute("style", "background-image:none");
     imagelink.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
+    
+   
 }
 
 function showTrait(a, divOrigin) {
