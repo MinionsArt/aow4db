@@ -6274,7 +6274,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         }
     }
     
-   descriptionDiv.innerHTML =  AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
+  // descriptionDiv.innerHTML =  AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
     let tier = divOrigin.querySelector("#modtier");
     tier.innerHTML = "";
