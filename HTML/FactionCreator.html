@@ -375,6 +375,70 @@
             .sortingButton:hover {
                 background-color: dimgrey;
             }
+
+            .tome-remove-btn {
+                display: none;
+                position: absolute;
+                top: -18px;
+                right: 2px;
+                color: #ccc;
+                font-size: 13px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 10;
+                line-height: 1;
+                background: rgba(0, 0, 0, 0.55);
+                border-radius: 3px;
+                padding: 0 2px;
+            }
+            .tome-button-small::before {
+                content: '';
+                position: absolute;
+                top: -18px;
+                left: 0;
+                right: 0;
+                height: 18px;
+            }
+            .tome-button-small:hover .tome-remove-btn {
+                display: block;
+            }
+            .tome-remove-btn:hover {
+                color: #ff6666;
+            }
+            .tome-warning-icon {
+                position: absolute;
+                top: -18px;
+                left: 2px;
+                font-size: 12px;
+                font-weight: bold;
+                color: #e05252;
+                pointer-events: none;
+                z-index: 10;
+                text-shadow: 0 0 3px #000;
+            }
+            .tome-invalid {
+                outline: 2px solid #e05252;
+                outline-offset: 3px;
+            }
+            .tome-add-slot {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 60px;
+                height: 70px;
+                border: 2px dashed #555;
+                border-radius: 4px;
+                cursor: pointer;
+                color: #555;
+                font-size: 28px;
+                box-sizing: border-box;
+                align-self: center;
+                transition: border-color 0.15s, color 0.15s;
+            }
+            .tome-add-slot:hover {
+                border-color: #d7c297;
+                color: #d7c297;
+            }
         </style>
 
         <script>
@@ -685,12 +749,6 @@
 
                         <button style="float: right; color: red" class="button" onclick="ClearTomePath()">
                             Clear All
-                        </button>
-                        <button
-                            style="float: right; margin-right: 100px; color: red"
-                            class="button"
-                            onclick="RemoveLastTomePath()">
-                            Clear Last
                         </button>
                         <br />
                         <div
