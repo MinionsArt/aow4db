@@ -510,13 +510,14 @@ function SelectSymbol(origin) {
 
 function ClearAscensionSkill() {
     var ascensionHolder = document.getElementById("originButtonAscension");
-    ascensionHolder.innerHTML = "+";
+    
+    ascensionHolder.innerHTML = "<img class='padded-image' src='/aow4db/Icons/Interface/addsymbol.png' height='20px' />";
     currentAscension = "";
 }
 
 function ClearAmbition() {
     var ascensionHolder = document.getElementById("originButtonAmbition");
-    ascensionHolder.innerHTML = "+";
+    ascensionHolder.innerHTML = "<img class='padded-image' src='/aow4db/Icons/Interface/addsymbol.png' height='20px' />";
     currentAmbition = "";
 }
 
@@ -655,7 +656,7 @@ function selectTomePath(origin, fromLoad) {
     
     var addSlot = document.createElement("div");
     addSlot.className = "tome-add-slot";
-    addSlot.innerHTML = "+";
+    addSlot.innerHTML = "<img src='/aow4db/Icons/Interface/addsymbol.png' height='20px' />";
     addSlot.addEventListener("click", function(event) {
         tomeInsertionIndex = currentTomeList.length - 1;
         SetTomePathOptions(event);
@@ -755,7 +756,7 @@ function SetTomePathInfoSmall(buttonHolder, origin, index, isInvalid) {
 
     if (index > 0) {
         let removeBtn = document.createElement("div");
-        removeBtn.innerHTML = "×";
+        removeBtn.innerHTML =   "<img src='/aow4db/Icons/Interface/CloseX.png' height='15px' />";
         removeBtn.className = "tome-remove-btn";
         removeBtn.addEventListener("click", function(e) {
             e.stopPropagation();

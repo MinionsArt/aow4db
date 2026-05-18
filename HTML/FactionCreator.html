@@ -181,7 +181,10 @@
                 cursor: pointer;
                 position: relative;
             }
-
+            
+            .padded-image{
+                padding:15px;
+            }
             .tome-button-small {
                 width: 60px;
                 height: 70px;
@@ -626,13 +629,13 @@
                                             style="float: right; color: red"
                                             class="button"
                                             onclick="ClearAscensionSkill()">
-                                            X
+                                           <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
                                         </button>
                                         <button
                                             class="button-inset"
                                             id="originButtonAscension"
                                             onclick="SetupButtons(event,'Ascension')">
-                                            +
+                                            <img class="padded-image" src="/aow4db/Icons/Interface/addsymbol.png" height="20px" />
                                         </button>
                                     </div>
                                     <br><br>
@@ -642,13 +645,13 @@
                                             style="float: right; color: red"
                                             class="button"
                                             onclick="ClearAmbition()">
-                                            X
+                                            <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
                                         </button>
                                          <button
                                             class="button-inset"
                                             id="originButtonAmbition"
                                             onclick="SetupButtons(event,'Ambition')">
-                                            +
+                                            <img class="padded-image" src="/aow4db/Icons/Interface/addsymbol.png" height="20px" />
                                         </button>
                                     </div>
                                 </div>
@@ -748,7 +751,8 @@
                         <span class="small_title"> Tome Path</span>
 
                         <button style="float: right; color: red" class="button" onclick="ClearTomePath()">
-                            Clear All
+
+                            <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />  Clear All
                         </button>
                         <br />
                         <div
@@ -791,16 +795,19 @@
                 style="float: right; position: relative; top: -20px; color: red"
                 class="button"
                 onclick="toggleOriginButtons()">
-                X
+                 <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
             </button>
 
             <div id="originWrapperOptions" class="wrappers"></div>
+
         </div>
         <br /><br />
+        <hr> 
         <div id="buildsSubmitHolder">
         <div id="notesContainer" style="color: white">
             <div>
-                User Submitted Builds are in testing now.
+                <span class=small_title style='display: block; width: 100%;text-align: center;'>Submit your build</span><hr><br>
+Submit your build to the build list using the form below<br>
                 <button
                     class="button-random"
                     style="position: relative; top: 0; left: 50%; transform: translateX(-50%)">
@@ -896,6 +903,10 @@
                 </button>
             </div>
         </div>
+            <br>
+            <hr>
+            <div style='color:white; padding:20px'>
+Contributors: lucasandradz </div>
             </div>
 
         <script>
