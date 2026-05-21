@@ -166,6 +166,23 @@
                                     " " +
                                     affinity +
                                     "</span></bullet>";
+                                
+                                //repeatable/cooldown
+                                if (jsonEmpire[i].repeat_cost_increase){
+                                      spa.innerHTML +=
+                                    "Repeat Cost Increase: <br>" +
+                                    '<span style="color:  aquamarine;"> <bullet>' +
+                                    jsonEmpire[i].repeat_cost_increase +
+                                    "</span></bullet>";
+                                }
+                                
+                                 if (jsonEmpire[i].cooldown){
+                                      spa.innerHTML +=
+                                    "Cooldown: <br>" +
+                                    '<span style="color:  aquamarine;"> <bullet>' +
+                                    jsonEmpire[i].cooldown +
+                                    "</span></bullet>";
+                                }
 
                                 // newNode.appendChild(spa);
                                 addTooltipListeners(newNode, spa);
