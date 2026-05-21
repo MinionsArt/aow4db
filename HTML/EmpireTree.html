@@ -93,6 +93,15 @@
 
                                     var column = jsonEmpire[i].required_level + 2;
                                       toppos = 37 + (row - 1) * 70;
+                                
+                                 
+                                 if(jsonEmpire[i].repeat_cost_increase == undefined && mySet.has(jsonEmpire[i].required_level)){
+                                     // we can draw a lock here
+                                       connectionLine.className = "exclude-line";
+                                     
+                                }else{
+                                    connectionLine.className = "branch-line";
+                                }
                                     
                                     var test = row;
                                      if(mySet.has(jsonEmpire[i].required_level)){
@@ -107,6 +116,7 @@
 
                                    
                                     var leftpos = (column - offset) * nodeHeight;
+                               
 
                                     connectionLine.setAttribute(
                                         "style",
@@ -118,7 +128,9 @@
                                             color +
                                             ";"
                                     );
-                                    connectionLine.className = "branch-line";
+                               
+                               
+                                  
                                     treespace.appendChild(connectionLine);
                                     connectionLine.setAttribute("id", name);
                                     newNode.setAttribute(
@@ -329,6 +341,21 @@
         margin-top: -6px;
         position: absolute;
 
+        transform-origin: left center;
+        background-color: white;
+        background-size: 10px;
+        width: 25px;
+    }
+    
+    .exclude-line {
+          height: 4px;
+        margin-top: -6px;
+        position: absolute;
+
+    border-color: #ffffff;
+    border-style: dashed;
+    border-width: 1;
+    background-color: #000000;
         transform-origin: left center;
         background-color: white;
         background-size: 10px;
