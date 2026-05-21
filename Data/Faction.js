@@ -1602,6 +1602,7 @@ function createImage(type, origin) {
 }
 
 function getFactionIconPath(id) {
+    console.log(id);
     const cleanId = id.startsWith("_") ? id.split("_").slice(1).join("_") : id;
     return `/aow4db/Icons/FactionCreation/${cleanId}.png`;
 }
@@ -3339,9 +3340,16 @@ function GetRandomEntry(type) {
             var list = GetAllSubCultureSetups(currentOrigin);
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            if (!ListOfSubcultureHolders.includes(currentCulture.name)) {
+            if(showBetaTooltip.checked){
+                   if (!ListOfSubcultureHoldersBeta.includes(currentCulture.name)) {
                 randomOrigin = "";
             }
+            }else{
+                   if (!ListOfSubcultureHolders.includes(currentCulture.name)) {
+                randomOrigin = "";
+            }
+            }
+         
             // while (incompatibleCheck("Loadout", randomOrigin) === true) {
             //   randomOrigin = list[Math.floor(Math.random() * list.length)];
             //}
