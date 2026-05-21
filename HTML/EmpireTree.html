@@ -37,7 +37,7 @@
                 var nodeHeight = 60;
                 
                 var mySet = new Set();
-                    
+                    var levelMap = new Map();
 
                 for (i in jsonEmpire) {
                     if (jsonEmpire[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
@@ -57,36 +57,6 @@
 
                                 var newNode = document.createElement("DIV");
 
-                                /*if (jsonEmpire[i].category.toUpperCase().indexOf("RITE") != -1) {
-                                    var column = jsonEmpire[i].required_level + 2;
-
-                                    // insert connection line
-                                    var connectionLine = document.createElement("DIV");
-
-                                    var toppos = 20 + (row - 1) * 70;
-                                    var leftpos = (column - offset) * nodeHeight;
-                                    
-                                   
-
-                                    connectionLine.setAttribute(
-                                        "style",
-                                        "top:" +
-                                            leftpos +
-                                            "px; left:" +
-                                            toppos +
-                                            "px; rotate:-180deg;background-color:" +
-                                            color +
-                                            ";"
-                                    );
-                                    connectionLine.className = "branch-line";
-                                    connectionLine.setAttribute("id", name);
-                                    treespace.appendChild(connectionLine);
-
-                                    newNode.setAttribute(
-                                        "style",
-                                        "grid-row:" + (column - offset) + "; grid-column:" + (row - 1) + ";"
-                                    );
-                                } else {*/
                                     //insert connection line
                                     var rotation = 180;
                                     var connectionLine = document.createElement("DIV");
@@ -95,13 +65,31 @@
                                       toppos = 37 + (row - 1) * 70;
                                 
                                  
-                                 if(jsonEmpire[i].repeat_cost_increase == undefined && mySet.has(jsonEmpire[i].required_level)){
-                                     // we can draw a lock here
-                                       connectionLine.className = "exclude-line";
-                                     
-                                }else{
-                                    connectionLine.className = "branch-line";
-                                }
+                              const level = jsonEmpire[i].required_level;
+const isRepeatable = jsonEmpire[i].repeat_cost_increase !== undefined;
+
+const previousWasNonRepeatable = levelMap.get(level) === true;
+
+if (!isRepeatable && previousWasNonRepeatable) {
+    // two non-repeatable skills on same level
+      connectionLine.className = "branch-line";
+    var testLock = document.createElement("img");
+    testLock.setAttribute(
+                                    "src",
+                                    "/aow4db/Icons/Text/lock.png"
+                                );
+                                testLock.setAttribute("height", "20px");
+                                testLock.className = "lock";
+    newNode.appendChild(testLock)
+} else {
+    connectionLine.className = "branch-line";
+}
+
+// remember whether this level already contains
+// a non-repeatable skill
+if (!isRepeatable) {
+    levelMap.set(level, true);
+}
                                     
                                     var test = row;
                                      if(mySet.has(jsonEmpire[i].required_level)){
@@ -400,7 +388,13 @@
         color: aliceblue;
         text-align: center;
     }
-
+    .lock{
+      
+    position: absolute;
+   
+    top: 43px;
+    left: 72px;
+    }
     .empireNodeIcon {
         z-index: 10;
         position: relative;
