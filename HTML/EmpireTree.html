@@ -35,6 +35,9 @@
                 var treespace = document.getElementById("treespace");
                 var offset = 0;
                 var nodeHeight = 60;
+                
+                var mySet = new Set();
+                    
 
                 for (i in jsonEmpire) {
                     if (jsonEmpire[i].category.toUpperCase().indexOf(keyword.toUpperCase()) != -1) {
@@ -54,7 +57,7 @@
 
                                 var newNode = document.createElement("DIV");
 
-                                if (jsonEmpire[i].category.toUpperCase().indexOf("RITE") != -1) {
+                                /*if (jsonEmpire[i].category.toUpperCase().indexOf("RITE") != -1) {
                                     var column = jsonEmpire[i].required_level + 2;
 
                                     // insert connection line
@@ -62,6 +65,8 @@
 
                                     var toppos = 20 + (row - 1) * 70;
                                     var leftpos = (column - offset) * nodeHeight;
+                                    
+                                   
 
                                     connectionLine.setAttribute(
                                         "style",
@@ -81,14 +86,26 @@
                                         "style",
                                         "grid-row:" + (column - offset) + "; grid-column:" + (row - 1) + ";"
                                     );
-                                } else {
+                                } else {*/
                                     //insert connection line
-
+                                    var rotation = 180;
                                     var connectionLine = document.createElement("DIV");
 
                                     var column = jsonEmpire[i].required_level + 2;
+                                      toppos = 37 + (row - 1) * 70;
+                                    
+                                    var test = row;
+                                     if(mySet.has(jsonEmpire[i].required_level)){
+                                        
+                                       test = row -1;
+                                         rotation = -180
+                                          toppos = 10 + (row - 1) * 70;
+                                    } else{
+                                        mySet.add(jsonEmpire[i].required_level);
+                                        
+                                    }
 
-                                    var toppos = 37 + (row - 1) * 70;
+                                   
                                     var leftpos = (column - offset) * nodeHeight;
 
                                     connectionLine.setAttribute(
@@ -97,7 +114,7 @@
                                             leftpos +
                                             "px; left:" +
                                             toppos +
-                                            "px; rotate:180deg; background-color:" +
+                                            "px; rotate:" +rotation + "deg; background-color:" +
                                             color +
                                             ";"
                                     );
@@ -106,9 +123,9 @@
                                     connectionLine.setAttribute("id", name);
                                     newNode.setAttribute(
                                         "style",
-                                        "grid-row:" + (column - offset) + "; grid-column:" + row + ";"
+                                        "grid-row:" + (column - offset) + "; grid-column:" + test + ";"
                                     );
-                                }
+                               // }
 
                                 //  newNode.innerHTML = name;
                                 newNode.className = "unittype_icon";
@@ -167,6 +184,12 @@
 
                                 var toppos = 35 + row * 70 - 92;
                                 var leftpos = 60;
+                                
+                                var width = 600;
+                                
+                                if(keyword == "general"){
+                                    width = 660;
+                                }
 
                                 connectionLine.setAttribute(
                                     "style",
@@ -174,7 +197,7 @@
                                         leftpos +
                                         "px; left:" +
                                         toppos +
-                                        "px; rotate:90deg;width: 600px; background-color:" +
+                                        "px; rotate:90deg;width:" + width + "px; background-color:" +
                                         color +
                                         ";"
                                 );
@@ -227,6 +250,7 @@
                 CreateDiv(9, "300");
                 CreateDiv(10, "400");
                 CreateDiv(11, "500");
+                 CreateDiv(12, "600");
             }
 
             function CreateDiv(row, breakpoint) {
@@ -308,7 +332,7 @@
     .tree-grid {
         display: grid;
         grid-template-columns: repeat(16, 70px);
-        grid-template-rows: repeat(11, 60px);
+        grid-template-rows: repeat(12, 60px);
         position: absolute;
         height: 750px;
         width: 1150px;

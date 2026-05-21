@@ -5021,7 +5021,7 @@ const pantheonList = [
     "subdue_infusion_equipment_upgrade",
     "equipment_upgrade_defense_mode_protective_wall",
     "bless_infusion_equipment_upgrade",
-    "fearless_infusion_equipment_upgrade"
+    "fearless_infusion_equipment_upgrade","magic_shield_infusion_equipment_upgrade"
 ];
 function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTreeFilter, selectedMMTreeFilter) {
     const div = document.createElement("div");

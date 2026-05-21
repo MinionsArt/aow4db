@@ -151,16 +151,19 @@ const dlcMap = {
     }, RISEFROMRUIN: {
         src: "/aow4db/Icons/Text/RiseFromRuin.png",
         text: "Part of the Rise From Ruin DLC"
+    }, SECRETSOFTHEARCHMAGES: {
+        src: "/aow4db/Icons/Text/SecretsOfTheArchmages.png",
+        text: "Part of the Secrets of the Archmages DLC"
     }
 };
 
 async function GetAllData(selectedLang) {
     let basePathEN = `/aow4db/Data/EN/`;
 
-    /*if (selectedLang == "BETA") {
+    if (selectedLang == "BETA") {
         basePathEN = `/aow4db/Data/BETA/`;
     }
-    */
+    
 
     const basePathGen = `/aow4db/Data/GEN/`;
     // }
@@ -330,11 +333,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-        /*  if (storedSettings.showBeta) {
+     if (storedSettings.showBeta) {
              await GetAllData("BETA");
-       } else {*/
+       } else {
         await GetAllData(storedSettings.language);
-      //  }
+       }
 
 //await GetAllData("EN");
         AddExtraData();

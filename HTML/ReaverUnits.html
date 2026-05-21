@@ -19,8 +19,19 @@
         <script>
            
             function HandlePage() {
-                const unitarray = GetCultureUnitsOf("Reaver");
+                if(showBetaTooltip.checked){
+                       let unitarray =  GetCultureUnitsOf("Reaver", "Federate");
+                  let unitarray2 =  GetCultureUnitsOf("Reaver", "Imperial");
+                SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Federate");
+                SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Imperial");
+                }else{
+                       const unitarray = GetCultureUnitsOf("Reaver");
                 SetButtonsAndDivs(unitarray, undefined, "unit");
+                }
+                
+
+                
+             
                 SetLevelUpStuff();
             }
         </script>
@@ -40,6 +51,41 @@
             <div id="buttonHolder" class="w3-bar w3-black"></div>
             <div id="dataHolder" style="margin-top: -250px"></div>
         </div>
+        
+        
+         <div class="subcultureHolder">
+        <button onclick="showSubDiv(event,'Federate')" class="subscultureButton"><img src=/aow4db/Icons/Text/federate.png width="50px">
+            <span class="subCultureName" id="subCultureNameFederate">Federate</span>
+        </button>
+        <button onclick="showSubDiv(event,'Imperial')" class="subscultureButton"><img src=/aow4db/Icons/Text/Imperial.png width="50px">
+            <span class="subCultureName" id="subCultureNameImperial">Imperial</span>
+        </button>
+      
+
+    </div>
+
+    <div class="subDiv" id="Federate">
+        <div class="w3-container">
+            <div id="buttonHolder1" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder1" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="subDiv" id="Imperial">
+        <div class="w3-container">
+            <div id="buttonHolder2" class="w3-bar w3-black">
+
+            </div>
+            <div id="dataHolder2" class="dataholder" style="margin-top:-250px">
+            </div>
+
+
+        </div>
+    </div>
     </body>
 </html>
 <footer>
