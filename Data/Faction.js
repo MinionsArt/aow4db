@@ -145,10 +145,10 @@ const extraTomesForTheorycrafting = [{
   "skills": [
   ]
  },{
-  "affinities": " 1 <empirenature></empirenature> Empire Nature Affinity,1 <empireshadow></empireshadow> Empire Shadow Affinity",
+  "affinities": "1 <empirenature></empirenature> Empire Nature Affinity,1 <empireshadow></empireshadow> Empire Shadow Affinity",
   "lore_description": "",
   "gameplay_description": "For theorycrafting",
-  "resid": 1,
+  "resid": 9,
   "id": "tome_of_the_weaver",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "lore_author": "",
