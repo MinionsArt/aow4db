@@ -1993,6 +1993,7 @@ async function spawnStructureCards(list, divID) {
         const iDiv = structure_card_template.content.cloneNode(true);
         const element = iDiv.firstElementChild;
         doc.appendChild(element);
+       
         listOfNewDivs.push(element);
     }
     return listOfNewDivs;
@@ -2098,6 +2099,17 @@ async function showItemFromList(list, divID) {
 
     for (let i = 0; i < list.length; i++) {
         showItem(list[i], newDivs[i]);
+    }
+}
+
+
+async function showAllRelics(argumentType, divID) {
+    let list = [];
+    list = findRelics(argumentType);
+   
+    let cards = await spawnStructureCards(list, divID);
+    for (let i = 0; i < list.length; i++) {
+        showRelic(list[i], cards[i]);
     }
 }
 
@@ -2547,6 +2559,18 @@ function findCosmicHappeningsWithArgument(argumentType) {
         if (jsonCosmicHappenings[j].type == argumentType) {
             finalCheckedList.push(jsonCosmicHappenings[j].id);
         }
+    }
+
+    return finalCheckedList;
+}
+
+function findRelics(argumentType) {
+    let finalCheckedList = [];
+
+    for (let j = 0; j < jsonRelics.length; j++) {
+       // if (jsonCosmicHappenings[j].type == argumentType) {
+            finalCheckedList.push(jsonRelics[j].id);
+        //}
     }
 
     return finalCheckedList;
@@ -4699,6 +4723,110 @@ function showCosmicHappening(a, divOrigin) {
     }
     if (found === false) {
         console.log("Couldn't find cosmic happening: " + a);
+    }
+}
+
+
+function showRelic(a, divOrigin) {
+    let modName,
+        description,
+        nameString = "";
+    let found = false;
+ for (let j= 0; j <jsonRelics.length;j++) {
+        if (a === jsonRelics[j].id) {
+            modName = divOrigin.querySelector("#modname");
+            nameString = "";
+            nameString = jsonRelics[j].name.toUpperCase();
+            
+          
+
+            if (modName == undefined) {
+            }
+            modName.innerHTML = nameString;
+            modName.className = "mod_name";
+
+            let descriptionDiv = divOrigin.querySelector("#moddescription");
+            descriptionDiv.setAttribute("style", "max-width:560px;");
+        
+
+            if ("extraLookup" in jsonRelics[j]) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].extraLookup);
+                console.log(valueLookup.description);
+                description = valueLookup.description;
+
+                modName.innerHTML = valueLookup.name.toUpperCase();
+            }
+            
+             if ("unlock" in jsonRelics[j]) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].unlock);
+                console.log(valueLookup.description);
+                 
+                 description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
+                description += valueLookup.description;
+
+                
+            }
+            if ("unlock2" in jsonRelics[j]) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].unlock2);
+                console.log(valueLookup.description);
+               description += "<hr>";
+                 if(valueLookup.name){
+                        description +=  valueLookup.name.toUpperCase() + "<br>";
+                 }
+              
+                description += valueLookup.description;
+
+                
+            }
+            if ("unlock3" in jsonRelics[j]) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].unlock3);
+                console.log(valueLookup.description);
+                 
+                 description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
+                description += valueLookup.description;
+
+                
+            }
+            
+              if ("DLC" in jsonRelics[j]) {
+        let newDivForMount = AddDLCTag(jsonRelics[j].DLC);
+        modName.append(newDivForMount);
+    }
+            descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
+
+           /* let imagelink = divOrigin.querySelector("#modicon");
+
+            let categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
+            categoryLink = categoryLink.replaceAll("of", "Of");
+            imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
+
+            let preview = divOrigin.querySelector("#structurepreview");
+            let imagePos = jsonCosmicHappenings[j].image;
+
+            preview.className = "cosmicHappeningPic";
+            preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
+
+            preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
+
+            let modtier = divOrigin.querySelector("#modtier");
+            modtier.innerHTML = "Category: " + jsonCosmicHappenings[j].category;
+
+            let modcost = divOrigin.querySelector("#modcost");
+            let duration = jsonCosmicHappenings[j].duration;
+            if (duration == -1) {
+                duration = "Variable";
+            } else {
+                duration += "<turn></turn>";
+            }
+            modcost.innerHTML = "Duration: " + duration;
+            */
+
+            // find combat enchantment
+            found = true;
+        }
+    }
+    if (found === false) {
+        console.log("Couldn't find relic: " + a);
     }
 }
 
