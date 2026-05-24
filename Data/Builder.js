@@ -226,25 +226,13 @@ function GetUnitTierAndName(id, subcultureCheck) {
     }
 }
 
+function makeNameTag(content) {
+    return `<p style="width:160px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-transform:none;">${content}</p>`;
+}
 function GetSpellTierAndName(spell) {
-    for (let i = 0; i < jsonSpells.length; i++) {
-        let unit = jsonSpells[i];
-
-        // Check if the ID matches
-        if (spell !== unit.id) {
-            continue;
-        }
-
-        let spellLoc = jsonSpellsLocalized.find((entry) => entry.resid === unit.resid);
-        // Prepare the unit's name
-        let name = spellLoc.name;
-
-        // Return the formatted name and tier
-        return `
-            <p style="width: 160px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-transform: none;">
-                ${name}
-            </p>`;
-    }
+    const s = findBy(jsonSpells, "id", spell);
+    if (!s) return "";
+    return makeNameTag(findBy(jsonSpellsLocalized, "resid", s.resid)?.name ?? "");
 }
 
 function GetStructureTierAndName(spell) {
@@ -909,9 +897,8 @@ function addAbilityslot(a, holder, list, enchant, uniqueMedal) {
     }
 
     let combinedReq = "";
-  
-       for (let m= 0; m<abilityReq.length;m++) {
-  
+
+    for (let m = 0; m < abilityReq.length; m++) {
         combinedReq += abilityReq[m].requisite + ",";
     }
     abilityEncht = "";
@@ -1423,51 +1410,50 @@ function LookUpActionPointsName(string) {
 }
 
 function addPassiveslot(a, div, enchant) {
-    let abilityName,
-        abilityIcon,
-        abilityDescr;
-      
-      for (let j= 0; j<jsonUnitAbilitiesLocalized.length;j++) {
-   
-        if (a === jsonUnitAbilitiesLocalized[j].slug) {
-            abilityName = jsonUnitAbilitiesLocalized[j].name;
-            abilityIcon = jsonUnitAbilitiesLocalized[j].icon;
+    let abilityName, abilityIcon, abilityDescr;
 
-            abilityDescr = jsonUnitAbilitiesLocalized[j].description;
-
-            let btn = document.createElement("DIV");
-            btn.className = "unit_passiveslot";
-            let imag = document.createElement("IMG");
-            imag.className = "unit_ability_icon";
-
-            let tex = document.createElement("DIV");
-            tex.className = "tooltip";
-            tex.setAttribute("onclick", "");
-            tex.innerHTML = abilityName;
-
-            imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
-            imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
-            imag.setAttribute("width", "40");
-            imag.setAttribute("height", "40");
-
-            if (enchant) {
-                btn.setAttribute(
-                    "style",
-                    "background-image: linear-gradient(to right, rgb(95 47 162 / 0%), rgb(146 47 162 / 25%), rgb(222 88 228 / 50%), rgb(138 47 162 / 26%), rgb(151 47 162 / 0%));"
-                );
-            }
-
-            let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
-            div.appendChild(btn);
-
-            btn.appendChild(imag);
-
-            //tex.appendChild(spa);
-
-            btn.append(tex);
-            addTooltipListeners(tex, spa);
-        }
+    const ability = jsonUnitAbilitiesLocalized.find((e) => e.slug === a);
+    if (ability == undefined) {
+        console.log(" couldn't find ability " + a);
+        return;
     }
+
+    abilityName = ability.name;
+    abilityIcon = ability.icon;
+
+    abilityDescr = ability.description;
+
+    let btn = document.createElement("DIV");
+    btn.className = "unit_passiveslot";
+    let imag = document.createElement("IMG");
+    imag.className = "unit_ability_icon";
+
+    let tex = document.createElement("DIV");
+    tex.className = "tooltip";
+    tex.setAttribute("onclick", "");
+    tex.innerHTML = abilityName;
+
+    imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + abilityIcon + ".png");
+    imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
+    imag.setAttribute("width", "40");
+    imag.setAttribute("height", "40");
+
+    if (enchant) {
+        btn.setAttribute(
+            "style",
+            "background-image: linear-gradient(to right, rgb(95 47 162 / 0%), rgb(146 47 162 / 25%), rgb(222 88 228 / 50%), rgb(138 47 162 / 26%), rgb(151 47 162 / 0%));"
+        );
+    }
+
+    let spa = CreatePassiveSlotToolTip(abilityIcon, abilityName, abilityDescr);
+    div.appendChild(btn);
+
+    btn.appendChild(imag);
+
+    //tex.appendChild(spa);
+
+    btn.append(tex);
+    addTooltipListeners(tex, spa);
 }
 
 function addUniquePassiveSlot(enchantment, descr, div, overwrite) {
@@ -1587,136 +1573,139 @@ function addResistanceSlot(a, resistance, defense, holder) {
         abilityIcon,
         abilityDescr,
         abilityDam = "";
-    for (let j = 0; j < jsonUnitAbilities.length; j++) {
-        if (a === jsonUnitAbilities[j].slug) {
-            abilityName = jsonUnitAbilities[j].name;
-            let firstPart;
-            if (abilityName.indexOf("Immu") != -1) {
-                firstPart = abilityName.split(" ")[0];
-            } else {
-                let nameclean = abilityName.split(">")[1];
-                firstPart = nameclean.split(" ")[0];
-            }
 
-            abilityIcon = jsonUnitAbilities[j].icon;
-            abilityDescr = jsonUnitAbilities[j].description;
-            abilityDam = jsonUnitAbilities[j].damage;
-            let btn = document.createElement("DIV");
-            btn.className = "resistance_icon";
-            btn.setAttribute("id", abilityName);
-            let imag = document.createElement("IMG");
-            imag.className = "unit_ability_icon";
-
-            let spa = document.createElement("SPAN");
-
-            spa.innerHTML =
-                "<p>" +
-                '<span style="font-size=20px; text-transform:uppercase; color:#deb887 ;">' +
-                abilityName +
-                "</p>" +
-                "Added to Resistance <resistance></resistance> to calculate damage sustained from " +
-                firstPart +
-                ".";
-
-            let num = "";
-            let split;
-            if (a.indexOf("weakness") !== -1) {
-                split = a.split("weakness_");
-                num = "-" + split[1];
-            } else if (a.indexOf("resistance") !== -1) {
-                split = a.split("resistance_");
-                num = split[1];
-            } else {
-                split = a.split("resistance_");
-                num = "x";
-            }
-
-            const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
-
-            spa.innerHTML +=
-                "<br><br>" +
-                damageRedText.damage_reduction +
-                ": <br> " +
-                firstPart +
-                ' <span style="color:white;">' +
-                GetDamageReductionPercentage(defense, num) +
-                '</span> ( From <span style="color:white;">' +
-                defense +
-                "</span> <defense> </defense>";
-            if (num != undefined) {
-                if (num > 0) {
-                    spa.innerHTML += "+";
-                }
-                spa.innerHTML += num;
-            }
-            spa.innerHTML +=
-                "<br>" +
-                firstPart +
-                GetDamageReductionPercentage(resistance, num) +
-                '</span> ( From <span style="color:white;">' +
-                resistance +
-                "</span> <resistance> </resistance>";
-            if (num != undefined) {
-                if (num > 0) {
-                    spa.innerHTML += "+";
-                }
-                spa.innerHTML += num;
-            }
-
-            imag.setAttribute("width", "25");
-            imag.setAttribute("height", "25");
-
-            if (a.indexOf("Frost") !== -1) {
-                imag.setAttribute("src", "/aow4db/Icons/Text/frost_resistance.png");
-                spa.innerHTML += "<defensefrost></defensefrost>";
-            }
-            if (a.indexOf("Blight") !== -1) {
-                imag.setAttribute("src", "/aow4db/Icons/Text/blight_resistance.png");
-                spa.innerHTML += "<defenseblight></defenseblight>";
-            }
-            if (a.indexOf("Physical") !== -1) {
-                imag.setAttribute("src", "/aow4db/Icons/Text/physical_resistance.png");
-                spa.innerHTML += "<defensephysical></defensephysical>";
-            }
-            if (a.indexOf("Fire") !== -1) {
-                imag.setAttribute("src", "/aow4db/Icons/Text/fire_resistance.png");
-                spa.innerHTML += "<defensefire></defensefire>";
-            }
-            if (a.indexOf("Spirit") !== -1) {
-                imag.setAttribute("src", "/aow4db/Icons/Text/spirit_resistance.png");
-                spa.innerHTML += "<defensespirit></defensespirit>";
-            }
-
-            if (a.indexOf("Shock") !== -1) {
-                imag.setAttribute("src", "/aow4db/Icons/Text/lightning_resistance.png");
-                spa.innerHTML += "<defenselightning></defenselightning>";
-            }
-
-            if (a.indexOf("weakness") !== -1) {
-                split = a.split("weakness_");
-                abilityDam = '<p class="resistanceNumber" style="color:red;">-' + split[1];
-            } else if (a.indexOf("resistance") !== -1) {
-                split = a.split("resistance_");
-                abilityDam = '<p class="resistanceNumber" style="color:lawngreen;">' + split[1];
-            } else {
-                split = a.split("resistance_");
-                abilityDam = '<p class="resistanceNumber">IMM';
-            }
-
-            spa.innerHTML += ")";
-
-            holder.appendChild(btn);
-            btn.innerHTML = abilityDam;
-
-            btn.appendChild(imag);
-
-            // btn.append(spa);
-
-            addTooltipListeners(btn, spa);
-
-            return;
-        }
+    const ability = findBy(jsonUnitAbilities, "slug", a);
+    if (ability == undefined) {
+        console.log(" couldnt find ability " + a);
+        return;
     }
+
+    abilityName = ability.name;
+    let firstPart;
+    if (abilityName.indexOf("Immu") != -1) {
+        firstPart = abilityName.split(" ")[0];
+    } else {
+        let nameclean = abilityName.split(">")[1];
+        firstPart = nameclean.split(" ")[0];
+    }
+
+    abilityIcon = ability.icon;
+    abilityDescr = ability.description;
+    abilityDam = ability.damage;
+    let btn = document.createElement("DIV");
+    btn.className = "resistance_icon";
+    btn.setAttribute("id", abilityName);
+    let imag = document.createElement("IMG");
+    imag.className = "unit_ability_icon";
+
+    let spa = document.createElement("SPAN");
+
+    spa.innerHTML =
+        "<p>" +
+        '<span style="font-size=20px; text-transform:uppercase; color:#deb887 ;">' +
+        abilityName +
+        "</p>" +
+        "Added to Resistance <resistance></resistance> to calculate damage sustained from " +
+        firstPart +
+        ".";
+
+    let num = "";
+    let split;
+    if (a.indexOf("weakness") !== -1) {
+        split = a.split("weakness_");
+        num = "-" + split[1];
+    } else if (a.indexOf("resistance") !== -1) {
+        split = a.split("resistance_");
+        num = split[1];
+    } else {
+        split = a.split("resistance_");
+        num = "x";
+    }
+
+    const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
+
+    spa.innerHTML +=
+        "<br><br>" +
+        damageRedText.damage_reduction +
+        ": <br> " +
+        firstPart +
+        ' <span style="color:white;">' +
+        GetDamageReductionPercentage(defense, num) +
+        '</span> ( From <span style="color:white;">' +
+        defense +
+        "</span> <defense> </defense>";
+    if (num != undefined) {
+        if (num > 0) {
+            spa.innerHTML += "+";
+        }
+        spa.innerHTML += num;
+    }
+    spa.innerHTML +=
+        "<br>" +
+        firstPart +
+        GetDamageReductionPercentage(resistance, num) +
+        '</span> ( From <span style="color:white;">' +
+        resistance +
+        "</span> <resistance> </resistance>";
+    if (num != undefined) {
+        if (num > 0) {
+            spa.innerHTML += "+";
+        }
+        spa.innerHTML += num;
+    }
+
+    imag.setAttribute("width", "25");
+    imag.setAttribute("height", "25");
+
+    if (a.indexOf("Frost") !== -1) {
+        imag.setAttribute("src", "/aow4db/Icons/Text/frost_resistance.png");
+        spa.innerHTML += "<defensefrost></defensefrost>";
+    }
+    if (a.indexOf("Blight") !== -1) {
+        imag.setAttribute("src", "/aow4db/Icons/Text/blight_resistance.png");
+        spa.innerHTML += "<defenseblight></defenseblight>";
+    }
+    if (a.indexOf("Physical") !== -1) {
+        imag.setAttribute("src", "/aow4db/Icons/Text/physical_resistance.png");
+        spa.innerHTML += "<defensephysical></defensephysical>";
+    }
+    if (a.indexOf("Fire") !== -1) {
+        imag.setAttribute("src", "/aow4db/Icons/Text/fire_resistance.png");
+        spa.innerHTML += "<defensefire></defensefire>";
+    }
+    if (a.indexOf("Spirit") !== -1) {
+        imag.setAttribute("src", "/aow4db/Icons/Text/spirit_resistance.png");
+        spa.innerHTML += "<defensespirit></defensespirit>";
+    }
+
+    if (a.indexOf("Shock") !== -1) {
+        imag.setAttribute("src", "/aow4db/Icons/Text/lightning_resistance.png");
+        spa.innerHTML += "<defenselightning></defenselightning>";
+    }
+
+    if (a.indexOf("weakness") !== -1) {
+        split = a.split("weakness_");
+        abilityDam = '<p class="resistanceNumber" style="color:red;">-' + split[1];
+    } else if (a.indexOf("resistance") !== -1) {
+        split = a.split("resistance_");
+        abilityDam = '<p class="resistanceNumber" style="color:lawngreen;">' + split[1];
+    } else {
+        split = a.split("resistance_");
+        abilityDam = '<p class="resistanceNumber">IMM';
+    }
+
+    spa.innerHTML += ")";
+
+    holder.appendChild(btn);
+    btn.innerHTML = abilityDam;
+
+    btn.appendChild(imag);
+
+    // btn.append(spa);
+
+    addTooltipListeners(btn, spa);
+
+    return;
 }
 
 function addstatusResistanceSlot(a, holder) {
@@ -1993,7 +1982,7 @@ async function spawnStructureCards(list, divID) {
         const iDiv = structure_card_template.content.cloneNode(true);
         const element = iDiv.firstElementChild;
         doc.appendChild(element);
-       
+
         listOfNewDivs.push(element);
     }
     return listOfNewDivs;
@@ -2102,11 +2091,10 @@ async function showItemFromList(list, divID) {
     }
 }
 
-
 async function showAllRelics(argumentType, divID) {
     let list = [];
     list = findRelics(argumentType);
-   
+
     let cards = await spawnStructureCards(list, divID);
     for (let i = 0; i < list.length; i++) {
         showRelic(list[i], cards[i]);
@@ -2568,8 +2556,8 @@ function findRelics(argumentType) {
     let finalCheckedList = [];
 
     for (let j = 0; j < jsonRelics.length; j++) {
-       // if (jsonCosmicHappenings[j].type == argumentType) {
-            finalCheckedList.push(jsonRelics[j].id);
+        // if (jsonCosmicHappenings[j].type == argumentType) {
+        finalCheckedList.push(jsonRelics[j].id);
         //}
     }
 
@@ -3554,7 +3542,7 @@ function CheckIfFromGovernance(unitName) {
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
 
-      for (let i = 0; i <jsonHeroGovernance.length;i++) {
+    for (let i = 0; i < jsonHeroGovernance.length; i++) {
         if (jsonHeroGovernance[i].screen_description.indexOf(unitName) != -1) {
             governance.add(jsonHeroGovernance[i]);
         }
@@ -3564,12 +3552,12 @@ function CheckIfFromGovernance(unitName) {
 
 function CheckIfInSiege(unitName) {
     let siege = new Set();
-  
+
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
 
-      for (let i = 0; i <jsonSiegeProjects.length;i++) {
+    for (let i = 0; i < jsonSiegeProjects.length; i++) {
         if (regex.test(jsonSiegeProjects[i].description)) {
             siege.add(jsonSiegeProjects[i]);
         }
@@ -3578,8 +3566,8 @@ function CheckIfInSiege(unitName) {
 }
 
 function CheckIfInFreeCitySets(unitName) {
-    let freecity = new Set();;
-  for (let i = 0; i <jsonFreeCities.length;i++) {
+    let freecity = new Set();
+    for (let i = 0; i < jsonFreeCities.length; i++) {
         for (const entry of jsonFreeCities[i].mandatory) {
             if ("units" in entry) {
                 //   showSpellsWithArgument;
@@ -3629,7 +3617,7 @@ function CheckIfInStructure(id, unitName) {
         return Array.from(structure);
     }
 
-    for (let i = 0; i <jsonStructureUpgrades.length;i++) {
+    for (let i = 0; i < jsonStructureUpgrades.length; i++) {
         if (jsonStructureUpgrades[i].description.indexOf(unitName) != -1) {
             structure.add(jsonStructureUpgrades[i]);
         }
@@ -3657,20 +3645,17 @@ function CheckIfInTomes(unitID) {
     if (unitID == "young_frost_dragon" || unitID == "young_obsidian_dragon" || unitID == "young_golden_dragon") {
         unitID = "young_fire_dragon";
     }
-   
 
-    
-    for (let i = 0; i <jsonTomes.length;i++) {
-    if (jsonTomes[i].skills) {
-          for (let k = 0; k <jsonTomes[i].skills.length;k++) {
-              
-            if ("unit_slug" in jsonTomes[i].skills[k]) {
-                if (unitID === jsonTomes[i].skills[k].unit_slug) {
-                    tome.add(jsonTomes[i]);
+    for (let i = 0; i < jsonTomes.length; i++) {
+        if (jsonTomes[i].skills) {
+            for (let k = 0; k < jsonTomes[i].skills.length; k++) {
+                if ("unit_slug" in jsonTomes[i].skills[k]) {
+                    if (unitID === jsonTomes[i].skills[k].unit_slug) {
+                        tome.add(jsonTomes[i]);
+                    }
                 }
             }
         }
-    }
     }
     return Array.from(tome);
 }
@@ -3706,8 +3691,8 @@ function CheckIfInEmpireTree(unitName) {
     const escapedName = escapeRegex(unitName.trim()).replace(/\s+/g, "\\s+");
     // Match <hyperlink> NAME </hyperlink> with flexible spaces around name
     const regex = new RegExp(`<hyperlink>\\s*${escapedName}\\s*<\\/hyperlink>`, "i");
-  
-     for (let i = 0; i <jsonEmpire.length;i++) {
+
+    for (let i = 0; i < jsonEmpire.length; i++) {
         if (regex.test(jsonEmpire[i].description)) {
             tree.add(jsonEmpire[i]);
         }
@@ -3718,9 +3703,8 @@ function CheckIfInEmpireTree(unitName) {
 
 function CheckIfEvolveTarget(unitID) {
     let evolve = "";
-   
-     for (let i = 0; i <jsonUnits.length;i++) {
-  
+
+    for (let i = 0; i < jsonUnits.length; i++) {
         if ("evolve_target" in jsonUnits[i]) {
             if (unitID === jsonUnits[i].evolve_target) {
                 evolve = jsonUnits[i];
@@ -3732,10 +3716,9 @@ function CheckIfEvolveTarget(unitID) {
 
 function CheckIfInTraits(unitID) {
     let wonder = new Set();
-      for (let i = 0; i <jsonFactionCreation.length;i++) {
+    for (let i = 0; i < jsonFactionCreation.length; i++) {
         if ("unit_unlocks" in jsonFactionCreation[i]) {
-            for (let k = 0; k <jsonFactionCreation[i].unit_unlocks.length;k++) {
-         
+            for (let k = 0; k < jsonFactionCreation[i].unit_unlocks.length; k++) {
                 if (unitID === jsonFactionCreation[i].unit_unlocks[k].slug) {
                     wonder.add(jsonFactionCreation[i]);
                 }
@@ -3747,11 +3730,9 @@ function CheckIfInTraits(unitID) {
 
 function CheckIfInAncientWonder(unitID) {
     let wonder = new Set();
-    for (let i = 0; i <jsonWorldStructures.length;i++) {
-  
+    for (let i = 0; i < jsonWorldStructures.length; i++) {
         if ("unit_unlocks" in jsonWorldStructures[i]) {
-                for (let k = 0; k <jsonWorldStructures[i].unit_unlocks.length;k++) {
-          
+            for (let k = 0; k < jsonWorldStructures[i].unit_unlocks.length; k++) {
                 if (unitID === jsonWorldStructures[i].unit_unlocks[k].slug) {
                     wonder.add(jsonWorldStructures[i]);
                 }
@@ -3899,53 +3880,40 @@ function lookupSlugFull(slug) {
 }
 
 function showSiegeProject(id, showOrigin, divOrigin) {
-    let siegeProject = findBy(jsonSiegeProjects, "name", id) || findBy(jsonSiegeProjects, "id", id);
-    if (siegeProject != undefined) {
-        const siegeLoc = findBy(jsonSiegeProjectsLocalized, "resid", siegeProject.resid);
-        let modName = divOrigin.querySelector("#modname");
-        modName.innerHTML = siegeLoc.name.toUpperCase();
-
-        let descriptionDiv = divOrigin.querySelector("#moddescription");
-        let description = "<hr>" + siegeLoc.description;
-
-        description +=
-            "<br>Fortification Damage:<br> +" +
-            siegeLoc.siege_health_damage +
-            " <siegehealthdamage></siegehealthdamage> Fortification Damage";
-
-        let imagelink = divOrigin.querySelector("#modicon");
-
-        imagelink.setAttribute("src", "/aow4db/Icons/SiegeProjectIcons/" + siegeProject.icon + ".png");
-        descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
-
-        let tier = divOrigin.querySelector("#modtier");
-
-        tier.innerHTML = "<garrison></garrison> Siege Project";
-
-        let cost = divOrigin.querySelector("#modcost");
-        cost.innerHTML = "Cost:" + siegeLoc.cost;
-        let tierSpell = backtraceTomeOriginAndTier(siegeProject, showOrigin, divOrigin);
-
-        if (tierSpell != undefined) {
-            let splitspell = tierSpell.split(",");
-            modName.innerHTML +=
-                '<span class="spell_tier" style="color:white;font-size:15px">  Tier ' +
-                romanize(splitspell[0]) +
-                "</span>";
-            if ("DLC" in siegeProject && showOrigin) {
-                let newDivForMount = AddDLCTag(siegeProject.DLC);
-
-                modName.append(newDivForMount);
-            }
-        } else {
-            modName.innerHTML += '<span class="spell_tier" style="color:white;font-size:15px">  Tier -</span>';
-        }
-
-        let upkeep = divOrigin.querySelector("#modupkeep");
-
-        upkeep.innerHTML = "";
-    } else {
+    const siegeProject = findBy(jsonSiegeProjects, "name", id) || findBy(jsonSiegeProjects, "id", id);
+    if (!siegeProject) {
         console.log("couldn't find siege project " + id);
+        return;
+    }
+    const siegeLoc = findBy(jsonSiegeProjectsLocalized, "resid", siegeProject.resid);
+
+    const description =
+        "<hr>" +
+        siegeLoc.description +
+        "<br>Fortification Damage:<br> +" +
+        siegeLoc.siege_health_damage +
+        " <siegehealthdamage></siegehealthdamage> Fortification Damage";
+
+    populateGenericCard(divOrigin, {
+        name: siegeLoc.name,
+        description: AddTagIconsForStatusEffects(description),
+        tier: "<garrison></garrison> Siege Project",
+        cost: "Cost:" + siegeLoc.cost,
+        icon: "/aow4db/Icons/SiegeProjectIcons/" + siegeProject.icon + ".png"
+    });
+
+    // everything below here is the unique logic for this card type
+    const tierSpell = backtraceTomeOriginAndTier(siegeProject, showOrigin, divOrigin);
+    const modName = divOrigin.querySelector("#modname");
+
+    if (tierSpell) {
+        const [tierNum] = tierSpell.split(",");
+        modName.innerHTML += `<span class="spell_tier" style="color:white;font-size:15px"> Tier ${romanize(tierNum)}</span>`;
+        if ("DLC" in siegeProject && showOrigin) {
+            modName.append(AddDLCTag(siegeProject.DLC));
+        }
+    } else {
+        modName.innerHTML += `<span class="spell_tier" style="color:white;font-size:15px"> Tier -</span>`;
     }
 }
 
@@ -4079,8 +4047,7 @@ function showTome(a, divOrigin) {
     // tome passives
     l = "";
     if ("passives" in tomeLoc) {
-          for (let l = 0; l <tomeLoc.passives.length;l++) {
-      
+        for (let l = 0; l < tomeLoc.passives.length; l++) {
             let div = document.createElement("DIV");
             div.className = "initialBonusText";
 
@@ -4468,15 +4435,13 @@ function GetAbilityInfo(ability) {
 
         let abilityMod = "";
 
-        if(ability.modifiers){
-            
-       
-           for (let l = 0; l <ability.modifiers.length;l++) {
-            abilityName += "&#11049";
-            abilityMod += "<bullet>" + AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
-            abilityMod += ability.modifiers[l].description + "</bullet><br>";
+        if (ability.modifiers) {
+            for (let l = 0; l < ability.modifiers.length; l++) {
+                abilityName += "&#11049";
+                abilityMod += "<bullet>" + AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>"; // AddTagIconsForStatusEffects(ability.modifiers[l].name) + "<br>";
+                abilityMod += ability.modifiers[l].description + "</bullet><br>";
+            }
         }
-             }
 
         // add notes
 
@@ -4530,9 +4495,8 @@ function GetHeroSkillName(skillID) {
 
 function GetHeroSkillDescription(skillID) {
     let array = ["", ""];
-   
-      for (let j= 0; j <jsonHeroSkills.length;j++) {
- 
+    
+    for (let j = 0; j < jsonHeroSkills.length; j++) {
         if (jsonHeroSkills[j].id == skillID) {
             if ("abilities" in jsonHeroSkills[j]) {
                 for (let k = 0; k < jsonUnitAbilities.length; k++) {
@@ -4548,6 +4512,16 @@ function GetHeroSkillDescription(skillID) {
     }
 }
 
+function populateGenericCard(divOrigin, { name, description, tier = "", cost = "", icon = "", upkeep = "" } = {}) {
+    divOrigin.querySelector("#modname").innerHTML = name.toUpperCase();
+    divOrigin.querySelector("#moddescription").innerHTML = description;
+    divOrigin.querySelector("#modtier").innerHTML = tier;
+    divOrigin.querySelector("#modcost").innerHTML = cost;
+    divOrigin.querySelector("#modupkeep").innerHTML = upkeep;
+    const img = divOrigin.querySelector("#modicon");
+    if (icon) img?.setAttribute("src", icon);
+}
+
 function showStructure(a, showOrigin, divOrigin) {
     const structureEN = jsonStructureUpgrades.find((entry) => entry.id == a);
     if (structureEN === undefined) {
@@ -4556,6 +4530,8 @@ function showStructure(a, showOrigin, divOrigin) {
     }
 
     const structureLoc = jsonStructureUpgradesLocalized.find((entry) => entry.resid == structureEN.resid);
+
+    //populateGenericCard(divOrigin, {})
 
     let modcard = divOrigin;
     let modName = divOrigin.querySelector("#modname");
@@ -4667,12 +4643,16 @@ function showCosmicHappening(a, divOrigin) {
     let modName,
         description,
         nameString = "";
-    let found = false;
- for (let j= 0; j <jsonCosmicHappenings.length;j++) {
-        if (a === jsonCosmicHappenings[j].id) {
+    
+   const happening =  findBy(jsonCosmicHappenings, "id", a);
+    if(happening == undefined){
+        console.log("couldnt find happening " + a);
+        return;
+    }
+   
             modName = divOrigin.querySelector("#modname");
             nameString = "";
-            nameString = jsonCosmicHappenings[j].name.toUpperCase();
+            nameString = happening.name.toUpperCase();
 
             if (modName == undefined) {
             }
@@ -4681,10 +4661,10 @@ function showCosmicHappening(a, divOrigin) {
 
             let descriptionDiv = divOrigin.querySelector("#moddescription");
             descriptionDiv.setAttribute("style", "max-width:560px;");
-            description = jsonCosmicHappenings[j].description;
+            description = happening.description;
 
-            if ("extraLookup" in jsonCosmicHappenings[j]) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonCosmicHappenings[j].extraLookup);
+            if ("extraLookup" in happening) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", happening.extraLookup);
                 description = valueLookup.description;
 
                 modName.innerHTML = valueLookup.name.toUpperCase();
@@ -4693,12 +4673,12 @@ function showCosmicHappening(a, divOrigin) {
 
             let imagelink = divOrigin.querySelector("#modicon");
 
-            let categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
+            let categoryLink = happening.category.replaceAll(" ", "");
             categoryLink = categoryLink.replaceAll("of", "Of");
             imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
 
             let preview = divOrigin.querySelector("#structurepreview");
-            let imagePos = jsonCosmicHappenings[j].image;
+            let imagePos = happening.image;
 
             preview.className = "cosmicHappeningPic";
             preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
@@ -4706,10 +4686,10 @@ function showCosmicHappening(a, divOrigin) {
             preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
 
             let modtier = divOrigin.querySelector("#modtier");
-            modtier.innerHTML = "Category: " + jsonCosmicHappenings[j].category;
+            modtier.innerHTML = "Category: " + happening.category;
 
             let modcost = divOrigin.querySelector("#modcost");
-            let duration = jsonCosmicHappenings[j].duration;
+            let duration = happening.duration;
             if (duration == -1) {
                 duration = "Variable";
             } else {
@@ -4717,28 +4697,22 @@ function showCosmicHappening(a, divOrigin) {
             }
             modcost.innerHTML = "Duration: " + duration;
 
-            // find combat enchantment
-            found = true;
-        }
-    }
-    if (found === false) {
-        console.log("Couldn't find cosmic happening: " + a);
-    }
 }
-
 
 function showRelic(a, divOrigin) {
     let modName,
         description,
         nameString = "";
-    let found = false;
- for (let j= 0; j <jsonRelics.length;j++) {
-        if (a === jsonRelics[j].id) {
+    
+      const relic =  findBy(jsonRelics, "id", a);
+    
+      if(relic == undefined){
+        console.log("couldnt find relic " + a);
+        return;
+    }
             modName = divOrigin.querySelector("#modname");
             nameString = "";
-            nameString = jsonRelics[j].name.toUpperCase();
-            
-          
+            nameString = relic.name.toUpperCase();
 
             if (modName == undefined) {
             }
@@ -4747,54 +4721,47 @@ function showRelic(a, divOrigin) {
 
             let descriptionDiv = divOrigin.querySelector("#moddescription");
             descriptionDiv.setAttribute("style", "max-width:560px;");
-        
 
-            if ("extraLookup" in jsonRelics[j]) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].extraLookup);
+            if ("extraLookup" in relic) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.extraLookup);
                 console.log(valueLookup.description);
                 description = valueLookup.description;
 
                 modName.innerHTML = valueLookup.name.toUpperCase();
             }
-            
-             if ("unlock" in jsonRelics[j]) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].unlock);
-                console.log(valueLookup.description);
-                 
-                 description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
-                description += valueLookup.description;
 
-                
-            }
-            if ("unlock2" in jsonRelics[j]) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].unlock2);
+            if ("unlock" in relic) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock);
                 console.log(valueLookup.description);
-               description += "<hr>";
-                 if(valueLookup.name){
-                        description +=  valueLookup.name.toUpperCase() + "<br>";
-                 }
-              
-                description += valueLookup.description;
 
-                
+                description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
+                description += valueLookup.description;
             }
-            if ("unlock3" in jsonRelics[j]) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", jsonRelics[j].unlock3);
+            if ("unlock2" in relic) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock2);
                 console.log(valueLookup.description);
-                 
-                 description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
-                description += valueLookup.description;
+                description += "<hr>";
+                if (valueLookup.name) {
+                    description += valueLookup.name.toUpperCase() + "<br>";
+                }
 
-                
+                description += valueLookup.description;
             }
-            
-              if ("DLC" in jsonRelics[j]) {
-        let newDivForMount = AddDLCTag(jsonRelics[j].DLC);
-        modName.append(newDivForMount);
-    }
+            if ("unlock3" in relic) {
+                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock3);
+                console.log(valueLookup.description);
+
+                description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
+                description += valueLookup.description;
+            }
+
+            if ("DLC" in relic) {
+                let newDivForMount = AddDLCTag(relic.DLC);
+                modName.append(newDivForMount);
+            }
             descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
 
-           /* let imagelink = divOrigin.querySelector("#modicon");
+            /* let imagelink = divOrigin.querySelector("#modicon");
 
             let categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
             categoryLink = categoryLink.replaceAll("of", "Of");
@@ -4821,13 +4788,7 @@ function showRelic(a, divOrigin) {
             modcost.innerHTML = "Duration: " + duration;
             */
 
-            // find combat enchantment
-            found = true;
-        }
-    }
-    if (found === false) {
-        console.log("Couldn't find relic: " + a);
-    }
+      
 }
 
 function showWorldStructure(a, divOrigin) {
@@ -5149,7 +5110,8 @@ const pantheonList = [
     "subdue_infusion_equipment_upgrade",
     "equipment_upgrade_defense_mode_protective_wall",
     "bless_infusion_equipment_upgrade",
-    "fearless_infusion_equipment_upgrade","magic_shield_infusion_equipment_upgrade"
+    "fearless_infusion_equipment_upgrade",
+    "magic_shield_infusion_equipment_upgrade"
 ];
 function showInfusionListEntrySmall(infusion, selectedTreeFilter, selectedSubTreeFilter, selectedMMTreeFilter) {
     const div = document.createElement("div");
@@ -5418,8 +5380,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 
         const rightSites = getEventStructureNameByPrefix(overrides, eventHandle);
 
-        for (let i= 0; i <rightSites.length;i++) {
-        
+        for (let i = 0; i < rightSites.length; i++) {
             AlternateNames.innerHTML += " <ancientwonder></ancientwonder>" + rightSites[i];
         }
         // story
@@ -5465,8 +5426,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 
             // options
             const buttons = getEventStructureNameByPrefix(story, "button");
-               for (let j= 0; j <buttons.length;j++) {
-           
+            for (let j = 0; j < buttons.length; j++) {
                 const button = document.createElement("div");
                 button.className = "button-event";
                 div.appendChild(button);
@@ -5485,8 +5445,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
             spawnHolder.style.width = "400px";
             const spawnSetMultiple = [];
 
-              for (let k= 0; k <spawnset.length;k++) {
-            
+            for (let k = 0; k < spawnset.length; k++) {
                 const result = findByFuzzy(jsonSpawnSetsStrat, "pool", spawnset[k]);
                 if (result != undefined) {
                     spawnSetMultiple.push(result);
@@ -5496,8 +5455,7 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
 
             combatReveal.appendChild(spawnHolder);
             spawnHolder.innerHTML += "Linked Spawnsets: <br>";
-  for (let j= 0; j<spawnSetMultiple.length;j++) {
-          
+            for (let j = 0; j < spawnSetMultiple.length; j++) {
                 for (const unit of spawnSetMultiple[j].units) {
                     spawnHolder.innerHTML += "<bullet> <unit></unit>" + unit + "</bullet>";
                 }
@@ -5617,9 +5575,8 @@ function showDestinyTrait(trait, divOrigin) {
         const unitTypesDiv = divOrigin.querySelector("#affectUnitTypes");
 
         descriptionDiv.innerHTML += "<br><br>Effect: <br>";
-    
-        for (let l= 0; l<traitEN.gains.length;l++) {
-      
+
+        for (let l = 0; l < traitEN.gains.length; l++) {
             let div = document.createElement("DIV");
             div.innerHTML = "<bullet>" + traitEN.gains[l].description + "</bullet>";
             descriptionDiv.appendChild(div);
@@ -5643,56 +5600,51 @@ function showEmpireTree(a, divOrigin) {
         nameString = "";
     let found = false;
 
-    for (let j= 0; j<jsonEmpire.length;j++) {
-    
-        if (a === jsonEmpire[j].id) {
-            modName = divOrigin.querySelector("#modname");
-            nameString = "";
-            nameString = jsonEmpireLocalized[j].name.toUpperCase();
-            nameString += "<br>" + jsonEmpireLocalized[j].category;
+    const treeEntry = findBy(jsonEmpire, "id", a);
 
-            modName.innerHTML = nameString;
-            // backtracktome
-
-            modName.className = "mod_name";
-            let descriptionDiv = divOrigin.querySelector("#moddescription");
-            description = "<hr>";
-
-            description += jsonEmpireLocalized[j].description;
-
-            let imagelink = divOrigin.querySelector("#modicon");
-
-            if (a.startsWith("_")) {
-                a = a.replace("_", "");
-            }
-
-            imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + jsonEmpire[j].icon + ".png");
-
-            descriptionDiv.innerHTML = description;
-
-            tier = divOrigin.querySelector("#modtier");
-            tier.innerHTML = "XP required: " + jsonEmpire[j].required_xp + jsonEmpire[j].required_affinity;
-
-            cost = divOrigin.querySelector("#modcost");
-
-            cost.innerHTML = "Cost: " + jsonEmpire[j].cost;
-
-            found = true;
-        }
+    if (treeEntry == undefined) {
+        console.log("couldnt find empire tree " + a);
+        return;
     }
-    if (found === false) {
-        console.log("Couldn't find mod: " + a);
+    let treeEntryLoc = findBy(jsonEmpire, "icon", treeEntry.icon);
+    if (treeEntryLoc == undefined) {
+        console.log("couldnt find empire tree loc " + a);
+        treeEntryLoc = treeEntry;
     }
+    modName = divOrigin.querySelector("#modname");
+    nameString = "";
+    nameString = treeEntryLoc.name.toUpperCase();
+    nameString += "<br>" + treeEntryLoc.category;
+
+    modName.innerHTML = nameString;
+    // backtracktome
+
+    modName.className = "mod_name";
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
+    description = "<hr>";
+
+    description += treeEntryLoc.description;
+
+    let imagelink = divOrigin.querySelector("#modicon");
+
+    if (a.startsWith("_")) {
+        a = a.replace("_", "");
+    }
+
+    imagelink.setAttribute("src", "/aow4db/Icons/EmpireProgressionIcons/" + treeEntry.icon + ".png");
+
+    descriptionDiv.innerHTML = description;
+
+    tier = divOrigin.querySelector("#modtier");
+    tier.innerHTML = "XP required: " + treeEntry.required_xp + treeEntry.required_affinity;
+
+    cost = divOrigin.querySelector("#modcost");
+
+    cost.innerHTML = "Cost: " + treeEntry.cost;
 }
 
 function GetCostUnit(id) {
-   
-      for (let i= 0; i<jsonUnits.length;i++) {
-   
-        if (id === jsonUnits[i].id) {
-            return jsonUnits[i].cost;
-        }
-    }
+    return findBy(jsonUnits, "id", id)?.cost;
 }
 
 function showUnitUnlock(a, divOrigin) {
@@ -5710,8 +5662,8 @@ function showUnitUnlock(a, divOrigin) {
 
     if (a.name === "Young Dragon") {
         let alldragons = ["young_fire_dragon", "young_frost_dragon", "young_obsidian_dragon", "young_golden_dragon"];
-     
-          for (let i= 0; i<alldragons.length;i++) {
+
+        for (let i = 0; i < alldragons.length; i++) {
             let div = document.createElement("DIV");
             div.innerHTML =
                 "<bullet>" +
@@ -5782,23 +5734,20 @@ function showSpell(a, showOrigin, divOrigin) {
 
         let unitTypesDiv = modCard.querySelector("#affectUnitTypes");
 
-       
         if (spellFound.enchantment_requisites != undefined) {
-    description += "<br><greenText>Affected Unit Types: </greenText><br>";
-   
-          for (let l= 0; l<spellFound.enchantment_requisites.length;l++) {
-            let div = document.createElement("DIV");
-            div.setAttribute("style", "margin-right: 20px;");
-            div.innerHTML = "<bullet>" + spellFound.enchantment_requisites[l].requisite + "</bullet>";
-            unitTypesDiv.appendChild(div);
-        }
+            description += "<br><greenText>Affected Unit Types: </greenText><br>";
+
+            for (let l = 0; l < spellFound.enchantment_requisites.length; l++) {
+                let div = document.createElement("DIV");
+                div.setAttribute("style", "margin-right: 20px;");
+                div.innerHTML = "<bullet>" + spellFound.enchantment_requisites[l].requisite + "</bullet>";
+                unitTypesDiv.appendChild(div);
+            }
         }
         if ("summoned_units" in spellFound) {
             description += "<br>Summoned Units:<br>";
 
-              
-          for (let x= 0; x<spellFound.summoned_units.length;x++) {
-          
+            for (let x = 0; x < spellFound.summoned_units.length; x++) {
                 let div = document.createElement("DIV");
                 div.setAttribute("style", "margin-right: 20px;");
                 div.innerHTML =
@@ -5989,9 +5938,8 @@ function GetAllTomesWithAffinity(affinity, dualOnly) {
 
 function FindFormUnits() {
     let unitsList = [];
-   
-       for (let i= 0; i<jsonUnits.length;i++) {
-  
+
+    for (let i = 0; i < jsonUnits.length; i++) {
         if (extraFormUnitsList.includes(jsonUnits[i].id)) {
             if (!isInArray(unitsList, jsonUnits[i].id)) {
                 unitsList.push(jsonUnits[i]);
@@ -6036,9 +5984,7 @@ function FindFormUnits() {
 
     let sortedUnitListArray = [];
 
-
-     for (let z= 0; z<splitArrays.length;z++) {
-   
+    for (let z = 0; z < splitArrays.length; z++) {
         let unitsSorted = [];
         let x = 0;
         for (x in splitArrays[z]) {
@@ -6055,11 +6001,9 @@ function FindUnitsWithSecondaryPassive(trait) {
     const ability = jsonUnitAbilities.find((entry) => entry.name.replaceAll(" ", "_").toLowerCase() === trait);
     // need to find a way to check tiers as well
     let unitsList = [];
-  
-     for (let i= 0; i<jsonUnits.length;i++) {
-   
-       
-           for (let j= 0; j<jsonUnits[i].secondary_passives.length;j++) {
+
+    for (let i = 0; i < jsonUnits.length; i++) {
+        for (let j = 0; j < jsonUnits[i].secondary_passives.length; j++) {
             if (jsonUnits[i].secondary_passives[j].slug === ability.slug && !depCheckResID(jsonUnits[i].resid)) {
                 //  if (!isInArray(unitsList, jsonUnits[i])) {
 
@@ -6106,13 +6050,10 @@ function FindUnitsWithSecondaryPassive(trait) {
 
     let sortedUnitListArray = [];
 
-   
-      for (let z= 0; z<splitArrays.length;z++) {
-  
+    for (let z = 0; z < splitArrays.length; z++) {
         let unitsSorted = [];
-       
-           for (let x= 0; x<splitArrays[z].length;x++) {
-      
+
+        for (let x = 0; x < splitArrays[z].length; x++) {
             if ("sub_culture_name" in splitArrays[z][x] && !architectCultureUnits.includes(splitArrays[z][x].id)) {
                 let newEntry = splitArrays[z][x].id + "," + splitArrays[z][x].sub_culture_name;
 
@@ -6235,30 +6176,26 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     if ("effect_descriptions" in currentTrait) {
         descriptionDiv.innerHTML += '<br><br><span class="mod_name">EFFECTS: </span><bulletlist>';
-    
-          for (let k= 0; k<currentTrait.effect_descriptions.length;k++) {
-     
+
+        for (let k = 0; k < currentTrait.effect_descriptions.length; k++) {
             descriptionDiv.innerHTML += "<bullet>" + currentTrait.effect_descriptions[k].name + "</bullet>";
         }
         descriptionDiv.innerHTML += "</bulletlist>";
     }
-    
-    if(originalTrait.type == "destiny"){
-       const trigger = findBy(jsonDestinyTriggers, "id", originalTrait.id);
-        if(trigger != undefined){
-            
-               const questTitle = findBy(jsonAllFromPOLocalized, "id", trigger.quest).title;
-              
-             descriptionDiv.innerHTML += "<br><span class='mod_name'>TRIGGERS: </span><br>";
-           descriptionDiv.innerHTML += "<quest></quest> " + "<span class='loreText'> Quest: " +  questTitle + "</span>";
-              descriptionDiv.innerHTML += "<br><span class='loreText'><bulletlist>Need all of the following: </span><br>";
-            for(const entry of trigger.trigger){
+
+    if (originalTrait.type == "destiny") {
+        const trigger = findBy(jsonDestinyTriggers, "id", originalTrait.id);
+        if (trigger != undefined) {
+            const questTitle = findBy(jsonAllFromPOLocalized, "id", trigger.quest).title;
+
+            descriptionDiv.innerHTML += "<br><span class='mod_name'>TRIGGERS: </span><br>";
+            descriptionDiv.innerHTML += "<quest></quest> " + "<span class='loreText'> Quest: " + questTitle + "</span>";
+            descriptionDiv.innerHTML += "<br><span class='loreText'><bulletlist>Need all of the following: </span><br>";
+            for (const entry of trigger.trigger) {
                 descriptionDiv.innerHTML += "<bullet>" + entry.entry + "</bullet>";
             }
-            
         }
     }
-    
 
     if ("description" in currentTrait || "extraLookup" in currentTrait) {
         if ("requirement" in currentTrait) {
@@ -6321,9 +6258,8 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     if ("starting_bonuses" in currentTrait) {
         descriptionDiv.innerHTML += '<br><br><span class="mod_name">STARTING BONUS: </span><bulletlist>';
-        
-         for (let k= 0; k<currentTrait.starting_bonuses.length;k++) {
-       
+
+        for (let k = 0; k < currentTrait.starting_bonuses.length; k++) {
             if ("structure_upgrade_slug" in currentTrait.starting_bonuses[k]) {
                 descriptionDiv.innerHTML +=
                     "<bullet>" + currentTrait.starting_bonuses[k].structure_upgrade_slug + "</bullet>";
@@ -6341,8 +6277,8 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     if ("incompatible_society_traits" in currentTrait) {
         descriptionDiv.innerHTML += '<br><br><span class="mod_name">INCOMPATIBLE WITH: </span><bulletlist>';
-      
-           for (let k= 0; k<currentTrait.incompatible_society_traits.length;k++) {
+
+        for (let k = 0; k < currentTrait.incompatible_society_traits.length; k++) {
             descriptionDiv.innerHTML += "<bullet>" + currentTrait.incompatible_society_traits[k].name + "</bullet>";
         }
         descriptionDiv.innerHTML += "</bulletlist>";
@@ -6360,8 +6296,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
 
     if ("rewards" in currentTrait) {
         descriptionDiv.innerHTML += "<br><hr><span style='color:beige'>Rewards: </span><br>";
-           for (let i= 0; i<currentTrait.rewards.length;i++) {
-       
+        for (let i = 0; i < currentTrait.rewards.length; i++) {
             //console.log(currentTrait.rewards[i]);
             const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.rewards[i]);
             if (valueLookup) {
@@ -6401,8 +6336,8 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             descriptionDiv.appendChild(div);
         }
     }
-    
-  // descriptionDiv.innerHTML =  AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
+
+    // descriptionDiv.innerHTML =  AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
     let tier = divOrigin.querySelector("#modtier");
     tier.innerHTML = "";
@@ -6438,8 +6373,6 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
     // imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     imagelink.setAttribute("style", "background-image:none");
     imagelink.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
-    
-   
 }
 
 function showTrait(a, divOrigin) {
@@ -6449,16 +6382,15 @@ function showTrait(a, divOrigin) {
         type,
         tier = "";
     let found = false;
-    
-       for (let i= 0; i<jsonFactionCreation2.length;i++) {
-  
+
+    for (let i = 0; i < jsonFactionCreation2.length; i++) {
         if (jsonFactionCreation2[i].id === a) {
             let currentTrait = jsonFactionCreation2[i];
 
             showTraitSetup(currentTrait, divOrigin, "loc");
         }
     }
-      for (let i= 0; i<jsonFactionCreation.length;i++) {
+    for (let i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].id === a) {
             let currentTrait = jsonFactionCreation[i];
             showTraitSetup(currentTrait, divOrigin);
@@ -6739,27 +6671,24 @@ function showSkill(a, checkInAbilities, icon_slug, category, level, group_name, 
     }
 
     if (checkInAbilities != "") {
-        
         let spa;
-         for (let j= 0; j<jsonUnitAbilitiesLocalized.length;j++) {
-        
-          if (skillLoc.abilities) {
-    for (let k = 0; k < skillLoc.abilities.length; k++) {
-            
-                if (jsonUnitAbilitiesLocalized[j].slug === skillLoc.abilities[k].slug) {
-                    let abilityName = jsonUnitAbilitiesLocalized[j].name;
-                    let abilityReq = "";
+        for (let j = 0; j < jsonUnitAbilitiesLocalized.length; j++) {
+            if (skillLoc.abilities) {
+                for (let k = 0; k < skillLoc.abilities.length; k++) {
+                    if (jsonUnitAbilitiesLocalized[j].slug === skillLoc.abilities[k].slug) {
+                        let abilityName = jsonUnitAbilitiesLocalized[j].name;
+                        let abilityReq = "";
 
-                    spa = GetAbilityInfo(jsonUnitAbilitiesLocalized[j]);
+                        spa = GetAbilityInfo(jsonUnitAbilitiesLocalized[j]);
 
-                    spa.className = "itemAbility";
-                    spa.setAttribute("style", "width:380px");
-                    descriptionDiv.append(spa);
+                        spa.className = "itemAbility";
+                        spa.setAttribute("style", "width:380px");
+                        descriptionDiv.append(spa);
 
-                    found = true;
+                        found = true;
+                    }
                 }
             }
-          }
         }
     } else {
         let spa = CreatePassiveSlotToolTip(skillLoc.icon, skillLoc.name, skillLoc.description);

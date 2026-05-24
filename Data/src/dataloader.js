@@ -357,6 +357,7 @@ async function CheckData() {
 
 const lookupMaps = new Map(); // cache of maps per "array+key" combo
 
+
 function buildLookupMap(array, key) {
     const mapKey = array === jsonUnits ? "jsonUnits:" + key :
                    array === jsonUnitAbilities ? "jsonUnitAbilities:" + key :
