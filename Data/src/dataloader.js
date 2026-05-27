@@ -187,7 +187,9 @@ async function GetAllData(selectedLang) {
         "all_spawnsets_strategic.json",
         "FreeCities.json",
         "DestinyTraits.json",
-        "Relics.json"
+        "Relics.json",
+        "Pantheon_Tree.json"
+        
         
     ];
     const fileNames = [
@@ -242,7 +244,8 @@ async function GetAllData(selectedLang) {
             "jsonSpawnSetsStrat",
             "jsonFreeCities",
               "jsonDestinyTriggers",
-            "jsonRelics"
+            "jsonRelics",
+            "jsonPantheon"
             
         ];
         const targets = [
