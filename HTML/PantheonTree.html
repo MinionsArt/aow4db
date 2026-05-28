@@ -321,6 +321,16 @@
                     node.style.pointerEvents = visible ? "" : "none";
                 });
             }
+            
+            function switchTab(targetId, btn) {
+    // Hide all tree-space divs
+    document.querySelectorAll(".tree-space").forEach(el => el.style.display = "none");
+    // Show the target
+    document.getElementById(targetId).style.display = "";
+    // Update active button
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+}
 
             function toggleAllFilters(checked) {
                 document.querySelectorAll(".pantheon-filter").forEach((cb) => {
@@ -344,10 +354,14 @@
         <div id="header"></div>
 
         <div class="tome_name">Pantheon Rewards</div>
+      
         <div style="height: auto; color: white; text-align: center"></div>
-
+  
         <div class="textblocktitle">
+     
             <div style="display: flex; flex-direction: row; justify-content: space-evenly">
+                
+             
                 <div id="pantheonFilters">
                     <label class="filter-toggle-all">
                         <input type="checkbox" id="filterAll" checked onchange="toggleAllFilters(this.checked)" />
@@ -428,12 +442,15 @@
                     </label>
                 </div>
             </div>
+                      <div id="pantheonTabs">
+    <button class="tab-btn active" onclick="switchTab('treespace', this)">Page 1</button>
+    <button class="tab-btn" onclick="switchTab('treespace2', this)">Page 2</button>
+</div>
         </div>
 
-        <div class="tome_name">Page 1</div>
-        <div class="tree-space" id="treespace"></div>
-        <div class="tome_name">Page 2</div>
-        <div class="tree-space" id="treespace2"></div>
+       
+<div class="tree-space" id="treespace"></div>
+<div class="tree-space" id="treespace2" style="display:none"></div>
     </body>
 </html>
 <style>
@@ -678,6 +695,98 @@
     .blocked {
         filter: grayscale(100);
     }
+    
+    #pantheonFilters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: rgba(0,0,0,0.5);
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ccc;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 1px solid #444;
+    user-select: none;
+    transition: opacity 0.15s;
+}
+.filter-label:has(input:not(:checked)) {
+    opacity: 0.45;
+}
+.filter-toggle-all {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #d7c297;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+}
+.filter-divider {
+    color: #555;
+    margin: 0 4px;
+}
+    
+    #pantheonTabs {
+    display: flex;
+    gap: 4px;
+    padding: 8px 16px 0;
+    border-bottom: 2px solid #333;
+    background: rgba(0,0,0,0.4);
+    position: sticky;
+        
+    justify-content: center;
+
+
+
+    top: 48px;   /* sit just below the filter bar */
+    z-index: 19;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #888;
+    font-size: 14px;
+    padding: 8px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: -2px;   /* overlap the border-bottom of the container */
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.tab-btn:hover {
+    color: #ccc;
+}
+
+.tab-btn.active {
+    color: #d7c297;
+    border-bottom-color: #d7c297;
+}
+
+/* Colour-coded borders to match your node shapes */
+.filter-trait   { border-color: #d7c297; }
+.filter-outfit  { border-color: #979ad7; }
+.filter-infusion{ border-color: #36d752; }
+.filter-weapon  { border-color: #d75c36; }
+.filter-origin  { border-color: #d636d7; }
+.filter-mount   { border-color: #aaa; }
+.filter-trinket { border-color: #aaa; }
+.filter-banner  { border-color: #aaa; }
 </style>
 <footer>
     <br />
