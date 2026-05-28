@@ -129,7 +129,7 @@
 
                     node.appendChild(TagIcon);
                 }
-                if (item.id.endsWith("_mount")) {
+                if (item.id.endsWith("_mount") ||item.icon.endsWith("_mount") ) {
                     node.className = "unittype_ic shape-mount pantheon-node"; // add shape
 
                     const TagIcon = document.createElement("div");
@@ -353,7 +353,7 @@
         <div id="scripts"></div>
         <div id="header"></div>
 
-        <div class="tome_name">Pantheon Rewards</div>
+        <div class="tome_name">Pantheon Rewards (Missing a few icons)</div>
       
         <div style="height: auto; color: white; text-align: center"></div>
   
@@ -402,7 +402,7 @@
                             data-type="weapon"
                             checked
                             onchange="applyPantheonFilters()" />
-                        Weapon
+                        Weapon Skin
                     </label>
                     <label class="filter-label filter-trinket">
                         <input
@@ -521,6 +521,7 @@
         font-size: 14px;
         margin-bottom: 8px;
         text-transform: uppercase;
+        text-align: center;
         letter-spacing: 1px;
     }
 
