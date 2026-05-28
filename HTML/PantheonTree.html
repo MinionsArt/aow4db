@@ -17,270 +17,301 @@
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="/aow4db/Data/Hero.js"></script>
-      
-         <script src="/aow4db/Data/Init.js"></script>
-      
+
+        <script src="/aow4db/Data/Init.js"></script>
 
         <script>
-            
-            function HandlePage() {
-                SetUpPantheonTrees(jsonPantheon);
-            }
-            
-           // ── Pantheon Tree Renderer ────────────────────────────────────────────────────
 
-function SetUpPantheonTrees(jsonPantheonItems, iconBasePath = "/aow4db/Icons/Pantheon") {
-    // Group items by tree_name
-   
-    
-    const treeGroups = new Map();
-    for (const item of jsonPantheonItems) {
-        const name = item.tree_name ?? "Ungrouped";
-        if (!treeGroups.has(name)) treeGroups.set(name, []);
-        treeGroups.get(name).push(item);
-    }
+                        function HandlePage() {
+                            SetUpPantheonTrees(jsonPantheon);
+                        }
 
-    // Build a flat id→item lookup for line drawing
-   
+                       // ── Pantheon Tree Renderer ────────────────────────────────────────────────────
 
-    // Find or create a root container
-    const root = document.getElementById("treespace") ?? document.body;
+            function SetUpPantheonTrees(jsonPantheonItems, iconBasePath = "/aow4db/Icons/Pantheon") {
+                // Group items by tree_name
 
-    for (const [treeName, rawItems] of treeGroups) {
-         const items = normalisedPositions(rawItems);  // ← here, replaces rawItems from this point on
-  const itemById = new Map(items.map(item => [item.id, item]));
-       
-        const wrapper = document.createElement("DIV");
-        
-        wrapper.className = "pantheon-tree-wrapper";
 
-        const title = document.createElement("H3");
-        title.className = "pantheon-tree-title";
-        title.textContent = treeName;
-        wrapper.appendChild(title);
+                const treeGroups = new Map();
+                for (const item of jsonPantheonItems) {
+                    const name = item.tree_name ?? "Ungrouped";
+                    if (!treeGroups.has(name)) treeGroups.set(name, []);
+                    treeGroups.get(name).push(item);
+                }
 
-        // Two layers — nodes on top, lines behind (same pattern as your hero builder)
-        const lineHolder = document.createElement("DIV");
-        lineHolder.className = "pantheon-line-holder";
-        lineHolder.style.cssText = "position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;";
+                // Build a flat id→item lookup for line drawing
 
-        const nodeHolder = document.createElement("DIV");
-        nodeHolder.className = "pantheon-node-holder";
-        nodeHolder.style.cssText = "position:relative;";
 
-        wrapper.appendChild(lineHolder);
-        wrapper.appendChild(nodeHolder);
-        root.appendChild(wrapper);
+                // Find or create a root container
+                const root = document.getElementById("treespace") ?? document.body;
+                   const root2 = document.getElementById("treespace2") ?? document.body;
 
-        // Render all nodes first so DOM positions exist for line drawing
-        for (const item of items) {
-            BuildPantheonNode(item, nodeHolder, iconBasePath);
-        }
+                for (const [treeName, rawItems] of treeGroups) {
+                     const items = normalisedPositions(rawItems);  // ← here, replaces rawItems from this point on
+              const itemById = new Map(items.map(item => [item.id, item]));
 
-        // Then draw lines (DOM must exist for both endpoints)
-        for (const item of items) {
-            if (!item.required_skills?.length) continue;
-            for (const req of item.required_skills) {
-                const source = itemById.get(req.id);
-                if (source) {
-                    DrawPantheonLine(source, item, lineHolder);
-                } else {
-                    console.warn(`Pantheon: missing required node "${req.id}" for "${item.id}"`);
+                    const wrapper = document.createElement("DIV");
+
+                    wrapper.className = "pantheon-tree-wrapper";
+
+                    const title = document.createElement("H3");
+                    title.className = "pantheon-tree-title";
+                    title.textContent = treeName;
+                    wrapper.appendChild(title);
+
+                    // Two layers — nodes on top, lines behind (same pattern as your hero builder)
+                    const lineHolder = document.createElement("DIV");
+                    lineHolder.className = "pantheon-line-holder";
+                    lineHolder.style.cssText = "position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;";
+
+                    const nodeHolder = document.createElement("DIV");
+                    nodeHolder.className = "pantheon-node-holder";
+                    nodeHolder.style.cssText = "position:relative;";
+
+                    wrapper.appendChild(lineHolder);
+                    wrapper.appendChild(nodeHolder);
+                    if(treeName.indexOf("Page 2")  != -1){
+                              root2.appendChild(wrapper);
+                    } else{
+                              root.appendChild(wrapper);
+                    }
+              
+
+                    // Render all nodes first so DOM positions exist for line drawing
+                    for (const item of items) {
+                        BuildPantheonNode(item, nodeHolder, iconBasePath);
+                    }
+
+                    // Then draw lines (DOM must exist for both endpoints)
+                    for (const item of items) {
+                        if (!item.required_skills?.length) continue;
+                        for (const req of item.required_skills) {
+                            const source = itemById.get(req.id);
+                            if (source) {
+                                DrawPantheonLine(source, item, lineHolder);
+                            } else {
+                                console.warn(`Pantheon: missing required node "${req.id}" for "${item.id}"`);
+                            }
+                        }
+                    }
+
+                    // Resize wrapper to fit its contents (same as your resizeParentToFitChildren)
+                    resizePantheonWrapper(nodeHolder);
                 }
             }
-        }
 
-        // Resize wrapper to fit its contents (same as your resizeParentToFitChildren)
-        resizePantheonWrapper(nodeHolder);
-    }
-}
-            
-            function normalisedPositions(items) {
-    const minX = Math.min(...items.map(i => i.tree_pos_x));
-    const minY = Math.min(...items.map(i => i.tree_pos_y));
-    const PAD  = 40;
-    return items.map(i => ({
-        ...i,
-        tree_pos_x: i.tree_pos_x - minX + PAD,
-        tree_pos_y: i.tree_pos_y - minY + PAD,
-    }));
-}
+                        function normalisedPositions(items) {
+                const minX = Math.min(...items.map(i => i.tree_pos_x));
+                const minY = Math.min(...items.map(i => i.tree_pos_y));
+                const PAD  = 40;
+                return items.map(i => ({
+                    ...i,
+                    tree_pos_x: i.tree_pos_x - minX + PAD,
+                    tree_pos_y: i.tree_pos_y - minY + PAD,
+                }));
+            }
 
-function BuildPantheonNode(item, holder, iconBasePath) {
-    const node = document.createElement("DIV");
+            function BuildPantheonNode(item, holder, iconBasePath) {
+                const node = document.createElement("DIV");
 
-    node.setAttribute("id", "pantheon_" + item.id);
-    node.setAttribute("style", `position:absolute; left:${item.tree_pos_x - 10}px; top:${item.tree_pos_y - 50}px;`);
-   // change background based on type
-  
+                node.setAttribute("id", "pantheon_" + item.id);
+                node.setAttribute("style", `position:absolute; left:${item.tree_pos_x - 10}px; top:${item.tree_pos_y - 50}px;`);
+               // change background based on type
 
-    if(item.id.endsWith("_trait")){
-        node.className = "unittype_ic shape-square pantheon-node";
 
-    }
-    if(item.id.endsWith("_origin")){
-        node.className = "unittype_ic shape-diamond pantheon-node";
+                if(item.id.endsWith("_trait")){
+                    node.className = "unittype_ic shape-square pantheon-node";
 
-    }
-      if(item.id.endsWith("_mount")){
-        node.className = "unittype_ic shape-diamond pantheon-node"; // add shape
+                }
+                if(item.id.endsWith("_origin")){
+                    node.className = "unittype_ic shape-diamond pantheon-node";
 
-    }
-      if(item.icon.endsWith("_banner")){
-        node.className = "unittype_ic shape-circle pantheon-node";
+                }
+                  if(item.id.endsWith("_mount")){
+                    node.className = "unittype_ic shape-diamond pantheon-node"; // add shape
 
-    }
-    
-     if(item.id.endsWith("_infusion")){
-        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+                }
+                  if(item.icon.endsWith("_banner")){
+                    node.className = "unittype_ic shape-shield pantheon-node";
 
-    }
-     if(item.id.endsWith("_weapon")){
-        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+                }
 
-    }
-      if(item.id.endsWith("_trinket")){
-        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+                 if(item.id.endsWith("_infusion")){
+                    node.className = "unittype_ic shape-circle pantheon-node"; // add shape
 
-    }
-      if(item.icon.endsWith("_outfit")){
-        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+                }
+                 if(item.id.endsWith("_weapon")){
+                    node.className = "unittype_ic shape-circle pantheon-node"; // add shape
 
-    }
-    
-    
-    
-    // Icon
-    const img = document.createElement("IMG");
-    img.className = "empireNodeIcon";
-    img.setAttribute("src", `${iconBasePath}/${item.icon}.png`);
-    img.setAttribute("height", "50px");
-    node.appendChild(img);
+                }
+                  if(item.id.endsWith("_trinket")){
+                    node.className = "unittype_ic shape-circle pantheon-node"; // add shape
 
-    // Tooltip — uses your existing tooltip system if extraLookup is present,
-    // otherwise falls back to the icon name
-    
-    
+                }
+                  if(item.id.endsWith("_outfit") || item.icon.endsWith("_outfit")){
+                    node.className = "unittype_ic shape-circle pantheon-node"; // add shape
 
-    const tooltipSpan = document.createElement("SPAN");
-    if (item.extraLookup) {
-        // Hook into your existing lookup here if you have one, e.g.:
-        // tooltipSpan.innerHTML = BuildPantheonTooltip(item.extraLookup);
-        
-        tooltipSpan.innerHTML = `<span style="color:#d7c297">${item.id.replaceAll("_", " ").toUpperCase()}</span>`;
-    } else {
-        const mainName = findBy(jsonAllFromPOLocalized, "id", "META_EMPIRE@PROGRESSION_ITEM")[item.id];
-        if(mainName == undefined){
-            console.log("couldnt find " +item.id);
-        }
-        tooltipSpan.innerHTML = `<span style="color:#d7c297">${mainName.toUpperCase()}</span>`;
-    }
-    addTooltipListeners(img, tooltipSpan);  // your existing tooltip fn
+                }
 
-    holder.appendChild(node);
-}
 
-function DrawPantheonLine(source, target, lineHolder) {
-    const sourceEl = document.getElementById("pantheon_" + source.id);
-    const targetEl = document.getElementById("pantheon_" + target.id);
-    if (!sourceEl || !targetEl) return;
 
-    // Centre of each node (offsetLeft/Top + half node size)
-    const NODE_HALF = 25; // half of your ~50px node
+                // Icon
+                const img = document.createElement("IMG");
+                img.className = "empireNodeIcon";
+                img.setAttribute("src", `${iconBasePath}/${item.icon}.png`);
+                img.setAttribute("height", "50px");
+                node.appendChild(img);
 
-    const x1 = source.tree_pos_x + NODE_HALF;
-    const y1 = source.tree_pos_y + NODE_HALF;
-    const x2 = target.tree_pos_x + NODE_HALF;
-    const y2 = target.tree_pos_y + NODE_HALF;
+                // Tooltip — uses your existing tooltip system if extraLookup is present,
+                // otherwise falls back to the icon name
 
-    const dx = x2 - x1;
-    const dy = y2 - y1;
-    const angle  = Math.atan2(dy, dx) * (180 / Math.PI);
-    const length = Math.sqrt(dx * dx + dy * dy);
 
-    const line = document.createElement("DIV");
-    line.className = "branch-line";                   // reuse your existing CSS class
-    line.dataset.source = source.id;
-    line.dataset.target = target.id;
-    line.setAttribute("style",
-        `position:absolute;`
-      + `left:${x1}px;`
-      + `top:${y1}px;`
-      + `width:${length}px;`
-      + `transform:rotate(${angle}deg);`
-      + `transform-origin:0 50%;`
-      + `background-color:#00b7fdc4;`   // dimmer than hero tree — adjust to taste
-    );
 
-    lineHolder.appendChild(line);
-}
-
-function resizePantheonWrapper(nodeHolder) {
-    // Same logic as your resizeParentToFitChildren but works on the nodeHolder
-    // since that has the absolutely-positioned children
-    let maxRight = 0, maxBottom = 0;
-    for (const child of nodeHolder.children) {
-        maxRight  = Math.max(maxRight,  child.offsetLeft + child.offsetWidth);
-        maxBottom = Math.max(maxBottom, child.offsetTop  + child.offsetHeight);
-    }
-    const PADDING = 60;
-    nodeHolder.style.width  = (maxRight  + PADDING) + "px";
-    nodeHolder.style.height = (maxBottom + PADDING) + "px";
-}
+                const tooltipSpan = document.createElement("SPAN");
+                let title = "";
+                let description = "";
+                if (item.extraLookup) {
+                    // Hook into your existing lookup here if you have one, e.g.:
+                    // tooltipSpan.innerHTML = BuildPantheonTooltip(item.extraLookup);
+                      const lookup = findBy(jsonAllFromPOLocalized, "id", item.extraLookup);
+                    
+                    let name = "";
+                    let innerText = "";
+                            if(lookup == undefined){
+                        console.log("couldnt find extralookup " +item.id);
+                                return;
+                    }
+                    if(lookup.name != undefined){
+                        name = lookup.name;
+                    }
+                    if(lookup.trait_name != undefined){
+                        name = lookup.trait_name;
+                    }
+                     if(lookup.origin_name != undefined){
+                        name = lookup.origin_name;
+                        
+                    }
+                    
+                     if(lookup.description != undefined){
+                        innerText = lookup.description;
+                    }
+                    if(lookup.trait_description != undefined){
+                        innerText = lookup.trait_description;
+                    }
+                     if(lookup.origin_description != undefined){
+                        innerText = lookup.origin_description;
+                        
+                    }
+                    
+                    description = innerText;
+                    title = `<span style="color:#d7c297">${name.toUpperCase()}</span>`;
+                    
+                }
+                else if (item.extraLookupExplicit){
+                     const mainName = findBy(jsonAllFromPOLocalized, "id", item.extraLookupExplicit)[item.suffix];
+                     title = `<span style="color:#d7c297">${mainName.toUpperCase()}</span>`;
+                }
+                else {
+                    const mainName = findBy(jsonAllFromPOLocalized, "id", "META_EMPIRE@PROGRESSION_ITEM")[item.id];
+                    if(mainName == undefined){
+                        console.log("couldnt find " +item.id);
+                        return;
+                    }
+                    title = `<span style="color:#d7c297">${mainName.toUpperCase()}</span>`;
+                }
                 
-               
+                 tooltipSpan.innerHTML = title + "<br>"  + description;
+                
+                  const imgTooltip = document.createElement("IMG");
+              
+                imgTooltip.setAttribute("src", `${iconBasePath}/${item.icon}.png`);
+                imgTooltip.setAttribute("height", "100px");
+                tooltipSpan.appendChild(imgTooltip);
+                addTooltipListeners(img, tooltipSpan);  // your existing tooltip fn
+                
+                if(item.DLC){
+                     let newDivForMount = AddDLCTag(item.DLC);
+                    newDivForMount.setAttribute("style", "");
+                    newDivForMount.className = "DLCTAG";
+        node.appendChild(newDivForMount);
+                }
+
+                holder.appendChild(node);
+            }
+
+            function DrawPantheonLine(source, target, lineHolder) {
+                const sourceEl = document.getElementById("pantheon_" + source.id);
+                const targetEl = document.getElementById("pantheon_" + target.id);
+                if (!sourceEl || !targetEl) return;
+
+                // Centre of each node (offsetLeft/Top + half node size)
+                const NODE_HALF = 25; // half of your ~50px node
+
+                const x1 = source.tree_pos_x + NODE_HALF;
+                const y1 = source.tree_pos_y + NODE_HALF;
+                const x2 = target.tree_pos_x + NODE_HALF;
+                const y2 = target.tree_pos_y + NODE_HALF;
+
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const angle  = Math.atan2(dy, dx) * (180 / Math.PI);
+                const length = Math.sqrt(dx * dx + dy * dy);
+
+                const line = document.createElement("DIV");
+                line.className = "branch-line";                   // reuse your existing CSS class
+                line.dataset.source = source.id;
+                line.dataset.target = target.id;
+                line.setAttribute("style",
+                    `position:absolute;`
+                  + `left:${x1}px;`
+                  + `top:${y1}px;`
+                  + `width:${length}px;`
+                  + `transform:rotate(${angle}deg);`
+                  + `transform-origin:0 50%;`
+                  + `background-color:#00b7fdc4;`   // dimmer than hero tree — adjust to taste
+                );
+
+                lineHolder.appendChild(line);
+            }
+
+            function resizePantheonWrapper(nodeHolder) {
+                // Same logic as your resizeParentToFitChildren but works on the nodeHolder
+                // since that has the absolutely-positioned children
+                let maxRight = 0, maxBottom = 0;
+                for (const child of nodeHolder.children) {
+                    maxRight  = Math.max(maxRight,  child.offsetLeft + child.offsetWidth);
+                    maxBottom = Math.max(maxBottom, child.offsetTop  + child.offsetHeight);
+                }
+                const PADDING = 30;
+                nodeHolder.style.width  = (maxRight  + PADDING) + "px";
+                nodeHolder.style.height = (maxBottom + PADDING) + "px";
+            }
         </script>
 
         <title>Age of Wonders 4 Database - Pantheon Reward Tree</title>
     </head>
 
     <body>
-         <div id="scripts"></div>
+        <div id="scripts"></div>
         <div id="header"></div>
-        
- 
+
         <div class="tome_name">Pantheon Rewards</div>
-        <div style="height: auto; color: white; text-align: center">
-          
-        </div>
+        <div style="height: auto; color: white; text-align: center"></div>
 
         <div class="textblocktitle">
-            <div style="display: flex; flex-direction: row; justify-content: space-evenly"> 
-            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly"></div>
         </div>
-
+   <div class="tome_name">Page 1</div>
         <div class="tree-space" id="treespace">
-            
-            
-            <div style="position: relative; display: flex; justify-content: flex-start">
-                <div style="position: relative; top: 20px">
-                    <div class="tree-grid" id="treeHolder"></div>
-                    <div class="" id="treeLineHolder"></div>
-                </div>
-
-                <div style="position: relative; top: 20px">
-                    <div class="tree-grid" id="treeHolderClass"></div>
-                    <div class="" id="treeLineHolderClass"></div>
-                </div>
-                <div style="postion: relative; top: 20px">
-                    <div class="tree-grid" style="width: 350px" id="treeHolderSignature1"></div>
-                    <div class="" style="position: relative" id="treeLineHolderSignature1"></div>
-                    <div class="tree-grid" id="treeHolderSignature2"></div>
-                    <div class="" style="position: relative" id="treeLineHolderSignature2"></div>
-                    <div class="tree-grid" id="treeHolderSignature3"></div>
-                    <div class="" style="position: relative" id="treeLineHolderSignature3"></div>
-                    <div class="tree-grid" id="treeHolderSignature4"></div>
-                    <div class="" style="position: relative" id="treeLineHolderSignature4"></div>
-                </div>
-            </div>
-
-          
+           
         </div>
-       
+          <div class="tome_name">Page 2</div>
+          <div class="tree-space" id="treespace2">
+           
+        </div>
     </body>
 </html>
 <style>
-   
     .wrappers {
         position: relative;
         display: grid;
@@ -319,25 +350,34 @@ function resizePantheonWrapper(nodeHolder) {
         justify-content: normal;
     }
     
-    .pantheon-tree-wrapper {
+    .DLCTAG{
+        
+    text-transform: none;
+    width: 1px;
     position: relative;
-    display: inline-block;  /* trees sit side-by-side or stack naturally */
-    margin: 20px;
-    vertical-align: top;
-}
+    height: 20px;
+    left: -55px;
+    top: 14px;
+    }
 
-.pantheon-tree-title {
-    color: #d7c297;
-    font-size: 14px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+    .pantheon-tree-wrapper {
+        position: relative;
+        display: inline-block; /* trees sit side-by-side or stack naturally */
+        margin: 10px;
+        vertical-align: top;
+    }
 
-.pantheon-node {
-    cursor: default;  /* no pointer since there's no selection */
-   
-}
+    .pantheon-tree-title {
+        color: #d7c297;
+        font-size: 14px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .pantheon-node {
+        cursor: default; /* no pointer since there's no selection */
+    }
 
     .selections {
         width: fit-content;
@@ -384,7 +424,7 @@ function resizePantheonWrapper(nodeHolder) {
     }
 
     .tree-space {
-        width: fit-content;
+        width: max-content;
         height: fit-content;
         min-width: min-content;
         padding-bottom: 200px;
@@ -412,7 +452,7 @@ function resizePantheonWrapper(nodeHolder) {
 
     /* Square shape */
     .shape-square {
-         width: 50px;
+        width: 50px;
         height: 50px;
         background-color: black;
         border: 2px solid #d7c297;
@@ -420,7 +460,7 @@ function resizePantheonWrapper(nodeHolder) {
 
     /* Square shape */
     .shape-signature {
-         width: 50px;
+        width: 50px;
         height: 50px;
 
         filter: brightness(100%);
@@ -436,11 +476,11 @@ function resizePantheonWrapper(nodeHolder) {
     /* shield shape */
     .shape-shield {
         background-image: url(/aow4db/Icons/Interface/passive.png);
-        background-size: 65px;
+        background-size: 50px;
         background-position: center;
         background-repeat: no-repeat;
 
-         width: 50px;
+        width: 50px;
         height: 50px;
     }
 
@@ -455,7 +495,7 @@ function resizePantheonWrapper(nodeHolder) {
         background-image: url(/aow4db/Icons/Interface/ability_icon.png);
         background-size: contain;
 
-         width: 50px;
+        width: 50px;
         height: 50px;
     }
 
@@ -498,7 +538,6 @@ function resizePantheonWrapper(nodeHolder) {
     .shape-diamond img {
         transform: rotate(-45deg);
     } */
-
 
     .empireNodeIcon:hover {
         filter: brightness(150%);
