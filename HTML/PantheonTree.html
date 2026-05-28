@@ -44,13 +44,14 @@ function SetUpPantheonTrees(jsonPantheonItems, iconBasePath = "/aow4db/Icons/Pan
    
 
     // Find or create a root container
-    const root = document.getElementById("pantheonTreesRoot") ?? document.body;
+    const root = document.getElementById("treespace") ?? document.body;
 
     for (const [treeName, rawItems] of treeGroups) {
          const items = normalisedPositions(rawItems);  // ← here, replaces rawItems from this point on
   const itemById = new Map(items.map(item => [item.id, item]));
        
         const wrapper = document.createElement("DIV");
+        
         wrapper.className = "pantheon-tree-wrapper";
 
         const title = document.createElement("H3");
@@ -110,8 +111,45 @@ function BuildPantheonNode(item, holder, iconBasePath) {
 
     node.setAttribute("id", "pantheon_" + item.id);
     node.setAttribute("style", `position:absolute; left:${item.tree_pos_x - 10}px; top:${item.tree_pos_y - 50}px;`);
-    node.className = "unittype_ic shape-circle pantheon-node";
+   // change background based on type
+  
 
+    if(item.id.endsWith("_trait")){
+        node.className = "unittype_ic shape-square pantheon-node";
+
+    }
+    if(item.id.endsWith("_origin")){
+        node.className = "unittype_ic shape-diamond pantheon-node";
+
+    }
+      if(item.id.endsWith("_mount")){
+        node.className = "unittype_ic shape-diamond pantheon-node"; // add shape
+
+    }
+      if(item.icon.endsWith("_banner")){
+        node.className = "unittype_ic shape-circle pantheon-node";
+
+    }
+    
+     if(item.id.endsWith("_infusion")){
+        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+
+    }
+     if(item.id.endsWith("_weapon")){
+        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+
+    }
+      if(item.id.endsWith("_trinket")){
+        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+
+    }
+      if(item.icon.endsWith("_outfit")){
+        node.className = "unittype_ic shape-circle pantheon-node"; // add shape
+
+    }
+    
+    
+    
     // Icon
     const img = document.createElement("IMG");
     img.className = "empireNodeIcon";
@@ -121,13 +159,21 @@ function BuildPantheonNode(item, holder, iconBasePath) {
 
     // Tooltip — uses your existing tooltip system if extraLookup is present,
     // otherwise falls back to the icon name
+    
+    
+
     const tooltipSpan = document.createElement("SPAN");
     if (item.extraLookup) {
         // Hook into your existing lookup here if you have one, e.g.:
         // tooltipSpan.innerHTML = BuildPantheonTooltip(item.extraLookup);
+        
         tooltipSpan.innerHTML = `<span style="color:#d7c297">${item.id.replaceAll("_", " ").toUpperCase()}</span>`;
     } else {
-        tooltipSpan.innerHTML = `<span style="color:#d7c297">${item.icon.replaceAll("_", " ").toUpperCase()}</span>`;
+        const mainName = findBy(jsonAllFromPOLocalized, "id", "META_EMPIRE@PROGRESSION_ITEM")[item.id];
+        if(mainName == undefined){
+            console.log("couldnt find " +item.id);
+        }
+        tooltipSpan.innerHTML = `<span style="color:#d7c297">${mainName.toUpperCase()}</span>`;
     }
     addTooltipListeners(img, tooltipSpan);  // your existing tooltip fn
 
@@ -290,7 +336,7 @@ function resizePantheonWrapper(nodeHolder) {
 
 .pantheon-node {
     cursor: default;  /* no pointer since there's no selection */
-    opacity: 0.85;
+   
 }
 
     .selections {
@@ -366,16 +412,16 @@ function resizePantheonWrapper(nodeHolder) {
 
     /* Square shape */
     .shape-square {
-        width: 55px;
-        height: 55px;
+         width: 50px;
+        height: 50px;
         background-color: black;
         border: 2px solid #d7c297;
     }
 
     /* Square shape */
     .shape-signature {
-        width: 70px;
-        height: 70px;
+         width: 50px;
+        height: 50px;
 
         filter: brightness(100%);
     }
@@ -394,8 +440,8 @@ function resizePantheonWrapper(nodeHolder) {
         background-position: center;
         background-repeat: no-repeat;
 
-        width: 70px;
-        height: 70px;
+         width: 50px;
+        height: 50px;
     }
 
     .shape-shield.activated {
@@ -409,8 +455,8 @@ function resizePantheonWrapper(nodeHolder) {
         background-image: url(/aow4db/Icons/Interface/ability_icon.png);
         background-size: contain;
 
-        width: 90px;
-        height: 90px;
+         width: 50px;
+        height: 50px;
     }
 
     /* Diamond shape */
