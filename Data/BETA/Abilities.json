@@ -8875,10 +8875,28 @@
   "icon": "0000048B00000B95"
  },
  {
+  "description": "A spider unit with:<bulletlist><bullet>Swift</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Slowed</bullet><bullet>Immobilized</bullet></bulletlist></bulletlist>",
+  "name": "Spider",
+  "slug": "000004150000025b",
+  "icon": "000004150000025C"
+ },
+ {
   "description": "Unit gains Frenzy when in a province with Mushroom Forest terrain.",
   "name": "Spider Primal Connection",
   "slug": "00000497000003b1",
   "icon": "00000497000003A4"
+ },
+ {
+  "description": "Unit is immune to Immobilized.",
+  "name": "Status Effect Immunity: Immobilized",
+  "slug": "0000048b000005df",
+  "icon": "0000048B000005DE"
+ },
+ {
+  "description": "Unit is immune to Slowed.",
+  "name": "Status Effect Immunity: Slowed",
+  "slug": "0000048b000005dd",
+  "icon": "0000048B000005DB"
  },
  {
   "modifiers": [
@@ -11654,15 +11672,11 @@
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
   "range": "5",
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+  "notes": [],
   "icon": "0000048D0000007C"
  },
  {
-  "description": "This unit's attacks gain:<bulletlist><bullet>Ranged or Magic attacks: +10% damage per stack of Marked on the target.</bullet><bullet>Melee attacks: 90% chance of inflicting Marked.<br></br><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.</bullet></bulletlist>",
+  "description": "This unit's attacks gain:<bulletlist><bullet>Ranged or Magic attacks: +10% damage per stack of Marked on the target.</bullet><bullet>Melee attacks inflict Marked.<br></br><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.</bullet></bulletlist>",
   "name": "Focused Aggression",
   "slug": "0000048d0000090a",
   "icon": "000003E30000723A"
@@ -11690,11 +11704,7 @@
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
   "range": "5",
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+  "notes": [],
   "icon": "0000048D0000007C"
  },
  {
@@ -11938,11 +11948,7 @@
   "accuracy": "Always Hits",
   "actionPoints": "<fullaction></fullaction>",
   "range": "5",
-  "notes": [
-   {
-    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
-   }
-  ],
+  "notes": [],
   "icon": "0000048D0000007C"
  },
  {
@@ -12119,11 +12125,6 @@
    {
     "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
     "name": "Piercing",
-    "count": 1
-   },
-   {
-    "description": "Ignore 50% of the target's <resistance></resistance> <hyperlink>Resistance</hyperlink>.",
-    "name": "Breaching",
     "count": 1
    },
    {
@@ -14892,7 +14893,7 @@
     "count": 1
    },
    {
-    "description": "90% chance of inflicting Marked",
+    "description": "Inflict Marked for 3 <turn></turn> Turns.",
     "name": "Focused Aggression",
     "count": 1
    }
@@ -14923,12 +14924,12 @@
     "count": 1
    },
    {
-    "description": "120% chance of inflicting Marked",
+    "description": "Inflict 2 Marked for 3 <turn></turn> Turns.",
     "name": "Focused Aggression",
     "count": 1
    }
   ],
-  "description": "Deal damage to target, push them back and move onto their hex.",
+  "description": "Deal damage to target, push them back and move onto their hex.<br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
   "name": "Drive Back",
   "slug": "drive_back_ability_00000489000000A2_0000048d00001f64",
   "damage": "10<damagephysical></damagephysical> 10<damagefire></damagefire> ",
@@ -14984,7 +14985,7 @@
     "count": 1
    }
   ],
-  "description": "Deal damage to target, push them back and move onto their hex.",
+  "description": "Deal damage to target, push them back and move onto their hex.<br></br>Enter <hyperlink>Defense Mode</hyperlink> after use.",
   "name": "Drive Back",
   "slug": "drive_back_ability_00000489000000A2_0000048d00001f6f",
   "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
@@ -15009,7 +15010,7 @@
  {
   "modifiers": [
    {
-    "description": "90% chance of inflicting Marked",
+    "description": "Inflict Marked for 3 <turn></turn> Turns.",
     "name": "Focused Aggression",
     "count": 1
    }
@@ -19608,7 +19609,7 @@
  {
   "modifiers": [
    {
-    "description": "90% chance of inflicting Marked",
+    "description": "Inflict Marked for 3 <turn></turn> Turns.",
     "name": "Focused Aggression",
     "count": 1
    }
@@ -19673,6 +19674,9 @@
    },
    {
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 1 <turn></turn>"
    }
   ],
   "icon": "000003E300007267"
@@ -25278,24 +25282,6 @@
   "actionPoints": "<fullaction></fullaction>",
   "range": "1",
   "icon": "000003E3000049B4"
- },
- {
-  "description": "A spider unit with:<bulletlist><bullet>Swift</bullet><bullet>Immunity to:<bulletlist></bullet><bullet>Slowed</bullet><bullet>Immobilized</bullet></bulletlist></bulletlist>",
-  "name": "Spider",
-  "slug": "000004150000025b",
-  "icon": "000004150000025C"
- },
- {
-  "description": "Unit is immune to Immobilized.",
-  "name": "Status Effect Immunity: Immobilized",
-  "slug": "0000048b000005df",
-  "icon": "0000048B000005DE"
- },
- {
-  "description": "Unit is immune to Slowed.",
-  "name": "Status Effect Immunity: Slowed",
-  "slug": "0000048b000005dd",
-  "icon": "0000048B000005DB"
  },
  {
   "modifiers": [
@@ -45577,7 +45563,7 @@
  {
   "modifiers": [
    {
-    "description": "Ignore up to 5 <defense></defense> <hyperlink>Defense</hyperlink>.",
+    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
     "name": "Piercing",
     "count": 1
    },
@@ -45738,7 +45724,7 @@
  {
   "modifiers": [
    {
-    "description": "Ignore up to 5 <defense></defense> <hyperlink>Defense</hyperlink>.",
+    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
     "name": "Piercing",
     "count": 1
    }
@@ -45822,8 +45808,8 @@
  {
   "modifiers": [
    {
-    "description": "Ignore up to 5 <defense></defense> <hyperlink>Defense</hyperlink>",
-    "name": "Armor Bypass",
+    "description": "Ignore 50% of the target's <defense></defense> <hyperlink>Defense</hyperlink>.",
+    "name": "Piercing",
     "count": 1
    },
    {
@@ -49540,7 +49526,7 @@
  {
   "notes": [
    {
-    "note": "Cooldown: 1 <turn></turn>"
+    "note": "Cooldown: 3 <turn></turn>"
    }
   ],
   "description": "Target friendly unit gains:<bulletlist><bullet>2 Grace</bullet><bullet>2 Status Protection for 3 <turn></turn> Turns.</bullet></bulletlist>",
@@ -49553,7 +49539,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
   "icon": "0000049700004180"
  },
@@ -51372,12 +51358,12 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
    {
-    "note": "Cooldown: 2 <turn></turn>"
+    "note": "Cooldown: 4 <turn></turn>"
    }
   ],
   "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.<br></br>This summon lasts for 3 <turn></turn> Turns.",
   "name": "Animate Flora",
-  "slug": "awaken_flora_ability_equipment_upgrade_active_staff_awaken_flora",
+  "slug": "awaken_flora_ability_item_forge_equipment_upgrade_active_staff_awaken_flora",
   "damage": "",
   "requisites": [
    {
@@ -51388,7 +51374,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "0000041B00000EC9"
  },
@@ -51842,12 +51828,12 @@
     "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
    },
    {
-    "note": "Cooldown: 2 <turn></turn>"
+    "note": "Cooldown: 4 <turn></turn>"
    }
   ],
   "description": "Target <hyperlink>Flora Obstacle</hyperlink> transforms into a <hyperlink>Floral Stinger</hyperlink> unit under your control.<br></br>This summon lasts for 3 <turn></turn> Turns.",
   "name": "Animate Flora",
-  "slug": "awaken_flora_ability_equipment_upgrade_active_wand_awaken_flora",
+  "slug": "awaken_flora_ability_item_forge_equipment_upgrade_active_wand_awaken_flora",
   "damage": "",
   "requisites": [
    {
@@ -51858,7 +51844,7 @@
    }
   ],
   "accuracy": "Always Hits",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "0000041B00000EC9"
  },
