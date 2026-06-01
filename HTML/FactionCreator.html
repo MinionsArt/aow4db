@@ -19,6 +19,7 @@
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
          <script src="/aow4db/Data/Init.js"></script>
+        <script src="/aow4db/Data/TomeRestriction.js"></script>
 
         <style>
             button {
@@ -749,12 +750,16 @@
                         <button class="button-inset" id="originButtonTome2"></button>
 
                         <span class="small_title"> Tome Path</span>
+                        <label style="color:#d7c297;font-family:'Decorative';font-size:12px;cursor:pointer;margin-left:10px;">
+                            <input type="checkbox" id="tomeRestrictionToggle" style="vertical-align:middle;margin-right:4px;"> Tome Restriction
+                        </label>
 
                         <button style="float: right; color: red" class="button" onclick="ClearTomePath()">
 
                             <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />  Clear All
                         </button>
                         <br />
+                        <div id="tomeRestrictionDisplay" style="display:none; margin: 0 15px 4px 15px;"></div>
                         <div
                             style="display: grid; grid-template-columns: repeat(8, 2fr); margin: 15px"
                             id="tomePathButton"></div>
@@ -1011,6 +1016,16 @@ Contributors: lucasandradz </div>
                     panel.style.display = "none"; // Hide the panel
                 }
             });
+
+            // Add Tome Restriction toggle handler
+            var tomeRestrictionCheckbox = document.getElementById("tomeRestrictionToggle");
+            if (tomeRestrictionCheckbox) {
+                tomeRestrictionCheckbox.addEventListener("change", function () {
+                    if (window.TomeRestriction) {
+                        window.TomeRestriction.onToggle(this.checked);
+                    }
+                });
+            }
 
             function toggleEditNotes() {
                 const notesDisplay = document.getElementById("notesDisplay");

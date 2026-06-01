@@ -310,6 +310,7 @@ function SetRandomStart(overwriteParameter) {
 
         updateSelectedOptions();
         RecalculateStats(false);
+        if (window.TomeRestriction) TomeRestriction.onRandomize();
     }
     //
 }
@@ -704,6 +705,7 @@ function SetTomePathOptions(evt) {
     // Get tomes valid at the insertion point, excluding any already in the full path.
     var fullTomeList = currentTomeList;
     var list = GetNextSetOfTomes(tomeInsertionIndex + 1).filter((t) => !isInArray(fullTomeList, t));
+    if (window.TomeRestriction && TomeRestriction.isEnabled()) list = TomeRestriction.filterTomes(list, tomeInsertionIndex);
 
     // List of origin options
 
@@ -771,6 +773,7 @@ function selectTomePath(origin, fromLoad) {
     // draw all tomes
 
     toggleOriginButtons();
+    if (window.TomeRestriction && TomeRestriction.isEnabled()) TomeRestriction.updateDisplay();
 }
 
 function SetSkillPathInfoSmall(buttonHolder, origin) {
@@ -3777,6 +3780,19 @@ function GenerateQuickLink() {
         code += "," + number;
     }
 
+    // 14 Tome Restriction enabled state (0 or 1)
+    var tomeRestrictionEnabled = (window.TomeRestriction && window.TomeRestriction.isEnabled()) ? "1" : "0";
+    code += "," + tomeRestrictionEnabled;
+
+    // 15 Tome Restriction distribution (n1-n2-n3-n4)
+    if (window.TomeRestriction && window.TomeRestriction.getDistribution()) {
+        var dist = window.TomeRestriction.getDistribution();
+        var distCode = (dist[1] || 0) + "-" + (dist[2] || 0) + "-" + (dist[3] || 0) + "-" + (dist[4] || 0);
+        code += "," + distCode;
+    } else {
+        code += ",";
+    }
+
     // console.log("hex code: " + code);
 
     return code;
@@ -4093,6 +4109,37 @@ function reversLookUp(code) {
         currentAmbition = newas;
         var originButton = document.getElementById("originButtonAmbition");
         SetButtonInfo(originButton, currentAmbition, "Ambition");
+    }
+
+    // 14 = Tome Restriction enabled state + 15 = distribution
+    if (splitcode[14] !== undefined) {
+        var tomeRestrictionState = splitcode[14];
+        var cb = document.getElementById("tomeRestrictionToggle");
+        if (cb) {
+            cb.checked = (tomeRestrictionState === "1");
+            if (window.TomeRestriction) {
+                window.TomeRestriction.onToggle(cb.checked);
+                // If distribution is provided, restore it and trigger onRandomize
+                if (splitcode[15] !== undefined && splitcode[15] !== "") {
+                    var distParts = splitcode[15].split("-");
+                    if (distParts.length === 4) {
+                        var n1 = parseInt(distParts[0], 10);
+                        var n2 = parseInt(distParts[1], 10);
+                        var n3 = parseInt(distParts[2], 10);
+                        var n4 = parseInt(distParts[3], 10);
+                        if (!isNaN(n1) && !isNaN(n2) && !isNaN(n3) && !isNaN(n4)) {
+                            window.TomeRestriction.setDistribution(n1, n2, n3, n4);
+                            // Call onRandomize to complete the restoration (selects T5 based on affinities)
+                            setTimeout(function() {
+                                if (window.TomeRestriction) {
+                                    window.TomeRestriction.onRandomize();
+                                }
+                            }, 100);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
