@@ -77,7 +77,7 @@ window.TomeRestriction = (function () {
             : insertionIndex + 1;
 
         // ── Final slot (#9): only the locked T5 tome ─────────────────────────
-        if (insertPos >= 8) {
+        if (insertPos === 8) {
             return lockedTier5
                 ? [lockedTier5]
                 : list.filter(function (t) { return t.tier === 5; });
@@ -95,7 +95,7 @@ window.TomeRestriction = (function () {
             // Before T5 selected: apply normal quota restrictions
             list = list.filter(function (t) {
                 var quota = distribution[t.tier] || 0;
-                if (quota === 0) return false;
+                if (quota === 0 ) return false;
                 return (currentCounts[t.tier] || 0) < quota;
             });
         } else {
@@ -120,6 +120,8 @@ window.TomeRestriction = (function () {
         if (lockedTier5) {
             list = list.filter(function (t) { return t !== lockedTier5; });
         }
+
+        list = [...new Set(list)];
 
         return list;
     }
