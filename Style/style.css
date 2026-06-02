@@ -2,6 +2,15 @@ html {
     background-color: #040605;
 }
 
+/* Hamburger hidden by default (desktop), shown in mobile media query */
+#hamburgerBtn { display: none; }
+
+/* Slide-up animation for mobile bottom sheets */
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
 .highlight {
     color: blue;
     text-decoration: underline;
@@ -1333,6 +1342,20 @@ hr {
     border-image-slice: 10 10 10 10;
 }
 
+/* Fix Hide Overview button offset */
+#toggleButton {
+    left: auto !important;
+    vertical-align: middle;
+}
+
+/* Align topbar buttons consistently */
+.topbar select,
+.topbar .donate {
+    vertical-align: middle;
+}
+.topbar{
+    margin: 30px;
+}
 .button-event {
    
     background-color: #35260d;
@@ -1897,4 +1920,376 @@ span.number-highlight {
 .spoiler.revealed {
   color: inherit;             /* normal text color */
   background-color: transparent;
+}
+
+/* ========== RESPONSIVE MOBILE (max-width: 768px) ========== */
+@media screen and (max-width: 768px) {
+
+    body { overflow-x: hidden; }
+
+
+
+    /* ---- Hamburger: fixo no topo direito, sólido ---- */
+    #hamburgerBtn {
+        display: block;
+        position: fixed;
+        top: 6px;
+        right: 6px;
+        background: #1a1a1a;
+        color: #d7c297;
+        border: 2px solid #d7c297;
+        font-size: 24px;
+        padding: 2px 10px;
+        cursor: pointer;
+        z-index: 9999;
+        line-height: 1;
+        border-radius: 4px;
+    }
+    /* Menu drawer: some da direita */
+    #menu {
+        display: inline-grid;
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 270px;
+        height: 100vh;
+        overflow-y: auto;
+        background: #0a0a0a;
+        border-left: 2px solid #d7c297;
+        z-index: 9998;
+        transition: right 0.25s ease;
+        padding-top: 15px;
+        box-sizing: border-box;
+        min-width: unset !important;
+        margin-top: 0;
+    }
+    #menu.open {
+        right: 0;
+    }
+    #menu > li {
+        float: none;
+        display: block;
+        width: 100%;
+        margin-bottom: 2px;
+    }
+    #menu > li > a {
+        line-height: 26px;
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+    #menu ul.menus {
+        position: static;
+        width: 100%;
+        display: none;
+        padding-left: 10px;
+    }
+    #menu ul.menus .submenu {
+        position: static;
+        width: 100%;
+        left: 0;
+        display: none;
+        padding-left: 10px;
+    }
+    /* Mobile: only .sub-open toggles submenus (no hover) */
+    #menu .submenu.sub-open,
+    #menu .menus.sub-open {
+        display: block !important;
+    }
+    #menu a { font-size: 12px; line-height: 22px; padding: 2px 6px; }
+
+    /* ---- Topbar: left-aligned, compact icons ---- */
+    .topbar {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 2px;
+        margin: auto !important;
+        flex-wrap: wrap;
+        display: inline-grid !important;
+        right: 0px !important;
+        position: absolute !important;
+        top: 184px !important;
+    }
+    .topbar > * {
+        font-size: 11px;
+    }
+    .topbar select {
+        font-size: 10px;
+        padding: 1px 2px;
+        max-width: 70px;
+        position: absolute !important;
+    }
+    .topbar .dropdown-title {
+        font-size: 11px;
+    }
+    .topbar>.dropdown{
+        margin-top: 45px;
+    }
+    .topbar .dropdown {
+        position: relative;
+    }
+    .topbar .dropdown-content {
+        position: absolute;
+        top: 100%;
+        right: 0;
+    }
+    .topbar .donate {
+        right: unset !important;
+        position: relative !important;
+        border-width: 3px !important;
+        font-size: 10px;
+        padding: 1px 4px;
+    }
+    .topbar .donate img { width: 14px; }
+
+    /* ---- FactionCreator core ---- */
+    .factioncreator {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .typeHolder { width: 100% !important; max-width: 100vw; }
+    .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+        padding: 5px;
+    }
+
+    /* ---- Ruler / Race panels ---- */
+    .subDivider { flex-direction: column !important; }
+    .subDivider > div { width: 100% !important; max-width: 100% !important; }
+    .subSubDiv, .subSubDiv2 { width: 100% !important; min-width: unset !important; max-width: 100% !important; }
+    #toggleButton { left: unset !important; }
+
+    /* ---- Extra Affinity: quebra em linha abaixo ---- */
+    #extraAffinity {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 2px;
+    }
+    #extraAffinity > div {
+        height: 34px;
+    }
+    #extraAffinity .AddSubtract img {
+        width: 11px;
+    }
+
+    /* ---- Affinity row: single line, scale down ---- */
+    #currentAffinity {
+        font-size: 13px !important;
+        white-space: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+    /* Force affinity parent to column so Extra sits below */
+    div:has(> #currentAffinity) {
+        flex-direction: column !important;
+        align-items: center !important;
+        display: block !important;
+        position: inherit !important;
+    }
+    #currentAffinity empireorderBig,
+    #currentAffinity empirechaosBig,
+    #currentAffinity empirenatureBig,
+    #currentAffinity empireshadowBig,
+    #currentAffinity empirematterBig,
+    #currentAffinity empirearcanaBig {
+        zoom: 0.7;
+    }
+
+    /* ---- Inputs & share link ---- */
+    .inputfield { width: 100% !important; box-sizing: border-box; }
+    #shareLink { width: 90% !important; max-width: 90vw; }
+
+    /* ---- Tome path grid ---- */
+    #tomePathButton {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    /* ---- Smaller icons ---- */
+    .tome-add-slot {margin: inherit;margin-top: 28px;}
+    .tome-button-small {
+        width: 48px !important;
+        height: 56px !important;
+        margin: inherit;
+    }
+    .tome-button-small img {
+        width: auto;
+    }
+    .playerSigil .shield {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .playerSigil .symbol {
+        width: 32px !important;
+        height: auto !important;
+        top: 9px;
+        left: 10px;
+    }
+    .tome-add-slot {
+        width: 48px !important;
+        height: 56px !important;
+        font-size: 22px;
+    }
+    button img[src*="CloseX"] {
+        height: 16px !important;
+    }
+    button img[src*="addsymbol"] {
+        height: 16px !important;
+    }
+
+    /* ---- Overview panel ---- */
+    .overview { max-height: none !important; }
+    .overview_list_entry { max-width: 130px; min-width: 130px; font-size: 11px; }
+
+    /* ---- Selection popup → forced bottom-sheet (overrides JS inline) ---- */
+    #selectionsHolder.selections {
+        position: fixed !important;
+        left: 2vw !important;
+        right: 2vw !important;
+        width: auto !important;
+        max-width: 96vw !important;
+        max-height: 70vh !important;
+        bottom: 2vh !important;
+        top: auto !important;
+        overflow-y: auto !important;
+        box-sizing: border-box;
+        animation: slideUp 0.3s ease;
+        z-index: 100;
+    }
+    .selections .wrappers {
+        grid-template-columns: repeat(3, 1fr) !important;
+        max-height: 200px;
+        z-index: 100;
+    }
+
+    /* ---- Tooltip → forced bottom-anchored (overrides JS inline) ---- */
+    .tooltiptextnew {
+        position: fixed !important;
+        top: auto !important;
+        left: 2vw !important;
+        right: 2vw !important;
+        width: auto !important;
+        max-width: 96vw !important;
+        max-height: 50vh !important;
+        min-width: unset !important;
+        overflow-y: auto !important;
+        box-sizing: border-box;
+        animation: slideUp 0.3s ease;
+    }
+    dialog.tooltiptextnew {
+        margin: 0 !important;
+    }
+
+    /* ---- GENERIC: prevent horizontal overflow on all pages ---- */
+    html, body { overflow-x: hidden; }
+    div, section, article, main, header, footer, nav, form, table {
+        max-width: 100vw !important;
+        box-sizing: border-box;
+    }
+    img, svg, video, canvas, iframe {
+        max-width: 100% !important;
+    }
+    input, textarea, select, .searchbar, .inputfield {
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+    pre, code, .code-block {
+        max-width: 100% !important;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    table, .table-wrapper {
+        display: block;
+        max-width: 100% !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ---- Generic cards / wide containers ---- */
+    .mod_card, .unit_card, .tome_card, .item_card,
+    .mod_image_holder, .structure_image_holder,
+    .w3-container, .w3-containerBlock, .list_abilityslot {
+        width: auto !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* ---- Images that shouldn't blow up ---- */
+    img[src*="RiseFromRuinLogo"],
+    img[width="442"],
+    img[src*="DragonDawn.png"]:not(.tome-button-small img) {
+        max-width: 90vw !important;
+        height: auto !important;
+    }
+    .collapsible:after,
+    .collapsibleLevelup:after,
+    .collapsibleUnits:after {
+        font-size: 11px;
+    }
+
+    /* ---- Misc ---- */
+    .button-inset { left: 6px; }
+    td, th { min-width: unset; max-width: 100%; }
+    img { max-width: 100%; }
+    .tome_card, .unit_card, .item_card,
+    .mod_image_holder, .structure_image_holder {
+        width: auto !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+    #buildsSubmitHolder > div { flex-wrap: wrap; }
+
+    div:has(> .button-overview#toggleButton) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        z-index: 100;
+        top: 5px;
+        margin-right: 45px;
+        width: -webkit-fill-available;
+    }
+
+}
+
+/* ========== EXTRA SMALL (max-width: 400px) ========== */
+@media screen and (max-width: 400px) {
+    #tomePathButton {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .selections .wrappers {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-height: 180px;
+        z-index: 100;
+    }
+    .overview_list_entry { max-width: 100px; min-width: 100px; font-size: 10px; }
+    .tome-button-small { width: 42px !important; height: 50px !important; margin: inherit;}
+    .tome-button-small img { width: auto; }
+    .tome-add-slot {margin: inherit;margin-top: 28px;}
+    .tome-add-slot { width: 42px !important; height: 50px !important; font-size: 20px; }
+    .button-inset { left: 2px; font-size: 11px; }
+    .playerSigil .shield { width: 40px !important; height: 40px !important; }
+    .playerSigil .symbol { width: 26px !important; top: 7px; left: 8px; }
+    #extraAffinityFT {position: relative;display: block;}
+    #extraAffinity > div { height: 28px; }
+    #extraAffinity .AddSubtract img { width: 9px; }
+    .container { font-size: 12px; }
+    div:has(> #currentAffinity) {
+        flex-direction: column !important;
+        align-items: center !important;
+        display: block !important;
+        position: inherit !important;
+    }
+    #currentAffinity { display: block !important; font-size: 11px !important; position: inherit;}
+    #currentAffinity empireorderBig,
+    #currentAffinity empirechaosBig,
+    #currentAffinity empirenatureBig,
+    #currentAffinity empireshadowBig,
+    #currentAffinity empirematterBig,
+    #currentAffinity empirearcanaBig {
+        zoom: 1;
+    }
 }
