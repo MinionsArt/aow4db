@@ -234,9 +234,27 @@ function SetRandomStart(overwriteParameter) {
                     currentFormTraitList = [];
                     currentFormTraitList.push(randomEntry);
 
-                    while (getPoints() < 5) {
+                    var maxTraits = 5;
+                    var attempts = 0;
+                    var maxAttempts = 200;
+
+                    while (currentFormTraitList.length < maxTraits && attempts < maxAttempts) {
+                        attempts++;
+                        var remainingSlots = maxTraits - currentFormTraitList.length;
+                        var remainingPoints = 5 - getPoints();
+
+                        // If no points left to spend, stop
+                        if (remainingPoints <= 0) break;
+
+                        // Calculate minimum cost to ensure all remaining slots can be filled
+                        // ceil(remainingPoints / remainingSlots)
+                        var minCost = Math.ceil(remainingPoints / remainingSlots);
+                        var maxCost = remainingPoints;
+
                         randomEntry = GetRandomEntry(listofChoice[j]);
-                        if (getPoints() + randomEntry.point_cost < 6 && !isInArray(currentFormTraitList, randomEntry)) {
+                        var cost = randomEntry.point_cost;
+
+                        if (cost >= minCost && cost <= maxCost && !isInArray(currentFormTraitList, randomEntry)) {
                             if (checkCompatibilityTraits(randomEntry) == true) {
                                 currentFormTraitList.push(randomEntry);
                             }
