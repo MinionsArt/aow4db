@@ -90,7 +90,8 @@
                     } else {
                         const h2 = document.createElement("h2");
                         if (titleLink) {
-                            h2.innerHTML = `<a id="${titleLink.id}" href="${titleLink.href}">${titleText}</a>`;
+                            const linkId = titleLink.id ? ` id="${titleLink.id}"` : "";
+                            h2.innerHTML = `<a${linkId} href="${titleLink.href}">${titleText}</a>`;
                         } else {
                             h2.textContent = titleText;
                         }
@@ -167,6 +168,17 @@
 
                 padding: 10px;
                 margin: 5px;
+            }
+
+            /* Mobile: only show Builds/Planners card */
+            @media screen and (max-width: 768px) {
+                .card {
+                    display: none;
+                }
+                .card:has(#menu-builder),
+                .card:has(a[id="menu-builder"]) {
+                    display: block;
+                }
             }
         </style>
     </head>

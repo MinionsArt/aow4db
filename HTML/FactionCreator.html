@@ -454,23 +454,19 @@
           
             function HandlePage() {
                 
-                // hide build submitter
-             //   if (showBetaTooltip.checked) {
-                    // get build section
-               //         document.getElementById("shareSection").style.display= "none";
-               //     document.getElementById("buildsSubmitHolder").style.display = "none";
-               // }
-                
                    jsonTomes = [...jsonTomes, ...placeHolderTomes];
                 SetRandomStart();
 
-                document.getElementById("YourKey").textContent = getOrCreateUserEditKey();
+                var yourKeyEl = document.getElementById("YourKey");
+                if (yourKeyEl) yourKeyEl.textContent = getOrCreateUserEditKey();
 
                 var tooltip = document.getElementById("tooltipKey");
-                var span = document.createElement("span");
-                span.innerHTML =
-                    "Important! <br>This key is used to load and delete your builds, it is stored in your browser data, please save it in case it gets wiped!. You can overwrite it using Load Key";
-                addTooltipListeners(tooltip, span);
+                if (tooltip) {
+                    var span = document.createElement("span");
+                    span.innerHTML =
+                        "Important! <br>This key is used to load and delete your builds, it is stored in your browser data, please save it in case it gets wiped!. You can overwrite it using Load Key";
+                    addTooltipListeners(tooltip, span);
+                }
             }
         </script>
 
@@ -494,14 +490,14 @@
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-around">
                 <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br />
-                <button class="button-overview" style="left: 200px" id="toggleButton">◀ Hide Overview</button>
+                <button class="button-overview" style="left: 200px" id="toggleButton">▶ Show Overview</button>
             </div>
         </div>
 
         <div class="factioncreator" id="capture">
             <div class="typeHolder" id="factioncreator">
                 <div class="container">
-                    <div style="height: 90px">
+                    <div>
                         <div class="playerSigil">
                             <!-- <canvas id="myCanvas" class="shield" width="70" height="70" style="float:left"></canvas>
                         <canvas class="symbol" id="myCanvas2" width="50" height="50" style="float:left"></canvas>-->
@@ -515,7 +511,7 @@
                         </div>
                         <!--  <button class="test" id="shieldColor" onclick="ChangeShieldCol()"> </button>
                     <button class="test" id="symbolColor" onclick="ChangeSymbolCol()"> </button>-->
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <div>
                             <div id="currentAffinity" class="affinityText"></div>
                             <div id="extraAffinityFT">
                                 Extra Affinity Points
@@ -766,7 +762,7 @@
                     </div>
                 </div>
             </div>
-            <div style="color: white; display: block" id="overviewPanel">
+            <div style="color: white; display: none" id="overviewPanel">
                 <button class="button-random" onclick="ResetHighlights()" id="toggleButton1">
                     Reset <favourite></favourite>
                 </button>
@@ -807,112 +803,20 @@
 
         </div>
         <br /><br />
-        <hr> 
-        <div id="buildsSubmitHolder">
-        <div id="notesContainer" style="color: white">
-            <div>
-                <span class=small_title style='display: block; width: 100%;text-align: center;'>Submit your build</span><hr><br>
-Submit your build to the build list using the form below<br>
-                <button
-                    class="button-random"
-                    style="position: relative; top: 0; left: 50%; transform: translateX(-50%)">
-                    <a href="/aow4db/HTML/FactionList.html"> BUILDS LIST</a>
-                </button>
-            </div>
-            <label for="notesEditor">Build Notes:</label>
-            <div id="notesDisplay"></div>
-            <div id="NotesEditInput" style="display: none">
-                <div style="margin-bottom: 5px; display: flex">
-                    <button onclick="format('bold')"><b>Bold</b></button>
-                    <button onclick="formatHeader('h1')">Header</button>
-                    <div>Use [] for tags I.E. [hp] for <hp></hp></div>
-                    <!-- <div>Use {} for highlights of abilities/spells/etc I.E. {Ancient Wise Ones}</div>-->
-                </div>
+        <hr>
 
-                <div
-                    id="NotesInput"
-                    contenteditable="true"
-                    style="
-                        border: 1px solid gray;
-                        padding: 10px;
-                        min-height: 100px;
-                        background: #454545;
-                        color: white;
-                        white-space: pre-wrap;
-                    "></div>
-            </div>
-            <button id="editNotesBtn" onclick="toggleEditNotes()">Edit</button>
-            <button style="display: none" id="saveNotesBtn" onclick="saveNotes()">Save</button>
+        <div
+            id="loading-spinner"
+            style="
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+            ">
+            <div class="spinner"></div>
         </div>
-        <div style="display: flex; justify-content: space-around; color: white">
-            <div style="color: white">
-                <div style="width: fit-content">
-                    <div id="tooltipKey">
-                        YourEditKey: <img src="/aow4db/Icons/Text/exclamationpoint.png" height="20px" />
-                    </div>
-                    <button class="button-random" onmousedown="RevealKey()" onmouseup="HideKey()">👁️Show</button>
-                    <span style="display: none" id="YourKey"></span>
-                </div>
-                <button class="button-random" onclick="CopyField()">📄Copy Key</button>
-                <button class="button-random" onclick="downloadEditKeyFile()">💾Save Key</button>
-
-                <button class="button-random" onmousedown="RevealKey()" onmouseup="ShowLoad()">📂Load Key</button>
-                <div id="loadkey" style="display: none">
-                    Overwrite key: <input type="text" id="overwriteKey" name="lname" /><button
-                        class="button-random"
-                        onclick="OverwriteEditKey()">
-                        Submit
-                    </button>
-                </div>
-            </div>
-
-            <div
-                id="loading-spinner"
-                style="
-                    display: none;
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 9999;
-                ">
-                <div class="spinner"></div>
-            </div>
-
-            <div style="color: white; display: none" id="oldURL"></div>
-
-            <!-- Dropdown to choose a tag -->
-            <div>
-                <!-- Extra holder -->
-                <label for="tagDropdown">Select a Tag:</label>
-                <select id="tagDropdown">
-                    <option value="">-- Choose a tag --</option>
-                    <option value="Roleplay">Roleplay</option>
-                    <option value="Theme">Theme</option>
-                    <option value="PVP">PVP</option>
-                    <option value="Casual">Casual</option>
-                    <option value="Hardcore">Hardcore</option>
-                </select>
-
-                <button onclick="addTag()">Add Tag</button>
-
-                <!-- Where tags will be listed -->
-                <div id="tagList" style="margin-top: 10px"></div>
-                <label for="userNotes">Build Name:</label>
-                <input type="text" id="buildName" name="lname" />
-
-                <button class="button-random" onclick="submitBuild()">Submit New</button>
-
-                <button class="button-random" id="overwriteButton" style="display: none" onclick="overwriteBuild()">
-                    Overwrite Existing
-                </button>
-            </div>
-        </div>
-            <br>
-            <hr>
-            <div style='color:white; padding:20px'>
-Contributors: lucasandradz </div>
-            </div>
 
         <script>
             var rawNotes = "";
@@ -1119,13 +1023,13 @@ Contributors: lucasandradz </div>
                 url.searchParams.set("views", 0);
                 url.searchParams.set("editKey", userEditKey);
 
-                spinner.style.display = "block"; // Show the spinner
+                if (spinner) spinner.style.display = "block";
                 fetch(url)
                     .then((res) => res.text())
                     .then((msg) => alert("Submitted: " + msg))
                     .catch((err) => console.error("Submission failed:", err))
                     .finally(() => {
-                        spinner.style.display = "none"; // Hide spinner after fetch is done
+                        if (spinner) spinner.style.display = "none";
                     });
             }
 
@@ -1133,7 +1037,7 @@ Contributors: lucasandradz </div>
                 var getLink = GenerateQuickLink();
                 var currenturl = window.location.href.split("?")[0];
                 getLink = currenturl + "?u=" + getLink;
-                spinner.style.display = "block"; // Show the spinner
+                if (spinner) spinner.style.display = "block";
                 var userEditKey = getOrCreateUserEditKey();
                 var url = new URL(
                     "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec"
@@ -1152,7 +1056,7 @@ Contributors: lucasandradz </div>
                     .then((msg) => alert("Submitted: " + msg))
                     .catch((err) => console.error("Submission failed:", err))
                     .finally(() => {
-                        spinner.style.display = "none"; // Hide spinner after fetch is done
+                        if (spinner) spinner.style.display = "none";
                     });
             }
 
@@ -1185,6 +1089,37 @@ Contributors: lucasandradz </div>
 
                 submitBuild2(buildName, tagArray, rawNotes);
             }
+
+            document.addEventListener("DOMContentLoaded", function () {
+
+            // Seleciona o elemento de afinidade e reposiciona-lo para a direita quando necessário
+            const affinityElement = document.querySelector("#currentAffinity");
+
+            if (affinityElement) {
+                // Criamos um "gatilho" invisível logo antes do elemento para monitorar o scroll
+                const trigger = document.createElement("div");
+                trigger.style.position = "absolute";
+                trigger.style.pointerEvents = "none";
+                // Posiciona o gatilho exatamente onde o elemento começa
+                affinityElement.parentNode.insertBefore(trigger, affinityElement);
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // entry.isIntersecting será FALSE quando o gatilho sair da tela
+                        if (!entry.isIntersecting) {
+                            affinityElement.classList.add("fixado-direita");
+                        } else {
+                            affinityElement.classList.remove("fixado-direita");
+                        }
+                    });
+                }, {
+                    root: null,      // Monitora em relação à janela de visualização (viewport)
+                    threshold: 0     // Dispara assim que o topo sumir
+                });
+
+                observer.observe(trigger);
+            }
+        });
         </script>
     </body>
 </html>
