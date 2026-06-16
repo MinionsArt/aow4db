@@ -1520,6 +1520,7 @@ function findOriginLocName(origin, type) {
             } else {
                 newOrigin = origin.name;
             }
+          
             newOrigin = newOrigin.split("{")[0];
             break;
 
