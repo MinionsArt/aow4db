@@ -93,9 +93,47 @@ function addOrSubtract(extraAffinity, add) {
 
 const extraTomesForTheorycrafting = [];
 
+// ── Beta / Theorycrafting detection ────────────────────────────────────────
+function isTheorycrafting(entry) {
+    if (!entry) return false;
+    if (entry.description === "For theorycrafting." || entry.gameplay_description === "For theorycrafting") return true;
+    if (entry.DLC && entry.DLC.trim() === "SECRETSOFTHEARCHMAGES") return true;
+    return false;
+}
+
+// ── Hybrid tome detection ──────────────────────────────────────────────────
+function isHybridTome(tome) {
+    if (!tome || !tome.affinities) return false;
+    var tags = tome.affinities.match(/<(\w+)><\/\1>/g);
+    if (!tags) return false;
+    var seen = {}, distinct = [];
+    for (var t = 0; t < tags.length; t++) {
+        if (!seen[tags[t]]) { seen[tags[t]] = true; distinct.push(tags[t]); }
+    }
+    return distinct.length >= 2;
+}
+
+function hasAllHybridAffinities(affinityTotal, tome) {
+    if (!tome || !tome.affinities) return true;
+    var tags = tome.affinities.match(/<(\w+)><\/\1>/g);
+    if (!tags) return true;
+    var seen = {}, distinct = [];
+    for (var t = 0; t < tags.length; t++) {
+        if (!seen[tags[t]]) { seen[tags[t]] = true; distinct.push(tags[t]); }
+    }
+    for (var i = 0; i < distinct.length; i++) {
+        var re = new RegExp(distinct[i] + '\\s*(\\d+)');
+        var m = affinityTotal.match(re);
+        if (!m || parseInt(m[1]) < 1) return false;
+    }
+    return true;
+}
+
 function SetRandomStart(overwriteParameter) {
-    jsonTomes.push(...extraTomesForTheorycrafting);
-    jsonTomesLocalized.push(...extraTomesForTheorycrafting);
+    if (showBetaTooltip && showBetaTooltip.checked) {
+        jsonTomes.push(...extraTomesForTheorycrafting);
+        jsonTomesLocalized.push(...extraTomesForTheorycrafting);
+    }
     if (searchKeyword != undefined && !overwriteParameter) {
         // console.log("Found" + searchKeyword);
         RebuildFromParam(searchKeyword);
@@ -503,6 +541,13 @@ function selectOrigin(origin, type) {
     // set affinity  stats
     RecalculateStats(false);
 
+    // Re-select T5 tome when base affinities change (Culture/Society/Origin/Form)
+    var affinityChangingTypes = ["Culture", "Society1", "Society2", "Origin", "Form"];
+    if (affinityChangingTypes.indexOf(type) !== -1 &&
+        window.TomeRestriction && TomeRestriction.isEnabled() && TomeRestriction.getDistribution()) {
+        TomeRestriction.reSelectTier5();
+    }
+
     //ResetHighlights();
 
     // swap current known origin
@@ -631,6 +676,21 @@ function SetTomePathOptions(evt) {
     // Create origin buttons dynamically from the list
     var selectionsText = document.getElementById("selections");
     selectionsText.textContent = "Select Tomes";
+
+    // ── Remove option: shown when clicking an already-occupied slot ──────
+    if (tomeInsertionIndex >= 0 && tomeInsertionIndex < currentTomeList.length) {
+        var removeBtn = document.createElement("button");
+        removeBtn.className = "list-button";
+        removeBtn.style = "background-color:#552222;color:#ff8888;font-weight:bold;";
+        removeBtn.textContent = "✕ Remove " + romanize(currentTomeList[tomeInsertionIndex].tier) + ": " +
+            currentTomeList[tomeInsertionIndex].name.replace("Tome of the ", "").replace("Tome of ", "");
+        removeBtn.addEventListener("click", function () {
+            RemoveTomeAtIndex(tomeInsertionIndex);
+            toggleOriginButtons();
+        });
+        originWrapper.appendChild(removeBtn);
+    }
+
     for (const origin of list) {
         const originButtonNew = document.createElement("button");
         originButtonNew.className = "list-button";
@@ -1107,6 +1167,45 @@ function SetupButtons(evt, type) {
     // Create origin buttons dynamically from the list
     var selectionsText = document.getElementById("selections");
     selectionsText.textContent = "Select " + type;
+
+    // ── Clear/deselect option for optional types ────────────────────────
+    var clearableTypes = ["SubType", "SubCulture", "SubSociety1", "SubSociety2", "Ascension", "Ambition"];
+    if (clearableTypes.indexOf(type) !== -1) {
+        var currentVal;
+        switch (type) {
+            case "SubType":     currentVal = currentSubType; break;
+            case "SubCulture":  currentVal = currentSubCulture; break;
+            case "SubSociety1": currentVal = currentSubSociety1; break;
+            case "SubSociety2": currentVal = currentSubSociety2; break;
+            case "Ascension":   currentVal = currentAscension; break;
+            case "Ambition":    currentVal = currentAmbition; break;
+        }
+        if (currentVal && currentVal !== "") {
+            var clearBtn = document.createElement("button");
+            clearBtn.className = "list-button";
+            clearBtn.style = "background-color:#552222;color:#ff8888;font-weight:bold;";
+            clearBtn.textContent = "✕ Remove " + currentVal.name;
+            clearBtn.addEventListener("click", function () {
+                switch (type) {
+                    case "SubType":     currentSubType = ""; break;
+                    case "SubCulture":  currentSubCulture = ""; break;
+                    case "SubSociety1": currentSubSociety1 = ""; break;
+                    case "SubSociety2": currentSubSociety2 = ""; break;
+                    case "Ascension":   currentAscension = ""; break;
+                    case "Ambition":    currentAmbition = ""; break;
+                }
+                // Reset button to "add" state
+                var btn = document.getElementById("originButton" + type);
+                if (btn) {
+                    btn.textContent = "";
+                    btn.innerHTML = "<img src='/aow4db/Icons/Interface/addsymbol.png' height='40px' />";
+                }
+                toggleOriginButtons();
+            });
+            originWrapper.appendChild(clearBtn);
+        }
+    }
+
     for (const origin of list) {
         var originButtonNew = document.createElement("button");
 
@@ -1339,13 +1438,15 @@ function GetAffinityTotalFromList(list, tomeList, subType, subCulture, subSociet
 // Converts the raw affinity string (from GetAffinityTotalFromList) to the Big-tag HTML
 // format used by the #currentAffinity display element and checkEmpireOfCosmos().
 function affinityToDisplayHtml(affinityStr) {
-    return affinityStr
-        .replace("<empireshadow></empireshadow> ", "<empireshadowBig></empireshadowBig>")
-        .replace("<empirechaos></empirechaos> ", "<empirechaosBig></empirechaosBig>")
-        .replace("<empirenature></empirenature> ", "<empirenatureBig></empirenatureBig>")
-        .replace("<empirearcana></empirearcana> ", "<empirearcanaBig></empirearcanaBig>")
-        .replace("<empirematter></empirematter> ", "<empirematterBig></empirematterBig>")
-        .replace("<empireorder></empireorder> ", "<empireorderBig></empireorderBig>");
+    var out = "";
+    var re = /<(\w+)><\/\1>\s*(\d+)/g;
+    var m;
+    while ((m = re.exec(affinityStr)) !== null) {
+        var tag = m[1];
+        var num = m[2];
+        out += '<div><span>' + num + '</span><' + tag + 'Big></' + tag + 'Big></div>';
+    }
+    return out;
 }
 
 function RecalculateStats(fromload) {
@@ -2055,6 +2156,9 @@ function GetAllStartingTomes() {
 
     for (let i = 0; i < jsonTomes.length; i++) {
         if (jsonTomes[i].tier === 1) {
+            if (!showBetaTooltip || !showBetaTooltip.checked) {
+                if (isTheorycrafting(jsonTomes[i])) continue;
+            }
             listOfAllTier1Tomes.push(jsonTomes[i]);
         }
     }
@@ -2909,6 +3013,11 @@ function GetNextSetOfTomes(pathLength) {
         affinitySummary.innerHTML = savedAffinityHtml;
     }
 
+    // ── Beta filter ──────────────────────────────────────────────────────
+    if (!showBetaTooltip || !showBetaTooltip.checked) {
+        listOfNextTomes = listOfNextTomes.filter(function (t) { return !isTheorycrafting(t); });
+    }
+
     return listOfNextTomes;
 }
 
@@ -2930,7 +3039,7 @@ function hasAtleastThreeCosmos(number) {
     let count = 0;
 
     for (const affinity of affinities) {
-        const regex = new RegExp(`<${affinity}big></${affinity}big>\\s*(\\d+)`);
+        const regex = new RegExp(`<span>(\\d+)</span><${affinity}big></${affinity}big>`);
         const match = html.match(regex);
 
         if (match && parseInt(match[1], 10) >= number) {
@@ -2961,7 +3070,7 @@ function hasAllAffinitiesForEmpireOfCosmos(number) {
 
     // Check if each affinity has a number >= 1 after it
     return affinities.every((affinity) => {
-        const regex = new RegExp(`<${affinity}big></${affinity}big>\\s*(\\d+)`);
+        const regex = new RegExp(`<span>(\\d+)</span><${affinity}big></${affinity}big>`);
         const match = html.match(regex);
         return match && parseInt(match[1], 10) >= number;
     });
@@ -3029,6 +3138,9 @@ function GetAllOrigins() {
 
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "Ruler Origin") {
+            if (!showBetaTooltip || !showBetaTooltip.checked) {
+                if (isTheorycrafting(jsonFactionCreation[i])) continue;
+            }
             listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
@@ -3041,6 +3153,9 @@ function GetAllCultures() {
 
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "Culture") {
+            if (!showBetaTooltip || !showBetaTooltip.checked) {
+                if (isTheorycrafting(jsonFactionCreation[i])) continue;
+            }
             listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
@@ -3053,6 +3168,9 @@ function GetAllForms() {
 
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "Skin") {
+            if (!showBetaTooltip || !showBetaTooltip.checked) {
+                if (isTheorycrafting(jsonFactionCreation[i])) continue;
+            }
             listOfAllOrigins.push(jsonFactionCreation[i]);
         }
     }
@@ -3065,6 +3183,9 @@ function GetAllFormTraitsList() {
 
     for (i = 0; i < jsonFactionCreation2.length; i++) {
         if (jsonFactionCreation2[i].type === "form") {
+            if (!showBetaTooltip || !showBetaTooltip.checked) {
+                if (isTheorycrafting(jsonFactionCreation2[i])) continue;
+            }
             listOfAllOrigins.push(jsonFactionCreation2[i]);
         }
     }
@@ -3081,6 +3202,9 @@ function GetAllSocietyTraits() {
         if (jsonFactionCreation2[i].type === "society") {
             if (jsonFactionCreation2[i].enabled === true) {
                 if (jsonFactionCreation2[i].id != "guardians_of_nature__goodact__") {
+                    if (!showBetaTooltip || !showBetaTooltip.checked) {
+                        if (isTheorycrafting(jsonFactionCreation2[i])) continue;
+                    }
                     listOfAllOrigins.push(jsonFactionCreation2[i]);
                 }
             }
@@ -3120,6 +3244,9 @@ function GetAllSubTypes() {
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "SubType") {
             if (jsonFactionCreation[i].requirement == currentOrigin.name) {
+                if (!showBetaTooltip || !showBetaTooltip.checked) {
+                    if (isTheorycrafting(jsonFactionCreation[i])) continue;
+                }
                 listOfAllSubTypes.push(jsonFactionCreation[i]);
             }
         }
@@ -3131,11 +3258,12 @@ function GetAllSubTypes() {
 function GetAllSubCultureSetups() {
     var listOfAllSubCultTypes = [];
 
-    // list of subcultures for architect
-
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "SubCulture") {
             if (jsonFactionCreation[i].requirement == currentCulture.name) {
+                if (!showBetaTooltip || !showBetaTooltip.checked) {
+                    if (isTheorycrafting(jsonFactionCreation[i])) continue;
+                }
                 listOfAllSubCultTypes.push(jsonFactionCreation[i]);
             }
         }
@@ -3149,17 +3277,21 @@ function GetAllSubCultureSetups() {
 function GetAllSubProphecySetups(entry) {
     var listOfAllSubTypes = [];
 
-    // list of subcultures for architect
-
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "SubSociety") {
             if (entry == 1) {
                 if (jsonFactionCreation[i].requirement == currentSociety1.name) {
+                    if (!showBetaTooltip || !showBetaTooltip.checked) {
+                        if (isTheorycrafting(jsonFactionCreation[i])) continue;
+                    }
                     listOfAllSubTypes.push(jsonFactionCreation[i]);
                 }
             }
             if (entry == 2) {
                 if (jsonFactionCreation[i].requirement == currentSociety2.name) {
+                    if (!showBetaTooltip || !showBetaTooltip.checked) {
+                        if (isTheorycrafting(jsonFactionCreation[i])) continue;
+                    }
                     listOfAllSubTypes.push(jsonFactionCreation[i]);
                 }
             }
@@ -3173,6 +3305,9 @@ function GetAllClasses() {
 
     for (i = 0; i < jsonFactionCreation.length; i++) {
         if (jsonFactionCreation[i].type === "Class") {
+            if (!showBetaTooltip || !showBetaTooltip.checked) {
+                if (isTheorycrafting(jsonFactionCreation[i])) continue;
+            }
             listofallClasses.push(jsonFactionCreation[i]);
         }
     }
@@ -3684,6 +3819,13 @@ function GenerateQuickLink() {
         code += ",";
     }
 
+    // 16 Tome Restriction locked T5 tome ID
+    if (window.TomeRestriction && window.TomeRestriction.getTier5()) {
+        code += "," + window.TomeRestriction.getTier5().id;
+    } else {
+        code += ",";
+    }
+
     // console.log("hex code: " + code);
 
     return code;
@@ -3698,12 +3840,6 @@ function GetQuickLink() {
 
     // window.history.replaceState({}, 'foo', currenturl + "?u=" + code);
     linkField.value = currenturl + "?u=" + code;
-    // var splitCodes = code.split(":");
-    // for (let index = 0; index < splitCodes.length; index++) {
-    //     console.log("number code: " + hexToDecimal(splitCodes[index]));
-    // }
-
-    reversLookUp(code);
 }
 
 function reversLookUp(code) {
@@ -4002,7 +4138,7 @@ function reversLookUp(code) {
         SetButtonInfo(originButton, currentAmbition, "Ambition");
     }
 
-    // 14 = Tome Restriction enabled state + 15 = distribution
+    // 14 = Tome Restriction enabled state + 15 = distribution + 16 = locked T5 ID
     if (splitcode[14] !== undefined) {
         var tomeRestrictionState = splitcode[14];
         var cb = document.getElementById("tomeRestrictionToggle");
@@ -4010,7 +4146,7 @@ function reversLookUp(code) {
             cb.checked = (tomeRestrictionState === "1");
             if (window.TomeRestriction) {
                 window.TomeRestriction.onToggle(cb.checked);
-                // If distribution is provided, restore it and trigger onRandomize
+                // If distribution is provided, restore state without re-randomizing
                 if (splitcode[15] !== undefined && splitcode[15] !== "") {
                     var distParts = splitcode[15].split("-");
                     if (distParts.length === 4) {
@@ -4018,12 +4154,11 @@ function reversLookUp(code) {
                         var n2 = parseInt(distParts[1], 10);
                         var n3 = parseInt(distParts[2], 10);
                         var n4 = parseInt(distParts[3], 10);
+                        var tier5Id = (splitcode[16] !== undefined && splitcode[16] !== "") ? splitcode[16] : null;
                         if (!isNaN(n1) && !isNaN(n2) && !isNaN(n3) && !isNaN(n4)) {
-                            window.TomeRestriction.setDistribution(n1, n2, n3, n4);
-                            // Call onRandomize to complete the restoration (selects T5 based on affinities)
                             setTimeout(function() {
-                                if (window.TomeRestriction) {
-                                    window.TomeRestriction.onRandomize();
+                                if (window.TomeRestriction && window.TomeRestriction.restoreState) {
+                                    window.TomeRestriction.restoreState(n1, n2, n3, n4, tier5Id);
                                 }
                             }, 100);
                         }
@@ -4047,7 +4182,7 @@ function hexToDecimal(hex) {
 function RebuildFromParam(code) {
     console.log(code);
     reversLookUp(code);
-    spinner.style.display = "block"; // Show the spinner
+    if (typeof spinner !== "undefined" && spinner) spinner.style.display = "block";
     fetch(
         "https://script.google.com/macros/s/AKfycbz5r36EOFcrtfu2Y3CN8DdgDkJDiq6NHf7Y6JEv1IkngOG4we3F5uFU6o5aYFSnm5M4/exec",
         {
@@ -4065,15 +4200,16 @@ function RebuildFromParam(code) {
             }
         })
         .finally(() => {
-            spinner.style.display = "none"; // Hide spinner after fetch is done
+            if (typeof spinner !== "undefined" && spinner) spinner.style.display = "none";
         });
 
     if (window.location.href.indexOf("&edit")) {
         // save current url for overwriting
-        document.getElementById("oldURL").innerHTML = window.location.href.split("?")[0] + "?u=" + code;
+        var oldUrlEl = document.getElementById("oldURL");
+        if (oldUrlEl) oldUrlEl.innerHTML = window.location.href.split("?")[0] + "?u=" + code;
         // show edit button
         var editButton = document.getElementById("overwriteButton");
-        editButton.style.display = "block";
+        if (editButton) editButton.style.display = "block";
         //   alert("Editing");
     }
 
@@ -4085,17 +4221,19 @@ function RebuildFromParam(code) {
 function FillInBuildDetails(build) {
     console.log(build);
     var nameBuild = document.getElementById("buildName");
-    nameBuild.value = build.BuildName;
+    if (nameBuild) nameBuild.value = build.BuildName;
     var notesBlock = document.getElementById("notesDisplay");
-    console.log(build.Notes);
-    var convertedNotes = convertBracketsToHTML(build.Notes);
-    console.log(convertedNotes);
-    convertedNotes = convertNamesToHTML(convertedNotes);
-    console.log(convertedNotes);
-    notesBlock.innerHTML = convertedNotes;
+    if (notesBlock) {
+        console.log(build.Notes);
+        var convertedNotes = convertBracketsToHTML(build.Notes);
+        console.log(convertedNotes);
+        convertedNotes = convertNamesToHTML(convertedNotes);
+        console.log(convertedNotes);
+        notesBlock.innerHTML = convertedNotes;
+    }
     if (build.Tags != "") {
         const tagArray = new Set(build.Tags.split(",").map((tag) => tag.trim()));
-        updateTagList(tagArray);
+        if (typeof updateTagList === "function") updateTagList(tagArray);
     }
 
     rawNotes = build.Notes;

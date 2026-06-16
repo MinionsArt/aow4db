@@ -116,6 +116,26 @@ window.TomeRestriction = (function () {
             return !_wouldViolateAffinityOrder(t, affAtInsertion);
         });
 
+        // 3b. Hybrid tome rule: tomes with 2+ affinities require ALL their affinities.
+        //     Fallback: if no non-hybrid tomes remain for a tier, allow hybrids
+        //     matching at least 1 affinity.
+        var hybridList = [], nonHybridList = [];
+        for (var hi = 0; hi < list.length; hi++) {
+            if (_isHybridTome(list[hi])) {
+                hybridList.push(list[hi]);
+            } else {
+                nonHybridList.push(list[hi]);
+            }
+        }
+        if (hybridList.length > 0 && nonHybridList.length > 0) {
+            // There are non-hybrid options — filter hybrids strictly.
+            // Keep a hybrid only if player has ALL its affinities.
+            list = nonHybridList.concat(hybridList.filter(function (ht) {
+                return _hasAllHybridAffinities(affAtInsertion, ht);
+            }));
+        }
+        // If nonHybridList is empty, keep all hybrids as-is (fallback).
+
         // 4. Never show the locked T5 tome before the final slot
         if (lockedTier5) {
             list = list.filter(function (t) { return t !== lockedTier5; });
@@ -400,6 +420,35 @@ window.TomeRestriction = (function () {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    /** Returns true if the tome has 2+ distinct affinity tags (hybrid). */
+    function _isHybridTome(tome) {
+        if (!tome || !tome.affinities) return false;
+        var tags = tome.affinities.match(/<(\w+)><\/\1>/g);
+        if (!tags) return false;
+        var seen = {}, distinct = 0;
+        for (var i = 0; i < tags.length; i++) {
+            if (!seen[tags[i]]) { seen[tags[i]] = true; distinct++; }
+        }
+        return distinct >= 2;
+    }
+
+    /** Returns true if the player has at least 1 point in EVERY affinity of the hybrid tome. */
+    function _hasAllHybridAffinities(affinityStr, tome) {
+        if (!tome || !tome.affinities) return true;
+        var tags = tome.affinities.match(/<(\w+)><\/\1>/g);
+        if (!tags) return true;
+        var seen = {}, distinct = [];
+        for (var i = 0; i < tags.length; i++) {
+            if (!seen[tags[i]]) { seen[tags[i]] = true; distinct.push(tags[i]); }
+        }
+        for (var j = 0; j < distinct.length; j++) {
+            var re = new RegExp(distinct[j] + '\\s*(\\d+)');
+            var m = affinityStr.match(re);
+            if (!m || parseInt(m[1]) < 1) return false;
+        }
+        return true;
+    }
+
     // ── Init ─────────────────────────────────────────────────────────────────
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -420,18 +469,70 @@ window.TomeRestriction = (function () {
 
     /** Sets the distribution directly (used for loading from URL). */
     function setDistribution(n1, n2, n3, n4) {
-        if (distribution) {
-            distribution[1] = n1;
-            distribution[2] = n2;
-            distribution[3] = n3;
-            distribution[4] = n4;
-            updateDisplay();
+        if (!distribution) {
+            distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 1 };
         }
+        distribution[1] = n1;
+        distribution[2] = n2;
+        distribution[3] = n3;
+        distribution[4] = n4;
+        updateDisplay();
+    }
+
+    /**
+     * Restores full state from URL parameters without re-randomizing.
+     * @param {number} n1 - Tier 1 quota
+     * @param {number} n2 - Tier 2 quota
+     * @param {number} n3 - Tier 3 quota
+     * @param {number} n4 - Tier 4 quota
+     * @param {string} tier5Id - ID of the locked T5 tome (may be null/undefined)
+     */
+    function restoreState(n1, n2, n3, n4, tier5Id) {
+        // Set distribution (force creation if null)
+        if (!distribution) {
+            distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 1 };
+        }
+        distribution[1] = n1;
+        distribution[2] = n2;
+        distribution[3] = n3;
+        distribution[4] = n4;
+
+        // Restore locked T5 tome if ID provided
+        if (tier5Id && typeof jsonTomes !== "undefined") {
+            for (var i = 0; i < jsonTomes.length; i++) {
+                if (jsonTomes[i].id === tier5Id) {
+                    lockedTier5 = jsonTomes[i];
+                    break;
+                }
+            }
+        }
+
+        // Capture base affinities from current state
+        baseAff = _parseAffinityTotal(
+            typeof currentAffinityTotal !== "undefined" ? currentAffinityTotal : _computeBaseAffinities()
+        );
+
+        var el = document.getElementById("tomeRestrictionDisplay");
+        if (el) el.style.display = "block";
+        updateDisplay();
     }
 
     // ── Check if T5 is selected ──────────────────────────────────────────────
     function isTier5Selected() {
         return !!(lockedTier5 && isInArray(currentTomeList, lockedTier5));
+    }
+
+    /**
+     * Re-selects the T5 tome based on current affinities WITHOUT changing the
+     * tier distribution. Called when Culture/Society/Ruler/Form changes and
+     * Tome Restriction is already active.
+     */
+    function reSelectTier5() {
+        if (!isEnabled() || !distribution) return;
+        // Use BASE affinities only (culture+societies, no tomes) to preserve ordering
+        baseAff = _parseAffinityTotal(_computeBaseAffinities());
+        lockedTier5 = _selectTier5Tome();
+        updateDisplay();
     }
 
     return {
@@ -443,6 +544,8 @@ window.TomeRestriction = (function () {
         getTier5:      getTier5,
         getDistribution: getDistribution,
         setDistribution: setDistribution,
+        restoreState:  restoreState,
+        reSelectTier5: reSelectTier5,
         isTier5Selected: isTier5Selected
     };
 })();
