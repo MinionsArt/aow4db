@@ -1887,6 +1887,7 @@ function SetTomePreview(span, origin) {
                             spell.name +
                             "</bullet>";
                     } else {
+                      
                         span.innerHTML +=
                             '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                             iconLink +
@@ -1972,7 +1973,7 @@ function SetTomePreview(span, origin) {
                 console.log(origin.skills[index].name);
                 const spellEN = findBy(jsonSpells, "id", origin.skills[index].spell_slug);
                 const spell = findBy(jsonSpellsLocalized, "resid", spellEN.resid);
-                let iconLink = "";
+                let iconLink = undefined;
                 if ("icon" in spell) {
                     iconLink = spell.icon;
                 }
@@ -1986,6 +1987,7 @@ function SetTomePreview(span, origin) {
                         spell.name +
                         "</bullet>";
                 } else {
+                    
                     span.innerHTML +=
                         '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                         iconLink +
@@ -2293,9 +2295,10 @@ function CreateSpellIcon(listEntry, colorEntry) {
     var smallIcon = document.createElement("img");
 
     let imageSRC;
-    let imageLinkName;
+    let imageLinkName = spellData.id;
     if (spellData.icon != undefined && !incorrectIconOverrideList.includes(spellData.id)) {
         imageLinkName = spellData.icon;
+       
         imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
     } else {
         imageLinkName = spellData.id;
