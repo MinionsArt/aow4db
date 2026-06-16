@@ -20,28 +20,38 @@
           
 
             function HandlePage() {
-                showAllRelics("Minor", "Minor");
+                showAllRelics("GIANTKINGS ", "Giants");
+                  showAllRelics("RISEFROMRUIN ", "Fractured");
+                  showAllRelics("SECRETSOFTHEARCHMAGES ", "Secret");
                 SetLevelUpStuff();
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Relics</title>
+        <title>Age of Wonders 4 Database - Artifacts/Secret Spells</title>
     </head>
 
     <body>
         <div id="header"></div>
 
-        <div class="textblocktitle">Relics WIP</div>
+        <div class="textblocktitle">Artifacts/Secret Spells</div>
         <br /><br /><br />
         <div class="w3-container">
             <div class="w3-bar w3-black" id="buttonHolder">
-                <button id="Minor-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Minor')">
-                    Relics
+                <button id="Giants-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Giants')">
+                    Giant Kings Artifacts
+                </button>
+                 <button id="Fractured-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Fractured')">
+                    Fractured Artifacts
+                </button>
+                 <button id="Secret-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Secret')">
+                    Secret Spells
                 </button>
                
             </div>
-            <div id="dataHolder" style="margin-top: -150px">
-                <div id="Minor" class="w3-container w3-border city"></div>
+             <div id="dataHolder" style="margin-top: -150px">
+                <div id="Giants" class="w3-container w3-border city"></div>
+                 <div id="Fractured" class="w3-container w3-border city"></div>
+                 <div id="Secret" class="w3-container w3-border city"></div>
 
                
             </div>

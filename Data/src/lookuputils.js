@@ -30,6 +30,12 @@ function tagReplace(text, keyword, tagHTML) {
   return text.replace(pattern, tagHTML);
 }
 
+function Unblur(element, clickerelement, event){
+    
+    element.classList.remove("blurred");
+    clickerelement.setAttribute("style", "display:none");
+}
+
 /**
  * Find an object in an array where any nested array matches a condition.
  *

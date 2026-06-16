@@ -28,6 +28,7 @@ function CheckBoxTooltips() {
     tooltipselectable: checkboxTooltip.checked,
     isolateNumber: checkboxNumbers.checked,
     showBeta: showBetaTooltip.checked,
+      showSecretSpells: showSecretSpells.checked,
     language: languageSelect.value
   });
 }
@@ -35,7 +36,9 @@ function CheckBoxTooltips() {
 function SwitchToBeta() {
     updateUserSettings({
         tooltipselectable: checkboxTooltip.checked,
+        isolateNumber: checkboxNumbers.checked,
         showBeta: showBetaTooltip.checked,
+      showSecretSpells: showSecretSpells.checked,
         language: languageSelect.value
     });
     location.reload();

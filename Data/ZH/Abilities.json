@@ -2,6 +2,413 @@
  {
   "modifiers": [
    {
+    "description": "攻击治疗5<hyperlink><temphp></temphp>临时生命值</hyperlink>",
+    "name": "生命窃取",
+    "count": 1
+   },
+   {
+    "description": "从目标身上吸取6<happiness></happiness><hyperlink>士气</hyperlink>",
+    "name": "士气吸取",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "近战攻击",
+  "slug": "melee_strike_(base)_ability_000004E0000000C2",
+  "damage": "11<damagephysical></damagephysical> 11<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "description": "该单位会结束其回合并进入防御模式。该单位：<bulletlist><bullet>将其<hyperlink>控制区</hyperlink>扩展至所有邻近框格</bullet><bullet>+2<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet><bullet>免疫<hyperlink><flank></flank>侧袭</hyperlink></bullet></bulletlist>",
+  "name": "防御模式",
+  "slug": "0000034500000469",
+  "icon": "000003450000049D"
+ },
+ {
+  "description": "此单位：<bulletlist><bullet>可以进入水域框格而不会受到移动力惩罚或受到登船</bullet><bullet>在河流与沼泽上移动加快</bullet></bulletlist>",
+  "name": "两栖",
+  "slug": "000003eb0000071f",
+  "icon": "0000039F000028E0"
+ },
+ {
+  "description": "一个企鹅单位",
+  "name": "企鹅",
+  "slug": "0000049700003d5f",
+  "icon": "0000049700003D60"
+ },
+ {
+  "description": "军队中4阶或以下的企鹅单位获得：<bulletlist><bullet>+20%伤害</bullet><bullet>+20点<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>+2点<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+2点<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist><br></br>无法叠加",
+  "name": "企鹅指挥官",
+  "slug": "0000049700003d70",
+  "icon": "0000049700003D71"
+ },
+ {
+  "description": "基础<hyperlink>单位维持费</hyperlink>减少25%",
+  "name": "低维护",
+  "slug": "0000045e00000664",
+  "icon": "0000045E00000665"
+ },
+ {
+  "description": "动物单位<br></br><br></br>归属于<hyperlink>玩家</hyperlink>与<minorcity></minorcity><hyperlink>自由城邦</hyperlink>的单位获得战斗训练，增强它们在战场上发挥的作用",
+  "name": "动物",
+  "slug": "000003fe00000018",
+  "icon": "000003FE00000019"
+ },
+ {
+  "description": "大型单位：<bulletlist><bullet>被<hyperlink>远程</hyperlink>与<hyperlink>魔法</hyperlink>攻击命中的概率增加20%</bullet><bullet>免疫大部分位移效果</bullet><bullet>拥有破障者</bullet></bulletlist>",
+  "name": "大型目标",
+  "slug": "000003450000052c",
+  "icon": "000003450000049B"
+ },
+ {
+  "description": "免疫让你的单位失控的效果，如狂战与受支配<br></br>同时赋予免疫<hyperlink>被俘</hyperlink>",
+  "name": "失控免疫",
+  "slug": "0000045e00000580",
+  "icon": "0000048B00000057"
+ },
+ {
+  "description": "回合结束时，与此单位相邻的敌方单位承受10点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink>，然后每击中一个敌人，治疗10点<hyperlink><temphp></temphp>临时生命值</hyperlink>",
+  "name": "寄生珊瑚",
+  "slug": "0000049700003d6b",
+  "icon": "0000049700004031"
+ },
+ {
+  "description": "通过雪地与寒冰地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5",
+  "name": "极地行进",
+  "slug": "000003e3000061e6",
+  "icon": "000003E3000061D6"
+ },
+ {
+  "description": "该单位的攻击可对<hyperlink>筑垒</hyperlink>障碍造成伤害",
+  "name": "破障者",
+  "slug": "000003870000001b",
+  "icon": "0000038700000022"
+ },
+ {
+  "description": "不遵循特定战斗风格的强大单位<br></br>所有神话单位拥有失控免疫",
+  "name": "神话单位",
+  "slug": "000003e300004e9f",
+  "icon": "000003E300004EA0"
+ },
+ {
+  "description": "此单位的最大<hyperlink><hp></hp>生命值</hyperlink>会额外增加10",
+  "name": "+10<hp></hp>",
+  "slug": "0000048b00000c6e",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "此单位的最大<defense></defense><hyperlink>防御</hyperlink>额外获得1",
+  "name": "+1<defense></defense>",
+  "slug": "0000048b00000c7a",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "此单位的最大<resistance></resistance><hyperlink>抗性</hyperlink>额外获得1",
+  "name": "+1<resistance></resistance>",
+  "slug": "0000048b00000c79",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "单位获得杀戮之势",
+  "name": "冠军勋章：杀戮之势",
+  "slug": "000003e300006288",
+  "icon": "000003E30000627B"
+ },
+ {
+  "description": "此单位的攻击会造成额外10%伤害",
+  "name": "+10%伤害",
+  "slug": "0000048b00000c74",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "此单位的最大<defense></defense><hyperlink>防御</hyperlink>额外获得1",
+  "name": "+1<defense></defense>",
+  "slug": "0000048b00000c7b",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "description": "此单位的最大<resistance></resistance><hyperlink>抗性</hyperlink>额外获得1",
+  "name": "+1<resistance></resistance>",
+  "slug": "0000048b00000c7d",
+  "icon": "0000048B00000C78"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加一项随机<hyperlink>负面状态效果</hyperlink>",
+    "name": "仙灵诡计",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_000004E0000000C1",
+  "damage": "11<damagelightning></damagelightning> 11<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [],
+  "description": "指定单位：<bulletlist><bullet>承受伤害</bullet><bullet>获得癫狂与仙灵烙印，持续至战斗结束</bullet></bulletlist><br></br>无法影响英雄、仙灵或城战器具单位",
+  "name": "扭曲烙印",
+  "slug": "twisted_brand_ability_000004E0000000C1",
+  "damage": "18<damagelightning></damagelightning> 18<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "冷却：3<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003D83"
+ },
+ {
+  "modifiers": [],
+  "description": "在4框格长、3框格宽的线形区域内：<bulletlist><bullet>单位承受伤害</bullet><bullet>单位获得3层瓦解抗性</bullet><bullet>创造<hyperlink>迷雾</hyperlink></bullet></bulletlist>",
+  "name": "撕裂迷雾",
+  "slug": "rending_mist_ability_000004E0000000C1",
+  "damage": "22<damagelightning></damagelightning> 22<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "冷却：3<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003D8E"
+ },
+ {
+  "description": "该仙灵单位拥有：<bulletlist><bullet>+4<defensespirit></defensespirit><hyperlink>精神防护</hyperlink></bullet><bullet>-4<defenseblight></defenseblight><hyperlink>疫病防护</hyperlink></bullet><bullet>仙灵指引</bullet><bullet>无视：<bulletlist></bullet><bullet>迷雾引发的视野惩罚</bullet><bullet>绕身迷雾引发的<hyperlink><accuracy></accuracy>精度</hyperlink>惩罚</bullet></bulletlist></bulletlist>",
+  "name": "仙灵",
+  "slug": "000003fe0000001c",
+  "icon": "000003FE0000001D"
+ },
+ {
+  "description": "此单位的回合结束时，如果此单位处于受到阻碍或身处<hyperlink>迷雾</hyperlink>云中，则获得一个随机<hyperlink>正面状态效果</hyperlink>",
+  "name": "仙灵指引",
+  "slug": "0000049700000533",
+  "icon": "0000049700000534"
+ },
+ {
+  "description": "该恶魔单位拥有：<bulletlist><bullet>+2<defensefire></defensefire><hyperlink>火焰防护</hyperlink></bullet><bullet>-4<defensefrost></defensefrost><hyperlink>寒霜防护</hyperlink></bullet><bullet>-4<defensespirit></defensespirit><hyperlink>精神防护</hyperlink></bullet><bullet>+15%<hyperlink><crit></crit>暴击概率</hyperlink></bullet><bullet>荒原行进</bullet><bullet>熔岩漫步</bullet></bulletlist>",
+  "name": "地狱恶魔",
+  "slug": "000003fe000000c2",
+  "icon": "000003FE000000C3"
+ },
+ {
+  "description": "单位不会因士气低落而溃逃",
+  "name": "无所畏惧",
+  "slug": "000003e3000065d9",
+  "icon": "000003E3000065DD"
+ },
+ {
+  "description": "允许单位花费6以穿越熔岩",
+  "name": "熔岩漫步",
+  "slug": "000004970000191a",
+  "icon": "000004970000191C"
+ },
+ {
+  "description": "加入围攻军队时，该单位贡献+1<siegehealthdamage></siegehealthdamage><hyperlink>城防破坏</hyperlink>",
+  "name": "破城者",
+  "slug": "000003fe000008c4",
+  "icon": "000003FE000008C5"
+ },
+ {
+  "description": "通过焦土地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5<br></br>通过裂隙地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由12变更为8",
+  "name": "荒原行进",
+  "slug": "000003e3000061e7",
+  "icon": "000003E3000061E8"
+ },
+ {
+  "description": "此单位死亡时，2框格范围内的单位：<bulletlist><bullet>承受15点<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink>和15点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink>，对友方单位减半</bullet><bullet>获得一个随机负面状态效果</bullet></bulletlist>",
+  "name": "闪光爆炸",
+  "slug": "0000049700003d7b",
+  "icon": "0000049700003D7C"
+ },
+ {
+  "description": "该单位处于飞行状态：<bulletlist><bullet>+2视野范围</bullet><bullet>能够以6移动消耗穿越任意地形</bullet><bullet>需要航海术才能穿越水域框格</bullet><bullet>在战斗中能够安全地穿越大部分其他单位和障碍</bullet></bulletlist>",
+  "name": "飞行",
+  "slug": "000003eb0000071b",
+  "icon": "00000357000001A5"
+ },
+ {
+  "description": "该单位是召唤单位或来自另一个维度，需要法力维持",
+  "name": "魔法起源",
+  "slug": "000003e500001adb",
+  "icon": "0000049300001440"
+ },
+ {
+  "damage": "<xpCol>2<damagefire></damagefire></xpCol>",
+  "description": "",
+  "name": "<xpCol>火焰防护</xpCol>",
+  "slug": "Fire_resistance_2"
+ },
+ {
+  "damage": "<fireCol>4<damageblight></damageblight></fireCol>",
+  "description": "",
+  "name": "<fireCol>疫病弱势</fireCol>",
+  "slug": "Blight_weakness_4"
+ },
+ {
+  "damage": "<fireCol>4<damagefrost></damagefrost></fireCol>",
+  "description": "",
+  "name": "<fireCol>寒霜弱势</fireCol>",
+  "slug": "Frost_weakness_4"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "目标每有一层绕身迷雾，+2点<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink>与+2点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink>",
+    "name": "迷雾屠戮者",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_000004E0000000B4",
+  "damage": "11<damageblight></damageblight> 11<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [],
+  "description": "传送向指定敌方并造成伤害，然后在目标及其周围扩散<hyperlink>迷雾</hyperlink>",
+  "name": "迷雾冲刺",
+  "slug": "misty_lunge_ability_000004E0000000B4",
+  "damage": "22<damageblight></damageblight> 22<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>传送</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>移动</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003DB1"
+ },
+ {
+  "modifiers": [],
+  "description": "2框格范围内的敌人：<bulletlist><bullet>承受伤害</bullet><bullet>若目标拥有绕身迷雾：<bulletlist></bullet><bullet>额外承受15点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有90%的基础概率陷入昏厥，持续1个<turn></turn>回合</bullet></bulletlist>",
+  "name": "痛苦哀嚎",
+  "slug": "pained_cry_ability_000004E0000000B4",
+  "damage": "15<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "0",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003DB8"
+ },
+ {
+  "description": "该单位可以摧毁非<hyperlink>筑垒</hyperlink>障碍",
+  "name": "巨头主宰",
+  "slug": "0000038700001864",
+  "icon": "000003E100001678"
+ },
+ {
+  "description": "攻击对<hyperlink>巫师国王</hyperlink>和战斗法师单位造成额外+40%伤害",
+  "name": "法师杀手",
+  "slug": "00000497000041a6",
+  "icon": "00000497000041A8"
+ },
+ {
+  "description": "回合结束时，在单位所在框格及相邻框格创造一团<hyperlink>迷雾</hyperlink>云雾",
+  "name": "迷雾尾迹",
+  "slug": "0000049700003dbf",
+  "icon": "0000049700003DC0"
+ },
+ {
+  "description": "此单位可以在陆地框格上移动",
+  "name": "陆地移动",
+  "slug": "0000049300000402",
+  "icon": "00000357000001AB"
+ },
+ {
+  "damage": "<xpCol>4<damagespirit></damagespirit></xpCol>",
+  "description": "",
+  "name": "<xpCol>精神防护</xpCol>",
+  "slug": "Spirit_resistance_4"
+ },
+ {
+  "modifiers": [
+   {
     "description": "有60%的基础概率使目标的所有<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>枯竭，持续2<turn></turn>回合",
     "name": "扰乱",
     "count": 1
@@ -65,18 +472,6 @@
   "icon": "00000497000037D7"
  },
  {
-  "description": "该单位会结束其回合并进入防御模式。该单位：<bulletlist><bullet>将其<hyperlink>控制区</hyperlink>扩展至所有邻近框格</bullet><bullet>+2<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet><bullet>免疫<hyperlink><flank></flank>侧袭</hyperlink></bullet></bulletlist>",
-  "name": "防御模式",
-  "slug": "0000034500000469",
-  "icon": "000003450000049D"
- },
- {
-  "description": "免疫让你的单位失控的效果，如狂战与受支配<br></br>同时赋予免疫<hyperlink>被俘</hyperlink>",
-  "name": "失控免疫",
-  "slug": "0000045e00000580",
-  "icon": "0000048B00000057"
- },
- {
   "description": "这种法师擅长远程进攻和削弱敌人<bulletlist><bullet>他们的<hyperlink><accuracy></accuracy>精度</hyperlink>受到<hyperlink>视野</hyperlink>的影响</bullet><bullet>当他们<hyperlink>陷入近战</hyperlink>时，无法使用主要<hyperlink>魔法</hyperlink>攻击</bullet></bulletlist>",
   "name": "战斗法师单位",
   "slug": "000003e300004c86",
@@ -101,12 +496,6 @@
   "icon": "000003E300004815"
  },
  {
-  "description": "此单位可以在陆地框格上移动",
-  "name": "陆地移动",
-  "slug": "0000049300000402",
-  "icon": "00000357000001AB"
- },
- {
   "damage": "<xpCol>2<damagephysical></damagephysical></xpCol>",
   "description": "",
   "name": "<xpCol>物理防护</xpCol>",
@@ -119,46 +508,10 @@
   "slug": "Spirit_weakness_4"
  },
  {
-  "description": "此单位的最大<hyperlink><hp></hp>生命值</hyperlink>会额外增加10",
-  "name": "+10<hp></hp>",
-  "slug": "0000048b00000c6e",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "此单位的最大<defense></defense><hyperlink>防御</hyperlink>额外获得1",
-  "name": "+1<defense></defense>",
-  "slug": "0000048b00000c7a",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "此单位的最大<resistance></resistance><hyperlink>抗性</hyperlink>额外获得1",
-  "name": "+1<resistance></resistance>",
-  "slug": "0000048b00000c79",
-  "icon": "0000048B00000C78"
- },
- {
   "description": "法力汲取：<bulletlist><bullet>基础伤害提升至60<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>扰乱与法力饥渴的概率提升至120%</bullet></bulletlist>",
   "name": "冠军法力抽汲",
   "slug": "00000497000037db",
   "icon": "000003E30000627B"
- },
- {
-  "description": "此单位的攻击会造成额外10%伤害",
-  "name": "+10%伤害",
-  "slug": "0000048b00000c74",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "此单位的最大<defense></defense><hyperlink>防御</hyperlink>额外获得1",
-  "name": "+1<defense></defense>",
-  "slug": "0000048b00000c7b",
-  "icon": "0000048B00000C78"
- },
- {
-  "description": "此单位的最大<resistance></resistance><hyperlink>抗性</hyperlink>额外获得1",
-  "name": "+1<resistance></resistance>",
-  "slug": "0000048b00000c7d",
-  "icon": "0000048B00000C78"
  },
  {
   "modifiers": [
@@ -246,18 +599,6 @@
   "icon": "0000049700003813"
  },
  {
-  "description": "大型单位：<bulletlist><bullet>被<hyperlink>远程</hyperlink>与<hyperlink>魔法</hyperlink>攻击命中的概率增加20%</bullet><bullet>免疫大部分位移效果</bullet><bullet>拥有破障者</bullet></bulletlist>",
-  "name": "大型目标",
-  "slug": "000003450000052c",
-  "icon": "000003450000049B"
- },
- {
-  "description": "该单位可以摧毁非<hyperlink>筑垒</hyperlink>障碍",
-  "name": "巨头主宰",
-  "slug": "0000038700001864",
-  "icon": "000003E100001678"
- },
- {
   "description": "巨龙单位拥有：<bulletlist><bullet>龙之怒</bullet></bulletlist>",
   "name": "巨龙",
   "slug": "000003e30000426c",
@@ -276,12 +617,6 @@
   "icon": "0000041B000008F3"
  },
  {
-  "description": "单位不会因士气低落而溃逃",
-  "name": "无所畏惧",
-  "slug": "000003e3000065d9",
-  "icon": "000003E3000065DD"
- },
- {
   "description": "该单位免疫任何令其强行移动的效果",
   "name": "无法取代",
   "slug": "000004a600000b7a",
@@ -294,30 +629,6 @@
   "icon": "000003E300005E32"
  },
  {
-  "description": "加入围攻军队时，该单位贡献+1<siegehealthdamage></siegehealthdamage><hyperlink>城防破坏</hyperlink>",
-  "name": "破城者",
-  "slug": "000003fe000008c4",
-  "icon": "000003FE000008C5"
- },
- {
-  "description": "该单位的攻击可对<hyperlink>筑垒</hyperlink>障碍造成伤害",
-  "name": "破障者",
-  "slug": "000003870000001b",
-  "icon": "0000038700000022"
- },
- {
-  "description": "不遵循特定战斗风格的强大单位<br></br>所有神话单位拥有失控免疫",
-  "name": "神话单位",
-  "slug": "000003e300004e9f",
-  "icon": "000003E300004EA0"
- },
- {
-  "description": "该单位处于飞行状态：<bulletlist><bullet>+2视野范围</bullet><bullet>能够以6移动消耗穿越任意地形</bullet><bullet>需要航海术才能穿越水域框格</bullet><bullet>在战斗中能够安全地穿越大部分其他单位和障碍</bullet></bulletlist>",
-  "name": "飞行",
-  "slug": "000003eb0000071b",
-  "icon": "00000357000001A5"
- },
- {
   "description": "基础<hyperlink>单位维持费</hyperlink>增加50%",
   "name": "高维护",
   "slug": "0000045e0000063d",
@@ -328,12 +639,6 @@
   "name": "龙之怒",
   "slug": "000003e300004e71",
   "icon": "000003E300004E72"
- },
- {
-  "description": "单位获得杀戮之势",
-  "name": "冠军勋章：杀戮之势",
-  "slug": "000003e300006288",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [
@@ -424,18 +729,6 @@
   "name": "防御模式（盾墙）",
   "slug": "000003e300004c8f",
   "icon": "000003E300004C94"
- },
- {
-  "description": "基础<hyperlink>单位维持费</hyperlink>减少25%",
-  "name": "低维护",
-  "slug": "0000045e00000664",
-  "icon": "0000045E00000665"
- },
- {
-  "description": "动物单位<br></br><br></br>归属于<hyperlink>玩家</hyperlink>与<minorcity></minorcity><hyperlink>自由城邦</hyperlink>的单位获得战斗训练，增强它们在战场上发挥的作用",
-  "name": "动物",
-  "slug": "000003fe00000018",
-  "icon": "000003FE00000019"
  },
  {
   "description": "单位对抗<hyperlink>远程</hyperlink>攻击时+3<defense></defense><hyperlink>防御</hyperlink>",
@@ -536,6 +829,246 @@
   "icon": "000003E30000627B"
  },
  {
+  "modifiers": [],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_000004D000000584",
+  "damage": "10<damagefire></damagefire> 10<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [],
+  "description": "<bulletlist><bullet>指定敌方单位承受伤害</bullet><bullet>然后目标周围2框格范围内的友方单位：<bulletlist></bullet><bullet>治疗15点<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>移除2个负面状态效果</bullet></bulletlist></bulletlist>",
+  "name": "太阳与生命",
+  "slug": "sun_and_life_ability_000004D000000584",
+  "damage": "22<damagefire></damagefire> 22<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003C7F"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：0<turn></turn>"
+   }
+  ],
+  "description": "指定敌方单位有90%的基础概率获得以下1项效果：<bulletlist><bullet>昏厥，持续1<turn></turn>回合</bullet><bullet>致盲，持续1<turn></turn>回合</bullet><bullet>3层燃烧，持续3<turn></turn>回合</bullet><bullet>2层瓦解防御与2层瓦解抗性，持续3<turn></turn>回合</bullet>",
+  "name": "光明谜题",
+  "slug": "riddle_of_light_ability_000004D000000584",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "6",
+  "icon": "0000049700003C6E"
+ },
+ {
+  "description": "若该单位的回合开始时未拥有恩典，则获得恩典",
+  "name": "内蕴恩典",
+  "slug": "0000048b00000258",
+  "icon": "0000048B00000259"
+ },
+ {
+  "damage": "<xpCol>4<damagefire></damagefire></xpCol>",
+  "description": "",
+  "name": "<xpCol>火焰防护</xpCol>",
+  "slug": "Fire_resistance_4"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "施加燃烧，持续3<turn></turn>回合",
+    "name": "燃烧",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_000004D000000579",
+  "damage": "14<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [],
+  "description": "<bulletlist><bullet>指定敌方单位承受伤害</bullet><bullet>目标每有一层燃烧，伤害提高10点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet></bulletlist>",
+  "name": "自燃",
+  "slug": "combust_ability_000004D000000579",
+  "damage": "10<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003C60"
+ },
+ {
+  "description": "当攻击者攻击命中近战距离内的目标时，攻击单位受到5<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>",
+  "name": "复仇火焰",
+  "slug": "0000041b00000ab8",
+  "icon": "0000041B00000AB9"
+ },
+ {
+  "description": "该单位处于漂浮状态：<bulletlist><bullet>能够以6移动消耗穿越除山脉外的任意地形，穿越山脉时消耗8</bullet><bullet>需要航海术才能穿越水域</bullet></bulletlist>",
+  "name": "漂浮",
+  "slug": "000003eb00000724",
+  "icon": "0000035700000602"
+ },
+ {
+  "description": "单位在<hyperlink>陷入近战</hyperlink>期间可以使用<hyperlink>魔法</hyperlink>与<hyperlink>支援</hyperlink>技能",
+  "name": "近战法师",
+  "slug": "000003e300005582",
+  "icon": "000003E300005580"
+ },
+ {
+  "description": "使用<hyperlink>魔法</hyperlink>攻击的近战攻击手，适合对付<resistance></resistance><hyperlink>抗性</hyperlink>较低的敌人<br></br>魔法战士拥有：<bulletlist><bullet>近战法师</bullet></bulletlist>",
+  "name": "魔法战士单位",
+  "slug": "0000049700003951",
+  "icon": "0000049700003952"
+ },
+ {
+  "description": "单位获得：<bulletlist><bullet>+10%伤害</bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "name": "冠军勋章：奥术师",
+  "slug": "0000049700003954",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有30%的基础概率施加定身，持续1<turn></turn>回合",
+    "name": "定身",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌方单位发射实弹",
+  "name": "喷射蛛网",
+  "slug": "shoot_bow_ability_000004D000000552",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "description": "通过森林地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由8变更为6",
+  "name": "森林行进",
+  "slug": "0000049300000407",
+  "icon": "00000387000003C6"
+ },
+ {
+  "description": "通过洞底地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5<br></br>通过菌毯地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5<br></br>通过蘑菇森林地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由8变更为6",
+  "name": "洞穴行进",
+  "slug": "000003e100001f7c",
+  "icon": "000003E3000061D5"
+ },
+ {
+  "description": "单位免疫定身",
+  "name": "状态效果免疫：无法移动",
+  "slug": "0000048b000005df",
+  "icon": "0000048B000005DE"
+ },
+ {
+  "description": "单位免疫缓速",
+  "name": "状态效果免疫：缓速",
+  "slug": "0000048b000005dd",
+  "icon": "0000048B000005DB"
+ },
+ {
+  "description": "该单位在战斗中无视<hyperlink>缓速</hyperlink>地形效果",
+  "name": "矫健",
+  "slug": "000003fe0000007f",
+  "icon": "000003E3000059BA"
+ },
+ {
+  "description": "一个具有以下特性的蜘蛛单位：<bulletlist><bullet>矫健</bullet><bullet>免疫：<bulletlist></bullet><bullet>缓速</bullet><bullet>定身</bullet></bulletlist></bulletlist>",
+  "name": "蜘蛛",
+  "slug": "000004150000025b",
+  "icon": "000004150000025C"
+ },
+ {
+  "description": "该进攻性单位可以从远处攻击目标，但自身相对脆弱<bulletlist><bullet>其<hyperlink><accuracy></accuracy>精度</hyperlink>受<hyperlink>视野</hyperlink>影响</bullet><bullet>当<hyperlink>陷入近战</hyperlink>时无法使用主要远程攻击手段</bullet></bulletlist>",
+  "name": "远程单位",
+  "slug": "0000039f000016f1",
+  "icon": "0000039F000016E8"
+ },
+ {
+  "description": "此单位达到传奇品级时就会转化为更强大的单位。进化单位不能以传奇品级招募",
+  "name": "进化",
+  "slug": "000003e300006e4a",
+  "icon": "000003E300004A1E"
+ },
+ {
+  "description": "<hyperlink>远程</hyperlink>攻击+1<hyperlink><range></range>射程</hyperlink>",
+  "name": "冠军勋章：鹰眼",
+  "slug": "000003e300006289",
+  "icon": "000003E30000627B"
+ },
+ {
   "modifiers": [
    {
     "description": "有60%的基础概率施加失血，持续3<turn></turn>回合",
@@ -599,12 +1132,6 @@
   "icon": "0000049700001685"
  },
  {
-  "description": "该单位是召唤单位或来自另一个维度，需要法力维持",
-  "name": "魔法起源",
-  "slug": "000003e500001adb",
-  "icon": "0000049300001440"
- },
- {
   "damage": "<xpCol>2<damageblight></damageblight></xpCol>",
   "description": "",
   "name": "<xpCol>疫病防护</xpCol>",
@@ -659,18 +1186,6 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "4",
   "icon": "000003BD000020CE"
- },
- {
-  "description": "该进攻性单位可以从远处攻击目标，但自身相对脆弱<bulletlist><bullet>其<hyperlink><accuracy></accuracy>精度</hyperlink>受<hyperlink>视野</hyperlink>影响</bullet><bullet>当<hyperlink>陷入近战</hyperlink>时无法使用主要远程攻击手段</bullet></bulletlist>",
-  "name": "远程单位",
-  "slug": "0000039f000016f1",
-  "icon": "0000039F000016E8"
- },
- {
-  "description": "<hyperlink>远程</hyperlink>攻击+1<hyperlink><range></range>射程</hyperlink>",
-  "name": "冠军勋章：鹰眼",
-  "slug": "000003e300006289",
-  "icon": "000003E30000627B"
  },
  {
   "notes": [],
@@ -830,12 +1345,6 @@
   "actionPoints": "<freeaction></freeaction>",
   "range": "6",
   "icon": "000003E3000045B1"
- },
- {
-  "description": "该单位处于漂浮状态：<bulletlist><bullet>能够以6移动消耗穿越除山脉外的任意地形，穿越山脉时消耗8</bullet><bullet>需要航海术才能穿越水域</bullet></bulletlist>",
-  "name": "漂浮",
-  "slug": "000003eb00000724",
-  "icon": "0000035700000602"
  },
  {
   "description": "此单位免疫士气类型的属性效果",
@@ -1038,6 +1547,119 @@
   "name": "骑兵",
   "slug": "0000038400000371",
   "icon": "0000038400000372"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<resistance></resistance><hyperlink>抗性</hyperlink>",
+    "name": "破击",
+    "count": 1
+   }
+  ],
+  "description": "对目标造成30点随机类型的伤害",
+  "name": "宇宙闪电",
+  "slug": "magic_bolts_ability_000004C500000F71",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "description": "施法者移动至指定框格",
+  "name": "大型相位传送",
+  "slug": "greater_phase_ability_000004C500000F71",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>移动</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>传送</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "6",
+  "icon": "000003E3000045B1"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<resistance></resistance><hyperlink>抗性</hyperlink>",
+    "name": "破击",
+    "count": 1
+   }
+  ],
+  "description": "8框格长、1框格宽的直线上的单位受到伤害。此技能的伤害根据其控制者的理念点数决定：<bulletlist><bullet>每点<arcana></arcana><hyperlink>星辰理念</hyperlink>+2<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink></bullet><bullet>每点<chaos></chaos><hyperlink>混沌理念</hyperlink>+2<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>每点<matter></matter><hyperlink>物质理念</hyperlink>+2<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>每点<nature></nature><hyperlink>自然理念</hyperlink>+2<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink></bullet><bullet>每点<order></order><hyperlink>秩序理念</hyperlink>+2<damageSpirit></damageSpirit><hyperlink>精神伤害</hyperlink></bullet><bullet>每点<shadow></shadow><hyperlink>暗影理念</hyperlink>+2<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet></bulletlist>",
+  "name": "宇宙光束",
+  "slug": "cosmos_beam_ability_000004C500000F71",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "冷却：3<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003CC8"
+ },
+ {
+  "description": "该元素单位免疫失血",
+  "name": "元素",
+  "slug": "000003e300004968",
+  "icon": "000003E300004969"
+ },
+ {
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d31",
+  "icon": "0000049700003D54"
+ },
+ {
+  "description": "对于每项达到或超过5的理念，获得对应的被动技能：<bulletlist><bullet>宇宙显现：星辰</bullet><bullet>宇宙显现：混沌</bullet><bullet>宇宙显现：物质</bullet><bullet>宇宙显现：自然</bullet><bullet>宇宙显现：秩序</bullet><bullet>宇宙显现：暗影</bullet></bulletlist>",
+  "name": "宇宙显现",
+  "slug": "0000049700003cec",
+  "icon": "0000049700003CF1"
+ },
+ {
+  "damage": "<xpCol>2<damagelightning></damagelightning></xpCol>",
+  "description": "",
+  "name": "<xpCol>闪电防护</xpCol>",
+  "slug": "Shock_resistance_2"
+ },
+ {
+  "damage": "<xpCol>2<damagespirit></damagespirit></xpCol>",
+  "description": "",
+  "name": "<xpCol>精神防护</xpCol>",
+  "slug": "Spirit_resistance_2"
  },
  {
   "modifiers": [
@@ -1561,12 +2183,6 @@
   "icon": "000003E600000493"
  },
  {
-  "description": "该单位在战斗中无视<hyperlink>缓速</hyperlink>地形效果",
-  "name": "矫健",
-  "slug": "000003fe0000007f",
-  "icon": "000003E3000059BA"
- },
- {
   "description": "单位+20%<hyperlink><crit></crit>暴击概率</hyperlink>",
   "name": "冠军勋章：暴击",
   "slug": "000003e300006284",
@@ -1865,8 +2481,8 @@
   "icon": "00000415000001D2"
  },
  {
-  "description": "单位+1<hyperlink>反击</hyperlink>",
-  "name": "警惕",
+  "description": "单位+1点<hyperlink>反击</hyperlink>",
+  "name": "警戒",
   "slug": "000003e100001533",
   "icon": "000003E3000063F6"
  },
@@ -1904,10 +2520,10 @@
  },
  {
   "modifiers": [],
-  "description": "目标单位：<bulletlist><bullet>承受伤害</bullet><bullet>目标单位每比V低一级，伤害增加10<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>对目标造成伤害的50%将转化为自己的生命值</bullet><bullet>若此技能击杀目标，则重置颁赐使徒之血的冷却时间</bullet></bulletlist>",
-  "name": "劣汰虹吸",
-  "slug": "siphon_lesser_ability_000004C500000B10",
-  "damage": "33<damagephysical></damagephysical> ",
+  "description": "目标单位：<bulletlist><bullet>承受伤害</bullet><bullet>每层失血增加10点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink>伤害</bullet><bullet>对目标造成伤害的50%将转化为自己的生命值</bullet></bulletlist>",
+  "name": "鲜血虹吸",
+  "slug": "siphon_blood_ability_000004C500000B10",
+  "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>魔法</hyperlink>"
@@ -1932,7 +2548,7 @@
     "note": "开始冷却"
    }
   ],
-  "description": "目标友方III阶或更高单位获得使徒之血，持续至战斗结束<br></br><br></br>无法影响<hyperlink>英雄</hyperlink>或其他鲜血使徒",
+  "description": "目标友方III阶或更高单位获得使徒之血，持续至战斗结束。<br></br><bulletlist><bullet>若此技能击杀单位，则重置冷却时间</bullet><bullet>无法影响<hyperlink>英雄</hyperlink>或其他鲜血使徒</bullet></bulletlist>",
   "name": "颁赐使徒之血",
   "slug": "gift_blood_of_the_exarch_ability_000004C500000B10",
   "damage": "",
@@ -1948,7 +2564,7 @@
  },
  {
   "modifiers": [],
-  "description": "指定单位受到伤害，并有90%的基础概率被拉至邻近的框格",
+  "description": "目标单位：<bulletlist><bullet>承受伤害</bullet><bullet>有90%的基础概率被拉至邻近的框格<bulletlist></bullet><bullet>对失血目标的概率提升至120%</bullet></bulletlist></bulletlist>",
   "name": "鲜血牵引",
   "slug": "blood_pull_ability_000004C500000B10",
   "damage": "11<damagephysical></damagephysical> ",
@@ -2289,22 +2905,10 @@
   "icon": "000004C00000052B"
  },
  {
-  "description": "此单位：<bulletlist><bullet>可以进入水域框格而不会受到移动力惩罚或受到登船</bullet><bullet>在河流与沼泽上移动加快</bullet></bulletlist>",
-  "name": "两栖",
-  "slug": "000003eb0000071f",
-  "icon": "0000039F000028E0"
- },
- {
   "description": "该单位可直接撞毁非<hyperlink>筑垒</hyperlink>障碍且无需缓速",
   "name": "无前主宰",
   "slug": "0000039c0000061d",
   "icon": "000003E300005B1F"
- },
- {
-  "description": "允许单位花费6以穿越熔岩",
-  "name": "熔岩漫步",
-  "slug": "000004970000191a",
-  "icon": "000004970000191C"
  },
  {
   "modifiers": [
@@ -2399,12 +3003,6 @@
   "icon": "000004C0000004F9"
  },
  {
-  "description": "该元素单位免疫失血",
-  "name": "元素",
-  "slug": "000003e300004968",
-  "icon": "000003E300004969"
- },
- {
   "description": "该单位会在击杀敌人时为自身与盟友提供双倍士气加成",
   "name": "振奋杀手",
   "slug": "000003eb000004c4",
@@ -2423,28 +3021,10 @@
   "icon": "000003E3000059B0"
  },
  {
-  "damage": "<xpCol>2<damagefire></damagefire></xpCol>",
-  "description": "",
-  "name": "<xpCol>火焰防护</xpCol>",
-  "slug": "Fire_resistance_2"
- },
- {
   "damage": "<xpCol>6<damagespirit></damagespirit></xpCol>",
   "description": "",
   "name": "<xpCol>精神防护</xpCol>",
   "slug": "Spirit_resistance_6"
- },
- {
-  "damage": "<fireCol>4<damageblight></damageblight></fireCol>",
-  "description": "",
-  "name": "<fireCol>疫病弱势</fireCol>",
-  "slug": "Blight_weakness_4"
- },
- {
-  "damage": "<fireCol>4<damagefrost></damagefrost></fireCol>",
-  "description": "",
-  "name": "<fireCol>寒霜弱势</fireCol>",
-  "slug": "Frost_weakness_4"
  },
  {
   "description": "治疗术：<bulletlist><bullet>额外治疗30<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist>",
@@ -2509,12 +3089,6 @@
   "icon": "000004C0000004ED"
  },
  {
-  "description": "此单位达到传奇等阶时就会转化为更强大的单位。进化单位不能以传奇等阶招募",
-  "name": "进化",
-  "slug": "000003e300006e4a",
-  "icon": "000003E300004A1E"
- },
- {
   "description": "次级治疗术：<bulletlist><bullet>额外治疗20<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist>",
   "name": "冠军次级治疗术",
   "slug": "0000048b00000c5e",
@@ -2576,12 +3150,6 @@
    }
   ],
   "icon": "000003E30000448F"
- },
- {
-  "damage": "<xpCol>2<damagespirit></damagespirit></xpCol>",
-  "description": "",
-  "name": "<xpCol>精神防护</xpCol>",
-  "slug": "Spirit_resistance_2"
  },
  {
   "description": "净化爆破：<bulletlist><bullet>获得+5<damageSpirit></damageSpirit><hyperlink>精神伤害</hyperlink></bullet><bullet>邻近的单位移除所有<hyperlink>正面状态效果</hyperlink></bullet></bulletlist>",
@@ -2686,23 +3254,27 @@
   "icon": "0000048D00000851"
  },
  {
-  "notes": [
-   {
-    "note": "冷却：2<turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "此单位进入防御模式，并且：<bulletlist><bullet>所有邻近敌方单位遭受<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>伤害</bullet><bullet>所有邻近敌方单位有90%的概率陷入燃烧</bullet><bullet>在此框格和邻近框格创造<hyperlink>净化烈焰</hyperlink>，持续3<turn></turn>回合</bullet></bulletlist>",
   "name": "薪火斗篷",
   "slug": "pyre_cloak_ability_000004B300000008",
-  "damage": "20<damagefire></damagefire> ",
+  "damage": "20<damagefire></damagefire> 2<damagespirit></damagespirit> ",
   "requisites": [
    {
     "requisite": "<hyperlink>减益</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
    }
   ],
   "accuracy": "始终命中",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
   "icon": "0000048D00000864"
  },
  {
@@ -2710,12 +3282,6 @@
   "name": "状态效果免疫：燃烧",
   "slug": "0000041b00000cbc",
   "icon": "0000049700000866"
- },
- {
-  "damage": "<xpCol>4<damagefire></damagefire></xpCol>",
-  "description": "",
-  "name": "<xpCol>火焰防护</xpCol>",
-  "slug": "Fire_resistance_4"
  },
  {
   "modifiers": [
@@ -2863,28 +3429,10 @@
   "icon": "00000497000006C5"
  },
  {
-  "description": "该仙灵单位拥有：<bulletlist><bullet>+4<defensespirit></defensespirit><hyperlink>精神防护</hyperlink></bullet><bullet>-4<defenseblight></defenseblight><hyperlink>疫病防护</hyperlink></bullet><bullet>仙灵指引</bullet><bullet>无视：<bulletlist></bullet><bullet>迷雾引发的视野惩罚</bullet><bullet>绕身迷雾引发的<hyperlink><accuracy></accuracy>精度</hyperlink>惩罚</bullet></bulletlist></bulletlist>",
-  "name": "仙灵",
-  "slug": "000003fe0000001c",
-  "icon": "000003FE0000001D"
- },
- {
-  "description": "此单位的回合结束时，如果此单位处于受到阻碍或身处<hyperlink>迷雾</hyperlink>云中，则获得一个随机<hyperlink>正面状态效果</hyperlink>",
-  "name": "仙灵指引",
-  "slug": "0000049700000533",
-  "icon": "0000049700000534"
- },
- {
   "description": "此单位在战斗时，所有友方单位获得：<bulletlist><bullet>狂暴</bullet></bulletlist>",
   "name": "成长气场",
   "slug": "00000497000006c9",
   "icon": "000004930000074F"
- },
- {
-  "damage": "<xpCol>4<damagespirit></damagespirit></xpCol>",
-  "description": "",
-  "name": "<xpCol>精神防护</xpCol>",
-  "slug": "Spirit_resistance_4"
  },
  {
   "modifiers": [],
@@ -2912,7 +3460,7 @@
  {
   "modifiers": [],
   "description": "对指定敌人造成伤害，并有90%的基础概率施加一项随机<hyperlink>负面状态效果</hyperlink>",
-  "name": "仙灵戏法",
+  "name": "仙灵诡计",
   "slug": "fey_trick_ability_000004A20000002E",
   "damage": "12<damageblight></damageblight> 12<damagelightning></damagelightning> ",
   "requisites": [
@@ -2946,28 +3494,10 @@
   "icon": "000003E30000528F"
  },
  {
-  "description": "单位在<hyperlink>陷入近战</hyperlink>期间可以使用<hyperlink>魔法</hyperlink>与<hyperlink>支援</hyperlink>技能",
-  "name": "近战法师",
-  "slug": "000003e300005582",
-  "icon": "000003E300005580"
- },
- {
   "description": "回合结束时在单位的框格上制造一片<hyperlink>迷雾</hyperlink>云",
   "name": "迷雾之径",
   "slug": "00000497000007ca",
   "icon": "00000497000007CB"
- },
- {
-  "description": "使用<hyperlink>魔法</hyperlink>攻击的近战攻击手，适合对付<resistance></resistance><hyperlink>抗性</hyperlink>较低的敌人<br></br>魔法战士拥有：<bulletlist><bullet>近战法师</bullet></bulletlist>",
-  "name": "魔法战士单位",
-  "slug": "0000049700003951",
-  "icon": "0000049700003952"
- },
- {
-  "description": "单位获得：<bulletlist><bullet>+10%伤害</bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
-  "name": "冠军勋章：奥术师",
-  "slug": "0000049700003954",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [
@@ -2993,7 +3523,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -3154,6 +3684,548 @@
   "slug": "Spirit_weakness_2"
  },
  {
+  "modifiers": [],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_0000049700003C66",
+  "damage": "10<damagelightning></damagelightning> 10<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [],
+  "description": "<bulletlist><bullet>指定敌方单位承受伤害</bullet><bullet>然后目标周围2框格范围内的友方单位：<bulletlist></bullet><bullet>获得3点<hyperlink>闪避</hyperlink>，持续3<turn></turn>回合</bullet><bullet>移除2个负面状态效果</bullet></bulletlist></bulletlist>",
+  "name": "月亮与阴影",
+  "slug": "moon_and_shadow_ability_0000049700003C66",
+  "damage": "22<damagelightning></damagelightning> 22<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003C85"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：0<turn></turn>"
+   }
+  ],
+  "description": "指定敌方单位有90%的基础概率获得以下1项效果：<bulletlist><bullet>冻结，持续1<turn></turn>回合</bullet><bullet>癫狂，持续1<turn></turn>回合</bullet><bullet>3层电离，持续3<turn></turn>回合</bullet><bullet>2层不幸，持续3<turn></turn>回合</bullet>",
+  "name": "黑暗谜题",
+  "slug": "riddle_of_night_ability_0000049700003C66",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "6",
+  "icon": "0000049700003C75"
+ },
+ {
+  "damage": "<xpCol>4<damagelightning></damagelightning></xpCol>",
+  "description": "",
+  "name": "<xpCol>闪电防护</xpCol>",
+  "slug": "Shock_resistance_4"
+ },
+ {
+  "damage": "<xpCol>4<damagefrost></damagefrost></xpCol>",
+  "description": "",
+  "name": "<xpCol>寒霜防护</xpCol>",
+  "slug": "Frost_resistance_4"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加定身，持续1<turn></turn>回合",
+    "name": "定身",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌方单位发射实弹",
+  "name": "喷射蛛网",
+  "slug": "shoot_bow_ability_0000049700003C06",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD000020CE"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有90%的基础概率施加定身，持续1<turn></turn>回合",
+    "name": "定身",
+    "count": 1
+   }
+  ],
+  "description": "相邻单位承受伤害，然后传送到目标框格",
+  "name": "织网者避难所",
+  "slug": "weavers_retreat_ability_0000049700003C06",
+  "damage": "10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>移动</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>传送</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003C4D"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有90%的基础概率施加定身，持续1<turn></turn>回合",
+    "name": "定身",
+    "count": 1
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "织网冲击",
+  "slug": "magic_blast_(single)_ability_0000049700003BB8",
+  "damage": "12<damageblight></damageblight> 12<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
+  "description": "<bulletlist><bullet>指定友方单位：<bulletlist></bullet><bullet>治疗70点<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>移除其负面状态效果</bullet></bulletlist><bullet>然后，2框格内的一敌方单位：<bulletlist></bullet><bullet>承受15点<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink>和15点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有120%的基础概率陷入定身，持续1个<turn></turn>回合</bullet></bulletlist></bulletlist>",
+  "name": "织网输血",
+  "slug": "webbed_transfusion_ability_0000049700003BB8",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000049700003BBA"
+ },
+ {
+  "notes": [
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   },
+   {
+    "note": "每场战斗只能使用一次"
+   }
+  ],
+  "description": "指定已死亡的友方单位：<bulletlist><bullet>复活为一个<hyperlink>织网蜘蛛</hyperlink>或<hyperlink>猎人蜘蛛</hyperlink>单位</bullet><bullet>若为4阶或5阶，则改为复活为一个<hyperlink>织网蜘蛛女族长</hyperlink>或<hyperlink>猎人蜘蛛女族长</hyperlink>单位</bullet></bulletlist>",
+  "name": "蜘蛛重生",
+  "slug": "spider_rebirth_ability_0000049700003BB8",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700003BC4"
+ },
+ {
+  "description": "蜘蛛重生现在有2回合冷却时间",
+  "name": "冠军蜘蛛重生",
+  "slug": "0000049700004199",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加燃烧，持续3<turn></turn>回合",
+    "name": "燃烧",
+    "count": 1
+   },
+   {
+    "description": "有60%的基础概率施加中毒，持续3<turn></turn>回合",
+    "name": "中毒",
+    "count": 1
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "沼焰爆裂",
+  "slug": "magic_blast_(single)_ability_0000049700003B6F",
+  "damage": "7<damageblight></damageblight> 7<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
+  "description": "指定友方单位：<bulletlist><bullet>获得再生，持续3<turn></turn>回合</bullet><bullet>获得强化，持续3<turn></turn>回合</bullet><bullet>移除1个负面状态效果</bullet></bulletlist>",
+  "name": "晨光恩赐",
+  "slug": "morning_boon_ability_0000049700003B6F",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000049700003B7E"
+ },
+ {
+  "description": "晨光恩赐现在会额外指定2框格内的另一友方单位",
+  "name": "冠军晨光恩赐",
+  "slug": "0000049700003b82",
+  "icon": "000003E30000627B"
+ },
+ {
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "向指定敌人施放魔法箭",
+  "name": "月之闪电",
+  "slug": "magic_bolts_ability_0000049700003B6E",
+  "damage": "5<damagelightning></damagelightning> 5<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
+  "description": "指定敌方单位：<bulletlist><bullet>陷入致盲，持续1<turn></turn>回合</bullet><bullet>陷入缓速，持续2<turn></turn>回合</bullet></bulletlist>",
+  "name": "暮光灾厄",
+  "slug": "evening_bane_ability_0000049700003B6E",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000049700003B89"
+ },
+ {
+  "description": "暮光灾厄现在会额外指定2框格内的另一敌方单位",
+  "name": "冠军暮光灾厄",
+  "slug": "0000049700003b8c",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加燃烧，持续3<turn></turn>回合",
+    "name": "燃烧",
+    "count": 1
+   },
+   {
+    "description": "<hyperlink><flank></flank>侧袭</hyperlink>时单位+25%伤害",
+    "name": "侧袭者",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_0000049700003B0A",
+  "damage": "15<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "description": "指定非<hyperlink>英雄</hyperlink>敌方单位有90%的基础概率陷入刺激支配。若未成功，则目标改为：<bulletlist><bullet>承受20点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>获得2层燃烧，持续3个<turn></turn>回合</bullet></bulletlist><br></br>进入<hyperlink>防御模式</hyperlink>",
+  "name": "诱惑之吻",
+  "slug": "kiss_of_seduction_ability_0000049700003B0A",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700003B04"
+ },
+ {
+  "description": "非英雄、非魔法起源的邻近攻击者有30%的基础概率陷入分神",
+  "name": "欲望诅咒",
+  "slug": "0000049700003b0c",
+  "icon": "0000049700003B0D"
+ },
+ {
+  "notes": [],
+  "description": "指定敌方单位有120%的基础概率陷入受到嘲讽，持续2<turn></turn>回合",
+  "name": "嘲讽",
+  "slug": "orb_of_desire_taunt_unit_property_ability_0000049700003AFB",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "0000049700003AFE"
+ },
+ {
+  "description": "免疫<hyperlink><flank></flank>侧袭</hyperlink>",
+  "name": "全方位意识",
+  "slug": "0000038700001cfa",
+  "icon": "000003570000018A"
+ },
+ {
+  "description": "该塔楼单位：<bulletlist><bullet>拥有定身</bullet><bullet>免疫士气变化</bullet><bullet>无法受到<hyperlink><flank></flank>侧袭</hyperlink></bullet><bullet>自动使用其技能</bullet></bulletlist>",
+  "name": "塔楼",
+  "slug": "0000041b00001910",
+  "icon": "0000041B00001911"
+ },
+ {
+  "description": "此单位无法移动或使用<hyperlink>移动</hyperlink>技能",
+  "name": "定身",
+  "slug": "0000041b00000baf",
+  "icon": "000003BD00002D1B"
+ },
+ {
+  "description": "如果只剩下无生命友军，则无生命单位会被摧毁",
+  "name": "无生命",
+  "slug": "0000048d00000206",
+  "icon": "0000048D00000207"
+ },
+ {
+  "description": "受到的伤害以<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>反弹给攻击者",
+  "name": "火焰反射",
+  "slug": "0000049700003b01",
+  "icon": "0000049700003B02"
+ },
+ {
+  "description": "回合结束时，邻近的敌方单位：<bulletlist><bullet>承受4点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>有60%的基础概率陷入燃烧，持续3<turn></turn>回合</bullet></bulletlist>",
+  "name": "炽热光环",
+  "slug": "0000049700003ac8",
+  "icon": "0000049700003ACA"
+ },
+ {
+  "description": "单位免疫灵魂绑定，且无法被死灵法术与技能转化为<hyperlink>衰朽僵尸</hyperlink>",
+  "name": "状态效果免疫：灵魂绑定",
+  "slug": "0000048b00000eb6",
+  "icon": "0000048B00000EB8"
+ },
+ {
+  "modifiers": [],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_0000049700003A44",
+  "damage": "11<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加燃烧，持续3<turn></turn>回合",
+    "name": "燃烧",
+    "count": 1
+   }
+  ],
+  "description": "指定敌方单位承受伤害",
+  "name": "反刍",
+  "slug": "regurgitate_ability_0000049700003A44",
+  "damage": "18<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   },
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003A49"
+ },
+ {
+  "description": "<bulletlist><bullet>获得永久性的饱食层数：<bulletlist></bullet><bullet>战斗开始时</bullet><bullet>击杀敌方单位时</bullet></bulletlist><bullet>当达到5层饱食时，移除它们，且2框格范围内的所有友方单位：<bulletlist></bullet><bullet>治疗5点<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>若它们拥有恶魔饥饿，则获得饱食</bullet></bulletlist></bulletlist>",
+  "name": "小鬼的饥饿",
+  "slug": "0000049700003a7b",
+  "icon": "0000049700003A7C"
+ },
+ {
+  "notes": [],
+  "description": "指定友方单位获得：<bulletlist><bullet>2层恩典</bullet><bullet>2层保护状态，持续3<turn></turn>回合</bullet></bulletlist>",
+  "name": "魔法护盾",
+  "slug": "magic_shield_ability_00000497000039B9",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "00000497000039BB"
+ },
+ {
   "modifiers": [
    {
     "description": "有90%的基础概率使目标的所有<caststrategic></caststrategic><hyperlink>单位附魔</hyperlink>枯竭，持续2<turn></turn>回合",
@@ -3279,7 +4351,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [
@@ -3332,22 +4404,10 @@
   "icon": "0000049700003756"
  },
  {
-  "description": "该恶魔单位拥有：<bulletlist><bullet>+2<defensefire></defensefire><hyperlink>火焰防护</hyperlink></bullet><bullet>-4<defensefrost></defensefrost><hyperlink>寒霜防护</hyperlink></bullet><bullet>-4<defensespirit></defensespirit><hyperlink>精神防护</hyperlink></bullet><bullet>+15%<hyperlink><crit></crit>暴击概率</hyperlink></bullet><bullet>荒原行进</bullet><bullet>熔岩漫步</bullet></bulletlist>",
-  "name": "地狱恶魔",
-  "slug": "000003fe000000c2",
-  "icon": "000003FE000000C3"
- },
- {
   "description": "该构装体单位拥有：<bulletlist><bullet>坚防</bullet><bullet>-4<defenselightning></defenselightning><hyperlink>闪电防护</hyperlink></bullet><bullet>2<defensespirit></defensespirit><hyperlink>精神防护</hyperlink></bullet><bullet>无情</bullet><bullet>失控免疫</bullet><bullet>免疫：<bulletlist></bullet><bullet>失血</bullet><bullet>染疫</bullet><bullet>分神</bullet><bullet>中毒</bullet></bulletlist></bulletlist>",
   "name": "构装体",
   "slug": "000003e3000071ff",
   "icon": "000003E3000071FD"
- },
- {
-  "description": "通过焦土地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5<br></br>通过裂隙地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由12变更为8",
-  "name": "荒原行进",
-  "slug": "000003e3000061e7",
-  "icon": "000003E3000061E8"
  },
  {
   "damage": "<fireCol>2<damagelightning></damagelightning></fireCol>",
@@ -4042,36 +5102,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "免疫<hyperlink><flank></flank>侧袭</hyperlink>",
-  "name": "全方位意识",
-  "slug": "0000038700001cfa",
-  "icon": "000003570000018A"
- },
- {
-  "description": "该塔楼单位：<bulletlist><bullet>拥有定身</bullet><bullet>免疫士气变化</bullet><bullet>无法受到<hyperlink><flank></flank>侧袭</hyperlink></bullet><bullet>自动使用其技能</bullet></bulletlist>",
-  "name": "塔楼",
-  "slug": "0000041b00001910",
-  "icon": "0000041B00001911"
- },
- {
-  "description": "此单位无法移动或使用<hyperlink>移动</hyperlink>技能",
-  "name": "定身",
-  "slug": "0000041b00000baf",
-  "icon": "000003BD00002D1B"
- },
- {
-  "description": "如果只剩下无生命友军，则无生命单位会被摧毁",
-  "name": "无生命",
-  "slug": "0000048d00000206",
-  "icon": "0000048D00000207"
- },
- {
-  "description": "单位免疫灵魂绑定，且无法被死灵法术与技能转化为<hyperlink>衰朽僵尸</hyperlink>",
-  "name": "状态效果免疫：灵魂绑定",
-  "slug": "0000048b00000eb6",
-  "icon": "0000048B00000EB8"
- },
- {
   "description": "2框格范围内的敌人：<bulletlist><bullet>受到10<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有30%的基础概率陷入冻结，持续1<turn></turn>回合。如果失败，则施加缓速，持续<turn></turn>回合</bullet></bulletlist>",
   "name": "霜冻迷雾",
   "slug": "0000049700002668",
@@ -4105,12 +5135,6 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
- },
- {
-  "description": "通过森林地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由8变更为6",
-  "name": "森林行进",
-  "slug": "0000049300000407",
-  "icon": "00000387000003C6"
  },
  {
   "description": "此单位每成功发动一次攻击便会获得一层强化<br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
@@ -4267,12 +5291,6 @@
   "name": "水晶反射",
   "slug": "00000497000019cf",
   "icon": "00000497000019D2"
- },
- {
-  "damage": "<xpCol>2<damagelightning></damagelightning></xpCol>",
-  "description": "",
-  "name": "<xpCol>闪电防护</xpCol>",
-  "slug": "Shock_resistance_2"
  },
  {
   "modifiers": [],
@@ -4613,6 +5631,9 @@
   "requisites": [
    {
     "requisite": "<hyperlink>移动</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
    }
   ],
   "accuracy": "始终命中",
@@ -4633,7 +5654,7 @@
     "count": 1
    }
   ],
-  "description": "所有临近敌方单位受到伤害",
+  "description": "所有邻近敌方单位受到伤害",
   "name": "致命排泄",
   "slug": "deathly_exhaust_ability_0000049700000DE0",
   "damage": "14<damageblight></damageblight> 14<damagefrost></damagefrost> ",
@@ -4651,12 +5672,6 @@
    }
   ],
   "icon": "0000049700000DE9"
- },
- {
-  "description": "通过洞底地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5<br></br>通过菌毯地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5<br></br>通过蘑菇森林地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由8变更为6",
-  "name": "洞穴行进",
-  "slug": "000003e100001f7c",
-  "icon": "000003E3000061D5"
  },
  {
   "modifiers": [
@@ -4691,7 +5706,7 @@
  },
  {
   "modifiers": [],
-  "description": "该单位立刻爆炸。临近敌方单位：<bulletlist><bullet>受到伤害</bullet><bullet>3<turn></turn>回合内获得：<bulletlist></bullet><bullet>2层失血</bullet><bullet>脆弱状态</bullet></bulletlist></bulletlist>",
+  "description": "该单位立刻爆炸。邻近敌方单位：<bulletlist><bullet>受到伤害</bullet><bullet>3<turn></turn>回合内获得：<bulletlist></bullet><bullet>2层失血</bullet><bullet>脆弱状态</bullet></bulletlist></bulletlist>",
   "name": "血肉爆炸",
   "slug": "flesh_explosion_ability_0000049700000D8E",
   "damage": "20<damagephysical></damagephysical> ",
@@ -8474,6 +9489,9 @@
   "requisites": [
    {
     "requisite": "<hyperlink>移动</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
    }
   ],
   "accuracy": "始终命中",
@@ -8717,12 +9735,6 @@
   "icon": "00000497000003A4"
  },
  {
-  "damage": "<xpCol>4<damagelightning></damagelightning></xpCol>",
-  "description": "",
-  "name": "<xpCol>闪电防护</xpCol>",
-  "slug": "Shock_resistance_4"
- },
- {
   "modifiers": [
    {
     "description": "有90%的基础概率施加燃烧，持续3<turn></turn>回合",
@@ -8930,22 +9942,10 @@
   "icon": "0000049700000397"
  },
  {
-  "description": "通过雪地与寒冰地形时消耗的<movementgeneral></movementgeneral><hyperlink>移动点数</hyperlink>由6变更为5",
-  "name": "极地行进",
-  "slug": "000003e3000061e6",
-  "icon": "000003E3000061D6"
- },
- {
   "description": "单位在拥有雪地地形的行省中获得狂暴",
   "name": "猛犸原初羁绊",
   "slug": "00000497000003af",
   "icon": "00000497000003A4"
- },
- {
-  "damage": "<xpCol>4<damagefrost></damagefrost></xpCol>",
-  "description": "",
-  "name": "<xpCol>寒霜防护</xpCol>",
-  "slug": "Frost_resistance_4"
  },
  {
   "modifiers": [
@@ -9710,13 +10710,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002dc",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -9774,13 +10771,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002df",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -9838,13 +10832,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002e1",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -9902,13 +10893,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002dd",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -9966,13 +10954,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002de",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -10030,13 +11015,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002e0",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -10094,13 +11076,10 @@
   "description": "攻击1框格锥形范围内的单位",
   "name": "劈砍冲锋",
   "slug": "cleaving_charge_ability_000004900000031E_00000497000002db",
-  "damage": "17<damagephysical></damagephysical> ",
+  "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -11652,8 +12631,8 @@
   ],
   "description": "3框格直线范围内的单位：<bulletlist><bullet>受到伤害</bullet><bullet>解除<hyperlink>防御模式</hyperlink>，移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
   "name": "火焰炮",
-  "slug": "fire_magelock_cannon_ability_0000049000000160",
-  "damage": "34<damagephysical></damagephysical> ",
+  "slug": "fire_magelock_cannon_ability_0000049000000160_0000048d00001f64",
+  "damage": "40<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>远程</hyperlink>"
@@ -11665,18 +12644,40 @@
   "accuracy": "始终命中",
   "actionPoints": "<fullaction></fullaction>",
   "range": "5",
-  "notes": [
-   {
-    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
-   }
-  ],
+  "notes": [],
   "icon": "0000048D0000007C"
  },
  {
-  "description": "此单位的攻击获得：<bulletlist><bullet>远程或魔法攻击：目标身上每层刻记+10%伤害</bullet><bullet>近战攻击：有60%的概率施加刻记<br></br><br></br>单击攻击的效果<hyperlink>增强了</hyperlink></bullet></bulletlist>",
+  "description": "此单位的攻击获得：<bulletlist><bullet>远程或魔法攻击：目标每有一层刻记，造成+10%伤害</bullet><bullet>近战攻击对目标施加刻记<br></br><br></br>单击攻击的效果<hyperlink>增强了</hyperlink></bullet></bulletlist>",
   "name": "集中攻击",
   "slug": "0000048d0000090a",
   "icon": "000003E30000723A"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   }
+  ],
+  "description": "3框格直线范围内的单位：<bulletlist><bullet>受到伤害</bullet><bullet>解除<hyperlink>防御模式</hyperlink>，移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
+  "name": "火焰炮",
+  "slug": "fire_magelock_cannon_ability_0000049000000160_0000048d00001f6f",
+  "damage": "40<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "5",
+  "notes": [],
+  "icon": "0000048D0000007C"
  },
  {
   "modifiers": [
@@ -11895,6 +12896,251 @@
    }
   ],
   "icon": "000003E30000728A"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   }
+  ],
+  "description": "3框格直线范围内的单位：<bulletlist><bullet>受到伤害</bullet><bullet>解除<hyperlink>防御模式</hyperlink>，移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
+  "name": "火焰炮",
+  "slug": "fire_magelock_cannon_ability_0000048D0000202D_0000048d00001f6f",
+  "damage": "40<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "5",
+  "notes": [],
+  "icon": "0000048D0000007C"
+ },
+ {
+  "modifiers": [],
+  "description": "攻击指定敌方单位",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_0000048D00001F88_0000048d00001f6f",
+  "damage": "15<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "0000048B0000131E"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有90%的基础概率施加瓦解防御，持续3<turn></turn>回合",
+    "name": "瓦解防御",
+    "count": 1
+   },
+   {
+    "description": "有90%的基础概率施加瓦解抗性，持续3<turn></turn>回合",
+    "name": "瓦解抗性",
+    "count": 1
+   },
+   {
+    "description": "无视目标50%的<resistance></resistance><hyperlink>抗性</hyperlink>",
+    "name": "破击",
+    "count": 1
+   }
+  ],
+  "description": "对2框格锥形范围内的所有单位造成伤害",
+  "name": "破阵射击",
+  "slug": "breaching_shot_unit_property_ability_0000048D00001F88_0000048d00001f6f",
+  "damage": "20<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000048D00001FA1"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有90%的基础概率施加瓦解防御，持续3<turn></turn>回合",
+    "name": "瓦解防御",
+    "count": 1
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "碎甲爆裂",
+  "slug": "marking_blast_(single)_ability_0000048D00001F87_0000048d00001f6f",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "description": "指定友方单位：<bulletlist><bullet>治疗45<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist><br></br>使用后进入<hyperlink>防御模式</hyperlink>",
+  "name": "修补",
+  "slug": "patch_up_ability_0000048D00001F87_0000048d00001f6f",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E300007253"
+ },
+ {
+  "modifiers": [],
+  "description": "对指定的可摧毁障碍造成伤害：<bulletlist><bullet>目标与相邻障碍承受：<bulletlist></bullet><bullet>30点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet></bulletlist><bullet>相邻单位承受：<bulletlist></bullet><bullet>10点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>有90%的基础概率施加瓦解防御</bullet></bulletlist></bulletlist>",
+  "name": "拆灭爆裂",
+  "slug": "demolition_blast_ability_0000048D00001F87_0000048d00001f6f",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   },
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000048D00001F98"
+ },
+ {
+  "description": "修补：<bulletlist><bullet>额外治疗15<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>移除2项<hyperlink>负面状态效果</hyperlink></bullet></bulletlist>",
+  "name": "冠军修补",
+  "slug": "0000048b00000c2d",
+  "icon": "000003E30000627B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "赋予蓄势射击，持续2<turn></turn><hyperlink>回合</hyperlink>",
+    "name": "全能散兵",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "近战攻击",
+  "slug": "melee_strike_(base)_ability_0000048D00001F84_0000048d00001f6f",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   },
+   {
+    "description": "赋予蓄势攻击，持续2<turn></turn><hyperlink>回合</hyperlink>",
+    "name": "全能散兵",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌方单位发射锁法手枪",
+  "name": "发射锁法火枪",
+  "slug": "pistol_shot_ability_0000048D00001F84_0000048d00001f6f",
+  "damage": "18<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   },
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
+  "icon": "0000048D000000C8"
+ },
+ {
+  "description": "<bulletlist><bullet><hyperlink>近战</hyperlink>攻击赋予蓄势射击，持续2<turn></turn><hyperlink>回合</hyperlink></bullet><bullet><hyperlink>远程</hyperlink>攻击赋予蓄势攻击，持续2<turn></turn><hyperlink>回合</hyperlink></bullet></bulletlist>",
+  "name": "全能散兵",
+  "slug": "0000048d0000203d",
+  "icon": "0000048D0000204C"
  },
  {
   "modifiers": [],
@@ -12645,7 +13891,7 @@
   "icon": "0000048D00000728"
  },
  {
-  "description": "邻近友方魔法起源单位时，二者皆可获得：<bulletlist><bullet>+1 <defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist><br></br>此效果可叠加",
+  "description": "邻近友方魔法起源单位时，二者皆可获得：<bulletlist><bullet>+1<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist><br></br>此效果可叠加",
   "name": "星辰羁绊",
   "slug": "0000048d00001b26",
   "icon": "0000048D0000098F"
@@ -12851,7 +14097,7 @@
   "icon": "00000497000019AB"
  },
  {
-  "description": "该单位将在2<turn></turn>后以其总<hyperlink><hp></hp>生命值</hyperlink>的50%复活，每场战斗只能触发一次",
+  "description": "当此单位被击杀时，将以其总<hyperlink><hp></hp>生命值</hyperlink>的50%复活：<bulletlist><bullet>2<hyperlink>战斗</hyperlink><turn></turn>回合后</bullet><bullet>若己方在战斗中取得胜利</bullet></bulletlist><br></br>每场战斗只能触发一次",
   "name": "长存",
   "slug": "0000049700001a42",
   "icon": "000003E300004A41"
@@ -12970,7 +14216,7 @@
   "icon": "0000049700002484"
  },
  {
-  "description": "该单位死后1<turn></turn>回合将：<bulletlist><bullet>以其总<hyperlink><hp></hp>生命值</hyperlink>的40%复活</bullet><bullet>对邻近敌方单位造成15<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet></bulletlist><br></br><br></br>每场战斗限一次",
+  "description": "当此单位被击杀时，将以其总<hyperlink><hp></hp>生命值</hyperlink>的40%复活：<bulletlist><bullet>1<hyperlink>战斗</hyperlink><turn></turn>回合后，对相邻敌方单位造成15点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>若己方在战斗中取得胜利</bullet></bulletlist><br></br>每场战斗只能触发一次",
   "name": "火焰涅槃",
   "slug": "000003e300004fc1",
   "icon": "000003E300004FC2"
@@ -13546,12 +14792,6 @@
   "icon": "0000048B0000027C"
  },
  {
-  "description": "若该单位的回合开始时未拥有恩典，则获得恩典",
-  "name": "内蕴恩典",
-  "slug": "0000048b00000258",
-  "icon": "0000048B00000259"
- },
- {
   "modifiers": [
    {
     "description": "有90%的基础概率施加瓦解防御，持续3<turn></turn>回合",
@@ -13973,7 +15213,7 @@
     "count": 1
    }
   ],
-  "description": "所有临近敌方单位受到伤害",
+  "description": "所有邻近敌方单位受到伤害",
   "name": "冰冻烈焰",
   "slug": "frozen_flame_ability_0000048900001225",
   "damage": "10<damagefire></damagefire> 10<damagefrost></damagefrost> ",
@@ -14029,6 +15269,11 @@
  {
   "modifiers": [
    {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   },
+   {
     "description": "伤害根据目标损失的<hyperlink><hp></hp>生命值</hyperlink>而提升",
     "name": "致死",
     "count": 1
@@ -14037,7 +15282,7 @@
   "description": "单次近战攻击",
   "name": "致死攻击",
   "slug": "melee_single_strike_(base)_ability_000004890000119C",
-  "damage": "25<damagephysical></damagephysical> ",
+  "damage": "20<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
@@ -14126,7 +15371,7 @@
  {
   "notes": [
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：1<turn></turn>"
    }
   ],
   "description": "跳跃至指定位置",
@@ -14152,7 +15397,7 @@
     "note": "冷却：2<turn></turn>"
    }
   ],
-  "description": "该单位：<bulletlist><bullet>治疗15<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>驱散2<hyperlink>负面状态效果</hyperlink></bullet><bullet>进入<hyperlink>防御模式</hyperlink></bullet></bulletlist>",
+  "description": "该单位：<bulletlist><bullet>治疗25<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>驱散2<hyperlink>负面状态效果</hyperlink></bullet><bullet>进入<hyperlink>防御模式</hyperlink></bullet></bulletlist>",
   "name": "冥思",
   "slug": "monk_meditate_ability_000004890000118E",
   "damage": "",
@@ -14184,7 +15429,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [
@@ -14265,7 +15510,7 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    }
   ],
-  "description": "指定一名拥有暴君印记的友方单位：<bulletlist><bullet>对临近敌人造成伤害</bullet><bullet>在其周围散播<hyperlink>幽影污染</hyperlink></bullet></bulletlist>",
+  "description": "指定一名拥有暴君印记的友方单位：<bulletlist><bullet>对邻近敌人造成伤害</bullet><bullet>在其周围散播<hyperlink>幽影污染</hyperlink></bullet></bulletlist>",
   "name": "暴君突袭",
   "slug": "tyrants_assault_ability_0000048900000E9C",
   "damage": "15<damageblight></damageblight> 15<damagespirit></damagespirit> 15<damagefrost></damagefrost> ",
@@ -14374,11 +15619,6 @@
  {
   "modifiers": [
    {
-    "description": "有60%的基础概率施加致盲，持续1<turn></turn>回合",
-    "name": "致盲",
-    "count": 1
-   },
-   {
     "description": "目标身上的每层刻记可使攻击+10%伤害",
     "name": "集中攻击",
     "count": 1
@@ -14391,8 +15631,8 @@
   ],
   "description": "对指定单位进行一次魔法攻击",
   "name": "标记爆裂",
-  "slug": "marking_blast_(single)_ability_00000489000000A4",
-  "damage": "10<damagefire></damagefire> ",
+  "slug": "marking_blast_(single)_ability_00000489000000A4_0000048d00001f64",
+  "damage": "14<damagefire></damagefire> ",
   "requisites": [
    {
     "requisite": "<hyperlink>基础</hyperlink>"
@@ -14425,7 +15665,7 @@
   ],
   "description": "有90%的概率链接并引发制压<bulletlist><bullet>目标必须陷入定身、冻结或昏厥</bullet><bullet>无法影响英雄或失控免疫的单位</bullet><bullet>施法者死亡时该效果结束</bullet></bulletlist>",
   "name": "制压",
-  "slug": "subdue_ability_00000489000000A4",
+  "slug": "subdue_ability_00000489000000A4_0000048d00001f64",
   "damage": "",
   "requisites": [
    {
@@ -14445,7 +15685,7 @@
   ],
   "description": "指定友方单位：<bulletlist><bullet>治疗45<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist><br></br>使用后进入<hyperlink>防御模式</hyperlink>",
   "name": "修补",
-  "slug": "patch_up_ability_00000489000000A4",
+  "slug": "patch_up_ability_00000489000000A4_0000048d00001f64",
   "damage": "",
   "requisites": [
    {
@@ -14456,12 +15696,6 @@
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
   "icon": "000003E300007253"
- },
- {
-  "description": "修补：<bulletlist><bullet>额外治疗15<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>移除2项<hyperlink>负面状态效果</hyperlink></bullet></bulletlist>",
-  "name": "冠军修补",
-  "slug": "0000048b00000c2d",
-  "icon": "000003E30000627B"
  },
  {
   "modifiers": [
@@ -14478,7 +15712,7 @@
   ],
   "description": "向指定敌方单位迅速发射重型锁法火枪，效果与精准都会有所降低",
   "name": "速射重型锁法火枪",
-  "slug": "fire_heavy_magelocks_snap_shot_ability_00000489000000A3",
+  "slug": "fire_heavy_magelocks_snap_shot_ability_00000489000000A3_0000048d00001f64",
   "damage": "25<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -14519,7 +15753,79 @@
   ],
   "description": "向指定敌方单位发射重型锁法火枪",
   "name": "发射重型锁法火枪",
-  "slug": "fire_heavy_magelocks_ability_00000489000000A3",
+  "slug": "fire_heavy_magelocks_ability_00000489000000A3_0000048d00001f64",
+  "damage": "38<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "5",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003E30000725B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌方单位迅速发射重型锁法火枪，效果与精准都会有所降低",
+  "name": "速射重型锁法火枪",
+  "slug": "fire_heavy_magelocks_snap_shot_ability_00000489000000A3_0000048d00001f6f",
+  "damage": "25<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "80%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "0000048B00000B83"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌方单位发射重型锁法火枪",
+  "name": "发射重型锁法火枪",
+  "slug": "fire_heavy_magelocks_ability_00000489000000A3_0000048d00001f6f",
   "damage": "38<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -14553,14 +15859,14 @@
     "count": 1
    },
    {
-    "description": "有60%的概率施加刻记",
+    "description": "施加刻记，持续3<turn></turn>回合",
     "name": "集中攻击",
     "count": 1
    }
   ],
   "description": "攻击指定敌方单位",
   "name": "近战攻击",
-  "slug": "melee_strike_(base)_ability_00000489000000A2",
+  "slug": "melee_strike_(base)_ability_00000489000000A2_0000048d00001f64",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -14584,14 +15890,14 @@
     "count": 1
    },
    {
-    "description": "有90%的概率施加刻记",
+    "description": "施加2层刻记，持续3<turn></turn>回合",
     "name": "集中攻击",
     "count": 1
    }
   ],
-  "description": "对目标造成伤害，将其击退到其他框格",
+  "description": "对目标造成伤害，将其击退并移动至目标原处框格<br></br>使用后进入<hyperlink>防御模式</hyperlink>",
   "name": "击退",
-  "slug": "drive_back_ability_00000489000000A2",
+  "slug": "drive_back_ability_00000489000000A2_0000048d00001f64",
   "damage": "10<damagephysical></damagephysical> 10<damagefire></damagefire> ",
   "requisites": [
    {
@@ -14614,14 +15920,70 @@
  {
   "modifiers": [
    {
-    "description": "有60%的概率施加刻记",
+    "description": "对骑兵与大型目标单位+40%伤害",
+    "name": "长柄武器",
+    "count": 1
+   }
+  ],
+  "description": "攻击指定敌方单位",
+  "name": "近战攻击",
+  "slug": "melee_strike_(base)_ability_00000489000000A2_0000048d00001f6f",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003BD000020C9"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
+    "count": 1
+   }
+  ],
+  "description": "对目标造成伤害，将其击退并移动至目标原处框格<br></br>使用后进入<hyperlink>防御模式</hyperlink>",
+  "name": "击退",
+  "slug": "drive_back_ability_00000489000000A2_0000048d00001f6f",
+  "damage": "10<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "000003E30000724B"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "施加刻记，持续3<turn></turn>回合",
     "name": "集中攻击",
     "count": 1
    }
   ],
   "description": "攻击指定敌方单位",
   "name": "近战攻击",
-  "slug": "melee_strike_(base)_ability_00000489000000A1",
+  "slug": "melee_strike_(base)_ability_00000489000000A1_0000048d00001f64",
   "damage": "12<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -14657,7 +16019,7 @@
   ],
   "description": "对指定单位造成伤害",
   "name": "撒网",
-  "slug": "cast_net_ability_00000489000000A1",
+  "slug": "cast_net_ability_00000489000000A1_0000048d00001f64",
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -14694,7 +16056,7 @@
   ],
   "description": "向目标施加刻记",
   "name": "标记",
-  "slug": "marking_ability_00000489000000A0",
+  "slug": "marking_ability_00000489000000A0_0000048d00001f64",
   "damage": "",
   "requisites": [
    {
@@ -14711,6 +16073,26 @@
   "name": "感知范围",
   "slug": "000003e300007248",
   "icon": "000003E300007249"
+ },
+ {
+  "notes": [
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "向目标施加刻记",
+  "name": "标记",
+  "slug": "marking_ability_00000489000000A0_0000048d00001f6f",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "10",
+  "icon": "000003E3000073DE"
  },
  {
   "modifiers": [
@@ -15381,7 +16763,7 @@
     "note": "冷却：2<turn></turn>"
    }
   ],
-  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多3框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
+  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
   "name": "疯狂风暴",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -15464,12 +16846,6 @@
    }
   ],
   "icon": "0000049700000397"
- },
- {
-  "description": "当攻击者攻击命中近战距离内的目标时，攻击单位受到5<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>",
-  "name": "复仇火焰",
-  "slug": "0000041b00000ab8",
-  "icon": "0000041B00000AB9"
  },
  {
   "description": "该单位在杀死敌人时会造成更高的士气惩罚。影响至多3框格范围内的敌方单位",
@@ -15714,7 +17090,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [
@@ -15818,7 +17194,7 @@
  {
   "notes": [
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：1<turn></turn>"
    }
   ],
   "description": "施法者移动至指定框格",
@@ -16051,7 +17427,7 @@
   "icon": "000003E300005D4F"
  },
  {
-  "description": "该单位将在2<turn></turn>后以其总<hyperlink><hp></hp>生命值</hyperlink>的50%复活，每场战斗只能触发一次",
+  "description": "当此单位被击杀时，将以其总<hyperlink><hp></hp>生命值</hyperlink>的50%复活：<bulletlist><bullet>2<hyperlink>战斗</hyperlink><turn></turn>回合后</bullet><bullet>若己方在战斗中取得胜利</bullet></bulletlist><br></br>每场战斗只能触发一次",
   "name": "长存",
   "slug": "000003e300004a40",
   "icon": "000003E300004A41"
@@ -16184,7 +17560,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -16340,10 +17716,10 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "冷却：3<turn></turn>"
+    "note": "冷却：2<turn></turn>"
    }
   ],
-  "description": "1框格范围内的友方单位：<bulletlist><bullet>获得2再生</bullet><bullet>移除其<hyperlink>负面状态效果</hyperlink></bullet></bulletlist>",
+  "description": "1框格范围内的友方单位：<bulletlist><bullet>获得2层再生</bullet><bullet>移除3个<hyperlink>负面状态效果</hyperlink></bullet></bulletlist>",
   "name": "恢复元气",
   "slug": "revitalize_ability_0000041B00000E5F",
   "damage": "",
@@ -16363,10 +17739,10 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：3<turn></turn>"
    }
   ],
-  "description": "有60%的基础概率令指定敌方单位陷入受支配，持续3<turn></turn>回合<br></br>如果失败，该单位将陷入分神",
+  "description": "有90%的基础概率令指定敌方单位陷入受支配，持续3<turn></turn>回合<br></br>如果失败，该单位将陷入分神",
   "name": "诱惑",
   "slug": "seduce_ability_0000041B00000E5F",
   "damage": "",
@@ -16455,13 +17831,10 @@
   "description": "攻击1框格锥形范围内的敌方单位<bulletlist><bullet>破解<hyperlink>防御模式</hyperlink></bullet><bullet>移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
   "name": "力量猛击",
   "slug": "power_cleave_ability_0000041B00000BB2",
-  "damage": "33<damagephysical></damagephysical> ",
+  "damage": "24<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -16565,7 +17938,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [],
@@ -16808,7 +18181,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "description": "攻击目标时，目标每邻近一个友方单位（不包括其自身），本次攻击造成的伤害+10%",
@@ -16834,7 +18207,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -16930,7 +18303,7 @@
     "note": "冷却：1<turn></turn>"
    }
   ],
-  "description": "指定友方动物单位在3<turn></turn>回合内获得：<bulletlist><bullet>杀戮之势</bullet><bullet>2层强化</bullet><bullet>2 再生</bullet></bulletlist>",
+  "description": "指定友方动物单位在3<turn></turn>回合内获得：<bulletlist><bullet>杀戮之势</bullet><bullet>2层强化</bullet><bullet>2再生</bullet></bulletlist>",
   "name": "释放野兽",
   "slug": "unleash_the_beast_ability_0000041B000003A5",
   "damage": "",
@@ -17184,7 +18557,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [],
@@ -17669,7 +19042,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -17699,7 +19072,7 @@
   "icon": "000003E3000052B3"
  },
  {
-  "description": "该单位死后2<turn></turn>回合将：<bulletlist><bullet>以其总<hyperlink><hp></hp>生命值</hyperlink>的40%复活</bullet><bullet>对邻近敌方单位造成15<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet></bulletlist><br></br><br></br>每场战斗限一次",
+  "description": "当此单位被击杀时，将以其总<hyperlink><hp></hp>生命值</hyperlink>的40%复活：<bulletlist><bullet>2<hyperlink>战斗</hyperlink><turn></turn>回合后，对相邻敌方单位造成15点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>若己方在战斗中取得胜利</bullet></bulletlist><br></br>每场战斗只能触发一次",
   "name": "火焰涅槃",
   "slug": "0000049700003902",
   "icon": "000003E300004FC2"
@@ -17821,7 +19194,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -18893,19 +20266,27 @@
   "icon": "000003BD000020C9"
  },
  {
+  "modifiers": [],
+  "description": "对指定单位造成伤害。基于损失的生命值，目标会有越来越高的概率：<bulletlist><bullet>获得3层失血，持续3<turn></turn>回合</bullet><bullet>获得3层瓦解防御，持续3<turn></turn>回合</bullet><bullet>若成功，食人魔恢复15<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist>",
+  "name": "屠夫肢解",
+  "slug": "butchers_cut_ability_000003EC000008B2",
+  "damage": "25<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
   "notes": [
    {
     "note": "冷却：1<turn></turn>"
    }
   ],
-  "description": "对指定单位造成伤害。基于损失的生命值，目标会有越来越高的概率：<bulletlist><bullet>获得3层失血，持续3<turn></turn>回合</bullet><bullet>获得3层瓦解防御，持续3<turn></turn>回合</bullet><bullet>若成功，食人魔恢复15<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist>",
-  "name": "屠夫肢解",
-  "slug": "butchers_cut_ability_000003EC000008B2",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [],
-  "accuracy": "始终命中",
-  "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "1",
   "icon": "000003E300004FFD"
  },
  {
@@ -19182,14 +20563,14 @@
  {
   "modifiers": [
    {
-    "description": "有60%的概率施加刻记",
+    "description": "施加刻记，持续3<turn></turn>回合",
     "name": "集中攻击",
     "count": 1
    }
   ],
   "description": "攻击指定敌方单位",
   "name": "近战攻击",
-  "slug": "melee_strike_(base)_ability_000003E3000071AF",
+  "slug": "melee_strike_(base)_ability_000003E3000071AF_0000048d00001f64",
   "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19225,7 +20606,7 @@
   ],
   "description": "向指定敌方单位发射锁法手枪",
   "name": "骚扰射击",
-  "slug": "harrying_shot_ability_000003E3000071AF",
+  "slug": "harrying_shot_ability_000003E3000071AF_0000048d00001f64",
   "damage": "28<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -19247,6 +20628,9 @@
    },
    {
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   },
+   {
+    "note": "冷却：1<turn></turn>"
    }
   ],
   "icon": "000003E300007267"
@@ -19466,7 +20850,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -19531,7 +20915,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -19824,22 +21208,6 @@
   "icon": "000003BD000020CE"
  },
  {
-  "modifiers": [],
-  "description": "对指定单位造成伤害。邻近敌方单位受到50%伤害",
-  "name": "风神射击",
-  "slug": "zephyr_shot_ability_000003E3000064C1",
-  "damage": "30<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>远程</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
-   }
-  ],
-  "accuracy": "始终命中",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "6",
   "notes": [
    {
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
@@ -19848,6 +21216,18 @@
     "note": "冷却：2<turn></turn>"
    }
   ],
+  "description": "对指定单位造成伤害。邻近敌方单位受到50%伤害",
+  "name": "风神射击",
+  "slug": "zephyr_shot_ability_000003E3000064C1",
+  "damage": "26<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "6",
   "icon": "000003E3000064C3"
  },
  {
@@ -19954,7 +21334,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [],
@@ -20451,7 +21831,7 @@
  {
   "modifiers": [
    {
-    "description": "从目标身上吸取-3<happiness></happiness><hyperlink>士气</hyperlink>",
+    "description": "从目标身上吸取3<happiness></happiness><hyperlink>士气</hyperlink>",
     "name": "士气吸取",
     "count": 1
    },
@@ -20577,7 +21957,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -21183,7 +22563,7 @@
   ],
   "accuracy": "始终命中",
   "actionPoints": "<freeaction></freeaction>",
-  "range": "5",
+  "range": "6",
   "icon": "000003E300005B60"
  },
  {
@@ -21204,7 +22584,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -21217,7 +22597,7 @@
   "description": "对指定单位造成伤害",
   "name": "霜冻爆发",
   "slug": "freezing_burst_ability_000003E300005B27",
-  "damage": "11<damagefrost></damagefrost> ",
+  "damage": "12<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>单击攻击</hyperlink>"
@@ -21269,7 +22649,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -21318,7 +22698,7 @@
   "description": "对指定单位造成伤害",
   "name": "霜冻爆发",
   "slug": "freezing_burst_ability_000003E300005B26",
-  "damage": "15<damagefrost></damagefrost> ",
+  "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
    {
     "requisite": "<hyperlink>单击攻击</hyperlink>"
@@ -21370,7 +22750,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -22489,7 +23869,7 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "面对攻击时，每层<hyperlink>减益</hyperlink>可令单位获得+1<defense></defense><hyperlink>防御</hyperlink>与+1<resistance></resistance><hyperlink>抗性</hyperlink><br></br>叠加至多5次",
+  "description": "在面对拥有<hyperlink>减益</hyperlink>的攻击者时，每层<hyperlink>减益</hyperlink>可令单位获得+1<defense></defense><hyperlink>防御</hyperlink>与+1<resistance></resistance><hyperlink>抗性</hyperlink><br></br>叠加至多5次",
   "name": "蔑视护甲",
   "slug": "0000048d00001b59",
   "icon": "0000048D00001B5A"
@@ -22867,17 +24247,18 @@
   "icon": "000003E10000154C"
  },
  {
-  "modifiers": [],
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
   "description": "<bulletlist><bullet>对指定单位造成伤害</bullet><bullet>邻近敌方单位受到50%伤害</bullet><bullet>使用后进入<hyperlink>防御模式</hyperlink></bullet></bulletlist>",
   "name": "防御扫击",
   "slug": "defensive_sweep_ability_000003E3000052F9",
-  "damage": "20<damagephysical></damagephysical> ",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    },
    {
     "requisite": "<hyperlink>单击攻击</hyperlink>"
@@ -22886,11 +24267,6 @@
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
-  "notes": [
-   {
-    "note": "冷却：2<turn></turn>"
-   }
-  ],
   "icon": "0000049700000175"
  },
  {
@@ -23470,7 +24846,7 @@
   "icon": "000003E300006213"
  },
  {
-  "description": "当此单位的总<hyperlink><hp></hp>生命值</hyperlink>抵达33%或更低时，它会陷入狂战（持续1<turn></turn>）：<bulletlist><bullet>狂战</bullet><bullet>屹立</bullet></bulletlist>",
+  "description": "当此单位的总<hyperlink><hp></hp>生命值</hyperlink>降至33%或更低时，该单位在1<turn></turn>回合内获得：<bulletlist><bullet>狂战</bullet><bullet>屹立</bullet></bulletlist>",
   "name": "狂战士之怒",
   "slug": "000003e3000061fa",
   "icon": "000003E300004F08"
@@ -23642,7 +25018,11 @@
   "name": "盾冲",
   "slug": "shield_bash_ability_000003E3000052DE",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
   "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "1",
@@ -23778,6 +25158,26 @@
   "icon": "000003EB0000040D"
  },
  {
+  "notes": [
+   {
+    "note": "每场战斗只能使用一次"
+   }
+  ],
+  "description": "挑战一个目标单位；被挑战期间：<bulletlist><bullet>此单位对目标造成50%额外伤害</bullet><bullet>目标对此单位造成50%较少伤害</bullet></bulletlist>",
+  "name": "骑士的挑战",
+  "slug": "knights_challenge_ability_000003E3000052D5_0000048d000011e2",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "6",
+  "icon": "0000048B00001001"
+ },
+ {
   "description": "<hyperlink>冲锋</hyperlink>攻击赋予其1层恩典<br></br>不触发<hyperlink>反击</hyperlink>与<hyperlink>伺机攻击</hyperlink>",
   "name": "优雅冲锋",
   "slug": "0000048d00001205",
@@ -23805,6 +25205,26 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "notes": [
+   {
+    "note": "每场战斗只能使用一次"
+   }
+  ],
+  "description": "挑战一个目标单位；被挑战期间：<bulletlist><bullet>此单位对目标造成50%额外伤害</bullet><bullet>目标对此单位造成50%较少伤害</bullet></bulletlist>",
+  "name": "骑士的挑战",
+  "slug": "knights_challenge_ability_000003E3000052D5_0000048d00001220",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<freeaction></freeaction>",
+  "range": "6",
+  "icon": "0000048B00001001"
  },
  {
   "notes": [],
@@ -24265,7 +25685,7 @@
   "icon": "0000041B00000EC9"
  },
  {
-  "description": "友方动物与植物单位获得无所畏惧",
+  "description": "友方仙灵、动物与植物单位获得无所畏惧<br></br><br></br>不影响角神",
   "name": "荒野牧人",
   "slug": "0000041b00000eb2",
   "icon": "0000041B00000EC7"
@@ -24294,7 +25714,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -24359,7 +25779,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -24654,7 +26074,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -24816,12 +26236,6 @@
   "actionPoints": "<fullaction></fullaction>",
   "range": "1",
   "icon": "000003E3000049B4"
- },
- {
-  "description": "一个蜘蛛单位",
-  "name": "蜘蛛",
-  "slug": "000004150000025b",
-  "icon": "000004150000025C"
  },
  {
   "modifiers": [
@@ -25134,7 +26548,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -25187,7 +26601,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -25644,7 +27058,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "description": "当该单位被近战攻击命中时，敌方攻击单位受到4<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink>",
@@ -25676,7 +27090,7 @@
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
   "notes": [],
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "modifiers": [
@@ -26087,6 +27501,35 @@
   "icon": "0000049700002A90"
  },
  {
+  "description": "<bulletlist><bullet>当此单位的总<hyperlink><hp></hp>生命值</hyperlink>达到60%或更低时，召唤一只II阶蜘蛛</bullet><bullet>当此单位的总<hyperlink><hp></hp>生命值</hyperlink>达到30%或更低时，召唤一只II阶蜘蛛</bullet></bulletlist><br></br>此项召唤持续3<turn></turn>回合<br></br><br></br>此外，允许在城邦中征召I阶和II阶蜘蛛",
+  "name": "活体蜘蛛巢",
+  "slug": "0000049700003f5d"
+ },
+ {
+  "description": "战斗开始时召唤一只<hyperlink>晨光精灵</hyperlink>或<hyperlink>暮光精灵</hyperlink>，持续至战斗结束",
+  "name": "唤灵者",
+  "slug": "0000049700003f52",
+  "icon": "0000049700003F53"
+ },
+ {
+  "description": "<bulletlist><bullet>获得诱惑之吻技能</bullet><bullet>攻击获得+2点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink>。单发射击时提升</bullet><bullet>获得+2点<defensefire></defensefire><hyperlink>火焰防护</hyperlink></bullet></bulletlist>",
+  "name": "炽热魅惑者",
+  "slug": "0000049700003f60",
+  "icon": "0000049700003F61"
+ },
+ {
+  "description": "<bulletlist><bullet>获得永久性的饱食层数：<bulletlist></bullet><bullet>战斗开始时</bullet><bullet>击杀敌方单位时</bullet></bulletlist><bullet>当达到5层饱食时，移除它们，并且：<bulletlist></bullet><bullet>获得永久性的恶魔餍足层数。</bullet><bullet>所有在2框格范围内的友方单位：<bulletlist></bullet><bullet>治疗15点<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>若它们拥有恶魔饥饿，则获得饱食</bullet></bulletlist></bulletlist></bulletlist>",
+  "name": "宗主的饥饿",
+  "slug": "0000049700003f68",
+  "icon": "0000049700003F69"
+ },
+ {
+  "description": "你军队中的非英雄单位拥有：<bulletlist><bullet>当此单位的总<hyperlink><hp></hp>生命值</hyperlink>达到60%或更低时，获得3层恩典</bullet></bulletlist>",
+  "name": "战场护法师",
+  "slug": "0000049700003f4c",
+  "icon": "0000049700003F4D"
+ },
+ {
   "description": "在每回合开始时，随机获得指挥：攻击、指挥：防御与指挥：撤退",
   "name": "军阀指令",
   "slug": "0000049700003867",
@@ -26176,7 +27619,7 @@
   "icon": "0000049700002DDE"
  },
  {
-  "description": "战斗开始时召唤一支<hyperlink>陶土劲弩手</hyperlink>、<hyperlink>陶土冲锋者</hyperlink>或<hyperlink>陶土防御者</hyperlink>单位",
+  "description": "战斗开始时召唤一支<hyperlink>黏土劲弩手</hyperlink>、<hyperlink>黏土冲锋者</hyperlink>或<hyperlink>黏土防御者</hyperlink>单位",
   "name": "地牢守卫",
   "slug": "0000049700002b55",
   "icon": "0000049700002B54"
@@ -27000,8 +28443,8 @@
   "icon": "000004C00000065E"
  },
  {
-  "description": "在战斗开始时召唤一个<hyperlink>骨双足飞龙</hyperlink>",
-  "name": "骨双足飞龙护卫",
+  "description": "在战斗开始时召唤一个<hyperlink>白骨双足飞龙</hyperlink>",
+  "name": "白骨双足飞龙护卫",
   "slug": "000004c000000653",
   "icon": "000004C000000652"
  },
@@ -27161,7 +28604,7 @@
   "icon": "0000048D00000FA2"
  },
  {
-  "description": "此单位回合开始时，临近敌方单位受到10<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink>与失血，持续3<turn></turn><hyperlink>回合</hyperlink>",
+  "description": "此单位回合开始时，邻近敌方单位受到10<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink>与失血，持续3<turn></turn><hyperlink>回合</hyperlink>",
   "name": "剑雨",
   "slug": "0000048d00000f78",
   "icon": "0000048D00000F7F"
@@ -27225,7 +28668,7 @@
     "note": "冷却：2<turn></turn>"
    }
   ],
-  "description": "施法者与邻近友方单位获得：<bulletlist><bullet>振作，持续3<turn></turn>回合</bullet><bullet>+2提振防御，持续3<turn></turn>回合</bullet><bullet>+2提振抗性，持续3<turn></turn>回合</bullet><bullet>警惕</bullet><bullet></bulletlist>该单位此后进入<hyperlink>防御模式</hyperlink></bullet>",
+  "description": "施法者与邻近友方单位获得：<bulletlist><bullet>振作，持续3个<turn></turn>回合</bullet><bullet>+2层提振防御，持续3个<turn></turn>回合</bullet><bullet>+2层提振抗性，持续3个<turn></turn>回合</bullet><bullet>警戒</bullet><bullet></bulletlist>该单位此后进入<hyperlink>防御模式</hyperlink></bullet>",
   "name": "集结战吼",
   "slug": "hs_defender_rallying_cry_ability_hs_defender_rallying_cry",
   "damage": "",
@@ -27273,7 +28716,11 @@
   "name": "守护羁绊",
   "slug": "hs_defender_warding_bond_ability_hs_defender_warding_bond_hero_skill",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
   "accuracy": "始终命中",
   "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
@@ -27771,18 +29218,14 @@
  {
   "notes": [
    {
-    "note": "每场战斗只能使用一次"
+    "note": "冷却：3<turn></turn>"
    }
   ],
   "description": "所有友方单位获得：<bulletlist><bullet>加速，持续1<turn></turn><hyperlink>回合</hyperlink></bullet></bulletlist>",
   "name": "狂怒仪式",
   "slug": "hs_ritualist_rite_of_fury_ability_hs_ritualist_rite_of_fury",
   "damage": "",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>支援</hyperlink>"
-   }
-  ],
+  "requisites": [],
   "accuracy": "始终命中",
   "actionPoints": "<fullaction></fullaction>",
   "range": "0",
@@ -27791,18 +29234,14 @@
  {
   "notes": [
    {
-    "note": "每场战斗只能使用一次"
+    "note": "冷却：3<turn></turn>"
    }
   ],
   "description": "所有友方单位获得：<bulletlist><bullet>+1提振防御，持续3<turn></turn>回合</bullet><bullet>+1提振抗性，持续3<turn></turn>回合</bullet></bulletlist>",
   "name": "警戒仪式",
   "slug": "hs_ritualist_rite_of_vigil_ability_hs_ritualist_rite_of_vigil",
   "damage": "",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>支援</hyperlink>"
-   }
-  ],
+  "requisites": [],
   "accuracy": "始终命中",
   "actionPoints": "<fullaction></fullaction>",
   "range": "0",
@@ -27899,7 +29338,7 @@
    }
   ],
   "accuracy": "始终命中",
-  "actionPoints": "<fullaction></fullaction>",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "000004C000000ACB"
  },
@@ -27949,18 +29388,14 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "每场战斗只能使用一次"
+    "note": "冷却：3<turn></turn>"
    }
   ],
-  "description": "战斗中的所有己方单位：<bulletlist><bullet>治疗+10<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist>",
+  "description": "战斗中的所有己方单位：<bulletlist><bullet>治疗+20<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet></bulletlist>",
   "name": "复原仪式",
   "slug": "hs_ritualist_rite_of_restoration_ability_hs_ritualist_rite_of_restoration",
   "damage": "",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>支援</hyperlink>"
-   }
-  ],
+  "requisites": [],
   "accuracy": "始终命中",
   "actionPoints": "<fullaction></fullaction>",
   "range": "0",
@@ -28248,7 +29683,7 @@
   "icon": "000004BB0000001E"
  },
  {
-  "description": "当率领军队时，军队中所有非英雄单位获得：<bulletlist><bullet>临近友方单位+1<defense></defense><hyperlink>防御</hyperlink>且+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "description": "当率领军队时，军队中所有非英雄单位获得：<bulletlist><bullet>邻近友方单位+1<defense></defense><hyperlink>防御</hyperlink>且+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
   "name": "防御阵型",
   "slug": "0000048d00000da7",
   "icon": "000004BB00000019"
@@ -28677,7 +30112,7 @@
     "note": "冷却：3<turn></turn>"
    }
   ],
-  "description": "临近敌人有120%的基础概率陷入昏厥<br></br>进入防御模式",
+  "description": "邻近敌人有120%的基础概率陷入昏厥<br></br>进入防御模式",
   "name": "相位锁定",
   "slug": "hs_phaselock_ability_hs_phaselock",
   "damage": "",
@@ -28884,7 +30319,7 @@
  },
  {
   "description": "当率领军队时，军中所有动物获得：<bulletlist><bullet>侧袭者</bullet><bullet>-20%基础<hyperlink>单位维持费</hyperlink></bullet><bullet>+1<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
-  "name": "牧羊人",
+  "name": "战群领袖",
   "slug": "000003e300006b75",
   "icon": "000003E300006EFD"
  },
@@ -29887,7 +31322,7 @@
   "icon": "000004C000000B84"
  },
  {
-  "description": "获得：<bulletlist><bullet>残忍</bullet><bullet>当任意敌方单位<hyperlink>失手</hyperlink>时，此单位获得 +5点最大<hyperlink><hp></hp>生命值</hyperlink>，持续至战斗结束</bullet></bulletlist>",
+  "description": "获得：<bulletlist><bullet>残忍</bullet><bullet>当任意敌方单位<hyperlink>失手</hyperlink>时，此单位获得+5点最大<hyperlink><hp></hp>生命值</hyperlink>，持续至战斗结束</bullet></bulletlist>",
   "name": "掠食绝望",
   "slug": "000004c000000b77",
   "icon": "000004C000000B76"
@@ -29925,7 +31360,11 @@
   "name": "妖术契约",
   "slug": "hs_warlock_hex_pact_ability_hs_warlock_hex_pact",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
   "accuracy": "始终命中",
   "actionPoints": "<freeaction></freeaction>",
   "range": "8",
@@ -30106,6 +31545,9 @@
   "requisites": [
    {
     "requisite": "<hyperlink>减益</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
    }
   ],
   "accuracy": "始终命中",
@@ -30157,11 +31599,7 @@
   "name": "战地恢复",
   "slug": "hs_battlesaint_battlefield_restoration_ability_hs_battlesaint_battlefield_restoration",
   "damage": "",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>支援</hyperlink>"
-   }
-  ],
+  "requisites": [],
   "accuracy": "始终命中",
   "actionPoints": "<fullaction></fullaction>",
   "range": "0",
@@ -30267,7 +31705,11 @@
   "name": "守护羁绊",
   "slug": "hs_defender_warding_bond_ability_hs_battlesaint_warding_bond",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
   "accuracy": "始终命中",
   "actionPoints": "<leaveoneaction></leaveoneaction>",
   "range": "4",
@@ -30717,7 +32159,7 @@
   "icon": "000004970000187F"
  },
  {
-  "description": "该单位将在2<turn></turn>后以其总<hyperlink><hp></hp>生命值</hyperlink>的50%复活，每场战斗只能触发一次",
+  "description": "当此单位被击杀时，将以其总<hyperlink><hp></hp>生命值</hyperlink>的50%复活：<bulletlist><bullet>2<hyperlink>战斗</hyperlink><turn></turn>回合后</bullet><bullet>若己方在战斗中取得胜利</bullet></bulletlist><br></br>每场战斗只能触发一次",
   "name": "长存",
   "slug": "00000497000027c4",
   "icon": "000003E300004A41"
@@ -31073,6 +32515,33 @@
   "icon": "0000048D00000AD7"
  },
  {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加定身，持续1<turn></turn>回合",
+    "name": "定身",
+    "count": 1
+   }
+  ],
+  "description": "2框格锥形范围的敌方单位：<bulletlist><bullet>受到伤害</bullet><bullet>陷入缓速，持续1<turn></turn>回合</bullet></bulletlist>",
+  "name": "巨网",
+  "slug": "web_ability_weaver_spider_mount_item_tier_2",
+  "damage": "28<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "冷却：3<turn></turn>"
+   }
+  ],
+  "icon": "000003E3000049A5"
+ },
+ {
   "notes": [],
   "description": "攻击指定敌方单位",
   "name": "近战攻击",
@@ -31217,6 +32686,71 @@
   "range": "1",
   "notes": [],
   "icon": "0000049700001639"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "基础攻击对亡灵单位+40%伤害",
+    "name": "亡灵杀手",
+    "count": 1
+   },
+   {
+    "description": "基础攻击对恶魔单位+40%伤害",
+    "name": "恶魔杀手",
+    "count": 1
+   },
+   {
+    "description": "基础攻击对幽影恶魔单位+40%伤害",
+    "name": "幽影恶魔杀手",
+    "count": 1
+   }
+  ],
+  "description": "冲锋攻击：<bulletlist><bullet>每经过一个框格则可额外造成20%伤害，至多3个框格</bullet><bullet>破解<hyperlink>防御模式</hyperlink></bullet><bullet>移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
+  "name": "冲锋攻击",
+  "slug": "melee_charge_strike_(item_forge)_ability_vanquishers_blade_item_tier_4",
+  "damage": "20<damagespirit></damagespirit> 10<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：3<turn></turn>"
+   }
+  ],
+  "description": "2框格范围内的友方单位在3<turn></turn>回合内获得：<bulletlist><bullet>3振作</bullet><bullet>2强化</bullet></bulletlist><br></br>进入<hyperlink>防御模式</hyperlink>",
+  "name": "鼓舞友方",
+  "slug": "hero_embolden_allies_ability_vanquishers_blade_item_tier_4",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "0",
+  "icon": "0000049700004153"
+ },
+ {
+  "description": "基础攻击对亡灵单位+40%伤害",
+  "name": "亡灵杀手",
+  "slug": "0000045e00000be2",
+  "icon": "000003E3000055A5"
  },
  {
   "modifiers": [],
@@ -32480,7 +34014,7 @@
   ],
   "description": "对目标单位造成伤害",
   "name": "心灵尖刺",
-  "slug": "magic_spike_(item_forge)_ability_equipment_item_relic_of_mind_base",
+  "slug": "magic_spike_(item_forge_eldritch_relic)_ability_equipment_item_relic_of_mind_base",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -32545,7 +34079,7 @@
   ],
   "description": "对目标单位造成伤害",
   "name": "心灵尖刺",
-  "slug": "magic_spike_(item_forge)_ability_equipment_item_relic_of_flesh_base",
+  "slug": "magic_spike_(item_forge_eldritch_relic)_ability_equipment_item_relic_of_flesh_base",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -32610,7 +34144,7 @@
   ],
   "description": "对目标单位造成伤害",
   "name": "心灵尖刺",
-  "slug": "magic_spike_(item_forge)_ability_equipment_item_relic_of_havoc_base",
+  "slug": "magic_spike_(item_forge_eldritch_relic)_ability_equipment_item_relic_of_havoc_base",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -32675,7 +34209,7 @@
   ],
   "description": "对目标单位造成伤害",
   "name": "心灵尖刺",
-  "slug": "magic_spike_(item_forge)_ability_equipment_item_relic_of_cosmos_base",
+  "slug": "magic_spike_(item_forge_eldritch_relic)_ability_equipment_item_relic_of_cosmos_base",
   "damage": "14<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -33089,6 +34623,784 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "精神骤增",
+  "slug": "magic_spike_ability_merlins_grimoire_item_t1",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "精神非难",
+  "slug": "magic_rebuke_ability_merlins_grimoire_item_t1",
+  "damage": "20<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "宇宙尖刺",
+  "slug": "magic_spike_ability_merlins_grimoire_codex_of_the_cosmos_item_t4",
+  "damage": "5<damagephysical></damagephysical> 5<damageblight></damageblight> 5<damagelightning></damagelightning> 5<damagefire></damagefire> 5<damagespirit></damagespirit> 5<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "宇宙斥责",
+  "slug": "magic_rebuke_ability_merlins_grimoire_codex_of_the_cosmos_item_t4",
+  "damage": "6<damagephysical></damagephysical> 6<damageblight></damageblight> 6<damagelightning></damagelightning> 6<damagefire></damagefire> 6<damagespirit></damagespirit> 6<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "description": "对于每一项达到或超过5点的<hyperlink>理念</hyperlink>，附魔单位获得：<bulletlist><bullet>+2点与该理念相关的主要伤害类型伤害</bullet><bullet>+2点与该理念相关的主要伤害类型防护</bullet></bulletlist>",
+  "name": "宇宙掌控",
+  "slug": "0000049700003ff6",
+  "icon": "0000049700003FF7"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "火焰尖刺",
+  "slug": "magic_spike_ability_grimoire_evil_fire_item",
+  "damage": "16<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "火焰非难",
+  "slug": "magic_rebuke_ability_grimoire_evil_fire_item",
+  "damage": "20<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "寒霜骤增",
+  "slug": "magic_spike_ability_grimoire_evil_frost_item",
+  "damage": "16<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "冰霜非难",
+  "slug": "magic_rebuke_ability_grimoire_evil_frost_item",
+  "damage": "20<damagefrost></damagefrost> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "闪电骤增",
+  "slug": "magic_spike_ability_grimoire_arcane_lightning_item",
+  "damage": "16<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "闪电非难",
+  "slug": "magic_rebuke_ability_grimoire_arcane_lightning_item",
+  "damage": "20<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "精神骤增",
+  "slug": "magic_spike_ability_grimoire_good_spirit_item",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "精神非难",
+  "slug": "magic_rebuke_ability_grimoire_good_spirit_item",
+  "damage": "20<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "枯萎尖刺",
+  "slug": "magic_spike_ability_grimoire_good_blight_item",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "枯萎非难",
+  "slug": "magic_rebuke_ability_grimoire_good_blight_item",
+  "damage": "20<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "modifiers": [],
+  "description": "向指定敌人施放魔法箭",
+  "name": "火焰闪电",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_pantheon_inferno_orb_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_equipment_item_pantheon_inferno_orb_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "钢刺",
+  "slug": "magic_spike_(item_forge_grimoire)_ability_equipment_item_pantheon_merlins_grimoire_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "钢之斥责",
+  "slug": "magic_rebuke_(item_forge_grimoire)_ability_equipment_item_pantheon_merlins_grimoire_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "modifiers": [],
+  "description": "冲锋攻击：<bulletlist><bullet>每经过一个框格则可额外造成20%伤害，至多3个框格</bullet><bullet>破解<hyperlink>防御模式</hyperlink></bullet><bullet>移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
+  "name": "冲锋攻击",
+  "slug": "melee_charge_strike_(item_forge)_ability_equipment_item_2h_pantheon_ysariel_sword_base",
+  "damage": "21<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "向指定敌人施放魔法箭",
+  "name": "火焰闪电",
+  "slug": "magic_hero_bolts_(fire)_ability_karisaa_fire_orb_item_tier_1",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_karisaa_fire_orb_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [],
+  "description": "冲锋攻击：<bulletlist><bullet>每经过一个框格则可额外造成20%伤害，至多3个框格</bullet><bullet>破解<hyperlink>防御模式</hyperlink></bullet><bullet>移除<hyperlink>反击</hyperlink></bullet></bulletlist>",
+  "name": "冲锋攻击",
+  "slug": "melee_charge_strike_(item_forge)_ability_ysariels_greatsword_item_tier_1",
+  "damage": "11<damagephysical></damagephysical> 10<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [],
+  "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "施加燃烧，持续3<turn></turn>回合",
+    "name": "燃烧",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌人施放魔法箭",
+  "name": "火焰闪电",
+  "slug": "magic_hero_bolts_(fire)_ability_inferno_orb_item_tier_4",
+  "damage": "18<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_inferno_orb_item_tier_4",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [],
+  "description": "<bulletlist><bullet>指定敌方单位承受伤害</bullet><bullet>目标每有一层燃烧，伤害提高10点<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet></bulletlist>",
+  "name": "自燃",
+  "slug": "combust_ability_inferno_orb_item_tier_4",
+  "damage": "10<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "icon": "0000049700003C60"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "钢刺",
+  "slug": "magic_spike_(item_forge_grimoire)_ability_equipment_item_grimoire_arcane_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "钢之斥责",
+  "slug": "magic_rebuke_(item_forge_grimoire)_ability_equipment_item_grimoire_arcane_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "钢刺",
+  "slug": "magic_spike_(item_forge_grimoire)_ability_equipment_item_grimoire_good_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "钢之斥责",
+  "slug": "magic_rebuke_(item_forge_grimoire)_ability_equipment_item_grimoire_good_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
+ },
+ {
+  "notes": [
+   {
+    "note": "无视视野惩罚"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对目标单位造成伤害",
+  "name": "钢刺",
+  "slug": "magic_spike_(item_forge_grimoire)_ability_equipment_item_grimoire_evil_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<fullaction></fullaction>",
+  "range": "8",
+  "icon": "0000049700000A0C"
+ },
+ {
+  "notes": [],
+  "description": "对邻近单位造成伤害",
+  "name": "钢之斥责",
+  "slug": "magic_rebuke_(item_forge_grimoire)_ability_equipment_item_grimoire_evil_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000049700000A29"
  },
  {
   "modifiers": [],
@@ -37335,6 +39647,9 @@
   "requisites": [
    {
     "requisite": "<hyperlink>移动</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
    }
   ],
   "accuracy": "始终命中",
@@ -37392,6 +39707,193 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "notes": [],
+  "description": "攻击指定敌方单位",
+  "name": "近战攻击",
+  "slug": "melee_strike_(item_forge_dual)_ability_equipment_item_breachgun_and_axe_base",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "description": "对2框格锥形范围内的所有单位造成伤害",
+  "name": "火焰破阵枪",
+  "slug": "blast_shot_(item_forge)_unit_property_ability_equipment_item_breachgun_and_axe_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000048D00002022"
+ },
+ {
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "魔法爆发",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_staff_staff_reaver_lintstock_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_equipment_item_staff_staff_reaver_lintstock_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有90%的基础概率施加瓦解防御，持续3<turn></turn>回合",
+    "name": "瓦解防御",
+    "count": 1
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "精神爆发",
+  "slug": "magic_hero_blast_(spirit)_ability_reaver_staff_of_spirit_item_tier_1",
+  "damage": "16<damagespirit></damagespirit> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_reaver_staff_of_spirit_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "notes": [],
+  "description": "攻击指定敌方单位",
+  "name": "近战攻击",
+  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
+  "damage": "12<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "1",
+  "icon": "000003BD000020C9"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：2<turn></turn>"
+   }
+  ],
+  "description": "对2框格锥形范围内的所有单位造成伤害",
+  "name": "火焰破阵枪",
+  "slug": "blast_shot_(item_forge)_unit_property_ability_breachgun_and_axe_tier_i",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>远程</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "0000048D00002022"
  },
  {
   "notes": [],
@@ -39007,7 +41509,7 @@
     "note": "每场战斗只能使用一次"
    }
   ],
-  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续<turn></turn>回合</bullet></bulletlist>",
+  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
   "name": "疯狂风暴",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -44138,7 +46640,7 @@
  {
   "modifiers": [
    {
-    "description": "无视至多5<defense></defense><hyperlink>防御</hyperlink>",
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
     "name": "穿刺",
     "count": 1
    },
@@ -44299,7 +46801,7 @@
  {
   "modifiers": [
    {
-    "description": "无视至多5<defense></defense><hyperlink>防御</hyperlink>",
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
     "name": "穿刺",
     "count": 1
    }
@@ -44383,8 +46885,8 @@
  {
   "modifiers": [
    {
-    "description": "无视至多5<defense></defense><hyperlink>防御</hyperlink>",
-    "name": "透甲者",
+    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
+    "name": "穿刺",
     "count": 1
    },
    {
@@ -46301,11 +48803,6 @@
   "icon": "000003BD000020C9"
  },
  {
-  "description": "当<hyperlink>失手</hyperlink>时，该单位损失10点<happiness></happiness><hyperlink>士气</hyperlink>",
-  "name": "失手绝望",
-  "slug": "0000049700003184"
- },
- {
   "description": "持续至该单位的下一场战斗结束时，该单位获得：<bulletlist><bullet>+20<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>+15<happiness></happiness><hyperlink>士气</hyperlink></bullet></bulletlist>",
   "name": "可怖献祭",
   "slug": "0000048d00001ba3",
@@ -46328,6 +48825,12 @@
   "name": "生命窃取",
   "slug": "000003eb000006b8",
   "icon": "0000049700000395"
+ },
+ {
+  "description": "<bulletlist><bullet>+2点<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>最多叠加5层</bullet></bulletlist>",
+  "name": "饱食",
+  "slug": "0000049700003a5c",
+  "icon": "0000049700003A5D"
  },
  {
   "description": "此单位获得：<bulletlist><bullet>其攻击+10%伤害</bullet><bullet>+10最大<hyperlink><hp></hp>生命值</hyperlink></bullet></bulletlist><br></br>叠加至多3层",
@@ -46360,12 +48863,6 @@
   "icon": "0000048B000005D6"
  },
  {
-  "description": "单位获得：<bulletlist><bullet>+50%伤害</bullet><bullet>长存</bullet><bullet>绝望铠甲</bullet></bulletlist>",
-  "name": "邪恶冠军",
-  "slug": "0000049700002da1",
-  "icon": "0000049700002C3D"
- },
- {
   "description": "本<turn></turn><hyperlink>回合</hyperlink>结束前，所有攻击与技能无视10<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink>与50%的<resistance></resistance><hyperlink>抗性</hyperlink>",
   "name": "无情施法",
   "slug": "000004c000000c4c",
@@ -46390,18 +48887,6 @@
   "icon": "0000048D0000191F"
  },
  {
-  "description": "单位获得：<bulletlist><bullet>屹立</bullet><bullet>无视<hyperlink>伤亡</hyperlink>带来的惩罚</bullet></bulletlist>",
-  "name": "英勇抵抗",
-  "slug": "0000049700002ac7",
-  "icon": "0000048D000018CE"
- },
- {
-  "description": "战斗开始时召唤2个III阶仲裁官单位",
-  "name": "天神护卫",
-  "slug": "0000049700002b97",
-  "icon": "0000049700002D8B"
- },
- {
   "description": "每层可让单位获得+10<hyperlink><hp></hp>生命值</hyperlink>",
   "name": "死神",
   "slug": "000004970000352f",
@@ -46412,6 +48897,12 @@
   "name": "鲜血贵族披风",
   "slug": "00000497000035c9",
   "icon": "00000497000035CA"
+ },
+ {
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d3f",
+  "icon": "0000049700003D54"
  },
  {
   "description": "其他单位死亡时，该单位获得：<bulletlist><bullet>+5<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>+2%<hyperlink><crit></crit>暴击概率</hyperlink></bullet></bulletlist><br></br>叠加至多10层",
@@ -46463,7 +48954,7 @@
  },
  {
   "description": "单位获得-2<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink>，直至下一场战斗结束",
-  "name": "幻形幽影仪式",
+  "name": "幻影仪式",
   "slug": "0000049700000c53",
   "icon": "0000049700000C16"
  },
@@ -46522,13 +49013,7 @@
   "icon": "000004C0000007FC"
  },
  {
-  "description": "单位免疫缓速",
-  "name": "状态效果免疫：缓速",
-  "slug": "0000048b000005dd",
-  "icon": "0000048B000005DB"
- },
- {
-  "description": "当此单位死亡时，它会治疗施法者一方4框格范围内的一个单位，恢复20<hyperlink><temphp></temphp>临时生命值</hyperlink>",
+  "description": "当此单位死亡时，它会治疗施法者一方4框格范围内的一个单位，根据其拥有的每层生命之种层数恢复15点<hyperlink><temphp></temphp>临时生命值</hyperlink><br></br><br></br>生命之种最多叠加至3层",
   "name": "生命种子",
   "slug": "000004c0000006fa",
   "icon": "0000049700002DB6"
@@ -46544,12 +49029,6 @@
   "name": "元素灌注",
   "slug": "000004c00000082c",
   "icon": "000004C0000007FC"
- },
- {
-  "description": "本回合下一次攻击造成+50%伤害",
-  "name": "鲜血赋能",
-  "slug": "0000049700002f16",
-  "icon": "0000049700002F18"
  },
  {
   "description": "获得：<bulletlist><bullet>+3<defenselightning></defenselightning><hyperlink>闪电防护</hyperlink></bullet><bullet>邻近的敌方单位受到-3<defenselightning></defenselightning><hyperlink>闪电防护</hyperlink></bullet></bulletlist>",
@@ -46624,7 +49103,7 @@
   "icon": "00000497000037D1"
  },
  {
-  "description": "单位获得：<bulletlist><bullet>缓慢移动</bullet><bullet><hyperlink>反击</hyperlink>减少一次</bullet></bulletlist><br></br><br></br>缓速<hyperlink>克制</hyperlink>加速",
+  "description": "单位获得：<bulletlist><bullet>-1<combatspeed></combatspeed><hyperlink>战斗速度</hyperlink></bullet><bullet><hyperlink>反击</hyperlink>减少一次</bullet></bulletlist><br></br><br></br>缓速<hyperlink>克制</hyperlink>加速",
   "name": "缓速",
   "slug": "0000041500000103",
   "icon": "000003E10000138D"
@@ -46666,6 +49145,12 @@
   "icon": "0000049700000F1B"
  },
  {
+  "description": "<bulletlist><bullet>+1<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
+  "name": "坚忍防御仪式",
+  "slug": "0000048b000010ba",
+  "icon": "0000048B000010BF"
+ },
+ {
   "description": "<bulletlist><bullet>针对该单位的<hyperlink>远程</hyperlink>与<hyperlink>魔法</hyperlink>攻击受到-10%<hyperlink><accuracy></accuracy>精度</hyperlink></bullet><bullet>叠加至多5层</bullet></bulletlist><br></br><br></br>闪避<hyperlink>克制</hyperlink>刻记",
   "name": "闪避",
   "slug": "0000041b00000536",
@@ -46684,10 +49169,22 @@
   "icon": "0000049700000CDC"
  },
  {
+  "description": "在下一次战斗结束前，此单位拥有：<bulletlist><bullet>复生</bullet><bullet>殉道者</bullet></bulletlist>",
+  "name": "狂热仪式",
+  "slug": "0000048b00001063",
+  "icon": "0000048B00001062"
+ },
+ {
   "description": "<bulletlist><bullet>攻击+1<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>恶魔单位获得+3%暴击概率</bullet><bullet>至多叠加5层</bullet></bulletlist><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
   "name": "地狱伟力",
   "slug": "000004970000364c",
   "icon": "0000049700000EC9"
+ },
+ {
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d37",
+  "icon": "0000049700003D54"
  },
  {
   "description": "指定连接单位陷入癫狂，持续1<turn></turn>回合<br></br><br></br>在本回合内无法获得感恩与投降",
@@ -46714,28 +49211,45 @@
   "icon": "0000041B00000B1A"
  },
  {
-  "description": "-2<defensefire></defensefire><hyperlink>火焰防护</hyperlink>",
-  "name": "深渊烈焰",
-  "slug": "0000049700003b1b",
-  "icon": "000003E300005AA8"
+  "description": "单位拥有：<bulletlist><bullet>+20%伤害</bullet><bullet>+10点最大<hyperlink><hp></hp>生命值</hyperlink></bullet></bulletlist>",
+  "name": "铭刻之力",
+  "slug": "0000049700003f0a"
  },
  {
-  "description": "单位获得：<bulletlist><bullet>极快移动</bullet><bullet>机敏</bullet></bulletlist>",
-  "name": "指挥：撤退",
-  "slug": "0000049700003750",
-  "icon": "0000049700003751"
+  "description": "单位：<bulletlist><bullet>拥有-20点最大<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>基础攻击有60%的基础概率施加镀金，持续1<turn></turn>回合</bullet><bullet>每<hyperlink>世界地图</hyperlink><turn></turn>回合获得+50<gold></gold><hyperlink>黄金</hyperlink></bullet></bulletlist>",
+  "name": "伊德嘉德的交易",
+  "slug": "0000049700003e0e",
+  "icon": "0000049700003E09"
  },
  {
-  "description": "<bulletlist><bullet>单位每<turn></turn>受到4点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>取代并视为失血，但可以无视状态效果免疫：失血</bullet><bullet>叠加至多5层</bullet></bulletlist><bulletlist><br></br>单位死亡时，生成一只由对方控制的<hyperlink>鲜血蛆虫</hyperlink>，持续至战斗结束</bulletlist>",
-  "name": "血寄生虫",
-  "slug": "0000049700002ef4",
-  "icon": "0000049700002EF5"
+  "description": "每层叠加使攻击+1<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink><br></br>每层叠加使单击攻击+2<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink>",
+  "name": "星剑：暗影",
+  "slug": "0000048d0000067e",
+  "icon": "000003E3000067B6"
  },
  {
-  "description": "该单位每回合可+1<hyperlink>反击</hyperlink>",
-  "name": "+1<hyperlink>反击</hyperlink>",
-  "slug": "0000041b000013b4",
-  "icon": "0000041B000013B5"
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d49",
+  "icon": "0000049700003D54"
+ },
+ {
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d53",
+  "icon": "0000049700003D54"
+ },
+ {
+  "description": "在你的<turn></turn><hyperlink>回合</hyperlink>开始时，在邻近<hyperlink>英雄</hyperlink>的位置召唤一只僵尸",
+  "name": "坟墓呼唤",
+  "slug": "0000045e00000353",
+  "icon": "0000041B00001BA7"
+ },
+ {
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d4e",
+  "icon": "0000049700003D54"
  },
  {
   "description": "单位为：<bulletlist><bullet>无敌</bullet><bullet>昏厥</bullet></bulletlist>",
@@ -46756,6 +49270,36 @@
   "icon": "000003E1000013CA"
  },
  {
+  "description": "当在战斗中施放法术时，根据法术的理念获得+2点抗性",
+  "name": "宇宙共振",
+  "slug": "0000049700003d44",
+  "icon": "0000049700003D54"
+ },
+ {
+  "description": "-2<defensefire></defensefire><hyperlink>火焰防护</hyperlink>",
+  "name": "深渊烈焰",
+  "slug": "0000049700003b1b",
+  "icon": "000003E300005AA8"
+ },
+ {
+  "description": "<bulletlist><bullet>+5点<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>造成+5%伤害</bullet><bullet>最多叠加10次</bullet></bulletlist>",
+  "name": "恶魔餍足",
+  "slug": "0000049700003a67",
+  "icon": "0000049700003A6C"
+ },
+ {
+  "description": "单位获得：<bulletlist><bullet>极快移动</bullet><bullet>机敏</bullet></bulletlist>",
+  "name": "指挥：撤退",
+  "slug": "0000049700003750",
+  "icon": "0000049700003751"
+ },
+ {
+  "description": "该单位每回合可+1<hyperlink>反击</hyperlink>",
+  "name": "+1<hyperlink>反击</hyperlink>",
+  "slug": "0000041b000013b4",
+  "icon": "0000041B000013B5"
+ },
+ {
   "description": "单位获得：<bulletlist><bullet>+20%伤害</bullet><bullet>+10%<hyperlink>暴击</hyperlink>概率</bullet><bullet>+25%<hyperlink>暴击</hyperlink>伤害</bullet></bulletlist>",
   "name": "使徒之血",
   "slug": "0000049700003407",
@@ -46774,10 +49318,27 @@
   "icon": "000004970000327B"
  },
  {
+  "description": "当<hyperlink>失手</hyperlink>时，该单位损失10点<happiness></happiness><hyperlink>士气</hyperlink>",
+  "name": "失手绝望",
+  "slug": "0000049700003184"
+ },
+ {
   "description": "当此单位使用技能时：<bulletlist><bullet>受到8<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>损失4<happiness></happiness><hyperlink>士气</hyperlink></bullet><bullet>该效果失去一层</bullet><bullet>叠加至多5层</bullet></bulletlist><br></br><br></br>折磨<hyperlink>克制</hyperlink>恩典",
   "name": "折磨",
   "slug": "0000049700003110",
   "icon": "0000049700003114"
+ },
+ {
+  "description": "<bulletlist><bullet>单位每<turn></turn>受到4点<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>取代并视为失血，但可以无视状态效果免疫：失血</bullet><bullet>叠加至多5层</bullet></bulletlist><bulletlist><br></br>单位死亡时，生成一只由对方控制的<hyperlink>鲜血蛆虫</hyperlink>，持续至战斗结束</bulletlist>",
+  "name": "血寄生虫",
+  "slug": "0000049700002ef4",
+  "icon": "0000049700002EF5"
+ },
+ {
+  "description": "本回合下一次攻击造成+50%伤害",
+  "name": "鲜血赋能",
+  "slug": "0000049700002f16",
+  "icon": "0000049700002F18"
  },
  {
   "description": "受到攻击时，在攻方侧召唤3名拥有邪恶冠军的骷髅",
@@ -46786,10 +49347,22 @@
   "icon": "0000049700002C39"
  },
  {
+  "description": "单位获得：<bulletlist><bullet>+50%伤害</bullet><bullet>长存</bullet><bullet>绝望铠甲</bullet></bulletlist>",
+  "name": "邪恶冠军",
+  "slug": "0000049700002da1",
+  "icon": "0000049700002C3D"
+ },
+ {
   "description": "该单位：<bulletlist><bullet>受支配</bullet><bullet>狂战</bullet><bullet>造成的伤害+20%</bullet></bulletlist>",
   "name": "狂喜支配",
   "slug": "0000049700000a61",
   "icon": "0000049700000A62"
+ },
+ {
+  "description": "攻击不会落空<br></br><br></br>真实攻击<hyperlink>克制</hyperlink>致盲",
+  "name": "真实攻击",
+  "slug": "0000041300000cfa",
+  "icon": "0000041300000CFC"
  },
  {
   "description": "单位：<bulletlist><bullet>无视 50%的<hyperlink>伤亡</hyperlink></bullet><bullet>获得+1<defense></defense><hyperlink>防御</hyperlink></bullet><bullet>获得+1<resistance></resistance><hyperlink>抗性</hyperlink></bullet></bulletlist>",
@@ -46798,10 +49371,16 @@
   "icon": "0000049700002A9E"
  },
  {
-  "description": "攻击不会落空<br></br><br></br>真实攻击<hyperlink>克制</hyperlink>致盲",
-  "name": "真实攻击",
-  "slug": "0000041300000cfa",
-  "icon": "0000041300000CFC"
+  "description": "战斗开始时召唤2个III阶仲裁官单位",
+  "name": "天神护卫",
+  "slug": "0000049700002b97",
+  "icon": "0000049700002D8B"
+ },
+ {
+  "description": "单位获得：<bulletlist><bullet>屹立</bullet><bullet>无视<hyperlink>伤亡</hyperlink>带来的惩罚</bullet></bulletlist>",
+  "name": "英勇抵抗",
+  "slug": "0000049700002ac7",
+  "icon": "0000048D000018CE"
  },
  {
   "description": "此单位的攻击：<bulletlist><bullet>造成+20%伤害</bullet><bullet>有60%的基础概率冻结，持续1<turn></turn>回合</bullet></bulletlist>",
@@ -46852,6 +49431,12 @@
   "icon": "000004970000176C"
  },
  {
+  "description": "<hyperlink>近战</hyperlink>攻击造成+20%额外伤害",
+  "name": "蓄势攻击",
+  "slug": "0000048d00002045",
+  "icon": "0000048D00002046"
+ },
+ {
   "description": "该单位的攻击：<bulletlist><bullet>造成+20%伤害</bullet><bullet>有90%的基础概率施加瓦解防御，持续3<turn></turn>回合</bullet><bullet>有90%的基础概率施加瓦解抗性，持续3<turn></turn>回合</bullet></bulletlist>",
   "name": "锐化召唤武器",
   "slug": "0000049700001764",
@@ -46888,7 +49473,7 @@
   "icon": "0000049700000B2E"
  },
  {
-  "description": "当此效果结束后：<bulletlist><bullet>此单位遭受30<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>若有临近友方单位，则伤害减半</bullet></bulletlist>",
+  "description": "当此效果结束后：<bulletlist><bullet>此单位遭受30<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>若有邻近友方单位，则伤害减半</bullet></bulletlist>",
   "name": "幽影放逐",
   "slug": "0000049700000dbe",
   "icon": "0000049700000DBF"
@@ -47019,13 +49604,37 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "该单位被复活并转化为<hyperlink>受祝之魂</hyperlink>。该效果失效时，单位将会溃逃",
+  "name": "仁慈复生",
+  "slug": "000004930000174c",
+  "icon": "0000048D00001B1A"
+ },
+ {
+  "description": "单位+1<hyperlink>反击</hyperlink>",
+  "name": "觉醒（护卫）",
+  "slug": "000003e300004edd",
+  "icon": "000003E300004C79"
+ },
+ {
+  "description": "该单位造访了水银盆地，暂时获得：<bulletlist><bullet>快速移动</bullet></bulletlist>",
+  "name": "水银盆地",
+  "slug": "00000493000004a7",
+  "icon": "00000493000004A8"
+ },
+ {
+  "description": "<bulletlist><bullet>战斗开始时，防守方的<hyperlink>巨像企鹅</hyperlink>每有一个防守方的<hyperlink>恐怖企鹅</hyperlink>，就获得+25点<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>每当一个防守方的<hyperlink>恐怖企鹅</hyperlink>死亡，防守方的巨像企鹅就失去25点<hp></hp>生命值</bullet></bulletlist>",
+  "name": "恐怖女王",
+  "slug": "00000493000015c1",
+  "icon": "00000493000015D3"
+ },
+ {
   "description": "此状态效果到期时，该单位死亡",
   "name": "已毁灭",
   "slug": "00000493000012ce",
   "icon": "0000048D00001B1A"
  },
  {
-  "description": "<bulletlist><bullet>单位每<turn></turn>遭受3 <damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink></bullet><bullet>战斗中单位-25%治疗</bullet><bullet>叠加至多4层<br></br><br></br>衰减<hyperlink>克制</hyperlink>再生</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>单位每<turn></turn>遭受3<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink></bullet><bullet>战斗中单位-25%治疗</bullet><bullet>叠加至多4层<br></br><br></br>衰减<hyperlink>克制</hyperlink>再生</bullet></bulletlist>",
   "name": "衰朽",
   "slug": "000003e300005b7e",
   "icon": "000003E300005B80"
@@ -47061,18 +49670,6 @@
   "icon": "00000493000004A8"
  },
  {
-  "description": "单位+1<hyperlink>反击</hyperlink>",
-  "name": "觉醒（护卫）",
-  "slug": "000003e300004edd",
-  "icon": "000003E300004C79"
- },
- {
-  "description": "该单位造访了水银盆地，暂时获得：<bulletlist><bullet>快速移动</bullet></bulletlist>",
-  "name": "水银盆地",
-  "slug": "00000493000004a7",
-  "icon": "00000493000004A8"
- },
- {
   "description": "刻记达到时限时，此单位将会转变为更强大的动物或巨龙单位",
   "name": "进化刻记",
   "slug": "00000493000001bd",
@@ -47083,6 +49680,18 @@
   "name": "镀金",
   "slug": "000003e300005d8e",
   "icon": "000003E300005D92"
+ },
+ {
+  "description": "拥有联邦士兵的单位发起攻击时获得：<bulletlist><bullet>+20%<hyperlink><accuracy></accuracy>精度</hyperlink></bullet><bullet>+20%伤害</bullet></bulletlist>",
+  "name": "受到征召兵牵制",
+  "slug": "0000048d00001faf",
+  "icon": "0000048D00001FBE"
+ },
+ {
+  "description": "<hyperlink>远程</hyperlink>攻击造成+20%额外伤害",
+  "name": "蓄势射击",
+  "slug": "0000048d00002049",
+  "icon": "0000048D0000204A"
  },
  {
   "description": "该单位在其下一回合开始时获得强化动能",
@@ -47131,6 +49740,12 @@
   "name": "黑暗帷幕",
   "slug": "0000041b0000178f",
   "icon": "0000041B00001725"
+ },
+ {
+  "description": "<bulletlist><bullet>此单位处于狂战状态</bullet><bullet>此单位已被对手控制<br></br>如果在战斗结束时该效果仍未结束，则控制方可以花费<mana></mana>来永久获得该单位</bullet></bulletlist>",
+  "name": "刺激支配",
+  "slug": "00000497000041c3",
+  "icon": "00000497000041C4"
  },
  {
   "description": "英雄拥有-1的<arcana></arcana>星辰<hyperlink>理念</hyperlink>。此效果可以叠加",
@@ -47191,12 +49806,6 @@
   "name": "灵魂召唤正在重新充能",
   "slug": "0000048d00000738",
   "icon": "0000048D00000728"
- },
- {
-  "description": "每层叠加使攻击+1<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink><br></br>每层叠加使单击攻击+2<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink>",
-  "name": "星剑：暗影",
-  "slug": "0000048d0000067e",
-  "icon": "000003E3000067B6"
  },
  {
   "description": "每层叠加使攻击+1<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink><br></br>每层叠加使单击攻击+2<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink>",
@@ -47281,6 +49890,12 @@
   "name": "静电冲击",
   "slug": "0000045e000002ee",
   "icon": "000003E300005EBD"
+ },
+ {
+  "description": "单位拥有-2点<defenseblight></defenseblight><hyperlink>疫病防护</hyperlink>",
+  "name": "毁灭再生",
+  "slug": "0000048b00001355",
+  "icon": "000003E30000522E"
  },
  {
   "description": "此单位的攻击+5<damageFire></damageFire><hyperlink>火焰伤害</hyperlink><br></br>单击攻击的效果<hyperlink>增强了</hyperlink>",
@@ -47385,12 +50000,6 @@
   "icon": "000003E300004EE9"
  },
  {
-  "description": "在你的<turn></turn><hyperlink>回合</hyperlink>开始时，在邻近<hyperlink>英雄</hyperlink>的位置召唤一只僵尸",
-  "name": "坟墓呼唤",
-  "slug": "0000045e00000353",
-  "icon": "0000041B00001BA7"
- },
- {
   "description": "-5<statuseffectresistance></statuseffectresistance><hyperlink>状态抗性</hyperlink>",
   "name": "极速冻结",
   "slug": "0000045e0000032f",
@@ -47457,13 +50066,13 @@
   "icon": "000003E1000013D0"
  },
  {
-  "description": "<bulletlist><bullet>在回合结束时失去-2 <happiness></happiness><hyperlink>士气</hyperlink></bullet><bullet>叠加至多5层</bullet></bulletlist><br></br><br></br>悔恨<hyperlink>克制</hyperlink> 振作",
+  "description": "<bulletlist><bullet>在回合结束时失去-2<happiness></happiness><hyperlink>士气</hyperlink></bullet><bullet>叠加至多5层</bullet></bulletlist><br></br><br></br>悔恨<hyperlink>克制</hyperlink>振作",
   "name": "悔恨",
   "slug": "0000041b00000bb1",
   "icon": "0000041B000004C3"
  },
  {
-  "description": "单位获得：<bulletlist><bullet>极快移动</bullet><bullet>额外一次<hyperlink>反击</hyperlink></bullet></bulletlist><br></br><br></br>加速<hyperlink>克制</hyperlink>缓速",
+  "description": "单位获得：<bulletlist><bullet>+1<combatspeed></combatspeed><hyperlink>战斗速度</hyperlink></bullet><bullet>额外一次<hyperlink>反击</hyperlink></bullet></bulletlist><br></br><br></br>加速<hyperlink>克制</hyperlink>缓速",
   "name": "加速",
   "slug": "0000045e000002ed",
   "icon": "000003E10000138E"
@@ -47667,12 +50276,6 @@
   "icon": "0000049700002E01"
  },
  {
-  "description": "该单位死亡时，将其转化为受敌方操控的<hyperlink>地狱幼犬</hyperlink><br></br><br></br>若该幼犬在战斗中幸存，则该单位进化，且敌方可以支付<mana></mana><hyperlink>魔力</hyperlink>将其保留",
-  "name": "炼狱烙印",
-  "slug": "000003e300005ac0",
-  "icon": "000003E300005AC7"
- },
- {
   "description": "<bulletlist><bullet>+10最大<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>+2<resistance></resistance><hyperlink>抗性</hyperlink></bullet><bullet>至多叠加5次</bullet></bulletlist>",
   "name": "吸收思维",
   "slug": "000003e3000056e7",
@@ -47849,7 +50452,7 @@
     "note": "每场战斗只能使用一次"
    }
   ],
-  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续<turn></turn>回合</bullet></bulletlist>",
+  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
   "name": "疯狂风暴",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",
@@ -48079,6 +50682,26 @@
    }
   ],
   "icon": "000003E300005382"
+ },
+ {
+  "notes": [
+   {
+    "note": "冷却：3<turn></turn>"
+   }
+  ],
+  "description": "指定友方单位获得：<bulletlist><bullet>2层恩典</bullet><bullet>2层保护状态，持续3个<turn></turn>回合</bullet></bulletlist>",
+  "name": "魔法护盾",
+  "slug": "magic_shield_infusion_ability_magic_shield_infusion_equipment_upgrade",
+  "damage": "",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
+  "accuracy": "始终命中",
+  "actionPoints": "<leaveoneaction></leaveoneaction>",
+  "range": "4",
+  "icon": "0000049700004180"
  },
  {
   "notes": [
@@ -48678,10 +51301,10 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：3<turn></turn>"
    }
   ],
-  "description": "有60%的基础概率令指定敌方单位陷入受支配，持续3<turn></turn>回合<br></br>如果失败，该单位将陷入分神",
+  "description": "有90%的基础概率令指定敌方单位陷入受支配，持续3<turn></turn>回合<br></br>如果失败，该单位将陷入分神",
   "name": "诱惑",
   "slug": "seduce_ability_equipment_upgrade_active_staff_seduce",
   "damage": "",
@@ -48788,7 +51411,7 @@
   ],
   "accuracy": "始终命中",
   "actionPoints": "<freeaction></freeaction>",
-  "range": "5",
+  "range": "6",
   "icon": "000003E300005B60"
  },
  {
@@ -48806,7 +51429,7 @@
   ],
   "description": "指定敌方单位与另一个3框格内的单位遭受伤害",
   "name": "瓦解诅咒",
-  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_staff_sundering_curse",
+  "slug": "sundering_curse_ability_no_base_equipment_upgrade_active_staff_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -49105,10 +51728,10 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：3<turn></turn>"
    }
   ],
-  "description": "有60%的基础概率令指定敌方单位陷入受支配，持续3<turn></turn>回合<br></br>如果失败，该单位将陷入分神",
+  "description": "有90%的基础概率令指定敌方单位陷入受支配，持续3<turn></turn>回合<br></br>如果失败，该单位将陷入分神",
   "name": "诱惑",
   "slug": "seduce_ability_equipment_upgrade_active_wand_seduce",
   "damage": "",
@@ -49215,7 +51838,7 @@
   ],
   "accuracy": "始终命中",
   "actionPoints": "<freeaction></freeaction>",
-  "range": "5",
+  "range": "6",
   "icon": "000003E300005B60"
  },
  {
@@ -49233,7 +51856,7 @@
   ],
   "description": "指定敌方单位与另一个3框格内的单位遭受伤害",
   "name": "瓦解诅咒",
-  "slug": "sundering_curse_ability_not_base_equipment_upgrade_active_wand_sundering_curse",
+  "slug": "sundering_curse_ability_no_base_equipment_upgrade_active_wand_sundering_curse",
   "damage": "16<damagefrost></damagefrost> ",
   "requisites": [
    {
@@ -49895,12 +52518,12 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：4<turn></turn>"
    }
   ],
   "description": "指定<hyperlink>鲜花障碍</hyperlink>转化为受你控制的<hyperlink>鲜花尖刺</hyperlink>单位。<br></br>此项召唤持续3<turn></turn>回合",
   "name": "活化鲜花",
-  "slug": "awaken_flora_ability_equipment_upgrade_active_staff_awaken_flora",
+  "slug": "awaken_flora_ability_item_forge_equipment_upgrade_active_staff_awaken_flora",
   "damage": "",
   "requisites": [
    {
@@ -49911,7 +52534,7 @@
    }
   ],
   "accuracy": "始终命中",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "0000041B00000EC9"
  },
@@ -50010,9 +52633,6 @@
   "requisites": [
    {
     "requisite": "<hyperlink>近战</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
    }
   ],
   "accuracy": "100%",
@@ -50142,12 +52762,6 @@
   "description": "基础攻击对<hyperlink>英雄</hyperlink>单位+40%伤害",
   "name": "英雄杀手",
   "slug": "0000045e00000bfb",
-  "icon": "000003E3000055A5"
- },
- {
-  "description": "基础攻击对亡灵单位+40%伤害",
-  "name": "亡灵杀手",
-  "slug": "0000045e00000be2",
   "icon": "000003E3000055A5"
  },
  {
@@ -50374,12 +52988,12 @@
     "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    },
    {
-    "note": "冷却：2<turn></turn>"
+    "note": "冷却：4<turn></turn>"
    }
   ],
   "description": "指定<hyperlink>鲜花障碍</hyperlink>转化为受你控制的<hyperlink>鲜花尖刺</hyperlink>单位。<br></br>此项召唤持续3<turn></turn>回合",
   "name": "活化鲜花",
-  "slug": "awaken_flora_ability_equipment_upgrade_active_wand_awaken_flora",
+  "slug": "awaken_flora_ability_item_forge_equipment_upgrade_active_wand_awaken_flora",
   "damage": "",
   "requisites": [
    {
@@ -50390,7 +53004,7 @@
    }
   ],
   "accuracy": "始终命中",
-  "actionPoints": "<freeaction></freeaction>",
+  "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
   "icon": "0000041B00000EC9"
  },
