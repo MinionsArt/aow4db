@@ -19,18 +19,12 @@
         <script>
            
             function HandlePage() {
-                if(showBetaTooltip.checked){
+              
                        let unitarray =  GetCultureUnitsOf("Reaver", "Federate");
                   let unitarray2 =  GetCultureUnitsOf("Reaver", "Imperial");
                 SetButtonsAndDivs(unitarray, "buttonHolder1", "unit", "dataHolder1", "Federate");
                 SetButtonsAndDivs(unitarray2, "buttonHolder2", "unit", "dataHolder2", "Imperial");
-                }else{
-                       const unitarray = GetCultureUnitsOf("Reaver");
-                SetButtonsAndDivs(unitarray, undefined, "unit");
-                }
-                
-
-                
+               
              
                 SetLevelUpStuff();
             }

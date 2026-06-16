@@ -7,6 +7,8 @@ const errorImage = "/aow4db/Icons/Text/exclamationpoint.png";
 const checkboxTooltip = document.getElementById("tooltipCheckbox");
 const checkboxNumbers = document.getElementById("numbersCheckbox");
 const showBetaTooltip = document.getElementById("showBetaCheckbox");
+
+const showSecretSpells = document.getElementById("showSecretSpellsCheckbox");
 const languageSelect = document.getElementById("languageSelect");
 
 function highlightNumbersInDiv(text) {
@@ -200,6 +202,11 @@ function GetUnitTierAndName(id, subcultureCheck) {
         // Prepare the unit's name
         let name = unitLoc.name;
 
+        // check for secret spells
+        if (checkSecretSpell(unit.id)) {
+            name = "???";
+        }
+
         // Add mount special tags if applicable
         if (MountedSpecialList.includes(id) || CheckIfOptionalCavalry(id)) {
             name += " <mountSpecial></mountSpecial>";
@@ -276,11 +283,13 @@ function GetTomeTierAndNameTome(id) {
             let affinitiesdual = tome.affinities.split(", ");
 
             for (let i = 0; i < affinitiesdual.length; i++) {
-                let affinities = affinitiesdual[i].split(" ");
-                allAffinity += affinities[0] + affinities[1];
+                if (affinitiesdual[i].indexOf("reputa") == -1) {
+                    let affinities = affinitiesdual[i].split(" ");
+                    allAffinity += affinities[0] + affinities[1];
 
-                allAffinity = expandTags(allAffinity);
-                allAffinity = allAffinity.replaceAll(",", "");
+                    allAffinity = expandTags(allAffinity);
+                    allAffinity = allAffinity.replaceAll(",", "");
+                }
             }
         }
 
@@ -642,6 +651,11 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
 
             showHeroTraitFromList(list, overwrite);
+            break;
+              case "searchRelics":
+            dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
+
+            showRelicsFromList(list, overwrite);
             break;
 
         case "searchInfusion":
@@ -2002,6 +2016,13 @@ async function showHeroTraitFromList(list, divID) {
         showHeroTrait(list[i].id, cards[i]);
     }
 }
+async function showRelicsFromList(list, divID) {
+    let cards = await spawnSpellCards(list, divID);
+
+    for (let i = 0; i < list.length; i++) {
+        showRelic(list[i].id, cards[i]);
+    }
+}
 
 async function showInfusionsFromList(list, divID) {
     // let cards = await spawnSpellCards(list, divID);
@@ -2556,9 +2577,9 @@ function findRelics(argumentType) {
     let finalCheckedList = [];
 
     for (let j = 0; j < jsonRelics.length; j++) {
-        // if (jsonCosmicHappenings[j].type == argumentType) {
-        finalCheckedList.push(jsonRelics[j].id);
-        //}
+        if (jsonRelics[j].DLC == argumentType) {
+            finalCheckedList.push(jsonRelics[j].id);
+        }
     }
 
     return finalCheckedList;
@@ -2642,6 +2663,22 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     }
     if (unitCard == undefined) {
         unitCard = document.getElementById("unitCard" + unitEN.id + unitEN.sub_culture_name);
+    }
+
+    if (checkSecretSpell(unitEN.id)) {
+        unitCard.classList.add("blurred");
+        let clicker = document.createElement("Div");
+
+        let clickerHolder = document.createElement("Div");
+        unitCard.parentElement.prepend(clickerHolder);
+        clickerHolder.className = "unblurHolder";
+
+        clickerHolder.append(clicker);
+        clicker.className = "unblurclicker";
+        clicker.innerHTML = "Click to reveal";
+        clicker.innerHTML += "<br><br>(Change Top-left Setting: Show Secret Spells to disable)";
+
+        clicker.addEventListener("click", (event) => Unblur(unitCard, clickerHolder, event));
     }
 
     imagelink = unitCard.querySelector("img#vid");
@@ -3422,8 +3459,9 @@ function showAffinitySymbols(tomes) {
 
     for (let i = 0; i < affinitiesdual.length; i++) {
         let affinities = affinitiesdual[i];
-
-        allAffinity += affinities;
+        if (affinitiesdual[i].indexOf("reputation") == -1) {
+            allAffinity += affinities;
+        }
     }
     allAffinity = ClearAffinityExtraTags(duplicateTags(allAffinity));
     allAffinity = allAffinity.replaceAll(",", "");
@@ -4003,11 +4041,13 @@ function showTome(a, divOrigin) {
 
         let allAffinity = "";
         for (let i = 0; i < affinitiesdual.length; i++) {
-            let affinities = affinitiesdual[i].split(" ");
-            allAffinity += affinities[0] + affinities[1];
+            if (affinitiesdual[i].indexOf("reputa") == -1) {
+                let affinities = affinitiesdual[i].split(" ");
+                allAffinity += affinities[0] + affinities[1];
 
-            allAffinity = expandTags(allAffinity);
-            allAffinity = allAffinity.replaceAll(",", "");
+                allAffinity = expandTags(allAffinity);
+                allAffinity = allAffinity.replaceAll(",", "");
+            }
         }
 
         descriptionDiv.innerHTML = "Tier " + romanize(tomeEN.tier) + " - " + allAffinity + " " + "<br>" + description;
@@ -4033,13 +4073,15 @@ function showTome(a, divOrigin) {
 
         let allAffinity = "";
         for (let i = 0; i < affinitiesdual.length; i++) {
-            let affinities = affinitiesdual[i].split(" ");
-            // add a new line for each additional affinity
-            if (i !== 0) {
-                allAffinity += "<br>";
+            if (affinitiesdual[i].indexOf("reputa") == -1) {
+                let affinities = affinitiesdual[i].split(" ");
+                // add a new line for each additional affinity
+                if (i !== 0) {
+                    allAffinity += "<br>";
+                }
+                // example output: +1 <empirenature></empirenature> Nature Affinity
+                allAffinity += `+${affinities[0]} ${affinities[1]} ${affinities[3]} ${affinities[4]}`;
             }
-            // example output: +1 <empirenature></empirenature> Nature Affinity
-            allAffinity += `+${affinities[0]} ${affinities[1]} ${affinities[3]} ${affinities[4]}`;
         }
         div.innerHTML = allAffinity;
         unitTypesDiv.appendChild(div);
@@ -4495,7 +4537,7 @@ function GetHeroSkillName(skillID) {
 
 function GetHeroSkillDescription(skillID) {
     let array = ["", ""];
-    
+
     for (let j = 0; j < jsonHeroSkills.length; j++) {
         if (jsonHeroSkills[j].id == skillID) {
             if ("abilities" in jsonHeroSkills[j]) {
@@ -4643,131 +4685,159 @@ function showCosmicHappening(a, divOrigin) {
     let modName,
         description,
         nameString = "";
-    
-   const happening =  findBy(jsonCosmicHappenings, "id", a);
-    if(happening == undefined){
+
+    const happening = findBy(jsonCosmicHappenings, "id", a);
+    if (happening == undefined) {
         console.log("couldnt find happening " + a);
         return;
     }
-   
-            modName = divOrigin.querySelector("#modname");
-            nameString = "";
-            nameString = happening.name.toUpperCase();
 
-            if (modName == undefined) {
-            }
-            modName.innerHTML = nameString;
-            modName.className = "mod_name";
+    modName = divOrigin.querySelector("#modname");
+    nameString = "";
+    nameString = happening.name.toUpperCase();
 
-            let descriptionDiv = divOrigin.querySelector("#moddescription");
-            descriptionDiv.setAttribute("style", "max-width:560px;");
-            description = happening.description;
+    if (modName == undefined) {
+    }
+    modName.innerHTML = nameString;
+    modName.className = "mod_name";
 
-            if ("extraLookup" in happening) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", happening.extraLookup);
-                description = valueLookup.description;
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
+    descriptionDiv.setAttribute("style", "max-width:560px;");
+    description = happening.description;
 
-                modName.innerHTML = valueLookup.name.toUpperCase();
-            }
-            descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
+    if ("extraLookup" in happening) {
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", happening.extraLookup);
+        description = valueLookup.description;
 
-            let imagelink = divOrigin.querySelector("#modicon");
+        modName.innerHTML = valueLookup.name.toUpperCase();
+    }
+    descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
 
-            let categoryLink = happening.category.replaceAll(" ", "");
-            categoryLink = categoryLink.replaceAll("of", "Of");
-            imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
+    let imagelink = divOrigin.querySelector("#modicon");
 
-            let preview = divOrigin.querySelector("#structurepreview");
-            let imagePos = happening.image;
+    let categoryLink = happening.category.replaceAll(" ", "");
+    categoryLink = categoryLink.replaceAll("of", "Of");
+    imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
 
-            preview.className = "cosmicHappeningPic";
-            preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
+    let preview = divOrigin.querySelector("#structurepreview");
+    let imagePos = happening.image;
 
-            preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
+    preview.className = "cosmicHappeningPic";
+    preview.setAttribute("style", 'background-image: url("/aow4db/Icons/CosmicHappenings/' + imagePos);
 
-            let modtier = divOrigin.querySelector("#modtier");
-            modtier.innerHTML = "Category: " + happening.category;
+    preview.setAttribute("src", "/aow4db/Icons/Interface/Runecircle.png");
 
-            let modcost = divOrigin.querySelector("#modcost");
-            let duration = happening.duration;
-            if (duration == -1) {
-                duration = "Variable";
-            } else {
-                duration += "<turn></turn>";
-            }
-            modcost.innerHTML = "Duration: " + duration;
+    let modtier = divOrigin.querySelector("#modtier");
+    modtier.innerHTML = "Category: " + happening.category;
 
+    let modcost = divOrigin.querySelector("#modcost");
+    let duration = happening.duration;
+    if (duration == -1) {
+        duration = "Variable";
+    } else {
+        duration += "<turn></turn>";
+    }
+    modcost.innerHTML = "Duration: " + duration;
 }
 
 function showRelic(a, divOrigin) {
     let modName,
         description,
         nameString = "";
-    
-      const relic =  findBy(jsonRelics, "id", a);
-    
-      if(relic == undefined){
+
+    const relic = findBy(jsonRelics, "id", a);
+
+    if (relic == undefined) {
         console.log("couldnt find relic " + a);
         return;
     }
-            modName = divOrigin.querySelector("#modname");
-            nameString = "";
-            nameString = relic.name.toUpperCase();
+    modName = divOrigin.querySelector("#modname");
+    nameString = "";
+    nameString = relic.name.toUpperCase();
 
-            if (modName == undefined) {
+    if (modName == undefined) {
+    }
+    modName.innerHTML = nameString;
+    modName.className = "mod_name";
+
+    let descriptionDiv = divOrigin.querySelector("#moddescription");
+    descriptionDiv.setAttribute("style", "max-width:560px;");
+    
+    
+
+    if ("extraLookup" in relic) {
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.extraLookup);
+        console.log(valueLookup.description);
+        description = valueLookup.description;
+
+        modName.innerHTML = valueLookup.name.toUpperCase();
+    }
+
+    if ("unlock" in relic) {
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock);
+        console.log(valueLookup.description);
+
+        description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
+        description += valueLookup.description;
+    }
+    if ("unlock2" in relic) {
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock2);
+        console.log(valueLookup.description);
+        description += "<hr>";
+        if (valueLookup.name) {
+            description += valueLookup.name.toUpperCase() + "<br>";
+        }
+
+        description += valueLookup.description;
+    }
+    if ("unlock3" in relic) {
+        const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock3);
+        console.log(valueLookup.description);
+
+        description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
+        description += valueLookup.description;
+    }
+
+    if ("DLC" in relic) {
+        let newDivForMount = AddDLCTag(relic.DLC);
+        modName.append(newDivForMount);
+    }
+    descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
+
+    let imagelink = divOrigin.querySelector("#modicon");
+
+    imagelink.setAttribute("src", "/aow4db/Icons/RelicIcons/" + relic.icon + ".png");
+
+    if ("spell" in relic) {
+        
+        
+        for (const spell of relic.spell) {
+            
+             if (checkSecretSpell(spell.id)) {
+            const blurPart = divOrigin.querySelector(".mod_description");
+            blurPart.classList.add("blurred");
+            let clickerHolder = document.createElement("Div");
+            divOrigin.prepend(clickerHolder);
+            clickerHolder.className = "unblurHolder";
+            let clicker = document.createElement("Div");
+            clickerHolder.append(clicker);
+            clicker.className = "unblurclicker";
+            clicker.innerHTML = "Click to reveal";
+            clicker.innerHTML += "<br><br>(Change Top-left Setting: Show Secret Spells to disable)";
+            clicker.addEventListener("click", (event) => Unblur(blurPart, clickerHolder, event));
+        }
+            const fragment = spell_card_template.content.cloneNode(true);
+            const element = fragment.firstElementChild;
+            if (element) {
+                element.style.left = "-40px";
+                element.style.position = "relative";
             }
-            modName.innerHTML = nameString;
-            modName.className = "mod_name";
+            descriptionDiv.appendChild(element);
+            showSpell(spell.id, false, element);
+        }
+    }
 
-            let descriptionDiv = divOrigin.querySelector("#moddescription");
-            descriptionDiv.setAttribute("style", "max-width:560px;");
-
-            if ("extraLookup" in relic) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.extraLookup);
-                console.log(valueLookup.description);
-                description = valueLookup.description;
-
-                modName.innerHTML = valueLookup.name.toUpperCase();
-            }
-
-            if ("unlock" in relic) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock);
-                console.log(valueLookup.description);
-
-                description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
-                description += valueLookup.description;
-            }
-            if ("unlock2" in relic) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock2);
-                console.log(valueLookup.description);
-                description += "<hr>";
-                if (valueLookup.name) {
-                    description += valueLookup.name.toUpperCase() + "<br>";
-                }
-
-                description += valueLookup.description;
-            }
-            if ("unlock3" in relic) {
-                const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.unlock3);
-                console.log(valueLookup.description);
-
-                description += "<hr>" + valueLookup.name.toUpperCase() + "<br>";
-                description += valueLookup.description;
-            }
-
-            if ("DLC" in relic) {
-                let newDivForMount = AddDLCTag(relic.DLC);
-                modName.append(newDivForMount);
-            }
-            descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
-
-            /* let imagelink = divOrigin.querySelector("#modicon");
-
-            let categoryLink = jsonCosmicHappenings[j].category.replaceAll(" ", "");
-            categoryLink = categoryLink.replaceAll("of", "Of");
-            imagelink.setAttribute("src", "/aow4db/Icons/CosmicHappenings/category_icon_" + categoryLink + ".png");
-
-            let preview = divOrigin.querySelector("#structurepreview");
+    /* let preview = divOrigin.querySelector("#structurepreview");
             let imagePos = jsonCosmicHappenings[j].image;
 
             preview.className = "cosmicHappeningPic";
@@ -4787,8 +4857,6 @@ function showRelic(a, divOrigin) {
             }
             modcost.innerHTML = "Duration: " + duration;
             */
-
-      
 }
 
 function showWorldStructure(a, divOrigin) {
@@ -4825,7 +4893,7 @@ function showWorldStructure(a, divOrigin) {
     }
 
     let descriptionDiv = divOrigin.querySelector("#moddescription");
-    descriptionDiv.setAttribute("style", "max-width:560px;");
+    descriptionDiv.setAttribute("style", "max-width:467px;");
     description = "";
 
     if (structure.type.indexOf("wonder") != -1) {
@@ -4944,6 +5012,7 @@ function showWorldStructure(a, divOrigin) {
     }
 
     let spellDesc = "";
+    const extraSpellsDiv = document.createElement("div");
     if ("spell_unlocks" in structure) {
         // if a lookup link
         if (structure.spell_unlocks.indexOf("@") != -1) {
@@ -4964,15 +5033,22 @@ function showWorldStructure(a, divOrigin) {
                 );
             }
         } else {
-            description = description.replaceAll(
-                "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>",
-                structure.spell_unlocks + "<casttactical></casttactical> <hyperlink>Combat Enchantment</hyperlink>"
-            );
+            for (const spell of structure.spell_unlocks) {
+                const fragment = spell_card_template.content.cloneNode(true);
+                const element = fragment.firstElementChild;
+                if (element) {
+                    element.style.left = "-40px";
+                    element.style.position = "relative";
+                }
+                extraSpellsDiv.appendChild(element);
+                showSpell(spell.id, false, element);
+            }
         }
     }
 
     descriptionDiv.innerHTML = AddTagIconsForStatusEffects(description);
     descriptionDiv.innerHTML = descriptionDiv.innerHTML.replaceAll("{LOC.CONCEPT@HITPOINTS@NAME}", "<hp></hp>");
+    descriptionDiv.append(extraSpellsDiv);
     const insertDiv = divOrigin.querySelector("#test");
     const spaDes2 = document.createElement("span");
 
@@ -5718,7 +5794,21 @@ function showSpell(a, showOrigin, divOrigin) {
         let modCard = divOrigin;
 
         let modName = modCard.querySelector("#modname");
+
         modName.innerHTML = spellFound.name.toUpperCase();
+        if (checkSecretSpell(spellFoundEN.id)) {
+            const blurPart = divOrigin.querySelector(".mod_image_holder");
+            blurPart.classList.add("blurred");
+            let clickerHolder = document.createElement("Div");
+            divOrigin.prepend(clickerHolder);
+            clickerHolder.className = "unblurHolder";
+            let clicker = document.createElement("Div");
+            clickerHolder.append(clicker);
+            clicker.className = "unblurclicker";
+            clicker.innerHTML = "Click to reveal";
+            clicker.innerHTML += "<br><br>(Change Top-left Setting: Show Secret Spells to disable)";
+            clicker.addEventListener("click", (event) => Unblur(blurPart, clickerHolder, event));
+        }
         let description = "<hr>";
         let descriptionDiv = modCard.querySelector("#moddescription");
 
@@ -6771,6 +6861,134 @@ function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
             return tomespells.tier + "," + tomespells.id;
         } else {
             return tomespells.tier + "," + tomespells.id;
+        }
+    }
+
+    let artifactSpells = findParentByNested(jsonRelics, "spell", "id", spell.id);
+    if (artifactSpells != undefined) {
+        if (showorigin) {
+            const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
+            const tomeOriginName = modCard.querySelector("#originTomeName");
+            const originTomeTier = modCard.querySelector("#originTomeTier");
+            tomeOriginAff.innerHTML = "Artifact";
+
+            tomeOriginName.innerHTML += artifactSpells.name;
+
+            const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/RelicIcons/" + artifactSpells.icon + ".png");
+            const wrap = tomeOriginName.innerHTML;
+            tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Artifacts.html">' + wrap + "</a>";
+
+            return artifactSpells.id;
+        } else {
+            return artifactSpells.id;
+        }
+    }
+    let worldStructureSpells = findParentByNested(jsonWorldStructures, "spell_unlocks", "id", spell.id);
+    
+    if (worldStructureSpells != undefined) {
+        if (showorigin) {
+            const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
+            const tomeOriginName = modCard.querySelector("#originTomeName");
+            const originTomeTier = modCard.querySelector("#originTomeTier");
+            if(worldStructureSpells.type == "Landmark"){
+                  tomeOriginAff.innerHTML = "<landmark></landmark>";
+            } else{
+                   tomeOriginAff.innerHTML = "<ancientwonder></ancientwonder>";
+            }
+          
+
+            tomeOriginName.innerHTML += worldStructureSpells.name;
+
+            const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/StructurePics/" + worldStructureSpells.id + ".png");
+            const wrap = tomeOriginName.innerHTML;
+             if(worldStructureSpells.type == "Landmark"){
+                   tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
+            } else{
+                     tomeOriginName.innerHTML = '<a href="/aow4db/HTML/AncientWonders.html">' + wrap + "</a>";
+            }
+          
+
+            return worldStructureSpells.id;
+        } else {
+            return worldStructureSpells.id;
+        }
+    }
+    
+      let worldStructureSpellsReward = findParentByNested(jsonWorldStructures, "spell_rewards", "id", spell.id);
+    
+    if (worldStructureSpellsReward != undefined) {
+        if (showorigin) {
+            const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
+            const tomeOriginName = modCard.querySelector("#originTomeName");
+            const originTomeTier = modCard.querySelector("#originTomeTier");
+            if(worldStructureSpellsReward.type == "Landmark"){
+                  tomeOriginAff.innerHTML = "<landmark></landmark>";
+            } else{
+                   tomeOriginAff.innerHTML = "<ancientwonder></ancientwonder>";
+            }
+          
+
+            tomeOriginName.innerHTML += worldStructureSpellsReward.name;
+
+            const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/StructurePics/" + worldStructureSpellsReward.id + ".png");
+            const wrap = tomeOriginName.innerHTML;
+             if(worldStructureSpellsReward.type == "Landmark"){
+                   tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
+            } else{
+                     tomeOriginName.innerHTML = '<a href="/aow4db/HTML/AncientWonders.html">' + wrap + "</a>";
+            }
+          
+
+            return worldStructureSpellsReward.id;
+        } else {
+            return worldStructureSpellsReward.id;
+        }
+    }
+    let ascendedSpells = findBy(jsonExtraAscendedInfo, "extraspell",  spell.id);
+    if (ascendedSpells != undefined) {
+        if (showorigin) {
+            const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
+            const tomeOriginName = modCard.querySelector("#originTomeName");
+            const originTomeTier = modCard.querySelector("#originTomeTier");
+            //  tomeOriginAff.innerHTML = "";
+            
+            
+  let ascendedSpellsName = findBy(jsonHeroSkills, "id",  ascendedSpells.id);
+            tomeOriginName.innerHTML += ascendedSpellsName.name;
+
+            const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + ascendedSpellsName.icon + ".png");
+             const wrap = tomeOriginName.innerHTML;
+            tomeOriginName.innerHTML =
+                '<a href="/aow4db/HTML/HeroSkills.html">' + wrap + "</a>";
+
+            return ascendedSpells.id;
+        } else {
+            return ascendedSpells.id;
+        }
+    }
+    let ExtraSpellsLookup = findParentByNested(jsonExtraSpellsLookup, "spell", "id", spell.id);
+    if (ExtraSpellsLookup != undefined) {
+        if (showorigin) {
+            const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
+            const tomeOriginName = modCard.querySelector("#originTomeName");
+            const originTomeTier = modCard.querySelector("#originTomeTier");
+            //  tomeOriginAff.innerHTML = "";
+
+            tomeOriginName.innerHTML += ExtraSpellsLookup.name;
+
+            const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
+            tomeOriginIcon.setAttribute("src", "/aow4db/Icons/" + ExtraSpellsLookup.icon + ".png");
+            // const wrap = tomeOriginName.innerHTML;
+            // tomeOriginName.innerHTML =
+            //     '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
+
+            return ExtraSpellsLookup.id;
+        } else {
+            return ExtraSpellsLookup.id;
         }
     }
 }

@@ -23,6 +23,7 @@ const filterMap = {
     cityStructuresCheck: "cs",
     factionTraitCheck: "ft",
     empireTreeCheck: "et",
+    artifactCheck : "ar",
     infusionsCheck: "i"
 };
 
@@ -41,6 +42,7 @@ const resistancesChecked = document.getElementById("resistancesCheck");
 // rest checks
 const spellsChecked = document.getElementById("spellsCheck");
 const siegeChecked = document.getElementById("siegeCheck");
+const artifactChecked = document.getElementById("artifactCheck");
 const empireTreeChecked = document.getElementById("empireTreeCheck");
 const heroSkillChecked = document.getElementById("heroSkillsCheck");
 const factionTraitsChecked = document.getElementById("factionTraitCheck");
@@ -145,6 +147,8 @@ function depCheckResID(resid) {
     }
     return false;
 }
+
+
 
 function DLCCheck(fieldToSearch) {
     return fieldToSearch.toUpperCase() in dlcMap;
@@ -308,6 +312,29 @@ function returnInfusionsList(fieldsToSearch, allMatchingUnitAbilities) {
         }
     }
     //return arrayToTest;
+    return Array.from(results);
+}
+
+function returnArtifactsList(fieldsToSearch){
+      if (!fieldsToSearch) return [];
+
+    const search = fieldsToSearch.replaceAll("_", " ").toUpperCase();
+    const results = new Set();
+
+    if (DLCCheck(fieldsToSearch)) {
+        return DLCAdd(jsonRelics, fieldsToSearch, null, true);
+    }
+
+    for (const trait of jsonRelics) {
+        const name = trait.name?.toUpperCase() || "";
+        const description = Sanitize(trait.description || "").toUpperCase();
+
+        if (name.includes(search) || description.includes(search)) {
+           // const traitEN = findBy(jsonHeroAmbitions, "icon", trait.icon);
+            results.add(trait);
+        }
+    }
+
     return Array.from(results);
 }
 
@@ -615,6 +642,7 @@ function searchAll(keyword) {
 
     let listStructures = cityStructuresChecked.checked ? returnStructure(fields[0]) : "";
     let listEmpireTree = empireTreeChecked.checked ? returnEmpireTreeList(fields[0]) : "";
+    let listArtifacts = artifactChecked.checked ? returnArtifactsList(fields[0]) : "";
     let listEquip = heroItemsChecked.checked ? returnEquipList(fields[0],listMatchingUnitAbilities) : "";
     let listAmbtions = ambitionsChecked.checked ? returnAmbitionsList(fields[0]) : "";
     let listInfusions = infusionsChecked.checked ? returnInfusionsList(fields[0], listMatchingUnitAbilities) : "";
@@ -666,6 +694,10 @@ function searchAll(keyword) {
     }
     if (listEmpireTree.length > 0) {
         SetCollapsibleButtonsAndDivs("Empire Tree", listEmpireTree, "searchEmpire");
+    }
+    
+    if(listArtifacts.length > 0){
+         SetCollapsibleButtonsAndDivs("Artifacts/Secret Spells", listArtifacts, "searchRelics");
     }
 
     if (listTraits.length > 0) {

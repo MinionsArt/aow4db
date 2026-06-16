@@ -71,7 +71,15 @@ const extraFormUnitsList = [
     "blood_cultist",
     "subjugator",
     "lieutenant",
-    "warlord"
+    "warlord",
+    "temptress",
+    "priest_of_the_weave"
+];
+
+const secretSpellsList = [
+    "abominable_mistling","colossal_penguin", "feylor", "yakas_feline_infusion","fanfare_of_mercy", "ysariels_fallen_form", "bhajifs_disruption", "zaethyls_paradise",
+    "karissas_immolation", "cinrens_temptation", "ydgaards_trade", "noctus_mastery", "frikkas_revelation", "nimues_failure",
+    "thulyanas_contortion", "belbedors_folly", "articas_ice_age"
 ];
 
 const incorrectIconOverrideList = [
@@ -85,7 +93,6 @@ const incorrectIconOverrideList = [
     "summon_horned_god",
     "summon_corrupt_soul",
     "summon_lesser_light_spirit",
-
     "summon_blessed_soul"
 ];
 
@@ -93,6 +100,15 @@ const extraAbilities = [];
 
 const extraSkills = [
 ];
+
+function checkSecretSpell(id) {
+    
+    if (secretSpellsList.includes(id) && !showSecretSpells.checked) {
+        return true;
+    }
+   
+    return false;
+}
 
 function fetchJsonFiles(filePaths) {
     return Promise.all(
@@ -188,7 +204,8 @@ async function GetAllData(selectedLang) {
         "FreeCities.json",
         "DestinyTraits.json",
         "Relics.json",
-        "Pantheon_Tree.json"
+        "Pantheon_Tree.json",
+        "ExtraLookSpellsOrigin.json"
         
         
     ];
@@ -245,7 +262,8 @@ async function GetAllData(selectedLang) {
             "jsonFreeCities",
               "jsonDestinyTriggers",
             "jsonRelics",
-            "jsonPantheon"
+            "jsonPantheon",
+            "jsonExtraSpellsLookup"
             
         ];
         const targets = [
@@ -308,6 +326,7 @@ async function CheckData() {
             setUserSettings({
                 tooltipselectable: false,
                 fontSize: "16px",
+                showSecretSpells : false,
                 showBeta: false,
                 language: "EN"
             });
@@ -315,10 +334,12 @@ async function CheckData() {
         }
         //checkboxTooltip = document.getElementById("tooltipCheckbox");
         checkboxTooltip.checked = storedSettings.tooltipselectable;
+            showSecretSpells.checked = storedSettings.showSecretSpells;
 
         //checkboxNumbers = document.getElementById("numbersCheckbox");
         //checkboxNumbers = document.getElementById("numbersCheckbox");
         checkboxNumbers.checked = storedSettings.isolateNumber;
+      
 
    // showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
@@ -338,11 +359,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-     if (storedSettings.showBeta) {
+   /*  if (storedSettings.showBeta) {
              await GetAllData("BETA");
-       } else {
+       } else {*/
         await GetAllData(storedSettings.language);
-       }
+      // }
 
 //await GetAllData("EN");
         AddExtraData();

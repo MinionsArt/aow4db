@@ -1,8 +1,7 @@
 searchParams = new URLSearchParams(window.location.search);
 searchKeyword = searchParams.get("u");
 
-var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark", "Nomad"];
-var ListOfSubcultureHoldersBeta = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark", "Nomad", "Reaver"];
+var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark", "Nomad", "Reaver"];
 var ListOfSubsocietyHolders = ["Vision of Promise", "Vision of Ruin", "Vision of Destiny"];
 
 var currentOrigin = "";
@@ -92,85 +91,7 @@ function addOrSubtract(extraAffinity, add) {
     return extraAffinity;
 }
 
-const extraTomesForTheorycrafting = [{
-  "affinities": "1 <empirearcana></empirearcana> Empire Astral Affinity, 1 <empirenature></empirenature> Empire Nature Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting",
-  "resid": 20,
-  "id": "tome_of_the_sprite",
-  "DLC": "SECRETSOFTHEARCHMAGES ",
-  "lore_author": "",
-  "name": "Tome of the Sprite",
-  "tier": 1,
-  "icon": "tome_of_the_sprite",
-  "skills": [
-  ]
- },{
-  "affinities": "1 <empirearcana></empirearcana> Empire Astral Affinity, 1 <empireorder></empireorder> Empire Order Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting",
-  "resid": 21,
-  "id": "tome_of_abjuration",
-  "DLC": "SECRETSOFTHEARCHMAGES ",
-  "lore_author": "",
-  "name": "Tome of Abjuration",
-  "tier": 1,
-  "icon": "tome_of_abjuration",
-  "skills": [
-  ]
- },{
-  "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting",
-  "resid": 22,
-  "id": "tome_of_gluttony",
-  "DLC": "SECRETSOFTHEARCHMAGES ",
-  "lore_author": "",
-  "name": "Tome of Gluttony",
-  "tier": 1,
-  "icon": "tome_of_gluttony",
-  "skills": [
-  ]
- },{
-  "affinities": "2 <empirechaos></empirechaos> Empire Chaos Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting",
-  "resid": 23,
-  "id": "tome_of_burning_passion",
-  "DLC": "SECRETSOFTHEARCHMAGES ",
-  "lore_author": "",
-  "name": "Tome of Burning Passion",
-  "tier": 2,
-  "icon": "tome_of_burning_passion",
-  "skills": [
-  ]
- },{
-  "affinities": "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting",
-  "resid": 24,
-  "id": "tome_of_the_weaver",
-  "DLC": "SECRETSOFTHEARCHMAGES ",
-  "lore_author": "",
-  "name": "Tome of the Weaver",
-  "tier": 3,
-  "icon": "tome_of_the_weaver",
-  "skills": [
-  ]
- },{
-  "affinities": "1 <empirearcana></empirearcana> Empire Astral Affinity,1 <empireshadow></empireshadow> Empire Shadow Affinity,1 <empirechaos></empirechaos> Empire Chaos Affinity 1 <empirenature></empirenature> Empire Nature Affinity,1 <empirematter></empirematter> Empire Materium Affinity,1 <empireorder></empireorder> Empire Order Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting",
-  "resid": 25,
-  "id": "tome_of_the_cosmos",
-  "DLC": "SECRETSOFTHEARCHMAGES ",
-  "lore_author": "",
-  "name": "Tome of the Cosmos",
-  "tier": 5,
-  "icon": "tome_of_the_cosmos",
-  "skills": [
-  ]
- }];
+const extraTomesForTheorycrafting = [];
 
 function SetRandomStart(overwriteParameter) {
     jsonTomes.push(...extraTomesForTheorycrafting);
@@ -475,44 +396,24 @@ function selectOrigin(origin, type) {
             break;
         case "Culture":
             currentCulture = origin;
-            if (showBetaTooltip.checked) {
-                if (!ListOfSubcultureHoldersBeta.includes(origin.name)) {
-                    currentSubCulture = "";
-                } else {
-                    let newBit;
-                    // load default class
-                    for (let index = 0; index < jsonFactionCreation.length; index++) {
-                        if (
-                            jsonFactionCreation[index].type == "SubCulture" &&
-                            jsonFactionCreation[index].requirement == origin.name
-                        ) {
-                            newBit = jsonFactionCreation[index];
-                            continue;
-                        }
-                    }
 
-                    // console.log(newBit.name);
-                    currentSubCulture = newBit;
-                }
+            if (!ListOfSubcultureHolders.includes(origin.name)) {
+                currentSubCulture = "";
             } else {
-                if (!ListOfSubcultureHolders.includes(origin.name)) {
-                    currentSubCulture = "";
-                } else {
-                    let newBit;
-                    // load default class
-                    for (let index = 0; index < jsonFactionCreation.length; index++) {
-                        if (
-                            jsonFactionCreation[index].type == "SubCulture" &&
-                            jsonFactionCreation[index].requirement == origin.name
-                        ) {
-                            newBit = jsonFactionCreation[index];
-                            continue;
-                        }
+                let newBit;
+                // load default class
+                for (let index = 0; index < jsonFactionCreation.length; index++) {
+                    if (
+                        jsonFactionCreation[index].type == "SubCulture" &&
+                        jsonFactionCreation[index].requirement == origin.name
+                    ) {
+                        newBit = jsonFactionCreation[index];
+                        continue;
                     }
-
-                    // console.log(newBit.name);
-                    currentSubCulture = newBit;
                 }
+
+                // console.log(newBit.name);
+                currentSubCulture = newBit;
             }
 
             selectOrigin(currentSubCulture, "SubCulture");
@@ -864,6 +765,7 @@ function SetTomePathInfoSmall(buttonHolder, origin, index, isInvalid) {
     if ("affinities" in origin) {
         affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
         affinity = affinity.replaceAll(",", "");
+
         affinityText.innerHTML += affinity;
     }
     // Append the image and button text to the button element
@@ -1320,21 +1222,11 @@ function GetCurrentChoiceList() {
 
 function GetAffinityTotalFromList(list, tomeList, subType, subCulture, subSociety1, subSociety2) {
     var input = "";
-    console.log(list);
+
     for (i = 0; i < list.length; i++) {
         if (list[i] != "" && list[i] != undefined) {
             if ("affinity" in list[i]) {
-                // beta
-                if (showBetaTooltip.checked) {
-                    if (list[i].id == "reaver") {
-                        input += "<empirematter></empirematter>" + ",";
-                    }else{
-                         input += list[i].affinity + ",";
-                    }
-                    
-                } else {
-                    input += list[i].affinity + ",";
-                }
+                input += list[i].affinity + ",";
             }
             if ("affinities" in list[i]) {
                 if (list[i].affinities.length > 0) {
@@ -1513,6 +1405,7 @@ function clearSocietyAffinities(input) {
 }
 
 function ClearAffinityExtraTags(input) {
+    input = input.replace("<reputation4></reputation4>", "");
     input = input.replace(" Empire Astral Affinity", "");
     input = input.replace(" Empire Nature Affinity", "");
     input = input.replace(" Empire Order Affinity", "");
@@ -1540,13 +1433,15 @@ function duplicateTags(inputString) {
         const tagName = match[2];
 
         // Create a repeated tag string
-        const repeatedTags = Array(count).fill(`<${tagName}></${tagName}>`).join(", ");
+        if (tagName.indexOf("reputation") == -1) {
+            const repeatedTags = Array(count).fill(`<${tagName}></${tagName}>`).join(", ");
 
-        // Append the repeated tags to the result
-        if (result !== "") {
-            result += ", ";
+            // Append the repeated tags to the result
+            if (result !== "") {
+                result += ", ";
+            }
+            result += repeatedTags;
         }
-        result += repeatedTags;
     }
 
     return result;
@@ -1556,11 +1451,8 @@ function SetButtonInfo(button, origin, type, color) {
     button.innerHTML = "";
 
     if (type === "SubType" && !["Dragon Lord", "Giant King", "Elder Vampire"].includes(currentOrigin.name)) return;
-    if (showBetaTooltip.checked) {
-        if (type === "SubCulture" && !ListOfSubcultureHoldersBeta.includes(currentCulture.name)) return;
-    } else {
-        if (type === "SubCulture" && !ListOfSubcultureHolders.includes(currentCulture.name)) return;
-    }
+
+    if (type === "SubCulture" && !ListOfSubcultureHolders.includes(currentCulture.name)) return;
 
     if (type === "SubSociety1" && !ListOfSubsocietyHolders.includes(currentSociety1.name)) return;
 
@@ -1697,15 +1589,7 @@ function createButtonText(origin, type) {
     }
 
     if ("affinity" in origin) {
-        if (showBetaTooltip.checked) {
-            if (origin.id == "reaver") {
-                span.innerHTML += "<empirematter></empirematter>";
-            } else {
-                span.innerHTML += ` ${ClearAffinityExtraTags(origin.affinity).replaceAll(",", "")}`;
-            }
-        } else {
-            span.innerHTML += ` ${ClearAffinityExtraTags(origin.affinity).replaceAll(",", "")}`;
-        }
+        span.innerHTML += ` ${ClearAffinityExtraTags(origin.affinity).replaceAll(",", "")}`;
     }
 
     if ("affinities" in origin) {
@@ -2171,8 +2055,6 @@ function GetAllStartingTomes() {
             listOfAllTier1Tomes.push(jsonTomes[i]);
         }
     }
-
-    // if beta, add new tomes just for now
 
     // alert(listOfAllTier1Tomes);
     return listOfAllTier1Tomes;
@@ -2986,34 +2868,33 @@ function GetNextSetOfTomes(pathLength) {
         for (i = 0; i < jsonTomes.length; i++) {
             if (jsonTomes[i].tier === 5) {
                 // tome of cosmos exception
-                if(jsonTomes[i].id == "tome_of_the_cosmos"){
+                if (jsonTomes[i].id == "tome_of_the_cosmos") {
                     // requirement 2 of each OR 6 in 3
-                    if(tomeOfCosmosCheck()){
+                    if (tomeOfCosmosCheck()) {
                         if (!checkIfT5(currentTomeList)) {
-                        if (!isInArray(currentTomeList, jsonTomes[i])) {
-                            listOfNextTomes.push(jsonTomes[i]);
+                            if (!isInArray(currentTomeList, jsonTomes[i])) {
+                                listOfNextTomes.push(jsonTomes[i]);
+                            }
                         }
                     }
-                    }
-                }else{
-                     // 8 affinity
-                if (
-                    GetAffinityMatches(
-                        currentAffinityTotal,
-                        jsonTomes[i].affinities,
-                        tomeRequirements[5].minAffinity - 1
-                    ) ||
-                    checkEmpireOfCosmos(3)
-                ) {
-                    // check if we dont already have a t5, we can only have 1
-                    if (!checkIfT5(currentTomeList)) {
-                        if (!isInArray(currentTomeList, jsonTomes[i])) {
-                            listOfNextTomes.push(jsonTomes[i]);
+                } else {
+                    // 8 affinity
+                    if (
+                        GetAffinityMatches(
+                            currentAffinityTotal,
+                            jsonTomes[i].affinities,
+                            tomeRequirements[5].minAffinity - 1
+                        ) ||
+                        checkEmpireOfCosmos(3)
+                    ) {
+                        // check if we dont already have a t5, we can only have 1
+                        if (!checkIfT5(currentTomeList)) {
+                            if (!isInArray(currentTomeList, jsonTomes[i])) {
+                                listOfNextTomes.push(jsonTomes[i]);
+                            }
                         }
                     }
                 }
-                }
-               
             }
         }
     }
@@ -3027,9 +2908,9 @@ function GetNextSetOfTomes(pathLength) {
     return listOfNextTomes;
 }
 
-function tomeOfCosmosCheck(){
+function tomeOfCosmosCheck() {
     // no empire of cosmos here
-   
+
     if (hasAllAffinitiesForEmpireOfCosmos(2) || hasAtleastThreeCosmos(6)) {
         return true;
     } else {
@@ -3040,14 +2921,7 @@ function tomeOfCosmosCheck(){
 function hasAtleastThreeCosmos(number) {
     const html = document.getElementById("currentAffinity").innerHTML;
 
-    const affinities = [
-        "empirematter",
-        "empirearcana",
-        "empirechaos",
-        "empirenature",
-        "empireorder",
-        "empireshadow"
-    ];
+    const affinities = ["empirematter", "empirearcana", "empirechaos", "empirenature", "empireorder", "empireshadow"];
 
     let count = 0;
 
@@ -3216,7 +3090,7 @@ function GetAllAscensions() {
     var listOfAllOrigins = [];
 
     for (i = 0; i < jsonHeroSkills.length; i++) {
-        if (jsonHeroSkills[i].name.indexOf("Ascension") != -1) {
+        if (jsonHeroSkills[i].name.indexOf("Ascension") != -1 || jsonHeroSkills[i].name.indexOf("Secret Spell") != -1) {
             listOfAllOrigins.push(jsonHeroSkills[i]);
         }
     }
@@ -3361,16 +3235,11 @@ function GetRandomEntry(type) {
             var list = GetAllSubCultureSetups(currentOrigin);
 
             randomOrigin = list[Math.floor(Math.random() * list.length)];
-            if(showBetaTooltip.checked){
-                   if (!ListOfSubcultureHoldersBeta.includes(currentCulture.name)) {
+
+            if (!ListOfSubcultureHolders.includes(currentCulture.name)) {
                 randomOrigin = "";
             }
-            }else{
-                   if (!ListOfSubcultureHolders.includes(currentCulture.name)) {
-                randomOrigin = "";
-            }
-            }
-         
+
             // while (incompatibleCheck("Loadout", randomOrigin) === true) {
             //   randomOrigin = list[Math.floor(Math.random() * list.length)];
             //}
