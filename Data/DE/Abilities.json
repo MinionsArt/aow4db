@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "Einheiten in einer 8 Feld(er) langen und 1 Feld(er) breiten Linie erleiden Schaden. Diese Fähigkeit verursacht Schaden auf Basis der Affinitätspunkte, die der Kontrollierende hat:<bulletlist><bullet>+2 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink> pro <arcana></arcana> <hyperlink>Astralaffinität</hyperlink></bullet><bullet>+2 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> pro <chaos></chaos> <hyperlink>Chaosaffinität</hyperlink></bullet><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Physischer Schaden</hyperlink> pro <matter></matter> <hyperlink>Materiumaffinität</hyperlink></bullet><bullet>+2 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> pro <nature></nature> <hyperlink>Naturaffinität</hyperlink></bullet><bullet>+2 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink> pro <order></order> <hyperlink>Ordnungsaffinität</hyperlink></bullet><bullet>+2 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> pro <shadow></shadow> <hyperlink>Schattenaffinität</hyperlink></bullet></bulletlist>",
+  "description": "Einheiten in einer 8 Feld(er) langen und 3 Feld(er) breiten Linie erleiden Schaden. Diese Fähigkeit verursacht Schaden auf Basis der Affinitätspunkte, die der Kontrollierende hat:<bulletlist><bullet>+2 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink> pro <arcana></arcana> <hyperlink>Astralaffinität</hyperlink></bullet><bullet>+2 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink> pro <chaos></chaos> <hyperlink>Chaosaffinität</hyperlink></bullet><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Physischer Schaden</hyperlink> pro <matter></matter> <hyperlink>Materiumaffinität</hyperlink></bullet><bullet>+2 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> pro <nature></nature> <hyperlink>Naturaffinität</hyperlink></bullet><bullet>+2 <damageSpirit></damageSpirit> <hyperlink>Geistschaden</hyperlink> pro <order></order> <hyperlink>Ordnungsaffinität</hyperlink></bullet><bullet>+2 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> pro <shadow></shadow> <hyperlink>Schattenaffinität</hyperlink></bullet></bulletlist>",
   "name": "Kosmosstrahl",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "Abklingzeit: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Verbündete Zieleinheit:<bulletlist></bullet><bullet>Heilt 70 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.</bullet><bullet>Verliert ihre negativen Statuseffekte.</bullet></bulletlist><bullet>Feindliche Zieleinheit innerhalb von 2 Feldern:<bulletlist></bullet><bullet>Erleidet 15 <damageBlight></damageBlight> <hyperlink>Verderbnisschaden</hyperlink> und 15 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink>.</bullet><bullet>Hat eine Basischance von 120 %, für 1 <turn></turn> Runde mit Bewegungsunfähig belegt zu werden.</bullet></bulletlist></bulletlist>",
   "name": "Netztransfusion",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "Trifft immer",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "Abklingzeit: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000048D00000207"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Angriffe heilen 5 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.",
+    "name": "Lebensraub^m",
+    "count": 1
+   }
+  ],
   "description": "Greift feindliche Zieleinheit an.",
   "name": "Magischer Schlag",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "Basischance von 60 % auf Zufügen von Brennen für 3 <turn></turn> Runden.",
     "name": "Brennen^n",
+    "count": 1
+   },
+   {
+    "description": "Angriffe heilen 10 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.",
+    "name": "Lebensraub^m",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Trefferpunkte</hyperlink>.</bullet><bullet>Verursacht +5 % Schaden.</bullet><bullet>Bis zu 10-mal stapelbar.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Trefferpunkte</hyperlink>.</bullet><bullet>Verursacht +2 % Schaden.</bullet><bullet>Bis zu 10-mal stapelbar.</bullet></bulletlist>",
   "name": "dämonische Sättigung",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"

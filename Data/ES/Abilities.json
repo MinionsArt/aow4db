@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "Las unidades situadas en una línea de 8 casilla(s) de largo y 1 casilla(s) de ancho reciben daño. Esta habilidad inflige daño según los puntos de afinidad que tenga el controlador:<bulletlist><bullet>+2 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink> por <arcana></arcana> <hyperlink>Afinidad astral</hyperlink>.</bullet><bullet>+2 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> por <chaos></chaos> <hyperlink>Afinidad del caos</hyperlink>.</bullet><bullet>+2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink> por <matter></matter> <hyperlink>Afinidad de materium</hyperlink>.</bullet><bullet>+2 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink> por <nature></nature><hyperlink> Afinidad natural</hyperlink>.</bullet><bullet>+2 de <damageSpirit></damageSpirit> <hyperlink>Daño espiritual</hyperlink> por <order></order> <hyperlink>Afinidad del orden</hyperlink>.</bullet><bullet>+2 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> por <shadow></shadow> <hyperlink>Afinidad sombría</hyperlink>.</bullet></bulletlist>",
+  "description": "Las unidades situadas en una línea de 8 casilla(s) de largo y 3 casilla(s) de ancho reciben daño. Esta habilidad inflige daño según los puntos de afinidad que tenga el controlador:<bulletlist><bullet>+2 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink> por <arcana></arcana> <hyperlink>Afinidad astral</hyperlink>.</bullet><bullet>+2 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink> por <chaos></chaos> <hyperlink>Afinidad del caos</hyperlink>.</bullet><bullet>+2 de <damagePhysical></damagePhysical> <hyperlink>Daño físico</hyperlink> por <matter></matter> <hyperlink>Afinidad de materium</hyperlink>.</bullet><bullet>+2 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink> por <nature></nature><hyperlink> Afinidad natural</hyperlink>.</bullet><bullet>+2 de <damageSpirit></damageSpirit> <hyperlink>Daño espiritual</hyperlink> por <order></order> <hyperlink>Afinidad del orden</hyperlink>.</bullet><bullet>+2 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink> por <shadow></shadow> <hyperlink>Afinidad sombría</hyperlink>.</bullet></bulletlist>",
   "name": "Haz del cosmos",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "Enfriamiento: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>La unidad aliada objetivo:<bulletlist></bullet><bullet>Recupera 70 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.</bullet><bullet>Se eliminan sus efectos de estado negativos.</bullet></bulletlist><bullet>Luego, una unidad enemiga situada en un área de 2 casillas:<bulletlist></bullet><bullet>Recibe 15 de <damageBlight></damageBlight> <hyperlink>Daño de decadencia</hyperlink> y 15 de <damageFrost></damageFrost> <hyperlink>Daño de hielo</hyperlink>.</bullet><bullet>Tiene una probabilidad inicial del 120 % de <hyperlink>inmovilizarse</hyperlink> durante 1 <turn></turn> Turno.</bullet></bulletlist></bulletlist>",
   "name": "Transfusión entretejida",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "Siempre acierta",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "Enfriamiento: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000041B00001911"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Los ataques recuperan 5 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.",
+    "name": "Robo de vida^m",
+    "count": 1
+   }
+  ],
   "description": "Ataca a la unidad enemiga objetivo.",
   "name": "Ataque mágico",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "Probabilidad inicial del 60 % de infligir el estado Quemadura durante 3 <turn></turn> Turnos.",
     "name": "Quemadura^f",
+    "count": 1
+   },
+   {
+    "description": "Los ataques recuperan 10 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.",
+    "name": "Robo de vida^m",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Puntos de salud</hyperlink>.</bullet><bullet>Inflige +5 % de daño.</bullet><bullet>Se acumula hasta 10 veces.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Puntos de salud</hyperlink>.</bullet><bullet>Inflige +2 % de daño.</bullet><bullet>Se acumula hasta 10 veces.</bullet></bulletlist>",
   "name": "Saciedad demoníaca",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"
