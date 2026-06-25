@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "Воины на линии длиной в 8 кл. и шириной в 1 кл. получают урон. Эта способность наносит урон в зависимости от имеющихся у заклинателя очков приверженностей:<bulletlist><bullet>+2 к <damageLightning></damageLightning> <hyperlink>электрическому урону</hyperlink> за каждое очко <arcana></arcana> <hyperlink>приверженности астралу</hyperlink>;</bullet><bullet>+2 к <damageFire></damageFire> <hyperlink>урону от огня</hyperlink> за каждое очко <chaos></chaos> <hyperlink>приверженности хаосу</hyperlink>;</bullet><bullet>+2 к <damagePhysical></damagePhysical> <hyperlink>физическому урону</hyperlink> за каждое очко <matter></matter> <hyperlink>приверженности материи</hyperlink>;</bullet><bullet>+2 к <damageBlight></damageBlight> <hyperlink>урону ядом</hyperlink> за каждое очко <nature></nature> <hyperlink>приверженности природе</hyperlink>;</bullet><bullet>+2 к <damageSpirit></damageSpirit> <hyperlink>урону магией духа</hyperlink> за каждое очко <order></order> <hyperlink>приверженности порядку</hyperlink>;</bullet><bullet>+2 к <damageFrost></damageFrost> <hyperlink>урону от холода</hyperlink> за каждое очко <shadow></shadow> <hyperlink>приверженности тени</hyperlink>.</bullet></bulletlist>",
+  "description": "Воины на линии длиной в 8 кл. и шириной в 3 кл. получают урон. Эта способность наносит урон в зависимости от имеющихся у заклинателя очков приверженностей:<bulletlist><bullet>+2 к <damageLightning></damageLightning> <hyperlink>электрическому урону</hyperlink> за каждое очко <arcana></arcana> <hyperlink>приверженности астралу</hyperlink>;</bullet><bullet>+2 к <damageFire></damageFire> <hyperlink>урону от огня</hyperlink> за каждое очко <chaos></chaos> <hyperlink>приверженности хаосу</hyperlink>;</bullet><bullet>+2 к <damagePhysical></damagePhysical> <hyperlink>физическому урону</hyperlink> за каждое очко <matter></matter> <hyperlink>приверженности материи</hyperlink>;</bullet><bullet>+2 к <damageBlight></damageBlight> <hyperlink>урону ядом</hyperlink> за каждое очко <nature></nature> <hyperlink>приверженности природе</hyperlink>;</bullet><bullet>+2 к <damageSpirit></damageSpirit> <hyperlink>урону магией духа</hyperlink> за каждое очко <order></order> <hyperlink>приверженности порядку</hyperlink>;</bullet><bullet>+2 к <damageFrost></damageFrost> <hyperlink>урону от холода</hyperlink> за каждое очко <shadow></shadow> <hyperlink>приверженности тени</hyperlink>.</bullet></bulletlist>",
   "name": "Космический луч",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "Перезарядка: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Выбранный дружественный воин:<bulletlist></bullet><bullet>восстанавливает 70 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>;</bullet><bullet>избавляется от отрицательных эффектов.</bullet></bulletlist><bullet>Затем вражеский воин в радиусе 2 кл.:<bulletlist></bullet><bullet>получает 15 ед. <damageBlight></damageBlight> <hyperlink>урона ядом</hyperlink> и 15 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink>;</bullet><bullet>с базовой вероятностью 120% может получить эффект «Обездвижен» на 1 <turn></turn> х.</bullet></bulletlist></bulletlist>",
   "name": "Заразная паутина",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "Всегда попадает в цель",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "Перезарядка: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000048B00000EB8"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Атаки восстанавливают 5 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.",
+    "name": "Вампиризм",
+    "count": 1
+   }
+  ],
   "description": "Бьёт выбранного вражеского воина.",
   "name": "Магический удар",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "С базовой вероятностью 60% может на 3 <turn></turn> х. применить эффект «Горение».",
     "name": "Горение",
+    "count": 1
+   },
+   {
+    "description": "Атаки восстанавливают 10 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.",
+    "name": "Вампиризм",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5 к <hp></hp> <hyperlink>здоровью</hyperlink>;</bullet><bullet>наносит на 5% больше урона;</bullet><bullet>может суммироваться до 10 р.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5 к <hp></hp> <hyperlink>здоровью</hyperlink>;</bullet><bullet>наносит на 2% больше урона;</bullet><bullet>может суммироваться до 10 р.</bullet></bulletlist>",
   "name": "Дьявольское насыщение",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"

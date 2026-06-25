@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "Units in an 8-hex long and 1-hex wide line sustain damage. This ability deals damage according to the affinity points its controller has:<bulletlist><bullet>+2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink> per <arcana></arcana> <hyperlink>Astral Affinity</hyperlink></bullet><bullet>+2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> per <chaos></chaos> <hyperlink>Chaos Affinity</hyperlink></bullet><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> per <matter></matter> <hyperlink>Materium Affinity</hyperlink></bullet><bullet>+2 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> per <nature></nature> <hyperlink>Nature Affinity</hyperlink></bullet><bullet>+2 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> per <order></order> <hyperlink>Order Affinity</hyperlink></bullet><bullet>+2 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> per <shadow></shadow> <hyperlink>Shadow Affinity</hyperlink></bullet></bulletlist>",
+  "description": "Units in an 8-hex long and 3-hex wide line sustain damage. This ability deals damage according to the affinity points its controller has:<bulletlist><bullet>+2 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink> per <arcana></arcana> <hyperlink>Astral Affinity</hyperlink></bullet><bullet>+2 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> per <chaos></chaos> <hyperlink>Chaos Affinity</hyperlink></bullet><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink> per <matter></matter> <hyperlink>Materium Affinity</hyperlink></bullet><bullet>+2 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> per <nature></nature> <hyperlink>Nature Affinity</hyperlink></bullet><bullet>+2 <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink> per <order></order> <hyperlink>Order Affinity</hyperlink></bullet><bullet>+2 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> per <shadow></shadow> <hyperlink>Shadow Affinity</hyperlink></bullet></bulletlist>",
   "name": "Cosmos Beam",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "Cooldown: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Target friendly unit:<bulletlist></bullet><bullet>Heals 70 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.</bullet><bullet>Has its Negative Status Effects removed.</bullet></bulletlist><bullet>Then an enemy unit within 2 hexes:<bulletlist></bullet><bullet>Sustains 15 <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink> and 15 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>Has a base 120% chance of becoming Immobilized for 1 <turn></turn> Turn.</bullet></bulletlist></bulletlist>",
   "name": "Webbed Transfusion",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "Always Hits",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "Cooldown: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000041B00001911"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Attacks heal 5 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
+    "count": 1
+   }
+  ],
   "description": "Strikes target enemy unit.",
   "name": "Magic Strike",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "Base 60% chance of inflicting Burning for 3 <turn></turn> Turns.",
     "name": "Burning",
+    "count": 1
+   },
+   {
+    "description": "Attacks heal 10 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.",
+    "name": "Life Steal",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Deals +5% damage.</bullet><bullet>Stacks up to 10 times.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>Deals +2% damage.</bullet><bullet>Stacks up to 10 times.</bullet></bulletlist>",
   "name": "Demonic Satiation",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"

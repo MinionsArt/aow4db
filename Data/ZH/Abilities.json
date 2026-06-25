@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "8框格长、1框格宽的直线上的单位受到伤害。此技能的伤害根据其控制者的理念点数决定：<bulletlist><bullet>每点<arcana></arcana><hyperlink>星辰理念</hyperlink>+2<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink></bullet><bullet>每点<chaos></chaos><hyperlink>混沌理念</hyperlink>+2<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>每点<matter></matter><hyperlink>物质理念</hyperlink>+2<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>每点<nature></nature><hyperlink>自然理念</hyperlink>+2<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink></bullet><bullet>每点<order></order><hyperlink>秩序理念</hyperlink>+2<damageSpirit></damageSpirit><hyperlink>精神伤害</hyperlink></bullet><bullet>每点<shadow></shadow><hyperlink>暗影理念</hyperlink>+2<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet></bulletlist>",
+  "description": "8框格长、3框格宽的直线上的单位受到伤害。此技能的伤害根据其控制者的理念点数决定：<bulletlist><bullet>每点<arcana></arcana><hyperlink>星辰理念</hyperlink>+2<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink></bullet><bullet>每点<chaos></chaos><hyperlink>混沌理念</hyperlink>+2<damageFire></damageFire><hyperlink>火焰伤害</hyperlink></bullet><bullet>每点<matter></matter><hyperlink>物质理念</hyperlink>+2<damagePhysical></damagePhysical><hyperlink>物理伤害</hyperlink></bullet><bullet>每点<nature></nature><hyperlink>自然理念</hyperlink>+2<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink></bullet><bullet>每点<order></order><hyperlink>秩序理念</hyperlink>+2<damageSpirit></damageSpirit><hyperlink>精神伤害</hyperlink></bullet><bullet>每点<shadow></shadow><hyperlink>暗影理念</hyperlink>+2<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet></bulletlist>",
   "name": "宇宙光束",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "冷却：1<turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>指定友方单位：<bulletlist></bullet><bullet>治疗70点<hyperlink><temphp></temphp>临时生命值</hyperlink></bullet><bullet>移除其负面状态效果</bullet></bulletlist><bullet>然后，2框格内的一敌方单位：<bulletlist></bullet><bullet>承受15点<damageBlight></damageBlight><hyperlink>疫病伤害</hyperlink>和15点<damageFrost></damageFrost><hyperlink>寒霜伤害</hyperlink></bullet><bullet>有120%的基础概率陷入定身，持续1个<turn></turn>回合</bullet></bulletlist></bulletlist>",
   "name": "织网输血",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "始终命中",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "冷却：1<turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000048B00000EB8"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "攻击治疗5<hyperlink><temphp></temphp>临时生命值</hyperlink>",
+    "name": "生命窃取",
+    "count": 1
+   }
+  ],
   "description": "攻击指定敌方单位",
   "name": "魔法打击",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "有60%的基础概率施加燃烧，持续3<turn></turn>回合",
     "name": "燃烧",
+    "count": 1
+   },
+   {
+    "description": "攻击治疗10<hyperlink><temphp></temphp>临时生命值</hyperlink>",
+    "name": "生命窃取",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5点<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>造成+5%伤害</bullet><bullet>最多叠加10次</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5点<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>造成+2%伤害</bullet><bullet>最多叠加10次</bullet></bulletlist>",
   "name": "恶魔餍足",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"

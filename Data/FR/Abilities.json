@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "Les unités dans une ligne de 8 case(s) de long et de 1 case(s) de large subissent des. Cette capacité inflige des dégâts selon les points d'affinité possédés par son contrôleur :<bulletlist><bullet>+2 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink> par <arcana></arcana> <hyperlink>Affinité Astrale</hyperlink></bullet><bullet>+2 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> par <chaos></chaos> <hyperlink>Affinité Chaos</hyperlink></bullet><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink> par <matter></matter> <hyperlink>Affinité Materium</hyperlink></bullet><bullet>+2 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink> par <nature></nature><hyperlink>Affinité Nature</hyperlink></bullet><bullet>+2 <damageSpirit></damageSpirit> <hyperlink>Dégâts d'esprit</hyperlink> par <order></order> <hyperlink>Affinité Ordre</hyperlink></bullet><bullet>+2 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> par <shadow></shadow> <hyperlink>Affinité Ombre</hyperlink></bullet></bulletlist>",
+  "description": "Les unités dans une ligne de 8 case(s) de long et de 3 case(s) de large subissent des. Cette capacité inflige des dégâts selon les points d'affinité possédés par son contrôleur :<bulletlist><bullet>+2 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink> par <arcana></arcana> <hyperlink>Affinité Astrale</hyperlink></bullet><bullet>+2 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink> par <chaos></chaos> <hyperlink>Affinité Chaos</hyperlink></bullet><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Dégâts physiques</hyperlink> par <matter></matter> <hyperlink>Affinité Materium</hyperlink></bullet><bullet>+2 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink> par <nature></nature><hyperlink>Affinité Nature</hyperlink></bullet><bullet>+2 <damageSpirit></damageSpirit> <hyperlink>Dégâts d'esprit</hyperlink> par <order></order> <hyperlink>Affinité Ordre</hyperlink></bullet><bullet>+2 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> par <shadow></shadow> <hyperlink>Affinité Ombre</hyperlink></bullet></bulletlist>",
   "name": "Faisceau cosmique",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "Temps de recharge : 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>L'unité alliée ciblée :<bulletlist></bullet><bullet>Guérit de 70 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet><bullet>A ses effets d'état négatifs supprimés.</bullet></bulletlist><bullet>Puis une unité ennemie dans un rayon de 2 cases :<bulletlist></bullet><bullet>subit 15 <damageBlight></damageBlight> <hyperlink>Dégâts de fléau</hyperlink> et 15 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink>.</bullet><bullet>A 120 % de chances de base de devenir Immobilisé pendant 1 <turn></turn> Tour.</bullet></bulletlist></bulletlist>",
   "name": "Transfusion entoilée",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "Touche toujours",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "Temps de recharge : 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000041B00001911"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Les attaques soignent 5 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+    "name": "Vol de vie^M",
+    "count": 1
+   }
+  ],
   "description": "Frappe l'unité ennemie ciblée.",
   "name": "Frappe magique",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "60 % de chances de base d'infliger Brûlure pendant 3 <turn></turn> Tour.",
     "name": "Brûlure^f",
+    "count": 1
+   },
+   {
+    "description": "Les attaques soignent 10 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+    "name": "Vol de vie^M",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Points de vie</hyperlink>.</bullet><bullet>Inflige +5 % de dégâts.</bullet><bullet>Peut se cumuler jusqu'à 10 fois.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5 <hyperlink><hp></hp> Points de vie</hyperlink>.</bullet><bullet>Inflige +2 % de dégâts.</bullet><bullet>Peut se cumuler jusqu'à 10 fois.</bullet></bulletlist>",
   "name": "Satiété démoniaque",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"

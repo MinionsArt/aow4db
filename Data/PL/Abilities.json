@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "Jednostki w linii o długości 8 <range></range> i o szerokości 1 <range></range> otrzymują obrażenia. Zdolność ta zadaje obrażenia zależne od punktów więzi posiadanych przez jej posiadacza:<bulletlist><bullet>+2 pkt. <damageLightning></damageLightning> <hyperlink>obrażeń od błyskawic</hyperlink> za <arcana></arcana> <hyperlink>więź astralną</hyperlink>.</bullet><bullet>+2 pkt. <damageFire></damageFire> <hyperlink>obrażeń od ognia</hyperlink> za <chaos></chaos> <hyperlink>więź chaosu</hyperlink>.</bullet><bullet>+2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażeń fizycznych</hyperlink> za <matter></matter> <hyperlink>więź materium</hyperlink>.</bullet><bullet>+2 pkt. <damageBlight></damageBlight> <hyperlink>obrażeń zarazy</hyperlink> za <nature></nature> <hyperlink>więź natury</hyperlink>.</bullet><bullet>+2 pkt. <damageSpirit></damageSpirit> <hyperlink>obrażeń od duchów</hyperlink> za <order></order> <hyperlink>więź ładu</hyperlink>.</bullet><bullet>+2 pkt. <damageFrost></damageFrost> <hyperlink>obrażeń od mrozu</hyperlink> za <shadow></shadow> <hyperlink>więź cienia</hyperlink>.</bullet></bulletlist>",
+  "description": "Jednostki w linii o długości 8 <range></range> i o szerokości 3 <range></range> otrzymują obrażenia. Zdolność ta zadaje obrażenia zależne od punktów więzi posiadanych przez jej posiadacza:<bulletlist><bullet>+2 pkt. <damageLightning></damageLightning> <hyperlink>obrażeń od błyskawic</hyperlink> za <arcana></arcana> <hyperlink>więź astralną</hyperlink>.</bullet><bullet>+2 pkt. <damageFire></damageFire> <hyperlink>obrażeń od ognia</hyperlink> za <chaos></chaos> <hyperlink>więź chaosu</hyperlink>.</bullet><bullet>+2 pkt. <damagePhysical></damagePhysical> <hyperlink>obrażeń fizycznych</hyperlink> za <matter></matter> <hyperlink>więź materium</hyperlink>.</bullet><bullet>+2 pkt. <damageBlight></damageBlight> <hyperlink>obrażeń zarazy</hyperlink> za <nature></nature> <hyperlink>więź natury</hyperlink>.</bullet><bullet>+2 pkt. <damageSpirit></damageSpirit> <hyperlink>obrażeń od duchów</hyperlink> za <order></order> <hyperlink>więź ładu</hyperlink>.</bullet><bullet>+2 pkt. <damageFrost></damageFrost> <hyperlink>obrażeń od mrozu</hyperlink> za <shadow></shadow> <hyperlink>więź cienia</hyperlink>.</bullet></bulletlist>",
   "name": "Wiązka kosmosu",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "Odnowienie: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>Wybrana jednostka sojusznicza:<bulletlist></bullet><bullet>Leczy 70 <hyperlink>pkt. zdrowia</hyperlink>.</bullet><bullet>Traci negatywne efekty stanu.</bullet></bulletlist><bullet>Następnie jednostka wroga w zasięgu 2 <range></range>:<bulletlist></bullet><bullet>Odnosi 15 pkt. <damageBlight></damageBlight> <hyperlink>obrażeń zarazy</hyperlink> i 15 pkt. <damageFrost></damageFrost> <hyperlink>obrażeń od mrozu</hyperlink>.</bullet><bullet>Ma podstawowe 120% szans na otrzymanie stanu unieruchomienie na 1 <turn></turn>.</bullet></bulletlist></bulletlist>",
   "name": "Sieciowa transfuzja",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "Zawsze trafia",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "Odnowienie: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000041B00001911"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "Ataki przywracają 5 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.",
+    "name": "Wykradanie życia",
+    "count": 1
+   }
+  ],
   "description": "Uderza w wybraną jednostkę wroga.",
   "name": "Magiczne uderzenie",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "Podstawowe 60% szans na nałożenie stanu podpalenie na 3 <turn></turn>.",
     "name": "Podpalenie^nn",
+    "count": 1
+   },
+   {
+    "description": "Ataki przywracają 10 <hyperlink>tymczas. pkt. zdrowia</hyperlink>.",
+    "name": "Wykradanie życia",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet>+5 <hyperlink>pkt. zdrowia</hyperlink>.</bullet><bullet>Zadaje +5% obrażeń.</bullet><bullet>Kumuluje się do 10 razy.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet>+5 <hyperlink>pkt. zdrowia</hyperlink>.</bullet><bullet>Zadaje +2% obrażeń.</bullet><bullet>Kumuluje się do 10 razy.</bullet></bulletlist>",
   "name": "Demoniczne nasycenie",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"

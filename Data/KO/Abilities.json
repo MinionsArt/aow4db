@@ -1612,7 +1612,7 @@
     "count": 1
    }
   ],
-  "description": "일렬로 길이 8 헥스, 폭 1 헥스 내 유닛에게 피해 유발, 해당 능력은 조종자가 보유한 친화 점수에 따라 다음 피해 유발:<bulletlist><bullet><arcana></arcana> <hyperlink>영체 친화</hyperlink> 하나당 <damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> +2</bullet><bullet><chaos></chaos> <hyperlink>혼돈 친화</hyperlink> 하나당 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> +2</bullet><bullet><matter></matter> <hyperlink>마테리움 친화</hyperlink> 하나당 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +2</bullet><bullet><nature></nature> <hyperlink>자연 친화</hyperlink> 하나당 <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> +2</bullet><bullet><order></order> <hyperlink>질서 친화</hyperlink> 하나당 <damageSpirit></damageSpirit> <hyperlink>영혼 피해</hyperlink> +2</bullet><bullet><shadow></shadow> <hyperlink> 그림자 친화</hyperlink> 하나당 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> +2</bullet></bulletlist>",
+  "description": "일렬로 길이 8 헥스, 폭 3 헥스 내 유닛에게 피해 유발, 해당 능력은 조종자가 보유한 친화 점수에 따라 다음 피해 유발:<bulletlist><bullet><arcana></arcana> <hyperlink>영체 친화</hyperlink> 하나당 <damageLightning></damageLightning> <hyperlink>번개 피해</hyperlink> +2</bullet><bullet><chaos></chaos> <hyperlink>혼돈 친화</hyperlink> 하나당 <damageFire></damageFire> <hyperlink>화염 피해</hyperlink> +2</bullet><bullet><matter></matter> <hyperlink>마테리움 친화</hyperlink> 하나당 <damagePhysical></damagePhysical> <hyperlink>물리 피해</hyperlink> +2</bullet><bullet><nature></nature> <hyperlink>자연 친화</hyperlink> 하나당 <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink> +2</bullet><bullet><order></order> <hyperlink>질서 친화</hyperlink> 하나당 <damageSpirit></damageSpirit> <hyperlink>영혼 피해</hyperlink> +2</bullet><bullet><shadow></shadow> <hyperlink> 그림자 친화</hyperlink> 하나당 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> +2</bullet></bulletlist>",
   "name": "우주 광선",
   "slug": "cosmos_beam_ability_000004C500000F71",
   "damage": "",
@@ -3865,11 +3865,7 @@
   "icon": "000003E600000566"
  },
  {
-  "notes": [
-   {
-    "note": "재사용 대기시간: 1 <turn></turn>"
-   }
-  ],
+  "modifiers": [],
   "description": "<bulletlist><bullet>대상 우호 유닛:<bulletlist></bullet><bullet><hyperlink><temphp></temphp> 임시 체력</hyperlink> 70 회복</bullet><bullet>부정적인 상태 효과 해제</bullet></bulletlist><bullet>이후 2 헥스 내 적 유닛:<bulletlist></bullet><bullet>15 <damageBlight></damageBlight> <hyperlink>역병 피해</hyperlink>, 15 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> 유발</bullet><bullet>120%의 기본 확률로 1 <turn></turn> 턴 동안 부동 상태 유발</bullet></bulletlist></bulletlist>",
   "name": "거미줄 수혈",
   "slug": "webbed_transfusion_ability_0000049700003BB8",
@@ -3882,6 +3878,11 @@
   "accuracy": "항상 명중",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "4",
+  "notes": [
+   {
+    "note": "재사용 대기시간: 1 <turn></turn>"
+   }
+  ],
   "icon": "0000049700003BBA"
  },
  {
@@ -4148,7 +4149,13 @@
   "icon": "0000041B00001911"
  },
  {
-  "modifiers": [],
+  "modifiers": [
+   {
+    "description": "공격 시 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 5 회복합니다.",
+    "name": "생명력 갈취",
+    "count": 1
+   }
+  ],
   "description": "대상 적 유닛을 공격합니다.",
   "name": "마법 강타",
   "slug": "magic_strike_(base)_ability_0000049700003A44",
@@ -4172,6 +4179,11 @@
    {
     "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 불붙음 상태를 유발합니다.",
     "name": "불붙음",
+    "count": 1
+   },
+   {
+    "description": "공격 시 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 10 회복합니다.",
+    "name": "생명력 갈취",
     "count": 1
    }
   ],
@@ -49282,7 +49294,7 @@
   "icon": "000003E300005AA8"
  },
  {
-  "description": "<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +5</bullet><bullet>피해 +5%</bullet><bullet>최대 10회까지 중첩됩니다.</bullet></bulletlist>",
+  "description": "<bulletlist><bullet><hyperlink><hp></hp> 체력</hyperlink> +5</bullet><bullet>피해 +2%</bullet><bullet>최대 10회까지 중첩됩니다.</bullet></bulletlist>",
   "name": "악마의 포만감",
   "slug": "0000049700003a67",
   "icon": "0000049700003A6C"
