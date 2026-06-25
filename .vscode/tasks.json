@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Local Server (aow4db)",
+            "type": "shell",
+            "command": "serve",
+            "args": ["${workspaceFolder}/..", "-p", "3000", "--no-clipboard"],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "serve",
+                "pattern": { "regexp": "^$" },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".",
+                    "endsPattern": "Accepting connections"
+                }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "group": "server"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
