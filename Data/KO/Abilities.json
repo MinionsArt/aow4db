@@ -976,6 +976,12 @@
   "icon": "0000035700000602"
  },
  {
+  "description": "불붙음에 면역인 유닛입니다.",
+  "name": "상태 효과 면역: 불붙음",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "유닛이 획득:<bulletlist><bullet>피해 +10%</bullet><bullet><resistance></resistance> <hyperlink>저항력</hyperlink> +1</bullet></bulletlist>",
   "name": "투사 메달: 비전술사",
   "slug": "0000049700003954",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "불붙음에 면역인 유닛입니다.",
-  "name": "상태 효과 면역: 불붙음",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "재사용 대기시간: 2 <turn></turn>"
    }
   ],
-  "description": "반경 1 헥스 내 적 유닛이 60%의 기본 확률로 획득:<bulletlist><bullet>최대 헥스까지 순간이동</bullet><bullet>1 <turn></turn> 턴 동안 착란 상태 유발</bullet></bulletlist>",
+  "description": "반경 1 헥스 내 적 유닛이 60%의 기본 확률로 획득:<bulletlist><bullet>최대 3 헥스까지 순간이동</bullet><bullet>1 <turn></turn> 턴 동안 착란 상태 유발</bullet></bulletlist>",
   "name": "편집증 폭풍",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>해당 유닛의 총 <hyperlink><hp></hp> 체력이</hyperlink> 60% 이하로 내려갈 경우, II 등급 거미를 소환합니다.</bullet><bullet>해당 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 30% 이하로 내려갈 경우, II 등급 거미를 소환합니다.</bullet></bulletlist><br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.<br></br><br></br>또한 도시에 I등급, II등급 거미를 징집할 수 있습니다.",
   "name": "살아있는 거미 둥지",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "전투 시작 시, 전투가 종료될 때까지 유지되는 <hyperlink>아침의 요정</hyperlink> 또는 <hyperlink>저녁의 요정을</hyperlink> 소환합니다.",
@@ -30189,7 +30190,11 @@
   "name": "보호의 구 소환",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>지원</hyperlink>"
+   }
+  ],
   "accuracy": "항상 명중",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "중독성 덤불",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>디버프</hyperlink>"
+   }
+  ],
   "accuracy": "항상 명중",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "대상 유닛에 피해를 줍니다.",
+  "description": "대상 유닛의 저항력을 무시하고 피해를 줍니다.",
   "name": "영혼 쟁취",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "전투당 한 번만 사용할 수 있습니다."
    }
   ],
-  "description": "반경 1 헥스 내 적 유닛이 60%의 기본 확률로 획득:<bulletlist><bullet>최대 헥스까지 순간이동</bullet><bullet>1 <turn></turn> 턴 동안 착란 상태 유발</bullet></bulletlist>",
+  "description": "반경 1 헥스 내 적 유닛이 60%의 기본 확률로 획득:<bulletlist><bullet>최대 3 헥스까지 순간이동</bullet><bullet>1 <turn></turn> 턴 동안 착란 상태 유발</bullet></bulletlist>",
   "name": "편집증 폭풍",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "<hyperlink><accuracy></accuracy> 명중률이</hyperlink> +80 증가합니다.",
+  "name": "조준",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "해당 유닛이 획득:<bulletlist><bullet>최대 <hyperlink><hp></hp> 체력</hyperlink> +10</bullet><bullet><hyperlink>전투</hyperlink> 도중 받는 치유량 +20%</bullet></bulletlist>",
+  "name": "충분한 보급",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "부활하여 <hyperlink>축복받은 영혼으로</hyperlink> 변형된 유닛입니다. 해당 유닛은 이 효과가 만료되면 도주합니다.",
   "name": "자비를 받은 귀환자",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "피해 굴절",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "<hyperlink><accuracy></accuracy> 명중률이</hyperlink> +80 증가합니다.",
-  "name": "조준",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "대상 헥스에 <hyperlink>하급 눈 정령을</hyperlink> 소환합니다.<br></br>해당 소환은 3 <turn></turn> 턴 동안 지속됩니다.<br></br>영혼 소환 시 재사용 대기시간이 3 <turn></turn> 턴 만큼 변화합니다.",
@@ -50464,7 +50479,7 @@
     "note": "전투당 한 번만 사용할 수 있습니다."
    }
   ],
-  "description": "반경 1 헥스 내 적 유닛이 60%의 기본 확률로 획득:<bulletlist><bullet>최대 헥스까지 순간이동</bullet><bullet>1 <turn></turn> 턴 동안 착란 상태 유발</bullet></bulletlist>",
+  "description": "반경 1 헥스 내 적 유닛이 60%의 기본 확률로 획득:<bulletlist><bullet>최대 3 헥스까지 순간이동</bullet><bullet>1 <turn></turn> 턴 동안 착란 상태 유발</bullet></bulletlist>",
   "name": "편집증 폭풍",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",

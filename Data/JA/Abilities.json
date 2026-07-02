@@ -952,6 +952,12 @@
   "icon": "0000049700003C60"
  },
  {
+  "description": "このユニットは火傷に対して無敵。",
+  "name": "ステータス効果に無敵：火傷",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "攻撃者が近接攻撃を当てたとき、その攻撃者は5 <damageFire></damageFire><hyperlink>炎ダメージ</hyperlink>受ける。",
   "name": "復讐の炎",
   "slug": "0000041b00000ab8",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "このユニットは火傷に対して無敵。",
-  "name": "ステータス効果に無敵：火傷",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "クールタイム：2 <turn></turn>"
    }
   ],
-  "description": "1マスの範囲にいる敵ユニットは60%の確率で以下の状態になる：<bulletlist><bullet>自分の位置が最大マス移動する。</bullet><bullet>錯乱を1<turn></turn>ターン付与される。</bullet></bulletlist>",
+  "description": "1マスの範囲にいる敵ユニットは60%の確率で以下の状態になる：<bulletlist><bullet>自分の位置が最大3マス移動する。</bullet><bullet>錯乱を1<turn></turn>ターン付与される。</bullet></bulletlist>",
   "name": "ヒステリーストーム",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>このユニットの合計<hyperlink><hp></hp>HP</hyperlink>が60%以下になると、グレードIIのスパイダーを召喚する。</bullet><bullet>このユニットの合計<hyperlink><hp></hp>HP</hyperlink>が 30%以下になると、グレードIIのスパイダーを召喚する。</bullet></bulletlist><br></br>この召喚が3 <turn></turn>ターンの間継続する。<br></br><br></br>また、都市でグレードIとグレードIIのクモを徴兵できるようになる。",
   "name": "生ける蜘蛛の巣",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "戦闘開始時に、戦闘終了まで永続する<hyperlink>朝の妖精</hyperlink>か<hyperlink>宵の妖精</hyperlink>を召喚する。",
@@ -30189,7 +30190,11 @@
   "name": "防御ドームを呼びだす",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>サポート</hyperlink>"
+   }
+  ],
   "accuracy": "常にヒット",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "猛毒の下生え",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>デバフ</hyperlink>"
+   }
+  ],
   "accuracy": "常にヒット",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "対象のユニットにダメージを与える。",
+  "description": "対象のユニットにダメージを与え、耐性を無視する。",
   "name": "霊魂の獲得",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "1回の戦闘で1回のみ使用可能。"
    }
   ],
-  "description": "1マスの範囲にいる敵ユニットは60%の確率で以下の状態になる：<bulletlist><bullet>自分の位置が最大マス移動する。</bullet><bullet>錯乱を1<turn></turn>ターン付与される。</bullet></bulletlist>",
+  "description": "1マスの範囲にいる敵ユニットは60%の確率で以下の状態になる：<bulletlist><bullet>自分の位置が最大3マス移動する。</bullet><bullet>錯乱を1<turn></turn>ターン付与される。</bullet></bulletlist>",
   "name": "ヒステリーストーム",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "<hyperlink><accuracy></accuracy>命中率</hyperlink>が80%上昇する。",
+  "name": "狙い",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "このユニットに以下を付与：<bulletlist><bullet>+10最大<hyperlink><hp></hp>HP</hyperlink>。</bullet><bullet> <hyperlink>戦闘</hyperlink>中に受ける回復量が+20%。</bullet></bulletlist>",
+  "name": "供給は十分",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "このユニットは復活させられた後、<hyperlink>祝福した魂</hyperlink>に変身した。この効果が切れた後に敗走する。",
   "name": "慈悲深く帰還させられた者",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "ダメージの反射",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "<hyperlink><accuracy></accuracy>命中率</hyperlink>が80%上昇する。",
-  "name": "狙い",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "対象のマスに<hyperlink>雪の小精霊</hyperlink>を召喚する。<br></br>この召喚が3 <turn></turn>ターンの間継続する。<br></br>精霊召喚は3 <turn></turn>ターンの共有クールダウンとなっている。",
@@ -50464,7 +50479,7 @@
     "note": "1回の戦闘で1回のみ使用可能。"
    }
   ],
-  "description": "1マスの範囲にいる敵ユニットは60%の確率で以下の状態になる：<bulletlist><bullet>自分の位置が最大マス移動する。</bullet><bullet>錯乱を1<turn></turn>ターン付与される。</bullet></bulletlist>",
+  "description": "1マスの範囲にいる敵ユニットは60%の確率で以下の状態になる：<bulletlist><bullet>自分の位置が最大3マス移動する。</bullet><bullet>錯乱を1<turn></turn>ターン付与される。</bullet></bulletlist>",
   "name": "ヒステリーストーム",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",

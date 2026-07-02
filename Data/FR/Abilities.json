@@ -964,6 +964,12 @@
   "icon": "0000035700000602"
  },
  {
+  "description": "L'unité est immunisée contre la Brûlure.",
+  "name": "Immunité aux effets d'état : brûlure",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "L'unité peut utiliser des capacités <hyperlink>Magie</hyperlink> et de <hyperlink>Assistance</hyperlink> quand <hyperlink>Engagé en combat de mêlée</hyperlink>.",
   "name": "Mage de mêlée",
   "slug": "000003e300005582",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "L'unité est immunisée contre la Brûlure.",
-  "name": "Immunité aux effets d'état : brûlure",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "Temps de recharge : 2 <turn></turn>"
    }
   ],
-  "description": "Les unités ennemies dans un rayon de 1 case(s) ont 60 % de chances de base :<bulletlist><bullet>D'être téléportées de  cases max.</bullet><bullet>De se voir infliger Folie pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
+  "description": "Les unités ennemies dans un rayon de 1 case(s) ont 60 % de chances de base :<bulletlist><bullet>D'être téléportées de 3 cases max.</bullet><bullet>De se voir infliger Folie pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
   "name": "Tempête hystérique",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>Quand le total des <hyperlink><hp></hp> Points de vie</hyperlink> de cette unité tombe à 60 % ou moins, conjurez une Araignée d'échelon II.</bullet><bullet>Quand le total des <hyperlink><hp></hp> Points de vie</hyperlink> de cette unité tombe à 30 % ou moins, conjurez uneAraignée d'échelon II.</bullet></bulletlist><br></br>L'invocation dure 3 <turn></turn> Tour.<br></br><br></br>Permet aussi le recrutement d'araignées d'échelon I et II dans les villes.",
   "name": "Nid d'araignées vivant",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "Au début du combat, conjurez un <hyperlink>Esprit matinal</hyperlink> ou un <hyperlink>Esprit crépusculaire</hyperlink> qui restera jusqu'à la fin.",
@@ -30189,7 +30190,11 @@
   "name": "Conjuration de dôme de protection",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Assistance^f</hyperlink>"
+   }
+  ],
   "accuracy": "Touche toujours",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "Sous-bois toxique",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Affaiblissement</hyperlink>"
+   }
+  ],
   "accuracy": "Touche toujours",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "Inflige des dégâts à l'unité ciblée.",
+  "description": "Inflige des dégâts à l'unité ciblée et ignore Résistance.",
   "name": "Revendication d'âme",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "Ne peut être utilisé qu'une fois par combat."
    }
   ],
-  "description": "Les unités ennemies dans un rayon de 1 case(s) ont 60 % de chances de base :<bulletlist><bullet>D'être téléportées de  cases max.</bullet><bullet>De se voir infliger Folie pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
+  "description": "Les unités ennemies dans un rayon de 1 case(s) ont 60 % de chances de base :<bulletlist><bullet>D'être téléportées de 3 cases max.</bullet><bullet>De se voir infliger Folie pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
   "name": "Tempête hystérique",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "Octroie +80 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.",
+  "name": "En joue",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "Cette unité a :<bulletlist><bullet>+10 <hyperlink><hp></hp> Points de vie</hyperlink> maximum.</bullet><bullet>+20% de soins reçus <hyperlink>au Combat</hyperlink>.</bullet></bulletlist>",
+  "name": "Bel approvisionnement",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "Cette unité a ressuscité comme <hyperlink>Âme bénie</hyperlink>. Elle se retirera à expiration de cet effet.",
   "name": "Résurrection bienveillante",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "Déviation des dégâts",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "Octroie +80 % de <hyperlink><accuracy></accuracy> Précision</hyperlink>.",
-  "name": "En joue",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "Invoquez un <hyperlink>Esprit des neiges inférieur</hyperlink> sur la case ciblée.<br></br>L'invocation dure 3 <turn></turn> Tour.<br></br>Les invocations d'esprits ont un temps de recharge partagé de 3 <turn></turn> Tour.",
@@ -50464,7 +50479,7 @@
     "note": "Ne peut être utilisé qu'une fois par combat."
    }
   ],
-  "description": "Les unités ennemies dans un rayon de 1 case(s) ont 60 % de chances de base :<bulletlist><bullet>D'être téléportées de  cases max.</bullet><bullet>De se voir infliger Folie pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
+  "description": "Les unités ennemies dans un rayon de 1 case(s) ont 60 % de chances de base :<bulletlist><bullet>D'être téléportées de 3 cases max.</bullet><bullet>De se voir infliger Folie pendant 1 <turn></turn> Tour.</bullet></bulletlist>",
   "name": "Tempête hystérique",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",

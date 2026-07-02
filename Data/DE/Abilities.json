@@ -976,6 +976,12 @@
   "icon": "0000035700000602"
  },
  {
+  "description": "Einheit ist immun gegen Brennen.",
+  "name": "Statuseffekt-Immunität: Brennen",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "Einheit hat:<bulletlist><bullet>+10 % Schaden.</bullet><bullet>+1 <resistance></resistance> <hyperlink>Widerstand</hyperlink></bullet></bulletlist>",
   "name": "Champion-Orden: Arkanist",
   "slug": "0000049700003954",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "Einheit ist immun gegen Brennen.",
-  "name": "Statuseffekt-Immunität: Brennen",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "Abklingzeit: 2 <turn></turn>"
    }
   ],
-  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern) haben eine Basischance von 60 %:<bulletlist><bullet>Um bis zu  Felder teleportiert zu werden.</bullet><bullet>Für 1 <turn></turn> Runde mit Tollheit belegt zu werden.</bullet></bulletlist>",
+  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern) haben eine Basischance von 60 %:<bulletlist><bullet>Um bis zu 3 Felder teleportiert zu werden.</bullet><bullet>Für 1 <turn></turn> Runde mit Tollheit belegt zu werden.</bullet></bulletlist>",
   "name": "Sturm der Hysterie",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>Wenn die Gesamtanzahl die <hyperlink><hp></hp> Trefferpunkte</hyperlink> dieser Einheit 60 % oder weniger erreichen, beschwört sie eine Spinne der Stufe II.</bullet><bullet>Wenn die Gesamtanzahl die <hyperlink><hp></hp> Trefferpunkte</hyperlink> dieser Einheit 30 % oder weniger erreichen, beschwört sie eine Spinne der Stufe II.</bullet></bulletlist><br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.<br></br><br></br>Außerdem ist die Einberufung von Spinnen der Stufe I und der Stufe II in Städten möglich.",
   "name": "Lebendes Spinnennest",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "Beschwört zu Beginn des Kampfes einen <hyperlink>Waldgeist des Morgens</hyperlink> oder einen <hyperlink>Waldgeist des Abends</hyperlink>, der bis zum Ende des Kampfes bleibt.",
@@ -30189,7 +30190,11 @@
   "name": "Schutzkuppel beschwören",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Unterstützung^f</hyperlink>"
+   }
+  ],
   "accuracy": "Trifft immer",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "giftiger Unterwuchs",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Schwächung^f</hyperlink>"
+   }
+  ],
   "accuracy": "Trifft immer",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "Fügt der Zieleinheit Schaden zu.",
+  "description": "Fügt der Zieleinheit Schaden zu und ignoriert Widerstand.",
   "name": "Seele beanspruchen",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "Kann nur einmal pro Kampf angewandt werden. "
    }
   ],
-  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern) haben eine Basischance von 60 %:<bulletlist><bullet>Um bis zu  Felder teleportiert zu werden.</bullet><bullet>Für 1 <turn></turn> Runde mit Tollheit belegt zu werden.</bullet></bulletlist>",
+  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern) haben eine Basischance von 60 %:<bulletlist><bullet>Um bis zu 3 Felder teleportiert zu werden.</bullet><bullet>Für 1 <turn></turn> Runde mit Tollheit belegt zu werden.</bullet></bulletlist>",
   "name": "Sturm der Hysterie",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "Gewährt +80 % <hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink>.",
+  "name": "Gezielt",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "Diese Einheit hat:<bulletlist><bullet>+10 maximale <hyperlink><hp></hp> Trefferpunkte</hyperlink>.</bullet><bullet>+20% erhaltene Heilung im <hyperlink>Kampf</hyperlink>.</bullet></bulletlist>",
+  "name": "Gut versorgt",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "Diese Einheit wurde wiedererweckt und in eine <hyperlink>Gesegnete Seele</hyperlink> verwandelt. Sie flieht, sobald dieser Effekt endet.",
   "name": "Gnädig zurückgekehrt",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "Schadensumlenkung",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "Gewährt +80 % <hyperlink><accuracy></accuracy> Treffsicherheit</hyperlink>.",
-  "name": "Gezielt",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "Beschwört einen <hyperlink>Geringen Schneegeist</hyperlink> auf dem Zielfeld.<br></br>Diese Beschwörung hält 3 <turn></turn> Runden an.<br></br>Geistbeschwörungen teilen sich eine Abklingzeit von 3 <turn></turn> Runden.",
@@ -50464,7 +50479,7 @@
     "note": "Kann nur einmal pro Kampf angewandt werden. "
    }
   ],
-  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern) haben eine Basischance von 60 %:<bulletlist><bullet>Um bis zu  Felder teleportiert zu werden.</bullet><bullet>Für 1 <turn></turn> Runde mit Tollheit belegt zu werden.</bullet></bulletlist>",
+  "description": "Feindliche Einheiten im Umkreis von 1 Feld(ern) haben eine Basischance von 60 %:<bulletlist><bullet>Um bis zu 3 Felder teleportiert zu werden.</bullet><bullet>Für 1 <turn></turn> Runde mit Tollheit belegt zu werden.</bullet></bulletlist>",
   "name": "Sturm der Hysterie",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",

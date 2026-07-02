@@ -970,6 +970,12 @@
   "icon": "000003E300005580"
  },
  {
+  "description": "Unit is immune to Burning.",
+  "name": "Status Effect Immunity: Burning",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "When a attacker hits at melee range, the attacker sustains 5 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.",
   "name": "Vengeful Flames",
   "slug": "0000041b00000ab8",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "Unit is immune to Burning.",
-  "name": "Status Effect Immunity: Burning",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach 60% or lower, conjure a Tier II Spider.</bullet><bullet>When this unit's total <hyperlink><hp></hp> Hit Points</hyperlink> reach 30% or lower, conjure a Tier II Spider.</bullet></bulletlist><br></br>This summon lasts for 3 <turn></turn> Turns.<br></br><br></br>Additionally allows for the drafting of Tier I and Tier II Spiders in cities.",
   "name": "Living Spider Nest",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "At the start of combat conjure a <hyperlink>Morning Sprite</hyperlink> or an <hyperlink>Evening Sprite</hyperlink> that stays until the end of combat.",
@@ -30189,7 +30190,11 @@
   "name": "Conjure Dome of Protection",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Support</hyperlink>"
+   }
+  ],
   "accuracy": "Always Hits",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "Poisonous Undergrowth",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Debuff</hyperlink>"
+   }
+  ],
   "accuracy": "Always Hits",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "Deals damage to target unit.",
+  "description": "Deals damage to target unit, ignoring Resistance.",
   "name": "Claim Soul",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "Grants +80% <hyperlink><accuracy></accuracy> Accuracy</hyperlink>.",
+  "name": "Aimed",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "This unit has:<bulletlist><bullet>+10 Maximum <hyperlink><hp></hp> Hit Points</hyperlink>.</bullet><bullet>+20% healing received in <hyperlink>Combat</hyperlink>.</bullet></bulletlist>",
+  "name": "Well Supplied",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "This unit was resurrected and transformed into a <hyperlink>Blessed Soul</hyperlink>. It will rout when this effect expires.",
   "name": "Mercifully Returned",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "Damage Deflection",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "Grants +80% <hyperlink><accuracy></accuracy> Accuracy</hyperlink>.",
-  "name": "Aimed",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "Summon a <hyperlink>Lesser Snow Spirit</hyperlink> onto the target hex.<br></br>This summon lasts for 3 <turn></turn> Turns.<br></br>Spirit Summons have a shared 3 <turn></turn> Turns cooldown.",

@@ -471,7 +471,7 @@
   "id": "야카의_묘성_주입",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "대상 종족에 고양이 정수를 주입하여 획득:<bulletlist><bullet>매우 빠른 이동 상태</bullet><bullet><hyperlink>발사체</hyperlink> 공격에 대한 <hyperlink>회피</hyperlink> +25%</bullet></bulletlist>",
+  "description": "대상 종족에 고양이 정수를 주입하여 획득:<bulletlist><bullet>매우 빠른 이동 상태</bullet><bullet><hyperlink>발사체</hyperlink>, <hyperlink>마법</hyperlink> 공격에 대한 <hyperlink>회피</hyperlink> +25%</bullet></bulletlist>",
   "name": "야카의 묘성 주입",
   "operation_point_cost": 250,
   "icon": "0000049700003E00"
@@ -791,7 +791,7 @@
   "id": "흡력의_충만",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "영향을 받은 유닛의 기본 공격이 획득:<bulletlist><bullet>60%의 기본 확률로 3 <turn></turn> 턴 동안 쇠약 상태 유발, 성공 시 3 <turn></turn> 턴 동안 강화 상태 획득</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "description": "영향을 받은 유닛의 공격이 획득:<bulletlist><bullet><damageFire></damageFire> <hyperlink>화염 피해</hyperlink> +1</bullet><bullet>기본 공격 시 60%의 기본 확률로 3 <turn></turn> 턴 동안 쇠약 상태 유발, 성공 시 3 <turn></turn> 턴 동안 강화 상태 획득</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> 원거리 유닛"
@@ -957,7 +957,7 @@
   "id": "마법사_갑옷",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "영향을 받은 유닛이 획득:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +2</bullet></bulletlist>",
+  "description": "영향을 받은 유닛이 획득:<bulletlist><bullet><defense></defense> <hyperlink>방어력</hyperlink> +1</bullet><bullet><statuseffectresistance></statuseffectresistance> <hyperlink>상태 저항력</hyperlink> +2</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> 지원 유닛"
@@ -984,6 +984,12 @@
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> 원거리 유닛"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> 지원 유닛"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> 전투 마법사 유닛"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> 척후병 유닛"
@@ -1243,7 +1249,7 @@
   "id": "사구_추적자",
   "DLC": "RISEFROMRUIN ",
   "tactical": false,
-  "description": "대상 종족이 사막과 하나가 되도록 해 다음을 부여:<bulletlist><bullet>사막 보행 상태</bullet><bullet>사막 위장 상태</bullet><bullet><hyperlink>사막</hyperlink> 지형에 있을 경우 획득:<bulletlist></bullet><bullet>전투 도중 매우 빠른 이동 상태</bullet><bullet><hyperlink><flank></flank> 측면 공격</hyperlink> 피해 +20%</bullet></bulletlist></bulletlist>",
+  "description": "대상 종족이 사막과 하나가 되도록 해 다음을 부여:<bulletlist><bullet>사막 보행 상태</bullet><bullet>사막 위장 상태</bullet><bullet><hyperlink>사막</hyperlink> 지형에 있을 경우 획득:<bulletlist></bullet><bullet>빠른 이동 상태</bullet><bullet><hyperlink><flank></flank> 측면 공격</hyperlink> 피해 +20%</bullet></bulletlist></bulletlist>",
   "name": "사구 추적자",
   "operation_point_cost": 250,
   "icon": "0000049700003662"
@@ -4337,7 +4343,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>유닛 인챈트</hyperlink>",
   "id": "생명의_지팡이",
   "tactical": false,
-  "description": "영향을 받은 유닛이 공격 또는 지원 능력을 사용할 경우, 해당 유닛으로부터 반경 3 헥스 내 우호 유닛을 무작위로 선택해 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 15 회복합니다.",
+  "description": "영향을 받은 유닛의 공격 또는 지원 능력:<bulletlist><bullet>3 헥스 내 무작위 우호 유닛의 <hyperlink><temphp></temphp> 임시 체력</hyperlink> 15 회복</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> 지원 유닛"
@@ -4454,7 +4460,7 @@
   "id": "그림자_무기",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "영향을 받은 유닛의 공격:<bulletlist><bullet><hyperlink><flank></flank> 측면 공격</hyperlink> 시 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> +3</bullet><bullet>실명 상태인 유닛에게 항상 측면 공격 유발</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
+  "description": "영향을 받은 유닛의 공격:<bulletlist><bullet><hyperlink><flank></flank> 측면 공격</hyperlink> 또는 실명 상태인 유닛 공격 시 <damageFrost></damageFrost> <hyperlink>서리 피해</hyperlink> +3</bullet></bulletlist><br></br>단일 사격 공격의 효과가 <hyperlink>증가</hyperlink>합니다.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> 방패 유닛"
@@ -9123,5 +9129,53 @@
   "name": "탐욕의 영혼 저주",
   "operation_point_cost": 80,
   "icon": "000003DF00001C78"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596144,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
+  "id": "오노카의_적자",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "당신의 휘하에 있는 군대를 이끄는 대상 <hyperlink>영웅이</hyperlink> 영구적으로 <hyperlink>겨울의 재앙으로</hyperlink> 변합니다. 또한 해당 유닛의 모든 <hyperlink><hp></hp> 체력</hyperlink>, <movementgeneral></movementgeneral> <hyperlink>이동 점수를</hyperlink> 회복합니다.<br></br><br></br>이 변신은 되돌릴 수 없으며, <hyperlink>영웅이</hyperlink> 영웅 상태를 잃고 일반 <hyperlink>유닛으로</hyperlink> 변합니다!",
+  "name": "오노카의 적자",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E6"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596143,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
+  "id": "루스의_적자",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "당신의 휘하에 있는 군대를 이끄는 대상 <hyperlink>영웅이</hyperlink> 영구적으로 <hyperlink>가을의 재앙으로</hyperlink> 변합니다. 또한 해당 유닛의 모든 <hyperlink><hp></hp> 체력</hyperlink>, <movementgeneral></movementgeneral> <hyperlink>이동 점수를</hyperlink> 회복합니다.<br></br><br></br>이 변신은 되돌릴 수 없으며, <hyperlink>영웅이</hyperlink> 영웅 상태를 잃고 일반 <hyperlink>유닛으로</hyperlink> 변합니다!",
+  "name": "루스의 적자",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E5"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596142,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
+  "id": "벤트로프의_적자",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "당신의 휘하에 있는 군대를 이끄는 대상 <hyperlink>영웅이</hyperlink> 영구적으로 <hyperlink>여름의 재앙으로</hyperlink> 변합니다. 또한 해당 유닛의 모든 <hyperlink><hp></hp> 체력</hyperlink>, <movementgeneral></movementgeneral> <hyperlink>이동 점수를</hyperlink> 회복합니다.<br></br><br></br>이 변신은 되돌릴 수 없으며, <hyperlink>영웅이</hyperlink> 영웅 상태를 잃고 일반 <hyperlink>유닛으로</hyperlink> 변합니다!",
+  "name": "벤트로프의 적자",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E4"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596133,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>우호 군대 주문</hyperlink>",
+  "id": "일란드라의_적자",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "당신의 휘하에 있는 군대를 이끄는 대상 <hyperlink>영웅이</hyperlink> 영구적으로 <hyperlink>봄의 재앙으로</hyperlink> 변합니다. 또한 해당 유닛의 모든 <hyperlink><hp></hp> 체력</hyperlink>, <movementgeneral></movementgeneral> <hyperlink>이동 점수를</hyperlink> 회복합니다.<br></br><br></br>이 변신은 되돌릴 수 없으며, <hyperlink>영웅이</hyperlink> 영웅 상태를 잃고 일반 <hyperlink>유닛으로</hyperlink> 변합니다!",
+  "name": "일란드라의 적자",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E0"
  }
 ]

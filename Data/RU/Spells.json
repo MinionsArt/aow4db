@@ -471,7 +471,7 @@
   "id": "Кошачья_натура_Яки",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Придаёт выбранному народу кошачью натуру со следующими свойствами:<bulletlist><bullet>способность «Очень высокая скорость»;</bullet><bullet>+25% к <hyperlink>уклонению</hyperlink> против <hyperlink>стрельбы</hyperlink>.</bullet></bulletlist>",
+  "description": "Придаёт выбранному народу кошачью натуру со следующими свойствами:<bulletlist><bullet>способность «Очень высокая скорость»;</bullet><bullet>+25% к <hyperlink>уклонению</hyperlink> против <hyperlink>стрельбы</hyperlink> и <hyperlink>магических атак</hyperlink>.</bullet></bulletlist>",
   "name": "Кошачья натура Яки",
   "operation_point_cost": 250,
   "icon": "0000049700003E00"
@@ -791,7 +791,7 @@
   "id": "Чары_высасывания_силы",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Базовые атаки воинов под действием чар:<bulletlist><bullet>с базовой вероятностью 60% могут применить эффект «Слабость» на 3 <turn></turn> х. В случае успеха даёт атакующему эффект «Дополнительная сила» на 3 <turn></turn> х.</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Атаки воинов под действием чар получают:<bulletlist><bullet>+1 ед. <damageFire></damageFire> <hyperlink>урона от огня</hyperlink>.</bullet><bullet>базовые атаки с базовой вероятностью 60% могут на 3 <turn></turn> х. применить эффект «Слабость». В случае успеха атакующий на 3 <turn></turn> х. получает эффект «Дополнительная сила».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
@@ -957,7 +957,7 @@
   "id": "Броня_мага",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Воины под действием чар получают:<bulletlist><bullet>+2 к <defense></defense> <hyperlink>защите</hyperlink>.</bullet></bulletlist>",
+  "description": "Воины под действием чар получают:<bulletlist><bullet>+1 к <defense></defense> <hyperlink>защите</hyperlink>;</bullet><bullet>+2 к <statuseffectresistance></statuseffectresistance> <hyperlink>сопротивлению эффектам</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -984,6 +984,12 @@
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Стрелок"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Воин поддержки"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Боевой маг"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Застрельщик"
@@ -1243,7 +1249,7 @@
   "id": "Бродяги_дюн",
   "DLC": "RISEFROMRUIN ",
   "tactical": false,
-  "description": "Выбранный народ становится един с пустыней и получает следующие свойства:<bulletlist><bullet>«Ходьба по песку»;</bullet><bullet>«Песчаный камуфляж».</bullet><bullet>Если находится на <hyperlink>песчаном</hyperlink> ландшафте:<bulletlist></bullet><bullet>очень высокая скорость в бою;</bullet><bullet>+20% к урону при <flank></flank> <hyperlink>атаках с фланга</hyperlink>.</bullet></bulletlist></bulletlist>",
+  "description": "Выбранный народ становится един с пустыней и получает следующие свойства:<bulletlist><bullet>«Ходьба по песку»;</bullet><bullet>«Песчаный камуфляж».</bullet><bullet>Если находится на <hyperlink>песчаном</hyperlink> ландшафте:<bulletlist></bullet><bullet>«Высокая скорость»;</bullet><bullet>+20% к урону при <flank></flank> <hyperlink>атаках с фланга</hyperlink>.</bullet></bulletlist></bulletlist>",
   "name": "Бродяги дюн",
   "operation_point_cost": 250,
   "icon": "0000049700003662"
@@ -4337,7 +4343,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Чары для воинов</hyperlink>",
   "id": "Жезлы_жизни",
   "tactical": false,
-  "description": "Когда воин под действием чар использует способность атаки или поддержки, случайный дружественный воин в радиусе 3 кл. от него восстанавливает 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.",
+  "description": "Способности атаки или поддержки воинов под действием чар:<bulletlist><bullet>восстанавливают 15 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink> случайно выбранному дружественному воину в радиусе 3 кл.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Воин поддержки"
@@ -4454,7 +4460,7 @@
   "id": "Теневое_оружие",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Атаки воинов под действием чар:<bulletlist><bullet>наносят +3 <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink> при <flank></flank> <hyperlink>атаке с фланга</hyperlink>;</bullet><bullet>всегда считаются атаками с фланга против целей под воздействием эффекта «Слепота».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Атаки воинов под действием чар:<bulletlist><bullet>наносят +3 ед. <damageFrost></damageFrost> <hyperlink>урона от холода</hyperlink> при <flank></flank> <hyperlink>атаке с фланга</hyperlink> или атаке против цели под воздействием эффекта «Слепота».</bullet></bulletlist><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Воин со щитом"
@@ -9123,5 +9129,53 @@
   "name": "Проклятие алчных душ",
   "operation_point_cost": 80,
   "icon": "000003DF00001C78"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596144,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
+  "id": "Избранник_Оноки",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Зимнюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <movementgeneral></movementgeneral> <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "name": "Избранник Оноки",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E6"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596143,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
+  "id": "Избранник_Лута",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Осеннюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <movementgeneral></movementgeneral> <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "name": "Избранник Лута",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E5"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596142,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
+  "id": "Избранник_Вентрога",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Летнюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <movementgeneral></movementgeneral> <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "name": "Избранник Вентрога",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E4"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596133,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Заклинание для дружественной армии</hyperlink>",
+  "id": "Избранник_Иландры",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Выбранный <hyperlink>герой</hyperlink> во главе вашей армии навсегда превращается в <hyperlink>Весеннюю кару</hyperlink>. При этом у него полностью восстанавливаются <hp></hp> <hyperlink>здоровье</hyperlink> и <movementgeneral></movementgeneral> <hyperlink>очки перемещения</hyperlink>.<br></br><br></br><hyperlink>Герой</hyperlink> станет обычным <hyperlink>воином</hyperlink>. Эта трансформация необратима!",
+  "name": "Избранник Иландры",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E0"
  }
 ]

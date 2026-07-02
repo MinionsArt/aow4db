@@ -410,7 +410,10 @@ function buildLookupMap(array, key) {
 
 const patchDates = [
     // date ranges of patches
-      { name: "Scorpion 1.2.1", from: new Date("2026-04-01"), to: new Date("2026-11-29") },
+      { name: "Sprite 1.2", from: new Date("2026-07-02"), to: new Date("2026-11-29") },
+      { name: "Sprite 1.1", from: new Date("2026-06-24"), to: new Date("2026-07-01") },
+      { name: "Sprite 1.0", from: new Date("2026-06-16"), to: new Date("2026-06-23") },
+      { name: "Scorpion 1.2.1", from: new Date("2026-04-01"), to: new Date("2026-06-15") },
      { name: "Scorpion 1.2", from: new Date("2026-03-24"), to: new Date("2026-03-31") },
       { name: "Scorpion 1.1", from: new Date("2026-03-12"), to: new Date("2026-03-23") },
      { name: "Scorpion 1.0", from: new Date("2026-03-09"), to: new Date("2026-03-11") },

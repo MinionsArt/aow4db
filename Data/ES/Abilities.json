@@ -958,6 +958,12 @@
   "icon": "0000035700000602"
  },
  {
+  "description": "Esta unidad es inmune a Quemadura.",
+  "name": "Inmunidad a efectos de estado: quemadura",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "Si un atacante asesta un golpe cuerpo a cuerpo, este recibe 5 de <damageFire></damageFire> <hyperlink>Daño de fuego</hyperlink>.",
   "name": "Llamas vengativas",
   "slug": "0000041b00000ab8",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "Esta unidad es inmune a Quemadura.",
-  "name": "Inmunidad a efectos de estado: quemadura",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "Enfriamiento: 2 <turn></turn>"
    }
   ],
-  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) tienen una probabilidad inicial del 60 % de:<bulletlist><bullet>Teletransportarse hasta  casillas.</bullet><bullet>Recibir Locura durante 1 <turn></turn> Turno.</bullet></bulletlist>",
+  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) tienen una probabilidad inicial del 60 % de:<bulletlist><bullet>Teletransportarse hasta 3 casillas.</bullet><bullet>Recibir Locura durante 1 <turn></turn> Turno.</bullet></bulletlist>",
   "name": "Tormenta histérica",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>Cuando los <hyperlink><hp></hp> Puntos de salud</hyperlink> totales de esta unidad llegan al 60 % o menos, conjura una Araña de nivel II.</bullet><bullet>Cuando los <hyperlink><hp></hp> Puntos de salud</hyperlink> totales de esta unidad llegan al 30 % o menos, conjura una Araña de nivel II.</bullet></bulletlist><br></br>Esta invocación dura 3 <turn></turn> Turnos..<br></br><br></br>Además, permite reclutar arañas de nivel I y nivel II en las ciudades.",
   "name": "Nido de arañas viviente",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "Al inicio del combate, conjuras <hyperlink>un Espíritu matutino</hyperlink> o <hyperlink>un Espíritu vespertino</hyperlink> que se queda hasta el final del combate.",
@@ -30189,7 +30190,11 @@
   "name": "Conjurar cúpula de protección",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Apoyo^m</hyperlink>"
+   }
+  ],
   "accuracy": "Siempre acierta",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "Sotobosque venenoso",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Efecto negativo^m</hyperlink>"
+   }
+  ],
   "accuracy": "Siempre acierta",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "Inflige daño a la unidad objetivo.",
+  "description": "Inflige daño a la unidad objetivo e ignora la resistencia.",
   "name": "Reivindicar alma",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "Solo se puede usar una vez por batalla."
    }
   ],
-  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) tienen una probabilidad inicial del 60 % de:<bulletlist><bullet>Teletransportarse hasta  casillas.</bullet><bullet>Recibir Locura durante 1 <turn></turn> Turno.</bullet></bulletlist>",
+  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) tienen una probabilidad inicial del 60 % de:<bulletlist><bullet>Teletransportarse hasta 3 casillas.</bullet><bullet>Recibir Locura durante 1 <turn></turn> Turno.</bullet></bulletlist>",
   "name": "Tormenta histérica",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "Otorga +80 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.",
+  "name": "Precisión",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "Esta unidad tiene:<bulletlist><bullet>+10 <hyperlink><hp></hp> Puntos de salud</hyperlink> máximos.</bullet><bullet>+20% de curación durante el <hyperlink>Combate</hyperlink>.</bullet></bulletlist>",
+  "name": "Bien abastecido",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "Esta unidad ha sido resucitada y transformada en <hyperlink>un Alma bendita</hyperlink>. Huirá cuando el efecto finalice.",
   "name": "Regreso por compasión",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "Bloqueo del daño",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "Otorga +80 % de <hyperlink><accuracy></accuracy>Precisión</hyperlink>.",
-  "name": "Precisión",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "Invoca a <hyperlink>un Espíritu níveo menor</hyperlink> en la casilla objetivo.<br></br>Esta invocación dura 3 <turn></turn> Turnos.<br></br>Las invocaciones de espíritu tienen un enfriamiento compartido de 3 <turn></turn> Turnos.",
@@ -50464,7 +50479,7 @@
     "note": "Solo se puede usar una vez por batalla."
    }
   ],
-  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) tienen una probabilidad inicial del 60 % de:<bulletlist><bullet>Teletransportarse hasta  casillas.</bullet><bullet>Recibir Locura durante 1 <turn></turn> Turno.</bullet></bulletlist>",
+  "description": "Las unidades enemigas situadas en un área de 1 casilla(s) tienen una probabilidad inicial del 60 % de:<bulletlist><bullet>Teletransportarse hasta 3 casillas.</bullet><bullet>Recibir Locura durante 1 <turn></turn> Turno.</bullet></bulletlist>",
   "name": "Tormenta histérica",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",

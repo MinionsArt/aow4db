@@ -471,7 +471,7 @@
   "id": "infusion_féline_dyaka",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Imprégnez la race ciblée d'essence féline. Elle gagne :<bulletlist><bullet>Déplacement très rapide</bullet><bullet>+25 % <hyperlink>Évasion</hyperlink> contre les attaques <hyperlink>Missile</hyperlink>.</bullet></bulletlist>",
+  "description": "Imprégnez la race ciblée d'essence féline. Elle gagne :<bulletlist><bullet>Déplacement très rapide</bullet><bullet>+25 % d'<hyperlink>Évasion</hyperlink> contre les attaques <hyperlink>Missile</hyperlink> et <hyperlink>Magie</hyperlink>.</bullet></bulletlist>",
   "name": "Infusion féline d'Yaka",
   "operation_point_cost": 250,
   "icon": "0000049700003E00"
@@ -791,7 +791,7 @@
   "id": "affinité_de_drain_de_force",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Les attaques de base de l'unité enchantée gagnent :<bulletlist><bullet>60 % de chances de base d'infliger Affaibli pendant 3 <turn></turn> Tour. En cas de succès, gagne Renforcé pendant 3 <turn></turn> Tour.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques des unités enchantées obtiennent :<bulletlist><bullet>+1 <damageFire></damageFire> <hyperlink>Dégâts de feu</hyperlink>.</bullet><bullet>Les attaques de base ont 60 % de chances de base d'infliger Affaibli pendant 3 <turn></turn> Tour. En cas de succès, elles gagnent Renforcé pendant 3 <turn></turn> Tour.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
@@ -957,7 +957,7 @@
   "id": "armure_de_mage",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Les unités enchantées obtiennent :<bulletlist><bullet>+2 <defense></defense> <hyperlink>Défense</hyperlink></bullet></bulletlist>.",
+  "description": "Les unités enchantées obtiennent :<bulletlist><bullet>+1 <defense></defense> <hyperlink>Défense</hyperlink></bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Résistance d'état</hyperlink></bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -984,6 +984,12 @@
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Unité à distance"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unité d'assistance"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Unité mage de combat"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Unité escarmoucheur"
@@ -1243,7 +1249,7 @@
   "id": "rabatteurs_des_dunes",
   "DLC": "RISEFROMRUIN ",
   "tactical": false,
-  "description": "La race ciblée ne fait plus qu'un avec le désert et obtient :<bulletlist><bullet>Marche sur le sable</bullet><bullet>Camouflage des sables</bullet><bullet>En terrain <hyperlink>Sable</hyperlink> :<bulletlist></bullet><bullet>Déplacement très rapide au combat.</bullet><bullet>+20 % de dégâts de <hyperlink><flank></flank> Débordement</hyperlink>.</bullet></bulletlist></bulletlist>",
+  "description": "La race ciblée ne fait plus qu'un avec le désert et obtient :<bulletlist><bullet>Marche sur le sable</bullet><bullet>Camouflage des sables</bullet><bullet>Sur terrain <hyperlink>Sable</hyperlink>, elle obtient :<bulletlist></bullet><bullet>Déplacement rapide</bullet><bullet>+20 % de dégâts de <hyperlink><flank></flank> Débordement</hyperlink></bullet></bulletlist></bulletlist>",
   "name": "Rabatteurs des dunes",
   "operation_point_cost": 250,
   "icon": "0000049700003662"
@@ -4337,7 +4343,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Enchantement d'unité</hyperlink>",
   "id": "bâtons_de_vie",
   "tactical": false,
-  "description": "Quand une unité enchantée utilise une attaque ou une capacité de soutien, une unité alliée aléatoire dans un rayon de 3 cases d'elle récupère 15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.",
+  "description": "Les capacités d'attaque ou de soutien des unités enchantées :<bulletlist><bullet>Soignent une unité alliée aléatoire dans un rayon de 3 cases à hauteur de 15 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unité d'assistance"
@@ -4454,7 +4460,7 @@
   "id": "armes_de_lombre",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Les attaques des unités enchantées :<bulletlist><bullet>infligent +3 <damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> lors de <hyperlink><flank></flank> un Débordement</hyperlink>.</bullet><bullet>Déborde toujours les unités Aveuglement.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
+  "description": "Les attaques des unités enchantées :<bulletlist><bullet>Infligent +3<damageFrost></damageFrost> <hyperlink>Dégâts de gel</hyperlink> lors de <hyperlink><flank></flank> un Débordement</hyperlink> ou quand elles touchent des unités Aveuglement.</bullet></bulletlist><br></br>Les effets <hyperlink>sont augmentés</hyperlink> pour les attaques de Tir unique.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Unité bouclier"
@@ -9123,5 +9129,53 @@
   "name": "Malédiction d'âme d'avarice",
   "operation_point_cost": 80,
   "icon": "000003DF00001C78"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596144,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
+  "id": "Élu_donoka",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau hivernal</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <movementgeneral></movementgeneral> <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "name": "Élu d'Onoka",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E6"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596143,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
+  "id": "Élu_de_luth",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau automnal</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <movementgeneral></movementgeneral> <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "name": "Élu de Luth",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E5"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596142,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
+  "id": "Élu_de_ventrogh",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau estival</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <movementgeneral></movementgeneral> <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "name": "Élu de Ventrogh",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E4"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596133,
+  "spellType": "<caststrategic></caststrategic><hyperlink>Sort d'armée alliée</hyperlink>",
+  "id": "Élu_dilandra",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Le <hyperlink>Héros</hyperlink> ciblé dirigeant une armée sous votre contrôle est transformé de manière permanente en <hyperlink>Fléau printanier</hyperlink>. Ceci restaure également tous les <hyperlink><hp></hp> Points de vie</hyperlink> et les <movementgeneral></movementgeneral> <hyperlink>Points de déplacement</hyperlink> de l'unité.<br></br><br></br>Cette transformation est irréversible et le <hyperlink>Héros</hyperlink> perd son statut de héros, devenant une <hyperlink>Unité</hyperlink> normale.",
+  "name": "Élu d'Ilandra",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E0"
  }
 ]

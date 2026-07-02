@@ -970,6 +970,12 @@
   "icon": "0000041B00000AB9"
  },
  {
+  "description": "Этот воин невосприимчив к эффекту «Горение».",
+  "name": "Невосприимчивость: Горение",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "Этот воин парит в воздухе:<bulletlist><bullet>Перемещение по любому ландшафту, кроме горного, стоит 6. Перемещение по горам стоит 8.</bullet><bullet>Для перемещения над водой требуется знание мореходства.</bullet></bulletlist>",
   "name": "Парящий",
   "slug": "000003eb00000724",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "Этот воин невосприимчив к эффекту «Горение».",
-  "name": "Невосприимчивость: Горение",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "Перезарядка: 2 <turn></turn>"
    }
   ],
-  "description": "Вражеские воины в радиусе 1 кл. с базовой вероятностью 60%:<bulletlist><bullet>могут быть телепортированы на  кл.;</bullet><bullet>на 1 <turn></turn> х. получают эффект «Безумие».</bullet></bulletlist>",
+  "description": "Вражеские воины в радиусе 1 кл. с базовой вероятностью 60%:<bulletlist><bullet>могут быть телепортированы на расстояние до 3 кл.;</bullet><bullet>на 1 <turn></turn> х. получают эффект «Безумие».</bullet></bulletlist>",
   "name": "Буря безумия",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>Когда <hp></hp> <hyperlink>здоровье</hyperlink> этого воина опускается до 60% и ниже, призывает паука ранга II.</bullet><bullet>Когда <hp></hp> <hyperlink>здоровье</hyperlink> воина опускается до 30% и ниже, призывает паука ранга II.</bullet></bulletlist><br></br>Призванный воин остаётся в бою на 3 <hyperlink>х.</hyperlink>.<br></br><br></br>Также позволяет нанимать в городах пауков ранга I и II.",
   "name": "Живое паучье гнездо",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "В начале боя призывает <hyperlink>утреннего спрайта</hyperlink> или <hyperlink>вечернего спрайта</hyperlink> до конца сражения.",
@@ -30189,7 +30190,11 @@
   "name": "Вызов защитного купола",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Поддержка^F</hyperlink>"
+   }
+  ],
   "accuracy": "Всегда попадает в цель",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "Ядовитые заросли",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Ослабление^N</hyperlink>"
+   }
+  ],
   "accuracy": "Всегда попадает в цель",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "Наносит урон выбранному воину.",
+  "description": "Наносит урон выбранному воину, игнорируя его сопротивление.",
   "name": "Завладение душой",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "Можно использовать только один раз за битву."
    }
   ],
-  "description": "Вражеские воины в радиусе 1 кл. с базовой вероятностью 60%:<bulletlist><bullet>могут быть телепортированы на  кл.;</bullet><bullet>на 1 <turn></turn> х. получают эффект «Безумие».</bullet></bulletlist>",
+  "description": "Вражеские воины в радиусе 1 кл. с базовой вероятностью 60%:<bulletlist><bullet>могут быть телепортированы на расстояние до 3 кл.;</bullet><bullet>на 1 <turn></turn> х. получают эффект «Безумие».</bullet></bulletlist>",
   "name": "Буря безумия",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "Даёт +80% к <accuracy></accuracy> <hyperlink>точности</hyperlink>.",
+  "name": "Сосредоточенность",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "Воин получает:<bulletlist><bullet>++10 к максимальному запасу <hp></hp> <hyperlink>здоровья</hyperlink>;</bullet><bullet>++20% к эффективности исцеления в <hyperlink>сражении</hyperlink>.</bullet></bulletlist>",
+  "name": "Хорошее снабжение",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "Этот воин воскрес, превратившись в <hyperlink>благословенную душу</hyperlink>. Когда действие эффекта прекратится, он обратится в бегство.",
   "name": "Милосердно возвращённый",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "Отражение урона",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "Даёт +80% к <accuracy></accuracy> <hyperlink>точности</hyperlink>.",
-  "name": "Сосредоточенность",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "Призывает на выбранную клетку <hyperlink>малого снежного духа</hyperlink>.<br></br>Призванный воин остаётся в бою на 3 <hyperlink>х.</hyperlink>.<br></br>Все призывы духов имеют общую перезарядку длительностью 3 <turn></turn> х.",
@@ -50464,7 +50479,7 @@
     "note": "Можно использовать только один раз за битву."
    }
   ],
-  "description": "Вражеские воины в радиусе 1 кл. с базовой вероятностью 60%:<bulletlist><bullet>могут быть телепортированы на  кл.;</bullet><bullet>на 1 <turn></turn> х. получают эффект «Безумие».</bullet></bulletlist>",
+  "description": "Вражеские воины в радиусе 1 кл. с базовой вероятностью 60%:<bulletlist><bullet>могут быть телепортированы на расстояние до 3 кл.;</bullet><bullet>на 1 <turn></turn> х. получают эффект «Безумие».</bullet></bulletlist>",
   "name": "Буря безумия",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",

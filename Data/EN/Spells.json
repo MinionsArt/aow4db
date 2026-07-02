@@ -471,7 +471,7 @@
   "id": "yakas_feline_infusion",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Infuse target race with feline essence gaining:<bulletlist><bullet>Very Fast Movement</bullet><bullet>+25% <hyperlink>Evasion</hyperlink> against <hyperlink>Missile</hyperlink> attacks.</bullet></bulletlist>",
+  "description": "Infuse target race with feline essence gaining:<bulletlist><bullet>Very Fast Movement</bullet><bullet>+25% <hyperlink>Evasion</hyperlink> against <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks.</bullet></bulletlist>",
   "name": "Yaka's Feline Infusion",
   "operation_point_cost": 250,
   "icon": "0000049700003E00"
@@ -791,7 +791,7 @@
   "id": "strength_sapping_imbuement",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Enchanted unit's base attacks gain:<bulletlist><bullet>A base 60% chance of inflicting Weakened for 3 <turn></turn> Turns. On success gain Strengthened for 3 <turn></turn> Turns.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "Enchanted units attacks gain:<bulletlist><bullet>+1 <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.</bullet><bullet>Base attacks have a base 60% chance of inflicting Weakened for 3 <turn></turn> Turns. On success gain Strengthened for 3 <turn></turn> Turns.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Ranged Unit"
@@ -957,7 +957,7 @@
   "id": "mage_armor",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Enchanted units gain:<bulletlist><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink></bullet></bulletlist>",
+  "description": "Enchanted units gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Status Resistance</hyperlink></bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -984,6 +984,12 @@
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Ranged Unit"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Support Unit"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Battle Mage Unit"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Skirmisher Unit"
@@ -1243,7 +1249,7 @@
   "id": "dunestalkers",
   "DLC": "RISEFROMRUIN ",
   "tactical": false,
-  "description": "Target race becomes one with the desert, granting them:<bulletlist><bullet>Sand Walk</bullet><bullet>Sand Camouflage</bullet><bullet>When on <hyperlink>Sand</hyperlink> terrain gain:<bulletlist></bullet><bullet>Very Fast Movement in combat.</bullet><bullet>+20% <hyperlink><flank></flank> Flanking</hyperlink> damage.</bullet></bulletlist></bulletlist>",
+  "description": "Target race becomes one with the desert, granting them:<bulletlist><bullet>Sand Walk</bullet><bullet>Sand Camouflage</bullet><bullet>When on <hyperlink>Sand</hyperlink> terrain gain:<bulletlist></bullet><bullet>Fast Movement</bullet><bullet>+20% <hyperlink><flank></flank> Flanking</hyperlink> damage</bullet></bulletlist></bulletlist>",
   "name": "Dunestalkers",
   "operation_point_cost": 250,
   "icon": "0000049700003662"
@@ -4337,7 +4343,7 @@
   "spellType": "<caststrategic></caststrategic> <hyperlink>Unit Enchantment</hyperlink>",
   "id": "staves_of_life",
   "tactical": false,
-  "description": "When an enchanted unit uses an Attack or Support ability, a random friendly unit within 3 hexes of it heals for 15 <hyperlink><temphp></temphp> Temporary Hit Point</hyperlink>.",
+  "description": "Makes Attack or Support abilities of enchanted units:<bulletlist><bullet>Heal a random friendly unit within 3 hexes of it for 15 <hyperlink><temphp></temphp> Temporary Hit Point</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Support Unit"
@@ -4454,7 +4460,7 @@
   "id": "shadow_weapons",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Makes attacks of enchanted units:<bulletlist><bullet>Deal +3<damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> when <hyperlink><flank></flank> Flanking</hyperlink>.</bullet><bullet>Always flank Blind units.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
+  "description": "Attacks of enchanted units:<bulletlist><bullet>Deal +3<damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> when <hyperlink><flank></flank> Flanking</hyperlink> or attacking Blind units.</bullet></bulletlist><br></br>Effects <hyperlink>are increased</hyperlink> for Single Shot attacks.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Shield Unit"
@@ -9123,5 +9129,53 @@
   "name": "Soulcurse of Greed",
   "operation_point_cost": 80,
   "icon": "000003DF00001C78"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596144,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
+  "id": "onokas_chosen",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Target <hyperlink>Hero</hyperlink> leading an army you control is permanently transformed into a <hyperlink>Scourge of Winter</hyperlink>. This also restores all <hyperlink><hp></hp> Hit Points</hyperlink> and <movementgeneral></movementgeneral> <hyperlink>Move Points</hyperlink> of the unit.<br></br><br></br>This transformation cannot be reverted and the <hyperlink>Hero</hyperlink> loses its hero status, becoming a normal <hyperlink>Unit</hyperlink>!",
+  "name": "Onoka's Chosen",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E6"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596143,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
+  "id": "luths_chosen",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Target <hyperlink>Hero</hyperlink> leading an army you control is permanently transformed into a <hyperlink>Scourge of Autumn</hyperlink>. This also restores all <hyperlink><hp></hp> Hit Points</hyperlink> and <movementgeneral></movementgeneral> <hyperlink>Move Points</hyperlink> of the unit.<br></br><br></br>This transformation cannot be reverted and the <hyperlink>Hero</hyperlink> loses its hero status, becoming a normal <hyperlink>Unit</hyperlink>!",
+  "name": "Luth's Chosen",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E5"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596142,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
+  "id": "ventroghs_chosen",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Target <hyperlink>Hero</hyperlink> leading an army you control is permanently transformed into a <hyperlink>Scourge of Summer</hyperlink>. This also restores all <hyperlink><hp></hp> Hit Points</hyperlink> and <movementgeneral></movementgeneral> <hyperlink>Move Points</hyperlink> of the unit.<br></br><br></br>This transformation cannot be reverted and the <hyperlink>Hero</hyperlink> loses its hero status, becoming a normal <hyperlink>Unit</hyperlink>!",
+  "name": "Ventrogh's Chosen",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E4"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596133,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Friendly Army Spell</hyperlink>",
+  "id": "ilandras_chosen",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Target <hyperlink>Hero</hyperlink> leading an army you control is permanently transformed into a <hyperlink>Scourge of Spring</hyperlink>. This also restores all <hyperlink><hp></hp> Hit Points</hyperlink> and <movementgeneral></movementgeneral> <hyperlink>Move Points</hyperlink> of the unit.<br></br><br></br>This transformation cannot be reverted and the <hyperlink>Hero</hyperlink> loses its hero status, becoming a normal <hyperlink>Unit</hyperlink>!",
+  "name": "Ilandra's Chosen",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E0"
  }
 ]

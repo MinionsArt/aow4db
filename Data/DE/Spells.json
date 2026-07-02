@@ -471,7 +471,7 @@
   "id": "yakas_katzenhafte_infusion",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Verleihe dem Zielvolk katzenhafte Eigenschaften:<bulletlist><bullet>Sehr hohe Geschwindigkeit.</bullet><bullet>+25 % <hyperlink>Ausweichen</hyperlink> gegen <hyperlink>Raketen</hyperlink>-Angriffe.</bullet></bulletlist>",
+  "description": "Verleihe dem Zielvolk katzenhafte Eigenschaften:<bulletlist><bullet>Sehr hohe Geschwindigkeit</bullet><bullet>+25 % <hyperlink>Ausweichen</hyperlink> gegen <hyperlink>physische Fernkampf</hyperlink>- und <hyperlink>magische</hyperlink> Angriffe.</bullet></bulletlist>",
   "name": "Yakas katzenhafte Infusion",
   "operation_point_cost": 250,
   "icon": "0000049700003E00"
@@ -791,7 +791,7 @@
   "id": "kraftraubende_durchdringung",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Standardangriffe der verzauberten Einheit erhalten:<bulletlist><bullet>Eine Basischance von 60 %, für 3 <turn></turn> Runden Geschwächt zuzufügen. Gewährt bei Erfolg für 3 <turn></turn> Runden Gestärkt.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Angriffe verzauberter Einheit erhalten:<bulletlist><bullet>+1 <damageFire></damageFire> <hyperlink>Feuerschaden</hyperlink>.</bullet><bullet>Standardangriffe haben eine Basischance von 60 %, für 3 <turn></turn> Runden Geschwächt zuzufügen. Gewährt bei Erfolg für 3 <turn></turn> Runden Gestärkt.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
@@ -957,7 +957,7 @@
   "id": "magierrüstung",
   "DLC": "SECRETSOFTHEARCHMAGES ",
   "tactical": false,
-  "description": "Verzauberte Einheiten erhalten:<bulletlist><bullet>+2 <defense></defense> <hyperlink>Verteidigung</hyperlink></bullet></bulletlist>",
+  "description": "Verzauberte Einheiten erhalten:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Verteidigung</hyperlink></bullet><bullet>+2 <statuseffectresistance></statuseffectresistance> <hyperlink>Statuswiderstand</hyperlink></bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -984,6 +984,12 @@
   "enchantment_requisites": [
    {
     "requisite": "<unitRanged></unitRanged> Fernkampfeinheit"
+   },
+   {
+    "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
+   },
+   {
+    "requisite": "<unitBattleMage></unitBattleMage> Kampfmagiereinheit"
    },
    {
     "requisite": "<unitSkirmisher></unitSkirmisher> Plänklereinheit"
@@ -1243,7 +1249,7 @@
   "id": "dünenpirscher",
   "DLC": "RISEFROMRUIN ",
   "tactical": false,
-  "description": "Das Zielvolk wird eins mit der Wüste und erhält dadurch:<bulletlist><bullet>Sandwanderung</bullet><bullet>Sandtarnung</bullet><bullet>Auf <hyperlink>Sand</hyperlink>gelände:<bulletlist></bullet><bullet>Sehr hohe Geschwindigkeit im Kampf.</bullet><bullet>+20 % Schaden beim <hyperlink>Flankieren</hyperlink>.</bullet></bulletlist></bulletlist>",
+  "description": "Das Zielvolk wird eins mit der Wüste und erhält dadurch:<bulletlist><bullet>Sandwanderung</bullet><bullet>Sandtarnung</bullet><bullet>Auf <hyperlink>Sand</hyperlink>gelände:<bulletlist></bullet><bullet>Hohe Geschwindigkeit</bullet><bullet>+20 % <hyperlink><flank></flank> Flankieren</hyperlink>-Schaden</bullet></bulletlist></bulletlist>",
   "name": "Dünenpirscher",
   "operation_point_cost": 250,
   "icon": "0000049700003662"
@@ -4337,7 +4343,7 @@
   "spellType": "<caststrategic></caststrategic><hyperlink>Einheitenverzauberung</hyperlink>",
   "id": "stäbe_des_lebens",
   "tactical": false,
-  "description": "Wenn eine verzauberte Einheit eine Angriffs- oder Unterstützungsfähigkeit einsetzt, heilt eine zufällige verbündete Einheit innerhalb von 3 Feldern 15 <hyperlink><temphp></temphp> temporärer Trefferpunkt</hyperlink>.",
+  "description": "Bewirkt für Unterstützungsfähigkeiten verzauberter Einheiten:<bulletlist><bullet>Heilt eine zufällige verbündete Einheit innerhalb von 3 Feldern um 15 <hyperlink><temphp></temphp> temporärer Trefferpunkt</hyperlink>.</bullet></bulletlist>",
   "enchantment_requisites": [
    {
     "requisite": "<unitSupport></unitSupport> Unterstützungseinheit"
@@ -4454,7 +4460,7 @@
   "id": "schattenwaffen",
   "DLC": "WAYSOFWAR ",
   "tactical": false,
-  "description": "Für Angriffe verzauberter Einheiten gilt:<bulletlist><bullet>Verursachen +3 <damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> beim <hyperlink><flank></flank> Flankieren</hyperlink>.</bullet><bullet>Flankieren <hyperlink>geblendete</hyperlink> Einheiten immer.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
+  "description": "Angriffe verzauberter Einheiten:<bulletlist><bullet>Verursachen +3<damageFrost></damageFrost> <hyperlink>Frostschaden</hyperlink> beim <hyperlink><flank></flank> Flankieren</hyperlink> oder Angreifen <hyperlink>geblendeter</hyperlink> Einheiten.</bullet></bulletlist><br></br>Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.Effekte werden für Einzelschlagangriffe <hyperlink>erhöht</hyperlink>.",
   "enchantment_requisites": [
    {
     "requisite": "<unitShield></unitShield> Schildeinheit"
@@ -9123,5 +9129,53 @@
   "name": "Seelenfluch der Habgier",
   "operation_point_cost": 80,
   "icon": "000003DF00001C78"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596144,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Freundarmeezauber</hyperlink>",
+  "id": "onokas_auserwählter",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Der ausgewählte <hyperlink>Held</hyperlink>, der eine von dir kontrollierte Armee anführt, wird dauerhaft in eine <hyperlink>Geißel des Winters</hyperlink> verwandelt. Dabei werden auch alle <hyperlink><hp></hp> Trefferpunkte</hyperlink> und <movementgeneral></movementgeneral> <hyperlink>Bewegungspunkte</hyperlink> der Einheit wiederhergestellt.<br></br><br></br>Diese Transformation kann nicht rückgängig gemacht werden und der <hyperlink>Held</hyperlink> verliert seinen Heldenstatus, wodurch er zu einer normalen <hyperlink>Einheit</hyperlink> wird!",
+  "name": "Onokas Auserwählter",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E6"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596143,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Freundarmeezauber</hyperlink>",
+  "id": "luths_auserwählter",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Der ausgewählte <hyperlink>Held</hyperlink>, der eine von dir kontrollierte Armee anführt, wird dauerhaft in eine <hyperlink>Geißel des Herbsts</hyperlink> verwandelt. Dabei werden auch alle <hyperlink><hp></hp> Trefferpunkte</hyperlink> und <movementgeneral></movementgeneral> <hyperlink>Bewegungspunkte</hyperlink> der Einheit wiederhergestellt.<br></br><br></br>Diese Transformation kann nicht rückgängig gemacht werden und der <hyperlink>Held</hyperlink> verliert seinen Heldenstatus, wodurch er zu einer normalen <hyperlink>Einheit</hyperlink> wird!",
+  "name": "Luths Auserwählter",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E5"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596142,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Freundarmeezauber</hyperlink>",
+  "id": "ventroghs_auserwählter",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Der ausgewählte <hyperlink>Held</hyperlink>, der eine von dir kontrollierte Armee anführt, wird dauerhaft in eine <hyperlink>Geißel des Sommers</hyperlink> verwandelt. Dabei werden auch alle <hyperlink><hp></hp> Trefferpunkte</hyperlink> und <movementgeneral></movementgeneral> <hyperlink>Bewegungspunkte</hyperlink> der Einheit wiederhergestellt.<br></br><br></br>Diese Transformation kann nicht rückgängig gemacht werden und der <hyperlink>Held</hyperlink> verliert seinen Heldenstatus, wodurch er zu einer normalen <hyperlink>Einheit</hyperlink> wird!",
+  "name": "Ventroghs Auserwählter",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E4"
+ },
+ {
+  "casting_cost": "300<mana></mana> ",
+  "resid": 4256312596133,
+  "spellType": "<caststrategic></caststrategic> <hyperlink>Freundarmeezauber</hyperlink>",
+  "id": "ilandras_auserwählter",
+  "DLC": "ELDRITCHREALMS ",
+  "tactical": false,
+  "description": "Der ausgewählte <hyperlink>Held</hyperlink>, der eine von dir kontrollierte Armee anführt, wird dauerhaft in eine <hyperlink>Geißel des Frühlings</hyperlink> verwandelt. Dabei werden auch alle <hyperlink><hp></hp> Trefferpunkte</hyperlink> und <movementgeneral></movementgeneral> <hyperlink>Bewegungspunkte</hyperlink> der Einheit wiederhergestellt.<br></br><br></br>Diese Transformation kann nicht rückgängig gemacht werden und der <hyperlink>Held</hyperlink> verliert seinen Heldenstatus, wodurch er zu einer normalen <hyperlink>Einheit</hyperlink> wird!",
+  "name": "Ilandras Auserwählter",
+  "operation_point_cost": 300,
+  "icon": "000003DF000016E0"
  }
 ]

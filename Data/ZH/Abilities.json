@@ -964,6 +964,12 @@
   "icon": "0000035700000602"
  },
  {
+  "description": "单位免疫燃烧",
+  "name": "状态效果免疫：燃烧",
+  "slug": "0000041b00000cbc",
+  "icon": "0000049700000866"
+ },
+ {
   "description": "单位在<hyperlink>陷入近战</hyperlink>期间可以使用<hyperlink>魔法</hyperlink>与<hyperlink>支援</hyperlink>技能",
   "name": "近战法师",
   "slug": "000003e300005582",
@@ -3276,12 +3282,6 @@
    }
   ],
   "icon": "0000048D00000864"
- },
- {
-  "description": "单位免疫燃烧",
-  "name": "状态效果免疫：燃烧",
-  "slug": "0000041b00000cbc",
-  "icon": "0000049700000866"
  },
  {
   "modifiers": [
@@ -16775,7 +16775,7 @@
     "note": "冷却：2<turn></turn>"
    }
   ],
-  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
+  "description": "1框格范围内的敌方单位有60%的基础概率被：<bulletlist><bullet>传送至多3个框格</bullet><bullet>施加癫狂，持续1个<turn></turn>回合</bullet></bulletlist>",
   "name": "疯狂风暴",
   "slug": "hysteria_storm_ability_0000043D000005BF",
   "damage": "",
@@ -27515,7 +27515,8 @@
  {
   "description": "<bulletlist><bullet>当此单位的总<hyperlink><hp></hp>生命值</hyperlink>达到60%或更低时，召唤一只II阶蜘蛛</bullet><bullet>当此单位的总<hyperlink><hp></hp>生命值</hyperlink>达到30%或更低时，召唤一只II阶蜘蛛</bullet></bulletlist><br></br>此项召唤持续3<turn></turn>回合<br></br><br></br>此外，允许在城邦中征召I阶和II阶蜘蛛",
   "name": "活体蜘蛛巢",
-  "slug": "0000049700003f5d"
+  "slug": "0000049700003f5d",
+  "icon": "0000049700003F59"
  },
  {
   "description": "战斗开始时召唤一只<hyperlink>晨光精灵</hyperlink>或<hyperlink>暮光精灵</hyperlink>，持续至战斗结束",
@@ -30189,7 +30190,11 @@
   "name": "召唤保护穹顶",
   "slug": "hs_dome_of_protection_ability_hs_dome_of_protection",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>支援</hyperlink>"
+   }
+  ],
   "accuracy": "始终命中",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "0",
@@ -30247,7 +30252,11 @@
   "name": "剧毒灌木",
   "slug": "hs_poisonous_undergrowth_ability_hs_poisonous_undergrowth",
   "damage": "",
-  "requisites": [],
+  "requisites": [
+   {
+    "requisite": "<hyperlink>减益</hyperlink>"
+   }
+  ],
   "accuracy": "始终命中",
   "actionPoints": "<singleuseaction></singleuseaction>",
   "range": "5",
@@ -31390,7 +31399,7 @@
     "count": 1
    }
   ],
-  "description": "对指定单位造成伤害",
+  "description": "对目标单位造成伤害，忽略抗性",
   "name": "夺取灵魂",
   "slug": "hs_warlock_claim_soul_ability_hs_warlock_claim_soul",
   "damage": "30<damageblight></damageblight> ",
@@ -41521,7 +41530,7 @@
     "note": "每场战斗只能使用一次"
    }
   ],
-  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
+  "description": "1框格范围内的敌方单位有60%的基础概率被：<bulletlist><bullet>传送至多3个框格</bullet><bullet>施加癫狂，持续1个<turn></turn>回合</bullet></bulletlist>",
   "name": "疯狂风暴",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_item_tier_i",
   "damage": "",
@@ -49616,6 +49625,18 @@
   "icon": "0000049700000554"
  },
  {
+  "description": "获得+80%<hyperlink><accuracy></accuracy>精度</hyperlink>",
+  "name": "瞄准",
+  "slug": "0000048d000008fb",
+  "icon": "000004A6000008AB"
+ },
+ {
+  "description": "此单位拥有：<bulletlist><bullet>+10点最大<hyperlink><hp></hp>生命值</hyperlink></bullet><bullet>在+20%中获得的治疗量<hyperlink>战斗</hyperlink></bullet></bulletlist>",
+  "name": "补给充足",
+  "slug": "000004930000181e",
+  "icon": "000004930000181F"
+ },
+ {
   "description": "该单位被复活并转化为<hyperlink>受祝之魂</hyperlink>。该效果失效时，单位将会溃逃",
   "name": "仁慈复生",
   "slug": "000004930000174c",
@@ -49788,12 +49809,6 @@
   "name": "伤害偏转",
   "slug": "0000041b0000161c",
   "icon": "000003E300005F0B"
- },
- {
-  "description": "获得+80%<hyperlink><accuracy></accuracy>精度</hyperlink>",
-  "name": "瞄准",
-  "slug": "0000048d000008fb",
-  "icon": "000004A6000008AB"
  },
  {
   "description": "向指定框格召唤<hyperlink>次级霜雪之灵</hyperlink>。<br></br>此项召唤持续3<turn></turn>回合<br></br>灵魂召唤会共享3<turn></turn>回合冷却",
@@ -50464,7 +50479,7 @@
     "note": "每场战斗只能使用一次"
    }
   ],
-  "description": "1框格范围内的敌人有60%的基础概率：<bulletlist><bullet>位移至多框格</bullet><bullet>陷入癫狂，持续1<turn></turn>回合</bullet></bulletlist>",
+  "description": "1框格范围内的敌方单位有60%的基础概率被：<bulletlist><bullet>传送至多3个框格</bullet><bullet>施加癫狂，持续1个<turn></turn>回合</bullet></bulletlist>",
   "name": "疯狂风暴",
   "slug": "hysteria_storm_ability_(weakened)_umbral_staff_equipment_upgrade",
   "damage": "",
