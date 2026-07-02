@@ -1,6 +1,6 @@
 const unlockableUnitsMapStructures = {
     wildlife_sanctuary: ["goretusk_piglet", "dread_spider_hatchling", "vampire_spider_hatchling", "razorback", "warg"],
-    demon_gate: ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater"],
+    demon_gate: ["inferno_puppy", "gremlin", "inferno_hound", "chaos_eater", "gluttonous_imp"],
     wyvern_eyrie: ["fire_wyvern", "frost_wyvern", "gold_wyvern", "obsidian_wyvern"],
     accursed_shrine: ["accursed_ogre", "accursed_blade", "accursed_trickster"],
     shrine_of_prosperity: ["blessed_dragon", "radiant_guardian", "righteous_judge"]
