@@ -157,7 +157,26 @@ function updateHoverDivPosition(event, secondary) {
     }
 
     // Mobile: CSS pins this as a fixed bottom sheet (see below) — no JS positioning needed.
-    if (isTouch) return;
+    if (isTouch) {
+         const vv = window.visualViewport;
+
+        // Calculate current viewport dimensions considering zoom scale
+        const currentWidth = vv.width;
+        const currentHeight = vv.height;
+
+        // Force layout size and position relative to current visual viewport offset
+        hoverDiv.style.width = `${currentWidth}px`;
+        hoverDiv.style.left = `${vv.offsetLeft}px`;
+        hoverDiv.style.top = `${vv.offsetTop + currentHeight - hoverDiv.offsetHeight}px`;
+
+        // Scale the inner content so text remains readable when zoomed out
+        hoverDiv.style.transform = `scale(${1 / vv.scale})`;
+        hoverDiv.style.transformOrigin = 'bottom left';
+        hoverDiv.style.width = `${currentWidth * vv.scale}px`;
+        
+        return;
+    }
+       
 
     var selectionsHolder = document.getElementById("selectionsHolder");
     if (selectionsHolder && event.target.closest && event.target.closest("#selectionsHolder")) {

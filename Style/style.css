@@ -2107,10 +2107,10 @@ span.number-highlight {
     
      .tooltiptextnew {
         position: fixed !important;
-        left: 0 !important;
-        right: 0 !important;
+       /* left: 0 !important;
+      /*  right: 0 !important;
         bottom: 0 !important;
-        top: auto !important;
+        top: auto !important;*/
         width: 100% !important;
         max-width: 100% !important;
         max-height: 45vh;
@@ -2118,5 +2118,8 @@ span.number-highlight {
         border-radius: 12px 12px 0 0;
         box-sizing: border-box;
         z-index: 1001; /* above the selections popup */
+          /* Smooth out stuttering transitions during zoom */
+    transform-origin: bottom left; 
+    will-change: transform, top, left, width;
     }
 }
