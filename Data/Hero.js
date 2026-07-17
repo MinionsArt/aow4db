@@ -126,6 +126,7 @@ function GetQuickLinkHero() {
 }
 
 function ResetAll() {
+    
     ResetSkills();
 
     ResetSignatures();
@@ -899,8 +900,9 @@ function lookupDragonAffinity(type) {
 }
 
 function BuildChoicesPanel(choiceslist, originButton, slot, evt) {
-    const selectionsHolder = document.getElementById("selectionsHolder");
-    selectionsHolder.style.display = "block";
+   // const selectionsHolder = document.getElementById("selectionsHolder");
+   document.getElementById("selectionsHolder").classList.add("open");
+      document.body.style.overflow = 'hidden'; // stop background scroll while menu is open
 
     const panel = document.getElementById("choicesPanel");
     panel.innerHTML = "";
@@ -919,28 +921,7 @@ function BuildChoicesPanel(choiceslist, originButton, slot, evt) {
         panel.appendChild(choiceNode);
     });
 
-    // Defer positioning until after the layout is calculated
-    requestAnimationFrame(() => {
-        const normalizedPos = getNormalizedPosition(evt);
-
-        const mouseX = evt.clientX;
-        const mouseY = evt.clientY;
-
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-        if (normalizedPos.x + getNormalizedWidth(selectionsHolder) > 0.95) {
-            selectionsHolder.style.left = mouseX - selectionsHolder.getBoundingClientRect().width + scrollLeft + "px";
-        } else {
-            selectionsHolder.style.left = mouseX + scrollLeft + "px";
-        }
-
-        if (normalizedPos.y + getNormalizedHeight(selectionsHolder) > 0.95) {
-            selectionsHolder.style.top = mouseY - selectionsHolder.getBoundingClientRect().height + scrollTop + "px";
-        } else {
-            selectionsHolder.style.top = mouseY + scrollTop + "px";
-        }
-    });
+   
 }
 
 function ClearAndSetSignature(chosenSkill, origin, slot) {
@@ -964,8 +945,9 @@ function ClearAndSetSignature(chosenSkill, origin, slot) {
 }
 
 function closePanel() {
+      document.body.style.overflow = ''; 
     var selectionsHolder = document.getElementById("selectionsHolder");
-    selectionsHolder.setAttribute("style", "display:none");
+    selectionsHolder.classList.remove("open");
     //  var originWrapper = document.getElementById("originWrapperOptions");
     //originWrapper.innerHTML = "";
     // originWrapper.setAttribute("style", "display:none");

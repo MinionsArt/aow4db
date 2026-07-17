@@ -94,6 +94,8 @@ function addOrSubtract(extraAffinity, add) {
 const extraTomesForTheorycrafting = [];
 
 function SetRandomStart(overwriteParameter) {
+    
+document.getElementById('selectionsBackdrop').addEventListener('click', toggleOriginButtons);
     jsonTomes.push(...extraTomesForTheorycrafting);
     jsonTomesLocalized.push(...extraTomesForTheorycrafting);
     if (searchKeyword != undefined && !overwriteParameter) {
@@ -210,7 +212,7 @@ function SetRandomStart(overwriteParameter) {
 
             var originButton = document.getElementById("originButton" + currentChoice);
             if (currentChoice != "FormTrait" && currentChoice != "Signature") {
-                SetButtonInfo(originButton, randomEntry, currentChoice);
+                SetButtonInfo(originButton, randomEntry, currentChoice, false);
             }
         }
 
@@ -280,11 +282,11 @@ function getPoints() {
 
 // Function to toggle the origin selection buttons
 function toggleOriginButtons() {
+     document.body.style.overflow = ''; 
     var selectionsHolder = document.getElementById("selectionsHolder");
-    selectionsHolder.setAttribute("style", "display:none");
+    selectionsHolder.classList.remove("open");
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.innerHTML = "";
-    // originWrapper.setAttribute("style", "display:none");
     var selectionsText = document.getElementById("selections");
     selectionsText.textContent = "";
 }
@@ -297,7 +299,7 @@ function selectOrigin(origin, type) {
         originButton.textContent = "";
     }
 
-    SetButtonInfo(originButton, origin, type);
+    SetButtonInfo(originButton, origin, type, true);
 
     // assign current selection
     switch (type) {
@@ -589,17 +591,9 @@ function SetTomePathOptions(evt) {
     const rect = evt.target.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
 
-    var normalizedPos = getNormalizedPosition(evt);
-
-    var offset = 0;
-    const mouseX = evt.clientX;
-    const mouseY = evt.clientY;
-
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
     var originWrapper = document.getElementById("originWrapperOptions");
-    originWrapper.setAttribute("style", "grid-template-columns: repeat(7, 2fr);");
+    originWrapper.setAttribute("style", "grid-template-columns: repeat(2, 2fr);");
     originWrapper.innerHTML = "";
 
     // Get tomes valid at the insertion point, excluding any already in the full path.
@@ -614,26 +608,20 @@ function SetTomePathOptions(evt) {
     for (const origin of list) {
         const originButtonNew = document.createElement("button");
         originButtonNew.className = "list-button";
-        originButtonNew.addEventListener("click", () => selectTomePath(origin, false));
+        // set icon and button seperately
+       // originButtonNew.addEventListener("click", () => selectTomePath(origin, false));
 
+        
+        
         originWrapper.appendChild(originButtonNew);
 
         SetTomePathInfo(originButtonNew, origin);
     }
-    console.log(normalizedPos.x + getNormalizedWidth(selectionsHolder));
-    selectionsHolder.style.display = "block";
-    // if (normalizedPos.x + getNormalizedWidth(selectionsHolder) > 1.5) {
-    //     selectionsHolder.style.left = (mouseX - selectionsHolder.getBoundingClientRect().width - offset + scrollLeft) + 'px';
-    // } else {
-    selectionsHolder.style.left = "200px";
-    // }
-
-    if (normalizedPos.y + getNormalizedHeight(selectionsHolder) > 0.95) {
-        selectionsHolder.style.top =
-            mouseY - selectionsHolder.getBoundingClientRect().height - offset + scrollTop + "px";
-    } else {
-        selectionsHolder.style.top = mouseY + offset + scrollTop + "px";
-    }
+   // console.log(normalizedPos.x + getNormalizedWidth(selectionsHolder));
+  //  selectionsHolder.style.display = "block";
+    
+   document.getElementById("selectionsHolder").classList.add("open");
+      document.body.style.overflow = 'hidden'; // stop background scroll while menu is open
 }
 
 // Function to handle the selection of an origin
@@ -886,11 +874,11 @@ function SetTomePathInfo(button, origin) {
     buttonText.innerHTML = romanize(origin.tier) + ": ";
     var clearname = origin.name.replace("Tome of the", "");
     buttonText.innerHTML += clearname.replace("Tome of", "");
-    buttonText.style = "display: block;font-size: 15px;position: relative;text-align: center; top: -40px;";
+    buttonText.style = "display: block;font-size: 15px;position: relative;text-align: center;";
 
     var affinity = "";
     const affinityText = document.createElement("div");
-    affinityText.style = "position: relative;left: -20px;top: -50px;";
+    affinityText.style = "position: relative;left: -58px;top: 13px;";
     if ("affinities" in origin) {
         affinity = ClearAffinityExtraTags(duplicateTags(origin.affinities));
         affinity = affinity.replaceAll(",", "");
@@ -900,9 +888,10 @@ function SetTomePathInfo(button, origin) {
     newDivButton.appendChild(image);
     newDivButton.appendChild(affinityText);
     newDivButton.appendChild(buttonText);
+    
     if ("DLC" in origin) {
         let DLCTAG = document.createElement("div");
-        DLCTAG.style = "    position: absolute;right: 0;top: 4px;";
+        DLCTAG.style = "    position: absolute; left: 30px;top: 4px;";
         let dlcTag = origin.DLC.replaceAll(" ", "");
         DLCTAG.innerHTML = "<" + dlcTag + "></" + dlcTag + ">";
         newDivButton.appendChild(DLCTAG);
@@ -919,14 +908,25 @@ function SetTomePathInfo(button, origin) {
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
 
     SetTomePreview(spa, origin);
+    
+       addTooltipListeners(image, spa);
+        addTooltipListeners(buttonText, spa);
 
     newDivButton.className = "list-button-long";
+    
+    
+ 
+    
+       const addButton = document.createElement('button');
+    addButton.className = "add-button";
+    addButton.innerHTML = '<img  src="/aow4db/Icons/Interface/addsymbol.png" height="20px">';
+    addButton.addEventListener("click", (event) => selectTomePath(origin, false));
+     newDivButton.append(addButton);
 
-    newDivButton.addEventListener("click", (event) => SetTomePathOptions(event));
+   // newDivButton.addEventListener("click", (event) => SetTomePathOptions(event));
 
     //  newDivButton.append(spa);
 
-    addTooltipListeners(newDivButton, spa);
 }
 
 function SetSkillPathInfo(button, origin) {
@@ -1089,12 +1089,12 @@ function SetupButtons(evt, type) {
     for (const origin of list) {
         var originButtonNew = document.createElement("button");
 
-        if (type === "Symbol") {
-            originButtonNew.addEventListener("click", () => SelectSymbol(origin));
-            originButtonNew.className = "list-button-small";
-            originWrapper.appendChild(originButtonNew);
-            SetButtonInfo(originButtonNew, origin, type);
-        } else if (type === "FormTrait") {
+      //  if (type === "Symbol") {
+        //    originButtonNew.addEventListener("click", () => SelectSymbol(origin));
+        //    originButtonNew.className = "list-button-small";
+         //   originWrapper.appendChild(originButtonNew);
+         //   SetButtonInfo(originButtonNew, origin, type);
+       if (type === "FormTrait") {
             // hook into options thingie
             originButtonNew.className = "list-button";
 
@@ -1112,20 +1112,20 @@ function SetupButtons(evt, type) {
 
             // new button script
 
-            originButtonNew.addEventListener("click", (event) => toggleSelection(origin, originButtonNew, type, event));
+        //    originButtonNew.addEventListener("click", (event) => toggleSelection(origin, originButtonNew, type, event));
 
             originWrapper.appendChild(originButtonNew);
 
-            SetButtonInfo(originButtonNew, origin, type);
+            SetButtonInfo(originButtonNew, origin, type, true);
         } else {
             if (!incompatibleCheck(type, origin)) {
                 originButtonNew.className = "list-button";
 
-                originButtonNew.addEventListener("click", (event) => selectOrigin(origin, type));
+                
 
                 originWrapper.appendChild(originButtonNew);
 
-                SetButtonInfo(originButtonNew, origin, type);
+                SetButtonInfo(originButtonNew, origin, type, true);
                 // originButtonNew.innerHTML += "<span style=\"color:red\"> Incompatible </span>";
             }
             // show option but with compatible thingie
@@ -1140,7 +1140,7 @@ function SetupButtons(evt, type) {
 
                     originWrapper.appendChild(originButtonNew);
 
-                    SetButtonInfo(originButtonNew, origin, type);
+                    SetButtonInfo(originButtonNew, origin, type, true);
 
                     if (currentSociety1.name === origin.name) {
                         originButtonNew.className = "list-button-currentequipped";
@@ -1153,33 +1153,8 @@ function SetupButtons(evt, type) {
             }
         }
     }
-
-    if (type == "FormTrait") {
-        selectionsHolder.style.display = "block";
-        selectionsHolder.style.left = "254px";
-        selectionsHolder.style.top = "431px";
-    } else {
-        var normalizedPos = getNormalizedPosition(evt);
-
-        const mouseX = evt.clientX;
-        const mouseY = evt.clientY;
-
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        selectionsHolder.style.display = "block";
-
-        if (normalizedPos.x + getNormalizedWidth(selectionsHolder) > 0.95) {
-            selectionsHolder.style.left = mouseX - selectionsHolder.getBoundingClientRect().width + scrollLeft + "px";
-        } else {
-            selectionsHolder.style.left = mouseX + scrollLeft + "px";
-        }
-
-        if (normalizedPos.y + getNormalizedHeight(selectionsHolder) > 0.95) {
-            selectionsHolder.style.top = mouseY - selectionsHolder.getBoundingClientRect().height + scrollTop + "px";
-        } else {
-            selectionsHolder.style.top = mouseY + scrollTop + "px";
-        }
-    }
+    document.getElementById("selectionsHolder").classList.add("open");
+     document.body.style.overflow = 'hidden'; // stop background scroll while menu is open
 }
 
 function GetCurrentChoiceList() {
@@ -1426,7 +1401,7 @@ function duplicateTags(inputString) {
     return result;
 }
 
-function SetButtonInfo(button, origin, type, color) {
+function SetButtonInfo(button, origin, type, inSelectionsList) {
     button.innerHTML = "";
 
     if (type === "SubType" && !["Dragon Lord", "Giant King", "Elder Vampire"].includes(currentOrigin.name)) return;
@@ -1440,10 +1415,31 @@ function SetButtonInfo(button, origin, type, color) {
     const image = createImage(type, origin);
 
     const buttonText = createButtonText(origin, type);
+    
+   
+   
     button.append(image, buttonText);
-
+    
+    
     const tooltip = createTooltip(origin, type);
-    addTooltipListeners(image, tooltip);
+    addTooltipListeners(button, tooltip);
+    if (inSelectionsList == true){
+          const addButton = document.createElement('button');
+    addButton.className = "add-button";
+    addButton.innerHTML = '<img  src="/aow4db/Icons/Interface/addsymbol.png" height="20px">';
+        
+        if(type == "FormTrait"){
+            addButton.innerHTML = 'Toggle';
+              addButton.addEventListener("click", (event) => toggleSelection(origin, button, type, event));
+
+        } else{
+              addButton.addEventListener("click", (event) => selectOrigin(origin, type));
+        }
+  
+     button.append(addButton);
+    }
+   
+
 }
 
 function createImage(type, origin) {
@@ -2043,6 +2039,13 @@ function GetAllStartingTomes() {
 }
 
 function CollectAllPartsForOverview(fromload) {
+    
+     // Force-close any tooltip that might be orphaned by the rebuild below.
+    var hd = document.getElementById("hoverDiv");
+    var hd2 = document.getElementById("hoverDiv2");
+    if (hd && hd.open) hd.close();
+    if (hd2 && hd2.open) hd2.close();
+
     document.getElementById("hiddentooltips").innerHTML = "";
     document.getElementById("mainoverview").innerHTML = "";
     // get all spells

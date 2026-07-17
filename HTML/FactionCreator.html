@@ -16,451 +16,495 @@
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/icons.css" />
+
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-         <script src="/aow4db/Data/Init.js"></script>
+        <script src="/aow4db/Data/Init.js"></script>
 
         <style>
-            button {
-                font-family: "Regular", sans-serif;
-            }
+                                            button {
+                                                font-family: "Regular", sans-serif;
+                                            }
 
-            .small_title {
-                font-family: "Decorative";
-                color: burlywood;
-                font-size: 14px;
-            }
+                                            .small_title {
+                                                font-family: "Decorative";
+                                                color: burlywood;
+                                                font-size: 14px;
+                                            }
 
-            /* CSS styles for buttons */
-            .button {
-                background-color: #007bff00;
-                color: #fff;
-                border: none;
-                position: relative;
-                display: flex;
-                justify-content: space-between;
+                                            /* CSS styles for buttons */
+                                            .button {
+                                                background-color: #007bff00;
+                                                color: #fff;
+                                                border: none;
+                                                position: relative;
+                                                display: flex;
+                                                justify-content: space-between;
 
-                align-items: center;
+                                                align-items: center;
 
-                cursor: pointer;
-            }
+                                                cursor: pointer;
+                                            }
 
-            /* CSS styles for buttons */
-            .button2 {
-                background-color: #007bff00;
-                color: #fff;
-                border: none;
-                position: relative;
-                display: flex;
-                justify-content: space-between;
+                                            /* CSS styles for buttons */
+                                            .button2 {
+                                                background-color: #007bff00;
+                                                color: #fff;
+                                                border: none;
+                                                position: relative;
+                                                display: flex;
+                                                justify-content: space-between;
 
-                align-items: center;
+                                                align-items: center;
 
-                cursor: pointer;
-            }
+                                                cursor: pointer;
+                                            }
 
-            #notesDisplay {
-                border: 1px solid #ccc;
-                padding: 6px;
-                min-height: 100px;
-                width: 100%;
-            }
+                                            #notesDisplay {
+                                                border: 1px solid #ccc;
+                                                padding: 6px;
+                                                min-height: 100px;
+                                                width: 100%;
+                                            }
 
-            /* CSS styles for origin buttons */
-            .origin-button {
-                padding: 5px;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                cursor: pointer;
-                margin: 5px;
-                border-radius: 5px;
-            }
-
-            .button-inset {
-                background-color: #007bff00;
-                color: #b5b5b1;
-                border: none;
-                cursor: pointer;
-                position: relative;
-                left: 30px;
-
-                align-items: center;
-
-                display: flex;
-                justify-content: space-between;
-            }
-            .button-inset:hover{
-                 color: #fff;
-            }
-
-            .list-button {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 100%;
-                background-color: #111;
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-                z-index: 2;
-                display: flex;
-                justify-content: normal;
-            }
-
-            .list-button.selected {
-                background-color: #4caf50;
-                color: white;
-            }
-
-            .list-button-small {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 60px;
-
-                background-color: #111;
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
-
-            .list-button-disabled {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 100%;
-                background-color: #111;
-                color: #ff1111;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-
-                display: flex;
-                filter: brightness(0.5);
-                justify-content: normal;
-            }
-
-            .list-button-currentequipped {
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                width: 100%;
-                background-color: #347634;
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-
-                display: flex;
-                justify-content: normal;
-            }
-
-            .list-button-long {
-                /* border-width: 3px; */
-                /* border-style: solid; */
-                /* border-image: url(/aow4db/Icons/9slicetooltip.png); */
-                /* border-image-slice: 10 10 10 10; */
-                /* border-image-repeat: stretch; */
-                width: 100px;
-                height: 30px;
-                background-color: #111;
-                color: #fff;
-                height: 60px;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+                                            /* CSS styles for origin buttons */
+                                            .origin-button {
+                                                padding: 5px;
+                                                background-color: #007bff;
+                                                color: #fff;
+                                                border: none;
+                                                cursor: pointer;
+                                                margin: 5px;
+                                                border-radius: 5px;
+                                            }
             
-            .padded-image{
-                padding:15px;
-            }
-            .tome-button-small {
-                width: 60px;
-                height: 70px;
+             .add-button {
+                                                background-color: #007bff00;
+                                                color: #b5b5b1;
+                                                border: none;
+                                                cursor: pointer;
+                                                position: relative;
+                                              
+                                            }
+                                            .add-button:hover{
+                                                 filter:brightness(2);
+                                                background-color: green;
+                                            }
 
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+                                            .button-inset {
+                                                background-color: #007bff00;
+                                                color: #b5b5b1;
+                                                border: none;
+                                                cursor: pointer;
+                                                position: relative;
+                                                left: 30px;
 
-            .skill-button-small {
-                width: 80px;
-                height: 80px;
+                                                align-items: center;
 
-                color: #fff;
-                /* border: none; */
-                cursor: pointer;
-                position: relative;
-            }
+                                                display: flex;
+                                                justify-content: space-between;
+                                            }
+                                            .button-inset:hover{
+                                                 color: #fff;
+                                            }
 
-            .subDivider {
-                display: flex;
-                justify-content: space-between;
-            }
-            
-           
+                                            .list-button {
+                                                border-width: 3px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                                border-image-repeat: stretch;
+                                                width: 100%;
+                                                background-color: #111;
+                                                color: #fff;
+                                                /* border: none; */
+                                                cursor: pointer;
+                                                position: relative;
+                                                z-index: 2;
+                                                display: flex;
+                                                
+    justify-content: space-between;
+    align-items: center;
 
-            .list-button-small:hover,
-            .list-button:hover,
-            .button:hover,
-            .button-inset:hover,
-            .skill-button-small:hover,
-            .tome-button-small:hover,
-            .button-random:hover,
-            .button-overview:hover {
-                filter: brightness(200%);
-            }
+                                            }
 
-            .test {
-                width: 20px;
-                height: 20px;
-                border-width: 5px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-            }
+                                            .list-button.selected {
+                                                background-color: #4caf50;
+                                                color: white;
+                                            }
 
-            .wrappers {
-                position: relative;
+                                            .list-button-small {
+                                                border-width: 3px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                                border-image-repeat: stretch;
+                                                width: 60px;
 
-                display: grid;
-                grid-template-columns: repeat(7, 2fr);
-                overflow-y: auto;
-                max-height: 300px;
-                height: fit-content;
-            }
+                                                background-color: #111;
+                                                color: #fff;
+                                                /* border: none; */
+                                                cursor: pointer;
+                                                position: relative;
+                                            }
 
-            .subSubDiv {
-                min-height: 240px;
-                width: 350px;
-            }
+                                            .list-button-disabled {
+                                                border-width: 3px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                                border-image-repeat: stretch;
+                                                width: 100%;
+                                                background-color: #111;
+                                                color: #ff1111;
+                                                /* border: none; */
+                                                cursor: pointer;
+                                                position: relative;
 
-            .subSubDiv2 {
-                min-height: 130px;
-                width: 350px;
-            }
+                                                display: flex;
+                                                filter: brightness(0.5);
+                                                justify-content: normal;
+                                            }
 
-            .shield {
-                float: left;
-            }
+                                            .list-button-currentequipped {
+                                                border-width: 3px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                                border-image-repeat: stretch;
+                                                width: 100%;
+                                                background-color: #347634;
+                                                color: #fff;
+                                                /* border: none; */
+                                                cursor: pointer;
+                                                position: relative;
 
-            .symbol {
-                position: absolute;
-                /* float: left; */
-                top: 12px;
-                left: 14px;
-            }
+                                                display: flex;
+                                                justify-content: normal;
+                                            }
 
-            .selections {
-                width: fit-content;
+                                            .list-button-long {
+                                              
+    /* border-width: 3px; */
+    /* border-style: solid; */
+    /* border-image: url(/aow4db/Icons/9slicetooltip.png); */
+    /* border-image-slice: 10 10 10 10; */
+    /* border-image-repeat: stretch; */
+    width: 200px;
+    height: 30px;
+    background-color: #111;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    /* border: none; */
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+                                            }
 
-                height: fit-content;
-                max-height: 300px;
-                color: white;
-                display: inline-block;
-                position: absolute;
-                border-width: 10px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                background-color: black;
-            }
+                                            .padded-image{
+                                                padding:15px;
+                                            }
+                                            .tome-button-small {
+                                                width: 60px;
+                                                height: 70px;
 
-            .container {
-                display: inline-block;
-                position: relative;
+                                                color: #fff;
+                                                /* border: none; */
+                                                cursor: pointer;
+                                                position: relative;
+                                            }
 
-                width: 700px;
+                                            .skill-button-small {
+                                                width: 80px;
+                                                height: 80px;
 
-                background-image: url(/aow4db/Icons/tooltipBG.png);
+                                                color: #fff;
+                                                /* border: none; */
+                                                cursor: pointer;
+                                                position: relative;
+                                            }
 
-                background-size: cover;
-                font-size: 13px;
-                color: #bbcdf6;
-                text-align: left;
-                border-width: 10px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                text-shadow: 2px 2px black;
-            }
+                                            .subDivider {
+                                                display: flex;
+                                                justify-content: space-between;
+                                            }
 
-            .affinityText {
-                top: 20px;
-                max-width: 300px;
-                font-size: 15px;
-                position: relative;
-            }
 
-            .factioncreator {
-                position: relative;
-                display: flex;
 
-                justify-content: center;
-            }
+                                            .list-button-small:hover,
+                                            .list-button:hover,
+                                            .button:hover,
+                                            .button-inset:hover,
+                                            .skill-button-small:hover,
+                                            .tome-button-small:hover,
+                                            .button-random:hover,
+                                            .button-overview:hover {
+                                                filter: brightness(200%);
+                                            }
 
-            .AddSubtract {
-                margin: -2px;
-                font-weight: 900;
-                color: white;
-                background-color: transparent;
-                border: none;
-            }
+                                            .test {
+                                                width: 20px;
+                                                height: 20px;
+                                                border-width: 5px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                            }
 
-            .overview {
-                max-height: 650px;
-                display: flex;
-                align-content: flex-start;
-                align-items: flex-start;
-                flex-wrap: wrap;
-                flex-direction: column;
-            }
+                                            .wrappers {
+                                                position: relative;
 
-            .column {
-                padding: 6px;
-                font-size: 14px;
-                font-family: "Decorative";
-                color: burlywood;
-            }
+                                                display: grid;
+                                                grid-template-columns: repeat(7, 2fr);
+                                                overflow-y: auto;
+                                                max-height: 300px;
+                                                height: fit-content;
+                                            }
 
-            .overview_list_entry {
-                display: flex;
-                box-sizing: border-box;
-                min-width: 180px;
-                min-height: 30px;
-                max-width: 180px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                border-width: 3px;
-                border-style: solid;
-                border-image: url(/aow4db/Icons/9slicetooltip.png);
-                border-image-slice: 10 10 10 10;
-                border-image-repeat: stretch;
-                overflow: hidden;
-                background-color: rgb(17, 17, 17);
+                                            .subSubDiv {
+                                                min-height: 240px;
+                                                width: 350px;
+                                            }
 
-                font-size: 12px;
-                color: white;
-            }
+                                            .subSubDiv2 {
+                                                min-height: 130px;
+                                                width: 350px;
+                                            }
 
-            .overview_list_entry.highlighted {
-                background-image: url(/aow4db/Icons/Interface/fav.png);
-                background-repeat: no-repeat;
-                background-position-x: 156px;
-                background-size: 20px;
-                background-color: rgb(24 42 64);
-            }
+                                            .shield {
+                                                float: left;
+                                            }
 
-            .overview_list_entry:hover {
-                filter: brightness(200%);
-            }
+                                            .symbol {
+                                                position: absolute;
+                                                /* float: left; */
+                                                top: 12px;
+                                                left: 14px;
+                                            }
 
-            .AddSubtract:hover {
-                margin: -2px;
-                font-weight: 1900;
-               filter: brightness(200%);
-                background-color: transparent;
-                border: none;
-            }
+                                           .selectionsHolder {
+                        display: none;           /* JS toggles a class to show it */
+                        position: fixed;
+                        inset: 0;
+                        z-index: 999;           /* above the hamburger menu (1000) and its backdrop (999) */
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .selectionsHolder.open {
+                        display: flex;           /* flex + centered children = automatic centering */
+                    }
 
-            .sortingButton:hover {
-                background-color: dimgrey;
-            }
+                    .selections-backdrop {
+                        position: fixed;
+                        inset: 0;
+                        background: rgba(0, 0, 0, 0.6);
+                        z-index: 1;              /* below .selections, but that's fine — separate stacking context now */
+                    }
 
-            .tome-remove-btn {
-                display: none;
-                position: absolute;
-                top: -18px;
-                right: 2px;
-                color: #ccc;
-                font-size: 13px;
-                font-weight: bold;
-                cursor: pointer;
-                z-index: 10;
-                line-height: 1;
-                background: rgba(0, 0, 0, 0.55);
-                border-radius: 3px;
-                padding: 0 2px;
-            }
-            .tome-button-small::before {
-                content: '';
-                position: absolute;
-                top: -18px;
-                left: 0;
-                right: 0;
-                height: 18px;
-            }
-            .tome-button-small:hover .tome-remove-btn {
-                display: block;
-            }
-            .tome-remove-btn:hover {
-                color: #ff6666;
-            }
-            .tome-warning-icon {
-                position: absolute;
-                top: -18px;
-                left: 2px;
-                font-size: 12px;
-                font-weight: bold;
-                color: #e05252;
-                pointer-events: none;
-                z-index: 10;
-                text-shadow: 0 0 3px #000;
-            }
-            .tome-invalid {
-                outline: 2px solid #e05252;
-                outline-offset: 3px;
-            }
-            .tome-add-slot {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 60px;
-                height: 70px;
-                border: 2px dashed #555;
-                border-radius: 4px;
-                cursor: pointer;
-                color: #555;
-                font-size: 28px;
-                box-sizing: border-box;
-                align-self: center;
-                transition: border-color 0.15s, color 0.15s;
-            }
-            .tome-add-slot:hover {
-                border-color: #d7c297;
-                color: #d7c297;
-            }
+                    .selections {
+                        position: relative;      /* no longer absolute/pixel-positioned */
+                        z-index: 2;
+                        width: fit-content;
+                        max-width: 90vw;
+                        height: fit-content;
+
+            max-height: 50vh;
+                        overflow-y: auto;
+                        color: white;
+                        border-width: 10px;
+                        border-style: solid;
+                        border-image: url(/aow4db/Icons/9slicetooltip.png);
+                        border-image-slice: 10 10 10 10;
+                        background-color: black;
+                    }
+
+                                            .container {
+                                                display: inline-block;
+                                                position: relative;
+
+                                                width: 700px;
+
+                                                background-image: url(/aow4db/Icons/tooltipBG.png);
+
+                                                background-size: cover;
+                                                font-size: 13px;
+                                                color: #bbcdf6;
+                                                text-align: left;
+                                                border-width: 10px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                                text-shadow: 2px 2px black;
+                                            }
+
+                                            .affinityText {
+                                                top: 20px;
+                                                max-width: 300px;
+                                                font-size: 15px;
+                                                position: relative;
+                                            }
+
+                                            .factioncreator {
+                                                position: relative;
+                                                display: flex;
+
+                                                justify-content: center;
+                                            }
+
+                                            .AddSubtract {
+                                                margin: -2px;
+                                                font-weight: 900;
+                                                color: white;
+                                                background-color: transparent;
+                                                border: none;
+                                            }
+
+                                            .overview {
+                                                max-height: 650px;
+                                                display: flex;
+                                                align-content: flex-start;
+                                                align-items: flex-start;
+                                                flex-wrap: wrap;
+                                                flex-direction: column;
+                                            }
+
+                                            .column {
+                                                padding: 6px;
+                                                font-size: 14px;
+                                                font-family: "Decorative";
+                                                color: burlywood;
+                                            }
+
+                                            .overview_list_entry {
+                                                display: flex;
+                                                box-sizing: border-box;
+                                                min-width: 180px;
+                                                min-height: 30px;
+                                                max-width: 180px;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                                border-width: 3px;
+                                                border-style: solid;
+                                                border-image: url(/aow4db/Icons/9slicetooltip.png);
+                                                border-image-slice: 10 10 10 10;
+                                                border-image-repeat: stretch;
+                                                overflow: hidden;
+                                                background-color: rgb(17, 17, 17);
+
+                                                font-size: 12px;
+                                                color: white;
+                                            }
+
+                                            .overview_list_entry.highlighted {
+                                                background-image: url(/aow4db/Icons/Interface/fav.png);
+                                                background-repeat: no-repeat;
+                                                background-position-x: 156px;
+                                                background-size: 20px;
+                                                background-color: rgb(24 42 64);
+                                            }
+
+                                            .overview_list_entry:hover {
+                                                filter: brightness(200%);
+                                            }
+
+                                            .AddSubtract:hover {
+                                                margin: -2px;
+                                                font-weight: 1900;
+                                               filter: brightness(200%);
+                                                background-color: transparent;
+                                                border: none;
+                                            }
+
+                                            .sortingButton:hover {
+                                                background-color: dimgrey;
+                                            }
+
+                                            .tome-remove-btn {
+                                                display: none;
+                                                position: absolute;
+                                                top: -18px;
+                                                right: 2px;
+                                                color: #ccc;
+                                                font-size: 13px;
+                                                font-weight: bold;
+                                                cursor: pointer;
+                                                z-index: 10;
+                                                line-height: 1;
+                                                background: rgba(0, 0, 0, 0.55);
+                                                border-radius: 3px;
+                                                padding: 0 2px;
+                                            }
+                                            .tome-button-small::before {
+                                                content: '';
+                                                position: absolute;
+                                                top: -18px;
+                                                left: 0;
+                                                right: 0;
+                                                height: 18px;
+                                            }
+                                            .tome-button-small:hover .tome-remove-btn {
+                                                display: block;
+                                            }
+                                            .tome-remove-btn:hover {
+                                                color: #ff6666;
+                                            }
+                                            .tome-warning-icon {
+                                                position: absolute;
+                                                top: -18px;
+                                                left: 2px;
+                                                font-size: 12px;
+                                                font-weight: bold;
+                                                color: #e05252;
+                                                pointer-events: none;
+                                                z-index: 10;
+                                                text-shadow: 0 0 3px #000;
+                                            }
+                                            .tome-invalid {
+                                                outline: 2px solid #e05252;
+                                                outline-offset: 3px;
+                                            }
+                                            .tome-add-slot {
+                                                display: inline-flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                width: 60px;
+                                                height: 70px;
+                                                border: 2px dashed #555;
+                                                border-radius: 4px;
+                                                cursor: pointer;
+                                                color: #555;
+                                                font-size: 28px;
+                                                box-sizing: border-box;
+                                                align-self: center;
+                                                transition: border-color 0.15s, color 0.15s;
+                                            }
+                                            .tome-add-slot:hover {
+                                                border-color: #d7c297;
+                                                color: #d7c297;
+                                            }
+
+
+                                }
         </style>
 
         <script>
             const namePrefixes = ["Arcane", "Feral", "Divine", "Cursed", "Mystic"];
             const nameTypes = ["Warlord", "Summoner", "Champion", "Sorcerer", "Guardian"];
-            
+
             const placeHolderTomes = [];
 
-          
             function HandlePage() {
-                
                 // hide build submitter
-             //   if (showBetaTooltip.checked) {
-                    // get build section
-               //         document.getElementById("shareSection").style.display= "none";
-               //     document.getElementById("buildsSubmitHolder").style.display = "none";
-               // }
-                
-                   jsonTomes = [...jsonTomes, ...placeHolderTomes];
+                //   if (showBetaTooltip.checked) {
+                // get build section
+                //         document.getElementById("shareSection").style.display= "none";
+                //     document.getElementById("buildsSubmitHolder").style.display = "none";
+                // }
+
+                jsonTomes = [...jsonTomes, ...placeHolderTomes];
                 SetRandomStart();
 
                 document.getElementById("YourKey").textContent = getOrCreateUserEditKey();
@@ -485,15 +529,15 @@
             <div></div>
             <div id="note"></div>
             <div id="shareSection">
-            <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
+                <button class="button-random" onclick="GetQuickLink()">Make Share Link</button>
 
-            <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
+                <input type="text" value="" class="inputfield" id="shareLink" style="width: 600px" />
 
-            <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
+                <button class="button-random" id="copyButton" onclick="myFunction()">Copy</button><br />
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-around">
                 <button class="button-random" onclick="SetRandomStart(true)">Randomise</button><br />
-                <button class="button-overview" style="left: 200px" id="toggleButton">◀ Hide Overview</button>
+              
             </div>
         </div>
 
@@ -530,8 +574,12 @@
                                     <div style="display: flex; height: 50px">
                                         <div id="extraOrder"></div>
                                         <div style="display: flex; flex-direction: column">
-                                            <button class="AddSubtract" onclick="AddExtra('order','⮝')"><img src="/aow4db/Icons/Interface/arrow_up.png" width="15px"></button>
-                                            <button class="AddSubtract" onclick="AddExtra('order','⮟')"><img src="/aow4db/Icons/Interface/arrow_down.png" width="15px"></button>
+                                            <button class="AddSubtract" onclick="AddExtra('order','⮝')">
+                                                <img src="/aow4db/Icons/Interface/arrow_up.png" width="15px" />
+                                            </button>
+                                            <button class="AddSubtract" onclick="AddExtra('order','⮟')">
+                                                <img src="/aow4db/Icons/Interface/arrow_down.png" width="15px" />
+                                            </button>
                                         </div>
                                     </div>
 
@@ -539,40 +587,60 @@
                                         <div id="extraChaos"></div>
 
                                         <div style="display: flex; flex-direction: column">
-                                               <button class="AddSubtract" onclick="AddExtra('chaos','⮝')"><img src="/aow4db/Icons/Interface/arrow_up.png" width="15px"></button>
-                                            <button class="AddSubtract" onclick="AddExtra('chaos','⮟')"><img src="/aow4db/Icons/Interface/arrow_down.png" width="15px"></button>
+                                            <button class="AddSubtract" onclick="AddExtra('chaos','⮝')">
+                                                <img src="/aow4db/Icons/Interface/arrow_up.png" width="15px" />
+                                            </button>
+                                            <button class="AddSubtract" onclick="AddExtra('chaos','⮟')">
+                                                <img src="/aow4db/Icons/Interface/arrow_down.png" width="15px" />
+                                            </button>
                                         </div>
                                     </div>
 
                                     <div style="display: flex; height: 50px">
                                         <div id="extraNature"></div>
                                         <div style="display: flex; flex-direction: column">
-                                               <button class="AddSubtract" onclick="AddExtra('nature','⮝')"><img src="/aow4db/Icons/Interface/arrow_up.png" width="15px"></button>
-                                            <button class="AddSubtract" onclick="AddExtra('nature','⮟')"><img src="/aow4db/Icons/Interface/arrow_down.png" width="15px"></button>
+                                            <button class="AddSubtract" onclick="AddExtra('nature','⮝')">
+                                                <img src="/aow4db/Icons/Interface/arrow_up.png" width="15px" />
+                                            </button>
+                                            <button class="AddSubtract" onclick="AddExtra('nature','⮟')">
+                                                <img src="/aow4db/Icons/Interface/arrow_down.png" width="15px" />
+                                            </button>
                                         </div>
                                     </div>
                                     <div style="display: flex; height: 50px">
                                         <div id="extraShadow"></div>
 
                                         <div style="display: flex; flex-direction: column">
-                                               <button class="AddSubtract" onclick="AddExtra('shadow','⮝')"><img src="/aow4db/Icons/Interface/arrow_up.png" width="15px"></button>
-                                            <button class="AddSubtract" onclick="AddExtra('shadow','⮟')"><img src="/aow4db/Icons/Interface/arrow_down.png" width="15px"></button>
+                                            <button class="AddSubtract" onclick="AddExtra('shadow','⮝')">
+                                                <img src="/aow4db/Icons/Interface/arrow_up.png" width="15px" />
+                                            </button>
+                                            <button class="AddSubtract" onclick="AddExtra('shadow','⮟')">
+                                                <img src="/aow4db/Icons/Interface/arrow_down.png" width="15px" />
+                                            </button>
                                         </div>
                                     </div>
                                     <div style="display: flex; height: 50px">
                                         <div id="extraMaterium"></div>
 
                                         <div style="display: flex; flex-direction: column">
-                                               <button class="AddSubtract" onclick="AddExtra('materium','⮝')"><img src="/aow4db/Icons/Interface/arrow_up.png" width="15px"></button>
-                                            <button class="AddSubtract" onclick="AddExtra('materium','⮟')"><img src="/aow4db/Icons/Interface/arrow_down.png" width="15px"></button>
+                                            <button class="AddSubtract" onclick="AddExtra('materium','⮝')">
+                                                <img src="/aow4db/Icons/Interface/arrow_up.png" width="15px" />
+                                            </button>
+                                            <button class="AddSubtract" onclick="AddExtra('materium','⮟')">
+                                                <img src="/aow4db/Icons/Interface/arrow_down.png" width="15px" />
+                                            </button>
                                         </div>
                                     </div>
                                     <div style="display: flex; height: 50px">
                                         <div id="extraAstral"></div>
 
                                         <div style="display: flex; flex-direction: column">
-                                               <button class="AddSubtract" onclick="AddExtra('astral','⮝')"><img src="/aow4db/Icons/Interface/arrow_up.png" width="15px"></button>
-                                            <button class="AddSubtract" onclick="AddExtra('astral','⮟')"><img src="/aow4db/Icons/Interface/arrow_down.png" width="15px"></button>
+                                            <button class="AddSubtract" onclick="AddExtra('astral','⮝')">
+                                                <img src="/aow4db/Icons/Interface/arrow_up.png" width="15px" />
+                                            </button>
+                                            <button class="AddSubtract" onclick="AddExtra('astral','⮟')">
+                                                <img src="/aow4db/Icons/Interface/arrow_down.png" width="15px" />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -629,29 +697,35 @@
                                             style="float: right; color: red"
                                             class="button"
                                             onclick="ClearAscensionSkill()">
-                                           <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
+                                            <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
                                         </button>
                                         <button
                                             class="button-inset"
                                             id="originButtonAscension"
                                             onclick="SetupButtons(event,'Ascension')">
-                                            <img class="padded-image" src="/aow4db/Icons/Interface/addsymbol.png" height="20px" />
+                                            <img
+                                                class="padded-image"
+                                                src="/aow4db/Icons/Interface/addsymbol.png"
+                                                height="20px" />
                                         </button>
                                     </div>
-                                    <br><br>
-                                         <div id="buttonContainer15">
+                                    <br /><br />
+                                    <div id="buttonContainer15">
                                         <span class="small_title"> Ambition</span>
-                                         <button
+                                        <button
                                             style="float: right; color: red"
                                             class="button"
                                             onclick="ClearAmbition()">
                                             <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
                                         </button>
-                                         <button
+                                        <button
                                             class="button-inset"
                                             id="originButtonAmbition"
                                             onclick="SetupButtons(event,'Ambition')">
-                                            <img class="padded-image" src="/aow4db/Icons/Interface/addsymbol.png" height="20px" />
+                                            <img
+                                                class="padded-image"
+                                                src="/aow4db/Icons/Interface/addsymbol.png"
+                                                height="20px" />
                                         </button>
                                     </div>
                                 </div>
@@ -713,10 +787,10 @@
                                         class="button"
                                         id="originButtonCulture"
                                         onclick="SetupButtons(event,'Culture')"></button>
-                                        <button
-                                            class="button-inset"
-                                            id="originButtonSubCulture"
-                                            onclick="SetupButtons(event,'SubCulture')"></button>
+                                    <button
+                                        class="button-inset"
+                                        id="originButtonSubCulture"
+                                        onclick="SetupButtons(event,'SubCulture')"></button>
                                 </div>
 
                                 <div id="buttonContainer2">
@@ -724,20 +798,20 @@
                                         class="button-inset"
                                         id="originButtonSociety1"
                                         onclick="SetupButtons(event,'Society1')"></button>
-                                     <button
-                                            class="button-inset"
-                                            id="originButtonSubSociety1"
-                                            onclick="SetupButtons(event,'SubSociety1')"></button>
+                                    <button
+                                        class="button-inset"
+                                        id="originButtonSubSociety1"
+                                        onclick="SetupButtons(event,'SubSociety1')"></button>
                                 </div>
                                 <div id="buttonContainer1">
                                     <button
                                         class="button-inset"
                                         id="originButtonSociety2"
                                         onclick="SetupButtons(event,'Society2')"></button>
-                                     <button
-                                            class="button-inset"
-                                            id="originButtonSubSociety2"
-                                            onclick="SetupButtons(event,'SubSociety2')"></button>
+                                    <button
+                                        class="button-inset"
+                                        id="originButtonSubSociety2"
+                                        onclick="SetupButtons(event,'SubSociety2')"></button>
                                 </div>
                             </div>
                         </div>
@@ -751,8 +825,7 @@
                         <span class="small_title"> Tome Path</span>
 
                         <button style="float: right; color: red" class="button" onclick="ClearTomePath()">
-
-                            <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />  Clear All
+                            <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" /> Clear All
                         </button>
                         <br />
                         <div
@@ -760,7 +833,9 @@
                             id="tomePathButton"></div>
                     </div>
                 </div>
+                 
             </div>
+             <button class="button-overview" style="left: 0px" id="toggleButton">◀ Hide Overview</button>
             <div style="color: white; display: block" id="overviewPanel">
                 <button class="button-random" onclick="ResetHighlights()" id="toggleButton1">
                     Reset <favourite></favourite>
@@ -789,125 +864,130 @@
 
         <div id="hiddentooltips" style="display: none"></div>
 
-        <div class="selections" id="selectionsHolder">
-            <p id="selections" style="text-align: center"></p>
-            <button
-                style="float: right; position: relative; top: -20px; color: red"
-                class="button"
-                onclick="toggleOriginButtons()">
-                 <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
-            </button>
-
-            <div id="originWrapperOptions" class="wrappers"></div>
-
-        </div>
-        <br /><br />
-        <hr> 
-        <div id="buildsSubmitHolder">
-        <div id="notesContainer" style="color: white">
-            <div>
-                <span class=small_title style='display: block; width: 100%;text-align: center;'>Submit your build</span><hr><br>
-Submit your build to the build list using the form below<br>
+        <div class="selectionsHolder" id="selectionsHolder">
+            <div id="selectionsBackdrop" class="selections-backdrop"></div>
+            <div class="selections">
+                <p id="selections" style="text-align: center"></p>
                 <button
-                    class="button-random"
-                    style="position: relative; top: 0; left: 50%; transform: translateX(-50%)">
-                    <a href="/aow4db/HTML/FactionList.html"> BUILDS LIST</a>
+                    style="float: right; position: relative; top: -20px; color: red"
+                    class="button"
+                    onclick="toggleOriginButtons()">
+                    <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
                 </button>
+                <div id="originWrapperOptions" class="wrappers"></div>
             </div>
-            <label for="notesEditor">Build Notes:</label>
-            <div id="notesDisplay"></div>
-            <div id="NotesEditInput" style="display: none">
-                <div style="margin-bottom: 5px; display: flex">
-                    <button onclick="format('bold')"><b>Bold</b></button>
-                    <button onclick="formatHeader('h1')">Header</button>
-                    <div>Use [] for tags I.E. [hp] for <hp></hp></div>
-                    <!-- <div>Use {} for highlights of abilities/spells/etc I.E. {Ancient Wise Ones}</div>-->
+        </div>
+
+        <br /><br />
+        <hr />
+        <div id="buildsSubmitHolder">
+            <div id="notesContainer" style="color: white">
+                <div>
+                    <span class="small_title" style="display: block; width: 100%; text-align: center"
+                        >Submit your build</span
+                    >
+                    <hr />
+                    <br />
+                    Submit your build to the build list using the form below<br />
+                    <button
+                        class="button-random"
+                        style="position: relative; top: 0; left: 50%; transform: translateX(-50%)">
+                        <a href="/aow4db/HTML/FactionList.html"> BUILDS LIST</a>
+                    </button>
+                </div>
+                <label for="notesEditor">Build Notes:</label>
+                <div id="notesDisplay"></div>
+                <div id="NotesEditInput" style="display: none">
+                    <div style="margin-bottom: 5px; display: flex">
+                        <button onclick="format('bold')"><b>Bold</b></button>
+                        <button onclick="formatHeader('h1')">Header</button>
+                        <div>Use [] for tags I.E. [hp] for <hp></hp></div>
+                        <!-- <div>Use {} for highlights of abilities/spells/etc I.E. {Ancient Wise Ones}</div>-->
+                    </div>
+
+                    <div
+                        id="NotesInput"
+                        contenteditable="true"
+                        style="
+                            border: 1px solid gray;
+                            padding: 10px;
+                            min-height: 100px;
+                            background: #454545;
+                            color: white;
+                            white-space: pre-wrap;
+                        "></div>
+                </div>
+                <button id="editNotesBtn" onclick="toggleEditNotes()">Edit</button>
+                <button style="display: none" id="saveNotesBtn" onclick="saveNotes()">Save</button>
+            </div>
+            <div style="display: flex; justify-content: space-around; color: white">
+                <div style="color: white">
+                    <div style="width: fit-content">
+                        <div id="tooltipKey">
+                            YourEditKey: <img src="/aow4db/Icons/Text/exclamationpoint.png" height="20px" />
+                        </div>
+                        <button class="button-random" onmousedown="RevealKey()" onmouseup="HideKey()">👁️Show</button>
+                        <span style="display: none" id="YourKey"></span>
+                    </div>
+                    <button class="button-random" onclick="CopyField()">📄Copy Key</button>
+                    <button class="button-random" onclick="downloadEditKeyFile()">💾Save Key</button>
+
+                    <button class="button-random" onmousedown="RevealKey()" onmouseup="ShowLoad()">📂Load Key</button>
+                    <div id="loadkey" style="display: none">
+                        Overwrite key: <input type="text" id="overwriteKey" name="lname" /><button
+                            class="button-random"
+                            onclick="OverwriteEditKey()">
+                            Submit
+                        </button>
+                    </div>
                 </div>
 
                 <div
-                    id="NotesInput"
-                    contenteditable="true"
+                    id="loading-spinner"
                     style="
-                        border: 1px solid gray;
-                        padding: 10px;
-                        min-height: 100px;
-                        background: #454545;
-                        color: white;
-                        white-space: pre-wrap;
-                    "></div>
-            </div>
-            <button id="editNotesBtn" onclick="toggleEditNotes()">Edit</button>
-            <button style="display: none" id="saveNotesBtn" onclick="saveNotes()">Save</button>
-        </div>
-        <div style="display: flex; justify-content: space-around; color: white">
-            <div style="color: white">
-                <div style="width: fit-content">
-                    <div id="tooltipKey">
-                        YourEditKey: <img src="/aow4db/Icons/Text/exclamationpoint.png" height="20px" />
-                    </div>
-                    <button class="button-random" onmousedown="RevealKey()" onmouseup="HideKey()">👁️Show</button>
-                    <span style="display: none" id="YourKey"></span>
+                        display: none;
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 9999;
+                    ">
+                    <div class="spinner"></div>
                 </div>
-                <button class="button-random" onclick="CopyField()">📄Copy Key</button>
-                <button class="button-random" onclick="downloadEditKeyFile()">💾Save Key</button>
 
-                <button class="button-random" onmousedown="RevealKey()" onmouseup="ShowLoad()">📂Load Key</button>
-                <div id="loadkey" style="display: none">
-                    Overwrite key: <input type="text" id="overwriteKey" name="lname" /><button
-                        class="button-random"
-                        onclick="OverwriteEditKey()">
-                        Submit
+                <div style="color: white; display: none" id="oldURL"></div>
+
+                <!-- Dropdown to choose a tag -->
+                <div>
+                    <!-- Extra holder -->
+                    <label for="tagDropdown">Select a Tag:</label>
+                    <select id="tagDropdown">
+                        <option value="">-- Choose a tag --</option>
+                        <option value="Roleplay">Roleplay</option>
+                        <option value="Theme">Theme</option>
+                        <option value="PVP">PVP</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Hardcore">Hardcore</option>
+                    </select>
+
+                    <button onclick="addTag()">Add Tag</button>
+
+                    <!-- Where tags will be listed -->
+                    <div id="tagList" style="margin-top: 10px"></div>
+                    <label for="userNotes">Build Name:</label>
+                    <input type="text" id="buildName" name="lname" />
+
+                    <button class="button-random" onclick="submitBuild()">Submit New</button>
+
+                    <button class="button-random" id="overwriteButton" style="display: none" onclick="overwriteBuild()">
+                        Overwrite Existing
                     </button>
                 </div>
             </div>
-
-            <div
-                id="loading-spinner"
-                style="
-                    display: none;
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 9999;
-                ">
-                <div class="spinner"></div>
-            </div>
-
-            <div style="color: white; display: none" id="oldURL"></div>
-
-            <!-- Dropdown to choose a tag -->
-            <div>
-                <!-- Extra holder -->
-                <label for="tagDropdown">Select a Tag:</label>
-                <select id="tagDropdown">
-                    <option value="">-- Choose a tag --</option>
-                    <option value="Roleplay">Roleplay</option>
-                    <option value="Theme">Theme</option>
-                    <option value="PVP">PVP</option>
-                    <option value="Casual">Casual</option>
-                    <option value="Hardcore">Hardcore</option>
-                </select>
-
-                <button onclick="addTag()">Add Tag</button>
-
-                <!-- Where tags will be listed -->
-                <div id="tagList" style="margin-top: 10px"></div>
-                <label for="userNotes">Build Name:</label>
-                <input type="text" id="buildName" name="lname" />
-
-                <button class="button-random" onclick="submitBuild()">Submit New</button>
-
-                <button class="button-random" id="overwriteButton" style="display: none" onclick="overwriteBuild()">
-                    Overwrite Existing
-                </button>
-            </div>
+            <br />
+            <hr />
+            <div style="color: white; padding: 20px">Contributors: lucasandradz</div>
         </div>
-            <br>
-            <hr>
-            <div style='color:white; padding:20px'>
-Contributors: lucasandradz </div>
-            </div>
 
         <script>
             var rawNotes = "";

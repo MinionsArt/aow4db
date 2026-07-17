@@ -274,25 +274,35 @@ a:hover {
     text-decoration: none;
     color: #eee;
 }
+@media (min-width:800px) {
+    #menu li:hover > a,
+    #menu li a:hover {
+        background: #111;
+    }
 
-#menu li:hover > a,
-#menu li a:hover {
-    background: #111;
+    #menu li:hover ul.menus {
+        display: block;
+    }
+
+    #menu ul.menus .has-submenu:hover .submenu {
+        display: block;
+    }
 }
 
+
 #menu input {
-    display: none;
+  
     margin: 0 0;
     padding: 0 0;
     width: 80px;
     height: 35px;
-    opacity: 0;
+   
     cursor: pointer;
 }
 
 #menu label {
     font: bold 30px Arial;
-    display: none;
+   
     width: 35px;
     height: 36px;
     line-height: 36px;
@@ -325,10 +335,6 @@ a:hover {
     text-transform: uppercase;
 }
 
-#menu li:hover ul.menus {
-    display: block;
-}
-
 #menu a.home {
     background: #c00;
 }
@@ -347,9 +353,6 @@ a:hover {
     right: 9px;
 }
 
-#menu ul.menus a:hover {
-    background: #333;
-}
 
 #menu ul.menus .submenu {
     display: none;
@@ -362,10 +365,6 @@ a:hover {
 
 #menu ul.menus .submenu li {
     background: #111;
-}
-
-#menu ul.menus .has-submenu:hover .submenu {
-    display: block;
 }
 
 .collapsible {
@@ -1449,6 +1448,8 @@ hr {
 
     margin-left: 0;
     font-weight: lighter;
+      max-height: 80vh;
+    overflow-y: auto;
 }
 .tooltiptextnew.wide {
     max-width: 500px;
@@ -1942,4 +1943,180 @@ span.number-highlight {
 .spoiler.revealed {
   color: inherit;             /* normal text color */
   background-color: transparent;
+}
+
+
+.menu-toggle {
+    display: none; /* hidden on desktop */
+}
+
+ .selections-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+    }
+   
+
+@media (max-width: 800px) {
+    
+    .factioncreator {
+        flex-direction: column;   /* stack instead of side-by-side */
+        align-items: center;      /* center each stacked block horizontally */
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .factioncreator > * {
+        width: 100%;
+        max-width: 100%;
+    }
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1001;
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+        background: #111;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .menu-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+    }
+    .menu-backdrop.open {
+        display: block;
+    }
+
+    /* Pull #menu out of .header-img's cramped 150px box entirely */
+    #menu {
+          padding:10px;
+         padding-top:60px;
+      
+        position: fixed;
+        top: 0;
+        left: -85%;      /* hidden off-screen by default */
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        min-width: 0;
+        margin-top: 0;
+        background: black;
+        overflow-y: auto;
+        z-index: 1000;
+        transition: left 0.25s ease;
+    }
+    #menu.open {
+        left: 0;
+        
+    }
+
+    #menu > li {
+        
+        padding: 5px;
+       
+        float: none;
+        display: block;
+        width: 100%;
+    }
+    #menu ul.menus {
+        position: static;
+        width: 100%;
+        display: none;
+    }
+    #menu ul.menus.open {
+        display: block;
+    }
+    #menu ul.menus .submenu {
+        position: static;
+        left: auto;
+        width: 100%;
+        display: none;
+        padding-left: 20px;
+    }
+    #menu ul.menus .submenu.open {
+        display: block;
+    }
+    
+    #menu ul.menus li,
+    #menu ul.menus .submenu li {
+        float: none; /* the missing override */
+    }
+
+    /* clearfix as a safety net in case anything else floats inside */
+    #menu ul.menus::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* header-img no longer needs to reserve space for the menu on mobile */
+    .header-img {
+        height: 150px;
+        overflow: visible;
+    }
+     #menuExtras .topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 12px 0;
+    }
+    #menuExtras .donate {
+        right: 0; /* was right:-152px, meant for the old wide desktop bar */
+        text-align: center;
+    }
+    /* dropdowns rely on :hover, which doesn't exist on touch —
+       just show their contents inline since they're already tucked
+       away behind the hamburger */
+    #menuExtras .dropdown-content {
+        position: static;
+        display: block !important;
+        box-shadow: none;
+        background: transparent;
+        padding-left: 12px;
+    }
+}
+
+@media (hover: none), (max-width: 800px) {
+    #menuExtras .dropdown-content {
+        display: none;           /* closed by default now, not forced open */
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        padding-left: 12px;
+    }
+    #menuExtras .dropdown-content.open {
+        display: block;
+    }
+
+    /* undo the desktop-only inline offset on the language select */
+    #menuExtras label[style] {
+        left: 0 !important;
+    }
+    
+     .tooltiptextnew {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 45vh;
+        overflow-y: auto;
+        border-radius: 12px 12px 0 0;
+        box-sizing: border-box;
+        z-index: 1001; /* above the selections popup */
+    }
 }

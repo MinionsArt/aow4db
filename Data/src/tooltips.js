@@ -14,7 +14,8 @@ function addTooltipListeners(tooltip, span, secondary) {
             hoverDiv2.show();
             hoverDiv2.inert = false;
             if (tooltip != hoverDiv2) {
-                updateHoverDivPosition(event, secondary);
+                 try { updateHoverDivPosition(event, secondary); } catch(e) {}
+                //updateHoverDivPosition(event, secondary);
             }
             hoverDiv2.close(); // close and reset visiblity
             hoverDiv2.style.visibility = "";
@@ -38,7 +39,8 @@ function addTooltipListeners(tooltip, span, secondary) {
             hoverDiv.show();
             hoverDiv.inert = false;
             if (tooltip != hoverDiv) {
-                updateHoverDivPosition(event, secondary);
+                    try { updateHoverDivPosition(event, secondary); } catch(e) {}
+              //  updateHoverDivPosition(event, secondary);
             }
             hoverDiv.close();
             hoverDiv.style.visibility = "";
@@ -77,16 +79,35 @@ function TurnOnTooltip(spa, secondary) {
     }
 }
 
+
 function TurnOffTooltip(secondary, origin) {
+    let hoverDiv2 = document.getElementById("hoverDiv2");
+    let hoverDiv = document.getElementById("hoverDiv");
+
+    if (secondary != undefined) {
+        if (checkboxTooltip.checked) {
+            if (origin == hoverDiv2 && hoverDiv2.open) hoverDiv2.close();
+        } else {
+            if (hoverDiv2.open) hoverDiv2.close();
+        }
+    } else {
+        // Close hoverDiv on its own terms — don't let hoverDiv2's state block this indefinitely.
+        if (hoverDiv.open) hoverDiv.close();
+    }
+}
+/*function TurnOffTooltip(secondary, origin) {
     hoverDiv2 = document.getElementById("hoverDiv2");
     hoverDiv = document.getElementById("hoverDiv");
+    
     // console.log("dialog 2 is open? " + hoverDiv2.open);
     if (secondary != undefined) {
         if (checkboxTooltip.checked) {
             if (origin == hoverDiv2) {
+                 hoverDiv2.innerHTML = "";
                 hoverDiv2.close();
             }
         } else {
+              hoverDiv2.innerHTML = "";
             hoverDiv2.close();
         }
 
@@ -95,11 +116,14 @@ function TurnOffTooltip(secondary, origin) {
         if (hoverDiv2.open) {
             //   console.log("dialog is open ");
         } else {
+              hoverDiv.innerHTML = "";
+          
             hoverDiv.close();
+            
             //  console.log("closed dialog 1");
         }
     }
-}
+}*/
 
 function getNormalizedPosition(event) {
     const screenWidth = window.innerWidth;
@@ -118,45 +142,40 @@ function getNormalizedPosition(event) {
         y: normalizedY
     };
 }
-
 function updateHoverDivPosition(event, secondary) {
     const settings = getUserSettings();
+    const isTouch = window.matchMedia('(max-width: 800px), (hover: none)').matches;
 
-    let offset = 2;
-    let hoverDiv = null;
-    if (secondary != undefined) {
-        hoverDiv = document.getElementById("hoverDiv2");
-        offset = -5;
-    } else {
-        hoverDiv = document.getElementById("hoverDiv");
-    }
+    let hoverDiv = secondary != undefined
+        ? document.getElementById("hoverDiv2")
+        : document.getElementById("hoverDiv");
+
     if (settings.tooltipselectable) {
         hoverDiv.setAttribute("Style", "pointer-events: all;");
     } else {
         hoverDiv.setAttribute("Style", "pointer-events: none;");
-        offset = 10;
     }
 
-    let normalizedPos = getNormalizedPosition(event);
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
+    // Mobile: CSS pins this as a fixed bottom sheet (see below) — no JS positioning needed.
+    if (isTouch) return;
 
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    var selectionsHolder = document.getElementById("selectionsHolder");
+    if (selectionsHolder && event.target.closest && event.target.closest("#selectionsHolder")) {
+        var holderRect = selectionsHolder.getBoundingClientRect();
+        var dialogRect = hoverDiv.getBoundingClientRect();
 
-    if (normalizedPos.x + getNormalizedWidth(hoverDiv) > 1) {
-        hoverDiv.style.left = mouseX - hoverDiv.getBoundingClientRect().width - offset + scrollLeft + "px";
-    } else {
-        hoverDiv.style.left = mouseX + offset + scrollLeft + "px";
+        var desiredLeft = (holderRect.right + 20 + dialogRect.width < window.innerWidth)
+            ? holderRect.right + 20
+            : holderRect.left - dialogRect.width - 20;
+
+        clampToViewport(hoverDiv, desiredLeft, event.clientY - 50 );
+        return;
     }
 
-    if (normalizedPos.y + getNormalizedHeight(hoverDiv) > 1) {
-        hoverDiv.style.top = mouseY - hoverDiv.getBoundingClientRect().height - offset + scrollTop + "px";
-    } else {
-        hoverDiv.style.top = mouseY + offset + scrollTop + "px";
-    }
+    var offset = secondary != undefined ? -5 : (settings.tooltipselectable ? 2 : 10);
+    clampToViewport(hoverDiv, event.clientX + offset, event.clientY + offset);
 }
-
+/*
 function getNormalizedHeight(element) {
     const elementWidth = element.getBoundingClientRect().height;
     const viewportWidth = window.innerHeight;
@@ -167,4 +186,16 @@ function getNormalizedWidth(element) {
     const elementWidth = element.getBoundingClientRect().width;
     const viewportWidth = window.innerWidth;
     return elementWidth / viewportWidth;
+}*/
+
+function clampToViewport(el, viewportLeft, viewportTop, margin = 8) {
+    const rect = el.getBoundingClientRect(); // just need width/height
+    const maxLeft = window.innerWidth - rect.width - margin;
+    const maxTop = window.innerHeight - rect.height - margin;
+
+    const clampedLeft = Math.min(Math.max(viewportLeft, margin), Math.max(maxLeft, margin));
+    const clampedTop = Math.min(Math.max(viewportTop, margin), Math.max(maxTop, margin));
+
+    el.style.left = (clampedLeft + window.pageXOffset) + "px";
+    el.style.top = (clampedTop + window.pageYOffset) + "px";
 }

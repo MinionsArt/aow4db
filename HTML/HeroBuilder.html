@@ -53,7 +53,8 @@
                     const dropdownOrigin = document.getElementById("actionDropdownOrigin");
                     const dropdownOriginDragon = document.getElementById("actionDropdownOriginDragon");
                     const dropdownOriginGiant = document.getElementById("actionDropdownOriginGiant");
-
+                
+                document.getElementById('selectionsBackdrop').addEventListener('click', closePanel);
                     // hide dragon type
                     document.getElementById("actionDropdownOriginDragonHolder").style.display = "none";
                     // hide giant type
@@ -322,17 +323,22 @@
             </div>
         </div>
         <div id="summaryHolder" style="position: absolute; top: 718px; width: 400px; left: 70px; color: white"></div>
-        <div class="selections" id="selectionsHolder">
-            <p id="selections" style="text-align: center"></p>
-            <button
-                style="float: right; position: relative; top: -20px; color: red"
-                class="button"
-                onclick="closePanel()">
-                X
-            </button>
-
-            <div id="choicesPanel" class="wrappers"></div>
+        
+          <div class="selectionsHolder" id="selectionsHolder">
+            <div id="selectionsBackdrop" class="selections-backdrop"></div>
+            <div class="selections">
+                <p id="selections" style="text-align: center"></p>
+                <button
+                    style="float: right; position: relative; top: -20px; color: red"
+                    class="button"
+                    onclick="closePanel()">
+                    <img src="/aow4db/Icons/Interface/CloseX.png" height="20px" />
+                </button>
+                <div id="choicesPanel" class="wrappers"></div>
+            </div>
         </div>
+        
+       
     </body>
 </html>
 <style>
@@ -379,21 +385,41 @@
         justify-content: normal;
     }
 
-    .selections {
-        width: fit-content;
+    .selectionsHolder {
+                        display: none;           /* JS toggles a class to show it */
+                        position: fixed;
+                        inset: 0;
+                        z-index: 999;           /* above the hamburger menu (1000) and its backdrop (999) */
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .selectionsHolder.open {
+                        display: flex;           /* flex + centered children = automatic centering */
+                    }
 
-        height: fit-content;
+                    .selections-backdrop {
+                        position: fixed;
+                        inset: 0;
+                        background: rgba(0, 0, 0, 0.6);
+                        z-index: 1;              /* below .selections, but that's fine — separate stacking context now */
+                    }
 
-        color: white;
-        display: inline-block;
-        position: absolute;
-        border-width: 10px;
-        border-style: solid;
-        border-image: url(/aow4db/Icons/9slicetooltip.png);
-        border-image-slice: 10 10 10 10;
-        background-color: black;
-        z-index: 10;
-    }
+                    .selections {
+                        position: relative;      /* no longer absolute/pixel-positioned */
+                        z-index: 2;
+                        width: fit-content;
+                        max-width: 90vw;
+                        height: fit-content;
+
+            max-height: 50vh;
+                        overflow-y: auto;
+                        color: white;
+                        border-width: 10px;
+                        border-style: solid;
+                        border-image: url(/aow4db/Icons/9slicetooltip.png);
+                        border-image-slice: 10 10 10 10;
+                        background-color: black;
+                    }
     .branch-line {
         height: 6px;
         margin-top: -6px;
