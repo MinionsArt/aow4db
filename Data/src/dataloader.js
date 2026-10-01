@@ -77,9 +77,23 @@ const extraFormUnitsList = [
 ];
 
 const secretSpellsList = [
-    "abominable_mistling","colossal_penguin", "feylor", "yakas_feline_infusion","fanfare_of_mercy", "ysariels_fallen_form", "bhajifs_disruption", "zaethyls_paradise",
-    "karissas_immolation", "cinrens_temptation", "ydgaards_trade", "noctus_mastery", "frikkas_revelation", "nimues_failure",
-    "thulyanas_contortion", "belbedors_folly", "articas_ice_age"
+    "abominable_mistling",
+    "colossal_penguin",
+    "feylor",
+    "yakas_feline_infusion",
+    "fanfare_of_mercy",
+    "ysariels_fallen_form",
+    "bhajifs_disruption",
+    "zaethyls_paradise",
+    "karissas_immolation",
+    "cinrens_temptation",
+    "ydgaards_trade",
+    "noctus_mastery",
+    "frikkas_revelation",
+    "nimues_failure",
+    "thulyanas_contortion",
+    "belbedors_folly",
+    "articas_ice_age"
 ];
 
 const incorrectIconOverrideList = [
@@ -98,15 +112,13 @@ const incorrectIconOverrideList = [
 
 const extraAbilities = [];
 
-const extraSkills = [
-];
+const extraSkills = [];
 
 function checkSecretSpell(id) {
-    
     if (secretSpellsList.includes(id) && !showSecretSpells.checked) {
         return true;
     }
-   
+
     return false;
 }
 
@@ -164,12 +176,18 @@ const dlcMap = {
     THRONESOFBLOOD: {
         src: "/aow4db/Icons/Text/ThronesOfBlood.png",
         text: "Part of the Thrones of Blood DLC"
-    }, RISEFROMRUIN: {
+    },
+    RISEFROMRUIN: {
         src: "/aow4db/Icons/Text/RiseFromRuin.png",
         text: "Part of the Rise From Ruin DLC"
-    }, SECRETSOFTHEARCHMAGES: {
+    },
+    SECRETSOFTHEARCHMAGES: {
         src: "/aow4db/Icons/Text/SecretsOfTheArchmages.png",
         text: "Part of the Secrets of the Archmages DLC"
+    },
+    WITCHOFTHEWAVES: {
+        src: "/aow4db/Icons/Text/singer_of_storms.png",
+        text: "Part of the Singer of Storms DLC"
     }
 };
 
@@ -179,7 +197,6 @@ async function GetAllData(selectedLang) {
     if (selectedLang == "BETA") {
         basePathEN = `/aow4db/Data/BETA/`;
     }
-    
 
     const basePathGen = `/aow4db/Data/GEN/`;
     // }
@@ -206,8 +223,6 @@ async function GetAllData(selectedLang) {
         "Relics.json",
         "Pantheon_Tree.json",
         "ExtraLookSpellsOrigin.json"
-        
-        
     ];
     const fileNames = [
         // ingame dump files
@@ -223,8 +238,8 @@ async function GetAllData(selectedLang) {
         "StructureUpgrades.json",
         "Destinies.json",
         "Governance.json",
-          "ItemForgeTypes.json",
-         "ItemForgeUpgrades.json",
+        "ItemForgeTypes.json",
+        "ItemForgeUpgrades.json",
         // non-ingame-dump-json-files
         "UI.json",
         "all.json",
@@ -250,7 +265,7 @@ async function GetAllData(selectedLang) {
             "jsonBuilderLookUp",
             "jsonExtraAscendedInfo",
             "jsonBuilderHeroLookUp",
-           
+
             "jsonUIGeneric",
             "jsonFactionCreation",
             "jsonStatusEffects",
@@ -261,11 +276,10 @@ async function GetAllData(selectedLang) {
             "jsonCityTreeNodes",
             "jsonSpawnSetsStrat",
             "jsonFreeCities",
-              "jsonDestinyTriggers",
+            "jsonDestinyTriggers",
             "jsonRelics",
             "jsonPantheon",
             "jsonExtraSpellsLookup"
-            
         ];
         const targets = [
             "jsonHeroItems",
@@ -280,8 +294,8 @@ async function GetAllData(selectedLang) {
             "jsonStructureUpgrades",
             "jsonHeroAmbitions",
             "jsonHeroGovernance",
-             "jsonItemForgeTypes",
-             "jsonItemForgeUpgrades",
+            "jsonItemForgeTypes",
+            "jsonItemForgeUpgrades",
             "jsonUI",
             "jsonAllFromPO",
             "jsonConceptTooltips"
@@ -328,7 +342,7 @@ async function CheckData() {
             setUserSettings({
                 tooltipselectable: false,
                 fontSize: "16px",
-                showSecretSpells : false,
+                showSecretSpells: false,
                 showBeta: false,
                 language: "EN"
             });
@@ -336,16 +350,14 @@ async function CheckData() {
         }
         //checkboxTooltip = document.getElementById("tooltipCheckbox");
         checkboxTooltip.checked = storedSettings.tooltipselectable;
-            showSecretSpells.checked = storedSettings.showSecretSpells;
+        showSecretSpells.checked = storedSettings.showSecretSpells;
 
         //checkboxNumbers = document.getElementById("numbersCheckbox");
         //checkboxNumbers = document.getElementById("numbersCheckbox");
         checkboxNumbers.checked = storedSettings.isolateNumber;
-      
 
-   // showBetaTooltip = document.getElementById("showBetaCheckbox");
+        // showBetaTooltip = document.getElementById("showBetaCheckbox");
         showBetaTooltip.checked = storedSettings.showBeta;
-
 
         //  languageSelect = document.getElementById("languageSelect");
         languageSelect.value = storedSettings.language;
@@ -361,18 +373,18 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-   /*  if (storedSettings.showBeta) {
+        /*  if (storedSettings.showBeta) {
              await GetAllData("BETA");
        } else {*/
         await GetAllData(storedSettings.language);
-      // }
+        // }
 
-//await GetAllData("EN");
+        //await GetAllData("EN");
         AddExtraData();
 
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityMap[a.slug] = a));
         jsonUnitAbilitiesLocalized.forEach((a) => (abilityNameMap[a.name] = a));
-        
+
         // maps
         HandlePage();
         if (languageSelect.value != "EN") {
@@ -383,18 +395,27 @@ async function CheckData() {
 
 const lookupMaps = new Map(); // cache of maps per "array+key" combo
 
-
 function buildLookupMap(array, key) {
-    const mapKey = array === jsonUnits ? "jsonUnits:" + key :
-                   array === jsonUnitAbilities ? "jsonUnitAbilities:" + key :
-                   array === jsonUnitAbilitiesLocalized ? "jsonUnitAbilitiesLocalized:" + key :
-                   array === jsonSpells ? "jsonSpells:" + key :
-                   array === jsonSpellsLocalized ? "jsonSpellsLocalized:" + key :
-                   array === jsonTomes ? "jsonTomes:" + key :
-                   array === jsonTomesLocalized ? "jsonTomesLocalized:" + key :
-                   array === jsonHeroSkills ? "jsonHeroSkills:" + key :
-                   array === jsonAllFromPOLocalized ? "jsonAllFromPOLocalized:" + key :
-                   null;
+    const mapKey =
+        array === jsonUnits
+            ? "jsonUnits:" + key
+            : array === jsonUnitAbilities
+              ? "jsonUnitAbilities:" + key
+              : array === jsonUnitAbilitiesLocalized
+                ? "jsonUnitAbilitiesLocalized:" + key
+                : array === jsonSpells
+                  ? "jsonSpells:" + key
+                  : array === jsonSpellsLocalized
+                    ? "jsonSpellsLocalized:" + key
+                    : array === jsonTomes
+                      ? "jsonTomes:" + key
+                      : array === jsonTomesLocalized
+                        ? "jsonTomesLocalized:" + key
+                        : array === jsonHeroSkills
+                          ? "jsonHeroSkills:" + key
+                          : array === jsonAllFromPOLocalized
+                            ? "jsonAllFromPOLocalized:" + key
+                            : null;
 
     if (!mapKey) return null; // not a static array we track
 
@@ -412,20 +433,20 @@ function buildLookupMap(array, key) {
 
 const patchDates = [
     // date ranges of patches
-      { name: "Sprite 1.2", from: new Date("2026-07-02"), to: new Date("2026-11-29") },
-      { name: "Sprite 1.1", from: new Date("2026-06-24"), to: new Date("2026-07-01") },
-      { name: "Sprite 1.0", from: new Date("2026-06-16"), to: new Date("2026-06-23") },
-      { name: "Scorpion 1.2.1", from: new Date("2026-04-01"), to: new Date("2026-06-15") },
-     { name: "Scorpion 1.2", from: new Date("2026-03-24"), to: new Date("2026-03-31") },
-      { name: "Scorpion 1.1", from: new Date("2026-03-12"), to: new Date("2026-03-23") },
-     { name: "Scorpion 1.0", from: new Date("2026-03-09"), to: new Date("2026-03-11") },
-     { name: "Gargoyle 1.2.2", from: new Date("2025-12-09"), to: new Date("2026-03-08") },
-      { name: "Gargoyle 1.2.1", from: new Date("2025-11-26"), to: new Date("2025-12-08") },
-        { name: "Gargoyle 1.2", from: new Date("2025-11-25"), to: new Date("2025-11-25") },
-      { name: "Gargoyle 1.1", from: new Date("2025-11-13"), to: new Date("2025-11-24") },
-      { name: "Gargoyle 1.0", from: new Date("2025-11-11"), to: new Date("2025-11-12") },
+    { name: "Sprite 1.2", from: new Date("2026-07-02"), to: new Date("2026-11-29") },
+    { name: "Sprite 1.1", from: new Date("2026-06-24"), to: new Date("2026-07-01") },
+    { name: "Sprite 1.0", from: new Date("2026-06-16"), to: new Date("2026-06-23") },
+    { name: "Scorpion 1.2.1", from: new Date("2026-04-01"), to: new Date("2026-06-15") },
+    { name: "Scorpion 1.2", from: new Date("2026-03-24"), to: new Date("2026-03-31") },
+    { name: "Scorpion 1.1", from: new Date("2026-03-12"), to: new Date("2026-03-23") },
+    { name: "Scorpion 1.0", from: new Date("2026-03-09"), to: new Date("2026-03-11") },
+    { name: "Gargoyle 1.2.2", from: new Date("2025-12-09"), to: new Date("2026-03-08") },
+    { name: "Gargoyle 1.2.1", from: new Date("2025-11-26"), to: new Date("2025-12-08") },
+    { name: "Gargoyle 1.2", from: new Date("2025-11-25"), to: new Date("2025-11-25") },
+    { name: "Gargoyle 1.1", from: new Date("2025-11-13"), to: new Date("2025-11-24") },
+    { name: "Gargoyle 1.0", from: new Date("2025-11-11"), to: new Date("2025-11-12") },
     { name: "Wisp", from: new Date("2025-09-30"), to: new Date("2025-11-10") },
-     { name: "Griffon 1.2", from: new Date("2025-08-26"), to: new Date("2025-09-29") },
+    { name: "Griffon 1.2", from: new Date("2025-08-26"), to: new Date("2025-09-29") },
     { name: "Griffon 1.1", from: new Date("2025-08-14"), to: new Date("2025-08-25") },
     { name: "Griffon 1.0", from: new Date("2025-08-12"), to: new Date("2025-11-13") },
     { name: "Ogre 1.2.1", from: new Date("2025-04-29"), to: new Date("2025-08-11") },
@@ -494,4 +515,3 @@ function LocalizeUI(specific) {
         }
     }
 }
-

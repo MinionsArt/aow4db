@@ -13,8 +13,6 @@ const showBetaTooltip = document.getElementById("showBetaCheckbox");
 const showSecretSpells = document.getElementById("showSecretSpellsCheckbox");
 const languageSelect = document.getElementById("languageSelect");
 
-
-
 function highlightNumbersInDiv(text) {
     if (!text) return;
 
@@ -66,51 +64,41 @@ function extractHyperlinks(text) {
     return { text, links };
 }
 
-function RemoveHyperLinks(text){
-   return text.replace(
-      /\[hyperlink,([^\]]+)\]([\s\S]*?)\[\/hyperlink\]/g,
-        (_, globalName, displayText) => {
-            const concept = jsonConceptTooltipsLocalized?.[globalName];
-            const iconHtml = concept?.icon
-                ? `<${concept.icon}></${concept.icon}> ` : "";
+function RemoveHyperLinks(text) {
+    return text.replace(/\[hyperlink,([^\]]+)\]([\s\S]*?)\[\/hyperlink\]/g, (_, globalName, displayText) => {
+        const concept = jsonConceptTooltipsLocalized?.[globalName];
+        const iconHtml = concept?.icon ? `<${concept.icon}></${concept.icon}> ` : "";
 
-            const visible = `<span style="color:white;text-decoration:underline">${""}${displayText.trim()}</span>`;
- const noTooltip = `<span>${""}${displayText.trim()}</span>`;
+        const visible = `${""}${displayText.trim()}`;
+        const noTooltip = `<span>${""}${displayText.trim()}</span>`;
 
-            if (!concept) return noTooltip;   // no tooltip available, just underline
+        if (!concept) return noTooltip; // no tooltip available, just underline
 
-         
-            return visible;
-        }
-    );
-    
+        return visible;
+    });
 }
 
 function processConceptHyperlinks(text) {
-    return text.replace(
-      /\[hyperlink,([^\]]+)\]([\s\S]*?)\[\/hyperlink\]/g,
-        (_, globalName, displayText) => {
-            const concept = jsonConceptTooltipsLocalized?.[globalName];
-            const iconHtml = concept?.icon
-                ? `<${concept.icon}></${concept.icon}> ` : "";
+    return text.replace(/\[hyperlink,([^\]]+)\]([\s\S]*?)\[\/hyperlink\]/g, (_, globalName, displayText) => {
+        const concept = jsonConceptTooltipsLocalized?.[globalName];
+        const iconHtml = concept?.icon ? `<${concept.icon}></${concept.icon}> ` : "";
 
-            const visible = `<span style="color:white;text-decoration:underline">${""}${displayText.trim()}</span>`;
- const noTooltip = `<span style="color:white;">${""}${displayText.trim()}</span>`;
+        const visible = `<span style="color:white;text-decoration:underline">${""}${displayText.trim()}</span>`;
+        const noTooltip = `<span style="color:white;">${""}${displayText.trim()}</span>`;
 
-            if (!concept) return noTooltip;   // no tooltip available, just underline
+        if (!concept) return noTooltip; // no tooltip available, just underline
 
-            // Hidden handler lets HandleExtraTooltips wire up the tooltip
-            const handler = `<span class="conceptTooltipHandler" `
-                          + `data-global="${globalName}" style="display:none"></span>`;
-            return visible + handler;
-        }
-    );
+        // Hidden handler lets HandleExtraTooltips wire up the tooltip
+        const handler =
+            `<span class="conceptTooltipHandler" ` + `data-global="${globalName}" style="display:none"></span>`;
+        return visible + handler;
+    });
 }
 
 // main function
 function AddTagIconsForStatusEffects(text) {
     if (!text) return text;
-     text = processConceptHyperlinks(text); 
+    text = processConceptHyperlinks(text);
     text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
 
@@ -123,44 +111,40 @@ function AddTagIconsForStatusEffects(text) {
         text = text.replace(regex, replacement);
     }
 
-   /* for (const link of extracted.links) {
+    /* for (const link of extracted.links) {
         let restored = `<hyperlink>${link.inner}</hyperlink>`;
         if (abilityTagCache.has(link.inner)) {
             restored = abilityTagCache.get(link.inner).replacement; // updated to get just the replacement
         }
         text = text.replace(link.token, restored);
     }*/
-    
-   for (const link of extracted.links) {
-    let restored;
 
-    if (abilityTagCache.has(link.inner)) {
-        // Existing: unit ability → status effect tooltip
-        restored = abilityTagCache.get(link.inner).replacement;
+    for (const link of extracted.links) {
+        let restored;
 
-    } else {
-        // Strip any icon HTML from the inner text to get a clean lookup key
-        const plainInner = link.inner.replace(/<[^>]+>/g, "").trim();
-        const concept = jsonConceptTooltipsLocalized[plainInner];
-
-        
-        if (concept) {
-            // Concept tooltip: underlined display name + invisible handler span
-            const iconHtml = concept.icon
-                ? `<${concept.icon}></${concept.icon}> ` : "";
-            restored = `<span style="color:white;">${""}${plainInner}</span>`
-                     + `<span class="conceptTooltipHandler" data-concept="${plainInner}" style="display:none"></span>`;
+        if (abilityTagCache.has(link.inner)) {
+            // Existing: unit ability → status effect tooltip
+            restored = abilityTagCache.get(link.inner).replacement;
         } else {
-            // Fallback: plain underlined text, no tooltip
-           // restored = `<span style="color:grey;">${link.inner}</span>`;
-             restored = `<hyperlink>${link.inner}</hyperlink>`;
+            // Strip any icon HTML from the inner text to get a clean lookup key
+            const plainInner = link.inner.replace(/<[^>]+>/g, "").trim();
+            const concept = jsonConceptTooltipsLocalized[plainInner];
+
+            if (concept) {
+                // Concept tooltip: underlined display name + invisible handler span
+                const iconHtml = concept.icon ? `<${concept.icon}></${concept.icon}> ` : "";
+                restored =
+                    `<span style="color:white;">${""}${plainInner}</span>` +
+                    `<span class="conceptTooltipHandler" data-concept="${plainInner}" style="display:none"></span>`;
+            } else {
+                // Fallback: plain underlined text, no tooltip
+                // restored = `<span style="color:grey;">${link.inner}</span>`;
+                restored = `<hyperlink>${link.inner}</hyperlink>`;
+            }
         }
+
+        text = text.replace(link.token, restored);
     }
-
-    text = text.replace(link.token, restored);
-
-}
-
 
     if (getUserSettings().isolateNumber) {
         text = highlightNumbersInDiv(text);
@@ -172,7 +156,6 @@ function AddTagIconsForStatusEffects(text) {
 
     return text;
 }
-
 
 function lookupStatusEffect(name) {
     const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
@@ -200,7 +183,7 @@ function createStatusEffectTooltip(effectData, handlerType = "status") {
     let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
 
     span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
-     addTooltipListeners(span, name.description, handlerType);
+    addTooltipListeners(span, name.description, handlerType);
     return span.outerHTML;
 }
 
@@ -229,36 +212,36 @@ function HandleExtraTooltips(specificDiv) {
         spantest.innerHTML = lookupStatusEffect(el.innerText);
         addTooltipListeners(el, spantest, "something");
     });
-    
+
     root.querySelectorAll(".conceptTooltipHandler").forEach((el) => {
-    const globalName = el.getAttribute("data-global");
-    const concept    = jsonConceptTooltipsLocalized?.[globalName];
-    if (!concept) return;
+        const globalName = el.getAttribute("data-global");
+        const concept = jsonConceptTooltipsLocalized?.[globalName];
+        if (!concept) return;
 
-    const iconHtml  = concept.icon ? `<${concept.icon}></${concept.icon}> ` : "";
-    const tooltipEl = document.createElement("span");
-    tooltipEl.innerHTML =
-        `<p style="color:#d7c297"><span style="font-size:20px">${iconHtml}${concept.name.toUpperCase()}</span></p>`
-        + concept.description;
+        const iconHtml = concept.icon ? `<${concept.icon}></${concept.icon}> ` : "";
+        const tooltipEl = document.createElement("span");
+        tooltipEl.innerHTML =
+            `<p style="color:#d7c297"><span style="font-size:20px">${iconHtml}${concept.name.toUpperCase()}</span></p>` +
+            concept.description;
 
-    // Attach to the visible underlined sibling, not the hidden handler itself
-    const visibleSibling = el.previousElementSibling;
-    if (visibleSibling) addTooltipListeners(visibleSibling, tooltipEl, "concept");
-});
+        // Attach to the visible underlined sibling, not the hidden handler itself
+        const visibleSibling = el.previousElementSibling;
+        if (visibleSibling) addTooltipListeners(visibleSibling, tooltipEl, "concept");
+    });
 
     //// ← new: concept tooltips
     //root.querySelectorAll(".conceptTooltipHandler").forEach((el) => {
     //    const key = el.getAttribute("data-concept");
     //    const concept = jsonConceptTooltips[key];
     //    if (!concept) return;
-//
+    //
     //    const iconHtml = concept.icon
     //        ? `<${concept.icon}></${concept.icon}> ` : "";
     //    const tooltipEl = document.createElement("span");
     //    tooltipEl.innerHTML =
     //        `<p style="color:#d7c297"><span style="font-size:20px">${iconHtml}${key.toUpperCase()}</span></p>`
     //        + concept.description;
-//
+    //
     //    // Attach listener to the visible sibling span (the one with underline), not the hidden handler
     //    const visibleSibling = el.previousElementSibling;
     //    if (visibleSibling) {
@@ -743,7 +726,7 @@ function SetCollapsibleButtonsAndDivs(overwrite, list, cardType) {
 
             showHeroTraitFromList(list, overwrite);
             break;
-              case "searchRelics":
+        case "searchRelics":
             dataHolder.setAttribute("style", "margin-top:-" + holderHeight + "px;");
 
             showRelicsFromList(list, overwrite);
@@ -4853,8 +4836,6 @@ function showRelic(a, divOrigin) {
 
     let descriptionDiv = divOrigin.querySelector("#moddescription");
     descriptionDiv.setAttribute("style", "max-width:560px;");
-    
-    
 
     if ("extraLookup" in relic) {
         const valueLookup = findBy(jsonAllFromPOLocalized, "id", relic.extraLookup);
@@ -4900,23 +4881,20 @@ function showRelic(a, divOrigin) {
     imagelink.setAttribute("src", "/aow4db/Icons/RelicIcons/" + relic.icon + ".png");
 
     if ("spell" in relic) {
-        
-        
         for (const spell of relic.spell) {
-            
-             if (checkSecretSpell(spell.id)) {
-            const blurPart = divOrigin.querySelector(".mod_description");
-            blurPart.classList.add("blurred");
-            let clickerHolder = document.createElement("Div");
-            divOrigin.prepend(clickerHolder);
-            clickerHolder.className = "unblurHolder";
-            let clicker = document.createElement("Div");
-            clickerHolder.append(clicker);
-            clicker.className = "unblurclicker";
-            clicker.innerHTML = "Click to reveal";
-            clicker.innerHTML += "<br><br>(Change Top-left Setting: Show Secret Spells to disable)";
-            clicker.addEventListener("click", (event) => Unblur(blurPart, clickerHolder, event));
-        }
+            if (checkSecretSpell(spell.id)) {
+                const blurPart = divOrigin.querySelector(".mod_description");
+                blurPart.classList.add("blurred");
+                let clickerHolder = document.createElement("Div");
+                divOrigin.prepend(clickerHolder);
+                clickerHolder.className = "unblurHolder";
+                let clicker = document.createElement("Div");
+                clickerHolder.append(clicker);
+                clicker.className = "unblurclicker";
+                clicker.innerHTML = "Click to reveal";
+                clicker.innerHTML += "<br><br>(Change Top-left Setting: Show Secret Spells to disable)";
+                clicker.addEventListener("click", (event) => Unblur(blurPart, clickerHolder, event));
+            }
             const fragment = spell_card_template.content.cloneNode(true);
             const element = fragment.firstElementChild;
             if (element) {
@@ -5011,7 +4989,7 @@ function showWorldStructure(a, divOrigin) {
             modName.innerHTML = valueLookup.name.split("^")[0].toUpperCase();
         }
         if ("description_short" in valueLookup) {
-            description += valueLookup.description_short;
+            description += "<br>" + valueLookup.description_short;
         }
         if ("lore" in valueLookup) {
             description += "<helpColor>" + valueLookup.lore + "</helpColor>" + "<br><br>";
@@ -6396,7 +6374,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
                 modName.innerHTML = RemoveHyperLinks(valueLookup.name).toUpperCase();
             }
             if ("description_short" in valueLookup) {
-                descriptionDiv.innerHTML += valueLookup.description_short;
+                descriptionDiv.innerHTML += "<br>" + valueLookup.description_short;
             }
             if ("lore" in valueLookup) {
                 descriptionDiv.innerHTML += valueLookup.lore;
@@ -6963,8 +6941,6 @@ function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
             const tomeOriginName = modCard.querySelector("#originTomeName");
             const originTomeTier = modCard.querySelector("#originTomeTier");
             tomeOriginAff.innerHTML = "Artifact";
-            
-            
 
             tomeOriginName.innerHTML += artifactSpells.name;
 
@@ -6975,89 +6951,83 @@ function backtraceTomeOriginAndTier(spell, showorigin, modCard) {
 
             return " ," + artifactSpells.id;
         } else {
-             return " ," + artifactSpells.id;
+            return " ," + artifactSpells.id;
         }
     }
     let worldStructureSpells = findParentByNested(jsonWorldStructures, "spell_unlocks", "id", spell.id);
-    
+
     if (worldStructureSpells != undefined) {
         if (showorigin) {
             const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
             const tomeOriginName = modCard.querySelector("#originTomeName");
             const originTomeTier = modCard.querySelector("#originTomeTier");
-            if(worldStructureSpells.type == "Landmark"){
-                  tomeOriginAff.innerHTML = "<landmark></landmark>";
-            } else{
-                   tomeOriginAff.innerHTML = "<ancientwonder></ancientwonder>";
+            if (worldStructureSpells.type == "Landmark") {
+                tomeOriginAff.innerHTML = "<landmark></landmark>";
+            } else {
+                tomeOriginAff.innerHTML = "<ancientwonder></ancientwonder>";
             }
-          
 
             tomeOriginName.innerHTML += worldStructureSpells.name;
 
             const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/StructurePics/" + worldStructureSpells.id + ".png");
             const wrap = tomeOriginName.innerHTML;
-             if(worldStructureSpells.type == "Landmark"){
-                   tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
-            } else{
-                     tomeOriginName.innerHTML = '<a href="/aow4db/HTML/AncientWonders.html">' + wrap + "</a>";
+            if (worldStructureSpells.type == "Landmark") {
+                tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
+            } else {
+                tomeOriginName.innerHTML = '<a href="/aow4db/HTML/AncientWonders.html">' + wrap + "</a>";
             }
-          
 
             return " ," + worldStructureSpells.id;
         } else {
-             return " ," + worldStructureSpells.id;
+            return " ," + worldStructureSpells.id;
         }
     }
-    
-      let worldStructureSpellsReward = findParentByNested(jsonWorldStructures, "spell_rewards", "id", spell.id);
-    
+
+    let worldStructureSpellsReward = findParentByNested(jsonWorldStructures, "spell_rewards", "id", spell.id);
+
     if (worldStructureSpellsReward != undefined) {
         if (showorigin) {
             const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
             const tomeOriginName = modCard.querySelector("#originTomeName");
             const originTomeTier = modCard.querySelector("#originTomeTier");
-            if(worldStructureSpellsReward.type == "Landmark"){
-                  tomeOriginAff.innerHTML = "<landmark></landmark>";
-            } else{
-                   tomeOriginAff.innerHTML = "<ancientwonder></ancientwonder>";
+            if (worldStructureSpellsReward.type == "Landmark") {
+                tomeOriginAff.innerHTML = "<landmark></landmark>";
+            } else {
+                tomeOriginAff.innerHTML = "<ancientwonder></ancientwonder>";
             }
-          
 
             tomeOriginName.innerHTML += worldStructureSpellsReward.name;
 
             const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/StructurePics/" + worldStructureSpellsReward.id + ".png");
             const wrap = tomeOriginName.innerHTML;
-             if(worldStructureSpellsReward.type == "Landmark"){
-                   tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
-            } else{
-                     tomeOriginName.innerHTML = '<a href="/aow4db/HTML/AncientWonders.html">' + wrap + "</a>";
+            if (worldStructureSpellsReward.type == "Landmark") {
+                tomeOriginName.innerHTML = '<a href="/aow4db/HTML/Landmarks.html">' + wrap + "</a>";
+            } else {
+                tomeOriginName.innerHTML = '<a href="/aow4db/HTML/AncientWonders.html">' + wrap + "</a>";
             }
-          
 
             return worldStructureSpellsReward.id;
         } else {
             return worldStructureSpellsReward.id;
         }
     }
-    let ascendedSpells = findBy(jsonExtraAscendedInfo, "extraspell",  spell.id);
+    let ascendedSpells = findBy(jsonExtraAscendedInfo, "extraspell", spell.id);
     if (ascendedSpells != undefined) {
         if (showorigin) {
             const tomeOriginAff = modCard.querySelector("#originTomeAffinities");
             const tomeOriginName = modCard.querySelector("#originTomeName");
             const originTomeTier = modCard.querySelector("#originTomeTier");
             //  tomeOriginAff.innerHTML = "";
-            
-            
-  let ascendedSpellsName = findBy(jsonHeroSkills, "id",  ascendedSpells.id);
+
+            let ascendedSpellsName = findBy(jsonHeroSkills, "id", ascendedSpells.id);
             tomeOriginName.innerHTML += ascendedSpellsName.name;
 
             const tomeOriginIcon = modCard.querySelector("#originTomeIcon");
             tomeOriginIcon.setAttribute("src", "/aow4db/Icons/UnitIcons/" + ascendedSpellsName.icon + ".png");
-             const wrap = tomeOriginName.innerHTML;
-            tomeOriginName.innerHTML =
-                '<a href="/aow4db/HTML/HeroSkills.html">' + wrap + "</a>";
+            const wrap = tomeOriginName.innerHTML;
+            tomeOriginName.innerHTML = '<a href="/aow4db/HTML/HeroSkills.html">' + wrap + "</a>";
 
             return ascendedSpells.id;
         } else {
