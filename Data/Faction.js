@@ -91,7 +91,55 @@ function addOrSubtract(extraAffinity, add) {
     return extraAffinity;
 }
 
-const extraTomesForTheorycrafting = [];
+const extraTomesForTheorycrafting = [{
+  "affinities": "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirematter></empirematter> Empire Materium Affinity",
+  "lore_description": "",
+  "gameplay_description": "For theorycrafting.",
+  "resid": 043243,
+  "id": "tome_of_hydromancy",
+  "DLC": "THESILVERSEAS ",
+  "lore_author": "",
+  "name": "Tome of Hydromancy",
+  "tier": 1,
+  "icon": "tome_of_hydromancy",
+  "skills": [
+  ],
+  "initial_upgrades": [
+   
+  ]
+ },{
+  "affinities": "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
+  "lore_description": "",
+  "gameplay_description": "For theorycrafting.",
+  "resid": 043244,
+  "id": "tome_of_piracy",
+  "DLC": "THESILVERSEAS ",
+  "lore_author": "",
+  "name": "Tome of Piracy",
+  "tier": 2,
+  "icon": "tome_of_piracy",
+  "skills": [
+  ],
+  "initial_upgrades": [
+   
+  ]
+ },{
+  "affinities": "1 <empirechaos></empirechaos> Empire Chaos Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
+  "lore_description": "",
+  "gameplay_description": "For theorycrafting.",
+  "resid": 043244,
+  "id": "tome_of_the_damned",
+  "DLC": "THESILVERSEAS ",
+  "lore_author": "",
+  "name": "Tome of the Damned",
+  "tier": 2,
+  "icon": "tome_of_the_damned",
+  "skills": [
+  ],
+  "initial_upgrades": [
+   
+  ]
+ }];
 
 function SetRandomStart(overwriteParameter) {
     

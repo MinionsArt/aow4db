@@ -188,6 +188,10 @@ const dlcMap = {
     WITCHOFTHEWAVES: {
         src: "/aow4db/Icons/Text/singer_of_storms.png",
         text: "Part of the Singer of Storms DLC"
+    },
+    THESILVERSEAS:{
+        src: "/aow4db/Icons/Text/the_silver_seas.png",
+        text: "Silver Seas for theorycrafting"
     }
 };
 
