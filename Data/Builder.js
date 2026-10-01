@@ -2,14 +2,18 @@ searchParams = new URLSearchParams(window.location.search);
 let sorting = searchParams.get("sort");
 let currentView = "";
 
+// general const
 const errorImage = "/aow4db/Icons/Text/exclamationpoint.png";
 
+// settings
 const checkboxTooltip = document.getElementById("tooltipCheckbox");
 const checkboxNumbers = document.getElementById("numbersCheckbox");
 const showBetaTooltip = document.getElementById("showBetaCheckbox");
 
 const showSecretSpells = document.getElementById("showSecretSpellsCheckbox");
 const languageSelect = document.getElementById("languageSelect");
+
+
 
 function highlightNumbersInDiv(text) {
     if (!text) return;
@@ -62,9 +66,51 @@ function extractHyperlinks(text) {
     return { text, links };
 }
 
+function RemoveHyperLinks(text){
+   return text.replace(
+      /\[hyperlink,([^\]]+)\]([\s\S]*?)\[\/hyperlink\]/g,
+        (_, globalName, displayText) => {
+            const concept = jsonConceptTooltipsLocalized?.[globalName];
+            const iconHtml = concept?.icon
+                ? `<${concept.icon}></${concept.icon}> ` : "";
+
+            const visible = `<span style="color:white;text-decoration:underline">${""}${displayText.trim()}</span>`;
+ const noTooltip = `<span>${""}${displayText.trim()}</span>`;
+
+            if (!concept) return noTooltip;   // no tooltip available, just underline
+
+         
+            return visible;
+        }
+    );
+    
+}
+
+function processConceptHyperlinks(text) {
+    return text.replace(
+      /\[hyperlink,([^\]]+)\]([\s\S]*?)\[\/hyperlink\]/g,
+        (_, globalName, displayText) => {
+            const concept = jsonConceptTooltipsLocalized?.[globalName];
+            const iconHtml = concept?.icon
+                ? `<${concept.icon}></${concept.icon}> ` : "";
+
+            const visible = `<span style="color:white;text-decoration:underline">${""}${displayText.trim()}</span>`;
+ const noTooltip = `<span style="color:white;">${""}${displayText.trim()}</span>`;
+
+            if (!concept) return noTooltip;   // no tooltip available, just underline
+
+            // Hidden handler lets HandleExtraTooltips wire up the tooltip
+            const handler = `<span class="conceptTooltipHandler" `
+                          + `data-global="${globalName}" style="display:none"></span>`;
+            return visible + handler;
+        }
+    );
+}
+
 // main function
 function AddTagIconsForStatusEffects(text) {
     if (!text) return text;
+     text = processConceptHyperlinks(text); 
     text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
 
@@ -77,13 +123,44 @@ function AddTagIconsForStatusEffects(text) {
         text = text.replace(regex, replacement);
     }
 
-    for (const link of extracted.links) {
+   /* for (const link of extracted.links) {
         let restored = `<hyperlink>${link.inner}</hyperlink>`;
         if (abilityTagCache.has(link.inner)) {
             restored = abilityTagCache.get(link.inner).replacement; // updated to get just the replacement
         }
         text = text.replace(link.token, restored);
+    }*/
+    
+   for (const link of extracted.links) {
+    let restored;
+
+    if (abilityTagCache.has(link.inner)) {
+        // Existing: unit ability → status effect tooltip
+        restored = abilityTagCache.get(link.inner).replacement;
+
+    } else {
+        // Strip any icon HTML from the inner text to get a clean lookup key
+        const plainInner = link.inner.replace(/<[^>]+>/g, "").trim();
+        const concept = jsonConceptTooltipsLocalized[plainInner];
+
+        
+        if (concept) {
+            // Concept tooltip: underlined display name + invisible handler span
+            const iconHtml = concept.icon
+                ? `<${concept.icon}></${concept.icon}> ` : "";
+            restored = `<span style="color:white;">${""}${plainInner}</span>`
+                     + `<span class="conceptTooltipHandler" data-concept="${plainInner}" style="display:none"></span>`;
+        } else {
+            // Fallback: plain underlined text, no tooltip
+           // restored = `<span style="color:grey;">${link.inner}</span>`;
+             restored = `<hyperlink>${link.inner}</hyperlink>`;
+        }
     }
+
+    text = text.replace(link.token, restored);
+
+}
+
 
     if (getUserSettings().isolateNumber) {
         text = highlightNumbersInDiv(text);
@@ -96,42 +173,6 @@ function AddTagIconsForStatusEffects(text) {
     return text;
 }
 
-/*function AddTagIconsForStatusEffects(name) {
-    // if(name == "")
-    let underline = '<span style="color:white; text-decoration:underline">';
-    let endtag = "</span>";
-    
-   
-    
-    
-    for (let i = 0; i < jsonUnitAbilitiesLocalized.length; i++) {
-        const abilityName = jsonUnitAbilitiesLocalized[i].name.split("^")[0];
-
-        if (
-            name.includes(abilityName) &&
-            jsonUnitAbilitiesLocalized[i].slug !== "0000041b000013b4" // skip that specific one
-        ) {
-            let tooltipspan = document.createElement("span");
-            tooltipspan.className = "statusEffectHandler";
-            let tag = jsonUnitAbilities[i].name.replaceAll(" ", "_").toLowerCase();
-            tooltipspan.innerHTML = abilityName;
-
-            // Use a regex with word boundaries to avoid partial matches (optional)
-            if (abilityName.indexOf("%") == -1 && abilityName.indexOf("+") == -1) {
-                let pattern = new RegExp(`\\b${abilityName}\\b`);
-                name = name.replace(pattern, `${underline}<${tag}></${tag}>${tooltipspan.outerHTML}${endtag}`);
-            }
-        }
-    }
-
-    // also check for numbers isolate settings
-
-    if (getUserSettings().isolateNumber) {
-        name = highlightNumbersInDiv(name);
-    }
-
-    return name;
-}*/
 
 function lookupStatusEffect(name) {
     const effect = findBy(jsonUnitAbilitiesLocalized, "name", name);
@@ -159,11 +200,11 @@ function createStatusEffectTooltip(effectData, handlerType = "status") {
     let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
 
     span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
-    // addTooltipListeners(span, name.description, handlerType);
+     addTooltipListeners(span, name.description, handlerType);
     return span.outerHTML;
 }
 
-function HandleExtraTooltips(specificDiv) {
+/*function HandleExtraTooltips(specificDiv) {
     // Add event listeners after elements exist in the DOM
     if (specificDiv != undefined) {
         specificDiv.querySelectorAll(".statusEffectHandler").forEach((el) => {
@@ -178,6 +219,52 @@ function HandleExtraTooltips(specificDiv) {
             addTooltipListeners(el, spantest, "something");
         });
     }
+}*/
+
+function HandleExtraTooltips(specificDiv) {
+    const root = specificDiv ?? document;
+
+    root.querySelectorAll(".statusEffectHandler").forEach((el) => {
+        let spantest = document.createElement("span");
+        spantest.innerHTML = lookupStatusEffect(el.innerText);
+        addTooltipListeners(el, spantest, "something");
+    });
+    
+    root.querySelectorAll(".conceptTooltipHandler").forEach((el) => {
+    const globalName = el.getAttribute("data-global");
+    const concept    = jsonConceptTooltipsLocalized?.[globalName];
+    if (!concept) return;
+
+    const iconHtml  = concept.icon ? `<${concept.icon}></${concept.icon}> ` : "";
+    const tooltipEl = document.createElement("span");
+    tooltipEl.innerHTML =
+        `<p style="color:#d7c297"><span style="font-size:20px">${iconHtml}${concept.name.toUpperCase()}</span></p>`
+        + concept.description;
+
+    // Attach to the visible underlined sibling, not the hidden handler itself
+    const visibleSibling = el.previousElementSibling;
+    if (visibleSibling) addTooltipListeners(visibleSibling, tooltipEl, "concept");
+});
+
+    //// ← new: concept tooltips
+    //root.querySelectorAll(".conceptTooltipHandler").forEach((el) => {
+    //    const key = el.getAttribute("data-concept");
+    //    const concept = jsonConceptTooltips[key];
+    //    if (!concept) return;
+//
+    //    const iconHtml = concept.icon
+    //        ? `<${concept.icon}></${concept.icon}> ` : "";
+    //    const tooltipEl = document.createElement("span");
+    //    tooltipEl.innerHTML =
+    //        `<p style="color:#d7c297"><span style="font-size:20px">${iconHtml}${key.toUpperCase()}</span></p>`
+    //        + concept.description;
+//
+    //    // Attach listener to the visible sibling span (the one with underline), not the hidden handler
+    //    const visibleSibling = el.previousElementSibling;
+    //    if (visibleSibling) {
+    //        addTooltipListeners(visibleSibling, tooltipEl, "concept");
+    //    }
+    //});
 }
 
 function GetUnitTierAndName(id, subcultureCheck) {
@@ -261,6 +348,10 @@ function GetStructureTierAndName(spell) {
                 ${name}
             </p>`;
     }
+}
+
+function makeTooltipTitle(name) {
+    return `<p style="color:#d7c297;"><span style="font-size:20px;">${name.toUpperCase()}</span></p>`;
 }
 
 function CheckIfFormUnit(unit) {
@@ -2742,9 +2833,9 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     const hpText = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@HITPOINTS");
     hpspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase ">' +
-        hpText.hyperlink +
+        RemoveHyperLinks(hpText.hyperlink) +
         '</span><br><span style="font-size: 14px;">' +
-        hpText.description +
+        AddTagIconsForStatusEffects(hpText.description) +
         "</span>";
     let hpTooltip = unitCard.querySelector("div#hp_tt");
 
@@ -2760,7 +2851,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     let critspan = document.createElement("span");
     critspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase;">Critical Hit Chance</span><br><span style="font-size: 14px;">' +
-        critText.description +
+        AddTagIconsForStatusEffects(critText.description) +
         "</span>";
     let critTooltip = unitCard.querySelector("div#crit_tt");
 
@@ -2836,7 +2927,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         '<span style="color:burlywood;text-transform: uppercase;">Move Points</span><br>' +
         movementDiv.innerHTML +
         '</p><span style="font-size: 14px;">' +
-        defenseText.move_points_description +
+        AddTagIconsForStatusEffects(defenseText.move_points_description) +
         "</span>";
     let mpTooltip = unitCard.querySelector("div#mp_tt");
 
@@ -3142,7 +3233,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     const resistanceSpan = document.createElement("span");
     resistanceSpan.innerHTML =
         '<span style="color:burlywood; text-transform: uppercase;">Resistance</span><br><span style="font-size: 14px;">' +
-        defenseText.resistance_description +
+        AddTagIconsForStatusEffects(defenseText.resistance_description) +
         "<br><br>" +
         damageRedText.damage_reduction +
         ":<br>" +
@@ -3161,7 +3252,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
     armorspan.innerHTML =
         '<span style="color:burlywood;text-transform: uppercase ">Defense</span><br><span style="font-size: 14px;">' +
-        defenseText.armor_description +
+        AddTagIconsForStatusEffects(defenseText.armor_description) +
         damageRedText.damage_reduction +
         " : " +
         "<br>" +
@@ -5538,9 +5629,9 @@ function CreateAncientWonderEventSetup(eventHandle, structure) {
                 for (const other of spawnSetMultiple[j].others) {
                     spawnHolder.innerHTML += "<bullet> <ench></ench>" + other + "</bullet>";
                 }
-                for (const type of spawnSetMultiple[j].type) {
+                /*for (const type of spawnSetMultiple[j].type) {
                     spawnHolder.innerHTML += "<bullet> <other></other>" + type + "</bullet>";
-                }
+                }*/
             }
         }
         // combat
@@ -6300,9 +6391,9 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
             const valueLookup = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup);
             // console.log(currentTrait.extraLookup);
             if ("hyperlink" in valueLookup) {
-                modName.innerHTML = valueLookup.hyperlink.toUpperCase();
+                modName.innerHTML = RemoveHyperLinks(valueLookup.hyperlink).toUpperCase();
             } else if ("name" in valueLookup) {
-                modName.innerHTML = valueLookup.name.toUpperCase();
+                modName.innerHTML = RemoveHyperLinks(valueLookup.name).toUpperCase();
             }
             if ("description_short" in valueLookup) {
                 descriptionDiv.innerHTML += valueLookup.description_short;
@@ -6323,9 +6414,9 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
                 const valueLookup2 = findBy(jsonAllFromPOLocalized, "id", currentTrait.extraLookup2);
                 // console.log(valueLookup2);
                 if ("hyperlink" in valueLookup2) {
-                    modName.innerHTML = valueLookup2.hyperlink.toUpperCase();
+                    modName.innerHTML = RemoveHyperLinks(valueLookup2.hyperlink).toUpperCase();
                 } else if ("name" in valueLookup2) {
-                    modName.innerHTML = valueLookup2.name.toUpperCase();
+                    modName.innerHTML = RemoveHyperLinks(valueLookup2.name).toUpperCase();
                 }
                 if ("lore" in valueLookup2) {
                     descriptionDiv.innerHTML += valueLookup2.lore;
@@ -6459,6 +6550,7 @@ function showTraitSetup(currentTrait, divOrigin, loc) {
         }
         imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     }
+    descriptionDiv.innerHTML = AddTagIconsForStatusEffects(descriptionDiv.innerHTML);
 
     // imagelink.setAttribute("src", "/aow4db/Icons/TraitIcons/" + iconLink + ".png");
     imagelink.setAttribute("style", "background-image:none");

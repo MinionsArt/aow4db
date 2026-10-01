@@ -227,7 +227,8 @@ async function GetAllData(selectedLang) {
          "ItemForgeUpgrades.json",
         // non-ingame-dump-json-files
         "UI.json",
-        "all.json"
+        "all.json",
+        "concept_tooltips.json"
     ];
 
     // Create file paths
@@ -282,7 +283,8 @@ async function GetAllData(selectedLang) {
              "jsonItemForgeTypes",
              "jsonItemForgeUpgrades",
             "jsonUI",
-            "jsonAllFromPO"
+            "jsonAllFromPO",
+            "jsonConceptTooltips"
         ];
 
         // Assign data to global vars
