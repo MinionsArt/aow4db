@@ -275,7 +275,7 @@
  {
   "description": "Esta unidad vuela, por lo que:<bulletlist><bullet>Tiene +2 de alcance de visión.</bullet><bullet>Puede atravesar todos los tipos de terreno por un coste de movimiento de 6.</bullet><bullet>Se necesita navegación para atravesar las casillas de agua.</bullet><bullet>Puede rebasar a casi todas las unidades y los obstáculos durante el combate.</bullet></bulletlist>",
   "name": "Voladora",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "Esta unidad vuela, por lo que:<bulletlist><bullet>Tiene +2 de alcance de visión.</bullet><bullet>Puede atravesar todos los tipos de terreno por un coste de movimiento de 6.</bullet><bullet>Se necesita navegación para atravesar las casillas de agua.</bullet><bullet>Puede rebasar a casi todas las unidades y los obstáculos durante el combate.</bullet></bulletlist>",
-  "name": "Voladora",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "Cuando los <hyperlink><hp></hp> Puntos de salud</hyperlink> de esta unidad llegan a cero, se desplaza 3 casillas y recupera +20 <hyperlink><temphp></temphp> Puntos de salud temporal</hyperlink>.<br></br>Funciona una vez por batalla.",
   "name": "Neblina",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "Dedicación a las sombras",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "description": "Un solo ataque mágico a la unidad objetivo.",
+  "name": "Explosión decadente",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Básico^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magia^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Obtienes movimiento de Voladora.<br></br><br></br>Se bloquea con las <caststrategic></caststrategic> <hyperlink>Transformaciones de raza</hyperlink> que eliminan las monturas.",
+  "name": "Bastón volador",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "Lanza un rayo mágico contra un enemigo objetivo.",
+  "name": "Rayos ígneos",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magia^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Básico^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Probabilidad inicial del 60 % de infligir el estado Electrificación durante 3 <turn></turn> Turnos.",
+    "name": "Electrificación^f",
+    "count": 1
+   }
+  ],
+  "description": "Lanza un rayo mágico contra un enemigo objetivo.",
+  "name": "Rayos eléctricos",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magia^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Básico^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Cuando una unidad enemiga obtiene Electrificación, recibe 5 de <damageLightning></damageLightning> <hyperlink>Daño eléctrico</hyperlink> adicional.<br></br><br></br>Se elimina si la unidad abandona la batalla.",
+  "name": "Coro de la tempestad",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "description": "Un solo ataque mágico a la unidad objetivo.",
+  "name": "Explosión mágica",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Básico^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magia^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

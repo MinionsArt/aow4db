@@ -269,7 +269,7 @@
  {
   "description": "该单位处于飞行状态：<bulletlist><bullet>+2视野范围</bullet><bullet>能够以6移动消耗穿越任意地形</bullet><bullet>需要航海术才能穿越水域框格</bullet><bullet>在战斗中能够安全地穿越大部分其他单位和障碍</bullet></bulletlist>",
   "name": "飞行",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "该单位处于飞行状态：<bulletlist><bullet>+2视野范围</bullet><bullet>能够以6移动消耗穿越任意地形</bullet><bullet>需要航海术才能穿越水域框格</bullet><bullet>在战斗中能够安全地穿越大部分其他单位和障碍</bullet></bulletlist>",
-  "name": "飞行",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "当此单位的<hyperlink><hp></hp>生命值</hyperlink>降为零时，将位移3框格并恢复+20<hyperlink><temphp></temphp>临时生命值</hyperlink><br></br>每场战斗生效一次",
   "name": "迷雾遁形",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "暗影奉献",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "枯萎爆发",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "获得飞行移动能力<br></br><br></br>被移除坐骑的<caststrategic></caststrategic><hyperlink>种族转换</hyperlink>所阻挡",
+  "name": "飞天法杖",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "向指定敌人施放魔法箭",
+  "name": "火焰闪电",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "有60%的基础概率施加电离，持续3<turn></turn>回合",
+    "name": "电离",
+    "count": 1
+   }
+  ],
+  "description": "向指定敌人施放魔法箭",
+  "name": "光芒闪电",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "当敌方单位获得电离时，他们额外承受5<damageLightning></damageLightning><hyperlink>闪电伤害</hyperlink><br></br><br></br>若该单位离开战斗，此效果移除",
+  "name": "风暴合唱",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "对指定单位进行一次魔法攻击",
+  "name": "魔法爆发",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

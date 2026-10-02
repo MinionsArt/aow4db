@@ -239,7 +239,7 @@
  {
   "description": "비행 이동 유닛:<bulletlist><bullet>시야 범위 +2</bullet><bullet>이동력 6점으로 모든 지형에서 이동 가능</bullet><bullet>수상 헥스 통과 시 항해 스킬 필요</bullet><bullet>전투 중 대부분의 다른 유닛과 장애물을 안전하게 통과</bullet></bulletlist>",
   "name": "비행",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "비행 이동 유닛:<bulletlist><bullet>시야 범위 +2</bullet><bullet>이동력 6점으로 모든 지형에서 이동 가능</bullet><bullet>수상 헥스 통과 시 항해 스킬 필요</bullet><bullet>전투 중 대부분의 다른 유닛과 장애물을 안전하게 통과</bullet></bulletlist>",
-  "name": "비행",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "해당 유닛의 <hyperlink><hp></hp> 체력이</hyperlink> 0이 되면 3 헥스만큼 옮겨지고 <hyperlink><temphp></temphp> 임시 체력을</hyperlink> 20 회복합니다.<br></br>전투마다 한 번만 적용됩니다.",
   "name": "안개 도피",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "그림자 헌신",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
+  "name": "역병 폭발",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>기본</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>마법</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>근접</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "비행 이동을 획득합니다.<br></br><br></br>탈것을 제거하는 <caststrategic></caststrategic> <hyperlink>종족 변신이</hyperlink> 있으면 불가능합니다.",
+  "name": "날아다니는 지팡이",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "대상 적에게 마법 화살을 발사합니다.",
+  "name": "화염 화살",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>마법</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>기본</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>근접</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60%의 기본 확률로 3 <turn></turn> 턴 동안 감전 상태를 유발합니다.",
+    "name": "감전",
+    "count": 1
+   }
+  ],
+  "description": "대상 적에게 마법 화살을 발사합니다.",
+  "name": "번개 화살",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>마법</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>기본</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>근접</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "적 유닛이 감전 상태를 획득할 경우, 해당 유닛이 추가 5 <damageLightning></damageLightning> <hyperlink>번개 피해를</hyperlink> 받습니다.<br></br><br></br>이 상태는 해당 유닛이 전투를 떠나면 제거됩니다.",
+  "name": "폭풍의 합창",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 유닛에 가하는 단발성 마법 공격입니다.",
+  "name": "마법 폭발",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>기본</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>마법</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>근접</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

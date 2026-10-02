@@ -239,7 +239,7 @@
  {
   "description": "Ta jednostka to jednostka latająca:<bulletlist><bullet>Ma +2 pkt. zasięgu widzenia.</bullet><bullet>Może przemierzyć dowolny rodzaj terenu przy koszcie ruchu wynoszącym 6 pkt.</bullet><bullet>Wymaga żeglugi, by przemierzyć wodne pola.</bullet><bullet>Może bezpiecznie minąć większość innych jednostek i przeszkód w walce.</bullet></bulletlist>",
   "name": "Latanie",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "Ta jednostka to jednostka latająca:<bulletlist><bullet>Ma +2 pkt. zasięgu widzenia.</bullet><bullet>Może przemierzyć dowolny rodzaj terenu przy koszcie ruchu wynoszącym 6 pkt.</bullet><bullet>Wymaga żeglugi, by przemierzyć wodne pola.</bullet><bullet>Może bezpiecznie minąć większość innych jednostek i przeszkód w walce.</bullet></bulletlist>",
-  "name": "Latanie",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "Gdy <hyperlink>punkty zdrowia</hyperlink> tej jednostki spadną do zera, zostanie ona przeniesiona o 3 <range></range> i odzyska +20 <hyperlink><hp></hp> tymczasowych pkt. zdrowia</hyperlink>.<br></br>Działa raz na bitwę.",
   "name": "Mgliste zniknięcie",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "Poświęcenie cienia",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "description": "Pojedynczy magiczny atak na wybraną jednostkę.",
+  "name": "Plugawy wybuch",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magiczne</hyperlink>^p"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Wręcz</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Zyskaj ruch: latanie.<br></br><br></br>Blokowane przez <caststrategic></caststrategic> <hyperlink>transformacje rasy</hyperlink>, które usuwają wierzchowce.",
+  "name": "Latający kostur",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
+  "name": "Ogniste pociski",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magiczne</hyperlink>^p"
+   },
+   {
+    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Wręcz</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Podstawowe 60% szans na nałożenie stanu porażenie na 3 <turn></turn>.",
+    "name": "Porażenie^nn",
+    "count": 1
+   }
+  ],
+  "description": "Strzela magicznym pociskiem w kierunku wybranej jednostki wroga.",
+  "name": "Błyskawice",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magiczne</hyperlink>^p"
+   },
+   {
+    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Wręcz</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Gdy jednostka wroga otrzymuje stan porażenie, odnosi również dodatkowe 5 pkt. <damageLightning></damageLightning> <hyperlink>obrażeń od błyskawic</hyperlink>.<br></br><br></br>Efekt zanika, gdy ta jednostka opuści bitwę.",
+  "name": "Chór Nawałnicy",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "description": "Pojedynczy magiczny atak na wybraną jednostkę.",
+  "name": "Magiczny wybuch",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magiczne</hyperlink>^p"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Wręcz</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

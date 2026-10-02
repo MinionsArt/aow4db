@@ -275,7 +275,7 @@
  {
   "description": "Cette unité vole :<bulletlist><bullet>Elle a +2 portée de vision.</bullet><bullet>Elle se déplace sur n'importe quel terrain pour un coût de 6.</bullet><bullet>Navigation requise pour traverser l'eau.</bullet><bullet>Peut passer sans crainte unités et obstacles au combat.</bullet></bulletlist>",
   "name": "Volant",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "Cette unité vole :<bulletlist><bullet>Elle a +2 portée de vision.</bullet><bullet>Elle se déplace sur n'importe quel terrain pour un coût de 6.</bullet><bullet>Navigation requise pour traverser l'eau.</bullet><bullet>Peut passer sans crainte unités et obstacles au combat.</bullet></bulletlist>",
-  "name": "Volant",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "Quand les <hyperlink><hp></hp> Points de vie</hyperlink> de cette unité tombent à zéro, elle se déplace de 3 cases et récupère +20 <hyperlink><temphp></temphp> Points de vie temporaires</hyperlink>.<br></br>Fonctionne une fois par bataille.",
   "name": "Volatilisation brumeuse",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "Dévouement à l'ombre",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
+   }
+  ],
+  "description": "Simple attaque magique sur l'unité ciblée.",
+  "name": "Explosion de fléau",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Base</hyperlink>^f"
+   },
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Une frappe unique de mêlée.",
+  "name": "Coup de poignard rapide",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Gagnez le déplacement Volant.<br></br><br></br>Bloqué par les <hyperlink>Transformations de race</hyperlink> <caststrategic></caststrategic> qui suppriment les montures.",
+  "name": "Bâton volant",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "Déclenche un trait magique sur l'ennemi ciblé.",
+  "name": "Traits de feu",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>^f"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Une frappe unique de mêlée.",
+  "name": "Coup de poignard rapide",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "60 % de chances de base d'infliger Électrifié pendant 3 <turn></turn> Tour.",
+    "name": "Électrifié",
+    "count": 1
+   }
+  ],
+  "description": "Déclenche un trait magique sur l'ennemi ciblé.",
+  "name": "Traits de foudre",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Base</hyperlink>^f"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Une frappe unique de mêlée.",
+  "name": "Coup de poignard rapide",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Quand une unité ennemie obtient Électrifié, elle subit des 5 <damageLightning></damageLightning><hyperlink>Dégâts de foudre</hyperlink> supplémentaires.<br></br><br></br>Annulé sur l'unité quitte le combat.",
+  "name": "Chœur des tempêtes",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
+   }
+  ],
+  "description": "Simple attaque magique sur l'unité ciblée.",
+  "name": "Explosion magique",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Base</hyperlink>^f"
+   },
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Une frappe unique de mêlée.",
+  "name": "Coup de poignard rapide",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

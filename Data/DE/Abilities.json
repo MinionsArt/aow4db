@@ -239,7 +239,7 @@
  {
   "description": "Fliegende Einheit:<bulletlist><bullet>Hat +2 Sichtweite.</bullet><bullet>Kann sich zum Preis von 6 auf jedem Gelände bewegen.</bullet><bullet>Benötigt Seefahrt, um Wasserfelder zu überqueren.</bullet><bullet>Kann sich im Kampf die meisten anderen Einheiten und Hindernisse ungestört passieren.</bullet></bulletlist>",
   "name": "Fliegen",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "Fliegende Einheit:<bulletlist><bullet>Hat +2 Sichtweite.</bullet><bullet>Kann sich zum Preis von 6 auf jedem Gelände bewegen.</bullet><bullet>Benötigt Seefahrt, um Wasserfelder zu überqueren.</bullet><bullet>Kann sich im Kampf die meisten anderen Einheiten und Hindernisse ungestört passieren.</bullet></bulletlist>",
-  "name": "Fliegen",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "Wenn die <hyperlink><hp></hp> Trefferpunkte</hyperlink> dieser Einheit 0 erreichen, wird sie um 3 Felder versetzt und heilt +20 <hyperlink><temphp></temphp> temporäre Trefferpunkte</hyperlink>.<br></br>Einmal pro Kampf möglich.",
   "name": "Im Nebel verweht",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "Schattenwidmung",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "description": "Einzelner Magieangriff auf Zieleinheit.",
+  "name": "Verderbnisstoß",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Basis</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Gewährt Fliegen Bewegung.<br></br><br></br>Blockiert von <caststrategic></caststrategic><hyperlink>Volkstransformation</hyperlink>, die Reittiere entfernen.",
+  "name": "fliegender Stab",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab.",
+  "name": "Feuerblitze",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Basis</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Basischance von 60 % auf Zufügen von Elektrifiziert für 3 <turn></turn> Runden.",
+    "name": "Elektrifiziert",
+    "count": 1
+   }
+  ],
+  "description": "Feuert einen magischen Blitz auf einen anvisierten Feind ab.",
+  "name": "Lichtblitze",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Basis</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Wird eine feindliche Einheit elektrifiziert, erleidet sie zusätzlich 5 <damageLightning></damageLightning> <hyperlink>Blitzschaden</hyperlink>.<br></br><br></br>Verlässt diese Einheit den Kampf, wird sie entfernt.",
+  "name": "Chor des Orkanus",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "description": "Einzelner Magieangriff auf Zieleinheit.",
+  "name": "Magiestoß",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Basis</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

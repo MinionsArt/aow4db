@@ -251,7 +251,7 @@
  {
   "description": "Этот воин может летать:<bulletlist><bullet>+2 к радиусу обзора.</bullet><bullet>Перемещение по любому ландшафту стоит 6.</bullet><bullet>Для перемещения над водой требуется знание мореходства.</bullet><bullet>Во время сражения воин может свободно миновать большинство других воинов и препятствий.</bullet></bulletlist>",
   "name": "Летающий",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "Этот воин может летать:<bulletlist><bullet>+2 к радиусу обзора.</bullet><bullet>Перемещение по любому ландшафту стоит 6.</bullet><bullet>Для перемещения над водой требуется знание мореходства.</bullet><bullet>Во время сражения воин может свободно миновать большинство других воинов и препятствий.</bullet></bulletlist>",
-  "name": "Летающий",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "Когда <hp></hp> <hyperlink>здоровье</hyperlink> этого воина опускается до нуля, он смещается на 3 кл. и восстанавливает 20 ед. <temphp></temphp> <hyperlink>временного здоровья</hyperlink>.<br></br>Действует один раз за бой.",
   "name": "Превращение в туман",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "Преданность тени",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "description": "Магическая атака, направленная на выбранного воина.",
+  "name": "Чумной взрыв",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Магия^F</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Даёт способность «Летающий».<br></br><br></br>Блокируется <caststrategic></caststrategic> <hyperlink>Трансформациями народа</hyperlink>, которые удаляют ездовых животных.",
+  "name": "Парящий посох",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "Выпускает волшебную стрелу в выбранного вражеского воина.",
+  "name": "Огненные снаряды",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Магия^F</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "С базовой вероятностью 60% может на 3 <turn></turn> х. применить эффект «Наэлектризованность».",
+    "name": "Наэлектризованность",
+    "count": 1
+   }
+  ],
+  "description": "Выпускает волшебную стрелу в выбранного вражеского воина.",
+  "name": "Снаряды молний",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Магия^F</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "Когда вражеский воин получает эффект «Наэлектризованность», он также получает 5 <damageLightning></damageLightning> <hyperlink>электрического урона</hyperlink>.<br></br><br></br>Эффект снимается, если воин покидает сражение.",
+  "name": "Хор ненастья",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "description": "Магическая атака, направленная на выбранного воина.",
+  "name": "Взрыв магии",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Магия^F</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [

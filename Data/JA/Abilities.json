@@ -275,7 +275,7 @@
  {
   "description": "このユニットは飛行している：<bulletlist><bullet>+2の視界範囲を持つ</bullet><bullet>6の移動コストを費やしてあらゆる地形を移動して行く。</bullet><bullet>水のマスを移動するには航海が必須。</bullet><bullet>戦闘中、他のほとんどのユニットや障害物を安全に通過できる。</bullet></bulletlist>",
   "name": "飛行",
-  "slug": "000003eb0000071b",
+  "slug": "0000044500000172",
   "icon": "00000357000001A5"
  },
  {
@@ -31041,12 +31041,6 @@
   "icon": "0000049700001737"
  },
  {
-  "description": "このユニットは飛行している：<bulletlist><bullet>+2の視界範囲を持つ</bullet><bullet>6の移動コストを費やしてあらゆる地形を移動して行く。</bullet><bullet>水のマスを移動するには航海が必須。</bullet><bullet>戦闘中、他のほとんどのユニットや障害物を安全に通過できる。</bullet></bulletlist>",
-  "name": "飛行",
-  "slug": "0000049700002f03",
-  "icon": "00000357000001A5"
- },
- {
   "description": "このユニットの<hyperlink><hp></hp>HP</hyperlink>がゼロまで減少すると、3マスで表示され、+20 <hyperlink><temphp></temphp>追加HP</hyperlink>を回復する。<br></br>戦闘1回ごとに効果が発動する。",
   "name": "ミスト・アウェイ",
   "slug": "0000049700002ef6",
@@ -32534,6 +32528,60 @@
   "name": "影への献身",
   "slug": "0000048d00000ad8",
   "icon": "0000048D00000AD7"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "対象のユニットへの単発魔法攻撃。",
+  "name": "疫病の爆発",
+  "slug": "magic_hero_blast_(blight)_ability_flying_broom_item_tier_2",
+  "damage": "16<damageblight></damageblight> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基本</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_flying_broom_item_tier_2",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近接攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "飛行移動を得る。<br></br><br></br>騎乗物を取り除く<caststrategic></caststrategic><hyperlink>種族転換</hyperlink>によって阻まれる。",
+  "name": "空飛ぶ杖",
+  "slug": "00000497000045c6",
+  "icon": "00000497000046C7"
  },
  {
   "modifiers": [
@@ -34644,6 +34692,158 @@
   "range": "1",
   "notes": [],
   "icon": "000003EB0000040D"
+ },
+ {
+  "modifiers": [],
+  "description": "敵に魔法のボルトを放つ。",
+  "name": "ファイヤーボルト",
+  "slug": "magic_hero_bolts_(base)_ability_equipment_item_tempest_orbs_base",
+  "damage": "12<damagefire></damagefire> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基本</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_equipment_item_tempest_orbs_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近接攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "3 <turn></turn>ターンの間、60%の確率で感電効果を与える。",
+    "name": "感電",
+    "count": 1
+   }
+  ],
+  "description": "敵に魔法のボルトを放つ。",
+  "name": "ライトニングボルト",
+  "slug": "magic_hero_bolts_(lightning)__ability_tempest_orbs_item_tier_1",
+  "damage": "10<damagelightning></damagelightning> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>魔法攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>基本</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<repeatingaction></repeatingaction>",
+  "range": "4",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "icon": "000003BD0000210B"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_tempest_orbs_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近接攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
+ },
+ {
+  "description": "敵ユニットが感電になったとき、5 <damageLightning></damageLightning><hyperlink>雷ダメージ</hyperlink>を追加で受ける。<br></br><br></br>戦闘を離脱すると、この効果は取り除かれる。",
+  "name": "嵐の合唱団",
+  "slug": "00000497000045eb",
+  "icon": "00000497000045F5"
+ },
+ {
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "対象のユニットへの単発魔法攻撃。",
+  "name": "マジックブラスト",
+  "slug": "magic_hero_blast_(empty)_ability_equipment_item_broom_staff_base",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>基本</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>魔法攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003E600000566"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_equipment_item_broom_staff_base",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近接攻撃</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "notes": [
