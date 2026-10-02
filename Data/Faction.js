@@ -1,7 +1,17 @@
 searchParams = new URLSearchParams(window.location.search);
 searchKeyword = searchParams.get("u");
 
-var ListOfSubcultureHolders = ["Architect", "Primal", "Mystic", "Oathsworn", "Feudal", "Dark", "Nomad", "Reaver"];
+var ListOfSubcultureHolders = [
+    "Architect",
+    "Primal",
+    "Mystic",
+    "Oathsworn",
+    "Feudal",
+    "Dark",
+    "Nomad",
+    "Reaver",
+    "Mercantile"
+];
 var ListOfSubsocietyHolders = ["Vision of Promise", "Vision of Ruin", "Vision of Destiny"];
 
 var currentOrigin = "";
@@ -91,59 +101,70 @@ function addOrSubtract(extraAffinity, add) {
     return extraAffinity;
 }
 
-const extraTomesForTheorycrafting = [{
-  "affinities": "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirematter></empirematter> Empire Materium Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting.",
-  "resid": 043243,
-  "id": "tome_of_hydromancy",
-  "DLC": "THESILVERSEAS ",
-  "lore_author": "",
-  "name": "Tome of Hydromancy",
-  "tier": 1,
-  "icon": "tome_of_hydromancy",
-  "skills": [
-  ],
-  "initial_upgrades": [
-   
-  ]
- },{
-  "affinities": "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting.",
-  "resid": 043244,
-  "id": "tome_of_piracy",
-  "DLC": "THESILVERSEAS ",
-  "lore_author": "",
-  "name": "Tome of Piracy",
-  "tier": 2,
-  "icon": "tome_of_piracy",
-  "skills": [
-  ],
-  "initial_upgrades": [
-   
-  ]
- },{
-  "affinities": "1 <empirechaos></empirechaos> Empire Chaos Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
-  "lore_description": "",
-  "gameplay_description": "For theorycrafting.",
-  "resid": 043244,
-  "id": "tome_of_the_damned",
-  "DLC": "THESILVERSEAS ",
-  "lore_author": "",
-  "name": "Tome of the Damned",
-  "tier": 2,
-  "icon": "tome_of_the_damned",
-  "skills": [
-  ],
-  "initial_upgrades": [
-   
-  ]
- }];
+const extraTomesForTheorycrafting = [
+    {
+        affinities:
+            "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirematter></empirematter> Empire Materium Affinity",
+        lore_description: "",
+        gameplay_description: "For theorycrafting.",
+        resid: 043243,
+        id: "tome_of_hydromancy",
+        DLC: "THESILVERSEAS ",
+        lore_author: "",
+        name: "Tome of Hydromancy",
+        tier: 1,
+        icon: "tome_of_hydromancy",
+        skills: [],
+        initial_upgrades: []
+    },
+    {
+        affinities:
+            "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
+        lore_description: "",
+        gameplay_description: "For theorycrafting.",
+        resid: 043244,
+        id: "tome_of_piracy",
+        DLC: "THESILVERSEAS ",
+        lore_author: "",
+        name: "Tome of Piracy",
+        tier: 2,
+        icon: "tome_of_piracy",
+        skills: [],
+        initial_upgrades: []
+    },
+    {
+        affinities:
+            "1 <empirechaos></empirechaos> Empire Chaos Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
+        lore_description: "",
+        gameplay_description: "For theorycrafting.",
+        resid: 043245,
+        id: "tome_of_the_damned",
+        DLC: "THESILVERSEAS ",
+        lore_author: "",
+        name: "Tome of the Damned",
+        tier: 2,
+        icon: "tome_of_the_damned",
+        skills: [],
+        initial_upgrades: []
+    },
+    {
+        affinities: "2 <empireshadow></empireshadow> Empire Shadow Affinity",
+        lore_description: "",
+        gameplay_description: "For theorycrafting.",
+        resid: 043246,
+        id: "tome_of_eternal_ice",
+        DLC: "THESILVERSEAS ",
+        lore_author: "",
+        name: "Tome of Eternal Ice",
+        tier: 4,
+        icon: "tome_of_eternal_ice",
+        skills: [],
+        initial_upgrades: []
+    }
+];
 
 function SetRandomStart(overwriteParameter) {
-    
-document.getElementById('selectionsBackdrop').addEventListener('click', toggleOriginButtons);
+    document.getElementById("selectionsBackdrop").addEventListener("click", toggleOriginButtons);
     jsonTomes.push(...extraTomesForTheorycrafting);
     jsonTomesLocalized.push(...extraTomesForTheorycrafting);
     if (searchKeyword != undefined && !overwriteParameter) {
@@ -330,7 +351,7 @@ function getPoints() {
 
 // Function to toggle the origin selection buttons
 function toggleOriginButtons() {
-     document.body.style.overflow = ''; 
+    document.body.style.overflow = "";
     var selectionsHolder = document.getElementById("selectionsHolder");
     selectionsHolder.classList.remove("open");
     var originWrapper = document.getElementById("originWrapperOptions");
@@ -639,7 +660,6 @@ function SetTomePathOptions(evt) {
     const rect = evt.target.getBoundingClientRect();
     var selectionsHolder = document.getElementById("selectionsHolder");
 
-
     var originWrapper = document.getElementById("originWrapperOptions");
     originWrapper.setAttribute("style", "grid-template-columns: repeat(2, 2fr);");
     originWrapper.innerHTML = "";
@@ -657,19 +677,17 @@ function SetTomePathOptions(evt) {
         const originButtonNew = document.createElement("button");
         originButtonNew.className = "list-button";
         // set icon and button seperately
-       // originButtonNew.addEventListener("click", () => selectTomePath(origin, false));
+        // originButtonNew.addEventListener("click", () => selectTomePath(origin, false));
 
-        
-        
         originWrapper.appendChild(originButtonNew);
 
         SetTomePathInfo(originButtonNew, origin);
     }
-   // console.log(normalizedPos.x + getNormalizedWidth(selectionsHolder));
-  //  selectionsHolder.style.display = "block";
-    
-   document.getElementById("selectionsHolder").classList.add("open");
-      document.body.style.overflow = 'hidden'; // stop background scroll while menu is open
+    // console.log(normalizedPos.x + getNormalizedWidth(selectionsHolder));
+    //  selectionsHolder.style.display = "block";
+
+    document.getElementById("selectionsHolder").classList.add("open");
+    document.body.style.overflow = "hidden"; // stop background scroll while menu is open
 }
 
 // Function to handle the selection of an origin
@@ -936,7 +954,7 @@ function SetTomePathInfo(button, origin) {
     newDivButton.appendChild(image);
     newDivButton.appendChild(affinityText);
     newDivButton.appendChild(buttonText);
-    
+
     if ("DLC" in origin) {
         let DLCTAG = document.createElement("div");
         DLCTAG.style = "    position: absolute; left: 30px;top: 4px;";
@@ -956,25 +974,21 @@ function SetTomePathInfo(button, origin) {
         '<p style="color: #d7c297;>' + '<span style="font-size=20px;">' + origin.name.toUpperCase() + "</p>";
 
     SetTomePreview(spa, origin);
-    
-       addTooltipListeners(image, spa);
-        addTooltipListeners(buttonText, spa);
+
+    addTooltipListeners(image, spa);
+    addTooltipListeners(buttonText, spa);
 
     newDivButton.className = "list-button-long";
-    
-    
- 
-    
-       const addButton = document.createElement('button');
+
+    const addButton = document.createElement("button");
     addButton.className = "add-button";
     addButton.innerHTML = '<img  src="/aow4db/Icons/Interface/addsymbol.png" height="20px">';
     addButton.addEventListener("click", (event) => selectTomePath(origin, false));
-     newDivButton.append(addButton);
+    newDivButton.append(addButton);
 
-   // newDivButton.addEventListener("click", (event) => SetTomePathOptions(event));
+    // newDivButton.addEventListener("click", (event) => SetTomePathOptions(event));
 
     //  newDivButton.append(spa);
-
 }
 
 function SetSkillPathInfo(button, origin) {
@@ -1137,12 +1151,12 @@ function SetupButtons(evt, type) {
     for (const origin of list) {
         var originButtonNew = document.createElement("button");
 
-      //  if (type === "Symbol") {
+        //  if (type === "Symbol") {
         //    originButtonNew.addEventListener("click", () => SelectSymbol(origin));
         //    originButtonNew.className = "list-button-small";
-         //   originWrapper.appendChild(originButtonNew);
-         //   SetButtonInfo(originButtonNew, origin, type);
-       if (type === "FormTrait") {
+        //   originWrapper.appendChild(originButtonNew);
+        //   SetButtonInfo(originButtonNew, origin, type);
+        if (type === "FormTrait") {
             // hook into options thingie
             originButtonNew.className = "list-button";
 
@@ -1160,7 +1174,7 @@ function SetupButtons(evt, type) {
 
             // new button script
 
-        //    originButtonNew.addEventListener("click", (event) => toggleSelection(origin, originButtonNew, type, event));
+            //    originButtonNew.addEventListener("click", (event) => toggleSelection(origin, originButtonNew, type, event));
 
             originWrapper.appendChild(originButtonNew);
 
@@ -1168,8 +1182,6 @@ function SetupButtons(evt, type) {
         } else {
             if (!incompatibleCheck(type, origin)) {
                 originButtonNew.className = "list-button";
-
-                
 
                 originWrapper.appendChild(originButtonNew);
 
@@ -1202,7 +1214,7 @@ function SetupButtons(evt, type) {
         }
     }
     document.getElementById("selectionsHolder").classList.add("open");
-     document.body.style.overflow = 'hidden'; // stop background scroll while menu is open
+    document.body.style.overflow = "hidden"; // stop background scroll while menu is open
 }
 
 function GetCurrentChoiceList() {
@@ -1463,31 +1475,25 @@ function SetButtonInfo(button, origin, type, inSelectionsList) {
     const image = createImage(type, origin);
 
     const buttonText = createButtonText(origin, type);
-    
-   
-   
+
     button.append(image, buttonText);
-    
-    
+
     const tooltip = createTooltip(origin, type);
     addTooltipListeners(button, tooltip);
-    if (inSelectionsList == true){
-          const addButton = document.createElement('button');
-    addButton.className = "add-button";
-    addButton.innerHTML = '<img  src="/aow4db/Icons/Interface/addsymbol.png" height="20px">';
-        
-        if(type == "FormTrait"){
-            addButton.innerHTML = 'Toggle';
-              addButton.addEventListener("click", (event) => toggleSelection(origin, button, type, event));
+    if (inSelectionsList == true) {
+        const addButton = document.createElement("button");
+        addButton.className = "add-button";
+        addButton.innerHTML = '<img  src="/aow4db/Icons/Interface/addsymbol.png" height="20px">';
 
-        } else{
-              addButton.addEventListener("click", (event) => selectOrigin(origin, type));
+        if (type == "FormTrait") {
+            addButton.innerHTML = "Toggle";
+            addButton.addEventListener("click", (event) => toggleSelection(origin, button, type, event));
+        } else {
+            addButton.addEventListener("click", (event) => selectOrigin(origin, type));
         }
-  
-     button.append(addButton);
-    }
-   
 
+        button.append(addButton);
+    }
 }
 
 function createImage(type, origin) {
@@ -1564,7 +1570,7 @@ function findOriginLocName(origin, type) {
             } else {
                 newOrigin = origin.name;
             }
-          newOrigin = RemoveHyperLinks(newOrigin);
+            newOrigin = RemoveHyperLinks(newOrigin);
             newOrigin = newOrigin.split("{")[0];
             break;
 
@@ -1931,7 +1937,6 @@ function SetTomePreview(span, origin) {
                             spell.name +
                             "</bullet>";
                     } else {
-                      
                         span.innerHTML +=
                             '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                             iconLink +
@@ -2031,7 +2036,6 @@ function SetTomePreview(span, origin) {
                         spell.name +
                         "</bullet>";
                 } else {
-                    
                     span.innerHTML +=
                         '<bullet> <img width="20px" src="/aow4db/Icons/SpellIcons/' +
                         iconLink +
@@ -2087,8 +2091,7 @@ function GetAllStartingTomes() {
 }
 
 function CollectAllPartsForOverview(fromload) {
-    
-     // Force-close any tooltip that might be orphaned by the rebuild below.
+    // Force-close any tooltip that might be orphaned by the rebuild below.
     var hd = document.getElementById("hoverDiv");
     var hd2 = document.getElementById("hoverDiv2");
     if (hd && hd.open) hd.close();
@@ -2349,7 +2352,7 @@ function CreateSpellIcon(listEntry, colorEntry) {
     let imageLinkName = spellData.id;
     if (spellData.icon != undefined && !incorrectIconOverrideList.includes(spellData.id)) {
         imageLinkName = spellData.icon;
-       
+
         imageSRC = "/aow4db/Icons/SpellIcons/" + imageLinkName + ".png";
     } else {
         imageLinkName = spellData.id;
