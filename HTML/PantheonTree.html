@@ -69,6 +69,7 @@
                     wrapper.appendChild(lineHolder);
                     wrapper.appendChild(nodeHolder);
                     if (treeName.indexOf("Page 2") != -1) {
+                        nodeHolder.setAttribute("id", "SecondPageHolder");
                         root2.appendChild(wrapper);
                     } else {
                         root.appendChild(wrapper);
@@ -93,7 +94,7 @@
                     }
 
                     // Resize wrapper to fit its contents (same as your resizeParentToFitChildren)
-                    resizePantheonWrapper(nodeHolder);
+                    resizePantheonWrapper(nodeHolder, items);
                 }
             }
 
@@ -284,15 +285,12 @@
                 lineHolder.appendChild(line);
             }
 
-            function resizePantheonWrapper(nodeHolder) {
-                // Same logic as your resizeParentToFitChildren but works on the nodeHolder
-                // since that has the absolutely-positioned children
-                let maxRight = 0,
-                    maxBottom = 0;
-                for (const child of nodeHolder.children) {
-                    maxRight = Math.max(maxRight, child.offsetLeft + child.offsetWidth);
-                    maxBottom = Math.max(maxBottom, child.offsetTop + child.offsetHeight);
-                }
+            // With this version that uses the item data directly:
+            function resizePantheonWrapper(nodeHolder, items) {
+                const NODE_W = 70,
+                    NODE_H = 70; // match your node size + margin
+                const maxRight = Math.max(...items.map((i) => i.tree_pos_x + NODE_W));
+                const maxBottom = Math.max(...items.map((i) => i.tree_pos_y + NODE_H));
                 const PADDING = 30;
                 nodeHolder.style.width = maxRight + PADDING + "px";
                 nodeHolder.style.height = maxBottom + PADDING + "px";
@@ -572,7 +570,7 @@
 
     .tree-space {
         width: max-content;
-          min-height: 1000px;
+        min-height: 1000px;
         height: max-content;
         min-width: 1500px;
         padding-bottom: 200px;
