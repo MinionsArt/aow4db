@@ -173,9 +173,9 @@
                             if (jsonCityTreeNodes[i].id.indexOf("vampire_castle") != -1) {
                                 path.setAttribute("stroke", "red");
                             }
-                              if (jsonCityTreeNodes[i].id.indexOf("desecration_chambers") != -1) {
+                            if (jsonCityTreeNodes[i].id.indexOf("desecration_chambers") != -1) {
                                 path.setAttribute("stroke", "red");
-                                  path.setAttribute("stroke-dasharray", "6,10");
+                                path.setAttribute("stroke-dasharray", "6,10");
                             }
                             for (const [lineName, buildings] of Object.entries(Fortifications)) {
                                 if (buildings.includes(jsonCityTreeNodes[i].connectTo[j].id)) {
@@ -225,7 +225,7 @@
                 const divOG = document.getElementById(divFromID);
 
                 const divTO = document.getElementById(divToID);
-              //  console.log(divOG, divTO);
+                //  console.log(divOG, divTO);
                 if (divOG == undefined || divTO == undefined) {
                     return;
                 }
@@ -280,7 +280,8 @@
                     "vampire_castle_stygian_observers"
                 ],
                 secondLine: [
-                    "empty","desecration_chambers",
+                    "empty",
+                    "desecration_chambers",
                     "vampire_castle_deep_crypts",
                     "vampire_castle_laboratory",
                     "vampire_castle_ritual_chamber",
@@ -307,7 +308,7 @@
             const TownHalls = {
                 townHallsline: [
                     "town_hall_ii",
-                    "empty",
+                    "empty*2",
                     "town_hall_iii",
                     "iii_unlock",
                     "iii_unlock_2",
@@ -319,10 +320,33 @@
             const Bath = {
                 stabilityLine: ["empty", "tavern", "bathhouse"]
             };
+
+            const TradeRoute = {
+                tradeLine: [
+                    "empty",
+                    "trade_post",
+                    "outpost_supply_hub",
+                    "empty",
+                    "trade_quarters",
+                    "food_importers",
+                    "empty*2",
+                    "trade_bazaar",
+                    "caravaneers_guild"
+                ],
+                tradeLine1: [
+                    "empty",
+                    "empty",
+                    "diplomatic_embassy",
+                    "empty*2",
+                    "wizards_exchange",
+                    "empty*3",
+                    "taxation_offices"
+                ]
+            };
             const Fortifications = {
-                walls: ["empty*4", "palisade_walls", "empty*4", "stone_walls", "empty*3", "catapult_towers"],
-                Towers: ["empty*7", "caltrop_stash", "empty*2", "ballista_towers"],
-                Battlements: ["empty*7", "arcane_battlements", "empty*2", "necrotic_spires", "beacon_of_valor"],
+                walls: ["empty*4", "palisade_walls", "empty*5", "stone_walls", "empty*3", "catapult_towers"],
+                Towers: ["empty*7", "caltrop_stash", "empty*3", "ballista_towers"],
+                Battlements: ["empty*7", "arcane_battlements", "empty*3", "necrotic_spires", "beacon_of_valor"],
                 Spires: ["empty*7", "archer_battlements", "empty*2", "healing_spires"]
             };
 
@@ -356,16 +380,22 @@
                 GetTree("Fortifications", Fortifications, parentFort, buildingMap);
                 // parent base
                 const parentBase = document.createElement("div");
-                parentBase.setAttribute("style", "display:flex");
+                parentBase.setAttribute("style", "display:flex;");
                 treespace.appendChild(parentBase);
                 GetTree("", Start, parentBase, buildingMap);
                 GetTree("Base Buildings", TestBase, parentBase, buildingMap);
                 // tome stuff
                 //  if(tomeCheck)
                 const parentWizard = document.createElement("div");
+                parentWizard.setAttribute("style", "width:1000px");
                 treespace.appendChild(parentWizard);
                 GetTree("", TownHalls, parentWizard, buildingMap);
                 GetTree("", Bath, parentWizard, buildingMap);
+                // if beta
+                if (showBetaTooltip.checked) {
+                    GetTree("", TradeRoute, parentWizard, buildingMap);
+                }
+
                 // wizard tower base
 
                 GetTree("Wizard Tower", wizardTower, parentWizard, buildingMap);
@@ -378,15 +408,13 @@
                 treespace.appendChild(parentTomes);
                 parentTomes.setAttribute("style", " position: relative;left: 293px;");
                 GetTree("Tome Buildings", GetTomeBuilds(buildingMap), parentTomes, buildingMap);
-                
-              
-                     for (const [overrideName, list] of Object.entries(overrideBuildings)) {
+
+                for (const [overrideName, list] of Object.entries(overrideBuildings)) {
                     for (const entry of list) {
                         const [base, extra] = entry.split(":");
                         connectBottom(base, extra);
                     }
                 }
-                
 
                 SetLevelUpStuff();
                 updateConnector();
@@ -480,7 +508,7 @@
                     color: "rgb(17, 17, 17)",
                     title: "Mystic School of Attunement"
                 },
-               
+
                 {
                     key: "dark",
                     color: "rgb(17, 17, 17)",
@@ -511,47 +539,50 @@
                     color: "rgb(17, 17, 17)",
                     title: "Architect"
                 },
-                 {
+                {
                     key: "nomad",
                     color: "rgb(17, 17, 17)",
                     title: "Nomad"
                 },
-                   {
+                {
                     key: "nomad_conquerors",
-                       color: "rgb(17, 17, 17)",
+                    color: "rgb(17, 17, 17)",
                     title: "Nomad Conquerors"
                 },
-                 {
+                {
                     key: "nomad_scavengers",
-                       color: "rgb(17, 17, 17)",
+                    color: "rgb(17, 17, 17)",
                     title: "Nomad Scavengers"
                 },
                 {
                     key: "reaver",
                     color: "rgb(17, 17, 17)",
                     title: "Reaver"
-                }  ,{
+                },
+                {
                     key: "reaver_federate",
                     color: "rgb(17, 17, 17)",
                     title: "Reaver Federate"
                 },
-                 {
+                {
                     key: "reaver_imperial",
                     color: "rgb(17, 17, 17)",
                     title: "Reaver Imperial"
-                },
+                }
             ];
 
-            
-            
-             const overrideBuildings = {
-               /*throne: ["town_hall_i_town_center: throne"],*/
+            const overrideBuildings = {
+                /*throne: ["town_hall_i_town_center: throne"],*/
                 feudal: [
                     "town_hall_ii:town_hall_ii_castle",
                     "town_hall_iii:town_hall_iii_citadel",
                     "town_hall_iv:town_hall_iv_grand_estate"
                 ],
-                feudal_monarchy: ["workshop:militia_barracks", "blacksmith:royal_smith", "iii_unlock_2:retainers_estate"],
+                feudal_monarchy: [
+                    "workshop:militia_barracks",
+                    "blacksmith:royal_smith",
+                    "iii_unlock_2:retainers_estate"
+                ],
                 feudal_aristocracy: [
                     "store_house:house_hunting_grounds",
                     "granary:serf_quarters",
@@ -560,7 +591,7 @@
                 dark: [
                     "town_hall_ii:town_hall_ii_dread_spire",
                     "town_hall_iii:town_hall_iii_stronghold",
-                
+
                     "town_hall_iv:town_hall_iv_black_palace"
                 ],
 
@@ -608,14 +639,8 @@
                     "town_hall_iii:town_hall_iii_chained_spire",
                     "town_hall_iv:town_hall_iv_ironclad_citadel"
                 ],
-                  reaver_imperial: [
-                     "iii_unlock_2:imperial_academy",
-                      "extraBase:spoils_of_war"
-                  ],
-                       reaver_federate: [
-                     "iii_unlock:extraction_nexus",
-                           
-                  ],
+                reaver_imperial: ["iii_unlock_2:imperial_academy", "extraBase:spoils_of_war"],
+                reaver_federate: ["iii_unlock:extraction_nexus"],
                 primal: [
                     "workshop:woodcarvers_workshop",
                     "stonemason:stonestele",
@@ -640,17 +665,15 @@
                     "iii_unlock:affinity_obelisks",
                     "town_hall_iv:town_hall_iv_pinnacle_of_the_incarnate"
                 ],
-                 nomad: [
-                  
+                nomad: [
                     "town_hall_ii:town_hall_ii_council_deck",
                     "town_hall_iii:town_hall_iii_cartography_bilge",
-                    "town_hall_iv:town_hall_iv_pinnacle_bridge","stone_walls:sentry_nests"
+                    "town_hall_iv:town_hall_iv_pinnacle_bridge",
+                    "stone_walls:sentry_nests"
                 ],
-                   nomad_conquerors: ["store_house:raider_tents", "granary:trophy_stores", "iii_unlock:conquerors_tower"],
-                  nomad_scavengers: ["workshop:salvage_shop", "blacksmith:loot_armory", "iii_unlock_2:scavenger_vault"],
+                nomad_conquerors: ["store_house:raider_tents", "granary:trophy_stores", "iii_unlock:conquerors_tower"],
+                nomad_scavengers: ["workshop:salvage_shop", "blacksmith:loot_armory", "iii_unlock_2:scavenger_vault"]
             };
-            
-             
 
             function findResources(text) {
                 const regex = /\+\d+%?\s*<([^>]+)>/g;
@@ -683,19 +706,14 @@
                 const overrideMap = {};
 
                 //
-          
-                     for (const [overrideName, list] of Object.entries(overrideBuildings)) {
+
+                for (const [overrideName, list] of Object.entries(overrideBuildings)) {
                     for (const entry of list) {
                         const [base, extra] = entry.split(":");
                         if (!overrideMap[base]) overrideMap[base] = [];
                         overrideMap[base].push({ overrideName, extra });
                     }
                 }
-               
-                
-                   
-               
-               
 
                 // Now loop through TestBase
                 let row = 0;
@@ -902,6 +920,10 @@
                 {
                     key: "lavaline",
                     color: "rgb(165, 160, 10)"
+                },
+                {
+                    key: "tradeLine",
+                    color: "rgb(173, 151, 26)"
                 }
             ];
 
@@ -922,12 +944,12 @@
 
                 var img = document.createElement("IMG");
                 // different palce when its the 4 I added here
-                if(extraBuildings.includes(structureInfo)){
-                     img.setAttribute("src", "/aow4db/Icons/ExtraIcons/" + structureInfo.icon + ".png");
-                }else{
-                     img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureInfo.icon + ".png");
+                if (extraBuildings.includes(structureInfo)) {
+                    img.setAttribute("src", "/aow4db/Icons/ExtraIcons/" + structureInfo.icon + ".png");
+                } else {
+                    img.setAttribute("src", "/aow4db/Icons/UpgradeIcons/" + structureInfo.icon + ".png");
                 }
-          
+
                 img.setAttribute("height", "60px");
                 img.className = "structureNodeIcon";
                 newNode.setAttribute("id", structureInfo.id);
@@ -1056,15 +1078,13 @@
     <body>
         <div id="header"></div>
         <svg
-            height="4000px"
+            height="5000px"
             width="6000px"
             id="SVGHolder"
             style="position: absolute; top: 0px; left: 1px; z-index: 1; pointer-events: none"></svg>
 
         <div id="General" class="w3-container w3-border city">
             <div class="textblocktitle">City Tree</div>
-
-            <div class="tree-space" id="treespacegeneral"></div>
             <div style="display: flex; justify-content: center">
                 <label class="switch">
                     <input
@@ -1169,7 +1189,7 @@
                         onchange="reDrawAll()" />
                     Architect
                 </label>
-                   <label class="switch">
+                <label class="switch">
                     <input
                         type="checkbox"
                         name="checkToggle"
@@ -1179,6 +1199,7 @@
                     Nomad
                 </label>
             </div>
+            <div class="tree-space" id="treespacegeneral"></div>
         </div>
     </body>
 </html>
