@@ -189,7 +189,7 @@ const dlcMap = {
         src: "/aow4db/Icons/Text/singer_of_storms.png",
         text: "Part of the Singer of Storms DLC"
     },
-    THESILVERSEAS:{
+    THESILVERSEAS: {
         src: "/aow4db/Icons/Text/the_silver_seas.png",
         text: "Silver Seas for theorycrafting"
     }
@@ -377,11 +377,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-        /*  if (storedSettings.showBeta) {
-             await GetAllData("BETA");
-       } else {*/
-        await GetAllData(storedSettings.language);
-        // }
+        if (storedSettings.showBeta) {
+            await GetAllData("BETA");
+        } else {
+            await GetAllData(storedSettings.language);
+        }
 
         //await GetAllData("EN");
         AddExtraData();
