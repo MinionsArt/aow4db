@@ -6159,7 +6159,7 @@
   },
   {
     "id": "COLONYUPGRADES_STRATEGIC@TRADE@TIER_1",
-    "description": "<bulletlist><bullet>+1 [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] capacity.</bullet><bullet>Improve the escorts of this city's [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink].</bullet></bulletlist><br>For each [hyperlink,GLOBAL.ForeignCityConcept]Foreign[/hyperlink] [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting to this city, this city and the origin city gain:<bulletlist><bullet>+5 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>+1 [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] capacity.</bullet><bullet>Improve the escorts of this city's [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink].</bullet></bulletlist><br>For each unowned [hyperlink,GLOBAL.ForeignCityConcept]Foreign[/hyperlink] [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting to this city:<bulletlist><bullet>+5 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet></bulletlist>",
     "name": "Trade Post"
   },
   {
@@ -6174,7 +6174,7 @@
   },
   {
     "id": "COLONYUPGRADES_STRATEGIC@TRADE@TIER_2",
-    "description": "<bulletlist><bullet>+1 [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] capacity.</bullet><bullet>Further improve the escorts of this city's [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink].</bullet></bulletlist><br>For each [hyperlink,GLOBAL.ForeignCityConcept]Foreign[/hyperlink][hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting to this city, this city and the origin city gain:<bulletlist><bullet>+10 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>+1 [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] capacity.</bullet><bullet>Further improve the escorts of this city's [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink].</bullet></bulletlist><br>For each unowned [hyperlink,GLOBAL.ForeignCityConcept]Foreign[/hyperlink] [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting to this city:<bulletlist><bullet>+10 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet></bulletlist>",
     "name": "Trade Quarters"
   },
   {
@@ -6194,12 +6194,12 @@
   },
   {
     "id": "COLONYUPGRADES_STRATEGIC@TRADE@TIER_3",
-    "description": "<bulletlist><bullet>+1 [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] capacity.</bullet><bullet>Maximize the escorts of this city's [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink].</bullet></bulletlist><br>For each [hyperlink,GLOBAL.ForeignCityConcept]Foreign[/hyperlink] [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting to this city, this city and the origin city gain:<bulletlist><bullet>+15 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>+1 [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] capacity.</bullet><bullet>Maximize the escorts of this city's [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink].</bullet></bulletlist><br>For each unowned [hyperlink,GLOBAL.ForeignCityConcept]Foreign[/hyperlink] [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting to this city:<bulletlist><bullet>+15 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet></bulletlist>",
     "name": "Trade Bazaar"
   },
   {
     "id": "COLONYUPGRADES_STRATEGIC@TRADE@TIER_3@TAXATION_OFFICES",
-    "description": "For each [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting this city:<bulletlist><bullet>+10 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet><bullet>+5 <happiness></happiness> [hyperlink,GLOBAL.CityStabilityConcept]City Stability[/hyperlink]</bullet></bulletlist><br><br>Mutually exclusive with Caravaneers Guild.",
+    "description": "For each [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] connecting this city:<bulletlist><bullet>+5 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink]</bullet><bullet>+5 <happiness></happiness> [hyperlink,GLOBAL.CityStabilityConcept]City Stability[/hyperlink]</bullet></bulletlist><br><br>Mutually exclusive with Caravaneers Guild.",
     "name": "Taxation Offices"
   },
   {
@@ -7588,6 +7588,12 @@
     "description": "Magic Attacks are attacks performed with magical implements such as orbs and staves.<br><br>Many of the special attacks that creatures have, such as dragon's breath, are also considered Magic attacks.<br><br>Magic attacks are resisted by <resistance></resistance> [hyperlink,GLOBAL.ResistanceConcept]Resistance[/hyperlink].",
     "hyperlink": "[hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink]",
     "name": "Magic"
+  },
+  {
+    "id": "CONCEPT@MAGIC_MELEE_ABILITY",
+    "description": "Magic Strikes are a type of [hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink] attack with a range of 1 hex.<br><br>They are available to [spellref,GLOBAL.PROPERTIES.MAGIC_FIGHTER]Magic fighter[/spellref] and [hyperlink,GLOBAL.HeroConcept]Hero[/hyperlink] with Magic Strike weapons.",
+    "hyperlink": "[hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink]",
+    "name": "Magic Strike"
   },
   {
     "id": "CONCEPT@MELEE_ABILITY",
@@ -15357,25 +15363,25 @@
     "vassalage_description": "<bulletlist><bullet>The <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] shares part of its <mana></mana> [hyperlink,GLOBAL.ManaConcept]Mana[/hyperlink] and <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink] income as tribute.</bullet><bullet>[hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink] they control are shared with their overlord.</bullet><bullet>Other [hyperlink,GLOBAL.EmpireConcept]Empire[/hyperlink] may no longer [hyperlink,GLOBAL.NegotiationConcept]negotiate[/hyperlink] better [hyperlink,GLOBAL.PvEDiplStateConcept]Diplomatic State[/hyperlink] with the <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink].</bullet><bullet>The<minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] will join its overlord in any <rs_war></rs_war> [hyperlink,GLOBAL.WarConcept]War[/hyperlink] they are fighting, can assist in combat, and can be given directives in War Coordination.</bullet><bullet>Switches to the [hyperlink,GLOBAL.VassalagePhaseConcept]Vassalage Phase[/hyperlink], during which further [hyperlink,GLOBAL.HouseInfluenceConcept]<allegiance></allegiance>Allegiance[/hyperlink] can be earned to improve the benefits of vassalage. Eventually the <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] may be [hyperlink,GLOBAL.PactOfIntegrationConcept]integrated[/hyperlink] into the empire of its overlord.</bullet></bulletlist>",
     "vassalage_hyperlink": "<rs_vassalage></rs_vassalage> [hyperlink,GLOBAL.PactOfVassalageConcept]Pact of Vassalage[/hyperlink]",
     "vassalage_level_-1": "Tributary",
-    "vassalage_level_-1_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>War Coordination is disabled and no new armies will be sent out.</bullet></bulletlist>",
+    "vassalage_level_-1_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>War Coordination is disabled and no new armies will be sent out.</bullet></bulletlist>",
     "vassalage_level_-1_hyperlink": "[rs_vassalage-1/] [hyperlink,GLOBAL.PactOfVassalageLvl-1Concept]Tributary[/hyperlink]",
     "vassalage_level_-2": "Minor Tributary",
-    "vassalage_level_-2_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet></bulletlist>",
+    "vassalage_level_-2_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet></bulletlist>",
     "vassalage_level_-2_hyperlink": "[rs_vassalage-2/] [hyperlink,GLOBAL.PactOfVassalageLvl-2Concept]Minor Tributary[/hyperlink]",
     "vassalage_level_-3": "Denying Tributary",
-    "vassalage_level_-3_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares none of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes nothing to the Rally of the Lieges.</bullet></bulletlist>",
+    "vassalage_level_-3_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares none of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes nothing to the Rally of the Lieges.</bullet></bulletlist>",
     "vassalage_level_-3_hyperlink": "[rs_vassalage-3/] [hyperlink,GLOBAL.PactOfVassalageLvl-3Concept]Denying Tributary[/hyperlink]",
     "vassalage_level_0": "Vassalage",
-    "vassalage_level_0_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>War Coordination becomes available.</bullet></bulletlist>",
+    "vassalage_level_0_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>War Coordination becomes available.</bullet></bulletlist>",
     "vassalage_level_0_hyperlink": "<rs_vassalage0></rs_vassalage0> [hyperlink,GLOBAL.PactOfVassalageLvl0Concept]Vassalage[/hyperlink]",
     "vassalage_level_1": "Bonded Vassalage",
-    "vassalage_level_1_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet></bulletlist>",
+    "vassalage_level_1_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet></bulletlist>",
     "vassalage_level_1_hyperlink": "<rs_vassalage1></rs_vassalage1> [hyperlink,GLOBAL.PactOfVassalageLvl1Concept]Bonded Vassalage[/hyperlink]",
     "vassalage_level_2": "Flourishing Vassalage",
-    "vassalage_level_2_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>City can be [hyperlink,GLOBAL.PactOfIntegrationConcept]integrated[/hyperlink] <influence></influence>.</bullet></bulletlist>",
+    "vassalage_level_2_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>City can be [hyperlink,GLOBAL.PactOfIntegrationConcept]integrated[/hyperlink] <influence></influence>.</bullet></bulletlist>",
     "vassalage_level_2_hyperlink": "<rs_vassalage2></rs_vassalage2> [hyperlink,GLOBAL.PactOfVassalageLvl2Concept]Flourishing Vassalage[/hyperlink]",
     "vassalage_level_3": "Supreme Vassalage",
-    "vassalage_level_3_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 35% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>City can be [hyperlink,GLOBAL.PactOfIntegrationConcept]integrated[/hyperlink] <influence></influence>.</bullet></bulletlist>",
+    "vassalage_level_3_description": "<bulletlist><bullet>[hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] with this <minorcity></minorcity> [hyperlink,GLOBAL.IndependentCityConcept]Free City[/hyperlink] provide 25% of its income.</bullet><bullet>Shares all of its [hyperlink,GLOBAL.MagicMaterialConcept]Magic Material[/hyperlink].</bullet><bullet>Contributes 5<recruitmentPoints></recruitmentPoints> to the [hyperlink,GLOBAL.RequestMilitaryAidConcept]Rally of the Lieges[/hyperlink].</bullet><bullet>City can be [hyperlink,GLOBAL.PactOfIntegrationConcept]integrated[/hyperlink] <influence></influence>.</bullet></bulletlist>",
     "vassalage_level_3_hyperlink": "<rs_vassalage3></rs_vassalage3> [hyperlink,GLOBAL.PactOfVassalageLvl3Concept]Supreme Vassalage[/hyperlink]",
     "war": "War"
   },
@@ -33129,7 +33135,7 @@
   },
   {
     "id": "DLC@ELDRITCHREALMS@TOME_UMBRAL_ABYSS@SKILL1",
-    "description": "Target [hyperlink,GLOBAL.ProvinceConcept]Province[/hyperlink] and adjacent [hyperlink,GLOBAL.ProvinceConcept]Province[/hyperlink]:<bulletlist><bullet>Gain [hyperlink,GLOBAL.GloomTerrainConcept]Gloom[/hyperlink]</bullet><bullet>Lose [hyperlink,GLOBAL.ChasmConcept]Chasm[/hyperlink], [hyperlink,GLOBAL.RiverConcept]River[/hyperlink], [hyperlink,GLOBAL.SandConcept]Sand[/hyperlink], [hyperlink,GLOBAL.SnowConcept]Snow[/hyperlink], [hyperlink,GLOBAL.FrozenWasteConcept]Ice[/hyperlink], [hyperlink,GLOBAL.AshlandsConcept]Ashlands[/hyperlink], [hyperlink,GLOBAL.SwampConcept]Swamp[/hyperlink], [hyperlink,GLOBAL.CavernFloorConcept]Cavern Floor[/hyperlink], and [hyperlink,GLOBAL.DungeonConcept]Dungeon[/hyperlink].</bullet><bullet>Enemy [hyperlink,GLOBAL.UnitConcept]Unit[/hyperlink] suffer <eventColor>{frostProtection}</eventColor> <defensefrost></defensefrost> [hyperlink,GLOBAL.FrostResistanceConcept]Frost Protection[/hyperlink] and <eventColor>{blightProtection}</eventColor> <defenseblight></defenseblight> [hyperlink,GLOBAL.BlightResistanceConcept]Blight Protection[/hyperlink] for <eventColor>{duration}</eventColor> <turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink].</bullet></bulletlist>",
+    "description": "Target [hyperlink,GLOBAL.ProvinceConcept]Province[/hyperlink] and adjacent [hyperlink,GLOBAL.ProvinceConcept]Province[/hyperlink]:<bulletlist><bullet>Gain [hyperlink,GLOBAL.GloomTerrainConcept]Gloom[/hyperlink]</bullet><bullet>Lose [hyperlink,GLOBAL.ChasmConcept]Chasm[/hyperlink], [hyperlink,GLOBAL.RiverConcept]River[/hyperlink], [hyperlink,GLOBAL.SandConcept]Sand[/hyperlink], [hyperlink,GLOBAL.SnowConcept]Snow[/hyperlink], [hyperlink,GLOBAL.FrozenWasteConcept]Ice[/hyperlink], [hyperlink,GLOBAL.AshlandsConcept]Ashlands[/hyperlink], [hyperlink,GLOBAL.SwampConcept]Swamp[/hyperlink], [hyperlink,GLOBAL.CavernFloorConcept]Cavern Floor[/hyperlink], and [hyperlink,GLOBAL.DungeonConcept]Dungeon[/hyperlink].</bullet><bullet>Enemy [hyperlink,GLOBAL.UnitConcept]Unit[/hyperlink] suffer -1 <defensefrost></defensefrost> [hyperlink,GLOBAL.FrostResistanceConcept]Frost Protection[/hyperlink] and -1 <defenseblight></defenseblight> [hyperlink,GLOBAL.BlightResistanceConcept]Blight Protection[/hyperlink] for 2 <turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink].</bullet></bulletlist>",
     "DLC": "ELDRITCHREALMS",
     "name": "Pall of Gloom",
     "property_description": "This unit has <eventColor>{PALL_OF_GLOOM_DEFENSE>REDUCTION>Frost}</eventColor> <defensefrost></defensefrost> [hyperlink,GLOBAL.FrostResistanceConcept]Frost Protection[/hyperlink] and <eventColor>{PALL_OF_GLOOM_DEFENSE>REDUCTION>Blight}</eventColor> <defenseblight></defenseblight> [hyperlink,GLOBAL.BlightResistanceConcept]Blight Protection[/hyperlink]."
@@ -37490,14 +37496,24 @@
     "title": "Touch of My'dhas"
   },
   {
+    "id": "DLC@EMPIRESANDASHES@STORY_EVENT@1167_84@BODY_FOOTER",
+    "default&hand": "A luxuriously garbed [hyperlink,GLOBAL.WizardKingLoreConcept]Wizard King[/hyperlink] reveals <<r:EventGodir>>: \"I am <eventColor>{EnemyUnit}</eventColor>, <<EventGodir<eventColor>{God/Goddess}</eventColor>>> of Wealth! Shake my other hand and stay a while!\"",
+    "DLC": "EMPIRESANDASHES",
+    "playerlead&hand": "A luxuriously garbed [hyperlink,GLOBAL.WizardKingLoreConcept]Wizard King[/hyperlink] reveals <<r:EventGodir>>: \"I am <eventColor>{EnemyUnit}</eventColor>, <<EventGodir<eventColor>{God/Goddess}</eventColor>>> of Wealth! Shake my other hand and stay a while!\""
+  },
+  {
     "id": "DLC@EMPIRESANDASHES@STORY_EVENT@1167_84@BODY_HEADER",
+    "default&hand": "Upon entering the <eventColor>{EventStructure}</eventColor>, the <eventColor>{EventRelic}</eventColor> start twitching, disturbed by a pressence hidden among the white sands and golden idols.",
+    "DLC": "EMPIRESANDASHES",
     "hero_is_playerle": "Upon entering the <eventColor>{EventStructure}</eventColor>, you shield your eyes from the blinding sunlight bouncing off white sands and golden idols.",
-    "DLC": "EMPIRESANDASHES"
+    "playerlead&hand": "Upon entering the <eventColor>{EventStructure}</eventColor>, the <eventColor>{EventRelic}</eventColor> start twitching, disturbed by a pressence hidden among the white sands and golden idols."
   },
   {
     "id": "DLC@EMPIRESANDASHES@STORY_EVENT@1167_84@BODY_LORE",
+    "default&hand": "<eventColor>{EventHero.FirstName}</eventColor> is inside an arena, amidst a dozen gold statues. Most of them are rooted in gold puddles that spot the white sandy plains. Soldiers. Servants. Beasts. Furniture and food. All wrought from gold—Wait! Did that statue just move?! Then, <eventColor>{EventHero.FirstName}</eventColor> hears snickering. \"My, my,\" a raspy voice resounds throughout the arena. \"Is that my old hand I feel?\"",
+    "DLC": "EMPIRESANDASHES",
     "hero_is_playerle": "You are inside an arena, amidst a dozen gold statues. Most of them are rooted in gold puddles that spot the white sandy plains. Soldiers. Servants. Beasts. Furniture and food. All wrought from gold—Wait! Did that statue just move?! Then, you hear snickering. \"My, my,\" a raspy voice resounds throughout the arena. \"Have they lifted my exile at last?\"",
-    "DLC": "EMPIRESANDASHES"
+    "playerlead&hand": "You are inside an arena, amidst a dozen gold statues. Most of them are rooted in gold puddles that spot the white sandy plains. Soldiers. Servants. Beasts. Furniture and food. All wrought from gold—Wait! Did that statue just move?! Then, you hear snickering. \"My, my,\" a raspy voice resounds throughout the arena. \"Is that my old hand I feel?\""
   },
   {
     "id": "DLC@EMPIRESANDASHES@STORY_EVENT@1167_85",
@@ -49002,7 +49018,7 @@
   },
   {
     "id": "DLC@PRIMALFURY@TOME_STORMBORNE@SKILL4",
-    "description": "<bulletlist><bullet>+12 <mana></mana> [hyperlink,GLOBAL.ManaConcept]Mana[/hyperlink]</bullet><bullet>Each [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] originating from this city gains:<bulletlist></bullet><bullet>+<eventColor>{ManaIncome}</eventColor> <mana></mana> [hyperlink,GLOBAL.ManaConcept]Mana[/hyperlink] for each Ocean Province it passes through.</bullet><bullet>+<eventColor>{GoldIncome}</eventColor> <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink] for each Ocean Province it passes through.</bullet></bulletlist>[/bulletlist]<br>Requires an Ocean [hyperlink,GLOBAL.ProvinceImprovementConcept]Province Improvement[/hyperlink] in order to build.",
+    "description": "<bulletlist><bullet>+10 <mana></mana> [hyperlink,GLOBAL.ManaConcept]Mana[/hyperlink]</bullet><bullet>Each [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink] originating from this city gains:<bulletlist></bullet><bullet>+2 <mana></mana> [hyperlink,GLOBAL.ManaConcept]Mana[/hyperlink] for each Ocean Province it passes through.</bullet><bullet>+1 <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink] for each Ocean Province it passes through.</bullet></bulletlist>[/bulletlist]<br>Requires an Ocean [hyperlink,GLOBAL.ProvinceImprovementConcept]Province Improvement[/hyperlink] in order to build.",
     "DLC": "PRIMALFURY",
     "name": "Stormport"
   },
@@ -61075,6 +61091,14 @@
     "": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
   },
   {
+    "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+    "": "@@@@@@@@"
+  },
+  {
+    "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+    "": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  },
+  {
     "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
     "": "@@@@@@@@@@@@@@@@@@"
   },
@@ -61089,10 +61113,6 @@
   {
     "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
     "": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-  },
-  {
-    "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-    "": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
   },
   {
     "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
@@ -61185,10 +61205,6 @@
   {
     "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
     "": "@@@@@@@@@@@@@@@@@@@"
-  },
-  {
-    "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-    "": "@@@@@@@@"
   },
   {
     "id": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
@@ -70876,10 +70892,10 @@
   },
   {
     "id": "DLC@WAYSOFWAR@TOME_DISCIPLINE@EMPOWERED_STRIKES",
-    "description": "Makes base [hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] of enchanted units:<bulletlist><bullet>Deal +<eventColor>{EMPOWERED_STRIKES_EXTRA_DAMAGE>DAMAGE>Physical}</eventColor><damagePhysical></damagePhysical> [hyperlink,GLOBAL.PhysicalDamageConcept]Physical Damage[/hyperlink].</bullet><bullet>Third attack in a turn has a <eventColor>{STUNNED_RESISTANCE>ResolvedStrength}</eventColor>% base chance of inflicting [spellref,GLOBAL.PROPERTIES.STUNNED]Stunned[/spellref] for <eventColor>{STUNNED_EFFECT_DESCRIPTION>NumTurns}</eventColor>Turn</bullet></bulletlist><br>Enchantment doesn't apply to units without a repeating base melee attack.",
+    "description": "Makes base [hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] of enchanted units:<bulletlist><bullet>Deal +<eventColor>{EMPOWERED_STRIKES_EXTRA_DAMAGE>DAMAGE>Physical}</eventColor><damagePhysical></damagePhysical> [hyperlink,GLOBAL.PhysicalDamageConcept]Physical Damage[/hyperlink].</bullet><bullet>Third attack in a turn has a <eventColor>{STUNNED_RESISTANCE>ResolvedStrength}</eventColor>% base chance of inflicting [spellref,GLOBAL.PROPERTIES.STUNNED]Stunned[/spellref] for <eventColor>{STUNNED_EFFECT_DESCRIPTION>NumTurns}</eventColor>Turn</bullet></bulletlist><br>Enchantment doesn't apply to units without a repeating base melee attack.",
     "DLC": "WAYSOFWAR",
     "name": "Empowered Strikes",
-    "property_description": "This unit's base [hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref]:<bulletlist><bullet>Deal +<eventColor>{EMPOWERED_STRIKES_EXTRA_DAMAGE>DAMAGE>Physical}</eventColor><damagePhysical></damagePhysical> [hyperlink,GLOBAL.PhysicalDamageConcept]Physical Damage[/hyperlink].</bullet><bullet>Third attack in a turn has a <eventColor>{STUNNED_RESISTANCE>ResolvedStrength}</eventColor>% base chance of inflicting [spellref,GLOBAL.PROPERTIES.STUNNED]Stunned[/spellref] for <eventColor>{STUNNED_EFFECT_DESCRIPTION>NumTurns}</eventColor>Turn</bullet></bulletlist><br> "
+    "property_description": "This unit's base [hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink]:<bulletlist><bullet>Deal +<eventColor>{EMPOWERED_STRIKES_EXTRA_DAMAGE>DAMAGE>Physical}</eventColor><damagePhysical></damagePhysical> [hyperlink,GLOBAL.PhysicalDamageConcept]Physical Damage[/hyperlink].</bullet><bullet>Third attack in a turn has a <eventColor>{STUNNED_RESISTANCE>ResolvedStrength}</eventColor>% base chance of inflicting [spellref,GLOBAL.PROPERTIES.STUNNED]Stunned[/spellref] for <eventColor>{STUNNED_EFFECT_DESCRIPTION>NumTurns}</eventColor>Turn</bullet></bulletlist><br> "
   },
   {
     "id": "DLC@WAYSOFWAR@TOME_DISCIPLINE@FOCUS_AIM",
@@ -70934,7 +70950,7 @@
   },
   {
     "id": "DLC@WAYSOFWAR@TOME_DISCIPLINE@SKILL1",
-    "description": "Mobile [spellref,GLOBAL.PROPERTIES.FIGHTER]Fighter[/spellref] that can use devastating combo attacks and heal itself.",
+    "description": "Mobile [spellref,GLOBAL.PROPERTIES.MAGIC_FIGHTER]Magic fighter[/spellref] that can use devastating combo attacks and heal itself.",
     "DLC": "WAYSOFWAR",
     "name": "Monk"
   },
@@ -71520,9 +71536,9 @@
   },
   {
     "id": "DLC@WITCHOFTHEWAVES@TEMPESTS_CHORUS",
-    "combat_description": "When an enemy unit gains [spellref,GLOBAL.PROPERTIES.ELECTRIFIED]Electrified[/spellref], they sustain an extra <eventColor>{TEMPESTS_CHORUS_DAMAGE>DAMAGE>Shock}</eventColor> <damageLightning></damageLightning> [hyperlink,GLOBAL.LightningDamageConcept]Lightning Damage[/hyperlink].",
+    "combat_description": "The first time each turn an enemy gains [spellref,GLOBAL.PROPERTIES.ELECTRIFIED]Electrified[/spellref] they sustain an extra <eventColor>{TEMPESTS_CHORUS_DAMAGE>DAMAGE>Shock}</eventColor> <damageLightning></damageLightning> [hyperlink,GLOBAL.LightningDamageConcept]Lightning Damage[/hyperlink].",
     "DLC": "WITCHOFTHEWAVES",
-    "description": "When an enemy unit gains [spellref,GLOBAL.PROPERTIES.ELECTRIFIED]Electrified[/spellref], they sustain an extra <eventColor>{TEMPESTS_CHORUS_DAMAGE>DAMAGE>Shock}</eventColor> <damageLightning></damageLightning> [hyperlink,GLOBAL.LightningDamageConcept]Lightning Damage[/hyperlink].<br><br>Removed if this unit leaves the battle.",
+    "description": "The first time each turn an enemy gains [spellref,GLOBAL.PROPERTIES.ELECTRIFIED]Electrified[/spellref] they sustain an extra <eventColor>{TEMPESTS_CHORUS_DAMAGE>DAMAGE>Shock}</eventColor> <damageLightning></damageLightning> [hyperlink,GLOBAL.LightningDamageConcept]Lightning Damage[/hyperlink].<br><br>Removed if this unit leaves the battle.",
     "name": "Tempest's Chorus"
   },
   {
@@ -77321,7 +77337,7 @@
   {
     "id": "HERO_SKILLS@FIGHTING",
     "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks gain +<eventColor>{HS_FIGHTING_DAMAGE>ResolvedMultiplier}</eventColor>% damage.",
-    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] gain +<eventColor>{HS_FIGHTING_DAMAGE>ResolvedMultiplier}</eventColor>% damage."
+    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] gain +<eventColor>{HS_FIGHTING_DAMAGE>ResolvedMultiplier}</eventColor>% damage."
   },
   {
     "id": "HERO_SKILLS@FIGHTING_1",
@@ -77873,7 +77889,7 @@
   {
     "id": "HERO_SKILLS@RANGER@EVASIVE_STRIKES",
     "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks no longer trigger retaliations.",
-    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] no longer trigger retaliations.",
+    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] no longer trigger retaliations.",
     "modifier_description": "Does not trigger retaliations.",
     "name": "Evasive Strikes"
   },
@@ -77886,7 +77902,7 @@
   {
     "id": "HERO_SKILLS@RANGER@FATAL_STRIKES",
     "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks now do more damage as the target loses health, up to +<eventColor>{HS_FATAL_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>%.",
-    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] now do more damage as the target loses health, up to +<eventColor>{HS_FATAL_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>%.",
+    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] now do more damage as the target loses health, up to +<eventColor>{HS_FATAL_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>%.",
     "modifier_description": "Damage increases as the target loses health, up to +<eventColor>{HS_FATAL_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>%.",
     "name": "Fatal Strikes"
   },
@@ -77933,7 +77949,7 @@
   {
     "id": "HERO_SKILLS@RANGER@KNOCKBACK_RETALIATIONS",
     "description": "Melee retaliation attacks now knock targets back 1 hex.",
-    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] retaliation attacks now knock targets back 1 hex.",
+    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] retaliation attacks now knock targets back 1 hex.",
     "name": "Knockback Retaliations"
   },
   {
@@ -77962,12 +77978,12 @@
   {
     "id": "HERO_SKILLS@RANGER@MELEE_TRAINING_RESISTANCE",
     "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks now inflict [spellref,GLOBAL.PROPERTIES.SUNDERED_RESISTANCE]Sundered Resistance[/spellref].<br> ",
-    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] now inflict [spellref,GLOBAL.PROPERTIES.SUNDERED_RESISTANCE]Sundered Resistance[/spellref].<br> "
+    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] now inflict [spellref,GLOBAL.PROPERTIES.SUNDERED_RESISTANCE]Sundered Resistance[/spellref].<br> "
   },
   {
     "id": "HERO_SKILLS@RANGER@OPENING_STRIKES",
     "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks now do up to +<eventColor>{HS_OPENING_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>% extra damage; this bonus is reduced as the target loses health.",
-    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] now do up to +<eventColor>{HS_OPENING_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>% extra damage; this bonus is reduced as the target loses health.",
+    "description_with_magic_strike": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] now do up to +<eventColor>{HS_OPENING_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>% extra damage; this bonus is reduced as the target loses health.",
     "modifier_description": "Up to +<eventColor>{HS_OPENING_STRIKES_DAMAGE>ResolvedMultiplier}</eventColor>% extra damage, reduced as the target loses health.",
     "name": "Opening Strikes"
   },
@@ -78042,7 +78058,7 @@
   },
   {
     "id": "HERO_SKILLS@RANGER@VERSATILE_SKIRMISHER@PREPARED_STRIKE",
-    "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] do +<eventColor>{PREPARED_STRIKE_DAMAGE>ResolvedMultiplier}</eventColor>% more damage.",
+    "description": "[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] do +<eventColor>{PREPARED_STRIKE_DAMAGE>ResolvedMultiplier}</eventColor>% more damage.",
     "name": "Prepared Strike"
   },
   {
@@ -78463,12 +78479,12 @@
   },
   {
     "id": "HERO_SKILLS@SPELLBLADE@VERSATILE_SKIRMISHER",
-    "description": "<bulletlist><bullet>[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref] grant [spellref,GLOBAL.PROPERTIES.PREPARED_SPELL]Prepared Spell[/spellref] for <eventColor>{PREPARED_SPELL_DESCRIPTION>NumTurns}</eventColor><turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink].</bullet><bullet>Other [hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink] attacks grant [spellref,GLOBAL.PROPERTIES.PREPARED_STRIKE]Prepared Strike[/spellref] for <eventColor>{PREPARED_STRIKE_DESCRIPTION>NumTurns}</eventColor><turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink].</bullet></bulletlist>",
+    "description": "<bulletlist><bullet>[hyperlink,GLOBAL.MeleeConcept]Melee[/hyperlink] attacks and [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] grant [spellref,GLOBAL.PROPERTIES.PREPARED_SPELL]Prepared Spell[/spellref] for <eventColor>{PREPARED_SPELL_DESCRIPTION>NumTurns}</eventColor><turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink].</bullet><bullet>Other [hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink] attacks grant [spellref,GLOBAL.PROPERTIES.PREPARED_STRIKE]Prepared Strike[/spellref] for <eventColor>{PREPARED_STRIKE_DESCRIPTION>NumTurns}</eventColor><turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink].</bullet></bulletlist>",
     "magic_modifier_description": "Grants [spellref,GLOBAL.PROPERTIES.PREPARED_SPELL]Prepared Spell[/spellref] for <eventColor>{PREPARED_SPELL_DESCRIPTION>NumTurns}</eventColor><turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink]"
   },
   {
     "id": "HERO_SKILLS@SPELLBLADE@VERSATILE_SKIRMISHER@PREPARED_PELL",
-    "description": "[hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink] attacks do +<eventColor>{PREPARED_SPELL_DAMAGE>ResolvedMultiplier}</eventColor>% more damage.<br><br>Does not affect [spellref,GLOBAL.PROPERTIES.MAGIC_STRIKE_BASE]Magic strike base[/spellref]."
+    "description": "[hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink] attacks do +<eventColor>{PREPARED_SPELL_DAMAGE>ResolvedMultiplier}</eventColor>% more damage.<br><br>Does not affect [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink]."
   },
   {
     "id": "HERO_SKILLS@SPELLBLADE@VERSATILE_SKIRMISHER@PREPARED_SPELL",
@@ -80711,6 +80727,11 @@
     "city_has_grown": "City can annex another province",
     "city_is_betraying": "City is betraying you!",
     "city_sector_riot": "<eventColor>{SectorName}</eventColor> province of City is rioting!",
+    "city_supplyroute_raided": "City trade route raided by Side",
+    "city_supplyroute_removed": "City trade route destroyed",
+    "city_supplyroute_removed_setting": "[white]City Name[/white] trade route was destroyed",
+    "city_supply_route_completed": "City completed trade route with Target City",
+    "city_supply_route_completed_setting": "[white]City Name[/white] completed trade route with [white]City Name[/white]",
     "city_vassalized": "A City was released as Vassal",
     "declined_proposal_from": "You declined a trade proposal",
     "defector_recruitment": "Enemy defectors recruitable",
@@ -81226,9 +81247,14 @@
   },
   {
     "id": "INTERFACE@HOUSE_TRADE",
-    "text": "<eventColor>{payment}</eventColor> / <eventColor>{offer}</eventColor> for <eventColor>{duration}</eventColor><turn></turn> Turns",
-    "text_free": "Gain <eventColor>{offer}</eventColor> for <eventColor>{duration}</eventColor><turn></turn> turns",
-    "text_instant": "Buy <eventColor>{offer}</eventColor> for <eventColor>{payment}</eventColor>"
+    "text": "Buy <eventColor>{offer}</eventColor> for <eventColor>{payment}</eventColor>",
+    "text_free": "Buy <eventColor>{offer}</eventColor>",
+    "text_per_turn": "Buy <eventColor>{offer}</eventColor> for <eventColor>{payment}</eventColor> per turn",
+    "text_per_turn_duration": "Buy <eventColor>{offer}</eventColor> for <eventColor>{payment}</eventColor> per turn for <eventColor>{duration}</eventColor><turn></turn>",
+    "text_per_turn_duration_free": "Buy <eventColor>{offer}</eventColor> per turn for <eventColor>{duration}</eventColor><turn></turn>",
+    "text_per_turn_free": "Buy <eventColor>{offer}</eventColor> per turn",
+    "treaty": "<eventColor>{offer}</eventColor> for <eventColor>{payment}</eventColor> per <turn></turn> (<eventColor>{duration}</eventColor><turn></turn>)",
+    "treaty_no_duration": "<eventColor>{offer}</eventColor> for <eventColor>{payment}</eventColor> per <turn></turn>"
   },
   {
     "id": "INTERFACE@HOUSE_TREATY",
@@ -81250,6 +81276,13 @@
     "combat_prediction_risky_battle": "Risky Battle",
     "combat_prediction_safe_battle": "Safe Battle",
     "manual_combat": "Manual Combat"
+  },
+  {
+    "id": "INTERFACE@HUD_COMBAT@BATTLE_NAME",
+    "city": "Battle for City",
+    "enter_structure": "Battle for Structure",
+    "generic": "Battle",
+    "supply_route": "Battle for [hyperlink,GLOBAL.TradeRouteConcept]Trade Route[/hyperlink]"
   },
   {
     "id": "INTERFACE@HUD_DIPLOMACY",
@@ -85158,6 +85191,7 @@
     "hyperlink_hyperlink": "[hyperlink,GLOBAL.HyperlinkConcept]Hyperlink[/hyperlink]",
     "immune": "Immune",
     "immune_shortcut": "IMM",
+    "income": "Income",
     "income_per_turn": "Income per <turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink]",
     "incompatible_skills": "Incompatible skills:",
     "increase_herocap": "Increase Hero Cap",
@@ -85454,6 +85488,7 @@
     "personality_strategy_description": "Informs their behavior on the Strategic Map",
     "perturn": "per turn",
     "per_turn": "per <turn></turn> [hyperlink,GLOBAL.TurnConcept]Turn[/hyperlink]",
+    "per_turn_icon": "per <turn></turn>",
     "pillaging": "Pillaging",
     "pillaging_description": "Some locations such as [hyperlink,GLOBAL.ProvinceImprovementConcept]Province Improvement[/hyperlink] cannot be [hyperlink,GLOBAL.RazingConcept]Razed[/hyperlink] but can be pillaged instead, granting [hyperlink,GLOBAL.ResourceConcept]Resource[/hyperlink] rewards.<br><bulletlist><bullet>When a province improvement is pillaged it is turned into Ruins.</bullet><bullet>Ruins can be rebuilt at the cost of <gold></gold> [hyperlink,GLOBAL.GoldConcept]Gold[/hyperlink].</bullet><bullet>Ruins from enemy [hyperlink,GLOBAL.CityConcept]City[/hyperlink] can be [hyperlink,GLOBAL.ProvinceAnnexationConcept]Annexed[/hyperlink] to your own.</bullet></bulletlist>",
     "pillaging_hyperlink": "[hyperlink,GLOBAL.PillagingConcept]Pillaging[/hyperlink]",
@@ -86547,6 +86582,7 @@
   {
     "id": "INTERFACE@TRADE_ROUTE",
     "active_title": "Trade Route with <eventColor>{STR_TargetName}</eventColor>",
+    "error_already_active": "This Trade Route is already active!",
     "error_already_building": "You are already establishing a Trade Route with this target.",
     "error_already_connected": "Your already have a Trade Route with this target.",
     "error_cap_reached": "Trade Route capacity reached.",
@@ -115700,7 +115736,7 @@
   },
   {
     "id": "UPGRADES_CORE_UNITPROPERTIES@MAGIC_FIGHTER_UNIT",
-    "description": "A melee attacker that uses [hyperlink,GLOBAL.MagicConcept]Magic[/hyperlink] attacks to target enemies with low <resistance></resistance> [hyperlink,GLOBAL.ResistanceConcept]Resistance[/hyperlink]. <br>Magic Fighters have:<bulletlist><bullet>[spellref,GLOBAL.PROPERTIES.MELEE_MAGE]Melee mage[/spellref].</bullet></bulletlist>",
+    "description": "A melee attacker that uses [hyperlink,GLOBAL.MagicStrikeConcept]Magic Strike[/hyperlink] to target enemies with low <resistance></resistance> [hyperlink,GLOBAL.ResistanceConcept]Resistance[/hyperlink]. <br>Magic Fighters have:<bulletlist><bullet>[spellref,GLOBAL.PROPERTIES.MELEE_MAGE]Melee mage[/spellref].</bullet></bulletlist>",
     "name": "Magic Fighter Unit"
   },
   {

@@ -96,27 +96,26 @@ function processConceptHyperlinks(text) {
 }
 
 function processSpellRefs(text) {
-    if (text.includes("spellref")) {
-        console.log("name here " + text);
-    }
+    
     return text.replace(/\[spellref,([^\]]+)\]([\s\S]*?)\[\/spellref\]/g, (_, globalKey, displayText) => {
-        console.log("name here " + text);
+      
         const name = displayText.trim();
 
         // Try looking up in your existing ability/spell JSON by name
         const ability = findBy(jsonUnitAbilitiesLocalized, "name", name) ?? findBy(jsonSpells, "name", name); // add whichever JSONs apply
-
+ 
         if (ability) {
+            
             // Reuse the same statusEffectHandler pattern — gets a free tooltip
             return `<span class="statusEffectHandler">${name}</span>`;
         }
-
+ console.log("name here " + name + " " + globalKey);
         // No match found yet — render as styled italic with the key stored
         // for future programmatic lookup (data-key is the full GLOBAL.X.Y path)
         return (
-            `<span class="spellrefHandler" ` +
-            `data-key="${globalKey}" ` +
-            `style="color:#c9a227;font-style:italic">${name}</span>`
+            `<span class="spellrefHandler"` +
+            `data-key="${globalKey}"` +
+            `"style="color:green">${name}</span>`
         );
     });
 }

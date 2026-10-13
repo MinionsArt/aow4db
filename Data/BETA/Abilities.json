@@ -958,7 +958,7 @@
   "icon": "0000035700000602"
  },
  {
-  "description": "A melee attacker that uses <hyperlink>Magic</hyperlink> attacks to target enemies with low <resistance></resistance> <hyperlink>Resistance</hyperlink>. <br></br>Magic Fighters have:<bulletlist><bullet>Melee Mage.</bullet></bulletlist>",
+  "description": "A melee attacker that uses <hyperlink>Magic Strikes</hyperlink> to target enemies with low <resistance></resistance> <hyperlink>Resistance</hyperlink>. <br></br>Magic Fighters have:<bulletlist><bullet>Melee Mage.</bullet></bulletlist>",
   "name": "Magic Fighter Unit",
   "slug": "0000049700003951",
   "icon": "0000049700003952"
@@ -31119,6 +31119,88 @@
   "icon": "0000049700002EC6"
  },
  {
+  "modifiers": [
+   {
+    "description": "Heal for 50% of damage dealt if target isn't immune to Bleeding.",
+    "name": "Blood Drain",
+    "count": 1
+   },
+   {
+    "description": "+10% damage per Signature Skill learned.",
+    "name": "Signature Power",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to target unit.",
+  "name": "Siphon Blood",
+  "slug": "siphon_blood_ability_hs_siphon_blood",
+  "damage": "20<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "Blood Drain"
+   },
+   {
+    "requisite": "<hyperlink>Magic</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Missile</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "Always Hits",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "3",
+  "notes": [
+   {
+    "note": "Cannot be used when within an enemy <hyperlink>Zone of Control</hyperlink>."
+   },
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E98"
+ },
+ {
+  "modifiers": [
+   {
+    "description": "Heal for 50% of damage dealt if target isn't immune to Bleeding.",
+    "name": "Blood Drain",
+    "count": 1
+   },
+   {
+    "description": "+10% damage per Signature Skill learned.",
+    "name": "Signature Power",
+    "count": 1
+   }
+  ],
+  "description": "Deal damage to target unit.",
+  "name": "Draining Bite",
+  "slug": "draining_bite_ability_hs_draining_bite",
+  "damage": "30<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Melee</hyperlink>"
+   },
+   {
+    "requisite": "Blood Drain"
+   },
+   {
+    "requisite": "<hyperlink>Single Shot</hyperlink>"
+   }
+  ],
+  "accuracy": "100%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "1",
+  "notes": [
+   {
+    "note": "Cooldown: 3 <turn></turn>"
+   }
+  ],
+  "icon": "0000049700002E87"
+ },
+ {
   "notes": [
    {
     "note": "Can only be used once per battle."
@@ -31139,13 +31221,13 @@
   "icon": "0000048B0000057B"
  },
  {
-  "description": "<hyperlink>Melee</hyperlink> attacks and Magic Strikes now do up to +50% extra damage; this bonus is reduced as the target loses health.",
+  "description": "<hyperlink>Melee</hyperlink> attacks and <hyperlink>Magic Strikes</hyperlink> now do up to +50% extra damage; this bonus is reduced as the target loses health.",
   "name": "Opening Strikes",
   "slug": "0000048b000014ce",
   "icon": "0000048D00000F58"
  },
  {
-  "description": "<hyperlink>Melee</hyperlink> and Magic Strike retaliation attacks now knock targets back 1 hex.",
+  "description": "<hyperlink>Melee</hyperlink> and <hyperlink>Magic Strike</hyperlink> retaliation attacks now knock targets back 1 hex.",
   "name": "Knockback Retaliations",
   "slug": "0000048b000014cd",
   "icon": "0000048B00000561"
@@ -34857,7 +34939,7 @@
   "icon": "000003E3000057D6"
  },
  {
-  "description": "When an enemy unit gains Electrified, they sustain an extra 5 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.<br></br><br></br>Removed if this unit leaves the battle.",
+  "description": "The first time each turn an enemy gains Electrified they sustain an extra 12 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.<br></br><br></br>Removed if this unit leaves the battle.",
   "name": "Tempest's Chorus",
   "slug": "00000497000045eb",
   "icon": "00000497000045F5"
@@ -49967,7 +50049,7 @@
   "icon": "000003E3000055A5"
  },
  {
-  "description": "<hyperlink>Magic</hyperlink> attacks do +20% more damage.<br></br><br></br>Does not affect Magic Strike.",
+  "description": "<hyperlink>Magic</hyperlink> attacks do +20% more damage.<br></br><br></br>Does not affect <hyperlink>Magic Strikes</hyperlink>.",
   "name": "Prepared Spell",
   "slug": "000004a600000bdc",
   "icon": "000004A600000BDD"
@@ -50283,7 +50365,7 @@
   "icon": "000004970000176C"
  },
  {
-  "description": "<hyperlink>Melee</hyperlink> attacks and Magic Strikes do +20% more damage.",
+  "description": "<hyperlink>Melee</hyperlink> attacks and <hyperlink>Magic Strikes</hyperlink> do +20% more damage.",
   "name": "Prepared Strike",
   "slug": "0000048d00002045",
   "icon": "0000048D00002046"
@@ -50804,7 +50886,7 @@
   "icon": "0000048B0000053F"
  },
  {
-  "description": "<hyperlink>Melee</hyperlink> attacks and Magic Strikes do +20% more damage.",
+  "description": "<hyperlink>Melee</hyperlink> attacks and <hyperlink>Magic Strikes</hyperlink> do +20% more damage.",
   "name": "Prepared Strike",
   "slug": "0000048b0000053a",
   "icon": "0000048B0000053B"
