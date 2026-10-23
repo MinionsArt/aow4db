@@ -4238,6 +4238,7 @@ function showTome(a, divOrigin) {
             let div = document.createElement("DIV");
             div.className = "initialBonusText";
             let name = GetHeroSkillName(jsonExtraAscendedInfo[l].id);
+           
             div.innerHTML = "<pantheon></pantheon>" + name;
 
             let heroSkillIconAndDesc = GetHeroSkillDescription(jsonExtraAscendedInfo[l].id);
@@ -4633,7 +4634,7 @@ function GetStructure(structureID) {
 }
 
 function GetHeroSkillName(skillID) {
-    return findBy(jsonHeroSkills, "id", skillID).name || undefined;
+    return findBy(jsonHeroSkills, "id", skillID)?.name || undefined;
 }
 
 function GetHeroSkillDescription(skillID) {
