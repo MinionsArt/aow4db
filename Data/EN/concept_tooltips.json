@@ -4,7 +4,7 @@
     "icon": null,
     "globalName": "GLOBAL.OutpostConcept",
     "displayHtml": "Outpost",
-    "description": "Structure claiming a <span style=\"\">Province</span> for its owner and forming the foundation for a new <span style=\"\">City</span>.<br><br>An outpost can:<bulletlist><bullet>Be built by a <span style=\"\">Hero</span>.</bullet><bullet>Be upgraded into a <span style=\"\">City</span>.</bullet><bullet>Has various upgrades that can be built on it.</bullet><bullet>Not be entered by enemies without trespassing.</bullet><bullet>Gather <span style=\"\">Gold</span>, <span style=\"\">Mana</span>, and <span style=\"\">Knowledge</span> income from <span style=\"\">Node</span> and <span style=\"\">Magic Material</span>.</bullet></bulletlist><br><br>Each outpost has a {amount} <span style=\"\">Gold</span> upkeep for the owner."
+    "description": "Structure claiming a <span style=\"\">Province</span> for its owner and forming the foundation for a new <span style=\"\">City</span>.<br><br>An outpost can:<bulletlist><bullet>Be built by a <span style=\"\">Hero</span>.<bulletlist></bullet><bullet>Must be in a land or water province.</bullet><bullet>Cannot be built in an <span style=\"\">Uninhabitable</span> province.</bullet><bullet>Cannot be built adjacent to a province with another outpost or city.</bullet></bulletlist><bullet>Be upgraded into a <span style=\"\">City</span> if on land.</bullet><bullet>Has various upgrades that can be built on it.</bullet><bullet>Not be entered by enemies without trespassing.</bullet><bullet>Grant access to <span style=\"\">Magic Material</span>.</bullet><bullet>Provide income from <span style=\"\">Node</span> in the domain when a <span style=\"\">City</span> establishes a <span style=\"\">Trade Route</span> to it.</bullet></bulletlist>"
   },
   "GLOBAL.AffinityProvinceImprovementConcept": {
     "name": "Affinity Province Improvement",
@@ -263,7 +263,7 @@
     "icon": null,
     "globalName": "GLOBAL.HeroClassSpellblade",
     "displayHtml": "Hero Class: Spellblade",
-    "description": "<br><br>Compatible weapons:<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet></bulletlist>"
+    "description": "<br><br>Compatible weapons:<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet><bullet><span style=\"\">Ranged Weapon</span></bullet></bulletlist>"
   },
   "GLOBAL.HeroClassWarlock": {
     "name": "Hero Class: Warlock",
@@ -342,6 +342,13 @@
     "displayHtml": "Magic",
     "description": "Magic Attacks are attacks performed with magical implements such as orbs and staves.<br><br>Many of the special attacks that creatures have, such as dragon's breath, are also considered Magic attacks.<br><br>Magic attacks are resisted by <span style=\"\">Resistance</span>."
   },
+  "GLOBAL.MagicStrikeConcept": {
+    "name": "Magic Strike",
+    "icon": null,
+    "globalName": "GLOBAL.MagicStrikeConcept",
+    "displayHtml": "Magic Strike",
+    "description": "Magic Strikes are a type of <span style=\"\">Magic</span> attack with a range of 1 hex.<br><br>They are available to <span style=\"\">P R O P E R T I E S. M A G I C_ F I G H T E R</span> and <span style=\"\">Hero</span> with Magic Strike weapons."
+  },
   "GLOBAL.MeleeConcept": {
     "name": "Melee",
     "icon": null,
@@ -361,7 +368,7 @@
     "icon": null,
     "globalName": "GLOBAL.MovementAbilityConcept",
     "displayHtml": "Movement",
-    "description": "An ability that moves the unit using it to another location.<br><br>Cannot be used by units that are <span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>."
+    "description": "An ability that moves the unit using it to another location.<br><br>Cannot be used by units that are <span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>.<br>Cannot be used when on water unless also a <span style=\"\">Teleport Ability</span>."
   },
   "GLOBAL.MovePointConcept": {
     "name": "Move Point",
@@ -494,7 +501,7 @@
     "icon": null,
     "globalName": "GLOBAL.TeleportAbilityConcept",
     "displayHtml": "Teleport",
-    "description": "An ability that instantly moves the unit using it to another location using magic."
+    "description": "An ability that instantly moves this unit to another location using magic."
   },
   "GLOBAL.TemporaryHitPointConcept": {
     "name": "Temporary Hit Point",
@@ -648,7 +655,7 @@
     "icon": "rs_cooperation",
     "globalName": "GLOBAL.PactOfCooperationConcept",
     "displayHtml": "Pact of Cooperation",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> opens its borders.<bullet></bullet> <span style=\"\">Trading</span> is enabled.<bulletlist></bullet><bullet>Up to two resource trades are available.</bullet><bullet><span style=\"\">Magic Material</span> can be traded.</bullet></bulletlist></bulletlist>"
+    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> opens its borders.</bullet><bullet>A <span style=\"\">Trade Route</span> can be established to this city from one of your own.</bullet><bullet><span style=\"\">Magic Material</span> can be bought.</bullet></bulletlist></bulletlist>"
   },
   "GLOBAL.PactOfIntegrationConcept": {
     "name": "Pact of Integration",
@@ -669,56 +676,56 @@
     "icon": "rs_vassalage",
     "globalName": "GLOBAL.PactOfVassalageConcept",
     "displayHtml": "Pact of Vassalage",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares its income and <span style=\"\">Magic Material</span>.</bullet><bullet>Other <span style=\"\">Empire</span> may no longer <span style=\"\">negotiate</span> better <span style=\"\">Pv E Dipl State</span> with the <span style=\"\">Independent City</span>.</bullet><bullet>The<span style=\"\">Independent City</span> will join its overlord in any <span style=\"\">War</span> they are fighting, can assist in combat, and can be given directives in War Coordination.</bullet><bullet>Switches to the <span style=\"\">Vassalage Phase</span>, during which further <span style=\"\">House Influence</span> can be earned to improve the benefits of vassalage. Eventually the <span style=\"\">Independent City</span> may be <span style=\"\">integrated</span> into the empire of its overlord.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares part of its <span style=\"\">Mana</span> and <span style=\"\">Gold</span> income as tribute.</bullet><bullet><span style=\"\">Magic Material</span> they control are shared with their overlord.</bullet><bullet>Other <span style=\"\">Empire</span> may no longer <span style=\"\">negotiate</span> better <span style=\"\">Pv E Dipl State</span> with the <span style=\"\">Independent City</span>.</bullet><bullet>The<span style=\"\">Independent City</span> will join its overlord in any <span style=\"\">War</span> they are fighting, can assist in combat, and can be given directives in War Coordination.</bullet><bullet>Switches to the <span style=\"\">Vassalage Phase</span>, during which further <span style=\"\">House Influence</span> can be earned to improve the benefits of vassalage. Eventually the <span style=\"\">Independent City</span> may be <span style=\"\">integrated</span> into the empire of its overlord.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-1Concept": {
     "name": "Tributary",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-1Concept",
     "displayHtml": "Tributary",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.<bullet></bullet> <span style=\"\">Trading</span> costs increase by {tradingCost}%.</bullet><bullet>War Coordination is disabled and no new armies will be sent out.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.</bullet><bullet>War Coordination is disabled and no new armies will be sent out.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-2Concept": {
     "name": "Minor Tributary",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-2Concept",
     "displayHtml": "Minor Tributary",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.<bullet></bullet> <span style=\"\">Trading</span> costs increase by {tradingCost}%.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-3Concept": {
     "name": "Denying Tributary",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-3Concept",
     "displayHtml": "Denying Tributary",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares none of its income.</bullet><bullet>Shares none of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes nothing to the Rally of the Lieges.<bullet></bullet> <span style=\"\">Trading</span> costs increase by {tradingCost}%.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares none of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes nothing to the Rally of the Lieges.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl0Concept": {
     "name": "Vassalage",
     "icon": "rs_vassalage0",
     "globalName": "GLOBAL.PactOfVassalageLvl0Concept",
     "displayHtml": "Vassalage",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.<bullet></bullet> <span style=\"\">Trading</span> costs are at default levels.</bullet><bullet>War Coordination becomes available.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.</bullet><bullet>War Coordination becomes available.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl1Concept": {
     "name": "Bonded Vassalage",
     "icon": "rs_vassalage1",
     "globalName": "GLOBAL.PactOfVassalageLvl1Concept",
     "displayHtml": "Bonded Vassalage",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.<bullet></bullet> <span style=\"\">Trading</span> costs decrease by {tradingCost}%.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl2Concept": {
     "name": "Flourishing Vassalage",
     "icon": "rs_vassalage2",
     "globalName": "GLOBAL.PactOfVassalageLvl2Concept",
     "displayHtml": "Flourishing Vassalage",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.<bullet></bullet> <span style=\"\">Trading</span> costs decrease by {tradingCost}%.</bullet><bullet>City can be <span style=\"\">integrated</span> <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.</bullet><bullet>City can be <span style=\"\">integrated</span> <influence></influence>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl3Concept": {
     "name": "Supreme Vassalage",
     "icon": "rs_vassalage3",
     "globalName": "GLOBAL.PactOfVassalageLvl3Concept",
     "displayHtml": "Supreme Vassalage",
-    "description": "<bulletlist><bullet>The <span style=\"\">Independent City</span> shares {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.<bullet></bullet> <span style=\"\">Trading</span> costs decrease by {tradingCost}%.</bullet><bullet>City can be <span style=\"\">integrated</span> <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> with this <span style=\"\">Independent City</span> provide {incomePercentage}% of its income.</bullet><bullet>Shares all of its <span style=\"\">Magic Material</span>.</bullet><bullet>Contributes {commandPoints}<recruitmentpoints></recruitmentpoints> to the <span style=\"\">Request Military Aid</span>.</bullet><bullet>City can be <span style=\"\">integrated</span> <influence></influence>.</bullet></bulletlist>"
   },
   "GLOBAL.HouseInfluenceConcept": {
     "name": "Allegiance",
@@ -1068,7 +1075,7 @@
     "icon": null,
     "globalName": "GLOBAL.MutualConsulateConcept",
     "displayHtml": "Wizard's Bond",
-    "description": "Both <span style=\"\">Leader</span> agree to a wizard's bond to improve <span style=\"\">Empire Relation</span> and access new <span style=\"\">Treaty</span> and Diplomatic States.<br><br>Effects:[bulletList]<bullet>The <span style=\"\">Throne City</span> of each Ruler will be revealed.</bullet><bullet>Rulers can <span style=\"\">call each other to war</span>.[/bulletList]<br><br>Leads to:<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet></bulletlist>"
+    "description": "Both <span style=\"\">Leader</span> agree to a wizard's bond to improve <span style=\"\">Empire Relation</span> and access new <span style=\"\">Treaty</span> and Diplomatic States.<br><br>Effects:[bulletList]<bullet>The <span style=\"\">Throne City</span> of each Ruler will be revealed.</bullet><bullet>Rulers can <span style=\"\">call each other to war</span>.[/bulletList]<br><br>Leads to:<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet><bullet><span style=\"\">Trade Agreement</span></bullet></bulletlist>"
   },
   "GLOBAL.DefensivePactConcept": {
     "name": "Defensive Pact",
@@ -1076,6 +1083,13 @@
     "globalName": "GLOBAL.DefensivePactConcept",
     "displayHtml": "Defensive Pact",
     "description": "A Diplomatic State in which the <span style=\"\">Leader</span> vow to come to each other's aid in defensive wars.<br><br>When war is declared on either Ruler, they will automatically send a <span style=\"\">Call To War</span> to the other, asking them to aid them in the war. Answering this call to war will give the Ruler additional <span style=\"\">Casus Belli</span> to use directly. Rulers may still refuse to accept this call but will break the defensive pact if they do.<br><br>Leads to:<bulletlist><bullet><span style=\"\">D S Alliance</span></bullet><bullet><span style=\"\">Share Vision</span></bullet></bulletlist>"
+  },
+  "GLOBAL.TradeAgreementConcept": {
+    "name": "Free Trade Agreement",
+    "icon": null,
+    "globalName": "GLOBAL.TradeAgreementConcept",
+    "displayHtml": "Free Trade Agreement",
+    "description": "Both <span style=\"\">Leader</span> allow each other to establish <span style=\"\">Trade Route</span> between each other's <span style=\"\">City</span>."
   },
   "GLOBAL.OpenBordersConcept": {
     "name": "Open Borders",
@@ -1194,7 +1208,7 @@
     "icon": null,
     "globalName": "GLOBAL.DeclSupremacyConcept",
     "displayHtml": "Declaration of Debt",
-    "description": "Utilize Favors to keep another <span style=\"\">Leader</span> at bay:<bulletlist><bullet>A modifier that slowly increases towards {RelationValue}<goodrelation></goodrelation> will be added to your <span style=\"\">relations</span> with the Ruler. </bullet><bullet>While the Declaration lasts, the affected player will not have any grudge affecting the relation for any of their <span style=\"\">Casus Belli</span> towards you.</bullet><bullet>Maintaining a declaration costs {cost} upkeep per <span style=\"\">Turn</span>, which increases by {costScale} for each additional declaration.</bullet><bullet>Declarations can be made and ended through <span style=\"\">Pronouncements</span>.</bullet>"
+    "description": "Utilize Favors to keep another <span style=\"\">Leader</span> at bay:<bulletlist><bullet>A modifier that slowly increases towards {RelationValue}<goodrelation></goodrelation> will be added to your <span style=\"\">relations</span> with the Ruler. </bullet><bullet>While the Declaration lasts, the affected player will not have any grudge affecting the relation for any of their <span style=\"\">Casus Belli</span> towards you.</bullet><bullet>Maintaining a declaration costs {cost} upkeep per <span style=\"\">Turn</span>, which increases by {costScale} for each additional declaration.</bullet><bullet>Declarations can be made and ended through <span style=\"\">Pronouncements</span>.</bullet></bulletlist>"
   },
   "GLOBAL.GainingWarspoilsConcept": {
     "name": "Gaining War Spoils",
@@ -1434,6 +1448,55 @@
     "displayHtml": "Breached Isle",
     "description": "A breached isle is a handcrafted region which:<bulletlist><bullet>Is only accessible through a portal on Surface or Underground.</bullet><bullet>These portals are accessible at the start and are not guarded.</bullet><bullet>Contains a <span style=\"\">S T R U C T U R E S. B R E A C H E D_ A R C A N U M</span> and various other valuable <span style=\"\">Location</span></bullet></bulletlist>"
   },
+  "GLOBAL.PirateDwellingConcept": {
+    "name": "Free Captain",
+    "icon": null,
+    "globalName": "GLOBAL.PirateDwellingConcept",
+    "displayHtml": "Free Captain",
+    "description": "Free Captains are the charismatic lords of pirate <span style=\"\">Dwelling</span>, where the most infamous sailors band together to terrorize the seas.<br><bulletlist><bullet>Up to {IntMaxDwellings} Free Captains exist on a realm.</bullet><bullet>Free Captains have different personalities: <personalitypirateavaricious></personalitypirateavaricious> <span style=\"\">Avaricious</span>, <personalitypiratebloodthirsty></personalitypiratebloodthirsty> <span style=\"\">Bloodthirsty</span>, or <personalitypirateheroic></personalitypirateheroic> <span style=\"\">Heroic</span>.</bullet><bullet>Bonds with Free Captains are achieved by fulfilling their Demands or doing their Quests.</bullet><bullet>Having a Bond with a Free Captain will unlock several trading options with them, such as <span style=\"\">Tome</span> content, pirate <span style=\"\">Unit</span> and <<m:<span style=\"\">Spell</span> >>, or <span style=\"\">Equipment</span>.</bullet><bullet>Free Captains send out <span style=\"\">Pirate Raid</span> while at <span style=\"\">Pirate Dwelling War</span> or when another <span style=\"\">Empire</span> pays them to attack—even their allies.</bullet><bullet>Once Captured, the <span style=\"\">Dwelling</span> of a Free Captain is immediately destroyed and awards some of the Dwelling's treasures and trade items to the conqueror.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingTruceConcept": {
+    "name": "Truce",
+    "icon": "rs_neutral",
+    "globalName": "GLOBAL.PirateDwellingTruceConcept",
+    "displayHtml": "Truce",
+    "description": "The <span style=\"\">Pirate Dwelling</span> tolerates you.<br><br>Counts as <span style=\"\">Independent City Neutral</span> state.<br><br><span style=\"\">Pirate Dwelling</span> do not care about Province Claims.<br><br>You cannot assign a <span style=\"\">Diplomatic Token</span> to <span style=\"\">Pirate Dwelling</span>. Instead, completing quests and fulfilling demands will let you reach higher diplomatic states and eventually a <span style=\"\">Pirate Dwelling Life Bond</span>.<br><br><span style=\"\">Pirate Dwelling</span> have a small chance each turn of breaking the Truce and declaring <span style=\"\">Pirate Dwelling War</span>.<br><br><span style=\"\">Pirate Dwelling</span> can be bribed by other Rulers to start a <span style=\"\">Pirate Raid</span> against you."
+  },
+  "GLOBAL.PirateDwellingWarConcept": {
+    "name": "War",
+    "icon": "rs_war",
+    "globalName": "GLOBAL.PirateDwellingWarConcept",
+    "displayHtml": "War",
+    "description": "A state of <rs_war></rs_war> War with a <span style=\"\">Pirate Dwelling</span> means that <span style=\"\">Army</span> can engage in <span style=\"\">Combat</span> and <span style=\"\">City</span> can be attacked.<br><br>During war, <span style=\"\">Pirate Dwelling</span> will occasionally start <span style=\"\">Pirate Raid</span> to attack their enemies.<br><br>Wars end through defeat on either side or by negotiating peace."
+  },
+  "GLOBAL.PirateRaidConcept": {
+    "name": "Pirate Raid",
+    "icon": "pirateRaid",
+    "globalName": "GLOBAL.PirateRaidConcept",
+    "displayHtml": "Pirate Raid",
+    "description": "Pirate Raids are assaults launched by <span style=\"\">Pirate Dwelling</span> against an <span style=\"\">Empire</span>, focused on raiding <span style=\"\">Trade Route</span> and <span style=\"\">Province</span>.<br><bulletlist><bullet>Pirate Raids fly the black flag and do not adhere to diplomatic treaties.</bullet><bullet>Once a Pirate Raid has successfully raided {IntRaidGoal} targets, the raid will end.</bullet><bullet><span style=\"\">Empire</span> can pay a <span style=\"\">Pirate Dwelling</span> to start a Pirate Raid:<bulletlist></bullet><bullet>Gain a share of the looted rewards when the raid ends. This can include skills <span style=\"\">researched</span> by the targeted <span style=\"\">Empire</span>.</bullet><bullet>If the Pirate Raid is defeated, the attacked <span style=\"\">Leader</span> may find out and gain a <span style=\"\">Casus Belli</span>.</bullet></bulletlist><bullet>The attacked <span style=\"\">Leader</span> can bribe <gold></gold> the raiding party to abort their attack when engaging them with an <span style=\"\">Army</span>.</bullet><bullet>A single <span style=\"\">Pirate Dwelling</span> can have multiple Pirate Raids in action at the same time.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingAvariciousPirateConcept": {
+    "name": "Avaricious Pirate",
+    "icon": "personalityPirateAvaricious",
+    "globalName": "GLOBAL.PirateDwellingAvariciousPirateConcept",
+    "displayHtml": "Avaricious Pirate",
+    "description": "Avaricious Pirates focus on profit above all else.<br><bulletlist><bullet>The <span style=\"\">Pirate Dwelling</span> only breaks a truce with Rulers owning a lot of <span style=\"\">Gold</span>. The wealthier the Ruler, the higher the chance this will happen.</bullet><bullet>The <span style=\"\">Pirate Dwelling</span> likes Rulers with a lot of <span style=\"\">Gold</span> and, dislikes Rulers with little <span style=\"\">Gold</span>.</bullet><bullet>The personality informs some of the Dwelling's trading options, quests and which unique <span style=\"\">Artifact</span> may be acquired when reaching a <span style=\"\">Pirate Dwelling Life Bond</span>.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingBloodthirstyPirateConcept": {
+    "name": "Bloodthirsty Pirate",
+    "icon": "personalityPirateBloodthirsty",
+    "globalName": "GLOBAL.PirateDwellingBloodthirstyPirateConcept",
+    "displayHtml": "Bloodthirsty Pirate",
+    "description": "Bloodthirsty Pirates revel in violence and destruction.<br><bulletlist><bullet>The <span style=\"\">Pirate Dwelling</span> has a high chance of breaking a truce and declaring war.</bullet><bullet>The <span style=\"\">Pirate Dwelling</span> likes Rulers waging wars and dislikes Rulers forging defensive pacts and alliances.</bullet><bullet>The personality informs some of the Dwelling's trading options, quests, and which unique <span style=\"\">Artifact</span> may be acquired when reaching a <span style=\"\">Pirate Dwelling Life Bond</span>.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingHeroicPirateConcept": {
+    "name": "Heroic Pirate",
+    "icon": "personalityPirateHeroic",
+    "globalName": "GLOBAL.PirateDwellingHeroicPirateConcept",
+    "displayHtml": "Heroic Pirate",
+    "description": "Heroic Pirates focus on breaking the law to help the poor and the downtrodden.<br><bulletlist><bullet>The <span style=\"\">Pirate Dwelling</span> only breaks a truce with evil Rulers. The lower the Ruler's <span style=\"\">Alignment</span>, the higher the chance this will happen.</bullet><bullet>The <span style=\"\">Pirate Dwelling</span> likes Rulers with good <span style=\"\">Alignment</span> and dislikes Rulers with evil <span style=\"\">Alignment</span>.</bullet><bullet>The personality informs some of the Dwelling's trading options, quests, and which unique <span style=\"\">Artifact</span> may be acquired when reaching a <span style=\"\">Pirate Dwelling Life Bond</span>.</bullet></bulletlist>"
+  },
   "GLOBAL.BloodDrainConcept": {
     "name": "Blood Drain",
     "icon": null,
@@ -1453,7 +1516,7 @@
     "icon": null,
     "globalName": "GLOBAL.SunlessConcept",
     "displayHtml": "Sunless",
-    "description": "A <span style=\"\">Province Feature</span><br><br>The absence of sunlight has spread thorny and dark flora dotted with crimson roses.<br><bulletlist><bullet><span style=\"\">City</span> annexing this <span style=\"\">Province</span> suffer {stabilitypenalty} <span style=\"\">City Stability</span>.</bullet><bullet><span style=\"\">Unit</span> regenerate {regen} <span style=\"\">Hit Point</span> per <span style=\"\">Turn</span> in the <span style=\"\">World Map</span>.</bullet><bullet><span style=\"\">Unit</span> only receive {percentage} of <span style=\"\">Temporary Hit Point</span> when healed in <span style=\"\">Combat</span>.</bullet><bullet>Units and Cities that have <span style=\"\">P R O P E R T I E S. H E A R T L E S S</span> or are of an empire led by a <span style=\"\">Vampire Lord</span> are immune to these effects.</bullet></bulletlist>"
+    "description": "A <span style=\"\">Province Feature</span><br><br>The absence of sunlight has spread thorny and dark flora dotted with crimson roses.<br><bulletlist><bullet><span style=\"\">City</span> annexing this <span style=\"\">Province</span> suffer {stabilitypenalty} <span style=\"\">City Stability</span>.</bullet><bullet><span style=\"\">Unit</span> regenerate {regen} <span style=\"\">Hit Point</span> per <span style=\"\">Turn</span> in the <span style=\"\">World Map</span>.</bullet><bullet><span style=\"\">Unit</span> receive {percentage} less <span style=\"\">Temporary Hit Point</span> when healed in <span style=\"\">Combat</span>.</bullet><bullet>Units and Cities that have <span style=\"\">P R O P E R T I E S. H E A R T L E S S</span> or are of an empire led by a <span style=\"\">Vampire Lord</span> are immune to these effects.</bullet></bulletlist>"
   },
   "GLOBAL.VampireLordConcept": {
     "name": "Elder Vampire",
@@ -1523,7 +1586,7 @@
     "icon": "minorcity",
     "globalName": "GLOBAL.DwellingConcept",
     "displayHtml": "Dwelling",
-    "description": "<minorcity></minorcity> Dwellings are independent <span style=\"\">City</span> that are inhabited by specific types of <span style=\"\">Unit</span>.<br><br>Like <span style=\"\">Independent City</span> they:<bulletlist><bullet>Have a <span style=\"\">Free City Lord</span>.</bullet><bullet>Have <span style=\"\">diplomatic standings</span> with you that can be improved to gain benefits.</bullet><bullet>Do not belong to an <span style=\"\">Empire</span>.</bullet></bulletlist><br><br>Dwellings are not affected by Realm Traits or <span style=\"\">Spell</span> that affect Free Cities."
+    "description": "<minorcity></minorcity> Dwellings are independent <span style=\"\">City</span> that usually have unique ways to influence and offer unique benefits.<br><br>Like <span style=\"\">Independent City</span> they:<bulletlist><bullet>Have a <span style=\"\">Free City Lord</span>.</bullet><bullet>Have <span style=\"\">diplomatic standings</span> with you that can be improved.</bullet><bullet>Do not belong to an <span style=\"\">Empire</span>.</bullet></bulletlist><br><br>Dwellings are not affected by Realm Traits or <span style=\"\">Spell</span> that affect Free Cities."
   },
   "GLOBAL.EmpireRelationConcept": {
     "name": "Empire Relations",
@@ -1565,7 +1628,7 @@
     "icon": null,
     "globalName": "GLOBAL.IndependentCityTradeConcept",
     "displayHtml": "Trade",
-    "description": "<span style=\"\">Independent City</span> will offer several trade options to <span style=\"\">Leader</span> that share at least a <span style=\"\">Pact Of Cooperation</span> with the City.<br><br>Trade options consist of resource exchanges as well as any <span style=\"\">Magic Material</span> located in the domain of the city.<br><br>A Free City will only agree to one active trade at a time, after the trade has expired a new trade can be made."
+    "description": "<span style=\"\">Independent City</span> may be asked to focus on a particular resource by <span style=\"\">Leader</span> that share at least a <span style=\"\">Pact Of Cooperation</span> with the City.<br><br>They may also provide any <span style=\"\">Magic Material</span> located in the domain of the city in exchange for payment.<br><br>A Free City will only agree to one active trade at a time, after the trade has expired a new trade can be made."
   },
   "GLOBAL.IndependentCityWarConcept": {
     "name": "War",
@@ -2211,6 +2274,13 @@
     "displayHtml": "Shad'rai",
     "description": "A group of ambitious <span style=\"\">Godir Lore</span> who formed a volatile cabal in order to claim power within the <span style=\"\">Pantheon Lore</span> and the <span style=\"\">Astral Sea Lore</span>. They believe no power should be hidden from anyone and are known for their schemes and invasions of realms they deem worthy of their domination. Their chaotic tendencies often put them in direct opposition to the <span style=\"\">Covenant Faction Lore</span>."
   },
+  "GLOBAL.SilverSeasLoreConcept": {
+    "name": "The Silver Seas",
+    "icon": null,
+    "globalName": "GLOBAL.SilverSeasLoreConcept",
+    "displayHtml": "The Silver Seas",
+    "description": "The legend of the Silver Seas is anchored in the mind of every sailor. Ancient sea shanties tell of a place in the <span style=\"\">Worlds Within Lore</span> where the <span style=\"\">Astral Currents</span> converge, with seas so rich that their very waves are made of liquid silver. There, fish with scales of precious metals swim among reefs of pure mana, while the songs of the <span style=\"\">Maer Lore</span> lull the shores.<br><br>Some seafarers theorize that the waves of the Silver Seas lie hidden within <span style=\"\">Tidolon Lore</span>; others believe that their tides are yet to be found. Still, there are those who claim that this paradise is not a place to find, but a place to seek."
+  },
   "GLOBAL.SoulsLoreConcept": {
     "name": "Souls",
     "icon": null,
@@ -2484,6 +2554,13 @@
     "displayHtml": "Fishery",
     "description": "A Fishery is a base <span style=\"\">Province Improvement</span> with the following benefits:<bulletlist><bullet>Provides <span style=\"\">Food</span> income.</bullet></bulletlist>"
   },
+  "GLOBAL.ForeignCityConcept": {
+    "name": "Foreign City",
+    "icon": null,
+    "globalName": "GLOBAL.ForeignCityConcept",
+    "displayHtml": "Foreign City",
+    "description": "<span style=\"\">City</span> belonging to an <span style=\"\">Empire</span> other than your own."
+  },
   "GLOBAL.ForesterConcept": {
     "name": "Forester",
     "icon": "forester",
@@ -2626,7 +2703,7 @@
   },
   "GLOBAL.ArtifactConcept": {
     "name": "Artifact",
-    "icon": null,
+    "icon": "artifact",
     "globalName": "GLOBAL.ArtifactConcept",
     "displayHtml": "Artifact",
     "description": "Artifacts are unique items bound to the <span style=\"\">Empire</span> of a <span style=\"\">Player</span>. They provide unique bonuses to the <span style=\"\">Empire</span> controlling them.<br><bulletlist><bullet>Artifacts are often part of a collection. Completing the collection will trigger an impactful Collection Happening.</bullet><bullet>Artifacts may be traded between <span style=\"\">Player</span>.</bullet><bullet>When defeating a player, all Artifacts of that player are claimed by the defeating player.</bullet></bulletlist>"
@@ -2812,6 +2889,20 @@
     "globalName": "GLOBAL.SpeedMarchConcept",
     "displayHtml": "Forced March",
     "description": "Forced March can be used to force your units to move further on the <span style=\"\">World Map</span> than they would normally be able to in a single <span style=\"\">Turn</span>.<br><br>When Forced March is activated units gain {Movepointgain}% of their <span style=\"\">Move Point</span> but lose {Healthloss}% of their current <span style=\"\">Hit Point</span>. They also become <span style=\"\">P R O P E R T I E S. E X H A U S T E D</span> for {ExhaustedTurns} <span style=\"\">Turn</span>. Forced March costs {Manacost} <span style=\"\">Mana</span> per unit in the army.<br><br>The ability to use Forced March can be unlocked through <span style=\"\">Empire Development</span> ."
+  },
+  "GLOBAL.TradeRouteConcept": {
+    "name": "Trade Route",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteConcept",
+    "displayHtml": "Trade Route",
+    "description": "A connection between a <span style=\"\">City</span> and an Outpost or other <span style=\"\">City</span>, granting the origin city where it was created <span style=\"\">Trade Route Income</span> based on the target it is connected to.<br><br>Cities can establish a Trade Route by spending <span style=\"\">Unit Production</span>, the cost increasing with the type of target and the amount of movement needed to reach it.<br><br>Only a certain number of Trade Routes can be active per City, this cap can be increased via <span style=\"\">City Structure</span>."
+  },
+  "GLOBAL.TradeRouteIncomeConcept": {
+    "name": "Trade Route Income",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteIncomeConcept",
+    "displayHtml": "Trade Route Income",
+    "description": "Trade Route income given to the <span style=\"\">City</span> depends on the target:<bulletlist><bullet><span style=\"\">Outpost</span> - All income from the outpost's Domain.</bullet><bullet><span style=\"\">Independent City</span> - A percentage of all their income increasing with their <span style=\"\">Pv E Dipl State</span>.</bullet><bullet><span style=\"\">Foreign City</span> - A large percentage of their <span style=\"\">Gold</span> and <span style=\"\">Mana</span>.</bullet></bulletlist>"
   },
   "GLOBAL.CryptConcept": {
     "name": "Crypt",
@@ -3486,11 +3577,11 @@
     "description": "A <span style=\"\">Province Feature</span>.<br><br>Swampy marshlands. A <span style=\"\">Farm</span> can be built here, but factions without Swamp Adaptation will suffer {fooddebuff} <span style=\"\">Food</span>."
   },
   "GLOBAL.UndergroundWaterConcept": {
-    "name": "Water",
+    "name": "Underground Water",
     "icon": null,
     "globalName": "GLOBAL.UndergroundWaterConcept",
-    "displayHtml": "Water",
-    "description": "A <span style=\"\">Province Feature</span>.<br><br>A province of water in the underground. A water <span style=\"\">Farm</span> can be built here."
+    "displayHtml": "Underground Water",
+    "description": "A water <span style=\"\">Province Feature</span>.<br><br>A province of water in the underground. A water <span style=\"\">Farm</span> can be built here."
   },
   "GLOBAL.UninhabitableConcept": {
     "name": "Uninhabitable",
@@ -3511,7 +3602,7 @@
     "icon": null,
     "globalName": "GLOBAL.MangroveForestConcept",
     "displayHtml": "Mangrove Forest",
-    "description": "A <span style=\"\">Province Feature</span>.<br><br>A forest with its roots submerged in water. A water <span style=\"\">Forester</span> can be built here."
+    "description": "A water <span style=\"\">Province Feature</span>.<br><br>A forest with its roots submerged in water. A water <span style=\"\">Forester</span> can be built here."
   },
   "GLOBAL.VoidConcept": {
     "name": "Void",
@@ -3554,5 +3645,12 @@
     "globalName": "GLOBAL.DrainingConcept",
     "displayHtml": "Draining",
     "description": "Units passing through or ending their turn in this position suffer <span style=\"\">P R O P E R T I E S. D I S R U P T I O N_ T O O L T I P_ P R O P E R T Y</span> for {turn} <span style=\"\">Turn</span>. If that unit has <span style=\"\">P R O P E R T I E S. M A G I C_ O R I G I N</span> it also suffers <span style=\"\">P R O P E R T I E S. D E C A Y I N G</span> for {turn2} <span style=\"\">Turn</span>"
+  },
+  "GLOBAL.ExplosiveConcept": {
+    "name": "Explosive",
+    "icon": null,
+    "globalName": "GLOBAL.ExplosiveConcept",
+    "displayHtml": "Explosive",
+    "description": "This obstacle will explode when destroyed, dealing damage to adjacent units."
   }
 }

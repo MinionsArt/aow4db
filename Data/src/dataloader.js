@@ -73,7 +73,9 @@ const extraFormUnitsList = [
     "lieutenant",
     "warlord",
     "temptress",
-    "priest_of_the_weave"
+    "priest_of_the_weave",
+    "flowbinder_archer",
+    "wavemaster"
 ];
 
 const secretSpellsList = [
@@ -189,7 +191,7 @@ const dlcMap = {
         src: "/aow4db/Icons/Text/singer_of_storms.png",
         text: "Part of the Singer of Storms DLC"
     },
-    THESILVERSEAS: {
+    SILVERSEAS: {
         src: "/aow4db/Icons/Text/the_silver_seas.png",
         text: "Silver Seas for theorycrafting"
     }
@@ -226,7 +228,8 @@ async function GetAllData(selectedLang) {
         "DestinyTraits.json",
         "Relics.json",
         "Pantheon_Tree.json",
-        "ExtraLookSpellsOrigin.json"
+        "ExtraLookSpellsOrigin.json",
+        "all_spawners.json"
     ];
     const fileNames = [
         // ingame dump files
@@ -283,7 +286,8 @@ async function GetAllData(selectedLang) {
             "jsonDestinyTriggers",
             "jsonRelics",
             "jsonPantheon",
-            "jsonExtraSpellsLookup"
+            "jsonExtraSpellsLookup",
+              "jsonSpawners"
         ];
         const targets = [
             "jsonHeroItems",
@@ -302,7 +306,8 @@ async function GetAllData(selectedLang) {
             "jsonItemForgeUpgrades",
             "jsonUI",
             "jsonAllFromPO",
-            "jsonConceptTooltips"
+            "jsonConceptTooltips",
+          
         ];
 
         // Assign data to global vars
@@ -377,11 +382,11 @@ async function CheckData() {
         }
         CheckBoxTooltips();
 
-        if (storedSettings.showBeta) {
-            await GetAllData("BETA");
-        } else {
-            await GetAllData(storedSettings.language);
-        }
+        //if (storedSettings.showBeta) {
+        //    await GetAllData("BETA");
+        //} else {
+        await GetAllData(storedSettings.language);
+        // }
 
         //await GetAllData("EN");
         AddExtraData();

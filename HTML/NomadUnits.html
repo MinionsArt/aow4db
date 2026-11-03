@@ -1,45 +1,44 @@
 <!doctype html>
+<!doctype html>
 <html lang="en">
     <head>
-                 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-      <script src="/aow4db/Data/Init.js"></script>
+        <script src="/aow4db/Data/Init.js"></script>
         <script>
-            
-              const listOfSub = ["Conquerors", "Scavengers"];
+            const listOfSub = ["Conquerors", "Scavengers"];
             const listOfIcons = ["nomad_"];
-             const listOfName = [""];
-          
+            const listOfName = [""];
 
             function HandlePage() {
                 // create parts
-                
-               
-                     CreateParts(listOfSub, listOfIcons, listOfName);
+
+                CreateParts(listOfSub, listOfIcons, listOfName);
 
                 listOfSub.forEach((sub, i) => {
                     const unitarray = GetCultureUnitsOf("Nomad", sub);
                     console.log(unitarray);
                     SetButtonsAndDivs(unitarray, "buttonHolder" + i, "unit", "dataHolder" + i, sub);
                 });
-               
-               
+
                 SetLevelUpStuff();
             }
         </script>
 
-        <title>Age of Wonders 4 Database - Dark Units</title>
+        <title>Age of Wonders 4 Database - Nomad Units</title>
     </head>
 
     <body>
@@ -54,7 +53,7 @@
             <div id="buttonHolder" class="w3-bar w3-black"></div>
             <div id="dataHolder" style="margin-top: -250px"></div>
         </div>
-        
+
         <div id="presetPoint"></div>
     </body>
 </html>

@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
-                 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-  gtag('config', 'G-CC3NE8PT7K');
-</script>
+            gtag("config", "G-CC3NE8PT7K");
+        </script>
         <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
         <meta charset="UTF-8" />
@@ -17,12 +19,11 @@
 
         <script src="/aow4db/Data/Init.js"></script>
         <script>
-          
-
             function HandlePage() {
                 showAllRelics("GIANTKINGS ", "Giants");
-                  showAllRelics("RISEFROMRUIN ", "Fractured");
-                  showAllRelics("SECRETSOFTHEARCHMAGES ", "Secret");
+                showAllRelics("RISEFROMRUIN ", "Fractured");
+                showAllRelics("SECRETSOFTHEARCHMAGES ", "Secret");
+                showAllRelics("SILVERSEAS ", "Pirate");
                 SetLevelUpStuff();
             }
         </script>
@@ -37,23 +38,36 @@
         <br /><br /><br />
         <div class="w3-container">
             <div class="w3-bar w3-black" id="buttonHolder">
-                <button id="Giants-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Giants')">
+                <button
+                    id="Giants-button"
+                    class="w3-bar-item w3-button tablink w3-red"
+                    onclick="openDiv(event,'Giants')">
                     Giant Kings Artifacts
                 </button>
-                 <button id="Fractured-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Fractured')">
+                <button
+                    id="Fractured-button"
+                    class="w3-bar-item w3-button tablink w3-red"
+                    onclick="openDiv(event,'Fractured')">
                     Fractured Artifacts
                 </button>
-                 <button id="Secret-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Secret')">
+                <button
+                    id="Secret-button"
+                    class="w3-bar-item w3-button tablink w3-red"
+                    onclick="openDiv(event,'Secret')">
                     Secret Spells
                 </button>
-               
+                <button
+                    id="Pirate-button"
+                    class="w3-bar-item w3-button tablink w3-red"
+                    onclick="openDiv(event,'Pirate')">
+                    Pirate & Ocean
+                </button>
             </div>
-             <div id="dataHolder" style="margin-top: -150px">
+            <div id="dataHolder" style="margin-top: -150px">
                 <div id="Giants" class="w3-container w3-border city"></div>
-                 <div id="Fractured" class="w3-container w3-border city"></div>
-                 <div id="Secret" class="w3-container w3-border city"></div>
-
-               
+                <div id="Fractured" class="w3-container w3-border city"></div>
+                <div id="Secret" class="w3-container w3-border city"></div>
+                <div id="Pirate" class="w3-container w3-border city"></div>
             </div>
         </div>
     </body>

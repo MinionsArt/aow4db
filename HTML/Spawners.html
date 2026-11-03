@@ -1,53 +1,60 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC3NE8PT7K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-CC3NE8PT7K");
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/aow4db/Data/Init.js"></script>
+
+    <script>
+
+        function HandlePage() {
+            //  showWorldStructuresWithArgument(undefined, "Spawner", undefined, "Bronze");
+            for (const tier of ["Bronze", "Silver", "Gold"]) {
+                showSpawnersWithArgument(tier, tier);
             }
-            gtag("js", new Date());
+            SetLevelUpStuff();
+        }
+    </script>
 
-            gtag("config", "G-CC3NE8PT7K");
-        </script>
-        <link rel="shortcut icon" type="image/x-icon" href="/aow4db/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="/aow4db/Style/style.css" />
-        <meta charset="UTF-8" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="/aow4db/Data/Init.js"></script>
-        
-        <script>
-          
-            function HandlePage() {
-                showWorldStructuresWithArgument(undefined, "Spawner", undefined, "Bronze");
-                SetLevelUpStuff();
-            }
-        </script>
+    <title>Age of Wonders 4 Database - Spawners</title>
+</head>
 
-        <title>Age of Wonders 4 Database - Spawners</title>
-    </head>
-
-    <body>
-        <div class="textblocktitle">Infestation Spawners</div>
-        <div class="w3-container">
-            <div class="w3-bar w3-black" id="buttonHolder">
-                <button
-                    id="Bronze-button"
-                    class="w3-bar-item w3-button tablink w3-red"
-                    onclick="openDiv(event,'Bronze')">
-                    Infestations
-                </button>
-              
-            </div>
-            <div id="dataHolder">
-                <div id="Bronze" class="w3-container w3-border city"></div>
-
-                
-            </div>
+<body>
+    <div class="textblocktitle">Infestation Spawners</div>
+    <div class="w3-container">
+        <div class="w3-bar w3-black" id="buttonHolder">
+            <button id="Bronze-button" class="w3-bar-item w3-button tablink w3-red" onclick="openDiv(event,'Bronze')">
+                Bronze
+            </button>
+            <button id="Silver-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Silver')">
+                Silver
+            </button>
+            <button id="Gold-button" class="w3-bar-item w3-button tablink" onclick="openDiv(event,'Gold')">
+                Gold
+            </button>
         </div>
-    </body>
+        <div id="dataHolder">
+            <div id="Bronze" class="w3-container w3-border city"></div>
+            <div id="Silver" class="w3-container w3-border city" style="display: none"></div>
+            <div id="Gold" class="w3-container w3-border city" style="display: none"></div>
+        </div>
+    </div>
+</body>
+
 </html>
 <footer>
     <br />

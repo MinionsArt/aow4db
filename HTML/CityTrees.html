@@ -555,6 +555,21 @@
                     title: "Nomad Scavengers"
                 },
                 {
+                    key: "mercantile",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mercantile"
+                },
+                {
+                    key: "mercantile_cartel",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mercantile Cartel"
+                },
+                {
+                    key: "mercantile_barony",
+                    color: "rgb(17, 17, 17)",
+                    title: "Mercantile Barony"
+                },
+                {
                     key: "reaver",
                     color: "rgb(17, 17, 17)",
                     title: "Reaver"
@@ -672,7 +687,15 @@
                     "stone_walls:sentry_nests"
                 ],
                 nomad_conquerors: ["store_house:raider_tents", "granary:trophy_stores", "iii_unlock:conquerors_tower"],
-                nomad_scavengers: ["workshop:salvage_shop", "blacksmith:loot_armory", "iii_unlock_2:scavenger_vault"]
+                nomad_scavengers: ["workshop:salvage_shop", "blacksmith:loot_armory", "iii_unlock_2:scavenger_vault"],
+                mercantile: [
+                    "town_hall_ii:town_hall_ii_merchants_court",
+                    "town_hall_iii:town_hall_iii_guild_hall",
+                    "town_hall_iv:town_hall_iv_trade_palace",
+                    "palisade_walls:fortified_harbor"
+                ],
+                mercantile_cartel: ["vendor:smuggling_network", "market:black_market", "iii_unlock:informant_network"],
+                mercantile_barony: ["store_house:warehouse", "granary:food_markets", "iii_unlock_2:chamber_of_commerce"]
             };
 
             function findResources(text) {
@@ -1197,6 +1220,15 @@
                         checked="checked"
                         onchange="reDrawAll()" />
                     Nomad
+                </label>
+                <label class="switch">
+                    <input
+                        type="checkbox"
+                        name="checkToggle"
+                        id="mercantileCheck"
+                        checked="checked"
+                        onchange="reDrawAll()" />
+                    Mercantile
                 </label>
             </div>
             <div class="tree-space" id="treespacegeneral"></div>

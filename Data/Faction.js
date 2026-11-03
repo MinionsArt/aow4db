@@ -101,67 +101,7 @@ function addOrSubtract(extraAffinity, add) {
     return extraAffinity;
 }
 
-const extraTomesForTheorycrafting = [
-    {
-        affinities:
-            "1 <empirenature></empirenature> Empire Nature Affinity, 1 <empirematter></empirematter> Empire Materium Affinity",
-        lore_description: "",
-        gameplay_description: "For theorycrafting.",
-        resid: 143243,
-        id: "tome_of_hydromancy",
-        DLC: "THESILVERSEAS ",
-        lore_author: "",
-        name: "Tome of Hydromancy",
-        tier: 1,
-        icon: "tome_of_hydromancy",
-        skills: [],
-        initial_upgrades: []
-    },
-    {
-        affinities:
-            "1 <empirematter></empirematter> Empire Materium Affinity, 1 <empirechaos></empirechaos> Empire Chaos Affinity",
-        lore_description: "",
-        gameplay_description: "For theorycrafting.",
-        resid: 143244,
-        id: "tome_of_piracy",
-        DLC: "THESILVERSEAS ",
-        lore_author: "",
-        name: "Tome of Piracy",
-        tier: 2,
-        icon: "tome_of_piracy",
-        skills: [],
-        initial_upgrades: []
-    },
-    {
-        affinities:
-            "1 <empirechaos></empirechaos> Empire Chaos Affinity, 1 <empireshadow></empireshadow> Empire Shadow Affinity",
-        lore_description: "",
-        gameplay_description: "For theorycrafting.",
-        resid: 143245,
-        id: "tome_of_the_damned",
-        DLC: "THESILVERSEAS ",
-        lore_author: "",
-        name: "Tome of the Damned",
-        tier: 2,
-        icon: "tome_of_the_damned",
-        skills: [],
-        initial_upgrades: []
-    },
-    {
-        affinities: "2 <empireshadow></empireshadow> Empire Shadow Affinity",
-        lore_description: "",
-        gameplay_description: "For theorycrafting.",
-        resid: 143246,
-        id: "tome_of_eternal_ice",
-        DLC: "THESILVERSEAS ",
-        lore_author: "",
-        name: "Tome of Eternal Ice",
-        tier: 4,
-        icon: "tome_of_eternal_ice",
-        skills: [],
-        initial_upgrades: []
-    }
-];
+const extraTomesForTheorycrafting = [];
 
 let theorycraftTomesAdded = false;
 
@@ -1574,6 +1514,9 @@ function findOriginLocName(origin, type) {
                 }
             } else {
                 newOrigin = origin.name;
+            }
+            if(newOrigin == undefined){
+                newOrigin = "";
             }
             newOrigin = RemoveHyperLinks(newOrigin);
             newOrigin = newOrigin.split("{")[0];

@@ -124,13 +124,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -155,13 +149,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -186,13 +174,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -217,13 +199,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -248,13 +224,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -406,13 +376,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -437,13 +401,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -468,13 +426,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -499,13 +451,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -530,13 +476,7 @@
     "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -595,6 +535,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -606,6 +549,9 @@
   "tags": [
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000049700000DB5"
@@ -1025,7 +971,7 @@
   "resid": 5111011084624,
   "point_cost": 1,
   "id": "cryomancers_staff_equipment_upgrade",
-  "description": "Deal damage to target enemy unit.",
+  "description": "Target unit:<bulletlist><bullet>Sustains damage.</bullet><bullet>Has a base 60% chance of becoming Frozen for 1 <turn></turn> Turn. If unsuccessful, inflict Chilled.</bullet></bulletlist><br></br>Adjacent enemy units:<bulletlist><bullet>Sustain 50% of the damage.</bullet><bullet>Become Chilled for 3 <turn></turn> Turns.</bullet></bulletlist>",
   "name": "Freezing Blast",
   "tags": [
    {
@@ -1260,6 +1206,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A6000007F9",
@@ -1281,6 +1230,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -1299,6 +1251,9 @@
    },
    {
     "tag": "ItemAbility.Summon"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000004A60000081B",
@@ -1375,7 +1330,7 @@
   "point_cost": 3,
   "id": "equipment_upgrade_passive_splitterling_infection",
   "DLC": "ELDRITCHREALMS ",
-  "description": "Units killed with this weapon transform into <hyperlink>Splitterlings</hyperlink> until the end of battle. Does not trigger in water combat.",
+  "description": "Units killed with this weapon transform into <hyperlink>Splitterlings</hyperlink> until the end of battle.",
   "name": "Splitterling Infection",
   "tags": [
    {
@@ -1485,6 +1440,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A6000007F7",
@@ -1663,6 +1621,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A6000007F5",
@@ -1809,6 +1770,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -1872,6 +1836,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A6000007F4",
@@ -2081,13 +2048,7 @@
     "tag": "ItemForge.RelicLogic.RelicDamage.RelicSpirit"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -2115,13 +2076,7 @@
     "tag": "ItemForge.RelicLogic.RelicDamage.RelicBlight"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -2149,13 +2104,7 @@
     "tag": "ItemForge.RelicLogic.RelicDamage.RelicFrost"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -2183,13 +2132,7 @@
     "tag": "ItemTheme.Magical.Lightning"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -2217,13 +2160,7 @@
     "tag": "ItemTypeWeapon.EldritchRelic"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -2350,13 +2287,7 @@
     "tag": "ItemTypeWeapon.DragonClaw"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -2381,13 +2312,7 @@
     "tag": "ItemTypeWeapon.DragonClaw"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -2412,13 +2337,7 @@
     "tag": "ItemTypeWeapon.DragonClaw"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -2443,13 +2362,7 @@
     "tag": "ItemTypeWeapon.DragonClaw"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -2474,13 +2387,7 @@
     "tag": "ItemTypeWeapon.DragonClaw"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -3417,13 +3324,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -3447,13 +3348,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -3477,13 +3372,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -3507,13 +3396,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -3537,13 +3420,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -3580,6 +3457,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -3594,6 +3474,9 @@
    },
    {
     "tag": "ItemAbility.Summon.RaiseUndead"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B00001BA7",
@@ -3610,6 +3493,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -3624,6 +3510,9 @@
    },
    {
     "tag": "ItemPassive.Support.SupportStrengthened"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E0000109D",
@@ -3640,6 +3529,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -3654,6 +3546,9 @@
    },
    {
     "tag": "ItemPassive.Support.SupportStatusResistance"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E0000109A",
@@ -3670,6 +3565,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -3684,6 +3582,9 @@
    },
    {
     "tag": "ItemPassive.Support.SupportResistance"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E0000109C",
@@ -3700,6 +3601,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -3714,6 +3618,9 @@
    },
    {
     "tag": "ItemPassive.Support.SupportDefense"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E0000109B",
@@ -3730,6 +3637,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -3744,6 +3654,9 @@
    },
    {
     "tag": "ItemPassive.Support.SupportRegeneration"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E00001092",
@@ -3966,6 +3879,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A6000003A1",
@@ -4104,6 +4020,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A6000003A1",
@@ -4486,7 +4405,7 @@
   "resid": 5111011082991,
   "point_cost": 3,
   "id": "equipment_upgrade_passive_infecting",
-  "description": "Units killed with this weapon come back as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle. Does not trigger in water combat.",
+  "description": "Units killed with this weapon come back as <hyperlink>Decaying Zombies</hyperlink> under your control until the end of battle.",
   "name": "Infecting",
   "tags": [
    {
@@ -4590,6 +4509,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A600000334",
@@ -4722,6 +4644,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A600000333",
@@ -4854,6 +4779,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A600000332",
@@ -4986,6 +4914,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A600000330",
@@ -5121,6 +5052,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A60000032F",
@@ -6453,7 +6387,7 @@
   "unlock_requirements": [
    {
     "num_required": 2,
-    "token_name": "Astral Dew"
+    "token_name": "Archon Blood"
    }
   ]
  },
@@ -7501,6 +7435,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -7515,6 +7452,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005382",
@@ -7546,7 +7489,7 @@
   "point_cost": 2,
   "id": "equipment_upgrade_passive_tempests_chorus",
   "DLC": "WITCHOFTHEWAVES ",
-  "description": "When an enemy unit gains Electrified, they sustain an extra 5 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.<br></br><br></br>Removed if this unit leaves the battle.",
+  "description": "The first time each turn an enemy gains Electrified they sustain an extra 12 <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.<br></br><br></br>Removed if this unit leaves the battle.",
   "name": "Tempest's Chorus",
   "tags": [
    {
@@ -7616,6 +7559,740 @@
    }
   ],
   "icon": "00000497000046C7"
+ },
+ {
+  "abilities": [
+   {
+    "slug": "00000497000045c3"
+   }
+  ],
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains ItemTypeMisc.OtherItem "
+      },
+      {
+       "condition": "Contains ItemTypeJewelry.Amulet "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveSingleUpgrade "
+    }
+   ]
+  },
+  "resid": 5046586590657,
+  "point_cost": 3,
+  "id": "equipment_upgrade_passive_death_surge",
+  "DLC": "SILVERSEAS ",
+  "description": "When this unit kills another, cooldowns are reduced by 1<turn></turn>.<br></br><br></br>Can only trigger once per turn.",
+  "name": "Death Surge",
+  "tags": [
+   {
+    "tag": "ItemTypeJewelry.Amulet"
+   },
+   {
+    "tag": "ItemTypeMisc.OtherItem"
+   },
+   {
+    "tag": "ItemPassive.DeathSurge"
+   }
+  ],
+  "icon": "00000497000045C2",
+  "unlock_requirements": [
+   {
+    "num_required": 3,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "abilities": [
+   {
+    "slug": "dirge_of_the_damned_item_forge_ability_equipment_upgrade_active_staff_dirge_of_the_damned"
+   }
+  ],
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
+    }
+   ]
+  },
+  "resid": 5046586590647,
+  "point_cost": 2,
+  "id": "equipment_upgrade_active_staff_dirge_of_the_damned",
+  "DLC": "SILVERSEAS ",
+  "description": "",
+  "name": "Dirge of the Damned",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemAbility.Summon"
+   },
+   {
+    "tag": "ItemAbility.DirgeoftheDamned"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
+   }
+  ],
+  "icon": "00000497000042DB",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "abilities": [
+   {
+    "slug": "dirge_of_the_damned_item_forge_ability_equipment_upgrade_active_wand_dirge_of_the_damned"
+   }
+  ],
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains ItemTypeMisc.Wand "
+      },
+      {
+       "condition": "Contains ItemTypeMisc.Instrument "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveSingleUpgrade "
+    }
+   ]
+  },
+  "resid": 5046586590646,
+  "point_cost": 3,
+  "id": "equipment_upgrade_active_wand_dirge_of_the_damned",
+  "DLC": "SILVERSEAS ",
+  "description": "",
+  "name": "Dirge of the Damned",
+  "tags": [
+   {
+    "tag": "ItemForge.Exclusivities.ExclusiveSingleUpgrade"
+   },
+   {
+    "tag": "ItemTypeMisc.Wand"
+   },
+   {
+    "tag": "ItemAbility.Summon"
+   },
+   {
+    "tag": "ItemAbility.DirgeoftheDamned"
+   }
+  ],
+  "icon": "00000497000042DB",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "abilities": [
+   {
+    "slug": "000004970000448d"
+   }
+  ],
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeArmor "
+    },
+    {
+     "condition": "Contains inherited ItemTypeArmor.Torso "
+    }
+   ]
+  },
+  "resid": 5046586590644,
+  "point_cost": 2,
+  "id": "equipment_upgrade_passive_rime_healing",
+  "DLC": "SILVERSEAS ",
+  "description": "",
+  "name": "Rime Healing",
+  "tags": [
+   {
+    "tag": "ItemTypeArmor.Torso"
+   },
+   {
+    "tag": "ItemPassive.RimeHealing"
+   }
+  ],
+  "icon": "00000497000045B5",
+  "unlock_requirements": [
+   {
+    "num_required": 2,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "abilities": [
+   {
+    "slug": "wail_of_the_banshee_ability_equipment_upgrade_active_staff_wail_of_the_banshee"
+   }
+  ],
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+    }
+   ]
+  },
+  "resid": 5046586590643,
+  "point_cost": 1,
+  "id": "equipment_upgrade_active_staff_wail_of_the_banshee",
+  "DLC": "SILVERSEAS ",
+  "description": "",
+  "name": "Wail of the Banshee",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemAbility.WailoftheBanshee"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
+   }
+  ],
+  "icon": "000003E300005F65",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "abilities": [
+   {
+    "slug": "wail_of_the_banshee_ability_equipment_upgrade_active_wand_wail_of_the_banshee"
+   }
+  ],
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains ItemTypeMisc.Wand "
+      },
+      {
+       "condition": "Contains ItemTypeMisc.Instrument "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveSingleUpgrade "
+    }
+   ]
+  },
+  "resid": 5046586590642,
+  "point_cost": 2,
+  "id": "equipment_upgrade_active_wand_wail_of_the_banshee",
+  "DLC": "SILVERSEAS ",
+  "description": "",
+  "name": "Wail of the Banshee",
+  "tags": [
+   {
+    "tag": "ItemForge.Exclusivities.ExclusiveSingleUpgrade"
+   },
+   {
+    "tag": "ItemTypeMisc.Wand"
+   },
+   {
+    "tag": "ItemAbility.WailoftheBanshee"
+   }
+  ],
+  "icon": "000003E300005F65",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.TwoHandedHeavy "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Crossbow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.EldritchRelic "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw.Warclaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Grimoire "
+    }
+   ]
+  },
+  "resid": 5046586590635,
+  "point_cost": 2,
+  "id": "equipment_upgrade_passive_ember_dust_(single)",
+  "DLC": "SILVERSEAS ",
+  "description": "Base attacks have a 60% chance of inflicting Ember Dust.",
+  "name": "Inflict Ember Dust",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greatsword"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greataxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
+   },
+   {
+    "tag": "ItemTypeWeapon.EldritchRelic"
+   },
+   {
+    "tag": "ItemPassive.InflictEmberDust"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greatsword"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greataxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.EldritchRelic"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
+   }
+  ],
+  "icon": "00000497000045A8",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.OneHanded "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MeleeRanged "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Polearm "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Bow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw.ArmoredClaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Warhammer "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Greatbow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+    }
+   ]
+  },
+  "resid": 5046586590633,
+  "point_cost": 2,
+  "id": "equipment_upgrade_passive_ember_dust_(repeating)",
+  "DLC": "SILVERSEAS ",
+  "description": "The third base attack has a 90% chance of inflicting Ember Dust.",
+  "name": "Inflict Ember Dust",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemPassive.InflictEmberDust"
+   },
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   }
+  ],
+  "icon": "00000497000045A8",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.Magic.Staff "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.RangedPhysical.Crossbow "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greatsword "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greathammer "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Lance "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greataxe "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.EldritchRelic "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.Magic.Grimoire "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveBurning "
+    }
+   ]
+  },
+  "resid": 5046586590626,
+  "point_cost": 2,
+  "id": "equipment_upgrade_passive_ghostfire_(single)",
+  "DLC": "SILVERSEAS ",
+  "description": "Base attacks have a 90% chance of inflicting Ghostfire.",
+  "name": "Inflict Ghostfire",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greatsword"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greataxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
+   },
+   {
+    "tag": "ItemTypeWeapon.EldritchRelic"
+   },
+   {
+    "tag": "ItemPassive.InflictGhostfire"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greatsword"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greataxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.Warclaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.EldritchRelic"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
+   }
+  ],
+  "icon": "000004970000459F",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Polearm "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.RangedPhysical.Bow "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.OneHanded "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.DragonClaw "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.DragonClaw.ArmoredClaw "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Warhammer "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.RangedPhysical.Greatbow "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+      },
+      {
+       "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveBurning "
+    }
+   ]
+  },
+  "resid": 5046586590624,
+  "point_cost": 2,
+  "id": "equipment_upgrade_passive_ghostfire_(repeating)",
+  "DLC": "SILVERSEAS ",
+  "description": "Base attacks have a 60% chance of inflicting Ghostfire.",
+  "name": "Inflict Ghostfire",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemPassive.InflictGhostfire"
+   },
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   }
+  ],
+  "icon": "000004970000459F",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Pale Tidebloom"
+   }
+  ]
  },
  {
   "abilities": [
@@ -7814,13 +8491,7 @@
     "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -7844,13 +8515,7 @@
     "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -7874,13 +8539,7 @@
     "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -7904,13 +8563,7 @@
     "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -7934,13 +8587,7 @@
     "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -8042,13 +8689,7 @@
     "tag": "ItemTheme.Physical"
    }
   ],
-  "icon": "0000045E00000D17",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Arcanium Ore"
-   }
-  ]
+  "icon": "0000045E00000D17"
  },
  {
   "tag_filter": {
@@ -8072,13 +8713,7 @@
     "tag": "ItemTheme.Physical"
    }
   ],
-  "icon": "0000045E00000D17",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Arcanium Ore"
-   }
-  ]
+  "icon": "0000045E00000D17"
  },
  {
   "tag_filter": {
@@ -8242,6 +8877,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -8316,6 +8954,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000049700003498",
@@ -8337,6 +8978,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -8355,6 +8999,9 @@
    },
    {
     "tag": "ItemAbility.Summon.SummonRoseKnight"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000049700003494",
@@ -8577,6 +9224,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -8648,6 +9298,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004970000362A",
@@ -8906,6 +9559,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -8977,6 +9633,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004970000347D",
@@ -8998,6 +9657,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -9013,6 +9675,9 @@
    },
    {
     "tag": "ItemAbility.Heal"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000049700003325",
@@ -9266,13 +9931,7 @@
     "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -9296,13 +9955,7 @@
     "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -9326,13 +9979,7 @@
     "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -9356,13 +10003,7 @@
     "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -9386,13 +10027,7 @@
     "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -9610,18 +10245,12 @@
        "condition": "Contains ItemTypeWeapon.EldritchRelic "
       },
       {
-       "condition": "Contains ItemTypeWeapon.DragonClaw.Warclaw "
-      },
-      {
        "condition": "Contains ItemTypeWeapon.Magic.Grimoire "
       }
      ]
     },
     {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveFrozen "
-    },
-    {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveWet "
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveBurning "
     }
    ]
   },
@@ -9629,14 +10258,14 @@
   "point_cost": 2,
   "id": "equipment_upgrade_passive_rune_of_power_frost_single",
   "DLC": "GIANTKINGS ",
-  "description": "Base attacks have:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet><bullet>A base 60% chance of inflicting Frozen.</bullet></bulletlist>",
+  "description": "Base attacks have:<bulletlist><bullet>+4 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>A base 90% chance of inflicting Chilled.</bullet></bulletlist>",
   "name": "Rune of Power: Frost",
   "tags": [
    {
-    "tag": "ItemPassive.Inflict.InflictFrozen"
+    "tag": "ItemTheme.Magical.Frost"
    },
    {
-    "tag": "ItemTheme.Magical.Frost"
+    "tag": "ItemPassive.Inflict.InflictChilled"
    },
    {
     "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
@@ -9679,9 +10308,6 @@
      "condition": "One or More of the following must be True",
      "children": [
       {
-       "condition": "Contains inherited ItemTypeWeapon.OneHanded "
-      },
-      {
        "condition": "Contains inherited ItemTypeWeapon.Polearm "
       },
       {
@@ -9692,6 +10318,9 @@
       },
       {
        "condition": "Contains inherited ItemTypeWeapon.MeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.OneHanded "
       },
       {
        "condition": "Contains ItemTypeWeapon.DragonClaw "
@@ -9710,14 +10339,14 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
     {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveWet "
-    },
-    {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveFrozen "
+     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveBurning "
     }
    ]
   },
@@ -9725,14 +10354,14 @@
   "point_cost": 2,
   "id": "equipment_upgrade_passive_rune_of_power_frost_repeating",
   "DLC": "GIANTKINGS ",
-  "description": "Base attacks have:<bulletlist><bullet>+2 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink></bullet><bullet>A base 30% chance of inflicting Frozen.</bullet></bulletlist>",
+  "description": "Base attacks have:<bulletlist><bullet>+2 <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.</bullet><bullet>A base 60% chance of inflicting Chilled.</bullet></bulletlist>",
   "name": "Rune of Power: Frost",
   "tags": [
    {
     "tag": "ItemTheme.Magical.Frost"
    },
    {
-    "tag": "ItemPassive.Inflict.InflictFrozen"
+    "tag": "ItemPassive.Inflict.InflictChilled"
    },
    {
     "tag": "ItemTypeWeapon.OneHanded"
@@ -9763,6 +10392,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000049700002606"
@@ -9924,13 +10556,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -9955,13 +10581,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -9986,13 +10606,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -10017,13 +10631,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -10048,13 +10656,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -10206,13 +10808,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -10237,13 +10833,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -10268,13 +10858,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -10299,13 +10883,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -10330,13 +10908,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -10488,13 +11060,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -10519,13 +11085,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -10550,13 +11110,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -10581,13 +11135,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -10612,13 +11160,7 @@
     "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -11002,7 +11544,7 @@
   "point_cost": 2,
   "id": "equipment_upgrade_passive_rune_of_protection_rock",
   "DLC": "GIANTKINGS ",
-  "description": "Gain:<bulletlist><bullet>+2 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>Status Effect Immunity: Bleeding</bullet></bulletlist>",
+  "description": "Gain:<bulletlist><bullet>+1 <defense></defense> <hyperlink>Defense</hyperlink></bullet><bullet>+2 <defensephysical></defensephysical> <hyperlink>Physical Protection</hyperlink></bullet><bullet>Status Effect Immunity: Bleeding</bullet></bulletlist>",
   "name": "Rune of Protection: Rock",
   "tags": [
    {
@@ -11263,6 +11805,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -11313,6 +11858,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004970000179B"
@@ -11365,7 +11913,7 @@
   "point_cost": 2,
   "id": "equipment_upgrade_passive_rune_of_power_rock_single",
   "DLC": "GIANTKINGS ",
-  "description": "Base attacks have:<bulletlist><bullet>+6 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>A base 90% chance of inflicting Bleeding.</bullet></bulletlist>",
+  "description": "Base attacks have:<bulletlist><bullet>+4 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>A base 90% chance of inflicting Bleeding.</bullet></bulletlist>",
   "name": "Rune of Power: Rock",
   "tags": [
    {
@@ -11446,6 +11994,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -11458,7 +12009,7 @@
   "point_cost": 2,
   "id": "equipment_upgrade_passive_rune_of_power_rock_repeating",
   "DLC": "GIANTKINGS ",
-  "description": "Base attacks have:<bulletlist><bullet>+3 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>A base 60% chance of inflicting Bleeding.</bullet></bulletlist>",
+  "description": "Base attacks have:<bulletlist><bullet>+2 <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink></bullet><bullet>A base 60% chance of inflicting Bleeding.</bullet></bulletlist>",
   "name": "Rune of Power: Rock",
   "tags": [
    {
@@ -11496,6 +12047,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000049700001792"
@@ -11609,6 +12163,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -11654,6 +12211,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000049700001781"
@@ -12246,6 +12806,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -12257,6 +12820,9 @@
   "tags": [
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000048D000008C9",
@@ -12644,7 +13210,7 @@
   "resid": 5029406706830,
   "point_cost": 1,
   "id": "goldseeker_pickaxe-_equipment_upgrade",
-  "description": "The third strike in a turn has a base 60% chance of inflicting Gilded for 2 .",
+  "description": "The third strike in a turn has a base 60% chance of inflicting Gilded for 1 <turn></turn> <hyperlink>Turn</hyperlink>.",
   "name": "Gilded",
   "tags": [
    {
@@ -12679,6 +13245,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000003E300005D92"
@@ -12730,6 +13299,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001089"
@@ -12761,6 +13333,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -12802,6 +13377,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001070"
@@ -12833,6 +13411,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -12874,6 +13455,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004970000158F"
@@ -12961,6 +13545,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -12977,6 +13564,311 @@
   "icon": "00000493000008C6"
  },
  {
+  "abilities": [
+   {
+    "slug": "000003e300005582"
+   }
+  ],
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+    }
+   ]
+  },
+  "resid": 4995046971408,
+  "point_cost": 2,
+  "id": "equipment_upgrade_passive_melee_mage",
+  "description": "Unit can use <hyperlink>Magic</hyperlink> and <hyperlink>Support</hyperlink> abilities while <hyperlink>Engaged in Melee</hyperlink>.",
+  "name": "Melee Mage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemPassive.MeleeMage"
+   }
+  ],
+  "icon": "000003E300005580"
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "Does not contain inherited ItemTypeWeapon.MeleeRanged.Breachgun "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+    }
+   ]
+  },
+  "resid": 4995046971404,
+  "point_cost": 1,
+  "id": "equipment_upgrade_passive_range__1_(magic_melee_only)",
+  "description": "Base <hyperlink>Missile</hyperlink> and <hyperlink>Magic</hyperlink> attacks gains +1<hyperlink><range></range>Range</hyperlink>.",
+  "name": "+1<hyperlink><range></range>Range</hyperlink>",
+  "tags": [
+   {
+    "tag": "ItemPassive.IncreaseRange"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeapon.EldritchRelic"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   }
+  ],
+  "icon": "0000045E0000108F",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Focus Crystals"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.TwoHandedHeavy "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Crossbow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.EldritchRelic "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw.Warclaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Grimoire "
+    }
+   ]
+  },
+  "resid": 4995046971345,
+  "point_cost": 1,
+  "id": "equipment_upgrade_passive_inflict_chilled_90%",
+  "description": "Base attacks have a 90% chance of inflicting Chilled.",
+  "name": "Inflict Chilled",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greatsword"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greataxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Lance"
+   },
+   {
+    "tag": "ItemTypeWeapon.EldritchRelic"
+   },
+   {
+    "tag": "ItemPassive.Inflict.InflictChilled"
+   },
+   {
+    "tag": "ItemForge.Exclusivities.ExclusiveChilled"
+   },
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   }
+  ],
+  "icon": "0000048B000017C9",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Archon Blood"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.OneHanded "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MeleeRanged "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Polearm "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Bow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw.ArmoredClaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Warhammer "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Greatbow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+    }
+   ]
+  },
+  "resid": 4995046971336,
+  "point_cost": 1,
+  "id": "equipment_upgrade_passive_inflict_chilled_60%",
+  "description": "Base attacks have a 60% chance of inflicting Chilled.",
+  "name": "Inflict Chilled",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemPassive.Inflict.InflictChilled"
+   },
+   {
+    "tag": "ItemForge.Exclusivities.ExclusiveChilled"
+   },
+   {
+    "tag": "ItemTypeWeapon.OneHanded"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Bow"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.DragonClaw.ArmoredClaw"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Greatbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.GiantAxe"
+   },
+   {
+    "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   }
+  ],
+  "icon": "0000048B000017C9",
+  "unlock_requirements": [
+   {
+    "num_required": 1,
+    "token_name": "Archon Blood"
+   }
+  ]
+ },
+ {
   "tag_filter": {
    "condition": "All of the following must be True",
    "children": [
@@ -12984,42 +13876,364 @@
      "condition": "One or More of the following must be True",
      "children": [
       {
-       "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       },
       {
-       "condition": "Contains ItemTypeWeapon.Magic.Staff "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.RangedPhysical.Crossbow "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greatsword "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greathammer "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Lance "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greataxe "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.EldritchRelic "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.DragonClaw.Warclaw "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.Magic.Grimoire "
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
       }
      ]
     },
     {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveFrozen "
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970538,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_fire_spirit",
+  "description": "Change damage to mixed <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> and <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Radiant Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Fire"
+   },
+   {
+    "tag": "ItemTheme.Magical.Spirit"
+   }
+  ],
+  "icon": "0000045E00000D1A",
+  "unlock_requirements": [
+   {
+    "num_required": 2,
+    "token_name": "Rainbow Clover"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
     },
     {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveWet "
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970526,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_frost_blight",
+  "description": "Change damage to mixed <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink> and <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Death Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Blight"
+   },
+   {
+    "tag": "ItemTheme.Magical.Frost"
+   }
+  ],
+  "icon": "0000045E00000D19",
+  "unlock_requirements": [
+   {
+    "num_required": 2,
+    "token_name": "Archon Blood"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970520,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_fire_lightning",
+  "description": "Change damage to mixed <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink> and <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Arcfire Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Fire"
+   },
+   {
+    "tag": "ItemTheme.Magical.Lightning"
+   }
+  ],
+  "icon": "0000045E00000D1B",
+  "unlock_requirements": [
+   {
+    "num_required": 2,
+    "token_name": "Fireforge Stone"
+   }
+  ]
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970514,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_physical",
+  "description": "Change damage to <damagePhysical></damagePhysical> <hyperlink>Physical Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Physical Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Physical"
+   }
+  ],
+  "icon": "0000045E00000D17"
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970508,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_blight",
+  "description": "Change damage to <damageBlight></damageBlight> <hyperlink>Blight Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Blight Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Blight"
+   }
+  ],
+  "icon": "0000045E00000D13"
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970502,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_spirit",
+  "description": "Change damage to <damageSpirit></damageSpirit> <hyperlink>Spirit Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Spirit Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Spirit"
+   }
+  ],
+  "icon": "0000045E00000D18"
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970496,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_lightning",
+  "description": "Change damage to <damageLightning></damageLightning> <hyperlink>Lightning Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Lightning Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Lightning"
+   }
+  ],
+  "icon": "0000045E00000D16"
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970490,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_frost",
+  "description": "Change damage to <damageFrost></damageFrost> <hyperlink>Frost Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Frost Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Frost"
+   }
+  ],
+  "icon": "0000045E00000D15"
+ },
+ {
+  "tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "resid": 4995046970484,
+  "point_cost": 1,
+  "id": "equipment_upgrade__damage_channel_magic_melee_ranged_fire",
+  "description": "Change damage to <damageFire></damageFire> <hyperlink>Fire Damage</hyperlink>.<br></br><br></br>+2 damage per <hyperlink>Item Tier</hyperlink>.",
+  "name": "Fire Damage",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTheme.Magical.Fire"
+   }
+  ],
+  "icon": "0000045E00000D14"
+ },
+ {
+  "tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.TwoHandedHeavy "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Crossbow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.EldritchRelic "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw.Warclaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13100,51 +14314,43 @@
  },
  {
   "tag_filter": {
-   "condition": "All of the following must be True",
+   "condition": "One or More of the following must be True",
    "children": [
     {
-     "condition": "One or More of the following must be True",
-     "children": [
-      {
-       "condition": "Contains inherited ItemTypeWeapon.OneHanded "
-      },
-      {
-       "condition": "Contains inherited ItemTypeWeapon.Polearm "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.RangedPhysical.Bow "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
-      },
-      {
-       "condition": "Contains inherited ItemTypeWeapon.MeleeRanged "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.DragonClaw "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.DragonClaw.ArmoredClaw "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Warhammer "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.RangedPhysical.Greatbow "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.GiantKingWeapons.GiantAxe "
-      },
-      {
-       "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
-      }
-     ]
+     "condition": "Contains inherited ItemTypeWeapon.OneHanded "
     },
     {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveWet "
+     "condition": "Contains inherited ItemTypeWeapon.MeleeRanged "
     },
     {
-     "condition": "Does not contain ItemForge.Exclusivities.ExclusiveFrozen "
+     "condition": "Contains inherited ItemTypeWeapon.Polearm "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Bow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.DragonClaw.ArmoredClaw "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Warhammer "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Greatbow "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13207,6 +14413,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000048B00000E46",
@@ -13228,6 +14437,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13242,6 +14454,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300004DEC",
@@ -13312,6 +14530,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13326,6 +14547,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B0000070D",
@@ -13347,6 +14574,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13361,6 +14591,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E10000155E",
@@ -13382,6 +14615,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13396,6 +14632,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005EB4",
@@ -13417,6 +14656,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13431,6 +14673,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B00000E69",
@@ -13452,6 +14697,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13466,6 +14714,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005A5A",
@@ -13487,6 +14738,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13501,6 +14755,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005A62",
@@ -13522,6 +14779,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13536,6 +14796,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B00000405",
@@ -13557,6 +14823,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -13571,6 +14840,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005B60",
@@ -13592,6 +14864,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13606,6 +14881,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E3000050EA",
@@ -13627,6 +14908,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13641,6 +14925,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E600000566",
@@ -13662,6 +14952,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13676,6 +14969,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300006018",
@@ -13697,6 +14996,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -13711,6 +15013,12 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E3000063B5",
@@ -14673,7 +15981,7 @@
   "resid": 4995046968732,
   "point_cost": 3,
   "id": "equipment_upgrade_passive_unleash_the_hounds",
-  "description": "At the start of battle, summon a <hyperlink>War Hound</hyperlink> Shock Unit that inflicts Marked and Bleeding with its attack.<br></br><br></br>Doesn't work in water combat and cannot benefit from Unit Enchantments.",
+  "description": "At the start of battle, summon a <hyperlink>War Hound</hyperlink> Shock Unit that inflicts Marked and Bleeding with its attack.<br></br><br></br>Cannot benefit from Unit Enchantments.",
   "name": "Unleash the Hounds",
   "tags": [
    {
@@ -14964,6 +16272,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -14978,6 +16289,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000048B00000C8E",
@@ -15048,6 +16362,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -15062,6 +16379,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000048B00000C8A"
@@ -15145,13 +16465,7 @@
     "tag": "ItemTypeWeapon.MeleeRanged"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -15189,13 +16503,7 @@
     "tag": "ItemTypeWeapon.MeleeRanged"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -15233,13 +16541,7 @@
     "tag": "ItemTypeWeapon.MeleeRanged"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -15277,13 +16579,7 @@
     "tag": "ItemTypeWeapon.MeleeRanged"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -15321,13 +16617,7 @@
     "tag": "ItemTypeWeapon.MeleeRanged"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -15389,13 +16679,7 @@
     "tag": "ItemTheme.Magical.Spirit"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -15419,13 +16703,7 @@
     "tag": "ItemTheme.Magical.Blight"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -15449,13 +16727,7 @@
     "tag": "ItemTheme.Magical.Frost"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -15479,13 +16751,7 @@
     "tag": "ItemTheme.Magical.Lightning"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -15509,13 +16775,7 @@
     "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -15601,6 +16861,9 @@
       },
       {
        "condition": "Contains inherited ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     }
@@ -15674,6 +16937,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001094",
@@ -15714,6 +16980,9 @@
       },
       {
        "condition": "Contains inherited ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     }
@@ -15787,6 +17056,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001094",
@@ -15827,6 +17099,9 @@
       },
       {
        "condition": "Contains inherited ItemTypeWeapon.GiantKingWeapons.GiantAxe "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     }
@@ -15906,6 +17181,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001094"
@@ -15946,6 +17224,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -16005,6 +17286,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000107F",
@@ -16216,7 +17500,7 @@
   "resid": 4801773440483,
   "point_cost": 1,
   "id": "equipment_upgrade_passive_slip_away",
-  "description": "When this unit's <hyperlink><hp></hp> Hit Points</hyperlink> are reduced to zero, it is displaced by 3 hexes and heals +15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br>Works once per battle.",
+  "description": "When this unit's <hyperlink><hp></hp> Hit Points</hyperlink> are reduced to zero, it is displaced by 3 hexes and heals +15 <hyperlink><temphp></temphp> Temporary Hit Points</hyperlink>.<br></br><br></br>Works once per battle. Doesn't work when Embarked.",
   "name": "Slip Away",
   "tags": [
    {
@@ -17843,6 +19127,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000108E",
@@ -17975,6 +19262,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000108C",
@@ -18107,6 +19397,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000106B",
@@ -18239,6 +19532,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001069",
@@ -18371,6 +19667,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001068",
@@ -18503,6 +19802,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001065",
@@ -18635,6 +19937,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001064",
@@ -18767,6 +20072,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001031"
@@ -18782,6 +20090,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -18796,6 +20107,9 @@
    },
    {
     "tag": "ItemAbility.MindControl"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E000003E6",
@@ -18817,6 +20131,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -18831,6 +20148,9 @@
    },
    {
     "tag": "ItemAbility.Polymorph"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E000003CD",
@@ -18852,6 +20172,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -18866,6 +20189,12 @@
    },
    {
     "tag": "ItemAbility.HinderingBlizzards"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E3000052A8",
@@ -18887,6 +20216,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -18901,6 +20233,12 @@
    },
    {
     "tag": "ItemAbility.LightningStrike"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E30000453F",
@@ -18922,6 +20260,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -18936,6 +20277,9 @@
    },
    {
     "tag": "ItemAbility.Summon.ConjureAnimal"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B000003B2",
@@ -18957,6 +20301,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -18974,6 +20321,9 @@
    },
    {
     "tag": "ItemStrength.Strong"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005801",
@@ -18995,6 +20345,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19012,6 +20365,9 @@
    },
    {
     "tag": "ItemStrength.Medium"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005801",
@@ -19033,6 +20389,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19050,6 +20409,9 @@
    },
    {
     "tag": "ItemStrength.Weak"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E3000057F8"
@@ -19065,6 +20427,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19079,6 +20444,9 @@
    },
    {
     "tag": "ItemAbility.Summon.RaiseUndead"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E300005FC8",
@@ -19100,6 +20468,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19114,6 +20485,9 @@
    },
    {
     "tag": "ItemAbility.Summon.AwakenFlora"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B00000EC9",
@@ -19135,6 +20509,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19149,6 +20526,9 @@
    },
    {
     "tag": "ItemAbility.Resurrection"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E000003E1",
@@ -19170,6 +20550,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19184,6 +20567,9 @@
    },
    {
     "tag": "ItemAbility.InversionAbility"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E000003AB",
@@ -19205,6 +20591,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19219,6 +20608,9 @@
    },
    {
     "tag": "ItemAbility.Heal.MassHeal"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000041B00001523",
@@ -19240,6 +20632,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Magic.Grimoire "
     }
    ]
   },
@@ -19254,6 +20649,9 @@
    },
    {
     "tag": "ItemAbility.Heal"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "000003E30000579C"
@@ -20372,6 +21770,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001071",
@@ -20504,6 +21905,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001070",
@@ -20641,6 +22045,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000109E",
@@ -20716,6 +22123,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001095",
@@ -20753,6 +22163,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -20809,6 +22222,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001095",
@@ -20932,6 +22348,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -20988,6 +22407,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Warhammer"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E000010ED",
@@ -21123,6 +22545,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A60000039F",
@@ -21258,6 +22683,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A60000039F",
@@ -21393,6 +22821,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000004A60000039F"
@@ -21433,6 +22864,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -21492,6 +22926,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001087",
@@ -21538,6 +22975,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -21597,6 +23037,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001086",
@@ -21643,6 +23086,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -21702,6 +23148,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001083",
@@ -21748,6 +23197,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -21807,6 +23259,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000107E",
@@ -21856,6 +23311,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -21926,13 +23384,16 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000107C",
   "unlock_requirements": [
    {
     "num_required": 2,
-    "token_name": "Astral Dew"
+    "token_name": "Archon Blood"
    }
   ]
  },
@@ -21972,6 +23433,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22031,6 +23495,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000107B",
@@ -22077,6 +23544,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22136,6 +23606,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001080",
@@ -22182,6 +23655,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22241,6 +23717,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001084",
@@ -22287,6 +23766,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22346,6 +23828,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001085",
@@ -22392,6 +23877,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22451,6 +23939,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001082",
@@ -22497,6 +23988,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22556,6 +24050,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000107A",
@@ -22602,6 +24099,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22661,6 +24161,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001079",
@@ -22710,6 +24213,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -22777,6 +24283,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001088",
@@ -22823,6 +24332,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22882,6 +24394,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001081",
@@ -22928,6 +24443,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -22987,6 +24505,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E0000107D",
@@ -23033,6 +24554,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -23092,6 +24616,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001077",
@@ -23141,6 +24668,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -23211,6 +24741,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001076",
@@ -23257,6 +24790,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -23328,6 +24864,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001075",
@@ -23377,6 +24916,9 @@
       },
       {
        "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
       }
      ]
     },
@@ -23450,6 +24992,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001074"
@@ -23490,6 +25035,9 @@
     },
     {
      "condition": "Contains ItemTypeWeapon.GiantKingWeapons.Obelisk "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -23549,6 +25097,9 @@
    },
    {
     "tag": "ItemTypeWeapon.GiantKingWeapons.Obelisk"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "0000045E00001078",
@@ -23680,6 +25231,9 @@
    },
    {
     "tag": "ItemTypeWeapon.Magic.Grimoire"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
    }
   ],
   "icon": "000003E300004EFF",
@@ -24549,6 +26103,9 @@
    "children": [
     {
      "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    },
+    {
+     "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
     }
    ]
   },
@@ -24563,6 +26120,12 @@
    },
    {
     "tag": "ItemAbility.MagicMissile"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged"
+   },
+   {
+    "tag": "ItemTypeWeapon.Magic.Grimoire"
    }
   ],
   "icon": "0000045E000007B1"
@@ -26666,13 +28229,7 @@
     "tag": "ItemTypeWeapon.Magic.Staff"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -26696,13 +28253,7 @@
     "tag": "ItemTypeWeapon.Magic.Staff"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -26726,13 +28277,7 @@
     "tag": "ItemTypeWeapon.Magic.Staff"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -26756,13 +28301,7 @@
     "tag": "ItemTypeWeapon.Magic.Staff"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -26792,13 +28331,7 @@
     "tag": "ItemTypeWeapon.Magic.MagicalOrb"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -26828,13 +28361,7 @@
     "tag": "ItemTypeWeapon.Magic.MagicalOrb"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -26864,13 +28391,7 @@
     "tag": "ItemTypeWeapon.Magic.MagicalOrb"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -26930,13 +28451,7 @@
     "tag": "ItemTypeWeapon.Magic.MagicalOrb"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -26960,13 +28475,7 @@
     "tag": "ItemTheme.Magical.Blight"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -26990,13 +28499,7 @@
     "tag": "ItemTheme.Magical.Frost"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -27020,13 +28523,7 @@
     "tag": "ItemTheme.Magical.Lightning"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -27050,13 +28547,7 @@
     "tag": "ItemTheme.Magical.Fire"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -27104,13 +28595,7 @@
     "tag": "ItemTheme.Magical.Spirit"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -27134,13 +28619,7 @@
     "tag": "ItemTheme.Magical.Spirit"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -27164,13 +28643,7 @@
     "tag": "ItemTheme.Magical.Blight"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -27194,13 +28667,7 @@
     "tag": "ItemTheme.Magical.Frost"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -27224,13 +28691,7 @@
     "tag": "ItemTheme.Magical.Lightning"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -27254,13 +28715,7 @@
     "tag": "ItemTheme.Magical.Fire"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -27308,13 +28763,7 @@
     "tag": "ItemTheme.Magical.Spirit"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -27338,13 +28787,7 @@
     "tag": "ItemTheme.Magical.Blight"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -27368,13 +28811,7 @@
     "tag": "ItemTheme.Magical.Frost"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -27398,13 +28835,7 @@
     "tag": "ItemTheme.Magical.Lightning"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -27428,13 +28859,7 @@
     "tag": "ItemTheme.Magical.Fire"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -27494,13 +28919,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -27536,13 +28955,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -27578,13 +28991,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -27620,13 +29027,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  },
  {
   "tag_filter": {
@@ -27662,13 +29063,7 @@
     "tag": "ItemTypeWeapon.TwoHandedHeavy.Greathammer"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -27734,13 +29129,7 @@
     "tag": "ItemTypeWeapon.OneHanded.Cestus"
    }
   ],
-  "icon": "0000045E00000D18",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Rainbow Clover"
-   }
-  ]
+  "icon": "0000045E00000D18"
  },
  {
   "tag_filter": {
@@ -27770,13 +29159,7 @@
     "tag": "ItemTypeWeapon.OneHanded.Cestus"
    }
   ],
-  "icon": "0000045E00000D13",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Silvertongue Fruit"
-   }
-  ]
+  "icon": "0000045E00000D13"
  },
  {
   "tag_filter": {
@@ -27806,13 +29189,7 @@
     "tag": "ItemTypeWeapon.OneHanded.Cestus"
    }
   ],
-  "icon": "0000045E00000D15",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Archon Blood"
-   }
-  ]
+  "icon": "0000045E00000D15"
  },
  {
   "tag_filter": {
@@ -27842,13 +29219,7 @@
     "tag": "ItemTypeWeapon.OneHanded.Cestus"
    }
   ],
-  "icon": "0000045E00000D14",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Fireforge Stone"
-   }
-  ]
+  "icon": "0000045E00000D14"
  },
  {
   "tag_filter": {
@@ -27908,12 +29279,6 @@
     "tag": "ItemTypeWeapon.OneHanded.Cestus"
    }
   ],
-  "icon": "0000045E00000D16",
-  "unlock_requirements": [
-   {
-    "num_required": 1,
-    "token_name": "Astral Dew"
-   }
-  ]
+  "icon": "0000045E00000D16"
  }
 ]

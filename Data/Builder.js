@@ -109,13 +109,12 @@ function processSpellRefs(text) {
             // Reuse the same statusEffectHandler pattern — gets a free tooltip
             return `<span class="statusEffectHandler">${name}</span>`;
         }
- console.log("name here " + name + " " + globalKey);
         // No match found yet — render as styled italic with the key stored
         // for future programmatic lookup (data-key is the full GLOBAL.X.Y path)
         return (
             `<span class="spellrefHandler"` +
             `data-key="${globalKey}"` +
-            `"style="color:green">${name}</span>`
+            `style="color:green">${name}</span>`
         );
     });
 }
@@ -123,8 +122,7 @@ function processSpellRefs(text) {
 // main function
 function AddTagIconsForStatusEffects(text) {
     if (!text) return text;
-    text = processSpellRefs(text);
-    text = processConceptHyperlinks(text);
+   
 
     text = cleanTranslation(text);
     if (!abilityTagCache) buildAbilityTagCache();
@@ -137,7 +135,8 @@ function AddTagIconsForStatusEffects(text) {
         regex.lastIndex = 0; // reset since the regex has the "g" flag
         text = text.replace(regex, replacement);
     }
-
+   text = processSpellRefs(text);
+    text = processConceptHyperlinks(text);
     /* for (const link of extracted.links) {
         let restored = `<hyperlink>${link.inner}</hyperlink>`;
         if (abilityTagCache.has(link.inner)) {
@@ -145,6 +144,7 @@ function AddTagIconsForStatusEffects(text) {
         }
         text = text.replace(link.token, restored);
     }*/
+   
 
     for (const link of extracted.links) {
         let restored;
@@ -162,7 +162,7 @@ function AddTagIconsForStatusEffects(text) {
                 const iconHtml = concept.icon ? `<${concept.icon}></${concept.icon}> ` : "";
                 restored =
                     `<span style="color:white;">${""}${plainInner}</span>` +
-                    `<span class="conceptTooltipHandler" data-concept="${plainInner}" style="display:none"></span>`;
+                    `<span class="conceptTooltipHandler" data-global="${plainInner}" style="display:none"></span>`;
             } else {
                 // Fallback: plain underlined text, no tooltip
                 // restored = `<span style="color:grey;">${link.inner}</span>`;
@@ -171,6 +171,8 @@ function AddTagIconsForStatusEffects(text) {
         }
 
         text = text.replace(link.token, restored);
+
+      
     }
 
     if (getUserSettings().isolateNumber) {
@@ -205,12 +207,12 @@ function createStatusEffectTooltip(effectData, handlerType = "status") {
     image.setAttribute("width", "30");
     image.setAttribute("height", "30");
 
-    tag.replaceAll("<br><br>", "<br>");
+    tag = tag.replaceAll("<br><br>", "<br>");
 
     let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
 
     span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
-    addTooltipListeners(span, name.description, handlerType);
+    addTooltipListeners(span, effectData.description, handlerType);
     return span.outerHTML;
 }
 
@@ -3368,7 +3370,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
 
     let tomes = CheckIfInTomes(unitData.id);
     for (let x = 0; x < tomes.length; x++) {
-        const tooltipText = `Unit production unlocked from Tier <hyperlink>${romanize(tomes[x].tier)} - ${showAffinitySymbols(tomes[x])} ${tomes[x].name}</<hyperlink>`;
+        const tooltipText = `Unit production unlocked from Tier <hyperlink>${romanize(tomes[x].tier)} - ${showAffinitySymbols(tomes[x])} ${tomes[x].name}</hyperlink>`;
         const imgSrc = `/aow4db/Icons/TomeIcons/${tomes[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Spells.html?tome=${tomes[x].id}`;
@@ -3382,7 +3384,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
         let tooltipText =
             tierandnameoftome != ""
                 ? `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink> <br>in Tier <hyperlink>${romanize(tierandnameoftome.tier)} - ${showAffinitySymbols(tierandnameoftome)} ${tierandnameoftome.name}</hyperlink>`
-                : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</<hyperlink>`;
+                : `Unit mentioned in Spell: <hyperlink>${spells[x].name}</hyperlink>`;
 
         let imageSRC;
         let imageLinkName;
@@ -3452,13 +3454,13 @@ function backtrackUnitOrigins(unitData, name, holder) {
         if (wonder[x].type == "Landmark") {
             miniIcon.innerHTML = "<landmark></landmark>";
 
-            tooltipText = `Unit unlocked from <landmark></landmark> <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
+            tooltipText = `Unit unlocked from <landmark></landmark> <hyperlink>${wonder[x].type}</hyperlink> : <hyperlink>${wonder[x].name}</hyperlink>`;
         } else {
             miniIcon.innerHTML = "<rally></rally>";
-            tooltipText = `Rally Unit unlocked from <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
+            tooltipText = `Rally Unit unlocked from <hyperlink>${wonder[x].type}</hyperlink> : <hyperlink>${wonder[x].name}</hyperlink>`;
         }
         if ("other_unlock" in wonder[x]) {
-            tooltipText = `Unit available in <hyperlink>${wonder[x].type}</<hyperlink> : <hyperlink>${wonder[x].name}</<hyperlink>`;
+            tooltipText = `Unit available in <hyperlink>${wonder[x].type}</hyperlink> : <hyperlink>${wonder[x].name}</hyperlink>`;
         }
         const imgSrc = `/aow4db/Icons/StructurePics/${wonder[x].id}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
@@ -3470,7 +3472,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
 
     let tree = CheckIfInEmpireTree(name);
     for (let x = 0; x < tree.length; x++) {
-        const tooltipText = `Unit mentioned in <hyperlink>${tree[x].category} ${tree[x].required_level}</<hyperlink> : <hyperlink>${tree[x].name}</<hyperlink>`;
+        const tooltipText = `Unit mentioned in <hyperlink>${tree[x].category} ${tree[x].required_level}</hyperlink> : <hyperlink>${tree[x].name}</hyperlink>`;
         const imgSrc = `/aow4db/Icons/EmpireProgressionIcons/${tree[x].icon}.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/EmpireTree.html`;
@@ -3493,7 +3495,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
     let infusion = CheckIfFromInfusion(name, GetAllMatchingAbilities);
 
     for (let x = 0; x < infusion.length; x++) {
-        const tooltipText = `Unit mentioned in Infusion <hyperlink>${infusion[x].name} </<hyperlink>`;
+        const tooltipText = `Unit mentioned in Infusion <hyperlink>${infusion[x].name} </hyperlink>`;
         const imgSrc = `/aow4db/Icons/UnitIcons/` + infusion[x].icon + `.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Infusions.html`;
@@ -3524,7 +3526,7 @@ function backtrackUnitOrigins(unitData, name, holder) {
 
     let evolve = CheckIfEvolveTarget(unitData.id);
     if (evolve != "") {
-        const tooltipText = `Evolved/Promoted from Unit <hyperlink>${evolve.name}</<hyperlink>`;
+        const tooltipText = `Evolved/Promoted from Unit <hyperlink>${evolve.name}</hyperlink>`;
         const imgSrc = `/aow4db/Icons/Text/evolve.png`;
         const imgFallbackSrc = `/aow4db/Icons/Text/mp.png`;
         const link = `/aow4db/HTML/Units.html?unit=${evolve.id}`;
@@ -3639,7 +3641,7 @@ function CheckIfFromAbility(unitName, matchingList) {
         }
         for (let l = 0; l < jsonUnits[j].primary_passives.length; l++) {
             if (matchingList.has(jsonUnits[j].primary_passives[l].slug)) {
-                unitslugLookup.add([jsonUnits[j], findBy(jsonUnitAbilities, "slug", jsonUnits[j].abilities[k].slug)]);
+                unitslugLookup.add([jsonUnits[j], findBy(jsonUnitAbilities, "slug", jsonUnits[j].primary_passives[l].slug)]);
             }
         }
     }
@@ -5011,6 +5013,7 @@ function showWorldStructure(a, divOrigin) {
     // extra lookup
     if ("extraLookup" in structure) {
         const valueLookup = findBy(jsonAllFromPOLocalized, "id", structure.extraLookup);
+     
         if ("hyperlink" in valueLookup) {
             modName.innerHTML = valueLookup.hyperlink.toUpperCase();
         } else if ("name" in valueLookup) {
@@ -5068,7 +5071,7 @@ function showWorldStructure(a, divOrigin) {
 
     eventDiv.innerHTML = "";
 
-    if (structure.type.indexOf("Ancient") != 1) {
+    if (structure.type.indexOf("Ancient") != -1) {
         //console.log("found ancient wonder" + structure.type);
         if ("events" in structure) {
             // events are here
@@ -7109,4 +7112,260 @@ function backtraceStructureToTomeNameAndTier(structure) {
 
 function backtraceTomeNameAndTier(spell) {
     return findParentByNested(jsonTomesLocalized, "skills", "spell_slug", spell) || "";
+}
+
+// preview picture per spawner text (keys are the name msgid without the @NAME part)
+const spawnerPreviewMap = {
+    "SPAWNERS@ASTRALRIFT_SPAWNER": "astral_rift_spawner",
+    "SPAWNERS@BANDIT_SPAWNER": "bandit_spawner",
+    "SPAWNERS@BIRD_SPAWNER": "bird_spawner",
+    "SPAWNERS@CULTIST_SPAWNER": "cultist_spawner",
+    "SPAWNERS@DRAGON_SPAWNER": "dragon_spawner",
+    "SPAWNERS@FORSAKEN_COVE_SPAWNER": "forsaken_cove",
+    "SPAWNERS@MONSTER_SPAWNER": "monster_spawner",
+    "SPAWNERS@MONSTER_SPAWNER_LARGE": "monster_spawner_large",
+    "SPAWNERS@PIRATE_SPAWNER": "pirate_spawner",
+    "SPAWNERS@UNDEAD_SPAWNER": "undead_spawner",
+    "DLC@EMPIRESANDASHES@SPAWNERS@WORSKHOP_SPAWNER": "derelict_workshop",
+    "DLC@GIANTKINGS@SPAWNERS@LITHORINE_SPAWNER": "lithorine_spawner",
+    "DLC@ELDRITCHREALMS@SPAWNERS_STRATEGIC@SHADOW_INFESTATION": "umbral_nest",
+    "DLC@ARCHONPROPHECY@SPAWNERS_STRATEGIC@CRUSADER_HOST": "crusader_host",
+    "DLC@RISEFROMRUIN@SPAWNERS_STRATEGIC@FLEETING_FRACTURED_INFESTATION": "fleeting_fractured_infestation",
+    "DLC@RISEFROMRUIN@SPAWNERS_STRATEGIC@FRACTURED_INFESTATION": "fractured_infestation",
+    "DLC@RISEFROMRUIN@SPAWNERS_STRATEGIC@GREAT_WORM_INFESTATION": "great_worm_infestation",
+    "DLC@SECRETSOFTHEARCHMAGES@SPAWNERS@MSITWALKER_CAMP": "mistwalker_camp"
+};
+ 
+const spawnerResourceIcons = ["production", "mana", "food", "gold", "knowledge"];
+ 
+const msgidBase = (msgid) => (msgid ? msgid.split("@").slice(0, -1).join("@") : "");
+ 
+// Text of any msgid: "SPAWNERS@MONSTER_SPAWNER@NAME" -> entry "SPAWNERS@MONSTER_SPAWNER", field "name".
+// Also works for ids without NAME/DESCRIPTION suffix (e.g. DLC@THRONESOFBLOOD@SPAWNERS@PROCESSION).
+function poText(msgid) {
+    if (!msgid) return undefined;
+    const parts = msgid.split("@");
+    const entry = findBy(jsonAllFromPOLocalized, "id", parts.slice(0, -1).join("@"));
+    return entry?.[parts[parts.length - 1].toLowerCase()];
+}
+ 
+// "Spawners_Strategic_Empires_And_Ashes.rpk" -> "EMPIRESANDASHES"
+function dlcFromSource(source) {
+    const m = /^Spawners_Strategic_(.+)\.rpk$/i.exec(source ?? "");
+    return m ? m[1].replaceAll("_", "").toUpperCase() : undefined;
+}
+ 
+// accepts both extractor shapes (python: snake_case, spawners.js: camelCase)
+function normalizeSpawner(key, raw) {
+    const msgids = raw.msgids ?? {
+        name: raw.name_msgid,
+        description: raw.desc_msgid,
+        type: raw.type_msgid,
+        lore: raw.lore_msgid
+    };
+    const us = raw.unit_spawner ?? raw.spawner ?? {};
+    const inf = raw.infestation ?? {};
+    const tags = raw.tags ?? [];
+    const nameParts = (msgids.name ?? "").split("@");
+ 
+    return {
+        key: key.trim(),
+        id: (raw.structurename ?? raw.structure ?? key).trim().toLowerCase(),
+        tags,
+        tier: ["Bronze", "Silver", "Gold"].find((t) => tags.some((tag) => tag.endsWith("." + t))),
+        msgids,
+        displayName: (poText(msgids.name) ?? key.trim()).split("^")[0],
+        dlc: nameParts[0] === "DLC" ? nameParts[1] : dlcFromSource(raw.source),
+        spawnStrength: us.spawn_strength ?? us.spawnStrength,
+        maxSpawnStrength: us.max_spawn_strength ?? us.maxSpawnStrength,
+        poolCategory: us.pool_category ?? us.poolCategory,
+        excavatedCategory: us.excavated_pool_category ?? us.excavatedPoolCategory,
+        reward: raw.reward,
+        infestation: {
+            delay: inf.delay,
+            delayDelta: inf.delay_delta ?? inf.delayDelta,
+            range: inf.range,
+            growthSpeed: inf.growth_speed ?? inf.growthSpeed
+        },
+        pools: raw.pools, // only present in the spawners.js output
+        source: raw.source
+    };
+}
+ 
+let spawnerListCache = null;
+function getSpawnerList() {
+    if (spawnerListCache) return spawnerListCache;
+ 
+    const list = [];
+    for (const group of Object.values(jsonSpawners)) {
+        for (const [key, raw] of Object.entries(group)) list.push(normalizeSpawner(key, raw));
+    }
+ 
+    // spawners that share the same text (Mistwalker seasons, "Lost Soul" copies): show which variant it is
+    const counts = {};
+    for (const s of list) counts[s.msgids.name] = (counts[s.msgids.name] ?? 0) + 1;
+    for (const s of list) s.isVariant = counts[s.msgids.name] > 1;
+ 
+    const order = { Bronze: 0, Silver: 1, Gold: 2 };
+    list.sort(
+        (a, b) =>
+            (order[a.tier] ?? 9) - (order[b.tier] ?? 9) ||
+            a.displayName.localeCompare(b.displayName) ||
+            (a.dlc ? 1 : 0) - (b.dlc ? 1 : 0) || // base game version before DLC copies
+            a.key.localeCompare(b.key)
+    );
+    spawnerListCache = list;
+    return list;
+}
+ 
+// pool names in the spawn sets are english resource names -> english unit name -> id
+let unitIdByNameCache = null;
+function findUnitByPoolName(name) {
+    if (!unitIdByNameCache) {
+        unitIdByNameCache = new Map();
+        for (const u of jsonUnits) {
+            const n = (u.name ?? "").split("^")[0];
+            if (n && !unitIdByNameCache.has(n) && !depCheckResID(u.resid)) unitIdByNameCache.set(n, u);
+        }
+    }
+    return unitIdByNameCache.get(name);
+}
+ 
+function spawnerUnitLine(name) {
+    const unit = findUnitByPoolName(name);
+    if (!unit) return `<bullet> <unit></unit>${name}</bullet>`;
+    const shown = jsonUnitsLocalized.find((e) => e.resid === unit.resid)?.name ?? name;
+    return `<bullet><a href="/aow4db/HTML/Units.html?unit=${unit.id}" target="_blank"><unit></unit> ${shown}</a></bullet>`;
+}
+ 
+function getSpawnerPools(s, categoryKey) {
+    if (!categoryKey) return [];
+    if (s.pools && categoryKey === s.poolCategory) return s.pools; // already joined by the extractor
+ 
+    const names = jsonSpawnSetCategories?.[categoryKey]?.pools ?? [];
+    return names.map((n) => {
+        const p = findBy(jsonSpawnSetsStrat, "pool", n);
+        return { pool: n, units: p?.units ?? [], others: p?.others ?? [] };
+    });
+}
+ 
+function buildPoolHtml(pools) {
+    return pools
+        .map((p) => {
+            const units = p.units.map(spawnerUnitLine).join("");
+            const others = p.others.map((o) => `<bullet> <ench></ench>${o}</bullet>`).join("");
+            return `<yellowText>${p.pool}</yellowText><br>${units}${others}<br>`;
+        })
+        .join("");
+}
+ 
+// same markup as the ancient wonder events: button.collapsible + div.combatEnchantment
+function createSpawnerCollapsible(title, bodyHtml) {
+    const holder = document.createElement("div");
+    const button = document.createElement("button");
+    button.className = "collapsible";
+    button.innerHTML = title;
+    button.onclick = SetUpCombatEnc;
+    const content = document.createElement("div");
+    content.className = "combatEnchantment";
+    content.innerHTML = bodyHtml;
+    holder.append(button, content);
+    return holder;
+}
+ 
+// "Spawner - Production + Garuanteed Item Reward" -> "<production></production> Production + Guaranteed Item Reward"
+function formatSpawnerReward(reward) {
+    if (!reward?.link) return "";
+    const link = reward.link.trim();
+    const m = /^(?:Big )?Spawner - (.+?) \+ (.+)$/.exec(link);
+    let text = link;
+    if (m) {
+        const icon = spawnerResourceIcons.includes(m[1].toLowerCase()) ? `<${m[1].toLowerCase()}></${m[1].toLowerCase()}> ` : "";
+        text = `${icon}${m[1]} + ${m[2].replace("Garuanteed", "Guaranteed")}`;
+    }
+    return reward.tier ? `${text} (${reward.tier})` : text;
+}
+ 
+function showSpawner(s, divOrigin) {
+    // name (+ DLC tag)
+    const modName = divOrigin.querySelector("#modname");
+    modName.className = "mod_name";
+    modName.innerHTML = s.displayName.toUpperCase();
+    if (s.dlc) modName.append(AddDLCTag(s.dlc));
+ 
+    // type line (Bronze/Silver/Gold infestation) + which variant this is
+    const tier = divOrigin.querySelector("#modtier");
+    tier.innerHTML = poText(s.msgids.type) ?? (s.tier ? `${s.tier} Infestation` : "");
+    if (s.isVariant) tier.innerHTML += `<br><span style="font-size:12px;color:grey;text-transform:none">${s.key}</span>`;
+ 
+    divOrigin.querySelector("#modcost").innerHTML = "";
+ 
+    // description + lore from the PO text, then the numbers from the game data
+    const descriptionDiv = divOrigin.querySelector("#moddescription");
+    descriptionDiv.setAttribute("style", "max-width:467px;");
+ 
+    let text = poText(s.msgids.description) ?? "";
+    const lore = poText(s.msgids.lore);
+    if (lore) text += "<br><br><helpColor>" + lore + "</helpColor>";
+ 
+    const strength = s.spawnStrength
+        ? s.spawnStrength + (s.maxSpawnStrength ? ` (up to ${s.maxSpawnStrength})` : "")
+        : "";
+    const inf = s.infestation;
+    const spread = [
+        inf.range !== undefined ? `Range ${inf.range}` : "",
+        inf.growthSpeed !== undefined ? `Growth speed ${inf.growthSpeed}` : "",
+        inf.delay !== undefined ? `Delay ${inf.delay}${inf.delayDelta ? ` (±${inf.delayDelta})` : ""}` : ""
+    ]
+        .filter(Boolean)
+        .join(", ");
+ 
+    const details = [
+        strength && `<bullet>Spawn strength: ${strength}</bullet>`,
+        s.reward?.link && `<bullet>Reward: ${formatSpawnerReward(s.reward)}</bullet>`,
+        spread && `<bullet>${spread}</bullet>`
+    ]
+        .filter(Boolean)
+        .join("");
+ 
+    descriptionDiv.innerHTML =
+        AddTagIconsForStatusEffects(text) +
+        (details ? `<br><br><yellowText>Details</yellowText><bulletlist>${details}</bulletlist>` : "");
+ 
+    // icons / preview picture
+    const icon = divOrigin.querySelector("#modicon");
+    icon.setAttribute("src", "/aow4db/Icons/Interface/Header/Infestation.png");
+    icon.setAttribute("style", "background-image: none");
+ 
+    const preview = divOrigin.querySelector("#structurepreview");
+    const previewId = spawnerPreviewMap[msgidBase(s.msgids.name)];
+    if (previewId) {
+        preview.setAttribute("src", "/aow4db/Icons/StructurePics/" + previewId + ".png");
+        preview.setAttribute("onerror", "this.style.display='none'");
+    } else {
+        preview.style.display = "none";
+    }
+ 
+    // what can spawn
+    const eventDiv = divOrigin.querySelector("#event");
+    eventDiv.innerHTML = "";
+    const main = getSpawnerPools(s, s.poolCategory);
+    if (main.length) {
+        eventDiv.appendChild(createSpawnerCollapsible(`Possible Spawns (${main.length})`, buildPoolHtml(main)));
+    }
+    if (s.excavatedCategory && s.excavatedCategory !== s.poolCategory) {
+        const excavated = getSpawnerPools(s, s.excavatedCategory);
+        if (excavated.length) {
+            eventDiv.appendChild(createSpawnerCollapsible(`Excavation Spawns (${excavated.length})`, buildPoolHtml(excavated)));
+        }
+    }
+}
+ 
+// tier: "Bronze" | "Silver" | "Gold" | undefined (= all)
+async function showSpawnersWithArgument(tier, divID) {
+    const list = getSpawnerList().filter((s) => tier === undefined || s.tier === tier);
+    const cards = await spawnStructureCards(list, divID);
+    for (let i = 0; i < list.length; i++) {
+        showSpawner(list[i], cards[i]);
+    }
 }
