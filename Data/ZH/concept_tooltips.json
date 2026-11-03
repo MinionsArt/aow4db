@@ -4,7 +4,7 @@
     "icon": null,
     "globalName": "GLOBAL.OutpostConcept",
     "displayHtml": "哨站",
-    "description": "这种建筑可为其所有者宣称<span style=\"\">Province</span>，并可在其上方建造新的<span style=\"\">City</span><br><br>哨站可以：<bulletlist><bullet>由<span style=\"\">Hero</span>建造</bullet><bullet>升级为<span style=\"\">City</span></bullet><bullet>拥有各种可在其中建造的升级</bullet><bullet>敌人无法通过非法入侵以外的方式进入</bullet><bullet>自<span style=\"\">Node</span>与<span style=\"\">Magic Material</span>产出<span style=\"\">Gold</span>、<span style=\"\">Mana</span>与<span style=\"\">Knowledge</span>收入</bullet></bulletlist><br><br>每座哨站会为其拥有者产生{amount}<span style=\"\">Gold</span>的维持费"
+    "description": "这种建筑可为其所有者宣称<span style=\"\">Province</span>，并可在其上方建造新的<span style=\"\">City</span><br><br>哨站可以：<bulletlist><bullet>由<span style=\"\">Hero</span>建造<bulletlist></bullet><bullet>必须位于陆地或水域行省</bullet><bullet>无法在<span style=\"\">Uninhabitable</span>行省中建造</bullet><bullet>无法紧邻另一个哨站或城邦所在的行省建造</bullet></bulletlist><bullet>在陆地上时可升级为<span style=\"\">City</span></bullet><bullet>拥有各种可在其中建造的升级</bullet><bullet>敌人无法在未进行非法入侵的情况下进入</bullet><bullet>解锁<span style=\"\">Magic Material</span></bullet><bullet>当一座<span style=\"\">City</span>与其建立<span style=\"\">Trade Route</span>时，可从领地内的<span style=\"\">Node</span>提供收入</bullet></bulletlist>"
   },
   "GLOBAL.AffinityProvinceImprovementConcept": {
     "name": "理念行省强化设施",
@@ -263,7 +263,7 @@
     "icon": null,
     "globalName": "GLOBAL.HeroClassSpellblade",
     "displayHtml": "英雄职阶：咒刃",
-    "description": "<br><br>相容武器：<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet></bulletlist>"
+    "description": "<br><br>相容武器：<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet><bullet><span style=\"\">Ranged Weapon</span></bullet></bulletlist>"
   },
   "GLOBAL.HeroClassWarlock": {
     "name": "英雄职阶：术士",
@@ -342,6 +342,13 @@
     "displayHtml": "魔法",
     "description": "魔法攻击是使用如法球、法杖之类的魔法器具来施展的攻���<br><br>许多生物拥有的特殊攻击也视为魔法攻击，比如巨龙吐息<br><br>魔法攻击会被<span style=\"\">Resistance</span>抵御"
   },
+  "GLOBAL.MagicStrikeConcept": {
+    "name": "魔法攻击",
+    "icon": null,
+    "globalName": "GLOBAL.MagicStrikeConcept",
+    "displayHtml": "魔法攻击",
+    "description": "魔法攻击是一种射程为1框��的<span style=\"\">Magic</span>攻击<br><br>拥有魔法攻击武器的<span style=\"\">P R O P E R T I E S. M A G I C_ F I G H T E R</span>与<span style=\"\">Hero</span>可以使用"
+  },
   "GLOBAL.MeleeConcept": {
     "name": "近战",
     "icon": null,
@@ -361,7 +368,7 @@
     "icon": null,
     "globalName": "GLOBAL.MovementAbilityConcept",
     "displayHtml": "移动",
-    "description": "该技能可以将使用该技能的单位移动至另一位置<br><br>陷入<span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>的单位无法使用该类技能"
+    "description": "该技能可以将使用该技能的单位移动至另一位置<br><br>陷入<span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>的单位无法使用该类技能<br>除非同时也是<span style=\"\">Teleport Ability</span>，否则无法在水上使用"
   },
   "GLOBAL.MovePointConcept": {
     "name": "移动点数",
@@ -648,7 +655,7 @@
     "icon": "rs_cooperation",
     "globalName": "GLOBAL.PactOfCooperationConcept",
     "displayHtml": "合作协议",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>开放了其边界</bullet><bullet>允许进行<span style=\"\">贸易</span><bulletlist></bullet><bullet>最多可进行两种资源的贸易</bullet><bullet>可以贸易<span style=\"\">Magic Material</span></bullet></bulletlist></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>开放了其边界</bullet><bullet>可从你的一座城邦向该城邦建立一条<span style=\"\">Trade Route</span></bullet><bullet>可以购买<span style=\"\">Magic Material</span></bullet></bulletlist></bulletlist>"
   },
   "GLOBAL.PactOfIntegrationConcept": {
     "name": "合并协议",
@@ -669,56 +676,56 @@
     "icon": "rs_vassalage",
     "globalName": "GLOBAL.PactOfVassalageConcept",
     "displayHtml": "附庸协议",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>会分享其收入与<span style=\"\">Magic Material</span></bullet><bullet>其它<span style=\"\">Empire</span>无法再与<span style=\"\">Independent City</span><span style=\"\">谈判</span>更好的<span style=\"\">Pv E Dipl State</span></bullet><bullet><span style=\"\">Independent City</span>会在其宗主陷入任何<span style=\"\">War</span>时加入其中，并在战争协同中获得指示</bullet><bullet>可以转换至<span style=\"\">Vassalage Phase</span>，从而进一步获得<span style=\"\">House Influence</span>以强化附庸利益。最终<span style=\"\">Independent City</span>将被<span style=\"\">合并</span>加入宗主帝国</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>会将其部分<span style=\"\">Mana</span>与<span style=\"\">Gold</span>收入作为贡赋分享</bullet><bullet>其控制的<span style=\"\">Magic Material</span>会与其宗主共享</bullet><bullet>其它<span style=\"\">Empire</span>无法再与<span style=\"\">Independent City</span><span style=\"\">谈判</span>更好的<span style=\"\">Pv E Dipl State</span></bullet><bullet><span style=\"\">Independent City</span>会在其宗主陷入任何<span style=\"\">War</span>时加入其中，可在战斗中提供协助，并可在战争协同中获得指���</bullet><bullet>可以转换至<span style=\"\">Vassalage Phase</span>，从而进一步获得<span style=\"\">House Influence</span>以强化附庸利益。最终<span style=\"\">Independent City</span>将被<span style=\"\">合并</span>加入宗主帝国</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-1Concept": {
     "name": "附属国",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-1Concept",
     "displayHtml": "附属国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>分享其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints><bullet></bullet> <span style=\"\">贸易</span>成本增加{tradingCost}%</bullet><bullet>不可以使用战争协同，不可以派遣新的军队</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints></bullet><bullet>战争协同被禁用，不会再派出新的军队</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-2Concept": {
     "name": "次级附属国",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-2Concept",
     "displayHtml": "次级附属国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>分享其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints><bullet></bullet> <span style=\"\">贸易</span>成本增加{tradingCost}%</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints></bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-3Concept": {
     "name": "反乱附属国",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-3Concept",
     "displayHtml": "反乱附属国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>不会分享其收入</bullet><bullet>不会分享其<span style=\"\">Magic Material</span></bullet><bullet>不会向群雄集结作出任何贡献<bullet></bullet> <span style=\"\">贸易</span>成本增加{tradingCost}%</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>不会分享其<span style=\"\">Magic Material</span></bullet><bullet>不会向群雄集结作出任何贡献</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl0Concept": {
     "name": "附庸国",
     "icon": "rs_vassalage0",
     "globalName": "GLOBAL.PactOfVassalageLvl0Concept",
     "displayHtml": "附庸国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>分享其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints><bullet></bullet> <span style=\"\">贸易</span>成本为默认水平</bullet><bullet>可以使用战争协同</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints></bullet><bullet>可以使用战争协同</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl1Concept": {
     "name": "服膺附庸国",
     "icon": "rs_vassalage1",
     "globalName": "GLOBAL.PactOfVassalageLvl1Concept",
     "displayHtml": "服膺附庸国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>分享其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints><bullet></bullet> <span style=\"\">贸易</span>成本降低{tradingCost}%</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints></bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl2Concept": {
     "name": "繁盛附庸国",
     "icon": "rs_vassalage2",
     "globalName": "GLOBAL.PactOfVassalageLvl2Concept",
     "displayHtml": "繁盛附庸国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>分享其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints><bullet></bullet> <span style=\"\">贸易</span>成本降低{tradingCost}%</bullet><bullet>城邦可以被<span style=\"\">整合</span><influence></influence></bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints></bullet><bullet>城邦可以被<span style=\"\">整合</span><influence></influence></bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl3Concept": {
     "name": "至忠附庸国",
     "icon": "rs_vassalage3",
     "globalName": "GLOBAL.PactOfVassalageLvl3Concept",
     "displayHtml": "至忠附庸国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>分享其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints><bullet></bullet> <span style=\"\">贸易</span>成本降低{tradingCost}%</bullet><bullet>城邦可以被<span style=\"\">整合</span><influence></influence></bullet></bulletlist>"
+    "description": "<bulletlist><bullet>此<span style=\"\">Independent City</span>的<span style=\"\">Trade Route</span>提供其{incomePercentage}%的收入</bullet><bullet>分享其所有的<span style=\"\">Magic Material</span></bullet><bullet>向<span style=\"\">Request Military Aid</span>贡献{commandPoints}<recruitmentpoints></recruitmentpoints></bullet><bullet>城邦可以被<span style=\"\">整合</span><influence></influence></bullet></bulletlist>"
   },
   "GLOBAL.HouseInfluenceConcept": {
     "name": "臣道",
@@ -1068,7 +1075,7 @@
     "icon": null,
     "globalName": "GLOBAL.MutualConsulateConcept",
     "displayHtml": "法师感应",
-    "description": "双方<span style=\"\">Leader</span>同意建立法师感应，以改善<span style=\"\">Empire Relation</span>并获得新的<span style=\"\">Treaty</span>和外交状态<br><br>效果：[bulletList]<bullet>每位领袖的<span style=\"\">Throne City</span>将会彼此显示</bullet><bullet>领袖可以<span style=\"\">召唤另一方参战</span>[/bulletList]<br><br>可开启：<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet></bulletlist>"
+    "description": "双方<span style=\"\">Leader</span>同意建立法师感应，以改善<span style=\"\">Empire Relation</span>并获得新的<span style=\"\">Treaty</span>和外交状态<br><br>效果：[bulletList]<bullet>每位领袖的<span style=\"\">Throne City</span>将会彼此显示</bullet><bullet>领袖可以<span style=\"\">召唤另一方参战</span>[/bulletList]<br><br>可开启：<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet><bullet><span style=\"\">Trade Agreement</span></bullet></bulletlist>"
   },
   "GLOBAL.DefensivePactConcept": {
     "name": "防御协议",
@@ -1076,6 +1083,13 @@
     "globalName": "GLOBAL.DefensivePactConcept",
     "displayHtml": "防御协议",
     "description": "<span style=\"\">Leader</span>宣誓要在防御战争中相互援助的外交状态<br><br>当任何一个领袖被宣战时，他们会自动向对方发送<span style=\"\">Call To War</span>，要求其在战争中提供援助。响应这个战争号召将给领袖���个额外的<span style=\"\">Casus Belli</span>（可直接使用）。领袖也可以拒绝接受这个号召，但此��将立刻撕毁防御协议<br><br>可开启：<bulletlist><bullet><span style=\"\">D S Alliance</span></bullet><bullet><span style=\"\">Share Vision</span></bullet></bulletlist>"
+  },
+  "GLOBAL.TradeAgreementConcept": {
+    "name": "自由贸易协定",
+    "icon": null,
+    "globalName": "GLOBAL.TradeAgreementConcept",
+    "displayHtml": "自由贸易协定",
+    "description": "双方<span style=\"\">Leader</span>允许彼此在双方<span style=\"\">City</span>之间建立<span style=\"\">Trade Route</span>"
   },
   "GLOBAL.OpenBordersConcept": {
     "name": "开放边界",
@@ -1194,7 +1208,7 @@
     "icon": null,
     "globalName": "GLOBAL.DeclSupremacyConcept",
     "displayHtml": "债务声明",
-    "description": "利用好感让另一位<span style=\"\">Leader</span>无法靠近：<bulletlist><bullet>此举会让<span style=\"\">双边关系</span>缓慢地向{RelationValue}<goodrelation></goodrelation>发展</bullet><bullet>声明持续期间，受影响玩家对你方的任何<span style=\"\">Casus Belli</span>都不会产生怨恨来影响关系</bullet><bullet>维持声明会每<span style=\"\">Turn</span>花费{cost}的维持费，每额外增加一项声明，此费用也会增加{costScale}</bullet><bullet>此项宣称可以通过<span style=\"\">Pronouncements</span>开启或结束</bullet>"
+    "description": "利用好感让另一位<span style=\"\">Leader</span>无法靠近：<bulletlist><bullet>此举会让你与该统治者的<span style=\"\">关系</span>缓慢地向{RelationValue}<goodrelation></goodrelation>发展</bullet><bullet>声明持续期间，受影响玩家对你方的任何<span style=\"\">Casus Belli</span>都不会产生怨恨来影响关系</bullet><bullet>维持声明会每<span style=\"\">Turn</span>花费{cost}的维持费，每额外增加一项声明，此费用也会增加{costScale}</bullet><bullet>声明可以通过<span style=\"\">Pronouncements</span>开启或结束</bullet></bulletlist>"
   },
   "GLOBAL.GainingWarspoilsConcept": {
     "name": "获取战利品",
@@ -1434,6 +1448,55 @@
     "displayHtml": "破损岛屿",
     "description": "��损岛屿是精心制作的区域，具有以下特点：<bulletlist><bullet>只能通过地表或地底的传送门进入</bullet><bullet>这些传送门开局即可使用，且没有守卫</bullet><bullet>包含一个<span style=\"\">S T R U C T U R E S. B R E A C H E D_ A R C A N U M</span>以及各种其他有价值的<span style=\"\">Location</span></bullet></bulletlist>"
   },
+  "GLOBAL.PirateDwellingConcept": {
+    "name": "自由船长",
+    "icon": null,
+    "globalName": "GLOBAL.PirateDwellingConcept",
+    "displayHtml": "自由船长",
+    "description": "自由船长是海盗<span style=\"\">Dwelling</span>中魅力非凡的领主，最臭名昭著的水手都聚集于此，共��肆虐海域<br><bulletlist><bullet>一片界域内最多存在{IntMaxDwellings}位自由船长</bullet><bullet>自由船长拥有不同的性��：<personalitypirateavaricious></personalitypirateavaricious> <span style=\"\">贪婪</span>、<personalitypiratebloodthirsty></personalitypiratebloodthirsty> <span style=\"\">嗜血</span>或<personalitypirateheroic></personalitypirateheroic> <span style=\"\">英勇</span></bullet><bullet>通过满足其需求或完成其任务可与自由船长建立契约</bullet><bullet>与自由船长建立契约将解锁数个针对其的贸易选项，例如<span style=\"\">Tome</span>内容、海盗<span style=\"\">Unit</span>与<span style=\"\">Spell</span>，或<span style=\"\">Equipment</span></bullet><bullet>自由船长处于<span style=\"\">Pirate Dwelling War</span>状态时，或当另一个<span style=\"\">Empire</span>付费雇佣其发动攻击时（即便对方是其盟友），都会派出<span style=\"\">Pirate Raid</span></bullet><bullet>自由船长的<span style=\"\">Dwelling</span>在被占领后将立即毁灭，并为征服者提供些许��所的宝藏与贸易物品</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingTruceConcept": {
+    "name": "停战协议",
+    "icon": "rs_neutral",
+    "globalName": "GLOBAL.PirateDwellingTruceConcept",
+    "displayHtml": "停战协议",
+    "description": "<span style=\"\">Pirate Dwelling</span>容忍了你的存在<br><br>视为<span style=\"\">Independent City Neutral</span>状态<br><br><span style=\"\">Pirate Dwelling</span>不会在意行省宣称<br><br>你无法与<span style=\"\">Pirate Dwelling</span>签订<span style=\"\">Diplomatic Token</span>。你需要通过完成任务与满足要求来提升外交等级，并最终达���<span style=\"\">Pirate Dwelling Life Bond</span><br><br><span style=\"\">Pirate Dwelling</span>每回合都有小概率��坏停战协议并宣布<span style=\"\">Pirate Dwelling War</span><br><br><span style=\"\">Pirate Dwelling</span>可被其他领袖贿赂以对你发起<span style=\"\">Pirate Raid</span>"
+  },
+  "GLOBAL.PirateDwellingWarConcept": {
+    "name": "战争",
+    "icon": "rs_war",
+    "globalName": "GLOBAL.PirateDwellingWarConcept",
+    "displayHtml": "战争",
+    "description": "与<span style=\"\">Pirate Dwelling</span>处于<rs_war></rs_war>战争状态意味着<span style=\"\">Army</span>可以进行<span style=\"\">Combat</span>，<span style=\"\">City</span>可能遭受攻击<br><br>战争期间，<span style=\"\">Pirate Dwelling</span>偶尔会发起<span style=\"\">Pirate Raid</span>以攻击其敌人<br><br>战争会因任意一方落败或双方议和而结束"
+  },
+  "GLOBAL.PirateRaidConcept": {
+    "name": "海盗突袭",
+    "icon": "pirateRaid",
+    "globalName": "GLOBAL.PirateRaidConcept",
+    "displayHtml": "海盗突袭",
+    "description": "海盗突袭是由<span style=\"\">Pirate Dwelling</span>针对<span style=\"\">Empire</span>发动的袭击，专注于劫掠<span style=\"\">Trade Route</span>与<span style=\"\">Province</span>。<br><bulletlist><bullet>海盗突袭悬挂黑旗，不遵守外交条约</bullet><bullet>一旦海盗突袭成功劫掠{IntRaidGoal}个目��，此次突袭便会结束</bullet><bullet><span style=\"\">Empire</span>可以付费给<span style=\"\">Pirate Dwelling</span>以发起一次海盗突袭：<bulletlist></bullet><bullet>突袭结束时可分得所劫战利品的一部分，其中可能包括目���<span style=\"\">Empire</span>已<span style=\"\">��究</span>的技能</bullet><bullet>若海盗突袭被击败，被攻击的<span style=\"\">Leader</span>可能会察觉此事并获得<span style=\"\">Casus Belli</span></bullet></bulletlist><bullet>被攻击的<span style=\"\">Leader</span>可以在以<span style=\"\">Army</span>与突袭部队交战时，贿赂<gold></gold>对方以令其放弃攻击</bullet><bullet>单个<span style=\"\">Pirate Dwelling</span>可同时进行多次海盗突袭</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingAvariciousPirateConcept": {
+    "name": "贪婪海盗",
+    "icon": "personalityPirateAvaricious",
+    "globalName": "GLOBAL.PirateDwellingAvariciousPirateConcept",
+    "displayHtml": "贪婪海盗",
+    "description": "贪婪的海盗一切以利益为重。<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>只会与拥有大量<span style=\"\">Gold</span>的领袖��坏休战。领袖越富有，发生此事的概率就越高</bullet><bullet><span style=\"\">Pirate Dwelling</span>喜欢拥有大量<span style=\"\">Gold</span>的领袖，讨厌<span style=\"\">Gold</span>稀少的领袖</bullet><bullet>此个性会影响该巢穴的部分交易选项、任务，以及达成<span style=\"\">Pirate Dwelling Life Bond</span>后可获得的独特<span style=\"\">Artifact</span></bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingBloodthirstyPirateConcept": {
+    "name": "嗜血海盗",
+    "icon": "personalityPirateBloodthirsty",
+    "globalName": "GLOBAL.PirateDwellingBloodthirstyPirateConcept",
+    "displayHtml": "嗜血海盗",
+    "description": "嗜血的海盗以暴力和��坏为乐。<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>有很高的概率��坏休战并宣战</bullet><bullet><span style=\"\">Pirate Dwelling</span>喜欢发动战争的领袖，讨厌缔结防御协议与盟约的领袖</bullet><bullet>此个性会影响该巢穴的部分交易选项、任务，以及达成<span style=\"\">Pirate Dwelling Life Bond</span>后可获得的独特<span style=\"\">Artifact</span></bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingHeroicPirateConcept": {
+    "name": "侠义海盗",
+    "icon": "personalityPirateHeroic",
+    "globalName": "GLOBAL.PirateDwellingHeroicPirateConcept",
+    "displayHtml": "侠义海盗",
+    "description": "侠义的海盗专注于打��法律以帮助贫苦与受压迫者。<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>只会与邪恶的领袖��坏休战。领袖的<span style=\"\">Alignment</span>越低，发生此事的概率就越高</bullet><bullet><span style=\"\">Pirate Dwelling</span>喜欢<span style=\"\">Alignment</span>善良的领袖，讨厌<span style=\"\">Alignment</span>邪恶的领袖</bullet><bullet>此个性会影响该巢穴的部分交易选项、任务，以及达成<span style=\"\">Pirate Dwelling Life Bond</span>后可获得的独特<span style=\"\">Artifact</span></bullet></bulletlist>"
+  },
   "GLOBAL.BloodDrainConcept": {
     "name": "血液汲取",
     "icon": null,
@@ -1453,7 +1516,7 @@
     "icon": null,
     "globalName": "GLOBAL.SunlessConcept",
     "displayHtml": "无光",
-    "description": "一种<span style=\"\">Province Feature</span><br><br>此处暗无天日，到处都是荆棘丛生的黑暗植被，其中还点缀着几朵猩红玫瑰<br><bulletlist><bullet>并入此<span style=\"\">Province</span>的<span style=\"\">City</span>会受到{stabilitypenalty}<span style=\"\">City Stability</span>惩罚。</bullet><bullet><span style=\"\">World Map</span>上<span style=\"\">Unit</span>每<span style=\"\">Turn</span>恢复的<span style=\"\">Hit Point</span>{regen}</bullet><bullet><span style=\"\">Unit</span>在<span style=\"\">Combat</span>获得的<span style=\"\">Temporary Hit Point</span>变为{percentage}</bullet><bullet>拥有<span style=\"\">P R O P E R T I E S. H E A R T L E S S</span>特性，或位于<span style=\"\">Vampire Lord</span>帝国麾下的单位与城邦可免疫该效果</bullet></bulletlist>"
+    "description": "一种<span style=\"\">Province Feature</span><br><br>阳光的缺席使带刺的黑暗植物蔓延，其中点缀着深红玫瑰<br><bulletlist><bullet>并入此<span style=\"\">Province</span>的<span style=\"\">City</span>遭受{stabilitypenalty}<span style=\"\">City Stability</span></bullet><bullet><span style=\"\">Unit</span>在<span style=\"\">World Map</span>上每<span style=\"\">Turn</span>回复{regen}<span style=\"\">Hit Point</span></bullet><bullet><span style=\"\">Unit</span>在<span style=\"\">Combat</span>中受到治疗时，获得的<span style=\"\">Temporary Hit Point</span>减少{percentage}</bullet><bullet>拥有<span style=\"\">P R O P E R T I E S. H E A R T L E S S</span>的单位与城邦，或由<span style=\"\">Vampire Lord</span>领导的帝国，免疫这些效果</bullet></bulletlist>"
   },
   "GLOBAL.VampireLordConcept": {
     "name": "上古吸血鬼",
@@ -1523,7 +1586,7 @@
     "icon": "minorcity",
     "globalName": "GLOBAL.DwellingConcept",
     "displayHtml": "栖所",
-    "description": "<minorcity></minorcity> ��所是一种特定类型的<span style=\"\">Unit</span>定居的独立<span style=\"\">City</span><br><br>与<span style=\"\">Independent City</span>类似，它们会：<bulletlist><bullet>拥有<span style=\"\">Free City Lord</span></bullet><bullet>拥有与你相关的<span style=\"\">外交立场</span>，可以加以提升以获得利益</bullet><bullet>不属于任何<span style=\"\">Empire</span></bullet></bulletlist><br><br>��所不受影响自由城邦的界域特征或<span style=\"\">Spell</span>的影响"
+    "description": "<minorcity></minorcity>��所是独立的<span style=\"\">City</span>，通常拥有独特的影响方式并提供独特的加成<br><br>与<span style=\"\">Independent City</span>一��，它们：<bulletlist><bullet>拥有<span style=\"\">Free City Lord</span></bullet><bullet>与你拥有可改善的<span style=\"\">外交关系</span></bullet><bullet>不属于任何<span style=\"\">Empire</span></bullet></bulletlist><br><br>��所不受界域特性或影响自由城邦的<span style=\"\">Spell</span>影响"
   },
   "GLOBAL.EmpireRelationConcept": {
     "name": "帝国关系",
@@ -1565,7 +1628,7 @@
     "icon": null,
     "globalName": "GLOBAL.IndependentCityTradeConcept",
     "displayHtml": "交易",
-    "description": "<span style=\"\">Independent City</span>将为与该城邦签有至少一项<span style=\"\">Pact Of Cooperation</span>的<span style=\"\">Leader</span>提供数个交易选项<br><br>交易选项包括交换资源以及任何位于该城邦领地内的<span style=\"\">Magic Material</span><br><br>每个自由城邦只能同时激活一项交易，等该项交易到期后���能发起一项新的交易"
+    "description": "<span style=\"\">Independent City</span>可能会被至少与其拥有<span style=\"\">Pact Of Cooperation</span>的<span style=\"\">Leader</span>要求专注于特定资源<br><br>它们也可能以付费为代价提供位于城邦领地内的任何<span style=\"\">Magic Material</span><br><br>每个自由城邦只能同时激活一项交易，等该项交易到期后���能发起一项新的交易"
   },
   "GLOBAL.IndependentCityWarConcept": {
     "name": "战争",
@@ -1901,7 +1964,7 @@
     "icon": null,
     "globalName": "GLOBAL.ColtLoreConcept",
     "displayHtml": "失落宝藏商会",
-    "description": "以财富闻名的失落宝藏商会正将其影响力扩展到遍及整个<span style=\"\">Astral Sea Lore</span>。该公司专门雇佣和装备技艺高超的冒险者，致力于发掘���掠夺古代帝国的财富，尤其是来自巨人族遗迹的瑰宝<span style=\"\">Myrrida Lore</span>。尽管常被指责使用不正当手段，但商会官员一再表明他���的合同始终会得到履行——只不过需要仔细阅读所有的��注"
+    "description": "以财富闻名的失落宝藏商会正将其影响力扩展到遍及整个<span style=\"\">Astral Sea Lore</span>。该商会专门雇佣和装备技艺高超的冒险者，致力于发掘���掠夺古代帝国的财富，尤其是来自巨人族遗迹的瑰宝<span style=\"\">Myrrida Lore</span>。尽管常被指责使用不正当手段，但商会官员一再表明他���的合同始终会得到履行——只不过需要仔细阅读所有的��注"
   },
   "GLOBAL.CommonwealthLoreConcept": {
     "name": "邦盟",
@@ -2211,6 +2274,13 @@
     "displayHtml": "萨德莱",
     "description": "一群野心勃勃的<span style=\"\">Godir Lore</span>组成了一个并不团结的阴谋组织，意图夺取<span style=\"\">Pantheon Lore</span>与<span style=\"\">Astral Sea Lore</span>内的力量。他们认为任何力量都应该公之于众，并会图谋���侵那些他们认为值得征服的领域。天性混沌的他们常常��与<span style=\"\">Covenant Faction Lore</span>针锋相对"
   },
+  "GLOBAL.SilverSeasLoreConcept": {
+    "name": "白银之海",
+    "icon": null,
+    "globalName": "GLOBAL.SilverSeasLoreConcept",
+    "displayHtml": "白银之海",
+    "description": "白银之海的传说深植于每一位水手心中。古老的海之谣传唱着<span style=\"\">Worlds Within Lore</span>中的一处所在，<span style=\"\">星辰洋流</span>在此交汇，海水丰饶得如同液态白银翻涌成浪。在那里，���着贵金属鳞片的游鱼穿梭于纯净法力凝成的礁石之间，<span style=\"\">Maer Lore</span>的歌声轻抚着海岸<br><br>一些水手推测，白银之海的波涛隐匿于<span style=\"\">Tidolon Lore</span>之中；另一些人则认为，那片潮汐尚未被人寻获。然而，���有人坚称，这片乐土并非一处可以被找到的地方，而是��处应当被追寻的方向"
+  },
   "GLOBAL.SoulsLoreConcept": {
     "name": "灵魂",
     "icon": null,
@@ -2484,6 +2554,13 @@
     "displayHtml": "渔场",
     "description": "渔场是拥有如下增益的基础<span style=\"\">Province Improvement</span>：<bulletlist><bullet>提供<span style=\"\">Food</span>收入。</bullet></bulletlist>"
   },
+  "GLOBAL.ForeignCityConcept": {
+    "name": "外邦城邦",
+    "icon": null,
+    "globalName": "GLOBAL.ForeignCityConcept",
+    "displayHtml": "外邦城邦",
+    "description": "属于非你所有的<span style=\"\">Empire</span>的<span style=\"\">City</span>"
+  },
   "GLOBAL.ForesterConcept": {
     "name": "林场",
     "icon": "forester",
@@ -2626,7 +2703,7 @@
   },
   "GLOBAL.ArtifactConcept": {
     "name": "神器",
-    "icon": null,
+    "icon": "artifact",
     "globalName": "GLOBAL.ArtifactConcept",
     "displayHtml": "神器",
     "description": "神器是与<span style=\"\">Player</span>的<span style=\"\">Empire</span>绑定的独特物品。它们会为掌控它们的<span style=\"\">Empire</span>提供独特的加成<br><bulletlist><bullet>神器通常会是某种套装的一部分。完成套装的收集可以启���强大的套装大事记</bullet><bullet>神器可以在<span style=\"\">Player</span>中交易</bullet><bullet>击败一名玩家后，此玩家的所有神器都会归击败他的玩家���有</bullet></bulletlist>"
@@ -2812,6 +2889,20 @@
     "globalName": "GLOBAL.SpeedMarchConcept",
     "displayHtml": "强行军",
     "description": "强行军可以令单位在<span style=\"\">World Map</span>移动比通常状态下一<span style=\"\">Turn</span>内更长的距离<br><br>当强行军启动时，单位会获得{Movepointgain}%的<span style=\"\">Move Point</span>，但也会损失{Healthloss}%的当前<span style=\"\">Hit Point</span>。他们也会在{ExhaustedTurns}<span style=\"\">Turn</span>内陷入<span style=\"\">P R O P E R T I E S. E X H A U S T E D</span>状态。军中每支单位会令强行军耗费{Manacost}<span style=\"\">Mana</span><br><br>使用强行军的技能可以通过<span style=\"\">Empire Development</span>解锁"
+  },
+  "GLOBAL.TradeRouteConcept": {
+    "name": "贸易路线",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteConcept",
+    "displayHtml": "贸易路线",
+    "description": "<span style=\"\">City</span>与哨站或其他<span style=\"\">City</span>之间的连接，根据所连接的目��，为创建它的起始城邦提供<span style=\"\">Trade Route Income</span><br><br>城邦可花费<span style=\"\">Unit Production</span>建立贸易路线，成本随目��类型与抵达所需移动量而提高<br><br>每座城邦同时只能维持一定数量的贸易路线，此上限可通���<span style=\"\">City Structure</span>提高"
+  },
+  "GLOBAL.TradeRouteIncomeConcept": {
+    "name": "贸易路线收入",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteIncomeConcept",
+    "displayHtml": "贸易路线收入",
+    "description": "给予<span style=\"\">City</span>的贸易路线收入取决于目��：<bulletlist><bullet><span style=\"\">Outpost</span>——哨站领地的全部收入</bullet><bullet><span style=\"\">Independent City</span>——其全部收入的一定百分比，随其<span style=\"\">Pv E Dipl State</span>提高</bullet><bullet><span style=\"\">Foreign City</span>——其<span style=\"\">Gold</span>与<span style=\"\">Mana</span>的较大百分比</bullet></bulletlist>"
   },
   "GLOBAL.CryptConcept": {
     "name": "墓穴",
@@ -3486,11 +3577,11 @@
     "description": "<span style=\"\">Province Feature</span><br><br>湿软的沼泽地，可以在这里建造<span style=\"\">Farm</span>，但是没有沼泽适应的派系会遭受{fooddebuff}<span style=\"\">Food</span>"
   },
   "GLOBAL.UndergroundWaterConcept": {
-    "name": "水域",
+    "name": "地下水域",
     "icon": null,
     "globalName": "GLOBAL.UndergroundWaterConcept",
-    "displayHtml": "水域",
-    "description": "<span style=\"\">Province Feature</span><br><br>地下拥有水源的行省。可以在这里建造水域<span style=\"\">Farm</span>"
+    "displayHtml": "地下水域",
+    "description": "水域<span style=\"\">Province Feature</span><br><br>地下拥有水源的行省。可以在这里建造水域<span style=\"\">Farm</span>"
   },
   "GLOBAL.UninhabitableConcept": {
     "name": "不宜居",
@@ -3511,7 +3602,7 @@
     "icon": null,
     "globalName": "GLOBAL.MangroveForestConcept",
     "displayHtml": "红树林",
-    "description": "<span style=\"\">Province Feature</span><br><br>树��浸没在水中的森林。可以在这里建造水域<span style=\"\">Forester</span>"
+    "description": "水域<span style=\"\">Province Feature</span><br><br>树��浸没在水中的森林。可以在这里建造水域<span style=\"\">Forester</span>"
   },
   "GLOBAL.VoidConcept": {
     "name": "虚空",
@@ -3554,5 +3645,12 @@
     "globalName": "GLOBAL.DrainingConcept",
     "displayHtml": "消耗",
     "description": "当单位经过或在此位置结束回合时，其遭受<span style=\"\">P R O P E R T I E S. D I S R U P T I O N_ T O O L T I P_ P R O P E R T Y</span>，持续{turn}<span style=\"\">Turn</span>。若此单位拥有<span style=\"\">P R O P E R T I E S. M A G I C_ O R I G I N</span>，它还会遭受<span style=\"\">P R O P E R T I E S. D E C A Y I N G</span>，持续{turn2}<span style=\"\">Turn</span>"
+  },
+  "GLOBAL.ExplosiveConcept": {
+    "name": "爆炸",
+    "icon": null,
+    "globalName": "GLOBAL.ExplosiveConcept",
+    "displayHtml": "爆炸",
+    "description": "此障碍被摧毁时会爆炸，对邻近单位造成伤害"
   }
 }

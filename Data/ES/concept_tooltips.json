@@ -4,7 +4,7 @@
     "icon": null,
     "globalName": "GLOBAL.OutpostConcept",
     "displayHtml": "Puesto avanzado",
-    "description": "Un edificio que reivindica una <span style=\"\">Province</span> para su propietario y sienta las bases para una nueva <span style=\"\">City</span>.<br><br>Un puesto avanzado:<bulletlist><bullet>Puede ser construido por un <span style=\"\">Hero</span>.</bullet><bullet>Puede mejorarse para convertirse en una <span style=\"\">City</span>.</bullet><bullet>Puede acomodar varias mejoras.</bullet><bullet>Los enemigos no pueden entrar en él sin invadir fronteras.</bullet><bullet>Puede generar ganancias de <span style=\"\">Gold</span>, <span style=\"\">Mana</span> y <span style=\"\">Knowledge</span> a partir de <span style=\"\">Node</span> y <span style=\"\">Magic Material</span>.</bullet></bulletlist><br><br>Cada puesto avanzado tiene un mantenimiento de {amount} de <span style=\"\">Gold</span> para el propietario."
+    "description": "Un edificio que reivindica una <span style=\"\">Province</span> para su propietario y sienta las bases para una nueva <span style=\"\">City</span>.<br><br>Un puesto avanzado:<bulletlist><bullet>Puede ser construido por un <span style=\"\">Hero</span>.<bulletlist></bullet><bullet>Tiene que estar en una provincia de tierra o acuática.</bullet><bullet>No se puede construir en una provincia <span style=\"\">Uninhabitable</span>.</bullet><bullet>No se puede construir adyacente a una provincia con otro puesto avanzado o ciudad.</bullet></bulletlist><bullet>Puede mejorarse para convertirse en una <span style=\"\">City</span> si está en tierra.</bullet><bullet>Puede acomodar varias mejoras.</bullet><bullet>Los enemigos no pueden entrar en él sin invadir fronteras.</bullet><bullet>Concede acceso a <span style=\"\">Magic Material</span>.</bullet><bullet>Proporciona ganancias de <span style=\"\">Node</span> en el dominio cuando una <span style=\"\">City</span> establece una <span style=\"\">Trade Route</span> hacia allí.</bullet></bulletlist>"
   },
   "GLOBAL.AffinityProvinceImprovementConcept": {
     "name": "Mejora de provincia de afinidad",
@@ -263,7 +263,7 @@
     "icon": null,
     "globalName": "GLOBAL.HeroClassSpellblade",
     "displayHtml": "Clase de héroe: filo hechicero",
-    "description": "<br><br>Armas compatibles:<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet></bulletlist>"
+    "description": "<br><br>Armas compatibles:<bulletlist><bullet><span style=\"\">Great Weapon</span>.</bullet><bullet><span style=\"\">One Handed Weapon</span>.</bullet><bullet><span style=\"\">Shield</span>.</bullet><bullet><span style=\"\">Fist Weapon</span>.</bullet><bullet><span style=\"\">Polearm Weapon</span>.</bullet><bullet><span style=\"\">Skirmishing Weapon</span>.</bullet><bullet><span style=\"\">Ranged Weapon</span>.</bullet></bulletlist>"
   },
   "GLOBAL.HeroClassWarlock": {
     "name": "Clase de héroe: hechicero",
@@ -342,6 +342,13 @@
     "displayHtml": "Magia",
     "description": "Los ataques mágicos se llevan a cabo con elementos mágicos, como orbes o bastones.<br><br>Muchos de los ataques especiales que tienen las criaturas, como Aliento de dragón, también se consideran ataques mágicos.<br><br>Los ataques mágicos se reducen en función de la <span style=\"\">Resistance</span>."
   },
+  "GLOBAL.MagicStrikeConcept": {
+    "name": "Ataque mágico",
+    "icon": null,
+    "globalName": "GLOBAL.MagicStrikeConcept",
+    "displayHtml": "Ataque mágico",
+    "description": "Los ataques mágicos son un tipo de ataque <span style=\"\">mágico</span> con un rango de 1 casilla.<br><br>Están disponibles para <span style=\"\">P R O P E R T I E S. M A G I C_ F I G H T E R</span> y <span style=\"\">Hero</span> con armas de ataque mágico."
+  },
   "GLOBAL.MeleeConcept": {
     "name": "Cuerpo a cuerpo",
     "icon": null,
@@ -361,7 +368,7 @@
     "icon": null,
     "globalName": "GLOBAL.MovementAbilityConcept",
     "displayHtml": "Movimiento",
-    "description": "Una habilidad que mueve a la unidad a otra ubicación.<br><br>No pueden usarla las unidades afectadas por <span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>."
+    "description": "Una habilidad que mueve a la unidad a otra ubicación.<br><br>No pueden usarla las unidades afectadas por <span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>.<br>No se puede usar en el agua a menos que también sea una <span style=\"\">Teleport Ability</span>."
   },
   "GLOBAL.MovePointConcept": {
     "name": "Punto de movimiento",
@@ -494,7 +501,7 @@
     "icon": null,
     "globalName": "GLOBAL.TeleportAbilityConcept",
     "displayHtml": "Teletransporte",
-    "description": "Una habilidad que mueve al instante a la unidad a otra ubicación usando magia."
+    "description": "Una habilidad que mueve al instante a esta unidad a otra ubicación usando magia."
   },
   "GLOBAL.TemporaryHitPointConcept": {
     "name": "Punto de salud temporal",
@@ -648,7 +655,7 @@
     "icon": "rs_cooperation",
     "globalName": "GLOBAL.PactOfCooperationConcept",
     "displayHtml": "Pacto de cooperación",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> abre sus fronteras.</bullet><bullet>El <span style=\"\">comercio</span> está activo.<bulletlist></bullet><bullet>Máximo de dos intercambios de recursos disponibles.</bullet><bullet>Los <span style=\"\">Magic Material</span> pueden intercambiarse.</bullet></bulletlist></bulletlist>"
+    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> abre sus fronteras.</bullet><bullet>Se puede establecer una <span style=\"\">Trade Route</span> a esta ciudad desde la tuya.</bullet><bullet>Se pueden comprar <span style=\"\">Magic Material</span>.</bullet></bulletlist></bulletlist>"
   },
   "GLOBAL.PactOfIntegrationConcept": {
     "name": "Pacto de integración",
@@ -669,56 +676,56 @@
     "icon": "rs_vassalage",
     "globalName": "GLOBAL.PactOfVassalageConcept",
     "displayHtml": "Pacto de vasallaje",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte sus ganancias y sus <span style=\"\">Magic Material</span>.</bullet><bullet>Puede que los otros <span style=\"\">Empire</span> ya no <span style=\"\">negocien</span> mejores <span style=\"\">Pv E Dipl State</span> con la <span style=\"\">Independent City</span>.</bullet><bullet>La <span style=\"\">Independent City</span> se unirá a su señor supremo en las <span style=\"\">War</span> que libre, le ayudará en combate y se le podrán dar órdenes en la coordinación militar.</bullet><bullet>Entra en la <span style=\"\">Vassalage Phase</span>, durante la cual se puede conseguir una mayor <span style=\"\">House Influence</span> para mejorar los beneficios del vasallaje. Con el tiempo, puede que la <span style=\"\">Independent City</span> se <span style=\"\">integre</span> en el imperio de su señor supremo.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte parte de su <span style=\"\">Mana</span> y ganancias de <span style=\"\">Gold</span> como tributo.</bullet><bullet>Los <span style=\"\">Magic Material</span> que controlan se comparten con su señor supremo.</bullet><bullet>Puede que los otros <span style=\"\">Empire</span> ya no <span style=\"\">negocien</span> mejores <span style=\"\">Pv E Dipl State</span> con la <span style=\"\">Independent City</span>.</bullet><bullet>La <span style=\"\">Independent City</span> se unirá a su señor supremo en las <span style=\"\">War</span> que libre, le ayudará en combate y se le podrán dar órdenes en la coordinación militar.</bullet><bullet>Entra en la <span style=\"\">Vassalage Phase</span>, durante la cual se puede conseguir una mayor <span style=\"\">House Influence</span> para mejorar los beneficios del vasallaje. Con el tiempo, puede que la <span style=\"\">Independent City</span> se <span style=\"\">integre</span> en el imperio de su señor supremo.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-1Concept": {
     "name": "Tributación",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-1Concept",
     "displayHtml": "Tributación",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>Los costes de <span style=\"\">comercio</span> aumentan un {tradingCost} %.</bullet><bullet>La coordinación militar no está disponible y no se enviarán ejércitos nuevos.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>La coordinación militar no está disponible y no se enviarán ejércitos nuevos.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-2Concept": {
     "name": "Tributación menor",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-2Concept",
     "displayHtml": "Tributación menor",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>Los costes de <span style=\"\">comercio</span> aumentan un {tradingCost} %.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-3Concept": {
     "name": "Tributación denegada",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-3Concept",
     "displayHtml": "Tributación denegada",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> no comparten ganancias.</bullet><bullet>No comparte sus <span style=\"\">Magic Material</span>.</bullet><bullet>No contribuye nada al Cónclave de los señores.</bullet><bullet>Los costes de <span style=\"\">comercio</span> aumentan un {tradingCost} %.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>No comparte sus <span style=\"\">Magic Material</span>.</bullet><bullet>No contribuye nada al Cónclave de los señores.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl0Concept": {
     "name": "Vasallaje",
     "icon": "rs_vassalage0",
     "globalName": "GLOBAL.PactOfVassalageLvl0Concept",
     "displayHtml": "Vasallaje",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>Los costes de <span style=\"\">comercio</span> están en sus valores por defecto.</bullet><bullet>La coordinación militar pasa a estar disponible.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>La coordinación militar pasa a estar disponible.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl1Concept": {
     "name": "Vasallaje vinculado",
     "icon": "rs_vassalage1",
     "globalName": "GLOBAL.PactOfVassalageLvl1Concept",
     "displayHtml": "Vasallaje vinculado",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>Los costes de <span style=\"\">comercio</span> se reducen un {tradingCost} %.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl2Concept": {
     "name": "Vasallaje próspero",
     "icon": "rs_vassalage2",
     "globalName": "GLOBAL.PactOfVassalageLvl2Concept",
     "displayHtml": "Vasallaje próspero",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>Los costes de <span style=\"\">comercio</span> se reducen un {tradingCost} %.</bullet><bullet>La ciudad puede <span style=\"\">integrarse</span> <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>La ciudad puede <span style=\"\">integrarse</span> <influence></influence>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl3Concept": {
     "name": "Vasallaje supremo",
     "icon": "rs_vassalage3",
     "globalName": "GLOBAL.PactOfVassalageLvl3Concept",
     "displayHtml": "Vasallaje supremo",
-    "description": "<bulletlist><bullet>La <span style=\"\">Independent City</span> comparte el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>Los costes de <span style=\"\">comercio</span> se reducen un {tradingCost} %.</bullet><bullet>La ciudad puede <span style=\"\">integrarse</span> <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>Las <span style=\"\">Trade Route</span> con esta <span style=\"\">Independent City</span> proporcionan el {incomePercentage} % de sus ganancias.</bullet><bullet>Comparte todos sus <span style=\"\">Magic Material</span>.</bullet><bullet>Contribuye con {commandPoints}<recruitmentpoints></recruitmentpoints> al <span style=\"\">Request Military Aid</span>.</bullet><bullet>La ciudad puede <span style=\"\">integrarse</span> <influence></influence>.</bullet></bulletlist>"
   },
   "GLOBAL.HouseInfluenceConcept": {
     "name": "Lealtad",
@@ -1068,7 +1075,7 @@
     "icon": null,
     "globalName": "GLOBAL.MutualConsulateConcept",
     "displayHtml": "Vínculo del mago",
-    "description": "Ambos <span style=\"\">Leader</span> acceden a establecer un vínculo del mago con el fin de mejorar sus <span style=\"\">Empire Relation</span> y tener acceso a nuevos <span style=\"\">Treaty</span> y estados diplomáticos.<br><br>Efectos:[bulletList]<bullet>Se revela la <span style=\"\">Throne City</span> de cada gobernante.</bullet><bullet>Los gobernantes pueden <span style=\"\">llamarse mutuamente a la guerra</span>.[/bulletList]<br><br>Lleva a:<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span>.</bullet><bullet><span style=\"\">Open Borders</span>.</bullet><bullet><span style=\"\">Allow Claimed Sectors</span>.</bullet><bullet><span style=\"\">Teleporter Pact</span>.</bullet></bulletlist>"
+    "description": "Ambos <span style=\"\">Leader</span> acceden a establecer un vínculo del mago con el fin de mejorar su <span style=\"\">Empire Relation</span> y tener acceso a nuevos <span style=\"\">Treaty</span> y estados diplomáticos.<br><br>Efectos:[bulletList]<bullet>Se revela la <span style=\"\">Throne City</span> de cada gobernante.</bullet><bullet>Los gobernantes pueden <span style=\"\">llamarse mutuamente a la guerra</span>.[/bulletList]<br><br>Lleva a:<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span>.</bullet><bullet><span style=\"\">Open Borders</span>.</bullet><bullet><span style=\"\">Allow Claimed Sectors</span>.</bullet><bullet><span style=\"\">Teleporter Pact</span>.</bullet><bullet><span style=\"\">Trade Agreement</span>.</bullet></bulletlist>"
   },
   "GLOBAL.DefensivePactConcept": {
     "name": "Pacto defensivo",
@@ -1076,6 +1083,13 @@
     "globalName": "GLOBAL.DefensivePactConcept",
     "displayHtml": "Pacto defensivo",
     "description": "Un estado diplomático en el que los <span style=\"\">Leader</span> juran acudir en ayuda del otro en las guerras defensivas.<br><br>Cuando se declare la guerra a cualquiera de los dos gobernantes, estos enviarán automáticamente una <span style=\"\">Call To War</span> al otro, pidiéndole ayuda. Al responder a dicha llamada, el gobernante conseguirá <span style=\"\">Casus Belli</span> adicionales que podrá usar directamente. Los gobernantes pueden rechazar la llamada, pero eso romperá el pacto defensivo.<br><br>Lleva a:<bulletlist><bullet><span style=\"\">D S Alliance</span>.</bullet><bullet><span style=\"\">Share Vision</span>.</bullet></bulletlist>"
+  },
+  "GLOBAL.TradeAgreementConcept": {
+    "name": "Acuerdo de libre comercio",
+    "icon": null,
+    "globalName": "GLOBAL.TradeAgreementConcept",
+    "displayHtml": "Acuerdo de libre comercio",
+    "description": "Ambos <span style=\"\">Leader</span> permiten al otro establecer sus <span style=\"\">Trade Route</span> entre sus <span style=\"\">City</span>."
   },
   "GLOBAL.OpenBordersConcept": {
     "name": "Abrir fronteras",
@@ -1194,7 +1208,7 @@
     "icon": null,
     "globalName": "GLOBAL.DeclSupremacyConcept",
     "displayHtml": "Declaración de deuda",
-    "description": "Utiliza favores para mantener a otro <span style=\"\">Leader</span> bajo control:<bulletlist><bullet>Se añadirá un modificador a tus <span style=\"\">relaciones</span> con el gobernante que aumentará lentamente hasta {RelationValue}<goodrelation></goodrelation>. </bullet><bullet>Mientras dure la declaración, el jugador afectado no te guardará ningún rencor que afecte a la relación por ninguno de sus <span style=\"\">Casus Belli</span> contra ti.</bullet><bullet>Mantener dicha declaración cuesta {cost} de mantenimiento por <span style=\"\">Turn</span>, y aumenta un {costScale} por cada declaración adicional.</bullet><bullet>Las declaraciones se pueden hacer y terminar mediante los <span style=\"\">Pronouncements</span>.</bullet>"
+    "description": "Utiliza favores para mantener a otro <span style=\"\">Leader</span> bajo control:<bulletlist><bullet>Se añadirá un modificador a tus <span style=\"\">relaciones</span> con el gobernante que aumentará lentamente hasta {RelationValue}<goodrelation></goodrelation>. </bullet><bullet>Mientras dure la declaración, el jugador afectado no te guardará ningún rencor que afecte a la relación por ninguno de sus <span style=\"\">Casus Belli</span> contra ti.</bullet><bullet>Mantener dicha declaración cuesta {cost} de mantenimiento por <span style=\"\">Turn</span>, y aumenta un {costScale} por cada declaración adicional.</bullet><bullet>Las declaraciones se pueden hacer y terminar mediante los <span style=\"\">Pronouncements</span>.</bullet></bulletlist>"
   },
   "GLOBAL.GainingWarspoilsConcept": {
     "name": "Obtención de botines de guerra",
@@ -1434,6 +1448,55 @@
     "displayHtml": "Isla profanada",
     "description": "Una isla profanada es una región artesanal que:<bulletlist><bullet>Solo puede accederse mediante un portal en la superficie o en el subterráneo.</bullet><bullet>Estos portales pueden usarse al principio y no están protegidos.</bullet><bullet>Contiene un <span style=\"\">S T R U C T U R E S. B R E A C H E D_ A R C A N U M</span> y otras <span style=\"\">Location</span> valiosas.</bullet></bulletlist>"
   },
+  "GLOBAL.PirateDwellingConcept": {
+    "name": "Capitán independiente",
+    "icon": null,
+    "globalName": "GLOBAL.PirateDwellingConcept",
+    "displayHtml": "Capitán independiente",
+    "description": "Los capitanes independientes son los carismáticos señores de las <span style=\"\">Dwelling</span> pirata, donde los marineros más infames se congregan para sembrar el terror en los mares.<br><bulletlist><bullet>Pueden existir hasta {IntMaxDwellings} capitanes independientes en un reino.</bullet><bullet>Los capitanes independientes tienen personalidades diferentes: <personalitypirateavaricious></personalitypirateavaricious> <span style=\"\">avaricioso</span>, <personalitypiratebloodthirsty></personalitypiratebloodthirsty> <span style=\"\">sanguinario</span> o <personalitypirateheroic></personalitypirateheroic> <span style=\"\">heroico</span>.</bullet><bullet>Los vínculos con los capitanes independientes se consiguen al completar sus solicitudes o misiones.</bullet><bullet>Los vínculos con los capitanes independientes desbloquearán varias opciones comerciales con ellos, como contenido de <span style=\"\">Tome</span>, <span style=\"\">Unit</span> y <<m:<span style=\"\">Spell</span> >> piratas o<span style=\"\">Equipment</span>.</bullet><bullet>Los capitanes independientes envían <span style=\"\">Pirate Raid</span> mientras estén en <span style=\"\">Pirate Dwelling War</span> o cuando otro <span style=\"\">Empire</span> les paga para que ataquen, incluso a sus aliados.</bullet><bullet>Si la capturan, la <span style=\"\">Dwelling</span> de un capitán independiente se destruye de inmediato y se le otorga parte de sus tesoros y objetos comerciales al conquistador.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingTruceConcept": {
+    "name": "Tregua",
+    "icon": "rs_neutral",
+    "globalName": "GLOBAL.PirateDwellingTruceConcept",
+    "displayHtml": "Tregua",
+    "description": "La <span style=\"\">Pirate Dwelling</span> te tolera.<br><br>Cuenta como una <span style=\"\">Independent City Neutral</span>.<br><br>Las <span style=\"\">Pirate Dwelling</span> no tienen en cuenta las reivindicaciones de provincias.<br><br>No puedes asignar una <span style=\"\">Diplomatic Token</span> a las <span style=\"\">Pirate Dwelling</span>. En su lugar, deberás completar misiones y solicitudes para alcanzar un mayor estado diplomático y, con el tiempo, un <span style=\"\">Pirate Dwelling Life Bond</span>.<br><br>Hay una pequeña probabilidad cada turno de que las <span style=\"\">Pirate Dwelling</span> rompan la tregua y declaren la <span style=\"\">Pirate Dwelling War</span>.<br><br>Otros gobernantes pueden sobornar a las <span style=\"\">Pirate Dwelling</span> para que lancen una <span style=\"\">Pirate Raid</span> contra ti."
+  },
+  "GLOBAL.PirateDwellingWarConcept": {
+    "name": "Guerra",
+    "icon": "rs_war",
+    "globalName": "GLOBAL.PirateDwellingWarConcept",
+    "displayHtml": "Guerra",
+    "description": "Un estado de <rs_war></rs_war> guerra contra una <span style=\"\">Pirate Dwelling</span> significa que sus <span style=\"\">Army</span> pueden librar <span style=\"\">Combat</span> y que las <span style=\"\">City</span> pueden sufrir ataques.<br><br>Durante una guerra, las <span style=\"\">Pirate Dwelling</span> enviarán de vez en cuando <span style=\"\">Pirate Raid</span> a atacar a sus enemigos.<br><br>La guerra finaliza con la derrota de cualquiera de los bandos o si se negocia la paz."
+  },
+  "GLOBAL.PirateRaidConcept": {
+    "name": "Incursión pirata",
+    "icon": "pirateRaid",
+    "globalName": "GLOBAL.PirateRaidConcept",
+    "displayHtml": "Incursión pirata",
+    "description": "Las incursiones piratas las llevan a cabo las <span style=\"\">Pirate Dwelling</span> contra un <span style=\"\">Empire</span>, y se centran en saquear las <span style=\"\">Trade Route</span> y las <span style=\"\">Province</span>.<br><bulletlist><bullet>Las incursiones piratas ondean la bandera negra y no se atienen a los tratados diplomáticos.</bullet><bullet>Cuando una incursión pirata asalta {IntRaidGoal} objetivos, se termina.</bullet><bullet>Los <span style=\"\">Empire</span> pueden pagar a una <span style=\"\">Pirate Dwelling</span> para que envíe una incursión pirata:<bulletlist></bullet><bullet>Recibes una parte de las recompensas saqueadas cuando finaliza. Pueden incluir habilidades <span style=\"\">investigadas</span> por el <span style=\"\">Empire</span> objetivo.</bullet><bullet>Si se frustra una incursión pirata, el <span style=\"\">Leader</span> atacado podría descubrirlo y obtener un <span style=\"\">Casus Belli</span>.</bullet></bulletlist><bullet>El <span style=\"\">Leader</span> que recibe el ataque puede sobornar <gold></gold> a la partida de invasores piratas para que lo anulen cuando los enfrenta con un <span style=\"\">Army</span>.</bullet><bullet>Una sola <span style=\"\">Pirate Dwelling</span> puede tener varias incursiones piratas en curso al mismo tiempo.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingAvariciousPirateConcept": {
+    "name": "Pirata avaricioso",
+    "icon": "personalityPirateAvaricious",
+    "globalName": "GLOBAL.PirateDwellingAvariciousPirateConcept",
+    "displayHtml": "Pirata avaricioso",
+    "description": "Los piratas avariciosos solo buscan enriquecerse.<br><bulletlist><bullet>La <span style=\"\">Pirate Dwelling</span> solo romperá las treguas con los gobernantes que tengan mucho <span style=\"\">Gold</span>. Cuanto mayor sea la fortuna de un gobernante, más probabilidad habrá de que ocurra.</bullet><bullet>A la <span style=\"\">Pirate Dwelling</span> le encantan los gobernantes con grandes cantidades de <span style=\"\">Gold</span> y desprecia a los que tienen poco.</bullet><bullet>La personalidad conforma algunas de las opciones de comercio y las misiones de la morada, además de los <span style=\"\">Artifact</span> únicos que se pueden adquirir si se alcanza un <span style=\"\">Pirate Dwelling Life Bond</span>.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingBloodthirstyPirateConcept": {
+    "name": "Pirata sanguinario",
+    "icon": "personalityPirateBloodthirsty",
+    "globalName": "GLOBAL.PirateDwellingBloodthirstyPirateConcept",
+    "displayHtml": "Pirata sanguinario",
+    "description": "Los piratas sanguinarios se regodean en la violencia y la destrucción.<br><bulletlist><bullet>La <span style=\"\">Pirate Dwelling</span> tiene una probabilidad alta de romper una tregua y declarar la guerra.</bullet><bullet>A la <span style=\"\">Pirate Dwelling</span> le gustan los gobernantes que declaran guerras y desprecia a los que forjan pactos defensivos o alianzas.</bullet><bullet>La personalidad conforma algunas de las opciones de comercio y las misiones de la morada, además de los <span style=\"\">Artifact</span> únicos que se pueden adquirir si se alcanza un <span style=\"\">Pirate Dwelling Life Bond</span>.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingHeroicPirateConcept": {
+    "name": "Pirata heroico",
+    "icon": "personalityPirateHeroic",
+    "globalName": "GLOBAL.PirateDwellingHeroicPirateConcept",
+    "displayHtml": "Pirata heroico",
+    "description": "Los piratas heroicos se dedican a incumplir las leyes para ayudar a los pobres y a los oprimidos.<br><bulletlist><bullet>La <span style=\"\">Pirate Dwelling</span> solo rompe treguas con los gobernantes malvados. Cuanto más bajo sea el <span style=\"\">Alignment</span> del gobernante, más probabilidades hay de que ocurra.</bullet><bullet>A la <span style=\"\">Pirate Dwelling</span> le gustan los gobernantes con un <span style=\"\">Alignment</span> bueno y desprecian a los de <span style=\"\">Alignment</span> malvado.</bullet><bullet>La personalidad conforma algunas de las opciones de comercio y las misiones de la morada, además de los <span style=\"\">Artifact</span> únicos que se pueden adquirir si se alcanza un <span style=\"\">Pirate Dwelling Life Bond</span>.</bullet></bulletlist>"
+  },
   "GLOBAL.BloodDrainConcept": {
     "name": "Drenaje de sangre",
     "icon": null,
@@ -1453,7 +1516,7 @@
     "icon": null,
     "globalName": "GLOBAL.SunlessConcept",
     "displayHtml": "Lóbrego",
-    "description": "Una <span style=\"\">Province Feature</span>.<br><br>La ausencia de luz solar ha provocado la proliferación de flores espinosas y oscuras, coronadas con rosas carmesíes.<br><bulletlist><bullet>Las <span style=\"\">City</span> que se anexionen esta <span style=\"\">Province</span> reciben una penalización de {stabilitypenalty} de <span style=\"\">City Stability</span>.</bullet><bullet>Las <span style=\"\">Unit</span> regeneran {regen} <span style=\"\">Hit Point</span> por <span style=\"\">Turn</span> en el <span style=\"\">World Map</span>.</bullet><bullet>Las <span style=\"\">Unit</span> solo reciben un {percentage} de <span style=\"\">Temporary Hit Point</span> cuando se curan en <span style=\"\">Combat</span>.</bullet><bullet>Las unidades y ciudades [GLOBAL.PROPERTIES.HEARTLESS,hyperlink]desalmadas[/hyperlink] o que formen parte de un imperio liderado por un <span style=\"\">Vampire Lord</span> son inmunes a estos efectos.</bullet></bulletlist>"
+    "description": "Una <span style=\"\">Province Feature</span>.<br><br>La ausencia de luz solar ha provocado la proliferación de flores espinosas y oscuras, coronadas con rosas carmesíes.<br><bulletlist><bullet>Las <span style=\"\">City</span> que se anexionen esta <span style=\"\">Province</span> reciben una penalización de {stabilitypenalty} de <span style=\"\">City Stability</span>.</bullet><bullet>Las <span style=\"\">Unit</span> regeneran {regen} <span style=\"\">Hit Point</span> por <span style=\"\">Turn</span> en el <span style=\"\">World Map</span>.</bullet><bullet>Las <span style=\"\">Unit</span> reciben un {percentage} menos de <span style=\"\">Temporary Hit Point</span> cuando se curan en <span style=\"\">Combat</span>.</bullet><bullet>Las unidades y ciudades [GLOBAL.PROPERTIES.HEARTLESS,hyperlink]desalmadas[/hyperlink] o que formen parte de un imperio liderado por un <span style=\"\">Vampire Lord</span> son inmunes a estos efectos.</bullet></bulletlist>"
   },
   "GLOBAL.VampireLordConcept": {
     "name": "Vampiro antiguo",
@@ -1523,7 +1586,7 @@
     "icon": "minorcity",
     "globalName": "GLOBAL.DwellingConcept",
     "displayHtml": "Vivienda",
-    "description": "<minorcity></minorcity> Las moradas son <span style=\"\">City</span> independientes habitadas por tipos concretos de <span style=\"\">Unit</span>.<br><br>Al igual que las <span style=\"\">Independent City</span>: <bulletlist><bullet>Tienen un <span style=\"\">Free City Lord</span>.</bullet><bullet>Tienen un <span style=\"\">nivel de diplomacia</span> que puedes mejorar para obtener beneficios.</bullet><bullet>No pertenecen a ningún <span style=\"\">Empire</span>.</bullet></bulletlist><br><br>Los rasgos del reino ni los <span style=\"\">Spell</span> de las ciudades libres afectan a las moradas."
+    "description": "<minorcity></minorcity> Las moradas son <span style=\"\">City</span> independientes que suelen tener formas únicas de ejercer su influencia y ofrecen beneficios exclusivos.<br><br>Al igual que las <span style=\"\">Independent City</span>:<bulletlist><bullet>Tienen un <span style=\"\">Free City Lord</span>.</bullet><bullet>Tienen un <span style=\"\">nivel de diplomacia</span> que puedes mejorar.</bullet><bullet>No pertenecen a ningún <span style=\"\">Empire</span>.</bullet></bulletlist><br><br>Los rasgos del reino ni los <span style=\"\">Spell</span> de las ciudades libres afectan a las moradas."
   },
   "GLOBAL.EmpireRelationConcept": {
     "name": "Relaciones imperialesf",
@@ -1565,7 +1628,7 @@
     "icon": null,
     "globalName": "GLOBAL.IndependentCityTradeConcept",
     "displayHtml": "Comerciar",
-    "description": "Las <span style=\"\">Independent City</span> ofrecerán varias opciones de comercio a los <span style=\"\">Leader</span> que compartan al menos un <span style=\"\">Pact Of Cooperation</span> con la ciudad.<br><br>Las opciones de comercio constan de intercambios de recursos, así como de cualquier <span style=\"\">Magic Material</span> que se encuentre en el dominio de la ciudad.<br><br>Una ciudad libre solo aceptará un intercambio activo a la vez. Una vez expire el intercambio actual, se podrá realizar uno nuevo."
+    "description": "Las <span style=\"\">Independent City</span> pueden centrarse en un recurso determinado a petición de los <span style=\"\">Leader</span> que compartan al menos un <span style=\"\">Pact Of Cooperation</span> con la ciudad.<br><br>También pueden proporcionar los <span style=\"\">Magic Material</span> que se encuentren en el dominio de la ciudad por un precio.<br><br>Una ciudad libre solo aceptará un intercambio activo a la vez. Una vez expire el intercambio actual, se podrá realizar uno nuevo."
   },
   "GLOBAL.IndependentCityWarConcept": {
     "name": "Guerra",
@@ -2211,6 +2274,13 @@
     "displayHtml": "Shad'rai",
     "description": "Un grupo de ambiciosos <span style=\"\">Godir Lore</span> que crearon una inestable coalición para hacerse con el poder del <span style=\"\">Pantheon Lore</span> y el <span style=\"\">Astral Sea Lore</span>. Creen que el poder debería estar en conocimiento de todos, y son conocidos por sus planes e invasiones a los reinos que consideran dignos de su dominación. Sus tendencias caóticas a menudo hacen que choquen de frente con la <span style=\"\">Covenant Faction Lore</span>."
   },
+  "GLOBAL.SilverSeasLoreConcept": {
+    "name": "Los Mares Argentos",
+    "icon": null,
+    "globalName": "GLOBAL.SilverSeasLoreConcept",
+    "displayHtml": "Los Mares Argentos",
+    "description": "La leyenda de los Mares Argentos está anclada en la mente de todo marinero. Las antiguas salomas hablan de un lugar en los <span style=\"\">Worlds Within Lore</span> donde convergen las <span style=\"\">corrientes astrales</span>, con mares de tal riqueza que hasta las olas se componen de plata líquida. Allí, los peces con escamas de metales preciosos nadan entre arrecifes de maná puro, mientras las canciones de los <span style=\"\">Maer Lore</span> arrullan las orillas.<br><br>Según algunos navegantes, las olas de los Mares Argentos se esconden en <span style=\"\">Tidolon Lore</span>; otros creen que aún no las ha encontrado nadie. También hay quien afirma que el objetivo no es encontrar este paraíso, sino buscarlo."
+  },
   "GLOBAL.SoulsLoreConcept": {
     "name": "Almasf",
     "icon": null,
@@ -2484,6 +2554,13 @@
     "displayHtml": "Caladero",
     "description": "Un caladero es una <span style=\"\">Province Improvement</span> básica que proporciona los siguientes beneficios:<bulletlist><bullet>Genera ganancias de <span style=\"\">Food</span>.</bullet></bulletlist>"
   },
+  "GLOBAL.ForeignCityConcept": {
+    "name": "Ciudad extranjera",
+    "icon": null,
+    "globalName": "GLOBAL.ForeignCityConcept",
+    "displayHtml": "Ciudad extranjera",
+    "description": "Una <span style=\"\">City</span> que pertenece a un <span style=\"\">Empire</span> que no es el tuyo."
+  },
   "GLOBAL.ForesterConcept": {
     "name": "Guardabosques",
     "icon": "forester",
@@ -2626,7 +2703,7 @@
   },
   "GLOBAL.ArtifactConcept": {
     "name": "Artefacto",
-    "icon": null,
+    "icon": "artifact",
     "globalName": "GLOBAL.ArtifactConcept",
     "displayHtml": "Artefacto",
     "description": "Los artefactos son objetos únicos que se vinculan al <span style=\"\">Empire</span> de un <span style=\"\">Player</span>. Otorgan bonificaciones únicas al <span style=\"\">Empire</span> que los controlan.<br><bulletlist><bullet>A menudo, los artefactos son parte de una colección. Al completar una colección, se activará un acontecimiento de colección.</bullet><bullet>Los artefactos se pueden intercambiar entre <span style=\"\">Player</span>.</bullet><bullet>Al derrotar a un jugador, todos los artefactos de dicho jugador pasarán a estar en posesión del jugador que lo haya derrotado.</bullet></bulletlist>"
@@ -2812,6 +2889,20 @@
     "globalName": "GLOBAL.SpeedMarchConcept",
     "displayHtml": "Marcha forzada",
     "description": "La marcha forzada puede usarse para forzar a tus unidades a moverse más lejos en el <span style=\"\">World Map</span> de lo que normalmente podrían en un solo <span style=\"\">Turn</span>.<br><br>Cuando se activa la marcha forzada, las unidades obtienen un {Movepointgain} % de sus <span style=\"\">Move Point</span>, pero pierden un {Healthloss} % de sus <span style=\"\">Hit Point</span> actuales. También estarán <span style=\"\">exhaustas</span> durante {ExhaustedTurns} <span style=\"\">Turn</span>. La marcha forzada cuesta {Manacost} de <span style=\"\">Mana</span> por cada unidad en el ejército.<br><br>La habilidad de usar la marcha forzada se puede desbloquear mediante el <span style=\"\">Empire Development</span>."
+  },
+  "GLOBAL.TradeRouteConcept": {
+    "name": "Ruta comercial",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteConcept",
+    "displayHtml": "Ruta comercial",
+    "description": "Una conexión entre una <span style=\"\">City</span> y un puesto avanzado u otra <span style=\"\">City</span>, que otorga <span style=\"\">Trade Route Income</span> a la ciudad original donde se creó en función del objetivo al que se conecte.<br><br>Las ciudades pueden establecer una ruta comercial si gastan <span style=\"\">Unit Production</span>, y el coste aumenta con el tipo de objetivo y la cantidad de movimiento que se necesita para alcanzarlo.<br><br>Solo un número concreto de rutas comerciales pueden estar activas en cada ciudad, aunque el límite se puede aumentar con el <span style=\"\">City Structure</span>."
+  },
+  "GLOBAL.TradeRouteIncomeConcept": {
+    "name": "Ganancias de ruta comercialf",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteIncomeConcept",
+    "displayHtml": "Ganancias de ruta comercialf",
+    "description": "Las ganancias de la ruta comercial que recibe la <span style=\"\">City</span> dependen del objetivo:<bulletlist><bullet><span style=\"\">Outpost</span>: todas las ganancias del dominio del puesto avanzado.</bullet><bullet><span style=\"\">Independent City</span>: un porcentaje de todas sus ganancias que aumenta con su <span style=\"\">Pv E Dipl State</span>.</bullet><bullet><span style=\"\">Foreign City</span>: un gran porcentaje de su <span style=\"\">Gold</span> y <span style=\"\">Mana</span>.</bullet></bulletlist>"
   },
   "GLOBAL.CryptConcept": {
     "name": "Cripta",
@@ -3486,11 +3577,11 @@
     "description": "Una <span style=\"\">Province Feature</span>.<br><br>Unos pantanos cenagosos. Aquí se puede construir una <span style=\"\">Farm</span>, pero las facciones sin adaptación al pantano sufrirán un {fooddebuff} de <span style=\"\">Food</span>."
   },
   "GLOBAL.UndergroundWaterConcept": {
-    "name": "Acuático",
+    "name": "Aguas subterráneasf",
     "icon": null,
     "globalName": "GLOBAL.UndergroundWaterConcept",
-    "displayHtml": "Acuático",
-    "description": "Una <span style=\"\">Province Feature</span>.<br><br>Una provincia de agua en el subterráneo. Aquí se puede construir una <span style=\"\">Farm</span> acuática."
+    "displayHtml": "Aguas subterráneasf",
+    "description": "Una <span style=\"\">Province Feature</span> acuática<br><br>Una provincia de agua en el subterráneo. Aquí se puede construir una <span style=\"\">Farm</span> acuática."
   },
   "GLOBAL.UninhabitableConcept": {
     "name": "Inhabitable",
@@ -3511,7 +3602,7 @@
     "icon": null,
     "globalName": "GLOBAL.MangroveForestConcept",
     "displayHtml": "Manglar",
-    "description": "Una <span style=\"\">Province Feature</span>.<br><br>Un bosque que ha echado raíces bajo el agua. Aquí se puede construir un <span style=\"\">Forester</span> acuático."
+    "description": "Una <span style=\"\">Province Feature</span> acuática.<br><br>Un bosque que ha echado raíces bajo el agua. Aquí se puede construir un <span style=\"\">Forester</span> acuático."
   },
   "GLOBAL.VoidConcept": {
     "name": "Vacío",
@@ -3554,5 +3645,12 @@
     "globalName": "GLOBAL.DrainingConcept",
     "displayHtml": "Drenaje",
     "description": "Las unidades que pasen o terminen su turno en esta posición sufrirán <span style=\"\">P R O P E R T I E S. D I S R U P T I O N_ T O O L T I P_ P R O P E R T Y</span> durante {turn} <span style=\"\">Turn</span>. Si esa unidad tiene <span style=\"\">P R O P E R T I E S. M A G I C_ O R I G I N</span>, también sufre <span style=\"\">P R O P E R T I E S. D E C A Y I N G</span> durante {turn2} <span style=\"\">Turn</span>."
+  },
+  "GLOBAL.ExplosiveConcept": {
+    "name": "Explosivo",
+    "icon": null,
+    "globalName": "GLOBAL.ExplosiveConcept",
+    "displayHtml": "Explosivo",
+    "description": "Este obstáculo explotará cuando se destruya e infligirá daño a las unidades adyacentes."
   }
 }

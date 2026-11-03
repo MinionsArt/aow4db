@@ -226,6 +226,41 @@
   "base_hero_item_resid": 5248450035749
  },
  {
+  "resid": 5244155073006,
+  "id": "equipment_item_sword_staff_combo_type",
+  "slot": "主武器",
+  "description": "魔法打击武器",
+  "name": "魔法打击武器",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged.SwordStaff"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.MagicMeleeRangedFlavor.SwordStaffFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5244155073005
+ },
+ {
   "resid": 5111011085112,
   "id": "equipment_item_warclaw_2_type",
   "slot": "主武器",
@@ -3297,24 +3332,241 @@
   "base_hero_item_resid": 5016521802380
  },
  {
-  "resid": 5003636908168,
-  "id": "equipment_item_breachgun_and_axe_type",
+  "resid": 5003636908952,
+  "id": "equipment_item_1h_mercantile_spear_type",
   "slot": "主武器",
-  "DLC": "EMPIRESANDASHES ",
+  "DLC": "SILVERSEAS ",
   "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
-  "name": "破阵枪与斧",
+  "name": "短矛",
   "tags": [
    {
-    "tag": "ItemTypeWeapon.MeleeRanged.SwordPistol"
+    "tag": "ItemTypeWeaponFlavor.OneHandedFlavor"
    },
    {
-    "tag": "ItemTypeWeapon.MeleeRanged"
+    "tag": "ItemTypeWeapon.OneHanded"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.OneHanded "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908951
+ },
+ {
+  "resid": 5003636908948,
+  "id": "equipment_item_staff_mercantile_type",
+  "slot": "主武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻与支援能力<br></br><br></br>赋予防御模式（守势）",
+  "name": "手杖",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.Magic.Staff"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.MagicFlavor.StaffFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.Staff "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908947
+ },
+ {
+  "resid": 5003636908946,
+  "id": "equipment_item_1h_sword_mercantile_type",
+  "slot": "主武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "剑",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.OneHanded.Sword"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.OneHandedFlavor.SwordFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.OneHanded "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908945
+ },
+ {
+  "resid": 5003636908944,
+  "id": "equipment_item_jezzail_type",
+  "slot": "主武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "锁法火枪",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
    },
    {
     "tag": "ItemTypeWeaponFlavor.RangedPhysicalFlavor.MagelockFlavor"
    },
    {
-    "tag": "ItemTypeWeapon.MeleeRanged.Breachgun"
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908943
+ },
+ {
+  "resid": 5003636908942,
+  "id": "equipment_item_carbine_type",
+  "slot": "主武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "锁法火枪",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Magelock"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.RangedPhysicalFlavor.MagelockFlavor"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.RangedPhysical.Magelock "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908941
+ },
+ {
+  "resid": 5003636908938,
+  "id": "equipment_item_2h_mercantile_greatsword_type",
+  "slot": "主武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "大剑",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.TwoHandedHeavy.Greatsword"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.TwoHandedHeavyFlavor.GreatswordFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greatsword "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greathammer "
+    },
+    {
+     "condition": "Contains ItemTypeWeapon.TwoHandedHeavy.Greataxe "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908937
+ },
+ {
+  "resid": 5003636908936,
+  "id": "equipment_item_kelpie_shield_type",
+  "slot": "副武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注被动<hyperlink>灌注</hyperlink>，提升生存能力并将伤害反弹给攻击者；也可灌注主动灌注，改变防御模式",
+  "name": "盾",
+  "tags": [
+   {
+    "tag": "ItemTypeArmor.Shield"
+   },
+   {
+    "tag": "ItemTypeArmorFlavor.ShieldFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeArmor.Shield "
+    },
+    {
+     "condition": "Contains ItemTypeArmor "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908935
+ },
+ {
+  "resid": 5003636908934,
+  "id": "equipment_item_marine_shield_type",
+  "slot": "副武器",
+  "DLC": "SILVERSEAS ",
+  "description": "可灌注被动<hyperlink>灌注</hyperlink>，提升生存能力并将伤害反弹给攻击者；也可灌注主动灌注，改变防御模式",
+  "name": "盾",
+  "tags": [
+   {
+    "tag": "ItemTypeArmor.Shield"
+   },
+   {
+    "tag": "ItemTypeArmorFlavor.ShieldFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeArmor.Shield "
+    },
+    {
+     "condition": "Contains ItemTypeArmor "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908933
+ },
+ {
+  "resid": 5003636908910,
+  "id": "equipment_item_pantheon_saber_and_pistol_type",
+  "slot": "主武器",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "手枪与剑",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MeleeRanged.SwordPistol"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.MeleeRangedFlavor.SwordPistolFlavor"
+   },
+   {
+    "tag": "ItemTypeWeapon.RangedPhysical.Crossbow"
+   },
+   {
+    "tag": "ItemTypeWeapon.MeleeRanged"
    }
   ],
   "upgrade_tag_filter": {
@@ -3331,6 +3583,158 @@
       },
       {
        "condition": "Contains inherited ItemTypeWeapon.OneHanded "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908909
+ },
+ {
+  "resid": 5003636908906,
+  "id": "equipment_item_pantheon_trident-_type",
+  "slot": "主武器",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力<br></br><br></br>赋予<hyperlink>先攻</hyperlink>、冲锋抗性、骑兵杀手与巨人杀手",
+  "name": "三叉戟",
+  "tags": [
+   {
+    "tag": "ItemForge.SpecificLogic.AvoidPolearmStacking"
+   },
+   {
+    "tag": "ItemTypeWeapon.Polearm.Spear"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.PolearmFlavor.SpearFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "Contains inherited ItemTypeWeapon.Polearm "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908905
+ },
+ {
+  "resid": 5003636908903,
+  "id": "equipment_item_pantheon_damned_saber_staff_combo_type",
+  "slot": "主武器",
+  "description": "受咒军刀与法杖",
+  "name": "魔法打击武器",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged.SwordStaff"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.MagicMeleeRangedFlavor.SwordStaffFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
+      }
+     ]
+    },
+    {
+     "condition": "Does not contain ItemForge.SpecificLogic.NotDualWeapon "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908902
+ },
+ {
+  "resid": 5003636908901,
+  "id": "equipment_item_pantheon_frozen_orb_type",
+  "slot": "主武器",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "魔法球",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.MagicFlavor.MagicalOrbFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
+    },
+    {
+     "condition": "Contains ItemForge.Orbs.OrbFrost "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908900
+ },
+ {
+  "resid": 5003636908899,
+  "id": "equipment_item_pantheon_water_orb_type",
+  "slot": "主武器",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "魔法球",
+  "tags": [
+   {
+    "tag": "ItemTypeWeapon.Magic.MagicalOrb"
+   },
+   {
+    "tag": "ItemTypeWeaponFlavor.MagicFlavor.MagicalOrbFlavor"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "One or More of the following must be True",
+   "children": [
+    {
+     "condition": "Contains ItemTypeWeapon.Magic.MagicalOrb "
+    },
+    {
+     "condition": "Contains ItemForge.Orbs.OrbFrost "
+    }
+   ]
+  },
+  "base_hero_item_resid": 5003636908898
+ },
+ {
+  "resid": 5003636908168,
+  "id": "equipment_item_breachgun_and_axe_type",
+  "slot": "主武器",
+  "DLC": "EMPIRESANDASHES ",
+  "description": "可灌注伤害、技能与被动<hyperlink>灌注</hyperlink>，提升该物品的进攻能力",
+  "name": "破阵枪与斧",
+  "tags": [
+   {
+    "tag": "ItemTypeWeaponFlavor.MagicMeleeRangedFlavor.BreachGunFlavor"
+   },
+   {
+    "tag": "ItemTypeWeapon.MagicMeleeRanged.BreachGun"
+   }
+  ],
+  "upgrade_tag_filter": {
+   "condition": "All of the following must be True",
+   "children": [
+    {
+     "condition": "One or More of the following must be True",
+     "children": [
+      {
+       "condition": "Contains inherited ItemTypeWeapon.MagicMeleeRanged "
+      },
+      {
+       "condition": "Contains inherited ItemTypeWeapon.Magic.MagicalOrb "
       }
      ]
     },

@@ -4,7 +4,7 @@
     "icon": null,
     "globalName": "GLOBAL.OutpostConcept",
     "displayHtml": "前哨基地",
-    "description": "所有者のために<span style=\"\">Province</span>の権利主張を行い、新しい<span style=\"\">City</span>の基盤を形成する。<br><br>前哨基地は：<bulletlist><bullet><span style=\"\">Hero</span>によって建設される。</bullet><bullet>アップグレードされて<span style=\"\">City</span>になる。</bullet><bullet>構築可能な様々なアップグレードがある。</bullet><bullet>敵が不法侵入無しで入ることができない。</bullet><bullet><span style=\"\">Gold</span>、<span style=\"\">Mana</span>、<span style=\"\">Knowledge</span>を<span style=\"\">Node</span>と<span style=\"\">Magic Material</span>から収集する。</bullet></bulletlist><br><br>それぞれの前哨基地での所有者に対する維持費が{amount} <span style=\"\">Gold</span>である。"
+    "description": "所有者のために<span style=\"\">Province</span>の権利主張を行い、新しい<span style=\"\">City</span>の基盤を形成する。<br><br>前哨基地は：<bulletlist><bullet><span style=\"\">Hero</span>によって建設される。<bulletlist></bullet><bullet>陸地または水域に位置している必要がある。</bullet><bullet><span style=\"\">Uninhabitable</span>の��域に建てることはできない。</bullet><bullet>別の前哨基地または都市に隣接している��域に建てることはできない。</bullet></bulletlist><bullet>陸地にある��合は<span style=\"\">City</span>にアップグレードする。</bullet><bullet>構築可能な様々なアップグレードがある。</bullet><bullet>敵が不法侵入無しで入ることができない。</bullet><bullet><span style=\"\">Magic Material</span>にアクセスできる。</bullet><bullet> <span style=\"\">City</span>が<span style=\"\">Trade Route</span>を設置すると、��地における<span style=\"\">Node</span>から収益を提供する。</bullet></bulletlist>"
   },
   "GLOBAL.AffinityProvinceImprovementConcept": {
     "name": "アフィニティー��域アップグレード",
@@ -263,7 +263,7 @@
     "icon": null,
     "globalName": "GLOBAL.HeroClassSpellblade",
     "displayHtml": "ヒーロークラス：魔法剣士",
-    "description": "<br><br>適合性のある武器：<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet></bulletlist>"
+    "description": "<br><br>適合性のある武器：<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet><bullet><span style=\"\">Ranged Weapon</span></bullet></bulletlist>"
   },
   "GLOBAL.HeroClassWarlock": {
     "name": "ヒーロークラス：黒魔術師",
@@ -342,6 +342,13 @@
     "displayHtml": "魔法攻撃",
     "description": "魔法攻撃は、オーブや杖などの魔法道具を用いて行われ���攻撃である。<br><br>ドラゴンのブレス攻撃など、モンスターが持つ特殊攻撃���多くも魔法攻撃に分類される。<br><br>魔法攻撃は<span style=\"\">Resistance</span>によって抵抗される。"
   },
+  "GLOBAL.MagicStrikeConcept": {
+    "name": "魔法攻撃",
+    "icon": null,
+    "globalName": "GLOBAL.MagicStrikeConcept",
+    "displayHtml": "魔法攻撃",
+    "description": "魔法攻撃は、範囲が1マスである<span style=\"\">Magic</span>攻撃の一種である。<br><br><span style=\"\">P R O P E R T I E S. M A G I C_ F I G H T E R</span>および魔法攻撃武器を持つ<span style=\"\">Hero</span>がこれを使うことができる。"
+  },
   "GLOBAL.MeleeConcept": {
     "name": "近接攻撃",
     "icon": null,
@@ -361,7 +368,7 @@
     "icon": null,
     "globalName": "GLOBAL.MovementAbilityConcept",
     "displayHtml": "移動",
-    "description": "ユニットを別の��所に移動させるアビリティ。<br><br><span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>状態のユニットには使用できません。"
+    "description": "ユニットを別の��所に移動させるアビリティ。<br><br><span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span>状態のユニットには使用できない。<br> <span style=\"\">Teleport Ability</span>を除き、水上では使用できない。"
   },
   "GLOBAL.MovePointConcept": {
     "name": "移動ポイント",
@@ -494,7 +501,7 @@
     "icon": null,
     "globalName": "GLOBAL.TeleportAbilityConcept",
     "displayHtml": "瞬間移動",
-    "description": "魔法を使い、ユニットを別の��所に瞬間移動させるアビリティ。"
+    "description": "魔法を使い、このユニットを別の��所に瞬間移動させるアビリティ。"
   },
   "GLOBAL.TemporaryHitPointConcept": {
     "name": "追加HP",
@@ -648,7 +655,7 @@
     "icon": "rs_cooperation",
     "globalName": "GLOBAL.PactOfCooperationConcept",
     "displayHtml": "協力協定",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が境界を開きました。<bullet></bullet> <span style=\"\">貿易</span>ができるようになりました。<bulletlist></bullet><bullet>最大2種類の資源貿易が可能です。</bullet><bullet><span style=\"\">Magic Material</span>の貿易が可能です。</bullet></bulletlist></bulletlist>"
+    "description": "<bulletlist><bullet> <span style=\"\">Independent City</span>は国境を開放する。</bullet><bullet>あなたの都市の1つから、この都市に向け<span style=\"\">Trade Route</span>を設置することができる。</bullet><bullet><span style=\"\">Magic Material</span>を購入できる。</bullet></bulletlist></bulletlist>"
   },
   "GLOBAL.PactOfIntegrationConcept": {
     "name": "統一協定",
@@ -669,56 +676,56 @@
     "icon": "rs_vassalage",
     "globalName": "GLOBAL.PactOfVassalageConcept",
     "displayHtml": "隷属協定",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が収益と<span style=\"\">Magic Material</span>を共有しています。</bullet><bullet>他の<span style=\"\">Empire</span>は<span style=\"\">Independent City</span>とのより良い<span style=\"\">Pv E Dipl State</span>について<span style=\"\">交渉</span>しなくなるかもしれません。</bullet><bullet><span style=\"\">Independent City</span>は、自分のオーバーロードが戦っているすべての<span style=\"\">War</span>に参戦し、戦闘で援護をして、戦闘連携における指示��受けることができます。</bullet><bullet><span style=\"\">Vassalage Phase</span>に切り替わり、この期間中は隷属による利益を向上させ���ために<span style=\"\">House Influence</span>を更に獲得することが可能になります。最終的に<span style=\"\">Independent City</span>を、そのオーバーロードの帝国に<span style=\"\">併合</span>させることが可能です。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が<span style=\"\">Mana</span>の一部と<span style=\"\">Gold</span>収益を貢ぎ物として共有しています。彼らが支配する<span style=\"\">Magic Material</span>はオーバーロードと共有されています。</bullet><bullet></bullet><bullet>他の<<m: <span style=\"\">Empire</span>>>は<span style=\"\">Independent City</span>とのより良い<<m: <span style=\"\">Pv E Dipl State</span>>>について<span style=\"\">交渉</span>しなくなるかもしれません。</bullet><bullet><span style=\"\">Independent City</span>は、自分のオーバーロードが戦っているすべての<span style=\"\">War</span>に参戦し、戦闘で援護をして、戦闘連携における指示��受けることができます。</bullet><bullet><span style=\"\">Vassalage Phase</span>に切り替わり、この期間中は隷属による利益を向上させ���ために<span style=\"\">House Influence</span>を更に獲得することが可能になります。最終的に<span style=\"\">Independent City</span>を、そのオーバーロードの帝国に<span style=\"\">併合</span>させることが可能です。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-1Concept": {
     "name": "属国",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-1Concept",
     "displayHtml": "属国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益の{incomePercentage}%を共有します。</bullet><bullet><span style=\"\">Magic Material</span>のすべてを共有します。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献します。<bullet></bullet> <span style=\"\">貿易</span>コストが{tradingCost}%増加します。</bullet><bullet>戦闘連携は無効であり、新たな軍隊は送り込まれません���</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>をすべて分配してくれる。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献する。</bullet><bullet>戦闘連携は無効であり、新たな軍隊は送り込まれない。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-2Concept": {
     "name": "小規模な属国",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-2Concept",
     "displayHtml": "小規模な属国",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益の{incomePercentage}%を共有します。</bullet><bullet><span style=\"\">Magic Material</span>のすべてを共有します。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献します。<bullet></bullet> <span style=\"\">貿易</span>コストが{tradingCost}%増加します。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>をすべて分配してくれる。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献する。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-3Concept": {
     "name": "属国の拒否",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-3Concept",
     "displayHtml": "属国の拒否",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益を共有しません。</bullet><bullet><span style=\"\">Magic Material</span>を一切共有しません。</bullet><bullet>君主の進軍に一切貢献しません。<bullet></bullet> <span style=\"\">貿易</span>コストが{tradingCost}%増加します。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>は分配しない。</bullet><bullet>君主の進軍に貢献しない。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl0Concept": {
     "name": "隷属関係",
     "icon": "rs_vassalage0",
     "globalName": "GLOBAL.PactOfVassalageLvl0Concept",
     "displayHtml": "隷属関係",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益の{incomePercentage}%を共有します。</bullet><bullet><span style=\"\">Magic Material</span>のすべてを共有します。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献します。<bullet></bullet> <span style=\"\">貿易</span>コストは初期レベルです。</bullet><bullet>戦闘連携が利用可能になります。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>をすべて分配してくれる。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献する。</bullet><bullet>戦闘連携が利用可能になる。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl1Concept": {
     "name": "担保付き隷属",
     "icon": "rs_vassalage1",
     "globalName": "GLOBAL.PactOfVassalageLvl1Concept",
     "displayHtml": "担保付き隷属",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益の{incomePercentage}%を共有します。</bullet><bullet><span style=\"\">Magic Material</span>のすべてを共有します。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献します。<bullet></bullet> <span style=\"\">貿易</span>コストが{tradingCost}%減少します。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>をすべて分配してくれる。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献する。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl2Concept": {
     "name": "繁��的隷属関係",
     "icon": "rs_vassalage2",
     "globalName": "GLOBAL.PactOfVassalageLvl2Concept",
     "displayHtml": "繁��的隷属関係",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益の{incomePercentage}%を共有します。</bullet><bullet><span style=\"\">Magic Material</span>のすべてを共有します。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献します。<bullet></bullet> <span style=\"\">貿易</span>コストが{tradingCost}%減少します。</bullet><bullet>都市の<span style=\"\">統合</span> <influence></influence>が可能です。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>をすべて分配してくれる。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献する。</bullet><bullet>都市は <span style=\"\">統合</span> <influence></influence>することができる。</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl3Concept": {
     "name": "至上の隷属関係",
     "icon": "rs_vassalage3",
     "globalName": "GLOBAL.PactOfVassalageLvl3Concept",
     "displayHtml": "至上の隷属関係",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>が自分たちの収益の{incomePercentage}%を共有します。</bullet><bullet><span style=\"\">Magic Material</span>のすべてを共有します。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献します。<bullet></bullet> <span style=\"\">貿易</span>コストが{tradingCost}%減少します。</bullet><bullet>都市の<span style=\"\">統合</span> <influence></influence>が可能です。</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>この<span style=\"\">Independent City</span>がある<span style=\"\">Trade Route</span>は、収益の{incomePercentage}%を分配してくれる。</bullet><bullet><span style=\"\">Magic Material</span>をすべて分配してくれる。</bullet><bullet><span style=\"\">Request Military Aid</span>へ{commandPoints}<recruitmentpoints></recruitmentpoints>を貢献する。</bullet><bullet>都市は <span style=\"\">統合</span> <influence></influence>することができる。</bullet></bulletlist>"
   },
   "GLOBAL.AIPressureConcept": {
     "name": "脅威レベル",
@@ -1061,7 +1068,7 @@
     "icon": null,
     "globalName": "GLOBAL.MutualConsulateConcept",
     "displayHtml": "魔法使いの絆",
-    "description": "両方の<span style=\"\">Leader</span>は、<span style=\"\">Empire Relation</span>を向上させて新たな<span style=\"\">Treaty</span>や外交関係状態に到達するため「魔法使いの絆」に同��することができます。<br><br>効果：[bulletList]<bullet>それぞれの支配者の<span style=\"\">Throne City</span>が明らかになります。</bullet><bullet>支配者同士が<span style=\"\">お互いに援護妖精</span>をすることができます。[/bulletList]<br><br>結果：<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet></bulletlist>"
+    "description": "両方の<span style=\"\">Leader</span>は、<span style=\"\">Empire Relation</span>を向上させて新たな<span style=\"\">Treaty</span>や外交関係状態に到達するため「魔法使いの絆」に同��することができます。<br><br>効果：[bulletList]<bullet>それぞれの支配者の<span style=\"\">Throne City</span>が明らかになります。</bullet><bullet>支配者同士が<span style=\"\">お互いに援護妖精</span>をすることができます。[/bulletList]<br><br>結果：<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet><bullet><span style=\"\">Trade Agreement</span></bullet></bulletlist>"
   },
   "GLOBAL.DefensivePactConcept": {
     "name": "防衛協定",
@@ -1069,6 +1076,13 @@
     "globalName": "GLOBAL.DefensivePactConcept",
     "displayHtml": "防衛協定",
     "description": "<span style=\"\">Leader</span>たちが、防衛的な戦争中にお互いを支援するよう誓い��う外交関係状態です。<br><br>どちらかの支配者が宣戦布告を受けると、その支配者は���動的にもう一人の支配者へ<span style=\"\">Call To War</span>を送り、その戦争での援護を要請します。この援護要請���応答することで、その支配者が直接使用できる追加の<span style=\"\">Casus Belli</span>が与えられます。支配者がこの援護要請を拒否すること���可能ですが、拒否すると防衛協定が��棄されます。<br><br>結果：<bulletlist><bullet><span style=\"\">D S Alliance</span></bullet><bullet><span style=\"\">Share Vision</span></bullet></bulletlist>"
+  },
+  "GLOBAL.TradeAgreementConcept": {
+    "name": "自由貿易協定",
+    "icon": null,
+    "globalName": "GLOBAL.TradeAgreementConcept",
+    "displayHtml": "自由貿易協定",
+    "description": "両方の<span style=\"\">Leader</span>は、互いの<span style=\"\">City</span>間に<span style=\"\">Trade Route</span>を確立することを認めている。"
   },
   "GLOBAL.OpenBordersConcept": {
     "name": "国境を開放する",
@@ -1187,7 +1201,7 @@
     "icon": null,
     "globalName": "GLOBAL.DeclSupremacyConcept",
     "displayHtml": "恩義の宣言",
-    "description": "恩義を使って他の<span style=\"\">Leader</span>を牽制することができる。<bulletlist><bullet>{RelationValue}<goodrelation></goodrelation>に向けて徐々に減少していく影響値が、対象の支配者と���<span style=\"\">外交関係</span>に追加されます。</bullet><bullet>この宣言が維持されている間、影響を受けているプレイ���ーは自分が持つ<span style=\"\">Casus Belli</span>に対する外交関係に影響を与える怨恨を持つことがで��なくなります。</bullet><bullet>宣言を維持するためには、<span style=\"\">Turn</span>ごとに{cost}の維持費がかかり、追加の宣言1つにつき{costScale}増額します。</bullet><bullet>宣言をする、および終了する行為は<span style=\"\">Pronouncements</span>を通して行うことが可能です。</bullet>"
+    "description": "恩義を使って他の<span style=\"\">Leader</span>を牽制することができます。<bulletlist><bullet>{RelationValue}<goodrelation></goodrelation>に向けて徐々に減少していく影響値が、対象の支配者と���<span style=\"\">外交関係</span>に追加されます。</bullet><bullet>この宣言が維持されている間、影響を受けているプレイ���ーは自分が持つ<span style=\"\">Casus Belli</span>に対する外交関係に影響を与える怨恨を持つことがで��なくなります。</bullet><bullet>宣言を維持するためには、<span style=\"\">Turn</span>ごとに{cost}の維持費がかかり、追加の宣言1つにつき{costScale}増額します。</bullet><bullet>宣言をする、および終了する行為は<span style=\"\">Pronouncements</span>を通して行うことが可能です。</bullet></bulletlist>"
   },
   "GLOBAL.GainingWarspoilsConcept": {
     "name": "戦争の略奪品の獲得方法",
@@ -1427,6 +1441,55 @@
     "displayHtml": "突破された島",
     "description": "突��された島は手作り地域で以下の状態である：<bulletlist><bullet>地上または地下のポータルでのみアクセス可能。</bullet><bullet>これらのポータルは開始時にアクセスできるが守られて���ない。</bullet><bullet>地域には <span style=\"\">S T R U C T U R E S. B R E A C H E D_ A R C A N U M</span> と様々な価値ある <span style=\"\">Location</span>がある。</bullet></bulletlist>"
   },
+  "GLOBAL.PirateDwellingConcept": {
+    "name": "自由船長",
+    "icon": null,
+    "globalName": "GLOBAL.PirateDwellingConcept",
+    "displayHtml": "自由船長",
+    "description": "自由船長は、最も悪名高い船乗りたちが海を恐怖に陥れ���ために結集した海賊<span style=\"\">Dwelling</span>のカリスマ的な首領です。<br><bulletlist><bullet>1つの��土には最大{IntMaxDwellings}人の自由船長が存在します。</bullet><bullet>自由船長には<personalitypirateavaricious></personalitypirateavaricious> <span style=\"\">貪欲</span>、 <personalitypiratebloodthirsty></personalitypiratebloodthirsty> <span style=\"\">残忍</span>、または<personalitypirateheroic></personalitypirateheroic> <span style=\"\">英雄的</span>の性��があります。</bullet><bullet>自由船長との絆は、彼らの要求を満たすか、クエストを���行することで築かれます。</bullet><bullet>自由船長と絆を結ぶと、<span style=\"\">Tome</span>のコンテンツ、海賊の<span style=\"\">Unit</span>や<<m:<span style=\"\">Spell</span> >>、あるいは<span style=\"\">Equipment</span>など、さまざまな種類の取引が解放されます。</bullet><bullet><span style=\"\">Pirate Dwelling War</span>にいる間、あるいは他の<span style=\"\">Empire</span>を攻撃する依��を受けた際（味方を襲うこともある）、自由船長は<span style=\"\">Pirate Raid</span>を送り出します。</bullet><bullet>自由船長が捕縛されると、その<span style=\"\">Dwelling</span>は即座に破壊され、本拠地の財宝や交易品のいくつかが征服者に与えられます。</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingTruceConcept": {
+    "name": "停戦",
+    "icon": "rs_neutral",
+    "globalName": "GLOBAL.PirateDwellingTruceConcept",
+    "displayHtml": "停戦",
+    "description": "<span style=\"\">Pirate Dwelling</span>はあなたを容認している。<br><br><span style=\"\">Independent City Neutral</span>状態としてカウントされる。<br><br><span style=\"\">Pirate Dwelling</span>は��域の権利主張を気に留めない。<br><br><span style=\"\">Diplomatic Token</span>を<span style=\"\">Pirate Dwelling</span>に割り当てることはできない。その代わり、クエスト��完了したり要求に応えたりすることで、より高い外交関係状態に到達することができるようになり、やがて<span style=\"\">Pirate Dwelling Life Bond</span>を締結できるようになる。<br><br>毎ターン、<span style=\"\">Pirate Dwelling</span>は低確率で停戦合意を��り、<span style=\"\">Pirate Dwelling War</span>を仕掛けることがある。<br><br><span style=\"\">Pirate Dwelling</span>は他の支配者から賄賂をもらい、あなたに<span style=\"\">Pirate Raid</span>を仕掛ける可能性がある。"
+  },
+  "GLOBAL.PirateDwellingWarConcept": {
+    "name": "戦争",
+    "icon": "rs_war",
+    "globalName": "GLOBAL.PirateDwellingWarConcept",
+    "displayHtml": "戦争",
+    "description": "<span style=\"\">Pirate Dwelling</span>が<rs_war></rs_war>戦争状態になっているということは、<span style=\"\">Army</span>が<span style=\"\">Combat</span>に参戦でき、<span style=\"\">City</span>が攻撃の対象になるということを意味します。<br><br>戦争中、<span style=\"\">Pirate Dwelling</span>は<span style=\"\">Pirate Raid</span>を始めて敵を攻撃することがあります。<br><br>戦争は、片方が敗北した��合、あるいは平和交渉を行うことで終了となります。"
+  },
+  "GLOBAL.PirateRaidConcept": {
+    "name": "海賊襲撃",
+    "icon": "pirateRaid",
+    "globalName": "GLOBAL.PirateRaidConcept",
+    "displayHtml": "海賊襲撃",
+    "description": "海賊襲撃とは、<span style=\"\">Pirate Dwelling</span>が<span style=\"\">Empire</span>に対して仕掛ける攻撃であり、主に<span style=\"\">Trade Route</span>と<span style=\"\">Province</span>を襲撃することを目的としています。<br><bulletlist><bullet>海賊襲撃の際は海賊旗を掲げ、外交条約を遵守しません���</bullet><bullet>海賊襲撃が{IntRaidGoal}つの標的への襲撃に成功すると、襲撃は終了します。</bullet><bullet><span style=\"\">Empire</span>は、<span style=\"\">Pirate Dwelling</span>に賄賂を支払うことで海賊襲撃を開始できます：<bulletlist></bullet><bullet>襲撃終了時に、略奪した戦利品の分け前を獲得できます���これには、標的となった<span style=\"\">Empire</span>が<span style=\"\">��究</span>したスキルも含まれる��合があります。</bullet><bullet>海賊襲撃が撃退された��合、攻撃を受けた<span style=\"\">Leader</span>はそれを察知し、<span style=\"\">Casus Belli</span>を獲得する��合があります。</bullet></bulletlist><bullet>攻撃を受けた<span style=\"\">Leader</span>は<span style=\"\">Army</span>で襲撃隊と交戦する際、賄賂<gold></gold>を贈って攻撃を中止させることができます。</bullet><bullet><span style=\"\">Pirate Dwelling</span>は複数の海賊襲撃を同時に実行することができます。</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingAvariciousPirateConcept": {
+    "name": "貪欲な海賊",
+    "icon": "personalityPirateAvaricious",
+    "globalName": "GLOBAL.PirateDwellingAvariciousPirateConcept",
+    "displayHtml": "貪欲な海賊",
+    "description": "貪欲な海賊は、何よりも利益を優先する。<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>は<span style=\"\">Gold</span>を大量に持っている支配者との停戦合意のみを��ります。支配者の富が多いほど起こりやすくなります。</bullet><bullet><span style=\"\">Pirate Dwelling</span>は<span style=\"\">Gold</span>を多く持つ支配者を好み、<span style=\"\">Gold</span>が少ない支配者を嫌います。</bullet><bullet>この性格は、拠点との取引やクエストの一部、および<span style=\"\">Pirate Dwelling Life Bond</span>に到達した際に獲得できる特別な<span style=\"\">Artifact</span>の種類に影響を与えます。</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingBloodthirstyPirateConcept": {
+    "name": "残忍な海賊",
+    "icon": "personalityPirateBloodthirsty",
+    "globalName": "GLOBAL.PirateDwellingBloodthirstyPirateConcept",
+    "displayHtml": "残忍な海賊",
+    "description": "残忍な海賊は暴力と��壊を好む。<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>は停戦合意を��って宣戦布告する確率が高いです。</bullet><bullet><span style=\"\">Pirate Dwelling</span>は戦争を仕掛ける支配者を好み、防衛協定や同盟を結ぶ���配者を嫌います。</bullet><bullet>この性格は、拠点との取引やクエストの一部、および<span style=\"\">Pirate Dwelling Life Bond</span>に到達した際に獲得できる特別な<span style=\"\">Artifact</span>の種類に影響を与えます。</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingHeroicPirateConcept": {
+    "name": "英雄的な海賊",
+    "icon": "personalityPirateHeroic",
+    "globalName": "GLOBAL.PirateDwellingHeroicPirateConcept",
+    "displayHtml": "英雄的な海賊",
+    "description": "英雄的な海賊は、貧しい者や虐げられた者を救うために���を��ることを厭わない。<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>は、邪悪な支配者との停戦合意のみを��ります。支配者の富が<span style=\"\">Alignment</span>低いほど起こりやすくなります。</bullet><bullet><span style=\"\">Pirate Dwelling</span>は善良<span style=\"\">Alignment</span>の支配者を好み、邪悪<span style=\"\">Alignment</span>の支配者を嫌います。</bullet><bullet>この性格は、拠点との取引やクエストの一部、および<span style=\"\">Pirate Dwelling Life Bond</span>に到達した際に獲得できる特別な<span style=\"\">Artifact</span>の種類に影響を与えます。</bullet></bulletlist>"
+  },
   "GLOBAL.BloodDrainConcept": {
     "name": "吸血",
     "icon": null,
@@ -1446,7 +1509,7 @@
     "icon": null,
     "globalName": "GLOBAL.SunlessConcept",
     "displayHtml": "日陰",
-    "description": "<span style=\"\">Province Feature</span><br><br>陽の光があたらない影響で、棘の目立つ黒々とした植生���広がり、深紅のバラが点々と咲いている。<br><bulletlist><bullet>この<span style=\"\">Province</span>を併合する<span style=\"\">City</span>は、{stabilitypenalty} <span style=\"\">City Stability</span>を受ける。</bullet><bullet><span style=\"\">Unit</span>は<span style=\"\">World Map</span>の中の<span style=\"\">Turn</span>ごとに{regen} <span style=\"\">Hit Point</span>再生する。</bullet><bullet><span style=\"\">Unit</span>は、<span style=\"\">Combat</span>で回復されたとき、<span style=\"\">Temporary Hit Point</span>の{percentage}のみを得る。</bullet><bullet>ユニット、および都市が<span style=\"\">P R O P E R T I E S. H E A R T L E S S</span>を保持している��合、もしくは<span style=\"\">Vampire Lord</span>によって支配されている帝国は、これらの効果は無効で���る。</bullet></bulletlist>"
+    "description": "<span style=\"\">Province Feature</span><br><br>陽の光があたらない影響で、棘の目立つ黒々とした植生���広がり、深紅のバラが点々と咲いている。<br><bulletlist><bullet>この<span style=\"\">Province</span>を併合する<span style=\"\">City</span>は、{stabilitypenalty} <span style=\"\">City Stability</span>を受ける。</bullet><bullet><span style=\"\">Unit</span>は<span style=\"\">World Map</span>の中の<span style=\"\">Turn</span>ごとに{regen} <span style=\"\">Hit Point</span>再生する。</bullet><bullet><span style=\"\">Unit</span>は、<span style=\"\">Combat</span>で回復されたとき、得られる<span style=\"\">Temporary Hit Point</span>は{percentage}減少する。</bullet><bullet>ユニット、および都市が<span style=\"\">P R O P E R T I E S. H E A R T L E S S</span>を保持している��合、もしくは<span style=\"\">Vampire Lord</span>によって支配されている帝国は、これらの効果は無効で���る。</bullet></bulletlist>"
   },
   "GLOBAL.VampireLordConcept": {
     "name": "エルダーヴァンパイア",
@@ -1516,7 +1579,7 @@
     "icon": "minorcity",
     "globalName": "GLOBAL.DwellingConcept",
     "displayHtml": "本拠地",
-    "description": "<minorcity></minorcity>本拠地は独立した<span style=\"\">City</span>で、特定の種類の<span style=\"\">Unit</span>が居住します。<br><br><span style=\"\">Independent City</span>と同様；<bulletlist><bullet><span style=\"\">Free City Lord</span>を持ちます。</bullet><bullet>あなたとの<span style=\"\">外交関係</span>が設定されており、関係を向上させることで恩恵を得る���とができます。</bullet><bullet><span style=\"\">Empire</span>には所属していません。</bullet></bulletlist><br><br>本拠地は、自由都市には影響を与える��土特性や<span style=\"\">Spell</span>から影響を受けません。"
+    "description": "<minorcity></minorcity>本拠地は独立した<span style=\"\">City</span>で、通常、影響を及ぼすための独自の方法を持ち、独��のメリットを提供します。<br><br><span style=\"\">Independent City</span>と同様；<bulletlist><bullet><span style=\"\">Free City Lord</span>を持ちます。</bullet><bullet>あなたとの<span style=\"\">外交関係</span>が設定されており、関係を向上させることができます。</bullet><bullet><span style=\"\">Empire</span>には所属していません。</bullet></bulletlist><br><br>本拠地は、自由都市には影響を与える��土特性や<span style=\"\">Spell</span>から影響を受けません。"
   },
   "GLOBAL.EmpireRelationConcept": {
     "name": "帝国外交関係",
@@ -1558,7 +1621,7 @@
     "icon": null,
     "globalName": "GLOBAL.IndependentCityTradeConcept",
     "displayHtml": "取引",
-    "description": "<span style=\"\">Independent City</span>は、この都市と最低でも一つの<span style=\"\">Pact Of Cooperation</span>を共有している<span style=\"\">Leader</span>に向けて、複数の取引オプションを提供します。<br><br>取引オプションは、資源の交換や、この都市がある��地内のいずれかの<span style=\"\">Magic Material</span>で構成されます。<br><br>自由都市が1度に同意できる有効な取引は1つのみであり、その取引が期限切れになると、新たな取���をすることができます。"
+    "description": "<span style=\"\">Independent City</span>は、最低でも1つの<span style=\"\">Pact Of Cooperation</span>をこの都市と共有している<span style=\"\">Leader</span>から、特定の資源に集中するよう��まれることがあります。<br><br>また彼らは、支払いと引き換えに、この都市の��地内に位置しているいずれかの<span style=\"\">Magic Material</span>を提供することがあります。<br><br>自由都市が一度に同意できる有効取引は1つのみであり、その取引が期限切れになると、新たな取���をすることができます。"
   },
   "GLOBAL.IndependentCityWarConcept": {
     "name": "戦争",
@@ -2204,6 +2267,13 @@
     "displayHtml": "シャドレイ",
     "description": "<span style=\"\">Pantheon Lore</span>と<span style=\"\">Astral Sea Lore</span>内で権力を手に入れるために危険な陰謀団を作り上げた���野心的な<span style=\"\">Godir Lore</span>の集団。彼らは、すべての力は誰からも隠されるべきではないと考えており、征服するに相応しい���見なした��土に対して陰謀を企て、侵略を行っていくことで知られている。彼らは支離滅裂な傾向を持っているため、しば���ば<span style=\"\">Covenant Faction Lore</span>と真っ向から対立することになる。"
   },
+  "GLOBAL.SilverSeasLoreConcept": {
+    "name": "銀海",
+    "icon": null,
+    "globalName": "GLOBAL.SilverSeasLoreConcept",
+    "displayHtml": "銀海",
+    "description": "銀海の伝説は、すべての船乗りの心に深く刻まれている���古代の船乗りの歌では、<span style=\"\">Worlds Within Lore</span>には<span style=\"\">アストラルの流れ</span>が合流する��所があり、そこは波が液体の銀でできているほど豊かな海だと語られている。そこでは、貴金属の鱗を持つ魚が純粋���マナのサンゴ礁の間を泳ぎ、<span style=\"\">Maer Lore</span>の歌が海岸を優しく包み込むとされている。<br><br>船乗りの中には、銀海の波は<span style=\"\">Tidolon Lore</span>に隠されていると考える者もいれば、その潮流はまだ発見されていないと信じる者もいる。しかし、この楽園���見つける場所ではなく、探し求める場所だと主張する人々もいる。"
+  },
   "GLOBAL.SoulsLoreConcept": {
     "name": "霊魂",
     "icon": null,
@@ -2477,6 +2547,13 @@
     "displayHtml": "漁場",
     "description": "漁��は基本<span style=\"\">Province Improvement</span>で、以下の効果を持つ。<bulletlist><bullet><span style=\"\">Food</span>収入が得られる。</bullet></bulletlist>"
   },
+  "GLOBAL.ForeignCityConcept": {
+    "name": "異国都市",
+    "icon": null,
+    "globalName": "GLOBAL.ForeignCityConcept",
+    "displayHtml": "異国都市",
+    "description": "自分の帝国ではなく、<span style=\"\">Empire</span>に属している<span style=\"\">City</span>。"
+  },
   "GLOBAL.ForesterConcept": {
     "name": "森林",
     "icon": "forester",
@@ -2619,7 +2696,7 @@
   },
   "GLOBAL.ArtifactConcept": {
     "name": "遺物",
-    "icon": null,
+    "icon": "artifact",
     "globalName": "GLOBAL.ArtifactConcept",
     "displayHtml": "遺物",
     "description": "遺物は<span style=\"\">Player</span>の<span style=\"\">Empire</span>に属するユニークなアイテムです。所持している<span style=\"\">Empire</span>に専用ボーナスを付与します。<br><bulletlist><bullet>ほとんどの遺物はコレクションの一部になっています。���レクションを完成させると、強力なコレクションハプ��ングが発動します。</bullet><bullet>遺物は<span style=\"\">Player</span>同士で交換できます。</bullet><bullet>プレイヤーを倒すと、そのプレイヤーが所持している遺���はすべて勝者の元へ渡ります。</bullet></bulletlist>"
@@ -2805,6 +2882,20 @@
     "globalName": "GLOBAL.SpeedMarchConcept",
     "displayHtml": "強制進軍",
     "description": "強制進軍を使うと、<span style=\"\">World Map</span>上で自分のユニットを、通常一度の<span style=\"\">Turn</span>で移動させられる以上の距離を強制的に進ませることが���きます。<br><br>強制進軍が有効になっていると、ユニットは自分の<span style=\"\">Move Point</span>の{Movepointgain}%を獲得しますが、現在の<span style=\"\">Hit Point</span>の{Healthloss}%を失います。また、ユニットが{ExhaustedTurns} <span style=\"\">Turn</span>の間<span style=\"\">P R O P E R T I E S. E X H A U S T E D</span>になります。強制進軍のコストは、軍隊にいるユニット���とに{Manacost} <span style=\"\">Mana</span>です。<br><br>強制進軍を使うためのアビリティは<span style=\"\">Empire Development</span>を通してアンロック可能です。"
+  },
+  "GLOBAL.TradeRouteConcept": {
+    "name": "貿易ルート",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteConcept",
+    "displayHtml": "貿易ルート",
+    "description": "<span style=\"\">City</span>と前哨基地、または他の<span style=\"\">City</span>との間の繋がりであり、この接続が創り上げられた元の���市に対し、接続されている標的に基く<span style=\"\">Trade Route Income</span>を付与します。<br><br>都市は、<span style=\"\">Unit Production</span>を使用することで貿易ルートを確立させることができま���。このコストは、標的のタイプおよびそこに到達する��に必須であった移動量と共に増加します。<br><br>1つの都市で有効にできる貿易ルート数には限りがあり、���の数の上限は<span style=\"\">City Structure</span>によって増加させることができます。"
+  },
+  "GLOBAL.TradeRouteIncomeConcept": {
+    "name": "貿易ルート収益",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteIncomeConcept",
+    "displayHtml": "貿易ルート収益",
+    "description": "<span style=\"\">City</span>に与えられる交易ルート収益は対象に応じて決定します���<bulletlist><bullet><span style=\"\">Outpost</span> - 前哨基地の��地からの全収益。</bullet><bullet><span style=\"\">Independent City</span> -  <span style=\"\">Pv E Dipl State</span>と共に増える全収益の一定割合。</bullet><bullet><span style=\"\">Foreign City</span> - <span style=\"\">Gold</span>と<span style=\"\">Mana</span>の大部分。</bullet></bulletlist>"
   },
   "GLOBAL.CryptConcept": {
     "name": "穴蔵",
@@ -3478,6 +3569,13 @@
     "displayHtml": "沼地",
     "description": "<span style=\"\">Province Feature</span>。<br><br>沼地のような湿地帯。ここには<span style=\"\">Farm</span>を作ることができるが、沼地への��応性がない派閥は{fooddebuff} <span style=\"\">Food</span>の影響を受ける。"
   },
+  "GLOBAL.UndergroundWaterConcept": {
+    "name": "地下の水域",
+    "icon": null,
+    "globalName": "GLOBAL.UndergroundWaterConcept",
+    "displayHtml": "地下の水域",
+    "description": "水の<span style=\"\">Province Feature</span>。<br><br>地下に広がる水の��域。水の<span style=\"\">Farm</span>を作ることができる。"
+  },
   "GLOBAL.UninhabitableConcept": {
     "name": "居住不可",
     "icon": null,
@@ -3497,7 +3595,7 @@
     "icon": null,
     "globalName": "GLOBAL.MangroveForestConcept",
     "displayHtml": "マングローブ森林",
-    "description": "<span style=\"\">Province Feature</span>。<br><br>木々の��が水に沈んでいる森。ここには水域<span style=\"\">Forester</span>を作ることができる。"
+    "description": "水の<span style=\"\">Province Feature</span>。<br><br>木々の��が水に沈んでいる森。ここには水域<span style=\"\">Forester</span>を作ることができる。"
   },
   "GLOBAL.VoidConcept": {
     "name": "虚空",
@@ -3540,5 +3638,12 @@
     "globalName": "GLOBAL.DrainingConcept",
     "displayHtml": "ドレイニング",
     "description": "またはを所持していないユニットがこのマスを通過した���またはターンをこのマス上で終了した��合、{turn}<span style=\"\">Turn</span>の間<span style=\"\">P R O P E R T I E S. D I S R U P T I O N_ T O O L T I P_ P R O P E R T Y</span>状態になる。そのユニットが<span style=\"\">P R O P E R T I E S. M A G I C_ O R I G I N</span>の��合、{turn2}<span style=\"\">Turn</span>の間<span style=\"\">P R O P E R T I E S. D E C A Y I N G</span>状態になる。"
+  },
+  "GLOBAL.ExplosiveConcept": {
+    "name": "爆発物",
+    "icon": null,
+    "globalName": "GLOBAL.ExplosiveConcept",
+    "displayHtml": "爆発物",
+    "description": "この障害物は��壊されると爆発し、隣接するユニットにダメージを与える。"
   }
 }

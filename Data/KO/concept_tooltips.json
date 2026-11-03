@@ -4,7 +4,7 @@
     "icon": null,
     "globalName": "GLOBAL.OutpostConcept",
     "displayHtml": "전초기지",
-    "description": "보유자가 <span style=\"\">Province</span>의 소유권을 주장하고 새 <span style=\"\">City</span>의 기반을 쌓을 수 있는 건물입니다.<br><br>��초기지:<bulletlist><bullet><span style=\"\">Hero</span>이 건설 가능</bullet><bullet><span style=\"\">City</span>로 업그레이드 가능</bullet><bullet>다양한 업그레이드 건설 가능</bullet><bullet>적은 무단 침입 이외의 수단으로 침입 불가</bullet><bullet><span style=\"\">Node</span>, <span style=\"\">Magic Material</span>에서 <span style=\"\">Gold</span>, <span style=\"\">Mana</span>, <span style=\"\">Knowledge</span> 수입 획득</bullet></bulletlist><br><br>��초기지마다 {amount} <span style=\"\">Gold</span> 유지비 부여"
+    "description": "소유자가 <span style=\"\">Province</span>의 소유권을 주장하고 새 <span style=\"\">City</span>의 기반을 쌓을 수 있는 건물입니다.<br><br>��초기지:<bulletlist><bullet><span style=\"\">Hero</span>이 건설 가능<bulletlist></bullet><bullet>지상 또는 수상 구획에 있어야 함</bullet><bullet><span style=\"\">Uninhabitable</span> 구획에 건설 불가</bullet><bullet>다른 전초기지나 도시가 있는 구획과 인접한 곳에는 건설 불가</bullet></bulletlist><bullet>지상에 있을 경우 <span style=\"\">City</span>로 업그레이드 가능</bullet><bullet>해당 위치에 다양한 업그레이드 건설 가능</bullet><bullet>적은 무단 침입하지 않고는 진입 불가</bullet><bullet><span style=\"\">Magic Material</span>에 접근 가능</bullet><bullet><span style=\"\">City</span>가 이 전초기지에 연결된 <span style=\"\">Trade Route</span> 개설 시, 영토 내 <span style=\"\">Node</span>에서 수입 제공</bullet></bulletlist>"
   },
   "GLOBAL.AffinityProvinceImprovementConcept": {
     "name": "친화 구획 개선 시설",
@@ -263,7 +263,7 @@
     "icon": null,
     "globalName": "GLOBAL.HeroClassSpellblade",
     "displayHtml": "영웅 클래스: 마법검사",
-    "description": "<br><br>호환 무기:<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet></bulletlist>"
+    "description": "<br><br>호환 무기:<bulletlist><bullet><span style=\"\">Great Weapon</span></bullet><bullet><span style=\"\">One Handed Weapon</span></bullet><bullet><span style=\"\">Shield</span></bullet><bullet><span style=\"\">Fist Weapon</span></bullet><bullet><span style=\"\">Polearm Weapon</span></bullet><bullet><span style=\"\">Skirmishing Weapon</span></bullet><bullet><span style=\"\">Ranged Weapon</span></bullet></bulletlist>"
   },
   "GLOBAL.HeroClassWarlock": {
     "name": "영웅 클래스: 흑마법사",
@@ -342,6 +342,13 @@
     "displayHtml": "마법",
     "description": "마법 공격은 오브, 지팡이 등의 마법 도구로 수행하는 공격입니다.<br><br>생명체들이 보유한 수많은 특수 공격(예: 드래곤의 숨결 공격) 능력도 마법 공격으로 간주합니다.<br><br>마법 공격은 <span style=\"\">Resistance</span>의 저항을 받습니다."
   },
+  "GLOBAL.MagicStrikeConcept": {
+    "name": "마법 타격",
+    "icon": null,
+    "globalName": "GLOBAL.MagicStrikeConcept",
+    "displayHtml": "마법 타격",
+    "description": "마법 타격은 범위가 1 헥스인 <span style=\"\">Magic</span> 공격의 일종입니다.<br><br><span style=\"\">P R O P E R T I E S. M A G I C_ F I G H T E R</span> 및 마법 타격 무기를 장착한 <span style=\"\">Hero</span>이 이 공격을 사용할 수 있습니다."
+  },
   "GLOBAL.MeleeConcept": {
     "name": "근접",
     "icon": null,
@@ -361,7 +368,7 @@
     "icon": null,
     "globalName": "GLOBAL.MovementAbilityConcept",
     "displayHtml": "이동",
-    "description": "유닛을 다른 장소로 이동시키는 능��입니다.<br><br><span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span> 상태인 유닛은 사용할 수 없습니다."
+    "description": "사용하면 유닛을 다른 장소로 이동시키는 능��입니다.<br><br><span style=\"\">P R O P E R T I E S. I M M O B I L I Z E D</span> 상태인 유닛은 사용할 수 없습니다.<br><span style=\"\">Teleport Ability</span>을 함께 보유하지 않는 한, 수상에서는 사용할 수 없습니다."
   },
   "GLOBAL.MovePointConcept": {
     "name": "이동 ��수",
@@ -494,7 +501,7 @@
     "icon": null,
     "globalName": "GLOBAL.TeleportAbilityConcept",
     "displayHtml": "순간이동",
-    "description": "마법을 통해 유닛을 다른 장소로 즉시 이동시키는 능��입니다."
+    "description": "마법을 통해 해당 유닛을 다른 장소로 즉시 이동시키는 능력입니다."
   },
   "GLOBAL.TemporaryHitPointConcept": {
     "name": "임시 체��",
@@ -648,7 +655,7 @@
     "icon": "rs_cooperation",
     "globalName": "GLOBAL.PactOfCooperationConcept",
     "displayHtml": "협동 조약",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 국경을 개방합니다.<bullet></bullet> <span style=\"\">교역</span>이 가능합니다.<bulletlist></bullet><bullet>자원을 두 종류까지 거래할 수 있습니다.</bullet><bullet><span style=\"\">Magic Material</span>를 거래할 수 있습니다.</bullet></bulletlist></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 국경을 개방합니다.</bullet><bullet>소유한 도시 중 한 곳에서 이곳으로 이어지는 <span style=\"\">Trade Route</span>를 개설할 수 있습니다.</bullet><bullet><span style=\"\">Magic Material</span>를 구입할 수 있습니다.</bullet></bulletlist></bulletlist>"
   },
   "GLOBAL.PactOfIntegrationConcept": {
     "name": "통합 조약",
@@ -669,56 +676,56 @@
     "icon": "rs_vassalage",
     "globalName": "GLOBAL.PactOfVassalageConcept",
     "displayHtml": "봉신 조약",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> 측이 수입 및 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet>다른 <span style=\"\">Empire</span>들이 <span style=\"\">Independent City</span>와 <span style=\"\">Pv E Dipl State</span>를 개선하는 데 필요한 <span style=\"\">협상</span>을 중단합니다.</bullet><bullet><span style=\"\">Independent City</span>는 군주가 참전한 <span style=\"\">War</span>에 합류해 전투를 지원하며, 전쟁 협력에서 해당 독립 도시에 지시를 내릴 수 있습니다.</bullet><bullet><span style=\"\">Vassalage Phase</span> 상태로 전환하며, 해당 상태를 유지하는 동안 <span style=\"\">House Influence</span>를 획득해 봉신 관계로 인한 이득을 개선할 수 있습니다. 외교 관계가 계속 진��될 경우, <span style=\"\">Independent City</span>는 결국 군주의 제국에 <span style=\"\">통합</span>됩니다.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> 측이 공물로 <span style=\"\">Mana</span>, <span style=\"\">Gold</span> 수입 일부를 공유합니다.</bullet><bullet>도시에서 통제하는 <span style=\"\">Magic Material</span>은 군주와 공유됩니다.</bullet><bullet>다른 <span style=\"\">Empire</span>들이 <span style=\"\">Independent City</span>와 <span style=\"\">Pv E Dipl State</span>를 개선하는 데 필요한 <span style=\"\">협상</span>을 더 이상 진행할 수 없습니다.</bullet><bullet><span style=\"\">Independent City</span>는 군주가 참전한 <span style=\"\">War</span>에 합류해 전투를 지원하며, 전쟁 협력에서 해당 독립 도시에 지시를 내릴 수 있습니다.</bullet><bullet><span style=\"\">Vassalage Phase</span> 상태로 전환하며, 해당 상태를 유지하는 동안 <span style=\"\">House Influence</span>를 획득해 봉신 관계로 인한 이득을 개선할 수 있습니다. 외교 관계가 계속 진��될 경우, <span style=\"\">Independent City</span>는 결국 군주의 제국에 <span style=\"\">통합</span>됩니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-1Concept": {
     "name": "공납",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-1Concept",
     "displayHtml": "공납",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.<bullet></bullet> <span style=\"\">거래</span> 비용이 {tradingCost}% 증가합니다.</bullet><bullet>전쟁 협력이 비활성화되며, 신규 병력이 더 이상 파견되지 않습니다.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.</bullet><bullet>전쟁 협력이 비활성화되며, 신규 군대가 더 이상 파견되지 않습니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-2Concept": {
     "name": "약한 공납",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-2Concept",
     "displayHtml": "약한 공납",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.<bullet></bullet> <span style=\"\">거래</span> 비용이 {tradingCost}% 증가합니다.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-3Concept": {
     "name": "공납 거부",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-3Concept",
     "displayHtml": "공납 거부",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입을 공유하지 않습니다.</bullet><bullet><span style=\"\">Magic Material</span>을 공유하지 않습니다.</bullet><bullet>봉신 군대 소집에 아무것도 기여하지 않습니다.<bullet></bullet> <span style=\"\">거래</span> 비용이 {tradingCost}% 증가합니다.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet><span style=\"\">Magic Material</span>을 공유하지 않습니다.</bullet><bullet>봉신 군대 소집에 아무것도 기여하지 않습니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl0Concept": {
     "name": "봉신",
     "icon": "rs_vassalage0",
     "globalName": "GLOBAL.PactOfVassalageLvl0Concept",
     "displayHtml": "봉신",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.<bullet></bullet> <span style=\"\">거래</span> 비용은 기본 수준입니다.</bullet><bullet>전쟁 협��을 사용할 수 있게 됩니다.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.</bullet><bullet>전쟁 협력을 사용할 수 있습니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl1Concept": {
     "name": "굳건한 봉신",
     "icon": "rs_vassalage1",
     "globalName": "GLOBAL.PactOfVassalageLvl1Concept",
     "displayHtml": "굳건한 봉신",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.<bullet></bullet> <span style=\"\">거래</span> 비용이 {tradingCost}% 감소합니다.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl2Concept": {
     "name": "번영하는 봉신",
     "icon": "rs_vassalage2",
     "globalName": "GLOBAL.PactOfVassalageLvl2Concept",
     "displayHtml": "번영하는 봉신",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.<bullet></bullet> <span style=\"\">거래</span> 비용이 {tradingCost}% 감소합니다.</bullet><bullet>도시가 <span style=\"\">통합</span>될 수 있습니다 <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.</bullet><bullet>도시는 <influence></influence> <span style=\"\">통합</span>될 수 있습니다.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl3Concept": {
     "name": "최고의 봉신",
     "icon": "rs_vassalage3",
     "globalName": "GLOBAL.PactOfVassalageLvl3Concept",
     "displayHtml": "최고의 봉신",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.<bullet></bullet> <span style=\"\">거래</span> 비용이 {tradingCost}% 감소합니다.</bullet><bullet>도시가 <span style=\"\">통합</span>될 수 있습니다 <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet>해당 <span style=\"\">Independent City</span>와의 <span style=\"\">Trade Route</span>가 수입의 {incomePercentage}%를 공유합니다.</bullet><bullet>모든 <span style=\"\">Magic Material</span>를 공유합니다.</bullet><bullet><span style=\"\">Request Military Aid</span>에 {commandPoints}<recruitmentpoints></recruitmentpoints>만큼 기여합니다.</bullet><bullet>도시는 <influence></influence> <span style=\"\">통합</span>될 수 있습니다.</bullet></bulletlist>"
   },
   "GLOBAL.HouseInfluenceConcept": {
     "name": "충성도",
@@ -1068,7 +1075,7 @@
     "icon": null,
     "globalName": "GLOBAL.MutualConsulateConcept",
     "displayHtml": "마법사의 유대",
-    "description": "두 <span style=\"\">Leader</span>가 <span style=\"\">Empire Relation</span> 개선과 새로운 <span style=\"\">Treaty</span> 및 외교 선언을 추구하고자 마법사의 유대를 맺습니다.<br><br>효과:[bulletList]<bullet>각 지도자의 <span style=\"\">Throne City</span> 공개</bullet><bullet>지도자들이 서로 <span style=\"\">참전 요청을 보낼 수 있음</span>[/bulletList]<br><br>잠금 해��:<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet></bulletlist>"
+    "description": "두 <span style=\"\">Leader</span>가 <span style=\"\">Empire Relation</span> 개선과 새로운 <span style=\"\">Treaty</span> 및 외교 상태를 추구하고자 마법사의 유대를 맺기로 합니다.<br><br>효과:[bulletList]<bullet>각 지도자의 <span style=\"\">Throne City</span> 공개</bullet><bullet>지도자들이 서로 <span style=\"\">참전 요청</span>[/bulletList]을 보낼 수 있음<br><br>잠금 해��:<bulletlist></bullet><bullet><span style=\"\">Defensive Pact</span></bullet><bullet><span style=\"\">Open Borders</span></bullet><bullet><span style=\"\">Allow Claimed Sectors</span></bullet><bullet><span style=\"\">Teleporter Pact</span></bullet><bullet><span style=\"\">Trade Agreement</span></bullet></bulletlist>"
   },
   "GLOBAL.DefensivePactConcept": {
     "name": "방위 조약",
@@ -1076,6 +1083,13 @@
     "globalName": "GLOBAL.DefensivePactConcept",
     "displayHtml": "방위 조약",
     "description": "<span style=\"\">Leader</span>들이 방위 전쟁에서 서로를 돕기로 서약하는 외교 상태입니다.<br><br>한쪽 지도자가 전쟁 선포의 대상이 될 때, 자동으로 조약의 상대 지도자에게 <span style=\"\">Call To War</span>을 보내 전쟁을 도와 달라고 청합니다. 해당 참전 요청에 응할 경우, 지도자는 직접 사용할 수 있는 <span style=\"\">Casus Belli</span>를 획득합니다. 참전 요청을 거절할 수도 있지만, 이 경우 방위 조약이 파기됩니다.<br><br>잠금 해��:<bulletlist><bullet><span style=\"\">D S Alliance</span></bullet><bullet><span style=\"\">Share Vision</span></bullet></bulletlist>"
+  },
+  "GLOBAL.TradeAgreementConcept": {
+    "name": "자유 무역 협정",
+    "icon": null,
+    "globalName": "GLOBAL.TradeAgreementConcept",
+    "displayHtml": "자유 무역 협정",
+    "description": "두 <span style=\"\">Leader</span>가 <span style=\"\">Trade Route</span>를 서로의 <span style=\"\">City</span> 사이에 자유롭게 개설할 수 있습니다."
   },
   "GLOBAL.OpenBordersConcept": {
     "name": "국경 개방",
@@ -1194,7 +1208,7 @@
     "icon": null,
     "globalName": "GLOBAL.DeclSupremacyConcept",
     "displayHtml": "채무 선언",
-    "description": "호의를 활용하여 다른 <span style=\"\">Leader</span>를 견��:<bulletlist><bullet>지도자와의 <span style=\"\">관계</span>를 {RelationValue}<goodrelation></goodrelation> 방향으로 서서히 증가시키는 수��치 적용 </bullet><bullet>선언이 지속되는 동안, 영향을 받는 플��이어: 당신에 대한 <span style=\"\">Casus Belli</span>을 보유하고 있어도, 둘의 관계에 영향을 미치는 '원한'을 받지 않음</bullet><bullet>선언을 유지하는 동안 매 <span style=\"\">Turn</span>마다 {cost} 유지비 소모, 유지비는 선언이 추가될 때마다 {costScale} 증가</bullet><bullet>선언은 <span style=\"\">Pronouncements</span>으로 생성 및 종료할 수 있습니다.</bullet>"
+    "description": "호의를 활용하여 다른 <span style=\"\">Leader</span>를 견��:<bulletlist><bullet>지도자와의 <span style=\"\">관계</span>를 {RelationValue}<goodrelation></goodrelation> 방향으로 서서히 증가시키는 수��치 적용 </bullet><bullet>선언이 지속되는 동안, 영향을 받는 플��이어는 당신에 대한 <span style=\"\">Casus Belli</span>을 보유하고 있어도 둘의 관계에 영향을 미치는 '원한'을 품지 않음</bullet><bullet>선언을 유지하는 동안 매 <span style=\"\">Turn</span>마다 {cost} 유지비 소모, 유지비는 선언이 추가될 때마다 {costScale} 증가</bullet><bullet>선언은 <span style=\"\">Pronouncements</span>으로 생성 및 종료할 수 있습니다.</bullet></bulletlist>"
   },
   "GLOBAL.GainingWarspoilsConcept": {
     "name": "전쟁 약탈품 수집",
@@ -1434,6 +1448,55 @@
     "displayHtml": "돌파당한 섬",
     "description": "돌파당한 섬은 수제작 지역으로서 다음 특성을 보유:<bulletlist><bullet>지상이나 지하에 있는 차원문으로만 ��근 가능</bullet><bullet>해당 차원문은 게임이 시작될 때부터 이용할 수 있으며, 경비병이 존재하지 않음</bullet><bullet><span style=\"\">S T R U C T U R E S. B R E A C H E D_ A R C A N U M</span> 및 다양한 형태의 기타 귀중한 <span style=\"\">Location</span> 포함</bullet></bulletlist>"
   },
+  "GLOBAL.PirateDwellingConcept": {
+    "name": "자유 선장",
+    "icon": null,
+    "globalName": "GLOBAL.PirateDwellingConcept",
+    "displayHtml": "자유 선장",
+    "description": "자유 선장은 해적 <span style=\"\">Dwelling</span>의 카리스마 넘치는 지도자입니다. 가장 악명 높은 선원들이 휘하에 모여 바다를 공포에 떨게 합니다.<br><bulletlist><bullet>한 세계에 최대 {IntMaxDwellings}명의 자유 선장이 존재합니다.</bullet><bullet>자유 선장은 <personalitypirateavaricious></personalitypirateavaricious> <span style=\"\">탐욕스러움</span>, <personalitypiratebloodthirsty></personalitypiratebloodthirsty> <span style=\"\">피에 굶주림</span>, <personalitypirateheroic></personalitypirateheroic> <span style=\"\">영웅적</span> 중 한 가지 성격을 지닙니다.</bullet><bullet>자유 선장과의 유대 관계는 자유 선장의 요구를 이행하거나 퀘스트를 수행하면 쌓을 수 있습니다.</bullet><bullet>자유 선장과 유대 관계를 맺으면 <span style=\"\">Tome</span> 내용물, 해적 <span style=\"\">Unit</span> 및 <span style=\"\">Spell</span>, <span style=\"\">Equipment</span> 등 다양한 교역 선택지가 잠금 해제됩니다.</bullet><bullet>자유 선장은 <span style=\"\">Pirate Dwelling War</span> 상태일 때, 또는 다른 <span style=\"\">Empire</span>이 공격 비용을 지불하며 의뢰했을 때 <span style=\"\">Pirate Raid</span>을 발동합니다. 공격할 대상이 해적의 동맹이라도 마찬가지입니다.</bullet><bullet>자유 선장의 <span style=\"\">Dwelling</span>은 점령당하면 즉시 파괴되며, 해당 거주지의 보물과 교역 아이템 중 일부가 ��복자에게 귀속됩니다.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingTruceConcept": {
+    "name": "휴전 조약",
+    "icon": "rs_neutral",
+    "globalName": "GLOBAL.PirateDwellingTruceConcept",
+    "displayHtml": "휴전 조약",
+    "description": "<span style=\"\">Pirate Dwelling</span>이 당신을 포용합니다.<br><br><span style=\"\">Independent City Neutral</span> 상태로 간주합니다.<br><br><span style=\"\">Pirate Dwelling</span>이 구획 소유권을 신경 쓰지 않습니다.<br><br><span style=\"\">Diplomatic Token</span>을 <span style=\"\">Pirate Dwelling</span>에 할당할 수 없습니다. 대신 퀘스트를 완료하고 요구를 들어주면 더 높은 외교 상태를 달성하여, 최종적으로 <span style=\"\">Pirate Dwelling Life Bond</span>까지 이룰 수 있습니다.<br><br><span style=\"\">Pirate Dwelling</span>은 매 턴마다 낮은 확률로 휴전 조약을 파기하고 <span style=\"\">Pirate Dwelling War</span>을 선언합니다.<br><br><span style=\"\">Pirate Dwelling</span>은 다른 지도자에게 뇌물을 받고 당신을 상대로 <span style=\"\">Pirate Raid</span>을 시작할 수 있습니다."
+  },
+  "GLOBAL.PirateDwellingWarConcept": {
+    "name": "전쟁",
+    "icon": "rs_war",
+    "globalName": "GLOBAL.PirateDwellingWarConcept",
+    "displayHtml": "전쟁",
+    "description": "한 <span style=\"\">Pirate Dwelling</span>와 <rs_war></rs_war> 전쟁 상태일 경우, 상대의 <span style=\"\">Army</span>가 <span style=\"\">Combat</span>를 벌일 수 있으며 <span style=\"\">City</span>가 공격받을 수 있습니다.<br><br>��쟁 도중 <span style=\"\">Pirate Dwelling</span>에서 가끔 군대를 보내, <span style=\"\">Pirate Raid</span>을 시작하여 자신의 ��군을 공격할 수 있습니다.<br><br>한쪽이 패배하거나 평화 협상이 이루어지면 전쟁이 종료됩니다."
+  },
+  "GLOBAL.PirateRaidConcept": {
+    "name": "해적 습격",
+    "icon": "pirateRaid",
+    "globalName": "GLOBAL.PirateRaidConcept",
+    "displayHtml": "해적 습격",
+    "description": "해적 습격은 <span style=\"\">Pirate Dwelling</span>이 <span style=\"\">Empire</span>을 대상으로 감행하는 공격으로, 주로 <span style=\"\">Trade Route</span> 및 <span style=\"\">Province</span>을 습격합니다.<br><bulletlist><bullet>해적 습격대는 검은 깃발을 게양하며 외교 조약을 따르지 않습니다.</bullet><bullet>해적 습격대가 목표 {IntRaidGoal}곳의 습격에 성공하면 습격이 종료됩니다.</bullet><bullet><span style=\"\">Empire</span>은 <span style=\"\">Pirate Dwelling</span>에 비용을 지불해 해적 습격을 의뢰할 수 있습니다.<bulletlist></bullet><bullet>습격 종료 시, 의뢰한 제국은 약탈한 보상의 일부를 획득합니다. 보상에는 대상 <span style=\"\">Empire</span>에서 <span style=\"\">연구한</span> 스킬도 포함됩니다.</bullet><bullet>해적 습격이 실패로 끝날 경우, 공격받은 <span style=\"\">Leader</span>는 이 사실을 알아내고 <span style=\"\">Casus Belli</span>을 획득할 수 있습니다.</bullet></bulletlist><bullet>공격받은 <span style=\"\">Leader</span>가 <span style=\"\">Army</span>로 습격대와 교전할 경우, 습격대에 <gold></gold> 뇌물을 주어 공격을 중단시킬 수 있습니다.</bullet><bullet>단일 <span style=\"\">Pirate Dwelling</span>에서 여러 해적 습격을 동시에 진행할 수 있습니다.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingAvariciousPirateConcept": {
+    "name": "탐욕스러운 해적",
+    "icon": "personalityPirateAvaricious",
+    "globalName": "GLOBAL.PirateDwellingAvariciousPirateConcept",
+    "displayHtml": "탐욕스러운 해적",
+    "description": "탐욕스러운 해적은 이익을 무엇보다도 중시합니다.<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>은 <span style=\"\">Gold</span>를 많이 소유한 지도자와의 휴전 조약만 파기합니다. 지도자가 부유할수록 조약을 파기할 확률이 증가합니다.</bullet><bullet><span style=\"\">Pirate Dwelling</span>는 <span style=\"\">Gold</span>을 많이 보유한 지도자를 좋아하고, <span style=\"\">Gold</span>를 적게 보유한 지도자를 싫어합니다.</bullet><bullet>해당 개성은 주둔지의 일부 거래 선택지, 퀘스트, <span style=\"\">Pirate Dwelling Life Bond</span>에 도달할 때 받을 수 있는 고유 <span style=\"\">Artifact</span>에 영향을 줍니다.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingBloodthirstyPirateConcept": {
+    "name": "피에 굶주린 해적",
+    "icon": "personalityPirateBloodthirsty",
+    "globalName": "GLOBAL.PirateDwellingBloodthirstyPirateConcept",
+    "displayHtml": "피에 굶주린 해적",
+    "description": "피에 굶주린 해적은 폭력과 파괴를 즐깁니다.<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>은 높은 확률로 휴전 조약을 파기하고 전쟁을 선포합니다.</bullet><bullet><span style=\"\">Pirate Dwelling</span>은 전쟁을 일으키는 지도자를 좋아하고, 방위 조약 및 동맹을 맺는 지도자를 싫어합니다.</bullet><bullet>해당 개성은 주둔지의 일부 거래 선택지, 퀘스트, <span style=\"\">Pirate Dwelling Life Bond</span>에 도달할 때 받을 수 있는 고유 <span style=\"\">Artifact</span>에 영향을 줍니다.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingHeroicPirateConcept": {
+    "name": "영웅적인 해��",
+    "icon": "personalityPirateHeroic",
+    "globalName": "GLOBAL.PirateDwellingHeroicPirateConcept",
+    "displayHtml": "영웅적인 해��",
+    "description": "영웅적인 해적은 주로 빈자와 억압받는 이들을 위해 법을 어깁니다.<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span>은 성향이 악인 지도자와의 휴전 조약만 파기합니다. 지도자의 <span style=\"\">Alignment</span>이 낮을수록 조약을 파기할 확률이 증가합니다.</bullet><bullet><span style=\"\">Pirate Dwelling</span>은 <span style=\"\">Alignment</span>이 선인 지도자를 좋아하고, <span style=\"\">Alignment</span>이 악인 지도자를 싫어합니다.</bullet><bullet>해당 개성은 주둔지의 일부 거래 선택지, 퀘스트, <span style=\"\">Pirate Dwelling Life Bond</span>에 도달할 때 받을 수 있는 고유 <span style=\"\">Artifact</span>에 영향을 줍니다.</bullet></bulletlist>"
+  },
   "GLOBAL.BloodDrainConcept": {
     "name": "흡혈",
     "icon": null,
@@ -1453,7 +1516,7 @@
     "icon": null,
     "globalName": "GLOBAL.SunlessConcept",
     "displayHtml": "무광",
-    "description": "<span style=\"\">Province Feature</span><br><br>햇빛이 사라진 자리에 어둡고 음울한 가시 식물들이 퍼져 있으며, 사이사이에 붉은 장미들이 피어 있습니다.<br><bulletlist><bullet><span style=\"\">City</span>에서 해당 <span style=\"\">Province</span> 합병 시 <span style=\"\">City Stability</span>가 {stabilitypenalty} 감소합니다.</bullet><bullet><span style=\"\">Unit</span>이 <span style=\"\">World Map</span>에서 매 <span style=\"\">Turn</span>마다 <span style=\"\">Hit Point</span>을 {regen} 재생합니다.</bullet><bullet><span style=\"\">Unit</span>이 <span style=\"\">Combat</span> 도중 치료받을 때 <span style=\"\">Temporary Hit Point</span>의 {percentage}만 받습니다.</bullet><bullet><span style=\"\">P R O P E R T I E S. H E A R T L E S S</span> 상태를 보유하거나 <span style=\"\">Vampire Lord</span>가 이끄는 ��국에 속하는 유닛 및 도시는 해당 효과에 면역이 됩니다.</bullet></bulletlist>"
+    "description": "<span style=\"\">Province Feature</span><br><br>햇빛이 사라진 자리에 어둡고 음울한 가시 식물들이 퍼져 있으며, 사이사이에 붉은 장미들이 피어 있습니다.<br><bulletlist><bullet><span style=\"\">City</span>에서 해당 <span style=\"\">Province</span> 합병 시 <span style=\"\">City Stability</span>가 {stabilitypenalty} 감소합니다.</bullet><bullet><span style=\"\">Unit</span>이 <span style=\"\">World Map</span>에서 매 <span style=\"\">Turn</span>마다 <span style=\"\">Hit Point</span>을 {regen} 재생합니다.</bullet><bullet><span style=\"\">Unit</span>이 <span style=\"\">Combat</span> 도중 치료받을 때 회복되는 <span style=\"\">Temporary Hit Point</span>이 {percentage} 감소합니다.</bullet><bullet><span style=\"\">P R O P E R T I E S. H E A R T L E S S</span> 상태를 보유하거나 <span style=\"\">Vampire Lord</span>가 이끄는 ��국에 속하는 유닛 및 도시는 해당 효과에 면역이 됩니다.</bullet></bulletlist>"
   },
   "GLOBAL.VampireLordConcept": {
     "name": "장로 흡혈귀",
@@ -1523,7 +1586,7 @@
     "icon": "minorcity",
     "globalName": "GLOBAL.DwellingConcept",
     "displayHtml": "주둔지",
-    "description": "<minorcity></minorcity> 주둔지는 특정 유형의 <span style=\"\">Unit</span>이 살고 있는 독립 세력의 <span style=\"\">City</span>입니다.<br><br><span style=\"\">Independent City</span>와 마찬가지로, 이 주둔지는<bulletlist><bullet><span style=\"\">Free City Lord</span>에 속하지 않습니다.</bullet><bullet>당신과 독자적인 <span style=\"\">외교 관계</span>를 형성합니다. 이 외교 관계를 개선하거나 좋은 외교 관계로 이점을 얻을 수도 있습니다.</bullet><bullet><span style=\"\">Empire</span>에 속하지 않습니다.</bullet></bulletlist><br><br>주둔지는 자유 도시에 영향을 미치는 세계 특성 및 <span style=\"\">Spell</span>에 영향을 받지 않습니다."
+    "description": "<minorcity></minorcity> 주둔지는 독립된 형태의 <span style=\"\">City</span>입니다. 대부분 고유한 방식으로 영향력을 미치고 고유한 이점을 ��공합니다.<br><br><span style=\"\">Independent City</span>와 마찬가지로, 이 주둔지는 다음 특징을 지닙니다.<bulletlist><bullet><span style=\"\">Free City Lord</span>를 보유합니다.</bullet><bullet>당신과 독자적인 <span style=\"\">외교 관계</span>를 형성합니다. 이 외교 관계는 개선할 수 있습니다.</bullet><bullet><span style=\"\">Empire</span>에 속하지 않습니다.</bullet></bulletlist><br><br>주둔지는 자유 도시에 영향을 미치는 세계 특성 및 <span style=\"\">Spell</span>에 영향을 받지 않습니다."
   },
   "GLOBAL.EmpireRelationConcept": {
     "name": "제국 관계",
@@ -1565,7 +1628,7 @@
     "icon": null,
     "globalName": "GLOBAL.IndependentCityTradeConcept",
     "displayHtml": "교역",
-    "description": "<span style=\"\">Independent City</span>는 체결한 조약이 <span style=\"\">Pact Of Cooperation</span> 이상인 <span style=\"\">Leader</span>에게 여러 교역 항목을 ��공합니다.<br><br>교역 항목에는 자원 교환뿐만 아니라 도시 영토에 존재하는 <span style=\"\">Magic Material</span>도 등장합니다.<br><br>자유 도시는 한 번에 하나의 활성화된 거래에만 응할 수 있으며, 거래가 만료되면 새 거래를 진행할 수 있습니다."
+    "description": "<span style=\"\">Independent City</span>는 자신의 도시와 <span style=\"\">Pact Of Cooperation</span> 이상의 조약을 공유하고 있는 <span style=\"\">Leader</span>로부터 특정 자원에 집중해 달라는 요청을 받을 수 있습니다.<br><br>또한 대가를 지불하는 조건으로, 해당 도시의 영토에 있는 <span style=\"\">Magic Material</span>를 제공할 수도 있습니다.<br><br>자유 도시는 한 번에 하나의 활성화된 거래에만 응할 수 있으며, 거래가 만료되면 새 거래를 진행할 수 있습니다."
   },
   "GLOBAL.IndependentCityWarConcept": {
     "name": "전쟁",
@@ -2209,7 +2272,14 @@
     "icon": null,
     "globalName": "GLOBAL.ShadraiFactionLoreConcept",
     "displayHtml": "샤드라이",
-    "description": "야심만만한 어느 <span style=\"\">Godir Lore</span> 무리가 <span style=\"\">Pantheon Lore</span>과 <span style=\"\">Astral Sea Lore</span>에서 권력을 쟁취하기 위해 만든 변덕스런 당파입니다. 이들은 사용할 수 없는 힘이란 말도 안 된다고 생각하며, 사악한 음모와 정복할 만한 세계에 침략하는 경향으로 악명이 높습니다. 이들의 혼란스러운 성향은 종종 <span style=\"\">Covenant Faction Lore</span>와 정면 충돌을 일으키는 계기가 됩니다."
+    "description": "야심 많은 어느 <span style=\"\">Godir Lore</span> 무리가 <span style=\"\">Pantheon Lore</span>과 <span style=\"\">Astral Sea Lore</span>에서 권력을 쟁취하려 만든 불안정한 결사단입니다. 이들은 어떤 힘도 누구에게든 감춰져서는 안 된다고 생각하며, 음모를 꾸미고 정복할 가치가 있다고 여기는 세계를 침략하는 것으로 악명이 높습니다. 혼돈을 추구하는 성향 때문에 <span style=\"\">Covenant Faction Lore</span>와 직접 대립하는 경우가 많습니다."
+  },
+  "GLOBAL.SilverSeasLoreConcept": {
+    "name": "은빛 바다",
+    "icon": null,
+    "globalName": "GLOBAL.SilverSeasLoreConcept",
+    "displayHtml": "은빛 바다",
+    "description": "뱃사람이라면 누구나 은빛 바다의 전설을 마음속에 품고 삽니다. 고대 뱃노래들은 <span style=\"\">Worlds Within Lore</span>의 어느 장소, 구체��으로 말하면 <span style=\"\">영체 흐름</span>이 하나로 모이는 곳을 이야기합니다. 그곳의 바다는 너무나 풍요로워, 파도조차 액체로 된 은으로 이루어졌다고 합니다. 그곳에서는 귀금속 비늘을 지닌 물고기들이 순수 마나로 된 산호초 사이를 헤엄치며, <span style=\"\">Maer Lore</span>의 노래가 해안을 달랩니다.<br><br>항해자들 사이에는 은빛 바다의 파도가 <span style=\"\">Tidolon Lore</span>에 숨겨져 있다, 그 조류 자체가 아직 발견되지 않았다 등 의견이 분분하지만, 그래도 이 낙원을 우연히 만나기만 바라지 말고 적극��으로 찾아 나서야 한다고 주장하는 이들도 존재합니다."
   },
   "GLOBAL.SoulsLoreConcept": {
     "name": "영혼",
@@ -2484,6 +2554,13 @@
     "displayHtml": "어장",
     "description": "어장은 다음 효과를 지닌 기본 <span style=\"\">Province Improvement</span>입니다.<bulletlist><bullet><span style=\"\">Food</span> 수입 ��공</bullet></bulletlist>"
   },
+  "GLOBAL.ForeignCityConcept": {
+    "name": "외국 도시",
+    "icon": null,
+    "globalName": "GLOBAL.ForeignCityConcept",
+    "displayHtml": "외국 도시",
+    "description": "다른 <span style=\"\">Empire</span>에 속한 <span style=\"\">City</span>입니다."
+  },
   "GLOBAL.ForesterConcept": {
     "name": "벌목소",
     "icon": "forester",
@@ -2626,7 +2703,7 @@
   },
   "GLOBAL.ArtifactConcept": {
     "name": "유물",
-    "icon": null,
+    "icon": "artifact",
     "globalName": "GLOBAL.ArtifactConcept",
     "displayHtml": "유물",
     "description": "유물은 <span style=\"\">Player</span>의 <span style=\"\">Empire</span>에 귀속된 고유 아이템으로, 소속 <span style=\"\">Empire</span>에 특별한 보너스를 ��공합니다.<br><bulletlist><bullet>유물은 수집 구성품인 경우가 많으며, 수집을 완성하면 강력한 수집 사건이 발생합니다.</bullet><bullet><span style=\"\">Player</span> 사이에 유물을 거래할 수 있습니다.</bullet><bullet>한 플레이어를 물리칠 경우, 패배한 플레이어의 모든 유물은 승리한 플��이어에게 귀속됩니다.</bullet></bulletlist>"
@@ -2812,6 +2889,20 @@
     "globalName": "GLOBAL.SpeedMarchConcept",
     "displayHtml": "강행군",
     "description": "강행군을 이용하면 유닛들이 <span style=\"\">World Map</span>에서 한 <span style=\"\">Turn</span>의 이동 거리보다 더 멀리 이동할 수 있습니다.<br><br>강행군을 활성화할 경우, 유닛이 <span style=\"\">Move Point</span>의 {Movepointgain}%를 획득하지만 현재 <span style=\"\">Hit Point</span>의 {Healthloss}%를 상실합니다. 또한 {ExhaustedTurns} <span style=\"\">Turn</span> 동안 <span style=\"\">P R O P E R T I E S. E X H A U S T E D</span> 상태가 됩니다. 강행군 사용 시 군대의 유닛 하나당 {Manacost} <span style=\"\">Mana</span>가 소모됩니다.<br><br>강행군을 사용할 수 있는 능력은 <span style=\"\">Empire Development</span>을 통해 잠금 해제할 수 있습니다."
+  },
+  "GLOBAL.TradeRouteConcept": {
+    "name": "무역로",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteConcept",
+    "displayHtml": "무역로",
+    "description": "한 <span style=\"\">City</span>와 전초기지 또는 다른 <span style=\"\">City</span>를 잇는 연결로입니다. 무역로를 개설한 출발 도시는 연결된 목적지에 따라 <span style=\"\">Trade Route Income</span>을 얻습니다.<br><br>도시에서 <span style=\"\">Unit Production</span>을 소모해 무역로를 개설할 수 있으며, 비용은 대상의 유형 및 도달하는 데 필요한 이동 거리에 따라 증가합니다.<br><br>도시마다 한 번에 활성화할 수 있는 무역로의 수는 제한되어 있으며, <span style=\"\">City Structure</span>을 통해 한도를 늘릴 수 있습니다."
+  },
+  "GLOBAL.TradeRouteIncomeConcept": {
+    "name": "무역로 수입",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteIncomeConcept",
+    "displayHtml": "무역로 수입",
+    "description": "<span style=\"\">City</span>에 지급되는 무역로 수입은 무역로 대상에 따라 달라집니다.<bulletlist><bullet><span style=\"\">Outpost</span> - ��초기지의 영토에서 발생하는 모든 수입</bullet><bullet><span style=\"\">Independent City</span> - 해당 도시의 전체 수입 중 일부를 받으며, 이 비율은 <span style=\"\">Pv E Dipl State</span>에 따라 증가</bullet><bullet><span style=\"\">Foreign City</span> - 해당 도시가 보유한 <span style=\"\">Gold</span> 및 <span style=\"\">Mana</span> 중 상당 비율</bullet></bulletlist>"
   },
   "GLOBAL.CryptConcept": {
     "name": "지하 묘지",
@@ -3486,11 +3577,11 @@
     "description": "<span style=\"\">Province Feature</span><br><br>사방이 습한 늪지대입니다. <span style=\"\">Farm</span>을 건설할 수 있으나, 늪지 적응이 없는 세력의 경우 <span style=\"\">Food</span>이 {fooddebuff} 감소합니다."
   },
   "GLOBAL.UndergroundWaterConcept": {
-    "name": "수상",
+    "name": "지하 수역",
     "icon": null,
     "globalName": "GLOBAL.UndergroundWaterConcept",
-    "displayHtml": "수상",
-    "description": "<span style=\"\">Province Feature</span><br><br>지하에 존재하는 수상 구획입니다. <span style=\"\">Farm</span>을 건설할 수 있습니다."
+    "displayHtml": "지하 수역",
+    "description": "수상 <span style=\"\">Province Feature</span><br><br>지하에 존재하는 수상 구획입니다. 수상 <span style=\"\">Farm</span>을 건설할 수 있습니다."
   },
   "GLOBAL.UninhabitableConcept": {
     "name": "거주 불가능",
@@ -3511,7 +3602,7 @@
     "icon": null,
     "globalName": "GLOBAL.MangroveForestConcept",
     "displayHtml": "맹그로브 숲",
-    "description": "<span style=\"\">Province Feature</span><br><br>뿌리가 물에 잠긴 나무들로 가득한 숲입니다. 수상 <span style=\"\">Forester</span>을 건설할 수 있습니다."
+    "description": "수상 <span style=\"\">Province Feature</span><br><br>뿌리가 물에 잠긴 나무들로 가득 찬 숲입니다. 수상 <span style=\"\">Forester</span>을 건설할 수 있습니다."
   },
   "GLOBAL.VoidConcept": {
     "name": "공허",
@@ -3554,5 +3645,12 @@
     "globalName": "GLOBAL.DrainingConcept",
     "displayHtml": "흡수",
     "description": "이 지점을 지나가거나 멈춘 채로 턴을 종료한 유닛이 {turn} <span style=\"\">Turn</span> 동안 <span style=\"\">P R O P E R T I E S. D I S R U P T I O N_ T O O L T I P_ P R O P E R T Y</span> 상태가 됩니다. 해당 유닛이 <span style=\"\">P R O P E R T I E S. M A G I C_ O R I G I N</span> 상태를 보유한 경우, 추가로 {turn2} <span style=\"\">Turn</span> 동안 <span style=\"\">P R O P E R T I E S. D E C A Y I N G</span> 상태를 겪습니다."
+  },
+  "GLOBAL.ExplosiveConcept": {
+    "name": "폭발성",
+    "icon": null,
+    "globalName": "GLOBAL.ExplosiveConcept",
+    "displayHtml": "폭발성",
+    "description": "이 장애물은 파괴할 경우 폭발하며 인접 유닛에 피해를 줍니다."
   }
 }

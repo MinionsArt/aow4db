@@ -4,7 +4,7 @@
     "icon": null,
     "globalName": "GLOBAL.OutpostConcept",
     "displayHtml": "Форпост",
-    "description": "Эта постройка позволяет заявить права на <<acc,c:<span style=\"\">Province</span>>> и закладывает основу для будущего <<gen,c:<span style=\"\">City</span>>>.<br><br>Особенности форпоста:<bulletlist><bullet>его может построить <<c:<span style=\"\">Hero</span>>>;</bullet><bullet>он может быть улучшен до <<gen,c:<span style=\"\">City</span>>>;</bullet><bullet>в нём можно возвести ряд улучшений;</bullet><bullet>враги не могут проникнуть на форпост, не нарушив ваших границ;</bullet><bullet>форпост собирает <<acc,c:<span style=\"\">Gold</span>>>, <<acc,c:<span style=\"\">Mana</span>>> и <<acc,c:<span style=\"\">Knowledge</span>>> от <<gen,cm:<span style=\"\">Node</span>>> и <<gen,cm:<span style=\"\">Magic Material</span>>>.</bullet></bulletlist><br><br>Каждый форпост требует содержания в размере {amount} ед. <<gen,c:<span style=\"\">Gold</span>>>."
+    "description": "Эта постройка позволяет заявить права на <<acc,c:<span style=\"\">Province</span>>> и закладывает основу для будущего <<gen,c:<span style=\"\">City</span>>>.<br><br>Особенности форпоста:<bulletlist><bullet>его может построить <<c:<span style=\"\">Hero</span>>>;<bulletlist></bullet><bullet>должен находиться в сухопутной или водной провинции;</bullet><bullet>не может быть построен в <<pre,c:<span style=\"\">Uninhabitable</span>>>;</bullet><bullet>не может быть построен рядом с провинцией, где уже есть город или другой форпост;</bullet></bulletlist><bullet>может быть улучшен до <<gen,c:<span style=\"\">City</span>>>, если стоит на суше.</bullet><bullet>В форпосте можно возвести ряд улучшений.</bullet><bullet>Враги не могут проникнуть на форпост, не нарушив ваших границ.</bullet><bullet>Открывает доступ к <<dat,c:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Приносит доход от <<gen,cm:<span style=\"\">Node</span>>> в пределах городских владений, если к нему проложен <<c:<span style=\"\">Trade Route</span>>> из <<gen,c:<span style=\"\">City</span>>>.</bullet></bulletlist>"
   },
   "GLOBAL.AffinityProvinceImprovementConcept": {
     "name": "Символ приверженностиn{1}x{2}",
@@ -263,7 +263,7 @@
     "icon": null,
     "globalName": "GLOBAL.HeroClassSpellblade",
     "displayHtml": "Класс героя: боевой маг",
-    "description": "<br><br>Совместимое оружие:<bulletlist><bullet><span style=\"\">Great Weapon</span>;</bullet><bullet><span style=\"\">One Handed Weapon</span>;</bullet><bullet><span style=\"\">Shield</span>;</bullet><bullet><span style=\"\">Fist Weapon</span>;</bullet><bullet><span style=\"\">Polearm Weapon</span>;</bullet><bullet><span style=\"\">Skirmishing Weapon</span>.</bullet></bulletlist>"
+    "description": "<br><br>Совместимое оружие:<bulletlist><bullet><span style=\"\">Great Weapon</span>;</bullet><bullet><span style=\"\">One Handed Weapon</span>;</bullet><bullet><span style=\"\">Shield</span>;</bullet><bullet><span style=\"\">Fist Weapon</span>;</bullet><bullet><span style=\"\">Polearm Weapon</span>;</bullet><bullet><span style=\"\">Skirmishing Weapon</span>;</bullet><bullet><span style=\"\">Ranged Weapon</span>.</bullet></bulletlist>"
   },
   "GLOBAL.HeroClassWarlock": {
     "name": "Класс героя: чернокнижник",
@@ -342,6 +342,13 @@
     "displayHtml": "Магия",
     "description": "Магические атаки совершаются при помощи волшебных предметов, таких как сферы и посохи.<br><br>Многие особые атаки существ, например драконье дыхание, также считаются магическими.<br><br>За защиту от магических атак отвечает показатель <<gen,c:<span style=\"\">Resistance</span>>>."
   },
+  "GLOBAL.MagicStrikeConcept": {
+    "name": "Магический ударa{1}n{2}",
+    "icon": null,
+    "globalName": "GLOBAL.MagicStrikeConcept",
+    "displayHtml": "Магический ударa{1}n{2}",
+    "description": "Магические удары — разновидность <span style=\"\">магических</span> атак дальностью 1 кл.<br><br>Они доступны <<dat,cm:<span style=\"\">P R O P E R T I E S. M A G I C_ F I G H T E R</span>>> и <<dat,cm:<span style=\"\">Hero</span>>>, которые используют чародейское оружие."
+  },
   "GLOBAL.MeleeConcept": {
     "name": "Ближний бойa{1}n{2}",
     "icon": null,
@@ -361,7 +368,7 @@
     "icon": null,
     "globalName": "GLOBAL.MovementAbilityConcept",
     "displayHtml": "Перемещение",
-    "description": "Используя эту способность, воин перемещается на другую позицию.<br><br>Не может использоваться <span style=\"\">обездвиженными</span> воинами."
+    "description": "Используя эту способность, воин перемещается на другую позицию.<br><br>Не может использоваться <span style=\"\">обездвиженными</span> воинами.<br>Нельзя использовать на водных ландшафтах (за исключением случаев, когда применяется <<c:<span style=\"\">Teleport Ability</span>>>)."
   },
   "GLOBAL.MovePointConcept": {
     "name": "Очки перемещенияn{1}x{2}",
@@ -494,7 +501,7 @@
     "icon": null,
     "globalName": "GLOBAL.TeleportAbilityConcept",
     "displayHtml": "Телепортация",
-    "description": "Используя эту способность, воин мгновенно перемещается на другую позицию."
+    "description": "Способность, которая мгновенно перемещает воина на другую позицию с помощью волшебства."
   },
   "GLOBAL.TemporaryHitPointConcept": {
     "name": "Временное здоровьеa{1}n{2}",
@@ -648,7 +655,7 @@
     "icon": "rs_cooperation",
     "globalName": "GLOBAL.PactOfCooperationConcept",
     "displayHtml": "Договор о сотрудничествеn{1}x{2}x{3}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> открывает свои границы.</bullet><bullet>Возможна <span style=\"\">торговля</span>.<bulletlist></bullet><bullet>Для торговли доступно до двух ресурсов.</bullet><bullet>Можно продавать и покупать <<acc,cm:<span style=\"\">Magic Material</span>>>.</bullet></bulletlist></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> открывает свои границы.</bullet><bullet>Можно проложить <<acc,c:<span style=\"\">Trade Route</span>>> из одного из ваших городов.</bullet><bullet>Можно приобретать <<cm:<span style=\"\">Magic Material</span>>>.</bullet></bulletlist></bulletlist>"
   },
   "GLOBAL.PactOfIntegrationConcept": {
     "name": "Договор об интеграцииn{1}x{2}x{3}",
@@ -669,56 +676,56 @@
     "icon": "rs_vassalage",
     "globalName": "GLOBAL.PactOfVassalageConcept",
     "displayHtml": "Вассальный договорa{1}n{2}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится частью своих доходов и <<gen,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Другие <<cm:<span style=\"\">Empire</span>>> больше не могут вести с этим <<ins,c:<span style=\"\">Independent City</span>>> <span style=\"\">переговоры</span> с целью повышения <<gen,c:<span style=\"\">Pv E Dipl State</span>>>.</bullet><bullet><span style=\"\">Independent City</span> будет участвовать во всех <<pre,cm:<span style=\"\">War</span>>> своего повелителя, помогать его армиям в битвах и следовать планам, заданным в рамках координации боевых действий.</bullet><bullet>Начинается <<c:<span style=\"\">Vassalage Phase</span>>>, в ходе которой сюзерен может ещё больше усилить <<acc,c:<span style=\"\">House Influence</span>>> для дальнейшего закрепления своей гегемонии. В итоге <<c:<span style=\"\">Independent City</span>>> может стать <span style=\"\">частью владений</span> своего повелителя.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> приносит дань <<ins,c:<span style=\"\">Mana</span>>> и <<ins,c:<span style=\"\">Gold</span>>> из своего дохода.</bullet><bullet>Делится со своим повелителем всеми <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Другие <<cm:<span style=\"\">Empire</span>>> больше не могут вести с этим <<ins,c:<span style=\"\">Independent City</span>>> <span style=\"\">переговоры</span> с целью повышения <<gen,c:<span style=\"\">Pv E Dipl State</span>>>.</bullet><bullet><span style=\"\">Independent City</span> будет участвовать во всех <<pre,cm:<span style=\"\">War</span>>> своего повелителя, помогать его армиям в битвах и следовать планам, заданным в рамках координации боевых действий.</bullet><bullet>Начинается <<c:<span style=\"\">Vassalage Phase</span>>>, на которой сюзерен может ещё больше усилить <<acc,c:<span style=\"\">House Influence</span>>> для дальнейшего закрепления своей гегемонии. В итоге <<c:<span style=\"\">Independent City</span>>> может стать <span style=\"\">частью владений</span> своего повелителя.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-1Concept": {
     "name": "Данникl",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-1Concept",
     "displayHtml": "Данникl",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится {incomePercentage}% своих доходов.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Цены при <span style=\"\">торговле</span> повышены на {tradingCost}%.</bullet><bullet>Координация боевых действий недоступна, город не будет высылать новые армии.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Координация боевых действий недоступна; город не будет высылать новые армии.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-2Concept": {
     "name": "Незначительный данникla{1}n{2}",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-2Concept",
     "displayHtml": "Незначительный данникla{1}n{2}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится {incomePercentage}% своих доходов.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Цены при <span style=\"\">торговле</span> повышены на {tradingCost}%.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl-3Concept": {
     "name": "Мятежный данникla{1}n{2}",
     "icon": null,
     "globalName": "GLOBAL.PactOfVassalageLvl-3Concept",
     "displayHtml": "Мятежный данникla{1}n{2}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> не делится доходами.</bullet><bullet>Город не делится <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город ничего не приносит при сборе сеньоров.</bullet><bullet>Цены при <span style=\"\">торговле</span> повышены на {tradingCost}%.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город не делится <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город не участвует в сборе сеньоров.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl0Concept": {
     "name": "Вассалl",
     "icon": "rs_vassalage0",
     "globalName": "GLOBAL.PactOfVassalageLvl0Concept",
     "displayHtml": "Вассалl",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится {incomePercentage}% своих доходов.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Цены при <span style=\"\">торговле</span> на обычном уровне.</bullet><bullet>Доступна координация боевых действий.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Доступна координация боевых действий.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl1Concept": {
     "name": "Покорный вассалla{1}n{2}",
     "icon": "rs_vassalage1",
     "globalName": "GLOBAL.PactOfVassalageLvl1Concept",
     "displayHtml": "Покорный вассалla{1}n{2}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится {incomePercentage}% своих доходов.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Цены при <span style=\"\">торговле</span> снижены на {tradingCost}%.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl2Concept": {
     "name": "Процветающий вассалla{1}n{2}",
     "icon": "rs_vassalage2",
     "globalName": "GLOBAL.PactOfVassalageLvl2Concept",
     "displayHtml": "Процветающий вассалla{1}n{2}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится {incomePercentage}% своих доходов.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Цены при <span style=\"\">торговле</span> снижены на {tradingCost}%.</bullet><bullet>Город можно <span style=\"\">интегрировать</span> <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Город можно <span style=\"\">интегрировать</span> <influence></influence>.</bullet></bulletlist>"
   },
   "GLOBAL.PactOfVassalageLvl3Concept": {
     "name": "Абсолютный вассалla{1}n{2}",
     "icon": "rs_vassalage3",
     "globalName": "GLOBAL.PactOfVassalageLvl3Concept",
     "displayHtml": "Абсолютный вассалla{1}n{2}",
-    "description": "<bulletlist><bullet><span style=\"\">Independent City</span> делится {incomePercentage}% своих доходов.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Цены при <span style=\"\">торговле</span> снижены на {tradingCost}%.</bullet><bullet>Город можно <span style=\"\">интегрировать</span> <influence></influence>.</bullet></bulletlist>"
+    "description": "<bulletlist><bullet><span style=\"\">Trade Route</span> в этот <<c:<span style=\"\">Independent City</span>>> приносят {incomePercentage}% его дохода.</bullet><bullet>Город делится всеми своими <<ins,cm:<span style=\"\">Magic Material</span>>>.</bullet><bullet>Город приносит {commandPoints}<recruitmentpoints></recruitmentpoints> при <<pre,c:<span style=\"\">Request Military Aid</span>>>.</bullet><bullet>Город можно <span style=\"\">интегрировать</span> <influence></influence>.</bullet></bulletlist>"
   },
   "GLOBAL.HouseInfluenceConcept": {
     "name": "Благосклонность",
@@ -1068,7 +1075,7 @@
     "icon": null,
     "globalName": "GLOBAL.MutualConsulateConcept",
     "displayHtml": "Колдовская связьa{1}n{2}",
-    "description": "<span style=\"\">Leader</span> вступают в колдовскую связь, чтобы улучшить <<acc,c:<span style=\"\">Empire Relation</span>>> и получить возможность заключать новые <<acc,cm:<span style=\"\">Treaty</span>>>, повышающие дипломатический статус.<br><br>Эффект:[bulletList]<bullet>правители увидят местоположение <<gen,cm:<span style=\"\">Throne City</span>>> друг друга;</bullet><bullet>правители могут <span style=\"\">призывать друг друга на помощь в войне</span>.[/bulletList]<br><br>Ведёт к:<bulletlist></bullet><bullet><<c:<span style=\"\">Defensive Pact</span>>>;</bullet><bullet><<c:<span style=\"\">Open Borders</span>>>;</bullet><bullet><<c:<span style=\"\">Allow Claimed Sectors</span>>>;</bullet><bullet><<c:<span style=\"\">Teleporter Pact</span>>></bullet></bulletlist>"
+    "description": "<span style=\"\">Leader</span> вступают в колдовскую связь, чтобы улучшить <<acc,c:<span style=\"\">Empire Relation</span>>> и получить возможность заключать новые <<acc,cm:<span style=\"\">Treaty</span>>>, повышающие дипломатический статус.<br><br>Эффекты:[bulletList]<bullet>правители увидят местоположение <<gen,cm:<span style=\"\">Throne City</span>>> друг друга;</bullet><bullet>правители могут <span style=\"\">призывать друг друга на помощь в войне</span>.[/bulletList]<br><br>Ведёт к:<bulletlist></bullet><bullet><<c:<span style=\"\">Defensive Pact</span>>>;</bullet><bullet><<c:<span style=\"\">Open Borders</span>>>;</bullet><bullet><<c:<span style=\"\">Allow Claimed Sectors</span>>>;</bullet><bullet><<c:<span style=\"\">Teleporter Pact</span>>>;</bullet><bullet><<c:<span style=\"\">Trade Agreement</span>>>.</bullet></bulletlist>"
   },
   "GLOBAL.DefensivePactConcept": {
     "name": "Оборонительный пактa{1}n{2}",
@@ -1076,6 +1083,13 @@
     "globalName": "GLOBAL.DefensivePactConcept",
     "displayHtml": "Оборонительный пактa{1}n{2}",
     "description": "Дипломатический статус, при котором <<cm:<span style=\"\">Leader</span>>> обязуются помогать друг другу при ведении оборонительных войн.<br><br>Когда одному из правителей объявляют войну, он автоматически отправляет другой стороне <<acc,c:<span style=\"\">Call To War</span>>>, чтобы получить помощь другого правителя в боевых действиях. Отозвавшись на призыв, другая сторона получит дополнительный <<c:<span style=\"\">Casus Belli</span>>>, который можно использовать против неприятеля. Участник оборонительного пакта может отказаться от участия в войне, однако это приведёт к разрыву пакта.<br><br>Ведёт к:<bulletlist><bullet><<c:<span style=\"\">D S Alliance</span>>>;</bullet><bullet><<c:<span style=\"\">Share Vision</span>>></bullet></bulletlist>"
+  },
+  "GLOBAL.TradeAgreementConcept": {
+    "name": "Соглашение о свободной торговлеn{1}x{2}x{3}x{4}",
+    "icon": null,
+    "globalName": "GLOBAL.TradeAgreementConcept",
+    "displayHtml": "Соглашение о свободной торговлеn{1}x{2}x{3}x{4}",
+    "description": "Оба <<gen,cm:<span style=\"\">Leader</span>>> получают право создавать <<acc,cm:<span style=\"\">Trade Route</span>>> между <<ins,cm:<span style=\"\">City</span>>> друг друга."
   },
   "GLOBAL.OpenBordersConcept": {
     "name": "Договор об открытых границахn{1}x{2}x{3}x{4}",
@@ -1194,7 +1208,7 @@
     "icon": null,
     "globalName": "GLOBAL.DeclSupremacyConcept",
     "displayHtml": "Провозглашение обязательстваn{1}x{2}",
-    "description": "Используйте одолжения, чтобы сдерживать другого <<acc,c:<span style=\"\">Leader</span>>>:<bulletlist><bullet>Вы получите модификатор к <span style=\"\">отношениям</span> с другим правителем, из-за которого они будут постепенно улучшаться, пока не достигнут {RelationValue}<goodrelation></goodrelation>.</bullet><bullet>Пока провозглашение в силе, недовольство другого правителя, вызванное <<ins,cm:<span style=\"\">Casus Belli</span>>> с вами, не сможет влиять на отношения.</bullet><bullet>Поддержание объявленного провозглашения стоит {cost} за <<acc,c:<span style=\"\">Turn</span>>>, плюс {costScale} за каждое последующее провозглашение.</bullet><bullet>Провозглашения объявляются и приостанавливаются через <<acc,cm:<span style=\"\">Pronouncements</span>>>.</bullet>"
+    "description": "Используйте одолжения, чтобы сдерживать другого <<acc,c:<span style=\"\">Leader</span>>>:<bulletlist><bullet>Вы получите модификатор к <span style=\"\">отношениям</span> с другим правителем, из-за которого они будут постепенно улучшаться, пока не достигнут {RelationValue}<goodrelation></goodrelation>.</bullet><bullet>Пока провозглашение в силе, недовольство другого правителя, вызванное <<ins,cm:<span style=\"\">Casus Belli</span>>> с вами, не сможет влиять на отношения.</bullet><bullet>Поддержание объявленного провозглашения стоит {cost} за <<acc,c:<span style=\"\">Turn</span>>>, плюс {costScale} за каждое последующее провозглашение.</bullet><bullet>Провозглашения объявляются и приостанавливаются через <<acc,cm:<span style=\"\">Pronouncements</span>>>.</bullet></bulletlist>"
   },
   "GLOBAL.GainingWarspoilsConcept": {
     "name": "Получение добычиn{1}x{2}",
@@ -1434,6 +1448,55 @@
     "displayHtml": "Раскрытый островa{1}n{2}",
     "description": "Раскрытый остров — это созданный вручную регион со следующими особенностями:<bulletlist><bullet>Сюда можно попасть только с помощью портала на поверхности или в подземелье.</bullet><bullet>Эти порталы доступны с самого начала игры и никем не охраняются.</bullet><bullet>Здесь находится <<c:<span style=\"\">S T R U C T U R E S. B R E A C H E D_ A R C A N U M</span>>> и ряд других ценных <<gen,cm:<span style=\"\">Location</span>>></bullet></bulletlist>"
   },
+  "GLOBAL.PirateDwellingConcept": {
+    "name": "Вольный капитанa{1}ln{2}",
+    "icon": null,
+    "globalName": "GLOBAL.PirateDwellingConcept",
+    "displayHtml": "Вольный капитанa{1}ln{2}",
+    "description": "Вольные капитаны — харизматичные вожаки пиратских <<gen,cm:<span style=\"\">Dwelling</span>>>, где самые отпетые головорезы сбиваются в банды, чтобы сеять ужас на просторах морей.<br><bulletlist><bullet>В мире может существовать ограниченное количество вольных капитанов ({IntMaxDwellings}).</bullet><bullet>У вольных капитанов разные характеры. Они могут быть <personalitypirateavaricious></personalitypirateavaricious> <span style=\"\">алчными</span>, <personalitypiratebloodthirsty></personalitypiratebloodthirsty> <span style=\"\">кровожадными</span> или <personalitypirateheroic></personalitypirateheroic> <span style=\"\">храбрыми</span>.</bullet><bullet>Вы можете выковать узы с вольными капитанами, подчиняясь их требованиям или выполняя их задания.</bullet><bullet>Узы с вольным капитаном позволят начать торговлю: они могут предоставить вам <<acc,cm:<span style=\"\">Tome</span>>>, пиратских <<acc,cm:<span style=\"\">Unit</span>>> и <<acc,cm:<span style=\"\">Spell</span>>> или <<acc,c:<span style=\"\">Equipment</span>>>.</bullet><bullet>Вольные капитаны устраивают <<acc,cm:<span style=\"\">Pirate Raid</span>>> во время <<gen,c:<span style=\"\">Pirate Dwelling War</span>>> или когда другая <span style=\"\">Empire</span> щедро заплатит им — тогда они не гнушаются нападать даже на союзников.</bullet><bullet>После захвата <<cm:<span style=\"\">Dwelling</span>>> вольных пиратов исчезают, а победитель забирает часть награбленных сокровищ и когда-то выставленных на продажу предметов.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingTruceConcept": {
+    "name": "Перемирие",
+    "icon": "rs_neutral",
+    "globalName": "GLOBAL.PirateDwellingTruceConcept",
+    "displayHtml": "Перемирие",
+    "description": "<span style=\"\">Pirate Dwelling</span> терпит ваше присутствие.<br><br>Считается состоянием <<gen,c:<span style=\"\">Independent City Neutral</span>>>.<br><br><<acc,m:<span style=\"\">Pirate Dwelling</span>>> не беспокоят претензии на провинции.<br><br><<dat,m:<span style=\"\">Pirate Dwelling</span>>> нельзя передать <<acc,c:<span style=\"\">Diplomatic Token</span>>>. Чтобы повысить дипломатический статус и в конечном счёте добиться с ними <<acc,c:<span style=\"\">Pirate Dwelling Life Bond</span>>>, нужно выполнять их задания и требования.<br><br>Каждый ход есть небольшая вероятность, что <<c:<span style=\"\">Pirate Dwelling</span>>> нарушит перемирие и объявит вам <<acc,c:<span style=\"\">Pirate Dwelling War</span>>>.<br><br>Другие правители могут подкупить <<acc,mc:<span style=\"\">Pirate Dwelling</span>>> и оплатить <<acc,c:<span style=\"\">Pirate Raid</span>>> на вас."
+  },
+  "GLOBAL.PirateDwellingWarConcept": {
+    "name": "Война",
+    "icon": "rs_war",
+    "globalName": "GLOBAL.PirateDwellingWarConcept",
+    "displayHtml": "Война",
+    "description": "Когда вы находитесь в состоянии <rs_war></rs_war> войны с <<ins,c:<span style=\"\">Pirate Dwelling</span>>>, ваши <<cm:<span style=\"\">Army</span>>> могут вступать в <<acc,cm:<span style=\"\">Combat</span>>> с войсками неприятеля и нападать на его <<acc,cm:<span style=\"\">City</span>>>.<br><br>Во время войны <<mс:<span style=\"\">Pirate Dwelling</span>>> периодически устраивают <<acc,mc:<span style=\"\">Pirate Raid</span>>> на противника.<br><br>Война завершается либо окончательным поражением одной из сторон, либо заключением мира."
+  },
+  "GLOBAL.PirateRaidConcept": {
+    "name": "Пиратский набегa{1}n{2}",
+    "icon": "pirateRaid",
+    "globalName": "GLOBAL.PirateRaidConcept",
+    "displayHtml": "Пиратский набегa{1}n{2}",
+    "description": "Пиратские набеги — это нападения <<gen,mc:<span style=\"\">Pirate Dwelling</span>>> на <<acc,c:<span style=\"\">Empire</span>>> для разграбления <<gen,mc:<span style=\"\">Trade Route</span>>> и <<gen,mc:<span style=\"\">Province</span>>>.<br><bulletlist><bullet>Пираты идут в набег под черным флагом, не признавая дипломатии.</bullet><bullet>Набег заканчивается, когда пираты успешно ограбят определенное количество целей ({IntRaidGoal}).</bullet><bullet><span style=\"\">Empire</span> могут оплачивать <<dat:<span style=\"\">Pirate Dwelling</span>>> организацию набегов:<bulletlist></bullet><bullet>По окончании грабежа они получают часть добычи, в том числе навыки, <span style=\"\">изученные</span> ограбленной <<ins,c:<span style=\"\">Empire</span>>>.</bullet><bullet>Если набег отбит, защитившийся <<c:<span style=\"\">Leader</span>>> может выяснить, кто оплатил нападение, и получить <<acc,c:<span style=\"\">Casus Belli</span>>>.</bullet></bulletlist><bullet>Атакованный <<c:<span style=\"\">Leader</span>>> может заплатить налетчикам <gold></gold> за прекращение атаки, когда выставляет против них свою <<acc,c:<span style=\"\">Army</span>>>.</bullet><bullet>Один <<c:<span style=\"\">Pirate Dwelling</span>>> может одновременно устраивать несколько набегов.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingAvariciousPirateConcept": {
+    "name": "Алчный пиратa{1}n{2}",
+    "icon": "personalityPirateAvaricious",
+    "globalName": "GLOBAL.PirateDwellingAvariciousPirateConcept",
+    "displayHtml": "Алчный пиратa{1}n{2}",
+    "description": "Алчные пираты думают только о выгоде.<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span> нарушает перемирие только с правителями, у которых есть много <<gen,c:<span style=\"\">Gold</span>>>. Чем богаче правитель, тем вероятнее, что это случится.</bullet><bullet>Правители, у которых много <<gen,c:<span style=\"\">Gold</span>>>, <<dat,mc:<span style=\"\">Pirate Dwelling</span>>> нравятся, а те, у кого его мало, не могут рассчитывать на их благосклонность.</bullet><bullet>От личных качеств зависят доступные варианты торговли с поселением, задания и уникальные <<mc:<span style=\"\">Artifact</span>>>, которые можно получить по достижении <<gen:<span style=\"\">Pirate Dwelling Life Bond</span>>>.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingBloodthirstyPirateConcept": {
+    "name": "Кровожадный пиратa{1}n{2}",
+    "icon": "personalityPirateBloodthirsty",
+    "globalName": "GLOBAL.PirateDwellingBloodthirstyPirateConcept",
+    "displayHtml": "Кровожадный пиратa{1}n{2}",
+    "description": "Кровожадные пираты несут в мир страдания и разрушения.<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span> с большой вероятностью нарушит перемирие и объявит войну.</bullet><bullet>Правители, который много воюют, <<dat,mc:<span style=\"\">Pirate Dwelling</span>>> нравятся, а те, кто предпочитает обороняться и заключать союзы, не могут рассчитывать на их благосклонность.</bullet><bullet>От личных качеств зависят доступные варианты торговли с поселением, задания и уникальные <<mc:<span style=\"\">Artifact</span>>>, которые можно получить по достижении <<gen:<span style=\"\">Pirate Dwelling Life Bond</span>>>.</bullet></bulletlist>"
+  },
+  "GLOBAL.PirateDwellingHeroicPirateConcept": {
+    "name": "Героический пиратa{1}n{2}",
+    "icon": "personalityPirateHeroic",
+    "globalName": "GLOBAL.PirateDwellingHeroicPirateConcept",
+    "displayHtml": "Героический пиратa{1}n{2}",
+    "description": "Героические пираты нарушают закон ради помощи бедным и обездоленным.<br><bulletlist><bullet><span style=\"\">Pirate Dwelling</span> нарушает перемирие только со злыми правителями. Чем хуже <<c:<span style=\"\">Alignment</span>>> правителя, тем вероятнее это произойдет.</bullet><bullet>Правители с хорошим <<ins,c:<span style=\"\">Alignment</span>>> <<dat,mc:<span style=\"\">Pirate Dwelling</span>>> нравятся, а злодеи не могут рассчитывать на их благосклонность.</bullet><bullet>От личных качеств зависят доступные варианты торговли с поселением, задания и уникальные <<mc:<span style=\"\">Artifact</span>>>, которые можно получить по достижении <<gen:<span style=\"\">Pirate Dwelling Life Bond</span>>>.</bullet></bulletlist>"
+  },
   "GLOBAL.BloodDrainConcept": {
     "name": "Кровосос",
     "icon": null,
@@ -1453,7 +1516,7 @@
     "icon": null,
     "globalName": "GLOBAL.SunlessConcept",
     "displayHtml": "Вечная ночьa{1}n{2}",
-    "description": "<span style=\"\">Province Feature</span><br><br>В отсутствие солнечного света здесь буйным цветом разрастаются покрытые острыми шипами побеги алых роз.<br><bulletlist><bullet><span style=\"\">City</span>, присоединивший эту <<acc,c:<span style=\"\">Province</span>>>, получает {stabilitypenalty} к <happiness></happiness> <span style=\"\">стабильности</span>.</bullet><bullet><span style=\"\">Unit</span> восстанавливают {regen} ед. <<gen,c:<span style=\"\">Hit Point</span>>> за <<acc,c:<span style=\"\">Turn</span>>> на <<pre,c:<span style=\"\">World Map</span>>>.</bullet><bullet>При лечении в <<pre,c:<span style=\"\">Combat</span>>> <<cm:<span style=\"\">Unit</span>>> получают только {percentage} от <<gen,c:<span style=\"\">Temporary Hit Point</span>>>.</bullet><bullet>Эффект не действует на воинов и города, обладающие особенностью «<span style=\"\">P R O P E R T I E S. H E A R T L E S S</span>» или принадлежащие империи <<gen,c:<span style=\"\">Vampire Lord</span>>>.</bullet></bulletlist>"
+    "description": "<span style=\"\">Province Feature</span><br><br>В отсутствие солнечного света здесь буйным цветом разрастаются покрытые острыми шипами побеги алых роз.<br><bulletlist><bullet><span style=\"\">City</span>, присоединивший эту <<acc,c:<span style=\"\">Province</span>>>, получает {stabilitypenalty} к стабильности.</bullet><bullet><span style=\"\">Unit</span> восстанавливают {regen} ед. <<gen,c:<span style=\"\">Hit Point</span>>> за <<acc,c:<span style=\"\">Turn</span>>> на <<pre,c:<span style=\"\">World Map</span>>>.</bullet><bullet>При лечении в <<pre,c:<span style=\"\">Combat</span>>> <<cm:<span style=\"\">Unit</span>>> получают на {percentage} меньше <<gen,c:<span style=\"\">Temporary Hit Point</span>>>.</bullet><bullet>Эффект не действует на воинов и города, обладающие особенностью «<span style=\"\">P R O P E R T I E S. H E A R T L E S S</span>» или принадлежащие империи <<gen,c:<span style=\"\">Vampire Lord</span>>>.</bullet></bulletlist>"
   },
   "GLOBAL.VampireLordConcept": {
     "name": "Старший вампирla{1}n{2}",
@@ -1523,7 +1586,7 @@
     "icon": "minorcity",
     "globalName": "GLOBAL.DwellingConcept",
     "displayHtml": "Поселение",
-    "description": "<minorcity></minorcity> Поселения — это независимые <<cm:<span style=\"\">City</span>>>, которые населяют только определённые <<cm:<span style=\"\">Unit</span>>>.<br><br>Как и <<cm:<span style=\"\">Independent City</span>>>, они:<bulletlist><bullet>не принадлежат какой-либо <<dat,c:<span style=\"\">Empire</span>>>;</bullet><bullet>имеют своего <span style=\"\">правителя</span>;</bullet><bullet>могут строить <span style=\"\">дипломатические отношения</span>, дающие различные бонусы.</bullet></bulletlist><br><br>На поселения не действуют особенности мира и <<cm:<span style=\"\">Spell</span>>>, связанные со свободными городами."
+    "description": "<minorcity></minorcity> Поселения — это независимые <<cm:<span style=\"\">City</span>>> с особыми техниками влияния и уникальными бонусами.<br><br>Как и <<cm:<span style=\"\">Independent City</span>>>, они:<bulletlist><bullet>не принадлежат какой-либо <<dat,c:<span style=\"\">Empire</span>>>;</bullet><bullet>имеют своего <<acc,c:<span style=\"\">Free City Lord</span>>>;</bullet><bullet>могут укреплять <span style=\"\">дипломатические отношения</span>.</bullet></bulletlist><br><br>На поселения не действуют особенности мира и <<cm:<span style=\"\">Spell</span>>>, связанные со свободными городами."
   },
   "GLOBAL.EmpireRelationConcept": {
     "name": "Отношения империйn{1}x{2}",
@@ -1565,7 +1628,7 @@
     "icon": null,
     "globalName": "GLOBAL.IndependentCityTradeConcept",
     "displayHtml": "Торговля",
-    "description": "<span style=\"\">Independent City</span> могут предложить <<dat,cm:<span style=\"\">Leader</span>>>, заключившим с ними <<acc,c:<span style=\"\">Pact Of Cooperation</span>>>, несколько вариантов сделок.<br><br>Их торговые предложения сводятся к обмену ресурсами и поставкам <<gen,cm:<span style=\"\">Magic Material</span>>>, найденных в городских владениях.<br><br>Свободный город может поддерживать лишь одну сделку одновременно. Новую сделку можно заключить, только когда истечёт срок действия предыдущей."
+    "description": "<<<span style=\"\">Leader</span>>> может предложить <<dat,m:<span style=\"\">Independent City</span>>> сосредоточиться на определённом ресурсе, если заключит с ними хотя бы <<acc,c:<span style=\"\">Pact Of Cooperation</span>>>.<br><br>За отдельную плату они могут поставлять <<acc,cm:<span style=\"\">Magic Material</span>>>, найденные в городских владениях.<br><br>Свободный город может поддерживать лишь одну сделку одновременно. Новую сделку можно заключить, только когда истечёт срок действия предыдущей."
   },
   "GLOBAL.IndependentCityWarConcept": {
     "name": "Война",
@@ -2209,7 +2272,14 @@
     "icon": null,
     "globalName": "GLOBAL.ShadraiFactionLoreConcept",
     "displayHtml": "Шад′райl",
-    "description": "Группа амбициозных <<gen:<span style=\"\">Godir Lore</span>>>, объединившаяся в непостоянный альянс в стремлении добиться власти над <<ins:<span style=\"\">Pantheon Lore</span>>> и всем <<ins:<span style=\"\">Astral Sea Lore</span>>>. Шад′рай убеждены, что никакие знания не должны быть под запретом, они постоянно плетут интриги и регулярно вторгаются в миры, которым не посчастливилось привлечь их интерес. В силу своей склонности к хаосу они часто конфликтуют с <<ins:<span style=\"\">Covenant Faction Lore</span>>>."
+    "description": "Группа амбициозных <<gen:<span style=\"\">Godir Lore</span>>>, объединившаяся в непостоянный альянс в стремлении добиться власти над <<ins,c:<span style=\"\">Pantheon Lore</span>>> и всем <<ins:<span style=\"\">Astral Sea Lore</span>>>. Шад′рай убеждены, что никакие знания не должны быть под запретом: они постоянно плетут интриги и регулярно вторгаются в миры, которым не посчастливилось привлечь их интерес. В силу своей склонности к хаосу они часто конфликтуют с <<ins:<span style=\"\">Covenant Faction Lore</span>>>."
+  },
+  "GLOBAL.SilverSeasLoreConcept": {
+    "name": "Серебряные моряna{1}n{2}",
+    "icon": null,
+    "globalName": "GLOBAL.SilverSeasLoreConcept",
+    "displayHtml": "Серебряные моряna{1}n{2}",
+    "description": "Нет такого морехода, кто бы ещё сызмала не слышал про Серебряные моря — из старых песен о дивном месте среди <<gen,c:<span style=\"\">Worlds Within Lore</span>>>, в котором сходятся <span style=\"\">астральные потоки</span>. Будто бы воды там из чистого серебра, а в волнах средь волшебных рифов снуют рыбы с драгоценной чешуёй под убаюкивающее пение <<gen,cm:<span style=\"\">Maer Lore</span>>>.<br><br>Где сокрыт этот затерянный рай, остаётся только гадать: быть может, на просторах <<gen:<span style=\"\">Tidolon Lore</span>>>, или в другом неведомом краю? Не все моряки верят в легенды о Серебряных морях, а иные приговаривают: хоть целую вечность их ищи — не найдёшь."
   },
   "GLOBAL.SoulsLoreConcept": {
     "name": "Душиl",
@@ -2484,6 +2554,13 @@
     "displayHtml": "Рыбный промыселa{1}n{2}",
     "description": "Рыбный промысел — это базовое <<c:<span style=\"\">Province Improvement</span>>>, которое обеспечивает следующие преимущества:<bulletlist><bullet>увеличивает приток <<gen,c:<span style=\"\">Food</span>>>.</bullet></bulletlist>"
   },
+  "GLOBAL.ForeignCityConcept": {
+    "name": "Чужеземный городa{1}n{2}",
+    "icon": null,
+    "globalName": "GLOBAL.ForeignCityConcept",
+    "displayHtml": "Чужеземный городa{1}n{2}",
+    "description": "<span style=\"\">City</span>, принадлежащий другой <<dat,c:<span style=\"\">Empire</span>>>."
+  },
   "GLOBAL.ForesterConcept": {
     "name": "Лесопилка",
     "icon": "forester",
@@ -2626,7 +2703,7 @@
   },
   "GLOBAL.ArtifactConcept": {
     "name": "Артефакт",
-    "icon": null,
+    "icon": "artifact",
     "globalName": "GLOBAL.ArtifactConcept",
     "displayHtml": "Артефакт",
     "description": "Артефакты — это уникальные предметы, принадлежащие <<dat,c:<span style=\"\">Empire</span>>> <<gen,c:<span style=\"\">Player</span>>>. <span style=\"\">Empire</span>, которая ими владеет, получает уникальные бонусы.<br><bulletlist><bullet>Многие артефакты являются частью коллекции. Игрок, собравший полную коллекцию, вызывает особое событие коллекции.</bullet><bullet><span style=\"\">Player</span> могут обмениваться артефактами друг с другом.</bullet><bullet>В случае поражения игрока все его артефакты переходят к тому, кто его победил.</bullet></bulletlist>"
@@ -2812,6 +2889,20 @@
     "globalName": "GLOBAL.SpeedMarchConcept",
     "displayHtml": "Ускоренный маршa{1}n{2}",
     "description": "С помощью ускоренного марша ваши воины могут преодолеть на <<pre,c:<span style=\"\">World Map</span>>> большее расстояние, чем обычно возможно за один <<c:<span style=\"\">Turn</span>>>.<br><br>При ускоренном марше <<c:<span style=\"\">Move Point</span>>> воинов увеличиваются на {Movepointgain}%, при этом они теряют {Healthloss}% от текущего <<gen,c:<span style=\"\">Hit Point</span>>> и на {ExhaustedTurns} <turn></turn> х. получают эффект «<span style=\"\">P R O P E R T I E S. E X H A U S T E D</span>» На ускоренный марш расходуется {Manacost} ед. <<gen,c:<span style=\"\">Mana</span>>> за каждого воина в армии.<br><br>Возможность использовать ускоренный марш открывается по мере <<gen,c:<span style=\"\">Empire Development</span>>>."
+  },
+  "GLOBAL.TradeRouteConcept": {
+    "name": "Торговый путьa{1}n{2}",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteConcept",
+    "displayHtml": "Торговый путьa{1}n{2}",
+    "description": "Связующий путь между <<ins,c:<span style=\"\">City</span>>> и форпостом либо другим <<ins,c:<span style=\"\">City</span>>>. Приносит городу, из которого он проложен, определённый <<c:<span style=\"\">Trade Route Income</span>>> в зависимости от места назначения.<br><br>Для учреждения торговых путей расходуются очки <<gen,c:<span style=\"\">Unit Production</span>>> (стоимость растёт в зависимости от типа и удалённости конечной точки маршрута).<br><br>Одновременно каждый город может поддерживать лишь несколько торговых путей, однако их число можно увеличить за счёт <<gen,c:<span style=\"\">City Structure</span>>>."
+  },
+  "GLOBAL.TradeRouteIncomeConcept": {
+    "name": "Доход от торгового путиn{1}x{2}x{3}x{4}",
+    "icon": null,
+    "globalName": "GLOBAL.TradeRouteIncomeConcept",
+    "displayHtml": "Доход от торгового путиn{1}x{2}x{3}x{4}",
+    "description": "Доход <<gen:<span style=\"\">City</span>>> от торгового пути зависит от цели:<bulletlist><bullet><span style=\"\">Outpost</span> — весь доход с владений форпоста.</bullet><bullet><span style=\"\">Independent City</span> — процент от общего дохода города, увеличивающийся по мере улучшения <<gen,c:<span style=\"\">Pv E Dipl State</span>>>.</bullet><bullet><span style=\"\">Foreign City</span> — значительная доля доходов города (<<c:<span style=\"\">Gold</span>>> и <<c:<span style=\"\">Mana</span>>>).</bullet></bulletlist>"
   },
   "GLOBAL.CryptConcept": {
     "name": "Склеп",
@@ -3486,11 +3577,11 @@
     "description": "<span style=\"\">Province Feature</span>.<br><br>Заболоченные низины. Здесь можно построить <<acc,c:<span style=\"\">Farm</span>>>. Фракции, не адаптированные к болотам, получают штраф в {fooddebuff} к производству <<gen,c:<span style=\"\">Food</span>>> в этой провинции."
   },
   "GLOBAL.UndergroundWaterConcept": {
-    "name": "Вода",
+    "name": "Подземные водыfa{1}n{2}",
     "icon": null,
     "globalName": "GLOBAL.UndergroundWaterConcept",
-    "displayHtml": "Вода",
-    "description": "<span style=\"\">Province Feature</span>.<br><br>Подземное водное пространство. Здесь можно построить водную <<acc,c:<span style=\"\">Farm</span>>>."
+    "displayHtml": "Подземные водыfa{1}n{2}",
+    "description": "Водная <<c:<span style=\"\">Province Feature</span>>>.<br><br>Подземное водное пространство. Здесь можно построить водную <<acc,c:<span style=\"\">Farm</span>>>."
   },
   "GLOBAL.UninhabitableConcept": {
     "name": "Необитаемые землиa{1}n{2}",
@@ -3511,7 +3602,7 @@
     "icon": null,
     "globalName": "GLOBAL.MangroveForestConcept",
     "displayHtml": "Мангровый лесa{1}n{2}",
-    "description": "<span style=\"\">Province Feature</span>.<br><br>Корни деревьев в этом лесу погружены в воду. Здесь можно построить водную <<acc,c:<span style=\"\">Forester</span>>>."
+    "description": "Водная <<c:<span style=\"\">Province Feature</span>>>.<br><br>Корни деревьев в этом лесу погружены в воду. Здесь можно построить водную <<acc,c:<span style=\"\">Forester</span>>>."
   },
   "GLOBAL.VoidConcept": {
     "name": "Бездна",
@@ -3554,5 +3645,12 @@
     "globalName": "GLOBAL.DrainingConcept",
     "displayHtml": "Иссушение",
     "description": "К воинам, которые передвигаются по этой клетке или заканчивают на ней ход, на {turn} <turn></turn> <span style=\"\">х.</span> применяется эффект «<span style=\"\">P R O P E R T I E S. D I S R U P T I O N_ T O O L T I P_ P R O P E R T Y</span>». Если это воин <span style=\"\">магического происхождения</span>, к нему также на {turn2} <turn></turn> <span style=\"\">х.</span> применяется эффект «<span style=\"\">P R O P E R T I E S. D E C A Y I N G</span>»."
+  },
+  "GLOBAL.ExplosiveConcept": {
+    "name": "Взрывается",
+    "icon": null,
+    "globalName": "GLOBAL.ExplosiveConcept",
+    "displayHtml": "Взрывается",
+    "description": "При уничтожении это препятствие взрывается, нанося урон воинам по соседству."
   }
 }
