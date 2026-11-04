@@ -212,7 +212,7 @@ function createStatusEffectTooltip(effectData, handlerType = "status") {
     let effectplusColor = '<span style="color:white; text-decoration:underline">' + effect + "</span>";
 
     span.innerHTML = effect.replace(effect, image.outerHTML + effectplusColor + "<br>" + tag);
-    addTooltipListeners(span, effectData.description, handlerType);
+    addTooltipListeners(span, effectData.description);
     return span.outerHTML;
 }
 
@@ -236,11 +236,14 @@ function createStatusEffectTooltip(effectData, handlerType = "status") {
 function HandleExtraTooltips(specificDiv) {
     const root = specificDiv ?? document;
 
-    root.querySelectorAll(".statusEffectHandler").forEach((el) => {
-        let spantest = document.createElement("span");
-        spantest.innerHTML = lookupStatusEffect(el.innerText);
-        addTooltipListeners(el, spantest, "something");
-    });
+   root.querySelectorAll(".statusEffectHandler").forEach((el) => {
+    const name = el.innerText.trim();
+    const html = lookupStatusEffect(name);
+    if (html === name) return;                 // nothing to show
+    const spantest = document.createElement("span");
+    spantest.innerHTML = html;
+    addTooltipListeners(el, spantest);
+});
 
     root.querySelectorAll(".conceptTooltipHandler").forEach((el) => {
         const globalName = el.getAttribute("data-global");
@@ -255,7 +258,7 @@ function HandleExtraTooltips(specificDiv) {
 
         // Attach to the visible underlined sibling, not the hidden handler itself
         const visibleSibling = el.previousElementSibling;
-        if (visibleSibling) addTooltipListeners(visibleSibling, tooltipEl, "concept");
+        if (visibleSibling) addTooltipListeners(visibleSibling, tooltipEl);
     });
 
     //// ← new: concept tooltips
