@@ -910,8 +910,8 @@ function addUnitTypeIcon(a, holder, origin) {
     spa = document.createElement("SPAN");
     imag.setAttribute("src", "/aow4db/Icons/UnitIcons/" + iconsrc + ".png");
     imag.setAttribute("onerror", "this.setAttribute('src','" + errorImage + "')");
-    imag.setAttribute("width", "40");
-    imag.setAttribute("height", "40");
+    imag.setAttribute("width", "35");
+    imag.setAttribute("height", "35");
 
     spa.innerHTML =
         '<img style="float:left; height:30px; width:30px" src="/aow4db/Icons/UnitIcons/' +
@@ -2902,20 +2902,16 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
         let critTooltip = unitCard.querySelector("div#crit_tt");
         let crit = unitCard.querySelector("p#crit");
         crit.innerHTML = unitEN.combat_speed;
-        const img = document.createElement("img");
-        img.setAttribute("src", "/aow4db/Icons/Text/combat_speed.png");
-        img.className = "unit_stat_icon";
-        img.style.width = "25px";
-        critTooltip.innerHTML = "";
-        critTooltip.appendChild(img);
+       
 
         critspan.innerHTML =
             '<span style="color:burlywood;text-transform: uppercase;">Combat Speed</span><br><span style="font-size: 14px;">' +
             "How many hexes in combat this unit can move" +
             "</span>";
+            addTooltipListeners(critTooltip, critspan);
     }
 
-    addTooltipListeners(critTooltip, critspan);
+    
 
     const damageRedText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
 
@@ -2933,7 +2929,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     mp = unitCard.querySelector("p#mp");
     mp.innerHTML = unitEN.mp;
 
-    tier = unitCard.querySelector("p#tier");
+   
     //
 
     prodcost = unitCard.querySelector("p#productioncost");
@@ -3054,13 +3050,45 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
             additionalSpirit = ReturnWeaknessOrResistanceNumber(unitEN.resistances[z].slug);
         }
     }
-
+ tier = unitCard.querySelector("p#tier");
     const tierText = findBy(jsonAllFromPOLocalized, "id", "INTERFACE@TEXT");
-    tier.innerHTML = tierText.tier + " " + romanize(unitEN.tier) + ": " + unitEN.upkeep;
+    tier.innerHTML = "<hyperlink>" + tierText.tier + "</hyperlink>" + " "  + romanize(unitEN.tier)  ;
+
+    
+
+   
+
+   
+    const tierTextExtra = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@UNIT_TIER");
+ 
+     let tierspan = document.createElement("span");
+    tierspan.innerHTML =
+        '<span style="color:burlywood;text-transform: uppercase;">' + tierTextExtra.name +'</span><br>' +
+       
+        '</p><span style="font-size: 14px;">' +
+        AddTagIconsForStatusEffects(tierTextExtra.description) +
+        "</span>";
+  //  let mpTooltip = unitCard.querySelector("div#mp_tt");
+
+     addTooltipListeners(tier, tierspan);
+ const upkeep = unitCard.querySelector("p#upkeep");
+       let upkeepspan = document.createElement("span");
+    upkeepspan.innerHTML =
+        '<span style="color:burlywood;text-transform: uppercase;">' + tierText.unit_upkeep +'</span><br>' +
+       
+        '</p><span style="font-size: 14px;">' +
+        AddTagIconsForStatusEffects(tierText.unit_upkeep_description) +
+        "</span>";
+  upkeep.innerHTML =  unitEN.upkeep;
+      addTooltipListeners(upkeep, upkeepspan);
+    
+  
+
+  
 
     let summonInfo = canBeSummoned(unitEN.id);
     if (summonInfo == true) {
-        tier.innerHTML += "<br> Summoned: " + getSummonedUpkeep(unitEN.tier, "");
+        upkeep.innerHTML += "<br> <caststrategic></caststrategic>: " + getSummonedUpkeep(unitEN.tier, "");
     }
 
     let critChance = 0;
@@ -3069,11 +3097,11 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     for (let y = 0; y < unitEN.secondary_passives.length; y++) {
         if (unitEN.secondary_passives[y].icon == "findMgicOrinIcon") {
             if (lowUpkeep === true) {
-                tier.innerHTML = "Tier " + romanize(unitEN.tier) + ": " + getSummonedUpkeep(unitEN.tier, 0.75);
+                upkeep.innerHTML = getSummonedUpkeep(unitEN.tier, 0.75);
             } else if (faithfulUpkeep === true) {
-                tier.innerHTML = "Tier " + romanize(unitEN.tier) + ": " + getSummonedUpkeep(unitEN.tier, 0.9);
+                upkeep.innerHTML = getSummonedUpkeep(unitEN.tier, 0.9);
             } else {
-                tier.innerHTML = "Tier " + romanize(unitEN.tier) + ": " + getSummonedUpkeep(unitEN.tier, "");
+                upkeep.innerHTML =  getSummonedUpkeep(unitEN.tier, "");
             }
 
             if (summonInfo.length > 0) {
