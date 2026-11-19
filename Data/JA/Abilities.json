@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "このユニットを戦闘中に回転させるのが難しいため：<bulletlist><bullet>移動中に回転させるたびに1ポイントが消費される。</bullet><bullet>即座にユニットを回転させることで、移動ポイントが0に減る。</bullet><bullet>このユニットは、後ろのマスに対して<hyperlink>チャンス攻撃</hyperlink><hyperlink>報復攻撃</hyperlink>をすることができない。</bullet></bulletlist>",
-  "name": "非機動性",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
@@ -18074,6 +18068,12 @@
   "name": "精霊ビーコン",
   "slug": "000003e300006519",
   "icon": "000003E30000651A"
+ },
+ {
+  "description": "このユニットを戦闘中に回転させるのが難しいため：<bulletlist><bullet>移動中に回転させるたびに1ポイントが消費される。</bullet><bullet>即座にユニットを回転させることで、移動ポイントが0に減る。</bullet><bullet>このユニットは、後ろのマスに対して<hyperlink>チャンス攻撃</hyperlink><hyperlink>報復攻撃</hyperlink>をすることができない。</bullet></bulletlist>",
+  "name": "非機動性",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "modifiers": [],
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "ヘビーメイジロックで標的の敵ユニットを撃つ。",
-  "name": "ヘビーメイジロック",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
+   }
+  ],
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "クロスボウを撃つ",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>単発</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "description": "対象の敵ユニットにヘビーメイジロックを素早く撃つ。命中率と効果が減少する。",
-  "name": "スナップショット・ヘビーメイジロック",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>飛び道具</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基本</hyperlink>"
+    "requisite": "<hyperlink>近接攻撃</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "標的の<defense></defense><hyperlink>防御力</hyperlink>の50%を無視する。",
-    "name": "貫通攻撃",
-    "count": 1
+    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
+   },
+   {
+    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
    }
   ],
-  "description": "ヘビーメイジロックで標的の敵ユニットを撃つ。",
-  "name": "ヘビーメイジロック",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "敵ユニットに長射程投射物を放つ。",
+  "name": "シュートカービン",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>飛び道具</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>単発</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "単発近接攻撃。",
+  "name": "高速突き刺し",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近接攻撃</hyperlink>"
    },
    {
     "requisite": "<hyperlink>単発</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "標的の<defense></defense><hyperlink>防御力</hyperlink>の50%を無視する。",
-    "name": "貫通攻撃",
-    "count": 1
-   }
-  ],
-  "description": "対象の敵ユニットにヘビーメイジロックを素早く撃つ。命中率と効果が減少する。",
-  "name": "スナップショット・ヘビーメイジロック",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>飛び道具</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基本</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>単発</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>照準線</hyperlink>のルールによって影響を受けている。"
-   },
-   {
-    "note": "敵の<hyperlink>支配ゾーン</hyperlink>内にいる間は使用することができない。"
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "対象の敵ユニットを攻撃する。",
-  "name": "近接攻撃",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "魔法攻撃",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>近接攻撃</hyperlink>"
+    "requisite": "<hyperlink>魔法攻撃</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基本</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "此单位在战斗中更难转向，具体表现为：<bulletlist><bullet>移动过程中的每次转向都会消耗1点移动点</bullet><bullet>原地转向会将移动点降至0</bullet><bullet>此单位无法对其背后的框格发动<hyperlink>伺机攻击</hyperlink>或<hyperlink>反击</hyperlink></bullet></bulletlist>",
-  "name": "机动受限",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "受<hyperlink>视野</hyperlink>规则影响"
@@ -18068,6 +18062,12 @@
    }
   ],
   "icon": "000003E3000064FA"
+ },
+ {
+  "description": "此单位在战斗中更难转向，具体表现为：<bulletlist><bullet>移动过程中的每次转向都会消耗1点移动点</bullet><bullet>原地转向会将移动点降至0</bullet><bullet>此单位无法对其背后的框格发动<hyperlink>伺机攻击</hyperlink>或<hyperlink>反击</hyperlink></bullet></bulletlist>",
+  "name": "机动受限",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "description": "当非召唤的非亡灵单位死亡时，召唤鬼魂技能才可以再次使用。每回合仅可触发一次",
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "向指定敌方单位发射重型锁法火枪",
-  "name": "发射重型锁法火枪",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
+   }
+  ],
+  "description": "向指定敌方单位发射实弹",
+  "name": "发射弩箭",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>单击攻击</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "受<hyperlink>视野</hyperlink>规则影响"
-   },
-   {
-    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "受<hyperlink>视野</hyperlink>规则影响"
-   },
-   {
-    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
-   }
-  ],
-  "description": "向指定敌方单位迅速发射重型锁法火枪，效果与精准都会有所降低",
-  "name": "速射重型锁法火枪",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>远程</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
+    "requisite": "<hyperlink>近战</hyperlink>"
    },
    {
     "requisite": "<hyperlink>单击攻击</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
-    "name": "穿刺",
-    "count": 1
+    "note": "受<hyperlink>视野</hyperlink>规则影响"
+   },
+   {
+    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
    }
   ],
-  "description": "向指定敌方单位发射重型锁法火枪",
-  "name": "发射重型锁法火枪",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "向指定敌方单位发射实弹",
+  "name": "卡宾枪射击",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>远程</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基础</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>单击攻击</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "单次近战攻击",
+  "name": "迅捷剑",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>近战</hyperlink>"
    },
    {
     "requisite": "<hyperlink>单击攻击</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "受<hyperlink>视野</hyperlink>规则影响"
-   },
-   {
-    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "无视目标50%的<defense></defense><hyperlink>防御</hyperlink>",
-    "name": "穿刺",
-    "count": 1
-   }
-  ],
-  "description": "向指定敌方单位迅速发射重型锁法火枪，效果与精准都会有所降低",
-  "name": "速射重型锁法火枪",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>远程</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>基础</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>单击攻击</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "受<hyperlink>视野</hyperlink>规则影响"
-   },
-   {
-    "note": "位于敌方<hyperlink>控制区</hyperlink>时无法使用"
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "攻击指定敌方单位",
-  "name": "近战攻击",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "魔法打击",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>近战</hyperlink>"
+    "requisite": "<hyperlink>魔法</hyperlink>"
    },
    {
     "requisite": "<hyperlink>基础</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

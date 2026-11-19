@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "Diese Einheit lässt sich im Kampf schwerer drehen, was bedeutet:<bulletlist><bullet>Jede Drehung beim Bewegen kostet 1 Punkt.</bullet><bullet>Die Einheit auf der Stelle zu drehen, reduziert die Bewegungspunkte auf 0.</bullet><bullet>Die Einheit kann keine <hyperlink>Gelegenheitsangriffe</hyperlink> oder <hyperlink>Gegenschläge</hyperlink> auf Feldern hinter sich ausführen.</bullet></bulletlist>",
-  "name": "begrenzte Manövrierfähigkeit",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
@@ -18068,6 +18062,12 @@
    }
   ],
   "icon": "000003E3000064FA"
+ },
+ {
+  "description": "Diese Einheit lässt sich im Kampf schwerer drehen, was bedeutet:<bulletlist><bullet>Jede Drehung beim Bewegen kostet 1 Punkt.</bullet><bullet>Die Einheit auf der Stelle zu drehen, reduziert die Bewegungspunkte auf 0.</bullet><bullet>Die Einheit kann keine <hyperlink>Gelegenheitsangriffe</hyperlink> oder <hyperlink>Gegenschläge</hyperlink> auf Feldern hinter sich ausführen.</bullet></bulletlist>",
+  "name": "begrenzte Manövrierfähigkeit",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "description": "Stirbt eine Einheit, die nicht <hyperlink>untot</hyperlink> ist, kann die Fähigkeit Geist beschwören erneut verwendet werden. Wird pro Runde nur einmal ausgelöst.",
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "Feuert mit einem schweren Bannschloss-Gewehr auf feindliche Zieleinheit.",
-  "name": "Schweres Bannschloss-Gewehr abfeuern",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
+   }
+  ],
+  "description": "Schießt Fernkampfgeschosse auf feindliche Zieleinheit.",
+  "name": "Armbrust abfeuern",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "description": "Feuert schnell mit einem schweren Bannschloss-Gewehr auf die feindliche Zieleinheit, dafür jedoch mit geringerer Treffsicherheit und Effektivität.",
-  "name": "schwerer Bannschloss-Schnappschuss",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Rakete^f</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Basis</hyperlink>"
+    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "Ignoriert 50 % der <defense></defense> <hyperlink>Verteidigung</hyperlink> des Ziels.",
-    "name": "Durchbohrend^N",
-    "count": 1
+    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
+   },
+   {
+    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
    }
   ],
-  "description": "Feuert mit einem schweren Bannschloss-Gewehr auf feindliche Zieleinheit.",
-  "name": "Schweres Bannschloss-Gewehr abfeuern",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "Schießt Fernkampfgeschosse auf feindliche Zieleinheit.",
+  "name": "Karabiner abfeuern",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Rakete^f</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Basis</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "Einzelner Nahkampfangriff.",
+  "name": "Schnellstich",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "Ignoriert 50 % der <defense></defense> <hyperlink>Verteidigung</hyperlink> des Ziels.",
-    "name": "Durchbohrend^N",
-    "count": 1
-   }
-  ],
-  "description": "Feuert schnell mit einem schweren Bannschloss-Gewehr auf die feindliche Zieleinheit, dafür jedoch mit geringerer Treffsicherheit und Effektivität.",
-  "name": "schwerer Bannschloss-Schnappschuss",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>Rakete^f</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Basis</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Einzelschlag^m</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Unterliegt den Regeln der <hyperlink>direkten Sichtlinie</hyperlink>."
-   },
-   {
-    "note": "Kann nicht innerhalb einer feindlichen <hyperlink>Kontrollzone</hyperlink> verwendet werden."
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "Greift feindliche Zieleinheit an.",
-  "name": "Nahkampfangriff",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "Magischer Schlag",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Nahkampf^m</hyperlink>"
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Basis</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

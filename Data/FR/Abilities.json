@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "Cette unité est plus difficile à tourner au combat, ce qui signifie :<bulletlist><bullet>Chaque tour fait pendant le déplacement coûte 1 point.</bullet><bullet>Tourner l'unité sur place fait chuter les points de déplacement à 0.</bullet><bullet>L'unité ne peut pas effectuer d'<hyperlink>Attaques opportunistes</hyperlink> ou de <hyperlink>Riposte</hyperlink> sur les cases derrière elle.</bullet></bulletlist>",
-  "name": "Maniabilité limitée",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
@@ -18074,6 +18068,12 @@
   "name": "Balise spirituelle",
   "slug": "000003e300006519",
   "icon": "000003E30000651A"
+ },
+ {
+  "description": "Cette unité est plus difficile à tourner au combat, ce qui signifie :<bulletlist><bullet>Chaque tour fait pendant le déplacement coûte 1 point.</bullet><bullet>Tourner l'unité sur place fait chuter les points de déplacement à 0.</bullet><bullet>L'unité ne peut pas effectuer d'<hyperlink>Attaques opportunistes</hyperlink> ou de <hyperlink>Riposte</hyperlink> sur les cases derrière elle.</bullet></bulletlist>",
+  "name": "Maniabilité limitée",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "modifiers": [],
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "Tirez à l'arcabuse lourde sur la cible ennemie.",
-  "name": "Arcabuse lourde",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
+   }
+  ],
+  "description": "Tire des projectiles à distance sur l'unité ennemie ciblée.",
+  "name": "Tir d'arbalète",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
-   },
-   {
-    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
-   },
-   {
-    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
-   }
-  ],
-  "description": "Tirez rapidement à l'arcabuse lourde sur l'unité ennemie ciblée, avec une précision et une efficacité réduites.",
-  "name": "Arcabuse lourde de tir explosif",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "Une frappe unique de mêlée.",
+  "name": "Coup de poignard rapide",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Missile</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Base</hyperlink>^f"
+    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "Ignore 50 % de la <defense></defense> <hyperlink>Défense</hyperlink> de la cible.",
-    "name": "Perforant^m",
-    "count": 1
+    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
+   },
+   {
+    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
    }
   ],
-  "description": "Tirez à l'arcabuse lourde sur la cible ennemie.",
-  "name": "Arcabuse lourde",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "Tire des projectiles à distance sur l'unité ennemie ciblée.",
+  "name": "Tir de carabine",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Missile</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
+   },
+   {
+    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "Une frappe unique de mêlée.",
+  "name": "Coup de poignard rapide",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Tir unique</hyperlink>^m"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
-   },
-   {
-    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "Ignore 50 % de la <defense></defense> <hyperlink>Défense</hyperlink> de la cible.",
-    "name": "Perforant^m",
-    "count": 1
-   }
-  ],
-  "description": "Tirez rapidement à l'arcabuse lourde sur l'unité ennemie ciblée, avec une précision et une efficacité réduites.",
-  "name": "Arcabuse lourde de tir explosif",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>Missile</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Base</hyperlink>^f"
-   },
-   {
-    "requisite": "<hyperlink>Tir unique</hyperlink>^m"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Affecté(e) par les règles de <hyperlink>Ligne de mire</hyperlink>."
-   },
-   {
-    "note": "Inutilisable dans une <hyperlink>Zone de contrôle</hyperlink> ennemie."
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "Frappe l'unité ennemie ciblée.",
-  "name": "Frappe de mêlée",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "Frappe magique",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Mêlée^f</hyperlink>"
+    "requisite": "<hyperlink>Magie^f</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Base</hyperlink>^f"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

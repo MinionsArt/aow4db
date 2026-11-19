@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "Tę jednostkę trudniej obracać podczas walki:<bulletlist><bullet>Każdy obrót wykonany w ruchu kosztuje 1 pkt. ruchu.</bullet><bullet>Obrócenie jednostki w miejscu zmniejsza liczbę punktów ruchu do 0.</bullet><bullet>Jednostka nie może wykonywać <hyperlink>ataku okazyjniego</hyperlink> ani <hyperlink>odwetu</hyperlink> na polach znajdujących się za nią.</bullet></bulletlist>",
-  "name": "Ograniczona zwrotność",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
@@ -18068,6 +18062,12 @@
    }
   ],
   "icon": "000003E3000064FA"
+ },
+ {
+  "description": "Tę jednostkę trudniej obracać podczas walki:<bulletlist><bullet>Każdy obrót wykonany w ruchu kosztuje 1 pkt. ruchu.</bullet><bullet>Obrócenie jednostki w miejscu zmniejsza liczbę punktów ruchu do 0.</bullet><bullet>Jednostka nie może wykonywać <hyperlink>ataku okazyjniego</hyperlink> ani <hyperlink>odwetu</hyperlink> na polach znajdujących się za nią.</bullet></bulletlist>",
+  "name": "Ograniczona zwrotność",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "description": "Gdy ginie nieprzywołana jednostka inna niż nieumarły, można ponownie użyć zdolności przywołanie ducha. Działa tylko raz na turę.",
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "Strzela z ciężkiego magbloka w wybraną jednostkę wroga.",
-  "name": "Strzał z ciężkiego magbloka",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
+   }
+  ],
+  "description": "Strzela pociskami dystansowymi w wybraną jednostkę wroga.",
+  "name": "Strzał z kuszy",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "description": "Szybko strzela z ciężkiego magbloka w wybraną jednostkę wroga ze zmniejszoną celnością i efektywnością.",
-  "name": "Szybki strzał z ciężkiego magbloka",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+    "requisite": "<hyperlink>Wręcz</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "Ignoruje 50% <defense></defense> <hyperlink>obrony</hyperlink> celu.",
-    "name": "Przebijanie^n",
-    "count": 1
+    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
+   },
+   {
+    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
    }
   ],
-  "description": "Strzela z ciężkiego magbloka w wybraną jednostkę wroga.",
-  "name": "Strzał z ciężkiego magbloka",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "Strzela pociskami dystansowymi w wybraną jednostkę wroga.",
+  "name": "Strzał z karabinu",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "Pojedynczy cios walki wręcz.",
+  "name": "Szybkie dźgnięcie",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Wręcz</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "Ignoruje 50% <defense></defense> <hyperlink>obrony</hyperlink> celu.",
-    "name": "Przebijanie^n",
-    "count": 1
-   }
-  ],
-  "description": "Szybko strzela z ciężkiego magbloka w wybraną jednostkę wroga ze zmniejszoną celnością i efektywnością.",
-  "name": "Szybki strzał z ciężkiego magbloka",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>Ostrzał^mn</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Pojedynczy strzał^ma{1}mn{2}</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Pod wpływem zasad <hyperlink>linii widzenia</hyperlink>."
-   },
-   {
-    "note": "Nie można użyć we wrogiej <hyperlink>strefie kontroli</hyperlink>."
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "Uderza w wybraną jednostkę wroga.",
-  "name": "Walka wręcz",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "Magiczne uderzenie",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Wręcz</hyperlink>"
+    "requisite": "<hyperlink>Magiczne</hyperlink>^p"
    },
    {
     "requisite": "<hyperlink>Podstawowy^ma</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

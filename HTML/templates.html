@@ -19,24 +19,15 @@
                 <img class="unit_preview_vid" width="400" height="516" id="vid" src="/aow4db/Icons/Text/empty.png" />
                 <div class="shadow"></div>
 
-                <div
-                    class="unit_types"
-                    id="originHolder"
+                <div class="unit_types" id="originHolder"
                     style="position: absolute; top: 150px; width: 10px; height: auto; left: -5px"></div>
 
-                <button
-                    type="button"
-                    id="enchantButton"
-                    class="collapsibleLevelup"
+                <button type="button" id="enchantButton" class="collapsibleLevelup"
                     style="position: absolute; top: -3px; left: 133px; right: 131px; max-height: 400px; width: 150px">
-                    <img
-                        src="/aow4db/Icons/Text/strategiccombatpoints.png"
-                        height="20 "
+                    <img src="/aow4db/Icons/Text/strategiccombatpoints.png" height="20 "
                         style="top: 4px; position: relative" />ENCHANT
                 </button>
-                <div
-                    class="contentLevelup"
-                    style="
+                <div class="contentLevelup" style="
                         position: absolute;
                         top: 37px;
                         left: 133px;
@@ -49,20 +40,36 @@
                     ">
                     <div id="enchantHolder"></div>
                 </div>
-                <div
-                    class="unit_types"
-                    id="activeEnchants"
+                <div class="unit_types" id="activeEnchants"
                     style="position: absolute; top: 67px; width: 80px; height: auto; right: -54px"></div>
+                <div style="
+                
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    
+            ">
+                    <p class="stat_num" id="figureCount">?</p>
+                    <div class="unit_stat_icon" id="figure_tt">
+                        <img src="/aow4db/Icons/Text/figure_count.png" class="unit_stat_icon" style="width: 25px;">
+
+                    </div>
+
+                </div>
             </div>
         </div>
         <div class="unit_name">
             <p>
-                <img
-                    id="unit_role"
-                    style="margin-right: 5px; position: relative; top: 5px; text-transform: uppercase"
-                    src="/aow4db/Icons/Text/shield_unit.png"
-                    height="25 " />
+                <img id="unit_role" style="margin-right: 5px; position: relative; top: 5px; text-transform: uppercase"
+                    src="/aow4db/Icons/Text/shield_unit.png" height="25 " />
                 <span id="unitstring"> </span>
+
             </p>
         </div>
 
@@ -71,6 +78,7 @@
                 <div style="position: relative; height: 20px; display: inline-block">
                     <p id="tier">Tier I</p>
                 </div>
+
             </div>
             <div class="unit_stats">
                 <br />
@@ -96,6 +104,8 @@
                 <div class="unit_stat_icon" id="crit_tt">
                     <img class="unit_stat_icon" src="/aow4db/Icons/Text/critical.png" width="25 " height="25 " />
                 </div>
+
+
                 <br />
             </div>
             <div class="unit_types" id="resistanceholder"></div>
@@ -108,8 +118,7 @@
 <template id="structure_card_template">
     <div class="mod_card" id="spell_card">
         <div class="structure_image_holder">
-            <div
-                style="
+            <div style="
                     display: flex;
 
                     width: auto;
@@ -128,8 +137,7 @@
                 </div>
             </div>
             <p style="position: absolute; bottom: 5px; right: 5px" id="modcost"></p>
-            <div
-                style="
+            <div style="
                     display: flex;
                     grid-template-columns: auto auto;
                     width: auto;
@@ -146,18 +154,20 @@
                     <div>
                         <p class="mod_description" id="moddescription">TestText</p>
                     </div>
-                   
-                   
+
+
                 </div>
-               <div class="preview_image_holder"> <div class="purpleshadow"></div> <img class="preview_image" id="structurepreview" src="/aow4db/Icons/Interface/empty.png" /></div>
-                
+                <div class="preview_image_holder">
+                    <div class="purpleshadow"></div> <img class="preview_image" id="structurepreview"
+                        src="/aow4db/Icons/Interface/empty.png" />
+                </div>
+
             </div>
 
             <div style="clear: both"></div>
-            <div
-                id="affectUnitTypes"
+            <div id="affectUnitTypes"
                 style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 12px"></div>
-             <div id="event" ></div>
+            <div id="event"></div>
         </div>
     </div>
 </template>
@@ -176,7 +186,7 @@
                 </div>
             </div>
             <div style="width: 100px; position: absolute; left: -120px; top: 10px">
-                
+
                 <p style="position:absolute" id="originTomeAffinities"></p>
                 <p style="position:absolute; top:80px" id="originTomeTier"></p>
                 <img id="originTomeIcon" height="100px" src="/aow4db/Icons/Interface/empty.png" />
@@ -191,8 +201,7 @@
                     <p class="mod_description" id="moddescription">Mod Description</p>
                 </div>
             </div>
-            <div
-                id="affectUnitTypes"
+            <div id="affectUnitTypes"
                 style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 15px"></div>
         </div>
     </div>
@@ -221,8 +230,7 @@
             <div style="position: relative; left: -98px; float: left">
                 <p class="mod_description" id="moddescription">Mod Description</p>
             </div>
-            <div
-                id="affectUnitTypes"
+            <div id="affectUnitTypes"
                 style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 12px"></div>
         </div>
     </div>
@@ -243,11 +251,7 @@
             </div>
             <div style="width: 150px; position: absolute; left: 428px; top: -39px">
                 <p style="font-size: 15px" id="originTome"></p>
-                <img
-                    id="originTomeIcon"
-                    src="/aow4db/Icons/Interface/empty.png"
-                    height="130px"
-                    style="
+                <img id="originTomeIcon" src="/aow4db/Icons/Interface/empty.png" height="130px" style="
                         background-image: url(/aow4db/Icons/Interface/ItemBG.png);
                         background-size: 95px;
                         background-repeat: no-repeat;
@@ -260,57 +264,59 @@
             <div style="position: relative; left: -98px; float: left">
                 <p class="mod_description" id="moddescription">Mod Description</p>
             </div>
-            <div
-                id="affectUnitTypes"
+            <div id="affectUnitTypes"
                 style="float: right; display: grid; grid-template-columns: 200px 200px; font-size: 15px"></div>
         </div>
     </div>
 </template>
 
 <template id="ability_slot_template">
-   
-   <div class = "itemAbility">
+
+    <div class="itemAbility">
         <div class="abilityHighLighter">
-            <img
-                style="
+            <img style="
                     float: left;
                     height: 50px;
                     width: 50px;
                     background-image: url(&quot;/aow4db/Icons/Interface/ability_icon_spirit.png&quot;);
                     background-repeat: no-repeat;
                     background-size: 50px;
-                " id="abilityIcon"
-                src="/aow4db/Icons/UnitIcons/000003E600000566.png" />
+                " id="abilityIcon" src="/aow4db/Icons/UnitIcons/000003E600000566.png" />
             <div style="display: flex; justify-content: space-between">
                 <div class="abilityLineSlot" style="color: #d7c297" id="abilityName">ABILITYNAME</div>
                 <div class="abilityLineSlot" id="abilityDamage">DAMAGE</div>
             </div>
-           
-           
+
+
             <div style="display: flex; justify-content: space-between">
                 <div>
-                    <div class="abilityLineSlot" id="abilityAcc">ACC<accuracy></accuracy></div>
-                    <div class="abilityLineSlot" id="abilityRange">RAN<range></range></div>
+                    <div class="abilityLineSlot" id="abilityAcc">ACC<accuracy></accuracy>
+                    </div>
+                    <div class="abilityLineSlot" id="abilityRange">RAN<range></range>
+                    </div>
                 </div>
-               
+
                 <div>
-                     
+
                     <div class="abilityLineSlot" id="abilityAction">ACTIONPOINTS
                     </div>
                 </div>
             </div>
         </div>
-        <div><hr> <div id="abilityDescription"></div><span id="abilityMods"></span></div>
-       
-        <div style="display: flex; justify-content: space-between" >
+        <div>
+            <hr>
+            <div id="abilityDescription"></div><span id="abilityMods"></span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between">
 
             <div id="abilityTags">TAGS
-                </div>
+            </div>
             <div style="margin:5px" id="abilityCooldowns"></div>
         </div>
-       
-       </div>
-        
+
+    </div>
+
 </template>
 
 <template id="tome_card_template">
@@ -321,8 +327,7 @@
             <div style="width: 150px; float: left">
                 <img class="tome_image" id="tomeicon" src="/aow4db/Icons/TomeIcons/.png" />
             </div>
-            <div
-                style="
+            <div style="
                     display: grid;
                     grid-template-columns: 500px 500px;
                     width: auto;
@@ -337,15 +342,13 @@
 
                 <div class="InitialBonus">
                     <span class="initialBonusHeaderText">INITIAL BONUS</span>
-                    <div
-                        id="initialBonusList"
-                        style="display: grid; grid-template-columns: 200px; font-size: 15px"></div>
+                    <div id="initialBonusList" style="display: grid; grid-template-columns: 200px; font-size: 15px">
+                    </div>
                 </div>
             </div>
             <div style="clear: both"></div>
         </div>
-        <div
-            id="tome_unlocks"
+        <div id="tome_unlocks"
             style="display: grid; grid-template-columns: auto auto; justify-content: center; width: auto"></div>
     </div>
 </template>

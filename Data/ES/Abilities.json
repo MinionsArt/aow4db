@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "Cuesta más girar esta unidad durante el combate, por tanto:<bulletlist><bullet>Cada turno durante el movimiento cuesta 1 punto.</bullet><bullet>Girar la unidad en el mismo sitio reduce los puntos de movimiento a 0.</bullet><bullet>La unidad no puede ejecutar <hyperlink>Ataques de oportunidad</hyperlink> ni <hyperlink>Contraataques</hyperlink> a las casillas que tiene detrás.</bullet></bulletlist>",
-  "name": "Maniobrabilidad limitada",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
@@ -18074,6 +18068,12 @@
   "name": "Almenara espiritual",
   "slug": "000003e300006519",
   "icon": "000003E30000651A"
+ },
+ {
+  "description": "Cuesta más girar esta unidad durante el combate, por tanto:<bulletlist><bullet>Cada turno durante el movimiento cuesta 1 punto.</bullet><bullet>Girar la unidad en el mismo sitio reduce los puntos de movimiento a 0.</bullet><bullet>La unidad no puede ejecutar <hyperlink>Ataques de oportunidad</hyperlink> ni <hyperlink>Contraataques</hyperlink> a las casillas que tiene detrás.</bullet></bulletlist>",
+  "name": "Maniobrabilidad limitada",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "modifiers": [],
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "Dispara a la unidad enemiga objetivo con un fusil mágico.",
-  "name": "Disparar fusil mágico",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
+   }
+  ],
+  "description": "Dispara proyectiles a distancia a la unidad objetivo enemiga.",
+  "name": "Disparar ballesta",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "description": "Dispara rápidamente a la unidad enemiga objetivo con un fusil mágico, con precisión y efectividad reducidas.",
-  "name": "Disparo rápido de fusil mágico",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Básico^m</hyperlink>"
+    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "Ignora el 50 % de la <defense></defense> <hyperlink>Defensa</hyperlink> del objetivo.",
-    "name": "Perforante^n",
-    "count": 1
+    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
+   },
+   {
+    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
    }
   ],
-  "description": "Dispara a la unidad enemiga objetivo con un fusil mágico.",
-  "name": "Disparar fusil mágico",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "Dispara proyectiles a distancia a la unidad objetivo enemiga.",
+  "name": "Disparar carabina",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Proyectil^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "Un solo ataque cuerpo a cuerpo.",
+  "name": "Puñalada veloz",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Disparo único^m</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "Ignora el 50 % de la <defense></defense> <hyperlink>Defensa</hyperlink> del objetivo.",
-    "name": "Perforante^n",
-    "count": 1
-   }
-  ],
-  "description": "Dispara rápidamente a la unidad enemiga objetivo con un fusil mágico, con precisión y efectividad reducidas.",
-  "name": "Disparo rápido de fusil mágico",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>Proyectil^m</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Básico^m</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Disparo único^m</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Afectado por las reglas de <hyperlink>Línea de visión</hyperlink>."
-   },
-   {
-    "note": "No puede usarse dentro de <hyperlink>una Zona de control</hyperlink> enemiga."
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "Ataca a la unidad enemiga objetivo.",
-  "name": "Ataque cuerpo a cuerpo",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "Ataque mágico",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Cuerpo a cuerpo^m</hyperlink>"
+    "requisite": "<hyperlink>Magia^f</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Básico^m</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

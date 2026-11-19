@@ -2813,9 +2813,24 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
   
     let name = unitLoc.name;
-//   if('figure' in unitEN){
-//         name += unitEN.figure;
-//     }
+
+     figureCountDiv = unitCard.querySelector("p#figureCount");
+     figureCountDiv 
+  if('figure' in unitEN){
+    
+        figureCountDiv.innerHTML = unitEN.figure;
+          let figureSpan = document.createElement("span");
+         const figureTT = unitCard.querySelector("div#figure_tt");
+           const figureText = findBy(jsonAllFromPOLocalized, "id", "CONCEPT@CASUALTIES");
+    figureSpan.innerHTML =
+        '<span style="color:burlywood;text-transform: uppercase ">' +
+        RemoveHyperLinks("Figure Count") +
+        '</span><br><span style="font-size: 14px;">' +
+        AddTagIconsForStatusEffects(figureText.description) +
+        "</span>";
+    addTooltipListeners(figureTT, figureSpan);
+    }
+    
     unitNameDiv.innerHTML += name.toUpperCase();
 
     if ("DLC" in unitEN) {

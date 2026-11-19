@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "Этому воину сложнее маневрировать в бою. Он: <bulletlist><bullet>во время движения тратит дополнительно 1 оч. за каждый поворот;</bullet><bullet>тратит все очки перемещения, выполняя разворот на месте;</bullet><bullet>не может проводить <hyperlink>неплановые атаки</hyperlink> против врагов у себя за спиной или <hyperlink>отвечать</hyperlink> на их удары.</bullet></bulletlist>",
-  "name": "Ограничение подвижности",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
@@ -18068,6 +18062,12 @@
    }
   ],
   "icon": "000003E3000064FA"
+ },
+ {
+  "description": "Этому воину сложнее маневрировать в бою. Он: <bulletlist><bullet>во время движения тратит дополнительно 1 оч. за каждый поворот;</bullet><bullet>тратит все очки перемещения, выполняя разворот на месте;</bullet><bullet>не может проводить <hyperlink>неплановые атаки</hyperlink> против врагов у себя за спиной или <hyperlink>отвечать</hyperlink> на их удары.</bullet></bulletlist>",
+  "name": "Ограничение подвижности",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "description": "Когда погибает воин, не являющийся призванным существом или нежитью, можно снова использовать способность «Призыв привидения». Срабатывает один раз за ход.",
@@ -33900,7 +33900,7 @@
   "icon": "000004970000312B"
  },
  {
-  "description": "Атаки этого воина снижают acc,c1 цели на 4 ед. Эффект удваивается, если у цели высокий боевой дух.<br></br><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
+  "description": "Атаки этого воина снижают <happiness></happiness> <hyperlink>боевой дух</hyperlink> цели на 4 ед. Эффект удваивается, если у цели высокий боевой дух.<br></br><br></br>Эффекты <hyperlink>усиливаются</hyperlink> для однократных атак.",
   "name": "Сеятель отчаяния",
   "slug": "0000049700004175",
   "icon": "0000049700004176"
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "Выстрел из тяжёлого магострела в выбранного вражеского воина.",
-  "name": "Залп из тяжёлого магострела",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
+   }
+  ],
+  "description": "Выпускает стрелы в выбранного вражеского воина.",
+  "name": "Выстрел из арбалета",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "description": "Неприцельный выстрел из тяжёлого магострела в выбранного вражеского воина. Точность и эффективность такого выстрела снижена.",
-  "name": "Выстрел навскидку из тяж. Магострела",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Стрельба^F</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
+    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "Игнорирует 50% от <defense></defense> <hyperlink>защиты</hyperlink> цели.",
-    "name": "Бронебойная атака",
-    "count": 1
+    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
+   },
+   {
+    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
    }
   ],
-  "description": "Выстрел из тяжёлого магострела в выбранного вражеского воина.",
-  "name": "Залп из тяжёлого магострела",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "Выпускает стрелы в выбранного вражеского воина.",
+  "name": "Выстрел из карабина",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>Стрельба^F</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "Один удар в рукопашной.",
+  "name": "Быстрый укол",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "Игнорирует 50% от <defense></defense> <hyperlink>защиты</hyperlink> цели.",
-    "name": "Бронебойная атака",
-    "count": 1
-   }
-  ],
-  "description": "Неприцельный выстрел из тяжёлого магострела в выбранного вражеского воина. Точность и эффективность такого выстрела снижена.",
-  "name": "Выстрел навскидку из тяж. Магострела",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>Стрельба^F</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>Однократная атака^Fa{1}n{2}</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "Действует правило <hyperlink>прямой видимости</hyperlink>."
-   },
-   {
-    "note": "Нельзя использовать в пределах вражеской <hyperlink>зоны контроля</hyperlink>."
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "Бьёт выбранного вражеского воина.",
-  "name": "Удар в рукопашной",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "Магический удар",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>Ближний бой^Ma{1}n{2}</hyperlink>"
+    "requisite": "<hyperlink>Магия^F</hyperlink>"
    },
    {
     "requisite": "<hyperlink>Базовые^Pa{1}</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [

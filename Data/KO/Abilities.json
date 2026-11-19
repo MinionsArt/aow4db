@@ -17933,12 +17933,6 @@
   "icon": "0000048D00000170"
  },
  {
-  "description": "해당 유닛은 전투 도중 방향 전환이 어려움:<bulletlist><bullet>매 턴마다, 이동 도중 방향을 돌릴 때 1 점수 소모</bullet><bullet>제자리에서 유닛을 회전시키면 이동 점수가 0으로 감소</bullet><bullet>해당 유닛은 뒤쪽 헥스에 <hyperlink>기회 공격</hyperlink> 또는 <hyperlink>반격</hyperlink> 수행 불가</bullet></bulletlist>",
-  "name": "기동 제한",
-  "slug": "0000048b00001394",
-  "icon": "0000048B00001396"
- },
- {
   "notes": [
    {
     "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
@@ -18068,6 +18062,12 @@
    }
   ],
   "icon": "000003E3000064FA"
+ },
+ {
+  "description": "해당 유닛은 전투 도중 방향 전환이 어려움:<bulletlist><bullet>매 턴마다, 이동 도중 방향을 돌릴 때 1 점수 소모</bullet><bullet>제자리에서 유닛을 회전시키면 이동 점수가 0으로 감소</bullet><bullet>해당 유닛은 뒤쪽 헥스에 <hyperlink>기회 공격</hyperlink> 또는 <hyperlink>반격</hyperlink> 수행 불가</bullet></bulletlist>",
+  "name": "기동 제한",
+  "slug": "0000048b00001394",
+  "icon": "0000048B00001396"
  },
  {
   "description": "소환으로 불러내지 않은 비 언데드 유닛 사망 시, 유령 소환 능력을 재사용할 수 있습니다. 한 턴에 한 번 발동합니다.",
@@ -42893,10 +42893,17 @@
   "icon": "0000048B00000BAB"
  },
  {
-  "modifiers": [],
-  "description": "대상 적 유닛에 마법 소총을 발사합니다.",
-  "name": "마법 소총 발사",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_equipment_item_carbine_base",
+  "notes": [
+   {
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
+   }
+  ],
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "쇠뇌 사격",
+  "slug": "shoot_crossbow_(item_forge)_ability_equipment_item_carbine_base",
   "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
@@ -42909,47 +42916,29 @@
     "requisite": "<hyperlink>단발성 공격</hyperlink>"
    }
   ],
-  "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "000004A60000089C"
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
  },
  {
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "description": "대상 적 유닛에 중형 마법 소총을 빠르게 발사합니다. 공격의 명중률 및 효율이 감소합니다.",
-  "name": "중형 마법 소총 속사",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_equipment_item_carbine_base",
-  "damage": "25<damagephysical></damagephysical> ",
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_equipment_item_carbine_base",
+  "damage": "16<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>발사체</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>기본</hyperlink>"
+    "requisite": "<hyperlink>근접</hyperlink>"
    },
    {
     "requisite": "<hyperlink>단발성 공격</hyperlink>"
    }
   ],
-  "accuracy": "80%",
+  "accuracy": "100%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [],
@@ -43501,76 +43490,52 @@
   "icon": "000003BD000020C9"
  },
  {
-  "modifiers": [
+  "notes": [
    {
-    "description": "대상의 <defense></defense> <hyperlink>방어력을</hyperlink> 50% 무시합니다.",
-    "name": "관통",
-    "count": 1
+    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
+   },
+   {
+    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
    }
   ],
-  "description": "대상 적 유닛에 마법 소총을 발사합니다.",
-  "name": "마법 소총 발사",
-  "slug": "fire_heavy_magelocks_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "38<damagephysical></damagephysical> ",
+  "description": "대상 적 유닛에 원거리 투사체를 발사합니다.",
+  "name": "카빈 사격",
+  "slug": "shoot_crossbow_(item_forge)_ability_mercantile_carbine_item_tier_1",
+  "damage": "30<damagephysical></damagephysical> ",
   "requisites": [
    {
     "requisite": "<hyperlink>발사체</hyperlink>"
    },
    {
     "requisite": "<hyperlink>기본</hyperlink>"
+   },
+   {
+    "requisite": "<hyperlink>단발성 공격</hyperlink>"
+   }
+  ],
+  "accuracy": "90%",
+  "actionPoints": "<singleuseaction></singleuseaction>",
+  "range": "4",
+  "icon": "000003BD00002EA7"
+ },
+ {
+  "notes": [],
+  "description": "단발성 근접 공격입니다.",
+  "name": "빠른 찌르기",
+  "slug": "quick_stab_ability_mercantile_carbine_item_tier_1",
+  "damage": "16<damagephysical></damagephysical> ",
+  "requisites": [
+   {
+    "requisite": "<hyperlink>근접</hyperlink>"
    },
    {
     "requisite": "<hyperlink>단발성 공격</hyperlink>"
    }
   ],
   "accuracy": "100%",
-  "actionPoints": "<fullaction></fullaction>",
-  "range": "5",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "000004A60000089C"
- },
- {
-  "modifiers": [
-   {
-    "description": "대상의 <defense></defense> <hyperlink>방어력을</hyperlink> 50% 무시합니다.",
-    "name": "관통",
-    "count": 1
-   }
-  ],
-  "description": "대상 적 유닛에 중형 마법 소총을 빠르게 발사합니다. 공격의 명중률 및 효율이 감소합니다.",
-  "name": "중형 마법 소총 속사",
-  "slug": "fire_heavy_magelocks_snap_shot_(item_forge)_ability_mercantile_carbine_item_tier_1",
-  "damage": "25<damagephysical></damagephysical> ",
-  "requisites": [
-   {
-    "requisite": "<hyperlink>발사체</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>기본</hyperlink>"
-   },
-   {
-    "requisite": "<hyperlink>단발성 공격</hyperlink>"
-   }
-  ],
-  "accuracy": "80%",
   "actionPoints": "<singleuseaction></singleuseaction>",
-  "range": "4",
-  "notes": [
-   {
-    "note": "<hyperlink>사선</hyperlink> 규칙에 영향을 받습니다."
-   },
-   {
-    "note": "적 <hyperlink>통제 구역</hyperlink>에서 사용할 수 없습니다."
-   }
-  ],
-  "icon": "0000048B00000BAB"
+  "range": "1",
+  "icon": "000003E3000057D6"
  },
  {
   "modifiers": [
@@ -43834,12 +43799,12 @@
  {
   "notes": [],
   "description": "대상 적 유닛을 공격합니다.",
-  "name": "근접 공격",
-  "slug": "melee_strike_(item_forge_dual)_ability_breachgun_and_axe_tier_i",
-  "damage": "12<damagephysical></damagephysical> ",
+  "name": "마법 강타",
+  "slug": "magic_strike_(base)_ability_breachgun_and_axe_tier_i",
+  "damage": "10<damagephysical></damagephysical> ",
   "requisites": [
    {
-    "requisite": "<hyperlink>근접</hyperlink>"
+    "requisite": "<hyperlink>마법</hyperlink>"
    },
    {
     "requisite": "<hyperlink>기본</hyperlink>"
@@ -43848,7 +43813,7 @@
   "accuracy": "100%",
   "actionPoints": "<repeatingaction></repeatingaction>",
   "range": "1",
-  "icon": "000003BD000020C9"
+  "icon": "0000048B0000131E"
  },
  {
   "notes": [
