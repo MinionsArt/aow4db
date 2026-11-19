@@ -3,7 +3,7 @@ const TooltipConfig = {
     maxWindows: 4, // when the chain gets longer the oldest window is dropped
     fadeStep: 0.2, // opacity lost per level below the newest window
     minOpacity: 0.35,
-    closeDelay: 150, // ms the pointer may take to get from a trigger into its window (selectable mode only)
+    closeDelay: 250, // grace period for moving the pointer from a trigger/parent window into a child window
     fadeOutMs: 140,
     gap: 6, // px between a window and the window it was opened from
     debug: false // true = log every window that opens
@@ -48,7 +48,9 @@ function createTooltipWindow(level, selectable) {
         document.body.appendChild(el);
     }
     el.classList.add("hoverWindow");
-    el.style.pointerEvents = selectable ? "all" : "none";
+    el.style.pointerEvents = "auto";
+    el.style.userSelect = selectable ? "text" : "none";
+    el.style.webkitUserSelect = selectable ? "text" : "none";
     el.style.transition = `opacity ${TooltipConfig.fadeOutMs}ms ease`;
     return el;
 }
@@ -130,9 +132,6 @@ function clampToViewport(el, viewportLeft, viewportTop, margin = 8) {
     if (Math.abs(dy) > 1) el.style.top = parseFloat(el.style.top) - dy + "px";
 }
 
-// ---------------------------------------------------------------------------
-// the chain
-// ---------------------------------------------------------------------------
 function updateTooltipFades() {
     const last = tooltipStack.length - 1;
     tooltipStack.forEach((w, i) => {
@@ -167,7 +166,7 @@ function closeAllTooltips(instant) {
     for (const w of [...tooltipStack].reverse()) removeTooltipWindow(w, instant);
 }
 
-// Close every window that is newer than the newest one the pointer is on
+// close every window that is newer than the newest one the pointer is on
 // (on the window itself, or on the link it was opened from).
 function sweepTooltips() {
     tooltipSweepTimer = null;
@@ -185,7 +184,7 @@ function sweepTooltips() {
 
 function scheduleTooltipSweep() {
     clearTimeout(tooltipSweepTimer);
-    const delay = getUserSettings().tooltipselectable ? TooltipConfig.closeDelay : 0;
+    const delay = TooltipConfig.closeDelay;
     if (delay <= 0) sweepTooltips();
     else tooltipSweepTimer = setTimeout(sweepTooltips, delay);
 }
@@ -202,10 +201,10 @@ function openTooltip(trigger, source, event) {
     if (html == null || html === "") return;
 
     const selectable = !!getUserSettings().tooltipselectable;
-    const canNest = selectable && !isTouchLayout();
+    const canNest = !isTouchLayout();
 
-    // where does the new window go in the chain? Right after the window the trigger sits in.
-    // A trigger on the page itself (or no nesting) starts a new chain.
+    // On desktop, a trigger inside an existing tooltip opens a child in the same chain.
+    // Touch layouts use a single sheet because hover-based nesting is not practical.
     const parentIndex = canNest ? tooltipStack.findIndex((w) => w.el.contains(trigger)) : -1;
     while (tooltipStack.length > parentIndex + 1) removeTooltipWindow(tooltipStack[tooltipStack.length - 1], true);
     const parent = parentIndex >= 0 ? tooltipStack[parentIndex] : null;
@@ -224,7 +223,7 @@ function openTooltip(trigger, source, event) {
 
     // Make the links inside this window hoverable. This has to happen while the dialog is still
     // closed: HandleExtraTooltips reads el.innerText, which is empty for hidden elements.
-    if (canNest) HandleExtraTooltips(el);
+     HandleExtraTooltips(el);
 
     showTooltipWindowHidden(el);
     if (parent) placeChildTooltip(w, parent, trigger);
@@ -257,24 +256,4 @@ function removeToolTipListeners(tooltip) {
     tooltip.removeEventListener("mouseenter", h.enter);
     tooltip.removeEventListener("mouseleave", h.leave);
     tooltipHandlers.delete(tooltip);
-}
-
-// --- kept so older calls elsewhere do not break -----------------------------
-function TurnOnTooltip(spa, secondary) {
-    openTooltip(lastPointer.target ?? document.body, spa, lastPointer);
-}
-
-function TurnOffTooltip(secondary, origin) {
-    closeAllTooltips(false);
-}
-
-function getNormalizedPosition(event) {
-    return { x: event.clientX / window.innerWidth, y: event.clientY / window.innerHeight };
-}
-
-// Old "follow the cursor" callers: only moves a lone, non-selectable tooltip.
-function updateHoverDivPosition(event, secondary) {
-    if (tooltipStack.length === 1 && !getUserSettings().tooltipselectable) {
-        placeRootTooltip(tooltipStack[0], event);
-    }
 }

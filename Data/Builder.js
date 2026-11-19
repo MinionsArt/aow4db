@@ -200,7 +200,7 @@ function createStatusEffectTooltip(effectData, handlerType = "status") {
     let effect = effectData.name;
 
     // let tag = jsonUnitAbilitiesLocalized[i].description;
-    let tag = maybeHighlight(effectData.description);
+    let tag = AddTagIconsForStatusEffects(maybeHighlight(effectData.description));
 
     let image = document.createElement("IMG");
     image.setAttribute("src", "/aow4db/Icons/UnitIcons/" + effectData.icon + ".png");
@@ -237,7 +237,8 @@ function HandleExtraTooltips(specificDiv) {
     const root = specificDiv ?? document;
 
    root.querySelectorAll(".statusEffectHandler").forEach((el) => {
-    const name = el.innerText.trim();
+    // textContent works even when this tooltip is inside a closed dialog.
+        const name = el.textContent.trim();
     const html = lookupStatusEffect(name);
     if (html === name) return;                 // nothing to show
     const spantest = document.createElement("span");
@@ -254,7 +255,7 @@ function HandleExtraTooltips(specificDiv) {
         const tooltipEl = document.createElement("span");
         tooltipEl.innerHTML =
             `<p style="color:#d7c297"><span style="font-size:20px">${iconHtml}${concept.name.toUpperCase()}</span></p>` +
-            concept.description;
+            AddTagIconsForStatusEffects(concept.description);
 
         // Attach to the visible underlined sibling, not the hidden handler itself
         const visibleSibling = el.previousElementSibling;

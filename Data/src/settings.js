@@ -16,13 +16,13 @@ function OverwriteEditKey() {
 
 function CheckBoxTooltips() {
   let hoverDiv = document.getElementById("hoverDiv");
-  let hoverDiv2 = document.getElementById("hoverDiv2");
+  //let hoverDiv2 = document.getElementById("hoverDiv2");
   if (checkboxTooltip.checked === true) {
     addTooltipListeners(hoverDiv, null);
-    addTooltipListeners(hoverDiv2, null, "something");
+    //addTooltipListeners(hoverDiv2, null, "something");
   } else {
     removeToolTipListeners(hoverDiv);
-    removeToolTipListeners(hoverDiv2);
+   // removeToolTipListeners(hoverDiv2);
   }
   updateUserSettings({
     tooltipselectable: checkboxTooltip.checked,
