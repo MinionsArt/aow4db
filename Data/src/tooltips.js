@@ -257,3 +257,22 @@ function removeToolTipListeners(tooltip) {
     tooltip.removeEventListener("mouseleave", h.leave);
     tooltipHandlers.delete(tooltip);
 }
+
+function TurnOnTooltip(spa, secondary) {
+    openTooltip(lastPointer.target ?? document.body, spa, lastPointer);
+}
+
+function TurnOffTooltip(secondary, origin) {
+    closeAllTooltips(false);
+}
+
+function getNormalizedPosition(event) {
+    return { x: event.clientX / window.innerWidth, y: event.clientY / window.innerHeight };
+}
+
+// Old "follow the cursor" callers: only moves a lone, non-selectable tooltip.
+function updateHoverDivPosition(event, secondary) {
+    if (tooltipStack.length === 1 && !getUserSettings().tooltipselectable) {
+        placeRootTooltip(tooltipStack[0], event);
+    }
+}
