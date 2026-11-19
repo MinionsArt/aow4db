@@ -2810,8 +2810,12 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     unitNameDiv = unitCard.querySelector("span#unitstring");
     // clear
     unitNameDiv.innerHTML = "";
-    let name = unitLoc.name;
 
+  
+    let name = unitLoc.name;
+//   if('figure' in unitEN){
+//         name += unitEN.figure;
+//     }
     unitNameDiv.innerHTML += name.toUpperCase();
 
     if ("DLC" in unitEN) {
