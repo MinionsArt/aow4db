@@ -2834,8 +2834,10 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
     unitNameDiv.innerHTML += name.toUpperCase();
 
     if ("DLC" in unitEN) {
-        let newDivForMount = AddDLCTag(unitEN.DLC);
-        unitNameDiv.append(newDivForMount);
+        let DLC = AddDLCTag(unitEN.DLC);
+       const DLCTag = unitCard.querySelector("div#DLC");
+         
+        DLCTag.append(DLC);
     }
 
     // if in the list of mounted, add tooltip
@@ -2845,7 +2847,7 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
 
         imag = document.createElement("IMG");
         imag.setAttribute("src", "/aow4db/Icons/Text/MountInteraction.png");
-        imag.setAttribute("height", "35px");
+        imag.setAttribute("height", "25px");
 
         spa = document.createElement("SPAN");
 
@@ -2853,14 +2855,17 @@ function showUnit(unitID, subcultureCheck, resID, divOrigin) {
             "If an <hyperlink>Exotic Mount Trait</hyperlink> is chosen, this unit gains that mount, even if it was not mounted before";
 
         newDivForMount.appendChild(imag);
-        newDivForMount.appendChild(spa);
+       
         newDivForMount.setAttribute(
             "style",
-            "    text-transform: none;width: 1px;margin-left: 30px;height: 20px;float: left;"
+            "    text-transform: none;height: 20px;"
         );
         // get position of button
         addTooltipListeners(newDivForMount, spa);
-        unitNameDiv.append(newDivForMount);
+
+         const MountedTag = unitCard.querySelector("div#mounted");
+         
+        MountedTag.append(newDivForMount);
     }
 
     let hpspan = document.createElement("span");
